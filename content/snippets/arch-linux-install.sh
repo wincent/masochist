@@ -14,12 +14,25 @@ tags: arch.linux snippets
 set -e
 
 function log {
-  echo "[arch-linux-install] $*"
+  local LINE="[arch-linux-install] $*"
+  echo "$LINE"
+  echo "${LINE//?/-}"
 }
+
+function ask {
+  read -p "$1> "
+  eval "export $2=\$REPLY"
+}
+
+log "Setup questions:"
+ask 'User passphrase' __PASSPHRASE__
+ask 'Wireless SSID' __SSID__
+ask 'Wireless passphrase' __WIFI_PASSPHRASE__
 
 log "Checking network reachability"
 ping -c 3 google.com
 
+log "Setting up NTP"
 timedatectl set-ntp true
 
 log "Refreshing packages"
@@ -58,8 +71,13 @@ cat << HERE > /mnt/arch-install-chroot.sh
 set -e
 
 function log {
-  echo "[arch-linux-install] \$*"
+  local LINE="[arch-linux-install] \$*"
+  echo "\$LINE"
+  echo "\${LINE//?/-}"
 }
+
+log "Setting up database for 'pacman -F filename' searching"
+pacman -Fy
 
 log "Installing kernel and other packages"
 pacman -S --noconfirm linux linux-lts linux-headers linux-lts-headers
@@ -79,9 +97,9 @@ sed -i \
 locale-gen
 
 log "Setting up users"
-echo root:pass | chpasswd
+echo "root:\$__PASSPHRASE__" | chpasswd
 useradd -m -g users -G wheel glh
-echo glh:pass | chpasswd
+echo "glh:\$___PASSPHRASE__" | chpasswd
 echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel
 
 log "Setting up boot"
@@ -105,12 +123,29 @@ pacman -S --noconfirm inetutils # for hostname
 pacman -S --noconfirm apcupsd # for auto-shutdown when UPS battery runs low
 systemctl enable apcupsd
 
+hostnamectl set-hostname huertas
+
 log "Installing gfx stuff"
 pacman -S --noconfirm libva-mesa-driver linux-firmware mesa-vdpau vulkan-radeon xf86-video-amdgpu
 
 log "Installing network support"
 pacman -S --noconfirm wpa_supplicant wireless_tools netctl dhcpd
-pacman -S --noconfirm dialog # for wifi-menu
+pacman -S --noconfirm dialog # for wifi-menu, although we're not using it here
+
+NETCTL_PROFILE=\$(echo "\$__SSID__" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
+NETCTL_KEY=\$(wpa_passphrase "\$__SSID__" "\$__WIFI_PASSPHRASE__" | grep psk= | grep -v '#' | cut -d = -f 2)
+NETCTL_CONFIG=/etc/netctl/\$NETCTL_PROFILE
+NETCTL_SSID=\$(echo "\$__SSID__" | sed 's/ /\\\\ /g')
+touch \$NETCTL_CONFIG
+chmod 600 \$NETCTL_CONFIG
+echo "Description='\$NETCTL_PROFILE'" >> "\$NETCTL_CONFIG"
+echo "Interface=wlp4s0" >> "\$NETCTL_CONFIG"
+echo "Connection=wireless" >> "\$NETCTL_CONFIG"
+echo "Security=wpa" >> "\$NETCTL_CONFIG"
+echo "ESSID=\$NETCTL_SSID" >> "\$NETCTL_CONFIG"
+echo "IP=dhcp" >> "\$NETCTL_CONFIG"
+echo "Key=\\"\$NETCTL_KEY" >> "\$NETCTL_CONFIG"
+netctl enable "\$NETCTL_PROFILE"
 
 log "Applying other settings"
 pacman -S --noconfirm termius-font # for 4K display, instead of `setfont -d`
@@ -119,6 +154,10 @@ echo KEYMAP=colemak >> /etc/vconsole.conf
 
 ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
 hwclock --systohc
+
+log "Cloning dotfiles"
+sudo -u glh mkdir -p /home/glh/code
+sudo -u glh git clone --recursive https://github.com/wincent/wincent.git
 
 exit
 HERE
