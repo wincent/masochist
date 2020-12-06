@@ -99,7 +99,7 @@ locale-gen
 log "Setting up users"
 echo "root:\$__PASSPHRASE__" | chpasswd
 useradd -m -g users -G wheel glh
-echo "glh:\$___PASSPHRASE__" | chpasswd
+echo "glh:\$__PASSPHRASE__" | chpasswd
 echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel
 
 log "Setting up boot"
@@ -119,7 +119,7 @@ echo -e '\n/swapfile none swap sw 0 0' >> /etc/fstab
 log "Setting up encryption for /home"
 pacman -S --noconfirm fscrypt
 fscrypt setup
-fscrypt setup /dev/nvme0n1p3
+fscrypt setup /home
 echo "auth optional pam_fscrypt.so" >> /etc/pam.d/system-login
 echo "session optional pam_fscrypt.so drop_caches lock_policies" >> /etc/pam.d/system-login
 echo "password optional pam_fscrypt.so" >> /etc/pam.d/passwd
@@ -137,7 +137,7 @@ log "Installing gfx stuff"
 pacman -S --noconfirm libva-mesa-driver linux-firmware mesa-vdpau vulkan-radeon xf86-video-amdgpu
 
 log "Installing network support"
-pacman -S --noconfirm wpa_supplicant wireless_tools netctl dhcpd
+pacman -S --noconfirm wpa_supplicant wireless_tools netctl dhcpcd
 pacman -S --noconfirm dialog # for wifi-menu, although we're not using it here
 
 NETCTL_PROFILE=\$(echo "\$__SSID__" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')
@@ -156,7 +156,7 @@ echo "Key=\\"\$NETCTL_KEY" >> "\$NETCTL_CONFIG"
 netctl enable "\$NETCTL_PROFILE"
 
 log "Applying other settings"
-pacman -S --noconfirm termius-font # for 4K display, instead of `setfont -d`
+pacman -S --noconfirm terminus-font # for 4K display, instead of `setfont -d`
 echo FONT=ter-132n >> /etc/vconsole.conf
 echo KEYMAP=colemak >> /etc/vconsole.conf
 
