@@ -152,7 +152,7 @@ echo "Connection=wireless" >> "\$NETCTL_CONFIG"
 echo "Security=wpa" >> "\$NETCTL_CONFIG"
 echo "ESSID=\$NETCTL_SSID" >> "\$NETCTL_CONFIG"
 echo "IP=dhcp" >> "\$NETCTL_CONFIG"
-echo "Key=\\"\$NETCTL_KEY" >> "\$NETCTL_CONFIG"
+echo "Key=\\\\\"\$NETCTL_KEY" >> "\$NETCTL_CONFIG"
 netctl enable "\$NETCTL_PROFILE"
 
 log "Applying other settings"
@@ -175,20 +175,20 @@ echo "  chown glh:users /home/glh_" >> /etc/motd
 echo "  fscrypt encrypt /home/glh_ --user=glh" >> /etc/motd
 echo "  exit" >> /etc/motd
 echo "  cp -a -T /home/glh /home/glh_" >> /etc/motd
-echo "  reboot" >> /etc/motd
+echo "  sudo reboot" >> /etc/motd
 echo "" >> /etc/motd
 echo "After rebooting:" >> /etc/motd
 echo "" >> /etc/motd
 echo "  fscrypt status /home/glh_" >> /etc/motd
-echo "  mv /home/glh /home/glh_plaintext" >> /etc/motd
-echo "  mv /home/glh_ /home/glh" >> /etc/motd
+echo "  sudo mv /home/glh /home/glh_plaintext" >> /etc/motd
+echo "  sudo mv /home/glh_ /home/glh" >> /etc/motd
 echo "  sudo reboot" >> /etc/motd
 echo "" >> /etc/motd
 echo "And finally:" >> /etc/motd
 echo "" >> /etc/motd
 echo "  find /home/glh_plaintext -type f -print0 | xargs -0 shred -n1 --remove=unlink" >> /etc/motd
-echo "  rm -rf /home/glh_plaintext" >> /etc/motd
-echo "  echo > /etc/motd" >> /etc/motd
+echo "  sudo rm -rf /home/glh_plaintext" >> /etc/motd
+echo "  echo -n | sudo tee /etc/motd" >> /etc/motd
 
 exit
 HERE
