@@ -49,9 +49,9 @@ device: /dev/nvme0n1
 HERE
 
 log "Formatting partitions"
-mkfs.fat -F32 /dev/nvme0n1p1
-mkfs.ext4 /dev/nvme0n1p2
-mkfs.ext4 /dev/nvme0n1p3
+mkfs.fat -F32 /dev/nvme0n1p1 # /boot/EFI
+mkfs.ext4 /dev/nvme0n1p2 # /
+mkfs.ext4 -O encrypt -b 4096 /dev/nvme0n1p3 # /home
 
 log "Mounting /dev/nvme0n1p2 at /"
 mount /dev/nvme0n1p2 /mnt
@@ -116,6 +116,14 @@ chmod 600 /swapfile
 mkswap /swapfile
 echo -e '\n/swapfile none swap sw 0 0' >> /etc/fstab
 
+log "Setting up encryption for /home"
+pacman -S --noconfirm fscrypt
+fscript setup
+fscript setup /dev/nvme0n1p3
+echo "auth optional pam_fscrypt.so" >> /etc/pam.d/system-login
+echo "session optional pam_fscrypt.so drop_caches lock_policies" >> /etc/pam.d/system-login
+echo "password optional pam_fscrypt.so" >> /etc/pam.d/passwd
+
 log "Installing other dependencies"
 pacman -S --noconfirm git neovim ruby tmux vi vim xorg-server
 
@@ -157,7 +165,28 @@ hwclock --systohc
 
 log "Cloning dotfiles"
 sudo -u glh mkdir -p /home/glh/code
-sudo -u glh git clone --recursive https://github.com/wincent/wincent.git
+sudo -u glh git clone --recursive https://github.com/wincent/wincent.git /home/glh/code/wincent
+
+log "Setting up /etc/motd"
+echo "Suggested actions:" >> /etc/motd
+echo "  mkdir /home/glh_" >> /etc/motd
+echo "  chown glh:glh /home/glh_" >> /etc/motd
+echo "  fscrypt encrypt /home/glh_ --user=glh" >> /etc/motd
+echo "  cp -a -T /home/glh /home/glh_" >> /etc/motd
+echo "  reboot" >> /etc/motd
+echo "" >> /etc/motd
+echo "After rebooting:" >> /etc/motd
+echo "" >> /etc/motd
+echo "  fscrypt status /home/glh_" >> /etc/motd
+echo "  mv /home/glh /home/glh_plaintext" >> /etc/motd
+echo "  mv /home/glh_ /home/glh" >> /etc/motd
+echo "  reboot" >> /etc/motd
+echo "" >> /etc/motd
+echo "And finally:" >> /etc/motd
+echo "" >> /etc/motd
+echo "  find /home/glh_plaintext -type f -print0 | xargs -0 shred -n1 --remove=unlink" >> /etc/motd
+echo "  rm -rf /home/glh_plaintext" >> /etc/motd
+echo "  echo > /etc/motd" >> /etc/motd
 
 exit
 HERE
