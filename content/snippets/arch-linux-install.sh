@@ -101,13 +101,22 @@ echo -e '\n/swapfile none swap sw 0 0' >> /etc/fstab
 log "Installing other dependencies"
 pacman -S --noconfirm git neovim ruby tmux vi vim xorg-server
 
+pacman -S --noconfirm inetutils # for hostname
+pacman -S --noconfirm apcupsd # for auto-shutdown when UPS battery runs low
+systemctl enable apcupsd
+
+log "Installing gfx stuff"
+pacman -S --noconfirm libva-mesa-driver linux-firmware mesa-vdpau vulkan-radeon xf86-video-amdgpu
+
 log "Installing network support"
-pacman -S --noconfirm networkmanager wpa_supplicant wireless_tools netctl
+pacman -S --noconfirm wpa_supplicant wireless_tools netctl dhcpd
 pacman -S --noconfirm dialog # for wifi-menu
-systemctl enable NetworkManager
 
 log "Applying other settings"
+pacman -S --noconfirm termius-font # for 4K display, instead of `setfont -d`
+echo FONT=ter-132n >> /etc/vconsole.conf
 echo KEYMAP=colemak >> /etc/vconsole.conf
+
 ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
 hwclock --systohc
 
