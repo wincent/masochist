@@ -118,8 +118,8 @@ echo -e '\n/swapfile none swap sw 0 0' >> /etc/fstab
 
 log "Setting up encryption for /home"
 pacman -S --noconfirm fscrypt
-fscript setup
-fscript setup /dev/nvme0n1p3
+fscrypt setup
+fscrypt setup /dev/nvme0n1p3
 echo "auth optional pam_fscrypt.so" >> /etc/pam.d/system-login
 echo "session optional pam_fscrypt.so drop_caches lock_policies" >> /etc/pam.d/system-login
 echo "password optional pam_fscrypt.so" >> /etc/pam.d/passwd
