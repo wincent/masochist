@@ -131,8 +131,6 @@ pacman -S --noconfirm inetutils # for hostname
 pacman -S --noconfirm apcupsd # for auto-shutdown when UPS battery runs low
 systemctl enable apcupsd
 
-hostnamectl set-hostname huertas
-
 log "Installing gfx stuff"
 pacman -S --noconfirm libva-mesa-driver linux-firmware mesa-vdpau vulkan-radeon xf86-video-amdgpu
 
