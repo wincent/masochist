@@ -3,12 +3,22 @@ title: Arch Linux install script
 tags: arch.linux snippets
 ---
 
+#!/bin/bash
+
+################################################################################
+#                                                                              #
+#           NOTE: For the latest version of this script, see:                  #
+#                                                                              #
+#           https://wincent.com/link/arch-linux-install.sh                     #
+#                                                                              #
+################################################################################
+
 # loadkeys colemak -- (ie. "iyasefjr cyifmae" typing colemak-style on qwerty)
 # iwctl device list
 # iwctl station wlan0 scan
 # iwctl station wlan0 get-networks
 # iwctl station wlan0 connect $SSID
-# curl -O https://wincent.com/snippets/arch-linux-install.sh
+# curl -O https://wincent.com/link/arch-linux-install.sh
 # bash arch-linux-install.sh
 
 set -e
