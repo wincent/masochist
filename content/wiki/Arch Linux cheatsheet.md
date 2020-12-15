@@ -48,3 +48,11 @@ xev
 ```sh
 sensors
 ```
+
+# Getting X window metadata
+
+eg. for targeting specific windows in i3:
+
+```sh
+xprop
+```
