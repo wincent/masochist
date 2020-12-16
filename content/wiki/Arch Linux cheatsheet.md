@@ -47,6 +47,10 @@ xev
 
 - Tap `Delete` (probably repeatedly).
 
+# Selecting boot device at power-on
+
+- Tap `F12` (probably repeatedly).
+
 # Seeing fan speed and temperature information
 
 ```sh
