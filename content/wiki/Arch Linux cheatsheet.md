@@ -43,6 +43,10 @@ xev
 
 - `Control-Alt-1`, `Control-Alt-2` etc.
 
+# Entering BIOS at power-on
+
+- Tap `Delete` (probably repeatedly).
+
 # Seeing fan speed and temperature information
 
 ```sh
