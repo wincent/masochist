@@ -14,8 +14,10 @@ netctl restart $PROFILE # eg netctl restart cole-valley
 # Pairing or connecting Bluetooth headphones
 
 ```sh
+$ systemctl start bluetooth
 $ bluetoothctl
 # help
+# power on
 # scan on
 # scan off
 # pair 00:1B:66:CD:BD:8F
@@ -75,3 +77,25 @@ eg. for targeting specific windows in i3:
 ```sh
 xprop
 ```
+
+# Setting up `irssi` for Twitch chat
+
+[With OAuth token](https://twitchapps.com/tmi/):
+
+```
+/network add -nick greghurrell Twitch
+/server add -auto -ssl -network Twitch irc.chat.twitch.tv 6697 YOUR_OAUTH_TOKEN
+/network add -autosendcmd "/quote CAP REQ :twitch.tv/membership" Twitch
+/ignore jtv
+/save
+/connect Twitch
+/channel add -auto #greghurrell Twitch
+/save
+/join #greghurrell
+```
+
+## See also
+
+- [Source](https://blog.crunchprank.net/connecting-to-twitch-chat-via-irssi/)
+- [TL;DR](https://gist.github.com/lambdan/4d9ac5a63e56c6d1d9169f5b81de9dd6)
+- https://dev.twitch.tv/docs/irc/guide
