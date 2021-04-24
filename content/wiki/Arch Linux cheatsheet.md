@@ -11,6 +11,17 @@ Just a set of personal reminders for me as I set up a Linux box. Some of these a
 netctl restart $PROFILE # eg netctl restart cole-valley
 ```
 
+# Pairing or connecting Bluetooth headphones
+
+```sh
+$ bluetoothctl
+# help
+# scan on
+# scan off
+# pair 00:1B:66:CD:BD:8F
+# connect 00:1B:66:CD:BD:8F
+```
+
 # Putting the machine to sleep
 
 ```sh
