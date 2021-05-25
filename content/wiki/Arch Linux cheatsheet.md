@@ -143,7 +143,22 @@ umount -a
 reboot
 ```
 
-Basically, I'm not sure what order to run those commands in; I had to try several times to get it to work (was winding up at a Grub prompt when rebooting). Also, I am not sure how/why, but I initially mounted `/boot` and everything was there, but after my first attempt, it seemed like the partition was somehow emptied and that's why I had to set it up all over again. For next time, see if I can shortcut some of this by [using `efibootmgr`](https://wiki.gentoo.org/wiki/Efibootmgr) to get the boot entries back in place.
+Basically, I'm not sure what order to run those commands in; I had to try several times to get it to work (was winding up at a Grub prompt when rebooting). Also, I am not sure how/why, but I initially mounted `/boot` and everything was there, but after my first attempt, it seemed like the partition was somehow emptied and that's why I had to set it up all over again. For next time, see if I can shortcut some of this by [using `efibootmgr`](https://wiki.gentoo.org/wiki/Efibootmgr) to get the boot entries back in place:
+
+```sh
+loadkeys colemak -- (ie. "iyasefjr cyifmae")
+iwctl station wlan0 connect $SSID
+cryptsetup open /dev/nvme0n1p2 cryptroot
+mount /dev/mapper/cryptroot /mnt
+mkdir -p /mnt/boot # I don't think we need this, but just in case.
+mount /dev/nvme0n1p1 /mnt/boot
+arch-chroot /mnt
+
+PARTUUID=$(lsblk /dev/nvme0n1p2 -o PARTUUID -d -n)
+
+efibootmgr --disk /dev/nvme0n1 --part 1 --create --label "Arch Linux LTS" --loader /vmlinuz-linux-lts --unicode "cryptdevice=PARTUUID=${PARTUUID}:root root=/dev/mapper/root rw initrd=\initramfs-linux-lts.img" --verbose
+efibootmgr --disk /dev/nvme0n1 --part 1 --create --label "Arch Linux" --loader /vmlinuz-linux --unicode "cryptdevice=PARTUUID=${PARTUUID}:root root=/dev/mapper/root rw initrd=\initramfs-linux.img" --verbose
+```
 
 # Seeing fan speed and temperature information
 
