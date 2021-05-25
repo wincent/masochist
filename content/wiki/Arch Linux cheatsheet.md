@@ -143,7 +143,7 @@ umount -a
 reboot
 ```
 
-Basically, I'm not sure what order to run those commands in; I had to try several times to get it to work (was winding up at a Grub prompt when rebooting). Also, I am not sure how/why, but I initially mounted `/boot` and everything was there, but after my first attempt, it seemed like the partition was somehow emptied and that's why I had to set it up all over again.
+Basically, I'm not sure what order to run those commands in; I had to try several times to get it to work (was winding up at a Grub prompt when rebooting). Also, I am not sure how/why, but I initially mounted `/boot` and everything was there, but after my first attempt, it seemed like the partition was somehow emptied and that's why I had to set it up all over again. For next time, see if I can shortcut some of this by [using `efibootmgr`](https://wiki.gentoo.org/wiki/Efibootmgr) to get the boot entries back in place.
 
 # Seeing fan speed and temperature information
 
