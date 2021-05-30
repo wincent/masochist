@@ -12,7 +12,7 @@ Just making some notes for this stuff because I find it tremendously fiddly and 
   - Filters:
     - Duckety "Ducking" McDuckface
       - Ratio: 12.00:1
-      - Threshold: -35.00 dB (very sensitive to noise in environment, the louder I am, the closer I can get to zero, as I and the environment get quieter, I have to drop lower).
+      - Threshold: -35.00 dB (the correct value is very sensitive to the noise level in the environment: the louder I am, the closer I can get to zero; as I and the environment get quieter, I have to drop further into negative territory).
       - Attack: 6 ms
       - Release: 1000 ms
       - Output Gain: 0.00 dB
@@ -28,7 +28,7 @@ Just making some notes for this stuff because I find it tremendously fiddly and 
     - Audio Monitoring: Monitor and Output
   - Mic/Aux:
     - Volume: 0.0 dB
-    - Audio Monitoring: Monitor and Output
+    - Audio Monitoring: Monitor Off (I used to monitor this, but the lag messes with your brain)
 
 ## Scenes
 
@@ -118,14 +118,20 @@ One thing to note: I was getting low latency monitoring with this set-up, but as
 
 # pavucontrol
 
+Assuming a virtual sink created with:
+
+```sh
+pactl load-module module-null-sink sink_name=Music
+```
+
 - Playback
   - System sounds: 100%
-  - Audacious: 100% - Blue Microphones Analog Stereo (ie. just need to output it to something other than my headphones)
-  - OBS-Monitor: Mic/Aux on, 100% - MOMENTUM 3
-  - OBS-Monitor: Audacious on, 100% - MOMENTUM 3
+  - Audacious: 100% - Music Audio/Sink sink (ie. the virtual sink)
+  - OBS-Monitor: Mic/Aux on, 100% - MOMENTUM 3; actually, this should be _off_ otherwise the lag scrambles your brain.
+  - OBS-Monitor: Audacious on, 100% - MOMENTUM 3; if everything is working, you will hear the ducking of the music when you talk, even though you don't hear your own voice.
 - Recording
   - OBS: Mic/Aux 100% from: Blue Microphones Analog Stereo
-  - OBS: Audacious 100% from: Unknown input (shows up like this when you select the Audio Source in OBS and set it to use Blue Microphones Analog Stereo)
+  - OBS: Audacious 100% from: Monitor of Music Audio/Sink sink
 - Output Devices
   - Everything 100%
 - Input Devices
