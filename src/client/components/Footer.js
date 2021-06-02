@@ -31,6 +31,7 @@ export default class Footer extends React.Component<{}> {
             <div className="four columns">
               <h6>Site</h6>
               <ul>
+                <FooterLink target="/pages/about" text="About" />
                 <FooterLink target="/blog" text="Blog" />
                 <FooterLink target="/wiki" text="Wiki" />
                 <FooterLink target="/snippets" text="Snippets" />
