@@ -1,6 +1,7 @@
 ---
 tags: gpg wiki
 cache_breaker: 1
+title: GnuPG cheat sheet
 ---
 
 # Export a public key
@@ -86,7 +87,8 @@ gpg:              unchanged: 1
 ```shell
 $ gpg --edit-key 134D9429
 gpg> showpref
-gpg> setpref SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP gpg> save
+gpg> setpref SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP
+gpg> save
 $ gpg --send-keys 134D9429 # upload new public key to keyserver
 ```
 
