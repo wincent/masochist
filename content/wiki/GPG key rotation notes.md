@@ -197,10 +197,19 @@ OK
 
 # Killing agent (and having it auto-restart) does not remove the
 # entries. So remove them all by hand.
+#
+# BEWARE: This not only deletes them from the agent, but also from
+# the filesystem (eg. ~/.gnupg/private-keys-v1.d/$KEYGRIP.key), so
+# if we do this, we will have to re-import.
 gpg-connect-agent killagent /bye # Keys still there after restart.
 gpg-connect-agent 'delete_key E103527BC818CE252F3C7494A0AB8D1D8D6322C7' /bye
 gpg-connect-agent 'delete_key 0551973D09041D9CF62AD9DF6F5FA53321C4FB02' /bye
 gpg-connect-agent 'delete_key 5148CD9FB4E523100232C9B2B4CC4E12312D59F1' /bye
+
+# Now the reimport and cleanup.
+gpg --import 'greg@hurrell.net GPG key 0xF962DC1A1941CCC4 expires 2024-05-17.asc'
+gpg --delete-secret-keys 0xF962DC1A1941CCC4
+rm 'greg@hurrell.net GPG key 0xF962DC1A1941CCC4 expires 2024-05-17.asc'
 
 # Now decrypt. See pinentry prompt for key ID FF08BAF685DCF99C
 # (main key ID F962DC1A1941CCC4), and see it actually work.
@@ -219,9 +228,16 @@ gpg --list-secret-keys --keyid-format=long --with-keygrip --with-fingerprint
 # Flush agent and do the test. Agent shows the two subkeys with no
 # preset password cached. Just to be sure, blow them away and repeat
 # the test.
+#
+# BEWARE: Once again, this deletes the keys on disk and requires a re-import.
 gpg-connect-agent 'keyinfo --list' /bye
 gpg-connect-agent 'delete_key 0551973D09041D9CF62AD9DF6F5FA53321C4FB02' /bye
 gpg-connect-agent 'delete_key 5148CD9FB4E523100232C9B2B4CC4E12312D59F1' /bye
+gpg --import 'greg@hurrell.net GPG key 0xF962DC1A1941CCC4 expires 2024-05-17.asc'
+gpg --delete-secret-keys 0xF962DC1A1941CCC4
+rm 'greg@hurrell.net GPG key 0xF962DC1A1941CCC4 expires 2024-05-17.asc'
+
+# The actual test.
 (cd $DOTFILES && vendor/git-cipher/bin/git-cipher log)
 
 # Now, given that I am not planning on using my new github.com key
@@ -236,8 +252,20 @@ gpg --delete-secret-keys 0x62106B56923F3481 # delete primary, keep subkey
 rm 'wincent@github.com GPG key 0x62106B56923F3481 expires 2022-06-04.asc'
 
 # Test this again by doing a decryption in my dotfiles repo.
-# TODO: write steps here, because I need to get pinentry and the agent
-# working on this machine.
+#
+# Given ~/.gnupg/gpg-agent.conf:
+#
+#     allow-preset-passhprase
+#
+(cd $DOTFILES && vendor/git-cipher/bin/git-cipher log)
+
+# Can also confirm that files are encrypted with the two keys using:
+gpg --list-packets $SOME_ENCRYPTED_FILE
+gpg: encrypted with 4096-bit RSA key, ID 424385B611E36E91, created 2021-06-04
+      "Greg Hurrell <wincent@github.com>"
+gpg: encrypted with 4096-bit RSA key, ID FF08BAF685DCF99C, created 2014-05-20
+      "Greg Hurrell <greg@hurrell.net>"
+...
 ```
 
 One thing to note about all this, at least from the perspective of GitHub (at the time of writing), if you revoke any key (subkey or otherwise), _or_ if a key expires, [commits/tags signed with it no longer show up as verified](https://github.com/isaacs/github/issues/1099). FWIW, that sounds about right to me. If a key is revoked, I personally think that means all bets are off and GitHub is right not to show it as verified (it may even want to show the signing key as revoked, although I don't know if that is possible). If a key expires, that's another story, but it is technically difficult to distinguish between "immutable object signed and verified before key expired" and "immutable object _ostensibly_ signed before expiry but received _after_ it"; ie. GitHub can't really know (and nobody can with certainty) when the commit was made. It can only know that it was signed with a key and that the key currently has a specific expiry date.
