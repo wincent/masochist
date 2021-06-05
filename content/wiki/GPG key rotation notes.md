@@ -127,9 +127,26 @@ gpg> addkey
 # - 0xFF08BAF685DCF99C: "ssb"/"usage E" is the standard encryption subkey
 # - 0x3F73F6C4DFC3A0FA: "ssb"/"usage S" is the newly added signing subkey
 #
-# Now extract key and subkeys:
-gpg --export --armor --output 0xF962DC1A1941CCC4.pub.asc 0xF962DC1A1941CCC4 # this file can go to GitHub
+# Now extract key and subkeys.
+#
+# First, the public key, which can go to GitHub (https://github.com/settings/keys).
+# The UI there shows the primary key ID as well as the ID of the two subkeys:
+# Email address:  greg@hurrell.net
+# Key ID: F962DC1A1941CCC4
+# Subkeys: FF08BAF685DCF99C, 3F73F6C4DFC3A0FA
+gpg --export --armor --output 0xF962DC1A1941CCC4.pub.asc 0xF962DC1A1941CCC4
+
+# You can delete this file if you want.
+rm 0xF962DC1A1941CCC4.pub.asc
+
+# Second, the secret key (this actually _includes_ the subkeys). This is the thing
+# that should be backed up in 1Password.
 gpg --export-secret-keys --armor --output 0xF962DC1A1941CCC4.primary.asc 0xF962DC1A1941CCC4
+
+# Finally, just the subkeys. Technically, you don't need to back these up
+# separately (because they are included in the above), and you don't need
+# to keep this file around on the filesystem to reimport in subsequent steps
+# as mention below.
 gpg --export-secret-subkeys --armor --output 0xF962DC1A1941CCC4.subkeys.asc 0xF962DC1A1941CCC4
 
 # Seeing as I haven't backed this one up to 1Password yet,
@@ -138,11 +155,13 @@ gpg --export-secret-subkeys --armor --output 0xF962DC1A1941CCC4.subkeys.asc 0xF9
 mv 0xF962DC1A1941CCC4.primary.asc 'greg@hurrell.net GPG key 0xF962DC1A1941CCC4 expires 2024-05-17.asc'
 rm 'greg@hurrell.net GPG key 0xF962DC1A1941CCC4 expires 2024-05-17.asc'
 
-# Now we delete the primary key and re-import the subkeys.
-# Note that you can say "y" to the prompt to delete the primary keys
-# and "n" for the subkeys, and that way you don't have to actually
-# re-import th subkeys aftewards.
+# Most online guides say that we should now delete the primary key and
+# re-import the subkeys. But you can say "y" to the prompt to delete the
+# primary key and "n" for the subkeys, and that way you don't have to
+# actually re-import th subkeys aftewards. We can just delete the corresponding
+# backup file, as we didn't need it.
 gpg --delete-secret-keys 0xF962DC1A1941CCC4
+rm 0xF962DC1A1941CCC4.subkeys.asc
 
 # Check that primary key now shown as "#sec" (offline) and subkeys are
 # shown as "ssb" (present):
@@ -158,14 +177,67 @@ gpg --send-keys 0x3F73F6C4DFC3A0FA
 gpg --send-keys --keyserver pgp.mit.edu 0x3F73F6C4DFC3A0FA
 gpg --send-keys --keyserver keyserver.ubuntu.com 0x3F73F6C4DFC3A0FA
 
-# Now, given that I am not planning on using my new GitHub key
-# to sign anything yet, not going to create a subkey or that yet.
+# In my dotfiles, I re-encrypted my secrets with the new subkey, and then
+# proved that I could still decrypt them by clearing the agent:
+gpg-connect-agent reloadagent /bye
+OK
+
+# See that the keys are not cached in the agent (ie. no "1" before "P").
+# The IDs here correspond to keygrips.
+gpg-connect-agent 'keyinfo --list' /bye
+S KEYINFO E103527BC818CE252F3C7494A0AB8D1D8D6322C7 D - - - P - - -
+S KEYINFO 0551973D09041D9CF62AD9DF6F5FA53321C4FB02 D - - - P - - -
+S KEYINFO 5148CD9FB4E523100232C9B2B4CC4E12312D59F1 D - - - P - - -
+OK
+
+# I'm not actually sure what all those keygrips correspond to:
+# E103527BC818CE2... is ???
+# 0551973D09041D9... is my encryption subkey
+# 5148CD9FB4E5231... is my signing subkey
+
+# Killing agent (and having it auto-restart) does not remove the
+# entries. So remove them all by hand.
+gpg-connect-agent killagent /bye # Keys still there after restart.
+gpg-connect-agent 'delete_key E103527BC818CE252F3C7494A0AB8D1D8D6322C7' /bye
+gpg-connect-agent 'delete_key 0551973D09041D9CF62AD9DF6F5FA53321C4FB02' /bye
+gpg-connect-agent 'delete_key 5148CD9FB4E523100232C9B2B4CC4E12312D59F1' /bye
+
+# Now decrypt. See pinentry prompt for key ID FF08BAF685DCF99C
+# (main key ID F962DC1A1941CCC4), and see it actually work.
+(cd $DOTFILES && vendor/git-cipher/bin/git-cipher log)
+
+# On my Linux box, where I was already using a copy of my
+# greg@hurrell.net key, I can do a similar test. Add the new subkey
+# (from 1Password) and delete the primary.
+gpg --import 'greg@hurrell.net GPG key 0xF962DC1A1941CCC4 expires 2024-05-17.asc'
+gpg --delete-secret-keys 0xF962DC1A1941CCC4
+rm 'greg@hurrell.net GPG key 0xF962DC1A1941CCC4 expires 2024-05-17.asc'
+
+# Confirm that primary key is offline ("sec#") and subkeys ("ssb") are present.
+gpg --list-secret-keys --keyid-format=long --with-keygrip --with-fingerprint
+
+# Flush agent and do the test. Agent shows the two subkeys with no
+# preset password cached. Just to be sure, blow them away and repeat
+# the test.
+gpg-connect-agent 'keyinfo --list' /bye
+gpg-connect-agent 'delete_key 0551973D09041D9CF62AD9DF6F5FA53321C4FB02' /bye
+gpg-connect-agent 'delete_key 5148CD9FB4E523100232C9B2B4CC4E12312D59F1' /bye
+(cd $DOTFILES && vendor/git-cipher/bin/git-cipher log)
+
+# Now, given that I am not planning on using my new github.com key
+# to _sign_ anything yet, not going to create a subkey for that yet.
 # (I just want to use it to decrypt files from my dotfiles repo.)
 #
-# On the other machine just need to import the secret key,
-# and delete it, keeping only the subkeys.
-gpg --import 'win@wincent.com GPG key 0x6B746F3C37BAF280 expires 2024-01-12.asc'
-gpg --delete-secret-keys 0x6B746F3C37BAF280
+# On my work machine just need to import the secret key (after grabbing
+# it from 1Password), then delete the the primary key, keeping only the
+# subkey.
+gpg --import 'wincent@github.com GPG key 0x62106B56923F3481 expires 2022-06-04.asc'
+gpg --delete-secret-keys 0x62106B56923F3481 # delete primary, keep subkey
+rm 'wincent@github.com GPG key 0x62106B56923F3481 expires 2022-06-04.asc'
+
+# Test this again by doing a decryption in my dotfiles repo.
+# TODO: write steps here, because I need to get pinentry and the agent
+# working on this machine.
 ```
 
 One thing to note about all this, at least from the perspective of GitHub (at the time of writing), if you revoke any key (subkey or otherwise), _or_ if a key expires, [commits/tags signed with it no longer show up as verified](https://github.com/isaacs/github/issues/1099). FWIW, that sounds about right to me. If a key is revoked, I personally think that means all bets are off and GitHub is right not to show it as verified (it may even want to show the signing key as revoked, although I don't know if that is possible). If a key expires, that's another story, but it is technically difficult to distinguish between "immutable object signed and verified before key expired" and "immutable object _ostensibly_ signed before expiry but received _after_ it"; ie. GitHub can't really know (and nobody can with certainty) when the commit was made. It can only know that it was signed with a key and that the key currently has a specific expiry date.
