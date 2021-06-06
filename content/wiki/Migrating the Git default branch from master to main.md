@@ -64,10 +64,12 @@ I was able to confirm the ordering by running this on the server:
 sudo -u git git for-each-ref --count=10 --sort=-committerdate --format='%(objectname) %(refname) %(subject)%00%(committer)'
 ```
 
-I am probably going to submit a patch upstream to change that to:
+I submitted [a patch upstream](http://public-inbox.org/git/20210606085116.13739-1-greg@hurrell.net/) to change that to:
 
 ```sh
 sudo -u git git for-each-ref --count=10 --sort=-committerdate --sort=-HEAD --format='%(objectname) %(refname) %(subject)%00%(committer)'
 ```
+
+but I have no idea whether it is the kind of behavior change that they'll accept. We'll see.
 
 [GitHub]: /wiki/GitHub
