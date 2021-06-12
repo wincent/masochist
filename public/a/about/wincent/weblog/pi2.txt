@@ -1,0 +1,61 @@
+Mime-Version: 1.0 (Apple Message framework v752.3)
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <90D4679A-F819-471B-9D28-87CDDB049712@wincent.com>
+Content-Type: text/plain;
+	charset=WINDOWS-1252;
+	delsp=yes;
+	format=flowed
+To: pi2@nym.hush.com
+From: Wincent Colaiuta <win@wincent.com>
+Subject: Clarification
+Date: Sun, 9 Sep 2007 14:07:28 +0200
+
+Way late on noticing your post (<http://www.private-intellectual.de/?p=602>)
+but there is one thing you are mistaken about:
+
+> There is another aspect to his criticism - which, in some ways, is
+> a fair one if misguided - it isn't exactly his own. Rather, Wincent
+> takes his comments - slightly re-written - from someone calling
+> themselves Sho Fukamachi. This isn't a problem in itself, since he
+> has linked to the original article, although not admitted source.
+
+If you look at the publication dates of the two articles you'll see
+that my piece is an original work published *before* his:
+
+8:29 AM: <http://wincent.com/a/about/wincent/weblog/archives/2007/06/wordpress_flaw.php>
+
+4:45 PM: <http://fukamachi.org/wp/2007/06/21/yet-another-wordpress-exploit/>
+
+We both wrote about it independently, no need for attribution. When I
+saw his post I went back and added the link to it. So you need to
+read and interpret both as independent pieces of work written in
+isolation from each other because that's exactly what they are.
+
+A couple of other differences of opinion:
+
+> Reading the article is interesting, especially when you note that
+> Wincent doesn't use WordPress, and his idea of security - with
+> MoveableType - is to close down comments. This is a dead-in-the-
+> water criticism, partially because it covers areas where he has no
+> real experience, partially because he allows no comments back to
+> promote discussion.
+
+* I actually do have real experience with WordPress -- I thought this
+would be obvious from reading the article, but perhaps it wasn't. I
+think that the key point is that I am an *ex*-WordPress user and
+precisely because I got sick of the security issues.
+
+* I note that comments are closed on your article too: my reasons for
+not having comments are elaborated here: <http://wincent.com/a/about/wincent/weblog/archives/2007/06/comments_on_web.php>
+
+I didn't turn off comments for security reasons; but having made that
+decision, the added security of not having them turned on is a bonus
+(ie. you site essentially becomes static). The dialog need not be in
+a bunch of comments underneath my article; it can be "out there" on
+the web; the proof is in the quality of the pudding: note how you
+wrote an extended, reasoned argument that you never would have penned
+if I had allowed comments on my weblog.
+
+Cheers,
+Wincent
+

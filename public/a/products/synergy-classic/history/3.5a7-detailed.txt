@@ -1,0 +1,114 @@
+Changes from 3.5a6 to 3.5a7:
+
+commit 2447b554837416ed317568ffe78b67598d89fc54
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Tue Apr 29 02:32:34 2008 +0200
+
+    Bump version number prior to release
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 784d05a22ba20466f4d98954f2f97d0307a58321
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Tue Apr 29 00:17:37 2008 +0200
+
+    Show warning about running on Leopard
+    
+    Now that I've confirmed that this is an Apple bug, that they know about
+    it, and that they intend to fix it, advise the user, seeing as it is
+    such a big deal.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 68172bf3c5783841bc36d333971dc48ea9fb7bac
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Mon Apr 28 23:31:35 2008 +0200
+
+    Fix cover art bug #668
+    
+    The machines affected by the bug are seeing AppleScript errors like this:
+    
+      NSAppleScriptErrorBriefMessage = Can't make "7.6.2" into type integer.
+      NSAppleScriptErrorMessage = Can't make "7.6.2" into type integer.
+      NSAppleScriptErrorNumber = -1700
+      NSAppleScriptErrorRange = NSRange: {0, 0}
+    
+    So it looks like a Info.plist issue. The version number is an integer
+    for me on my Spanish system, but I suspect for others that it is a
+    string. This is why I couldn't reproduce the bug.
+    
+    The version check is almost definitely not needed anymore, so drop it.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit b6f0d3cbc5645064bc7dc6111ef860c8b9f76948
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Mon Apr 28 22:31:00 2008 +0200
+
+    Add diagnostic logging to cover art retrieval code
+    
+    This is a temporary measure which will hopefully allow us to diagnose
+    and fix bug #668.
+    
+    See: http://rails.wincent.com/issues/668
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 009baa701d5814ceedb613794fd192ebb8c4e4aa
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Mon Apr 28 21:27:07 2008 +0200
+
+    Revert "Optionally delay querying for cover art"
+    
+    Deployed to customers who were experiencing the bug and unfortunately it
+    doesn't work. Was worth a try anyway.
+    
+    This reverts commit 500ea5a99d5cf08f2ba6603814a4ca72a6b744fc.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 500ea5a99d5cf08f2ba6603814a4ca72a6b744fc
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Mon Apr 28 14:01:28 2008 +0200
+
+    Optionally delay querying for cover art to workaround iTunes 7.6.1/7.6.2 bug
+    
+    This will hopefully allow us to close bug #668.
+    
+    See: http://rails.wincent.com/issues/668
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit ceaced0c3297d55a0222ce8387db677fd8bffd0a
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Mon Apr 28 12:56:59 2008 +0200
+
+    Catch NSGenericExceptions thrown by Scripting Bridge
+    
+    This fixes bug #657.
+    
+    See: http://rails.wincent.com/issues/657
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 562f484cb7c7d23baab49fe46af31cc203c13a38
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Apr 4 15:22:11 2008 +0200
+
+    Bump version number post-release
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+
+WOCommon: Changes from Synergy-3.5a6 to Synergy-3.5a7:
+
+
+
+WOPublic: Changes from Synergy-3.5a6 to Synergy-3.5a7:
+
+
+
+buildtools: Changes from Synergy-3.5a6 to Synergy-3.5a7:
+
+
+

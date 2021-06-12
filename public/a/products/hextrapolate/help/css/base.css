@@ -1,0 +1,279 @@
+/*
+  
+  base.css
+  Created by Wincent Colaiuta on 11 October 2006.
+  Copyright 2006-2007 Wincent Colaiuta
+  $Id: /mirrors/WOCommon/branches/tiger/help/css/base.css 6724 2007-04-10T19:00:13.145374Z wincent  $
+  
+ */
+
+/* Hack: <html><head><meta name="robots" content="noindex"></head></html> (tells Help Indexer to ignore this file) */
+
+body {
+  margin: 2px 12px 12px;
+  font-family: "Lucida Grande", Arial, sans-serif
+  }
+
+h1 {
+  font-size: 11pt;
+  padding-top: 0.5em;
+  margin-bottom: 0
+  }
+
+h2 {
+  font-size: 9pt;
+  margin-top: 0;
+  margin-bottom: -10px
+  }
+
+h3 {
+  font-size: 9pt;
+  font-weight: bold;
+  margin-top: -4px;
+  margin-bottom: -4px
+  }
+
+p {
+  font-size: 9pt;
+  line-height: 12pt;
+  padding-bottom: 0.1em;
+  text-decoration: none
+  }
+
+ol {
+  font-size: 9pt;
+  line-height: 12pt;
+  list-style-position: outside;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-left: -18px;
+  padding-left: 40px
+  }
+
+ol p {
+  margin-top: 6px;
+  margin-bottom: 6px
+  }
+
+ul {
+  font-size: 9pt;
+  line-height: 12pt;
+  list-style-type: square;
+  list-style-position: outside;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-left: -24px;
+  padding-left: 40px
+  }
+
+
+ul p {
+  margin-top: 6px;
+  margin-bottom: 6px
+  }
+
+li {
+  margin-top: 6px;
+  margin-bottom: 6px
+  }
+
+a {
+  color: #00f;
+  font-size: 9pt;
+  line-height: 12pt;
+  text-decoration: none
+  }
+
+a:hover {
+  color: #00f;
+  text-decoration: underline
+  }
+
+hr {
+  text-decoration: none;
+  border: solid 1px #bfbfbf
+  }
+
+td {
+  padding: 6px
+  }
+
+#banner {
+  background-color: #f2f2f2; 
+  background-repeat: no-repeat; 
+  padding: -2px 6px 0; 
+  position: fixed; 
+  z-index: 1;
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 1.2em; 
+  float: left; 
+  border-bottom: 1px solid #bfbfbf 
+  }
+
+#icon {
+  margin-bottom: -3px;
+  float: left
+  }
+
+#page_title {
+  margin-top: 12px;
+  margin-bottom: -3px;
+  margin-left: 40px;
+  width: 88%;
+  }
+
+#page_title h1 {
+  margin-bottom: 2em;
+}
+
+#main_box {
+  margin-top: 36px;
+  padding-right: 6px
+  }
+
+#task_box {
+  background-color: #e6edff;
+  list-style-type: decimal;
+  list-style-position: outside;
+  margin: 12px 0;
+  padding: 2px 12px;
+  border: solid 1px #bfbfbf
+  }
+
+#task_box h2 {
+  margin-top: 1.5em;
+  margin-bottom: -4px
+  }
+
+#home_link { 
+  position: absolute; 
+  top: 2px; 
+  left: 10px 
+}
+
+#home_link a {
+  color: #00f;
+  font-size: 8pt;
+  margin: -9px 0 -6px
+}
+
+#index_link { 
+  background-color: #f2f2f2; 
+  padding-top: 2px; 
+  padding-right: 25px; 
+  top: 2px; 
+  right: 12px; 
+  width: auto; 
+  float: right 
+  }
+
+#index_link a { 
+  color: #00f;
+  font-size: 8pt;
+  margin: -9px 0 -6px;
+  padding-top: 24px;
+  padding-bottom: 3px;
+  padding-left: 8px;
+  border-left: 1px solid #bfbfbf 
+  }
+
+#index_banner {
+  background-color: #fff;
+  padding-top: 5px;
+  padding-bottom: 0;
+  padding-left: 12px;
+  position: fixed;
+  z-index: 1;
+  top: 1.2em;
+  right: 0;
+  left: 0;
+  height: 2.2em;
+  width: 100%;
+  float: left;
+  border-top: 1px solid #bfbfbf;
+  border-bottom: 1px solid #bfbfbf
+  }
+
+#terms {
+  padding-right: 12px;
+  position: absolute; 
+  top: 4em;
+  }
+  
+#terms table {
+  margin-bottom: 12px;
+  border-style: dotted;
+  border-color: #bfbfbf;
+}
+
+#terms tr {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+#terms td {
+  padding: 3px;
+  border-bottom: 1px solid #eee;
+}
+
+#see_also {
+  margin-top: 1em;
+}
+
+#see_also h2 {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding-bottom: 0;
+  }
+  
+#see_also p {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding-bottom: 0;
+  }
+
+.feature {
+  float: clear;
+  border: dotted 1px #ccc;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  min-height: 200px;
+}
+
+.feature h2 {
+  background-color: #e6edff;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  padding-left: 0.5em;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0.5em;
+}
+
+.feature img {
+  float: left;
+  margin-top: 1em;
+  margin-right: 1em;
+}
+
+.feature p {
+  margin-left: 180px;
+}
+
+.feature ul {
+  margin-left: 180px;
+}
+
+.screenshot {
+  margin-top: 1em;
+  text-align: center;
+}
+
+code {
+  color: black;
+  font-size: 9pt;
+  font-family: Verdana, Courier, sans-serif;
+  }

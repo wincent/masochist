@@ -1,0 +1,277 @@
+Changes from 3.5a5 to 3.5a6:
+
+commit 69d0d565d2372a0486d6a7789d5db43276793b8f
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Apr 4 14:45:55 2008 +0200
+
+    Bump version number prior to release
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 7bb9cc55dff278604c6f9e00baf9b8e3bc76587e
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Apr 4 14:39:23 2008 +0200
+
+    Fix iTunes respawn bug
+    
+    This was inadvertantly introduced by 994da25a. In cleaning up a bad
+    idiom (checking BOOL return of a message sent to a receiver that might
+    be nil) I ended up changing the behaviour. The previous idiom was bad
+    but it (accidentally) worked; the new behaviour avoided the undesirable
+    idiom but changed teh behaviour.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 065d0e227337a47efb2d5781830d82d6aba5ba3f
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Apr 4 14:31:20 2008 +0200
+
+    Update all localizable strings files
+    
+    This is possible now that the parse error in the Portuguese localization
+    has been fixed; it was previously preventing normal updates from
+    proceeding.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit b9cf354886f2d6305664d5abc1932fb9453f741a
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Apr 4 14:29:21 2008 +0200
+
+    Fix missing semicolon in Portuguese localizable strings file
+    
+    This was preventing builds from succeding because it derailed the shell
+    script.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit d2da2bd739aa13595b7152b63cda3f1359443396
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Jan 23 16:29:33 2008 +0100
+
+    Add headers to release note sections
+    
+    Preface each section of the code-level release notes with a label that
+    indicates the repository that the changes came from.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 2f8f6aea0e45627031c6891c2b916d57b1807013
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Jan 23 16:28:47 2008 +0100
+
+    Remove diagnostic setting from distro script
+    
+    Remove temporary "set -x" from distro script which was in there for
+    diagnostic purposes (didn't actually mean to include it).
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit a5bf93da9066f20b8d90b623f1e9868cdbc324e5
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Jan 23 16:20:37 2008 +0100
+
+    Refactor distribution script
+    
+    Use a couple of temporary variables to make long lines fit on a single
+    line, rather than splitting them across multiple lines.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit f50166cc7a2d096db7c3086ace2a08cd4619cf8a
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Jan 23 16:12:32 2008 +0100
+
+    Produce release notes from multiple repositories
+    
+    Don't just produce release notes from the Synergy repository itself,
+    also include changes from the same period that took place in WOCommon,
+    WOPublic and buildtools.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 3079b003625fe269ff302fb2f5790e2a8637c5a7
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Jan 23 15:11:56 2008 +0100
+
+    Tag buildtools with each release
+    
+    Also tag the buildtools repository for each release.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 2b11423251a2a3fb48c426ae81735d9834c952af
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Jan 23 12:57:13 2008 +0100
+
+    Bump version number post-release
+    
+    To 3.5a5+.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+
+WOCommon: Changes from Synergy-3.5a5 to Synergy-3.5a6:
+
+commit 221f59dd0ed92bd2d5b5f33133c1873d523c76eb
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Apr 4 14:48:36 2008 +0200
+
+    Update TODO document
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 2164cfa18357064090e86b84841284e00efa4830
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Mar 28 14:29:38 2008 +0100
+
+    Update ESMTP username for INetU
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit e664d2dff6b50c97cd9ecc91134d04eea56d7f58
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Mar 28 14:21:11 2008 +0100
+
+    Path updated for new host
+    
+    In the move from Rackspace to INetU "logs" became "log".
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 7acf4a2b8d07fbfcc6a6a2b23620ef18f7fd62ac
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Jan 23 16:30:24 2008 +0100
+
+    Reformat some headers
+    
+    Trim excess whitespace from a number of headers.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+
+WOPublic: Changes from Synergy-3.5a5 to Synergy-3.5a6:
+
+
+
+buildtools: Changes from Synergy-3.5a5 to Synergy-3.5a6:
+
+commit 153943be860d9eed7cfeafa683874cd5c0777f88
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Apr 4 13:41:02 2008 +0200
+
+    Fix absolute path bug in UpdateStringsFiles script
+    
+    The LANGUAGE variable contains an absolute path; add a BASE_LANGUAGE
+    variable containing only the basename for those occasions where what you
+    want is actually a relative path.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 5c7c3eb72b89a004bef2dbca7e4c8a7c6f3a9085
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Apr 4 13:39:14 2008 +0200
+
+    Fix spelling typo in PreprocessInfoPlistStrings script
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit c71d3c10ee6434fba87c5a2a34396c9214b6784c
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Jan 23 16:09:54 2008 +0100
+
+    Append extra blank lines at end of output
+    
+    When emitting release notes for a project that is spread out across
+    multiple repositories we may end up invoking the ReleaseNotes.sh script
+    several time, successively appending more and more output to the
+    generated notes.
+    
+    Add two extra line feeds to make this easier: one because "git log"
+    doesn't seem to emit one, and another to provide visual separation
+    between sections.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 579267c5005caa408770bc2c82b6ce60e775add5
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Jan 23 16:08:19 2008 +0100
+
+    Automatically append wildcard to tag prefix
+    
+    Make life slightly easier for callers by automatically appending the
+    wildcard (asterisk) to the passed-in tag prefix, thus saving them from
+    having to do it.
+    
+    This assumes a convention that tags will following a
+    "product name-product version" naming pattern.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 468857711c3ad836a3676add69857f9d9b43f6eb
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Jan 23 16:07:34 2008 +0100
+
+    Fix expansion error in release notes script
+    
+    This expansion was never going to work because the two components were
+    back to front.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 4ac65e8a7711b932be57008e82dbb39d8511bf33
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Jan 23 16:06:50 2008 +0100
+
+    Use common tools for better diagnostic messages
+    
+    In the release notes script, source Common.sh and use its functions for
+    emitting diagnostic messages.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 4654413a43956d50d8e76b22c147516fac1e44f0
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Jan 23 15:58:28 2008 +0100
+
+    Always direct error and diagnostic output to the stderr
+    
+    Without this it may be harder to diagnose script failures (for example,
+    in the ReleaseNotes.sh script we normally redirect the output to a file;
+    in that case any error messages wind up in the file rather than in the
+    Xcode build window where we want to see them).
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit d78a5bfb9c08415a4cb426907a2c0d2dbcbe847c
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Jan 23 15:02:00 2008 +0100
+
+    Teach release notes script to take an optional prefix parameter
+    
+    With this parameter and the help of a convention we can now produce
+    release notes for projects spread across multiple repositories.
+    
+    In the "main" project repository we just invoke the script as normal
+    (without parameters) and it uses "git describe" to find the last tag,
+    the previous tag, and emit the differences between them.
+    
+    In the secondary repositories we pass a "tag prefix" which we use to
+    locate the tags corresponding to the release of the "main" project; in
+    other words this depends on a convention in which we create tags in
+    the secondary repositories which have a unique prefix which identifies
+    the main project.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 43661e25bcf0bd128d01b42258afcc1d87925bdf
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Jan 23 13:04:08 2008 +0100
+
+    Use non-dashed form of Git commands
+    
+    For consistency, use "git describe" rather than git-describe.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+

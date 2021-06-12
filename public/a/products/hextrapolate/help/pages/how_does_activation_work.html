@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html401/sgml/loosedtd.html">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>How does product activation work?</title>
+<meta name="generator" content="Walrus 0.1">
+<meta name="author" content="Wincent Colaiuta">
+<meta name="author-email" content="win@wincent.com">
+<meta name="copyright" content="Copyright 2007 Wincent Colaiuta">
+<link href="../css/base.css" rel="stylesheet" media="all" type="text/css">
+<meta name="description" content="">
+</head>
+<body>
+<a name="how_does_activation_work" id="how_does_activation_work"></a> <a name="activation_topics" id="activation_topics"></a>
+<div id="banner">
+<div id="home_link"><a href="../front_page.html">Hextrapolate Help</a></div>
+<div id="index_link"><a href="full_index.html">Index</a></div>
+</div>
+<div id="main_box">
+<div id="icon"><img width="32" height="32" alt="Icon" src="../gfx/icon32.png"></div>
+<div id="page_title">
+<h1>How does product activation work?</h1>
+</div>
+<p>Product activation takes place when you enter your license code and click the “Verify” button (see <a href="registering.html">Registering Hextrapolate</a>).</p>
+<h2>What happens when I click the “Verify” button?</h2>
+<p>When you install Hextrapolate for the first time it generates a random number that is unique to the machine on which the software is being installed. The number is what is known as a one-way cryptographic hash; it’s so called because the calculation only works in one direction: it is easy to generate the number based on the machine, but it is impossible to look at the number and know which machine it came from.</p>
+<p>A hash is also made from your license code. The one-way nature of the hash means that if somebody were to see it he or she would have no way of figuring out what your license code was; nevertheless, the hash is a unique number and no two licenses will produce the same hash. For more information about how these cryptographic hashes guarantee your privacy see <a href="activation_privacy.html">activation privacy</a>.</p>
+<p>These two pieces — let’s call them the “machine hash” and the “license hash” — are sent to the Wincent server at activation time. If the server sees many activation requests coming in with the same license hash but lots of different machine hashes, then it knows that the software is being activated on many different machines with the same license code. Note that because one-way hashes are used in the process nobody can personally identify machines or customers; the numbers are just random ID numbers that cannot be traced back to a particular individual or computer.</p>
+<p>The activation server permits a reasonable number of activations for any given license code. For example, you may buy a new machine and wish to install the software on the new machine in which case you’ll perform the product activation on the new machine. (If you need to to perform additional activations above the limit then you can open a support ticket.) Similarly, some may buy multi-user licenses and need to activate on a large number of machines; in this case also the activation server knows that it should allow a higher number of activations. See “How many activations may I perform?” below for more information.</p>
+<p>When the server approves an activation it sends a reply to the connecting program containing a certificate of activation. The program stores the activation certificate along with the program preferences. From that point onwards the program will know that it’s been activated and you won’t have to perform the activation again (although if you ever format your hard disk, modify your machine sufficiently for it to appear like a “new machine” or otherwise delete the activation certificate you’ll need to reactivate).</p>
+<div id="see_also">
+<h2>See also</h2>
+<p><a href="registering.html">Registering Hextrapolate</a></p>
+</div>
+</div>
+</body>
+</html>

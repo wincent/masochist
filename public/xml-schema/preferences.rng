@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  
+  preferences.rnc
+  WOCommon
+  
+  Created by Wincent Colaiuta on 7 December 2006.
+  Copyright 2006 Wincent Colaiuta.
+  $Id: preferences.rng 203 2006-12-08 16:19:16Z wincent $
+  
+  These Relax NG schema (both Compact syntax and XML) can be found at:
+  
+     http://wincent.com/xml-schema/preferences.rnc
+     http://wincent.com/xml-schema/preferences.rng
+     
+  The XML schema (preferences.rng) generated from the compact syntax schema (preferences.rnc) as follows:
+  
+     java -jar ~/bin/trang.jar preferences.rnc preferences.rng
+  
+  Trang is available from:
+  
+      http://www.thaiopensource.com/relaxng/trang.html
+  
+-->
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <!-- A preferences document consists of a top level root element "preferences": -->
+  <start>
+    <element name="preferences">
+      <oneOrMore>
+        <choice>
+          <ref name="Category"/>
+          <ref name="Preference"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </start>
+  <!--
+    The root may contain categories (groups of preference settings) or preferences (individual settings).
+    Categories may contain other categories:
+  -->
+  <define name="Category">
+    <element name="category">
+      <attribute name="name"/>
+      <oneOrMore>
+        <choice>
+          <ref name="Preference"/>
+          <ref name="Category"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <!-- The "preference" element defines an individual preference setting: -->
+  <define name="Preference">
+    <element name="preference">
+      <choice>
+        <ref name="PopUpMenu"/>
+        <ref name="IntegerStepper"/>
+        <ref name="FloatStepper"/>
+        <ref name="IntegerSlider"/>
+        <ref name="FloatSlider"/>
+        <ref name="FreeFormTextField"/>
+        <ref name="IntegerTextField"/>
+        <ref name="FloatTextField"/>
+        <ref name="Checkbox"/>
+        <ref name="DatePicker"/>
+        <ref name="DateTimePicker"/>
+      </choice>
+    </element>
+  </define>
+  <define name="PopUpMenu">
+    <attribute name="type">
+      <value>popup</value>
+    </attribute>
+    <interleave>
+      <element name="display-name">
+        <text/>
+      </element>
+      <element name="user-defaults-key">
+        <text/>
+      </element>
+      <optional>
+        <element name="tool-tip">
+          <text/>
+        </element>
+      </optional>
+      <element name="items">
+        <oneOrMore>
+          <element name="item">
+            <text/>
+          </element>
+        </oneOrMore>
+      </element>
+      <optional>
+        <!-- the zero-based index of the default item: 0 used if not supplied -->
+        <element name="default">
+          <data type="integer"/>
+        </element>
+      </optional>
+    </interleave>
+  </define>
+  <define name="IntegerStepper">
+    <attribute name="type">
+      <value>stepper</value>
+    </attribute>
+    <attribute name="value">
+      <value>int</value>
+    </attribute>
+    <interleave>
+      <element name="display-name">
+        <text/>
+      </element>
+      <element name="user-defaults-key">
+        <text/>
+      </element>
+      <optional>
+        <element name="tool-tip">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <!-- defaults to 1 if not present -->
+        <element name="step">
+          <data type="integer"/>
+        </element>
+      </optional>
+      <optional>
+        <!-- no minimum applies if omitted -->
+        <element name="minimum">
+          <data type="integer"/>
+        </element>
+      </optional>
+      <optional>
+        <!-- no maximum applies if omitted -->
+        <element name="maximum">
+          <data type="integer"/>
+        </element>
+      </optional>
+      <optional>
+        <!-- if not set falls back to minimum, then maximum (if minimum not set), then 0 (if maximum not set) -->
+        <element name="default">
+          <data type="integer"/>
+        </element>
+      </optional>
+    </interleave>
+  </define>
+  <define name="FloatStepper">
+    <attribute name="type">
+      <value>stepper</value>
+    </attribute>
+    <attribute name="value">
+      <value>float</value>
+    </attribute>
+    <interleave>
+      <element name="display-name">
+        <text/>
+      </element>
+      <element name="user-defaults-key">
+        <text/>
+      </element>
+      <optional>
+        <element name="tool-tip">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <!-- defaults to 1.0 if not present -->
+        <element name="step">
+          <data type="float"/>
+        </element>
+      </optional>
+      <optional>
+        <!-- no minimum applies if omitted -->
+        <element name="minimum">
+          <data type="float"/>
+        </element>
+      </optional>
+      <optional>
+        <!-- no maximum applies if omitted -->
+        <element name="maximum">
+          <data type="float"/>
+        </element>
+      </optional>
+      <optional>
+        <!-- if not set falls back to minimum, then maximum (if minimum not set), then 0.0 (if maximum not set) -->
+        <element name="default">
+          <data type="float"/>
+        </element>
+      </optional>
+    </interleave>
+  </define>
+  <define name="IntegerSlider">
+    <attribute name="type">
+      <value>slider</value>
+    </attribute>
+    <attribute name="value">
+      <value>int</value>
+    </attribute>
+    <interleave>
+      <element name="display-name">
+        <text/>
+      </element>
+      <element name="user-defaults-key">
+        <text/>
+      </element>
+      <optional>
+        <element name="tool-tip">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <!--
+          if not set slider will have "stop on tick marks only" set to off
+          if set the application will attempt to set the number of tick marks required to produce the requested step size 
+        -->
+        <element name="step">
+          <data type="integer"/>
+        </element>
+      </optional>
+      <optional>
+        <!-- defaults to 0 if not present -->
+        <element name="minimum">
+          <data type="integer"/>
+        </element>
+      </optional>
+      <optional>
+        <!-- defaults to 100 if not present -->
+        <element name="maximum">
+          <data type="integer"/>
+        </element>
+      </optional>
+      <optional>
+        <!-- if not set falls back to minimum, then maximum (if minimum not set), then 0 (if maximum not set) -->
+        <element name="default">
+          <data type="integer"/>
+        </element>
+      </optional>
+    </interleave>
+  </define>
+  <define name="FloatSlider">
+    <attribute name="type">
+      <value>slider</value>
+    </attribute>
+    <attribute name="value">
+      <value>float</value>
+    </attribute>
+    <interleave>
+      <element name="display-name">
+        <text/>
+      </element>
+      <element name="user-defaults-key">
+        <text/>
+      </element>
+      <optional>
+        <element name="tool-tip">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <!--
+          if not set slider will have "stop on tick marks only" set to off
+          if set the application will attempt to set the number of tick marks required to produce the requested step size 
+        -->
+        <element name="step">
+          <data type="float"/>
+        </element>
+      </optional>
+      <optional>
+        <!-- defaults to 0.0 if not present -->
+        <element name="minimum">
+          <data type="float"/>
+        </element>
+      </optional>
+      <optional>
+        <!-- defaults to 100.0 if not present -->
+        <element name="maximum">
+          <data type="float"/>
+        </element>
+      </optional>
+      <optional>
+        <!-- if not set falls back to minimum, then maximum (if minimum not set), then 0.0 (if maximum not set) -->
+        <element name="default">
+          <data type="float"/>
+        </element>
+      </optional>
+    </interleave>
+  </define>
+  <define name="FreeFormTextField">
+    <attribute name="type">
+      <value>string</value>
+    </attribute>
+    <interleave>
+      <element name="display-name">
+        <text/>
+      </element>
+      <element name="user-defaults-key">
+        <text/>
+      </element>
+      <optional>
+        <element name="tool-tip">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <element name="default">
+          <text/>
+        </element>
+      </optional>
+    </interleave>
+  </define>
+  <define name="IntegerTextField">
+    <attribute name="type">
+      <value>int</value>
+    </attribute>
+    <interleave>
+      <element name="display-name">
+        <text/>
+      </element>
+      <element name="user-defaults-key">
+        <text/>
+      </element>
+      <optional>
+        <element name="tool-tip">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <!-- if not set defaults to 0 -->
+        <element name="default">
+          <data type="integer"/>
+        </element>
+      </optional>
+    </interleave>
+  </define>
+  <define name="FloatTextField">
+    <attribute name="type">
+      <value>float</value>
+    </attribute>
+    <interleave>
+      <element name="display-name">
+        <text/>
+      </element>
+      <element name="user-defaults-key">
+        <text/>
+      </element>
+      <optional>
+        <element name="tool-tip">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <!-- if not set defaults to 0.0 -->
+        <element name="default">
+          <data type="float"/>
+        </element>
+      </optional>
+    </interleave>
+  </define>
+  <define name="Checkbox">
+    <attribute name="type">
+      <value>bool</value>
+    </attribute>
+    <interleave>
+      <element name="display-name">
+        <text/>
+      </element>
+      <element name="user-defaults-key">
+        <text/>
+      </element>
+      <optional>
+        <element name="tool-tip">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <!--
+          allowed values: true, false, 1, 0
+          See http://www.w3.org/TR/xmlschema-2/ for a detailed description of the boolean data type
+          if not set defaults to false
+        -->
+        <element name="default">
+          <data type="boolean"/>
+        </element>
+      </optional>
+    </interleave>
+  </define>
+  <define name="DatePicker">
+    <attribute name="type">
+      <value>date</value>
+    </attribute>
+    <interleave>
+      <element name="display-name">
+        <text/>
+      </element>
+      <element name="user-defaults-key">
+        <text/>
+      </element>
+      <optional>
+        <element name="tool-tip">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <!--
+          date format is '-'? yyyy '-' mm '-' dd ((('+' | '-') hh ':' mm) | 'Z')?
+          See http://www.w3.org/TR/xmlschema-2/ for a detailed description of the date data type
+        -->
+        <element name="minimum">
+          <data type="date"/>
+        </element>
+      </optional>
+      <optional>
+        <element name="maximum">
+          <data type="date"/>
+        </element>
+      </optional>
+      <optional>
+        <!-- if not set defaults to current date -->
+        <element name="default">
+          <data type="date"/>
+        </element>
+      </optional>
+    </interleave>
+  </define>
+  <define name="DateTimePicker">
+    <attribute name="type">
+      <value>datetime</value>
+    </attribute>
+    <interleave>
+      <element name="display-name">
+        <text/>
+      </element>
+      <element name="user-defaults-key">
+        <text/>
+      </element>
+      <optional>
+        <element name="tool-tip">
+          <text/>
+        </element>
+      </optional>
+      <optional>
+        <!--
+          datetime format is'-'? yyyy '-' mm '-' dd 'T' hh ':' mm ':' ss ('.' s+)? ((('+' | '-') hh ':' mm) | 'Z')?
+          See http://www.w3.org/TR/xmlschema-2/ for a detailed description of the dateTime data type
+          no minimum applies if omitted
+        -->
+        <element name="minimum">
+          <data type="dateTime"/>
+        </element>
+      </optional>
+      <optional>
+        <!-- no maximum applies if omitted -->
+        <element name="maximum">
+          <data type="dateTime"/>
+        </element>
+      </optional>
+      <optional>
+        <!-- if not set defaults to current date and time -->
+        <element name="default">
+          <data type="dateTime"/>
+        </element>
+      </optional>
+    </interleave>
+  </define>
+</grammar>

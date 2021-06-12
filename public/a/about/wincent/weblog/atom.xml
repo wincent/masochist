@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed version="0.3" xmlns="http://purl.org/atom/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="en">
+<title>Wincent Colaiuta&apos;s weblog</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/about/wincent/weblog/" />
+<modified>2008-03-24T23:19:32Z</modified>
+<tagline>Wincent Colaiuta&apos;s personal weblog</tagline>
+<id>tag:wincent.com,2008:/a/about/wincent/weblog//4</id>
+<generator url="http://www.movabletype.org/" version="4.01">Movable Type</generator>
+<copyright>Copyright (c) 2008, wincent</copyright>
+
+<entry>
+<title>Final server migration this week</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/about/wincent/weblog/archives/2008/03/final_server_mi.php" />
+<modified>2008-03-24T23:19:32Z</modified>
+<issued>2008-03-24T23:18:25Z</issued>
+<id>tag:wincent.com,2008:/a/about/wincent/weblog//4.4233</id>
+<created>2008-03-24T23:18:25Z</created>
+<summary type="text/plain"><![CDATA[I've been working on moving to the new server for nearly a month now, a process which has been quite slow because all the data has to be exported from a number of &quot;legacy&quot; applications and imported into a brand...]]></summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.com</email>
+</author>
+<dc:subject>Miscellaneous</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/about/wincent/weblog/">
+<![CDATA[<p>I've been working on moving to the new server for <a href='http://wincent.com/a/about/wincent/weblog/archives/2008/02/server_migratio.php'>nearly a month now</a>, a process which has been quite slow because all the data has to be exported from a number of &quot;legacy&quot; applications and imported into a brand new custom Rails application written especially for this site. It's slow going because it's the first time I've ever deployed a Rails application and I've had <em>a lot</em> to learn... but now I know a fair bit about nginx, capistrano, mongrel, monit, and of course Rails itself. The server too is totally different, with a different operating system, so it's all been quite time-consuming.</p>
+<p>Well, the crunch time is now coming and the <em>real</em> server move is about to happen this week (at the end of the March the old server will go offline forever, so the move has to happen this week, ready or not). So this will most likely be my last post ever to this weblog.</p>
+<p>The forums are already in read-only mode, and I'm about to shut down the bug tracker too shortly so that I can do the final export of all the records and move them into the database on the new server. If you had an account on the old server you'll automatically have one on the new server too, although you will need to reset your password (I couldn't transfer across any passwords because none of them were stored in plain text, and rightly so of course).</p>
+<p>At some point during this week email might temporarily go down, hopefully only for about an hour (delivery failures should be temporary), and the wincent.com domain itself will go down at roughly the same time too. When it comes back up we'll be running on the new server. If you make a purchase during that time you might have to wait an hour or two for your license information, but we'll soon be back to immediate automated delivery.</p>
+<p>Keep your eye on my Twitter account if you'd like to be kept posted with updates; it will be my only avenue of communication during my brief stint in limbo:</p>
+<ul>
+<li><a href='http://twitter.com/wincent'>http://twitter.com/wincent</a></li>
+</ul>
+]]>
+
+</content>
+</entry>
+
+<entry>
+<title>Server migration under way</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/about/wincent/weblog/archives/2008/02/server_migratio.php" />
+<modified>2008-02-26T10:58:22Z</modified>
+<issued>2008-02-26T10:53:48Z</issued>
+<id>tag:wincent.com,2008:/a/about/wincent/weblog//4.4181</id>
+<created>2008-02-26T10:53:48Z</created>
+<summary type="text/plain">The server migration from Rackspace to INetU is currently underway. My aim is do this very carefully, service by service, and keep downtime to a minimum; hopefully minutes rather than hours. Just in case there is any interruption during the...</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.com</email>
+</author>
+<dc:subject>Miscellaneous</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/about/wincent/weblog/">
+<![CDATA[<p>The <a href='http://wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php'>server migration</a> from Rackspace to INetU is currently underway. My aim is do this very carefully, service by service, and keep downtime to a minimum; hopefully minutes rather than hours.</p>
+<p>Just in case there is any interruption during the move, I've just opened <a href='http://twitter.com/wincent'>a twitter account</a> where I'll be posting updates along the way:</p>
+<ul>
+<li><a href='http://twitter.com/wincent'>http://twitter.com/wincent</a></li>
+</ul>
+<p>Not really a twitter fan myself — I've always felt that the best place to post that kind of info is on my own weblog — but in a case like this it makes sense to have an offsite feed.</p>
+]]>
+
+</content>
+</entry>
+
+<entry>
+<title>Microphone prices</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/about/wincent/weblog/archives/2008/02/microphone_pric.php" />
+<modified>2008-02-26T11:00:43Z</modified>
+<issued>2008-02-19T20:51:03Z</issued>
+<id>tag:wincent.com,2008:/a/about/wincent/weblog//4.4167</id>
+<created>2008-02-19T20:51:03Z</created>
+<summary type="text/plain">I&apos;m currently looking at getting a better microphone to do screencasts. The one I&apos;m most interested in goes for between $84 and $100 in the US (57€ to 68€). Purchased locally here in Spain the mic goes for upwards of...</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.com</email>
+</author>
+<dc:subject>Miscellaneous</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/about/wincent/weblog/">
+<![CDATA[<p>I'm currently looking at getting a better microphone to do screencasts. The one I'm most interested in goes for between $84 and $100 in the US (57€ to 68€). Purchased locally here in Spain the mic goes for upwards of 130€.</p>
+<p>Unfortunately, most of the retailers in the US don't want to ship outside of the US. I found one who would: they quoted me over $160 shipping, plus $50 wire transfer fee (they don't accept foreign credit cards) and the cost of the mic on top of that for a <em>grand</em> total of $294. Ridiculous. That's 200€. Needless to say I'll be holding off until I find a better option.</p>
+<p>My past experiences ordering computer components from the US have always been excellent, but it seems that things are different in the audio realm.</p>
+<a name='Update'></a><h3>Update</h3>
+
+<p>Found a <a href='http://www.thomann.de/'>reasonably priced European supplier</a>.</p>
+]]>
+
+</content>
+</entry>
+
+<entry>
+<title>The joy of deleting code</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/about/wincent/weblog/archives/2008/02/the_joy_of_dele.php" />
+<modified>2008-02-16T17:20:09Z</modified>
+<issued>2008-02-16T16:53:56Z</issued>
+<id>tag:wincent.com,2008:/a/about/wincent/weblog//4.4101</id>
+<created>2008-02-16T16:53:56Z</created>
+<summary type="text/plain">Things have been quiet here of late because I&apos;ve been feverishly trying to get things ready in order for the server move coming up at the end of this month. It&apos;s a big move because it&apos;s not just moving the...</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.com</email>
+</author>
+<dc:subject>Miscellaneous</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/about/wincent/weblog/">
+<![CDATA[<p>Things have been quiet here of late because I've been feverishly trying to get things ready in order for the server move coming up at the end of this month. It's a big move because it's not just moving the box from one place to another; I'm changing data centers, hosting companies, operating systems, and application software all at once, and there is a <em>lot</em> of work to be done.</p>
+<p>One of the things I'll be doing is replacing the teetering stack of disparate applications that I'm currently running (a mix of applications — Movable Type, UBB.threads, Mailman, Bugzilla, MediaWiki and a number of custom scripts —  written in a mix of languages — Perl, PHP, Python and Ruby) with a single unified application, a custom job written in Ruby and built on Rails.</p>
+<p>I'm taking the opportunity to greatly simplify things in the &quot;Web 2.0&quot; spirit (ugh, how I hate that term; but I've started to use it because it's lost some of its ridiculous hype feel and has now come to mean a set of widely understood characteristics). And it's actually quite a liberating experience. Each chunk of code that I delete makes me feel lighter, freer.</p>
+]]>
+<![CDATA[<p>Take an example, the wiki. I'm not aiming to write a Ruby on Rails port of MediaWiki. I'm aiming to write a basic wiki that does the same things as MediaWiki did for me, in other words a subset of its functionality. I was able to put that together in about a day (the hard part was writing the wikitext-to-HTML translator, that took weeks). And at the end of it I realized that there were some features of MediaWiki that I'd implemented only because I didn't think about what I really needed, I just implemented them because &quot;that's the way wikis are&quot;. Here I'm specifically referring to things like keeping revision history for each article. I realized that I don't need it; this is a hand-coded wiki built exactly to my specifications, it is not a community-driven wiki and it's not one where I need to guard against the possibility of vandalism. The entire revision machinery got deleted and I felt great about it. Less code means less lines in which bugs can hide.</p>
+<p>A similar thing happened with respect to the localization system. It was one of the first things I developed. It was elegant. But then I realized that I didn't need it. Out it went. There as no sense in building in the ability to localize the application &quot;just in case&quot;. And doing localization well isn't easy. If it can't be done perfectly then I don't think there's any sense in doing it at all. I mean, I could take an English string like:</p>
+<blockquote>The requested %s could not be found.</blockquote>
+<p>Where the &quot;thing&quot; might be &quot;resource&quot;, or &quot;page&quot;, or &quot;bug report&quot;. Whatever. I had machinery for translating that into Spanish:</p>
+<blockquote>No se ha encontrado el %s solicitado.</blockquote>
+<p>The trouble is that &quot;page&quot; in Spanish is feminine, while &quot;resource&quot; is masculine. You can't just drop in a different word without also changing the surrounding words to match its gender.</p>
+<p>So I could have a simple but imperfect localization system which I might use one day, or I could write a massively complex and flexible system that handled all the thorny edge cases but at a cost of speed and complexity, or I could just rip out the localization system entirely and worry about it when and if I decided I ever needed it. I opted for the latter.</p>
+<p>In the case of the weblog, I got it up and running and then added comments support. Then I realized that I don't necessarily want comments on my weblog. I've never used them before and I shouldn't start using them now just because that's what everyone else does. I'm not really interested in holding conversations with random strangers, in public, <em>and</em> hosting it on my own server. I didn't actually rip out the support for comments because I can imagine posts in which I <em>will</em> want to solicit comments, but I did turn comments off by default.</p>
+<p>Same for the issue tracker: Bugzilla is horrendously powerful, but a lot of users found it scary. I just threw out the ability to define custom statuses (things like &quot;CLOSED (WORKSFORME)&quot;) which I had mindlessly replicated because that's what I was used to from Bugzilla. No. Think about what you actually need and then write the tool that gives you <em>exactly</em> that, nothing more. For me that's the whole point of Rails. It's supposed to make it easy to quickly implement your ideas. Take advantage of that characteristic to write lean custom apps that do what you ask them to, rather than always trying to write the ultimate in reusable, flexible, generalizable code.</p>
+]]>
+</content>
+</entry>
+
+<entry>
+<title>Ragel wins! Fatality!</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/about/wincent/weblog/archives/2008/02/ragel_wins_fata.php" />
+<modified>2008-02-05T11:50:25Z</modified>
+<issued>2008-02-02T17:07:19Z</issued>
+<id>tag:wincent.com,2008:/a/about/wincent/weblog//4.3874</id>
+<created>2008-02-02T17:07:19Z</created>
+<summary type="text/plain">One of my projects is a fast wikitext-to-HTML translator. It&apos;s a Ruby extension written in C with speed being one of its top design goals (robustness, predictability and security being the others). I&apos;m working on this because the Rails rewrite...</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.com</email>
+</author>
+<dc:subject>Development</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/about/wincent/weblog/">
+<![CDATA[<p>One of my projects is a <a href='http://git.wincent.com/wikitext.git'>fast wikitext-to-HTML translator</a>. It's a <a href='http://wincent.com/knowledge-base/Ruby'>Ruby</a> extension written in <a href='http://wincent.com/knowledge-base/C'>C</a> with speed being one of its top design goals (robustness, predictability and security being the others). I'm working on this because the <a href='http://wincent.com/knowledge-base/Rails'>Rails</a> rewrite of this site will use <a href='http://wincent.com/knowledge-base/wikitext%20markup'>wikitext markup</a> for basically everything. Rails has a bad reputation for being slow and resource hungry, and that's why one of my primary objectives is speed; I don't want my wikitext parser being a bottleneck.</p>
+<p>The translator itself consists of a <a href='http://git.wincent.com/wikitext.git?a=blob;f=ext/wikitext.c;h=59eab1da4da6c799ab148c4131d31e8d77c82d5e;hb=HEAD'>hand-coded parser written in C</a> paired with a scanner/tokenizer/lexer generated from a <a href='http://git.wincent.com/wikitext.git?a=blob;f=ext/Wikitext.g;h=77bc2cc72a65d601843fc759d279a687b3daca81;hb=HEAD'>grammar specification</a>.</p>
+<p>Up until now the scanner used a <a href='http://wincent.com/knowledge-base/ANTLR'>ANTLR</a>-generated lexer using the &quot;C target&quot; (although ANTLR itself is written in Java, it can target multiple languages, including C). The C target is the current speed king among ANTLR targets and is likely to remain so for the foreseeable future. It too is engineered with speed in mind and is quite frugal with resources (for example, when emitting tokens it maintains pointers into the input stream rather than making a copy of the substring for each token).</p>
+<p>And the results were quite snappy. But for some time I've had the sneaking suspicion that a <a href='http://wincent.com/knowledge-base/Ragel'>Ragel</a>-generated scanner would be faster. I suspected this even though ANTLR uses all sorts of clever tricks like trying to predict which path to take and only backtracking if prediction fails.</p>
+<p>You see, Ragel generates simple state machines: the building blocks of regular expressions. Whereas ANTLR is like a complex and unpredictable magic clock, Ragel state machines are totally transparent and predictable. I've spent many months trying to use ANTLR on a number of different projects and in every case <em>except</em> for this wikitext translator I've ended up putting it aside because I couldn't divine the incantations required to make it do its black magic. Ragel, on the other hand, is absurdly simple. You can build complex things out of it, but the base components are easily comprehensible. Compared to ANTLR, Ragel is incredibly easy to learn.</p>
+]]>
+<![CDATA[<a name='Why%20Ragel%20should%20be%20better'></a><h3>Why Ragel should be better</h3>
+
+<p>So I suspected that Ragel might be a bit quicker. No amount of prediction in a predictive lexer can beat a pure state machine, which by definition is going to run in constant time because it simultaneously explores all possible paths. When you add backtracking into the mix (as a result of trying to always favor the longest match) then you lose your constant time but it should still be fast because the state machines themselves are so efficient.</p>
+<p>One of Ragel's key advantages is that there is absolutely zero internal function call overhead. This is because the <em>are</em> no internal function calls; everything is done with basic <a href='http://wincent.com/knowledge-base/C'>C</a> control structures (<tt>for</tt> loops, <tt>gotos</tt>, <tt>case</tt> statements and the like). Once you're in the Ragel machine you can stay there until you've scanned all the text.</p>
+<p>Another advantage is that it's trivial to do everything in <a href='http://wincent.com/knowledge-base/UTF-8'>UTF-8</a> using Ragel. <a href='http://wincent.com/knowledge-base/ANTLR'>ANTLR</a> is a <a href='http://wincent.com/knowledge-base/Java'>Java</a> tool and so it uses <a href='http://wincent.com/knowledge-base/UTF-16'>UTF-16</a>, which means twice the memory most of the time. The C target makes the unfortunate decision of using the obsolete <a href='http://wincent.com/knowledge-base/UCS-2'>UCS-2</a> encoding (basically the same as UTF-16 but without surrogates which means that it can't  represent all Unicode codepoints and is no longer recommended for use) because that's what maps most easily onto UTF-16. I looked at overriding it to use some other encoding but it looked non-trivial and error prone, and likely to break with every new ANTLR release.</p>
+<p>Using UTF-8 with Ragel, on the other hand, should be much more memory efficient. 99% of all input is going to belong to the ASCII subset of UTF-8 anyway, which means that in most situations we'll be using exactly half the memory to process our text. We'll also be avoiding cumbersome and wasteful conversions back and forth between UCS-2 and UTF-8 (all input you get from <a href='http://wincent.com/knowledge-base/Ruby'>Ruby</a>/<a href='http://wincent.com/knowledge-base/Rails'>Rails</a> is going to be in UTF-8). When we do need to go beyond ASCII it should still be relatively quick. We'll take only a small speed hit because the kind of trivial bit-shuffling required to deal with multi-byte UTF-8 characters is exceedingly fast on modern CPUs.</p>
+<p>And apart from performance I think I just wanted to use a tool that I actually understood, and that had a fathomable, deterministic relationship between the grammar you fed in and the recognizer you got out from the other end. And when I say &quot;fathomable&quot;, I mean &quot;possible to be understood by a mere user rather than only the author of the generator himself!&quot;. So I was tempted to switch to Ragel even if the performance gains where minimal or even non-existent.</p>
+<p>Let me give one quick example of how ANTLR can be a difficult beast to tame. Consider this rule for recognizing <a href='http://wincent.com/knowledge-base/URI'>URI</a> tokens:</p>
+<pre>URI : HTTP URI_CHARS (SPECIAL_URI_CHARS URI_CHARS)*;</pre>
+<p>This basically says you want to recognize as a URI a sequence that looks like &quot;http&quot;, following by a bunch of &quot;URI chars&quot; (things like letters, numbers, and so on). And you also want to include &quot;special URI chars&quot; (things like the period) <em>provided</em> that they are followed by more &quot;URI chars&quot;.</p>
+<p>This is what allows you to correctly tokenize sentences like the following:</p>
+<blockquote>My website is <a href='http://wincent.com/'>http://wincent.com/</a>.</blockquote>
+<p>You <em>don't</em> want that last period to be included in the URI when you turn it into a hyperlink, but you <em>do</em> want the first period to be included because it's followed by &quot;com&quot;.</p>
+<p>Well, it turns out that the above rule won't work in ANTLR. Upon seeing &quot;<tt>SPECIAL_URI_CHARS</tt>&quot; it will try to be clever — <em>too</em> clever in this case — and predicts that what it is about to scan is in fact &quot;<tt>SPECIAL_URI_CHARS</tt> followed by <tt>URI_CHARS</tt>&quot;. If you feed in a text like the above ANTLR will throw a recognition exception because its prediction turns out to be incorrect.</p>
+<p>So you have to write the rule like this using a predicate:</p>
+<pre>URI : HTTP URI_CHARS ((SPECIAL_URI_CHARS URI_CHARS)=&gt; (SPECIAL_URI_CHARS URI_CHARS))*;</pre>
+<p>That last bit says, &quot;recognize <tt>SPECIAL_URI_CHARS</tt> followed by <tt>URI_CHARS</tt>, but only if you've first checked to see that there really are <tt>SPECIAL_URI_CHARS</tt> followed by <tt>URI_CHARS</tt>&quot;. In other words, ANTLR scans ahead, and then goes back and rescans the same piece of text again.</p>
+<p>It would be nice if you could use ANTLR without having to know these little tricks. But even if you are fortunate enough to know them, you're still in a less than desirable position; backtracking in the event of a failed match is expensive, but this kind of backtracking and <em>re</em>-scanning in the case of a successful match seems just plain wrong.</p>
+<p>Now let's look at the equivalent rule in Ragel:</p>
+<pre>uri = http uri_chars (special_uri_chars uri_chars)* ;</pre>
+<p>I think that speaks for itself, but I'll make an additional comment anyway. You can look at such a rule and know <em>exactly</em> what kind of state machine it maps to. Entirely predictable, and no black magic or fancy prediction logic under the hood.</p>
+<a name='The%20numbers'></a><h3>The numbers</h3>
+
+<p>The initial numbers are in and I couldn't be happier. Ragel has exceeded my wildest expectations.</p>
+<pre>                                user     system      total        real
+short slab of ASCII text    0.180000   0.000000   0.180000 (  0.182539)
+short slab of UTF-8 text    0.320000   0.000000   0.320000 (  0.330065)
+longer slab of ASCII text   2.740000   0.000000   2.740000 (  2.792006)
+longer slab of UTF-8 text   5.000000   0.000000   5.000000 (  5.072432)</pre>
+<p>Each line corresponds to tokenizing a string 100,000 times. The ASCII examples are pure ASCII and represent the &quot;best case&quot; scenario for the scanner while the UTF-8 ones are for a &quot;worst case&quot; one in which the input text is swelled by 34-46% by multibyte characters.</p>
+<p>If you look at the slow-down caused as you add more and more multi-byte characters you see it grow proportional to the number of additional bytes. That is: you're looking at a basically constant cost per-byte, regardless of the composition of the input.</p>
+<p>So what are we seeing here? 8.24 seconds to tokenize 352 megabytes of input text, which equates to roughly 42.72 megabytes per second on my lowly iMac with its 1.86 GHz Intel Core Duo.</p>
+<p>Here's the <a href='http://git.wincent.com/wikitext.git?a=blob;f=experimental/wikitext_ragel.rl;h=5ab1e2787129acac1d8706fcd53047a4fffd242f;hb=refs/heads/ragel'>initial version</a> of the Ragel scanner (although it may have evolved somewhat by the time you read this). As you can see, moving to Ragel comes at a small cost: you're running much &quot;closer to the metal&quot; and concerning yourself with pointers and token structures and the like. In a sense this is one of the things I most like about Ragel; I can actually see what it's doing and control it in every aspect: it's enigma-free.</p>
+<p>But the cost brings a benefit too. Check out the corresponding numbers for the ANTLR scanner:</p>
+<pre>                                user     system      total        real
+short slab of ASCII text    9.400000   1.870000  11.270000 ( 11.308913)
+short slab of UTF-8 text    8.620000   1.880000  10.500000 ( 10.551956)
+longer slab of ASCII text 132.380000  19.690000 152.070000 (153.296844)
+longer slab of UTF-8 text 116.280000  19.510000 135.790000 (136.788652)</pre>
+<p>As you can see, Ragel wipes the floor with it. While ANTLR doesn't suffer any speed hit at all when you start using multibyte characters, its absolute processing speed is nearly 38 times slower than that of Ragel. It tokenizes the same input text at a rate of about 1.14 megabytes per second. That sounds pretty good, until you compare it to Ragel's 42+ megabytes per second.</p>
+<p>A side note: when I originally published this article I reported figures for Ragel that showed it was &quot;only&quot; 10 times faster than ANTLR; turning on fast goto-driven FSM with the <tt>-G2</tt> switch (as opposed to the default table-driven one) yielded a basically four-fold increase in speed. Now this really starts to get into the &quot;mind-boggling&quot; zone, how Ragel can produce scanners <em>so</em> much faster than the equivalent lexers in ANTLR's fastest target language. Can internal function call overhead explain such a large gap?</p>
+<p>To be fair to ANTLR, not all of the time in the benchmark is spent inside the ANTLR lexer itself; some of it is spent converting the input from UTF-8 to UCS-2 before feeding it in to the lexer. Seeing as we're only testing how fast the lexer can spit out tokens, we let it off we don't worry about converting back to UTF-8 at the end (in the real, non-benchmark scenario, that <em>is</em> a penalty that we'd have to pay).</p>
+<p>Is it fair to penalize the ANTLR lexer in this way? I think so; it <em>is</em> asking for UCS-2 input after all, so if that's what it wants...</p>
+<p>And to put things in perspective, 10% or less of the time in those numbers is due to the encoding conversion. As I said above, modern CPUs are well suited to doing the basic bit-shuffling required to convert to and from UTF-8, and the benchmark is using a hand-coded converter that I wrote in C.</p>
+<p>The following table shows the performance of the custom converter (prefixed with <tt>internal</tt>) on the same type and quantity of input. The lines prefixed with <tt>iconv</tt> are for the same conversion, but done using the Iconv library which comes with Ruby. As you can see the internal coding converter is much, much faster, and is really only responsible for a tiny portion of ANTLR's performance problem:</p>
+<pre>                                           user     system      total        real
+iconv    (short ASCII to UCS-2)        0.520000   0.010000   0.530000 (  0.531411)
+iconv    (short non-ASCII to UCS-2)    0.590000   0.000000   0.590000 (  0.585507)
+iconv    (longer ASCII to UCS-2)      10.770000   0.020000  10.790000 ( 11.009323)
+iconv    (longer non-ASCII to UCS-2)  14.570000   0.030000  14.600000 ( 14.710083)
+internal (short ASCII to UCS-2)        0.110000   0.000000   0.110000 (  0.106386)
+internal (short non-ASCII to UCS-2)    0.150000   0.000000   0.150000 (  0.147468)
+internal (longer ASCII to UCS-2)       1.300000   0.000000   1.300000 (  1.309406)
+internal (longer non-ASCII to UCS-2)   3.700000   0.010000   3.710000 (  3.717417)
+iconv    (short ASCII to UTF-8)        0.520000   0.000000   0.520000 (  0.544404)
+iconv    (short non-ASCII to UTF-8)    0.580000   0.000000   0.580000 (  0.592008)
+iconv    (longer ASCII to UTF-8)      11.810000   0.010000  11.820000 ( 11.858008)
+iconv    (longer non-ASCII to UTF-8)  14.840000   0.020000  14.860000 ( 14.909430)
+internal (short ASCII to UTF-8)        0.130000   0.000000   0.130000 (  0.133868)
+internal (short non-ASCII to UTF-8)    0.180000   0.000000   0.180000 (  0.179611)
+internal (longer ASCII to UTF-8)       2.550000   0.010000   2.560000 (  2.586608)
+internal (longer non-ASCII to UTF-8)   5.280000   0.010000   5.290000 (  5.327419)</pre>
+<a name='Future'></a><h3>Future</h3>
+
+<p>The exciting part is that this is only the beginning. It's commonly held that in any kind of parsing or transformation it's the lexing that takes most of the time, so in one fell swoop I've optimized the biggest performance bottleneck in the transformer.</p>
+<p>At the moment I've just made a scanner which spits out tokens one at a time, just like the ANTLR one did, but there will be a further performance improvement when I drop this in in place pf the ANTLR lexer because I'll be able to drop all of the tedious intermediate conversions to and from UCS-2 that I'm currently having to do in the parser.</p>
+<p>Further down the track their is scope for even more optimizaton. Ragel machines can have actions embedded at them so I may even eventually decide to dump the whole &quot;lex-then-parse&quot; model entirely and just do all the transformation from inside the lexer, thus shaving off one more piece of overhead.</p>
+]]>
+</content>
+</entry>
+
+<entry>
+<title>Farewell Rackspace</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php" />
+<modified>2008-02-13T08:10:56Z</modified>
+<issued>2008-01-31T10:53:11Z</issued>
+<id>tag:wincent.com,2008:/a/about/wincent/weblog//4.3819</id>
+<created>2008-01-31T10:53:11Z</created>
+<summary type="text/plain">I wrote the other day that I was going to be moving to RHEL 5 in the near future. What I wasn&apos;t sure at the time was exactly how I&apos;d be making the move. At the time it seemed that...</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.com</email>
+</author>
+<dc:subject>Miscellaneous</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/about/wincent/weblog/">
+<![CDATA[<p>I wrote the other day that I was going to be <a href='http://wincent.com/a/about/wincent/weblog/archives/2008/01/moving_to_rhel.php'>moving to RHEL 5</a> in the near future. What I wasn't sure at the time was exactly <em>how</em> I'd be making the move. At the time it seemed that the most likely pathway was going to be installing a new drive for RHEL 5 and migrating the data over afterwards; the exact mechanics of this were never really defined (would the drive have RHEL 5 <em>pre</em>-installed on it prior to being slotted in? would they need to take the machine down and do the install &quot;in place&quot;?).</p>
+<p><em>Ideally</em> my host (<a href='http://rackspace.com/'>Rackspace</a>) would have slotted in a drive with a pre-installed OS on it, brought the server online so I could migrate my data over to the new drive and <em>then</em> rebooted from the new drive. I thought they use identical, standard hardware configurations to allow precisely this kind of thing.</p>
+<p>So you'd be looking at two reboots, one of them accompanied by a few minutes of downtime to physically install the drive, and then a period in which some services didn't work properly because they'd need to be tweaked, set-up and configured only after booting into RHEL 5 for the first time. But overall impact to your website visitors would be fairly minimal. Once all that was done you'd be looking at another quick powercycle while they shut down the server to remove the old drive (you don't get anything for free from Rackspace).</p>
+<p>I wonder how often Rackspace does this type of upgrade. As it was, they were suprisingly slow to offer the details of the procedure and offer options, and that's what makes me wonder.</p>
+<p>After quite a bit of deep thought I decided that instead of staying with Rackspace I'd move on to another company. I've chosen <a href='http://inetu.net/'>INetU</a>.</p>
+]]>
+<![CDATA[<p>Moving hosts is always a risky move. I originally went to Rackspace because all of the evidence I'd seen suggested that they were the very best; if I switched to them I'd never need to switch away again. But now I've been with them for 2.5 years I've experienced both the good and the bad of Rackspace. The &quot;good&quot; is pretty good, and the &quot;bad&quot; isn't all that bad, but I don't think they can really compete with INetU's offering and that's why I'm risking the switch.</p>
+<a name='The%20good'></a><h3>The good</h3>
+
+<p>Rackspace has a great network. They have a great track record, with the exception of <a href='http://blog.wired.com/business/2007/11/rackspace-data-.html'>the big data center incident last year</a>. I know some people decided to leave Rackspace because of that incident; personally, for me that's not the reason I'm leaving. I know that even the best companies can make mistakes occasionally and I trust that Rackspace has learned their lesson.</p>
+<p>Their support is indeed &quot;fanatical&quot; most of the time, if you measure it in terms of response time. For example, whenever I needed <a href='http://en.wikipedia.org/wiki/Sender_Policy_Framework'>SPF</a> records added to my domain names I could open a ticket and expect that the records would be updated promptly; most often in only a few minutes.</p>
+<p>Likewise they have automated server monitoring in place and if a service stops responding they log in, investigate and fix it if possible. In general it seems they responded within a few minutes to such alerts and had solved the problem a few minutes later.</p>
+<a name='The%20average'></a><h3>The average</h3>
+
+<p>However, I don't think the support is &quot;fanatical&quot; as it really could be. Response time is important but it is not the be-all-and-end-all. The &quot;solution&quot; to these alerts usually just meant restarting Apache. No attempt at identifying the real cause was ever made. When they did offer a cursory diagnosis it was wrong; I am not a professional system administrator but I was able to investigate and determine the real cause without too much effort.</p>
+<p>It seems that their goal is to just close tickets as quickly as possible, but when you're paying several hundred dollars per month for managed hosting I expect a little better than that. We're not talking about bugs in third-party software or bizarre non-standard configurations; we're talking about the kinds of problems which can crop up in any bog-standard Linux box.</p>
+<a name='The%20bad'></a><h3>The bad</h3>
+
+<p>So why were my Apache processes dying every week or month? It turns out that the load was getting too high during the daily backup and the server was unable to handle all the incoming connections. It didn't happen every day or even every week, but when the backup coincided with enough load from other sources it was enough to make Apache temporarily unavailable to new connections, including the Rackspace monitoring service.</p>
+<p>Turning off the backup is not an option, so the real problem here is that the machine is underpowered.</p>
+<p>And this is where being with Rackspace starts to feel uncomfortable. Let me explain. According to Rackspace, the monthly fee is for a &quot;solution&quot; which includes the hardware and the support. The &quot;solution&quot; does not include up-to-date hardware, it includes only the hardware that was provided when you first signed the contract. After 2.5 years the value-for-money (performance-per-dollar) of the supplied hardware starts to look worse and worse. If the hardware included in your &quot;solution&quot; doesn't do what you need it to do then you must upgrade to new hardware at your own expense. The set-up fees and ongoing monthly costs for these hardware upgrades are utterly exorbitant.</p>
+<p>As an example, I was quoted a $75 setup fee to install a 250 GB hard drive, and an ongoing fee of $50/month for the pleasure of using the new drive. Note that this is not an additional drive; that price is for removing the old 80 GB drive and replacing it with the larger one. This is ridiculous: the average price for a 250 GB SATA drive is now about $90, yet Rackspace would like to charge me $600 per year for the privilege of having one.</p>
+<p>And you have to wonder why they even offered me this as an option when I said I wanted to upgrade to RHEL 5. I don't come close to using even half of the 80 GB drive I already have, so why would I want to upgrade to a larger one? When they make this kind of unattractive offer that addresses a problem the customer doesn't even have (lack of diskspace) it makes them seem totally out of touch with their customers' needs.</p>
+<p>Let me indulge in another example. Another way of getting to RHEL 5 that they offered me was to set up a completely new server. I'd have to pay a $200 setup fee as well as $60 per month more than I am already paying (the new server would have a larger harddrive and a  marginally faster processor than I have now, but it would still have the same amount of RAM — 1 GB — which is arguably the most important resource a web/database server can have). I just can't see the value for money in this offer.</p>
+<a name='INetU'></a><h3>INetU</h3>
+
+<p>In comparison, what can INetU offer? I went to them and explained what my concerns with Rackspace were: in a nutshell, that you get locked in to aging hardware and an aging OS (in my case they provided me with RHEL 3 even though RHEL 4 was already out), and if you want to break out of that jail cell you can only do so at considerable expense. They don't seem to reward customer loyalty and being an ongoing client over a period of years.</p>
+<p>INetU is a much smaller company than Rackspace and my current perception of them (still currently an outsider) is that they try harder. They describe their managed support level as similar or better than Rackspace's &quot;intensive&quot; support level (at Rackspace I was merely a &quot;normal&quot; customer, not an &quot;intensive&quot; one). My experience with their sales representatives was very positive. Basically they worked with me to iron out a contract that addressed all my needs and concerns. I got the impression that they were trying to provide me with a solution that was truly satisfactory to me rather than just getting me to sign a contract as quickly as possible.</p>
+<p>I did give Rackspace a chance. I told them what INetU was offering and said that I didn't want to leave Rackspace, that I'd much rather continue with Rackspace if they could just address my concerns about hardware and OS lock-in. But all they could offer me were $90 hard drives for $600/year and no ongoing solution to the lock-in problem.</p>
+<p>So I'm off to INetU. Dollar-for-dollar, they offer beefier hardware and more IP addresses than Rackspace, they promise better support (which I'll be able to report on when I officially become a customer of theirs; so far all the communication has been excellent), and they provide exactly the kind of hardware upgrade path that I was looking for. Basically, they understand that when a customer pays several hundred dollars per month for a &quot;solution&quot;, they want that solution to include up-to-date hardware. I'm not talking about CPU upgrades every six months; I'm just saying that every three years it's most definitely time to migrate to a new box, and you shouldn't be penalized for doing that kind of migration. Instead, they should recognize your loyalty and help you to make the move.</p>
+<p>In the case of INetU they can set up a new server for you, put it online, and let you keep the old one online for 30 days while you migrate the data over. When you're ready you flip the switch. Effectively it amounts to a free month every three years, and a means of keeping your hardware up-to-date without incurring excessive expense and downtime. This is the way it should be. I believe this because for me &quot;premium solution&quot; actually really means &quot;premium, up-to-date solution, today and tomorrow&quot;. This offer may not last forever, but I got it in writing because I explicitly asked for it, and it's basically <em>the</em> reason I'm moving. It's a nice way to start the relationship, with INetU specifically tailoring a solution that addresses my concerns.</p>
+<p>So hopefully, this time really <em>will</em> be the last time I move hosting companies. The Rackspace server will be up until the end of February and the INetU one will be coming on line in the last week of February. I'll have five days of overlap in which to migrate all the data across before pointing the DNS at the new servers. As such, actual downtime will be zero — there'll be none at all — and there will probably be a day or two of hiccups where creases need to be ironed out on the new box (it is a new OS, after all).</p>
+<a name='Update%3A%2013%20February'></a><h3>Update: 13 February</h3>
+
+<p>Rackspace got in touch with me one last time to see if there was anything they could do to retain my business. It's a bit late for that seeing as I've already signed a new contract, but they did offer to keep my server online for an extra thirty days at no extra cost, just in case I have problems with my new host and decide to run back into Rackspace's open arms.</p>
+<p>I don't anticipate having any problems with INetU, but I think this is nice gesture on the part of Rackspace. I've accepted their offer. A little bit of extra insurance never goes astray.</p>
+]]>
+</content>
+</entry>
+
+<entry>
+<title>Involuntary Reboot Log #25</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/about/wincent/weblog/archives/2008/01/involuntary_reb_22.php" />
+<modified>2008-01-28T20:57:20Z</modified>
+<issued>2008-01-28T20:39:23Z</issued>
+<id>tag:wincent.com,2008:/a/about/wincent/weblog//4.3802</id>
+<created>2008-01-28T20:39:23Z</created>
+<summary type="text/plain">Like I said the other day, looks like this iMac is dying. This time the machine simply turned itself off when I bumped the desk with my knee; it could barely even be called a bump. The average time between...</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.com</email>
+</author>
+<dc:subject>Involuntary Reboot Log</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/about/wincent/weblog/">
+<![CDATA[<p>Like I said the other day, looks like <a href='http://wincent.com/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php'>this iMac is dying</a>. This time the machine simply turned itself off when I bumped the desk with my knee; it could barely even be called a bump.</p>
+<p>The average time between failures is dropping. Not long ago it was about one month, but now it's approaching three weeks, and if you look at the average over the last month the failures have been almost weekly.</p>
+<p>Apart from the risk of damage to my data, I am starting to get sick of these Disk First Aid runs (during which the machine is unusable), which go especially slowly because <a href='http://wincent.com/knowledge-base/Spotlight'>Spotlight</a> decides to reindex <em>all</em> of my volumes every time I have one of these failures.</p>
+<p>On a tangential note: I received an email in response to my <a href='http://wincent.com/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php'>last post</a> in which I complained about the lack of RAM in the low-end iMacs. It was pointed out to me that real-world RAM really is cheap nowadays (even if RAM from <a href='http://wincent.com/knowledge-base/Apple'>Apple</a> is not). You can max out an iMac to 4 GB for a mere $100 at <a href='http://macsales.com'>my retailer of choice</a> (OWC), and for someone like me living in Europe and buying the RAM from the US you're still looking at only 85€ <em>including</em> international shipping.</p>
+<a name='Involuntary%20reboot%20stats%20to%20date'></a><h3>Involuntary reboot stats to date</h3>
+
+<ul>
+<li><strong>Operating system version:</strong> 10.5.1</li>
+<li><strong>Kernel panics:</strong> 7</li>
+<li><strong>Hard resets:</strong> 18</li>
+<li><strong>Total failures:</strong> 25</li>
+<li><strong>Start of recording keeping:</strong> 21 May 2006</li>
+<li><strong>Total days to date:</strong> 617 days</li>
+<li><strong>Average time between failures:</strong> 24.68 days</li>
+<li><strong>Uptime at moment of failure(s):</strong> a day or so</li>
+</ul>
+]]>
+
+</content>
+</entry>
+
+<entry>
+<title>Rails and validates_uniqueness_of</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/about/wincent/weblog/archives/2008/01/rails_and_valid.php" />
+<modified>2008-01-25T20:09:46Z</modified>
+<issued>2008-01-25T19:51:59Z</issued>
+<id>tag:wincent.com,2008:/a/about/wincent/weblog//4.3775</id>
+<created>2008-01-25T19:51:59Z</created>
+<summary type="text/plain">I&apos;m a Rails dabbler who has never actually deployed an application yet but has been working in spare moments on a new version of this site that will be powered by Rails. I was puzzled today to see excess SELECT...</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.com</email>
+</author>
+<dc:subject>Development</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/about/wincent/weblog/">
+<![CDATA[<p>I'm a <a href='http://wincent.com/knowledge-base/Rails'>Rails</a> dabbler who has never actually deployed an application yet but has been working in spare moments on a new version of this site that will be powered by Rails.</p>
+<p>I was puzzled today to see excess <tt>SELECT</tt> queries whenever I saved a record. The queries were for attributes that were entirely unrelated to what I was manipulating.</p>
+<p>I'll spare you the long story and cut to the chase. It turns out that these extra queries are generated by <tt>validates_uniqueness_of</tt>. I guess I should have known. The entire model gets validated whenever you save, even attributes that you haven't touched. I guess this makes sense.</p>
+<p>Now, I am not really sure about the point of <tt>validates_uniqueness_of</tt> because it is vulnerable to a classic race condition; basically Rails checks &quot;is this unique?&quot; and if it is goes ahead and saves the record. Of course, in a multi-user application it's possible that what was unique a millisecond again is no longer so.</p>
+<p>Basically <tt>validates_uniqueness_of</tt> can't provide you with any guarantees, and if that's the case then why bother using it? I had it in my app mostly for experimentation purposes.</p>
+<p>The only robust way to approach this is to do what we always do when we have race conditions to worry about: go ahead and save the record and only if it doesn't work worry about what you'll do. In order for this to work you need to impose a database-level constraint which will cause an exception to be thrown if someone tries to create a duplicate (and of course, the database won't permit the creation of the duplicate to succeed).</p>
+<p>Something like this in a migration should do it:</p>
+<pre>add_index :things, :attribute, :unique =&gt; true</pre>
+<p>Try to insert a &quot;thing&quot; with a duplicate &quot;attribute&quot; and MySQL will complain about a &quot;Duplicate entry&quot; and Rails will duly raise an <tt>ActiveRecord::ActiveRecordError</tt> which you can rescue and deal with appropriately.</p>
+<p>If you're doing that then is there any point in keeping those <tt>validates_uniqueness_of</tt> calls? Perhaps. I guess if the probability of races is low then you can keep your application logic simpler by relying on <tt>validates_uniqueness_of</tt> for informing the user nicely that &quot;that name is already taken&quot;, and rely on database-level constraints to handle the really nasty race conditions (and throw an irrecoverable error). I suppose it depends on how much traffic and contention you're expecting. If traffic is high and performance is a real issue then you might just want to get rid of the validation; it doesn't provide any guarantees and those extra queries will only slow you down.</p>
+]]>
+
+</content>
+</entry>
+
+<entry>
+<title>iMac finally dying?</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php" />
+<modified>2008-01-25T09:40:30Z</modified>
+<issued>2008-01-25T09:28:08Z</issued>
+<id>tag:wincent.com,2008:/a/about/wincent/weblog//4.3774</id>
+<created>2008-01-25T09:28:08Z</created>
+<summary type="text/plain">I&apos;m starting to get really worried about this machine. Today we have the painters here painting all the rooms, which means that I&apos;ve had to take the iMac out into the kitchen. As I&apos;ve mentioned before, it has a wonky...</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.com</email>
+</author>
+<dc:subject>Miscellaneous</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/about/wincent/weblog/">
+<![CDATA[<p>I'm starting to get really worried about this machine.</p>
+<p>Today we have the painters here painting all the rooms, which means that I've had to take the iMac out into the kitchen. As I've <a href='http://wincent.com/a/about/wincent/weblog/archives/2007/08/involuntary_reb_13.php'>mentioned before</a>, it has a wonky power socket, and this time it didn't want to boot up.</p>
+<p>Several minutes of jiggling later I finally got the machine to turn on. Now I'm wondering which boot-up is going to be the last. One of these days the machine isn't going to power up.</p>
+<p>Financially, I'm not in a position to buy a replacement yet. The cheapest model costs 1,169€ here but is handicapped with only a gig of RAM which would probably make it slower than this machine (which has 2 gig) despite having a faster processor (a 2 GHz Core 2 Duo as opposed to the 1.83 GHz Core Duo I currently have). RAM is very important for performance when compiling code in <a href='http://wincent.com/knowledge-base/Xcode'>Xcode</a>, mostly due to the amount of memory occupied by precompiled headers.</p>
+<p>The top-end model would be a big improvement over my current machine — a 2.7 GHz Core 2 Extreme with 2 gig of RAM and a bigger screen (24&quot; up from 17&quot;) and hard drive (500 GB up from 160 GB) — but it's out of my price range at 2,159€.</p>
+<p>So really my only two options at this stage are to cross my fingers and hope that this machine holds up, or send it in for repair; and with the deadlines I have looming I just can't afford to be without this machine, even for a few days.</p>
+]]>
+
+</content>
+</entry>
+
+<entry>
+<title>Git 1.5.4-rc4</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/about/wincent/weblog/archives/2008/01/git_154rc4.php" />
+<modified>2008-01-21T11:55:39Z</modified>
+<issued>2008-01-21T11:51:40Z</issued>
+<id>tag:wincent.com,2008:/a/about/wincent/weblog//4.3732</id>
+<created>2008-01-21T11:51:40Z</created>
+<summary type="text/plain">Git 1.5.4-rc4 is out, and the final 1.5.4 release is likely to come soon, probably before the end of the month. My favorite change in this build is the fix for the performance regression when commiting a single file specified...</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.com</email>
+</author>
+<dc:subject>Development</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/about/wincent/weblog/">
+<![CDATA[<p><a href='http://wincent.com/knowledge-base/Git%201.5.4-rc4'>Git 1.5.4-rc4</a> is out, and the final 1.5.4 release is likely to come soon, probably before the end of the month. My favorite change in this build is the fix for the performance regression when commiting a single file specified on the <a href='http://wincent.com/knowledge-base/command%20line'>command line</a> (eg. <tt>git commit foo</tt>) as this is something that I do <em>often</em>.</p>
+<p>The regression was only in the development version and has never made it into a released version of <a href='http://wincent.com/knowledge-base/Git'>Git</a>, but I've been tracking the master branch for some time now (see &quot;<a href='http://wincent.com/knowledge-base/Tracking%20the%20Git%20maint%20or%20master%20branches'>Tracking the Git maint or master branches</a>&quot;) so I had definitely noticed the problem.</p>
+]]>
+
+</content>
+</entry>
+
+<entry>
+<title>Moving to RHEL 5</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/about/wincent/weblog/archives/2008/01/moving_to_rhel.php" />
+<modified>2008-01-19T14:13:52Z</modified>
+<issued>2008-01-19T13:56:00Z</issued>
+<id>tag:wincent.com,2008:/a/about/wincent/weblog//4.3708</id>
+<created>2008-01-19T13:56:00Z</created>
+<summary type="text/plain">In October last year I wrote about changing UNIXes. Well, it&apos;s a new year now and it looks like it is going to happen. I&apos;ll be migrating to RHEL 5 (from RHEL 3). I don&apos;t have a firm date for...</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.com</email>
+</author>
+<dc:subject>Miscellaneous</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/about/wincent/weblog/">
+<![CDATA[<p>In October last year I <a href='http://wincent.com/a/about/wincent/weblog/archives/2007/10/thinking_about.php'>wrote</a> about changing UNIXes. Well, it's a new year now and it looks like it is going to happen.</p>
+<p>I'll be migrating to <a href='http://wincent.com/knowledge-base/RHEL%205'>RHEL 5</a> (from RHEL 3). I don't have a firm date for the migration yet, and I need to do quite a bit of research before then about the best way to get all my data across. This will basically be a clean install on a new hard drive, the server should only be down for a relatively short interval, and then we'll come back on line and over the following hours I'll be transferring user accounts, mail, databases, software and everything else from the old hard drive to the new. So it will be quite intense, and most services <em>will</em> be interrupted for at least some of the migration. I expect to be transferring and configuring for several hours, possibly even the entire day.</p>
+<p>One way to minimize the interruption would be to install the drive with the new system on it and migrate some of the data before rebooting, but I'm not sure how much time that will actually buy me, nor whether my host, <a href='http://service.bfast.com/bfast/click?bfmid=30735717&amp;siteid=41506187&amp;bfpage=hosting_headaches'>Rackspace</a>, would be prepared to do that (it would require them to install RHEL 5 on the drive in another machine, then uninstall it from that machine and reinstall it into mine).</p>
+<p>I'm very happy about this because it means I will be able to gradually retire bits of legacy software and replace all of this with a single, lean, unified <a href='http://wincent.com/knowledge-base/Rails'>Rails</a> application which handles everything for me (bug tracking, customer support tracking, forums, the wiki, and so forth).</p>
+<p>Deploying Rails is a bitch by all accounts, but it's easier on RHEL 5 than it is on RHEL 3, (specifically, there are fewer pieces of additional software that you have to install, and you deviate less from the supported, auto-updated configuration). And once you've deployed it you've got <em>one</em> application stack to worry about instead of half a dozen.</p>
+]]>
+
+</content>
+</entry>
+
+<entry>
+<title>Involuntary Reboot Log #24</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/about/wincent/weblog/archives/2008/01/involuntary_reb_21.php" />
+<modified>2008-01-17T19:24:02Z</modified>
+<issued>2008-01-17T18:05:41Z</issued>
+<id>tag:wincent.com,2008:/a/about/wincent/weblog//4.3663</id>
+<created>2008-01-17T18:05:41Z</created>
+<summary type="text/plain">Only a few days since the last kernel panic and I&apos;ve just had another hard reset. This time the machine just froze completely with no explanation (mouse pointer frozen, clock frozen, no visible movement on screen or sound from the...</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.com</email>
+</author>
+<dc:subject>Involuntary Reboot Log</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/about/wincent/weblog/">
+<![CDATA[<p>Only a few days since the last kernel panic and I've just had another hard reset. This time the machine just froze completely with no explanation (mouse pointer frozen, clock frozen, no visible movement on screen or sound from the hard drive). This machine may well be on its last legs.</p>
+<p>As always I did a Disk First Aid run after the crash. This time there was a bunch of damage that needed to be repaired. HFS+: is the F for Farce?</p>
+<a name='Involuntary%20reboot%20stats%20to%20date'></a><h3>Involuntary reboot stats to date</h3>
+
+<ul>
+<li><strong>Operating system version:</strong> 10.5.1</li>
+<li><strong>Kernel panics:</strong> 7</li>
+<li><strong>Hard resets:</strong> 17</li>
+<li><strong>Total failures:</strong> 24</li>
+<li><strong>Start of recording keeping:</strong> 21 May 2006</li>
+<li><strong>Total days to date:</strong> 606 days</li>
+<li><strong>Average time between failures:</strong> 25.25 days</li>
+<li><strong>Uptime at moment of failure(s):</strong> a day or so</li>
+</ul>
+]]>
+
+</content>
+</entry>
+
+<entry>
+<title>On the MacBook Air</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/about/wincent/weblog/archives/2008/01/on_the_macbook.php" />
+<modified>2008-01-16T09:36:13Z</modified>
+<issued>2008-01-16T09:26:01Z</issued>
+<id>tag:wincent.com,2008:/a/about/wincent/weblog//4.3647</id>
+<created>2008-01-16T09:26:01Z</created>
+<summary type="text/plain">I admit to not being really excited about this year&apos;s keynote. I&apos;ve been so engrossed with work of late that I didn&apos;t even know what day the keynote would take place. And I knew that most of the things that...</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.com</email>
+</author>
+<dc:subject>Apple</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/about/wincent/weblog/">
+<![CDATA[<p>I admit to not being really excited about this year's keynote. I've been so engrossed with work of late that I didn't even know what day the keynote would take place. And I knew that most of the things that would be talked about wouldn't excite me: Apple TV (don't have a TV), iPhone stuff (you can't buy iPhones in the country where I live yet), iTunes movie rentals (I don't like the rental model, I'd rather own stuff). Furthermore, the machines which most interest me, <a href='http://wincent.com/a/about/wincent/weblog/archives/2008/01/the_new_mac_pro.php'>the Mac Pros</a>, were already revamped before the show started.</p>
+<p>But I must confess, even though I am not in the market to buy any new Apple product right now, I am <em>really</em> impressed with the new <a href='http://www.apple.com/macbookair/'>MacBook Air</a>. If I were to buy a laptop, this would be the one for me. I am not one of those people who wants their laptop to be their only machine; for these people the Air is not the right product. I'm a person who wants a portable to be portable; so for me the decision to leave out the optical drive is a very clever optimization. Ever since Apple dropped a 12&quot; model from their line-up I've felt it was a gap. I still have my 12&quot; PowerBook G4 (the aluminum one). It was a great machine and has never skipped a beat in all these years (over four years now, eons in computer time).</p>
+<p>So if I were to buy a laptop, the Air would be the one. The most portable portable ever!</p>
+]]>
+
+</content>
+</entry>
+
+<entry>
+<title>RSpec + Autotest + Objective-C</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/about/wincent/weblog/archives/2008/01/rspec_autotest.php" />
+<modified>2008-01-15T14:24:50Z</modified>
+<issued>2008-01-15T11:26:51Z</issued>
+<id>tag:wincent.com,2008:/a/about/wincent/weblog//4.3644</id>
+<created>2008-01-15T11:26:51Z</created>
+<summary type="text/plain">In this screencast I demo using RSpec and Autotest to do continuous integration/BDD (choose your favorite buzzword) of a compiled Objective-C tool: I&apos;ve got the flu right now, so apologies for the voice. Here is the commit where I integrate...</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.com</email>
+</author>
+<dc:subject>Screencasts</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/about/wincent/weblog/">
+<![CDATA[<p>In this screencast I demo using <a href="http://rspec.info/">RSpec</a> and <a href="http://www.zenspider.com/ZSS/Products/ZenTest/">Autotest</a> to do continuous integration/BDD (choose your favorite buzzword) of a compiled Objective-C tool:</p>
+
+<p><a href="http://wincent.com/a/about/wincent/weblog/screencasts/rspec_autotest_objc.mov" onclick="window.open('http://wincent.com/a/about/wincent/weblog/screencasts/rspec_autotest_objc.mov','popup'); return false"><img src="/a/about/wincent/weblog/screencasts/rspec_autotest_objc.png" alt="Rspec + Autotest + Objective-C" /></a></p>
+
+<p>I've got the flu right now, so apologies for the voice.</p>
+
+<p><a href="http://git.wincent.com/wincent-strings-util.git?a=commitdiff;h=7cd221dde42ac9b5ee7849e3d1b52b89216d00a2;hp=a318aff03659fc513a79f0b9b27c1df92e8f7ea1">Here is the commit</a> where I integrate this procedure into <a href="http://strings.wincent.com/">Wincent Strings Utility</a>.</p>
+
+<h3>Update</h3>
+
+<p>I've just seen <a href="http://blog.davidchelimsky.net/articles/2008/01/15/rspec-1-1-2-and-zentest-3-8-0">this post</a> on David Chelimsky's weblog that confirms that this indeed new for 3.8.0 and I wasn't just imagining it...</p>]]>
+
+</content>
+</entry>
+
+<entry>
+<title>Open Source economics for the small guy</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/about/wincent/weblog/archives/2008/01/open_source_eco.php" />
+<modified>2008-01-14T12:57:25Z</modified>
+<issued>2008-01-14T12:50:05Z</issued>
+<id>tag:wincent.com,2008:/a/about/wincent/weblog//4.3612</id>
+<created>2008-01-14T12:50:05Z</created>
+<summary type="text/plain">I like the open source model. I really do think it has the potential to produce better software. Note that I said potential; survey the market place and you&apos;ll find examples of open source projects which are best-of-class and others...</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.com</email>
+</author>
+<dc:subject>Development</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/about/wincent/weblog/">
+<![CDATA[<p>I like the open source model. I really do think it has the potential to produce better software. Note that I said <em>potential</em>; survey the market place and you'll find examples of open source projects which are best-of-class and others which are severely lacking.</p>
+<p>I currently make a bit of open source software available but also work on closed source stuff. If I thought i could make everything open source and still survive economically then I'd do it in a heartbeat. I suspect I'm not alone in feeling this way; as Brent Simmons  <a href='http://inessential.com/?comments=1&amp;postid=3461'>recently said</a>:</p>
+<blockquote>But I will say that, for me personally, this is a dream come true. Every developer wants to be able to work on the software they love, make a living at it, and give it to the world for free. Usually you get to pick two out of three — if you're lucky. Me, I get all three.</blockquote>
+<p><a href='http://ask.slashdot.org/article.pl?sid=08/01/13/1730238'>This very question</a> came up on Slashdot yesterday. I'm gradually edging towards releasing more source, but it's a difficult path to tread. I'm probably still quite a long way off being able to go fully open, if ever. Think about it: if a company like Apple can't go all the way, how is the small operator going to do so?</p>
+]]>
+
+</content>
+</entry>
+
+</feed>

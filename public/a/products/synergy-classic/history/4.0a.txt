@@ -1,0 +1,153 @@
+Changes from 3.5.5a to 4.0a:
+
+    Bump minimum system version requirement from 10.5.8 to 10.6
+    Bump version number prior to 4.0a release
+    Add back missing braces trimmed by 9cb901a
+    Make sure "General" tab is selected on opening prefs
+    Change behaviour of registration buttons
+    Get rid of "Unregister" button
+    Correct cut-off date
+    Show upgrade dialog for old licenses
+    Update out-of-date email addresses
+    Check dates on licenses
+    Trim some fat
+    Change dependency order in Synergy Prefs + SynergyPref target
+    Avoid duplicate classes across targets
+    Update xib to latest versions
+    Silence nib-related warnings
+    Fix 10.6 deprecation warnings in SynergyController class
+    Replace two preprocessors warnings with comments
+    Fix 10.6 deprecation warnings in WOCoverDownloader class
+    Fix 10.6 deprecation warnings in WOButtonSet class
+    Fix 10.6 deprecation warnings in WONSStringExtensions category
+    Fix 10.6 deprecation warnings in WOAudioscrobbler class
+    Fix 10.6 deprecation warnings in WOPausable category on NSTimer
+    Clang: mark prefs controller as conforming to NSTextFieldDelegate
+    Clang: fix numerous warnings
+    Update buildtools submodule 93e282e..6656431
+    Clang: fix two minor resource leaks
+    Clang: eliminate unnecessary clearing of local variables
+    Clang: remove unused local variable
+    Update WOPublic submodule 49f3b99..c76cba5
+    Update buildtools 1bf82fa..93e282e
+    Update buildtools 366d169..1bf82fa
+    Remove extremely old beta notes
+    Move NSTimer category files
+    Move WOAudioscrobbler class files into subfolder
+    Move categories into subfolders
+    Move updated info plists into subfolders
+    Set up Leopard/Snow Leopard development branches
+    Bump version number post-release
+
+WOPublic: Changes from Synergy-3.5a8 to Synergy-4.0a:
+
+    Fix leak in -[WOLoginItem addToList:]
+    Update buildtools submodule 8fb8129..93e282e
+    Link to SystemConfiguration framework
+    Fix compilation errors in WOHost
+    Add references to WOHost files to Xcode project
+    Reformat WOHost code documentation to match WOPublic style
+    Add BSD license header to WOHost files
+    Import WOHost files from WOCommon
+    Update URL to more recent version of documentation
+    WOMemoryBarrier.h: drop PowerPC macros on Snow Leopard branch
+    Add WOProcessManager references to Xcode project file
+    Reformat WOProcessManager files for WOPublic
+    Initial import of WOProcessManager class (from WOCommon)
+    Update WOProcessLifetime headers
+    Add WOProcessLifetime references to Xcode project
+    Add WOEnumerate.h reference to Xcode project file
+    Initial import of WOProcessLifetime class from WOCommon
+    Update wmalloc reference to emalloc
+    Formatting changes for WOSysctl and WOProcessSerialNumber
+    Update WOSysctl and WOProcessSerialNumber headers
+    Add Xcode project references to new files
+    Initial import of WOSysctl and WOProcessSerialNumber classes
+    Update URL broken by issue tracker move
+    Rewrap Doxygen comments in WOEnumerate.h
+    Update WOEnumerate.h header
+    Import WOEnumerate.h from WOCommon
+    Replace hardcode instances of "WOCommon" with "WOPublic"
+    Add missing files to project
+    Fix header breakage
+    Update references to use submodule version of buildtools
+    Add buildtools as a submodule
+    Raise if WOLoginItem initialized with a nil path
+    Add WOLoginItem* classes to Xcode project file
+    Fix copy/paste bug in WO_STRINGIFY_CONTENTS macro
+    Guard against redefinition of WO_STRINGIFY and WO_STRINGIFY_CONTENTS
+    Update names in WOLoginItem
+    Import WO_FREE macro from WOCommon
+    Clean up WOLoginItem and WOLoginItem for consistency with WOPublic
+    Import WOLoginItem and WOLoginItemList from WOCommon
+    Use emalloc in NSFileManager path utilities class
+    Rename wmalloc() to emalloc()
+    Add xcalloc() wrapper
+    Add license header to NSArray WOConvenience category
+    Import NSArray WOConvenience category from WOCommon
+    Reformat WOLogManager Doxygen comments to fit under 80 columns
+    Use custom Doxygen footer
+    Doxygen: update DOCSET configuration
+    Use JavaScript in Doxygen-generated documentation
+    Instruct Doxygen to inline sources
+    Add example to WOLog macro documentation
+    Use Doxygen 1.5.9 to update Doxyfile
+    Documentation tweaks to silence Doxygen warnings and errors
+    Update Doxyfile to point to new Graphviz installation
+    Add Documentation (Doxygen) target
+    Remove unused main.c file
+    Add unit test target
+    Customize Info.plist
+    Trim fat from WOConvenienceMacros code documentation
+    Augment documentation for WO_DICTIONARY and WO_MUTABLE_DICTIONARY
+    Migrate WO_DICTIONARY and WO_MUTABLE_DICTIONARY macros from WOCommon
+    Whitespace fix in NSDictionary WOCreation category
+    Migrate NSDictionary WOCreation category from WOCommon
+    Add source files to Xcode project
+    Use buildtools configuration files
+    Replace Carbon bundle files with Cocoa bundle ones
+    Rename English.lproj to en.lproj
+    Set up .gitignore for Xcode
+    Initial version of (empty) Xcode project
+    Reflow WOConvenienceMacro code comments to fit under 80 columns
+    Migrate WOStringFromBool macro from WOCommon and use it
+    Update header comments (licensing, consistency)
+    Import various classes and categories from WOCommon
+    Remove reference to WO_DICTIONARY
+    Import creation shortcut macros from WOCommon
+    Remove stale reference to WOCommon convenience macros
+    Remove stale reference to WOCommon enumeration macros
+    Add license to WOMappedData files
+    Initial import of WOMappedData class from WODebug
+    Remove historical cruft from headers
+    Add license to WOArgumentArray files
+    Remove stale reference to WOCommon
+    Initial import of WOArgumentArray class from WODebug
+    Add license to WOKernelQueue files
+    Initial import of WOKernelQueue from WODebug
+    Partially import WOConvenienceMacros.h from WOCommon
+    Reformat for better display on narrow terminals
+    Add Simplified BSD License
+    Import WOMemoryBarrier.h from WOCommon
+    Header cleanup (doc updates) for WODebugMacros.h
+
+buildtools: Changes from Synergy-3.5a8 to Synergy-4.0a:
+
+    Switch to Clang/LLVM
+    Switch to Snow Leopard SDK
+    README: update for Snow Leopard
+    Drop PowerPC support
+    README: add note on tags
+    README: remove unnecessary references to enclosing directory
+    README: add notes on repository URLs and layout
+    README: remove "included tools" list
+    README: indent paths to make them stand out
+    Update README for buildtools as a Git submodule
+    Fix GPL references in the README
+    Rewrap README to 80 columns
+    Remove legacy $Id$ tag
+    Change location of BUILDTOOLS_DIR
+    Switch to BSD license
+    Whitespace fixes for UpdateBuildVersionNumbers.sh
+    Fix whitespace in PreprocessInfoPlistStrings.sh
+

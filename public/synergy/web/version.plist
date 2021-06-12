@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Current major version</key>
+	<integer>340</integer>
+	<key>Current minor version</key>
+	<integer>1</integer>
+	<key>Release date</key>
+	<string>2009-06-25</string>
+	<key>Updated features</key>
+	<array>
+		<string>8bc871751601e1ae715f533db898bb89</string>
+		<string>859acba21436ac7dd8c394aca8fb4287</string>
+		<string>068003a0d4ffdd5f9f720c03da8e13b6</string>
+		<string>f33acb9992aa7025b977f280f7de87cd</string>
+		<string>1c81bc3e7d752206f2a3e2d1af4c3c16</string>
+		<string>f931b2181868e166c6898089b5b972eb</string>
+		<string>381565977b855d4227a90fa78538903b</string>
+		<string>1f1bf50a9fe56abd71ab5a8894d9dae1</string>
+		<string>34bd157bd8e891f075be73b362c59051</string>
+		<string>9ee84a0156a265334dd68dd5b02390b7</string>
+		<string>27396189f93a6b163c3aeb6bfad6c879</string>
+		<string>9ee84a0156a265334dd68dd5b02390b7</string>
+		<string>c0231d404cfddbf39a16bdb597b57d7a</string>
+		<string>33afeb806aa14c0174d061460c9dc318</string>
+		<string>6a089fd73c1edb6beea5aea5d7214797</string>
+		<string>8e739002b07092fe5000efb7590d7beb</string>
+		<string>0e7020aef49c48dd3b35169f18ba65a5</string>
+		<string>651248a14224b0b4cf9921aded5147fb</string>
+		<string>5ef740831aaf98a8f98c732d56dcf441</string>
+		<string>21d06f324ef8746c6f497111b4355ca5</string>
+		<string>df31b618451360faecd96c6b8bc7bf42</string>
+		<string>651248a14224b0b4cf9921aded5147fb</string>
+		<string>152a92c5c939c9dc9b3c49c636564e14</string>
+		<string>27e2065b2f0a6fc9aad5cc97722e39b0</string>
+		<string>49782d19e324fb7682a35e3b7c42afb8</string>
+		<string>2f444b64df9c9d220917e1b23e83f900</string>
+		<string>c10ac517ce09180296e74f223a019f9f</string>
+		<string>c10ac517ce09180296e74f223a019f9f</string>
+		<string>ead523acc0876ec90909b44f97441fbc</string>
+	</array>
+	<key>Version URL</key>
+	<string>http://synergy.wincent.com/</string>
+	<key>Version string</key>
+	<string>3.4</string>
+</dict>
+</plist>

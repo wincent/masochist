@@ -1,0 +1,44 @@
+Changes from 2.0 to 2.0.1:
+
+commit 1d5de3dec44e4e1e5f2a7571f646ed3879f1b4f8
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 15:52:06 2009 +0200
+
+    Bump version number for 2.0.1 release
+    
+    The 2.0 release itself was never actually published due to a glitch in
+    the buildtools which prevent release notes from being produced for the
+    very first release.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 965909f36207e988784a86cc61a416ce89edfaad
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 15:51:32 2009 +0200
+
+    Update buildtools submodule 1cd84ad..7d4e122
+    
+      7d4e122 ReleaseNotes.sh: handle first release
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+
+buildtools: Changes from wincent-icon-util-2.0 to wincent-icon-util-2.0.1:
+
+commit 7d4e12254d339cce521486f482a02dc447a43b12
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 15:49:33 2009 +0200
+
+    ReleaseNotes.sh: handle first release
+    
+    Our "git describe HEAD^" call fails for the first tagged release because
+    there are no prior tags.
+    
+    Catch the error and just use the first root commit instead.
+    
+    This is not the only place where we use "git describe", but it is the
+    most likely place where problems will crop up in practice (because
+    usually there is at least _one_ annotated tag in the repo if we are
+    running this script).
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>

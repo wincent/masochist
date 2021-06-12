@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html401/sgml/loosedtd.html">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<title>How to file a good bug report</title>
+<meta name="generator" content="Walrus 0.1">
+<meta name="author" content="Wincent Colaiuta">
+<meta name="author-email" content="win@wincent.com">
+<meta name="copyright" content="Copyright 2007 Wincent Colaiuta">
+<link href="../css/base.css" rel="stylesheet" media="all" type="text/css">
+<meta name="description" content="">
+</head>
+<body>
+<a name="how_to_file_a_good_bug_report" id="how_to_file_a_good_bug_report"></a> <a name="troubleshooting" id="troubleshooting"></a>
+<div id="banner">
+<div id="home_link"><a href="../front_page.html">Hextrapolate Help</a></div>
+<div id="index_link"><a href="full_index.html">Index</a></div>
+</div>
+<div id="main_box">
+<div id="icon"><img width="32" height="32" alt="Icon" src="../gfx/icon32.png"></div>
+<div id="page_title">
+<h1>How to file a good bug report</h1>
+</div>
+<p>Submitting good bug reports is the best way to get flaws in Hextrapolate fixed as quickly as possible. There are a number of steps you can take to ensure that your bug reports are of high quality:</p>
+<div id="task_box">
+<h2>Perform basic troubleshooting first</h2>
+<p>It’s important to eliminate possible causes outside of the software. You may find that the problem is being caused by something external to the program, such as a corrupt preferences file, and once you correct the external cause the problem goes away.</p>
+<p>See “<a href="troubleshooting_tips.html">troubleshooting tips</a>” for information on basic troubleshooting.</p>
+<h2>Search before reporting</h2>
+<p>Perform a search of the database at <a href="http://bugs.wincent.com/">bugs.wincent.com</a> prior to submitting a report; you can save yourself the effort of filing a report if someone else has already reported the issue.</p>
+<h2>Find out how to reproduce the bug</h2>
+<p>Reproducibility is <strong>the</strong> most important attribute a bug report can have. This means figuring out how to “reproduce” the problem; that is, working out a list of steps required to trigger or cause the bug. Without these instructions I may not be able to fix the bug.</p>
+<h2>Describe your system</h2>
+<p>Include basic information about your system such as:</p>
+<ul>
+<li>the version of Mac <span class="caps">OS X</span> that you are running</li>
+<li>the version of Hextrapolate in which you’ve found a bug</li>
+<li>whether your machine is Intel or PowerPC-based</li>
+</ul>
+<p>One way of providing all this information and more is by <a href="obtaining_a_system_profiler_report.html">including a system profiler report</a>.</p>
+<h2>Collect information from the Console</h2>
+<p>Use the Console application (located in the <tt>Utilities</tt> folder inside the <tt>Applications</tt> folder) to see if anything related to the issue is printed to the <tt>system.log</tt> or <tt>console.log</tt> files. Look for lines which include the word “Hextrapolate”, especially lines which contain error messages or warnings.</p>
+<p>Save any relevant lines and include them in your report.</p>
+<h2>Collect information from the Activity Monitor</h2>
+<p>If Hextrapolate stops responding for long periods of time you can use the Activity monitor (located in the <tt>Utilities</tt> folder inside the <tt>Applications</tt> folder) to gather information about where it might be stuck.</p>
+<p>Select Hextrapolate from the list of running processes and choose “Sample Process” from the “View” menu, then include the resulting sample in your report.</p>
+<h2>One issue per bug report</h2>
+<p>Keep your bug report focussed on a single issue. This will make it easier for others to find your bug report in the database and contribute data to help track down the issue.</p>
+</div>
+<p>To actually report a bug, see <a href="reporting_bugs.html">reporting bugs</a>.</p>
+<div id="see_also">
+<h2>See also</h2>
+<p><a href="troubleshooting_tips.html">troubleshooting tips</a></p>
+<p><a href="reporting_bugs.html">reporting bugs</a></p>
+</div>
+</div>
+</body>
+</html>

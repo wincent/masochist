@@ -1,0 +1,222 @@
+Changes from 2.0 to 2.0.1:
+
+commit 636af944dbddf3b7b0c39251e81f1205d479ccea
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 14:28:52 2009 +0200
+
+    Make "tag-release.sh" script executable
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit f98236295cf75273ba995d1e423b148cbc233af8
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 14:28:20 2009 +0200
+
+    Bump version number prior to 2.0.1 release
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 961e477da2a086ed24d9ed95aade39da9e262940
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 14:27:41 2009 +0200
+
+    distro.sh: prepare plaintext version of man page
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 8ce03a970b062db884551dc80a8f080e255ba0bd
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 14:24:37 2009 +0200
+
+    Update buildtools submodule 6656431..1cd84ad
+    
+      1cd84ad ReleaseNotes.sh: handle submodules ahead of annotated tags
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit f96082eb833dd8286c9db53590925f715ad2776a
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 13:56:32 2009 +0200
+
+    distro.sh: prepare release notes
+    
+    This prepares both short and detailed release notes, including
+    submodules (if and only if there were any changes in the submodules).
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit cf3e80b78832ae184f46246277cc1020fdf6164b
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 13:31:04 2009 +0200
+
+    distro.sh: use temp directory to avoid cluttering up BUILT_PRODUCTS_DIR
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 85fcf4793e20ba05bde4f3ac6a4cb31d68047ed4
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 13:23:36 2009 +0200
+
+    distro.sh: include submodules in source archive
+    
+    Not the prettiest of solutions but it basically does the right thing:
+    
+      1. Use "git archive" to produce the standard tar archive of the
+         repository
+      2. Use "git ls-tree", combined with "grep", to iterate over all
+         submodules at the top level of the repo; at present this just
+         means the "buildtools" submodule
+         a. Create a temporary directory for each submodule
+         b. Use "git archive" and "tar" to get a copy of the submodule
+            source in the temporary directory
+         c. Add the submodule source to the main tar archive
+      6. After iterating over all submodules, use "bzip2" to compress the
+         archive.
+    
+    By design this is not recursive, nor do I anticipate any need for it to
+    be so. When/if "git archive" gets built-in submodule support this part
+    of the script can be considerably simplified.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 65d9ca73e6ef340eb3437dbde1eaa8d847fd3c1e
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 12:57:30 2009 +0200
+
+    distro.sh: prepare source archive
+    
+    This is just the basic implementation at this stage: still have to
+    incorporate submodules in the archive.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 59abb4f94591ac3187dee678f067602e448b0404
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 12:39:11 2009 +0200
+
+    Second phase of "distro.sh" (zip up package file)
+    
+    This will produce zip names like:
+    
+      wincent-strings-util-2.0-7-gbfb53d7.zip
+    
+    For untagged "releases", and names like:
+    
+      wincent-strings-util-2.0.zip
+    
+    For tagged releases.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit d41d08cf9785c82de571bd6c0e438029390905a9
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 12:38:41 2009 +0200
+
+    Clarify comment
+    
+    Clarify what is meant by "this" in the code comment.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit bfb53d7ce6a51496e42312b0b2a80304032b8816
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 12:21:07 2009 +0200
+
+    Add "Distro" target
+    
+    For running "distro.sh" script from within Xcode.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 7ffabdc72e0d9f770b3ac31393bd63069ff68c5e
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 12:16:39 2009 +0200
+
+    distro.sh: implement tag checking
+    
+    This is the first stage of the distro script. Issue a warning if current
+    HEAD is not a signed/annotated commit.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 08867ea8204f28dbbf2517c635c8b239de821b4a
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 12:01:05 2009 +0200
+
+    Add script references to Xcode project
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit dd770463c51d0fdc73715d101e98aef9a317c24f
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 12:00:41 2009 +0200
+
+    Add schema for "distro.sh" script
+    
+    At this stage just a plan of what we want the script to do eventually.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 9b03d4d3bc30809f6c29261a97e19fae016d62e1
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 02:19:21 2009 +0200
+
+    Add tag-release.sh script
+    
+    This is an edited version of the equivalent script from the Synergy
+    repo.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 90217dd49d2e109cb274c46f774cb9f165c8e57d
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Aug 28 15:56:15 2009 +0200
+
+    Enforce minimum system version in installer package
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 614072fb8f2f50a3fd76caaf0f0e95d75c4f8c00
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Aug 28 13:26:19 2009 +0200
+
+    Bump version number post-release
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+
+buildtools: Changes from wincent-strings-util-2.0 to wincent-strings-util-2.0.1:
+
+commit 1cd84ad7b5641e5515c7803c0aff43482874047e
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Aug 29 14:18:14 2009 +0200
+
+    ReleaseNotes.sh: handle submodules ahead of annotated tags
+    
+    These changes only affect behaviour when the "--tag-prefix=" switch is
+    passed in, which is typically when working within submodules.
+    
+    Things worked correctly when the submodule HEAD was at an annotated tag,
+    but broke down when it was somewhere ahead of one.
+    
+    Without the "--tag-prefix=" switch we correctly produced results like:
+    
+      "Changes from 2.0 to 2.0-13-gf96082e"
+    
+    But with the switch we instead produced results like:
+    
+      "Changes from 2.0 to 2.0"
+    
+    And we didn't list any changes at all.
+    
+    Now we list changes since the last annotated tag in that case, bring the
+    behaviour into line for both cases.
+    
+    Note that this commit does add one "BUG" comment, because I noticed
+    while testing that this will break down in repos with no annotated tags
+    ("git describe" bails in such repos). There are probably other issues
+    too when running the script in repos whose HEAD points to older TAGS (I
+    suspect it will always just produce release notes for the latest
+    version), so there is still room for some improvement.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>

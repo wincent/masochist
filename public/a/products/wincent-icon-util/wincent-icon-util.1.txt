@@ -1,0 +1,44 @@
+WINCENT-ICON-UTIL(1)	     Wincent Icon Utility	  WINCENT-ICON-UTIL(1)
+
+NAME
+     wincent-icon-util -- apply a custom icon to a folder
+
+SYNOPSIS
+     wincent-icon-util -icon icns-file -target target-folder
+
+DESCRIPTION
+     wincent-icon-util applies the custom icon in icns-file to the folder
+     target-folder.
+
+OPTIONS
+     -icon    Read custom icon from icns-file.
+
+     -target  Apply custom icon to target-folder.
+
+ERRORS
+     On encountering an error wincent-icon-util will print a description to
+     standard error and exit with an exit code of 1.
+
+SEE ALSO
+     GetFileInfo(1), SetFile(1), Rez(1)
+
+AUTHORS
+     Wincent Colaiuta (http://wincent.com/)
+
+LICENSE
+     Wincent Icon Utility is copyright 2007-2009 Wincent Colaiuta.
+
+     Wincent Icon Utility is free software: you can redistribute it and/or
+     modify it under the terms of the GNU General Public License as published
+     by the Free Software Foundation, either version 3 of the License, or (at
+     your option) any later version.
+
+     Wincent Icon Utility is distributed in the hope that it will be useful,
+     but WITHOUT ANY WARRANTY; without even the implied warranty of MER-
+     CHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the GNU General
+     Public License for more details.
+
+     You should have received a copy of the GNU General Public License along
+     with Wincent Icon Utility.  If not, see <http://www.gnu.org/licenses/>.
+
+Darwin				29 August 2009				Darwin

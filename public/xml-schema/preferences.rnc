@@ -1,0 +1,200 @@
+#
+# preferences.rnc
+# WOCommon
+#
+# Created by Wincent Colaiuta on 7 December 2006.
+# Copyright 2006 Wincent Colaiuta.
+# $Id: preferences.rnc 203 2006-12-08 16:19:16Z wincent $
+#
+# These Relax NG schema (both Compact syntax and XML) can be found at:
+#
+#    http://wincent.com/xml-schema/preferences.rnc
+#    http://wincent.com/xml-schema/preferences.rng
+#    
+# The XML schema (preferences.rng) generated from the compact syntax schema (preferences.rnc) as follows:
+#
+#    java -jar ~/bin/trang.jar preferences.rnc preferences.rng
+#
+# Trang is available from:
+#
+#     http://www.thaiopensource.com/relaxng/trang.html
+#
+
+grammar {
+  
+  # A preferences document consists of a top level root element "preferences":
+  start = element preferences { (Category | Preference)+ }
+  
+  # The root may contain categories (groups of preference settings) or preferences (individual settings).
+  # Categories may contain other categories:
+  Category = element category { attribute name { text }, (Preference | Category)+ }
+  
+  # The "preference" element defines an individual preference setting:
+  Preference = element preference {
+    PopUpMenu             |
+    IntegerStepper        |
+    FloatStepper          |
+    IntegerSlider         |
+    FloatSlider           |
+    FreeFormTextField     |
+    IntegerTextField      |
+    FloatTextField        |
+    Checkbox              |
+    DatePicker            |
+    DateTimePicker }
+     
+  PopUpMenu =
+    attribute type { "popup" },
+   (element display-name { text } &
+    element user-defaults-key { text } &
+    element tool-tip { text }? &
+    element items { element item { text }+ } &
+    
+    # the zero-based index of the default item: 0 used if not supplied
+    element default { xsd:integer }?)
+    
+  IntegerStepper = 
+    attribute type { "stepper" },
+    attribute value { "int" }, 
+   (element display-name { text } &
+    element user-defaults-key { text } &
+    element tool-tip { text }? &
+    
+    # defaults to 1 if not present
+    element step { xsd:integer }? &
+    
+    # no minimum applies if omitted
+    element minimum { xsd:integer }? &
+    
+    # no maximum applies if omitted
+    element maximum { xsd:integer }? &
+    
+    # if not set falls back to minimum, then maximum (if minimum not set), then 0 (if maximum not set)
+    element default { xsd:integer }?)
+   
+  FloatStepper = 
+    attribute type { "stepper" },
+    attribute value { "float" },
+   (element display-name { text } &
+    element user-defaults-key { text } &
+    element tool-tip { text }? &
+    
+    # defaults to 1.0 if not present
+    element step { xsd:float }? &
+    
+    # no minimum applies if omitted
+    element minimum { xsd:float }? &
+    
+    # no maximum applies if omitted
+    element maximum { xsd:float }? &
+    
+    # if not set falls back to minimum, then maximum (if minimum not set), then 0.0 (if maximum not set)
+    element default { xsd:float }?)
+     
+  IntegerSlider =
+    attribute type { "slider" },
+    attribute value { "int" },
+   (element display-name { text } &
+    element user-defaults-key { text } &
+    element tool-tip { text }? &
+    
+    # if not set slider will have "stop on tick marks only" set to off
+    # if set the application will attempt to set the number of tick marks required to produce the requested step size 
+    element step { xsd:integer }? &
+    
+    # defaults to 0 if not present
+    element minimum { xsd:integer }? &
+    
+    # defaults to 100 if not present
+    element maximum { xsd:integer }? &
+    
+    # if not set falls back to minimum, then maximum (if minimum not set), then 0 (if maximum not set)
+    element default { xsd:integer }?)
+  
+  FloatSlider = 
+    attribute type { "slider" },
+    attribute value { "float" },
+   (element display-name { text } &
+    element user-defaults-key { text } &
+    element tool-tip { text }? &
+    
+    # if not set slider will have "stop on tick marks only" set to off
+    # if set the application will attempt to set the number of tick marks required to produce the requested step size 
+    element step { xsd:float }? &
+    
+    # defaults to 0.0 if not present
+    element minimum { xsd:float }? &
+    
+    # defaults to 100.0 if not present
+    element maximum { xsd:float }? &
+    
+    # if not set falls back to minimum, then maximum (if minimum not set), then 0.0 (if maximum not set)
+    element default { xsd:float }?)
+   
+  FreeFormTextField = 
+    attribute type { "string" },
+   (element display-name { text } &
+    element user-defaults-key { text } &
+    element tool-tip { text }? &
+    element default { text }?)
+
+  IntegerTextField = 
+    attribute type { "int" },
+   (element display-name { text } &
+    element user-defaults-key { text } &
+    element tool-tip { text }? &
+    
+    # if not set defaults to 0
+    element default { xsd:integer }?)
+     
+  FloatTextField = 
+    attribute type { "float" },
+   (element display-name { text } &
+    element user-defaults-key { text } &
+    element tool-tip { text }? &
+    
+    # if not set defaults to 0.0
+    element default { xsd:float }?)
+     
+  Checkbox = 
+    attribute type { "bool" },
+   (element display-name { text } &
+    element user-defaults-key { text } &
+    element tool-tip { text }? &
+    
+    # allowed values: true, false, 1, 0
+    # See http://www.w3.org/TR/xmlschema-2/ for a detailed description of the boolean data type
+    # if not set defaults to false
+    element default { xsd:boolean }?) 
+
+  DatePicker = 
+    attribute type { "date" },
+   (element display-name { text } &
+    element user-defaults-key { text } &
+    element tool-tip { text }? &
+    
+    # date format is '-'? yyyy '-' mm '-' dd ((('+' | '-') hh ':' mm) | 'Z')?
+    # See http://www.w3.org/TR/xmlschema-2/ for a detailed description of the date data type
+    element minimum { xsd:date }? &
+    element maximum { xsd:date }? &
+    
+    # if not set defaults to current date
+    element default { xsd:date }?)
+     
+  DateTimePicker = 
+    attribute type { "datetime" },
+   (element display-name { text } &
+    element user-defaults-key { text } &
+    element tool-tip { text }? &
+    
+    # datetime format is'-'? yyyy '-' mm '-' dd 'T' hh ':' mm ':' ss ('.' s+)? ((('+' | '-') hh ':' mm) | 'Z')?
+    # See http://www.w3.org/TR/xmlschema-2/ for a detailed description of the dateTime data type
+    # no minimum applies if omitted
+    element minimum { xsd:dateTime }? &
+    
+    # no maximum applies if omitted
+    element maximum { xsd:dateTime }? &
+    
+    # if not set defaults to current date and time
+    element default { xsd:dateTime }?)
+}

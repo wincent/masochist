@@ -1,0 +1,57 @@
+Changes from 3.5a4 to 3.5a5:
+
+commit 64252fcb3adb0118f10cdfa475f1b31163c59856
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Jan 23 12:13:13 2008 +0100
+
+    Update version numbers for release
+    
+    Bump to 3.5a5.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit ffaa428dfd430155566f4448dc351a3d9e7146af
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sun Jan 13 18:17:47 2008 +0100
+
+    Restore Edit menu to Synergy Preferences application
+    
+    I was overly enthusiastic in removing this; it turns out that without it
+    the keyboard shortcuts for Copy and Paste don't work, and that makes
+    entering registration information unnecessarily painful.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 4e616e0ebfd569d2c5357c0d69ecc2eb9b3f459d
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Jan 11 16:33:53 2008 +0100
+
+    Fix typo in 5e08528
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 5e0852877e6b1f8a5393d4f46c231bda00263058
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Jan 11 16:16:44 2008 +0100
+
+    Don't rely on synthesized setter for mutable property
+    
+    A synthesized setter on a mutable property, combined with the copy
+    attribute, will send a copy message to any object passed in to it, thus
+    converting it into an immutable object.
+    
+    So in this case must provide a non-synthesized setter which correctly
+    employs mutableCopy.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit b608d32a76acab64e5595b6ea45c8c2c829e9a2c
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Tue Jan 8 17:09:50 2008 +0100
+
+    Replace use of NSAppleScript in for refreshing playlists
+    
+    NSAppleScript appears to cause crashes in a GC environment, so dump it
+    in favor of the Scripting Bridge.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>

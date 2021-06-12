@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- This is a sample file. You should edit the values in this file, delete these explanatory comments, and include the file inside your button set's "synergyButtons" folder. -->
+	<!-- All keys in this file are optional. You can remove any keys that you do not wish to include. If you submit this button set to Wincent, the information will be made public on the wincent.com website (and will be visible within the user interface of Synergy Advance), so you should therefore omit any information that you wish to keep confidential (for example, you may wish to keep your email address away from the eyes of spammers. -->
+	<!-- In submitting button sets to Wincent, you retain the copyright on the work that you have created, but you grant Wincent an unlimited, royalty-free license to redistribute the copyrighted work, either by making it available for download or by including it within Synergy and/or Synergy Advance. The "Wincent Colaiuta" in the copyright attribution below is for example purposes only. You should delete it. -->
+	<key>Author copyright</key>
+	<string>Copyright ¬© 2004 Wincent Colaiuta, All Rights Reserved.</string>
+	<!-- If you want to minimise exposure of your email address on the web so as to avoid spam, omit the "Author email" key. -->
+	<key>Author email</key>
+	<string>win@wincent.org</string>
+	<key>Author name</key>
+	<string>Wincent Colaiuta</string>
+	<!-- You can use the "Author organization" key to promote your organization or business. -->
+	<key>Author organization</key>
+	<string>Wincent</string>
+	<!-- You can promote your website or the website of your organization or business by including the "Author website" key. -->
+	<key>Author website</key>
+	<string>http://wincent.com/</string>
+	<!-- If your set is specifically designed to be used with the buttons placed next to each other with a zero-pixel gap in between them, you should set the "Default button spacing" key to a value of 0 (zero). If your set does not specifically require this then you should omit the key and allow the users of your button set to use their preexisting button spacing preference. -->
+	<key>Default button spacing</key>
+	<integer>0</integer>
+	<!-- If you provide a descriptive string for the "Description" key (highly recommended), please try to keep descriptions under 25 words. Long descriptions may be truncated when displayed on the website. -->
+	<key>Description</key>
+	<string>A minimalist set, this is the original button set that shipped when Synergy was first released.</string>
+</dict>
+</plist>

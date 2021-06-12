@@ -1,0 +1,7 @@
+Changes from 4.1a to 4.1b:
+
+    Bump version number prior to 4.1b release
+    Remove "Get artwork from Synergy" sample script
+    Fix "Transfer cover to iTunes" menu item for iTunes 9
+    Tighten error logic for cover art transfer errors
+    Bump version number post-release

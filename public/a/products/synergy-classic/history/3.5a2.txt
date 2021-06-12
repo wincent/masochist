@@ -1,0 +1,4 @@
+Wincent Colaiuta (2):
+      Work around UI bug in Xcode 3
+      Bump version number to 3.5a2
+

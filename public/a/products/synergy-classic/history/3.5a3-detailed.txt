@@ -1,0 +1,919 @@
+Changes from 3.5a2 to 3.5a3:
+
+commit eaa73964476005136920f584788bdd00899a8257
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Mon Jan 7 14:12:11 2008 +0100
+
+    Update README for release
+    
+    Presentation tweaks to README prior to release (sans serif fonts,
+    clickable hyperlinks).
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 3a62f8b16a780b610d262cb17e51ba6942f70241
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Mon Jan 7 14:09:56 2008 +0100
+
+    Ignore LyX temporary files
+    
+    Add entry to gitignore file to ignore the temporary backup files created
+    by LyX.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 39dc302da98370904d0af88070244d78e8e6a8a2
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Mon Jan 7 14:00:28 2008 +0100
+
+    Update user-visible strings for release
+    
+    Bump version number (3.5a3), copyright years, and refresh localizable
+    strings files prior to release. Also correct a file encoding issue
+    detected during the localizable strings update (genstrings was reporting
+    a non-UTF-8 source file).
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 39f627d1691837696931587ebd9247a6e913bbf6
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Mon Jan 7 13:38:59 2008 +0100
+
+    Update copyright years
+    
+    Extend range to include 2008.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 994da25a7af1e5a412eb5212014e620ecf880b12
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Mon Jan 7 13:24:08 2008 +0100
+
+    Pass NULL to executeAndReturnError:
+    
+    The only known crasher at the moment is happening NSAppleScript's
+    executeAndReturnError: method.
+    
+    Unfortunately, I can't see anything at all in the calling environment
+    that could explain the crash. The NSAppleScript instance is set up using
+    a static NSString literal which by definition can never be garbage
+    collected. I am beginning to fear that NSAppleScript can't be used at
+    all in a garbage collected environment.
+    
+    As a defensive tactic I'm updating all invocations of the method to pass
+    NULL for the error dictionary. This usage is not documented, but it does
+    follow a pattern employed by many other Apple APIs and there are plenty
+    of examples of code out there in the wild that do use this pattern.
+    
+    So basically this is a "try it and see" change to see if it eliminates
+    the sporadic crashes. If it doesn't then more drastic measures will be
+    required, most likely involving the replacement of NSAppleScript with
+    something else (the scripting bridge, for example).
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 7ae6b07b9b7704b58a77113ef6c52fb35167c1fb
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Dec 28 13:55:24 2007 +0100
+
+    Add README to distribution
+    
+    A README is probably necessary given the number of important changes in
+    the 3.5 release (principally the change of format from System
+    Preferences pane to standalone application, and the new minimum system
+    version requirement).
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 10c1f84dcb9bad873a0155308033d0651f93d3b3
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Dec 28 13:31:03 2007 +0100
+
+    Add LSMinimumSystemVersion to Info.plist
+    
+    The installer used to advise the user if the system did match the
+    minimum requirements; now that this is a standalone application we
+    instead rely on the system to do so thanks to the LSMinimumSystemVersion
+    key in the Info property list.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit c7eb0af3cce75f580e31a1a80417c1f929e3697a
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 27 17:21:32 2007 +0100
+
+    Close the application when last window is closed
+    
+    This provides a nicer user experience. If there are unsaved changes the
+    user will already have seen/dismissed the "Apply"/"Don't Apply" sheet,
+    so don't resurrect the window and show the sheet again.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit c2adcefc476470f518ef9b34df8a571054b8e05e
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 27 17:14:25 2007 +0100
+
+    Provide menu item for bringing preferences window on screen
+    
+    Useful for when user dismisses preferences window and later decides that
+    he/she wants it back.
+    
+    An interesting case is when there are unapplied changes; if the user
+    tries to close the window, clicks "Don't Apply", and then tries to quit
+    the application then the window will come back on screen again and the
+    sheet will be shown.
+    
+    In order to support this repeated showing of the preferences window had
+    to use the setReleasedWhenClosed: method. Note that I may later decide
+    to auto-quit the application when the last window is closed.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 52c8406582974abf6467f5ce347152b4f3fcc4dc
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 27 16:31:51 2007 +0100
+
+    Fix window closing and termination behaviour
+    
+    The sheet callback logic was slightly broken when it came to
+    distinguishing between application termination and window
+    closing.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 5ff68349753f109b36d2fbc098d7869b30a160ec
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 27 15:43:47 2007 +0100
+
+    Make test for non-shallow clone silent
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit bb1efedb17422f3791fdda3d0c8c71017d513f5c
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 27 15:37:27 2007 +0100
+
+    Don't produce release notes for nightlies
+    
+    The nightly builds are made using shallow clones and so can't produce
+    release notes during the build.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 74f817b6466bea0837792d42233a96860d54c26a
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 27 15:13:22 2007 +0100
+
+    Produce detailed release notes during the build
+    
+    In addition to the brief release notes already generated.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 26d81a66aa9084b9419bebbfc374f3be0326c632
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 27 14:44:05 2007 +0100
+
+    Avoid uninitialized use of variable
+    
+    GCC warns here because in the event of an error the variable might be
+    used prior to initialization. Fix by moving the initialize to the very
+    top of the method body.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit d1c8738d750b552672f46e3acd61a6b2b2c27e22
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 27 14:43:22 2007 +0100
+
+    Add back NSHumanReadableCopyright
+    
+    I was a little too quick to remove this key from my InfoPlist.strings
+    files; it is used in the default About box.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit ba00d754bb2dbe7d59d887ae5d47187a11524dcc
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 27 13:10:41 2007 +0100
+
+    Xcode project buzz
+    
+    Xcode insists on adding/removing comments in the project.pbxproj file
+    (no substantive changes made). Commit it to keep "git status" quiet.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 0f767e735cbf8fe09e4e0960e7e3f54feba53a03
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 27 01:12:42 2007 +0100
+
+    Echo zip name to target build directory
+    
+    So that the nightly script can find out the name of the distribution
+    archive without having to duplicate the logic of the distro.sh script.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit c9bbb458a8f155dc2c29b1cc91b6699740066dfc
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Dec 26 23:56:53 2007 +0100
+
+    Use short relative paths in zip archive
+    
+    Don't use absolute paths when preparing the zip archive (all the levels
+    wind up in the extracted contents as well); instead keep the relative
+    paths as short as possible by changing into the target build dir before
+    preparing the archive.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 9d5cbbf63ffd0f4447d3ba0b0648e8948bcc9e37
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Dec 26 23:55:55 2007 +0100
+
+    Move sample files into subdirectory
+    
+    Move sample track change items, button sets etc into an "Extras"
+    subdirectory to make it clearer where users should start the
+    first time they extract the distribution archive.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 1064c1910bf353c1dd30e21967f8893493cee773
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Dec 26 23:46:22 2007 +0100
+
+    New distribution script
+    
+    Replace old installation script with new target and distro.sh script.
+    Seeing as this is a simple drag-and-drop install now, just use a zip
+    archive and avoid the complication of a disk image.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 257953e2c2c52b65101a2c202b8c2df9e0c84cf1
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Dec 26 20:58:51 2007 +0100
+
+    Use new login API from WOCommon
+    
+    The new wrapper application updates the login items (formerly the job of
+    the installer). Update the preference pane code to make use of the same
+    method and avoid duplication; this allows us to rip out a sizeable hunk
+    of old code.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 6b5a1787ab7a9ecc3756f60c7926575728fa4f33
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Dec 26 17:01:29 2007 +0100
+
+    Dispose of old "install" subfolder
+    
+    Most of the files previously in the "install" subfolder are no longer
+    needed and so can be removed. The remaining important files (those to be
+    included with the Synergy distribution) are moved to a new top-level
+    subfolder, "distribution".
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit a93bd552e61b31971b4796ce699df3dc9ab211c7
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Dec 26 16:32:30 2007 +0100
+
+    Update Launch Services and login items at launch
+    
+    Teach the new wrapper application to take on these two responsibilities
+    that were previously handled by the installer.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit e5f48d3d3c38c20d967745d80559a376c2dd57b4
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Mon Dec 24 19:08:14 2007 +0100
+
+    Modernize localizable string update process
+    
+    Ditch old shell script build phases for updating strings in favor of
+    just calling UpdateStringsFiles.sh from buildtools.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 0f1a10855255bf99ea0842ac7eb816f54589f24d
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Mon Dec 24 19:07:11 2007 +0100
+
+    Remove installer README documents
+    
+    These are no longer relevant as we no longer even have an installer.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 2b03b13f6a1b79ce0d9bec9a9e83a0c3db5382fd
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Mon Dec 24 16:47:38 2007 +0100
+
+    Tweak property list keys to match latest documented behaviour
+    
+    Keep in line with latest recommendations in the Apple "Property List Key
+    Reference". At the same time I used wincent-strings-util to regenerate
+    all of the localized variants, which means that the key order and
+    comments are now consistent across al localizations. I also added in
+    the InfoPlist.strings files for localizations which were lacking them
+    (at this stage untranslated).
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 801a8fdc609ccee9d0364b0b8495c608958e8c24
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sun Dec 23 23:40:00 2007 +0100
+
+    Change button set handling for installerless distribution
+    
+    The buttons sets which were formerly installed by the installer are now
+    bundled inside the application. Minor code changes to allow the
+    preference pane to share the button sets with the application.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 4a9cbcf8b195cee2e9694c7d42b4d0391a35798e
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sun Dec 23 22:25:44 2007 +0100
+
+    Call mainViewDidLoad when showing preference pane
+    
+    Add missing call in WOPreferencePane class to ensure the preference pane
+    gets properly initialized at load time.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit a0adca54c1659c1922a213714fec15b16f3ebf2f
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sun Dec 23 22:07:29 2007 +0100
+
+    Update shell script for new development language path
+    
+    One of the shell script phases had a hard-coded development language
+    path (English.lproj). Change it to work with the new development
+    language (en.lproj).
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 1cce70825c4584ac8ddee00332035939ff1f9aea
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sun Dec 23 21:44:25 2007 +0100
+
+    Add localized xib references back to Xcode project
+    
+    Now that the localized xibs are back in action again, add them back to
+    the Xcode project.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 350ab6636c66c03b71ef47682131410058a4e476
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sun Dec 23 21:30:48 2007 +0100
+
+    Run UpdateXibs.sh and integrate old localization info
+    
+    Set up the initial strings and untranslated.strings files using
+    UpdateXibs.sh. In so far as is possible, I have tried to use the old
+    localization info extracted from a previous release. In many cases
+    this applies cleanly to the new xibs, but there are many where it does
+    not, and these will still need to be updated by hand; even in the cases
+    where the old strings applied cleanly any custom geometry will have to
+    be added back in by hand because this did not carry across.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 6a36f053eee58e47dbfb452295ec2f7b896e74a7
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 20 21:08:25 2007 +0100
+
+    Fix permissions
+    
+    Fix braindead permissions that somehow creeped into the old Subversion
+    repository (executable bits set on non-executable files), and which
+    therefore were migrated over to the new Git repository as well.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 8e17063b47b995cd860c26cadc168782c8827914
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 20 21:07:28 2007 +0100
+
+    Add some TODO comments in the Synergy Preferences controller
+    
+    These are things that will need to be done prior to release: automatic
+    updating of login items (if user preferences request it), and clean up
+    of the now-redundant installation files in whole or in part (yet to be
+    decided).
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 2e2938dcbb189be6a46f83dca377387042be1ce7
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 20 21:06:09 2007 +0100
+
+    Remove old pbproj bundle from SynergyReg subdirectory
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 636b7466f84cdb20bdb602ca9ae2f4bc2ded8a59
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 20 20:53:58 2007 +0100
+
+    Rename English.lproj to en.lproj
+    
+    For consistency with other projects and with Apple's recommendations.
+    This renaming includes updating all Xcode project references, so the
+    build should continue to work with no other modifications.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 28983e700440823b25259f6c221c7c3f9a31ce53
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 20 20:20:33 2007 +0100
+
+    Reference top-level nib objects for GC and clean localizations
+    
+    Add top-level strong references to a couple more nibs to ensure that
+    objects don't get inopportunely garbage-collected.
+    
+    I would have liked to propagate this same change to the other nibs using
+    ibtool but unfortunately there are quite a few errors (class mismatches)
+    reported that prevent this from proceeding; so somewhere in the long
+    history of these nibs they have gotten far enough out of sync with the
+    authoritative English versions to make them unusable with ibtool.
+    
+    So, for now I am temporarily removing the unsynchronizable nibs
+    entirely; I will have to create new nibs (copies of the English nibs)
+    and copy the strings across by hand from the older localizations that I
+    have on file. This will be a lengthy and painful job, so it might be
+    sometime before it gets completed.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit b1b2b98efe90dbf40e03832d58b6d9f899ea0e76
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 20 19:42:22 2007 +0100
+
+    Upgrade xibs to latest format
+    
+    Using "ibtool --upgrade".
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit c797be546519b184c8a9ab4d8ef42fc19c885439
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 20 19:29:06 2007 +0100
+
+    Convert all nibs to xibs
+    
+    Use the nicer, SCM-friendly nib format that's new with Leopard and Xcode
+    3.0.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit d6cee753c0ba0e210b01cfe9add53b2a17432e67
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 20 18:46:17 2007 +0100
+
+    Remove NSMenuExtra header
+    
+    It's unused, so get rid of the clutter.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 10bd7f607be0de1d0d501983d5524bc7c57d2089
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 20 18:43:31 2007 +0100
+
+    Update release procedure and development notes
+    
+    Lots has changed since these notes were originally written; there are
+    still references to CVS in there, for example, and that was phased out a
+    long time ago in favor of Subversion, then SVK and finally Git.
+    
+    So prune the irrelevant bits.
+    
+    This commit also includes a simple shell script for tagging releases in
+    Git; seeing as each release should really be tagged in at least three
+    repositories (Synergy itself, WOCommon and WOPublic), it's easier to do
+    this with a single script.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 38001f58aa3a2f9f45930df5440acfe46f1da512
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 20 18:03:55 2007 +0100
+
+    Update versioning and targets
+    
+    Switch to a modern versioning technique in the build, like the one used
+    in Synergy Advance. Basically, when building a package for release we
+    update the build number based on the current Git commit; the version
+    number and copyright years are automatically propagated through to the
+    localized InfoPlist.strings files.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 0bd53831bb66336c57ed76750343d93e3fd1fd6f
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 20 14:52:42 2007 +0100
+
+    Add custom icon for standalone preferences application
+    
+    This is the same as the standard Synergy icon.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit a77d9066b4001d100a1d3de944d5fcb15f1ce5e2
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 20 13:44:32 2007 +0100
+
+    Formatting fixes for main controller
+    
+    Minor rewrapping for readability, and remove some unnecessary braces.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 9d4a9345495d9490940daf1c71b53f65ac178acf
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 20 13:42:30 2007 +0100
+
+    Add built-in uninstaller for global installs
+    
+    In 0b7051e I added an uninstaller for local installs. This commit does
+    the same for global installs (which require root privileges to
+    uninstall).
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit b2cc4760a67add6e9e2ccbfd134ba40f7cf5171f
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 20 03:02:17 2007 +0100
+
+    Force strong references to top-level nib objects
+    
+    Set up some phoney outlets to the top-level objects in the nib so as to
+    create strong references to them and thus avoid having them garbage
+    collected.
+    
+    I am not entirely sure of all the cases in which this is required (I
+    know that it is required for standalone controllers) so I have created
+    outlets for all "real" (instantiated) top-level objects (at this stage
+    that only means the controller and the MainMenu).
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 0b7051e2b017a3d832833666e299b649f62a555d
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Thu Dec 20 01:41:10 2007 +0100
+
+    Build-in uninstaller for old versions
+    
+    Now that we don't have an installer we still need a way to clean up old
+    versions of the software, so build-in an uninstallation facility. This
+    first implementation is for local (non-root) installs only. A subsequent
+    commit will add global uninstall capability.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 81aea3b461fa739ce0e47e77f898ea50976d2129
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Dec 19 13:40:04 2007 +0100
+
+    Adjust "preferences" menu item
+    
+    Teach the app to look for the new standalone preferences app rather than
+    the one installed in {~/,/}Library/PreferencePanes/.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 3cc04061eab7ebb31b8a0a3b080842a6ec6f5dbe
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Dec 19 13:01:24 2007 +0100
+
+    More Objective-C 2.0 properties
+    
+    Convert more old accesors to use the new Objective-C 2.0 properties
+    (WOSynergyFloaterController, WOSynergyFloaterView and
+    SynergyController).
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit cb9a22cd16bc5324dcecb51a2e29ef970a88ea78
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Dec 19 12:59:56 2007 +0100
+
+    Handle application and window closing
+    
+    Special handling for application and window closing if there are
+    unsaved changes. To get this to actually work I also had to fix a bug in
+    the loading code: we were instantiating an instance of WOPreferencePane
+    rather than the subclass as specified by the NSPrincipalClass key in the
+    bundle info property list.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit b499a72b49ca4e1ade691d6be5d8ae2833b7e6ba
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Wed Dec 19 11:38:57 2007 +0100
+
+    Initial version of standalone preferences application
+    
+    Now the Synergy prefPane is no longer loaded by the System Preferences
+    and is instead hosted by a standalone application. This commit is an
+    initial version of the application which loads the prefPane bundle and
+    displays the window in the center of the screen on launch.
+    
+    This change was made after a review of the Garbage Collection migration.
+    Synergy's code is found in two places: inside the application itself and
+    inside the preference pane (and the application is bundled inside the
+    preference pane bundle). The application code has been converted to use
+    Garbage Collection but the preference pane code could not be converted
+    because the System Preferences application is compiled without GC
+    support and the PreferencePanes framework against which the preference
+    pane must link does not come in a GC-enabled version, at least as of
+    Leopard.
+    
+    This is problematic because some of the Synergy code is shared between
+    the app and the preference pane; it is therefore necessary for the
+    common code to be written using a reference-counting style (which
+    largely negates the benefit of moving to GC) or using conditional
+    compilation to produce two variants of the same code (which is an
+    error-prone process).
+    
+    So evaluating all this, it seems the best course of action is to host
+    the preference pane in a standalone application. In order to do so I
+    can no longer link against the PreferencePanes framework, so I've made
+    a new class, WOPreferencePane, to stand in for NSPreferencePane, and
+    a simple NSWindow subclass, WOPreferenceWindow, to load and display a
+    single pane.
+    
+    An additional benefit of this move is that from now on Synergy will
+    not require an installer because as a standalone application it can
+    be installed anywhere.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit c27254fe11348e5bca00b67206a5a6c1577bd309
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sun Dec 16 00:37:23 2007 +0100
+
+    Remove unused help classes
+    
+    WOHelp and WOSynergyHelp are no longer used.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit d48f69deda65e69f12af7faab58f2d049b8a4cc7
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Dec 15 23:58:03 2007 +0100
+
+    Remove WOSingleton class and other cruft
+    
+    Much the same as I did in WOCommon, remove the WOSingleton abstract
+    class in favor of concrete per-class implementations. This is
+    especially overdue in the case of Synergy as its WOSingleton was
+    considerably less sophisticated than the version in WOCommon.
+    
+    There is now only one class which requires singleton functionality
+    and it now has it thanks to fast double-checked locks with memory
+    barriers.
+    
+    At the same time as removing WOSingleton, also removed some other
+    cruft classes that had been lying arond for ages as part of an
+    experimental refactoring which was abandoned.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit bde3657d178c47eb8645ff46745e0774ab2b0503
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Dec 15 23:55:31 2007 +0100
+
+    Update embedded Growl framework to 1.1.2
+    
+    This is based on a clean checkout of the 1.1.2 tag in the Growl
+    repository. The only modification is that Garbage Collection has
+    been enabled in the build settings.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 3dc2d5cbd530c62c3398e7ddbb5dbfbebf012544
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Dec 15 22:55:21 2007 +0100
+
+    Remove unused variable
+    
+    Recent refactoring makes this variable unused, so dump it.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit ae22fe718d1c49c5f83416094bf226e98d78027d
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Dec 15 22:47:46 2007 +0100
+
+    Remove no-op retains
+    
+    These don't belong in here under GC.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit cbfc2de315bd68c00e6a1c4d5090177cc709cec8
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Dec 15 20:20:06 2007 +0100
+
+    Fix new compile-time warnings with new GCC
+    
+    The new version of GCC issues some warnings where the old one didn't,
+    so make some tweaks to ensure warning-free builds.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 584f867014559ca8df56f5b559536f26b0591785
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Dec 15 17:54:25 2007 +0100
+
+    Major code audit and clean-up for GC
+    
+    Have audited the entire codebase for GC problems and in the process have
+    cleaned up a lot of the code (Objective-C 2.0 properties, shorter
+    allocation patterns, fast enumeration and so forth). In all inserted
+    just over 1200 lines and deleted over 2000.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit cd5a4edde68b229c09e679de7a3fe35f0ac75bd8
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Dec 15 12:20:28 2007 +0100
+
+    Modernize NSTimer pausing category
+    
+    Now that this code no longer needs to run on Jaguar we can replace the
+    old-fashioned mutexes with @sychronized blocks.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit a73dbe7ba57fd8d1c51c7eb0691f3f039a347f15
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Mon Dec 10 12:09:39 2007 +0100
+
+    New version of login-tool
+    
+    Bundle the new version of login-tool (based on 10.5 Launch Services API)
+    in the installer.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 4cff245e0ef75dea5b9bc972420ea30a376e12db
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sun Dec 9 15:01:27 2007 +0100
+
+    Objective-C 2.0 changes for WOAudioscrobbler class
+    
+    - properties
+    - remove retain/release/autorelease calls
+    - use class extension (anonymous category) for private methods
+    - C99 for loop syntax
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit dc7cec2e862fee1f43d49c62d19396338f57f295
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Dec 8 19:16:29 2007 +0100
+
+    Clean up code comments in WOSysctl.c
+    
+    During a GC audit was scanning for the word "release" and a couple of
+    false positives in code comments came up; remove them seeing as they
+    are chatty and superfluous anyway.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit e7e23331ae3e0d2ccd0b670630466d6dcff1fb7b
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Dec 8 18:38:05 2007 +0100
+
+    GC changes for WODistributedNotification class
+    
+    The autorelease calls are no longer needed, doubly so because this is a
+    singleton class and was never released prior to GC anyway.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit d1202aef3594baf698fe5754fbd3c194c0852486
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Dec 8 17:18:43 2007 +0100
+
+    Add reminder to use WOAssert in NSTimer category
+    
+    For now we explicitly check and throw an exception, but as this is
+    intended to check programmer errors should really use an assert macro
+    (which will only be active in debug builds).
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 35ae835bc33ac863fe46f87d6a0fe7b2f903d821
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Dec 8 15:50:34 2007 +0100
+
+    Remove irrelevant comment from WOKeyCaptureView
+    
+    Remove comment that's no longer relevant under GC.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 492a094d9c501150b05ef0af73379ba521a2ba3e
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Dec 8 15:48:46 2007 +0100
+
+    Remove NSLock from NSTimer category
+    
+    NSLock was required when the code had to run on Jaguar (because the
+    @synchronized directive was not available); now this limitation is
+    no longer applicable so replace the NSLock idiom with @synchronized.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 137534a7ee8dd718848859d2ad02ac28533bb7f9
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Sat Dec 8 15:44:44 2007 +0100
+
+    NSTimer category updates for GC
+    
+    Remove comment about "leaking" singleton which no longer make any sense
+    under Garbage Collection.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit dc7ef44f5d4ad0345d47c05a31c92f9a8a07f893
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Dec 7 22:48:46 2007 +0100
+
+    Prune development notes
+    
+    Remove section on login items (no longer relevant).
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 046d739838dcbdeb35164ebf66e2c99f1cb32972
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Dec 7 22:46:32 2007 +0100
+
+    More build setting cleanup
+    
+    Remove old version number settings and the disk image script that made use
+    of them.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 3d41f2fb83e2d83f4b00061b469b9c0f6f9621dc
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Dec 7 22:41:55 2007 +0100
+
+    Switch to buildtools-based configuration
+    
+    To make sure the Garbage Collection conversion is as consistent as
+    possible, switch to a buildtools-based configuration, cleaning out as
+    many custom build settings as possible at the same time (one of these
+    is BASE_DIR, which has been replaced with SRCROOT).
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit a2cc76951c65650561e33391db5568ac00164eef
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Fri Dec 7 22:10:47 2007 +0100
+
+    Add new build of login-tool
+    
+    This is a Universal Binary and rewrite in Objective-C 2.0 (using GC) and
+    the scripting bridge. This should hopefully fix the "not starting at
+    login" issues, although there are known problems with Apple's
+    implementation of login items under Leopard.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit 894da4c27d87428d2fe2c40c4ca5b5de0a089755
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Tue Nov 27 14:37:20 2007 +0100
+
+    Produce code-level release notes during build
+    
+    Use the new ReleaseNotes.sh script to automatically generate code-level
+    release notes during the build process.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+
+commit fa0519e8d53bea683d3ad26599edfa966ba140fb
+Author: Wincent Colaiuta <win@wincent.com>
+Date:   Tue Nov 27 14:20:54 2007 +0100
+
+    Bump version number post-release
+    
+    Bump version number to 3.5a2+.
+    
+    Signed-off-by: Wincent Colaiuta <win@wincent.com>

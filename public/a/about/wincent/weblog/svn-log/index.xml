@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+   <channel>
+      <title>Git activity log</title>
+      <link>http://wincent.com/a/about/wincent/weblog/svn-log/</link>
+      <description>Git commit log</description>
+      <language>en</language>
+      <copyright>Copyright 2008</copyright>
+      <lastBuildDate>Fri, 14 Mar 2008 20:37:55 +0100</lastBuildDate>
+      <generator>http://www.sixapart.com/movabletype/</generator>
+      <docs>http://blogs.law.harvard.edu/tech/rss</docs> 
+
+      
+      <item>
+         <title>Speed up full-text indexing by doing a multi-row insert (wincent.com, 0d3e312)</title>
+         <description><![CDATA[This gets indexing up to an acceptable speed (a 10,000 word, 90,000 byte test article took less than a second to save in development mode, so production mode should be fast enough) so we can turn it back on again.
+
+Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;]]></description>
+         <link>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/speed_up_fulltext_indexing_by.php</link>
+         <guid>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/speed_up_fulltext_indexing_by.php</guid>
+        
+        
+         <pubDate>Fri, 14 Mar 2008 20:37:55 +0100</pubDate>
+      </item>
+      
+      <item>
+         <title>Fix the n+1 select problem in the tags implementation (wincent.com, 513d102)</title>
+         <description><![CDATA[When showing all items marked with a single tag (ie. the &quot;show&quot; action of the tags controller) or all items matching multiple tags (ie. the &quot;search&quot; action) we unfortunately had an n+1 SELECT problem because we had to inspect each Taggable instance to see if the user had access permissions to it.
+
+Now we reduce the number of queries by grabbing all Taggables for a given taggable type in one hit. In other words, given 3 matching Articles and 10 matching Posts, we now do 2 queries during access checking rather than 13; and when we display the Taggables in the view there are no additional queries because the Taggables have already been fetched.
+
+Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;]]></description>
+         <link>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/fix_the_n1_select_problem_in_t.php</link>
+         <guid>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/fix_the_n1_select_problem_in_t.php</guid>
+        
+        
+         <pubDate>Fri, 14 Mar 2008 14:19:28 +0100</pubDate>
+      </item>
+      
+      <item>
+         <title>Add product creation with icon uploading (wincent.com, b970662)</title>
+         <description><![CDATA[Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;]]></description>
+         <link>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/add_product_creation_with_icon.php</link>
+         <guid>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/add_product_creation_with_icon.php</guid>
+        
+        
+         <pubDate>Wed, 05 Mar 2008 16:54:10 +0100</pubDate>
+      </item>
+      
+      <item>
+         <title>Add extension and description to products model (migration) (wincent.com, 4eb5a36)</title>
+         <description><![CDATA[We don't need to store the full path to the icon file but we do need to store the icon file extension; with this we can reconstruct the full path on demand.
+
+Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;]]></description>
+         <link>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/add_extension_and_description.php</link>
+         <guid>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/add_extension_and_description.php</guid>
+        
+        
+         <pubDate>Wed, 05 Mar 2008 16:52:56 +0100</pubDate>
+      </item>
+      
+      <item>
+         <title>Update products link in navbar (wincent.com, 76cf73f)</title>
+         <description><![CDATA[Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;]]></description>
+         <link>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/update_products_link_in_navbar.php</link>
+         <guid>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/update_products_link_in_navbar.php</guid>
+        
+        
+         <pubDate>Wed, 05 Mar 2008 15:22:32 +0100</pubDate>
+      </item>
+      
+      <item>
+         <title>Add products listing to index, links are permalinks (wincent.com, 63db015)</title>
+         <description><![CDATA[Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;]]></description>
+         <link>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/add_products_listing_to_index.php</link>
+         <guid>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/add_products_listing_to_index.php</guid>
+        
+        
+         <pubDate>Wed, 05 Mar 2008 14:40:05 +0100</pubDate>
+      </item>
+      
+      <item>
+         <title>Fix products routing (wincent.com, b906a09)</title>
+         <description><![CDATA[I'd mistakenly used &quot;map.resource&quot; instead of &quot;map.resources&quot; which meant that things like &quot;product_path&quot; didn't work.
+
+Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;]]></description>
+         <link>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/fix_products_routing_wincentco.php</link>
+         <guid>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/fix_products_routing_wincentco.php</guid>
+        
+        
+         <pubDate>Wed, 05 Mar 2008 10:17:24 +0100</pubDate>
+      </item>
+      
+      <item>
+         <title>Assign found products for view (wincent.com, 98ab4ca)</title>
+         <description><![CDATA[This is a spec, the corresponding change was already made to the controller itself.
+
+Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;]]></description>
+         <link>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/assign_found_products_for_view.php</link>
+         <guid>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/assign_found_products_for_view.php</guid>
+        
+        
+         <pubDate>Wed, 05 Mar 2008 09:45:24 +0100</pubDate>
+      </item>
+      
+      <item>
+         <title>Teach products controller to find all products (wincent.com, b794161)</title>
+         <description><![CDATA[Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;]]></description>
+         <link>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/teach_products_controller_to_f.php</link>
+         <guid>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/teach_products_controller_to_f.php</guid>
+        
+        
+         <pubDate>Wed, 05 Mar 2008 09:42:32 +0100</pubDate>
+      </item>
+      
+      <item>
+         <title><![CDATA[Add &quot;index&quot; action to products controller (wincent.com, 96c7e77)]]></title>
+         <description><![CDATA[And accompanying specs.
+
+Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;]]></description>
+         <link>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/add_index_action_to_products_c.php</link>
+         <guid>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/add_index_action_to_products_c.php</guid>
+        
+        
+         <pubDate>Wed, 05 Mar 2008 09:38:28 +0100</pubDate>
+      </item>
+      
+      <item>
+         <title>Add basic products controller specs (wincent.com, 4b2b9cb)</title>
+         <description><![CDATA[These are the shared application controller specs which all controllers should pass.
+
+Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;]]></description>
+         <link>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/add_basic_products_controller.php</link>
+         <guid>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/add_basic_products_controller.php</guid>
+        
+        
+         <pubDate>Wed, 05 Mar 2008 09:30:13 +0100</pubDate>
+      </item>
+      
+      <item>
+         <title>Validate uniqueness of product permalinks (wincent.com, a33cdbc)</title>
+         <description><![CDATA[This is the validation and the corresponding spec.
+
+Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;]]></description>
+         <link>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/validate_uniqueness_of_product.php</link>
+         <guid>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/validate_uniqueness_of_product.php</guid>
+        
+        
+         <pubDate>Wed, 05 Mar 2008 09:28:37 +0100</pubDate>
+      </item>
+      
+      <item>
+         <title>Require permalink on products model (wincent.com, 6c0c3b7)</title>
+         <description><![CDATA[Add the validation, corresponding spec, and example data for FixtureReplacement.
+
+Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;]]></description>
+         <link>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/require_permalink_on_products.php</link>
+         <guid>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/require_permalink_on_products.php</guid>
+        
+        
+         <pubDate>Wed, 05 Mar 2008 09:24:57 +0100</pubDate>
+      </item>
+      
+      <item>
+         <title>Add permalink column to products table (wincent.com, a4263df)</title>
+         <description><![CDATA[Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;]]></description>
+         <link>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/add_permalink_column_to_produc.php</link>
+         <guid>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/add_permalink_column_to_produc.php</guid>
+        
+        
+         <pubDate>Wed, 05 Mar 2008 09:23:04 +0100</pubDate>
+      </item>
+      
+      <item>
+         <title>Add products controller and make it the default (root) route (wincent.com, e1580bd)</title>
+         <description><![CDATA[Requests for the application root (/) now get routed to this new products controller, and concretely the &quot;index&quot; action.
+
+Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;]]></description>
+         <link>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/add_products_controller_and_ma.php</link>
+         <guid>http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/03/add_products_controller_and_ma.php</guid>
+        
+        
+         <pubDate>Tue, 04 Mar 2008 21:50:28 +0100</pubDate>
+      </item>
+      
+   </channel>
+</rss>

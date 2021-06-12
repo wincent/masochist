@@ -1,0 +1,1298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed version="0.3" xmlns="http://purl.org/atom/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="en">
+<title>Knowledge base</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/" />
+<modified>2006-08-17T14:57:58Z</modified>
+<tagline>wincent.com Knowledge Base</tagline>
+<id>tag:wincent.com,2007:/a/knowledge-base//2</id>
+<generator url="http://www.movabletype.org/" version="3.35">Movable Type</generator>
+<copyright>Copyright (c) 2006, wincent</copyright>
+<entry>
+<title>Knowledge base in wiki format</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/08/knowledge_base.php" />
+<modified>2006-08-17T14:57:58Z</modified>
+<issued>2006-08-17T14:54:29Z</issued>
+<id>tag:wincent.com,2006:/a/knowledge-base//2.387</id>
+<created>2006-08-17T14:54:29Z</created>
+<summary type="text/plain">The current knowledge base format (chronological posts, categorized, like a weblog) has always been somewhat limiting. I have recently started a new, wiki-based knowledge base. It&apos;s still very much a work in progress, but for the curious it can be...</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.org</email>
+</author>
+<dc:subject>Meta</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<![CDATA[<p>The current knowledge base format (chronological posts, categorized, like a weblog) has always been somewhat limiting. I have recently started a <a href="http://wincent.com/knowledge-base/">new, wiki-based</a> knowledge base. It's still very much a work in progress, but for the curious it can be found at:</p>
+
+<p><a href="http://wincent.com/knowledge-base/">http://wincent.com/knowledge-base/</a></p>]]>
+
+</content>
+</entry>
+<entry>
+<title>Clamping down on spam</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/06/clamping_down_o.php" />
+<modified>2006-07-03T15:08:20Z</modified>
+<issued>2006-06-21T13:40:33Z</issued>
+<id>tag:wincent.com,2006:/a/knowledge-base//2.353</id>
+<created>2006-06-21T13:40:33Z</created>
+<summary type="text/plain">I run SpamAssassin on my mail server (anti-spam). I also run ClamAV (anti-virus). After extensively trialing ClamAV I was convinced of its reliability and decided to have it automatically delete all detected incoming viruses. SpamAssassin still produces far too many false positives and false negatives for me to perform such deletion but I decided today that I wanted to tighten things up a little bit.</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.org</email>
+</author>
+<dc:subject>UNIX</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<![CDATA[<p>I run <a href="http://spamassassin.apache.org/">SpamAssassin</a> on my mail server (anti-spam). I also run <a href="http://clamav.net/">ClamAV</a> (anti-virus). After extensively trialing ClamAV I was convinced of its reliability and decided to have it automatically delete all detected incoming viruses. SpamAssassin still produces far too many false positives and false negatives for me to perform such deletion but I decided today that I wanted to tighten things up a little bit.</p>]]>
+<![CDATA[<h3>Step 1: Getting tough on non-English messages</h3>
+
+<p>A huge proportion of the spam I receive is in non-English languages. I've often wondered why SpamAssassin has allowed waves of incoming messages to spill into my inbox consisting entirely of unreadable (at least for me) hieroglyphics when at other times it marks legitimate messages from my friends as spam. Almost all of my legitimate correspondence is in either English or Spanish. Very, very occasionally I get a customer inquiry written in French or German.</p>
+
+<p>So I am prepared to make SpamAssassin get tough on non-English (and non-Spanish) messages at the expensive of risking a few very rare false positives; and such false positives are easily distinguished from spam messages with subjects like "-6月23-24日（深-圳）开-讲-" and "Автомобильные шины и диски! Низкие цены!", thanks to familiar words like "<a href="http://synergy.wincent.com/">Synergy</a>" in their subject lines.</p>
+
+<p>So the first thing I did was add this to my <tt>~/.spamassassin/user_prefs</tt> file:</p>
+
+<pre># Mail using languages used in these country codes will not be marked
+# as being possibly spam in a foreign language.
+# - english spanish 
+ok_languages            en es 
+<br />
+# Mail using locales used in these country codes will not be marked
+# as being possibly spam in a foreign language.
+# - en  Western character sets in general
+ok_locales              en</pre>
+
+<p>This change immediately made a big difference; notice how many points were derived from the non-English aspects of the first incoming spam message that I received after making the changes:</p>
+
+<pre>  Content analysis details:   (14.10 points, 5 required)
+  UNDESIRED_LANGUAGE_BODY (4.0 points)  BODY: Written in an undesired language
+  CHARSET_FARAWAY    (3.2 points)  BODY: Character set indicates a foreign language
+  BODY_8BITS         (1.5 points)  BODY: Body includes 8 consecutive 8-bit characters
+  MSG_ID_ADDED_BY_MTA_3 (0.7 points)  'Message-Id' was added by a relay (3)
+  CHARSET_FARAWAY_HEADERS (2.1 points)  A foreign language charset used in headers
+  DATE_IN_FUTURE_24_48 (2.6 points)  Date: is 24 to 48 hours after Received: date</pre>
+
+<p>Compare this with a similar, obviously spam message received prior to making the changes and which easily slipped past SpamAssassin without being tagged:</p>
+
+<pre>X-Spam-Status: No, hits=1.6 required=5.0
+	tests=HTML_60_70,HTML_FONT_BIG,HTML_FONT_COLOR_BLUE,
+	      HTML_FONT_COLOR_RED,HTML_MESSAGE,MANY_EXCLAMATIONS,
+	      MIME_HTML_ONLY</pre>
+
+<p>These changes mean that foreign language spam will be caught much more often by SpamAssassin from here on, and being a user-level preference setting I can make the change without affecting other users on the same mail server.</p>
+
+<h3>Step 2: Diverting spam into a separate mailbox</h3>
+
+<p>The next thing I did was automatically divert messages that are very likely to be spam (those that score 15 or over) into a separate mailbox on the server. Messages that score between 5 and 15 continue to be tagged by SpamAssassin and I filter them on my local machine using <a href="http://c-command.com/spamsieve/">SpamSieve</a>.</p>
+
+<p>This is done by creating a <tt>~/.procmailrc</tt> file with the following contents:</p>
+
+<pre># mail very likely to be spam (&gt;= 15) quarantined in "spam" folder
+:0
+* ^X-Spam-Level: \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+spam
+#/dev/null</pre>
+
+<p>Ideally, messages in the less-than-5 range will be legitimate and contain very few false negatives. Messages in the 15-and-greater range will hopefully be spam 100% of the time and if an extended trial supports this then I'll mark them for automatic deletion. The remaining messages (in the 5 to 15 range) should be mostly spam with very few false positives which I can manually check with a quick visual scan in Mail.app. The truth is that SpamSieve does such an excellent job (much better than SpamAssassin) that I don't use SpamAssassin's score as a basis for sorting my mail; I just let SpamSieve do its job and SpamAssassin's role is reduced to a simple message tagger.</p>
+
+<h3>Step 3: Automatically deleting spam</h3>
+
+<p>Once I am convinced that the set-up works I'll change my <tt>.procmailrc</tt> file to this:</p>
+
+<pre># mail very likely to be spam (&gt;= 15) quarantined in "spam" folder
+:0
+* ^X-Spam-Level: \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+#spam
+/dev/null</pre>
+
+<p>Now the only remaining issue for me with SpamAssassin is <a href="http://issues.apache.org/SpamAssassin/show_bug.cgi?id=4065">this bug</a>, long ago fixed but probably never to be backported to the older version that comes with Red Hat Enterprise Linux ES 3. I find that I can't override the weighting of the defective <tt>FORGED_MUA_OUTLOOK</tt> rule because it would allow too much spam to slip under the radar; so the workaround is to instead use <tt>whitelist_from</tt> directives in my user preferences file to handle the few cases in which this bug actually causes legitimate email to be misclassified as spam.</p>
+
+<p>So that auto-deleted messages don't just disappear into the ether without a trace you could add logging for them like this:</p>
+
+<pre>LOGFILE=$HOME/procmail.log
+VERBOSE=off
+LOGABSTRACT=all
+<br />
+# mail very likely to be spam (>= 15) piped directly to /dev/null
+:0
+* ^X-Spam-Level: \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+/dev/null
+<br />
+# clean the environment before continuing
+LOGFILE=
+LOGABSTRACT=
+VERBOSE=</pre>
+
+<p>This will produce log messages like this in the <tt>procmail.log</tt> file for each auto-deleted spam:</p>
+
+<pre>From yuumi_basel0903@grate.half-time.info  Tue Jun 27 10:24:03 2006
+ Subject: [SPAM] 
+  Folder: /dev/null                                                       14890</pre>
+
+<p>Needless to say it is probably a good idea to check this log file frequently to be sure that legitimate messages and getting blown away.</p>
+
+<h3>Update: Step 4: Enabling auto-whitelisting</h3>
+
+<p>The old version of SpamAssassin that comes with Red Hat Enterprise Linux ES 3 doesn't have the auto-whitelisting feature enabled by default. I've decided to turn it on to see if improves SpamAsssasin's abysmal accuracy. Overnight I received 213 spam messages; of these:</p>
+
+<ul>
+<li>None crossed the 15 point threshhold, not even the "spammiest" ones.</li>
+<li>SpamSieve identified all 213 messages correctly as spam (100% accuracy, 0 false positives, 0 false negatives).</li>
+<li>Only 92 were tagged as spam by SpamAssassin (43% as accurate as SpamSieve).</li>
+</ul>
+
+<p>So I changed my procmail recipe from:</p>
+
+<pre># Filter messages through SpamAssassin:
+# - use a lock file to reduce load
+# - only filter files less than 256KB in size (save CPU/memory)
+:0fw: spamassassin.lock
+* &lt; 256000
+| /usr/bin/spamassassin</pre>
+
+<p>To:</p>
+
+<pre># Filter messages through SpamAssassin:
+# - use a lock file to reduce load
+# - only filter files less than 256KB in size (save CPU/memory)
+# - the "-a" switch enables the auto-whitelisting feature of SpamAssassin
+:0fw: spamassassin.lock
+* &lt; 256000
+| /usr/bin/spamassassin -a</pre>
+
+<h3>Update: Step 5: Bayesian training</h3>
+
+<p>In an effort to improve on SpamAssassin's poor accuracy (only 43% as accurate as SpamSieve even with auto-whitelisting turned on) I decided to do some Bayesian training. It is necessary to train the filter using both spam and ham (non-spam) messages.</p>
+
+<p>I had 1558 recent spams on hand that had been sent to my business account, and 547 sent to my personal account. I moved these into a new IMAP mailbox called "train-spam" in each account.</p>
+
+<p>I then grabbed the 1558 most recent ham messages for my business account using Mail.app's powerful search facility (which allows you to select multiple mailboxes and sort search results by date). I did the same to locate 547 ham messages sent to my personal account. I copied (not moved) these messages to a new IMAP mailbox called "train-ham" in each account. Copying can be achieved in Mail.app just like in the Finder by holding down the Option key while dragging.</p>
+
+<p>My first attempts at using <tt>sa-learn</tt> on the server were problematic because the training has to be run as the user to whom the account belongs, but on my server such accounts do not have shell access. I tried using <tt>sudo</tt> but this didn't work:</p>
+
+<pre>$ sudo -u john%example.com sa-learn --showdots --spam --mbox /home/john%example.com/mail/train-spam
+Password: [enter password of admin account]
+Failed to create default user preference file /home/xxxxxx/.spamassassin/user_prefs
+lock: 12345 cannot create tmp lockfile /home/xxxxxx/.spamassassin/bayes.lock.x.12345 for /home/xxxxxx/.spamassassin/bayes.lock: Permission denied</pre>
+
+<p>As you can see this allowed the command to run as the correct user but it still tried writing to files in another home directory. I then tried using <tt>su</tt> but that didn't work because the email accounts do not have login shells.</p>
+
+<pre>$ su john%example.com ls
+Password: [enter password of email account]
+This account is currently not available.</pre>
+
+<p>My first workaround was to temporarily enable login shells for those accounts and <tt>su</tt> to them before training, but I then went in search of a better solution. It turns out that the <tt>-H</tt> switch to <tt>sudo</tt> was what was needed; this sets the <tt>HOME</tt> environment variable before executing the command:</p>
+
+<pre>$ sudo -u john%example.com -H sa-learn --showdots --spam --mbox /home/john%example.com/mail/train-spam</pre>
+
+<p>There was still one problem to solve. Training using this command produced lots of messages about problems untainting paths:</p>
+
+<pre>security: cannot untaint path: "/home/john%example.com/.spamassassin"
+security: cannot untaint path: "/home/john%example.com/.spamassassin/user_prefs"
+security: cannot untaint path: "/home/john%example.com/.spamassassin"
+security: cannot untaint path: "/home/john%example.com/.spamassassin/bayes"
+security: cannot untaint path: "/home/john%example.com/.spamassassin"
+security: cannot untaint path: "/home/john%example.com/.spamassassin/bayes"</pre>
+
+<p>I filed <a href="http://issues.apache.org/SpamAssassin/show_bug.cgi?id=4968">a bug report</a> with the SpamAssassin team and it looks like the problem will be fixed for version 3.2.0 of SpamAssassin. I also made the <a href="http://issues.apache.org/SpamAssassin/attachment.cgi?id=3560">necessary changes</a> on my local install.</p>
+
+<p>My plan is to use the initial training run as a base and from here on do mistake based training. This means feeding only false positives and false negatives back to SpamAssassin back for training. <a href="http://crm114.sourceforge.net/Plateau99.pdf" title="The Spam Filtering Plateau at 99.9% Accuracy and How to Get Past It.">My reading</a> indicates that mistake based training is the best  in the long run. Here is a short script I threw together to automate future runs of the training process:</p>
+
+<pre>#!/bin/sh
+<br />
+USERS="john%example.com barry%example.com"
+<br />
+echo "Starting SpamAssassin training run: will use sudo to run sa-learn as appropriate user(s)."
+sudo -v
+<br />
+for USER in ${USERS}
+do
+  echo "Spam training for user ${USER}:"
+  sudo -u "${USER}" -H sa-learn --showdots --spam --mbox "/home/${USER}/mail/train-spam" 
+  echo "Ham training for user ${USER}:"
+  sudo -u "${USER}" -H sa-learn --showdots --ham --mbox "/home/${USER}/mail/train-ham" 
+done
+<br />
+echo "Training run complete: you should now empty the train-spam and train-ham folders for these users:"
+echo "  ${USERS}"</pre>
+
+<p>So after training for a few days accuracy is greatly improved but there is still a long way to go before SpamAssassin catches up with SpamSieve. It seems that without Bayesian training, SpamAssassin is next to useless. We'll see how accurate it can become after more training.</p>
+
+<p>Last night in an approximately 12 hour period I obtained the following results:</p>
+
+<ul>
+<li>86 spams received in total</li>
+<li>100% correct identification rate by SpamSieve; 0 false positives, 0 false negatives</li>
+<li>SpamAssassin was 64% as accurate as SpamSieve (55 messages classified as spam); 0 false positives, 31 false negatives</li>
+</ul>
+
+<h3>Update: Performance after one week</h3>
+
+<ul>
+<li>The total incoming message count was approximately 1904 messages.</li>
+<li>Approximately 1020 ham messages made it through to the client.</li>
+<li>Approximately 884 spam messages were received in all.</li>
+<li>That figure includes the 332 messages that SpamAssassin gave a score higher than 15 and auto-deleted them at the server (8 messages sent to my personal address, 324 messages sent to my business address); these messages were never downloaded to the client and were never seen by SpamSieve.</li>
+<li>SpamSieve incorrectly classified 4 spam messages as ham (4 false negatives).</li>
+<li>SpamSieve incorrectly classified 2 ham messages as spam (2 false positives).</li>
+<li>SpamSieve's overall accuracy rate was 99.68% (6 errors in total).</li>
+<li>Of the spam messages that made it through to the client, SpamAssassin correctly labelled 464 as spam (163 sent to my personal address and 301 sent to my business address).</li>
+<li>In other words, SpamAssassin failed to label about 420 spam messages as spam.</li>
+<li>SpamAssassin's accuracy rate was approximately 78% overall.</li>
+<li>SpamAssassin's error rate for false negatives was 70 times worse than SpamSieve's.</li>
+</ul>
+
+<p>So, I will continue to train SpamAssassin on its errors, but it seems unlikely that it will ever catch up with SpamSieve. Seems like I'm approaching the limit of possible accuracy using the SpamSieve/SpamAssassin pair, so I have a few more steps in mind that I can use to reduce the amount of spam that gets to the filters in the first place... watch this space for more details.</p>]]>
+</content>
+</entry>
+<entry>
+<title>freshclam: &quot;Problem with internal logger&quot;</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/06/freshclam_probl.php" />
+<modified>2006-06-10T13:37:40Z</modified>
+<issued>2006-06-10T13:25:48Z</issued>
+<id>tag:wincent.com,2006:/a/knowledge-base//2.349</id>
+<created>2006-06-10T13:25:48Z</created>
+<summary type="text/plain">Yesterday I received notification that an hourly freshclam update had failed. Overnight I continued to receive hourly notifications saying that there was a &quot;[p]roblem with the internal logger&quot;.</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.org</email>
+</author>
+<dc:subject>UNIX</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<![CDATA[<p>Yesterday I received notification that an hourly <tt>freshclam</tt> update had failed on my Red Hat Enterprise Linux box. Overnight I continued to receive hourly notifications, each saying the following:</p>
+
+<pre>/etc/cron.hourly/freshclam:
+<br />
+ERROR: Problem with internal logger.</pre>
+
+<p>I found the <a href="http://www.gossamer-threads.com/lists/clamav/users/25354">explanation here</a>: that there was a hung <tt>freshclam</tt> process lingering on the system.</p>]]>
+<![CDATA[<p>The solution? Kill the process and run <tt>freshclam</tt> manually (slightly edited to shorten long lines):</p>
+
+<pre>$ ps auxww | grep fresh
+root     13372  0.0  0.0  2132  880 ?        S    Jun09   0:00 /bin/sh /etc/cron.hourly/freshclam
+clamav   13373  0.0  0.0  2424  896 ?        S    Jun09   0:00 /usr/local/bin/freshclam --quiet
+root     13374  0.0  0.0  1948  596 ?        S    Jun09   0:00 awk -v progname=/etc/cron.hourly/freshclam
+obfuscat 23287  0.0  0.0  4772  676 pts/0    S    08:14   0:00 grep fresh
+$ sudo kill 13372
+$ ps auxww | grep fresh
+clamav   13373  0.0  0.0  2424  896 ?        S    Jun09   0:00 /usr/local/bin/freshclam --quiet
+root     13374  0.0  0.0  1948  596 ?        S    Jun09   0:00 awk -v progname=/etc/cron.hourly/freshclam
+obfuscat 23299  0.0  0.0  4752  672 pts/0    S    08:15   0:00 grep fresh
+$ sudo kill 13373
+$ ps auxww | grep fresh
+obfuscat 23306  0.0  0.0  4752  672 pts/0    S    08:15   0:00 grep fresh
+$ sudo /usr/local/bin/freshclam 
+ClamAV update process started at Sat Jun 10 08:15:34 2006
+Downloading main.cvd [*]
+main.cvd updated (version: 39, sigs: 58116, f-level: 8, builder: tkojm)
+Downloading daily.cvd [*]
+daily.cvd updated (version: 1524, sigs: 903, f-level: 8, builder: tkojm)
+Database updated (59019 signatures) from db.us.clamav.net (IP: 63.236.138.5)
+Clamd successfully notified about the update.</pre>
+
+<p>This is what I saw in the <tt>/var/log/freshclam.log</tt> file; firstly, the last successful update:</p>
+
+<pre>--------------------------------------
+ClamAV update process started at Fri Jun  9 15:01:01 2006
+main.cvd is up to date (version: 38, sigs: 51206, f-level: 7, builder: tkojm)
+daily.cvd is up to date (version: 1523, sigs: 7866, f-level: 8, builder: sven)</pre>
+
+<p>Then problems accessing the mirrors:</p>
+
+<pre>--------------------------------------
+ClamAV update process started at Fri Jun  9 16:01:01 2006
+ERROR: Mirrors are not fully synchronized. Please try again later.
+Trying again in 5 secs...
+ClamAV update process started at Fri Jun  9 16:02:12 2006
+ERROR: Mirrors are not fully synchronized. Please try again later.
+Trying again in 5 secs...
+ClamAV update process started at Fri Jun  9 16:03:08 2006
+ERROR: Error while reading database from db.us.clamav.net
+ERROR: Can't download main.cvd from db.us.clamav.net (IP: 216.24.174.245)
+Giving up on db.us.clamav.net...
+ClamAV update process started at Fri Jun  9 16:12:41 2006
+ERROR: Mirrors are not fully synchronized. Please try again later.
+Trying again in 5 secs...
+ClamAV update process started at Fri Jun  9 16:13:36 2006
+ERROR: Verification: Broken or not a CVD file
+Trying again in 5 secs...
+ClamAV update process started at Fri Jun  9 16:13:44 2006
+ERROR: Error while reading database from database.clamav.net
+ERROR: Can't download main.cvd from database.clamav.net (IP: 63.166.28.8)
+Giving up on database.clamav.net...
+ERROR: Update failed. Your network may be down or none of the mirrors listed in freshclam.conf is working.
+ERROR: Update failed. Your network may be down or none of the mirrors listed in freshclam.conf is working.</pre>
+
+<p>And on the next hourly run, the hung process:</p>
+
+<pre>--------------------------------------
+ClamAV update process started at Fri Jun  9 17:01:01 2006</pre>
+
+<p>Finally, the manual update performed after killing the hung process:</p>
+
+<pre>--------------------------------------
+ClamAV update process started at Sat Jun 10 08:15:34 2006
+main.cvd updated (version: 39, sigs: 58116, f-level: 8, builder: tkojm)
+daily.cvd updated (version: 1524, sigs: 903, f-level: 8, builder: tkojm)
+Database updated (59019 signatures) from db.us.clamav.net (IP: 63.236.138.5)
+Clamd successfully notified about the update.</pre>]]>
+</content>
+</entry>
+<entry>
+<title>WordPress security tip</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/06/wordpress_secur.php" />
+<modified>2006-06-02T16:57:52Z</modified>
+<issued>2006-06-02T16:55:00Z</issued>
+<id>tag:wincent.com,2006:/a/knowledge-base//2.346</id>
+<created>2006-06-02T16:55:00Z</created>
+<summary type="text/plain">A WordPress security tip to make it harder for your database username and password to fall into the wrong hands.</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.org</email>
+</author>
+<dc:subject>Web</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<![CDATA[<p>Add the following to the <tt>.htaccess</tt> file at the top level of your <a href="http://wordpress.org/">WordPress</a> install:</p>
+
+<pre>&lt;FilesMatch ^wp-config.php$&gt;
+deny from all
+&lt;/FilesMatch&gt;</pre>
+
+<p>This will make it harder for your database username and password to fall into the wrong hands in the event of a server problem. Better still would be to move the username and password outside of the document root entirely and <tt>include</tt> or <tt>require</tt> it but that would require you to turn off <a href="http://www.php.net/features.safe-mode">PHP Safe Mode</a> and/or the <tt>open_basedir</tt> restriction, which I don't recommend with a product like WordPress which is both popular and has a less-than-perfect security record.</p>]]>
+
+</content>
+</entry>
+<entry>
+<title>WordPress updates via Subversion</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/06/wordpress_updat.php" />
+<modified>2006-06-05T10:36:41Z</modified>
+<issued>2006-06-02T16:41:09Z</issued>
+<id>tag:wincent.com,2006:/a/knowledge-base//2.344</id>
+<created>2006-06-02T16:41:09Z</created>
+<summary type="text/plain">I don&apos;t run WordPress on this website, but I do run it elsewhere. Here are some notes I made while streamlining the process of performing WordPress upgrades by using Subversion to pull down updates and merge them automatically.</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.org</email>
+</author>
+<dc:subject>Shell</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<![CDATA[<p>I don't run <a href="http://wordpress.org/">WordPress</a> on this website, but I do run it elsewhere. Here are some notes I made while streamlining the process of performing WordPress upgrades by using Subversion to pull down updates and merge them automatically. This is a technique already used by successful projects like <a href="http://bugzilla.org/">Bugzilla</a> and <a href="http://mediawiki.org/">MediaWiki</a>. The WordPress folks aren't quite with the times yet (<a href="http://trac.wordpress.org/ticket/2767">they haven't managed to tag the last two releases in the repository</a>, but you can follow the 2.0 branch instead of following tagged releases instead).</p>]]>
+<![CDATA[<p>We start off by doing a checkout of the latest release in the 2.0 branch (2.0.3) at the time of writing:</p>
+
+<pre>sudo mkdir wp
+cd wp
+sudo svn co http://svn.automattic.com/wordpress/branches/2.0/ .</pre>
+
+<p>Then it's time to do a <tt>diff</tt> to see the differences between the freshly-checked-out copy of WordPress 2.0.3 and the installed, customized copy of 2.0.2 already on the server. It's necessary to manually merge in these changes, but only on this initial switch to Subversion. Once the first merge is done, future upgrades are as easy as running <tt>svn up</tt>.</p>
+
+<pre>diff -r path-to-checked-out-copy path-to-installed-copy</pre>
+
+<p>Concretely, in my case this meant that I had to use the following paths:</p>
+
+<pre>diff -r wp public_html/wp</pre>
+
+<p>Given that most of my existing WordPress install was not customized I found that it was more useful to do a non-recursive <tt>diff</tt> and then examine the appropriate subdirectories manually:</p>
+
+<pre>diff wp public_html/wp</pre>
+
+<p>The <tt>diff</tt> output immediately indicated to me a couple of missing files that I would need to copy over from my old install to the new copy:</p>
+
+<pre>sudo cp public_html/wp/.htaccess wp/
+sudo cp public_html/wp/wp-config.php wp/</pre>
+
+<p>There were a couple of common subdirectories that I could skip over and exclude from consideration because I've applied no customizations to the WordPress code itself:</p>
+
+<pre>Common subdirectories: wp/wp-admin and public_html/wp/wp-admin
+Common subdirectories: wp/wp-includes and public_html/wp/wp-includes</pre>
+
+<p>Likewise there was a <tt>wp-images</tt> folder in the old install that is evidently not present in the latest version of WordPress, so I didn't bother to copy it over:</p>
+
+<pre>Only in public_html/wp: wp-images</pre>
+
+<p>The key directory that I needed to examine carefully was the <tt>wp-content</tt> directory:</p>
+
+<pre>Common subdirectories: wp/wp-content and public_html/wp/wp-content</pre>
+
+<p>I did a non-recursive <tt>diff</tt> on that too:</p>
+
+<pre>diff wp/wp-content public_html/wp/wp-content</pre>
+
+<p>There were a few directories that needed to be copied over:</p>
+
+<pre>Only in public_html/wp/wp-content: backup-xxxxx
+Only in public_html/wp/wp-content: cache
+Only in public_html/wp/wp-content: uploads</pre>
+
+<p>These were copied as follows:</p>
+
+<pre>sudo cp -R public_html/wp/wp-content/backup-xxxxx wp/wp-content/
+sudo cp -R public_html/wp/wp-content/cache wp/wp-content/
+sudo cp -R public_html/wp/wp-content/uploads wp/wp-content/</pre>
+
+<p>There were a couple of common subdirectories that needed closer attention:</p>
+
+<pre>Common subdirectories: wp/wp-content/plugins and public_html/wp/wp-content/plugins
+Common subdirectories: wp/wp-content/themes and public_html/wp/wp-content/themes</pre>
+
+<p>So, another non-recursive <tt>diff</tt>:</p>
+
+<pre>diff wp/wp-content/plugins public_html/wp/wp-content/plugins</pre>
+
+<p>This was really the only subdirectory that I cared about:</p>
+
+<pre>Only in public_html/wp/wp-content/plugins: text-control</pre>
+
+<p>And I copied it thusly:</p>
+
+<pre>sudo cp -R public_html/wp/wp-content/plugins/text-control wp/wp-content/plugins/</pre>
+
+<p>Likewise I did a non-recursive <tt>diff</tt> of the <tt>themes</tt> subdirectory:</p>
+
+<pre>diff wp/wp-content/themes public_html/wp/wp-content/themes</pre>
+
+<p>Once again only one subdirectory to worry about:</p>
+
+<pre>Only in public_html/wp/wp-content/themes: hemingway</pre>
+
+<p>Copied like this:</p>
+
+<pre>sudo cp -R public_html/wp/wp-content/themes/hemingway wp/wp-content/themes/</pre>
+
+<p>It was then time to set the permissions and ownership on the new install (especially important seeing as I am running under PHP safe mode which is much more sensitive to permissions):</p>
+
+<pre>cd wp
+sudo chown -R user:user .
+cd wp-content
+sudo chmod 777 backup-xxxxx cache
+sudo chown apache:apache backup-xxxxx/index.php
+sudo chmod -R 777 uploads/*
+cd cache
+sudo chown -R apache:apache *</pre>
+
+<p>It was then time to make the actual switch from 2.0.2 to 2.0.3 on the live site. This consisted of five steps:</p>
+
+<ol>
+<li>Backup the database.</li>
+<li>Disable all plug-ins.</li>
+<li>Move the old directory out of the way and the new one into place (in my case achieved with <tt>sudo mv public_html/wp ./wp-old</tt> followed by <tt>sudo mv wp public_html/</tt>).</li>
+<li>Visit http://example.com/wp/wp-admin/ and follow the prompts to update the database structure.</li>
+<li>Re-enable plug-ins.</li>
+</ol>
+
+<p>And that's all there is to it. To see differences between the installed version of WordPress and the last version that was checked out it's a simple matter of doing an <tt>svn status</tt> from inside the installation directory. On my installation I see the following output:</p>
+
+<pre>?      wp-config.php
+?      .htaccess
+?      wp-content/cache
+?      wp-content/backup-xxxxx
+?      wp-content/uploads
+?      wp-content/plugins/text-control
+?      wp-content/plugins/markdown.php
+X      wp-content/plugins/akismet
+?      wp-content/themes/hemingway
+<br />
+Performing status on external item at 'wp-content/plugins/akismet'</pre>
+
+<p>As you can see, the changes correspond to those that I made during my manual merge. For more information on the <tt>svn status</tt> command type <tt>svn help status</tt>. For (much) more detail on the differences you can do an <tt>svn diff</tt>.</p>
+
+<p>Now, when the next version of WordPress comes out, all you have to do is run an <tt>sudo svn update</tt>. Given the sensitivity of PHP Safe Mode you should also make sure no new root-owned files have been created during the update:</p>
+
+<pre>sudo svn update
+find . -user root</pre>
+
+<p>Any root-owned files will need to be appropriately modified using commands like the following.</p>
+
+<pre>sudo chown -R user:user directory
+sudo chown user:user file</pre>
+
+<p>More <a href="http://codex.wordpress.org/Using_Subversion">information on using Subversion with WordPress here</a>.</p>]]>
+</content>
+</entry>
+<entry>
+<title>Intel iMac set-up notes</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/06/intel_imac_setu.php" />
+<modified>2006-06-02T14:41:04Z</modified>
+<issued>2006-06-02T02:20:52Z</issued>
+<id>tag:wincent.com,2006:/a/knowledge-base//2.343</id>
+<created>2006-06-02T02:20:52Z</created>
+<summary type="text/plain">When I switched from the G5 to the Intel iMac I used Apple&apos;s migration assistant to transfer over as much data as possible from the old system to the new. There were a number of command-line tools that I depend on that did not get transferred by the migration assistant. These are the notes that I made while compiling native Intel versions of these tools and installing them on the iMac.</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.org</email>
+</author>
+<dc:subject>Shell</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<![CDATA[<p>When I switched from the G5 to the Intel iMac I used Apple's migration assistant to transfer over as much data as possible from the old system to the new.</p>
+
+<p>There were a number of command-line tools that I depend on that did not get transferred by the migration assistant. These are the notes that I made while compiling native Intel versions of these tools and installing them on the iMac.</p>]]>
+<![CDATA[<h4>wget</h4>
+
+<p>I prefer <tt>wget</tt> to <tt>curl</tt>. The <tt>--limit-rate</tt> switch below is so that downloading the source didn't flood my pathetic dial-up connection:</p>
+
+<pre># get the source
+curl --limit-rate 1K -O ftp://ftp.rediris.es/pub/gnu/gnu/wget/wget-1.10.tar.gz
+<br />
+# extract
+tar xzvf wget-1.10.tar.gz 
+cd wget-1.10/
+<br />
+# configure and build
+./configure --with-ssl
+make
+<br />
+# test
+src/wget --version
+<br />
+# install
+sudo make install</pre>
+
+<h4>pstree</h4> 
+
+<p>When I went looking for the latest official version of <tt>pstree</tt> it seems that the website has packed up and gone forever. Luckily I still had a copy of a source archive for a recent version (2.27), possibly the latest. Seeing as it's redistributable under the GPL I have placed a copy <a href="http://wincent.com/gpl/pstree-2.27.tar.gz">here</a>. To build it, you would follow a procedure like this one:</p>
+
+<pre># get the source
+wget http://wincent.com/gpl/pstree-2.27.tar.gz
+<br />
+# extract
+tar zxvf pstree-2.27.tar.gz
+cd pstree
+<br />
+# build
+gcc -O -o pstree pstree.c
+<br />
+# install
+sudo install pstree /usr/local/bin/pstree</pre>
+
+<p>Or a slight variation of this; building a Universal Binary by combining a previously built PowerPC executable, <tt>pstree</tt>, with a newly built Intel executable:</p>
+
+<pre>mv pstree pstree.ppc
+<br />
+# build
+gcc -O -o pstree.i386 pstree.c
+<br />
+# make a Universal Binary
+lipo -arch ppc pstree.ppc -arch i386 pstree.i386 -output pstree -create
+file pstree
+<br />
+# install
+sudo install pstree /usr/local/bin/pstree</pre>
+
+<h4>pwgen</h4>
+
+<pre># get the source
+wget "http://ovh.dl.sourceforge.net/sourceforge/pwgen/pwgen-2.05.tar.gz"
+<br />
+# extract
+tar xzvf pwgen-2.05.tar.gz 
+cd pwgen-2.05
+<br />
+# configure and build
+./configure
+make
+<br />
+# test
+./pwgen
+<br />
+# install
+sudo make install</pre>
+
+<h4>ee</h4>
+
+<pre>
+# get the source
+wget http://www.users.qwest.net/~hmahon/sources/ee-1.4.2.src.tgz
+<br />
+# extract
+tar xzvf ee-1.4.2.src.tgz 
+cd easyedit/
+<br />
+# build
+make
+<br />
+# install
+sudo make install</pre>
+
+<h4>aee</h4>
+
+<pre>
+# get the source
+wget http://www.users.qwest.net/~hmahon/sources/aee-2.2.3.tar.gz
+<br />
+# extract
+tar zxvf aee-2.2.3.tar.gz 
+cd aee-2.2.3/
+<br />
+# make both aee (normal) and xae (for use in X11)
+make both
+<br />
+# install
+sudo make install</pre>
+
+<h4>Apache 2</h4>
+
+<pre># get the source
+wget http://apache.gva.es/httpd/httpd-2.0.58.tar.bz2
+<br />
+# extract
+tar xjvf httpd-2.0.58.tar.bz2 
+cd httpd-2.0.58/
+<br />
+# workaround <a href="http://wincent.com/a/knowledge-base/archives/2005/07/upgrading_to_su_2.php">APR bug</a> (see Subversion 
+ac_cv_func_poll=no; export ac_cv_func_poll
+<br />
+# configure and build
+./configure --prefix=/usr/local/apache2 --enable-dav --enable-so --enable-ssl --enable-deflate
+make
+<br />
+# install
+sudo make install</pre>
+
+<h4>Subversion</h4>
+
+<pre>
+# get the source
+wget http://subversion.tigris.org/downloads/subversion-1.3.2.tar.bz2
+<br />
+# extract
+tar xjvf subversion-1.3.2.tar.bz2 
+cd subversion-1.3.2/
+<br />
+# set-up for access via Apache
+sudo mkdir -p /usr/local/apache2/var/dav
+echo 'svn::200:200::0:0:Subversion:/var/empty:/usr/bin/false' | sudo niload -v passwd /
+echo 'svn:*:200:svn' | sudo niload -v group /
+sudo chown svn:svn /usr/local/apache2/var/dav
+<br />
+# workaround <a href="http://wincent.com/a/knowledge-base/archives/2005/07/upgrading_to_su_2.php">APR bug</a> (see Subversion FAQ)
+ac_cv_func_poll=no; export ac_cv_func_poll
+<br />
+# configure and build
+sh ./autogen.sh
+./configure --with-apxs=/usr/local/apache2/bin/apxs
+make
+<br />
+# test
+make check
+<br />
+# install
+sudo make install</pre>
+
+<p>It's then necessary to make some changes to <tt>/usr/local/apache2/conf/httpd.conf</tt> so it will work with Subversion:</p>
+
+<pre>219c219
+&lt; Listen 80
+---
+&gt; Listen 8080
+233a234,236
+&gt; LoadModule dav_svn_module modules/mod_dav_svn.so
+&gt; LoadModule authz_svn_module modules/mod_authz_svn.so
+&gt; 
+267,268c270,271
+&lt; User nobody
+&lt; Group #-1
+---
+&gt; User svn
+&gt; Group svn
+358,359c361,362
+&lt;     Order allow,deny
+&lt;     Allow from all
+---
+&gt;     Order deny,allow
+&gt;     Deny from all
+994a998,1007
+&gt; &lt;Location /svnrep&gt;
+&gt;     DAV svn
+&gt;     SVNParentPath /Users/wincent/Developer/svnrep
+&gt;     AuthType Basic
+&gt;     AuthName "Subversion repository"
+&gt;     AuthUserFile /Users/wincent/Developer/svnrep-auth
+&gt;     Require valid-user
+&gt;     Order deny,allow
+&gt;     Allow from all
+&gt; &lt;/Location&gt;</pre>
+
+<p>Finally we can start up Apache:</p>
+
+<pre>sudo /usr/local/apache2/bin/apachectl start</pre>
+
+<p>I found it was unnecessary to <a href="http://wincent.com/a/knowledge-base/archives/2005/05/disaster_recove.php">set up a start-up item to launch Apache 2 at boot time</a> because it was correctly transferred across by the migration assistant. I did, however, need to add this line back into <tt>/etc/hostconfig</tt>:</p>
+
+<pre>WEBSERVER2=-YES-</pre>]]>
+</content>
+</entry>
+<entry>
+<title>Subversion 1.3.1 to 1.3.2 upgrade notes</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/06/subversion_131_1.php" />
+<modified>2006-06-01T13:16:01Z</modified>
+<issued>2006-06-01T13:15:53Z</issued>
+<id>tag:wincent.com,2006:/a/knowledge-base//2.341</id>
+<created>2006-06-01T13:15:53Z</created>
+<summary type="text/plain">Here are some brief notes I made while performing the upgrade from Subversion 1.3.1 to version 1.3.2 on my Red Hat Enterprise Linux ES 3 machine.</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.org</email>
+</author>
+<dc:subject>Development</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<![CDATA[<p>Here are some brief notes I made while performing the upgrade from Subversion 1.3.1 to version 1.3.2 on my Red Hat Enterprise Linux ES 3 machine.</p>]]>
+<![CDATA[<pre>screen
+wget http://subversion.tigris.org/downloads/subversion-1.3.2.tar.bz2
+tar xjvf subversion-1.3.2.tar.bz2
+cd subversion-1.3.2
+sudo chkconfig svn off   
+sudo rm -f /usr/local/lib/libsvn*
+sudo rm -f /usr/local/lib/libapr*
+sudo rm -f /usr/local/lib/libexpat*
+sudo rm -f /usr/local/lib/libneon*
+sh ./autogen.sh
+./configure
+make
+make check
+sudo make install             
+sudo chkconfig svn on
+netstat -anp | grep LISTEN | grep 3690
+exit</pre>]]>
+</content>
+</entry>
+<entry>
+<title>Upgrading to MySQL 4.1.20 on Red Hat Enterprise Linux 3</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/06/upgrading_to_my.php" />
+<modified>2006-05-31T23:49:05Z</modified>
+<issued>2006-05-31T23:44:14Z</issued>
+<id>tag:wincent.com,2006:/a/knowledge-base//2.340</id>
+<created>2006-05-31T23:44:14Z</created>
+<summary type="text/plain">It&apos;s amazing how quick and painless it is to upgrade from MySQL 4.1.19 to version 4.1.20 on Red Hat Enterprise Linux 3.</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.org</email>
+</author>
+<dc:subject>UNIX</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<![CDATA[<p>It's amazing how quick and painless it is to upgrade from MySQL 4.1.19 to version 4.1.20 on Red Hat Enterprise Linux 3.</p>]]>
+<![CDATA[<pre>#
+# get the RPMs (see http://dev.mysql.com/downloads/mysql/4.1.html for local mirror URLs)
+#
+<br />
+mkdir mysql-4.1.20
+cd mysql-4.1.20
+wget \
+http://dev.mysql.com/get/Downloads/MySQL-4.1/MySQL-server-standard-4.1.20-0.rhel3.i386.rpm/from/http://mysql.rediris.es/ \
+http://dev.mysql.com/get/Downloads/MySQL-4.1/MySQL-client-standard-4.1.20-0.rhel3.i386.rpm/from/http://mysql.rediris.es/ \
+http://dev.mysql.com/get/Downloads/MySQL-4.1/MySQL-shared-compat-4.1.20-0.rhel3.i386.rpm/from/http://mysql.rediris.es/ \    
+http://dev.mysql.com/get/Downloads/MySQL-4.1/MySQL-devel-standard-4.1.20-0.rhel3.i386.rpm/from/http://mysql.rediris.es/ \
+http://dev.mysql.com/get/Downloads/MySQL-4.1/MySQL-standard-debuginfo-4.1.20-0.rhel3.i386.rpm/from/http://mysql.rediris.es/
+<br />
+#
+# do the actual upgrade
+#
+<br />
+rpm -Uvh --test *.rpm
+sudo service httpd stop
+sudo service mysql stop
+sudo rpm -Uvh *.rpm       
+sudo service httpd start       
+<br />
+#
+# post-upgrade checks
+#
+<br />
+rpm -qa | grep MySQL
+sudo service --status-all | grep httpd
+ps auxww | grep -i mysql
+sudo chkconfig --list | grep mysql</pre>
+
+<p>And it would be even easier if it could be handled by <tt>up2date</tt> like the rest of the system. Human intervention is only required in this case because RHEL ES 3 only ships with MySQL 3.23 by default. If you want the features of the 4.1 series you have to manually upgrade.</p>]]>
+</content>
+</entry>
+<entry>
+<title>SSH tunneling and secure IMAP, POP3 and SMTP</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php" />
+<modified>2007-02-09T19:02:00Z</modified>
+<issued>2006-05-31T18:17:50Z</issued>
+<id>tag:wincent.com,2006:/a/knowledge-base//2.337</id>
+<created>2006-05-31T18:17:50Z</created>
+<summary type="text/plain">When I first found this network I foolishly decided to check my email despite the fact that it uses inherently insecure protocols which transmit usernames and passwords in plaintext. I realized that the person running this open network could easily snoop them, so I decide to log into my server securely via SSH, immediately change the email passwords that had been transmitted as plaintext, and not try checking my email again until I had worked out a way to secure the protocols.</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.org</email>
+</author>
+<dc:subject>Shell</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<![CDATA[<p>During the time in which I was totally without Internet access last week I used iStumbler to see if there were any open, public wireless networks around which I could use to get on the Net.</p>
+
+<p>Turns out that there was one which was occasionally available, but with a very weak signal and I could only ever get a pitiful few bytes per second over it.</p>
+
+<p>When I first found this network I foolishly decided to check my email despite the fact that it uses inherently insecure protocols which transmit usernames and passwords in plaintext. I realized that the person running this open network could easily snoop them, so I decided to log into my server securely via SSH, immediately change the email passwords that had been transmitted as plaintext, and not try checking my email again until I had worked out a way to secure the protocols.</p>]]>
+<![CDATA[<p>It turns out that the open network never gave me enough performance to actually make checking my email possible, but at least it prompted me to tighten things up. There are three principal ways to secure email traffic: SSH tunneling; using secure protocols like IMAPS, POP3S and SMTP with SSL; and using the <tt>stunnel</tt> tool. None of these provide end-to-end encryption for the content of your emails &mdash; you'll need to encrypt them before sending them in order to get that &mdash; but they do secure the connection between your machine and your local mailserver, thus protecting your passwords and preventing them from being snooped by a casual attacker.</p>
+
+<h3>SSH tunneling</h3>
+
+<p>This is the easiest of the three methods, but it requires you to have an SSH account on your mailserver. Basically all you have to do is use the <tt>-L</tt> switch to <tt>ssh</tt> to tunnel the appropriate ports. You would execute a command like this on your local machine:</p>
+
+<pre>sudo ssh -L 143:wincent.com:143 \
+         -L 110:wincent.com:110 \
+         -L 25:wincent.com:25   \
+         robinson@wincent.com</pre>
+
+<p>The <tt>sudo</tt> is necessary because root privileges are required to open any ports below 1024. The port numbers above are the standard port numbers for IMAP, POP3 and SMTP respectively. If you don't want to run the <tt>ssh</tt> process with root privileges you'll need to choose local port numbers that are higher than 1024; for example, you could just add 10000 to each of the numbers:</p>
+
+<pre>sudo ssh -L 10143:wincent.com:143 \
+         -L 10110:wincent.com:110 \
+         -L 10025:wincent.com:25   \
+         robinson@wincent.com</pre>
+
+<p>These commands basically say, "Log in via SSH to my account, <tt>robinson</tt> on the host <tt>wincent.com</tt>; forward any network traffic that's sent to the local ports on this machine to the remote ports on the host". The traffic is encrypted over the SSH connection. (Needless to say, the account "robinson@wincent.com" doesn't actually exist; I'm just using it for illustration purposes. I guess it'll only be a question of a few weeks before I start seeing spam directed to that non-existent address...)</p>
+
+<p>You then need to change the settings in your local email client. Instead of connecting to <tt>wincent.com</tt> port 143, it will need to connect to <tt>localhost</tt> port 143 (or port 10143 if you followed the second example above). The forwarding is transparent and the email client doesn't need to know anything more; to the email client it looks just like a normal, plaintext IMAP, POP3 or SMTP connection.</p>
+
+<p>The advantages of this method are that it is easy to set up and requires no modifications to the server. The downside is that it requires each email user to have an SSH account on the server and you have to make sure SSH is up and running with port forwarding activated before firing up your email client.</p>
+
+<p>See the <tt>ssh</tt> man page for more information about SSH tunneling.</p>
+
+<h3>Using <tt>stunnel</tt></h3>
+
+<p>I didn't actually try using this method but it seems like a viable option. Basically, the <tt>stunnel</tt> process serves as a wrapper for the insecure protocol. For example, you fire up <tt>stunnel</tt> on the server and get it to listen to port 993 (the standard port for IMAPS), and it forwards incoming, encrypted connections to the real IMAP process running on the server (not encrypted). You then set up your local mail client to communicate with SSL to the appropriate ports.</p>
+
+<p>I chose not to use this method because I didn't want to have to meddle too much with the server configuration (for example, configuring the <tt>stunnel</tt>-wrapped servers to automatically start up at the correct runlevels). Furthermore, it is not clear to me whether it is possible to offer both secure <em>and</em> insecure access at the same time (which would be useful, for example, if you wanted to allow users to access via either IMAP or IMAPS during the transition period).</p>
+
+<p>See the <tt>stunnel</tt> man page on your server (if it has one) for more information.</p>
+
+<h4>Update: February 2007</h4>
+
+<p>I later went ahead to explore the use of <a href="http://wincent.com/knowledge-base/Using_Stunnel_to_secure_SMTP_transport">Stunnel</a>. It co-exists peacefully with the <tt>STARTTLS</tt> solution.</p>
+
+<h3>Secure protocols: IMAPS, POP3S and SMTP with SSL</h3>
+
+<p>In the end this is the way I chose to go. It doesn't require users to have SSH accounts on the server, and it allows you to run both IMAPS and IMAP, POP3S and POP3, at the same time during a period of transition.</p>
+
+<p>Basically, you set up an IMAPS server listening on port 993, a POP3S server running on port 995, and an SMTP server on port 25 which is capable of providing encrypted transport using TLS.</p>
+
+<p>It is the most difficult to set-up, but also the most architecturally elegant. On the whole, I think it's worth the extra effort. The following summary applies to Red Hat Enterprise Linux ES 3.</p>
+
+<h4>Setting up the certificates</h4>
+
+<p>I already had an SSL certificate for use with Apache and my server running at <tt>secure.wincent.com</tt> (actually the same machine as the mail server). I wasn't interested in using a self-signed certificate (self-signed certificates are free but not trusted by connecting clients; they do serve to encrypt your mail transport but they cause unsightly warning messages that don't exactly inspire trust). I was curious to know whether the same certificate could be used for email transport. The answer is yes.</p>
+
+<p>I needed to assemble three components for this to work:</p>
+
+<ol>
+<li>The private key for the certificate (most likely stored alongside the certificate).</li>
+<li>The certificate itself (most likely stored in <tt>/etc/httpd/</tt> or one of its subdirectories).</li>
+<li>The certificate of the signing certificate authority (also most likely stored alongside the other certificate).</li>
+</ol>
+
+<p>The order of these components is important. All three must be pasted, in order, into a file at <tt>/usr/share/ssl/certs/imapd.pem</tt>. The file should be owned by root and readable only by root.</p>
+
+<p>The need to include the signing certificate authority's certificate is explained <a href="http://gagravarr.org/writing/openssl-certs/personal.shtml">here</a>:</p>
+
+<blockquote>Now for a small caveat - this all assumes your certificate was signed by a root certificate authority. In some cases, the CA which signed your certificate is not a root CA, but is a CA signed by a CA (or signed by a CA who was signed by a CA who is a root CA, etc.) This is often known as a chained certificate, or a ca-bundle.<br />
+<br />
+What makes things tricky is that the remote client will look at your certificate, and try to verify it against the root CAs it knows about. If there is an intermediate CA between you and the CA the client knows about, it will need this certificate to sucessfully verify your certificate. As such, the server needs to not only provide clients with its own certificate, but also those of the intermediate CAs.<br />
+<br />
+In the UW-IMAP server, this is achieved by appending all intermediate certificates to the file containing your own certificate, with the highest-level certificate last. (The root certificate is not required, as the client already has it.)</blockquote>
+
+<p>You can confirm that the certificate is valid and verifiable by running a command like this:</p>
+
+<pre>sudo openssl verify imapd.pem</pre>
+
+<p>If it is valid and the certificate chain can be successfully resolved you'll see a message like this:</p>
+
+<pre>imapd.pem: OK</pre>
+
+<p>Otherwise you'll see something like this:</p>
+
+<pre>imapd.pem: /C=GB/O=Comodo Limited/OU=Comodo Trust Network/OU=Terms and Conditions of use: 
+http://www.comodo.net/repository/OU=(c)2002 Comodo Limited/CN=Comodo Class 3 Security Services CA
+error 2 at 1 depth lookup:unable to get issuer certificate</pre>
+
+<p>If you get the order of the certificates in the file wrong then you'll see messages like this in your <tt>/var/log/maillog</tt> when you try to connect to your IMAPS server:</p>
+
+<pre>Unable to load private key from /usr/share/ssl/certs/imapd.pem</pre>
+
+<p>These errors are evidently caused because the ordering confuses the server and it is no longer sure to which certificate the private key applies to, and it ends up guessing incorrectly. As stated in <a href="http://www.linux.com/howtos/SSL-RedHat-HOWTO-5.shtml">this page</a>:</p>
+
+<blockquote>If you get the error messages above, chances are the key and certificate do not match. Make sure you aren't using the default server.key file. You should also check the httpd.conf file to make sure that the directives are pointing to the correct private key and certificate.<br />
+<br />
+You can check to make sure that you your private key and certificate are in the correct format and match each other. To do this, give the commands below to decrypt the private key in one terminal window and decrypt the certificate in the other. What you will be comparing are the Modulus and the Exponent of each key. If the modulus and exponent from the key matches the set from the certificate, you have just confirmed that your certificate and key are correctly paired.</blockquote>
+
+<p>After checking the modulus and exponent of my key and certificate I was sure that I was using the right components, so I tried changing the order of elements in the file and it started working.</p>
+
+<p>You can use the same file for POP3S:</p>
+
+<pre>touch ipop3d.pem
+chmod 400 ipop3d.pem
+cp imapd.pem ipop3d.pem</pre>
+
+<p>For secure SMTP you can use the same file as a base, but you'll need to make some alterations:</p>
+
+<pre>touch sendmail.pem
+chmod 400 sendmail.pem
+cp imapd.pem sendmail.pem</pre>
+
+<p>Specifically, you'll need to prepare a separate file (call it <tt>ca.crt</tt>) containing only the certificate authority's certificate. You can then remove that portion from the <tt>sendmail.pem</tt> file. Sendmail will look for the certificate authority certificate in a separate file.</p>
+
+<h4>Switching on IMAPS support</h4>
+
+<p>Red Hat Enterprise Linux already has built-in IMAPS support. Now that your certificate is in place all you have to do is turn it on:</p>
+
+<pre>sudo chkconfig imaps on</pre>
+
+<p>You can verify that both IMAP and IMAPS are turned on (via <tt>xinetd</tt>) using:</p>
+
+<pre>sudo chkconfig --list</pre>
+
+<h4>Switching on POP3S support</h4>
+
+<p>The same is true for POP3S. Support is already in place; you just have to turn it on:</p>
+
+<pre>sudo chkconfig pop3s on</pre>
+
+<p>You can verify that both the pop3s and ipop3 services are turned on (via <tt>xinetd</tt>) using:</p>
+
+<pre>sudo chkconfig --list</pre>
+
+<h4>Configuring Sendmail to support TLS</h4>
+
+<p>Unlike IMAPS and POP3S, adding TLS support to SMTP requires a bit more work. First of all, you must make sure that your domain name MX records are updated to point to the correct host name (in this case, <tt>secure.wincent.com</tt>). This is because third parties connecting to your mail server may issue a STARTTLS command and it is important that the host name matches the name in the certificate. And being an MX record, you have to make sure that your host name is a proper A record (pointing to an IP address) and not just a CNAME alias (pointing to a domain name).</p>
+
+<p>The basic sequence of events looks like this:</p>
+
+<ol>
+<li>Make sure that your secure host is a proper A record and not a CNAME alias in your DNS.</li>
+<li>If you're extra cautious, you'll wait for this change to propagate through the DNS and confirm that you existing secure access (HTTPS, IMAPS, POP3S) continues to work.</li>
+<li>Update MX records for all of your hosted domains to point to the secure host.</li>
+<li>Wait for the change to propagate through the DNS and confirm that incoming and outgoing mail delivery still work.</li>
+<li>Install your Sendmail certificate (described above).</li>
+<li>Configure Sendmail (see below).</li>
+<li>Restart Sendmail with <tt>sudo service sendmail restart</tt>.</li>
+<li>Use telnet to confirm that STARTTLS is offered by the mail server.</li>
+<li>Test that incoming and outgoing mail delivery still work (try with and without SSL).</li>
+</ol>
+
+<p>The items you'll need to add to your Sendmail configuration are the following:</p>
+
+<pre>define(`confCACERT_PATH',`/usr/share/ssl/certs')dnl	
+define(`confCACERT',`/usr/share/ssl/certs/ca.crt')dnl
+define(`confSERVER_CERT',`/usr/share/ssl/certs/sendmail.pem')dnl
+define(`confSERVER_KEY',`/usr/share/ssl/certs/sendmail.pem')dnl</pre>
+
+<p>To test that STARTTLS is correctly offered by the mail server you can do a <tt>telnet secure.wincent.com 25</tt> and see if it lists STARTTLS in response to <tt>ehlo secure.wincent.com</tt>. When testing mail delivery it is a good idea to watch the mail log with <tt>sudo tail -f /var/log/maillog</tt> to make sure that SSL is being applied when you expect.</p>
+
+<p>For more information about STARTTLS see <a href="http://www.sendmail.org/m4/starttls.html">these</a> <a href="http://www.sendmail.org/~ca/email/starttls.html">documents</a> from the Sendmail website, as well as the text for <a href="ftp://ftp.isi.edu/in-notes/rfc2487.txt">RFC 2487</a>.</p>
+
+<h4>Configuring your mail client</h4>
+
+<p>Now you just need to point your email client to the new host name (in my case, <tt>secure.wincent.com</tt>), the new ports (993 and 995), and turn on SSL support for SMTP (no change to the port). It is important to change the host name as well as the ports because the certificate is tied to the host name.</p>]]>
+</content>
+</entry>
+<entry>
+<title>pstree mirror</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/05/pstree_mirror.php" />
+<modified>2006-05-29T13:27:36Z</modified>
+<issued>2006-05-29T13:26:09Z</issued>
+<id>tag:wincent.com,2006:/a/knowledge-base//2.328</id>
+<created>2006-05-29T13:26:09Z</created>
+<summary type="text/plain">I was just trying to build a copy of pstree for Intel and it appears that the website is no more. Not sure if this is a temporary outage or a permanent issue. Luckily I had a copy of the source archive, the latest version as far as I know (2.27). Seeing as the software is licensed for distribution under the GPL I&apos;ve mirrored a copy here.</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.org</email>
+</author>
+<dc:subject>Shell</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<![CDATA[<p>I was just trying to build a copy of <tt>pstree</tt> for Intel and it appears that the website is no more. Not sure if this is a temporary outage or a permanent issue. Luckily I had a copy of the source archive, the latest version as far as I know (2.27). Seeing as the software is licensed for distribution under the GPL I've mirrored a copy <a href="http://wincent.com/gpl/pstree-2.27.tar.gz">here</a>.</p>]]>
+
+</content>
+</entry>
+<entry>
+<title>Subversion 1.3.1 upgrade notes</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/04/subversion_131.php" />
+<modified>2006-04-05T13:52:24Z</modified>
+<issued>2006-04-05T13:52:19Z</issued>
+<id>tag:wincent.com,2006:/a/knowledge-base//2.284</id>
+<created>2006-04-05T13:52:19Z</created>
+<summary type="text/plain">Some brief notes I made while doing the Subversion upgrade from version 1.3 to 1.3.1.</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.org</email>
+</author>
+<dc:subject>Development</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<![CDATA[<p>Here are some brief notes I made while doing the <a href="http://subversion.tigris.org/">Subversion</a> upgrade from version 1.3 to 1.3.1:</p>]]>
+<![CDATA[<h4>Mac OS X (10.4.6) using access via Apache 2</h4>
+
+<pre>$ wget http://subversion.tigris.org/downloads/subversion-1.3.1.tar.bz2
+$ tar xjf subversion-1.3.1.tar.bz2
+$ cd subversion-1.3.1
+$ sudo /usr/local/apache2/bin/apachectl stop
+$ sudo rm -f /usr/local/lib/libsvn*
+$ sudo rm -f /usr/local/lib/libapr*
+$ sudo rm -f /usr/local/lib/libexpat*
+$ sudo rm -f /usr/local/lib/libneon*
+$ ac_cv_func_poll=no; export ac_cv_func_poll
+$ sh ./autogen.sh && ./configure && make && make check
+$ sudo make install
+$ sudo /usr/local/apache2/bin/apachectl start
+$ svn --version</pre>
+
+<h4>Red Hat Enterprise Linux (ES Release 3) using access by svnserve daemon</h4>
+
+<pre>$ wget http://subversion.tigris.org/downloads/subversion-1.3.1.tar.bz2
+$ tar xjf subversion-1.3.1.tar.bz2
+$ cd subversion-1.3.1
+$ sh ./autogen.sh && ./configure && make && make check
+$ sudo chkconfig svn off
+$ sudo make install
+$ sudo chkconfig svn on
+$ sudo netstat -anp | grep LISTEN | grep 3690
+$ telnet localhost 3690</pre>]]>
+</content>
+</entry>
+<entry>
+<title>Eliminating &quot;X-Authentication-Warning&quot; headers from Squirrelmail</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/03/eliminating_xau.php" />
+<modified>2006-03-09T13:06:06Z</modified>
+<issued>2006-03-09T13:04:51Z</issued>
+<id>tag:wincent.com,2006:/a/knowledge-base//2.237</id>
+<created>2006-03-09T13:04:51Z</created>
+<summary type="text/plain">So I just upgraded my Squirrelmail installation to the latest stable release (1.4.6). While I was at it I decided to see if I could eliminate the annoying &quot;X-Authentication-Warning&quot; headers that were being added to outgoing mail sent using Squirrelmail. I wanted to eliminate this because it&apos;s possible that strict spam filters might reject messages with this header; also the warnings were cluttering up my LogWatch reports with noise.</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.org</email>
+</author>
+<dc:subject>UNIX</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<![CDATA[<p>So I just upgraded my <a href="http://www.squirrelmail.org/">Squirrelmail</a> installation to the latest stable release (<a href="http://www.squirrelmail.org/changelog.php">1.4.6</a>). While I was at it I decided to see if I could eliminate the annoying "X-Authentication-Warning" headers that were being added to outgoing mail sent using Squirrelmail. I wanted to eliminate this because it's possible that strict spam filters might reject messages with this header; also the warnings were cluttering up my <a href="http://www.logwatch.org/">LogWatch</a> reports with noise.</p>]]>
+<![CDATA[<h3>The problem</h3>
+
+<p>Basically, headers like the following were being added:</p>
+
+<pre>X-Authentication-Warning: s69819.wincent.com: apache set sender to user@example.com using -f</pre>
+
+<h3>The solution</h3>
+
+<p>In order to overcome this you need to have the "trusted users" feature enabled in <a href="http://sendmail.org/">Sendmail</a> (I believe it is by default in <a href="http://www.redhat.com/apps/redirect.apm/en_us/USA/rhel/?rhpage=/index.html/home_mainnav**">Red Hat Enterprise Linux</a>):</p>
+
+<pre>FEATURE(use_ct_file)dnl</pre>
+
+<p>Then all that has to be done is to add "apache" to <tt>/etc/mail/trusted-users</tt> and rebuild the Sendmail configuration (if you changed it). I also stopped and restarted Sendmail for good measure; not sure if that's required.</p>]]>
+</content>
+</entry>
+<entry>
+<title>Avoiding protocol-related warnings</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/03/avoiding_protoc.php" />
+<modified>2006-03-01T13:17:43Z</modified>
+<issued>2006-03-01T13:16:13Z</issued>
+<id>tag:wincent.com,2006:/a/knowledge-base//2.224</id>
+<created>2006-03-01T13:16:13Z</created>
+<summary type="text/plain">By default, GCC warns when a subclass is marked as adopting a protocol and it inherits protocol methods from its superclass rather than implementing them itself.</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.org</email>
+</author>
+<dc:subject>Development</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<![CDATA[<p>By default, GCC warns when a subclass is marked as adopting a protocol and it inherits protocol methods from its superclass rather than implementing them itself.</p>]]>
+<![CDATA[<p>If you have code that looks like this (showing the header content only, not the implementation):</p>
+
+<pre>@protocol MyProtocol
+<br />
+- method;
+<br />
+@end
+<br />
+@interface MySuperclass
+<br />
+- method;
+<br />
+@end
+<br />
+@interface MySubclass : MySuperclass &lt;MyProtocol&gt;
+<br />
+@end</pre>
+
+<p>GCC will generate a warning at compile time that <tt>MyClass</tt> seems to be missing a method implementation required by <tt>MyProtocol</tt>. You can suppress these warnings using the <tt>-Wno-protocol</tt> switch; from the GCC man page:</p>
+
+<pre>-Wno-protocol
+If a class is declared to implement a protocol, a warning is issued
+for every method in the protocol that is not implemented by the
+class.  The default behavior is to issue a warning for every method
+not explicitly implemented in the class, even if a method implemen-
+tation is inherited from the superclass.  If you use the -Wno-pro-
+tocol option, then methods inherited from the superclass are con-
+sidered to be implemented, and no warning is issued for them.</pre>
+
+<p>There are reasons why you might actually want to see these warnings which I won't go into here (for more info check the <a href="http://lists.apple.com/mailman/listinfo/objc-language">objc-language mailing list</a> archives), but if you're sure that you want to be rid of them, then the <tt>-Wno-protocol</tt> switch is for you. It certainly beats declaring a bunch of methods like this in your subclass:</p>
+
+<pre>@implementation MySubclass
+<br />
+- method
+{
+    return [super method];
+}
+<br />
+@end</pre>
+
+<p>And in many cases it is better than the alternative of dumping the formal protocol and opting for an informal one (defined as a category in a parent or root class) instead.</p>]]>
+</content>
+</entry>
+<entry>
+<title>Unit testing guidelines</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/02/unit_testing_gu.php" />
+<modified>2006-02-13T01:57:57Z</modified>
+<issued>2006-02-13T01:38:00Z</issued>
+<id>tag:wincent.com,2006:/a/knowledge-base//2.201</id>
+<created>2006-02-13T01:38:00Z</created>
+<summary type="text/plain">Lately I&apos;ve been spending a lot of time working on my unit testing framework, WOTest.  In doing so I&apos;ve had cause to think about unit testing &quot;best practice&quot;, or at least what works best for me.</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.org</email>
+</author>
+<dc:subject>Cocoa and Objective-C</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<![CDATA[<p>Lately I've been spending a lot of time working on my unit testing framework, <a href="http://wincent.com/a/products/wotest/">WOTest</a>. In doing so I've had cause to think about unit testing "best practice", or at least what works best for me. In this article I summarize the guidelines that I've come up with that help me decide <em>when</em>, <em>how</em> and <em>where</em> to write <a href="http://en.wikipedia.org/wiki/Unit_testing">unit tests</a>:</p>
+
+<ol>
+<li>Write unit tests at all levels of your implementation</li>
+<li>Test your assumptions</li>
+<li>Base your unit tests on your documentation</li>
+<li>Base your unit tests on your code</li>
+<li>Base your unit tests on your expected results</li>
+<li>Write unit tests for your bugs</li>
+</ol>]]>
+<![CDATA[<h3>1. Write unit tests at all levels of your implementation</h3>
+
+<p>If you have a low-level method for adding numbers which is used by a high-level method for calculating window geometry then you should write tests for the low-level method <em>and</em> tests for the high-level method. In this way it will be easier to isolate faults. If a flaw in the low-level method causes the high-level method to fail you'll see failures in the tests for both methods. If the low-level method passes all the tests but the high-level method is broken you'll know where to direct your attention (to the high-level method).</p>
+
+<p>In practice this means writing tests for every method of every class. It may sound like a lot of work but you'll appreciate the thoroughness of your tests if you later have to find a bug in a huge framework. Don't skip writing tests for simple methods that don't seem to need it; even the simplest-looking code can have bugs lurking in it.</p>
+
+<p>One side consequence of the decision to write units tests for every method of every class is that it makes sense to group your unit tests using the same class/method hierarchy: that is, all tests for a given class will be grouped together into a test class, and all tests for a given method will be grouped into a method in that test class. You can of course add other, higher-level tests to the test class: these higher-level tests don't just test that a single method works as expected; rather they test more complex interactions between methods, classes (and sometimes mocks). I tend not to worry <em>too</em> much about keeping my unit tests totally isolated from one another (ideally you would test each class in total isolation from others, using mock objects as stand-ins); in practice keeping the tests "fairly isolated" is enough.</p>
+
+<p>The highest level tests of all are sometimes called "<a href="http://en.wikipedia.org/wiki/Acceptance_test">acceptance tests</a>". This basically means that you test that the program does what the user expects it to. Unit tests are lower-level, "atomic" tests that test the components (units) of the program. Acceptance tests are used to check the behavior of the program at the level at which the user interacts with it. They're called "acceptance" tests because they indicate whether the program will be acceptable to the user or not; that is, if it does what the user wants it to do. Unit tests are for programmers; acceptance tests are for users. In practice you write both kinds of tests using the same kinds of tools.</p>
+
+<h3>2. Test your assumptions</h3>
+
+<p>Sometimes you write code that takes advantage of some undocumented aspect of the Cocoa frameworks or the Objective-C runtime. I'm not talking here about using private or undocumented APIs; I'm referring to those places where the official documentation sometimes leaves things unsaid and taken for granted.</p>
+
+<p>In those cases you end up making assumptions about the operation and characteristics of the context in which your program runs: assumptions about the operating system, the APIs, the environment.</p>
+
+<p>Don't let these assumptions go untested. Write unit tests whenever your code rests upon an assumption you've made about something that isn't affirmed with 100% clarity in the official documentation. Use unit tests to eliminate potential ambiguity or uncertainty about the context in which your code is running.</p>
+
+<h3>3. Base your unit tests on your documentation</h3>
+
+<p>For me writing a working program consists of three simultaneous activities:</p>
+
+<ol>
+<li>Writing code-level documentation</li>
+<li>Writing unit tests</li>
+<li>Writing code</li>
+</ol>
+
+<p>Note that writing code is only one of the three parts of making a working program. You write the code so that the machine has a set of instructions to follow. You write the unit tests to ensure that the code works as you think it does and to give you added confidence when it comes to working quickly and making big changes. You write the documentation &mdash; even for closed-source code that nobody else will ever see &mdash; for two reasons: firstly, because it will be helpful to you if you ever have to revisit that same code months or years later; secondly, because it forces you to think about coming up with better designs that are more programmer-friendly (if you have trouble writing documentation for something it is a sure sign that you could have implemented things in a better, simpler way).</p>
+
+<p>So you write unit tests based on that documentation. For example, if your documentation says, "raises an exception when passed nil", you write a test that confirms that an exception is raised when you pass nil. If you documentation says, "returns NO if the receiver does not recognize the passed selector", you write a test that passes an unrecognized selector and checks to make sure that NO is returned. These unit tests confirm that your code conforms to the documentation.</p>
+
+<h3>4. Base your unit tests on your code</h3>
+
+<p>You'll then want to go though you code and look for every instance where you make an assertion, where an error can occur, or an exception can be thrown. You write unit tests for each of these places where the code can go off the rails. Basically you want to make sure that it goes off the rails when you expect it to. Use tests to ensure that assertions are correctly raised, that errors are reported, and that exceptions are thrown when appropriate.</p>
+
+<h3>5. Base your unit tests on your expected results</h3>
+
+<p>This is probably the most obvious basis for writing unit tests. You write tests that confirm that your methods return the expected results. Let's say you have a method that adds two numbers. You'll want to write tests that confirm that your method correctly returns that "2 plus 2 equals 4". There are three types of test to write here:</p>
+
+<ol>
+<li>Success conditions</li>
+<li>Failure conditions</li>
+<li>Boundary conditions</li>
+</ol>
+
+<p>In the first type of test you expect success. You check that "2 plus 2" does indeed equal "4".</p>
+
+<p>In the second type of test you intentionally provoke a failure. For example, you provoke an overflow and check that the result is invalid.</p>
+
+<p>In the third type of test you pick the borderline between success and failure &mdash; that is, conditions that approach as close as possible to "failure" without actually getting there &mdash; and make sure that the actual behavior is as expected. For example, in code that loops through items in an array you will want to ensure that the code works properly with empty arrays (0 items) or single-item arrays. With code that works with strings you'll want to check that nil strings and empty strings are handled. With code that operates with buffers you'll want to check that things work correctly when the buffer is one-byte away from full, totally full, or not big enough (the failure case).</p>
+
+<p>What this generally means is that I almost never write a WO_TEST_TRUE test without pairing it with an inverse WO_TEST_FALSE case. Basically the pair of tests says, "I expect <em>this</em> to work but <em>this</em> to fail". Just because a method works when I expect it to work doesn't mean that it's correct; it must also <em>not work</em> when I expect it to not work. And by testing for boundary conditions as well as straightforward success and failure cases I can have more confidence that the method will work in all cases where I believe it should work and fail in all cases where I believe it should fail.</p>
+
+<h3>6. Write unit tests for your bugs</h3>
+
+<p>Each time you find a bug you should write a test that exposes it. In other words, you write a test that fails because of the bug, but which would pass if the bug didn't exist. You then fix the bug and the test passes. If the bug ever comes back your test will catch it straight away.</p>]]>
+</content>
+</entry>
+<entry>
+<title>Lightweight issue tracking</title>
+<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/01/lightweight_iss.php" />
+<modified>2006-01-27T13:27:46Z</modified>
+<issued>2006-01-27T13:23:23Z</issued>
+<id>tag:wincent.com,2006:/a/knowledge-base//2.190</id>
+<created>2006-01-27T13:23:23Z</created>
+<summary type="text/plain">I use Bugzilla to power my public feature requests and bug tracking database.  But sometimes when I am writing code I want to quickly insert a reminder into the source code itself rather than opening an issue in the database.</summary>
+<author>
+<name>wincent</name>
+<url>http://wincent.com/</url>
+<email>win@wincent.org</email>
+</author>
+<dc:subject>Development</dc:subject>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<![CDATA[<p>I use <a href="http://www.bugzilla.org/">Bugzilla</a> to power my <a href="http://bugs.wincent.com/">public feature requests and bug tracking database</a>. But sometimes when I am writing code I want to quickly insert a reminder into the source code itself rather than opening an issue in the database. Rather than keeping a separate "TODO" list I just write a comment in the code like this:</p>
+
+<pre>// TODO: add user preference for opacity</pre>
+
+<p>If I later want to find all of the TODO items I can use Xcode's "Find In Project..." functionality or I can grep from the command-line. For this purpose I have the following function defined in my <tt>~/.bash_profile</tt>:</p>]]>
+<![CDATA[<pre># grep for "TODO" string
+todo()
+{
+  if [ $# -lt 1 ]; then
+    grep -R -n "TODO: " . | grep -v ".svn"
+  else
+    # loop through the args
+    while [ -n "$1" ]
+    do
+      grep -R -n "TODO: " "$1" | grep -v ".svn"
+      shift
+    done
+  fi
+}</pre>
+
+<p>I can then use the function to grep for TODO items in the current directory, in a specific file (or files), or in a specific directory (or directories):</p>
+
+<pre>$ todo
+$ todo .
+$ todo WOSynergyAdvanceController.m
+$ todo SynergyAdvanceFramework synergyd</pre>
+
+<p>I'll then see a list of matching file names, line numbers, and the TODO items themselves. Items in <tt>.svn</tt> directories are filtered from the output. If no arguments are supplied then the function starts the grep in the current directory. The output will look like this:</p>
+
+<pre>./WOITunesController.m:1683:    // TODO: add caching for this value</pre>
+
+<p>So that's lightweight issue tracking. You can do the same with bugs using a function like this:</p>
+
+<pre># grep for "BUG" string
+bugs()
+{
+  if [ $# -lt 1 ]; then
+    grep -R -n "BUG: " . | grep -v ".svn"
+  else  
+    # loop through the args
+    while [ -n "$1" ]
+    do
+      grep -R -n "BUG: " "$1" | grep -v ".svn"
+      shift
+    done
+  fi
+}</pre>]]>
+</content>
+</entry>
+
+</feed>

@@ -1,0 +1,85 @@
+/*
+  
+  base.css
+  Created by Wincent Colaiuta on 11 October 2006.
+  Copyright 2006-2007 Wincent Colaiuta
+  $Id: /mirrors/WOCommon/branches/tiger/help/css/front.css 6723 2007-04-10T18:35:35.129819Z wincent  $
+  
+ */
+
+/* Hack: <html><head><meta name="robots" content="noindex"></head></html> (tells Help Indexer to ignore this file) */
+
+body { 
+  color: #000; 
+  background-color: #fff; 
+  margin: 0;
+  font-family: Lucida Grande, Arial, sans-serif;
+  }
+
+a {
+  color: #00f;
+  text-decoration: none
+  }
+
+a:hover {
+  text-decoration: underline
+  }
+
+h1 {
+  font-size: 18pt;
+  font-weight: 500;
+  letter-spacing: -1pt;
+  padding-top: 12px
+  }
+
+h2 {
+  font-size: 11pt;
+  font-weight: 300;
+  margin-top: 16px
+  }
+
+h3 {
+  font-size: 8pt;
+  font-weight: 300;
+  margin-top: 21px
+  }
+
+p {
+  font-size: 9pt;
+  margin-top: -10px;
+  margin-left: 0
+  }
+
+#frame {
+  text-align: left;
+  margin-top: 12px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 500px
+  }
+
+#content_left {
+  margin-top: 38px;
+  width: 235px;
+  float: left
+  }
+
+#content_center {
+  margin-top: 2px;
+  padding: 0;
+  width: 18px;
+  float: left
+  }
+
+#content_right {
+  margin-top: 18px;
+  padding-left: 30px;
+  width: 210px;
+  height: 300px;
+  float: left;
+  border-left: 1px solid #808080
+  }
+
+.icon {
+  margin-bottom: -2px
+  }

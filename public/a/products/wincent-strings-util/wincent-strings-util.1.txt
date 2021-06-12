@@ -1,0 +1,231 @@
+WINCENT-STRINGS-UTIL(1)     Wincent Strings Utility    WINCENT-STRINGS-UTIL(1)
+
+NAME
+     wincent-strings-util -- merge localizable strings files
+
+SYNOPSIS
+     wincent-strings-util --base basepath [--merge mergepath]
+			  [--output outputpath] [--encode encoding]
+     wincent-strings-util --base basepath [--extract extractpath]
+			  [--output outputpath] [--encode encoding]
+     wincent-strings-util --base basepath [--combine combinepath]
+			  [--output outputpath] [--encode encoding]
+     wincent-strings-util --info plistpath --strings stringspath
+			  [--output outputpath] [--encode encoding]
+
+DESCRIPTION
+     In its first mode of operation (when using the --base switch)
+     wincent-strings-util reads the localizable strings file, basepath, parses
+     its contents looking for valid key/value pairs, and writes out the parsed
+     content. Any excess whitespace or blank lines in the input will be
+     stripped from the output.
+
+     One of three optional switches ( --merge, --extract, or --combine) may be
+     specified to transform the results before writing them out.
+
+     When --merge is used to pass in a second localizable strings file,
+     mergepath, wincent-strings-util merges values from mergepath into the
+     output.
+
+     Alternatively, if --extract is used then wincent-strings-util compares
+     basepath and extractpath looking for strings that are missing (present in
+     basepath but not extractpath) or untranslated (present in both files but
+     with identical key/value pairs in both) and emits only those entries.
+
+     Finally, --combine may be specified instead and wincent-strings-util will
+     combine the contents of combinepath with those of basepath using a simple
+     additive algorithm. In this way incremental localizations based on par-
+     tial strings files generated using --extract can be reintegrated with an
+     existing localization.
+
+     Whenever basepath is provided, comments in basepath are preserved in the
+     output.
+
+     In its second mode of operation (when using the --info and --strings
+     switches) wincent-strings-util reads the plist file, plistpath (usually
+     an Info.plist file), and uses its key/value pairs as a basis for perform-
+     ing macro substitution within the strings file, stringspath.  Any key
+     name in the strings file delimited using double angle quotation marks
+     (Unicode 0x00ab and 0x00bb) will be substituted using the corresponding
+     value from the property list file. This mode of operation is intended to
+     supplement the "Info.plist preprocessing" feature of Xcode.
+
+     In all cases if an outputpath is specified then the results are written
+     to that file; otherwise they are written to standard output. The optional
+     --encode switch can be used to explicitly specify the output encoding,
+     which may be one of UTF-16BE (for UTF-16 big-endian) or UTF-16LE (for
+     UTF-16 little-endian) encoding. If not specified, the output will be in
+     UTF-16 in the native endianness for the machine on which
+     wincent-strings-util is being executed.
+
+OPTIONS
+     --base   Read localizable strings file basepath.
+
+     --merge  (Optional) merge with localizable strings file mergepath.
+	      Key/value pairs in mergepath override key/value pairs in
+	      basepath.
+
+     --extract
+	      (Optional) extract new strings (strings that are present in
+	      basepath but not in extractpath) and untranslated strings
+	      (strings present in both files where the key/value pair is iden-
+	      tical in both).
+
+     --combine
+	      (Optional) add key/value pairs from combinepath to those in
+	      basepath.
+
+     --output
+	      (Optional) write output to localizable strings file outputpath,
+	      creating it if necessary. If outputpath already exists any pre-
+	      vious content will be replaced.
+
+     --encode
+	      (Optional) explicitly specify the encoding to be used for out-
+	      put. May be one of UTF-16BE (UTF-16 big-endian) or UTF-16LE
+	      (UTF-16 little-endian).
+
+     --info   Read the plist file plistpath.
+
+     --strings
+	      Perform macro substitution on the strings file stringspath.
+
+IMPLEMENTATION NOTES
+   Merging algorithm
+     The following actions are taken depending on whether a key is present
+     only in basepath, only in mergepath, or in both:
+
+     Key is present in basepath and mergepath
+     The output will use the key from basepath and the value from mergepath.
+
+     Key is present in basepath but not mergepath
+     The output will use the key and the value from basepath, and a warning
+     that the key was missing from mergepath will be printed to standard
+     error.
+
+     Key is present in mergepath but not basepath
+     The key and value will be omitted from the output and a warning that the
+     key was not present in basepath will be printed to standard error.
+
+     In all cases, comments from basepath will be carried across into the out-
+     put, but comments from mergepath will not.
+
+ERRORS
+     On encountering a malformed localizable strings file wincent-strings-util
+     will print a description of the parse error to standard error and exit
+     with an exit code of 1.
+
+EXAMPLES
+     To read in the strings file, es.lproj/Localizable.strings, remove excess
+     whitespace and blank lines, and write the result back to the original
+     file using UTF-16 encoding in the native endianness for the machine on
+     which wincent-strings-util is running:
+
+	   wincent-strings-util --base es.lproj/Localizable.strings \
+				--output es.lproj/Localizable.strings
+
+     The same as above, but explicitly forcing a little-endian UTF-16 encod-
+     ing:
+
+	   wincent-strings-util --base es.lproj/Localizable.strings \
+				--output es.lproj/Localizable.strings \
+				--encode UTF-16LE
+
+     The following example takes an updated English language strings file con-
+     taining new key/value pairs, en.lproj/Localizable.strings, and creates a
+     new Spanish language strings file, es.lproj/Localizable.strings, merging
+     previously translated key/value pairs from the same Spanish language file
+     into the output:
+
+	   wincent-strings-util --base en.lproj/Localizable.strings \
+				--merge es.lproj/Localizable.strings \
+				--output es.lproj/Localizable.strings
+
+     The updated output directly updates the original localized Spanish file,
+     overwriting it.
+
+     This example takes an updated English language strings file,
+     en.lproj/MainMenu.strings, and looks for untranslated or missing strings
+     in the corresponding Spanish language file, es.lproj/MainMenu.strings.
+     The result is a partial strings file, es.lproj/MainMenu.new.strings,
+     suitable for incremental localization:
+
+	   wincent-strings-util --base en.lproj/MainMenu.strings \
+				--extract es.lproj/MainMenu.strings \
+				--output es.lproj/MainMenu.new.strings
+
+     In the next example the partial strings file,
+     es.lproj/MainMenu.new.strings, has now been translated and is combined
+     with the incomplete strings file, es.lproj/MainMenu.strings.  Output is
+     written back directly to the original file, es.lproj/MainMenu.strings:
+
+	   wincent-strings-util --base es.lproj/MainMenu.strings \
+				--combine es.lproj/MainMenu.new.strings \
+				--output es.lproj/MainMenu.strings
+
+     The following example takes an unlocalized property list file,
+     Info.plist, and uses its key/value pairs as a basis for substitution in
+     the localized strings file, en.lproj/InfoPlist.strings:
+
+	   wincent-strings-util --info Info.plist \
+				--strings en.lproj/InfoPlist.strings
+
+     For example, any instances of the string, CFBundleVersion, in the strings
+     file when surrounding by double-angle quotation marks will be substituted
+     with the value that corresponds to the CFBundleVersion key in the prop-
+     erty list.
+
+SEE ALSO
+     genstrings(1), ibtool(1), plutil(1)
+
+BUGS
+     wincent-strings-util may not perform macro substitution in the case where
+     a previous build has been completed and the destination strings file,
+     outputpath, is already in place in the target build directory. This is
+     because Xcode leaves the processed files in place after building and will
+     not replace them during subsequent builds unless the equivalent files
+     under the source root have changed. As a consequence, the files will not
+     get updated when they are subsequently processed because the macros will
+     already have been substituted on a previous build; this means that the
+     information in the files may not reflect the latest available informa-
+     tion. The only workaround is to perform a "Clean" or "Clean All" in order
+     to force Xcode to replace these files.
+
+HISTORY
+     wincent-strings-util is a derivative work based on stringsUtil by Omni
+     Development available from
+     http://www.omnigroup.com/ftp/pub/localization/.
+
+     The principal, user-visible changes in the derived work are:
+	   o   Works with InfoPlist.strings files (which use unquoted key
+	       strings).
+	   o   InfoPlist.strings file preprocessing (analogous to Xcode's
+	       Info.plist preprocessing feature).
+	   o   Always writes output files using UTF-16 encoding (the required
+	       encoding for strings files).
+	   o   Catches exceptions when parsing malformed strings files rather
+	       than exiting uncleanly (which would cause the Mac OS X CrashRe-
+	       porter to launch).
+	   o   Emits warnings when keys are present in mergepath but not
+	       basepath.
+	   o   Is a Universal Binary (runs natively on both PowerPC and Intel
+	       processors).
+	   o   Emits a non-zero exit code if writing to output file fails.
+	   o   Includes this man page.
+
+     The first public release of wincent-strings-util took place on February
+     19, 2006. The latest version is always available from
+     http://strings.wincent.com/.
+
+AUTHORS
+     Wincent Colaiuta (http://wincent.com/)
+     Omni Development (http://www.omnigroup.com/)
+
+LICENSE
+     Wincent Strings Utility is copyright 2005-2009 Wincent Colaiuta. It is
+     based on software developed by Omni Development, copyright 2002 Omni
+     Development, Inc. This derivative work is made available according to the
+     terms of the GNU General Public License (included with the distribution)
+     with the permission of Omni Development.
+
+Darwin				August 28, 2009 			Darwin

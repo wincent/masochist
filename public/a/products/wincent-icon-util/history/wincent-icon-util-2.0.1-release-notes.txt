@@ -1,0 +1,8 @@
+Changes from 2.0 to 2.0.1:
+
+    Bump version number for 2.0.1 release
+    Update buildtools submodule 1cd84ad..7d4e122
+
+buildtools: Changes from wincent-icon-util-2.0 to wincent-icon-util-2.0.1:
+
+    ReleaseNotes.sh: handle first release
