@@ -71,7 +71,7 @@ Date:   Tue Jan 8 08:53:46 2008 +0100
     
     See:
     
-    http://wincent.com/a/support/bugs/show_bug.cgi?id=637
+    https://wincent.com/a/support/bugs/show_bug.cgi?id=637
     
     Signed-off-by: Wincent Colaiuta <win@wincent.com>
 

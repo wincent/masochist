@@ -138,7 +138,7 @@ Description
 <span class='when'><a href="#comment_3119"><time data-relative="true">2007-11-30T02:32:28Z</time></a></span>
 </cite>
 <blockquote><p>I notice that someone just posted a very similar crash log. See <a href="/issues/621">bug #621</a>:</p>
-<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=621" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=621</a></p>
+<p><a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=621" class="external">https://wincent.com/a/support/bugs/show_bug.cgi?id=621</a></p>
 </blockquote>
 </li>
 <li class='comment admin' id='comment_3120'>
@@ -164,7 +164,7 @@ Description
 <span class='when'><a href="#comment_3122"><time data-relative="true">2007-12-27T10:31:15Z</time></a></span>
 </cite>
 <blockquote><p>Ok, getting very close to release now. A new nightly build is now up at:</p>
-<p><a href="http://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/12/synergy_revision_c7eb0af3cce75.php" class="external">http://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/12/synergy_revision_c7eb0af3cce75.php</a></p>
+<p><a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/12/synergy_revision_c7eb0af3cce75.php" class="external">https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/12/synergy_revision_c7eb0af3cce75.php</a></p>
 <p>This build is still not perfect (I have been able to make it crash a couple of times) but I do think the vast majority of issues with the previous alpha are now fixed. With a few more days of testing this one should be ready for release.</p>
 <p>As you can see, one major change is that there is no installer and it's now just a standalone application. This was really my only option due to problems with integrating my Garbage-Collected code with Apple's PreferencePanes framework (in which Garbage Collection is disallowed); well, there were actually a range of options, but this is the one that seems the most robust and easy to maintain.</p>
 </blockquote>
@@ -227,7 +227,7 @@ Description
 <span class='when'><a href="#comment_3125"><time data-relative="true">2008-01-07T11:29:12Z</time></a></span>
 </cite>
 <blockquote><p>Ok, so I've just released a new alpha, 3.5a3. Full details are here:</p>
-<p><a href="http://wincent.com/a/news/archives/2008/01/synergy_35a3_re.php" class="external">http://wincent.com/a/news/archives/2008/01/synergy_35a3_re.php</a></p>
+<p><a href="https://wincent.com/a/news/archives/2008/01/synergy_35a3_re.php" class="external">https://wincent.com/a/news/archives/2008/01/synergy_35a3_re.php</a></p>
 <p>As far as I know, this new build fixes all the known Garbage Collection-related crashes which were reported for the prior alphas. I am going to close this bug report now; if you discover any new crashers please open a new report because the cause is almost certainly going to be a different issue.</p>
 <p>In my own testing I've been able to provoke a few crashes, but all of them very close to identical and originating from inside Apple's NSAppleScript API. I've analyzed the calling code and I can't see anything from the calling environment that could be causing the crash in the system code. So it's something that I'll be monitoring, but my gut fear is that there might be something deep down in NSAppleScript that doesn't play nicely with Garbage Collection. If that proves to be the case then we'll have to look for an alternative API, but that's a bridge we'll cross when we come to it, and will be a subject for a different bug report.</p>
 </blockquote>

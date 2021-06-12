@@ -115,7 +115,7 @@ Description
 </blockquote>
 <p>The system automatically rotates your log files (starts new files and deletes old ones) so the amount of space taken up by them should be roughly constant over time. In any case, the sizes in question are probably too small to have any noticeable impact (for example, on my system all of my logs added up total to about 75M or 0.04% of my total space).</p>
 <p>Info about controlling the logging level is here:</p>
-<p><a href="http://wincent.com/a/products/synergy-advance/help/preferences/advanced/#logging" class="external">http://wincent.com/a/products/synergy-advance/help/preferences/advanced/#logging</a></p>
+<p><a href="https://wincent.com/a/products/synergy-advance/help/preferences/advanced/#logging" class="external">https://wincent.com/a/products/synergy-advance/help/preferences/advanced/#logging</a></p>
 <p>That documentation applies to version 0.4 of Synergy Advance and you can control the setting in the &quot;Advanced&quot; tab of the preferences:</p>
 <blockquote>
 <p>Synergy Advance can print information to the console (see the &quot;Console&quot; application at &quot;/Applications/Utilities/Console&quot;) for the purposes of feedback, diagnostics, debugging and troubleshooting. The verbosity of this logging can be configured using the &quot;Logging level&quot; setting in the advanced preferences. The minimum possible setting is log level 0; at this level Synergy Advance tries to be completely &quot;silent&quot; and not print anything at all to the console (although some error conditions may still arise in which the system libraries, outside of the control of Synergy Advance, print information to the console). The maximum possible setting is log level 10 which is the most verbose setting. The default log level is 1, which means that Synergy Advance will print only a minimum of information to the console, such as error conditions and other events considered as &quot;noteworthy&quot;.</p>
@@ -124,7 +124,7 @@ Description
 <p>defaults write com.wincent.SynergyAdvance LogLevel -int 0</p>
 <p>Note that the control for this setting will be added back to the UI shortly. This is only a temporary thing during the rearrangement.</p>
 <p>The other change to note in 0.5b is documented in the history:</p>
-<p><a href="http://wincent.com/a/products/synergy-advance/history/#0.5b" class="external">http://wincent.com/a/products/synergy-advance/history/#0.5b</a></p>
+<p><a href="https://wincent.com/a/products/synergy-advance/history/#0.5b" class="external">https://wincent.com/a/products/synergy-advance/history/#0.5b</a></p>
 <p>Specifically:</p>
 <blockquote>
 <p>[Note] Changed the possible range of settings for the &quot;Logging level&quot; advanced preferences; possible values now lie in the range of 0 to 7 (the previous range was 0 to 10) and the default level has been changed from 0 to 5. This change was made to bring Synergy Advance in line with the logging levels specified for the BSD syslog facility in RFC 3164 and mirrored in Apple's ASL (&quot;Apple system log facility&quot;). See the documentation for the &quot;Logging level&quot; setting for more information.</p>

@@ -17,7 +17,7 @@
 	<string>Wincent</string>
 	<!-- You can promote your website or the website of your organization or business by including the "Author website" key. -->
 	<key>Author website</key>
-	<string>http://wincent.com/</string>
+	<string>https://wincent.com/</string>
 	<!-- If your set is specifically designed to be used with the buttons placed next to each other with a zero-pixel gap in between them, you should set the "Default button spacing" key to a value of 0 (zero). If your set does not specifically require this then you should omit the key and allow the users of your button set to use their preexisting button spacing preference. -->
 	<key>Default button spacing</key>
 	<integer>0</integer>

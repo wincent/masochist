@@ -27,7 +27,7 @@
       <p class="quick-links-date"> 3 Feb 2007</p>
     <ul>
   
-  <li><h4>Aperture to Final Cut</h4><p><a href="http://connectedflow.com/">Connected Flow</a> has released a new Aperture plug-in that uses <a href="http://install.wincent.com/">Wincent's Install</a> tool. Links appear on the Install <a href="http://www.wincent.com/a/products/install/download/">downloads page</a>.</p></li>
+  <li><h4>Aperture to Final Cut</h4><p><a href="http://connectedflow.com/">Connected Flow</a> has released a new Aperture plug-in that uses <a href="http://install.wincent.com/">Wincent's Install</a> tool. Links appear on the Install <a href="https://wincent.com/a/products/install/download/">downloads page</a>.</p></li>
       </ul>
   
       <p class="quick-links-date"> 9 Dec 2006</p>
@@ -86,4 +86,4 @@
   
 
  
-<p class="more"><a href="http://www.wincent.com/a/news/quick-links/archives/">Quick links archives...</a></p>
+<p class="more"><a href="https://wincent.com/a/news/quick-links/archives/">Quick links archives...</a></p>

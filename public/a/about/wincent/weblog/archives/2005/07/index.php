@@ -8,12 +8,12 @@
 <title>Wincent Colaiuta's weblog: July 2005 Archives</title>
 
 <link rel="stylesheet" href="/a/styles.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.wincent.com/a/about/wincent/weblog/index.rdf" />
-<link rel="alternate" type="application/atom+xml" title="Atom" href="http://www.wincent.com/a/about/wincent/weblog/atom.xml" />
-<link rel="start" href="http://www.wincent.com/a/about/wincent/weblog/" title="Home" />
-<link rel="prev" href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/06/" title="June 2005" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://wincent.com/a/about/wincent/weblog/index.rdf" />
+<link rel="alternate" type="application/atom+xml" title="Atom" href="https://wincent.com/a/about/wincent/weblog/atom.xml" />
+<link rel="start" href="https://wincent.com/a/about/wincent/weblog/" title="Home" />
+<link rel="prev" href="https://wincent.com/a/about/wincent/weblog/archives/2005/06/" title="June 2005" />
 
-<link rel="next" href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/08/" title="August 2005" />
+<link rel="next" href="https://wincent.com/a/about/wincent/weblog/archives/2005/08/" title="August 2005" />
 
 
 </head>
@@ -34,8 +34,8 @@
       <tr>
         <td style="background-image: url(/a/gfx/header/left-side.jpg); background-repeat: repeat-y;" width="32"><img src="/a/gfx/header/left-side.jpg" width="32" height="71" alt="" /></td>
         <td style="background-image: url(/a/gfx/header/center-background.jpg); background-repeat: repeat;" colspan="11" align="center" valign="middle">
-  <a href="http://www.wincent.com/"><img src="/a/gfx/wincent-logo-small-gray-bg.jpg" width="43" height="41" alt="wincent" align="middle" /></a>
-  <a href="http://www.wincent.com/a/about/wincent/weblog/"><img src="/a/gfx/weblog-header.jpg" width="323" height="25" alt="Wincent Colaiuta's weblog" align="middle"/></a>
+  <a href="https://wincent.com/"><img src="/a/gfx/wincent-logo-small-gray-bg.jpg" width="43" height="41" alt="wincent" align="middle" /></a>
+  <a href="https://wincent.com/a/about/wincent/weblog/"><img src="/a/gfx/weblog-header.jpg" width="323" height="25" alt="Wincent Colaiuta's weblog" align="middle"/></a>
 
         </td>
         <td style="background-image: url(/a/gfx/header/right-side.jpg); background-repeat: repeat-y;" width="32"><img src="/a/gfx/header/right-side.jpg" width="32" height="71" alt="" /></td>
@@ -46,68 +46,68 @@
         <td width="73" height="25">
           <ul style="width: 73px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/products/" title="Full products listing"><img src="/a/gfx/header/products-off.jpg" width="73" height="25" alt="Products" /></a>
+              <a href="https://wincent.com/a/products/" title="Full products listing"><img src="/a/gfx/header/products-off.jpg" width="73" height="25" alt="Products" /></a>
               <ul>
                 <li><a href="https://wincent.com/products/synergy" title="The original iTunes menu bar controller">Synergy &gt;</a>
                   <ul>
                     <li><a href="https://wincent.com/products/synergy/download" title="Download Synergy">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-classic/purchase/" title="Purchase Synergy">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-classic/purchase/" title="Purchase Synergy">Purchase</a></li>
                     <li><a href="https://wincent.com/products/synergy/help" title="Frequently Asked Questions">FAQ</a></li>
-                    <li><a href="http://www.wincent.com/a/products/synergy-classic/buttons/" title="Free button sets">Button Sets</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-classic/buttons/" title="Free button sets">Button Sets</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/" title="Multi-purpose audio companion">Synergy Advance &gt;</a>
+                <li><a href="https://wincent.com/a/products/synergy-advance/" title="Multi-purpose audio companion">Synergy Advance &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/synergy-advance/download/" title="Download Synergy Advance">Download preview</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/purchase/" title="Purchase Synergy Advance">Purchase</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/download/" title="Download Synergy Advance">Download preview</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/purchase/" title="Purchase Synergy Advance">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/winswitch/" title="Enhanced replacement for Apple's Fast User Switching menu">WinSwitch &gt;</a>
+                <li><a href="https://wincent.com/a/products/winswitch/" title="Enhanced replacement for Apple's Fast User Switching menu">WinSwitch &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/winswitch/download/" title="Download WinSwitch">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/winswitch/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/winswitch/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
-                    <li><a href="http://www.wincent.com/a/products/winswitch/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/download/" title="Download WinSwitch">Download</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/hextrapolate/" title="Programmers number conversion tool">Hextrapolate &gt;</a>
+                <li><a href="https://wincent.com/a/products/hextrapolate/" title="Programmers number conversion tool">Hextrapolate &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/hextrapolate/download/" title="Download Hextrapolate">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/hextrapolate/purchase/" title="Purchase Hextrapolate">Purchase</a></li>
-                    <li><a href="http://www.wincent.com/a/products/hextrapolate/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/download/" title="Download Hextrapolate">Download</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/purchase/" title="Purchase Hextrapolate">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/install/" title="Installation and deployment solution for developers">Install &gt;</a>
+                <li><a href="https://wincent.com/a/products/install/" title="Installation and deployment solution for developers">Install &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/install/download/" title="Install downloads">Downloads</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/purchase/" title="Purchase Install">Purchase</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
-                    <li><a href="http://www.wincent.com/a/products/install/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/install/download/" title="Install downloads">Downloads</a></li>
+                    <li><a href="https://wincent.com/a/products/install/purchase/" title="Purchase Install">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/install/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/install/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/install/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/getsmart-pro/" title="Intelligent download manager">GetSmart Pro &gt;</a>
+                <li><a href="https://wincent.com/a/products/getsmart-pro/" title="Intelligent download manager">GetSmart Pro &gt;</a>
                   <ul>
-                    <li><a href="https://secure.wincent.com/a/products/getsmart-pro/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/getsmart-pro/donate/" title="Support development with a donation">Donate</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/" title="Full product listing">Other products...</a></li>
+                <li><a href="https://wincent.com/a/products/" title="Full product listing">Other products...</a></li>
               </ul>
             </li>
           </ul>
         </td>
-        <td width="48" height="25"><a href="https://secure.wincent.com/a/store/" title="Wincent online store"><img src="/a/gfx/header/store-off.jpg" width="48" height="25" alt="Store" /></a></td>
+        <td width="48" height="25"><a href="https://wincent.com/a/store/" title="Wincent online store"><img src="/a/gfx/header/store-off.jpg" width="48" height="25" alt="Store" /></a></td>
         <td width="63" height="25">
           <ul style="width: 63px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/services/" title="Full services listing"><img src="/a/gfx/header/services-off.jpg" width="63" height="25" alt="Services" /></a>
+              <a href="https://wincent.com/a/services/" title="Full services listing"><img src="/a/gfx/header/services-off.jpg" width="63" height="25" alt="Services" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/services/custom-development/" title="Custom software development">Custom Development</a></li>
-                <li><a href="http://www.wincent.com/a/services/mac-consultancy/" title="Apple and Mac OS X consultancy">Apple/Mac Consultancy</a></li>
-                <li><a href="http://www.wincent.com/a/services/web-design/" title="Web design services">Web Design</a></li>
-                <li><a href="http://www.wincent.com/a/services/hosting/" title="Internet web and email hosting">Hosting</a></li>
+                <li><a href="https://wincent.com/a/services/custom-development/" title="Custom software development">Custom Development</a></li>
+                <li><a href="https://wincent.com/a/services/mac-consultancy/" title="Apple and Mac OS X consultancy">Apple/Mac Consultancy</a></li>
+                <li><a href="https://wincent.com/a/services/web-design/" title="Web design services">Web Design</a></li>
+                <li><a href="https://wincent.com/a/services/hosting/" title="Internet web and email hosting">Hosting</a></li>
               </ul>
             </li>
           </ul>
@@ -115,16 +115,16 @@
         <td width="62" height="25">
           <ul style="width: 62px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/support/" title="Support resources and links"><img src="/a/gfx/header/support-off.jpg" width="62" height="25" alt="Support" /></a>
+              <a href="https://wincent.com/a/support/" title="Support resources and links"><img src="/a/gfx/header/support-off.jpg" width="62" height="25" alt="Support" /></a>
               <ul>
-                <li><a href="https://secure.wincent.com/a/support/registration/" title="Retrieve lost license codes">Lost License Codes</a></li>
-                <li><a href="http://www.wincent.com/a/support/bugs/" title="Bug tracking and feature request database">Bugs and Feature Requests</a></li>
-                <li><a href="http://www.wincent.com/a/support/demo-licenses/" title="Obtain a demonstration license">Demonstration licenses</a></li>
-                <li><a href="http://www.wincent.com/a/support/forums/" title="Discussion and support forums">Forums</a></li>
-                <li><a href="http://www.wincent.com/a/support/faq/" title="Frequently Asked Questions">FAQ</a></li>
-                <li><a href="http://www.wincent.com/a/support/activation/" title="Product activation and information">Product Activation</a></li>
-                <li><a href="https://secure.wincent.com/a/support/tickets/" title="Open or view a support ticket">Support Tickets</a></li>
-                <li><a href="http://www.wincent.com/a/support/lists/" title="Subscribe/unsubscribe to/from a mailing list">Mailing lists</a></li>
+                <li><a href="https://wincent.com/a/support/registration/" title="Retrieve lost license codes">Lost License Codes</a></li>
+                <li><a href="https://wincent.com/a/support/bugs/" title="Bug tracking and feature request database">Bugs and Feature Requests</a></li>
+                <li><a href="https://wincent.com/a/support/demo-licenses/" title="Obtain a demonstration license">Demonstration licenses</a></li>
+                <li><a href="https://wincent.com/a/support/forums/" title="Discussion and support forums">Forums</a></li>
+                <li><a href="https://wincent.com/a/support/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                <li><a href="https://wincent.com/a/support/activation/" title="Product activation and information">Product Activation</a></li>
+                <li><a href="https://wincent.com/a/support/tickets/" title="Open or view a support ticket">Support Tickets</a></li>
+                <li><a href="https://wincent.com/a/support/lists/" title="Subscribe/unsubscribe to/from a mailing list">Mailing lists</a></li>
               </ul>
             </li>
           </ul>
@@ -132,10 +132,10 @@
         <td width="53" height="25">
           <ul style="width: 53px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/about/" title="Company information"><img src="/a/gfx/header/about-on.jpg" width="53" height="25" alt="About" /></a>
+              <a href="https://wincent.com/a/about/" title="Company information"><img src="/a/gfx/header/about-on.jpg" width="53" height="25" alt="About" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/about/wincent/" title="About Wincent Colaiuta: the person">About Wincent Colaiuta</a></li>
-                <li><a href="http://www.wincent.com/a/about/privacy/" title="About the Wincent Privacy Policy">Privacy Policy</a></li>
+                <li><a href="https://wincent.com/a/about/wincent/" title="About Wincent Colaiuta: the person">About Wincent Colaiuta</a></li>
+                <li><a href="https://wincent.com/a/about/privacy/" title="About the Wincent Privacy Policy">Privacy Policy</a></li>
               </ul>
            </li>
          </ul>
@@ -143,24 +143,24 @@
         <td width="49" height="25">
           <ul style="width: 49px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/news/" title="Latest news items in weblog format"><img src="/a/gfx/header/news-off.jpg" width="49" height="25" alt="News" /></a>
+              <a href="https://wincent.com/a/news/" title="Latest news items in weblog format"><img src="/a/gfx/header/news-off.jpg" width="49" height="25" alt="News" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/news/archives/mac_os_x_news/" title="Apple and Mac OS X-related news">Mac OS X News</a></li>
-                <li><a href="http://www.wincent.com/a/news/archives/product_news/" title="Wincent product news">Product News</a></li>
-                <li><a href="http://www.wincent.com/a/news/archives/site_news/" title="Site-related news">Site News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/mac_os_x_news/" title="Apple and Mac OS X-related news">Mac OS X News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/product_news/" title="Wincent product news">Product News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/site_news/" title="Site-related news">Site News</a></li>
                 <li><a href="http://colaiuta.net/" title="Development and other notes from Wincent">Wincent Colaiuta's weblog</a></li>
               </ul>
             </li>
           </ul>
         </td>
         <td width="107" height="25"><a href="http://kbase.wincent.com/" title="Categorized Mac OS X tips and information"><img src="/a/gfx/header/knowledge-base-off.jpg" width="107" height="25" alt="Knowledge Base" /></a></td>
-        <td width="62" height="25"><a href="http://www.wincent.com/a/contact/" title="Contact email form"><img src="/a/gfx/header/contact-off.jpg" width="62" height="25" alt="Contact" /></a></td>
+        <td width="62" height="25"><a href="https://wincent.com/a/contact/" title="Contact email form"><img src="/a/gfx/header/contact-off.jpg" width="62" height="25" alt="Contact" /></a></td>
         <td width="72" height="25">
           <ul style="width: 72px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/site-map/" title="Site overview"><img src="/a/gfx/header/site-map-off.jpg" width="72" height="25" alt="Site Map" /></a>
+              <a href="https://wincent.com/a/site-map/" title="Site overview"><img src="/a/gfx/header/site-map-off.jpg" width="72" height="25" alt="Site Map" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/site-map/search/" title="Site search">Search</a></li>
+                <li><a href="https://wincent.com/a/site-map/search/" title="Site search">Search</a></li>
               </ul>
             </li>
           </ul>
@@ -170,7 +170,7 @@
       </tr>
     </table>
   <div id="breadcrumbs">
-    <p><a href="http://www.wincent.com/">Main</a>&nbsp;&gt;&nbsp;<a href="../../../../../">About</a>&nbsp;&gt;&nbsp;<a href="../../../../">Wincent</a>&nbsp;&gt;&nbsp;<a href="../../../">Weblog</a>&nbsp;&gt;&nbsp;<a href="../../">Archives</a>&nbsp;&gt;&nbsp;<a href="../">2005</a>&nbsp;&gt;&nbsp;07    </p>
+    <p><a href="https://wincent.com/">Main</a>&nbsp;&gt;&nbsp;<a href="../../../../../">About</a>&nbsp;&gt;&nbsp;<a href="../../../../">Wincent</a>&nbsp;&gt;&nbsp;<a href="../../../">Weblog</a>&nbsp;&gt;&nbsp;<a href="../../">Archives</a>&nbsp;&gt;&nbsp;<a href="../">2005</a>&nbsp;&gt;&nbsp;07    </p>
   </div>
 
 <div id="container">
@@ -178,10 +178,10 @@
 <div class="content">
 
 <p align="right">
-<a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/06/">&laquo; June 2005</a> |
+<a href="https://wincent.com/a/about/wincent/weblog/archives/2005/06/">&laquo; June 2005</a> |
 
-<a href="http://www.wincent.com/a/about/wincent/weblog/">Index</a>
-| <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/08/">August 2005 &raquo;</a>
+<a href="https://wincent.com/a/about/wincent/weblog/">Index</a>
+| <a href="https://wincent.com/a/about/wincent/weblog/archives/2005/08/">August 2005 &raquo;</a>
 
 </p>
 
@@ -193,14 +193,14 @@
 <h3 id="a000124">Infuriating Cocoa bugs</h3>
 
 <p>Every now and again I come up against an infuriating Cocoa bug.  Today I've just spent a few hours struggling against one in particular.</p>
-<p><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/infuriating_coc.php">Read full article</a></p>
+<p><a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/infuriating_coc.php">Read full article</a></p>
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/cocoa/">Cocoa</a> articles
-, More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/about/wincent/weblog/archives/cocoa/">Cocoa</a> articles
+, More <a href="https://wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
 </p>
 
 <p class="posted">
-Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/infuriating_coc.php"> 8:38 AM</a>
+Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/infuriating_coc.php"> 8:38 AM</a>
 </p>
 
 
@@ -211,14 +211,14 @@ Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/arch
 <h3 id="a000123">Coding notes: optimization and plug-ins</h3>
 
 <p>Donald Knuth famously said "premature optimization is the root of all evil".</p>
-<p><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/coding_notes_op.php">Read full article</a></p>
+<p><a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/coding_notes_op.php">Read full article</a></p>
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/cocoa/">Cocoa</a> articles
-, More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/about/wincent/weblog/archives/cocoa/">Cocoa</a> articles
+, More <a href="https://wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
 </p>
 
 <p class="posted">
-Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/coding_notes_op.php"> 4:06 PM</a>
+Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/coding_notes_op.php"> 4:06 PM</a>
 </p>
 
 
@@ -229,12 +229,12 @@ Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/arch
 <h3 id="a000118">Gefen DVI DL Switcher KVM recommendation</h3>
 
 <p>I just got hold of a Gefen DVI DL Switcher KVM today and wanted to post a recommendation.  Gefen definitely don't make the cheapest KVMs out there but they could well make the best ones.</p>
-<p><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/gefen_dvi_dl_sw.php">Read full article</a></p>
+<p><a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/gefen_dvi_dl_sw.php">Read full article</a></p>
 
 <p class="more-categories"></p>
 
 <p class="posted">
-Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/gefen_dvi_dl_sw.php"> 9:33 PM</a>
+Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/gefen_dvi_dl_sw.php"> 9:33 PM</a>
 </p>
 
 
@@ -245,14 +245,14 @@ Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/arch
 <h3 id="a000116">Category bonanza</h3>
 
 <p>I just noticed that I'm extending nearly 30 Cocoa classes using categories in the WOBase framework alone.</p>
-<p><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/category_bonanz.php">Read full article</a></p>
+<p><a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/category_bonanz.php">Read full article</a></p>
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/cocoa/">Cocoa</a> articles
-, More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/about/wincent/weblog/archives/cocoa/">Cocoa</a> articles
+, More <a href="https://wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
 </p>
 
 <p class="posted">
-Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/category_bonanz.php">10:16 PM</a>
+Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/category_bonanz.php">10:16 PM</a>
 </p>
 
 
@@ -262,14 +262,14 @@ Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/arch
 <h3 id="a000114">The best way to write accessors</h3>
 
 <p>As you learn Objective-C you'll come across lots of advice about how, when, why to write accessor methods and you'll see many different ways of writing them.</p>
-<p><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/the_best_way_to.php">Read full article</a></p>
+<p><a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/the_best_way_to.php">Read full article</a></p>
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/cocoa/">Cocoa</a> articles
-, More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/about/wincent/weblog/archives/cocoa/">Cocoa</a> articles
+, More <a href="https://wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
 </p>
 
 <p class="posted">
-Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/the_best_way_to.php">11:01 AM</a>
+Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/the_best_way_to.php">11:01 AM</a>
 </p>
 
 
@@ -280,14 +280,14 @@ Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/arch
 <h3 id="a000113">Whittling away the controller</h3>
 
 <p>Since my post the other day about my monstrously large main controller class I've been working hard on adding new features to Synergy Advance. But working on a large body of code is like moulding pottery from clay: even as you go along adding new bits you continue to work with the already-existing clay, moulding it, reforming it, smoothing it and so on.</p>
-<p><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/whittling_away.php">Read full article</a></p>
+<p><a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/whittling_away.php">Read full article</a></p>
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/cocoa/">Cocoa</a> articles
-, More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/about/wincent/weblog/archives/cocoa/">Cocoa</a> articles
+, More <a href="https://wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
 </p>
 
 <p class="posted">
-Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/whittling_away.php"> 1:45 PM</a>
+Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/whittling_away.php"> 1:45 PM</a>
 </p>
 
 
@@ -298,14 +298,14 @@ Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/arch
 <h3 id="a000110">Nice moments</h3>
 
 <p>I just had one of those nice moments where you write some code and you know straight away that you've done the right thing.  These moments usually follow a period of doubt, then something slips into place and you realize that you've found the correct solution. In this case I was writing an Objective-C wrapper for some sysctl(3) stuff.</p>
-<p><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/nice_moments.php">Read full article</a></p>
+<p><a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/nice_moments.php">Read full article</a></p>
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/cocoa/">Cocoa</a> articles
-, More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/about/wincent/weblog/archives/cocoa/">Cocoa</a> articles
+, More <a href="https://wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
 </p>
 
 <p class="posted">
-Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/nice_moments.php">11:59 PM</a>
+Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/nice_moments.php">11:59 PM</a>
 </p>
 
 
@@ -315,14 +315,14 @@ Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/arch
 <h3 id="a000108">Synergy Advance source code</h3>
 
 <p>I have decided to release lines 4452 to 4455 (inclusive) of the file, "WOSynergyAdvanceController.m", part of the source code for Synergy Advance, into the public domain....  But I post it here for three reasons: (1) It's Sunday and I'm a little bored; (2) Because I love short methods (they're much easier to maintain); and (3) Because it's one hell of a long source file.</p>
-<p><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/synergy_advance_1.php">Read full article</a></p>
+<p><a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/synergy_advance_1.php">Read full article</a></p>
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/cocoa/">Cocoa</a> articles
-, More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/about/wincent/weblog/archives/cocoa/">Cocoa</a> articles
+, More <a href="https://wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
 </p>
 
 <p class="posted">
-Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/synergy_advance_1.php">10:11 AM</a>
+Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/synergy_advance_1.php">10:11 AM</a>
 </p>
 
 
@@ -333,14 +333,14 @@ Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/arch
 <h3 id="a000107">Synergy Advance framework</h3>
 
 <p>From the very beginning I've wanted Synergy Advance to be as modular as possible to maximize code reuse and make it easily extensible.  The first thing I started by doing was splitting off code into reusable frameworks.</p>
-<p><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/synergy_advance.php">Read full article</a></p>
+<p><a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/synergy_advance.php">Read full article</a></p>
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/cocoa/">Cocoa</a> articles
-, More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/about/wincent/weblog/archives/cocoa/">Cocoa</a> articles
+, More <a href="https://wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
 </p>
 
 <p class="posted">
-Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/synergy_advance.php"> 5:02 PM</a>
+Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/synergy_advance.php"> 5:02 PM</a>
 </p>
 
 
@@ -351,13 +351,13 @@ Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/arch
 <h3 id="a000106">Worst interface ever</h3>
 
 <p>The Worst. Interface. Ever.</p>
-<p><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/worst_interface.php">Read full article</a></p>
+<p><a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/worst_interface.php">Read full article</a></p>
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/opinion/">Opinion</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/about/wincent/weblog/archives/opinion/">Opinion</a> articles
 </p>
 
 <p class="posted">
-Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/worst_interface.php">11:12 AM</a>
+Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/worst_interface.php">11:12 AM</a>
 </p>
 
 
@@ -368,13 +368,13 @@ Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/arch
 <h3 id="a000103">Open source licensing</h3>
 
 <p>There is a lot of misinformation on the net about the different types of open source licenses so I just wanted to offer some clarification.</p>
-<p><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/open_source_lic.php">Read full article</a></p>
+<p><a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/open_source_lic.php">Read full article</a></p>
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/opinion/">Opinion</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/about/wincent/weblog/archives/opinion/">Opinion</a> articles
 </p>
 
 <p class="posted">
-Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/open_source_lic.php"> 7:32 AM</a>
+Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2005/07/open_source_lic.php"> 7:32 AM</a>
 </p>
 
 

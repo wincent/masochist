@@ -218,7 +218,7 @@ HISTORY
      http://strings.wincent.com/.
 
 AUTHORS
-     Wincent Colaiuta (http://wincent.com/)
+     Wincent Colaiuta (https://wincent.com/)
      Omni Development (http://www.omnigroup.com/)
 
 LICENSE

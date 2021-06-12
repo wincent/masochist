@@ -108,7 +108,7 @@ Description
 <blockquote><p>Thanks for the report and the samples, John.</p>
 <p>I am not sure how much can be done about this, given the size of the library. The parsing of the library occurs in a separate thread, but there is a part of the process which cannot be done in a background thread (the actual insertion of menu items into the menu) and must be done on the main thread. Your sample shows that the program is spending most of the time doing the insertions.</p>
 <p>The next release has new code for inserting items into the menu; see this article:</p>
-<p><a href="http://wincent.com/a/about/wincent/weblog/archives/2005/08/big_menus_reall.php" class="external">http://wincent.com/a/about/wincent/weblog/archives/2005/08/big_menus_reall.php</a></p>
+<p><a href="https://wincent.com/a/about/wincent/weblog/archives/2005/08/big_menus_reall.php" class="external">https://wincent.com/a/about/wincent/weblog/archives/2005/08/big_menus_reall.php</a></p>
 <p>I'm using a different API for inserting items into the menu. I don't know whether this will help, but once you've tested the new release let me know whether it makes a difference. I've done some testing and identified that there is lots of room for optimization in this API, and I've filed a bug report with Apple about it; basically: they call the API for the entire menu, even if it is thousands of items in size and only a small fraction of the menu will be visible on screen at any time. If they make a change to the API so that it only invokes the API for visible menu items then we'll see an absolutely massive speedup (and reduction in memory usage as well).</p>
 <p>If it turns out that there's nothing that can be done to speed it up (probably because of the combination of it being a huge library AND it being AFP mounted) then you may have to simply turn off the offending menu items. I am working an a customization module that will allow you to remove/add/reorder items from the menu. You'll be able to get rid of whichever menu item is soaking up the CPU (probably the &quot;Playlists&quot; menu item).</p>
 </blockquote>
@@ -153,7 +153,7 @@ Description
 <span class='when'><a href="#comment_2341"><time data-relative="true">2006-07-05T02:07:06Z</time></a></span>
 </cite>
 <blockquote><p>Changing assignment to reflect my new email address.</p>
-<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+<p><a href="https://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">https://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
 </blockquote>
 </li>
 

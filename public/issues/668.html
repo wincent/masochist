@@ -94,7 +94,7 @@ Description
 <p>Given that I can't reproduce the problem here I can only deduce from the available information that this is a timing issue. It appears that iTunes is emitting a &quot;track changed&quot; notification, Synergy asks iTunes for the art, and iTunes gives an error. According to users who are seeing the problem, if they force the Floater to reappear later (for example, by pausing and then resuming playback) then iTunes <em>does</em> supply the artwork.</p>
 <p>So I can only guess that this is a timing bug in iTunes. If you ask for art &quot;too soon&quot; then it will give you an error. This might explain why some users see the issue and others don't, and also why some third-party software sees the issue and other third-party software doesn't: it looks like it depends on how fast you ask for he art.</p>
 <p>So, the new build is up at:</p>
-<p><a href="http://wincent.com/a/products/synergy-classic/download/Synergy3.5a6+(562f484+).zip" class="external">http://wincent.com/a/products/synergy-classic/download/Synergy3.5a6+(562f484+).zip</a></p>
+<p><a href="https://wincent.com/a/products/synergy-classic/download/Synergy3.5a6+(562f484+).zip" class="external">https://wincent.com/a/products/synergy-classic/download/Synergy3.5a6+(562f484+).zip</a></p>
 <p>As you can see, this is based ont he 3.5 series, which means you can only help me test this out if you're running <a href="/wiki/Leopard">Leopard</a>. If we can get a fix worked out I will also backport it to the 3.2 series.</p>
 <p>The new build is <em>not</em> a full package. It is just the Synergy faceless background application responsible for displaying the menu bar controls, the floater etc. To test it, do the following:</p>
 <ol>
@@ -183,7 +183,7 @@ anonymous
 <span class='when'><a href="#comment_3281"><time data-relative="true">2008-04-28T16:21:16Z</time></a></span>
 </cite>
 <blockquote><p>Ok, here's a new test build. This one drops the &quot;delay&quot; trick and instead prints a bunch of diagnostic information to the console, which you can observe using <code>Applications/Utilities/Console.app</code>.</p>
-<p><a href="http://wincent.com/a/products/synergy-classic/download/Synergy3.5a6+(009baa7+).zip" class="external">http://wincent.com/a/products/synergy-classic/download/Synergy3.5a6+(009baa7+).zip</a></p>
+<p><a href="https://wincent.com/a/products/synergy-classic/download/Synergy3.5a6+(009baa7+).zip" class="external">https://wincent.com/a/products/synergy-classic/download/Synergy3.5a6+(009baa7+).zip</a></p>
 <p>This is some sample output on my machine for a track which <em>does</em> have cover art in <a href="/wiki/iTunes">iTunes</a>:</p>
 <pre>2008-04-28 22:12:18.788 Synergy[71327:10b] preparing to request cover art
 2008-04-28 22:12:18.790 Synergy[71327:10b] did prepare (script id is 20727360)
@@ -334,7 +334,7 @@ end tell</pre>
 <span class='when'><a href="#comment_3291"><time data-relative="true">2008-04-28T17:44:14Z</time></a></span>
 </cite>
 <blockquote><p>Ok, just uploaded a new build. No delay or logging this time, just removing the iTunes version check. We'll see if this fixes it.</p>
-<p><a href="http://wincent.com/a/products/synergy-classic/download/Synergy3.5a6+(68172bf+).zip" class="external">http://wincent.com/a/products/synergy-classic/download/Synergy3.5a6+(68172bf+).zip</a></p>
+<p><a href="https://wincent.com/a/products/synergy-classic/download/Synergy3.5a6+(68172bf+).zip" class="external">https://wincent.com/a/products/synergy-classic/download/Synergy3.5a6+(68172bf+).zip</a></p>
 </blockquote>
 </li>
 <li class='comment' id='comment_3292'>

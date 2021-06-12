@@ -8,13 +8,13 @@
 <title>Knowledge base: Locking, double-checked locking and speed</title>
 
 <link rel="stylesheet" href="/a/styles.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.wincent.com/a/knowledge-base/index.rdf" />
-<link rel="alternate" type="application/atom+xml" title="Atom" href="http://www.wincent.com/a/knowledge-base/atom.xml" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://wincent.com/a/knowledge-base/index.rdf" />
+<link rel="alternate" type="application/atom+xml" title="Atom" href="https://wincent.com/a/knowledge-base/atom.xml" />
 
-<link rel="start" href="http://www.wincent.com/a/knowledge-base/" title="Home" />
-<link rel="prev" href="http://www.wincent.com/a/knowledge-base/archives/2006/01/objectivec_enum.php" title="Objective-C enumeration macro" />
+<link rel="start" href="https://wincent.com/a/knowledge-base/" title="Home" />
+<link rel="prev" href="https://wincent.com/a/knowledge-base/archives/2006/01/objectivec_enum.php" title="Objective-C enumeration macro" />
 
-<link rel="next" href="http://www.wincent.com/a/knowledge-base/archives/2006/01/lightweight_iss.php" title="Lightweight issue tracking" />
+<link rel="next" href="https://wincent.com/a/knowledge-base/archives/2006/01/lightweight_iss.php" title="Lightweight issue tracking" />
 
 <script type="text/javascript" language="javascript">
 <!--
@@ -103,8 +103,8 @@ function forgetMe (f) {
       <tr>
         <td style="background-image: url(/a/gfx/header/left-side.jpg); background-repeat: repeat-y;" width="32"><img src="/a/gfx/header/left-side.jpg" width="32" height="71" alt="" /></td>
         <td style="background-image: url(/a/gfx/header/center-background.jpg); background-repeat: repeat;" colspan="11" align="center" valign="middle">
-  <a href="http://www.wincent.com/"><img src="/a/gfx/wincent-logo-small-gray-bg.jpg" width="43" height="41" alt="wincent" align="middle" /></a>
-  <a href="http://www.wincent.com/a/knowledge-base/"><img src="/a/gfx/knowledge-base-header.jpg" width="309" height="25" alt="knowledge base" align="middle"/></a>
+  <a href="https://wincent.com/"><img src="/a/gfx/wincent-logo-small-gray-bg.jpg" width="43" height="41" alt="wincent" align="middle" /></a>
+  <a href="https://wincent.com/a/knowledge-base/"><img src="/a/gfx/knowledge-base-header.jpg" width="309" height="25" alt="knowledge base" align="middle"/></a>
 
         </td>
         <td style="background-image: url(/a/gfx/header/right-side.jpg); background-repeat: repeat-y;" width="32"><img src="/a/gfx/header/right-side.jpg" width="32" height="71" alt="" /></td>
@@ -115,68 +115,68 @@ function forgetMe (f) {
         <td width="73" height="25">
           <ul style="width: 73px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/products/" title="Full products listing"><img src="/a/gfx/header/products-off.jpg" width="73" height="25" alt="Products" /></a>
+              <a href="https://wincent.com/a/products/" title="Full products listing"><img src="/a/gfx/header/products-off.jpg" width="73" height="25" alt="Products" /></a>
               <ul>
                 <li><a href="https://wincent.com/products/synergy" title="The original iTunes menu bar controller">Synergy &gt;</a>
                   <ul>
                     <li><a href="https://wincent.com/products/synergy/download" title="Download Synergy">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-classic/purchase/" title="Purchase Synergy">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-classic/purchase/" title="Purchase Synergy">Purchase</a></li>
                     <li><a href="https://wincent.com/products/synergy/help" title="Frequently Asked Questions">FAQ</a></li>
-                    <li><a href="http://www.wincent.com/a/products/synergy-classic/buttons/" title="Free button sets">Button Sets</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-classic/buttons/" title="Free button sets">Button Sets</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/" title="Multi-purpose audio companion">Synergy Advance &gt;</a>
+                <li><a href="https://wincent.com/a/products/synergy-advance/" title="Multi-purpose audio companion">Synergy Advance &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/synergy-advance/download/" title="Download Synergy Advance">Download preview</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/purchase/" title="Purchase Synergy Advance">Purchase</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/download/" title="Download Synergy Advance">Download preview</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/purchase/" title="Purchase Synergy Advance">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/winswitch/" title="Enhanced replacement for Apple's Fast User Switching menu">WinSwitch &gt;</a>
+                <li><a href="https://wincent.com/a/products/winswitch/" title="Enhanced replacement for Apple's Fast User Switching menu">WinSwitch &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/winswitch/download/" title="Download WinSwitch">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/winswitch/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/winswitch/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
-                    <li><a href="http://www.wincent.com/a/products/winswitch/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/download/" title="Download WinSwitch">Download</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/hextrapolate/" title="Programmers number conversion tool">Hextrapolate &gt;</a>
+                <li><a href="https://wincent.com/a/products/hextrapolate/" title="Programmers number conversion tool">Hextrapolate &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/hextrapolate/download/" title="Download Hextrapolate">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/hextrapolate/purchase/" title="Purchase Hextrapolate">Purchase</a></li>
-                    <li><a href="http://www.wincent.com/a/products/hextrapolate/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/download/" title="Download Hextrapolate">Download</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/purchase/" title="Purchase Hextrapolate">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/install/" title="Installation and deployment solution for developers">Install &gt;</a>
+                <li><a href="https://wincent.com/a/products/install/" title="Installation and deployment solution for developers">Install &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/install/download/" title="Install downloads">Downloads</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/purchase/" title="Purchase Install">Purchase</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
-                    <li><a href="http://www.wincent.com/a/products/install/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/install/download/" title="Install downloads">Downloads</a></li>
+                    <li><a href="https://wincent.com/a/products/install/purchase/" title="Purchase Install">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/install/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/install/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/install/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/getsmart-pro/" title="Intelligent download manager">GetSmart Pro &gt;</a>
+                <li><a href="https://wincent.com/a/products/getsmart-pro/" title="Intelligent download manager">GetSmart Pro &gt;</a>
                   <ul>
-                    <li><a href="https://secure.wincent.com/a/products/getsmart-pro/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/getsmart-pro/donate/" title="Support development with a donation">Donate</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/" title="Full product listing">Other products...</a></li>
+                <li><a href="https://wincent.com/a/products/" title="Full product listing">Other products...</a></li>
               </ul>
             </li>
           </ul>
         </td>
-        <td width="48" height="25"><a href="https://secure.wincent.com/a/store/" title="Wincent online store"><img src="/a/gfx/header/store-off.jpg" width="48" height="25" alt="Store" /></a></td>
+        <td width="48" height="25"><a href="https://wincent.com/a/store/" title="Wincent online store"><img src="/a/gfx/header/store-off.jpg" width="48" height="25" alt="Store" /></a></td>
         <td width="63" height="25">
           <ul style="width: 63px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/services/" title="Full services listing"><img src="/a/gfx/header/services-off.jpg" width="63" height="25" alt="Services" /></a>
+              <a href="https://wincent.com/a/services/" title="Full services listing"><img src="/a/gfx/header/services-off.jpg" width="63" height="25" alt="Services" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/services/custom-development/" title="Custom software development">Custom Development</a></li>
-                <li><a href="http://www.wincent.com/a/services/mac-consultancy/" title="Apple and Mac OS X consultancy">Apple/Mac Consultancy</a></li>
-                <li><a href="http://www.wincent.com/a/services/web-design/" title="Web design services">Web Design</a></li>
-                <li><a href="http://www.wincent.com/a/services/hosting/" title="Internet web and email hosting">Hosting</a></li>
+                <li><a href="https://wincent.com/a/services/custom-development/" title="Custom software development">Custom Development</a></li>
+                <li><a href="https://wincent.com/a/services/mac-consultancy/" title="Apple and Mac OS X consultancy">Apple/Mac Consultancy</a></li>
+                <li><a href="https://wincent.com/a/services/web-design/" title="Web design services">Web Design</a></li>
+                <li><a href="https://wincent.com/a/services/hosting/" title="Internet web and email hosting">Hosting</a></li>
               </ul>
             </li>
           </ul>
@@ -184,16 +184,16 @@ function forgetMe (f) {
         <td width="62" height="25">
           <ul style="width: 62px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/support/" title="Support resources and links"><img src="/a/gfx/header/support-off.jpg" width="62" height="25" alt="Support" /></a>
+              <a href="https://wincent.com/a/support/" title="Support resources and links"><img src="/a/gfx/header/support-off.jpg" width="62" height="25" alt="Support" /></a>
               <ul>
-                <li><a href="https://secure.wincent.com/a/support/registration/" title="Retrieve lost license codes">Lost License Codes</a></li>
-                <li><a href="http://www.wincent.com/a/support/bugs/" title="Bug tracking and feature request database">Bugs and Feature Requests</a></li>
-                <li><a href="http://www.wincent.com/a/support/demo-licenses/" title="Obtain a demonstration license">Demonstration licenses</a></li>
-                <li><a href="http://www.wincent.com/a/support/forums/" title="Discussion and support forums">Forums</a></li>
-                <li><a href="http://www.wincent.com/a/support/faq/" title="Frequently Asked Questions">FAQ</a></li>
-                <li><a href="http://www.wincent.com/a/support/activation/" title="Product activation and information">Product Activation</a></li>
-                <li><a href="https://secure.wincent.com/a/support/tickets/" title="Open or view a support ticket">Support Tickets</a></li>
-                <li><a href="http://www.wincent.com/a/support/lists/" title="Subscribe/unsubscribe to/from a mailing list">Mailing lists</a></li>
+                <li><a href="https://wincent.com/a/support/registration/" title="Retrieve lost license codes">Lost License Codes</a></li>
+                <li><a href="https://wincent.com/a/support/bugs/" title="Bug tracking and feature request database">Bugs and Feature Requests</a></li>
+                <li><a href="https://wincent.com/a/support/demo-licenses/" title="Obtain a demonstration license">Demonstration licenses</a></li>
+                <li><a href="https://wincent.com/a/support/forums/" title="Discussion and support forums">Forums</a></li>
+                <li><a href="https://wincent.com/a/support/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                <li><a href="https://wincent.com/a/support/activation/" title="Product activation and information">Product Activation</a></li>
+                <li><a href="https://wincent.com/a/support/tickets/" title="Open or view a support ticket">Support Tickets</a></li>
+                <li><a href="https://wincent.com/a/support/lists/" title="Subscribe/unsubscribe to/from a mailing list">Mailing lists</a></li>
               </ul>
             </li>
           </ul>
@@ -201,10 +201,10 @@ function forgetMe (f) {
         <td width="53" height="25">
           <ul style="width: 53px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/about/" title="Company information"><img src="/a/gfx/header/about-off.jpg" width="53" height="25" alt="About" /></a>
+              <a href="https://wincent.com/a/about/" title="Company information"><img src="/a/gfx/header/about-off.jpg" width="53" height="25" alt="About" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/about/wincent/" title="About Wincent Colaiuta: the person">About Wincent Colaiuta</a></li>
-                <li><a href="http://www.wincent.com/a/about/privacy/" title="About the Wincent Privacy Policy">Privacy Policy</a></li>
+                <li><a href="https://wincent.com/a/about/wincent/" title="About Wincent Colaiuta: the person">About Wincent Colaiuta</a></li>
+                <li><a href="https://wincent.com/a/about/privacy/" title="About the Wincent Privacy Policy">Privacy Policy</a></li>
               </ul>
            </li>
          </ul>
@@ -212,24 +212,24 @@ function forgetMe (f) {
         <td width="49" height="25">
           <ul style="width: 49px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/news/" title="Latest news items in weblog format"><img src="/a/gfx/header/news-off.jpg" width="49" height="25" alt="News" /></a>
+              <a href="https://wincent.com/a/news/" title="Latest news items in weblog format"><img src="/a/gfx/header/news-off.jpg" width="49" height="25" alt="News" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/news/archives/mac_os_x_news/" title="Apple and Mac OS X-related news">Mac OS X News</a></li>
-                <li><a href="http://www.wincent.com/a/news/archives/product_news/" title="Wincent product news">Product News</a></li>
-                <li><a href="http://www.wincent.com/a/news/archives/site_news/" title="Site-related news">Site News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/mac_os_x_news/" title="Apple and Mac OS X-related news">Mac OS X News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/product_news/" title="Wincent product news">Product News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/site_news/" title="Site-related news">Site News</a></li>
                 <li><a href="http://colaiuta.net/" title="Development and other notes from Wincent">Wincent Colaiuta's weblog</a></li>
               </ul>
             </li>
           </ul>
         </td>
         <td width="107" height="25"><a href="http://kbase.wincent.com/" title="Categorized Mac OS X tips and information"><img src="/a/gfx/header/knowledge-base-on.jpg" width="107" height="25" alt="Knowledge Base" /></a></td>
-        <td width="62" height="25"><a href="http://www.wincent.com/a/contact/" title="Contact email form"><img src="/a/gfx/header/contact-off.jpg" width="62" height="25" alt="Contact" /></a></td>
+        <td width="62" height="25"><a href="https://wincent.com/a/contact/" title="Contact email form"><img src="/a/gfx/header/contact-off.jpg" width="62" height="25" alt="Contact" /></a></td>
         <td width="72" height="25">
           <ul style="width: 72px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/site-map/" title="Site overview"><img src="/a/gfx/header/site-map-off.jpg" width="72" height="25" alt="Site Map" /></a>
+              <a href="https://wincent.com/a/site-map/" title="Site overview"><img src="/a/gfx/header/site-map-off.jpg" width="72" height="25" alt="Site Map" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/site-map/search/" title="Site search">Search</a></li>
+                <li><a href="https://wincent.com/a/site-map/search/" title="Site search">Search</a></li>
               </ul>
             </li>
           </ul>
@@ -239,7 +239,7 @@ function forgetMe (f) {
       </tr>
     </table>
   <div id="breadcrumbs">
-    <p><a href="http://www.wincent.com/">Main</a>&nbsp;&gt;&nbsp;<a href="../../../">Knowledge Base</a>&nbsp;&gt;&nbsp;<a href="../../">Archives</a>&nbsp;&gt;&nbsp;<a href="../">2006</a>&nbsp;&gt;&nbsp;01    </p>
+    <p><a href="https://wincent.com/">Main</a>&nbsp;&gt;&nbsp;<a href="../../../">Knowledge Base</a>&nbsp;&gt;&nbsp;<a href="../../">Archives</a>&nbsp;&gt;&nbsp;<a href="../">2006</a>&nbsp;&gt;&nbsp;01    </p>
   </div>
 
 
@@ -248,10 +248,10 @@ function forgetMe (f) {
 <div class="content">
 
 <p align="right">
-<a href="http://www.wincent.com/a/knowledge-base/archives/2006/01/objectivec_enum.php">&laquo; Objective-C enumeration macro</a> |
+<a href="https://wincent.com/a/knowledge-base/archives/2006/01/objectivec_enum.php">&laquo; Objective-C enumeration macro</a> |
 
-<a href="http://www.wincent.com/a/knowledge-base/">Main</a>
-| <a href="http://www.wincent.com/a/knowledge-base/archives/2006/01/lightweight_iss.php">Lightweight issue tracking &raquo;</a>
+<a href="https://wincent.com/a/knowledge-base/">Main</a>
+| <a href="https://wincent.com/a/knowledge-base/archives/2006/01/lightweight_iss.php">Lightweight issue tracking &raquo;</a>
 
 </p>
 
@@ -318,7 +318,7 @@ if (condition)
 <li><strong>On Intel with SSE support</strong> <em>(applies to any Intel machine that runs Mac OS X)</em>: <tt>lfence</tt> for read memory barriers, <tt>mfence</tt> for read/write memory barriers, and nothing at all for write memory barriers.</li>
 </ul>
 
-<p><a href="http://www.wincent.com/a/about/wincent/weblog/WOMemoryBarrier.h">Here's an include file</a> I've whipped up with some macros that implement these various combinations. It works for me, at least in my informal testing here (tested on both PowerPC and Intel CPUs).</p>
+<p><a href="https://wincent.com/a/about/wincent/weblog/WOMemoryBarrier.h">Here's an include file</a> I've whipped up with some macros that implement these various combinations. It works for me, at least in my informal testing here (tested on both PowerPC and Intel CPUs).</p>
 
 <p>If all of this seems a bit difficult <a href="http://www.aristeia.com/Papers/DDJ_Jul_Aug_2004_revised.pdf">the paper reference above</a> offers multiple alternative suggestions to the double-checked locking pattern, especially as it is applied to singletons. <a href="http://www.nwcpp.org/Downloads/2004/DCLP_notes.pdf">These notes by the same author</a> also offer some excellent insight into the problem.</p>
 

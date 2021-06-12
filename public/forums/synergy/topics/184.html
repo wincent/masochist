@@ -29,7 +29,7 @@
 </span>
 </cite>
 <blockquote><p>More information here:</p>
-<p><a href="http://wincent.com/a/news/archives/2006/11/synergy_31b_see.php" class="external">http://wincent.com/a/news/archives/2006/11/synergy_31b_see.php</a></p>
+<p><a href="https://wincent.com/a/news/archives/2006/11/synergy_31b_see.php" class="external">https://wincent.com/a/news/archives/2006/11/synergy_31b_see.php</a></p>
 </blockquote>
 </li>
 <li class='comment' id='comment_516'>
@@ -51,7 +51,7 @@
 <blockquote><p>As the message indicates, Synergy isn't submitting it because it thinks it is not a regular file. Now the question is, why does it think that?</p>
 <p>You'll need to check what kind of notifications iTunes is sending for those tracks. I've put together a tiny tool called &quot;itnl&quot; (iTunes Notification Logger) which you can run from the Terminal and it will print out the notifications that iTunes is sending.</p>
 <p>You can download it from:</p>
-<p><a href="http://wincent.com/a/products/synergy-classic/download/itnl.zip" class="external">http://wincent.com/a/products/synergy-classic/download/itnl.zip</a></p>
+<p><a href="https://wincent.com/a/products/synergy-classic/download/itnl.zip" class="external">https://wincent.com/a/products/synergy-classic/download/itnl.zip</a></p>
 <p>It requires 10.4 to run. Just unzip and run it from the Terminal. One way of doing this is to open a new Terminal window, then drag &quot;itnl&quot; into the window, then press return. Send me the output.</p>
 <p>Also, can you run the following command from the Script Editor (in /Applications/AppleScript/) and let me know what it says?</p>
 <p>Code:tell application &quot;iTunes&quot; to get location of current track</p>
@@ -132,7 +132,7 @@
 <span class='when'><a href="#comment_522"><time data-relative="true">2006-11-28T13:54:49Z</time></a></span>
 </cite>
 <blockquote><p>I've opened a feature request for the &quot;Force login&quot; menu item:</p>
-<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=512" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=512</a></p>
+<p><a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=512" class="external">https://wincent.com/a/support/bugs/show_bug.cgi?id=512</a></p>
 </blockquote>
 </li>
 <li class='comment' id='comment_523'>
@@ -173,7 +173,7 @@
 </cite>
 <blockquote><p>Ok, thanks for that. We can see that Audioscrobbler is returning &quot;BADAUTH&quot; which means that it rejects the username and password. So that's confirmation of your suspicion that it is doing some kind of IP-based check or similar.</p>
 <p>So looks like the workaround for this issue will be the &quot;Force re-login&quot; thing that's already been added to the database here:</p>
-<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=512" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=512</a> </p>
+<p><a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=512" class="external">https://wincent.com/a/support/bugs/show_bug.cgi?id=512</a> </p>
 <p>The other possibility is to consider automatically re-trying to login in the event of a BADAUTH message, but it would have to be be pretty heavily limited. The problem is we'd need a way to distinguish between the BADAUTH message that you get when you supply incorrect credentials, and the BADAUTH message you get when you've logged in from two different IPs. Can you look at your console log again and tell me if any thing is printed immediately after the BADAUTH notification? (ie. if you are using the string &quot;Synergy&quot; or &quot;Audioscrobbler&quot; in the Console application to filter the log display then you may not be seeing all the information being printed by Synergy; I notice that in some of the lines you've pasted many of them are obviously truncated, like the ones that start with &quot;{&quot; but then nothing else is printed...)</p>
 </blockquote>
 </li>
@@ -194,11 +194,11 @@
 <span class='when'><a href="#comment_528"><time data-relative="true">2006-12-04T13:50:58Z</time></a></span>
 </cite>
 <blockquote><p>The 3.1 beta expired today. The final (non-beta) release is available for download:</p>
-<p><a href="http://wincent.com/download.php?item=Synergy.dmg" class="external">http://wincent.com/download.php?item=Synergy.dmg</a></p>
+<p><a href="https://wincent.com/download.php?item=Synergy.dmg" class="external">https://wincent.com/download.php?item=Synergy.dmg</a></p>
 <p>Change log:</p>
-<p><a href="http://wincent.com/a/products/synergy-classic/history/#3.1" class="external">http://wincent.com/a/products/synergy-classic/history/#3.1</a></p>
+<p><a href="https://wincent.com/a/products/synergy-classic/history/#3.1" class="external">https://wincent.com/a/products/synergy-classic/history/#3.1</a></p>
 <p>Release announcement:</p>
-<p><a href="http://wincent.com/a/news/archives/2006/12/synergy_31_now.php" class="external">http://wincent.com/a/news/archives/2006/12/synergy_31_now.php</a></p>
+<p><a href="https://wincent.com/a/news/archives/2006/12/synergy_31_now.php" class="external">https://wincent.com/a/news/archives/2006/12/synergy_31_now.php</a></p>
 <p>As for the login failure issue, I still think something is being chopped from what you've posted. Those opening curly braces indicate that something should follow; but there's nothing, and no curly braces. It really looks like only the first line of each message is being shown...</p>
 <p>But in any case, for the next version I will see if I can set a reasonable-but-small number of retries in response to a BADAUTH message. Perhaps three? I'll also see if I can log more detail to the console, but it seems like last.fm isn't saying anything more than &quot;BADAUTH&quot;, which doesn't help much...</p>
 </blockquote>

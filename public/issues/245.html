@@ -116,7 +116,7 @@ Description
 </cite>
 <blockquote><p>A normal user process running without elevated privileges shouldn't provoke a kernel panic (in fact,  even one running with root privileges shouldn't). Kernel panics should only happen if there's a bug in  the kernel, or if something loaded into the kernel's memory space (like a device driver or kernel  module). It simply shouldn't happen on Mac OS X because it has protected memory. I can't think of any  way Synergy could cause this.</p>
 <p>In this article there are some general trouble-shooting tips (see the &quot;troubleshooting&quot; heading) things  like ruling out preferences corruption etc:</p>
-<p><a href="http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php" class="external">http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php</a></p>
+<p><a href="https://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php" class="external">https://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php</a></p>
 <p>But I don't think any of these would have much to do with a kernel panic.</p>
 <p>Is there anything printed in the logs that would indicate that somethings going wrong in Synergy?</p>
 </blockquote>
@@ -288,16 +288,16 @@ Description
 <span class='when'><a href="#comment_2036"><time data-relative="true">2005-05-23T17:06:43Z</time></a></span>
 </cite>
 <blockquote><p>Yep that's correct. Setting the checking interval to 0 turns checking off. This is mentioned here:</p>
-<p><a href="http://wincent.com/a/products/synergy-classic/faq/#versioncheck" class="external">http://wincent.com/a/products/synergy-classic/faq/#versioncheck</a></p>
+<p><a href="https://wincent.com/a/products/synergy-classic/faq/#versioncheck" class="external">https://wincent.com/a/products/synergy-classic/faq/#versioncheck</a></p>
 <p>You can also set the value fairly easily by using the &quot;defaults&quot; command in the Terminal.</p>
 <p>On the subject of legit downloads, its important to note that when you hit the download link:</p>
-<p><a href="http://wincent.com/download.php?item=Synergy1.9.dmg" class="external">http://wincent.com/download.php?item=Synergy1.9.dmg</a></p>
+<p><a href="https://wincent.com/download.php?item=Synergy1.9.dmg" class="external">https://wincent.com/download.php?item=Synergy1.9.dmg</a></p>
 <p>You get randomly redirected to one of about 15 possible mirror sites. I personally upload the file to  those sites and I then download the file and check the checksum to make sure that there are no  problems or corruption (ie. that the uploaded/download file is a perfect bit-for-bit copy of the one that  I prepared here). Despite the fact that I do this checking, it's always a good idea to check it yourself too.  On the downloads page there is a checksum which you can compare against the version you  downloaded; they should be a perfect match.</p>
-<p><a href="http://wincent.com/a/products/synergy-classic/download/" class="external">http://wincent.com/a/products/synergy-classic/download/</a></p>
+<p><a href="https://wincent.com/a/products/synergy-classic/download/" class="external">https://wincent.com/a/products/synergy-classic/download/</a></p>
 <p>For example, the checksum of the current version is:</p>
 <p>85bd3260dc47918fc3578327d7bb263fb4097497</p>
 <p>Instructions for comparing checksums appear here:</p>
-<p><a href="http://wincent.com/a/knowledge-base/archives/2004/11/using_md5_to_ve.php" class="external">http://wincent.com/a/knowledge-base/archives/2004/11/using_md5_to_ve.php</a></p>
+<p><a href="https://wincent.com/a/knowledge-base/archives/2004/11/using_md5_to_ve.php" class="external">https://wincent.com/a/knowledge-base/archives/2004/11/using_md5_to_ve.php</a></p>
 <p>If you do find a discrepancy it doesn't necessarily mean foul play. For example, Apple introduced a  feature called &quot;Internet enabled disk images&quot; a while back. When you mount those images for the first  time they actually get modified by the OS, which changes the checksum! So if you perform a checksum  before and after mounting you will get two different results. As a result if you want to check the  integrity of your download you should always do it immediately after downloading and before mounting  the disk image.</p>
 <p>Now, I am probably erring on the side of paranoia when I advise people to check the checksum on the  downloaded file, but as the developer I probably have to be that way. Since Synergy first came out a few  years ago I've never had a problem with a mirror delivering corrupt or modified files. I've only brought it  up here because the kernel panics issue is a bit baffling for me and I don't know what could cause it.</p>
 </blockquote>

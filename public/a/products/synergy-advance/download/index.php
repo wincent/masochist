@@ -20,7 +20,7 @@
       <tr>
         <td style="background-image: url(/a/gfx/header/left-side.jpg); background-repeat: repeat-y;" width="32"><img src="/a/gfx/header/left-side.jpg" width="32" height="71" alt="" /></td>
         <td style="background-image: url(/a/gfx/header/center-background.jpg); background-repeat: repeat;" colspan="11" align="center" valign="middle">          <!-- Begin: header content -->
-          <a href="http://www.wincent.com/"><img src="/a/gfx/wincent-logo-small-gray-bg.jpg" width="43" height="41" alt="wincent" align="middle" /></a>
+          <a href="https://wincent.com/"><img src="/a/gfx/wincent-logo-small-gray-bg.jpg" width="43" height="41" alt="wincent" align="middle" /></a>
           <img src="/a/gfx/synergy-advance-header.jpg" width="455" height="25" alt="Synergy Advance: total audio control" align="middle" />
           <!-- End: header content -->
         </td>
@@ -32,68 +32,68 @@
         <td width="73" height="25">
           <ul style="width: 73px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/products/" title="Full products listing"><img src="/a/gfx/header/products-on.jpg" width="73" height="25" alt="Products" /></a>
+              <a href="https://wincent.com/a/products/" title="Full products listing"><img src="/a/gfx/header/products-on.jpg" width="73" height="25" alt="Products" /></a>
               <ul>
                 <li><a href="https://wincent.com/products/synergy" title="The original iTunes menu bar controller">Synergy &gt;</a>
                   <ul>
                     <li><a href="https://wincent.com/products/synergy/download" title="Download Synergy">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-classic/purchase/" title="Purchase Synergy">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-classic/purchase/" title="Purchase Synergy">Purchase</a></li>
                     <li><a href="https://wincent.com/products/synergy/help" title="Frequently Asked Questions">FAQ</a></li>
-                    <li><a href="http://www.wincent.com/a/products/synergy-classic/buttons/" title="Free button sets">Button Sets</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-classic/buttons/" title="Free button sets">Button Sets</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/" title="Multi-purpose audio companion">Synergy Advance &gt;</a>
+                <li><a href="https://wincent.com/a/products/synergy-advance/" title="Multi-purpose audio companion">Synergy Advance &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/synergy-advance/download/" title="Download Synergy Advance">Download preview</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/purchase/" title="Purchase Synergy Advance">Purchase</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/download/" title="Download Synergy Advance">Download preview</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/purchase/" title="Purchase Synergy Advance">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/winswitch/" title="Enhanced replacement for Apple's Fast User Switching menu">WinSwitch &gt;</a>
+                <li><a href="https://wincent.com/a/products/winswitch/" title="Enhanced replacement for Apple's Fast User Switching menu">WinSwitch &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/winswitch/download/" title="Download WinSwitch">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/winswitch/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/winswitch/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
-                    <li><a href="http://www.wincent.com/a/products/winswitch/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/download/" title="Download WinSwitch">Download</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/hextrapolate/" title="Programmers number conversion tool">Hextrapolate &gt;</a>
+                <li><a href="https://wincent.com/a/products/hextrapolate/" title="Programmers number conversion tool">Hextrapolate &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/hextrapolate/download/" title="Download Hextrapolate">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/hextrapolate/purchase/" title="Purchase Hextrapolate">Purchase</a></li>
-                    <li><a href="http://www.wincent.com/a/products/hextrapolate/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/download/" title="Download Hextrapolate">Download</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/purchase/" title="Purchase Hextrapolate">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/install/" title="Installation and deployment solution for developers">Install &gt;</a>
+                <li><a href="https://wincent.com/a/products/install/" title="Installation and deployment solution for developers">Install &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/install/download/" title="Install downloads">Downloads</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/purchase/" title="Purchase Install">Purchase</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
-                    <li><a href="http://www.wincent.com/a/products/install/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/install/download/" title="Install downloads">Downloads</a></li>
+                    <li><a href="https://wincent.com/a/products/install/purchase/" title="Purchase Install">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/install/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/install/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/install/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/getsmart-pro/" title="Intelligent download manager">GetSmart Pro &gt;</a>
+                <li><a href="https://wincent.com/a/products/getsmart-pro/" title="Intelligent download manager">GetSmart Pro &gt;</a>
                   <ul>
-                    <li><a href="https://secure.wincent.com/a/products/getsmart-pro/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/getsmart-pro/donate/" title="Support development with a donation">Donate</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/" title="Full product listing">Other products...</a></li>
+                <li><a href="https://wincent.com/a/products/" title="Full product listing">Other products...</a></li>
               </ul>
             </li>
           </ul>
         </td>
-        <td width="48" height="25"><a href="https://secure.wincent.com/a/store/" title="Wincent online store"><img src="/a/gfx/header/store-off.jpg" width="48" height="25" alt="Store" /></a></td>
+        <td width="48" height="25"><a href="https://wincent.com/a/store/" title="Wincent online store"><img src="/a/gfx/header/store-off.jpg" width="48" height="25" alt="Store" /></a></td>
         <td width="63" height="25">
           <ul style="width: 63px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/services/" title="Full services listing"><img src="/a/gfx/header/services-off.jpg" width="63" height="25" alt="Services" /></a>
+              <a href="https://wincent.com/a/services/" title="Full services listing"><img src="/a/gfx/header/services-off.jpg" width="63" height="25" alt="Services" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/services/custom-development/" title="Custom software development">Custom Development</a></li>
-                <li><a href="http://www.wincent.com/a/services/mac-consultancy/" title="Apple and Mac OS X consultancy">Apple/Mac Consultancy</a></li>
-                <li><a href="http://www.wincent.com/a/services/web-design/" title="Web design services">Web Design</a></li>
-                <li><a href="http://www.wincent.com/a/services/hosting/" title="Internet web and email hosting">Hosting</a></li>
+                <li><a href="https://wincent.com/a/services/custom-development/" title="Custom software development">Custom Development</a></li>
+                <li><a href="https://wincent.com/a/services/mac-consultancy/" title="Apple and Mac OS X consultancy">Apple/Mac Consultancy</a></li>
+                <li><a href="https://wincent.com/a/services/web-design/" title="Web design services">Web Design</a></li>
+                <li><a href="https://wincent.com/a/services/hosting/" title="Internet web and email hosting">Hosting</a></li>
               </ul>
             </li>
           </ul>
@@ -101,16 +101,16 @@
         <td width="62" height="25">
           <ul style="width: 62px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/support/" title="Support resources and links"><img src="/a/gfx/header/support-off.jpg" width="62" height="25" alt="Support" /></a>
+              <a href="https://wincent.com/a/support/" title="Support resources and links"><img src="/a/gfx/header/support-off.jpg" width="62" height="25" alt="Support" /></a>
               <ul>
-                <li><a href="https://secure.wincent.com/a/support/registration/" title="Retrieve lost license codes">Lost License Codes</a></li>
-                <li><a href="http://www.wincent.com/a/support/bugs/" title="Bug tracking and feature request database">Bugs and Feature Requests</a></li>
-                <li><a href="http://www.wincent.com/a/support/demo-licenses/" title="Obtain a demonstration license">Demonstration licenses</a></li>
-                <li><a href="http://www.wincent.com/a/support/forums/" title="Discussion and support forums">Forums</a></li>
-                <li><a href="http://www.wincent.com/a/support/faq/" title="Frequently Asked Questions">FAQ</a></li>
-                <li><a href="http://www.wincent.com/a/support/activation/" title="Product activation and information">Product Activation</a></li>
-                <li><a href="https://secure.wincent.com/a/support/tickets/" title="Open or view a support ticket">Support Tickets</a></li>
-                <li><a href="http://www.wincent.com/a/support/lists/" title="Subscribe/unsubscribe to/from a mailing list">Mailing lists</a></li>
+                <li><a href="https://wincent.com/a/support/registration/" title="Retrieve lost license codes">Lost License Codes</a></li>
+                <li><a href="https://wincent.com/a/support/bugs/" title="Bug tracking and feature request database">Bugs and Feature Requests</a></li>
+                <li><a href="https://wincent.com/a/support/demo-licenses/" title="Obtain a demonstration license">Demonstration licenses</a></li>
+                <li><a href="https://wincent.com/a/support/forums/" title="Discussion and support forums">Forums</a></li>
+                <li><a href="https://wincent.com/a/support/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                <li><a href="https://wincent.com/a/support/activation/" title="Product activation and information">Product Activation</a></li>
+                <li><a href="https://wincent.com/a/support/tickets/" title="Open or view a support ticket">Support Tickets</a></li>
+                <li><a href="https://wincent.com/a/support/lists/" title="Subscribe/unsubscribe to/from a mailing list">Mailing lists</a></li>
               </ul>
             </li>
           </ul>
@@ -118,10 +118,10 @@
         <td width="53" height="25">
           <ul style="width: 53px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/about/" title="Company information"><img src="/a/gfx/header/about-off.jpg" width="53" height="25" alt="About" /></a>
+              <a href="https://wincent.com/a/about/" title="Company information"><img src="/a/gfx/header/about-off.jpg" width="53" height="25" alt="About" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/about/wincent/" title="About Wincent Colaiuta: the person">About Wincent Colaiuta</a></li>
-                <li><a href="http://www.wincent.com/a/about/privacy/" title="About the Wincent Privacy Policy">Privacy Policy</a></li>
+                <li><a href="https://wincent.com/a/about/wincent/" title="About Wincent Colaiuta: the person">About Wincent Colaiuta</a></li>
+                <li><a href="https://wincent.com/a/about/privacy/" title="About the Wincent Privacy Policy">Privacy Policy</a></li>
               </ul>
            </li>
          </ul>
@@ -129,24 +129,24 @@
         <td width="49" height="25">
           <ul style="width: 49px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/news/" title="Latest news items in weblog format"><img src="/a/gfx/header/news-off.jpg" width="49" height="25" alt="News" /></a>
+              <a href="https://wincent.com/a/news/" title="Latest news items in weblog format"><img src="/a/gfx/header/news-off.jpg" width="49" height="25" alt="News" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/news/archives/mac_os_x_news/" title="Apple and Mac OS X-related news">Mac OS X News</a></li>
-                <li><a href="http://www.wincent.com/a/news/archives/product_news/" title="Wincent product news">Product News</a></li>
-                <li><a href="http://www.wincent.com/a/news/archives/site_news/" title="Site-related news">Site News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/mac_os_x_news/" title="Apple and Mac OS X-related news">Mac OS X News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/product_news/" title="Wincent product news">Product News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/site_news/" title="Site-related news">Site News</a></li>
                 <li><a href="http://colaiuta.net/" title="Development and other notes from Wincent">Wincent Colaiuta's weblog</a></li>
               </ul>
             </li>
           </ul>
         </td>
         <td width="107" height="25"><a href="http://kbase.wincent.com/" title="Categorized Mac OS X tips and information"><img src="/a/gfx/header/knowledge-base-off.jpg" width="107" height="25" alt="Knowledge Base" /></a></td>
-        <td width="62" height="25"><a href="http://www.wincent.com/a/contact/" title="Contact email form"><img src="/a/gfx/header/contact-off.jpg" width="62" height="25" alt="Contact" /></a></td>
+        <td width="62" height="25"><a href="https://wincent.com/a/contact/" title="Contact email form"><img src="/a/gfx/header/contact-off.jpg" width="62" height="25" alt="Contact" /></a></td>
         <td width="72" height="25">
           <ul style="width: 72px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/site-map/" title="Site overview"><img src="/a/gfx/header/site-map-off.jpg" width="72" height="25" alt="Site Map" /></a>
+              <a href="https://wincent.com/a/site-map/" title="Site overview"><img src="/a/gfx/header/site-map-off.jpg" width="72" height="25" alt="Site Map" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/site-map/search/" title="Site search">Search</a></li>
+                <li><a href="https://wincent.com/a/site-map/search/" title="Site search">Search</a></li>
               </ul>
             </li>
           </ul>
@@ -156,31 +156,31 @@
       </tr>
     </table>
   <div id="breadcrumbs">
-    <p><a href="http://www.wincent.com/">Main</a>&nbsp;&gt;&nbsp;<a href="../../">Products</a>&nbsp;&gt;&nbsp;<a href="../">Synergy Advance</a>&nbsp;&gt;&nbsp;Download    </p>
+    <p><a href="https://wincent.com/">Main</a>&nbsp;&gt;&nbsp;<a href="../../">Products</a>&nbsp;&gt;&nbsp;<a href="../">Synergy Advance</a>&nbsp;&gt;&nbsp;Download    </p>
   </div>
     <div id="container">
       <div id="left">
         <div class="sidebar">
               <h2>Synergy Advance links</h2>
               <ul>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/">Front page</a></li>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/news/">News</a></li>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/road-map/">Road map</a></li>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/known-issues/">Known issues</a></li>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/download/">Download preview</a></li>
-                <li><a href="https://secure.wincent.com/a/products/synergy-advance/purchase/">Purchase</a></li>
-                <li><a href="https://secure.wincent.com/a/products/synergy-advance/donate/">Donate</a></li>
-                <li><a href="https://secure.wincent.com/a/products/synergy-advance/donate/">Sponsor</a></li>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/help/">Help</a></li>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/faq/">FAQ</a></li>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/history/">History</a></li>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/support/">Support</a></li>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/system-requirements/">System requirements</a></li>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/license/">License</a></li>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/credits/">Credits</a></li>
+                <li><a href="https://wincent.com/a/products/synergy-advance/">Front page</a></li>
+                <li><a href="https://wincent.com/a/products/synergy-advance/news/">News</a></li>
+                <li><a href="https://wincent.com/a/products/synergy-advance/road-map/">Road map</a></li>
+                <li><a href="https://wincent.com/a/products/synergy-advance/known-issues/">Known issues</a></li>
+                <li><a href="https://wincent.com/a/products/synergy-advance/download/">Download preview</a></li>
+                <li><a href="https://wincent.com/a/products/synergy-advance/purchase/">Purchase</a></li>
+                <li><a href="https://wincent.com/a/products/synergy-advance/donate/">Donate</a></li>
+                <li><a href="https://wincent.com/a/products/synergy-advance/donate/">Sponsor</a></li>
+                <li><a href="https://wincent.com/a/products/synergy-advance/help/">Help</a></li>
+                <li><a href="https://wincent.com/a/products/synergy-advance/faq/">FAQ</a></li>
+                <li><a href="https://wincent.com/a/products/synergy-advance/history/">History</a></li>
+                <li><a href="https://wincent.com/a/products/synergy-advance/support/">Support</a></li>
+                <li><a href="https://wincent.com/a/products/synergy-advance/system-requirements/">System requirements</a></li>
+                <li><a href="https://wincent.com/a/products/synergy-advance/license/">License</a></li>
+                <li><a href="https://wincent.com/a/products/synergy-advance/credits/">Credits</a></li>
               </ul>
-              <p align="center"><a href="http://apple.com/universal/"><img src="http://www.wincent.com/a/gfx/MacOSX_Universal_60px.gif" width="95" height="60" alt="Universal" border="0" /></a></p>
-              <p align="center"><img src="http://www.wincent.com/a/gfx/tiger-compatible.jpg" alt="Tiger Compatible" border="0" /></p>
+              <p align="center"><a href="http://apple.com/universal/"><img src="https://wincent.com/a/gfx/MacOSX_Universal_60px.gif" width="95" height="60" alt="Universal" border="0" /></a></p>
+              <p align="center"><img src="https://wincent.com/a/gfx/tiger-compatible.jpg" alt="Tiger Compatible" border="0" /></p>
         </div>
       </div>
       <div id="center">
@@ -188,9 +188,9 @@
           
           <h3>Downloads</h3>
           
-          <p>This is prerelease software. Before downloading it please consult the <a href="../road-map/">road map</a> and the <a href="../known-issues/">known issues</a>. If you find any bugs please <a href="http://bugs.wincent.com/">file a bug report</a> (bug reporting guidelines are <a href="http://www.wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php">here</a>, and instructions for beta testers are <a href="http://www.wincent.com/a/knowledge-base/archives/2005/04/information_for.php">here</a>).</p>
+          <p>This is prerelease software. Before downloading it please consult the <a href="../road-map/">road map</a> and the <a href="../known-issues/">known issues</a>. If you find any bugs please <a href="http://bugs.wincent.com/">file a bug report</a> (bug reporting guidelines are <a href="https://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php">here</a>, and instructions for beta testers are <a href="https://wincent.com/a/knowledge-base/archives/2005/04/information_for.php">here</a>).</p>
           
-          <p>All the downloads in this list indicate SHA1 checksums so that you can verify the integrity of the downloaded files. Please see <a href="http://www.wincent.com/a/knowledge-base/archives/2004/11/using_md5_to_ve.php">this knowledge base article</a> for instructions on how to do this.</p>
+          <p>All the downloads in this list indicate SHA1 checksums so that you can verify the integrity of the downloaded files. Please see <a href="https://wincent.com/a/knowledge-base/archives/2004/11/using_md5_to_ve.php">this knowledge base article</a> for instructions on how to do this.</p>
           
           <h4>Synergy Advance</h4>
           
@@ -198,19 +198,19 @@
           
           <p>Requires Mac OS X 10.3 (Panther) or later</p>
           
-          <p><a href="http://www.wincent.com/download.php?item=SynergyAdvance.dmg"><img style="float: right;" src="/a/gfx/download.jpg" alt="Download" width="80" height="32" /></a>Synergy Advance Public Preview Release 0.4 for Mac OS X 10.3 and later: <a href="http://www.wincent.com/download.php?item=SynergyAdvance.dmg">SynergyAdvance0.4.dmg</a> (disk image, 3.0MB, SHA1 checksum: 29453b47d4a4c80fb1f3097dfbfc84db2c92cb0f).</p>
+          <p><a href="https://wincent.com/download.php?item=SynergyAdvance.dmg"><img style="float: right;" src="/a/gfx/download.jpg" alt="Download" width="80" height="32" /></a>Synergy Advance Public Preview Release 0.4 for Mac OS X 10.3 and later: <a href="https://wincent.com/download.php?item=SynergyAdvance.dmg">SynergyAdvance0.4.dmg</a> (disk image, 3.0MB, SHA1 checksum: 29453b47d4a4c80fb1f3097dfbfc84db2c92cb0f).</p>
           <p>
           
           <h5>Latest beta (development) release</h5>
           
           <p>Requires Mac OS X 10.4 (Tiger) or later.</p>
             
-          <p><a href="http://www.wincent.com/download.php?item=SynergyAdvanceBeta.dmg"><img style="float: right;" src="/a/gfx/download.jpg" alt="Download" width="80" height="32" /></a>Synergy Advance Public Preview Release 0.5.1b: <a href="http://www.wincent.com/download.php?item=SynergyAdvanceBeta.dmg">SynergyAdvance0.5.1b.dmg</a> (disk image, 3.2MB, SHA1 checksum: e5f9cebdcbca54966c0ccdf572edef9066bfdec4).</p>
+          <p><a href="https://wincent.com/download.php?item=SynergyAdvanceBeta.dmg"><img style="float: right;" src="/a/gfx/download.jpg" alt="Download" width="80" height="32" /></a>Synergy Advance Public Preview Release 0.5.1b: <a href="https://wincent.com/download.php?item=SynergyAdvanceBeta.dmg">SynergyAdvance0.5.1b.dmg</a> (disk image, 3.2MB, SHA1 checksum: e5f9cebdcbca54966c0ccdf572edef9066bfdec4).</p>
           <p>
           
           <h5>Cutting edge nightly build</h5>
           
-          <p>The very latest development snapshots are available <a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/synergy_advance/">here</a>. Please see the <a href="http://www.wincent.com/s/nightlies/">nightlies information page</a> and <a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/atom.xml">RSS feed</a>.</p>
+          <p>The very latest development snapshots are available <a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/synergy_advance/">here</a>. Please see the <a href="https://wincent.com/s/nightlies/">nightlies information page</a> and <a href="https://wincent.com/a/about/wincent/weblog/nightlog/atom.xml">RSS feed</a>.</p>
           
         </div>
       </div>
@@ -223,7 +223,7 @@
     <p class="quick-links-date">25 Mar 2008</p>
     <ul>
   
-  <li><h4>Final server migration this week</h4>I've been working on moving to the new server for nearly a month now, a process which has been quite slow because all the data has to be exported from a number of &quot;legacy&quot; applications and imported into a brand... [<a href="http://www.wincent.com/a/news/archives/2008/03/final_server_mi.php">More...</a>]</li>
+  <li><h4>Final server migration this week</h4>I've been working on moving to the new server for nearly a month now, a process which has been quite slow because all the data has to be exported from a number of &quot;legacy&quot; applications and imported into a brand... [<a href="https://wincent.com/a/news/archives/2008/03/final_server_mi.php">More...</a>]</li>
   
     </ul>
   
@@ -232,7 +232,7 @@
     <p class="quick-links-date">26 Feb 2008</p>
     <ul>
   
-  <li><h4>Server migration in progress</h4>The server migration from Rackspace to INetU is currently underway. My aim is do this very carefully, service by service, and keep downtime to a minimum; hopefully minutes rather than hours. Just in case there is any interruption during the... [<a href="http://www.wincent.com/a/news/archives/2008/02/server_migratio.php">More...</a>]</li>
+  <li><h4>Server migration in progress</h4>The server migration from Rackspace to INetU is currently underway. My aim is do this very carefully, service by service, and keep downtime to a minimum; hopefully minutes rather than hours. Just in case there is any interruption during the... [<a href="https://wincent.com/a/news/archives/2008/02/server_migratio.php">More...</a>]</li>
   
     </ul>
   
@@ -241,7 +241,7 @@
     <p class="quick-links-date">21 Feb 2008</p>
     <ul>
   
-  <li><h4>Call for Bansshee donations</h4>Bansshee is a free, open-source tool to thwart dictionary-based SSH attacks. As a convenience to users there are three domains, bansshee.com, bansshee.net, and bansshee.org, that resolve to the Bansshee project page. These are coming up for renewal soon (they expire... [<a href="http://www.wincent.com/a/news/archives/2008/02/call_for_banssh.php">More...</a>]</li>
+  <li><h4>Call for Bansshee donations</h4>Bansshee is a free, open-source tool to thwart dictionary-based SSH attacks. As a convenience to users there are three domains, bansshee.com, bansshee.net, and bansshee.org, that resolve to the Bansshee project page. These are coming up for renewal soon (they expire... [<a href="https://wincent.com/a/news/archives/2008/02/call_for_banssh.php">More...</a>]</li>
   
     </ul>
   
@@ -250,7 +250,7 @@
     <p class="quick-links-date"> 7 Feb 2008</p>
     <ul>
   
-  <li><h4>Upcoming DNS changes</h4>In preparation for the server move at the end of this month I'll soon be migrating DNS servers. I'll be doing everything I can to minimize downtime, and hopefully come close to eliminating it entirely as there will be a... [<a href="http://www.wincent.com/a/news/archives/2008/02/upcoming_dns_ch.php">More...</a>]</li>
+  <li><h4>Upcoming DNS changes</h4>In preparation for the server move at the end of this month I'll soon be migrating DNS servers. I'll be doing everything I can to minimize downtime, and hopefully come close to eliminating it entirely as there will be a... [<a href="https://wincent.com/a/news/archives/2008/02/upcoming_dns_ch.php">More...</a>]</li>
   
     </ul>
   
@@ -259,13 +259,13 @@
     <p class="quick-links-date">23 Jan 2008</p>
     <ul>
   
-  <li><h4>Synergy 3.5a5 released</h4>I'm pleased to announce the availability of version 3.5a5 of Synergy, the fifth alpha release in the brand new 3.5 series. The last release, version 3.2, was Leopard-compatible but would also run on all versions of Mac OS X from... [<a href="http://www.wincent.com/a/news/archives/2008/01/synergy_35a5_re.php">More...</a>]</li>
+  <li><h4>Synergy 3.5a5 released</h4>I'm pleased to announce the availability of version 3.5a5 of Synergy, the fifth alpha release in the brand new 3.5 series. The last release, version 3.2, was Leopard-compatible but would also run on all versions of Mac OS X from... [<a href="https://wincent.com/a/news/archives/2008/01/synergy_35a5_re.php">More...</a>]</li>
   
     </ul>
   
 
 
-<p class="more"><a href="http://www.wincent.com/a/news/">More news articles...</a></p>        </div>
+<p class="more"><a href="https://wincent.com/a/news/">More news articles...</a></p>        </div>
       </div>
     </div>
 <div id="footer">

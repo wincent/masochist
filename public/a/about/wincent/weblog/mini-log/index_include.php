@@ -1,6 +1,6 @@
 <h2>Mini-log</h2>
 
-<p class="more"><em>"I shall call it, Mini-log..."</em> (<a href="http://www.wincent.com/a/about/wincent/weblog/archives/2006/09/keeping_up_to_d.php">about</a>)</p>
+<p class="more"><em>"I shall call it, Mini-log..."</em> (<a href="https://wincent.com/a/about/wincent/weblog/archives/2006/09/keeping_up_to_d.php">about</a>)</p>
 
 
   
@@ -9,7 +9,7 @@
   
   <li>
     <h4>SuperDuper! 2.5! Released!</h4>
-    <p>A <a href='http://www.shirt-pocket.com/blog/index.php/shadedgrey/comments/superduper_25_released/'>most welcome update</a> that brings <a href='http://www.wincent.com/knowledge-base/Leopard'>Leopard</a> compatibility at last. I make simple <tt>tar</tt>-based backups of my home directory every two hours via a <tt>cron</tt> job, but I've been without whole-disk backups for a while now because <a href='http://www.wincent.com/knowledge-base/SuperDuper!'>SuperDuper!</a> has been out of action. It's good to have it back!</p>
+    <p>A <a href='http://www.shirt-pocket.com/blog/index.php/shadedgrey/comments/superduper_25_released/'>most welcome update</a> that brings <a href='https://wincent.com/knowledge-base/Leopard'>Leopard</a> compatibility at last. I make simple <tt>tar</tt>-based backups of my home directory every two hours via a <tt>cron</tt> job, but I've been without whole-disk backups for a while now because <a href='https://wincent.com/knowledge-base/SuperDuper!'>SuperDuper!</a> has been out of action. It's good to have it back!</p>
 
   </li>
   
@@ -22,7 +22,7 @@
   
   <li>
     <h4>backtrace(3)</h4>
-    <p>Cool new <a href='http://www.wincent.com/knowledge-base/API'>API</a> for <a href='http://www.wincent.com/knowledge-base/Leopard'>Leopard</a> that I just found out about.</p>
+    <p>Cool new <a href='https://wincent.com/knowledge-base/API'>API</a> for <a href='https://wincent.com/knowledge-base/Leopard'>Leopard</a> that I just found out about.</p>
 
   </li>
   
@@ -82,7 +82,7 @@
   
   <li>
     <h4>Subversion 1.4.6</h4>
-    <p><a href='http://subversion.tigris.org/svn_1.4_releasenotes.html'>Is out</a> (<a href='http://svn.collab.net/viewvc/svn/tags/1.4.6/CHANGES?revision=28590&amp;view=markup'>full changelog</a>). I doubt I'll bother upgrading though from the default 1.4.4 installation that comes with <a href='http://www.wincent.com/knowledge-base/Leopard'>Leopard</a>, seeing as I use <a href='http://www.wincent.com/knowledge-base/Git'>Git</a> for everything now.</p>
+    <p><a href='http://subversion.tigris.org/svn_1.4_releasenotes.html'>Is out</a> (<a href='http://svn.collab.net/viewvc/svn/tags/1.4.6/CHANGES?revision=28590&amp;view=markup'>full changelog</a>). I doubt I'll bother upgrading though from the default 1.4.4 installation that comes with <a href='https://wincent.com/knowledge-base/Leopard'>Leopard</a>, seeing as I use <a href='https://wincent.com/knowledge-base/Git'>Git</a> for everything now.</p>
 
   </li>
   
@@ -121,7 +121,7 @@
   
   <li>
     <h4>Ruby 1.9/2.0 manifold faster...</h4>
-    <p>...than it's <a href='http://antoniocangiano.com/2007/12/03/the-great-ruby-shootout/'>closest competitor</a> (JRuby), which isn't surprising, seeing as JRuby is built on <a href='http://www.wincent.com/knowledge-base/Java'>Java</a> (not exactly known for its blistering speed).</p>
+    <p>...than it's <a href='http://antoniocangiano.com/2007/12/03/the-great-ruby-shootout/'>closest competitor</a> (JRuby), which isn't surprising, seeing as JRuby is built on <a href='https://wincent.com/knowledge-base/Java'>Java</a> (not exactly known for its blistering speed).</p>
 
   </li>
   
@@ -189,4 +189,4 @@
   
 
  
-<p class="more"><a href="http://www.wincent.com/a/about/wincent/weblog/mini-log/archives/">Mini-log archives...</a></p>
+<p class="more"><a href="https://wincent.com/a/about/wincent/weblog/mini-log/archives/">Mini-log archives...</a></p>

@@ -8,12 +8,12 @@
 <title>Wincent Colaiuta's weblog: Why distributed version control</title>
 
 <link rel="stylesheet" href="/a/styles.css" type="text/css" />
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.wincent.com/a/about/wincent/weblog/index.rdf" />
-<link rel="alternate" type="application/atom+xml" title="Atom" href="http://www.wincent.com/a/about/wincent/weblog/atom.xml" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://wincent.com/a/about/wincent/weblog/index.rdf" />
+<link rel="alternate" type="application/atom+xml" title="Atom" href="https://wincent.com/a/about/wincent/weblog/atom.xml" />
 
-<link rel="start" href="http://www.wincent.com/a/about/wincent/weblog/" title="Home" />
+<link rel="start" href="https://wincent.com/a/about/wincent/weblog/" title="Home" />
 
-<link rel="prev" href="http://www.wincent.com/a/about/wincent/weblog/archives/2007/10/ben_collinssuss.php" title="Ben Collins-Sussman doesn't &quot;get&quot; distributed version control" />
+<link rel="prev" href="https://wincent.com/a/about/wincent/weblog/archives/2007/10/ben_collinssuss.php" title="Ben Collins-Sussman doesn't &quot;get&quot; distributed version control" />
 
 
 <script type="text/javascript" language="javascript">
@@ -103,8 +103,8 @@ function forgetMe (f) {
       <tr>
         <td style="background-image: url(/a/gfx/header/left-side.jpg); background-repeat: repeat-y;" width="32"><img src="/a/gfx/header/left-side.jpg" width="32" height="71" alt="" /></td>
         <td style="background-image: url(/a/gfx/header/center-background.jpg); background-repeat: repeat;" colspan="11" align="center" valign="middle">
-  <a href="http://www.wincent.com/"><img src="/a/gfx/wincent-logo-small-gray-bg.jpg" width="43" height="41" alt="wincent" align="middle" /></a>
-  <a href="http://www.wincent.com/a/about/wincent/weblog/"><img src="/a/gfx/weblog-header.jpg" width="323" height="25" alt="Wincent Colaiuta's weblog" align="middle"/></a>
+  <a href="https://wincent.com/"><img src="/a/gfx/wincent-logo-small-gray-bg.jpg" width="43" height="41" alt="wincent" align="middle" /></a>
+  <a href="https://wincent.com/a/about/wincent/weblog/"><img src="/a/gfx/weblog-header.jpg" width="323" height="25" alt="Wincent Colaiuta's weblog" align="middle"/></a>
 
         </td>
         <td style="background-image: url(/a/gfx/header/right-side.jpg); background-repeat: repeat-y;" width="32"><img src="/a/gfx/header/right-side.jpg" width="32" height="71" alt="" /></td>
@@ -115,68 +115,68 @@ function forgetMe (f) {
         <td width="73" height="25">
           <ul style="width: 73px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/products/" title="Full products listing"><img src="/a/gfx/header/products-off.jpg" width="73" height="25" alt="Products" /></a>
+              <a href="https://wincent.com/a/products/" title="Full products listing"><img src="/a/gfx/header/products-off.jpg" width="73" height="25" alt="Products" /></a>
               <ul>
                 <li><a href="https://wincent.com/products/synergy" title="The original iTunes menu bar controller">Synergy &gt;</a>
                   <ul>
                     <li><a href="https://wincent.com/products/synergy/download" title="Download Synergy">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-classic/purchase/" title="Purchase Synergy">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-classic/purchase/" title="Purchase Synergy">Purchase</a></li>
                     <li><a href="https://wincent.com/products/synergy/help" title="Frequently Asked Questions">FAQ</a></li>
-                    <li><a href="http://www.wincent.com/a/products/synergy-classic/buttons/" title="Free button sets">Button Sets</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-classic/buttons/" title="Free button sets">Button Sets</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/" title="Multi-purpose audio companion">Synergy Advance &gt;</a>
+                <li><a href="https://wincent.com/a/products/synergy-advance/" title="Multi-purpose audio companion">Synergy Advance &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/synergy-advance/download/" title="Download Synergy Advance">Download preview</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/purchase/" title="Purchase Synergy Advance">Purchase</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/download/" title="Download Synergy Advance">Download preview</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/purchase/" title="Purchase Synergy Advance">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/winswitch/" title="Enhanced replacement for Apple's Fast User Switching menu">WinSwitch &gt;</a>
+                <li><a href="https://wincent.com/a/products/winswitch/" title="Enhanced replacement for Apple's Fast User Switching menu">WinSwitch &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/winswitch/download/" title="Download WinSwitch">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/winswitch/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/winswitch/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
-                    <li><a href="http://www.wincent.com/a/products/winswitch/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/download/" title="Download WinSwitch">Download</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/hextrapolate/" title="Programmers number conversion tool">Hextrapolate &gt;</a>
+                <li><a href="https://wincent.com/a/products/hextrapolate/" title="Programmers number conversion tool">Hextrapolate &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/hextrapolate/download/" title="Download Hextrapolate">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/hextrapolate/purchase/" title="Purchase Hextrapolate">Purchase</a></li>
-                    <li><a href="http://www.wincent.com/a/products/hextrapolate/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/download/" title="Download Hextrapolate">Download</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/purchase/" title="Purchase Hextrapolate">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/install/" title="Installation and deployment solution for developers">Install &gt;</a>
+                <li><a href="https://wincent.com/a/products/install/" title="Installation and deployment solution for developers">Install &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/install/download/" title="Install downloads">Downloads</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/purchase/" title="Purchase Install">Purchase</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
-                    <li><a href="http://www.wincent.com/a/products/install/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/install/download/" title="Install downloads">Downloads</a></li>
+                    <li><a href="https://wincent.com/a/products/install/purchase/" title="Purchase Install">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/install/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/install/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/install/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/getsmart-pro/" title="Intelligent download manager">GetSmart Pro &gt;</a>
+                <li><a href="https://wincent.com/a/products/getsmart-pro/" title="Intelligent download manager">GetSmart Pro &gt;</a>
                   <ul>
-                    <li><a href="https://secure.wincent.com/a/products/getsmart-pro/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/getsmart-pro/donate/" title="Support development with a donation">Donate</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/" title="Full product listing">Other products...</a></li>
+                <li><a href="https://wincent.com/a/products/" title="Full product listing">Other products...</a></li>
               </ul>
             </li>
           </ul>
         </td>
-        <td width="48" height="25"><a href="https://secure.wincent.com/a/store/" title="Wincent online store"><img src="/a/gfx/header/store-off.jpg" width="48" height="25" alt="Store" /></a></td>
+        <td width="48" height="25"><a href="https://wincent.com/a/store/" title="Wincent online store"><img src="/a/gfx/header/store-off.jpg" width="48" height="25" alt="Store" /></a></td>
         <td width="63" height="25">
           <ul style="width: 63px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/services/" title="Full services listing"><img src="/a/gfx/header/services-off.jpg" width="63" height="25" alt="Services" /></a>
+              <a href="https://wincent.com/a/services/" title="Full services listing"><img src="/a/gfx/header/services-off.jpg" width="63" height="25" alt="Services" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/services/custom-development/" title="Custom software development">Custom Development</a></li>
-                <li><a href="http://www.wincent.com/a/services/mac-consultancy/" title="Apple and Mac OS X consultancy">Apple/Mac Consultancy</a></li>
-                <li><a href="http://www.wincent.com/a/services/web-design/" title="Web design services">Web Design</a></li>
-                <li><a href="http://www.wincent.com/a/services/hosting/" title="Internet web and email hosting">Hosting</a></li>
+                <li><a href="https://wincent.com/a/services/custom-development/" title="Custom software development">Custom Development</a></li>
+                <li><a href="https://wincent.com/a/services/mac-consultancy/" title="Apple and Mac OS X consultancy">Apple/Mac Consultancy</a></li>
+                <li><a href="https://wincent.com/a/services/web-design/" title="Web design services">Web Design</a></li>
+                <li><a href="https://wincent.com/a/services/hosting/" title="Internet web and email hosting">Hosting</a></li>
               </ul>
             </li>
           </ul>
@@ -184,16 +184,16 @@ function forgetMe (f) {
         <td width="62" height="25">
           <ul style="width: 62px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/support/" title="Support resources and links"><img src="/a/gfx/header/support-off.jpg" width="62" height="25" alt="Support" /></a>
+              <a href="https://wincent.com/a/support/" title="Support resources and links"><img src="/a/gfx/header/support-off.jpg" width="62" height="25" alt="Support" /></a>
               <ul>
-                <li><a href="https://secure.wincent.com/a/support/registration/" title="Retrieve lost license codes">Lost License Codes</a></li>
-                <li><a href="http://www.wincent.com/a/support/bugs/" title="Bug tracking and feature request database">Bugs and Feature Requests</a></li>
-                <li><a href="http://www.wincent.com/a/support/demo-licenses/" title="Obtain a demonstration license">Demonstration licenses</a></li>
-                <li><a href="http://www.wincent.com/a/support/forums/" title="Discussion and support forums">Forums</a></li>
-                <li><a href="http://www.wincent.com/a/support/faq/" title="Frequently Asked Questions">FAQ</a></li>
-                <li><a href="http://www.wincent.com/a/support/activation/" title="Product activation and information">Product Activation</a></li>
-                <li><a href="https://secure.wincent.com/a/support/tickets/" title="Open or view a support ticket">Support Tickets</a></li>
-                <li><a href="http://www.wincent.com/a/support/lists/" title="Subscribe/unsubscribe to/from a mailing list">Mailing lists</a></li>
+                <li><a href="https://wincent.com/a/support/registration/" title="Retrieve lost license codes">Lost License Codes</a></li>
+                <li><a href="https://wincent.com/a/support/bugs/" title="Bug tracking and feature request database">Bugs and Feature Requests</a></li>
+                <li><a href="https://wincent.com/a/support/demo-licenses/" title="Obtain a demonstration license">Demonstration licenses</a></li>
+                <li><a href="https://wincent.com/a/support/forums/" title="Discussion and support forums">Forums</a></li>
+                <li><a href="https://wincent.com/a/support/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                <li><a href="https://wincent.com/a/support/activation/" title="Product activation and information">Product Activation</a></li>
+                <li><a href="https://wincent.com/a/support/tickets/" title="Open or view a support ticket">Support Tickets</a></li>
+                <li><a href="https://wincent.com/a/support/lists/" title="Subscribe/unsubscribe to/from a mailing list">Mailing lists</a></li>
               </ul>
             </li>
           </ul>
@@ -201,10 +201,10 @@ function forgetMe (f) {
         <td width="53" height="25">
           <ul style="width: 53px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/about/" title="Company information"><img src="/a/gfx/header/about-on.jpg" width="53" height="25" alt="About" /></a>
+              <a href="https://wincent.com/a/about/" title="Company information"><img src="/a/gfx/header/about-on.jpg" width="53" height="25" alt="About" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/about/wincent/" title="About Wincent Colaiuta: the person">About Wincent Colaiuta</a></li>
-                <li><a href="http://www.wincent.com/a/about/privacy/" title="About the Wincent Privacy Policy">Privacy Policy</a></li>
+                <li><a href="https://wincent.com/a/about/wincent/" title="About Wincent Colaiuta: the person">About Wincent Colaiuta</a></li>
+                <li><a href="https://wincent.com/a/about/privacy/" title="About the Wincent Privacy Policy">Privacy Policy</a></li>
               </ul>
            </li>
          </ul>
@@ -212,24 +212,24 @@ function forgetMe (f) {
         <td width="49" height="25">
           <ul style="width: 49px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/news/" title="Latest news items in weblog format"><img src="/a/gfx/header/news-off.jpg" width="49" height="25" alt="News" /></a>
+              <a href="https://wincent.com/a/news/" title="Latest news items in weblog format"><img src="/a/gfx/header/news-off.jpg" width="49" height="25" alt="News" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/news/archives/mac_os_x_news/" title="Apple and Mac OS X-related news">Mac OS X News</a></li>
-                <li><a href="http://www.wincent.com/a/news/archives/product_news/" title="Wincent product news">Product News</a></li>
-                <li><a href="http://www.wincent.com/a/news/archives/site_news/" title="Site-related news">Site News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/mac_os_x_news/" title="Apple and Mac OS X-related news">Mac OS X News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/product_news/" title="Wincent product news">Product News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/site_news/" title="Site-related news">Site News</a></li>
                 <li><a href="http://colaiuta.net/" title="Development and other notes from Wincent">Wincent Colaiuta's weblog</a></li>
               </ul>
             </li>
           </ul>
         </td>
         <td width="107" height="25"><a href="http://kbase.wincent.com/" title="Categorized Mac OS X tips and information"><img src="/a/gfx/header/knowledge-base-off.jpg" width="107" height="25" alt="Knowledge Base" /></a></td>
-        <td width="62" height="25"><a href="http://www.wincent.com/a/contact/" title="Contact email form"><img src="/a/gfx/header/contact-off.jpg" width="62" height="25" alt="Contact" /></a></td>
+        <td width="62" height="25"><a href="https://wincent.com/a/contact/" title="Contact email form"><img src="/a/gfx/header/contact-off.jpg" width="62" height="25" alt="Contact" /></a></td>
         <td width="72" height="25">
           <ul style="width: 72px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/site-map/" title="Site overview"><img src="/a/gfx/header/site-map-off.jpg" width="72" height="25" alt="Site Map" /></a>
+              <a href="https://wincent.com/a/site-map/" title="Site overview"><img src="/a/gfx/header/site-map-off.jpg" width="72" height="25" alt="Site Map" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/site-map/search/" title="Site search">Search</a></li>
+                <li><a href="https://wincent.com/a/site-map/search/" title="Site search">Search</a></li>
               </ul>
             </li>
           </ul>
@@ -239,7 +239,7 @@ function forgetMe (f) {
       </tr>
     </table>
   <div id="breadcrumbs">
-    <p><a href="http://www.wincent.com/">Main</a>&nbsp;&gt;&nbsp;<a href="../../../../../">About</a>&nbsp;&gt;&nbsp;<a href="../../../../">Wincent</a>&nbsp;&gt;&nbsp;<a href="../../../">Weblog</a>&nbsp;&gt;&nbsp;<a href="../../">Archives</a>&nbsp;&gt;&nbsp;<a href="../">2007</a>&nbsp;&gt;&nbsp;10    </p>
+    <p><a href="https://wincent.com/">Main</a>&nbsp;&gt;&nbsp;<a href="../../../../../">About</a>&nbsp;&gt;&nbsp;<a href="../../../../">Wincent</a>&nbsp;&gt;&nbsp;<a href="../../../">Weblog</a>&nbsp;&gt;&nbsp;<a href="../../">Archives</a>&nbsp;&gt;&nbsp;<a href="../">2007</a>&nbsp;&gt;&nbsp;10    </p>
   </div>
 
 
@@ -249,9 +249,9 @@ function forgetMe (f) {
 
 <p align="right">
 
-<a href="http://www.wincent.com/a/about/wincent/weblog/archives/2007/10/ben_collinssuss.php">&laquo; Ben Collins-Sussman doesn't "get" distributed version control</a> |
+<a href="https://wincent.com/a/about/wincent/weblog/archives/2007/10/ben_collinssuss.php">&laquo; Ben Collins-Sussman doesn't "get" distributed version control</a> |
 
-<a href="http://www.wincent.com/a/about/wincent/weblog/">Main</a>
+<a href="https://wincent.com/a/about/wincent/weblog/">Main</a>
 
 </p>
 
@@ -259,10 +259,10 @@ function forgetMe (f) {
 
 <h3>Why distributed version control</h3>
 
-<p>I just got an email from <a href='http://www.zathras.de/angelweb/home.htm'>Uli Kusterer</a> asking me to expand on my <a href='http://www.wincent.com/a/about/wincent/weblog/archives/2007/10/ben_collinssuss.php'>comments the other day</a> that Ben Collins-Sussman doesn't &quot;get&quot; distributed version control:</p>
+<p>I just got an email from <a href='http://www.zathras.de/angelweb/home.htm'>Uli Kusterer</a> asking me to expand on my <a href='https://wincent.com/a/about/wincent/weblog/archives/2007/10/ben_collinssuss.php'>comments the other day</a> that Ben Collins-Sussman doesn't &quot;get&quot; distributed version control:</p>
 <blockquote>Could you maybe elaborate on your reasons as to why distributed version control is great? You said it'd take pages, but even just a short rundown would be interesting.
 <br />Does it make feature branches easier? Does it encourage people to do more refactoring? Just curious to hear someone's opinion on this.</blockquote>
-<p>I'll answer this with specific reference to <a href='http://www.wincent.com/knowledge-base/Git'>Git</a> seeing that's the <a href='http://www.wincent.com/knowledge-base/distributed%20version%20control'>distributed version control</a> system with which I have the most experience. Although I could rave on about how Git is the best thing since sliced bread for so many reasons, I'll try to limit myself specifically to its distributed nature.</p>
+<p>I'll answer this with specific reference to <a href='https://wincent.com/knowledge-base/Git'>Git</a> seeing that's the <a href='https://wincent.com/knowledge-base/distributed%20version%20control'>distributed version control</a> system with which I have the most experience. Although I could rave on about how Git is the best thing since sliced bread for so many reasons, I'll try to limit myself specifically to its distributed nature.</p>
 
 
 <div id="a002824more"><div id="more">
@@ -317,16 +317,16 @@ git init</pre>
 <p>I've tried to restrict my points above to the aspects in which distributed version control can be superior to centralized systems.</p>
 <p>To finish up I'll just briefly mention some points about Git that don't really have anything to do with its distributed nature but which make it a great version control system.</p>
 <ul>
-<li>Speed: <em>apart</em> from the fast offline access already mentioned, Git itself is a speed-demon. Most of it is written in lean-and-mean <a href='http://www.wincent.com/knowledge-base/C'>C</a> code, with some high-level user-interface stuff written using scripting languages. This isn't just a coincidence; from the very beginning it was designed to be quick and it's one of the things that will most impact you when you try it out.</li>
+<li>Speed: <em>apart</em> from the fast offline access already mentioned, Git itself is a speed-demon. Most of it is written in lean-and-mean <a href='https://wincent.com/knowledge-base/C'>C</a> code, with some high-level user-interface stuff written using scripting languages. This isn't just a coincidence; from the very beginning it was designed to be quick and it's one of the things that will most impact you when you try it out.</li>
 <li>Simplicity: repositories use a simple data model (four object types, history represented as a directed acyclic graph) that you can grok with a few minutes of study; this means that you can actually understand how Git works under the covers. </li>
 <li>Robustness: The simplicity makes for fewer bugs and a codebase that you can really trust.</li>
 <li>Maturity: Git's already at 1.5+ and it shows...</li>
-<li>Innovation: ...but not ready to sit back and rest on its laurels the Git community is blazing ahead with constant innovations (the recently added <tt>git stash</tt>, <a href='http://www.wincent.com/a/about/wincent/weblog/archives/2007/09/stash.php'>for example</a>).</li>
+<li>Innovation: ...but not ready to sit back and rest on its laurels the Git community is blazing ahead with constant innovations (the recently added <tt>git stash</tt>, <a href='https://wincent.com/a/about/wincent/weblog/archives/2007/09/stash.php'>for example</a>).</li>
 <li>Community: The Git community is highly active and has some impressively competent programmers in it. Subscribe to the mailing list and look at what must be one of the most impressive development processes in the open source world. I have learnt a lot from this inspiring community in the last few months and have changed a lot of my own practices for the better.</li>
 <li>Interface: Git is a pleasure to use from the command line (automatic paging, colorized output) but also comes with some excellent cross-platform GUI tools for visualizing history (gitk), preparing commits (git-gui), and web-based repository browsing (gitweb).</li>
 <li>Documentation: There is a wealth of high-quality documentation. Basic use can be learnt in only a few minutes, but if you want to delve deeper there is as much material as you could possibly want. Even if you don't want to become a Git expert the man pages are a great reference to consult whenever you want to do something out of the ordinary.</li>
 <li>Clean working copies: When you clone a repository everything goes into a single <tt>.git</tt> subdirectory; no more <tt>.svn</tt> metadata littering the entire repository hierarchy and causing problems inside Mac OS X  bundles.</li>
-<li>Philosophy: Git avoids the entire metadata arms race entirely by tracking content and nothing more. In other words, it doesn't bother trying to remember things like when you renamed one file to another, it merely remembers what the tree looked like before and after. It can look at the tree whenever necessary to infer whether or not a rename occurred. I <a href='http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/a_look_back_bra.php'>previously tried to explain</a> why this particular design decision was a flash of genius.</li>
+<li>Philosophy: Git avoids the entire metadata arms race entirely by tracking content and nothing more. In other words, it doesn't bother trying to remember things like when you renamed one file to another, it merely remembers what the tree looked like before and after. It can look at the tree whenever necessary to infer whether or not a rename occurred. I <a href='https://wincent.com/a/about/wincent/weblog/archives/2007/07/a_look_back_bra.php'>previously tried to explain</a> why this particular design decision was a flash of genius.</li>
 </ul>
 
 </div></div>

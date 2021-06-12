@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed version="0.3" xmlns="http://purl.org/atom/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xml:lang="en">
 <title>Knowledge base</title>
-<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/" />
+<link rel="alternate" type="text/html" href="https://wincent.com/a/knowledge-base/" />
 <modified>2006-08-17T14:57:58Z</modified>
 <tagline>wincent.com Knowledge Base</tagline>
 <id>tag:wincent.com,2007:/a/knowledge-base//2</id>
@@ -9,7 +9,7 @@
 <copyright>Copyright (c) 2006, wincent</copyright>
 <entry>
 <title>Knowledge base in wiki format</title>
-<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/08/knowledge_base.php" />
+<link rel="alternate" type="text/html" href="https://wincent.com/a/knowledge-base/archives/2006/08/knowledge_base.php" />
 <modified>2006-08-17T14:57:58Z</modified>
 <issued>2006-08-17T14:54:29Z</issued>
 <id>tag:wincent.com,2006:/a/knowledge-base//2.387</id>
@@ -17,20 +17,20 @@
 <summary type="text/plain">The current knowledge base format (chronological posts, categorized, like a weblog) has always been somewhat limiting. I have recently started a new, wiki-based knowledge base. It&apos;s still very much a work in progress, but for the curious it can be...</summary>
 <author>
 <name>wincent</name>
-<url>http://wincent.com/</url>
+<url>https://wincent.com/</url>
 <email>win@wincent.org</email>
 </author>
 <dc:subject>Meta</dc:subject>
-<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
-<![CDATA[<p>The current knowledge base format (chronological posts, categorized, like a weblog) has always been somewhat limiting. I have recently started a <a href="http://wincent.com/knowledge-base/">new, wiki-based</a> knowledge base. It's still very much a work in progress, but for the curious it can be found at:</p>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="https://wincent.com/a/knowledge-base/">
+<![CDATA[<p>The current knowledge base format (chronological posts, categorized, like a weblog) has always been somewhat limiting. I have recently started a <a href="https://wincent.com/knowledge-base/">new, wiki-based</a> knowledge base. It's still very much a work in progress, but for the curious it can be found at:</p>
 
-<p><a href="http://wincent.com/knowledge-base/">http://wincent.com/knowledge-base/</a></p>]]>
+<p><a href="https://wincent.com/knowledge-base/">https://wincent.com/knowledge-base/</a></p>]]>
 
 </content>
 </entry>
 <entry>
 <title>Clamping down on spam</title>
-<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/06/clamping_down_o.php" />
+<link rel="alternate" type="text/html" href="https://wincent.com/a/knowledge-base/archives/2006/06/clamping_down_o.php" />
 <modified>2006-07-03T15:08:20Z</modified>
 <issued>2006-06-21T13:40:33Z</issued>
 <id>tag:wincent.com,2006:/a/knowledge-base//2.353</id>
@@ -38,11 +38,11 @@
 <summary type="text/plain">I run SpamAssassin on my mail server (anti-spam). I also run ClamAV (anti-virus). After extensively trialing ClamAV I was convinced of its reliability and decided to have it automatically delete all detected incoming viruses. SpamAssassin still produces far too many false positives and false negatives for me to perform such deletion but I decided today that I wanted to tighten things up a little bit.</summary>
 <author>
 <name>wincent</name>
-<url>http://wincent.com/</url>
+<url>https://wincent.com/</url>
 <email>win@wincent.org</email>
 </author>
 <dc:subject>UNIX</dc:subject>
-<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="https://wincent.com/a/knowledge-base/">
 <![CDATA[<p>I run <a href="http://spamassassin.apache.org/">SpamAssassin</a> on my mail server (anti-spam). I also run <a href="http://clamav.net/">ClamAV</a> (anti-virus). After extensively trialing ClamAV I was convinced of its reliability and decided to have it automatically delete all detected incoming viruses. SpamAssassin still produces far too many false positives and false negatives for me to perform such deletion but I decided today that I wanted to tighten things up a little bit.</p>]]>
 <![CDATA[<h3>Step 1: Getting tough on non-English messages</h3>
 
@@ -247,7 +247,7 @@ echo "  ${USERS}"</pre>
 </entry>
 <entry>
 <title>freshclam: &quot;Problem with internal logger&quot;</title>
-<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/06/freshclam_probl.php" />
+<link rel="alternate" type="text/html" href="https://wincent.com/a/knowledge-base/archives/2006/06/freshclam_probl.php" />
 <modified>2006-06-10T13:37:40Z</modified>
 <issued>2006-06-10T13:25:48Z</issued>
 <id>tag:wincent.com,2006:/a/knowledge-base//2.349</id>
@@ -255,11 +255,11 @@ echo "  ${USERS}"</pre>
 <summary type="text/plain">Yesterday I received notification that an hourly freshclam update had failed. Overnight I continued to receive hourly notifications saying that there was a &quot;[p]roblem with the internal logger&quot;.</summary>
 <author>
 <name>wincent</name>
-<url>http://wincent.com/</url>
+<url>https://wincent.com/</url>
 <email>win@wincent.org</email>
 </author>
 <dc:subject>UNIX</dc:subject>
-<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="https://wincent.com/a/knowledge-base/">
 <![CDATA[<p>Yesterday I received notification that an hourly <tt>freshclam</tt> update had failed on my Red Hat Enterprise Linux box. Overnight I continued to receive hourly notifications, each saying the following:</p>
 
 <pre>/etc/cron.hourly/freshclam:
@@ -341,7 +341,7 @@ Clamd successfully notified about the update.</pre>]]>
 </entry>
 <entry>
 <title>WordPress security tip</title>
-<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/06/wordpress_secur.php" />
+<link rel="alternate" type="text/html" href="https://wincent.com/a/knowledge-base/archives/2006/06/wordpress_secur.php" />
 <modified>2006-06-02T16:57:52Z</modified>
 <issued>2006-06-02T16:55:00Z</issued>
 <id>tag:wincent.com,2006:/a/knowledge-base//2.346</id>
@@ -349,11 +349,11 @@ Clamd successfully notified about the update.</pre>]]>
 <summary type="text/plain">A WordPress security tip to make it harder for your database username and password to fall into the wrong hands.</summary>
 <author>
 <name>wincent</name>
-<url>http://wincent.com/</url>
+<url>https://wincent.com/</url>
 <email>win@wincent.org</email>
 </author>
 <dc:subject>Web</dc:subject>
-<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="https://wincent.com/a/knowledge-base/">
 <![CDATA[<p>Add the following to the <tt>.htaccess</tt> file at the top level of your <a href="http://wordpress.org/">WordPress</a> install:</p>
 
 <pre>&lt;FilesMatch ^wp-config.php$&gt;
@@ -366,7 +366,7 @@ deny from all
 </entry>
 <entry>
 <title>WordPress updates via Subversion</title>
-<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/06/wordpress_updat.php" />
+<link rel="alternate" type="text/html" href="https://wincent.com/a/knowledge-base/archives/2006/06/wordpress_updat.php" />
 <modified>2006-06-05T10:36:41Z</modified>
 <issued>2006-06-02T16:41:09Z</issued>
 <id>tag:wincent.com,2006:/a/knowledge-base//2.344</id>
@@ -374,11 +374,11 @@ deny from all
 <summary type="text/plain">I don&apos;t run WordPress on this website, but I do run it elsewhere. Here are some notes I made while streamlining the process of performing WordPress upgrades by using Subversion to pull down updates and merge them automatically.</summary>
 <author>
 <name>wincent</name>
-<url>http://wincent.com/</url>
+<url>https://wincent.com/</url>
 <email>win@wincent.org</email>
 </author>
 <dc:subject>Shell</dc:subject>
-<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="https://wincent.com/a/knowledge-base/">
 <![CDATA[<p>I don't run <a href="http://wordpress.org/">WordPress</a> on this website, but I do run it elsewhere. Here are some notes I made while streamlining the process of performing WordPress upgrades by using Subversion to pull down updates and merge them automatically. This is a technique already used by successful projects like <a href="http://bugzilla.org/">Bugzilla</a> and <a href="http://mediawiki.org/">MediaWiki</a>. The WordPress folks aren't quite with the times yet (<a href="http://trac.wordpress.org/ticket/2767">they haven't managed to tag the last two releases in the repository</a>, but you can follow the 2.0 branch instead of following tagged releases instead).</p>]]>
 <![CDATA[<p>We start off by doing a checkout of the latest release in the 2.0 branch (2.0.3) at the time of writing:</p>
 
@@ -513,7 +513,7 @@ sudo chown user:user file</pre>
 </entry>
 <entry>
 <title>Intel iMac set-up notes</title>
-<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/06/intel_imac_setu.php" />
+<link rel="alternate" type="text/html" href="https://wincent.com/a/knowledge-base/archives/2006/06/intel_imac_setu.php" />
 <modified>2006-06-02T14:41:04Z</modified>
 <issued>2006-06-02T02:20:52Z</issued>
 <id>tag:wincent.com,2006:/a/knowledge-base//2.343</id>
@@ -521,11 +521,11 @@ sudo chown user:user file</pre>
 <summary type="text/plain">When I switched from the G5 to the Intel iMac I used Apple&apos;s migration assistant to transfer over as much data as possible from the old system to the new. There were a number of command-line tools that I depend on that did not get transferred by the migration assistant. These are the notes that I made while compiling native Intel versions of these tools and installing them on the iMac.</summary>
 <author>
 <name>wincent</name>
-<url>http://wincent.com/</url>
+<url>https://wincent.com/</url>
 <email>win@wincent.org</email>
 </author>
 <dc:subject>Shell</dc:subject>
-<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="https://wincent.com/a/knowledge-base/">
 <![CDATA[<p>When I switched from the G5 to the Intel iMac I used Apple's migration assistant to transfer over as much data as possible from the old system to the new.</p>
 
 <p>There were a number of command-line tools that I depend on that did not get transferred by the migration assistant. These are the notes that I made while compiling native Intel versions of these tools and installing them on the iMac.</p>]]>
@@ -552,10 +552,10 @@ sudo make install</pre>
 
 <h4>pstree</h4> 
 
-<p>When I went looking for the latest official version of <tt>pstree</tt> it seems that the website has packed up and gone forever. Luckily I still had a copy of a source archive for a recent version (2.27), possibly the latest. Seeing as it's redistributable under the GPL I have placed a copy <a href="http://wincent.com/gpl/pstree-2.27.tar.gz">here</a>. To build it, you would follow a procedure like this one:</p>
+<p>When I went looking for the latest official version of <tt>pstree</tt> it seems that the website has packed up and gone forever. Luckily I still had a copy of a source archive for a recent version (2.27), possibly the latest. Seeing as it's redistributable under the GPL I have placed a copy <a href="https://wincent.com/gpl/pstree-2.27.tar.gz">here</a>. To build it, you would follow a procedure like this one:</p>
 
 <pre># get the source
-wget http://wincent.com/gpl/pstree-2.27.tar.gz
+wget https://wincent.com/gpl/pstree-2.27.tar.gz
 <br />
 # extract
 tar zxvf pstree-2.27.tar.gz
@@ -641,7 +641,7 @@ wget http://apache.gva.es/httpd/httpd-2.0.58.tar.bz2
 tar xjvf httpd-2.0.58.tar.bz2 
 cd httpd-2.0.58/
 <br />
-# workaround <a href="http://wincent.com/a/knowledge-base/archives/2005/07/upgrading_to_su_2.php">APR bug</a> (see Subversion 
+# workaround <a href="https://wincent.com/a/knowledge-base/archives/2005/07/upgrading_to_su_2.php">APR bug</a> (see Subversion 
 ac_cv_func_poll=no; export ac_cv_func_poll
 <br />
 # configure and build
@@ -667,7 +667,7 @@ echo 'svn::200:200::0:0:Subversion:/var/empty:/usr/bin/false' | sudo niload -v p
 echo 'svn:*:200:svn' | sudo niload -v group /
 sudo chown svn:svn /usr/local/apache2/var/dav
 <br />
-# workaround <a href="http://wincent.com/a/knowledge-base/archives/2005/07/upgrading_to_su_2.php">APR bug</a> (see Subversion FAQ)
+# workaround <a href="https://wincent.com/a/knowledge-base/archives/2005/07/upgrading_to_su_2.php">APR bug</a> (see Subversion FAQ)
 ac_cv_func_poll=no; export ac_cv_func_poll
 <br />
 # configure and build
@@ -719,14 +719,14 @@ sudo make install</pre>
 
 <pre>sudo /usr/local/apache2/bin/apachectl start</pre>
 
-<p>I found it was unnecessary to <a href="http://wincent.com/a/knowledge-base/archives/2005/05/disaster_recove.php">set up a start-up item to launch Apache 2 at boot time</a> because it was correctly transferred across by the migration assistant. I did, however, need to add this line back into <tt>/etc/hostconfig</tt>:</p>
+<p>I found it was unnecessary to <a href="https://wincent.com/a/knowledge-base/archives/2005/05/disaster_recove.php">set up a start-up item to launch Apache 2 at boot time</a> because it was correctly transferred across by the migration assistant. I did, however, need to add this line back into <tt>/etc/hostconfig</tt>:</p>
 
 <pre>WEBSERVER2=-YES-</pre>]]>
 </content>
 </entry>
 <entry>
 <title>Subversion 1.3.1 to 1.3.2 upgrade notes</title>
-<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/06/subversion_131_1.php" />
+<link rel="alternate" type="text/html" href="https://wincent.com/a/knowledge-base/archives/2006/06/subversion_131_1.php" />
 <modified>2006-06-01T13:16:01Z</modified>
 <issued>2006-06-01T13:15:53Z</issued>
 <id>tag:wincent.com,2006:/a/knowledge-base//2.341</id>
@@ -734,11 +734,11 @@ sudo make install</pre>
 <summary type="text/plain">Here are some brief notes I made while performing the upgrade from Subversion 1.3.1 to version 1.3.2 on my Red Hat Enterprise Linux ES 3 machine.</summary>
 <author>
 <name>wincent</name>
-<url>http://wincent.com/</url>
+<url>https://wincent.com/</url>
 <email>win@wincent.org</email>
 </author>
 <dc:subject>Development</dc:subject>
-<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="https://wincent.com/a/knowledge-base/">
 <![CDATA[<p>Here are some brief notes I made while performing the upgrade from Subversion 1.3.1 to version 1.3.2 on my Red Hat Enterprise Linux ES 3 machine.</p>]]>
 <![CDATA[<pre>screen
 wget http://subversion.tigris.org/downloads/subversion-1.3.2.tar.bz2
@@ -761,7 +761,7 @@ exit</pre>]]>
 </entry>
 <entry>
 <title>Upgrading to MySQL 4.1.20 on Red Hat Enterprise Linux 3</title>
-<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/06/upgrading_to_my.php" />
+<link rel="alternate" type="text/html" href="https://wincent.com/a/knowledge-base/archives/2006/06/upgrading_to_my.php" />
 <modified>2006-05-31T23:49:05Z</modified>
 <issued>2006-05-31T23:44:14Z</issued>
 <id>tag:wincent.com,2006:/a/knowledge-base//2.340</id>
@@ -769,11 +769,11 @@ exit</pre>]]>
 <summary type="text/plain">It&apos;s amazing how quick and painless it is to upgrade from MySQL 4.1.19 to version 4.1.20 on Red Hat Enterprise Linux 3.</summary>
 <author>
 <name>wincent</name>
-<url>http://wincent.com/</url>
+<url>https://wincent.com/</url>
 <email>win@wincent.org</email>
 </author>
 <dc:subject>UNIX</dc:subject>
-<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="https://wincent.com/a/knowledge-base/">
 <![CDATA[<p>It's amazing how quick and painless it is to upgrade from MySQL 4.1.19 to version 4.1.20 on Red Hat Enterprise Linux 3.</p>]]>
 <![CDATA[<pre>#
 # get the RPMs (see http://dev.mysql.com/downloads/mysql/4.1.html for local mirror URLs)
@@ -812,7 +812,7 @@ sudo chkconfig --list | grep mysql</pre>
 </entry>
 <entry>
 <title>SSH tunneling and secure IMAP, POP3 and SMTP</title>
-<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php" />
+<link rel="alternate" type="text/html" href="https://wincent.com/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php" />
 <modified>2007-02-09T19:02:00Z</modified>
 <issued>2006-05-31T18:17:50Z</issued>
 <id>tag:wincent.com,2006:/a/knowledge-base//2.337</id>
@@ -820,11 +820,11 @@ sudo chkconfig --list | grep mysql</pre>
 <summary type="text/plain">When I first found this network I foolishly decided to check my email despite the fact that it uses inherently insecure protocols which transmit usernames and passwords in plaintext. I realized that the person running this open network could easily snoop them, so I decide to log into my server securely via SSH, immediately change the email passwords that had been transmitted as plaintext, and not try checking my email again until I had worked out a way to secure the protocols.</summary>
 <author>
 <name>wincent</name>
-<url>http://wincent.com/</url>
+<url>https://wincent.com/</url>
 <email>win@wincent.org</email>
 </author>
 <dc:subject>Shell</dc:subject>
-<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="https://wincent.com/a/knowledge-base/">
 <![CDATA[<p>During the time in which I was totally without Internet access last week I used iStumbler to see if there were any open, public wireless networks around which I could use to get on the Net.</p>
 
 <p>Turns out that there was one which was occasionally available, but with a very weak signal and I could only ever get a pitiful few bytes per second over it.</p>
@@ -866,7 +866,7 @@ sudo chkconfig --list | grep mysql</pre>
 
 <h4>Update: February 2007</h4>
 
-<p>I later went ahead to explore the use of <a href="http://wincent.com/knowledge-base/Using_Stunnel_to_secure_SMTP_transport">Stunnel</a>. It co-exists peacefully with the <tt>STARTTLS</tt> solution.</p>
+<p>I later went ahead to explore the use of <a href="https://wincent.com/knowledge-base/Using_Stunnel_to_secure_SMTP_transport">Stunnel</a>. It co-exists peacefully with the <tt>STARTTLS</tt> solution.</p>
 
 <h3>Secure protocols: IMAPS, POP3S and SMTP with SSL</h3>
 
@@ -878,7 +878,7 @@ sudo chkconfig --list | grep mysql</pre>
 
 <h4>Setting up the certificates</h4>
 
-<p>I already had an SSL certificate for use with Apache and my server running at <tt>secure.wincent.com</tt> (actually the same machine as the mail server). I wasn't interested in using a self-signed certificate (self-signed certificates are free but not trusted by connecting clients; they do serve to encrypt your mail transport but they cause unsightly warning messages that don't exactly inspire trust). I was curious to know whether the same certificate could be used for email transport. The answer is yes.</p>
+<p>I already had an SSL certificate for use with Apache and my server running at <tt>wincent.com</tt> (actually the same machine as the mail server). I wasn't interested in using a self-signed certificate (self-signed certificates are free but not trusted by connecting clients; they do serve to encrypt your mail transport but they cause unsightly warning messages that don't exactly inspire trust). I was curious to know whether the same certificate could be used for email transport. The answer is yes.</p>
 
 <p>I needed to assemble three components for this to work:</p>
 
@@ -960,7 +960,7 @@ cp imapd.pem sendmail.pem</pre>
 
 <h4>Configuring Sendmail to support TLS</h4>
 
-<p>Unlike IMAPS and POP3S, adding TLS support to SMTP requires a bit more work. First of all, you must make sure that your domain name MX records are updated to point to the correct host name (in this case, <tt>secure.wincent.com</tt>). This is because third parties connecting to your mail server may issue a STARTTLS command and it is important that the host name matches the name in the certificate. And being an MX record, you have to make sure that your host name is a proper A record (pointing to an IP address) and not just a CNAME alias (pointing to a domain name).</p>
+<p>Unlike IMAPS and POP3S, adding TLS support to SMTP requires a bit more work. First of all, you must make sure that your domain name MX records are updated to point to the correct host name (in this case, <tt>wincent.com</tt>). This is because third parties connecting to your mail server may issue a STARTTLS command and it is important that the host name matches the name in the certificate. And being an MX record, you have to make sure that your host name is a proper A record (pointing to an IP address) and not just a CNAME alias (pointing to a domain name).</p>
 
 <p>The basic sequence of events looks like this:</p>
 
@@ -983,18 +983,18 @@ define(`confCACERT',`/usr/share/ssl/certs/ca.crt')dnl
 define(`confSERVER_CERT',`/usr/share/ssl/certs/sendmail.pem')dnl
 define(`confSERVER_KEY',`/usr/share/ssl/certs/sendmail.pem')dnl</pre>
 
-<p>To test that STARTTLS is correctly offered by the mail server you can do a <tt>telnet secure.wincent.com 25</tt> and see if it lists STARTTLS in response to <tt>ehlo secure.wincent.com</tt>. When testing mail delivery it is a good idea to watch the mail log with <tt>sudo tail -f /var/log/maillog</tt> to make sure that SSL is being applied when you expect.</p>
+<p>To test that STARTTLS is correctly offered by the mail server you can do a <tt>telnet wincent.com 25</tt> and see if it lists STARTTLS in response to <tt>ehlo wincent.com</tt>. When testing mail delivery it is a good idea to watch the mail log with <tt>sudo tail -f /var/log/maillog</tt> to make sure that SSL is being applied when you expect.</p>
 
 <p>For more information about STARTTLS see <a href="http://www.sendmail.org/m4/starttls.html">these</a> <a href="http://www.sendmail.org/~ca/email/starttls.html">documents</a> from the Sendmail website, as well as the text for <a href="ftp://ftp.isi.edu/in-notes/rfc2487.txt">RFC 2487</a>.</p>
 
 <h4>Configuring your mail client</h4>
 
-<p>Now you just need to point your email client to the new host name (in my case, <tt>secure.wincent.com</tt>), the new ports (993 and 995), and turn on SSL support for SMTP (no change to the port). It is important to change the host name as well as the ports because the certificate is tied to the host name.</p>]]>
+<p>Now you just need to point your email client to the new host name (in my case, <tt>wincent.com</tt>), the new ports (993 and 995), and turn on SSL support for SMTP (no change to the port). It is important to change the host name as well as the ports because the certificate is tied to the host name.</p>]]>
 </content>
 </entry>
 <entry>
 <title>pstree mirror</title>
-<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/05/pstree_mirror.php" />
+<link rel="alternate" type="text/html" href="https://wincent.com/a/knowledge-base/archives/2006/05/pstree_mirror.php" />
 <modified>2006-05-29T13:27:36Z</modified>
 <issued>2006-05-29T13:26:09Z</issued>
 <id>tag:wincent.com,2006:/a/knowledge-base//2.328</id>
@@ -1002,18 +1002,18 @@ define(`confSERVER_KEY',`/usr/share/ssl/certs/sendmail.pem')dnl</pre>
 <summary type="text/plain">I was just trying to build a copy of pstree for Intel and it appears that the website is no more. Not sure if this is a temporary outage or a permanent issue. Luckily I had a copy of the source archive, the latest version as far as I know (2.27). Seeing as the software is licensed for distribution under the GPL I&apos;ve mirrored a copy here.</summary>
 <author>
 <name>wincent</name>
-<url>http://wincent.com/</url>
+<url>https://wincent.com/</url>
 <email>win@wincent.org</email>
 </author>
 <dc:subject>Shell</dc:subject>
-<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
-<![CDATA[<p>I was just trying to build a copy of <tt>pstree</tt> for Intel and it appears that the website is no more. Not sure if this is a temporary outage or a permanent issue. Luckily I had a copy of the source archive, the latest version as far as I know (2.27). Seeing as the software is licensed for distribution under the GPL I've mirrored a copy <a href="http://wincent.com/gpl/pstree-2.27.tar.gz">here</a>.</p>]]>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="https://wincent.com/a/knowledge-base/">
+<![CDATA[<p>I was just trying to build a copy of <tt>pstree</tt> for Intel and it appears that the website is no more. Not sure if this is a temporary outage or a permanent issue. Luckily I had a copy of the source archive, the latest version as far as I know (2.27). Seeing as the software is licensed for distribution under the GPL I've mirrored a copy <a href="https://wincent.com/gpl/pstree-2.27.tar.gz">here</a>.</p>]]>
 
 </content>
 </entry>
 <entry>
 <title>Subversion 1.3.1 upgrade notes</title>
-<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/04/subversion_131.php" />
+<link rel="alternate" type="text/html" href="https://wincent.com/a/knowledge-base/archives/2006/04/subversion_131.php" />
 <modified>2006-04-05T13:52:24Z</modified>
 <issued>2006-04-05T13:52:19Z</issued>
 <id>tag:wincent.com,2006:/a/knowledge-base//2.284</id>
@@ -1021,11 +1021,11 @@ define(`confSERVER_KEY',`/usr/share/ssl/certs/sendmail.pem')dnl</pre>
 <summary type="text/plain">Some brief notes I made while doing the Subversion upgrade from version 1.3 to 1.3.1.</summary>
 <author>
 <name>wincent</name>
-<url>http://wincent.com/</url>
+<url>https://wincent.com/</url>
 <email>win@wincent.org</email>
 </author>
 <dc:subject>Development</dc:subject>
-<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="https://wincent.com/a/knowledge-base/">
 <![CDATA[<p>Here are some brief notes I made while doing the <a href="http://subversion.tigris.org/">Subversion</a> upgrade from version 1.3 to 1.3.1:</p>]]>
 <![CDATA[<h4>Mac OS X (10.4.6) using access via Apache 2</h4>
 
@@ -1058,7 +1058,7 @@ $ telnet localhost 3690</pre>]]>
 </entry>
 <entry>
 <title>Eliminating &quot;X-Authentication-Warning&quot; headers from Squirrelmail</title>
-<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/03/eliminating_xau.php" />
+<link rel="alternate" type="text/html" href="https://wincent.com/a/knowledge-base/archives/2006/03/eliminating_xau.php" />
 <modified>2006-03-09T13:06:06Z</modified>
 <issued>2006-03-09T13:04:51Z</issued>
 <id>tag:wincent.com,2006:/a/knowledge-base//2.237</id>
@@ -1066,11 +1066,11 @@ $ telnet localhost 3690</pre>]]>
 <summary type="text/plain">So I just upgraded my Squirrelmail installation to the latest stable release (1.4.6). While I was at it I decided to see if I could eliminate the annoying &quot;X-Authentication-Warning&quot; headers that were being added to outgoing mail sent using Squirrelmail. I wanted to eliminate this because it&apos;s possible that strict spam filters might reject messages with this header; also the warnings were cluttering up my LogWatch reports with noise.</summary>
 <author>
 <name>wincent</name>
-<url>http://wincent.com/</url>
+<url>https://wincent.com/</url>
 <email>win@wincent.org</email>
 </author>
 <dc:subject>UNIX</dc:subject>
-<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="https://wincent.com/a/knowledge-base/">
 <![CDATA[<p>So I just upgraded my <a href="http://www.squirrelmail.org/">Squirrelmail</a> installation to the latest stable release (<a href="http://www.squirrelmail.org/changelog.php">1.4.6</a>). While I was at it I decided to see if I could eliminate the annoying "X-Authentication-Warning" headers that were being added to outgoing mail sent using Squirrelmail. I wanted to eliminate this because it's possible that strict spam filters might reject messages with this header; also the warnings were cluttering up my <a href="http://www.logwatch.org/">LogWatch</a> reports with noise.</p>]]>
 <![CDATA[<h3>The problem</h3>
 
@@ -1089,7 +1089,7 @@ $ telnet localhost 3690</pre>]]>
 </entry>
 <entry>
 <title>Avoiding protocol-related warnings</title>
-<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/03/avoiding_protoc.php" />
+<link rel="alternate" type="text/html" href="https://wincent.com/a/knowledge-base/archives/2006/03/avoiding_protoc.php" />
 <modified>2006-03-01T13:17:43Z</modified>
 <issued>2006-03-01T13:16:13Z</issued>
 <id>tag:wincent.com,2006:/a/knowledge-base//2.224</id>
@@ -1097,11 +1097,11 @@ $ telnet localhost 3690</pre>]]>
 <summary type="text/plain">By default, GCC warns when a subclass is marked as adopting a protocol and it inherits protocol methods from its superclass rather than implementing them itself.</summary>
 <author>
 <name>wincent</name>
-<url>http://wincent.com/</url>
+<url>https://wincent.com/</url>
 <email>win@wincent.org</email>
 </author>
 <dc:subject>Development</dc:subject>
-<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="https://wincent.com/a/knowledge-base/">
 <![CDATA[<p>By default, GCC warns when a subclass is marked as adopting a protocol and it inherits protocol methods from its superclass rather than implementing them itself.</p>]]>
 <![CDATA[<p>If you have code that looks like this (showing the header content only, not the implementation):</p>
 
@@ -1148,7 +1148,7 @@ sidered to be implemented, and no warning is issued for them.</pre>
 </entry>
 <entry>
 <title>Unit testing guidelines</title>
-<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/02/unit_testing_gu.php" />
+<link rel="alternate" type="text/html" href="https://wincent.com/a/knowledge-base/archives/2006/02/unit_testing_gu.php" />
 <modified>2006-02-13T01:57:57Z</modified>
 <issued>2006-02-13T01:38:00Z</issued>
 <id>tag:wincent.com,2006:/a/knowledge-base//2.201</id>
@@ -1156,12 +1156,12 @@ sidered to be implemented, and no warning is issued for them.</pre>
 <summary type="text/plain">Lately I&apos;ve been spending a lot of time working on my unit testing framework, WOTest.  In doing so I&apos;ve had cause to think about unit testing &quot;best practice&quot;, or at least what works best for me.</summary>
 <author>
 <name>wincent</name>
-<url>http://wincent.com/</url>
+<url>https://wincent.com/</url>
 <email>win@wincent.org</email>
 </author>
 <dc:subject>Cocoa and Objective-C</dc:subject>
-<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
-<![CDATA[<p>Lately I've been spending a lot of time working on my unit testing framework, <a href="http://wincent.com/a/products/wotest/">WOTest</a>. In doing so I've had cause to think about unit testing "best practice", or at least what works best for me. In this article I summarize the guidelines that I've come up with that help me decide <em>when</em>, <em>how</em> and <em>where</em> to write <a href="http://en.wikipedia.org/wiki/Unit_testing">unit tests</a>:</p>
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="https://wincent.com/a/knowledge-base/">
+<![CDATA[<p>Lately I've been spending a lot of time working on my unit testing framework, <a href="https://wincent.com/a/products/wotest/">WOTest</a>. In doing so I've had cause to think about unit testing "best practice", or at least what works best for me. In this article I summarize the guidelines that I've come up with that help me decide <em>when</em>, <em>how</em> and <em>where</em> to write <a href="http://en.wikipedia.org/wiki/Unit_testing">unit tests</a>:</p>
 
 <ol>
 <li>Write unit tests at all levels of your implementation</li>
@@ -1232,7 +1232,7 @@ sidered to be implemented, and no warning is issued for them.</pre>
 </entry>
 <entry>
 <title>Lightweight issue tracking</title>
-<link rel="alternate" type="text/html" href="http://wincent.com/a/knowledge-base/archives/2006/01/lightweight_iss.php" />
+<link rel="alternate" type="text/html" href="https://wincent.com/a/knowledge-base/archives/2006/01/lightweight_iss.php" />
 <modified>2006-01-27T13:27:46Z</modified>
 <issued>2006-01-27T13:23:23Z</issued>
 <id>tag:wincent.com,2006:/a/knowledge-base//2.190</id>
@@ -1240,11 +1240,11 @@ sidered to be implemented, and no warning is issued for them.</pre>
 <summary type="text/plain">I use Bugzilla to power my public feature requests and bug tracking database.  But sometimes when I am writing code I want to quickly insert a reminder into the source code itself rather than opening an issue in the database.</summary>
 <author>
 <name>wincent</name>
-<url>http://wincent.com/</url>
+<url>https://wincent.com/</url>
 <email>win@wincent.org</email>
 </author>
 <dc:subject>Development</dc:subject>
-<content type="text/html" mode="escaped" xml:lang="en" xml:base="http://wincent.com/a/knowledge-base/">
+<content type="text/html" mode="escaped" xml:lang="en" xml:base="https://wincent.com/a/knowledge-base/">
 <![CDATA[<p>I use <a href="http://www.bugzilla.org/">Bugzilla</a> to power my <a href="http://bugs.wincent.com/">public feature requests and bug tracking database</a>. But sometimes when I am writing code I want to quickly insert a reminder into the source code itself rather than opening an issue in the database. Rather than keeping a separate "TODO" list I just write a comment in the code like this:</p>
 
 <pre>// TODO: add user preference for opacity</pre>

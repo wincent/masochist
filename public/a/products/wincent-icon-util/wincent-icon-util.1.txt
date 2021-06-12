@@ -23,7 +23,7 @@ SEE ALSO
      GetFileInfo(1), SetFile(1), Rez(1)
 
 AUTHORS
-     Wincent Colaiuta (http://wincent.com/)
+     Wincent Colaiuta (https://wincent.com/)
 
 LICENSE
      Wincent Icon Utility is copyright 2007-2009 Wincent Colaiuta.

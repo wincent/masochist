@@ -80,7 +80,7 @@ Description
 <div class='issue-description-body'>
 <p>Now that the app is being served out of wincent.com, we can update some old redirects which Apache is still pointing at rails.wincent.com.</p>
 <pre>$ grep -B 4 rails wincent.com.conf 
-    RewriteRule ^/?(.*) <a href="http://wincent.com/a/products/bansshee/$1" class="external">http://wincent.com/a/products/bansshee/$1</a> [redirect=permanent,last]
+    RewriteRule ^/?(.*) <a href="https://wincent.com/a/products/bansshee/$1" class="external">https://wincent.com/a/products/bansshee/$1</a> [redirect=permanent,last]
 
     # bugs.wincent.com   
     RewriteCond %{HTTP_HOST} ^bugs.wincent.com$ [nocase]

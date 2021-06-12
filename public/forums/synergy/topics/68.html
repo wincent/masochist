@@ -28,7 +28,7 @@ Synergy 1.6 is out
 <a href="/forums/synergy/topics/68"><time data-relative="true">2004-12-22T05:10:00Z</time></a>
 </span>
 </cite>
-<blockquote><p><a href="http://wincent.com/a/news/archives/2004/12/synergy_16.php" class="external">http://wincent.com/a/news/archives/2004/12/synergy_16.php</a></p>
+<blockquote><p><a href="https://wincent.com/a/news/archives/2004/12/synergy_16.php" class="external">https://wincent.com/a/news/archives/2004/12/synergy_16.php</a></p>
 <p>This is a maintenance release. The next release will be a feature release, and most of the work is already done, so expect to see it in early January.</p>
 <p>Enjoy!</p>
 </blockquote>
@@ -49,7 +49,7 @@ anonymous
 <span class='when'><a href="#comment_203"><time data-relative="true">2005-01-11T08:48:22Z</time></a></span>
 </cite>
 <blockquote><p>If you look at the changelog:</p>
-<p><a href="http://wincent.com/a/products/synergy-classic/history/" class="external">http://wincent.com/a/products/synergy-classic/history/</a></p>
+<p><a href="https://wincent.com/a/products/synergy-classic/history/" class="external">https://wincent.com/a/products/synergy-classic/history/</a></p>
 <p>You'll see no changes where made to the communications engine with iTunes. So performance should be identical. (Or even better if memory were an issue, because leaks were fixed; but the truth is the number of leaks fixed was small and the size of each individual leak was small too so the amount of memory saved is not likely to have any impact on performance.)</p>
 <p>1.6 is a bugfix release, and the bugs in question have nothing to do with communicating with iTunes.</p>
 <p>If performance has changed then, it looks like something has changed in the environment of the software, not in the software itself.</p>
@@ -167,7 +167,7 @@ anonymous
 <p>Thousands of people are happily using Synergy without any problems, so I don't actually think this is a bug in Synergy.</p>
 <p>What I do think is that there is a complex interaction occurring here between iTunes, Synergy, and the system. Because Synergy relies on AppleScript/Apple Events to communicate with iTunes, if there's a problem on the AppleScript level, then Synergy can end up waiting indefinitely for a reply it will never receive (hence the beach ball).</p>
 <p>You can see this knowledge base article for info on how to collect a sample at the time you see a beachball:</p>
-<p><a href="http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php" class="external">http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php</a></p>
+<p><a href="https://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php" class="external">https://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php</a></p>
 <p>It's also interesting to know what iTunes is doing at the time of the lock. What is the SystemUIServer doing? (this is the process which Synergy runs &quot;inside of&quot;). What are other applications that might be communicating with iTunes be doing?</p>
 <p>In the past, as Apple makes improvements to its AppleScript handling in iTunes, performance has improved. For example, Synergy used to get starved for updates whenever the visualizer was being shown, but Apple's fixed that. The number of circumstances under which iTunes will block AppleScript communications is getting fewer with time. Times when you'll still see it now include when the info window is being displayed, or when the iTunes Music Store is being accessed.</p>
 <p>One thing I am doing in Synergy Advance is splitting the communications off into a separate process, so the UI should never, ever beachball. But the underlying problem (the breakdown in communication) is still there, then the app still won't be receiving any updates.</p>

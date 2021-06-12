@@ -4,6 +4,6 @@
   </head>
   <body>
     <h1>Moved Permanently</h1>
-    <p>The resource has moved to <a href="http://www.wincent.com/a/knowledge-base/archives/">http://www.wincent.com/a/knowledge-base/archives/</a></p>
+    <p>The resource has moved to <a href="https://wincent.com/a/knowledge-base/archives/">https://wincent.com/a/knowledge-base/archives/</a></p>
   </body>
 </html>";

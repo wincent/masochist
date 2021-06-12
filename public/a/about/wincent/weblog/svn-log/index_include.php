@@ -1,6 +1,6 @@
 <h2>Git log</h2>
 
-<p class="more"><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2006/09/keeping_up_to_d.php"><em>what's this?...</em></a></p>
+<p class="more"><a href="https://wincent.com/a/about/wincent/weblog/archives/2006/09/keeping_up_to_d.php"><em>what's this?...</em></a></p>
 
 
   
@@ -191,4 +191,4 @@
   
 
  
-<p class="more"><a href="http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/index.php">Git log archives...</a></p>
+<p class="more"><a href="https://wincent.com/a/about/wincent/weblog/svn-log/archives/index.php">Git log archives...</a></p>

@@ -1,6 +1,6 @@
               <h2>Bansshee links</h2>
               <ul>
-                <li><a href="http://www.wincent.com/a/products/bansshee/">Information</a></li>
+                <li><a href="https://wincent.com/a/products/bansshee/">Information</a></li>
                 <li><a href="https://wincent.com/forums/bansshee">Discussion & support forums</a></li>
                 <li><a href="https://wincent.com/support">Bug reports & feature requests</a></li>
               </ul>

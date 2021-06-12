@@ -2,7 +2,7 @@
 <rss version="2.0">
    <channel>
       <title>Nightlog</title>
-      <link>http://wincent.com/a/about/wincent/weblog/nightlog/</link>
+      <link>https://wincent.com/a/about/wincent/weblog/nightlog/</link>
       <description>Automated nightly build notifications</description>
       <language>en</language>
       <copyright>Copyright 2007</copyright>
@@ -16,10 +16,10 @@
 * _Uploaded_: Thu Mar 15 18:43:55 +0100 2007
 * _Size_:  1,551,599 bytes
 * _SHA1 checksum_: 964645748820786d38cba1b85f236bd3d1050822
-* _Direct link_: <http://wincent.com/a/products/synergy-classic/download/nightlies/SynergyNightly(325).dmg>
+* _Direct link_: <https://wincent.com/a/products/synergy-classic/download/nightlies/SynergyNightly(325).dmg>
 * _Product info_: <http://synergy.wincent.com/>]]></description>
-         <link>http://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_325.php</link>
-         <guid>http://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_325.php</guid>
+         <link>https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_325.php</link>
+         <guid>https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_325.php</guid>
         
         
          <pubDate>Thu, 15 Mar 2007 19:43:57 +0100</pubDate>

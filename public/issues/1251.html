@@ -126,8 +126,8 @@ special_uri_chars   = ([:!\(\),;\.\?])+ ;
 uri                 = ('mailto:'i mail) |
                       (('http'i [sS]? '://' | '<a href="ftp://'i" class="external">ftp://'i</a> | '<a href="svn://'i" class="external">svn://'i</a>) uri_chars (special_uri_chars uri_chars)*) ;</pre>
 <p><code>)</code> is a &quot;special URI char&quot; and it will only be considered to be part of a URI if it is followed by a &quot;non-special&quot; char. We could append a &quot;non-special&quot; char but that would change the URI and most likely lead to 404s. By definition, the &quot;special&quot; char cannot be the last char in a URI.</p>
-<p>Nevertheless, this &quot;special/non-special&quot; distinction is very useful in 99.9% of cases. It allows us to write stuff like &quot;my home page (<a href="http://wincent.com/" class="external">http://wincent.com/</a>)&quot; and have it work as the author intended with no escaping or other special tricks. If we make the 0.1% case work (URIs ending with a parenthesis) then we make things less convenient in the remaining 99.9%.</p>
-<p>Funnily enough, if I had used single quotes in my example above then things wouldn't have worked. ie. 'my home page (<a href="http://wincent.com/)'" class="external">http://wincent.com/)'</a></p>
+<p>Nevertheless, this &quot;special/non-special&quot; distinction is very useful in 99.9% of cases. It allows us to write stuff like &quot;my home page (<a href="https://wincent.com/" class="external">https://wincent.com/</a>)&quot; and have it work as the author intended with no escaping or other special tricks. If we make the 0.1% case work (URIs ending with a parenthesis) then we make things less convenient in the remaining 99.9%.</p>
+<p>Funnily enough, if I had used single quotes in my example above then things wouldn't have worked. ie. 'my home page (<a href="https://wincent.com/)'" class="external">https://wincent.com/)'</a></p>
 <p>There <code>'</code> is a &quot;non-special&quot; URI char so both the parenthesis and the single quote get inappropriately slurped into the URI token. But it's a fairly unlikely edge case and I don't think it constitutes a flaw in the state machines.</p>
 </blockquote>
 </li>
@@ -148,7 +148,7 @@ uri                 = ('mailto:'i mail) |
 <li><code>(hello).</code> would also consider <code>(hello)</code> to be part of the URI</li>
 </ul>
 <p>In other words, stuff ending with a parenthesis still wouldn't be automatically tokenized as a URI, but there would be an &quot;escape hatch&quot; for making the lexer tokenize it: adding <em>exactly one</em> more &quot;special&quot; char, such as <code>:</code>, <code>.</code>, <code>,</code> etc.</p>
-<p>I am not sure if this is desirable as someone could conceivably write: &quot;See my website (<a href="http://wincent.com/" class="external">http://wincent.com/</a>).&quot; and the parenthesis would now be erroneously interpreted as being part of the URI.</p>
+<p>I am not sure if this is desirable as someone could conceivably write: &quot;See my website (<a href="https://wincent.com/" class="external">https://wincent.com/</a>).&quot; and the parenthesis would now be erroneously interpreted as being part of the URI.</p>
 <p>Perhaps the only way to resolve this definitively would be to introduce some sort of escaping into the lexer, and I think that's a line I don't necessarily want to cross (importing an idea from the domain of programming into what is supposed to be a lightweight, easy-to-use markup).</p>
 </blockquote>
 </li>

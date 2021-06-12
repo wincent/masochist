@@ -3,5 +3,5 @@
 <title>301 Moved Permanently</title>
 </head><body>
 <h1>Moved Permanently</h1>
-<p>The document has moved <a href="http://www.wincent.com/a/products/clipboard-commando/nav-box.php">here</a>.</p>
+<p>The document has moved <a href="https://wincent.com/a/products/clipboard-commando/nav-box.php">here</a>.</p>
 </body></html>

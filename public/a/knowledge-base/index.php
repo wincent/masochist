@@ -6,9 +6,9 @@
 <meta name="generator" content="http://www.movabletype.org/" />
 <title>wincent.com knowledge base</title>
 <link rel="stylesheet" href="/a/styles.css" type="text/css" />
-<link rel="alternate" type="application/atom+xml" title="Atom" href="http://www.wincent.com/a/knowledge-base/atom.xml" />
-<link rel="alternate" type="application/rss+xml" title="RSS 1.0" href="http://www.wincent.com/a/knowledge-base/index.rdf" />
-<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.wincent.com/a/knowledge-base/index.xml" />
+<link rel="alternate" type="application/atom+xml" title="Atom" href="https://wincent.com/a/knowledge-base/atom.xml" />
+<link rel="alternate" type="application/rss+xml" title="RSS 1.0" href="https://wincent.com/a/knowledge-base/index.rdf" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="https://wincent.com/a/knowledge-base/index.xml" />
 
 
 
@@ -30,8 +30,8 @@
       <tr>
         <td style="background-image: url(/a/gfx/header/left-side.jpg); background-repeat: repeat-y;" width="32"><img src="/a/gfx/header/left-side.jpg" width="32" height="71" alt="" /></td>
         <td style="background-image: url(/a/gfx/header/center-background.jpg); background-repeat: repeat;" colspan="11" align="center" valign="middle">
-  <a href="http://www.wincent.com/"><img src="/a/gfx/wincent-logo-small-gray-bg.jpg" width="43" height="41" alt="wincent" align="middle" /></a>
-  <a href="http://www.wincent.com/a/knowledge-base/"><img src="/a/gfx/knowledge-base-header.jpg" width="309" height="25" alt="knowledge base" align="middle"/></a>
+  <a href="https://wincent.com/"><img src="/a/gfx/wincent-logo-small-gray-bg.jpg" width="43" height="41" alt="wincent" align="middle" /></a>
+  <a href="https://wincent.com/a/knowledge-base/"><img src="/a/gfx/knowledge-base-header.jpg" width="309" height="25" alt="knowledge base" align="middle"/></a>
 
         </td>
         <td style="background-image: url(/a/gfx/header/right-side.jpg); background-repeat: repeat-y;" width="32"><img src="/a/gfx/header/right-side.jpg" width="32" height="71" alt="" /></td>
@@ -42,68 +42,68 @@
         <td width="73" height="25">
           <ul style="width: 73px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/products/" title="Full products listing"><img src="/a/gfx/header/products-off.jpg" width="73" height="25" alt="Products" /></a>
+              <a href="https://wincent.com/a/products/" title="Full products listing"><img src="/a/gfx/header/products-off.jpg" width="73" height="25" alt="Products" /></a>
               <ul>
                 <li><a href="https://wincent.com/products/synergy" title="The original iTunes menu bar controller">Synergy &gt;</a>
                   <ul>
                     <li><a href="https://wincent.com/products/synergy/download" title="Download Synergy">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-classic/purchase/" title="Purchase Synergy">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-classic/purchase/" title="Purchase Synergy">Purchase</a></li>
                     <li><a href="https://wincent.com/products/synergy/help" title="Frequently Asked Questions">FAQ</a></li>
-                    <li><a href="http://www.wincent.com/a/products/synergy-classic/buttons/" title="Free button sets">Button Sets</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-classic/buttons/" title="Free button sets">Button Sets</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/" title="Multi-purpose audio companion">Synergy Advance &gt;</a>
+                <li><a href="https://wincent.com/a/products/synergy-advance/" title="Multi-purpose audio companion">Synergy Advance &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/synergy-advance/download/" title="Download Synergy Advance">Download preview</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/purchase/" title="Purchase Synergy Advance">Purchase</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/download/" title="Download Synergy Advance">Download preview</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/purchase/" title="Purchase Synergy Advance">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/winswitch/" title="Enhanced replacement for Apple's Fast User Switching menu">WinSwitch &gt;</a>
+                <li><a href="https://wincent.com/a/products/winswitch/" title="Enhanced replacement for Apple's Fast User Switching menu">WinSwitch &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/winswitch/download/" title="Download WinSwitch">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/winswitch/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/winswitch/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
-                    <li><a href="http://www.wincent.com/a/products/winswitch/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/download/" title="Download WinSwitch">Download</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/hextrapolate/" title="Programmers number conversion tool">Hextrapolate &gt;</a>
+                <li><a href="https://wincent.com/a/products/hextrapolate/" title="Programmers number conversion tool">Hextrapolate &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/hextrapolate/download/" title="Download Hextrapolate">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/hextrapolate/purchase/" title="Purchase Hextrapolate">Purchase</a></li>
-                    <li><a href="http://www.wincent.com/a/products/hextrapolate/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/download/" title="Download Hextrapolate">Download</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/purchase/" title="Purchase Hextrapolate">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/install/" title="Installation and deployment solution for developers">Install &gt;</a>
+                <li><a href="https://wincent.com/a/products/install/" title="Installation and deployment solution for developers">Install &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/install/download/" title="Install downloads">Downloads</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/purchase/" title="Purchase Install">Purchase</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
-                    <li><a href="http://www.wincent.com/a/products/install/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/install/download/" title="Install downloads">Downloads</a></li>
+                    <li><a href="https://wincent.com/a/products/install/purchase/" title="Purchase Install">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/install/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/install/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/install/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/getsmart-pro/" title="Intelligent download manager">GetSmart Pro &gt;</a>
+                <li><a href="https://wincent.com/a/products/getsmart-pro/" title="Intelligent download manager">GetSmart Pro &gt;</a>
                   <ul>
-                    <li><a href="https://secure.wincent.com/a/products/getsmart-pro/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/getsmart-pro/donate/" title="Support development with a donation">Donate</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/" title="Full product listing">Other products...</a></li>
+                <li><a href="https://wincent.com/a/products/" title="Full product listing">Other products...</a></li>
               </ul>
             </li>
           </ul>
         </td>
-        <td width="48" height="25"><a href="https://secure.wincent.com/a/store/" title="Wincent online store"><img src="/a/gfx/header/store-off.jpg" width="48" height="25" alt="Store" /></a></td>
+        <td width="48" height="25"><a href="https://wincent.com/a/store/" title="Wincent online store"><img src="/a/gfx/header/store-off.jpg" width="48" height="25" alt="Store" /></a></td>
         <td width="63" height="25">
           <ul style="width: 63px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/services/" title="Full services listing"><img src="/a/gfx/header/services-off.jpg" width="63" height="25" alt="Services" /></a>
+              <a href="https://wincent.com/a/services/" title="Full services listing"><img src="/a/gfx/header/services-off.jpg" width="63" height="25" alt="Services" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/services/custom-development/" title="Custom software development">Custom Development</a></li>
-                <li><a href="http://www.wincent.com/a/services/mac-consultancy/" title="Apple and Mac OS X consultancy">Apple/Mac Consultancy</a></li>
-                <li><a href="http://www.wincent.com/a/services/web-design/" title="Web design services">Web Design</a></li>
-                <li><a href="http://www.wincent.com/a/services/hosting/" title="Internet web and email hosting">Hosting</a></li>
+                <li><a href="https://wincent.com/a/services/custom-development/" title="Custom software development">Custom Development</a></li>
+                <li><a href="https://wincent.com/a/services/mac-consultancy/" title="Apple and Mac OS X consultancy">Apple/Mac Consultancy</a></li>
+                <li><a href="https://wincent.com/a/services/web-design/" title="Web design services">Web Design</a></li>
+                <li><a href="https://wincent.com/a/services/hosting/" title="Internet web and email hosting">Hosting</a></li>
               </ul>
             </li>
           </ul>
@@ -111,16 +111,16 @@
         <td width="62" height="25">
           <ul style="width: 62px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/support/" title="Support resources and links"><img src="/a/gfx/header/support-off.jpg" width="62" height="25" alt="Support" /></a>
+              <a href="https://wincent.com/a/support/" title="Support resources and links"><img src="/a/gfx/header/support-off.jpg" width="62" height="25" alt="Support" /></a>
               <ul>
-                <li><a href="https://secure.wincent.com/a/support/registration/" title="Retrieve lost license codes">Lost License Codes</a></li>
-                <li><a href="http://www.wincent.com/a/support/bugs/" title="Bug tracking and feature request database">Bugs and Feature Requests</a></li>
-                <li><a href="http://www.wincent.com/a/support/demo-licenses/" title="Obtain a demonstration license">Demonstration licenses</a></li>
-                <li><a href="http://www.wincent.com/a/support/forums/" title="Discussion and support forums">Forums</a></li>
-                <li><a href="http://www.wincent.com/a/support/faq/" title="Frequently Asked Questions">FAQ</a></li>
-                <li><a href="http://www.wincent.com/a/support/activation/" title="Product activation and information">Product Activation</a></li>
-                <li><a href="https://secure.wincent.com/a/support/tickets/" title="Open or view a support ticket">Support Tickets</a></li>
-                <li><a href="http://www.wincent.com/a/support/lists/" title="Subscribe/unsubscribe to/from a mailing list">Mailing lists</a></li>
+                <li><a href="https://wincent.com/a/support/registration/" title="Retrieve lost license codes">Lost License Codes</a></li>
+                <li><a href="https://wincent.com/a/support/bugs/" title="Bug tracking and feature request database">Bugs and Feature Requests</a></li>
+                <li><a href="https://wincent.com/a/support/demo-licenses/" title="Obtain a demonstration license">Demonstration licenses</a></li>
+                <li><a href="https://wincent.com/a/support/forums/" title="Discussion and support forums">Forums</a></li>
+                <li><a href="https://wincent.com/a/support/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                <li><a href="https://wincent.com/a/support/activation/" title="Product activation and information">Product Activation</a></li>
+                <li><a href="https://wincent.com/a/support/tickets/" title="Open or view a support ticket">Support Tickets</a></li>
+                <li><a href="https://wincent.com/a/support/lists/" title="Subscribe/unsubscribe to/from a mailing list">Mailing lists</a></li>
               </ul>
             </li>
           </ul>
@@ -128,10 +128,10 @@
         <td width="53" height="25">
           <ul style="width: 53px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/about/" title="Company information"><img src="/a/gfx/header/about-off.jpg" width="53" height="25" alt="About" /></a>
+              <a href="https://wincent.com/a/about/" title="Company information"><img src="/a/gfx/header/about-off.jpg" width="53" height="25" alt="About" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/about/wincent/" title="About Wincent Colaiuta: the person">About Wincent Colaiuta</a></li>
-                <li><a href="http://www.wincent.com/a/about/privacy/" title="About the Wincent Privacy Policy">Privacy Policy</a></li>
+                <li><a href="https://wincent.com/a/about/wincent/" title="About Wincent Colaiuta: the person">About Wincent Colaiuta</a></li>
+                <li><a href="https://wincent.com/a/about/privacy/" title="About the Wincent Privacy Policy">Privacy Policy</a></li>
               </ul>
            </li>
          </ul>
@@ -139,24 +139,24 @@
         <td width="49" height="25">
           <ul style="width: 49px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/news/" title="Latest news items in weblog format"><img src="/a/gfx/header/news-off.jpg" width="49" height="25" alt="News" /></a>
+              <a href="https://wincent.com/a/news/" title="Latest news items in weblog format"><img src="/a/gfx/header/news-off.jpg" width="49" height="25" alt="News" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/news/archives/mac_os_x_news/" title="Apple and Mac OS X-related news">Mac OS X News</a></li>
-                <li><a href="http://www.wincent.com/a/news/archives/product_news/" title="Wincent product news">Product News</a></li>
-                <li><a href="http://www.wincent.com/a/news/archives/site_news/" title="Site-related news">Site News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/mac_os_x_news/" title="Apple and Mac OS X-related news">Mac OS X News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/product_news/" title="Wincent product news">Product News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/site_news/" title="Site-related news">Site News</a></li>
                 <li><a href="http://colaiuta.net/" title="Development and other notes from Wincent">Wincent Colaiuta's weblog</a></li>
               </ul>
             </li>
           </ul>
         </td>
         <td width="107" height="25"><a href="http://kbase.wincent.com/" title="Categorized Mac OS X tips and information"><img src="/a/gfx/header/knowledge-base-on.jpg" width="107" height="25" alt="Knowledge Base" /></a></td>
-        <td width="62" height="25"><a href="http://www.wincent.com/a/contact/" title="Contact email form"><img src="/a/gfx/header/contact-off.jpg" width="62" height="25" alt="Contact" /></a></td>
+        <td width="62" height="25"><a href="https://wincent.com/a/contact/" title="Contact email form"><img src="/a/gfx/header/contact-off.jpg" width="62" height="25" alt="Contact" /></a></td>
         <td width="72" height="25">
           <ul style="width: 72px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/site-map/" title="Site overview"><img src="/a/gfx/header/site-map-off.jpg" width="72" height="25" alt="Site Map" /></a>
+              <a href="https://wincent.com/a/site-map/" title="Site overview"><img src="/a/gfx/header/site-map-off.jpg" width="72" height="25" alt="Site Map" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/site-map/search/" title="Site search">Search</a></li>
+                <li><a href="https://wincent.com/a/site-map/search/" title="Site search">Search</a></li>
               </ul>
             </li>
           </ul>
@@ -166,7 +166,7 @@
       </tr>
     </table>
   <div id="breadcrumbs">
-    <p><a href="http://www.wincent.com/">Main</a>&nbsp;&gt;&nbsp;Knowledge Base    </p>
+    <p><a href="https://wincent.com/">Main</a>&nbsp;&gt;&nbsp;Knowledge Base    </p>
   </div>
 
 <div id="container">
@@ -179,7 +179,7 @@
     <p class="quick-links-date">25 Mar 2008</p>
     <ul>
   
-  <li><h4>Final server migration this week</h4>I've been working on moving to the new server for nearly a month now, a process which has been quite slow because all the data has to be exported from a number of &quot;legacy&quot; applications and imported into a brand... [<a href="http://www.wincent.com/a/news/archives/2008/03/final_server_mi.php">More...</a>]</li>
+  <li><h4>Final server migration this week</h4>I've been working on moving to the new server for nearly a month now, a process which has been quite slow because all the data has to be exported from a number of &quot;legacy&quot; applications and imported into a brand... [<a href="https://wincent.com/a/news/archives/2008/03/final_server_mi.php">More...</a>]</li>
   
     </ul>
   
@@ -188,7 +188,7 @@
     <p class="quick-links-date">26 Feb 2008</p>
     <ul>
   
-  <li><h4>Server migration in progress</h4>The server migration from Rackspace to INetU is currently underway. My aim is do this very carefully, service by service, and keep downtime to a minimum; hopefully minutes rather than hours. Just in case there is any interruption during the... [<a href="http://www.wincent.com/a/news/archives/2008/02/server_migratio.php">More...</a>]</li>
+  <li><h4>Server migration in progress</h4>The server migration from Rackspace to INetU is currently underway. My aim is do this very carefully, service by service, and keep downtime to a minimum; hopefully minutes rather than hours. Just in case there is any interruption during the... [<a href="https://wincent.com/a/news/archives/2008/02/server_migratio.php">More...</a>]</li>
   
     </ul>
   
@@ -197,7 +197,7 @@
     <p class="quick-links-date">21 Feb 2008</p>
     <ul>
   
-  <li><h4>Call for Bansshee donations</h4>Bansshee is a free, open-source tool to thwart dictionary-based SSH attacks. As a convenience to users there are three domains, bansshee.com, bansshee.net, and bansshee.org, that resolve to the Bansshee project page. These are coming up for renewal soon (they expire... [<a href="http://www.wincent.com/a/news/archives/2008/02/call_for_banssh.php">More...</a>]</li>
+  <li><h4>Call for Bansshee donations</h4>Bansshee is a free, open-source tool to thwart dictionary-based SSH attacks. As a convenience to users there are three domains, bansshee.com, bansshee.net, and bansshee.org, that resolve to the Bansshee project page. These are coming up for renewal soon (they expire... [<a href="https://wincent.com/a/news/archives/2008/02/call_for_banssh.php">More...</a>]</li>
   
     </ul>
   
@@ -206,7 +206,7 @@
     <p class="quick-links-date"> 7 Feb 2008</p>
     <ul>
   
-  <li><h4>Upcoming DNS changes</h4>In preparation for the server move at the end of this month I'll soon be migrating DNS servers. I'll be doing everything I can to minimize downtime, and hopefully come close to eliminating it entirely as there will be a... [<a href="http://www.wincent.com/a/news/archives/2008/02/upcoming_dns_ch.php">More...</a>]</li>
+  <li><h4>Upcoming DNS changes</h4>In preparation for the server move at the end of this month I'll soon be migrating DNS servers. I'll be doing everything I can to minimize downtime, and hopefully come close to eliminating it entirely as there will be a... [<a href="https://wincent.com/a/news/archives/2008/02/upcoming_dns_ch.php">More...</a>]</li>
   
     </ul>
   
@@ -215,13 +215,13 @@
     <p class="quick-links-date">23 Jan 2008</p>
     <ul>
   
-  <li><h4>Synergy 3.5a5 released</h4>I'm pleased to announce the availability of version 3.5a5 of Synergy, the fifth alpha release in the brand new 3.5 series. The last release, version 3.2, was Leopard-compatible but would also run on all versions of Mac OS X from... [<a href="http://www.wincent.com/a/news/archives/2008/01/synergy_35a5_re.php">More...</a>]</li>
+  <li><h4>Synergy 3.5a5 released</h4>I'm pleased to announce the availability of version 3.5a5 of Synergy, the fifth alpha release in the brand new 3.5 series. The last release, version 3.2, was Leopard-compatible but would also run on all versions of Mac OS X from... [<a href="https://wincent.com/a/news/archives/2008/01/synergy_35a5_re.php">More...</a>]</li>
   
     </ul>
   
 
 
-<p class="more"><a href="http://www.wincent.com/a/news/">More news articles...</a></p></div>
+<p class="more"><a href="https://wincent.com/a/news/">More news articles...</a></p></div>
 </div>
 <div id="center">
 <div class="content">
@@ -233,16 +233,16 @@
 
 <h3 id="a000387">Knowledge base in wiki format</h3>
 
-<p>The current knowledge base format (chronological posts, categorized, like a weblog) has always been somewhat limiting. I have recently started a <a href="http://www.wincent.com/knowledge-base/">new, wiki-based</a> knowledge base. It's still very much a work in progress, but for the curious it can be found at:</p>
+<p>The current knowledge base format (chronological posts, categorized, like a weblog) has always been somewhat limiting. I have recently started a <a href="https://wincent.com/knowledge-base/">new, wiki-based</a> knowledge base. It's still very much a work in progress, but for the curious it can be found at:</p>
 
-<p><a href="http://www.wincent.com/knowledge-base/">http://www.wincent.com/knowledge-base/</a></p>
+<p><a href="https://wincent.com/knowledge-base/">https://wincent.com/knowledge-base/</a></p>
 
 
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/knowledge-base/archives/meta/">Meta</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/knowledge-base/archives/meta/">Meta</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/knowledge-base/archives/2006/08/knowledge_base.php"> 4:54 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/knowledge-base/archives/2006/08/knowledge_base.php"> 4:54 PM</a>
 
 
 </p>
@@ -256,13 +256,13 @@
 
 <p>I run <a href="http://spamassassin.apache.org/">SpamAssassin</a> on my mail server (anti-spam). I also run <a href="http://clamav.net/">ClamAV</a> (anti-virus). After extensively trialing ClamAV I was convinced of its reliability and decided to have it automatically delete all detected incoming viruses. SpamAssassin still produces far too many false positives and false negatives for me to perform such deletion but I decided today that I wanted to tighten things up a little bit.</p>
 
-<p class="extended"><a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/clamping_down_o.php#more">Read full article</a></p>
+<p class="extended"><a href="https://wincent.com/a/knowledge-base/archives/2006/06/clamping_down_o.php#more">Read full article</a></p>
 
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/clamping_down_o.php"> 3:40 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/knowledge-base/archives/2006/06/clamping_down_o.php"> 3:40 PM</a>
 
 
 </p>
@@ -282,13 +282,13 @@ ERROR: Problem with internal logger.</pre>
 
 <p>I found the <a href="http://www.gossamer-threads.com/lists/clamav/users/25354">explanation here</a>: that there was a hung <tt>freshclam</tt> process lingering on the system.</p>
 
-<p class="extended"><a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/freshclam_probl.php#more">Read full article</a></p>
+<p class="extended"><a href="https://wincent.com/a/knowledge-base/archives/2006/06/freshclam_probl.php#more">Read full article</a></p>
 
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/freshclam_probl.php"> 3:25 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/knowledge-base/archives/2006/06/freshclam_probl.php"> 3:25 PM</a>
 
 
 </p>
@@ -310,10 +310,10 @@ deny from all
 
 
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/knowledge-base/archives/web/">Web</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/knowledge-base/archives/web/">Web</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/wordpress_secur.php"> 6:55 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/knowledge-base/archives/2006/06/wordpress_secur.php"> 6:55 PM</a>
 
 
 </p>
@@ -326,14 +326,14 @@ deny from all
 
 <p>I don't run <a href="http://wordpress.org/">WordPress</a> on this website, but I do run it elsewhere. Here are some notes I made while streamlining the process of performing WordPress upgrades by using Subversion to pull down updates and merge them automatically. This is a technique already used by successful projects like <a href="http://bugzilla.org/">Bugzilla</a> and <a href="http://mediawiki.org/">MediaWiki</a>. The WordPress folks aren't quite with the times yet (<a href="http://trac.wordpress.org/ticket/2767">they haven't managed to tag the last two releases in the repository</a>, but you can follow the 2.0 branch instead of following tagged releases instead).</p>
 
-<p class="extended"><a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/wordpress_updat.php#more">Read full article</a></p>
+<p class="extended"><a href="https://wincent.com/a/knowledge-base/archives/2006/06/wordpress_updat.php#more">Read full article</a></p>
 
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/knowledge-base/archives/unix/shell/">Shell</a> articles
-, More <a href="http://www.wincent.com/a/knowledge-base/archives/web/">Web</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/knowledge-base/archives/unix/shell/">Shell</a> articles
+, More <a href="https://wincent.com/a/knowledge-base/archives/web/">Web</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/wordpress_updat.php"> 6:41 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/knowledge-base/archives/2006/06/wordpress_updat.php"> 6:41 PM</a>
 
 
 </p>
@@ -348,14 +348,14 @@ deny from all
 
 <p>There were a number of command-line tools that I depend on that did not get transferred by the migration assistant. These are the notes that I made while compiling native Intel versions of these tools and installing them on the iMac.</p>
 
-<p class="extended"><a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/intel_imac_setu.php#more">Read full article</a></p>
+<p class="extended"><a href="https://wincent.com/a/knowledge-base/archives/2006/06/intel_imac_setu.php#more">Read full article</a></p>
 
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/knowledge-base/archives/unix/shell/">Shell</a> articles
-, More <a href="http://www.wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/knowledge-base/archives/unix/shell/">Shell</a> articles
+, More <a href="https://wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/intel_imac_setu.php"> 4:20 AM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/knowledge-base/archives/2006/06/intel_imac_setu.php"> 4:20 AM</a>
 
 
 </p>
@@ -369,15 +369,15 @@ deny from all
 
 <p>Here are some brief notes I made while performing the upgrade from Subversion 1.3.1 to version 1.3.2 on my Red Hat Enterprise Linux ES 3 machine.</p>
 
-<p class="extended"><a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/subversion_131_1.php#more">Read full article</a></p>
+<p class="extended"><a href="https://wincent.com/a/knowledge-base/archives/2006/06/subversion_131_1.php#more">Read full article</a></p>
 
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/knowledge-base/archives/development/">Development</a> articles
-, More <a href="http://www.wincent.com/a/knowledge-base/archives/unix/shell/">Shell</a> articles
-, More <a href="http://www.wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/knowledge-base/archives/development/">Development</a> articles
+, More <a href="https://wincent.com/a/knowledge-base/archives/unix/shell/">Shell</a> articles
+, More <a href="https://wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/subversion_131_1.php"> 3:15 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/knowledge-base/archives/2006/06/subversion_131_1.php"> 3:15 PM</a>
 
 
 </p>
@@ -390,13 +390,13 @@ deny from all
 
 <p>It's amazing how quick and painless it is to upgrade from MySQL 4.1.19 to version 4.1.20 on Red Hat Enterprise Linux 3.</p>
 
-<p class="extended"><a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/upgrading_to_my.php#more">Read full article</a></p>
+<p class="extended"><a href="https://wincent.com/a/knowledge-base/archives/2006/06/upgrading_to_my.php#more">Read full article</a></p>
 
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/upgrading_to_my.php"> 1:44 AM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/knowledge-base/archives/2006/06/upgrading_to_my.php"> 1:44 AM</a>
 
 
 </p>
@@ -414,14 +414,14 @@ deny from all
 
 <p>When I first found this network I foolishly decided to check my email despite the fact that it uses inherently insecure protocols which transmit usernames and passwords in plaintext. I realized that the person running this open network could easily snoop them, so I decided to log into my server securely via SSH, immediately change the email passwords that had been transmitted as plaintext, and not try checking my email again until I had worked out a way to secure the protocols.</p>
 
-<p class="extended"><a href="http://www.wincent.com/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php#more">Read full article</a></p>
+<p class="extended"><a href="https://wincent.com/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php#more">Read full article</a></p>
 
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/knowledge-base/archives/unix/shell/">Shell</a> articles
-, More <a href="http://www.wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/knowledge-base/archives/unix/shell/">Shell</a> articles
+, More <a href="https://wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php"> 8:17 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php"> 8:17 PM</a>
 
 
 </p>
@@ -433,15 +433,15 @@ deny from all
 
 <h3 id="a000328">pstree mirror</h3>
 
-<p>I was just trying to build a copy of <tt>pstree</tt> for Intel and it appears that the website is no more. Not sure if this is a temporary outage or a permanent issue. Luckily I had a copy of the source archive, the latest version as far as I know (2.27). Seeing as the software is licensed for distribution under the GPL I've mirrored a copy <a href="http://www.wincent.com/gpl/pstree-2.27.tar.gz">here</a>.</p>
+<p>I was just trying to build a copy of <tt>pstree</tt> for Intel and it appears that the website is no more. Not sure if this is a temporary outage or a permanent issue. Luckily I had a copy of the source archive, the latest version as far as I know (2.27). Seeing as the software is licensed for distribution under the GPL I've mirrored a copy <a href="https://wincent.com/gpl/pstree-2.27.tar.gz">here</a>.</p>
 
 
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/knowledge-base/archives/unix/shell/">Shell</a> articles
-, More <a href="http://www.wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/knowledge-base/archives/unix/shell/">Shell</a> articles
+, More <a href="https://wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/knowledge-base/archives/2006/05/pstree_mirror.php"> 3:26 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/knowledge-base/archives/2006/05/pstree_mirror.php"> 3:26 PM</a>
 
 
 </p>
@@ -455,14 +455,14 @@ deny from all
 
 <p>Here are some brief notes I made while doing the <a href="http://subversion.tigris.org/">Subversion</a> upgrade from version 1.3 to 1.3.1:</p>
 
-<p class="extended"><a href="http://www.wincent.com/a/knowledge-base/archives/2006/04/subversion_131.php#more">Read full article</a></p>
+<p class="extended"><a href="https://wincent.com/a/knowledge-base/archives/2006/04/subversion_131.php#more">Read full article</a></p>
 
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/knowledge-base/archives/development/">Development</a> articles
-, More <a href="http://www.wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/knowledge-base/archives/development/">Development</a> articles
+, More <a href="https://wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/knowledge-base/archives/2006/04/subversion_131.php"> 3:52 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/knowledge-base/archives/2006/04/subversion_131.php"> 3:52 PM</a>
 
 
 </p>
@@ -476,13 +476,13 @@ deny from all
 
 <p>So I just upgraded my <a href="http://www.squirrelmail.org/">Squirrelmail</a> installation to the latest stable release (<a href="http://www.squirrelmail.org/changelog.php">1.4.6</a>). While I was at it I decided to see if I could eliminate the annoying "X-Authentication-Warning" headers that were being added to outgoing mail sent using Squirrelmail. I wanted to eliminate this because it's possible that strict spam filters might reject messages with this header; also the warnings were cluttering up my <a href="http://www.logwatch.org/">LogWatch</a> reports with noise.</p>
 
-<p class="extended"><a href="http://www.wincent.com/a/knowledge-base/archives/2006/03/eliminating_xau.php#more">Read full article</a></p>
+<p class="extended"><a href="https://wincent.com/a/knowledge-base/archives/2006/03/eliminating_xau.php#more">Read full article</a></p>
 
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/knowledge-base/archives/2006/03/eliminating_xau.php"> 2:04 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/knowledge-base/archives/2006/03/eliminating_xau.php"> 2:04 PM</a>
 
 
 </p>
@@ -496,13 +496,13 @@ deny from all
 
 <p>By default, GCC warns when a subclass is marked as adopting a protocol and it inherits protocol methods from its superclass rather than implementing them itself.</p>
 
-<p class="extended"><a href="http://www.wincent.com/a/knowledge-base/archives/2006/03/avoiding_protoc.php#more">Read full article</a></p>
+<p class="extended"><a href="https://wincent.com/a/knowledge-base/archives/2006/03/avoiding_protoc.php#more">Read full article</a></p>
 
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/knowledge-base/archives/development/">Development</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/knowledge-base/archives/development/">Development</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/knowledge-base/archives/2006/03/avoiding_protoc.php"> 2:16 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/knowledge-base/archives/2006/03/avoiding_protoc.php"> 2:16 PM</a>
 
 
 </p>
@@ -514,7 +514,7 @@ deny from all
 
 <h3 id="a000201">Unit testing guidelines</h3>
 
-<p>Lately I've been spending a lot of time working on my unit testing framework, <a href="http://www.wincent.com/a/products/wotest/">WOTest</a>. In doing so I've had cause to think about unit testing "best practice", or at least what works best for me. In this article I summarize the guidelines that I've come up with that help me decide <em>when</em>, <em>how</em> and <em>where</em> to write <a href="http://en.wikipedia.org/wiki/Unit_testing">unit tests</a>:</p>
+<p>Lately I've been spending a lot of time working on my unit testing framework, <a href="https://wincent.com/a/products/wotest/">WOTest</a>. In doing so I've had cause to think about unit testing "best practice", or at least what works best for me. In this article I summarize the guidelines that I've come up with that help me decide <em>when</em>, <em>how</em> and <em>where</em> to write <a href="http://en.wikipedia.org/wiki/Unit_testing">unit tests</a>:</p>
 
 <ol>
 <li>Write unit tests at all levels of your implementation</li>
@@ -525,14 +525,14 @@ deny from all
 <li>Write unit tests for your bugs</li>
 </ol>
 
-<p class="extended"><a href="http://www.wincent.com/a/knowledge-base/archives/2006/02/unit_testing_gu.php#more">Read full article</a></p>
+<p class="extended"><a href="https://wincent.com/a/knowledge-base/archives/2006/02/unit_testing_gu.php#more">Read full article</a></p>
 
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/knowledge-base/archives/development/cocoa_and_objectivec/">Cocoa and Objective-C</a> articles
-, More <a href="http://www.wincent.com/a/knowledge-base/archives/development/">Development</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/knowledge-base/archives/development/cocoa_and_objectivec/">Cocoa and Objective-C</a> articles
+, More <a href="https://wincent.com/a/knowledge-base/archives/development/">Development</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/knowledge-base/archives/2006/02/unit_testing_gu.php"> 2:38 AM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/knowledge-base/archives/2006/02/unit_testing_gu.php"> 2:38 AM</a>
 
 
 </p>
@@ -550,14 +550,14 @@ deny from all
 
 <p>If I later want to find all of the TODO items I can use Xcode's "Find In Project..." functionality or I can grep from the command-line. For this purpose I have the following function defined in my <tt>~/.bash_profile</tt>:</p>
 
-<p class="extended"><a href="http://www.wincent.com/a/knowledge-base/archives/2006/01/lightweight_iss.php#more">Read full article</a></p>
+<p class="extended"><a href="https://wincent.com/a/knowledge-base/archives/2006/01/lightweight_iss.php#more">Read full article</a></p>
 
 
-<p class="more-categories">More <a href="http://www.wincent.com/a/knowledge-base/archives/development/">Development</a> articles
-, More <a href="http://www.wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
+<p class="more-categories">More <a href="https://wincent.com/a/knowledge-base/archives/development/">Development</a> articles
+, More <a href="https://wincent.com/a/knowledge-base/archives/unix/">UNIX</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/knowledge-base/archives/2006/01/lightweight_iss.php"> 2:23 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/knowledge-base/archives/2006/01/lightweight_iss.php"> 2:23 PM</a>
 
 
 </p>
@@ -588,18 +588,18 @@ deny from all
 <h2>Categories</h2>
 
 <ul>
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/development/" title="Software development">Development</a>
+<li><a href="https://wincent.com/a/knowledge-base/archives/development/" title="Software development">Development</a>
 
 
 <ul>
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/development/business/" title="">Business</a>
+<li><a href="https://wincent.com/a/knowledge-base/archives/development/business/" title="">Business</a>
 
 
 
 </li>
 
 
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/development/cocoa_and_objectivec/" title="Coding with Cocoa and Objective-C">Cocoa and Objective-C</a>
+<li><a href="https://wincent.com/a/knowledge-base/archives/development/cocoa_and_objectivec/" title="Coding with Cocoa and Objective-C">Cocoa and Objective-C</a>
 
 
 
@@ -609,25 +609,25 @@ deny from all
 </li>
 
 
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/mac_os_x/" title="">Mac OS X</a>
+<li><a href="https://wincent.com/a/knowledge-base/archives/mac_os_x/" title="">Mac OS X</a>
 
 
 
 </li>
 
 
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/meta/" title="">Meta</a>
+<li><a href="https://wincent.com/a/knowledge-base/archives/meta/" title="">Meta</a>
 
 
 
 </li>
 
 
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/unix/" title="">UNIX</a>
+<li><a href="https://wincent.com/a/knowledge-base/archives/unix/" title="">UNIX</a>
 
 
 <ul>
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/unix/shell/" title="">Shell</a>
+<li><a href="https://wincent.com/a/knowledge-base/archives/unix/shell/" title="">Shell</a>
 
 
 
@@ -637,11 +637,11 @@ deny from all
 </li>
 
 
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/web/" title="Web design">Web</a>
+<li><a href="https://wincent.com/a/knowledge-base/archives/web/" title="Web design">Web</a>
 
 
 <ul>
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/web/css/" title="Cascading Style Sheets">CSS</a>
+<li><a href="https://wincent.com/a/knowledge-base/archives/web/css/" title="Cascading Style Sheets">CSS</a>
 
 
 
@@ -656,21 +656,21 @@ deny from all
 <h2>Recent Entries</h2>
 
 <ul>
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/2006/08/knowledge_base.php">Knowledge base in wiki format</a></li>
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/clamping_down_o.php">Clamping down on spam</a></li>
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/freshclam_probl.php">freshclam: "Problem with internal logger"</a></li>
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/wordpress_secur.php">WordPress security tip</a></li>
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/wordpress_updat.php">WordPress updates via Subversion</a></li>
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/intel_imac_setu.php">Intel iMac set-up notes</a></li>
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/subversion_131_1.php">Subversion 1.3.1 to 1.3.2 upgrade notes</a></li>
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/2006/06/upgrading_to_my.php">Upgrading to MySQL 4.1.20 on Red Hat Enterprise Linux 3</a></li>
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php">SSH tunneling and secure IMAP, POP3 and SMTP</a></li>
-<li><a href="http://www.wincent.com/a/knowledge-base/archives/2006/05/pstree_mirror.php">pstree mirror</a></li>
+<li><a href="https://wincent.com/a/knowledge-base/archives/2006/08/knowledge_base.php">Knowledge base in wiki format</a></li>
+<li><a href="https://wincent.com/a/knowledge-base/archives/2006/06/clamping_down_o.php">Clamping down on spam</a></li>
+<li><a href="https://wincent.com/a/knowledge-base/archives/2006/06/freshclam_probl.php">freshclam: "Problem with internal logger"</a></li>
+<li><a href="https://wincent.com/a/knowledge-base/archives/2006/06/wordpress_secur.php">WordPress security tip</a></li>
+<li><a href="https://wincent.com/a/knowledge-base/archives/2006/06/wordpress_updat.php">WordPress updates via Subversion</a></li>
+<li><a href="https://wincent.com/a/knowledge-base/archives/2006/06/intel_imac_setu.php">Intel iMac set-up notes</a></li>
+<li><a href="https://wincent.com/a/knowledge-base/archives/2006/06/subversion_131_1.php">Subversion 1.3.1 to 1.3.2 upgrade notes</a></li>
+<li><a href="https://wincent.com/a/knowledge-base/archives/2006/06/upgrading_to_my.php">Upgrading to MySQL 4.1.20 on Red Hat Enterprise Linux 3</a></li>
+<li><a href="https://wincent.com/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php">SSH tunneling and secure IMAP, POP3 and SMTP</a></li>
+<li><a href="https://wincent.com/a/knowledge-base/archives/2006/05/pstree_mirror.php">pstree mirror</a></li>
 
 </ul>
 
 <div class="link-note">
-<a href="http://www.wincent.com/a/knowledge-base/index.rdf">Syndicate this site (XML)</a>
+<a href="https://wincent.com/a/knowledge-base/index.rdf">Syndicate this site (XML)</a>
 </div>
 
 

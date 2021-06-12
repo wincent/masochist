@@ -4,7 +4,7 @@
 <meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
 <meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
 <title>
-Bug #1983: SSL cert warnings on secure.wincent.com
+Bug #1983: SSL cert warnings on wincent.com
 &middot; wincent.com
 </title>
 <link rel="stylesheet" media="screen" href="/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
@@ -37,7 +37,7 @@ You are viewing an historical archive of past issues. Please report new issues t
 <form class="edit_issue" id="edit_issue_1983" action="/issues/1983" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="GkTNk6XyjDOjpk8xpyaWw5qlIBF9XJ3tvvTOVLiyWOIutnMkAn9WZnoqfMaWD8V3LydJLXawE/Ge6xuqnGo/xg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
 Bug #1983:
 <span data-name='issue[summary]'>
-SSL cert warnings on secure.wincent.com
+SSL cert warnings on wincent.com
 </span>
 </h1>
 <table class='issue-metadata'>
@@ -79,11 +79,11 @@ Description
 </h4>
 <div class='issue-description-body'>
 <p>Recent builds of Chrome have started displaying scary warnings for URLs like;</p>
-<p><a href="https://secure.wincent.com/a/support/registration/" class="external">https://secure.wincent.com/a/support/registration/</a></p>
+<p><a href="https://wincent.com/a/support/registration/" class="external">https://wincent.com/a/support/registration/</a></p>
 <p>Specifically, the warning reads like this:</p>
 <blockquote>
 <h2>The site's security certificate is signed using a weak signature algorithm!</h2>
-<p>You attempted to reach secure.wincent.com, but the server presented a certificate signed using a weak signature algorithm. This means that the security credentials the server presented could have been forged, and the server may not be the server you expected (you may be communicating with an attacker).</p>
+<p>You attempted to reach wincent.com, but the server presented a certificate signed using a weak signature algorithm. This means that the security credentials the server presented could have been forged, and the server may not be the server you expected (you may be communicating with an attacker).</p>
 <p>You should not proceed, especially if you have never seen this warning before for this site.</p>
 <h3>Help me understand</h3>
 <p>When you connect to a secure website, the server hosting that site presents your browser with something called a &quot;certificate&quot; to verify its identity. This certificate contains identity information, such as the address of the website, which is verified by a third party that your computer trusts. By checking that the address in the certificate matches the address of the website, it is possible to verify that you are securely communicating with the website you intended, and not a third party (such as an attacker on your network).</p>

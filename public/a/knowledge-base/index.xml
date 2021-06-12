@@ -2,7 +2,7 @@
 <rss version="2.0">
 <channel>
 <title>Knowledge base</title>
-<link>http://wincent.com/a/knowledge-base/</link>
+<link>https://wincent.com/a/knowledge-base/</link>
 <description>wincent.com Knowledge Base</description>
 <copyright>Copyright 2007</copyright>
 <lastBuildDate>Thu, 17 Aug 2006 16:54:29 +0100</lastBuildDate>
@@ -11,19 +11,19 @@
 
 <item>
 <title>Knowledge base in wiki format</title>
-<description><![CDATA[<p>The current knowledge base format (chronological posts, categorized, like a weblog) has always been somewhat limiting. I have recently started a <a href="http://wincent.com/knowledge-base/">new, wiki-based</a> knowledge base. It's still very much a work in progress, but for the curious it can be found at:</p>
+<description><![CDATA[<p>The current knowledge base format (chronological posts, categorized, like a weblog) has always been somewhat limiting. I have recently started a <a href="https://wincent.com/knowledge-base/">new, wiki-based</a> knowledge base. It's still very much a work in progress, but for the curious it can be found at:</p>
 
-<p><a href="http://wincent.com/knowledge-base/">http://wincent.com/knowledge-base/</a></p>]]></description>
-<link>http://wincent.com/a/knowledge-base/archives/2006/08/knowledge_base.php</link>
-<guid>http://wincent.com/a/knowledge-base/archives/2006/08/knowledge_base.php</guid>
+<p><a href="https://wincent.com/knowledge-base/">https://wincent.com/knowledge-base/</a></p>]]></description>
+<link>https://wincent.com/a/knowledge-base/archives/2006/08/knowledge_base.php</link>
+<guid>https://wincent.com/a/knowledge-base/archives/2006/08/knowledge_base.php</guid>
 <category>Meta</category>
 <pubDate>Thu, 17 Aug 2006 16:54:29 +0100</pubDate>
 </item>
 <item>
 <title>Clamping down on spam</title>
 <description><![CDATA[<p>I run <a href="http://spamassassin.apache.org/">SpamAssassin</a> on my mail server (anti-spam). I also run <a href="http://clamav.net/">ClamAV</a> (anti-virus). After extensively trialing ClamAV I was convinced of its reliability and decided to have it automatically delete all detected incoming viruses. SpamAssassin still produces far too many false positives and false negatives for me to perform such deletion but I decided today that I wanted to tighten things up a little bit.</p>]]></description>
-<link>http://wincent.com/a/knowledge-base/archives/2006/06/clamping_down_o.php</link>
-<guid>http://wincent.com/a/knowledge-base/archives/2006/06/clamping_down_o.php</guid>
+<link>https://wincent.com/a/knowledge-base/archives/2006/06/clamping_down_o.php</link>
+<guid>https://wincent.com/a/knowledge-base/archives/2006/06/clamping_down_o.php</guid>
 <category>UNIX</category>
 <pubDate>Wed, 21 Jun 2006 15:40:33 +0100</pubDate>
 </item>
@@ -36,8 +36,8 @@
 ERROR: Problem with internal logger.</pre>
 
 <p>I found the <a href="http://www.gossamer-threads.com/lists/clamav/users/25354">explanation here</a>: that there was a hung <tt>freshclam</tt> process lingering on the system.</p>]]></description>
-<link>http://wincent.com/a/knowledge-base/archives/2006/06/freshclam_probl.php</link>
-<guid>http://wincent.com/a/knowledge-base/archives/2006/06/freshclam_probl.php</guid>
+<link>https://wincent.com/a/knowledge-base/archives/2006/06/freshclam_probl.php</link>
+<guid>https://wincent.com/a/knowledge-base/archives/2006/06/freshclam_probl.php</guid>
 <category>UNIX</category>
 <pubDate>Sat, 10 Jun 2006 15:25:48 +0100</pubDate>
 </item>
@@ -50,16 +50,16 @@ deny from all
 &lt;/FilesMatch&gt;</pre>
 
 <p>This will make it harder for your database username and password to fall into the wrong hands in the event of a server problem. Better still would be to move the username and password outside of the document root entirely and <tt>include</tt> or <tt>require</tt> it but that would require you to turn off <a href="http://www.php.net/features.safe-mode">PHP Safe Mode</a> and/or the <tt>open_basedir</tt> restriction, which I don't recommend with a product like WordPress which is both popular and has a less-than-perfect security record.</p>]]></description>
-<link>http://wincent.com/a/knowledge-base/archives/2006/06/wordpress_secur.php</link>
-<guid>http://wincent.com/a/knowledge-base/archives/2006/06/wordpress_secur.php</guid>
+<link>https://wincent.com/a/knowledge-base/archives/2006/06/wordpress_secur.php</link>
+<guid>https://wincent.com/a/knowledge-base/archives/2006/06/wordpress_secur.php</guid>
 <category>Web</category>
 <pubDate>Fri, 02 Jun 2006 18:55:00 +0100</pubDate>
 </item>
 <item>
 <title>WordPress updates via Subversion</title>
 <description><![CDATA[<p>I don't run <a href="http://wordpress.org/">WordPress</a> on this website, but I do run it elsewhere. Here are some notes I made while streamlining the process of performing WordPress upgrades by using Subversion to pull down updates and merge them automatically. This is a technique already used by successful projects like <a href="http://bugzilla.org/">Bugzilla</a> and <a href="http://mediawiki.org/">MediaWiki</a>. The WordPress folks aren't quite with the times yet (<a href="http://trac.wordpress.org/ticket/2767">they haven't managed to tag the last two releases in the repository</a>, but you can follow the 2.0 branch instead of following tagged releases instead).</p>]]></description>
-<link>http://wincent.com/a/knowledge-base/archives/2006/06/wordpress_updat.php</link>
-<guid>http://wincent.com/a/knowledge-base/archives/2006/06/wordpress_updat.php</guid>
+<link>https://wincent.com/a/knowledge-base/archives/2006/06/wordpress_updat.php</link>
+<guid>https://wincent.com/a/knowledge-base/archives/2006/06/wordpress_updat.php</guid>
 <category>Shell</category>
 <pubDate>Fri, 02 Jun 2006 18:41:09 +0100</pubDate>
 </item>
@@ -68,24 +68,24 @@ deny from all
 <description><![CDATA[<p>When I switched from the G5 to the Intel iMac I used Apple's migration assistant to transfer over as much data as possible from the old system to the new.</p>
 
 <p>There were a number of command-line tools that I depend on that did not get transferred by the migration assistant. These are the notes that I made while compiling native Intel versions of these tools and installing them on the iMac.</p>]]></description>
-<link>http://wincent.com/a/knowledge-base/archives/2006/06/intel_imac_setu.php</link>
-<guid>http://wincent.com/a/knowledge-base/archives/2006/06/intel_imac_setu.php</guid>
+<link>https://wincent.com/a/knowledge-base/archives/2006/06/intel_imac_setu.php</link>
+<guid>https://wincent.com/a/knowledge-base/archives/2006/06/intel_imac_setu.php</guid>
 <category>Shell</category>
 <pubDate>Fri, 02 Jun 2006 04:20:52 +0100</pubDate>
 </item>
 <item>
 <title>Subversion 1.3.1 to 1.3.2 upgrade notes</title>
 <description><![CDATA[<p>Here are some brief notes I made while performing the upgrade from Subversion 1.3.1 to version 1.3.2 on my Red Hat Enterprise Linux ES 3 machine.</p>]]></description>
-<link>http://wincent.com/a/knowledge-base/archives/2006/06/subversion_131_1.php</link>
-<guid>http://wincent.com/a/knowledge-base/archives/2006/06/subversion_131_1.php</guid>
+<link>https://wincent.com/a/knowledge-base/archives/2006/06/subversion_131_1.php</link>
+<guid>https://wincent.com/a/knowledge-base/archives/2006/06/subversion_131_1.php</guid>
 <category>Development</category>
 <pubDate>Thu, 01 Jun 2006 15:15:53 +0100</pubDate>
 </item>
 <item>
 <title>Upgrading to MySQL 4.1.20 on Red Hat Enterprise Linux 3</title>
 <description><![CDATA[<p>It's amazing how quick and painless it is to upgrade from MySQL 4.1.19 to version 4.1.20 on Red Hat Enterprise Linux 3.</p>]]></description>
-<link>http://wincent.com/a/knowledge-base/archives/2006/06/upgrading_to_my.php</link>
-<guid>http://wincent.com/a/knowledge-base/archives/2006/06/upgrading_to_my.php</guid>
+<link>https://wincent.com/a/knowledge-base/archives/2006/06/upgrading_to_my.php</link>
+<guid>https://wincent.com/a/knowledge-base/archives/2006/06/upgrading_to_my.php</guid>
 <category>UNIX</category>
 <pubDate>Thu, 01 Jun 2006 01:44:14 +0100</pubDate>
 </item>
@@ -96,46 +96,46 @@ deny from all
 <p>Turns out that there was one which was occasionally available, but with a very weak signal and I could only ever get a pitiful few bytes per second over it.</p>
 
 <p>When I first found this network I foolishly decided to check my email despite the fact that it uses inherently insecure protocols which transmit usernames and passwords in plaintext. I realized that the person running this open network could easily snoop them, so I decided to log into my server securely via SSH, immediately change the email passwords that had been transmitted as plaintext, and not try checking my email again until I had worked out a way to secure the protocols.</p>]]></description>
-<link>http://wincent.com/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php</link>
-<guid>http://wincent.com/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php</guid>
+<link>https://wincent.com/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php</link>
+<guid>https://wincent.com/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php</guid>
 <category>Shell</category>
 <pubDate>Wed, 31 May 2006 20:17:50 +0100</pubDate>
 </item>
 <item>
 <title>pstree mirror</title>
-<description><![CDATA[<p>I was just trying to build a copy of <tt>pstree</tt> for Intel and it appears that the website is no more. Not sure if this is a temporary outage or a permanent issue. Luckily I had a copy of the source archive, the latest version as far as I know (2.27). Seeing as the software is licensed for distribution under the GPL I've mirrored a copy <a href="http://wincent.com/gpl/pstree-2.27.tar.gz">here</a>.</p>]]></description>
-<link>http://wincent.com/a/knowledge-base/archives/2006/05/pstree_mirror.php</link>
-<guid>http://wincent.com/a/knowledge-base/archives/2006/05/pstree_mirror.php</guid>
+<description><![CDATA[<p>I was just trying to build a copy of <tt>pstree</tt> for Intel and it appears that the website is no more. Not sure if this is a temporary outage or a permanent issue. Luckily I had a copy of the source archive, the latest version as far as I know (2.27). Seeing as the software is licensed for distribution under the GPL I've mirrored a copy <a href="https://wincent.com/gpl/pstree-2.27.tar.gz">here</a>.</p>]]></description>
+<link>https://wincent.com/a/knowledge-base/archives/2006/05/pstree_mirror.php</link>
+<guid>https://wincent.com/a/knowledge-base/archives/2006/05/pstree_mirror.php</guid>
 <category>Shell</category>
 <pubDate>Mon, 29 May 2006 15:26:09 +0100</pubDate>
 </item>
 <item>
 <title>Subversion 1.3.1 upgrade notes</title>
 <description><![CDATA[<p>Here are some brief notes I made while doing the <a href="http://subversion.tigris.org/">Subversion</a> upgrade from version 1.3 to 1.3.1:</p>]]></description>
-<link>http://wincent.com/a/knowledge-base/archives/2006/04/subversion_131.php</link>
-<guid>http://wincent.com/a/knowledge-base/archives/2006/04/subversion_131.php</guid>
+<link>https://wincent.com/a/knowledge-base/archives/2006/04/subversion_131.php</link>
+<guid>https://wincent.com/a/knowledge-base/archives/2006/04/subversion_131.php</guid>
 <category>Development</category>
 <pubDate>Wed, 05 Apr 2006 15:52:19 +0100</pubDate>
 </item>
 <item>
 <title>Eliminating &quot;X-Authentication-Warning&quot; headers from Squirrelmail</title>
 <description><![CDATA[<p>So I just upgraded my <a href="http://www.squirrelmail.org/">Squirrelmail</a> installation to the latest stable release (<a href="http://www.squirrelmail.org/changelog.php">1.4.6</a>). While I was at it I decided to see if I could eliminate the annoying "X-Authentication-Warning" headers that were being added to outgoing mail sent using Squirrelmail. I wanted to eliminate this because it's possible that strict spam filters might reject messages with this header; also the warnings were cluttering up my <a href="http://www.logwatch.org/">LogWatch</a> reports with noise.</p>]]></description>
-<link>http://wincent.com/a/knowledge-base/archives/2006/03/eliminating_xau.php</link>
-<guid>http://wincent.com/a/knowledge-base/archives/2006/03/eliminating_xau.php</guid>
+<link>https://wincent.com/a/knowledge-base/archives/2006/03/eliminating_xau.php</link>
+<guid>https://wincent.com/a/knowledge-base/archives/2006/03/eliminating_xau.php</guid>
 <category>UNIX</category>
 <pubDate>Thu, 09 Mar 2006 14:04:51 +0100</pubDate>
 </item>
 <item>
 <title>Avoiding protocol-related warnings</title>
 <description><![CDATA[<p>By default, GCC warns when a subclass is marked as adopting a protocol and it inherits protocol methods from its superclass rather than implementing them itself.</p>]]></description>
-<link>http://wincent.com/a/knowledge-base/archives/2006/03/avoiding_protoc.php</link>
-<guid>http://wincent.com/a/knowledge-base/archives/2006/03/avoiding_protoc.php</guid>
+<link>https://wincent.com/a/knowledge-base/archives/2006/03/avoiding_protoc.php</link>
+<guid>https://wincent.com/a/knowledge-base/archives/2006/03/avoiding_protoc.php</guid>
 <category>Development</category>
 <pubDate>Wed, 01 Mar 2006 14:16:13 +0100</pubDate>
 </item>
 <item>
 <title>Unit testing guidelines</title>
-<description><![CDATA[<p>Lately I've been spending a lot of time working on my unit testing framework, <a href="http://wincent.com/a/products/wotest/">WOTest</a>. In doing so I've had cause to think about unit testing "best practice", or at least what works best for me. In this article I summarize the guidelines that I've come up with that help me decide <em>when</em>, <em>how</em> and <em>where</em> to write <a href="http://en.wikipedia.org/wiki/Unit_testing">unit tests</a>:</p>
+<description><![CDATA[<p>Lately I've been spending a lot of time working on my unit testing framework, <a href="https://wincent.com/a/products/wotest/">WOTest</a>. In doing so I've had cause to think about unit testing "best practice", or at least what works best for me. In this article I summarize the guidelines that I've come up with that help me decide <em>when</em>, <em>how</em> and <em>where</em> to write <a href="http://en.wikipedia.org/wiki/Unit_testing">unit tests</a>:</p>
 
 <ol>
 <li>Write unit tests at all levels of your implementation</li>
@@ -145,8 +145,8 @@ deny from all
 <li>Base your unit tests on your expected results</li>
 <li>Write unit tests for your bugs</li>
 </ol>]]></description>
-<link>http://wincent.com/a/knowledge-base/archives/2006/02/unit_testing_gu.php</link>
-<guid>http://wincent.com/a/knowledge-base/archives/2006/02/unit_testing_gu.php</guid>
+<link>https://wincent.com/a/knowledge-base/archives/2006/02/unit_testing_gu.php</link>
+<guid>https://wincent.com/a/knowledge-base/archives/2006/02/unit_testing_gu.php</guid>
 <category>Cocoa and Objective-C</category>
 <pubDate>Mon, 13 Feb 2006 02:38:00 +0100</pubDate>
 </item>
@@ -157,8 +157,8 @@ deny from all
 <pre>// TODO: add user preference for opacity</pre>
 
 <p>If I later want to find all of the TODO items I can use Xcode's "Find In Project..." functionality or I can grep from the command-line. For this purpose I have the following function defined in my <tt>~/.bash_profile</tt>:</p>]]></description>
-<link>http://wincent.com/a/knowledge-base/archives/2006/01/lightweight_iss.php</link>
-<guid>http://wincent.com/a/knowledge-base/archives/2006/01/lightweight_iss.php</guid>
+<link>https://wincent.com/a/knowledge-base/archives/2006/01/lightweight_iss.php</link>
+<guid>https://wincent.com/a/knowledge-base/archives/2006/01/lightweight_iss.php</guid>
 <category>Development</category>
 <pubDate>Fri, 27 Jan 2006 14:23:23 +0100</pubDate>
 </item>

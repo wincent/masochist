@@ -82,11 +82,11 @@ Description
 <p>In order to do this will need to &quot;pass through&quot; some specific URLs of the old app. The working list I came up with in <a href="/issues/1200">ticket #1200</a> is:</p>
 <ul>
 <li>PayPal IPNs and Kagi RPS postbacks</li>
-<li>the lost license codes form (currently at <a href="https://secure.wincent.com/a/support/registration/" class="external">https://secure.wincent.com/a/support/registration/</a>)</li>
-<li>the old contact form (currently at <a href="http://wincent.com/a/contact/mail/" class="external">http://wincent.com/a/contact/mail/</a>); in reality this already exists in the form of the new issue tracker</li>
+<li>the lost license codes form (currently at <a href="https://wincent.com/a/support/registration/" class="external">https://wincent.com/a/support/registration/</a>)</li>
+<li>the old contact form (currently at <a href="https://wincent.com/a/contact/mail/" class="external">https://wincent.com/a/contact/mail/</a>); in reality this already exists in the form of the new issue tracker</li>
 <li>the download.php script</li>
-<li>the &quot;update address&quot; form at <a href="http://wincent.com/a/support/update-address/" class="external">http://wincent.com/a/support/update-address/</a></li>
-<li>the Install licensees area at <a href="https://secure.wincent.com/a/products/install/licensees/" class="external">https://secure.wincent.com/a/products/install/licensees/</a></li>
+<li>the &quot;update address&quot; form at <a href="https://wincent.com/a/support/update-address/" class="external">https://wincent.com/a/support/update-address/</a></li>
+<li>the Install licensees area at <a href="https://wincent.com/a/products/install/licensees/" class="external">https://wincent.com/a/products/install/licensees/</a></li>
 </ul>
 <p>See &quot;<a href="/wiki/Migration_status">Migration status</a>&quot; for a list of other possible candidates to be kept in mind.</p>
 <p>I am thinking that the easiest way to do this will be to leave Apache in place server those old URLs exactly as it does now, but move nginx in front of it as a proxy. It would pass most things through to the <a href="/wiki/Rails">Rails</a> app, but the special URLs mentioned above would be forwarded through to Apache instead.</p>
@@ -120,7 +120,7 @@ Description
 </cite>
 <blockquote><p>Some nice things:</p>
 <ul>
-<li>Anything currently hosted via HTTPS at secure.wincent.com won't need to be brought over (different IP address, everything will keep working just fine</li>
+<li>Anything currently hosted via HTTPS at wincent.com won't need to be brought over (different IP address, everything will keep working just fine</li>
 <li>Any access via &quot;rails.wincent.com&quot; won't need special handling; only access via &quot;wincent.com&quot;</li>
 <li>Any access via HTTPS to &quot;wincent.com&quot; won't need special handling; all old URLs there were served over HTTP anyway</li>
 </ul>

@@ -5,11 +5,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Wincent Colaiuta's weblog</title>
 <link rel="stylesheet" href="/a/styles.css" type="text/css" />
-<link rel="alternate" type="application/atom+xml" title="Atom" href="http://www.wincent.com/a/about/wincent/weblog/atom.xml" />
+<link rel="alternate" type="application/atom+xml" title="Atom" href="https://wincent.com/a/about/wincent/weblog/atom.xml" />
 
-<link rel="openid.server" href="https://secure.wincent.com/id.php" />
-<link rel="openid.delegate" href="https://secure.wincent.com/id.php" />
-<meta http-equiv="X-XRDS-Location" content="https://secure.wincent.com/id.php" />
+<link rel="openid.server" href="https://wincent.com/id.php" />
+<link rel="openid.delegate" href="https://wincent.com/id.php" />
+<meta http-equiv="X-XRDS-Location" content="https://wincent.com/id.php" />
 
 
 
@@ -31,8 +31,8 @@
       <tr>
         <td style="background-image: url(/a/gfx/header/left-side.jpg); background-repeat: repeat-y;" width="32"><img src="/a/gfx/header/left-side.jpg" width="32" height="71" alt="" /></td>
         <td style="background-image: url(/a/gfx/header/center-background.jpg); background-repeat: repeat;" colspan="11" align="center" valign="middle">
-  <a href="http://www.wincent.com/"><img src="/a/gfx/wincent-logo-small-gray-bg.jpg" width="43" height="41" alt="wincent" align="middle" /></a>
-  <a href="http://www.wincent.com/a/about/wincent/weblog/"><img src="/a/gfx/weblog-header.jpg" width="323" height="25" alt="Wincent Colaiuta's weblog" align="middle"/></a>
+  <a href="https://wincent.com/"><img src="/a/gfx/wincent-logo-small-gray-bg.jpg" width="43" height="41" alt="wincent" align="middle" /></a>
+  <a href="https://wincent.com/a/about/wincent/weblog/"><img src="/a/gfx/weblog-header.jpg" width="323" height="25" alt="Wincent Colaiuta's weblog" align="middle"/></a>
 
         </td>
         <td style="background-image: url(/a/gfx/header/right-side.jpg); background-repeat: repeat-y;" width="32"><img src="/a/gfx/header/right-side.jpg" width="32" height="71" alt="" /></td>
@@ -43,68 +43,68 @@
         <td width="73" height="25">
           <ul style="width: 73px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/products/" title="Full products listing"><img src="/a/gfx/header/products-off.jpg" width="73" height="25" alt="Products" /></a>
+              <a href="https://wincent.com/a/products/" title="Full products listing"><img src="/a/gfx/header/products-off.jpg" width="73" height="25" alt="Products" /></a>
               <ul>
                 <li><a href="https://wincent.com/products/synergy" title="The original iTunes menu bar controller">Synergy &gt;</a>
                   <ul>
                     <li><a href="https://wincent.com/products/synergy/download" title="Download Synergy">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-classic/purchase/" title="Purchase Synergy">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-classic/purchase/" title="Purchase Synergy">Purchase</a></li>
                     <li><a href="https://wincent.com/products/synergy/help" title="Frequently Asked Questions">FAQ</a></li>
-                    <li><a href="http://www.wincent.com/a/products/synergy-classic/buttons/" title="Free button sets">Button Sets</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-classic/buttons/" title="Free button sets">Button Sets</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/" title="Multi-purpose audio companion">Synergy Advance &gt;</a>
+                <li><a href="https://wincent.com/a/products/synergy-advance/" title="Multi-purpose audio companion">Synergy Advance &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/synergy-advance/download/" title="Download Synergy Advance">Download preview</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/purchase/" title="Purchase Synergy Advance">Purchase</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/download/" title="Download Synergy Advance">Download preview</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/purchase/" title="Purchase Synergy Advance">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/winswitch/" title="Enhanced replacement for Apple's Fast User Switching menu">WinSwitch &gt;</a>
+                <li><a href="https://wincent.com/a/products/winswitch/" title="Enhanced replacement for Apple's Fast User Switching menu">WinSwitch &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/winswitch/download/" title="Download WinSwitch">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/winswitch/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/winswitch/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
-                    <li><a href="http://www.wincent.com/a/products/winswitch/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/download/" title="Download WinSwitch">Download</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/hextrapolate/" title="Programmers number conversion tool">Hextrapolate &gt;</a>
+                <li><a href="https://wincent.com/a/products/hextrapolate/" title="Programmers number conversion tool">Hextrapolate &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/hextrapolate/download/" title="Download Hextrapolate">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/hextrapolate/purchase/" title="Purchase Hextrapolate">Purchase</a></li>
-                    <li><a href="http://www.wincent.com/a/products/hextrapolate/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/download/" title="Download Hextrapolate">Download</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/purchase/" title="Purchase Hextrapolate">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/install/" title="Installation and deployment solution for developers">Install &gt;</a>
+                <li><a href="https://wincent.com/a/products/install/" title="Installation and deployment solution for developers">Install &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/install/download/" title="Install downloads">Downloads</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/purchase/" title="Purchase Install">Purchase</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
-                    <li><a href="http://www.wincent.com/a/products/install/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/install/download/" title="Install downloads">Downloads</a></li>
+                    <li><a href="https://wincent.com/a/products/install/purchase/" title="Purchase Install">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/install/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/install/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/install/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/getsmart-pro/" title="Intelligent download manager">GetSmart Pro &gt;</a>
+                <li><a href="https://wincent.com/a/products/getsmart-pro/" title="Intelligent download manager">GetSmart Pro &gt;</a>
                   <ul>
-                    <li><a href="https://secure.wincent.com/a/products/getsmart-pro/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/getsmart-pro/donate/" title="Support development with a donation">Donate</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/" title="Full product listing">Other products...</a></li>
+                <li><a href="https://wincent.com/a/products/" title="Full product listing">Other products...</a></li>
               </ul>
             </li>
           </ul>
         </td>
-        <td width="48" height="25"><a href="https://secure.wincent.com/a/store/" title="Wincent online store"><img src="/a/gfx/header/store-off.jpg" width="48" height="25" alt="Store" /></a></td>
+        <td width="48" height="25"><a href="https://wincent.com/a/store/" title="Wincent online store"><img src="/a/gfx/header/store-off.jpg" width="48" height="25" alt="Store" /></a></td>
         <td width="63" height="25">
           <ul style="width: 63px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/services/" title="Full services listing"><img src="/a/gfx/header/services-off.jpg" width="63" height="25" alt="Services" /></a>
+              <a href="https://wincent.com/a/services/" title="Full services listing"><img src="/a/gfx/header/services-off.jpg" width="63" height="25" alt="Services" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/services/custom-development/" title="Custom software development">Custom Development</a></li>
-                <li><a href="http://www.wincent.com/a/services/mac-consultancy/" title="Apple and Mac OS X consultancy">Apple/Mac Consultancy</a></li>
-                <li><a href="http://www.wincent.com/a/services/web-design/" title="Web design services">Web Design</a></li>
-                <li><a href="http://www.wincent.com/a/services/hosting/" title="Internet web and email hosting">Hosting</a></li>
+                <li><a href="https://wincent.com/a/services/custom-development/" title="Custom software development">Custom Development</a></li>
+                <li><a href="https://wincent.com/a/services/mac-consultancy/" title="Apple and Mac OS X consultancy">Apple/Mac Consultancy</a></li>
+                <li><a href="https://wincent.com/a/services/web-design/" title="Web design services">Web Design</a></li>
+                <li><a href="https://wincent.com/a/services/hosting/" title="Internet web and email hosting">Hosting</a></li>
               </ul>
             </li>
           </ul>
@@ -112,16 +112,16 @@
         <td width="62" height="25">
           <ul style="width: 62px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/support/" title="Support resources and links"><img src="/a/gfx/header/support-off.jpg" width="62" height="25" alt="Support" /></a>
+              <a href="https://wincent.com/a/support/" title="Support resources and links"><img src="/a/gfx/header/support-off.jpg" width="62" height="25" alt="Support" /></a>
               <ul>
-                <li><a href="https://secure.wincent.com/a/support/registration/" title="Retrieve lost license codes">Lost License Codes</a></li>
-                <li><a href="http://www.wincent.com/a/support/bugs/" title="Bug tracking and feature request database">Bugs and Feature Requests</a></li>
-                <li><a href="http://www.wincent.com/a/support/demo-licenses/" title="Obtain a demonstration license">Demonstration licenses</a></li>
-                <li><a href="http://www.wincent.com/a/support/forums/" title="Discussion and support forums">Forums</a></li>
-                <li><a href="http://www.wincent.com/a/support/faq/" title="Frequently Asked Questions">FAQ</a></li>
-                <li><a href="http://www.wincent.com/a/support/activation/" title="Product activation and information">Product Activation</a></li>
-                <li><a href="https://secure.wincent.com/a/support/tickets/" title="Open or view a support ticket">Support Tickets</a></li>
-                <li><a href="http://www.wincent.com/a/support/lists/" title="Subscribe/unsubscribe to/from a mailing list">Mailing lists</a></li>
+                <li><a href="https://wincent.com/a/support/registration/" title="Retrieve lost license codes">Lost License Codes</a></li>
+                <li><a href="https://wincent.com/a/support/bugs/" title="Bug tracking and feature request database">Bugs and Feature Requests</a></li>
+                <li><a href="https://wincent.com/a/support/demo-licenses/" title="Obtain a demonstration license">Demonstration licenses</a></li>
+                <li><a href="https://wincent.com/a/support/forums/" title="Discussion and support forums">Forums</a></li>
+                <li><a href="https://wincent.com/a/support/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                <li><a href="https://wincent.com/a/support/activation/" title="Product activation and information">Product Activation</a></li>
+                <li><a href="https://wincent.com/a/support/tickets/" title="Open or view a support ticket">Support Tickets</a></li>
+                <li><a href="https://wincent.com/a/support/lists/" title="Subscribe/unsubscribe to/from a mailing list">Mailing lists</a></li>
               </ul>
             </li>
           </ul>
@@ -129,10 +129,10 @@
         <td width="53" height="25">
           <ul style="width: 53px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/about/" title="Company information"><img src="/a/gfx/header/about-on.jpg" width="53" height="25" alt="About" /></a>
+              <a href="https://wincent.com/a/about/" title="Company information"><img src="/a/gfx/header/about-on.jpg" width="53" height="25" alt="About" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/about/wincent/" title="About Wincent Colaiuta: the person">About Wincent Colaiuta</a></li>
-                <li><a href="http://www.wincent.com/a/about/privacy/" title="About the Wincent Privacy Policy">Privacy Policy</a></li>
+                <li><a href="https://wincent.com/a/about/wincent/" title="About Wincent Colaiuta: the person">About Wincent Colaiuta</a></li>
+                <li><a href="https://wincent.com/a/about/privacy/" title="About the Wincent Privacy Policy">Privacy Policy</a></li>
               </ul>
            </li>
          </ul>
@@ -140,24 +140,24 @@
         <td width="49" height="25">
           <ul style="width: 49px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/news/" title="Latest news items in weblog format"><img src="/a/gfx/header/news-off.jpg" width="49" height="25" alt="News" /></a>
+              <a href="https://wincent.com/a/news/" title="Latest news items in weblog format"><img src="/a/gfx/header/news-off.jpg" width="49" height="25" alt="News" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/news/archives/mac_os_x_news/" title="Apple and Mac OS X-related news">Mac OS X News</a></li>
-                <li><a href="http://www.wincent.com/a/news/archives/product_news/" title="Wincent product news">Product News</a></li>
-                <li><a href="http://www.wincent.com/a/news/archives/site_news/" title="Site-related news">Site News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/mac_os_x_news/" title="Apple and Mac OS X-related news">Mac OS X News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/product_news/" title="Wincent product news">Product News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/site_news/" title="Site-related news">Site News</a></li>
                 <li><a href="http://colaiuta.net/" title="Development and other notes from Wincent">Wincent Colaiuta's weblog</a></li>
               </ul>
             </li>
           </ul>
         </td>
         <td width="107" height="25"><a href="http://kbase.wincent.com/" title="Categorized Mac OS X tips and information"><img src="/a/gfx/header/knowledge-base-off.jpg" width="107" height="25" alt="Knowledge Base" /></a></td>
-        <td width="62" height="25"><a href="http://www.wincent.com/a/contact/" title="Contact email form"><img src="/a/gfx/header/contact-off.jpg" width="62" height="25" alt="Contact" /></a></td>
+        <td width="62" height="25"><a href="https://wincent.com/a/contact/" title="Contact email form"><img src="/a/gfx/header/contact-off.jpg" width="62" height="25" alt="Contact" /></a></td>
         <td width="72" height="25">
           <ul style="width: 72px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/site-map/" title="Site overview"><img src="/a/gfx/header/site-map-off.jpg" width="72" height="25" alt="Site Map" /></a>
+              <a href="https://wincent.com/a/site-map/" title="Site overview"><img src="/a/gfx/header/site-map-off.jpg" width="72" height="25" alt="Site Map" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/site-map/search/" title="Site search">Search</a></li>
+                <li><a href="https://wincent.com/a/site-map/search/" title="Site search">Search</a></li>
               </ul>
             </li>
           </ul>
@@ -167,7 +167,7 @@
       </tr>
     </table>
   <div id="breadcrumbs">
-    <p><a href="http://www.wincent.com/">Main</a>&nbsp;&gt;&nbsp;<a href="../../">About</a>&nbsp;&gt;&nbsp;<a href="../">Wincent</a>&nbsp;&gt;&nbsp;Weblog    </p>
+    <p><a href="https://wincent.com/">Main</a>&nbsp;&gt;&nbsp;<a href="../../">About</a>&nbsp;&gt;&nbsp;<a href="../">Wincent</a>&nbsp;&gt;&nbsp;Weblog    </p>
   </div>
 
 <div id="container">
@@ -175,7 +175,7 @@
 <div class="sidebar">
 <h2>Mini-log</h2>
 
-<p class="more"><em>"I shall call it, Mini-log..."</em> (<a href="http://www.wincent.com/a/about/wincent/weblog/archives/2006/09/keeping_up_to_d.php">about</a>)</p>
+<p class="more"><em>"I shall call it, Mini-log..."</em> (<a href="https://wincent.com/a/about/wincent/weblog/archives/2006/09/keeping_up_to_d.php">about</a>)</p>
 
 
   
@@ -184,7 +184,7 @@
   
   <li>
     <h4>SuperDuper! 2.5! Released!</h4>
-    <p>A <a href='http://www.shirt-pocket.com/blog/index.php/shadedgrey/comments/superduper_25_released/'>most welcome update</a> that brings <a href='http://www.wincent.com/knowledge-base/Leopard'>Leopard</a> compatibility at last. I make simple <tt>tar</tt>-based backups of my home directory every two hours via a <tt>cron</tt> job, but I've been without whole-disk backups for a while now because <a href='http://www.wincent.com/knowledge-base/SuperDuper!'>SuperDuper!</a> has been out of action. It's good to have it back!</p>
+    <p>A <a href='http://www.shirt-pocket.com/blog/index.php/shadedgrey/comments/superduper_25_released/'>most welcome update</a> that brings <a href='https://wincent.com/knowledge-base/Leopard'>Leopard</a> compatibility at last. I make simple <tt>tar</tt>-based backups of my home directory every two hours via a <tt>cron</tt> job, but I've been without whole-disk backups for a while now because <a href='https://wincent.com/knowledge-base/SuperDuper!'>SuperDuper!</a> has been out of action. It's good to have it back!</p>
 
   </li>
   
@@ -197,7 +197,7 @@
   
   <li>
     <h4>backtrace(3)</h4>
-    <p>Cool new <a href='http://www.wincent.com/knowledge-base/API'>API</a> for <a href='http://www.wincent.com/knowledge-base/Leopard'>Leopard</a> that I just found out about.</p>
+    <p>Cool new <a href='https://wincent.com/knowledge-base/API'>API</a> for <a href='https://wincent.com/knowledge-base/Leopard'>Leopard</a> that I just found out about.</p>
 
   </li>
   
@@ -257,7 +257,7 @@
   
   <li>
     <h4>Subversion 1.4.6</h4>
-    <p><a href='http://subversion.tigris.org/svn_1.4_releasenotes.html'>Is out</a> (<a href='http://svn.collab.net/viewvc/svn/tags/1.4.6/CHANGES?revision=28590&amp;view=markup'>full changelog</a>). I doubt I'll bother upgrading though from the default 1.4.4 installation that comes with <a href='http://www.wincent.com/knowledge-base/Leopard'>Leopard</a>, seeing as I use <a href='http://www.wincent.com/knowledge-base/Git'>Git</a> for everything now.</p>
+    <p><a href='http://subversion.tigris.org/svn_1.4_releasenotes.html'>Is out</a> (<a href='http://svn.collab.net/viewvc/svn/tags/1.4.6/CHANGES?revision=28590&amp;view=markup'>full changelog</a>). I doubt I'll bother upgrading though from the default 1.4.4 installation that comes with <a href='https://wincent.com/knowledge-base/Leopard'>Leopard</a>, seeing as I use <a href='https://wincent.com/knowledge-base/Git'>Git</a> for everything now.</p>
 
   </li>
   
@@ -296,7 +296,7 @@
   
   <li>
     <h4>Ruby 1.9/2.0 manifold faster...</h4>
-    <p>...than it's <a href='http://antoniocangiano.com/2007/12/03/the-great-ruby-shootout/'>closest competitor</a> (JRuby), which isn't surprising, seeing as JRuby is built on <a href='http://www.wincent.com/knowledge-base/Java'>Java</a> (not exactly known for its blistering speed).</p>
+    <p>...than it's <a href='http://antoniocangiano.com/2007/12/03/the-great-ruby-shootout/'>closest competitor</a> (JRuby), which isn't surprising, seeing as JRuby is built on <a href='https://wincent.com/knowledge-base/Java'>Java</a> (not exactly known for its blistering speed).</p>
 
   </li>
   
@@ -364,10 +364,10 @@
   
 
  
-<p class="more"><a href="http://www.wincent.com/a/about/wincent/weblog/mini-log/archives/">Mini-log archives...</a></p><hr />
+<p class="more"><a href="https://wincent.com/a/about/wincent/weblog/mini-log/archives/">Mini-log archives...</a></p><hr />
 <h2>Git log</h2>
 
-<p class="more"><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2006/09/keeping_up_to_d.php"><em>what's this?...</em></a></p>
+<p class="more"><a href="https://wincent.com/a/about/wincent/weblog/archives/2006/09/keeping_up_to_d.php"><em>what's this?...</em></a></p>
 
 
   
@@ -558,13 +558,13 @@
   
 
  
-<p class="more"><a href="http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/index.php">Git log archives...</a></p></div>
+<p class="more"><a href="https://wincent.com/a/about/wincent/weblog/svn-log/archives/index.php">Git log archives...</a></p></div>
 </div>
 <div id="center">
 <div class="content">
 
 <h3>Welcome to the personal weblog of Wincent Colaiuta</h3>
-<p>This is my personal weblog where I write things that aren't always related to my business. If you're looking for information about my products please go to <a href="http://www.wincent.com/">wincent.com</a>, and for official news <a href="http://www.wincent.com/a/news/">see here</a>. Shortcut to this weblog: <a href="http://colaiuta.net/">colaiuta.net</a>.</p>
+<p>This is my personal weblog where I write things that aren't always related to my business. If you're looking for information about my products please go to <a href="https://wincent.com/">wincent.com</a>, and for official news <a href="https://wincent.com/a/news/">see here</a>. Shortcut to this weblog: <a href="http://colaiuta.net/">colaiuta.net</a>.</p>
 <hr />
 
 
@@ -576,7 +576,7 @@
 
 <h3 id="a004233">Final server migration this week</h3>
 
-<p>I've been working on moving to the new server for <a href='http://www.wincent.com/a/about/wincent/weblog/archives/2008/02/server_migratio.php'>nearly a month now</a>, a process which has been quite slow because all the data has to be exported from a number of &quot;legacy&quot; applications and imported into a brand new custom Rails application written especially for this site. It's slow going because it's the first time I've ever deployed a Rails application and I've had <em>a lot</em> to learn... but now I know a fair bit about nginx, capistrano, mongrel, monit, and of course Rails itself. The server too is totally different, with a different operating system, so it's all been quite time-consuming.</p>
+<p>I've been working on moving to the new server for <a href='https://wincent.com/a/about/wincent/weblog/archives/2008/02/server_migratio.php'>nearly a month now</a>, a process which has been quite slow because all the data has to be exported from a number of &quot;legacy&quot; applications and imported into a brand new custom Rails application written especially for this site. It's slow going because it's the first time I've ever deployed a Rails application and I've had <em>a lot</em> to learn... but now I know a fair bit about nginx, capistrano, mongrel, monit, and of course Rails itself. The server too is totally different, with a different operating system, so it's all been quite time-consuming.</p>
 <p>Well, the crunch time is now coming and the <em>real</em> server move is about to happen this week (at the end of the March the old server will go offline forever, so the move has to happen this week, ready or not). So this will most likely be my last post ever to this weblog.</p>
 <p>The forums are already in read-only mode, and I'm about to shut down the bug tracker too shortly so that I can do the final export of all the records and move them into the database on the new server. If you had an account on the old server you'll automatically have one on the new server too, although you will need to reset your password (I couldn't transfer across any passwords because none of them were stored in plain text, and rightly so of course).</p>
 <p>At some point during this week email might temporarily go down, hopefully only for about an hour (delivery failures should be temporary), and the wincent.com domain itself will go down at roughly the same time too. When it comes back up we'll be running on the new server. If you make a purchase during that time you might have to wait an hour or two for your license information, but we'll soon be back to immediate automated delivery.</p>
@@ -589,10 +589,10 @@
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/miscellaneous/">Miscellaneous</a> articles
+More <a href="https://wincent.com/a/about/wincent/weblog/archives/miscellaneous/">Miscellaneous</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/03/final_server_mi.php"> 1:18 AM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2008/03/final_server_mi.php"> 1:18 AM</a>
 
 
 </p>
@@ -606,7 +606,7 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/miscellaneo
 
 <h3 id="a004181">Server migration under way</h3>
 
-<p>The <a href='http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php'>server migration</a> from Rackspace to INetU is currently underway. My aim is do this very carefully, service by service, and keep downtime to a minimum; hopefully minutes rather than hours.</p>
+<p>The <a href='https://wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php'>server migration</a> from Rackspace to INetU is currently underway. My aim is do this very carefully, service by service, and keep downtime to a minimum; hopefully minutes rather than hours.</p>
 <p>Just in case there is any interruption during the move, I've just opened <a href='http://twitter.com/wincent'>a twitter account</a> where I'll be posting updates along the way:</p>
 <ul>
 <li><a href='http://twitter.com/wincent'>http://twitter.com/wincent</a></li>
@@ -617,10 +617,10 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/miscellaneo
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/miscellaneous/">Miscellaneous</a> articles
+More <a href="https://wincent.com/a/about/wincent/weblog/archives/miscellaneous/">Miscellaneous</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/02/server_migratio.php">11:53 AM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/server_migratio.php">11:53 AM</a>
 
 
 </p>
@@ -645,10 +645,10 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/miscellaneo
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/miscellaneous/">Miscellaneous</a> articles
+More <a href="https://wincent.com/a/about/wincent/weblog/archives/miscellaneous/">Miscellaneous</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/02/microphone_pric.php"> 9:51 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/microphone_pric.php"> 9:51 PM</a>
 
 
 </p>
@@ -668,14 +668,14 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/miscellaneo
 
 
 
-<p class="extended"><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/02/the_joy_of_dele.php#more">Read full article</a></p>
+<p class="extended"><a href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/the_joy_of_dele.php#more">Read full article</a></p>
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/miscellaneous/">Miscellaneous</a> articles
+More <a href="https://wincent.com/a/about/wincent/weblog/archives/miscellaneous/">Miscellaneous</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/02/the_joy_of_dele.php"> 5:53 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/the_joy_of_dele.php"> 5:53 PM</a>
 
 
 </p>
@@ -689,22 +689,22 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/miscellaneo
 
 <h3 id="a003874">Ragel wins! Fatality!</h3>
 
-<p>One of my projects is a <a href='http://git.wincent.com/wikitext.git'>fast wikitext-to-HTML translator</a>. It's a <a href='http://www.wincent.com/knowledge-base/Ruby'>Ruby</a> extension written in <a href='http://www.wincent.com/knowledge-base/C'>C</a> with speed being one of its top design goals (robustness, predictability and security being the others). I'm working on this because the <a href='http://www.wincent.com/knowledge-base/Rails'>Rails</a> rewrite of this site will use <a href='http://www.wincent.com/knowledge-base/wikitext%20markup'>wikitext markup</a> for basically everything. Rails has a bad reputation for being slow and resource hungry, and that's why one of my primary objectives is speed; I don't want my wikitext parser being a bottleneck.</p>
+<p>One of my projects is a <a href='http://git.wincent.com/wikitext.git'>fast wikitext-to-HTML translator</a>. It's a <a href='https://wincent.com/knowledge-base/Ruby'>Ruby</a> extension written in <a href='https://wincent.com/knowledge-base/C'>C</a> with speed being one of its top design goals (robustness, predictability and security being the others). I'm working on this because the <a href='https://wincent.com/knowledge-base/Rails'>Rails</a> rewrite of this site will use <a href='https://wincent.com/knowledge-base/wikitext%20markup'>wikitext markup</a> for basically everything. Rails has a bad reputation for being slow and resource hungry, and that's why one of my primary objectives is speed; I don't want my wikitext parser being a bottleneck.</p>
 <p>The translator itself consists of a <a href='http://git.wincent.com/wikitext.git?a=blob;f=ext/wikitext.c;h=59eab1da4da6c799ab148c4131d31e8d77c82d5e;hb=HEAD'>hand-coded parser written in C</a> paired with a scanner/tokenizer/lexer generated from a <a href='http://git.wincent.com/wikitext.git?a=blob;f=ext/Wikitext.g;h=77bc2cc72a65d601843fc759d279a687b3daca81;hb=HEAD'>grammar specification</a>.</p>
-<p>Up until now the scanner used a <a href='http://www.wincent.com/knowledge-base/ANTLR'>ANTLR</a>-generated lexer using the &quot;C target&quot; (although ANTLR itself is written in Java, it can target multiple languages, including C). The C target is the current speed king among ANTLR targets and is likely to remain so for the foreseeable future. It too is engineered with speed in mind and is quite frugal with resources (for example, when emitting tokens it maintains pointers into the input stream rather than making a copy of the substring for each token).</p>
-<p>And the results were quite snappy. But for some time I've had the sneaking suspicion that a <a href='http://www.wincent.com/knowledge-base/Ragel'>Ragel</a>-generated scanner would be faster. I suspected this even though ANTLR uses all sorts of clever tricks like trying to predict which path to take and only backtracking if prediction fails.</p>
+<p>Up until now the scanner used a <a href='https://wincent.com/knowledge-base/ANTLR'>ANTLR</a>-generated lexer using the &quot;C target&quot; (although ANTLR itself is written in Java, it can target multiple languages, including C). The C target is the current speed king among ANTLR targets and is likely to remain so for the foreseeable future. It too is engineered with speed in mind and is quite frugal with resources (for example, when emitting tokens it maintains pointers into the input stream rather than making a copy of the substring for each token).</p>
+<p>And the results were quite snappy. But for some time I've had the sneaking suspicion that a <a href='https://wincent.com/knowledge-base/Ragel'>Ragel</a>-generated scanner would be faster. I suspected this even though ANTLR uses all sorts of clever tricks like trying to predict which path to take and only backtracking if prediction fails.</p>
 <p>You see, Ragel generates simple state machines: the building blocks of regular expressions. Whereas ANTLR is like a complex and unpredictable magic clock, Ragel state machines are totally transparent and predictable. I've spent many months trying to use ANTLR on a number of different projects and in every case <em>except</em> for this wikitext translator I've ended up putting it aside because I couldn't divine the incantations required to make it do its black magic. Ragel, on the other hand, is absurdly simple. You can build complex things out of it, but the base components are easily comprehensible. Compared to ANTLR, Ragel is incredibly easy to learn.</p>
 
 
 
-<p class="extended"><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/02/ragel_wins_fata.php#more">Read full article</a></p>
+<p class="extended"><a href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/ragel_wins_fata.php#more">Read full article</a></p>
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
+More <a href="https://wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/02/ragel_wins_fata.php"> 6:07 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/ragel_wins_fata.php"> 6:07 PM</a>
 
 
 </p>
@@ -718,7 +718,7 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development
 
 <h3 id="a003819">Farewell Rackspace</h3>
 
-<p>I wrote the other day that I was going to be <a href='http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/moving_to_rhel.php'>moving to RHEL 5</a> in the near future. What I wasn't sure at the time was exactly <em>how</em> I'd be making the move. At the time it seemed that the most likely pathway was going to be installing a new drive for RHEL 5 and migrating the data over afterwards; the exact mechanics of this were never really defined (would the drive have RHEL 5 <em>pre</em>-installed on it prior to being slotted in? would they need to take the machine down and do the install &quot;in place&quot;?).</p>
+<p>I wrote the other day that I was going to be <a href='https://wincent.com/a/about/wincent/weblog/archives/2008/01/moving_to_rhel.php'>moving to RHEL 5</a> in the near future. What I wasn't sure at the time was exactly <em>how</em> I'd be making the move. At the time it seemed that the most likely pathway was going to be installing a new drive for RHEL 5 and migrating the data over afterwards; the exact mechanics of this were never really defined (would the drive have RHEL 5 <em>pre</em>-installed on it prior to being slotted in? would they need to take the machine down and do the install &quot;in place&quot;?).</p>
 <p><em>Ideally</em> my host (<a href='http://rackspace.com/'>Rackspace</a>) would have slotted in a drive with a pre-installed OS on it, brought the server online so I could migrate my data over to the new drive and <em>then</em> rebooted from the new drive. I thought they use identical, standard hardware configurations to allow precisely this kind of thing.</p>
 <p>So you'd be looking at two reboots, one of them accompanied by a few minutes of downtime to physically install the drive, and then a period in which some services didn't work properly because they'd need to be tweaked, set-up and configured only after booting into RHEL 5 for the first time. But overall impact to your website visitors would be fairly minimal. Once all that was done you'd be looking at another quick powercycle while they shut down the server to remove the old drive (you don't get anything for free from Rackspace).</p>
 <p>I wonder how often Rackspace does this type of upgrade. As it was, they were suprisingly slow to offer the details of the procedure and offer options, and that's what makes me wonder.</p>
@@ -726,14 +726,14 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development
 
 
 
-<p class="extended"><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php#more">Read full article</a></p>
+<p class="extended"><a href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php#more">Read full article</a></p>
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/miscellaneous/">Miscellaneous</a> articles
+More <a href="https://wincent.com/a/about/wincent/weblog/archives/miscellaneous/">Miscellaneous</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php">11:53 AM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php">11:53 AM</a>
 
 
 </p>
@@ -747,10 +747,10 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/miscellaneo
 
 <h3 id="a003802">Involuntary Reboot Log #25</h3>
 
-<p>Like I said the other day, looks like <a href='http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php'>this iMac is dying</a>. This time the machine simply turned itself off when I bumped the desk with my knee; it could barely even be called a bump.</p>
+<p>Like I said the other day, looks like <a href='https://wincent.com/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php'>this iMac is dying</a>. This time the machine simply turned itself off when I bumped the desk with my knee; it could barely even be called a bump.</p>
 <p>The average time between failures is dropping. Not long ago it was about one month, but now it's approaching three weeks, and if you look at the average over the last month the failures have been almost weekly.</p>
-<p>Apart from the risk of damage to my data, I am starting to get sick of these Disk First Aid runs (during which the machine is unusable), which go especially slowly because <a href='http://www.wincent.com/knowledge-base/Spotlight'>Spotlight</a> decides to reindex <em>all</em> of my volumes every time I have one of these failures.</p>
-<p>On a tangential note: I received an email in response to my <a href='http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php'>last post</a> in which I complained about the lack of RAM in the low-end iMacs. It was pointed out to me that real-world RAM really is cheap nowadays (even if RAM from <a href='http://www.wincent.com/knowledge-base/Apple'>Apple</a> is not). You can max out an iMac to 4 GB for a mere $100 at <a href='http://macsales.com'>my retailer of choice</a> (OWC), and for someone like me living in Europe and buying the RAM from the US you're still looking at only 85€ <em>including</em> international shipping.</p>
+<p>Apart from the risk of damage to my data, I am starting to get sick of these Disk First Aid runs (during which the machine is unusable), which go especially slowly because <a href='https://wincent.com/knowledge-base/Spotlight'>Spotlight</a> decides to reindex <em>all</em> of my volumes every time I have one of these failures.</p>
+<p>On a tangential note: I received an email in response to my <a href='https://wincent.com/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php'>last post</a> in which I complained about the lack of RAM in the low-end iMacs. It was pointed out to me that real-world RAM really is cheap nowadays (even if RAM from <a href='https://wincent.com/knowledge-base/Apple'>Apple</a> is not). You can max out an iMac to 4 GB for a mere $100 at <a href='http://macsales.com'>my retailer of choice</a> (OWC), and for someone like me living in Europe and buying the RAM from the US you're still looking at only 85€ <em>including</em> international shipping.</p>
 <a name='Involuntary%20reboot%20stats%20to%20date'></a><h3>Involuntary reboot stats to date</h3>
 
 <ul>
@@ -768,10 +768,10 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/miscellaneo
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/involuntary_reboot_log/">Involuntary Reboot Log</a> articles
+More <a href="https://wincent.com/a/about/wincent/weblog/archives/involuntary_reboot_log/">Involuntary Reboot Log</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/involuntary_reb_22.php"> 9:39 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/involuntary_reb_22.php"> 9:39 PM</a>
 
 
 </p>
@@ -785,7 +785,7 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/involuntary
 
 <h3 id="a003775">Rails and validates_uniqueness_of</h3>
 
-<p>I'm a <a href='http://www.wincent.com/knowledge-base/Rails'>Rails</a> dabbler who has never actually deployed an application yet but has been working in spare moments on a new version of this site that will be powered by Rails.</p>
+<p>I'm a <a href='https://wincent.com/knowledge-base/Rails'>Rails</a> dabbler who has never actually deployed an application yet but has been working in spare moments on a new version of this site that will be powered by Rails.</p>
 <p>I was puzzled today to see excess <tt>SELECT</tt> queries whenever I saved a record. The queries were for attributes that were entirely unrelated to what I was manipulating.</p>
 <p>I'll spare you the long story and cut to the chase. It turns out that these extra queries are generated by <tt>validates_uniqueness_of</tt>. I guess I should have known. The entire model gets validated whenever you save, even attributes that you haven't touched. I guess this makes sense.</p>
 <p>Now, I am not really sure about the point of <tt>validates_uniqueness_of</tt> because it is vulnerable to a classic race condition; basically Rails checks &quot;is this unique?&quot; and if it is goes ahead and saves the record. Of course, in a multi-user application it's possible that what was unique a millisecond again is no longer so.</p>
@@ -800,10 +800,10 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/involuntary
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
+More <a href="https://wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/rails_and_valid.php"> 8:51 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/rails_and_valid.php"> 8:51 PM</a>
 
 
 </p>
@@ -816,9 +816,9 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development
 <h3 id="a003774">iMac finally dying?</h3>
 
 <p>I'm starting to get really worried about this machine.</p>
-<p>Today we have the painters here painting all the rooms, which means that I've had to take the iMac out into the kitchen. As I've <a href='http://www.wincent.com/a/about/wincent/weblog/archives/2007/08/involuntary_reb_13.php'>mentioned before</a>, it has a wonky power socket, and this time it didn't want to boot up.</p>
+<p>Today we have the painters here painting all the rooms, which means that I've had to take the iMac out into the kitchen. As I've <a href='https://wincent.com/a/about/wincent/weblog/archives/2007/08/involuntary_reb_13.php'>mentioned before</a>, it has a wonky power socket, and this time it didn't want to boot up.</p>
 <p>Several minutes of jiggling later I finally got the machine to turn on. Now I'm wondering which boot-up is going to be the last. One of these days the machine isn't going to power up.</p>
-<p>Financially, I'm not in a position to buy a replacement yet. The cheapest model costs 1,169€ here but is handicapped with only a gig of RAM which would probably make it slower than this machine (which has 2 gig) despite having a faster processor (a 2 GHz Core 2 Duo as opposed to the 1.83 GHz Core Duo I currently have). RAM is very important for performance when compiling code in <a href='http://www.wincent.com/knowledge-base/Xcode'>Xcode</a>, mostly due to the amount of memory occupied by precompiled headers.</p>
+<p>Financially, I'm not in a position to buy a replacement yet. The cheapest model costs 1,169€ here but is handicapped with only a gig of RAM which would probably make it slower than this machine (which has 2 gig) despite having a faster processor (a 2 GHz Core 2 Duo as opposed to the 1.83 GHz Core Duo I currently have). RAM is very important for performance when compiling code in <a href='https://wincent.com/knowledge-base/Xcode'>Xcode</a>, mostly due to the amount of memory occupied by precompiled headers.</p>
 <p>The top-end model would be a big improvement over my current machine — a 2.7 GHz Core 2 Extreme with 2 gig of RAM and a bigger screen (24&quot; up from 17&quot;) and hard drive (500 GB up from 160 GB) — but it's out of my price range at 2,159€.</p>
 <p>So really my only two options at this stage are to cross my fingers and hope that this machine holds up, or send it in for repair; and with the deadlines I have looming I just can't afford to be without this machine, even for a few days.</p>
 
@@ -826,10 +826,10 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/miscellaneous/">Miscellaneous</a> articles
+More <a href="https://wincent.com/a/about/wincent/weblog/archives/miscellaneous/">Miscellaneous</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php">10:28 AM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php">10:28 AM</a>
 
 
 </p>
@@ -843,17 +843,17 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/miscellaneo
 
 <h3 id="a003732">Git 1.5.4-rc4</h3>
 
-<p><a href='http://www.wincent.com/knowledge-base/Git%201.5.4-rc4'>Git 1.5.4-rc4</a> is out, and the final 1.5.4 release is likely to come soon, probably before the end of the month. My favorite change in this build is the fix for the performance regression when commiting a single file specified on the <a href='http://www.wincent.com/knowledge-base/command%20line'>command line</a> (eg. <tt>git commit foo</tt>) as this is something that I do <em>often</em>.</p>
-<p>The regression was only in the development version and has never made it into a released version of <a href='http://www.wincent.com/knowledge-base/Git'>Git</a>, but I've been tracking the master branch for some time now (see &quot;<a href='http://www.wincent.com/knowledge-base/Tracking%20the%20Git%20maint%20or%20master%20branches'>Tracking the Git maint or master branches</a>&quot;) so I had definitely noticed the problem.</p>
+<p><a href='https://wincent.com/knowledge-base/Git%201.5.4-rc4'>Git 1.5.4-rc4</a> is out, and the final 1.5.4 release is likely to come soon, probably before the end of the month. My favorite change in this build is the fix for the performance regression when commiting a single file specified on the <a href='https://wincent.com/knowledge-base/command%20line'>command line</a> (eg. <tt>git commit foo</tt>) as this is something that I do <em>often</em>.</p>
+<p>The regression was only in the development version and has never made it into a released version of <a href='https://wincent.com/knowledge-base/Git'>Git</a>, but I've been tracking the master branch for some time now (see &quot;<a href='https://wincent.com/knowledge-base/Tracking%20the%20Git%20maint%20or%20master%20branches'>Tracking the Git maint or master branches</a>&quot;) so I had definitely noticed the problem.</p>
 
 
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
+More <a href="https://wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/git_154rc4.php">12:51 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/git_154rc4.php">12:51 PM</a>
 
 
 </p>
@@ -867,20 +867,20 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development
 
 <h3 id="a003708">Moving to RHEL 5</h3>
 
-<p>In October last year I <a href='http://www.wincent.com/a/about/wincent/weblog/archives/2007/10/thinking_about.php'>wrote</a> about changing UNIXes. Well, it's a new year now and it looks like it is going to happen.</p>
-<p>I'll be migrating to <a href='http://www.wincent.com/knowledge-base/RHEL%205'>RHEL 5</a> (from RHEL 3). I don't have a firm date for the migration yet, and I need to do quite a bit of research before then about the best way to get all my data across. This will basically be a clean install on a new hard drive, the server should only be down for a relatively short interval, and then we'll come back on line and over the following hours I'll be transferring user accounts, mail, databases, software and everything else from the old hard drive to the new. So it will be quite intense, and most services <em>will</em> be interrupted for at least some of the migration. I expect to be transferring and configuring for several hours, possibly even the entire day.</p>
+<p>In October last year I <a href='https://wincent.com/a/about/wincent/weblog/archives/2007/10/thinking_about.php'>wrote</a> about changing UNIXes. Well, it's a new year now and it looks like it is going to happen.</p>
+<p>I'll be migrating to <a href='https://wincent.com/knowledge-base/RHEL%205'>RHEL 5</a> (from RHEL 3). I don't have a firm date for the migration yet, and I need to do quite a bit of research before then about the best way to get all my data across. This will basically be a clean install on a new hard drive, the server should only be down for a relatively short interval, and then we'll come back on line and over the following hours I'll be transferring user accounts, mail, databases, software and everything else from the old hard drive to the new. So it will be quite intense, and most services <em>will</em> be interrupted for at least some of the migration. I expect to be transferring and configuring for several hours, possibly even the entire day.</p>
 <p>One way to minimize the interruption would be to install the drive with the new system on it and migrate some of the data before rebooting, but I'm not sure how much time that will actually buy me, nor whether my host, <a href='http://service.bfast.com/bfast/click?bfmid=30735717&amp;siteid=41506187&amp;bfpage=hosting_headaches'>Rackspace</a>, would be prepared to do that (it would require them to install RHEL 5 on the drive in another machine, then uninstall it from that machine and reinstall it into mine).</p>
-<p>I'm very happy about this because it means I will be able to gradually retire bits of legacy software and replace all of this with a single, lean, unified <a href='http://www.wincent.com/knowledge-base/Rails'>Rails</a> application which handles everything for me (bug tracking, customer support tracking, forums, the wiki, and so forth).</p>
+<p>I'm very happy about this because it means I will be able to gradually retire bits of legacy software and replace all of this with a single, lean, unified <a href='https://wincent.com/knowledge-base/Rails'>Rails</a> application which handles everything for me (bug tracking, customer support tracking, forums, the wiki, and so forth).</p>
 <p>Deploying Rails is a bitch by all accounts, but it's easier on RHEL 5 than it is on RHEL 3, (specifically, there are fewer pieces of additional software that you have to install, and you deviate less from the supported, auto-updated configuration). And once you've deployed it you've got <em>one</em> application stack to worry about instead of half a dozen.</p>
 
 
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/miscellaneous/">Miscellaneous</a> articles
+More <a href="https://wincent.com/a/about/wincent/weblog/archives/miscellaneous/">Miscellaneous</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/moving_to_rhel.php"> 2:56 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/moving_to_rhel.php"> 2:56 PM</a>
 
 
 </p>
@@ -913,10 +913,10 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/miscellaneo
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/involuntary_reboot_log/">Involuntary Reboot Log</a> articles
+More <a href="https://wincent.com/a/about/wincent/weblog/archives/involuntary_reboot_log/">Involuntary Reboot Log</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/involuntary_reb_21.php"> 7:05 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/involuntary_reb_21.php"> 7:05 PM</a>
 
 
 </p>
@@ -930,7 +930,7 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/involuntary
 
 <h3 id="a003647">On the MacBook Air</h3>
 
-<p>I admit to not being really excited about this year's keynote. I've been so engrossed with work of late that I didn't even know what day the keynote would take place. And I knew that most of the things that would be talked about wouldn't excite me: Apple TV (don't have a TV), iPhone stuff (you can't buy iPhones in the country where I live yet), iTunes movie rentals (I don't like the rental model, I'd rather own stuff). Furthermore, the machines which most interest me, <a href='http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/the_new_mac_pro.php'>the Mac Pros</a>, were already revamped before the show started.</p>
+<p>I admit to not being really excited about this year's keynote. I've been so engrossed with work of late that I didn't even know what day the keynote would take place. And I knew that most of the things that would be talked about wouldn't excite me: Apple TV (don't have a TV), iPhone stuff (you can't buy iPhones in the country where I live yet), iTunes movie rentals (I don't like the rental model, I'd rather own stuff). Furthermore, the machines which most interest me, <a href='https://wincent.com/a/about/wincent/weblog/archives/2008/01/the_new_mac_pro.php'>the Mac Pros</a>, were already revamped before the show started.</p>
 <p>But I must confess, even though I am not in the market to buy any new Apple product right now, I am <em>really</em> impressed with the new <a href='http://www.apple.com/macbookair/'>MacBook Air</a>. If I were to buy a laptop, this would be the one for me. I am not one of those people who wants their laptop to be their only machine; for these people the Air is not the right product. I'm a person who wants a portable to be portable; so for me the decision to leave out the optical drive is a very clever optimization. Ever since Apple dropped a 12&quot; model from their line-up I've felt it was a gap. I still have my 12&quot; PowerBook G4 (the aluminum one). It was a great machine and has never skipped a beat in all these years (over four years now, eons in computer time).</p>
 <p>So if I were to buy a laptop, the Air would be the one. The most portable portable ever!</p>
 
@@ -938,10 +938,10 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/involuntary
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/apple/">Apple</a> articles
+More <a href="https://wincent.com/a/about/wincent/weblog/archives/apple/">Apple</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/on_the_macbook.php">10:26 AM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/on_the_macbook.php">10:26 AM</a>
 
 
 </p>
@@ -957,7 +957,7 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/apple/">App
 
 <p>In this screencast I demo using <a href="http://rspec.info/">RSpec</a> and <a href="http://www.zenspider.com/ZSS/Products/ZenTest/">Autotest</a> to do continuous integration/BDD (choose your favorite buzzword) of a compiled Objective-C tool:</p>
 
-<p><a href="http://www.wincent.com/a/about/wincent/weblog/screencasts/rspec_autotest_objc.mov" onclick="window.open('http://www.wincent.com/a/about/wincent/weblog/screencasts/rspec_autotest_objc.mov','popup'); return false"><img src="/a/about/wincent/weblog/screencasts/rspec_autotest_objc.png" alt="Rspec + Autotest + Objective-C" /></a></p>
+<p><a href="https://wincent.com/a/about/wincent/weblog/screencasts/rspec_autotest_objc.mov" onclick="window.open('https://wincent.com/a/about/wincent/weblog/screencasts/rspec_autotest_objc.mov','popup'); return false"><img src="/a/about/wincent/weblog/screencasts/rspec_autotest_objc.png" alt="Rspec + Autotest + Objective-C" /></a></p>
 
 <p>I've got the flu right now, so apologies for the voice.</p>
 
@@ -970,10 +970,10 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/apple/">App
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/screencasts/">Screencasts</a> articles
+More <a href="https://wincent.com/a/about/wincent/weblog/archives/screencasts/">Screencasts</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/rspec_autotest.php">12:26 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/rspec_autotest.php">12:26 PM</a>
 
 
 </p>
@@ -996,17 +996,17 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/screencasts
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
+More <a href="https://wincent.com/a/about/wincent/weblog/archives/development/">Development</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/open_source_eco.php"> 1:50 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/open_source_eco.php"> 1:50 PM</a>
 
 
 </p>
 
 
 
-<p class="more"><a href="http://www.wincent.com/a/about/wincent/weblog/archives/">More articles...</a></p>
+<p class="more"><a href="https://wincent.com/a/about/wincent/weblog/archives/">More articles...</a></p>
 
 </div>
 </div>
@@ -1038,42 +1038,42 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development
 
 <ul>
 
-<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/03/final_server_mi.php">Final server migration this week</a></li>
+<li><a href="https://wincent.com/a/about/wincent/weblog/archives/2008/03/final_server_mi.php">Final server migration this week</a></li>
 
-<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/02/server_migratio.php">Server migration under way</a></li>
+<li><a href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/server_migratio.php">Server migration under way</a></li>
 
-<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/02/microphone_pric.php">Microphone prices</a></li>
+<li><a href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/microphone_pric.php">Microphone prices</a></li>
 
-<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/02/the_joy_of_dele.php">The joy of deleting code</a></li>
+<li><a href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/the_joy_of_dele.php">The joy of deleting code</a></li>
 
-<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/02/ragel_wins_fata.php">Ragel wins! Fatality!</a></li>
+<li><a href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/ragel_wins_fata.php">Ragel wins! Fatality!</a></li>
 
-<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php">Farewell Rackspace</a></li>
+<li><a href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php">Farewell Rackspace</a></li>
 
-<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/involuntary_reb_22.php">Involuntary Reboot Log #25</a></li>
+<li><a href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/involuntary_reb_22.php">Involuntary Reboot Log #25</a></li>
 
-<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/rails_and_valid.php">Rails and validates_uniqueness_of</a></li>
+<li><a href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/rails_and_valid.php">Rails and validates_uniqueness_of</a></li>
 
-<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php">iMac finally dying?</a></li>
+<li><a href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php">iMac finally dying?</a></li>
 
-<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/git_154rc4.php">Git 1.5.4-rc4</a></li>
+<li><a href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/git_154rc4.php">Git 1.5.4-rc4</a></li>
 
 </ul>
 
-<p class="more"><a href="http://www.wincent.com/a/about/wincent/weblog/archives/">Full article listing...</a></p>
+<p class="more"><a href="https://wincent.com/a/about/wincent/weblog/archives/">Full article listing...</a></p>
 
 <hr />
 
 <h2>Nightlog</h2>
 
-<p class="more"><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2006/09/keeping_up_to_d.php"><em>what's this?...</em></a></p>
+<p class="more"><a href="https://wincent.com/a/about/wincent/weblog/archives/2006/09/keeping_up_to_d.php"><em>what's this?...</em></a></p>
 
 
   
     <p class="quick-links-date">13 Jan 2008</p>
     <ul>
   
-  <li><a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_ffaa428.php">Synergy (revision ffaa428)</a></li>
+  <li><a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_ffaa428.php">Synergy (revision ffaa428)</a></li>
   
     </ul>
   
@@ -1082,11 +1082,11 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development
     <p class="quick-links-date">11 Jan 2008</p>
     <ul>
   
-  <li><a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_4e616e0.php">Synergy (revision 4e616e0)</a></li>
+  <li><a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_4e616e0.php">Synergy (revision 4e616e0)</a></li>
   
 
   
-  <li><a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_7ce4a27.php">Synergy (revision 7ce4a27)</a></li>
+  <li><a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_7ce4a27.php">Synergy (revision 7ce4a27)</a></li>
   
     </ul>
   
@@ -1095,7 +1095,7 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development
     <p class="quick-links-date"> 8 Jan 2008</p>
     <ul>
   
-  <li><a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_9848c4f.php">Synergy (revision 9848c4f)</a></li>
+  <li><a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_9848c4f.php">Synergy (revision 9848c4f)</a></li>
   
     </ul>
   
@@ -1104,7 +1104,7 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development
     <p class="quick-links-date">28 Dec 2007</p>
     <ul>
   
-  <li><a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2007/12/synergy_revision_7ae6b07.php">Synergy (revision 7ae6b07)</a></li>
+  <li><a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/12/synergy_revision_7ae6b07.php">Synergy (revision 7ae6b07)</a></li>
   
     </ul>
   
@@ -1113,7 +1113,7 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development
     <p class="quick-links-date">27 Dec 2007</p>
     <ul>
   
-  <li><a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2007/12/synergy_revision_c7eb0af3cce75.php">Synergy (revision c7eb0af)</a></li>
+  <li><a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/12/synergy_revision_c7eb0af3cce75.php">Synergy (revision c7eb0af)</a></li>
   
     </ul>
   
@@ -1122,15 +1122,15 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development
     <p class="quick-links-date">26 Apr 2007</p>
     <ul>
   
-  <li><a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/hextrapolate_revision_91.php">Hextrapolate (revision 91)</a></li>
+  <li><a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/hextrapolate_revision_91.php">Hextrapolate (revision 91)</a></li>
   
 
   
-  <li><a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_advance_revision_459.php">Synergy Advance (revision 459)</a></li>
+  <li><a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_advance_revision_459.php">Synergy Advance (revision 459)</a></li>
   
 
   
-  <li><a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_revision_351.php">Synergy (revision 351)</a></li>
+  <li><a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_revision_351.php">Synergy (revision 351)</a></li>
   
     </ul>
   
@@ -1139,7 +1139,7 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development
     <p class="quick-links-date"> 8 Apr 2007</p>
     <ul>
   
-  <li><a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_advance_revision_451.php">Synergy Advance (revision 451)</a></li>
+  <li><a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_advance_revision_451.php">Synergy Advance (revision 451)</a></li>
   
     </ul>
   
@@ -1148,7 +1148,7 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development
     <p class="quick-links-date"> 4 Apr 2007</p>
     <ul>
   
-  <li><a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_advance_revision_429.php">Synergy Advance (revision 429)</a></li>
+  <li><a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_advance_revision_429.php">Synergy Advance (revision 429)</a></li>
   
     </ul>
   
@@ -1157,7 +1157,7 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development
     <p class="quick-links-date">28 Mar 2007</p>
     <ul>
   
-  <li><a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_340.php">Synergy (revision 340)</a></li>
+  <li><a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_340.php">Synergy (revision 340)</a></li>
   
     </ul>
   
@@ -1166,7 +1166,7 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development
     <p class="quick-links-date">27 Mar 2007</p>
     <ul>
   
-  <li><a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_339.php">Synergy (revision 339)</a></li>
+  <li><a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_339.php">Synergy (revision 339)</a></li>
   
     </ul>
   
@@ -1175,7 +1175,7 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development
     <p class="quick-links-date">21 Mar 2007</p>
     <ul>
   
-  <li><a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_328.php">Synergy (revision 328)</a></li>
+  <li><a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_328.php">Synergy (revision 328)</a></li>
   
     </ul>
   
@@ -1184,7 +1184,7 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development
     <p class="quick-links-date">16 Mar 2007</p>
     <ul>
   
-  <li><a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_326.php">Synergy (revision 326)</a></li>
+  <li><a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_326.php">Synergy (revision 326)</a></li>
   
     </ul>
   
@@ -1193,17 +1193,17 @@ More <a href="http://www.wincent.com/a/about/wincent/weblog/archives/development
     <p class="quick-links-date">15 Mar 2007</p>
     <ul>
   
-  <li><a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_325.php">Synergy (revision 325)</a></li>
+  <li><a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_325.php">Synergy (revision 325)</a></li>
   
     </ul>
   
 
  
-<p class="more"><a href="http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/index.php">Nightlog archives...</a></p>
+<p class="more"><a href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/index.php">Nightlog archives...</a></p>
 <hr />
 
 <div class="link-note">
-<a href="http://www.wincent.com/a/about/wincent/weblog/atom.xml">Subscribe (XML)</a>
+<a href="https://wincent.com/a/about/wincent/weblog/atom.xml">Subscribe (XML)</a>
 </div>
 
 

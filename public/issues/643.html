@@ -99,10 +99,10 @@ Description
 <blockquote><p>The LiveType messages are unrelated to the crashes. You see those because LiveType doesn't support Garbage Collection, it tries to inject itself into every running process, and when it tries with Synergy (which is 100% Garbage Collected) it fails to inject itself.</p>
 <p>So those warnings are basically harmless and you'll see many such warnings, for many different applications, during these &quot;early days&quot; in the Leopard cycle. Eventually everything will be Garbage Collected but that it still some distance away.</p>
 <p>The crashes you're seeing are caused by NSAppleScript. See this bug report for more details:</p>
-<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=640" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=640</a></p>
+<p><a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=640" class="external">https://wincent.com/a/support/bugs/show_bug.cgi?id=640</a></p>
 <p>Basically, a4 is much more stable than a2, but that one issue remains. If you try starting it a few times you'll see that it more or less runs indefinitely (at least it does in my experience). The NSAppleScript issue is the last one that I need to solve, I think, before getting back to full stability.</p>
 <p>Keep your eye on the nightly builds too:</p>
-<p><a href="http://wincent.com/s/nightlies/" class="external">http://wincent.com/s/nightlies/</a></p>
+<p><a href="https://wincent.com/s/nightlies/" class="external">https://wincent.com/s/nightlies/</a></p>
 <p>Basically, every time I fix a bug which has some kind of user-visible impact I generally upload a new nightly. If you browse the bug database you'll see some of the latest issues that have been fixed (yes, I know the bug database UI sucks; I have concrete plans to replace it as soon as I can).</p>
 </blockquote>
 </li>

@@ -6,9 +6,9 @@
 <meta name="generator" content="http://www.movabletype.org/" />
 <title>wincent.com news</title>
 <link rel="stylesheet" href="/a/styles.css" type="text/css" />
-<link rel="alternate" type="application/atom+xml" title="Atom" href="http://www.wincent.com/a/news/atom.xml" />
-<link rel="alternate" type="application/rss+xml" title="RSS 1.0" href="http://www.wincent.com/a/news/index.rdf" />
-<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.wincent.com/a/news/index.xml" />
+<link rel="alternate" type="application/atom+xml" title="Atom" href="https://wincent.com/a/news/atom.xml" />
+<link rel="alternate" type="application/rss+xml" title="RSS 1.0" href="https://wincent.com/a/news/index.rdf" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="https://wincent.com/a/news/index.xml" />
 
 </head>
 
@@ -28,8 +28,8 @@
       <tr>
         <td style="background-image: url(/a/gfx/header/left-side.jpg); background-repeat: repeat-y;" width="32"><img src="/a/gfx/header/left-side.jpg" width="32" height="71" alt="" /></td>
         <td style="background-image: url(/a/gfx/header/center-background.jpg); background-repeat: repeat;" colspan="11" align="center" valign="middle">
-  <a href="http://www.wincent.com/"><img src="/a/gfx/wincent-logo-small-gray-bg.jpg" width="43" height="41" alt="wincent" align="middle" /></a>
-  <a href="http://www.wincent.com/a/news/"><img src="/a/gfx/news-header.jpg" width="384" height="24" alt="product and site news" align="middle"/></a>
+  <a href="https://wincent.com/"><img src="/a/gfx/wincent-logo-small-gray-bg.jpg" width="43" height="41" alt="wincent" align="middle" /></a>
+  <a href="https://wincent.com/a/news/"><img src="/a/gfx/news-header.jpg" width="384" height="24" alt="product and site news" align="middle"/></a>
 
         </td>
         <td style="background-image: url(/a/gfx/header/right-side.jpg); background-repeat: repeat-y;" width="32"><img src="/a/gfx/header/right-side.jpg" width="32" height="71" alt="" /></td>
@@ -40,68 +40,68 @@
         <td width="73" height="25">
           <ul style="width: 73px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/products/" title="Full products listing"><img src="/a/gfx/header/products-off.jpg" width="73" height="25" alt="Products" /></a>
+              <a href="https://wincent.com/a/products/" title="Full products listing"><img src="/a/gfx/header/products-off.jpg" width="73" height="25" alt="Products" /></a>
               <ul>
                 <li><a href="https://wincent.com/products/synergy" title="The original iTunes menu bar controller">Synergy &gt;</a>
                   <ul>
                     <li><a href="https://wincent.com/products/synergy/download" title="Download Synergy">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-classic/purchase/" title="Purchase Synergy">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-classic/purchase/" title="Purchase Synergy">Purchase</a></li>
                     <li><a href="https://wincent.com/products/synergy/help" title="Frequently Asked Questions">FAQ</a></li>
-                    <li><a href="http://www.wincent.com/a/products/synergy-classic/buttons/" title="Free button sets">Button Sets</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-classic/buttons/" title="Free button sets">Button Sets</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/synergy-advance/" title="Multi-purpose audio companion">Synergy Advance &gt;</a>
+                <li><a href="https://wincent.com/a/products/synergy-advance/" title="Multi-purpose audio companion">Synergy Advance &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/synergy-advance/download/" title="Download Synergy Advance">Download preview</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/purchase/" title="Purchase Synergy Advance">Purchase</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/synergy-advance/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/download/" title="Download Synergy Advance">Download preview</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/purchase/" title="Purchase Synergy Advance">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/synergy-advance/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/winswitch/" title="Enhanced replacement for Apple's Fast User Switching menu">WinSwitch &gt;</a>
+                <li><a href="https://wincent.com/a/products/winswitch/" title="Enhanced replacement for Apple's Fast User Switching menu">WinSwitch &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/winswitch/download/" title="Download WinSwitch">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/winswitch/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/winswitch/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
-                    <li><a href="http://www.wincent.com/a/products/winswitch/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/download/" title="Download WinSwitch">Download</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/winswitch/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/hextrapolate/" title="Programmers number conversion tool">Hextrapolate &gt;</a>
+                <li><a href="https://wincent.com/a/products/hextrapolate/" title="Programmers number conversion tool">Hextrapolate &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/hextrapolate/download/" title="Download Hextrapolate">Download</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/hextrapolate/purchase/" title="Purchase Hextrapolate">Purchase</a></li>
-                    <li><a href="http://www.wincent.com/a/products/hextrapolate/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/download/" title="Download Hextrapolate">Download</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/purchase/" title="Purchase Hextrapolate">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/hextrapolate/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/install/" title="Installation and deployment solution for developers">Install &gt;</a>
+                <li><a href="https://wincent.com/a/products/install/" title="Installation and deployment solution for developers">Install &gt;</a>
                   <ul>
-                    <li><a href="http://www.wincent.com/a/products/install/download/" title="Install downloads">Downloads</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/purchase/" title="Purchase Install">Purchase</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/donate/" title="Support development with a donation">Donate</a></li>
-                    <li><a href="https://secure.wincent.com/a/products/install/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
-                    <li><a href="http://www.wincent.com/a/products/install/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                    <li><a href="https://wincent.com/a/products/install/download/" title="Install downloads">Downloads</a></li>
+                    <li><a href="https://wincent.com/a/products/install/purchase/" title="Purchase Install">Purchase</a></li>
+                    <li><a href="https://wincent.com/a/products/install/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/install/donate/" title="Support development by becoming a sponsor">Sponsor</a></li>
+                    <li><a href="https://wincent.com/a/products/install/faq/" title="Frequently Asked Questions">FAQ</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/getsmart-pro/" title="Intelligent download manager">GetSmart Pro &gt;</a>
+                <li><a href="https://wincent.com/a/products/getsmart-pro/" title="Intelligent download manager">GetSmart Pro &gt;</a>
                   <ul>
-                    <li><a href="https://secure.wincent.com/a/products/getsmart-pro/donate/" title="Support development with a donation">Donate</a></li>
+                    <li><a href="https://wincent.com/a/products/getsmart-pro/donate/" title="Support development with a donation">Donate</a></li>
                   </ul>
                 </li>
-                <li><a href="http://www.wincent.com/a/products/" title="Full product listing">Other products...</a></li>
+                <li><a href="https://wincent.com/a/products/" title="Full product listing">Other products...</a></li>
               </ul>
             </li>
           </ul>
         </td>
-        <td width="48" height="25"><a href="https://secure.wincent.com/a/store/" title="Wincent online store"><img src="/a/gfx/header/store-off.jpg" width="48" height="25" alt="Store" /></a></td>
+        <td width="48" height="25"><a href="https://wincent.com/a/store/" title="Wincent online store"><img src="/a/gfx/header/store-off.jpg" width="48" height="25" alt="Store" /></a></td>
         <td width="63" height="25">
           <ul style="width: 63px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/services/" title="Full services listing"><img src="/a/gfx/header/services-off.jpg" width="63" height="25" alt="Services" /></a>
+              <a href="https://wincent.com/a/services/" title="Full services listing"><img src="/a/gfx/header/services-off.jpg" width="63" height="25" alt="Services" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/services/custom-development/" title="Custom software development">Custom Development</a></li>
-                <li><a href="http://www.wincent.com/a/services/mac-consultancy/" title="Apple and Mac OS X consultancy">Apple/Mac Consultancy</a></li>
-                <li><a href="http://www.wincent.com/a/services/web-design/" title="Web design services">Web Design</a></li>
-                <li><a href="http://www.wincent.com/a/services/hosting/" title="Internet web and email hosting">Hosting</a></li>
+                <li><a href="https://wincent.com/a/services/custom-development/" title="Custom software development">Custom Development</a></li>
+                <li><a href="https://wincent.com/a/services/mac-consultancy/" title="Apple and Mac OS X consultancy">Apple/Mac Consultancy</a></li>
+                <li><a href="https://wincent.com/a/services/web-design/" title="Web design services">Web Design</a></li>
+                <li><a href="https://wincent.com/a/services/hosting/" title="Internet web and email hosting">Hosting</a></li>
               </ul>
             </li>
           </ul>
@@ -109,16 +109,16 @@
         <td width="62" height="25">
           <ul style="width: 62px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/support/" title="Support resources and links"><img src="/a/gfx/header/support-off.jpg" width="62" height="25" alt="Support" /></a>
+              <a href="https://wincent.com/a/support/" title="Support resources and links"><img src="/a/gfx/header/support-off.jpg" width="62" height="25" alt="Support" /></a>
               <ul>
-                <li><a href="https://secure.wincent.com/a/support/registration/" title="Retrieve lost license codes">Lost License Codes</a></li>
-                <li><a href="http://www.wincent.com/a/support/bugs/" title="Bug tracking and feature request database">Bugs and Feature Requests</a></li>
-                <li><a href="http://www.wincent.com/a/support/demo-licenses/" title="Obtain a demonstration license">Demonstration licenses</a></li>
-                <li><a href="http://www.wincent.com/a/support/forums/" title="Discussion and support forums">Forums</a></li>
-                <li><a href="http://www.wincent.com/a/support/faq/" title="Frequently Asked Questions">FAQ</a></li>
-                <li><a href="http://www.wincent.com/a/support/activation/" title="Product activation and information">Product Activation</a></li>
-                <li><a href="https://secure.wincent.com/a/support/tickets/" title="Open or view a support ticket">Support Tickets</a></li>
-                <li><a href="http://www.wincent.com/a/support/lists/" title="Subscribe/unsubscribe to/from a mailing list">Mailing lists</a></li>
+                <li><a href="https://wincent.com/a/support/registration/" title="Retrieve lost license codes">Lost License Codes</a></li>
+                <li><a href="https://wincent.com/a/support/bugs/" title="Bug tracking and feature request database">Bugs and Feature Requests</a></li>
+                <li><a href="https://wincent.com/a/support/demo-licenses/" title="Obtain a demonstration license">Demonstration licenses</a></li>
+                <li><a href="https://wincent.com/a/support/forums/" title="Discussion and support forums">Forums</a></li>
+                <li><a href="https://wincent.com/a/support/faq/" title="Frequently Asked Questions">FAQ</a></li>
+                <li><a href="https://wincent.com/a/support/activation/" title="Product activation and information">Product Activation</a></li>
+                <li><a href="https://wincent.com/a/support/tickets/" title="Open or view a support ticket">Support Tickets</a></li>
+                <li><a href="https://wincent.com/a/support/lists/" title="Subscribe/unsubscribe to/from a mailing list">Mailing lists</a></li>
               </ul>
             </li>
           </ul>
@@ -126,10 +126,10 @@
         <td width="53" height="25">
           <ul style="width: 53px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/about/" title="Company information"><img src="/a/gfx/header/about-off.jpg" width="53" height="25" alt="About" /></a>
+              <a href="https://wincent.com/a/about/" title="Company information"><img src="/a/gfx/header/about-off.jpg" width="53" height="25" alt="About" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/about/wincent/" title="About Wincent Colaiuta: the person">About Wincent Colaiuta</a></li>
-                <li><a href="http://www.wincent.com/a/about/privacy/" title="About the Wincent Privacy Policy">Privacy Policy</a></li>
+                <li><a href="https://wincent.com/a/about/wincent/" title="About Wincent Colaiuta: the person">About Wincent Colaiuta</a></li>
+                <li><a href="https://wincent.com/a/about/privacy/" title="About the Wincent Privacy Policy">Privacy Policy</a></li>
               </ul>
            </li>
          </ul>
@@ -137,24 +137,24 @@
         <td width="49" height="25">
           <ul style="width: 49px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/news/" title="Latest news items in weblog format"><img src="/a/gfx/header/news-on.jpg" width="49" height="25" alt="News" /></a>
+              <a href="https://wincent.com/a/news/" title="Latest news items in weblog format"><img src="/a/gfx/header/news-on.jpg" width="49" height="25" alt="News" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/news/archives/mac_os_x_news/" title="Apple and Mac OS X-related news">Mac OS X News</a></li>
-                <li><a href="http://www.wincent.com/a/news/archives/product_news/" title="Wincent product news">Product News</a></li>
-                <li><a href="http://www.wincent.com/a/news/archives/site_news/" title="Site-related news">Site News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/mac_os_x_news/" title="Apple and Mac OS X-related news">Mac OS X News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/product_news/" title="Wincent product news">Product News</a></li>
+                <li><a href="https://wincent.com/a/news/archives/site_news/" title="Site-related news">Site News</a></li>
                 <li><a href="http://colaiuta.net/" title="Development and other notes from Wincent">Wincent Colaiuta's weblog</a></li>
               </ul>
             </li>
           </ul>
         </td>
         <td width="107" height="25"><a href="http://kbase.wincent.com/" title="Categorized Mac OS X tips and information"><img src="/a/gfx/header/knowledge-base-off.jpg" width="107" height="25" alt="Knowledge Base" /></a></td>
-        <td width="62" height="25"><a href="http://www.wincent.com/a/contact/" title="Contact email form"><img src="/a/gfx/header/contact-off.jpg" width="62" height="25" alt="Contact" /></a></td>
+        <td width="62" height="25"><a href="https://wincent.com/a/contact/" title="Contact email form"><img src="/a/gfx/header/contact-off.jpg" width="62" height="25" alt="Contact" /></a></td>
         <td width="72" height="25">
           <ul style="width: 72px; height: 25px;">
             <li class="menu">
-              <a href="http://www.wincent.com/a/site-map/" title="Site overview"><img src="/a/gfx/header/site-map-off.jpg" width="72" height="25" alt="Site Map" /></a>
+              <a href="https://wincent.com/a/site-map/" title="Site overview"><img src="/a/gfx/header/site-map-off.jpg" width="72" height="25" alt="Site Map" /></a>
               <ul>
-                <li><a href="http://www.wincent.com/a/site-map/search/" title="Site search">Search</a></li>
+                <li><a href="https://wincent.com/a/site-map/search/" title="Site search">Search</a></li>
               </ul>
             </li>
           </ul>
@@ -164,7 +164,7 @@
       </tr>
     </table>
   <div id="breadcrumbs">
-    <p><a href="http://www.wincent.com/">Main</a>&nbsp;&gt;&nbsp;News    </p>
+    <p><a href="https://wincent.com/">Main</a>&nbsp;&gt;&nbsp;News    </p>
   </div>
 
 <div id="container">
@@ -200,7 +200,7 @@
       <p class="quick-links-date"> 3 Feb 2007</p>
     <ul>
   
-  <li><h4>Aperture to Final Cut</h4><p><a href="http://connectedflow.com/">Connected Flow</a> has released a new Aperture plug-in that uses <a href="http://install.wincent.com/">Wincent's Install</a> tool. Links appear on the Install <a href="http://www.wincent.com/a/products/install/download/">downloads page</a>.</p></li>
+  <li><h4>Aperture to Final Cut</h4><p><a href="http://connectedflow.com/">Connected Flow</a> has released a new Aperture plug-in that uses <a href="http://install.wincent.com/">Wincent's Install</a> tool. Links appear on the Install <a href="https://wincent.com/a/products/install/download/">downloads page</a>.</p></li>
       </ul>
   
       <p class="quick-links-date"> 9 Dec 2006</p>
@@ -259,7 +259,7 @@
   
 
  
-<p class="more"><a href="http://www.wincent.com/a/news/quick-links/archives/">Quick links archives...</a></p></div>
+<p class="more"><a href="https://wincent.com/a/news/quick-links/archives/">Quick links archives...</a></p></div>
 </div>
 
 <div id="center">
@@ -278,7 +278,7 @@
 
 <h3 id="a004232">Final server migration this week</h3>
 
-<p>I've been working on moving to the new server for <a href='http://www.wincent.com/a/news/archives/2008/02/server_migratio.php'>nearly a month now</a>, a process which has been quite slow because all the data has to be exported from a number of &quot;legacy&quot; applications and imported into a brand new custom Rails application written especially for this site. It's slow going because it's the first time I've ever deployed a Rails application and I've had <em>a lot</em> to learn... but now I know a fair bit about nginx, capistrano, mongrel, monit, and of course Rails itself. The server too is totally different, with a different operating system, so it's all been quite time-consuming.</p>
+<p>I've been working on moving to the new server for <a href='https://wincent.com/a/news/archives/2008/02/server_migratio.php'>nearly a month now</a>, a process which has been quite slow because all the data has to be exported from a number of &quot;legacy&quot; applications and imported into a brand new custom Rails application written especially for this site. It's slow going because it's the first time I've ever deployed a Rails application and I've had <em>a lot</em> to learn... but now I know a fair bit about nginx, capistrano, mongrel, monit, and of course Rails itself. The server too is totally different, with a different operating system, so it's all been quite time-consuming.</p>
 <p>Well, the crunch time is now coming and the <em>real</em> server move is about to happen this week (at the end of the March the old server will go offline forever, so the move has to happen this week, ready or not). So this will most likely be my last post ever to this weblog.</p>
 <p>The forums are already in read-only mode, and I'm about to shut down the bug tracker too shortly so that I can do the final export of all the records and move them into the database on the new server. If you had an account on the old server you'll automatically have one on the new server too, although you will need to reset your password (I couldn't transfer across any passwords because none of them were stored in plain text, and rightly so of course).</p>
 <p>At some point during this week email might temporarily go down, hopefully only for about an hour (delivery failures should be temporary), and the wincent.com domain itself will go down at roughly the same time too. When it comes back up we'll be running on the new server. If you make a purchase during that time you might have to wait an hour or two for your license information, but we'll soon be back to immediate automated delivery.</p>
@@ -291,10 +291,10 @@
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/news/archives/site_news/">Site news</a> articles
+More <a href="https://wincent.com/a/news/archives/site_news/">Site news</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/news/archives/2008/03/final_server_mi.php">12:53 AM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/news/archives/2008/03/final_server_mi.php">12:53 AM</a>
 
 
 </p>
@@ -308,7 +308,7 @@ More <a href="http://www.wincent.com/a/news/archives/site_news/">Site news</a> a
 
 <h3 id="a004182">Server migration in progress</h3>
 
-<p>The <a href='http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php'>server migration</a> from Rackspace to INetU is currently underway. My aim is do this very carefully, service by service, and keep downtime to a minimum; hopefully minutes rather than hours.</p>
+<p>The <a href='https://wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php'>server migration</a> from Rackspace to INetU is currently underway. My aim is do this very carefully, service by service, and keep downtime to a minimum; hopefully minutes rather than hours.</p>
 <p>Just in case there is any interruption during the move, I've just opened <a href='http://twitter.com/wincent'>a twitter account</a> where I'll be posting updates along the way:</p>
 <ul>
 <li><a href='http://twitter.com/wincent'>http://twitter.com/wincent</a></li>
@@ -319,10 +319,10 @@ More <a href="http://www.wincent.com/a/news/archives/site_news/">Site news</a> a
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/news/archives/site_news/">Site news</a> articles
+More <a href="https://wincent.com/a/news/archives/site_news/">Site news</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/news/archives/2008/02/server_migratio.php">12:01 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/news/archives/2008/02/server_migratio.php">12:01 PM</a>
 
 
 </p>
@@ -337,7 +337,7 @@ More <a href="http://www.wincent.com/a/news/archives/site_news/">Site news</a> a
 <h3 id="a004168">Call for Bansshee donations</h3>
 
 <p><a href='http://bansshee.wincent.com/'>Bansshee</a> is a free, open-source tool to thwart dictionary-based SSH attacks. As a convenience to users there are three domains, bansshee.com, bansshee.net, and bansshee.org, that resolve to the Bansshee project page. These are coming up for renewal soon (they expire on 11 April 2008) so I'm turning to the public to ask for donations to cover the cost of their ongoing registration.</p>
-<p>They're currently registered with <a href='https://joker.com/'>joker.com</a>, and the renewal price for each domain is $12.00. <a href='http://www.wincent.com/a/about/wincent/weblog/archives/2007/03/a_call_for_help.php'>Last time</a> I made this request help was quick in coming, so I am hoping that the same will be true in this case.</p>
+<p>They're currently registered with <a href='https://joker.com/'>joker.com</a>, and the renewal price for each domain is $12.00. <a href='https://wincent.com/a/about/wincent/weblog/archives/2007/03/a_call_for_help.php'>Last time</a> I made this request help was quick in coming, so I am hoping that the same will be true in this case.</p>
 <p>If you'd like to help with the renewal you can send your donation to me via PayPal using <a href='https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=Bansshee+DNS+donation&amp;no_note=1&amp;currency_code=USD&amp;lc=en'>this link</a>. My priority will be to keep the dot-org domain alive; the others will follow suit if I receive enough donations. You can contact me at <a href='mailto:win@wincent.com'>win@wincent.com</a> if you have any questions or comments.</p>
 <p>As was the case last time, the project will continue to survive even if I can't renew the domains, but I'd like to keep providing them if I can.</p>
 
@@ -345,10 +345,10 @@ More <a href="http://www.wincent.com/a/news/archives/site_news/">Site news</a> a
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news</a> articles
+More <a href="https://wincent.com/a/news/archives/product_news/">Product news</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/news/archives/2008/02/call_for_banssh.php">10:36 AM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/news/archives/2008/02/call_for_banssh.php">10:36 AM</a>
 
 
 </p>
@@ -362,7 +362,7 @@ More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news
 
 <h3 id="a003935">Upcoming DNS changes</h3>
 
-<p>In preparation for <a href='http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php'>the server move</a> at the end of this month I'll soon be migrating DNS servers.</p>
+<p>In preparation for <a href='https://wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php'>the server move</a> at the end of this month I'll soon be migrating DNS servers.</p>
 <p>I'll be doing everything I can to minimize downtime, and hopefully come close to eliminating it entirely as there will be a one week overlap period in which both the old and the new servers are simultaneously online. But in the spirit of keeping people informed, this post is about the first step in the process: the DNS changes. The old server will continue to run, the IP addresses won't change (yet), but the authoritative DNS servers will be changed from my old to my new host.</p>
 <p>The DNS is currently provided by Rackspace, but my new provider, <a href='http://www.inetu.net/'>INetU</a> already has their DNS configured and ready to take over. Throughout the following week I'll be gradually &quot;flipping switches&quot;. The first domains to be flipped over will be bansshee.com, bansshee.net and bansshee.org, on Monday. If that goes well then I'll continue switching the other domains (13 of them) to the INetU DNS servers in the course of the week.</p>
 <p>If you notice any problems please get in touch with me (<a href='mailto:win@wincent.com'>win@wincent.com</a>). wincent.com itself will probably be the last domain to get switched over.</p>
@@ -371,10 +371,10 @@ More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/news/archives/site_news/">Site news</a> articles
+More <a href="https://wincent.com/a/news/archives/site_news/">Site news</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/news/archives/2008/02/upcoming_dns_ch.php">10:27 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/news/archives/2008/02/upcoming_dns_ch.php">10:27 PM</a>
 
 
 </p>
@@ -388,19 +388,19 @@ More <a href="http://www.wincent.com/a/news/archives/site_news/">Site news</a> a
 
 <h3 id="a003759">Synergy 3.5a5 released</h3>
 
-<p>I'm pleased to announce the availability of version 3.5a5 of <a href='http://synergy.wincent.com'>Synergy</a>, the fifth alpha release in the brand new 3.5 series. The last release, version 3.2, was <a href='http://www.wincent.com/knowledge-base/Leopard'>Leopard</a>-compatible but would also run on all versions of <a href='http://www.wincent.com/knowledge-base/Mac%20OS%20X'>Mac OS X</a> from <a href='http://www.wincent.com/knowledge-base/Jaguar'>Jaguar</a> onwards.</p>
+<p>I'm pleased to announce the availability of version 3.5a5 of <a href='http://synergy.wincent.com'>Synergy</a>, the fifth alpha release in the brand new 3.5 series. The last release, version 3.2, was <a href='https://wincent.com/knowledge-base/Leopard'>Leopard</a>-compatible but would also run on all versions of <a href='https://wincent.com/knowledge-base/Mac%20OS%20X'>Mac OS X</a> from <a href='https://wincent.com/knowledge-base/Jaguar'>Jaguar</a> onwards.</p>
 <p>The 3.5 series, on the other hand, is a total rewrite in Objective-C 2.0 which will run <em>only</em> on Leopard and as such it is somewhat experimental in nature. If you want stability then I recommend that you stick with 3.2 for now, but if you like to live on the edge and see the latest then by all means try out the 3.5 series. This release fixes some minor issues found in the last alpha; the sporadic crashes caused by using <tt>NSAppleScript</tt> under Garbage Collection are still being investigated.</p>
-<p>A full changelog appears <a href='http://www.wincent.com/a/products/synergy-classic/history/#3.5a5'>here</a>.</p>
-<p>You can download the new release <a href='http://www.wincent.com/download.php?item=SynergyBeta.zip'>from here</a> and purchase a license using <a href='https://secure.wincent.com/a/products/synergy-classic/purchase/'>this page</a>. The 3.2 series can still be downloaded <a href='http://www.wincent.com/download.php?item=SynergyJaguar.dmg'>from here</a>. Once the 3.5 series goes final it will be a free upgrade to all users who have purchased a license for Synergy 3.0 or higher (that is, if you purchased on or after 5 September 2006 then 3.5 will be a free upgrade for you).</p>
+<p>A full changelog appears <a href='https://wincent.com/a/products/synergy-classic/history/#3.5a5'>here</a>.</p>
+<p>You can download the new release <a href='https://wincent.com/download.php?item=SynergyBeta.zip'>from here</a> and purchase a license using <a href='https://wincent.com/a/products/synergy-classic/purchase/'>this page</a>. The 3.2 series can still be downloaded <a href='https://wincent.com/download.php?item=SynergyJaguar.dmg'>from here</a>. Once the 3.5 series goes final it will be a free upgrade to all users who have purchased a license for Synergy 3.0 or higher (that is, if you purchased on or after 5 September 2006 then 3.5 will be a free upgrade for you).</p>
 
 
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news</a> articles
+More <a href="https://wincent.com/a/news/archives/product_news/">Product news</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/news/archives/2008/01/synergy_35a5_re.php">12:35 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/news/archives/2008/01/synergy_35a5_re.php">12:35 PM</a>
 
 
 </p>
@@ -414,7 +414,7 @@ More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news
 
 <h3 id="a003707">Announcing REnamer</h3>
 
-<p>If you look at the <a href='http://www.wincent.com/a/products/'>products listing</a> you'll see that there is now a new entry in the ranks, <a href='http://renamer.wincent.com/'>REnamer</a>.</p>
+<p>If you look at the <a href='https://wincent.com/a/products/'>products listing</a> you'll see that there is now a new entry in the ranks, <a href='http://renamer.wincent.com/'>REnamer</a>.</p>
 <p>REnamer is a file renaming utility based on three design principles: power, simplicity, and elegance.</p>
 <p>Simple because it uses the familiar metaphor of &quot;Find and Replace&quot; which we all know from word processing. Even a beginner can rename large batches of files in mere seconds.</p>
 <p>Powerful because through Regular Expressions (the &quot;RE&quot; in REnamer) it allows you to transform your filenames in complex ways with a minimum of effort.</p>
@@ -426,10 +426,10 @@ More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news</a> articles
+More <a href="https://wincent.com/a/news/archives/product_news/">Product news</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/news/archives/2008/01/announcing_rena.php"> 2:32 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/news/archives/2008/01/announcing_rena.php"> 2:32 PM</a>
 
 
 </p>
@@ -443,19 +443,19 @@ More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news
 
 <h3 id="a003499">Synergy 3.5a4 released</h3>
 
-<p>I'm pleased to announce the availability of version 3.5a4 of <a href='http://synergy.wincent.com'>Synergy</a>, the fourth alpha release in the brand new 3.5 series. The last release, version 3.2, was <a href='http://www.wincent.com/knowledge-base/Leopard'>Leopard</a>-compatible but would also run on all versions of <a href='http://www.wincent.com/knowledge-base/Mac%20OS%20X'>Mac OS X</a> from <a href='http://www.wincent.com/knowledge-base/Jaguar'>Jaguar</a> onwards.</p>
+<p>I'm pleased to announce the availability of version 3.5a4 of <a href='http://synergy.wincent.com'>Synergy</a>, the fourth alpha release in the brand new 3.5 series. The last release, version 3.2, was <a href='https://wincent.com/knowledge-base/Leopard'>Leopard</a>-compatible but would also run on all versions of <a href='https://wincent.com/knowledge-base/Mac%20OS%20X'>Mac OS X</a> from <a href='https://wincent.com/knowledge-base/Jaguar'>Jaguar</a> onwards.</p>
 <p>The 3.5 series, on the other hand, is a total rewrite in Objective-C 2.0 which will run <em>only</em> on Leopard and as such it is somewhat experimental in nature. If you want stability then I recommend that you stick with 3.2 for now, but if you like to live on the edge and see the latest then by all means try out the 3.5 series. This new alpha fixes a large number of issues reported for the previous alpha and should prove to be much more polished.  There are still some minor issues being investigated, but this is now much closer to what the final 3.5 release will look like.</p>
-<p>A full changelog appears <a href='http://www.wincent.com/a/products/synergy-classic/history/#3.5a4'>here</a>.</p>
-<p>You can download the new release <a href='http://www.wincent.com/download.php?item=SynergyBeta.zip'>from here</a> and purchase a license using <a href='https://secure.wincent.com/a/products/synergy-classic/purchase/'>this page</a>. The 3.2 series can still be downloaded <a href='http://www.wincent.com/download.php?item=SynergyJaguar.dmg'>from here</a>. Once the 3.5 series goes final it will be a free upgrade to all users who have purchased a license for Synergy 3.0 or higher (that is, if you purchased on or after 5 September 2006 then 3.5 will be a free upgrade for you).</p>
+<p>A full changelog appears <a href='https://wincent.com/a/products/synergy-classic/history/#3.5a4'>here</a>.</p>
+<p>You can download the new release <a href='https://wincent.com/download.php?item=SynergyBeta.zip'>from here</a> and purchase a license using <a href='https://wincent.com/a/products/synergy-classic/purchase/'>this page</a>. The 3.2 series can still be downloaded <a href='https://wincent.com/download.php?item=SynergyJaguar.dmg'>from here</a>. Once the 3.5 series goes final it will be a free upgrade to all users who have purchased a license for Synergy 3.0 or higher (that is, if you purchased on or after 5 September 2006 then 3.5 will be a free upgrade for you).</p>
 
 
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news</a> articles
+More <a href="https://wincent.com/a/news/archives/product_news/">Product news</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/news/archives/2008/01/synergy_35a4_re.php">10:15 AM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/news/archives/2008/01/synergy_35a4_re.php">10:15 AM</a>
 
 
 </p>
@@ -469,19 +469,19 @@ More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news
 
 <h3 id="a003489">Synergy 3.5a3 released</h3>
 
-<p>I'm very pleased to announce the availability of version 3.5a3 of <a href='http://synergy.wincent.com'>Synergy</a>, the third alpha release in the brand new 3.5 series. The last release, version 3.2, was <a href='http://www.wincent.com/knowledge-base/Leopard'>Leopard</a>-compatible but would also run on all versions of <a href='http://www.wincent.com/knowledge-base/Mac%20OS%20X'>Mac OS X</a> from <a href='http://www.wincent.com/knowledge-base/Jaguar'>Jaguar</a> onwards.</p>
+<p>I'm very pleased to announce the availability of version 3.5a3 of <a href='http://synergy.wincent.com'>Synergy</a>, the third alpha release in the brand new 3.5 series. The last release, version 3.2, was <a href='https://wincent.com/knowledge-base/Leopard'>Leopard</a>-compatible but would also run on all versions of <a href='https://wincent.com/knowledge-base/Mac%20OS%20X'>Mac OS X</a> from <a href='https://wincent.com/knowledge-base/Jaguar'>Jaguar</a> onwards.</p>
 <p>The 3.5 series, on the other hand, is a total rewrite in Objective-C 2.0 which will run <em>only</em> on Leopard and as such it is somewhat experimental in nature. If you want stability then I recommend that you stick with 3.2 for now, but if you like to live on the edge and see the latest then by all means try out the 3.5 series. This new alpha fixes a large number of issues reported for the previous alpha and should prove to be much more polished.  There are still some minor issues being investigated, but this is now much closer to what the final 3.5 release will look like.</p>
-<p>A full changelog appears <a href='http://www.wincent.com/a/products/synergy-classic/history/#3.5a3'>here</a>.</p>
-<p>You can download the new release <a href='http://www.wincent.com/download.php?item=SynergyBeta.zip'>from here</a> and purchase a license using <a href='https://secure.wincent.com/a/products/synergy-classic/purchase/'>this page</a>. The 3.2 series can still be downloaded <a href='http://www.wincent.com/download.php?item=SynergyJaguar.dmg'>from here</a>. Once the 3.5 series goes final it will be a free upgrade to all users who have purchased a license for Synergy 3.0 or higher (that is, if you purchased on or after 5 September 2006 then 3.5 will be a free upgrade for you).</p>
+<p>A full changelog appears <a href='https://wincent.com/a/products/synergy-classic/history/#3.5a3'>here</a>.</p>
+<p>You can download the new release <a href='https://wincent.com/download.php?item=SynergyBeta.zip'>from here</a> and purchase a license using <a href='https://wincent.com/a/products/synergy-classic/purchase/'>this page</a>. The 3.2 series can still be downloaded <a href='https://wincent.com/download.php?item=SynergyJaguar.dmg'>from here</a>. Once the 3.5 series goes final it will be a free upgrade to all users who have purchased a license for Synergy 3.0 or higher (that is, if you purchased on or after 5 September 2006 then 3.5 will be a free upgrade for you).</p>
 
 
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news</a> articles
+More <a href="https://wincent.com/a/news/archives/product_news/">Product news</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/news/archives/2008/01/synergy_35a3_re.php"> 6:17 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/news/archives/2008/01/synergy_35a3_re.php"> 6:17 PM</a>
 
 
 </p>
@@ -495,17 +495,17 @@ More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news
 
 <h3 id="a003478">Wincent Strings Utility 1.2</h3>
 
-<p>I've just released an update to the <a href='http://strings.wincent.com/'>Wincent Strings Utility</a>, the localization helper tool for developers. Version 1.2 is basically a total rewrite for <a href='http://www.wincent.com/knowledge-base/Leopard'>Leopard</a> which adds a bunch of new features and improvements. See the <a href='http://strings.wincent.com/'>official product page</a> for a full list of changes, download links, and further information.</p>
+<p>I've just released an update to the <a href='http://strings.wincent.com/'>Wincent Strings Utility</a>, the localization helper tool for developers. Version 1.2 is basically a total rewrite for <a href='https://wincent.com/knowledge-base/Leopard'>Leopard</a> which adds a bunch of new features and improvements. See the <a href='http://strings.wincent.com/'>official product page</a> for a full list of changes, download links, and further information.</p>
 <p>It's free software released under a GPL license, downloadable in both source and executable forms, <a href='https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=Wincent+Strings+Utility+donation&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB'>donations are welcomed</a>.</p>
 
 
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news</a> articles
+More <a href="https://wincent.com/a/news/archives/product_news/">Product news</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/news/archives/2008/01/wincent_strings_2.php"> 8:50 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/news/archives/2008/01/wincent_strings_2.php"> 8:50 PM</a>
 
 
 </p>
@@ -519,17 +519,17 @@ More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news
 
 <h3 id="a003174">Synergy 3.5a2 released</h3>
 
-<p>Some users were unable to install the <a href='http://synergy.wincent.com'>Synergy</a> 3.5a release made available a <a href='http://www.wincent.com/a/news/archives/2007/11/synergy_35a_rel.php'>couple of hours ago</a>. If you are one of these users, please download the <a href='http://www.wincent.com/a/products/synergy-classic/history/#3.5a2'>updated version</a> (3.5a2) which is now on the servers.</p>
-<p>You can download the updated release <a href='http://www.wincent.com/download.php?item=SynergyBeta.dmg'>from here</a> and purchase a license using <a href='https://secure.wincent.com/a/products/synergy-classic/purchase/'>this page</a>. The 3.2-series can still be downloaded <a href='http://www.wincent.com/download.php?item=SynergyJaguar.dmg'>from here</a>. This is a free upgrade for users who already hold a valid Synergy license.</p>
+<p>Some users were unable to install the <a href='http://synergy.wincent.com'>Synergy</a> 3.5a release made available a <a href='https://wincent.com/a/news/archives/2007/11/synergy_35a_rel.php'>couple of hours ago</a>. If you are one of these users, please download the <a href='https://wincent.com/a/products/synergy-classic/history/#3.5a2'>updated version</a> (3.5a2) which is now on the servers.</p>
+<p>You can download the updated release <a href='https://wincent.com/download.php?item=SynergyBeta.dmg'>from here</a> and purchase a license using <a href='https://wincent.com/a/products/synergy-classic/purchase/'>this page</a>. The 3.2-series can still be downloaded <a href='https://wincent.com/download.php?item=SynergyJaguar.dmg'>from here</a>. This is a free upgrade for users who already hold a valid Synergy license.</p>
 
 
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news</a> articles
+More <a href="https://wincent.com/a/news/archives/product_news/">Product news</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/news/archives/2007/11/synergy_35a2_re.php">12:34 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/news/archives/2007/11/synergy_35a2_re.php">12:34 PM</a>
 
 
 </p>
@@ -541,19 +541,19 @@ More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news
 
 <h3 id="a003173">Synergy 3.5a released</h3>
 
-<p>The last <a href='http://synergy.wincent.com'>Synergy</a> release, version 3.2, was <a href='http://www.wincent.com/knowledge-base/Leopard'>Leopard</a>-compatible but would also run on all versions of <a href='http://www.wincent.com/knowledge-base/Mac%20OS%20X'>Mac OS X</a> from <a href='http://www.wincent.com/knowledge-base/Jaguar'>Jaguar</a> onwards.</p>
+<p>The last <a href='http://synergy.wincent.com'>Synergy</a> release, version 3.2, was <a href='https://wincent.com/knowledge-base/Leopard'>Leopard</a>-compatible but would also run on all versions of <a href='https://wincent.com/knowledge-base/Mac%20OS%20X'>Mac OS X</a> from <a href='https://wincent.com/knowledge-base/Jaguar'>Jaguar</a> onwards.</p>
 <p>Today marks the availability of the first release in the 3.5 series, a total rewrite in Objective-C 2.0 which will run <em>only</em> on Leopard. This is a conservative migration — I've attempted to make all the changes while exactly preserving the existing behaviour and performance — but due to the invasive nature of  this (almost every source file touched) this build is labelled as 3.5a (alpha), which means it is of experimental status. As we move forward more Leopard-specific enhancements will be made.</p>
-<p>A full changelog appears <a href='http://www.wincent.com/a/products/synergy-classic/history/#3.5a'>here</a>.</p>
-<p>You can download the new release <a href='http://www.wincent.com/download.php?item=SynergyBeta.dmg'>from here</a> and purchase a license using <a href='https://secure.wincent.com/a/products/synergy-classic/purchase/'>this page</a>. The 3.2-series can still be downloaded <a href='http://www.wincent.com/download.php?item=SynergyJaguar.dmg'>from here</a>. This is a free upgrade for users who already hold a valid Synergy license.</p>
+<p>A full changelog appears <a href='https://wincent.com/a/products/synergy-classic/history/#3.5a'>here</a>.</p>
+<p>You can download the new release <a href='https://wincent.com/download.php?item=SynergyBeta.dmg'>from here</a> and purchase a license using <a href='https://wincent.com/a/products/synergy-classic/purchase/'>this page</a>. The 3.2-series can still be downloaded <a href='https://wincent.com/download.php?item=SynergyJaguar.dmg'>from here</a>. This is a free upgrade for users who already hold a valid Synergy license.</p>
 
 
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news</a> articles
+More <a href="https://wincent.com/a/news/archives/product_news/">Product news</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/news/archives/2007/11/synergy_35a_rel.php">10:01 AM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/news/archives/2007/11/synergy_35a_rel.php">10:01 AM</a>
 
 
 </p>
@@ -567,16 +567,16 @@ More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news
 
 <h3 id="a003114">Leopard progress update</h3>
 
-<p>Although the latest version of <a href='http://synergy.wincent.com/'>Synergy</a> already runs quite well on all versions of <a href='http://www.wincent.com/knowledge-base/Mac%20OS%20X'>Mac OS X</a> from <a href='http://www.wincent.com/knowledge-base/Jaguar'>Jaguar</a> right up to (and including) <a href='http://www.wincent.com/knowledge-base/Leopard'>Leopard</a>, I have been working on a rewrite in <a href='http://www.wincent.com/knowledge-base/Objective-C%202.0'>Objective-C 2.0</a> which will is specifically designed for Leopard. The first phase of migration (API updates and build process changes) is complete and the next phase (migration to Garbage Collection) is underway. I'm hoping to have an alpha version out soon, with a Leopard-targeted release of <a href='http://advance.wincent.com/'>Synergy Advance</a> following close behind.</p>
+<p>Although the latest version of <a href='http://synergy.wincent.com/'>Synergy</a> already runs quite well on all versions of <a href='https://wincent.com/knowledge-base/Mac%20OS%20X'>Mac OS X</a> from <a href='https://wincent.com/knowledge-base/Jaguar'>Jaguar</a> right up to (and including) <a href='https://wincent.com/knowledge-base/Leopard'>Leopard</a>, I have been working on a rewrite in <a href='https://wincent.com/knowledge-base/Objective-C%202.0'>Objective-C 2.0</a> which will is specifically designed for Leopard. The first phase of migration (API updates and build process changes) is complete and the next phase (migration to Garbage Collection) is underway. I'm hoping to have an alpha version out soon, with a Leopard-targeted release of <a href='http://advance.wincent.com/'>Synergy Advance</a> following close behind.</p>
 
 
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news</a> articles
+More <a href="https://wincent.com/a/news/archives/product_news/">Product news</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/news/archives/2007/11/leopard_progres.php"> 1:13 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/news/archives/2007/11/leopard_progres.php"> 1:13 PM</a>
 
 
 </p>
@@ -597,10 +597,10 @@ More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/news/archives/site_news/">Site news</a> articles
+More <a href="https://wincent.com/a/news/archives/site_news/">Site news</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/news/archives/2007/11/temporary_outag.php">11:22 AM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/news/archives/2007/11/temporary_outag.php">11:22 AM</a>
 
 
 </p>
@@ -614,17 +614,17 @@ More <a href="http://www.wincent.com/a/news/archives/site_news/">Site news</a> a
 
 <h3 id="a002848">Leopard update</h3>
 
-<p>I've just learned that <a href='http://www.wincent.com/knowledge-base/Apple'>Apple</a> has made the final release of <a href='http://www.wincent.com/knowledge-base/Leopard'>Leopard</a> available to developers (via download) several weeks earlier than expected (in the case of Tiger they didn't make a download available and developers had to wait for mailed copies).</p>
+<p>I've just learned that <a href='https://wincent.com/knowledge-base/Apple'>Apple</a> has made the final release of <a href='https://wincent.com/knowledge-base/Leopard'>Leopard</a> available to developers (via download) several weeks earlier than expected (in the case of Tiger they didn't make a download available and developers had to wait for mailed copies).</p>
 <p>As a result, I'll soon be delivering updates to my products including changes for compatibility with the final version of Leopard, and I'll be able to get started on final testing considerably sooner than expected.</p>
 
 
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news</a> articles
+More <a href="https://wincent.com/a/news/archives/product_news/">Product news</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/news/archives/2007/10/leopard_update.php">12:59 PM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/news/archives/2007/10/leopard_update.php">12:59 PM</a>
 
 
 </p>
@@ -638,7 +638,7 @@ More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news
 
 <h3 id="a002846">Leopard product readiness</h3>
 
-<p>With <a href='http://www.wincent.com/knowledge-base/Leopard'>Leopard</a> only 15 hours from release it's time for a product status report:</p>
+<p>With <a href='https://wincent.com/knowledge-base/Leopard'>Leopard</a> only 15 hours from release it's time for a product status report:</p>
 <a name='Leopard-ready'></a><h3>Leopard-ready</h3>
 
 <p>The following products have received extensive testing on pre-release versions of Leopard and are expected to work with a high degree of compatibility. When Apple ships the final version to developers further testing will be performed to see if any further changes are required:</p>
@@ -672,24 +672,24 @@ More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news
 <p>There are a number of other products which aren't specifically tied to the Mac OS X platform, and so should work on Leopard just as they did under Tiger:</p>
 <ul>
 <li><a href='http://bansshee.wincent.com'>Bansshee</a>: protection against SSH dictionary attacks.</li>
-<li><a href='http://walrus.wincent.com'>Walrus</a>: object-oriented templating system written in <a href='http://www.wincent.com/knowledge-base/Ruby'>Ruby</a>.</li>
+<li><a href='http://walrus.wincent.com'>Walrus</a>: object-oriented templating system written in <a href='https://wincent.com/knowledge-base/Ruby'>Ruby</a>.</li>
 </ul>
 
 
 
 
 <p class="more-categories">
-More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news</a> articles
+More <a href="https://wincent.com/a/news/archives/product_news/">Product news</a> articles
 </p>
 
-<p class="posted">Posted by wincent at <a href="http://www.wincent.com/a/news/archives/2007/10/leopard_product.php"> 2:25 AM</a>
+<p class="posted">Posted by wincent at <a href="https://wincent.com/a/news/archives/2007/10/leopard_product.php"> 2:25 AM</a>
 
 
 </p>
 
 
 
-<p class="more"><a href="http://www.wincent.com/a/about/wincent/weblog/archives/">More articles...</a></p>
+<p class="more"><a href="https://wincent.com/a/about/wincent/weblog/archives/">More articles...</a></p>
 
 </div>
 </div>
@@ -721,61 +721,61 @@ More <a href="http://www.wincent.com/a/news/archives/product_news/">Product news
 
 <ul>
 
-<li><a href="http://www.wincent.com/a/news/archives/2008/03/">March 2008</a></li>
+<li><a href="https://wincent.com/a/news/archives/2008/03/">March 2008</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2008/02/">February 2008</a></li>
+<li><a href="https://wincent.com/a/news/archives/2008/02/">February 2008</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2008/01/">January 2008</a></li>
+<li><a href="https://wincent.com/a/news/archives/2008/01/">January 2008</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2007/11/">November 2007</a></li>
+<li><a href="https://wincent.com/a/news/archives/2007/11/">November 2007</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2007/10/">October 2007</a></li>
+<li><a href="https://wincent.com/a/news/archives/2007/10/">October 2007</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2007/09/">September 2007</a></li>
+<li><a href="https://wincent.com/a/news/archives/2007/09/">September 2007</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2007/08/">August 2007</a></li>
+<li><a href="https://wincent.com/a/news/archives/2007/08/">August 2007</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2007/07/">July 2007</a></li>
+<li><a href="https://wincent.com/a/news/archives/2007/07/">July 2007</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2007/06/">June 2007</a></li>
+<li><a href="https://wincent.com/a/news/archives/2007/06/">June 2007</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2007/05/">May 2007</a></li>
+<li><a href="https://wincent.com/a/news/archives/2007/05/">May 2007</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2007/04/">April 2007</a></li>
+<li><a href="https://wincent.com/a/news/archives/2007/04/">April 2007</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2007/03/">March 2007</a></li>
+<li><a href="https://wincent.com/a/news/archives/2007/03/">March 2007</a></li>
 
 </ul>
 
-<p class="more"><a href="http://www.wincent.com/a/news/archives/">Full article listing...</a></p>
+<p class="more"><a href="https://wincent.com/a/news/archives/">Full article listing...</a></p>
 
 <h2>Recent Entries</h2>
 
 <ul>
 
-<li><a href="http://www.wincent.com/a/news/archives/2008/03/final_server_mi.php">Final server migration this week</a></li>
+<li><a href="https://wincent.com/a/news/archives/2008/03/final_server_mi.php">Final server migration this week</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2008/02/server_migratio.php">Server migration in progress</a></li>
+<li><a href="https://wincent.com/a/news/archives/2008/02/server_migratio.php">Server migration in progress</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2008/02/call_for_banssh.php">Call for Bansshee donations</a></li>
+<li><a href="https://wincent.com/a/news/archives/2008/02/call_for_banssh.php">Call for Bansshee donations</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2008/02/upcoming_dns_ch.php">Upcoming DNS changes</a></li>
+<li><a href="https://wincent.com/a/news/archives/2008/02/upcoming_dns_ch.php">Upcoming DNS changes</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2008/01/synergy_35a5_re.php">Synergy 3.5a5 released</a></li>
+<li><a href="https://wincent.com/a/news/archives/2008/01/synergy_35a5_re.php">Synergy 3.5a5 released</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2008/01/announcing_rena.php">Announcing REnamer</a></li>
+<li><a href="https://wincent.com/a/news/archives/2008/01/announcing_rena.php">Announcing REnamer</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2008/01/synergy_35a4_re.php">Synergy 3.5a4 released</a></li>
+<li><a href="https://wincent.com/a/news/archives/2008/01/synergy_35a4_re.php">Synergy 3.5a4 released</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2008/01/synergy_35a3_re.php">Synergy 3.5a3 released</a></li>
+<li><a href="https://wincent.com/a/news/archives/2008/01/synergy_35a3_re.php">Synergy 3.5a3 released</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2008/01/wincent_strings_2.php">Wincent Strings Utility 1.2</a></li>
+<li><a href="https://wincent.com/a/news/archives/2008/01/wincent_strings_2.php">Wincent Strings Utility 1.2</a></li>
 
-<li><a href="http://www.wincent.com/a/news/archives/2007/11/synergy_35a2_re.php">Synergy 3.5a2 released</a></li>
+<li><a href="https://wincent.com/a/news/archives/2007/11/synergy_35a2_re.php">Synergy 3.5a2 released</a></li>
 
 </ul>
 
-<p class="more"><a href="http://www.wincent.com/a/news/archives/">Full article listing...</a></p>
+<p class="more"><a href="https://wincent.com/a/news/archives/">Full article listing...</a></p>
 
 </div>
 </div>
