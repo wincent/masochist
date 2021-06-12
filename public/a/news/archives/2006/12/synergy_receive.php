@@ -4,9 +4,17 @@
   </head>
   <body>
     <h1>Moved Permanently</h1>
-    <p>The resource has moved to <a href="https://wincent.com/blog/synergy-receives-very-nice-rating-in-atpm-review">https://wincent.com/blog/synergy-receives-very-nice-rating-in-atpm-review</a></p>
+    <p>
+      The resource has moved to
+      <a
+        href="https://wincent.com/blog/synergy-receives-very-nice-rating-in-atpm-review"
+        >https://wincent.com/blog/synergy-receives-very-nice-rating-in-atpm-review</a
+      >
+    </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/synergy-receives-very-nice-rating-in-atpm-review');
+    window.location.replace(
+      'https://wincent.com/blog/synergy-receives-very-nice-rating-in-atpm-review',
+    );
   </script>
 </html>

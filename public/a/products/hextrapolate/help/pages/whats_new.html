@@ -1,63 +1,139 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html401/sgml/loosedtd.html">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/sgml/loosedtd.html">
 <html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<title>What's new in Hextrapolate?</title>
-<meta name="generator" content="Walrus 0.1">
-<meta name="author" content="Wincent Colaiuta">
-<meta name="author-email" content="win@wincent.com">
-<meta name="copyright" content="Copyright 2007 Wincent Colaiuta">
-<link href="../css/base.css" rel="stylesheet" media="all" type="text/css">
-<meta name="description" content="">
-</head>
-<body>
-<a name="whats_new" id="whats_new"></a>
-<div id="banner">
-<div id="home_link"><a href="../front_page.html">Hextrapolate Help</a></div>
-<div id="index_link"><a href="full_index.html">Index</a></div>
-</div>
-<div id="main_box">
-<div id="icon"><img width="32" height="32" alt="Icon" src="../gfx/icon32.png"></div>
-<div id="page_title">
-<h1>What's new in Hextrapolate?</h1>
-</div>
-<p>Hextrapolate version 2.0 is a complete ground-up rewrite of the previous version (formerly known as WinHex) and delivers many new features, bug fixes and enhancements. The new conversion engine is faster, more resource efficient and more powerful.</p>
-<div class="feature">
-<h2>Selectable text encodings<br>
-<img src="../gfx/encoding-popup.png" width="174" height="132" alt="Encoding pop-up"></h2>
-<p>You can now convert numbers to and from more text encodings: <span class="caps">ASCII</span>, UTF-8, and two variants of <span class="caps">UTF</span>-16 (little and big endian). Not only that, but the conversion engine has been rewritten to better handle cases where the number being converted is not valid for the selected encoding.</p>
-<ul>
-<li><a href="text_encodings.html">text encodings</a></li>
-</ul>
-</div>
-<div class="feature">
-<h2>More choices<br>
-<img src="../gfx/more-choices.png" width="129" height="110" alt="More choices"></h2>
-<p>More fields have been added to the interface to provide more flexible conversions. This means that you can now convert to and from any of the supported text encodings and bases without having to repeatedly switch your selected encoding or base. Exotic conversion which were previously a two step process (for example Base 12 to Base 19) can now be done in a single step.</p>
-<ul>
-<li><a href="bases.html">bases</a></li>
-<li><a href="text_encodings.html">text encodings</a></li>
-</ul>
-</div>
-<div class="feature">
-<h2>Better feedback<br>
-<img src="../gfx/better-feedback.png" width="164" height="57" alt="Better feedback"></h2>
-<p>The Hextrapolate main window now shows more information in the title bar, allowing you to see at a glance the size of the number currently being converted (in bits and bytes). Numbers can be arbitrarily large in size, extending to thousands of bits and beyond.</p>
-</div>
-<div class="feature">
-<h2>Comprehensive tool-tips<br>
-<img src="../gfx/tool-tips.png" width="171" height="105" alt="Tool-tips"></h2>
-<p>More tool tips have been added to the interface to provide better feedback in realtime if you try to type a character which is not allowed in a particular base or text encoding.</p>
-<ul>
-<li><a href="let_me_type.html">Getting feedback on errors</a></li>
-</ul>
-</div>
-<div class="feature">
-<h2>Integrated help<br>
-<img src="../gfx/integrated-help.png" width="171" height="105" alt="Integrated help"></h2>
-<p>Extensive help documentation prepared in the familiar format used by Apple applications is now embedded within the Hextrapolate application itself. An online mirror of the documentation can be found <a href="https://wincent.com/a/products/hextrapolate/help/">here</a>.</p>
-</div>
-</div>
-</body>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>What's new in Hextrapolate?</title>
+    <meta name="generator" content="Walrus 0.1" />
+    <meta name="author" content="Wincent Colaiuta" />
+    <meta name="author-email" content="win@wincent.com" />
+    <meta name="copyright" content="Copyright 2007 Wincent Colaiuta" />
+    <link href="../css/base.css" rel="stylesheet" media="all" type="text/css" />
+    <meta name="description" content="" />
+  </head>
+  <body>
+    <a name="whats_new" id="whats_new"></a>
+    <div id="banner">
+      <div id="home_link">
+        <a href="../front_page.html">Hextrapolate Help</a>
+      </div>
+      <div id="index_link"><a href="full_index.html">Index</a></div>
+    </div>
+    <div id="main_box">
+      <div id="icon">
+        <img width="32" height="32" alt="Icon" src="../gfx/icon32.png" />
+      </div>
+      <div id="page_title">
+        <h1>What's new in Hextrapolate?</h1>
+      </div>
+      <p>
+        Hextrapolate version 2.0 is a complete ground-up rewrite of the previous
+        version (formerly known as WinHex) and delivers many new features, bug
+        fixes and enhancements. The new conversion engine is faster, more
+        resource efficient and more powerful.
+      </p>
+      <div class="feature">
+        <h2>
+          Selectable text encodings<br />
+          <img
+            src="../gfx/encoding-popup.png"
+            width="174"
+            height="132"
+            alt="Encoding pop-up"
+          />
+        </h2>
+
+        <p>
+          You can now convert numbers to and from more text encodings:
+          <span class="caps">ASCII</span>, UTF-8, and two variants of
+          <span class="caps">UTF</span>-16 (little and big endian). Not only
+          that, but the conversion engine has been rewritten to better handle
+          cases where the number being converted is not valid for the selected
+          encoding.
+        </p>
+        <ul>
+          <li><a href="text_encodings.html">text encodings</a></li>
+        </ul>
+      </div>
+      <div class="feature">
+        <h2>
+          More choices<br />
+          <img
+            src="../gfx/more-choices.png"
+            width="129"
+            height="110"
+            alt="More choices"
+          />
+        </h2>
+
+        <p>
+          More fields have been added to the interface to provide more flexible
+          conversions. This means that you can now convert to and from any of
+          the supported text encodings and bases without having to repeatedly
+          switch your selected encoding or base. Exotic conversion which were
+          previously a two step process (for example Base 12 to Base 19) can now
+          be done in a single step.
+        </p>
+        <ul>
+          <li><a href="bases.html">bases</a></li>
+          <li><a href="text_encodings.html">text encodings</a></li>
+        </ul>
+      </div>
+      <div class="feature">
+        <h2>
+          Better feedback<br />
+          <img
+            src="../gfx/better-feedback.png"
+            width="164"
+            height="57"
+            alt="Better feedback"
+          />
+        </h2>
+
+        <p>
+          The Hextrapolate main window now shows more information in the title
+          bar, allowing you to see at a glance the size of the number currently
+          being converted (in bits and bytes). Numbers can be arbitrarily large
+          in size, extending to thousands of bits and beyond.
+        </p>
+      </div>
+      <div class="feature">
+        <h2>
+          Comprehensive tool-tips<br />
+          <img
+            src="../gfx/tool-tips.png"
+            width="171"
+            height="105"
+            alt="Tool-tips"
+          />
+        </h2>
+
+        <p>
+          More tool tips have been added to the interface to provide better
+          feedback in realtime if you try to type a character which is not
+          allowed in a particular base or text encoding.
+        </p>
+        <ul>
+          <li><a href="let_me_type.html">Getting feedback on errors</a></li>
+        </ul>
+      </div>
+      <div class="feature">
+        <h2>
+          Integrated help<br />
+          <img
+            src="../gfx/integrated-help.png"
+            width="171"
+            height="105"
+            alt="Integrated help"
+          />
+        </h2>
+
+        <p>
+          Extensive help documentation prepared in the familiar format used by
+          Apple applications is now embedded within the Hextrapolate application
+          itself. An online mirror of the documentation can be found
+          <a href="https://wincent.com/a/products/hextrapolate/help/">here</a>.
+        </p>
+      </div>
+    </div>
+  </body>
 </html>

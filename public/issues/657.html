@@ -1,126 +1,207 @@
 <!DOCTYPE html>
-<html lang='en-US'>
-<head>
-<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
-<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
-<title>
-Bug #657: Synergy crashes due to NSGenericException thrown by scripting bridge on Apple Event errors
-&middot; wincent.com
-</title>
-<link rel="stylesheet" media="screen" href="/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<html lang="en-US">
+  <head>
+    <meta content="text/html;charset=UTF-8" http-equiv="Content-Type" />
+    <meta
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+      name="viewport"
+    />
+    <title>
+      Bug #657: Synergy crashes due to NSGenericException thrown by scripting
+      bridge on Apple Event errors &middot; wincent.com
+    </title>
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="/assets/application-73fd7b8197d0b27a25f03f916460e23c.css"
+    />
+  </head>
+  <body>
+    <div class="viewport menu-closed">
+      <div class="app">
+        <a id="top" name="top"></a>
+        <nav class="global">
+          <a class="menu-icon" href="#">&equiv;</a>
+          <h1><a href="/">Wincent</a></h1>
+          <ul class="navbar-links">
+            <li>
+              <a href="/products">Products</a>
+            </li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/wiki">Wiki</a></li>
+            <li class="selected"><a href="/issues">Issues</a></li>
+          </ul>
+        </nav>
+        <div id="content-wrapper">
+          <div id="content">
+            <div class="notice">
+              <i class="fa fa-info-circle"></i>
+              You are viewing an historical archive of past issues. Please
+              report new issues to the appropriate project issue tracker on
+              <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+            </div>
+            <div id="breadcrumbs">
+              <a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo;
+              Bug #657
+            </div>
+            <div class="issue" id="issue_657">
+              <form
+                class="edit_issue"
+                id="edit_issue_657"
+                action="/issues/657"
+                accept-charset="UTF-8"
+                method="post"
+              >
+                <input name="utf8" type="hidden" value="&#x2713;" /><input
+                  type="hidden"
+                  name="_method"
+                  value="patch"
+                /><input
+                  type="hidden"
+                  name="authenticity_token"
+                  value="7tHUdzMH46cSc+E1/ugqB0UpGODmOthTBV4NgRc7rVTaI2rAlIo58sv/0sLPwXmz8Ktx3O3WVk8lQdh/M+PKcA=="
+                /><input
+                  type="text"
+                  name="website_address"
+                  id="website_address"
+                  value=""
+                  class="website-address"
+                />
+                <h1 class="bug major">
+                  Bug #657:
+                  <span data-name="issue[summary]">
+                    Synergy crashes due to NSGenericException thrown by
+                    scripting bridge on Apple Event errors
+                  </span>
+                </h1>
+                <table class="issue-metadata">
+                  <tr>
+                    <th>Kind</th>
+                    <td>
+                      bug
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Product</th>
+                    <td>
+                      Synergy
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>When</th>
+                    <td>
+                      Created
+                      <time data-relative="true">2008-03-01T08:59:31Z</time>,
+                      updated
+                      <time data-relative="true">2008-05-02T15:08:49Z</time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Status</th>
+                    <td>
+                      closed
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Reporter</th>
+                    <td><a href="/users/joshua-gitlin">Joshua Gitlin</a></td>
+                  </tr>
+                  <tr>
+                    <th>Tags</th>
+                    <td data-name="issue[pending_tags]">
+                      no tags
+                    </td>
+                  </tr>
+                </table>
 
-</head>
-<body>
-<div class='viewport menu-closed'>
-<div class='app'>
-<a id="top" name="top"></a>
-<nav class='global'>
-<a class='menu-icon' href='#'>&equiv;</a>
-<h1><a href="/">Wincent</a></h1>
-<ul class='navbar-links'>
-<li>
-<a href="/products">Products</a>
-</li>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/wiki">Wiki</a></li>
-<li class='selected'><a href="/issues">Issues</a></li>
-</ul>
-</nav>
-<div id='content-wrapper'>
-<div id='content'>
-<div class='notice'>
-<i class='fa fa-info-circle'></i>
-You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
-</div>
-<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #657</div>
-<div class='issue' id='issue_657'>
-<form class="edit_issue" id="edit_issue_657" action="/issues/657" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="7tHUdzMH46cSc+E1/ugqB0UpGODmOthTBV4NgRc7rVTaI2rAlIo58sv/0sLPwXmz8Ktx3O3WVk8lQdh/M+PKcA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
-Bug #657:
-<span data-name='issue[summary]'>
-Synergy crashes due to NSGenericException thrown by scripting bridge on Apple Event errors
-</span>
-</h1>
-<table class='issue-metadata'>
-<tr>
-<th>Kind</th>
-<td>
-bug
-</td>
-</tr>
-<tr>
-<th>Product</th>
-<td>
-Synergy
-</td>
-</tr>
-<tr>
-<th>When</th>
-<td>Created <time data-relative="true">2008-03-01T08:59:31Z</time>, updated <time data-relative="true">2008-05-02T15:08:49Z</time></td>
-</tr>
-<tr>
-<th>Status</th>
-<td>
-closed
-</td>
-</tr>
-<tr>
-<th>Reporter</th>
-<td><a href="/users/joshua-gitlin">Joshua Gitlin</a></td>
-</tr>
-<tr>
-<th>Tags</th>
-<td data-name='issue[pending_tags]'>
-no tags
-</td>
-</tr>
-</table>
-<h4 class='major'>
-Description
-</h4>
-<div class='issue-description-body'>
-<p>Created an attachment (id=154) Crash Log</p>
-<p>Issue happens continually but I am unable to find a specific set of steps to reproduce. Just happened as soon as I logged in, saw the Synergy buttons and then got the CrashReporter. It actually just happened again while I was typing this sentence, I'm not using iTunes or Synergy at the moment. Attaching two crash log.</p>
-<p>Possible issue gleaned from the crash log:</p>
-<pre>*** Terminating app due to uncaught exception 'NSGenericException', reason: 'Apple event returned an error.  Event = 'core'\'cnte'{ '----':'null'(), 'kocl':'cSrc' }
+                <h4 class="major">
+                  Description
+                </h4>
+                <div class="issue-description-body">
+                  <p>Created an attachment (id=154) Crash Log</p>
+                  <p>
+                    Issue happens continually but I am unable to find a specific
+                    set of steps to reproduce. Just happened as soon as I logged
+                    in, saw the Synergy buttons and then got the CrashReporter.
+                    It actually just happened again while I was typing this
+                    sentence, I'm not using iTunes or Synergy at the moment.
+                    Attaching two crash log.
+                  </p>
+                  <p>Possible issue gleaned from the crash log:</p>
+                  <pre>
+*** Terminating app due to uncaught exception 'NSGenericException', reason: 'Apple event returned an error.  Event = 'core'\'cnte'{ '----':'null'(), 'kocl':'cSrc' }
 Error info = {
     ErrorNumber = -609;
-}'</pre>
-
-</div>
-</form></div>
-<h4 class='major'>Comments</h4>
-<ol class='boxed' id='comments'>
-<li class='comment' id='comment_3207'>
-<cite>
-<a href="/users/joshua-gitlin">Joshua Gitlin</a>
-<span class='when'><a href="#comment_3207"><time data-relative="true">2008-03-01T09:00:10Z</time></a></span>
-</cite>
-<blockquote><p>Created an attachment (id=155) Crash Log 2</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_3208'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_3208"><time data-relative="true">2008-03-01T09:05:42Z</time></a></span>
-</cite>
-<blockquote><p>Thanks for the crash reports. I don't know what is causing the Apple Event error, but it looks like its the kind of exception that I can catch. So this should be fixable.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_3209'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_3209"><time data-relative="true">2008-03-15T13:22:20Z</time></a></span>
-</cite>
-<blockquote><p>Prefixing the summary line with the word &quot;CRASH&quot; to make this show up in the corresponding report.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_3248'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_3248"><time data-relative="true">2008-04-21T16:44:12Z</time></a></span>
-</cite>
-<blockquote><p>Someone else just pasted in a similar crash log in <a href="/issues/670">bug #670</a>; doesn't really belong there, so I am going to paste it in here:</p>
-<pre>Process:         Synergy [34773]
+}'</pre
+                  >
+                </div>
+              </form>
+            </div>
+            <h4 class="major">Comments</h4>
+            <ol class="boxed" id="comments">
+              <li class="comment" id="comment_3207">
+                <cite>
+                  <a href="/users/joshua-gitlin">Joshua Gitlin</a>
+                  <span class="when"
+                    ><a href="#comment_3207"
+                      ><time data-relative="true">2008-03-01T09:00:10Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>Created an attachment (id=155) Crash Log 2</p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_3208">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_3208"
+                      ><time data-relative="true">2008-03-01T09:05:42Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Thanks for the crash reports. I don't know what is causing
+                    the Apple Event error, but it looks like its the kind of
+                    exception that I can catch. So this should be fixable.
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_3209">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_3209"
+                      ><time data-relative="true">2008-03-15T13:22:20Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Prefixing the summary line with the word &quot;CRASH&quot;
+                    to make this show up in the corresponding report.
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_3248">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_3248"
+                      ><time data-relative="true">2008-04-21T16:44:12Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Someone else just pasted in a similar crash log in
+                    <a href="/issues/670">bug #670</a>; doesn't really belong
+                    there, so I am going to paste it in here:
+                  </p>
+                  <pre>
+Process:         Synergy [34773]
 Path:            /Applications/Synergy Preferences.app/Contents/Resources/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy
 Identifier:      org.wincent.Synergy
 Version:         version 3.5a6 (69d0d56)
@@ -296,75 +377,117 @@ Binary Images:
 0x96cd0000 - 0x971a3fde  libGLProgrammability.dylib ??? (???) &lt;a3d68f17f37ff55a3e61aca1e3aee522&gt; /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLProgrammability.dylib
 0xc0000000 - 0xc0008fff +com.growl.growlframework 1.1.2 (1.1.2) &lt;e4a1c0affd65f843be253224e017b90e&gt; /Applications/Synergy Preferences.app/Contents/Resources/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/Frameworks/Growl.framework/Versions/A/Growl
 0xfffe8000 - 0xfffebfff  libobjc.A.dylib ??? (???) /usr/lib/libobjc.A.dylib
-0xffff0000 - 0xffff1780  libSystem.B.dylib ??? (???) /usr/lib/libSystem.B.dylib</pre>
-</blockquote>
-</li>
-<li class='comment' id='comment_3267'>
-<cite>
-<a href="/users/joshua-gitlin">Joshua Gitlin</a>
-<span class='when'><a href="#comment_3267"><time data-relative="true">2008-04-27T16:11:38Z</time></a></span>
-</cite>
-<blockquote><p>Just a note, I upgraded to Synergy 3.5a6 (69d0d56) and still have this problem. I'm sad to say I am going to stop using Synergy until this and the artwork problem are solved. :-( </p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_3268'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_3268"><time data-relative="true">2008-04-28T06:38:30Z</time></a></span>
-</cite>
-<blockquote><p>I've just committed a fix for this issue, it will be included in the next release (this week).</p>
-<p>The cover art thing is a separate issue, so please see <a href="/issues/668">bug #668</a> for that.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_3300'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_3300"><time data-relative="true">2008-04-29T04:38:37Z</time></a></span>
-</cite>
-<blockquote><p>Marking this as CLOSED. The new releases are now out:</p>
-<p><a href="http://rails.wincent.com/blog/synergy-3.2.1b-and-3.5a7-now-available" class="external">http://rails.wincent.com/blog/synergy-3.2.1b-and-3.5a7-now-available</a></p>
-</blockquote>
-</li>
-<li class='comment' id='comment_3310'>
-<cite>
-<a href="/users/joshua-gitlin">Joshua Gitlin</a>
-<span class='when'><a href="#comment_3310"><time data-relative="true">2008-05-02T15:08:49Z</time></a></span>
-</cite>
-<blockquote><p>Thanks Wincent! I have Synergy back now!!</p>
-</blockquote>
-</li>
+0xffff0000 - 0xffff1780  libSystem.B.dylib ??? (???) /usr/lib/libSystem.B.dylib</pre
+                  >
+                </blockquote>
+              </li>
+              <li class="comment" id="comment_3267">
+                <cite>
+                  <a href="/users/joshua-gitlin">Joshua Gitlin</a>
+                  <span class="when"
+                    ><a href="#comment_3267"
+                      ><time data-relative="true">2008-04-27T16:11:38Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Just a note, I upgraded to Synergy 3.5a6 (69d0d56) and still
+                    have this problem. I'm sad to say I am going to stop using
+                    Synergy until this and the artwork problem are solved. :-(
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_3268">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_3268"
+                      ><time data-relative="true">2008-04-28T06:38:30Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    I've just committed a fix for this issue, it will be
+                    included in the next release (this week).
+                  </p>
+                  <p>
+                    The cover art thing is a separate issue, so please see
+                    <a href="/issues/668">bug #668</a> for that.
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_3300">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_3300"
+                      ><time data-relative="true">2008-04-29T04:38:37Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>Marking this as CLOSED. The new releases are now out:</p>
+                  <p>
+                    <a
+                      href="http://rails.wincent.com/blog/synergy-3.2.1b-and-3.5a7-now-available"
+                      class="external"
+                      >http://rails.wincent.com/blog/synergy-3.2.1b-and-3.5a7-now-available</a
+                    >
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment" id="comment_3310">
+                <cite>
+                  <a href="/users/joshua-gitlin">Joshua Gitlin</a>
+                  <span class="when"
+                    ><a href="#comment_3310"
+                      ><time data-relative="true">2008-05-02T15:08:49Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>Thanks Wincent! I have Synergy back now!!</p>
+                </blockquote>
+              </li>
+            </ol>
+            <h5 class="major">Add a comment</h5>
+            <p>Comments are now closed for this issue.</p>
+          </div>
+        </div>
+        <footer class="global">
+          <ul>
+            <li>
+              <a
+                title="Email me at greg@hurrell.net"
+                class="mailto"
+                href="mailto:greg@hurrell.net"
+                >contact</a
+              >
+            </li>
+            <li><a href="/misc/legal">legal</a></li>
+          </ul>
+        </footer>
+      </div>
+      <div class="menu hide">
+        <div class="menu-inner">
+          <section>
+            <h2>Menu</h2>
+            <ul>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/wiki">Wiki</a></li>
+              <li><a href="/issues">Issues</a></li>
+              <li><a href="/snippets">Snippets</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script src="/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
 
-</ol>
-<h5 class='major'>Add a comment</h5>
-<p>Comments are now closed for this issue.</p>
-
-</div>
-</div>
-<footer class='global'>
-<ul>
-<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
-<li><a href="/misc/legal">legal</a></li>
-</ul>
-</footer>
-</div>
-<div class='menu hide'>
-<div class='menu-inner'>
-<section>
-<h2>Menu</h2>
-<ul>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/wiki">Wiki</a></li>
-<li><a href="/issues">Issues</a></li>
-<li><a href="/snippets">Snippets</a></li>
-</ul>
-</section>
-</div>
-</div>
-</div>
-<script src="/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
-
-<script>
-  new Wincent.Menu();
-</script>
-</body>
+    <script>
+      new Wincent.Menu();
+    </script>
+  </body>
 </html>

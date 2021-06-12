@@ -1,85 +1,131 @@
 <!DOCTYPE html>
-<html lang='en-US'>
-<head>
-<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
-<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
-<title>
-Bug #1339: new version nearly always quits on launch
-&middot; wincent.com
-</title>
-<link rel="stylesheet" media="screen" href="/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<html lang="en-US">
+  <head>
+    <meta content="text/html;charset=UTF-8" http-equiv="Content-Type" />
+    <meta
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+      name="viewport"
+    />
+    <title>
+      Bug #1339: new version nearly always quits on launch &middot; wincent.com
+    </title>
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="/assets/application-73fd7b8197d0b27a25f03f916460e23c.css"
+    />
+  </head>
+  <body>
+    <div class="viewport menu-closed">
+      <div class="app">
+        <a id="top" name="top"></a>
+        <nav class="global">
+          <a class="menu-icon" href="#">&equiv;</a>
+          <h1><a href="/">Wincent</a></h1>
+          <ul class="navbar-links">
+            <li>
+              <a href="/products">Products</a>
+            </li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/wiki">Wiki</a></li>
+            <li class="selected"><a href="/issues">Issues</a></li>
+          </ul>
+        </nav>
+        <div id="content-wrapper">
+          <div id="content">
+            <div class="notice">
+              <i class="fa fa-info-circle"></i>
+              You are viewing an historical archive of past issues. Please
+              report new issues to the appropriate project issue tracker on
+              <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+            </div>
+            <div id="breadcrumbs">
+              <a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo;
+              Bug #1339
+            </div>
+            <div class="issue" id="issue_1339">
+              <form
+                class="edit_issue"
+                id="edit_issue_1339"
+                action="/issues/1339"
+                accept-charset="UTF-8"
+                method="post"
+              >
+                <input name="utf8" type="hidden" value="&#x2713;" /><input
+                  type="hidden"
+                  name="_method"
+                  value="patch"
+                /><input
+                  type="hidden"
+                  name="authenticity_token"
+                  value="cwohCEx3n8upVzfxJtrfr+xqjBepZ+xe5iBh9wlpP3xH+J+/6/pFnnDbBAYX84wbWejlK6KLYkLGP7QJLbFYWA=="
+                /><input
+                  type="text"
+                  name="website_address"
+                  id="website_address"
+                  value=""
+                  class="website-address"
+                />
+                <h1 class="bug major">
+                  Bug #1339:
+                  <span data-name="issue[summary]">
+                    new version nearly always quits on launch
+                  </span>
+                </h1>
+                <table class="issue-metadata">
+                  <tr>
+                    <th>Kind</th>
+                    <td>
+                      bug
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Product</th>
+                    <td>
+                      Synergy
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>When</th>
+                    <td>
+                      Created
+                      <time data-relative="true">2009-06-29T16:48:05Z</time>,
+                      updated
+                      <time data-relative="true">2010-08-12T03:57:16Z</time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Status</th>
+                    <td>
+                      closed
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Reporter</th>
+                    <td>anonymous</td>
+                  </tr>
+                  <tr>
+                    <th>Tags</th>
+                    <td data-name="issue[pending_tags]">
+                      <a
+                        title="3 items tagged with &#39;crash&#39;"
+                        href="/tags/crash"
+                        >crash</a
+                      >
+                    </td>
+                  </tr>
+                </table>
 
-</head>
-<body>
-<div class='viewport menu-closed'>
-<div class='app'>
-<a id="top" name="top"></a>
-<nav class='global'>
-<a class='menu-icon' href='#'>&equiv;</a>
-<h1><a href="/">Wincent</a></h1>
-<ul class='navbar-links'>
-<li>
-<a href="/products">Products</a>
-</li>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/wiki">Wiki</a></li>
-<li class='selected'><a href="/issues">Issues</a></li>
-</ul>
-</nav>
-<div id='content-wrapper'>
-<div id='content'>
-<div class='notice'>
-<i class='fa fa-info-circle'></i>
-You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
-</div>
-<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1339</div>
-<div class='issue' id='issue_1339'>
-<form class="edit_issue" id="edit_issue_1339" action="/issues/1339" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="cwohCEx3n8upVzfxJtrfr+xqjBepZ+xe5iBh9wlpP3xH+J+/6/pFnnDbBAYX84wbWejlK6KLYkLGP7QJLbFYWA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
-Bug #1339:
-<span data-name='issue[summary]'>
-new version nearly always quits on launch
-</span>
-</h1>
-<table class='issue-metadata'>
-<tr>
-<th>Kind</th>
-<td>
-bug
-</td>
-</tr>
-<tr>
-<th>Product</th>
-<td>
-Synergy
-</td>
-</tr>
-<tr>
-<th>When</th>
-<td>Created <time data-relative="true">2009-06-29T16:48:05Z</time>, updated <time data-relative="true">2010-08-12T03:57:16Z</time></td>
-</tr>
-<tr>
-<th>Status</th>
-<td>
-closed
-</td>
-</tr>
-<tr>
-<th>Reporter</th>
-<td>anonymous</td>
-</tr>
-<tr>
-<th>Tags</th>
-<td data-name='issue[pending_tags]'>
-<a title="3 items tagged with &#39;crash&#39;" href="/tags/crash">crash</a>
-</td>
-</tr>
-</table>
-<h4 class='major'>
-Description
-</h4>
-<div class='issue-description-body'>
-<p>Here&#x2019;s the error report that came up (but which I couldn&#x2019;t send to Apple:</p>
-<pre>Process:         Synergy Preferences [3075]
+                <h4 class="major">
+                  Description
+                </h4>
+                <div class="issue-description-body">
+                  <p>
+                    Here&#x2019;s the error report that came up (but which I
+                    couldn&#x2019;t send to Apple:
+                  </p>
+                  <pre>
+Process:         Synergy Preferences [3075]
 Path:            /Applications/Synergy Preferences.app/Contents/MacOS/Synergy Preferences
 Identifier:      com.wincent.SynergyPreferences
 Version:         version 3.5a7 (2447b55+)
@@ -256,91 +302,124 @@ Binary Images:
 0x97348000 - 0x97348ffd  com.apple.Accelerate 1.4.2 (Accelerate 1.4.2) /System/Library/Frameworks/Accelerate.framework/Versions/A/Accelerate
 0x97349000 - 0x9734dfff  libmathCommon.A.dylib ??? (???) /usr/lib/system/libmathCommon.A.dylib
 0xfffe8000 - 0xfffebfff  libobjc.A.dylib ??? (???) /usr/lib/libobjc.A.dylib
-0xffff0000 - 0xffff1780  libSystem.B.dylib ??? (???) /usr/lib/libSystem.B.dylib</pre>
+0xffff0000 - 0xffff1780  libSystem.B.dylib ??? (???) /usr/lib/libSystem.B.dylib</pre
+                  >
+                </div>
+              </form>
+            </div>
+            <h4 class="major">Comments</h4>
+            <ol class="boxed" id="comments">
+              <li class="comment admin" id="comment_4756">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_4756"
+                      ><time data-relative="true">2009-06-29T17:29:33Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p><strong>Status</strong> changed:</p>
+                  <ul>
+                    <li><strong>From:</strong> new</li>
+                    <li><strong>To:</strong> open</li>
+                  </ul>
+                  <p><strong>Tags</strong> changed:</p>
+                  <ul>
+                    <li><strong>From:</strong></li>
+                    <li><strong>To:</strong> crash</li>
+                  </ul>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_4757">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_4757"
+                      ><time data-relative="true">2009-06-29T17:33:16Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Thanks very much for the report. That particular crash
+                    doesn't look familiar to me.
+                  </p>
+                  <p>
+                    But it doesn't look like it's from the new version (3.5a9);
+                    it says it's from version 3.5a7 (2447b55+).
+                  </p>
+                  <p>
+                    Can you please delete the old version and make sure that
+                    you're using 3.5a9? And if the problem recurs, let me know.
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_6004">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_6004"
+                      ><time data-relative="true">2010-08-12T03:57:09Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote><p>Closing due to lack of response.</p></blockquote>
+              </li>
+              <li class="comment admin" id="comment_6005">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_6005"
+                      ><time data-relative="true">2010-08-12T03:57:16Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p><strong>Status</strong> changed:</p>
+                  <ul>
+                    <li><strong>From:</strong> open</li>
+                    <li><strong>To:</strong> closed</li>
+                  </ul>
+                </blockquote>
+              </li>
+            </ol>
+            <h5 class="major">Add a comment</h5>
+            <p>Comments are now closed for this issue.</p>
+          </div>
+        </div>
+        <footer class="global">
+          <ul>
+            <li>
+              <a
+                title="Email me at greg@hurrell.net"
+                class="mailto"
+                href="mailto:greg@hurrell.net"
+                >contact</a
+              >
+            </li>
+            <li><a href="/misc/legal">legal</a></li>
+          </ul>
+        </footer>
+      </div>
+      <div class="menu hide">
+        <div class="menu-inner">
+          <section>
+            <h2>Menu</h2>
+            <ul>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/wiki">Wiki</a></li>
+              <li><a href="/issues">Issues</a></li>
+              <li><a href="/snippets">Snippets</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script src="/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
 
-</div>
-</form></div>
-<h4 class='major'>Comments</h4>
-<ol class='boxed' id='comments'>
-<li class='comment admin' id='comment_4756'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_4756"><time data-relative="true">2009-06-29T17:29:33Z</time></a></span>
-</cite>
-<blockquote><p><strong>Status</strong> changed:</p>
-<ul>
-<li><strong>From:</strong> new</li>
-<li><strong>To:</strong> open</li>
-</ul>
-<p><strong>Tags</strong> changed:</p>
-<ul>
-<li><strong>From:</strong> </li>
-<li><strong>To:</strong> crash</li>
-</ul>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_4757'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_4757"><time data-relative="true">2009-06-29T17:33:16Z</time></a></span>
-</cite>
-<blockquote><p>Thanks very much for the report. That particular crash doesn't look familiar to me.</p>
-<p>But it doesn't look like it's from the new version (3.5a9); it says it's from version 3.5a7 (2447b55+).</p>
-<p>Can you please delete the old version and make sure that you're using 3.5a9? And if the problem recurs, let me know.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_6004'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_6004"><time data-relative="true">2010-08-12T03:57:09Z</time></a></span>
-</cite>
-<blockquote><p>Closing due to lack of response.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_6005'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_6005"><time data-relative="true">2010-08-12T03:57:16Z</time></a></span>
-</cite>
-<blockquote><p><strong>Status</strong> changed:</p>
-<ul>
-<li><strong>From:</strong> open</li>
-<li><strong>To:</strong> closed</li>
-</ul>
-</blockquote>
-</li>
-
-</ol>
-<h5 class='major'>Add a comment</h5>
-<p>Comments are now closed for this issue.</p>
-
-</div>
-</div>
-<footer class='global'>
-<ul>
-<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
-<li><a href="/misc/legal">legal</a></li>
-</ul>
-</footer>
-</div>
-<div class='menu hide'>
-<div class='menu-inner'>
-<section>
-<h2>Menu</h2>
-<ul>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/wiki">Wiki</a></li>
-<li><a href="/issues">Issues</a></li>
-<li><a href="/snippets">Snippets</a></li>
-</ul>
-</section>
-</div>
-</div>
-</div>
-<script src="/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
-
-<script>
-  new Wincent.Menu();
-</script>
-</body>
+    <script>
+      new Wincent.Menu();
+    </script>
+  </body>
 </html>

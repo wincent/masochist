@@ -1,6 +1,6 @@
 {
   "bracketSpacing": false,
-  "jsx-bracket-same-line": true,
+  "jsxBracketSameLine": true,
   "parser": "flow",
   "singleQuote": true,
   "trailingComma": "all"

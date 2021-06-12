@@ -4,9 +4,17 @@
   </head>
   <body>
     <h1>Moved Permanently</h1>
-    <p>The resource has moved to <a href="https://wincent.com/blog/putting-the-packrat-into-peg-adding-memoizing-to-my-ruby-parser-generator">https://wincent.com/blog/putting-the-packrat-into-peg-adding-memoizing-to-my-ruby-parser-generator</a></p>
+    <p>
+      The resource has moved to
+      <a
+        href="https://wincent.com/blog/putting-the-packrat-into-peg-adding-memoizing-to-my-ruby-parser-generator"
+        >https://wincent.com/blog/putting-the-packrat-into-peg-adding-memoizing-to-my-ruby-parser-generator</a
+      >
+    </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/putting-the-packrat-into-peg-adding-memoizing-to-my-ruby-parser-generator');
+    window.location.replace(
+      'https://wincent.com/blog/putting-the-packrat-into-peg-adding-memoizing-to-my-ruby-parser-generator',
+    );
   </script>
 </html>

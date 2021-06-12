@@ -4,9 +4,16 @@
   </head>
   <body>
     <h1>Moved Permanently</h1>
-    <p>The resource has moved to <a href="https://wincent.com/blog/smarter-crash-reports-i-give-up">https://wincent.com/blog/smarter-crash-reports-i-give-up</a></p>
+    <p>
+      The resource has moved to
+      <a href="https://wincent.com/blog/smarter-crash-reports-i-give-up"
+        >https://wincent.com/blog/smarter-crash-reports-i-give-up</a
+      >
+    </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/smarter-crash-reports-i-give-up');
+    window.location.replace(
+      'https://wincent.com/blog/smarter-crash-reports-i-give-up',
+    );
   </script>
 </html>

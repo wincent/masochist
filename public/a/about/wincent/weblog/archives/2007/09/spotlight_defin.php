@@ -4,9 +4,17 @@
   </head>
   <body>
     <h1>Moved Permanently</h1>
-    <p>The resource has moved to <a href="https://wincent.com/blog/spotlight-definitely-broken-on-my-machine">https://wincent.com/blog/spotlight-definitely-broken-on-my-machine</a></p>
+    <p>
+      The resource has moved to
+      <a
+        href="https://wincent.com/blog/spotlight-definitely-broken-on-my-machine"
+        >https://wincent.com/blog/spotlight-definitely-broken-on-my-machine</a
+      >
+    </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/spotlight-definitely-broken-on-my-machine');
+    window.location.replace(
+      'https://wincent.com/blog/spotlight-definitely-broken-on-my-machine',
+    );
   </script>
 </html>

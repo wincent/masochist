@@ -1,85 +1,128 @@
 <!DOCTYPE html>
-<html lang='en-US'>
-<head>
-<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
-<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
-<title>
-Bug #1772: app crashes during startup
-&middot; wincent.com
-</title>
-<link rel="stylesheet" media="screen" href="/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<html lang="en-US">
+  <head>
+    <meta content="text/html;charset=UTF-8" http-equiv="Content-Type" />
+    <meta
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+      name="viewport"
+    />
+    <title>
+      Bug #1772: app crashes during startup &middot; wincent.com
+    </title>
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="/assets/application-73fd7b8197d0b27a25f03f916460e23c.css"
+    />
+  </head>
+  <body>
+    <div class="viewport menu-closed">
+      <div class="app">
+        <a id="top" name="top"></a>
+        <nav class="global">
+          <a class="menu-icon" href="#">&equiv;</a>
+          <h1><a href="/">Wincent</a></h1>
+          <ul class="navbar-links">
+            <li>
+              <a href="/products">Products</a>
+            </li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/wiki">Wiki</a></li>
+            <li class="selected"><a href="/issues">Issues</a></li>
+          </ul>
+        </nav>
+        <div id="content-wrapper">
+          <div id="content">
+            <div class="notice">
+              <i class="fa fa-info-circle"></i>
+              You are viewing an historical archive of past issues. Please
+              report new issues to the appropriate project issue tracker on
+              <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+            </div>
+            <div id="breadcrumbs">
+              <a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo;
+              Bug #1772
+            </div>
+            <div class="issue" id="issue_1772">
+              <form
+                class="edit_issue"
+                id="edit_issue_1772"
+                action="/issues/1772"
+                accept-charset="UTF-8"
+                method="post"
+              >
+                <input name="utf8" type="hidden" value="&#x2713;" /><input
+                  type="hidden"
+                  name="_method"
+                  value="patch"
+                /><input
+                  type="hidden"
+                  name="authenticity_token"
+                  value="C1Ne7gNgNhdq+gcnh6H9PR6Sb2iy6VGoprSEoxgkQB0/oeBZpO3sQrN2NNC2iK6JqxAGVLkF37SGq1FdPPwnOQ=="
+                /><input
+                  type="text"
+                  name="website_address"
+                  id="website_address"
+                  value=""
+                  class="website-address"
+                />
+                <h1 class="bug major">
+                  Bug #1772:
+                  <span data-name="issue[summary]">
+                    app crashes during startup
+                  </span>
+                </h1>
+                <table class="issue-metadata">
+                  <tr>
+                    <th>Kind</th>
+                    <td>
+                      bug
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Product</th>
+                    <td>
+                      Synergy Advance
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>When</th>
+                    <td>
+                      <time data-relative="true">2011-01-30T21:35:22Z</time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Status</th>
+                    <td>
+                      closed
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Reporter</th>
+                    <td><a href="/users/hazza">Hazza</a></td>
+                  </tr>
+                  <tr>
+                    <th>Tags</th>
+                    <td data-name="issue[pending_tags]">
+                      no tags
+                    </td>
+                  </tr>
+                </table>
 
-</head>
-<body>
-<div class='viewport menu-closed'>
-<div class='app'>
-<a id="top" name="top"></a>
-<nav class='global'>
-<a class='menu-icon' href='#'>&equiv;</a>
-<h1><a href="/">Wincent</a></h1>
-<ul class='navbar-links'>
-<li>
-<a href="/products">Products</a>
-</li>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/wiki">Wiki</a></li>
-<li class='selected'><a href="/issues">Issues</a></li>
-</ul>
-</nav>
-<div id='content-wrapper'>
-<div id='content'>
-<div class='notice'>
-<i class='fa fa-info-circle'></i>
-You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
-</div>
-<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1772</div>
-<div class='issue' id='issue_1772'>
-<form class="edit_issue" id="edit_issue_1772" action="/issues/1772" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="C1Ne7gNgNhdq+gcnh6H9PR6Sb2iy6VGoprSEoxgkQB0/oeBZpO3sQrN2NNC2iK6JqxAGVLkF37SGq1FdPPwnOQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
-Bug #1772:
-<span data-name='issue[summary]'>
-app crashes during startup
-</span>
-</h1>
-<table class='issue-metadata'>
-<tr>
-<th>Kind</th>
-<td>
-bug
-</td>
-</tr>
-<tr>
-<th>Product</th>
-<td>
-Synergy Advance
-</td>
-</tr>
-<tr>
-<th>When</th>
-<td><time data-relative="true">2011-01-30T21:35:22Z</time></td>
-</tr>
-<tr>
-<th>Status</th>
-<td>
-closed
-</td>
-</tr>
-<tr>
-<th>Reporter</th>
-<td><a href="/users/hazza">Hazza</a></td>
-</tr>
-<tr>
-<th>Tags</th>
-<td data-name='issue[pending_tags]'>
-no tags
-</td>
-</tr>
-</table>
-<h4 class='major'>
-Description
-</h4>
-<div class='issue-description-body'>
-<p>I've just downloaded the app and dragged it to a folder. On starting it crashes after displaying the splash screen for about half a second. I tried a few times, also with quitting iTunes first, but the result stays the same. Here is the full &quot;problem&quot; report the Finder provides. I hope it helps:</p>
-<pre>Process:         Synergy Advance [370]
+                <h4 class="major">
+                  Description
+                </h4>
+                <div class="issue-description-body">
+                  <p>
+                    I've just downloaded the app and dragged it to a folder. On
+                    starting it crashes after displaying the splash screen for
+                    about half a second. I tried a few times, also with quitting
+                    iTunes first, but the result stays the same. Here is the
+                    full &quot;problem&quot; report the Finder provides. I hope
+                    it helps:
+                  </p>
+                  <pre>
+Process:         Synergy Advance [370]
 Path:            /Applications/Sound apps/Synergy Advance.app/Contents/MacOS/Synergy Advance
 Identifier:      com.wincent.SynergyAdvance
 Version:         Synergy Advance version 0.5.1b (484) (0.5.1b (484))
@@ -338,72 +381,109 @@ USB Device: BRCM2070 Hub, 0x0a5c  (Broadcom Corp.), 0x4500, 0xfa110000
 USB Device: Bluetooth USB Host Controller, 0x05ac  (Apple Inc.), 0x8218, 0xfa113000
 USB Device: Hub, 0x0424  (SMSC), 0x2514, 0xfd100000
 USB Device: Built-in iSight, 0x05ac  (Apple Inc.), 0x8507, 0xfd110000
-USB Device: IR Receiver, 0x05ac  (Apple Inc.), 0x8242, 0xfd120000</pre>
+USB Device: IR Receiver, 0x05ac  (Apple Inc.), 0x8242, 0xfd120000</pre
+                  >
+                </div>
+              </form>
+            </div>
+            <h4 class="major">Comments</h4>
+            <ol class="boxed" id="comments">
+              <li class="comment admin" id="comment_6617">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_6617"
+                      ><time data-relative="true">2011-01-30T23:36:55Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    This is a known issue on
+                    <a href="/wiki/Snow_Leopard">Snow Leopard</a>, which I am
+                    working on fixing. In the meantime the only workaround is to
+                    use <a href="/wiki/Synergy">Synergy</a> instead. If you've
+                    got a Synergy Advance license and need a Synergy one to tide
+                    you over until the former is made compatible, just drop me a
+                    line via email (<a
+                      href="mailto:win@wincent.com"
+                      class="mailto"
+                      >win@wincent.com</a
+                    >) and I'll organize a complimentary license for you.
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_6618">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_6618"
+                      ><time data-relative="true">2011-01-30T23:38:10Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Going to close this ticket as a duplicate of
+                    <a href="/issues/944">bug #944</a>, so please file any
+                    further comments you might have there.
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_6620">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_6620"
+                      ><time data-relative="true">2011-01-30T23:38:32Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p><strong>Status</strong> changed:</p>
+                  <ul>
+                    <li><strong>From:</strong> new</li>
+                    <li><strong>To:</strong> closed</li>
+                  </ul>
+                </blockquote>
+              </li>
+            </ol>
+            <h5 class="major">Add a comment</h5>
+            <p>Comments are now closed for this issue.</p>
+          </div>
+        </div>
+        <footer class="global">
+          <ul>
+            <li>
+              <a
+                title="Email me at greg@hurrell.net"
+                class="mailto"
+                href="mailto:greg@hurrell.net"
+                >contact</a
+              >
+            </li>
+            <li><a href="/misc/legal">legal</a></li>
+          </ul>
+        </footer>
+      </div>
+      <div class="menu hide">
+        <div class="menu-inner">
+          <section>
+            <h2>Menu</h2>
+            <ul>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/wiki">Wiki</a></li>
+              <li><a href="/issues">Issues</a></li>
+              <li><a href="/snippets">Snippets</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script src="/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
 
-</div>
-</form></div>
-<h4 class='major'>Comments</h4>
-<ol class='boxed' id='comments'>
-<li class='comment admin' id='comment_6617'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_6617"><time data-relative="true">2011-01-30T23:36:55Z</time></a></span>
-</cite>
-<blockquote><p>This is a known issue on <a href="/wiki/Snow_Leopard">Snow Leopard</a>, which I am working on fixing. In the meantime the only workaround is to use <a href="/wiki/Synergy">Synergy</a> instead. If you've got a Synergy Advance license and need a Synergy one to tide you over until the former is made compatible, just drop me a line via email (<a href="mailto:win@wincent.com" class="mailto">win@wincent.com</a>) and I'll organize a complimentary license for you.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_6618'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_6618"><time data-relative="true">2011-01-30T23:38:10Z</time></a></span>
-</cite>
-<blockquote><p>Going to close this ticket as a duplicate of <a href="/issues/944">bug #944</a>, so please file any further comments you might have there.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_6620'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_6620"><time data-relative="true">2011-01-30T23:38:32Z</time></a></span>
-</cite>
-<blockquote><p><strong>Status</strong> changed:</p>
-<ul>
-<li><strong>From:</strong> new</li>
-<li><strong>To:</strong> closed</li>
-</ul>
-</blockquote>
-</li>
-
-</ol>
-<h5 class='major'>Add a comment</h5>
-<p>Comments are now closed for this issue.</p>
-
-</div>
-</div>
-<footer class='global'>
-<ul>
-<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
-<li><a href="/misc/legal">legal</a></li>
-</ul>
-</footer>
-</div>
-<div class='menu hide'>
-<div class='menu-inner'>
-<section>
-<h2>Menu</h2>
-<ul>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/wiki">Wiki</a></li>
-<li><a href="/issues">Issues</a></li>
-<li><a href="/snippets">Snippets</a></li>
-</ul>
-</section>
-</div>
-</div>
-</div>
-<script src="/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
-
-<script>
-  new Wincent.Menu();
-</script>
-</body>
+    <script>
+      new Wincent.Menu();
+    </script>
+  </body>
 </html>

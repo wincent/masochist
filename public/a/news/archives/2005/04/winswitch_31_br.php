@@ -4,9 +4,17 @@
   </head>
   <body>
     <h1>Moved Permanently</h1>
-    <p>The resource has moved to <a href="https://wincent.com/blog/winswitch-3.1-brings-tiger-compatibility">https://wincent.com/blog/winswitch-3.1-brings-tiger-compatibility</a></p>
+    <p>
+      The resource has moved to
+      <a
+        href="https://wincent.com/blog/winswitch-3.1-brings-tiger-compatibility"
+        >https://wincent.com/blog/winswitch-3.1-brings-tiger-compatibility</a
+      >
+    </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/winswitch-3.1-brings-tiger-compatibility');
+    window.location.replace(
+      'https://wincent.com/blog/winswitch-3.1-brings-tiger-compatibility',
+    );
   </script>
 </html>

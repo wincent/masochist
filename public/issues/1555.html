@@ -1,85 +1,131 @@
 <!DOCTYPE html>
-<html lang='en-US'>
-<head>
-<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
-<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
-<title>
-Bug #1555: wildignore support has unhandled edge cases
-&middot; wincent.com
-</title>
-<link rel="stylesheet" media="screen" href="/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<html lang="en-US">
+  <head>
+    <meta content="text/html;charset=UTF-8" http-equiv="Content-Type" />
+    <meta
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+      name="viewport"
+    />
+    <title>
+      Bug #1555: wildignore support has unhandled edge cases &middot;
+      wincent.com
+    </title>
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="/assets/application-73fd7b8197d0b27a25f03f916460e23c.css"
+    />
+  </head>
+  <body>
+    <div class="viewport menu-closed">
+      <div class="app">
+        <a id="top" name="top"></a>
+        <nav class="global">
+          <a class="menu-icon" href="#">&equiv;</a>
+          <h1><a href="/">Wincent</a></h1>
+          <ul class="navbar-links">
+            <li>
+              <a href="/products">Products</a>
+            </li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/wiki">Wiki</a></li>
+            <li class="selected"><a href="/issues">Issues</a></li>
+          </ul>
+        </nav>
+        <div id="content-wrapper">
+          <div id="content">
+            <div class="notice">
+              <i class="fa fa-info-circle"></i>
+              You are viewing an historical archive of past issues. Please
+              report new issues to the appropriate project issue tracker on
+              <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+            </div>
+            <div id="breadcrumbs">
+              <a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo;
+              Bug #1555
+            </div>
+            <div class="issue" id="issue_1555">
+              <form
+                class="edit_issue"
+                id="edit_issue_1555"
+                action="/issues/1555"
+                accept-charset="UTF-8"
+                method="post"
+              >
+                <input name="utf8" type="hidden" value="&#x2713;" /><input
+                  type="hidden"
+                  name="_method"
+                  value="patch"
+                /><input
+                  type="hidden"
+                  name="authenticity_token"
+                  value="gudmfS1OpeEjyfTbc84UbAJ18UwFFoiglMRv7/5Bl9a2FdjKisN/tPpFxyxC50fYt/eYcA76Bry027oR2pnw8g=="
+                /><input
+                  type="text"
+                  name="website_address"
+                  id="website_address"
+                  value=""
+                  class="website-address"
+                />
+                <h1 class="bug major">
+                  Bug #1555:
+                  <span data-name="issue[summary]">
+                    wildignore support has unhandled edge cases
+                  </span>
+                </h1>
+                <table class="issue-metadata">
+                  <tr>
+                    <th>Kind</th>
+                    <td>
+                      bug
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Product</th>
+                    <td>
+                      Command-T
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>When</th>
+                    <td>
+                      Created
+                      <time data-relative="true">2010-05-11T05:47:23Z</time>,
+                      updated
+                      <time data-relative="true">2010-05-18T06:24:35Z</time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Status</th>
+                    <td>
+                      closed
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Reporter</th>
+                    <td>anonymous</td>
+                  </tr>
+                  <tr>
+                    <th>Tags</th>
+                    <td data-name="issue[pending_tags]">
+                      no tags
+                    </td>
+                  </tr>
+                </table>
 
-</head>
-<body>
-<div class='viewport menu-closed'>
-<div class='app'>
-<a id="top" name="top"></a>
-<nav class='global'>
-<a class='menu-icon' href='#'>&equiv;</a>
-<h1><a href="/">Wincent</a></h1>
-<ul class='navbar-links'>
-<li>
-<a href="/products">Products</a>
-</li>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/wiki">Wiki</a></li>
-<li class='selected'><a href="/issues">Issues</a></li>
-</ul>
-</nav>
-<div id='content-wrapper'>
-<div id='content'>
-<div class='notice'>
-<i class='fa fa-info-circle'></i>
-You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
-</div>
-<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1555</div>
-<div class='issue' id='issue_1555'>
-<form class="edit_issue" id="edit_issue_1555" action="/issues/1555" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="gudmfS1OpeEjyfTbc84UbAJ18UwFFoiglMRv7/5Bl9a2FdjKisN/tPpFxyxC50fYt/eYcA76Bry027oR2pnw8g==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
-Bug #1555:
-<span data-name='issue[summary]'>
-wildignore support has unhandled edge cases
-</span>
-</h1>
-<table class='issue-metadata'>
-<tr>
-<th>Kind</th>
-<td>
-bug
-</td>
-</tr>
-<tr>
-<th>Product</th>
-<td>
-Command-T
-</td>
-</tr>
-<tr>
-<th>When</th>
-<td>Created <time data-relative="true">2010-05-11T05:47:23Z</time>, updated <time data-relative="true">2010-05-18T06:24:35Z</time></td>
-</tr>
-<tr>
-<th>Status</th>
-<td>
-closed
-</td>
-</tr>
-<tr>
-<th>Reporter</th>
-<td>anonymous</td>
-</tr>
-<tr>
-<th>Tags</th>
-<td data-name='issue[pending_tags]'>
-no tags
-</td>
-</tr>
-</table>
-<h4 class='major'>
-Description
-</h4>
-<div class='issue-description-body'>
-<p>wildignore tries to match a filename in a few different ways (see :help autocmd-patterns). Command-t currently matches it using fnmatch and basename(path). This makes it impossible to match against patterns with a dirname. (/foo/*/bar, etc). Here's another solution that I like; rather than emulate vim's behavior, it just uses vim do to the work.</p>
-<pre>
+                <h4 class="major">
+                  Description
+                </h4>
+                <div class="issue-description-body">
+                  <p>
+                    wildignore tries to match a filename in a few different ways
+                    (see :help autocmd-patterns). Command-t currently matches it
+                    using fnmatch and basename(path). This makes it impossible
+                    to match against patterns with a dirname. (/foo/*/bar, etc).
+                    Here's another solution that I like; rather than emulate
+                    vim's behavior, it just uses vim do to the work.
+                  </p>
+                  <pre>
 From 141bf2e1b6b61eab49aabff16d8683c10a7e25c0 Mon Sep 17 00:00:00 2001
 From: Mike Lundy &lt;mike@fluffypenguin.org&gt;
 Date: Tue, 11 May 2010 02:24:53 -0700
@@ -156,34 +202,79 @@ index 48214eb..9d26464 100644
 -- 
 1.7.1
 
-</pre>
-
-</div>
-</form></div>
-<h4 class='major'>Comments</h4>
-<ol class='boxed' id='comments'>
-<li class='comment admin' id='comment_5616'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_5616"><time data-relative="true">2010-05-11T06:01:06Z</time></a></span>
-</cite>
-<blockquote><p>Any idea of what the performance impact of this is on really large directory hierarchies? (ie. crank up the scan depth and max file limit and then see how it performs on an enormous hierarchy.)</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_5619'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_5619"><time data-relative="true">2010-05-11T12:37:36Z</time></a></span>
-</cite>
-<blockquote><p>I've had a bit of a play around with this and I like the basic idea of it. It seems to handle most of the usage scenarios mentioned in <a href="/issues/1542">ticket #1542</a>:</p>
-<ul>
-<li>existing simple file globs like <code>*.o</code> and <code>.git</code></li>
-<li>patterns with leading <code>**</code></li>
-</ul>
-<p>Notably it doesn't handle patterns of the form <code>vendor/rails/**</code> like the person who posted that ticket was originally requesting. This is because internally, we're working with absolute paths at that point and <code>/absolute/path/to/vendor/rails/foo</code> is not considered by VIM as a match. Instead, you would need to specify a pattern like <code>**/vendor/rails/**</code>.</p>
-<p>One change required, however. It appears that on at least some versions of VIM the Ruby support doesn't know how to turn &quot;NULL&quot; results into an empty string, which means that you'll get a &quot;NULL pointer given&quot; exception raised every time you test an excluded path. From Googling I see that this isn't something that happens to affect just the platform I'm using (MacVim).</p>
-<p>So this is the tweaked version I'm testing, which uses <code>empty(exclude('...'))</code> rather than just a naked <code>exclude('...')</code>:</p>
-<pre>diff --git a/ruby/command-t/controller.rb b/ruby/command-t/controller.rb
+</pre
+                  >
+                </div>
+              </form>
+            </div>
+            <h4 class="major">Comments</h4>
+            <ol class="boxed" id="comments">
+              <li class="comment admin" id="comment_5616">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_5616"
+                      ><time data-relative="true">2010-05-11T06:01:06Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Any idea of what the performance impact of this is on really
+                    large directory hierarchies? (ie. crank up the scan depth
+                    and max file limit and then see how it performs on an
+                    enormous hierarchy.)
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_5619">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_5619"
+                      ><time data-relative="true">2010-05-11T12:37:36Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    I've had a bit of a play around with this and I like the
+                    basic idea of it. It seems to handle most of the usage
+                    scenarios mentioned in
+                    <a href="/issues/1542">ticket #1542</a>:
+                  </p>
+                  <ul>
+                    <li>
+                      existing simple file globs like <code>*.o</code> and
+                      <code>.git</code>
+                    </li>
+                    <li>patterns with leading <code>**</code></li>
+                  </ul>
+                  <p>
+                    Notably it doesn't handle patterns of the form
+                    <code>vendor/rails/**</code> like the person who posted that
+                    ticket was originally requesting. This is because
+                    internally, we're working with absolute paths at that point
+                    and <code>/absolute/path/to/vendor/rails/foo</code> is not
+                    considered by VIM as a match. Instead, you would need to
+                    specify a pattern like <code>**/vendor/rails/**</code>.
+                  </p>
+                  <p>
+                    One change required, however. It appears that on at least
+                    some versions of VIM the Ruby support doesn't know how to
+                    turn &quot;NULL&quot; results into an empty string, which
+                    means that you'll get a &quot;NULL pointer given&quot;
+                    exception raised every time you test an excluded path. From
+                    Googling I see that this isn't something that happens to
+                    affect just the platform I'm using (MacVim).
+                  </p>
+                  <p>
+                    So this is the tweaked version I'm testing, which uses
+                    <code>empty(exclude('...'))</code> rather than just a naked
+                    <code>exclude('...')</code>:
+                  </p>
+                  <pre>
+diff --git a/ruby/command-t/controller.rb b/ruby/command-t/controller.rb
 index 51277ce..3b93c19 100644
 --- a/ruby/command-t/controller.rb
 +++ b/ruby/command-t/controller.rb
@@ -228,16 +319,23 @@ index a48d070..c773d72 100644
 +        unless path_excluded?(path)
            if File.file?(path)
              @files += 1
-             raise FileLimitExceeded if @files &gt; @max_files</pre>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_5622'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_5622"><time data-relative="true">2010-05-11T16:12:08Z</time></a></span>
-</cite>
-<blockquote><p>And here's my entry into the commit log essay contest:</p>
-<pre>commit bbf296b775d5d9220fae28a34111117312bfcaa7
+             raise FileLimitExceeded if @files &gt; @max_files</pre
+                  >
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_5622">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_5622"
+                      ><time data-relative="true">2010-05-11T16:12:08Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>And here's my entry into the commit log essay contest:</p>
+                  <pre>
+commit bbf296b775d5d9220fae28a34111117312bfcaa7
 Author: Wincent Colaiuta &lt;win@wincent.com&gt;
 Date:   Tue May 11 21:56:57 2010 +0200
 
@@ -391,40 +489,75 @@ index c773d72..1868e95 100644
 +          elsif path.directory?
              next if @depth &gt;= @max_depth
              next if (entry.match(/\A\./) &amp;&amp; !@scan_dot_directories)
-             @depth += 1</pre>
-</blockquote>
-</li>
-<li class='comment' id='comment_5623'>
-<cite>
-anonymous
-<span class='when'><a href="#comment_5623"><time data-relative="true">2010-05-11T20:18:48Z</time></a></span>
-</cite>
-<blockquote><p>I'm going to rethink this a bit (going through VIM:: makes it rather hard to test).</p>
-</blockquote>
-</li>
-<li class='comment' id='comment_5624'>
-<cite>
-anonymous
-<span class='when'><a href="#comment_5624"><time data-relative="true">2010-05-11T20:20:35Z</time></a></span>
-</cite>
-<blockquote><p>oops, ignore my last post (and this one). I forgot to reload the page before I posted it.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_5625'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_5625"><time data-relative="true">2010-05-12T10:18:55Z</time></a></span>
-</cite>
-<blockquote><p>Performance of the Pathname-based code is a bit sucky, based on my subjective testing. Gonna try replacing it with something simpler.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_5628'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_5628"><time data-relative="true">2010-05-12T12:13:42Z</time></a></span>
-</cite>
-<blockquote><p>This replaces the Pathname-based code with a much faster &quot;inline&quot; alternative:</p>
-<pre>diff --git a/ruby/command-t/scanner.rb b/ruby/command-t/scanner.rb
+             @depth += 1</pre
+                  >
+                </blockquote>
+              </li>
+              <li class="comment" id="comment_5623">
+                <cite>
+                  anonymous
+                  <span class="when"
+                    ><a href="#comment_5623"
+                      ><time data-relative="true">2010-05-11T20:18:48Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    I'm going to rethink this a bit (going through VIM:: makes
+                    it rather hard to test).
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment" id="comment_5624">
+                <cite>
+                  anonymous
+                  <span class="when"
+                    ><a href="#comment_5624"
+                      ><time data-relative="true">2010-05-11T20:20:35Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    oops, ignore my last post (and this one). I forgot to reload
+                    the page before I posted it.
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_5625">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_5625"
+                      ><time data-relative="true">2010-05-12T10:18:55Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Performance of the Pathname-based code is a bit sucky, based
+                    on my subjective testing. Gonna try replacing it with
+                    something simpler.
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_5628">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_5628"
+                      ><time data-relative="true">2010-05-12T12:13:42Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    This replaces the Pathname-based code with a much faster
+                    &quot;inline&quot; alternative:
+                  </p>
+                  <pre>
+diff --git a/ruby/command-t/scanner.rb b/ruby/command-t/scanner.rb
 index 1868e95..c14668d 100644
 --- a/ruby/command-t/scanner.rb
 +++ b/ruby/command-t/scanner.rb
@@ -493,68 +626,115 @@ index 1868e95..c14668d 100644
 +          elsif File.directory?(path)
              next if @depth &gt;= @max_depth
              next if (entry.match(/\A\./) &amp;&amp; !@scan_dot_directories)
-             @depth += 1</pre>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_5629'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_5629"><time data-relative="true">2010-05-12T14:36:43Z</time></a></span>
-</cite>
-<blockquote><p>Ok, I've now done enough testing of this that it's at the point where I feel ok with pushing it out. Relevant commits are:</p>
-<ul>
-<li><a href="http://git.wincent.com/command-t.git/commitdiff/f314c1e671b9ea655b635aef038d409bee0976b7" class="external">http://git.wincent.com/command-t.git/commitdiff/f314c1e671b9ea655b635aef038d409bee0976b7</a></li>
-<li><a href="http://git.wincent.com/command-t.git/commitdiff/bbf296b775d5d9220fae28a34111117312bfcaa7" class="external">http://git.wincent.com/command-t.git/commitdiff/bbf296b775d5d9220fae28a34111117312bfcaa7</a></li>
-<li><a href="http://git.wincent.com/command-t.git/commitdiff/1df3167609c48ec5935051d7e4491677a58ca678" class="external">http://git.wincent.com/command-t.git/commitdiff/1df3167609c48ec5935051d7e4491677a58ca678</a></li>
-<li><a href="http://git.wincent.com/command-t.git/commitdiff/a2b713d49bfb22e4a2afd17115835a5e7f00dd97" class="external">http://git.wincent.com/command-t.git/commitdiff/a2b713d49bfb22e4a2afd17115835a5e7f00dd97</a></li>
-</ul>
-<p>Still not at the point where I feel comfortable cutting a release, but at least it's out there in the public eye now.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_5635'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_5635"><time data-relative="true">2010-05-18T06:24:35Z</time></a></span>
-</cite>
-<blockquote><p><strong>Status</strong> changed:</p>
-<ul>
-<li><strong>From:</strong> new</li>
-<li><strong>To:</strong> closed</li>
-</ul>
-</blockquote>
-</li>
+             @depth += 1</pre
+                  >
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_5629">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_5629"
+                      ><time data-relative="true">2010-05-12T14:36:43Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Ok, I've now done enough testing of this that it's at the
+                    point where I feel ok with pushing it out. Relevant commits
+                    are:
+                  </p>
+                  <ul>
+                    <li>
+                      <a
+                        href="http://git.wincent.com/command-t.git/commitdiff/f314c1e671b9ea655b635aef038d409bee0976b7"
+                        class="external"
+                        >http://git.wincent.com/command-t.git/commitdiff/f314c1e671b9ea655b635aef038d409bee0976b7</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="http://git.wincent.com/command-t.git/commitdiff/bbf296b775d5d9220fae28a34111117312bfcaa7"
+                        class="external"
+                        >http://git.wincent.com/command-t.git/commitdiff/bbf296b775d5d9220fae28a34111117312bfcaa7</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="http://git.wincent.com/command-t.git/commitdiff/1df3167609c48ec5935051d7e4491677a58ca678"
+                        class="external"
+                        >http://git.wincent.com/command-t.git/commitdiff/1df3167609c48ec5935051d7e4491677a58ca678</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="http://git.wincent.com/command-t.git/commitdiff/a2b713d49bfb22e4a2afd17115835a5e7f00dd97"
+                        class="external"
+                        >http://git.wincent.com/command-t.git/commitdiff/a2b713d49bfb22e4a2afd17115835a5e7f00dd97</a
+                      >
+                    </li>
+                  </ul>
+                  <p>
+                    Still not at the point where I feel comfortable cutting a
+                    release, but at least it's out there in the public eye now.
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_5635">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_5635"
+                      ><time data-relative="true">2010-05-18T06:24:35Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p><strong>Status</strong> changed:</p>
+                  <ul>
+                    <li><strong>From:</strong> new</li>
+                    <li><strong>To:</strong> closed</li>
+                  </ul>
+                </blockquote>
+              </li>
+            </ol>
+            <h5 class="major">Add a comment</h5>
+            <p>Comments are now closed for this issue.</p>
+          </div>
+        </div>
+        <footer class="global">
+          <ul>
+            <li>
+              <a
+                title="Email me at greg@hurrell.net"
+                class="mailto"
+                href="mailto:greg@hurrell.net"
+                >contact</a
+              >
+            </li>
+            <li><a href="/misc/legal">legal</a></li>
+          </ul>
+        </footer>
+      </div>
+      <div class="menu hide">
+        <div class="menu-inner">
+          <section>
+            <h2>Menu</h2>
+            <ul>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/wiki">Wiki</a></li>
+              <li><a href="/issues">Issues</a></li>
+              <li><a href="/snippets">Snippets</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script src="/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
 
-</ol>
-<h5 class='major'>Add a comment</h5>
-<p>Comments are now closed for this issue.</p>
-
-</div>
-</div>
-<footer class='global'>
-<ul>
-<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
-<li><a href="/misc/legal">legal</a></li>
-</ul>
-</footer>
-</div>
-<div class='menu hide'>
-<div class='menu-inner'>
-<section>
-<h2>Menu</h2>
-<ul>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/wiki">Wiki</a></li>
-<li><a href="/issues">Issues</a></li>
-<li><a href="/snippets">Snippets</a></li>
-</ul>
-</section>
-</div>
-</div>
-</div>
-<script src="/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
-
-<script>
-  new Wincent.Menu();
-</script>
-</body>
+    <script>
+      new Wincent.Menu();
+    </script>
+  </body>
 </html>

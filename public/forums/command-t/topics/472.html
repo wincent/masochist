@@ -1,41 +1,64 @@
 <!DOCTYPE html>
-<html lang='en-US'>
-<head>
-<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
-<title>
-Could not load the C extension Symbol not found: _rb_cObject
-
-&middot; wincent.com
-</title>
-<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
-</head>
-<body>
-<nav class='global'>
-<h1>
-<a href='/'>Wincent</a>
-</h1>
-</nav>
-<div id='content-wrapper'>
-<div id='content'>
-<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Could not load the C extension Symbol not found: _rb_cObject</div>
-<h1 class='major'>Could not load the C extension Symbol not found: _rb_cObject</h1>
-<div class='topic' id='topic_472'>
-<ol class='boxed' id='comments'>
-<li class='comment'>
-<cite>
-anonymous
-<span class='when'>
-<a href="/forums/command-t/topics/472"><time data-relative="true">2011-05-16T11:29:30Z</time></a>
-</span>
-</cite>
-<blockquote><p>I got the &quot;command-t.vim could not load the C extension&quot; error and I followed <a href="https://wincent.com/forums/command-t/topics/427" class="external">https://wincent.com/forums/command-t/topics/427</a> tried to </p>
-<pre>:ruby p(require 'command-t/ext')</pre>
-<p>then I got this error msg:</p>
-<pre>
+<html lang="en-US">
+  <head>
+    <meta content="text/html;charset=UTF-8" http-equiv="Content-Type" />
+    <title>
+      Could not load the C extension Symbol not found: _rb_cObject &middot;
+      wincent.com
+    </title>
+    <link
+      href="/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css"
+      media="screen"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <nav class="global">
+      <h1>
+        <a href="/">Wincent</a>
+      </h1>
+    </nav>
+    <div id="content-wrapper">
+      <div id="content">
+        <div id="breadcrumbs">
+          <a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo;
+          <a href="/forums/command-t">Command-T</a> &raquo; Could not load the C
+          extension Symbol not found: _rb_cObject
+        </div>
+        <h1 class="major">
+          Could not load the C extension Symbol not found: _rb_cObject
+        </h1>
+        <div class="topic" id="topic_472">
+          <ol class="boxed" id="comments">
+            <li class="comment">
+              <cite>
+                anonymous
+                <span class="when">
+                  <a href="/forums/command-t/topics/472"
+                    ><time data-relative="true">2011-05-16T11:29:30Z</time></a
+                  >
+                </span>
+              </cite>
+              <blockquote>
+                <p>
+                  I got the &quot;command-t.vim could not load the C
+                  extension&quot; error and I followed
+                  <a
+                    href="https://wincent.com/forums/command-t/topics/427"
+                    class="external"
+                    >https://wincent.com/forums/command-t/topics/427</a
+                  >
+                  tried to
+                </p>
+                <pre>:ruby p(require 'command-t/ext')</pre>
+                <p>then I got this error msg:</p>
+                <pre>
 LoadError: /Users/cat/.vim/bundle/command-t/ruby/command-t/ext.bundle: dlopen(/User
-s/cat/.vim/bundle/command-t/ruby/command-t/ext.bundle, 9): Symbol not found: _rb_cObject</pre>
-<p>Here's my vim version</p>
-<pre>
+s/cat/.vim/bundle/command-t/ruby/command-t/ext.bundle, 9): Symbol not found: _rb_cObject</pre
+                >
+                <p>Here's my vim version</p>
+                <pre>
 :version
 VIM - Vi IMproved 7.3 (2010 Aug 15, compiled May 16 2011 18:29:58)
 MacOS X (unix) version
@@ -66,39 +89,62 @@ g -O2 -D_FORTIFY_SOURCE=1
 Linking: gcc   -L. -L/usr/local/Cellar/readline/6.1/lib  -L/usr/local/lib -o vim
     -lm -lncurses  -framework Cocoa     -framework Python   -lruby-static -lobjc  -
 L/usr/local/Cellar/ruby-enterprise-edition/2011.03/lib
-</pre>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_6873'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_6873"><time data-relative="true">2011-05-16T16:47:17Z</time></a></span>
-</cite>
-<blockquote><p>Probably a mismatch between the version of Ruby used to build Command-T, and the version used when building Vim.</p>
-<p>Looks like it can't find the library at runtime, perhaps because your Vim links statically against the static version of the library, and the extension is trying to load it dynamically. Don't know whether there is some other build flag you could have supplied to avoid this, or if it's a consequence of using REE.</p>
-<p>So you can either play with your build settings trying to get it to work, or go with a known-working combination such as the system Ruby for both Vim and Command-T.</p>
-</blockquote>
-</li>
-
-</ol>
-</div>
-<h2 class='major'>Reply</h2>
-<p>This topic is now closed.</p>
-<div class='links'>
-<a href="/forums/command-t">topic index</a>
-</div>
-
-</div>
-</div>
-<footer class='global'>
-<ul>
-<li>
-<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
-</li>
-<li>
-<a href='/misc/legal'>legal</a>
-</li>
-</ul>
-</footer>
-</body>
+</pre
+                >
+              </blockquote>
+            </li>
+            <li class="comment admin" id="comment_6873">
+              <cite>
+                <a href="/users/greg-hurrell">Greg Hurrell</a>
+                <span class="when"
+                  ><a href="#comment_6873"
+                    ><time data-relative="true">2011-05-16T16:47:17Z</time></a
+                  ></span
+                >
+              </cite>
+              <blockquote>
+                <p>
+                  Probably a mismatch between the version of Ruby used to build
+                  Command-T, and the version used when building Vim.
+                </p>
+                <p>
+                  Looks like it can't find the library at runtime, perhaps
+                  because your Vim links statically against the static version
+                  of the library, and the extension is trying to load it
+                  dynamically. Don't know whether there is some other build flag
+                  you could have supplied to avoid this, or if it's a
+                  consequence of using REE.
+                </p>
+                <p>
+                  So you can either play with your build settings trying to get
+                  it to work, or go with a known-working combination such as the
+                  system Ruby for both Vim and Command-T.
+                </p>
+              </blockquote>
+            </li>
+          </ol>
+        </div>
+        <h2 class="major">Reply</h2>
+        <p>This topic is now closed.</p>
+        <div class="links">
+          <a href="/forums/command-t">topic index</a>
+        </div>
+      </div>
+    </div>
+    <footer class="global">
+      <ul>
+        <li>
+          <a
+            class="mailto"
+            href="mailto:greg@hurrell.net"
+            title="Email me at greg@hurrell.net"
+            >contact</a
+          >
+        </li>
+        <li>
+          <a href="/misc/legal">legal</a>
+        </li>
+      </ul>
+    </footer>
+  </body>
 </html>

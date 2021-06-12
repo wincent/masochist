@@ -1,89 +1,154 @@
 <!DOCTYPE html>
-<html lang='en-US'>
-<head>
-<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
-<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
-<title>
-Bug #2165: Extension builds with correct Ruby version, but won't load
-&middot; wincent.com
-</title>
-<link rel="stylesheet" media="screen" href="/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<html lang="en-US">
+  <head>
+    <meta content="text/html;charset=UTF-8" http-equiv="Content-Type" />
+    <meta
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+      name="viewport"
+    />
+    <title>
+      Bug #2165: Extension builds with correct Ruby version, but won't load
+      &middot; wincent.com
+    </title>
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="/assets/application-73fd7b8197d0b27a25f03f916460e23c.css"
+    />
+  </head>
+  <body>
+    <div class="viewport menu-closed">
+      <div class="app">
+        <a id="top" name="top"></a>
+        <nav class="global">
+          <a class="menu-icon" href="#">&equiv;</a>
+          <h1><a href="/">Wincent</a></h1>
+          <ul class="navbar-links">
+            <li>
+              <a href="/products">Products</a>
+            </li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/wiki">Wiki</a></li>
+            <li class="selected"><a href="/issues">Issues</a></li>
+          </ul>
+        </nav>
+        <div id="content-wrapper">
+          <div id="content">
+            <div class="notice">
+              <i class="fa fa-info-circle"></i>
+              You are viewing an historical archive of past issues. Please
+              report new issues to the appropriate project issue tracker on
+              <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+            </div>
+            <div id="breadcrumbs">
+              <a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo;
+              Bug #2165
+            </div>
+            <div class="issue" id="issue_2165">
+              <form
+                class="edit_issue"
+                id="edit_issue_2165"
+                action="/issues/2165"
+                accept-charset="UTF-8"
+                method="post"
+              >
+                <input name="utf8" type="hidden" value="&#x2713;" /><input
+                  type="hidden"
+                  name="_method"
+                  value="patch"
+                /><input
+                  type="hidden"
+                  name="authenticity_token"
+                  value="eMHFoq3HfbBihET+BHBmqPA0H4TDYcM6xs0/M9O5IbdMM3sVCkqn5bsIdwk1WTUcRbZ2uMiNTSbm0urN92FGkw=="
+                /><input
+                  type="text"
+                  name="website_address"
+                  id="website_address"
+                  value=""
+                  class="website-address"
+                />
+                <h1 class="bug major">
+                  Bug #2165:
+                  <span data-name="issue[summary]">
+                    Extension builds with correct Ruby version, but won't load
+                  </span>
+                </h1>
+                <table class="issue-metadata">
+                  <tr>
+                    <th>Kind</th>
+                    <td>
+                      bug
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Product</th>
+                    <td>
+                      Command-T
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>When</th>
+                    <td>
+                      Created
+                      <time data-relative="true">2014-03-27T16:18:34Z</time>,
+                      updated
+                      <time data-relative="true">2015-06-10T17:31:37Z</time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Status</th>
+                    <td>
+                      closed
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Reporter</th>
+                    <td><a href="/users/ches-martin">Ches Martin</a></td>
+                  </tr>
+                  <tr>
+                    <th>Tags</th>
+                    <td data-name="issue[pending_tags]">
+                      no tags
+                    </td>
+                  </tr>
+                </table>
 
-</head>
-<body>
-<div class='viewport menu-closed'>
-<div class='app'>
-<a id="top" name="top"></a>
-<nav class='global'>
-<a class='menu-icon' href='#'>&equiv;</a>
-<h1><a href="/">Wincent</a></h1>
-<ul class='navbar-links'>
-<li>
-<a href="/products">Products</a>
-</li>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/wiki">Wiki</a></li>
-<li class='selected'><a href="/issues">Issues</a></li>
-</ul>
-</nav>
-<div id='content-wrapper'>
-<div id='content'>
-<div class='notice'>
-<i class='fa fa-info-circle'></i>
-You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
-</div>
-<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2165</div>
-<div class='issue' id='issue_2165'>
-<form class="edit_issue" id="edit_issue_2165" action="/issues/2165" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="eMHFoq3HfbBihET+BHBmqPA0H4TDYcM6xs0/M9O5IbdMM3sVCkqn5bsIdwk1WTUcRbZ2uMiNTSbm0urN92FGkw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
-Bug #2165:
-<span data-name='issue[summary]'>
-Extension builds with correct Ruby version, but won't load
-</span>
-</h1>
-<table class='issue-metadata'>
-<tr>
-<th>Kind</th>
-<td>
-bug
-</td>
-</tr>
-<tr>
-<th>Product</th>
-<td>
-Command-T
-</td>
-</tr>
-<tr>
-<th>When</th>
-<td>Created <time data-relative="true">2014-03-27T16:18:34Z</time>, updated <time data-relative="true">2015-06-10T17:31:37Z</time></td>
-</tr>
-<tr>
-<th>Status</th>
-<td>
-closed
-</td>
-</tr>
-<tr>
-<th>Reporter</th>
-<td><a href="/users/ches-martin">Ches Martin</a></td>
-</tr>
-<tr>
-<th>Tags</th>
-<td data-name='issue[pending_tags]'>
-no tags
-</td>
-</tr>
-</table>
-<h4 class='major'>
-Description
-</h4>
-<div class='issue-description-body'>
-<p>Hi Greg,</p>
-<p>Thanks for Command-T, it's served me well for a long time and I was looking forward to the pthreads update since it's apparently been awhile since I updated my plugin version. I'm sure these install issues are a huge thorn in your side, but I've never had trouble with past versions and I'm miffed this time.</p>
-<p>The extension build runs just fine, but I get the message in Vim that it can't be loaded.</p>
-<p>I'm pretty sure I'm not flubbing the Ruby version here, <code>otool</code> results are included below. This system is running Mountain Lion, and by default part of the extension build appears to use <code>gcc</code>. My MacVim builds (I've tried both a distributed binary and a Homebrew build) indicate <code>clang</code> compilation, so I set <code>CC=clang</code> as you can see below. Without this, the build also completed fine but likewise in Vim it doesn't load. I can share the build output with <code>gcc</code> if it's helpful.</p>
-<p>Here's everything, I'm hoping you have an idea or can point me to how to get more debug info of why the extension isn't loading:</p>
-<pre> $ cd ~/.vim/bundle/Command-T/ruby/command-t
+                <h4 class="major">
+                  Description
+                </h4>
+                <div class="issue-description-body">
+                  <p>Hi Greg,</p>
+                  <p>
+                    Thanks for Command-T, it's served me well for a long time
+                    and I was looking forward to the pthreads update since it's
+                    apparently been awhile since I updated my plugin version.
+                    I'm sure these install issues are a huge thorn in your side,
+                    but I've never had trouble with past versions and I'm miffed
+                    this time.
+                  </p>
+                  <p>
+                    The extension build runs just fine, but I get the message in
+                    Vim that it can't be loaded.
+                  </p>
+                  <p>
+                    I'm pretty sure I'm not flubbing the Ruby version here,
+                    <code>otool</code> results are included below. This system
+                    is running Mountain Lion, and by default part of the
+                    extension build appears to use <code>gcc</code>. My MacVim
+                    builds (I've tried both a distributed binary and a Homebrew
+                    build) indicate <code>clang</code> compilation, so I set
+                    <code>CC=clang</code> as you can see below. Without this,
+                    the build also completed fine but likewise in Vim it doesn't
+                    load. I can share the build output with <code>gcc</code> if
+                    it's helpful.
+                  </p>
+                  <p>
+                    Here's everything, I'm hoping you have an idea or can point
+                    me to how to get more debug info of why the extension isn't
+                    loading:
+                  </p>
+                  <pre>
+ $ cd ~/.vim/bundle/Command-T/ruby/command-t
  $ make distclean
  $ chruby system
  $ which ruby
@@ -155,83 +220,133 @@ Description
      system menu file: &quot;$VIMRUNTIME/menu.vim&quot;
    fall-back for $VIM: &quot;/Applications/MacVim.app/Contents/Resources/vim&quot;
  Compilation: clang -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_MACVIM -Wall -Wno-unknown-pragmas -pipe  -DMACOS_X_UNIX -no-cpp-precomp  -g -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1      
- Linking: clang   -L.    -L.     -o Vim -framework Cocoa -framework Carbon       -lncurses  -liconv -framework Cocoa   -fstack-protector -L/usr/local/lib  -L/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE -lperl -lm -lutil -lc -framework Python   -framework Ruby   </pre>
-<p>Thanks for your help!</p>
+ Linking: clang   -L.    -L.     -o Vim -framework Cocoa -framework Carbon       -lncurses  -liconv -framework Cocoa   -fstack-protector -L/usr/local/lib  -L/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE -lperl -lm -lutil -lc -framework Python   -framework Ruby   </pre
+                  >
+                  <p>Thanks for your help!</p>
+                </div>
+              </form>
+            </div>
+            <h4 class="major">Comments</h4>
+            <ol class="boxed" id="comments">
+              <li class="comment admin" id="comment_11043">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_11043"
+                      ><time data-relative="true">2014-03-28T04:35:14Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    I have a suspicion that Ruby is failing to load the JSON
+                    gem, which is a <code>LoadError</code>, and Command-T
+                    doesn't distinguish between that and failure to load
+                    Command-T itself.
+                  </p>
+                  <p>
+                    Try commenting out the <code>require 'json'</code> in
+                    <code
+                      >ruby/command-t/scanner/file_scanner/watchman_file_scanner.rb</code
+                    >
+                    and seeing if that works. (If you don't use the Watchman
+                    scanner, you don't need it anyway.)
+                  </p>
+                  <p>
+                    I have a commit on the <code>next</code> branch that removes
+                    the JSON dependency, but it will need a bit more work I
+                    think before it compiles correctly on older versions of
+                    Ruby. (I'll be looking into that tonight.)
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_11045">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_11045"
+                      ><time data-relative="true">2014-03-28T06:03:14Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Check out the latest <code>HEAD</code> of the
+                    <code>next</code> branch (<a
+                      href="https://github.com/wincent/Command-T/commit/52214cea74de4686baf41d99d810121ee4f90b1f"
+                      class="external"
+                      >https://github.com/wincent/Command-T/commit/52214cea74de4686baf41d99d810121ee4f90b1f</a
+                    >) if you'd like to try this out; it no longer depends on
+                    JSON, and I've checked it compiles with 1.8.7 (etc) and the
+                    specs pass.
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_13112">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_13112"
+                      ><time data-relative="true">2015-06-10T17:31:34Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote><p>Closing due to lack of updates.</p></blockquote>
+              </li>
+              <li class="comment admin" id="comment_13113">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_13113"
+                      ><time data-relative="true">2015-06-10T17:31:37Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p><strong>Status</strong> changed:</p>
+                  <ul>
+                    <li><strong>From:</strong> open</li>
+                    <li><strong>To:</strong> closed</li>
+                  </ul>
+                </blockquote>
+              </li>
+            </ol>
+            <h5 class="major">Add a comment</h5>
+            <p>Comments are now closed for this issue.</p>
+          </div>
+        </div>
+        <footer class="global">
+          <ul>
+            <li>
+              <a
+                title="Email me at greg@hurrell.net"
+                class="mailto"
+                href="mailto:greg@hurrell.net"
+                >contact</a
+              >
+            </li>
+            <li><a href="/misc/legal">legal</a></li>
+          </ul>
+        </footer>
+      </div>
+      <div class="menu hide">
+        <div class="menu-inner">
+          <section>
+            <h2>Menu</h2>
+            <ul>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/wiki">Wiki</a></li>
+              <li><a href="/issues">Issues</a></li>
+              <li><a href="/snippets">Snippets</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script src="/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
 
-</div>
-</form></div>
-<h4 class='major'>Comments</h4>
-<ol class='boxed' id='comments'>
-<li class='comment admin' id='comment_11043'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_11043"><time data-relative="true">2014-03-28T04:35:14Z</time></a></span>
-</cite>
-<blockquote><p>I have a suspicion that Ruby is failing to load the JSON gem, which is a <code>LoadError</code>, and Command-T doesn't distinguish between that and failure to load Command-T itself.</p>
-<p>Try commenting out the <code>require 'json'</code> in <code>ruby/command-t/scanner/file_scanner/watchman_file_scanner.rb</code> and seeing if that works. (If you don't use the Watchman scanner, you don't need it anyway.)</p>
-<p>I have a commit on the <code>next</code> branch that removes the JSON dependency, but it will need a bit more work I think before it compiles correctly on older versions of Ruby. (I'll be looking into that tonight.)</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_11045'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_11045"><time data-relative="true">2014-03-28T06:03:14Z</time></a></span>
-</cite>
-<blockquote><p>Check out the latest <code>HEAD</code> of the <code>next</code> branch (<a href="https://github.com/wincent/Command-T/commit/52214cea74de4686baf41d99d810121ee4f90b1f" class="external">https://github.com/wincent/Command-T/commit/52214cea74de4686baf41d99d810121ee4f90b1f</a>) if you'd like to try this out; it no longer depends on JSON, and I've checked it compiles with 1.8.7 (etc) and the specs pass.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_13112'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_13112"><time data-relative="true">2015-06-10T17:31:34Z</time></a></span>
-</cite>
-<blockquote><p>Closing due to lack of updates.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_13113'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_13113"><time data-relative="true">2015-06-10T17:31:37Z</time></a></span>
-</cite>
-<blockquote><p><strong>Status</strong> changed:</p>
-<ul>
-<li><strong>From:</strong> open</li>
-<li><strong>To:</strong> closed</li>
-</ul>
-</blockquote>
-</li>
-
-</ol>
-<h5 class='major'>Add a comment</h5>
-<p>Comments are now closed for this issue.</p>
-
-</div>
-</div>
-<footer class='global'>
-<ul>
-<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
-<li><a href="/misc/legal">legal</a></li>
-</ul>
-</footer>
-</div>
-<div class='menu hide'>
-<div class='menu-inner'>
-<section>
-<h2>Menu</h2>
-<ul>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/wiki">Wiki</a></li>
-<li><a href="/issues">Issues</a></li>
-<li><a href="/snippets">Snippets</a></li>
-</ul>
-</section>
-</div>
-</div>
-</div>
-<script src="/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
-
-<script>
-  new Wincent.Menu();
-</script>
-</body>
+    <script>
+      new Wincent.Menu();
+    </script>
+  </body>
 </html>

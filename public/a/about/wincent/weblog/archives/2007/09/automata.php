@@ -4,7 +4,12 @@
   </head>
   <body>
     <h1>Moved Permanently</h1>
-    <p>The resource has moved to <a href="https://wincent.com/blog/automata">https://wincent.com/blog/automata</a></p>
+    <p>
+      The resource has moved to
+      <a href="https://wincent.com/blog/automata"
+        >https://wincent.com/blog/automata</a
+      >
+    </p>
   </body>
   <script type="text/javascript">
     window.location.replace('https://wincent.com/blog/automata');

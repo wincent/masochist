@@ -4,9 +4,16 @@
   </head>
   <body>
     <h1>Moved Permanently</h1>
-    <p>The resource has moved to <a href="https://wincent.com/blog/winswitch-3.0.1-released">https://wincent.com/blog/winswitch-3.0.1-released</a></p>
+    <p>
+      The resource has moved to
+      <a href="https://wincent.com/blog/winswitch-3.0.1-released"
+        >https://wincent.com/blog/winswitch-3.0.1-released</a
+      >
+    </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/winswitch-3.0.1-released');
+    window.location.replace(
+      'https://wincent.com/blog/winswitch-3.0.1-released',
+    );
   </script>
 </html>

@@ -1,85 +1,127 @@
 <!DOCTYPE html>
-<html lang='en-US'>
-<head>
-<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
-<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
-<title>
-Bug #1389: Spec suite failures on Ubuntu 9.04 (rake --trace)
-&middot; wincent.com
-</title>
-<link rel="stylesheet" media="screen" href="/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<html lang="en-US">
+  <head>
+    <meta content="text/html;charset=UTF-8" http-equiv="Content-Type" />
+    <meta
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+      name="viewport"
+    />
+    <title>
+      Bug #1389: Spec suite failures on Ubuntu 9.04 (rake --trace) &middot;
+      wincent.com
+    </title>
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="/assets/application-73fd7b8197d0b27a25f03f916460e23c.css"
+    />
+  </head>
+  <body>
+    <div class="viewport menu-closed">
+      <div class="app">
+        <a id="top" name="top"></a>
+        <nav class="global">
+          <a class="menu-icon" href="#">&equiv;</a>
+          <h1><a href="/">Wincent</a></h1>
+          <ul class="navbar-links">
+            <li>
+              <a href="/products">Products</a>
+            </li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/wiki">Wiki</a></li>
+            <li class="selected"><a href="/issues">Issues</a></li>
+          </ul>
+        </nav>
+        <div id="content-wrapper">
+          <div id="content">
+            <div class="notice">
+              <i class="fa fa-info-circle"></i>
+              You are viewing an historical archive of past issues. Please
+              report new issues to the appropriate project issue tracker on
+              <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+            </div>
+            <div id="breadcrumbs">
+              <a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo;
+              Bug #1389
+            </div>
+            <div class="issue" id="issue_1389">
+              <form
+                class="edit_issue"
+                id="edit_issue_1389"
+                action="/issues/1389"
+                accept-charset="UTF-8"
+                method="post"
+              >
+                <input name="utf8" type="hidden" value="&#x2713;" /><input
+                  type="hidden"
+                  name="_method"
+                  value="patch"
+                /><input
+                  type="hidden"
+                  name="authenticity_token"
+                  value="1giLnDEdS6B03K8ttwU7t9uYT1QK/6YjsvK/KTN9ZGzi+jUrlpCR9a1QnNqGLGgDbhomaAETKD+S7WrXF6UDSA=="
+                /><input
+                  type="text"
+                  name="website_address"
+                  id="website_address"
+                  value=""
+                  class="website-address"
+                />
+                <h1 class="bug major">
+                  Bug #1389:
+                  <span data-name="issue[summary]">
+                    Spec suite failures on Ubuntu 9.04 (rake --trace)
+                  </span>
+                </h1>
+                <table class="issue-metadata">
+                  <tr>
+                    <th>Kind</th>
+                    <td>
+                      bug
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Product</th>
+                    <td>
+                      wikitext
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>When</th>
+                    <td>
+                      Created
+                      <time data-relative="true">2009-09-07T14:51:10Z</time>,
+                      updated
+                      <time data-relative="true">2010-03-21T15:07:23Z</time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Status</th>
+                    <td>
+                      closed
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Reporter</th>
+                    <td>anonymous</td>
+                  </tr>
+                  <tr>
+                    <th>Tags</th>
+                    <td data-name="issue[pending_tags]">
+                      no tags
+                    </td>
+                  </tr>
+                </table>
 
-</head>
-<body>
-<div class='viewport menu-closed'>
-<div class='app'>
-<a id="top" name="top"></a>
-<nav class='global'>
-<a class='menu-icon' href='#'>&equiv;</a>
-<h1><a href="/">Wincent</a></h1>
-<ul class='navbar-links'>
-<li>
-<a href="/products">Products</a>
-</li>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/wiki">Wiki</a></li>
-<li class='selected'><a href="/issues">Issues</a></li>
-</ul>
-</nav>
-<div id='content-wrapper'>
-<div id='content'>
-<div class='notice'>
-<i class='fa fa-info-circle'></i>
-You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
-</div>
-<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1389</div>
-<div class='issue' id='issue_1389'>
-<form class="edit_issue" id="edit_issue_1389" action="/issues/1389" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="1giLnDEdS6B03K8ttwU7t9uYT1QK/6YjsvK/KTN9ZGzi+jUrlpCR9a1QnNqGLGgDbhomaAETKD+S7WrXF6UDSA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
-Bug #1389:
-<span data-name='issue[summary]'>
-Spec suite failures on Ubuntu 9.04 (rake --trace)
-</span>
-</h1>
-<table class='issue-metadata'>
-<tr>
-<th>Kind</th>
-<td>
-bug
-</td>
-</tr>
-<tr>
-<th>Product</th>
-<td>
-wikitext
-</td>
-</tr>
-<tr>
-<th>When</th>
-<td>Created <time data-relative="true">2009-09-07T14:51:10Z</time>, updated <time data-relative="true">2010-03-21T15:07:23Z</time></td>
-</tr>
-<tr>
-<th>Status</th>
-<td>
-closed
-</td>
-</tr>
-<tr>
-<th>Reporter</th>
-<td>anonymous</td>
-</tr>
-<tr>
-<th>Tags</th>
-<td data-name='issue[pending_tags]'>
-no tags
-</td>
-</tr>
-</table>
-<h4 class='major'>
-Description
-</h4>
-<div class='issue-description-body'>
-<p>cloned git://git.wincent.com/wikitext.git and rake --trace on ubuntu 9.04.</p>
-<pre>
+                <h4 class="major">
+                  Description
+                </h4>
+                <div class="issue-description-body">
+                  <p>
+                    cloned git://git.wincent.com/wikitext.git and rake --trace
+                    on ubuntu 9.04.
+                  </p>
+                  <pre>
 tommi@desk:~/src/wikitext$ rake --trace
 (in /home/tommi/src/wikitext)
 /usr/lib/ruby/1.8/rake/gempackagetask.rb:13:Warning: Gem::manage_gems is deprecated and will be removed on or after March 2009.
@@ -247,20 +289,43 @@ Command ruby -I&quot;/usr/lib/ruby/lib&quot; &quot;/usr/bin/spec&quot; &quot;spe
 /usr/lib/ruby/1.8/rake.rb:1878:in `run'
 /usr/bin/rake:28
 </pre>
-
-</div>
-</form></div>
-<h4 class='major'>Comments</h4>
-<ol class='boxed' id='comments'>
-<li class='comment admin' id='comment_5009'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_5009"><time data-relative="true">2009-09-11T03:57:09Z</time></a></span>
-</cite>
-<blockquote><p>Thanks a lot for the report. I only have access to two testing platforms (<a href="/wiki/Mac_OS_X">Mac OS X</a> and <a href="/wiki/RHEL">RHEL</a>) so it's good to get feedback on other platforms.</p>
-<p>The first failure is kind of expected; it's a failure testing against <a href="/wiki/Rails">Rails</a> &quot;Edge&quot;, which is basically always broken and I don't really worry about chasing Edge all over the place. Specifically it's choking on the &quot;3.0.pre&quot; version string.</p>
-<p>The other failures are more interesting though. I have no idea why they appear. Running on my machine I just get two failures for Edge, which like I said are kind of expected to be broken:</p>
-<pre>1)
+                </div>
+              </form>
+            </div>
+            <h4 class="major">Comments</h4>
+            <ol class="boxed" id="comments">
+              <li class="comment admin" id="comment_5009">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_5009"
+                      ><time data-relative="true">2009-09-11T03:57:09Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Thanks a lot for the report. I only have access to two
+                    testing platforms (<a href="/wiki/Mac_OS_X">Mac OS X</a> and
+                    <a href="/wiki/RHEL">RHEL</a>) so it's good to get feedback
+                    on other platforms.
+                  </p>
+                  <p>
+                    The first failure is kind of expected; it's a failure
+                    testing against
+                    <a href="/wiki/Rails">Rails</a> &quot;Edge&quot;, which is
+                    basically always broken and I don't really worry about
+                    chasing Edge all over the place. Specifically it's choking
+                    on the &quot;3.0.pre&quot; version string.
+                  </p>
+                  <p>
+                    The other failures are more interesting though. I have no
+                    idea why they appear. Running on my machine I just get two
+                    failures for Edge, which like I said are kind of expected to
+                    be broken:
+                  </p>
+                  <pre>
+1)
 RuntimeError in 'Template handler in Rails 2.2.2 before(:all)'
 non-zero exit status (1) for 'ruby'
 ./spec/rails_spec.rb:58:in `run'
@@ -282,10 +347,19 @@ non-zero exit status (1) for 'git'
 
 Finished in 19.668961 seconds
 
-750 examples, 2 failures, 1 pending</pre>
-<p>I really have no idea why you're seeing failures like that. Wonder if a previously installed version of the <a href="/wiki/gem">gem</a> is interfering?</p>
-<p>Can you try cloning from the Git repo and testing inside that? eg.</p>
-<pre class="shell-syntax">$ cd /tmp
+750 examples, 2 failures, 1 pending</pre
+                  >
+                  <p>
+                    I really have no idea why you're seeing failures like that.
+                    Wonder if a previously installed version of the
+                    <a href="/wiki/gem">gem</a> is interfering?
+                  </p>
+                  <p>
+                    Can you try cloning from the Git repo and testing inside
+                    that? eg.
+                  </p>
+                  <pre class="shell-syntax">
+$ cd /tmp
 $ git clone git://git.wincent.com/wikitext.git
 Initialized empty Git repository in /private/tmp/wikitext/.git/
 remote: Counting objects: 2972, done.
@@ -337,76 +411,109 @@ Finished in 108.311198 seconds
 rake aborted!
 Command /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -I&quot;/Library/Ruby/Gems/1.8/gems/rspec-1.2.8/lib&quot;  &quot;/Library/Ruby/Gems/1.8/gems/rspec-1.2.8/bin/spec&quot; &quot;spec/autolinking_spec.rb&quot; &quot;spec/base_heading_level_spec.rb&quot; &quot;spec/blockquote_spec.rb&quot; &quot;spec/em_spec.rb&quot; &quot;spec/encoding_spec.rb&quot; &quot;spec/entity_spec.rb&quot; &quot;spec/external_link_spec.rb&quot; &quot;spec/fulltext_spec.rb&quot; &quot;spec/h1_spec.rb&quot; &quot;spec/h2_spec.rb&quot; &quot;spec/h3_spec.rb&quot; &quot;spec/h4_spec.rb&quot; &quot;spec/h5_spec.rb&quot; &quot;spec/h6_spec.rb&quot; &quot;spec/img_spec.rb&quot; &quot;spec/indentation_spec.rb&quot; &quot;spec/integration_spec.rb&quot; &quot;spec/internal_link_spec.rb&quot; &quot;spec/line_endings_spec.rb&quot; &quot;spec/link_encoding_spec.rb&quot; &quot;spec/link_sanitizing_spec.rb&quot; &quot;spec/nil_class_spec.rb&quot; &quot;spec/nowiki_spec.rb&quot; &quot;spec/p_spec.rb&quot; &quot;spec/parser_spec.rb&quot; &quot;spec/pre_spec.rb&quot; &quot;spec/rails_spec.rb&quot; &quot;spec/regressions_spec.rb&quot; &quot;spec/string_spec.rb&quot; &quot;spec/strong_em_spec.rb&quot; &quot;spec/strong_spec.rb&quot; &quot;spec/tokenizing_spec.rb&quot; &quot;spec/tt_spec.rb&quot; &quot;spec/ul_spec.rb&quot; &quot;spec/version_spec.rb&quot; &quot;spec/wikitext_spec.rb&quot; --color failed
 
-(See full trace by running task with --trace)</pre>
-<p>So as you can see, works and only the Edge Rails error.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_5132'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_5132"><time data-relative="true">2009-11-01T08:54:31Z</time></a></span>
-</cite>
-<blockquote><p><strong>Summary</strong> changed:</p>
-<ul>
-<li><strong>From:</strong> wikitext won't compile</li>
-<li><strong>To:</strong> Spec suite failures on Ubuntu 9.04 (rake --trace)</li>
-</ul>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_5379'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_5379"><time data-relative="true">2010-03-21T15:07:17Z</time></a></span>
-</cite>
-<blockquote><p>Bizarrely on moving to a new machine I can now reproduce the spec failures reported here. I guess I must have had an older copy of the extension which did not have the bug floating around in my load path somewhere. Not sure how this could happen, actually, seeing as in <code>spec/spec_helper.rb</code> we explicitly make sure that the local version of the extension is tested and not versions elsewhere on the load path...</p>
-<p>In any case, now it is fixed.</p>
-<p>Will mark as closed.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_5380'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_5380"><time data-relative="true">2010-03-21T15:07:23Z</time></a></span>
-</cite>
-<blockquote><p><strong>Status</strong> changed:</p>
-<ul>
-<li><strong>From:</strong> new</li>
-<li><strong>To:</strong> closed</li>
-</ul>
-</blockquote>
-</li>
+(See full trace by running task with --trace)</pre
+                  >
+                  <p>So as you can see, works and only the Edge Rails error.</p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_5132">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_5132"
+                      ><time data-relative="true">2009-11-01T08:54:31Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p><strong>Summary</strong> changed:</p>
+                  <ul>
+                    <li><strong>From:</strong> wikitext won't compile</li>
+                    <li>
+                      <strong>To:</strong> Spec suite failures on Ubuntu 9.04
+                      (rake --trace)
+                    </li>
+                  </ul>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_5379">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_5379"
+                      ><time data-relative="true">2010-03-21T15:07:17Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Bizarrely on moving to a new machine I can now reproduce the
+                    spec failures reported here. I guess I must have had an
+                    older copy of the extension which did not have the bug
+                    floating around in my load path somewhere. Not sure how this
+                    could happen, actually, seeing as in
+                    <code>spec/spec_helper.rb</code> we explicitly make sure
+                    that the local version of the extension is tested and not
+                    versions elsewhere on the load path...
+                  </p>
+                  <p>In any case, now it is fixed.</p>
+                  <p>Will mark as closed.</p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_5380">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_5380"
+                      ><time data-relative="true">2010-03-21T15:07:23Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p><strong>Status</strong> changed:</p>
+                  <ul>
+                    <li><strong>From:</strong> new</li>
+                    <li><strong>To:</strong> closed</li>
+                  </ul>
+                </blockquote>
+              </li>
+            </ol>
+            <h5 class="major">Add a comment</h5>
+            <p>Comments are now closed for this issue.</p>
+          </div>
+        </div>
+        <footer class="global">
+          <ul>
+            <li>
+              <a
+                title="Email me at greg@hurrell.net"
+                class="mailto"
+                href="mailto:greg@hurrell.net"
+                >contact</a
+              >
+            </li>
+            <li><a href="/misc/legal">legal</a></li>
+          </ul>
+        </footer>
+      </div>
+      <div class="menu hide">
+        <div class="menu-inner">
+          <section>
+            <h2>Menu</h2>
+            <ul>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/wiki">Wiki</a></li>
+              <li><a href="/issues">Issues</a></li>
+              <li><a href="/snippets">Snippets</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script src="/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
 
-</ol>
-<h5 class='major'>Add a comment</h5>
-<p>Comments are now closed for this issue.</p>
-
-</div>
-</div>
-<footer class='global'>
-<ul>
-<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
-<li><a href="/misc/legal">legal</a></li>
-</ul>
-</footer>
-</div>
-<div class='menu hide'>
-<div class='menu-inner'>
-<section>
-<h2>Menu</h2>
-<ul>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/wiki">Wiki</a></li>
-<li><a href="/issues">Issues</a></li>
-<li><a href="/snippets">Snippets</a></li>
-</ul>
-</section>
-</div>
-</div>
-</div>
-<script src="/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
-
-<script>
-  new Wincent.Menu();
-</script>
-</body>
+    <script>
+      new Wincent.Menu();
+    </script>
+  </body>
 </html>

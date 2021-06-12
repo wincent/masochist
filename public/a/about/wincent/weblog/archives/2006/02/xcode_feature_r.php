@@ -4,7 +4,12 @@
   </head>
   <body>
     <h1>Moved Permanently</h1>
-    <p>The resource has moved to <a href="https://wincent.com/blog/xcode-feature-requests">https://wincent.com/blog/xcode-feature-requests</a></p>
+    <p>
+      The resource has moved to
+      <a href="https://wincent.com/blog/xcode-feature-requests"
+        >https://wincent.com/blog/xcode-feature-requests</a
+      >
+    </p>
   </body>
   <script type="text/javascript">
     window.location.replace('https://wincent.com/blog/xcode-feature-requests');

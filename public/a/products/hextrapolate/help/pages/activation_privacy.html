@@ -1,44 +1,122 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html401/sgml/loosedtd.html">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html401/sgml/loosedtd.html">
 <html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<title>Activation privacy</title>
-<meta name="generator" content="Walrus 0.1">
-<meta name="author" content="Wincent Colaiuta">
-<meta name="author-email" content="win@wincent.com">
-<meta name="copyright" content="Copyright 2007 Wincent Colaiuta">
-<link href="../css/base.css" rel="stylesheet" media="all" type="text/css">
-<meta name="description" content="">
-</head>
-<body>
-<a name="activation_privacy" id="activation_privacy"></a> <a name="activation_topics" id="activation_topics"></a>
-<div id="banner">
-<div id="home_link"><a href="../front_page.html">Hextrapolate Help</a></div>
-<div id="index_link"><a href="full_index.html">Index</a></div>
-</div>
-<div id="main_box">
-<div id="icon"><img width="32" height="32" alt="Icon" src="../gfx/icon32.png"></div>
-<div id="page_title">
-<h1>Activation privacy</h1>
-</div>
-<p>These are the answers to common questions about the privacy aspects of activation.</p>
-<h2>Is my personal information transmitted to the server?</h2>
-<p>No. None of your personal information nor any other information about (or stored on) your computer is sent to the server, not even your license code or the name of the product which you are activating.</p>
-<p>The product activation system has been carefully designed to not transmit any of your personal information across the network. There are multiple layers which protect your privacy and confidentiality:</p>
-<ol>
-<li>At a design level the protocol requires neither the transmission nor the storage of your personal information</li>
-<li>The information that actually is transmitted is effectively indistinguishable from random data because it is the product of a one-way cryptographic digest function (see below)</li>
-<li>All communications take place over a protected <span class="caps">SSL</span>-encrypted connection</li>
-</ol>
-<p>When you install Hextrapolate for the first time it generates a number that is unique to the machine on which the software is being installed without actually identifying the machine. The number is what is known as a one-way cryptographic hash; it’s so-called because the calculation only works in one direction: it is easy to generate the number based on the machine, but it is impossible to look at the number and know which machine it came from. You can read a basic introduction to cryptographic hashes <a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function">here</a>.</p>
-<p>A hash is also made from your license code. The one-way nature of the hash means that if somebody were to see it he or she would have no way of figuring out what your license code was; nevertheless, the hash is a unique number and no two licenses will produce the same hash.</p>
-<p>These two pieces — the “machine hash” and the “license hash” — are sent to the Wincent server at activation time. If the server sees many activation requests coming in with the same license hash but lots of different machine hashes, then it knows that the software is being activated on many different machines with the same license code. Note that because one-way hashes are used in the process nobody can personally identify machines or customers; the numbers are just random ID numbers that cannot be traced back to a particular individual or computer.</p>
-<h2>Does the software “phone home”?</h2>
-<p>Wincent products will never “phone home” without your permission. Product activation occurs when you first enter your license code and you press the “Verify” button (the user interface makes it very clear that clicking that button will connect). If you cannot connect to the Internet to perform the activation, the software will remind you to do so the next time you run it.</p>
-<p>Wincent software won’t attempt to phone home for other purposes either; see the <a href="https://wincent.com/a/about/privacy/">Wincent privacy policy</a> for more general information.</p>
-<h3>What happens if somebody on the network is spying when the activation occurs?</h3>
-<p>As explained above none of your personal information is transmitted to the server during the activation process. The information that is transmitted would be useless to any third-party observer because it could not be used to determine anything that would identify you or reveal what your license code is. An additional layer of protection is provided because all connections are performed over an encrypted <span class="caps">SSL</span> link. No information is stored on the server, other than the number of activations.</p>
-</div>
-</body>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Activation privacy</title>
+    <meta name="generator" content="Walrus 0.1" />
+    <meta name="author" content="Wincent Colaiuta" />
+    <meta name="author-email" content="win@wincent.com" />
+    <meta name="copyright" content="Copyright 2007 Wincent Colaiuta" />
+    <link href="../css/base.css" rel="stylesheet" media="all" type="text/css" />
+    <meta name="description" content="" />
+  </head>
+  <body>
+    <a name="activation_privacy" id="activation_privacy"></a>
+    <a name="activation_topics" id="activation_topics"></a>
+    <div id="banner">
+      <div id="home_link">
+        <a href="../front_page.html">Hextrapolate Help</a>
+      </div>
+      <div id="index_link"><a href="full_index.html">Index</a></div>
+    </div>
+    <div id="main_box">
+      <div id="icon">
+        <img width="32" height="32" alt="Icon" src="../gfx/icon32.png" />
+      </div>
+      <div id="page_title">
+        <h1>Activation privacy</h1>
+      </div>
+      <p>
+        These are the answers to common questions about the privacy aspects of
+        activation.
+      </p>
+      <h2>Is my personal information transmitted to the server?</h2>
+      <p>
+        No. None of your personal information nor any other information about
+        (or stored on) your computer is sent to the server, not even your
+        license code or the name of the product which you are activating.
+      </p>
+      <p>
+        The product activation system has been carefully designed to not
+        transmit any of your personal information across the network. There are
+        multiple layers which protect your privacy and confidentiality:
+      </p>
+      <ol>
+        <li>
+          At a design level the protocol requires neither the transmission nor
+          the storage of your personal information
+        </li>
+        <li>
+          The information that actually is transmitted is effectively
+          indistinguishable from random data because it is the product of a
+          one-way cryptographic digest function (see below)
+        </li>
+        <li>
+          All communications take place over a protected
+          <span class="caps">SSL</span>-encrypted connection
+        </li>
+      </ol>
+      <p>
+        When you install Hextrapolate for the first time it generates a number
+        that is unique to the machine on which the software is being installed
+        without actually identifying the machine. The number is what is known as
+        a one-way cryptographic hash; it’s so-called because the calculation
+        only works in one direction: it is easy to generate the number based on
+        the machine, but it is impossible to look at the number and know which
+        machine it came from. You can read a basic introduction to cryptographic
+        hashes
+        <a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function"
+          >here</a
+        >.
+      </p>
+      <p>
+        A hash is also made from your license code. The one-way nature of the
+        hash means that if somebody were to see it he or she would have no way
+        of figuring out what your license code was; nevertheless, the hash is a
+        unique number and no two licenses will produce the same hash.
+      </p>
+      <p>
+        These two pieces — the “machine hash” and the “license hash” — are sent
+        to the Wincent server at activation time. If the server sees many
+        activation requests coming in with the same license hash but lots of
+        different machine hashes, then it knows that the software is being
+        activated on many different machines with the same license code. Note
+        that because one-way hashes are used in the process nobody can
+        personally identify machines or customers; the numbers are just random
+        ID numbers that cannot be traced back to a particular individual or
+        computer.
+      </p>
+      <h2>Does the software “phone home”?</h2>
+      <p>
+        Wincent products will never “phone home” without your permission.
+        Product activation occurs when you first enter your license code and you
+        press the “Verify” button (the user interface makes it very clear that
+        clicking that button will connect). If you cannot connect to the
+        Internet to perform the activation, the software will remind you to do
+        so the next time you run it.
+      </p>
+      <p>
+        Wincent software won’t attempt to phone home for other purposes either;
+        see the
+        <a href="https://wincent.com/a/about/privacy/"
+          >Wincent privacy policy</a
+        >
+        for more general information.
+      </p>
+      <h3>
+        What happens if somebody on the network is spying when the activation
+        occurs?
+      </h3>
+      <p>
+        As explained above none of your personal information is transmitted to
+        the server during the activation process. The information that is
+        transmitted would be useless to any third-party observer because it
+        could not be used to determine anything that would identify you or
+        reveal what your license code is. An additional layer of protection is
+        provided because all connections are performed over an encrypted
+        <span class="caps">SSL</span> link. No information is stored on the
+        server, other than the number of activations.
+      </p>
+    </div>
+  </body>
 </html>

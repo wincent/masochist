@@ -1,121 +1,235 @@
 <!DOCTYPE html>
-<html lang='en-US'>
-<head>
-<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
-<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
-<title>
-Bug #640: NSAppleScript freaks out under Garbage Collection
-&middot; wincent.com
-</title>
-<link rel="stylesheet" media="screen" href="/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<html lang="en-US">
+  <head>
+    <meta content="text/html;charset=UTF-8" http-equiv="Content-Type" />
+    <meta
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+      name="viewport"
+    />
+    <title>
+      Bug #640: NSAppleScript freaks out under Garbage Collection &middot;
+      wincent.com
+    </title>
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="/assets/application-73fd7b8197d0b27a25f03f916460e23c.css"
+    />
+  </head>
+  <body>
+    <div class="viewport menu-closed">
+      <div class="app">
+        <a id="top" name="top"></a>
+        <nav class="global">
+          <a class="menu-icon" href="#">&equiv;</a>
+          <h1><a href="/">Wincent</a></h1>
+          <ul class="navbar-links">
+            <li>
+              <a href="/products">Products</a>
+            </li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/wiki">Wiki</a></li>
+            <li class="selected"><a href="/issues">Issues</a></li>
+          </ul>
+        </nav>
+        <div id="content-wrapper">
+          <div id="content">
+            <div class="notice">
+              <i class="fa fa-info-circle"></i>
+              You are viewing an historical archive of past issues. Please
+              report new issues to the appropriate project issue tracker on
+              <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+            </div>
+            <div id="breadcrumbs">
+              <a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo;
+              Bug #640
+            </div>
+            <div class="issue" id="issue_640">
+              <form
+                class="edit_issue"
+                id="edit_issue_640"
+                action="/issues/640"
+                accept-charset="UTF-8"
+                method="post"
+              >
+                <input name="utf8" type="hidden" value="&#x2713;" /><input
+                  type="hidden"
+                  name="_method"
+                  value="patch"
+                /><input
+                  type="hidden"
+                  name="authenticity_token"
+                  value="OnGK0TGTnvmoS7RNNm63uX7RM8oOz38N8EHQXDmCt3UOgzRmlh5ErHHHh7oHR+QNy1Na9gUj8RHQXgWiHVrQUQ=="
+                /><input
+                  type="text"
+                  name="website_address"
+                  id="website_address"
+                  value=""
+                  class="website-address"
+                />
+                <h1 class="bug major">
+                  Bug #640:
+                  <span data-name="issue[summary]">
+                    NSAppleScript freaks out under Garbage Collection
+                  </span>
+                </h1>
+                <table class="issue-metadata">
+                  <tr>
+                    <th>Kind</th>
+                    <td>
+                      bug
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Product</th>
+                    <td>
+                      Synergy
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>When</th>
+                    <td>
+                      Created
+                      <time data-relative="true">2008-01-10T13:06:04Z</time>,
+                      updated
+                      <time data-relative="true">2009-11-29T12:27:28Z</time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Status</th>
+                    <td>
+                      closed
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Reporter</th>
+                    <td><a href="/users/sjmills">sjmills</a></td>
+                  </tr>
+                  <tr>
+                    <th>Tags</th>
+                    <td data-name="issue[pending_tags]">
+                      <a
+                        title="3 items tagged with &#39;crash&#39;"
+                        href="/tags/crash"
+                        >crash</a
+                      >
+                    </td>
+                  </tr>
+                </table>
 
-</head>
-<body>
-<div class='viewport menu-closed'>
-<div class='app'>
-<a id="top" name="top"></a>
-<nav class='global'>
-<a class='menu-icon' href='#'>&equiv;</a>
-<h1><a href="/">Wincent</a></h1>
-<ul class='navbar-links'>
-<li>
-<a href="/products">Products</a>
-</li>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/wiki">Wiki</a></li>
-<li class='selected'><a href="/issues">Issues</a></li>
-</ul>
-</nav>
-<div id='content-wrapper'>
-<div id='content'>
-<div class='notice'>
-<i class='fa fa-info-circle'></i>
-You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
-</div>
-<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #640</div>
-<div class='issue' id='issue_640'>
-<form class="edit_issue" id="edit_issue_640" action="/issues/640" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="OnGK0TGTnvmoS7RNNm63uX7RM8oOz38N8EHQXDmCt3UOgzRmlh5ErHHHh7oHR+QNy1Na9gUj8RHQXgWiHVrQUQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
-Bug #640:
-<span data-name='issue[summary]'>
-NSAppleScript freaks out under Garbage Collection
-</span>
-</h1>
-<table class='issue-metadata'>
-<tr>
-<th>Kind</th>
-<td>
-bug
-</td>
-</tr>
-<tr>
-<th>Product</th>
-<td>
-Synergy
-</td>
-</tr>
-<tr>
-<th>When</th>
-<td>Created <time data-relative="true">2008-01-10T13:06:04Z</time>, updated <time data-relative="true">2009-11-29T12:27:28Z</time></td>
-</tr>
-<tr>
-<th>Status</th>
-<td>
-closed
-</td>
-</tr>
-<tr>
-<th>Reporter</th>
-<td><a href="/users/sjmills">sjmills</a></td>
-</tr>
-<tr>
-<th>Tags</th>
-<td data-name='issue[pending_tags]'>
-<a title="3 items tagged with &#39;crash&#39;" href="/tags/crash">crash</a>
-</td>
-</tr>
-</table>
-<h4 class='major'>
-Description
-</h4>
-<div class='issue-description-body'>
-<p>Created an attachment (id=149) crash log</p>
-<p>I wanted to try the Track Change Items feature, so I looked at the sample scripts, then wrote my own. I saved it as a plain script file (data fork) in ~/Library/Application Support/Synergy/Track Change Items. I stopped and started Synergy from the Synergy Preferences app. It soon quit. So I thought perhaps Synergy only expects scripts to be saved as bundles, so I resaved my script and deleted the .scpt version. Started Synergy again and it quit again.</p>
-<p>So, to take the entire Track Change Items folder out of the equation, I renamed it with a 'z' at the beginning of the name. Same thing - still quits. I checked for another folder in /Library/... and there is an empty Track Change Items there as well, as well as a folder I created named &quot;Track Change Items (disabled)&quot;.</p>
-<p>I'm an AppleScript developer, but the crash log doesn't tell me anything useful. I've attached it for you.</p>
-
-</div>
-</form></div>
-<h4 class='major'>Comments</h4>
-<ol class='boxed' id='comments'>
-<li class='comment admin' id='comment_3175'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_3175"><time data-relative="true">2008-01-10T13:48:02Z</time></a></span>
-</cite>
-<blockquote><p>Thanks for the report, Steve. I think you're correct in concluding that your track change experiments have nothing to do with the crashes.</p>
-<p>I've seen these crashes myself and they're the one remaining known stability issue. Basically, it seems that NSAppleScript has some serious issues under Garbage Collection. I've analysed the calling code and there doesn't seem to be anything obvious that can be done about it. The calling code is basically just things like:</p>
-<p>static NSString *source =</p>
-<pre>   @&quot;tell application \&quot;iTunes\&quot;\n&quot;
+                <h4 class="major">
+                  Description
+                </h4>
+                <div class="issue-description-body">
+                  <p>Created an attachment (id=149) crash log</p>
+                  <p>
+                    I wanted to try the Track Change Items feature, so I looked
+                    at the sample scripts, then wrote my own. I saved it as a
+                    plain script file (data fork) in ~/Library/Application
+                    Support/Synergy/Track Change Items. I stopped and started
+                    Synergy from the Synergy Preferences app. It soon quit. So I
+                    thought perhaps Synergy only expects scripts to be saved as
+                    bundles, so I resaved my script and deleted the .scpt
+                    version. Started Synergy again and it quit again.
+                  </p>
+                  <p>
+                    So, to take the entire Track Change Items folder out of the
+                    equation, I renamed it with a 'z' at the beginning of the
+                    name. Same thing - still quits. I checked for another folder
+                    in /Library/... and there is an empty Track Change Items
+                    there as well, as well as a folder I created named
+                    &quot;Track Change Items (disabled)&quot;.
+                  </p>
+                  <p>
+                    I'm an AppleScript developer, but the crash log doesn't tell
+                    me anything useful. I've attached it for you.
+                  </p>
+                </div>
+              </form>
+            </div>
+            <h4 class="major">Comments</h4>
+            <ol class="boxed" id="comments">
+              <li class="comment admin" id="comment_3175">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_3175"
+                      ><time data-relative="true">2008-01-10T13:48:02Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Thanks for the report, Steve. I think you're correct in
+                    concluding that your track change experiments have nothing
+                    to do with the crashes.
+                  </p>
+                  <p>
+                    I've seen these crashes myself and they're the one remaining
+                    known stability issue. Basically, it seems that
+                    NSAppleScript has some serious issues under Garbage
+                    Collection. I've analysed the calling code and there doesn't
+                    seem to be anything obvious that can be done about it. The
+                    calling code is basically just things like:
+                  </p>
+                  <p>static NSString *source =</p>
+                  <pre>
+   @&quot;tell application \&quot;iTunes\&quot;\n&quot;
    @&quot;  try\n&quot;
    @&quot;    return the name of every playlist\n&quot;
    @&quot;  on error\n&quot;
    @&quot;    return \&quot;ERROR\&quot;\n&quot;
    @&quot;  end try\n&quot;
-   @&quot;end tell&quot;;</pre>
-<p>NSAppleScript *script = [[NSAppleScript alloc] initWithSource:source]; NSAppleEventDescriptor *result = [script executeAndReturnError:NULL];</p>
-<p>As you can see, nothing much there that could explain the crashes... Incidentally, the NULL there is just an alternative to see if it made any difference; prior to that I was passing a parameter in there.</p>
-<p>In the worst case scenario I'll have to throw out all use of NSAppleScript if a workaround can't be found... which would be quite painful as it is used in dozens of places all around the code base and will be quite hard to replace.</p>
-<p>In my own experience I sometimes have to try launching various times, and every time is crashes in NSAppleScript. But once it's up it generally stays up indefinitely. If the stability starts to wear on you, remember that you can still go back to 3.2, as that works fine on Leopard:</p>
-<p><a href="https://wincent.com/a/products/synergy-classic/download/tiger/" class="external">https://wincent.com/a/products/synergy-classic/download/tiger/</a></p>
-</blockquote>
-</li>
-<li class='comment' id='comment_3249'>
-<cite>
-<a href="/users/brad">Brad</a>
-<span class='when'><a href="#comment_3249"><time data-relative="true">2008-04-21T17:47:22Z</time></a></span>
-</cite>
-<blockquote><p>I'm experiencing constant crashes as well with Synergy 3.5a6. Here's an example crash log:</p>
-<pre>
+   @&quot;end tell&quot;;</pre
+                  >
+                  <p>
+                    NSAppleScript *script = [[NSAppleScript alloc]
+                    initWithSource:source]; NSAppleEventDescriptor *result =
+                    [script executeAndReturnError:NULL];
+                  </p>
+                  <p>
+                    As you can see, nothing much there that could explain the
+                    crashes... Incidentally, the NULL there is just an
+                    alternative to see if it made any difference; prior to that
+                    I was passing a parameter in there.
+                  </p>
+                  <p>
+                    In the worst case scenario I'll have to throw out all use of
+                    NSAppleScript if a workaround can't be found... which would
+                    be quite painful as it is used in dozens of places all
+                    around the code base and will be quite hard to replace.
+                  </p>
+                  <p>
+                    In my own experience I sometimes have to try launching
+                    various times, and every time is crashes in NSAppleScript.
+                    But once it's up it generally stays up indefinitely. If the
+                    stability starts to wear on you, remember that you can still
+                    go back to 3.2, as that works fine on Leopard:
+                  </p>
+                  <p>
+                    <a
+                      href="https://wincent.com/a/products/synergy-classic/download/tiger/"
+                      class="external"
+                      >https://wincent.com/a/products/synergy-classic/download/tiger/</a
+                    >
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment" id="comment_3249">
+                <cite>
+                  <a href="/users/brad">Brad</a>
+                  <span class="when"
+                    ><a href="#comment_3249"
+                      ><time data-relative="true">2008-04-21T17:47:22Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    I'm experiencing constant crashes as well with Synergy
+                    3.5a6. Here's an example crash log:
+                  </p>
+                  <pre>
 Process:         Synergy [6645]
 Path:            /Applications/Synergy Preferences.app/Contents/Resources/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy
 Identifier:      org.wincent.Synergy
@@ -306,78 +420,203 @@ Binary Images:
 0xc0000000 - 0xc0008fff +com.growl.growlframework 1.1.2 (1.1.2) &lt;e4a1c0affd65f843be253224e017b90e&gt; /Applications/Synergy Preferences.app/Contents/Resources/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/Frameworks/Growl.framework/Versions/A/Growl
 0xfffe8000 - 0xfffebfff  libobjc.A.dylib ??? (???) /usr/lib/libobjc.A.dylib
 0xffff0000 - 0xffff1780  libSystem.B.dylib ??? (???) /usr/lib/libSystem.B.dylib
-</pre>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_3251'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_3251"><time data-relative="true">2008-04-22T17:44:16Z</time></a></span>
-</cite>
-<blockquote><p>Just saw a <em>very</em> interesting <a href="http://lists.apple.com/archives/Cocoa-dev/2008/Apr/msg01981.html" class="external">post</a> to the cocoa-dev mailing list from <a href="/wiki/Apple">Apple</a>'s own Mark Piccirelli.</p>
-<p>Basically, a developer wrote in asking about random crashes in NSAppleScript and Mark replied:</p>
-<blockquote>
-<p>Is this a garbage-collected app? If so the crash is a known bug.</p>
-</blockquote>
-<p>And then in a <a href="http://lists.apple.com/archives/Cocoa-dev/2008/Apr/msg01983.html" class="external">follow-up</a>:</p>
-<blockquote>
-<p>But we intend to fix it in a software update. (And I can't say anything more specific than that. A fix isn't a fix until it's shipped.)</p>
-</blockquote>
-<p>So fingers crossed that it comes sooner rather than later (although note that he does say that they <em>intend</em> to fix it; which suggests that while it is a known issue it isn't actually fixed <em>yet</em>). It would be nice to have this in 10.5.3 rather than 10.6!</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_3260'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_3260"><time data-relative="true">2008-04-26T08:55:33Z</time></a></span>
-</cite>
-<blockquote><p>If you are interested in this issue and would like to see <a href="/wiki/Apple">Apple</a> fix the bug, please file a report with them at:</p>
-<p><a href="http://bugreport.apple.com/" class="external">http://bugreport.apple.com/</a></p>
-<p>In your report you should basically make the following points:</p>
-<ol>
-<li>That applications that run under Garbage Collection on Leopard are crashing in NSAppleScript</li>
-<li>That you're aware that this is a known issue, that the original <a href="/wiki/Radar">Radar</a> number is 5523530, but that you wanted to file a report because the issue is negatively impacting your use of <a href="/wiki/Mac_OS_X">Mac OS X</a> and you have no known workarounds</li>
-</ol>
-<p>Apparently, receiving duplicate reports help Apple prioritize their engineering resources and decide which bugs should be fixed first.</p>
-<p>I think you need an <a href="/wiki/ADC">ADC</a> account (free, get one <a href="http://connect.apple.com/" class="external">here</a>) in order to use their bugreporter, and it would also be a good idea to attach a sample crash report. Look in your <code>~/Library/Logs/CrashReporter/</code> folder for a report, and make sure that it is one which resembles the sample above; in other words, it should be crashing in the main thread, thread 0:</p>
-<pre>Thread 0 Crashed:</pre>
-<p>And if you look down the list of stack frames for thread 0 you should see some NSAppleScript calls that resemble these:</p>
-<pre>10  com.apple.Foundation          &#x0009;0x93658f7b -[NSAppleScript(NSPrivate) _executeWithMode:andReturnError:] + 107
-11  com.apple.Foundation          &#x0009;0x93658e51 -[NSAppleScript executeAndReturnError:] + 49</pre>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_3357'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_3357"><time data-relative="true">2008-05-30T06:14:39Z</time></a></span>
-</cite>
-<blockquote><p>Installed 10.5.3 last night and am testing to see if <a href="/wiki/Apple">Apple</a> has fixed this bug... Not hopeful about it as there was no allusion to NSAppleScript, AppleScript or Apple Events in the release notes, and my own bug in Apple's tracker was marked as Closed/Duplicate a long time ago and they don't let you see the status of the original bug. But still, fingers crossed: will see if they've made a fix.</p>
-</blockquote>
-</li>
-<li class='comment' id='comment_3387'>
-<cite>
-anonymous
-<span class='when'><a href="#comment_3387"><time data-relative="true">2008-06-24T10:58:52Z</time></a></span>
-</cite>
-<blockquote><p>hi, i'm just wondering if this bug has been fixed by Apple or not.</p>
-<p>thanks.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_3388'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_3388"><time data-relative="true">2008-06-24T11:53:49Z</time></a></span>
-</cite>
-<blockquote><p>I haven't seen any crashes since upgrading to 10.5.3, and I haven't heard any reports from others either, so I am hoping that the fix was included. But only time will tell seeing as the release notes are not very detailed and didn't mention any low-level bugfixes.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_3390'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_3390"><time data-relative="true">2008-06-24T18:38:52Z</time></a></span>
-</cite>
-<blockquote><p>Sadly, just received my first report of this crash on 10.5.3, so looks like Apple still hasn't fixed the bug:</p>
-<pre>Date/Time:       2008-06-24 13:26:02.360 -0400
+</pre
+                  >
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_3251">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_3251"
+                      ><time data-relative="true">2008-04-22T17:44:16Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Just saw a <em>very</em> interesting
+                    <a
+                      href="http://lists.apple.com/archives/Cocoa-dev/2008/Apr/msg01981.html"
+                      class="external"
+                      >post</a
+                    >
+                    to the cocoa-dev mailing list from
+                    <a href="/wiki/Apple">Apple</a>'s own Mark Piccirelli.
+                  </p>
+                  <p>
+                    Basically, a developer wrote in asking about random crashes
+                    in NSAppleScript and Mark replied:
+                  </p>
+                  <blockquote>
+                    <p>
+                      Is this a garbage-collected app? If so the crash is a
+                      known bug.
+                    </p>
+                  </blockquote>
+                  <p>
+                    And then in a
+                    <a
+                      href="http://lists.apple.com/archives/Cocoa-dev/2008/Apr/msg01983.html"
+                      class="external"
+                      >follow-up</a
+                    >:
+                  </p>
+                  <blockquote>
+                    <p>
+                      But we intend to fix it in a software update. (And I can't
+                      say anything more specific than that. A fix isn't a fix
+                      until it's shipped.)
+                    </p>
+                  </blockquote>
+                  <p>
+                    So fingers crossed that it comes sooner rather than later
+                    (although note that he does say that they <em>intend</em> to
+                    fix it; which suggests that while it is a known issue it
+                    isn't actually fixed <em>yet</em>). It would be nice to have
+                    this in 10.5.3 rather than 10.6!
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_3260">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_3260"
+                      ><time data-relative="true">2008-04-26T08:55:33Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    If you are interested in this issue and would like to see
+                    <a href="/wiki/Apple">Apple</a> fix the bug, please file a
+                    report with them at:
+                  </p>
+                  <p>
+                    <a href="http://bugreport.apple.com/" class="external"
+                      >http://bugreport.apple.com/</a
+                    >
+                  </p>
+                  <p>
+                    In your report you should basically make the following
+                    points:
+                  </p>
+                  <ol>
+                    <li>
+                      That applications that run under Garbage Collection on
+                      Leopard are crashing in NSAppleScript
+                    </li>
+                    <li>
+                      That you're aware that this is a known issue, that the
+                      original <a href="/wiki/Radar">Radar</a> number is
+                      5523530, but that you wanted to file a report because the
+                      issue is negatively impacting your use of
+                      <a href="/wiki/Mac_OS_X">Mac OS X</a> and you have no
+                      known workarounds
+                    </li>
+                  </ol>
+                  <p>
+                    Apparently, receiving duplicate reports help Apple
+                    prioritize their engineering resources and decide which bugs
+                    should be fixed first.
+                  </p>
+                  <p>
+                    I think you need an <a href="/wiki/ADC">ADC</a> account
+                    (free, get one
+                    <a href="http://connect.apple.com/" class="external">here</a
+                    >) in order to use their bugreporter, and it would also be a
+                    good idea to attach a sample crash report. Look in your
+                    <code>~/Library/Logs/CrashReporter/</code> folder for a
+                    report, and make sure that it is one which resembles the
+                    sample above; in other words, it should be crashing in the
+                    main thread, thread 0:
+                  </p>
+                  <pre>Thread 0 Crashed:</pre>
+                  <p>
+                    And if you look down the list of stack frames for thread 0
+                    you should see some NSAppleScript calls that resemble these:
+                  </p>
+                  <pre>
+10  com.apple.Foundation          &#x0009;0x93658f7b -[NSAppleScript(NSPrivate) _executeWithMode:andReturnError:] + 107
+11  com.apple.Foundation          &#x0009;0x93658e51 -[NSAppleScript executeAndReturnError:] + 49</pre
+                  >
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_3357">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_3357"
+                      ><time data-relative="true">2008-05-30T06:14:39Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Installed 10.5.3 last night and am testing to see if
+                    <a href="/wiki/Apple">Apple</a> has fixed this bug... Not
+                    hopeful about it as there was no allusion to NSAppleScript,
+                    AppleScript or Apple Events in the release notes, and my own
+                    bug in Apple's tracker was marked as Closed/Duplicate a long
+                    time ago and they don't let you see the status of the
+                    original bug. But still, fingers crossed: will see if
+                    they've made a fix.
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment" id="comment_3387">
+                <cite>
+                  anonymous
+                  <span class="when"
+                    ><a href="#comment_3387"
+                      ><time data-relative="true">2008-06-24T10:58:52Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    hi, i'm just wondering if this bug has been fixed by Apple
+                    or not.
+                  </p>
+                  <p>thanks.</p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_3388">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_3388"
+                      ><time data-relative="true">2008-06-24T11:53:49Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    I haven't seen any crashes since upgrading to 10.5.3, and I
+                    haven't heard any reports from others either, so I am hoping
+                    that the fix was included. But only time will tell seeing as
+                    the release notes are not very detailed and didn't mention
+                    any low-level bugfixes.
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_3390">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_3390"
+                      ><time data-relative="true">2008-06-24T18:38:52Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Sadly, just received my first report of this crash on
+                    10.5.3, so looks like Apple still hasn't fixed the bug:
+                  </p>
+                  <pre>
+Date/Time:       2008-06-24 13:26:02.360 -0400
 OS Version:      Mac OS X 10.5.3 (9D34)
 Report Version:  6
 
@@ -402,61 +641,128 @@ Thread 0 Crashed:
 10  org.wincent.Synergy           &#x0009;0x0000295c -[HotkeyCapableApplication sendEvent:] + 100
 11  com.apple.AppKit              &#x0009;0x938fb6f4 -[NSApplication run] + 776
 12  com.apple.AppKit              &#x0009;0x938cc0d0 NSApplicationMain + 440
-13  org.wincent.Synergy           &#x0009;0x000026fc start + 64</pre>
-</blockquote>
-</li>
-<li class='comment' id='comment_3470'>
-<cite>
-<a href="/users/brett-cassette">Brett Cassette</a>
-<span class='when'><a href="#comment_3470"><time data-relative="true">2008-07-07T12:59:14Z</time></a></span>
-</cite>
-<blockquote><p>So what are we able to do in the meantime? I've been experiencing the same crash with Synergy</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_3472'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_3472"><time data-relative="true">2008-07-07T15:05:39Z</time></a></span>
-</cite>
-<blockquote><p>In the meantime, you can use Synergy 3.2.1, which has the exact same feature set but does not expose the Leopard bug because it doesn't use the new Garbage Collection added in Leopard.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_4740'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_4740"><time data-relative="true">2009-06-26T06:23:11Z</time></a></span>
-</cite>
-<blockquote><p><strong>Summary</strong> changed:</p>
-<ul>
-<li><strong>From:</strong> CRASH: NSAppleScript freaks out under Garbage Collection</li>
-<li><strong>To:</strong> NSAppleScript freaks out under Garbage Collection</li>
-</ul>
-<p><strong>Tags</strong> changed:</p>
-<ul>
-<li><strong>From:</strong> </li>
-<li><strong>To:</strong> crash</li>
-</ul>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_4741'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_4741"><time data-relative="true">2009-06-26T06:27:41Z</time></a></span>
-</cite>
-<blockquote><p>It's been a while since my last post on this topic.</p>
-<p>Since then, version 3.4 has been released (stable series) yesterday, and 3.5a9 (alpha/experimental) series was released today.</p>
-<p>I've heard rumours that Apple <em>might</em> have fixed this bug in 10.5.7, so I've bumped the minimum system version requirement up to 10.5.7 and am putting this new build out into the wild to get some feedback and see if that rumour is true.</p>
-<p>I'm kind of getting sick of having to maintain these two lines of development so I am thinking of starting to work on new features in the 3.5 series <em>even if</em> the Apple bug isn't fixed yet, while the 3.4 series will be bug fixes only.</p>
-<p>Basically, if you want to live on the cutting edge, warts and all, you'll be able to run the 3.5 series; and if you want stability you'll can stay with 3.4, but you'll have to accept that there won't be any forward movement, feature-wise, on that branch.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_4775'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_4775"><time data-relative="true">2009-07-03T07:34:55Z</time></a></span>
-</cite>
-<blockquote><p>Alas, looks like Apple still hasn't fixed the bug in 10.5.7. Looks like we'll be waiting for <a href="/wiki/Snow_Leopard">Snow Leopard</a>.</p>
-<pre>Process:         Synergy [88682]
+13  org.wincent.Synergy           &#x0009;0x000026fc start + 64</pre
+                  >
+                </blockquote>
+              </li>
+              <li class="comment" id="comment_3470">
+                <cite>
+                  <a href="/users/brett-cassette">Brett Cassette</a>
+                  <span class="when"
+                    ><a href="#comment_3470"
+                      ><time data-relative="true">2008-07-07T12:59:14Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    So what are we able to do in the meantime? I've been
+                    experiencing the same crash with Synergy
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_3472">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_3472"
+                      ><time data-relative="true">2008-07-07T15:05:39Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    In the meantime, you can use Synergy 3.2.1, which has the
+                    exact same feature set but does not expose the Leopard bug
+                    because it doesn't use the new Garbage Collection added in
+                    Leopard.
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_4740">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_4740"
+                      ><time data-relative="true">2009-06-26T06:23:11Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p><strong>Summary</strong> changed:</p>
+                  <ul>
+                    <li>
+                      <strong>From:</strong> CRASH: NSAppleScript freaks out
+                      under Garbage Collection
+                    </li>
+                    <li>
+                      <strong>To:</strong> NSAppleScript freaks out under
+                      Garbage Collection
+                    </li>
+                  </ul>
+                  <p><strong>Tags</strong> changed:</p>
+                  <ul>
+                    <li><strong>From:</strong></li>
+                    <li><strong>To:</strong> crash</li>
+                  </ul>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_4741">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_4741"
+                      ><time data-relative="true">2009-06-26T06:27:41Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>It's been a while since my last post on this topic.</p>
+                  <p>
+                    Since then, version 3.4 has been released (stable series)
+                    yesterday, and 3.5a9 (alpha/experimental) series was
+                    released today.
+                  </p>
+                  <p>
+                    I've heard rumours that Apple <em>might</em> have fixed this
+                    bug in 10.5.7, so I've bumped the minimum system version
+                    requirement up to 10.5.7 and am putting this new build out
+                    into the wild to get some feedback and see if that rumour is
+                    true.
+                  </p>
+                  <p>
+                    I'm kind of getting sick of having to maintain these two
+                    lines of development so I am thinking of starting to work on
+                    new features in the 3.5 series <em>even if</em> the Apple
+                    bug isn't fixed yet, while the 3.4 series will be bug fixes
+                    only.
+                  </p>
+                  <p>
+                    Basically, if you want to live on the cutting edge, warts
+                    and all, you'll be able to run the 3.5 series; and if you
+                    want stability you'll can stay with 3.4, but you'll have to
+                    accept that there won't be any forward movement,
+                    feature-wise, on that branch.
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_4775">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_4775"
+                      ><time data-relative="true">2009-07-03T07:34:55Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Alas, looks like Apple still hasn't fixed the bug in 10.5.7.
+                    Looks like we'll be waiting for
+                    <a href="/wiki/Snow_Leopard">Snow Leopard</a>.
+                  </p>
+                  <pre>
+Process:         Synergy [88682]
 Path:            /Applications/Synergy Preferences.app/Contents/Resources/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy
 Identifier:      org.wincent.Synergy
 Version:         versi&#x00f3;n 3.5.1a (a79503f)
@@ -565,66 +871,100 @@ Thread 0 crashed with X86 Thread State (32-bit):
   edi: 0x9746f6ff  esi: 0xa060d5b8  ebp: 0xbfffdd88  esp: 0xbfffdd6c
    ss: 0x0000001f  efl: 0x00000282  eip: 0x94a7ee42   cs: 0x00000007
    ds: 0x0000001f   es: 0x0000001f   fs: 0x00000000   gs: 0x00000037
-  cr2: 0xffe2a688</pre>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_5195'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_5195"><time data-relative="true">2009-11-29T12:27:18Z</time></a></span>
-</cite>
-<blockquote><p>Snow Leopard has been out for a while now and it looks like Apple finally fixed the bug in 10.6. There is little hope of them ever going back and fixing Leopard, in my opinion, so gonna mark this one as closed.</p>
-<p>To avoid the bug, Synergy users basically have these options:</p>
-<ul>
-<li>if stuck on <a href="/wiki/Leopard">Leopard</a>, use the latest release in the 3.4 series: as it doesn't use Garbage Collection, the 3.4 series is not affected by the bug</li>
-<li>if able to upgrade to <a href="/wiki/Snow_Leopard">Snow Leopard</a>, the problem goes away, and users can run the 3.4 series, 3.5 series or 4.0/4.1/4.2 etc without seeing this bug</li>
-</ul>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_5196'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_5196"><time data-relative="true">2009-11-29T12:27:28Z</time></a></span>
-</cite>
-<blockquote><p><strong>Status</strong> changed:</p>
-<ul>
-<li><strong>From:</strong> open</li>
-<li><strong>To:</strong> closed</li>
-</ul>
-</blockquote>
-</li>
+  cr2: 0xffe2a688</pre
+                  >
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_5195">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_5195"
+                      ><time data-relative="true">2009-11-29T12:27:18Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Snow Leopard has been out for a while now and it looks like
+                    Apple finally fixed the bug in 10.6. There is little hope of
+                    them ever going back and fixing Leopard, in my opinion, so
+                    gonna mark this one as closed.
+                  </p>
+                  <p>
+                    To avoid the bug, Synergy users basically have these
+                    options:
+                  </p>
+                  <ul>
+                    <li>
+                      if stuck on <a href="/wiki/Leopard">Leopard</a>, use the
+                      latest release in the 3.4 series: as it doesn't use
+                      Garbage Collection, the 3.4 series is not affected by the
+                      bug
+                    </li>
+                    <li>
+                      if able to upgrade to
+                      <a href="/wiki/Snow_Leopard">Snow Leopard</a>, the problem
+                      goes away, and users can run the 3.4 series, 3.5 series or
+                      4.0/4.1/4.2 etc without seeing this bug
+                    </li>
+                  </ul>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_5196">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_5196"
+                      ><time data-relative="true">2009-11-29T12:27:28Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p><strong>Status</strong> changed:</p>
+                  <ul>
+                    <li><strong>From:</strong> open</li>
+                    <li><strong>To:</strong> closed</li>
+                  </ul>
+                </blockquote>
+              </li>
+            </ol>
+            <h5 class="major">Add a comment</h5>
+            <p>Comments are now closed for this issue.</p>
+          </div>
+        </div>
+        <footer class="global">
+          <ul>
+            <li>
+              <a
+                title="Email me at greg@hurrell.net"
+                class="mailto"
+                href="mailto:greg@hurrell.net"
+                >contact</a
+              >
+            </li>
+            <li><a href="/misc/legal">legal</a></li>
+          </ul>
+        </footer>
+      </div>
+      <div class="menu hide">
+        <div class="menu-inner">
+          <section>
+            <h2>Menu</h2>
+            <ul>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/wiki">Wiki</a></li>
+              <li><a href="/issues">Issues</a></li>
+              <li><a href="/snippets">Snippets</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script src="/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
 
-</ol>
-<h5 class='major'>Add a comment</h5>
-<p>Comments are now closed for this issue.</p>
-
-</div>
-</div>
-<footer class='global'>
-<ul>
-<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
-<li><a href="/misc/legal">legal</a></li>
-</ul>
-</footer>
-</div>
-<div class='menu hide'>
-<div class='menu-inner'>
-<section>
-<h2>Menu</h2>
-<ul>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/wiki">Wiki</a></li>
-<li><a href="/issues">Issues</a></li>
-<li><a href="/snippets">Snippets</a></li>
-</ul>
-</section>
-</div>
-</div>
-</div>
-<script src="/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
-
-<script>
-  new Wincent.Menu();
-</script>
-</body>
+    <script>
+      new Wincent.Menu();
+    </script>
+  </body>
 </html>

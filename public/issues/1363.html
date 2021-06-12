@@ -1,85 +1,129 @@
 <!DOCTYPE html>
-<html lang='en-US'>
-<head>
-<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
-<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
-<title>
-Support ticket #1363: Synergy crash in com.apple.ImageIO.framework
-&middot; wincent.com
-</title>
-<link rel="stylesheet" media="screen" href="/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<html lang="en-US">
+  <head>
+    <meta content="text/html;charset=UTF-8" http-equiv="Content-Type" />
+    <meta
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+      name="viewport"
+    />
+    <title>
+      Support ticket #1363: Synergy crash in com.apple.ImageIO.framework
+      &middot; wincent.com
+    </title>
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="/assets/application-73fd7b8197d0b27a25f03f916460e23c.css"
+    />
+  </head>
+  <body>
+    <div class="viewport menu-closed">
+      <div class="app">
+        <a id="top" name="top"></a>
+        <nav class="global">
+          <a class="menu-icon" href="#">&equiv;</a>
+          <h1><a href="/">Wincent</a></h1>
+          <ul class="navbar-links">
+            <li>
+              <a href="/products">Products</a>
+            </li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/wiki">Wiki</a></li>
+            <li class="selected"><a href="/issues">Issues</a></li>
+          </ul>
+        </nav>
+        <div id="content-wrapper">
+          <div id="content">
+            <div class="notice">
+              <i class="fa fa-info-circle"></i>
+              You are viewing an historical archive of past issues. Please
+              report new issues to the appropriate project issue tracker on
+              <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+            </div>
+            <div id="breadcrumbs">
+              <a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo;
+              Support ticket #1363
+            </div>
+            <div class="issue" id="issue_1363">
+              <form
+                class="edit_issue"
+                id="edit_issue_1363"
+                action="/issues/1363"
+                accept-charset="UTF-8"
+                method="post"
+              >
+                <input name="utf8" type="hidden" value="&#x2713;" /><input
+                  type="hidden"
+                  name="_method"
+                  value="patch"
+                /><input
+                  type="hidden"
+                  name="authenticity_token"
+                  value="VEuTr5eKaS0iQBK185fiwDfbCK/MPNaD6fZZxwz/SSRguS0YMAezePvMIULCvrF0gllhk8fQWJ/J6Yw5KCcuAA=="
+                /><input
+                  type="text"
+                  name="website_address"
+                  id="website_address"
+                  value=""
+                  class="website-address"
+                />
+                <h1 class="major support-ticket">
+                  Support ticket #1363:
+                  <span data-name="issue[summary]">
+                    Synergy crash in com.apple.ImageIO.framework
+                  </span>
+                </h1>
+                <table class="issue-metadata">
+                  <tr>
+                    <th>Kind</th>
+                    <td>
+                      support ticket
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Product</th>
+                    <td>
+                      Synergy
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>When</th>
+                    <td>
+                      Created
+                      <time data-relative="true">2009-08-15T05:15:47Z</time>,
+                      updated
+                      <time data-relative="true">2009-09-01T11:39:15Z</time>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Status</th>
+                    <td>
+                      closed
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Reporter</th>
+                    <td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+                  </tr>
+                  <tr>
+                    <th>Tags</th>
+                    <td data-name="issue[pending_tags]">
+                      <a
+                        title="3 items tagged with &#39;crash&#39;"
+                        href="/tags/crash"
+                        >crash</a
+                      >
+                    </td>
+                  </tr>
+                </table>
 
-</head>
-<body>
-<div class='viewport menu-closed'>
-<div class='app'>
-<a id="top" name="top"></a>
-<nav class='global'>
-<a class='menu-icon' href='#'>&equiv;</a>
-<h1><a href="/">Wincent</a></h1>
-<ul class='navbar-links'>
-<li>
-<a href="/products">Products</a>
-</li>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/wiki">Wiki</a></li>
-<li class='selected'><a href="/issues">Issues</a></li>
-</ul>
-</nav>
-<div id='content-wrapper'>
-<div id='content'>
-<div class='notice'>
-<i class='fa fa-info-circle'></i>
-You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
-</div>
-<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Support ticket #1363</div>
-<div class='issue' id='issue_1363'>
-<form class="edit_issue" id="edit_issue_1363" action="/issues/1363" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="VEuTr5eKaS0iQBK185fiwDfbCK/MPNaD6fZZxwz/SSRguS0YMAezePvMIULCvrF0gllhk8fQWJ/J6Yw5KCcuAA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='major support-ticket'>
-Support ticket #1363:
-<span data-name='issue[summary]'>
-Synergy crash in com.apple.ImageIO.framework
-</span>
-</h1>
-<table class='issue-metadata'>
-<tr>
-<th>Kind</th>
-<td>
-support ticket
-</td>
-</tr>
-<tr>
-<th>Product</th>
-<td>
-Synergy
-</td>
-</tr>
-<tr>
-<th>When</th>
-<td>Created <time data-relative="true">2009-08-15T05:15:47Z</time>, updated <time data-relative="true">2009-09-01T11:39:15Z</time></td>
-</tr>
-<tr>
-<th>Status</th>
-<td>
-closed
-</td>
-</tr>
-<tr>
-<th>Reporter</th>
-<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
-</tr>
-<tr>
-<th>Tags</th>
-<td data-name='issue[pending_tags]'>
-<a title="3 items tagged with &#39;crash&#39;" href="/tags/crash">crash</a>
-</td>
-</tr>
-</table>
-<h4 class='major'>
-Description
-</h4>
-<div class='issue-description-body'>
-<p>Received via email:</p>
-<pre>Process:         Synergy [306]
+                <h4 class="major">
+                  Description
+                </h4>
+                <div class="issue-description-body">
+                  <p>Received via email:</p>
+                  <pre>
+Process:         Synergy [306]
 Path:            /Users/100284009/Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy
 Identifier:      org.wincent.Synergy
 Version:         Synergy version 3.3 (release) (3.4 (release))
@@ -288,85 +332,132 @@ Binary Images:
 0xc0000000 - 0xc0008fff +com.growl.growlframework 0.7.2 (0.7.2) /Users/100284009/Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/Frameworks/Growl.framework/Versions/A/Growl
 0xeab00000 - 0xeab0ffff  libConverter.dylib ??? (???) /System/Library/Printers/Libraries/libConverter.dylib
 0xfffe8000 - 0xfffebfff  libobjc.A.dylib ??? (???) /usr/lib/libobjc.A.dylib
-0xffff0000 - 0xffff1780  libSystem.B.dylib ??? (???) /usr/lib/libSystem.B.dylib </pre>
+0xffff0000 - 0xffff1780  libSystem.B.dylib ??? (???) /usr/lib/libSystem.B.dylib </pre
+                  >
+                </div>
+              </form>
+            </div>
+            <h4 class="major">Comments</h4>
+            <ol class="boxed" id="comments">
+              <li class="comment admin" id="comment_4864">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_4864"
+                      ><time data-relative="true">2009-08-15T05:16:11Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p><strong>Summary</strong> changed:</p>
+                  <ul>
+                    <li>
+                      <strong>From:</strong> Synergy crash
+                      com.apple.ImageIO.framework
+                    </li>
+                    <li>
+                      <strong>To:</strong> Synergy crash in
+                      com.apple.ImageIO.framework
+                    </li>
+                  </ul>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_4865">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_4865"
+                      ><time data-relative="true">2009-08-15T05:17:57Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    At first glance doesn't look like a bug in Synergy. It may
+                    be that a corrupt image is causing something in the
+                    com.apple.ImageIO.framework <a href="/wiki/API">API</a> to
+                    choke.
+                  </p>
+                  <p>
+                    You could try ruling out some other possible sources of
+                    corruption by clearing your preferences file etc (see
+                    <a href="https://wincent.com/l/bugs/" class="external"
+                      >https://wincent.com/l/bugs/</a
+                    >
+                    for a full list of trouble-shooting tips).
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_4931">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_4931"
+                      ><time data-relative="true">2009-09-01T11:39:11Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p>
+                    Going to mark this as closed for now but if I get any other
+                    reports will re-open.
+                  </p>
+                </blockquote>
+              </li>
+              <li class="comment admin" id="comment_4932">
+                <cite>
+                  <a href="/users/greg-hurrell">Greg Hurrell</a>
+                  <span class="when"
+                    ><a href="#comment_4932"
+                      ><time data-relative="true">2009-09-01T11:39:15Z</time></a
+                    ></span
+                  >
+                </cite>
+                <blockquote>
+                  <p><strong>Status</strong> changed:</p>
+                  <ul>
+                    <li><strong>From:</strong> new</li>
+                    <li><strong>To:</strong> closed</li>
+                  </ul>
+                </blockquote>
+              </li>
+            </ol>
+            <h5 class="major">Add a comment</h5>
+            <p>Comments are now closed for this issue.</p>
+          </div>
+        </div>
+        <footer class="global">
+          <ul>
+            <li>
+              <a
+                title="Email me at greg@hurrell.net"
+                class="mailto"
+                href="mailto:greg@hurrell.net"
+                >contact</a
+              >
+            </li>
+            <li><a href="/misc/legal">legal</a></li>
+          </ul>
+        </footer>
+      </div>
+      <div class="menu hide">
+        <div class="menu-inner">
+          <section>
+            <h2>Menu</h2>
+            <ul>
+              <li><a href="/blog">Blog</a></li>
+              <li><a href="/wiki">Wiki</a></li>
+              <li><a href="/issues">Issues</a></li>
+              <li><a href="/snippets">Snippets</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script src="/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
 
-</div>
-</form></div>
-<h4 class='major'>Comments</h4>
-<ol class='boxed' id='comments'>
-<li class='comment admin' id='comment_4864'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_4864"><time data-relative="true">2009-08-15T05:16:11Z</time></a></span>
-</cite>
-<blockquote><p><strong>Summary</strong> changed:</p>
-<ul>
-<li><strong>From:</strong> Synergy crash com.apple.ImageIO.framework</li>
-<li><strong>To:</strong> Synergy crash in com.apple.ImageIO.framework</li>
-</ul>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_4865'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_4865"><time data-relative="true">2009-08-15T05:17:57Z</time></a></span>
-</cite>
-<blockquote><p>At first glance doesn't look like a bug in Synergy. It may be that a corrupt image is causing something in the com.apple.ImageIO.framework <a href="/wiki/API">API</a> to choke.</p>
-<p>You could try ruling out some other possible sources of corruption by clearing your preferences file etc (see <a href="https://wincent.com/l/bugs/" class="external">https://wincent.com/l/bugs/</a> for a full list of trouble-shooting tips).</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_4931'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_4931"><time data-relative="true">2009-09-01T11:39:11Z</time></a></span>
-</cite>
-<blockquote><p>Going to mark this as closed for now but if I get any other reports will re-open.</p>
-</blockquote>
-</li>
-<li class='comment admin' id='comment_4932'>
-<cite>
-<a href="/users/greg-hurrell">Greg Hurrell</a>
-<span class='when'><a href="#comment_4932"><time data-relative="true">2009-09-01T11:39:15Z</time></a></span>
-</cite>
-<blockquote><p><strong>Status</strong> changed:</p>
-<ul>
-<li><strong>From:</strong> new</li>
-<li><strong>To:</strong> closed</li>
-</ul>
-</blockquote>
-</li>
-
-</ol>
-<h5 class='major'>Add a comment</h5>
-<p>Comments are now closed for this issue.</p>
-
-</div>
-</div>
-<footer class='global'>
-<ul>
-<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
-<li><a href="/misc/legal">legal</a></li>
-</ul>
-</footer>
-</div>
-<div class='menu hide'>
-<div class='menu-inner'>
-<section>
-<h2>Menu</h2>
-<ul>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/wiki">Wiki</a></li>
-<li><a href="/issues">Issues</a></li>
-<li><a href="/snippets">Snippets</a></li>
-</ul>
-</section>
-</div>
-</div>
-</div>
-<script src="/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
-
-<script>
-  new Wincent.Menu();
-</script>
-</body>
+    <script>
+      new Wincent.Menu();
+    </script>
+  </body>
 </html>

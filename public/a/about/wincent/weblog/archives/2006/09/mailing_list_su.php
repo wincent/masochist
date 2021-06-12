@@ -4,9 +4,16 @@
   </head>
   <body>
     <h1>Moved Permanently</h1>
-    <p>The resource has moved to <a href="https://wincent.com/blog/mailing-list-subscriptions">https://wincent.com/blog/mailing-list-subscriptions</a></p>
+    <p>
+      The resource has moved to
+      <a href="https://wincent.com/blog/mailing-list-subscriptions"
+        >https://wincent.com/blog/mailing-list-subscriptions</a
+      >
+    </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/mailing-list-subscriptions');
+    window.location.replace(
+      'https://wincent.com/blog/mailing-list-subscriptions',
+    );
   </script>
 </html>

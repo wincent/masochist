@@ -4,9 +4,16 @@
   </head>
   <body>
     <h1>Moved Permanently</h1>
-    <p>The resource has moved to <a href="https://wincent.com/blog/whats-cool-about-key-value-coding">https://wincent.com/blog/whats-cool-about-key-value-coding</a></p>
+    <p>
+      The resource has moved to
+      <a href="https://wincent.com/blog/whats-cool-about-key-value-coding"
+        >https://wincent.com/blog/whats-cool-about-key-value-coding</a
+      >
+    </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/whats-cool-about-key-value-coding');
+    window.location.replace(
+      'https://wincent.com/blog/whats-cool-about-key-value-coding',
+    );
   </script>
 </html>

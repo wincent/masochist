@@ -4,9 +4,16 @@
   </head>
   <body>
     <h1>Moved Permanently</h1>
-    <p>The resource has moved to <a href="https://wincent.com/blog/whittling-away-the-controller">https://wincent.com/blog/whittling-away-the-controller</a></p>
+    <p>
+      The resource has moved to
+      <a href="https://wincent.com/blog/whittling-away-the-controller"
+        >https://wincent.com/blog/whittling-away-the-controller</a
+      >
+    </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/whittling-away-the-controller');
+    window.location.replace(
+      'https://wincent.com/blog/whittling-away-the-controller',
+    );
   </script>
 </html>
