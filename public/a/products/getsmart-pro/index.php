@@ -650,7 +650,7 @@
           <h3>GetSmart Pro</h3>
           <img
             style="float:left;"
-            src="../../gfx/coming-soon-icon.jpg"
+            src="../gfx/coming-soon-icon.jpg"
             alt="Coming soon icon"
             width="128"
             height="128"

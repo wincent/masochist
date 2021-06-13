@@ -691,7 +691,7 @@
           <h3>Introducing Hextrapolate</h3>
           <img
             style="float:left; margin: 20px; "
-            src="../../gfx/winhex-icon.jpg"
+            src="../gfx/winhex-icon.jpg"
             alt="Hextrapolate icon"
             width="128"
             height="128"

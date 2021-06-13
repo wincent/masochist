@@ -710,7 +710,7 @@
           <h3>Introducing Install</h3>
           <img
             style="float:left;"
-            src="../../gfx/install-icon.jpg"
+            src="../gfx/install-icon.jpg"
             alt="Install icon"
             width="128"
             height="128"

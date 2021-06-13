@@ -683,7 +683,7 @@
           <h3>Introducing WinHex</h3>
           <img
             style="float:left; margin: 20px; "
-            src="../../gfx/winhex-icon.jpg"
+            src="../gfx/winhex-icon.jpg"
             alt="WinHex icon"
             width="128"
             height="128"

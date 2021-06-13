@@ -760,7 +760,7 @@
 
           <img
             style="float:left; margin: 20px; "
-            src="../../gfx/winswitch-icon.jpg"
+            src="../gfx/winswitch-icon.jpg"
             alt="WinSwitch icon"
             width="128"
             height="128"
