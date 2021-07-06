@@ -8,7 +8,7 @@ export const HOST = 'wincent.com';
 export const SCHEME = 'https://';
 
 export const REPO =
-  (__DEV__ && process.env.MASOCHIST_CONTENT_REPO) || '/var/masochist/content';
+  (__DEV__ && process.env.MASOCHIST_CONTENT_REPO) || '/srv/masochist/content';
 
 /**
  * Redis-related.
