@@ -202,7 +202,6 @@ code {
   margin: 0 .2rem;
   font-size: 90%;
   overflow-wrap: anywhere;
-  font-weight: bold;
   background: #F1F1F1;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone; }
