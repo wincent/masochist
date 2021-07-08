@@ -64,6 +64,14 @@ systemctl suspend
 sudo reboot
 ```
 
+# Powering the machine off
+
+**Note:** `sudo shutdown -h now` is [not going to cut it](https://twitter.com/wincent/status/1409928030219341826).
+
+```sh
+sudo poweroff
+```
+
 # Updating all packages
 
 ```sh
