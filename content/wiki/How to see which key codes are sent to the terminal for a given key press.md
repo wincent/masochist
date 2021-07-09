@@ -1,8 +1,9 @@
 ---
 tags: wiki terminal
+title: How to see which key codes are sent to the terminal for a given key press
 ---
 
-```sh
+```bash
 sed -n l
 ```
 

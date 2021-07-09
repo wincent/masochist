@@ -1,6 +1,7 @@
 ---
 tags: rr wiki
 cache_breaker: 1
+title: RR cheatsheet
 ---
 
 # Proxying
@@ -171,7 +172,7 @@ Sometimes doubles can interact in bizarre and unpredictable ways, so it is absol
 
 Given this code:
 
-```shell
+```ruby
 @paginator = RestfulPaginator.new params, Snippet.published.count, snippets_path, 10
 @snippets = Snippet.recent.offset @paginator.offset
 ```

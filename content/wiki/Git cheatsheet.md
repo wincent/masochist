@@ -1,6 +1,7 @@
 ---
 tags: git wiki
 cache_breaker: 1
+title: Git cheatsheet
 ---
 
 # Pushing matching refs
@@ -29,7 +30,7 @@ This just writes the file back out to the working tree without touching the HEAD
 
 Example; examining a diff that contains a bunch of copies and renames as well as abundant changes to "package-lock.json" files:
 
-```sh
+```bash
 git diff develop -C10 -M20 -b --find-copies-harder -- ':!*-lock.json'`
 ```
 

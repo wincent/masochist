@@ -24,7 +24,7 @@ I still maintain that it's obviously not directly usable by others in other cont
 
 As you can see, if you strip away the comments, the usage, and the "glue" code that does things like processing command line arguments and invoking actions in the right order, the actual operations being performed are very simple indeed.
 
-```shell
+```bash
 #!/bin/sh -e
 # Copyright 2009-2010 Wincent Colaiuta. All rights reserved.
 #

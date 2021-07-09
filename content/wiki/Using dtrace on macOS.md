@@ -1,12 +1,13 @@
 ---
 tags: wiki dtrace macos
+title: Using dtrace on macOS
 ---
 
 `dtruss` is a `dtrace` script that is close in functionality to `strace` on Linux.
 
 Other scripts can be found in `/usr/bin/*.d`. Examples:
 
-```sh
+```bash
 # Show total number of syscalls per process, sorted by count.
 sudo syscallbyproc.d
 

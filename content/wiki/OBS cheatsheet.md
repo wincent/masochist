@@ -1,5 +1,6 @@
 ---
 tags: wiki
+title: OBS cheatsheet
 ---
 
 Just making some notes for this stuff because I find it tremendously fiddly and sensitive.
@@ -120,7 +121,7 @@ One thing to note: I was getting low latency monitoring with this set-up, but as
 
 Assuming a virtual sink created with:
 
-```sh
+```bash
 pactl load-module module-null-sink sink_name=Music
 ```
 

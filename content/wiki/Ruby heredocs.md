@@ -1,10 +1,11 @@
 ---
 tags: ruby wiki
+title: Ruby heredocs
 ---
 
 # Basic
 
-```shell
+```ruby
 <<HERE
 Hi, #{foo}
 HERE
@@ -12,7 +13,7 @@ HERE
 
 # Optionally indented end-marker
 
-```shell
+```ruby
 <<-HERE
 Hi, #{foo}
     HERE
@@ -20,7 +21,7 @@ Hi, #{foo}
 
 # Non-interpolating
 
-```shell
+```ruby
 <<'HERE'
 #{foo} won't be interpolated
 HERE

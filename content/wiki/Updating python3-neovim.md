@@ -1,8 +1,9 @@
 ---
 tags: wiki vim
+title: Updating python3-neovim
 ---
 
-```shell
+```bash
 pip3 install --upgrade pip # if necessary
 pip3 install --upgrade neovim
 ```

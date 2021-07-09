@@ -1,21 +1,22 @@
 ---
 tags: wiki macos
+title: Finding aliases and symbolic links
 ---
 
 To find symbolic links in the current directory:
 
-```shell
+```bash
 find . -type l
 ```
 
 To find macOS "alias" links on the current volume:
 
-```shell
+```bash
 mdfind kMDItemKind=Alias
 ```
 
 Or in the current directory:
 
-```shell
+```bash
 mdfind -onlyin . kMDItemKind=Alias
 ```

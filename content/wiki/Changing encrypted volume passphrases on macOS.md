@@ -1,5 +1,6 @@
 ---
 tags: wiki macos
+title: Changing encrypted volume passphrases on macOS
 ---
 
 I backup to multiple external volumes and occasionally have cause to change the passphrases, but can never remember how to do it because Apple makes it ridiculously obtuse.
@@ -8,7 +9,7 @@ I backup to multiple external volumes and occasionally have cause to change the 
 
 # Encrypted `.dmg` file
 
-```shell
+```bash
 hdiutil chpass path/to/image.dmg
 ```
 
@@ -22,7 +23,7 @@ You can do this using recent versions of Disk Utility and selecting the inner vo
 
 ## Command-line alternative
 
-```shell
+```bash
 diskutil coreStorage changeVolumePassphrase $UUID
 ```
 

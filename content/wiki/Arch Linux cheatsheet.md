@@ -9,7 +9,7 @@ Just a set of personal reminders for me as I set up a Linux box. Some of these a
 
 After grabbing the ISO image from [the download page](https://archlinux.org/download/), follow the procedure outlined on for macOS on the [USB Flash installation medium page](https://wiki.archlinux.org/index.php/USB_flash_installation_medium#In_macOS):
 
-```sh
+```bash
 diskutil list # figure out device eg. /dev/disk3
 diskutil unmountDisk /dev/disk3
 sudo dd if=/Users/glh/Downloads/archlinux-2021.03.01-x86_64.iso of=/dev/rdisk3 bs=1m
@@ -17,7 +17,7 @@ sudo dd if=/Users/glh/Downloads/archlinux-2021.03.01-x86_64.iso of=/dev/rdisk3 b
 
 After that, it's a matter of booting from the media (see "Selecting boot device at power-on below) and kicking off the installation script:
 
-```sh
+```bash
 loadkeys colemak # "iyasefjr cyifmae" typing colemak-style on qwerty)
 iwctl station wlan0 connect $SSID
 curl -LO https://wincent.com/link/arch-linux-install.sh
@@ -35,7 +35,7 @@ cd code/wincent
 
 # Reconnecting to the WiFi
 
-```sh
+```bash
 netctl restart $PROFILE # eg netctl restart cole-valley
 ```
 
@@ -54,13 +54,13 @@ $ bluetoothctl
 
 # Putting the machine to sleep
 
-```sh
+```bash
 systemctl suspend
 ```
 
 # Rebooting the machine
 
-```sh
+```bash
 sudo reboot
 ```
 
@@ -68,19 +68,19 @@ sudo reboot
 
 **Note:** `sudo shutdown -h now` is [not going to cut it](https://twitter.com/wincent/status/1409928030219341826).
 
-```sh
+```bash
 sudo poweroff
 ```
 
 # Updating all packages
 
-```sh
+```bash
 sudo pacman -Syu
 ```
 
 # Inspecting key and mouse events
 
-```sh
+```bash
 xev
 ```
 
@@ -114,7 +114,7 @@ xev
 
 Now, for some reason, every BIOS date resets the NVRAM, where critical EFI information is stored. The system won't boot properly until it is reconfigured. Now I am sure there is a better way to fix this (probably in [the UEFI wiki page](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface), but the only way I have been able to restore bootability to the system has been to set up the whole `/boot` partition all over again.
 
-```sh
+```bash
 # Make it possible to type in Colemak.
 loadkeys colemak -- (ie. "iyasefjr cyifmae")
 
@@ -153,7 +153,7 @@ reboot
 
 Basically, I'm not sure what order to run those commands in; I had to try several times to get it to work (was winding up at a Grub prompt when rebooting). Also, I am not sure how/why, but I initially mounted `/boot` and everything was there, but after my first attempt, it seemed like the partition was somehow emptied and that's why I had to set it up all over again. For next time, see if I can shortcut some of this by [using `efibootmgr`](https://wiki.gentoo.org/wiki/Efibootmgr) to get the boot entries back in place:
 
-```sh
+```bash
 loadkeys colemak -- (ie. "iyasefjr cyifmae")
 iwctl station wlan0 connect $SSID
 cryptsetup open /dev/nvme0n1p2 cryptroot
@@ -170,7 +170,7 @@ efibootmgr --disk /dev/nvme0n1 --part 1 --create --label "Arch Linux" --loader /
 
 # Seeing fan speed and temperature information
 
-```sh
+```bash
 sensors
 ```
 
@@ -178,7 +178,7 @@ sensors
 
 eg. for targeting specific windows in i3:
 
-```sh
+```bash
 xprop
 ```
 

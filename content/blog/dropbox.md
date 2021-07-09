@@ -56,13 +56,13 @@ You could make the argument for using symlinks from your Dropbox folder to items
 
 If you've made the mistake of adding symlinks or aliases in the past, you can find them all with:
 
-```shell
+```bash
 find ~/Dropbox -type l
 ```
 
 and:
 
-```shell
+```bash
 mdfind -onlyin ~/Dropbox kMDItemKind=Alias
 ```
 

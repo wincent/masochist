@@ -60,13 +60,13 @@ open my $fd, '-|', git_cmd(), 'for-each-ref',
 
 I was able to confirm the ordering by running this on the server:
 
-```sh
+```bash
 sudo -u git git for-each-ref --count=10 --sort=-committerdate --format='%(objectname) %(refname) %(subject)%00%(committer)'
 ```
 
 I submitted [a patch upstream](http://public-inbox.org/git/20210606085116.13739-1-greg@hurrell.net/) to change that to:
 
-```sh
+```bash
 sudo -u git git for-each-ref --count=10 --sort=-committerdate --sort=-HEAD --format='%(objectname) %(refname) %(subject)%00%(committer)'
 ```
 

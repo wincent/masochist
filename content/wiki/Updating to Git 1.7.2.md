@@ -1,6 +1,7 @@
 ---
 tags: git updates snow.leopard fedora wiki
 cache_breaker: 1
+title: Updating to Git 1.7.2
 ---
 
 # Local update ([Mac OS X](/wiki/Mac_OS_X) 10.6.4 [Snow Leopard](/wiki/Snow_Leopard))
@@ -59,6 +60,6 @@ $ NO_CURL=1 make GITWEB_PROJECTROOT=/pub/git/public \
 To take advantage of the new syntax highlighting support:
 
 ```shell
-# yum install highlight
+# yum install highlight
 # echo "\$feature{'highlight'}{'default'} = [1];" >> /pub/git/conf/gitweb.conf
 ```

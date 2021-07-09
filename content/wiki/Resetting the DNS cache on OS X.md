@@ -1,12 +1,13 @@
 ---
 tags: dns macos wiki
+title: Resetting the DNS cache on OS X
 ---
 
 Sometimes a process will claim that a host is unknown when trying to connect with one process (eg. `git push`) but others have no trouble doing so (eg. `ping`). The solution may be to bounce the DNS cache.
 
 Working as of macOS High Sierra:
 
-```shell
+```bash
 sudo killall -HUP mDNSResponder
 sudo killall mDNSResponderHelper
 sudo dscacheutil -flushcache

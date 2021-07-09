@@ -1,6 +1,7 @@
 ---
 tags: firewall ec2 wiki
 cache_breaker: 1
+title: Using iptables on EC2 instances
 ---
 
 Most of the time you don't need to worry about using a host-level firewall such as iptables when running Amazon EC2, because Amazon allows you to run instances inside a "security group", which is effectively a firewall policy that you use to specify which connections from the outside world should be allowed to reach the instance.

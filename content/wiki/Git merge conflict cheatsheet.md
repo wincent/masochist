@@ -1,6 +1,7 @@
 ---
 tags: git wiki
 cache_breaker: 1
+title: Git merge conflict cheatsheet
 ---
 
 `git status` shows files with conflicts under "Unmerged paths".
@@ -44,7 +45,7 @@ Conflict markers look like this:
 
 This can be useful when dealing with conflicts due to things like formatting changes. Say you have a topic branch and run a source formatter on it. You rebase that topic branch onto `master` and get conflicts because somebody changed the code that you formatted. The easiest solution here is not to solve the merge conflict by hand, but rather take the `master` changes and then re-run the source formatting operation.
 
-```sh
+```bash
 git checkout --ours -- path/to/conflicting-file
 sh format-source.sh
 ```

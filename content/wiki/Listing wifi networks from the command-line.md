@@ -1,8 +1,9 @@
 ---
 tags: wiki wifi
+title: Listing wifi networks from the command-line
 ---
 
-```sh
+```bash
 /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s
 ```
 

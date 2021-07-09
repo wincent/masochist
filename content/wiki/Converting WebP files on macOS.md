@@ -1,8 +1,9 @@
 ---
 tags: wiki webp
+title: Converting WebP files on macOS
 ---
 
-```sh
+```bash
 brew install webp
 dwebp input.webp -o output.png
 ```

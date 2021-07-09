@@ -1,7 +1,8 @@
 ---
 tags: ssh wiki
+title: Showing the fingerprint of an SSH key file
 ---
 
-```shell
+```bash
 ssh-keygen -lvf path/to/file
 ```

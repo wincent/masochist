@@ -1,6 +1,7 @@
 ---
 tags: ssh rssh wiki
 cache_breaker: 1
+title: Replacing the Red Hat-supplied OpenSSH package with a newer version built from source
 ---
 
 # Background
@@ -334,7 +335,7 @@ Test, it works as intended.
 
 Change the user's shell:
 
-```shell
+```bash
 chsh -s /sbin/nologin exampleuser
 ```
 

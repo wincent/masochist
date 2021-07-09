@@ -189,7 +189,7 @@ There is some hand-waving here as I'm essentially writing off the cost that `git
 
 Again, we'll be using `--index-filter` for speed, and again we'll rely on access to the last-rewritten commit (seeing as we need to perform a bulk copy of it as cheaply as possible, then apply only our modifications on top of it, we need to know _what_ to copy). The key trick here is making use of the `map` function that is available in the scope of the script text that `git-filter-branch` will `eval` each time it visits a commit. Unlike our first `--tree-filter`-based attempt which was as easily invoked as this:
 
-```shell
+```bash
 git filter-branch \
   --tree-filter ~/bin/wiki-to-markdown-filter \
   HEAD
@@ -197,7 +197,7 @@ git filter-branch \
 
 With the second and third `--index-filter`-based strategies our invocation is going to look like this:
 
-```shell
+```bash
 git filter-branch --index-filter \
   'PREV=$(map $(git rev-parse -q --verify $GIT_COMMIT^)); ~/bin/wiki-to-markdown-filter $PREV' \
   HEAD

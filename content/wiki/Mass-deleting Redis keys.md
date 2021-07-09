@@ -1,10 +1,11 @@
 ---
 tags: redis wiki
+title: Mass-deleting Redis keys
 ---
 
 # Example
 
-```shell
+```bash
 redis-cli --scan --pattern "masochist:[12345]:*" | xargs -L 100 redis-cli DEL
 ```
 
@@ -14,6 +15,6 @@ For alternative means, see [this Stack Overflow question](http://stackoverflow.c
 
 You can delete _everything_ easily with ([via Stack Overflow](https://stackoverflow.com/a/6851929/2103996)):
 
-```shell
+```bash
 redis-cli flushall
 ```

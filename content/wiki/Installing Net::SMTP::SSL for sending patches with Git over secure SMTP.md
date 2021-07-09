@@ -1,12 +1,13 @@
 ---
 tags: git wiki
+title: Installing Net::SMTP::SSL for sending patches with Git over secure SMTP
 ---
 
 ## High Sierra notes
 
 `Net::SMTP::SSL` still doesn't come with macOS, so you'll need to install it:
 
-```sh
+```bash
 sudo -H /usr/bin/cpan -f Net::SMTP::SSL
 ```
 

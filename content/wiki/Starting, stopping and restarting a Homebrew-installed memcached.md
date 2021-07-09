@@ -1,10 +1,11 @@
 ---
 tags: memcached homebrew wiki
+title: Starting, stopping and restarting a Homebrew-installed memcached
 ---
 
 # The new way
 
-```shell
+```bash
 brew services list
 brew services start memcached
 brew services stop memcached
