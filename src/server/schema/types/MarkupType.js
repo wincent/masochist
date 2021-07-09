@@ -19,7 +19,7 @@ const EXTENSION_TO_HLJS_LANGUAGE = {
   m: 'objc',
   patch: 'patch',
   rb: 'ruby',
-  sh: 'shell',
+  sh: 'bash',
   txt: undefined,
 };
 
