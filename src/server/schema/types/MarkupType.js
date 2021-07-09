@@ -33,17 +33,16 @@ function validateBaseHeadingLevel(level: ?number): ?number {
   return level;
 }
 
-function highlight(str, lang) {
-  let language;
+function highlight(str, language) {
   let value;
   try {
-    if (lang === 'auto') {
+    if (language === 'auto') {
       const result = hljs.highlightAuto(str);
       language = escapeHTML(result.language);
       ({value} = result);
-    } else if (lang && hljs.getLanguage(lang)) {
-      const result = hljs.highlight(lang, str);
-      language = escapeHTML(lang.toLowerCase());
+    } else if (language && hljs.getLanguage(language)) {
+      const result = hljs.highlight(str, {language});
+      language = escapeHTML(language.toLowerCase());
       ({value} = result);
     }
   } catch (err) {
@@ -166,8 +165,8 @@ const MarkupType = new GraphQLObjectType({
           markup.format === 'sh' ||
           markup.format === 'txt'
         ) {
-          const lang = EXTENSION_TO_HLJS_LANGUAGE[markup.format];
-          return highlight(markup.raw, lang);
+          const language = EXTENSION_TO_HLJS_LANGUAGE[markup.format];
+          return highlight(markup.raw, language);
         } else {
           throw new Error('Unsupported markup format `' + markup.format + '`');
         }
