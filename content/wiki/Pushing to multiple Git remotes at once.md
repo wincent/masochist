@@ -19,7 +19,7 @@ We can add a new `all` remote:
 $ git remote add all git@git.wincent.com:public/wincent.git
 ```
 
-And then set two `pushurls` for it:
+And then set two `pushurl` URLs for it:
 
 ```sh
 $ git remote set-url --add --push all git@git.wincent.com:public/wincent.git
@@ -37,6 +37,16 @@ github  git@github.com:wincent/wincent.git (fetch)
 github  git@github.com:wincent/wincent.git (push)
 origin  git@git.wincent.com:public/wincent.git (fetch)
 origin  git@git.wincent.com:public/wincent.git (push)
+```
+
+This is the full config for the `all` remote as seen in the clone's `.git/config`:
+
+```
+[remote "all"]
+	url = git@git.wincent.com:public/wincent.git
+	fetch = +refs/heads/*:refs/remotes/all/*
+	pushurl = git@git.wincent.com:public/wincent.git
+	pushurl = git@github.com:wincent/wincent.git
 ```
 
 When we push, we see (something like) the following, which shows the two remotes being processed in sequence:
