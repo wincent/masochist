@@ -27,7 +27,7 @@ const TagLozenge = ({type}: Props) => {
   }
   return (
     <a className="lozenge" href={href}>
-      <code>{type}</code>
+      {type}
     </a>
   );
 };

@@ -2,10 +2,13 @@
 .lozenge:active,
 .lozenge:hover,
 .lozenge:visited {
+  background: #F1F1F1;
+  border-radius: 4px;
+  border: 1px solid #E1E1E1;
   color: inherit;
+  font-family: monospace;
+  font-size: 90%;
+  margin: 0 .2rem;
+  padding: .2rem .5rem;
   text-decoration: none;
-}
-
-.lozenge code {
-  overflow-wrap: initial;
 }
