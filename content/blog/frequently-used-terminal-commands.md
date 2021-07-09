@@ -215,3 +215,19 @@ Observations:
 
 - Clearly doing more on work machine than personal machine.
 - I'm going to get rid of `NO_HIST_IGNORE_DUPS` because the consecutive duplicates are driving me up the wall when I hit "up" in the terminal (`HIST_FIND_NO_DUPS` stops you from seeing duplicates when you *search*, but just tapping "up" is not considered a search), so that will affect the numbers somewhat next time around.
+
+# Update: July 2021
+
+```
+# Personal machine
+20379 git
+6582 yarn
+4602 vim       # Alias -> `nvim`
+2986 cd
+2927 exit
+1624 less
+1237 ll        # Alias -> `ls -laF`
+963 o          # Alias -> `git oneline` -> `git --paginate log --pretty=format:'%C(auto)%h%Creset %s%C(auto)%d%Creset %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset'`
+866 ls
+839 t          # Wrapper for `tmux`.
+```
