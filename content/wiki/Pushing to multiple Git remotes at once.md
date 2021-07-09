@@ -5,7 +5,7 @@ title: Pushing to multiple Git remotes at once
 
 For example, consider a clone of my dotfiles repo that has these two remotes, `origin` and `github`:
 
-```sh
+```shell
 $ git remote -v
 github  git@github.com:wincent/wincent.git (fetch)
 github  git@github.com:wincent/wincent.git (push)
@@ -15,20 +15,20 @@ origin  git@git.wincent.com:public/wincent.git (push)
 
 We can add a new `all` remote:
 
-```sh
+```shell
 $ git remote add all git@git.wincent.com:public/wincent.git
 ```
 
 And then set two `pushurl` URLs for it:
 
-```sh
+```shell
 $ git remote set-url --add --push all git@git.wincent.com:public/wincent.git
 $ git remote set-url --add --push all git@github.com:wincent/wincent.git
 ```
 
 Yielding the following:
 
-```sh
+```shell
 $ git remote -v
 all     git@git.wincent.com:public/wincent.git (fetch)
 all     git@git.wincent.com:public/wincent.git (push)
@@ -51,7 +51,7 @@ This is the full config for the `all` remote as seen in the clone's `.git/config
 
 When we push, we see (something like) the following, which shows the two remotes being processed in sequence:
 
-```sh
+```shell
 $ git push all --dry-run
 Everything up-to-date
 Everything up-to-date
