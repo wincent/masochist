@@ -3,6 +3,18 @@ tags: wiki gpg
 title: GPG key rotation notes
 ---
 
+# Executive summary
+
+- **Have one primary key per "identity".** That generally means one tied to your personal email address and one tied to your work address. (We want the work one separate so it can be revoked if you leave your job.)
+- **Keep an expiry date on your primary key.** This is a "dead-man switch"; you can change the expiry date at will — there is no need to generate a new key.
+- **Keep the primary key "offline".** As in, keep it in 1Password, and keep only the subkeys on your system(s).
+- **It's ok to have your subkeys on multiple machines.** If you must revoke a key, do it. You will need to put a new subkey on all machines. That's ok. Don't try to use a separate identity for each machine; use your personal identity on all personal machines and your work identity on all work machines.
+- **Use the default encryption subkey.** GPG will make an encryption subkey by default when you create your primary key; just use that. When the subkey expires, then you will create a new encryption subkey.
+- **Create a signing subkey if you need to.** The primary key _is_ a signing key, but because you're storing it offline, you need to generate a signing subkey if (and only if) you need to sign things. Like encryption subkeys, this should have an expiry date; you can periodically issue a new signing subkey.
+- **Synchronize expiry dates to reduce maintenance burden.** Line up the expiry dates on all the keys so that you can refresh them all at the same time. That generally means updating the expiry on you personal and work primary keys, and generating new encryption (and possibly signing) subkeys. 2 years is a good expiry interval (not too often to be burdensome, not so infrequent that you forget how to update.)
+
+# Details
+
 My current key isn't expiring until 2024-05-17, but I wanted to leave some notes here to remind me that the next time I transition to a new key I should create the master key without an expiry date and instead produce a key revocation certificate stored in a "safe location" (might be in a 1Password vault or printed on paper in a safe somewhere).
 
 > The expiry date is no reasonable mechanism to protect the primary key, and you should have a revocation certificate at hand.
