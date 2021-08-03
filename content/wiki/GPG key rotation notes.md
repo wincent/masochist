@@ -6,12 +6,12 @@ title: GPG key rotation notes
 # Executive summary
 
 - **Have one primary key per "identity".** That generally means one tied to your personal email address and one tied to your work address. (We want the work one separate so it can be revoked if you leave your job.)
-- **Keep an expiry date on your primary key.** This is a "dead-man switch"; you can change the expiry date at will — there is no need to generate a new key.
-- **Keep the primary key "offline".** As in, keep it in 1Password, and keep only the subkeys on your system(s).
+- **Keep an expiry date on your primary key(s).** This is a "dead-person switch"; you can change the expiry date at will — there is no need to generate a new key.
+- **Keep the primary key(s) "offline".** As in, keep them in 1Password, and keep only the subkeys on your system(s).
 - **It's ok to have your subkeys on multiple machines.** If you must revoke a key, do it. You will need to put a new subkey on all machines. That's ok. Don't try to use a separate identity for each machine; use your personal identity on all personal machines and your work identity on all work machines.
 - **Use the default encryption subkey.** GPG will make an encryption subkey by default when you create your primary key; just use that. When the subkey expires, then you will create a new encryption subkey.
-- **Create a signing subkey if you need to.** The primary key _is_ a signing key, but because you're storing it offline, you need to generate a signing subkey if (and only if) you need to sign things. Like encryption subkeys, this should have an expiry date; you can periodically issue a new signing subkey.
-- **Synchronize expiry dates to reduce maintenance burden.** Line up the expiry dates on all the keys so that you can refresh them all at the same time. That generally means updating the expiry on you personal and work primary keys, and generating new encryption (and possibly signing) subkeys. 2 years is a good expiry interval (not too often to be burdensome, not so infrequent that you forget how to update.)
+- **Create a signing subkey if you need to.** A primary key _is_ a signing key, but because you're storing it offline, you need to generate a signing subkey if (and only if) you need to sign things. Like encryption subkeys, this should have an expiry date; you can periodically issue a new signing subkey.
+- **Synchronize expiry dates to reduce maintenance burden.** Line up the expiry dates on all the keys so that you can refresh them all at the same time. That generally means updating the expiry on your personal and work primary keys, and generating new encryption (and possibly signing) subkeys. 2 years is a good expiry interval (not too often to be burdensome, not so infrequent that you forget how to update.)
 
 # Details
 
@@ -21,7 +21,7 @@ My current key isn't expiring until 2024-05-17, but I wanted to leave some notes
 
 Actually, I'm persuaded by [this argument](https://riseup.net/en/security/message-security/openpgp/best-practices#use-a-strong-primary-key) that:
 
-> People think that they don't want their keys to expire, but you actually do. Why? Because you can always extend your expiration date, even after it has expired! This "expiration" is actually more of a safety valve or "dead-man switch" that will automatically trigger at some point.
+> People think that they don't want their keys to expire, but you actually do. Why? Because you can always extend your expiration date, even after it has expired! This "expiration" is actually more of a safety valve or "dead-person switch" that will automatically trigger at some point.
 
 So what I am going to do is:
 
@@ -282,7 +282,7 @@ gpg: encrypted with 4096-bit RSA key, ID FF08BAF685DCF99C, created 2014-05-20
 
 One thing to note about all this, at least from the perspective of GitHub (at the time of writing), if you revoke any key (subkey or otherwise), _or_ if a key expires, [commits/tags signed with it no longer show up as verified](https://github.com/isaacs/github/issues/1099). FWIW, that sounds about right to me. If a key is revoked, I personally think that means all bets are off and GitHub is right not to show it as verified (it may even want to show the signing key as revoked, although I don't know if that is possible). If a key expires, that's another story, but it is technically difficult to distinguish between "immutable object signed and verified before key expired" and "immutable object _ostensibly_ signed before expiry but received _after_ it"; ie. GitHub can't really know (and nobody can with certainty) when the commit was made. It can only know that it was signed with a key and that the key currently has a specific expiry date.
 
-It seems that using non-expiring keys makes the problem mostly go away. You lose your "dead man's switch" though. On the balance, I think I probably still prefer expiring keys. For example, if I die and stop extending the expiry dates, and my commits/tags start showing up as unverified, that probably makes sense.
+It seems that using non-expiring keys makes the problem mostly go away. You lose your "dead person's switch" though. On the balance, I think I probably still prefer expiring keys. For example, if I die and stop extending the expiry dates, and my commits/tags start showing up as unverified, that probably makes sense.
 
 I am probably going to let subkeys expire and add new ones. If I wanted to extend a subkey expiry date, I would do:
 
