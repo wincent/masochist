@@ -158,7 +158,7 @@ rm 'greg@hurrell.net GPG key 0xF962DC1A1941CCC4 expires 2024-05-17.asc'
 # Most online guides say that we should now delete the primary key and
 # re-import the subkeys. But you can say "y" to the prompt to delete the
 # primary key and "n" for the subkeys, and that way you don't have to
-# actually re-import th subkeys aftewards. We can just delete the corresponding
+# actually re-import the subkeys afterwards. We can just delete the corresponding
 # backup file, as we didn't need it.
 gpg --delete-secret-keys 0xF962DC1A1941CCC4
 rm 0xF962DC1A1941CCC4.subkeys.asc
