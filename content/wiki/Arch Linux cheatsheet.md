@@ -112,7 +112,7 @@ xev
 8. Reenable the XMP profile.
 9. Insert Arch installation medium into USB slot. Reboot one more time, hitting F12 to get the boot menu; choose `UEFI:USB`.
 
-Now, for some reason, every BIOS date resets the NVRAM, where critical EFI information is stored. The system won't boot properly until it is reconfigured. There may be a better way to fix this (probably in [the UEFI wiki page](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface), but the following is the easiest way I have found so far to restore bootability to the system, [using `efibootmgr`](https://wiki.gentoo.org/wiki/Efibootmgr) to get the boot entries back in place:
+Now, for some reason, every BIOS date resets the NVRAM, where critical EFI information is stored. The system won't boot properly until it is reconfigured. There may be a better way to fix this (probably in [the UEFI wiki page](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface)), but the following is the easiest way I have found so far to restore bootability to the system, [using `efibootmgr`](https://wiki.gentoo.org/wiki/Efibootmgr) to get the boot entries back in place:
 
 ```bash
 loadkeys colemak -- (ie. "iyasefjr cyifmae")
