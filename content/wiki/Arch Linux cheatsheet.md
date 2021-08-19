@@ -112,61 +112,37 @@ xev
 8. Reenable the XMP profile.
 9. Insert Arch installation medium into USB slot. Reboot one more time, hitting F12 to get the boot menu; choose `UEFI:USB`.
 
-Now, for some reason, every BIOS date resets the NVRAM, where critical EFI information is stored. The system won't boot properly until it is reconfigured. Now I am sure there is a better way to fix this (probably in [the UEFI wiki page](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface), but the only way I have been able to restore bootability to the system has been to set up the whole `/boot` partition all over again.
-
-```bash
-# Make it possible to type in Colemak.
-loadkeys colemak -- (ie. "iyasefjr cyifmae")
-
-# Get on the WiFi so we can download things.
-iwctl station wlan0 connect $SSID
-
-# Mount encrypted root partition.
-cryptsetup open /dev/nvme0n1p2 cryptroot
-mount /dev/mapper/cryptroot /mnt
-
-# Mount (unencrypted) /boot partition.
-mkdir -p /mnt/boot # I don't think we need this, but just in case.
-mount /dev/nvme0n1p1 /mnt/boot
-
-# Set up /boot all over again...
-arch-chroot /mnt
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --recheck
-cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
-grub-mkconfig -o /boot/grub/grub.cfg
-
-# Now, if kernel files don't show up where expected may need to do...
-mkinitcpio -p linux
-mkinitcpio -p linux-lts
-
-# And if that doesn't work (for example, "specified kernel image does not exist"):
-pacman -S linux linux-lts # Reinstall... (which should do mkinitcpio)
-
-# May need one more to get appropriate entries in /boot/grub/grub.cfg:
-grub-mkconfig -o /boot/grub/grub.cfg
-
-# All done...
-exit
-umount -a
-reboot
-```
-
-Basically, I'm not sure what order to run those commands in; I had to try several times to get it to work (was winding up at a Grub prompt when rebooting). Also, I am not sure how/why, but I initially mounted `/boot` and everything was there, but after my first attempt, it seemed like the partition was somehow emptied and that's why I had to set it up all over again. For next time, see if I can shortcut some of this by [using `efibootmgr`](https://wiki.gentoo.org/wiki/Efibootmgr) to get the boot entries back in place:
+Now, for some reason, every BIOS date resets the NVRAM, where critical EFI information is stored. The system won't boot properly until it is reconfigured. There may be a better way to fix this (probably in [the UEFI wiki page](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface), but the following is the easiest way I have found so far to restore bootability to the system, [using `efibootmgr`](https://wiki.gentoo.org/wiki/Efibootmgr) to get the boot entries back in place:
 
 ```bash
 loadkeys colemak -- (ie. "iyasefjr cyifmae")
 iwctl station wlan0 connect $SSID
 cryptsetup open /dev/nvme0n1p2 cryptroot
 mount /dev/mapper/cryptroot /mnt
-mkdir -p /mnt/boot # I don't think we need this, but just in case.
 mount /dev/nvme0n1p1 /mnt/boot
 arch-chroot /mnt
 
 PARTUUID=$(lsblk /dev/nvme0n1p2 -o PARTUUID -d -n)
 
-efibootmgr --disk /dev/nvme0n1 --part 1 --create --label "Arch Linux LTS" --loader /vmlinuz-linux-lts --unicode "cryptdevice=PARTUUID=${PARTUUID}:root root=/dev/mapper/root rw initrd=\initramfs-linux-lts.img" --verbose
-efibootmgr --disk /dev/nvme0n1 --part 1 --create --label "Arch Linux" --loader /vmlinuz-linux --unicode "cryptdevice=PARTUUID=${PARTUUID}:root root=/dev/mapper/root rw initrd=\initramfs-linux.img" --verbose
+efibootmgr --disk /dev/nvme0n1 \
+           --part 1 \
+           --create \
+           --label "Arch Linux LTS" \
+           --loader /vmlinuz-linux-lts \
+           --unicode "cryptdevice=PARTUUID=${PARTUUID}:root root=/dev/mapper/root rw initrd=\initramfs-linux-lts.img" \
+           --verbose
+efibootmgr --disk /dev/nvme0n1 \
+           --part 1 \
+           --create \
+           --label "Arch Linux" \
+           --loader /vmlinuz-linux \
+           --unicode "cryptdevice=PARTUUID=${PARTUUID}:root root=/dev/mapper/root rw initrd=\initramfs-linux.img" \
+           --verbose
+exit
+reboot
 ```
+
+There is a [UEFI shell](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface#UEFI_Shell) that you can also access from the installation media, but I haven't been able to figure out how to do anything useful with it, especially because it is to painful to type in (using Qwerty when my muscle memory is wired for Colemak, and my keyboard has ninja keycaps on it so I can't even hunt-and-peck...).
 
 # Seeing fan speed and temperature information
 
