@@ -110,9 +110,13 @@ xev
 6. Choose "Update BIOS". Note that there is an "Also update backup BIOS" checkbox; these motherboards actually have two BIOSes, a primary and a secondary fallback one, so you can update both at once with the checkbox (alternatively, you can leave the secondary BIOS as-is; I am not sure how you would actually switch to the backup BIOS and update it later).
 7. Hit Delete on rebooting to get back into BIOS.
 8. Reenable the XMP profile.
-9. Insert Arch installation medium into USB slot. Reboot one more time, hitting F12 to get the boot menu; choose `UEFI:USB`.
+9. Insert Arch installation medium into USB slot. Now, for some reason, every BIOS date resets the NVRAM, where critical EFI information is stored. The system won't boot properly until it is reconfigured. Reboot one more time, hitting F12 to get the boot menu. Choose `UEFI:USB` to boot from the installation medium. Using the medium, you have two choices (explained below) for returning the machine to a bootable state.
 
-Now, for some reason, every BIOS date resets the NVRAM, where critical EFI information is stored. The system won't boot properly until it is reconfigured. There may be a better way to fix this (probably in [the UEFI wiki page](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface)), but the following is the easiest way I have found so far to restore bootability to the system, [using `efibootmgr`](https://wiki.gentoo.org/wiki/Efibootmgr) to get the boot entries back in place:
+## Option 1: Use `efibootmgr` to repair the boot table
+
+There may be a better way to fix this (probably in [the UEFI wiki page](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface)), but the following is the easiest way I have found so far to restore bootability to the system, [using `efibootmgr`](https://wiki.gentoo.org/wiki/Efibootmgr) to get the boot entries back in place.
+
+From the installation medium, boot in the UEFI Arch installer. We need this in order to access tools such as `cryptsetup` and `mount` which are stored under `/usr` on the encrypted volume.
 
 ```bash
 loadkeys colemak -- (ie. "iyasefjr cyifmae")
@@ -124,25 +128,58 @@ arch-chroot /mnt
 
 PARTUUID=$(lsblk /dev/nvme0n1p2 -o PARTUUID -d -n)
 
-efibootmgr --disk /dev/nvme0n1 \
-           --part 1 \
-           --create \
-           --label "Arch Linux LTS" \
-           --loader /vmlinuz-linux-lts \
-           --unicode "cryptdevice=PARTUUID=${PARTUUID}:root root=/dev/mapper/root rw initrd=\initramfs-linux-lts.img" \
-           --verbose
-efibootmgr --disk /dev/nvme0n1 \
-           --part 1 \
-           --create \
-           --label "Arch Linux" \
-           --loader /vmlinuz-linux \
-           --unicode "cryptdevice=PARTUUID=${PARTUUID}:root root=/dev/mapper/root rw initrd=\initramfs-linux.img" \
-           --verbose
+efibootmgr \
+  --disk /dev/nvme0n1 \
+  --part 1 \
+  --create \
+  --label "Arch Linux LTS" \
+  --loader /vmlinuz-linux-lts \
+  --unicode "cryptdevice=PARTUUID=${PARTUUID}:root root=/dev/mapper/root rw initrd=\initramfs-linux-lts.img" \
+  --verbose
+efibootmgr \
+  --disk /dev/nvme0n1 \
+  --part 1 \
+  --create \
+  --label "Arch Linux" \
+  --loader /vmlinuz-linux \
+  --unicode "cryptdevice=PARTUUID=${PARTUUID}:root root=/dev/mapper/root rw initrd=\initramfs-linux.img" \
+  --verbose
 exit
 reboot
 ```
 
-There is a [UEFI shell](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface#UEFI_Shell) that you can also access from the installation media, but I haven't been able to figure out how to do anything useful with it, especially because it is to painful to type in (using Qwerty when my muscle memory is wired for Colemak, and my keyboard has ninja keycaps on it so I can't even hunt-and-peck...).
+## Option 2: Boot the machine using the UEFI shell
+
+There is a [UEFI shell](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface#UEFI_Shell) that you can also access from the installation media, but it is to painful to type in (using Qwerty when my muscle memory is wired for Colemak, and my keyboard has ninja keycaps on it so I can't even hunt-and-peck...).
+
+So, I created two `.nsh` scripts on the `/boot` partition that run the necessary command to boot off the main partition.
+
+`a.nsh` will boot the "linux" kernel and its contents look roughly like this (roughly, because the [partition UUID](https://wiki.archlinux.org/title/persistent_block_device_naming#by-uuid) will vary with each install):
+
+```
+\vmlinuz-linux cryptdevice=PARTUUID=a7ade8a2-2a7d-2247-b2ea-5142c917746b:root root=/dev/mapper/root rw initrd=\initramfs-linux.img
+```
+
+`b.nsh` will boot into the "linux-lts" kernel:
+
+```
+\vmlinuz-linux-lts cryptdevice=PARTUUID=a7ade8a2-2a7d-2247-b2ea-5142c917746b:root root=/dev/mapper/root rw initrd=\initramfs-linux-lts.img
+```
+
+To use either of these scripts, it suffices to type:
+
+```
+FS0:
+a
+```
+or:
+
+```
+FS0:
+b
+```
+
+In addition to `a.nsh` and `b.nsh`, [my installation script](https://wincent.com/link/arch-linux-install.sh) also creates `a.sh` and `b.sh` that can contain copies of the `efibootmgr` commands printed above. This means that, after booting using the above technique, you can run `sudo bash /boot/b.sh && sudo bash /boot/b.sh` to permanently repair the boot table ("permanently", that is, until the next BIOS update). Note the order in which you run these commands matters; running `b.sh` first then `a.sh` ensures that "linux" comes before "linux-lts" in the boot order.
 
 # Seeing fan speed and temperature information
 
