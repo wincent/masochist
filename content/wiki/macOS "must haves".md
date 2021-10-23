@@ -11,19 +11,25 @@ Basically, this is the stuff that I end up installing on every machine that come
 
 Software in this list is either [open source](/wiki/open_source), or otherwise freeware/donationware.
 
+## Blurred
+
+- https://github.com/dwarvesf/Blurred
+
+Supersedes [Isolator](/wiki/Isolator).
+
 ## [Chrome](/wiki/Chrome)
 
 -   <http://www.google.com/chrome>
 
 Not as pretty as [Apple's](/wiki/Apple%27s) own [Safari](/wiki/Safari), but despite the fact it shares many internals, 2012 was the year I finally had to recognize that Chrome had gotten the edge in features and stability.
 
-I actually use both [Chrome](/wiki/Chrome) and [Chrome Canary](/wiki/Chrome_Canary); the former for "tools" (Gmail, Pivotal tracker, Airbrake etc) and the latter for development.
+I mostly use [Chrome](/wiki/Chrome) itself, but sometimes use [Chrome Canary](/wiki/Chrome_Canary) too.
 
 ## [Hammerspoon](/wiki/Hammerspoon)
 
 -   <http://www.hammerspoon.org/>
 
-Programmable OS X automation and scripting tool. I use it for positioning windows using hot keys and in response to events (eg. plugging in or unplugging an external display, or launching an app).
+Programmable macOS automation and scripting tool. I use it for positioning windows using hot keys and in response to events (eg. plugging in or unplugging an external display, or launching an app).
 
 ## [Homebrew](/wiki/Homebrew)
 
@@ -31,13 +37,7 @@ Programmable OS X automation and scripting tool. I use it for positioning window
 
 Ok, so this one is not a GUI app, but it's very important, as it is the primary way of getting all the not-GUI apps (and a few of the GUI ones too), so including it here.
 
-I have some [deep misgivings](/snippets/131) about the decision of [Homebrew](/wiki/Homebrew) to take exclusive ownership of `/usr/local`, but on a fresh install of [OS X](/wiki/OS_X), if you're prepared to let Homebrew have its way, there is no simpler/faster way of installing a bunch of necessary and useful [command line](/wiki/command_line) packages ([here's my current Brewfile](https://github.com/wincent/wincent/blob/master/Brewfile)).
-
-## [Isolator](/wiki/Isolator)
-
--   <http://willmore.eu/software/isolator/>
-
-Makes the frontmost application stand out and the others fade into the background; excellent for when you have multiple windows that look alike, or too much screen real estate.
+I have some [deep misgivings](/snippets/131) about the decision of [Homebrew](/wiki/Homebrew) to take exclusive ownership of `/usr/local`, but on a fresh install of [macOS](/wiki/macOS), if you're prepared to let Homebrew have its way, there is no simpler/faster way of installing a bunch of necessary and useful [command line](/wiki/command_line) packages ([here's a snapshot of my Brewfile](https://github.com/wincent/wincent/blob/22ba80737b24ac6540309d7c9ab6375f16fd4752/aspects/homebrew/templates/Brewfile.erb)).
 
 ## [iTerm 2](/wiki/iTerm_2)
 
@@ -49,21 +49,9 @@ More features than you need, but I'll bet it also has the ones you do need and c
 
 -   <https://karabiner-elements.pqrs.org/>
 
-Has some killer features, like after mapping the Caps Lock key to serve as a Control key (using the standard OS X System Preferences), you can use Karabiner-Elements to change its behavior: pressing and holding Caps Lock in combination with another key makes it serve as a Control key, but pressing and releasing it immediately serves as an Escape key (idea from [this article](http://stevelosh.com/blog/2012/10/a-modern-space-cadet/)).
+Has some killer features, like after mapping the Caps Lock key to serve as a Control key (using the standard macOS System Preferences), you can use Karabiner-Elements to change its behavior: pressing and holding Caps Lock in combination with another key makes it serve as a Control key, but pressing and releasing it immediately serves as an Escape key (idea from [this article](http://stevelosh.com/blog/2012/10/a-modern-space-cadet/)).
 
 For more details about this and other super useful settings, see the "[Karabiner](/wiki/Karabiner)" article.
-
-## CleanShot
-
--   [CleanShot](https://getcleanshot.com/)
-
-I used to recommend [Skitch](http://skitch.com/) as:
-
-> The quickest and easiest way to not only take screenshots, but annotate them and share them. It also has some nice frills, like history, and not spewing temporary files all over your desktop (like Mac OS X's built-in screenshot capability does).
-
-However, the company that made Skitch was [acquired by Evernote in 2011](https://en.wikipedia.org/wiki/Evernote#Skitch), and I never fully trusted their cloud integration given their [history](https://en.wikipedia.org/wiki/Evernote#Incidents).
-
-CleanShot carries none of that baggage, has a delightful UX, and if you need history synced across multiple machines, it is easy enough to save your screenshots to a shared folder.
 
 ## [VLC](/wiki/VLC)
 
@@ -93,7 +81,19 @@ Secret-management. More details [here](/wiki/1Password).
 
 -   <http://www.haystacksoftware.com/arq/>
 
-Encrypted, automated, sane backup to [AWS](/wiki/AWS) ([S3](/wiki/S3) and [Glacier](/wiki/Glacier)).
+Encrypted, automated, sane backup to [AWS](/wiki/AWS) ([S3](/wiki/S3) and [Glacier](/wiki/Glacier)) and many other targets.
+
+## CleanShot
+
+-   [CleanShot](https://getcleanshot.com/)
+
+I used to recommend [Skitch](http://skitch.com/) as:
+
+> The quickest and easiest way to not only take screenshots, but annotate them and share them. It also has some nice frills, like history, and not spewing temporary files all over your desktop (like macOS's built-in screenshot capability does).
+
+However, the company that made Skitch was [acquired by Evernote in 2011](https://en.wikipedia.org/wiki/Evernote#Skitch), and I never fully trusted their cloud integration given their [history](https://en.wikipedia.org/wiki/Evernote#Incidents).
+
+CleanShot carries none of that baggage, has a delightful UX, and if you need history synced across multiple machines, it is easy enough to save your screenshots to a shared folder.
 
 ## [Net Monitor](/wiki/Net_Monitor)
 
@@ -143,13 +143,21 @@ Throw windows around your screen(s) with user-definable keyboard short cuts.
 
 Superseded by [Slate](/wiki/Slate).
 
+## [Isolator](/wiki/Isolator)
+
+-   <http://willmore.eu/software/isolator/>
+
+Superseded by [Blurred](https://github.com/dwarvesf/Blurred).
+
+Makes the frontmost application stand out and the others fade into the background; excellent for when you have multiple windows that look alike, or too much screen real estate.
+
 ## [Mouse Locator](/wiki/Mouse_Locator)
 
 -   <http://www.2point5fish.com/>
 
 Helps you find the mouse pointer immediately when you haven't touched the mouse for a while; pretty much a must-have if you work with multiple displays, where the mouse can get lost.
 
-Superseded by equivalent built-in feature in [OS X](/wiki/OS_X) 10.11 "[El Capitan](/wiki/El_Capitan)".
+Superseded by equivalent built-in feature in [macOS](/wiki/macOS), since version 10.11 "[El Capitan](/wiki/El_Capitan)", which means you can magnify the mouse by "shaking" the mouse pointer.
 
 ## [Skype](/wiki/Skype)
 
@@ -157,7 +165,7 @@ Superseded by equivalent built-in feature in [OS X](/wiki/OS_X) 10.11 "[El Capit
 
 Not [open source](/wiki/open_source), but free, and pretty darn useful.
 
-I actually prefer FaceTime for call quality, but not everyone has it as it is Apple-only.
+I actually prefer FaceTime for call quality, but not everyone has it as it is Apple-only. Also, I've found it to be terribly buggy over many years now. 😢
 
 ## [Slate](/wiki/Slate)
 
@@ -221,7 +229,7 @@ Superseded by [iStat Menus](/wiki/iStat_Menus).
 
 -   <http://www.adium.im/>
 
-This was really the only sane choice on [Mac OS X](/wiki/Mac_OS_X).
+This was really the only sane choice on [macOS](/wiki/macOS).
 
 I stopped using it on changing jobs (at the old job I used Google chat; at the new job it's Facebook messenger).
 
