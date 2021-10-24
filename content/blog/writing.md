@@ -1,0 +1,11 @@
+---
+description: Why it's getting harder and harder to write blog posts
+tags: blog
+title: Writing is getting harder
+---
+
+For a while now I've been noticing that it is harder and harder to actually finish a blog post. I'll arrive in my text editor with some inspiration and instead of sharing my flash of insight with the world, I find myself burying it under layer after layer of context and historical explanation. That is, instead of just saying, "I think _this_", I say, "I think _this_, but before I explain in detail what I mean, let me tell you how I got here — originally, I thought _A_, then _B_, and after a while _C_, _D_, and _E_". Not only does this make the posts longer and harder to write, it makes them harder to read as well, because it's really hard to weave all of those elements into a coherent narrative — it's all too easy for the piece to wind up being a meandering, rambling nostalgia-trek as opposed to a forceful statement. I'd rather be in the business of making memorable, forceful statements that stick in people's minds than writing 20,000-word long-form blog posts that may or may not hold a reader's interest to the end.
+
+This writing style which not only expresses an idea but also contrasts it with previous ideas might have served me well in my 20s when the format basically boiled down to "I used to think _A_ but now I think _B_", or when writing at university, where your literature review was supposed to cover all the significant ideas that had been thought up to that date. But now, it's a real hindrance to getting things out there. I mean, sure, there _is_ (obviously!) some value in exploring nuances and contrasting different view points, in seeing how parameters that may have seemed fixed ended up being flexible, and how experience, new information, and changing circumstances endlessly shape one's view of the world. In fact, a growing awareness of this is what we're referring to when we speak of the wisdom of elders. But no matter how interesting it may be, it's no good if it gets in the way of actually publishing something.
+
+Moving forward, I'm going to see if I can fight off this demon (ha, I actually wrote daemon for a second there 😂) and impose some discipline on myself. Shorter posts (like this one), even if it means jettisoning a bunch of potentially interesting context.
