@@ -3,7 +3,7 @@ title: About
 tags: site pages
 ---
 
-Welcome to [wincent.com](/). My name is Greg Hurrell. I live in Spain. I work at [GitHub](https://github.com/) (for more detail, see [my CV](https://wincent.github.io/cv/cv-full.en.html)). This is my "technical" presence on the web ([greg.hurrell.net](http://greg.hurrell.net) is my non-technical one, which is for now just a collection of links to my various other presences on the web). Here I put [stuff that I feel like saying](/blog) and which might be of interest to other technical people, and [stuff which I may want to remember](/wiki).
+Welcome to [wincent.com](/). My name is Greg Hurrell. I live in Spain. I work as a coder at [GitHub](https://github.com/). This is my "technical" presence on the web ([greg.hurrell.net](http://greg.hurrell.net) is my "non-technical" one, where you'll find my CV, which is built [from this is the source](https://github.com/wincent/cv)). Here on [wincent.com](/) you'll find [my blog](/blog) and [my wiki](/wiki).
 
 # Site map
 
@@ -29,6 +29,5 @@ Welcome to [wincent.com](/). My name is Greg Hurrell. I live in Spain. I work at
 -   [Twitter](https://twitter.com/wincent)
 -   [Facebook](https://facebook.com/glh)
 -   [LinkedIn](https://www.linkedin.com/in/greghurrell)
--   [Keybase](https://keybase.io/wincent)
 -   [npm](https://www.npmjs.com/~wincent)
 -   [RubyGems.org](https://rubygems.org/profiles/wincent)
