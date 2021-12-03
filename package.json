@@ -73,6 +73,7 @@
     "history": "*",
     "isomorphic-fetch": "*",
     "markdown-it": "*",
+    "markdown-it-footnote": "*",
     "memcached": "*",
     "mini-css-extract-plugin": "*",
     "path-to-regexp": "*",

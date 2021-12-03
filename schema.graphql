@@ -68,6 +68,11 @@ type History {
 
 """The textual markup for a piece of content"""
 type Markup {
+  """
+  Unique string that may be used as a DOM identifier (or a prefix of one)
+  """
+  DOMIdentifier: String!
+
   """Unprocessed plain-text source of the markup"""
   raw: String!
 

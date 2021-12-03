@@ -12,6 +12,7 @@ import {nodeInterface, registerType} from '../definitions/node';
 import timestampFields from '../fields/timestampFields';
 import taggedInterface from '../interfaces/taggedInterface';
 import versionedInterface from '../interfaces/versionedInterface';
+import getDOMIdentifier from '../util/getDOMIdentifier';
 import HistoryType from './HistoryType';
 import MarkupType from './MarkupType';
 import TagNameType from './TagNameType';
@@ -68,6 +69,7 @@ const ArticleType = registerType(
         resolve: async (article, args, context, {rootValue}) => {
           article = await resolveRedirects(article, rootValue);
           return {
+            DOMIdentifier: getDOMIdentifier('Article', article.id),
             format: article.format,
             raw: article.body,
           };

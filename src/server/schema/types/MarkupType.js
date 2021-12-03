@@ -7,6 +7,7 @@ import {
 } from 'graphql';
 import hljs from 'highlight.js';
 import MarkdownIt from 'markdown-it';
+import footnote from 'markdown-it-footnote';
 import escapeHTML from '@wincent/escape-html';
 import getAssetURL from '../../getAssetURL';
 import markupExtensions from '../../../common/markupExtensions';
@@ -63,7 +64,7 @@ function getMarkdownRenderer(baseLevel: ?number) {
     linkify: true,
     typographer: true, // (c), ... etc get transformed.
     quotes: '""\'\'', // Death to "Smart" quotes.
-  });
+  }).use(footnote);
 
   // Start headings at `baseLevel`.
   if (baseLevel) {
@@ -135,6 +136,10 @@ const MarkupType = new GraphQLObjectType({
   name: 'Markup',
   description: 'The textual markup for a piece of content',
   fields: {
+    DOMIdentifier: {
+      type: new GraphQLNonNull(GraphQLString),
+      description: 'Unique string that may be used as a DOM identifier (or a prefix of one)',
+    },
     raw: {
       type: new GraphQLNonNull(GraphQLString),
       description: 'Unprocessed plain-text source of the markup',
@@ -155,7 +160,9 @@ const MarkupType = new GraphQLObjectType({
       resolve(markup, {baseHeadingLevel}, context, {rootValue}) {
         const level = validateBaseHeadingLevel(baseHeadingLevel);
         if (markup.format === 'md') {
-          return getMarkdownRenderer(level).render(markup.raw);
+          return getMarkdownRenderer(level).render(markup.raw, {
+            docId: markup.DOMIdentifier,
+          });
         } else if (
           markup.format === 'c' ||
           markup.format === 'html' ||

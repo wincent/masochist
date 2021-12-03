@@ -12,6 +12,7 @@ import tagsField from '../fields/tagsField';
 import timestampFields from '../fields/timestampFields';
 import taggedInterface from '../interfaces/taggedInterface';
 import versionedInterface from '../interfaces/versionedInterface';
+import getDOMIdentifier from '../util/getDOMIdentifier';
 import HistoryType from './HistoryType';
 import MarkupType from './MarkupType';
 
@@ -29,6 +30,7 @@ const PostType = registerType(
         type: new GraphQLNonNull(MarkupType),
         resolve(post) {
           return {
+            DOMIdentifier: getDOMIdentifier('Post', post.id),
             raw: post.body,
             format: post.format,
           };

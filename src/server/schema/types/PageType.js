@@ -7,6 +7,7 @@ import tagsField from '../fields/tagsField';
 import timestampFields from '../fields/timestampFields';
 import taggedInterface from '../interfaces/taggedInterface';
 import versionedInterface from '../interfaces/versionedInterface';
+import getDOMIdentifier from '../util/getDOMIdentifier';
 import HistoryType from './HistoryType';
 import MarkupType from './MarkupType';
 
@@ -24,6 +25,7 @@ const PageType = registerType(
         type: new GraphQLNonNull(MarkupType),
         resolve(page) {
           return {
+            DOMIdentifier: getDOMIdentifier('Page', page.id),
             raw: page.body,
             format: page.format,
           };

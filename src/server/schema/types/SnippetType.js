@@ -11,6 +11,7 @@ import tagsField from '../fields/tagsField';
 import timestampFields from '../fields/timestampFields';
 import taggedInterface from '../interfaces/taggedInterface';
 import versionedInterface from '../interfaces/versionedInterface';
+import getDOMIdentifier from '../util/getDOMIdentifier';
 import HistoryType from './HistoryType';
 import {default as MarkupType, MarkupFormatType} from './MarkupType';
 
@@ -31,6 +32,7 @@ const SnippetType = registerType(
         type: new GraphQLNonNull(MarkupType),
         resolve(snippet) {
           return {
+            DOMIdentifier: getDOMIdentifier('Snippet', snippet.id),
             raw: snippet.body.trim(),
             format: snippet.format,
           };
