@@ -51,8 +51,25 @@ h1 a {
   font-size: .75em;
 }
 
-.footnotes-list {
+.footnote-item {
   color: #666;
+  position: relative;
+}
+
+.footnote-item:target {
+  color: #222;
+}
+
+.footnote-item:target::before {
+  border-radius: 6px;
+  border: 2px solid #48c4f6;
+  bottom: -8px;
+  content: "";
+  left: -24px;
+  pointer-events: none;
+  position: absolute;
+  right: -8px;
+  top: -8px;
 }
 
 .footnotes-sep {
@@ -83,8 +100,12 @@ h1 a {
 }
 
 @media (prefers-color-scheme: dark) {
-  .footnotes-list {
+  .footnote-item {
     color: #777;
+  }
+
+  .footnote-item:target {
+    color: #bbb;
   }
 
   .footnotes-sep {
