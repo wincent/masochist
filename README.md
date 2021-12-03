@@ -35,8 +35,6 @@ Please see the introductory blog post, "[Introducing Masochist](https://github.c
 
 ## Quickstart
 
-**Note:** In the following, `npm` can be substituted for `yarn` if desired.
-
 ### Webpack-based hot-loading workflow
 
 ```
