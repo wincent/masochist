@@ -35,6 +35,12 @@ Please see the introductory blog post, "[Introducing Masochist](https://github.c
 
 ## Quickstart
 
+### Prerequisites
+
+```
+brew install git memcached redis
+```
+
 ### Webpack-based hot-loading workflow
 
 ```
