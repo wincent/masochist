@@ -10,6 +10,7 @@
 
 /* Table of contents
 ––––––––––––––––––––––––––––––––––––––––––––––––––
+- Colors
 - Grid
 - Base Styles
 - Typography
@@ -25,6 +26,14 @@
 - Media Queries
 */
 
+
+/* Colors
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+  --color-accent: #1480a2;
+  --color-accent-hover: #0fa0ce;
+  --color-separator: #e1e1e1;
+}
 
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -106,12 +115,12 @@ p {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-  color: #1480A2;
+  color: var(--color-accent);
   text-decoration-color: rgba(0, 0, 0, .1);
 }
 a:hover {
-  color: #0FA0CE;
-  text-decoration-color: #0FA0CE;
+  color: var(--color-accent-hover);
+  text-decoration-color: var(--color-accent-hover);
 }
 
 
@@ -221,7 +230,8 @@ th,
 td {
   padding: 12px 15px;
   text-align: left;
-  border-bottom: 1px solid #E1E1E1; }
+  border-bottom: 1px solid var(--color-separator);
+}
 th:first-child,
 td:first-child {
   padding-left: 0; }
@@ -259,7 +269,8 @@ hr {
   margin-top: 3rem;
   margin-bottom: 3.5rem;
   border-width: 0;
-  border-top: 1px solid #E1E1E1; }
+  border-top: 1px solid var(--color-separator);
+}
 
 /* Clearing
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -272,8 +283,12 @@ hr {
   clear: both; }
 
 @media (prefers-color-scheme: dark) {
+  :root {
+    --color-accent: #48c4f6;
+  }
+
   a {
-    color: #48c4f6;
+    color: var(--color-accent);
     text-decoration-color: rgba(0, 0, 0, .1);
   }
   a:hover {
