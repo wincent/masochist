@@ -46,24 +46,24 @@ brew install git memcached redis
 ```
 git clone https://github.com/wincent/masochist.git
 cd masochist
-yarn # Or `npm install`.
-yarn update-schema # Or `npm run update-schema`.
+yarn
+yarn update-schema
 yarn update-indices # Whenever content changes.
-yarn start # Or `npm run start`.
+yarn start
 ```
 
 ### Running in production-like environment
 
 ```
 yarn run build # Builds files under `dist/`.
-yarn start-prod # Or `npm run start-prod`.
+yarn start-prod
 ```
 
 ### Running in production
 
 ```
 export NODE_ENV=production
-yarn # Or `npm install`.
+yarn
 gulp build
 node dist/bin/updateIndices.js # Whenever content changes.
 node dist/server/main.js
