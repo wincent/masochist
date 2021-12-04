@@ -17,6 +17,8 @@ title: Markdown
 1. Numbered.
 2. Lists.
 
+~~Strikethrough~~ (requires double `~~` on each side, as I constantly forget, having been brainwashed by Slack...)
+
 Text with footnotes[^note].
 
 > Block quotes.
