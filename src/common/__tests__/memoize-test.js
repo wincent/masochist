@@ -1,5 +1,9 @@
 import memoize from '../memoize';
 
+const fail = () => {
+  throw new Error('BOOM!');
+};
+
 describe('with a synchronous function', () => {
   let double;
   let memoizedDouble;
