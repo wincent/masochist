@@ -131,7 +131,9 @@ const scrollBehavior = new ScrollBehavior({
     return history.location;
   },
   shouldUpdateScroll(prevLocation, location) {
-    if (prevLocation && location.key === prevLocation.key) {
+    if (location.hash) {
+      return false;
+    } else if (prevLocation && location.key === prevLocation.key) {
       // Trying to visit current path: scroll to top.
       return [0, 0];
     }
@@ -140,6 +142,8 @@ const scrollBehavior = new ScrollBehavior({
     return true;
   },
 });
+
+let prevLocation;
 
 history.listen(async (location, action) => {
   if (location.state && location.state.refetchToken) {
@@ -158,7 +162,8 @@ history.listen(async (location, action) => {
   }
   const variables = location.state && location.state.variables;
   await resolve(location, variables);
-  scrollBehavior.updateScroll();
+  scrollBehavior.updateScroll(prevLocation, location);
+  prevLocation = location;
 });
 
 resolve(history.location);
