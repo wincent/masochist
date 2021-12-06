@@ -277,3 +277,4 @@ Nevertheless, I'm going to leave a proper exploration of those matters for anoth
 [^counts]: Other options include color-based indication, or a small bar whose width would represent the count.
 [^kv]: It may be tempting to treat both key-value metadata and tags as two instances of the same thing (specifically, tags being a special case key-value pair where the value is null), but I suspect this is probably a mistake. Giving primacy to tags obliges us to put them front and center in the design, and while I can't predict where this emphasis will lead, I think it's important to explore it — we can always change our minds later.
 [^modes]: See [the Wikipedia article on block cipher modes](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation) for more details.
+
