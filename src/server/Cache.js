@@ -34,7 +34,7 @@ const Cache = {
     const key = inKey + getCacheBreaker();
 
     return new Promise((resolve, reject) => {
-      memcached.set(key, value, 0, (error) => {
+      memcached.set(key, value, 0, error => {
         if (error) {
           reject(error);
         } else {
@@ -54,8 +54,8 @@ const Cache = {
         } else if (data) {
           resolve(data);
         } else {
-          missCallback().then((result) => {
-            memcached.set(key, result, 0, (error) => {
+          missCallback().then(result => {
+            memcached.set(key, result, 0, error => {
               if (error) {
                 reject(error);
               } else {

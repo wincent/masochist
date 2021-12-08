@@ -66,7 +66,7 @@
     "fs-extra": "*",
     "glob": "*",
     "graphql": "*",
-    "graphql-relay": "0.7.0",
+    "graphql-relay": "*",
     "gulp": "*",
     "gulp-babel": "*",
     "highlight.js": "*",
@@ -94,6 +94,7 @@
     "terser-webpack-plugin": "*",
     "universal-router": "*",
     "unpack-content": "*",
+    "url-loader": "*",
     "webpack": "*"
   },
   "devDependencies": {

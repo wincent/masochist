@@ -10,14 +10,12 @@ function loadSnippets(
   keys: $ReadOnlyArray<string>,
 ): Promise<Array<Object | Error>> {
   const promises = keys
-    .map((key) => ({
+    .map(key => ({
       file: key,
       subdirectory: 'snippets',
     }))
     .map(loadContent)
-    .map((dataPromise) =>
-      dataPromise.then((data) => data && new Snippet(data)),
-    );
+    .map(dataPromise => dataPromise.then(data => data && new Snippet(data)));
   return Promise.all(promises);
 }
 

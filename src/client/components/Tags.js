@@ -28,7 +28,7 @@ type Props = {
 function Tags({classes, data: {tags}}: Props) {
   return (
     <ul className={cx({...classes, tags: true})}>
-      {tags.map((tag) => (
+      {tags.map(tag => (
         <TagLink key={tag} tag={tag} />
       ))}
     </ul>

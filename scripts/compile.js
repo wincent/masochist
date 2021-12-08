@@ -76,7 +76,7 @@ function getFilepathsFromGlob(
   },
 ): Array<string> {
   const {extensions, include, exclude} = options;
-  const patterns = include.map((inc) => `${inc}/*.+(${extensions.join('|')})`);
+  const patterns = include.map(inc => `${inc}/*.+(${extensions.join('|')})`);
 
   const glob = require('fast-glob');
   return glob.sync(patterns, {
@@ -257,7 +257,7 @@ ${error.stack}
   }
 }
 
-run().catch((error) => {
+run().catch(error => {
   console.error(String(error.stack || error));
   process.exit(1);
 });

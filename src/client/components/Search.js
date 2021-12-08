@@ -34,7 +34,7 @@ function getSearchURL(
   // broken.
   const encoder = options.display
     ? encodeURIComponent
-    : (component) => encodeURIComponent(encodeURIComponent(component));
+    : component => encodeURIComponent(encodeURIComponent(component));
   if (query) {
     return '/search/' + encoder(query);
   } else {
@@ -76,19 +76,16 @@ class Search extends React.Component<Props, State> {
       this._refetchDisposable = null;
     }
     this.setState({isLoadingMore: true, isRefetching: false}, () => {
-      this._loadMoreDisposable = this.props.relay.loadMore(
-        PAGE_SIZE,
-        (error) => {
-          this.setState({isLoadingMore: false});
-          this._loadMoreDisposable = null;
+      this._loadMoreDisposable = this.props.relay.loadMore(PAGE_SIZE, error => {
+        this.setState({isLoadingMore: false});
+        this._loadMoreDisposable = null;
 
-          const route = window.location.pathname;
-          this.context.router.history.replace(route, {
-            refetchToken: getRefetchToken(),
-            variables: fragmentVariables,
-          });
-        },
-      );
+        const route = window.location.pathname;
+        this.context.router.history.replace(route, {
+          refetchToken: getRefetchToken(),
+          variables: fragmentVariables,
+        });
+      });
     });
   };
 
@@ -100,7 +97,7 @@ class Search extends React.Component<Props, State> {
     this.setState({isLoadingMore: false, isRefetching: true}, () => {
       this._refetchDisposable = this.props.relay.refetchConnection(
         PAGE_SIZE,
-        (error) => {
+        error => {
           this.setState({isRefetching: false});
           this._refetchDisposable = null;
         },
@@ -145,7 +142,7 @@ class Search extends React.Component<Props, State> {
         </h1>
         <div className="row">
           <form
-            onSubmit={(event) => {
+            onSubmit={event => {
               event.preventDefault();
               this.context.router.history.push(getSearchURL(trimmedQuery), {
                 refetchToken: getRefetchToken(),
@@ -156,12 +153,10 @@ class Search extends React.Component<Props, State> {
             <input
               className="eight columns"
               id="search-input"
-              onChange={(event) =>
-                this.setState({q: event.currentTarget.value})
-              }
+              onChange={event => this.setState({q: event.currentTarget.value})}
               placeholder="Search wincent.com"
               type="search"
-              ref={(input) => {
+              ref={input => {
                 this._searchInput = input;
               }}
               value={this.state.q}

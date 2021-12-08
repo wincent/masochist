@@ -14,7 +14,7 @@ export default function gatherPaths(
   config: RouteConfig,
 ): $ReadOnlyArray<string> {
   const paths = [];
-  config.forEach((route) => {
+  config.forEach(route => {
     if (route.path === '*') {
       // Skip the catch-all.
       return;

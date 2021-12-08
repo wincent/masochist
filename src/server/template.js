@@ -62,18 +62,18 @@ export default function template(
             // Quacks like a Promise.
             waiting = true;
             item
-              .then((value) => {
+              .then(value => {
                 waiting = false;
                 items.unshift(value);
                 process.nextTick(tick);
               })
-              .catch((err) => {
+              .catch(err => {
                 process.nextTick(() => this.emit('error', err));
               });
             return;
           } else if (item instanceof Readable) {
             waiting = true;
-            item.on('data', (data) => {
+            item.on('data', data => {
               const string = data.toString();
               if (buffering) {
                 chunks.push(string);
@@ -89,7 +89,7 @@ export default function template(
                 process.nextTick(tick);
               }
             });
-            item.on('err', (err) => {
+            item.on('err', err => {
               process.nextTick(() => this.emit('error', err));
             });
             return;

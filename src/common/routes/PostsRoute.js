@@ -24,7 +24,7 @@ export default buildRoute(
       count: PostsIndex.PAGE_SIZE,
       cursor: null,
     },
-    render: (data) => <PostsIndex data={data} />,
+    render: data => <PostsIndex data={data} />,
     title: 'blog',
   },
 );

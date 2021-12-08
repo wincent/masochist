@@ -138,8 +138,7 @@ const MarkupType = new GraphQLObjectType({
   fields: {
     DOMIdentifier: {
       type: new GraphQLNonNull(GraphQLString),
-      description:
-        'Unique string that may be used as a DOM identifier (or a prefix of one)',
+      description: 'Unique string that may be used as a DOM identifier (or a prefix of one)',
     },
     raw: {
       type: new GraphQLNonNull(GraphQLString),

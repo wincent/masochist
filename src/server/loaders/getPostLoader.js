@@ -10,12 +10,12 @@ function loadPosts(
   keys: $ReadOnlyArray<string>,
 ): Promise<Array<Object | Error>> {
   const promises = keys
-    .map((key) => ({
+    .map(key => ({
       file: key,
       subdirectory: 'blog',
     }))
     .map(loadContent)
-    .map((dataPromise) => dataPromise.then((data) => data && new Post(data)));
+    .map(dataPromise => dataPromise.then(data => data && new Post(data)));
   return Promise.all(promises);
 }
 

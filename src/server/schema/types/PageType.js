@@ -38,7 +38,7 @@ const PageType = registerType(
       url: {
         type: new GraphQLNonNull(GraphQLString),
         description: 'URL for the page',
-        resolve: (page) => `/pages/${page.id}`,
+        resolve: page => `/pages/${page.id}`,
       },
       history: {
         type: new GraphQLNonNull(HistoryType),
@@ -50,7 +50,7 @@ const PageType = registerType(
       ...timestampFields,
     },
     interfaces: [nodeInterface, taggedInterface, versionedInterface],
-    isTypeOf: (object) => object instanceof Page,
+    isTypeOf: object => object instanceof Page,
   }),
 );
 

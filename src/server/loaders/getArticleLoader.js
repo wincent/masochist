@@ -10,14 +10,14 @@ function loadArticles(
   keys: $ReadOnlyArray<string>,
 ): Promise<Array<Object | Error>> {
   const promises = keys
-    .map((key) => ({
+    .map(key => ({
       file: key,
       subdirectory: 'wiki',
     }))
     .map(loadContent)
-    .map((dataPromise) =>
+    .map(dataPromise =>
       dataPromise.then(
-        (data) =>
+        data =>
           data &&
           new Article({
             ...data,

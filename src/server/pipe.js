@@ -42,10 +42,10 @@ export default function pipe(
     let stderr = '';
     let stdout = '';
 
-    last.stderr.on('data', (data) => (stderr += data));
-    last.stdout.on('data', (data) => (stdout += data));
+    last.stderr.on('data', data => (stderr += data));
+    last.stdout.on('data', data => (stdout += data));
 
-    last.on('close', (code) => {
+    last.on('close', code => {
       if (isPending) {
         isPending = false;
         if (code) {
@@ -58,15 +58,15 @@ export default function pipe(
 
     while (invocations.length) {
       invocation = invocations.pop();
-      last = ((next) => {
+      last = (next => {
         const child = spawn(invocation.command, invocation.args);
-        child.stderr.on('data', (data) => {
+        child.stderr.on('data', data => {
           // TODO: may want to log this
         });
-        child.stdout.on('data', (data) => {
+        child.stdout.on('data', data => {
           next.stdin.write(data);
         });
-        child.on('close', (code) => {
+        child.on('close', code => {
           if (isPending && code) {
             reject(getError(pipeline, code));
           }

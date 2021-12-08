@@ -114,7 +114,7 @@ const ArticleType = registerType(
       ...timestampFields,
     },
     interfaces: [nodeInterface, taggedInterface, versionedInterface],
-    isTypeOf: (object) => object instanceof Article,
+    isTypeOf: object => object instanceof Article,
   }),
 );
 

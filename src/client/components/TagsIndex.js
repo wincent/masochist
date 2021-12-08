@@ -25,18 +25,21 @@ class TagsIndex extends React.Component<Props, State> {
 
   render() {
     const {tags} = this.props.data;
-    const filters = this.state.filterString.toLowerCase().trim().split(/\s+/);
+    const filters = this.state.filterString
+      .toLowerCase()
+      .trim()
+      .split(/\s+/);
     const edges = tags && tags.edges;
     if (!edges) {
       // In practice won't happen, but keep Flow happy.
       return null;
     }
     const filteredTags = edges
-      .map((edge) => edge && edge.node)
-      .filter((node) => {
+      .map(edge => edge && edge.node)
+      .filter(node => {
         return (
           filters === [] ||
-          filters.every((filter) => node && node.name.indexOf(filter) !== -1)
+          filters.every(filter => node && node.name.indexOf(filter) !== -1)
         );
       })
       .filter(Boolean); // For Flow
@@ -47,7 +50,7 @@ class TagsIndex extends React.Component<Props, State> {
         <input
           className="u-full-width"
           id="tag-filter-input"
-          onChange={(event) =>
+          onChange={event =>
             this.setState({
               filterString: event.currentTarget.value,
             })
@@ -69,7 +72,7 @@ class TagsIndex extends React.Component<Props, State> {
             </tr>
           </thead>
           <tbody>
-            {filteredTags.map((node) => (
+            {filteredTags.map(node => (
               <TagPreview key={node.id} data={node} />
             ))}
           </tbody>

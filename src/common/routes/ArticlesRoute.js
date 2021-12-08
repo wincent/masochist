@@ -23,7 +23,7 @@ export default buildRoute(
       count: ArticlesIndex.PAGE_SIZE,
       cursor: null,
     },
-    render: (data) => <ArticlesIndex data={data} />,
+    render: data => <ArticlesIndex data={data} />,
     title: 'wiki',
   },
 );

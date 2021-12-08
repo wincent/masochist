@@ -35,7 +35,7 @@ export default function renderIndex(locals: {
     <html lang="en">
       <head>
         <meta charset="utf-8">
-        ${styles.then((s) => (s ? template`<style>${raw(s)}</style>` : null))}
+        ${styles.then(s => (s ? template`<style>${raw(s)}</style>` : null))}
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>${formatTitle(title)}</title>
@@ -51,7 +51,7 @@ export default function renderIndex(locals: {
             ? template`<meta property="og:description" content="${description}">`
             : null
         }
-        ${canonical.then((c) =>
+        ${canonical.then(c =>
           c
             ? template`
               <link rel="canonical" href="${canonical}">

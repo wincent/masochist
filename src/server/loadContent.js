@@ -37,7 +37,7 @@ export function getCacheKey(
 
 function getFilenamesWithExtensions(subdirectory, file) {
   return Object.keys(Extensions).map(
-    (name) => 'content/' + subdirectory + '/' + file + '.' + Extensions[name],
+    name => 'content/' + subdirectory + '/' + file + '.' + Extensions[name],
   );
 }
 

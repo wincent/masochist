@@ -46,7 +46,7 @@ async function getCorpus(): Promise<Array<SearchResult>> {
     corpus = [];
     const regExp = new RegExp(
       'content/' + // Prefix.
-        '(blog|pages|snippets|wiki)/' + // Content type.
+      '(blog|pages|snippets|wiki)/' + // Content type.
         '([^\0]+)\\.\\w+\0', // Filename match + extension + terminator.
       'g', // Match repeatedly.
     );
@@ -107,7 +107,7 @@ export default (async function search(q: string): Promise<Array<SearchResult>> {
   const directories = [];
   const atoms = [];
 
-  trimmed.split(/\s+/).forEach((atom) => {
+  trimmed.split(/\s+/).forEach(atom => {
     const filter = getFilter(atom);
     if (filter) {
       directories.push(filter);
@@ -126,20 +126,20 @@ export default (async function search(q: string): Promise<Array<SearchResult>> {
   // Put title-based results in first, as they are likely more relevant.
   const results = new Map();
   let entries = await getCorpus();
-  atoms.every((atom) => {
-    entries = entries.filter((entry) => {
+  atoms.every(atom => {
+    entries = entries.filter(entry => {
       const {id, type} = entry;
       return atom.test(id);
     });
     return entries.length;
   });
   const filtering = directories.indexOf('content') === -1;
-  entries.forEach((entry) => {
+  entries.forEach(entry => {
     const {id, type} = entry;
     const key = `${type}/${id}`;
     if (
       !filtering ||
-      directories.some((directory) => directory.indexOf(type) !== -1)
+      directories.some(directory => directory.indexOf(type) !== -1)
     ) {
       results.set(key, entry);
     }

@@ -28,7 +28,13 @@ function ellipsize(input: string, limit: number = FOUR_TWEETS): string {
 }
 
 function extractExcerpt(body: string): string {
-  return ellipsize(decodeHTML(stripTags(body).trim().replace(/\s+/g, ' ')));
+  return ellipsize(
+    decodeHTML(
+      stripTags(body)
+        .trim()
+        .replace(/\s+/g, ' '),
+    ),
+  );
 }
 
 /**
@@ -76,7 +82,7 @@ export default (async function feed() {
     const result: any = await runQuery(feedQuery().id);
     const data: feedPosts = result.data;
     const posts = data.posts;
-    posts.edges?.forEach((edge) => {
+    posts.edges?.forEach(edge => {
       if (edge) {
         const {node} = edge;
         if (node) {

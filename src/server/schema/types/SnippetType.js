@@ -26,7 +26,7 @@ const SnippetType = registerType(
         description: "The snippet's title",
         // NOTE: i might want to include human-readable id here as well...
         // to make it easy to generate URLs etc
-        resolve: (snippet) => snippet.title || `Snippet #${snippet.id}`,
+        resolve: snippet => snippet.title || `Snippet #${snippet.id}`,
       },
       body: {
         type: new GraphQLNonNull(MarkupType),
@@ -61,7 +61,7 @@ const SnippetType = registerType(
       url: {
         type: new GraphQLNonNull(GraphQLString),
         description: 'URL for the snippet',
-        resolve: (snippet) => `/snippets/${snippet.id}`,
+        resolve: snippet => `/snippets/${snippet.id}`,
       },
       history: {
         type: new GraphQLNonNull(HistoryType),
@@ -73,7 +73,7 @@ const SnippetType = registerType(
       ...timestampFields,
     },
     interfaces: [nodeInterface, taggedInterface, versionedInterface],
-    isTypeOf: (object) => object instanceof Snippet,
+    isTypeOf: object => object instanceof Snippet,
   }),
 );
 

@@ -27,7 +27,7 @@ const Link = (
 ) => (
   <a
     href={to}
-    onClick={(event) => {
+    onClick={event => {
       if (event.ctrlKey || event.metaKey) {
         // User holding a modifier; let the browser handle it.
         return;

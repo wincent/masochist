@@ -99,16 +99,20 @@ module.exports = {
           path.resolve(__dirname, 'src'),
           path.resolve(__dirname, 'node_modules/highlight.js/styles'),
         ],
+        loader: 'style-loader!css-loader!postcss-loader',
         test: /\.css$/,
-        use: [
-          {loader: 'style-loader'},
-          {loader: 'css-loader'},
-          {loader: 'postcss-loader'},
-        ],
       },
       {
         test: /\.svg$/,
-        type: 'asset/inline',
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              esModule: false,
+              limit: 10000,
+            },
+          },
+        ],
       },
     ],
   },
@@ -121,9 +125,10 @@ module.exports = {
     publicPath: '/static/',
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.LoaderOptionsPlugin({
       options: {
-        postcss: function () {
+        postcss: function() {
           // No arrow function, because we want `this` to be:
           // http://webpack.github.io/docs/loaders.html#loader-context
           return [autoprefixer];

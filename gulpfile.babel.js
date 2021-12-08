@@ -64,7 +64,7 @@ function ringBell() {
  * task from dying on error).
  */
 function wrap(stream) {
-  stream.on('error', (error) => {
+  stream.on('error', error => {
     log(colors.red(error.message));
     log(error.stack);
     if (watching) {
@@ -140,7 +140,10 @@ if (process.env.NODE_ENV !== 'production') {
   gulp.task('default', watch);
 
   lint = function lint() {
-    return gulp.src('src/**/*.js').pipe(eslint()).pipe(eslint.format());
+    return gulp
+      .src('src/**/*.js')
+      .pipe(eslint())
+      .pipe(eslint.format());
   };
 
   fix = function fix() {
@@ -152,7 +155,7 @@ if (process.env.NODE_ENV !== 'production') {
   };
 
   function exec(executable, args) {
-    return (callback) => {
+    return callback => {
       child_process
         .execFile(executable, args, (error, stdout, stderr) => {
           if (stdout) {

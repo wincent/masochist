@@ -147,7 +147,7 @@ export default new GraphQLSchema({
               sliceStart: offset,
               arrayLength: results.length,
             },
-          ).then((connection) => ({
+          ).then(connection => ({
             count: results.length,
             ...connection,
           }));
