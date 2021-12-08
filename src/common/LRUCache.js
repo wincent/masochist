@@ -48,7 +48,7 @@ export default class LRUCache<TKey, TValue> {
         }
         countToRemove--;
       }
-      keysToRemove.forEach(k => this._storage.delete(k));
+      keysToRemove.forEach((k) => this._storage.delete(k));
     }
 
     // Add the new item.

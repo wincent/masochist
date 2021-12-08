@@ -123,7 +123,7 @@ module.exports = {
   plugins: [
     new webpack.LoaderOptionsPlugin({
       options: {
-        postcss: function() {
+        postcss: function () {
           // No arrow function, because we want `this` to be:
           // http://webpack.github.io/docs/loaders.html#loader-context
           return [autoprefixer];

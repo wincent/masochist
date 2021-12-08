@@ -10,7 +10,7 @@ import redis from '../redis';
 async function loadTags(
   keys: $ReadOnlyArray<string>,
 ): Promise<Array<Object | Error>> {
-  const queries = keys.map(key => ['ZREVRANGE', 'tag:' + key, 0, -1]);
+  const queries = keys.map((key) => ['ZREVRANGE', 'tag:' + key, 0, -1]);
   const results = await redis.multi(queries);
   return results.map(
     (result, i) =>

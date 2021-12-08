@@ -39,7 +39,7 @@ class SnippetsIndex extends React.Component<Props, State> {
 
   _handleLoadMore = () => {
     this.setState({isLoading: true}, () => {
-      this._disposable = this.props.relay.loadMore(PAGE_SIZE, error => {
+      this._disposable = this.props.relay.loadMore(PAGE_SIZE, (error) => {
         this.setState({isLoading: this.props.relay.isLoading()});
         this._disposable = null;
 
@@ -65,7 +65,7 @@ class SnippetsIndex extends React.Component<Props, State> {
     return (
       <div>
         {edges &&
-          edges.map(edge => {
+          edges.map((edge) => {
             const node = edge && edge.node;
             if (node) {
               return <Snippet key={node.id} data={node} />;

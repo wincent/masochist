@@ -35,6 +35,8 @@ export default {
       // No Flow support yet for tuples with varags..
       ([command, key, ...args]) => [command, prefixKey(string(key)), ...args],
     );
-    return getClient().then((client) => client.multi(commandsWithPrefixedKeys).exec());
+    return getClient().then((client) =>
+      client.multi(commandsWithPrefixedKeys).exec(),
+    );
   },
 };

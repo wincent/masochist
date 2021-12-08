@@ -16,7 +16,7 @@ import markupExtensions from '../markupExtensions';
  * A mapping from 'html' to "HTML" etc.
  */
 const FORMAT_TO_MARKUP_TYPE = new Map(
-  markupExtensions.map(extension => [extension, extension.toUpperCase()]),
+  markupExtensions.map((extension) => [extension, extension.toUpperCase()]),
 );
 
 /**

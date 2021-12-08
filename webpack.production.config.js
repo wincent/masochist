@@ -72,12 +72,12 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
             ')\\b',
         ),
       }),
-      function() {
+      function () {
         this.hooks.done.tapAsync(
           'copy-assets-from-dist-to-public-static',
           (stats, callback) => {
-            Object.values(stats.toJson().assetsByChunkName).forEach(chunk => {
-              chunk.forEach(asset => {
+            Object.values(stats.toJson().assetsByChunkName).forEach((chunk) => {
+              chunk.forEach((asset) => {
                 // Copy each digest-ized asset from dist to public/static.
                 const src = path.resolve(__dirname, 'dist', asset);
                 const dest = path.resolve(__dirname, 'public', 'static', asset);

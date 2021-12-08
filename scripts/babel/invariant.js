@@ -17,7 +17,7 @@
  *      throw new Error('Invariant failed');
  *    }
  */
-module.exports = function(babel) {
+module.exports = function (babel) {
   const {types: t} = babel;
   const transformed = new Set();
   return {

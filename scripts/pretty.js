@@ -17,7 +17,7 @@ const paths = [
 ];
 const files = glob
   .sync('{' + paths.join(',') + '}')
-  .filter(path => path.indexOf('/__generated__/') === -1);
+  .filter((path) => path.indexOf('/__generated__/') === -1);
 const root = join(__dirname, '..');
 const executable = join(root, 'node_modules', '.bin', 'prettier');
 

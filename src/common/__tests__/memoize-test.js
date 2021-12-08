@@ -9,7 +9,7 @@ describe('with a synchronous function', () => {
   let memoizedDouble;
 
   beforeEach(() => {
-    double = sinon.spy(x => x * 2);
+    double = sinon.spy((x) => x * 2);
     memoizedDouble = memoize(double);
   });
 
@@ -28,7 +28,7 @@ describe('with a synchronous function', () => {
   });
 
   it('supports multiple functions', () => {
-    let triple = sinon.spy(x => x * 3);
+    let triple = sinon.spy((x) => x * 3);
     let memoizedTriple = memoize(triple);
 
     expect(memoizedDouble(3)).toBe(6);
@@ -40,7 +40,7 @@ describe('with a synchronous function', () => {
   });
 
   it('propagates errors immediately', () => {
-    const explode = sinon.spy(object => object.nonexistent());
+    const explode = sinon.spy((object) => object.nonexistent());
     const memoizedExplode = memoize(explode);
     expect(() => memoizedExplode({})).toThrow('nonexistent');
     expect(explode.calledOnce).toBe(true);
@@ -61,7 +61,7 @@ describe('with an asynchronous function', () => {
   beforeEach(() => {
     clock = sinon.useFakeTimers();
 
-    fetch = sinon.spy(url => {
+    fetch = sinon.spy((url) => {
       return new Promise((resolve, reject) => {
         setTimeout(() => resolve(`${url} fetched`), delay);
       });
@@ -73,7 +73,7 @@ describe('with an asynchronous function', () => {
   it('handles a single call', () => {
     const promise = memoizedFetch('https://example.com/');
     clock.tick(delay);
-    return promise.then(result => {
+    return promise.then((result) => {
       expect(result).toBe('https://example.com/ fetched');
       expect(fetch.calledOnce).toBe(true);
     });
@@ -85,8 +85,8 @@ describe('with an asynchronous function', () => {
       memoizedFetch('https://example.net/'),
     ];
     clock.tick(delay);
-    return Promise.all(promises).then(results => {
-      results.forEach(result =>
+    return Promise.all(promises).then((results) => {
+      results.forEach((result) =>
         expect(result).toBe('https://example.net/ fetched'),
       );
       expect(fetch.calledOnce).toBe(true);
@@ -94,7 +94,7 @@ describe('with an asynchronous function', () => {
   });
 
   it('memoizes errors', () => {
-    const explode = sinon.spy(object => {
+    const explode = sinon.spy((object) => {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           try {

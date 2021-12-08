@@ -14,7 +14,7 @@ function getRouteMap() {
   if (!routeMap) {
     routeMap = new Map(
       routeConfig
-        .map(config => {
+        .map((config) => {
           if (config.path !== CATCH_ALL_ROUTE) {
             return [pathToRegexp(config.path), config];
           }

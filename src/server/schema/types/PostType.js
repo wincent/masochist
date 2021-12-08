@@ -50,7 +50,7 @@ const PostType = registerType(
       url: {
         type: new GraphQLNonNull(GraphQLString),
         description: 'URL for the post',
-        resolve: post => `/blog/${post.id}`,
+        resolve: (post) => `/blog/${post.id}`,
       },
       history: {
         type: new GraphQLNonNull(HistoryType),
@@ -62,7 +62,7 @@ const PostType = registerType(
       ...timestampFields,
     },
     interfaces: [nodeInterface, taggedInterface, versionedInterface],
-    isTypeOf: object => object instanceof Post,
+    isTypeOf: (object) => object instanceof Post,
   }),
 );
 
