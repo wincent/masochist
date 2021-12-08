@@ -95,14 +95,14 @@
     "universal-router": "*",
     "unpack-content": "*",
     "url-loader": "*",
-    "webpack": "*"
+    "webpack": "4.*"
   },
   "devDependencies": {
     "gulp-eslint": "*",
     "http-proxy": "*",
     "jest": "*",
     "sinon": "*",
-    "webpack-dev-server": "*"
+    "webpack-dev-server": "3.11.2"
   },
   "jest": {
     "coverageDirectory": "coverage",
