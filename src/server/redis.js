@@ -31,12 +31,12 @@ export default {
   },
 
   multi(commands: Array<Array<mixed>>): Promise<Array<mixed>> {
-    const commandsWithPrefixedKeys = commands.map(
-      // No Flow support yet for tuples with varags..
-      ([command, key, ...args]) => [command, prefixKey(string(key)), ...args],
-    );
-    return getClient().then((client) =>
-      client.multi(commandsWithPrefixedKeys).exec(),
-    );
+    return getClient().then((client) => {
+      let multi = client.multi();
+      commands.forEach(([command, key, ...args]) => {
+        multi = multi[command](prefixKey(string(key)), ...args);
+      });
+      return multi.exec();
+    });
   },
 };
