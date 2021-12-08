@@ -71,11 +71,11 @@ node dist/server/main.js
 
 ### Configuration
 
-In `__DEV__`, Masochist will look for content in the current repo (ie. ".").
+In `__DEV__`, Masochist will look for content in the current repo (ie. `.`).
 
-In production, it expects to find a content repo at "/var/masochist/content".
+In production, it expects to find a content repo at `/srv/masochist/content`.
 
-In `__DEV__`, you can override this with `npm config set`. For example, in my local development environment, I have the Masochist Git repo checked out in one folder, and a second copy of it with the "content" branch checked out within it (using `git-worktree`) at "./content" (see below for more details on this set-up). I can override the `__DEV__` default of "." with:
+In `__DEV__`, you can override this with `npm config set`. For example, in my local development environment, I have the Masochist Git repo checked out in one folder, and a second copy of it with the `content` branch checked out within it (using `git-worktree`) at `./content` (see below for more details on this set-up). I can override the `__DEV__` default of `.` with:
 
 ```
 # Use npm, not yarn, for this:
