@@ -267,11 +267,11 @@ async function getFileUpdates(range, callback) {
     switch (status) {
       case 'A':
         // New file: add tags to index.
-        tags.forEach(tag => addTag(tag, file, contentType, updatedAt));
+        tags.forEach((tag) => addTag(tag, file, contentType, updatedAt));
         break;
       case 'D':
         // Deleted file: remove tags from index.
-        tags.forEach(tag => removeTag(tag, file, contentType, updatedAt));
+        tags.forEach((tag) => removeTag(tag, file, contentType, updatedAt));
         break;
       case 'M':
         // Modified file: check before and after tags and apply updates, if

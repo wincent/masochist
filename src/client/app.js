@@ -45,7 +45,7 @@ import {createBrowserHistory} from 'history';
 const history = createBrowserHistory();
 
 // First render comes from the server, subsequent renders happen on client.
-let render = function(element, container) {
+let render = function (element, container) {
   ReactDOM.hydrate(element, nullthrows(container));
   render = ReactDOM.render;
 };
@@ -68,7 +68,7 @@ const environment = new Environment({
           },
           body,
         })
-          .then(response => {
+          .then((response) => {
             const json = response.json();
 
             if (response.ok) {
@@ -77,7 +77,7 @@ const environment = new Environment({
               throw new Error('Bad response');
             }
           })
-          .catch(error => {
+          .catch((error) => {
             console.error(error);
             cache.delete(body);
           }),
@@ -197,7 +197,7 @@ function resolve(location, variables) {
       cachedComponent = component;
       render(<App router={router}>{component}</App>, root);
     })
-    .catch(error => {
+    .catch((error) => {
       if (error instanceof InternalRedirectError) {
         return resolve(error.target);
       } else if (error instanceof RenderTextError) {

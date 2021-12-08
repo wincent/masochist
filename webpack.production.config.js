@@ -11,13 +11,13 @@ const webpack = require('webpack');
 const BUILDS = [
   {
     name: 'cjs',
-    filename: 'bundle-[hash].js',
+    filename: 'bundle-[contenthash].js',
     targets: '> 0.5%, last 2 versions, Firefox ESR, not dead',
     terserOptions: {},
   },
   {
     name: 'mjs',
-    filename: 'bundle-[hash].mjs',
+    filename: 'bundle-[contenthash].mjs',
     targets: {esmodules: true},
     terserOptions: {
       module: true,
@@ -46,11 +46,6 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
               return `@license See: ${file}`;
             },
           },
-          // To debug failed dead code elimination, add `mangle: false`
-          // here and either `beautify: true` inside `output` (to
-          // visually inspect), or use `source-map-explorer bundle.js`
-          // (to explore a treemap in a browser window).
-          sourceMap: true,
           test: /\.m?js(\?.*)?$/i,
           terserOptions,
         }),
@@ -68,21 +63,21 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
       new MiniCssExtractPlugin({
         filename: 'styles-[contenthash].css',
       }),
-      new webpack.IgnorePlugin(
-        new RegExp(
+      new webpack.IgnorePlugin({
+        resourceRegExp: new RegExp(
           '\\b(' +
             'applyOptimisticMutation|' +
             'requestRelaySubscriptions|' +
             'setRelayModernMutationConfigs' +
             ')\\b',
         ),
-      ),
-      function() {
+      }),
+      function () {
         this.hooks.done.tapAsync(
           'copy-assets-from-dist-to-public-static',
           (stats, callback) => {
-            Object.values(stats.toJson().assetsByChunkName).forEach(chunk => {
-              chunk.forEach(asset => {
+            Object.values(stats.toJson().assetsByChunkName).forEach((chunk) => {
+              chunk.forEach((asset) => {
                 // Copy each digest-ized asset from dist to public/static.
                 const src = path.resolve(__dirname, 'dist', asset);
                 const dest = path.resolve(__dirname, 'public', 'static', asset);
@@ -189,15 +184,7 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
         },
         {
           test: /\.svg$/,
-          use: [
-            {
-              loader: 'url-loader',
-              options: {
-                esModule: false,
-                limit: 10000,
-              },
-            },
-          ],
+          type: 'asset/inline',
         },
       ],
     },

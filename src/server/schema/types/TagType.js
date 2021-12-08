@@ -32,7 +32,7 @@ const TagType = registerType(
       url: {
         type: new GraphQLNonNull(GraphQLString),
         description: 'URL for the tag',
-        resolve: tag => `/tags/${tag.id}`,
+        resolve: (tag) => `/tags/${tag.id}`,
       },
       taggables: {
         type: new GraphQLNonNull(taggableConnection),
@@ -45,7 +45,7 @@ const TagType = registerType(
           const {loaders} = rootValue;
           const promisedContent = tag.taggables
             .slice(offset, offset + count)
-            .map(typeAndId => {
+            .map((typeAndId) => {
               // TODO: These should probably be globalIds, manual splitting is
               // probably a smell.
               const [type, id] = extractTypeAndId(typeAndId);

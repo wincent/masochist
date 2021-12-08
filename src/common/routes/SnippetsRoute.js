@@ -24,7 +24,7 @@ export default buildRoute(
       count: SnippetsIndex.PAGE_SIZE,
       cursor: null,
     },
-    render: data => <SnippetsIndex data={data} />,
+    render: (data) => <SnippetsIndex data={data} />,
     title: 'snippets',
   },
 );

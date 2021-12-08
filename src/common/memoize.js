@@ -10,7 +10,7 @@ const functions = new Map();
 export default function memoize<TArgs: Iterable<mixed>, TReturn>(
   fn: (...TArgs) => TReturn,
 ): (...TArgs) => TReturn {
-  return function(...args: TArgs): TReturn {
+  return function (...args: TArgs): TReturn {
     if (!functions.has(fn)) {
       functions.set(fn, {});
     }

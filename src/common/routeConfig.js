@@ -25,7 +25,7 @@ import toGlobalId from './toGlobalId';
  * convert for us.
  */
 function getPrepareParams(contentType) {
-  return params => ({
+  return (params) => ({
     ...params,
     id: toGlobalId(contentType, params.id),
   });

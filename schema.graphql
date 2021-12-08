@@ -195,22 +195,77 @@ type Root {
   ): Node
 
   """All wiki articles"""
-  articles(after: String, first: Int, before: String, last: Int): ArticleConnection!
+  articles(
+    """Returns the items in the list that come after the specified cursor."""
+    after: String
+
+    """Returns the first n items from the list."""
+    first: Int
+
+    """Returns the items in the list that come before the specified cursor."""
+    before: String
+
+    """Returns the last n items from the list."""
+    last: Int
+  ): ArticleConnection!
 
   """All blog posts"""
-  posts(after: String, first: Int, before: String, last: Int): PostConnection!
+  posts(
+    """Returns the items in the list that come after the specified cursor."""
+    after: String
+
+    """Returns the first n items from the list."""
+    first: Int
+
+    """Returns the items in the list that come before the specified cursor."""
+    before: String
+
+    """Returns the last n items from the list."""
+    last: Int
+  ): PostConnection!
 
   """All snippets"""
-  snippets(after: String, first: Int, before: String, last: Int): SnippetConnection!
+  snippets(
+    """Returns the items in the list that come after the specified cursor."""
+    after: String
+
+    """Returns the first n items from the list."""
+    first: Int
+
+    """Returns the items in the list that come before the specified cursor."""
+    before: String
+
+    """Returns the last n items from the list."""
+    last: Int
+  ): SnippetConnection!
 
   """All tags"""
-  tags(after: String, first: Int, before: String, last: Int): TagConnection!
+  tags(
+    """Returns the items in the list that come after the specified cursor."""
+    after: String
+
+    """Returns the first n items from the list."""
+    first: Int
+
+    """Returns the items in the list that come before the specified cursor."""
+    before: String
+
+    """Returns the last n items from the list."""
+    last: Int
+  ): TagConnection!
 
   """Search results"""
   search(
+    """Returns the items in the list that come after the specified cursor."""
     after: String
+
+    """Returns the first n items from the list."""
     first: Int
+
+    """Returns the items in the list that come before the specified cursor."""
     before: String
+
+    """Returns the last n items from the list."""
     last: Int
 
     """One or more search terms, separated by spaces"""
@@ -299,7 +354,19 @@ type Tag implements Node {
   url: String!
 
   """Items tagged with a particular tag"""
-  taggables(after: String, first: Int, before: String, last: Int): TaggableConnection!
+  taggables(
+    """Returns the items in the list that come after the specified cursor."""
+    after: String
+
+    """Returns the first n items from the list."""
+    first: Int
+
+    """Returns the items in the list that come before the specified cursor."""
+    before: String
+
+    """Returns the last n items from the list."""
+    last: Int
+  ): TaggableConnection!
 }
 
 """A connection to a list of items."""

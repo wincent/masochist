@@ -54,7 +54,7 @@ const readFile = promisify(fs.readFile);
 app.disable('x-powered-by');
 
 let styles = null;
-const getStyles = async function() {
+const getStyles = async function () {
   if (!styles && !__DEV__) {
     // Expect to be running out of dist.
     const css = path.join(
@@ -102,7 +102,7 @@ const extraLocals = {
   },
 };
 
-appRoutes.forEach(route => {
+appRoutes.forEach((route) => {
   app.get(route, async (request, response) => {
     const history = createMemoryHistory({
       initialEntries: [request.originalUrl],
@@ -112,12 +112,12 @@ appRoutes.forEach(route => {
     const environment = new Environment({
       network: Network.create((operation, variables) => {
         return runQuery(operation.id, variables)
-          .then(result => {
+          .then((result) => {
             const key = getRequestBody(operation, variables);
             cache[key] = result;
             return result;
           })
-          .catch(error => console.log('got an error', error));
+          .catch((error) => console.log('got an error', error));
         // TODO: really handle errors
       }),
       store: new Store(new RecordSource()),
@@ -142,7 +142,7 @@ appRoutes.forEach(route => {
             title,
           };
         })
-        .catch(error => {
+        .catch((error) => {
           if (error instanceof ExternalRedirectError) {
             response.redirect(error.code, error.target);
             return null;
@@ -197,7 +197,7 @@ if (__DEV__) {
       graphiql: true,
       schema,
     };
-    return graphqlHTTP(request => options)(request, response, next);
+    return graphqlHTTP((request) => options)(request, response, next);
   });
 }
 
@@ -223,12 +223,17 @@ if (__DEV__) {
   compiler.hooks.done.tap('compilation-completed', () => {
     console.log('Bundle finished in ' + (Date.now() - bundleStart) + 'ms.');
   });
-  const bundler = new WebpackDevServer(compiler, {
-    publicPath: '/static/',
-    hot: true,
-    noInfo: true,
-  });
-  bundler.listen(APP_PORT + 1, 'localhost', () => {
+  const bundler = new WebpackDevServer(
+    {
+      hot: true,
+      port: APP_PORT + 1,
+      static: {
+        publicPath: '/static/',
+      },
+    },
+    compiler,
+  );
+  bundler.startCallback(() => {
     console.log(
       'Webpack dev server listening at http://localhost:%s',
       APP_PORT + 1,
@@ -241,7 +246,7 @@ if (__DEV__) {
     });
   });
 
-  proxy.on('error', error => console.log('Proxy error: %s', error));
+  proxy.on('error', (error) => console.log('Proxy error: %s', error));
 }
 
 app.get('/heartbeat', (request, response) => {

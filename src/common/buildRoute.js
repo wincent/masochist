@@ -35,10 +35,8 @@ export default function buildRoute(query, config) {
 
         // Disable garbage collection so that we can make back button work without
         // having to go back to the server for data.
-        const {
-          createOperationSelector,
-          getRequest,
-        } = environment.unstable_internal;
+        const {createOperationSelector, getRequest} =
+          environment.unstable_internal;
         const operation = createOperationSelector(getRequest(query), variables);
         environment.retain(operation.root);
       }
