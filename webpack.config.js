@@ -99,13 +99,18 @@ module.exports = {
           path.resolve(__dirname, 'src'),
           path.resolve(__dirname, 'node_modules/highlight.js/styles'),
         ],
-        loader: 'style-loader!css-loader!postcss-loader',
         test: /\.css$/,
+        use: [
+          {loader: 'style-loader'},
+          {loader: 'css-loader'},
+          {loader: 'postcss-loader'},
+        ],
       },
       {
         test: /\.svg$/,
         use: [
           {
+            // TODO: will be deprecated; move to: https://webpack.js.org/guides/asset-modules/
             loader: 'url-loader',
             options: {
               esModule: false,

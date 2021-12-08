@@ -95,7 +95,7 @@
     "universal-router": "*",
     "unpack-content": "*",
     "url-loader": "*",
-    "webpack": "4.*"
+    "webpack": "*"
   },
   "devDependencies": {
     "gulp-eslint": "*",

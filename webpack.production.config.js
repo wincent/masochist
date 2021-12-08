@@ -11,13 +11,13 @@ const webpack = require('webpack');
 const BUILDS = [
   {
     name: 'cjs',
-    filename: 'bundle-[hash].js',
+    filename: 'bundle-[contenthash].js',
     targets: '> 0.5%, last 2 versions, Firefox ESR, not dead',
     terserOptions: {},
   },
   {
     name: 'mjs',
-    filename: 'bundle-[hash].mjs',
+    filename: 'bundle-[contenthash].mjs',
     targets: {esmodules: true},
     terserOptions: {
       module: true,
@@ -68,15 +68,15 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
       new MiniCssExtractPlugin({
         filename: 'styles-[contenthash].css',
       }),
-      new webpack.IgnorePlugin(
-        new RegExp(
+      new webpack.IgnorePlugin({
+        resourceRegExp: new RegExp(
           '\\b(' +
             'applyOptimisticMutation|' +
             'requestRelaySubscriptions|' +
             'setRelayModernMutationConfigs' +
             ')\\b',
         ),
-      ),
+      }),
       function() {
         this.hooks.done.tapAsync(
           'copy-assets-from-dist-to-public-static',
@@ -191,6 +191,7 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
           test: /\.svg$/,
           use: [
             {
+              // TODO: will be deprecated; move to: https://webpack.js.org/guides/asset-modules/
               loader: 'url-loader',
               options: {
                 esModule: false,
