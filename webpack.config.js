@@ -121,7 +121,6 @@ module.exports = {
     publicPath: '/static/',
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.LoaderOptionsPlugin({
       options: {
         postcss: function() {

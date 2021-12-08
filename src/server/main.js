@@ -223,12 +223,14 @@ if (__DEV__) {
   compiler.hooks.done.tap('compilation-completed', () => {
     console.log('Bundle finished in ' + (Date.now() - bundleStart) + 'ms.');
   });
-  const bundler = new WebpackDevServer(compiler, {
-    publicPath: '/static/',
+  const bundler = new WebpackDevServer({
     hot: true,
-    noInfo: true,
-  });
-  bundler.listen(APP_PORT + 1, 'localhost', () => {
+    port: APP_PORT + 1,
+    static: {
+      publicPath: '/static/',
+    },
+  }, compiler);
+  bundler.startCallback(() => {
     console.log(
       'Webpack dev server listening at http://localhost:%s',
       APP_PORT + 1,
