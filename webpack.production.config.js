@@ -39,8 +39,8 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
         new TerserPlugin({
           extractComments: {
             condition: 'some',
-            filename(file) {
-              return `${file}.LICENSE.txt`;
+            filename(filedata) {
+              return `${filedata.filename}.LICENSE.txt`;
             },
             banner(file) {
               return `@license See: ${file}`;
