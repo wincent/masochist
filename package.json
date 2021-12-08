@@ -79,7 +79,7 @@
     "path-to-regexp": "*",
     "plugin-error": "*",
     "postcss": "*",
-    "postcss-loader": "4.2.0",
+    "postcss-loader": "*",
     "prettier": "*",
     "prop-types": "*",
     "react": "*",

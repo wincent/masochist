@@ -46,11 +46,6 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
               return `@license See: ${file}`;
             },
           },
-          // To debug failed dead code elimination, add `mangle: false`
-          // here and either `beautify: true` inside `output` (to
-          // visually inspect), or use `source-map-explorer bundle.js`
-          // (to explore a treemap in a browser window).
-          sourceMap: true,
           test: /\.m?js(\?.*)?$/i,
           terserOptions,
         }),
