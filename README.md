@@ -64,7 +64,7 @@ yarn start-prod
 ```
 export NODE_ENV=production
 yarn
-gulp build
+yarn build
 node dist/bin/updateIndices.js # Whenever content changes.
 node dist/server/main.js
 ```

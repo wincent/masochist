@@ -11,9 +11,8 @@
     "content-repo": "."
   },
   "scripts": {
-    "build": "gulp build",
+    "build": "node build.js",
     "coverage": "jest --coverage --forceExit",
-    "gulp": "gulp",
     "lint": "eslint src",
     "pretty": "babel-node scripts/pretty.js",
     "pretty-check": "babel-node scripts/pretty.js --check",
@@ -47,7 +46,6 @@
     "@wincent/escape-html": "*",
     "@wincent/nullthrows": "*",
     "@wincent/stable-stringify": "*",
-    "ansi-colors": "*",
     "assets-webpack-plugin": "*",
     "autoprefixer": "*",
     "babel-eslint": "*",
@@ -62,13 +60,10 @@
     "entities": "*",
     "express": "*",
     "express-graphql": "*",
-    "fancy-log": "*",
     "fs-extra": "*",
     "glob": "*",
     "graphql": "*",
     "graphql-relay": "0.7.0",
-    "gulp": "*",
-    "gulp-babel": "*",
     "highlight.js": "*",
     "history": "*",
     "isomorphic-fetch": "*",
@@ -77,7 +72,6 @@
     "memcached": "*",
     "mini-css-extract-plugin": "*",
     "path-to-regexp": "*",
-    "plugin-error": "*",
     "postcss": "*",
     "postcss-loader": "*",
     "prettier": "*",
@@ -97,7 +91,6 @@
     "webpack": "*"
   },
   "devDependencies": {
-    "gulp-eslint": "*",
     "http-proxy": "*",
     "jest": "*",
     "sinon": "*",

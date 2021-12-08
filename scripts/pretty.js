@@ -10,7 +10,7 @@ const YELLOW = '\x1b[33m';
 
 const paths = [
   'babel.config.js',
-  'gulpfile.babel.js',
+  'build.js',
   'postcss.config.js',
   '{scripts,src}/**/*.js',
   'webpack.*.js',
