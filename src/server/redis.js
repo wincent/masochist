@@ -2,17 +2,24 @@
  * @flow
  */
 
-import redis from 'redis';
+import {createClient} from 'redis';
 import {promisify} from 'util';
 import {string} from '../common/checks';
 import {REDIS_CACHE_VERSION, REDIS_KEY_PREFIX} from '../server/constants';
 
-redis.RedisClient.prototype.getAsync = promisify(
-  redis.RedisClient.prototype.get,
-);
-redis.Multi.prototype.execAsync = promisify(redis.Multi.prototype.exec);
+let sharedClient = null;
 
-const client = redis.createClient();
+function getClient() {
+  if (!sharedClient) {
+    sharedClient = new Promise((resolve) => {
+      const client = createClient();
+      client.connect().then(() => resolve(client));
+    });
+  }
+  return sharedClient;
+}
+
+let connected = false;
 
 function prefixKey(key: string): string {
   return REDIS_KEY_PREFIX + ':' + REDIS_CACHE_VERSION + ':' + key;
@@ -20,7 +27,7 @@ function prefixKey(key: string): string {
 
 export default {
   get(key: string): Promise<mixed> {
-    return client.getAsync(prefixKey(key));
+    return getClient().then((client) => client.get(prefixKey(key)));
   },
 
   multi(commands: Array<Array<mixed>>): Promise<Array<mixed>> {
@@ -28,6 +35,6 @@ export default {
       // No Flow support yet for tuples with varags..
       ([command, key, ...args]) => [command, prefixKey(string(key)), ...args],
     );
-    return client.multi(commandsWithPrefixedKeys).execAsync();
+    return getClient().then((client) => client.multi(commandsWithPrefixedKeys).exec());
   },
 };
