@@ -1,0 +1,9 @@
+#!/bin/sh
+
+#
+# Requires `brew install pngcrush` (or equivalent).
+#
+# via: https://www.commandlinefu.com/commands/view/10996/pngcrush-all-.png-files-in-the-directory
+#
+
+find . -name '*.png' -type f | while read line; do pngcrush -ow -brute $line; done
