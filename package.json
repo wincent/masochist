@@ -94,7 +94,6 @@
     "terser-webpack-plugin": "*",
     "universal-router": "*",
     "unpack-content": "*",
-    "url-loader": "*",
     "webpack": "*"
   },
   "devDependencies": {

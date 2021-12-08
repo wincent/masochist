@@ -189,16 +189,7 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
         },
         {
           test: /\.svg$/,
-          use: [
-            {
-              // TODO: will be deprecated; move to: https://webpack.js.org/guides/asset-modules/
-              loader: 'url-loader',
-              options: {
-                esModule: false,
-                limit: 10000,
-              },
-            },
-          ],
+          type: 'asset/inline',
         },
       ],
     },
