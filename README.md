@@ -90,7 +90,7 @@ You could do this in any number of ways but the way I'm doing it is using two lo
 
 ##### Structure
 
-* `master` branch checked out.
+* `main` branch checked out.
 * `origin` remote pointing at git.wincent.com.
 * `github` remote pointing at [GitHub](https://github.com/wincent/masochist).
 * `masochist` remote set up to do Heroku-style deploy-on-push, pointing at an Amazon EC2 instance configured using Ansible.
@@ -99,7 +99,7 @@ You could do this in any number of ways but the way I'm doing it is using two lo
 ##### Commands
 
 ```
-$ git push masochist master # Deploy app (after initial provisioning).
+$ git push masochist main # Deploy app (after initial provisioning).
 $ git push masochist # Subsequent deployments.
 $ git push origin # Propagate code, but no deploy.
 $ git push # Shorthand for `git push origin`.
@@ -127,7 +127,7 @@ $ git push # Simple.
 ##### Rollback to a prior rev `$HASH`
 
 ```
-$ git push masochist +$HASH:master
+$ git push masochist +$HASH:main
 ```
 
 Or just switch symlinks and `sudo monit restart masochist`.
