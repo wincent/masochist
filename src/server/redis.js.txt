@@ -1,0 +1,325 @@
+const EventEmitter = require('events');
+const {createConnection} = require('net');
+
+class RedisClient extends EventEmitter {
+  static STATE = {
+    NEW: 0, // Constructed but not yet ready.
+    WAITING: 1, // Waiting for a reply.
+    READY: 2, // Ready for a command.
+  };
+
+  constructor() {
+    super();
+
+    this._buffer = '';
+    this._state = RedisClient.STATE.NEW;
+    this.socket = createConnection({
+      host: '127.0.0.1',
+      port: 6379,
+    })
+      .on('connect', () => this.onConnect())
+      .on('close', (hadError) => this.onClose(hadError))
+      .on('data', (data) => this.onData(data))
+      .on('error', (error) => this.onError(error))
+      .on('ready', () => this.onReady())
+      .on('timeout', () => this.onTimeout())
+      .setNoDelay()
+      .connect();
+    // TODO: implement retry logic
+  }
+
+  close() {
+    this.socket.end();
+  }
+
+  command(name, ...args) {
+    this._state = RedisClient.STATE.WAITING;
+    // TODO: actually properly encode args...
+    this.socket.write([name, ...args].join(' ') + '\r\n');
+
+    return new Promise((resolve, reject) => {
+      this.once('response', (result) => {
+        // TODO: handle error case (eg. check `result` and call `reject`)
+        resolve(result);
+      });
+    });
+  }
+
+  onClose(hadError) {
+    console.log('close', hadError);
+  }
+
+  onConnect() {
+    console.log('connect');
+  }
+
+  onData(data) {
+    this._buffer += data.toString();
+
+    if (!this._buffer.endsWith('\r\n')) {
+      return;
+    }
+
+    // In this app, we expect all responses to be small enough to fit in a
+    // single `data` payload. So, in the event that we ever see what looks to be
+    // a partial payload, we give up and allow it to be reprocessed on the next
+    // call. This _would_ be inefficient, if it ever happened...
+    const result = new ResponseParser(this._buffer).parse();
+    if (result === undefined) {
+      return;
+    }
+    this._buffer = '';
+    this._state = RedisClient.STATE.READY;
+    this.emit('response', result);
+  }
+
+  onError(error) {
+    console.log('error', error);
+  }
+
+  onReady() {
+    console.log('ready');
+    this._state = RedisClient.STATE.READY;
+  }
+
+  onTimeout() {
+    console.log('timeout');
+  }
+}
+
+const client = new RedisClient();
+
+client.command('HELLO', 3).then((result) => console.log(result));
+
+// TODO move all this into StringScanner.js file
+// TODO maybe copy tests from next project
+
+function formatContext(scanner) {
+  const [line, column] = scanner.location;
+
+  return (
+    `line ${line}, column ${column} of ${scanner.description}\n\n` +
+    scanner.context(line, column) +
+    '\n'
+  );
+}
+
+function toAnchoredRegExp(regExp) {
+  const {source} = regExp;
+
+  return source.startsWith('^')
+    ? regExp
+    : new RegExp(`^${source}`, regExp.flags);
+}
+
+/**
+ * Not the fastest thing in the world, but it makes for readable code, and we
+ * don't have to deal with large responses anyway.
+ */
+class StringScanner {
+  #description;
+  #haystack;
+  #index;
+  #remaining;
+
+  constructor(haystack, description) {
+    this.#description = description;
+    this.#haystack = haystack;
+    this.#index = 0;
+    this.#remaining = haystack;
+  }
+
+  get atEnd() {
+    return this.#remaining.length === 0;
+  }
+
+  /**
+   * For use in error reporting.
+   */
+  get description() {
+    return this.#description ?? 'input string';
+  }
+
+  get index() {
+    return this.#index;
+  }
+
+  /**
+   * Returns tuple of 1-indexed line and column number corresponding to current
+   * index.
+   *
+   * Note that this function is typically only called during error reporting, so
+   * no attempt is made to make it fast; it derives the location by scanning
+   * through the string incrementing counters.
+   */
+  get location() {
+    if (!this.#index) {
+      return [1, 1];
+    }
+
+    const startOfCurrentLine = Math.max(
+      this.#haystack.lastIndexOf('\n', this.#index - 1) + 1,
+      this.#haystack.lastIndexOf('\r', this.#index - 1) + 1
+    );
+
+    const column = this.#index - startOfCurrentLine + 1;
+
+    let line = 0;
+    let index = 0;
+
+    this.#haystack.replace(/[^\r\n]*(?:\r?\n|$)/g, (match) => {
+      if (match && index <= this.#index) {
+        line++;
+      }
+
+      index += match.length;
+
+      return match;
+    });
+
+    return [line, column];
+  }
+
+  get remaining() {
+    return this.#remaining;
+  }
+
+  /**
+   * Shows context at the current position in the haystack.
+   *
+   * Like the `location` getter, this is only intended to be used in error
+   * reporting pathways, so it is not made to be fast.
+   */
+  context(line, column) {
+    if (this.#haystack === '') {
+      return '';
+    }
+
+    const lines = this.#haystack.split(/(?:\r?\n)/g);
+    const start = Math.max(1, line - 2);
+    const end = Math.min(lines.length, line + 3);
+    const gutter = end.toString().length + 1;
+
+    let output = '';
+
+    for (let i = start; i <= end; i++) {
+      output += i === line ? '>' : ' ';
+      output += i.toString().padStart(gutter);
+      output += ` | ${lines[i - 1]}\n`;
+
+      if (i === line) {
+        output += '|'.padStart(gutter + 3);
+        output += ' '.repeat(column) + '^\n';
+      }
+    }
+
+    return output;
+  }
+
+  expect(pattern, description) {
+    const result = this.scan(pattern);
+
+    if (result === null) {
+      throw new Error(
+        `Expected ${description ?? pattern} at ${formatContext(this)}`
+      );
+    }
+
+    return result;
+  }
+
+  peek(pattern) {
+    return toAnchoredRegExp(pattern).test(this.#remaining);
+  }
+
+  scan(pattern) {
+    const match = this.#remaining.match(toAnchoredRegExp(pattern));
+
+    if (match) {
+      const matchText = match[0];
+
+      this.#remaining = this.#remaining.slice(matchText.length);
+      this.#index += matchText.length;
+
+      return matchText;
+    }
+
+    return null;
+  }
+}
+
+class ResponseParser {
+  constructor(payload) {
+    this._payload = payload;
+    this._scanner = new StringScanner(this._payload);
+  }
+
+  _scanCRLF() {
+    this._scanner.expect(/\r\n/);
+  }
+
+  _scanInt() {
+    return parseInt(this._scanner.expect(/\d+/), 10);
+  }
+
+  /**
+   * Returns undefined if the payload cannot be parsed (ie. it may be
+   * incomplete).
+   *
+   * Note that because we use recursion here, we're not expecting to handle huge
+   * payloads (eg. arrays with 20k items in them etc).
+   */
+  parse() {
+    switch (this._scanner.scan(/./)) {
+      case '$': // A bulk string.
+        {
+          const length = this._scanInt();
+          this._scanCRLF();
+          const result = this._scanner.expect(new RegExp(`.{${length}}`));
+          // TODO: return undefined if ^^^ doesn't parse yet
+          this._scanCRLF();
+          return result;
+        }
+      case '%': // A map.
+        {
+          const size = this._scanInt();
+          this._scanCRLF();
+          const result = {};
+          for (let i = 0; i < size; i++) {
+            // TODO: bail for undef here
+            const key = this.parse();
+            const value = this.parse();
+            result[key] = value;
+          }
+          return result;
+        }
+      case '*': // An array.
+        {
+          const length = this._scanInt();
+          const result = [];
+          for (let i = 0; i < length; i++) {
+            result.push(this.parse()); // TODO: bail for undef
+          }
+          return result;
+        }
+      case '~': // A set.
+        throw new Error('Not yet implemented');
+      case '+': // A simple string.
+        {
+          const string = this._scanner.expect(/[^\n\r]*/);
+          this._scanCRLF();
+          return string;
+        }
+      case '-': // An error.
+        throw new Error('I will find something to put here');
+      case ':': // An integer.
+        {
+          const int = this._scanInt();
+          this._scanCRLF();
+          return int;
+        }
+      default:
+        throw new Error('I have no memory of this place...');
+    }
+  }
+}
