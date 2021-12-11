@@ -1,17 +1,25 @@
 import StringScanner from './StringScanner';
 
+// Convenience shortcuts for use with StringScanner.
+const CRLF = /\r\n/;
+const INT = /\d+/;
+
 export default class ResponseParser {
-  constructor(payload) {
-    this._payload = payload;
-    this._scanner = new StringScanner(this._payload);
-  }
-
-  _scanCRLF() {
-    this._scanner.expect(/\r\n/);
-  }
-
-  _scanInt() {
-    return parseInt(this._scanner.expect(/\d+/), 10);
+  async _parseBulkString(lines, length) {
+    let buffer = '';
+    for await (const line of lines) {
+      if (line.endsWith('\r\n')) {
+        if (buffer.length + line.length - 2 === length) {
+          buffer += line.slice(0, -2);
+          return buffer;
+        } else {
+          buffer += line;
+        }
+      }
+      if (buffer.length > length) {
+        throw new Error('Unexpected input');
+      }
+    }
   }
 
   /**
@@ -25,100 +33,108 @@ export default class ResponseParser {
    *
    * @see https://github.com/antirez/RESP3/blob/master/spec.md
    */
-  parse() {
-    switch (this._scanner.scan(/./)) {
-      case '_': // Null
-        this._scanCRLF();
-        return null;
-      case '$': // A bulk string.
-      case '=': {
-        // A verbatim string.
-        const length = this._scanInt();
-        this._scanCRLF();
-        const result = this._scanner.expect(new RegExp(`.{${length}}`));
-        this._scanCRLF();
-        return result;
-      }
-      case '%': {
-        // A map.
-        const size = this._scanInt();
-        this._scanCRLF();
-        const result = {};
-        for (let i = 0; i < size; i++) {
-          const key = this.parse();
-          const value = this.parse();
-          result[key] = value;
+  async parseResponse(lines) {
+    for await (const line of lines) {
+      const scanner = new StringScanner(line);
+      const char = scanner.scan(/./);
+      switch (char) {
+        case '_': // Null
+          scanner.expect(CRLF);
+          return null;
+        case '$': // A "bulk" string.
+        case '=': {
+          // A "verbatim string.
+          const length = parseInt(scanner.expect(INT), 10);
+          scanner.expect(CRLF);
+          // This is the only type annoying enough to merit its own method.
+          return await this._parseBulkString(lines, length);
         }
-        return result;
-      }
-      case '|': {
-        // An "attribute" dictionary (ie. metadata).
-        // For now we consume/ignore this, and then recurse.
-        const size = this._scanInt();
-        this._scanCRLF();
-        for (let i = 0; i < size; i++) {
-          this.parse(); // Attribute key.
-          this.parse(); // Attribute value.
+        case '%': {
+          // A map.
+          const size = parseInt(scanner.expect(INT), 10);
+          scanner.expect(CRLF);
+          const result = {};
+          for (let i = 0; i < size; i++) {
+            const key = await this.parseResponse(lines);
+            const value = await this.parseResponse(lines);
+            result[key] = value;
+          }
+          return result;
         }
-        return this.parse(); // The real value.
-      }
-      case '*': {
-        // An array.
-        const length = this._scanInt();
-        this._scanCRLF();
-        const result = [];
-        for (let i = 0; i < length; i++) {
-          result.push(this.parse());
+        case '|': {
+          // An "attribute" dictionary (ie. metadata).
+          // For now we consume/ignore this, and then recurse.
+          const size = parseInt(scanner.expect(INT), 10);
+          scanner.expect(CRLF);
+          for (let i = 0; i < size; i++) {
+            await this.parseResponse(lines); // Attribute key.
+            await this.parseResponse(lines); // Attribute value.
+          }
+          return await this.parseResponse(lines); // The real value.
         }
-        return result;
-      }
-      case '~': {
-        // A set.
-        const size = this._scanInt();
-        this._scanCRLF();
-        const result = new Set();
-        for (let i = 0; i < size; i++) {
-          result.add(this.parse());
+        case '*': {
+          // An array.
+          const length = parseInt(scanner.expect(INT), 10);
+          scanner.expect(CRLF);
+          const result = [];
+          for (let i = 0; i < length; i++) {
+            result.push(await this.parseResponse(lines));
+          }
+          return result;
         }
-        return result;
-      }
-      case '+': {
-        // A simple string.
-        const string = this._scanner.expect(/[^\n\r]*/);
-        this._scanCRLF();
-        return string;
-      }
-      case '-': // An error.
-        const error = this._scanner.scan(/.*/).trim();
-        throw new Error(`Redis error: ${error}`);
-      case ':': // An integer. Technically 64-bit, so usual JS disclaimers apply.
-      case '(': {
-        // An arbitrary precision "big number" integer.
-        const int = this._scanInt();
-        this._scanCRLF();
-        return int;
-      }
-      case ',': {
-        // A double.
-        // -inf, inf, \d+(\.\d+)?
-        // const int = this._scanInt();
-        // this._scanCRLF();
-        // return int;
-      }
-      case '#': {
-        // A boolean
-        const kind = this._scanner.expect(/[tf]/);
-        this._scanCRLF();
-        return kind === 't';
-      }
-      default:
-        if (this._scanner.atEnd()) {
-          // Nothing left to parse.
-          return undefined;
-          // throw new Error('Unexpected end of input');
-        } else {
-          throw new Error('Unexpected character');
+        case '~': {
+          // A set.
+          const size = parseInt(scanner.expect(INT), 10);
+          scanner.expect(CRLF);
+          const result = new Set();
+          for (let i = 0; i < size; i++) {
+            result.add(await this.parseResponse(lines));
+          }
+          return result;
         }
+        case '+': {
+          // A simple string.
+          const string = scanner.expect(/[^\n\r]*/);
+          scanner.expect(CRLF);
+          return string;
+        }
+        case '-': // An error.
+          const error = scanner.scan(/.*/).trim();
+          throw new Error(`Redis error: ${error}`);
+        case ':': // An integer. Technically 64-bit, so usual JS disclaimers apply.
+        case '(': {
+          // An arbitrary precision "big number" integer.
+          const int = parseInt(scanner.expect(INT), 10);
+          scanner.expect(CRLF);
+          return int;
+        }
+        case ',': {
+          // A double.
+          let number;
+          if (scanner.scan(/-?inf/)) {
+            number = -Infinity;
+          } else if (scanner.scan(/inf/)) {
+            number = Infinity;
+          } else {
+            number = scanner.expect(/\d+(?:\.\d+)?/);
+          }
+          scanner.expect(CRLF);
+          return number;
+        }
+        case '#': {
+          // A boolean
+          const kind = scanner.expect(/[tf]/);
+          scanner.expect(CRLF);
+          return kind === 't';
+        }
+        default:
+          if (scanner.atEnd()) {
+            // Nothing left to parse.
+            return undefined;
+          } else {
+            throw new Error(`Unexpected character ${JSON.stringify(char)}`);
+          }
+      }
     }
   }
 }

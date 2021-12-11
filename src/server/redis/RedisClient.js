@@ -1,8 +1,6 @@
 import EventEmitter from 'events';
 import {createConnection} from 'net';
 
-// Run with: yarn run babel-node src/server/redis/RedisClient.js
-
 import ResponseParser from './ResponseParser';
 import Queue from './Queue';
 
@@ -45,9 +43,10 @@ export default class RedisClient extends EventEmitter {
     return new Promise((resolve, reject) => {
       this._queue.enqueue(() => {
         this._state = RedisClient.STATE.BUSY;
-        this.once('response', (result) => {
-          // TODO: handle error case (eg. check `result` and call `reject`)
+        const parser = new ResponseParser();
+        parser.parseResponse(this._lines()).then((result) => {
           resolve(result);
+          this._state = RedisClient.STATE.READY;
           this._runQueue();
         });
         this.socket.write(this._encodeCommand(name, ...args));
@@ -60,29 +59,30 @@ export default class RedisClient extends EventEmitter {
     return new Promise((resolve, reject) => {
       this._queue.enqueue(() => {
         this._state = RedisClient.STATE.BUSY;
-        this.once('response', (result) => {
-          // TODO: handle error case (eg. check `result` and call `reject`)
-          // console.log(result);
-          if (
-            !Array.isArray(result) ||
-            result.length !== commands.length + 2 ||
-            result[0] !== 'OK' ||
-            !result
-              .slice(1, commands.length + 1)
-              .every((item) => item === 'QUEUED') ||
-            !Array.isArray(result[result.length - 1])
-          ) {
-            reject(new Error('Invalid response'));
-          } else {
-            resolve(result[result.length - 1]);
-          }
-          this._runQueue();
-        });
+        const parser = new ResponseParser();
         const pipelinedCommands = [['MULTI'], ...commands, ['EXEC']]
           .map((command) => {
             return this._encodeCommand(...command);
           })
           .join('');
+        const lines = this._lines();
+        parser.parseResponse(lines).then(async (result) => {
+          if (result === 'OK') {
+            for (let i = 0; i < commands.length; i++) {
+              const status = await parser.parseResponse(lines);
+              if (status !== 'QUEUED') {
+                reject('Expected QUEUED');
+                return;
+              }
+            }
+            const results = await parser.parseResponse(lines);
+            resolve(results);
+            this._state = RedisClient.STATE.READY;
+            this._runQueue();
+          } else {
+            reject('Expected OK');
+          }
+        });
         this.socket.write(pipelinedCommands);
       });
       this._runQueue();
@@ -109,66 +109,75 @@ export default class RedisClient extends EventEmitter {
 
   _onClose(hadError) {
     // TODO
+    console.log('close', hadError);
   }
 
   _onConnect() {
     // TODO... maybe nothing...
+    console.log('connect');
+  }
+
+  /**
+   * Returns an async iterator.
+   */
+  _lines() {
+    const queue = new Queue();
+    let resolve = null;
+
+    this.on('line', (line) => {
+      queue.enqueue(line);
+      if (resolve) {
+        resolve();
+        resolve = null;
+      }
+    });
+
+    return {
+      [Symbol.asyncIterator]: async function* () {
+        while (true) {
+          if (queue.isEmpty()) {
+            await new Promise((fn) => {
+              resolve = fn;
+            });
+          }
+          yield queue.dequeue();
+        }
+      },
+    };
   }
 
   _onData(data) {
     this._buffer += data.toString();
 
-    if (!this._buffer.endsWith('\r\n')) {
-      // Don't bother trying to parse result until we have at least a full line.
-      return;
-    }
-
-    // In this app, we expect all responses to be small enough to fit in a
-    // single `data` payload. So, in the event that we ever see what looks to be
-    // a partial payload, we give up and allow it to be reprocessed on the next
-    // call. This _would_ be inefficient, if it ever happened...
-    const responses = [];
-    const parser = new ResponseParser(this._buffer);
     while (true) {
-      try {
-        // BUG: this is flaky; if I run a lot of `multi` batches I don't always
-        // get the same results back (because we actually may get things in
-        // chunks...)
-        const result = parser.parse();
-        if (result === undefined) {
-          break; // We got to the end of the input; no more responses.
-        } else {
-          responses.push(result);
-        }
-      } catch (error) {
-        // Will try again on next call.
-        break;
+      const index = this._buffer.indexOf('\r\n');
+      if (index === -1) {
+        // No more lines to process for now.
+        return;
       }
-    }
-    this._buffer = '';
-    this._state = RedisClient.STATE.READY;
-
-    if (responses.length === 1) {
-      // Hackily assume that a single response means we're not pipelining.
-      this.emit('response', responses[0]);
-    } else {
-      this.emit('response', responses);
+      const line = this._buffer.slice(0, index + 2);
+      this.emit('line', line);
+      this._buffer = this._buffer.slice(index + 2);
     }
   }
 
   _onError(error) {
     // TODO
+    console.log('error', error);
   }
 
   _onReady() {
+    console.log('ready');
     this._state = RedisClient.STATE.READY;
     this._runQueue();
   }
 
   _onTimeout() {
     // TODO
+    console.log('timeout');
   }
 
+  // TODO: probably remove this; doesn't need to be public
   get state() {
     return this._state;
   }
