@@ -1,8 +1,4 @@
 /**
- *
- */
-
-/**
  * Via `useBuiltIns: 'entry'` in our @babel/preset-env settings in the
  * webpack configs, the following `import` should get transformed into
  * individual requires into core-js, reducing our bundle size.

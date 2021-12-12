@@ -1,7 +1,3 @@
-/**
- *  strict
- */
-
 let tokenCounter = 1;
 let pendingClaim = null;
 

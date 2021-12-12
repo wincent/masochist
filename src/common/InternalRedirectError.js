@@ -1,10 +1,4 @@
-/**
- *  strict
- */
-
 export default class InternalRedirectError extends Error {
-  target;
-
   constructor(message, target) {
     super(message);
     this.target = target;

@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import git from './git';
 import pipe from './pipe';
 import invariant from '../common/invariant';

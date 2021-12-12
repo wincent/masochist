@@ -57,7 +57,7 @@ function highlight(str, language) {
   return `<pre><code>${escapeHTML(str)}</code></pre>`;
 }
 
-function getMarkdownRenderer(baseLevel: ?number) {
+function getMarkdownRenderer(baseLevel) {
   const md = MarkdownIt({
     highlight,
     html: true, // Let HTML through.

@@ -1,12 +1,7 @@
-/**
- *
- */
-
 import {decodeHTML} from 'entities';
 import {graphql} from 'react-relay';
 import RSS from 'rss';
 
-import {array} from '../../common/checks';
 import Cache from '../Cache';
 import {HOST, SCHEME} from '../constants';
 import git from '../git';
@@ -35,9 +30,6 @@ function extractExcerpt(body) {
  */
 const FEED_VERSION = 1;
 
-// Could have just used an untagged template literal, but by using `graphql` we
-// get validation at compile-time instead of runtime, and also some handy Flow
-// types.
 const feedQuery = graphql`
   query feedQuery {
     ...feedPosts

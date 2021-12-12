@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import formatTitle from './formatTitle';
 import inBrowser from './inBrowser';
 import withContext from './withContext';

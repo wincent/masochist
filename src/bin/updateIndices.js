@@ -19,14 +19,12 @@ import '../server/configureNpm';
 
 import os from 'os';
 import path from 'path';
-import extractTypeAndId from '../common/extractTypeAndId';
 import memoize from '../common/memoize';
-import Cache from '../server/Cache';
 import {LAST_INDEXED_HASH, REDIS_TAGS_INDEX_KEY} from '../server/constants';
 import getIndexNameForContentType from '../server/getIndexNameForContentType';
 import getWhatChanged, {forEachCommit} from '../server/getWhatChanged';
 import git from '../server/git';
-import {getTimestamps, getCacheKey, loadContent} from '../server/loadContent';
+import {loadContent} from '../server/loadContent';
 import redis from '../server/redis';
 import run from '../server/run';
 
@@ -39,7 +37,7 @@ import run from '../server/run';
  */
 const maxColumnCount = parseInt(process.stdout.columns || 80, 10);
 let columnCount = 0;
-function dot(): void {
+function dot() {
   columnCount++;
   print('.');
   if (columnCount > maxColumnCount) {
@@ -48,31 +46,26 @@ function dot(): void {
   }
 }
 
-function log(format, ...args: Array<string>): void {
+function log(format, ...args) {
   const time = new Date().toLocaleTimeString();
   format = time + ': ' + format;
   console.log(format, ...args);
   columnCount = 0;
 }
 
-function print(string: string): void {
+function print(string) {
   process.stdout.write(string);
 }
 
-function extractFile(pathString: string, contentType: string): string {
+function extractFile(pathString, contentType) {
   return pathString
     .slice(`content/${contentType}/`.length) // Strip prefix.
     .replace(/\.\w+$/, ''); // Strip extension.
 }
 
-const getChanges = memoize<[string, string], Promise/*:: <string> */>(
-  getWhatChanged,
-);
+const getChanges = memoize(getWhatChanged);
 
-async function getIsAncestor(
-  potentialAncestor: ?string,
-  commit: string,
-): Promise/*:: <boolean> */ {
+async function getIsAncestor(potentialAncestor, commit) {
   if (potentialAncestor) {
     try {
       await run(git('merge-base', '--is-ancestor', potentialAncestor, commit));

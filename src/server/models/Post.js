@@ -1,20 +1,7 @@
-/**
- *
- */
-
 import {REDIS_BLOG_INDEX_KEY} from '../constants';
 import readIndex from '../readIndex';
 
 export default class Post {
-  id;
-  title;
-  body;
-  description;
-  format;
-  createdAt;
-  updatedAt;
-  tags;
-
   static async readIndex(count, offset) {
     const results = await readIndex(REDIS_BLOG_INDEX_KEY, count, offset);
     return results;

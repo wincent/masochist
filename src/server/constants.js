@@ -1,7 +1,3 @@
-/**
- *  strict
- */
-
 import getIndexNameForContentType from './getIndexNameForContentType';
 
 export const HOST = 'wincent.com';

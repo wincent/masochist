@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import DataLoader from 'dataloader';
 import {loadContent} from '../loadContent';
 import Snippet from '../models/Snippet';

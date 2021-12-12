@@ -1,13 +1,7 @@
-/**
- *
- */
-
 import {readFileSync, existsSync} from 'fs';
 import {join} from 'path';
 
 class QueryCache {
-  _queries;
-
   constructor() {
     this._queries = {};
   }

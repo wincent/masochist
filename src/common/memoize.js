@@ -1,7 +1,3 @@
-/**
- *  strict
- */
-
 import nullthrows from '@wincent/nullthrows';
 import stableStringify from '@wincent/stable-stringify';
 

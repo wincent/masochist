@@ -1,7 +1,3 @@
-/**
- *  strict
- */
-
 export default function relativizeDate(dateString) {
   const now = new Date();
   const date = new Date(Date.parse(dateString));

@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
@@ -39,9 +35,6 @@ function getActiveRoutePrefix(path) {
 }
 
 export default class Nav extends React.Component {
-  props;
-  state;
-
   static contextTypes = {
     router: PropTypes.object,
   };

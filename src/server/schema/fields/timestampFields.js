@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import DateTimeType from '../types/DateTimeType';
 
 const timestampFields = {

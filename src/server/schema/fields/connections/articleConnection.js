@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import {connectionDefinitions} from 'graphql-relay';
 import ArticleType from '../../types/ArticleType';
 

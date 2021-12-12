@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import {connectionDefinitions} from 'graphql-relay';
 import SnippetType from '../../types/SnippetType';
 

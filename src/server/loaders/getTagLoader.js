@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import DataLoader from 'dataloader';
 import {array} from '../../common/checks';
 import Tag from '../models/Tag';

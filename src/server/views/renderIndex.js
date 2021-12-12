@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import formatTitle from '../../common/formatTitle';
 import raw from '../raw';
 import template from '../template';

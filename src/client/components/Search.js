@@ -1,20 +1,12 @@
-/**
- *
- */
-
 import PropTypes from 'prop-types';
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
 import {getRefetchToken} from '../RefetchTokenManager';
-import ArticlePreview from './ArticlePreview';
 import ContentListing from './ContentListing';
 import ContentPreview from './ContentPreview';
 import LoadMoreButton from './LoadMoreButton';
 import Link from './Link';
 import PluralText from './PluralText';
-import PagePreview from './PagePreview';
-import PostPreview from './PostPreview';
-import SnippetPreview from './SnippetPreview';
 
 const PAGE_SIZE = 10;
 
@@ -37,10 +29,6 @@ function getSearchURL(query, options = {}) {
 }
 
 class Search extends React.Component {
-  _loadMoreDisposable;
-  _refetchDisposable;
-  _searchInput;
-
   static contextTypes = {
     router: PropTypes.object,
   };

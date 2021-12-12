@@ -1,7 +1,3 @@
-/**
- *  strict
- */
-
 import pipe from './pipe';
 
 /**

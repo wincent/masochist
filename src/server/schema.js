@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import {
   GraphQLNonNull,
   GraphQLObjectType,

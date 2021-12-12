@@ -1,17 +1,4 @@
-/**
- *
- */
-
 export default class Page {
-  id;
-  title;
-  body;
-  description;
-  format;
-  createdAt;
-  updatedAt;
-  tags;
-
   constructor(values) {
     this.id = values.id;
     this.title = values.title;

@@ -1,21 +1,7 @@
-/**
- *
- */
-
 import {REDIS_WIKI_INDEX_KEY} from '../constants';
 import readIndex from '../readIndex';
 
 export default class Article {
-  id;
-  title;
-  body;
-  description;
-  format;
-  createdAt;
-  updatedAt;
-  redirect;
-  tags;
-
   static async readIndex(count, offset) {
     const results = await readIndex(REDIS_WIKI_INDEX_KEY, count, offset);
     return results;

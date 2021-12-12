@@ -1,7 +1,3 @@
-/**
- *
- */
-
 export function array(maybeArray) {
   if (Array.isArray(maybeArray)) {
     return maybeArray;

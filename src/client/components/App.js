@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import PropTypes from 'prop-types';
 import * as React from 'react';
 import Footer from './Footer';

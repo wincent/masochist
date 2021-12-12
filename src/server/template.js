@@ -1,7 +1,3 @@
-/**
- *  strict
- */
-
 import {Readable} from 'stream';
 import escapeHTML from '@wincent/escape-html';
 import raw from './raw';

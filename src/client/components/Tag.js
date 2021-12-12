@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import PropTypes from 'prop-types';
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
@@ -18,8 +14,6 @@ const PAGE_SIZE = 10;
 let fragmentVariables;
 
 class Tag extends React.Component {
-  _disposable;
-
   static contextTypes = {
     router: PropTypes.object,
   };

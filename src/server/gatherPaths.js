@@ -1,8 +1,4 @@
 /**
- *  strict
- */
-
-/**
  * Parses a RouteConfig object and returns a list of Express-style path
  * patterns ("/", "/blog", "/blog/*" etc).
  */

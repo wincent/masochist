@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import stableStringify from '@wincent/stable-stringify';
 import {LAST_INDEXED_HASH} from './constants';
 import {graphql} from 'graphql';

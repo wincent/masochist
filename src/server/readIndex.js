@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import {array, number} from '../common/checks';
 import redis from './redis';
 

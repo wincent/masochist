@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import PropTypes from 'prop-types';
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
@@ -15,8 +11,6 @@ const PAGE_SIZE = 3;
 let fragmentVariables;
 
 class PostsIndex extends React.Component {
-  _disposable;
-
   static contextTypes = {
     router: PropTypes.object,
   };

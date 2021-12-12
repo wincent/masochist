@@ -1,8 +1,4 @@
 /**
- *  strict
- */
-
-/**
  * Return a non-cryptographic, numeric hash code for the provided string.
  *
  * Note that the code may be negative.

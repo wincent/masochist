@@ -10,7 +10,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @flow
+ *
  */
 
 'use strict';
@@ -45,14 +45,7 @@ const {
   schemaExtensions,
 } = RelayIRTransforms;
 
-import type {GetWriterOptions} from 'graphql-compiler';
-import type {GraphQLSchema} from 'graphql';
-import type {
-  PluginInitializer,
-  PluginInterface,
-} from 'relay-compiler/lib/RelayLanguagePluginInterface';
-
-function persistQuery(text: string): Promise<string> {
+function persistQuery(text) {
   const match = text.match(/^\s*query\s+(\w+Query)\b/);
   if (!match) {
     console.error('Failed to find query name in text:\n' + text);
@@ -67,14 +60,7 @@ function persistQuery(text: string): Promise<string> {
   return Promise.resolve(name);
 }
 
-function getFilepathsFromGlob(
-  baseDir,
-  options: {
-    extensions: Array<string>,
-    include: Array<string>,
-    exclude: Array<string>,
-  },
-): Array<string> {
+function getFilepathsFromGlob(baseDir, options) {
   const {extensions, include, exclude} = options;
   const patterns = include.map((inc) => `${inc}/*.+(${extensions.join('|')})`);
 
@@ -84,8 +70,6 @@ function getFilepathsFromGlob(
     ignore: exclude,
   });
 }
-
-type LanguagePlugin = PluginInitializer | {default: PluginInitializer};
 
 async function run() {
   const schemaPath = path.resolve(process.cwd(), 'schema.graphql');
@@ -165,7 +149,7 @@ async function run() {
         artifactDirectory,
         persistQuery,
       ),
-      isGeneratedFile: (filePath: string) =>
+      isGeneratedFile: (filePath) =>
         filePath.endsWith('.graphql.' + outputExtension) &&
         filePath.includes(generatedDirectoryName),
       parser: sourceParserName,
@@ -188,11 +172,11 @@ async function run() {
 }
 
 function getRelayFileWriter(
-  baseDir: string,
-  languagePlugin: PluginInterface,
-  noFutureProofEnums: boolean,
-  outputDir?: ?string,
-  persistQuery: (text: string) => Promise<string>,
+  baseDir,
+  languagePlugin,
+  noFutureProofEnums,
+  outputDir,
+  persistQuery,
 ) {
   return ({
     onlyValidate,
@@ -201,7 +185,7 @@ function getRelayFileWriter(
     baseDocuments,
     sourceControl,
     reporter,
-  }: GetWriterOptions) =>
+  }) =>
     new RelayFileWriter({
       config: {
         baseDir,
@@ -232,7 +216,7 @@ function getRelayFileWriter(
     });
 }
 
-function getSchema(schemaPath: string): GraphQLSchema {
+function getSchema(schemaPath) {
   try {
     let source = fs.readFileSync(schemaPath, 'utf8');
     if (path.extname(schemaPath) === '.json') {

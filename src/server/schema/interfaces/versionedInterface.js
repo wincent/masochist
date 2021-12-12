@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import {GraphQLInterfaceType, GraphQLNonNull} from 'graphql';
 import DateTimeType from '../types/DateTimeType';
 import HistoryType from '../types/HistoryType';

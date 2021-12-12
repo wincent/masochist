@@ -1,10 +1,5 @@
-/**
- *
- */
-
 import path from 'path';
 import unpackContent from 'unpack-content';
-import {object} from '../common/checks';
 import toGlobalId from '../common/toGlobalId';
 import Cache from './Cache';
 import {Extensions} from './Markup';

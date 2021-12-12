@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import getArticleLoader from './loaders/getArticleLoader';
 import getPageLoader from './loaders/getPageLoader';
 import getPostLoader from './loaders/getPostLoader';

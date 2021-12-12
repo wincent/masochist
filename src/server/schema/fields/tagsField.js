@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import {GraphQLList, GraphQLNonNull} from 'graphql';
 import TagNameType from '../types/TagNameType';
 

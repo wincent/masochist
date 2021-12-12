@@ -1,7 +1,3 @@
-/**
- *  strict-local
- */
-
 import path from 'path';
 import {REPO} from './constants';
 

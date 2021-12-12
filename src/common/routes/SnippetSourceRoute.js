@@ -1,12 +1,7 @@
-/**
- *
- */
-
 import React from 'react';
 import {graphql} from 'react-relay';
 
 import Link from '../../client/components/Link';
-import Snippet from '../../client/components/Snippet';
 import {makeNotFound} from '../NotFoundError';
 import {makeRenderText} from '../RenderTextError';
 import buildRoute from '../buildRoute';

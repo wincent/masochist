@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import {GraphQLInt, GraphQLNonNull} from 'graphql';
 import {connectionDefinitions} from 'graphql-relay';
 import ContentType from '../../types/ContentType';

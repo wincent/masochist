@@ -1,7 +1,3 @@
-/**
- *  strict
- */
-
 import React from 'react';
 import inBrowser from '../../common/inBrowser';
 

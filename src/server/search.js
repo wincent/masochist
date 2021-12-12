@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import git from './git';
 import {RunError} from './pipe';
 import run from './run';

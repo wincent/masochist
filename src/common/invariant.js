@@ -1,7 +1,3 @@
-/**
- *  strict
- */
-
 let invariant;
 
 if (__DEV__) {

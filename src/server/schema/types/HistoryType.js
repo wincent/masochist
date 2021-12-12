@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import {GraphQLNonNull, GraphQLObjectType, GraphQLString} from 'graphql';
 
 const HistoryType = new GraphQLObjectType({

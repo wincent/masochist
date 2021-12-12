@@ -1,11 +1,4 @@
-/**
- *  strict
- */
-
 export default class RenderTextError extends Error {
-  text;
-  type;
-
   constructor(text, type) {
     super('RenderTextError');
     this.text = text;

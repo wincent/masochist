@@ -1,7 +1,3 @@
-/**
- *  strict
- */
-
 import stableStringify from '@wincent/stable-stringify';
 
 export default function getRequestBody({id}, variables) {

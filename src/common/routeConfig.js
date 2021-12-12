@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import React from 'react';
 
 import HTTPError from '../client/components/HTTPError';

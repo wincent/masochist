@@ -1,15 +1,8 @@
-/**
- *  strict
- */
-
 const DEFAULT_CAPACITY = 128;
 
 import nullthrows from '@wincent/nullthrows';
 
 export default class LRUCache {
-  _capacity;
-  _storage;
-
   constructor(capacity = DEFAULT_CAPACITY) {
     if (capacity <= 0) {
       throw new Error(`LRUCache: non-positive capacity ${capacity}`);

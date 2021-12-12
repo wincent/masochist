@@ -1,12 +1,6 @@
-/**
- *  strict
- */
-
 import {spawn} from 'child_process';
 
 export class RunError extends Error {
-  code;
-
   constructor(message, code) {
     super(`RunError: ${message}`);
     this.code = code;

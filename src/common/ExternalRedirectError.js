@@ -1,11 +1,4 @@
-/**
- *  strict
- */
-
 export default class ExternalRedirectError extends Error {
-  target;
-  code;
-
   constructor(message, target, code) {
     super(message);
     this.target = target;

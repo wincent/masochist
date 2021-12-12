@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import queryCache from './queryCache';
 import runQuery from './runQuery';
 

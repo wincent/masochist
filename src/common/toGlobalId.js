@@ -1,7 +1,3 @@
-/**
- *  strict
- */
-
 import inBrowser from './inBrowser';
 
 function base64(string) {

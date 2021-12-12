@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import PropTypes from 'prop-types';
 import React from 'react';
 import matchRoute from '../../common/matchRoute';

@@ -1,9 +1,5 @@
 import {GraphQLNonNull, GraphQLObjectType, GraphQLString} from 'graphql';
-import {
-  connectionArgs,
-  getOffsetWithDefault,
-  globalIdField,
-} from 'graphql-relay';
+import {globalIdField} from 'graphql-relay';
 import getHistoryURLForContentPath from '../../getHistoryURLForContentPath';
 import Snippet from '../../models/Snippet';
 import {nodeInterface, registerType} from '../definitions/node';

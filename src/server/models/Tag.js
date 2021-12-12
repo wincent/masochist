@@ -1,17 +1,8 @@
-/**
- *
- */
-
 import {array, number} from '../../common/checks';
 import {REDIS_TAGS_INDEX_KEY} from '../constants';
 import redis from '../redis';
 
 export default class Tag {
-  id;
-  name;
-  count;
-  taggables;
-
   static async readIndex(count, offset) {
     const key = REDIS_TAGS_INDEX_KEY;
     const results = await redis.multi([

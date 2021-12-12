@@ -1,7 +1,3 @@
-/**
- *  strict-local
- */
-
 import {pathToRegexp} from 'path-to-regexp';
 
 import routeConfig from './routeConfig';

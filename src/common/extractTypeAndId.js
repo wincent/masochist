@@ -1,7 +1,3 @@
-/**
- *  strict
- */
-
 export default function extractTypeAndId(typeAndId) {
   const separatorIndex = typeAndId.indexOf(':');
   return [

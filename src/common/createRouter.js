@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import Router from 'universal-router';
 
 import routeConfig from './routeConfig';

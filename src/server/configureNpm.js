@@ -1,8 +1,4 @@
 /**
- *
- */
-
-/**
  * Older versions of Yarn didn't handle npm_package_config:
  *
  *   https://github.com/yarnpkg/yarn/issues/2989

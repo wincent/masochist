@@ -1,12 +1,4 @@
-/**
- *  strict
- */
-
-import * as React from 'react';
-
 export default class NotFoundError extends Error {
-  component;
-
   constructor(message, component) {
     super(message);
     this.component = component;

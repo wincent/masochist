@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import DataLoader from 'dataloader';
 import {loadContent} from '../loadContent';
 import Page from '../models/Page';

@@ -1,14 +1,8 @@
-/**
- *  strict
- */
-
 import React from 'react';
 import inBrowser from '../../common/inBrowser';
 import relativizeDate from '../relativizeDate';
 
 export default class Time extends React.Component {
-  _updateTimer;
-
   _clearTimer = () => {
     if (this._updateTimer) {
       clearTimeout(this._updateTimer);

@@ -1,7 +1,3 @@
-/**
- *
- */
-
 import {graphql} from 'react-relay';
 import stripTrailingSlash from '../common/stripTrailingSlash';
 import {object} from '../common/checks';

@@ -1,7 +1,3 @@
-/**
- *  strict
- */
-
 export const Extensions = {
   C: 'c',
   HTML: 'html',
