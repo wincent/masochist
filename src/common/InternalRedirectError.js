@@ -1,17 +1,17 @@
 /**
- * @flow strict
+ *  strict
  */
 
 export default class InternalRedirectError extends Error {
-  target: string;
+  target;
 
-  constructor(message: string, target: string) {
+  constructor(message, target) {
     super(message);
     this.target = target;
   }
 }
 
-export function makeInternalRedirect(target: string): InternalRedirectError {
+export function makeInternalRedirect(target) {
   const message = `Internal redirect - Location: ${target}`;
   return new InternalRedirectError(message, target);
 }

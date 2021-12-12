@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import {GraphQLNonNull, GraphQLObjectType, GraphQLString} from 'graphql';

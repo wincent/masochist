@@ -1,19 +1,15 @@
 /**
- * @flow
+ *
  */
 
 import React from 'react';
 import inBrowser from '../../common/inBrowser';
 
-import type {ChildrenArray, Node as ReactNode} from 'react';
-
 if (inBrowser) {
   require('./ContentListing.css');
 }
 
-export default class ContentListing extends React.Component<{
-  children: ?$ReadOnlyArray<ChildrenArray<ReactNode>>,
-}> {
+export default class ContentListing extends React.Component {
   render() {
     return (
       <table className="content-listing u-full-width">

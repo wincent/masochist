@@ -1,23 +1,12 @@
 /**
- * @flow
+ *
  */
 
 import formatTitle from '../../common/formatTitle';
 import raw from '../raw';
 import template from '../template';
 
-export default function renderIndex(locals: {
-  alternate: ?string,
-  cjs: string,
-  cache: string,
-  canonical: Promise<?string>,
-  description: ?string,
-  home: ?string,
-  mjs: string,
-  pageContent: string,
-  styles: Promise<?string>,
-  title: ?string,
-}) {
+export default function renderIndex(locals) {
   const {
     alternate,
     cjs,

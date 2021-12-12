@@ -1,22 +1,18 @@
 /**
- * @flow
+ *
  */
 
 import {readFileSync, existsSync} from 'fs';
 import {join} from 'path';
 
-type QueryMap = {
-  [name: string]: any,
-};
-
 class QueryCache {
-  _queries: QueryMap;
+  _queries;
 
   constructor() {
     this._queries = {};
   }
 
-  getQuery(name: string): any {
+  getQuery(name) {
     if (!this._queries[name]) {
       if (name.match(/^\w+Query$/)) {
         const path = join(__dirname, '..', '__generated__', name + '.txt');

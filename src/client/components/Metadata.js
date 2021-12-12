@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import * as React from 'react';
@@ -9,6 +9,6 @@ if (inBrowser) {
   require('./Metadata.css');
 }
 
-export default function Metadata({children}: {children: React.Node}) {
+export default function Metadata({children}) {
   return <div className="metadata">{children}</div>;
 }

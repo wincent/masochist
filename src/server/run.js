@@ -1,13 +1,8 @@
 /**
- * @flow strict
+ *  strict
  */
 
 import pipe from './pipe';
-
-export type Invocation = {
-  command: string,
-  args: Array<string>,
-};
 
 /**
  * Convenience method to spawn a single invocation. For example:
@@ -18,6 +13,6 @@ export type Invocation = {
  *
  *     git log ...
  */
-export default function run(invocation: Invocation): Promise<string> {
+export default function run(invocation) {
   return pipe(invocation);
 }

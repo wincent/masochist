@@ -1,14 +1,12 @@
 /**
- * @flow
+ *
  */
 
 import DataLoader from 'dataloader';
 import {loadContent} from '../loadContent';
 import Page from '../models/Page';
 
-function loadPages(
-  keys: $ReadOnlyArray<string>,
-): Promise<Array<Object | Error>> {
+function loadPages(keys) {
   const promises = keys
     .map((key) => ({
       file: key,
@@ -21,5 +19,5 @@ function loadPages(
 
 // the webpack build no longer chokes on it being inline.
 export default function getPageLoader() {
-  return new DataLoader<string, ?Page>(loadPages);
+  return new DataLoader(loadPages);
 }

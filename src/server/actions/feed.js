@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import {decodeHTML} from 'entities';
@@ -14,12 +14,10 @@ import run from '../run';
 import runQuery from '../runQuery';
 import stripTags from '../stripTags';
 
-import type {feedPosts} from './__generated__/feedPosts.graphql';
-
 const HELLIP = '\u2026';
 const FOUR_TWEETS = 140 * 4;
 
-function ellipsize(input: string, limit: number = FOUR_TWEETS): string {
+function ellipsize(input, limit = FOUR_TWEETS) {
   if (input.length >= limit - 3) {
     return input.substr(0, limit - 3) + HELLIP;
   } else {
@@ -27,7 +25,7 @@ function ellipsize(input: string, limit: number = FOUR_TWEETS): string {
   }
 }
 
-function extractExcerpt(body: string): string {
+function extractExcerpt(body) {
   return ellipsize(decodeHTML(stripTags(body).trim().replace(/\s+/g, ' ')));
 }
 
@@ -73,8 +71,8 @@ export default (async function feed() {
       site_url: SCHEME + HOST + '/blog',
       title: 'wincent.com blog',
     });
-    const result: any = await runQuery(feedQuery().id);
-    const data: feedPosts = result.data;
+    const result = await runQuery(feedQuery().id);
+    const data = result.data;
     const posts = data.posts;
     posts.edges?.forEach((edge) => {
       if (edge) {

@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import PropTypes from 'prop-types';
@@ -12,30 +12,19 @@ import LoadMoreButton from './LoadMoreButton';
 import Link from './Link';
 import PluralText from './PluralText';
 
-import type {Disposable, RelayPaginationProp} from 'react-relay';
-import type {Tag as TagData} from './__generated__/Tag.graphql';
-
 const PAGE_SIZE = 10;
 
 // See note in `ArticlesIndex`.
 let fragmentVariables;
 
-type Props = {
-  data: TagData,
-  relay: RelayPaginationProp,
-};
-type State = {
-  isLoading: boolean,
-};
-
-class Tag extends React.Component<Props, State> {
-  _disposable: ?Disposable;
+class Tag extends React.Component {
+  _disposable;
 
   static contextTypes = {
     router: PropTypes.object,
   };
 
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     this.state = {isLoading: false};
   }

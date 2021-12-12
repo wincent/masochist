@@ -1,24 +1,18 @@
 /**
- * @flow
+ *
  */
 
 import {array, number} from '../../common/checks';
 import {REDIS_TAGS_INDEX_KEY} from '../constants';
 import redis from '../redis';
 
-import type {IndexResult} from '../readIndex';
-import type {Taggable} from '../schema/fields/connections/taggableConnection';
-
 export default class Tag {
-  id: string;
-  name: string;
-  count: number;
-  taggables: Array<Taggable>;
+  id;
+  name;
+  count;
+  taggables;
 
-  static async readIndex(
-    count: number,
-    offset: number,
-  ): Promise<[Array<Tag>, number]> {
+  static async readIndex(count, offset) {
     const key = REDIS_TAGS_INDEX_KEY;
     const results = await redis.multi([
       ['ZREVRANGE', key, offset, offset + count - 1, 'WITHSCORES'],
@@ -27,8 +21,8 @@ export default class Tag {
 
     // Results is not an array, so we can't destructure it (although we can make
     // it into an array for the benefit of our callers).
-    const tagsAndCounts: Array<mixed> = array(array(results)[0]);
-    const cardinality: number = number(array(results)[1]);
+    const tagsAndCounts = array(array(results)[0]);
+    const cardinality = number(array(results)[1]);
 
     // Because we asked for the items WITHSCORES, we doubled the number of rows
     // we got back.
@@ -43,7 +37,7 @@ export default class Tag {
     return [tags, cardinality];
   }
 
-  constructor(values: Object) {
+  constructor(values) {
     this.id = values.id;
     this.name = values.name;
     this.count = values.count;

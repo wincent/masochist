@@ -1,18 +1,18 @@
 /**
- * @flow
+ *
  */
 
 export default class Page {
-  id: string;
-  title: string;
-  body: string;
-  description: ?string;
-  format: string;
-  createdAt: ?Date;
-  updatedAt: ?Date;
-  tags: Array<string>;
+  id;
+  title;
+  body;
+  description;
+  format;
+  createdAt;
+  updatedAt;
+  tags;
 
-  constructor(values: Object) {
+  constructor(values) {
     this.id = values.id;
     this.title = values.title;
     this.body = values.body;

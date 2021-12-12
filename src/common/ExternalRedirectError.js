@@ -1,19 +1,19 @@
 /**
- * @flow strict
+ *  strict
  */
 
 export default class ExternalRedirectError extends Error {
-  target: string;
-  code: number;
+  target;
+  code;
 
-  constructor(message: string, target: string, code: number) {
+  constructor(message, target, code) {
     super(message);
     this.target = target;
     this.code = code;
   }
 }
 
-function descriptionForCode(code: number): string {
+function descriptionForCode(code) {
   switch (code) {
     case 301:
       return 'Moved Permanently';
@@ -24,10 +24,7 @@ function descriptionForCode(code: number): string {
   }
 }
 
-export function makeExternalRedirect(
-  target: string,
-  code: number,
-): ExternalRedirectError {
+export function makeExternalRedirect(target, code) {
   const message = `HTTP/1.1 ${code} ${descriptionForCode(
     code,
   )} - Location: ${target}`;

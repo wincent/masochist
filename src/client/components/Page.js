@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import React from 'react';
@@ -10,9 +10,7 @@ import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
 import When from './When';
 
-import type {Page as PageData} from './__generated__/Page.graphql';
-
-class Page extends React.Component<{data: PageData}> {
+class Page extends React.Component {
   render() {
     const page = this.props.data;
     return (

@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import React from 'react';
@@ -9,9 +9,7 @@ import TagLozenge from './TagLozenge';
 import Tags from './Tags';
 import When from './When';
 
-import type {PostPreview as PostPreviewData} from './__generated__/PostPreview.graphql';
-
-class PostPreview extends React.Component<{data: PostPreviewData}> {
+class PostPreview extends React.Component {
   render() {
     const post = this.props.data;
     const {description, title, url} = post;

@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import stableStringify from '@wincent/stable-stringify';
@@ -12,12 +12,10 @@ import queryCache from './queryCache';
 import redis from './redis';
 import schema from './schema';
 
-import type {ExecutionResult} from 'graphql/execution/execute';
-
-function getCache(hash: string) {
+function getCache(hash) {
   return {
     hash,
-    storage: new LRUCache<string, Promise<ExecutionResult>>(),
+    storage: new LRUCache(),
   };
 }
 
@@ -26,7 +24,7 @@ let cache = getCache('');
 /**
  * Convenience wrapper around running an arbitrary GraphQL query.
  */
-export default (async function runQuery(id: string, variables: ?Object) {
+export default (async function runQuery(id, variables) {
   const query = queryCache.getQuery(id);
 
   const lastIndexedHash = String(await redis.get(LAST_INDEXED_HASH));

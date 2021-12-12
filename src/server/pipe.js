@@ -1,21 +1,19 @@
 /**
- * @flow strict
+ *  strict
  */
 
 import {spawn} from 'child_process';
 
-import type {Invocation} from './run';
-
 export class RunError extends Error {
-  code: number;
+  code;
 
-  constructor(message: string, code: number) {
+  constructor(message, code) {
     super(`RunError: ${message}`);
     this.code = code;
   }
 }
 
-function getError(pipeline: string, code: number): RunError {
+function getError(pipeline, code) {
   return new RunError(`${pipeline}: exit ${code}`, code);
 }
 
@@ -29,9 +27,7 @@ function getError(pipeline: string, code: number): RunError {
  *
  *     git rev-list ... | git diff-tree ...
  */
-export default function pipe(
-  ...invocations: Array<Invocation>
-): Promise<string> {
+export default function pipe(...invocations) {
   const pipeline = invocations
     .map(({command, args}) => `${command} ${args.join(' ')}`)
     .join(' | ');

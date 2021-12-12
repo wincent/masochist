@@ -1,17 +1,11 @@
 /**
- * @flow
+ *
  */
 
 import {array, number} from '../common/checks';
 import redis from './redis';
 
-export type IndexResult = [Array<mixed>, number];
-
-export default (async function readIndex(
-  name: string,
-  count: number,
-  offset: number,
-): Promise<IndexResult> {
+export default (async function readIndex(name, count, offset) {
   const results = await redis.multi([
     ['ZREVRANGE', name, offset, offset + count - 1],
     ['ZCARD', name],

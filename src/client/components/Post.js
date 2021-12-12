@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import React from 'react';
@@ -12,13 +12,11 @@ import When from './When';
 
 import inBrowser from '../../common/inBrowser';
 
-import type {Post as PostData} from './__generated__/Post.graphql';
-
 if (inBrowser) {
   require('./Post.css');
 }
 
-class Post extends React.Component<{data: PostData}> {
+class Post extends React.Component {
   render() {
     const post = this.props.data;
     return (

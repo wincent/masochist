@@ -1,28 +1,26 @@
 /**
- * @flow
+ *
  */
 
 import {REDIS_SNIPPETS_INDEX_KEY} from '../constants';
 import readIndex from '../readIndex';
 
-import type {IndexResult} from '../readIndex';
-
 export default class Snippet {
-  id: string;
-  title: string;
-  body: string;
-  description: ?string;
-  format: string;
-  createdAt: ?Date;
-  updatedAt: ?Date;
-  tags: Array<string>;
+  id;
+  title;
+  body;
+  description;
+  format;
+  createdAt;
+  updatedAt;
+  tags;
 
-  static async readIndex(count: number, offset: number): Promise<IndexResult> {
+  static async readIndex(count, offset) {
     const results = await readIndex(REDIS_SNIPPETS_INDEX_KEY, count, offset);
     return results;
   }
 
-  constructor(values: Object) {
+  constructor(values) {
     this.id = values.id;
     this.title = values.title;
     this.body = values.body;

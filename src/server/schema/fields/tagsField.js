@@ -1,12 +1,9 @@
 /**
- * @flow
+ *
  */
 
 import {GraphQLList, GraphQLNonNull} from 'graphql';
 import TagNameType from '../types/TagNameType';
-
-import type {Taggable} from './connections/taggableConnection';
-import type Tag from '../../models/Tag';
 
 const tagsField = {
   tags: {

@@ -1,16 +1,16 @@
 /**
- * @flow strict
+ *  strict
  */
 
 const DEFAULT_CAPACITY = 128;
 
 import nullthrows from '@wincent/nullthrows';
 
-export default class LRUCache<TKey, TValue> {
-  _capacity: number;
-  _storage: Map<TKey, TValue>;
+export default class LRUCache {
+  _capacity;
+  _storage;
 
-  constructor(capacity: number = DEFAULT_CAPACITY) {
+  constructor(capacity = DEFAULT_CAPACITY) {
     if (capacity <= 0) {
       throw new Error(`LRUCache: non-positive capacity ${capacity}`);
     }
@@ -18,15 +18,15 @@ export default class LRUCache<TKey, TValue> {
     this._storage = new Map();
   }
 
-  delete(key: TKey): boolean {
+  delete(key) {
     return this._storage.delete(key);
   }
 
-  has(key: TKey): boolean {
+  has(key) {
     return this._storage.has(key);
   }
 
-  get(key: TKey): ?TValue {
+  get(key) {
     // Bump item in LRU list by removing and re-adding it.
     if (this._storage.has(key)) {
       const value = nullthrows(this._storage.get(key));
@@ -36,7 +36,7 @@ export default class LRUCache<TKey, TValue> {
     }
   }
 
-  set(key: TKey, value: TValue): LRUCache<TKey, TValue> {
+  set(key, value) {
     // If necessary to stay under capacity, remove LRU items.
     if (this._storage.size >= this._capacity) {
       let countToRemove = this._storage.size - this._capacity;

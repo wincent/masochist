@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import {GraphQLScalarType} from 'graphql';

@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import PropTypes from 'prop-types';
@@ -16,18 +16,12 @@ import PagePreview from './PagePreview';
 import PostPreview from './PostPreview';
 import SnippetPreview from './SnippetPreview';
 
-import type {Disposable, RelayPaginationProp} from 'react-relay';
-import type {Search as SearchData} from './__generated__/Search.graphql';
-
 const PAGE_SIZE = 10;
 
 // See note in `ArticlesIndex`.
 let fragmentVariables;
 
-function getSearchURL(
-  query: string,
-  options: {display?: boolean} = {},
-): string {
+function getSearchURL(query, options = {}) {
   // Note that we may need to double-encode the search query, otherwise
   // the "history" package will decode a query like "vim\b" which we
   // have encoded as "vim%5Cb" back to "vim/b", which is hideously
@@ -41,27 +35,17 @@ function getSearchURL(
     return '/search';
   }
 }
-type Props = {
-  data: SearchData,
-  q: string,
-  relay: RelayPaginationProp,
-};
-type State = {
-  isLoadingMore: boolean,
-  isRefetching: boolean,
-  q: string,
-};
 
-class Search extends React.Component<Props, State> {
-  _loadMoreDisposable: ?Disposable;
-  _refetchDisposable: ?Disposable;
-  _searchInput: ?HTMLElement;
+class Search extends React.Component {
+  _loadMoreDisposable;
+  _refetchDisposable;
+  _searchInput;
 
   static contextTypes = {
     router: PropTypes.object,
   };
 
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     this.state = {
       isLoadingMore: false,

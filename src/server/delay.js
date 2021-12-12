@@ -1,7 +1,7 @@
 /**
- * @flow strict
+ *  strict
  */
 
-export default function delay(ms: number): Promise<void> {
+export default function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }

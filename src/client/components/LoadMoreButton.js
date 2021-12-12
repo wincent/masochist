@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import React from 'react';
@@ -9,13 +9,8 @@ if (inBrowser) {
   require('./LoadMoreButton.css');
 }
 
-type Props = {
-  onLoadMore: () => void,
-  isLoading: boolean,
-};
-
-export default class LoadMoreButton extends React.Component<Props> {
-  _handleLoadMore = (event: SyntheticEvent<HTMLButtonElement>) => {
+export default class LoadMoreButton extends React.Component {
+  _handleLoadMore = (event) => {
     event.preventDefault();
     this.props.onLoadMore();
   };

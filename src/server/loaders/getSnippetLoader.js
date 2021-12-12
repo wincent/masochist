@@ -1,14 +1,12 @@
 /**
- * @flow
+ *
  */
 
 import DataLoader from 'dataloader';
 import {loadContent} from '../loadContent';
 import Snippet from '../models/Snippet';
 
-function loadSnippets(
-  keys: $ReadOnlyArray<string>,
-): Promise<Array<Object | Error>> {
+function loadSnippets(keys) {
   const promises = keys
     .map((key) => ({
       file: key,
@@ -22,5 +20,5 @@ function loadSnippets(
 }
 
 export default function getSnippetLoader() {
-  return new DataLoader<string, ?Snippet>(loadSnippets);
+  return new DataLoader(loadSnippets);
 }

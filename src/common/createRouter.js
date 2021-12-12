@@ -1,24 +1,12 @@
 /**
- * @flow
+ *
  */
 
 import Router from 'universal-router';
 
 import routeConfig from './routeConfig';
 
-type History = {
-  push: (target: string) => void,
-  replace: (target: string) => void,
-};
-
-export type MasochistRouter = Router & {
-  history: History,
-};
-
-export default function createRouter(
-  history: mixed,
-  api: mixed,
-): MasochistRouter {
+export default function createRouter(history, api) {
   const router = new Router(routeConfig, {
     /**
      * Just like default resolver, but we support an optional "prepare"

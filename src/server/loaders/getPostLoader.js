@@ -1,14 +1,12 @@
 /**
- * @flow
+ *
  */
 
 import DataLoader from 'dataloader';
 import {loadContent} from '../loadContent';
 import Post from '../models/Post';
 
-function loadPosts(
-  keys: $ReadOnlyArray<string>,
-): Promise<Array<Object | Error>> {
+function loadPosts(keys) {
   const promises = keys
     .map((key) => ({
       file: key,
@@ -21,5 +19,5 @@ function loadPosts(
 
 export default function getPostLoader() {
   // BUG: webpack can't parse this syntax
-  return new DataLoader<string, ?Post>(loadPosts);
+  return new DataLoader(loadPosts);
 }

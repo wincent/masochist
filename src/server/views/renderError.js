@@ -1,17 +1,12 @@
 /**
- * @flow
+ *
  */
 
 import formatTitle from '../../common/formatTitle';
 import raw from '../raw';
 import template from '../template';
 
-export default function renderError(locals: {
-  code: number,
-  message: string,
-  pageContent: string,
-  styles: Promise<?string>,
-}) {
+export default function renderError(locals) {
   const {code, message, pageContent, styles} = locals;
   const title = formatTitle(`${code} ${message}`);
   return template`

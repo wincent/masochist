@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import PropTypes from 'prop-types';
@@ -9,9 +9,6 @@ import inBrowser from '../../common/inBrowser';
 import {getRefetchToken} from '../RefetchTokenManager';
 import ArticlePreview from './ArticlePreview';
 import LoadMoreButton from './LoadMoreButton';
-
-import type {Disposable, RelayPaginationProp} from 'react-relay';
-import type {ArticlesIndex as ArticlesIndexData} from './__generated__/ArticlesIndex.graphql';
 
 if (inBrowser) {
   require('./ArticlesIndex.css');
@@ -25,22 +22,14 @@ const PAGE_SIZE = 10;
 // only ever one mounted ArticlesIndex instance.
 let fragmentVariables;
 
-type Props = {
-  data: ArticlesIndexData,
-  relay: RelayPaginationProp,
-};
-type State = {
-  isLoading: boolean,
-};
-
-class ArticlesIndex extends React.Component<Props, State> {
-  _disposable: ?Disposable;
+class ArticlesIndex extends React.Component {
+  _disposable;
 
   static contextTypes = {
     router: PropTypes.object,
   };
 
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     this.state = {isLoading: false};
   }

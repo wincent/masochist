@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import {connectionDefinitions} from 'graphql-relay';

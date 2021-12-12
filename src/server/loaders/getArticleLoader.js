@@ -1,14 +1,12 @@
 /**
- * @flow
+ *
  */
 
 import DataLoader from 'dataloader';
 import {loadContent} from '../loadContent';
 import Article from '../models/Article';
 
-function loadArticles(
-  keys: $ReadOnlyArray<string>,
-): Promise<Array<Object | Error>> {
+function loadArticles(keys) {
   const promises = keys
     .map((key) => ({
       file: key,
@@ -29,5 +27,5 @@ function loadArticles(
 }
 
 export default function getArticleLoader() {
-  return new DataLoader<string, ?Article>(loadArticles);
+  return new DataLoader(loadArticles);
 }

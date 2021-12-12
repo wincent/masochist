@@ -1,9 +1,9 @@
 /**
- * @flow strict
+ *  strict
  */
 
 import getURLForContentPath from './getURLForContentPath';
 
-export default function getHistoryURLForContentPath(path: string): string {
+export default function getHistoryURLForContentPath(path) {
   return getURLForContentPath('commits', path);
 }

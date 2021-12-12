@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import PropTypes from 'prop-types';
@@ -15,13 +15,7 @@ if (inBrowser) {
   require('highlight.js/styles/default.css');
 }
 
-type Props = {
-  children: React.Node,
-  router: $FlowFixMe,
-  showProgress?: boolean,
-};
-
-export default class App extends React.Component<Props> {
+export default class App extends React.Component {
   static childContextTypes = {
     router: PropTypes.object,
   };
@@ -40,7 +34,7 @@ export default class App extends React.Component<Props> {
    * relative one that should be handled by the router, and if so, we hand it
    * off to the router; otherwise, the browser handles it.
    */
-  _handleClick = (event: SyntheticMouseEvent<HTMLDivElement>) => {
+  _handleClick = (event) => {
     let href = null;
     let element = event.target;
     if (!(element instanceof HTMLElement)) {
@@ -74,7 +68,7 @@ export default class App extends React.Component<Props> {
     }
   };
 
-  _handleMouseOver = (event: SyntheticMouseEvent<HTMLDivElement>) => {
+  _handleMouseOver = (event) => {
     let element = event.target;
     if (!(element instanceof HTMLElement)) {
       return;

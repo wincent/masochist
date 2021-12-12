@@ -1,12 +1,9 @@
 /**
- * @flow strict
+ *  strict
  */
 
 import stableStringify from '@wincent/stable-stringify';
 
-export default function getRequestBody(
-  {id}: {id: string},
-  variables: {[string]: mixed},
-) {
+export default function getRequestBody({id}, variables) {
   return stableStringify({id, variables});
 }

@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import git from './git';
@@ -7,15 +7,9 @@ import {RunError} from './pipe';
 import run from './run';
 import invariant from '../common/invariant';
 
-type ContentType = 'blog' | 'pages' | 'snippets' | 'wiki';
-type SearchResult = {
-  id: string,
-  type: ContentType,
-};
+let corpus = null;
 
-let corpus: ?Array<SearchResult> = null;
-
-function getContentType(string: string): ContentType {
+function getContentType(string) {
   invariant(
     string === 'blog' ||
       string === 'pages' ||
@@ -27,7 +21,7 @@ function getContentType(string: string): ContentType {
   return string;
 }
 
-async function getCorpus(): Promise<Array<SearchResult>> {
+async function getCorpus() {
   if (!corpus) {
     const output = await run(
       git(
@@ -73,7 +67,7 @@ const NORMALIZED_FILTERS = {
   snippet: 'snippets',
 };
 
-function getFilter(atom: string): ?string {
+function getFilter(atom) {
   const filter = atom.match(/^type:(\w+)$/);
   if (filter) {
     const match = filter[1];
@@ -86,7 +80,7 @@ function getFilter(atom: string): ?string {
 /**
  * Uses `git grep` to search the content repo.
  */
-export default (async function search(q: string): Promise<Array<SearchResult>> {
+export default (async function search(q) {
   const args = [
     'grep',
     '-I', // Ignore binary files.

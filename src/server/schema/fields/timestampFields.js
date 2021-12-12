@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import DateTimeType from '../types/DateTimeType';

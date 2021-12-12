@@ -1,24 +1,13 @@
 /**
- * @flow
+ *
  */
 
 import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
 import TagPreview from './TagPreview';
 
-import type {Disposable, RelayPaginationProp} from 'react-relay';
-import type {TagsIndex as TagsIndexData} from './__generated__/TagsIndex.graphql';
-
-type Props = {
-  data: TagsIndexData,
-  relay: RelayPaginationProp,
-};
-type State = {
-  filterString: string,
-};
-
-class TagsIndex extends React.Component<Props, State> {
-  constructor(props: Props) {
+class TagsIndex extends React.Component {
+  constructor(props) {
     super(props);
     this.state = {filterString: ''};
   }

@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import React from 'react';
@@ -9,9 +9,7 @@ import Tags from './Tags';
 import TagLozenge from './TagLozenge';
 import When from './When';
 
-import type {PagePreview as PagePreviewData} from './__generated__/PagePreview.graphql';
-
-class PagePreview extends React.Component<{data: PagePreviewData}> {
+class PagePreview extends React.Component {
   render() {
     const page = this.props.data;
     const {description, title, url} = page;

@@ -1,19 +1,16 @@
 /**
- * @flow strict
+ *  strict
  */
 
 import {Readable} from 'stream';
 import escapeHTML from '@wincent/escape-html';
 import raw from './raw';
 
-function squishWhitespace(string: string): string {
+function squishWhitespace(string) {
   return string.replace(/\s*\n\s*/g, '');
 }
 
-export default function template(
-  strings: Array<string>,
-  ...args: Array<mixed>
-) {
+export default function template(strings, ...args) {
   // Make one interpolated array of strings and args to make later processing
   // easier.
   const items = [];

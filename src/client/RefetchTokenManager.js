@@ -1,18 +1,16 @@
 /**
- * @flow strict
+ *  strict
  */
 
-opaque type Token = number;
-
-let tokenCounter: Token = 1;
-let pendingClaim: ?Token = null;
+let tokenCounter = 1;
+let pendingClaim = null;
 
 /**
  * Called by a refetch container immediately before issuing a refetch and
  * calling `push` on the router's `history` object, which will cause the
  * listener to be notified.
  */
-export function getRefetchToken(): Token {
+export function getRefetchToken() {
   if (pendingClaim != null) {
     throw new Error('Only one refetch token may be outstanding at any time');
   }
@@ -25,7 +23,7 @@ export function getRefetchToken(): Token {
  * issued. Subsequent calls (for example, during back or forward button
  * navigation) will return `false`.
  */
-export function claimRefetchToken(token: Token): boolean {
+export function claimRefetchToken(token) {
   if (token !== pendingClaim) {
     return false;
   }

@@ -1,16 +1,11 @@
 /**
- * @flow
+ *
  */
 
 import queryCache from './queryCache';
 import runQuery from './runQuery';
 
-import type {$Response, $Request} from 'express';
-
-export default (async function graphQLMiddleware(
-  request: $Request,
-  response: $Response,
-) {
+export default (async function graphQLMiddleware(request, response) {
   if (request.method !== 'POST') {
     response.setHeader('Allow', 'POST');
     response.status(405).send('Method Not Allowed');

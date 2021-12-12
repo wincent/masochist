@@ -1,18 +1,18 @@
 /**
- * @flow strict
+ *  strict
  */
 
 export default class RenderTextError extends Error {
-  text: string;
-  type: string;
+  text;
+  type;
 
-  constructor(text: string, type: string) {
+  constructor(text, type) {
     super('RenderTextError');
     this.text = text;
     this.type = type;
   }
 }
 
-export function makeRenderText(text: string, type: string): RenderTextError {
+export function makeRenderText(text, type) {
   return new RenderTextError(text, type);
 }

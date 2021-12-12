@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import React from 'react';
@@ -21,7 +21,7 @@ import matchRoute from '../matchRoute';
  *
  * On the server, issue a "301 Moved Permanently".
  */
-function hardRedirect(target: string): null {
+function hardRedirect(target) {
   if (inBrowser) {
     window.location = target;
     return null;
@@ -34,7 +34,7 @@ function hardRedirect(target: string): null {
  *
  * If the route in question cannot match, fall back to `hardRedirect()`.
  */
-function softRedirect(target: string): null {
+function softRedirect(target) {
   if (matchRoute(target)) {
     throw makeInternalRedirect(target);
   }

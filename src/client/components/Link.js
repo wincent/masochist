@@ -1,30 +1,17 @@
 /**
- * @flow
+ *
  */
 
 import PropTypes from 'prop-types';
 import React from 'react';
 import matchRoute from '../../common/matchRoute';
 
-import type {Node as ReactNode} from 'react';
-import type {MasochistRouter} from '../../common/createRouter';
-
 const RouterLink = ({to, children, ...props}, context) => {};
-
-type Props = {
-  to: string,
-  historyTo?: string,
-  children: ReactNode,
-  title?: ?string,
-};
 
 /**
  * Router-aware link component.
  */
-const Link = (
-  {to, historyTo, children, ...props}: Props,
-  context: {router: MasochistRouter},
-) => (
+const Link = ({to, historyTo, children, ...props}, context) => (
   <a
     href={to}
     onClick={(event) => {

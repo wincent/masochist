@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import PropTypes from 'prop-types';
@@ -9,30 +9,19 @@ import {getRefetchToken} from '../RefetchTokenManager';
 import Snippet from './Snippet';
 import LoadMoreButton from './LoadMoreButton';
 
-import type {Disposable, RelayPaginationProp} from 'react-relay';
-import type {SnippetsIndex as SnippetsIndexData} from './__generated__/SnippetsIndex.graphql';
-
-type Props = {
-  data: SnippetsIndexData,
-  relay: RelayPaginationProp,
-};
-type State = {
-  isLoading: boolean,
-};
-
 const PAGE_SIZE = 3;
 
 // See note in `ArticlesIndex`.
 let fragmentVariables;
 
-class SnippetsIndex extends React.Component<Props, State> {
-  _disposable: ?Disposable;
+class SnippetsIndex extends React.Component {
+  _disposable;
 
   static contextTypes = {
     router: PropTypes.object,
   };
 
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     this.state = {isLoading: false};
   }

@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import React from 'react';
@@ -9,9 +9,7 @@ import Tags from './Tags';
 import TagLozenge from './TagLozenge';
 import When from './When';
 
-import type {SnippetPreview as SnippetPreviewData} from './__generated__/SnippetPreview.graphql';
-
-class SnippetPreview extends React.Component<{data: SnippetPreviewData}> {
+class SnippetPreview extends React.Component {
   render() {
     const snippet = this.props.data;
     const {description, title, url} = snippet;

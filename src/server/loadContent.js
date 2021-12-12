@@ -1,5 +1,5 @@
 /**
- * @noflow
+ *
  */
 
 import path from 'path';
@@ -13,12 +13,6 @@ import getWhatChanged, {forEachCommit} from '../server/getWhatChanged';
 import git from './git';
 import run from './run';
 
-type LoaderOptions = {
-  subdirectory: 'blog' | 'pages' | 'snippets' | 'wiki',
-  file: string, // Filename without extension.
-  commit?: string, // Commit at which to load the content.
-};
-
 const SubdirectoryToTypeName = {
   blog: 'Post',
   pages: 'Page',
@@ -26,11 +20,7 @@ const SubdirectoryToTypeName = {
   wiki: 'Article',
 };
 
-export function getCacheKey(
-  subdirectory: string,
-  file: string,
-  head: string,
-): string {
+export function getCacheKey(subdirectory, file, head) {
   const typeName = SubdirectoryToTypeName[subdirectory];
   return toGlobalId(typeName, file) + ':' + head + ':content';
 }
@@ -46,7 +36,7 @@ const timestamps = {
   cache: {},
 };
 
-export async function loadContent(options: LoaderOptions): Promise<*> {
+export async function loadContent(options) {
   const {subdirectory, file} = options;
   const head = (await run(git('rev-parse', 'content'))).trim();
   const commit = options.commit || head;

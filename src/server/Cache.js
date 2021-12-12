@@ -1,5 +1,5 @@
 /**
- * @flow strict
+ *  strict
  */
 
 import Memcached from 'memcached';
@@ -19,7 +19,7 @@ const CACHE_VERSION = '2';
  */
 const STARTUP_SEED = Date.now().toString(36);
 
-function getCacheBreaker(): string {
+function getCacheBreaker() {
   if (__DEV__) {
     return STARTUP_SEED;
   } else {
@@ -30,7 +30,7 @@ function getCacheBreaker(): string {
 // TODO: degrade more gracefully if memcached goes down (currently we just wait
 // forever(?))
 const Cache = {
-  set(inKey: string, value: mixed): Promise<mixed> {
+  set(inKey, value) {
     const key = inKey + getCacheBreaker();
 
     return new Promise((resolve, reject) => {
@@ -44,7 +44,7 @@ const Cache = {
     });
   },
 
-  get(inKey: string, missCallback: () => Promise<mixed>): Promise<mixed> {
+  get(inKey, missCallback) {
     const key = inKey + getCacheBreaker();
 
     return new Promise((resolve, reject) => {

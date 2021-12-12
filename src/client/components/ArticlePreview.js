@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import React from 'react';
@@ -9,9 +9,7 @@ import TagLozenge from './TagLozenge';
 import Tags from './Tags';
 import When from './When';
 
-import type {ArticlePreview as ArticlePreviewData} from './__generated__/ArticlePreview.graphql';
-
-class ArticlePreview extends React.Component<{data: ArticlePreviewData}> {
+class ArticlePreview extends React.Component {
   render() {
     const article = this.props.data;
     const {description, title, url} = article;

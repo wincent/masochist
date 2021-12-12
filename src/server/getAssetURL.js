@@ -1,5 +1,5 @@
 /**
- * @flow strict
+ *  strict
  */
 
 import hashString from './hashString';
@@ -14,7 +14,7 @@ const CDN_HOSTS = [
 /**
  * In production returns a CDN URL; otherwise returns the URL as is.
  */
-export default function getAssetURL(asset: string): string {
+export default function getAssetURL(asset) {
   if (__DEV__) {
     return asset;
   } else if (asset.startsWith('/')) {

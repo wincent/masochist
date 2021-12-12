@@ -1,7 +1,7 @@
 /**
- * @flow strict
+ *  strict
  */
 
-export default function raw(string: string): {|__safe: string|} {
+export default function raw(string) {
   return {__safe: string};
 }

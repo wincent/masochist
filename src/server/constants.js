@@ -1,5 +1,5 @@
 /**
- * @flow strict
+ *  strict
  */
 
 import getIndexNameForContentType from './getIndexNameForContentType';

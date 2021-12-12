@@ -1,15 +1,12 @@
 /**
- * @flow
+ *
  */
 
 import git from './git';
 import pipe from './pipe';
 import invariant from '../common/invariant';
 
-export default function getWhatChanged(
-  revisions: string,
-  path: string,
-): Promise<string> {
+export default function getWhatChanged(revisions, path) {
   // Custom log format (^@ here represents the NUL \0 byte):
   //
   // e31176b20bbb743c21c74a3a98128b759d62b999 1444055654 1444055654
@@ -31,7 +28,7 @@ export default function getWhatChanged(
 }
 
 // For Flow.
-function getStatus(status: string): 'A' | 'D' | 'M' {
+function getStatus(status) {
   invariant(
     status === 'A' || status === 'D' || status === 'M',
     "getWhatChanged(): Status '%s' must be A, D or M.",
@@ -40,16 +37,7 @@ function getStatus(status: string): 'A' | 'D' | 'M' {
   return status;
 }
 
-export async function forEachCommit(
-  commits: string,
-  callback: ({
-    commit: string,
-    createdAt: string,
-    file: string,
-    status: 'A' | 'D' | 'M',
-    updatedAt: string,
-  }) => Promise<void> | void,
-): Promise<void> {
+export async function forEachCommit(commits, callback) {
   // Create a new RegExp for every caller so that any concurrent callers
   // don't end up sharing state.
   const regExp = new RegExp(

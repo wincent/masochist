@@ -1,7 +1,7 @@
 /**
- * @flow strict
+ *  strict
  */
 
-export default function stripTrailingSlash(path: string): string {
+export default function stripTrailingSlash(path) {
   return path.replace(/\/+$/, '');
 }

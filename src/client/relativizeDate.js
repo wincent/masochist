@@ -1,14 +1,8 @@
 /**
- * @flow strict
+ *  strict
  */
 
-export type TimeInfo = {
-  humanReadable: string,
-  date: Date,
-  ttl: number,
-};
-
-export default function relativizeDate(dateString: string): TimeInfo {
+export default function relativizeDate(dateString) {
   const now = new Date();
   const date = new Date(Date.parse(dateString));
   const delta = now.getTime() - date.getTime();

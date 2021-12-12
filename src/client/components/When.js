@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import React from 'react';
@@ -7,8 +7,6 @@ import {createFragmentContainer, graphql} from 'react-relay';
 import inBrowser from '../../common/inBrowser';
 import relativizeDate from '../relativizeDate';
 import Time from './Time';
-
-import type {When as WhenData} from './__generated__/When.graphql';
 
 if (inBrowser) {
   require('./When.css');
@@ -22,7 +20,7 @@ const WhenWrapper = ({children, url}) => (
   </span>
 );
 
-class When extends React.Component<{data: WhenData}> {
+class When extends React.Component {
   render() {
     const {
       createdAt,

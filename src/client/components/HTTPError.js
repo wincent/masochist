@@ -1,23 +1,16 @@
 /**
- * @flow
+ *
  */
 
 import PropTypes from 'prop-types';
 import React from 'react';
-
-import type {ChildrenArray, Node as ReactNode} from 'react';
 
 const StatusCodesToMessages = {
   '404': 'Not Found',
   '500': 'Internal Server Error',
 };
 
-type Props = {
-  children?: $ReadOnlyArray<ChildrenArray<ReactNode>>,
-  code: 404 | 500,
-};
-
-export default class HTTPError extends React.Component<Props> {
+export default class HTTPError extends React.Component {
   static defaultProps = {
     code: 404,
   };

@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import React from 'react';
@@ -10,9 +10,7 @@ import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
 import When from './When';
 
-import type {Snippet as SnippetData} from './__generated__/Snippet.graphql';
-
-class Snippet extends React.Component<{data: SnippetData}> {
+class Snippet extends React.Component {
   render() {
     const snippet = this.props.data;
     return (

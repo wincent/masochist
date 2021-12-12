@@ -1,5 +1,5 @@
 /**
- * @flow strict
+ *  strict
  */
 
 /**
@@ -12,7 +12,7 @@
  * - http://stackoverflow.com/a/7616484/2103996
  * - http://erlycoder.com/49/javascript-hash-functions-to-convert-string-into-integer-hash-
  */
-export default function hashString(input: string): number {
+export default function hashString(input) {
   let hash = 0;
   for (let i = 0; i < input.length; i++) {
     let char = input.charCodeAt(i);

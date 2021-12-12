@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import React from 'react';
@@ -7,8 +7,6 @@ import {createFragmentContainer, graphql} from 'react-relay';
 import inBrowser from '../../common/inBrowser';
 import Link from './Link';
 import cx from 'classnames';
-
-import type {Tags as TagsData} from './__generated__/Tags.graphql';
 
 if (inBrowser) {
   require('./Tags.css');
@@ -20,12 +18,7 @@ const TagLink = ({tag}) => (
   </li>
 );
 
-type Props = {
-  classes?: {[string]: boolean},
-  data: TagsData,
-};
-
-function Tags({classes, data: {tags}}: Props) {
+function Tags({classes, data: {tags}}) {
   return (
     <ul className={cx({...classes, tags: true})}>
       {tags.map((tag) => (

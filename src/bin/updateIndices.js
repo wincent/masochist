@@ -1,22 +1,21 @@
 #!/usr/bin/env node
 
 /**
- * @flow
- */
-
-/**
  * Intended for use as a post-receive hook.
  *
  * Builds up indices that can be queried like this (eg. to get a list of the 10
  * most recently updated wiki articles):
  *
  * ```
- * redis-cli> ZREVRANGE masochist:2:wiki-index 0 10
+ * redis-cli> ZRANGE masochist:2:wiki-index 0 10 REV
  * ```
  */
 
 import '../common/unhandledRejection';
 import '../server/configureNpm';
+
+// TODO: A full index update is slow (880s on old laptop)... would be nice to
+// speed it up (incremental updates are fine)
 
 import os from 'os';
 import path from 'path';

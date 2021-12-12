@@ -1,5 +1,5 @@
 /**
- * @flow strict-local
+ *  strict-local
  */
 
 import {pathToRegexp} from 'path-to-regexp';
@@ -28,7 +28,7 @@ function getRouteMap() {
 /**
  * Matches paths only.
  */
-export default function matchRoute(path: string) {
+export default function matchRoute(path) {
   for (let [regexp, route] of getRouteMap()) {
     if (regexp.test(path)) {
       return route;

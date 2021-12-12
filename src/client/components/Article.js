@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import PropTypes from 'prop-types';
@@ -12,14 +12,11 @@ import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
 import When from './When';
 
-import type {MasochistRouter} from '../../common/createRouter';
-import type {Article as ArticleData} from './__generated__/Article.graphql';
-
 if (inBrowser) {
   require('./Article.css');
 }
 
-class Article extends React.Component<{data: ArticleData}> {
+class Article extends React.Component {
   static contextTypes = {
     router: PropTypes.object,
   };

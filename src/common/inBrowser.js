@@ -1,5 +1,5 @@
 /**
- * @flow strict
+ *  strict
  */
 
 const inBrowser =

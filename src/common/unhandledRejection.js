@@ -1,5 +1,5 @@
 /**
- * @flow
+ *
  */
 
 import inBrowser from './inBrowser';
