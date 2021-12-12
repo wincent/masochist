@@ -3,7 +3,7 @@ import redis from './redis';
 
 export default (async function readIndex(name, count, offset) {
   const results = await redis.multi([
-    ['ZREVRANGE', name, offset, offset + count - 1],
+    ['ZRANGE', name, offset, offset + count - 1, 'REV'],
     ['ZCARD', name],
   ]);
 

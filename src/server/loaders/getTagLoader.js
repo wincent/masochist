@@ -4,7 +4,7 @@ import Tag from '../models/Tag';
 import redis from '../redis';
 
 async function loadTags(keys) {
-  const queries = keys.map((key) => ['ZREVRANGE', 'tag:' + key, 0, -1]);
+  const queries = keys.map((key) => ['ZRANGE', 'tag:' + key, 0, -1, 'REV']);
   const results = await redis.multi(queries);
   return results.map(
     (result, i) =>

@@ -6,7 +6,7 @@ export default class Tag {
   static async readIndex(count, offset) {
     const key = REDIS_TAGS_INDEX_KEY;
     const results = await redis.multi([
-      ['ZREVRANGE', key, offset, offset + count - 1, 'WITHSCORES'],
+      ['ZRANGE', key, offset, offset + count - 1, 'REV', 'WITHSCORES'],
       ['ZCARD', key],
     ]);
 
