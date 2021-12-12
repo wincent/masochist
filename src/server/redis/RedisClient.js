@@ -43,12 +43,16 @@ export default class RedisClient extends EventEmitter {
     return new Promise((resolve, reject) => {
       this._queue.enqueue(() => {
         this._state = RedisClient.STATE.BUSY;
-        const parser = new ResponseParser(this._lines());
-        parser.parse().then((result) => {
-          resolve(result);
-          this._state = RedisClient.STATE.READY;
-          this._runQueue();
-        });
+        const lines = this._lines();
+        const parser = new ResponseParser(lines);
+        parser
+          .parse()
+          .then((result) => {
+            resolve(result);
+            this._state = RedisClient.STATE.READY;
+            this._runQueue();
+          })
+          .finally(() => lines.dispose());
         this.socket.write(this._encodeCommand(name, ...args));
       });
       this._runQueue();
@@ -59,29 +63,33 @@ export default class RedisClient extends EventEmitter {
     return new Promise((resolve, reject) => {
       this._queue.enqueue(() => {
         this._state = RedisClient.STATE.BUSY;
-        const parser = new ResponseParser(this._lines());
+        const lines = this._lines();
+        const parser = new ResponseParser(lines);
         const pipelinedCommands = [['MULTI'], ...commands, ['EXEC']]
           .map((command) => {
             return this._encodeCommand(...command);
           })
           .join('');
-        parser.parse().then(async (result) => {
-          if (result === 'OK') {
-            for (let i = 0; i < commands.length; i++) {
-              const status = await parser.parse();
-              if (status !== 'QUEUED') {
-                reject('Expected QUEUED');
-                return;
+        parser
+          .parse()
+          .then(async (result) => {
+            if (result === 'OK') {
+              for (let i = 0; i < commands.length; i++) {
+                const status = await parser.parse();
+                if (status !== 'QUEUED') {
+                  reject('Expected QUEUED');
+                  return;
+                }
               }
+              const results = await parser.parse();
+              resolve(results);
+              this._state = RedisClient.STATE.READY;
+              this._runQueue();
+            } else {
+              reject('Expected OK');
             }
-            const results = await parser.parse();
-            resolve(results);
-            this._state = RedisClient.STATE.READY;
-            this._runQueue();
-          } else {
-            reject('Expected OK');
-          }
-        });
+          })
+          .finally(() => lines.dispose());
         this.socket.write(pipelinedCommands);
       });
       this._runQueue();
@@ -113,7 +121,7 @@ export default class RedisClient extends EventEmitter {
 
   _onConnect() {
     // TODO... maybe nothing...
-    console.log('connect');
+    // console.log('connect');
   }
 
   /**
@@ -123,13 +131,15 @@ export default class RedisClient extends EventEmitter {
     const queue = new Queue();
     let resolve = null;
 
-    this.on('line', (line) => {
+    const callback = (line) => {
       queue.enqueue(line);
       if (resolve) {
         resolve();
         resolve = null;
       }
-    });
+    };
+
+    this.on('line', callback);
 
     return {
       [Symbol.asyncIterator]: async function* () {
@@ -142,6 +152,15 @@ export default class RedisClient extends EventEmitter {
           yield queue.dequeue();
         }
       },
+
+      // Callers must dispose of the iterator once they've finished with it in
+      // order to avoid:
+      //
+      //    MaxListenersExceededWarning: Possible EventEmitter memory leak
+      //    detected. 11 line listeners added to [RedisClient]. Use
+      //    emitter.setMaxListeners() to increase limit
+      //
+      dispose: () => this.removeListener('line', callback),
     };
   }
 
@@ -166,7 +185,7 @@ export default class RedisClient extends EventEmitter {
   }
 
   _onReady() {
-    console.log('ready');
+    // console.log('ready');
     this._state = RedisClient.STATE.READY;
     this._runQueue();
   }
