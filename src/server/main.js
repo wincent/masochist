@@ -113,7 +113,7 @@ appRoutes.forEach((route) => {
             cache[key] = result;
             return result;
           })
-          .catch((error) => console.log('got an error', error));
+          .catch((error) => console.log('runQuery() error:', error));
         // TODO: really handle errors
       }),
       store: new Store(new RecordSource()),
@@ -148,6 +148,8 @@ appRoutes.forEach((route) => {
             response.set('Content-Type', error.type);
             response.send(error.text);
             return null;
+          } else if (!(error instanceof NotFoundError)) {
+            console.log('resolve() error:', error);
           }
           const code = error instanceof NotFoundError ? 404 : 500;
           response.status(code);
