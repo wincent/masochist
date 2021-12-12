@@ -52,6 +52,10 @@ export default class RedisClient extends EventEmitter {
             this._state = RedisClient.STATE.READY;
             this._runQueue();
           })
+          .catch(error => {
+            console.log('command() error:', error, 'command:', name, ...args);
+            reject(error);
+          })
           .finally(() => lines.dispose());
         this.socket.write(this._encodeCommand(name, ...args));
       });
@@ -89,6 +93,10 @@ export default class RedisClient extends EventEmitter {
               reject('Expected OK');
             }
           })
+          .catch(error => {
+            console.log('multi() error:', error, 'commands:', commands);
+            reject(error);
+          })
           .finally(() => lines.dispose());
         this.socket.write(pipelinedCommands);
       });
@@ -114,9 +122,9 @@ export default class RedisClient extends EventEmitter {
     }
   }
 
-  _onClose(hadError) {
+  _onClose(_hadError) {
     // TODO
-    console.log('close', hadError);
+    // console.log('close', hadError);
   }
 
   _onConnect() {
@@ -181,7 +189,7 @@ export default class RedisClient extends EventEmitter {
 
   _onError(error) {
     // TODO
-    console.log('error', error);
+    // console.log('error', error);
   }
 
   _onReady() {
@@ -192,7 +200,7 @@ export default class RedisClient extends EventEmitter {
 
   _onTimeout() {
     // TODO
-    console.log('timeout');
+    // console.log('timeout');
   }
 
   // TODO: probably remove this; doesn't need to be public
