@@ -43,8 +43,8 @@ export default class RedisClient extends EventEmitter {
     return new Promise((resolve, reject) => {
       this._queue.enqueue(() => {
         this._state = RedisClient.STATE.BUSY;
-        const parser = new ResponseParser();
-        parser.parse(this._lines()).then((result) => {
+        const parser = new ResponseParser(this._lines());
+        parser.parse().then((result) => {
           resolve(result);
           this._state = RedisClient.STATE.READY;
           this._runQueue();
@@ -59,23 +59,22 @@ export default class RedisClient extends EventEmitter {
     return new Promise((resolve, reject) => {
       this._queue.enqueue(() => {
         this._state = RedisClient.STATE.BUSY;
-        const parser = new ResponseParser();
+        const parser = new ResponseParser(this._lines());
         const pipelinedCommands = [['MULTI'], ...commands, ['EXEC']]
           .map((command) => {
             return this._encodeCommand(...command);
           })
           .join('');
-        const lines = this._lines();
-        parser.parse(lines).then(async (result) => {
+        parser.parse().then(async (result) => {
           if (result === 'OK') {
             for (let i = 0; i < commands.length; i++) {
-              const status = await parser.parse(lines);
+              const status = await parser.parse();
               if (status !== 'QUEUED') {
                 reject('Expected QUEUED');
                 return;
               }
             }
-            const results = await parser.parse(lines);
+            const results = await parser.parse();
             resolve(results);
             this._state = RedisClient.STATE.READY;
             this._runQueue();

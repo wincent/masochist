@@ -5,9 +5,13 @@ const CRLF = /\r\n/;
 const INT = /\d+/;
 
 export default class ResponseParser {
-  async _parseBulkString(lines, length) {
+  constructor(lines) {
+    this._lines = lines;
+  }
+
+  async _parseBulkString(length) {
     let buffer = '';
-    for await (const line of lines) {
+    for await (const line of this._lines) {
       if (line.endsWith('\r\n')) {
         if (buffer.length + line.length - 2 === length) {
           buffer += line.slice(0, -2);
@@ -33,8 +37,8 @@ export default class ResponseParser {
    *
    * @see https://github.com/antirez/RESP3/blob/master/spec.md
    */
-  async parse(lines) {
-    for await (const line of lines) {
+  async parse() {
+    for await (const line of this._lines) {
       const scanner = new StringScanner(line);
       const char = scanner.scan(/./);
       switch (char) {
@@ -47,7 +51,7 @@ export default class ResponseParser {
           const length = parseInt(scanner.expect(INT), 10);
           scanner.expect(CRLF);
           // This is the only type annoying enough to merit its own method.
-          return await this._parseBulkString(lines, length);
+          return await this._parseBulkString(length);
         }
         case '%': {
           // A map.
@@ -55,8 +59,8 @@ export default class ResponseParser {
           scanner.expect(CRLF);
           const result = {};
           for (let i = 0; i < size; i++) {
-            const key = await this.parse(lines);
-            const value = await this.parse(lines);
+            const key = await this.parse();
+            const value = await this.parse();
             result[key] = value;
           }
           return result;
@@ -67,10 +71,10 @@ export default class ResponseParser {
           const size = parseInt(scanner.expect(INT), 10);
           scanner.expect(CRLF);
           for (let i = 0; i < size; i++) {
-            await this.parse(lines); // Attribute key.
-            await this.parse(lines); // Attribute value.
+            await this.parse(); // Attribute key.
+            await this.parse(); // Attribute value.
           }
-          return await this.parse(lines); // The real value.
+          return await this.parse(); // The real value.
         }
         case '*': {
           // An array.
@@ -78,7 +82,7 @@ export default class ResponseParser {
           scanner.expect(CRLF);
           const result = [];
           for (let i = 0; i < length; i++) {
-            result.push(await this.parse(lines));
+            result.push(await this.parse());
           }
           return result;
         }
@@ -88,7 +92,7 @@ export default class ResponseParser {
           scanner.expect(CRLF);
           const result = new Set();
           for (let i = 0; i < size; i++) {
-            result.add(await this.parse(lines));
+            result.add(await this.parse());
           }
           return result;
         }
