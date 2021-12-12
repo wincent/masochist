@@ -8,19 +8,17 @@ export default class RedisConnectionPool {
   get client() {
     const clients = this._clients;
     return {
-      command(name, ...args) {
+      async command(name, ...args) {
         const client = clients.pop() || new RedisClient();
-        return client.command(name, ...args).then((result) => {
-          clients.push(client);
-          return result;
-        });
+        const result = await client.command(name, ...args);
+        clients.push(client);
+        return result;
       },
-      multi(commands) {
+      async multi(commands) {
         const client = clients.pop() || new RedisClient();
-        return client.multi(commands).then((result) => {
-          clients.push(client);
-          return result;
-        });
+        const result = await client.multi(commands);
+        clients.push(client);
+        return result;
       },
 
       // Commands.
