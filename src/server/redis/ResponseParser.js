@@ -33,7 +33,7 @@ export default class ResponseParser {
    *
    * @see https://github.com/antirez/RESP3/blob/master/spec.md
    */
-  async parseResponse(lines) {
+  async parse(lines) {
     for await (const line of lines) {
       const scanner = new StringScanner(line);
       const char = scanner.scan(/./);
@@ -55,8 +55,8 @@ export default class ResponseParser {
           scanner.expect(CRLF);
           const result = {};
           for (let i = 0; i < size; i++) {
-            const key = await this.parseResponse(lines);
-            const value = await this.parseResponse(lines);
+            const key = await this.parse(lines);
+            const value = await this.parse(lines);
             result[key] = value;
           }
           return result;
@@ -67,10 +67,10 @@ export default class ResponseParser {
           const size = parseInt(scanner.expect(INT), 10);
           scanner.expect(CRLF);
           for (let i = 0; i < size; i++) {
-            await this.parseResponse(lines); // Attribute key.
-            await this.parseResponse(lines); // Attribute value.
+            await this.parse(lines); // Attribute key.
+            await this.parse(lines); // Attribute value.
           }
-          return await this.parseResponse(lines); // The real value.
+          return await this.parse(lines); // The real value.
         }
         case '*': {
           // An array.
@@ -78,7 +78,7 @@ export default class ResponseParser {
           scanner.expect(CRLF);
           const result = [];
           for (let i = 0; i < length; i++) {
-            result.push(await this.parseResponse(lines));
+            result.push(await this.parse(lines));
           }
           return result;
         }
@@ -88,7 +88,7 @@ export default class ResponseParser {
           scanner.expect(CRLF);
           const result = new Set();
           for (let i = 0; i < size; i++) {
-            result.add(await this.parseResponse(lines));
+            result.add(await this.parse(lines));
           }
           return result;
         }

@@ -44,7 +44,7 @@ export default class RedisClient extends EventEmitter {
       this._queue.enqueue(() => {
         this._state = RedisClient.STATE.BUSY;
         const parser = new ResponseParser();
-        parser.parseResponse(this._lines()).then((result) => {
+        parser.parse(this._lines()).then((result) => {
           resolve(result);
           this._state = RedisClient.STATE.READY;
           this._runQueue();
@@ -66,16 +66,16 @@ export default class RedisClient extends EventEmitter {
           })
           .join('');
         const lines = this._lines();
-        parser.parseResponse(lines).then(async (result) => {
+        parser.parse(lines).then(async (result) => {
           if (result === 'OK') {
             for (let i = 0; i < commands.length; i++) {
-              const status = await parser.parseResponse(lines);
+              const status = await parser.parse(lines);
               if (status !== 'QUEUED') {
                 reject('Expected QUEUED');
                 return;
               }
             }
-            const results = await parser.parseResponse(lines);
+            const results = await parser.parse(lines);
             resolve(results);
             this._state = RedisClient.STATE.READY;
             this._runQueue();
