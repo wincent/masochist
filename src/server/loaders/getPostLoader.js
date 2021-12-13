@@ -14,6 +14,5 @@ function loadPosts(keys) {
 }
 
 export default function getPostLoader() {
-  // BUG: webpack can't parse this syntax
   return new DataLoader(loadPosts);
 }
