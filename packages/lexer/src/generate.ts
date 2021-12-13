@@ -33,15 +33,17 @@ type Token = {
 /**
  * @see https://tc39.es/ecma262/#sec-quotejsonstring
  */
-function escape(text: string, options: {except: string} = {except: ''}): string {
-    return text
-        .replace(/["\b\f\n\r\t\\]/g, (char) => {
-            if (options.except.includes(char)) {
-                return char;
-            } else {
-                return JSON.stringify(char).slice(1, -1);
-            }
-        });
+function escape(
+    text: string,
+    options: {except: string} = {except: ''},
+): string {
+    return text.replace(/["\b\f\n\r\t\\]/g, (char) => {
+        if (options.except.includes(char)) {
+            return char;
+        } else {
+            return JSON.stringify(char).slice(1, -1);
+        }
+    });
 }
 
 function stringify(text: string): string {
@@ -60,7 +62,10 @@ function stringify(text: string): string {
 export default function generate(callback: Callback): string {
     const TOKENS: Array<Token> = [];
 
-    function getConditionsForLookahead(value: string, token: Token): string | Array<string> {
+    function getConditionsForLookahead(
+        value: string,
+        token: Token,
+    ): string | Array<string> {
         if (token.lookahead && Array.isArray(token.lookahead)) {
             return token.lookahead.map((condition) => {
                 if (typeof condition === 'string') {
@@ -167,7 +172,7 @@ export default function generate(callback: Callback): string {
         for (const {name, test} of tokens) {
             if (test instanceof RegExp) {
                 const flags = Array.from(
-                    new Set([...Array.from(test.flags), 'y'])
+                    new Set([...Array.from(test.flags), 'y']),
                 ).join('');
                 b.line(`const ${name} = /${test.source}/${flags};`);
             }
@@ -222,14 +227,16 @@ export default function generate(callback: Callback): string {
                                 b.blank();
                                 b.line('continue;');
                             });
-
                         }
                     });
                 } else if (typeof test === 'string' && test.length > 1) {
                     if (lookahead) {
                         // TODO: handle
                     } else {
-                        const conditions = getConditionsForLookahead('char', token);
+                        const conditions = getConditionsForLookahead(
+                            'char',
+                            token,
+                        );
 
                         // BUG: conditions here need to be && not ||
                         b[statement](conditions, () => {
