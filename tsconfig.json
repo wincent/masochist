@@ -6,6 +6,7 @@
         {"path": "./packages/client"},
         {"path": "./packages/common"},
         {"path": "./packages/compiler"},
+        {"path": "./packages/lexer"},
         {"path": "./packages/server"}
     ]
 }
