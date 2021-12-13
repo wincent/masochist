@@ -59,7 +59,6 @@
     "dataloader": "*",
     "entities": "*",
     "express": "*",
-    "express-graphql": "*",
     "fs-extra": "*",
     "glob": "*",
     "graphql": "*",

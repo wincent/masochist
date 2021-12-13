@@ -5,7 +5,6 @@ import '../server/configureNpm';
 
 import bodyParser from 'body-parser';
 import express from 'express';
-import graphqlHTTP from 'express-graphql';
 import fs from 'fs';
 import path from 'path';
 import {createMemoryHistory} from 'history';
@@ -32,7 +31,6 @@ import routeConfig from '../common/routeConfig';
 import createRouter from '../common/createRouter';
 import gatherPaths from './gatherPaths';
 import getAssetURL from './getAssetURL';
-import getLoaders from './getLoaders';
 import getCanonicalURLForRequest from './getCanonicalURLForRequest';
 import graphQLMiddleware from './graphQLMiddleware';
 import feed from './actions/feed';
@@ -181,23 +179,6 @@ appRoutes.forEach((route) => {
 });
 
 app.use('/graphql', bodyParser.json(), graphQLMiddleware);
-
-if (__DEV__) {
-  // (Ab)use express-graphql as a quick-and-dirty way to run GraphiQL in
-  // __DEV__. Note that (non-GraphiQL) POST requests (etc) will work at this
-  // endpoint too, even though we only actually want the GraphiQL
-  // functionality).
-  app.use('/graphiql', (request, response, next) => {
-    const options = {
-      rootValue: {
-        loaders: getLoaders(),
-      },
-      graphiql: true,
-      schema,
-    };
-    return graphqlHTTP((request) => options)(request, response, next);
-  });
-}
 
 app.get('/blog.rss', async (request, response) => {
   const feedContent = await feed();
