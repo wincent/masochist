@@ -9,7 +9,7 @@ import generate from './generate';
 // const NAME = /[_A-Za-z][_0-9A-Za-z]*/y;
 // const SOURCE_CHARACTER = /[\u0009\u000a\u000d\u0020-\uffff]/y;
 
-const lexer = generate(({ignored, range, token}) => {
+export default generate(({ignored, range, token}) => {
     //
     // Punctuators (2.1.8)
     //
@@ -72,5 +72,3 @@ const lexer = generate(({ignored, range, token}) => {
     ignored('COMMENT', 'TODO');
     ignored('COMMA', ',');
 });
-
-console.log(lexer);
