@@ -153,6 +153,9 @@ test('generated lexer', () => {
                         name: 'COMMA',
                     };
                 }
+                else {
+                    throw new Error('Unexpected character');
+                }
             }
         }
         "

@@ -34,6 +34,8 @@ export default class Builder {
     ) {
         const isArray = Array.isArray(condition);
         if (isArray || condition instanceof Set) {
+            // BUG: ideally, `else if` wouldn't appear on new line
+            // (and neither would `else`)
             this.line(`${kind} (`);
 
             this.indent();
@@ -67,6 +69,14 @@ export default class Builder {
 
     dedent() {
         this.#indentLevel--;
+    }
+
+    else(body: () => void) {
+        this.line('else {');
+        this.indent();
+        body();
+        this.dedent();
+        this.line('}');
     }
 
     endLine(contents: string = '') {

@@ -222,6 +222,11 @@ export default function generate(callback: Callback): string {
                     }
                 });
             }
+
+            b.else(() => {
+                // TODO: maybe include index here
+                b.line("throw new Error('Unexpected character');");
+            });
         });
     });
 
