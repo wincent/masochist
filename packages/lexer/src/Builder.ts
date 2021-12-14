@@ -1,3 +1,6 @@
+/**
+ * Allows callers to build up a TS output file in a procedural fashion.
+ */
 export default class Builder {
     #indentLevel: number;
     #output: string;
@@ -15,6 +18,51 @@ export default class Builder {
 
     blank() {
         this.endLine();
+    }
+
+    /**
+     * Helper method for constructing `if`/`else if` conditonal statements.
+     *
+     * If `condition` is an Array, that implies an `&&` expression.
+     * If it is a Set, that implies an `||` expression.
+     * If it is a string, that implies simple equality (`===`).
+     */
+    conditional(
+        kind: 'if' | 'else if',
+        condition: string | Array<string> | Set<string>,
+        body: () => void,
+    ) {
+        const isArray = Array.isArray(condition);
+        if (isArray || condition instanceof Set) {
+            this.line(`${kind} (`);
+
+            this.indent();
+
+            const operator = isArray ? '&&' : '||';
+            const lastIndex = (isArray ? condition.length : condition.size) - 1;
+            Array.from(condition).forEach((expression, i) => {
+                // TODO going to need something a bit more AST-ish here?
+                if (i < lastIndex) {
+                    this.line(`${expression} ${operator}`);
+                } else {
+                    this.line(expression);
+                }
+            });
+
+            this.dedent();
+
+            this.line(') }');
+        } else {
+            this.line(`${kind} (${condition}) {`);
+        }
+
+        this.indent();
+
+        body();
+
+        this.dedent();
+
+        this.line('}');
     }
 
     dedent() {
@@ -42,59 +90,12 @@ export default class Builder {
         this.line('}');
     }
 
-    // TODO: reduce duplication between elseIf and if
-    elseIf(condition: string | Array<string>, body: () => void) {
-        // TODO: fix unwanted newline
-        if (Array.isArray(condition)) {
-            this.line('else if (');
-
-            this.indent();
-
-            for (const expression of condition) {
-                // TODO going to need something a bit more AST-ish here
-                this.line(`${expression} ||`);
-            }
-
-            this.dedent();
-
-            this.line(') }');
-        } else {
-            this.line(`else if (${condition}) {`);
-        }
-
-        this.indent();
-
-        body();
-
-        this.dedent();
-
-        this.line('}');
+    elseIf(condition: string | Array<string> | Set<string>, body: () => void) {
+        this.conditional('else if', condition, body);
     }
 
-    if(condition: string | Array<string>, body: () => void) {
-        if (Array.isArray(condition)) {
-            this.line('if (');
-
-            this.indent();
-
-            for (const expression of condition) {
-                this.line(`${expression} ||`);
-            }
-
-            this.dedent();
-
-            this.line(') }');
-        } else {
-            this.line(`if (${condition}) {`);
-        }
-
-        this.indent();
-
-        body();
-
-        this.dedent();
-
-        this.line('}');
+    if(condition: string | Array<string> | Set<string>, body: () => void) {
+        this.conditional('if', condition, body);
     }
 
     indent() {

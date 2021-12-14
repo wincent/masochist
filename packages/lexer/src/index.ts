@@ -9,7 +9,7 @@ import generate from './generate';
 // const NAME = /[_A-Za-z][_0-9A-Za-z]*/y;
 // const SOURCE_CHARACTER = /[\u0009\u000a\u000d\u0020-\uffff]/y;
 
-export default generate(({ignored, range, token}) => {
+export default generate(({ignored, range, star, token}) => {
     //
     // Punctuators (2.1.8)
     //
@@ -31,9 +31,12 @@ export default generate(({ignored, range, token}) => {
     //
     // (Other) lexical tokens (2.1.6).
     //
-    token('NAME', /[_A-Z-a-z][_0-9A-Za-z]*/, {
-        lookahead: ['_', range('A-Z'), range('a-z')],
-    });
+    token(
+        // [_A-Za-z][_A-Za-z0-9]*
+        'NAME',
+        new Set(['_', range('A-Z'), range('a-z')]),
+        star(new Set(['_', range('A-Z'), range('a-z'), range('0-9')])),
+    );
 
     // TODO: figure out how to do this without back-tracking
     // about numbers: see recent changes to spec:
@@ -41,34 +44,30 @@ export default generate(({ignored, range, token}) => {
     // FLOAT_VALUE: 1
     // INT_VALUE: 1
 
-    token('BLOCK_STRING_VALUE', 'TODO', {
-        lookahead: '"""',
-        sequence: [
-            '"""',
-            // TODO: BLOCK_STRING_CHARACTER
-            '"""',
-        ],
-    });
+    token(
+        'BLOCK_STRING_VALUE',
+        '"""',
+        // TODO: BLOCK_STRING_CHARACTER
+        '"""',
+    );
 
-    token('STRING_VALUE', 'TODO', {
-        lookahead: '"',
-        sequence: [
-            '"',
-            // TODO: STRING_CHARACTER
-            '"',
-        ],
-    });
+    token(
+        'STRING_VALUE',
+        '"',
+        // TODO: STRING_CHARACTER
+        '"',
+    );
 
     //
     // Ignored tokens (2.1.7).
     //
     ignored('UNICODE_BOM', '\ufeff'); // BUG: this doesn't stringify well
-    ignored('WHITESPACE', /[\t ]+/, {
-        lookahead: [' ', '\t'],
-    });
-    ignored('LINE_TERMINATOR', /(?:\n|\r\n|\r)/, {
-        lookahead: ['\n', '\r'],
-    });
+    // ignored('WHITESPACE', /[\t ]+/, {
+    //     lookahead: [' ', '\t'],
+    // });
+    // ignored('LINE_TERMINATOR', /(?:\n|\r\n|\r)/, {
+    //     lookahead: ['\n', '\r'],
+    // });
     ignored('COMMENT', 'TODO');
     ignored('COMMA', ',');
 });

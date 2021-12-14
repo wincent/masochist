@@ -1,34 +1,38 @@
 import Builder from './Builder';
 
 type Callback = (dsl: {
-    ignored: (
-        name: string,
-        matcher: string | RegExp,
-        options?: Options,
-    ) => void;
+    ignored: (name: string, ...matchers: Array<Matcher>) => void;
     range: (specifier: string) => CharRange;
-    token: (name: string, matcher: string | RegExp, options?: Options) => void;
+    star: (matcher: Matcher) => Star;
+    token: (name: string, ...matchers: Array<Matcher>) => void;
 }) => void;
 
 type CharRange = {
     from: string;
+    kind: 'range';
     to: string;
 };
 
-type Lookahead = string | CharRange;
+type Matcher = CharRange | Star | string | Set<Matcher>;
 
-type Options = {
-    lookahead?: Lookahead | Array<Lookahead>;
-    sequence?: Array<string>;
+type Star = {
+    kind: 'star';
+    matcher: Matcher;
 };
 
 type Token = {
     ignored: boolean;
-    lookahead?: Lookahead | Array<Lookahead>;
-    sequence?: Array<string>;
     name: string;
-    test: string | RegExp;
+    matchers: Array<Matcher>;
 };
+
+function asciify(text: string): string {
+    // Everything outside the printable ASCII range of 0x20 (Space) to 0x7e (~)
+    // gets turned into a Unicode escape.
+    return text.replace(/[^ -~]/g, (char) => {
+        return `\\u${char.charCodeAt(0).toString(16).padStart(4, '0')}`;
+    });
+}
 
 /**
  * @see https://tc39.es/ecma262/#sec-quotejsonstring
@@ -51,78 +55,87 @@ function stringify(text: string): string {
     const hasSingleQuote = text.includes("'");
 
     if (!hasSingleQuote) {
-        return `'${escape(text, {except: '"'})}'`;
+        return `'${asciify(escape(text, {except: '"'}))}'`;
     } else if (!hasDoubleQuote) {
-        return `"${escape(text)}"`;
+        return `"${asciify(escape(text))}"`;
     } else {
         return JSON.stringify(text);
     }
 }
 
+function isStar(matcher: Matcher) {
+    if (matcher instanceof Set || typeof matcher === 'string') {
+        return false;
+    }
+    return matcher.kind === 'star';
+}
+
+/**
+ * Provides a DSL for generating a basic GraphQL lexer.
+ */
 export default function generate(callback: Callback): string {
     const TOKENS: Array<Token> = [];
 
-    function getConditionsForLookahead(
-        value: string,
-        token: Token,
-    ): string | Array<string> {
-        if (token.lookahead && Array.isArray(token.lookahead)) {
-            return token.lookahead.map((condition) => {
-                if (typeof condition === 'string') {
-                    return `${value} === ${stringify(condition)}`;
-                } else {
-                    return `${value} >= ${stringify(
-                        condition.from,
-                    )} && ${value} <= ${stringify(condition.to)}`;
-                }
-            });
-        } else if (typeof token.test === 'string') {
-            if (token.test.length > 1) {
-                return Array.from(token.test).map((char, index) => {
+    function getConditionsForMatcher(
+        binding: string,
+        matcher: Matcher,
+    ): string | Array<string> | Set<string> {
+        if (typeof matcher === 'string') {
+            if (matcher.length > 1) {
+                return Array.from(matcher).map((char, index) => {
                     if (index) {
-                        return `input[i + ${index}] === ${stringify(char)}`;
+                        if (index) {
+                            return `input[i + ${index}] === ${stringify(char)}`;
+                        } else {
+                            return `${binding} /* input[i] */ === ${stringify(
+                                char,
+                            )}`;
+                        }
                     } else {
-                        return `${value} === ${stringify(char)}`;
+                        return `${binding} === ${stringify(char)}`;
                     }
                 });
             } else {
+                return `${binding} === ${stringify(matcher)}`;
             }
-            return `${value} === ${stringify(token.test)}`;
-        }
-
-        return '// not implemented yet';
-    }
-
-    function genToken(
-        name: string,
-        matcher: string | RegExp,
-        options: Options,
-    ): Token {
-        if (typeof matcher === 'string') {
-            return {
-                ...options,
-                ignored: false,
-                name,
-                test: matcher, // TODO: check length
-            };
+        } else if (matcher instanceof Set) {
+            return new Set(
+                Array.from(matcher).flatMap((matcher) => {
+                    const nested = getConditionsForMatcher(binding, matcher);
+                    if (nested instanceof Set) {
+                        throw new Error(
+                            'getConditionsForMatcher(): illegal nested Set',
+                        );
+                    } else {
+                        return nested;
+                    }
+                }),
+            );
+        } else if (matcher.kind === 'range') {
+            return `${binding} >= ${stringify(
+                matcher.from,
+            )} && ${binding} <= ${stringify(matcher.to)}`;
+        } else if (matcher.kind === 'star') {
+            const {matcher: inner} = matcher;
+            if (isStar(inner)) {
+                throw new Error(
+                    'getConditionsForMatcher(): illegal nested star()',
+                );
+            } else {
+                return getConditionsForMatcher(binding, inner);
+            }
         } else {
-            return {
-                ...options,
-                ignored: false,
-                name,
-                test: matcher,
-            };
+            throw new Error(
+                'getConditionsForMatcher(): unexpected matcher type',
+            );
         }
     }
 
-    function ignored(
-        name: string,
-        matcher: string | RegExp,
-        options: Options = {},
-    ) {
+    function ignored(name: string, ...matchers: Array<Matcher>) {
         TOKENS.push({
-            ...genToken(name, matcher, options),
             ignored: true,
+            name,
+            matchers,
         });
     }
 
@@ -137,49 +150,29 @@ export default function generate(callback: Callback): string {
 
         return {
             from,
+            kind: 'range',
             to,
         };
     }
 
-    function token(
-        name: string,
-        matcher: string | RegExp,
-        options: Options = {},
-    ) {
+    function star(matcher: Matcher): Star {
+        return {
+            kind: 'star',
+            matcher,
+        };
+    }
+
+    function token(name: string, ...matchers: Array<Matcher>) {
         TOKENS.push({
-            ...genToken(name, matcher, options),
             ignored: false,
+            matchers,
+            name,
         });
     }
 
-    callback({ignored, range, token});
+    callback({ignored, range, star, token});
 
     const b = new Builder();
-
-    if (TOKENS.some(({test}) => test instanceof RegExp)) {
-        const tokens = TOKENS.filter(({test}) => test instanceof RegExp);
-
-        tokens.sort((a, b) => {
-            if (a.name < b.name) {
-                return -1;
-            } else if (a.name > b.name) {
-                return 1;
-            } else {
-                return 0;
-            }
-        });
-
-        for (const {name, test} of tokens) {
-            if (test instanceof RegExp) {
-                const flags = Array.from(
-                    new Set([...Array.from(test.flags), 'y']),
-                ).join('');
-                b.line(`const ${name} = /${test.source}/${flags};`);
-            }
-        }
-
-        b.blank();
-    }
 
     b.generator('lex', [['input', 'string']], () => {
         b.for('let i = 0', 'i < input.length', 'i++', () => {
@@ -191,76 +184,43 @@ export default function generate(callback: Callback): string {
 
                 const statement = i ? 'elseIf' : 'if';
 
-                const {lookahead, name, test} = token;
+                const {ignored, name, matchers} = token;
 
-                if (lookahead && Array.isArray(lookahead)) {
-                    const conditions = lookahead.map((condition) => {
-                        if (typeof condition === 'string') {
-                            return `char === ${stringify(condition)}`;
-                        } else {
-                            return `char >= ${stringify(
-                                condition.from,
-                            )} && char <= ${stringify(condition.to)}`;
-                        }
-                    });
-
-                    b[statement](conditions, () => {
-                        if (typeof test === 'string') {
-                            // TODO
-                        } else {
-                            b.line(`${name}.lastIndex = i;`);
-                            b.blank();
-                            b.line(`const match = ${name}.exec(input);`);
-                            b.blank();
-                            b.if('match', () => {
-                                b.line(`const contents = match[0];`);
-                                b.blank();
-                                b.yield(() => {
-                                    b.object({
-                                        contents: 'contents', // TODO shorthand
-                                        index: 'i',
-                                        name: stringify(name),
-                                    });
-                                });
-                                b.blank();
-                                b.line('i += contents.length - 1;');
-                                b.blank();
-                                b.line('continue;');
-                            });
-                        }
-                    });
-                } else if (typeof test === 'string' && test.length > 1) {
-                    if (lookahead) {
-                        // TODO: handle
-                    } else {
-                        const conditions = getConditionsForLookahead(
-                            'char',
-                            token,
-                        );
-
-                        // BUG: conditions here need to be && not ||
-                        b[statement](conditions, () => {
-                            b.yield(() => {
-                                b.object({
-                                    contents: stringify(test),
-                                    index: 'i',
-                                    name: stringify(name),
-                                });
-                            });
-                            b.line(`i += ${test.length} - 1;`);
-                        });
-                    }
-                } else if (typeof test === 'string') {
-                    b[statement](`char === ${stringify(test)}`, () => {
+                const lookahead = matchers[0];
+                const conditions = getConditionsForMatcher('char', lookahead);
+                b[statement](conditions, () => {
+                    if (
+                        matchers.length === 1 &&
+                        typeof lookahead === 'string'
+                    ) {
                         b.yield(() => {
                             b.object({
-                                contents: 'char',
+                                contents: stringify(lookahead),
                                 index: 'i',
                                 name: stringify(name),
                             });
                         });
-                    });
-                }
+                        if (
+                            Array.isArray(conditions) &&
+                            conditions.length > 1
+                        ) {
+                            b.line(`i += ${conditions.length - 1};`);
+                        }
+                    } else {
+                        for (let j = 1; j < matchers.length; j++) {
+                            const matcher = matchers[j];
+                            const conditions = getConditionsForMatcher(
+                                'char',
+                                matcher,
+                            );
+                            // for each condition, try...
+                            // if any fail, all fail...
+                            b.line(conditions.toString());
+
+                            // b.line(`i += ${conditions.length} - 1;`);
+                        }
+                    }
+                });
             }
         });
     });
