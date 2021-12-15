@@ -32,8 +32,11 @@ export default generate(({ignored, range, star, token}) => {
     // (Other) lexical tokens (2.1.6).
     //
     token(
-        // [_A-Za-z][_A-Za-z0-9]*
         'NAME',
+        // TODO: turn this?:
+        //  [_A-Za-z][_A-Za-z0-9]*
+        // into this?:
+        // (not sure if this is a good idea or not)
         new Set(['_', range('A-Z'), range('a-z')]),
         star(new Set(['_', range('A-Z'), range('a-z'), range('0-9')])),
     );
