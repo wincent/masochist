@@ -1,14 +1,14 @@
 {
-    "name": "@masochist/lexer",
-    "version": "0.0.1",
-    "description": "Masochist lexer",
-    "main": "index.js",
-    "author": "Greg Hurrell <greg@hurrell.net>",
-    "license": "MIT",
-    "private": false,
-    "scripts": {
-        "build": "cd ../.. && yarn build",
-        "format": "cd ../.. && yarn format",
-        "test": "cd ../.. && yarn test packages/lexer"
-    }
+  "name": "@masochist/lexer",
+  "version": "0.0.1",
+  "description": "Masochist lexer",
+  "main": "index.js",
+  "author": "Greg Hurrell <greg@hurrell.net>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "cd ../.. && yarn build",
+    "format": "cd ../.. && yarn format",
+    "test": "cd ../.. && yarn test packages/lexer"
+  }
 }

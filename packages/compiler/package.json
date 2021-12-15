@@ -1,21 +1,21 @@
 {
-    "name": "@masochist/compiler",
-    "version": "0.0.1",
-    "description": "Masochist compiler",
-    "main": "index.js",
-    "author": "Greg Hurrell <greg@hurrell.net>",
-    "license": "MIT",
-    "private": false,
-    "scripts": {
-        "benchmark": "node lib/benchmark.js",
-        "benchmark:graphql": "node lib/benchmark-graphql.js",
-        "benchmark:graphql:lexer": "node lib/benchmark-graphql-lexer.js",
-        "benchmark:lexer": "node lib/benchmark-lexer.js",
-        "build": "cd ../.. && yarn build",
-        "format": "cd ../.. && yarn format",
-        "inspect": "echo 'Go to chrome://inspect' && node --inspect-brk lib/benchmark.js",
-        "profile": "node --prof --no-logfile-per-isolate lib/benchmark.js && node --prof-process v8.log",
-        "profile:deopt": "node --trace-opt --trace-deopt lib/benchmark.js",
-        "test": "cd ../.. && yarn test packages/compiler"
-    }
+  "name": "@masochist/compiler",
+  "version": "0.0.1",
+  "description": "Masochist compiler",
+  "main": "index.js",
+  "author": "Greg Hurrell <greg@hurrell.net>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "benchmark": "node lib/benchmark.js",
+    "benchmark:graphql": "node lib/benchmark-graphql.js",
+    "benchmark:graphql:lexer": "node lib/benchmark-graphql-lexer.js",
+    "benchmark:lexer": "node lib/benchmark-lexer.js",
+    "build": "cd ../.. && yarn build",
+    "format": "cd ../.. && yarn format",
+    "inspect": "echo 'Go to chrome://inspect' && node --inspect-brk lib/benchmark.js",
+    "profile": "node --prof --no-logfile-per-isolate lib/benchmark.js && node --prof-process v8.log",
+    "profile:deopt": "node --trace-opt --trace-deopt lib/benchmark.js",
+    "test": "cd ../.. && yarn test packages/compiler"
+  }
 }

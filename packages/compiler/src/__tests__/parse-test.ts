@@ -8,18 +8,18 @@ import parse from '../parse';
 const readFile = promisify(fs.readFile);
 
 test('parsing an empty document', () => {
-    expect(() => parse('')).toThrow(
-        /Document must contain at least one definition/,
-    );
+  expect(() => parse('')).toThrow(
+    /Document must contain at least one definition/,
+  );
 
-    expect(() => parse('# just a comment')).toThrow(
-        /Document must contain at least one definition/,
-    );
+  expect(() => parse('# just a comment')).toThrow(
+    /Document must contain at least one definition/,
+  );
 });
 
 test('parsing a document with a named query', () => {
-    expect(
-        parse(`
+  expect(
+    parse(`
       query MyQuery {
         foo
         bar
@@ -33,139 +33,139 @@ test('parsing a document with a named query', () => {
         pic(width: $size)
       }
   `),
-    ).toEqual({
-        definitions: [
-            {
-                directives: undefined,
-                kind: 'OPERATION',
-                name: 'MyQuery',
-                selections: [
-                    {
-                        alias: undefined,
-                        arguments: undefined,
-                        directives: undefined,
-                        kind: 'FIELD',
-                        name: 'foo',
-                        selections: undefined,
-                    },
-                    {
-                        alias: undefined,
-                        arguments: undefined,
-                        directives: undefined,
-                        kind: 'FIELD',
-                        name: 'bar',
-                        selections: undefined,
-                    },
-                ],
-                type: 'QUERY',
-            },
-            {
-                directives: [
-                    {
-                        arguments: undefined,
-                        kind: 'DIRECTIVE',
-                        name: 'live',
-                    },
-                ],
-                kind: 'OPERATION',
-                name: 'LiveQuery',
-                selections: [
-                    {
-                        alias: undefined,
-                        arguments: undefined,
-                        directives: undefined,
-                        kind: 'FIELD',
-                        name: 'fancy',
-                        selections: undefined,
-                    },
-                ],
-                type: 'QUERY',
-            },
-            {
-                directives: undefined,
-                kind: 'OPERATION',
-                name: 'WithVariables',
-                selections: [
-                    {
-                        alias: undefined,
-                        arguments: [
-                            {
-                                kind: 'ARGUMENT',
-                                name: 'width',
-                                value: {
-                                    kind: 'VARIABLE',
-                                    name: 'size',
-                                },
-                            },
-                        ],
-                        directives: undefined,
-                        kind: 'FIELD',
-                        name: 'pic',
-                        selections: undefined,
-                    },
-                ],
-                type: 'QUERY',
-                variables: [
-                    {
-                        kind: 'VARIABLE_DEFINITION',
-                        variable: {
-                            kind: 'VARIABLE',
-                            name: 'size',
-                        },
-                        type: {
-                            kind: 'NAMED_TYPE',
-                            name: 'Int',
-                        },
-                    },
-                ],
-            },
+  ).toEqual({
+    definitions: [
+      {
+        directives: undefined,
+        kind: 'OPERATION',
+        name: 'MyQuery',
+        selections: [
+          {
+            alias: undefined,
+            arguments: undefined,
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'foo',
+            selections: undefined,
+          },
+          {
+            alias: undefined,
+            arguments: undefined,
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'bar',
+            selections: undefined,
+          },
         ],
-        kind: 'DOCUMENT',
-    });
+        type: 'QUERY',
+      },
+      {
+        directives: [
+          {
+            arguments: undefined,
+            kind: 'DIRECTIVE',
+            name: 'live',
+          },
+        ],
+        kind: 'OPERATION',
+        name: 'LiveQuery',
+        selections: [
+          {
+            alias: undefined,
+            arguments: undefined,
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'fancy',
+            selections: undefined,
+          },
+        ],
+        type: 'QUERY',
+      },
+      {
+        directives: undefined,
+        kind: 'OPERATION',
+        name: 'WithVariables',
+        selections: [
+          {
+            alias: undefined,
+            arguments: [
+              {
+                kind: 'ARGUMENT',
+                name: 'width',
+                value: {
+                  kind: 'VARIABLE',
+                  name: 'size',
+                },
+              },
+            ],
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'pic',
+            selections: undefined,
+          },
+        ],
+        type: 'QUERY',
+        variables: [
+          {
+            kind: 'VARIABLE_DEFINITION',
+            variable: {
+              kind: 'VARIABLE',
+              name: 'size',
+            },
+            type: {
+              kind: 'NAMED_TYPE',
+              name: 'Int',
+            },
+          },
+        ],
+      },
+    ],
+    kind: 'DOCUMENT',
+  });
 });
 
 test('parsing a document with an anonymous operation', () => {
-    expect(
-        parse(`
+  expect(
+    parse(`
       {
         foo
         bar
       }
   `),
-    ).toEqual({
-        definitions: [
-            {
-                directives: undefined,
-                kind: 'OPERATION',
-                name: undefined,
-                selections: [
-                    {
-                        alias: undefined,
-                        arguments: undefined,
-                        directives: undefined,
-                        kind: 'FIELD',
-                        name: 'foo',
-                        selections: undefined,
-                    },
-                    {
-                        alias: undefined,
-                        arguments: undefined,
-                        directives: undefined,
-                        kind: 'FIELD',
-                        name: 'bar',
-                        selections: undefined,
-                    },
-                ],
-                type: 'QUERY',
-            },
+  ).toEqual({
+    definitions: [
+      {
+        directives: undefined,
+        kind: 'OPERATION',
+        name: undefined,
+        selections: [
+          {
+            alias: undefined,
+            arguments: undefined,
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'foo',
+            selections: undefined,
+          },
+          {
+            alias: undefined,
+            arguments: undefined,
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'bar',
+            selections: undefined,
+          },
         ],
-        kind: 'DOCUMENT',
-    });
+        type: 'QUERY',
+      },
+    ],
+    kind: 'DOCUMENT',
+  });
 });
 
 test('parsing a document with a non-exclusive anonymous operation', () => {
-    expect(() =>
-        parse(`
+  expect(() =>
+    parse(`
     {
       foo
     }
@@ -174,10 +174,10 @@ test('parsing a document with a non-exclusive anonymous operation', () => {
       bar
     }
   `),
-    ).toThrow(/Anonymous operation must be the only operation in the document/);
+  ).toThrow(/Anonymous operation must be the only operation in the document/);
 
-    expect(() =>
-        parse(`
+  expect(() =>
+    parse(`
     query MyQuery {
       foo
     }
@@ -186,11 +186,11 @@ test('parsing a document with a non-exclusive anonymous operation', () => {
       bar
     }
   `),
-    ).toThrow(/Anonymous operation must be the only operation in the document/);
+  ).toThrow(/Anonymous operation must be the only operation in the document/);
 });
 
 test('parsing an empty selection set', () => {
-    expect(() => parse('{}')).toThrow(dedent`
+  expect(() => parse('{}')).toThrow(dedent`
     Parse error:
 
       Expected: alias
@@ -202,13 +202,13 @@ test('parsing an empty selection set', () => {
 });
 
 test('parsing a document with trailing lexical tokens', () => {
-    expect(() =>
-        parse(dedent`
+  expect(() =>
+    parse(dedent`
     {
       foo
     }} # <-- Note excess parenthesis here.
   `),
-    ).toThrow(dedent`
+  ).toThrow(dedent`
     Parse error:
 
       Expected: end of input
@@ -220,68 +220,68 @@ test('parsing a document with trailing lexical tokens', () => {
 });
 
 test('parsing a document with trailing ignored tokens', () => {
-    expect(
-        parse(dedent`
+  expect(
+    parse(dedent`
     {
       foo
     } # This comment is fine.
   `),
-    ).toEqual({
-        definitions: [
-            {
-                directives: undefined,
-                kind: 'OPERATION',
-                name: undefined,
-                selections: [
-                    {
-                        alias: undefined,
-                        arguments: undefined,
-                        directives: undefined,
-                        kind: 'FIELD',
-                        name: 'foo',
-                        selections: undefined,
-                    },
-                ],
-                type: 'QUERY',
-            },
+  ).toEqual({
+    definitions: [
+      {
+        directives: undefined,
+        kind: 'OPERATION',
+        name: undefined,
+        selections: [
+          {
+            alias: undefined,
+            arguments: undefined,
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'foo',
+            selections: undefined,
+          },
         ],
-        kind: 'DOCUMENT',
-    });
+        type: 'QUERY',
+      },
+    ],
+    kind: 'DOCUMENT',
+  });
 });
 
 test('parsing fields with aliases', () => {
-    expect(
-        parse(dedent`
+  expect(
+    parse(dedent`
       {
         label: foo
       }
   `),
-    ).toEqual({
-        kind: 'DOCUMENT',
-        definitions: [
-            {
-                directives: undefined,
-                kind: 'OPERATION',
-                name: undefined,
-                selections: [
-                    {
-                        alias: 'label',
-                        arguments: undefined,
-                        directives: undefined,
-                        kind: 'FIELD',
-                        name: 'foo',
-                        selections: undefined,
-                    },
-                ],
-                type: 'QUERY',
-            },
+  ).toEqual({
+    kind: 'DOCUMENT',
+    definitions: [
+      {
+        directives: undefined,
+        kind: 'OPERATION',
+        name: undefined,
+        selections: [
+          {
+            alias: 'label',
+            arguments: undefined,
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'foo',
+            selections: undefined,
+          },
         ],
-    });
+        type: 'QUERY',
+      },
+    ],
+  });
 });
 
 test('parsing fields with nested selections', () => {
-    expect(
-        parse(dedent`
+  expect(
+    parse(dedent`
       {
         foo {
           bar {
@@ -290,49 +290,49 @@ test('parsing fields with nested selections', () => {
         }
       }
   `),
-    ).toEqual({
-        kind: 'DOCUMENT',
-        definitions: [
-            {
+  ).toEqual({
+    kind: 'DOCUMENT',
+    definitions: [
+      {
+        directives: undefined,
+        kind: 'OPERATION',
+        name: undefined,
+        selections: [
+          {
+            alias: undefined,
+            arguments: undefined,
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'foo',
+            selections: [
+              {
+                alias: undefined,
+                arguments: undefined,
                 directives: undefined,
-                kind: 'OPERATION',
-                name: undefined,
+                kind: 'FIELD',
+                name: 'bar',
                 selections: [
-                    {
-                        alias: undefined,
-                        arguments: undefined,
-                        directives: undefined,
-                        kind: 'FIELD',
-                        name: 'foo',
-                        selections: [
-                            {
-                                alias: undefined,
-                                arguments: undefined,
-                                directives: undefined,
-                                kind: 'FIELD',
-                                name: 'bar',
-                                selections: [
-                                    {
-                                        alias: undefined,
-                                        arguments: undefined,
-                                        directives: undefined,
-                                        kind: 'FIELD',
-                                        name: 'baz',
-                                    },
-                                ],
-                            },
-                        ],
-                    },
+                  {
+                    alias: undefined,
+                    arguments: undefined,
+                    directives: undefined,
+                    kind: 'FIELD',
+                    name: 'baz',
+                  },
                 ],
-                type: 'QUERY',
-            },
+              },
+            ],
+          },
         ],
-    });
+        type: 'QUERY',
+      },
+    ],
+  });
 });
 
 test('parsing fields with arguments', () => {
-    expect(
-        parse(dedent`
+  expect(
+    parse(dedent`
       {
         profilePic(
           opacity: 0.5
@@ -354,160 +354,160 @@ test('parsing fields with arguments', () => {
         )
       }
   `),
-    ).toEqual({
-        kind: 'DOCUMENT',
-        definitions: [
-            {
+  ).toEqual({
+    kind: 'DOCUMENT',
+    definitions: [
+      {
+        directives: undefined,
+        kind: 'OPERATION',
+        name: undefined,
+        selections: [
+          {
+            alias: undefined,
+            arguments: [
+              {
+                kind: 'ARGUMENT',
+                name: 'opacity',
+                value: {
+                  kind: 'FLOAT',
+                  value: '0.5',
+                },
+              },
+              {
+                kind: 'ARGUMENT',
+                name: 'size',
+                value: {
+                  kind: 'INT',
+                  value: 100,
+                },
+              },
+            ],
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'profilePic',
+            selections: undefined,
+          },
+          {
+            alias: undefined,
+            arguments: [
+              {
+                kind: 'ARGUMENT',
+                name: 'locale',
+                value: {
+                  block: true,
+                  kind: 'STRING',
+                  value: 'en-US',
+                },
+              },
+              {
+                kind: 'ARGUMENT',
+                name: 'query',
+                value: {
+                  block: false,
+                  kind: 'STRING',
+                  value: 'cat pics',
+                },
+              },
+            ],
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'search',
+            selections: [
+              {
+                alias: undefined,
+                arguments: undefined,
                 directives: undefined,
-                kind: 'OPERATION',
-                name: undefined,
-                selections: [
+                kind: 'FIELD',
+                name: 'result',
+                selections: undefined,
+              },
+            ],
+          },
+          {
+            alias: undefined,
+            arguments: [
+              {
+                kind: 'ARGUMENT',
+                name: 'arg',
+                value: {
+                  kind: 'NULL',
+                },
+              },
+              {
+                kind: 'ARGUMENT',
+                name: 'order',
+                value: {
+                  kind: 'ENUM',
+                  value: 'DESC',
+                },
+              },
+              {
+                kind: 'ARGUMENT',
+                name: 'dimensions',
+                value: {
+                  kind: 'LIST',
+                  value: [
                     {
-                        alias: undefined,
-                        arguments: [
-                            {
-                                kind: 'ARGUMENT',
-                                name: 'opacity',
-                                value: {
-                                    kind: 'FLOAT',
-                                    value: '0.5',
-                                },
-                            },
-                            {
-                                kind: 'ARGUMENT',
-                                name: 'size',
-                                value: {
-                                    kind: 'INT',
-                                    value: 100,
-                                },
-                            },
-                        ],
-                        directives: undefined,
-                        kind: 'FIELD',
-                        name: 'profilePic',
-                        selections: undefined,
+                      kind: 'INT',
+                      value: 100,
                     },
                     {
-                        alias: undefined,
-                        arguments: [
-                            {
-                                kind: 'ARGUMENT',
-                                name: 'locale',
-                                value: {
-                                    block: true,
-                                    kind: 'STRING',
-                                    value: 'en-US',
-                                },
-                            },
-                            {
-                                kind: 'ARGUMENT',
-                                name: 'query',
-                                value: {
-                                    block: false,
-                                    kind: 'STRING',
-                                    value: 'cat pics',
-                                },
-                            },
-                        ],
-                        directives: undefined,
-                        kind: 'FIELD',
-                        name: 'search',
-                        selections: [
-                            {
-                                alias: undefined,
-                                arguments: undefined,
-                                directives: undefined,
-                                kind: 'FIELD',
-                                name: 'result',
-                                selections: undefined,
-                            },
-                        ],
+                      kind: 'INT',
+                      value: 50,
+                    },
+                  ],
+                },
+              },
+            ],
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'thing',
+            selections: undefined,
+          },
+          {
+            alias: undefined,
+            arguments: [
+              {
+                name: 'location',
+                kind: 'ARGUMENT',
+                value: {
+                  kind: 'OBJECT',
+                  fields: [
+                    {
+                      kind: 'OBJECT_FIELD',
+                      name: 'latitude',
+                      value: {
+                        kind: 'FLOAT',
+                        value: '-50.1',
+                      },
                     },
                     {
-                        alias: undefined,
-                        arguments: [
-                            {
-                                kind: 'ARGUMENT',
-                                name: 'arg',
-                                value: {
-                                    kind: 'NULL',
-                                },
-                            },
-                            {
-                                kind: 'ARGUMENT',
-                                name: 'order',
-                                value: {
-                                    kind: 'ENUM',
-                                    value: 'DESC',
-                                },
-                            },
-                            {
-                                kind: 'ARGUMENT',
-                                name: 'dimensions',
-                                value: {
-                                    kind: 'LIST',
-                                    value: [
-                                        {
-                                            kind: 'INT',
-                                            value: 100,
-                                        },
-                                        {
-                                            kind: 'INT',
-                                            value: 50,
-                                        },
-                                    ],
-                                },
-                            },
-                        ],
-                        directives: undefined,
-                        kind: 'FIELD',
-                        name: 'thing',
-                        selections: undefined,
+                      kind: 'OBJECT_FIELD',
+                      name: 'longitude',
+                      value: {
+                        kind: 'FLOAT',
+                        value: '22.3',
+                      },
                     },
-                    {
-                        alias: undefined,
-                        arguments: [
-                            {
-                                name: 'location',
-                                kind: 'ARGUMENT',
-                                value: {
-                                    kind: 'OBJECT',
-                                    fields: [
-                                        {
-                                            kind: 'OBJECT_FIELD',
-                                            name: 'latitude',
-                                            value: {
-                                                kind: 'FLOAT',
-                                                value: '-50.1',
-                                            },
-                                        },
-                                        {
-                                            kind: 'OBJECT_FIELD',
-                                            name: 'longitude',
-                                            value: {
-                                                kind: 'FLOAT',
-                                                value: '22.3',
-                                            },
-                                        },
-                                    ],
-                                },
-                            },
-                        ],
-                        directives: undefined,
-                        kind: 'FIELD',
-                        name: 'nearby',
-                        selections: undefined,
-                    },
-                ],
-                type: 'QUERY',
-            },
+                  ],
+                },
+              },
+            ],
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'nearby',
+            selections: undefined,
+          },
         ],
-    });
+        type: 'QUERY',
+      },
+    ],
+  });
 });
 
 test('parsing fields with directives', () => {
-    expect(
-        parse(dedent`
+  expect(
+    parse(dedent`
       {
         foo
         bar @defer
@@ -515,92 +515,92 @@ test('parsing fields with directives', () => {
         bing @skip(if: false)
       }
   `),
-    ).toEqual({
-        kind: 'DOCUMENT',
-        definitions: [
-            {
-                directives: undefined,
-                kind: 'OPERATION',
-                name: undefined,
-                selections: [
-                    {
-                        alias: undefined,
-                        arguments: undefined,
-                        directives: undefined,
-                        kind: 'FIELD',
-                        name: 'foo',
-                        selections: undefined,
+  ).toEqual({
+    kind: 'DOCUMENT',
+    definitions: [
+      {
+        directives: undefined,
+        kind: 'OPERATION',
+        name: undefined,
+        selections: [
+          {
+            alias: undefined,
+            arguments: undefined,
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'foo',
+            selections: undefined,
+          },
+          {
+            alias: undefined,
+            arguments: undefined,
+            directives: [
+              {
+                arguments: undefined,
+                kind: 'DIRECTIVE',
+                name: 'defer',
+              },
+            ],
+            kind: 'FIELD',
+            name: 'bar',
+            selections: undefined,
+          },
+          {
+            alias: undefined,
+            arguments: undefined,
+            directives: [
+              {
+                arguments: [
+                  {
+                    kind: 'ARGUMENT',
+                    name: 'if',
+                    value: {
+                      kind: 'BOOLEAN',
+                      value: true,
                     },
-                    {
-                        alias: undefined,
-                        arguments: undefined,
-                        directives: [
-                            {
-                                arguments: undefined,
-                                kind: 'DIRECTIVE',
-                                name: 'defer',
-                            },
-                        ],
-                        kind: 'FIELD',
-                        name: 'bar',
-                        selections: undefined,
-                    },
-                    {
-                        alias: undefined,
-                        arguments: undefined,
-                        directives: [
-                            {
-                                arguments: [
-                                    {
-                                        kind: 'ARGUMENT',
-                                        name: 'if',
-                                        value: {
-                                            kind: 'BOOLEAN',
-                                            value: true,
-                                        },
-                                    },
-                                ],
-                                kind: 'DIRECTIVE',
-                                name: 'include',
-                            },
-                        ],
-                        kind: 'FIELD',
-                        name: 'baz',
-                        selections: undefined,
-                    },
-                    {
-                        alias: undefined,
-                        arguments: undefined,
-                        directives: [
-                            {
-                                arguments: [
-                                    {
-                                        kind: 'ARGUMENT',
-                                        name: 'if',
-                                        value: {
-                                            kind: 'BOOLEAN',
-                                            value: false,
-                                        },
-                                    },
-                                ],
-                                kind: 'DIRECTIVE',
-                                name: 'skip',
-                            },
-                        ],
-                        kind: 'FIELD',
-                        name: 'bing',
-                        selections: undefined,
-                    },
+                  },
                 ],
-                type: 'QUERY',
-            },
+                kind: 'DIRECTIVE',
+                name: 'include',
+              },
+            ],
+            kind: 'FIELD',
+            name: 'baz',
+            selections: undefined,
+          },
+          {
+            alias: undefined,
+            arguments: undefined,
+            directives: [
+              {
+                arguments: [
+                  {
+                    kind: 'ARGUMENT',
+                    name: 'if',
+                    value: {
+                      kind: 'BOOLEAN',
+                      value: false,
+                    },
+                  },
+                ],
+                kind: 'DIRECTIVE',
+                name: 'skip',
+              },
+            ],
+            kind: 'FIELD',
+            name: 'bing',
+            selections: undefined,
+          },
         ],
-    });
+        type: 'QUERY',
+      },
+    ],
+  });
 });
 
 test('parsing a fragment definition', () => {
-    expect(
-        parse(dedent`
+  expect(
+    parse(dedent`
       fragment Post on Post {
         id
         title
@@ -613,7 +613,7 @@ test('parsing a fragment definition', () => {
         ...When
       }
     `),
-    ).toMatchInlineSnapshot(`
+  ).toMatchInlineSnapshot(`
     Object {
       "definitions": Array [
         Object {
@@ -699,8 +699,8 @@ test('parsing a fragment definition', () => {
 });
 
 test('parsing a query with an inline fragment', () => {
-    expect(
-        parse(dedent`
+  expect(
+    parse(dedent`
       query ArticleRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
         node(id: $id) {
           ... on Article {
@@ -713,7 +713,7 @@ test('parsing a query with an inline fragment', () => {
         }
       }
     `),
-    ).toMatchInlineSnapshot(`
+  ).toMatchInlineSnapshot(`
     Object {
       "definitions": Array [
         Object {
@@ -817,13 +817,13 @@ test('parsing a query with an inline fragment', () => {
 });
 
 test.each([['client-corpus.graphql'], ['server-corpus.graphql']])(
-    'integration with %s',
-    async (corpus) => {
-        const source = await readFile(
-            path.join(__dirname, '../../../../support', corpus),
-            'utf8',
-        );
+  'integration with %s',
+  async (corpus) => {
+    const source = await readFile(
+      path.join(__dirname, '../../../../support', corpus),
+      'utf8',
+    );
 
-        expect(parse(source)).toMatchSnapshot();
-    },
+    expect(parse(source)).toMatchSnapshot();
+  },
 );

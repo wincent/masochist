@@ -65,7 +65,7 @@ export default class StringScanner {
 
     const startOfCurrentLine = Math.max(
       this.#haystack.lastIndexOf('\n', this.#index - 1) + 1,
-      this.#haystack.lastIndexOf('\r', this.#index - 1) + 1
+      this.#haystack.lastIndexOf('\r', this.#index - 1) + 1,
     );
 
     const column = this.#index - startOfCurrentLine + 1;
@@ -127,7 +127,7 @@ export default class StringScanner {
 
     if (result === null) {
       throw new Error(
-        `Expected ${description ?? pattern} at ${formatContext(this)}`
+        `Expected ${description ?? pattern} at ${formatContext(this)}`,
       );
     }
 

@@ -30,7 +30,7 @@ describe('StringScanner', () => {
           '    | ^\n' +
           '  2 | second line\n' +
           '  3 | third line\n' +
-          '  4 | fourth line\n'
+          '  4 | fourth line\n',
       );
     });
 
@@ -40,7 +40,7 @@ describe('StringScanner', () => {
           '    |     ^\n' +
           '  2 | second line\n' +
           '  3 | third line\n' +
-          '  4 | fourth line\n'
+          '  4 | fourth line\n',
       );
     });
 
@@ -49,7 +49,7 @@ describe('StringScanner', () => {
         '  5 | fifth line\n' +
           '  6 | sixth line\n' +
           '> 7 | seventh line\n' +
-          '    |     ^\n'
+          '    |     ^\n',
       );
     });
 
@@ -61,7 +61,7 @@ describe('StringScanner', () => {
           '    |     ^\n' +
           '  5 | fifth line\n' +
           '  6 | sixth line\n' +
-          '  7 | seventh line\n'
+          '  7 | seventh line\n',
       );
     });
   });
@@ -82,7 +82,7 @@ describe('StringScanner', () => {
         'Expected /nope/ at line 1, column 1 of input string\n' +
           '\n' +
           '> 1 | some stuff in here\n' +
-          '    | ^\n'
+          '    | ^\n',
       );
     });
 
@@ -91,7 +91,7 @@ describe('StringScanner', () => {
         'Expected keyword at line 1, column 1 of input string\n' +
           '\n' +
           '> 1 | some stuff in here\n' +
-          '    | ^\n'
+          '    | ^\n',
       );
     });
   });
@@ -272,7 +272,7 @@ describe('formatContext()', () => {
         '\n' +
         '> 1 | my input string\n' +
         '    |    ^\n' +
-        '\n'
+        '\n',
     );
   });
 });

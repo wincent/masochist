@@ -2,7 +2,7 @@ This is an experimental rewrite of [Masochist](https://github.com/wincent/masoch
 
 Points of interest and areas for exploration:
 
--   Extremely minimal GraphQL client/compiler/server.
--   Streaming responses.
--   TypeScript.
--   Minimal dependency footprint.
+- Extremely minimal GraphQL client/compiler/server.
+- Streaming responses.
+- TypeScript.
+- Minimal dependency footprint.

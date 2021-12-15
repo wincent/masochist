@@ -1,7 +1,7 @@
 import lexer from '..';
 
 test('generated lexer', () => {
-    expect(lexer).toMatchInlineSnapshot(`
+  expect(lexer).toMatchInlineSnapshot(`
         "*function lex(input: string) {
             for (let i = 0; i < input.length; i++) {
                 const char = input[i];
