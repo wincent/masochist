@@ -28,7 +28,7 @@
     "email": "greg@hurrell.net",
     "url": "https://github.com/wincent"
   },
-  "license": "CC-BY-NC-SA-4.0",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@babel/cli": "*",
