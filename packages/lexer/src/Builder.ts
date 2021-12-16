@@ -32,11 +32,18 @@ export default class Builder {
     condition: string | Array<string> | Set<string>,
     body: () => void,
   ) {
+    // May backtrack so as to appear on same line as preceeding `}`.
+    const sameLine = kind === 'else if';
+    if (sameLine) {
+      this.#output = this.#output.replace(/\}\s+$/, '} ');
+    }
     const isArray = Array.isArray(condition);
     if (isArray || condition instanceof Set) {
-      // BUG: ideally, `else if` wouldn't appear on new line
-      // (and neither would `else`)
-      this.line(`${kind} (`);
+      if (sameLine) {
+        this.endLine(`${kind} (`);
+      } else {
+        this.line(`${kind} (`);
+      }
 
       this.indent();
 
@@ -53,7 +60,9 @@ export default class Builder {
 
       this.dedent();
 
-      this.line(') }');
+      this.line(') {');
+    } else if (sameLine) {
+      this.endLine(`${kind} (${condition}) {`);
     } else {
       this.line(`${kind} (${condition}) {`);
     }
