@@ -20,7 +20,7 @@ Welcome to [wincent.com](/). My name is Greg Hurrell. I live in Spain. I work as
 -   [Introducing Masochist](/blog/masochist)
 -   [Deploying Masochist](/blog/deploying-masochist)
 -   [masochist repo on GitHub](https://github.com/wincent/masochist):
-    -   [master branch](https://github.com/wincent/masochist/tree/master) (code)
+    -   [main branch](https://github.com/wincent/masochist/tree/main) (code)
     -   [content branch](https://github.com/wincent/masochist/tree/content) (content)
 
 # Other places to find me online
