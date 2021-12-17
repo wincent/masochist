@@ -46,6 +46,7 @@ test('generated lexer', () => {
                     index: i,
                     name: 'ELLIPSIS',
                 };
+                i += 2;
             } else if (char === ':') {
                 yield {
                     contents: ':',
@@ -99,15 +100,15 @@ test('generated lexer', () => {
                 char >= 'A' && char <= 'Z' ||
                 char >= 'a' && char <= 'z'
             ) {
-                string:[object Object]
+                [object Object]
             } else if (
                 char /* input[i + 0] */ === '\\"' &&
                 input[i + 1] === '\\"' &&
                 input[i + 2] === '\\"'
             ) {
-                string:[object Object]
+                [object Object]
             } else if (char === '\\"') {
-                string:[object Object]
+                [object Object]
             } else if (char === '\\\\ufeff') {
                 yield {
                     contents: '\\\\ufeff',
@@ -125,6 +126,7 @@ test('generated lexer', () => {
                     index: i,
                     name: 'COMMENT',
                 };
+                i += 3;
             } else if (char === ',') {
                 yield {
                     contents: ',',

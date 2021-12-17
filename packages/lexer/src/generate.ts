@@ -206,8 +206,8 @@ export default function generate(callback: Callback): string {
                 name: stringify(name),
               });
             });
-            if (Array.isArray(conditions) && conditions.length > 1) {
-              b.line(`i += ${conditions.length - 1};`);
+            if (lookahead.length > 1) {
+              b.line(`i += ${lookahead.length - 1};`);
             }
           } else {
             for (let j = 1; j < matchers.length; j++) {

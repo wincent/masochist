@@ -37,6 +37,8 @@ export default generate(({ignored, range, star, token}) => {
     //  [_A-Za-z][_A-Za-z0-9]*
     // into this?:
     // (not sure if this is a good idea or not)
+    // probably seq() alt() etc functions are better than implicitly using
+    // Array/Set to signal things
     new Set(['_', range('A-Z'), range('a-z')]),
     star(new Set(['_', range('A-Z'), range('a-z'), range('0-9')])),
   );
