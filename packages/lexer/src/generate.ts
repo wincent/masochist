@@ -212,12 +212,22 @@ export default function generate(callback: Callback): string {
           } else {
             for (let j = 1; j < matchers.length; j++) {
               const matcher = matchers[j];
-              const conditions = getConditionsForMatcher('char', matcher);
+              const conditions = getConditionsForMatcher('input[i + 1]', matcher);
               if (conditions.kind === 'StarCondition') {
                 b.line('while (true) {');
                 b.indent();
-                // need inner statement here
-                b.line('break;');
+                const inner = conditions.conditions;
+                if (inner.kind === 'OrCondition') {
+                  const innerStatement = j === 1 ? 'if' : 'elseIf';
+                  b[innerStatement](inner, () => {
+                    b.line('i++;');
+                  });
+                  b.else(() => {
+                    b.line('break;');
+                  });
+                } else {
+                  // TODO
+                }
                 b.dedent();
                 b.line('}');
               } else if (conditions.kind === 'AndCondition') {

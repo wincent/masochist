@@ -101,7 +101,16 @@ test('generated lexer', () => {
                 char >= 'a' && char <= 'z'
             ) {
                 while (true) {
-                    break;
+                    if (
+                        input[i + 1] === '_' ||
+                        input[i + 1] >= 'A' && input[i + 1] <= 'Z' ||
+                        input[i + 1] >= 'a' && input[i + 1] <= 'z' ||
+                        input[i + 1] >= '0' && input[i + 1] <= '9'
+                    ) {
+                        i++;
+                    } else {
+                        break;
+                    }
                 }
             } else if (
                 char /* input[i + 0] */ === '\\"' &&
@@ -133,8 +142,7 @@ test('generated lexer', () => {
                     index: i,
                     name: 'COMMA',
                 };
-            }
-            else {
+            } else {
                 throw new Error('Unexpected character');
             }
         }

@@ -63,7 +63,6 @@ export default class Builder {
     if (sameLine) {
       this.#output = this.#output.replace(/\}\s+$/, '} ');
     }
-    const isArray = Array.isArray(condition);
     if (
       condition.kind === 'AndCondition' ||
       condition.kind === 'OrCondition'
@@ -126,7 +125,8 @@ export default class Builder {
   }
 
   else(body: () => void) {
-    this.line('else {');
+    this.#output = this.#output.replace(/\}\s+$/, '} ');
+    this.endLine('else {');
     this.indent();
     body();
     this.dedent();
