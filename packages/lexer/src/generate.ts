@@ -214,6 +214,7 @@ export default function generate(callback: Callback): string {
               const matcher = matchers[j];
               const conditions = getConditionsForMatcher('input[i + 1]', matcher);
               if (conditions.kind === 'StarCondition') {
+                b.line('let initial = i;');
                 b.line('while (true) {');
                 b.indent();
                 const inner = conditions.conditions;
@@ -230,6 +231,13 @@ export default function generate(callback: Callback): string {
                 }
                 b.dedent();
                 b.line('}');
+                b.yield(() => {
+                  b.object({
+                    contents: 'input.slice(initial, i)',
+                    index: 'initial',
+                    name: stringify(name),
+                  });
+                });
               } else if (conditions.kind === 'AndCondition') {
               } else if (conditions.kind === 'OrCondition') {
               }

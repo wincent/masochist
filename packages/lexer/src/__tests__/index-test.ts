@@ -100,6 +100,7 @@ test('generated lexer', () => {
                 char >= 'A' && char <= 'Z' ||
                 char >= 'a' && char <= 'z'
             ) {
+                let initial = i;
                 while (true) {
                     if (
                         input[i + 1] === '_' ||
@@ -112,6 +113,11 @@ test('generated lexer', () => {
                         break;
                     }
                 }
+                yield {
+                    contents: input.slice(initial, i),
+                    index: initial,
+                    name: 'NAME',
+                };
             } else if (
                 char /* input[i + 0] */ === '\\"' &&
                 input[i + 1] === '\\"' &&
