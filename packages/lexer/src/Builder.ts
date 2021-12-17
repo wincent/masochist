@@ -1,3 +1,29 @@
+export type Condition =
+  | AndCondition
+  | ExpressionCondition
+  | OrCondition
+  | StarCondition;
+
+export type AndCondition = {
+  conditions: Array<Condition>;
+  kind: 'AndCondition';
+};
+
+export type ExpressionCondition = {
+  conditions: string;
+  kind: 'ExpressionCondition';
+};
+
+export type OrCondition = {
+  conditions: Array<Condition>;
+  kind: 'OrCondition';
+};
+
+export type StarCondition = {
+  conditions: Condition;
+  kind: 'StarCondition';
+};
+
 /**
  * Allows callers to build up a TS output file in a procedural fashion.
  */
@@ -29,7 +55,7 @@ export default class Builder {
    */
   conditional(
     kind: 'if' | 'else if',
-    condition: string | Array<string> | Set<string>,
+    condition: Condition,
     body: () => void,
   ) {
     // May backtrack so as to appear on same line as preceeding `}`.
@@ -38,7 +64,10 @@ export default class Builder {
       this.#output = this.#output.replace(/\}\s+$/, '} ');
     }
     const isArray = Array.isArray(condition);
-    if (isArray || condition instanceof Set) {
+    if (
+      condition.kind === 'AndCondition' ||
+      condition.kind === 'OrCondition'
+    ) {
       if (sameLine) {
         this.endLine(`${kind} (`);
       } else {
@@ -47,14 +76,22 @@ export default class Builder {
 
       this.indent();
 
-      const operator = isArray ? '&&' : '||';
-      const lastIndex = (isArray ? condition.length : condition.size) - 1;
-      Array.from(condition).forEach((expression, i) => {
-        // TODO going to need something a bit more AST-ish here?
+      const operator = condition.kind === 'AndCondition' ? '&&' : '||';
+      const lastIndex = condition.conditions.length - 1;
+      condition.conditions.forEach((subcondition, i) => {
         if (i < lastIndex) {
-          this.line(`${expression} ${operator}`);
+          if (subcondition.kind === 'ExpressionCondition') {
+            // TODO: condsider wrapping in parens here if precendence demands it
+            this.line(`${subcondition.conditions} ${operator}`);
+          } else {
+            // TODO: recurse to deal with nested expressions
+          }
         } else {
-          this.line(expression);
+          if (subcondition.kind === 'ExpressionCondition') {
+            this.line(subcondition.conditions);
+          } else {
+            // TODO: recurse to deal with nested expressions
+          }
         }
       });
 
@@ -62,9 +99,17 @@ export default class Builder {
 
       this.line(') {');
     } else if (sameLine) {
-      this.endLine(`${kind} (${condition}) {`);
+      if (condition.kind === 'ExpressionCondition') {
+        this.endLine(`${kind} (${condition.conditions}) {`);
+      } else {
+        // TODO recurse
+      }
     } else {
-      this.line(`${kind} (${condition}) {`);
+      if (condition.kind === 'ExpressionCondition') {
+        this.line(`${kind} (${condition.conditions}) {`);
+      } else {
+        // TODO recurse
+      }
     }
 
     this.indent();
@@ -109,11 +154,11 @@ export default class Builder {
     this.line('}');
   }
 
-  elseIf(condition: string | Array<string> | Set<string>, body: () => void) {
+  elseIf(condition: Condition, body: () => void) {
     this.conditional('else if', condition, body);
   }
 
-  if(condition: string | Array<string> | Set<string>, body: () => void) {
+  if(condition: Condition, body: () => void) {
     this.conditional('if', condition, body);
   }
 

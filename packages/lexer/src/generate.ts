@@ -1,5 +1,7 @@
 import Builder from './Builder';
 
+import type {Condition} from './Builder';
+
 type Callback = (dsl: {
   ignored: (name: string, ...matchers: Array<Matcher>) => void;
   range: (specifier: string) => CharRange;
@@ -79,44 +81,59 @@ export default function generate(callback: Callback): string {
   function getConditionsForMatcher(
     binding: string,
     matcher: Matcher,
-  ): string | Array<string> | Set<string> {
+  ): Condition {
     if (typeof matcher === 'string') {
       if (matcher.length > 1) {
-        return Array.from(matcher).map((char, index) => {
-          if (index) {
+        return {
+          conditions: Array.from(matcher).map((char, index) => {
             if (index) {
-              return `input[i + ${index}] === ${stringify(char)}`;
+              return {
+                conditions: `input[i + ${index}] === ${stringify(char)}`,
+                kind: 'ExpressionCondition',
+              };
             } else {
-              return `${binding} /* input[i] */ === ${stringify(char)}`;
+              return {
+                conditions: `${binding} /* input[i + 0] */ === ${stringify(char)}`,
+                kind: 'ExpressionCondition',
+              };
             }
-          } else {
-            return `${binding} === ${stringify(char)}`;
-          }
-        });
+          }),
+          kind: 'AndCondition',
+        };
       } else {
-        return `${binding} === ${stringify(matcher)}`;
+        return {
+          conditions: `${binding} === ${stringify(matcher)}`,
+          kind: 'ExpressionCondition',
+        };
       }
     } else if (matcher instanceof Set) {
-      return new Set(
-        Array.from(matcher).flatMap((matcher) => {
+      return {
+        conditions: Array.from(matcher).flatMap((matcher) => {
           const nested = getConditionsForMatcher(binding, matcher);
-          if (nested instanceof Set) {
-            throw new Error('getConditionsForMatcher(): illegal nested Set');
+          if (nested.kind === 'OrCondition') {
+            throw new Error('getConditionsForMatcher(): illegal nested OrCondition');
           } else {
             return nested;
           }
         }),
-      );
+        kind: 'OrCondition',
+      };
     } else if (matcher.kind === 'range') {
-      return `${binding} >= ${stringify(
-        matcher.from,
-      )} && ${binding} <= ${stringify(matcher.to)}`;
+      return {
+        conditions: `${binding} >= ${stringify(
+          matcher.from,
+        )} && ${binding} <= ${stringify(matcher.to)}`,
+        kind: 'ExpressionCondition',
+      };
     } else if (matcher.kind === 'star') {
       const {matcher: inner} = matcher;
       if (isStar(inner)) {
         throw new Error('getConditionsForMatcher(): illegal nested star()');
       } else {
-        return getConditionsForMatcher(binding, inner);
+        return {
+          conditions: getConditionsForMatcher(binding, inner),
+          kind: 'StarCondition',
+        };
       }
     } else {
       throw new Error('getConditionsForMatcher(): unexpected matcher type');

@@ -37,7 +37,7 @@ test('generated lexer', () => {
                     name: 'CLOSING_PAREN',
                 };
             } else if (
-                char === '.' &&
+                char /* input[i + 0] */ === '.' &&
                 input[i + 1] === '.' &&
                 input[i + 2] === '.'
             ) {
@@ -46,7 +46,6 @@ test('generated lexer', () => {
                     index: i,
                     name: 'ELLIPSIS',
                 };
-                i += 2;
             } else if (char === ':') {
                 yield {
                     contents: ':',
@@ -100,15 +99,15 @@ test('generated lexer', () => {
                 char >= 'A' && char <= 'Z' ||
                 char >= 'a' && char <= 'z'
             ) {
-                [object Set]
+                string:[object Object]
             } else if (
-                char === '\\"' &&
+                char /* input[i + 0] */ === '\\"' &&
                 input[i + 1] === '\\"' &&
                 input[i + 2] === '\\"'
             ) {
-                char === '\\"',input[i + 1] === '\\"',input[i + 2] === '\\"'
+                string:[object Object]
             } else if (char === '\\"') {
-                char === '\\"'
+                string:[object Object]
             } else if (char === '\\\\ufeff') {
                 yield {
                     contents: '\\\\ufeff',
@@ -116,7 +115,7 @@ test('generated lexer', () => {
                     name: 'UNICODE_BOM',
                 };
             } else if (
-                char === 'T' &&
+                char /* input[i + 0] */ === 'T' &&
                 input[i + 1] === 'O' &&
                 input[i + 2] === 'D' &&
                 input[i + 3] === 'O'
@@ -126,7 +125,6 @@ test('generated lexer', () => {
                     index: i,
                     name: 'COMMENT',
                 };
-                i += 3;
             } else if (char === ',') {
                 yield {
                     contents: ',',
