@@ -100,15 +100,15 @@ test('generated lexer', () => {
                 char >= 'A' && char <= 'Z' ||
                 char >= 'a' && char <= 'z'
             ) {
-                [object Object]
+                while (true) {
+                    break;
+                }
             } else if (
                 char /* input[i + 0] */ === '\\"' &&
                 input[i + 1] === '\\"' &&
                 input[i + 2] === '\\"'
             ) {
-                [object Object]
             } else if (char === '\\"') {
-                [object Object]
             } else if (char === '\\\\ufeff') {
                 yield {
                     contents: '\\\\ufeff',

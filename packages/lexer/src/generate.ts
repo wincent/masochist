@@ -213,11 +213,16 @@ export default function generate(callback: Callback): string {
             for (let j = 1; j < matchers.length; j++) {
               const matcher = matchers[j];
               const conditions = getConditionsForMatcher('char', matcher);
-              // for each condition, try...
-              // if any fail, all fail...
-              b.line(conditions.toString());
-
-              // b.line(`i += ${conditions.length} - 1;`);
+              if (conditions.kind === 'StarCondition') {
+                b.line('while (true) {');
+                b.indent();
+                // need inner statement here
+                b.line('break;');
+                b.dedent();
+                b.line('}');
+              } else if (conditions.kind === 'AndCondition') {
+              } else if (conditions.kind === 'OrCondition') {
+              }
             }
           }
         });
