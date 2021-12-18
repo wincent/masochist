@@ -93,7 +93,9 @@ export default function generate(callback: Callback): string {
               };
             } else {
               return {
-                conditions: `${binding} /* input[i + 0] */ === ${stringify(char)}`,
+                conditions: `${binding} /* input[i + 0] */ === ${stringify(
+                  char,
+                )}`,
                 kind: 'ExpressionCondition',
               };
             }
@@ -111,7 +113,9 @@ export default function generate(callback: Callback): string {
         conditions: Array.from(matcher).flatMap((matcher) => {
           const nested = getConditionsForMatcher(binding, matcher);
           if (nested.kind === 'OrCondition') {
-            throw new Error('getConditionsForMatcher(): illegal nested OrCondition');
+            throw new Error(
+              'getConditionsForMatcher(): illegal nested OrCondition',
+            );
           } else {
             return nested;
           }
@@ -212,7 +216,10 @@ export default function generate(callback: Callback): string {
           } else {
             for (let j = 1; j < matchers.length; j++) {
               const matcher = matchers[j];
-              const conditions = getConditionsForMatcher('input[i + 1]', matcher);
+              const conditions = getConditionsForMatcher(
+                'input[i + 1]',
+                matcher,
+              );
               if (conditions.kind === 'StarCondition') {
                 b.line('let initial = i;');
                 b.line('while (true) {');

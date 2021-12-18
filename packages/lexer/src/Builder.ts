@@ -53,20 +53,13 @@ export default class Builder {
    * If it is a Set, that implies an `||` expression.
    * If it is a string, that implies simple equality (`===`).
    */
-  conditional(
-    kind: 'if' | 'else if',
-    condition: Condition,
-    body: () => void,
-  ) {
+  conditional(kind: 'if' | 'else if', condition: Condition, body: () => void) {
     // May backtrack so as to appear on same line as preceeding `}`.
     const sameLine = kind === 'else if';
     if (sameLine) {
       this.#output = this.#output.replace(/\}\s+$/, '} ');
     }
-    if (
-      condition.kind === 'AndCondition' ||
-      condition.kind === 'OrCondition'
-    ) {
+    if (condition.kind === 'AndCondition' || condition.kind === 'OrCondition') {
       if (sameLine) {
         this.endLine(`${kind} (`);
       } else {

@@ -8,12 +8,22 @@ export function formatContext(scanner: StringScanner): string {
   );
 }
 
-export function toAnchoredRegExp(regExp: RegExp): RegExp {
-  const {source} = regExp;
+export function toAnchoredRegExp(regExp: RegExp | string): RegExp {
+  if (typeof regExp === 'string') {
+    if (regExp.length) {
+      // Escape characters listed here: https://stackoverflow.com/a/3561711/2103996
+      const escaped = regExp.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+      return new RegExp(`^${escaped}`);
+    } else {
+      throw new Error('StringScanner: Invalid pattern ""');
+    }
+  } else {
+    const {source} = regExp;
 
-  return source.startsWith('^')
-    ? regExp
-    : new RegExp(`^${source}`, regExp.flags);
+    return source.startsWith('^')
+      ? regExp
+      : new RegExp(`^${source}`, regExp.flags);
+  }
 }
 
 export default class StringScanner {
@@ -122,7 +132,7 @@ export default class StringScanner {
     return output;
   }
 
-  expect(pattern: RegExp, description?: string): string {
+  expect(pattern: RegExp | string, description?: string): string {
     const result = this.scan(pattern);
 
     if (result === null) {
@@ -134,11 +144,11 @@ export default class StringScanner {
     return result;
   }
 
-  peek(pattern: RegExp): boolean {
+  peek(pattern: RegExp | string): boolean {
     return toAnchoredRegExp(pattern).test(this.#remaining);
   }
 
-  scan(pattern: RegExp): string | null {
+  scan(pattern: RegExp | string): string | null {
     const match = this.#remaining.match(toAnchoredRegExp(pattern));
 
     if (match) {

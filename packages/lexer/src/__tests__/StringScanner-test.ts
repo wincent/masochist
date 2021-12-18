@@ -70,27 +70,39 @@ describe('StringScanner', () => {
     let scanner: StringScanner;
 
     beforeEach(() => {
-      scanner = new StringScanner('some stuff in here');
+      scanner = new StringScanner('+some stuff in here');
     });
 
     it('returns a match', () => {
-      expect(scanner.expect(/some/)).toBe('some');
+      expect(scanner.expect(/\+some/)).toBe('+some');
     });
 
     it('throws when matching fails', () => {
       expect(() => scanner.expect(/nope/)).toThrow(
         'Expected /nope/ at line 1, column 1 of input string\n' +
           '\n' +
-          '> 1 | some stuff in here\n' +
+          '> 1 | +some stuff in here\n' +
           '    | ^\n',
       );
+    });
+
+    it('throws given an empty string argument', () => {
+      expect(() => scanner.expect('')).toThrow('Invalid pattern ""');
+    });
+
+    it('matches a single-character string argument literally', () => {
+      expect(scanner.expect('+')).toBe('+');
+    });
+
+    it('matches a multiple-character string argument literally', () => {
+      expect(scanner.expect('+some')).toBe('+some');
     });
 
     it('includes a description in the failure message when provided', () => {
       expect(() => scanner.expect(/nope/, 'keyword')).toThrow(
         'Expected keyword at line 1, column 1 of input string\n' +
           '\n' +
-          '> 1 | some stuff in here\n' +
+          '> 1 | +some stuff in here\n' +
           '    | ^\n',
       );
     });
@@ -116,6 +128,23 @@ describe('StringScanner', () => {
 
       expect(scanner.peek(/not a match/)).toBe(false);
     });
+
+    it('throws given an empty string argument', () => {
+      const scanner = new StringScanner('stuff');
+      expect(() => scanner.peek('')).toThrow('Invalid pattern ""');
+    });
+
+    it('peeks for a single-character string argument literally', () => {
+      const scanner = new StringScanner('*bold*');
+      expect(scanner.peek('*')).toBe(true);
+      expect(scanner.peek('x')).toBe(false);
+    });
+
+    it('peeks for a multiple-character string argument literally', () => {
+      const scanner = new StringScanner('*bold*');
+      expect(scanner.peek('*bo')).toBe(true);
+      expect(scanner.peek('***')).toBe(false);
+    });
   });
 
   describe('scan()', () => {
@@ -131,6 +160,23 @@ describe('StringScanner', () => {
       const scanner = new StringScanner('something');
 
       expect(scanner.scan(/foo/)).toBe(null);
+    });
+
+    it('throws given an empty string argument', () => {
+      const scanner = new StringScanner('stuff');
+      expect(() => scanner.scan('')).toThrow('Invalid pattern ""');
+    });
+
+    it('scans a single-character string argument literally', () => {
+      const scanner = new StringScanner('+100,000');
+      expect(scanner.scan('+')).toBe('+');
+      expect(scanner.scan('+')).toBe(null);
+    });
+
+    it('scans a multiple-character string argument literally', () => {
+      const scanner = new StringScanner('+100,000');
+      expect(scanner.scan('+100')).toBe('+100');
+      expect(scanner.scan('+100')).toBe(null);
     });
   });
 
