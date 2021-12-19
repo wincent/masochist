@@ -47,9 +47,21 @@ type Atom = {
   value: string;
 };
 
+// Note that a CharacterClass may containa nested CharacterClass such as `\D`,
+// `\S`, or `\W`: eg.
+//
+//    [1-5\D] = "1 to 5, or any non-digit"
+//    [^a-z\D] = "anything except a to z and digits"
+//
+// The non-negated classes (eg. `\d`, `\s`, `\w`) don't need to be nested in
+// this way because they can be flattened like this:
+//
+//    [a-z\d] = "a to z, or any digit", flattens to: [a-z0-9]
+//    [^a-z\d] = "anything except a to z and digits", flattens to [^a-z0-9]
+//
 type CharacterClass = {
   kind: 'CharacterClass';
-  children: Array<Atom | Range>;
+  children: Array<Atom | CharacterClass | Range>;
   negated: boolean;
 };
 
@@ -234,7 +246,7 @@ export default class RegExpParser {
   }
 
   #parseCharacterClass(): CharacterClass {
-    const children: Array<Atom | Range> = [];
+    const children: Array<Atom | CharacterClass | Range> = [];
     this.#scanner.expect('[');
     const negated = !!this.#scanner.scan('^');
     while (!this.#scanner.atEnd) {
@@ -258,6 +270,12 @@ export default class RegExpParser {
           if (previous.kind === 'Range') {
             // TODO: see if TS can be made to accept `invariant()` here instead.
             throw new Error('Unexpected Range');
+          } else if (previous.kind === 'CharacterClass') {
+            // I would support this, but I literally have no idea what /[\s-z]/
+            // is supposed to match.
+            throw new Error(
+              'Unsupported nested CharacterClass before Range operator',
+            );
           }
           const {value: from} = previous;
           const to = this.#scanner.expect(/./);
@@ -270,12 +288,23 @@ export default class RegExpParser {
       } else if (this.#scanner.scan('.')) {
         // Special case: "." means literal "." inside a character class.
         children.push({kind: 'Atom', value: '.'});
-      } else if (this.#scanner.scan('\\')) {
-        // TODO: escapes are different inside character classes
-        // eg. \b means backspace
-        // \* means * but * also means star
-        // \w means A-Za-z0-9_ as always
-        // etc
+      } else if (this.#scanner.peek('\\')) {
+        // Note that some escapes are different inside character classes; eg.
+        // \b means backspace, not word boundary.
+        if (this.#scanner.scan('\\b')) {
+          children.push({kind: 'Atom', value: '\b'});
+        } else {
+          const escape = this.#parseEscape();
+          if (escape.kind === 'Atom') {
+            children.push(escape);
+          } else if (escape.negated) {
+            // Can't flatten in the children; instead have to nest the character
+            // class.
+            children.push(escape);
+          } else {
+            children.push(...escape.children);
+          }
+        }
       } else if (this.#scanner.scan(/./)) {
         children.push({kind: 'Atom', value: this.#scanner.last!});
       }
@@ -292,8 +321,6 @@ export default class RegExpParser {
   // `\cX`, `p{...}` etc), listed here:
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes
   #parseEscape(): Atom | CharacterClass {
-    // TODO: handle \u0000 etc
-    // \x00
     this.#scanner.expect('\\');
     const value = this.#scanner.expect(/./);
     switch (value) {
@@ -309,8 +336,18 @@ export default class RegExpParser {
         return {kind: 'Atom', value: '\r'};
       case 't':
         return {kind: 'Atom', value: '\t'};
+      case 'u':
+        return {
+          kind: 'Atom',
+          value: String.fromCharCode(parseInt(this.#scanner.expect(/[\da-f]{4}/i), 16)),
+        };
       case 'v':
         return {kind: 'Atom', value: '\v'};
+      case 'x':
+        return {
+          kind: 'Atom',
+          value: String.fromCharCode(parseInt(this.#scanner.expect(/[\da-f]{2}/i), 16)),
+        };
       case 'B':
       case 'P':
       case 'b':
@@ -416,11 +453,11 @@ export default class RegExpParser {
     } as const;
     while (!this.#scanner.atEnd) {
       if (this.#scanner.peek('[')) {
-        children.push(this.#parseRepeat(this.#parseCharacterClass()));
+        children.push(this.#parseRepeat(unwrap(this.#parseCharacterClass())));
       } else if (this.#scanner.peek(']')) {
         break;
       } else if (this.#scanner.peek('(')) {
-        children.push(this.#parseRepeat(this.#parseGroup()));
+        children.push(this.#parseRepeat(unwrap(this.#parseGroup())));
       } else if (this.#scanner.peek(')')) {
         break;
       } else if (this.#scanner.peek('|')) {

@@ -343,6 +343,409 @@ describe('RegExpParser', () => {
       ],
     });
   });
+
+  // RegExps taken from:
+  //
+  //    https://github.com/wincent/masochist/blob/d224383b088a1f44/packages/compiler/src/lex.ts
+  //
+  // With only modification being removing non-capturing group syntax
+  // (`(?:...)`).
+  //
+  describe('real-world examples', () => {
+    it('matches ESCAPED_CHARACTER RegExp', () => {
+      expect(new RegExpParser(/\\["\\\/bfnrt]/).parse()).toMatchInlineSnapshot(`
+        Object {
+          "children": Array [
+            Object {
+              "kind": "Atom",
+              "value": "\\\\",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "kind": "Atom",
+                  "value": "\\"",
+                },
+                Object {
+                  "kind": "Atom",
+                  "value": "\\\\",
+                },
+                Object {
+                  "kind": "Atom",
+                  "value": "/",
+                },
+                Object {
+                  "kind": "Atom",
+                  "value": "b",
+                },
+                Object {
+                  "kind": "Atom",
+                  "value": "f",
+                },
+                Object {
+                  "kind": "Atom",
+                  "value": "n",
+                },
+                Object {
+                  "kind": "Atom",
+                  "value": "r",
+                },
+                Object {
+                  "kind": "Atom",
+                  "value": "t",
+                },
+              ],
+              "kind": "CharacterClass",
+              "negated": false,
+            },
+          ],
+          "kind": "Sequence",
+        }
+      `);
+    });
+
+    it('matches ESCAPED_UNICODE RegExp', () => {
+      // TODO support i flag
+      expect(new RegExpParser(/\\u[0-9A-Fa-f]{4}/i).parse())
+        .toMatchInlineSnapshot(`
+        Object {
+          "children": Array [
+            Object {
+              "kind": "Atom",
+              "value": "\\\\",
+            },
+            Object {
+              "kind": "Atom",
+              "value": "u",
+            },
+            Object {
+              "child": Object {
+                "children": Array [
+                  Object {
+                    "from": "0",
+                    "kind": "Range",
+                    "to": "9",
+                  },
+                  Object {
+                    "from": "A",
+                    "kind": "Range",
+                    "to": "F",
+                  },
+                  Object {
+                    "from": "a",
+                    "kind": "Range",
+                    "to": "f",
+                  },
+                ],
+                "kind": "CharacterClass",
+                "negated": false,
+              },
+              "kind": "Repeat",
+              "maximum": 4,
+              "minimum": 4,
+            },
+          ],
+          "kind": "Sequence",
+        }
+      `);
+    });
+
+    it('matches EXPONENT_PART RegExp', () => {
+      expect(new RegExpParser(/[eE][+-]?\d+/).parse()).toMatchInlineSnapshot(`
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "kind": "Atom",
+                  "value": "e",
+                },
+                Object {
+                  "kind": "Atom",
+                  "value": "E",
+                },
+              ],
+              "kind": "CharacterClass",
+              "negated": false,
+            },
+            Object {
+              "child": Object {
+                "children": Array [
+                  Object {
+                    "kind": "Atom",
+                    "value": "+",
+                  },
+                  Object {
+                    "kind": "Atom",
+                    "value": "-",
+                  },
+                ],
+                "kind": "CharacterClass",
+                "negated": false,
+              },
+              "kind": "Repeat",
+              "maximum": 1,
+              "minimum": 0,
+            },
+            Object {
+              "child": Object {
+                "from": "0",
+                "kind": "Range",
+                "to": "9",
+              },
+              "kind": "Repeat",
+              "maximum": Infinity,
+              "minimum": 1,
+            },
+          ],
+          "kind": "Sequence",
+        }
+      `);
+    });
+
+    it('matches FRACTIONAL_PART RegExp', () => {
+      expect(new RegExpParser(/\.\d+/).parse()).toMatchInlineSnapshot(`
+        Object {
+          "children": Array [
+            Object {
+              "kind": "Atom",
+              "value": ".",
+            },
+            Object {
+              "child": Object {
+                "from": "0",
+                "kind": "Range",
+                "to": "9",
+              },
+              "kind": "Repeat",
+              "maximum": Infinity,
+              "minimum": 1,
+            },
+          ],
+          "kind": "Sequence",
+        }
+      `);
+    });
+
+    it('matches INTEGER_PART RegExp', () => {
+      expect(new RegExpParser(/-?(0|[1-9]\d*)/).parse()).toMatchInlineSnapshot(`
+        Object {
+          "children": Array [
+            Object {
+              "child": Object {
+                "kind": "Atom",
+                "value": "-",
+              },
+              "kind": "Repeat",
+              "maximum": 1,
+              "minimum": 0,
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "kind": "Atom",
+                  "value": "0",
+                },
+                Object {
+                  "children": Array [
+                    Object {
+                      "from": "1",
+                      "kind": "Range",
+                      "to": "9",
+                    },
+                    Object {
+                      "child": Object {
+                        "from": "0",
+                        "kind": "Range",
+                        "to": "9",
+                      },
+                      "kind": "Repeat",
+                      "maximum": Infinity,
+                      "minimum": 0,
+                    },
+                  ],
+                  "kind": "Sequence",
+                },
+              ],
+              "kind": "Alternate",
+            },
+          ],
+          "kind": "Sequence",
+        }
+      `);
+    });
+
+    it('matches LINE_TERMINATOR RegExp', () => {
+      expect(new RegExpParser(/\n|\r\n|\r/).parse()).toMatchInlineSnapshot(`
+        Object {
+          "children": Array [
+            Object {
+              "kind": "Atom",
+              "value": "
+        ",
+            },
+            Object {
+              "children": Array [
+                Object {
+                  "kind": "Atom",
+                  "value": "
+        ",
+                },
+                Object {
+                  "kind": "Atom",
+                  "value": "
+        ",
+                },
+              ],
+              "kind": "Sequence",
+            },
+            Object {
+              "kind": "Atom",
+              "value": "
+        ",
+            },
+          ],
+          "kind": "Alternate",
+        }
+      `);
+    });
+
+    it('matches SOURCE_CHARACTER RegExp', () => {
+      expect(new RegExpParser(/[\u0009\u000a\u000d\u0020-\uffff]/).parse())
+        .toMatchInlineSnapshot(`
+        Object {
+          "children": Array [
+            Object {
+              "kind": "Atom",
+              "value": "	",
+            },
+            Object {
+              "kind": "Atom",
+              "value": "
+        ",
+            },
+            Object {
+              "kind": "Atom",
+              "value": "
+        ",
+            },
+            Object {
+              "from": " ",
+              "kind": "Range",
+              "to": "\\\\",
+            },
+            Object {
+              "kind": "Atom",
+              "value": "u",
+            },
+            Object {
+              "kind": "Atom",
+              "value": "f",
+            },
+            Object {
+              "kind": "Atom",
+              "value": "f",
+            },
+            Object {
+              "kind": "Atom",
+              "value": "f",
+            },
+            Object {
+              "kind": "Atom",
+              "value": "f",
+            },
+          ],
+          "kind": "CharacterClass",
+          "negated": false,
+        }
+      `);
+    });
+
+    it('matches NAME RegExp', () => {
+      expect(new RegExpParser(/[_A-Za-z][_0-9A-Za-z]*/).parse())
+        .toMatchInlineSnapshot(`
+        Object {
+          "children": Array [
+            Object {
+              "children": Array [
+                Object {
+                  "kind": "Atom",
+                  "value": "_",
+                },
+                Object {
+                  "from": "A",
+                  "kind": "Range",
+                  "to": "Z",
+                },
+                Object {
+                  "from": "a",
+                  "kind": "Range",
+                  "to": "z",
+                },
+              ],
+              "kind": "CharacterClass",
+              "negated": false,
+            },
+            Object {
+              "child": Object {
+                "children": Array [
+                  Object {
+                    "kind": "Atom",
+                    "value": "_",
+                  },
+                  Object {
+                    "from": "0",
+                    "kind": "Range",
+                    "to": "9",
+                  },
+                  Object {
+                    "from": "A",
+                    "kind": "Range",
+                    "to": "Z",
+                  },
+                  Object {
+                    "from": "a",
+                    "kind": "Range",
+                    "to": "z",
+                  },
+                ],
+                "kind": "CharacterClass",
+                "negated": false,
+              },
+              "kind": "Repeat",
+              "maximum": Infinity,
+              "minimum": 0,
+            },
+          ],
+          "kind": "Sequence",
+        }
+      `);
+    });
+
+    it('matches WHITESPACE RegExp', () => {
+      expect(new RegExpParser(/[\t ]+/).parse()).toMatchInlineSnapshot(`
+        Object {
+          "child": Object {
+            "children": Array [
+              Object {
+                "kind": "Atom",
+                "value": "	",
+              },
+              Object {
+                "kind": "Atom",
+                "value": " ",
+              },
+            ],
+            "kind": "CharacterClass",
+            "negated": false,
+          },
+          "kind": "Repeat",
+          "maximum": Infinity,
+          "minimum": 1,
+        }
+      `);
+    });
+  });
 });
 
 // TODO: tests that show "i" flag is correctly handled
