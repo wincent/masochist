@@ -81,12 +81,12 @@ type Sequence = {
 };
 
 // See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes
-const BASE_SPECIAL_CLASSES: {[key: string]: CharacterClass} = {
+const BASE_SPECIAL_CLASSES: {[key: string]: CharacterClass | undefined} = {
   d: {
     kind: 'CharacterClass',
-    children: [{kind: 'Range', from: '0', to: ' 9'}],
+    children: [{kind: 'Range', from: '0', to: '9'}],
     negated: false,
-  },
+  } as CharacterClass,
   s: {
     kind: 'CharacterClass',
     children: [
@@ -107,7 +107,7 @@ const BASE_SPECIAL_CLASSES: {[key: string]: CharacterClass} = {
       {kind: 'Atom', value: '\ufeff'},
     ],
     negated: false,
-  },
+  } as CharacterClass,
   w: {
     kind: 'CharacterClass',
     children: [
@@ -117,14 +117,14 @@ const BASE_SPECIAL_CLASSES: {[key: string]: CharacterClass} = {
       {kind: 'Atom', value: '_'},
     ],
     negated: false,
-  },
+  } as CharacterClass,
 } as const;
 
-const SPECIAL_CLASSES = {
+const SPECIAL_CLASSES: {[key: string]: CharacterClass | undefined} = {
   ...BASE_SPECIAL_CLASSES,
-  D: {...BASE_SPECIAL_CLASSES.d, negated: true},
-  S: {...BASE_SPECIAL_CLASSES.s, negated: true},
-  W: {...BASE_SPECIAL_CLASSES.w, negated: true},
+  D: {...BASE_SPECIAL_CLASSES.d, negated: true} as CharacterClass,
+  S: {...BASE_SPECIAL_CLASSES.s, negated: true} as CharacterClass,
+  W: {...BASE_SPECIAL_CLASSES.w, negated: true} as CharacterClass,
 } as const;
 
 /**
@@ -173,10 +173,11 @@ function unwrap(node: Node): Node {
 /**
  * Parses a Regular expression into a simplified AST.
  *
- * Only simple patterns are supported (for example, no lookahead, non-capturing
- * groups, no non-ASCII source characters etc), because that's all we need in
- * order to tokenize the GraphQL language. We don't even need to support "\b"
- * (word boundaries) or "^"/"$" because those apply lookahead/lookbehind..
+ * Only simple patterns are supported (for example, no lookahead/lookbehind
+ * assertions, no non-capturing groups, no non-ASCII source characters etc),
+ * because that's all we need in order to tokenize the GraphQL language. We
+ * don't even need to support "\b" (word boundaries) or "^"/"$" because those
+ * apply lookahead/lookbehind.
  */
 export default class RegExpParser {
   #ignoreCase: boolean;
@@ -232,9 +233,10 @@ export default class RegExpParser {
     };
   }
 
-  #parseCharacterClass() {
+  #parseCharacterClass(): CharacterClass {
     const children: Array<Atom | Range> = [];
     this.#scanner.expect('[');
+    const negated = !!this.#scanner.scan('^');
     while (!this.#scanner.atEnd) {
       if (this.#scanner.peek(']')) {
         break;
@@ -268,7 +270,7 @@ export default class RegExpParser {
       } else if (this.#scanner.scan('.')) {
         // Special case: "." means literal "." inside a character class.
         children.push({kind: 'Atom', value: '.'});
-      } else if (this.#scanner.scan('\\') {
+      } else if (this.#scanner.scan('\\')) {
         // TODO: escapes are different inside character classes
         // eg. \b means backspace
         // \* means * but * also means star
@@ -278,18 +280,18 @@ export default class RegExpParser {
         children.push({kind: 'Atom', value: this.#scanner.last!});
       }
     }
-    // stuff...
     this.#scanner.expect(']');
     return {
       kind: 'CharacterClass',
       children,
+      negated,
     };
   }
 
   // Handles the common escaped characters, but not the more exotic ones (eg.
   // `\cX`, `p{...}` etc), listed here:
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes
-  #parseEscape() {
+  #parseEscape(): Atom | CharacterClass {
     // TODO: handle \u0000 etc
     // \x00
     this.#scanner.expect('\\');
@@ -314,9 +316,11 @@ export default class RegExpParser {
       case 'b':
       case 'c':
       case 'p':
-        throw new Error(`RegExpParser.#parseEscape: Unsupported escape: \\${value}`);
+        throw new Error(
+          `RegExpParser.#parseEscape: Unsupported escape: \\${value}`,
+        );
     }
-    const characterClass = SPECIAL_CLASSES[value];
+    const characterClass: CharacterClass | undefined = SPECIAL_CLASSES[value];
     if (characterClass) {
       return characterClass;
     } else {
@@ -426,7 +430,7 @@ export default class RegExpParser {
       } else if (this.#scanner.peek('.')) {
         children.push(this.#parseRepeat(this.#parseAnything()));
       } else {
-        children.push(this.#parseAtom());
+        children.push(this.#parseRepeat(this.#parseAtom()));
       }
     }
     return sequence;

@@ -216,6 +216,19 @@ describe('RegExpParser', () => {
         {kind: 'Atom', value: 'j'},
         {kind: 'Atom', value: 'z'},
       ],
+      negated: false,
+    });
+  });
+
+  it('parses a negated simple character class', () => {
+    expect(new RegExpParser(/[^ajz]/).parse()).toEqual({
+      kind: 'CharacterClass',
+      children: [
+        {kind: 'Atom', value: 'a'},
+        {kind: 'Atom', value: 'j'},
+        {kind: 'Atom', value: 'z'},
+      ],
+      negated: true,
     });
   });
 
@@ -228,6 +241,32 @@ describe('RegExpParser', () => {
         {kind: 'Atom', value: 'f'},
         {kind: 'Range', from: 't', to: 'z'},
       ],
+      negated: false,
+    });
+  });
+
+  it('parses a negated character class containing a range', () => {
+    expect(new RegExpParser(/[^adft-z]/).parse()).toEqual({
+      kind: 'CharacterClass',
+      children: [
+        {kind: 'Atom', value: 'a'},
+        {kind: 'Atom', value: 'd'},
+        {kind: 'Atom', value: 'f'},
+        {kind: 'Range', from: 't', to: 'z'},
+      ],
+      negated: true,
+    });
+  });
+
+  it('treats "^" as a literal "^" when not the first thing in a character class', () => {
+    expect(new RegExpParser(/[a^1]/).parse()).toEqual({
+      kind: 'CharacterClass',
+      children: [
+        {kind: 'Atom', value: 'a'},
+        {kind: 'Atom', value: '^'},
+        {kind: 'Atom', value: '1'},
+      ],
+      negated: false,
     });
   });
 
@@ -239,6 +278,7 @@ describe('RegExpParser', () => {
         {kind: 'Atom', value: '1'},
         {kind: 'Atom', value: '.'},
       ],
+      negated: false,
     });
   });
 
@@ -250,6 +290,7 @@ describe('RegExpParser', () => {
         {kind: 'Atom', value: 'a'},
         {kind: 'Atom', value: '5'},
       ],
+      negated: false,
     });
   });
 
@@ -261,6 +302,7 @@ describe('RegExpParser', () => {
         {kind: 'Atom', value: '5'},
         {kind: 'Atom', value: '-'},
       ],
+      negated: false,
     });
   });
 
@@ -278,8 +320,29 @@ describe('RegExpParser', () => {
       to: 'm',
     });
   });
+
+  it('simplifies a character class with a range containing one atom', () => {
+    expect(new RegExpParser(/[b-b]/).parse()).toEqual({
+      kind: 'Atom',
+      value: 'b',
+    });
+  });
+
+  it('parses an atom followed by "+"', () => {
+    expect(new RegExpParser(/foo+/).parse()).toEqual({
+      kind: 'Sequence',
+      children: [
+        {kind: 'Atom', value: 'f'},
+        {kind: 'Atom', value: 'o'},
+        {
+          kind: 'Repeat',
+          minimum: 1,
+          maximum: Infinity,
+          child: {kind: 'Atom', value: 'o'},
+        },
+      ],
+    });
+  });
 });
-// TODO: tests to show simplification eg. ((((((a))))))) = a
-// also (a) = a
-// and [a] = a
+
 // TODO: tests that show "i" flag is correctly handled
