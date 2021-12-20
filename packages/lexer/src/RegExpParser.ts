@@ -47,7 +47,7 @@ type Atom = {
   value: string;
 };
 
-// Note that a CharacterClass may containa nested CharacterClass such as `\D`,
+// Note that a CharacterClass may contain a nested CharacterClass such as `\D`,
 // `\S`, or `\W`: eg.
 //
 //    [1-5\D] = "1 to 5, or any non-digit"
@@ -420,7 +420,7 @@ export default class RegExpParser {
       //
       // Whitespace is not allowed.
       //
-      // TODO: decide whethere _where_ we should those invalid ones; maybe here
+      // TODO: decide whether _where_ we should those invalid ones; maybe here
       // we should be returning a Sequence of `node` + the invalid characters
       this.#scanner.expect('{');
       const minimum = parseInt(this.#scanner.expect(/\d+/), 10);
