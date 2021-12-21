@@ -140,6 +140,49 @@ const SPECIAL_CLASSES: {[key: string]: CharacterClass | undefined} = {
 } as const;
 
 /**
+ * Sorts, merges and simplifies members within a character class.
+ */
+function compact(characterClass: CharacterClass): CharacterClass {
+  return characterClass;
+}
+
+/**
+ * Returns the "inverse" (ie. case-toggled) version of a single-character
+ * string, or `null` if there is no inverse.
+ */
+function inverse(input: string): string | null {
+  if (input.length !== 1) {
+    throw new Error(
+      `inverse(): expected string to have length 1, had ${input.length}`,
+    );
+  }
+  const lower = input.toLowerCase();
+  if (lower !== input) {
+    return lower;
+  }
+  const upper = input.toUpperCase();
+  if (upper !== input) {
+    return upper;
+  }
+  return null;
+}
+
+/**
+ * Sorts the supplied array of `atoms` by `value`.
+ */
+function sort(atoms: Array<Atom>): Array<Atom> {
+  return atoms.sort((a, b) => {
+    if (a.value > b.value) {
+      return 1;
+    } else if (a.value < b.value) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+}
+
+/**
  * Unwraps a node if it can done without altering the behavior of the RegExp.
  * For example, "(a)" is unwrapped to "a", as is "((a))" and so on. Likewise, a
  * character class with a single member is unwrapped (eg. "[a]" becomes "a");
@@ -243,17 +286,11 @@ export default class RegExpParser {
     const value = this.#scanner.expect(/./);
     const atom: Atom = {kind: 'Atom', value};
     if (this.#ignoreCase) {
-      let other = value.toUpperCase();
-      if (other === value) {
-        other = value.toLowerCase();
-      }
-      if (other !== value) {
+      let other = inverse(value);
+      if (other) {
         return {
           kind: 'CharacterClass',
-          children: [
-            atom,
-            {kind: 'Atom', value: other},
-          ],
+          children: sort([atom, {kind: 'Atom', value: other}]),
           negated: false,
         };
       }
@@ -293,6 +330,25 @@ export default class RegExpParser {
               'Unsupported nested CharacterClass before Range operator',
             );
           }
+
+          // To illustrate how we should handle `ignoreCase`, consider the
+          // characters from "X" (\x58) to "c" (\x63); ie:
+          //
+          //    X Y Z [ \ ] ^ _ ` a b c
+          //
+          // - /[X-c]/ matches all of the above.
+          // - /[X-c]/i matches all of the above, plus: x y z
+          //
+          // ie.
+          //
+          // - Without "i", character class is equivalent to [\x58-\x63].
+          // - With "i", it is equivalent to the above plus the alternate case
+          //   versions of all toggleable letters in the range; eg:
+          //   [\x58-\x63\x78\x79x7a] (equivalent to [\x58-\x63\x78-\x7a]).
+          //
+          // For simplicity, we do the "dumb" inlining of the extra letters
+          // here, and rely on a later simplification pass to minimize the
+          // class.
           const {value: from} = previous;
           const to = this.#scanner.expect(/./);
           children.push({
@@ -300,6 +356,17 @@ export default class RegExpParser {
             from,
             to,
           });
+
+          if (this.#ignoreCase) {
+            const start = from.charCodeAt(0);
+            const finish = to.charCodeAt(0);
+            for (let i = start; i <= finish; i++) {
+              const other = inverse(String.fromCharCode(i));
+              if (other) {
+                children.push({kind: 'Atom', value: other});
+              }
+            }
+          }
         }
       } else if (this.#scanner.scan('.')) {
         // Special case: "." means literal "." inside a character class.
@@ -322,15 +389,28 @@ export default class RegExpParser {
           }
         }
       } else if (this.#scanner.scan(/./)) {
-        children.push({kind: 'Atom', value: this.#scanner.last!});
+        const value = this.#scanner.last!;
+        const atom: Atom = {kind: 'Atom', value};
+        if (this.#ignoreCase) {
+          const other = inverse(value);
+          // this fails for X-c
+          // because when we see the X, we push Xx
+          // and then when we see the-c we do x-c
+          // all this indicates that we have to post-process this stuff...
+          if (other) {
+            children.push(...sort([atom, {kind: 'Atom', value: other}]));
+            continue;
+          }
+        }
+        children.push(atom);
       }
     }
     this.#scanner.expect(']');
-    return {
+    return compact({
       kind: 'CharacterClass',
       children,
       negated,
-    };
+    });
   }
 
   // Handles the common escaped characters, but not the more exotic ones (eg.
@@ -355,14 +435,18 @@ export default class RegExpParser {
       case 'u':
         return {
           kind: 'Atom',
-          value: String.fromCharCode(parseInt(this.#scanner.expect(/[\da-f]{4}/i), 16)),
+          value: String.fromCharCode(
+            parseInt(this.#scanner.expect(/[\da-f]{4}/i), 16),
+          ),
         };
       case 'v':
         return {kind: 'Atom', value: '\v'};
       case 'x':
         return {
           kind: 'Atom',
-          value: String.fromCharCode(parseInt(this.#scanner.expect(/[\da-f]{2}/i), 16)),
+          value: String.fromCharCode(
+            parseInt(this.#scanner.expect(/[\da-f]{2}/i), 16),
+          ),
         };
       case 'B':
       case 'P':

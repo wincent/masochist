@@ -22,6 +22,38 @@ describe('RegExpParser', () => {
     });
   });
 
+  it('parses a sequence with the "i" flag', () => {
+    expect(new RegExpParser(/abc/i).parse()).toEqual({
+      kind: 'Sequence',
+      children: [
+        {
+          kind: 'CharacterClass',
+          children: [
+            {kind: 'Atom', value: 'A'},
+            {kind: 'Atom', value: 'a'},
+          ],
+          negated: false,
+        },
+        {
+          kind: 'CharacterClass',
+          children: [
+            {kind: 'Atom', value: 'B'},
+            {kind: 'Atom', value: 'b'},
+          ],
+          negated: false,
+        },
+        {
+          kind: 'CharacterClass',
+          children: [
+            {kind: 'Atom', value: 'C'},
+            {kind: 'Atom', value: 'c'},
+          ],
+          negated: false,
+        },
+      ],
+    });
+  });
+
   it('parses alternates', () => {
     expect(new RegExpParser(/a|b/).parse()).toEqual({
       kind: 'Alternate',
@@ -325,6 +357,12 @@ describe('RegExpParser', () => {
     expect(new RegExpParser(/[b-b]/).parse()).toEqual({
       kind: 'Atom',
       value: 'b',
+    });
+  });
+
+  it('parses a range with the "i" flag', () => {
+    expect(new RegExpParser(/[X-c]/i).parse()).toEqual({
+
     });
   });
 
