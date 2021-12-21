@@ -362,7 +362,17 @@ describe('RegExpParser', () => {
 
   it('parses a range with the "i" flag', () => {
     expect(new RegExpParser(/[X-c]/i).parse()).toEqual({
-
+      kind: 'CharacterClass',
+      children: [
+        {kind: 'Range', from: 'X', to: 'c'},
+        {kind: 'Atom', value: 'x'},
+        {kind: 'Atom', value: 'y'},
+        {kind: 'Atom', value: 'z'},
+        {kind: 'Atom', value: 'A'},
+        {kind: 'Atom', value: 'B'},
+        {kind: 'Atom', value: 'C'},
+      ],
+      negated: false,
     });
   });
 

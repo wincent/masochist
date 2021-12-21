@@ -299,7 +299,7 @@ export default class RegExpParser {
   }
 
   #parseCharacterClass(): CharacterClass {
-    const children: Array<Atom | CharacterClass | Range> = [];
+    let children: Array<Atom | CharacterClass | Range> = [];
     this.#scanner.expect('[');
     const negated = !!this.#scanner.scan('^');
     while (!this.#scanner.atEnd) {
@@ -347,8 +347,7 @@ export default class RegExpParser {
           //   [\x58-\x63\x78\x79x7a] (equivalent to [\x58-\x63\x78-\x7a]).
           //
           // For simplicity, we do the "dumb" inlining of the extra letters
-          // here, and rely on a later simplification pass to minimize the
-          // class.
+          // here, and rely on a simplification pass to minimize the class.
           const {value: from} = previous;
           const to = this.#scanner.expect(/./);
           children.push({
@@ -356,17 +355,6 @@ export default class RegExpParser {
             from,
             to,
           });
-
-          if (this.#ignoreCase) {
-            const start = from.charCodeAt(0);
-            const finish = to.charCodeAt(0);
-            for (let i = start; i <= finish; i++) {
-              const other = inverse(String.fromCharCode(i));
-              if (other) {
-                children.push({kind: 'Atom', value: other});
-              }
-            }
-          }
         }
       } else if (this.#scanner.scan('.')) {
         // Special case: "." means literal "." inside a character class.
@@ -389,23 +377,32 @@ export default class RegExpParser {
           }
         }
       } else if (this.#scanner.scan(/./)) {
-        const value = this.#scanner.last!;
-        const atom: Atom = {kind: 'Atom', value};
-        if (this.#ignoreCase) {
-          const other = inverse(value);
-          // this fails for X-c
-          // because when we see the X, we push Xx
-          // and then when we see the-c we do x-c
-          // all this indicates that we have to post-process this stuff...
-          if (other) {
-            children.push(...sort([atom, {kind: 'Atom', value: other}]));
-            continue;
-          }
-        }
-        children.push(atom);
+        children.push({kind: 'Atom', value: this.#scanner.last!});
       }
     }
     this.#scanner.expect(']');
+    if (this.#ignoreCase) {
+      children = children.flatMap((child): typeof children => {
+        if (child.kind === 'Atom') {
+          const other = inverse(child.value);
+          if (other) {
+            return sort([child, {kind: 'Atom', value: other}]);
+          }
+        } else if (child.kind === 'Range') {
+          const start = child.from.charCodeAt(0);
+          const finish = child.to.charCodeAt(0);
+          const extras: Array<Atom> = [];
+          for (let i = start; i <= finish; i++) {
+            const other = inverse(String.fromCharCode(i));
+            if (other) {
+              extras.push({kind: 'Atom', value: other});
+            }
+          }
+          return [child, ...extras];
+        }
+        return [child];
+      });
+    }
     return compact({
       kind: 'CharacterClass',
       children,
