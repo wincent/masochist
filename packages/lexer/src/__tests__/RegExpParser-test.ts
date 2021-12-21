@@ -405,8 +405,7 @@ describe('RegExpParser', () => {
     });
 
     it('matches ESCAPED_UNICODE RegExp', () => {
-      // TODO support i flag
-      expect(new RegExpParser(/\\u[0-9A-Fa-f]{4}/i).parse())
+      expect(new RegExpParser(/\\u[0-9A-Fa-f]{4}/).parse())
         .toMatchInlineSnapshot(`
         Object {
           "children": Array [

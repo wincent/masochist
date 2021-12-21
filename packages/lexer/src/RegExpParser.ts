@@ -193,12 +193,10 @@ function unwrap(node: Node): Node {
  */
 export default class RegExpParser {
   #ignoreCase: boolean;
-  #regExp: RegExp;
   #scanner: StringScanner;
 
   constructor(regExp: RegExp) {
     this.#ignoreCase = regExp.ignoreCase;
-    this.#regExp = regExp;
     this.#scanner = new StringScanner(regExp.source);
   }
 
@@ -238,11 +236,29 @@ export default class RegExpParser {
     return {kind: 'Anything'};
   }
 
-  #parseAtom(): Atom {
-    return {
-      kind: 'Atom',
-      value: this.#scanner.expect(/./),
-    };
+  // Note that despite its name, this method doesn't always return a bare
+  // `Atom` (when `ignoreCase` is `true`, it may return a `CharacterClass` if
+  // appropriate).
+  #parseAtom(): Atom | CharacterClass {
+    const value = this.#scanner.expect(/./);
+    const atom: Atom = {kind: 'Atom', value};
+    if (this.#ignoreCase) {
+      let other = value.toUpperCase();
+      if (other === value) {
+        other = value.toLowerCase();
+      }
+      if (other !== value) {
+        return {
+          kind: 'CharacterClass',
+          children: [
+            atom,
+            {kind: 'Atom', value: other},
+          ],
+          negated: false,
+        };
+      }
+    }
+    return atom;
   }
 
   #parseCharacterClass(): CharacterClass {
