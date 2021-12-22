@@ -8,6 +8,7 @@ describe('DFA()', () => {
       [['u', 3]],
       [['f', 4]],
       [['f', 5]],
+      [], // Final (accept) state.
     ]);
   });
 
@@ -20,6 +21,7 @@ describe('DFA()', () => {
         ['d', 1],
         ['e', 1],
       ],
+      [], // Final (accept) state.
     ]);
   });
 });

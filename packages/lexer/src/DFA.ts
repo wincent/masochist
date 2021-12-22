@@ -1,28 +1,23 @@
 import RegExpParser from './RegExpParser';
-import type {Node} from './RegExpParser';
+import type {
+  Alternate,
+  Atom,
+  CharacterClass,
+  Node,
+  Range,
+  Repeat,
+  Sequence,
+} from './RegExpParser';
 
 type Atom = string;
-
-type CharacterClass = {
-  kind: 'CharacterClass';
-};
-
-type Table = Array<Array<[Edge, number]>>;
-
-type Frame = CharacterClass | Group | Root;
-
 type Edge = Atom | Range;
 
-type Group = {
-  kind: 'Group';
-};
+// Represents a state and all the edges leading out from it to other states.
+type State = Array<[Edge, number]>;
 
-type Range = {from: string; to: string};
-
-type Root = {
-  // contents: Array<Atom | Frame,
-  kind: 'Group';
-};
+// Contains all states in the DFA, indexed by state number (index 0 corresponds
+// to the starting state).
+type Table = Array<State>;
 
 /**
  * Builds a table-based representation of a DFA that can recognize the supplied
@@ -41,7 +36,45 @@ export default class DFA {
   }
 
   #parse(): Table {
-    return [];
+    // TODO: traverse AST, building up corresponding state machine as we go
+    // this should be easy, as there is no backtracking, no look-ahead (other
+    // than trivial lookahead confined to subtrees of the ast, like a sequence)...
+    const state: State = [];
+    const table: Table = [state];
+    this.#parseNode(this.#ast, state, table);
+    return table;
+  }
+
+  #parseNode(node: Node, state: State, table: Table) {
+    if (node.kind === 'Alternate') {
+      this.#parseAlternate(node, state, table);
+    } else if (node.kind === 'Sequence') {
+      this.#parseSequence(node, state, table);
+    }
+  }
+
+  #parseAlternate(alternate: Alternate, state: State, table: Table) {
+    const next = table.length;
+    for (const node of alternate.children) {
+      if (node.kind === 'Atom') {
+        state.push([node.value, next]);
+      } else {
+        // TODO
+      }
+    }
+    table.push([]);
+  }
+
+  #parseSequence(sequence: Sequence, state: State, table: Table) {
+    for (const node of sequence.children) {
+      if (node.kind === 'Atom') {
+        state.push([node.value, table.length]);
+        state = [];
+        table.push(state);
+      } else {
+        // TODO
+      }
+    }
   }
 
   get table() {

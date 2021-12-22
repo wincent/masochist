@@ -2,7 +2,7 @@ import StringScanner from './StringScanner';
 
 // AST types.
 
-type Alternate = {
+export type Alternate = {
   kind: 'Alternate';
   children: Array<Node>;
 };
@@ -38,11 +38,11 @@ type Alternate = {
 //      // Do something.
 //    }
 //
-type Anything = {
+export type Anything = {
   kind: 'Anything';
 };
 
-type Atom = {
+export type Atom = {
   kind: 'Atom';
   value: string;
 };
@@ -60,7 +60,7 @@ type Atom = {
 //
 // Those are a bit harder to write out in flattened form, but we do flatten
 // them.
-type CharacterClass = {
+export type CharacterClass = {
   kind: 'CharacterClass';
   children: Array<Atom | Range>;
   negated: boolean;
@@ -75,20 +75,20 @@ export type Node =
   | Repeat
   | Sequence;
 
-type Range = {
+export type Range = {
   kind: 'Range';
   from: string;
   to: string;
 };
 
-type Repeat = {
+export type Repeat = {
   kind: 'Repeat';
   child: Node;
   maximum: number;
   minimum: number;
 };
 
-type Sequence = {
+export type Sequence = {
   kind: 'Sequence';
   children: Array<Node>;
 };
