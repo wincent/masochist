@@ -446,14 +446,15 @@ export default class RegExpParser {
           //    X Y Z [ \ ] ^ _ ` a b c
           //
           // - /[X-c]/ matches all of the above.
-          // - /[X-c]/i matches all of the above, plus: x y z
+          // - /[X-c]/i matches all of the above, plus: A B C x y z
           //
           // ie.
           //
           // - Without "i", character class is equivalent to [\x58-\x63].
           // - With "i", it is equivalent to the above plus the alternate case
           //   versions of all toggleable letters in the range; eg:
-          //   [\x58-\x63\x78\x79x7a] (equivalent to [\x58-\x63\x78-\x7a]).
+          //   [\x41\x42\x43\x58-\x63\x78\x79\x7a] (equivalent to
+          //   [\x41-\x43\x58-\x63\x78-\x7a]).
           //
           // For simplicity, we do the "dumb" inlining of the extra letters
           // here, and rely on a simplification pass to minimize the class.
