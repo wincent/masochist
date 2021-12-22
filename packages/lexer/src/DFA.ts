@@ -1,4 +1,5 @@
-import StringScanner from './StringScanner';
+import RegExpParser from './RegExpParser';
+import type {Node} from './RegExpParser';
 
 type Atom = string;
 
@@ -23,83 +24,24 @@ type Root = {
   kind: 'Group';
 };
 
-// AST for Regular Expressions.
-
-type RegExpNode = {};
-type RegExpGroup = Array<RegExpNode>;
-type RegExpCharacterClass = Array<any>;
-type RegExpRange = {from: string; to: string};
-type RegExpRepeat = {
-  node: RegExpNode;
-  minimum: number | null;
-  maximum: number | null;
-};
-type RegExpEscape = {kind: 'RegExpEscape'; payload: string};
-// TODO: might also just be able to do this with nested arrays (think: s-exps)
-
 /**
  * Builds a table-based representation of a DFA that can recognize the supplied
  * `regExp`.  Only simple patterns are supported, because that's all we need in
  * order to tokenize the GraphQL language.
  */
 export default class DFA {
+  #ast: Node;
   #context: Array<any>; // TODO proper type.
-  #regExp: RegExp;
-  #scanner: StringScanner;
   #table: Table;
 
   constructor(regExp: RegExp) {
     this.#context = [];
-    this.#regExp = regExp;
-    this.#scanner = new StringScanner(regExp.source);
+    this.#ast = new RegExpParser(regExp).parse();
     this.#table = this.#parse();
   }
 
-  // precedence high to low:
-  // () grouping
-  // */+/? repeat
-  // sequence abc
-  // alternate a|b|c
   #parse(): Table {
-    // TODO see if we can use JS call stack instead of an actual materialized stack
-    this.#context.push({frame: 'root'});
-    this.#parseAlternates();
-    if (!this.#scanner.atEnd) {
-      throw new Error(
-        `Failed to consume all input (at index ${this.#scanner.index}`,
-      );
-    }
     return [];
-  }
-
-  #parseCharacterClass() {
-    this.#scanner.expect(/\[/);
-  }
-
-  #parseEscape() {
-    this.#scanner.expect(/\\/);
-  }
-
-  #parseGroup() {
-    this.#scanner.expect(/\(/);
-    const alternates = this.#parseAlternates();
-    this.#scanner.expect(/\)/);
-  }
-
-  #parseAlternates(): Array<any> {
-    const alternates = [];
-    if (this.#scanner.peek(/\(/)) {
-      this.#parseGroup();
-    } else if (this.#scanner.peek(/\[/)) {
-      this.#parseCharacterClass();
-    } else if (this.#scanner.peek(/\\/)) {
-      this.#parseEscape();
-    } else if (this.#scanner.peek(/\|/)) {
-      // alternate
-    } else {
-      // bail...
-    }
-    return alternates;
   }
 
   get table() {

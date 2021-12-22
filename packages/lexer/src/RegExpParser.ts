@@ -66,7 +66,7 @@ type CharacterClass = {
   negated: boolean;
 };
 
-type Node =
+export type Node =
   | Alternate
   | Anything
   | Atom
