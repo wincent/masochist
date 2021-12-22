@@ -54,6 +54,26 @@ describe('RegExpParser', () => {
     });
   });
 
+  it('parses a character class with the "i" flag', () => {
+    const expected = {
+      kind: 'CharacterClass',
+      children: [
+        {kind: 'Range', from: 'A', to: 'Z'},
+        {kind: 'Range', from: 'a', to: 'z'},
+      ],
+      negated: false,
+    };
+
+    // Note how many different ways of writing a RegExp produce the same
+    // result.
+    expect(new RegExpParser(/[A-Z]/i).parse()).toEqual(expected);
+    expect(new RegExpParser(/[a-z]/i).parse()).toEqual(expected);
+    expect(new RegExpParser(/[A-Za-z]/i).parse()).toEqual(expected);
+    expect(new RegExpParser(/[a-zA-Z]/i).parse()).toEqual(expected);
+    expect(new RegExpParser(/[A-Za-z]/).parse()).toEqual(expected);
+    expect(new RegExpParser(/[a-zA-Z]/).parse()).toEqual(expected);
+  });
+
   it('parses alternates', () => {
     expect(new RegExpParser(/a|b/).parse()).toEqual({
       kind: 'Alternate',

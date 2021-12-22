@@ -680,9 +680,6 @@ export default class RegExpParser {
   }
 }
 
-// TODO simplify duplication
-// eg. /[A-Za-z]/i could be written as /[a-z]/i
-//
 // TODO: throw if given ^ or $
 
 // TODO: pull in implementation of this from elsewhere
