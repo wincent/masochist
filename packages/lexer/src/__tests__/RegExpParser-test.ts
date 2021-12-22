@@ -1,4 +1,4 @@
-import RegExpParser from '../RegExpParser';
+import RegExpParser, {normalizeCharacterClass} from '../RegExpParser';
 
 describe('RegExpParser', () => {
   it('parses a single atom', () => {
@@ -252,15 +252,33 @@ describe('RegExpParser', () => {
     });
   });
 
+  // TODO: probably want an optimizing function that instead expresses this
+  // using negation; eg:
+  //
+  //  {
+  //    kind: 'CharacterClass',
+  //    children: [
+  //      {kind: 'Atom', value: 'a'},
+  //      {kind: 'Atom', value: 'j'},
+  //      {kind: 'Atom', value: 'z'},
+  //    ],
+  //    negated: true,
+  //  }
+  //
+  // if it is more economical to do so.
   it('parses a negated simple character class', () => {
     expect(new RegExpParser(/[^ajz]/).parse()).toEqual({
       kind: 'CharacterClass',
       children: [
-        {kind: 'Atom', value: 'a'},
-        {kind: 'Atom', value: 'j'},
-        {kind: 'Atom', value: 'z'},
+        // {kind: 'Atom', value: 'a'},
+        // {kind: 'Atom', value: 'j'},
+        // {kind: 'Atom', value: 'z'},
+        {kind: 'Range', from: '\u0000', to: '`'},
+        {kind: 'Range', from: 'b', to: 'i'},
+        {kind: 'Range', from: 'k', to: 'y'},
+        {kind: 'Range', from: '{', to: '\uffff'},
       ],
-      negated: true,
+      negated: false,
     });
   });
 
@@ -281,12 +299,13 @@ describe('RegExpParser', () => {
     expect(new RegExpParser(/[^adft-z]/).parse()).toEqual({
       kind: 'CharacterClass',
       children: [
-        {kind: 'Atom', value: 'a'},
-        {kind: 'Atom', value: 'd'},
-        {kind: 'Atom', value: 'f'},
-        {kind: 'Range', from: 't', to: 'z'},
+        {kind: 'Range', from: '\u0000', to: '`'},
+        {kind: 'Range', from: 'b', to: 'c'},
+        {kind: 'Atom', value: 'e'},
+        {kind: 'Range', from: 'g', to: 's'},
+        {kind: 'Range', from: '{', to: '\uffff'},
       ],
-      negated: true,
+      negated: false,
     });
   });
 
@@ -294,9 +313,9 @@ describe('RegExpParser', () => {
     expect(new RegExpParser(/[a^1]/).parse()).toEqual({
       kind: 'CharacterClass',
       children: [
-        {kind: 'Atom', value: 'a'},
-        {kind: 'Atom', value: '^'},
         {kind: 'Atom', value: '1'},
+        {kind: 'Atom', value: '^'},
+        {kind: 'Atom', value: 'a'},
       ],
       negated: false,
     });
@@ -306,9 +325,9 @@ describe('RegExpParser', () => {
     expect(new RegExpParser(/[a1.]/).parse()).toEqual({
       kind: 'CharacterClass',
       children: [
-        {kind: 'Atom', value: 'a'},
-        {kind: 'Atom', value: '1'},
         {kind: 'Atom', value: '.'},
+        {kind: 'Atom', value: '1'},
+        {kind: 'Atom', value: 'a'},
       ],
       negated: false,
     });
@@ -319,8 +338,8 @@ describe('RegExpParser', () => {
       kind: 'CharacterClass',
       children: [
         {kind: 'Atom', value: '-'},
-        {kind: 'Atom', value: 'a'},
         {kind: 'Atom', value: '5'},
+        {kind: 'Atom', value: 'a'},
       ],
       negated: false,
     });
@@ -330,9 +349,9 @@ describe('RegExpParser', () => {
     expect(new RegExpParser(/[a5-]/).parse()).toEqual({
       kind: 'CharacterClass',
       children: [
-        {kind: 'Atom', value: 'a'},
-        {kind: 'Atom', value: '5'},
         {kind: 'Atom', value: '-'},
+        {kind: 'Atom', value: '5'},
+        {kind: 'Atom', value: 'a'},
       ],
       negated: false,
     });
@@ -364,13 +383,9 @@ describe('RegExpParser', () => {
     expect(new RegExpParser(/[X-c]/i).parse()).toEqual({
       kind: 'CharacterClass',
       children: [
+        {kind: 'Range', from: 'A', to: 'C'},
         {kind: 'Range', from: 'X', to: 'c'},
-        {kind: 'Atom', value: 'x'},
-        {kind: 'Atom', value: 'y'},
-        {kind: 'Atom', value: 'z'},
-        {kind: 'Atom', value: 'A'},
-        {kind: 'Atom', value: 'B'},
-        {kind: 'Atom', value: 'C'},
+        {kind: 'Range', from: 'x', to: 'z'},
       ],
       negated: false,
     });
@@ -416,11 +431,11 @@ describe('RegExpParser', () => {
                 },
                 Object {
                   "kind": "Atom",
-                  "value": "\\\\",
+                  "value": "/",
                 },
                 Object {
                   "kind": "Atom",
-                  "value": "/",
+                  "value": "\\\\",
                 },
                 Object {
                   "kind": "Atom",
@@ -505,11 +520,11 @@ describe('RegExpParser', () => {
               "children": Array [
                 Object {
                   "kind": "Atom",
-                  "value": "e",
+                  "value": "E",
                 },
                 Object {
                   "kind": "Atom",
-                  "value": "E",
+                  "value": "e",
                 },
               ],
               "kind": "CharacterClass",
@@ -663,12 +678,9 @@ describe('RegExpParser', () => {
         Object {
           "children": Array [
             Object {
-              "kind": "Atom",
-              "value": "	",
-            },
-            Object {
-              "kind": "Atom",
-              "value": "
+              "from": "	",
+              "kind": "Range",
+              "to": "
         ",
             },
             Object {
@@ -683,23 +695,11 @@ describe('RegExpParser', () => {
             },
             Object {
               "kind": "Atom",
+              "value": "f",
+            },
+            Object {
+              "kind": "Atom",
               "value": "u",
-            },
-            Object {
-              "kind": "Atom",
-              "value": "f",
-            },
-            Object {
-              "kind": "Atom",
-              "value": "f",
-            },
-            Object {
-              "kind": "Atom",
-              "value": "f",
-            },
-            Object {
-              "kind": "Atom",
-              "value": "f",
             },
           ],
           "kind": "CharacterClass",
@@ -716,13 +716,13 @@ describe('RegExpParser', () => {
             Object {
               "children": Array [
                 Object {
-                  "kind": "Atom",
-                  "value": "_",
-                },
-                Object {
                   "from": "A",
                   "kind": "Range",
                   "to": "Z",
+                },
+                Object {
+                  "kind": "Atom",
+                  "value": "_",
                 },
                 Object {
                   "from": "a",
@@ -737,10 +737,6 @@ describe('RegExpParser', () => {
               "child": Object {
                 "children": Array [
                   Object {
-                    "kind": "Atom",
-                    "value": "_",
-                  },
-                  Object {
                     "from": "0",
                     "kind": "Range",
                     "to": "9",
@@ -749,6 +745,10 @@ describe('RegExpParser', () => {
                     "from": "A",
                     "kind": "Range",
                     "to": "Z",
+                  },
+                  Object {
+                    "kind": "Atom",
+                    "value": "_",
                   },
                   Object {
                     "from": "a",
@@ -795,4 +795,170 @@ describe('RegExpParser', () => {
   });
 });
 
-// TODO: tests that show "i" flag is correctly handled
+describe('normalizeCharacterClass()', () => {
+  it('does nothing to an already normalized class', () => {
+    expect(
+      normalizeCharacterClass({
+        kind: 'CharacterClass',
+        children: [
+          {kind: 'Atom', value: 'A'},
+          {kind: 'Atom', value: 'J'},
+          {kind: 'Atom', value: 'Q'},
+        ],
+        negated: false,
+      }),
+    ).toEqual({
+      kind: 'CharacterClass',
+      children: [
+        {kind: 'Atom', value: 'A'},
+        {kind: 'Atom', value: 'J'},
+        {kind: 'Atom', value: 'Q'},
+      ],
+      negated: false,
+    });
+  });
+
+  it('removes duplicates', () => {
+    expect(
+      normalizeCharacterClass({
+        kind: 'CharacterClass',
+        children: [
+          {kind: 'Atom', value: 'A'},
+          {kind: 'Atom', value: 'J'},
+          {kind: 'Atom', value: 'Q'},
+          {kind: 'Atom', value: 'J'},
+          {kind: 'Atom', value: 'Q'},
+        ],
+        negated: false,
+      }),
+    ).toEqual({
+      kind: 'CharacterClass',
+      children: [
+        {kind: 'Atom', value: 'A'},
+        {kind: 'Atom', value: 'J'},
+        {kind: 'Atom', value: 'Q'},
+      ],
+      negated: false,
+    });
+  });
+
+  it('sorts members', () => {
+    expect(
+      normalizeCharacterClass({
+        kind: 'CharacterClass',
+        children: [
+          {kind: 'Atom', value: 'J'},
+          {kind: 'Atom', value: 'Q'},
+          {kind: 'Atom', value: 'A'},
+        ],
+        negated: false,
+      }),
+    ).toEqual({
+      kind: 'CharacterClass',
+      children: [
+        {kind: 'Atom', value: 'A'},
+        {kind: 'Atom', value: 'J'},
+        {kind: 'Atom', value: 'Q'},
+      ],
+      negated: false,
+    });
+  });
+
+  it('forms ranges for adjacent atoms', () => {
+    expect(
+      normalizeCharacterClass({
+        kind: 'CharacterClass',
+        children: [
+          {kind: 'Atom', value: 'x'},
+          {kind: 'Atom', value: 'y'},
+          {kind: 'Atom', value: 'z'},
+        ],
+        negated: false,
+      }),
+    ).toEqual({
+      kind: 'CharacterClass',
+      children: [{kind: 'Range', from: 'x', to: 'z'}],
+      negated: false,
+    });
+  });
+
+  it('inverts a negated class containing a range', () => {
+    // A range in "the middle".
+    expect(
+      normalizeCharacterClass({
+        kind: 'CharacterClass',
+        children: [{kind: 'Range', from: 'H', to: 'P'}],
+        negated: true,
+      }),
+    ).toEqual({
+      kind: 'CharacterClass',
+      children: [
+        {kind: 'Range', from: '\u0000', to: 'G'},
+        {kind: 'Range', from: 'Q', to: '\uffff'},
+      ],
+      negated: false,
+    });
+
+    // Edge-case starting at \u0000.
+    expect(
+      normalizeCharacterClass({
+        kind: 'CharacterClass',
+        children: [{kind: 'Range', from: '\u0000', to: 'P'}],
+        negated: true,
+      }),
+    ).toEqual({
+      kind: 'CharacterClass',
+      children: [{kind: 'Range', from: 'Q', to: '\uffff'}],
+      negated: false,
+    });
+
+    // Edge-case ending at \uffff.
+    expect(
+      normalizeCharacterClass({
+        kind: 'CharacterClass',
+        children: [{kind: 'Range', from: 'P', to: '\uffff'}],
+        negated: true,
+      }),
+    ).toEqual({
+      kind: 'CharacterClass',
+      children: [{kind: 'Range', from: '\u0000', to: 'O'}],
+      negated: false,
+    });
+  });
+
+  it('inverts a negated class containing two non-adjacent atoms', () => {
+    expect(
+      normalizeCharacterClass({
+        kind: 'CharacterClass',
+        children: [
+          {kind: 'Atom', value: 'H'},
+          {kind: 'Atom', value: 'P'},
+        ],
+        negated: true,
+      }),
+    ).toEqual({
+      kind: 'CharacterClass',
+      children: [
+        {kind: 'Range', from: '\u0000', to: 'G'},
+        {kind: 'Range', from: 'I', to: 'O'},
+        {kind: 'Range', from: 'Q', to: '\uffff'},
+      ],
+      negated: false,
+    });
+  });
+
+  it('inverts nested negated classes (eg. \\D)', () => {
+    const characterClass = new RegExpParser(/\D/).parse();
+    if (characterClass.kind !== 'CharacterClass') {
+      fail('Needed CharacterClass');
+    }
+    expect(normalizeCharacterClass(characterClass)).toEqual({
+      kind: 'CharacterClass',
+      children: [
+        {kind: 'Range', from: '\u0000', to: '/'},
+        {kind: 'Range', from: ':', to: '\uffff'},
+      ],
+      negated: false,
+    });
+  });
+});

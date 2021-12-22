@@ -47,21 +47,22 @@ type Atom = {
   value: string;
 };
 
-// Note that a CharacterClass may contain a nested CharacterClass such as `\D`,
-// `\S`, or `\W`: eg.
-//
-//    [1-5\D] = "1 to 5, or any non-digit"
-//    [^a-z\D] = "anything except a to z and digits"
-//
-// The non-negated classes (eg. `\d`, `\s`, `\w`) don't need to be nested in
-// this way because they can be flattened like this:
+// Note that a CharacterClass may contain a nested CharacterClass such as `\d`,
+// `\s`, or `\w`, which we represent using a flattened form:
 //
 //    [a-z\d] = "a to z, or any digit", flattens to: [a-z0-9]
 //    [^a-z\d] = "anything except a to z and digits", flattens to [^a-z0-9]
 //
+// Negated forms (eg. `\D`, `\S`, or `\W`) also exist:
+//
+//    [1-5\D] = "1 to 5, or any non-digit"
+//    [^a-z\D] = "anything except a to z and digits"
+//
+// Those are a bit harder to write out in flattened form, but we do flatten
+// them.
 type CharacterClass = {
   kind: 'CharacterClass';
-  children: Array<Atom | CharacterClass | Range>;
+  children: Array<Atom | Range>;
   negated: boolean;
 };
 
@@ -140,20 +141,118 @@ const SPECIAL_CLASSES: {[key: string]: CharacterClass | undefined} = {
 } as const;
 
 /**
- * Sorts, merges and simplifies members within a character class.
+ * Normalizes a character class.
+ *
+ * - A `negated: true` class is turned into a `negated: false` equivalent.
+ * - Duplicate atoms are removed.
+ * - Contiguous atoms are expressed as ranges.
  */
-function compact(characterClass: CharacterClass): CharacterClass {
-  return characterClass;
+export function normalizeCharacterClass(
+  characterClass: CharacterClass,
+): CharacterClass {
+  // Step 1. Expand ranges.
+  let atoms: Array<Atom> = characterClass.children.flatMap((child) => {
+    if (child.kind === 'Atom') {
+      return [child];
+    } else {
+      const start = child.from.charCodeAt(0);
+      const finish = child.to.charCodeAt(0);
+      const atoms: Array<Atom> = [];
+      for (let i = start; i <= finish; i++) {
+        atoms.push({kind: 'Atom', value: String.fromCharCode(i)});
+      }
+      return atoms;
+    }
+  });
+
+  // Step 2. Sort atoms.
+  sortAtoms(atoms);
+
+  // Step 3. Remove duplicates.
+  for (let i = atoms.length - 1; i >= 0; i--) {
+    if (i - 1 >= 0 && atoms[i - 1].value === atoms[i].value) {
+      atoms.splice(i, 1);
+    }
+  }
+
+  // Step 4. If negated, produce inversion; otherwise, collapse atoms to ranges.
+  const children: Array<Atom | Range> = [];
+  if (characterClass.negated) {
+    let previous = 0x0000;
+    for (const atom of atoms) {
+      const current = atom.value.charCodeAt(0);
+      if (previous === current - 1) {
+        children.push({kind: 'Atom', value: String.fromCharCode(previous)});
+      } else if (previous < current) {
+        children.push({
+          kind: 'Range',
+          from: String.fromCharCode(previous),
+          to: String.fromCharCode(current - 1),
+        });
+      }
+      previous = current + 1;
+    }
+    if (previous < 0xfffe) {
+      children.push({
+        kind: 'Range',
+        from: String.fromCharCode(previous),
+        to: '\uffff',
+      });
+    } else if (previous === 0xfffe) {
+      children.push({kind: 'Atom', value: '\uffff'});
+    }
+  } else {
+    let from: number | null = null;
+    let previous: number | null = null;
+    for (const atom of atoms) {
+      const current = atom.value.charCodeAt(0);
+      if (from === null) {
+        from = current;
+        previous = current;
+      } else if (previous !== null && current === previous + 1) {
+        // Extend range.
+        previous = current;
+      } else if (previous !== null) {
+        if (from === previous) {
+          children.push({kind: 'Atom', value: String.fromCharCode(previous)});
+        } else {
+          children.push({
+            kind: 'Range',
+            from: String.fromCharCode(from),
+            to: String.fromCharCode(previous),
+          });
+        }
+        from = current;
+        previous = current;
+      }
+    }
+    if (from !== null && previous !== null) {
+      if (from === previous) {
+        children.push({kind: 'Atom', value: String.fromCharCode(previous)});
+      } else {
+        children.push({
+          kind: 'Range',
+          from: String.fromCharCode(from),
+          to: String.fromCharCode(previous),
+        });
+      }
+    }
+  }
+  return {
+    kind: 'CharacterClass',
+    children,
+    negated: false,
+  };
 }
 
 /**
- * Returns the "inverse" (ie. case-toggled) version of a single-character
- * string, or `null` if there is no inverse.
+ * Returns the case-toggled version of a single-character string, or `null` if
+ * there is no inverse.
  */
-function inverse(input: string): string | null {
+function toggleCase(input: string): string | null {
   if (input.length !== 1) {
     throw new Error(
-      `inverse(): expected string to have length 1, had ${input.length}`,
+      `toggleCase(): expected string to have length 1, had ${input.length}`,
     );
   }
   const lower = input.toLowerCase();
@@ -170,7 +269,7 @@ function inverse(input: string): string | null {
 /**
  * Sorts the supplied array of `atoms` by `value`.
  */
-function sort(atoms: Array<Atom>): Array<Atom> {
+function sortAtoms(atoms: Array<Atom>): Array<Atom> {
   return atoms.sort((a, b) => {
     if (a.value > b.value) {
       return 1;
@@ -286,11 +385,11 @@ export default class RegExpParser {
     const value = this.#scanner.expect(/./);
     const atom: Atom = {kind: 'Atom', value};
     if (this.#ignoreCase) {
-      let other = inverse(value);
+      let other = toggleCase(value);
       if (other) {
         return {
           kind: 'CharacterClass',
-          children: sort([atom, {kind: 'Atom', value: other}]),
+          children: sortAtoms([atom, {kind: 'Atom', value: other}]),
           negated: false,
         };
       }
@@ -299,7 +398,7 @@ export default class RegExpParser {
   }
 
   #parseCharacterClass(): CharacterClass {
-    let children: Array<Atom | CharacterClass | Range> = [];
+    let children: Array<Atom | Range> = [];
     this.#scanner.expect('[');
     const negated = !!this.#scanner.scan('^');
     while (!this.#scanner.atEnd) {
@@ -323,12 +422,8 @@ export default class RegExpParser {
           if (previous.kind === 'Range') {
             // TODO: see if TS can be made to accept `invariant()` here instead.
             throw new Error('Unexpected Range');
-          } else if (previous.kind === 'CharacterClass') {
-            // I would support this, but I literally have no idea what /[\s-z]/
-            // is supposed to match.
-            throw new Error(
-              'Unsupported nested CharacterClass before Range operator',
-            );
+            // TODO: figure out what to do with stuff like /[\s-z]/
+            // (I literally have no idea what that is supposed to match).
           }
 
           // To illustrate how we should handle `ignoreCase`, consider the
@@ -369,9 +464,8 @@ export default class RegExpParser {
           if (escape.kind === 'Atom') {
             children.push(escape);
           } else if (escape.negated) {
-            // Can't flatten in the children; instead have to nest the character
-            // class.
-            children.push(escape);
+            // Before flattening the children, need them in non-negated form.
+            children.push(...normalizeCharacterClass(escape).children);
           } else {
             children.push(...escape.children);
           }
@@ -384,16 +478,16 @@ export default class RegExpParser {
     if (this.#ignoreCase) {
       children = children.flatMap((child): typeof children => {
         if (child.kind === 'Atom') {
-          const other = inverse(child.value);
+          const other = toggleCase(child.value);
           if (other) {
-            return sort([child, {kind: 'Atom', value: other}]);
+            return sortAtoms([child, {kind: 'Atom', value: other}]);
           }
         } else if (child.kind === 'Range') {
           const start = child.from.charCodeAt(0);
           const finish = child.to.charCodeAt(0);
           const extras: Array<Atom> = [];
           for (let i = start; i <= finish; i++) {
-            const other = inverse(String.fromCharCode(i));
+            const other = toggleCase(String.fromCharCode(i));
             if (other) {
               extras.push({kind: 'Atom', value: other});
             }
@@ -403,7 +497,7 @@ export default class RegExpParser {
         return [child];
       });
     }
-    return compact({
+    return normalizeCharacterClass({
       kind: 'CharacterClass',
       children,
       negated,
