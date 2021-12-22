@@ -9,7 +9,6 @@ import type {
   Sequence,
 } from './RegExpParser';
 
-type Atom = string;
 type Edge = Atom | Range;
 
 // Represents a state and all the edges leading out from it to other states.
@@ -45,9 +44,21 @@ export default class DFA {
     return table;
   }
 
+  #parseCharacterClass(characterClass: CharacterClass, state: State, table: Table) {
+    if (characterClass.negated) {
+      throw new Error('DFA#parseCharacterClass(): Expected non-negated chararcter class');
+    }
+    const next = table.length;
+    for (const child of characterClass.children) {
+      state.push([child, next]);
+    }
+  }
+
   #parseNode(node: Node, state: State, table: Table) {
     if (node.kind === 'Alternate') {
       this.#parseAlternate(node, state, table);
+    } else if (node.kind === 'CharacterClass') {
+      this.#parseCharacterClass(node, state, table);
     } else if (node.kind === 'Sequence') {
       this.#parseSequence(node, state, table);
     }
@@ -57,7 +68,7 @@ export default class DFA {
     const next = table.length;
     for (const node of alternate.children) {
       if (node.kind === 'Atom') {
-        state.push([node.value, next]);
+        state.push([node, next]);
       } else {
         // TODO
       }
@@ -65,15 +76,27 @@ export default class DFA {
     table.push([]);
   }
 
+  #parseRepeat(repeat: Repeat, state: State, table: Table) {
+    const child = repeat.child;
+    // TODO: actually use minimum/maximum
+    if (child.kind === 'CharacterClass') {
+      this.#parseCharacterClass(child, state, table);
+    }
+  }
+
   #parseSequence(sequence: Sequence, state: State, table: Table) {
     for (const node of sequence.children) {
       if (node.kind === 'Atom') {
-        state.push([node.value, table.length]);
-        state = [];
-        table.push(state);
+        state.push([node, table.length]);
+      } else if (node.kind === 'CharacterClass') {
+        this.#parseCharacterClass(node, state, table);
+      } else if (node.kind === 'Repeat') {
+        this.#parseRepeat(node, state, table);
       } else {
         // TODO
       }
+      state = [];
+      table.push(state);
     }
   }
 
@@ -89,12 +112,12 @@ export default class DFA {
   // 0     | _            | 1
   // 0     | >= A && <= Z | 1
   // 0     | >= a && <= z | 1
-  // 0     | [else]       | reject
+  // 0     | [else]       | -1 (reject) -- this edge is implied; not explicitly recorded in the data structure
   // 1     | _            | 1
   // 1     | >= A && <= Z | 1
   // 1     | >= a && <= z | 1
   // 1     | >= 0 && <= 9 | 1
-  // 1     | [else]       | accept
+  // 1     | [else]       | accept -- again, implied edge
   //
   // ie. probably want to express this in terms of ranges and not individual
   // edges because some of our regexps will have huge numbers of edges (eg.
