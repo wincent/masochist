@@ -94,51 +94,65 @@ type Sequence = {
 };
 
 // See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes
-const BASE_SPECIAL_CLASSES: {[key: string]: CharacterClass | undefined} = {
-  d: {
-    kind: 'CharacterClass',
-    children: [{kind: 'Range', from: '0', to: '9'}],
-    negated: false,
-  } as CharacterClass,
-  s: {
-    kind: 'CharacterClass',
-    children: [
-      {kind: 'Atom', value: ' '},
-      {kind: 'Atom', value: '\f'},
-      {kind: 'Atom', value: '\n'},
-      {kind: 'Atom', value: '\r'},
-      {kind: 'Atom', value: '\t'},
-      {kind: 'Atom', value: '\v'},
-      {kind: 'Atom', value: '\u00a0'},
-      {kind: 'Atom', value: '\u1680'},
-      {kind: 'Range', from: '\u2000', to: '\u200a'},
-      {kind: 'Atom', value: '\u2028'},
-      {kind: 'Atom', value: '\u2029'},
-      {kind: 'Atom', value: '\u202f'},
-      {kind: 'Atom', value: '\u205f'},
-      {kind: 'Atom', value: '\u3000'},
-      {kind: 'Atom', value: '\ufeff'},
-    ],
-    negated: false,
-  } as CharacterClass,
-  w: {
-    kind: 'CharacterClass',
-    children: [
-      {kind: 'Range', from: 'A', to: 'Z'},
-      {kind: 'Range', from: 'a', to: 'z'},
-      {kind: 'Range', from: '0', to: '9'},
-      {kind: 'Atom', value: '_'},
-    ],
-    negated: false,
-  } as CharacterClass,
-} as const;
+const BASE_SPECIAL_CLASSES: {[key: string]: CharacterClass | undefined} =
+  freeze({
+    d: {
+      kind: 'CharacterClass',
+      children: [{kind: 'Range', from: '0', to: '9'}],
+      negated: false,
+    } as CharacterClass,
+    s: {
+      kind: 'CharacterClass',
+      children: [
+        {kind: 'Atom', value: ' '},
+        {kind: 'Atom', value: '\f'},
+        {kind: 'Atom', value: '\n'},
+        {kind: 'Atom', value: '\r'},
+        {kind: 'Atom', value: '\t'},
+        {kind: 'Atom', value: '\v'},
+        {kind: 'Atom', value: '\u00a0'},
+        {kind: 'Atom', value: '\u1680'},
+        {kind: 'Range', from: '\u2000', to: '\u200a'},
+        {kind: 'Atom', value: '\u2028'},
+        {kind: 'Atom', value: '\u2029'},
+        {kind: 'Atom', value: '\u202f'},
+        {kind: 'Atom', value: '\u205f'},
+        {kind: 'Atom', value: '\u3000'},
+        {kind: 'Atom', value: '\ufeff'},
+      ],
+      negated: false,
+    } as CharacterClass,
+    w: {
+      kind: 'CharacterClass',
+      children: [
+        {kind: 'Range', from: 'A', to: 'Z'},
+        {kind: 'Range', from: 'a', to: 'z'},
+        {kind: 'Range', from: '0', to: '9'},
+        {kind: 'Atom', value: '_'},
+      ],
+      negated: false,
+    } as CharacterClass,
+  });
 
-const SPECIAL_CLASSES: {[key: string]: CharacterClass | undefined} = {
+const SPECIAL_CLASSES: {[key: string]: CharacterClass | undefined} = freeze({
   ...BASE_SPECIAL_CLASSES,
   D: {...BASE_SPECIAL_CLASSES.d, negated: true} as CharacterClass,
   S: {...BASE_SPECIAL_CLASSES.s, negated: true} as CharacterClass,
   W: {...BASE_SPECIAL_CLASSES.w, negated: true} as CharacterClass,
-} as const;
+});
+
+function freeze<T>(object: T): Readonly<T> {
+  if (Array.isArray(object)) {
+    object.forEach((item) => freeze(item));
+    return Object.freeze<T>(object);
+  } else if (typeof object === 'object') {
+    for (const value of Object.values(object)) {
+      freeze(value);
+    }
+    return Object.freeze(object);
+  }
+  return object;
+}
 
 /**
  * Normalizes a character class.
