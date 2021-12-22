@@ -427,6 +427,70 @@ describe('RegExpParser', () => {
     });
   });
 
+  it('complains if a "^" boundary assertion is used', () => {
+    expect(() => new RegExpParser(/^foo/).parse()).toThrow(
+      /boundary assertions are not supported/,
+    );
+
+    // Note that assertions are prohibited anywhere in the pattern.
+    expect(() => new RegExpParser(/foo^bar/).parse()).toThrow(
+      /boundary assertions are not supported/,
+    );
+
+    // But escaped versions are fine.
+    expect(new RegExpParser(/\^foo/).parse()).toEqual({
+      kind: 'Sequence',
+      children: [
+        {kind: 'Atom', value: '^'},
+        {kind: 'Atom', value: 'f'},
+        {kind: 'Atom', value: 'o'},
+        {kind: 'Atom', value: 'o'},
+      ],
+    });
+
+    // And it's ok inside character classes.
+    expect(new RegExpParser(/[a^]/).parse()).toEqual({
+      kind: 'CharacterClass',
+      children: [
+        {kind: 'Atom', value: '^'},
+        {kind: 'Atom', value: 'a'},
+      ],
+      negated: false,
+    });
+  });
+
+  it('complains if a "$" boundary assertion is used', () => {
+    expect(() => new RegExpParser(/foo$/).parse()).toThrow(
+      /boundary assertions are not supported/,
+    );
+
+    // Note that assertions are prohibited anywhere in the pattern.
+    expect(() => new RegExpParser(/foo$bar/).parse()).toThrow(
+      /boundary assertions are not supported/,
+    );
+
+    // But escaped versions are fine.
+    expect(new RegExpParser(/foo\$/).parse()).toEqual({
+      kind: 'Sequence',
+      children: [
+        {kind: 'Atom', value: 'f'},
+        {kind: 'Atom', value: 'o'},
+        {kind: 'Atom', value: 'o'},
+        {kind: 'Atom', value: '$'},
+      ],
+    });
+
+    // And it's ok inside character classes.
+    expect(new RegExpParser(/[$abc]/).parse()).toEqual({
+      kind: 'CharacterClass',
+      children: [
+        {kind: 'Atom', value: '$'},
+        {kind: 'Range', from: 'a', to: 'c'},
+      ],
+      negated: false,
+    });
+  });
+
   // RegExps taken from:
   //
   //    https://github.com/wincent/masochist/blob/d224383b088a1f44/packages/compiler/src/lex.ts

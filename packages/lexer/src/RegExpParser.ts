@@ -351,9 +351,9 @@ export default class RegExpParser {
   #ignoreCase: boolean;
   #scanner: StringScanner;
 
-  constructor(regExp: RegExp) {
-    this.#ignoreCase = regExp.ignoreCase;
-    this.#scanner = new StringScanner(regExp.source);
+  constructor({ignoreCase, source}: RegExp) {
+    this.#ignoreCase = ignoreCase;
+    this.#scanner = new StringScanner(source);
   }
 
   // precedence high to low:
@@ -397,6 +397,11 @@ export default class RegExpParser {
   // appropriate).
   #parseAtom(): Atom | CharacterClass {
     const value = this.#scanner.expect(/./);
+    if (value === '^' || value === '$') {
+      throw new Error(
+        'RegExpParser.parseAtom(): "^" and "$" boundary assertions are not supported',
+      );
+    }
     const atom: Atom = {kind: 'Atom', value};
     if (this.#ignoreCase) {
       let other = toggleCase(value);
@@ -679,8 +684,6 @@ export default class RegExpParser {
     return sequence;
   }
 }
-
-// TODO: throw if given ^ or $
 
 // TODO: pull in implementation of this from elsewhere
 function invariant(condition: unknown, message: string) {
