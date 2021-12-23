@@ -1,4 +1,4 @@
-import RegExpParser from './RegExpParser';
+import RegExpParser from './RegExp/RegExpParser';
 import type {
   Alternate,
   Atom,
@@ -7,7 +7,7 @@ import type {
   Range,
   Repeat,
   Sequence,
-} from './RegExpParser';
+} from './RegExp/RegExpParser';
 
 type Edge = Atom | Range;
 

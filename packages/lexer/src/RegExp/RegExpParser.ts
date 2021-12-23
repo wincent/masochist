@@ -1,4 +1,4 @@
-import StringScanner from './StringScanner';
+import StringScanner from '../StringScanner';
 
 // AST types.
 
