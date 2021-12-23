@@ -42,8 +42,5 @@ function visit(node: Node) {
     case 'Sequence':
       mergeChildren(node.children);
       break;
-    default:
-      // Nothing to do.
-      break;
   }
 }

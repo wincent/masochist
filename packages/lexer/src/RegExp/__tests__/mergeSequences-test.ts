@@ -54,11 +54,6 @@ describe('mergeSequences()', () => {
     });
   });
 });
-// TODO similar tests for alternates containing character classes
-// [abc]|[def]|(bar) is same as [abcdef]|bar
-// or simpler case [abc]|[def] is same as [abcdef]
-// repetition or some other structure is the only thing that rules this out
-// eg. [abc]|[def]+
 
 function merge(regExp: RegExp) {
   const node = new RegExpParser(regExp).parse();
