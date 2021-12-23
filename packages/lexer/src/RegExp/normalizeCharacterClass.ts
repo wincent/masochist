@@ -1,6 +1,6 @@
 import sortAtoms from './sortAtoms';
 
-import type {Atom, CharacterClass} from './RegExpParser';
+import type {Atom, CharacterClass, Range} from './RegExpParser';
 
 /**
  * Normalizes a character class.

@@ -1,3 +1,4 @@
+import assertIsAtomOrRangeArray from './assertIsAtomOrRangeArray';
 import normalizeCharacterClass from './normalizeCharacterClass';
 import type {CharacterClass, Node} from './RegExpParser';
 
@@ -49,6 +50,7 @@ function mergeChildren(children: Array<Node>) {
   if (merged) {
     // Hack: construct a temporary class just for the purposes of normalizing
     // the children, then use the result to overwrite the old children.
+    assertIsAtomOrRangeArray(children);
     const normalized = normalizeCharacterClass({
       kind: 'CharacterClass',
       children,
