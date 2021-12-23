@@ -1,4 +1,5 @@
-import RegExpParser from './RegExp/RegExpParser';
+import compileRegExp from './compileRegExp';
+
 import type {
   Alternate,
   Atom,
@@ -30,7 +31,7 @@ export default class DFA {
 
   constructor(regExp: RegExp) {
     this.#context = [];
-    this.#ast = new RegExpParser(regExp).parse();
+    this.#ast = compileRegExp(regExp);
     this.#table = this.#parse();
   }
 
