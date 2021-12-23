@@ -30,7 +30,7 @@ class SequenceMergeTransformer extends RegExpTransformer<State> {
         children = children === node.children ? children.slice() : children;
         children.splice(i, 2, child, ...previous.children);
       }
-      previous = child;
+      previous = children[i];
     }
 
     if (children === node.children) {
