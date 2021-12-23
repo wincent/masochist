@@ -18,11 +18,6 @@ export default class RegExpTransformer<T> {
     this.#node = node;
   }
 
-  // TODO: make all these methods return stuff
-  // if return `null`/`undefined`, delete the node
-  // if return something new, replace the node
-  // if return same thing, leave node untouched
-
   visit(state: T): Node | undefined {
     return this.visitNode(this.#node, state);
   }

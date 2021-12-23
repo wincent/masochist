@@ -1,4 +1,5 @@
 import StringScanner from '../StringScanner';
+import invariant from '../invariant';
 import normalizeCharacterClass from './normalizeCharacterClass';
 import sortAtoms from './sortAtoms';
 
@@ -320,12 +321,9 @@ export default class RegExpParser {
           // handle them yet (`[a-\w]` means "a" or "-" or "A-Za-z0-9_").
           // BUG: `[a-j-z]` also not handled; means "a-j" or "-" or "z".
           const previous = children.pop()!;
-          if (previous.kind === 'Range') {
-            // TODO: see if TS can be made to accept `invariant()` here instead.
-            throw new Error('Unexpected Range');
-            // TODO: figure out what to do with stuff like /[\s-z]/
-            // (I literally have no idea what that is supposed to match).
-          }
+          invariant(previous.kind !== 'Range');
+          // TODO: figure out what to do with stuff like /[\s-z]/
+          // (I literally have no idea what that is supposed to match).
 
           // To illustrate how we should handle `ignoreCase`, consider the
           // characters from "X" (\x58) to "c" (\x63); ie:
@@ -564,12 +562,5 @@ export default class RegExpParser {
       }
     }
     return sequence;
-  }
-}
-
-// TODO: pull in implementation of this from elsewhere
-function invariant(condition: unknown, message: string) {
-  if (condition) {
-    throw new Error(`invariant(): ${message}`);
   }
 }
