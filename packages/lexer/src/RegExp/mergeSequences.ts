@@ -12,8 +12,6 @@ class SequenceMergeTransformer extends RegExpTransformer<State> {
       return;
     }
 
-    // TODO: refactor the following to not mutate `children`.
-
     let previous: Node | null = null;
 
     // Walk backwards so we can mutate as we go without breaking indices.
@@ -21,12 +19,15 @@ class SequenceMergeTransformer extends RegExpTransformer<State> {
       const child = children[i];
       if (child.kind === 'Sequence' && previous?.kind === 'Sequence') {
         // Merge two sequences together.
+        children = children === node.children ? children.slice() : children;
         children.splice(i, 2, ...child.children, ...previous.children);
       } else if (child.kind === 'Sequence' && previous) {
         // Merge suffix following a sequence with the sequence.
+        children = children === node.children ? children.slice() : children;
         children.splice(i, 2, ...child.children, previous);
       } else if (previous?.kind === 'Sequence') {
         // Merge prefix followed by a sequence with the sequence.
+        children = children === node.children ? children.slice() : children;
         children.splice(i, 2, child, ...previous.children);
       }
       previous = child;
