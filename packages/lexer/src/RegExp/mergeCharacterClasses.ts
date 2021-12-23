@@ -70,12 +70,6 @@ class CharacterClassMergeTransformer extends RegExpTransformer<State> {
   }
 }
 
-function checkNegated({negated}: CharacterClass) {
-  if (negated) {
-    throw new Error('checkNegated(): unexpected negated CharacterClass');
-  }
-}
-
 // [abc]|[xyz] -> [abcxyz]
 export default function mergeCharacterClasses(node: Node): Node {
   const transformed = new CharacterClassMergeTransformer(node).visit(undefined);

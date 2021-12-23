@@ -1,8 +1,6 @@
 import RegExpParser from '../RegExpParser';
 import mergeCharacterClasses from '../mergeCharacterClasses';
 
-// TODO: repetition or some other structure is the only thing that rules this out
-// eg. [abc]|[def]+
 describe('mergeCharacterClasses()', () => {
   it('merges character classes within an alternate', () => {
     expect(merge(/[aj1]|[5wz]/)).toEqual({
@@ -42,6 +40,37 @@ describe('mergeCharacterClasses()', () => {
             {kind: 'Atom', value: 'z'},
           ],
           negated: false,
+        },
+      ],
+    });
+  });
+
+  it('does not merge if a character class has a quantifier', () => {
+    expect(merge(/[aj1]|[5wz]+/)).toEqual({
+      kind: 'Alternate',
+      children: [
+        {
+          kind: 'CharacterClass',
+          children: [
+            {kind: 'Atom', value: '1'},
+            {kind: 'Atom', value: 'a'},
+            {kind: 'Atom', value: 'j'},
+          ],
+          negated: false,
+        },
+        {
+          kind: 'Repeat',
+          child: {
+            kind: 'CharacterClass',
+            children: [
+              {kind: 'Atom', value: '5'},
+              {kind: 'Atom', value: 'w'},
+              {kind: 'Atom', value: 'z'},
+            ],
+            negated: false,
+          },
+          minimum: 1,
+          maximum: Infinity,
         },
       ],
     });
