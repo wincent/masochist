@@ -1,62 +1,86 @@
-import assertIsAtomOrRangeArray from './assertIsAtomOrRangeArray';
+import RegExpTransformer from './RegExpTransformer';
 import normalizeCharacterClass from './normalizeCharacterClass';
-import type {CharacterClass, Node} from './RegExpParser';
+import invariant from '../invariant';
 
-// [abc]|[xyz] -> [abcxyz]
-export default function mergeCharacterClasses(node: Node): Node {
-  visit(node);
-  return node;
-}
+import type {Alternate, CharacterClass, Node} from './RegExpParser';
 
-// Doing this with simple mutation for now; later may decide to adopt an
-// immutable style.
-function mergeChildren(children: Array<Node>) {
-  let previous: Node | null = null;
-  let merged = false;
+type State = unknown;
 
-  // Walk backwards so we can mutate as we go without breaking indices.
-  for (let i = children.length - 1; i >= 0; i--) {
-    const child = children[i];
-    visit(child);
-    if (
-      child.kind === 'CharacterClass' &&
-      previous?.kind === 'CharacterClass'
-    ) {
-      // Merge two sequences together.
-      checkNegated(child);
-      checkNegated(previous);
-      children.splice(i, 2, ...child.children, ...previous.children);
-      merged = true;
-    } else if (
-      child.kind === 'CharacterClass' &&
-      (previous?.kind === 'Atom' || previous?.kind === 'Range')
-    ) {
-      // Merge suffix following a character class into the character class.
-      checkNegated(child);
-      children.splice(i, 2, ...child.children, previous);
-      merged = true;
-    } else if (
-      previous?.kind === 'CharacterClass' &&
-      (child.kind === 'Atom' || child.kind === 'Range')
-    ) {
-      // Merge prefix followed by a character class into the character class.
-      checkNegated(previous);
-      children.splice(i, 2, child, ...previous.children);
-      merged = true;
+class CharacterClassMergeTransformer extends RegExpTransformer<State> {
+  visitAlternate(node: Alternate, state: State): Node | undefined {
+    let children = this.visitChildren(node.children, state);
+    if (!children || !children.length) {
+      return;
     }
-    previous = child;
-  }
 
-  if (merged) {
-    // Hack: construct a temporary class just for the purposes of normalizing
-    // the children, then use the result to overwrite the old children.
-    assertIsAtomOrRangeArray(children);
-    const normalized = normalizeCharacterClass({
-      kind: 'CharacterClass',
-      children,
-      negated: false,
-    });
-    children.splice(0, children.length, ...normalized.children);
+    let previous: Node | null = null;
+
+    // Walk backwards so we can mutate as we go without breaking indices.
+    for (let i = children.length - 1; i >= 0; i--) {
+      const child = children[i];
+      if (
+        child.kind === 'CharacterClass' &&
+        previous?.kind === 'CharacterClass'
+      ) {
+        // Merge two sequences together.
+        checkNegated(child);
+        checkNegated(previous);
+        children = children === node.children ? children.slice() : children;
+        children.splice(i, 2, {
+          kind: 'CharacterClass',
+          children: [...child.children, ...previous.children],
+          negated: false,
+        });
+      } else if (
+        child.kind === 'CharacterClass' &&
+        (previous?.kind === 'Atom' || previous?.kind === 'Range')
+      ) {
+        // Merge suffix following a character class into the character class.
+        checkNegated(child);
+        children = children === node.children ? children.slice() : children;
+        children.splice(i, 2, {
+          kind: 'CharacterClass',
+          children: [...child.children, previous],
+          negated: false,
+        });
+      } else if (
+        previous?.kind === 'CharacterClass' &&
+        (child.kind === 'Atom' || child.kind === 'Range')
+      ) {
+        // Merge prefix followed by a character class into the character class.
+        checkNegated(previous);
+        children = children === node.children ? children.slice() : children;
+        children.splice(i, 2, {
+          kind: 'CharacterClass',
+          children: [child, ...previous.children],
+          negated: false,
+        });
+      }
+      previous = child;
+    }
+
+    if (children !== node.children) {
+      for (let i = 0; i < children.length; i++) {
+        const child = children[i];
+        if (child.kind === 'CharacterClass') {
+          children[i] = normalizeCharacterClass(child);
+        }
+      }
+    }
+
+    if (!children.length) {
+      return;
+    } else if (children === node.children) {
+      return node;
+    } else if (children.length === 1) {
+      // Unwrap if only one child left.
+      return children[0];
+    } else {
+      return {
+        ...node,
+        children,
+      };
+    }
   }
 }
 
@@ -66,21 +90,9 @@ function checkNegated({negated}: CharacterClass) {
   }
 }
 
-function visit(node: Node) {
-  switch (node.kind) {
-    case 'Alternate':
-      mergeChildren(node.children);
-      if (node.children.length === 1) {
-        // TODO: unwrap if its the only thing left
-      }
-      break;
-    case 'Repeat':
-      visit(node.child);
-      break;
-    case 'Sequence':
-      for (const child of node.children) {
-        visit(child);
-      }
-      break;
-  }
+// [abc]|[xyz] -> [abcxyz]
+export default function mergeCharacterClasses(node: Node): Node {
+  const transformed = new CharacterClassMergeTransformer(node).visit(undefined);
+  invariant(transformed);
+  return transformed;
 }

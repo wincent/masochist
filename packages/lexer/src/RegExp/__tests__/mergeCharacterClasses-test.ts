@@ -18,6 +18,7 @@ describe('mergeCharacterClasses()', () => {
         {kind: 'Atom', value: 'w'},
         {kind: 'Atom', value: 'z'},
       ],
+      negated: false,
     });
   });
 });
