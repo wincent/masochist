@@ -33,10 +33,14 @@ class SequenceMergeTransformer extends RegExpTransformer<State> {
       previous = child;
     }
 
-    return {
-      ...node,
-      children,
-    };
+    if (children === node.children) {
+      return node;
+    } else {
+      return {
+        ...node,
+        children,
+      };
+    }
   }
 }
 
