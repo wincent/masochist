@@ -16,7 +16,14 @@ function mergeChildren(children: Array<Node>) {
     const child = children[i];
     visit(child);
     if (child.kind === 'Sequence' && previous?.kind === 'Sequence') {
+      // Merge two sequences together.
       children.splice(i, 2, ...child.children, ...previous.children);
+    } else if (child.kind === 'Sequence' && previous) {
+      // Merge suffix following a sequence with the sequence.
+      children.splice(i, 2, ...child.children, previous);
+    } else if (previous?.kind === 'Sequence') {
+      // Merge prefix followed by a sequence with the sequence.
+      children.splice(i, 2, child, ...previous.children);
     }
     previous = child;
   }

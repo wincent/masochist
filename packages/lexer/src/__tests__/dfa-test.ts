@@ -25,7 +25,7 @@ describe('DFA()', () => {
     ]);
   });
 
-  it('handles a NAME-ish pattern like /[_a-z][_a-z\d]*/i', () => {
+  it('handles a NAME-ish pattern like /[_a-z][_a-zd]*/i', () => {
     expect(new DFA(/[_a-z][_a-z\d]*/i).table).toEqual([
       [
         [{kind: 'Range', from: 'A', to: 'Z'}, 1],

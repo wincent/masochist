@@ -15,6 +15,44 @@ describe('mergeSequences()', () => {
       ],
     });
   });
+
+  it('merges into a preceding sequence', () => {
+    expect(merge(/(foo)b/)).toEqual({
+      kind: 'Sequence',
+      children: [
+        {kind: 'Atom', value: 'f'},
+        {kind: 'Atom', value: 'o'},
+        {kind: 'Atom', value: 'o'},
+        {kind: 'Atom', value: 'b'},
+      ],
+    });
+  });
+
+  it('merges into a following sequence', () => {
+    expect(merge(/o(bar)/)).toEqual({
+      kind: 'Sequence',
+      children: [
+        {kind: 'Atom', value: 'o'},
+        {kind: 'Atom', value: 'b'},
+        {kind: 'Atom', value: 'a'},
+        {kind: 'Atom', value: 'r'},
+      ],
+    });
+  });
+
+  it('simplifies sequences nested in groups', () => {
+    expect(merge(/((foo)(b(ar)))/)).toEqual({
+      kind: 'Sequence',
+      children: [
+        {kind: 'Atom', value: 'f'},
+        {kind: 'Atom', value: 'o'},
+        {kind: 'Atom', value: 'o'},
+        {kind: 'Atom', value: 'b'},
+        {kind: 'Atom', value: 'a'},
+        {kind: 'Atom', value: 'r'},
+      ],
+    });
+  });
 });
 // TODO similar tests for alternates containing character classes
 // [abc]|[def]|(bar) is same as [abcdef]|bar

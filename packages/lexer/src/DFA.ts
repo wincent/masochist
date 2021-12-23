@@ -44,9 +44,15 @@ export default class DFA {
     return table;
   }
 
-  #parseCharacterClass(characterClass: CharacterClass, state: State, table: Table) {
+  #parseCharacterClass(
+    characterClass: CharacterClass,
+    state: State,
+    table: Table,
+  ) {
     if (characterClass.negated) {
-      throw new Error('DFA#parseCharacterClass(): Expected non-negated chararcter class');
+      throw new Error(
+        'DFA#parseCharacterClass(): Expected non-negated chararcter class',
+      );
     }
     const next = table.length;
     for (const child of characterClass.children) {
