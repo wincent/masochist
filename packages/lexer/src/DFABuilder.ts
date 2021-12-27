@@ -33,11 +33,12 @@ export default class DFABuilder extends RegExpVisitor<DFA> {
   }
 
   build() {
-    const dfa: DFA = {
-      states: [{kind: 'Start'}],
-      transitions: [],
-    };
+    const dfa = createDFA();
     this.visit(dfa);
+    const last = dfa.states[dfa.states.length - 1];
+    if (last.kind !== 'Accept') {
+      (last.kind as any) = 'Accept';
+    }
     return dfa;
   }
 
@@ -46,8 +47,10 @@ export default class DFABuilder extends RegExpVisitor<DFA> {
   }
 
   visitAtom(atom: Atom, dfa: DFA) {
+    const start = dfa.states.length - 1;
+    const end = start + 1;
     dfa.states.push({kind: 'Accept'});
-    dfa.transitions.push({start: 0, end: 1, conditions: [atom]});
+    dfa.transitions.push({start, end, conditions: [atom]});
   }
 
   visitCharacterClass(characterClass: CharacterClass, dfa: DFA) {
@@ -59,6 +62,34 @@ export default class DFABuilder extends RegExpVisitor<DFA> {
   }
 
   visitSequence(sequence: Sequence, dfa: DFA) {
-    super.visitSequence(sequence, dfa);
+    // Solve sub-problem.
+    const next = createDFA();
+    super.visitSequence(sequence, next);
+
+    // Merge back into current state.
+    const offset = dfa.states.length - 1;
+    dfa.states.push(
+      ...next.states.slice(1).map(({kind}) => {
+        return {
+          kind: kind === 'Accept' ? 'Internal' : kind,
+        };
+      }),
+    );
+    dfa.transitions.push(
+      ...next.transitions.map(({start, end, conditions}) => {
+        return {
+          start: start + offset,
+          end: end + offset,
+          conditions,
+        };
+      }),
+    );
   }
+}
+
+function createDFA(): DFA {
+  return {
+    states: [{kind: 'Start'}],
+    transitions: [],
+  };
 }
