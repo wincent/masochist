@@ -1,7 +1,7 @@
 ---
 description: Whatever the hell happened to journalistic integrity?
 tags: blog
-title: Whither, journlistic integrity?
+title: Whither, journalistic integrity?
 ---
 
 Of late I have been increasingly incensed with the way the so-called ["newspaper of record"](https://en.wikipedia.org/wiki/Newspaper_of_record) around here, [El País](https://en.wikipedia.org/wiki/El_Pa%C3%ADs), has been acting as though its greatest aspiration was to devolve into a sensationalist tabloid. Headlines are laden with emotional trigger words, people are told to be afraid, faceless "experts" act as harbingers of some ill-defined doom.
