@@ -1,6 +1,6 @@
 import type {Anything, Atom, Node, Range} from './RegExp/RegExpParser';
 
-// Episilon transitions are represented with `null`.
+// Epsilon transitions are represented with `null`.
 type Transition = Anything | Atom | Range | null;
 
 export const NONE = 0;
