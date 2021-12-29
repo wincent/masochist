@@ -184,10 +184,6 @@ function defaultGenId() {
   return () => id++;
 }
 
-function setFlag(flags: Flags, set: Flags): Flags {
-  return (flags | set) as Flags;
-}
-
 function startStates(nfa: NFA): Array<NFA> {
   const found: Array<NFA> = [];
   visit(nfa, (node) => {
