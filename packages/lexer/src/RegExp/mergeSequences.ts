@@ -44,7 +44,7 @@ class SequenceMergeTransformer extends RegExpTransformer<State> {
   }
 }
 
-// (foo)(bar) -> foobar
+// (foo)(bar) -> (foobar)
 export default function mergeSequences(node: Node): Node {
   const transformed = new SequenceMergeTransformer(node).visit(undefined);
   invariant(transformed);

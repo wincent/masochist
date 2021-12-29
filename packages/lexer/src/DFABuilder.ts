@@ -44,28 +44,7 @@ export default class DFABuilder extends RegExpVisitor<VisitorState> {
   visitAlternate(alternate: Alternate, visitorState: VisitorState) {
     // TODO: this one is going to visit children
     // we have to consolidate common transitions here
-    // (actually, may have to consolidate common transitions in more places)
-    // const {currentState} = visitorState;
-    // let nextState: number | null = null;
-    // const lastState = visitorState.table.length - 1;
-    //
-    // Might be running up against a wall here, as even if I create a new table
-    // and then write it into place (rewriting all the indices), it is going to
-    // get really messy... (Given that there may be a big recursive call graph
-    // sprouting out from this loop.) Issue is that you don't really know what
-    // the callee is going to do, and it could do a lot...
-
-    for (let i = 0; i < alternate.children.length; i++) {
-      const child = alternate.children[i];
-      const nextVisitorState: VisitorState = {currentState: 0, table: [[[]]]};
-      this.visitNode(child, nextVisitorState);
-
-      // TODO: merge nextVisitorState into current actual state
-      //
-      // given currentState from visitorState
-      // and state 0 from nextVisitorState
-      // add transitions from nextVisitorState to visitorState
-    }
+    super.visitAlternate(alternate, visitorState);
   }
 
   visitAtom(atom: Atom, {currentState, table}: VisitorState) {
@@ -74,7 +53,6 @@ export default class DFABuilder extends RegExpVisitor<VisitorState> {
     // Finally, record transition to new state.
     const conditions = table[currentState][nextState];
     conditions.push(atom);
-    // TODO: merge/de-dupe conditions if necessary
   }
 
   visitCharacterClass(
