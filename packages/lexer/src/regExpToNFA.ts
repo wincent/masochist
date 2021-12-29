@@ -160,6 +160,8 @@ export default function regExpToNFA(
       });
     }
     return children[0];
+  } else {
+    throw new Error('regExpToNFA(): Unexpected `node.kind`');
   }
 }
 
