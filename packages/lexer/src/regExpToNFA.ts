@@ -7,9 +7,9 @@ export const NONE = 0;
 export const START = 1;
 export const ACCEPT = 2;
 
-type Flags = 0 | 1 | 2 | 3;
+export type Flags = 0 | 1 | 2 | 3;
 
-type NFA = {
+export type NFA = {
   id: number;
   edges: Array<{
     on: Transition;
@@ -32,21 +32,11 @@ export default function regExpToNFA(
     const children = node.children.map((child) => {
       return regExpToNFA(child, genId);
     });
-    const accept: NFA = {
-      id: genId(),
-      edges: [],
-      flags: ACCEPT,
-    };
 
     // Return a new start node with epsilon transitions to start nodes of each child.
     return {
       id: genId(),
       edges: children.flatMap((child) => {
-        // All accept states get epsilon transitions to a new accept state.
-        acceptStates(child).forEach((state) => {
-          state.flags = clearFlag(state.flags, ACCEPT);
-          state.edges.push({on: null, to: accept});
-        });
         return startStates(child).map((start) => {
           start.flags = clearFlag(start.flags, START);
           return {
@@ -76,6 +66,58 @@ export default function regExpToNFA(
       ],
       flags: START,
     };
+  } else if (node.kind === 'Repeat') {
+    const child = regExpToNFA(node.child, genId);
+
+    if (node.minimum === 0 && node.maximum === 1) {
+      // "?" quantifier.
+      return {
+        id: genId(),
+        edges: startStates(child).map((start) => {
+          start.flags = clearFlag(start.flags, START);
+          return {
+            on: null,
+            to: start,
+          };
+        }),
+        flags: (START | ACCEPT) as Flags,
+      };
+    } else if (node.minimum === 0 && node.maximum === Infinity) {
+      // "*" quantifier (AKA Kleene star).
+      const start = {
+        id: genId(),
+        edges: startStates(child).map((start) => {
+          start.flags = clearFlag(start.flags, START);
+          return {
+            on: null,
+            to: start,
+          };
+        }),
+        flags: (START | ACCEPT) as Flags,
+      };
+      acceptStates(child).forEach((child) => {
+        child.edges.push({on: null, to: start});
+      });
+      return start;
+    } else if (node.minimum === 1 && node.maximum === Infinity) {
+      // "+" quantifier.
+      acceptStates(child).forEach((accept) => {
+        startStates(child).forEach((start) => {
+          // TODO avoid pushing duplicate edges here
+          accept.edges.push({on: null, to: start});
+        });
+      });
+      return child;
+    } else {
+      // {3} or {3,6} etc quantifier.
+      const clones: Array<NFA> = [];
+      for (let i = 0; i < node.minimum - 1; i++) {
+        clones.push(regExpToNFA(node.child, genId));
+      }
+      // TODO link accept states of each clone start of following one
+      // TODO for optional extras, allow intermediate accept states to remain,
+      // and link using epsilon transitions
+    }
   } else if (node.kind === 'Sequence') {
     // For each child, take every accept state and turn it into a non-final
     // state with an epsilon transition to the start state of the next child.
