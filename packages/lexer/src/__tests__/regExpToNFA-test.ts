@@ -266,4 +266,128 @@ describe('regExpToNFA()', () => {
     start.edges[0].to.edges.push({on: null, to: start});
     expect(regExpToNFA(compileRegExp(/a+/))).toEqual(start);
   });
+
+  it('creates an NFA with a "{3}" quantifier', () => {
+    expect(regExpToNFA(compileRegExp(/a{3}/))).toEqual({
+      id: 0,
+      flags: START,
+      edges: [
+        {
+          on: {kind: 'Atom', value: 'a'},
+          to: {
+            id: 1,
+            flags: NONE,
+            edges: [
+              {
+                on: null,
+                to: {
+                  id: 2,
+                  flags: NONE,
+                  edges: [
+                    {
+                      on: {kind: 'Atom', value: 'a'},
+                      to: {
+                        id: 3,
+                        flags: NONE,
+                        edges: [
+                          {
+                            on: null,
+                            to: {
+                              id: 4,
+                              flags: NONE,
+                              edges: [
+                                {
+                                  on: {kind: 'Atom', value: 'a'},
+                                  to: {
+                                    id: 5,
+                                    flags: ACCEPT,
+                                    edges: [],
+                                  },
+                                },
+                              ],
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+      ],
+    });
+  });
+
+  it('creates an NFA with a "{2,4}" quantifier', () => {
+    expect(regExpToNFA(compileRegExp(/a{2,4}/))).toEqual({
+      id: 0,
+      flags: START,
+      edges: [
+        {
+          on: {kind: 'Atom', value: 'a'},
+          to: {
+            id: 1,
+            flags: NONE,
+            edges: [
+              {
+                on: null,
+                to: {
+                  id: 2,
+                  flags: NONE,
+                  edges: [
+                    {
+                      on: {kind: 'Atom', value: 'a'},
+                      to: {
+                        id: 3,
+                        flags: ACCEPT,
+                        edges: [
+                          {
+                            on: null,
+                            to: {
+                              id: 4,
+                              flags: NONE,
+                              edges: [
+                                {
+                                  on: {kind: 'Atom', value: 'a'},
+                                  to: {
+                                    id: 5,
+                                    flags: ACCEPT,
+                                    edges: [
+                                      {
+                                        on: null,
+                                        to: {
+                                          id: 6,
+                                          flags: NONE,
+                                          edges: [
+                                            {
+                                              on: {kind: 'Atom', value: 'a'},
+                                              to: {
+                                                id: 7,
+                                                flags: ACCEPT,
+                                                edges: [],
+                                              },
+                                            },
+                                          ],
+                                        },
+                                      },
+                                    ],
+                                  },
+                                },
+                              ],
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+      ],
+    });
+  });
 });

@@ -110,13 +110,39 @@ export default function regExpToNFA(
       return child;
     } else {
       // {3} or {3,6} etc quantifier.
-      const clones: Array<NFA> = [];
-      for (let i = 0; i < node.minimum - 1; i++) {
-        clones.push(regExpToNFA(node.child, genId));
+
+      // "Clone" child by creating additional NFAs (same shape, different state
+      // `id`s).
+      const children: Array<NFA> = [child];
+      for (let i = 0; i < node.maximum - 1; i++) {
+        children.push(regExpToNFA(node.child, genId));
       }
-      // TODO link accept states of each clone start of following one
-      // TODO for optional extras, allow intermediate accept states to remain,
-      // and link using epsilon transitions
+
+      // For required items, link to next item by taking every accept state and
+      // turning it into a non-final state with an epsilon transition to the
+      // start state fo the next (ie. same as 'Sequence').
+      for (let i = 0; i < node.minimum - 1; i++) {
+        const child = children[i];
+        const next = children[i + 1];
+        next.flags = clearFlag(next.flags, START);
+        acceptStates(child).forEach((state) => {
+          state.flags = clearFlag(state.flags, ACCEPT);
+          state.edges.push({on: null, to: next});
+        });
+      }
+
+      // For optional items, allow intermediate accept states to remain,
+      // and link them together using epsilon transitions.
+      for (let i = node.minimum - 1; i < node.maximum - 1; i++) {
+        const child = children[i];
+        const next = children[i + 1];
+        next.flags = clearFlag(next.flags, START);
+        acceptStates(child).forEach((state) => {
+          state.edges.push({on: null, to: next});
+        });
+      }
+
+      return children[0];
     }
   } else if (node.kind === 'Sequence') {
     // For each child, take every accept state and turn it into a non-final
