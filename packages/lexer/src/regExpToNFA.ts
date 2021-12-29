@@ -7,12 +7,18 @@ export const NONE = 0;
 export const START = 1;
 export const ACCEPT = 2;
 
+const START_OR_ACCEPT = START | ACCEPT;
+
 type Edge = {
   on: Transition;
   to: NFA;
 };
 
-export type Flags = 0 | 1 | 2 | 3;
+export type Flags =
+  | typeof ACCEPT
+  | typeof NONE
+  | typeof START
+  | typeof START_OR_ACCEPT;
 
 export type NFA = {
   id: number;
