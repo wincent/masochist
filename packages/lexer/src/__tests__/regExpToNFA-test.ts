@@ -1,15 +1,15 @@
 import compileRegExp from '../compileRegExp';
-import regExpToNFA from '../regExpToNFA';
+import regExpToNFA, {ACCEPT, NONE, START} from '../regExpToNFA';
 
 describe('regExpToNFA()', () => {
   it('creates an NFA from an atom', () => {
     expect(regExpToNFA(compileRegExp(/a/))).toEqual({
-      kind: 'Start',
+      flags: START,
       edges: [
         {
           on: {kind: 'Atom', value: 'a'},
           to: {
-            kind: 'Accept',
+            flags: ACCEPT,
             edges: [],
           },
         },
@@ -19,32 +19,32 @@ describe('regExpToNFA()', () => {
 
   it('creates an NFA from a sequence', () => {
     expect(regExpToNFA(compileRegExp(/foo/))).toEqual({
-      kind: 'Start',
+      flags: START,
       edges: [
         {
           on: {kind: 'Atom', value: 'f'},
           to: {
-            kind: 'Internal',
+            flags: NONE,
             edges: [
               {
                 on: null,
                 to: {
-                  kind: 'Internal',
+                  flags: NONE,
                   edges: [
                     {
                       on: {kind: 'Atom', value: 'o'},
                       to: {
-                        kind: 'Internal',
+                        flags: NONE,
                         edges: [
                           {
                             on: null,
                             to: {
-                              kind: 'Internal',
+                              flags: NONE,
                               edges: [
                                 {
                                   on: {kind: 'Atom', value: 'o'},
                                   to: {
-                                    kind: 'Accept',
+                                    flags: ACCEPT,
                                     edges: [],
                                   },
                                 },
@@ -53,6 +53,78 @@ describe('regExpToNFA()', () => {
                           },
                         ],
                       },
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+      ],
+    });
+  });
+
+  it('creates an NFA from an alternate', () => {
+    const accept = {
+      flags: ACCEPT,
+      edges: [],
+    };
+    expect(regExpToNFA(compileRegExp(/a|b|c/))).toEqual({
+      flags: START,
+      edges: [
+        {
+          on: null,
+          to: {
+            flags: NONE,
+            edges: [
+              {
+                on: {kind: 'Atom', value: 'a'},
+                to: {
+                  flags: NONE,
+                  edges: [
+                    {
+                      on: null,
+                      to: accept,
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+        {
+          on: null,
+          to: {
+            flags: NONE,
+            edges: [
+              {
+                on: {kind: 'Atom', value: 'b'},
+                to: {
+                  flags: NONE,
+                  edges: [
+                    {
+                      on: null,
+                      to: accept,
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+        {
+          on: null,
+          to: {
+            flags: NONE,
+            edges: [
+              {
+                on: {kind: 'Atom', value: 'c'},
+                to: {
+                  flags: NONE,
+                  edges: [
+                    {
+                      on: null,
+                      to: accept,
                     },
                   ],
                 },

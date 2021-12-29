@@ -3,27 +3,58 @@ import type {Atom, Node, Range} from './RegExp/RegExpParser';
 // Episilon transitions are represented with `null`.
 type Transition = Atom | Range | null;
 
+export const NONE = 0;
+export const START = 1;
+export const ACCEPT = 2;
+
+type Flags = 0 | 1 | 2 | 3;
+
 type NFA = {
   edges: Array<{
     on: Transition;
     to: NFA;
   }>;
-  kind: 'Accept' | 'Internal' | 'Start';
+  flags: Flags;
 };
 
 export default function regExpToNFA(node: Node): NFA {
-  if (node.kind === 'Atom') {
+  if (node.kind === 'Alternate') {
+    const children = node.children.map(regExpToNFA);
+    const accept: NFA = {
+      edges: [],
+      flags: ACCEPT,
+    };
+
+    // Return a new start node with epsilon transitions to start nodes of each child.
+    return {
+      edges: children.flatMap((child) => {
+        // All accept states get epsilon transitions to a new accept state.
+        acceptStates(child).forEach((state) => {
+          state.flags = clearFlag(state.flags, ACCEPT);
+          state.edges.push({on: null, to: accept});
+        });
+        return startStates(child).map((start) => {
+          start.flags = clearFlag(start.flags, START);
+          return {
+            on: null,
+            to: start,
+          };
+        });
+      }),
+      flags: START,
+    };
+  } else if (node.kind === 'Atom') {
     return {
       edges: [
         {
           on: node,
           to: {
             edges: [],
-            kind: 'Accept',
+            flags: ACCEPT,
           },
         },
       ],
-      kind: 'Start',
+      flags: START,
     };
   } else if (node.kind === 'Sequence') {
     // For each child, take every accept state and turn it into a non-final
@@ -32,9 +63,9 @@ export default function regExpToNFA(node: Node): NFA {
     for (let i = children.length - 2; i >= 0; i--) {
       const child = children[i];
       const next = children[i + 1];
-      next.kind = 'Internal';
+      next.flags = clearFlag(next.flags, START);
       acceptStates(child).forEach((state) => {
-        state.kind = 'Internal';
+        state.flags = clearFlag(state.flags, ACCEPT);
         state.edges.push({on: null, to: next});
       });
     }
@@ -43,21 +74,47 @@ export default function regExpToNFA(node: Node): NFA {
 }
 
 function acceptStates(nfa: NFA): Array<NFA> {
-  const seen = new Set<NFA>();
   const found: Array<NFA> = [];
-
-  function visit(node: NFA) {
-    seen.add(node);
-    if (node.kind === 'Accept') {
+  visit(nfa, (node) => {
+    if (testFlag(node.flags, ACCEPT)) {
       found.push(node);
     }
-    for (const {to} of node.edges) {
-      if (!seen.has(to)) {
-        visit(to);
-      }
-    }
-    return found;
-  }
+  });
+  return found;
+}
 
-  return visit(nfa);
+function clearFlag(flags: Flags, clear: Flags): Flags {
+  return (flags ^ clear) as Flags;
+}
+
+function setFlag(flags: Flags, set: Flags): Flags {
+  return (flags | set) as Flags;
+}
+
+function startStates(nfa: NFA): Array<NFA> {
+  const found: Array<NFA> = [];
+  visit(nfa, (node) => {
+    if (testFlag(node.flags, START)) {
+      found.push(node);
+    }
+  });
+  return found;
+}
+
+function testFlag(flags: Flags, test: Flags): boolean {
+  return !!(flags & test);
+}
+
+function visit(
+  node: NFA,
+  callback: (node: NFA) => void,
+  seen: Set<NFA> = new Set<NFA>(),
+) {
+  seen.add(node);
+  callback(node);
+  for (const {to} of node.edges) {
+    if (!seen.has(to)) {
+      visit(to, callback, seen);
+    }
+  }
 }
