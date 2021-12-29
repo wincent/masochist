@@ -7,14 +7,16 @@ export const NONE = 0;
 export const START = 1;
 export const ACCEPT = 2;
 
+type Edge = {
+  on: Transition;
+  to: NFA;
+};
+
 export type Flags = 0 | 1 | 2 | 3;
 
 export type NFA = {
   id: number;
-  edges: Array<{
-    on: Transition;
-    to: NFA;
-  }>;
+  edges: Array<Edge>;
   flags: Flags;
 };
 
@@ -39,10 +41,7 @@ export default function regExpToNFA(
       edges: children.flatMap((child) => {
         return startStates(child).map((start) => {
           start.flags = clearFlag(start.flags, START);
-          return {
-            on: null,
-            to: start,
-          };
+          return epsilonTo(start);
         });
       }),
       flags: START,
@@ -75,10 +74,7 @@ export default function regExpToNFA(
         id: genId(),
         edges: startStates(child).map((start) => {
           start.flags = clearFlag(start.flags, START);
-          return {
-            on: null,
-            to: start,
-          };
+          return epsilonTo(start);
         }),
         flags: (START | ACCEPT) as Flags,
       };
@@ -88,15 +84,12 @@ export default function regExpToNFA(
         id: genId(),
         edges: startStates(child).map((start) => {
           start.flags = clearFlag(start.flags, START);
-          return {
-            on: null,
-            to: start,
-          };
+          return epsilonTo(start);
         }),
         flags: (START | ACCEPT) as Flags,
       };
       acceptStates(child).forEach((child) => {
-        child.edges.push({on: null, to: start});
+        child.edges.push(epsilonTo(start));
       });
       return start;
     } else if (node.minimum === 1 && node.maximum === Infinity) {
@@ -104,7 +97,7 @@ export default function regExpToNFA(
       acceptStates(child).forEach((accept) => {
         startStates(child).forEach((start) => {
           // TODO avoid pushing duplicate edges here
-          accept.edges.push({on: null, to: start});
+          accept.edges.push(epsilonTo(start));
         });
       });
       return child;
@@ -127,7 +120,7 @@ export default function regExpToNFA(
         next.flags = clearFlag(next.flags, START);
         acceptStates(child).forEach((state) => {
           state.flags = clearFlag(state.flags, ACCEPT);
-          state.edges.push({on: null, to: next});
+          state.edges.push(epsilonTo(next));
         });
       }
 
@@ -138,7 +131,7 @@ export default function regExpToNFA(
         const next = children[i + 1];
         next.flags = clearFlag(next.flags, START);
         acceptStates(child).forEach((state) => {
-          state.edges.push({on: null, to: next});
+          state.edges.push(epsilonTo(next));
         });
       }
 
@@ -156,7 +149,7 @@ export default function regExpToNFA(
       next.flags = clearFlag(next.flags, START);
       acceptStates(child).forEach((state) => {
         state.flags = clearFlag(state.flags, ACCEPT);
-        state.edges.push({on: null, to: next});
+        state.edges.push(epsilonTo(next));
       });
     }
     return children[0];
@@ -182,6 +175,13 @@ function clearFlag(flags: Flags, clear: Flags): Flags {
 function defaultGenId() {
   let id = 0;
   return () => id++;
+}
+
+function epsilonTo(to: NFA): Edge {
+  return {
+    on: null,
+    to,
+  };
 }
 
 function startStates(nfa: NFA): Array<NFA> {
