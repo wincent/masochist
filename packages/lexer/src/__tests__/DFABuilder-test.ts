@@ -23,4 +23,24 @@ describe('DFABuilder()', () => {
       [[], [], [], []],
     ]);
   });
+
+  it('builds a DFA from an alternate', () => {
+    return;
+    const ast = compileRegExp(/a|b|c/);
+    const builder = new DFABuilder(ast);
+    const table = builder.build();
+    expect(table).toEqual([
+      [
+        [],
+        [
+          {kind: 'Atom', value: 'a'},
+          {kind: 'Atom', value: 'b'},
+          {kind: 'Atom', value: 'c'},
+        ],
+      ],
+      [[], []],
+    ]);
+  });
+
+  // TODO: show that /foo|foo/ gets deduplicated
 });
