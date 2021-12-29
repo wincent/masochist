@@ -19,6 +19,23 @@ describe('regExpToNFA()', () => {
     });
   });
 
+  it('creates an NFA from an "anything" dot', () => {
+    expect(regExpToNFA(compileRegExp(/./))).toEqual({
+      id: 0,
+      flags: START,
+      edges: [
+        {
+          on: {kind: 'Anything'},
+          to: {
+            id: 1,
+            flags: ACCEPT,
+            edges: [],
+          },
+        },
+      ],
+    });
+  });
+
   it('creates an NFA from a sequence', () => {
     expect(regExpToNFA(compileRegExp(/foo/))).toEqual({
       id: 0,
@@ -145,6 +162,67 @@ describe('regExpToNFA()', () => {
                       on: null,
                       to: {
                         id: 6,
+                        flags: ACCEPT,
+                        edges: [],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+      ],
+    });
+  });
+
+  it('creates an NFA from a character class', () => {
+    expect(regExpToNFA(compileRegExp(/[a-z0]/))).toEqual({
+      id: 5,
+      flags: START,
+      edges: [
+        {
+          on: null,
+          to: {
+            id: 0,
+            flags: NONE,
+            edges: [
+              {
+                on: {kind: 'Atom', value: '0'},
+                to: {
+                  id: 1,
+                  flags: NONE,
+                  edges: [
+                    {
+                      on: null,
+                      to: {
+                        id: 4,
+                        flags: ACCEPT,
+                        edges: [],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+        {
+          on: null,
+          to: {
+            id: 2,
+            flags: NONE,
+            edges: [
+              {
+                on: {kind: 'Range', from: 'a', to: 'z'},
+                to: {
+                  id: 3,
+                  flags: NONE,
+                  edges: [
+                    {
+                      on: null,
+                      to: {
+                        id: 4,
                         flags: ACCEPT,
                         edges: [],
                       },

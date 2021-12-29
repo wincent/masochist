@@ -1,7 +1,7 @@
-import type {Atom, Node, Range} from './RegExp/RegExpParser';
+import type {Anything, Atom, Node, Range} from './RegExp/RegExpParser';
 
 // Episilon transitions are represented with `null`.
-type Transition = Atom | Range | null;
+type Transition = Anything | Atom | Range | null;
 
 export const NONE = 0;
 export const START = 1;
@@ -22,7 +22,13 @@ export default function regExpToNFA(
   node: Node,
   genId: () => number = defaultGenId(),
 ): NFA {
-  if (node.kind === 'Alternate') {
+  if (node.kind === 'Alternate' || node.kind === 'CharacterClass') {
+    // CharacterClass is just syntax sugar for an Alternate, so we handle them
+    // together.
+    if (node.kind === 'CharacterClass' && node.negated) {
+      throw new Error('regExpToNFA(): Cannot process negated CharacterClass');
+    }
+
     const children = node.children.map((child) => {
       return regExpToNFA(child, genId);
     });
@@ -51,7 +57,11 @@ export default function regExpToNFA(
       }),
       flags: START,
     };
-  } else if (node.kind === 'Atom') {
+  } else if (
+    node.kind === 'Anything' ||
+    node.kind === 'Atom' ||
+    node.kind === 'Range'
+  ) {
     return {
       id: genId(),
       edges: [
