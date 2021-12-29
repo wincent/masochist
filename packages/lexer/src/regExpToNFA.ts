@@ -10,6 +10,7 @@ export const ACCEPT = 2;
 type Flags = 0 | 1 | 2 | 3;
 
 type NFA = {
+  id: number;
   edges: Array<{
     on: Transition;
     to: NFA;
@@ -17,16 +18,23 @@ type NFA = {
   flags: Flags;
 };
 
-export default function regExpToNFA(node: Node): NFA {
+export default function regExpToNFA(
+  node: Node,
+  genId: () => number = defaultGenId(),
+): NFA {
   if (node.kind === 'Alternate') {
-    const children = node.children.map(regExpToNFA);
+    const children = node.children.map((child) => {
+      return regExpToNFA(child, genId);
+    });
     const accept: NFA = {
+      id: genId(),
       edges: [],
       flags: ACCEPT,
     };
 
     // Return a new start node with epsilon transitions to start nodes of each child.
     return {
+      id: genId(),
       edges: children.flatMap((child) => {
         // All accept states get epsilon transitions to a new accept state.
         acceptStates(child).forEach((state) => {
@@ -45,10 +53,12 @@ export default function regExpToNFA(node: Node): NFA {
     };
   } else if (node.kind === 'Atom') {
     return {
+      id: genId(),
       edges: [
         {
           on: node,
           to: {
+            id: genId(),
             edges: [],
             flags: ACCEPT,
           },
@@ -59,7 +69,9 @@ export default function regExpToNFA(node: Node): NFA {
   } else if (node.kind === 'Sequence') {
     // For each child, take every accept state and turn it into a non-final
     // state with an epsilon transition to the start state of the next child.
-    const children = node.children.map(regExpToNFA);
+    const children = node.children.map((child) => {
+      return regExpToNFA(child, genId);
+    });
     for (let i = children.length - 2; i >= 0; i--) {
       const child = children[i];
       const next = children[i + 1];
@@ -85,6 +97,11 @@ function acceptStates(nfa: NFA): Array<NFA> {
 
 function clearFlag(flags: Flags, clear: Flags): Flags {
   return (flags ^ clear) as Flags;
+}
+
+function defaultGenId() {
+  let id = 0;
+  return () => id++;
 }
 
 function setFlag(flags: Flags, set: Flags): Flags {
