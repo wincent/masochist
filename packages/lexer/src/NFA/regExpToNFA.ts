@@ -1,32 +1,10 @@
+import {ACCEPT, START} from './NFA';
+import startStates from './startStates';
+import testFlag from './testFlag';
 import visitNFA from './visitNFA';
 
-import type {Anything, Atom, Node, Range} from './RegExp/RegExpParser';
-
-// Epsilon transitions are represented with `null`.
-type Transition = Anything | Atom | Range | null;
-
-export const NONE = 0;
-export const START = 1;
-export const ACCEPT = 2;
-
-const START_OR_ACCEPT = START | ACCEPT;
-
-type Edge = {
-  on: Transition;
-  to: NFA;
-};
-
-export type Flags =
-  | typeof ACCEPT
-  | typeof NONE
-  | typeof START
-  | typeof START_OR_ACCEPT;
-
-export type NFA = {
-  id: number;
-  edges: Array<Edge>;
-  flags: Flags;
-};
+import type {Edge, Flags, NFA} from './NFA';
+import type {Node} from '../RegExp/RegExpParser';
 
 export default function regExpToNFA(
   node: Node,
@@ -224,18 +202,4 @@ export function equalEdges(a: Edge, b: Edge): boolean {
     return true;
   }
   return false;
-}
-
-function startStates(nfa: NFA): Array<NFA> {
-  const found: Array<NFA> = [];
-  visitNFA(nfa, (node) => {
-    if (testFlag(node.flags, START)) {
-      found.push(node);
-    }
-  });
-  return found;
-}
-
-export function testFlag(flags: Flags, test: Flags): boolean {
-  return !!(flags & test);
 }

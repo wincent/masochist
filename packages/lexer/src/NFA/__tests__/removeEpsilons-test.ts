@@ -1,9 +1,10 @@
-import compileRegExp from '../compileRegExp';
-import regExpToNFA, {ACCEPT, NONE, START} from '../regExpToNFA';
+import compileRegExp from '../../compileRegExp';
+import {ACCEPT, NONE, START} from '../NFA';
+import regExpToNFA from '../regExpToNFA';
 import removeEpsilons from '../removeEpsilons';
 import visitNFA from '../visitNFA';
 
-import type {Flags, NFA} from '../regExpToNFA';
+import type {Flags, NFA} from '../NFA';
 
 describe('removeEpsilons()', () => {
   it('does nothing to an NFA created from an atom', () => {

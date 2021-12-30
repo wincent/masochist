@@ -1,4 +1,4 @@
-import type {NFA} from './regExpToNFA';
+import type {NFA} from './NFA';
 
 export default function visitNFA(
   node: NFA,

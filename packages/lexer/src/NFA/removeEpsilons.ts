@@ -1,7 +1,9 @@
-import {ACCEPT, START, equalEdges, testFlag} from './regExpToNFA';
+import {ACCEPT, START} from './NFA';
+import {equalEdges} from './regExpToNFA';
+import testFlag from './testFlag';
 import visitNFA from './visitNFA';
 
-import type {Flags, NFA} from './regExpToNFA';
+import type {Flags, NFA} from './NFA';
 
 /**
  * Mutates an NFA to remove all epsilon transitions.

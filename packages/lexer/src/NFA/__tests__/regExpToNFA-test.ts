@@ -1,7 +1,8 @@
-import compileRegExp from '../compileRegExp';
-import regExpToNFA, {ACCEPT, NONE, START} from '../regExpToNFA';
+import compileRegExp from '../../compileRegExp';
+import {ACCEPT, NONE, START} from '../NFA';
+import regExpToNFA from '../regExpToNFA';
 
-import type {Flags, NFA} from '../regExpToNFA';
+import type {Flags, NFA} from '../NFA';
 
 describe('regExpToNFA()', () => {
   it('creates an NFA from an atom', () => {
