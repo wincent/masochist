@@ -1,6 +1,7 @@
 import compileRegExp from '../compileRegExp';
 import regExpToNFA, {ACCEPT, NONE, START} from '../regExpToNFA';
 import removeEpsilons from '../removeEpsilons';
+import visitNFA from '../visitNFA';
 
 import type {Flags, NFA} from '../regExpToNFA';
 
@@ -281,6 +282,97 @@ describe('removeEpsilons()', () => {
           },
         },
       ],
+    });
+  });
+
+  describe('removing epsilons from "real world" regular expressions', () => {
+    function countEpsilons(nfa: NFA): number {
+      let count = 0;
+
+      visitNFA(nfa, ({edges}) => {
+        edges.forEach(({on}) => {
+          if (on === null) {
+            count++;
+          }
+        });
+      });
+
+      return count;
+    }
+
+    // RegExps taken from:
+    //
+    //    https://github.com/wincent/masochist/blob/d224383b088a1f44/packages/compiler/src/lex.ts
+    //
+    // With only modification being removing non-capturing group syntax
+    // (`(?:...)`).
+    //
+    it('ensures no epsilons in ESCAPED_CHARACTER', () => {
+      expect(
+        countEpsilons(
+          removeEpsilons(regExpToNFA(compileRegExp(/\\["\\\/bfnrt]/))),
+        ),
+      ).toBe(0);
+    });
+
+    it('ensures no epsilons in ESCAPED_UNICODE', () => {
+      expect(
+        countEpsilons(
+          removeEpsilons(regExpToNFA(compileRegExp(/\\u[0-9A-Fa-f]{4}/))),
+        ),
+      ).toBe(0);
+    });
+
+    it('ensures no epsilons in EXPONENT_PART', () => {
+      expect(
+        countEpsilons(
+          removeEpsilons(regExpToNFA(compileRegExp(/[eE][+-]?\d+/))),
+        ),
+      ).toBe(0);
+    });
+
+    it('ensures no epsilons in FRACTIONAL_PART', () => {
+      expect(
+        countEpsilons(removeEpsilons(regExpToNFA(compileRegExp(/\.\d+/)))),
+      ).toBe(0);
+    });
+
+    it('ensures no epsilons in INTEGER_PART', () => {
+      expect(
+        countEpsilons(
+          removeEpsilons(regExpToNFA(compileRegExp(/-?(0|[1-9]\d*)/))),
+        ),
+      ).toBe(0);
+    });
+
+    it('ensures no epsilons in LINE_TERMINATOR', () => {
+      expect(
+        countEpsilons(removeEpsilons(regExpToNFA(compileRegExp(/\n|\r\n|\r/)))),
+      ).toBe(0);
+    });
+
+    it('ensures no epsilons in SOURCE_CHARACTER', () => {
+      expect(
+        countEpsilons(
+          removeEpsilons(
+            regExpToNFA(compileRegExp(/[\u0009\u000a\u000d\u0020-\uffff]/)),
+          ),
+        ),
+      ).toBe(0);
+    });
+
+    it('ensures no epsilons in NAME', () => {
+      expect(
+        countEpsilons(
+          removeEpsilons(regExpToNFA(compileRegExp(/[_A-Za-z][_0-9A-Za-z]*/))),
+        ),
+      ).toBe(0);
+    });
+
+    it('ensures no epsilons in WHITESPACE', () => {
+      expect(
+        countEpsilons(removeEpsilons(regExpToNFA(compileRegExp(/[\t ]+/)))),
+      ).toBe(0);
     });
   });
 });
