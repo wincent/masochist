@@ -192,6 +192,34 @@ function epsilonTo(to: NFA): Edge {
   };
 }
 
+/**
+ * Edges are considered equal if they point to the same `to` target node based
+ * on an equivalent condition.
+ */
+export function equalEdges(a: Edge, b: Edge): boolean {
+  if (a.to !== b.to) {
+    return false;
+  }
+  // BUG: so far, we don't have any tests that actually let us reach this far
+  // (either we have a bug, or our tests are incomplete)
+  if (a.on === b.on) {
+    return true;
+  }
+  if (a.on === null || b.on === null) {
+    return false;
+  }
+  if (a.on.kind === 'Atom' && b.on.kind === 'Atom') {
+    return a.on.value === b.on.value;
+  }
+  if (a.on.kind === 'Range' && b.on.kind === 'Range') {
+    return a.on.from === b.on.from && a.on.to === b.on.to;
+  }
+  if (a.on.kind === 'Anything' && b.on.kind === 'Anything') {
+    return true;
+  }
+  return false;
+}
+
 function startStates(nfa: NFA): Array<NFA> {
   const found: Array<NFA> = [];
   visitNFA(nfa, (node) => {

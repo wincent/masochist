@@ -149,4 +149,59 @@ describe('removeEpsilons()', () => {
       ],
     });
   });
+
+  it('removes epsilons from an NFA created with a "*" quantifier', () => {
+    // Initial NFA:
+    //
+    //    (2) ----- [null] -----> (0) ----- [a] -----> (1) -----> [null] -----> (2)
+    //    START/                  NONE                 ACCEPT                   (circular)
+    //    ACCEPT
+    //
+    // will transform into:
+    //
+    //    (2) ----- [a] -----> (1) ----- [a] -----> (1)
+    //    START/               ACCEPT               (circular)
+    //    ACCEPT
+    const start: NFA = {
+      id: 2,
+      flags: (START | ACCEPT) as Flags,
+      edges: [
+        {
+          on: {kind: 'Atom', value: 'a'},
+          to: {
+            id: 1,
+            flags: ACCEPT,
+            edges: [],
+          },
+        },
+      ],
+    };
+    start.edges[0].to.edges.push({
+      on: {kind: 'Atom', value: 'a'},
+      to: start.edges[0].to,
+    });
+    expect(removeEpsilons(regExpToNFA(compileRegExp(/a*/)))).toEqual(start);
+  });
+
+  it('removes epsilons from an NFA created with a "+" quantifier', () => {
+    const start: NFA = {
+      id: 0,
+      flags: START,
+      edges: [
+        {
+          on: {kind: 'Atom', value: 'a'},
+          to: {
+            id: 1,
+            flags: ACCEPT,
+            edges: [],
+          },
+        },
+      ],
+    };
+    start.edges[0].to.edges.push({
+      on: {kind: 'Atom', value: 'a'},
+      to: start.edges[0].to,
+    });
+    expect(removeEpsilons(regExpToNFA(compileRegExp(/a+/)))).toEqual(start);
+  });
 });
