@@ -285,28 +285,14 @@ describe('removeEpsilons()', () => {
     });
   });
 
+  // RegExps taken from:
+  //
+  //    https://github.com/wincent/masochist/blob/d224383b088a1f44/packages/compiler/src/lex.ts
+  //
+  // With only modification being removing non-capturing group syntax
+  // (`(?:...)`).
+  //
   describe('removing epsilons from "real world" regular expressions', () => {
-    function countEpsilons(nfa: NFA): number {
-      let count = 0;
-
-      visitNFA(nfa, ({edges}) => {
-        edges.forEach(({on}) => {
-          if (on === null) {
-            count++;
-          }
-        });
-      });
-
-      return count;
-    }
-
-    // RegExps taken from:
-    //
-    //    https://github.com/wincent/masochist/blob/d224383b088a1f44/packages/compiler/src/lex.ts
-    //
-    // With only modification being removing non-capturing group syntax
-    // (`(?:...)`).
-    //
     it('ensures no epsilons in ESCAPED_CHARACTER', () => {
       expect(
         countEpsilons(
@@ -376,3 +362,62 @@ describe('removeEpsilons()', () => {
     });
   });
 });
+
+function countEpsilons(nfa: NFA): number {
+  let count = 0;
+
+  visitNFA(nfa, ({edges}) => {
+    edges.forEach(({on}) => {
+      if (on === null) {
+        count++;
+      }
+    });
+  });
+
+  return count;
+}
+
+/**
+ * Create a table-based printable form of an NFA, for debugging purposes.
+ */
+function stringify(nfa: NFA): string {
+  const lines: Array<Array<unknown>> = [
+    ['id', 'START?', 'ACCEPT?', 'to', 'on'],
+  ];
+
+  visitNFA(nfa, (node) => {
+    if (!node.edges.length) {
+      lines.push([
+        node.id,
+        node.flags & START ? 'Y' : 'N',
+        node.flags & ACCEPT ? 'Y' : 'N',
+        '-',
+        '-',
+      ]);
+    } else {
+      node.edges.forEach((edge) => {
+        lines.push([
+          node.id,
+          node.flags & START ? 'Y' : 'N',
+          node.flags & ACCEPT ? 'Y' : 'N',
+          edge.to.id,
+          edge.on,
+        ]);
+      });
+    }
+  });
+
+  return lines
+    .map((entries: Array<unknown>) => {
+      return entries
+        .map((entry) => {
+          try {
+            return JSON.stringify(entry).padEnd(12);
+          } catch {
+            return '[error]'.padEnd(12);
+          }
+        })
+        .join('');
+    })
+    .join('\n');
+}

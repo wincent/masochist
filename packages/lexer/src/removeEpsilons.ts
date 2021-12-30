@@ -21,11 +21,15 @@ export default function removeEpsilons(nfa: NFA): NFA {
         // Remove epsilon transition.
         edges.splice(i, 1);
 
-        // Copy edges from targets to source.
+        // Copy non-epsilon edges from targets to source.
         source.edges.push(
           ...targets.flatMap((target) => {
             return target.edges
               .filter((targetEdge) => {
+                if (targetEdge.on === null) {
+                  return false;
+                }
+
                 // Remove dupes (highly inefficient).
                 return !source.edges.some((sourceEdge) => {
                   // BUG:(?) we always return false
