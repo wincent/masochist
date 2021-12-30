@@ -204,4 +204,83 @@ describe('removeEpsilons()', () => {
     });
     expect(removeEpsilons(regExpToNFA(compileRegExp(/a+/)))).toEqual(start);
   });
+
+  it('removes epsilons from an NFA created with a "{3}" quantifier', () => {
+    expect(removeEpsilons(regExpToNFA(compileRegExp(/a{3}/)))).toEqual({
+      id: 0,
+      flags: START,
+      edges: [
+        {
+          on: {kind: 'Atom', value: 'a'},
+          to: {
+            id: 1,
+            flags: NONE,
+            edges: [
+              {
+                on: {kind: 'Atom', value: 'a'},
+                to: {
+                  id: 3,
+                  flags: NONE,
+                  edges: [
+                    {
+                      on: {kind: 'Atom', value: 'a'},
+                      to: {
+                        id: 5,
+                        flags: ACCEPT,
+                        edges: [],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+      ],
+    });
+  });
+
+  it('removes epsilons from an NFA created with a "{2,4}" quantifier', () => {
+    expect(removeEpsilons(regExpToNFA(compileRegExp(/a{2,4}/)))).toEqual({
+      id: 0,
+      flags: START,
+      edges: [
+        {
+          on: {kind: 'Atom', value: 'a'},
+          to: {
+            id: 1,
+            flags: NONE,
+            edges: [
+              {
+                on: {kind: 'Atom', value: 'a'},
+                to: {
+                  id: 3,
+                  flags: ACCEPT,
+                  edges: [
+                    {
+                      on: {kind: 'Atom', value: 'a'},
+                      to: {
+                        id: 5,
+                        flags: ACCEPT,
+                        edges: [
+                          {
+                            on: {kind: 'Atom', value: 'a'},
+                            to: {
+                              id: 7,
+                              flags: ACCEPT,
+                              edges: [],
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        },
+      ],
+    });
+  });
 });
