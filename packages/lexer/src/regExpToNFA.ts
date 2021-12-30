@@ -1,3 +1,5 @@
+import visitNFA from './visitNFA';
+
 import type {Anything, Atom, Node, Range} from './RegExp/RegExpParser';
 
 // Epsilon transitions are represented with `null`.
@@ -166,7 +168,7 @@ export default function regExpToNFA(
 
 function acceptStates(nfa: NFA): Array<NFA> {
   const found: Array<NFA> = [];
-  visit(nfa, (node) => {
+  visitNFA(nfa, (node) => {
     if (testFlag(node.flags, ACCEPT)) {
       found.push(node);
     }
@@ -192,7 +194,7 @@ function epsilonTo(to: NFA): Edge {
 
 function startStates(nfa: NFA): Array<NFA> {
   const found: Array<NFA> = [];
-  visit(nfa, (node) => {
+  visitNFA(nfa, (node) => {
     if (testFlag(node.flags, START)) {
       found.push(node);
     }
@@ -200,20 +202,6 @@ function startStates(nfa: NFA): Array<NFA> {
   return found;
 }
 
-function testFlag(flags: Flags, test: Flags): boolean {
+export function testFlag(flags: Flags, test: Flags): boolean {
   return !!(flags & test);
-}
-
-function visit(
-  node: NFA,
-  callback: (node: NFA) => void,
-  seen: Set<NFA> = new Set<NFA>(),
-) {
-  seen.add(node);
-  callback(node);
-  for (const {to} of node.edges) {
-    if (!seen.has(to)) {
-      visit(to, callback, seen);
-    }
-  }
 }
