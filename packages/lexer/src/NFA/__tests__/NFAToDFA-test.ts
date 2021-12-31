@@ -594,8 +594,7 @@ describe('NFAToDFA()', () => {
         flags: START,
         edges: [
           {
-            // BUG: wat? why u and f?
-            on: {kind: 'Atom', value: 'u'},
+            on: {kind: 'Range', from: ' ', to: '\uffff'},
             to: {
               id: 1,
               flags: ACCEPT,
@@ -603,7 +602,7 @@ describe('NFAToDFA()', () => {
             },
           },
           {
-            on: {kind: 'Atom', value: 'f'},
+            on: {kind: 'Atom', value: '\r'},
             to: {
               id: 2,
               flags: ACCEPT,
@@ -611,26 +610,9 @@ describe('NFAToDFA()', () => {
             },
           },
           {
-            // From: \u0020, to: \u005c. 🤔
-            on: {kind: 'Range', from: ' ', to: '\\'},
-            to: {
-              id: 3,
-              flags: ACCEPT,
-              edges: [],
-            },
-          },
-          {
-            on: {kind: 'Atom', value: '\r'},
-            to: {
-              id: 4,
-              flags: ACCEPT,
-              edges: [],
-            },
-          },
-          {
             on: {kind: 'Range', from: '\t', to: '\n'},
             to: {
-              id: 5,
+              id: 3,
               flags: ACCEPT,
               edges: [],
             },

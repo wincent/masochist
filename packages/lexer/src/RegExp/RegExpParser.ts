@@ -344,12 +344,21 @@ export default class RegExpParser {
           // For simplicity, we do the "dumb" inlining of the extra letters
           // here, and rely on a simplification pass to minimize the class.
           const {value: from} = previous;
-          const to = this.#scanner.expect(/./);
-          children.push({
-            kind: 'Range',
-            from,
-            to,
-          });
+          if (this.#scanner.peek('\\')) {
+            const atom = this.#parseEscape();
+            invariant(atom.kind === 'Atom');
+            children.push({
+              kind: 'Range',
+              from,
+              to: atom.value,
+            });
+          } else {
+            children.push({
+              kind: 'Range',
+              from,
+              to: this.#scanner.expect(/./),
+            });
+          }
         }
       } else if (this.#scanner.scan('.')) {
         // Special case: "." means literal "." inside a character class.

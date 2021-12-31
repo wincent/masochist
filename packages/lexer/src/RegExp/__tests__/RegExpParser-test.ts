@@ -775,15 +775,7 @@ describe('RegExpParser', () => {
             Object {
               "from": " ",
               "kind": "Range",
-              "to": "\\\\",
-            },
-            Object {
-              "kind": "Atom",
-              "value": "f",
-            },
-            Object {
-              "kind": "Atom",
-              "value": "u",
+              "to": "￿",
             },
           ],
           "kind": "CharacterClass",
@@ -875,6 +867,16 @@ describe('RegExpParser', () => {
           "minimum": 1,
         }
       `);
+    });
+  });
+
+  describe('regression tests', () => {
+    it('handles Unicode escapes inside ranges inside character classes', () => {
+      expect(new RegExpParser(/[\u0020-\uffff]/).parse()).toEqual({
+        kind: 'Range',
+        from: '\u0020',
+        to: '\uffff',
+      });
     });
   });
 });
