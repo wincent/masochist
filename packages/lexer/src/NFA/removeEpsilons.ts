@@ -1,5 +1,6 @@
 import {ACCEPT, START} from './NFA';
 import {equalEdges} from './regExpToNFA';
+import setFlag from './setFlag';
 import testFlag from './testFlag';
 import visitNFA from './visitNFA';
 
@@ -87,8 +88,4 @@ function epsilonClosure(nfa: NFA): Set<NFA> {
   visit(nfa);
 
   return reachable;
-}
-
-function setFlag(flags: Flags, set: Flags): Flags {
-  return (flags | set) as Flags;
 }

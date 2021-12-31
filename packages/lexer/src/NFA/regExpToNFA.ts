@@ -1,4 +1,6 @@
 import {ACCEPT, START} from './NFA';
+import acceptStates from './acceptStates';
+import equalTransitions from './equalTransitions';
 import startStates from './startStates';
 import testFlag from './testFlag';
 import visitNFA from './visitNFA';
@@ -150,16 +152,6 @@ export default function regExpToNFA(
   }
 }
 
-function acceptStates(nfa: NFA): Array<NFA> {
-  const found: Array<NFA> = [];
-  visitNFA(nfa, (node) => {
-    if (testFlag(node.flags, ACCEPT)) {
-      found.push(node);
-    }
-  });
-  return found;
-}
-
 function clearFlag(flags: Flags, clear: Flags): Flags {
   return (flags ^ clear) as Flags;
 }
@@ -186,20 +178,5 @@ export function equalEdges(a: Edge, b: Edge): boolean {
   }
   // BUG: so far, we don't have any tests that actually let us reach this far
   // (either we have a bug, or our tests are incomplete)
-  if (a.on === b.on) {
-    return true;
-  }
-  if (a.on === null || b.on === null) {
-    return false;
-  }
-  if (a.on.kind === 'Atom' && b.on.kind === 'Atom') {
-    return a.on.value === b.on.value;
-  }
-  if (a.on.kind === 'Range' && b.on.kind === 'Range') {
-    return a.on.from === b.on.from && a.on.to === b.on.to;
-  }
-  if (a.on.kind === 'Anything' && b.on.kind === 'Anything') {
-    return true;
-  }
-  return false;
+  return equalTransitions(a.on, b.on);
 }

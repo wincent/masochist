@@ -1,7 +1,7 @@
 import type {Anything, Atom, Range} from '../RegExp/RegExpParser';
 
 // Epsilon transitions are represented with `null`.
-type Transition = Anything | Atom | Range | null;
+export type Transition = Anything | Atom | Range | null;
 
 export type Edge = {
   on: Transition;
