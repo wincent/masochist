@@ -687,7 +687,7 @@ describe('NFAToDFA()', () => {
         {
           on: {kind: 'Atom', value: '\t'},
           to: start.edges[1].to,
-        }
+        },
       );
       start.edges[1].to.edges.push(
         {
@@ -697,7 +697,7 @@ describe('NFAToDFA()', () => {
         {
           on: {kind: 'Atom', value: '\t'},
           to: start.edges[1].to,
-        }
+        },
       );
       expect(
         NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/[\t ]+/)))),

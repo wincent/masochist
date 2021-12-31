@@ -1,3 +1,4 @@
+import {Queue} from '@masochist/common';
 import {ACCEPT, NONE, START} from './NFA';
 import acceptStates from './acceptStates';
 import setFlag from './setFlag';
@@ -41,11 +42,12 @@ export default function NFAToDFA(nfa: NFA): NFA {
 
   // TODO: if this works, use real queue (which I already have elsewhere in this
   // project, on the "main" branch)
-  const queue = [dfa];
+  const queue = new Queue<NFA>();
+  queue.enqueue(dfa);
 
-  while (queue.length) {
+  while (!queue.isEmpty()) {
     // Grab next DFA state to process.
-    const next = queue.shift()!;
+    const next = queue.dequeue()!;
 
     // Group edges by condition; using a string representation of each condition
     // seeing as JS doesn't have proper record types with referential
@@ -87,7 +89,7 @@ export default function NFAToDFA(nfa: NFA): NFA {
         };
         ids[node.id] = targets;
         reverseIds[key] = node;
-        queue.push(node);
+        queue.enqueue(node);
       }
       const node = reverseIds[key];
       next.edges.push({

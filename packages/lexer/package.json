@@ -2,7 +2,10 @@
   "name": "@masochist/lexer",
   "version": "0.0.1",
   "description": "Masochist lexer",
-  "main": "index.js",
+  "dependencies": {
+    "@masochist/common": "*"
+  },
+  "main": "lib/index.js",
   "author": "Greg Hurrell <greg@hurrell.net>",
   "license": "MIT",
   "private": false,
