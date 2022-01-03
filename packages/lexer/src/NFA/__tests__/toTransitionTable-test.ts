@@ -85,6 +85,8 @@ describe('toTransitionTable()', () => {
     });
 
     it('builds a DFA for EXPONENT_PART', () => {
+      // BUG: this looks wrong - investigate; seems we're not handling the "?"
+      // quantifier very well
       expect(getTable(/[eE][+-]?\d+/)).toEqual({
         acceptStates: new Set([5]),
         startStates: new Set([0]),

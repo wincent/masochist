@@ -613,11 +613,55 @@ describe('NFAToDFA()', () => {
     });
 
     it('builds a DFA for INTEGER_PART', () => {
-      // TODO: circular
-      return;
+      const start: NFA = {
+        id: 0,
+        flags: START,
+        edges: [
+          {
+            on: {kind: 'Atom', value: '0'},
+            to: {
+              id: 1,
+              flags: ACCEPT,
+              edges: [],
+            },
+          },
+          {
+            on: {kind: 'Range', from: '1', to: '9'},
+            to: {
+              id: 2,
+              flags: ACCEPT,
+              edges: [
+                {
+                  on: {kind: 'Range', from: '0', to: '9'},
+                  to: {
+                    id: 4,
+                    flags: ACCEPT,
+                    edges: [], // Circular references will go here.
+                  },
+                },
+              ],
+            },
+          },
+          {
+            on: {kind: 'Atom', value: '-'},
+            to: {
+              id: 3,
+              // TODO: confirm that the existence of this state isn't indicative of a bug...
+              // (I strongly suspect that it is)
+              // TODO: alternatievly, confirm that dead-state removal removes this kind of state
+              flags: NONE,
+              edges: [],
+            },
+          },
+        ],
+      };
+      start.edges[1].to.edges[0].to.edges.push({
+        on: {kind: 'Range', from: '0', to: '9'},
+        to: start.edges[1].to.edges[0].to,
+      });
       expect(
         NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/-?(0|[1-9]\d*)/)))),
-      ).toEqual(0);
+      ).toEqual(start);
     });
 
     it('builds a DFA for LINE_TERMINATOR', () => {
