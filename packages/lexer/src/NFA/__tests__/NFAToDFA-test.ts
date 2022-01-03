@@ -696,13 +696,146 @@ describe('NFAToDFA()', () => {
     });
 
     it('builds a DFA for NAME', () => {
-      // TODO: circular
-      return;
+      const start: NFA = {
+        id: 0,
+        flags: START,
+        edges: [
+          {
+            on: {kind: 'Range', from: 'a', to: 'z'},
+            to: {
+              id: 1,
+              flags: NONE,
+              edges: [],
+            },
+          },
+          {
+            on: {kind: 'Atom', value: '_'},
+            to: {
+              id: 2,
+              flags: NONE,
+              edges: [],
+            },
+          },
+          {
+            on: {kind: 'Range', from: 'A', to: 'Z'},
+            to: {
+              id: 3,
+              flags: ACCEPT,
+              edges: [
+                {
+                  on: {kind: 'Range', from: '0', to: '9'},
+                  to: {
+                    id: 4,
+                    flags: ACCEPT,
+                    edges: [], // Circular references will go here.
+                  },
+                },
+                {
+                  on: {kind: 'Range', from: 'A', to: 'Z'},
+                  to: {
+                    id: 5,
+                    flags: ACCEPT,
+                    edges: [], // Circular references will go here.
+                  },
+                },
+                {
+                  on: {kind: 'Atom', value: '_'},
+                  to: {
+                    id: 6,
+                    flags: ACCEPT,
+                    edges: [], // Circular references will go here.
+                  },
+                },
+                {
+                  on: {kind: 'Range', from: 'a', to: 'z'},
+                  to: {
+                    id: 7,
+                    flags: ACCEPT,
+                    edges: [], // Circular references will go here.
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      };
+      start.edges[2].to.edges[0].to.edges.push(
+        {
+          on: {kind: 'Range', from: '0', to: '9'},
+          to: start.edges[2].to.edges[0].to,
+        },
+        {
+          on: {kind: 'Range', from: 'A', to: 'Z'},
+          to: start.edges[2].to.edges[1].to,
+        },
+        {
+          on: {kind: 'Atom', value: '_'},
+          to: start.edges[2].to.edges[2].to,
+        },
+        {
+          on: {kind: 'Range', from: 'a', to: 'z'},
+          to: start.edges[2].to.edges[3].to,
+        },
+      );
+      start.edges[2].to.edges[1].to.edges.push(
+        {
+          on: {kind: 'Range', from: '0', to: '9'},
+          to: start.edges[2].to.edges[0].to,
+        },
+        {
+          on: {kind: 'Range', from: 'A', to: 'Z'},
+          to: start.edges[2].to.edges[1].to,
+        },
+        {
+          on: {kind: 'Atom', value: '_'},
+          to: start.edges[2].to.edges[2].to,
+        },
+        {
+          on: {kind: 'Range', from: 'a', to: 'z'},
+          to: start.edges[2].to.edges[3].to,
+        },
+      );
+      start.edges[2].to.edges[2].to.edges.push(
+        {
+          on: {kind: 'Range', from: '0', to: '9'},
+          to: start.edges[2].to.edges[0].to,
+        },
+        {
+          on: {kind: 'Range', from: 'A', to: 'Z'},
+          to: start.edges[2].to.edges[1].to,
+        },
+        {
+          on: {kind: 'Atom', value: '_'},
+          to: start.edges[2].to.edges[2].to,
+        },
+        {
+          on: {kind: 'Range', from: 'a', to: 'z'},
+          to: start.edges[2].to.edges[3].to,
+        },
+      );
+      start.edges[2].to.edges[3].to.edges.push(
+        {
+          on: {kind: 'Range', from: '0', to: '9'},
+          to: start.edges[2].to.edges[0].to,
+        },
+        {
+          on: {kind: 'Range', from: 'A', to: 'Z'},
+          to: start.edges[2].to.edges[1].to,
+        },
+        {
+          on: {kind: 'Atom', value: '_'},
+          to: start.edges[2].to.edges[2].to,
+        },
+        {
+          on: {kind: 'Range', from: 'a', to: 'z'},
+          to: start.edges[2].to.edges[3].to,
+        },
+      );
       expect(
         NFAToDFA(
           removeEpsilons(regExpToNFA(compileRegExp(/[_A-Za-z][_0-9A-Za-z]*/))),
         ),
-      ).toEqual(0);
+      ).toEqual(start);
     });
 
     it('builds a DFA for WHITESPACE', () => {
