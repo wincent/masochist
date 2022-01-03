@@ -41,8 +41,6 @@ export default function NFAToDFA(nfa: NFA): NFA {
   ids[dfa.id] = [start];
   reverseIds[start.id] = dfa;
 
-  // TODO: if this works, use real queue (which I already have elsewhere in this
-  // project, on the "main" branch)
   const queue = new Queue<NFA>();
   queue.enqueue(dfa);
 
