@@ -523,11 +523,60 @@ describe('NFAToDFA()', () => {
     });
 
     it('builds a DFA for EXPONENT_PART', () => {
-      // TODO: circular
-      return;
+      const start: NFA = {
+        id: 0,
+        flags: START,
+        edges: [
+          {
+            on: {kind: 'Atom', value: 'e'},
+            to: {
+              id: 1,
+              flags: NONE,
+              edges: [],
+            },
+          },
+          {
+            on: {kind: 'Atom', value: 'E'},
+            to: {
+              id: 2,
+              flags: NONE,
+              edges: [
+                {
+                  on: {kind: 'Atom', value: '+'},
+                  to: {
+                    id: 3,
+                    flags: NONE,
+                    edges: [],
+                  },
+                },
+                {
+                  on: {kind: 'Atom', value: '-'},
+                  to: {
+                    id: 4,
+                    flags: NONE,
+                    edges: [],
+                  },
+                },
+                {
+                  on: {kind: 'Range', from: '0', to: '9'},
+                  to: {
+                    id: 5,
+                    flags: ACCEPT,
+                    edges: [], // Circular reference will go here.
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      };
+      start.edges[1].to.edges[2].to.edges.push({
+        on: {kind: 'Range', from: '0', to: '9'},
+        to: start.edges[1].to.edges[2].to,
+      });
       expect(
         NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/[eE][+-]?\d+/)))),
-      ).toEqual(0);
+      ).toEqual(start);
     });
 
     it('builds a DFA for FRACTIONAL_PART', () => {
