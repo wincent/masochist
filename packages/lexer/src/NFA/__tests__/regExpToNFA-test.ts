@@ -388,39 +388,44 @@ describe('regExpToNFA()', () => {
   // suck to write...
 
   describe('regressions', () => {
-    it('creates an NFA with a "?" quantier in a sequence', () => {
-      expect(regExpToNFA(compileRegExp(/a?b/))).toEqual({
+    it('creates an NFA with a "?" quantifier in a sequence', () => {
+      const start: NFA = {
         id: 0,
         flags: START,
         edges: [
           {
             on: {kind: 'Atom', value: 'a'},
             to: {
-              // BUG: this is still a dead state
               id: 1,
-              flags: NONE,
-              edges: [],
-            },
-          },
-          {
-            on: null,
-            to: {
-              id: 2,
               flags: NONE,
               edges: [
                 {
-                  on: {kind: 'Atom', value: 'b'},
+                  on: null,
                   to: {
-                    id: 3,
-                    flags: ACCEPT,
-                    edges: [],
+                    id: 2,
+                    flags: NONE,
+                    edges: [
+                      {
+                        on: {kind: 'Atom', value: 'b'},
+                        to: {
+                          id: 3,
+                          flags: ACCEPT,
+                          edges: [],
+                        },
+                      },
+                    ],
                   },
                 },
               ],
             },
           },
         ],
+      };
+      start.edges.push({
+        on: null,
+        to: start.edges[0].to.edges[0].to,
       });
+      expect(regExpToNFA(compileRegExp(/a?b/))).toEqual(start);
     });
   });
 });

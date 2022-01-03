@@ -1,8 +1,8 @@
 import {Queue} from '@masochist/common';
 import {ACCEPT, NONE, START} from './NFA';
-import acceptStates from './acceptStates';
+import getAcceptStates from './getAcceptStates';
+import getStartStates from './getStartStates';
 import setFlag from './setFlag';
-import startStates from './startStates';
 import transitionToKey from './transitionToKey';
 import visitNFA from './visitNFA';
 
@@ -17,7 +17,7 @@ import type {Edge, NFA, Transition} from './NFA';
  * The returned DFA should be passed through `minimizeDFA()` before use.
  */
 export default function NFAToDFA(nfa: NFA): NFA {
-  const states = startStates(nfa);
+  const states = getStartStates(nfa);
   if (states.length !== 1) {
     throw new Error(
       `NFAToDFA(): Expected exactly 1 start state, got ${states.length}`,
@@ -103,7 +103,7 @@ export default function NFAToDFA(nfa: NFA): NFA {
 
   // Mark as ACCEPT any state in the DFA that corresponds to an ACCEPT state
   // from the original NFA.
-  const accepted = new Set(acceptStates(nfa));
+  const accepted = new Set(getAcceptStates(nfa));
   visitNFA(dfa, (node) => {
     if (ids[node.id].some((nfa) => accepted.has(nfa))) {
       node.flags = setFlag(node.flags, ACCEPT);

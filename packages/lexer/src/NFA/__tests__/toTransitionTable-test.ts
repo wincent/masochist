@@ -61,22 +61,46 @@ describe('toTransitionTable()', () => {
             ['Range:A-F', 7],
             ['Range:a-f', 8],
           ]),
-          /* 4 */ new Map(),
-          /* 5 */ new Map(),
+          /* 4 */ new Map([
+            ['Range:0-9', 6],
+            ['Range:A-F', 7],
+            ['Range:a-f', 8],
+          ]),
+          /* 5 */ new Map([
+            ['Range:0-9', 6],
+            ['Range:A-F', 7],
+            ['Range:a-f', 8],
+          ]),
           /* 6 */ new Map([
             ['Range:0-9', 9],
             ['Range:A-F', 10],
             ['Range:a-f', 11],
           ]),
-          /* 7 */ new Map(),
-          /* 8 */ new Map(),
+          /* 7 */ new Map([
+            ['Range:0-9', 9],
+            ['Range:A-F', 10],
+            ['Range:a-f', 11],
+          ]),
+          /* 8 */ new Map([
+            ['Range:0-9', 9],
+            ['Range:A-F', 10],
+            ['Range:a-f', 11],
+          ]),
           /* 9 */ new Map([
             ['Range:0-9', 12],
             ['Range:A-F', 13],
             ['Range:a-f', 14],
           ]),
-          /* 10 */ new Map(),
-          /* 11 */ new Map(),
+          /* 10 */ new Map([
+            ['Range:0-9', 12],
+            ['Range:A-F', 13],
+            ['Range:a-f', 14],
+          ]),
+          /* 11 */ new Map([
+            ['Range:0-9', 12],
+            ['Range:A-F', 13],
+            ['Range:a-f', 14],
+          ]),
           /* 12 */ new Map(),
           /* 13 */ new Map(),
           /* 14 */ new Map(),
@@ -85,8 +109,6 @@ describe('toTransitionTable()', () => {
     });
 
     it('builds a DFA for EXPONENT_PART', () => {
-      // BUG: this looks wrong - investigate; seems we're not handling the "?"
-      // quantifier very well
       expect(getTable(/[eE][+-]?\d+/)).toEqual({
         acceptStates: new Set([5]),
         startStates: new Set([0]),
@@ -95,14 +117,18 @@ describe('toTransitionTable()', () => {
             ['Atom:E', 2],
             ['Atom:e', 1],
           ]),
-          /* 1 */ new Map(),
+          /* 1 */ new Map([
+            ['Atom:+', 3],
+            ['Atom:-', 4],
+            ['Range:0-9', 5],
+          ]),
           /* 2 */ new Map([
             ['Atom:+', 3],
             ['Atom:-', 4],
             ['Range:0-9', 5],
           ]),
-          /* 3 */ new Map(),
-          /* 4 */ new Map(),
+          /* 3 */ new Map([['Range:0-9', 5]]),
+          /* 4 */ new Map([['Range:0-9', 5]]),
           /* 5 */ new Map([['Range:0-9', 5]]),
         ],
       });
@@ -130,7 +156,10 @@ describe('toTransitionTable()', () => {
             ['Atom:0', 2],
             ['Range:1-9', 3],
           ]),
-          /* 1 */ new Map(), // BUG: this is an inappropriately dead state
+          /* 1 */ new Map([
+            ['Atom:0', 2],
+            ['Range:1-9', 3],
+          ]),
           /* 2 */ new Map(),
           /* 3 */ new Map([['Range:0-9', 4]]),
           /* 4 */ new Map([['Range:0-9', 4]]),
@@ -173,7 +202,7 @@ describe('toTransitionTable()', () => {
 
     it('builds a DFA for NAME', () => {
       expect(getTable(/[_A-Za-z][_0-9A-Za-z]*/)).toEqual({
-        acceptStates: new Set([3, 4, 5, 6, 7]),
+        acceptStates: new Set([1, 2, 3, 4, 5, 6, 7]),
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
@@ -181,8 +210,18 @@ describe('toTransitionTable()', () => {
             ['Range:A-Z', 3],
             ['Range:a-z', 1],
           ]),
-          /* 1 */ new Map(),
-          /* 2 */ new Map(),
+          /* 1 */ new Map([
+            ['Atom:_', 6],
+            ['Range:0-9', 4],
+            ['Range:A-Z', 5],
+            ['Range:a-z', 7],
+          ]),
+          /* 2 */ new Map([
+            ['Atom:_', 6],
+            ['Range:0-9', 4],
+            ['Range:A-Z', 5],
+            ['Range:a-z', 7],
+          ]),
           /* 3 */ new Map([
             ['Atom:_', 6],
             ['Range:0-9', 4],

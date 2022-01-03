@@ -1,9 +1,7 @@
 import {ACCEPT, START} from './NFA';
-import acceptStates from './acceptStates';
 import equalTransitions from './equalTransitions';
-import startStates from './startStates';
-import testFlag from './testFlag';
-import visitNFA from './visitNFA';
+import getAcceptStates from './getAcceptStates';
+import getStartStates from './getStartStates';
 
 import type {Edge, Flags, NFA} from './NFA';
 import type {Node} from '../RegExp/RegExpParser';
@@ -28,7 +26,7 @@ export default function regExpToNFA(
     return {
       id: genId(),
       edges: children.flatMap((child) => {
-        return startStates(child).map((start) => {
+        return getStartStates(child).map((start) => {
           start.flags = clearFlag(start.flags, START);
           return epsilonTo(start);
         });
@@ -59,7 +57,7 @@ export default function regExpToNFA(
 
     if (node.minimum === 0 && node.maximum === 1) {
       // "?" quantifier.
-      startStates(child).forEach((child) => {
+      getStartStates(child).forEach((child) => {
         child.flags = setFlag(child.flags, ACCEPT);
       });
       return child;
@@ -67,20 +65,21 @@ export default function regExpToNFA(
       // "*" quantifier (AKA Kleene star).
       const start = {
         id: genId(),
-        edges: startStates(child).map((start) => {
+        edges: getStartStates(child).map((start) => {
           start.flags = clearFlag(start.flags, START);
           return epsilonTo(start);
         }),
         flags: (START | ACCEPT) as Flags,
       };
-      acceptStates(child).forEach((child) => {
+      getAcceptStates(child).forEach((child) => {
         child.edges.push(epsilonTo(start));
       });
       return start;
     } else if (node.minimum === 1 && node.maximum === Infinity) {
       // "+" quantifier.
-      acceptStates(child).forEach((accept) => {
-        startStates(child).forEach((start) => {
+      const startStates = getStartStates(child);
+      getAcceptStates(child).forEach((accept) => {
+        startStates.forEach((start) => {
           // TODO avoid pushing duplicate edges here
           accept.edges.push(epsilonTo(start));
         });
@@ -102,9 +101,10 @@ export default function regExpToNFA(
       for (let i = 0; i < node.minimum - 1; i++) {
         const child = children[i];
         const next = children[i + 1];
-        acceptStates(child).forEach((state) => {
+        const startStates = getStartStates(next);
+        getAcceptStates(child).forEach((state) => {
           state.flags = clearFlag(state.flags, ACCEPT);
-          startStates(next).forEach((start) => {
+          startStates.forEach((start) => {
             start.flags = clearFlag(start.flags, START);
             state.edges.push(epsilonTo(start));
           });
@@ -116,8 +116,9 @@ export default function regExpToNFA(
       for (let i = node.minimum - 1; i < node.maximum - 1; i++) {
         const child = children[i];
         const next = children[i + 1];
-        acceptStates(child).forEach((state) => {
-          startStates(next).forEach((start) => {
+        const startStates = getStartStates(next);
+        getAcceptStates(child).forEach((state) => {
+          startStates.forEach((start) => {
             start.flags = clearFlag(start.flags, START);
             state.edges.push(epsilonTo(start));
           });
@@ -135,11 +136,14 @@ export default function regExpToNFA(
     for (let i = children.length - 2; i >= 0; i--) {
       const child = children[i];
       const next = children[i + 1];
-      acceptStates(child).forEach((state) => {
-        state.flags = clearFlag(state.flags, ACCEPT);
-        startStates(next).forEach((start) => {
-          start.flags = clearFlag(start.flags, START);
-          state.edges.push(epsilonTo(start));
+      const startStates = getStartStates(next);
+      startStates.forEach((start) => {
+        start.flags = clearFlag(start.flags, START);
+      });
+      getAcceptStates(child).forEach((accept) => {
+        accept.flags = clearFlag(accept.flags, ACCEPT);
+        startStates.forEach((start) => {
+          accept.edges.push(epsilonTo(start));
         });
       });
     }
