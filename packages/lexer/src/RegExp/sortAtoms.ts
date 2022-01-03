@@ -5,10 +5,10 @@ import type {Atom} from './RegExpParser';
  */
 export default function sortAtoms(atoms: Array<Atom>): Array<Atom> {
   return atoms.sort((a, b) => {
-    if (a.value > b.value) {
-      return 1;
-    } else if (a.value < b.value) {
+    if (a.value < b.value) {
       return -1;
+    } else if (a.value > b.value) {
+      return 1;
     } else {
       return 0;
     }

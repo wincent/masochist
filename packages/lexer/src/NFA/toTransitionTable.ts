@@ -5,7 +5,7 @@ import visitNFA from './visitNFA';
 
 import type {NFA} from './NFA';
 
-type TransitionTable = {
+export type TransitionTable = {
   acceptStates: Set<number>;
   startStates: Set<number>;
   transitions: Array<Map<string, number>>;
