@@ -137,7 +137,7 @@ describe('removeEpsilons()', () => {
 
   it('removes epsilons from an NFA created with a "?" quantifier', () => {
     expect(removeEpsilons(regExpToNFA(compileRegExp(/a?/)))).toEqual({
-      id: 2,
+      id: 0,
       flags: START | ACCEPT,
       edges: [
         {

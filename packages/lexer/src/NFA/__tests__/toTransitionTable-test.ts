@@ -122,17 +122,17 @@ describe('toTransitionTable()', () => {
 
     it('builds a DFA for INTEGER_PART', () => {
       expect(getTable(/-?(0|[1-9]\d*)/)).toEqual({
-        acceptStates: new Set([1, 2, 4]),
+        acceptStates: new Set([2, 3, 4]),
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
-            ['Atom:-', 3],
-            ['Atom:0', 1],
-            ['Range:1-9', 2],
+            ['Atom:-', 1],
+            ['Atom:0', 2],
+            ['Range:1-9', 3],
           ]),
-          /* 1 */ new Map(),
-          /* 2 */ new Map([['Range:0-9', 4]]),
-          /* 3 */ new Map(),
+          /* 1 */ new Map(), // BUG: this is an inappropriately dead state
+          /* 2 */ new Map(),
+          /* 3 */ new Map([['Range:0-9', 4]]),
           /* 4 */ new Map([['Range:0-9', 4]]),
         ],
       });

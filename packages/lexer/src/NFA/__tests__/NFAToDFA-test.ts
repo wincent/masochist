@@ -618,9 +618,20 @@ describe('NFAToDFA()', () => {
         flags: START,
         edges: [
           {
-            on: {kind: 'Atom', value: '0'},
+            on: {kind: 'Atom', value: '-'},
             to: {
               id: 1,
+              // TODO: confirm that the existence of this state isn't indicative of a bug...
+              // (I strongly suspect that it is)
+              // TODO: alternatively, confirm that dead-state removal removes this kind of state
+              flags: NONE,
+              edges: [],
+            },
+          },
+          {
+            on: {kind: 'Atom', value: '0'},
+            to: {
+              id: 2,
               flags: ACCEPT,
               edges: [],
             },
@@ -628,7 +639,7 @@ describe('NFAToDFA()', () => {
           {
             on: {kind: 'Range', from: '1', to: '9'},
             to: {
-              id: 2,
+              id: 3,
               flags: ACCEPT,
               edges: [
                 {
@@ -642,22 +653,11 @@ describe('NFAToDFA()', () => {
               ],
             },
           },
-          {
-            on: {kind: 'Atom', value: '-'},
-            to: {
-              id: 3,
-              // TODO: confirm that the existence of this state isn't indicative of a bug...
-              // (I strongly suspect that it is)
-              // TODO: alternatievly, confirm that dead-state removal removes this kind of state
-              flags: NONE,
-              edges: [],
-            },
-          },
         ],
       };
-      start.edges[1].to.edges[0].to.edges.push({
+      start.edges[2].to.edges[0].to.edges.push({
         on: {kind: 'Range', from: '0', to: '9'},
-        to: start.edges[1].to.edges[0].to,
+        to: start.edges[2].to.edges[0].to,
       });
       expect(
         NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/-?(0|[1-9]\d*)/)))),

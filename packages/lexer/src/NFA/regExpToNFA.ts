@@ -7,6 +7,7 @@ import visitNFA from './visitNFA';
 
 import type {Edge, Flags, NFA} from './NFA';
 import type {Node} from '../RegExp/RegExpParser';
+import setFlag from './setFlag';
 
 export default function regExpToNFA(
   node: Node,
@@ -58,14 +59,10 @@ export default function regExpToNFA(
 
     if (node.minimum === 0 && node.maximum === 1) {
       // "?" quantifier.
-      return {
-        id: genId(),
-        edges: startStates(child).map((start) => {
-          start.flags = clearFlag(start.flags, START);
-          return epsilonTo(start);
-        }),
-        flags: (START | ACCEPT) as Flags,
-      };
+      startStates(child).forEach((child) => {
+        child.flags = setFlag(child.flags, ACCEPT);
+      });
+      return child;
     } else if (node.minimum === 0 && node.maximum === Infinity) {
       // "*" quantifier (AKA Kleene star).
       const start = {
@@ -131,7 +128,7 @@ export default function regExpToNFA(
     }
   } else if (node.kind === 'Sequence') {
     // For each child, take every accept state and turn it into a non-final
-    // state with an epsilon transition to the start state of the next child.
+    // state with an epsilon transition to the start states of the next child.
     const children = node.children.map((child) => {
       return regExpToNFA(child, genId);
     });
