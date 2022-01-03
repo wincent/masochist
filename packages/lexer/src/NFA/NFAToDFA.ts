@@ -3,6 +3,7 @@ import {ACCEPT, NONE, START} from './NFA';
 import acceptStates from './acceptStates';
 import setFlag from './setFlag';
 import startStates from './startStates';
+import transitionToKey from './transitionToKey';
 import visitNFA from './visitNFA';
 
 import type {Edge, NFA, Transition} from './NFA';
@@ -56,7 +57,10 @@ export default function NFAToDFA(nfa: NFA): NFA {
 
     ids[next.id].forEach((nfa) => {
       nfa.edges.forEach((edge) => {
-        const key = transitionToString(edge.on);
+        if (edge.on === null) {
+          throw new Error('NFAToDFA(): Unexpected epsilon transition');
+        }
+        const key = transitionToKey(edge.on);
         if (!conditions[key]) {
           conditions[key] = [];
         }
@@ -109,16 +113,4 @@ export default function NFAToDFA(nfa: NFA): NFA {
   });
 
   return dfa;
-}
-
-function transitionToString(transition: Transition): string {
-  if (transition === null) {
-    throw new Error('transitionToString(): Unexpected epsilon transition');
-  } else if (transition.kind === 'Anything') {
-    return 'Anything';
-  } else if (transition.kind === 'Atom') {
-    return `Atom:${transition.value}`;
-  } else {
-    return `Range:${transition.from}-${transition.to}`;
-  }
 }
