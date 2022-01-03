@@ -391,4 +391,53 @@ describe('regExpToNFA()', () => {
       ],
     });
   });
+
+  // TODO: some real-world examples here to flush out bugs (eg. INTEGER_PART)
+  // maybe not all of the examples though because these are probably going to
+  // suck to write...
+
+  describe('regressions', () => {
+    it('creates an NFA with a "?" quantier in a sequence', () => {
+      expect(regExpToNFA(compileRegExp(/a?b/))).toEqual({
+        id: 2,
+        flags: START,
+        edges: [
+          {
+            on: null,
+            to: {
+              id: 0,
+              flags: NONE,
+              edges: [
+                {
+                  on: {kind: 'Atom', value: 'a'},
+                  to: {
+                    id: 1,
+                    flags: NONE,
+                    edges: [],
+                  },
+                },
+              ],
+            },
+          },
+          {
+            on: null,
+            to: {
+              id: 3,
+              flags: NONE,
+              edges: [
+                {
+                  on: {kind: 'Atom', value: 'b'},
+                  to: {
+                    id: 4,
+                    flags: ACCEPT,
+                    edges: [],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      });
+    });
+  });
 });
