@@ -1,4 +1,5 @@
 import {ACCEPT, START} from './NFA';
+import clearFlag from './clearFlag';
 import equalTransitions from './equalTransitions';
 import getAcceptStates from './getAcceptStates';
 import getStartStates from './getStartStates';
@@ -151,10 +152,6 @@ export default function regExpToNFA(
   } else {
     throw new Error('regExpToNFA(): Unexpected `node.kind`');
   }
-}
-
-function clearFlag(flags: Flags, clear: Flags): Flags {
-  return (flags ^ clear) as Flags;
 }
 
 function defaultGenId() {

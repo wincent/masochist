@@ -1,7 +1,11 @@
+import {START} from './NFA';
 import NFAToDFA from './NFAToDFA';
+import clearFlag from './clearFlag';
 import fromTransitionTable from './fromTransitionTable';
 import removeDeadStates from './removeDeadStates';
+import removeEpsilons from './removeEpsilons';
 import removeUnreachableStates from './removeUnreachableStates';
+import getStartStates from './getStartStates';
 import toTransitionTable from './toTransitionTable';
 import transposeTable from './transposeTable';
 
@@ -31,6 +35,7 @@ export default function minimizeDFA(dfa: NFA): NFA {
   let table: TransitionTable;
   let transposed: TransitionTable;
   let nfa: NFA;
+  let start: NFA;
 
   // Reverse the DFA.
   dfa = removeUnreachableStates(dfa);
@@ -38,7 +43,15 @@ export default function minimizeDFA(dfa: NFA): NFA {
   table = toTransitionTable(dfa);
   transposed = transposeTable(table);
   nfa = fromTransitionTable(transposed);
-  dfa = NFAToDFA(nfa);
+  start = removeEpsilons({
+    id: transposed.transitions.length,
+    flags: START,
+    edges: getStartStates(nfa).map((state) => {
+      state.flags = clearFlag(state.flags, START);
+      return {on: null, to: state};
+    }),
+  });
+  dfa = NFAToDFA(start);
 
   // Un-reverse the reversed DFA.
   dfa = removeUnreachableStates(dfa);
@@ -46,6 +59,14 @@ export default function minimizeDFA(dfa: NFA): NFA {
   table = toTransitionTable(dfa);
   transposed = transposeTable(table);
   nfa = fromTransitionTable(transposed);
+  start = removeEpsilons({
+    id: transposed.transitions.length,
+    flags: START,
+    edges: getStartStates(nfa).map((state) => {
+      state.flags = clearFlag(state.flags, START);
+      return {on: null, to: state};
+    }),
+  });
   dfa = NFAToDFA(nfa);
 
   return dfa;
