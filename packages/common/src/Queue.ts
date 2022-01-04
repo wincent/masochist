@@ -8,10 +8,19 @@ export default class Queue<T> {
   #length: number;
   #tail: Item<T> | null;
 
-  constructor() {
+  /**
+   * Optionally takes an iterable of items with which to initially seed the queue.
+   */
+  constructor(items?: Iterable<T>) {
     this.#head = null;
     this.#tail = null;
     this.#length = 0;
+
+    if (items) {
+      for (const item of items) {
+        this.enqueue(item);
+      }
+    }
   }
 
   dequeue() {
@@ -49,5 +58,12 @@ export default class Queue<T> {
 
   get length() {
     return this.#length;
+  }
+
+  [Symbol.iterator]() {
+    return {
+      next: () =>
+        this.isEmpty() ? {done: true} : {value: this.dequeue(), done: false},
+    };
   }
 }

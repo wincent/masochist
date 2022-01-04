@@ -1,7 +1,9 @@
 import type {Transition} from './NFA';
 
-const ANYTHING = 'Anything';
-const EPSILON = 'Epsilon';
+export const ANYTHING = 'Anything';
+export const ATOM = 'Atom';
+export const EPSILON = 'Epsilon';
+export const RANGE = 'Range';
 
 /**
  * Turns a `transition` into a key suitable for use in a `Map` or object.
@@ -17,8 +19,8 @@ export default function transitionToKey(transition: Transition): string {
   } else if (transition.kind === 'Anything') {
     return ANYTHING;
   } else if (transition.kind === 'Atom') {
-    return `Atom:${transition.value}`;
+    return `${ATOM}:${transition.value}`;
   } else {
-    return `Range:${transition.from}-${transition.to}`;
+    return `${RANGE}:${transition.from}-${transition.to}`;
   }
 }
