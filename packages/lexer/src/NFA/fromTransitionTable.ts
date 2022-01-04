@@ -1,5 +1,6 @@
 import {Queue} from '@masochist/common';
 import {ACCEPT, NONE, START} from './NFA';
+import clearFlag from './clearFlag';
 import invariant from '../invariant';
 import keyToTransition from './keyToTransition';
 
@@ -14,6 +15,8 @@ export default function fromTransitionTable({
   const states: Array<NFA> = [];
   const queue = new Queue<number>(startStates);
 
+  const newStartStates: Array<NFA> = [];
+
   function getState(id: number) {
     const flags =
       (startStates.has(id) ? START : NONE) |
@@ -25,6 +28,9 @@ export default function fromTransitionTable({
         edges: [],
       };
       queue.enqueue(id);
+      if (startStates.has(id)) {
+        newStartStates.push(states[id]);
+      }
     }
     return states[id];
   }
@@ -47,6 +53,16 @@ export default function fromTransitionTable({
     }
   }
 
-  // Return lowest-id start state.
-  return states[Array.from(startStates).sort()[0]];
+  if (startStates.size === 1) {
+    return states[Array.from(startStates)[0]];
+  } else {
+    return {
+      id: transitions.length,
+      flags: START,
+      edges: newStartStates.map((state) => {
+        state.flags = clearFlag(state.flags, START);
+        return {on: null, to: state};
+      }),
+    };
+  }
 }

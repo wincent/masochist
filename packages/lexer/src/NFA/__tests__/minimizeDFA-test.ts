@@ -17,6 +17,88 @@ describe('minimizeDFA()', () => {
   // (`(?:...)`).
   //
   describe('minimizing DFAs from "real world" regular expressions', () => {
+    it('minimizes a DFA for ESCAPED_CHARACTER', () => {
+      expect(minimize(/\\["\\\/bfnrt]/)).toEqual({
+        id: 0,
+        flags: START,
+        edges: [
+          {
+            on: {kind: 'Atom', value: '\\'},
+            to: {
+              id: 1,
+              flags: NONE,
+              edges: [
+                {
+                  on: {kind: 'Atom', value: 't'},
+                  to: {
+                    id: 2,
+                    flags: ACCEPT,
+                    edges: [],
+                  },
+                },
+                {
+                  on: {kind: 'Atom', value: 'r'},
+                  to: {
+                    id: 2,
+                    flags: ACCEPT,
+                    edges: [],
+                  },
+                },
+                {
+                  on: {kind: 'Atom', value: 'n'},
+                  to: {
+                    id: 2,
+                    flags: ACCEPT,
+                    edges: [],
+                  },
+                },
+                {
+                  on: {kind: 'Atom', value: 'f'},
+                  to: {
+                    id: 2,
+                    flags: ACCEPT,
+                    edges: [],
+                  },
+                },
+                {
+                  on: {kind: 'Atom', value: 'b'},
+                  to: {
+                    id: 2,
+                    flags: ACCEPT,
+                    edges: [],
+                  },
+                },
+                {
+                  on: {kind: 'Atom', value: '\\'},
+                  to: {
+                    id: 2,
+                    flags: ACCEPT,
+                    edges: [],
+                  },
+                },
+                {
+                  on: {kind: 'Atom', value: '/'},
+                  to: {
+                    id: 2,
+                    flags: ACCEPT,
+                    edges: [],
+                  },
+                },
+                {
+                  on: {kind: 'Atom', value: '"'},
+                  to: {
+                    id: 2,
+                    flags: ACCEPT,
+                    edges: [],
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      });
+    });
+
     it('minimizes a DFA for ESCAPED_UNICODE', () => {
       expect(minimize(/\\u[0-9A-Fa-f]{4}/)).toEqual({
         id: 0,
@@ -53,6 +135,30 @@ describe('minimizeDFA()', () => {
                                       id: 5,
                                       flags: NONE,
                                       edges: [
+                                        {
+                                          on: {
+                                            kind: 'Range',
+                                            from: 'a',
+                                            to: 'f',
+                                          },
+                                          to: {
+                                            id: 6,
+                                            flags: ACCEPT,
+                                            edges: [],
+                                          },
+                                        },
+                                        {
+                                          on: {
+                                            kind: 'Range',
+                                            from: 'A',
+                                            to: 'F',
+                                          },
+                                          to: {
+                                            id: 6,
+                                            flags: ACCEPT,
+                                            edges: [],
+                                          },
+                                        },
                                         {
                                           on: {
                                             kind: 'Range',
