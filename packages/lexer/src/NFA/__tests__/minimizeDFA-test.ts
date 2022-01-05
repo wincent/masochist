@@ -105,16 +105,39 @@ describe('minimizeDFA()', () => {
       });
     });
 
-    // NFAToDFA(): Expected exactly 1 start state, got 3
-    xit('minimizes a DFA for INTEGER_PART', () => {
-      console.log(stringifyTransitionTable(minimize(/-?(0|[1-9]\d*)/)));
-      expect(minimize(/-?(0|[1-9]\d*)/)).toEqual({});
+    it('minimizes a DFA for INTEGER_PART', () => {
+      expect(minimize(/-?(0|[1-9]\d*)/)).toEqual({
+        acceptStates: new Set([2, 3]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([
+            ['Atom:-', new Set([1])],
+            ['Range:1-9', new Set([2])],
+            ['Atom:0', new Set([3])],
+          ]),
+          /* 1 */ new Map([
+            ['Range:1-9', new Set([2])],
+            ['Atom:0', new Set([3])],
+          ]),
+          /* 2 */ new Map([['Range:0-9', new Set([2])]]),
+          /* 3 */ new Map(),
+        ],
+      });
     });
 
-    // NFAToDFA(): Expected exactly 1 start state, got 2
-    xit('minimizes a DFA for LINE_TERMINATOR', () => {
-      console.log(stringifyTransitionTable(minimize(/\n|\r\n|\r/)));
-      expect(minimize(/\n|\r\n|\r/)).toEqual({});
+    it('minimizes a DFA for LINE_TERMINATOR', () => {
+      expect(minimize(/\n|\r\n|\r/)).toEqual({
+        acceptStates: new Set([1, 2]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([
+            ['Atom:\r', new Set([1])],
+            ['Atom:\n', new Set([2])],
+          ]),
+          /* 1 */ new Map([['Atom:\n', new Set([2])]]),
+          /* 2 */ new Map(),
+        ],
+      });
     });
 
     it('minimizes a DFA for SOURCE_CHARACTER', () => {
@@ -132,16 +155,41 @@ describe('minimizeDFA()', () => {
       });
     });
 
-    // NFAToDFA(): Expected exactly 1 start state, got 8
-    xit('minimizes a DFA for NAME', () => {
-      console.log(stringifyTransitionTable(minimize(/[_A-Za-z][_0-9A-Za-z]*/)));
-      expect(minimize(/[_A-Za-z][_0-9A-Za-z]*/)).toEqual({});
+    it('minimizes a DFA for NAME', () => {
+      expect(minimize(/[_A-Za-z][_0-9A-Za-z]*/)).toEqual({
+        acceptStates: new Set([1]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([
+            ['Range:a-z', new Set([1])],
+            ['Range:A-Z', new Set([1])],
+            ['Atom:_', new Set([1])],
+          ]),
+          /* 1 */ new Map([
+            ['Range:a-z', new Set([1])],
+            ['Range:A-Z', new Set([1])],
+            ['Atom:_', new Set([1])],
+            ['Range:0-9', new Set([1])],
+          ]),
+        ],
+      });
     });
 
-    // NFAToDFA(): Expected exactly 1 start state, got 3
-    xit('minimizes a DFA for WHITESPACE', () => {
-      console.log(stringifyTransitionTable(minimize(/[\t ]+/)));
-      expect(minimize(/[\t ]+/)).toEqual({});
+    it('minimizes a DFA for WHITESPACE', () => {
+      expect(minimize(/[\t ]+/)).toEqual({
+        acceptStates: new Set([1]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([
+            ['Atom: ', new Set([1])],
+            ['Atom:\t', new Set([1])],
+          ]),
+          /* 1 */ new Map([
+            ['Atom: ', new Set([1])],
+            ['Atom:\t', new Set([1])],
+          ]),
+        ],
+      });
     });
   });
 });

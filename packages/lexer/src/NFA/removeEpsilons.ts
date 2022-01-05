@@ -1,4 +1,5 @@
 import {ACCEPT, START} from './NFA';
+import getStartStates from './getStartStates';
 import {equalEdges} from './regExpToNFA';
 import setFlag from './setFlag';
 import testFlag from './testFlag';
@@ -12,6 +13,13 @@ import type {Flags, NFA} from './NFA';
  * As a convenience, returns the mutated NFA.
  */
 export default function removeEpsilons(nfa: NFA): NFA {
+  const states = getStartStates(nfa);
+  if (states.length !== 1) {
+    throw new Error(
+      `NFAToDFA(): Expected exactly 1 start state, got ${states.length}`,
+    );
+  }
+
   visitNFA(nfa, (source: NFA) => {
     const {edges} = source;
 
@@ -35,7 +43,10 @@ export default function removeEpsilons(nfa: NFA): NFA {
 
                 // Remove dupes (highly inefficient).
                 return !source.edges.some((sourceEdge) => {
-                  // BUG:(?) we always return false
+                  // BUG:(?) we always return false - possibly because we are
+                  // looking at snapshot of source.edges; so won't detect dupes
+                  // among set of newly added edges
+                  //
                   // which means some() always returns false
                   // which means filter() filters nothing
                   return equalEdges(sourceEdge, targetEdge);
@@ -50,13 +61,6 @@ export default function removeEpsilons(nfa: NFA): NFA {
         // If any target was an accept node, source must become an accept node.
         if (targets.some((target) => testFlag(target.flags, ACCEPT))) {
           source.flags = setFlag(source.flags, ACCEPT);
-        }
-
-        // If source was a start node, targets must become a start node.
-        if (testFlag(source.flags, START)) {
-          targets.forEach((target) => {
-            target.flags = setFlag(target.flags, START);
-          });
         }
       }
     }

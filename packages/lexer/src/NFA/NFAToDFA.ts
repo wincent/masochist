@@ -6,7 +6,7 @@ import setFlag from './setFlag';
 import transitionToKey from './transitionToKey';
 import visitNFA from './visitNFA';
 
-import type {Edge, NFA, Transition} from './NFA';
+import type {Edge, NFA} from './NFA';
 
 /**
  * Turns an NFA into a DFA by removing all non-determinism.
