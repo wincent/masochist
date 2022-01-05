@@ -16,7 +16,7 @@ export default function removeEpsilons(nfa: NFA): NFA {
   const states = getStartStates(nfa);
   if (states.length !== 1) {
     throw new Error(
-      `NFAToDFA(): Expected exactly 1 start state, got ${states.length}`,
+      `removeEpsilons(): Expected exactly 1 start state, got ${states.length}`,
     );
   }
 
