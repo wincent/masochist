@@ -49,6 +49,7 @@ export default function minimizeDFA(dfa: NFA): NFA {
   nfa = fromTransitionTable(table);
   nfa = removeEpsilons(nfa);
   dfa = NFAToDFA(nfa);
+  // TODO: see if we need to remove dead AFTER this...
 
   return dfa;
 }
