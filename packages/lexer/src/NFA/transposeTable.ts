@@ -15,15 +15,21 @@ export default function transposeTable(
   table.startStates = new Set(table.acceptStates);
   table.acceptStates = acceptStates;
 
-  const transitions: Array<Map<string, number>> = [];
+  const transitions: Array<Map<string, Set<number>>> = [];
 
   table.transitions.forEach((transition, sourceId) => {
     // Make a reversed copy of each edge.
-    for (const [key, targetId] of transition) {
-      if (!transitions[targetId]) {
-        transitions[targetId] = new Map();
+    for (const [key, targetIds] of transition) {
+      for (const targetId of targetIds) {
+        if (!transitions[targetId]) {
+          transitions[targetId] = new Map();
+        }
+        if (transitions[targetId].has(key)) {
+          transitions[targetId].get(key)!.add(sourceId);
+        } else {
+          transitions[targetId].set(key, new Set([sourceId]));
+        }
       }
-      transitions[targetId].set(key, sourceId);
     }
 
     // Clear old edges.

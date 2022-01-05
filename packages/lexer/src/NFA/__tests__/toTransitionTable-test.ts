@@ -21,16 +21,16 @@ describe('toTransitionTable()', () => {
         acceptStates: new Set([2, 3, 4, 5, 6, 7, 8, 9]),
         startStates: new Set([0]),
         transitions: [
-          /* 0 */ new Map([['Atom:\\', 1]]),
+          /* 0 */ new Map([['Atom:\\', new Set([1])]]),
           /* 1 */ new Map([
-            ['Atom:"', 2],
-            ['Atom:/', 3],
-            ['Atom:\\', 4],
-            ['Atom:b', 5],
-            ['Atom:f', 6],
-            ['Atom:n', 7],
-            ['Atom:r', 8],
-            ['Atom:t', 9],
+            ['Atom:"', new Set([2])],
+            ['Atom:/', new Set([3])],
+            ['Atom:\\', new Set([4])],
+            ['Atom:b', new Set([5])],
+            ['Atom:f', new Set([6])],
+            ['Atom:n', new Set([7])],
+            ['Atom:r', new Set([8])],
+            ['Atom:t', new Set([9])],
           ]),
           /* 2 */ new Map(),
           /* 3 */ new Map(),
@@ -44,62 +44,62 @@ describe('toTransitionTable()', () => {
       });
     });
 
-    it('builds a DFA for ESCAPED_UNICODE', () => {
+    it('builds a transition table for ESCAPED_UNICODE', () => {
       expect(getTable(/\\u[0-9A-Fa-f]{4}/)).toEqual({
         acceptStates: new Set([12, 13, 14]),
         startStates: new Set([0]),
         transitions: [
-          /* 0 */ new Map([['Atom:\\', 1]]),
-          /* 1 */ new Map([['Atom:u', 2]]),
+          /* 0 */ new Map([['Atom:\\', new Set([1])]]),
+          /* 1 */ new Map([['Atom:u', new Set([2])]]),
           /* 2 */ new Map([
-            ['Range:0-9', 3],
-            ['Range:A-F', 4],
-            ['Range:a-f', 5],
+            ['Range:0-9', new Set([3])],
+            ['Range:A-F', new Set([4])],
+            ['Range:a-f', new Set([5])],
           ]),
           /* 3 */ new Map([
-            ['Range:0-9', 6],
-            ['Range:A-F', 7],
-            ['Range:a-f', 8],
+            ['Range:0-9', new Set([6])],
+            ['Range:A-F', new Set([7])],
+            ['Range:a-f', new Set([8])],
           ]),
           /* 4 */ new Map([
-            ['Range:0-9', 6],
-            ['Range:A-F', 7],
-            ['Range:a-f', 8],
+            ['Range:0-9', new Set([6])],
+            ['Range:A-F', new Set([7])],
+            ['Range:a-f', new Set([8])],
           ]),
           /* 5 */ new Map([
-            ['Range:0-9', 6],
-            ['Range:A-F', 7],
-            ['Range:a-f', 8],
+            ['Range:0-9', new Set([6])],
+            ['Range:A-F', new Set([7])],
+            ['Range:a-f', new Set([8])],
           ]),
           /* 6 */ new Map([
-            ['Range:0-9', 9],
-            ['Range:A-F', 10],
-            ['Range:a-f', 11],
+            ['Range:0-9', new Set([9])],
+            ['Range:A-F', new Set([10])],
+            ['Range:a-f', new Set([11])],
           ]),
           /* 7 */ new Map([
-            ['Range:0-9', 9],
-            ['Range:A-F', 10],
-            ['Range:a-f', 11],
+            ['Range:0-9', new Set([9])],
+            ['Range:A-F', new Set([10])],
+            ['Range:a-f', new Set([11])],
           ]),
           /* 8 */ new Map([
-            ['Range:0-9', 9],
-            ['Range:A-F', 10],
-            ['Range:a-f', 11],
+            ['Range:0-9', new Set([9])],
+            ['Range:A-F', new Set([10])],
+            ['Range:a-f', new Set([11])],
           ]),
           /* 9 */ new Map([
-            ['Range:0-9', 12],
-            ['Range:A-F', 13],
-            ['Range:a-f', 14],
+            ['Range:0-9', new Set([12])],
+            ['Range:A-F', new Set([13])],
+            ['Range:a-f', new Set([14])],
           ]),
           /* 10 */ new Map([
-            ['Range:0-9', 12],
-            ['Range:A-F', 13],
-            ['Range:a-f', 14],
+            ['Range:0-9', new Set([12])],
+            ['Range:A-F', new Set([13])],
+            ['Range:a-f', new Set([14])],
           ]),
           /* 11 */ new Map([
-            ['Range:0-9', 12],
-            ['Range:A-F', 13],
-            ['Range:a-f', 14],
+            ['Range:0-9', new Set([12])],
+            ['Range:A-F', new Set([13])],
+            ['Range:a-f', new Set([14])],
           ]),
           /* 12 */ new Map(),
           /* 13 */ new Map(),
@@ -108,90 +108,90 @@ describe('toTransitionTable()', () => {
       });
     });
 
-    it('builds a DFA for EXPONENT_PART', () => {
+    it('builds a transition table for EXPONENT_PART', () => {
       expect(getTable(/[eE][+-]?\d+/)).toEqual({
         acceptStates: new Set([5]),
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
-            ['Atom:E', 2],
-            ['Atom:e', 1],
+            ['Atom:E', new Set([2])],
+            ['Atom:e', new Set([1])],
           ]),
           /* 1 */ new Map([
-            ['Atom:+', 3],
-            ['Atom:-', 4],
-            ['Range:0-9', 5],
+            ['Atom:+', new Set([3])],
+            ['Atom:-', new Set([4])],
+            ['Range:0-9', new Set([5])],
           ]),
           /* 2 */ new Map([
-            ['Atom:+', 3],
-            ['Atom:-', 4],
-            ['Range:0-9', 5],
+            ['Atom:+', new Set([3])],
+            ['Atom:-', new Set([4])],
+            ['Range:0-9', new Set([5])],
           ]),
-          /* 3 */ new Map([['Range:0-9', 5]]),
-          /* 4 */ new Map([['Range:0-9', 5]]),
-          /* 5 */ new Map([['Range:0-9', 5]]),
+          /* 3 */ new Map([['Range:0-9', new Set([5])]]),
+          /* 4 */ new Map([['Range:0-9', new Set([5])]]),
+          /* 5 */ new Map([['Range:0-9', new Set([5])]]),
         ],
       });
     });
 
-    it('builds a DFA for FRACTIONAL_PART', () => {
+    it('builds a transition table for FRACTIONAL_PART', () => {
       expect(getTable(/\.\d+/)).toEqual({
         acceptStates: new Set([2]),
         startStates: new Set([0]),
         transitions: [
-          /* 0 */ new Map([['Atom:.', 1]]),
-          /* 1 */ new Map([['Range:0-9', 2]]),
-          /* 2 */ new Map([['Range:0-9', 2]]),
+          /* 0 */ new Map([['Atom:.', new Set([1])]]),
+          /* 1 */ new Map([['Range:0-9', new Set([2])]]),
+          /* 2 */ new Map([['Range:0-9', new Set([2])]]),
         ],
       });
     });
 
-    it('builds a DFA for INTEGER_PART', () => {
+    it('builds a transition table for INTEGER_PART', () => {
       expect(getTable(/-?(0|[1-9]\d*)/)).toEqual({
         acceptStates: new Set([2, 3, 4]),
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
-            ['Atom:-', 1],
-            ['Atom:0', 2],
-            ['Range:1-9', 3],
+            ['Atom:-', new Set([1])],
+            ['Atom:0', new Set([2])],
+            ['Range:1-9', new Set([3])],
           ]),
           /* 1 */ new Map([
-            ['Atom:0', 2],
-            ['Range:1-9', 3],
+            ['Atom:0', new Set([2])],
+            ['Range:1-9', new Set([3])],
           ]),
           /* 2 */ new Map(),
-          /* 3 */ new Map([['Range:0-9', 4]]),
-          /* 4 */ new Map([['Range:0-9', 4]]),
+          /* 3 */ new Map([['Range:0-9', new Set([4])]]),
+          /* 4 */ new Map([['Range:0-9', new Set([4])]]),
         ],
       });
     });
 
-    it('builds a DFA for LINE_TERMINATOR', () => {
+    it('builds a transition table for LINE_TERMINATOR', () => {
       expect(getTable(/\n|\r\n|\r/)).toEqual({
         acceptStates: new Set([1, 3, 2]),
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
-            ['Atom:\n', 2],
-            ['Atom:\r', 1],
+            ['Atom:\n', new Set([2])],
+            ['Atom:\r', new Set([1])],
           ]),
-          /* 1 */ new Map([['Atom:\n', 3]]),
+          /* 1 */ new Map([['Atom:\n', new Set([3])]]),
           /* 2 */ new Map(),
           /* 3 */ new Map(),
         ],
       });
     });
 
-    it('builds a DFA for SOURCE_CHARACTER', () => {
+    it('builds a transition table for SOURCE_CHARACTER', () => {
       expect(getTable(/[\u0009\u000a\u000d\u0020-\uffff]/)).toEqual({
         acceptStates: new Set([1, 2, 3]),
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
-            ['Atom:\r', 2],
-            ['Range: -\uffff', 1],
-            ['Range:\t-\n', 3],
+            ['Atom:\r', new Set([2])],
+            ['Range: -\uffff', new Set([1])],
+            ['Range:\t-\n', new Set([3])],
           ]),
           /* 1 */ new Map(),
           /* 2 */ new Map(),
@@ -200,78 +200,78 @@ describe('toTransitionTable()', () => {
       });
     });
 
-    it('builds a DFA for NAME', () => {
+    it('builds a transition table for NAME', () => {
       expect(getTable(/[_A-Za-z][_0-9A-Za-z]*/)).toEqual({
         acceptStates: new Set([1, 2, 3, 4, 5, 6, 7]),
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
-            ['Atom:_', 2],
-            ['Range:A-Z', 3],
-            ['Range:a-z', 1],
+            ['Atom:_', new Set([2])],
+            ['Range:A-Z', new Set([3])],
+            ['Range:a-z', new Set([1])],
           ]),
           /* 1 */ new Map([
-            ['Atom:_', 6],
-            ['Range:0-9', 4],
-            ['Range:A-Z', 5],
-            ['Range:a-z', 7],
+            ['Atom:_', new Set([6])],
+            ['Range:0-9', new Set([4])],
+            ['Range:A-Z', new Set([5])],
+            ['Range:a-z', new Set([7])],
           ]),
           /* 2 */ new Map([
-            ['Atom:_', 6],
-            ['Range:0-9', 4],
-            ['Range:A-Z', 5],
-            ['Range:a-z', 7],
+            ['Atom:_', new Set([6])],
+            ['Range:0-9', new Set([4])],
+            ['Range:A-Z', new Set([5])],
+            ['Range:a-z', new Set([7])],
           ]),
           /* 3 */ new Map([
-            ['Atom:_', 6],
-            ['Range:0-9', 4],
-            ['Range:A-Z', 5],
-            ['Range:a-z', 7],
+            ['Atom:_', new Set([6])],
+            ['Range:0-9', new Set([4])],
+            ['Range:A-Z', new Set([5])],
+            ['Range:a-z', new Set([7])],
           ]),
           /* 4 */ new Map([
-            ['Atom:_', 6],
-            ['Range:0-9', 4],
-            ['Range:A-Z', 5],
-            ['Range:a-z', 7],
+            ['Atom:_', new Set([6])],
+            ['Range:0-9', new Set([4])],
+            ['Range:A-Z', new Set([5])],
+            ['Range:a-z', new Set([7])],
           ]),
           /* 5 */ new Map([
-            ['Atom:_', 6],
-            ['Range:0-9', 4],
-            ['Range:A-Z', 5],
-            ['Range:a-z', 7],
+            ['Atom:_', new Set([6])],
+            ['Range:0-9', new Set([4])],
+            ['Range:A-Z', new Set([5])],
+            ['Range:a-z', new Set([7])],
           ]),
           /* 6 */ new Map([
-            ['Atom:_', 6],
-            ['Range:0-9', 4],
-            ['Range:A-Z', 5],
-            ['Range:a-z', 7],
+            ['Atom:_', new Set([6])],
+            ['Range:0-9', new Set([4])],
+            ['Range:A-Z', new Set([5])],
+            ['Range:a-z', new Set([7])],
           ]),
           /* 7 */ new Map([
-            ['Atom:_', 6],
-            ['Range:0-9', 4],
-            ['Range:A-Z', 5],
-            ['Range:a-z', 7],
+            ['Atom:_', new Set([6])],
+            ['Range:0-9', new Set([4])],
+            ['Range:A-Z', new Set([5])],
+            ['Range:a-z', new Set([7])],
           ]),
         ],
       });
     });
 
-    it('builds a DFA for WHITESPACE', () => {
+    it('builds a transition table for WHITESPACE', () => {
       expect(getTable(/[\t ]+/)).toEqual({
         acceptStates: new Set([1, 2]),
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
-            ['Atom: ', 1],
-            ['Atom:\t', 2],
+            ['Atom: ', new Set([1])],
+            ['Atom:\t', new Set([2])],
           ]),
           /* 1 */ new Map([
-            ['Atom: ', 1],
-            ['Atom:\t', 2],
+            ['Atom: ', new Set([1])],
+            ['Atom:\t', new Set([2])],
           ]),
           /* 2 */ new Map([
-            ['Atom: ', 1],
-            ['Atom:\t', 2],
+            ['Atom: ', new Set([1])],
+            ['Atom:\t', new Set([2])],
           ]),
         ],
       });

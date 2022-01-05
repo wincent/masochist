@@ -8,7 +8,7 @@ import type {NFA} from './NFA';
 export type TransitionTable = {
   acceptStates: Set<number>;
   startStates: Set<number>;
-  transitions: Array<Map<string, number>>;
+  transitions: Array<Map<string, Set<number>>>;
 };
 
 export default function toTransitionTable(nfa: NFA): TransitionTable {
@@ -25,7 +25,12 @@ export default function toTransitionTable(nfa: NFA): TransitionTable {
     const transitions = table.transitions[id];
 
     edges.forEach(({on, to}) => {
-      transitions.set(transitionToKey(on), to.id);
+      const key = transitionToKey(on);
+      if (transitions.has(key)) {
+        transitions.get(key)!.add(to.id);
+      } else {
+        transitions.set(key, new Set([to.id]));
+      }
     });
 
     if (testFlag(flags, ACCEPT)) {

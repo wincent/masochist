@@ -44,12 +44,14 @@ export default function fromTransitionTable({
       continue;
     }
 
-    for (const [key, target] of transitions[id]) {
+    for (const [key, targets] of transitions[id]) {
       const on = keyToTransition(key);
-      state.edges.push({
-        on,
-        to: getState(target),
-      });
+      for (const target of targets) {
+        state.edges.push({
+          on,
+          to: getState(target),
+        });
+      }
     }
   }
 
