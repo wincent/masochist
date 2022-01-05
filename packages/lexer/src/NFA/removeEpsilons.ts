@@ -36,27 +36,23 @@ export default function removeEpsilons(nfa: NFA): NFA {
         source.edges.push(
           ...targets.flatMap((target) => {
             return target.edges
-              .filter((targetEdge) => {
-                if (targetEdge.on === null) {
-                  return false;
-                }
-
-                // Remove dupes (highly inefficient).
-                return !source.edges.some((sourceEdge) => {
-                  // BUG:(?) we always return false - possibly because we are
-                  // looking at snapshot of source.edges; so won't detect dupes
-                  // among set of newly added edges
-                  //
-                  // which means some() always returns false
-                  // which means filter() filters nothing
-                  return equalEdges(sourceEdge, targetEdge);
-                });
-              })
-              .map(({on, to}) => {
-                return {on, to};
-              });
+              .filter((targetEdge) => targetEdge.on !== null)
+              .map(({on, to}) => ({on, to}));
           }),
         );
+
+        // (Highly inefficient) check for dupes. In practice we never see dupes
+        // given the automata in this project; if we ever do, I'll add
+        // de-duping logic.
+        for (let i = 0; i < source.edges.length; i++) {
+          for (let j = 0; j < source.edges.length; j++) {
+            if (i !== j && equalEdges(source.edges[i], source.edges[j])) {
+              throw new Error(
+                'removeEpsilons(): Unexpected duplicate edges found',
+              );
+            }
+          }
+        }
 
         // If any target was an accept node, source must become an accept node.
         if (targets.some((target) => testFlag(target.flags, ACCEPT))) {

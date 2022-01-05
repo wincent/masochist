@@ -171,10 +171,5 @@ function epsilonTo(to: NFA): Edge {
  * on an equivalent condition.
  */
 export function equalEdges(a: Edge, b: Edge): boolean {
-  if (a.to !== b.to) {
-    return false;
-  }
-  // BUG: so far, we don't have any tests that actually let us reach this far
-  // (either we have a bug, or our tests are incomplete)
-  return equalTransitions(a.on, b.on);
+  return a.to === b.to && equalTransitions(a.on, b.on);
 }
