@@ -1,13 +1,10 @@
 import compileRegExp from '../../compileRegExp';
-import {ACCEPT, NONE, START} from '../NFA';
 import NFAToDFA from '../NFAToDFA';
 import minimizeDFA from '../minimizeDFA';
 import regExpToNFA from '../regExpToNFA';
 import removeEpsilons from '../removeEpsilons';
 import sortEdges from '../sortEdges';
 import toTransitionTable from '../toTransitionTable';
-
-import stringifyTransitionTable from '../stringifyTransitionTable';
 
 import type {TransitionTable} from '../toTransitionTable';
 

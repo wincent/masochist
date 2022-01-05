@@ -1,289 +1,135 @@
 import compileRegExp from '../../compileRegExp';
-import {ACCEPT, NONE, START} from '../NFA';
 import NFAToDFA from '../NFAToDFA';
 import regExpToNFA from '../regExpToNFA';
 import removeEpsilons from '../removeEpsilons';
+import toTransitionTable from '../toTransitionTable';
 
-import type {Flags, NFA} from '../NFA';
+import type {TransitionTable} from '../toTransitionTable';
 
 describe('NFAToDFA()', () => {
   it('creates the DFA from an atom', () => {
-    expect(NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/a/))))).toEqual({
-      id: 0,
-      edges: [
-        {
-          on: {kind: 'Atom', value: 'a'},
-          to: {
-            id: 1,
-            edges: [],
-            flags: ACCEPT,
-          },
-        },
+    expect(makeDFA(/a/)).toEqual({
+      acceptStates: new Set([1]),
+      startStates: new Set([0]),
+      transitions: [
+        /* 0 */ new Map([['Atom:a', new Set([1])]]),
+        /* 1 */ new Map(),
       ],
-      flags: START,
     });
   });
 
   it('creates a DFA created from an "anything" dot', () => {
-    expect(NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/./))))).toEqual({
-      id: 0,
-      flags: START,
-      edges: [
-        {
-          on: {kind: 'Anything'},
-          to: {
-            id: 1,
-            flags: ACCEPT,
-            edges: [],
-          },
-        },
+    expect(makeDFA(/./)).toEqual({
+      acceptStates: new Set([1]),
+      startStates: new Set([0]),
+      transitions: [
+        /* 0 */ new Map([['Anything', new Set([1])]]),
+        /* 1 */ new Map(),
       ],
     });
   });
 
   it('creates a DFA from a sequence', () => {
-    expect(NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/foo/))))).toEqual(
-      {
-        id: 0,
-        flags: START,
-        edges: [
-          {
-            on: {kind: 'Atom', value: 'f'},
-            to: {
-              id: 1,
-              flags: NONE,
-              edges: [
-                {
-                  on: {kind: 'Atom', value: 'o'},
-                  to: {
-                    id: 2,
-                    flags: NONE,
-                    edges: [
-                      {
-                        on: {kind: 'Atom', value: 'o'},
-                        to: {
-                          id: 3,
-                          flags: ACCEPT,
-                          edges: [],
-                        },
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        ],
-      },
-    );
+    expect(makeDFA(/foo/)).toEqual({
+      acceptStates: new Set([3]),
+      startStates: new Set([0]),
+      transitions: [
+        /* 0 */ new Map([['Atom:f', new Set([1])]]),
+        /* 1 */ new Map([['Atom:o', new Set([2])]]),
+        /* 2 */ new Map([['Atom:o', new Set([3])]]),
+        /* 3 */ new Map(),
+      ],
+    });
   });
 
   it('creates a DFA from an alternate', () => {
-    expect(
-      NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/a|b|c/)))),
-    ).toEqual({
-      id: 0,
-      flags: START,
-      edges: [
-        {
-          on: {kind: 'Atom', value: 'c'},
-          to: {
-            id: 1,
-            flags: ACCEPT,
-            edges: [],
-          },
-        },
-        {
-          on: {kind: 'Atom', value: 'b'},
-          to: {
-            id: 2,
-            flags: ACCEPT,
-            edges: [],
-          },
-        },
-        {
-          on: {kind: 'Atom', value: 'a'},
-          to: {
-            id: 3,
-            flags: ACCEPT,
-            edges: [],
-          },
-        },
+    expect(makeDFA(/a|b|c/)).toEqual({
+      acceptStates: new Set([1, 2, 3]),
+      startStates: new Set([0]),
+      transitions: [
+        /* 0 */ new Map([
+          ['Atom:c', new Set([1])],
+          ['Atom:b', new Set([2])],
+          ['Atom:a', new Set([3])],
+        ]),
+        /* 1 */ new Map(),
+        /* 2 */ new Map(),
+        /* 3 */ new Map(),
       ],
     });
   });
 
   it('creates a DFA from a character class', () => {
-    expect(
-      NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/[a-z0]/)))),
-    ).toEqual({
-      id: 0,
-      flags: START,
-      edges: [
-        {
-          on: {kind: 'Range', from: 'a', to: 'z'},
-          to: {
-            id: 1,
-            flags: ACCEPT,
-            edges: [],
-          },
-        },
-        {
-          on: {kind: 'Atom', value: '0'},
-          to: {
-            id: 2,
-            flags: ACCEPT,
-            edges: [],
-          },
-        },
+    expect(makeDFA(/[a-z0]/)).toEqual({
+      acceptStates: new Set([1, 2]),
+      startStates: new Set([0]),
+      transitions: [
+        /* 0 */ new Map([
+          ['Range:a-z', new Set([1])],
+          ['Atom:0', new Set([2])],
+        ]),
+        /* 1 */ new Map(),
+        /* 2 */ new Map(),
       ],
     });
   });
 
   it('creates a DFA from a "?" quantifier', () => {
-    expect(NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/a?/))))).toEqual({
-      id: 0,
-      flags: START | ACCEPT,
-      edges: [
-        {
-          on: {kind: 'Atom', value: 'a'},
-          to: {
-            id: 1,
-            flags: ACCEPT,
-            edges: [],
-          },
-        },
+    expect(makeDFA(/a?/)).toEqual({
+      acceptStates: new Set([0, 1]),
+      startStates: new Set([0]),
+      transitions: [
+        /* 0 */ new Map([['Atom:a', new Set([1])]]),
+        /* 1 */ new Map(),
       ],
     });
   });
 
   it('creates a DFA from a "*" quantifier', () => {
-    const start: NFA = {
-      id: 0,
-      flags: (START | ACCEPT) as Flags,
-      edges: [
-        {
-          on: {kind: 'Atom', value: 'a'},
-          to: {
-            id: 1,
-            flags: ACCEPT,
-            edges: [], // Circular reference will go here.
-          },
-        },
+    expect(makeDFA(/a*/)).toEqual({
+      acceptStates: new Set([0, 1]),
+      startStates: new Set([0]),
+      transitions: [
+        /* 0 */ new Map([['Atom:a', new Set([1])]]),
+        /* 1 */ new Map([['Atom:a', new Set([1])]]),
       ],
-    };
-    start.edges[0].to.edges.push({
-      on: {kind: 'Atom', value: 'a'},
-      to: start.edges[0].to,
     });
-    expect(NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/a*/))))).toEqual(
-      start,
-    );
   });
 
   it('creates a DFA from a "+" quantifier', () => {
-    const start: NFA = {
-      id: 0,
-      flags: START,
-      edges: [
-        {
-          on: {kind: 'Atom', value: 'a'},
-          to: {
-            id: 1,
-            flags: ACCEPT,
-            edges: [],
-          },
-        },
+    expect(makeDFA(/a+/)).toEqual({
+      acceptStates: new Set([1]),
+      startStates: new Set([0]),
+      transitions: [
+        /* 0 */ new Map([['Atom:a', new Set([1])]]),
+        /* 1 */ new Map([['Atom:a', new Set([1])]]),
       ],
-    };
-    start.edges[0].to.edges.push({
-      on: {kind: 'Atom', value: 'a'},
-      to: start.edges[0].to,
     });
-    expect(NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/a+/))))).toEqual(
-      start,
-    );
   });
 
   it('creates a DFA from a "{3}" quantifier', () => {
-    expect(
-      NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/a{3}/)))),
-    ).toEqual({
-      id: 0,
-      flags: START,
-      edges: [
-        {
-          on: {kind: 'Atom', value: 'a'},
-          to: {
-            id: 1,
-            flags: NONE,
-            edges: [
-              {
-                on: {kind: 'Atom', value: 'a'},
-                to: {
-                  id: 2,
-                  flags: NONE,
-                  edges: [
-                    {
-                      on: {kind: 'Atom', value: 'a'},
-                      to: {
-                        id: 3,
-                        flags: ACCEPT,
-                        edges: [],
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-          },
-        },
+    expect(makeDFA(/a{3}/)).toEqual({
+      acceptStates: new Set([3]),
+      startStates: new Set([0]),
+      transitions: [
+        /* 0 */ new Map([['Atom:a', new Set([1])]]),
+        /* 1 */ new Map([['Atom:a', new Set([2])]]),
+        /* 2 */ new Map([['Atom:a', new Set([3])]]),
+        /* 3 */ new Map(),
       ],
     });
   });
 
   it('creates a DFA from a "{2,4}" quantifier', () => {
-    expect(
-      NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/a{2,4}/)))),
-    ).toEqual({
-      id: 0,
-      flags: START,
-      edges: [
-        {
-          on: {kind: 'Atom', value: 'a'},
-          to: {
-            id: 1,
-            flags: NONE,
-            edges: [
-              {
-                on: {kind: 'Atom', value: 'a'},
-                to: {
-                  id: 2,
-                  flags: ACCEPT,
-                  edges: [
-                    {
-                      on: {kind: 'Atom', value: 'a'},
-                      to: {
-                        id: 3,
-                        flags: ACCEPT,
-                        edges: [
-                          {
-                            on: {kind: 'Atom', value: 'a'},
-                            to: {
-                              id: 4,
-                              flags: ACCEPT,
-                              edges: [],
-                            },
-                          },
-                        ],
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-          },
-        },
+    expect(makeDFA(/a{2,4}/)).toEqual({
+      acceptStates: new Set([2, 3, 4]),
+      startStates: new Set([0]),
+      transitions: [
+        /* 0 */ new Map([['Atom:a', new Set([1])]]),
+        /* 1 */ new Map([['Atom:a', new Set([2])]]),
+        /* 2 */ new Map([['Atom:a', new Set([3])]]),
+        /* 3 */ new Map([['Atom:a', new Set([4])]]),
+        /* 4 */ new Map(),
       ],
     });
   });
@@ -297,1849 +143,270 @@ describe('NFAToDFA()', () => {
   //
   describe('building DFAs from "real world" regular expressions', () => {
     it('builds a DFA for ESCAPED_CHARACTER', () => {
-      expect(
-        NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/\\["\\\/bfnrt]/)))),
-      ).toEqual({
-        id: 0,
-        flags: START,
-        edges: [
-          {
-            on: {kind: 'Atom', value: '\\'},
-            to: {
-              id: 1,
-              flags: NONE,
-              edges: [
-                {
-                  on: {kind: 'Atom', value: '"'},
-                  to: {
-                    id: 2,
-                    flags: ACCEPT,
-                    edges: [],
-                  },
-                },
-                {
-                  on: {kind: 'Atom', value: '/'},
-                  to: {
-                    id: 3,
-                    flags: ACCEPT,
-                    edges: [],
-                  },
-                },
-                {
-                  on: {kind: 'Atom', value: '\\'},
-                  to: {
-                    id: 4,
-                    flags: ACCEPT,
-                    edges: [],
-                  },
-                },
-                {
-                  on: {kind: 'Atom', value: 'b'},
-                  to: {
-                    id: 5,
-                    flags: ACCEPT,
-                    edges: [],
-                  },
-                },
-                {
-                  on: {kind: 'Atom', value: 'f'},
-                  to: {
-                    id: 6,
-                    flags: ACCEPT,
-                    edges: [],
-                  },
-                },
-                {
-                  on: {kind: 'Atom', value: 'n'},
-                  to: {
-                    id: 7,
-                    flags: ACCEPT,
-                    edges: [],
-                  },
-                },
-                {
-                  on: {kind: 'Atom', value: 'r'},
-                  to: {
-                    id: 8,
-                    flags: ACCEPT,
-                    edges: [],
-                  },
-                },
-                {
-                  on: {kind: 'Atom', value: 't'},
-                  to: {
-                    id: 9,
-                    flags: ACCEPT,
-                    edges: [],
-                  },
-                },
-              ],
-            },
-          },
+      expect(makeDFA(/\\["\\\/bfnrt]/)).toEqual({
+        acceptStates: new Set([2, 3, 4, 5, 6, 7, 8, 9]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([['Atom:\\', new Set([1])]]),
+          /* 1 */ new Map([
+            ['Atom:"', new Set([2])],
+            ['Atom:/', new Set([3])],
+            ['Atom:\\', new Set([4])],
+            ['Atom:b', new Set([5])],
+            ['Atom:f', new Set([6])],
+            ['Atom:n', new Set([7])],
+            ['Atom:r', new Set([8])],
+            ['Atom:t', new Set([9])],
+          ]),
+          /* 2 */ new Map(),
+          /* 3 */ new Map(),
+          /* 4 */ new Map(),
+          /* 5 */ new Map(),
+          /* 6 */ new Map(),
+          /* 7 */ new Map(),
+          /* 8 */ new Map(),
+          /* 9 */ new Map(),
         ],
       });
     });
 
     it('builds a DFA for ESCAPED_UNICODE', () => {
-      expect(
-        NFAToDFA(
-          removeEpsilons(regExpToNFA(compileRegExp(/\\u[0-9A-Fa-f]{4}/))),
-        ),
-      ).toEqual({
-        id: 0,
-        flags: START,
-        edges: [
-          {
-            on: {kind: 'Atom', value: '\\'},
-            to: {
-              id: 1,
-              flags: NONE,
-              edges: [
-                {
-                  on: {kind: 'Atom', value: 'u'},
-                  to: {
-                    id: 2,
-                    flags: NONE,
-                    edges: [
-                      {
-                        on: {kind: 'Range', from: '0', to: '9'},
-                        to: {
-                          id: 3,
-                          flags: NONE,
-                          edges: [
-                            {
-                              on: {kind: 'Range', from: '0', to: '9'},
-                              to: {
-                                id: 6,
-                                flags: NONE,
-                                edges: [
-                                  {
-                                    on: {kind: 'Range', from: '0', to: '9'},
-                                    to: {
-                                      id: 9,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                  {
-                                    on: {kind: 'Range', from: 'A', to: 'F'},
-                                    to: {
-                                      id: 10,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                  {
-                                    on: {kind: 'Range', from: 'a', to: 'f'},
-                                    to: {
-                                      id: 11,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              on: {kind: 'Range', from: 'A', to: 'F'},
-                              to: {
-                                id: 7,
-                                flags: NONE,
-                                edges: [
-                                  {
-                                    on: {kind: 'Range', from: '0', to: '9'},
-                                    to: {
-                                      id: 9,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                  {
-                                    on: {kind: 'Range', from: 'A', to: 'F'},
-                                    to: {
-                                      id: 10,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                  {
-                                    on: {kind: 'Range', from: 'a', to: 'f'},
-                                    to: {
-                                      id: 11,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              on: {kind: 'Range', from: 'a', to: 'f'},
-                              to: {
-                                id: 8,
-                                flags: NONE,
-                                edges: [
-                                  {
-                                    on: {kind: 'Range', from: '0', to: '9'},
-                                    to: {
-                                      id: 9,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                  {
-                                    on: {kind: 'Range', from: 'A', to: 'F'},
-                                    to: {
-                                      id: 10,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                  {
-                                    on: {kind: 'Range', from: 'a', to: 'f'},
-                                    to: {
-                                      id: 11,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                          ],
-                        },
-                      },
-                      {
-                        on: {kind: 'Range', from: 'A', to: 'F'},
-                        to: {
-                          id: 4,
-                          flags: NONE,
-                          edges: [
-                            {
-                              on: {kind: 'Range', from: '0', to: '9'},
-                              to: {
-                                id: 6,
-                                flags: NONE,
-                                edges: [
-                                  {
-                                    on: {kind: 'Range', from: '0', to: '9'},
-                                    to: {
-                                      id: 9,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                  {
-                                    on: {kind: 'Range', from: 'A', to: 'F'},
-                                    to: {
-                                      id: 10,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                  {
-                                    on: {kind: 'Range', from: 'a', to: 'f'},
-                                    to: {
-                                      id: 11,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              on: {kind: 'Range', from: 'A', to: 'F'},
-                              to: {
-                                id: 7,
-                                flags: NONE,
-                                edges: [
-                                  {
-                                    on: {kind: 'Range', from: '0', to: '9'},
-                                    to: {
-                                      id: 9,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                  {
-                                    on: {kind: 'Range', from: 'A', to: 'F'},
-                                    to: {
-                                      id: 10,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                  {
-                                    on: {kind: 'Range', from: 'a', to: 'f'},
-                                    to: {
-                                      id: 11,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              on: {kind: 'Range', from: 'a', to: 'f'},
-                              to: {
-                                id: 8,
-                                flags: NONE,
-                                edges: [
-                                  {
-                                    on: {kind: 'Range', from: '0', to: '9'},
-                                    to: {
-                                      id: 9,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                  {
-                                    on: {kind: 'Range', from: 'A', to: 'F'},
-                                    to: {
-                                      id: 10,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                  {
-                                    on: {kind: 'Range', from: 'a', to: 'f'},
-                                    to: {
-                                      id: 11,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                          ],
-                        },
-                      },
-                      {
-                        on: {kind: 'Range', from: 'a', to: 'f'},
-                        to: {
-                          id: 5,
-                          flags: NONE,
-                          edges: [
-                            {
-                              on: {kind: 'Range', from: '0', to: '9'},
-                              to: {
-                                id: 6,
-                                flags: NONE,
-                                edges: [
-                                  {
-                                    on: {kind: 'Range', from: '0', to: '9'},
-                                    to: {
-                                      id: 9,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                  {
-                                    on: {kind: 'Range', from: 'A', to: 'F'},
-                                    to: {
-                                      id: 10,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                  {
-                                    on: {kind: 'Range', from: 'a', to: 'f'},
-                                    to: {
-                                      id: 11,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              on: {kind: 'Range', from: 'A', to: 'F'},
-                              to: {
-                                id: 7,
-                                flags: NONE,
-                                edges: [
-                                  {
-                                    on: {kind: 'Range', from: '0', to: '9'},
-                                    to: {
-                                      id: 9,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                  {
-                                    on: {kind: 'Range', from: 'A', to: 'F'},
-                                    to: {
-                                      id: 10,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                  {
-                                    on: {kind: 'Range', from: 'a', to: 'f'},
-                                    to: {
-                                      id: 11,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                            {
-                              on: {kind: 'Range', from: 'a', to: 'f'},
-                              to: {
-                                id: 8,
-                                flags: NONE,
-                                edges: [
-                                  {
-                                    on: {kind: 'Range', from: '0', to: '9'},
-                                    to: {
-                                      id: 9,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                  {
-                                    on: {kind: 'Range', from: 'A', to: 'F'},
-                                    to: {
-                                      id: 10,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                  {
-                                    on: {kind: 'Range', from: 'a', to: 'f'},
-                                    to: {
-                                      id: 11,
-                                      flags: NONE,
-                                      edges: [
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: '0',
-                                            to: '9',
-                                          },
-                                          to: {
-                                            id: 12,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'A',
-                                            to: 'F',
-                                          },
-                                          to: {
-                                            id: 13,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                        {
-                                          on: {
-                                            kind: 'Range',
-                                            from: 'a',
-                                            to: 'f',
-                                          },
-                                          to: {
-                                            id: 14,
-                                            flags: ACCEPT,
-                                            edges: [],
-                                          },
-                                        },
-                                      ],
-                                    },
-                                  },
-                                ],
-                              },
-                            },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
+      expect(makeDFA(/\\u[0-9A-Fa-f]{4}/)).toEqual({
+        acceptStates: new Set([12, 13, 14]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([['Atom:\\', new Set([1])]]),
+          /* 1 */ new Map([['Atom:u', new Set([2])]]),
+          /* 2 */ new Map([
+            ['Range:0-9', new Set([3])],
+            ['Range:A-F', new Set([4])],
+            ['Range:a-f', new Set([5])],
+          ]),
+          /* 3 */ new Map([
+            ['Range:0-9', new Set([6])],
+            ['Range:A-F', new Set([7])],
+            ['Range:a-f', new Set([8])],
+          ]),
+          /* 4 */ new Map([
+            ['Range:0-9', new Set([6])],
+            ['Range:A-F', new Set([7])],
+            ['Range:a-f', new Set([8])],
+          ]),
+          /* 5 */ new Map([
+            ['Range:0-9', new Set([6])],
+            ['Range:A-F', new Set([7])],
+            ['Range:a-f', new Set([8])],
+          ]),
+          /* 6 */ new Map([
+            ['Range:0-9', new Set([9])],
+            ['Range:A-F', new Set([10])],
+            ['Range:a-f', new Set([11])],
+          ]),
+          /* 7 */ new Map([
+            ['Range:0-9', new Set([9])],
+            ['Range:A-F', new Set([10])],
+            ['Range:a-f', new Set([11])],
+          ]),
+          /* 8 */ new Map([
+            ['Range:0-9', new Set([9])],
+            ['Range:A-F', new Set([10])],
+            ['Range:a-f', new Set([11])],
+          ]),
+          /* 9 */ new Map([
+            ['Range:0-9', new Set([12])],
+            ['Range:A-F', new Set([13])],
+            ['Range:a-f', new Set([14])],
+          ]),
+          /* 10 */ new Map([
+            ['Range:0-9', new Set([12])],
+            ['Range:A-F', new Set([13])],
+            ['Range:a-f', new Set([14])],
+          ]),
+          /* 11 */ new Map([
+            ['Range:0-9', new Set([12])],
+            ['Range:A-F', new Set([13])],
+            ['Range:a-f', new Set([14])],
+          ]),
+          /* 12 */ new Map(),
+          /* 13 */ new Map(),
+          /* 14 */ new Map(),
         ],
       });
     });
 
-    xit('builds a DFA for EXPONENT_PART', () => {
-      const start: NFA = {
-        id: 0,
-        flags: START,
-        edges: [
-          {
-            on: {kind: 'Atom', value: 'e'},
-            to: {
-              id: 1,
-              flags: NONE,
-              edges: [],
-            },
-          },
-          {
-            on: {kind: 'Atom', value: 'E'},
-            to: {
-              id: 2,
-              flags: NONE,
-              edges: [
-                {
-                  on: {kind: 'Atom', value: '+'},
-                  to: {
-                    id: 3,
-                    flags: NONE,
-                    edges: [],
-                  },
-                },
-                {
-                  on: {kind: 'Atom', value: '-'},
-                  to: {
-                    id: 4,
-                    flags: NONE,
-                    edges: [],
-                  },
-                },
-                {
-                  on: {kind: 'Range', from: '0', to: '9'},
-                  to: {
-                    id: 5,
-                    flags: ACCEPT,
-                    edges: [], // Circular reference will go here.
-                  },
-                },
-              ],
-            },
-          },
+    it('builds a DFA for EXPONENT_PART', () => {
+      expect(makeDFA(/[eE][+-]?\d+/)).toEqual({
+        acceptStates: new Set([5]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([
+            ['Atom:e', new Set([1])],
+            ['Atom:E', new Set([2])],
+          ]),
+          /* 1 */ new Map([
+            ['Atom:+', new Set([3])],
+            ['Atom:-', new Set([4])],
+            ['Range:0-9', new Set([5])],
+          ]),
+          /* 2 */ new Map([
+            ['Atom:+', new Set([3])],
+            ['Atom:-', new Set([4])],
+            ['Range:0-9', new Set([5])],
+          ]),
+          /* 3 */ new Map([['Range:0-9', new Set([5])]]),
+          /* 4 */ new Map([['Range:0-9', new Set([5])]]),
+          /* 5 */ new Map([['Range:0-9', new Set([5])]]),
         ],
-      };
-      start.edges[1].to.edges[2].to.edges.push({
-        on: {kind: 'Range', from: '0', to: '9'},
-        to: start.edges[1].to.edges[2].to,
       });
-      expect(
-        NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/[eE][+-]?\d+/)))),
-      ).toEqual(start);
     });
 
-    xit('builds a DFA for FRACTIONAL_PART', () => {
-      const start: NFA = {
-        id: 0,
-        flags: START,
-        edges: [
-          {
-            on: {kind: 'Atom', value: '.'},
-            to: {
-              id: 1,
-              flags: NONE,
-              edges: [
-                {
-                  on: {kind: 'Range', from: '0', to: '9'},
-                  to: {
-                    id: 2,
-                    flags: ACCEPT,
-                    edges: [], // Circular reference will go here.
-                  },
-                },
-              ],
-            },
-          },
+    it('builds a DFA for FRACTIONAL_PART', () => {
+      expect(makeDFA(/\.\d+/)).toEqual({
+        acceptStates: new Set([2]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([['Atom:.', new Set([1])]]),
+          /* 1 */ new Map([['Range:0-9', new Set([2])]]),
+          /* 2 */ new Map([['Range:0-9', new Set([2])]]),
         ],
-      };
-      start.edges[0].to.edges[0].to.edges.push({
-        on: {kind: 'Range', from: '0', to: '9'},
-        to: start.edges[0].to.edges[0].to,
       });
-      expect(
-        NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/\.\d+/)))),
-      ).toEqual(start);
     });
 
-    xit('builds a DFA for INTEGER_PART', () => {
-      const start: NFA = {
-        id: 0,
-        flags: START,
-        edges: [
-          {
-            on: {kind: 'Atom', value: '-'},
-            to: {
-              id: 1,
-              // TODO: confirm that the existence of this state isn't indicative of a bug...
-              // (I strongly suspect that it is)
-              // TODO: alternatively, confirm that dead-state removal removes this kind of state
-              flags: NONE,
-              edges: [],
-            },
-          },
-          {
-            on: {kind: 'Atom', value: '0'},
-            to: {
-              id: 2,
-              flags: ACCEPT,
-              edges: [],
-            },
-          },
-          {
-            on: {kind: 'Range', from: '1', to: '9'},
-            to: {
-              id: 3,
-              flags: ACCEPT,
-              edges: [
-                {
-                  on: {kind: 'Range', from: '0', to: '9'},
-                  to: {
-                    id: 4,
-                    flags: ACCEPT,
-                    edges: [], // Circular references will go here.
-                  },
-                },
-              ],
-            },
-          },
+    it('builds a DFA for INTEGER_PART', () => {
+      expect(makeDFA(/-?(0|[1-9]\d*)/)).toEqual({
+        acceptStates: new Set([2, 3, 4]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([
+            ['Atom:-', new Set([1])],
+            ['Atom:0', new Set([2])],
+            ['Range:1-9', new Set([3])],
+          ]),
+          /* 1 */ new Map([
+            ['Atom:0', new Set([2])],
+            ['Range:1-9', new Set([3])],
+          ]),
+          /* 2 */ new Map(),
+          /* 3 */ new Map([['Range:0-9', new Set([4])]]),
+          /* 4 */ new Map([['Range:0-9', new Set([4])]]),
         ],
-      };
-      start.edges[2].to.edges[0].to.edges.push({
-        on: {kind: 'Range', from: '0', to: '9'},
-        to: start.edges[2].to.edges[0].to,
       });
-      expect(
-        NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/-?(0|[1-9]\d*)/)))),
-      ).toEqual(start);
     });
 
     it('builds a DFA for LINE_TERMINATOR', () => {
-      expect(
-        NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/\n|\r\n|\r/)))),
-      ).toEqual({
-        id: 0,
-        flags: START,
-        edges: [
-          {
-            on: {kind: 'Atom', value: '\r'},
-            to: {
-              id: 1,
-              flags: ACCEPT,
-              edges: [
-                {
-                  on: {kind: 'Atom', value: '\n'},
-                  to: {
-                    id: 3,
-                    flags: ACCEPT,
-                    edges: [],
-                  },
-                },
-              ],
-            },
-          },
-          {
-            on: {kind: 'Atom', value: '\n'},
-            to: {
-              id: 2,
-              flags: ACCEPT,
-              edges: [],
-            },
-          },
+      expect(makeDFA(/\n|\r\n|\r/)).toEqual({
+        acceptStates: new Set([1, 3, 2]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([
+            ['Atom:\r', new Set([1])],
+            ['Atom:\n', new Set([2])],
+          ]),
+          /* 1 */ new Map([['Atom:\n', new Set([3])]]),
+          /* 2 */ new Map(),
+          /* 3 */ new Map(),
         ],
       });
     });
 
     it('builds a DFA for SOURCE_CHARACTER', () => {
-      expect(
-        NFAToDFA(
-          removeEpsilons(
-            regExpToNFA(compileRegExp(/[\u0009\u000a\u000d\u0020-\uffff]/)),
-          ),
-        ),
-      ).toEqual({
-        id: 0,
-        flags: START,
-        edges: [
-          {
-            on: {kind: 'Range', from: ' ', to: '\uffff'},
-            to: {
-              id: 1,
-              flags: ACCEPT,
-              edges: [],
-            },
-          },
-          {
-            on: {kind: 'Atom', value: '\r'},
-            to: {
-              id: 2,
-              flags: ACCEPT,
-              edges: [],
-            },
-          },
-          {
-            on: {kind: 'Range', from: '\t', to: '\n'},
-            to: {
-              id: 3,
-              flags: ACCEPT,
-              edges: [],
-            },
-          },
+      expect(makeDFA(/[\u0009\u000a\u000d\u0020-\uffff]/)).toEqual({
+        acceptStates: new Set([1, 2, 3]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([
+            ['Range: -\uffff', new Set([1])],
+            ['Atom:\r', new Set([2])],
+            ['Range:\t-\n', new Set([3])],
+          ]),
+          /* 1 */ new Map(),
+          /* 2 */ new Map(),
+          /* 3 */ new Map(),
         ],
       });
     });
 
-    xit('builds a DFA for NAME', () => {
-      const start: NFA = {
-        id: 0,
-        flags: START,
-        edges: [
-          {
-            on: {kind: 'Range', from: 'a', to: 'z'},
-            to: {
-              id: 1,
-              flags: NONE,
-              edges: [],
-            },
-          },
-          {
-            on: {kind: 'Atom', value: '_'},
-            to: {
-              id: 2,
-              flags: NONE,
-              edges: [],
-            },
-          },
-          {
-            on: {kind: 'Range', from: 'A', to: 'Z'},
-            to: {
-              id: 3,
-              flags: ACCEPT,
-              edges: [
-                {
-                  on: {kind: 'Range', from: '0', to: '9'},
-                  to: {
-                    id: 4,
-                    flags: ACCEPT,
-                    edges: [], // Circular references will go here.
-                  },
-                },
-                {
-                  on: {kind: 'Range', from: 'A', to: 'Z'},
-                  to: {
-                    id: 5,
-                    flags: ACCEPT,
-                    edges: [], // Circular references will go here.
-                  },
-                },
-                {
-                  on: {kind: 'Atom', value: '_'},
-                  to: {
-                    id: 6,
-                    flags: ACCEPT,
-                    edges: [], // Circular references will go here.
-                  },
-                },
-                {
-                  on: {kind: 'Range', from: 'a', to: 'z'},
-                  to: {
-                    id: 7,
-                    flags: ACCEPT,
-                    edges: [], // Circular references will go here.
-                  },
-                },
-              ],
-            },
-          },
+    it('builds a DFA for NAME', () => {
+      expect(makeDFA(/[_A-Za-z][_0-9A-Za-z]*/)).toEqual({
+        acceptStates: new Set([1, 4, 5, 6, 7, 2, 3]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([
+            ['Range:a-z', new Set([1])],
+            ['Atom:_', new Set([2])],
+            ['Range:A-Z', new Set([3])],
+          ]),
+          /* 1 */ new Map([
+            ['Range:0-9', new Set([4])],
+            ['Range:A-Z', new Set([5])],
+            ['Atom:_', new Set([6])],
+            ['Range:a-z', new Set([7])],
+          ]),
+          /* 2 */ new Map([
+            ['Range:0-9', new Set([4])],
+            ['Range:A-Z', new Set([5])],
+            ['Atom:_', new Set([6])],
+            ['Range:a-z', new Set([7])],
+          ]),
+          /* 3 */ new Map([
+            ['Range:0-9', new Set([4])],
+            ['Range:A-Z', new Set([5])],
+            ['Atom:_', new Set([6])],
+            ['Range:a-z', new Set([7])],
+          ]),
+          /* 4 */ new Map([
+            ['Range:0-9', new Set([4])],
+            ['Range:A-Z', new Set([5])],
+            ['Atom:_', new Set([6])],
+            ['Range:a-z', new Set([7])],
+          ]),
+          /* 5 */ new Map([
+            ['Range:0-9', new Set([4])],
+            ['Range:A-Z', new Set([5])],
+            ['Atom:_', new Set([6])],
+            ['Range:a-z', new Set([7])],
+          ]),
+          /* 6 */ new Map([
+            ['Range:0-9', new Set([4])],
+            ['Range:A-Z', new Set([5])],
+            ['Atom:_', new Set([6])],
+            ['Range:a-z', new Set([7])],
+          ]),
+          /* 7 */ new Map([
+            ['Range:0-9', new Set([4])],
+            ['Range:A-Z', new Set([5])],
+            ['Atom:_', new Set([6])],
+            ['Range:a-z', new Set([7])],
+          ]),
         ],
-      };
-      start.edges[2].to.edges[0].to.edges.push(
-        {
-          on: {kind: 'Range', from: '0', to: '9'},
-          to: start.edges[2].to.edges[0].to,
-        },
-        {
-          on: {kind: 'Range', from: 'A', to: 'Z'},
-          to: start.edges[2].to.edges[1].to,
-        },
-        {
-          on: {kind: 'Atom', value: '_'},
-          to: start.edges[2].to.edges[2].to,
-        },
-        {
-          on: {kind: 'Range', from: 'a', to: 'z'},
-          to: start.edges[2].to.edges[3].to,
-        },
-      );
-      start.edges[2].to.edges[1].to.edges.push(
-        {
-          on: {kind: 'Range', from: '0', to: '9'},
-          to: start.edges[2].to.edges[0].to,
-        },
-        {
-          on: {kind: 'Range', from: 'A', to: 'Z'},
-          to: start.edges[2].to.edges[1].to,
-        },
-        {
-          on: {kind: 'Atom', value: '_'},
-          to: start.edges[2].to.edges[2].to,
-        },
-        {
-          on: {kind: 'Range', from: 'a', to: 'z'},
-          to: start.edges[2].to.edges[3].to,
-        },
-      );
-      start.edges[2].to.edges[2].to.edges.push(
-        {
-          on: {kind: 'Range', from: '0', to: '9'},
-          to: start.edges[2].to.edges[0].to,
-        },
-        {
-          on: {kind: 'Range', from: 'A', to: 'Z'},
-          to: start.edges[2].to.edges[1].to,
-        },
-        {
-          on: {kind: 'Atom', value: '_'},
-          to: start.edges[2].to.edges[2].to,
-        },
-        {
-          on: {kind: 'Range', from: 'a', to: 'z'},
-          to: start.edges[2].to.edges[3].to,
-        },
-      );
-      start.edges[2].to.edges[3].to.edges.push(
-        {
-          on: {kind: 'Range', from: '0', to: '9'},
-          to: start.edges[2].to.edges[0].to,
-        },
-        {
-          on: {kind: 'Range', from: 'A', to: 'Z'},
-          to: start.edges[2].to.edges[1].to,
-        },
-        {
-          on: {kind: 'Atom', value: '_'},
-          to: start.edges[2].to.edges[2].to,
-        },
-        {
-          on: {kind: 'Range', from: 'a', to: 'z'},
-          to: start.edges[2].to.edges[3].to,
-        },
-      );
-      expect(
-        NFAToDFA(
-          removeEpsilons(regExpToNFA(compileRegExp(/[_A-Za-z][_0-9A-Za-z]*/))),
-        ),
-      ).toEqual(start);
+      });
     });
 
     it('builds a DFA for WHITESPACE', () => {
-      const start: NFA = {
-        id: 0,
-        flags: START,
-        edges: [
-          {
-            on: {kind: 'Atom', value: ' '},
-            to: {
-              id: 1,
-              flags: ACCEPT,
-              edges: [], // Circular references will go here.
-            },
-          },
-          {
-            on: {kind: 'Atom', value: '\t'},
-            to: {
-              id: 2,
-              flags: ACCEPT,
-              edges: [], // Circular references will go here.
-            },
-          },
+      expect(makeDFA(/[\t ]+/)).toEqual({
+        acceptStates: new Set([1, 2]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([
+            ['Atom: ', new Set([1])],
+            ['Atom:\t', new Set([2])],
+          ]),
+          /* 1 */ new Map([
+            ['Atom: ', new Set([1])],
+            ['Atom:\t', new Set([2])],
+          ]),
+          /* 2 */ new Map([
+            ['Atom: ', new Set([1])],
+            ['Atom:\t', new Set([2])],
+          ]),
         ],
-      };
-      start.edges[0].to.edges.push(
-        {
-          on: {kind: 'Atom', value: ' '},
-          to: start.edges[0].to,
-        },
-        {
-          on: {kind: 'Atom', value: '\t'},
-          to: start.edges[1].to,
-        },
-      );
-      start.edges[1].to.edges.push(
-        {
-          on: {kind: 'Atom', value: ' '},
-          to: start.edges[0].to,
-        },
-        {
-          on: {kind: 'Atom', value: '\t'},
-          to: start.edges[1].to,
-        },
-      );
-      expect(
-        NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(/[\t ]+/)))),
-      ).toEqual(start);
+      });
     });
   });
 });
+
+function makeDFA(regExp: RegExp): TransitionTable {
+  return toTransitionTable(
+    NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(regExp)))),
+  );
+}
