@@ -72,6 +72,77 @@ describe('minimizeDFA()', () => {
         ],
       });
     });
+
+    it('minimizes a DFA for EXPONENT_PART', () => {
+      expect(minimize(/[eE][+-]?\d+/)).toEqual({
+        acceptStates: new Set([2]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([
+            ['Atom:e', new Set([1])],
+            ['Atom:E', new Set([1])],
+          ]),
+          /* 1 */ new Map([
+            ['Range:0-9', new Set([2])],
+            ['Atom:+', new Set([3])],
+            ['Atom:-', new Set([3])],
+          ]),
+          /* 2 */ new Map([['Range:0-9', new Set([2])]]),
+          /* 3 */ new Map([['Range:0-9', new Set([2])]]),
+        ],
+      });
+    });
+
+    it('minimizes a DFA for FRACTIONAL_PART', () => {
+      expect(minimize(/\.\d+/)).toEqual({
+        acceptStates: new Set([2]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([['Atom:.', new Set([1])]]),
+          /* 1 */ new Map([['Range:0-9', new Set([2])]]),
+          /* 2 */ new Map([['Range:0-9', new Set([2])]]),
+        ],
+      });
+    });
+
+    // NFAToDFA(): Expected exactly 1 start state, got 3
+    xit('minimizes a DFA for INTEGER_PART', () => {
+      console.log(stringifyTransitionTable(minimize(/-?(0|[1-9]\d*)/)));
+      expect(minimize(/-?(0|[1-9]\d*)/)).toEqual({});
+    });
+
+    // NFAToDFA(): Expected exactly 1 start state, got 2
+    xit('minimizes a DFA for LINE_TERMINATOR', () => {
+      console.log(stringifyTransitionTable(minimize(/\n|\r\n|\r/)));
+      expect(minimize(/\n|\r\n|\r/)).toEqual({});
+    });
+
+    it('minimizes a DFA for SOURCE_CHARACTER', () => {
+      expect(minimize(/[\u0009\u000a\u000d\u0020-\uffff]/)).toEqual({
+        acceptStates: new Set([1]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([
+            ['Range: -\uffff', new Set([1])],
+            ['Range:\t-\n', new Set([1])],
+            ['Atom:\r', new Set([1])],
+          ]),
+          /* 1 */ new Map(),
+        ],
+      });
+    });
+
+    // NFAToDFA(): Expected exactly 1 start state, got 8
+    xit('minimizes a DFA for NAME', () => {
+      console.log(stringifyTransitionTable(minimize(/[_A-Za-z][_0-9A-Za-z]*/)));
+      expect(minimize(/[_A-Za-z][_0-9A-Za-z]*/)).toEqual({});
+    });
+
+    // NFAToDFA(): Expected exactly 1 start state, got 3
+    xit('minimizes a DFA for WHITESPACE', () => {
+      console.log(stringifyTransitionTable(minimize(/[\t ]+/)));
+      expect(minimize(/[\t ]+/)).toEqual({});
+    });
   });
 });
 
