@@ -25,6 +25,7 @@
     "build:watch": "tsc --build --watch",
     "format": "prettier --write '**/*.{js,json,md,ts}'",
     "format:check": "prettier --check '**/*.{js,json,md,ts}'",
+    "lint": "tsc --project tsconfig-lint.json",
     "test": "jest"
   }
 }
