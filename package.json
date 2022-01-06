@@ -23,8 +23,8 @@
     "build:dry": "tsc --build --dry",
     "build:force": "tsc --build --force",
     "build:watch": "tsc --build --watch",
-    "format": "prettier --write '**/*.{js,json,md,ts}'",
-    "format:check": "prettier --check '**/*.{js,json,md,ts}'",
+    "format": "prettier --loglevel warn --write '**/*.{js,json,md,ts}'",
+    "format:check": "prettier --loglevel warn --check '**/*.{js,json,md,ts}'",
     "lint": "tsc --project tsconfig-lint.json",
     "test": "jest"
   }
