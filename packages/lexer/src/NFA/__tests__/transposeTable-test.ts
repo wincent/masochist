@@ -1,4 +1,15 @@
 import compileRegExp from '../../compileRegExp';
+import {
+  ESCAPED_CHARACTER,
+  ESCAPED_UNICODE,
+  EXPONENT_PART,
+  FRACTIONAL_PART,
+  INTEGER_PART,
+  LINE_TERMINATOR,
+  NAME,
+  SOURCE_CHARACTER,
+  WHITESPACE,
+} from '../../lexer';
 import NFAToDFA from '../NFAToDFA';
 import regExpToNFA from '../regExpToNFA';
 import removeEpsilons from '../removeEpsilons';
@@ -10,7 +21,7 @@ import type {TransitionTable} from '../toTransitionTable';
 
 describe('transposeTable()', () => {
   it('transposes a transition table for ESCAPED_CHARACTER', () => {
-    expect(transpose(/\\["\\\/bfnrt]/)).toEqual({
+    expect(transpose(ESCAPED_CHARACTER)).toEqual({
       acceptStates: new Set([0]),
       startStates: new Set([2, 3, 4, 5, 6, 7, 8, 9]),
       transitions: [
@@ -29,7 +40,7 @@ describe('transposeTable()', () => {
   });
 
   it('transposes a DFA for ESCAPED_UNICODE', () => {
-    expect(transpose(/\\u[0-9A-Fa-f]{4}/)).toEqual({
+    expect(transpose(ESCAPED_UNICODE)).toEqual({
       acceptStates: new Set([0]),
       startStates: new Set([12, 13, 14]),
       transitions: [
@@ -53,7 +64,7 @@ describe('transposeTable()', () => {
   });
 
   it('transposes a DFA for EXPONENT_PART', () => {
-    expect(transpose(/[eE][+-]?\d+/)).toEqual({
+    expect(transpose(EXPONENT_PART)).toEqual({
       acceptStates: new Set([0]),
       startStates: new Set([5]),
       transitions: [
@@ -68,7 +79,7 @@ describe('transposeTable()', () => {
   });
 
   it('transposes a DFA for FRACTIONAL_PART', () => {
-    expect(transpose(/\.\d+/)).toEqual({
+    expect(transpose(FRACTIONAL_PART)).toEqual({
       acceptStates: new Set([0]),
       startStates: new Set([2]),
       transitions: [
@@ -80,7 +91,7 @@ describe('transposeTable()', () => {
   });
 
   it('transposes a DFA for INTEGER_PART', () => {
-    expect(transpose(/-?(0|[1-9]\d*)/)).toEqual({
+    expect(transpose(INTEGER_PART)).toEqual({
       acceptStates: new Set([0]),
       startStates: new Set([2, 3, 4]),
       transitions: [
@@ -94,7 +105,7 @@ describe('transposeTable()', () => {
   });
 
   it('transposes a DFA for LINE_TERMINATOR', () => {
-    expect(transpose(/\n|\r\n|\r/)).toEqual({
+    expect(transpose(LINE_TERMINATOR)).toEqual({
       acceptStates: new Set([0]),
       startStates: new Set([1, 3, 2]),
       transitions: [
@@ -106,21 +117,8 @@ describe('transposeTable()', () => {
     });
   });
 
-  it('transposes a DFA for SOURCE_CHARACTER', () => {
-    expect(transpose(/[\u0009\u000a\u000d\u0020-\uffff]/)).toEqual({
-      acceptStates: new Set([0]),
-      startStates: new Set([1, 2, 3]),
-      transitions: [
-        /* 0 */ new Map(),
-        /* 1 */ new Map([['Range: -\uffff', new Set([0])]]),
-        /* 2 */ new Map([['Atom:\r', new Set([0])]]),
-        /* 3 */ new Map([['Range:\t-\n', new Set([0])]]),
-      ],
-    });
-  });
-
   it('transposes a DFA for NAME', () => {
-    expect(transpose(/[_A-Za-z][_0-9A-Za-z]*/)).toEqual({
+    expect(transpose(NAME)).toEqual({
       acceptStates: new Set([0]),
       startStates: new Set([1, 2, 3, 4, 5, 6, 7]),
       transitions: [
@@ -136,8 +134,21 @@ describe('transposeTable()', () => {
     });
   });
 
+  it('transposes a DFA for SOURCE_CHARACTER', () => {
+    expect(transpose(SOURCE_CHARACTER)).toEqual({
+      acceptStates: new Set([0]),
+      startStates: new Set([1, 2, 3]),
+      transitions: [
+        /* 0 */ new Map(),
+        /* 1 */ new Map([['Range: -\uffff', new Set([0])]]),
+        /* 2 */ new Map([['Atom:\r', new Set([0])]]),
+        /* 3 */ new Map([['Range:\t-\n', new Set([0])]]),
+      ],
+    });
+  });
+
   it('transposes a DFA for WHITESPACE', () => {
-    expect(transpose(/[\t ]+/)).toEqual({
+    expect(transpose(WHITESPACE)).toEqual({
       acceptStates: new Set([0]),
       startStates: new Set([1, 2]),
       transitions: [

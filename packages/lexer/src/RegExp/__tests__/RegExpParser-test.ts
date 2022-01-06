@@ -1,3 +1,14 @@
+import {
+  ESCAPED_CHARACTER,
+  ESCAPED_UNICODE,
+  EXPONENT_PART,
+  FRACTIONAL_PART,
+  INTEGER_PART,
+  LINE_TERMINATOR,
+  NAME,
+  SOURCE_CHARACTER,
+  WHITESPACE,
+} from '../../lexer';
 import RegExpParser from '../RegExpParser';
 
 describe('RegExpParser', () => {
@@ -491,16 +502,10 @@ describe('RegExpParser', () => {
     });
   });
 
-  // RegExps taken from:
-  //
-  //    https://github.com/wincent/masochist/blob/d224383b088a1f44/packages/compiler/src/lex.ts
-  //
-  // With only modification being removing non-capturing group syntax
-  // (`(?:...)`).
-  //
   describe('real-world examples', () => {
     it('matches ESCAPED_CHARACTER RegExp', () => {
-      expect(new RegExpParser(/\\["\\\/bfnrt]/).parse()).toMatchInlineSnapshot(`
+      expect(new RegExpParser(ESCAPED_CHARACTER).parse())
+        .toMatchInlineSnapshot(`
         Object {
           "children": Array [
             Object {
@@ -552,8 +557,7 @@ describe('RegExpParser', () => {
     });
 
     it('matches ESCAPED_UNICODE RegExp', () => {
-      expect(new RegExpParser(/\\u[0-9A-Fa-f]{4}/).parse())
-        .toMatchInlineSnapshot(`
+      expect(new RegExpParser(ESCAPED_UNICODE).parse()).toMatchInlineSnapshot(`
         Object {
           "children": Array [
             Object {
@@ -597,7 +601,7 @@ describe('RegExpParser', () => {
     });
 
     it('matches EXPONENT_PART RegExp', () => {
-      expect(new RegExpParser(/[eE][+-]?\d+/).parse()).toMatchInlineSnapshot(`
+      expect(new RegExpParser(EXPONENT_PART).parse()).toMatchInlineSnapshot(`
         Object {
           "children": Array [
             Object {
@@ -650,7 +654,7 @@ describe('RegExpParser', () => {
     });
 
     it('matches FRACTIONAL_PART RegExp', () => {
-      expect(new RegExpParser(/\.\d+/).parse()).toMatchInlineSnapshot(`
+      expect(new RegExpParser(FRACTIONAL_PART).parse()).toMatchInlineSnapshot(`
         Object {
           "children": Array [
             Object {
@@ -674,7 +678,7 @@ describe('RegExpParser', () => {
     });
 
     it('matches INTEGER_PART RegExp', () => {
-      expect(new RegExpParser(/-?(0|[1-9]\d*)/).parse()).toMatchInlineSnapshot(`
+      expect(new RegExpParser(INTEGER_PART).parse()).toMatchInlineSnapshot(`
         Object {
           "children": Array [
             Object {
@@ -722,7 +726,7 @@ describe('RegExpParser', () => {
     });
 
     it('matches LINE_TERMINATOR RegExp', () => {
-      expect(new RegExpParser(/\n|\r\n|\r/).parse()).toMatchInlineSnapshot(`
+      expect(new RegExpParser(LINE_TERMINATOR).parse()).toMatchInlineSnapshot(`
         Object {
           "children": Array [
             Object {
@@ -756,37 +760,8 @@ describe('RegExpParser', () => {
       `);
     });
 
-    it('matches SOURCE_CHARACTER RegExp', () => {
-      expect(new RegExpParser(/[\u0009\u000a\u000d\u0020-\uffff]/).parse())
-        .toMatchInlineSnapshot(`
-        Object {
-          "children": Array [
-            Object {
-              "from": "	",
-              "kind": "Range",
-              "to": "
-        ",
-            },
-            Object {
-              "kind": "Atom",
-              "value": "
-        ",
-            },
-            Object {
-              "from": " ",
-              "kind": "Range",
-              "to": "￿",
-            },
-          ],
-          "kind": "CharacterClass",
-          "negated": false,
-        }
-      `);
-    });
-
     it('matches NAME RegExp', () => {
-      expect(new RegExpParser(/[_A-Za-z][_0-9A-Za-z]*/).parse())
-        .toMatchInlineSnapshot(`
+      expect(new RegExpParser(NAME).parse()).toMatchInlineSnapshot(`
         Object {
           "children": Array [
             Object {
@@ -845,8 +820,35 @@ describe('RegExpParser', () => {
       `);
     });
 
+    it('matches SOURCE_CHARACTER RegExp', () => {
+      expect(new RegExpParser(SOURCE_CHARACTER).parse()).toMatchInlineSnapshot(`
+        Object {
+          "children": Array [
+            Object {
+              "from": "	",
+              "kind": "Range",
+              "to": "
+        ",
+            },
+            Object {
+              "kind": "Atom",
+              "value": "
+        ",
+            },
+            Object {
+              "from": " ",
+              "kind": "Range",
+              "to": "￿",
+            },
+          ],
+          "kind": "CharacterClass",
+          "negated": false,
+        }
+      `);
+    });
+
     it('matches WHITESPACE RegExp', () => {
-      expect(new RegExpParser(/[\t ]+/).parse()).toMatchInlineSnapshot(`
+      expect(new RegExpParser(WHITESPACE).parse()).toMatchInlineSnapshot(`
         Object {
           "child": Object {
             "children": Array [

@@ -1,4 +1,15 @@
 import compileRegExp from '../../compileRegExp';
+import {
+  ESCAPED_CHARACTER,
+  ESCAPED_UNICODE,
+  EXPONENT_PART,
+  FRACTIONAL_PART,
+  INTEGER_PART,
+  LINE_TERMINATOR,
+  NAME,
+  SOURCE_CHARACTER,
+  WHITESPACE,
+} from '../../lexer';
 import NFAToDFA from '../NFAToDFA';
 import regExpToNFA from '../regExpToNFA';
 import removeEpsilons from '../removeEpsilons';
@@ -8,16 +19,9 @@ import toTransitionTable from '../toTransitionTable';
 import type {TransitionTable} from '../toTransitionTable';
 
 describe('toTransitionTable()', () => {
-  // RegExps taken from:
-  //
-  //    https://github.com/wincent/masochist/blob/d224383b088a1f44/packages/compiler/src/lex.ts
-  //
-  // With only modification being removing non-capturing group syntax
-  // (`(?:...)`).
-  //
   describe('building transition tables from "real world" regular expressions', () => {
     it('builds a transition table for ESCAPED_CHARACTER', () => {
-      expect(getTable(/\\["\\\/bfnrt]/)).toEqual({
+      expect(getTable(ESCAPED_CHARACTER)).toEqual({
         acceptStates: new Set([2, 3, 4, 5, 6, 7, 8, 9]),
         startStates: new Set([0]),
         transitions: [
@@ -45,7 +49,7 @@ describe('toTransitionTable()', () => {
     });
 
     it('builds a transition table for ESCAPED_UNICODE', () => {
-      expect(getTable(/\\u[0-9A-Fa-f]{4}/)).toEqual({
+      expect(getTable(ESCAPED_UNICODE)).toEqual({
         acceptStates: new Set([12, 13, 14]),
         startStates: new Set([0]),
         transitions: [
@@ -109,7 +113,7 @@ describe('toTransitionTable()', () => {
     });
 
     it('builds a transition table for EXPONENT_PART', () => {
-      expect(getTable(/[eE][+-]?\d+/)).toEqual({
+      expect(getTable(EXPONENT_PART)).toEqual({
         acceptStates: new Set([5]),
         startStates: new Set([0]),
         transitions: [
@@ -135,7 +139,7 @@ describe('toTransitionTable()', () => {
     });
 
     it('builds a transition table for FRACTIONAL_PART', () => {
-      expect(getTable(/\.\d+/)).toEqual({
+      expect(getTable(FRACTIONAL_PART)).toEqual({
         acceptStates: new Set([2]),
         startStates: new Set([0]),
         transitions: [
@@ -147,7 +151,7 @@ describe('toTransitionTable()', () => {
     });
 
     it('builds a transition table for INTEGER_PART', () => {
-      expect(getTable(/-?(0|[1-9]\d*)/)).toEqual({
+      expect(getTable(INTEGER_PART)).toEqual({
         acceptStates: new Set([2, 3, 4]),
         startStates: new Set([0]),
         transitions: [
@@ -168,7 +172,7 @@ describe('toTransitionTable()', () => {
     });
 
     it('builds a transition table for LINE_TERMINATOR', () => {
-      expect(getTable(/\n|\r\n|\r/)).toEqual({
+      expect(getTable(LINE_TERMINATOR)).toEqual({
         acceptStates: new Set([1, 3, 2]),
         startStates: new Set([0]),
         transitions: [
@@ -183,25 +187,8 @@ describe('toTransitionTable()', () => {
       });
     });
 
-    it('builds a transition table for SOURCE_CHARACTER', () => {
-      expect(getTable(/[\u0009\u000a\u000d\u0020-\uffff]/)).toEqual({
-        acceptStates: new Set([1, 2, 3]),
-        startStates: new Set([0]),
-        transitions: [
-          /* 0 */ new Map([
-            ['Atom:\r', new Set([2])],
-            ['Range: -\uffff', new Set([1])],
-            ['Range:\t-\n', new Set([3])],
-          ]),
-          /* 1 */ new Map(),
-          /* 2 */ new Map(),
-          /* 3 */ new Map(),
-        ],
-      });
-    });
-
     it('builds a transition table for NAME', () => {
-      expect(getTable(/[_A-Za-z][_0-9A-Za-z]*/)).toEqual({
+      expect(getTable(NAME)).toEqual({
         acceptStates: new Set([1, 2, 3, 4, 5, 6, 7]),
         startStates: new Set([0]),
         transitions: [
@@ -256,8 +243,25 @@ describe('toTransitionTable()', () => {
       });
     });
 
+    it('builds a transition table for SOURCE_CHARACTER', () => {
+      expect(getTable(SOURCE_CHARACTER)).toEqual({
+        acceptStates: new Set([1, 2, 3]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([
+            ['Atom:\r', new Set([2])],
+            ['Range: -\uffff', new Set([1])],
+            ['Range:\t-\n', new Set([3])],
+          ]),
+          /* 1 */ new Map(),
+          /* 2 */ new Map(),
+          /* 3 */ new Map(),
+        ],
+      });
+    });
+
     it('builds a transition table for WHITESPACE', () => {
-      expect(getTable(/[\t ]+/)).toEqual({
+      expect(getTable(WHITESPACE)).toEqual({
         acceptStates: new Set([1, 2]),
         startStates: new Set([0]),
         transitions: [

@@ -1,6 +1,6 @@
 import lexer from '..';
 
-test('generated lexer', () => {
+xit('generated lexer', () => {
   expect(lexer).toMatchInlineSnapshot(`
     "*function lex(input: string) {
         for (let i = 0; i < input.length; i++) {

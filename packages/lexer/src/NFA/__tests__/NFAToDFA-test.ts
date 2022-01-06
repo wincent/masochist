@@ -1,4 +1,15 @@
 import compileRegExp from '../../compileRegExp';
+import {
+  ESCAPED_CHARACTER,
+  ESCAPED_UNICODE,
+  EXPONENT_PART,
+  FRACTIONAL_PART,
+  INTEGER_PART,
+  LINE_TERMINATOR,
+  NAME,
+  SOURCE_CHARACTER,
+  WHITESPACE,
+} from '../../lexer';
 import NFAToDFA from '../NFAToDFA';
 import regExpToNFA from '../regExpToNFA';
 import removeEpsilons from '../removeEpsilons';
@@ -134,16 +145,9 @@ describe('NFAToDFA()', () => {
     });
   });
 
-  // RegExps taken from:
-  //
-  //    https://github.com/wincent/masochist/blob/d224383b088a1f44/packages/compiler/src/lex.ts
-  //
-  // With only modification being removing non-capturing group syntax
-  // (`(?:...)`).
-  //
   describe('building DFAs from "real world" regular expressions', () => {
     it('builds a DFA for ESCAPED_CHARACTER', () => {
-      expect(makeDFA(/\\["\\\/bfnrt]/)).toEqual({
+      expect(makeDFA(ESCAPED_CHARACTER)).toEqual({
         acceptStates: new Set([2, 3, 4, 5, 6, 7, 8, 9]),
         startStates: new Set([0]),
         transitions: [
@@ -171,7 +175,7 @@ describe('NFAToDFA()', () => {
     });
 
     it('builds a DFA for ESCAPED_UNICODE', () => {
-      expect(makeDFA(/\\u[0-9A-Fa-f]{4}/)).toEqual({
+      expect(makeDFA(ESCAPED_UNICODE)).toEqual({
         acceptStates: new Set([12, 13, 14]),
         startStates: new Set([0]),
         transitions: [
@@ -235,7 +239,7 @@ describe('NFAToDFA()', () => {
     });
 
     it('builds a DFA for EXPONENT_PART', () => {
-      expect(makeDFA(/[eE][+-]?\d+/)).toEqual({
+      expect(makeDFA(EXPONENT_PART)).toEqual({
         acceptStates: new Set([5]),
         startStates: new Set([0]),
         transitions: [
@@ -261,7 +265,7 @@ describe('NFAToDFA()', () => {
     });
 
     it('builds a DFA for FRACTIONAL_PART', () => {
-      expect(makeDFA(/\.\d+/)).toEqual({
+      expect(makeDFA(FRACTIONAL_PART)).toEqual({
         acceptStates: new Set([2]),
         startStates: new Set([0]),
         transitions: [
@@ -273,7 +277,7 @@ describe('NFAToDFA()', () => {
     });
 
     it('builds a DFA for INTEGER_PART', () => {
-      expect(makeDFA(/-?(0|[1-9]\d*)/)).toEqual({
+      expect(makeDFA(INTEGER_PART)).toEqual({
         acceptStates: new Set([2, 3, 4]),
         startStates: new Set([0]),
         transitions: [
@@ -294,7 +298,7 @@ describe('NFAToDFA()', () => {
     });
 
     it('builds a DFA for LINE_TERMINATOR', () => {
-      expect(makeDFA(/\n|\r\n|\r/)).toEqual({
+      expect(makeDFA(LINE_TERMINATOR)).toEqual({
         acceptStates: new Set([1, 3, 2]),
         startStates: new Set([0]),
         transitions: [
@@ -309,25 +313,8 @@ describe('NFAToDFA()', () => {
       });
     });
 
-    it('builds a DFA for SOURCE_CHARACTER', () => {
-      expect(makeDFA(/[\u0009\u000a\u000d\u0020-\uffff]/)).toEqual({
-        acceptStates: new Set([1, 2, 3]),
-        startStates: new Set([0]),
-        transitions: [
-          /* 0 */ new Map([
-            ['Range: -\uffff', new Set([1])],
-            ['Atom:\r', new Set([2])],
-            ['Range:\t-\n', new Set([3])],
-          ]),
-          /* 1 */ new Map(),
-          /* 2 */ new Map(),
-          /* 3 */ new Map(),
-        ],
-      });
-    });
-
     it('builds a DFA for NAME', () => {
-      expect(makeDFA(/[_A-Za-z][_0-9A-Za-z]*/)).toEqual({
+      expect(makeDFA(NAME)).toEqual({
         acceptStates: new Set([1, 4, 5, 6, 7, 2, 3]),
         startStates: new Set([0]),
         transitions: [
@@ -382,8 +369,25 @@ describe('NFAToDFA()', () => {
       });
     });
 
+    it('builds a DFA for SOURCE_CHARACTER', () => {
+      expect(makeDFA(SOURCE_CHARACTER)).toEqual({
+        acceptStates: new Set([1, 2, 3]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([
+            ['Range: -\uffff', new Set([1])],
+            ['Atom:\r', new Set([2])],
+            ['Range:\t-\n', new Set([3])],
+          ]),
+          /* 1 */ new Map(),
+          /* 2 */ new Map(),
+          /* 3 */ new Map(),
+        ],
+      });
+    });
+
     it('builds a DFA for WHITESPACE', () => {
-      expect(makeDFA(/[\t ]+/)).toEqual({
+      expect(makeDFA(WHITESPACE)).toEqual({
         acceptStates: new Set([1, 2]),
         startStates: new Set([0]),
         transitions: [
