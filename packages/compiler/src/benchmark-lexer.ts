@@ -32,7 +32,7 @@ function tableize(data: {[key: string]: NodeJS.MemoryUsage}): any {
 }
 
 async function main() {
-  const source = await read('client-corpus.graphql');
+  const source = await read('source.graphql');
 
   console.log(`Read ${source.length} bytes`); // Assuming ASCII.
 

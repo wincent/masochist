@@ -15,7 +15,7 @@ async function main() {
 
   process.chdir(scratch);
 
-  const corpus = path.join(__dirname, '../../../support/client-corpus.graphql');
+  const corpus = path.join(__dirname, '../../../support/source.graphql');
   const script = path.join(__dirname, '../lib/benchmark-lexer.js');
 
   try {
@@ -27,7 +27,7 @@ async function main() {
     return;
   }
 
-  await copyFile(corpus, 'client-corpus.graphql');
+  await copyFile(corpus, 'source.graphql');
 
   const scriptSource = await readFile(script, 'utf8');
 

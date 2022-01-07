@@ -1,3 +1,11 @@
+# Sample schema copied from the "main" branch as of
+# 08f5b9aae57af115f4a0c297bc204d0a2851d318.
+#
+# This gives us a corpus of "GraphQL schema language" (distinct from
+# "GraphQL query language", which can be found in "source.graphql" and
+# "generated.graphql"; see https://graphql.org/learn/schema/ for more
+# details) for testing purposes.
+
 schema {
   query: Root
 }

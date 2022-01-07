@@ -1,3 +1,19 @@
+# Sample source extracted from the "main" branch as of
+# 08f5b9aae57af115f4a0c297bc204d0a2851d318 with:
+#
+#     find ../src -name '*.txt' -path '*/__generated__/*' | \
+#       sort | \
+#       xargs cat > support/queries.graphql
+#
+# and then formatted with Prettier. Note that we're only looking for
+# "*.txt" files because those are the ones containing GraphQL (the
+# generated "*.js" files contain data structures and Flow types that
+# aren't of interest to us here).
+#
+# This gives us a corpus of generated GraphQL for testing purposes. This
+# is different from the human-written source found in "source.graphql"
+# (for example, it contains no directives).
+
 query ArticleRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
   node(id: $id) {
     __typename
