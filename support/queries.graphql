@@ -1,4 +1,7 @@
-query ArticleRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
+query ArticleRouteQuery(
+  $baseHeadingLevel: Int!
+  $id: ID!
+) {
   node(id: $id) {
     __typename
     ... on Article {
@@ -35,7 +38,10 @@ fragment When on Versioned {
   }
   updatedAt
 }
-query ArticlesIndexQuery($count: Int!, $cursor: String) {
+query ArticlesIndexQuery(
+  $count: Int!
+  $cursor: String
+) {
   ...ArticlesIndex
 }
 
@@ -75,7 +81,10 @@ fragment When on Versioned {
   }
   updatedAt
 }
-query ArticlesRouteQuery($count: Int!, $cursor: String) {
+query ArticlesRouteQuery(
+  $count: Int!
+  $cursor: String
+) {
   ...ArticlesIndex
 }
 
@@ -115,7 +124,10 @@ fragment When on Versioned {
   }
   updatedAt
 }
-query PageRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
+query PageRouteQuery(
+  $baseHeadingLevel: Int!
+  $id: ID!
+) {
   node(id: $id) {
     __typename
     ... on Page {
@@ -149,7 +161,10 @@ fragment When on Versioned {
   }
   updatedAt
 }
-query PostRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
+query PostRouteQuery(
+  $baseHeadingLevel: Int!
+  $id: ID!
+) {
   node(id: $id) {
     __typename
     ... on Post {
@@ -184,7 +199,11 @@ fragment When on Versioned {
   }
   updatedAt
 }
-query PostsIndexQuery($baseHeadingLevel: Int!, $count: Int!, $cursor: String) {
+query PostsIndexQuery(
+  $baseHeadingLevel: Int!
+  $count: Int!
+  $cursor: String
+) {
   ...PostsIndex
 }
 
@@ -228,7 +247,11 @@ fragment When on Versioned {
   }
   updatedAt
 }
-query PostsRouteQuery($baseHeadingLevel: Int!, $count: Int!, $cursor: String) {
+query PostsRouteQuery(
+  $baseHeadingLevel: Int!
+  $count: Int!
+  $cursor: String
+) {
   ...PostsIndex
 }
 
@@ -272,7 +295,11 @@ fragment When on Versioned {
   }
   updatedAt
 }
-query SearchQuery($count: Int!, $cursor: String, $q: String!) {
+query SearchQuery(
+  $count: Int!
+  $cursor: String
+  $q: String!
+) {
   ...Search
 }
 
@@ -347,7 +374,11 @@ fragment When on Versioned {
   }
   updatedAt
 }
-query SearchRouteQuery($count: Int!, $cursor: String, $q: String!) {
+query SearchRouteQuery(
+  $count: Int!
+  $cursor: String
+  $q: String!
+) {
   ...Search
 }
 
@@ -422,7 +453,10 @@ fragment When on Versioned {
   }
   updatedAt
 }
-query SnippetRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
+query SnippetRouteQuery(
+  $baseHeadingLevel: Int!
+  $id: ID!
+) {
   node(id: $id) {
     __typename
     ... on Snippet {
@@ -456,7 +490,10 @@ fragment When on Versioned {
   }
   updatedAt
 }
-query SnippetSourceRouteQuery($format: MARKUP_FORMAT_TYPE, $id: ID!) {
+query SnippetSourceRouteQuery(
+  $format: MARKUP_FORMAT_TYPE
+  $id: ID!
+) {
   node(id: $id) {
     __typename
     ... on Snippet {
@@ -559,7 +596,11 @@ fragment When on Versioned {
   }
   updatedAt
 }
-query TagQuery($count: Int!, $cursor: String, $id: ID!) {
+query TagQuery(
+  $count: Int!
+  $cursor: String
+  $id: ID!
+) {
   node(id: $id) {
     __typename
     ...Tag
@@ -641,7 +682,11 @@ fragment When on Versioned {
   }
   updatedAt
 }
-query TagRouteQuery($count: Int!, $cursor: String, $id: ID!) {
+query TagRouteQuery(
+  $count: Int!
+  $cursor: String
+  $id: ID!
+) {
   node(id: $id) {
     __typename
     ... on Tag {
@@ -726,7 +771,9 @@ fragment When on Versioned {
   }
   updatedAt
 }
-query TagsRouteQuery($count: Int!) {
+query TagsRouteQuery(
+  $count: Int!
+) {
   ...TagsIndex
 }
 
@@ -767,7 +814,9 @@ fragment feedPosts on Root {
     }
   }
 }
-query getCanonicalURLForRequestQuery($id: ID!) {
+query getCanonicalURLForRequestQuery(
+  $id: ID!
+) {
   node(id: $id) {
     __typename
     ... on Article {

@@ -816,7 +816,7 @@ test('parsing a query with an inline fragment', () => {
   `);
 });
 
-test.each([['client-corpus.graphql'], ['server-corpus.graphql']])(
+test.each([['client-corpus.graphql'], ['queries.graphql']])(
   'integration with %s',
   async (corpus) => {
     const source = await readFile(
