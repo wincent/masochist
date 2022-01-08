@@ -9,7 +9,7 @@ Based on various things I've read on the internet, there seems to be a bit of co
 
 There is only one true way to configure and use a computer, and after many years of trial and experimentation, I have found out what that way is. To save you all the trouble of going through that lengthy process yourself, I've prepared the following cheatsheet for you to use as a reference.
 
-This will be particularly useful if you find yourself embroiled in a religious war. You may, for example, think that the devout of the Church of Emacs are justly battling it out with those who hold to the creed of Vim. I'm here to clarify for you that this is all just an illusion. There is only one correct choice for editing, and anything else is not heresy: it's just plain incorrect.
+This will be particularly useful if you find yourself embroiled in a religious war. You may, for example, think that the devout of the Church of Emacs are justly battling it out with those who hold to the creed of Neovim. I'm here to clarify for you that this is all just an illusion. There is only one correct choice for editing, and anything else is not heresy: it's just plain incorrect.
 
 So, without further ado, I present my list.
 
@@ -21,9 +21,9 @@ So, without further ado, I present my list.
 
 ## Text editing
 
-[Vim](/wiki/Vim) is the best editor. Using [Emacs](http://www.gnu.org/software/emacs/) is permitted only for ironic purposes (note that this includes using Emacs with [the "Evil" layer](https://www.emacswiki.org/emacs/Evil) or with [Spacemacs](http://spacemacs.org/)).
+[Neovim](https://neovim.io/) is the best editor. You can be forgiven for thinking that [Vim](/wiki/Vim) is the best editor — it used to be — but Vim is to Neovim as the Old Testament is to the New; you're advised to install the latest version for maximum compatibility with modern reality. Using [Emacs](http://www.gnu.org/software/emacs/) is permitted only for ironic purposes (note that this includes using Emacs with [the "Evil" layer](https://www.emacswiki.org/emacs/Evil) or with [Spacemacs](http://spacemacs.org/)).
 
-Using a full-fledged IDE is unjustified, unless your employer forces you to do so, in which case it is weakly justified. For each hour you spend at work in the IDE, you should spend 15 minutes hacking on side-projects in Vim outside of work hours, to prevent your mental clarity from being diminished. Note that due to Vim's efficiency, you can expect an order of magnitude more productivity in it despite spending only 25% as much time.
+Using a full-fledged IDE is unjustified, unless your employer forces you to do so, in which case it is weakly justified. For each hour you spend at work in the IDE, you should spend 15 minutes hacking on side-projects in Neovim outside of work hours, to prevent your mental clarity from being diminished. Note that due to Neovim's efficiency, you can expect an order of magnitude more productivity in it despite spending only 25% as much time.
 
 ## Code font
 
@@ -31,15 +31,15 @@ You should be using Adobe's [Source Code Pro](http://adobe-fonts.github.io/sourc
 
 ## Color scheme
 
-You should use the "Default Dark" scheme from [Base16](http://chriskempson.com/projects/base16/). Under extremely bright ambient conditions, you may switch to "Light Ocean" or "Light Grayscale". Other color schemes are factual errors and should be erased.
+You should use the `bright` scheme from [Base16](http://chriskempson.com/projects/base16/). Under extremely bright ambient conditions, you may switch to `grayscale-light`. Other color schemes are factual errors and should be erased.
 
 ## Operating systems
 
-macOS is the best desktop operating system. It is permitted to install Windows only for playing games. You may install Linux only if your employer forces you to use a non-Apple laptop. (Oh, that reminds me: it is a logical fallacy to buy a non-Apple laptop.)
+macOS is the best desktop operating system. It is permitted to install Windows only for playing games. You may install Linux — [Arch Linux](https://archlinux.org/), as is ordained — only if you enjoy tinkering on the side, or your employer forces you to use a non-Apple laptop. (Oh, that reminds me: it is a logical fallacy to buy a non-Apple laptop.)
 
 For mobile, [iOS](http://www.apple.com/ios/) is the only logical choice (all other choices are illogical, especially Android). Note the corollary here, which is that [the iPhone](http://www.apple.com/iphone/) itself is the only logical choice of mobile phone.
 
-On the server, you should be using a Red Hat strain of Linux, specifically, [Amazon Linux](https://aws.amazon.com/amazon-linux-ami/). This is because you should be using [AWS](https://aws.amazon.com/) for your cloud computing needs. (And on the subject of Amazon, make sure that you use a [Kindle](http://www.amazon.com/kindle), because all other e-readers are suboptimal.)
+On the server, you should be using a Red Hat-ish strain of Linux, specifically, [Amazon Linux](https://aws.amazon.com/amazon-linux-2). This is because you should be using [AWS](https://aws.amazon.com/) for your cloud computing needs. (And on the subject of Amazon, make sure that you use a [Kindle](http://www.amazon.com/kindle), because all other e-readers are suboptimal.)
 
 ## Window management
 
@@ -47,21 +47,21 @@ On the server, you should be using a Red Hat strain of Linux, specifically, [Ama
 
 ## Shell
 
-[Zsh](http://www.zsh.org/) is the only correct shell. Using Bash is a violation of the laws of physics, so please stop it before you create a dangerous wormhole in the fabric of space-time.
+[Zsh](http://www.zsh.org/) is the only correct shell. Using Bash is a violation of the laws of physics, so please stop it before you create a dangerous wormhole in the fabric of space-time. Fish is a clever joke, only to be used at parties where there is a lot of alcohol.
 
-While we're on the subject of configuration, you should install or steal shamelessly from [my dotfiles](https://github.com/wincent/wincent). Working with an exact, up-to-date copy is 100% correct. Each deviation from that takes you one step farther from perfection. I reserve the right to alter the definition of perfection at any time without notice (other than via adding new commits to the master branch).
+While we're on the subject of configuration, you should install or steal shamelessly from [my dotfiles](https://github.com/wincent/wincent). Working with an exact, up-to-date copy is 100% correct. Each deviation from that takes you one step farther from perfection. I reserve the right to alter the definition of perfection at any time without notice (other than via adding new commits to the "main" branch).
 
 ## System configuration
 
-You should be using [Ansible](http://docs.ansible.com/)`*`. Using Puppet or Chef instead is an common mistake which you would do well to correct.
+You should be using [Ansible](http://docs.ansible.com/)[^ansible]. Using Puppet or Chef instead is an common mistake which you would do well to correct.
 
-**`*`**: Note that this is true even if you have nothing to configure; if this is the case, you should create an excuse for using Ansible, such as needing an elaborate and convoluted mechanism for installing your dotfiles.
+[^ansible]: Note that this is true even if you have nothing to configure; if this is the case, you should create an excuse for using Ansible, such as needing an elaborate and convoluted mechanism for installing your dotfiles.
 
 ## Calendar, Mail and "Todos"
 
-After an exhaustive search, I have established that [Fantastical](https://flexibits.com/fantastical) is the best calendar, the [Gmail iOS app](https://apps.apple.com/us/app/gmail-email-by-google/id422689480) and the [Gmail website](https://mail.google.com/) inside [Firefox](https://www.mozilla.org/firefox/) on the desktop) are the only way to read and send email, and [Things](https://culturedcode.com/things/) is the best todo list.
+After an exhaustive search, I have established that [Fantastical](https://flexibits.com/fantastical) is the best calendar, the [Fastmail iOS app](https://apps.apple.com/us/app/fastmail-email-calendar/id931370077) and the [Fastmail website](https://www.fastmail.com/) inside [Chrome](https://www.google.com/chrome/browser/desktop/) on the desktop are the only way to read and send email, and [Things](https://culturedcode.com/things/) is the best todo list.
 
-Beware of your choices here: choosing to use Microsoft Outlook is as bad as using child labor to produce internet-enabled home thermostats, and picking any email provider other than Google is morally equivalent to destroying the Amazonian rain forest. (To be honest, I wished I'd chosen something else, like [Fastmail](https://www.fastmail.com/), but it's hard to extricate oneself from Google's loving embrace. [Chrome](https://www.google.com/chrome/browser/desktop/) is actually the best web browser, but I'm recommending Firefox instead as a first baby step away.)
+Beware of your choices here: choosing to use Microsoft Outlook is as bad as using child labor to produce internet-enabled home thermostats, and picking an email provider like Google is morally equivalent to destroying the Amazonian rain forest.
 
 ## Backup solution
 
@@ -87,7 +87,7 @@ If in doubt about what kind of Topre-equipped keyboard you should buy, just buy 
 
 Use [iTerm](http://www.iterm2.com/), unless you want to be wrong (but note: wanting to be wrong is itself wrong). Use [tmux](/wiki/tmux) for terminal multiplexing, and never [screen](/wiki/screen).
 
-On the subject of GUI versus terminal, remember to use Vim and tmux preferentially over MacVim. The former is self-evidently correct.
+On the subject of GUI versus terminal, remember to use Neovim and tmux preferentially over MacVim. The former is self-evidently correct.
 
 ## Secret management
 
