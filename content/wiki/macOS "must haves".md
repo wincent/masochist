@@ -73,9 +73,12 @@ When all you've got is a tiny SSD drive, this tool is very handy for hunting dow
 
 Secret-management. More details [here](/wiki/1Password).
 
-## Alfred
+## Alfred or Raycast
+
+I've been using Alfred for many years but recently started using Raycast on one machine. The jury is still out on which one is better; Raycast doesn't have as many features yet, but it is prettier to look at and easier to customize.
 
 -   <https://www.alfredapp.com/>
+-   <https://www.raycast.com/>
 
 ## [Arq](/wiki/Arq)
 
@@ -106,6 +109,13 @@ See what's going in and out of your tubes. I still use this for its Dock icon, e
 -   <http://www.shirt-pocket.com/SuperDuper/>
 
 Whole-disk backup software that has saved my butt on multiple occasions.
+
+
+## Things
+
+Prettiest to-do lists this side of Cupertino. Very simple, and not cross-platform, but the features that it does have work extremely well.
+
+- [Things](https://culturedcode.com/things/)
 
 ## [xScope](/wiki/xScope)
 
