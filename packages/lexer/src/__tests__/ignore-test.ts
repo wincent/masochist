@@ -38,3 +38,104 @@ describe('ignore()', () => {
     });
   });
 });
+
+// Just wondering what happens when we combine the non-ignore machines...
+import stringifyTransitionTable from '../NFA/stringifyTransitionTable';
+
+function demo() {
+  console.log(stringifyTransitionTable(
+    ignore(
+      // Punctuators. These combine well when left alone.
+      /!/,
+      /\$/,
+      /&/,
+      /\(/,
+      /\)/,
+      /\.\.\./,
+      /:/,
+      /=/,
+      /@/,
+      /\[/,
+      /\]/,
+      /\{/,
+      /\|/,
+      /\}/,
+
+      // Other Lexical tokens.
+      /[_a-z][_0-9a-z]*/i, // NAME. Still works when we add this.
+    )
+  ));
+
+  // Output:
+  //
+  // {
+  //   acceptStates: new Set([1, 2]),
+  //   startStates: new Set([0]),
+  //   transitions: [
+  //     /* 0 */ new Map([
+  //       ['Range:a-z', new Set([1])],
+  //       ['Range:A-Z', new Set([1])],
+  //       ['Atom:_', new Set([1])],
+  //       ['Atom:}', new Set([2])],
+  //       ['Atom:|', new Set([2])],
+  //       ['Atom:{', new Set([2])],
+  //       ['Atom:]', new Set([2])],
+  //       ['Atom:[', new Set([2])],
+  //       ['Atom:@', new Set([2])],
+  //       ['Atom:=', new Set([2])],
+  //       ['Atom::', new Set([2])],
+  //       ['Atom:)', new Set([2])],
+  //       ['Atom:(', new Set([2])],
+  //       ['Atom:&', new Set([2])],
+  //       ['Atom:$', new Set([2])],
+  //       ['Atom:!', new Set([2])],
+  //       ['Atom:.', new Set([3])],
+  //     ]),
+  //     /* 1 */ new Map([
+  //       ['Range:a-z', new Set([1])],
+  //       ['Range:A-Z', new Set([1])],
+  //       ['Atom:_', new Set([1])],
+  //       ['Range:0-9', new Set([1])],
+  //     ]),
+  //     /* 2 */ new Map(),
+  //     /* 3 */ new Map([['Atom:.', new Set([4])]]),
+  //     /* 4 */ new Map([['Atom:.', new Set([2])]]),
+  //   ],
+  // }
+  //
+  // Note that there are lots of token types but only two accept states. In a
+  // real "union" machine we'd want a distinct accept state for each token type.
+  // Not so hard to model in the NFA data structure we have (could just be another
+  // property on the node type) but doesn't fit so well in transition table, where
+  // the target states are just numbers and we don't have an obvious place to
+  // stash auxilliary data).
+  //
+  // Might be able to do it by changing acceptStates into a Map, where the key
+  // is the state id and the value is the token name "label" (or `null` if we
+  // just don't give a shit).
+  //
+  //   acceptStates: new Map([
+  //     [1, 'NAME'],
+  //     [2, 'PUNCTUATOR'],
+  //     // ... etc
+  //   ]),
+  //
+  // Easy enough to model, but given that we are transforming the NFAs so much
+  // it is tricky to reason about. For example, in minimization, we transpose
+  // the NFA, which means making accept states into start states and vice-versa;
+  // what are we supposed to do with the label data then? Should start states
+  // therefore also be a Map? Likewise in `NFAToDFA()` we end up setting the
+  // ACCEPT flag in the output DFA if it corresponds to an ACCEPT node in the
+  // input NFA; we'll have to be careful in that function too not to merge
+  // states improperly... eg. there, were we create new nodes that represent
+  // non-deterministic transitions (eg. "a" goes to 3 and 4) we have internal
+  // book-keeping that associates a synthetic node with the key "3.4"; we may
+  // instead have to make the key look like "3/label.4/label", and then in
+  // the final pass if we see an accept node with mismatching labels, do, er,
+  // something...
+  //
+  // in practice, i don't think we could wind up with an accept state that
+  // corresponds to multiple labels, but it seems we would need to use a set
+  // just in case... eg. new Set() if we don't care about labels
+  // or new Set(['name']) if we do care...
+}

@@ -149,3 +149,81 @@ export default generate(({ignored, token}) => {
   ignored('COMMENT', COMMENT);
   ignored('COMMA', COMMA);
 });
+
+// Expect generated lexer to look something like the following...
+//
+// eg. for NAME translation table:
+//
+//    {
+//      acceptStates: new Set([1]),
+//      startStates: new Set([0]),
+//      transitions: [
+//        /* 0 */ new Map([
+//          ['Range:a-z', new Set([1])],
+//          ['Range:A-Z', new Set([1])],
+//          ['Atom:_', new Set([1])],
+//        ]),
+//        /* 1 */ new Map([
+//          ['Range:a-z', new Set([1])],
+//          ['Range:A-Z', new Set([1])],
+//          ['Atom:_', new Set([1])],
+//          ['Range:0-9', new Set([1])],
+//        ]),
+//      ],
+//    }
+
+// TODO: add invariant; as these are DFAs, the target Set should only ever have
+// one member (a DFA is a special case of NFA, but we are only showing NFA-ness
+// in the typesystem right now and to be honest I am not sure we _could_ do
+// anything else; we can in the transition table at least)
+
+const input = 'something';
+let i = 0;
+const start = 0;
+let state = 0;
+let accept = null;
+
+const ACCEPT = -2;
+const REJECT = -1;
+
+main_loop: while (i < input.length) {
+  const ch = input[i];
+  switch (state) {
+    case 0:
+      if (
+        ch >= 'a' && ch <= 'z' ||
+        ch >= 'A' && ch <= 'Z' ||
+        ch === '_'
+      ) {
+        state = 1;
+      } else {
+        state = REJECT;
+      }
+      break;
+    case 1:
+      if (
+        ch >= 'a' && ch <= 'z' ||
+        ch >= 'A' && ch <= 'Z' ||
+        ch === '_' ||
+        ch >= '9' && ch <= '9'
+      ) {
+        state = 1;
+      } else {
+        state = ACCEPT;
+      }
+      break;
+    case REJECT:
+      // We shouldn't even be trying to recognize a token unless lookahead tells
+      // us to, so failure means invalid input.
+      throw new Error('failed to recognize token');
+    case ACCEPT:
+      accept = 'NAME';
+      break main_loop;
+  }
+  i++;
+}
+
+// Probably want Ragel-like actions that I can define to emit tokens.  And
+// specify priority on transitions so I can take the union of machines and have
+// them do the right thing faced with "foo \" bar" and such (might even obviate
+// the need for lookahead).
