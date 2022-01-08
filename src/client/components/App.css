@@ -95,6 +95,10 @@ h1 a {
   }
 }
 
+.prerendered {
+  overflow-wrap: break-word;
+}
+
 .prerendered img {
   max-width: 100%;
 }
