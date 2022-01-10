@@ -6,6 +6,8 @@ Notes made while finding out how to convert [MPC](/wiki/MPC) files to another fo
 
 # Obtaining [mppdec](/wiki/mppdec)
 
+# NOTE: mppdc only runs on PowerPC cpu's (you have to find a very old mac to run it on)
+
 At the time of writing version 1.95z2 is the latest available version of [mppdec](/wiki/mppdec).
 
 -   <http://www.musepack.net/index.php?pg=osx>
