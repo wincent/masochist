@@ -70,7 +70,7 @@ export default function removeEpsilons(nfa: NFA): NFA {
  */
 function epsilonClosure(nfa: NFA): Set<NFA> {
   const reachable = new Set<NFA>([nfa]);
-  const seen = new Set<NFA>();
+  const seen = new Set<NFA>([nfa]);
 
   function visit(node: NFA) {
     node.edges.forEach(({on, to}) => {
