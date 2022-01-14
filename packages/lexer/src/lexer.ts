@@ -190,11 +190,7 @@ main_loop: while (i < input.length) {
   const ch = input[i];
   switch (state) {
     case 0:
-      if (
-        ch >= 'a' && ch <= 'z' ||
-        ch >= 'A' && ch <= 'Z' ||
-        ch === '_'
-      ) {
+      if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || ch === '_') {
         state = 1;
       } else {
         state = REJECT;
@@ -202,10 +198,10 @@ main_loop: while (i < input.length) {
       break;
     case 1:
       if (
-        ch >= 'a' && ch <= 'z' ||
-        ch >= 'A' && ch <= 'Z' ||
+        (ch >= 'a' && ch <= 'z') ||
+        (ch >= 'A' && ch <= 'Z') ||
         ch === '_' ||
-        ch >= '9' && ch <= '9'
+        (ch >= '9' && ch <= '9')
       ) {
         state = 1;
       } else {

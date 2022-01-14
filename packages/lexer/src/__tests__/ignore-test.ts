@@ -37,34 +37,112 @@ describe('ignore()', () => {
       ],
     });
   });
+
+  it('runs demo', () => {
+    demo();
+  });
 });
 
 // Just wondering what happens when we combine the non-ignore machines...
+import {ACCEPT, START} from '../NFA/NFA';
+import dotifyTransitionTable from '../NFA/dotifyTransitionTable';
 import stringifyTransitionTable from '../NFA/stringifyTransitionTable';
+import transposeTable from '../NFA/transposeTable';
+import fromTransitionTable from '../NFA/fromTransitionTable';
+import stringifyNFA from '../NFA/stringifyNFA';
+import removeEpsilons from '../NFA/removeEpsilons';
+import NFAToDFA from '../NFA/NFAToDFA';
+import toTransitionTable from '../NFA/toTransitionTable';
+
+import type {NFA} from '../NFA/NFA';
+import type {TransitionTable} from '../NFA/toTransitionTable';
 
 function demo() {
-  console.log(stringifyTransitionTable(
-    ignore(
-      // Punctuators. These combine well when left alone.
-      /!/,
-      /\$/,
-      /&/,
-      /\(/,
-      /\)/,
-      /\.\.\./,
-      /:/,
-      /=/,
-      /@/,
-      /\[/,
-      /\]/,
-      /\{/,
-      /\|/,
-      /\}/,
+  let table: TransitionTable = {
+    acceptStates: new Set([1, 2]),
+    startStates: new Set([0]),
+    transitions: [
+      /* 0 */ new Map([
+        ['Atom:a', new Set([1])],
+        ['Atom:b', new Set([2])],
+      ]),
+      /* 1 */ new Map([['Atom:b', new Set([1])]]),
+      /* 2 */ new Map([['Atom:a', new Set([2])]]),
+    ],
+  };
 
-      // Other Lexical tokens.
-      /[_a-z][_0-9a-z]*/i, // NAME. Still works when we add this.
-    )
-  ));
+  console.log('initial table');
+  console.log(stringifyTransitionTable(table));
+  console.log(dotifyTransitionTable(table));
+
+  transposeTable(table);
+
+  console.log('transposed table');
+  console.log(stringifyTransitionTable(table));
+  console.log(dotifyTransitionTable(table));
+
+  console.log('table -> graph');
+  let nfa = fromTransitionTable(table);
+  console.log(stringifyNFA(nfa));
+  table = toTransitionTable(nfa);
+  console.log(dotifyTransitionTable(table));
+
+  console.log('epsilons removed');
+  removeEpsilons(nfa);
+  console.log(stringifyNFA(nfa)); // Looks good.
+  table = toTransitionTable(nfa);
+  console.log(dotifyTransitionTable(table));
+
+  console.log('to DFA');
+  nfa = NFAToDFA(nfa);
+  table = toTransitionTable(nfa);
+  console.log(stringifyTransitionTable(table)); // Looks good.
+  console.log(dotifyTransitionTable(table));
+
+  console.log('transpose again');
+  transposeTable(table);
+  console.log(stringifyTransitionTable(table)); // Looks good.
+  console.log(dotifyTransitionTable(table));
+
+  console.log('epsilons removed');
+  nfa = fromTransitionTable(table);
+  removeEpsilons(nfa);
+  table = toTransitionTable(nfa);
+  console.log(stringifyTransitionTable(table)); // Looks good.
+  console.log(dotifyTransitionTable(table));
+
+  console.log('to DFA');
+  nfa = NFAToDFA(nfa);
+  table = toTransitionTable(nfa);
+  console.log(stringifyTransitionTable(table)); // Looks good.
+  console.log(dotifyTransitionTable(table));
+}
+
+function demo2() {
+  console.log(
+    stringifyTransitionTable(
+      ignore(
+        // Punctuators. These combine well when left alone.
+        /!/,
+        /\$/,
+        /&/,
+        /\(/,
+        /\)/,
+        /\.\.\./,
+        /:/,
+        /=/,
+        /@/,
+        /\[/,
+        /\]/,
+        /\{/,
+        /\|/,
+        /\}/,
+
+        // Other Lexical tokens.
+        /[_a-z][_0-9a-z]*/i, // NAME. Still works when we add this.
+      ),
+    ),
+  );
 
   // Output:
   //
