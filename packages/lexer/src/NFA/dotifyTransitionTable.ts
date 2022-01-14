@@ -6,12 +6,22 @@ import type {TransitionTable} from './toTransitionTable';
  * Creates a Graphviz representation of a TransitionTable, in the DOT language,
  * for debugging and illustration purposes.
  */
-export default function dotifyTransitionTable({
-  acceptStates,
-  startStates,
-  transitions,
-}: TransitionTable): string {
-  const lines = ['digraph finite_state_machine {', '  rankdir = LR;'];
+export default function dotifyTransitionTable(
+  {acceptStates, startStates, transitions}: TransitionTable,
+  dark = false,
+): string {
+  const lines = [
+    'digraph finite_state_machine {',
+    '  bgcolor = "transparent";',
+    '  rankdir = LR;',
+    '  ratio = 0.5625; // 16:9.',
+    '  size = "11,8.5"; // US Letter size (Landscape).',
+  ];
+
+  const color = [
+    `color = "${dark ? 'white' : 'black'}"`,
+    `fontcolor = "${dark ? 'white' : 'black'}"`,
+  ].join(', ');
 
   if (startStates.size) {
     lines.push(
@@ -19,7 +29,7 @@ export default function dotifyTransitionTable({
       '  // Invisible node from which to draw start transitions to start states.',
     );
     const states = Array.from(startStates)
-      .map((state) => -state)
+      .map((state) => -(state + 1)) // Offset by 1 to avoid ever having "-0".
       .join('; ');
     lines.push(`  node [style = invis]; ${states};`);
   }
@@ -27,17 +37,19 @@ export default function dotifyTransitionTable({
   if (acceptStates.size) {
     lines.push('', '  // Accept states.');
     const states = Array.from(acceptStates).join('; ');
-    lines.push(`  node [style = "", shape = doublecircle]; ${states};`);
+    lines.push(
+      `  node [${color}, style = "", shape = doublecircle]; ${states};`,
+    );
   }
   lines.push(
     '',
     '  // Other states.',
-    '  node [style = "", shape = circle];',
+    `  node [${color}, style = "", shape = circle];`,
     '',
   );
 
   for (const state of startStates) {
-    lines.push(`  -${state} -> ${state};`);
+    lines.push(`  -${state + 1} -> ${state} [${color}];`);
   }
 
   transitions.forEach((transition, i) => {
@@ -45,7 +57,7 @@ export default function dotifyTransitionTable({
       for (const to of targets) {
         const on = stringifyTransition(keyToTransition(key));
         const escaped = escape(on).replace('"', '\\"');
-        lines.push(`  ${i} -> ${to} [label = "${escaped}"];`);
+        lines.push(`  ${i} -> ${to} [${color}, label = "${escaped}"];`);
       }
     }
   });
@@ -66,14 +78,18 @@ function escape(key: string): string {
     .replace('\v', '\\\\v')
     .replace(/[\s\S]/g, (match) => {
       const c = match.charCodeAt(0);
-      if (c >= 0x20 && c <= 0x7e) {
-        // Printable ASCII.
+      if (c === 0x20) {
+        // Special case for space, would use "SYMBOL FOR SPACE" (\u2420), but
+        // few fonts have it.
+        return 'SP';
+      } else if (c > 0x20 && c <= 0x7e) {
+        // Any printable ASCII, except for space (handled above).
         return match;
       } else if (c === EPSILON) {
         // Special case for "GREEK SMALL LETTER EPSILON".
         return match;
       } else {
-        return `\\u${c.toString(16).padStart(4, '0')}`;
+        return `\\\\u${c.toString(16).padStart(4, '0')}`;
       }
     });
 }

@@ -58,7 +58,11 @@ import type {NFA} from '../NFA/NFA';
 import type {TransitionTable} from '../NFA/toTransitionTable';
 
 function demo() {
-  let table: TransitionTable = {
+  let table = ignore(COMMA, COMMENT, LINE_TERMINATOR, UNICODE_BOM, WHITESPACE);
+  console.log(dotifyTransitionTable(table)); // Light version (default).
+  console.log(dotifyTransitionTable(table, true)); // Dark version.
+
+  table = {
     acceptStates: new Set([1, 2]),
     startStates: new Set([0]),
     transitions: [
