@@ -5,6 +5,7 @@ export type Transition = Anything | Atom | Range | null;
 
 export type Edge = {
   on: Transition;
+  labels?: Set<string>;
   to: NFA;
 };
 
