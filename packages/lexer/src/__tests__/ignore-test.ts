@@ -38,8 +38,12 @@ describe('ignore()', () => {
     });
   });
 
-  it('runs demo', () => {
+  xit('runs demo', () => {
     demo();
+  });
+
+  xit('runs demo2', () => {
+    demo2();
   });
 });
 
@@ -123,30 +127,28 @@ function demo() {
 }
 
 function demo2() {
-  console.log(
-    stringifyTransitionTable(
-      ignore(
-        // Punctuators. These combine well when left alone.
-        /!/,
-        /\$/,
-        /&/,
-        /\(/,
-        /\)/,
-        /\.\.\./,
-        /:/,
-        /=/,
-        /@/,
-        /\[/,
-        /\]/,
-        /\{/,
-        /\|/,
-        /\}/,
+  const table = ignore(
+    // Punctuators. These combine well when left alone.
+    /!/,
+    /\$/,
+    /&/,
+    /\(/,
+    /\)/,
+    /\.\.\./,
+    /:/,
+    /=/,
+    /@/,
+    /\[/,
+    /\]/,
+    /\{/,
+    /\|/,
+    /\}/,
 
-        // Other Lexical tokens.
-        /[_a-z][_0-9a-z]*/i, // NAME. Still works when we add this.
-      ),
-    ),
+    // Other Lexical tokens.
+    /[_a-z][_0-9a-z]*/i, // NAME. Still works when we add this.
   );
+  console.log(stringifyTransitionTable(table));
+  console.log(dotifyTransitionTable(table));
 
   // Output:
   //
