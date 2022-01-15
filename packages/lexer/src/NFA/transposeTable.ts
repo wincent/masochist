@@ -1,4 +1,4 @@
-import type {TransitionTable} from './toTransitionTable';
+import type {TransitionTable} from './TransitionTable';
 
 /**
  * Transposes the supplied transition table by inverting the direction of all

@@ -1,6 +1,6 @@
 import keyToTransition from './keyToTransition';
 import stringifyTransition, {EPSILON} from './stringifyTransition';
-import type {TransitionTable} from './toTransitionTable';
+import type {TransitionTable} from './TransitionTable';
 
 /**
  * Creates a Graphviz representation of a TransitionTable, in the DOT language,

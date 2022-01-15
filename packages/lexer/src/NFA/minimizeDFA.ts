@@ -7,8 +7,7 @@ import toTransitionTable from './toTransitionTable';
 import transposeTable from './transposeTable';
 
 import type {NFA} from './NFA';
-// TODO: probably move this type into './NFA.ts'?
-import type {TransitionTable} from './toTransitionTable';
+import type {TransitionTable} from './TransitionTable';
 
 /**
  * Minimizes a DFA (ie. returns an equivalent DFA that recognizes the same

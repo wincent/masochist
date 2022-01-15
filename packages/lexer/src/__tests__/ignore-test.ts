@@ -58,9 +58,6 @@ import removeEpsilons from '../NFA/removeEpsilons';
 import NFAToDFA from '../NFA/NFAToDFA';
 import toTransitionTable from '../NFA/toTransitionTable';
 
-import type {NFA} from '../NFA/NFA';
-import type {TransitionTable} from '../NFA/toTransitionTable';
-
 function demo() {
   let table = ignore(COMMA, COMMENT, LINE_TERMINATOR, UNICODE_BOM, WHITESPACE);
   console.log(dotifyTransitionTable(table)); // Light version (default).

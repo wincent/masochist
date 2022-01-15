@@ -4,12 +4,7 @@ import transitionToKey from './transitionToKey';
 import visitNFA from './visitNFA';
 
 import type {NFA} from './NFA';
-
-export type TransitionTable = {
-  acceptStates: Set<number>;
-  startStates: Set<number>;
-  transitions: Array<Map<string, Set<number>>>;
-};
+import type {TransitionTable} from './TransitionTable';
 
 export default function toTransitionTable(nfa: NFA): TransitionTable {
   const table: TransitionTable = {

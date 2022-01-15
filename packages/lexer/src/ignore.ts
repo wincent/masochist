@@ -9,7 +9,7 @@ import toTransitionTable from './NFA/toTransitionTable';
 import visitNFA from './NFA/visitNFA';
 import compileRegExp from './compileRegExp';
 
-import type {TransitionTable} from './NFA/toTransitionTable';
+import type {TransitionTable} from './NFA/TransitionTable';
 
 /**
  * Returns a TransitionTable corresponding to a minimized DFA that recognizes

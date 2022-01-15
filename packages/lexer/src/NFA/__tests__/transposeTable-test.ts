@@ -17,7 +17,7 @@ import sortEdges from '../sortEdges';
 import toTransitionTable from '../toTransitionTable';
 import transposeTable from '../transposeTable';
 
-import type {TransitionTable} from '../toTransitionTable';
+import type {TransitionTable} from '../TransitionTable';
 
 describe('transposeTable()', () => {
   it('transposes a transition table for ESCAPED_CHARACTER', () => {

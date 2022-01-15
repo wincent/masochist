@@ -5,7 +5,7 @@ import invariant from '../invariant';
 import keyToTransition from './keyToTransition';
 
 import type {NFA} from './NFA';
-import type {TransitionTable} from './toTransitionTable';
+import type {TransitionTable} from './TransitionTable';
 
 export default function fromTransitionTable({
   acceptStates,

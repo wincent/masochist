@@ -15,7 +15,7 @@ import regExpToNFA from '../regExpToNFA';
 import removeEpsilons from '../removeEpsilons';
 import toTransitionTable from '../toTransitionTable';
 
-import type {TransitionTable} from '../toTransitionTable';
+import type {TransitionTable} from '../TransitionTable';
 
 describe('NFAToDFA()', () => {
   it('creates the DFA from an atom', () => {

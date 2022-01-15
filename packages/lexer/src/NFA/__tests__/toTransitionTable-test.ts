@@ -16,7 +16,7 @@ import removeEpsilons from '../removeEpsilons';
 import sortEdges from '../sortEdges';
 import toTransitionTable from '../toTransitionTable';
 
-import type {TransitionTable} from '../toTransitionTable';
+import type {TransitionTable} from '../TransitionTable';
 
 describe('toTransitionTable()', () => {
   describe('building transition tables from "real world" regular expressions', () => {

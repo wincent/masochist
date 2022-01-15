@@ -1,4 +1,4 @@
-import type {TransitionTable} from './toTransitionTable';
+import type {TransitionTable} from './TransitionTable';
 
 /**
  * Creates a printable form of a TransitionTable, for debugging purposes.
