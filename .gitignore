@@ -2,6 +2,7 @@
 /config.json
 /content
 /coverage/*
+/next
 /node_modules/*
 /public/static/bundle-*.js
 /public/static/bundle-*.js.LICENSE.txt
