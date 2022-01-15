@@ -1,6 +1,5 @@
 import {ACCEPT, START} from './NFA';
 import clearFlag from './clearFlag';
-import equalTransitions from './equalTransitions';
 import getAcceptStates from './getAcceptStates';
 import getStartStates from './getStartStates';
 
@@ -164,12 +163,4 @@ function epsilonTo(to: NFA): Edge {
     on: null,
     to,
   };
-}
-
-/**
- * Edges are considered equal if they point to the same `to` target node based
- * on an equivalent condition.
- */
-export function equalEdges(a: Edge, b: Edge): boolean {
-  return a.to === b.to && equalTransitions(a.on, b.on);
 }

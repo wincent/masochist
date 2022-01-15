@@ -1,6 +1,6 @@
 import {ACCEPT, START} from './NFA';
 import getStartStates from './getStartStates';
-import {equalEdges} from './regExpToNFA';
+import {equalEdges} from './equalEdges';
 import setFlag from './setFlag';
 import testFlag from './testFlag';
 import visitNFA from './visitNFA';
