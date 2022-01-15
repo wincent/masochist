@@ -1,11 +1,11 @@
-import {ACCEPT, START} from './NFA';
+import {ACCEPT} from './NFA';
 import getStartStates from './getStartStates';
 import {equalEdges} from './equalEdges';
 import setFlag from './setFlag';
 import testFlag from './testFlag';
 import visitNFA from './visitNFA';
 
-import type {Flags, NFA} from './NFA';
+import type {NFA} from './NFA';
 
 /**
  * Mutates an NFA to remove all epsilon transitions.
