@@ -46,7 +46,7 @@ But there are some pretty big downsides:
 
     The Mac Pro of course doesn't warrant any kind of serious consideration, starting at 6,499€ and going as high as 66,299€. A screen will set you back an additional 5,499€ without a stand; add that in and opt for a matte screen and your bill will run up to 7,598€.
 
-    Back in the 90s and early 2000s I bought several pro desktops from Apple; starting with a PowerMac 7600 in 1994, and later a G4 and then a G5. And then Apple brought out it's first Intel-based iMac and from that point on its pro line became totally unappealing: always overpriced, and often underpowered.
+    Back in the 90s and early 2000s I bought several pro desktops from Apple; starting with a [PowerMac 7600](https://everymac.com/systems/apple/powermac/specs/powermac_7600_120.html) in 1996, and later a G4 and then a G5. And then Apple brought out it's first Intel-based iMac and from that point on its pro line became totally unappealing: always overpriced, and often underpowered.
 
 -   **Don't migrate; supplement your Apple laptop with another machine:** I like simplicity and so since about 2011 I've had a one-machine-at-a-time policy. I don't want to be juggling and syncing data between machines. I took this policy so far, in fact, that I didn't even own a machine of my own from 2011 to 2017; I just used the machine provided by my employer and made sure all of my files were kept in the cloud.
 

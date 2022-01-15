@@ -1,13 +1,14 @@
 ---
 tags: mac startup.chime wiki
 cache_breaker: 1
+title: Turning off the Mac startup chime
 ---
 
 # Background
 
 It has always puzzled me how Apple — generally so hip, so chic, so elegant, so tasteful, so concerned with aesthetics — could have perpetrated such a horrible transgression against good taste, peace, and tranquility, as they have with their Mac startup sounds.
 
-At least as long as I've had a Mac (and if I recall correctly my first was a PowerMac 7200 back around 1994), the startup sound has been an absolutely stupefying, eardrum-shattering aural sledgehammer. To fully experience it, enclose yourself in a quiet room, pump your speakers up to maximum volume and watch either [this](http://www.youtube.com/watch?v=PwcySsaWqAY) or [this](http://www.youtube.com/watch?v=By1Jb13QYb8) YouTube compilation of Mac startup sounds. Unless it makes your windows rattle in their panes, you're not listening to it loud enough, and need to pump up the volume and try again. (As an aside, [here](http://www.youtube.com/watch?v=LTVmrX6Lee0) is another compilation which includes not only the startup sounds, but also the "Chime of Death" played when certain failure conditions are detected.)
+At least as long as I've had a Mac (and if I recall correctly my first was a [PowerMac 7600](https://everymac.com/systems/apple/powermac/specs/powermac_7600_120.html) back around 1996), the startup sound has been an absolutely stupefying, eardrum-shattering aural sledgehammer. To fully experience it, enclose yourself in a quiet room, pump your speakers up to maximum volume and watch either [this](http://www.youtube.com/watch?v=PwcySsaWqAY) or [this](http://www.youtube.com/watch?v=By1Jb13QYb8) YouTube compilation of Mac startup sounds. Unless it makes your windows rattle in their panes, you're not listening to it loud enough, and need to pump up the volume and try again. (As an aside, [here](http://www.youtube.com/watch?v=LTVmrX6Lee0) is another compilation which includes not only the startup sounds, but also the "Chime of Death" played when certain failure conditions are detected.)
 
 Why anyone at Apple ever thought this was a good idea is beyond me. Perhaps if it were quiet enough — very quiet — it wouldn't be such a big deal, but given that it usually accompanies an involuntary reboot, this unwanted slap in the side of the head with the aural equivalent of a 40-pound cod is almost always unwelcome.
 
