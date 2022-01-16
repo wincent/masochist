@@ -4,7 +4,7 @@ export const EPSILON = 0x03b5; // "GREEK SMALL LETTER EPSILON".
 
 /**
  * Returns a human-readable representation of the `Transition` for debugging and
- * illustration purposes (really, for use in `dotifyTransitionTable`).
+ * illustration purposes.
  */
 export default function stringifyTransition(transition: Transition): string {
   if (transition === null) {
