@@ -11,6 +11,7 @@ export default function fromTransitionTable({
   acceptStates,
   startStates,
   transitions,
+  labels,
 }: TransitionTable): NFA {
   const states: Array<NFA> = [];
   const queue = new Queue<number>(startStates);
@@ -45,12 +46,22 @@ export default function fromTransitionTable({
     }
 
     for (const [key, targets] of transitions[id]) {
+      const targetsToLabels = labels?.[id];
       const on = keyToTransition(key);
       for (const target of targets) {
-        state.edges.push({
-          on,
-          to: getState(target),
-        });
+        const labels = targetsToLabels?.get(key)?.[target];
+        if (labels) {
+          state.edges.push({
+            on,
+            to: getState(target),
+            labels,
+          });
+        } else {
+          state.edges.push({
+            on,
+            to: getState(target),
+          });
+        }
       }
     }
   }
@@ -61,6 +72,7 @@ export default function fromTransitionTable({
     return {
       id: transitions.length,
       flags: START,
+      // TODO see if i need to do anything will labels here; i don't think i do...
       edges: newStartStates.map((state) => {
         state.flags = clearFlag(state.flags, START);
         return {on: null, to: state};

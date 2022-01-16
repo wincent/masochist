@@ -94,10 +94,18 @@ export default function NFAToDFA(nfa: NFA): NFA {
         queue.enqueue(node);
       }
       const node = reverseIds[key];
-      next.edges.push({
-        on: edges[0].on,
-        to: node,
-      });
+      if (edges[0].labels) {
+        next.edges.push({
+          on: edges[0].on,
+          to: node,
+          labels: edges[0].labels,
+        });
+      } else {
+        next.edges.push({
+          on: edges[0].on,
+          to: node,
+        });
+      }
     }
   }
 
