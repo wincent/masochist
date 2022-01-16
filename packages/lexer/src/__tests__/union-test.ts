@@ -41,6 +41,7 @@ describe('union()', () => {
         NAME,
       },
     );
+    console.log(require('../NFA/dotifyTransitionTable').default(table));
 
     expect(table).toEqual({
       acceptStates: new Set([1, 2]),
