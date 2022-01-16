@@ -12,6 +12,7 @@ import toTransitionTable from './NFA/toTransitionTable';
 import visitNFA from './NFA/visitNFA';
 import compileRegExp from './compileRegExp';
 
+import type {NFA} from './NFA/NFA';
 import type {TransitionTable} from './NFA/TransitionTable';
 
 /**
@@ -29,31 +30,30 @@ export default function union(patterns: {
   // Renumber states to ensure that they're all unique.
   let id = 1;
 
-  return toTransitionTable(
-    minimizeDFA(
-      sortEdges(
-        NFAToDFA(
-          removeEpsilons({
-            id: 0,
-            flags: START,
-            edges: Object.entries(patterns).map(([label, pattern]) => ({
-              on: null,
-              to: (() => {
-                const regExp =
-                  typeof pattern === 'string'
-                    ? new RegExp(escapeForRegExp(pattern))
-                    : pattern;
+  let nfa: NFA = {
+    id: 0,
+    flags: START,
+    edges: Object.entries(patterns).map(([label, pattern]) => ({
+      on: null,
+      to: (() => {
+        const regExp =
+          typeof pattern === 'string'
+            ? new RegExp(escapeForRegExp(pattern))
+            : pattern;
 
-                const nfa = regExpToNFA(compileRegExp(regExp));
-                nfa.flags = clearFlag(nfa.flags, START);
-                visitNFA(nfa, (node) => (node.id = id++));
-                applyLabel(label, nfa);
-                return nfa;
-              })(),
-            })),
-          }),
-        ),
-      ),
-    ),
-  );
+        const nfa = regExpToNFA(compileRegExp(regExp));
+        nfa.flags = clearFlag(nfa.flags, START);
+        visitNFA(nfa, (node) => (node.id = id++));
+        applyLabel(label, nfa);
+        return nfa;
+      })(),
+    })),
+  };
+
+  nfa = removeEpsilons(nfa);
+  nfa = NFAToDFA(nfa);
+  nfa = sortEdges(nfa);
+  nfa = minimizeDFA(nfa);
+
+  return toTransitionTable(nfa);
 }
