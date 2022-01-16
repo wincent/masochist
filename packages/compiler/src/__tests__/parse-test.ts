@@ -1,8 +1,8 @@
+import {dedent} from '@masochist/common';
 import fs from 'fs';
 import path from 'path';
 import {promisify} from 'util';
 
-import dedent from '../dedent';
 import parse from '../parse';
 
 const readFile = promisify(fs.readFile);
