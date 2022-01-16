@@ -10,14 +10,12 @@ import {
   SOURCE_CHARACTER,
   WHITESPACE,
 } from '../../lexer';
-import {ACCEPT} from '../NFA';
 import NFAToDFA from '../NFAToDFA';
+import applyLabel from '../applyLabel';
 import regExpToNFA from '../regExpToNFA';
 import removeEpsilons from '../removeEpsilons';
 import sortEdges from '../sortEdges';
-import testFlag from '../testFlag';
 import toTransitionTable from '../toTransitionTable';
-import visitNFA from '../visitNFA';
 
 import type {TransitionTable} from '../TransitionTable';
 
@@ -329,17 +327,7 @@ function getTable(regExp: RegExp, label?: string): TransitionTable {
   );
 
   if (label) {
-    // Add label to all edges that transition to accept states.
-    visitNFA(dfa, ({edges}) => {
-      for (const edge of edges) {
-        if (testFlag(edge.to.flags, ACCEPT)) {
-          if (!edge.labels) {
-            edge.labels = new Set();
-          }
-          edge.labels.add(label);
-        }
-      }
-    });
+    applyLabel(label, dfa);
   }
 
   return toTransitionTable(dfa);

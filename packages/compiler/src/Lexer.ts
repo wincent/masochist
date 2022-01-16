@@ -1,3 +1,5 @@
+import {escapeForRegExp} from '@masochist/common';
+
 import permute from './permute';
 import ReversibleMap from './ReversibleMap';
 
@@ -384,7 +386,7 @@ export default class Lexer<K, V> {
 
       const pattern =
         typeof stringOrRegExp === 'string'
-          ? escape(stringOrRegExp)
+          ? escapeForRegExp(stringOrRegExp)
           : stringOrRegExp.source;
 
       const regExp = new RegExp(`(?:${pattern})`, 'uy');
@@ -1110,14 +1112,6 @@ export default class Lexer<K, V> {
       yield produceToken();
     }
   }
-}
-
-/**
- * Escapes `literal` for use in a RegExp.
- */
-function escape(literal: string) {
-  // https://github.com/benjamingr/RegExp.escape/blob/master/EscapedChars.md
-  return literal.replace(/[\^$\\.*+?()[\]{}|]/g, '\\$&');
 }
 
 /**

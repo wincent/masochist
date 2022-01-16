@@ -1,5 +1,23 @@
 import generate from './generate';
 
+//
+// Punctuators (2.1.8)
+//
+export const AMPERSAND = '&';
+export const AT = '@';
+export const BANG = '!';
+export const BAR = '|';
+export const CLOSING_BRACE = '}';
+export const CLOSING_BRACKET = ']';
+export const CLOSING_PAREN = ')';
+export const COLON = ':';
+export const DOLLAR = '$';
+export const ELLIPSIS = '...';
+export const EQUALS = '=';
+export const OPENING_BRACE = '{';
+export const OPENING_BRACKET = '[';
+export const OPENING_PAREN = '(';
+
 export const ESCAPED_CHARACTER = /\\["\\\/bfnrt]/;
 
 // NOTE: Don't use "i" flag with this RegExp, because "\U" is not valid.

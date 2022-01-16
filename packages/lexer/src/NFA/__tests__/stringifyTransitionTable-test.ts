@@ -2,15 +2,13 @@ import {dedent} from '@masochist/common';
 
 import compileRegExp from '../../compileRegExp';
 import {INTEGER_PART} from '../../lexer';
-import {ACCEPT} from '../NFA';
 import NFAToDFA from '../NFAToDFA';
+import applyLabel from '../applyLabel';
 import regExpToNFA from '../regExpToNFA';
 import removeEpsilons from '../removeEpsilons';
 import sortEdges from '../sortEdges';
 import stringifyTransitionTable from '../stringifyTransitionTable';
-import testFlag from '../testFlag';
 import toTransitionTable from '../toTransitionTable';
-import visitNFA from '../visitNFA';
 
 import type {TransitionTable} from '../TransitionTable';
 
@@ -58,24 +56,13 @@ describe('stringifyTransitionTable()', () => {
 // TODO: this is the same as the one in the `toTransitionTable()` tests;
 // extract it somewhere common, if I can come up with a reasonable name for
 // it...
-// TODO: going to have to extract the code that adds labels to edges anyway...
 function getTable(regExp: RegExp, label?: string): TransitionTable {
   const dfa = sortEdges(
     NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(regExp)))),
   );
 
   if (label) {
-    // Add label to all edges that transition to accept states.
-    visitNFA(dfa, ({edges}) => {
-      for (const edge of edges) {
-        if (testFlag(edge.to.flags, ACCEPT)) {
-          if (!edge.labels) {
-            edge.labels = new Set();
-          }
-          edge.labels.add(label);
-        }
-      }
-    });
+    applyLabel(label, dfa);
   }
 
   return toTransitionTable(dfa);
