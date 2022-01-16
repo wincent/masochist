@@ -9,6 +9,7 @@ import toTransitionTable from './NFA/toTransitionTable';
 import visitNFA from './NFA/visitNFA';
 import compileRegExp from './compileRegExp';
 
+import type {NFA} from './NFA/NFA';
 import type {TransitionTable} from './NFA/TransitionTable';
 
 /**
@@ -19,24 +20,23 @@ export default function ignore(...patterns: Array<RegExp>): TransitionTable {
   // Renumber states to ensure that they're all unique.
   let id = 1;
 
-  return toTransitionTable(
-    minimizeDFA(
-      sortEdges(
-        NFAToDFA(
-          removeEpsilons({
-            id: 0,
-            flags: START,
-            edges: patterns.map((pattern) => ({
-              on: null,
-              to: (() => {
-                const nfa = regExpToNFA(compileRegExp(pattern));
-                nfa.flags = clearFlag(nfa.flags, START);
-                return visitNFA(nfa, (node) => (node.id = id++));
-              })(),
-            })),
-          }),
-        ),
-      ),
-    ),
-  );
+  let nfa: NFA = {
+    id: 0,
+    flags: START,
+    edges: patterns.map((pattern) => ({
+      on: null,
+      to: (() => {
+        const nfa = regExpToNFA(compileRegExp(pattern));
+        nfa.flags = clearFlag(nfa.flags, START);
+        return visitNFA(nfa, (node) => (node.id = id++));
+      })(),
+    })),
+  };
+
+  nfa = removeEpsilons(nfa);
+  nfa = NFAToDFA(nfa);
+  nfa = sortEdges(nfa);
+  nfa = minimizeDFA(nfa);
+
+  return toTransitionTable(nfa);
 }

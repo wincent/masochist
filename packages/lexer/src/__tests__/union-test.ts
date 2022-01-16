@@ -102,9 +102,7 @@ describe('union()', () => {
         ]),
         /* 2 */ undefined,
         /* 3 */ undefined,
-        /* 4 */ new Map([
-          ['Atom:.', {2: new Set(['ELLIPSIS'])}],
-        ]),
+        /* 4 */ new Map([['Atom:.', {2: new Set(['ELLIPSIS'])}]]),
       ],
     });
   });
