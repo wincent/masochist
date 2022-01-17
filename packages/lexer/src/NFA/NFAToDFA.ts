@@ -94,15 +94,29 @@ export default function NFAToDFA(nfa: NFA): NFA {
         queue.enqueue(node);
       }
       const node = reverseIds[key];
-      if (edges[0].labels) {
+
+      const labels = edges.reduce((acc, {labels}) => {
+        if (labels) {
+          for (const label of labels) {
+            acc.add(label);
+          }
+        }
+        return acc;
+      }, new Set<string>());
+
+      // Because we've grouped edges by condition, they all have the same `on`,
+      // and we can just grab the first.
+      const {on} = edges[0];
+
+      if (labels.size) {
         next.edges.push({
-          on: edges[0].on,
+          on,
           to: node,
-          labels: edges[0].labels,
+          labels,
         });
       } else {
         next.edges.push({
-          on: edges[0].on,
+          on,
           to: node,
         });
       }

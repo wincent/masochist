@@ -107,4 +107,15 @@ describe('union()', () => {
       ],
     });
   });
+
+  it('trying out an "edge case"', () => {
+    const table = union({
+      A_BANG: 'a!',
+      B_BANG: 'b!',
+    });
+    // as expected: 0 -> 1 (on a or b)
+    // and 1 -> 2 (on !, with labels: A_BANG, B_BANG)
+    console.log(require('../NFA/stringifyTransitionTable').default(table));
+    console.log(require('../NFA/dotifyTransitionTable').default(table));
+  });
 });
