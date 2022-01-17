@@ -1,5 +1,5 @@
 ---
-tags: wiki
+tags: wiki split coreutils shell
 title: Splitting large log files
 ---
 
@@ -12,7 +12,7 @@ split -b 25m backfill-reactions-500000-1000000-write.log
 ```
 
 - Splits the specified log file into chunks of 25m bytes, creating files named `xaa`, `xab` etc.
-- **Note:** This will cut the files at exactly 24m bytes, even if that means slicing a line in half.
+- **Note:** This will cut the files at _exactly_ 25m bytes, even if that means slicing a line in half.
 
 # With GNU `split`
 
