@@ -40,8 +40,12 @@ export const WHITESPACE = /[\t ]+/;
 // This rather ghastly RegExp is made up of any of:
 //
 // - ESCAPED_UNICODE
-// - ESCAPED_CHARACTER
-// - SOURCE_CHARACTER, minus \u000a (\n), \u000d (\r), \u0022 ("), and \u005c (\)
+// - ESCAPED_CHARACTER; and:
+// - SOURCE_CHARACTER, minus:
+//   - \u000a (\n)
+//   - \u000d (\r)
+//   - \u0022 (")
+//   - \u005c (\)
 //
 export const STRING_CHARACTER = /(\\u[0-9A-Fa-f]{4}|\\["\\\/bfnrt]|[\u0009\u0020\u0021\u0023-\u005b\u005d-\uffff])/;
 
