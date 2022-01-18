@@ -7,7 +7,6 @@ export default function stringifyTransitionTable({
   acceptStates,
   startStates,
   transitions,
-  labels,
 }: TransitionTable): string {
   const lines = ['{'];
 
@@ -47,32 +46,6 @@ export default function stringifyTransitionTable({
     lines.push('  ],');
   } else {
     lines.push('  transitions: [],');
-  }
-
-  if (labels) {
-    lines.push('  labels: [');
-    for (let i = 0; i < transitions.length; i++) {
-      const label = labels[i];
-      if (label) {
-        lines.push(`    /* ${i} */ new Map([`);
-        for (const [on, edges] of label) {
-          if (Object.keys(edges).length === 1) {
-            const [target, set] = Array.from(Object.entries(edges))[0];
-            lines.push(`      [${quote(on)}, {${target}: ${formatSet(set)}}],`);
-          } else {
-            lines.push(`      [${quote(on)}, {`);
-            for (const [target, set] of Object.entries(edges)) {
-              lines.push(`        ${target}: ${formatSet(set)},`);
-            }
-            lines.push(`      }],`);
-          }
-        }
-        lines.push('    ]),');
-      } else {
-        lines.push(`    /* ${i} */ undefined,`);
-      }
-    }
-    lines.push('  ],');
   }
 
   lines.push('}');
@@ -118,10 +91,6 @@ function quote(unquoted: string): string {
     const escaped = escape(unquoted).replace("'", "\\'");
     return `'${escaped}'`;
   }
-}
-
-function formatSet(set: Set<string>): string {
-  return `new Set([${Array.from(set).map(quote).join(', ')}])`;
 }
 
 function formatTargets(targets: Set<number>): string {

@@ -2,7 +2,6 @@ import {escapeForRegExp} from '@masochist/common';
 
 import {START} from './NFA/NFA';
 import NFAToDFA from './NFA/NFAToDFA';
-import applyLabel from './NFA/applyLabel';
 import clearFlag from './NFA/clearFlag';
 import minimizeDFA from './NFA/minimizeDFA';
 import regExpToNFA from './NFA/regExpToNFA';
@@ -19,13 +18,10 @@ import type {TransitionTable} from './NFA/TransitionTable';
  * Returns a TransitionTable corresponding to a minimized DFA that recognizes
  * any of the supplied patterns. This is intended to be used in a lexer/scanner
  * that wants to try multiple possible matches and then generate the "winning"
- * token, if any. As such, unlike the `ignore()` function, this DFA includes
- * labels that can be used to distinguish between transitions that arrive in
- * accept states which have been consolidated from multiple machines, but which
- * should produce distinct tokens.
+ * token, if any.
  */
 export default function union(patterns: {
-  [label: string]: RegExp | string;
+  [tokenName: string]: RegExp | string;
 }): TransitionTable {
   // Renumber states to ensure that they're all unique.
   let id = 1;
@@ -33,7 +29,7 @@ export default function union(patterns: {
   let nfa: NFA = {
     id: 0,
     flags: START,
-    edges: Object.entries(patterns).map(([label, pattern]) => ({
+    edges: Object.entries(patterns).map(([_tokenName, pattern]) => ({
       on: null,
       to: (() => {
         const regExp =
@@ -41,10 +37,16 @@ export default function union(patterns: {
             ? new RegExp(escapeForRegExp(pattern))
             : pattern;
 
-        const nfa = regExpToNFA(compileRegExp(regExp));
+        let nfa = regExpToNFA(compileRegExp(regExp));
+        nfa = removeEpsilons(nfa);
+        nfa = NFAToDFA(nfa);
+        nfa = sortEdges(nfa);
+        nfa = minimizeDFA(nfa);
+        nfa = minimizeDFA(nfa);
+
         nfa.flags = clearFlag(nfa.flags, START);
         visitNFA(nfa, (node) => (node.id = id++));
-        applyLabel(label, nfa);
+
         return nfa;
       })(),
     })),
@@ -52,8 +54,6 @@ export default function union(patterns: {
 
   nfa = removeEpsilons(nfa);
   nfa = NFAToDFA(nfa);
-  nfa = sortEdges(nfa);
-  nfa = minimizeDFA(nfa);
 
   return toTransitionTable(nfa);
 }

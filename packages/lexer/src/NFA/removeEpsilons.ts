@@ -37,13 +37,7 @@ export default function removeEpsilons(nfa: NFA): NFA {
           ...targets.flatMap((target) => {
             return target.edges
               .filter((targetEdge) => targetEdge.on !== null)
-              .map(({labels, on, to}) => {
-                if (labels) {
-                  return {labels, on, to};
-                } else {
-                  return {on, to};
-                }
-              });
+              .map(({on, to}) => ({on, to}));
           }),
         );
 
@@ -52,7 +46,6 @@ export default function removeEpsilons(nfa: NFA): NFA {
         // de-duping logic.
         for (let i = 0; i < source.edges.length; i++) {
           for (let j = 0; j < source.edges.length; j++) {
-            // TODO: figure out whether we need to think about labels here too
             if (i !== j && equalEdges(source.edges[i], source.edges[j])) {
               throw new Error(
                 'removeEpsilons(): Unexpected duplicate edges found',

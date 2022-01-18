@@ -1,4 +1,4 @@
-import type {Labels, TransitionTable} from './TransitionTable';
+import type {TransitionTable} from './TransitionTable';
 
 /**
  * Transposes the supplied transition table by inverting the direction of all
@@ -40,34 +40,6 @@ export default function transposeTable(
   transitions.forEach((transition, i) => {
     table.transitions[i] = transition;
   });
-
-  // Swap source and target on labels.
-  if (table.labels) {
-    const swappedLabels: Labels = [];
-    table.labels.forEach((labels, source) => {
-      if (labels) {
-        for (const [on, targetsToLabels] of labels) {
-          for (const entry of Object.entries(targetsToLabels)) {
-            const target = parseInt(entry[0], 10);
-            const set = entry[1];
-            if (!swappedLabels[target]) {
-              swappedLabels[target] = new Map();
-            }
-            if (!swappedLabels[target].get(on)) {
-              swappedLabels[target].set(on, {});
-            }
-            if (!swappedLabels[target].get(on)![source]) {
-              swappedLabels[target].get(on)![source] = new Set();
-            }
-            for (const label of set) {
-              swappedLabels[target].get(on)![source].add(label);
-            }
-          }
-        }
-      }
-    });
-    table.labels.splice(0, table.labels.length, ...swappedLabels);
-  }
 
   return table;
 }

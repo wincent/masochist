@@ -18,7 +18,7 @@ import {
 import union from '../union';
 
 describe('union()', () => {
-  it('applies labels to edges which lead accept states', () => {
+  it('creates a machine with a number of distinct accept states', () => {
     const table = union(
       // Punctuators.
       {
@@ -37,85 +37,63 @@ describe('union()', () => {
         OPENING_BRACKET,
         OPENING_PAREN,
 
+        // TODO: strings and numbers too
+
         // Other Lexical tokens.
         NAME,
       },
     );
+    console.log(require('../NFA/stringifyTransitionTable').default(table));
     console.log(require('../NFA/dotifyTransitionTable').default(table));
 
     expect(table).toEqual({
-      acceptStates: new Set([1, 2]),
+      acceptStates: new Set([
+        1, 2, 3, 4, 5, 17, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+      ]),
       startStates: new Set([0]),
       transitions: [
         /* 0 */ new Map([
           ['Range:a-z', new Set([1])],
           ['Range:A-Z', new Set([1])],
           ['Atom:_', new Set([1])],
-          ['Atom:}', new Set([2])],
-          ['Atom:|', new Set([2])],
-          ['Atom:{', new Set([2])],
-          ['Atom:]', new Set([2])],
-          ['Atom:[', new Set([2])],
-          ['Atom:@', new Set([2])],
-          ['Atom:=', new Set([2])],
-          ['Atom::', new Set([2])],
-          ['Atom:)', new Set([2])],
           ['Atom:(', new Set([2])],
-          ['Atom:&', new Set([2])],
-          ['Atom:$', new Set([2])],
-          ['Atom:!', new Set([2])],
-          ['Atom:.', new Set([3])],
+          ['Atom:[', new Set([3])],
+          ['Atom:{', new Set([4])],
+          ['Atom:=', new Set([5])],
+          ['Atom:.', new Set([6])],
+          ['Atom:$', new Set([7])],
+          ['Atom::', new Set([8])],
+          ['Atom:)', new Set([9])],
+          ['Atom:]', new Set([10])],
+          ['Atom:}', new Set([11])],
+          ['Atom:|', new Set([12])],
+          ['Atom:!', new Set([13])],
+          ['Atom:@', new Set([14])],
+          ['Atom:&', new Set([15])],
         ]),
         /* 1 */ new Map([
+          ['Range:0-9', new Set([1])],
           ['Range:a-z', new Set([1])],
           ['Range:A-Z', new Set([1])],
           ['Atom:_', new Set([1])],
-          ['Range:0-9', new Set([1])],
         ]),
-        /*  */ new Map(),
-        /* 3 */ new Map([['Atom:.', new Set([4])]]),
-        /* 4 */ new Map([['Atom:.', new Set([2])]]),
-      ],
-      labels: [
-        /* 0 */ new Map([
-          ['Range:a-z', {1: new Set(['NAME'])}],
-          ['Range:A-Z', {1: new Set(['NAME'])}],
-          ['Atom:_', {1: new Set(['NAME'])}],
-          ['Atom:}', {2: new Set(['CLOSING_BRACE'])}],
-          ['Atom:|', {2: new Set(['BAR'])}],
-          ['Atom:{', {2: new Set(['OPENING_BRACE'])}],
-          ['Atom:]', {2: new Set(['CLOSING_BRACKET'])}],
-          ['Atom:[', {2: new Set(['OPENING_BRACKET'])}],
-          ['Atom:@', {2: new Set(['AT'])}],
-          ['Atom:=', {2: new Set(['EQUALS'])}],
-          ['Atom::', {2: new Set(['COLON'])}],
-          ['Atom:)', {2: new Set(['CLOSING_PAREN'])}],
-          ['Atom:(', {2: new Set(['OPENING_PAREN'])}],
-          ['Atom:&', {2: new Set(['AMPERSAND'])}],
-          ['Atom:$', {2: new Set(['DOLLAR'])}],
-          ['Atom:!', {2: new Set(['BANG'])}],
-        ]),
-        /* 1 */ new Map([
-          ['Range:a-z', {1: new Set(['NAME'])}],
-          ['Range:A-Z', {1: new Set(['NAME'])}],
-          ['Atom:_', {1: new Set(['NAME'])}],
-          ['Range:0-9', {1: new Set(['NAME'])}],
-        ]),
-        /* 2 */ undefined,
-        /* 3 */ undefined,
-        /* 4 */ new Map([['Atom:.', {2: new Set(['ELLIPSIS'])}]]),
+        /* 2 */ new Map(),
+        /* 3 */ new Map(),
+        /* 4 */ new Map(),
+        /* 5 */ new Map(),
+        /* 6 */ new Map([['Atom:.', new Set([16])]]),
+        /* 7 */ new Map(),
+        /* 8 */ new Map(),
+        /* 9 */ new Map(),
+        /* 10 */ new Map(),
+        /* 11 */ new Map(),
+        /* 12 */ new Map(),
+        /* 13 */ new Map(),
+        /* 14 */ new Map(),
+        /* 15 */ new Map(),
+        /* 16 */ new Map([['Atom:.', new Set([17])]]),
+        /* 17 */ new Map(),
       ],
     });
-  });
-
-  it('trying out an "edge case"', () => {
-    const table = union({
-      A_BANG: 'a!',
-      B_BANG: 'b!',
-    });
-    // as expected: 0 -> 1 (on a or b)
-    // and 1 -> 2 (on !, with labels: A_BANG, B_BANG)
-    console.log(require('../NFA/stringifyTransitionTable').default(table));
-    console.log(require('../NFA/dotifyTransitionTable').default(table));
   });
 });

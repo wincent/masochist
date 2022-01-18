@@ -52,7 +52,6 @@ export default function dotifyTransitionTable(
     lines.push(`  -${state + 1} -> ${state} [${color}];`);
   }
 
-  // TODO: show edge labels, if any
   transitions.forEach((transition, i) => {
     for (const [key, targets] of transition) {
       for (const to of targets) {

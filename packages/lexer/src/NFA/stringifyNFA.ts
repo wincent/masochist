@@ -8,9 +8,7 @@ import type {NFA} from './NFA';
  * Creates a table-based printable form of an NFA, for debugging purposes.
  */
 export default function stringifyNFA(nfa: NFA): string {
-  const lines: Array<Array<string>> = [
-    ['id', 'START?', 'ACCEPT?', 'to', 'on', 'labels'],
-  ];
+  const lines: Array<Array<string>> = [['id', 'START?', 'ACCEPT?', 'to', 'on']];
 
   visitNFA(nfa, (node) => {
     if (!node.edges.length) {
@@ -18,7 +16,6 @@ export default function stringifyNFA(nfa: NFA): string {
         node.id.toString(),
         node.flags & START ? '*' : '-',
         node.flags & ACCEPT ? '*' : '-',
-        '-',
         '-',
         '-',
       ]);
@@ -30,7 +27,6 @@ export default function stringifyNFA(nfa: NFA): string {
           node.flags & ACCEPT ? '*' : '-',
           edge.to.id.toString(),
           stringifyTransition(edge.on),
-          edge.labels?.size ? Array.from(edge.labels).join(',') : '-',
         ]);
       });
     }
