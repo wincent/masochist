@@ -43,8 +43,6 @@ describe('union()', () => {
         NAME,
       },
     );
-    console.log(require('../NFA/stringifyTransitionTable').default(table));
-    console.log(require('../NFA/dotifyTransitionTable').default(table));
 
     expect(table).toEqual({
       acceptStates: new Set([
@@ -93,6 +91,26 @@ describe('union()', () => {
         /* 15 */ new Map(),
         /* 16 */ new Map([['Atom:.', new Set([17])]]),
         /* 17 */ new Map(),
+      ],
+      labels: [
+        /* 0 */ undefined,
+        /* 1 */ new Set(['NAME']),
+        /* 2 */ new Set(['OPENING_PAREN']),
+        /* 3 */ new Set(['OPENING_BRACKET']),
+        /* 4 */ new Set(['OPENING_BRACE']),
+        /* 5 */ new Set(['EQUALS']),
+        /* 6 */ undefined,
+        /* 7 */ new Set(['DOLLAR']),
+        /* 8 */ new Set(['COLON']),
+        /* 9 */ new Set(['CLOSING_PAREN']),
+        /* 10 */ new Set(['CLOSING_BRACKET']),
+        /* 11 */ new Set(['CLOSING_BRACE']),
+        /* 12 */ new Set(['BAR']),
+        /* 13 */ new Set(['BANG']),
+        /* 14 */ new Set(['AT']),
+        /* 15 */ new Set(['AMPERSAND']),
+        /* 16 */ undefined,
+        /* 17 */ new Set(['ELLIPSIS']),
       ],
     });
   });

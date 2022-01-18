@@ -8,7 +8,9 @@ import type {NFA} from './NFA';
  * Creates a table-based printable form of an NFA, for debugging purposes.
  */
 export default function stringifyNFA(nfa: NFA): string {
-  const lines: Array<Array<string>> = [['id', 'START?', 'ACCEPT?', 'to', 'on']];
+  const lines: Array<Array<string>> = [
+    ['id', 'START?', 'ACCEPT?', 'labels', 'to', 'on'],
+  ];
 
   visitNFA(nfa, (node) => {
     if (!node.edges.length) {
@@ -16,6 +18,7 @@ export default function stringifyNFA(nfa: NFA): string {
         node.id.toString(),
         node.flags & START ? '*' : '-',
         node.flags & ACCEPT ? '*' : '-',
+        formatSet(node.labels),
         '-',
         '-',
       ]);
@@ -25,6 +28,7 @@ export default function stringifyNFA(nfa: NFA): string {
           node.id.toString(),
           node.flags & START ? '*' : '-',
           node.flags & ACCEPT ? '*' : '-',
+          formatSet(node.labels),
           edge.to.id.toString(),
           stringifyTransition(edge.on),
         ]);
@@ -49,4 +53,12 @@ export default function stringifyNFA(nfa: NFA): string {
       return entries.map((entry, i) => entry.padStart(widths[i])).join('  ');
     })
     .join('\n');
+}
+
+function formatSet(set?: Set<string>): string {
+  if (set) {
+    return `[${Array.from(set).join(', ')}]`;
+  } else {
+    return '-';
+  }
 }

@@ -7,6 +7,7 @@ export default function stringifyTransitionTable({
   acceptStates,
   startStates,
   transitions,
+  labels,
 }: TransitionTable): string {
   const lines = ['{'];
 
@@ -46,6 +47,25 @@ export default function stringifyTransitionTable({
     lines.push('  ],');
   } else {
     lines.push('  transitions: [],');
+  }
+
+  if (labels?.length) {
+    lines.push('  labels: [');
+    for (let i = 0; i < transitions.length; i++) {
+      const label = labels[i];
+      if (label?.size > 1) {
+        lines.push(`    /* ${i} */ new Set([`);
+        for (const text of label) {
+          lines.push(`      ${quote(text)},`);
+        }
+        lines.push('    ]),');
+      } else if (label?.size === 1) {
+        lines.push(`    /* ${i} */ new Set([${quote(Array.from(label)[0])}]),`);
+      } else {
+        lines.push(`    /* ${i} */ undefined,`);
+      }
+    }
+    lines.push('  ],');
   }
 
   lines.push('}');
@@ -90,6 +110,14 @@ function quote(unquoted: string): string {
     // Use single-quoted string.
     const escaped = escape(unquoted).replace("'", "\\'");
     return `'${escaped}'`;
+  }
+}
+
+function formatSet(set?: Set<string>): string {
+  if (set) {
+    return `new Set([${Array.from(set).map(quote).join(', ')}])`;
+  } else {
+    return `undefined`;
   }
 }
 

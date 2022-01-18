@@ -18,6 +18,7 @@ export type NFA = {
   id: number;
   edges: Array<Edge>;
   flags: Flags;
+  labels?: Set<string>;
 };
 
 export const NONE = 0;

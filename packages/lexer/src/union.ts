@@ -1,12 +1,13 @@
 import {escapeForRegExp} from '@masochist/common';
 
-import {START} from './NFA/NFA';
+import {ACCEPT, START} from './NFA/NFA';
 import NFAToDFA from './NFA/NFAToDFA';
 import clearFlag from './NFA/clearFlag';
 import minimizeDFA from './NFA/minimizeDFA';
 import regExpToNFA from './NFA/regExpToNFA';
 import removeEpsilons from './NFA/removeEpsilons';
 import sortEdges from './NFA/sortEdges';
+import testFlag from './NFA/testFlag';
 import toTransitionTable from './NFA/toTransitionTable';
 import visitNFA from './NFA/visitNFA';
 import compileRegExp from './compileRegExp';
@@ -21,7 +22,7 @@ import type {TransitionTable} from './NFA/TransitionTable';
  * token, if any.
  */
 export default function union(patterns: {
-  [tokenName: string]: RegExp | string;
+  [label: string]: RegExp | string;
 }): TransitionTable {
   // Renumber states to ensure that they're all unique.
   let id = 1;
@@ -29,7 +30,7 @@ export default function union(patterns: {
   let nfa: NFA = {
     id: 0,
     flags: START,
-    edges: Object.entries(patterns).map(([_tokenName, pattern]) => ({
+    edges: Object.entries(patterns).map(([label, pattern]) => ({
       on: null,
       to: (() => {
         const regExp =
@@ -42,10 +43,19 @@ export default function union(patterns: {
         nfa = NFAToDFA(nfa);
         nfa = sortEdges(nfa);
         nfa = minimizeDFA(nfa);
-        nfa = minimizeDFA(nfa);
 
         nfa.flags = clearFlag(nfa.flags, START);
-        visitNFA(nfa, (node) => (node.id = id++));
+        visitNFA(nfa, (node) => {
+          node.id = id++;
+
+          if (testFlag(node.flags, ACCEPT)) {
+            if (node.labels) {
+              node.labels.add(label);
+            } else {
+              node.labels = new Set([label]);
+            }
+          }
+        });
 
         return nfa;
       })(),

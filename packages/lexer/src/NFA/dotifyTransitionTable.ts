@@ -7,7 +7,7 @@ import type {TransitionTable} from './TransitionTable';
  * for debugging and illustration purposes.
  */
 export default function dotifyTransitionTable(
-  {acceptStates, startStates, transitions}: TransitionTable,
+  {acceptStates, startStates, transitions, labels}: TransitionTable,
   dark = false,
 ): string {
   const lines = [
@@ -23,9 +23,16 @@ export default function dotifyTransitionTable(
   ].join(', ');
 
   if (startStates.size) {
+    const count = startStates.size;
     lines.push(
       '',
-      '  // Invisible node from which to draw start transitions to start states.',
+      `  // Invisible ${pluralize(
+        count,
+        'node',
+      )} from which to draw start ${pluralize(
+        count,
+        'transition',
+      )} to start ${pluralize(count, 'state')}.`,
     );
     const states = Array.from(startStates)
       .map((state) => -(state + 1)) // Offset by 1 to avoid ever having "-0".
@@ -34,19 +41,54 @@ export default function dotifyTransitionTable(
   }
 
   if (acceptStates.size) {
-    lines.push('', '  // Accept states.');
-    const states = Array.from(acceptStates).join('; ');
-    lines.push(
-      `  node [${color}, style = "", shape = doublecircle]; ${states};`,
-    );
-  }
-  lines.push(
-    '',
-    '  // Other states.',
-    `  node [${color}, style = "", shape = circle];`,
-    '',
-  );
+    const count = acceptStates.size;
+    lines.push('', `  // Accept ${pluralize(count, 'state')}.`);
 
+    for (const state of Array.from(acceptStates).sort()) {
+      const xlabel = labels?.[state];
+      if (xlabel) {
+        const stringified = JSON.stringify(Array.from(xlabel).join(','));
+        lines.push(
+          `  node [${color}, style = "", shape = doublecircle, xlabel = ${stringified}]; ${state};`,
+        );
+      } else {
+        lines.push(
+          `  node [${color}, style = "", shape = doublecircle]; ${state};`,
+        );
+      }
+    }
+  }
+
+  const delta = transitions.length - acceptStates.size;
+  if (delta) {
+    let emittedCount = 0;
+    for (let i = 0; i < transitions.length; i++) {
+      if (!acceptStates.has(i)) {
+        const xlabel = labels?.[i];
+        if (xlabel) {
+          if (!emittedCount) {
+            lines.push('', `  // Other ${pluralize(delta, 'state')}.`);
+          }
+          emittedCount++;
+          const stringified = JSON.stringify(Array.from(xlabel).join(','));
+          lines.push(
+            `  node [${color}, style = "", shape = circle, xlabel = ${stringified}]; ${i};`,
+          );
+        }
+      }
+    }
+
+    if (emittedCount < delta) {
+      const count = delta - emittedCount;
+      lines.push(
+        '',
+        `  // Catch-all (default) for remaining ${pluralize(count, 'state')}.`,
+      );
+      lines.push(`  node [${color}, style = "", shape = circle, xlabel = ""];`);
+    }
+  }
+
+  lines.push('');
   for (const state of startStates) {
     lines.push(`  -${state + 1} -> ${state} [${color}];`);
   }
@@ -91,4 +133,8 @@ function escape(key: string): string {
         return `\\\\u${c.toString(16).padStart(4, '0')}`;
       }
     });
+}
+
+function pluralize(count: number, base: string): string {
+  return count === 1 ? base : `${base}s`;
 }

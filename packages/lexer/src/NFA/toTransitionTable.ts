@@ -13,7 +13,7 @@ export default function toTransitionTable(nfa: NFA): TransitionTable {
     transitions: [],
   };
 
-  visitNFA(nfa, ({edges, flags, id}) => {
+  visitNFA(nfa, ({edges, flags, id, labels}) => {
     if (table.transitions[id] === undefined) {
       table.transitions[id] = new Map();
     }
@@ -34,6 +34,13 @@ export default function toTransitionTable(nfa: NFA): TransitionTable {
 
     if (testFlag(flags, START)) {
       table.startStates.add(id);
+    }
+
+    if (labels) {
+      if (!table.labels) {
+        table.labels = [];
+      }
+      table.labels[id] = new Set(labels);
     }
   });
 

@@ -7,10 +7,6 @@ import {
   WHITESPACE,
 } from '../lexer';
 
-// TODO: remove:
-import dotifyTransitionTable from '../NFA/dotifyTransitionTable';
-import stringifyTransitionTable from '../NFA/stringifyTransitionTable';
-
 describe('ignore()', () => {
   it('produces a DFA that recognizes any ignored token', () => {
     const table = ignore(
@@ -20,11 +16,6 @@ describe('ignore()', () => {
       UNICODE_BOM,
       WHITESPACE,
     );
-
-    // TODO: remove:
-    console.log(stringifyTransitionTable(table));
-    console.log(dotifyTransitionTable(table)); // Light version (default).
-    console.log(dotifyTransitionTable(table, true)); // Dark version.
 
     expect(table).toEqual({
       acceptStates: new Set([1, 2, 3, 4]),

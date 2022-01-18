@@ -84,11 +84,21 @@ export default function NFAToDFA(nfa: NFA): NFA {
       });
       const key = targets.map((target) => target.id).join('.');
       if (!reverseIds[key]) {
-        const node = {
-          id: nextID++,
-          flags: NONE,
-          edges: [],
-        };
+        const labels = new Set(
+          targets.flatMap(({labels}) => Array.from(labels ?? [])),
+        );
+        const node = labels.size
+          ? {
+              id: nextID++,
+              flags: NONE,
+              edges: [],
+              labels,
+            }
+          : {
+              id: nextID++,
+              flags: NONE,
+              edges: [],
+            };
         ids[node.id] = targets;
         reverseIds[key] = node;
         queue.enqueue(node);

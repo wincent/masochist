@@ -11,6 +11,7 @@ export default function fromTransitionTable({
   acceptStates,
   startStates,
   transitions,
+  labels,
 }: TransitionTable): NFA {
   const states: Array<NFA> = [];
   const queue = new Queue<number>(startStates);
@@ -22,11 +23,20 @@ export default function fromTransitionTable({
       (startStates.has(id) ? START : NONE) |
       (acceptStates.has(id) ? ACCEPT : NONE);
     if (!states[id]) {
-      states[id] = {
-        id,
-        flags,
-        edges: [],
-      };
+      if (labels?.[id]) {
+        states[id] = {
+          id,
+          flags,
+          edges: [],
+          labels: new Set(labels?.[id]),
+        };
+      } else {
+        states[id] = {
+          id,
+          flags,
+          edges: [],
+        };
+      }
       queue.enqueue(id);
       if (startStates.has(id)) {
         newStartStates.push(states[id]);

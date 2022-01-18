@@ -58,6 +58,18 @@ export default function removeEpsilons(nfa: NFA): NFA {
         if (targets.some((target) => testFlag(target.flags, ACCEPT))) {
           source.flags = setFlag(source.flags, ACCEPT);
         }
+
+        // If any target had labels, they must be copied to the source node.
+        targets.forEach(({labels}) => {
+          if (labels) {
+            if (!source.labels) {
+              source.labels = new Set();
+            }
+            for (const label of labels) {
+              source.labels.add(label);
+            }
+          }
+        });
       }
     }
   });
