@@ -15,7 +15,6 @@ export default function dotifyTransitionTable(
     '  bgcolor = "transparent";',
     '  rankdir = LR;',
     '  ratio = 0.5625; // 16:9.',
-    '  size = "11,8.5"; // US Letter size (Landscape).',
   ];
 
   const color = [
