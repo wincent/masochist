@@ -37,6 +37,14 @@ export const SOURCE_CHARACTER = /[\u0009\u000a\u000d\u0020-\uffff]/;
 export const UNICODE_BOM = /\ufeff/;
 export const WHITESPACE = /[\t ]+/;
 
+// This rather ghastly RegExp is made up of any of:
+//
+// - ESCAPED_UNICODE
+// - ESCAPED_CHARACTER
+// - SOURCE_CHARACTER, minus \u000a (\n), \u000d (\r), \u0022 ("), and \u005c (\)
+//
+export const STRING_CHARACTER = /(\\u[0-9A-Fa-f]{4}|\\["\\\/bfnrt]|[\u0009\u0020\u0021\u0023-\u005b\u005d-\uffff])/;
+
 /**
  * Generate a lexer for the GraphQL language.
  *
@@ -137,7 +145,7 @@ export default generate(({ignored, token}) => {
   token(
     'STRING_VALUE',
     '"',
-    // TODO: STRING_CHARACTER
+    STRING_CHARACTER,
     '"',
   );
   // cf previous lexer:

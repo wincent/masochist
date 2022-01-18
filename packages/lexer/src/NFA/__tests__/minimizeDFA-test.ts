@@ -8,6 +8,7 @@ import {
   LINE_TERMINATOR,
   NAME,
   SOURCE_CHARACTER,
+  STRING_CHARACTER,
   WHITESPACE,
 } from '../../lexer';
 import NFAToDFA from '../NFAToDFA';
@@ -172,6 +173,54 @@ describe('minimizeDFA()', () => {
             ['Atom:\r', new Set([1])],
           ]),
           /* 1 */ new Map(),
+        ],
+      });
+    });
+
+    it('minimizes a DFA for STRING_CHARACTER', () => {
+      expect(minimize(STRING_CHARACTER)).toEqual({
+        acceptStates: new Set([1]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([
+            ['Range:]-\uffff', new Set([1])],
+            ['Range:#-[', new Set([1])],
+            ['Range: -!', new Set([1])],
+            ['Atom:\t', new Set([1])],
+            ['Atom:\\', new Set([2])],
+          ]),
+          /* 1 */ new Map(),
+          /* 2 */ new Map([
+            ['Atom:t', new Set([1])],
+            ['Atom:r', new Set([1])],
+            ['Atom:n', new Set([1])],
+            ['Atom:f', new Set([1])],
+            ['Atom:b', new Set([1])],
+            ['Atom:\\', new Set([1])],
+            ['Atom:/', new Set([1])],
+            ['Atom:"', new Set([1])],
+            ['Atom:u', new Set([3])],
+          ]),
+          /* 3 */ new Map([
+            ['Range:0-9', new Set([4])],
+            ['Range:A-F', new Set([4])],
+            ['Range:a-f', new Set([4])],
+          ]),
+          /* 4 */ new Map([
+            ['Range:0-9', new Set([5])],
+            ['Range:A-F', new Set([5])],
+            ['Range:a-f', new Set([5])],
+          ]),
+          /* 5 */ new Map([
+            ['Range:0-9', new Set([6])],
+            ['Range:A-F', new Set([6])],
+            ['Range:a-f', new Set([6])],
+          ]),
+          /* 6 */ new Map([
+            ['Range:a-f', new Set([1])],
+            ['Range:A-F', new Set([1])],
+            ['Range:0-9', new Set([1])],
+          ]),
         ],
       });
     });
