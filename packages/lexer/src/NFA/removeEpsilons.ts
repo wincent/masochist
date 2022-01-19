@@ -42,19 +42,12 @@ export default function removeEpsilons(nfa: NFA): NFA {
           }),
         );
 
-        // (Highly inefficient) check for dupes. In practice we never see dupes
-        // given the automata in this project; if we ever do, I'll add
-        // de-duping logic.
-        for (let i = 0; i < source.edges.length; i++) {
-          for (let j = 0; j < source.edges.length; j++) {
+        // (Highly inefficient) check for dupes. While optimize this if it
+        // becomes necessary to do so.
+        for (let i = source.edges.length - 1; i >= 0; i--) {
+          for (let j = source.edges.length - 1; j >= 0; j--) {
             if (i !== j && equalEdges(source.edges[i], source.edges[j])) {
-              throw new Error(
-                `removeEpsilons(): Unexpected duplicate edges found (${
-                  source.id
-                } to ${source.edges[i].to.id} on: ${stringifyTransition(
-                  source.edges[i].on,
-                )})`,
-              );
+              source.edges.splice(j, 1);
             }
           }
         }
