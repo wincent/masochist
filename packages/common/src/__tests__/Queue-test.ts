@@ -75,5 +75,11 @@ describe('Queue', () => {
     }
 
     expect(items).toEqual([]);
+
+    // Note that we can use spread syntax easily too.
+    queue.enqueue('first');
+    queue.enqueue('last');
+
+    expect([...queue]).toEqual(['first', 'last']);
   });
 });

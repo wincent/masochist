@@ -60,10 +60,9 @@ export default class Queue<T> {
     return this.#length;
   }
 
-  [Symbol.iterator]() {
-    return {
-      next: () =>
-        this.isEmpty() ? {done: true} : {value: this.dequeue(), done: false},
-    };
+  *[Symbol.iterator]() {
+    while (!this.isEmpty()) {
+      yield this.dequeue()!;
+    }
   }
 }
