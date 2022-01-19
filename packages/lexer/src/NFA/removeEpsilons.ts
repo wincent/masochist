@@ -2,6 +2,7 @@ import {ACCEPT} from './NFA';
 import getStartStates from './getStartStates';
 import {equalEdges} from './equalEdges';
 import setFlag from './setFlag';
+import stringifyTransition from './stringifyTransition';
 import testFlag from './testFlag';
 import visitNFA from './visitNFA';
 
@@ -48,7 +49,11 @@ export default function removeEpsilons(nfa: NFA): NFA {
           for (let j = 0; j < source.edges.length; j++) {
             if (i !== j && equalEdges(source.edges[i], source.edges[j])) {
               throw new Error(
-                'removeEpsilons(): Unexpected duplicate edges found',
+                `removeEpsilons(): Unexpected duplicate edges found (${
+                  source.id
+                } to ${source.edges[i].to.id} on: ${stringifyTransition(
+                  source.edges[i].on,
+                )})`,
               );
             }
           }
