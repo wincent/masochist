@@ -9,6 +9,7 @@ import {
   NAME,
   SOURCE_CHARACTER,
   STRING_CHARACTER,
+  STRING_VALUE,
   WHITESPACE,
 } from '../../lexer';
 import NFAToDFA from '../NFAToDFA';
@@ -221,6 +222,26 @@ describe('minimizeDFA()', () => {
             ['Range:A-F', new Set([1])],
             ['Range:0-9', new Set([1])],
           ]),
+        ],
+      });
+    });
+
+    it('minimizes a DFA for STRING_VALUE', () => {
+      console.log(require('../dotifyTransitionTable').default(minimize(STRING_VALUE)));
+      expect(minimize(STRING_VALUE)).toEqual({
+        acceptStates: new Set([2]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([['Atom:"', new Set([1])]]),
+          /* 1 */ new Map([
+            ['Atom:"', new Set([2])],
+            ['Atom:\t', new Set([1])],
+            ['Range: -!', new Set([1])],
+            ['Range:#-[', new Set([1])],
+            ['Range:]-\uffff', new Set([1])],
+            ['Atom:\\', new Set([0])],
+          ]),
+          /* 2 */ new Map(),
         ],
       });
     });

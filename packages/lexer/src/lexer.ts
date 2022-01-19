@@ -47,7 +47,12 @@ export const WHITESPACE = /[\t ]+/;
 //   - \u0022 (")
 //   - \u005c (\)
 //
-export const STRING_CHARACTER = /(\\u[0-9A-Fa-f]{4}|\\["\\\/bfnrt]|[\u0009\u0020\u0021\u0023-\u005b\u005d-\uffff])/;
+export const STRING_CHARACTER =
+  /(\\u[0-9A-Fa-f]{4}|\\["\\\/bfnrt]|[\u0009\u0020\u0021\u0023-\u005b\u005d-\uffff])/;
+
+// ie. /"STRING_VALUE*"/
+export const STRING_VALUE =
+  /"(\\u[0-9A-Fa-f]{4}|\\["\\\/bfnrt]|[\u0009\u0020\u0021\u0023-\u005b\u005d-\uffff])*"/;
 
 /**
  * Generate a lexer for the GraphQL language.
@@ -146,12 +151,7 @@ export default generate(({ignored, token}) => {
   //      a('SOURCE_CHARACTER').except(oneOf(match('"""'), match('\\"""'))),
   //    ).name('BLOCK_STRING_CHARACTER');
 
-  token(
-    'STRING_VALUE',
-    '"',
-    STRING_CHARACTER,
-    '"',
-  );
+  token('STRING_VALUE', '"', STRING_CHARACTER, '"');
   // cf previous lexer:
   //
   //    const STRING_VALUE = sequence(
