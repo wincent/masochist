@@ -1,6 +1,6 @@
-import RedBlackBST from '../RedBlackBST';
+import RedBlackTree from '../RedBlackTree';
 
-describe('RedBlackBST', () => {
+describe('RedBlackTree', () => {
   class ComparableString {
     _value: string;
 
@@ -24,10 +24,10 @@ describe('RedBlackBST', () => {
   }
 
   describe('SEARCHEXAMPLE', () => {
-    let rbt: RedBlackBST<ComparableString, number>;
+    let rbt: RedBlackTree<ComparableString, number>;
 
     beforeEach(() => {
-      rbt = new RedBlackBST<ComparableString, number>();
+      rbt = new RedBlackTree<ComparableString, number>();
 
       // From: https://algs4.cs.princeton.edu/33balanced/RedBlackBST.java.html
       [...'SEARCHEXAMPLE'].forEach((letter, i) => {

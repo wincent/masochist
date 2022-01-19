@@ -20,7 +20,7 @@ type Node<Tk, Tv> = {
 /**
  * Left-leaning Red-Black BST with keys of type `Tk` and values of type `Tv`.
  */
-export default class RedBlackBST<Tk extends Comparable<Tk>, Tv> {
+export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
   _root: Node<Tk, Tv> | null;
 
   constructor() {
