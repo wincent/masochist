@@ -227,7 +227,7 @@ describe('minimizeDFA()', () => {
     });
 
     it('minimizes a DFA for STRING_VALUE', () => {
-      console.log(require('../dotifyTransitionTable').default(minimize(STRING_VALUE)));
+      // console.log(require('../dotifyTransitionTable').default(minimize(STRING_VALUE)));
       expect(minimize(STRING_VALUE)).toEqual({
         acceptStates: new Set([2]),
         startStates: new Set([0]),
@@ -266,6 +266,14 @@ describe('minimizeDFA()', () => {
 });
 
 function minimize(regExp: RegExp): TransitionTable {
+  // regexp behaves properly here: https://regex101.com/r/ga6pgV/1
+  // console.log(JSON.stringify(compileRegExp(regExp), null, 2)); // looks right
+  // console.log(require('../stringifyNFA').default(regExpToNFA(compileRegExp(regExp)))); // to hard to read (> 60 states)
+  // console.log(require('../stringifyTransitionTable').default(toTransitionTable(regExpToNFA(compileRegExp(regExp))))); // still pretty hard to read
+  // console.log(require('../stringifyTransitionTable').default(toTransitionTable(removeEpsilons(regExpToNFA(compileRegExp(regExp)))))); // still pretty hard to read
+  // console.log(require('../stringifyTransitionTable').default(toTransitionTable(NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(regExp))))))); // 28 states now, looks right
+  // console.log(require('../stringifyTransitionTable').default(toTransitionTable(sortEdges(NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(regExp)))))))); // quick glance, still looks right
+  // console.log(require('../stringifyTransitionTable').default(toTransitionTable(minimizeDFA(sortEdges(NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(regExp))))))))); // boom, all gone
   return toTransitionTable(
     minimizeDFA(
       sortEdges(NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(regExp))))),
