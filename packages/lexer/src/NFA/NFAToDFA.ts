@@ -67,22 +67,10 @@ export default function NFAToDFA(nfa: NFA): NFA {
     });
 
     for (const edges of Object.values(conditions)) {
-      const targets = Array.from(
-        new Set(
-          edges.map((edge) => {
-            return edge.to;
-          }),
-        ),
-      ).sort((a, b) => {
-        if (a.id < b.id) {
-          return -1;
-        } else if (a.id > b.id) {
-          return 1;
-        } else {
-          throw new Error('NFAToDFA(): Duplicate id');
-        }
-      });
-      const key = targets.map((target) => target.id).join('.');
+      const targets = Array.from(new Set(edges.map(({to}) => to))).sort(
+        ({id: a}, {id: b}) => a - b,
+      );
+      const key = targets.map(({id}) => id).join('.');
       if (!reverseIds[key]) {
         const labels = new Set(
           targets.flatMap(({labels}) => Array.from(labels ?? [])),
