@@ -19,14 +19,15 @@ split -b 25m backfill-reactions-500000-1000000-write.log
 GNU `split` (available on macOS as `gsplit` via `brew install coreutils`) provides more options that can be used to produce prettier filenames, and additionally avoid cutting lines midway through (via the `-C` switch):
 
 ```bash
-gsplit -C 25m \
+gsplit -C 25m -a 3 \
   --numeric-suffixes \
   --additional-suffix=.log \
   backfill-reactions-500000-1000000-write.log \
   backfill-reactions-500000-1000000-write-part-
 ```
 
-- Makes `backfill-reactions-500000-1000000-write-part-00.log`, `backfill-reactions-500000-1000000-write-part-01.log` etc.
+- Makes `backfill-reactions-500000-1000000-write-part-000.log`, `backfill-reactions-500000-1000000-write-part-001.log` etc.
+- Note the `-a` flag, which in our example bumps the numeric prefix length up from the default (2) to 3; without this, if you have to produce a lot of chunks things will start to get really weird at the 100th chunk.
 
 # See also
 
