@@ -27,7 +27,7 @@ export default function NFAToDFA(nfa: NFA): NFA {
 
   let nextID = 0;
 
-  // Map of DFA state ids to NFA states.
+  /** Map of DFA state ids to NFA states. */
   const ids: {[key: number]: Array<NFA>} = {};
 
   // Map of NFA state ids (stringfied tuple; eg. "1.2.3") to DFA state.

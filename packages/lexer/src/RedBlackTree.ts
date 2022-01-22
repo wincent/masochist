@@ -8,7 +8,7 @@ interface Comparable<T> {
 const RED = true;
 const BLACK = false;
 
-type Node<Tk, Tv> = {
+export type Node<Tk, Tv> = {
   color: boolean;
   key: Tk;
   left: Node<Tk, Tv> | null;
@@ -169,6 +169,16 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
     return h;
   }
 
+  /**
+   * Left rotation of subtree rooted at 10:
+   *
+   *       10              20        ie. - right child, 20, moves "up" to become
+   *      /  \            /  \             new root
+   *     5    20  ---->  10  25          - old root, 10,  moves "down" to become
+   *         /  \       / \                left child of new root
+   *       15    25    5  15             - left child of 20 (15) gets reparented
+   *                                       to become right child of old root
+   */
   _rotateLeft(h: Node<Tk, Tv>): Node<Tk, Tv> {
     assert(this._isRed(h.right));
     const x = h.right;
@@ -181,6 +191,16 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
     return x!;
   }
 
+  /**
+   * Right rotation of subtree rooted at 20:
+   *
+   *        20             10       ie. - left child, 10, moves "up" to become
+   *       /  \           /  \            new root
+   *      10  25  ---->  5   20         - old root, 20, moves "down" to become
+   *     / \                /  \          right child of new root
+   *    5  15              15  25       - right child of 10 (15) gets reparented
+   *                                      to become left child of old root
+   */
   _rotateRight(h: Node<Tk, Tv>): Node<Tk, Tv> {
     assert(this._isRed(h.left));
     const x = h.left;

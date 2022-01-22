@@ -1,18 +1,16 @@
 import RedBlackTree from './RedBlackTree';
 
-import type {Transition} from './NFA/NFA';
+import type {NFA, Transition} from './NFA/NFA';
+import type {Node} from './RedBlackTree';
 
 // Each node has a set of associated target states.
-// TODO: consider using actual NFA here instead of just number, because the code
-// that will be making use of the tree is dealing with NFA instances, not
-// TransitionTables.
-type IntervalPayload = Set<number>;
+type IntervalPayload = Set<NFA>;
 
 export class IntervalNode {
   /** Low value at the beginning of the range (inclusive). */
   low: number;
 
-  /** High value at the end of the range (exclusive). */
+  /** High value at the end of the range (inclusive). */
   high: number;
 
   /** Highest high value in this subtree. */
@@ -26,13 +24,13 @@ export class IntervalNode {
   constructor(transition: NonNullable<Transition>) {
     if (transition.kind === 'Anything') {
       this.low = 0x0000;
-      this.high = 0xffff + 1;
+      this.high = 0xffff;
     } else if (transition.kind === 'Atom') {
       this.low = transition.value.charCodeAt(0);
-      this.high = this.low + 1;
+      this.high = this.low;
     } else if (transition.kind === 'Range') {
       this.low = transition.from.charCodeAt(0);
-      this.high = transition.to.charCodeAt(0) + 1;
+      this.high = transition.to.charCodeAt(0);
     } else {
       throw new Error('IntervalNode: Unreachable');
     }
@@ -40,17 +38,53 @@ export class IntervalNode {
   }
 
   compareTo(that: IntervalNode) {
-    if (this.low < that.low) {
-      return -1;
-    } else if (this.low > that.low) {
-      return 1;
-    } else {
-      return 0;
-    }
+    return this.low - that.low;
   }
 }
 
 export default class IntervalTree extends RedBlackTree<
   IntervalNode,
   IntervalPayload
-> {}
+> {
+  _put(
+    h: Node<IntervalNode, IntervalPayload> | null,
+    key: IntervalNode,
+    value: IntervalPayload,
+  ) {
+    const root = super._put(h, key, value);
+    root.key.maximum = Math.max(
+      root.key.high,
+      root.left?.key?.maximum || 0,
+      root.right?.key?.maximum || 0,
+    );
+    return root;
+  }
+
+  _rotateLeft(h: Node<IntervalNode, IntervalPayload>) {
+    const newRoot = super._rotateLeft(h);
+    const oldRoot = newRoot.left!;
+
+    newRoot.key.maximum = oldRoot.key.maximum;
+    oldRoot.key.maximum = Math.max(
+      oldRoot.key.high,
+      oldRoot.left?.key?.maximum || 0,
+      oldRoot.right?.key?.maximum || 0,
+    );
+
+    return newRoot;
+  }
+
+  _rotateRight(h: Node<IntervalNode, IntervalPayload>) {
+    const newRoot = super._rotateRight(h);
+    const oldRoot = newRoot.right!;
+
+    newRoot.key.maximum = oldRoot.key.maximum;
+    oldRoot.key.maximum = Math.max(
+      oldRoot.key.high,
+      oldRoot.left?.key?.maximum || 0,
+      oldRoot.right?.key?.maximum || 0,
+    );
+
+    return newRoot;
+  }
+}

@@ -1,13 +1,156 @@
+import assert from 'assert';
+
 import IntervalTree, {IntervalNode} from '../IntervalTree';
+import {NONE} from '../NFA/NFA';
+
+import type {NFA} from '../NFA/NFA';
+import type {Anything, Atom, Range} from '../RegExp/RegExpParser';
 
 describe('IntervalTree', () => {
+  let tree: IntervalTree;
+
+  beforeEach(() => {
+    tree = new IntervalTree();
+  });
+
+  describe('low-level RedBlackTree methods', () => {
+    describe('isEmpty()', () => {
+      it('starts off true', () => {
+        expect(tree.isEmpty()).toBe(true);
+      });
+    });
+
+    describe('max()', () => {
+      it('starts off null', () => {
+        expect(tree.max()).toBe(null);
+      });
+    });
+
+    describe('min()', () => {
+      it('starts off null', () => {
+        expect(tree.min()).toBe(null);
+      });
+    });
+
+    describe('put()', () => {
+      it('can put an atom', () => {
+        const s0 = state(0);
+        tree.put(new IntervalNode(atom('x')), s0);
+        expect(tree.isEmpty()).toBe(false);
+        expect(tree.size).toBe(1);
+
+        const keys = [...tree.keys()];
+        expect(keys.length).toBe(1);
+
+        const key = keys[0];
+        expect(key).toBeInstanceOf(IntervalNode);
+        expect(key.low).toBe(charCode('x'));
+        expect(key.high).toBe(charCode('x'));
+        expect(key.maximum).toBe(charCode('x'));
+
+        const value = tree.get(key);
+        expect(value).toEqual(s0);
+      });
+
+      it('can put a range', () => {
+        const s0 = state(0);
+        tree.put(new IntervalNode(range('a', 'z')), s0);
+        expect(tree.isEmpty()).toBe(false);
+        expect(tree.size).toBe(1);
+
+        const keys = [...tree.keys()];
+        expect(keys.length).toBe(1);
+
+        const key = keys[0];
+        expect(key).toBeInstanceOf(IntervalNode);
+        expect(key.low).toBe(charCode('a'));
+        expect(key.high).toBe(charCode('z'));
+        expect(key.maximum).toBe(charCode('z'));
+
+        const value = tree.get(key);
+        expect(value).toEqual(s0);
+      });
+
+      it('can put an "Anything" range', () => {
+        const s0 = state(0);
+        tree.put(new IntervalNode(anything()), s0);
+        expect(tree.isEmpty()).toBe(false);
+        expect(tree.size).toBe(1);
+
+        const keys = [...tree.keys()];
+        expect(keys.length).toBe(1);
+
+        const key = keys[0];
+        expect(key).toBeInstanceOf(IntervalNode);
+        expect(key.low).toBe(0x0000);
+        expect(key.high).toBe(0xffff);
+        expect(key.maximum).toBe(0xffff);
+
+        const value = tree.get(key);
+        expect(value).toEqual(s0);
+      });
+
+      it('can hold multiple values', () => {
+        const s0 = state(0);
+        const s1 = state(1);
+        const s2 = state(1);
+        tree.put(new IntervalNode(range('a', 'z')), s0);
+        tree.put(new IntervalNode(range('A', 'Z')), s1);
+        tree.put(new IntervalNode(range('0', '9')), s2);
+        expect(tree.size).toBe(3);
+
+        const keys = [...tree.keys()];
+        expect(keys.length).toBe(3);
+
+        expect(keys[0]).toBeInstanceOf(IntervalNode);
+        expect(keys[0].low).toBe(charCode('0'));
+        expect(keys[0].high).toBe(charCode('9'));
+        expect(keys[0].maximum).toBe(charCode('9'));
+
+        expect(keys[1]).toBeInstanceOf(IntervalNode);
+        expect(keys[1].low).toBe(charCode('A'));
+        expect(keys[1].high).toBe(charCode('Z'));
+        expect(keys[1].maximum).toBe(charCode('z')); // Child has greater.
+
+        expect(keys[2]).toBeInstanceOf(IntervalNode);
+        expect(keys[2].low).toBe(charCode('a'));
+        expect(keys[2].high).toBe(charCode('z'));
+        expect(keys[2].maximum).toBe(charCode('z'));
+
+        expect(tree.get(keys[0])).toEqual(s2);
+        expect(tree.get(keys[1])).toEqual(s1);
+        expect(tree.get(keys[2])).toEqual(s0);
+      });
+
+      it('overwrites values for an existing key', () => {
+        const s0 = state(0);
+        const s1 = state(1);
+        tree.put(new IntervalNode(atom('x')), s0);
+        tree.put(new IntervalNode(atom('x')), s1);
+        expect(tree.size).toBe(1);
+
+        const keys = [...tree.keys()];
+        expect(keys.length).toBe(1);
+
+        const key = keys[0];
+        expect(key).toBeInstanceOf(IntervalNode);
+        expect(key.low).toBe(charCode('x'));
+        expect(key.high).toBe(charCode('x'));
+        expect(key.maximum).toBe(charCode('x'));
+
+        const value = tree.get(key);
+        expect(value).toEqual(s1);
+      });
+
+      // TODO decide whether we want a higher-level insert() method that does
+      // things like auto-extend existing ranges (i think we do...)
+    });
+  });
+
   it('can store overlapping items', () => {
     const tree = new IntervalTree();
-    tree.put(new IntervalNode({kind: 'Atom', value: 'j'}), new Set([1]));
-    tree.put(
-      new IntervalNode({kind: 'Range', from: 'a', to: 'z'}),
-      new Set([2]),
-    );
+    tree.put(new IntervalNode(atom('j')), state(1));
+    tree.put(new IntervalNode(range('a', 'z')), state(2));
 
     // TODO: plan here is to create an insert() method for this that will:
     //
@@ -64,3 +207,24 @@ describe('IntervalTree', () => {
     //        a time.
   });
 });
+
+function anything(): Anything {
+  return {kind: 'Anything'};
+}
+
+function atom(value: string): Atom {
+  return {kind: 'Atom', value};
+}
+
+function charCode(string: string): number {
+  assert.equal(string.length, 1);
+  return string.charCodeAt(0);
+}
+
+function range(from: string, to: string): Range {
+  return {kind: 'Range', from, to};
+}
+
+function state(...ids: Array<number>): Set<NFA> {
+  return new Set(ids.map((id) => ({id, edges: [], flags: NONE})));
+}
