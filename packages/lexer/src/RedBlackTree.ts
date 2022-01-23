@@ -5,8 +5,8 @@ interface Comparable<T> {
   compareTo(that: T): number;
 }
 
-const RED = true;
-const BLACK = false;
+export const RED = true;
+export const BLACK = false;
 
 export type Node<Tk, Tv> = {
   color: boolean;
@@ -19,6 +19,11 @@ export type Node<Tk, Tv> = {
 
 /**
  * Left-leaning Red-Black BST with keys of type `Tk` and values of type `Tv`.
+ *
+ * This is based on the "2-3" variant described in Robert Sedgewick's,
+ * "Left-leaning Red-Black Trees":
+ *
+ *     https://www.cs.princeton.edu/~rs/talks/LLRB/LLRB.pdf
  */
 export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
   _root: Node<Tk, Tv> | null;
@@ -27,26 +32,44 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
     this._root = null;
   }
 
-  get(key: Tk): Tv | null {
-    let x = this._root;
-
-    while (x !== null) {
-      const comparison = key.compareTo(x.key);
-
-      if (comparison < 0) {
-        x = x.left;
+  delete(key: Tk) {
+    if (this.has(key)) {
+      if (!this._isRed(this._root!.left) && !this._isRed(this._root!.right)) {
+        this._root!.color = RED;
       }
-
-      if (comparison > 0) {
-        x = x!.right;
-      }
-
-      if (comparison === 0) {
-        return x!.value;
+      this._root = this._delete(this._root!, key);
+      if (this._root) {
+        this._root.color = BLACK;
       }
     }
+  }
 
-    return null;
+  deleteMin(): void {
+    if (!this.isEmpty()) {
+      this._root = this._deleteMin(this._root!);
+      if (this._root) {
+        this._root.color = BLACK;
+      }
+    }
+  }
+
+  entries(): Iterable<[Tk, Tv]> {
+    const queue = new Queue<[Tk, Tv]>();
+    this._iterable(
+      this._root,
+      (key, value) => queue.enqueue([key, value]),
+      this.min()!,
+      this.max()!,
+    );
+    return queue;
+  }
+
+  get(key: Tk): Tv | null {
+    return this._get(this._root, key);
+  }
+
+  has(key: Tk): boolean {
+    return this.get(key) !== null;
   }
 
   isEmpty(): boolean {
@@ -55,13 +78,12 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
 
   keys(): Iterable<Tk> {
     const queue = new Queue<Tk>();
-
-    if (this.isEmpty()) {
-      return queue;
-    }
-
-    this._keys(this._root!, queue, this.min()!, this.max()!);
-
+    this._iterable(
+      this._root,
+      (key, _value) => queue.enqueue(key),
+      this.min()!,
+      this.max()!,
+    );
     return queue;
   }
 
@@ -84,21 +106,111 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
     this._root.color = BLACK;
   }
 
+  values(): Iterable<Tv> {
+    const queue = new Queue<Tv>();
+    this._iterable(
+      this._root,
+      (_key, value) => queue.enqueue(value),
+      this.min()!,
+      this.max()!,
+    );
+    return queue;
+  }
+
+  get root(): Node<Tk, Tv> | null {
+    return this._root;
+  }
+
   get size(): number {
     return this._size(this._root);
   }
 
+  _delete(h: Node<Tk, Tv>, key: Tk) {
+    if (key.compareTo(h.key) < 0) {
+      if (!this._isRed(h.left) && !this._isRed(h.left!.left)) {
+        h = this._moveRedLeft(h);
+      }
+      h.left = this._delete(h.left!, key);
+    } else {
+      if (this._isRed(h.left)) {
+        h = this._rotateRight(h);
+      }
+      if (key.compareTo(h.key) === 0 && h.right === null) {
+        return null;
+      }
+      if (!this._isRed(h.right) && !this._isRed(h.right!.left)) {
+        h = this._moveRedRight(h);
+      }
+      if (key.compareTo(h.key) === 0) {
+        h.value = this._get(h.right, this._min(h.right!).key)!;
+        h.key = this._min(h.right!).key;
+        h.right = this._deleteMin(h.right!);
+      } else {
+        h.right = this._delete(h.right!, key);
+      }
+    }
+    return this._rebalance(h);
+  }
+
+  _deleteMin(h: Node<Tk, Tv>): Node<Tk, Tv> | null {
+    if (h.left === null) {
+      return null;
+    }
+    if (!this._isRed(h.left) && !this._isRed(h.left.left)) {
+      h = this._moveRedLeft(h);
+    }
+    h.left = this._deleteMin(h.left!);
+    return this._rebalance(h);
+  }
+
   _flipColors(h: Node<Tk, Tv>) {
-    assert(!this._isRed(h));
-    assert(this._isRed(h.left));
-    assert(this._isRed(h.right));
+    assert(h.left);
+    assert(h.right);
     h.color = RED;
-    h.left!.color = BLACK;
-    h.right!.color = BLACK;
+    h.left.color = BLACK;
+    h.right.color = BLACK;
+  }
+
+  _get(h: Node<Tk, Tv> | null, key: Tk): Tv | null {
+    if (h === null) {
+      return null;
+    }
+
+    const comparison = key.compareTo(h.key);
+
+    if (comparison < 0) {
+      return this._get(h.left, key);
+    } else if (comparison > 0) {
+      return this._get(h.right, key);
+    } else {
+      return h.value;
+    }
   }
 
   _isRed(x: Node<Tk, Tv> | null) {
-    return !!(x && x.color === RED);
+    return x?.color === RED;
+  }
+
+  _iterable(
+    x: Node<Tk, Tv> | null,
+    enqueue: (key: Tk, value: Tv) => void,
+    low: Tk,
+    high: Tk,
+  ) {
+    if (x === null) {
+      return;
+    }
+    const lowComparison = low.compareTo(x.key);
+    const highComparison = high.compareTo(x.key);
+    if (lowComparison < 0) {
+      this._iterable(x.left, enqueue, low, high);
+    }
+    if (lowComparison <= 0 && highComparison >= 0) {
+      enqueue(x.key, x.value);
+    }
+    if (highComparison > 0) {
+      this._iterable(x.right, enqueue, low, high);
+    }
   }
 
   _keys(x: Node<Tk, Tv> | null, queue: Queue<Tk>, lo: Tk, hi: Tk) {
@@ -124,6 +236,25 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
 
   _min(x: Node<Tk, Tv>): Node<Tk, Tv> {
     return x.left === null ? x : this._min(x.left);
+  }
+
+  _moveRedLeft(h: Node<Tk, Tv>): Node<Tk, Tv> {
+    this._flipColors(h);
+    if (this._isRed(h.right?.left ?? null)) {
+      h.right = this._rotateRight(h.right!);
+      h = this._rotateLeft(h);
+      this._flipColors(h);
+    }
+    return h;
+  }
+
+  _moveRedRight(h: Node<Tk, Tv>): Node<Tk, Tv> {
+    this._flipColors(h);
+    if (this._isRed(h.left?.left ?? null)) {
+      h = this._rotateRight(h);
+      this._flipColors(h);
+    }
+    return h;
   }
 
   _put(h: Node<Tk, Tv> | null, key: Tk, value: Tv): Node<Tk, Tv> {
@@ -152,20 +283,28 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
 
     // Red-Black rebalancing.
 
+    h = this._rebalance(h);
+
+    return h;
+  }
+
+  /**
+   * Applies various fixes on the way up.
+   *
+   * See: https://www.cs.princeton.edu/~rs/talks/LLRB/RedBlack.pdf
+   */
+  _rebalance(h: Node<Tk, Tv>) {
     if (this._isRed(h.right) && !this._isRed(h.left)) {
-      h = this._rotateLeft(h); // Lean left.
+      h = this._rotateLeft(h); // Make right-leaning reds lean left.
     }
-
     if (this._isRed(h.left) && this._isRed(h.left!.left)) {
-      h = this._rotateRight(h); // Balance temporary 4-node.
+      h = this._rotateRight(h); // Balance temporary 4-node (two reds in a row).
     }
-
     if (this._isRed(h.left) && this._isRed(h.right)) {
       this._flipColors(h); // Split temporary 4-node.
     }
 
     h.size = this._size(h.left) + this._size(h.right) + 1;
-
     return h;
   }
 
@@ -180,15 +319,15 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
    *                                       to become right child of old root
    */
   _rotateLeft(h: Node<Tk, Tv>): Node<Tk, Tv> {
-    assert(this._isRed(h.right));
+    assert(h.right);
     const x = h.right;
-    h.right = x!.left;
-    x!.left = h;
-    x!.color = h.color;
+    h.right = x.left;
+    x.left = h;
+    x.color = h.color;
     h.color = RED;
-    x!.size = h.size;
+    x.size = h.size;
     h.size = this._size(h.left) + this._size(h.right) + 1;
-    return x!;
+    return x;
   }
 
   /**
@@ -202,18 +341,18 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
    *                                      to become left child of old root
    */
   _rotateRight(h: Node<Tk, Tv>): Node<Tk, Tv> {
-    assert(this._isRed(h.left));
+    assert(h.left);
     const x = h.left;
-    h.left = x!.right;
-    x!.right = h;
-    x!.color = h.color;
+    h.left = x.right;
+    x.right = h;
+    x.color = h.color;
     h.color = RED;
-    x!.size = h.size;
+    x.size = h.size;
     h.size = this._size(h.left) + this._size(h.right) + 1;
-    return x!;
+    return x;
   }
 
   _size(x: Node<Tk, Tv> | null): number {
-    return x === null ? 0 : x.size;
+    return x?.size ?? 0;
   }
 }

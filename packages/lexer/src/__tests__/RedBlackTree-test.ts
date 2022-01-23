@@ -1,4 +1,8 @@
-import RedBlackTree from '../RedBlackTree';
+import assert from 'assert';
+
+import RedBlackTree, {RED} from '../RedBlackTree';
+
+import type {Node} from '../RedBlackTree';
 
 describe('RedBlackTree', () => {
   class ComparableString {
@@ -23,11 +27,15 @@ describe('RedBlackTree', () => {
     }
   }
 
+  type Tv = number;
+  type Tk = ComparableString;
+  type NodeT = Node<Tk, Tv>;
+
   describe('SEARCHEXAMPLE', () => {
-    let rbt: RedBlackTree<ComparableString, number>;
+    let rbt: RedBlackTree<Tk, Tv>;
 
     beforeEach(() => {
-      rbt = new RedBlackTree<ComparableString, number>();
+      rbt = new RedBlackTree<Tk, Tv>();
 
       // From: https://algs4.cs.princeton.edu/33balanced/RedBlackBST.java.html
       [...'SEARCHEXAMPLE'].forEach((letter, i) => {
@@ -35,8 +43,93 @@ describe('RedBlackTree', () => {
       });
     });
 
+    it('is a binary search tree', () => {
+      function isBST(h: NodeT | null, min: Tk, max: Tk): boolean {
+        if (h === null) {
+          return true;
+        }
+        if (h.key.compareTo(min) < 0 || h.key.compareTo(max) > 0) {
+          return false;
+        }
+        return isBST(h.left, min, h.key) && isBST(h.right, h.key, max);
+      }
+
+      const min = rbt.min();
+      assert(min);
+      const max = rbt.max();
+      assert(max);
+
+      expect(isBST(rbt.root, min, max)).toBe(true);
+    });
+
+    it('is a 2-3-4 tree', () => {
+      // ie. no red right links, and at most two left red links in a row on any
+      // path.
+      function is234(h: NodeT | null): boolean {
+        if (h === null) {
+          return true;
+        }
+        if (h.right?.color === RED) {
+          return false;
+        }
+        if (
+          h.color === RED &&
+          h.left?.color === RED &&
+          h.left?.left?.color === RED
+        ) {
+          return false;
+        }
+        return is234(h.left) && is234(h.right);
+      }
+
+      expect(is234(rbt.root)).toBe(true);
+    });
+
+    it('is balanced', () => {
+      // ie. all paths (root to leaf) have the same number of black edges.
+      function isBalanced(h: NodeT | null, blackCount: number): boolean {
+        if (h === null) {
+          return blackCount === 0;
+        }
+        if (h.color !== RED) {
+          blackCount--;
+        }
+        return (
+          isBalanced(h.left, blackCount) && isBalanced(h.right, blackCount)
+        );
+      }
+
+      let blackCount = 0;
+      let node = rbt.root;
+
+      while (node) {
+        if (node.color !== RED) {
+          blackCount++;
+        }
+        node = node.left;
+      }
+
+      expect(isBalanced(rbt.root, blackCount)).toBe(true);
+    });
+
+    it('has correct size values', () => {
+      function isSizeCorrect(h: NodeT | null): boolean {
+        if (h === null) {
+          return true;
+        }
+        if (h.size !== (h.left?.size ?? 0) + (h.right?.size ?? 0) + 1) {
+          return false;
+        }
+        return isSizeCorrect(h.left) && isSizeCorrect(h.right);
+      }
+
+      expect(isSizeCorrect(rbt.root)).toBe(true);
+    });
+
+    // TODO: test other methods (eg. min(), max()) etc
+
     it('reads out keys and values in key order', () => {
-      const tuples = [...rbt.keys()].map((key: ComparableString) => {
+      const tuples = [...rbt.keys()].map((key: Tk) => {
         return [key.toString(), rbt.get(key)];
       });
 
@@ -60,6 +153,54 @@ describe('RedBlackTree', () => {
       rbt.put(m, 100);
       expect(rbt.size).toBe(10);
       expect(rbt.get(m)).toBe(100);
+    });
+
+    describe('delete()', () => {
+      it('allows keys to be deleted', () => {
+        expect(rbt.size).toBe(10);
+
+        // Delete something.
+        const r = new ComparableString('R');
+        rbt.delete(r);
+        expect(rbt.size).toBe(9);
+        expect(rbt.get(r)).toBe(null);
+
+        // Deleting it again (idempotently).
+        rbt.delete(r);
+        expect(rbt.size).toBe(9);
+        expect(rbt.get(r)).toBe(null);
+
+        // Delete something else.
+        const e = new ComparableString('E');
+        rbt.delete(e);
+        expect(rbt.size).toBe(8);
+        expect(rbt.get(e)).toBe(null);
+
+        // Delete something that's not there.
+        const z = new ComparableString('Z');
+        rbt.delete(z);
+        expect(rbt.size).toBe(8);
+        expect(rbt.get(e)).toBe(null);
+
+        // Delete the rest in an arbitrary order...
+        rbt.delete(new ComparableString('A'));
+        expect(rbt.size).toBe(7);
+        rbt.delete(new ComparableString('S'));
+        expect(rbt.size).toBe(6);
+        rbt.delete(new ComparableString('H'));
+        expect(rbt.size).toBe(5);
+        // rbt.delete(new ComparableString('C'));
+        // expect(rbt.size).toBe(4);
+        // rbt.delete(new ComparableString('X'));
+        // expect(rbt.size).toBe(3);
+        // rbt.delete(new ComparableString('M'));
+        // expect(rbt.size).toBe(2);
+        // rbt.delete(new ComparableString('P'));
+        // expect(rbt.size).toBe(1);
+        // rbt.delete(new ComparableString('L'));
+        // expect(rbt.size).toBe(0);
+        // expect(rbt.isEmpty()).toBe(true);
+      });
     });
   });
 });
