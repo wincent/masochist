@@ -17,6 +17,16 @@ export type Node<Tk, Tv> = {
   value: Tv;
 };
 
+// For tree printing (see `toString()`).
+
+const BOX_DRAWINGS_LIGHT_DOWN_AND_LEFT = '\u2510'; // ┐
+const BOX_DRAWINGS_LIGHT_DOWN_AND_RIGHT = '\u250C'; // ┌
+const BOX_DRAWINGS_LIGHT_HORIZONTAL = '\u2500'; // ─
+const BOX_DRAWINGS_LIGHT_UP_AND_HORIZONTAL = '\u2534'; // ┴
+const BOX_DRAWINGS_LIGHT_UP_AND_LEFT = '\u2518'; // ┘
+const BOX_DRAWINGS_LIGHT_UP_AND_RIGHT = '\u2514'; // └
+const MINIMUM_KEY_LENGTH = 3;
+
 /**
  * Left-leaning Red-Black BST with keys of type `Tk` and values of type `Tv`.
  *
@@ -104,6 +114,126 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
   put(key: Tk, value: Tv) {
     this._root = this._put(this._root, key, value);
     this._root.color = BLACK;
+  }
+
+  /**
+   * Pretty-printed string representation, for debugging purposes.
+   *
+   * For simplicity, assumes that keys and values are of consistent lengths (ie.
+   * because the tree is constructed from the bottom up, with half as many rows
+   * in each higher level, we assume that keys in each successively higher level
+   * are about the same size; _if_ they were more than double the size, the
+   * layout will break).
+   */
+  toString(): string {
+    if (this._root) {
+      // Do breadth-first traversal of tree to produce a level-by-level
+      // representation; eg. `[[1], [2, 3,], ...]`. Gaps where there are no
+      // children are represented by `null`.
+      let level = 0;
+      const levels: Array<Array<Node<Tk, Tv> | null>> = [[this._root]];
+      while (true) {
+        const next: Array<Node<Tk, Tv> | null> = [];
+        for (const node of levels[level]) {
+          if (node) {
+            next.push(node.left);
+            next.push(node.right);
+          } else {
+            next.push(null, null);
+          }
+        }
+        if (next.some(Boolean)) {
+          levels.push(next);
+          level++;
+        } else {
+          break;
+        }
+      }
+
+      // Format rows from the bottom up; width of lower rows informs width of
+      // upper rows.
+      const output: Array<Array<string>> = [];
+      for (let i = levels.length - 1; i >= 0; i--) {
+        const current = levels[i];
+        const previous = output[0];
+        if (previous) {
+          const left = current[i]?.left;
+          const right = current[i]?.right;
+          output.unshift(
+            previous.map((item, j) => {
+              const width = previous[j].length;
+              let edges: Array<string> = [];
+              if (j % 2 === 0) {
+                // Left.
+                if (item) {
+                  edges.unshift(
+                    left ? ' '.repeat(Math.floor(width / 2)) : '',
+                    left ? BOX_DRAWINGS_LIGHT_DOWN_AND_RIGHT : '',
+                    left
+                      ? (left.color === RED
+                          ? '*'
+                          : BOX_DRAWINGS_LIGHT_HORIZONTAL
+                        ).repeat(width - 2)
+                      : '',
+                    left && right
+                      ? BOX_DRAWINGS_LIGHT_UP_AND_HORIZONTAL
+                      : left
+                      ? BOX_DRAWINGS_LIGHT_UP_AND_LEFT
+                      : right
+                      ? BOX_DRAWINGS_LIGHT_UP_AND_RIGHT
+                      : '',
+                  );
+                } else {
+                  edges.unshift(' '.repeat(width));
+                }
+              } else {
+                // Right.
+                if (item) {
+                  edges.unshift(
+                    right
+                      ? (right.color === RED
+                          ? '*'
+                          : BOX_DRAWINGS_LIGHT_HORIZONTAL
+                        ).repeat(width - 2)
+                      : '',
+                    right ? BOX_DRAWINGS_LIGHT_DOWN_AND_LEFT : '',
+                    right ? ' '.repeat(Math.floor(width / 2)) : '',
+                  );
+                } else {
+                  edges.unshift(' '.repeat(width));
+                }
+              }
+              return edges.join('');
+            }),
+          );
+        }
+        output.unshift(
+          current.map((item, j) => {
+            const text = item?.key.toString() ?? '';
+            if (j === 0) {
+              // First child; needs indent.
+              if (previous) {
+                return (
+                  ' ' +
+                  text.padStart(previous[0].length + MINIMUM_KEY_LENGTH, ' ')
+                );
+              } else {
+                return ' ' + text.padStart(MINIMUM_KEY_LENGTH, ' ');
+              }
+            } else if (j % 2) {
+              // Right child; justify left.
+              return ' ' + text.padEnd(MINIMUM_KEY_LENGTH, ' ');
+            } else {
+              // Left child; justify right.
+              return text.padStart(MINIMUM_KEY_LENGTH, ' ') + ' ';
+            }
+          }),
+        );
+      }
+      return output.map((line) => line.join('').trimEnd()).join('\n');
+    } else {
+      return '';
+    }
   }
 
   values(): Iterable<Tv> {

@@ -202,5 +202,17 @@ describe('RedBlackTree', () => {
         // expect(rbt.isEmpty()).toBe(true);
       });
     });
+
+    describe('toString()', () => {
+      it('stringifies an empty tree', () => {
+        expect(new RedBlackTree<ComparableString, number>().toString()).toBe(
+          '',
+        );
+      });
+
+      it('stringifies SEARCHEXAMPLE', () => {
+        console.log(rbt.toString());
+      });
+    });
   });
 });
