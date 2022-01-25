@@ -17,15 +17,23 @@ export type Node<Tk, Tv> = {
   value: Tv;
 };
 
-// For tree printing (see `toString()`).
-
+/**
+ * For tree printing (see `toString()`).
+ *
+ * "HEAVY" variants are used to draw red links.
+ */
+const BOX_DRAWINGS_HEAVY_DOWN_AND_LEFT = '\u2513'; // ┓
+const BOX_DRAWINGS_HEAVY_DOWN_AND_RIGHT = '\u250f'; // ┏
+const BOX_DRAWINGS_HEAVY_HORIZONTAL = '\u2501'; // ━
+const BOX_DRAWINGS_HEAVY_UP_AND_HORIZONTAL = '\u253b'; // ┻
+const BOX_DRAWINGS_LEFT_LIGHT_AND_RIGHT_UP_HEAVY = '\u253a'; // ┺
 const BOX_DRAWINGS_LIGHT_DOWN_AND_LEFT = '\u2510'; // ┐
 const BOX_DRAWINGS_LIGHT_DOWN_AND_RIGHT = '\u250C'; // ┌
 const BOX_DRAWINGS_LIGHT_HORIZONTAL = '\u2500'; // ─
 const BOX_DRAWINGS_LIGHT_UP_AND_HORIZONTAL = '\u2534'; // ┴
-const BOX_DRAWINGS_LIGHT_UP_AND_LEFT = '\u2518'; // ┘
-const BOX_DRAWINGS_LIGHT_UP_AND_RIGHT = '\u2514'; // └
-const MINIMUM_KEY_LENGTH = 3;
+const BOX_DRAWINGS_RIGHT_LIGHT_AND_LEFT_UP_HEAVY = '\u2539'; // ┹
+
+const MIDDLE_DOT = '\u00b7'; // ·
 
 /**
  * Left-leaning Red-Black BST with keys of type `Tk` and values of type `Tv`.
@@ -157,51 +165,45 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
         const current = levels[i];
         const previous = output[0];
         if (previous) {
-          const left = current[i]?.left;
-          const right = current[i]?.right;
           output.unshift(
             previous.map((item, j) => {
-              const width = previous[j].length;
               let edges: Array<string> = [];
+              const width = item.length;
+              const left = current[Math.floor(j / 2)]?.left;
+              const right = current[Math.floor(j / 2) + 1]?.right;
               if (j % 2 === 0) {
                 // Left.
-                if (item) {
-                  edges.unshift(
-                    left ? ' '.repeat(Math.floor(width / 2)) : '',
-                    left ? BOX_DRAWINGS_LIGHT_DOWN_AND_RIGHT : '',
-                    left
-                      ? (left.color === RED
-                          ? '*'
-                          : BOX_DRAWINGS_LIGHT_HORIZONTAL
-                        ).repeat(width - 2)
-                      : '',
-                    left && right
-                      ? BOX_DRAWINGS_LIGHT_UP_AND_HORIZONTAL
-                      : left
-                      ? BOX_DRAWINGS_LIGHT_UP_AND_LEFT
-                      : right
-                      ? BOX_DRAWINGS_LIGHT_UP_AND_RIGHT
-                      : '',
-                  );
-                } else {
-                  edges.unshift(' '.repeat(width));
-                }
+                edges.push(
+                  left?.color === RED
+                    ? BOX_DRAWINGS_HEAVY_DOWN_AND_RIGHT.padEnd(
+                        width,
+                        BOX_DRAWINGS_HEAVY_HORIZONTAL,
+                      )
+                    : BOX_DRAWINGS_LIGHT_DOWN_AND_RIGHT.padEnd(
+                        width,
+                        BOX_DRAWINGS_LIGHT_HORIZONTAL,
+                      ),
+                  left?.color === RED && right?.color === RED
+                    ? BOX_DRAWINGS_HEAVY_UP_AND_HORIZONTAL
+                    : left?.color === RED
+                    ? BOX_DRAWINGS_RIGHT_LIGHT_AND_LEFT_UP_HEAVY
+                    : right?.color === RED
+                    ? BOX_DRAWINGS_LEFT_LIGHT_AND_RIGHT_UP_HEAVY
+                    : BOX_DRAWINGS_LIGHT_UP_AND_HORIZONTAL,
+                );
               } else {
                 // Right.
-                if (item) {
-                  edges.unshift(
-                    right
-                      ? (right.color === RED
-                          ? '*'
-                          : BOX_DRAWINGS_LIGHT_HORIZONTAL
-                        ).repeat(width - 2)
-                      : '',
-                    right ? BOX_DRAWINGS_LIGHT_DOWN_AND_LEFT : '',
-                    right ? ' '.repeat(Math.floor(width / 2)) : '',
-                  );
-                } else {
-                  edges.unshift(' '.repeat(width));
-                }
+                edges.push(
+                  right?.color === RED
+                    ? BOX_DRAWINGS_HEAVY_DOWN_AND_LEFT.padStart(
+                        width,
+                        BOX_DRAWINGS_HEAVY_HORIZONTAL,
+                      )
+                    : BOX_DRAWINGS_LIGHT_DOWN_AND_LEFT.padStart(
+                        width,
+                        BOX_DRAWINGS_LIGHT_HORIZONTAL,
+                      ),
+                );
               }
               return edges.join('');
             }),
@@ -209,23 +211,16 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
         }
         output.unshift(
           current.map((item, j) => {
-            const text = item?.key.toString() ?? '';
+            const text = item?.key.toString() ?? MIDDLE_DOT;
             if (j === 0) {
               // First child; needs indent.
               if (previous) {
-                return (
-                  ' ' +
-                  text.padStart(previous[0].length + MINIMUM_KEY_LENGTH, ' ')
-                );
+                return ' '.repeat(previous[0].length) + text;
               } else {
-                return ' ' + text.padStart(MINIMUM_KEY_LENGTH, ' ');
+                return text;
               }
-            } else if (j % 2) {
-              // Right child; justify left.
-              return ' ' + text.padEnd(MINIMUM_KEY_LENGTH, ' ');
             } else {
-              // Left child; justify right.
-              return text.padStart(MINIMUM_KEY_LENGTH, ' ') + ' ';
+              return text;
             }
           }),
         );
