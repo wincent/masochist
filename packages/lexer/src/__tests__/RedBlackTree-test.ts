@@ -288,7 +288,7 @@ describe('RedBlackTree', () => {
                B                SHORT
              ┌─┴───┐         ┌────┴───────┐
           AVERAGE  C  EXTREMELY LONG! VERY LONG
-           ┏━┹──┐ ┌┴┐ ┌──────┴──────┐ ┌───┴───┐
+            ┏┹─┐  ┌┴┐       ┌┴┐          ┌┴┐
             A  ·  · ·       · ·          · ·
            ┌┴┐
            · ·

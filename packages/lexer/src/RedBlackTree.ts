@@ -167,9 +167,13 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
           label,
           toString() {
             // _Where_ to draw the edges.
-            const leftIndex = Math.floor(left.width / 2);
+            const padding = label.length - (left.width + right.width + 1);
+            const leftPadding = padding > 0 ? Math.floor(padding / 2) : 0;
+            const rightPadding = padding > 0 ? Math.ceil(padding / 2) : 0;
+            const leftIndex = Math.floor(left.width / 2) + leftPadding;
             const middleIndex = Math.floor(width / 2);
-            const rightIndex = width - Math.ceil(right.width / 2);
+            const rightIndex =
+              width - Math.ceil(right.width / 2) - rightPadding;
 
             // _How_ to style the edges.
             const LEFT_HORIZONTAL = isRed(subtree.left)
