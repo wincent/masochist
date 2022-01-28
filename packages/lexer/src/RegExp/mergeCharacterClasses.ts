@@ -1,7 +1,8 @@
+import {invariant} from '@masochist/common';
+
 import RegExpTransformer from './RegExpTransformer';
 import assertIsAtomOrRangeArray from './assertIsAtomOrRangeArray';
 import normalizeCharacterClass from './normalizeCharacterClass';
-import invariant from '../invariant';
 
 import type {
   Alternate,

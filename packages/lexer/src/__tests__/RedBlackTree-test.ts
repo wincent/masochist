@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import RedBlackTree, {RED} from '../RedBlackTree';
+import RedBlackTree, {RED, center, zip} from '../RedBlackTree';
 
 import type {Node} from '../RedBlackTree';
 
@@ -206,13 +206,100 @@ describe('RedBlackTree', () => {
     describe('toString()', () => {
       it('stringifies an empty tree', () => {
         expect(new RedBlackTree<ComparableString, number>().toString()).toBe(
-          '',
+          '·\n',
         );
       });
 
+      it('stringifies a one-node tree', () => {
+        // Body.
+      });
+
       it('stringifies SEARCHEXAMPLE', () => {
-        console.log(rbt.toString());
+        expect(rbt.toString()).toBe(
+          '          M\n' +
+            '     ┌────┴─────┐\n' +
+            '     E          R\n' +
+            '  ┌──┴──┐    ┌──┴─┐\n' +
+            '  C     L    P    X\n' +
+            ' ┏┹─┐  ┏┹─┐ ┌┴┐  ┏┹─┐\n' +
+            ' A  ·  H  · · ·  S  ·\n' +
+            '┌┴┐   ┌┴┐       ┌┴┐\n' +
+            '· ·   · ·     · ·\n\n\n\n\n',
+        );
       });
     });
+  });
+});
+
+describe('center()', () => {
+  it('centers an empty string', () => {
+    expect(center('', 10)).toBe(' '.repeat(10));
+  });
+
+  it('centers a string with no space on either side', () => {
+    expect(center('foo', 3)).toBe('foo');
+  });
+
+  it('centers a string with one space on the right', () => {
+    expect(center('foo', 4)).toBe('foo ');
+  });
+
+  it('centers a string with one space on each side', () => {
+    expect(center('foo', 5)).toBe(' foo ');
+  });
+
+  it('centers a string with an equal number of spaces on each side', () => {
+    expect(center('foo', 13)).toBe('     foo     ');
+  });
+
+  it('centers a string with an unequal number of spaces on each side', () => {
+    expect(center('foo', 14)).toBe('     foo      ');
+  });
+
+  it('does not trim whitespace before figuring out how to center the string', () => {
+    // We want the inner whitespace to be preserved because it may have
+    // significance when stringifying subtrees.
+    expect(center('    foo ', 14)).toBe('       foo    ');
+  });
+});
+
+describe('zip()', () => {
+  it('zips two empty arrays', () => {
+    expect(zip([], [], 'default')).toEqual([]);
+  });
+
+  it('zips two equal length arrays', () => {
+    expect(zip(['foo'], ['bar'], 'default')).toEqual([['foo', 'bar']]);
+    expect(zip(['foo', 'baz'], ['bar', 'qux'], 'default')).toEqual([
+      ['foo', 'bar'],
+      ['baz', 'qux'],
+    ]);
+  });
+
+  it('zips a shorter array with a longer one', () => {
+    expect(zip([], ['foo'], 'default')).toEqual([['default', 'foo']]);
+    expect(zip(['foo'], ['bar', 'baz', 'qux'], 'default')).toEqual([
+      ['foo', 'bar'],
+      ['default', 'baz'],
+      ['default', 'qux'],
+    ]);
+  });
+
+  it('zips a longer array with a shorter one', () => {
+    expect(zip(['foo'], [], 'default')).toEqual([['foo', 'default']]);
+    expect(zip(['foo', 'bar', 'baz'], ['qux'], 'default')).toEqual([
+      ['foo', 'qux'],
+      ['bar', 'default'],
+      ['baz', 'default'],
+    ]);
+  });
+
+  it('is polymorphic', () => {
+    expect(zip([10, 20, 30], [2, 4, 8, 16], Infinity)).toEqual([
+      [10, 2],
+      [20, 4],
+      [30, 8],
+      [Infinity, 16],
+    ]);
   });
 });

@@ -1,5 +1,6 @@
+import {invariant} from '@masochist/common';
+
 import RegExpTransformer from './RegExpTransformer';
-import invariant from '../invariant';
 
 import type {Node, Sequence} from './RegExpParser';
 

@@ -1,7 +1,7 @@
-import {Queue} from '@masochist/common';
+import {Queue, invariant} from '@masochist/common';
+
 import {ACCEPT, NONE, START} from './NFA';
 import clearFlag from './clearFlag';
-import invariant from '../invariant';
 import keyToTransition from './keyToTransition';
 
 import type {NFA} from './NFA';

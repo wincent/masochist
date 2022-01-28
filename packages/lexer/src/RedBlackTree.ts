@@ -1,4 +1,4 @@
-import {Queue} from '@masochist/common';
+import {Queue, invariant} from '@masochist/common';
 import assert from 'assert';
 
 interface Comparable<T> {
@@ -21,6 +21,7 @@ export type Node<Tk, Tv> = {
  * For tree printing (see `toString()`).
  *
  * "HEAVY" variants are used to draw red links.
+ * "LIGHT" variants are used to draw black links.
  */
 const BOX_DRAWINGS_HEAVY_DOWN_AND_LEFT = '\u2513'; // ┓
 const BOX_DRAWINGS_HEAVY_DOWN_AND_RIGHT = '\u250f'; // ┏
@@ -52,7 +53,7 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
 
   delete(key: Tk) {
     if (this.has(key)) {
-      if (!this._isRed(this._root!.left) && !this._isRed(this._root!.right)) {
+      if (!isRed(this._root!.left) && !isRed(this._root!.right)) {
         this._root!.color = RED;
       }
       this._root = this._delete(this._root!, key);
@@ -127,111 +128,105 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
   /**
    * Pretty-printed string representation, for debugging purposes.
    *
-   * For simplicity, assumes that keys and values are of consistent lengths (ie.
-   * because the tree is constructed from the bottom up, with half as many rows
-   * in each higher level, we assume that keys in each successively higher level
-   * are about the same size; _if_ they were more than double the size, the
-   * layout will break).
+   * There is probably an incredibly concise and elegant way to do this, but I'm
+   * only smart enough to do the dumb and obvious thing, which is to recursively
+   * break down the problem into subproblems, and combine the drawings for each
+   * subtree into ever larger boxes, connecting those boxes with edges. This
+   * won't necessarily yield the most densely packed diagrams, but it is easy to
+   * reason about.
    */
   toString(): string {
-    if (this._root) {
-      // Do breadth-first traversal of tree to produce a level-by-level
-      // representation; eg. `[[1], [2, 3,], ...]`. Gaps where there are no
-      // children are represented by `null`.
-      let level = 0;
-      const levels: Array<Array<Node<Tk, Tv> | null>> = [[this._root]];
-      while (true) {
-        const next: Array<Node<Tk, Tv> | null> = [];
-        for (const node of levels[level]) {
-          if (node) {
-            next.push(node.left);
-            next.push(node.right);
-          } else {
-            next.push(null, null);
-          }
-        }
-        if (next.some(Boolean)) {
-          levels.push(next);
-          level++;
-        } else {
-          break;
-        }
-      }
+    type Box = {
+      width: number; // Not including trailing newline at the end of each line.
+      height: number;
+      label: string;
+      left?: Box;
+      right?: Box;
+      toString: () => string;
+    };
 
-      // Format rows from the bottom up; width of lower rows informs width of
-      // upper rows.
-      const output: Array<Array<string>> = [];
-      for (let i = levels.length - 1; i >= 0; i--) {
-        const current = levels[i];
-        const previous = output[0];
-        const indent = previous
-          ? ' '.repeat(previous[0].length - 1)
-          : '';
-        if (previous) {
-          // Draw edges.
-          output.unshift(
-            previous.map((item, j) => {
-              let edges: Array<string> = [];
-              const width = item.length - 1;
-              const left = current[Math.floor(j / 2)]?.left;
-              const right = current[Math.floor(j / 2) + 1]?.right;
-              if (j % 2 === 0) {
-                // Left.
-                edges.push(
-                  (j === 0 ? indent : '') +
-                  (left?.color === RED
-                    ? BOX_DRAWINGS_HEAVY_DOWN_AND_RIGHT.padEnd(
-                        width,
-                        BOX_DRAWINGS_HEAVY_HORIZONTAL,
-                      )
-                    : BOX_DRAWINGS_LIGHT_DOWN_AND_RIGHT.padEnd(
-                        width,
-                        BOX_DRAWINGS_LIGHT_HORIZONTAL,
-                      )),
-                  left?.color === RED && right?.color === RED
-                    ? BOX_DRAWINGS_HEAVY_UP_AND_HORIZONTAL
-                    : left?.color === RED
-                    ? BOX_DRAWINGS_RIGHT_LIGHT_AND_LEFT_UP_HEAVY
-                    : right?.color === RED
-                    ? BOX_DRAWINGS_LEFT_LIGHT_AND_RIGHT_UP_HEAVY
-                    : BOX_DRAWINGS_LIGHT_UP_AND_HORIZONTAL,
-                );
-              } else {
-                // Right.
-                edges.push(
-                  (right?.color === RED
-                    ? BOX_DRAWINGS_HEAVY_DOWN_AND_LEFT.padStart(
-                        width,
-                        BOX_DRAWINGS_HEAVY_HORIZONTAL,
-                      )
-                    : BOX_DRAWINGS_LIGHT_DOWN_AND_LEFT.padStart(
-                        width,
-                        BOX_DRAWINGS_LIGHT_HORIZONTAL,
-                      )) + ' '
-                );
-              }
-              return edges.join('');
-            }),
-          );
-        }
+    function getBox(subtree: Node<Tk, Tv> | null): Box {
+      if (subtree === null) {
+        return {
+          width: 1,
+          height: 1,
+          label: MIDDLE_DOT,
+          toString() {
+            return this.label + '\n';
+          },
+        };
+      } else {
+        const label = subtree.key.toString();
+        const left = getBox(subtree.left);
+        const right = getBox(subtree.right);
+        const width = Math.max(label.length, left.width + right.width + 1);
+        const height = Math.max(left.height, right.height) + 2;
+        return {
+          width,
+          height,
+          label,
+          toString() {
+            // _Where_ to draw the edges.
+            const leftIndex = Math.floor(left.width / 2);
+            const middleIndex = Math.floor(width / 2);
+            const rightIndex = width - Math.ceil(right.width / 2);
 
-        // Draw keys.
-        output.unshift(
-          current.map((item, j) => {
-            const text = item?.key.toString() ?? MIDDLE_DOT;
-            if (previous) {
-              return text.padStart(previous[j * 2].length, ' ') +
-                ' '.repeat(previous[j * 2 + 1].length);
-            } else {
-              return text + ' ';
-            }
-          }),
-        );
+            // _How_ to style the edges.
+            const LEFT_HORIZONTAL = isRed(subtree.left)
+              ? BOX_DRAWINGS_HEAVY_HORIZONTAL
+              : BOX_DRAWINGS_LIGHT_HORIZONTAL;
+            const LEFT_LINK = isRed(subtree.left)
+              ? BOX_DRAWINGS_HEAVY_DOWN_AND_RIGHT
+              : BOX_DRAWINGS_LIGHT_DOWN_AND_RIGHT;
+            const RIGHT_HORIZONTAL = isRed(subtree.right)
+              ? BOX_DRAWINGS_HEAVY_HORIZONTAL
+              : BOX_DRAWINGS_LIGHT_HORIZONTAL;
+            const RIGHT_LINK = isRed(subtree.right)
+              ? BOX_DRAWINGS_HEAVY_DOWN_AND_LEFT
+              : BOX_DRAWINGS_LIGHT_DOWN_AND_LEFT;
+            const UP_LINK =
+              isRed(subtree.left) && isRed(subtree.right)
+                ? BOX_DRAWINGS_HEAVY_UP_AND_HORIZONTAL
+                : isRed(subtree.left)
+                ? BOX_DRAWINGS_RIGHT_LIGHT_AND_LEFT_UP_HEAVY
+                : isRed(subtree.right)
+                ? BOX_DRAWINGS_LEFT_LIGHT_AND_RIGHT_UP_HEAVY
+                : BOX_DRAWINGS_LIGHT_UP_AND_HORIZONTAL;
+
+            return (
+              [
+                // Label.
+                `${center(label, width)}`,
+
+                // Edges.
+                ' '.repeat(leftIndex) +
+                  LEFT_LINK +
+                  LEFT_HORIZONTAL.repeat(middleIndex - leftIndex - 1) +
+                  UP_LINK +
+                  RIGHT_HORIZONTAL.repeat(rightIndex - middleIndex - 1) +
+                  RIGHT_LINK +
+                  ' '.repeat(width - rightIndex - 1),
+
+                // Subtrees.
+                ...zip(
+                  left.toString().split('\n'),
+                  right.toString().split('\n'),
+                  '',
+                ).map(([a, b]) => {
+                  return center(`${a} ${b}`, width);
+                }),
+              ].join('\n') + '\n'
+            );
+          },
+        };
       }
-      return output.map((line) => line.join('').trimEnd()).join('\n');
-    } else {
-      return '';
     }
+
+    return getBox(this._root)
+      .toString()
+      .split('\n')
+      .map((line) => line.trimEnd())
+      .join('\n');
   }
 
   values(): Iterable<Tv> {
@@ -255,18 +250,18 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
 
   _delete(h: Node<Tk, Tv>, key: Tk) {
     if (key.compareTo(h.key) < 0) {
-      if (!this._isRed(h.left) && !this._isRed(h.left!.left)) {
+      if (!isRed(h.left) && !isRed(h.left!.left)) {
         h = this._moveRedLeft(h);
       }
       h.left = this._delete(h.left!, key);
     } else {
-      if (this._isRed(h.left)) {
+      if (isRed(h.left)) {
         h = this._rotateRight(h);
       }
       if (key.compareTo(h.key) === 0 && h.right === null) {
         return null;
       }
-      if (!this._isRed(h.right) && !this._isRed(h.right!.left)) {
+      if (!isRed(h.right) && !isRed(h.right!.left)) {
         h = this._moveRedRight(h);
       }
       if (key.compareTo(h.key) === 0) {
@@ -284,7 +279,7 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
     if (h.left === null) {
       return null;
     }
-    if (!this._isRed(h.left) && !this._isRed(h.left.left)) {
+    if (!isRed(h.left) && !isRed(h.left.left)) {
       h = this._moveRedLeft(h);
     }
     h.left = this._deleteMin(h.left!);
@@ -313,10 +308,6 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
     } else {
       return h.value;
     }
-  }
-
-  _isRed(x: Node<Tk, Tv> | null) {
-    return x?.color === RED;
   }
 
   _iterable(
@@ -368,7 +359,7 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
 
   _moveRedLeft(h: Node<Tk, Tv>): Node<Tk, Tv> {
     this._flipColors(h);
-    if (this._isRed(h.right?.left ?? null)) {
+    if (isRed(h.right?.left ?? null)) {
       h.right = this._rotateRight(h.right!);
       h = this._rotateLeft(h);
       this._flipColors(h);
@@ -378,7 +369,7 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
 
   _moveRedRight(h: Node<Tk, Tv>): Node<Tk, Tv> {
     this._flipColors(h);
-    if (this._isRed(h.left?.left ?? null)) {
+    if (isRed(h.left?.left ?? null)) {
       h = this._rotateRight(h);
       this._flipColors(h);
     }
@@ -422,13 +413,13 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
    * See: https://www.cs.princeton.edu/~rs/talks/LLRB/RedBlack.pdf
    */
   _rebalance(h: Node<Tk, Tv>) {
-    if (this._isRed(h.right) && !this._isRed(h.left)) {
+    if (isRed(h.right) && !isRed(h.left)) {
       h = this._rotateLeft(h); // Make right-leaning reds lean left.
     }
-    if (this._isRed(h.left) && this._isRed(h.left!.left)) {
+    if (isRed(h.left) && isRed(h.left!.left)) {
       h = this._rotateRight(h); // Balance temporary 4-node (two reds in a row).
     }
-    if (this._isRed(h.left) && this._isRed(h.right)) {
+    if (isRed(h.left) && isRed(h.right)) {
       this._flipColors(h); // Split temporary 4-node.
     }
 
@@ -483,4 +474,42 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
   _size(x: Node<Tk, Tv> | null): number {
     return x?.size ?? 0;
   }
+}
+
+/**
+ * Centers `line` within `width`.
+ *
+ * Tries to pad using an equal amount of whitespace on each side, but in the
+ * event that the input cannot be exactly centered, biases to the left.
+ *
+ * @internal
+ */
+export function center(line: string, width: number) {
+  invariant(
+    width >= line.length,
+    `${line.length} > ${width} (${JSON.stringify(line)})`,
+  );
+  const space = width - line.length;
+  const left = Math.floor(space / 2);
+  const right = Math.round(space / 2);
+  return ' '.repeat(left) + line + ' '.repeat(right);
+}
+
+function isRed(x: Node<Tk, Tv> | null) {
+  return x?.color === RED;
+}
+
+/**
+ * Zips two arrays into a single array of tuples. If either array is longer than
+ * the other, the third `padding` parameter is used as a default value to extend
+ * the shorter array.
+ *
+ * @internal
+ */
+export function zip<T>(a: Array<T>, b: Array<T>, padding: T): Array<[T, T]> {
+  const zipped = new Array(Math.max(a.length, b.length));
+  for (let i = 0; i < zipped.length; i++) {
+    zipped[i] = [i < a.length ? a[i] : padding, i < b.length ? b[i] : padding];
+  }
+  return zipped;
 }
