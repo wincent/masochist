@@ -60,8 +60,6 @@ describe('RedBlackTree', () => {
       expect(isSizeCorrect(rbt)).toBe(true);
     });
 
-    // TODO: test other methods (eg. min(), max()) etc
-
     it('reads out keys and values in key order', () => {
       const tuples = [...rbt.keys()].map((key: Tk) => {
         return [key.toString(), rbt.get(key)];
@@ -134,6 +132,142 @@ describe('RedBlackTree', () => {
         del(rbt, new ComparableString('L'));
         expect(rbt.size).toBe(0);
         expect(rbt.isEmpty()).toBe(true);
+      });
+    });
+
+    describe('entries()', () => {
+      it('returns an iterable of key/value tuples in key-order', () => {
+        expect([...rbt.entries()]).toEqual([
+          [new ComparableString('A'), 8],
+          [new ComparableString('C'), 4],
+          [new ComparableString('E'), 12],
+          [new ComparableString('H'), 5],
+          [new ComparableString('L'), 11],
+          [new ComparableString('M'), 9],
+          [new ComparableString('P'), 10],
+          [new ComparableString('R'), 3],
+          [new ComparableString('S'), 0],
+          [new ComparableString('X'), 7],
+        ]);
+      });
+    });
+
+    describe('get()', () => {
+      it('retrieves values corresponding to keys', () => {
+        // Existing keys.
+        expect(rbt.get(new ComparableString('S'))).toBe(0);
+        expect(rbt.get(new ComparableString('E'))).toBe(12);
+        expect(rbt.get(new ComparableString('A'))).toBe(8);
+
+        // Non-existing keys.
+        expect(rbt.get(new ComparableString('Z'))).toBe(null);
+      });
+    });
+
+    describe('has()', () => {
+      it('indicates the presence of keys', () => {
+        // Existing keys.
+        expect(rbt.has(new ComparableString('S'))).toBe(true);
+        expect(rbt.has(new ComparableString('E'))).toBe(true);
+        expect(rbt.has(new ComparableString('A'))).toBe(true);
+
+        // Non-existing keys.
+        expect(rbt.has(new ComparableString('Z'))).toBe(false);
+      });
+    });
+
+    describe('isEmpty()', () => {
+      it('returns false until empty', () => {
+        expect(rbt.isEmpty()).toBe(false);
+        del(rbt, new ComparableString('S'));
+        expect(rbt.isEmpty()).toBe(false);
+        del(rbt, new ComparableString('E'));
+        expect(rbt.isEmpty()).toBe(false);
+        del(rbt, new ComparableString('A'));
+        expect(rbt.isEmpty()).toBe(false);
+        del(rbt, new ComparableString('R'));
+        expect(rbt.isEmpty()).toBe(false);
+        del(rbt, new ComparableString('C'));
+        expect(rbt.isEmpty()).toBe(false);
+        del(rbt, new ComparableString('H'));
+        expect(rbt.isEmpty()).toBe(false);
+        del(rbt, new ComparableString('X'));
+        expect(rbt.isEmpty()).toBe(false);
+        del(rbt, new ComparableString('M'));
+        expect(rbt.isEmpty()).toBe(false);
+        del(rbt, new ComparableString('P'));
+        expect(rbt.isEmpty()).toBe(false);
+        del(rbt, new ComparableString('L'));
+        expect(rbt.isEmpty()).toBe(true);
+      });
+    });
+
+    describe('keys()', () => {
+      it('returns an iterable of keys in order', () => {
+        expect([...rbt.keys()]).toEqual([
+          new ComparableString('A'),
+          new ComparableString('C'),
+          new ComparableString('E'),
+          new ComparableString('H'),
+          new ComparableString('L'),
+          new ComparableString('M'),
+          new ComparableString('P'),
+          new ComparableString('R'),
+          new ComparableString('S'),
+          new ComparableString('X'),
+        ]);
+      });
+    });
+
+    describe('max()', () => {
+      it('returns the largest key', () => {
+        expect(rbt.max()).toEqual(new ComparableString('X'));
+        del(rbt, rbt.max()!);
+        expect(rbt.max()).toEqual(new ComparableString('S'));
+        del(rbt, rbt.max()!);
+        expect(rbt.max()).toEqual(new ComparableString('R'));
+        del(rbt, rbt.max()!);
+        expect(rbt.max()).toEqual(new ComparableString('P'));
+        del(rbt, rbt.max()!);
+        expect(rbt.max()).toEqual(new ComparableString('M'));
+        del(rbt, rbt.max()!);
+        expect(rbt.max()).toEqual(new ComparableString('L'));
+        del(rbt, rbt.max()!);
+        expect(rbt.max()).toEqual(new ComparableString('H'));
+        del(rbt, rbt.max()!);
+        expect(rbt.max()).toEqual(new ComparableString('E'));
+        del(rbt, rbt.max()!);
+        expect(rbt.max()).toEqual(new ComparableString('C'));
+        del(rbt, rbt.max()!);
+        expect(rbt.max()).toEqual(new ComparableString('A'));
+        del(rbt, rbt.max()!);
+        expect(rbt.max()).toBe(null);
+      });
+    });
+
+    describe('min()', () => {
+      it('returns the smallest key', () => {
+        expect(rbt.min()).toEqual(new ComparableString('A'));
+        del(rbt, rbt.min()!);
+        expect(rbt.min()).toEqual(new ComparableString('C'));
+        del(rbt, rbt.min()!);
+        expect(rbt.min()).toEqual(new ComparableString('E'));
+        del(rbt, rbt.min()!);
+        expect(rbt.min()).toEqual(new ComparableString('H'));
+        del(rbt, rbt.min()!);
+        expect(rbt.min()).toEqual(new ComparableString('L'));
+        del(rbt, rbt.min()!);
+        expect(rbt.min()).toEqual(new ComparableString('M'));
+        del(rbt, rbt.min()!);
+        expect(rbt.min()).toEqual(new ComparableString('P'));
+        del(rbt, rbt.min()!);
+        expect(rbt.min()).toEqual(new ComparableString('R'));
+        del(rbt, rbt.min()!);
+        expect(rbt.min()).toEqual(new ComparableString('S'));
+        del(rbt, rbt.min()!);
+        expect(rbt.min()).toEqual(new ComparableString('X'));
+        del(rbt, rbt.min()!);
+        expect(rbt.min()).toBe(null);
       });
     });
 
@@ -226,6 +360,12 @@ describe('RedBlackTree', () => {
            · ·
         ` + '\n',
         );
+      });
+    });
+
+    describe('values()', () => {
+      it('returns an iterable of values in key-order', () => {
+        expect([...rbt.values()]).toEqual([8, 4, 12, 5, 11, 9, 10, 3, 0, 7]);
       });
     });
   });
