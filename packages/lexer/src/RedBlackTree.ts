@@ -213,9 +213,10 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
                   right.toString().replace(/\n$/, '').split('\n'),
                 ).map(([a, b]) => {
                   return center(
-                    `${a ?? ' '.repeat(left.width)} ${
-                      b ?? ' '.repeat(right.width)
-                    }`,
+                    [
+                      a ?? ' '.repeat(left.width),
+                      b ?? ' '.repeat(right.width),
+                    ].join(' '),
                     width,
                   );
                 }),
