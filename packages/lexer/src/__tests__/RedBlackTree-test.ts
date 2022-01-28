@@ -1,8 +1,10 @@
+import {dedent} from '@masochist/common';
 import assert from 'assert';
 
 import RedBlackTree, {RED, center, zip} from '../RedBlackTree';
 
 import type {Node} from '../RedBlackTree';
+import compileRegExp from '../compileRegExp';
 
 describe('RedBlackTree', () => {
   class ComparableString {
@@ -211,20 +213,86 @@ describe('RedBlackTree', () => {
       });
 
       it('stringifies a one-node tree', () => {
-        // Body.
+        const rbt = new RedBlackTree<ComparableString, number>();
+        rbt.put(new ComparableString('X'), 1);
+        expect(rbt.toString()).toBe(
+          dedent`
+           X
+          ┌┴┐
+          · ·
+        ` + '\n',
+        );
+      });
+
+      it('stringifies a two-node tree', () => {
+        const rbt = new RedBlackTree<ComparableString, number>();
+        rbt.put(new ComparableString('X'), 1);
+        rbt.put(new ComparableString('Y'), 2);
+        expect(rbt.toString()).toBe(
+          dedent`
+            Y
+           ┏┹─┐
+           X  ·
+          ┌┴┐
+          · ·
+        ` + '\n',
+        );
+      });
+
+      it('stringifies a three-node tree', () => {
+        const rbt = new RedBlackTree<ComparableString, number>();
+        rbt.put(new ComparableString('X'), 1);
+        rbt.put(new ComparableString('Y'), 2);
+        rbt.put(new ComparableString('Z'), 3);
+        expect(rbt.toString()).toBe(
+          dedent`
+             Y
+           ┌─┴─┐
+           X   Z
+          ┌┴┐ ┌┴┐
+          · · · ·
+        ` + '\n',
+        );
       });
 
       it('stringifies SEARCHEXAMPLE', () => {
         expect(rbt.toString()).toBe(
-          '          M\n' +
-            '     ┌────┴─────┐\n' +
-            '     E          R\n' +
-            '  ┌──┴──┐    ┌──┴─┐\n' +
-            '  C     L    P    X\n' +
-            ' ┏┹─┐  ┏┹─┐ ┌┴┐  ┏┹─┐\n' +
-            ' A  ·  H  · · ·  S  ·\n' +
-            '┌┴┐   ┌┴┐       ┌┴┐\n' +
-            '· ·   · ·       · ·\n',
+          dedent`
+                    M
+               ┌────┴─────┐
+               E          R
+            ┌──┴──┐    ┌──┴─┐
+            C     L    P    X
+           ┏┹─┐  ┏┹─┐ ┌┴┐  ┏┹─┐
+           A  ·  H  · · ·  S  ·
+          ┌┴┐   ┌┴┐       ┌┴┐
+          · ·   · ·       · ·
+        ` + '\n',
+        );
+      });
+
+      it('stringifies a tree with variable-length keys', () => {
+        const rbt = new RedBlackTree<ComparableString, number>();
+        rbt.put(new ComparableString('VERY LONG'), 1);
+        rbt.put(new ComparableString('A'), 2);
+        rbt.put(new ComparableString('B'), 3);
+        rbt.put(new ComparableString('SHORT'), 4);
+        rbt.put(new ComparableString('C'), 5);
+        rbt.put(new ComparableString('D'), 6);
+        rbt.put(new ComparableString('EXTREMELY LONG!'), 7);
+        rbt.put(new ComparableString('AVERAGE'), 8);
+        expect(rbt.toString()).toBe(
+          dedent`
+                            D
+               ┌────────────┴─────┐
+               B                SHORT
+             ┌─┴───┐         ┌────┴───────┐
+          AVERAGE  C  EXTREMELY LONG! VERY LONG
+           ┏━┹──┐ ┌┴┐ ┌──────┴──────┐ ┌───┴───┐
+            A  ·  · ·       · ·          · ·
+           ┌┴┐
+           · ·
+        ` + '\n',
         );
       });
     });
