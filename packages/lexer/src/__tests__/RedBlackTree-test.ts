@@ -550,7 +550,7 @@ function isSizeCorrect(tree: RedBlackTree<Tk, Tv>): boolean {
 }
 
 /**
- * Wrapper around `RedBlackTree.prototype.delete()` that verifies the trees
+ * Wrapper around `RedBlackTree.prototype.delete()` that verifies the tree's
  * integrity after the operation.
  */
 function del(tree: RedBlackTree<Tk, Tv>, key: Tk) {
@@ -559,7 +559,7 @@ function del(tree: RedBlackTree<Tk, Tv>, key: Tk) {
 }
 
 /**
- * Wrapper around `RedBlackTree.prototype.put()` that verifies the trees
+ * Wrapper around `RedBlackTree.prototype.put()` that verifies the tree's
  * integrity after the operation.
  */
 function put(tree: RedBlackTree<Tk, Tv>, key: Tk, value: Tv) {
