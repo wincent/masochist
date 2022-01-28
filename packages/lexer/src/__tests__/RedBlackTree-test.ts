@@ -1,5 +1,4 @@
-import {dedent} from '@masochist/common';
-import assert from 'assert';
+import {dedent, invariant} from '@masochist/common';
 
 import RedBlackTree, {center, isRed, zip} from '../RedBlackTree';
 
@@ -362,9 +361,9 @@ function isBST(tree: RedBlackTree<Tk, Tv>): boolean {
     return true;
   } else {
     const min = tree.min();
-    assert(min);
+    invariant(min);
     const max = tree.max();
-    assert(max);
+    invariant(max);
     return is(tree.root, min, max);
   }
 }

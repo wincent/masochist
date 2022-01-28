@@ -1,5 +1,4 @@
 import {Queue, invariant} from '@masochist/common';
-import assert from 'assert';
 
 interface Comparable<T> {
   compareTo(that: T): number;
@@ -297,8 +296,8 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
   }
 
   _flipColors(h: Node<Tk, Tv>) {
-    assert(h.left);
-    assert(h.right);
+    invariant(h.left);
+    invariant(h.right);
     h.color = !h.color;
     h.left.color = !h.left.color;
     h.right.color = !h.right.color;
@@ -448,7 +447,7 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
    *                                       to become right child of old root
    */
   _rotateLeft(h: Node<Tk, Tv>): Node<Tk, Tv> {
-    assert(h.right);
+    invariant(h.right);
     const x = h.right;
     h.right = x.left;
     x.left = h;
@@ -470,7 +469,7 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
    *                                      to become left child of old root
    */
   _rotateRight(h: Node<Tk, Tv>): Node<Tk, Tv> {
-    assert(h.left);
+    invariant(h.left);
     const x = h.left;
     h.left = x.right;
     x.right = h;

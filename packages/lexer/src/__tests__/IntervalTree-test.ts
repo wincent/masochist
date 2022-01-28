@@ -1,4 +1,4 @@
-import assert from 'assert';
+import {invariant} from '@masochist/common';
 
 import IntervalTree, {IntervalNode} from '../IntervalTree';
 import {NONE} from '../NFA/NFA';
@@ -217,7 +217,7 @@ function atom(value: string): Atom {
 }
 
 function charCode(string: string): number {
-  assert.equal(string.length, 1);
+  invariant(string.length === 1);
   return string.charCodeAt(0);
 }
 
