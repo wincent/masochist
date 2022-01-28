@@ -5,8 +5,8 @@ interface Comparable<T> {
   compareTo(that: T): number;
 }
 
-export const RED = true;
-export const BLACK = false;
+const RED = true;
+const BLACK = false;
 
 export type Node<Tk, Tv> = {
   color: boolean;
@@ -274,8 +274,9 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
         h = this._moveRedRight(h);
       }
       if (key.compareTo(h.key) === 0) {
-        h.value = this._get(h.right, this._min(h.right!).key)!;
-        h.key = this._min(h.right!).key;
+        const x = this._min(h.right!);
+        h.key = x.key;
+        h.value = x.value;
         h.right = this._deleteMin(h.right!);
       } else {
         h.right = this._delete(h.right!, key);
@@ -298,9 +299,9 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
   _flipColors(h: Node<Tk, Tv>) {
     assert(h.left);
     assert(h.right);
-    h.color = RED;
-    h.left.color = BLACK;
-    h.right.color = BLACK;
+    h.color = !h.color;
+    h.left.color = !h.left.color;
+    h.right.color = !h.right.color;
   }
 
   _get(h: Node<Tk, Tv> | null, key: Tk): Tv | null {
@@ -501,7 +502,7 @@ export function center(line: string, width: number) {
   return ' '.repeat(left) + line + ' '.repeat(right);
 }
 
-function isRed<Tk, Tv>(x: Node<Tk, Tv> | null) {
+export function isRed<Tk, Tv>(x: Node<Tk, Tv> | null) {
   return x?.color === RED;
 }
 

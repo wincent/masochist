@@ -1,38 +1,38 @@
 import {dedent} from '@masochist/common';
 import assert from 'assert';
 
-import RedBlackTree, {RED, center, zip} from '../RedBlackTree';
+import RedBlackTree, {center, isRed, zip} from '../RedBlackTree';
 
 import type {Node} from '../RedBlackTree';
-import compileRegExp from '../compileRegExp';
 
-describe('RedBlackTree', () => {
-  class ComparableString {
-    _value: string;
+// Cheaty shorthands to make tests a little more concise.
+type Tv = number;
+type Tk = ComparableString;
+type NodeT = Node<Tk, Tv>;
 
-    constructor(value: string) {
-      this._value = value;
-    }
+class ComparableString {
+  _value: string;
 
-    compareTo(that: ComparableString): number {
-      if (this._value < that._value) {
-        return -1;
-      } else if (this._value > that._value) {
-        return 1;
-      } else {
-        return 0;
-      }
-    }
+  constructor(value: string) {
+    this._value = value;
+  }
 
-    toString(): string {
-      return this._value;
+  compareTo(that: ComparableString): number {
+    if (this._value < that._value) {
+      return -1;
+    } else if (this._value > that._value) {
+      return 1;
+    } else {
+      return 0;
     }
   }
 
-  type Tv = number;
-  type Tk = ComparableString;
-  type NodeT = Node<Tk, Tv>;
+  toString(): string {
+    return this._value;
+  }
+}
 
+describe('RedBlackTree', () => {
   describe('SEARCHEXAMPLE', () => {
     let rbt: RedBlackTree<Tk, Tv>;
 
@@ -46,86 +46,19 @@ describe('RedBlackTree', () => {
     });
 
     it('is a binary search tree', () => {
-      function isBST(h: NodeT | null, min: Tk, max: Tk): boolean {
-        if (h === null) {
-          return true;
-        }
-        if (h.key.compareTo(min) < 0 || h.key.compareTo(max) > 0) {
-          return false;
-        }
-        return isBST(h.left, min, h.key) && isBST(h.right, h.key, max);
-      }
-
-      const min = rbt.min();
-      assert(min);
-      const max = rbt.max();
-      assert(max);
-
-      expect(isBST(rbt.root, min, max)).toBe(true);
+      expect(isBST(rbt)).toBe(true);
     });
 
     it('is a 2-3-4 tree', () => {
-      // ie. no red right links, and at most two left red links in a row on any
-      // path.
-      function is234(h: NodeT | null): boolean {
-        if (h === null) {
-          return true;
-        }
-        if (h.right?.color === RED) {
-          return false;
-        }
-        if (
-          h.color === RED &&
-          h.left?.color === RED &&
-          h.left?.left?.color === RED
-        ) {
-          return false;
-        }
-        return is234(h.left) && is234(h.right);
-      }
-
-      expect(is234(rbt.root)).toBe(true);
+      expect(is234(rbt)).toBe(true);
     });
 
     it('is balanced', () => {
-      // ie. all paths (root to leaf) have the same number of black edges.
-      function isBalanced(h: NodeT | null, blackCount: number): boolean {
-        if (h === null) {
-          return blackCount === 0;
-        }
-        if (h.color !== RED) {
-          blackCount--;
-        }
-        return (
-          isBalanced(h.left, blackCount) && isBalanced(h.right, blackCount)
-        );
-      }
-
-      let blackCount = 0;
-      let node = rbt.root;
-
-      while (node) {
-        if (node.color !== RED) {
-          blackCount++;
-        }
-        node = node.left;
-      }
-
-      expect(isBalanced(rbt.root, blackCount)).toBe(true);
+      expect(isBalanced(rbt)).toBe(true);
     });
 
     it('has correct size values', () => {
-      function isSizeCorrect(h: NodeT | null): boolean {
-        if (h === null) {
-          return true;
-        }
-        if (h.size !== (h.left?.size ?? 0) + (h.right?.size ?? 0) + 1) {
-          return false;
-        }
-        return isSizeCorrect(h.left) && isSizeCorrect(h.right);
-      }
-
-      expect(isSizeCorrect(rbt.root)).toBe(true);
+      expect(isSizeCorrect(rbt)).toBe(true);
     });
 
     // TODO: test other methods (eg. min(), max()) etc
@@ -152,7 +85,7 @@ describe('RedBlackTree', () => {
     it('allows keys to be overwritten', () => {
       expect(rbt.size).toBe(10);
       const m = new ComparableString('M');
-      rbt.put(m, 100);
+      put(rbt, m, 100);
       expect(rbt.size).toBe(10);
       expect(rbt.get(m)).toBe(100);
     });
@@ -163,45 +96,45 @@ describe('RedBlackTree', () => {
 
         // Delete something.
         const r = new ComparableString('R');
-        rbt.delete(r);
+        del(rbt, r);
         expect(rbt.size).toBe(9);
         expect(rbt.get(r)).toBe(null);
 
         // Deleting it again (idempotently).
-        rbt.delete(r);
+        del(rbt, r);
         expect(rbt.size).toBe(9);
         expect(rbt.get(r)).toBe(null);
 
         // Delete something else.
         const e = new ComparableString('E');
-        rbt.delete(e);
+        del(rbt, e);
         expect(rbt.size).toBe(8);
         expect(rbt.get(e)).toBe(null);
 
         // Delete something that's not there.
         const z = new ComparableString('Z');
-        rbt.delete(z);
+        del(rbt, z);
         expect(rbt.size).toBe(8);
         expect(rbt.get(e)).toBe(null);
 
         // Delete the rest in an arbitrary order...
-        rbt.delete(new ComparableString('A'));
+        del(rbt, new ComparableString('A'));
         expect(rbt.size).toBe(7);
-        rbt.delete(new ComparableString('S'));
+        del(rbt, new ComparableString('S'));
         expect(rbt.size).toBe(6);
-        rbt.delete(new ComparableString('H'));
+        del(rbt, new ComparableString('H'));
         expect(rbt.size).toBe(5);
-        // rbt.delete(new ComparableString('C'));
-        // expect(rbt.size).toBe(4);
-        // rbt.delete(new ComparableString('X'));
-        // expect(rbt.size).toBe(3);
-        // rbt.delete(new ComparableString('M'));
-        // expect(rbt.size).toBe(2);
-        // rbt.delete(new ComparableString('P'));
-        // expect(rbt.size).toBe(1);
-        // rbt.delete(new ComparableString('L'));
-        // expect(rbt.size).toBe(0);
-        // expect(rbt.isEmpty()).toBe(true);
+        del(rbt, new ComparableString('C'));
+        expect(rbt.size).toBe(4);
+        del(rbt, new ComparableString('X'));
+        expect(rbt.size).toBe(3);
+        del(rbt, new ComparableString('M'));
+        expect(rbt.size).toBe(2);
+        del(rbt, new ComparableString('P'));
+        expect(rbt.size).toBe(1);
+        del(rbt, new ComparableString('L'));
+        expect(rbt.size).toBe(0);
+        expect(rbt.isEmpty()).toBe(true);
       });
     });
 
@@ -214,7 +147,7 @@ describe('RedBlackTree', () => {
 
       it('stringifies a one-node tree', () => {
         const rbt = new RedBlackTree<ComparableString, number>();
-        rbt.put(new ComparableString('X'), 1);
+        put(rbt, new ComparableString('X'), 1);
         expect(rbt.toString()).toBe(
           dedent`
            X
@@ -226,8 +159,8 @@ describe('RedBlackTree', () => {
 
       it('stringifies a two-node tree', () => {
         const rbt = new RedBlackTree<ComparableString, number>();
-        rbt.put(new ComparableString('X'), 1);
-        rbt.put(new ComparableString('Y'), 2);
+        put(rbt, new ComparableString('X'), 1);
+        put(rbt, new ComparableString('Y'), 2);
         expect(rbt.toString()).toBe(
           dedent`
             Y
@@ -241,9 +174,9 @@ describe('RedBlackTree', () => {
 
       it('stringifies a three-node tree', () => {
         const rbt = new RedBlackTree<ComparableString, number>();
-        rbt.put(new ComparableString('X'), 1);
-        rbt.put(new ComparableString('Y'), 2);
-        rbt.put(new ComparableString('Z'), 3);
+        put(rbt, new ComparableString('X'), 1);
+        put(rbt, new ComparableString('Y'), 2);
+        put(rbt, new ComparableString('Z'), 3);
         expect(rbt.toString()).toBe(
           dedent`
              Y
@@ -273,14 +206,14 @@ describe('RedBlackTree', () => {
 
       it('stringifies a tree with variable-length keys', () => {
         const rbt = new RedBlackTree<ComparableString, number>();
-        rbt.put(new ComparableString('VERY LONG'), 1);
-        rbt.put(new ComparableString('A'), 2);
-        rbt.put(new ComparableString('B'), 3);
-        rbt.put(new ComparableString('SHORT'), 4);
-        rbt.put(new ComparableString('C'), 5);
-        rbt.put(new ComparableString('D'), 6);
-        rbt.put(new ComparableString('EXTREMELY LONG!'), 7);
-        rbt.put(new ComparableString('AVERAGE'), 8);
+        put(rbt, new ComparableString('VERY LONG'), 1);
+        put(rbt, new ComparableString('A'), 2);
+        put(rbt, new ComparableString('B'), 3);
+        put(rbt, new ComparableString('SHORT'), 4);
+        put(rbt, new ComparableString('C'), 5);
+        put(rbt, new ComparableString('D'), 6);
+        put(rbt, new ComparableString('EXTREMELY LONG!'), 7);
+        put(rbt, new ComparableString('AVERAGE'), 8);
         expect(rbt.toString()).toBe(
           dedent`
                             D
@@ -371,3 +304,126 @@ describe('zip()', () => {
     ]);
   });
 });
+
+/**
+ * Performs various integrity checks on the supplied tree.
+ */
+function check(tree: RedBlackTree<Tk, Tv>): RedBlackTree<Tk, Tv> {
+  if (!is234(tree)) {
+    throw new Error('check(): not a 2-3-4 tree');
+  }
+  if (!isBST(tree)) {
+    throw new Error('check(): not a BST');
+  }
+  if (!isBalanced(tree)) {
+    throw new Error('check(): not balanced');
+  }
+  if (!isSizeCorrect(tree)) {
+    throw new Error('check(): incorrect size');
+  }
+  return tree;
+}
+
+/**
+ * Confirms `tree` is 2-3-4 tree.
+ *
+ * That is, it has no red right links, and at most two left red links in a row
+ * on any path.
+ */
+function is234(tree: RedBlackTree<Tk, Tv>): boolean {
+  function is(h: NodeT | null): boolean {
+    if (h === null) {
+      return true;
+    }
+    if (isRed(h.right)) {
+      return false;
+    }
+    if (isRed(h) && isRed(h.left) && isRed(h.left?.left ?? null)) {
+      return false;
+    }
+    return is(h.left) && is(h.right);
+  }
+
+  return is(tree.root);
+}
+
+function isBST(tree: RedBlackTree<Tk, Tv>): boolean {
+  function is(h: NodeT | null, min: Tk, max: Tk): boolean {
+    if (h === null) {
+      return true;
+    }
+    if (h.key.compareTo(min) < 0 || h.key.compareTo(max) > 0) {
+      return false;
+    }
+    return is(h.left, min, h.key) && is(h.right, h.key, max);
+  }
+
+  if (tree.isEmpty()) {
+    return true;
+  } else {
+    const min = tree.min();
+    assert(min);
+    const max = tree.max();
+    assert(max);
+    return is(tree.root, min, max);
+  }
+}
+
+/**
+ * All paths (root to leaf) have the same number of black edges.
+ */
+function isBalanced(tree: RedBlackTree<Tk, Tv>): boolean {
+  function is(h: NodeT | null, blackCount: number): boolean {
+    if (h === null) {
+      return blackCount === 0;
+    }
+    if (!isRed(h)) {
+      blackCount--;
+    }
+    return is(h.left, blackCount) && is(h.right, blackCount);
+  }
+
+  let blackCount = 0;
+  let node = tree.root;
+
+  while (node) {
+    if (!isRed(node)) {
+      blackCount++;
+    }
+    node = node.left;
+  }
+
+  return is(tree.root, blackCount);
+}
+
+function isSizeCorrect(tree: RedBlackTree<Tk, Tv>): boolean {
+  function is(h: NodeT | null): boolean {
+    if (h === null) {
+      return true;
+    }
+    if (h.size !== (h.left?.size ?? 0) + (h.right?.size ?? 0) + 1) {
+      return false;
+    }
+    return is(h.left) && is(h.right);
+  }
+
+  return is(tree.root);
+}
+
+/**
+ * Wrapper around `RedBlackTree.prototype.delete()` that verifies the trees
+ * integrity after the operation.
+ */
+function del(tree: RedBlackTree<Tk, Tv>, key: Tk) {
+  tree.delete(key);
+  check(tree);
+}
+
+/**
+ * Wrapper around `RedBlackTree.prototype.put()` that verifies the trees
+ * integrity after the operation.
+ */
+function put(tree: RedBlackTree<Tk, Tv>, key: Tk, value: Tv) {
+  tree.put(key, value);
+  check(tree);
+}
