@@ -164,17 +164,22 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
       for (let i = levels.length - 1; i >= 0; i--) {
         const current = levels[i];
         const previous = output[0];
+        const indent = previous
+          ? ' '.repeat(previous[0].length - 1)
+          : '';
         if (previous) {
+          // Draw edges.
           output.unshift(
             previous.map((item, j) => {
               let edges: Array<string> = [];
-              const width = item.length;
+              const width = item.length - 1;
               const left = current[Math.floor(j / 2)]?.left;
               const right = current[Math.floor(j / 2) + 1]?.right;
               if (j % 2 === 0) {
                 // Left.
                 edges.push(
-                  left?.color === RED
+                  (j === 0 ? indent : '') +
+                  (left?.color === RED
                     ? BOX_DRAWINGS_HEAVY_DOWN_AND_RIGHT.padEnd(
                         width,
                         BOX_DRAWINGS_HEAVY_HORIZONTAL,
@@ -182,7 +187,7 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
                     : BOX_DRAWINGS_LIGHT_DOWN_AND_RIGHT.padEnd(
                         width,
                         BOX_DRAWINGS_LIGHT_HORIZONTAL,
-                      ),
+                      )),
                   left?.color === RED && right?.color === RED
                     ? BOX_DRAWINGS_HEAVY_UP_AND_HORIZONTAL
                     : left?.color === RED
@@ -194,7 +199,7 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
               } else {
                 // Right.
                 edges.push(
-                  right?.color === RED
+                  (right?.color === RED
                     ? BOX_DRAWINGS_HEAVY_DOWN_AND_LEFT.padStart(
                         width,
                         BOX_DRAWINGS_HEAVY_HORIZONTAL,
@@ -202,25 +207,23 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
                     : BOX_DRAWINGS_LIGHT_DOWN_AND_LEFT.padStart(
                         width,
                         BOX_DRAWINGS_LIGHT_HORIZONTAL,
-                      ),
+                      )) + ' '
                 );
               }
               return edges.join('');
             }),
           );
         }
+
+        // Draw keys.
         output.unshift(
           current.map((item, j) => {
             const text = item?.key.toString() ?? MIDDLE_DOT;
-            if (j === 0) {
-              // First child; needs indent.
-              if (previous) {
-                return ' '.repeat(previous[0].length) + text;
-              } else {
-                return text;
-              }
+            if (previous) {
+              return text.padStart(previous[j * 2].length, ' ') +
+                ' '.repeat(previous[j * 2 + 1].length);
             } else {
-              return text;
+              return text + ' ';
             }
           }),
         );
