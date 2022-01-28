@@ -205,13 +205,13 @@ describe('RedBlackTree', () => {
 
       it('stringifies a tree with variable-length keys', () => {
         const rbt = new RedBlackTree<ComparableString, number>();
-        put(rbt, new ComparableString('VERY LONG'), 1);
+        put(rbt, new ComparableString('VERY-LONG'), 1);
         put(rbt, new ComparableString('A'), 2);
         put(rbt, new ComparableString('B'), 3);
         put(rbt, new ComparableString('SHORT'), 4);
         put(rbt, new ComparableString('C'), 5);
         put(rbt, new ComparableString('D'), 6);
-        put(rbt, new ComparableString('EXTREMELY LONG!'), 7);
+        put(rbt, new ComparableString('EXTREMELY-LONG!'), 7);
         put(rbt, new ComparableString('AVERAGE'), 8);
         expect(rbt.toString()).toBe(
           dedent`
@@ -219,7 +219,7 @@ describe('RedBlackTree', () => {
                ┌────────────┴─────┐
                B                SHORT
              ┌─┴───┐         ┌────┴───────┐
-          AVERAGE  C  EXTREMELY LONG! VERY LONG
+          AVERAGE  C  EXTREMELY-LONG! VERY-LONG
             ┏┹─┐  ┌┴┐       ┌┴┐          ┌┴┐
             A  ·  · ·       · ·          · ·
            ┌┴┐
