@@ -494,10 +494,7 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
  * @internal
  */
 export function center(line: string, width: number) {
-  invariant(
-    width >= line.length,
-    `${line.length} > ${width} (${JSON.stringify(line)})`,
-  );
+  invariant(width >= line.length);
   const space = width - line.length;
   const left = Math.floor(space / 2);
   const right = Math.round(space / 2);
