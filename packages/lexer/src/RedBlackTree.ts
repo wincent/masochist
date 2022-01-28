@@ -209,11 +209,15 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
 
                 // Subtrees.
                 ...zip(
-                  left.toString().split('\n'),
-                  right.toString().split('\n'),
-                  '',
+                  left.toString().replace(/\n$/, '').split('\n'),
+                  right.toString().replace(/\n$/, '').split('\n'),
                 ).map(([a, b]) => {
-                  return center(`${a} ${b}`, width);
+                  return center(
+                    `${a ?? ' '.repeat(left.width)} ${
+                      b ?? ' '.repeat(right.width)
+                    }`,
+                    width,
+                  );
                 }),
               ].join('\n') + '\n'
             );
@@ -495,21 +499,20 @@ export function center(line: string, width: number) {
   return ' '.repeat(left) + line + ' '.repeat(right);
 }
 
-function isRed(x: Node<Tk, Tv> | null) {
+function isRed<Tk, Tv>(x: Node<Tk, Tv> | null) {
   return x?.color === RED;
 }
 
 /**
  * Zips two arrays into a single array of tuples. If either array is longer than
- * the other, the third `padding` parameter is used as a default value to extend
- * the shorter array.
+ * the other, `null` values are inserted to extend the shorter array.
  *
  * @internal
  */
-export function zip<T>(a: Array<T>, b: Array<T>, padding: T): Array<[T, T]> {
+export function zip<T>(a: Array<T>, b: Array<T>): Array<[T | null, T | null]> {
   const zipped = new Array(Math.max(a.length, b.length));
   for (let i = 0; i < zipped.length; i++) {
-    zipped[i] = [i < a.length ? a[i] : padding, i < b.length ? b[i] : padding];
+    zipped[i] = [i < a.length ? a[i] : null, i < b.length ? b[i] : null];
   }
   return zipped;
 }

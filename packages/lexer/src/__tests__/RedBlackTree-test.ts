@@ -224,7 +224,7 @@ describe('RedBlackTree', () => {
             ' ┏┹─┐  ┏┹─┐ ┌┴┐  ┏┹─┐\n' +
             ' A  ·  H  · · ·  S  ·\n' +
             '┌┴┐   ┌┴┐       ┌┴┐\n' +
-            '· ·   · ·     · ·\n\n\n\n\n',
+            '· ·   · ·       · ·\n',
         );
       });
     });
@@ -265,41 +265,41 @@ describe('center()', () => {
 
 describe('zip()', () => {
   it('zips two empty arrays', () => {
-    expect(zip([], [], 'default')).toEqual([]);
+    expect(zip([], [])).toEqual([]);
   });
 
   it('zips two equal length arrays', () => {
-    expect(zip(['foo'], ['bar'], 'default')).toEqual([['foo', 'bar']]);
-    expect(zip(['foo', 'baz'], ['bar', 'qux'], 'default')).toEqual([
+    expect(zip(['foo'], ['bar'])).toEqual([['foo', 'bar']]);
+    expect(zip(['foo', 'baz'], ['bar', 'qux'])).toEqual([
       ['foo', 'bar'],
       ['baz', 'qux'],
     ]);
   });
 
   it('zips a shorter array with a longer one', () => {
-    expect(zip([], ['foo'], 'default')).toEqual([['default', 'foo']]);
-    expect(zip(['foo'], ['bar', 'baz', 'qux'], 'default')).toEqual([
+    expect(zip([], ['foo'])).toEqual([[null, 'foo']]);
+    expect(zip(['foo'], ['bar', 'baz', 'qux'])).toEqual([
       ['foo', 'bar'],
-      ['default', 'baz'],
-      ['default', 'qux'],
+      [null, 'baz'],
+      [null, 'qux'],
     ]);
   });
 
   it('zips a longer array with a shorter one', () => {
-    expect(zip(['foo'], [], 'default')).toEqual([['foo', 'default']]);
-    expect(zip(['foo', 'bar', 'baz'], ['qux'], 'default')).toEqual([
+    expect(zip(['foo'], [])).toEqual([['foo', null]]);
+    expect(zip(['foo', 'bar', 'baz'], ['qux'])).toEqual([
       ['foo', 'qux'],
-      ['bar', 'default'],
-      ['baz', 'default'],
+      ['bar', null],
+      ['baz', null],
     ]);
   });
 
   it('is polymorphic', () => {
-    expect(zip([10, 20, 30], [2, 4, 8, 16], Infinity)).toEqual([
+    expect(zip([10, 20, 30], [2, 4, 8, 16])).toEqual([
       [10, 2],
       [20, 4],
       [30, 8],
-      [Infinity, 16],
+      [null, 16],
     ]);
   });
 });
