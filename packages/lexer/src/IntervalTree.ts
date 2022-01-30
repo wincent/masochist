@@ -81,8 +81,8 @@ export default class IntervalTree<
 
     root.key.maximum = this._maxOf([
       root.key.high,
-      root.left?.key.high,
-      root.right?.key.high,
+      root.left?.key.maximum,
+      root.right?.key.maximum,
     ]);
 
     return root;
@@ -136,9 +136,7 @@ export default class IntervalTree<
     if (h) {
       if (interval.low.compareTo(h.key.maximum) > 0) {
         // Biggest value in `h` is too small to overlap with `interval`.
-        // BUG: maximum value not always correctly updated, so I have to
-        // temporarily disable this short-circuit 😢
-        // return results;
+        return results;
       }
 
       // Search left children.

@@ -1,7 +1,6 @@
 import IntervalTree, {Interval} from './IntervalTree';
 
 import type {Edge, NFA, Transition} from './NFA/NFA';
-// import type {Comparable, Node} from './RedBlackTree';
 
 export class CharCode {
   _value: number;

@@ -135,22 +135,22 @@ describe('ConditionTree', () => {
     tree.add({on: range('0', '9'), to: s1});
     const s2 = state(2);
     tree.add({on: range('A', 'F'), to: s2});
-    const s3 = state(2);
+    const s3 = state(3);
     tree.add({on: range('a', 'f'), to: s3});
-    const s4 = state(2);
+    const s4 = state(4);
     tree.add({on: atom('b'), to: s4});
-    const s5 = state(2);
+    const s5 = state(5);
     tree.add({on: atom('f'), to: s5});
-    const s6 = state(2);
+    const s6 = state(6);
     tree.add({on: atom('n'), to: s6});
-    const s7 = state(2);
+    const s7 = state(7);
     tree.add({on: atom('r'), to: s7});
-    const s8 = state(2);
+    const s8 = state(8);
     tree.add({on: atom('t'), to: s8});
 
     expect(tree.toString()).toEqual(
       dedent`
-                           [c,e]:n
+                           [c,e]:t
                         ┏━━━━━━┹──────────────────┐
                     [A,F]:b                     [n]:t
               ┌─────────┴────────┐            ┌───┴──┐
@@ -182,28 +182,51 @@ describe('ConditionTree', () => {
     const entries = [...tree.entries()];
     expect(entries[0][0].low).toEqual(charCode('#'));
     expect(entries[0][0].high).toEqual(charCode('/'));
+    expect(entries[0][1]).toEqual(new Set([s0]));
+
     expect(entries[1][0].low).toEqual(charCode('0'));
     expect(entries[1][0].high).toEqual(charCode('9'));
+    expect(entries[1][1]).toEqual(new Set([s0, s1]));
+
     expect(entries[2][0].low).toEqual(charCode(':'));
     expect(entries[2][0].high).toEqual(charCode('@'));
+    expect(entries[2][1]).toEqual(new Set([s0]));
+
     expect(entries[3][0].low).toEqual(charCode('A'));
     expect(entries[3][0].high).toEqual(charCode('F'));
+    expect(entries[3][1]).toEqual(new Set([s0, s2]));
+
     expect(entries[4][0].low).toEqual(charCode('G'));
     expect(entries[4][0].high).toEqual(charCode('['));
+    expect(entries[4][1]).toEqual(new Set([s0]));
+
     expect(entries[5][0].low).toEqual(charCode('a'));
     expect(entries[5][0].high).toEqual(charCode('a'));
+    expect(entries[5][1]).toEqual(new Set([s3]));
+
     expect(entries[6][0].low).toEqual(charCode('b'));
     expect(entries[6][0].high).toEqual(charCode('b'));
+    expect(entries[6][1]).toEqual(new Set([s3, s4]));
+
     expect(entries[7][0].low).toEqual(charCode('c'));
     expect(entries[7][0].high).toEqual(charCode('e'));
+    expect(entries[7][1]).toEqual(new Set([s3]));
+
     expect(entries[8][0].low).toEqual(charCode('f'));
     expect(entries[8][0].high).toEqual(charCode('f'));
+    expect(entries[8][1]).toEqual(new Set([s3, s5]));
+
     expect(entries[9][0].low).toEqual(charCode('n'));
     expect(entries[9][0].high).toEqual(charCode('n'));
+    expect(entries[9][1]).toEqual(new Set([s6]));
+
     expect(entries[10][0].low).toEqual(charCode('r'));
     expect(entries[10][0].high).toEqual(charCode('r'));
+    expect(entries[10][1]).toEqual(new Set([s7]));
+
     expect(entries[11][0].low).toEqual(charCode('t'));
     expect(entries[11][0].high).toEqual(charCode('t'));
+    expect(entries[11][1]).toEqual(new Set([s8]));
   });
 });
 
