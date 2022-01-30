@@ -1,6 +1,6 @@
 import {Queue, invariant} from '@masochist/common';
 
-interface Comparable<T> {
+export interface Comparable<T> {
   compareTo(that: T): number;
 }
 
@@ -166,13 +166,20 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
           label,
           toString() {
             // _Where_ to draw the edges.
-            const padding = label.length - (left.width + right.width + 1);
-            const leftPadding = padding > 0 ? Math.floor(padding / 2) : 0;
-            const rightPadding = padding > 0 ? Math.ceil(padding / 2) : 0;
+            const padding = Math.max(
+              0,
+              label.length - (left.width + right.width + 1),
+            );
+            const leftPadding = Math.floor(padding / 2);
+            const rightPadding = Math.ceil(padding / 2);
             const leftIndex = Math.floor(left.width / 2) + leftPadding;
-            const middleIndex = Math.floor(width / 2);
             const rightIndex =
               width - Math.ceil(right.width / 2) - rightPadding;
+            const middleIndex = clamp(
+              Math.floor(width / 2),
+              leftIndex,
+              rightIndex,
+            );
 
             // _How_ to style the edges.
             const LEFT_HORIZONTAL = isRed(subtree.left)
@@ -349,6 +356,15 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
     return x.left === null ? x : this._min(x.left);
   }
 
+  /**
+   * Given red links to 20 and to 25:
+   *
+   *           20              25       ie. move red link to left child of 20
+   *          /  \            /  \
+   *             30  ---->  20   30
+   *            /  \       /
+   *           25
+   */
   _moveRedLeft(h: Node<Tk, Tv>): Node<Tk, Tv> {
     this._flipColors(h);
     if (isRed(h.right?.left ?? null)) {
@@ -359,6 +375,15 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
     return h;
   }
 
+  /**
+   * Given red links to 15 and 10:
+   *
+   *            20              15      ie. move red link to right child of 20
+   *           /  \            /  \
+   *          15  25  ---->  10   20
+   *         /                      \
+   *        10                      25
+   */
   _moveRedRight(h: Node<Tk, Tv>): Node<Tk, Tv> {
     this._flipColors(h);
     if (isRed(h.left?.left ?? null)) {
@@ -482,6 +507,33 @@ export function center(line: string, width: number) {
   const left = Math.floor(space / 2);
   const right = Math.round(space / 2);
   return ' '.repeat(left) + line + ' '.repeat(right);
+}
+
+/**
+ * Clamps `value` between `lower` and `upper` limits (exclusive).
+ *
+ * For the most part, our `middleIndex` calculations leave the down-link in a
+ * visually pleasing place (ie. as close as possible to the middle of the
+ * label), but in some edge-case situations we wind up with the `middleIndex`
+ * actually coinciding with the `leftIndex` or `rightIndex`.
+ *
+ * One fix would be to center the `middleIndex` between `leftIndex` and
+ * `rightIndex` instead of the centering it in the label, but that ends up
+ * looking bad for the common case.
+ *
+ * So, we use `clamp` as a special kludge just to make sure we never draw the
+ * indices on top of each other. It saves us from errors in those rare cases,
+ * while preserving the visually nice output for the non-rare cases.
+ */
+function clamp(value: number, lower: number, upper: number) {
+  invariant(upper - lower >= 2);
+  if (value <= lower) {
+    return lower + 1;
+  } else if (value >= upper) {
+    return upper - 1;
+  } else {
+    return value;
+  }
 }
 
 export function isRed<Tk, Tv>(x: Node<Tk, Tv> | null) {

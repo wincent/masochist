@@ -1,90 +1,165 @@
+import {invariant} from '@masochist/common';
+
 import RedBlackTree from './RedBlackTree';
 
-import type {NFA, Transition} from './NFA/NFA';
-import type {Node} from './RedBlackTree';
+import type {Comparable, Node} from './RedBlackTree';
 
-// Each node has a set of associated target states.
-type IntervalPayload = Set<NFA>;
-
-export class IntervalNode {
+export class Interval<Tk extends Comparable<Tk>> {
   /** Low value at the beginning of the range (inclusive). */
-  low: number;
+  low: Tk;
 
   /** High value at the end of the range (inclusive). */
-  high: number;
+  high: Tk;
 
   /** Highest high value in this subtree. */
-  maximum: number;
+  maximum: Tk;
 
-  /**
-   * Note that we don't work with epsilon transitions (ie. no `null`
-   * transitions); we expect those to be removed before using the `IntervalTree`
-   * in `NFAToDFA()`.
-   */
-  constructor(transition: NonNullable<Transition>) {
-    if (transition.kind === 'Anything') {
-      this.low = 0x0000;
-      this.high = 0xffff;
-    } else if (transition.kind === 'Atom') {
-      this.low = transition.value.charCodeAt(0);
-      this.high = this.low;
-    } else if (transition.kind === 'Range') {
-      this.low = transition.from.charCodeAt(0);
-      this.high = transition.to.charCodeAt(0);
-    } else {
-      throw new Error('IntervalNode: Unreachable');
-    }
-    this.maximum = this.high;
+  constructor(low: Tk, high: Tk, maximum?: Tk) {
+    invariant(low.compareTo(high) <= 0, '`low` must be <= `high`');
+    invariant(
+      maximum === undefined || maximum.compareTo(high) >= 0,
+      '`maximum` must be >= `high`',
+    );
+    this.low = low;
+    this.high = high;
+    this.maximum = maximum ?? high;
   }
 
-  compareTo(that: IntervalNode) {
-    return this.low - that.low;
+  compareTo(that: Interval<Tk>) {
+    return this.low.compareTo(that.low);
+  }
+
+  toString() {
+    if (this.low.compareTo(this.high)) {
+      return `[${this.low.toString()},${this.high.toString()}]:${this.maximum.toString()}`;
+    } else {
+      return `[${this.low.toString()}]:${this.maximum.toString()}`;
+    }
   }
 }
 
-export default class IntervalTree extends RedBlackTree<
-  IntervalNode,
-  IntervalPayload
-> {
+export default class IntervalTree<
+  Tk extends Comparable<Tk>,
+  Tv,
+> extends RedBlackTree<Interval<Tk>, Tv> {
+  /**
+   * Returns all key/value pairs overlapping with the supplied `interval`.
+   */
+  search(interval: Interval<Tk>): Array<[Interval<Tk>, Tv]> {
+    return this._search(interval, this._root, []);
+  }
+
+  /**
+   * Analogous to `Math.max`, but doesn't return `-Infinity` when called with no
+   * arguments (throws an error instead).
+   *
+   * Note: named `_maxOf()` and not `_max()` in order to avoid clash with
+   * standard RedBlackTree method of same name.
+   */
+  _maxOf(keys: Array<Tk | undefined>): Tk {
+    // Would be nice if TS could refine the type here with a simple
+    // `keys.filter(Boolean)`, but it can't, so we give it a little help.
+    const filtered = keys.filter((key: Tk | undefined): key is Tk => !!key);
+    invariant(filtered.length);
+
+    let maximum = filtered[0];
+    for (let i = 1; i < filtered.length; i++) {
+      const other = filtered[i];
+      if (maximum.compareTo(other) < 0) {
+        maximum = other;
+      }
+    }
+    return maximum;
+  }
+
   _put(
-    h: Node<IntervalNode, IntervalPayload> | null,
-    key: IntervalNode,
-    value: IntervalPayload,
-  ) {
+    h: Node<Interval<Tk>, Tv> | null,
+    key: Interval<Tk>,
+    value: Tv,
+  ): Node<Interval<Tk>, Tv> {
     const root = super._put(h, key, value);
-    root.key.maximum = Math.max(
+
+    root.key.maximum = this._maxOf([
       root.key.high,
-      root.left?.key?.maximum || 0,
-      root.right?.key?.maximum || 0,
-    );
+      root.left?.key.high,
+      root.right?.key.high,
+    ]);
+
     return root;
   }
 
-  _rotateLeft(h: Node<IntervalNode, IntervalPayload>) {
+  _rebalance(h: Node<Interval<Tk>, Tv>) {
+    const node = super._rebalance(h);
+
+    node.key.maximum = this._maxOf([
+      node.key.high,
+      node.left?.key.maximum,
+      node.right?.key.maximum,
+    ]);
+
+    return node;
+  }
+
+  _rotateLeft(h: Node<Interval<Tk>, Tv>): Node<Interval<Tk>, Tv> {
     const newRoot = super._rotateLeft(h);
     const oldRoot = newRoot.left!;
 
     newRoot.key.maximum = oldRoot.key.maximum;
-    oldRoot.key.maximum = Math.max(
+    oldRoot.key.maximum = this._maxOf([
       oldRoot.key.high,
-      oldRoot.left?.key?.maximum || 0,
-      oldRoot.right?.key?.maximum || 0,
-    );
+      oldRoot.left?.key.maximum,
+      oldRoot.right?.key.maximum,
+    ]);
 
     return newRoot;
   }
 
-  _rotateRight(h: Node<IntervalNode, IntervalPayload>) {
+  _rotateRight(h: Node<Interval<Tk>, Tv>) {
     const newRoot = super._rotateRight(h);
     const oldRoot = newRoot.right!;
 
     newRoot.key.maximum = oldRoot.key.maximum;
-    oldRoot.key.maximum = Math.max(
+    oldRoot.key.maximum = this._maxOf([
       oldRoot.key.high,
-      oldRoot.left?.key?.maximum || 0,
-      oldRoot.right?.key?.maximum || 0,
-    );
+      oldRoot.left?.key.maximum,
+      oldRoot.right?.key.maximum,
+    ]);
 
     return newRoot;
+  }
+
+  _search(
+    interval: Interval<Tk>,
+    h: Node<Interval<Tk>, Tv> | null,
+    results: Array<[Interval<Tk>, Tv]>,
+  ): Array<[Interval<Tk>, Tv]> {
+    if (h) {
+      if (interval.low.compareTo(h.key.maximum) > 0) {
+        // Biggest value in `h` is too small to overlap with `interval`.
+        // BUG: maximum value not always correctly updated, so I have to
+        // temporarily disable this short-circuit 😢
+        // return results;
+      }
+
+      // Search left children.
+      this._search(interval, h.left, results);
+
+      // Check `h` itself for overlap.
+      if (
+        h.key.low.compareTo(interval.high) <= 0 &&
+        h.key.high.compareTo(interval.low) >= 0
+      ) {
+        results.push([h.key, h.value]);
+      }
+
+      if (interval.low.compareTo(h.key.low) < 0) {
+        // Interval is too small to overlap with children on right.
+        return results;
+      }
+
+      // Search right children.
+      this._search(interval, h.right, results);
+    }
+    return results;
   }
 }

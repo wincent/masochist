@@ -9,7 +9,7 @@ type Tv = number;
 type Tk = ComparableString;
 type NodeT = Node<Tk, Tv>;
 
-class ComparableString {
+export class ComparableString {
   _value: string;
 
   constructor(value: string) {

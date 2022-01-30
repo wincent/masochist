@@ -1,22 +1,255 @@
-import {invariant} from '@masochist/common';
+import {dedent} from '@masochist/common';
 
-import IntervalTree, {IntervalNode} from '../IntervalTree';
-import {NONE} from '../NFA/NFA';
+import IntervalTree, {Interval} from '../IntervalTree';
+import {ComparableString} from './RedBlackTree-test';
 
-import type {NFA} from '../NFA/NFA';
-import type {Anything, Atom, Range} from '../RegExp/RegExpParser';
+describe('Interval', () => {
+  it('can represent a range', () => {
+    const a = new ComparableString('a');
+    const z = new ComparableString('z');
+    const {low, high, maximum} = {
+      low: a,
+      high: z,
+      maximum: z,
+    };
+    const interval = new Interval(low, high, maximum);
+    expect(interval.low).toEqual(a);
+    expect(interval.high).toEqual(z);
+    expect(interval.maximum).toEqual(z);
+  });
+
+  it('can represent a single point', () => {
+    const foo = new ComparableString('foo');
+    const {low, high, maximum} = {
+      low: foo,
+      high: foo,
+      maximum: foo,
+    };
+    const interval = new Interval(low, high, maximum);
+    expect(interval.low).toEqual(foo);
+    expect(interval.high).toEqual(foo);
+    expect(interval.maximum).toEqual(foo);
+  });
+
+  it('uses `high` as maximum value if omitted', () => {
+    const a = new ComparableString('a');
+    const z = new ComparableString('z');
+    const interval = new Interval(a, z);
+    expect(interval.maximum).toEqual(z);
+  });
+
+  it('enforces the requirement that `low` <= `high`', () => {
+    const a = new ComparableString('a');
+    const z = new ComparableString('z');
+    const {low, high, maximum} = {
+      low: z,
+      high: a,
+      maximum: z,
+    };
+    expect(() => new Interval(low, high, maximum)).toThrow(
+      /`low` must be <= `high`/,
+    );
+  });
+
+  it('enforces the requirement that `maximum` >= `high`', () => {
+    const a = new ComparableString('a');
+    const z = new ComparableString('z');
+    const {low, high, maximum} = {
+      low: a,
+      high: z,
+      maximum: a,
+    };
+    expect(() => new Interval(low, high, maximum)).toThrow(
+      /`maximum` must be >= `high`/,
+    );
+  });
+
+  describe('toString()', () => {
+    it('represents a range', () => {
+      const low = new ComparableString('a');
+      const high = new ComparableString('c');
+      const maximum = new ComparableString('z');
+      const interval = new Interval(low, high, maximum);
+      expect(interval.toString()).toBe('[a,c]:z');
+    });
+
+    it('represents a single point', () => {
+      const low = new ComparableString('i');
+      const high = new ComparableString('i');
+      const maximum = new ComparableString('j');
+      const interval = new Interval(low, high, maximum);
+      expect(interval.toString()).toBe('[i]:j');
+    });
+  });
+});
 
 describe('IntervalTree', () => {
-  let tree: IntervalTree;
+  let tree: IntervalTree<ComparableString, number>;
 
   beforeEach(() => {
     tree = new IntervalTree();
   });
 
   describe('low-level RedBlackTree methods', () => {
+    describe('deleteMin()', () => {
+      it('can be called on an empty tree', () => {
+        expect(() => tree.deleteMin()).not.toThrow();
+      });
+
+      it('removes the smallest item', () => {
+        const AZ = range('A', 'Z');
+        const j = item('j');
+        const z = item('z');
+
+        tree.put(z, 10);
+        tree.put(AZ, 20);
+        tree.put(j, 30);
+
+        expect(tree.size).toBe(3);
+        tree.deleteMin();
+        expect(tree.size).toBe(2);
+        expect(tree.has(AZ)).toBe(false);
+
+        tree.deleteMin();
+        expect(tree.size).toBe(1);
+        expect(tree.has(j)).toBe(false);
+
+        tree.deleteMin();
+        expect(tree.isEmpty()).toBe(true);
+        expect(tree.has(z)).toBe(false);
+      });
+    });
+
+    describe('delete()', () => {
+      it('does nothing if item does not exist', () => {
+        const a = item('a');
+        tree.put(a, 1);
+
+        tree.delete(item('b'));
+        expect(tree.size).toBe(1);
+        expect(tree.has(a)).toBe(true);
+      });
+
+      it('removes an existing item', () => {
+        const a = item('a');
+        tree.put(a, 1);
+
+        tree.delete(a);
+        expect(tree.isEmpty()).toBe(true);
+        expect(tree.has(a)).toBe(false);
+
+        // Note that we can remove based on any match of `low` value.
+        const x = item('x');
+        tree.put(x, 10);
+        tree.delete(range('x', 'z'));
+        expect(tree.isEmpty()).toBe(true);
+        expect(tree.has(x)).toBe(false);
+      });
+
+      it('updates the `maximum` metadata embedded in related keys', () => {
+        // See `toString()` test below for a visual picture of the tree we're
+        // working with here.
+        tree.put(item('a'), 1);
+        tree.put(item('0'), 2);
+        tree.put(range('A', 'Z'), 3);
+        tree.put(range('x', 'z'), 4);
+
+        tree.delete(range('x', 'z'));
+
+        let keys = [...tree.keys()];
+        expect(keys.length).toBe(3);
+        expect(keys[0].maximum).toEqual(new ComparableString('0'));
+        expect(keys[1].maximum).toEqual(new ComparableString('a'));
+        expect(keys[2].maximum).toEqual(new ComparableString('a'));
+
+        tree.delete(item('a'));
+        keys = [...tree.keys()];
+        expect(keys.length).toBe(2);
+        expect(keys[0].maximum).toEqual(new ComparableString('0'));
+        expect(keys[1].maximum).toEqual(new ComparableString('Z'));
+
+        tree.delete(range('A', 'Z'));
+        keys = [...tree.keys()];
+        expect(keys.length).toBe(1);
+        expect(keys[0].maximum).toEqual(new ComparableString('0'));
+
+        tree.delete(item('0'));
+        keys = [...tree.keys()];
+        expect(keys.length).toBe(0);
+      });
+    });
+
+    describe('get()', () => {
+      it('returns the value associated with existing keys', () => {
+        const a = item('a');
+        const XZ = range('X', 'Z');
+        tree.put(a, 100);
+        tree.put(XZ, 200);
+        expect(tree.get(a)).toEqual(100);
+        expect(tree.get(XZ)).toEqual(200);
+
+        // Note that look-ups are by key (low) _value_, not by key _identity_.
+        expect(tree.get(item('a'))).toEqual(100);
+        expect(tree.get(range('X', 'Z'))).toEqual(200);
+
+        // Note that `maximum` metadata has no effect on look-up.
+        expect(tree.get(item('a', '}'))).toEqual(100);
+        expect(tree.get(range('X', 'Z', '{'))).toEqual(200);
+
+        // And even changing the range `high` point has no effect.
+        expect(tree.get(range('X', 'Y'))).toEqual(200);
+      });
+
+      it('returns null for non-existent keys', () => {
+        tree.put(item('a'), 100);
+        expect(tree.get(item('c'))).toBe(null);
+
+        // Note that trying to look up by something in the middle of a range
+        // finds nothing (low-level `get()` doesn't work for this; need to use
+        // high-level `search()`).
+        tree.put(range('0', '9'), 50);
+        expect(tree.get(item('5'))).toBe(null);
+      });
+    });
+
+    describe('has()', () => {
+      it('returns true for existing items', () => {
+        const a = item('a');
+        const AZ = range('A', 'Z');
+
+        tree.put(a, 10);
+        tree.put(AZ, 20);
+
+        expect(tree.has(a)).toBe(true);
+        expect(tree.has(AZ)).toBe(true);
+
+        // Note that presence is determined by the `low` value of the key.
+        expect(tree.has(item('A'))).toBe(true);
+        expect(tree.has(range('A', 'C'))).toBe(true);
+      });
+
+      it('returns false for non-existent items', () => {
+        tree.put(item('a'), 10);
+        tree.put(range('A', 'Z'), 20);
+
+        // No corresponding item.
+        expect(tree.has(item('b'))).toBe(false);
+
+        // Items and ranges that fall inside an existing range also don't get
+        // picked up.
+        expect(tree.has(item('M'))).toBe(false);
+        expect(tree.has(range('J', 'K'))).toBe(false);
+      });
+    });
+
     describe('isEmpty()', () => {
       it('starts off true', () => {
         expect(tree.isEmpty()).toBe(true);
+      });
+
+      it('returns true when the tree is non-empty', () => {
+        tree.put(item('a'), 10);
+        expect(tree.isEmpty()).toBe(false);
       });
     });
 
@@ -24,207 +257,274 @@ describe('IntervalTree', () => {
       it('starts off null', () => {
         expect(tree.max()).toBe(null);
       });
+
+      it('returns the largest item, ordered by `low`', () => {
+        const j = item('j');
+        tree.put(j, 100);
+        expect(tree.max()).toEqual(j);
+
+        const az = range('a', 'z');
+        tree.put(az, 10);
+        expect(tree.max()).toEqual(j);
+
+        const curly = item('{');
+        tree.put(curly, 200);
+        expect(tree.max()).toEqual(curly);
+      });
     });
 
     describe('min()', () => {
       it('starts off null', () => {
         expect(tree.min()).toBe(null);
       });
+
+      it('returns the smallest item, ordered by `low`', () => {
+        const j = item('j');
+        tree.put(j, 100);
+        expect(tree.min()).toEqual(j);
+
+        const az = range('a', 'z');
+        tree.put(az, 10);
+        expect(tree.min()).toEqual(az);
+
+        const curly = item('{');
+        tree.put(curly, 200);
+        expect(tree.min()).toEqual(az);
+      });
     });
 
     describe('put()', () => {
-      it('can put an atom', () => {
-        const s0 = state(0);
-        tree.put(new IntervalNode(atom('x')), s0);
-        expect(tree.isEmpty()).toBe(false);
-        expect(tree.size).toBe(1);
+      it('overwrites existing keys', () => {
+        const a = item('a');
 
-        const keys = [...tree.keys()];
-        expect(keys.length).toBe(1);
+        tree.put(a, 10);
+        expect(tree.get(a)).toBe(10);
 
-        const key = keys[0];
-        expect(key).toBeInstanceOf(IntervalNode);
-        expect(key.low).toBe(charCode('x'));
-        expect(key.high).toBe(charCode('x'));
-        expect(key.maximum).toBe(charCode('x'));
+        tree.put(a, 20);
+        expect(tree.get(a)).toBe(20);
 
-        const value = tree.get(key);
-        expect(value).toEqual(s0);
+        // Note that a range can overwrite an item.
+        tree.put(range('a', 'z'), 30);
+        expect(tree.get(a)).toBe(30);
       });
 
-      it('can put a range', () => {
-        const s0 = state(0);
-        tree.put(new IntervalNode(range('a', 'z')), s0);
-        expect(tree.isEmpty()).toBe(false);
-        expect(tree.size).toBe(1);
-
-        const keys = [...tree.keys()];
+      it('updates `maximum` value embedded in keys', () => {
+        // For a more visual look at what I'm testing here, see the picture in
+        // the `toString()` test below.
+        tree.put(item('a'), 1);
+        let keys = [...tree.keys()];
         expect(keys.length).toBe(1);
+        expect(keys[0].maximum).toEqual(new ComparableString('a'));
 
-        const key = keys[0];
-        expect(key).toBeInstanceOf(IntervalNode);
-        expect(key.low).toBe(charCode('a'));
-        expect(key.high).toBe(charCode('z'));
-        expect(key.maximum).toBe(charCode('z'));
+        tree.put(item('0'), 2);
+        keys = [...tree.keys()];
+        expect(keys.length).toBe(2);
+        expect(keys[0].maximum).toEqual(new ComparableString('0'));
+        expect(keys[1].maximum).toEqual(new ComparableString('a'));
 
-        const value = tree.get(key);
-        expect(value).toEqual(s0);
-      });
-
-      it('can put an "Anything" range', () => {
-        const s0 = state(0);
-        tree.put(new IntervalNode(anything()), s0);
-        expect(tree.isEmpty()).toBe(false);
-        expect(tree.size).toBe(1);
-
-        const keys = [...tree.keys()];
-        expect(keys.length).toBe(1);
-
-        const key = keys[0];
-        expect(key).toBeInstanceOf(IntervalNode);
-        expect(key.low).toBe(0x0000);
-        expect(key.high).toBe(0xffff);
-        expect(key.maximum).toBe(0xffff);
-
-        const value = tree.get(key);
-        expect(value).toEqual(s0);
-      });
-
-      it('can hold multiple values', () => {
-        const s0 = state(0);
-        const s1 = state(1);
-        const s2 = state(1);
-        tree.put(new IntervalNode(range('a', 'z')), s0);
-        tree.put(new IntervalNode(range('A', 'Z')), s1);
-        tree.put(new IntervalNode(range('0', '9')), s2);
-        expect(tree.size).toBe(3);
-
-        const keys = [...tree.keys()];
+        tree.put(range('A', 'Z'), 3);
+        keys = [...tree.keys()];
         expect(keys.length).toBe(3);
+        expect(keys[0].maximum).toEqual(new ComparableString('0'));
+        expect(keys[1].maximum).toEqual(new ComparableString('a'));
+        expect(keys[2].maximum).toEqual(new ComparableString('a'));
 
-        expect(keys[0]).toBeInstanceOf(IntervalNode);
-        expect(keys[0].low).toBe(charCode('0'));
-        expect(keys[0].high).toBe(charCode('9'));
-        expect(keys[0].maximum).toBe(charCode('9'));
-
-        expect(keys[1]).toBeInstanceOf(IntervalNode);
-        expect(keys[1].low).toBe(charCode('A'));
-        expect(keys[1].high).toBe(charCode('Z'));
-        expect(keys[1].maximum).toBe(charCode('z')); // Child has greater.
-
-        expect(keys[2]).toBeInstanceOf(IntervalNode);
-        expect(keys[2].low).toBe(charCode('a'));
-        expect(keys[2].high).toBe(charCode('z'));
-        expect(keys[2].maximum).toBe(charCode('z'));
-
-        expect(tree.get(keys[0])).toEqual(s2);
-        expect(tree.get(keys[1])).toEqual(s1);
-        expect(tree.get(keys[2])).toEqual(s0);
+        tree.put(range('x', 'z'), 4);
+        keys = [...tree.keys()];
+        expect(keys.length).toBe(4);
+        expect(keys[0].maximum).toEqual(new ComparableString('0'));
+        expect(keys[1].maximum).toEqual(new ComparableString('z'));
+        expect(keys[2].maximum).toEqual(new ComparableString('a'));
+        expect(keys[3].maximum).toEqual(new ComparableString('z'));
       });
-
-      it('overwrites values for an existing key', () => {
-        const s0 = state(0);
-        const s1 = state(1);
-        tree.put(new IntervalNode(atom('x')), s0);
-        tree.put(new IntervalNode(atom('x')), s1);
-        expect(tree.size).toBe(1);
-
-        const keys = [...tree.keys()];
-        expect(keys.length).toBe(1);
-
-        const key = keys[0];
-        expect(key).toBeInstanceOf(IntervalNode);
-        expect(key.low).toBe(charCode('x'));
-        expect(key.high).toBe(charCode('x'));
-        expect(key.maximum).toBe(charCode('x'));
-
-        const value = tree.get(key);
-        expect(value).toEqual(s1);
-      });
-
-      // TODO decide whether we want a higher-level insert() method that does
-      // things like auto-extend existing ranges (i think we do...)
     });
-  });
 
-  it('can store overlapping items', () => {
-    const tree = new IntervalTree();
-    tree.put(new IntervalNode(atom('j')), state(1));
-    tree.put(new IntervalNode(range('a', 'z')), state(2));
+    describe('search()', () => {
+      it('returns nothing when the tree is empty', () => {
+        expect(tree.search(item('a'))).toEqual([]);
+      });
 
-    // TODO: plan here is to create an insert() method for this that will:
-    //
-    // 1.  If given an atom or range, search for any intervals that match (exactly) or
-    //     overlap with the value. If found, merge or split (by adjusting payload).
-    // 2.  If no match/overlap, insert new value.
-    // 3.  At end, should be able to traverse tree to extract all intervals.
-    // 4.  Bonus points, may want to look for adjacent values and create
-    //     extensions (eg. if we already store "a-d", and somebody wants to add
-    //     "e", we should be able to change "a-d" to "a-e" instead of inserting
-    //     a separate item; may have to remove then re-insert new to do this).
-    //
-    // To give concrete example from our `NFAToDFA()`:
-    //
-    // -  When procesing STRING_VALUE, we have:
-    //    -   Range:#-[ going to state 1.
-    //    -   Atom:n going to state 3.
-    // -  Current code treats those as distinct, but there are actually
-    //    overlapping and therefore non-deterministic, but we don't notice and
-    //    therefore don't remove the non-determinism.
-    // -  So, we have to convert those to:
-    //    -   Range:#-m going to state 1.
-    //    -   Atom:n going to states 1 and 3 (will remove determinism later).
-    //    -   Range:o-[ going to state 1.
-    // -  So, we store Range:#-[ in interval tree with value being set of target
-    //    states (just 1).
-    // -  Then we check Atom:n for overlap and find it. Given that target state 3
-    //    is not in the set, we must split the range and reinsert it:
-    //    -   If the target state was the same, because Atom:n is entirely inside
-    //        the range, we coud just drop it because it is already covered.
-    //    -   If the target state was she same but the overlap was partial (eg.
-    //        because it was a Range that started inside the other instead of an
-    //        Atom), we would remove the Range, extend it, and reinsert it.
-    //    -   It the target state was the same and the new interval subsumed the
-    //        other, we would just remove and replace it with the bigger
-    //        interval.
-    //    -   If the target state was different and the overlap was partial,
-    //        we'd have to do a more complicated split; left hunk would go to
-    //        original state, middle (intersecting) hunk would go to both
-    //        states, and right hunk would go to new state.
-    //    -   etc... possibly more combos here
-    // -  Anyway, for the cited example, the split works like this:
-    //    -   Remove interval from tree.
-    //    -   Split into left (original target), middle (union targets), and
-    //        right (new target); reinsert. By definition, none of those should
-    //        overlap with existing items, because we're taking care to
-    //        collapse/merge etc on ever instance of overlap/matching.
-    // -  The more complicated cases are probably going to be things like ranges
-    //    that overlap with multiple intervals; eg. maybe we're storing "a-z",
-    //    "A-Z", "0-9" already, each targeting different sets of states, and
-    //    along comes a new value like "." (`ANYTHING`) or something with full
-    //    overlap of some of the intervals and partial or no overlap with others.
-    //    -   In this case I think we just need to process them in order, one at
-    //        a time.
+      it('returns nothing when there is no overlap', () => {
+        tree.put(range('l', 'p'), 10);
+
+        // Too far to the left.
+        expect(tree.search(range('a', 'c'))).toEqual([]);
+        expect(tree.search(item('a'))).toEqual([]);
+
+        // Too far to the right.
+        expect(tree.search(range('x', 'z'))).toEqual([]);
+        expect(tree.search(item('z'))).toEqual([]);
+      });
+
+      it('returns an exactly matching item', () => {
+        const g = item('g');
+        tree.put(g, 10);
+        expect(tree.search(g)).toEqual([[g, 10]]);
+      });
+
+      it('returns an exactly matching range', () => {
+        const xz = range('x', 'z');
+        tree.put(xz, 5);
+        expect(tree.search(xz)).toEqual([[xz, 5]]);
+      });
+
+      it('returns a range when an item falls on its left edge', () => {
+        const hl = range('h', 'l');
+        tree.put(hl, 1);
+        expect(tree.search(item('h'))).toEqual([[hl, 1]]);
+      });
+
+      it('returns a range when an item falls on its right edge', () => {
+        const hl = range('h', 'l');
+        tree.put(hl, 2);
+        expect(tree.search(item('l'))).toEqual([[hl, 2]]);
+      });
+
+      it('returns a range when an item falls inside it', () => {
+        const hl = range('h', 'l');
+        tree.put(hl, 3);
+        expect(tree.search(item('j'))).toEqual([[hl, 3]]);
+      });
+
+      it('returns multiple ranges coinciding with an item', () => {
+        const az = range('a', 'z');
+        const by = range('b', 'y');
+        const cp = range('c', 'p');
+        const lx = range('l', 'x');
+
+        tree.put(az, 10);
+        tree.put(by, 20);
+        tree.put(cp, 30);
+        tree.put(lx, 40);
+
+        expect(tree.search(item('m'))).toEqual([
+          [az, 10],
+          [by, 20],
+          [cp, 30],
+          [lx, 40],
+        ]);
+      });
+
+      it('returns a range overlapping with an interval to its left', () => {
+        const ht = range('h', 't');
+        tree.put(ht, 100);
+
+        expect(tree.search(range('d', 'i'))).toEqual([[ht, 100]]);
+        expect(tree.search(range('d', 'h'))).toEqual([[ht, 100]]);
+
+        // Note the interval has to coincide, not merely "touch".
+        expect(tree.search(range('d', 'g'))).toEqual([]);
+      });
+
+      it('returns a range overlapping with an interval to its right', () => {
+        const ht = range('h', 't');
+        tree.put(ht, 200);
+
+        expect(tree.search(range('s', 'w'))).toEqual([[ht, 200]]);
+        expect(tree.search(range('t', 'w'))).toEqual([[ht, 200]]);
+
+        // Note the interval has to coincide, not merely "touch".
+        expect(tree.search(range('u', 'w'))).toEqual([]);
+      });
+
+      it('returns a range overlapping with a smaller range inside it', () => {
+        const sw = range('s', 'w');
+        tree.put(sw, 0);
+
+        expect(tree.search(range('u', 'v'))).toEqual([[sw, 0]]);
+      });
+
+      it('returns a range overlapping with a larger range around it', () => {
+        const sw = range('s', 'w');
+        tree.put(sw, 1);
+
+        expect(tree.search(range('a', 'z'))).toEqual([[sw, 1]]);
+      });
+
+      it('returns multiple ranges coinciding with a range', () => {
+        const AC = range('A', 'C');
+        const az = range('a', 'z');
+        const by = range('b', 'y');
+        const cp = range('c', 'p');
+        const lx = range('l', 'x');
+        const wz = range('w', 'z');
+
+        tree.put(AC, 0);
+        tree.put(az, 10);
+        tree.put(by, 20);
+        tree.put(cp, 30);
+        tree.put(lx, 40);
+        tree.put(wz, 50);
+
+        expect(tree.search(range('m', 'v'))).toEqual([
+          [az, 10],
+          [by, 20],
+          [cp, 30],
+          [lx, 40],
+        ]);
+      });
+    });
+
+    describe('toString()', () => {
+      it('includes low/high/maximum in representation of keys', () => {
+        tree.put(item('a'), 1);
+        tree.put(item('0'), 2);
+        tree.put(range('A', 'Z'), 3);
+        tree.put(range('x', 'z'), 4);
+        expect(tree.toString()).toBe(
+          dedent`
+             [A,Z]:z
+            ┌───┴──┐
+          [0]:0 [x,z]:z
+           ┌┴┐    ┏┹──┐
+           · ·  [a]:a ·
+                 ┌┴┐
+                 · ·
+        ` + '\n',
+        );
+      });
+    });
+
+    describe('root', () => {
+      it('returns the tree root', () => {
+        tree.put(item('a'), 1);
+        tree.put(item('z'), 2);
+        expect(tree.root?.key).toEqual(item('z'));
+      });
+
+      it('returns null when the tree is empty', () => {
+        expect(tree.root).toBe(null);
+      });
+    });
+
+    describe('size', () => {
+      it('returns the number of nodes in the tree', () => {
+        expect(tree.size).toBe(0);
+        tree.put(item('hello'), 10);
+        expect(tree.size).toBe(1);
+      });
+    });
   });
 });
 
-function anything(): Anything {
-  return {kind: 'Anything'};
+// Convenience function that returns an interval containing a single item.
+function item(value: string, maximum?: string): Interval<ComparableString> {
+  return new Interval(
+    new ComparableString(value),
+    new ComparableString(value),
+    new ComparableString(maximum ?? value),
+  );
 }
 
-function atom(value: string): Atom {
-  return {kind: 'Atom', value};
-}
-
-function charCode(string: string): number {
-  invariant(string.length === 1);
-  return string.charCodeAt(0);
-}
-
-function range(from: string, to: string): Range {
-  return {kind: 'Range', from, to};
-}
-
-function state(...ids: Array<number>): Set<NFA> {
-  return new Set(ids.map((id) => ({id, edges: [], flags: NONE})));
+// Convenience function that returns an interval representing a range.
+function range(
+  low: string,
+  high: string,
+  maximum?: string,
+): Interval<ComparableString> {
+  return new Interval(
+    new ComparableString(low),
+    new ComparableString(high),
+    new ComparableString(maximum ?? high),
+  );
 }
