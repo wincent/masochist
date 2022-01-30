@@ -1,12 +1,14 @@
 import {Queue} from '@masochist/common';
+import ConditionTree from '../ConditionTree';
 import {ACCEPT, NONE, START} from './NFA';
 import getAcceptStates from './getAcceptStates';
 import getStartStates from './getStartStates';
 import setFlag from './setFlag';
-import transitionToKey from './transitionToKey';
 import visitNFA from './visitNFA';
 
-import type {Edge, NFA} from './NFA';
+import type {CharCode} from '../ConditionTree';
+import type {Interval} from '../IntervalTree';
+import type {NFA, Transition} from './NFA';
 
 /**
  * Turns an NFA into a DFA by removing all non-determinism.
@@ -51,23 +53,23 @@ export default function NFAToDFA(nfa: NFA): NFA {
     // Group edges by condition; using a string representation of each condition
     // seeing as JS doesn't have proper record types with referential
     // transparency.
-    const conditions: {[key: string]: Array<Edge>} = {};
+    const conditions = new ConditionTree();
 
     ids[next.id].forEach((nfa) => {
       nfa.edges.forEach((edge) => {
         if (edge.on === null) {
           throw new Error('NFAToDFA(): Unexpected epsilon transition');
         }
-        const key = transitionToKey(edge.on);
-        if (!conditions[key]) {
-          conditions[key] = [];
-        }
-        conditions[key].push(edge);
+        conditions.add(edge);
       });
     });
 
-    for (const edges of Object.values(conditions)) {
-      const targets = Array.from(new Set(edges.map(({to}) => to))).sort(
+    // The current DFA state is an aggregate of one or more NFA states. For that
+    // aggregate, look at each batch of outgoing edges (grouped by equivalent
+    // conditions), and create a new DFA state representing the aggregate of all
+    // the target states.
+    for (const [on, to] of conditions.entries()) {
+      const targets = Array.from(to).sort(
         ({id: a}, {id: b}) => a - b,
       );
       const key = targets.map(({id}) => id).join('.');
@@ -93,12 +95,11 @@ export default function NFAToDFA(nfa: NFA): NFA {
       }
       const node = reverseIds[key];
 
-      // Because we've grouped edges by condition, they all have the same `on`,
-      // and we can just grab the first.
-      const {on} = edges[0];
-
+      // Because we've grouped edges by condition, they all have the same `on`;
+      // we just have to transform it from an `Interval` back into a `Condition`
+      // object.
       next.edges.push({
-        on,
+        on: intervalToTransition(on),
         to: node,
       });
     }
@@ -114,4 +115,25 @@ export default function NFAToDFA(nfa: NFA): NFA {
   });
 
   return dfa;
+}
+
+function intervalToTransition(interval: Interval<CharCode>): Transition {
+  const low = interval.low.value;
+  const high = interval.high.value;
+  if (low === high) {
+    return {
+      kind: 'Atom',
+      value: String.fromCharCode(low),
+    };
+  } else if (low === 0x0000 && high === 0xffff) {
+    return {
+      kind: 'Anything',
+    };
+  } else {
+    return {
+      kind: 'Range',
+      from: String.fromCharCode(low),
+      to: String.fromCharCode(high),
+    };
+  }
 }
