@@ -341,23 +341,6 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
     }
   }
 
-  _keys(x: Node<Tk, Tv> | null, queue: Queue<Tk>, lo: Tk, hi: Tk) {
-    if (x === null) {
-      return;
-    }
-    const lowComparison = lo.compareTo(x.key);
-    const highComparison = hi.compareTo(x.key);
-    if (lowComparison < 0) {
-      this._keys(x.left, queue, lo, hi);
-    }
-    if (lowComparison <= 0 && highComparison >= 0) {
-      queue.enqueue(x.key);
-    }
-    if (highComparison > 0) {
-      this._keys(x.right, queue, lo, hi);
-    }
-  }
-
   _max(x: Node<Tk, Tv>): Node<Tk, Tv> {
     return x.right === null ? x : this._max(x.right);
   }
