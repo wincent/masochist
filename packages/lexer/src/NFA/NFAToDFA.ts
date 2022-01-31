@@ -50,9 +50,7 @@ export default function NFAToDFA(nfa: NFA): NFA {
     // Grab next DFA state to process.
     const next = queue.dequeue()!;
 
-    // Group edges by condition; using a string representation of each condition
-    // seeing as JS doesn't have proper record types with referential
-    // transparency.
+    // Group edges by condition.
     const conditions = new ConditionTree();
 
     ids[next.id].forEach((nfa) => {
