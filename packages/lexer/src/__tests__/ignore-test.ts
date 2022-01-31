@@ -22,24 +22,24 @@ describe('ignore()', () => {
       startStates: new Set([0]),
       transitions: [
         /* 0 */ new Map([
-          ['Atom: ', new Set([1])],
           ['Atom:\t', new Set([1])],
           ['Atom:\n', new Set([2])],
-          ['Atom:\ufeff', new Set([2])],
+          ['Atom:\r', new Set([3])],
+          ['Atom: ', new Set([1])],
+          ['Atom:#', new Set([4])],
           ['Atom:,', new Set([2])],
-          ['Atom:#', new Set([3])],
-          ['Atom:\r', new Set([4])],
+          ['Atom:\ufeff', new Set([2])],
         ]),
         /* 1 */ new Map([
           ['Atom:\t', new Set([1])],
           ['Atom: ', new Set([1])],
         ]),
         /* 2 */ new Map(),
-        /* 3 */ new Map([
-          ['Range: -\uffff', new Set([3])],
-          ['Atom:\t', new Set([3])],
+        /* 3 */ new Map([['Atom:\n', new Set([2])]]),
+        /* 4 */ new Map([
+          ['Atom:\t', new Set([4])],
+          ['Range: -\uffff', new Set([4])],
         ]),
-        /* 4 */ new Map([['Atom:\n', new Set([2])]]),
       ],
     });
   });

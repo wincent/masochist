@@ -78,20 +78,20 @@ describe('minimizeDFA()', () => {
 
     it('minimizes a DFA for EXPONENT_PART', () => {
       expect(minimize(EXPONENT_PART)).toEqual({
-        acceptStates: new Set([2]),
+        acceptStates: new Set([3]),
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
-            ['Atom:e', new Set([1])],
             ['Atom:E', new Set([1])],
+            ['Atom:e', new Set([1])],
           ]),
           /* 1 */ new Map([
-            ['Range:0-9', new Set([2])],
-            ['Atom:+', new Set([3])],
-            ['Atom:-', new Set([3])],
+            ['Atom:+', new Set([2])],
+            ['Atom:-', new Set([2])],
+            ['Range:0-9', new Set([3])],
           ]),
-          /* 2 */ new Map([['Range:0-9', new Set([2])]]),
-          /* 3 */ new Map([['Range:0-9', new Set([2])]]),
+          /* 2 */ new Map([['Range:0-9', new Set([3])]]),
+          /* 3 */ new Map([['Range:0-9', new Set([3])]]),
         ],
       });
     });
@@ -115,15 +115,15 @@ describe('minimizeDFA()', () => {
         transitions: [
           /* 0 */ new Map([
             ['Atom:-', new Set([1])],
-            ['Range:1-9', new Set([2])],
-            ['Atom:0', new Set([3])],
+            ['Atom:0', new Set([2])],
+            ['Range:1-9', new Set([3])],
           ]),
           /* 1 */ new Map([
-            ['Range:1-9', new Set([2])],
-            ['Atom:0', new Set([3])],
+            ['Atom:0', new Set([2])],
+            ['Range:1-9', new Set([3])],
           ]),
-          /* 2 */ new Map([['Range:0-9', new Set([2])]]),
-          /* 3 */ new Map(),
+          /* 2 */ new Map(),
+          /* 3 */ new Map([['Range:0-9', new Set([3])]]),
         ],
       });
     });
@@ -134,11 +134,11 @@ describe('minimizeDFA()', () => {
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
-            ['Atom:\r', new Set([1])],
-            ['Atom:\n', new Set([2])],
+            ['Atom:\n', new Set([1])],
+            ['Atom:\r', new Set([2])],
           ]),
-          /* 1 */ new Map([['Atom:\n', new Set([2])]]),
-          /* 2 */ new Map(),
+          /* 1 */ new Map(),
+          /* 2 */ new Map([['Atom:\n', new Set([1])]]),
         ],
       });
     });

@@ -69,8 +69,8 @@ describe('transposeTable()', () => {
       startStates: new Set([5]),
       transitions: [
         /* 0 */ new Map(),
-        /* 1 */ new Map([['Atom:e', new Set([0])]]),
-        /* 2 */ new Map([['Atom:E', new Set([0])]]),
+        /* 1 */ new Map([['Atom:E', new Set([0])]]),
+        /* 2 */ new Map([['Atom:e', new Set([0])]]),
         /* 3 */ new Map([['Atom:+', new Set([1, 2])]]),
         /* 4 */ new Map([['Atom:-', new Set([1, 2])]]),
         /* 5 */ new Map([['Range:0-9', new Set([1, 2, 3, 4, 5])]]),
@@ -107,12 +107,12 @@ describe('transposeTable()', () => {
   it('transposes a DFA for LINE_TERMINATOR', () => {
     expect(transpose(LINE_TERMINATOR)).toEqual({
       acceptStates: new Set([0]),
-      startStates: new Set([1, 3, 2]),
+      startStates: new Set([1, 2, 3]),
       transitions: [
         /* 0 */ new Map(),
-        /* 1 */ new Map([['Atom:\r', new Set([0])]]),
-        /* 2 */ new Map([['Atom:\n', new Set([0])]]),
-        /* 3 */ new Map([['Atom:\n', new Set([1])]]),
+        /* 1 */ new Map([['Atom:\n', new Set([0])]]),
+        /* 2 */ new Map([['Atom:\r', new Set([0])]]),
+        /* 3 */ new Map([['Atom:\n', new Set([2])]]),
       ],
     });
   });
@@ -120,12 +120,12 @@ describe('transposeTable()', () => {
   it('transposes a DFA for NAME', () => {
     expect(transpose(NAME)).toEqual({
       acceptStates: new Set([0]),
-      startStates: new Set([1, 2, 3, 4, 5, 6, 7]),
+      startStates: new Set([1, 4, 5, 6, 7, 2, 3]),
       transitions: [
         /* 0 */ new Map(),
-        /* 1 */ new Map([['Range:a-z', new Set([0])]]),
+        /* 1 */ new Map([['Range:A-Z', new Set([0])]]),
         /* 2 */ new Map([['Atom:_', new Set([0])]]),
-        /* 3 */ new Map([['Range:A-Z', new Set([0])]]),
+        /* 3 */ new Map([['Range:a-z', new Set([0])]]),
         /* 4 */ new Map([['Range:0-9', new Set([1, 2, 3, 4, 5, 6, 7])]]),
         /* 5 */ new Map([['Range:A-Z', new Set([1, 2, 3, 4, 5, 6, 7])]]),
         /* 6 */ new Map([['Atom:_', new Set([1, 2, 3, 4, 5, 6, 7])]]),
@@ -140,9 +140,9 @@ describe('transposeTable()', () => {
       startStates: new Set([1, 2, 3]),
       transitions: [
         /* 0 */ new Map(),
-        /* 1 */ new Map([['Range: -\uffff', new Set([0])]]),
+        /* 1 */ new Map([['Range:\t-\n', new Set([0])]]),
         /* 2 */ new Map([['Atom:\r', new Set([0])]]),
-        /* 3 */ new Map([['Range:\t-\n', new Set([0])]]),
+        /* 3 */ new Map([['Range: -\uffff', new Set([0])]]),
       ],
     });
   });
@@ -152,9 +152,9 @@ describe('transposeTable()', () => {
       acceptStates: new Set([0]),
       startStates: new Set([1, 2]),
       transitions: [
-        /* 0 */ new Map([]),
-        /* 1 */ new Map([['Atom: ', new Set([0, 1, 2])]]),
-        /* 2 */ new Map([['Atom:\t', new Set([0, 1, 2])]]),
+        /* 0 */ new Map(),
+        /* 1 */ new Map([['Atom:\t', new Set([0, 1, 2])]]),
+        /* 2 */ new Map([['Atom: ', new Set([0, 1, 2])]]),
       ],
     });
   });

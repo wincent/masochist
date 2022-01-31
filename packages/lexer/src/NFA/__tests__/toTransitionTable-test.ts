@@ -118,8 +118,8 @@ describe('toTransitionTable()', () => {
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
-            ['Atom:E', new Set([2])],
-            ['Atom:e', new Set([1])],
+            ['Atom:E', new Set([1])],
+            ['Atom:e', new Set([2])],
           ]),
           /* 1 */ new Map([
             ['Atom:+', new Set([3])],
@@ -173,15 +173,15 @@ describe('toTransitionTable()', () => {
 
     it('builds a transition table for LINE_TERMINATOR', () => {
       expect(getTable(LINE_TERMINATOR)).toEqual({
-        acceptStates: new Set([1, 3, 2]),
+        acceptStates: new Set([1, 2, 3]),
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
-            ['Atom:\n', new Set([2])],
-            ['Atom:\r', new Set([1])],
+            ['Atom:\n', new Set([1])],
+            ['Atom:\r', new Set([2])],
           ]),
-          /* 1 */ new Map([['Atom:\n', new Set([3])]]),
-          /* 2 */ new Map(),
+          /* 1 */ new Map(),
+          /* 2 */ new Map([['Atom:\n', new Set([3])]]),
           /* 3 */ new Map(),
         ],
       });
@@ -189,54 +189,54 @@ describe('toTransitionTable()', () => {
 
     it('builds a transition table for NAME', () => {
       expect(getTable(NAME)).toEqual({
-        acceptStates: new Set([1, 2, 3, 4, 5, 6, 7]),
+        acceptStates: new Set([1, 4, 5, 6, 7, 2, 3]),
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
+            ['Range:A-Z', new Set([1])],
             ['Atom:_', new Set([2])],
-            ['Range:A-Z', new Set([3])],
-            ['Range:a-z', new Set([1])],
+            ['Range:a-z', new Set([3])],
           ]),
           /* 1 */ new Map([
-            ['Atom:_', new Set([6])],
             ['Range:0-9', new Set([4])],
             ['Range:A-Z', new Set([5])],
+            ['Atom:_', new Set([6])],
             ['Range:a-z', new Set([7])],
           ]),
           /* 2 */ new Map([
-            ['Atom:_', new Set([6])],
             ['Range:0-9', new Set([4])],
             ['Range:A-Z', new Set([5])],
+            ['Atom:_', new Set([6])],
             ['Range:a-z', new Set([7])],
           ]),
           /* 3 */ new Map([
-            ['Atom:_', new Set([6])],
             ['Range:0-9', new Set([4])],
             ['Range:A-Z', new Set([5])],
+            ['Atom:_', new Set([6])],
             ['Range:a-z', new Set([7])],
           ]),
           /* 4 */ new Map([
-            ['Atom:_', new Set([6])],
             ['Range:0-9', new Set([4])],
             ['Range:A-Z', new Set([5])],
+            ['Atom:_', new Set([6])],
             ['Range:a-z', new Set([7])],
           ]),
           /* 5 */ new Map([
-            ['Atom:_', new Set([6])],
             ['Range:0-9', new Set([4])],
             ['Range:A-Z', new Set([5])],
+            ['Atom:_', new Set([6])],
             ['Range:a-z', new Set([7])],
           ]),
           /* 6 */ new Map([
-            ['Atom:_', new Set([6])],
             ['Range:0-9', new Set([4])],
             ['Range:A-Z', new Set([5])],
+            ['Atom:_', new Set([6])],
             ['Range:a-z', new Set([7])],
           ]),
           /* 7 */ new Map([
-            ['Atom:_', new Set([6])],
             ['Range:0-9', new Set([4])],
             ['Range:A-Z', new Set([5])],
+            ['Atom:_', new Set([6])],
             ['Range:a-z', new Set([7])],
           ]),
         ],
@@ -249,9 +249,9 @@ describe('toTransitionTable()', () => {
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
+            ['Range:\t-\n', new Set([1])],
             ['Atom:\r', new Set([2])],
-            ['Range: -\uffff', new Set([1])],
-            ['Range:\t-\n', new Set([3])],
+            ['Range: -\uffff', new Set([3])],
           ]),
           /* 1 */ new Map(),
           /* 2 */ new Map(),
@@ -266,16 +266,16 @@ describe('toTransitionTable()', () => {
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
-            ['Atom: ', new Set([1])],
-            ['Atom:\t', new Set([2])],
+            ['Atom:\t', new Set([1])],
+            ['Atom: ', new Set([2])],
           ]),
           /* 1 */ new Map([
-            ['Atom: ', new Set([1])],
-            ['Atom:\t', new Set([2])],
+            ['Atom:\t', new Set([1])],
+            ['Atom: ', new Set([2])],
           ]),
           /* 2 */ new Map([
-            ['Atom: ', new Set([1])],
-            ['Atom:\t', new Set([2])],
+            ['Atom:\t', new Set([1])],
+            ['Atom: ', new Set([2])],
           ]),
         ],
       });

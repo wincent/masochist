@@ -5,6 +5,7 @@ import {ACCEPT, NONE, START} from './NFA';
 import getAcceptStates from './getAcceptStates';
 import getStartStates from './getStartStates';
 import setFlag from './setFlag';
+import sortEdges from './sortEdges';
 import visitNFA from './visitNFA';
 
 import type {CharCode} from '../ConditionTree';
@@ -150,7 +151,7 @@ export default function NFAToDFA(nfa: NFA): NFA {
     }
   });
 
-  return dfa;
+  return sortEdges(dfa);
 }
 
 function intervalToTransition(interval: Interval<CharCode>): Transition {

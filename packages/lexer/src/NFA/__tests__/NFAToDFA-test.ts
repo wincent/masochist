@@ -59,9 +59,9 @@ describe('NFAToDFA()', () => {
       startStates: new Set([0]),
       transitions: [
         /* 0 */ new Map([
-          ['Atom:c', new Set([1])],
+          ['Atom:a', new Set([1])],
           ['Atom:b', new Set([2])],
-          ['Atom:a', new Set([3])],
+          ['Atom:c', new Set([3])],
         ]),
         /* 1 */ new Map(),
         /* 2 */ new Map(),
@@ -76,8 +76,8 @@ describe('NFAToDFA()', () => {
       startStates: new Set([0]),
       transitions: [
         /* 0 */ new Map([
-          ['Range:a-z', new Set([1])],
-          ['Atom:0', new Set([2])],
+          ['Atom:0', new Set([1])],
+          ['Range:a-z', new Set([2])],
         ]),
         /* 1 */ new Map(),
         /* 2 */ new Map(),
@@ -244,8 +244,8 @@ describe('NFAToDFA()', () => {
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
-            ['Atom:e', new Set([1])],
-            ['Atom:E', new Set([2])],
+            ['Atom:E', new Set([1])],
+            ['Atom:e', new Set([2])],
           ]),
           /* 1 */ new Map([
             ['Atom:+', new Set([3])],
@@ -299,15 +299,15 @@ describe('NFAToDFA()', () => {
 
     it('builds a DFA for LINE_TERMINATOR', () => {
       expect(makeDFA(LINE_TERMINATOR)).toEqual({
-        acceptStates: new Set([1, 3, 2]),
+        acceptStates: new Set([1, 2, 3]),
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
-            ['Atom:\r', new Set([1])],
-            ['Atom:\n', new Set([2])],
+            ['Atom:\n', new Set([1])],
+            ['Atom:\r', new Set([2])],
           ]),
-          /* 1 */ new Map([['Atom:\n', new Set([3])]]),
-          /* 2 */ new Map(),
+          /* 1 */ new Map(),
+          /* 2 */ new Map([['Atom:\n', new Set([3])]]),
           /* 3 */ new Map(),
         ],
       });
@@ -319,9 +319,9 @@ describe('NFAToDFA()', () => {
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
-            ['Range:a-z', new Set([1])],
+            ['Range:A-Z', new Set([1])],
             ['Atom:_', new Set([2])],
-            ['Range:A-Z', new Set([3])],
+            ['Range:a-z', new Set([3])],
           ]),
           /* 1 */ new Map([
             ['Range:0-9', new Set([4])],
@@ -375,9 +375,9 @@ describe('NFAToDFA()', () => {
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
-            ['Range: -\uffff', new Set([1])],
+            ['Range:\t-\n', new Set([1])],
             ['Atom:\r', new Set([2])],
-            ['Range:\t-\n', new Set([3])],
+            ['Range: -\uffff', new Set([3])],
           ]),
           /* 1 */ new Map(),
           /* 2 */ new Map(),
@@ -392,16 +392,16 @@ describe('NFAToDFA()', () => {
         startStates: new Set([0]),
         transitions: [
           /* 0 */ new Map([
-            ['Atom: ', new Set([1])],
-            ['Atom:\t', new Set([2])],
+            ['Atom:\t', new Set([1])],
+            ['Atom: ', new Set([2])],
           ]),
           /* 1 */ new Map([
-            ['Atom: ', new Set([1])],
-            ['Atom:\t', new Set([2])],
+            ['Atom:\t', new Set([1])],
+            ['Atom: ', new Set([2])],
           ]),
           /* 2 */ new Map([
-            ['Atom: ', new Set([1])],
-            ['Atom:\t', new Set([2])],
+            ['Atom:\t', new Set([1])],
+            ['Atom: ', new Set([2])],
           ]),
         ],
       });
