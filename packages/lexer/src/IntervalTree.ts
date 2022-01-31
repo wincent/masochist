@@ -150,7 +150,7 @@ export default class IntervalTree<
         results.push([h.key, h.value]);
       }
 
-      if (interval.low.compareTo(h.key.low) < 0) {
+      if (interval.high.compareTo(h.key.low) < 0) {
         // Interval is too small to overlap with children on right.
         return results;
       }
