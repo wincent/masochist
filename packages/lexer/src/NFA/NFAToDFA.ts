@@ -93,9 +93,9 @@ export default function NFAToDFA(nfa: NFA): NFA {
       }
       const node = reverseIds[key];
 
-      // Because we've grouped edges by condition, they all have the same `on`;
-      // we just have to transform it from an `Interval` back into a `Condition`
-      // object.
+      // Because we've grouped edges by condition, they all have the same
+      // `on`; we just have to transform it from an `Interval` back into a
+      // `Transition` object.
       next.edges.push({
         on: intervalToTransition(on),
         to: node,
