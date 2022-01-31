@@ -35,50 +35,16 @@ export default function minimizeDFA(dfa: NFA): NFA {
   dfa = removeUnreachableStates(dfa);
   dfa = removeDeadStates(dfa);
   table = toTransitionTable(dfa);
-  // console.log(require('./stringifyTransitionTable').default(table));
   table = transposeTable(table);
-  // console.log(require('./stringifyTransitionTable').default(table));
   nfa = fromTransitionTable(table);
   nfa = removeEpsilons(nfa);
-  // console.log(
-  // require('./stringifyTransitionTable').default(toTransitionTable(nfa)),
-  // ); // there were no epsilons, so it is the same
   dfa = NFAToDFA(nfa);
-  // console.log(
-  //   require('./stringifyTransitionTable').default(toTransitionTable(dfa)),
-  // ); // we now have a subtle problem
-
-  // one of the states looks like this:
-  //    /* 1 */ new Map([
-  //      ['Atom:"', new Set([2])],
-  //      ['Atom:\t', new Set([1])],
-  //      ['Range: -!', new Set([1])],
-  //      ['Range:#-[', new Set([1])],       // this overlaps with eg. Atom:b and others, so this is NOT a DFA
-  //      ['Range:]-\uffff', new Set([1])],
-  //      ['Atom:/', new Set([3])],
-  //      ['Atom:\\', new Set([3])],
-  //      ['Atom:b', new Set([3])],
-  //      ['Atom:f', new Set([3])],
-  //      ['Atom:n', new Set([3])],
-  //      ['Atom:r', new Set([3])],
-  //      ['Atom:t', new Set([3])],
-  //      ['Range:0-9', new Set([4])],
-  //      ['Range:A-F', new Set([4])],
-  //      ['Range:a-f', new Set([4])],
-  //    ]),
-  //
-  // therefore, in NFA to DFA, i need to tease apart these conditions
 
   // Un-reverse the reversed DFA.
   dfa = removeUnreachableStates(dfa);
   dfa = removeDeadStates(dfa);
-  // console.log(
-  //   require('./stringifyTransitionTable').default(toTransitionTable(dfa)),
-  // ); // destroyed by here
   table = toTransitionTable(dfa);
-  // console.log(require('./stringifyTransitionTable').default(table)); // destroyed by here
   table = transposeTable(table);
-  // console.log(require('./stringifyTransitionTable').default(table)); // destroyed by here
   nfa = fromTransitionTable(table);
   nfa = removeEpsilons(nfa);
   dfa = NFAToDFA(nfa);

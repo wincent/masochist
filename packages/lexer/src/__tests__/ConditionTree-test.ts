@@ -230,13 +230,6 @@ describe('ConditionTree', () => {
   });
 });
 
-// TODO Bonus points, may want to look for adjacent values and create
-//      extensions (eg. if we already store "a-d", and somebody wants to add
-//      "e", we should be able to change "a-d" to "a-e" instead of inserting
-//      a separate item; may have to remove then re-insert new to do this).
-//
-// to that 👆 as a post-processing pass
-
 // Convenience functions.
 
 function anything(): Anything {

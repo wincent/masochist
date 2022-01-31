@@ -1,5 +1,6 @@
 import {Queue} from '@masochist/common';
 import ConditionTree from '../ConditionTree';
+import {Interval} from '../IntervalTree';
 import {ACCEPT, NONE, START} from './NFA';
 import getAcceptStates from './getAcceptStates';
 import getStartStates from './getStartStates';
@@ -7,7 +8,6 @@ import setFlag from './setFlag';
 import visitNFA from './visitNFA';
 
 import type {CharCode} from '../ConditionTree';
-import type {Interval} from '../IntervalTree';
 import type {NFA, Transition} from './NFA';
 
 /**
@@ -67,9 +67,7 @@ export default function NFAToDFA(nfa: NFA): NFA {
     // conditions), and create a new DFA state representing the aggregate of all
     // the target states.
     for (const [on, to] of conditions.entries()) {
-      const targets = Array.from(to).sort(
-        ({id: a}, {id: b}) => a - b,
-      );
+      const targets = Array.from(to).sort(({id: a}, {id: b}) => a - b);
       const key = targets.map(({id}) => id).join('.');
       if (!reverseIds[key]) {
         const labels = new Set(
@@ -109,6 +107,46 @@ export default function NFAToDFA(nfa: NFA): NFA {
   visitNFA(dfa, (node) => {
     if (ids[node.id].some((nfa) => accepted.has(nfa))) {
       node.flags = setFlag(node.flags, ACCEPT);
+    }
+  });
+
+  // Merge adjacent conditions that lead to the same state; eg. if "Atom:a",
+  // "Range:c-e", and "Atom:f" all lead to the same state, we consolidate those
+  // edges into a single edge on "Range:a-f".
+  visitNFA(dfa, null, (node) => {
+    const edgesByTarget = new Map<NFA, ConditionTree>();
+    for (const edge of node.edges) {
+      if (!edgesByTarget.has(edge.to)) {
+        edgesByTarget.set(edge.to, new ConditionTree());
+      }
+      const conditions = edgesByTarget.get(edge.to)!;
+      conditions.add(edge);
+    }
+
+    node.edges = [];
+
+    // Because of the way we constructed the DFA, we know that there will never
+    // be any overlap. So, with a simple iteration we can scan through merging
+    // adjacent conditions.
+    for (const [to, conditions] of edgesByTarget.entries()) {
+      const merged: Array<Interval<CharCode>> = [];
+      for (const interval of conditions.keys()) {
+        if (
+          merged.length &&
+          merged[merged.length - 1].high.value + 1 === interval.low.value
+        ) {
+          const previous = merged.pop()!;
+          merged.push(new Interval(previous.low, interval.high));
+        } else {
+          merged.push(interval);
+        }
+      }
+      for (const interval of merged) {
+        node.edges.push({
+          on: intervalToTransition(interval),
+          to,
+        });
+      }
     }
   });
 
