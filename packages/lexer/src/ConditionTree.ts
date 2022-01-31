@@ -72,12 +72,13 @@ export default class ConditionTree extends IntervalTree<CharCode, Set<NFA>> {
   add(edge: Edge) {
     const interval = this._getInterval(edge.on);
     const overlaps = this.search(interval);
+    let intervalLow = interval.low.value;
+    const intervalHigh = interval.high.value;
 
     if (overlaps.length) {
-      let intervalLow = interval.low.value;
-      let intervalHigh = interval.high.value;
+      for (let i = 0; i < overlaps.length; i++) {
+        const [key, targets] = overlaps[i];
 
-      for (const [key, targets] of overlaps) {
         // Temporarily remove overlapping interval.
         this.delete(key);
 
@@ -118,7 +119,6 @@ export default class ConditionTree extends IntervalTree<CharCode, Set<NFA>> {
             new CharCode(originalLow),
             new CharCode(intervalLow - 1),
           );
-
           this.put(left, new Set([...targets]));
           originalLow = intervalLow;
         }
@@ -153,13 +153,15 @@ export default class ConditionTree extends IntervalTree<CharCode, Set<NFA>> {
           );
           this.put(right, new Set([...targets]));
         } else if (intervalHigh > originalHigh) {
-          // Last chunk of new interval: non-overlapping.
-          const last = new Interval(
-            new CharCode(intervalLow),
-            new CharCode(intervalHigh),
-          );
-          this.put(last, new Set([edge.to]));
-          intervalLow = intervalHigh;
+          if (i === overlaps.length - 1) {
+            // Last chunk of new interval: non-overlapping.
+            const last = new Interval(
+              new CharCode(intervalLow),
+              new CharCode(intervalHigh),
+            );
+            this.put(last, new Set([edge.to]));
+            intervalLow = intervalHigh;
+          }
         }
       }
     } else {
