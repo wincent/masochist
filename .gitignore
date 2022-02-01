@@ -1,3 +1,4 @@
+.tsc.make-sentinel
 lib
 node_modules
 tsconfig.tsbuildinfo
