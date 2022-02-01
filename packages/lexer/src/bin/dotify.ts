@@ -138,6 +138,8 @@ async function main() {
     WHITESPACE: machine(WHITESPACE),
   };
 
+  let README = '# `@masochist/lexer` state machine diagrams\n';
+
   const directory = path.join(path.dirname(__filename), '..', '..', 'diagrams');
   await fs.mkdir(directory, {recursive: true});
   for (const [name, table] of Object.entries(diagrams)) {
@@ -154,8 +156,15 @@ async function main() {
       await fs.writeFile(dot, contents, 'utf8');
       await spawn('dot', ['-Tpng', dot, '-o', png]);
     }
+
+    README += '\n';
+    README += `## ${name}\n\n`;
+    README += `![${name}](./${name}-dark.png#gh-dark-mode-only)\n`;
+    README += `![${name}](./${name}-light.png#gh-light-mode-only)\n`;
   }
-  // TODO create md file
+
+  await fs.writeFile(path.join(directory, 'README.md'), README, 'utf8');
+  // TODO: parallelize a bit because this is slow AF
 }
 
 main().catch((error) => {

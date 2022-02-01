@@ -1,0 +1,17 @@
+digraph finite_state_machine {
+  bgcolor = "transparent";
+  rankdir = LR;
+  ratio = 0.5625; // 16:9.
+
+  // Invisible node from which to draw start transition to start state.
+  node [style = invis]; -1;
+
+  // Accept state.
+  node [color = "white", fontcolor = "white", style = "", shape = doublecircle]; 1;
+
+  // Catch-all (default) for remaining state.
+  node [color = "white", fontcolor = "white", style = "", shape = circle, xlabel = ""];
+
+  -1 -> 0 [color = "white", fontcolor = "white"];
+  0 -> 1 [color = "white", fontcolor = "white", label = "|"];
+}
