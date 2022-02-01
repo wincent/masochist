@@ -1,6 +1,9 @@
 .DEFAULT: build
 
 PACKAGE_JSON = package.json $(wildcard packages/*/package.json)
+PACKAGE_MAKEFILES = $(shell find packages -maxdepth 2 -type f -name Makefile)
+PACKAGE_DIRS = $(dir $(PACKAGE_MAKEFILES))
+TSC_SENTINEL = .tsc.make-sentinel
 TS_CONFIG = $(wildcard tsconfig*.json packages/*/tsconfig*.json)
 TS_SRC = $(wildcard packages/*/src/**/*.ts)
 TS_LIB = $(subst /src/,/lib/,$(TS_SRC))
@@ -12,7 +15,11 @@ build: $(TS_OUT) $(TS_D_OUT)
 
 .PHONY: clean
 clean:
+	rm -f $(TSC_SENTINEL)
 	@yarn run build:clean
+	@for DIR in $(PACKAGE_DIRS); do \
+		$(MAKE) -C $$DIR clean; \
+	done
 
 .PHONY: debug
 debug:
@@ -29,17 +36,18 @@ debug:
 	@echo TS_D_OUT
 	@echo $(TS_D_OUT)
 
-.PHONY: dotify
-dotify: packages/lexer/lib/bin/dotify.js
+.PHONY: diagrams
+diagrams: packages/lexer/lib/bin/dotify.js
 	@node packages/lexer/lib/bin/dotify.js
+	@$(MAKE) -C packages/lexer -j 4 diagrams
 
 node_modules: yarn.lock $(PACKAGE_JSON)
 	@yarn
 	@touch $@
 
-.tsc.make-sentinel: $(PACKAGE_JSON) $(TS_CONFIG) $(TS_SRC) node_modules
+$(TSC_SENTINEL): $(PACKAGE_JSON) $(TS_CONFIG) $(TS_SRC) node_modules
 	@yarn run build # runs: tsc --build
-	@touch .tsc.make-sentinel
+	@touch $(TSC_SENTINEL)
 
 yarn.lock: $(PACKAGE_JSON)
 	@yarn

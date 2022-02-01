@@ -1,11 +1,14 @@
 /**
  * Generate "interesting" state machine images for DFAs used in the lexer.
  *
- * Run with `make dotify`.
+ * This script is responsible for generating the ".dot" source files and a
+ * README.md that includes the images.
+ *
+ * The `make diagrams` target runs this script, and then invokes `dot` in
+ * parallel to actually generate the actual images.
  */
 
 import {escapeForRegExp} from '@masochist/common';
-import child_process from 'child_process';
 import {promises as fs} from 'fs';
 import path from 'path';
 
@@ -102,21 +105,6 @@ function unionedTokens() {
   );
 }
 
-function spawn(command: string, args: Array<string>) {
-  return new Promise<void>((resolve, reject) => {
-    const child = child_process.spawn(command, args, {stdio: 'inherit'});
-    child.on('close', (code) => {
-      if (code) {
-        reject(new Error(`spawn(): exited with code ${code}`));
-      } else {
-        resolve();
-      }
-    });
-
-    child.on('error', reject);
-  });
-}
-
 async function main() {
   const diagrams = {
     // Composite machines.
@@ -165,12 +153,15 @@ async function main() {
         directory,
         `${name}-${dark ? 'dark' : 'light'}.dot`,
       );
-      const png = path.join(
-        directory,
-        path.basename(dot, path.extname(dot)) + '.png',
-      );
-      await fs.writeFile(dot, contents, 'utf8');
-      await spawn('dot', ['-Tpng', dot, '-o', png]);
+      let current;
+      try {
+        current = await fs.readFile(dot, 'utf8');
+      } catch {
+        // Doesn't exist.
+      }
+      if (current !== contents) {
+        await fs.writeFile(dot, contents, 'utf8');
+      }
     }
 
     README += '\n';
@@ -180,7 +171,6 @@ async function main() {
   }
 
   await fs.writeFile(path.join(directory, 'README.md'), README, 'utf8');
-  // TODO: parallelize a bit because this is slow AF
 }
 
 main().catch((error) => {
