@@ -4,11 +4,12 @@
  * Run with `make dotify`.
  */
 
+import {escapeForRegExp} from '@masochist/common';
 import child_process from 'child_process';
 import {promises as fs} from 'fs';
 import path from 'path';
-import {promisify} from 'util';
 
+import compileRegExp from '../compileRegExp';
 import ignore from '../ignore';
 import {
   AMPERSAND,
@@ -33,21 +34,33 @@ import {
   WHITESPACE,
 } from '../lexer';
 import union from '../union';
+import NFAToDFA from '../NFA/NFAToDFA';
 import dotifyTransitionTable from '../NFA/dotifyTransitionTable';
-
-const spawn = promisify(child_process.spawn);
+import minimizeDFA from '../NFA/minimizeDFA';
+import regExpToNFA from '../NFA/regExpToNFA';
+import removeEpsilons from '../NFA/removeEpsilons';
+import sortEdges from '../NFA/sortEdges';
+import toTransitionTable from '../NFA/toTransitionTable';
 
 /**
  * A single (combined) machine that recognizes (and discards) any ignored token.
  */
 function ignoredTokens() {
-  return ignore(
-    COMMA,
-    COMMENT,
-    LINE_TERMINATOR,
-    UNICODE_BOM,
-    WHITESPACE,
-  );
+  return ignore(COMMA, COMMENT, LINE_TERMINATOR, UNICODE_BOM, WHITESPACE);
+}
+
+function machine(pattern: RegExp | string) {
+  const regExp =
+    typeof pattern === 'string'
+      ? new RegExp(escapeForRegExp(pattern))
+      : pattern;
+
+  let nfa = regExpToNFA(compileRegExp(regExp));
+  nfa = removeEpsilons(nfa);
+  nfa = NFAToDFA(nfa);
+  nfa = sortEdges(nfa);
+  nfa = minimizeDFA(nfa);
+  return toTransitionTable(nfa);
 }
 
 /**
@@ -81,27 +94,71 @@ function unionedTokens() {
   );
 }
 
+function spawn(command: string, args: Array<string>) {
+  return new Promise<void>((resolve, reject) => {
+    const child = child_process.spawn(command, args, {stdio: 'inherit'});
+    child.on('close', (code) => {
+      if (code) {
+        reject(new Error(`spawn(): exited with code ${code}`));
+      } else {
+        resolve();
+      }
+    });
+
+    child.on('error', reject);
+  });
+}
+
 async function main() {
   const diagrams = {
-    ignoredDark: dotifyTransitionTable(ignoredTokens(), true),
-    ignoredLight: dotifyTransitionTable(ignoredTokens()),
+    // Composite machines.
+    ignored: ignoredTokens(),
+    unioned: unionedTokens(),
 
-    unionedDark: dotifyTransitionTable(unionedTokens(), true),
-    unionedLight: dotifyTransitionTable(unionedTokens()),
+    // Individual machines.
+    AMPERSAND: machine(AMPERSAND),
+    AT: machine(AT),
+    BANG: machine(BANG),
+    BAR: machine(BAR),
+    CLOSING_BRACE: machine(CLOSING_BRACE),
+    CLOSING_BRACKET: machine(CLOSING_BRACKET),
+    CLOSING_PAREN: machine(CLOSING_PAREN),
+    COLON: machine(COLON),
+    COMMA: machine(COMMA),
+    COMMENT: machine(COMMENT),
+    DOLLAR: machine(DOLLAR),
+    ELLIPSIS: machine(ELLIPSIS),
+    EQUALS: machine(EQUALS),
+    LINE_TERMINATOR: machine(LINE_TERMINATOR),
+    NAME: machine(NAME),
+    OPENING_BRACE: machine(OPENING_BRACE),
+    OPENING_BRACKET: machine(OPENING_BRACKET),
+    OPENING_PAREN: machine(OPENING_PAREN),
+    UNICODE_BOM: machine(UNICODE_BOM),
+    WHITESPACE: machine(WHITESPACE),
   };
 
   const directory = path.join(path.dirname(__filename), '..', '..', 'diagrams');
   await fs.mkdir(directory, {recursive: true});
-  for (const [name, contents] of Object.entries(diagrams)) {
-    const output = path.join(directory, `${name}.dot`);
-    await fs.writeFile(output, contents, 'utf8');
-    // await spawn('dot', output);
+  for (const [name, table] of Object.entries(diagrams)) {
+    for (const dark of [true, false]) {
+      const contents = dotifyTransitionTable(table, dark);
+      const dot = path.join(
+        directory,
+        `${name}-${dark ? 'dark' : 'light'}.dot`,
+      );
+      const png = path.join(
+        directory,
+        path.basename(dot, path.extname(dot)) + '.png',
+      );
+      await fs.writeFile(dot, contents, 'utf8');
+      await spawn('dot', ['-Tpng', dot, '-o', png]);
+    }
   }
   // TODO create md file
 }
 
-main()
-  .catch((error) => {
-    console.log(error);
-    process.exit(1);
-  });
+main().catch((error) => {
+  console.log(error);
+  process.exit(1);
+});
