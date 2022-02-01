@@ -75,6 +75,31 @@
 ![EQUALS](./EQUALS-dark.png#gh-dark-mode-only)
 ![EQUALS](./EQUALS-light.png#gh-light-mode-only)
 
+## ESCAPED_CHARACTER
+
+![ESCAPED_CHARACTER](./ESCAPED_CHARACTER-dark.png#gh-dark-mode-only)
+![ESCAPED_CHARACTER](./ESCAPED_CHARACTER-light.png#gh-light-mode-only)
+
+## ESCAPED_UNICODE
+
+![ESCAPED_UNICODE](./ESCAPED_UNICODE-dark.png#gh-dark-mode-only)
+![ESCAPED_UNICODE](./ESCAPED_UNICODE-light.png#gh-light-mode-only)
+
+## EXPONENT_PART
+
+![EXPONENT_PART](./EXPONENT_PART-dark.png#gh-dark-mode-only)
+![EXPONENT_PART](./EXPONENT_PART-light.png#gh-light-mode-only)
+
+## FRACTIONAL_PART
+
+![FRACTIONAL_PART](./FRACTIONAL_PART-dark.png#gh-dark-mode-only)
+![FRACTIONAL_PART](./FRACTIONAL_PART-light.png#gh-light-mode-only)
+
+## INTEGER_PART
+
+![INTEGER_PART](./INTEGER_PART-dark.png#gh-dark-mode-only)
+![INTEGER_PART](./INTEGER_PART-light.png#gh-light-mode-only)
+
 ## LINE_TERMINATOR
 
 ![LINE_TERMINATOR](./LINE_TERMINATOR-dark.png#gh-dark-mode-only)
@@ -99,6 +124,21 @@
 
 ![OPENING_PAREN](./OPENING_PAREN-dark.png#gh-dark-mode-only)
 ![OPENING_PAREN](./OPENING_PAREN-light.png#gh-light-mode-only)
+
+## SOURCE_CHARACTER
+
+![SOURCE_CHARACTER](./SOURCE_CHARACTER-dark.png#gh-dark-mode-only)
+![SOURCE_CHARACTER](./SOURCE_CHARACTER-light.png#gh-light-mode-only)
+
+## STRING_CHARACTER
+
+![STRING_CHARACTER](./STRING_CHARACTER-dark.png#gh-dark-mode-only)
+![STRING_CHARACTER](./STRING_CHARACTER-light.png#gh-light-mode-only)
+
+## STRING_VALUE
+
+![STRING_VALUE](./STRING_VALUE-dark.png#gh-dark-mode-only)
+![STRING_VALUE](./STRING_VALUE-light.png#gh-light-mode-only)
 
 ## UNICODE_BOM
 
