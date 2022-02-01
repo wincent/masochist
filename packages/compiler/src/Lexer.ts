@@ -27,13 +27,19 @@ export interface Matcher<K, V> {
 
   onEnter(callback: (meta: ReversibleMap<K, V>) => void): Matcher<K, V>;
 
-  onMatch(callback: (match: RegExpExecArray, meta: ReversibleMap<K, V>) => void): Matcher<K, V>;
+  onMatch(
+    callback: (match: RegExpExecArray, meta: ReversibleMap<K, V>) => void,
+  ): Matcher<K, V>;
 
   to(predicate: string | Matcher<K, V>): Matcher<K, V>;
 
   until(predicate: string | Matcher<K, V>): Matcher<K, V>;
 
-  when(predicate: (string: string) => boolean, matcher: string | Matcher<K, V>, alternate: string | Matcher<K, V>): Matcher<K, V>;
+  when(
+    predicate: (string: string) => boolean,
+    matcher: string | Matcher<K, V>,
+    alternate: string | Matcher<K, V>,
+  ): Matcher<K, V>;
 }
 
 interface API<K, V> {
@@ -53,7 +59,9 @@ interface API<K, V> {
 
   atEnd(): boolean;
 
-  choose(map: {[name: string]: Matcher<K, V>} | Iterable<[string, Matcher<K, V>]>): () => Token;
+  choose(
+    map: {[name: string]: Matcher<K, V>} | Iterable<[string, Matcher<K, V>]>,
+  ): () => Token;
 
   consume(...matchers: Array<string | RegExp | Matcher<K, V>>): string;
 
@@ -81,7 +89,11 @@ interface API<K, V> {
 
   token(name: string, contents: string): Token;
 
-  when(predicate: (string: string) => boolean, matcher: string | Matcher<K, V>, alternate: string | Matcher<K, V>): Matcher<K, V>;
+  when(
+    predicate: (string: string) => boolean,
+    matcher: string | Matcher<K, V>,
+    alternate: string | Matcher<K, V>,
+  ): Matcher<K, V>;
 }
 
 export interface Token {
@@ -152,13 +164,13 @@ export default class Lexer<K, V> {
       }
 
       throw new Error('Unable to look up matcher');
-    }
+    };
 
     const setMatcher = (name: string, matcher: Matcher<K, V>) => {
       this._matchers.set(name, matcher);
 
       return matcher;
-    }
+    };
 
     /**
      * Arbitrary metadata passed to matchers' `onMatch()` callbacks.
@@ -177,15 +189,15 @@ export default class Lexer<K, V> {
         return getMatchObject('', index, input);
       },
 
-      name: function() {
+      name: function () {
         throw new Error('name() called on `pass` singleton');
       },
 
-      onEnter: function() {
+      onEnter: function () {
         throw new Error('onEnter() called on `pass` singleton');
       },
 
-      onMatch: function() {
+      onMatch: function () {
         throw new Error('onMatch() called on `pass` singleton');
       },
 
@@ -208,15 +220,15 @@ export default class Lexer<K, V> {
         return null;
       },
 
-      name: function() {
+      name: function () {
         throw new Error('name() called on `never` singleton');
       },
 
-      onEnter: function() {
+      onEnter: function () {
         throw new Error('onEnter() called on `never` singleton');
       },
 
-      onMatch: function() {
+      onMatch: function () {
         throw new Error('onMatch() called on `never` singleton');
       },
 
@@ -293,14 +305,16 @@ export default class Lexer<K, V> {
       const permutations = permute(matchers);
 
       // ...and transform into: oneOf(sequence(a, b), sequence(b, a)):
-      const matcher = oneOf(...permutations.map(m => sequence(...m)));
+      const matcher = oneOf(...permutations.map((m) => sequence(...m)));
 
       return {
         get description() {
           return (
             this._description ||
             'allOf:(' +
-              matchers.map(matcher => lookup(matcher).description).join(', ') +
+              matchers
+                .map((matcher) => lookup(matcher).description)
+                .join(', ') +
               ')'
           );
         },
@@ -321,7 +335,7 @@ export default class Lexer<K, V> {
 
         until,
 
-        when
+        when,
       };
     }
 
@@ -329,7 +343,10 @@ export default class Lexer<K, V> {
      * Returns a matcher that modifies the parent matcher by having it
      * return `null` whenever the `predicate` matcher identifies a match.
      */
-    function except(this: Matcher<K, V>, predicate: string | Matcher<K, V>): Matcher<K, V> {
+    function except(
+      this: Matcher<K, V>,
+      predicate: string | Matcher<K, V>,
+    ): Matcher<K, V> {
       const parent = this;
 
       return {
@@ -510,7 +527,10 @@ export default class Lexer<K, V> {
      * Registers a callback to be invoked when a matcher is entered
      * (immediately prior to attempting to detect a match).
      */
-    function onEnter(this: Matcher<K, V>, callback: (meta: ReversibleMap<K, V>) => void): Matcher<K, V> {
+    function onEnter(
+      this: Matcher<K, V>,
+      callback: (meta: ReversibleMap<K, V>) => void,
+    ): Matcher<K, V> {
       this._onEnter = callback;
 
       return this;
@@ -519,7 +539,10 @@ export default class Lexer<K, V> {
     /**
      * Registers a callback to be invoked when a matcher matches.
      */
-    function onMatch(this: Matcher<K, V>, callback: (match: RegExpExecArray, meta: ReversibleMap<K, V>) => void) {
+    function onMatch(
+      this: Matcher<K, V>,
+      callback: (match: RegExpExecArray, meta: ReversibleMap<K, V>) => void,
+    ) {
       this._onMatch = callback;
 
       return this;
@@ -536,7 +559,7 @@ export default class Lexer<K, V> {
         get description() {
           return (
             this._description ||
-            matchers.map(matcher => lookup(matcher).description).join(' | ')
+            matchers.map((matcher) => lookup(matcher).description).join(' | ')
           );
         },
 
@@ -635,12 +658,14 @@ export default class Lexer<K, V> {
      * Returns a composite matcher that matches if all of the supplied matchers
      * match, in order.
      */
-    function sequence(...matchers: Array<string | Matcher<K, V>>): Matcher<K, V> {
+    function sequence(
+      ...matchers: Array<string | Matcher<K, V>>
+    ): Matcher<K, V> {
       return {
         get description() {
           return (
             this._description ||
-            matchers.map(matcher => lookup(matcher).description).join(' ')
+            matchers.map((matcher) => lookup(matcher).description).join(' ')
           );
         },
 
@@ -705,7 +730,10 @@ export default class Lexer<K, V> {
      * See `until()` for a matcher that matches up-to-but-not-including its
      * predicate.
      */
-    function to(this: Matcher<K, V>, predicate: string | Matcher<K, V>): Matcher<K, V> {
+    function to(
+      this: Matcher<K, V>,
+      predicate: string | Matcher<K, V>,
+    ): Matcher<K, V> {
       const parent = this;
 
       return {
@@ -766,7 +794,10 @@ export default class Lexer<K, V> {
      * See `to()` for a matcher that matches up-to-and-including its
      * predicate.
      */
-    function until(this: Matcher<K, V>, predicate: string | Matcher<K, V>): Matcher<K, V> {
+    function until(
+      this: Matcher<K, V>,
+      predicate: string | Matcher<K, V>,
+    ): Matcher<K, V> {
       const parent = this;
 
       return {
@@ -825,7 +856,11 @@ export default class Lexer<K, V> {
      * If no explicit `alternate` is provided, uses the `pass` matcher which
      * always matches with a 0-length match.
      */
-    function when(predicate: (input: string, index: number) => boolean, matcher: string | Matcher<K, V>, alternate: string | Matcher<K, V> = pass): Matcher<K, V> {
+    function when(
+      predicate: (input: string, index: number) => boolean,
+      matcher: string | Matcher<K, V>,
+      alternate: string | Matcher<K, V> = pass,
+    ): Matcher<K, V> {
       return {
         get description() {
           return (
@@ -866,12 +901,14 @@ export default class Lexer<K, V> {
      * Convenience function for building simple lexers from a map (object
      * literal, Map, Iterable) of token names to matchers.
      */
-    const choose = (map: {[name: string]: Matcher<K, V>} | Iterable<[string, Matcher<K, V>]>) => {
+    const choose = (
+      map: {[name: string]: Matcher<K, V>} | Iterable<[string, Matcher<K, V>]>,
+    ) => {
       return () => {
         let iterable: Iterable<[string, Matcher<K, V>]>;
 
         if ((map as any)[Symbol.iterator]) {
-          iterable = map as Iterable<[string, Matcher<K,V>]>;
+          iterable = map as Iterable<[string, Matcher<K, V>]>;
         } else {
           iterable = new Map(Object.entries(map));
         }
@@ -891,10 +928,14 @@ export default class Lexer<K, V> {
       };
     };
 
-    function assertMatchers(matchers: Array<string | RegExp | Matcher<K, V>>): asserts matchers is Array<string | Matcher<K, V>> {
-      matchers.forEach(m => {
+    function assertMatchers(
+      matchers: Array<string | RegExp | Matcher<K, V>>,
+    ): asserts matchers is Array<string | Matcher<K, V>> {
+      matchers.forEach((m) => {
         if (m instanceof RegExp) {
-          throw new Error('assertMatchers(): Expected an array of Matchers, but found RegExp item');
+          throw new Error(
+            'assertMatchers(): Expected an array of Matchers, but found RegExp item',
+          );
         }
       });
     }
@@ -911,7 +952,9 @@ export default class Lexer<K, V> {
      *
      * If the matcher does not match, throws an error.
      */
-    const consume = (...matchers: [string] | [RegExp] | Array<Matcher<K, V>>) => {
+    const consume = (
+      ...matchers: [string] | [RegExp] | Array<Matcher<K, V>>
+    ) => {
       let matcher: Matcher<K, V>;
       let result;
 
@@ -937,7 +980,10 @@ export default class Lexer<K, V> {
         }
 
         if (matchers.length === 1) {
-          if (typeof matchers[0] === 'string' || matchers[0] instanceof RegExp) {
+          if (
+            typeof matchers[0] === 'string' ||
+            matchers[0] instanceof RegExp
+          ) {
             matcher = match(matchers[0]);
           } else {
             matcher = matchers[0];
@@ -973,7 +1019,9 @@ export default class Lexer<K, V> {
 
       // TODO: report index, maybe.
       const context =
-        input.length - index > 20 ? `${input.slice(index, index + 20)}...` : input.slice(index);
+        input.length - index > 20
+          ? `${input.slice(index, index + 20)}...`
+          : input.slice(index);
 
       throw new Error(`${reason} at: ${JSON.stringify(context)}`);
     };
@@ -999,7 +1047,10 @@ export default class Lexer<K, V> {
         let matcher: Matcher<K, V>;
 
         if (matchers.length === 1) {
-          if (typeof matchers[0] === 'string' || matchers[0] instanceof RegExp) {
+          if (
+            typeof matchers[0] === 'string' ||
+            matchers[0] instanceof RegExp
+          ) {
             matcher = match(matchers[0]);
           } else {
             matcher = matchers[0];
@@ -1022,7 +1073,7 @@ export default class Lexer<K, V> {
       // Mix these in with `Object.assign` so that TypeScript can infer the
       // correct type for `peek`.
       {peeked: undefined as undefined | null | RegExpExecArray},
-      {index}
+      {index},
     );
 
     /**

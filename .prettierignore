@@ -1,2 +1,3 @@
-# See: https://github.com/prettier/prettier/pull/6657
-packages/compiler/src/Lexer.ts
+# Keep this file as close as possible to original `tsc --init` output, for ease
+# of updating.
+/tsconfig-base.json
