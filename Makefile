@@ -37,6 +37,7 @@ debug:
 	@echo $(TS_D_OUT)
 
 .PHONY: diagrams
+# TODO: make this re-run when _any_ ts source changes, as it may affect dotify.js
 diagrams: packages/lexer/lib/bin/dotify.js
 	@node packages/lexer/lib/bin/dotify.js
 	@$(MAKE) -C packages/lexer -j 4 diagrams

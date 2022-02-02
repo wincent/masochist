@@ -71,6 +71,78 @@ export const STRING_VALUE =
 export const BLOCK_STRING_VALUE =
   /"""(\\"""|[\u0009\u000a\u000d\u0020-\uffff])*"""/;
 
+// TODO: figure out how to write this as a regexp, then make sure our
+// regexp-to-DFA conversion doesn't mangle it.
+export const BLOCK_STRING_VALUE_TT = {
+  acceptStates: new Set([6]),
+  startStates: new Set([0]),
+  transitions: [
+    /* 0 */ new Map([['Atom:"', new Set([1])]]),
+    /* 1 */ new Map([['Atom:"', new Set([2])]]),
+    /* 2 */ new Map([['Atom:"', new Set([3])]]),
+    /* 3 */ new Map([
+      ['Atom:"', new Set([4])],
+      ['Atom:\t', new Set([3])],
+      ['Atom:\n', new Set([3])],
+      ['Atom:\r', new Set([3])],
+      ['Range: -!', new Set([3])],
+      ['Range:#-[', new Set([3])],
+      ['Atom:\\', new Set([7])],
+      ['Range:]-\uffff', new Set([3])],
+    ]),
+    /* 4 */ new Map([
+      ['Atom:"', new Set([5])],
+      ['Atom:\t', new Set([3])],
+      ['Atom:\n', new Set([3])],
+      ['Atom:\r', new Set([3])],
+      ['Range: -!', new Set([3])],
+      ['Range:#-[', new Set([3])],
+      ['Atom:\\', new Set([7])],
+      ['Range:]-\uffff', new Set([3])],
+    ]),
+    /* 5 */ new Map([
+      ['Atom:"', new Set([6])],
+      ['Atom:\t', new Set([3])],
+      ['Atom:\n', new Set([3])],
+      ['Atom:\r', new Set([3])],
+      ['Range: -!', new Set([3])],
+      ['Range:#-[', new Set([3])],
+      ['Atom:\\', new Set([7])],
+      ['Range:]-\uffff', new Set([3])],
+    ]),
+    /* 6 */ new Map(),
+    /* 7 */ new Map([
+      ['Atom:"', new Set([8])],
+      ['Atom:\t', new Set([3])],
+      ['Atom:\n', new Set([3])],
+      ['Atom:\r', new Set([3])],
+      ['Range: -!', new Set([3])],
+      ['Range:#-[', new Set([3])],
+      ['Atom:\\', new Set([7])],
+      ['Range:]-\uffff', new Set([3])],
+    ]),
+    /* 8 */ new Map([
+      ['Atom:"', new Set([9])],
+      ['Atom:\t', new Set([3])],
+      ['Atom:\n', new Set([3])],
+      ['Atom:\r', new Set([3])],
+      ['Range: -!', new Set([3])],
+      ['Range:#-[', new Set([3])],
+      ['Atom:\\', new Set([7])],
+      ['Range:]-\uffff', new Set([3])],
+    ]),
+    /* 9 */ new Map([
+      ['Atom:"', new Set([3])],
+      ['Atom:\n', new Set([3])],
+      ['Atom:\r', new Set([3])],
+      ['Range: -!', new Set([3])],
+      ['Range:#-[', new Set([3])],
+      ['Atom:\\', new Set([7])],
+      ['Range:]-\uffff', new Set([3])],
+    ]),
+  ],
+};
+
 /**
  * Generate a lexer for the GraphQL language.
  *

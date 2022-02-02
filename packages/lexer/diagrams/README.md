@@ -35,6 +35,11 @@
 ![BLOCK_STRING_VALUE](./BLOCK_STRING_VALUE-dark.png#gh-dark-mode-only)
 ![BLOCK_STRING_VALUE](./BLOCK_STRING_VALUE-light.png#gh-light-mode-only)
 
+## BLOCK_STRING_VALUE_TT
+
+![BLOCK_STRING_VALUE_TT](./BLOCK_STRING_VALUE_TT-dark.png#gh-dark-mode-only)
+![BLOCK_STRING_VALUE_TT](./BLOCK_STRING_VALUE_TT-light.png#gh-light-mode-only)
+
 ## CLOSING_BRACE
 
 ![CLOSING_BRACE](./CLOSING_BRACE-dark.png#gh-dark-mode-only)

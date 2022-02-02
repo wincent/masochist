@@ -20,6 +20,7 @@ import {
   BANG,
   BAR,
   BLOCK_STRING_VALUE,
+  BLOCK_STRING_VALUE_TT,
   CLOSING_BRACE,
   CLOSING_BRACKET,
   CLOSING_PAREN,
@@ -55,6 +56,8 @@ import removeEpsilons from '../NFA/removeEpsilons';
 import sortEdges from '../NFA/sortEdges';
 import toTransitionTable from '../NFA/toTransitionTable';
 
+import type {TransitionTable} from '../NFA/TransitionTable';
+
 /**
  * A single (combined) machine that recognizes (and discards) any ignored token.
  */
@@ -62,18 +65,22 @@ function ignoredTokens() {
   return ignore(COMMA, COMMENT, LINE_TERMINATOR, UNICODE_BOM, WHITESPACE);
 }
 
-function machine(pattern: RegExp | string) {
-  const regExp =
-    typeof pattern === 'string'
-      ? new RegExp(escapeForRegExp(pattern))
-      : pattern;
+function machine(pattern: TransitionTable | RegExp | string) {
+  if (typeof pattern === 'string' || pattern instanceof RegExp) {
+    const regExp =
+      typeof pattern === 'string'
+        ? new RegExp(escapeForRegExp(pattern))
+        : pattern;
 
-  let nfa = regExpToNFA(compileRegExp(regExp));
-  nfa = removeEpsilons(nfa);
-  nfa = NFAToDFA(nfa);
-  nfa = sortEdges(nfa);
-  nfa = minimizeDFA(nfa);
-  return toTransitionTable(nfa);
+    let nfa = regExpToNFA(compileRegExp(regExp));
+    nfa = removeEpsilons(nfa);
+    nfa = NFAToDFA(nfa);
+    nfa = sortEdges(nfa);
+    nfa = minimizeDFA(nfa);
+    return toTransitionTable(nfa);
+  } else {
+    return pattern;
+  }
 }
 
 /**
@@ -120,6 +127,7 @@ async function main() {
     BANG: machine(BANG),
     BAR: machine(BAR),
     BLOCK_STRING_VALUE: machine(BLOCK_STRING_VALUE),
+    BLOCK_STRING_VALUE_TT: machine(BLOCK_STRING_VALUE_TT),
     CLOSING_BRACE: machine(CLOSING_BRACE),
     CLOSING_BRACKET: machine(CLOSING_BRACKET),
     CLOSING_PAREN: machine(CLOSING_PAREN),
