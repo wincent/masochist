@@ -64,7 +64,7 @@ export const WHITESPACE = /[\t ]+/;
 export const STRING_CHARACTER =
   /(\\u[0-9A-Fa-f]{4}|\\["\\\/bfnrt]|[\u0009\u0020\u0021\u0023-\u005b\u005d-\uffff])/;
 
-// ie. /"STRING_VALUE*"/
+// ie. /"«STRING_CHARACTER»*"/
 export const STRING_VALUE =
   /"(\\u[0-9A-Fa-f]{4}|\\["\\\/bfnrt]|[\u0009\u0020\u0021\u0023-\u005b\u005d-\uffff])*"/;
 
