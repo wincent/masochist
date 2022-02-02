@@ -25,7 +25,7 @@
     "build:watch": "tsc --build --watch",
     "format": "prettier --loglevel warn --write '**/*.{graphql,js,json,md,ts}'",
     "format:check": "prettier --loglevel warn --check '**/*.{graphql,js,json,md,ts}'",
-    "lint": "tsc --project tsconfig-lint.json",
+    "lint": "support/lint.sh",
     "test": "jest"
   }
 }

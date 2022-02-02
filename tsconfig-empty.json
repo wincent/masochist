@@ -1,0 +1,4 @@
+{
+  // Dynamic settings that may be overwritten on a per-run basis (eg. when running `yarn lint`).
+  "compilerOptions": {}
+}
