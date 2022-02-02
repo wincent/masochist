@@ -5,7 +5,7 @@ PACKAGE_MAKEFILES = $(shell find packages -maxdepth 2 -type f -name Makefile)
 PACKAGE_DIRS = $(dir $(PACKAGE_MAKEFILES))
 TSC_SENTINEL = .tsc.make-sentinel
 TS_CONFIG = $(wildcard tsconfig*.json packages/*/tsconfig*.json)
-TS_SRC = $(wildcard packages/*/src/**/*.ts)
+TS_SRC = $(wildcard packages/*/src/*.ts) $(wildcard packages/*/src/**/*.ts)
 TS_LIB = $(subst /src/,/lib/,$(TS_SRC))
 TS_OUT = $(patsubst %.ts,%.js,$(TS_LIB))
 TS_D_OUT = $(patsubst %.ts,%.d.ts,$(TS_LIB))
@@ -37,7 +37,6 @@ debug:
 	@echo $(TS_D_OUT)
 
 .PHONY: diagrams
-# TODO: make this re-run when _any_ ts source changes, as it may affect dotify.js
 diagrams: packages/lexer/lib/bin/dotify.js
 	@node packages/lexer/lib/bin/dotify.js
 	@$(MAKE) -C packages/lexer -j 4 diagrams
