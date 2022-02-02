@@ -140,9 +140,9 @@ const BASE_SPECIAL_CLASSES: {[key: string]: CharacterClass | undefined} =
 
 const SPECIAL_CLASSES: {[key: string]: CharacterClass | undefined} = freeze({
   ...BASE_SPECIAL_CLASSES,
-  D: {...BASE_SPECIAL_CLASSES.d, negated: true} as CharacterClass,
-  S: {...BASE_SPECIAL_CLASSES.s, negated: true} as CharacterClass,
-  W: {...BASE_SPECIAL_CLASSES.w, negated: true} as CharacterClass,
+  D: {...BASE_SPECIAL_CLASSES['d'], negated: true} as CharacterClass,
+  S: {...BASE_SPECIAL_CLASSES['s'], negated: true} as CharacterClass,
+  W: {...BASE_SPECIAL_CLASSES['w'], negated: true} as CharacterClass,
 });
 
 function freeze<T>(object: T): Readonly<T> {

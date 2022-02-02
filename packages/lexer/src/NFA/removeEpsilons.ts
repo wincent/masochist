@@ -2,7 +2,6 @@ import {ACCEPT} from './NFA';
 import getStartStates from './getStartStates';
 import {equalEdges} from './equalEdges';
 import setFlag from './setFlag';
-import stringifyTransition from './stringifyTransition';
 import testFlag from './testFlag';
 import visitNFA from './visitNFA';
 

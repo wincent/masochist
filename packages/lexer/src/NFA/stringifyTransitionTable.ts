@@ -113,14 +113,6 @@ function quote(unquoted: string): string {
   }
 }
 
-function formatSet(set?: Set<string>): string {
-  if (set) {
-    return `new Set([${Array.from(set).map(quote).join(', ')}])`;
-  } else {
-    return `undefined`;
-  }
-}
-
 function formatTargets(targets: Set<number>): string {
   return `new Set([${Array.from(targets)
     .sort()
