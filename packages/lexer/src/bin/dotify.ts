@@ -99,10 +99,11 @@ function unionedTokens() {
       OPENING_BRACKET,
       OPENING_PAREN,
 
-      // TODO: strings and numbers too
+      // TODO: strings too
 
       // Other Lexical tokens.
       NAME,
+      NUMBER,
     },
   );
 }
