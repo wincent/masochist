@@ -133,30 +133,9 @@ export default generate(({ignored, token}) => {
   // about numbers: see recent changes to spec:
   // https://github.com/graphql/graphql-spec/pull/601
   //
-  // FLOAT_VALUE:
+  // lookahead: may not be followed by NAME character or "."
   //
-  //    const FLOAT_VALUE = sequence(
-  //      'INTEGER_PART',
-  //      oneOf(
-  //        sequence('FRACTIONAL_PART', 'EXPONENT_PART'),
-  //        'EXPONENT_PART',
-  //        'FRACTIONAL_PART',
-  //      ),
-  //    );
-  //
-  //    lookahead: may not be followed by NAME character
-  //
-  // where the various `*_PART` patterns are defined as follows:
-  //
-  //    match(/[eE][+-]?\d+/).name('EXPONENT_PART');
-  //    match(/\.\d+/).name('FRACTIONAL_PART');
-  //    match(/-?(?:0|[1-9]\d*)/).name('INTEGER_PART');
-  //
-  // INT_VALUE:
-  //
-  //    const INT_VALUE = an('INTEGER_PART');
-  //
-  //    lookahead: may not be followed by NAME character
+  // probably going to handle this in the parser
 
   token(
     'BLOCK_STRING_VALUE',
@@ -179,24 +158,49 @@ export default generate(({ignored, token}) => {
   //      a('SOURCE_CHARACTER').except(oneOf(match('"""'), match('\\"""'))),
   //    ).name('BLOCK_STRING_CHARACTER');
 
+  // if I were to write that with my imaginary DSL, it would be...
+  //
+  //     [impossible to write without lookahead...]
+  //     /
+  //     this:                  \\"""
+  //     or:                    |
+  //     this (anything):       [\u0009\u000a\u000d\u0020-\uffff]
+  //     negative lookahead:        (?!"""|\\""")
+  //     /
+  //
+  //     match \""" or .... nah... let's try just the second branch:
+  //
+  //     match any SOURCE_CHARACTER except " or \\
+  //     any \\ not followed by """
+  //     any " not followed by ""
+  //
+  //     and the "not followed by" bit requires, you guess it, lookahead...
+  //     but if you had that, then you could union that with: match \"""
+  //
+  // https://stackoverflow.com/questions/14802732/finding-the-complement-of-a-dfa
+  //
+  // eg. given _complete_ DFA, toggle accept-ness of every state
+  //
+  //                        "      "      "
+  // TRIPLE_QUOTE = -->  0 ---> 1 ---> 2 ---> 3 (accept)
+  //                     \      \      \
+  //                 [^"] ----------------> 4 (sink/error/exit)
+  //                                      / \
+  //                                      \_/ (self transition on any input)
+  //                                       *
+  //  COMPLEMENT = same, but 0/1/2/4 are now accept states; 3 is the only state
+  //  that doesn't accept -- recognizes everything except """
+  //
+  // but see also: https://cs.stackexchange.com/questions/2557/how-to-simulate-backreferences-lookaheads-and-lookbehinds-in-finite-state-auto
+  //
+  // try \\"""
+  // or  anything (record index)
+  //     then """ (if accepts, didn't match)
+  //     or \\""" (if accepts, didn't match)
+  //
+  // ie. epsilon transitions to those two other machines...
+
   token('STRING_VALUE', '"', STRING_CHARACTER, '"');
-  // cf previous lexer:
-  //
-  //    const STRING_VALUE = sequence(
-  //      match('"'),
-  //      maybe(repeat('STRING_CHARACTER')),
-  //      match('"'),
-  //    );
-  //
-  // where STRING_CHARACTER is:
-  //
-  //    oneOf(
-  //      a('SOURCE_CHARACTER').except(
-  //        oneOf(match('"'), match('\\'), 'LINE_TERMINATOR'),
-  //      ),
-  //      'ESCAPED_UNICODE',
-  //      'ESCAPED_CHARACTER',
-  //    ).name('STRING_CHARACTER');
 
   //
   // Ignored tokens (2.1.7).
