@@ -1,5 +1,6 @@
 import compileRegExp from '../../compileRegExp';
 import {
+  BLOCK_STRING_VALUE,
   ESCAPED_CHARACTER,
   ESCAPED_UNICODE,
   EXPONENT_PART,
@@ -23,6 +24,46 @@ import type {TransitionTable} from '../TransitionTable';
 
 describe('minimizeDFA()', () => {
   describe('minimizing DFAs from "real world" regular expressions', () => {
+    it('minimizes a DFA for BLOCK_STRING_VALUE', () => {
+      expect(minimize(BLOCK_STRING_VALUE)).toEqual({
+        acceptStates: new Set([6]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([['Atom:"', new Set([1])]]),
+          /* 1 */ new Map([['Atom:"', new Set([2])]]),
+          /* 2 */ new Map([['Atom:"', new Set([3])]]),
+          /* 3 */ new Map([
+            ['Range:\t-\n', new Set([3])],
+            ['Atom:\r', new Set([3])],
+            ['Range: -!', new Set([3])],
+            ['Atom:"', new Set([4])],
+            ['Range:#-\uffff', new Set([3])],
+          ]),
+          /* 4 */ new Map([
+            ['Range:\t-\n', new Set([3])],
+            ['Atom:\r', new Set([3])],
+            ['Range: -!', new Set([3])],
+            ['Atom:"', new Set([5])],
+            ['Range:#-\uffff', new Set([3])],
+          ]),
+          /* 5 */ new Map([
+            ['Range:\t-\n', new Set([3])],
+            ['Atom:\r', new Set([3])],
+            ['Range: -!', new Set([3])],
+            ['Atom:"', new Set([6])],
+            ['Range:#-\uffff', new Set([3])],
+          ]),
+          /* 6 */ new Map([
+            ['Range:\t-\n', new Set([3])],
+            ['Atom:\r', new Set([3])],
+            ['Range: -!', new Set([3])],
+            ['Atom:"', new Set([6])],
+            ['Range:#-\uffff', new Set([3])],
+          ]),
+        ],
+      });
+    });
+
     it('minimizes a DFA for ESCAPED_CHARACTER', () => {
       expect(minimize(ESCAPED_CHARACTER)).toEqual({
         acceptStates: new Set([2]),
@@ -306,14 +347,6 @@ describe('minimizeDFA()', () => {
 });
 
 function minimize(regExp: RegExp): TransitionTable {
-  // regexp behaves properly here: https://regex101.com/r/ga6pgV/1
-  // console.log(JSON.stringify(compileRegExp(regExp), null, 2)); // looks right
-  // console.log(require('../stringifyNFA').default(regExpToNFA(compileRegExp(regExp)))); // to hard to read (> 60 states)
-  // console.log(require('../stringifyTransitionTable').default(toTransitionTable(regExpToNFA(compileRegExp(regExp))))); // still pretty hard to read
-  // console.log(require('../stringifyTransitionTable').default(toTransitionTable(removeEpsilons(regExpToNFA(compileRegExp(regExp)))))); // still pretty hard to read
-  // console.log(require('../stringifyTransitionTable').default(toTransitionTable(NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(regExp))))))); // 28 states now, looks right
-  // console.log(require('../stringifyTransitionTable').default(toTransitionTable(sortEdges(NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(regExp)))))))); // quick glance, still looks right
-  // console.log(require('../stringifyTransitionTable').default(toTransitionTable(minimizeDFA(sortEdges(NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(regExp))))))))); // boom, all gone
   return toTransitionTable(
     minimizeDFA(
       sortEdges(NFAToDFA(removeEpsilons(regExpToNFA(compileRegExp(regExp))))),

@@ -54,6 +54,9 @@ export const STRING_CHARACTER =
 export const STRING_VALUE =
   /"(\\u[0-9A-Fa-f]{4}|\\["\\\/bfnrt]|[\u0009\u0020\u0021\u0023-\u005b\u005d-\uffff])*"/;
 
+export const BLOCK_STRING_VALUE =
+  /"""([\u0009\u000a\u000d\u0020-\uffff]|\\""")*"""/;
+
 /**
  * Generate a lexer for the GraphQL language.
  *
@@ -65,19 +68,26 @@ export const STRING_VALUE =
  *   latter (delimited by '"').
  *
  *   A STRING_VALUE may contain escapes, but a BLOCK_STRING_VALUE is effectively
- *   "raw", other than some special whitespace handling dictated by the spec:
+ *   "raw", other than `\"""` and some special whitespace handling dictated by
+ *   the spec:
+ *
  *   - https://spec.graphql.org/October2021/#sec-String-Value.Block-Strings
  *
- * - FLOAT_VALUE and INT_VALUE: An INT_VALUE may not be followed by a dot or a
- *   NAME. As an added wrinkle, an INT_VALUE of zero may not be followed by
- *   another digit (ie. "00" is invalid, as is "01" etc). If an INT_VALUE is
- *   followed by a dot or "e"/"E" then it must be interpreted as a FLOAT_VALUE
- *   instead.
+ *   Note that `"""` always begins a BLOCK_STRING_VALUE; a sequence like
+ *   `""""""` is an empty BLOCK_STRING_VALUE, not three empty STRING_VALUEs.
+ *
+ * - FLOAT_VALUE and INT_VALUE: An INT_VALUE may not be followed by a dot or
+ *   a NAME. As an added wrinkle, an INT_VALUE of zero may not be followed by
+ *   another digit (ie. "0" is valid, but "00" is invalid, as is "01" etc). If
+ *   an INT_VALUE is followed by a dot or "e"/"E" then it must be interpreted as
+ *   a FLOAT_VALUE instead.
  *
  *   A FLOAT_VALUE must not be followed by a dot (ie. "1.2.3" is invalid) or a
- *   NAME (ie. "1.2L" is invalid).
+ *   NAME (ie. "1.2L" is invalid). Valid FLOAT_VALUEs have the form: -1.234,
+ *   2.05e-1, 3.10E2 etc.
  *
  *   See:
+ *
  *   - https://spec.graphql.org/October2021/#sec-Int-Value
  *   - https://spec.graphql.org/October2021/#sec-Float-Value
  */
@@ -120,6 +130,8 @@ export default generate(({ignored, token}) => {
   //      ),
   //    );
   //
+  //    lookahead: may not be followed by NAME character
+  //
   // where the various `*_PART` patterns are defined as follows:
   //
   //    match(/[eE][+-]?\d+/).name('EXPONENT_PART');
@@ -129,6 +141,8 @@ export default generate(({ignored, token}) => {
   // INT_VALUE:
   //
   //    const INT_VALUE = an('INTEGER_PART');
+  //
+  //    lookahead: may not be followed by NAME character
 
   token(
     'BLOCK_STRING_VALUE',
