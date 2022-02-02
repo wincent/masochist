@@ -55,7 +55,7 @@ export const STRING_VALUE =
   /"(\\u[0-9A-Fa-f]{4}|\\["\\\/bfnrt]|[\u0009\u0020\u0021\u0023-\u005b\u005d-\uffff])*"/;
 
 export const BLOCK_STRING_VALUE =
-  /"""([\u0009\u000a\u000d\u0020-\uffff]|\\""")*"""/;
+  /"""(\\"""|[\u0009\u000a\u000d\u0020-\uffff])*"""/;
 
 /**
  * Generate a lexer for the GraphQL language.
