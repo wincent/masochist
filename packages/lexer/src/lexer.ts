@@ -33,6 +33,20 @@ export const FRACTIONAL_PART = /\.\d+/;
 export const INTEGER_PART = /-?(0|[1-9]\d*)/;
 export const LINE_TERMINATOR = /\n|\r\n|\r/;
 export const NAME = /[_a-z][_0-9a-z]*/i;
+
+// Basically:
+//
+// INTEGER_PART
+// (
+//   FRACTIONAL_PART EXPONENT_PART |
+//   EXPONENT_PART |
+//   FRACTIONAL_PART
+// )?
+//
+// lookahead: cannot be followed by NAME or .
+//
+export const NUMBER = /-?(0|[1-9]\d*)(\.\d+[eE][+-]?\d+|[eE][+-]?\d+|\.\d+)?/;
+
 export const SOURCE_CHARACTER = /[\u0009\u000a\u000d\u0020-\uffff]/;
 export const UNICODE_BOM = /\ufeff/;
 export const WHITESPACE = /[\t ]+/;

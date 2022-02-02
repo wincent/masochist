@@ -8,6 +8,7 @@ import {
   INTEGER_PART,
   LINE_TERMINATOR,
   NAME,
+  NUMBER,
   SOURCE_CHARACTER,
   STRING_CHARACTER,
   STRING_VALUE,
@@ -200,6 +201,48 @@ describe('minimizeDFA()', () => {
             ['Atom:_', new Set([1])],
             ['Range:0-9', new Set([1])],
           ]),
+        ],
+      });
+    });
+
+    it('minimizes a DFA for NUMBER', () => {
+      expect(minimize(NUMBER)).toEqual({
+        acceptStates: new Set([2, 6, 8, 3]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([
+            ['Atom:-', new Set([1])],
+            ['Atom:0', new Set([2])],
+            ['Range:1-9', new Set([3])],
+          ]),
+          /* 1 */ new Map([
+            ['Atom:0', new Set([2])],
+            ['Range:1-9', new Set([3])],
+          ]),
+          /* 2 */ new Map([
+            ['Atom:.', new Set([4])],
+            ['Atom:E', new Set([5])],
+            ['Atom:e', new Set([5])],
+          ]),
+          /* 3 */ new Map([
+            ['Atom:.', new Set([4])],
+            ['Range:0-9', new Set([3])],
+            ['Atom:E', new Set([5])],
+            ['Atom:e', new Set([5])],
+          ]),
+          /* 4 */ new Map([['Range:0-9', new Set([6])]]),
+          /* 5 */ new Map([
+            ['Atom:+', new Set([7])],
+            ['Atom:-', new Set([7])],
+            ['Range:0-9', new Set([8])],
+          ]),
+          /* 6 */ new Map([
+            ['Range:0-9', new Set([6])],
+            ['Atom:E', new Set([5])],
+            ['Atom:e', new Set([5])],
+          ]),
+          /* 7 */ new Map([['Range:0-9', new Set([8])]]),
+          /* 8 */ new Map([['Range:0-9', new Set([8])]]),
         ],
       });
     });

@@ -7,6 +7,7 @@ import {
   INTEGER_PART,
   LINE_TERMINATOR,
   NAME,
+  NUMBER,
   SOURCE_CHARACTER,
   WHITESPACE,
 } from '../../lexer';
@@ -365,6 +366,73 @@ describe('NFAToDFA()', () => {
             ['Atom:_', new Set([6])],
             ['Range:a-z', new Set([7])],
           ]),
+        ],
+      });
+    });
+
+    it('builds a DFA for NUMBER', () => {
+      expect(makeDFA(NUMBER)).toEqual({
+        acceptStates: new Set([2, 8, 16, 11, 3, 7]),
+        startStates: new Set([0]),
+        transitions: [
+          /* 0 */ new Map([
+            ['Atom:-', new Set([1])],
+            ['Atom:0', new Set([2])],
+            ['Range:1-9', new Set([3])],
+          ]),
+          /* 1 */ new Map([
+            ['Atom:0', new Set([2])],
+            ['Range:1-9', new Set([3])],
+          ]),
+          /* 2 */ new Map([
+            ['Atom:.', new Set([4])],
+            ['Atom:E', new Set([5])],
+            ['Atom:e', new Set([6])],
+          ]),
+          /* 3 */ new Map([
+            ['Atom:.', new Set([4])],
+            ['Range:0-9', new Set([7])],
+            ['Atom:E', new Set([5])],
+            ['Atom:e', new Set([6])],
+          ]),
+          /* 4 */ new Map([['Range:0-9', new Set([8])]]),
+          /* 5 */ new Map([
+            ['Atom:+', new Set([9])],
+            ['Atom:-', new Set([10])],
+            ['Range:0-9', new Set([11])],
+          ]),
+          /* 6 */ new Map([
+            ['Atom:+', new Set([9])],
+            ['Atom:-', new Set([10])],
+            ['Range:0-9', new Set([11])],
+          ]),
+          /* 7 */ new Map([
+            ['Atom:.', new Set([4])],
+            ['Range:0-9', new Set([7])],
+            ['Atom:E', new Set([5])],
+            ['Atom:e', new Set([6])],
+          ]),
+          /* 8 */ new Map([
+            ['Range:0-9', new Set([8])],
+            ['Atom:E', new Set([12])],
+            ['Atom:e', new Set([13])],
+          ]),
+          /* 9 */ new Map([['Range:0-9', new Set([11])]]),
+          /* 10 */ new Map([['Range:0-9', new Set([11])]]),
+          /* 11 */ new Map([['Range:0-9', new Set([11])]]),
+          /* 12 */ new Map([
+            ['Atom:+', new Set([14])],
+            ['Atom:-', new Set([15])],
+            ['Range:0-9', new Set([16])],
+          ]),
+          /* 13 */ new Map([
+            ['Atom:+', new Set([14])],
+            ['Atom:-', new Set([15])],
+            ['Range:0-9', new Set([16])],
+          ]),
+          /* 14 */ new Map([['Range:0-9', new Set([16])]]),
+          /* 15 */ new Map([['Range:0-9', new Set([16])]]),
+          /* 16 */ new Map([['Range:0-9', new Set([16])]]),
         ],
       });
     });

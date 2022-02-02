@@ -7,6 +7,7 @@ import {
   INTEGER_PART,
   LINE_TERMINATOR,
   NAME,
+  NUMBER,
   SOURCE_CHARACTER,
   WHITESPACE,
 } from '../../lexer';
@@ -347,6 +348,12 @@ describe('removeEpsilons()', () => {
     it('ensures no epsilons in NAME', () => {
       expect(
         countEpsilons(removeEpsilons(regExpToNFA(compileRegExp(NAME)))),
+      ).toBe(0);
+    });
+
+    it('ensures no epsilons in NUMBER', () => {
+      expect(
+        countEpsilons(removeEpsilons(regExpToNFA(compileRegExp(NUMBER)))),
       ).toBe(0);
     });
 

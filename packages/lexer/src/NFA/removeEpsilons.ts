@@ -42,16 +42,6 @@ export default function removeEpsilons(nfa: NFA): NFA {
           }),
         );
 
-        // (Highly inefficient) check for dupes. While optimize this if it
-        // becomes necessary to do so.
-        for (let i = source.edges.length - 1; i >= 0; i--) {
-          for (let j = source.edges.length - 1; j >= 0; j--) {
-            if (i !== j && equalEdges(source.edges[i], source.edges[j])) {
-              source.edges.splice(j, 1);
-            }
-          }
-        }
-
         // If any target was an accept node, source must become an accept node.
         if (targets.some((target) => testFlag(target.flags, ACCEPT))) {
           source.flags = setFlag(source.flags, ACCEPT);
@@ -68,6 +58,21 @@ export default function removeEpsilons(nfa: NFA): NFA {
             }
           }
         });
+      }
+    }
+
+    // (Highly inefficient) check for dupes. Will optimize this if it
+    // becomes necessary to do so.
+    for (let i = edges.length - 1; i >= 0; i--) {
+      const a = edges[i];
+      for (let j = edges.length - 1; j >= 0; j--) {
+        if (i === j) {
+          continue;
+        }
+        const b = edges[j];
+        if (equalEdges(a, b)) {
+          edges.splice(Math.max(i, j), 1);
+        }
       }
     }
   });
