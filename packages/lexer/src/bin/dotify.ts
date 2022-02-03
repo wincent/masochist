@@ -117,6 +117,12 @@ function unionedTokens() {
 
 async function main() {
   const diagrams = {
+    // Experiments.
+    experimental_strings: union({
+      BLOCK_STRING_VALUE_TT,
+      STRING_VALUE,
+    }),
+
     // Composite machines.
     ignored: ignoredTokens(),
     unioned: unionedTokens(),

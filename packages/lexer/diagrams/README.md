@@ -1,5 +1,10 @@
 # `@masochist/lexer` state machine diagrams
 
+## experimental_strings
+
+![experimental_strings](./experimental_strings-dark.png#gh-dark-mode-only)
+![experimental_strings](./experimental_strings-light.png#gh-light-mode-only)
+
 ## ignored
 
 ![ignored](./ignored-dark.png#gh-dark-mode-only)

@@ -1,5 +1,7 @@
 import generate from './generate';
 
+import type {TransitionTable} from './NFA/TransitionTable';
+
 //
 // Punctuators (2.1.8)
 //
@@ -73,7 +75,7 @@ export const BLOCK_STRING_VALUE =
 
 // TODO: figure out how to write this as a regexp, then make sure our
 // regexp-to-DFA conversion doesn't mangle it.
-export const BLOCK_STRING_VALUE_TT = {
+export const BLOCK_STRING_VALUE_TT: TransitionTable = {
   acceptStates: new Set([6]),
   startStates: new Set([0]),
   transitions: [
