@@ -106,11 +106,11 @@ function unionedTokens() {
       OPENING_BRACKET,
       OPENING_PAREN,
 
-      // TODO: strings too
-
       // Other Lexical tokens.
+      BLOCK_STRING_VALUE_TT,
       NAME,
       NUMBER,
+      STRING_VALUE,
     },
   );
 }
