@@ -111,6 +111,9 @@ function unionedTokens() {
       NAME,
       NUMBER,
       STRING_VALUE,
+
+      // Ignored.
+      IGNORED: ignoredTokens(),
     },
   );
 }
