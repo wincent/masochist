@@ -70,12 +70,8 @@ export const STRING_CHARACTER =
 export const STRING_VALUE =
   /"(\\u[0-9A-Fa-f]{4}|\\["\\\/bfnrt]|[\u0009\u0020\u0021\u0023-\u005b\u005d-\uffff])*"/;
 
-export const BLOCK_STRING_VALUE =
-  /"""(\\"""|[\u0009\u000a\u000d\u0020-\uffff])*"""/;
-
-// TODO: figure out how to write this as a regexp, then make sure our
-// regexp-to-DFA conversion doesn't mangle it.
-export const BLOCK_STRING_VALUE_TT: TransitionTable = {
+// Too hard to write this one as a RegExp, so we do it by hand.
+export const BLOCK_STRING_VALUE: TransitionTable = {
   acceptStates: new Set([6]),
   startStates: new Set([0]),
   transitions: [

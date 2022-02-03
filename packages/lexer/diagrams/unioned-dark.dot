@@ -28,7 +28,7 @@ digraph finite_state_machine {
   node [color = "white", fontcolor = "white", style = "", shape = doublecircle, xlabel = "NUMBER"]; 35;
   node [color = "white", fontcolor = "white", style = "", shape = doublecircle, xlabel = "NUMBER"]; 37;
   node [color = "white", fontcolor = "white", style = "", shape = doublecircle, xlabel = "BANG"]; 4;
-  node [color = "white", fontcolor = "white", style = "", shape = doublecircle, xlabel = "BLOCK_STRING_VALUE_TT"]; 44;
+  node [color = "white", fontcolor = "white", style = "", shape = doublecircle, xlabel = "BLOCK_STRING_VALUE"]; 44;
   node [color = "white", fontcolor = "white", style = "", shape = doublecircle, xlabel = "IGNORED"]; 6;
   node [color = "white", fontcolor = "white", style = "", shape = doublecircle, xlabel = "DOLLAR"]; 7;
   node [color = "white", fontcolor = "white", style = "", shape = doublecircle, xlabel = "AMPERSAND"]; 8;

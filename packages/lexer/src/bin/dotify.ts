@@ -20,7 +20,6 @@ import {
   BANG,
   BAR,
   BLOCK_STRING_VALUE,
-  BLOCK_STRING_VALUE_TT,
   CLOSING_BRACE,
   CLOSING_BRACKET,
   CLOSING_PAREN,
@@ -107,7 +106,7 @@ function unionedTokens() {
       OPENING_PAREN,
 
       // Other Lexical tokens.
-      BLOCK_STRING_VALUE_TT,
+      BLOCK_STRING_VALUE,
       NAME,
       NUMBER,
       STRING_VALUE,
@@ -122,7 +121,7 @@ async function main() {
   const diagrams = {
     // Experiments.
     experimental_strings: union({
-      BLOCK_STRING_VALUE_TT,
+      BLOCK_STRING_VALUE,
       STRING_VALUE,
     }),
 
@@ -136,7 +135,6 @@ async function main() {
     BANG: machine(BANG),
     BAR: machine(BAR),
     BLOCK_STRING_VALUE: machine(BLOCK_STRING_VALUE),
-    BLOCK_STRING_VALUE_TT: machine(BLOCK_STRING_VALUE_TT),
     CLOSING_BRACE: machine(CLOSING_BRACE),
     CLOSING_BRACKET: machine(CLOSING_BRACKET),
     CLOSING_PAREN: machine(CLOSING_PAREN),

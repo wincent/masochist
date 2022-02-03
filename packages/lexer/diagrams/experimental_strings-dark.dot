@@ -7,7 +7,7 @@ digraph finite_state_machine {
   node [style = invis]; -1;
 
   // Accept states.
-  node [color = "white", fontcolor = "white", style = "", shape = doublecircle, xlabel = "BLOCK_STRING_VALUE_TT"]; 15;
+  node [color = "white", fontcolor = "white", style = "", shape = doublecircle, xlabel = "BLOCK_STRING_VALUE"]; 15;
   node [color = "white", fontcolor = "white", style = "", shape = doublecircle, xlabel = "STRING_VALUE"]; 3;
   node [color = "white", fontcolor = "white", style = "", shape = doublecircle, xlabel = "STRING_VALUE"]; 5;
 
