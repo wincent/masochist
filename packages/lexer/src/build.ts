@@ -471,17 +471,26 @@ const ast = {
   assign(
     binding: 'const' | 'let' | 'var' | null,
     lhs: string,
-    rhs: Expression,
+    rhs: Expression | number,
   ): AssignmentStatement {
-    return {
-      kind: 'AssignmentStatement',
-      binding,
-      lhs,
-      rhs,
-    };
+    if (typeof rhs === 'number') {
+      return {
+        kind: 'AssignmentStatement',
+        binding,
+        lhs,
+        rhs: ast.number(rhs),
+      };
+    } else {
+      return {
+        kind: 'AssignmentStatement',
+        binding,
+        lhs,
+        rhs,
+      };
+    }
   },
 
-  const(lhs: string, rhs: Expression): AssignmentStatement {
+  const(lhs: string, rhs: Expression | number): AssignmentStatement {
     return ast.assign('const', lhs, rhs);
   },
 
@@ -489,7 +498,7 @@ const ast = {
     return {kind: 'Identifier', name};
   },
 
-  let(lhs: string, rhs: Expression): AssignmentStatement {
+  let(lhs: string, rhs: Expression | number): AssignmentStatement {
     return ast.assign('let', lhs, rhs);
   },
 
@@ -497,7 +506,7 @@ const ast = {
     return {kind: 'NumberValue', value};
   },
 
-  var(lhs: string, rhs: Expression): AssignmentStatement {
+  var(lhs: string, rhs: Expression | number): AssignmentStatement {
     return ast.assign('var', lhs, rhs);
   },
 };
@@ -509,23 +518,23 @@ export function wip(): Program {
 
   // TODO probably don't need ACCEPT
   // const ACCEPT = -2;
-  statements.push(ast.const('ACCEPT', ast.number(-2)));
+  statements.push(ast.const('ACCEPT', -2));
 
   // const REJECT = -1;
-  statements.push(ast.const('REJECT', ast.number(-1)));
+  statements.push(ast.const('REJECT', -1));
 
   // const START = 0;
   if (table.startStates.size !== 1) {
     throw new Error('Need exactly one start state');
   }
   const START = Array.from(table.startStates)[0];
-  statements.push(ast.const('START', ast.number(START)));
+  statements.push(ast.const('START', START));
 
   // let state = START;
   statements.push(ast.let('state', ast.identifier('START')));
 
   // let tokenStart = 0;
-  statements.push(ast.let('tokenStart', ast.number(0)));
+  statements.push(ast.let('tokenStart', 0));
 
   // let i = tokenStart;
   statements.push(ast.let('i', ast.identifier('tokenStart')));
