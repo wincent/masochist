@@ -7,7 +7,6 @@ describe('wip()', () => {
     const ast = wip();
     expect(print(ast)).toBe(
       dedent`
-        const ACCEPT = -2;
         const REJECT = -1;
         const START = 0;
         let state = START;

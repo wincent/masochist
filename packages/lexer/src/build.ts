@@ -490,6 +490,15 @@ const ast = {
     }
   },
 
+  binop(lexpr: Expression, operator: '<', rexpr: Expression): BinaryExpression {
+    return {
+      kind: 'BinaryExpression',
+      lexpr,
+      operator,
+      rexpr,
+    };
+  },
+
   const(lhs: string, rhs: Expression | number): AssignmentStatement {
     return ast.assign('const', lhs, rhs);
   },
@@ -498,8 +507,16 @@ const ast = {
     return {kind: 'Identifier', name};
   },
 
+  index(indexee: Expression, index: Expression): IndexExpression {
+    return {kind: 'IndexExpression', indexee, index};
+  },
+
   let(lhs: string, rhs: Expression | number): AssignmentStatement {
     return ast.assign('let', lhs, rhs);
+  },
+
+  member(object: Expression, property: Expression): MemberExpression {
+    return {kind: 'MemberExpression', object, property};
   },
 
   number(value: number): NumberValue {
@@ -516,55 +533,30 @@ const ast = {
 export function wip(): Program {
   const statements: Array<Statement> = [];
 
-  // TODO probably don't need ACCEPT
-  // const ACCEPT = -2;
-  statements.push(ast.const('ACCEPT', -2));
-
-  // const REJECT = -1;
   statements.push(ast.const('REJECT', -1));
 
-  // const START = 0;
   if (table.startStates.size !== 1) {
     throw new Error('Need exactly one start state');
   }
   const START = Array.from(table.startStates)[0];
   statements.push(ast.const('START', START));
 
-  // let state = START;
   statements.push(ast.let('state', ast.identifier('START')));
-
-  // let tokenStart = 0;
   statements.push(ast.let('tokenStart', 0));
-
-  // let i = tokenStart;
   statements.push(ast.let('i', ast.identifier('tokenStart')));
 
   const ch = ast.identifier('ch');
 
   const whileStatement: WhileStatement = {
     kind: 'WhileStatement',
-    condition: {
-      kind: 'BinaryExpression',
-      lexpr: {kind: 'Identifier', name: 'i'},
-      operator: '<',
-      rexpr: {
-        kind: 'MemberExpression',
-        object: {kind: 'Identifier', name: 'input'},
-        property: {kind: 'Identifier', name: 'length'},
-      },
-    },
+    condition: ast.binop(
+      ast.identifier('i'),
+      '<',
+      ast.member(ast.identifier('input'), ast.identifier('length')),
+    ),
     block: [
       // const ch = input[i];
-      {
-        kind: 'AssignmentStatement',
-        binding: 'const',
-        lhs: 'ch',
-        rhs: {
-          kind: 'IndexExpression',
-          index: {kind: 'Identifier', name: 'i'},
-          indexee: {kind: 'Identifier', name: 'input'},
-        },
-      },
+      ast.const('ch', ast.index(ast.identifier('input'), ast.identifier('i'))),
     ],
   };
   statements.push({
