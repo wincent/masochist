@@ -467,6 +467,7 @@ const table: TransitionTable = {
 //
 // These will do for now, until I come up with something even fancier that can
 // parse simple JS (eg. ast`const REJECT = -1` and such).
+
 const ast = {
   assign(
     binding: 'const' | 'let' | 'var' | null,
@@ -499,8 +500,76 @@ const ast = {
     };
   },
 
+  comment(contents: string): LineComment {
+    return {
+      kind: 'LineComment',
+      contents: ` ${contents}`,
+    };
+  },
+
   const(lhs: string, rhs: Expression | number): AssignmentStatement {
     return ast.assign('const', lhs, rhs);
+  },
+
+  expression(template: string): Expression {
+    if (/^\d+$/.test(template)) {
+      return ast.number(parseInt(template));
+    }
+
+    let match = template.match(/^(\w+)\[(\w+)\]$/);
+    if (match) {
+      const indexee = match[1];
+      const index = match[2];
+      return ast.index(ast.identifier(indexee), ast.identifier(index));
+    }
+
+    match = template.match(/^(\S+)\s*(<|<=|>=|\+|===)\s*(.+?)\s*$/);
+    if (match) {
+      const lexpr = match[1];
+      const operator = match[2];
+      invariant(
+        operator === '<' ||
+          operator === '<=' ||
+          operator === '>=' ||
+          operator === '+' ||
+          operator === '===',
+      );
+      const rexpr = match[3];
+
+      match = rexpr.match(/^\d+$/);
+      if (match) {
+        return {
+          kind: 'BinaryExpression',
+          lexpr: {kind: 'Identifier', name: lexpr},
+          operator,
+          rexpr: {kind: 'NumberValue', value: parseInt(match[0])},
+        };
+      }
+
+      match = rexpr.match(/^'(.+)'$/);
+      if (match) {
+        return {
+          kind: 'BinaryExpression',
+          lexpr: {kind: 'Identifier', name: lexpr},
+          operator,
+          rexpr: {kind: 'StringValue', value: match[1]},
+        };
+      }
+
+      match = rexpr.match(/^(\S+)\.(\S+)$/);
+      if (match) {
+        const object: Expression = {kind: 'Identifier', name: match[1]};
+        const property: Expression = {kind: 'Identifier', name: match[2]};
+        return {
+          kind: 'BinaryExpression',
+          lexpr: {kind: 'Identifier', name: lexpr},
+          operator,
+          rexpr: {kind: 'MemberExpression', object, property},
+        };
+      }
+    }
+
+    return ast.identifier(template);
   },
 
   identifier(name: string): Identifier {
@@ -523,6 +592,58 @@ const ast = {
     return {kind: 'NumberValue', value};
   },
 
+  statement(template: string): Statement {
+    let match = template.match(/^break(?:\s+(\w+))?$/);
+    if (match) {
+      const label = match[1];
+      if (label) {
+        return {kind: 'BreakStatement', label};
+      } else {
+        return {kind: 'BreakStatement'};
+      }
+    }
+
+    match = template.match(/^(\w+)(\+\+)$/);
+    if (match) {
+      const name = match[1];
+      const operator = match[2];
+      invariant(operator === '++');
+      return {
+        kind: 'ExpressionStatement',
+        expression: {
+          kind: 'UnaryExpression',
+          operator,
+          operand: {kind: 'Identifier', name},
+        },
+      };
+    }
+
+    match = template.match(/^(?:(const|let|var)\s+)?(\w+)\s*=\s*(.+?)\s*$/);
+    if (match) {
+      const binding = match[1];
+      invariant(
+        binding === 'const' ||
+          binding === 'let' ||
+          binding === 'var' ||
+          binding === undefined,
+      );
+      const lhs = match[2];
+      const rhs = ast.expression(match[3]);
+
+      return {
+        kind: 'AssignmentStatement',
+        binding: binding ?? null,
+        lhs,
+        rhs,
+      };
+    }
+    throw new Error('Not implemented');
+  },
+
+  string(value: string): StringValue {
+    return {kind: 'StringValue', value};
+  },
+
   var(lhs: string, rhs: Expression | number): AssignmentStatement {
     return ast.assign('var', lhs, rhs);
   },
@@ -533,31 +654,24 @@ const ast = {
 export function wip(): Program {
   const statements: Array<Statement> = [];
 
-  statements.push(ast.const('REJECT', -1));
+  statements.push(ast.statement('const REJECT = -1'));
 
   if (table.startStates.size !== 1) {
     throw new Error('Need exactly one start state');
   }
   const START = Array.from(table.startStates)[0];
-  statements.push(ast.const('START', START));
+  statements.push(ast.statement(`const START = ${START}`));
 
-  statements.push(ast.let('state', ast.identifier('START')));
-  statements.push(ast.let('tokenStart', 0));
-  statements.push(ast.let('i', ast.identifier('tokenStart')));
+  statements.push(ast.statement('let state = START'));
+  statements.push(ast.statement('let tokenStart = 0'));
+  statements.push(ast.statement('let i = tokenStart'));
 
   const ch = ast.identifier('ch');
 
   const whileStatement: WhileStatement = {
     kind: 'WhileStatement',
-    condition: ast.binop(
-      ast.identifier('i'),
-      '<',
-      ast.member(ast.identifier('input'), ast.identifier('length')),
-    ),
-    block: [
-      // const ch = input[i];
-      ast.const('ch', ast.index(ast.identifier('input'), ast.identifier('i'))),
-    ],
+    condition: ast.expression('i < input.length'),
+    block: [ast.statement('const ch = input[i]')],
   };
   statements.push({
     kind: 'LabelStatement',
@@ -573,37 +687,12 @@ export function wip(): Program {
       name: 'state',
     },
   };
-  whileStatement.block.push(switchStatement, {
-    kind: 'ExpressionStatement',
-    expression: {
-      kind: 'UnaryExpression',
-      operator: '++',
-      operand: {kind: 'Identifier', name: 'i'},
-    },
-  });
+  whileStatement.block.push(switchStatement, ast.statement('i++'));
 
-  const ignored: Array<Statement> = [
-    {
-      kind: 'LineComment',
-      contents: ' IGNORED token.',
-    },
-    {
-      kind: 'AssignmentStatement',
-      binding: null,
-      lhs: 'tokenStart',
-      rhs: {
-        kind: 'BinaryExpression',
-        lexpr: {kind: 'Identifier', name: 'i'},
-        operator: '+',
-        rexpr: {kind: 'NumberValue', value: 1},
-      },
-    },
-    {
-      kind: 'AssignmentStatement',
-      binding: null,
-      lhs: 'state',
-      rhs: {kind: 'Identifier', name: 'START'},
-    },
+  const ignored = [
+    ast.comment('IGNORED token.'),
+    ast.statement('tokenStart = i + 1'),
+    ast.statement('state = START'),
   ];
 
   table.transitions.forEach((transitionMap, i) => {
@@ -622,10 +711,7 @@ export function wip(): Program {
     }
 
     // 2. Build case.
-    const determinant: Expression =
-      i === START
-        ? {kind: 'Identifier', name: 'START'}
-        : {kind: 'NumberValue', value: i};
+    const determinant = i === START ? ast.identifier('START') : ast.number(i);
     const switchCase: SwitchCase = {
       kind: 'SwitchCase',
       determinant,
@@ -673,39 +759,19 @@ export function wip(): Program {
             // Moot for now because I don't have it anywhere in my state machine.
             expressions.push({kind: 'BooleanValue', value: true});
           } else if (transition.kind === 'Atom') {
-            expressions.push({
-              kind: 'BinaryExpression',
-              lexpr: ch,
-              operator: '===',
-              rexpr: {kind: 'StringValue', value: transition.value},
-            });
+            expressions.push(
+              ast.expression(`ch === ${JSON.stringify(transition.value)}`),
+            );
           } else {
             expressions.push({
               kind: 'BinaryExpression',
-              lexpr: {
-                kind: 'BinaryExpression',
-                lexpr: ch,
-                operator: '>=',
-                rexpr: {kind: 'StringValue', value: transition.from},
-              },
+              lexpr: ast.expression(`ch >= ${JSON.stringify(transition.from)}`),
               operator: '&&',
-              rexpr: {
-                kind: 'BinaryExpression',
-                lexpr: ch,
-                operator: '<=',
-                rexpr: {kind: 'StringValue', value: transition.to},
-              },
+              rexpr: ast.expression(`ch <= ${JSON.stringify(transition.to)}`),
             });
           }
         }
-        const block: Array<Statement> = [
-          {
-            kind: 'AssignmentStatement',
-            binding: null,
-            lhs: 'state',
-            rhs: {kind: 'NumberValue', value: j},
-          },
-        ];
+        const block: Array<Statement> = [ast.statement(`state = ${j}`)];
         if (!expressions.length) {
           throw new Error('Expected a non-empty set of expressions');
         } else if (expressions.length === 1) {
@@ -749,51 +815,31 @@ export function wip(): Program {
         } else {
           ifStatement.alternate = [
             // TODO: only do this is consequents don't provide complete coverage
-            {
-              kind: 'AssignmentStatement',
-              binding: null,
-              lhs: 'state',
-              rhs: {kind: 'Identifier', name: 'REJECT'},
-            },
-            {
-              kind: 'BreakStatement',
-              label: 'loop',
-            },
+            ast.statement('state = REJECT'),
+            ast.statement('break loop'),
           ];
         }
       });
       switchCase.block.push(ifStatement);
     }
-    switchCase.block.push({kind: 'BreakStatement'});
+    switchCase.block.push(ast.statement('break'));
     switchStatement.cases.push(switchCase);
   });
 
-  switchStatement.cases.push(
-    {
-      kind: 'SwitchCase',
-      determinant: {kind: 'Identifier', name: 'REJECT'},
-      block: [
-        {
-          kind: 'ThrowStatement',
-          expression: {
-            kind: 'NewExpression',
-            object: {kind: 'Identifier', name: 'Error'},
-            arguments: [
-              {kind: 'StringValue', value: 'Failed to recognize token'},
-            ],
-          },
+  switchStatement.cases.push({
+    kind: 'SwitchCase',
+    determinant: ast.identifier('REJECT'),
+    block: [
+      {
+        kind: 'ThrowStatement',
+        expression: {
+          kind: 'NewExpression',
+          object: ast.identifier('Error'),
+          arguments: [ast.string('Failed to recognize token')],
         },
-      ],
-    },
-    // {
-    //   kind: 'SwitchCase',
-    //   determinant: {kind: 'Identifier', name: 'ACCEPT'},
-    //   block: [
-    //     // TODO: accept = doSomething here. one ACCEPT state is pretty obviously
-    //     // not enough; these will have to be rolled into states above
-    //   ],
-    // },
-  );
+      },
+    ],
+  });
 
   return {
     kind: 'Program',
