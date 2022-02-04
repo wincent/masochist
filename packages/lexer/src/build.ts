@@ -463,6 +463,45 @@ const table: TransitionTable = {
   ],
 };
 
+// Convenience methods.
+//
+// These will do for now, until I come up with something even fancier that can
+// parse simple JS (eg. ast`const REJECT = -1` and such).
+const ast = {
+  assign(
+    binding: 'const' | 'let' | 'var' | null,
+    lhs: string,
+    rhs: Expression,
+  ): AssignmentStatement {
+    return {
+      kind: 'AssignmentStatement',
+      binding,
+      lhs,
+      rhs,
+    };
+  },
+
+  const(lhs: string, rhs: Expression): AssignmentStatement {
+    return ast.assign('const', lhs, rhs);
+  },
+
+  identifier(name: string): Identifier {
+    return {kind: 'Identifier', name};
+  },
+
+  let(lhs: string, rhs: Expression): AssignmentStatement {
+    return ast.assign('let', lhs, rhs);
+  },
+
+  number(value: number): NumberValue {
+    return {kind: 'NumberValue', value};
+  },
+
+  var(lhs: string, rhs: Expression): AssignmentStatement {
+    return ast.assign('var', lhs, rhs);
+  },
+};
+
 // TODO: DRY some of this up to make it easier to write
 // (but wait until I'm sure the AST is the right shape first)
 export function wip(): Program {
@@ -470,58 +509,28 @@ export function wip(): Program {
 
   // TODO probably don't need ACCEPT
   // const ACCEPT = -2;
-  statements.push({
-    kind: 'AssignmentStatement',
-    binding: 'const',
-    lhs: 'ACCEPT',
-    rhs: {kind: 'NumberValue', value: -2},
-  });
+  statements.push(ast.const('ACCEPT', ast.number(-2)));
 
   // const REJECT = -1;
-  statements.push({
-    kind: 'AssignmentStatement',
-    binding: 'const',
-    lhs: 'REJECT',
-    rhs: {kind: 'NumberValue', value: -1},
-  });
+  statements.push(ast.const('REJECT', ast.number(-1)));
 
   // const START = 0;
   if (table.startStates.size !== 1) {
     throw new Error('Need exactly one start state');
   }
   const START = Array.from(table.startStates)[0];
-  statements.push({
-    kind: 'AssignmentStatement',
-    binding: 'const',
-    lhs: 'START',
-    rhs: {kind: 'NumberValue', value: START},
-  });
+  statements.push(ast.const('START', ast.number(START)));
 
   // let state = START;
-  statements.push({
-    kind: 'AssignmentStatement',
-    binding: 'let',
-    lhs: 'state',
-    rhs: {kind: 'Identifier', name: 'START'},
-  });
+  statements.push(ast.let('state', ast.identifier('START')));
 
   // let tokenStart = 0;
-  statements.push({
-    kind: 'AssignmentStatement',
-    binding: 'let',
-    lhs: 'tokenStart',
-    rhs: {kind: 'NumberValue', value: 0},
-  });
+  statements.push(ast.let('tokenStart', ast.number(0)));
 
   // let i = tokenStart;
-  statements.push({
-    kind: 'AssignmentStatement',
-    binding: 'let',
-    lhs: 'i',
-    rhs: {kind: 'Identifier', name: 'tokenStart'},
-  });
+  statements.push(ast.let('i', ast.identifier('tokenStart')));
 
-  const ch: Identifier = {kind: 'Identifier', name: 'ch'};
+  const ch = ast.identifier('ch');
 
   const whileStatement: WhileStatement = {
     kind: 'WhileStatement',
