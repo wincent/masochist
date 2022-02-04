@@ -67,7 +67,8 @@ type Expression =
   | NewExpression
   | PrimitiveValue
   | TernaryExpression
-  | UnaryExpression;
+  | UnaryExpression
+  | YieldExpression;
 
 type ExpressionStatement = {
   kind: 'ExpressionStatement';
@@ -200,6 +201,11 @@ type WhileStatement = {
   kind: 'WhileStatement';
   condition: Expression;
   block: Array<Statement>;
+};
+
+type YieldExpression = {
+  kind: 'YieldExpression';
+  expression: Expression;
 };
 
 const table: TransitionTable = {
@@ -647,6 +653,18 @@ const ast = {
   var(lhs: string, rhs: Expression | number): AssignmentStatement {
     return ast.assign('var', lhs, rhs);
   },
+
+  get break(): BreakStatement {
+    return {kind: 'BreakStatement'};
+  },
+
+  get false(): BooleanValue {
+    return {kind: 'BooleanValue', value: false};
+  },
+
+  get true(): BooleanValue {
+    return {kind: 'BooleanValue', value: true};
+  },
 };
 
 // TODO: DRY some of this up to make it easier to write
@@ -729,6 +747,11 @@ export function wip(): Program {
       } else if (isAccept) {
         switchCase.block.push({
           // TODO: emit proper token
+          // yield {
+          //   token: 'LABEL',
+          //   tokenStart, // <-- note use of shorthand here; teach printer to do that
+          //   tokenEnd: i,
+          // };
           kind: 'ExpressionStatement',
           expression: {
             kind: 'CallExpression',
@@ -757,7 +780,7 @@ export function wip(): Program {
             // - U+2029 PARAGRAPH SEPARATOR
             //
             // Moot for now because I don't have it anywhere in my state machine.
-            expressions.push({kind: 'BooleanValue', value: true});
+            expressions.push(ast.true);
           } else if (transition.kind === 'Atom') {
             expressions.push(
               ast.expression(`ch === ${JSON.stringify(transition.value)}`),
@@ -822,7 +845,7 @@ export function wip(): Program {
       });
       switchCase.block.push(ifStatement);
     }
-    switchCase.block.push(ast.statement('break'));
+    switchCase.block.push(ast.break);
     switchStatement.cases.push(switchCase);
   });
 
