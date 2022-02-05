@@ -805,7 +805,11 @@ export function wip(): Program {
 
     if (!conditions.length) {
       if (isIgnored) {
-        switchCase.block.push(...ignored);
+        switchCase.block.push(
+          ast.comment('IGNORED token.'),
+          ast.statement('tokenStart = i + 1'),
+          ast.statement('state = START'),
+        );
       } else if (isAccept) {
         // TODO: eventually this stuff will get folded inline where applicable
         // eg. instead of going from state N to M only to yield
@@ -895,7 +899,12 @@ export function wip(): Program {
           });
         }
         if (isIgnored) {
-          ifStatement.alternate = [...ignored, ast.continue('loop')];
+          ifStatement.alternate = [
+            ast.comment('IGNORED token.'),
+            ast.statement('tokenStart = i'),
+            ast.statement('state = START'),
+            ast.continue('loop'),
+          ];
         } else if (isAccept) {
           ifStatement.alternate = [
             {

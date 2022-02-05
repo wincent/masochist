@@ -71,22 +71,22 @@ function* lex(input: string) {
           state = 1;
         } else {
           // IGNORED token.
-          tokenStart = i + 1;
+          tokenStart = i;
           state = START;
           continue loop;
         }
         break;
       case 2:
         // IGNORED token.
-        tokenStart = i + 1;
+        tokenStart = i;
         state = START;
-        break;
+        continue loop;
       case 3:
         if (ch === 0x0a) {
           state = 2;
         } else {
           // IGNORED token.
-          tokenStart = i + 1;
+          tokenStart = i;
           state = START;
           continue loop;
         }
@@ -121,7 +121,7 @@ function* lex(input: string) {
           state = 6;
         } else {
           // IGNORED token.
-          tokenStart = i + 1;
+          tokenStart = i;
           state = START;
           continue loop;
         }
@@ -679,7 +679,7 @@ describe('wip()', () => {
                   state = 1;
                 } else {
                   // IGNORED token.
-                  tokenStart = i + 1;
+                  tokenStart = i;
                   state = START;
                   continue loop;
                 }
@@ -694,7 +694,7 @@ describe('wip()', () => {
                   state = 2;
                 } else {
                   // IGNORED token.
-                  tokenStart = i + 1;
+                  tokenStart = i;
                   state = START;
                   continue loop;
                 }
@@ -724,7 +724,7 @@ describe('wip()', () => {
                   state = 6;
                 } else {
                   // IGNORED token.
-                  tokenStart = i + 1;
+                  tokenStart = i;
                   state = START;
                   continue loop;
                 }
@@ -1141,15 +1141,15 @@ describe('wip()', () => {
 
   it('can lex a NAME token right at the end', () => {
     const tokens = [...lex('foo bar')];
-    // BUG: indices are off
     expect(tokens).toEqual([
       {token: 'NAME', tokenStart: 0, tokenEnd: 3},
-      {token: 'NAME', tokenStart: 5, tokenEnd: 7},
+      {token: 'NAME', tokenStart: 4, tokenEnd: 7},
     ]);
   });
 
   it('does something else', () => {
-    const tokens = [...lex(`
+    const tokens = [
+      ...lex(`
       query Crap {
         viewer {
           feed(first: 10, after: "cursor") {
@@ -1157,27 +1157,28 @@ describe('wip()', () => {
           }
         }
       }
-    `)];
+    `),
+    ];
     expect(tokens).toEqual([
-     {token: 'NAME', tokenStart: 8, tokenEnd: 12},
-     {token: 'NAME', tokenStart: 14, tokenEnd: 17},
-     {token: 'OPENING_BRACE', tokenStart: 19, tokenEnd: 20},
-     {token: 'NAME', tokenStart: 29, tokenEnd: 34},
-     {token: 'OPENING_BRACE', tokenStart: 36, tokenEnd: 37},
-     {token: 'NAME', tokenStart: 48, tokenEnd: 51},
-     {token: 'OPENING_PAREN', tokenStart: 51, tokenEnd: 53},
-     {token: 'NAME', tokenStart: 53, tokenEnd: 57},
-     {token: 'COLON', tokenStart: 57, tokenEnd: 59},
-     {token: 'NUMBER', tokenStart: 60, tokenEnd: 61},
-     {token: 'NAME', tokenStart: 63, tokenEnd: 68},
-     {token: 'COLON', tokenStart: 68, tokenEnd: 70},
-     {token: 'STRING_VALUE', tokenStart: 71, tokenEnd: 79},
-     {token: 'CLOSING_PAREN', tokenStart: 79, tokenEnd: 80},
-     {token: 'OPENING_BRACE', tokenStart: 81, tokenEnd: 82},
-     {token: 'NAME', tokenStart: 95, tokenEnd: 96},
-     {token: 'CLOSING_BRACE', tokenStart: 108, tokenEnd: 109},
-     {token: 'CLOSING_BRACE', tokenStart: 118, tokenEnd: 119},
-     {token: 'CLOSING_BRACE', tokenStart: 126, tokenEnd: 127},
+      {token: 'NAME', tokenStart: 7, tokenEnd: 12},
+      {token: 'NAME', tokenStart: 13, tokenEnd: 17},
+      {token: 'OPENING_BRACE', tokenStart: 18, tokenEnd: 20},
+      {token: 'NAME', tokenStart: 28, tokenEnd: 34},
+      {token: 'OPENING_BRACE', tokenStart: 35, tokenEnd: 37},
+      {token: 'NAME', tokenStart: 47, tokenEnd: 51},
+      {token: 'OPENING_PAREN', tokenStart: 51, tokenEnd: 53},
+      {token: 'NAME', tokenStart: 53, tokenEnd: 57},
+      {token: 'COLON', tokenStart: 57, tokenEnd: 59},
+      {token: 'NUMBER', tokenStart: 59, tokenEnd: 61},
+      {token: 'NAME', tokenStart: 63, tokenEnd: 68},
+      {token: 'COLON', tokenStart: 68, tokenEnd: 70},
+      {token: 'STRING_VALUE', tokenStart: 70, tokenEnd: 79},
+      {token: 'CLOSING_PAREN', tokenStart: 79, tokenEnd: 80},
+      {token: 'OPENING_BRACE', tokenStart: 80, tokenEnd: 82},
+      {token: 'NAME', tokenStart: 94, tokenEnd: 96},
+      {token: 'CLOSING_BRACE', tokenStart: 107, tokenEnd: 109},
+      {token: 'CLOSING_BRACE', tokenStart: 117, tokenEnd: 119},
+      {token: 'CLOSING_BRACE', tokenStart: 125, tokenEnd: 127},
     ]);
   });
 });
