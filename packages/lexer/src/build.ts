@@ -58,6 +58,11 @@ type Consequent = {
   block: Array<Statement>;
 };
 
+type ContinueStatement = {
+  kind: 'ContinueStatement';
+  label?: string;
+};
+
 type Expression =
   | BinaryExpression
   | CallExpression
@@ -153,6 +158,7 @@ type Program = {
 type Statement =
   | AssignmentStatement
   | BreakStatement
+  | ContinueStatement
   | ExpressionStatement
   | FunctionDeclaration
   | IfStatement
@@ -525,6 +531,14 @@ const ast = {
     return ast.assign('const', lhs, rhs);
   },
 
+  continue(label?: string): ContinueStatement {
+    if (label) {
+      return {kind: 'ContinueStatement', label};
+    } else {
+      return {kind: 'ContinueStatement'};
+    }
+  },
+
   expression(template: string): Expression {
     if (/^\d+$/.test(template)) {
       return ast.number(parseInt(template));
@@ -727,7 +741,11 @@ export function wip(): Program {
     condition: ast.expression('i < input.length'),
     block: [ast.statement('const ch = input.charCodeAt(i)')],
   };
-  statements.push(whileStatement);
+  statements.push({
+    kind: 'LabelStatement',
+    label: 'loop',
+    statement: whileStatement,
+  });
 
   const switchStatement: SwitchStatement = {
     kind: 'SwitchStatement',
@@ -782,6 +800,9 @@ export function wip(): Program {
       if (isIgnored) {
         switchCase.block.push(...ignored);
       } else if (isAccept) {
+        // TODO: eventually this stuff will get folded inline where applicable
+        // eg. instead of going from state N to M only to yield
+        // if there is only one place going from N to M, yield directly from N
         switchCase.block.push(
           {
             kind: 'ExpressionStatement',
@@ -798,6 +819,7 @@ export function wip(): Program {
           },
           ast.statement('tokenStart = i + 1'),
           ast.statement('state = START'),
+          ast.continue('loop'),
         );
       } else {
         throw new Error('Dead state');
@@ -866,7 +888,7 @@ export function wip(): Program {
           });
         }
         if (isIgnored) {
-          ifStatement.alternate = [...ignored];
+          ifStatement.alternate = [...ignored, ast.continue('loop')];
         } else if (isAccept) {
           ifStatement.alternate = [
             {
@@ -876,14 +898,15 @@ export function wip(): Program {
                 expression: ast.object({
                   token: ast.string(isAccept),
                   tokenStart: ast.identifier('tokenStart'),
-                  tokenEnd: ast.expression('i + 1'),
+                  tokenEnd: ast.expression('i'),
                   // TODO: include value if this is a token with content, like
                   // NAME, NUMBER, STRING_VALUE etc
                 }),
               },
             },
-            ast.statement('tokenStart = i + 1'),
+            ast.statement('tokenStart = i'),
             ast.statement('state = START'),
+            ast.continue('loop'),
           ];
         } else {
           ifStatement.alternate = [
@@ -894,7 +917,11 @@ export function wip(): Program {
       });
       switchCase.block.push(ifStatement);
     }
-    switchCase.block.push(ast.break);
+    if (
+      switchCase.block[switchCase.block.length - 1].kind !== 'ContinueStatement'
+    ) {
+      switchCase.block.push(ast.break);
+    }
     switchStatement.cases.push(switchCase);
   });
 
@@ -1086,6 +1113,12 @@ function printStatement(statement: Statement, indent: number): string {
       return printIndent(indent) + `break ${statement.label};\n`;
     } else {
       return printIndent(indent) + 'break;\n';
+    }
+  } else if (statement.kind === 'ContinueStatement') {
+    if (statement.label) {
+      return printIndent(indent) + `continue ${statement.label};\n`;
+    } else {
+      return printIndent(indent) + 'continue;\n';
     }
   } else if (statement.kind === 'ExpressionStatement') {
     return (
