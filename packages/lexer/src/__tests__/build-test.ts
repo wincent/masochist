@@ -64,7 +64,6 @@ describe('wip()', () => {
                 state = 23;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             1:
@@ -102,7 +101,6 @@ describe('wip()', () => {
                 state = 26;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             6:
@@ -133,7 +131,6 @@ describe('wip()', () => {
                 state = 14;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             12:
@@ -141,7 +138,6 @@ describe('wip()', () => {
                 state = 27;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             13:
@@ -204,7 +200,6 @@ describe('wip()', () => {
                 state = 30;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             25:
@@ -223,7 +218,6 @@ describe('wip()', () => {
                 state = 33;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             27:
@@ -231,7 +225,6 @@ describe('wip()', () => {
                 state = 34;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             28:
@@ -239,7 +232,6 @@ describe('wip()', () => {
                 state = 35;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             29:
@@ -249,7 +241,6 @@ describe('wip()', () => {
                 state = 37;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             30:
@@ -264,7 +255,6 @@ describe('wip()', () => {
                 state = 39;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             32:
@@ -276,7 +266,6 @@ describe('wip()', () => {
                 state = 33;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             33:
@@ -284,7 +273,6 @@ describe('wip()', () => {
                 state = 40;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             34:
@@ -304,7 +292,6 @@ describe('wip()', () => {
                 state = 37;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             37:
@@ -323,7 +310,6 @@ describe('wip()', () => {
                 state = 41;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             39:
@@ -335,7 +321,6 @@ describe('wip()', () => {
                 state = 42;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             40:
@@ -343,7 +328,6 @@ describe('wip()', () => {
                 state = 43;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             41:
@@ -355,7 +339,6 @@ describe('wip()', () => {
                 state = 44;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             42:
@@ -367,7 +350,6 @@ describe('wip()', () => {
                 state = 45;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             43:
@@ -375,7 +357,6 @@ describe('wip()', () => {
                 state = 46;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             44:
@@ -388,7 +369,6 @@ describe('wip()', () => {
                 state = 39;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             46:
@@ -396,7 +376,6 @@ describe('wip()', () => {
                 state = 24;
               } else {
                 state = REJECT;
-                break loop;
               }
               break;
             REJECT:

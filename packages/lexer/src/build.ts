@@ -839,7 +839,6 @@ export function wip(): Program {
           ifStatement.alternate = [
             // TODO: only do this is consequents don't provide complete coverage
             ast.statement('state = REJECT'),
-            ast.statement('break loop'),
           ];
         }
       });
