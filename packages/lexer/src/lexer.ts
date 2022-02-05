@@ -1,4 +1,3 @@
-import generate from './generate';
 import ignore from './ignore';
 import union from './union';
 
@@ -177,8 +176,7 @@ export const BLOCK_STRING_VALUE: TransitionTable = {
  *   - https://spec.graphql.org/October2021/#sec-Int-Value
  *   - https://spec.graphql.org/October2021/#sec-Float-Value
  */
-export default generate(({ignored, token}) => {
-  const table = union({
+export default union({
     //
     // Punctuators (2.1.8)
     //
@@ -209,16 +207,11 @@ export default generate(({ignored, token}) => {
     // Ignored tokens (2.1.7).
     //
     IGNORED: ignore(COMMA, COMMENT, LINE_TERMINATOR, UNICODE_BOM, WHITESPACE),
-  });
-
-  if (table.startStates.size !== 1) {
-    throw new Error('Single start state is required');
-  }
-
-  // TODO: about numbers: see recent changes to spec:
-  // https://github.com/graphql/graphql-spec/pull/601
-  //
-  // lookahead: may not be followed by NAME character or "."
-  //
-  // probably going to handle this in the parser
 });
+
+// TODO: about numbers: see recent changes to spec:
+// https://github.com/graphql/graphql-spec/pull/601
+//
+// lookahead: may not be followed by NAME character or "."
+//
+// probably going to handle this in the parser

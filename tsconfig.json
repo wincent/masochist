@@ -4,6 +4,7 @@
   "include": [],
   "references": [
     {"path": "./packages/client"},
+    {"path": "./packages/codegen"},
     {"path": "./packages/common"},
     {"path": "./packages/compiler"},
     {"path": "./packages/lexer"},

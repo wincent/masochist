@@ -1,9 +1,10 @@
+import {print} from '@masochist/codegen';
 import {dedent} from '@masochist/common';
 
 import {promises as fs} from 'fs';
 import path from 'path';
 
-import {wip, print} from '../build';
+import {wip} from '../build';
 
 function* lex(input: string) {
   const REJECT = -1;
@@ -1231,5 +1232,9 @@ describe('wip()', () => {
       {token: 'CLOSING_BRACE', tokenStart: 117, tokenEnd: 119},
       {token: 'CLOSING_BRACE', tokenStart: 125, tokenEnd: 127},
     ]);
+  });
+
+  xit('toy example', () => {
+    console.log([...lex('foo { bar')]);
   });
 });
