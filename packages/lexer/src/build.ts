@@ -977,10 +977,15 @@ function printExpression(expression: Expression, indent: number): string {
             // TODO: use quote() instead of JSON.stringify()
             property = `[${JSON.stringify}]`;
           }
-          return (
-            printIndent(indent + 1) +
-            `${property}: ${printExpression(value, indent + 1)},`
-          );
+          if (value.kind === 'Identifier' && value.name === property) {
+            // Use object property shorthand.
+            return printIndent(indent + 1) + `${property},`;
+          } else {
+            return (
+              printIndent(indent + 1) +
+              `${property}: ${printExpression(value, indent + 1)},`
+            );
+          }
         })
         .join('\n') +
       '\n' +

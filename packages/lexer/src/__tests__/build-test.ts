@@ -92,7 +92,7 @@ describe('wip()', () => {
             4:
               yield {
                 token: "BANG",
-                tokenStart: tokenStart,
+                tokenStart,
                 tokenEnd: i + 1,
               };
               tokenStart = i + 1;
@@ -121,7 +121,7 @@ describe('wip()', () => {
             7:
               yield {
                 token: "DOLLAR",
-                tokenStart: tokenStart,
+                tokenStart,
                 tokenEnd: i + 1,
               };
               tokenStart = i + 1;
@@ -130,7 +130,7 @@ describe('wip()', () => {
             8:
               yield {
                 token: "AMPERSAND",
-                tokenStart: tokenStart,
+                tokenStart,
                 tokenEnd: i + 1,
               };
               tokenStart = i + 1;
@@ -139,7 +139,7 @@ describe('wip()', () => {
             9:
               yield {
                 token: "OPENING_PAREN",
-                tokenStart: tokenStart,
+                tokenStart,
                 tokenEnd: i + 1,
               };
               tokenStart = i + 1;
@@ -148,7 +148,7 @@ describe('wip()', () => {
             10:
               yield {
                 token: "CLOSING_PAREN",
-                tokenStart: tokenStart,
+                tokenStart,
                 tokenEnd: i + 1,
               };
               tokenStart = i + 1;
@@ -178,7 +178,7 @@ describe('wip()', () => {
               } else {
                 yield {
                   token: "NUMBER",
-                  tokenStart: tokenStart,
+                  tokenStart,
                   tokenEnd: i + 1,
                 };
                 tokenStart = i + 1;
@@ -195,7 +195,7 @@ describe('wip()', () => {
               } else {
                 yield {
                   token: "NUMBER",
-                  tokenStart: tokenStart,
+                  tokenStart,
                   tokenEnd: i + 1,
                 };
                 tokenStart = i + 1;
@@ -205,7 +205,7 @@ describe('wip()', () => {
             15:
               yield {
                 token: "COLON",
-                tokenStart: tokenStart,
+                tokenStart,
                 tokenEnd: i + 1,
               };
               tokenStart = i + 1;
@@ -214,7 +214,7 @@ describe('wip()', () => {
             16:
               yield {
                 token: "EQUALS",
-                tokenStart: tokenStart,
+                tokenStart,
                 tokenEnd: i + 1,
               };
               tokenStart = i + 1;
@@ -223,7 +223,7 @@ describe('wip()', () => {
             17:
               yield {
                 token: "AT",
-                tokenStart: tokenStart,
+                tokenStart,
                 tokenEnd: i + 1,
               };
               tokenStart = i + 1;
@@ -235,7 +235,7 @@ describe('wip()', () => {
               } else {
                 yield {
                   token: "NAME",
-                  tokenStart: tokenStart,
+                  tokenStart,
                   tokenEnd: i + 1,
                 };
                 tokenStart = i + 1;
@@ -245,7 +245,7 @@ describe('wip()', () => {
             19:
               yield {
                 token: "OPENING_BRACKET",
-                tokenStart: tokenStart,
+                tokenStart,
                 tokenEnd: i + 1,
               };
               tokenStart = i + 1;
@@ -254,7 +254,7 @@ describe('wip()', () => {
             20:
               yield {
                 token: "CLOSING_BRACKET",
-                tokenStart: tokenStart,
+                tokenStart,
                 tokenEnd: i + 1,
               };
               tokenStart = i + 1;
@@ -263,7 +263,7 @@ describe('wip()', () => {
             21:
               yield {
                 token: "OPENING_BRACE",
-                tokenStart: tokenStart,
+                tokenStart,
                 tokenEnd: i + 1,
               };
               tokenStart = i + 1;
@@ -272,7 +272,7 @@ describe('wip()', () => {
             22:
               yield {
                 token: "BAR",
-                tokenStart: tokenStart,
+                tokenStart,
                 tokenEnd: i + 1,
               };
               tokenStart = i + 1;
@@ -281,7 +281,7 @@ describe('wip()', () => {
             23:
               yield {
                 token: "CLOSING_BRACE",
-                tokenStart: tokenStart,
+                tokenStart,
                 tokenEnd: i + 1,
               };
               tokenStart = i + 1;
@@ -304,7 +304,7 @@ describe('wip()', () => {
               } else {
                 yield {
                   token: "STRING_VALUE",
-                  tokenStart: tokenStart,
+                  tokenStart,
                   tokenEnd: i + 1,
                 };
                 tokenStart = i + 1;
@@ -348,7 +348,7 @@ describe('wip()', () => {
             30:
               yield {
                 token: "STRING_VALUE",
-                tokenStart: tokenStart,
+                tokenStart,
                 tokenEnd: i + 1,
               };
               tokenStart = i + 1;
@@ -386,7 +386,7 @@ describe('wip()', () => {
             34:
               yield {
                 token: "ELLIPSIS",
-                tokenStart: tokenStart,
+                tokenStart,
                 tokenEnd: i + 1,
               };
               tokenStart = i + 1;
@@ -400,7 +400,7 @@ describe('wip()', () => {
               } else {
                 yield {
                   token: "NUMBER",
-                  tokenStart: tokenStart,
+                  tokenStart,
                   tokenEnd: i + 1,
                 };
                 tokenStart = i + 1;
@@ -420,7 +420,7 @@ describe('wip()', () => {
               } else {
                 yield {
                   token: "NUMBER",
-                  tokenStart: tokenStart,
+                  tokenStart,
                   tokenEnd: i + 1,
                 };
                 tokenStart = i + 1;
@@ -488,7 +488,7 @@ describe('wip()', () => {
             44:
               yield {
                 token: "BLOCK_STRING_VALUE",
-                tokenStart: tokenStart,
+                tokenStart,
                 tokenEnd: i + 1,
               };
               tokenStart = i + 1;
