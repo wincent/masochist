@@ -513,6 +513,8 @@ describe('wip()', () => {
                 break;
               case REJECT:
                 throw new Error("Failed to recognize token");
+              default:
+                throw new Error("Unexpected state");
             }
             i++;
           }

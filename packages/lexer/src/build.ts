@@ -164,7 +164,7 @@ type Statement =
 
 type SwitchCase = {
   kind: 'SwitchCase';
-  determinant: Expression;
+  determinant: Expression | null;
   block: Array<Statement>;
 };
 
@@ -893,20 +893,37 @@ export function wip(): Program {
     switchStatement.cases.push(switchCase);
   });
 
-  switchStatement.cases.push({
-    kind: 'SwitchCase',
-    determinant: ast.identifier('REJECT'),
-    block: [
-      {
-        kind: 'ThrowStatement',
-        expression: {
-          kind: 'NewExpression',
-          object: ast.identifier('Error'),
-          arguments: [ast.string('Failed to recognize token')],
+  switchStatement.cases.push(
+    {
+      kind: 'SwitchCase',
+      determinant: ast.identifier('REJECT'),
+      block: [
+        {
+          kind: 'ThrowStatement',
+          expression: {
+            kind: 'NewExpression',
+            object: ast.identifier('Error'),
+            arguments: [ast.string('Failed to recognize token')],
+          },
         },
-      },
-    ],
-  });
+      ],
+    },
+    {
+      kind: 'SwitchCase',
+      determinant: null,
+      block: [
+        {
+          kind: 'ThrowStatement',
+          expression: {
+            kind: 'NewExpression',
+            object: ast.identifier('Error'),
+            // TODO: include state id in error
+            arguments: [ast.string('Unexpected state')],
+          },
+        },
+      ],
+    },
+  );
 
   return {
     kind: 'Program',
@@ -1165,8 +1182,9 @@ function printStatement(statement: Statement, indent: number): string {
 function printSwitchCase(switchCase: SwitchCase, indent: number): string {
   return (
     printIndent(indent) +
-    'case ' +
-    printExpression(switchCase.determinant, indent) +
+    (switchCase.determinant === null
+      ? 'default'
+      : 'case ' + printExpression(switchCase.determinant, indent)) +
     ':\n' +
     switchCase.block
       .map((statement) => {
