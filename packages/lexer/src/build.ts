@@ -689,7 +689,7 @@ export function wip(): Program {
   const whileStatement: WhileStatement = {
     kind: 'WhileStatement',
     condition: ast.expression('i < input.length'),
-    block: [ast.statement('const ch = input[i]')],
+    block: [ast.statement('const ch = input.charCodeAt(i)')],
   };
   statements.push({
     kind: 'LabelStatement',
@@ -747,6 +747,7 @@ export function wip(): Program {
       } else if (isAccept) {
         switchCase.block.push({
           // TODO: emit proper token
+          // return will probably be faster than yield
           // yield {
           //   token: 'LABEL',
           //   tokenStart, // <-- note use of shorthand here; teach printer to do that
@@ -783,14 +784,14 @@ export function wip(): Program {
             expressions.push(ast.true);
           } else if (transition.kind === 'Atom') {
             expressions.push(
-              ast.expression(`ch === ${JSON.stringify(transition.value)}`),
+              ast.expression(`ch === ${charForComparison(transition.value)}`),
             );
           } else {
             expressions.push({
               kind: 'BinaryExpression',
-              lexpr: ast.expression(`ch >= ${JSON.stringify(transition.from)}`),
+              lexpr: ast.expression(`ch >= ${charForComparison(transition.from)}`),
               operator: '&&',
-              rexpr: ast.expression(`ch <= ${JSON.stringify(transition.to)}`),
+              rexpr: ast.expression(`ch <= ${charForComparison(transition.to)}`),
             });
           }
         }
@@ -1094,4 +1095,16 @@ function printSwitchCase(switchCase: SwitchCase, indent: number): string {
       })
       .join('')
   );
+}
+
+function charForComparison(value: string): string {
+  if (value.length !== 1) {
+    throw new Error(`charForComparison(): Expected length 1, got length ${value.length}`);
+  }
+  const charCode = value.charCodeAt(0);
+  if (charCode <= 0xff) {
+    return '0x' + charCode.toString(16).padStart(2, '0');
+  } else {
+    return '0x' + charCode.toString(16).padStart(4, '0');
+  }
 }
