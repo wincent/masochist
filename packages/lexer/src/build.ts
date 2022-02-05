@@ -1165,6 +1165,7 @@ function printStatement(statement: Statement, indent: number): string {
 function printSwitchCase(switchCase: SwitchCase, indent: number): string {
   return (
     printIndent(indent) +
+    'case ' +
     printExpression(switchCase.determinant, indent) +
     ':\n' +
     switchCase.block
