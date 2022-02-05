@@ -75,6 +75,13 @@ type ExpressionStatement = {
   expression: Expression;
 };
 
+type FunctionDeclaration = {
+  kind: 'FunctionDeclaration';
+  name: string;
+  arguments: Array<string>;
+  body: Array<Statement>;
+};
+
 type Identifier = {
   kind: 'Identifier';
   name: string;
@@ -147,6 +154,7 @@ type Statement =
   | AssignmentStatement
   | BreakStatement
   | ExpressionStatement
+  | FunctionDeclaration
   | IfStatement
   | LabelStatement
   | LineComment
@@ -578,6 +586,19 @@ const ast = {
     return ast.identifier(template);
   },
 
+  function(
+    name: string,
+    args: Array<string>,
+    statements: Array<Statement>,
+  ): FunctionDeclaration {
+    return {
+      kind: 'FunctionDeclaration',
+      name,
+      arguments: args,
+      body: statements,
+    };
+  },
+
   identifier(name: string): Identifier {
     return {kind: 'Identifier', name};
   },
@@ -684,8 +705,10 @@ const ast = {
   },
 };
 
+// TODO: emit TS type annotations as well
 export function wip(): Program {
   const statements: Array<Statement> = [];
+  const fn = ast.function('*lex', ['input'], statements);
 
   statements.push(ast.statement('const REJECT = -1'));
 
@@ -704,11 +727,7 @@ export function wip(): Program {
     condition: ast.expression('i < input.length'),
     block: [ast.statement('const ch = input.charCodeAt(i)')],
   };
-  statements.push({
-    kind: 'LabelStatement',
-    label: 'loop',
-    statement: whileStatement,
-  });
+  statements.push(whileStatement);
 
   const switchStatement: SwitchStatement = {
     kind: 'SwitchStatement',
@@ -891,7 +910,7 @@ export function wip(): Program {
 
   return {
     kind: 'Program',
-    statements,
+    statements: [fn],
   };
 }
 
@@ -1052,6 +1071,22 @@ function printStatement(statement: Statement, indent: number): string {
       printExpression(statement.expression, indent) +
       ';\n'
     );
+  } else if (statement.kind === 'FunctionDeclaration') {
+    return (
+      printIndent(indent) +
+      'function ' +
+      statement.name +
+      '(' +
+      statement.arguments.join(', ') +
+      ') {\n' +
+      statement.body
+        .map((statement) => {
+          return printStatement(statement, indent + 1);
+        })
+        .join('') +
+      printIndent(indent) +
+      '}\n'
+    );
   } else if (statement.kind === 'IfStatement') {
     const lines = [];
     for (let i = 0; i < statement.consequents.length; i++) {
@@ -1110,6 +1145,7 @@ function printStatement(statement: Statement, indent: number): string {
     );
   } else if (statement.kind === 'WhileStatement') {
     return (
+      printIndent(indent) +
       'while (' +
       printExpression(statement.condition, indent) +
       ') {\n' +
