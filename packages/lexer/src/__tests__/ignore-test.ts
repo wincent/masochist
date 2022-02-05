@@ -1,11 +1,11 @@
-import ignore from '../ignore';
 import {
   COMMA,
   COMMENT,
   LINE_TERMINATOR,
   UNICODE_BOM,
   WHITESPACE,
-} from '../lexer';
+} from '../definition';
+import ignore from '../ignore';
 
 describe('ignore()', () => {
   it('produces a DFA that recognizes any ignored token', () => {

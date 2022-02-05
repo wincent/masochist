@@ -13,7 +13,6 @@ import {promises as fs} from 'fs';
 import path from 'path';
 
 import compileRegExp from '../compileRegExp';
-import ignore from '../ignore';
 import {
   AMPERSAND,
   AT,
@@ -45,7 +44,8 @@ import {
   STRING_VALUE,
   UNICODE_BOM,
   WHITESPACE,
-} from '../lexer';
+} from '../definition';
+import ignore from '../ignore';
 import union from '../union';
 import NFAToDFA from '../NFA/NFAToDFA';
 import dotifyTransitionTable from '../NFA/dotifyTransitionTable';

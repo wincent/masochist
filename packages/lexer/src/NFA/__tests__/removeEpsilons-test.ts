@@ -10,7 +10,7 @@ import {
   NUMBER,
   SOURCE_CHARACTER,
   WHITESPACE,
-} from '../../lexer';
+} from '../../definition';
 import {ACCEPT, NONE, START} from '../NFA';
 import regExpToNFA from '../regExpToNFA';
 import removeEpsilons from '../removeEpsilons';

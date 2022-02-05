@@ -177,36 +177,36 @@ export const BLOCK_STRING_VALUE: TransitionTable = {
  *   - https://spec.graphql.org/October2021/#sec-Float-Value
  */
 export default union({
-    //
-    // Punctuators (2.1.8)
-    //
-    AMPERSAND,
-    AT,
-    BANG,
-    BAR,
-    CLOSING_BRACE,
-    CLOSING_BRACKET,
-    CLOSING_PAREN,
-    COLON,
-    DOLLAR,
-    ELLIPSIS,
-    EQUALS,
-    OPENING_BRACE,
-    OPENING_BRACKET,
-    OPENING_PAREN,
+  //
+  // Punctuators (2.1.8)
+  //
+  AMPERSAND,
+  AT,
+  BANG,
+  BAR,
+  CLOSING_BRACE,
+  CLOSING_BRACKET,
+  CLOSING_PAREN,
+  COLON,
+  DOLLAR,
+  ELLIPSIS,
+  EQUALS,
+  OPENING_BRACE,
+  OPENING_BRACKET,
+  OPENING_PAREN,
 
-    //
-    // (Other) lexical tokens (2.1.6).
-    //
-    BLOCK_STRING_VALUE,
-    NAME,
-    NUMBER,
-    STRING_VALUE,
+  //
+  // (Other) lexical tokens (2.1.6).
+  //
+  BLOCK_STRING_VALUE,
+  NAME,
+  NUMBER,
+  STRING_VALUE,
 
-    //
-    // Ignored tokens (2.1.7).
-    //
-    IGNORED: ignore(COMMA, COMMENT, LINE_TERMINATOR, UNICODE_BOM, WHITESPACE),
+  //
+  // Ignored tokens (2.1.7).
+  //
+  IGNORED: ignore(COMMA, COMMENT, LINE_TERMINATOR, UNICODE_BOM, WHITESPACE),
 });
 
 // TODO: about numbers: see recent changes to spec:

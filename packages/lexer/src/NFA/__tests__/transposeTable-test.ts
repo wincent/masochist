@@ -9,7 +9,7 @@ import {
   NAME,
   SOURCE_CHARACTER,
   WHITESPACE,
-} from '../../lexer';
+} from '../../definition';
 import NFAToDFA from '../NFAToDFA';
 import regExpToNFA from '../regExpToNFA';
 import removeEpsilons from '../removeEpsilons';

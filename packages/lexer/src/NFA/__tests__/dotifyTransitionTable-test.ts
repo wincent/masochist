@@ -16,7 +16,7 @@ import {
   OPENING_BRACE,
   OPENING_BRACKET,
   OPENING_PAREN,
-} from '../../lexer';
+} from '../../definition';
 import union from '../../union';
 import dotifyTransitionTable from '../dotifyTransitionTable';
 

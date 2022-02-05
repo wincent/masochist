@@ -1,5 +1,5 @@
 import compileRegExp from '../compileRegExp';
-import {NUMBER} from '../lexer';
+import {NUMBER} from '../definition';
 
 describe('compileRegExp()', () => {
   it('produces an optimized AST', () => {

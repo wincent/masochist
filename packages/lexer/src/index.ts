@@ -1,1 +1,1 @@
-export {default as default} from './lexer';
+export {default as default} from './lex';

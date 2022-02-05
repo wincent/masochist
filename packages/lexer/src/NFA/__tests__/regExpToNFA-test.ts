@@ -1,5 +1,5 @@
 import compileRegExp from '../../compileRegExp';
-import {NUMBER} from '../../lexer';
+import {NUMBER} from '../../definition';
 import {ACCEPT, NONE, START} from '../NFA';
 import regExpToNFA from '../regExpToNFA';
 import toTransitionTable from '../toTransitionTable';

@@ -12,7 +12,7 @@ import {
   STRING_CHARACTER,
   STRING_VALUE,
   WHITESPACE,
-} from '../../lexer';
+} from '../../definition';
 import NFAToDFA from '../NFAToDFA';
 import minimizeDFA from '../minimizeDFA';
 import regExpToNFA from '../regExpToNFA';

@@ -1,9 +1,4 @@
-import type {
-  Expression,
-  Program,
-  Statement,
-  SwitchCase,
-} from './ast';
+import type {Expression, Program, Statement, SwitchCase} from './ast';
 
 const TAB_WIDTH = 2;
 
@@ -162,6 +157,12 @@ function printStatement(statement: Statement, indent: number): string {
     } else {
       return printIndent(indent) + 'continue;\n';
     }
+  } else if (statement.kind === 'ExportDefaultDeclaration') {
+    return (
+      printIndent(indent) +
+      'export default ' +
+      printStatement(statement.declaration, indent).trimStart()
+    );
   } else if (statement.kind === 'ExpressionStatement') {
     return (
       printIndent(indent) +
@@ -273,4 +274,3 @@ function printSwitchCase(switchCase: SwitchCase, indent: number): string {
       .join('')
   );
 }
-

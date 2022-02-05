@@ -70,6 +70,11 @@ export type Expression =
   | UnaryExpression
   | YieldExpression;
 
+type ExportDefaultDeclaration = {
+  kind: 'ExportDefaultDeclaration';
+  declaration: FunctionDeclaration; // Later on, may have other types here.
+};
+
 type ExpressionStatement = {
   kind: 'ExpressionStatement';
   expression: Expression;
@@ -154,6 +159,7 @@ export type Statement =
   | AssignmentStatement
   | BreakStatement
   | ContinueStatement
+  | ExportDefaultDeclaration
   | ExpressionStatement
   | FunctionDeclaration
   | IfStatement

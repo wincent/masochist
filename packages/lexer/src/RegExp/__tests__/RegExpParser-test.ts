@@ -8,7 +8,7 @@ import {
   NAME,
   SOURCE_CHARACTER,
   WHITESPACE,
-} from '../../lexer';
+} from '../../definition';
 import RegExpParser from '../RegExpParser';
 
 describe('RegExpParser', () => {
