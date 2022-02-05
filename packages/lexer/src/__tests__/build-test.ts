@@ -8,7 +8,7 @@ function* lex(input) {
   let state = START;
   let tokenStart = 0;
   let i = tokenStart;
-  loop: while (i < input.length) {
+  loop: while (i <= input.length) {
     const ch = input.charCodeAt(i);
     switch (state) {
       case START:
@@ -620,7 +620,7 @@ describe('wip()', () => {
           let state = START;
           let tokenStart = 0;
           let i = tokenStart;
-          loop: while (i < input.length) {
+          loop: while (i <= input.length) {
             const ch = input.charCodeAt(i);
             switch (state) {
               case START:
@@ -1137,6 +1137,15 @@ describe('wip()', () => {
         }
       ` + '\n',
     );
+  });
+
+  it('can lex a NAME token right at the end', () => {
+    const tokens = [...lex('foo bar')];
+    // BUG: indices are off
+    expect(tokens).toEqual([
+      {token: 'NAME', tokenStart: 0, tokenEnd: 3},
+      {token: 'NAME', tokenStart: 5, tokenEnd: 7},
+    ]);
   });
 
   it('does something else', () => {

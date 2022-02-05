@@ -738,7 +738,7 @@ export function wip(): Program {
 
   const whileStatement: WhileStatement = {
     kind: 'WhileStatement',
-    condition: ast.expression('i < input.length'),
+    condition: ast.expression('i <= input.length'),
     block: [ast.statement('const ch = input.charCodeAt(i)')],
   };
   statements.push({
