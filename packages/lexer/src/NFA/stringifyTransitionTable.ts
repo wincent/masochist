@@ -53,7 +53,7 @@ export default function stringifyTransitionTable({
     lines.push('  labels: [');
     for (let i = 0; i < transitions.length; i++) {
       const label = labels[i];
-      if (label?.size > 1) {
+      if (label?.size && label.size > 1) {
         lines.push(`    /* ${i} */ new Set([`);
         for (const text of label) {
           lines.push(`      ${quote(text)},`);

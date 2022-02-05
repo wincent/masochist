@@ -205,7 +205,7 @@ type WhileStatement = {
 
 type YieldExpression = {
   kind: 'YieldExpression';
-  expression: Expression;
+  expression?: Expression;
 };
 
 const table: TransitionTable = {
@@ -471,8 +471,8 @@ const table: TransitionTable = {
 
 // Convenience methods.
 //
-// These will do for now, until I come up with something even fancier that can
-// parse simple JS (eg. ast`const REJECT = -1` and such).
+// Doesn't actually parse JS snippets properly, but is capable of turning simple
+// snippets such as `const REJECT = -1` into an AST node.
 
 const ast = {
   assign(
@@ -598,6 +598,13 @@ const ast = {
     return {kind: 'NumberValue', value};
   },
 
+  object(entries: {[key: string]: Expression}): ObjectValue {
+    return {
+      kind: 'ObjectValue',
+      entries: Object.entries(entries),
+    };
+  },
+
   statement(template: string): Statement {
     let match = template.match(/^break(?:\s+(\w+))?$/);
     if (match) {
@@ -654,6 +661,16 @@ const ast = {
     return ast.assign('var', lhs, rhs);
   },
 
+  yield(expression: Expression): ExpressionStatement {
+    return {
+      kind: 'ExpressionStatement',
+      expression: {
+        kind: 'YieldExpression',
+        expression,
+      },
+    };
+  },
+
   get break(): BreakStatement {
     return {kind: 'BreakStatement'};
   },
@@ -667,8 +684,6 @@ const ast = {
   },
 };
 
-// TODO: DRY some of this up to make it easier to write
-// (but wait until I'm sure the AST is the right shape first)
 export function wip(): Program {
   const statements: Array<Statement> = [];
 
@@ -683,8 +698,6 @@ export function wip(): Program {
   statements.push(ast.statement('let state = START'));
   statements.push(ast.statement('let tokenStart = 0'));
   statements.push(ast.statement('let i = tokenStart'));
-
-  const ch = ast.identifier('ch');
 
   const whileStatement: WhileStatement = {
     kind: 'WhileStatement',
@@ -745,21 +758,23 @@ export function wip(): Program {
       if (isIgnored) {
         switchCase.block.push(...ignored);
       } else if (isAccept) {
-        switchCase.block.push({
-          // TODO: emit proper token
-          // return will probably be faster than yield
-          // yield {
-          //   token: 'LABEL',
-          //   tokenStart, // <-- note use of shorthand here; teach printer to do that
-          //   tokenEnd: i,
-          // };
-          kind: 'ExpressionStatement',
-          expression: {
-            kind: 'CallExpression',
-            callee: {kind: 'Identifier', name: 'emit'},
-            arguments: [{kind: 'StringValue', value: isAccept}],
+        switchCase.block.push(
+          {
+            kind: 'ExpressionStatement',
+            expression: {
+              kind: 'YieldExpression',
+              expression: ast.object({
+                token: ast.string(isAccept),
+                tokenStart: ast.identifier('tokenStart'),
+                tokenEnd: ast.expression('i + 1'),
+                // TODO: include value if this is a token with content, like
+                // NAME, NUMBER, STRING_VALUE etc
+              }),
+            },
           },
-        });
+          ast.statement('tokenStart = i + 1'),
+          ast.statement('state = START'),
+        );
       } else {
         throw new Error('Dead state');
       }
@@ -789,9 +804,13 @@ export function wip(): Program {
           } else {
             expressions.push({
               kind: 'BinaryExpression',
-              lexpr: ast.expression(`ch >= ${charForComparison(transition.from)}`),
+              lexpr: ast.expression(
+                `ch >= ${charForComparison(transition.from)}`,
+              ),
               operator: '&&',
-              rexpr: ast.expression(`ch <= ${charForComparison(transition.to)}`),
+              rexpr: ast.expression(
+                `ch <= ${charForComparison(transition.to)}`,
+              ),
             });
           }
         }
@@ -826,15 +845,21 @@ export function wip(): Program {
           ifStatement.alternate = [...ignored];
         } else if (isAccept) {
           ifStatement.alternate = [
-            // TODO: emit proper token
             {
               kind: 'ExpressionStatement',
               expression: {
-                kind: 'CallExpression',
-                callee: {kind: 'Identifier', name: 'emit'},
-                arguments: [{kind: 'StringValue', value: isAccept}],
+                kind: 'YieldExpression',
+                expression: ast.object({
+                  token: ast.string(isAccept),
+                  tokenStart: ast.identifier('tokenStart'),
+                  tokenEnd: ast.expression('i + 1'),
+                  // TODO: include value if this is a token with content, like
+                  // NAME, NUMBER, STRING_VALUE etc
+                }),
               },
             },
+            ast.statement('tokenStart = i + 1'),
+            ast.statement('state = START'),
           ];
         } else {
           ifStatement.alternate = [
@@ -942,18 +967,24 @@ function printExpression(expression: Expression, indent: number): string {
     return (
       '{\n' +
       expression.entries
-        .map(([property, value]) => {
-          if (typeof property === 'number') {
-            return `${property}: ${printExpression(value, indent + 1)},\n`;
+        .map(([propertyName, value]) => {
+          let property: string;
+          if (typeof propertyName === 'number') {
+            property = propertyName.toString();
+          } else if (/^[a-z_][0-9a-z_]*$/i.test(propertyName)) {
+            property = propertyName;
           } else {
-            // TODO: quote these IFF necessary
-            return `[${JSON.stringify(property)}]: ${printExpression(
-              value,
-              indent + 1,
-            )},\n`;
+            // TODO: use quote() instead of JSON.stringify()
+            property = `[${JSON.stringify}]`;
           }
+          return (
+            printIndent(indent + 1) +
+            `${property}: ${printExpression(value, indent + 1)},`
+          );
         })
         .join('\n') +
+      '\n' +
+      printIndent(indent) +
       '}'
     );
   } else if (expression.kind === 'StringValue') {
@@ -979,6 +1010,12 @@ function printExpression(expression: Expression, indent: number): string {
     }
   } else if (expression.kind === 'UndefinedValue') {
     return 'undefined';
+  } else if (expression.kind === 'YieldExpression') {
+    if (expression.expression) {
+      return `yield ${printExpression(expression.expression, indent)}`;
+    } else {
+      return 'yield';
+    }
   }
   throw new Error('printExpression(): Unreachable');
 }
@@ -1099,7 +1136,9 @@ function printSwitchCase(switchCase: SwitchCase, indent: number): string {
 
 function charForComparison(value: string): string {
   if (value.length !== 1) {
-    throw new Error(`charForComparison(): Expected length 1, got length ${value.length}`);
+    throw new Error(
+      `charForComparison(): Expected length 1, got length ${value.length}`,
+    );
   }
   const charCode = value.charCodeAt(0);
   if (charCode <= 0xff) {

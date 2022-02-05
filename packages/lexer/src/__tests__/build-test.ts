@@ -90,7 +90,13 @@ describe('wip()', () => {
               }
               break;
             4:
-              emit("BANG");
+              yield {
+                token: "BANG",
+                tokenStart: tokenStart,
+                tokenEnd: i + 1,
+              };
+              tokenStart = i + 1;
+              state = START;
               break;
             5:
               if (ch === 0x09 || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
@@ -113,16 +119,40 @@ describe('wip()', () => {
               }
               break;
             7:
-              emit("DOLLAR");
+              yield {
+                token: "DOLLAR",
+                tokenStart: tokenStart,
+                tokenEnd: i + 1,
+              };
+              tokenStart = i + 1;
+              state = START;
               break;
             8:
-              emit("AMPERSAND");
+              yield {
+                token: "AMPERSAND",
+                tokenStart: tokenStart,
+                tokenEnd: i + 1,
+              };
+              tokenStart = i + 1;
+              state = START;
               break;
             9:
-              emit("OPENING_PAREN");
+              yield {
+                token: "OPENING_PAREN",
+                tokenStart: tokenStart,
+                tokenEnd: i + 1,
+              };
+              tokenStart = i + 1;
+              state = START;
               break;
             10:
-              emit("CLOSING_PAREN");
+              yield {
+                token: "CLOSING_PAREN",
+                tokenStart: tokenStart,
+                tokenEnd: i + 1,
+              };
+              tokenStart = i + 1;
+              state = START;
               break;
             11:
               if (ch === 0x30) {
@@ -146,7 +176,13 @@ describe('wip()', () => {
               } else if (ch === 0x45 || ch === 0x65) {
                 state = 29;
               } else {
-                emit("NUMBER");
+                yield {
+                  token: "NUMBER",
+                  tokenStart: tokenStart,
+                  tokenEnd: i + 1,
+                };
+                tokenStart = i + 1;
+                state = START;
               }
               break;
             14:
@@ -157,39 +193,99 @@ describe('wip()', () => {
               } else if (ch === 0x45 || ch === 0x65) {
                 state = 29;
               } else {
-                emit("NUMBER");
+                yield {
+                  token: "NUMBER",
+                  tokenStart: tokenStart,
+                  tokenEnd: i + 1,
+                };
+                tokenStart = i + 1;
+                state = START;
               }
               break;
             15:
-              emit("COLON");
+              yield {
+                token: "COLON",
+                tokenStart: tokenStart,
+                tokenEnd: i + 1,
+              };
+              tokenStart = i + 1;
+              state = START;
               break;
             16:
-              emit("EQUALS");
+              yield {
+                token: "EQUALS",
+                tokenStart: tokenStart,
+                tokenEnd: i + 1,
+              };
+              tokenStart = i + 1;
+              state = START;
               break;
             17:
-              emit("AT");
+              yield {
+                token: "AT",
+                tokenStart: tokenStart,
+                tokenEnd: i + 1,
+              };
+              tokenStart = i + 1;
+              state = START;
               break;
             18:
               if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x7a) {
                 state = 18;
               } else {
-                emit("NAME");
+                yield {
+                  token: "NAME",
+                  tokenStart: tokenStart,
+                  tokenEnd: i + 1,
+                };
+                tokenStart = i + 1;
+                state = START;
               }
               break;
             19:
-              emit("OPENING_BRACKET");
+              yield {
+                token: "OPENING_BRACKET",
+                tokenStart: tokenStart,
+                tokenEnd: i + 1,
+              };
+              tokenStart = i + 1;
+              state = START;
               break;
             20:
-              emit("CLOSING_BRACKET");
+              yield {
+                token: "CLOSING_BRACKET",
+                tokenStart: tokenStart,
+                tokenEnd: i + 1,
+              };
+              tokenStart = i + 1;
+              state = START;
               break;
             21:
-              emit("OPENING_BRACE");
+              yield {
+                token: "OPENING_BRACE",
+                tokenStart: tokenStart,
+                tokenEnd: i + 1,
+              };
+              tokenStart = i + 1;
+              state = START;
               break;
             22:
-              emit("BAR");
+              yield {
+                token: "BAR",
+                tokenStart: tokenStart,
+                tokenEnd: i + 1,
+              };
+              tokenStart = i + 1;
+              state = START;
               break;
             23:
-              emit("CLOSING_BRACE");
+              yield {
+                token: "CLOSING_BRACE",
+                tokenStart: tokenStart,
+                tokenEnd: i + 1,
+              };
+              tokenStart = i + 1;
+              state = START;
               break;
             24:
               if (ch === 0x09 || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
@@ -206,7 +302,13 @@ describe('wip()', () => {
               if (ch === 0x22) {
                 state = 31;
               } else {
-                emit("STRING_VALUE");
+                yield {
+                  token: "STRING_VALUE",
+                  tokenStart: tokenStart,
+                  tokenEnd: i + 1,
+                };
+                tokenStart = i + 1;
+                state = START;
               }
               break;
             26:
@@ -244,7 +346,13 @@ describe('wip()', () => {
               }
               break;
             30:
-              emit("STRING_VALUE");
+              yield {
+                token: "STRING_VALUE",
+                tokenStart: tokenStart,
+                tokenEnd: i + 1,
+              };
+              tokenStart = i + 1;
+              state = START;
               break;
             31:
               if (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
@@ -276,7 +384,13 @@ describe('wip()', () => {
               }
               break;
             34:
-              emit("ELLIPSIS");
+              yield {
+                token: "ELLIPSIS",
+                tokenStart: tokenStart,
+                tokenEnd: i + 1,
+              };
+              tokenStart = i + 1;
+              state = START;
               break;
             35:
               if (ch === 0x45 || ch === 0x65) {
@@ -284,7 +398,13 @@ describe('wip()', () => {
               } else if (ch >= 0x30 && ch <= 0x39) {
                 state = 35;
               } else {
-                emit("NUMBER");
+                yield {
+                  token: "NUMBER",
+                  tokenStart: tokenStart,
+                  tokenEnd: i + 1,
+                };
+                tokenStart = i + 1;
+                state = START;
               }
               break;
             36:
@@ -298,7 +418,13 @@ describe('wip()', () => {
               if (ch >= 0x30 && ch <= 0x39) {
                 state = 37;
               } else {
-                emit("NUMBER");
+                yield {
+                  token: "NUMBER",
+                  tokenStart: tokenStart,
+                  tokenEnd: i + 1,
+                };
+                tokenStart = i + 1;
+                state = START;
               }
               break;
             38:
@@ -360,7 +486,13 @@ describe('wip()', () => {
               }
               break;
             44:
-              emit("BLOCK_STRING_VALUE");
+              yield {
+                token: "BLOCK_STRING_VALUE",
+                tokenStart: tokenStart,
+                tokenEnd: i + 1,
+              };
+              tokenStart = i + 1;
+              state = START;
               break;
             45:
               if (ch === 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
