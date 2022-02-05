@@ -2,7 +2,7 @@ import {dedent} from '@masochist/common';
 
 import {wip, print} from '../build';
 
-function* lex(input) {
+function* lex(input: string) {
   const REJECT = -1;
   const START = 0;
   let state = START;
@@ -614,7 +614,7 @@ describe('wip()', () => {
     const ast = wip();
     expect(print(ast)).toBe(
       dedent`
-        function *lex(input) {
+        function *lex(input: string) {
           const REJECT = -1;
           const START = 0;
           let state = START;

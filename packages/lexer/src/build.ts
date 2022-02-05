@@ -722,7 +722,14 @@ const ast = {
 // TODO: emit TS type annotations as well
 export function wip(): Program {
   const statements: Array<Statement> = [];
-  const fn = ast.function('*lex', ['input'], statements);
+
+  // Note the TS annotation in the argument here; it's the only explicit
+  // annotation required to make `tsc` accept the generated lexer without any
+  // errors or warnings. Without this, we'd ge:
+  //
+  //    error TS7006: Parameter 'input' implicitly has an 'any' type.
+  //
+  const fn = ast.function('*lex', ['input: string'], statements);
 
   statements.push(ast.statement('const REJECT = -1'));
 
