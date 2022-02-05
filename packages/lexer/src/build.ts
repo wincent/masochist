@@ -739,6 +739,11 @@ export function wip(): Program {
   };
   whileStatement.block.push(switchStatement, ast.statement('i++'));
 
+  // TODO: need to handle EOF
+  // eg. given "hello world"
+  // we emit "hello", then scan "world", but exit `while` loop before emitting
+  // the final token
+
   const ignored = [
     ast.comment('IGNORED token.'),
     ast.statement('tokenStart = i + 1'),
