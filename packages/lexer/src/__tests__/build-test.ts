@@ -1149,7 +1149,7 @@ describe('wip()', () => {
   });
 
   it('does something else', () => {
-    for (const token of lex(`
+    const tokens = [...lex(`
       query Crap {
         viewer {
           feed(first: 10, after: "cursor") {
@@ -1157,8 +1157,27 @@ describe('wip()', () => {
           }
         }
       }
-    `)) {
-      console.log(token);
-    }
+    `)];
+    expect(tokens).toEqual([
+     {token: 'NAME', tokenStart: 8, tokenEnd: 12},
+     {token: 'NAME', tokenStart: 14, tokenEnd: 17},
+     {token: 'OPENING_BRACE', tokenStart: 19, tokenEnd: 20},
+     {token: 'NAME', tokenStart: 29, tokenEnd: 34},
+     {token: 'OPENING_BRACE', tokenStart: 36, tokenEnd: 37},
+     {token: 'NAME', tokenStart: 48, tokenEnd: 51},
+     {token: 'OPENING_PAREN', tokenStart: 51, tokenEnd: 53},
+     {token: 'NAME', tokenStart: 53, tokenEnd: 57},
+     {token: 'COLON', tokenStart: 57, tokenEnd: 59},
+     {token: 'NUMBER', tokenStart: 60, tokenEnd: 61},
+     {token: 'NAME', tokenStart: 63, tokenEnd: 68},
+     {token: 'COLON', tokenStart: 68, tokenEnd: 70},
+     {token: 'STRING_VALUE', tokenStart: 71, tokenEnd: 79},
+     {token: 'CLOSING_PAREN', tokenStart: 79, tokenEnd: 80},
+     {token: 'OPENING_BRACE', tokenStart: 81, tokenEnd: 82},
+     {token: 'NAME', tokenStart: 95, tokenEnd: 96},
+     {token: 'CLOSING_BRACE', tokenStart: 108, tokenEnd: 109},
+     {token: 'CLOSING_BRACE', tokenStart: 118, tokenEnd: 119},
+     {token: 'CLOSING_BRACE', tokenStart: 126, tokenEnd: 127},
+    ]);
   });
 });
