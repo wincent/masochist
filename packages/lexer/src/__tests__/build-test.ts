@@ -1,5 +1,8 @@
 import {dedent} from '@masochist/common';
 
+import {promises as fs} from 'fs';
+import path from 'path';
+
 import {wip, print} from '../build';
 
 function* lex(input: string) {
@@ -1145,6 +1148,54 @@ describe('wip()', () => {
       {token: 'NAME', tokenStart: 0, tokenEnd: 3},
       {token: 'NAME', tokenStart: 4, tokenEnd: 7},
     ]);
+  });
+
+  it('lexes an empty string', () => {
+    const tokens = [...lex('')];
+    expect(tokens).toEqual([]);
+  });
+
+  it('lexes whitespace', () => {
+    const tokens = [...lex(' \t')];
+    expect(tokens).toEqual([]);
+  });
+
+  it('lexes a comment', () => {
+    const tokens = [...lex('# this is a comment')];
+    expect(tokens).toEqual([]);
+  });
+
+  it('lexes multiple comments', () => {
+    const tokens = [
+      ...lex(`
+        # this is a comment
+        # this is another
+      `),
+    ];
+    expect(tokens).toEqual([]);
+  });
+
+  it('lexes commas', () => {
+    const tokens = [...lex(',,,')];
+    expect(tokens).toEqual([]);
+  });
+
+  it('lexes names', () => {
+    const tokens = [...lex('foo bar baz')];
+    expect(tokens).toEqual([
+      {token: 'NAME', tokenStart: 0, tokenEnd: 3},
+      {token: 'NAME', tokenStart: 4, tokenEnd: 7},
+      {token: 'NAME', tokenStart: 8, tokenEnd: 11},
+    ]);
+  });
+
+  it('survives a stress test', async () => {
+    const support = path.join(__dirname, '..', '..', '..', '..', 'support');
+    for (const file of ['generated', 'schema', 'source']) {
+      const text = (await fs.readFile(path.join(support, file + '.graphql'))).toString();
+      const tokens = [...lex(text)];
+      console.log(tokens);
+    }
   });
 
   it('does something else', () => {

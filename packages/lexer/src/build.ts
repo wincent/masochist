@@ -719,7 +719,6 @@ const ast = {
   },
 };
 
-// TODO: emit TS type annotations as well
 export function wip(): Program {
   const statements: Array<Statement> = [];
 

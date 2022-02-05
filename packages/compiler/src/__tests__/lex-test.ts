@@ -1,5 +1,7 @@
 import lex, {isIgnored} from '../lex';
 
+// TODO: move (well, copy/migrate) these to lexer-test.ts
+
 test('lexing an empty string', () => {
   const tokens = [...lex('')];
 
