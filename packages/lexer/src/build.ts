@@ -91,8 +91,9 @@ export default function build(table: TransitionTable): Program {
       if (isIgnored) {
         switchCase.block.push(
           ast.comment('IGNORED token.'),
-          ast.statement('tokenStart = i + 1'),
+          ast.statement('tokenStart = i'),
           ast.statement('state = START'),
+          ast.continue('loop'),
         );
       } else if (isAccept) {
         // TODO: eventually this stuff will get folded inline where applicable

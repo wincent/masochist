@@ -81,9 +81,9 @@ describe('build()', () => {
                 break;
               case 2:
                 // IGNORED token.
-                tokenStart = i + 1;
+                tokenStart = i;
                 state = START;
-                break;
+                continue loop;
               case 3:
                 if (ch === 0x0a) {
                   state = 2;
