@@ -1,4 +1,4 @@
-.DEFAULT: build
+.DEFAULT_GOAL := build
 
 PACKAGE_JSON = package.json $(wildcard packages/*/package.json)
 PACKAGE_MAKEFILES = $(shell find packages -maxdepth 2 -type f -name Makefile)
