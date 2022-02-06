@@ -22,7 +22,6 @@ export default function *lex(input: string) {
           };
           tokenStart = i + 1;
           state = START;
-          break;
         } else if (ch === 0x22) {
           state = 5;
         } else if (ch === 0x23) {
@@ -35,7 +34,6 @@ export default function *lex(input: string) {
           };
           tokenStart = i + 1;
           state = START;
-          break;
         } else if (ch === 0x26) {
           yield {
             token: "AMPERSAND",
@@ -44,7 +42,6 @@ export default function *lex(input: string) {
           };
           tokenStart = i + 1;
           state = START;
-          break;
         } else if (ch === 0x28) {
           yield {
             token: "OPENING_PAREN",
@@ -53,7 +50,6 @@ export default function *lex(input: string) {
           };
           tokenStart = i + 1;
           state = START;
-          break;
         } else if (ch === 0x29) {
           yield {
             token: "CLOSING_PAREN",
@@ -62,7 +58,6 @@ export default function *lex(input: string) {
           };
           tokenStart = i + 1;
           state = START;
-          break;
         } else if (ch === 0x2d) {
           state = 11;
         } else if (ch === 0x2e) {
@@ -79,7 +74,6 @@ export default function *lex(input: string) {
           };
           tokenStart = i + 1;
           state = START;
-          break;
         } else if (ch === 0x3d) {
           yield {
             token: "EQUALS",
@@ -88,7 +82,6 @@ export default function *lex(input: string) {
           };
           tokenStart = i + 1;
           state = START;
-          break;
         } else if (ch === 0x40) {
           yield {
             token: "AT",
@@ -97,7 +90,6 @@ export default function *lex(input: string) {
           };
           tokenStart = i + 1;
           state = START;
-          break;
         } else if (ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x7a) {
           state = 18;
         } else if (ch === 0x5b) {
@@ -108,7 +100,6 @@ export default function *lex(input: string) {
           };
           tokenStart = i + 1;
           state = START;
-          break;
         } else if (ch === 0x5d) {
           yield {
             token: "CLOSING_BRACKET",
@@ -117,7 +108,6 @@ export default function *lex(input: string) {
           };
           tokenStart = i + 1;
           state = START;
-          break;
         } else if (ch === 0x7b) {
           yield {
             token: "OPENING_BRACE",
@@ -126,7 +116,6 @@ export default function *lex(input: string) {
           };
           tokenStart = i + 1;
           state = START;
-          break;
         } else if (ch === 0x7c) {
           yield {
             token: "BAR",
@@ -135,7 +124,6 @@ export default function *lex(input: string) {
           };
           tokenStart = i + 1;
           state = START;
-          break;
         } else if (ch === 0x7d) {
           yield {
             token: "CLOSING_BRACE",
@@ -144,7 +132,6 @@ export default function *lex(input: string) {
           };
           tokenStart = i + 1;
           state = START;
-          break;
         } else {
           state = REJECT;
         }
@@ -272,7 +259,6 @@ export default function *lex(input: string) {
           };
           tokenStart = i + 1;
           state = START;
-          break;
         } else {
           state = REJECT;
         }
@@ -311,7 +297,6 @@ export default function *lex(input: string) {
           };
           tokenStart = i + 1;
           state = START;
-          break;
         } else {
           state = REJECT;
         }
@@ -440,7 +425,6 @@ export default function *lex(input: string) {
           };
           tokenStart = i + 1;
           state = START;
-          break;
         } else {
           state = REJECT;
         }

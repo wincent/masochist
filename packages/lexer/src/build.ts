@@ -200,7 +200,6 @@ export default function build(table: TransitionTable): Program {
               },
               ast.statement('tokenStart = i + 1'),
               ast.statement('state = START'),
-              ast.break,
             ]
           : [ast.statement(`state = ${j}`)];
         if (!expressions.length) {

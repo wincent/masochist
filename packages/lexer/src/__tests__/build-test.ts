@@ -33,7 +33,6 @@ describe('build()', () => {
                   };
                   tokenStart = i + 1;
                   state = START;
-                  break;
                 } else if (ch === 0x22) {
                   state = 5;
                 } else if (ch === 0x23) {
@@ -46,7 +45,6 @@ describe('build()', () => {
                   };
                   tokenStart = i + 1;
                   state = START;
-                  break;
                 } else if (ch === 0x26) {
                   yield {
                     token: "AMPERSAND",
@@ -55,7 +53,6 @@ describe('build()', () => {
                   };
                   tokenStart = i + 1;
                   state = START;
-                  break;
                 } else if (ch === 0x28) {
                   yield {
                     token: "OPENING_PAREN",
@@ -64,7 +61,6 @@ describe('build()', () => {
                   };
                   tokenStart = i + 1;
                   state = START;
-                  break;
                 } else if (ch === 0x29) {
                   yield {
                     token: "CLOSING_PAREN",
@@ -73,7 +69,6 @@ describe('build()', () => {
                   };
                   tokenStart = i + 1;
                   state = START;
-                  break;
                 } else if (ch === 0x2d) {
                   state = 11;
                 } else if (ch === 0x2e) {
@@ -90,7 +85,6 @@ describe('build()', () => {
                   };
                   tokenStart = i + 1;
                   state = START;
-                  break;
                 } else if (ch === 0x3d) {
                   yield {
                     token: "EQUALS",
@@ -99,7 +93,6 @@ describe('build()', () => {
                   };
                   tokenStart = i + 1;
                   state = START;
-                  break;
                 } else if (ch === 0x40) {
                   yield {
                     token: "AT",
@@ -108,7 +101,6 @@ describe('build()', () => {
                   };
                   tokenStart = i + 1;
                   state = START;
-                  break;
                 } else if (ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x7a) {
                   state = 18;
                 } else if (ch === 0x5b) {
@@ -119,7 +111,6 @@ describe('build()', () => {
                   };
                   tokenStart = i + 1;
                   state = START;
-                  break;
                 } else if (ch === 0x5d) {
                   yield {
                     token: "CLOSING_BRACKET",
@@ -128,7 +119,6 @@ describe('build()', () => {
                   };
                   tokenStart = i + 1;
                   state = START;
-                  break;
                 } else if (ch === 0x7b) {
                   yield {
                     token: "OPENING_BRACE",
@@ -137,7 +127,6 @@ describe('build()', () => {
                   };
                   tokenStart = i + 1;
                   state = START;
-                  break;
                 } else if (ch === 0x7c) {
                   yield {
                     token: "BAR",
@@ -146,7 +135,6 @@ describe('build()', () => {
                   };
                   tokenStart = i + 1;
                   state = START;
-                  break;
                 } else if (ch === 0x7d) {
                   yield {
                     token: "CLOSING_BRACE",
@@ -155,7 +143,6 @@ describe('build()', () => {
                   };
                   tokenStart = i + 1;
                   state = START;
-                  break;
                 } else {
                   state = REJECT;
                 }
@@ -283,7 +270,6 @@ describe('build()', () => {
                   };
                   tokenStart = i + 1;
                   state = START;
-                  break;
                 } else {
                   state = REJECT;
                 }
@@ -322,7 +308,6 @@ describe('build()', () => {
                   };
                   tokenStart = i + 1;
                   state = START;
-                  break;
                 } else {
                   state = REJECT;
                 }
@@ -451,7 +436,6 @@ describe('build()', () => {
                   };
                   tokenStart = i + 1;
                   state = START;
-                  break;
                 } else {
                   state = REJECT;
                 }
