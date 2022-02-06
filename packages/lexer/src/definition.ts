@@ -143,7 +143,7 @@ export const BLOCK_STRING_VALUE: TransitionTable = {
 };
 
 /**
- * Generate a lexer for the GraphQL language.
+ * A lexer for the GraphQL language in the form of a DFA.
  *
  * GraphQL is a simple language where almost all tokens can be recognized with a
  * single character of lookahead. The only exceptions are:
@@ -175,6 +175,23 @@ export const BLOCK_STRING_VALUE: TransitionTable = {
  *
  *   - https://spec.graphql.org/October2021/#sec-Int-Value
  *   - https://spec.graphql.org/October2021/#sec-Float-Value
+ *
+ * In both cases, by building the state machine with "greedy" semantics, we can
+ * avoid the need to do explicit lookahead. For example, after scanning '""',
+ * if the following character is '"' the machine will greedily continue,
+ * assuming a BLOCK_STRING_VALUE. Likewise with numbers, because both
+ * FLOAT_VALUE and INT_VALUE share a common prefix, the machine can just proceed
+ * greedily and if an INT_VALUE can be pursued further, becoming a FLOAT_VALUE,
+ * it will be. The syntax of GraphQL numbers is a subset of the syntax in JS, so
+ * a valid GraphQL number is a valid JS number.
+ *
+ * There are some lookahead restrictions that we handle in the parser instead of
+ * the lexer, for simplicity. For example, see the recent changes to the spec
+ * in:
+ *
+ *   - https://github.com/graphql/graphql-spec/pull/601
+ *
+ * Wherein numbers may not be immediately followed by a NAME (or by a ".").
  */
 export default union({
   //
@@ -208,10 +225,3 @@ export default union({
   //
   IGNORED: ignore(COMMA, COMMENT, LINE_TERMINATOR, UNICODE_BOM, WHITESPACE),
 });
-
-// TODO: about numbers: see recent changes to spec:
-// https://github.com/graphql/graphql-spec/pull/601
-//
-// lookahead: may not be followed by NAME character or "."
-//
-// probably going to handle this in the parser
