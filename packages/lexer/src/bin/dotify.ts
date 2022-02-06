@@ -14,6 +14,7 @@ import path from 'path';
 
 import compileRegExp from '../compileRegExp';
 import {
+  default as lexer,
   AMPERSAND,
   AT,
   BANG,
@@ -82,52 +83,11 @@ function machine(pattern: TransitionTable | RegExp | string) {
   }
 }
 
-/**
- * A single (combined) machine that recognizes tokens that can be
- * differentiated with a single character of lookahead.
- */
-function unionedTokens() {
-  return union(
-    // Punctuators.
-    {
-      AMPERSAND,
-      AT,
-      BANG,
-      BAR,
-      CLOSING_BRACE,
-      CLOSING_BRACKET,
-      CLOSING_PAREN,
-      COLON,
-      DOLLAR,
-      ELLIPSIS,
-      EQUALS,
-      OPENING_BRACE,
-      OPENING_BRACKET,
-      OPENING_PAREN,
-
-      // Other Lexical tokens.
-      BLOCK_STRING_VALUE,
-      NAME,
-      NUMBER,
-      STRING_VALUE,
-
-      // Ignored.
-      IGNORED: ignoredTokens(),
-    },
-  );
-}
-
 async function main() {
   const diagrams = {
-    // Experiments.
-    experimental_strings: union({
-      BLOCK_STRING_VALUE,
-      STRING_VALUE,
-    }),
-
     // Composite machines.
+    lexer,
     ignored: ignoredTokens(),
-    unioned: unionedTokens(),
 
     // Individual machines.
     AMPERSAND: machine(AMPERSAND),

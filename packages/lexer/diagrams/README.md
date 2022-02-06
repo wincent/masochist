@@ -1,19 +1,14 @@
 # `@masochist/lexer` state machine diagrams
 
-## experimental_strings
+## lexer
 
-![experimental_strings](./experimental_strings-dark.png#gh-dark-mode-only)
-![experimental_strings](./experimental_strings-light.png#gh-light-mode-only)
+![lexer](./lexer-dark.png#gh-dark-mode-only)
+![lexer](./lexer-light.png#gh-light-mode-only)
 
 ## ignored
 
 ![ignored](./ignored-dark.png#gh-dark-mode-only)
 ![ignored](./ignored-light.png#gh-light-mode-only)
-
-## unioned
-
-![unioned](./unioned-dark.png#gh-dark-mode-only)
-![unioned](./unioned-light.png#gh-light-mode-only)
 
 ## AMPERSAND
 
