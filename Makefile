@@ -41,8 +41,9 @@ diagrams: packages/lexer/lib/bin/dotify.js
 	@node packages/lexer/lib/bin/dotify.js
 	@$(MAKE) -C packages/lexer -j 4 diagrams
 
-#.PHONY: lexer
-#lexer: packages/lexer/src/lex.ts
+.PHONY: lexer
+lexer: packages/lexer/lib/bin/generate.js
+	@node packages/lexer/lib/bin/generate.js
 
 node_modules: yarn.lock $(PACKAGE_JSON)
 	@yarn

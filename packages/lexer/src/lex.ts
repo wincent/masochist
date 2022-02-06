@@ -1,4 +1,4 @@
-export default function* lex(input: string) {
+export default function *lex(input: string) {
   const REJECT = -1;
   const START = 0;
   let state = START;
@@ -42,11 +42,7 @@ export default function* lex(input: string) {
           state = 16;
         } else if (ch === 0x40) {
           state = 17;
-        } else if (
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
-        ) {
+        } else if (ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x7a) {
           state = 18;
         } else if (ch === 0x5b) {
           state = 19;
@@ -89,7 +85,7 @@ export default function* lex(input: string) {
         break;
       case 4:
         yield {
-          token: 'BANG',
+          token: "BANG",
           tokenStart,
           tokenEnd: i + 1,
         };
@@ -97,12 +93,7 @@ export default function* lex(input: string) {
         state = START;
         continue loop;
       case 5:
-        if (
-          ch === 0x09 ||
-          (ch >= 0x20 && ch <= 0x21) ||
-          (ch >= 0x23 && ch <= 0x5b) ||
-          (ch >= 0x5d && ch <= 0xffff)
-        ) {
+        if (ch === 0x09 || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
           state = 24;
         } else if (ch === 0x22) {
           state = 25;
@@ -113,7 +104,7 @@ export default function* lex(input: string) {
         }
         break;
       case 6:
-        if (ch === 0x09 || (ch >= 0x20 && ch <= 0xffff)) {
+        if (ch === 0x09 || ch >= 0x20 && ch <= 0xffff) {
           state = 6;
         } else {
           // IGNORED token.
@@ -124,7 +115,7 @@ export default function* lex(input: string) {
         break;
       case 7:
         yield {
-          token: 'DOLLAR',
+          token: "DOLLAR",
           tokenStart,
           tokenEnd: i + 1,
         };
@@ -133,7 +124,7 @@ export default function* lex(input: string) {
         continue loop;
       case 8:
         yield {
-          token: 'AMPERSAND',
+          token: "AMPERSAND",
           tokenStart,
           tokenEnd: i + 1,
         };
@@ -142,7 +133,7 @@ export default function* lex(input: string) {
         continue loop;
       case 9:
         yield {
-          token: 'OPENING_PAREN',
+          token: "OPENING_PAREN",
           tokenStart,
           tokenEnd: i + 1,
         };
@@ -151,7 +142,7 @@ export default function* lex(input: string) {
         continue loop;
       case 10:
         yield {
-          token: 'CLOSING_PAREN',
+          token: "CLOSING_PAREN",
           tokenStart,
           tokenEnd: i + 1,
         };
@@ -181,7 +172,7 @@ export default function* lex(input: string) {
           state = 29;
         } else {
           yield {
-            token: 'NUMBER',
+            token: "NUMBER",
             tokenStart,
             tokenEnd: i,
           };
@@ -199,7 +190,7 @@ export default function* lex(input: string) {
           state = 29;
         } else {
           yield {
-            token: 'NUMBER',
+            token: "NUMBER",
             tokenStart,
             tokenEnd: i,
           };
@@ -210,7 +201,7 @@ export default function* lex(input: string) {
         break;
       case 15:
         yield {
-          token: 'COLON',
+          token: "COLON",
           tokenStart,
           tokenEnd: i + 1,
         };
@@ -219,7 +210,7 @@ export default function* lex(input: string) {
         continue loop;
       case 16:
         yield {
-          token: 'EQUALS',
+          token: "EQUALS",
           tokenStart,
           tokenEnd: i + 1,
         };
@@ -228,7 +219,7 @@ export default function* lex(input: string) {
         continue loop;
       case 17:
         yield {
-          token: 'AT',
+          token: "AT",
           tokenStart,
           tokenEnd: i + 1,
         };
@@ -236,16 +227,11 @@ export default function* lex(input: string) {
         state = START;
         continue loop;
       case 18:
-        if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
-        ) {
+        if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x7a) {
           state = 18;
         } else {
           yield {
-            token: 'NAME',
+            token: "NAME",
             tokenStart,
             tokenEnd: i,
           };
@@ -256,7 +242,7 @@ export default function* lex(input: string) {
         break;
       case 19:
         yield {
-          token: 'OPENING_BRACKET',
+          token: "OPENING_BRACKET",
           tokenStart,
           tokenEnd: i + 1,
         };
@@ -265,7 +251,7 @@ export default function* lex(input: string) {
         continue loop;
       case 20:
         yield {
-          token: 'CLOSING_BRACKET',
+          token: "CLOSING_BRACKET",
           tokenStart,
           tokenEnd: i + 1,
         };
@@ -274,7 +260,7 @@ export default function* lex(input: string) {
         continue loop;
       case 21:
         yield {
-          token: 'OPENING_BRACE',
+          token: "OPENING_BRACE",
           tokenStart,
           tokenEnd: i + 1,
         };
@@ -283,7 +269,7 @@ export default function* lex(input: string) {
         continue loop;
       case 22:
         yield {
-          token: 'BAR',
+          token: "BAR",
           tokenStart,
           tokenEnd: i + 1,
         };
@@ -292,7 +278,7 @@ export default function* lex(input: string) {
         continue loop;
       case 23:
         yield {
-          token: 'CLOSING_BRACE',
+          token: "CLOSING_BRACE",
           tokenStart,
           tokenEnd: i + 1,
         };
@@ -300,12 +286,7 @@ export default function* lex(input: string) {
         state = START;
         continue loop;
       case 24:
-        if (
-          ch === 0x09 ||
-          (ch >= 0x20 && ch <= 0x21) ||
-          (ch >= 0x23 && ch <= 0x5b) ||
-          (ch >= 0x5d && ch <= 0xffff)
-        ) {
+        if (ch === 0x09 || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
           state = 24;
         } else if (ch === 0x5c) {
           state = 26;
@@ -320,7 +301,7 @@ export default function* lex(input: string) {
           state = 31;
         } else {
           yield {
-            token: 'STRING_VALUE',
+            token: "STRING_VALUE",
             tokenStart,
             tokenEnd: i,
           };
@@ -330,15 +311,7 @@ export default function* lex(input: string) {
         }
         break;
       case 26:
-        if (
-          ch === 0x22 ||
-          ch === 0x2f ||
-          ch === 0x62 ||
-          ch === 0x66 ||
-          ch === 0x6e ||
-          ch === 0x72 ||
-          ch === 0x74
-        ) {
+        if (ch === 0x22 || ch === 0x2f || ch === 0x62 || ch === 0x66 || ch === 0x6e || ch === 0x72 || ch === 0x74) {
           state = 24;
         } else if (ch === 0x5c) {
           state = 32;
@@ -373,7 +346,7 @@ export default function* lex(input: string) {
         break;
       case 30:
         yield {
-          token: 'STRING_VALUE',
+          token: "STRING_VALUE",
           tokenStart,
           tokenEnd: i + 1,
         };
@@ -381,13 +354,7 @@ export default function* lex(input: string) {
         state = START;
         continue loop;
       case 31:
-        if (
-          (ch >= 0x09 && ch <= 0x0a) ||
-          ch === 0x0d ||
-          (ch >= 0x20 && ch <= 0x21) ||
-          (ch >= 0x23 && ch <= 0x5b) ||
-          (ch >= 0x5d && ch <= 0xffff)
-        ) {
+        if (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
           state = 31;
         } else if (ch === 0x22) {
           state = 38;
@@ -398,14 +365,7 @@ export default function* lex(input: string) {
         }
         break;
       case 32:
-        if (
-          ch === 0x2f ||
-          ch === 0x62 ||
-          ch === 0x66 ||
-          ch === 0x6e ||
-          ch === 0x72 ||
-          ch === 0x74
-        ) {
+        if (ch === 0x2f || ch === 0x62 || ch === 0x66 || ch === 0x6e || ch === 0x72 || ch === 0x74) {
           state = 24;
         } else if (ch === 0x5c) {
           state = 32;
@@ -416,11 +376,7 @@ export default function* lex(input: string) {
         }
         break;
       case 33:
-        if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x46) ||
-          (ch >= 0x61 && ch <= 0x66)
-        ) {
+        if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x46 || ch >= 0x61 && ch <= 0x66) {
           state = 40;
         } else {
           state = REJECT;
@@ -428,7 +384,7 @@ export default function* lex(input: string) {
         break;
       case 34:
         yield {
-          token: 'ELLIPSIS',
+          token: "ELLIPSIS",
           tokenStart,
           tokenEnd: i + 1,
         };
@@ -442,7 +398,7 @@ export default function* lex(input: string) {
           state = 35;
         } else {
           yield {
-            token: 'NUMBER',
+            token: "NUMBER",
             tokenStart,
             tokenEnd: i,
           };
@@ -463,7 +419,7 @@ export default function* lex(input: string) {
           state = 37;
         } else {
           yield {
-            token: 'NUMBER',
+            token: "NUMBER",
             tokenStart,
             tokenEnd: i,
           };
@@ -473,13 +429,7 @@ export default function* lex(input: string) {
         }
         break;
       case 38:
-        if (
-          (ch >= 0x09 && ch <= 0x0a) ||
-          ch === 0x0d ||
-          (ch >= 0x20 && ch <= 0x21) ||
-          (ch >= 0x23 && ch <= 0x5b) ||
-          (ch >= 0x5d && ch <= 0xffff)
-        ) {
+        if (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
           state = 31;
         } else if (ch === 0x5c) {
           state = 39;
@@ -490,13 +440,7 @@ export default function* lex(input: string) {
         }
         break;
       case 39:
-        if (
-          (ch >= 0x09 && ch <= 0x0a) ||
-          ch === 0x0d ||
-          (ch >= 0x20 && ch <= 0x21) ||
-          (ch >= 0x23 && ch <= 0x5b) ||
-          (ch >= 0x5d && ch <= 0xffff)
-        ) {
+        if (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
           state = 31;
         } else if (ch === 0x5c) {
           state = 39;
@@ -507,24 +451,14 @@ export default function* lex(input: string) {
         }
         break;
       case 40:
-        if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x46) ||
-          (ch >= 0x61 && ch <= 0x66)
-        ) {
+        if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x46 || ch >= 0x61 && ch <= 0x66) {
           state = 43;
         } else {
           state = REJECT;
         }
         break;
       case 41:
-        if (
-          (ch >= 0x09 && ch <= 0x0a) ||
-          ch === 0x0d ||
-          (ch >= 0x20 && ch <= 0x21) ||
-          (ch >= 0x23 && ch <= 0x5b) ||
-          (ch >= 0x5d && ch <= 0xffff)
-        ) {
+        if (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
           state = 31;
         } else if (ch === 0x5c) {
           state = 39;
@@ -535,13 +469,7 @@ export default function* lex(input: string) {
         }
         break;
       case 42:
-        if (
-          (ch >= 0x09 && ch <= 0x0a) ||
-          ch === 0x0d ||
-          (ch >= 0x20 && ch <= 0x21) ||
-          (ch >= 0x23 && ch <= 0x5b) ||
-          (ch >= 0x5d && ch <= 0xffff)
-        ) {
+        if (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
           state = 31;
         } else if (ch === 0x5c) {
           state = 39;
@@ -552,11 +480,7 @@ export default function* lex(input: string) {
         }
         break;
       case 43:
-        if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x46) ||
-          (ch >= 0x61 && ch <= 0x66)
-        ) {
+        if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x46 || ch >= 0x61 && ch <= 0x66) {
           state = 46;
         } else {
           state = REJECT;
@@ -564,7 +488,7 @@ export default function* lex(input: string) {
         break;
       case 44:
         yield {
-          token: 'BLOCK_STRING_VALUE',
+          token: "BLOCK_STRING_VALUE",
           tokenStart,
           tokenEnd: i + 1,
         };
@@ -572,12 +496,7 @@ export default function* lex(input: string) {
         state = START;
         continue loop;
       case 45:
-        if (
-          ch === 0x0a ||
-          ch === 0x0d ||
-          (ch >= 0x20 && ch <= 0x5b) ||
-          (ch >= 0x5d && ch <= 0xffff)
-        ) {
+        if (ch === 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
           state = 31;
         } else if (ch === 0x5c) {
           state = 39;
@@ -586,20 +505,16 @@ export default function* lex(input: string) {
         }
         break;
       case 46:
-        if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x46) ||
-          (ch >= 0x61 && ch <= 0x66)
-        ) {
+        if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x46 || ch >= 0x61 && ch <= 0x66) {
           state = 24;
         } else {
           state = REJECT;
         }
         break;
       case REJECT:
-        throw new Error('Failed to recognize token');
+        throw new Error("Failed to recognize token");
       default:
-        throw new Error('Unexpected state');
+        throw new Error("Unexpected state");
     }
     i++;
   }

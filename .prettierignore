@@ -1,3 +1,6 @@
 # Keep this file as close as possible to original `tsc --init` output, for ease
 # of updating.
 /tsconfig-base.json
+
+# Generated file.
+/packages/lexer/src/lex.ts
