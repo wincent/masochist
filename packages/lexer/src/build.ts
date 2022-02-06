@@ -123,9 +123,6 @@ export default function build(table: TransitionTable): Program {
           ast.continue('loop'),
         );
       } else if (isAccept) {
-        // TODO: eventually this stuff will get folded inline where applicable
-        // eg. instead of going from state N to M only to yield
-        // if there is only one place going from N to M, yield directly from N
         switchCase.block.push(
           {
             kind: 'ExpressionStatement',
