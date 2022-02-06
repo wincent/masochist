@@ -59,7 +59,34 @@ export default function build(table: TransitionTable): Program {
   };
   whileStatement.block.push(switchStatement, ast.statement('i++'));
 
+  // 0. Identify accept states reachable from exactly one other state, which
+  // themselves have no outgoing edges.
+  const statesLeadingToAcceptStates: Array<Set<number>> = [];
   table.transitions.forEach((transitionMap, i) => {
+    for (const targets of transitionMap.values()) {
+      for (const target of targets) {
+        if (table.acceptStates.has(target) && !table.transitions[target].size) {
+          if (statesLeadingToAcceptStates[target]) {
+            statesLeadingToAcceptStates[target].add(i);
+          } else {
+            statesLeadingToAcceptStates[target] = new Set([i]);
+          }
+        }
+      }
+    }
+  });
+  const inlineableStates = new Set<number>();
+  statesLeadingToAcceptStates.forEach((set, i) => {
+    if (set?.size === 1) {
+      inlineableStates.add(i);
+    }
+  });
+
+  table.transitions.forEach((transitionMap, i) => {
+    if (inlineableStates.has(i)) {
+      return;
+    }
+
     // 1. Group conditions by target states.
     const conditions: Array<Array<NonNullable<Transition>> | undefined> = [];
     for (const [key, targets] of transitionMap) {
@@ -156,7 +183,26 @@ export default function build(table: TransitionTable): Program {
             });
           }
         }
-        const block: Array<Statement> = [ast.statement(`state = ${j}`)];
+        const block: Array<Statement> = inlineableStates.has(j)
+          ? [
+              {
+                kind: 'ExpressionStatement',
+                expression: {
+                  kind: 'YieldExpression',
+                  expression: ast.object({
+                    token: ast.string(Array.from(table.labels?.[j] ?? [])[0]),
+                    tokenStart: ast.identifier('tokenStart'),
+                    tokenEnd: ast.expression('i + 1'),
+                    // TODO: include value if this is a token with content, like
+                    // NAME, NUMBER, STRING_VALUE etc
+                  }),
+                },
+              },
+              ast.statement('tokenStart = i + 1'),
+              ast.statement('state = START'),
+              ast.break,
+            ]
+          : [ast.statement(`state = ${j}`)];
         if (!expressions.length) {
           throw new Error('Expected a non-empty set of expressions');
         } else if (expressions.length === 1) {
