@@ -483,32 +483,6 @@ function wrap(maybeReference: string | Expression): Expression {
   }
 }
 
-function excerpt(text: string, line: number, column: number): string {
-  let output = '';
-
-  const lines = text.split(/\r\n?|\n/g);
-
-  const gutter = (line + 2).toString().length;
-
-  for (let i = line - 3; i < line + 2; i++) {
-    if (i >= 0 && i < lines.length) {
-      if (i === line - 1) {
-        output += '> ';
-      } else {
-        output += '  ';
-      }
-
-      output += `${(i + 1).toString().padStart(gutter)} | ${lines[i]}\n`;
-
-      if (i === line - 1) {
-        output += `  ${' '.repeat(gutter)} | ${' '.repeat(column - 1)}^\n`;
-      }
-    }
-  }
-
-  return output;
-}
-
 /**
  * Returns a hash for `expression`.
  *

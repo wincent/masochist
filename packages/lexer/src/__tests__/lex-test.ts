@@ -1,5 +1,5 @@
 import {print} from '@masochist/codegen';
-import {dedent, invariant} from '@masochist/common';
+import {invariant} from '@masochist/common';
 
 import {promises as fs} from 'fs';
 import path from 'path';

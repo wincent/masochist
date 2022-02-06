@@ -47,7 +47,6 @@ import {
   WHITESPACE,
 } from '../definition';
 import ignore from '../ignore';
-import union from '../union';
 import NFAToDFA from '../NFA/NFAToDFA';
 import dotifyTransitionTable from '../NFA/dotifyTransitionTable';
 import minimizeDFA from '../NFA/minimizeDFA';

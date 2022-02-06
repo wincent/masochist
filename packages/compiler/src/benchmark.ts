@@ -87,7 +87,7 @@ async function main() {
   performance.mark('B');
   performance.measure('A to B', 'A', 'B');
 
-  memory.finish = process.memoryUsage();
+  memory['finish'] = process.memoryUsage();
 
   console.table(tableize(memory));
 }
