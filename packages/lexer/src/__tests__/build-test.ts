@@ -98,7 +98,7 @@ describe('build()', () => {
                 yield {
                   token: "BANG",
                   tokenStart,
-                  tokenEnd: i + 1,
+                  tokenEnd: i,
                 };
                 tokenStart = i + 1;
                 state = START;
@@ -128,7 +128,7 @@ describe('build()', () => {
                 yield {
                   token: "DOLLAR",
                   tokenStart,
-                  tokenEnd: i + 1,
+                  tokenEnd: i,
                 };
                 tokenStart = i + 1;
                 state = START;
@@ -137,7 +137,7 @@ describe('build()', () => {
                 yield {
                   token: "AMPERSAND",
                   tokenStart,
-                  tokenEnd: i + 1,
+                  tokenEnd: i,
                 };
                 tokenStart = i + 1;
                 state = START;
@@ -146,7 +146,7 @@ describe('build()', () => {
                 yield {
                   token: "OPENING_PAREN",
                   tokenStart,
-                  tokenEnd: i + 1,
+                  tokenEnd: i,
                 };
                 tokenStart = i + 1;
                 state = START;
@@ -155,7 +155,7 @@ describe('build()', () => {
                 yield {
                   token: "CLOSING_PAREN",
                   tokenStart,
-                  tokenEnd: i + 1,
+                  tokenEnd: i,
                 };
                 tokenStart = i + 1;
                 state = START;
@@ -214,7 +214,7 @@ describe('build()', () => {
                 yield {
                   token: "COLON",
                   tokenStart,
-                  tokenEnd: i + 1,
+                  tokenEnd: i,
                 };
                 tokenStart = i + 1;
                 state = START;
@@ -223,7 +223,7 @@ describe('build()', () => {
                 yield {
                   token: "EQUALS",
                   tokenStart,
-                  tokenEnd: i + 1,
+                  tokenEnd: i,
                 };
                 tokenStart = i + 1;
                 state = START;
@@ -232,7 +232,7 @@ describe('build()', () => {
                 yield {
                   token: "AT",
                   tokenStart,
-                  tokenEnd: i + 1,
+                  tokenEnd: i,
                 };
                 tokenStart = i + 1;
                 state = START;
@@ -255,7 +255,7 @@ describe('build()', () => {
                 yield {
                   token: "OPENING_BRACKET",
                   tokenStart,
-                  tokenEnd: i + 1,
+                  tokenEnd: i,
                 };
                 tokenStart = i + 1;
                 state = START;
@@ -264,7 +264,7 @@ describe('build()', () => {
                 yield {
                   token: "CLOSING_BRACKET",
                   tokenStart,
-                  tokenEnd: i + 1,
+                  tokenEnd: i,
                 };
                 tokenStart = i + 1;
                 state = START;
@@ -273,7 +273,7 @@ describe('build()', () => {
                 yield {
                   token: "OPENING_BRACE",
                   tokenStart,
-                  tokenEnd: i + 1,
+                  tokenEnd: i,
                 };
                 tokenStart = i + 1;
                 state = START;
@@ -282,7 +282,7 @@ describe('build()', () => {
                 yield {
                   token: "BAR",
                   tokenStart,
-                  tokenEnd: i + 1,
+                  tokenEnd: i,
                 };
                 tokenStart = i + 1;
                 state = START;
@@ -291,7 +291,7 @@ describe('build()', () => {
                 yield {
                   token: "CLOSING_BRACE",
                   tokenStart,
-                  tokenEnd: i + 1,
+                  tokenEnd: i,
                 };
                 tokenStart = i + 1;
                 state = START;
@@ -359,7 +359,7 @@ describe('build()', () => {
                 yield {
                   token: "STRING_VALUE",
                   tokenStart,
-                  tokenEnd: i + 1,
+                  tokenEnd: i,
                 };
                 tokenStart = i + 1;
                 state = START;
@@ -397,7 +397,7 @@ describe('build()', () => {
                 yield {
                   token: "ELLIPSIS",
                   tokenStart,
-                  tokenEnd: i + 1,
+                  tokenEnd: i,
                 };
                 tokenStart = i + 1;
                 state = START;
@@ -501,7 +501,7 @@ describe('build()', () => {
                 yield {
                   token: "BLOCK_STRING_VALUE",
                   tokenStart,
-                  tokenEnd: i + 1,
+                  tokenEnd: i,
                 };
                 tokenStart = i + 1;
                 state = START;

@@ -107,13 +107,13 @@ export default function build(table: TransitionTable): Program {
               expression: ast.object({
                 token: ast.string(isAccept),
                 tokenStart: ast.identifier('tokenStart'),
-                tokenEnd: ast.expression('i + 1'), // shoud be just i?
+                tokenEnd: ast.expression('i'),
                 // TODO: include value if this is a token with content, like
                 // NAME, NUMBER, STRING_VALUE etc
               }),
             },
           },
-          ast.statement('tokenStart = i + 1'), // should be just i?
+          ast.statement('tokenStart = i'),
           ast.statement('state = START'),
           ast.continue('loop'),
         );

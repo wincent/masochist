@@ -98,13 +98,9 @@ describe('lex()', () => {
       const text = (
         await fs.readFile(path.join(support, file + '.graphql'))
       ).toString();
-      // BUG: looking at tokens shows we are in comments, failing to lex them
-      // as ignored comment tokens...
-      //
-      // for (const token of lex(text)) {
-      //   console.log(token);
-      // }
       const tokens = [...lex(text)];
+
+      // TODO: make some useful assertions instead of logging
       console.log(tokens);
     }
   });
@@ -124,27 +120,43 @@ describe('lex()', () => {
     expect(tokens).toEqual([
       {token: 'NAME', tokenStart: 7, tokenEnd: 12},
       {token: 'NAME', tokenStart: 13, tokenEnd: 17},
-      {token: 'OPENING_BRACE', tokenStart: 18, tokenEnd: 20},
+      {token: 'OPENING_BRACE', tokenStart: 18, tokenEnd: 19},
       {token: 'NAME', tokenStart: 28, tokenEnd: 34},
-      {token: 'OPENING_BRACE', tokenStart: 35, tokenEnd: 37},
+      {token: 'OPENING_BRACE', tokenStart: 35, tokenEnd: 36},
       {token: 'NAME', tokenStart: 47, tokenEnd: 51},
-      {token: 'OPENING_PAREN', tokenStart: 51, tokenEnd: 53},
-      {token: 'NAME', tokenStart: 53, tokenEnd: 57},
-      {token: 'COLON', tokenStart: 57, tokenEnd: 59},
+      {token: 'OPENING_PAREN', tokenStart: 51, tokenEnd: 52},
+      {token: 'NAME', tokenStart: 52, tokenEnd: 57},
+      {token: 'COLON', tokenStart: 57, tokenEnd: 58},
       {token: 'NUMBER', tokenStart: 59, tokenEnd: 61},
       {token: 'NAME', tokenStart: 63, tokenEnd: 68},
-      {token: 'COLON', tokenStart: 68, tokenEnd: 70},
-      {token: 'STRING_VALUE', tokenStart: 70, tokenEnd: 79},
-      {token: 'CLOSING_PAREN', tokenStart: 79, tokenEnd: 80},
-      {token: 'OPENING_BRACE', tokenStart: 80, tokenEnd: 82},
+      {token: 'COLON', tokenStart: 68, tokenEnd: 69},
+      {token: 'STRING_VALUE', tokenStart: 70, tokenEnd: 78},
+      {token: 'CLOSING_PAREN', tokenStart: 78, tokenEnd: 79},
+      {token: 'OPENING_BRACE', tokenStart: 80, tokenEnd: 81},
       {token: 'NAME', tokenStart: 94, tokenEnd: 96},
-      {token: 'CLOSING_BRACE', tokenStart: 107, tokenEnd: 109},
-      {token: 'CLOSING_BRACE', tokenStart: 117, tokenEnd: 119},
-      {token: 'CLOSING_BRACE', tokenStart: 125, tokenEnd: 127},
+      {token: 'CLOSING_BRACE', tokenStart: 107, tokenEnd: 108},
+      {token: 'CLOSING_BRACE', tokenStart: 117, tokenEnd: 118},
+      {token: 'CLOSING_BRACE', tokenStart: 125, tokenEnd: 126},
     ]);
   });
 
-  xit('toy example', () => {
-    console.log([...lex('foo { bar')]);
+  describe('regression tests', () => {
+    it('lexes a one-character punctuator between two NAME tokens', () => {
+      // OPENING_BRACE was two wide, but should be one wide.
+      expect([...lex('foo { bar')]).toEqual([
+        {token: 'NAME', tokenStart: 0, tokenEnd: 3},
+        {token: 'OPENING_BRACE', tokenStart: 4, tokenEnd: 5},
+        {token: 'NAME', tokenStart: 6, tokenEnd: 9},
+      ]);
+    });
+
+    it('lexes a one-character punctuator after a STRING_VALUE', () => {
+      // CLOSING_PAREN was starting 1 character too far to the right.
+      expect([...lex('"hey") {')]).toEqual([
+        {token: 'STRING_VALUE', tokenStart: 0, tokenEnd: 5},
+        {token: 'CLOSING_PAREN', tokenStart: 5, tokenEnd: 6},
+        {token: 'OPENING_BRACE', tokenStart: 7, tokenEnd: 8},
+      ]);
+    });
   });
 });
