@@ -1,0 +1,23 @@
+{
+  "name": "@masochist/benchmark",
+  "version": "0.0.1",
+  "description": "Masochist benchmarks",
+  "dependencies": {
+    "@masochist/common": "*",
+    "@masochist/legacy": "*",
+    "@masochist/lexer": "*"
+  },
+  "main": "lib/index.js",
+  "author": "Greg Hurrell <greg@hurrell.net>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "benchmark": "node lib/index.js",
+    "benchmark:dynamic:lexer": "node lib/benchmark-dynamic-lexer.js",
+    "benchmark:reference:lexer": "node lib/benchmark-reference-lexer.js",
+    "benchmark:static:lexer": "node lib/benchmark-static-lexer.js",
+    "build": "cd ../.. && yarn build",
+    "format": "cd ../.. && yarn format",
+    "test": "cd ../.. && yarn test packages/benchmark"
+  }
+}

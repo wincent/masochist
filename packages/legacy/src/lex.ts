@@ -1,4 +1,6 @@
-import Lexer, {Matcher, Token} from './Lexer';
+import Lexer, {Matcher} from './Lexer';
+
+import type {Token} from './Lexer';
 
 export const Tokens = {
   AMPERSAND: 'AMPERSAND',
@@ -27,7 +29,7 @@ export const Tokens = {
   WHITESPACE: 'WHITESPACE',
 } as const;
 
-export type TokenName = keyof typeof Tokens;
+type TokenName = keyof typeof Tokens;
 
 /**
  * @see https://graphql.github.io/graphql-spec/draft/

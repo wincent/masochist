@@ -1,3 +1,4 @@
+import {dedent} from '@masochist/common';
 import {spawnSync} from 'child_process';
 import fs from 'fs';
 import os from 'os';
@@ -16,7 +17,7 @@ async function main() {
   process.chdir(scratch);
 
   const corpus = path.join(__dirname, '../../../support/source.graphql');
-  const script = path.join(__dirname, '../lib/benchmark-lexer.js');
+  const script = path.join(__dirname, '../lib/benchmark-dynamic-lexer.js');
 
   try {
     await access(script, fs.constants.R_OK);
@@ -33,19 +34,20 @@ async function main() {
 
   const modifiedSource = scriptSource
     .replace(
-      '__importDefault(require("./lex"))',
-      `{
-                default(input) {
-                    const {Lexer, Source} = require("graphql");
-                    const lexer = new Lexer(new Source(input));
-                    while (true) {
-                        if (lexer.advance().kind === '<EOF>') {
-                            break;
-                        }
-                    }
-                    return [];
-                }
-            }`,
+      'require("@masochist/legacy")',
+      dedent`
+        {
+          lex(input) {
+              const {Lexer, Source} = require("graphql");
+              const lexer = new Lexer(new Source(input));
+              while (true) {
+                  if (lexer.advance().kind === '<EOF>') {
+                      break;
+                  }
+              }
+              return [];
+          }
+        }`,
     )
     .replace('../../../support', '.');
 

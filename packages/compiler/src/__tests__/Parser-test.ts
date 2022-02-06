@@ -1,5 +1,6 @@
+import {Tokens, isIgnored, lex} from '@masochist/legacy';
+
 import Parser, {Grammar, choice, plus, sequence, r, t} from '../Parser';
-import lex, {Tokens, isIgnored} from '../lex';
 
 /**
  * Simplified type for GraphQL AST nodes.

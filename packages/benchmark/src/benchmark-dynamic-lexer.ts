@@ -3,12 +3,12 @@ import path from 'path';
 import {PerformanceObserver, performance} from 'perf_hooks';
 import {promisify} from 'util';
 
-import lex from '../lex';
+import {lex} from '@masochist/legacy';
 
 const readFile = promisify(fs.readFile);
 
 async function read(file: string): Promise<string> {
-  return readFile(path.join(__dirname, '../../../../support', file), 'utf8');
+  return readFile(path.join(__dirname, '../../../support', file), 'utf8');
 }
 
 function mb(bytes: number): string {

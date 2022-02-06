@@ -3,10 +3,12 @@
   "files": [],
   "include": [],
   "references": [
+    {"path": "./packages/benchmark"},
     {"path": "./packages/client"},
     {"path": "./packages/codegen"},
     {"path": "./packages/common"},
     {"path": "./packages/compiler"},
+    {"path": "./packages/legacy"},
     {"path": "./packages/lexer"},
     {"path": "./packages/server"}
   ]

@@ -10,10 +10,6 @@ TS_LIB = $(subst /src/,/lib/,$(TS_SRC))
 TS_OUT = $(patsubst %.ts,%.js,$(TS_LIB))
 TS_D_OUT = $(patsubst %.ts,%.d.ts,$(TS_LIB))
 
-.PHONY: benchmark
-benchmark: packages/lexer/lib/bin/benchmark.js
-	@node packages/lexer/lib/bin/benchmark.js
-
 .PHONY: build
 build: $(TS_OUT) $(TS_D_OUT)
 

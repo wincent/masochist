@@ -3,7 +3,7 @@ import path from 'path';
 import {PerformanceObserver, performance} from 'perf_hooks';
 import {promisify} from 'util';
 
-import lex from './lex';
+import lex from '@masochist/lexer';
 
 const readFile = promisify(fs.readFile);
 

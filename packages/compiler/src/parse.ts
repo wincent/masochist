@@ -1,3 +1,4 @@
+import {Tokens, isIgnored, lex} from '@masochist/legacy';
 import {performance} from 'perf_hooks';
 
 import Parser, {
@@ -10,7 +11,6 @@ import Parser, {
   r,
   t,
 } from './Parser';
-import lex, {Tokens, isIgnored} from './lex';
 
 // TODO: move all this into a separate file
 

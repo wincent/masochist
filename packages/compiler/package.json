@@ -1,6 +1,10 @@
 {
   "name": "@masochist/compiler",
   "version": "0.0.1",
+  "dependencies": {
+    "@masochist/common": "*",
+    "@masochist/legacy": "*"
+  },
   "description": "Masochist compiler",
   "main": "lib/index.js",
   "author": "Greg Hurrell <greg@hurrell.net>",
@@ -9,8 +13,6 @@
   "scripts": {
     "benchmark": "node lib/benchmark.js",
     "benchmark:graphql": "node lib/benchmark-graphql.js",
-    "benchmark:graphql:lexer": "node lib/benchmark-graphql-lexer.js",
-    "benchmark:lexer": "node lib/benchmark-lexer.js",
     "build": "cd ../.. && yarn build",
     "format": "cd ../.. && yarn format",
     "inspect": "echo 'Go to chrome://inspect' && node --inspect-brk lib/benchmark.js",

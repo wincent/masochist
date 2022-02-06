@@ -87,9 +87,9 @@ export default function *lex(input: string) {
         yield {
           token: "BANG",
           tokenStart,
-          tokenEnd: i + 1,
+          tokenEnd: i,
         };
-        tokenStart = i + 1;
+        tokenStart = i;
         state = START;
         continue loop;
       case 5:
@@ -117,36 +117,36 @@ export default function *lex(input: string) {
         yield {
           token: "DOLLAR",
           tokenStart,
-          tokenEnd: i + 1,
+          tokenEnd: i,
         };
-        tokenStart = i + 1;
+        tokenStart = i;
         state = START;
         continue loop;
       case 8:
         yield {
           token: "AMPERSAND",
           tokenStart,
-          tokenEnd: i + 1,
+          tokenEnd: i,
         };
-        tokenStart = i + 1;
+        tokenStart = i;
         state = START;
         continue loop;
       case 9:
         yield {
           token: "OPENING_PAREN",
           tokenStart,
-          tokenEnd: i + 1,
+          tokenEnd: i,
         };
-        tokenStart = i + 1;
+        tokenStart = i;
         state = START;
         continue loop;
       case 10:
         yield {
           token: "CLOSING_PAREN",
           tokenStart,
-          tokenEnd: i + 1,
+          tokenEnd: i,
         };
-        tokenStart = i + 1;
+        tokenStart = i;
         state = START;
         continue loop;
       case 11:
@@ -203,27 +203,27 @@ export default function *lex(input: string) {
         yield {
           token: "COLON",
           tokenStart,
-          tokenEnd: i + 1,
+          tokenEnd: i,
         };
-        tokenStart = i + 1;
+        tokenStart = i;
         state = START;
         continue loop;
       case 16:
         yield {
           token: "EQUALS",
           tokenStart,
-          tokenEnd: i + 1,
+          tokenEnd: i,
         };
-        tokenStart = i + 1;
+        tokenStart = i;
         state = START;
         continue loop;
       case 17:
         yield {
           token: "AT",
           tokenStart,
-          tokenEnd: i + 1,
+          tokenEnd: i,
         };
-        tokenStart = i + 1;
+        tokenStart = i;
         state = START;
         continue loop;
       case 18:
@@ -244,45 +244,45 @@ export default function *lex(input: string) {
         yield {
           token: "OPENING_BRACKET",
           tokenStart,
-          tokenEnd: i + 1,
+          tokenEnd: i,
         };
-        tokenStart = i + 1;
+        tokenStart = i;
         state = START;
         continue loop;
       case 20:
         yield {
           token: "CLOSING_BRACKET",
           tokenStart,
-          tokenEnd: i + 1,
+          tokenEnd: i,
         };
-        tokenStart = i + 1;
+        tokenStart = i;
         state = START;
         continue loop;
       case 21:
         yield {
           token: "OPENING_BRACE",
           tokenStart,
-          tokenEnd: i + 1,
+          tokenEnd: i,
         };
-        tokenStart = i + 1;
+        tokenStart = i;
         state = START;
         continue loop;
       case 22:
         yield {
           token: "BAR",
           tokenStart,
-          tokenEnd: i + 1,
+          tokenEnd: i,
         };
-        tokenStart = i + 1;
+        tokenStart = i;
         state = START;
         continue loop;
       case 23:
         yield {
           token: "CLOSING_BRACE",
           tokenStart,
-          tokenEnd: i + 1,
+          tokenEnd: i,
         };
-        tokenStart = i + 1;
+        tokenStart = i;
         state = START;
         continue loop;
       case 24:
@@ -348,9 +348,9 @@ export default function *lex(input: string) {
         yield {
           token: "STRING_VALUE",
           tokenStart,
-          tokenEnd: i + 1,
+          tokenEnd: i,
         };
-        tokenStart = i + 1;
+        tokenStart = i;
         state = START;
         continue loop;
       case 31:
@@ -386,9 +386,9 @@ export default function *lex(input: string) {
         yield {
           token: "ELLIPSIS",
           tokenStart,
-          tokenEnd: i + 1,
+          tokenEnd: i,
         };
-        tokenStart = i + 1;
+        tokenStart = i;
         state = START;
         continue loop;
       case 35:
@@ -490,9 +490,9 @@ export default function *lex(input: string) {
         yield {
           token: "BLOCK_STRING_VALUE",
           tokenStart,
-          tokenEnd: i + 1,
+          tokenEnd: i,
         };
-        tokenStart = i + 1;
+        tokenStart = i;
         state = START;
         continue loop;
       case 45:

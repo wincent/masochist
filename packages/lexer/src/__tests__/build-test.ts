@@ -100,7 +100,7 @@ describe('build()', () => {
                   tokenStart,
                   tokenEnd: i,
                 };
-                tokenStart = i + 1;
+                tokenStart = i;
                 state = START;
                 continue loop;
               case 5:
@@ -130,7 +130,7 @@ describe('build()', () => {
                   tokenStart,
                   tokenEnd: i,
                 };
-                tokenStart = i + 1;
+                tokenStart = i;
                 state = START;
                 continue loop;
               case 8:
@@ -139,7 +139,7 @@ describe('build()', () => {
                   tokenStart,
                   tokenEnd: i,
                 };
-                tokenStart = i + 1;
+                tokenStart = i;
                 state = START;
                 continue loop;
               case 9:
@@ -148,7 +148,7 @@ describe('build()', () => {
                   tokenStart,
                   tokenEnd: i,
                 };
-                tokenStart = i + 1;
+                tokenStart = i;
                 state = START;
                 continue loop;
               case 10:
@@ -157,7 +157,7 @@ describe('build()', () => {
                   tokenStart,
                   tokenEnd: i,
                 };
-                tokenStart = i + 1;
+                tokenStart = i;
                 state = START;
                 continue loop;
               case 11:
@@ -216,7 +216,7 @@ describe('build()', () => {
                   tokenStart,
                   tokenEnd: i,
                 };
-                tokenStart = i + 1;
+                tokenStart = i;
                 state = START;
                 continue loop;
               case 16:
@@ -225,7 +225,7 @@ describe('build()', () => {
                   tokenStart,
                   tokenEnd: i,
                 };
-                tokenStart = i + 1;
+                tokenStart = i;
                 state = START;
                 continue loop;
               case 17:
@@ -234,7 +234,7 @@ describe('build()', () => {
                   tokenStart,
                   tokenEnd: i,
                 };
-                tokenStart = i + 1;
+                tokenStart = i;
                 state = START;
                 continue loop;
               case 18:
@@ -257,7 +257,7 @@ describe('build()', () => {
                   tokenStart,
                   tokenEnd: i,
                 };
-                tokenStart = i + 1;
+                tokenStart = i;
                 state = START;
                 continue loop;
               case 20:
@@ -266,7 +266,7 @@ describe('build()', () => {
                   tokenStart,
                   tokenEnd: i,
                 };
-                tokenStart = i + 1;
+                tokenStart = i;
                 state = START;
                 continue loop;
               case 21:
@@ -275,7 +275,7 @@ describe('build()', () => {
                   tokenStart,
                   tokenEnd: i,
                 };
-                tokenStart = i + 1;
+                tokenStart = i;
                 state = START;
                 continue loop;
               case 22:
@@ -284,7 +284,7 @@ describe('build()', () => {
                   tokenStart,
                   tokenEnd: i,
                 };
-                tokenStart = i + 1;
+                tokenStart = i;
                 state = START;
                 continue loop;
               case 23:
@@ -293,7 +293,7 @@ describe('build()', () => {
                   tokenStart,
                   tokenEnd: i,
                 };
-                tokenStart = i + 1;
+                tokenStart = i;
                 state = START;
                 continue loop;
               case 24:
@@ -361,7 +361,7 @@ describe('build()', () => {
                   tokenStart,
                   tokenEnd: i,
                 };
-                tokenStart = i + 1;
+                tokenStart = i;
                 state = START;
                 continue loop;
               case 31:
@@ -399,7 +399,7 @@ describe('build()', () => {
                   tokenStart,
                   tokenEnd: i,
                 };
-                tokenStart = i + 1;
+                tokenStart = i;
                 state = START;
                 continue loop;
               case 35:
@@ -503,7 +503,7 @@ describe('build()', () => {
                   tokenStart,
                   tokenEnd: i,
                 };
-                tokenStart = i + 1;
+                tokenStart = i;
                 state = START;
                 continue loop;
               case 45:
