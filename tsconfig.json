@@ -10,6 +10,7 @@
     {"path": "./packages/compiler"},
     {"path": "./packages/legacy"},
     {"path": "./packages/lexer"},
+    {"path": "./packages/parser"},
     {"path": "./packages/server"}
   ]
 }

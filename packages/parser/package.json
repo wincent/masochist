@@ -1,0 +1,17 @@
+{
+  "name": "@masochist/parser",
+  "version": "0.0.1",
+  "description": "Masochist parser",
+  "dependencies": {
+    "@masochist/common": "*"
+  },
+  "main": "lib/index.js",
+  "author": "Greg Hurrell <greg@hurrell.net>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "cd ../.. && yarn build",
+    "format": "cd ../.. && yarn format",
+    "test": "cd ../.. && yarn test packages/parser"
+  }
+}
