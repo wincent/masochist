@@ -13,4 +13,4 @@ Now, I'm sure there are readers shaking their heads at this point thinking that 
 Anyway, the point is, I now find that this question of tribal knowledge — of what is the implicit, shared wisdom held within a community — is one of the things that most interests me about any company[^team]. What is the thing that people _don't_ talk about, but which is nevertheless always present? It's easy to get distracted by the stuff that people _do_ talk about, and while that's admittedly important too, the stuff that goes unsaid is probably just as important.
 
 [^fully]: Of course, it might be foolish of me to claim I "fully understand" anything, but give me a pass because I haven't even gotten to my thesis sentence yet.
-[^team]: Needless to say, although I'm talking about thin in terms of companies, the same effect operates at the level of smaller organizational divisions like sub-organizations, departments, and teams.
+[^team]: Needless to say, although I'm talking about this in terms of companies, the same effect operates at the level of smaller organizational divisions like sub-organizations, departments, and teams.
