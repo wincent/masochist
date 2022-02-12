@@ -23,7 +23,8 @@ title: macOS timeline
 -   macOS 10.13: High Sierra, released 26 September 2017 (370 days after Sierra).
 -   macOS 10.14: Mojave, released 24 September 2018 (363 days after High Sierra).
 -   macOS 10.15: Catalina, released 7 October 2019 (378 days after Mojave).
--   macOS 11.0 ([10.16](https://en.wikipedia.org/wiki/MacOS_Big_Sur)): Big Sur, released 12 November 2020 (402 days after Catalina).
+-   macOS 11.0 ([10.16]): [Big Sur](https://en.wikipedia.org/wiki/MacOS_Big_Sur), released 12 November 2020 (402 days after Catalina).
+-   macOS 12.0: [Monterey](https://en.wikipedia.org/wiki/MacOS_Monterey),released 25 October 2021 (347 days after Big Sur).
 
 The date calculations above were done with [Ruby](/wiki/Ruby):
 
