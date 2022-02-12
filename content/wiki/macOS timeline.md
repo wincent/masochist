@@ -19,15 +19,17 @@ title: macOS timeline
 -   [OS X](/wiki/OS_X) 10.9: [Mavericks](/wiki/Mavericks), released 22 October 2013 (454 days after [Mountain Lion](/wiki/Mountain_Lion))
 -   [OS X](/wiki/OS_X) 10.10: [Yosemite](/wiki/Yosemite), released 16 October 2014 (359 days after [Mavericks](/wiki/Mavericks))
 -   [OS X](/wiki/OS_X) 10.11: [El Capitan](/wiki/El_Capitan), released 30 September 2015 (349 days after [Yosemite](/wiki/Yosemite))
--   macOS 10.12: Sierra, released 20 September 2016 (356 days after El Capitan).
--   macOS 10.13: High Sierra, released 26 September 2017 (370 days after Sierra).
--   macOS 10.14: Mojave, released 24 September 2018 (363 days after High Sierra).
--   macOS 10.15: Catalina, released 7 October 2019 (378 days after Mojave).
--   macOS 11.0 ([10.16]): [Big Sur](https://en.wikipedia.org/wiki/MacOS_Big_Sur), released 12 November 2020 (402 days after Catalina).
--   macOS 12.0: [Monterey](https://en.wikipedia.org/wiki/MacOS_Monterey),released 25 October 2021 (347 days after Big Sur).
+-   [macOS] 10.12: [Sierra](https://en.wikipedia.org/wiki/MacOS_Sierra), released 20 September 2016 (356 days after El Capitan).
+-   [macOS] 10.13: [High Sierra](https://en.wikipedia.org/wiki/MacOS_High_Sierra), released 26 September 2017 (370 days after Sierra).
+-   [macOS] 10.14: [Mojave](https://en.wikipedia.org/wiki/MacOS_Mojave), released 24 September 2018 (363 days after High Sierra).
+-   [macOS] 10.15: [Catalina](https://en.wikipedia.org/wiki/MacOS_Catalina), released 7 October 2019 (378 days after Mojave).
+-   [macOS] 11.0 ([10.16]): [Big Sur](https://en.wikipedia.org/wiki/MacOS_Big_Sur), released 12 November 2020 (402 days after Catalina).
+-   [macOS] 12.0: [Monterey](https://en.wikipedia.org/wiki/MacOS_Monterey), released 25 October 2021 (347 days after Big Sur).
 
 The date calculations above were done with [Ruby](/wiki/Ruby):
 
 ```shell
-$ ruby -r date -e 'puts (Date.new(2015, 9, 30) - Date.new(2014, 10, 16)).to_i'
+$ ruby -r date -e 'puts (Date.new(2022, ?, ?) - Date.new(2021, 10, 25)).to_i'
 ```
+
+[macOS]: /wiki/macOS
