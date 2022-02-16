@@ -1,4 +1,4 @@
-import StringScanner, {formatContext, toAnchoredRegExp} from '../StringScanner';
+import StringScanner, {toAnchoredRegExp} from '../StringScanner';
 
 describe('StringScanner', () => {
   describe('context()', () => {
@@ -104,6 +104,22 @@ describe('StringScanner', () => {
           '\n' +
           '> 1 | +some stuff in here\n' +
           '    | ^\n',
+      );
+    });
+  });
+
+  describe('fullContext', () => {
+    it('includes line, column, description, and context', () => {
+      const scanner = new StringScanner('my input string', 'file.txt');
+
+      scanner.scan(/my /);
+
+      expect(scanner.fullContext).toBe(
+        'line 1, column 4 of file.txt\n' +
+          '\n' +
+          '> 1 | my input string\n' +
+          '    |    ^\n' +
+          '\n',
       );
     });
   });
@@ -304,22 +320,6 @@ describe('StringScanner', () => {
         expect(scanner.location).toEqual([2, 6]);
       });
     });
-  });
-});
-
-describe('formatContext()', () => {
-  it('includes line, column, description, and context', () => {
-    const scanner = new StringScanner('my input string', 'file.txt');
-
-    scanner.scan(/my /);
-
-    expect(formatContext(scanner)).toBe(
-      'line 1, column 4 of file.txt\n' +
-        '\n' +
-        '> 1 | my input string\n' +
-        '    |    ^\n' +
-        '\n',
-    );
   });
 });
 

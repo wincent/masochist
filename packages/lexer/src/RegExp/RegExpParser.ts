@@ -1,6 +1,5 @@
-import {invariant} from '@masochist/common';
+import {StringScanner, invariant} from '@masochist/common';
 
-import StringScanner from '../StringScanner';
 import normalizeCharacterClass from './normalizeCharacterClass';
 import sortAtoms from './sortAtoms';
 

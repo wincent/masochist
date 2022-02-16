@@ -1,13 +1,3 @@
-export function formatContext(scanner: StringScanner): string {
-  const [line, column] = scanner.location;
-
-  return (
-    `line ${line}, column ${column} of ${scanner.description}\n\n` +
-    scanner.context(line, column) +
-    '\n'
-  );
-}
-
 export function toAnchoredRegExp(regExp: RegExp | string): RegExp {
   if (typeof regExp === 'string') {
     if (regExp.length) {
@@ -50,6 +40,23 @@ export default class StringScanner {
    */
   get description(): string {
     return this.#description ?? 'input string';
+  }
+
+  /**
+   * Returns context at the current location of the scanner, including line,
+   * column, and description.
+   *
+   * Like the `location` getter, this is only intended to be used in error
+   * reporting pathways, so it is not made to be fast.
+   */
+  get fullContext(): string {
+    const [line, column] = this.location;
+
+    return (
+      `line ${line}, column ${column} of ${this.description}\n\n` +
+      this.context(line, column) +
+      '\n'
+    );
   }
 
   get index(): number {
@@ -137,7 +144,7 @@ export default class StringScanner {
 
     if (result === null) {
       throw new Error(
-        `Expected ${description ?? pattern} at ${formatContext(this)}`,
+        `Expected ${description ?? pattern} at ${this.fullContext}`,
       );
     }
 
