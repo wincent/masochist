@@ -6,6 +6,7 @@ import {
   parseDSL,
   grammar,
   grammarDeclaration,
+  itemSetsToTransitionTable,
   stringifyItemSets,
 } from '..';
 
@@ -98,6 +99,13 @@ describe('getItemSets()', () => {
           SelectionList → SelectionList Selection ·, {CLOSING_BRACE}
       ` + '\n',
     );
+  });
+});
+
+describe('itemSetsToTransitionTable()', () => {
+  it('returns a transition table for grammar', () => {
+    const itemSets = getItemSets(grammar);
+    console.log(itemSetsToTransitionTable(itemSets, grammar));
   });
 });
 

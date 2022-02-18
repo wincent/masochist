@@ -24,6 +24,11 @@ type Item = {
   lookahead: Set<string | null>;
 };
 
+type ItemSet = {
+  items: Array<Item>;
+  transitions: {[symbol: string]: number};
+};
+
 const MIDDLE_DOT = '\xb7';
 const RIGHTWARDS_ARROW = '\u2192';
 
@@ -239,22 +244,25 @@ export function getItemSets(grammar: Grammar) {
   //      S' -> S $ (where "$" represents EOF, indicated by `null` lookahead)
   //      S -> a
   //
-  const i0: Array<Item> = [
-    {
-      lhs: `${startRule.lhs}'`,
-      rhs: [startRule.lhs],
-      lookahead: new Set([null]),
-      dot: 0,
-    },
-  ];
+  const i0: ItemSet = {
+    items: [
+      {
+        lhs: `${startRule.lhs}'`,
+        rhs: [startRule.lhs],
+        lookahead: new Set([null]),
+        dot: 0,
+      },
+    ],
+    transitions: {},
+  };
 
-  const itemSets: {[key: string]: Array<Item>} = {};
+  const itemSets: {[key: string]: ItemSet} = {};
 
   // For each item in `itemSet`, add any non-terminals that appear after dots.
-  function close(itemSet: Array<Item>) {
-    const added = new Set(itemSet.map(({lhs}) => lhs));
-    for (let i = 0; i < itemSet.length; i++) {
-      const item = itemSet[i];
+  function close(itemSet: ItemSet) {
+    const added = new Set(itemSet.items.map(({lhs}) => lhs));
+    for (let i = 0; i < itemSet.items.length; i++) {
+      const item = itemSet.items[i];
       if (item.dot < item.rhs.length) {
         const next = item.rhs[item.dot];
         if (!tokens.has(next) && !added.has(next)) {
@@ -264,7 +272,7 @@ export function getItemSets(grammar: Grammar) {
             const lookahead = follow
               ? first[follow] || new Set([follow])
               : new Set([null]);
-            itemSet.push({
+            itemSet.items.push({
               lhs: next,
               rhs,
               lookahead,
@@ -280,7 +288,7 @@ export function getItemSets(grammar: Grammar) {
 
   itemSets[keyForItemSet(i0)] = i0;
 
-  const processedItemSets = new Set<Array<Item>>();
+  const processedItemSets = new Set<ItemSet>();
 
   while (true) {
     let addedSetCount = 0;
@@ -294,18 +302,21 @@ export function getItemSets(grammar: Grammar) {
 
       const processedTransitions = new Set<string>();
 
-      for (const item of itemSet) {
+      for (const item of itemSet.items) {
         const next = item.rhs[item.dot];
         if (next && !processedTransitions.has(next)) {
           processedTransitions.add(next);
 
           // Create new item set.
-          const newItemSet: Array<Item> = [];
+          const newItemSet: ItemSet = {
+            items: [],
+            transitions: {},
+          };
 
           // Get all rules where dot is followed by `next`.
-          for (const item of itemSet) {
+          for (const item of itemSet.items) {
             if (item.rhs[item.dot] === next) {
-              newItemSet.push({
+              newItemSet.items.push({
                 lhs: item.lhs,
                 rhs: item.rhs,
                 dot: item.dot + 1,
@@ -317,24 +328,29 @@ export function getItemSets(grammar: Grammar) {
           close(newItemSet);
 
           const key = keyForItemSet(newItemSet);
+          let index;
 
           if (itemSets[key]) {
             // Merge into existing set.
             const itemsByKey: {[key: string]: Item} = {};
-            for (const item of newItemSet) {
+            for (const item of newItemSet.items) {
               itemsByKey[keyForItem(item)] = item;
             }
             const existingSet = itemSets[key];
-            for (const item of existingSet) {
+            index = Object.keys(itemSets).indexOf(key);
+            for (const item of existingSet.items) {
               for (const symbol of itemsByKey[keyForItem(item)].lookahead) {
                 item.lookahead.add(symbol);
               }
             }
           } else {
             // Add new set.
+            index = Object.keys(itemSets).length;
             itemSets[key] = newItemSet;
             addedSetCount++;
           }
+
+          itemSet.transitions[next] = index;
         }
       }
     }
@@ -347,6 +363,31 @@ export function getItemSets(grammar: Grammar) {
   return Object.values(itemSets);
 }
 
+type TransitionTable = Array<{[symbol: string]: number | undefined}>;
+
+export function itemSetsToTransitionTable(
+  itemSets: Array<ItemSet>,
+  grammar: Grammar,
+): TransitionTable {
+  const table: TransitionTable = [];
+
+  const terminals = [...grammar.tokens].sort();
+  const nonTerminals = grammar.rules.map(({lhs}) => lhs).sort();
+
+  for (const itemSet of itemSets) {
+    const entries: {[symbol: string]: number | undefined} = {};
+    for (const symbol of [...nonTerminals, ...terminals]) {
+      const target = itemSet.transitions[symbol];
+      if (target !== undefined) {
+        entries[symbol] = target;
+      }
+    }
+    table.push(entries);
+  }
+
+  return table;
+}
+
 function keyForItem(item: Item): string {
   return `${item.lhs}[${item.dot}]:${item.rhs.join('-')}`;
 }
@@ -357,21 +398,21 @@ function keyForItem(item: Item): string {
  * This is used during transition table construction to merge together
  * equivalent sets, preventing an explosion in the number of states.
  */
-function keyForItemSet(itemSet: Array<Item>): string {
-  return itemSet.map(keyForItem).sort().join('/');
+function keyForItemSet(itemSet: ItemSet): string {
+  return itemSet.items.map(keyForItem).sort().join('/');
 }
 
 /**
  * Debugging helper.
  */
-export function stringifyItemSets(itemSets: Array<Array<Item>>): string {
+export function stringifyItemSets(itemSets: Array<ItemSet>): string {
   let output = '';
 
   for (let i = 0; i < itemSets.length; i++) {
     const itemSet = itemSets[i];
     output += `I${i}:\n`;
 
-    for (const {lhs, rhs, dot, lookahead} of itemSet) {
+    for (const {lhs, rhs, dot, lookahead} of itemSet.items) {
       output += `  ${lhs}`;
       output += ` ${RIGHTWARDS_ARROW}`;
       for (let i = 0; i <= rhs.length; i++) {
