@@ -98,9 +98,15 @@ describe('getFirstSets()', () => {
 describe('getFollowSets()', () => {
   it('produces follow sets for grammar', () => {
     expect(getFollowSets(grammar)).toEqual({
-      DefinitionList: new Set(['OPENING_BRACE']),
       Document: new Set([null]),
+      DefinitionList: new Set(['OPENING_BRACE']),
       SelectionList: new Set(['CLOSING_BRACE', 'NAME']),
+      Definition: new Set(['OPENING_BRACE']),
+      ExecutableDefinition: new Set(['OPENING_BRACE']),
+      OperationDefinition: new Set(['OPENING_BRACE']),
+      SelectionSet: new Set(['OPENING_BRACE']),
+      Selection: new Set(['CLOSING_BRACE', 'NAME']),
+      Field: new Set(['CLOSING_BRACE', 'NAME']),
     });
   });
 
@@ -108,10 +114,21 @@ describe('getFollowSets()', () => {
     const itemSets = getItemSets(grammar);
     const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
     expect(getFollowSets(extendedGrammar)).toEqual({
-      '0/DefinitionList/2': new Set(['2/OPENING_BRACE/7']),
       "0/Document'/$": new Set([null]),
-      '0/Document/1': new Set(['2/OPENING_BRACE/7']),
+      '0/DefinitionList/2': new Set(['2/OPENING_BRACE/7']),
       '7/SelectionList/9': new Set(['9/CLOSING_BRACE/13', '9/NAME/12']),
+      '0/Definition/3': new Set(['2/OPENING_BRACE/7']),
+      '2/Definition/8': new Set(['2/OPENING_BRACE/7']),
+      '0/ExecutableDefinition/4': new Set(['2/OPENING_BRACE/7']),
+      '0/OperationDefinition/5': new Set(['2/OPENING_BRACE/7']),
+      '0/SelectionSet/6': new Set(['2/OPENING_BRACE/7']),
+      '2/ExecutableDefinition/4': new Set(['2/OPENING_BRACE/7']),
+      '2/OperationDefinition/5': new Set(['2/OPENING_BRACE/7']),
+      '2/SelectionSet/6': new Set(['2/OPENING_BRACE/7']),
+      '7/Selection/10': new Set(['9/CLOSING_BRACE/13', '9/NAME/12']),
+      '9/Selection/14': new Set(['9/CLOSING_BRACE/13', '9/NAME/12']),
+      '7/Field/11': new Set(['9/CLOSING_BRACE/13', '9/NAME/12']),
+      '9/Field/11': new Set(['9/CLOSING_BRACE/13', '9/NAME/12']),
     });
   });
 });

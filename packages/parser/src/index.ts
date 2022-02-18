@@ -268,11 +268,12 @@ export function getFollowSets(grammar: Grammar) {
         // Non-terminal.
         if (!rhs[j + 1]) {
           // For rule, "A -> a B", add everything in FOLLOW(A) to FOLLOW(B):
-          if (followSets[rhs[j]]) {
-            for (const symbol of followSets[rhs[j]]) {
-              followSets[lhs] = followSets[lhs] || new Set();
-              followSets[lhs].add(symbol);
+          if (followSets[lhs]) {
+            for (const symbol of followSets[lhs]) {
+              followSets[rhs[j]] = followSets[rhs[j]] || new Set();
+              followSets[rhs[j]].add(symbol);
             }
+          } else {
             // TODO: solve ordering issues: if `followSets` isn't computed yet,
             // should be computing it somehow
           }
