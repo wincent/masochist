@@ -3,6 +3,7 @@ import {dedent} from '@masochist/common';
 import {
   extendedGrammarForItemSets,
   getFirstSets,
+  getFollowSets,
   getItemSets,
   itemSetsToTransitionTable,
   parseDSL,
@@ -91,6 +92,26 @@ describe('getFirstSets()', () => {
       '9/Field/11': new Set(['9/NAME/12']),
       '9/Selection/14': new Set(['9/NAME/12']),
     });
+  });
+});
+
+describe('getFollowSets()', () => {
+  it('produces follow sets for grammar', () => {
+    expect(getFirstSets(grammar)).toEqual({
+      Definition: new Set(['OPENING_BRACE']),
+      DefinitionList: new Set(['OPENING_BRACE']),
+      Document: new Set(['OPENING_BRACE']),
+      ExecutableDefinition: new Set(['OPENING_BRACE']),
+      Field: new Set(['NAME']),
+      OperationDefinition: new Set(['OPENING_BRACE']),
+      Selection: new Set(['NAME']),
+      SelectionList: new Set(['NAME']),
+      SelectionSet: new Set(['OPENING_BRACE']),
+    });
+  });
+
+  it('produces follow sets for the extended grammar', () => {
+    // TODO
   });
 });
 

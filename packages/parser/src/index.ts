@@ -3,7 +3,7 @@ import {StringScanner} from '@masochist/common';
 // Goal is to produce an LALR(1) parser from a grammar.
 
 export type Grammar = {
-  tokens: Array<string>;
+  tokens: Array<string>; // TODO: I often want this to be a Set, so perhaps I should just make it a Set
   rules: Array<Rule>;
 };
 
@@ -17,6 +17,11 @@ type FirstSets = {
   [nonTerminal: string]: Set<string>;
 };
 
+type FollowSets = {
+  [nonTerminal: string]: Set<string | null>;
+};
+
+// TODO: Apart from the augmented rule, could avoid storing `lhs`/`rhs` and instead just store index of rule in original grammar.
 type Item = {
   lhs: string;
   rhs: Array<string>;
@@ -230,6 +235,42 @@ export function getFirstSets(grammar: Grammar): FirstSets {
   visit(Object.keys(rules)[0]);
 
   return first;
+}
+
+export function getFollowSets(grammar: Grammar) {
+  const tokens = new Set(grammar.tokens);
+  const startRule = grammar.rules[0];
+  const first = getFirstSets(grammar);
+  const followSets: FollowSets = {
+    [startRule.lhs]: new Set([null]),
+  };
+
+  for (let i = 1; i < grammar.rules.length; i++) {
+    const {lhs, rhs} = grammar.rules[i];
+    for (let j = 0; j < rhs.length; j++) {
+      if (!tokens.has(rhs[j])) {
+        // Non-terminal.
+        if (rhs[j + 1]) {
+          // For rule, "A → a B b", add everything in FIRST(b) to FOLLOW(B):
+          for (const symbol of first[rhs[j + 1]] || [rhs[j + 1]]) {
+            followSets[rhs[j]] = followSets[rhs[j]] || new Set();
+            followSets[rhs[j]].add(symbol);
+          }
+        } else {
+          // For rule, "A -> a B", add everything in FOLLOW(A) to FOLLOW(B):
+          for (const symbol of followSets[rhs[j]]) {
+            followSets[lhs] = followSets[lhs] || new Set();
+            followSets[lhs].add(symbol);
+          }
+          // TODO: deal with ordering issue here; we are assuming that FOLLOW(A)
+          // is already complete at the time this runs, but I don't think we can
+          // assume that at all....
+        }
+      }
+    }
+  }
+
+  return followSets;
 }
 
 export function getItemSets(grammar: Grammar) {
