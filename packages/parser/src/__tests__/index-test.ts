@@ -97,16 +97,10 @@ describe('getFirstSets()', () => {
 
 describe('getFollowSets()', () => {
   it('produces follow sets for grammar', () => {
-    expect(getFirstSets(grammar)).toEqual({
-      Definition: new Set(['OPENING_BRACE']),
+    expect(getFollowSets(grammar)).toEqual({
       DefinitionList: new Set(['OPENING_BRACE']),
-      Document: new Set(['OPENING_BRACE']),
-      ExecutableDefinition: new Set(['OPENING_BRACE']),
-      Field: new Set(['NAME']),
-      OperationDefinition: new Set(['OPENING_BRACE']),
-      Selection: new Set(['NAME']),
-      SelectionList: new Set(['NAME']),
-      SelectionSet: new Set(['OPENING_BRACE']),
+      Document: new Set([null]),
+      SelectionList: new Set(['CLOSING_BRACE', 'NAME']),
     });
   });
 
