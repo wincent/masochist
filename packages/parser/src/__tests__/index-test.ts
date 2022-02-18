@@ -1,6 +1,105 @@
 import {dedent} from '@masochist/common';
 
-import {parseDSL, grammar, grammarDeclaration} from '..';
+import {
+  getFirstSets,
+  getItemSets,
+  parseDSL,
+  grammar,
+  grammarDeclaration,
+  stringifyItemSets,
+} from '..';
+
+describe('getFirstSets()', () => {
+  it('produces first sets for grammar', () => {
+    expect(getFirstSets(grammar)).toEqual({
+      Definition: new Set(['OPENING_BRACE']),
+      DefinitionList: new Set(['OPENING_BRACE']),
+      Document: new Set(['OPENING_BRACE']),
+      ExecutableDefinition: new Set(['OPENING_BRACE']),
+      Field: new Set(['NAME']),
+      OperationDefinition: new Set(['OPENING_BRACE']),
+      Selection: new Set(['NAME']),
+      SelectionList: new Set(['NAME']),
+      SelectionSet: new Set(['OPENING_BRACE']),
+    });
+  });
+});
+
+describe('getItemSets()', () => {
+  it('produces items sets for grammar', () => {
+    const itemSets = getItemSets(grammar);
+
+    expect(itemSets.length).toBe(15);
+
+    expect(stringifyItemSets(itemSets)).toBe(
+      dedent`
+        I0:
+          Document' → · Document, {$}
+          Document → · DefinitionList, {$}
+          DefinitionList → · Definition, {$}
+          DefinitionList → · DefinitionList Definition, {$}
+          Definition → · ExecutableDefinition, {$}
+          ExecutableDefinition → · OperationDefinition, {$}
+          OperationDefinition → · SelectionSet, {$}
+          SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE, {$}
+
+        I1:
+          Document' → Document ·, {$}
+
+        I2:
+          Document → DefinitionList ·, {$}
+          DefinitionList → DefinitionList · Definition, {$}
+          Definition → · ExecutableDefinition, {$}
+          ExecutableDefinition → · OperationDefinition, {$}
+          OperationDefinition → · SelectionSet, {$}
+          SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE, {$}
+
+        I3:
+          DefinitionList → Definition ·, {$}
+
+        I4:
+          Definition → ExecutableDefinition ·, {$}
+
+        I5:
+          ExecutableDefinition → OperationDefinition ·, {$}
+
+        I6:
+          OperationDefinition → SelectionSet ·, {$}
+
+        I7:
+          SelectionSet → OPENING_BRACE · SelectionList CLOSING_BRACE, {$}
+          SelectionList → · Selection, {CLOSING_BRACE}
+          SelectionList → · SelectionList Selection, {CLOSING_BRACE}
+          Selection → · Field, {$}
+          Field → · NAME, {$}
+
+        I8:
+          DefinitionList → DefinitionList Definition ·, {$}
+
+        I9:
+          SelectionSet → OPENING_BRACE SelectionList · CLOSING_BRACE, {$}
+          SelectionList → SelectionList · Selection, {CLOSING_BRACE}
+          Selection → · Field, {$}
+          Field → · NAME, {$}
+
+        I10:
+          SelectionList → Selection ·, {CLOSING_BRACE}
+
+        I11:
+          Selection → Field ·, {$}
+
+        I12:
+          Field → NAME ·, {$}
+
+        I13:
+          SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE ·, {$}
+
+        I14:
+          SelectionList → SelectionList Selection ·, {CLOSING_BRACE}
+      ` + '\n',
+    );
+  });
+});
 
 describe('parseDSL()', () => {
   it('produces grammar from grammarDeclaration', () => {
