@@ -389,7 +389,7 @@ export function itemSetsToTransitionTable(
 }
 
 /**
- * Turns a rule like:
+ * Turns a rule in an item set like:
  *
  *     A -> B C
  *
@@ -403,21 +403,25 @@ export function itemSetsToTransitionTable(
  */
 export function extendedGrammarForItemSets(
   itemSets: Array<ItemSet>,
-  grammar: Grammar, // TODO: decide whether this is necessary
-) {
+  grammar: Grammar,
+): Grammar {
   const rules = [];
+  const tokens = new Set<string>();
+  const originalTokens = new Set(grammar.tokens);
   for (let i = 0; i < itemSets.length; i++) {
     const itemSet = itemSets[i];
     for (const item of itemSet.items) {
       if (item.dot === 0) {
-        const first = item.rhs[0];
-        const target = itemSet.transitions[first];
-        const lhs = `${i}/${item.lhs}/${target}`;
+        const target = itemSet.transitions[item.lhs];
+        const lhs = `${i}/${item.lhs}/${target ?? '$'}`;
 
         let current = i;
         const rhs = item.rhs.map((symbol) => {
           const target = itemSets[current].transitions[symbol];
           const annotated = `${current}/${symbol}/${target}`;
+          if (originalTokens.has(symbol)) {
+            tokens.add(annotated);
+          }
           current = target;
           return annotated;
         });
@@ -427,7 +431,10 @@ export function extendedGrammarForItemSets(
     }
   }
 
-  return rules;
+  return {
+    rules,
+    tokens: Array.from(tokens),
+  };
 }
 
 function keyForItem(item: Item): string {

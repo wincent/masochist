@@ -25,6 +25,29 @@ describe('getFirstSets()', () => {
       SelectionSet: new Set(['OPENING_BRACE']),
     });
   });
+
+  it('produces first sets for the extended grammar', () => {
+    const itemSets = getItemSets(grammar);
+    const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
+    expect(getFirstSets(extendedGrammar)).toEqual({
+      '0/Definition/3': new Set(['0/OPENING_BRACE/7']),
+      '0/DefinitionList/2': new Set(['0/OPENING_BRACE/7']),
+      "0/Document'/$": new Set(['0/OPENING_BRACE/7']),
+      '0/Document/1': new Set(['0/OPENING_BRACE/7']),
+      '0/ExecutableDefinition/4': new Set(['0/OPENING_BRACE/7']),
+      '0/OperationDefinition/5': new Set(['0/OPENING_BRACE/7']),
+      '0/SelectionSet/6': new Set(['0/OPENING_BRACE/7']),
+      '2/Definition/8': new Set(['2/OPENING_BRACE/7']),
+      '2/ExecutableDefinition/4': new Set(['2/OPENING_BRACE/7']),
+      '2/OperationDefinition/5': new Set(['2/OPENING_BRACE/7']),
+      '2/SelectionSet/6': new Set(['2/OPENING_BRACE/7']),
+      '7/Field/11': new Set(['7/NAME/12']),
+      '7/Selection/10': new Set(['7/NAME/12']),
+      '7/SelectionList/9': new Set(['7/NAME/12']),
+      '9/Field/11': new Set(['9/NAME/12']),
+      '9/Selection/14': new Set(['9/NAME/12']),
+    });
+  });
 });
 
 describe('getItemSets()', () => {
@@ -144,45 +167,54 @@ describe('extendedGrammarForItemSets()', () => {
   it('returns an extended grammar', () => {
     const itemSets = getItemSets(grammar);
     const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
-    // BUG: looks wrong...
-    expect(extendedGrammar).toEqual([
-      { lhs: "0/Document'/1", rhs: [ '0/Document/1' ] },
-      { lhs: '0/Document/2', rhs: [ '0/DefinitionList/2' ] },
-      { lhs: '0/DefinitionList/3', rhs: [ '0/Definition/3' ] },
-      {
-        lhs: '0/DefinitionList/2',
-        rhs: [ '0/DefinitionList/2', '2/Definition/8' ]
-      },
-      { lhs: '0/Definition/4', rhs: [ '0/ExecutableDefinition/4' ] },
-      {
-        lhs: '0/ExecutableDefinition/5',
-        rhs: [ '0/OperationDefinition/5' ]
-      },
-      { lhs: '0/OperationDefinition/6', rhs: [ '0/SelectionSet/6' ] },
-      {
-        lhs: '0/SelectionSet/7',
-        rhs: [ '0/OPENING_BRACE/7', '7/SelectionList/9', '9/CLOSING_BRACE/13' ]
-      },
-      { lhs: '2/Definition/4', rhs: [ '2/ExecutableDefinition/4' ] },
-      {
-        lhs: '2/ExecutableDefinition/5',
-        rhs: [ '2/OperationDefinition/5' ]
-      },
-      { lhs: '2/OperationDefinition/6', rhs: [ '2/SelectionSet/6' ] },
-      {
-        lhs: '2/SelectionSet/7',
-        rhs: [ '2/OPENING_BRACE/7', '7/SelectionList/9', '9/CLOSING_BRACE/13' ]
-      },
-      { lhs: '7/SelectionList/10', rhs: [ '7/Selection/10' ] },
-      {
-        lhs: '7/SelectionList/9',
-        rhs: [ '7/SelectionList/9', '9/Selection/14' ]
-      },
-      { lhs: '7/Selection/11', rhs: [ '7/Field/11' ] },
-      { lhs: '7/Field/12', rhs: [ '7/NAME/12' ] },
-      { lhs: '9/Selection/11', rhs: [ '9/Field/11' ] },
-      { lhs: '9/Field/12', rhs: [ '9/NAME/12' ] }
-    ]);
+    expect(extendedGrammar).toEqual({
+      tokens: [
+        '0/OPENING_BRACE/7',
+        '9/CLOSING_BRACE/13',
+        '2/OPENING_BRACE/7',
+        '7/NAME/12',
+        '9/NAME/12',
+      ],
+      rules: [
+        // TODO: figure out whether this first rule makes sense
+        {lhs: "0/Document'/$", rhs: ['0/Document/1']},
+        {lhs: '0/Document/1', rhs: ['0/DefinitionList/2']},
+        {lhs: '0/DefinitionList/2', rhs: ['0/Definition/3']},
+        {
+          lhs: '0/DefinitionList/2',
+          rhs: ['0/DefinitionList/2', '2/Definition/8'],
+        },
+        {lhs: '0/Definition/3', rhs: ['0/ExecutableDefinition/4']},
+        {
+          lhs: '0/ExecutableDefinition/4',
+          rhs: ['0/OperationDefinition/5'],
+        },
+        {lhs: '0/OperationDefinition/5', rhs: ['0/SelectionSet/6']},
+        {
+          lhs: '0/SelectionSet/6',
+          rhs: ['0/OPENING_BRACE/7', '7/SelectionList/9', '9/CLOSING_BRACE/13'],
+        },
+        {lhs: '2/Definition/8', rhs: ['2/ExecutableDefinition/4']},
+        {
+          lhs: '2/ExecutableDefinition/4',
+          rhs: ['2/OperationDefinition/5'],
+        },
+        {lhs: '2/OperationDefinition/5', rhs: ['2/SelectionSet/6']},
+        {
+          lhs: '2/SelectionSet/6',
+          rhs: ['2/OPENING_BRACE/7', '7/SelectionList/9', '9/CLOSING_BRACE/13'],
+        },
+        {lhs: '7/SelectionList/9', rhs: ['7/Selection/10']},
+        {
+          lhs: '7/SelectionList/9',
+          rhs: ['7/SelectionList/9', '9/Selection/14'],
+        },
+        {lhs: '7/Selection/10', rhs: ['7/Field/11']},
+        {lhs: '7/Field/11', rhs: ['7/NAME/12']},
+        {lhs: '9/Selection/14', rhs: ['9/Field/11']},
+        {lhs: '9/Field/11', rhs: ['9/NAME/12']},
+      ],
+    });
   });
 });
 
