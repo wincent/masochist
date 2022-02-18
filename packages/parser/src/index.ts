@@ -256,15 +256,26 @@ export function getFollowSets(grammar: Grammar) {
             followSets[rhs[j]] = followSets[rhs[j]] || new Set();
             followSets[rhs[j]].add(symbol);
           }
-        } else {
+        }
+      }
+    }
+  }
+
+  for (let i = 1; i < grammar.rules.length; i++) {
+    const {lhs, rhs} = grammar.rules[i];
+    for (let j = 0; j < rhs.length; j++) {
+      if (!tokens.has(rhs[j])) {
+        // Non-terminal.
+        if (!rhs[j + 1]) {
           // For rule, "A -> a B", add everything in FOLLOW(A) to FOLLOW(B):
-          for (const symbol of followSets[rhs[j]]) {
-            followSets[lhs] = followSets[lhs] || new Set();
-            followSets[lhs].add(symbol);
+          if (followSets[rhs[j]]) {
+            for (const symbol of followSets[rhs[j]]) {
+              followSets[lhs] = followSets[lhs] || new Set();
+              followSets[lhs].add(symbol);
+            }
+            // TODO: solve ordering issues: if `followSets` isn't computed yet,
+            // should be computing it somehow
           }
-          // TODO: deal with ordering issue here; we are assuming that FOLLOW(A)
-          // is already complete at the time this runs, but I don't think we can
-          // assume that at all....
         }
       }
     }

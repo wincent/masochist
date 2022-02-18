@@ -111,7 +111,14 @@ describe('getFollowSets()', () => {
   });
 
   it('produces follow sets for the extended grammar', () => {
-    // TODO
+    const itemSets = getItemSets(grammar);
+    const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
+    expect(getFollowSets(extendedGrammar)).toEqual({
+      '0/DefinitionList/2': new Set(['2/OPENING_BRACE/7']),
+      "0/Document'/$": new Set([null]),
+      '0/Document/1': new Set(['2/OPENING_BRACE/7']),
+      '7/SelectionList/9': new Set(['9/CLOSING_BRACE/13', '9/NAME/12']),
+    });
   });
 });
 
