@@ -4,12 +4,56 @@ import {
   extendedGrammarForItemSets,
   getFirstSets,
   getItemSets,
-  grammar,
-  grammarDeclaration,
   itemSetsToTransitionTable,
   parseDSL,
   stringifyItemSets,
 } from '..';
+
+import type {Grammar} from '..';
+
+const grammar: Grammar = {
+  tokens: ['CLOSING_BRACE', 'NAME', 'OPENING_BRACE'],
+  rules: [
+    {lhs: 'Document', rhs: ['DefinitionList']},
+    {lhs: 'DefinitionList', rhs: ['Definition']},
+    {
+      lhs: 'DefinitionList',
+      rhs: ['DefinitionList', 'Definition'],
+      action: '{ $$ = [...$1, $2] }',
+    },
+    {lhs: 'Definition', rhs: ['ExecutableDefinition']},
+    {lhs: 'ExecutableDefinition', rhs: ['OperationDefinition']},
+    {lhs: 'OperationDefinition', rhs: ['SelectionSet']},
+    {
+      lhs: 'SelectionSet',
+      rhs: ['OPENING_BRACE', 'SelectionList', 'CLOSING_BRACE'],
+    },
+    {lhs: 'SelectionList', rhs: ['Selection']},
+    {
+      lhs: 'SelectionList',
+      rhs: ['SelectionList', 'Selection'],
+      action: '{ $$ = [...$1, $2] }',
+    },
+    {lhs: 'Selection', rhs: ['Field']},
+    {lhs: 'Field', rhs: ['NAME']},
+  ],
+};
+
+const grammarDeclaration = `
+    %token CLOSING_BRACE NAME OPENING_BRACE
+
+    Document → DefinitionList
+    DefinitionList → Definition
+    DefinitionList → DefinitionList Definition { $$ = [...$1, $2] }
+    Definition → ExecutableDefinition
+    ExecutableDefinition → OperationDefinition
+    OperationDefinition → SelectionSet
+    SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE
+    SelectionList → Selection
+    SelectionList → SelectionList Selection { $$ = [...$1, $2] }
+    Selection → Field
+    Field → NAME
+`;
 
 describe('getFirstSets()', () => {
   it('produces first sets for grammar', () => {
