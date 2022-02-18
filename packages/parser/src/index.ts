@@ -276,6 +276,7 @@ export function getFollowSets(grammar: Grammar) {
           } else {
             // TODO: solve ordering issues: if `followSets` isn't computed yet,
             // should be computing it somehow
+            throw new Error('Darn: gotta fix this now');
           }
         }
       }
