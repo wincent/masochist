@@ -261,7 +261,7 @@ export function getFollowSets(grammar: Grammar) {
     }
   }
 
-  for (let i = 1; i < grammar.rules.length; i++) {
+  for (let i = 0; i < grammar.rules.length; i++) {
     const {lhs, rhs} = grammar.rules[i];
     for (let j = 0; j < rhs.length; j++) {
       if (!tokens.has(rhs[j])) {
