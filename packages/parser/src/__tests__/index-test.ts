@@ -1,12 +1,13 @@
 import {dedent} from '@masochist/common';
 
 import {
+  extendedGrammarForItemSets,
   getFirstSets,
   getItemSets,
-  parseDSL,
   grammar,
   grammarDeclaration,
   itemSetsToTransitionTable,
+  parseDSL,
   stringifyItemSets,
 } from '..';
 
@@ -105,7 +106,83 @@ describe('getItemSets()', () => {
 describe('itemSetsToTransitionTable()', () => {
   it('returns a transition table for grammar', () => {
     const itemSets = getItemSets(grammar);
-    console.log(itemSetsToTransitionTable(itemSets, grammar));
+    expect(itemSetsToTransitionTable(itemSets, grammar)).toEqual([
+      /* 0 */ {
+        Definition: 3,
+        DefinitionList: 2,
+        Document: 1,
+        ExecutableDefinition: 4,
+        OPENING_BRACE: 7,
+        OperationDefinition: 5,
+        SelectionSet: 6,
+      },
+      /* 1 */ {},
+      /* 2 */ {
+        Definition: 8,
+        ExecutableDefinition: 4,
+        OPENING_BRACE: 7,
+        OperationDefinition: 5,
+        SelectionSet: 6,
+      },
+      /* 3 */ {},
+      /* 4 */ {},
+      /* 5 */ {},
+      /* 6 */ {},
+      /* 7 */ {Field: 11, NAME: 12, Selection: 10, SelectionList: 9},
+      /* 8 */ {},
+      /* 9 */ {CLOSING_BRACE: 13, Field: 11, NAME: 12, Selection: 14},
+      /* 10 */ {},
+      /* 11 */ {},
+      /* 12 */ {},
+      /* 13 */ {},
+      /* 14 */ {},
+    ]);
+  });
+});
+
+describe('extendedGrammarForItemSets()', () => {
+  it('returns an extended grammar', () => {
+    const itemSets = getItemSets(grammar);
+    const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
+    // BUG: looks wrong...
+    expect(extendedGrammar).toEqual([
+      { lhs: "0/Document'/1", rhs: [ '0/Document/1' ] },
+      { lhs: '0/Document/2', rhs: [ '0/DefinitionList/2' ] },
+      { lhs: '0/DefinitionList/3', rhs: [ '0/Definition/3' ] },
+      {
+        lhs: '0/DefinitionList/2',
+        rhs: [ '0/DefinitionList/2', '2/Definition/8' ]
+      },
+      { lhs: '0/Definition/4', rhs: [ '0/ExecutableDefinition/4' ] },
+      {
+        lhs: '0/ExecutableDefinition/5',
+        rhs: [ '0/OperationDefinition/5' ]
+      },
+      { lhs: '0/OperationDefinition/6', rhs: [ '0/SelectionSet/6' ] },
+      {
+        lhs: '0/SelectionSet/7',
+        rhs: [ '0/OPENING_BRACE/7', '7/SelectionList/9', '9/CLOSING_BRACE/13' ]
+      },
+      { lhs: '2/Definition/4', rhs: [ '2/ExecutableDefinition/4' ] },
+      {
+        lhs: '2/ExecutableDefinition/5',
+        rhs: [ '2/OperationDefinition/5' ]
+      },
+      { lhs: '2/OperationDefinition/6', rhs: [ '2/SelectionSet/6' ] },
+      {
+        lhs: '2/SelectionSet/7',
+        rhs: [ '2/OPENING_BRACE/7', '7/SelectionList/9', '9/CLOSING_BRACE/13' ]
+      },
+      { lhs: '7/SelectionList/10', rhs: [ '7/Selection/10' ] },
+      {
+        lhs: '7/SelectionList/9',
+        rhs: [ '7/SelectionList/9', '9/Selection/14' ]
+      },
+      { lhs: '7/Selection/11', rhs: [ '7/Field/11' ] },
+      { lhs: '7/Field/12', rhs: [ '7/NAME/12' ] },
+      { lhs: '9/Selection/11', rhs: [ '9/Field/11' ] },
+      { lhs: '9/Field/12', rhs: [ '9/NAME/12' ] }
+    ]);
   });
 });
 
