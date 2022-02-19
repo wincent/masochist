@@ -5,6 +5,7 @@ import {
   getFirstSets,
   getFollowSets,
   getItemSets,
+  getParseTable,
   itemSetsToTransitionTable,
   parseDSL,
   stringifyItemSets,
@@ -207,6 +208,66 @@ describe('getItemSets()', () => {
           SelectionList → SelectionList Selection ·, {CLOSING_BRACE}
       ` + '\n',
     );
+  });
+});
+
+describe('getParseTable()', () => {
+  it('returns a parseTable for the grammar', () => {
+    const itemSets = getItemSets(grammar);
+    const transitionTable = itemSetsToTransitionTable(itemSets, grammar);
+    expect(getParseTable(itemSets, transitionTable, grammar)).toEqual([
+      [
+        {},
+        {
+          Definition: 3,
+          DefinitionList: 2,
+          Document: 1,
+          ExecutableDefinition: 4,
+          OperationDefinition: 5,
+          SelectionSet: 6,
+        },
+      ],
+      [
+        {
+          $: {kind: 'Accept'},
+        },
+        {},
+      ],
+      [
+        {},
+        {
+          Definition: 8,
+          ExecutableDefinition: 4,
+          OperationDefinition: 5,
+          SelectionSet: 6,
+        },
+      ],
+      [{}, {}],
+      [{}, {}],
+      [{}, {}],
+      [{}, {}],
+      [
+        {},
+        {
+          Field: 11,
+          Selection: 10,
+          SelectionList: 9,
+        },
+      ],
+      [{}, {}],
+      [
+        {},
+        {
+          Field: 11,
+          Selection: 14,
+        },
+      ],
+      [{}, {}],
+      [{}, {}],
+      [{}, {}],
+      [{}, {}],
+      [{}, {}],
+    ]);
   });
 });
 

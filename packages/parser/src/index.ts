@@ -447,17 +447,17 @@ export function itemSetsToTransitionTable(
 }
 
 /**
- * Turns a rule in an item set like:
+ * Turns a rule like:
  *
  *     A -> B C
  *
- * in item set 0 into:
+ * into:
  *
  *      A   ->   B     C
  *     0 4      0 2   2 7
  *
- * (Assuming A in item set 0 transitions to 4, B in item set 0 transitions to 2,
- * and C in item set 2 transitions to 7).
+ * Assuming rule is in item set 0, and transitions on A to 4, on B to 2, and
+ * from C (in item set 2) to 7.
  */
 export function extendedGrammarForItemSets(
   itemSets: Array<ItemSet>,
@@ -493,6 +493,69 @@ export function extendedGrammarForItemSets(
     rules,
     tokens: Array.from(tokens),
   };
+}
+
+type Action =
+  | {
+      kind: 'Accept';
+    }
+  | {
+      kind: 'Reduce';
+      rule: number;
+    }
+  | {
+      kind: 'Shift';
+      state: number;
+    };
+
+type Actions = {
+  [terminal: string]: Action | undefined;
+};
+
+type Gotos = {
+  [nonTerminal: string]: number | null;
+};
+
+type ParseTable = Array<[Actions, Gotos]>;
+
+export function getParseTable(
+  itemSets: Array<ItemSet>,
+  transitionTable: TransitionTable,
+  grammar: Grammar,
+): ParseTable {
+  const startRule = grammar.rules[0];
+  const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
+  const tokens = new Set(grammar.tokens);
+
+  const table: ParseTable = [];
+
+  // Add `Accept` action for `$` (EOF) symbol where item set contains start
+  // rule with dot at the end.
+  for (const itemSet of itemSets) {
+    const actions: Actions = {};
+    const gotos: Gotos = {};
+
+    for (const {lhs, rhs, dot} of itemSet.items) {
+      if (lhs === `${startRule.lhs}'` && dot === rhs.length) {
+        actions['$'] = {kind: 'Accept'};
+        break; // TODO: confirm it is legit to break here; I think it is...
+      }
+    }
+
+    table.push([actions, gotos]);
+  }
+
+  // Copy non-terminals from transition table to gotos.
+  transitionTable.forEach((transitions, source) => {
+    for (const [symbol, target] of Object.entries(transitions)) {
+      if (!tokens.has(symbol)) {
+        const gotos = table[source][1];
+        gotos[symbol] = target;
+      }
+    }
+  });
+
+  return table;
 }
 
 function keyForItem(item: Item): string {
