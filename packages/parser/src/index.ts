@@ -1,4 +1,4 @@
-import {StringScanner} from '@masochist/common';
+import {StringScanner, invariant} from '@masochist/common';
 
 // Goal is to produce an LALR(1) parser from a grammar.
 
@@ -26,7 +26,6 @@ type Item = {
   lhs: string;
   rhs: Array<string>;
   dot: number;
-  lookahead: Set<string | null>;
 };
 
 type ItemSet = {
@@ -179,6 +178,20 @@ export function parseDSL(dsl: string): Grammar {
   return {tokens, rules};
 }
 
+/**
+ * Checks `grammar` for validity, ensuring that it:
+ *
+ * - Has at least 1 rule.
+ * - Uses all declared tokens.
+ * - Does not use any undeclared tokens.
+ * - Has no unreachable productions.
+ * - Has no duplicate productions (ie. multiple copies of the same RHS for a
+ *   given LHS).
+ */
+function validateGrammar(grammar: Grammar) {
+  // TODO
+}
+
 function groupRulesByLHS(grammar: Grammar): {
   [lhs: string]: Array<Array<string>>;
 } {
@@ -202,39 +215,47 @@ function groupRulesByLHS(grammar: Grammar): {
 export function getFirstSets(grammar: Grammar): FirstSets {
   const tokens = new Set(grammar.tokens);
   const rules = groupRulesByLHS(grammar);
-  const first: FirstSets = {};
 
-  // Do a depth-first post-order traversal with guard to check for cycles.
-  const seen = new Set<string>();
+  const sets: FirstSets = {};
 
-  function visit(lhs: string) {
-    seen.add(lhs);
-    for (const rhs of rules[lhs]) {
-      for (const symbol of rhs) {
-        if (!tokens.has(symbol) && !seen.has(symbol)) {
-          visit(symbol);
+  function first(symbol: string): Set<string> {
+    if (tokens.has(symbol)) {
+      return new Set([symbol]);
+    }
+
+    if (!sets[symbol]) {
+      const set = (sets[symbol] = new Set());
+      for (const [rhs] of rules[symbol]) {
+        for (const symbol of first(rhs)) {
+          set.add(symbol);
         }
       }
     }
 
-    if (!first[lhs]) {
-      first[lhs] = new Set();
-    }
+    return sets[symbol];
+  }
 
-    for (const [next] of rules[lhs]) {
-      if (tokens.has(next)) {
-        first[lhs].add(next);
-      } else {
-        for (const terminal of first[next]) {
-          first[lhs].add(terminal);
+  const seen = new Set<string>();
+
+  function visit(lhs: string) {
+    first(lhs);
+    seen.add(lhs);
+
+    for (const rhs of rules[lhs]) {
+      for (const symbol of rhs) {
+        if (!seen.has(symbol) && !tokens.has(symbol)) {
+          first(symbol);
+          visit(symbol);
         }
       }
     }
   }
 
-  visit(Object.keys(rules)[0]);
+  const startSymbol = Object.keys(rules)[0];
 
-  return first;
+  visit(startSymbol);
+
+  return sets;
 }
 
 export function getFollowSets(grammar: Grammar) {
@@ -245,13 +266,13 @@ export function getFollowSets(grammar: Grammar) {
     [startRule.lhs]: new Set([null]),
   };
 
+  // For rule, "A → a B b", add everything in FIRST(b) to FOLLOW(B).
   for (let i = 1; i < grammar.rules.length; i++) {
-    const {lhs, rhs} = grammar.rules[i];
+    const {rhs} = grammar.rules[i];
     for (let j = 0; j < rhs.length; j++) {
       if (!tokens.has(rhs[j])) {
         // Non-terminal.
         if (rhs[j + 1]) {
-          // For rule, "A → a B b", add everything in FIRST(b) to FOLLOW(B):
           for (const symbol of first[rhs[j + 1]] || [rhs[j + 1]]) {
             followSets[rhs[j]] = followSets[rhs[j]] || new Set();
             followSets[rhs[j]].add(symbol);
@@ -261,22 +282,26 @@ export function getFollowSets(grammar: Grammar) {
     }
   }
 
-  for (let i = 0; i < grammar.rules.length; i++) {
-    const {lhs, rhs} = grammar.rules[i];
-    for (let j = 0; j < rhs.length; j++) {
-      if (!tokens.has(rhs[j])) {
-        // Non-terminal.
-        if (!rhs[j + 1]) {
-          // For rule, "A -> a B", add everything in FOLLOW(A) to FOLLOW(B):
-          if (followSets[lhs]) {
-            for (const symbol of followSets[lhs]) {
-              followSets[rhs[j]] = followSets[rhs[j]] || new Set();
-              followSets[rhs[j]].add(symbol);
+  // For rule, "A -> a B", add everything in FOLLOW(A) to FOLLOW(B).
+  // Will keep looping until we stop making forward progress.
+  let done = false;
+  while (!done) {
+    done = true;
+    for (let i = 0; i < grammar.rules.length; i++) {
+      const {lhs, rhs} = grammar.rules[i];
+      for (let j = 0; j < rhs.length; j++) {
+        if (!tokens.has(rhs[j])) {
+          // Non-terminal.
+          if (!rhs[j + 1]) {
+            if (followSets[lhs]) {
+              for (const symbol of followSets[lhs]) {
+                followSets[rhs[j]] = followSets[rhs[j]] || new Set();
+                if (!followSets[rhs[j]].has(symbol)) {
+                  followSets[rhs[j]].add(symbol);
+                  done = false;
+                }
+              }
             }
-          } else {
-            // TODO: solve ordering issues: if `followSets` isn't computed yet,
-            // should be computing it somehow
-            throw new Error('Darn: gotta fix this now');
           }
         }
       }
@@ -286,28 +311,57 @@ export function getFollowSets(grammar: Grammar) {
   return followSets;
 }
 
-export function getItemSets(grammar: Grammar) {
-  const first = getFirstSets(grammar);
-  const tokens = new Set(grammar.tokens);
-  const rules = groupRulesByLHS(grammar);
+/**
+ * Augment the grammar by starting with a new rule that leads to the original
+ * start rule; eg. grammar:
+ *
+ *      S -> a
+ *
+ * effectively becomes:
+ *
+ *      S' -> S $ (where "$" represents EOF)
+ *      S -> a
+ */
+export function getAugmentedGrammar(grammar: Grammar): Grammar {
   const startRule = grammar.rules[0];
 
-  // Augment the grammar by starting with I[0], a new rule that leads to the
-  // original start rule; eg. grammar:
-  //
-  //      S -> a
-  //
-  // effectively becomes:
-  //
-  //      S' -> S $ (where "$" represents EOF, indicated by `null` lookahead)
-  //      S -> a
-  //
-  const i0: ItemSet = {
-    items: [
+  // And now, much singing and dancing to return a deep copy of the grammar.
+  return {
+    tokens: [...grammar.tokens],
+    rules: [
       {
         lhs: `${startRule.lhs}'`,
         rhs: [startRule.lhs],
-        lookahead: new Set([null]),
+      },
+      ...grammar.rules.map(({lhs, rhs, action}) => {
+        if (action) {
+          return {
+            action,
+            lhs,
+            rhs: [...rhs],
+          };
+        } else {
+          return {
+            lhs,
+            rhs: [...rhs],
+          };
+        }
+      }),
+    ],
+  };
+}
+
+export function getItemSets(grammar: Grammar) {
+  const tokens = new Set(grammar.tokens);
+  const rules = groupRulesByLHS(grammar);
+  const augmentedGrammar = getAugmentedGrammar(grammar);
+  const startRule = augmentedGrammar.rules[0];
+
+  const i0: ItemSet = {
+    items: [
+      {
+        lhs: startRule.lhs,
+        rhs: startRule.rhs,
         dot: 0,
       },
     ],
@@ -318,26 +372,34 @@ export function getItemSets(grammar: Grammar) {
 
   // For each item in `itemSet`, add any non-terminals that appear after dots.
   function close(itemSet: ItemSet) {
-    const added = new Set(itemSet.items.map(({lhs}) => lhs));
+    const added = new Set();
+    for (const item of itemSet.items) {
+      const key = keyForItem(item);
+      added.add(key);
+    }
+
+    function add(symbol: string) {
+      if (!tokens.has(symbol)) {
+        for (const rhs of rules[symbol]) {
+          const newItem: Item = {
+            lhs: symbol,
+            rhs,
+            dot: 0,
+          };
+          const key = keyForItem(newItem);
+          if (!added.has(key)) {
+            added.add(key);
+            itemSet.items.push(newItem);
+            add(rhs[0]);
+          }
+        }
+      }
+    }
+
     for (let i = 0; i < itemSet.items.length; i++) {
       const item = itemSet.items[i];
       if (item.dot < item.rhs.length) {
-        const next = item.rhs[item.dot];
-        if (!tokens.has(next) && !added.has(next)) {
-          added.add(next);
-          for (const rhs of rules[next]) {
-            const follow = item.rhs[item.dot + 1];
-            const lookahead = follow
-              ? first[follow] || new Set([follow])
-              : new Set([null]);
-            itemSet.items.push({
-              lhs: next,
-              rhs,
-              lookahead,
-              dot: 0,
-            });
-          }
-        }
+        add(item.rhs[item.dot]);
       }
     }
   }
@@ -378,7 +440,6 @@ export function getItemSets(grammar: Grammar) {
                 lhs: item.lhs,
                 rhs: item.rhs,
                 dot: item.dot + 1,
-                lookahead: item.lookahead,
               });
             }
           }
@@ -389,18 +450,8 @@ export function getItemSets(grammar: Grammar) {
           let index;
 
           if (itemSets[key]) {
-            // Merge into existing set.
-            const itemsByKey: {[key: string]: Item} = {};
-            for (const item of newItemSet.items) {
-              itemsByKey[keyForItem(item)] = item;
-            }
-            const existingSet = itemSets[key];
+            // Add transition to existing set.
             index = Object.keys(itemSets).indexOf(key);
-            for (const item of existingSet.items) {
-              for (const symbol of itemsByKey[keyForItem(item)].lookahead) {
-                item.lookahead.add(symbol);
-              }
-            }
           } else {
             // Add new set.
             index = Object.keys(itemSets).length;
@@ -428,9 +479,9 @@ export function itemSetsToTransitionTable(
   grammar: Grammar,
 ): TransitionTable {
   const table: TransitionTable = [];
-
   const terminals = [...grammar.tokens].sort();
-  const nonTerminals = grammar.rules.map(({lhs}) => lhs).sort();
+  const augmentedGrammar = getAugmentedGrammar(grammar);
+  const nonTerminals = augmentedGrammar.rules.map(({lhs}) => lhs).sort();
 
   for (const itemSet of itemSets) {
     const entries: {[symbol: string]: number | undefined} = {};
@@ -451,13 +502,13 @@ export function itemSetsToTransitionTable(
  *
  *     A -> B C
  *
- * into:
+ * into a rule with start and end states annotated:
  *
  *      A   ->   B     C
  *     0 4      0 2   2 7
  *
- * Assuming rule is in item set 0, and transitions on A to 4, on B to 2, and
- * from C (in item set 2) to 7.
+ * In this example, the rule is in item set 0, and transitions on A to 4, on B
+ * to 2, and from C (in item set 2) to 7.
  */
 export function extendedGrammarForItemSets(
   itemSets: Array<ItemSet>,
@@ -523,31 +574,38 @@ export function getParseTable(
   transitionTable: TransitionTable,
   grammar: Grammar,
 ): ParseTable {
-  const startRule = grammar.rules[0];
   const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
+  const augmentedGrammar = getAugmentedGrammar(grammar);
+  const startRule = augmentedGrammar.rules[0];
   const tokens = new Set(grammar.tokens);
 
   const table: ParseTable = [];
 
   // Add `Accept` action for `$` (EOF) symbol where item set contains start
   // rule with dot at the end.
+  let acceptCount = 0;
   for (const itemSet of itemSets) {
     const actions: Actions = {};
     const gotos: Gotos = {};
 
     for (const {lhs, rhs, dot} of itemSet.items) {
-      if (lhs === `${startRule.lhs}'` && dot === rhs.length) {
+      if (lhs === startRule.lhs && dot === rhs.length) {
         actions['$'] = {kind: 'Accept'};
-        break; // TODO: confirm it is legit to break here; I think it is...
+
+        // We could break here, but instead we're going to integrity-check that
+        // there is only one accept state at the end.
+        acceptCount++;
       }
     }
 
     table.push([actions, gotos]);
   }
+  invariant(acceptCount === 1, `acceptCount (${acceptCount}) must be 1`);
 
   // Copy non-terminals from transition table to gotos.
   transitionTable.forEach((transitions, source) => {
     for (const [symbol, target] of Object.entries(transitions)) {
+      invariant(target);
       if (!tokens.has(symbol)) {
         const gotos = table[source][1];
         gotos[symbol] = target;
@@ -555,11 +613,176 @@ export function getParseTable(
     }
   });
 
+  // Copy terminals from transition table as shift actions.
+  transitionTable.forEach((transitions, source) => {
+    for (const [symbol, target] of Object.entries(transitions)) {
+      invariant(target);
+      if (tokens.has(symbol)) {
+        const actions = table[source][0];
+        actions[symbol] = {
+          kind: 'Shift',
+          state: target,
+        };
+      }
+    }
+  });
+
+  // Prepare data structure for quick look-up of rule indices.
+  const ruleIndices: {[ruleString: string]: number} = {};
+  augmentedGrammar.rules.forEach(({lhs, rhs}, i) => {
+    ruleIndices[keyForRule(lhs, rhs)] = i;
+  });
+
+  // Map follow sets to extended grammar rules.
+  const follows = getFollowSets(extendedGrammar);
+  for (const rule of extendedGrammar.rules) {
+    const [, lhs, end] = rule.lhs.split('/');
+    if (end === '$') {
+      continue; // "$"/EOF was already handled above.
+    }
+
+    const rhs = rule.rhs.map((symbol) => {
+      const [, rhs] = symbol.split('/');
+      return rhs;
+    });
+
+    // Get the item set from the original grammar that corresponds to extended
+    // grammar rule.
+    const itemSet = rule.rhs[rule.rhs.length - 1].split('/')[2];
+
+    const ruleNumber = ruleIndices[keyForRule(lhs, rhs)];
+    const actions = table[parseInt(itemSet, 10)][0];
+    for (const follow of follows[rule.lhs]) {
+      const [, symbol] = (follow ?? '0/$/0').split('/');
+      const action = actions[symbol];
+      if (action) {
+        if (
+          action.kind === 'Accept' ||
+          (action.kind === 'Reduce' && action.rule !== ruleNumber) ||
+          action.kind === 'Shift'
+        ) {
+          throw new Error(
+            `getParseTable(): ${action.kind}/Reduce conflict - ` +
+              `existing ${action.kind} (${
+                action.kind === 'Reduce'
+                  ? action.rule
+                  : action.kind === 'Shift'
+                  ? action.state
+                  : 'n/a'
+              }) for state ${itemSet} ` +
+              `processing rule: ${lhs} ${RIGHTWARDS_ARROW} ${rhs.join(' ')}`,
+          );
+        }
+      } else {
+        actions[symbol] = {kind: 'Reduce', rule: ruleNumber};
+      }
+    }
+  }
+
   return table;
 }
 
+type ParseTree = {
+  kind: string;
+  children: Array<ParseTree | Token>;
+};
+
+/**
+ * For use in tests.
+ */
+export type Token = {
+  name: string;
+  contents?: string;
+};
+
+function assertParseTreeOrToken(
+  node: ParseTree | Token | number | undefined,
+): asserts node is ParseTree | Token {
+  invariant(node);
+  invariant(typeof node !== 'number');
+}
+
+function assertParseTree(
+  node: ParseTree | Token | number | undefined,
+): asserts node is ParseTree {
+  invariant(node);
+  invariant(typeof node !== 'number');
+  invariant(Object.hasOwnProperty.call(node, 'kind'));
+}
+
+/**
+ * Dynamically parse using supplied parse table.
+ *
+ * For testing purposes only; for "real" parsers we want to write out a static
+ * (generated) parser artifact with proper type info, actions, and so on.
+ */
+export function parseWithTable(
+  table: ParseTable,
+  tokens: Array<Token>,
+  grammar: Grammar,
+): ParseTree {
+  const augmentedGrammar = getAugmentedGrammar(grammar);
+  const stack: Array<ParseTree | Token | number> = [0];
+  let pointer = 0;
+
+  while (pointer <= tokens.length) {
+    const current = stack[stack.length - 1];
+    invariant(typeof current === 'number' && current < table.length);
+
+    const [actions] = table[current];
+    const token = tokens[pointer] ?? {name: '$'};
+
+    const action = actions[token.name];
+
+    if (!action) {
+      throw new Error(
+        `parseWithTable(): Syntax error (no action for ${token.name} (token index ${pointer}) in state ${current})`,
+      );
+    } else if (action.kind === 'Accept') {
+      invariant(pointer === tokens.length);
+
+      // Expect initial state (0) + production + accept state
+      // (ie. extra because we're using an augmented grammar).
+      invariant(stack.length === 3);
+      const tree = stack[1];
+      assertParseTree(tree);
+      return tree;
+    } else if (action.kind === 'Shift') {
+      stack.push(token, action.state);
+      pointer++;
+    } else if (action.kind === 'Reduce') {
+      const {lhs, rhs, action: code} = augmentedGrammar.rules[action.rule];
+      const popped = [];
+      for (let i = 0; i < rhs.length; i++) {
+        stack.pop(); // State number.
+        const node = stack.pop();
+        assertParseTreeOrToken(node);
+        popped.unshift(node); // Production.
+      }
+      const next = stack[stack.length - 1];
+      invariant(typeof next === 'number' && next < table.length);
+      const [, gotos] = table[next];
+      const target = gotos[lhs];
+      invariant(target);
+      stack.push(
+        {
+          kind: lhs,
+          children: popped,
+        },
+        target,
+      );
+    }
+  }
+
+  throw new Error('parseWithTable(): Unreachable');
+}
+
+function keyForRule(lhs: string, rhs: Array<string>): string {
+  return `${lhs}:${rhs.join('-')}`;
+}
+
 function keyForItem(item: Item): string {
-  return `${item.lhs}[${item.dot}]:${item.rhs.join('-')}`;
+  return keyForRule(item.lhs, item.rhs) + `[${item.dot}]`;
 }
 
 /**
@@ -575,6 +798,29 @@ function keyForItemSet(itemSet: ItemSet): string {
 /**
  * Debugging helper.
  */
+export function stringifyGrammar(grammar: Grammar): string {
+  let output =
+    [...grammar.tokens]
+      .sort()
+      .map((token) => `%token ${token}`)
+      .join('\n') + '\n\n';
+
+  output += grammar.rules
+    .map(({lhs, rhs, action}, i) => {
+      if (action) {
+        return `r${i}: ${lhs} ${RIGHTWARDS_ARROW} ${rhs.join(' ')} {${action}}`;
+      } else {
+        return `r${i}: ${lhs} ${RIGHTWARDS_ARROW} ${rhs.join(' ')}`;
+      }
+    })
+    .join('\n');
+
+  return output + '\n';
+}
+
+/**
+ * Debugging helper.
+ */
 export function stringifyItemSets(itemSets: Array<ItemSet>): string {
   let output = '';
 
@@ -582,7 +828,7 @@ export function stringifyItemSets(itemSets: Array<ItemSet>): string {
     const itemSet = itemSets[i];
     output += `I${i}:\n`;
 
-    for (const {lhs, rhs, dot, lookahead} of itemSet.items) {
+    for (const {lhs, rhs, dot} of itemSet.items) {
       output += `  ${lhs}`;
       output += ` ${RIGHTWARDS_ARROW}`;
       for (let i = 0; i <= rhs.length; i++) {
@@ -593,13 +839,6 @@ export function stringifyItemSets(itemSets: Array<ItemSet>): string {
           output += ` ${rhs[i]}`;
         }
       }
-      output += ', ';
-      output +=
-        '{' +
-        Array.from(lookahead)
-          .map((symbol) => (symbol === null ? '$' : symbol))
-          .join(', ') +
-        '}';
       output += '\n';
     }
 
@@ -609,4 +848,97 @@ export function stringifyItemSets(itemSets: Array<ItemSet>): string {
   }
 
   return output;
+}
+
+/**
+ * Debugging helper
+ */
+export function stringifyParseTable(parseTable: ParseTable): string {
+  const rows: Array<Array<string>> = [];
+
+  function actionToString(action: Action | null): string {
+    if (!action) {
+      return ' ';
+    } else if (action.kind === 'Accept') {
+      return ' accept ';
+    } else if (action.kind === 'Shift') {
+      return ` s${action.state} `;
+    } else if (action.kind === 'Reduce') {
+      return ` r${action.rule} `;
+    } else {
+      throw new Error('actionToString(): Unreachable');
+    }
+  }
+
+  function gotoToString(target: number | null): string {
+    if (typeof target === 'number') {
+      return ` ${target.toString()} `;
+    } else {
+      return ' ';
+    }
+  }
+
+  const terminals: Array<string> = Array.from(
+    parseTable.reduce((acc, [actions]) => {
+      for (const action of Object.keys(actions)) {
+        acc.add(action);
+      }
+      return acc;
+    }, new Set<string>()),
+  ).sort((a, b) => {
+    // Make sure "$" goes at the end.
+    if (a === '$') {
+      return 1;
+    } else if (b === '$') {
+      return -1;
+    } else {
+      return a.localeCompare(b, 'en');
+    }
+  });
+
+  const nonTerminals: Array<string> = Array.from(
+    parseTable.reduce((acc, [, gotos]) => {
+      for (const goto of Object.keys(gotos)) {
+        acc.add(goto);
+      }
+      return acc;
+    }, new Set<string>()),
+  ).sort();
+
+  rows.push([
+    ' State ',
+    ...terminals.map((terminal) => ` ${terminal} `),
+    ...nonTerminals.map((nonTerminal) => `${nonTerminal} `),
+  ]);
+
+  parseTable.forEach(([actions, gotos], i) => {
+    rows.push([
+      ` ${i.toString()} `,
+      ...terminals.map((key) => actionToString(actions[key] || null)),
+      ...nonTerminals.map((key) => gotoToString(gotos[key] || null)),
+    ]);
+  });
+
+  const widths: Array<number> = new Array(
+    1 + terminals.length + nonTerminals.length,
+  ).fill(0);
+
+  rows.forEach((row) => {
+    widths.forEach((column, i) => {
+      widths[i] = Math.max(column, row[i].length);
+    });
+  });
+
+  const padded = rows.map((columns) => {
+    return (
+      '|' +
+      columns.map((item, i) => item.padStart(widths[i], ' ')).join('|') +
+      '|'
+    );
+  });
+  const header = padded.shift();
+  const separator =
+    '|' + widths.map((width) => '-'.repeat(width)).join('|') + '|';
+
+  return [header, separator, ...padded].join('\n') + '\n';
 }
