@@ -1,5 +1,5 @@
 ---
-tags: wiki
+tags: wiki arch obs
 title: OBS cheatsheet
 ---
 
@@ -7,10 +7,31 @@ Just making some notes for this stuff because I find it tremendously fiddly and 
 
 Topics covered:
 
-- **OBS:** Screencasting software.
+- **Bluetooth**.
+- **OBS:** OBS itself (screencasting software).
 - **Audacious:** For playing background music.
 - **screenkey:** For showing keypresses.
 - **irssi:** For showing Twitch chat.
+- **VLC:** For checking recordings.
+
+Overview:
+
+1. Ensure Bluetooth is running and headphones are connected.
+2. Ensure virtual sink is running.
+3. Open Audacious, pavucontrol, and OBS (last).
+4. If webcam isn't working (sigh), unplug it and replug it; you may have to remove and re-add the video source in OBS. And if you lose the keyboard and have to disconnect it, it may come back without Colemak, so be ready to run `arst`/`asdf` to put it back.
+
+# Bluetooth
+
+```
+$ systemctl start bluetooth # if `systemctl status bluetooth` not already "active (running)"
+$ bluetoothctl
+[bluetooth]# power on
+[bluetooth]# connect 14:3F:A6:2C:8E:98
+[bluetooth]# quit
+```
+
+For Bluetooth troubleshooting hints, see [Arch Linux cheatsheet].
 
 # OBS
 
@@ -95,7 +116,7 @@ Note: can use the same "Audacious" source in both scenes using "Copy" and "Paste
 - Global Audio Devices
   - Mic/Auxiliary Audio: Blue Microphones Analog Stereo
 - Advanced:
-  - Monitoring Device: Monitor of MOMENTUM 3
+  - Monitoring Device: Monitor of WH-1000XM4
 
 One thing to note: I was getting low latency monitoring with this set-up, but as soon as I recorded a test video, latency spiked and didn't go down again until I changed the monitoring device setting to something else and then back again.
 
@@ -126,7 +147,13 @@ One thing to note: I was getting low latency monitoring with this set-up, but as
 
 # pavucontrol
 
-Assuming a virtual sink created with:
+Check if the virtual sink is operating (given that I haven't set it up to persist across reboots):
+
+```bash
+pactl list | grep sink_name=Music
+```
+
+If not, create it:
 
 ```bash
 pactl load-module module-null-sink sink_name=Music
@@ -135,8 +162,8 @@ pactl load-module module-null-sink sink_name=Music
 - Playback
   - System sounds: 100%
   - Audacious: 100% - Music Audio/Sink sink (ie. the virtual sink)
-  - OBS-Monitor: Mic/Aux on, 100% - MOMENTUM 3; actually, this should be _off_ otherwise the lag scrambles your brain.
-  - OBS-Monitor: Audacious on, 100% - MOMENTUM 3; if everything is working, you will hear the ducking of the music when you talk, even though you don't hear your own voice.
+  - ~~OBS-Monitor: Mic/Aux on, 100% - WH-1000XM4~~; actually, this should be _off_ otherwise the lag scrambles your brain.
+  - OBS-Monitor: Audacious on, 100% - WH-1000XM4; if everything is working, you will hear the ducking of the music when you talk, even though you don't hear your own voice.
 - Recording
   - OBS: Mic/Aux 100% from: Blue Microphones Analog Stereo
   - OBS: Audacious 100% from: Monitor of Music Audio/Sink sink
@@ -146,8 +173,8 @@ pactl load-module module-null-sink sink_name=Music
   - Everything 100%
 - Configuration
   - Everything default; eg.
-    - MOMENTUM 3
-      - High Fidelity Playback (A2DP Sink, codec aptX)
+    - WH-1000XM4
+      - High Fidelity Playback (A2DP Sink, codec AAC)
     - Blue Microphones
       - Profile: Analog Stereo Duplex
 
@@ -219,5 +246,9 @@ After initial set-up (see notes in [Arch Linux cheatsheet]), basic usage:
 4. When you're done, `/quit` or `/exit`.
 
 [^beeps]: In theory I only have to do this once because after doing it I ran `/save`, but, you never know.
+
+# VLC
+
+You can set VLC audio output to go straight to the headphones (in `pavucontrol`) so that you can review recordings with all of the above set-up still in place.
 
 [Arch Linux cheatsheet]: /wiki/Arch_Linux_cheatsheet

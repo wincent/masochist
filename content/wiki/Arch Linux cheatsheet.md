@@ -44,12 +44,20 @@ netctl restart $PROFILE # eg netctl restart cole-valley
 ```sh
 $ systemctl start bluetooth
 $ bluetoothctl
-# help
-# power on
-# scan on
-# scan off
-# pair 00:1B:66:CD:BD:8F
-# connect 00:1B:66:CD:BD:8F
+[bluetooth]# help
+[bluetooth]# power on
+[bluetooth]# pairable on
+[bluetooth]# scan on
+[bluetooth]# scan off
+[bluetooth]# pair 14:3F:A6:2C:8E:98
+[bluetooth]# connect 14:3F:A6:2C:8E:98
+[bluetooth]# quit
+```
+
+In theory, for subsequent connections, all you need (as long as the `bluetooth` service is up and running) is:
+
+```
+[bluetooth]# connect 14:3F:A6:2C:8E:98
 ```
 
 # Putting the machine to sleep
