@@ -1,6 +1,6 @@
 ---
 title: Arch Linux install script
-tags: arch.linux snippets
+tags: arch linux snippets
 ---
 
 #!/bin/bash
