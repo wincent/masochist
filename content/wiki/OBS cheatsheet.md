@@ -162,7 +162,7 @@ Note the extreme sketchiness of the "Unknown input" above, but it seems to be th
 
 ## Configuring
 
-Config file lives at `~/.config/screenkey.json`. Can get to preferences GUi from system tray icon, or by running `screenkey --show-settings`.
+Config file lives at `~/.config/screenkey.json` ([current `main` contents](https://github.com/wincent/wincent/blob/main/aspects/dotfiles/files/.config/screenkey.json), [2022-02-21 snapshot](https://github.com/wincent/wincent/blob/05c2c482244bfe452be372ed22bf1afcf94a5804/aspects/dotfiles/files/.config/screenkey.json)). Can get to preferences GUi from system tray icon, or by running `screenkey --show-settings`.
 
 ## Manipulating i3-gaps to fit `screenkey`
 
@@ -174,7 +174,7 @@ This does this trick:
 i3-msg gaps bottom all set 70
 ```
 
-As a convenience, I made a `gaps` function that I can use to toggle this; example usage:
+As a convenience, I made a `gaps` function ([source](https://github.com/wincent/wincent/blob/05c2c482244bfe452be372ed22bf1afcf94a5804/aspects/dotfiles/files/.zsh/functions#L183-L193)) that I can use to toggle this; example usage:
 
 ```
 gaps on
