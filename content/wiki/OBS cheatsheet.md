@@ -5,6 +5,13 @@ title: OBS cheatsheet
 
 Just making some notes for this stuff because I find it tremendously fiddly and sensitive.
 
+Topics covered:
+
+- **OBS:** Screencasting software.
+- **Audacious:** For playing background music.
+- **screenkey:** For showing keypresses.
+- **irssi:** For showing Twitch chat.
+
 # OBS
 
 ## Audio Mixer
@@ -145,3 +152,72 @@ pactl load-module module-null-sink sink_name=Music
       - Profile: Analog Stereo Duplex
 
 Note the extreme sketchiness of the "Unknown input" above, but it seems to be the only way to get all of this stuff plus the monitoring working acceptably. ("Acceptably" is a relative term; the longer my recordings go, the higher the latency of the monitoring seems to creep.)
+
+# `screenkey`
+
+## Starting
+
+1. Hit Command/Super+Space to bring up dmenu launcher.
+2. Type `screenkey` and hit enter.
+
+## Configuring
+
+Config file lives at `~/.config/screenkey.json`. Can get to preferences GUi from system tray icon, or by running `screenkey --show-settings`.
+
+## Manipulating i3-gaps to fit `screenkey`
+
+Given the `screenkey.json` I currently have committed to my dot-files, I need to use an outer bottom gap of 70 to stop `screenkey` from overlapping with my terminal (and other) windows.
+
+This does this trick:
+
+```
+i3-msg gaps bottom all set 70
+```
+
+As a convenience, I made a `gaps` function that I can use to toggle this; example usage:
+
+```
+gaps on
+gaps off
+gaps 100
+```
+
+## How to turn off/on `screenkey` before/after entering passwords or other sensitive info
+
+Hold Command/Super to reveal i3 task bar, then right-click screenkey icon in system tray and toggle the "Show keys" option.
+
+## Troubleshooting
+
+I install `screenkey` by default, but it has on occasion stopped working for me with:
+
+```
+ModuleNotFoundError: No module named 'dbus'
+```
+
+Uninstalling and reinstalling did not fix it:
+
+```
+yay -R screenkey
+yay -S screenkey
+```
+
+But this did:
+
+```
+pip install dbus-python
+```
+
+# irssi
+
+After initial set-up (see notes in [Arch Linux cheatsheet]), basic usage:
+
+1. Run `irssi` in a tmux pane; this can be in the background if you want — new messages will cause tmux to show the pane as having received activity, and if they don't, you can try this[^beeps]:
+   - `/set beep_when_window_active ON`
+   - `/set beep_msg_level PUBLIC`
+2. `/connect Twitch`.
+3. `/join #greghurrell`.
+4. When you're done, `/quit` or `/exit`.
+
+[^beeps]: In theory I only have to do this once because after doing it I ran `/save`, but, you never know.
+
+[Arch Linux cheatsheet]: /wiki/Arch_Linux_cheatsheet
