@@ -873,6 +873,114 @@ describe('parseWithTable()', () => {
       ],
     });
   });
+
+  it('parses samples for the subset grammar', () => {
+    const itemSets = getItemSets(grammar);
+    const transitionTable = itemSetsToTransitionTable(itemSets, grammar);
+    const table = getParseTable(itemSets, transitionTable, grammar);
+
+    const tokens: Array<Token> = [
+      {name: 'OPENING_BRACE'},
+      {name: 'NAME', contents: 'foo'},
+      {name: 'NAME', contents: 'bar'},
+      {name: 'NAME', contents: 'baz'},
+      {name: 'CLOSING_BRACE'},
+    ];
+
+    expect(parseWithTable(table, tokens, grammar)).toEqual({
+      kind: 'Document',
+      children: [
+        {
+          kind: 'DefinitionList',
+          children: [
+            {
+              kind: 'Definition',
+              children: [
+                {
+                  kind: 'ExecutableDefinition',
+                  children: [
+                    {
+                      kind: 'OperationDefinition',
+                      children: [
+                        {
+                          kind: 'SelectionSet',
+                          children: [
+                            {
+                              name: 'OPENING_BRACE',
+                            },
+                            {
+                              kind: 'SelectionList',
+                              children: [
+                                {
+                                  kind: 'SelectionList',
+                                  children: [
+                                    {
+                                      kind: 'SelectionList',
+                                      children: [
+                                        {
+                                          kind: 'Selection',
+                                          children: [
+                                            {
+                                              kind: 'Field',
+                                              children: [
+                                                {
+                                                  name: 'NAME',
+                                                  contents: 'foo',
+                                                },
+                                              ],
+                                            },
+                                          ],
+                                        },
+                                      ],
+                                    },
+                                    {
+                                      kind: 'Selection',
+                                      children: [
+                                        {
+                                          kind: 'Field',
+                                          children: [
+                                            {
+                                              name: 'NAME',
+                                              contents: 'bar',
+                                            },
+                                          ],
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                },
+                                {
+                                  kind: 'Selection',
+                                  children: [
+                                    {
+                                      kind: 'Field',
+                                      children: [
+                                        {
+                                          name: 'NAME',
+                                          contents: 'baz',
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                            {
+                              name: 'CLOSING_BRACE',
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    });
+  });
 });
 
 describe('stringifyGrammar()', () => {
