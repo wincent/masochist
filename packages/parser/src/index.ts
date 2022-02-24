@@ -1,4 +1,5 @@
 import {StringScanner, invariant} from '@masochist/common';
+import vm from 'vm';
 
 // Goal is to produce an LALR(1) parser from a grammar.
 
@@ -725,6 +726,8 @@ export function parseWithTable(
   const stack: Array<ParseTree | Token | number> = [0];
   let pointer = 0;
 
+  const context = vm.createContext({$$: undefined});
+
   while (pointer <= tokens.length) {
     const current = stack[stack.length - 1];
     invariant(typeof current === 'number' && current < table.length);
@@ -745,7 +748,7 @@ export function parseWithTable(
       // (ie. extra because we're using an augmented grammar).
       invariant(stack.length === 3);
       const tree = stack[1];
-      assertParseTree(tree);
+      // assertParseTree(tree);
       return tree;
     } else if (action.kind === 'Shift') {
       stack.push(token, action.state);
@@ -756,21 +759,44 @@ export function parseWithTable(
       for (let i = 0; i < rhs.length; i++) {
         stack.pop(); // State number.
         const node = stack.pop();
-        assertParseTreeOrToken(node);
-        popped.unshift(node); // Production.
+        // assertParseTreeOrToken(node);
+        // TODO: if we have an action, don't set items that aren't used in the action
+        popped[rhs.length - i - 1] = node; // Production.
       }
       const next = stack[stack.length - 1];
       invariant(typeof next === 'number' && next < table.length);
       const [, gotos] = table[next];
       const target = gotos[lhs];
       invariant(target);
-      stack.push(
-        {
-          kind: lhs,
-          children: popped,
-        },
-        target,
-      );
+      if (code) {
+        // TODO: in a real implementation of this, would cache this instead of
+        // re-scanning it every time.
+        const scanner = new StringScanner(code);
+        while (!scanner.atEnd) {
+          scanner.scan(/[^$]+/);
+          if (scanner.scan('$')) {
+            const variable = scanner.scan(/\d+/);
+            if (variable) {
+              context[`$${variable}`] = popped[parseInt(variable, 10) - 1];
+            } else if (!scanner.scan(/\$/)) {
+              throw new Error(`parseWithTable(): Bad action - ${code}`);
+            }
+          }
+        }
+        vm.runInContext(code, context);
+        stack.push(context.$$, target);
+      } else {
+        stack.push(
+          {
+            kind: lhs,
+            children:
+              popped.length === 1 && Array.isArray(popped[0])
+                ? popped[0]
+                : popped,
+          },
+          target,
+        );
+      }
     }
   }
 

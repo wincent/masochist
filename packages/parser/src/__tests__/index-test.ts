@@ -23,11 +23,15 @@ const grammar: Grammar = {
   tokens: ['CLOSING_BRACE', 'NAME', 'OPENING_BRACE'],
   rules: [
     {lhs: 'Document', rhs: ['DefinitionList']},
-    {lhs: 'DefinitionList', rhs: ['Definition']},
+    {
+      lhs: 'DefinitionList',
+      rhs: ['Definition'],
+      action: '{ $$ = [$1]; }',
+    },
     {
       lhs: 'DefinitionList',
       rhs: ['DefinitionList', 'Definition'],
-      action: '{ $$ = $1.push($2) }',
+      action: '{ $1.push($2); $$ = $1; }',
     },
     {lhs: 'Definition', rhs: ['ExecutableDefinition']},
     {lhs: 'ExecutableDefinition', rhs: ['OperationDefinition']},
@@ -35,12 +39,17 @@ const grammar: Grammar = {
     {
       lhs: 'SelectionSet',
       rhs: ['OPENING_BRACE', 'SelectionList', 'CLOSING_BRACE'],
+      action: '{ $$ = $2; }',
     },
-    {lhs: 'SelectionList', rhs: ['Selection']},
+    {
+      lhs: 'SelectionList',
+      rhs: ['Selection'],
+      action: '{ $$ = [$1]; }',
+    },
     {
       lhs: 'SelectionList',
       rhs: ['SelectionList', 'Selection'],
-      action: '{ $$ = $1.push($2) }',
+      action: '{ $1.push($2); $$ = $1; }',
     },
     {lhs: 'Selection', rhs: ['Field']},
     {lhs: 'Field', rhs: ['NAME']},
@@ -51,14 +60,14 @@ const grammarDeclaration = `
   %token CLOSING_BRACE NAME OPENING_BRACE
 
   Document → DefinitionList
-  DefinitionList → Definition
-  DefinitionList → DefinitionList Definition { $$ = $1.push($2) }
+  DefinitionList → Definition { $$ = [$1]; }
+  DefinitionList → DefinitionList Definition { $1.push($2); $$ = $1; }
   Definition → ExecutableDefinition
   ExecutableDefinition → OperationDefinition
   OperationDefinition → SelectionSet
-  SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE
-  SelectionList → Selection
-  SelectionList → SelectionList Selection { $$ = $1.push($2) }
+  SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE { $$ = $2; }
+  SelectionList → Selection { $$ = [$1]; }
+  SelectionList → SelectionList Selection { $1.push($2); $$ = $1; }
   Selection → Field
   Field → NAME
 `;
@@ -891,82 +900,51 @@ describe('parseWithTable()', () => {
       kind: 'Document',
       children: [
         {
-          kind: 'DefinitionList',
+          kind: 'Definition',
           children: [
             {
-              kind: 'Definition',
+              kind: 'ExecutableDefinition',
               children: [
                 {
-                  kind: 'ExecutableDefinition',
+                  kind: 'OperationDefinition',
                   children: [
                     {
-                      kind: 'OperationDefinition',
+                      kind: 'Selection',
                       children: [
                         {
-                          kind: 'SelectionSet',
+                          kind: 'Field',
                           children: [
                             {
-                              name: 'OPENING_BRACE',
+                              name: 'NAME',
+                              contents: 'foo',
                             },
+                          ],
+                        },
+                      ],
+                    },
+                    {
+                      kind: 'Selection',
+                      children: [
+                        {
+                          kind: 'Field',
+                          children: [
                             {
-                              kind: 'SelectionList',
-                              children: [
-                                {
-                                  kind: 'SelectionList',
-                                  children: [
-                                    {
-                                      kind: 'SelectionList',
-                                      children: [
-                                        {
-                                          kind: 'Selection',
-                                          children: [
-                                            {
-                                              kind: 'Field',
-                                              children: [
-                                                {
-                                                  name: 'NAME',
-                                                  contents: 'foo',
-                                                },
-                                              ],
-                                            },
-                                          ],
-                                        },
-                                      ],
-                                    },
-                                    {
-                                      kind: 'Selection',
-                                      children: [
-                                        {
-                                          kind: 'Field',
-                                          children: [
-                                            {
-                                              name: 'NAME',
-                                              contents: 'bar',
-                                            },
-                                          ],
-                                        },
-                                      ],
-                                    },
-                                  ],
-                                },
-                                {
-                                  kind: 'Selection',
-                                  children: [
-                                    {
-                                      kind: 'Field',
-                                      children: [
-                                        {
-                                          name: 'NAME',
-                                          contents: 'baz',
-                                        },
-                                      ],
-                                    },
-                                  ],
-                                },
-                              ],
+                              name: 'NAME',
+                              contents: 'bar',
                             },
+                          ],
+                        },
+                      ],
+                    },
+                    {
+                      kind: 'Selection',
+                      children: [
+                        {
+                          kind: 'Field',
+                          children: [
                             {
-                              name: 'CLOSING_BRACE',
+                              name: 'NAME',
+                              contents: 'baz',
                             },
                           ],
                         },
