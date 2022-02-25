@@ -714,7 +714,7 @@ describe('extendedGrammarForItemSets()', () => {
 });
 
 describe('parseDSL()', () => {
-  it('parses a the toy grammar declaration', () => {
+  it('parses the toy grammar declaration', () => {
     expect(parseDSL(toy)).toEqual({
       rules: [
         {lhs: 'S', rhs: ['N']},
