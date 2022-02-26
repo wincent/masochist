@@ -93,16 +93,20 @@ describe('lex()', () => {
   });
 
   it('survives a stress test', async () => {
-    const support = path.join(__dirname, '..', '..', '..', '..', 'support');
-    for (const file of ['generated', 'schema', 'source']) {
-      const text = (
-        await fs.readFile(path.join(support, file + '.graphql'))
-      ).toString();
-      const tokens = [...lex(text)];
+    // TODO: make some useful assertions instead of just confirming that this
+    // doesn't blow up
+    await expect(
+      (async () => {
+        const support = path.join(__dirname, '..', '..', '..', '..', 'support');
+        for (const file of ['generated', 'schema', 'source']) {
+          const text = (
+            await fs.readFile(path.join(support, file + '.graphql'))
+          ).toString();
 
-      // TODO: make some useful assertions instead of logging
-      console.log(tokens);
-    }
+          [...lex(text)];
+        }
+      })(),
+    ).resolves.not.toThrow();
   });
 
   it('does something else', () => {
