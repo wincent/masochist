@@ -785,7 +785,9 @@ export function parseWithTable(
             }
           }
         }
+        context.$$ = undefined;
         vm.runInContext(code, context);
+        invariant(context.$$, 'production was undefined');
         stack.push(context.$$, target);
       } else {
         stack.push(
