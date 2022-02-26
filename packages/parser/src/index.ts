@@ -4,7 +4,7 @@ import vm from 'vm';
 // Goal is to produce an LALR(1) parser from a grammar.
 
 export type Grammar = {
-  tokens: Array<string>; // TODO: I often want this to be a Set, so perhaps I should just make it a Set
+  tokens: Set<string>;
   rules: Array<Rule>;
 };
 
@@ -42,7 +42,7 @@ const RIGHTWARDS_ARROW = '\u2192';
  */
 /*
 export const grammar: Grammar = {
-  tokens: ['CLOSING_BRACE', 'NAME', 'OPENING_BRACE'],
+  tokens: new Set(['CLOSING_BRACE', 'NAME', 'OPENING_BRACE']),
   rules: [
     {lhs: 'Document', rhs: ['DefinitionList']},
     {lhs: 'DefinitionList', rhs: ['Definition']},
@@ -93,8 +93,8 @@ export function parseDSL(dsl: string): Grammar {
   const scanner = new StringScanner(dsl);
   const ws = /\s+/;
   const symbol = /\w+/;
-  const tokens: Array<string> = [];
-  const rules: Array<Rule> = [];
+  const tokens = new Set<string>();
+  const rules = [];
   while (!scanner.atEnd) {
     // Scan %tokens.
     if (scanner.scan(/%token\b/)) {
@@ -108,7 +108,9 @@ export function parseDSL(dsl: string): Grammar {
         }
       }
       if (symbols.length) {
-        tokens.push(...symbols);
+        for (const symbol of symbols) {
+          tokens.add(symbol);
+        }
         continue;
       } else {
         throw new Error(
@@ -214,7 +216,7 @@ function groupRulesByLHS(grammar: Grammar): {
  * any rule (or chain of rules) matching non-terminal `A`.
  */
 export function getFirstSets(grammar: Grammar): FirstSets {
-  const tokens = new Set(grammar.tokens);
+  const tokens = grammar.tokens;
   const rules = groupRulesByLHS(grammar);
 
   const sets: FirstSets = {};
@@ -260,7 +262,7 @@ export function getFirstSets(grammar: Grammar): FirstSets {
 }
 
 export function getFollowSets(grammar: Grammar) {
-  const tokens = new Set(grammar.tokens);
+  const tokens = grammar.tokens;
   const startRule = grammar.rules[0];
   const first = getFirstSets(grammar);
   const followSets: FollowSets = {
@@ -328,7 +330,7 @@ export function getAugmentedGrammar(grammar: Grammar): Grammar {
 
   // And now, much singing and dancing to return a deep copy of the grammar.
   return {
-    tokens: [...grammar.tokens],
+    tokens: new Set(grammar.tokens),
     rules: [
       {
         lhs: `${startRule.lhs}'`,
@@ -353,7 +355,7 @@ export function getAugmentedGrammar(grammar: Grammar): Grammar {
 }
 
 export function getItemSets(grammar: Grammar) {
-  const tokens = new Set(grammar.tokens);
+  const tokens = grammar.tokens;
   const rules = groupRulesByLHS(grammar);
   const augmentedGrammar = getAugmentedGrammar(grammar);
   const startRule = augmentedGrammar.rules[0];
@@ -517,7 +519,7 @@ export function extendedGrammarForItemSets(
 ): Grammar {
   const rules = [];
   const tokens = new Set<string>();
-  const originalTokens = new Set(grammar.tokens);
+  const originalTokens = grammar.tokens;
   for (let i = 0; i < itemSets.length; i++) {
     const itemSet = itemSets[i];
     for (const item of itemSet.items) {
@@ -543,7 +545,7 @@ export function extendedGrammarForItemSets(
 
   return {
     rules,
-    tokens: Array.from(tokens),
+    tokens,
   };
 }
 
@@ -578,7 +580,7 @@ export function getParseTable(
   const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
   const augmentedGrammar = getAugmentedGrammar(grammar);
   const startRule = augmentedGrammar.rules[0];
-  const tokens = new Set(grammar.tokens);
+  const tokens = grammar.tokens;
 
   const table: ParseTable = [];
 

@@ -20,7 +20,7 @@ import type {Grammar, Token} from '..';
 // TODO: keep this around as `subsetGrammar`, but also add tests for full
 // GraphQL grammar.
 const grammar: Grammar = {
-  tokens: ['CLOSING_BRACE', 'NAME', 'OPENING_BRACE'],
+  tokens: new Set(['CLOSING_BRACE', 'NAME', 'OPENING_BRACE']),
   rules: [
     {lhs: 'Document', rhs: ['DefinitionList']},
     {
@@ -633,7 +633,7 @@ describe('extendedGrammarForItemSets()', () => {
     const itemSets = getItemSets(grammar);
     const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
     expect(extendedGrammar).toEqual({
-      tokens: [
+      tokens: new Set([
         '3/eq/7',
         '0/x/4',
         '0/star/5',
@@ -641,7 +641,7 @@ describe('extendedGrammarForItemSets()', () => {
         '5/star/5',
         '7/x/4',
         '7/star/5',
-      ],
+      ]),
       rules: [
         {lhs: "0/S'/$", rhs: ['0/S/1']},
         {lhs: '0/S/1', rhs: ['0/N/2']},
@@ -664,13 +664,13 @@ describe('extendedGrammarForItemSets()', () => {
     const itemSets = getItemSets(grammar);
     const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
     expect(extendedGrammar).toEqual({
-      tokens: [
+      tokens: new Set([
         '0/OPENING_BRACE/7',
         '9/CLOSING_BRACE/13',
         '2/OPENING_BRACE/7',
         '7/NAME/12',
         '9/NAME/12',
-      ],
+      ]),
       rules: [
         {lhs: "0/Document'/$", rhs: ['0/Document/1']},
         {lhs: '0/Document/1', rhs: ['0/DefinitionList/2']},
@@ -724,7 +724,7 @@ describe('parseDSL()', () => {
         {lhs: 'V', rhs: ['x']},
         {lhs: 'V', rhs: ['star', 'E']},
       ],
-      tokens: ['eq', 'star', 'x'],
+      tokens: new Set(['eq', 'star', 'x']),
     });
   });
 
@@ -771,7 +771,7 @@ describe('parseDSL()', () => {
         {lhs: 'Second', rhs: ['B'], action: '{ $$ = $1.toUpperCase() }'},
         {lhs: 'Third', rhs: ['C']},
       ],
-      tokens: ['A', 'B', 'C'],
+      tokens: new Set(['A', 'B', 'C']),
     });
   });
 
@@ -793,12 +793,15 @@ describe('parseDSL()', () => {
     `);
 
     // But one token is fine.
-    expect(parseDSL('%token FOO')).toEqual({rules: [], tokens: ['FOO']});
+    expect(parseDSL('%token FOO')).toEqual({
+      rules: [],
+      tokens: new Set(['FOO']),
+    });
 
     // As are multiple tokens on a single line.
     expect(parseDSL('%token FOO BAR')).toEqual({
       rules: [],
-      tokens: ['FOO', 'BAR'],
+      tokens: new Set(['FOO', 'BAR']),
     });
 
     // Or multiple lines with tokens.
@@ -808,7 +811,7 @@ describe('parseDSL()', () => {
         %token MORE
         %token OTHER
     `),
-    ).toEqual({rules: [], tokens: ['FOO', 'BAR', 'MORE', 'OTHER']});
+    ).toEqual({rules: [], tokens: new Set(['FOO', 'BAR', 'MORE', 'OTHER'])});
   });
 
   it('complains if actions have unbalanced parens', () => {
