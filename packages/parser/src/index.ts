@@ -750,7 +750,7 @@ export function parseWithTable(
       // (ie. extra because we're using an augmented grammar).
       invariant(stack.length === 3);
       const tree = stack[1];
-      // assertParseTree(tree);
+      assertParseTree(tree);
       return tree;
     } else if (action.kind === 'Shift') {
       stack.push(token, action.state);
@@ -761,7 +761,7 @@ export function parseWithTable(
       for (let i = 0; i < rhs.length; i++) {
         stack.pop(); // State number.
         const node = stack.pop();
-        // assertParseTreeOrToken(node);
+        assertParseTreeOrToken(node);
         // TODO: if we have an action, don't set items that aren't used in the action
         popped[rhs.length - i - 1] = node; // Production.
       }
