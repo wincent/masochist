@@ -1,5 +1,6 @@
-import {extendedGrammarForItemSets, getItemSets} from '..';
+import {extendedGrammarForItemSets} from '..';
 import getFirstSets from '../getFirstSets';
+import getItemSets from '../getItemSets';
 import {subsetGrammar, toyGrammar} from './grammars';
 
 describe('getFirstSets()', () => {
