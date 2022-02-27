@@ -17,8 +17,6 @@ export type ItemSet = {
   transitions: {[symbol: string]: number};
 };
 
-const MIDDLE_DOT = '\xb7';
-
 /**
  * Based on: https://spec.graphql.org/October2021/#sec-Document-Syntax
  */
@@ -91,38 +89,6 @@ export function stringifyGrammar(grammar: Grammar): string {
     .join('\n');
 
   return output + '\n';
-}
-
-/**
- * Debugging helper.
- */
-export function stringifyItemSets(itemSets: Array<ItemSet>): string {
-  let output = '';
-
-  for (let i = 0; i < itemSets.length; i++) {
-    const itemSet = itemSets[i];
-    output += `I${i}:\n`;
-
-    for (const {lhs, rhs, dot} of itemSet.items) {
-      output += `  ${lhs}`;
-      output += ` ${RIGHTWARDS_ARROW}`;
-      for (let i = 0; i <= rhs.length; i++) {
-        if (i === dot) {
-          output += ` ${MIDDLE_DOT}`;
-        }
-        if (i !== rhs.length) {
-          output += ` ${rhs[i]}`;
-        }
-      }
-      output += '\n';
-    }
-
-    if (i < itemSets.length - 1) {
-      output += '\n';
-    }
-  }
-
-  return output;
 }
 
 /**

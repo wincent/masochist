@@ -1,7 +1,7 @@
 import {dedent} from '@masochist/common';
 
-import {stringifyItemSets} from '..';
 import getItemSets from '../getItemSets';
+import stringifyItemSets from '../stringifyItemSets';
 import {subsetGrammar, toyGrammar} from './grammars';
 
 describe('getItemSets()', () => {
