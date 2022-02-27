@@ -1,16 +1,5 @@
 // Goal is to produce an LALR(1) parser from a grammar.
 
-// TODO: Apart from the augmented rule, could avoid storing `lhs`/`rhs` and instead just store index of rule in original grammar.
-export type Item = {
-  lhs: string;
-  rhs: Array<string>;
-  dot: number;
-};
-
-export type ItemSet = {
-  items: Array<Item>; transitions: {[symbol: string]: number};
-};
-
 /**
  * Based on: https://spec.graphql.org/October2021/#sec-Document-Syntax
  */

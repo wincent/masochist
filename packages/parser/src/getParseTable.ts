@@ -6,8 +6,7 @@ import getAugmentedGrammar from './getAugmentedGrammar';
 import getFollowSets from './getFollowSets';
 import keyForRule from './keyForRule';
 
-import type {ItemSet} from '.';
-import type {Grammar} from './Grammar';
+import type {Grammar, ItemSet} from './Grammar';
 import type {TransitionTable} from './itemSetsToTransitionTable';
 
 export type Action =

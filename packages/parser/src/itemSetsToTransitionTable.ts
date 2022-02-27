@@ -1,7 +1,6 @@
 import getAugmentedGrammar from './getAugmentedGrammar';
 
-import type {ItemSet} from '.';
-import type {Grammar} from './Grammar';
+import type {Grammar, ItemSet} from './Grammar';
 
 export type TransitionTable = Array<{[symbol: string]: number | undefined}>;
 

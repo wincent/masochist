@@ -2,8 +2,7 @@ import getAugmentedGrammar from './getAugmentedGrammar';
 import groupRulesByLHS from './groupRulesByLHS';
 import keyForRule from './keyForRule';
 
-import type {Item, ItemSet} from '.';
-import type {Grammar} from './Grammar';
+import type {Grammar, Item, ItemSet} from './Grammar';
 
 export default function getItemSets(grammar: Grammar) {
   const tokens = grammar.tokens;
