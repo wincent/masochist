@@ -19,5 +19,3 @@ export type Item = {
 export type ItemSet = {
   items: Array<Item>; transitions: {[symbol: string]: number};
 };
-
-export const RIGHTWARDS_ARROW = '\u2192';

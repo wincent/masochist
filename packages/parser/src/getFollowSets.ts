@@ -1,6 +1,6 @@
 import getFirstSets from './getFirstSets';
 
-import type {Grammar} from './Grammar';
+import type {Grammar} from './types';
 
 type FollowSets = {
   [nonTerminal: string]: Set<string | null>;

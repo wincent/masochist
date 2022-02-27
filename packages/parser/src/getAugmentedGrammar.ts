@@ -1,4 +1,4 @@
-import type {Grammar} from './Grammar';
+import type {Grammar} from './types';
 
 /**
  * Augment the grammar by starting with a new rule that leads to the original

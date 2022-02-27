@@ -1,6 +1,6 @@
 import groupRulesByLHS from './groupRulesByLHS';
 
-import type {Grammar} from './Grammar';
+import type {Grammar} from './types';
 
 type FirstSets = {
   [nonTerminal: string]: Set<string>;

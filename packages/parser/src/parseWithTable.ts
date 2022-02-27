@@ -3,8 +3,8 @@ import vm from 'vm';
 
 import getAugmentedGrammar from './getAugmentedGrammar';
 
-import type {Grammar} from './Grammar';
 import type {ParseTable} from './getParseTable';
+import type {Grammar} from './types';
 
 type ParseTree = {
   kind: string;

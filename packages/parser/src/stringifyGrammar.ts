@@ -1,6 +1,6 @@
-import {RIGHTWARDS_ARROW} from './Grammar';
+import {RIGHTWARDS_ARROW} from './Constants';
 
-import type {Grammar} from './Grammar';
+import type {Grammar} from './types';
 
 /**
  * Debugging helper.

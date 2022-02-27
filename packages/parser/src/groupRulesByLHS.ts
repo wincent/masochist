@@ -1,4 +1,4 @@
-import type {Grammar} from './Grammar';
+import type {Grammar} from './types';
 
 export default function groupRulesByLHS(grammar: Grammar): {
   [lhs: string]: Array<Array<string>>;

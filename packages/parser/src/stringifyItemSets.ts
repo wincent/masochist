@@ -1,6 +1,6 @@
-import {RIGHTWARDS_ARROW} from './Grammar';
+import {RIGHTWARDS_ARROW} from './Constants';
 
-import type {ItemSet} from './Grammar';
+import type {ItemSet} from './types';
 
 const MIDDLE_DOT = '\xb7';
 

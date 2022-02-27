@@ -1,13 +1,13 @@
 import {invariant} from '@masochist/common';
 
-import {RIGHTWARDS_ARROW} from './Grammar';
+import {RIGHTWARDS_ARROW} from './Constants';
 import extendedGrammarForItemSets from './extendedGrammarForItemSets';
 import getAugmentedGrammar from './getAugmentedGrammar';
 import getFollowSets from './getFollowSets';
 import keyForRule from './keyForRule';
 
-import type {Grammar, ItemSet} from './Grammar';
 import type {TransitionTable} from './itemSetsToTransitionTable';
+import type {Grammar, ItemSet} from './types';
 
 export type Action =
   | {

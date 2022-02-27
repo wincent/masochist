@@ -1,4 +1,4 @@
-import type {Grammar, ItemSet} from './Grammar';
+import type {Grammar, ItemSet} from './types';
 
 /**
  * Turns a rule like:
