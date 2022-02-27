@@ -17,7 +17,7 @@ type Item = {
   dot: number;
 };
 
-type ItemSet = {
+export type ItemSet = {
   items: Array<Item>;
   transitions: {[symbol: string]: number};
 };
@@ -194,31 +194,6 @@ export function getItemSets(grammar: Grammar) {
   }
 
   return Object.values(itemSets);
-}
-
-type TransitionTable = Array<{[symbol: string]: number | undefined}>;
-
-export function itemSetsToTransitionTable(
-  itemSets: Array<ItemSet>,
-  grammar: Grammar,
-): TransitionTable {
-  const table: TransitionTable = [];
-  const terminals = [...grammar.tokens].sort();
-  const augmentedGrammar = getAugmentedGrammar(grammar);
-  const nonTerminals = augmentedGrammar.rules.map(({lhs}) => lhs).sort();
-
-  for (const itemSet of itemSets) {
-    const entries: {[symbol: string]: number | undefined} = {};
-    for (const symbol of [...nonTerminals, ...terminals]) {
-      const target = itemSet.transitions[symbol];
-      if (target !== undefined) {
-        entries[symbol] = target;
-      }
-    }
-    table.push(entries);
-  }
-
-  return table;
 }
 
 /**

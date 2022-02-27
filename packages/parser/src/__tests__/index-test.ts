@@ -4,7 +4,6 @@ import {
   extendedGrammarForItemSets,
   getItemSets,
   getParseTable,
-  itemSetsToTransitionTable,
   parseWithTable,
   stringifyGrammar,
   stringifyItemSets,
@@ -12,6 +11,7 @@ import {
 } from '..';
 import getAugmentedGrammar from '../getAugmentedGrammar';
 import {subsetGrammar, toyGrammar} from './grammars';
+import itemSetsToTransitionTable from '../itemSetsToTransitionTable';
 
 import type {Token} from '..';
 
