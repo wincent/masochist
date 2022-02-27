@@ -91,10 +91,10 @@ export default function parseWithTable(
             }
           }
         }
-        context.$$ = undefined;
+        context['$$'] = undefined;
         vm.runInContext(code, context);
-        invariant(context.$$, 'production was undefined');
-        stack.push(context.$$, target);
+        invariant(context['$$'], 'production was undefined');
+        stack.push(context['$$'], target);
       } else {
         stack.push(
           {
