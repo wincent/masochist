@@ -3,7 +3,7 @@ import getAugmentedGrammar from './getAugmentedGrammar';
 import type {ItemSet} from '.';
 import type {Grammar} from './Grammar';
 
-type TransitionTable = Array<{[symbol: string]: number | undefined}>;
+export type TransitionTable = Array<{[symbol: string]: number | undefined}>;
 
 export default function itemSetsToTransitionTable(
   itemSets: Array<ItemSet>,
