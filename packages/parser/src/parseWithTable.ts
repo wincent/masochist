@@ -19,6 +19,8 @@ export type Token = {
   contents?: string;
 };
 
+type Production = ParseTree | Token | null;
+
 /**
  * Dynamically parse using supplied parse table.
  *
@@ -31,13 +33,13 @@ export default function parseWithTable(
   grammar: Grammar,
 ): ParseTree {
   const augmentedGrammar = getAugmentedGrammar(grammar);
-  const stack: Array<ParseTree | Token | number> = [0];
+  const stack: Array<[Production, number]>= [[null, 0]];
   let pointer = 0;
 
   const context = vm.createContext({$$: undefined});
 
   while (pointer <= tokens.length) {
-    const current = stack[stack.length - 1];
+    const [, current] = stack[stack.length - 1];
     invariant(typeof current === 'number' && current < table.length);
 
     const [actions] = table[current];
@@ -52,26 +54,25 @@ export default function parseWithTable(
     } else if (action.kind === 'Accept') {
       invariant(pointer === tokens.length);
 
-      // Expect initial state (0) + production + accept state
-      // (ie. extra because we're using an augmented grammar).
-      invariant(stack.length === 3);
-      const tree = stack[1];
+      // Expect initial state + accept state.
+      invariant(stack.length === 2);
+      const [tree] = stack[1];
       assertParseTree(tree);
       return tree;
     } else if (action.kind === 'Shift') {
-      stack.push(token, action.state);
+      stack.push([token, action.state]);
       pointer++;
     } else if (action.kind === 'Reduce') {
       const {lhs, rhs, action: code} = augmentedGrammar.rules[action.rule];
       const popped = [];
+      invariant(stack.length > rhs.length);
       for (let i = 0; i < rhs.length; i++) {
-        stack.pop(); // State number.
-        const node = stack.pop();
+        const [node] = stack.pop()!;
         assertParseTreeOrToken(node);
         // TODO: if we have an action, don't set items that aren't used in the action
         popped[rhs.length - i - 1] = node; // Production.
       }
-      const next = stack[stack.length - 1];
+      const [, next] = stack[stack.length - 1];
       invariant(typeof next === 'number' && next < table.length);
       const [, gotos] = table[next];
       const target = gotos[lhs];
@@ -94,9 +95,9 @@ export default function parseWithTable(
         context['$$'] = undefined;
         vm.runInContext(code, context);
         invariant(context['$$'], 'production was undefined');
-        stack.push(context['$$'], target);
+        stack.push([context['$$'], target]);
       } else {
-        stack.push(
+        stack.push([
           {
             kind: lhs,
             children:
@@ -105,7 +106,7 @@ export default function parseWithTable(
                 : popped,
           },
           target,
-        );
+        ]);
       }
     }
   }
@@ -114,14 +115,14 @@ export default function parseWithTable(
 }
 
 function assertParseTreeOrToken(
-  node: ParseTree | Token | number | undefined,
+  node: ParseTree | Token | null,
 ): asserts node is ParseTree | Token {
   invariant(node);
   invariant(typeof node !== 'number');
 }
 
 function assertParseTree(
-  node: ParseTree | Token | number | undefined,
+  node: ParseTree | Token | null,
 ): asserts node is ParseTree {
   invariant(node);
   invariant(typeof node !== 'number');
