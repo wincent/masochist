@@ -1,4 +1,4 @@
-import {extendedGrammarForItemSets} from '..';
+import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getFollowSets from '../getFollowSets';
 import getItemSets from '../getItemSets';
 import {subsetGrammar, toyGrammar} from './grammars';
