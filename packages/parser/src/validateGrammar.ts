@@ -1,3 +1,7 @@
+import {invariant} from '@masochist/common';
+
+import type {Grammar} from './types';
+
 /**
  * Checks `grammar` for validity, ensuring that it:
  *
@@ -9,5 +13,6 @@
  *   given LHS).
  */
 export default function validateGrammar(grammar: Grammar) {
-  // TODO
+  invariant(grammar.rules.length, 'grammar must have at least 1 rule');
+  // TODO more...
 }
