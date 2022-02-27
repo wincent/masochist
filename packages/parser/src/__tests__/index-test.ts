@@ -2,7 +2,6 @@ import {dedent} from '@masochist/common';
 
 import {
   extendedGrammarForItemSets,
-  getAugmentedGrammar,
   getItemSets,
   getParseTable,
   itemSetsToTransitionTable,
@@ -11,6 +10,7 @@ import {
   stringifyItemSets,
   stringifyParseTable,
 } from '..';
+import getAugmentedGrammar from '../getAugmentedGrammar';
 import {subsetGrammar, toyGrammar} from './grammars';
 
 import type {Token} from '..';
