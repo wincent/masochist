@@ -2,6 +2,7 @@ import {StringScanner, invariant} from '@masochist/common';
 import vm from 'vm';
 
 import {RIGHTWARDS_ARROW} from './Grammar';
+import groupRulesByLHS from './groupRulesByLHS';
 
 // Goal is to produce an LALR(1) parser from a grammar.
 
@@ -79,22 +80,6 @@ export const grammarDeclaration = `
     Field → NAME
 `;
 */
-
-function groupRulesByLHS(grammar: Grammar): {
-  [lhs: string]: Array<Array<string>>;
-} {
-  const rules: {[lhs: string]: Array<Array<string>>} = {};
-
-  for (const {lhs, rhs} of grammar.rules) {
-    if (!rules[lhs]) {
-      rules[lhs] = [rhs];
-    } else {
-      rules[lhs].push(rhs);
-    }
-  }
-
-  return rules;
-}
 
 /**
  * `first['A']` is the set of terminals which can appear as the first element of
