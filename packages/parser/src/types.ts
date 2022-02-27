@@ -17,5 +17,6 @@ export type Item = {
 };
 
 export type ItemSet = {
-  items: Array<Item>; transitions: {[symbol: string]: number};
+  items: Array<Item>;
+  transitions: {[symbol: string]: number};
 };
