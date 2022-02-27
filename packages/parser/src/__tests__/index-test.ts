@@ -8,86 +8,20 @@ import {
   getItemSets,
   getParseTable,
   itemSetsToTransitionTable,
-  parseDSL,
   parseWithTable,
   stringifyGrammar,
   stringifyItemSets,
   stringifyParseTable,
 } from '..';
+import {subsetGrammar, toyGrammar} from './grammars';
 
-import type {Grammar, Token} from '..';
+import type {Token} from '..';
 
-// TODO: keep this around as `subsetGrammar`, but also add tests for full
-// GraphQL grammar.
-const grammar: Grammar = {
-  tokens: new Set(['CLOSING_BRACE', 'NAME', 'OPENING_BRACE']),
-  rules: [
-    {lhs: 'Document', rhs: ['DefinitionList']},
-    {
-      lhs: 'DefinitionList',
-      rhs: ['Definition'],
-      action: '{ $$ = [$1]; }',
-    },
-    {
-      lhs: 'DefinitionList',
-      rhs: ['DefinitionList', 'Definition'],
-      action: '{ $1.push($2); $$ = $1; }',
-    },
-    {lhs: 'Definition', rhs: ['ExecutableDefinition']},
-    {lhs: 'ExecutableDefinition', rhs: ['OperationDefinition']},
-    {lhs: 'OperationDefinition', rhs: ['SelectionSet']},
-    {
-      lhs: 'SelectionSet',
-      rhs: ['OPENING_BRACE', 'SelectionList', 'CLOSING_BRACE'],
-      action: '{ $$ = $2; }',
-    },
-    {
-      lhs: 'SelectionList',
-      rhs: ['Selection'],
-      action: '{ $$ = [$1]; }',
-    },
-    {
-      lhs: 'SelectionList',
-      rhs: ['SelectionList', 'Selection'],
-      action: '{ $1.push($2); $$ = $1; }',
-    },
-    {lhs: 'Selection', rhs: ['Field']},
-    {lhs: 'Field', rhs: ['NAME']},
-  ],
-};
-
-const grammarDeclaration = `
-  %token CLOSING_BRACE NAME OPENING_BRACE
-
-  Document → DefinitionList
-  DefinitionList → Definition { $$ = [$1]; }
-  DefinitionList → DefinitionList Definition { $1.push($2); $$ = $1; }
-  Definition → ExecutableDefinition
-  ExecutableDefinition → OperationDefinition
-  OperationDefinition → SelectionSet
-  SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE { $$ = $2; }
-  SelectionList → Selection { $$ = [$1]; }
-  SelectionList → SelectionList Selection { $1.push($2); $$ = $1; }
-  Selection → Field
-  Field → NAME
-`;
-
-// Based on grammar used in:
-// http://web.archive.org/web/20211216015406/https://web.cs.dal.ca/~sjackson/lalr1.html
-const toy = `
-  %token eq star x
-
-  S → N
-  N → V eq E
-  N → E
-  E → V
-  V → x
-  V → star E
-`;
+// TODO: also add tests for full GraphQL grammar.
 
 describe('getFirstSets()', () => {
   it('produces first sets for the toy grammar', () => {
-    expect(getFirstSets(parseDSL(toy))).toEqual({
+    expect(getFirstSets(toyGrammar)).toEqual({
       E: new Set(['star', 'x']),
       N: new Set(['star', 'x']),
       S: new Set(['star', 'x']),
@@ -96,7 +30,6 @@ describe('getFirstSets()', () => {
   });
 
   it('produces first sets for the extended toy grammar', () => {
-    const toyGrammar = parseDSL(toy);
     const itemSets = getItemSets(toyGrammar);
     const extendedGrammar = extendedGrammarForItemSets(itemSets, toyGrammar);
     expect(getFirstSets(extendedGrammar)).toEqual({
@@ -113,7 +46,7 @@ describe('getFirstSets()', () => {
   });
 
   it('produces first sets for the subset grammar', () => {
-    expect(getFirstSets(grammar)).toEqual({
+    expect(getFirstSets(subsetGrammar)).toEqual({
       Definition: new Set(['OPENING_BRACE']),
       DefinitionList: new Set(['OPENING_BRACE']),
       Document: new Set(['OPENING_BRACE']),
@@ -127,8 +60,8 @@ describe('getFirstSets()', () => {
   });
 
   it('produces first sets for the extended subset grammar', () => {
-    const itemSets = getItemSets(grammar);
-    const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
+    const itemSets = getItemSets(subsetGrammar);
+    const extendedGrammar = extendedGrammarForItemSets(itemSets, subsetGrammar);
     expect(getFirstSets(extendedGrammar)).toEqual({
       '0/Definition/3': new Set(['0/OPENING_BRACE/7']),
       '0/DefinitionList/2': new Set(['0/OPENING_BRACE/7']),
@@ -152,7 +85,7 @@ describe('getFirstSets()', () => {
 
 describe('getFollowSets()', () => {
   it('produces follow sets for the toy grammar', () => {
-    expect(getFollowSets(parseDSL(toy))).toEqual({
+    expect(getFollowSets(toyGrammar)).toEqual({
       E: new Set(['eq', null]),
       N: new Set([null]),
       S: new Set([null]),
@@ -161,9 +94,8 @@ describe('getFollowSets()', () => {
   });
 
   it('produces follow sets for the extended toy grammar', () => {
-    const grammar = parseDSL(toy);
-    const itemSets = getItemSets(grammar);
-    const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
+    const itemSets = getItemSets(toyGrammar);
+    const extendedGrammar = extendedGrammarForItemSets(itemSets, toyGrammar);
     expect(getFollowSets(extendedGrammar)).toEqual({
       "0/S'/$": new Set([null]),
       '0/V/3': new Set(['3/eq/7', null]),
@@ -178,7 +110,7 @@ describe('getFollowSets()', () => {
   });
 
   it('produces follow sets for the subset grammar', () => {
-    expect(getFollowSets(grammar)).toEqual({
+    expect(getFollowSets(subsetGrammar)).toEqual({
       Document: new Set([null]),
       DefinitionList: new Set(['OPENING_BRACE', null]),
       SelectionList: new Set(['CLOSING_BRACE', 'NAME']),
@@ -192,8 +124,8 @@ describe('getFollowSets()', () => {
   });
 
   it('produces follow sets for the extended subset grammar', () => {
-    const itemSets = getItemSets(grammar);
-    const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
+    const itemSets = getItemSets(subsetGrammar);
+    const extendedGrammar = extendedGrammarForItemSets(itemSets, subsetGrammar);
     expect(getFollowSets(extendedGrammar)).toEqual({
       "0/Document'/$": new Set([null]),
       '0/Document/1': new Set([null]),
@@ -217,7 +149,7 @@ describe('getFollowSets()', () => {
 
 describe('getItemSets()', () => {
   it('produces items sets for the toy grammar', () => {
-    const itemSets = getItemSets(parseDSL(toy));
+    const itemSets = getItemSets(toyGrammar);
 
     expect(stringifyItemSets(itemSets)).toBe(
       dedent`
@@ -271,7 +203,7 @@ describe('getItemSets()', () => {
   });
 
   it('produces items sets for the subset grammar', () => {
-    expect(stringifyItemSets(getItemSets(grammar))).toBe(
+    expect(stringifyItemSets(getItemSets(subsetGrammar))).toBe(
       dedent`
         I0:
           Document' → · Document
@@ -343,10 +275,9 @@ describe('getItemSets()', () => {
 
 describe('getParseTable()', () => {
   it('returns a parseTable for the toy grammar', () => {
-    const grammar = parseDSL(toy);
-    const itemSets = getItemSets(grammar);
-    const transitionTable = itemSetsToTransitionTable(itemSets, grammar);
-    expect(getParseTable(itemSets, transitionTable, grammar)).toEqual([
+    const itemSets = getItemSets(toyGrammar);
+    const transitionTable = itemSetsToTransitionTable(itemSets, toyGrammar);
+    expect(getParseTable(itemSets, transitionTable, toyGrammar)).toEqual([
       [
         {
           star: {kind: 'Shift', state: 5},
@@ -425,9 +356,9 @@ describe('getParseTable()', () => {
   });
 
   it('returns a parseTable for the subset grammar', () => {
-    const itemSets = getItemSets(grammar);
-    const transitionTable = itemSetsToTransitionTable(itemSets, grammar);
-    expect(getParseTable(itemSets, transitionTable, grammar)).toEqual([
+    const itemSets = getItemSets(subsetGrammar);
+    const transitionTable = itemSetsToTransitionTable(itemSets, subsetGrammar);
+    expect(getParseTable(itemSets, transitionTable, subsetGrammar)).toEqual([
       [
         {
           OPENING_BRACE: {kind: 'Shift', state: 7},
@@ -555,9 +486,8 @@ describe('getParseTable()', () => {
 
 describe('itemSetsToTransitionTable()', () => {
   it('returns a transition table for the toy grammar', () => {
-    const grammar = parseDSL(toy);
-    const itemSets = getItemSets(grammar);
-    expect(itemSetsToTransitionTable(itemSets, grammar)).toEqual([
+    const itemSets = getItemSets(toyGrammar);
+    expect(itemSetsToTransitionTable(itemSets, toyGrammar)).toEqual([
       /* 0 */ {
         E: 6,
         N: 2,
@@ -592,8 +522,8 @@ describe('itemSetsToTransitionTable()', () => {
   });
 
   it('returns a transition table for the subset grammar', () => {
-    const itemSets = getItemSets(grammar);
-    expect(itemSetsToTransitionTable(itemSets, grammar)).toEqual([
+    const itemSets = getItemSets(subsetGrammar);
+    expect(itemSetsToTransitionTable(itemSets, subsetGrammar)).toEqual([
       /* 0 */ {
         Definition: 3,
         DefinitionList: 2,
@@ -629,9 +559,8 @@ describe('itemSetsToTransitionTable()', () => {
 
 describe('extendedGrammarForItemSets()', () => {
   it('returns an extended grammar for the toy grammar', () => {
-    const grammar = parseDSL(toy);
-    const itemSets = getItemSets(grammar);
-    const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
+    const itemSets = getItemSets(toyGrammar);
+    const extendedGrammar = extendedGrammarForItemSets(itemSets, toyGrammar);
     expect(extendedGrammar).toEqual({
       tokens: new Set([
         '3/eq/7',
@@ -661,8 +590,8 @@ describe('extendedGrammarForItemSets()', () => {
   });
 
   it('returns an extended grammar for the subset grammar', () => {
-    const itemSets = getItemSets(grammar);
-    const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
+    const itemSets = getItemSets(subsetGrammar);
+    const extendedGrammar = extendedGrammarForItemSets(itemSets, subsetGrammar);
     expect(extendedGrammar).toEqual({
       tokens: new Set([
         '0/OPENING_BRACE/7',
@@ -713,132 +642,11 @@ describe('extendedGrammarForItemSets()', () => {
   });
 });
 
-describe('parseDSL()', () => {
-  it('parses the toy grammar declaration', () => {
-    expect(parseDSL(toy)).toEqual({
-      rules: [
-        {lhs: 'S', rhs: ['N']},
-        {lhs: 'N', rhs: ['V', 'eq', 'E']},
-        {lhs: 'N', rhs: ['E']},
-        {lhs: 'E', rhs: ['V']},
-        {lhs: 'V', rhs: ['x']},
-        {lhs: 'V', rhs: ['star', 'E']},
-      ],
-      tokens: new Set(['eq', 'star', 'x']),
-    });
-  });
-
-  it('produces grammar from grammarDeclaration', () => {
-    expect(parseDSL(grammarDeclaration)).toEqual(grammar);
-  });
-
-  it('can handle multiline rules and actions', () => {
-    expect(
-      parseDSL(`
-        %token A B C
-
-        Start → Something
-        Something → Another {
-          // Oh look, this is a multiline action.
-          $$ = thing() +
-            $1 +
-            other()
-        }
-        Another →
-          First
-          Second
-          Third
-        First → A
-        Second → B { $$ = $1.toUpperCase() }
-        Third → C
-    `),
-    ).toEqual({
-      rules: [
-        {lhs: 'Start', rhs: ['Something']},
-        {
-          lhs: 'Something',
-          rhs: ['Another'],
-          action:
-            '{\n' +
-            '          // Oh look, this is a multiline action.\n' +
-            '          $$ = thing() +\n' +
-            '            $1 +\n' +
-            '            other()\n' +
-            '        }',
-        },
-        {lhs: 'Another', rhs: ['First', 'Second', 'Third']},
-        {lhs: 'First', rhs: ['A']},
-        {lhs: 'Second', rhs: ['B'], action: '{ $$ = $1.toUpperCase() }'},
-        {lhs: 'Third', rhs: ['C']},
-      ],
-      tokens: new Set(['A', 'B', 'C']),
-    });
-  });
-
-  it('complains when fed garbage', () => {
-    expect(() => parseDSL('$FizzBuzz')).toThrow(dedent`
-      Unexpected input at line 1, column 1 of input string
-
-      > 1 | $FizzBuzz
-          | ^
-    `);
-  });
-
-  it('complains when %tokens is not passed any symbols', () => {
-    expect(() => parseDSL('%token')).toThrow(dedent`
-      expected at least one symbol after %token at line 1, column 7 of input string
-
-      > 1 | %token
-          |       ^
-    `);
-
-    // But one token is fine.
-    expect(parseDSL('%token FOO')).toEqual({
-      rules: [],
-      tokens: new Set(['FOO']),
-    });
-
-    // As are multiple tokens on a single line.
-    expect(parseDSL('%token FOO BAR')).toEqual({
-      rules: [],
-      tokens: new Set(['FOO', 'BAR']),
-    });
-
-    // Or multiple lines with tokens.
-    expect(
-      parseDSL(`
-        %token FOO BAR
-        %token MORE
-        %token OTHER
-    `),
-    ).toEqual({rules: [], tokens: new Set(['FOO', 'BAR', 'MORE', 'OTHER'])});
-  });
-
-  it('complains if actions have unbalanced parens', () => {
-    expect(() =>
-      parseDSL(`
-      Rule → Symbol {
-        if (true) {
-          doSomething();
-      }
-    `),
-    ).toThrow(dedent`
-      Unbalanced braces in action at line 6, column 5 of input string
-
-        4 |           doSomething();
-        5 |       }
-      > 6 |     
-          |     ^
-    `);
-  });
-});
-
 describe('parseWithTable()', () => {
   it('parses samples for the toy grammar', () => {
-    const grammar = parseDSL(toy);
-    const itemSets = getItemSets(grammar);
-    const transitionTable = itemSetsToTransitionTable(itemSets, grammar);
-    const table = getParseTable(itemSets, transitionTable, grammar);
+    const itemSets = getItemSets(toyGrammar);
+    const transitionTable = itemSetsToTransitionTable(itemSets, toyGrammar);
+    const table = getParseTable(itemSets, transitionTable, toyGrammar);
 
     // Input (string): 5 = * 10
     // ie.   (tokens): x = * x
@@ -849,7 +657,7 @@ describe('parseWithTable()', () => {
       {name: 'x', contents: '10'},
     ];
 
-    expect(parseWithTable(table, tokens, grammar)).toEqual({
+    expect(parseWithTable(table, tokens, toyGrammar)).toEqual({
       kind: 'S',
       children: [
         {
@@ -887,9 +695,9 @@ describe('parseWithTable()', () => {
   });
 
   it('parses samples for the subset grammar', () => {
-    const itemSets = getItemSets(grammar);
-    const transitionTable = itemSetsToTransitionTable(itemSets, grammar);
-    const table = getParseTable(itemSets, transitionTable, grammar);
+    const itemSets = getItemSets(subsetGrammar);
+    const transitionTable = itemSetsToTransitionTable(itemSets, subsetGrammar);
+    const table = getParseTable(itemSets, transitionTable, subsetGrammar);
 
     const tokens: Array<Token> = [
       {name: 'OPENING_BRACE'},
@@ -899,7 +707,7 @@ describe('parseWithTable()', () => {
       {name: 'CLOSING_BRACE'},
     ];
 
-    expect(parseWithTable(table, tokens, grammar)).toEqual({
+    expect(parseWithTable(table, tokens, subsetGrammar)).toEqual({
       kind: 'Document',
       children: [
         {
@@ -966,8 +774,7 @@ describe('parseWithTable()', () => {
 
 describe('stringifyGrammar()', () => {
   it('returns a stringified toy grammar', () => {
-    const grammar = parseDSL(toy);
-    const augmentedGrammar = getAugmentedGrammar(grammar);
+    const augmentedGrammar = getAugmentedGrammar(toyGrammar);
 
     // Note the use of rule numbers here (to makes this output useful in
     // conjunction with the output of the `stringifyParseTable()` function).
@@ -991,10 +798,9 @@ describe('stringifyGrammar()', () => {
 
 describe('stringifyParseTable()', () => {
   it('returns a stringified parse table for the toy grammar', () => {
-    const grammar = parseDSL(toy);
-    const itemSets = getItemSets(grammar);
-    const transitionTable = itemSetsToTransitionTable(itemSets, grammar);
-    const parseTable = getParseTable(itemSets, transitionTable, grammar);
+    const itemSets = getItemSets(toyGrammar);
+    const transitionTable = itemSetsToTransitionTable(itemSets, toyGrammar);
+    const parseTable = getParseTable(itemSets, transitionTable, toyGrammar);
     expect(stringifyParseTable(parseTable)).toEqual(
       dedent`
         | State | eq | star |  x |      $ |  E | N | S | V |
