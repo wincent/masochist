@@ -1,8 +1,5 @@
-import {RIGHTWARDS_ARROW} from './Grammar';
-
 // Goal is to produce an LALR(1) parser from a grammar.
 
-import type {Grammar} from './Grammar';
 import type {Action, ParseTable} from './getParseTable';
 
 // TODO: Apart from the augmented rule, could avoid storing `lhs`/`rhs` and instead just store index of rule in original grammar.
@@ -13,8 +10,7 @@ export type Item = {
 };
 
 export type ItemSet = {
-  items: Array<Item>;
-  transitions: {[symbol: string]: number};
+  items: Array<Item>; transitions: {[symbol: string]: number};
 };
 
 /**
@@ -67,29 +63,6 @@ export const grammarDeclaration = `
     Field → NAME
 `;
 */
-
-/**
- * Debugging helper.
- */
-export function stringifyGrammar(grammar: Grammar): string {
-  let output =
-    [...grammar.tokens]
-      .sort()
-      .map((token) => `%token ${token}`)
-      .join('\n') + '\n\n';
-
-  output += grammar.rules
-    .map(({lhs, rhs, action}, i) => {
-      if (action) {
-        return `r${i}: ${lhs} ${RIGHTWARDS_ARROW} ${rhs.join(' ')} {${action}}`;
-      } else {
-        return `r${i}: ${lhs} ${RIGHTWARDS_ARROW} ${rhs.join(' ')}`;
-      }
-    })
-    .join('\n');
-
-  return output + '\n';
-}
 
 /**
  * Debugging helper
