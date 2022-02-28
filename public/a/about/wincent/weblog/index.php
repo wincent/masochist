@@ -552,7 +552,7 @@
                 </li>
                 <li>
                   <a
-                    href="http://colaiuta.net/"
+                    href="https://wincent.com/blog"
                     title="Development and other notes from Wincent"
                     >Wincent Colaiuta's weblog</a
                   >
@@ -1130,7 +1130,7 @@
             products please go to
             <a href="https://wincent.com/">wincent.com</a>, and for official
             news <a href="https://wincent.com/a/news/">see here</a>. Shortcut to
-            this weblog: <a href="http://colaiuta.net/">colaiuta.net</a>.
+            this weblog: <a href="https://wincent.com/blog">colaiuta.net</a>.
           </p>
           <hr />
 

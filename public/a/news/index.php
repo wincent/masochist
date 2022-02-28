@@ -561,7 +561,7 @@
                 </li>
                 <li>
                   <a
-                    href="http://colaiuta.net/"
+                    href="https://wincent.com/blog"
                     title="Development and other notes from Wincent"
                     >Wincent Colaiuta's weblog</a
                   >
@@ -898,7 +898,7 @@
             Welcome to the official Wincent product and site news weblog. My
             personal weblog, where I post development progress reports and other
             notes not necessarily related to my business, can be found at
-            <a href="http://colaiuta.net/">colaiuta.net</a>.
+            <a href="https://wincent.com/blog">colaiuta.net</a>.
           </p>
           <hr />
 

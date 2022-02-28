@@ -636,7 +636,7 @@
                 </li>
                 <li>
                   <a
-                    href="http://colaiuta.net/"
+                    href="https://wincent.com/blog"
                     title="Development and other notes from Wincent"
                     >Wincent Colaiuta's weblog</a
                   >
