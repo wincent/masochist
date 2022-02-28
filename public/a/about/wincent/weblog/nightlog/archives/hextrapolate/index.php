@@ -561,7 +561,7 @@
         </td>
         <td width="107" height="25">
           <a
-            href="http://kbase.wincent.com/"
+            href="https://wincent.com/wiki"
             title="Categorized Mac OS X tips and information"
             ><img
               src="/a/gfx/header/knowledge-base-off.jpg"
