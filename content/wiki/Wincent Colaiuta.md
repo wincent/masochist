@@ -1,9 +1,10 @@
 ---
 tags: wincent wiki
+title: Wincent Colaiuta
 ---
 
-About [Wincent Colaiuta](/wiki/Wincent_Colaiuta): <http://wincent.com/a/about/wincent/>
+- ["What kind of name is Wincent Colaiuta anyway?"](/blog/what-kind-of-name-is-wincent-colaiuta-anyway)[^older]
+- Personal weblog: [wincent.com/blog](https://wincent.com/blog)
+- Software: [github/wincent](https://github.com/wincent)
 
-Personal weblog: <http://colaiuta.net/>
-
-Software products by [Wincent](/wiki/Wincent): <http://wincent.com/>
+[^older]: Older info about ["Wincent Colaiuta"](http://wincent.com/a/about/wincent/)
