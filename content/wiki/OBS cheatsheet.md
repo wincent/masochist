@@ -8,6 +8,7 @@ Just making some notes for this stuff because I find it tremendously fiddly and 
 Topics covered:
 
 - **Bluetooth**.
+- **USB**.
 - **OBS:** OBS itself (screencasting software).
 - **Audacious:** For playing background music.
 - **screenkey:** For showing keypresses.
@@ -31,7 +32,13 @@ $ bluetoothctl
 [bluetooth]# quit
 ```
 
-For Bluetooth troubleshooting hints, see [Arch Linux cheatsheet].
+- If sound quality is ever bad and Audacious shows the headset as being stuck on a low-quality codec (like SBC instead of AAC), you may need to `systemctl restart bluetooth` and/or turn the headphones on and off.
+- If no sound at all is coming out of the headset despite everything else seeming to be correct, try switching codecs away from AAC and back.
+- For more Bluetooth troubleshooting hints, see [Arch Linux cheatsheet].
+
+# USB
+
+If the keyboard spontaneously disconnects after telling OBS to use the webcam as a source, you're probably out of luck. I haven't found a solution for this yet. Unplugging the keyboard and plugging it in again doesn't work; toggling the USB hub back and forth does bring the keyboard back, but causes OBS to drop the webcam.
 
 # OBS
 
