@@ -98,6 +98,35 @@ export type IfStatement = {
   alternate?: Array<Statement>;
 };
 
+/**
+ * eg.
+ *
+ *      import foo from 'foo';
+ *             ^^^
+ */
+type ImportDefaultSpecifier = {
+  kind: 'ImportDefaultSpecifier';
+  identifier: Identifier;
+};
+
+/**
+ * eg.
+ *
+ *      import {foo, bar as baz} from 'qux';
+ *              ^^^  ^^^^^^^^^^
+ */
+type ImportSpecifier = {
+  kind: 'ImportSpecifier';
+  imported: Identifier;
+  local: Identifier;
+};
+
+type ImportStatement = {
+  kind: 'ImportStatement';
+  specifiers: Array<ImportDefaultSpecifier | ImportSpecifier>;
+  source: StringValue;
+};
+
 type IndexExpression = {
   kind: 'IndexExpression';
   index: Expression;
@@ -163,6 +192,7 @@ export type Statement =
   | ExpressionStatement
   | FunctionDeclaration
   | IfStatement
+  | ImportStatement
   | LabelStatement
   | LineComment
   | SwitchStatement
@@ -369,6 +399,19 @@ const ast = {
     return {kind: 'MemberExpression', object, property};
   },
 
+  new(object: Expression | string, ...args: Array<Expression>): NewExpression {
+    if (typeof object === 'string') {
+      object = ast.identifier(object);
+    }
+    if (args.length) {
+      // TODO: may want to let args contain string items, and if so,
+      // automatically wrap with ast.identifier
+      return {kind: 'NewExpression', object, arguments: args};
+    } else {
+      return {kind: 'NewExpression', object};
+    }
+  },
+
   number(value: number): NumberValue {
     return {kind: 'NumberValue', value};
   },
@@ -457,6 +500,6 @@ const ast = {
   get true(): BooleanValue {
     return {kind: 'BooleanValue', value: true};
   },
-};
+} as const;
 
 export default ast;

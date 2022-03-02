@@ -53,6 +53,7 @@ function printExpression(expression: Expression, indent: number): string {
         : `[${printExpression(expression.property, indent + 1)}]`)
     );
   } else if (expression.kind === 'NewExpression') {
+    // TODO: wrap across multiple lines if too long?
     return (
       'new ' +
       printExpression(expression.object, indent) +
@@ -211,6 +212,25 @@ function printStatement(statement: Statement, indent: number): string {
     }
     lines.push(printIndent(indent) + '}\n');
     return lines.join('');
+  } else if (statement.kind === 'ImportStatement') {
+    if (
+      statement.specifiers.length === 1 &&
+      statement.specifiers[0].kind === 'ImportDefaultSpecifier'
+    ) {
+      const specifier = statement.specifiers[0];
+
+      // Indent should always be zero here, but printing it anyway...
+      return (
+        printIndent(indent) +
+        // TODO: use quote() instead of JSON.stringify()
+        `import ${specifier.identifier.name} from ${JSON.stringify(
+          statement.source.value,
+        )};` +
+        '\n'
+      );
+    } else {
+      throw new Error('printStatement(): Not yet implemented');
+    }
   } else if (statement.kind === 'LabelStatement') {
     return (
       printIndent(indent) +

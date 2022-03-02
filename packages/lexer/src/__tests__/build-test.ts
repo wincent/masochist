@@ -9,6 +9,7 @@ describe('build()', () => {
     const ast = build(definition);
     expect(print(ast)).toBe(
       dedent`
+        import Token from "./Token";
         export default function *lex(input: string) {
           const REJECT = -1;
           const START = 0;
@@ -26,11 +27,7 @@ describe('build()', () => {
                 } else if (ch === 0x0d) {
                   state = 3;
                 } else if (ch === 0x21) {
-                  yield {
-                    token: "BANG",
-                    tokenStart,
-                    tokenEnd: i + 1,
-                  };
+                  yield new Token("BANG", tokenStart, i + 1, input);
                   tokenStart = i + 1;
                   state = START;
                 } else if (ch === 0x22) {
@@ -38,35 +35,19 @@ describe('build()', () => {
                 } else if (ch === 0x23) {
                   state = 6;
                 } else if (ch === 0x24) {
-                  yield {
-                    token: "DOLLAR",
-                    tokenStart,
-                    tokenEnd: i + 1,
-                  };
+                  yield new Token("DOLLAR", tokenStart, i + 1, input);
                   tokenStart = i + 1;
                   state = START;
                 } else if (ch === 0x26) {
-                  yield {
-                    token: "AMPERSAND",
-                    tokenStart,
-                    tokenEnd: i + 1,
-                  };
+                  yield new Token("AMPERSAND", tokenStart, i + 1, input);
                   tokenStart = i + 1;
                   state = START;
                 } else if (ch === 0x28) {
-                  yield {
-                    token: "OPENING_PAREN",
-                    tokenStart,
-                    tokenEnd: i + 1,
-                  };
+                  yield new Token("OPENING_PAREN", tokenStart, i + 1, input);
                   tokenStart = i + 1;
                   state = START;
                 } else if (ch === 0x29) {
-                  yield {
-                    token: "CLOSING_PAREN",
-                    tokenStart,
-                    tokenEnd: i + 1,
-                  };
+                  yield new Token("CLOSING_PAREN", tokenStart, i + 1, input);
                   tokenStart = i + 1;
                   state = START;
                 } else if (ch === 0x2d) {
@@ -78,69 +59,37 @@ describe('build()', () => {
                 } else if (ch >= 0x31 && ch <= 0x39) {
                   state = 14;
                 } else if (ch === 0x3a) {
-                  yield {
-                    token: "COLON",
-                    tokenStart,
-                    tokenEnd: i + 1,
-                  };
+                  yield new Token("COLON", tokenStart, i + 1, input);
                   tokenStart = i + 1;
                   state = START;
                 } else if (ch === 0x3d) {
-                  yield {
-                    token: "EQUALS",
-                    tokenStart,
-                    tokenEnd: i + 1,
-                  };
+                  yield new Token("EQUALS", tokenStart, i + 1, input);
                   tokenStart = i + 1;
                   state = START;
                 } else if (ch === 0x40) {
-                  yield {
-                    token: "AT",
-                    tokenStart,
-                    tokenEnd: i + 1,
-                  };
+                  yield new Token("AT", tokenStart, i + 1, input);
                   tokenStart = i + 1;
                   state = START;
                 } else if (ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x7a) {
                   state = 18;
                 } else if (ch === 0x5b) {
-                  yield {
-                    token: "OPENING_BRACKET",
-                    tokenStart,
-                    tokenEnd: i + 1,
-                  };
+                  yield new Token("OPENING_BRACKET", tokenStart, i + 1, input);
                   tokenStart = i + 1;
                   state = START;
                 } else if (ch === 0x5d) {
-                  yield {
-                    token: "CLOSING_BRACKET",
-                    tokenStart,
-                    tokenEnd: i + 1,
-                  };
+                  yield new Token("CLOSING_BRACKET", tokenStart, i + 1, input);
                   tokenStart = i + 1;
                   state = START;
                 } else if (ch === 0x7b) {
-                  yield {
-                    token: "OPENING_BRACE",
-                    tokenStart,
-                    tokenEnd: i + 1,
-                  };
+                  yield new Token("OPENING_BRACE", tokenStart, i + 1, input);
                   tokenStart = i + 1;
                   state = START;
                 } else if (ch === 0x7c) {
-                  yield {
-                    token: "BAR",
-                    tokenStart,
-                    tokenEnd: i + 1,
-                  };
+                  yield new Token("BAR", tokenStart, i + 1, input);
                   tokenStart = i + 1;
                   state = START;
                 } else if (ch === 0x7d) {
-                  yield {
-                    token: "CLOSING_BRACE",
-                    tokenStart,
-                    tokenEnd: i + 1,
-                  };
+                  yield new Token("CLOSING_BRACE", tokenStart, i + 1, input);
                   tokenStart = i + 1;
                   state = START;
                 } else {
@@ -215,11 +164,7 @@ describe('build()', () => {
                 } else if (ch === 0x45 || ch === 0x65) {
                   state = 29;
                 } else {
-                  yield {
-                    token: "NUMBER",
-                    tokenStart,
-                    tokenEnd: i,
-                  };
+                  yield new Token("NUMBER", tokenStart, i, input);
                   tokenStart = i;
                   state = START;
                   continue loop;
@@ -233,11 +178,7 @@ describe('build()', () => {
                 } else if (ch === 0x45 || ch === 0x65) {
                   state = 29;
                 } else {
-                  yield {
-                    token: "NUMBER",
-                    tokenStart,
-                    tokenEnd: i,
-                  };
+                  yield new Token("NUMBER", tokenStart, i, input);
                   tokenStart = i;
                   state = START;
                   continue loop;
@@ -247,11 +188,7 @@ describe('build()', () => {
                 if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x7a) {
                   state = 18;
                 } else {
-                  yield {
-                    token: "NAME",
-                    tokenStart,
-                    tokenEnd: i,
-                  };
+                  yield new Token("NAME", tokenStart, i, input);
                   tokenStart = i;
                   state = START;
                   continue loop;
@@ -263,11 +200,7 @@ describe('build()', () => {
                 } else if (ch === 0x5c) {
                   state = 26;
                 } else if (ch === 0x22) {
-                  yield {
-                    token: "STRING_VALUE",
-                    tokenStart,
-                    tokenEnd: i + 1,
-                  };
+                  yield new Token("STRING_VALUE", tokenStart, i + 1, input);
                   tokenStart = i + 1;
                   state = START;
                 } else {
@@ -278,11 +211,7 @@ describe('build()', () => {
                 if (ch === 0x22) {
                   state = 31;
                 } else {
-                  yield {
-                    token: "STRING_VALUE",
-                    tokenStart,
-                    tokenEnd: i,
-                  };
+                  yield new Token("STRING_VALUE", tokenStart, i, input);
                   tokenStart = i;
                   state = START;
                   continue loop;
@@ -301,11 +230,7 @@ describe('build()', () => {
                 break;
               case 27:
                 if (ch === 0x2e) {
-                  yield {
-                    token: "ELLIPSIS",
-                    tokenStart,
-                    tokenEnd: i + 1,
-                  };
+                  yield new Token("ELLIPSIS", tokenStart, i + 1, input);
                   tokenStart = i + 1;
                   state = START;
                 } else {
@@ -363,11 +288,7 @@ describe('build()', () => {
                 } else if (ch >= 0x30 && ch <= 0x39) {
                   state = 35;
                 } else {
-                  yield {
-                    token: "NUMBER",
-                    tokenStart,
-                    tokenEnd: i,
-                  };
+                  yield new Token("NUMBER", tokenStart, i, input);
                   tokenStart = i;
                   state = START;
                   continue loop;
@@ -384,11 +305,7 @@ describe('build()', () => {
                 if (ch >= 0x30 && ch <= 0x39) {
                   state = 37;
                 } else {
-                  yield {
-                    token: "NUMBER",
-                    tokenStart,
-                    tokenEnd: i,
-                  };
+                  yield new Token("NUMBER", tokenStart, i, input);
                   tokenStart = i;
                   state = START;
                   continue loop;
@@ -429,11 +346,7 @@ describe('build()', () => {
                 } else if (ch === 0x5c) {
                   state = 39;
                 } else if (ch === 0x22) {
-                  yield {
-                    token: "BLOCK_STRING_VALUE",
-                    tokenStart,
-                    tokenEnd: i + 1,
-                  };
+                  yield new Token("BLOCK_STRING_VALUE", tokenStart, i + 1, input);
                   tokenStart = i + 1;
                   state = START;
                 } else {

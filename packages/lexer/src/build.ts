@@ -18,13 +18,31 @@ import type {TransitionTable} from './NFA/TransitionTable';
 export default function build(table: TransitionTable): Program {
   const statements: Array<Statement> = [];
 
-  // Note the TS annotation in the argument here; it's the only explicit
-  // annotation required to make `tsc` accept the generated lexer without any
-  // errors or warnings. Without this, we'd ge:
-  //
-  //    error TS7006: Parameter 'input' implicitly has an 'any' type.
-  //
-  const fn = ast.function('*lex', ['input: string'], statements);
+  const program: Program = {
+    kind: 'Program',
+    statements: [
+      {
+        kind: 'ImportStatement',
+        specifiers: [
+          {
+            kind: 'ImportDefaultSpecifier',
+            identifier: ast.identifier('Token'),
+          },
+        ],
+        source: ast.string('./Token'),
+      },
+      {
+        kind: 'ExportDefaultDeclaration',
+        // Note the TS annotation in the argument here; it's the only explicit
+        // annotation required to make `tsc` accept the generated lexer without
+        // any errors or warnings. Without this, we'd ge:
+        //
+        //    error TS7006: Parameter 'input' implicitly has an 'any' type.
+        //
+        declaration: ast.function('*lex', ['input: string'], statements),
+      },
+    ],
+  };
 
   statements.push(ast.statement('const REJECT = -1'));
 
@@ -128,13 +146,13 @@ export default function build(table: TransitionTable): Program {
             kind: 'ExpressionStatement',
             expression: {
               kind: 'YieldExpression',
-              expression: ast.object({
-                token: ast.string(isAccept),
-                tokenStart: ast.identifier('tokenStart'),
-                tokenEnd: ast.expression('i'),
-                // TODO: include value if this is a token with content, like
-                // NAME, NUMBER, STRING_VALUE etc
-              }),
+              expression: ast.new(
+                'Token',
+                ast.string(isAccept),
+                ast.identifier('tokenStart'),
+                ast.expression('i'),
+                ast.identifier('input'),
+              ),
             },
           },
           ast.statement('tokenStart = i'),
@@ -186,13 +204,13 @@ export default function build(table: TransitionTable): Program {
                 kind: 'ExpressionStatement',
                 expression: {
                   kind: 'YieldExpression',
-                  expression: ast.object({
-                    token: ast.string(Array.from(table.labels?.[j] ?? [])[0]),
-                    tokenStart: ast.identifier('tokenStart'),
-                    tokenEnd: ast.expression('i + 1'),
-                    // TODO: include value if this is a token with content, like
-                    // NAME, NUMBER, STRING_VALUE etc
-                  }),
+                  expression: ast.new(
+                    'Token',
+                    ast.string(Array.from(table.labels?.[j] ?? [])[0]),
+                    ast.identifier('tokenStart'),
+                    ast.expression('i + 1'),
+                    ast.identifier('input'),
+                  ),
                 },
               },
               ast.statement('tokenStart = i + 1'),
@@ -238,13 +256,13 @@ export default function build(table: TransitionTable): Program {
               kind: 'ExpressionStatement',
               expression: {
                 kind: 'YieldExpression',
-                expression: ast.object({
-                  token: ast.string(isAccept),
-                  tokenStart: ast.identifier('tokenStart'),
-                  tokenEnd: ast.expression('i'),
-                  // TODO: include value if this is a token with content, like
-                  // NAME, NUMBER, STRING_VALUE etc
-                }),
+                expression: ast.new(
+                  'Token',
+                  ast.string(isAccept),
+                  ast.identifier('tokenStart'),
+                  ast.expression('i'),
+                  ast.identifier('input'),
+                ),
               },
             },
             ast.statement('tokenStart = i'),
@@ -275,11 +293,7 @@ export default function build(table: TransitionTable): Program {
       block: [
         {
           kind: 'ThrowStatement',
-          expression: {
-            kind: 'NewExpression',
-            object: ast.identifier('Error'),
-            arguments: [ast.string('Failed to recognize token')],
-          },
+          expression: ast.new('Error', ast.string('Failed to recognize token')),
         },
       ],
     },
@@ -289,26 +303,14 @@ export default function build(table: TransitionTable): Program {
       block: [
         {
           kind: 'ThrowStatement',
-          expression: {
-            kind: 'NewExpression',
-            object: ast.identifier('Error'),
-            // TODO: include state id in error
-            arguments: [ast.string('Unexpected state')],
-          },
+          // TODO: include state id in error
+          expression: ast.new('Error', ast.string('Unexpected state')),
         },
       ],
     },
   );
 
-  return {
-    kind: 'Program',
-    statements: [
-      {
-        kind: 'ExportDefaultDeclaration',
-        declaration: fn,
-      },
-    ],
-  };
+  return program;
 }
 
 function charForComparison(value: string): string {

@@ -1,9 +1,11 @@
 import {print} from '@masochist/codegen';
 import {invariant} from '@masochist/common';
+import vm from 'vm';
 
 import {promises as fs} from 'fs';
 import path from 'path';
 
+import Token from '../Token';
 import build from '../build';
 import definition from '../definition';
 
@@ -14,42 +16,43 @@ import definition from '../definition';
  */
 
 describe('lex()', () => {
-  let lex: (input: string) => Generator<
-    {
-      token: string;
-      tokenStart: number;
-      tokenEnd: number;
-    },
-    void,
-    unknown
-  >;
+  let lex: (input: string) => Generator<Token, void, unknown>;
 
   beforeAll(() => {
     // Build lexer.
     const ast = build(definition);
 
-    // Unwrap "export default function *lex(...) { [body] }" to just "[body]".
-    // Conveniently, this means we don't have to strip the "input: string" type
-    // annotation from the arguments list, because we're skipping the arguments
-    // list.
-    const statement = ast.statements.shift();
-    invariant(statement);
-    invariant(statement.kind === 'ExportDefaultDeclaration');
-    invariant(statement.declaration.kind === 'FunctionDeclaration');
-    ast.statements.unshift(...statement.declaration.body);
+    // Remove `import Token from './Token'` statement.
+    invariant(ast.statements.shift()?.kind === 'ImportStatement');
 
-    // This is eval() in disguise:
-    const GeneratorFunction = Object.getPrototypeOf(
-      function* () {},
-    ).constructor;
-    lex = new GeneratorFunction('input', print(ast));
+    // Hoist function out from `export default` declaration.
+    invariant(ast.statements[0]);
+    invariant(ast.statements[0].kind === 'ExportDefaultDeclaration');
+    invariant(ast.statements[0].declaration.kind === 'FunctionDeclaration');
+    invariant(ast.statements[0].declaration.name === '*lex');
+    ast.statements[0] = ast.statements[0].declaration;
+
+    // Remove TS type annotation from function argument.
+    ast.statements[0].arguments = ['input'];
+
+    // Elaborate hack to run generated module.
+    const code = print(ast);
+    const context = {
+      Token,
+      *lex(_input: string): Generator<Token, void, unknown> {}, // Placeholder.
+    };
+    vm.createContext(context);
+    vm.runInContext(code, context);
+
+    lex = context.lex;
   });
 
   it('can lex a NAME token right at the end', () => {
-    const tokens = [...lex('foo bar')];
+    const input = 'foo bar';
+    const tokens = [...lex(input)];
     expect(tokens).toEqual([
-      {token: 'NAME', tokenStart: 0, tokenEnd: 3},
-      {token: 'NAME', tokenStart: 4, tokenEnd: 7},
+      new Token('NAME', 0, 3, input),
+      new Token('NAME', 4, 7, input),
     ]);
   });
 
@@ -84,12 +87,18 @@ describe('lex()', () => {
   });
 
   it('lexes names', () => {
-    const tokens = [...lex('foo bar baz')];
+    const input = 'foo bar baz';
+    const tokens = [...lex(input)];
     expect(tokens).toEqual([
-      {token: 'NAME', tokenStart: 0, tokenEnd: 3},
-      {token: 'NAME', tokenStart: 4, tokenEnd: 7},
-      {token: 'NAME', tokenStart: 8, tokenEnd: 11},
+      new Token('NAME', 0, 3, input),
+      new Token('NAME', 4, 7, input),
+      new Token('NAME', 8, 11, input),
     ]);
+
+    // Note that token contents can be recovered.
+    expect(tokens[0].contents).toBe('foo');
+    expect(tokens[1].contents).toBe('bar');
+    expect(tokens[2].contents).toBe('baz');
   });
 
   it('survives a stress test', async () => {
@@ -109,9 +118,8 @@ describe('lex()', () => {
     ).resolves.not.toThrow();
   });
 
-  it('does something else', () => {
-    const tokens = [
-      ...lex(`
+  it('lexes a named query with some arguments', () => {
+    const input = `
       query Crap {
         viewer {
           feed(first: 10, after: "cursor") {
@@ -119,47 +127,48 @@ describe('lex()', () => {
           }
         }
       }
-    `),
-    ];
-    expect(tokens).toEqual([
-      {token: 'NAME', tokenStart: 7, tokenEnd: 12},
-      {token: 'NAME', tokenStart: 13, tokenEnd: 17},
-      {token: 'OPENING_BRACE', tokenStart: 18, tokenEnd: 19},
-      {token: 'NAME', tokenStart: 28, tokenEnd: 34},
-      {token: 'OPENING_BRACE', tokenStart: 35, tokenEnd: 36},
-      {token: 'NAME', tokenStart: 47, tokenEnd: 51},
-      {token: 'OPENING_PAREN', tokenStart: 51, tokenEnd: 52},
-      {token: 'NAME', tokenStart: 52, tokenEnd: 57},
-      {token: 'COLON', tokenStart: 57, tokenEnd: 58},
-      {token: 'NUMBER', tokenStart: 59, tokenEnd: 61},
-      {token: 'NAME', tokenStart: 63, tokenEnd: 68},
-      {token: 'COLON', tokenStart: 68, tokenEnd: 69},
-      {token: 'STRING_VALUE', tokenStart: 70, tokenEnd: 78},
-      {token: 'CLOSING_PAREN', tokenStart: 78, tokenEnd: 79},
-      {token: 'OPENING_BRACE', tokenStart: 80, tokenEnd: 81},
-      {token: 'NAME', tokenStart: 94, tokenEnd: 96},
-      {token: 'CLOSING_BRACE', tokenStart: 107, tokenEnd: 108},
-      {token: 'CLOSING_BRACE', tokenStart: 117, tokenEnd: 118},
-      {token: 'CLOSING_BRACE', tokenStart: 125, tokenEnd: 126},
+    `;
+    expect([...lex(input)]).toEqual([
+      new Token('NAME', 7, 12, input),
+      new Token('NAME', 13, 17, input),
+      new Token('OPENING_BRACE', 18, 19, input),
+      new Token('NAME', 28, 34, input),
+      new Token('OPENING_BRACE', 35, 36, input),
+      new Token('NAME', 47, 51, input),
+      new Token('OPENING_PAREN', 51, 52, input),
+      new Token('NAME', 52, 57, input),
+      new Token('COLON', 57, 58, input),
+      new Token('NUMBER', 59, 61, input),
+      new Token('NAME', 63, 68, input),
+      new Token('COLON', 68, 69, input),
+      new Token('STRING_VALUE', 70, 78, input),
+      new Token('CLOSING_PAREN', 78, 79, input),
+      new Token('OPENING_BRACE', 80, 81, input),
+      new Token('NAME', 94, 96, input),
+      new Token('CLOSING_BRACE', 107, 108, input),
+      new Token('CLOSING_BRACE', 117, 118, input),
+      new Token('CLOSING_BRACE', 125, 126, input),
     ]);
   });
 
   describe('regression tests', () => {
     it('lexes a one-character punctuator between two NAME tokens', () => {
       // OPENING_BRACE was two wide, but should be one wide.
-      expect([...lex('foo { bar')]).toEqual([
-        {token: 'NAME', tokenStart: 0, tokenEnd: 3},
-        {token: 'OPENING_BRACE', tokenStart: 4, tokenEnd: 5},
-        {token: 'NAME', tokenStart: 6, tokenEnd: 9},
+      const input = 'foo { bar';
+      expect([...lex(input)]).toEqual([
+        new Token('NAME', 0, 3, input),
+        new Token('OPENING_BRACE', 4, 5, input),
+        new Token('NAME', 6, 9, input),
       ]);
     });
 
     it('lexes a one-character punctuator after a STRING_VALUE', () => {
       // CLOSING_PAREN was starting 1 character too far to the right.
-      expect([...lex('"hey") {')]).toEqual([
-        {token: 'STRING_VALUE', tokenStart: 0, tokenEnd: 5},
-        {token: 'CLOSING_PAREN', tokenStart: 5, tokenEnd: 6},
-        {token: 'OPENING_BRACE', tokenStart: 7, tokenEnd: 8},
+      const input = '"hey") {';
+      expect([...lex(input)]).toEqual([
+        new Token('STRING_VALUE', 0, 5, input),
+        new Token('CLOSING_PAREN', 5, 6, input),
+        new Token('OPENING_BRACE', 7, 8, input),
       ]);
     });
   });
