@@ -7,16 +7,15 @@ import type {ParseTree} from '../parseWithTable';
 
 describe('GraphQL parser', () => {
   it('parses a simple anonymous query', () => {
-    const tokens = [...lex(`{foo bar baz}`)];
-
-    const foo = tokens[1];
-    const bar = tokens[2];
-    const baz = tokens[3];
-
-    // Proof that tokens match up with the variable names I've given them:
-    expect(foo.contents).toBe('foo');
-    expect(bar.contents).toBe('bar');
-    expect(baz.contents).toBe('baz');
+    const tokens = [
+      ...lex(`
+      {
+        foo
+        barAlias: bar
+        baz
+      }
+    `),
+    ];
 
     expect(parseWithTable<ParseTree>(table, tokens, grammar, makeNode)).toEqual(
       {
@@ -35,8 +34,8 @@ describe('GraphQL parser', () => {
                         kind: 'Selection',
                         children: [
                           {
-                            kind: 'Field',
-                            children: [foo],
+                            kind: 'FIELD',
+                            name: 'foo',
                           },
                         ],
                       },
@@ -44,8 +43,9 @@ describe('GraphQL parser', () => {
                         kind: 'Selection',
                         children: [
                           {
-                            kind: 'Field',
-                            children: [bar],
+                            kind: 'FIELD',
+                            name: 'bar',
+                            alias: 'barAlias',
                           },
                         ],
                       },
@@ -53,8 +53,8 @@ describe('GraphQL parser', () => {
                         kind: 'Selection',
                         children: [
                           {
-                            kind: 'Field',
-                            children: [baz],
+                            kind: 'FIELD',
+                            name: 'baz',
                           },
                         ],
                       },
