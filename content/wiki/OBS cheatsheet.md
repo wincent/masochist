@@ -18,7 +18,7 @@ Topics covered:
 Overview:
 
 1. Ensure Bluetooth is running and headphones are connected.
-2. Ensure virtual sink is running.
+2. ~~Ensure virtual sink is running.~~ (This is now happening automatically.)
 3. Open Audacious, pavucontrol, and OBS (last).
 4. If webcam isn't working (sigh), unplug it and replug it; you may have to remove and re-add the video source in OBS. And if you lose the keyboard and have to disconnect it, it may come back without Colemak, so be ready to run `arst`/`asdf` to put it back.
 
@@ -154,7 +154,7 @@ One thing to note: I was getting low latency monitoring with this set-up, but as
 
 # pavucontrol
 
-Check if the virtual sink is operating (given that I haven't set it up to persist across reboots):
+Check if the virtual sink is operating (although as of [1c77db558aa9a817b5](https://github.com/wincent/wincent/commit/1c77db558aa9a817b58d69828099f872013b2906) it should persist across reboots):
 
 ```bash
 pactl list | grep sink_name=Music
