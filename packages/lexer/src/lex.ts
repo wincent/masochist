@@ -1,4 +1,4 @@
-import Token from "./Token";
+import Token from './Token';
 export default function *lex(input: string) {
   const REJECT = -1;
   const START = 0;
@@ -16,7 +16,7 @@ export default function *lex(input: string) {
         } else if (ch === 0x0d) {
           state = 3;
         } else if (ch === 0x21) {
-          yield new Token("BANG", tokenStart, i + 1, input);
+          yield new Token('BANG', tokenStart, i + 1, input);
           tokenStart = i + 1;
           state = START;
         } else if (ch === 0x22) {
@@ -24,19 +24,19 @@ export default function *lex(input: string) {
         } else if (ch === 0x23) {
           state = 6;
         } else if (ch === 0x24) {
-          yield new Token("DOLLAR", tokenStart, i + 1, input);
+          yield new Token('DOLLAR', tokenStart, i + 1, input);
           tokenStart = i + 1;
           state = START;
         } else if (ch === 0x26) {
-          yield new Token("AMPERSAND", tokenStart, i + 1, input);
+          yield new Token('AMPERSAND', tokenStart, i + 1, input);
           tokenStart = i + 1;
           state = START;
         } else if (ch === 0x28) {
-          yield new Token("OPENING_PAREN", tokenStart, i + 1, input);
+          yield new Token('OPENING_PAREN', tokenStart, i + 1, input);
           tokenStart = i + 1;
           state = START;
         } else if (ch === 0x29) {
-          yield new Token("CLOSING_PAREN", tokenStart, i + 1, input);
+          yield new Token('CLOSING_PAREN', tokenStart, i + 1, input);
           tokenStart = i + 1;
           state = START;
         } else if (ch === 0x2d) {
@@ -48,37 +48,37 @@ export default function *lex(input: string) {
         } else if (ch >= 0x31 && ch <= 0x39) {
           state = 14;
         } else if (ch === 0x3a) {
-          yield new Token("COLON", tokenStart, i + 1, input);
+          yield new Token('COLON', tokenStart, i + 1, input);
           tokenStart = i + 1;
           state = START;
         } else if (ch === 0x3d) {
-          yield new Token("EQUALS", tokenStart, i + 1, input);
+          yield new Token('EQUALS', tokenStart, i + 1, input);
           tokenStart = i + 1;
           state = START;
         } else if (ch === 0x40) {
-          yield new Token("AT", tokenStart, i + 1, input);
+          yield new Token('AT', tokenStart, i + 1, input);
           tokenStart = i + 1;
           state = START;
         } else if (ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x7a) {
           state = 18;
         } else if (ch === 0x5b) {
-          yield new Token("OPENING_BRACKET", tokenStart, i + 1, input);
+          yield new Token('OPENING_BRACKET', tokenStart, i + 1, input);
           tokenStart = i + 1;
           state = START;
         } else if (ch === 0x5d) {
-          yield new Token("CLOSING_BRACKET", tokenStart, i + 1, input);
+          yield new Token('CLOSING_BRACKET', tokenStart, i + 1, input);
           tokenStart = i + 1;
           state = START;
         } else if (ch === 0x7b) {
-          yield new Token("OPENING_BRACE", tokenStart, i + 1, input);
+          yield new Token('OPENING_BRACE', tokenStart, i + 1, input);
           tokenStart = i + 1;
           state = START;
         } else if (ch === 0x7c) {
-          yield new Token("BAR", tokenStart, i + 1, input);
+          yield new Token('BAR', tokenStart, i + 1, input);
           tokenStart = i + 1;
           state = START;
         } else if (ch === 0x7d) {
-          yield new Token("CLOSING_BRACE", tokenStart, i + 1, input);
+          yield new Token('CLOSING_BRACE', tokenStart, i + 1, input);
           tokenStart = i + 1;
           state = START;
         } else {
@@ -153,7 +153,7 @@ export default function *lex(input: string) {
         } else if (ch === 0x45 || ch === 0x65) {
           state = 29;
         } else {
-          yield new Token("NUMBER", tokenStart, i, input);
+          yield new Token('NUMBER', tokenStart, i, input);
           tokenStart = i;
           state = START;
           continue loop;
@@ -167,7 +167,7 @@ export default function *lex(input: string) {
         } else if (ch === 0x45 || ch === 0x65) {
           state = 29;
         } else {
-          yield new Token("NUMBER", tokenStart, i, input);
+          yield new Token('NUMBER', tokenStart, i, input);
           tokenStart = i;
           state = START;
           continue loop;
@@ -177,7 +177,7 @@ export default function *lex(input: string) {
         if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x7a) {
           state = 18;
         } else {
-          yield new Token("NAME", tokenStart, i, input);
+          yield new Token('NAME', tokenStart, i, input);
           tokenStart = i;
           state = START;
           continue loop;
@@ -189,7 +189,7 @@ export default function *lex(input: string) {
         } else if (ch === 0x5c) {
           state = 26;
         } else if (ch === 0x22) {
-          yield new Token("STRING_VALUE", tokenStart, i + 1, input);
+          yield new Token('STRING_VALUE', tokenStart, i + 1, input);
           tokenStart = i + 1;
           state = START;
         } else {
@@ -200,7 +200,7 @@ export default function *lex(input: string) {
         if (ch === 0x22) {
           state = 31;
         } else {
-          yield new Token("STRING_VALUE", tokenStart, i, input);
+          yield new Token('STRING_VALUE', tokenStart, i, input);
           tokenStart = i;
           state = START;
           continue loop;
@@ -219,7 +219,7 @@ export default function *lex(input: string) {
         break;
       case 27:
         if (ch === 0x2e) {
-          yield new Token("ELLIPSIS", tokenStart, i + 1, input);
+          yield new Token('ELLIPSIS', tokenStart, i + 1, input);
           tokenStart = i + 1;
           state = START;
         } else {
@@ -277,7 +277,7 @@ export default function *lex(input: string) {
         } else if (ch >= 0x30 && ch <= 0x39) {
           state = 35;
         } else {
-          yield new Token("NUMBER", tokenStart, i, input);
+          yield new Token('NUMBER', tokenStart, i, input);
           tokenStart = i;
           state = START;
           continue loop;
@@ -294,7 +294,7 @@ export default function *lex(input: string) {
         if (ch >= 0x30 && ch <= 0x39) {
           state = 37;
         } else {
-          yield new Token("NUMBER", tokenStart, i, input);
+          yield new Token('NUMBER', tokenStart, i, input);
           tokenStart = i;
           state = START;
           continue loop;
@@ -335,7 +335,7 @@ export default function *lex(input: string) {
         } else if (ch === 0x5c) {
           state = 39;
         } else if (ch === 0x22) {
-          yield new Token("BLOCK_STRING_VALUE", tokenStart, i + 1, input);
+          yield new Token('BLOCK_STRING_VALUE', tokenStart, i + 1, input);
           tokenStart = i + 1;
           state = START;
         } else {
@@ -377,9 +377,9 @@ export default function *lex(input: string) {
         }
         break;
       case REJECT:
-        throw new Error("Failed to recognize token");
+        throw new Error('Failed to recognize token');
       default:
-        throw new Error("Unexpected state");
+        throw new Error('Unexpected state');
     }
     i++;
   }

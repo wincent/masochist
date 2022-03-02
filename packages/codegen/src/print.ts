@@ -1,4 +1,5 @@
 import type {Expression, Program, Statement, SwitchCase} from './ast';
+import quote from './quote';
 
 const TAB_WIDTH = 2;
 
@@ -80,8 +81,7 @@ function printExpression(expression: Expression, indent: number): string {
           } else if (/^[a-z_][0-9a-z_]*$/i.test(propertyName)) {
             property = propertyName;
           } else {
-            // TODO: use quote() instead of JSON.stringify()
-            property = `[${JSON.stringify}]`;
+            property = `[${quote(propertyName)}]`;
           }
           if (value.kind === 'Identifier' && value.name === property) {
             // Use object property shorthand.
@@ -99,8 +99,7 @@ function printExpression(expression: Expression, indent: number): string {
       '}'
     );
   } else if (expression.kind === 'StringValue') {
-    // TODO: prefer single quotes; I have a quote() function for this elsewhere
-    return JSON.stringify(expression.value);
+    return quote(expression.value);
   } else if (expression.kind === 'TernaryExpression') {
     return (
       // TODO: add smarts to use newlines if needed, and only use parens if
@@ -222,8 +221,7 @@ function printStatement(statement: Statement, indent: number): string {
       // Indent should always be zero here, but printing it anyway...
       return (
         printIndent(indent) +
-        // TODO: use quote() instead of JSON.stringify()
-        `import ${specifier.identifier.name} from ${JSON.stringify(
+        `import ${specifier.identifier.name} from ${quote(
           statement.source.value,
         )};` +
         '\n'
