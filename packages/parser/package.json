@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "Masochist parser",
   "dependencies": {
-    "@masochist/common": "*"
+    "@masochist/common": "*",
+    "@masochist/lexer": "*"
   },
   "main": "lib/index.js",
   "author": "Greg Hurrell <greg@hurrell.net>",

@@ -1,4 +1,5 @@
 import {StringScanner, invariant} from '@masochist/common';
+import {Token} from '@masochist/lexer';
 import vm from 'vm';
 
 import getAugmentedGrammar from './getAugmentedGrammar';
@@ -9,14 +10,6 @@ import type {Grammar} from './types';
 type ParseTree = {
   kind: string;
   children: Array<ParseTree | Token>;
-};
-
-/**
- * For use in tests.
- */
-export type Token = {
-  name: string;
-  contents?: string;
 };
 
 type Production = ParseTree | Token | null;
@@ -32,8 +25,10 @@ export default function parseWithTable(
   tokens: Array<Token>,
   grammar: Grammar,
 ): ParseTree {
+  const EOF = new Token('$', -1, -1, '');
+
   const augmentedGrammar = getAugmentedGrammar(grammar);
-  const stack: Array<[Production, number]>= [[null, 0]];
+  const stack: Array<[Production, number]> = [[null, 0]];
   let pointer = 0;
 
   const context = vm.createContext({$$: undefined});
@@ -43,7 +38,7 @@ export default function parseWithTable(
     invariant(typeof current === 'number' && current < table.length);
 
     const [actions] = table[current];
-    const token = tokens[pointer] ?? {name: '$'};
+    const token = tokens[pointer] ?? EOF;
 
     const action = actions[token.name];
 
@@ -118,13 +113,11 @@ function assertParseTreeOrToken(
   node: ParseTree | Token | null,
 ): asserts node is ParseTree | Token {
   invariant(node);
-  invariant(typeof node !== 'number');
 }
 
 function assertParseTree(
   node: ParseTree | Token | null,
 ): asserts node is ParseTree {
   invariant(node);
-  invariant(typeof node !== 'number');
   invariant(Object.hasOwnProperty.call(node, 'kind'));
 }

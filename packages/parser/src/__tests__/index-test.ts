@@ -1,17 +1,20 @@
+import lex from '@masochist/lexer';
+
 import {table, grammar} from '..';
 import parseWithTable from '../parseWithTable';
 
-import type {Token} from '../parseWithTable';
-
 describe('GraphQL parser', () => {
   it('parses a simple anonymous query', () => {
-    const tokens: Array<Token> = [
-      {name: 'OPENING_BRACE'},
-      {name: 'NAME', contents: 'foo'},
-      {name: 'NAME', contents: 'bar'},
-      {name: 'NAME', contents: 'baz'},
-      {name: 'CLOSING_BRACE'},
-    ];
+    const tokens = [...lex(`{foo bar baz}`)];
+
+    const foo = tokens[1];
+    const bar = tokens[2];
+    const baz = tokens[3];
+
+    // Proof that tokens match up with the variable names I've given them:
+    expect(foo.contents).toBe('foo');
+    expect(bar.contents).toBe('bar');
+    expect(baz.contents).toBe('baz');
 
     expect(parseWithTable(table, tokens, grammar)).toEqual({
       kind: 'Document',
@@ -30,12 +33,7 @@ describe('GraphQL parser', () => {
                       children: [
                         {
                           kind: 'Field',
-                          children: [
-                            {
-                              name: 'NAME',
-                              contents: 'foo',
-                            },
-                          ],
+                          children: [foo],
                         },
                       ],
                     },
@@ -44,12 +42,7 @@ describe('GraphQL parser', () => {
                       children: [
                         {
                           kind: 'Field',
-                          children: [
-                            {
-                              name: 'NAME',
-                              contents: 'bar',
-                            },
-                          ],
+                          children: [bar],
                         },
                       ],
                     },
@@ -58,12 +51,7 @@ describe('GraphQL parser', () => {
                       children: [
                         {
                           kind: 'Field',
-                          children: [
-                            {
-                              name: 'NAME',
-                              contents: 'baz',
-                            },
-                          ],
+                          children: [baz],
                         },
                       ],
                     },
