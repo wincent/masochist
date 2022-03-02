@@ -24,7 +24,7 @@ export default function parseWithTable(
   table: ParseTable,
   tokens: Array<Token>,
   grammar: Grammar,
-): ParseTree {
+): Production {
   const EOF = new Token('$', -1, -1, '');
 
   const augmentedGrammar = getAugmentedGrammar(grammar);
@@ -52,20 +52,19 @@ export default function parseWithTable(
       // Expect initial state + accept state.
       invariant(stack.length === 2);
       const [tree] = stack[1];
-      assertParseTree(tree);
       return tree;
     } else if (action.kind === 'Shift') {
       stack.push([token, action.state]);
       pointer++;
     } else if (action.kind === 'Reduce') {
       const {lhs, rhs, action: code} = augmentedGrammar.rules[action.rule];
-      const popped = [];
+      const popped: Array<ParseTree | Token> = [];
       invariant(stack.length > rhs.length);
       for (let i = 0; i < rhs.length; i++) {
         const [node] = stack.pop()!;
-        assertParseTreeOrToken(node);
+        invariant(node, 'parseWithTable(): expected non-null production');
         // TODO: if we have an action, don't set items that aren't used in the action
-        popped[rhs.length - i - 1] = node; // Production.
+        popped[rhs.length - i - 1] = node;
       }
       const [, next] = stack[stack.length - 1];
       invariant(typeof next === 'number' && next < table.length);
@@ -107,17 +106,4 @@ export default function parseWithTable(
   }
 
   throw new Error('parseWithTable(): Unreachable');
-}
-
-function assertParseTreeOrToken(
-  node: ParseTree | Token | null,
-): asserts node is ParseTree | Token {
-  invariant(node);
-}
-
-function assertParseTree(
-  node: ParseTree | Token | null,
-): asserts node is ParseTree {
-  invariant(node);
-  invariant(Object.hasOwnProperty.call(node, 'kind'));
 }
