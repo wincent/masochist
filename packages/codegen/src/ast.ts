@@ -314,7 +314,12 @@ const ast = {
       return ast.number(parseInt(template));
     }
 
-    let match = template.match(/^(\w+)\[(\w+)\]$/);
+    let match = template.match(/^[_a-z]\w*$/i);
+    if (match) {
+      return ast.identifier(template);
+    }
+
+    match = template.match(/^(\w+)\[(\w+)\]$/);
     if (match) {
       const indexee = match[1];
       const index = match[2];
@@ -367,6 +372,7 @@ const ast = {
       }
     }
 
+    // Last resort, almost certainly wrong...
     return ast.identifier(template);
   },
 
@@ -399,14 +405,21 @@ const ast = {
     return {kind: 'MemberExpression', object, property};
   },
 
-  new(object: Expression | string, ...args: Array<Expression>): NewExpression {
+  new(
+    object: Expression | string,
+    ...args: Array<Expression | string>
+  ): NewExpression {
     if (typeof object === 'string') {
       object = ast.identifier(object);
     }
     if (args.length) {
-      // TODO: may want to let args contain string items, and if so,
-      // automatically wrap with ast.identifier
-      return {kind: 'NewExpression', object, arguments: args};
+      return {
+        kind: 'NewExpression',
+        object,
+        arguments: args.map((arg) => {
+          return typeof arg === 'string' ? ast.expression(arg) : arg;
+        }),
+      };
     } else {
       return {kind: 'NewExpression', object};
     }
