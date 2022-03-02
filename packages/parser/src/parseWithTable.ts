@@ -7,12 +7,29 @@ import getAugmentedGrammar from './getAugmentedGrammar';
 import type {ParseTable} from './getParseTable';
 import type {Grammar} from './types';
 
-type ParseTree = {
+/**
+ * Convenience, for use in tests.
+ */
+export type ParseTree = {
   kind: string;
-  children: Array<ParseTree | Token>;
+  children: Array<ParseTree | Token | null>;
 };
 
-type Production = ParseTree | Token | null;
+/**
+ * Convenience, for use in tests.
+ */
+export function makeNode(
+  lhs: string,
+  children: Array<ParseTree | Token | null>,
+): ParseTree | Token | null {
+  return {
+    kind: lhs,
+    children:
+      children.length === 1 && Array.isArray(children[0])
+        ? children[0]
+        : children,
+  };
+}
 
 /**
  * Dynamically parse using supplied parse table.
@@ -20,15 +37,19 @@ type Production = ParseTree | Token | null;
  * For testing purposes only; for "real" parsers we want to write out a static
  * (generated) parser artifact with proper type info, actions, and so on.
  */
-export default function parseWithTable(
+export default function parseWithTable<P>(
   table: ParseTable,
   tokens: Array<Token>,
   grammar: Grammar,
-): Production {
+  makeNode: (
+    lhs: string,
+    children: Array<P | Token | null>,
+  ) => P | Token | null,
+): P | Token | null {
   const EOF = new Token('$', -1, -1, '');
 
   const augmentedGrammar = getAugmentedGrammar(grammar);
-  const stack: Array<[Production, number]> = [[null, 0]];
+  const stack: Array<[P | Token | null, number]> = [[null, 0]];
   let pointer = 0;
 
   const context = vm.createContext({$$: undefined});
@@ -58,7 +79,7 @@ export default function parseWithTable(
       pointer++;
     } else if (action.kind === 'Reduce') {
       const {lhs, rhs, action: code} = augmentedGrammar.rules[action.rule];
-      const popped: Array<ParseTree | Token> = [];
+      const popped: Array<P | Token | null> = [];
       invariant(stack.length > rhs.length);
       for (let i = 0; i < rhs.length; i++) {
         const [node] = stack.pop()!;
@@ -91,16 +112,7 @@ export default function parseWithTable(
         invariant(context['$$'], 'production was undefined');
         stack.push([context['$$'], target]);
       } else {
-        stack.push([
-          {
-            kind: lhs,
-            children:
-              popped.length === 1 && Array.isArray(popped[0])
-                ? popped[0]
-                : popped,
-          },
-          target,
-        ]);
+        stack.push([makeNode(lhs, popped), target]);
       }
     }
   }

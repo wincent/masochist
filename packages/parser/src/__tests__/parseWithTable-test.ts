@@ -3,8 +3,10 @@ import {Token} from '@masochist/lexer';
 import getItemSets from '../getItemSets';
 import getParseTable from '../getParseTable';
 import itemSetsToTransitionTable from '../itemSetsToTransitionTable';
-import parseWithTable from '../parseWithTable';
+import parseWithTable, {makeNode} from '../parseWithTable';
 import {subsetGrammar, toyGrammar} from './grammars';
+
+import type {ParseTree} from '../parseWithTable';
 
 describe('parseWithTable()', () => {
   it('parses samples for the toy grammar', () => {
@@ -24,7 +26,9 @@ describe('parseWithTable()', () => {
     expect(tokens[0].contents).toBe('5');
     expect(tokens[3].contents).toBe('10');
 
-    expect(parseWithTable(table, tokens, toyGrammar)).toEqual({
+    expect(
+      parseWithTable<ParseTree>(table, tokens, toyGrammar, makeNode),
+    ).toEqual({
       kind: 'S',
       children: [
         {
@@ -80,7 +84,9 @@ describe('parseWithTable()', () => {
     expect(tokens[2].contents).toBe('bar');
     expect(tokens[3].contents).toBe('baz');
 
-    expect(parseWithTable(table, tokens, subsetGrammar)).toEqual({
+    expect(
+      parseWithTable<ParseTree>(table, tokens, subsetGrammar, makeNode),
+    ).toEqual({
       kind: 'Document',
       children: [
         {
