@@ -273,93 +273,94 @@ describe('getParseTable()', () => {
   });
 
   it('returns a ParseTable for the full grammar', () => {
-    expect(stringifyParseTable(table)).toBe(
-      dedent`
-        | State | CLOSING_BRACE | COLON | NAME | OPENING_BRACE |      $ |Alias |Definition |DefinitionList |Document |ExecutableDefinition |Field |OperationDefinition |Selection |SelectionList |SelectionSet |SelectionSetOpt |
-        |-------|---------------|-------|------|---------------|--------|------|-----------|---------------|---------|---------------------|------|--------------------|----------|--------------|-------------|----------------|
-        |     0 |               |       |      |            s7 |        |      |         3 |             2 |       1 |                   4 |      |                  5 |          |              |           6 |                |
-        |     1 |               |       |      |               | accept |      |           |               |         |                     |      |                    |          |              |             |                |
-        |     2 |               |       |      |            s7 |     r1 |      |         8 |               |         |                   4 |      |                  5 |          |              |           6 |                |
-        |     3 |               |       |      |            r2 |     r2 |      |           |               |         |                     |      |                    |          |              |             |                |
-        |     4 |               |       |      |            r4 |     r4 |      |           |               |         |                     |      |                    |          |              |             |                |
-        |     5 |               |       |      |            r5 |     r5 |      |           |               |         |                     |      |                    |          |              |             |                |
-        |     6 |               |       |      |            r6 |     r6 |      |           |               |         |                     |      |                    |          |              |             |                |
-        |     7 |               |       |  s12 |               |        |   13 |           |               |         |                     |   11 |                    |       10 |            9 |             |                |
-        |     8 |               |       |      |            r3 |     r3 |      |           |               |         |                     |      |                    |          |              |             |                |
-        |     9 |           s14 |       |  s12 |               |        |   13 |           |               |         |                     |   11 |                    |       15 |              |             |                |
-        |    10 |           r10 |       |  r10 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
-        |    11 |           r12 |       |  r12 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
-        |    12 |            r9 |   s17 |   r9 |            s7 |        |      |           |               |         |                     |      |                    |          |              |          18 |             16 |
-        |    13 |               |       |  s19 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
-        |    14 |            r7 |       |   r7 |            r7 |     r7 |      |           |               |         |                     |      |                    |          |              |             |                |
-        |    15 |           r11 |       |  r11 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
-        |    16 |           r13 |       |  r13 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
-        |    17 |               |       |  r15 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
-        |    18 |            r8 |       |   r8 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
-        |    19 |            r9 |       |   r9 |            s7 |        |      |           |               |         |                     |      |                    |          |              |          18 |             20 |
-        |    20 |           r14 |       |  r14 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
-      ` + '\n',
+    expect(stringifyParseTable(table)).toMatchInlineSnapshot(
+      `
+      "| State | CLOSING_BRACE | COLON | NAME | OPENING_BRACE |      $ |Alias |Definition |DefinitionList |Document |ExecutableDefinition |Field |OperationDefinition |Selection |SelectionList |SelectionSet |SelectionSetOpt |
+      |-------|---------------|-------|------|---------------|--------|------|-----------|---------------|---------|---------------------|------|--------------------|----------|--------------|-------------|----------------|
+      |     0 |               |       |      |            s7 |        |      |         3 |             2 |       1 |                   4 |      |                  5 |          |              |           6 |                |
+      |     1 |               |       |      |               | accept |      |           |               |         |                     |      |                    |          |              |             |                |
+      |     2 |               |       |      |            s7 |     r1 |      |         8 |               |         |                   4 |      |                  5 |          |              |           6 |                |
+      |     3 |               |       |      |            r2 |     r2 |      |           |               |         |                     |      |                    |          |              |             |                |
+      |     4 |               |       |      |            r4 |     r4 |      |           |               |         |                     |      |                    |          |              |             |                |
+      |     5 |               |       |      |            r5 |     r5 |      |           |               |         |                     |      |                    |          |              |             |                |
+      |     6 |               |       |      |            r6 |     r6 |      |           |               |         |                     |      |                    |          |              |             |                |
+      |     7 |               |       |  s12 |               |        |   13 |           |               |         |                     |   11 |                    |       10 |            9 |             |                |
+      |     8 |               |       |      |            r3 |     r3 |      |           |               |         |                     |      |                    |          |              |             |                |
+      |     9 |           s14 |       |  s12 |               |        |   13 |           |               |         |                     |   11 |                    |       15 |              |             |                |
+      |    10 |           r10 |       |  r10 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
+      |    11 |           r12 |       |  r12 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
+      |    12 |            r9 |   s17 |   r9 |            s7 |        |      |           |               |         |                     |      |                    |          |              |          18 |             16 |
+      |    13 |               |       |  s19 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
+      |    14 |            r7 |       |   r7 |            r7 |     r7 |      |           |               |         |                     |      |                    |          |              |             |                |
+      |    15 |           r11 |       |  r11 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
+      |    16 |           r13 |       |  r13 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
+      |    17 |               |       |  r15 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
+      |    18 |            r8 |       |   r8 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
+      |    19 |            r9 |       |   r9 |            s7 |        |      |           |               |         |                     |      |                    |          |              |          18 |             20 |
+      |    20 |           r14 |       |  r14 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
+      "
+    `,
     );
 
     // Just to make the above actually readable...
-    expect(stringifyGrammar(getAugmentedGrammar(grammar))).toBe(
-      dedent`
-        %token AMPERSAND
-        %token AT
-        %token BANG
-        %token BAR
-        %token BLOCK_STRING_VALUE
-        %token CLOSING_BRACE
-        %token CLOSING_BRACKET
-        %token CLOSING_PAREN
-        %token COLON
-        %token DOLLAR
-        %token ELLIPSIS
-        %token EQUALS
-        %token NAME
-        %token NUMBER
-        %token OPENING_BRACE
-        %token OPENING_BRACKET
-        %token OPENING_PAREN
-        %token STRING_VALUE
+    expect(stringifyGrammar(getAugmentedGrammar(grammar)))
+      .toMatchInlineSnapshot(`
+      "%token AMPERSAND
+      %token AT
+      %token BANG
+      %token BAR
+      %token BLOCK_STRING_VALUE
+      %token CLOSING_BRACE
+      %token CLOSING_BRACKET
+      %token CLOSING_PAREN
+      %token COLON
+      %token DOLLAR
+      %token ELLIPSIS
+      %token EQUALS
+      %token NAME
+      %token NUMBER
+      %token OPENING_BRACE
+      %token OPENING_BRACKET
+      %token OPENING_PAREN
+      %token STRING_VALUE
 
-        r0: Document' → Document
-        r1: Document → DefinitionList
-        r2: DefinitionList → Definition { $$ = [$1]; }
-        r3: DefinitionList → DefinitionList Definition { $1.push($2); $$ = $1; }
-        r4: Definition → ExecutableDefinition
-        r5: ExecutableDefinition → OperationDefinition
-        r6: OperationDefinition → SelectionSet {
-            $$ = {
-              kind: 'OPERATION',
-              selections: $1,
-              type: 'QUERY',
-            };
-          }
-        r7: SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE { $$ = $2; }
-        r8: SelectionSetOpt → SelectionSet { $$ = $1; }
-        r9: SelectionSetOpt → ε { $$ = null; }
-        r10: SelectionList → Selection { $$ = [$1]; }
-        r11: SelectionList → SelectionList Selection { $1.push($2); $$ = $1; }
-        r12: Selection → Field { $$ = $1; }
-        r13: Field → NAME SelectionSetOpt {
-            $$ = {
-              kind: 'FIELD',
-              alias: null,
-              name: $1.contents,
-              selections: $2,
-            };
-          }
-        r14: Field → Alias NAME SelectionSetOpt {
-            $$ = {
-              kind: 'FIELD',
-              alias: $1,
-              name: $2.contents,
-              selections: $3,
-            };
-          }
-        r15: Alias → NAME COLON { $$ = $1.contents; }
-      ` + '\n',
-    );
+      r0: Document' → Document
+      r1: Document → DefinitionList
+      r2: DefinitionList → Definition { $$ = [$1]; }
+      r3: DefinitionList → DefinitionList Definition { $1.push($2); $$ = $1; }
+      r4: Definition → ExecutableDefinition
+      r5: ExecutableDefinition → OperationDefinition
+      r6: OperationDefinition → SelectionSet {
+          $$ = {
+            kind: 'OPERATION',
+            selections: $1,
+            type: 'QUERY',
+          };
+        }
+      r7: SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE { $$ = $2; }
+      r8: SelectionSetOpt → SelectionSet { $$ = $1; }
+      r9: SelectionSetOpt → ε { $$ = null; }
+      r10: SelectionList → Selection { $$ = [$1]; }
+      r11: SelectionList → SelectionList Selection { $1.push($2); $$ = $1; }
+      r12: Selection → Field { $$ = $1; }
+      r13: Field → NAME SelectionSetOpt {
+          $$ = {
+            kind: 'FIELD',
+            alias: null,
+            name: $1.contents,
+            selections: $2,
+          };
+        }
+      r14: Field → Alias NAME SelectionSetOpt {
+          $$ = {
+            kind: 'FIELD',
+            alias: $1,
+            name: $2.contents,
+            selections: $3,
+          };
+        }
+      r15: Alias → NAME COLON { $$ = $1.contents; }
+      "
+    `);
   });
 });
