@@ -273,9 +273,9 @@ describe('getParseTable()', () => {
   });
 
   it('returns a ParseTable for the full grammar', () => {
-    expect(stringifyParseTable(table)).toMatchInlineSnapshot(
-      `
-      "| State | CLOSING_BRACE | COLON | NAME | OPENING_BRACE |      $ |Alias |Definition |DefinitionList |Document |ExecutableDefinition |Field |OperationDefinition |Selection |SelectionList |SelectionSet |SelectionSetOpt |
+    expect('\n' + stringifyParseTable(table)).toMatchInlineSnapshot(`
+      "
+      | State | CLOSING_BRACE | COLON | NAME | OPENING_BRACE |      $ |Alias |Definition |DefinitionList |Document |ExecutableDefinition |Field |OperationDefinition |Selection |SelectionList |SelectionSet |SelectionSetOpt |
       |-------|---------------|-------|------|---------------|--------|------|-----------|---------------|---------|---------------------|------|--------------------|----------|--------------|-------------|----------------|
       |     0 |               |       |      |            s7 |        |      |         3 |             2 |       1 |                   4 |      |                  5 |          |              |           6 |                |
       |     1 |               |       |      |               | accept |      |           |               |         |                     |      |                    |          |              |             |                |
@@ -299,13 +299,13 @@ describe('getParseTable()', () => {
       |    19 |            r9 |       |   r9 |            s7 |        |      |           |               |         |                     |      |                    |          |              |          18 |             20 |
       |    20 |           r14 |       |  r14 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
       "
-    `,
-    );
+    `);
 
     // Just to make the above actually readable...
-    expect(stringifyGrammar(getAugmentedGrammar(grammar)))
+    expect('\n' + stringifyGrammar(getAugmentedGrammar(grammar)))
       .toMatchInlineSnapshot(`
-      "%token AMPERSAND
+      "
+      %token AMPERSAND
       %token AT
       %token BANG
       %token BAR
