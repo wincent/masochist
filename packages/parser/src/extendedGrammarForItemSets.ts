@@ -1,3 +1,5 @@
+import {invariant} from '@masochist/common';
+
 import type {Grammar, ItemSet} from './types';
 
 /**
@@ -24,11 +26,11 @@ export default function extendedGrammarForItemSets(
     const itemSet = itemSets[i];
     for (const item of itemSet.items) {
       if (item.dot === 0) {
-        const target = itemSet.transitions[item.lhs];
+        const target = item.rhs.length ? itemSet.transitions[item.lhs] : i;
         const lhs = `${i}/${item.lhs}/${target ?? '$'}`;
-
         let current = i;
         const rhs = item.rhs.map((symbol) => {
+          invariant(symbol !== null);
           const target = itemSets[current].transitions[symbol];
           const annotated = `${current}/${symbol}/${target}`;
           if (originalTokens.has(symbol)) {

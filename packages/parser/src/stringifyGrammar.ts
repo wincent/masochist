@@ -1,4 +1,4 @@
-import {RIGHTWARDS_ARROW} from './Constants';
+import {EPSILON, RIGHTWARDS_ARROW} from './Constants';
 
 import type {Grammar} from './types';
 
@@ -14,10 +14,12 @@ export default function stringifyGrammar(grammar: Grammar): string {
 
   output += grammar.rules
     .map(({lhs, rhs, action}, i) => {
+      const production = rhs.length ? rhs.join(' ') : EPSILON;
+      const rule = `r${i}: ${lhs} ${RIGHTWARDS_ARROW} ${production}`;
       if (action) {
-        return `r${i}: ${lhs} ${RIGHTWARDS_ARROW} ${rhs.join(' ')} {${action}}`;
+        return `${rule} ${action}`;
       } else {
-        return `r${i}: ${lhs} ${RIGHTWARDS_ARROW} ${rhs.join(' ')}`;
+        return rule;
       }
     })
     .join('\n');

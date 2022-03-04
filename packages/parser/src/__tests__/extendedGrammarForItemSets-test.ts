@@ -1,6 +1,6 @@
 import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getItemSets from '../getItemSets';
-import {subsetGrammar, toyGrammar} from './grammars';
+import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
 
 describe('extendedGrammarForItemSets()', () => {
   it('returns an extended grammar for the toy grammar', () => {
@@ -82,6 +82,40 @@ describe('extendedGrammarForItemSets()', () => {
         },
         {lhs: '9/Selection/14', rhs: ['9/Field/11']},
         {lhs: '9/Field/11', rhs: ['9/NAME/12']},
+      ],
+    });
+  });
+
+  it('returns an extended grammar with epsilon productions', () => {
+    const itemSets = getItemSets(epsilonGrammar);
+    const extendedGrammar = extendedGrammarForItemSets(
+      itemSets,
+      epsilonGrammar,
+    );
+    expect(extendedGrammar).toEqual({
+      tokens: new Set([
+        '3/OPEN_BRACKET/5',
+        '6/CLOSE_BRACKET/8',
+        '0/BAR/4',
+        '6/FOO/9',
+        '5/FOO/7',
+      ]),
+      rules: [
+        {lhs: "0/S'/$", rhs: ['0/S/1']},
+        {lhs: '0/S/1', rhs: ['0/Program/2']},
+        {
+          lhs: '0/Program/2',
+          rhs: [
+            '0/BarOpt/3',
+            '3/OPEN_BRACKET/5',
+            '5/FooList/6',
+            '6/CLOSE_BRACKET/8',
+          ],
+        },
+        {lhs: '0/BarOpt/3', rhs: ['0/BAR/4']},
+        {lhs: '0/BarOpt/0', rhs: []},
+        {lhs: '5/FooList/6', rhs: ['5/FooList/6', '6/FOO/9']},
+        {lhs: '5/FooList/6', rhs: ['5/FOO/7']},
       ],
     });
   });

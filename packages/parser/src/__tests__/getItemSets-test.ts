@@ -2,10 +2,10 @@ import {dedent} from '@masochist/common';
 
 import getItemSets from '../getItemSets';
 import stringifyItemSets from '../stringifyItemSets';
-import {subsetGrammar, toyGrammar} from './grammars';
+import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
 
 describe('getItemSets()', () => {
-  it('produces items sets for the toy grammar', () => {
+  it('produces item sets for the toy grammar', () => {
     const itemSets = getItemSets(toyGrammar);
 
     expect(stringifyItemSets(itemSets)).toBe(
@@ -59,7 +59,7 @@ describe('getItemSets()', () => {
     );
   });
 
-  it('produces items sets for the subset grammar', () => {
+  it('produces item sets for the subset grammar', () => {
     expect(stringifyItemSets(getItemSets(subsetGrammar))).toBe(
       dedent`
         I0:
@@ -125,6 +125,49 @@ describe('getItemSets()', () => {
 
         I14:
           SelectionList → SelectionList Selection ·
+      ` + '\n',
+    );
+  });
+
+  it('produces item sets for a grammar with epsilon productions', () => {
+    expect(stringifyItemSets(getItemSets(epsilonGrammar))).toBe(
+      dedent`
+        I0:
+          S' → · S
+          S → · Program
+          Program → · BarOpt OPEN_BRACKET FooList CLOSE_BRACKET
+          BarOpt → · BAR
+          BarOpt → ε ·
+
+        I1:
+          S' → S ·
+
+        I2:
+          S → Program ·
+
+        I3:
+          Program → BarOpt · OPEN_BRACKET FooList CLOSE_BRACKET
+
+        I4:
+          BarOpt → BAR ·
+
+        I5:
+          Program → BarOpt OPEN_BRACKET · FooList CLOSE_BRACKET
+          FooList → · FooList FOO
+          FooList → · FOO
+
+        I6:
+          Program → BarOpt OPEN_BRACKET FooList · CLOSE_BRACKET
+          FooList → FooList · FOO
+
+        I7:
+          FooList → FOO ·
+
+        I8:
+          Program → BarOpt OPEN_BRACKET FooList CLOSE_BRACKET ·
+
+        I9:
+          FooList → FooList FOO ·
       ` + '\n',
     );
   });

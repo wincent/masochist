@@ -1,5 +1,27 @@
 import parseDSL from '../parseDSL';
 
+/**
+ * Grammar that generates sentences like:
+ *
+ *    BAR { FOO }
+ *    BAR { FOO FOO }
+ *    { FOO }
+ *    { FOO FOO }
+ */
+export const epsilonGrammar = parseDSL(`
+  %token FOO BAR OPEN_BRACKET CLOSE_BRACKET
+
+  S → Program
+  Program → BarOpt OPEN_BRACKET FooList CLOSE_BRACKET
+  FooList → FooList FOO
+  FooList → FOO
+  BarOpt → BAR
+  BarOpt → ε
+`);
+
+/**
+ * Small subset of the full GraphQL grammar.
+ */
 export const subsetGrammarDeclaration = `
   %token CLOSING_BRACE NAME OPENING_BRACE
 

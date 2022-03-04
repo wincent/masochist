@@ -1,7 +1,7 @@
 import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getFirstSets from '../getFirstSets';
 import getItemSets from '../getItemSets';
-import {subsetGrammar, toyGrammar} from './grammars';
+import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
 
 describe('getFirstSets()', () => {
   it('produces first sets for the toy grammar', () => {
@@ -63,6 +63,15 @@ describe('getFirstSets()', () => {
       '7/SelectionList/9': new Set(['7/NAME/12']),
       '9/Field/11': new Set(['9/NAME/12']),
       '9/Selection/14': new Set(['9/NAME/12']),
+    });
+  });
+
+  it('produces first sets when the grammar has epsilon productions', () => {
+    expect(getFirstSets(epsilonGrammar)).toEqual({
+      S: new Set(['BAR', 'OPEN_BRACKET']),
+      Program: new Set(['BAR', 'OPEN_BRACKET']),
+      FooList: new Set(['FOO']),
+      BarOpt: new Set(['BAR', null]),
     });
   });
 });

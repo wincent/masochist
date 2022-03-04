@@ -1,6 +1,6 @@
 import getItemSets from '../getItemSets';
 import itemSetsToTransitionTable from '../itemSetsToTransitionTable';
-import {subsetGrammar, toyGrammar} from './grammars';
+import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
 
 describe('itemSetsToTransitionTable()', () => {
   it('returns a transition table for the toy grammar', () => {
@@ -71,6 +71,33 @@ describe('itemSetsToTransitionTable()', () => {
       /* 12 */ {},
       /* 13 */ {},
       /* 14 */ {},
+    ]);
+  });
+
+  it('returns a transition table for a grammar with epsilon productions', () => {
+    const itemSets = getItemSets(epsilonGrammar);
+    expect(itemSetsToTransitionTable(itemSets, epsilonGrammar)).toEqual([
+      /* 0 */ {
+        BAR: 4,
+        BarOpt: 3,
+        Program: 2,
+        S: 1,
+      },
+      /* 1 */ {},
+      /* 2 */ {},
+      /* 3 */ {OPEN_BRACKET: 5},
+      /* 4 */ {},
+      /* 5 */ {
+        FOO: 7,
+        FooList: 6,
+      },
+      /* 6 */ {
+        CLOSE_BRACKET: 8,
+        FOO: 9,
+      },
+      /* 7 */ {},
+      /* 8 */ {},
+      /* 9 */ {},
     ]);
   });
 });

@@ -1,7 +1,7 @@
 import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getFollowSets from '../getFollowSets';
 import getItemSets from '../getItemSets';
-import {subsetGrammar, toyGrammar} from './grammars';
+import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
 
 describe('getFollowSets()', () => {
   it('produces follow sets for the toy grammar', () => {
@@ -63,6 +63,15 @@ describe('getFollowSets()', () => {
       '9/Selection/14': new Set(['9/CLOSING_BRACE/13', '9/NAME/12']),
       '7/Field/11': new Set(['9/CLOSING_BRACE/13', '9/NAME/12']),
       '9/Field/11': new Set(['9/CLOSING_BRACE/13', '9/NAME/12']),
+    });
+  });
+
+  it('produces follow sets when the grammar has epsilon productions', () => {
+    expect(getFollowSets(epsilonGrammar)).toEqual({
+      S: new Set([null]),
+      Program: new Set([null]),
+      FooList: new Set(['CLOSE_BRACKET', 'FOO']),
+      BarOpt: new Set(['OPEN_BRACKET']),
     });
   });
 });

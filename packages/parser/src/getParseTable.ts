@@ -96,8 +96,13 @@ export default function getParseTable(
     ruleIndices[keyForRule(lhs, rhs)] = i;
   });
 
-  // Map follow sets to extended grammar rules.
-  const follows = getFollowSets(extendedGrammar);
+  // Map follow sets from extended grammar rules back onto original grammar
+  // rules.
+  //
+  // These effectively get merged for extended rules that descend from the same
+  // rule in the original grammar _and_ arrive at the same final state.
+  const extendedFollows = getFollowSets(extendedGrammar);
+  const augmentedFollows = getFollowSets(augmentedGrammar);
   for (const rule of extendedGrammar.rules) {
     const [, lhs, end] = rule.lhs.split('/');
     if (end === '$') {
@@ -111,12 +116,17 @@ export default function getParseTable(
 
     // Get the item set from the original grammar that corresponds to extended
     // grammar rule.
-    const itemSet = rule.rhs[rule.rhs.length - 1].split('/')[2];
-
     const ruleNumber = ruleIndices[keyForRule(lhs, rhs)];
+    const final = rule.rhs[rule.rhs.length - 1];
+    const itemSet = final ? final.split('/')[2] : end;
     const actions = table[parseInt(itemSet, 10)][0];
-    for (const follow of follows[rule.lhs]) {
-      const [, symbol] = (follow ?? '0/$/0').split('/');
+    const follows = rhs.length
+      ? extendedFollows[rule.lhs]
+      : augmentedFollows[augmentedGrammar.rules[ruleNumber].lhs];
+    for (const follow of follows) {
+      const symbol = rhs.length
+        ? (follow ?? '-1/$/-1').split('/')[1]
+        : follow ?? '$';
       const action = actions[symbol];
       if (action) {
         if (
@@ -132,7 +142,7 @@ export default function getParseTable(
                   : action.kind === 'Shift'
                   ? action.state
                   : 'n/a'
-              }) for state ${itemSet} ` +
+              }) for state ${itemSet}, symbol ${symbol} ` +
               `processing rule: ${lhs} ${RIGHTWARDS_ARROW} ${rhs.join(' ')}`,
           );
         }

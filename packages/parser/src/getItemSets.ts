@@ -43,7 +43,9 @@ export default function getItemSets(grammar: Grammar) {
           if (!added.has(key)) {
             added.add(key);
             itemSet.items.push(newItem);
-            add(rhs[0]);
+            if (rhs[0]) {
+              add(rhs[0]);
+            }
           }
         }
       }
@@ -52,7 +54,10 @@ export default function getItemSets(grammar: Grammar) {
     for (let i = 0; i < itemSet.items.length; i++) {
       const item = itemSet.items[i];
       if (item.dot < item.rhs.length) {
-        add(item.rhs[item.dot]);
+        const next = item.rhs[item.dot];
+        if (next !== null) {
+          add(next);
+        }
       }
     }
   }

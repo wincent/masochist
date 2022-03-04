@@ -3,7 +3,7 @@ export type Grammar = {
   rules: Array<Rule>;
 };
 
-type Rule = {
+export type Rule = {
   lhs: string;
   rhs: Array<string>;
   action?: string;

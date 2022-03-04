@@ -4,7 +4,7 @@ import getItemSets from '../getItemSets';
 import getParseTable from '../getParseTable';
 import itemSetsToTransitionTable from '../itemSetsToTransitionTable';
 import parseWithTable, {makeNode} from '../parseWithTable';
-import {subsetGrammar, toyGrammar} from './grammars';
+import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
 
 import type {ParseTree} from '../parseWithTable';
 
@@ -129,6 +129,86 @@ describe('parseWithTable()', () => {
                 },
               ],
             },
+          ],
+        },
+      ],
+    });
+  });
+
+  it('parses samples for the epsilon grammar', () => {
+    const itemSets = getItemSets(epsilonGrammar);
+    const transitionTable = itemSetsToTransitionTable(itemSets, epsilonGrammar);
+    const table = getParseTable(itemSets, transitionTable, epsilonGrammar);
+
+    // First, with optional BAR present.
+    let input = 'BAR{FOO}';
+    let tokens: Array<Token> = [
+      new Token('BAR', 0, 3, input),
+      new Token('OPEN_BRACKET', 3, 4, input),
+      new Token('FOO', 4, 7, input),
+      new Token('CLOSE_BRACKET', 7, 8, input),
+    ];
+
+    // Just confirming that I got the manually created tokens right.
+    expect(tokens[0].contents).toBe('BAR');
+    expect(tokens[1].contents).toBe('{');
+    expect(tokens[2].contents).toBe('FOO');
+    expect(tokens[3].contents).toBe('}');
+
+    expect(
+      parseWithTable<ParseTree>(table, tokens, epsilonGrammar, makeNode),
+    ).toEqual({
+      kind: 'S',
+      children: [
+        {
+          kind: 'Program',
+          children: [
+            {
+              kind: 'BarOpt',
+              children: [tokens[0]],
+            },
+            tokens[1],
+            {
+              kind: 'FooList',
+              children: [tokens[2]],
+            },
+            tokens[3],
+          ],
+        },
+      ],
+    });
+
+    // Now, without optional BAR.
+    input = '{FOO}';
+    tokens = [
+      new Token('OPEN_BRACKET', 0, 1, input),
+      new Token('FOO', 1, 4, input),
+      new Token('CLOSE_BRACKET', 4, 5, input),
+    ];
+
+    // Just confirming that I got the manually created tokens right.
+    expect(tokens[0].contents).toBe('{');
+    expect(tokens[1].contents).toBe('FOO');
+    expect(tokens[2].contents).toBe('}');
+
+    expect(
+      parseWithTable<ParseTree>(table, tokens, epsilonGrammar, makeNode),
+    ).toEqual({
+      kind: 'S',
+      children: [
+        {
+          kind: 'Program',
+          children: [
+            {
+              kind: 'BarOpt',
+              children: [],
+            },
+            tokens[0],
+            {
+              kind: 'FooList',
+              children: [tokens[1]],
+            },
+            tokens[2],
           ],
         },
       ],

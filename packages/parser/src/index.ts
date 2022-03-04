@@ -33,13 +33,7 @@ const grammarDeclaration = `
   SelectionList → SelectionList Selection { $1.push($2); $$ = $1; }
   Selection → Field
 
-  Field → NAME {
-    $$ = {
-      kind: 'FIELD',
-      name: $1.contents,
-    };
-  }
-  Field → Alias NAME {
+  Field → AliasOpt NAME {
     $$ = {
       kind: 'FIELD',
       alias: $1,
@@ -47,7 +41,8 @@ const grammarDeclaration = `
     };
   }
 
-  Alias → NAME COLON { $$ = $1.contents; }
+  AliasOpt → NAME COLON { $$ = $1.contents; }
+  AliasOpt → ε
 `;
 
 export const grammar = parseDSL(grammarDeclaration);
