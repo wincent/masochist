@@ -12,7 +12,9 @@ describe('GraphQL parser', () => {
       {
         foo
         barAlias: bar
-        baz
+        baz {
+          qux
+        }
       }
     `),
     ];
@@ -28,37 +30,35 @@ describe('GraphQL parser', () => {
                 kind: 'ExecutableDefinition',
                 children: [
                   {
-                    kind: 'OperationDefinition',
-                    children: [
+                    kind: 'OPERATION',
+                    selections: [
                       {
-                        kind: 'Selection',
-                        children: [
-                          {
-                            kind: 'FIELD',
-                            name: 'foo',
-                          },
-                        ],
+                        kind: 'FIELD',
+                        alias: null,
+                        name: 'foo',
+                        selections: null,
                       },
                       {
-                        kind: 'Selection',
-                        children: [
-                          {
-                            kind: 'FIELD',
-                            name: 'bar',
-                            alias: 'barAlias',
-                          },
-                        ],
+                        kind: 'FIELD',
+                        alias: 'barAlias',
+                        name: 'bar',
+                        selections: null,
                       },
                       {
-                        kind: 'Selection',
-                        children: [
+                        kind: 'FIELD',
+                        alias: null,
+                        name: 'baz',
+                        selections: [
                           {
                             kind: 'FIELD',
-                            name: 'baz',
+                            alias: null,
+                            name: 'qux',
+                            selections: null,
                           },
                         ],
                       },
                     ],
+                    type: 'QUERY',
                   },
                 ],
               },

@@ -23,26 +23,50 @@ const grammarDeclaration = `
   %token STRING_VALUE BLOCK_STRING_VALUE
 
   Document → DefinitionList
+
   DefinitionList → Definition { $$ = [$1]; }
   DefinitionList → DefinitionList Definition { $1.push($2); $$ = $1; }
+
   Definition → ExecutableDefinition
+
   ExecutableDefinition → OperationDefinition
-  OperationDefinition → SelectionSet
+
+  OperationDefinition → SelectionSet {
+    $$ = {
+      kind: 'OPERATION',
+      selections: $1,
+      type: 'QUERY',
+    };
+  }
+
   SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE { $$ = $2; }
+
+  SelectionSetOpt → SelectionSet { $$ = $1; }
+  SelectionSetOpt → ε { $$ = null; }
+
   SelectionList → Selection { $$ = [$1]; }
   SelectionList → SelectionList Selection { $1.push($2); $$ = $1; }
-  Selection → Field
 
-  Field → AliasOpt NAME {
+  Selection → Field { $$ = $1; }
+
+  Field → NAME SelectionSetOpt {
+    $$ = {
+      kind: 'FIELD',
+      alias: null,
+      name: $1.contents,
+      selections: $2,
+    };
+  }
+  Field → Alias NAME SelectionSetOpt {
     $$ = {
       kind: 'FIELD',
       alias: $1,
       name: $2.contents,
+      selections: $3,
     };
   }
 
-  AliasOpt → NAME COLON { $$ = $1.contents; }
-  AliasOpt → ε
+  Alias → NAME COLON { $$ = $1.contents; }
 `;
 
 export const grammar = parseDSL(grammarDeclaration);

@@ -83,7 +83,6 @@ export default function parseWithTable<P>(
       invariant(stack.length > rhs.length);
       for (let i = 0; i < rhs.length; i++) {
         const [node] = stack.pop()!;
-        invariant(node, 'parseWithTable(): expected non-null production');
         // TODO: if we have an action, don't set items that aren't used in the action
         popped[rhs.length - i - 1] = node;
       }
@@ -109,7 +108,7 @@ export default function parseWithTable<P>(
         }
         context['$$'] = undefined;
         vm.runInContext(code, context);
-        invariant(context['$$'], 'production was undefined');
+        invariant(context['$$'] !== undefined, 'production was undefined');
         stack.push([context['$$'], target]);
       } else {
         stack.push([makeNode(lhs, popped), target]);
