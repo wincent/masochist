@@ -1,3 +1,4 @@
+import {grammar} from '..';
 import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getFollowSets from '../getFollowSets';
 import getItemSets from '../getItemSets';
@@ -73,5 +74,82 @@ describe('getFollowSets()', () => {
       FooList: new Set(['CLOSE_BRACKET', 'FOO']),
       BarOpt: new Set(['OPEN_BRACKET']),
     });
+  });
+
+  // you can see this is wrong for OperationNameOpt
+  // contains AT but should also containg OPENING_BRACE
+  it('produces follow sets for the GraphQL grammar', () => {
+    expect(getFollowSets(grammar)).toMatchInlineSnapshot(`
+      Object {
+        "Alias": Set {
+          "NAME",
+        },
+        "Definition": Set {
+          "NAME",
+          "OPENING_BRACE",
+          null,
+        },
+        "DefinitionList": Set {
+          "NAME",
+          "OPENING_BRACE",
+          null,
+        },
+        "Directive": Set {
+          "AT",
+          "OPENING_BRACE",
+        },
+        "DirectiveList": Set {
+          "AT",
+          "OPENING_BRACE",
+        },
+        "DirectivesOpt": Set {
+          "OPENING_BRACE",
+        },
+        "Document": Set {
+          null,
+        },
+        "ExecutableDefinition": Set {
+          "NAME",
+          "OPENING_BRACE",
+          null,
+        },
+        "Field": Set {
+          "CLOSING_BRACE",
+          "NAME",
+        },
+        "OperationDefinition": Set {
+          "NAME",
+          "OPENING_BRACE",
+          null,
+        },
+        "OperationNameOpt": Set {
+          "AT",
+          "OPENING_BRACE",
+        },
+        "OperationType": Set {
+          "NAME",
+          "AT",
+          "OPENING_BRACE",
+        },
+        "Selection": Set {
+          "CLOSING_BRACE",
+          "NAME",
+        },
+        "SelectionList": Set {
+          "CLOSING_BRACE",
+          "NAME",
+        },
+        "SelectionSet": Set {
+          "NAME",
+          "OPENING_BRACE",
+          null,
+          "CLOSING_BRACE",
+        },
+        "SelectionSetOpt": Set {
+          "CLOSING_BRACE",
+          "NAME",
+        },
+      }
+    `);
   });
 });

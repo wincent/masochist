@@ -1,5 +1,6 @@
 import {dedent} from '@masochist/common';
 
+import {itemSets} from '..';
 import getItemSets from '../getItemSets';
 import stringifyItemSets from '../stringifyItemSets';
 import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
@@ -169,6 +170,154 @@ describe('getItemSets()', () => {
         I9:
           FooList → FooList FOO ·
       ` + '\n',
+    );
+  });
+
+  it('produces item sets for the GraphQL grammar', () => {
+    expect('\n' + stringifyItemSets(itemSets)).toMatchInlineSnapshot(
+      `
+      "
+      I0:
+        Document' → · Document
+        Document → · DefinitionList
+        DefinitionList → · Definition
+        Definition → · ExecutableDefinition
+        ExecutableDefinition → · OperationDefinition
+        OperationDefinition → · OperationType OperationNameOpt DirectivesOpt SelectionSet
+        OperationType → · NAME
+        OperationDefinition → · SelectionSet
+        SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
+        DefinitionList → · DefinitionList Definition
+
+      I1:
+        Document' → Document ·
+
+      I2:
+        Document → DefinitionList ·
+        DefinitionList → DefinitionList · Definition
+        Definition → · ExecutableDefinition
+        ExecutableDefinition → · OperationDefinition
+        OperationDefinition → · OperationType OperationNameOpt DirectivesOpt SelectionSet
+        OperationType → · NAME
+        OperationDefinition → · SelectionSet
+        SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
+
+      I3:
+        DefinitionList → Definition ·
+
+      I4:
+        Definition → ExecutableDefinition ·
+
+      I5:
+        ExecutableDefinition → OperationDefinition ·
+
+      I6:
+        OperationDefinition → OperationType · OperationNameOpt DirectivesOpt SelectionSet
+        OperationNameOpt → · NAME
+        OperationNameOpt → ε ·
+
+      I7:
+        OperationType → NAME ·
+
+      I8:
+        OperationDefinition → SelectionSet ·
+
+      I9:
+        SelectionSet → OPENING_BRACE · SelectionList CLOSING_BRACE
+        SelectionList → · Selection
+        Selection → · Field
+        Field → · NAME SelectionSetOpt
+        Field → · Alias NAME SelectionSetOpt
+        Alias → · NAME COLON
+        SelectionList → · SelectionList Selection
+
+      I10:
+        DefinitionList → DefinitionList Definition ·
+
+      I11:
+        OperationDefinition → OperationType OperationNameOpt · DirectivesOpt SelectionSet
+        DirectivesOpt → · DirectiveList
+        DirectiveList → · Directive
+        Directive → · AT NAME
+        DirectiveList → · DirectiveList Directive
+        DirectivesOpt → ε ·
+
+      I12:
+        OperationNameOpt → NAME ·
+
+      I13:
+        SelectionSet → OPENING_BRACE SelectionList · CLOSING_BRACE
+        SelectionList → SelectionList · Selection
+        Selection → · Field
+        Field → · NAME SelectionSetOpt
+        Field → · Alias NAME SelectionSetOpt
+        Alias → · NAME COLON
+
+      I14:
+        SelectionList → Selection ·
+
+      I15:
+        Selection → Field ·
+
+      I16:
+        Field → NAME · SelectionSetOpt
+        Alias → NAME · COLON
+        SelectionSetOpt → · SelectionSet
+        SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
+        SelectionSetOpt → ε ·
+
+      I17:
+        Field → Alias · NAME SelectionSetOpt
+
+      I18:
+        OperationDefinition → OperationType OperationNameOpt DirectivesOpt · SelectionSet
+        SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
+
+      I19:
+        DirectivesOpt → DirectiveList ·
+        DirectiveList → DirectiveList · Directive
+        Directive → · AT NAME
+
+      I20:
+        DirectiveList → Directive ·
+
+      I21:
+        Directive → AT · NAME
+
+      I22:
+        SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE ·
+
+      I23:
+        SelectionList → SelectionList Selection ·
+
+      I24:
+        Field → NAME SelectionSetOpt ·
+
+      I25:
+        Alias → NAME COLON ·
+
+      I26:
+        SelectionSetOpt → SelectionSet ·
+
+      I27:
+        Field → Alias NAME · SelectionSetOpt
+        SelectionSetOpt → · SelectionSet
+        SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
+        SelectionSetOpt → ε ·
+
+      I28:
+        OperationDefinition → OperationType OperationNameOpt DirectivesOpt SelectionSet ·
+
+      I29:
+        DirectiveList → DirectiveList Directive ·
+
+      I30:
+        Directive → AT NAME ·
+
+      I31:
+        Field → Alias NAME SelectionSetOpt ·
+      "
+    `,
     );
   });
 });

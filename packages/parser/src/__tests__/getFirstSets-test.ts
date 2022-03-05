@@ -1,3 +1,4 @@
+import {grammar} from '..';
 import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getFirstSets from '../getFirstSets';
 import getItemSets from '../getItemSets';
@@ -73,5 +74,68 @@ describe('getFirstSets()', () => {
       FooList: new Set(['FOO']),
       BarOpt: new Set(['BAR', null]),
     });
+  });
+
+  it('produces first sets for the GraphQL grammar', () => {
+    expect(getFirstSets(grammar)).toMatchInlineSnapshot(`
+      Object {
+        "Alias": Set {
+          "NAME",
+        },
+        "Definition": Set {
+          "NAME",
+          "OPENING_BRACE",
+        },
+        "DefinitionList": Set {
+          "NAME",
+          "OPENING_BRACE",
+        },
+        "Directive": Set {
+          "AT",
+        },
+        "DirectiveList": Set {
+          "AT",
+        },
+        "DirectivesOpt": Set {
+          null,
+          "AT",
+        },
+        "Document": Set {
+          "NAME",
+          "OPENING_BRACE",
+        },
+        "ExecutableDefinition": Set {
+          "NAME",
+          "OPENING_BRACE",
+        },
+        "Field": Set {
+          "NAME",
+        },
+        "OperationDefinition": Set {
+          "NAME",
+          "OPENING_BRACE",
+        },
+        "OperationNameOpt": Set {
+          "NAME",
+          null,
+        },
+        "OperationType": Set {
+          "NAME",
+        },
+        "Selection": Set {
+          "NAME",
+        },
+        "SelectionList": Set {
+          "NAME",
+        },
+        "SelectionSet": Set {
+          "OPENING_BRACE",
+        },
+        "SelectionSetOpt": Set {
+          "OPENING_BRACE",
+          null,
+        },
+      }
+    `);
   });
 });

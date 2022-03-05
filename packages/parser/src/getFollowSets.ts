@@ -17,17 +17,37 @@ export default function getFollowSets(grammar: Grammar) {
   // For rule, "A → a B b", add everything in FIRST(b) except ε to FOLLOW(B).
   for (let i = 1; i < grammar.rules.length; i++) {
     const {rhs} = grammar.rules[i];
-    for (let j = 0; j < rhs.length; j++) {
+    // Walk backwards so we can propagate through symbols that contain epsilon
+    // productions (eg. in a rule like `A → B C D e`, if both `C` and `D`
+    // contain epsilon, they are "transparent" and allow `B` to see all the way
+    // through to `e`).
+    for (let j = rhs.length - 2; j >= 0; j--) {
       const current = rhs[j];
       if (!tokens.has(current)) {
         const next = rhs[j + 1];
-        if (next) {
-          for (const symbol of first[next] || [next]) {
-            if (symbol !== null) {
+        if (!tokens.has(next)) {
+          // Both `current` and `next` are non-terminals
+          let hasEpsilon = false;
+          for (const symbol of first[next]) {
+            if (symbol === null) {
+              hasEpsilon = true;
+            } else {
               followSets[current] = followSets[current] || new Set();
               followSets[current].add(symbol);
             }
           }
+          if (hasEpsilon) {
+            // Need to add everything from FOLLOW(next) too.
+            for (const symbol of followSets[next]) {
+              followSets[current] = followSets[current] || new Set();
+              followSets[current].add(symbol);
+            }
+          }
+        } else {
+          // `current` is non-terminal, `next` is terminal, so FOLLOW(current)
+          // contains `next`.
+          followSets[current] = followSets[current] || new Set();
+          followSets[current].add(next);
         }
       }
     }
