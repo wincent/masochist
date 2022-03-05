@@ -6,10 +6,10 @@ import parseWithTable, {makeNode} from '../parseWithTable';
 import type {ParseTree} from '../parseWithTable';
 
 describe('GraphQL parser', () => {
-  it('parses a simple anonymous query', () => {
+  it('parses a simple named query', () => {
     const tokens = [
       ...lex(`
-      {
+      query IndexQuery {
         foo
         barAlias: bar
         baz {
@@ -31,6 +31,7 @@ describe('GraphQL parser', () => {
                 children: [
                   {
                     kind: 'OPERATION',
+                    name: 'IndexQuery',
                     selections: [
                       {
                         kind: 'FIELD',

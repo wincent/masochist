@@ -12,6 +12,11 @@ export default function parseDSL(dsl: string): Grammar {
   const tokens = new Set<string>();
   const rules: Array<Rule> = [];
   while (!scanner.atEnd) {
+    // Skip comments.
+    if (scanner.scan(/[ \t]*#[^\n]*\n/)) {
+      continue;
+    }
+
     // Scan %tokens.
     if (scanner.scan(/%token\b/)) {
       const symbols = [];
@@ -76,6 +81,9 @@ export default function parseDSL(dsl: string): Grammar {
           // Epsilon is nothing; we don't even represent it with `null`.
         } else if (scanner.scan(symbol)) {
           rhs.push(scanner.last!);
+        } else if (scanner.peek('#')) {
+          // Comment.
+          break;
         } else if (scanner.scan(/\W+/)) {
           throw new Error(
             `parseDSL(): Unexpected input at ${scanner.fullContext}`,

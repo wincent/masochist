@@ -31,13 +31,39 @@ const grammarDeclaration = `
 
   ExecutableDefinition → OperationDefinition
 
+  # TODO: also VariableDefinitionsOpt DirectivesOpt
+  OperationDefinition → OperationType OperationNameOpt SelectionSet {
+    $$ = {
+      kind: 'OPERATION',
+      name: $2,
+      selections: $3,
+      type: $1,
+    };
+  }
   OperationDefinition → SelectionSet {
     $$ = {
       kind: 'OPERATION',
+      name: null,
       selections: $1,
       type: 'QUERY',
     };
   }
+
+  OperationType → NAME {{
+    const {contents} = $1;
+    if (contents === 'query') {
+      $$ = 'QUERY';
+    } else if (contents === 'mutation') {
+      $$ = 'MUTATION';
+    } else if (contents === 'subscription') {
+      $$ = 'SUBSCRIPTION';
+    } else {
+      throw new Error('Unsupported operation type: ' + contents);
+    }
+  }}
+
+  OperationNameOpt → NAME { $$ = $1.contents; }
+  OperationNameOpt → ε { $$ = null; }
 
   SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE { $$ = $2; }
 

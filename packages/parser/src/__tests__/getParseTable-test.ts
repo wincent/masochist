@@ -275,29 +275,34 @@ describe('getParseTable()', () => {
   it('returns a ParseTable for the full grammar', () => {
     expect('\n' + stringifyParseTable(table)).toMatchInlineSnapshot(`
       "
-      | State | CLOSING_BRACE | COLON | NAME | OPENING_BRACE |      $ |Alias |Definition |DefinitionList |Document |ExecutableDefinition |Field |OperationDefinition |Selection |SelectionList |SelectionSet |SelectionSetOpt |
-      |-------|---------------|-------|------|---------------|--------|------|-----------|---------------|---------|---------------------|------|--------------------|----------|--------------|-------------|----------------|
-      |     0 |               |       |      |            s7 |        |      |         3 |             2 |       1 |                   4 |      |                  5 |          |              |           6 |                |
-      |     1 |               |       |      |               | accept |      |           |               |         |                     |      |                    |          |              |             |                |
-      |     2 |               |       |      |            s7 |     r1 |      |         8 |               |         |                   4 |      |                  5 |          |              |           6 |                |
-      |     3 |               |       |      |            r2 |     r2 |      |           |               |         |                     |      |                    |          |              |             |                |
-      |     4 |               |       |      |            r4 |     r4 |      |           |               |         |                     |      |                    |          |              |             |                |
-      |     5 |               |       |      |            r5 |     r5 |      |           |               |         |                     |      |                    |          |              |             |                |
-      |     6 |               |       |      |            r6 |     r6 |      |           |               |         |                     |      |                    |          |              |             |                |
-      |     7 |               |       |  s12 |               |        |   13 |           |               |         |                     |   11 |                    |       10 |            9 |             |                |
-      |     8 |               |       |      |            r3 |     r3 |      |           |               |         |                     |      |                    |          |              |             |                |
-      |     9 |           s14 |       |  s12 |               |        |   13 |           |               |         |                     |   11 |                    |       15 |              |             |                |
-      |    10 |           r10 |       |  r10 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
-      |    11 |           r12 |       |  r12 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
-      |    12 |            r9 |   s17 |   r9 |            s7 |        |      |           |               |         |                     |      |                    |          |              |          18 |             16 |
-      |    13 |               |       |  s19 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
-      |    14 |            r7 |       |   r7 |            r7 |     r7 |      |           |               |         |                     |      |                    |          |              |             |                |
-      |    15 |           r11 |       |  r11 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
-      |    16 |           r13 |       |  r13 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
-      |    17 |               |       |  r15 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
-      |    18 |            r8 |       |   r8 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
-      |    19 |            r9 |       |   r9 |            s7 |        |      |           |               |         |                     |      |                    |          |              |          18 |             20 |
-      |    20 |           r14 |       |  r14 |               |        |      |           |               |         |                     |      |                    |          |              |             |                |
+      | State | CLOSING_BRACE | COLON | NAME | OPENING_BRACE |      $ |Alias |Definition |DefinitionList |Document |ExecutableDefinition |Field |OperationDefinition |OperationNameOpt |OperationType |Selection |SelectionList |SelectionSet |SelectionSetOpt |
+      |-------|---------------|-------|------|---------------|--------|------|-----------|---------------|---------|---------------------|------|--------------------|-----------------|--------------|----------|--------------|-------------|----------------|
+      |     0 |               |       |   s7 |            s9 |        |      |         3 |             2 |       1 |                   4 |      |                  5 |                 |            6 |          |              |           8 |                |
+      |     1 |               |       |      |               | accept |      |           |               |         |                     |      |                    |                 |              |          |              |             |                |
+      |     2 |               |       |   s7 |            s9 |     r1 |      |        10 |               |         |                   4 |      |                  5 |                 |            6 |          |              |           8 |                |
+      |     3 |               |       |   r2 |            r2 |     r2 |      |           |               |         |                     |      |                    |                 |              |          |              |             |                |
+      |     4 |               |       |   r4 |            r4 |     r4 |      |           |               |         |                     |      |                    |                 |              |          |              |             |                |
+      |     5 |               |       |   r5 |            r5 |     r5 |      |           |               |         |                     |      |                    |                 |              |          |              |             |                |
+      |     6 |               |       |  s12 |           r10 |        |      |           |               |         |                     |      |                    |              11 |              |          |              |             |                |
+      |     7 |               |       |   r8 |               |        |      |           |               |         |                     |      |                    |                 |              |          |              |             |                |
+      |     8 |               |       |   r7 |            r7 |     r7 |      |           |               |         |                     |      |                    |                 |              |          |              |             |                |
+      |     9 |               |       |  s16 |               |        |   17 |           |               |         |                     |   15 |                    |                 |              |       14 |           13 |             |                |
+      |    10 |               |       |   r3 |            r3 |     r3 |      |           |               |         |                     |      |                    |                 |              |          |              |             |                |
+      |    11 |               |       |      |            s9 |        |      |           |               |         |                     |      |                    |                 |              |          |              |          18 |                |
+      |    12 |               |       |      |            r9 |        |      |           |               |         |                     |      |                    |                 |              |          |              |             |                |
+      |    13 |           s19 |       |  s16 |               |        |   17 |           |               |         |                     |   15 |                    |                 |              |       20 |              |             |                |
+      |    14 |           r14 |       |  r14 |               |        |      |           |               |         |                     |      |                    |                 |              |          |              |             |                |
+      |    15 |           r16 |       |  r16 |               |        |      |           |               |         |                     |      |                    |                 |              |          |              |             |                |
+      |    16 |           r13 |   s22 |  r13 |            s9 |        |      |           |               |         |                     |      |                    |                 |              |          |              |          23 |             21 |
+      |    17 |               |       |  s24 |               |        |      |           |               |         |                     |      |                    |                 |              |          |              |             |                |
+      |    18 |               |       |   r6 |            r6 |     r6 |      |           |               |         |                     |      |                    |                 |              |          |              |             |                |
+      |    19 |           r11 |       |  r11 |           r11 |    r11 |      |           |               |         |                     |      |                    |                 |              |          |              |             |                |
+      |    20 |           r15 |       |  r15 |               |        |      |           |               |         |                     |      |                    |                 |              |          |              |             |                |
+      |    21 |           r17 |       |  r17 |               |        |      |           |               |         |                     |      |                    |                 |              |          |              |             |                |
+      |    22 |               |       |  r19 |               |        |      |           |               |         |                     |      |                    |                 |              |          |              |             |                |
+      |    23 |           r12 |       |  r12 |               |        |      |           |               |         |                     |      |                    |                 |              |          |              |             |                |
+      |    24 |           r13 |       |  r13 |            s9 |        |      |           |               |         |                     |      |                    |                 |              |          |              |          23 |             25 |
+      |    25 |           r18 |       |  r18 |               |        |      |           |               |         |                     |      |                    |                 |              |          |              |             |                |
       "
     `);
 
@@ -330,20 +335,43 @@ describe('getParseTable()', () => {
       r3: DefinitionList → DefinitionList Definition { $1.push($2); $$ = $1; }
       r4: Definition → ExecutableDefinition
       r5: ExecutableDefinition → OperationDefinition
-      r6: OperationDefinition → SelectionSet {
+      r6: OperationDefinition → OperationType OperationNameOpt SelectionSet {
           $$ = {
             kind: 'OPERATION',
+            name: $2,
+            selections: $3,
+            type: $1,
+          };
+        }
+      r7: OperationDefinition → SelectionSet {
+          $$ = {
+            kind: 'OPERATION',
+            name: null,
             selections: $1,
             type: 'QUERY',
           };
         }
-      r7: SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE { $$ = $2; }
-      r8: SelectionSetOpt → SelectionSet { $$ = $1; }
-      r9: SelectionSetOpt → ε { $$ = null; }
-      r10: SelectionList → Selection { $$ = [$1]; }
-      r11: SelectionList → SelectionList Selection { $1.push($2); $$ = $1; }
-      r12: Selection → Field { $$ = $1; }
-      r13: Field → NAME SelectionSetOpt {
+      r8: OperationType → NAME {{
+          const {contents} = $1;
+          if (contents === 'query') {
+            $$ = 'QUERY';
+          } else if (contents === 'mutation') {
+            $$ = 'MUTATION';
+          } else if (contents === 'subscription') {
+            $$ = 'SUBSCRIPTION';
+          } else {
+            throw new Error('Unsupported operation type: ' + contents);
+          }
+        }}
+      r9: OperationNameOpt → NAME { $$ = $1.contents; }
+      r10: OperationNameOpt → ε { $$ = null; }
+      r11: SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE { $$ = $2; }
+      r12: SelectionSetOpt → SelectionSet { $$ = $1; }
+      r13: SelectionSetOpt → ε { $$ = null; }
+      r14: SelectionList → Selection { $$ = [$1]; }
+      r15: SelectionList → SelectionList Selection { $1.push($2); $$ = $1; }
+      r16: Selection → Field { $$ = $1; }
+      r17: Field → NAME SelectionSetOpt {
           $$ = {
             kind: 'FIELD',
             alias: null,
@@ -351,7 +379,7 @@ describe('getParseTable()', () => {
             selections: $2,
           };
         }
-      r14: Field → Alias NAME SelectionSetOpt {
+      r18: Field → Alias NAME SelectionSetOpt {
           $$ = {
             kind: 'FIELD',
             alias: $1,
@@ -359,7 +387,7 @@ describe('getParseTable()', () => {
             selections: $3,
           };
         }
-      r15: Alias → NAME COLON { $$ = $1.contents; }
+      r19: Alias → NAME COLON { $$ = $1.contents; }
       "
     `);
   });

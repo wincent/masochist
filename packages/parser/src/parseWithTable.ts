@@ -101,8 +101,8 @@ export default function parseWithTable<P>(
             const variable = scanner.scan(/\d+/);
             if (variable) {
               context[`$${variable}`] = popped[parseInt(variable, 10) - 1];
-            } else if (!scanner.scan(/\$/)) {
-              throw new Error(`parseWithTable(): Bad action - ${code}`);
+            } else {
+              scanner.scan(/\$/);
             }
           }
         }
