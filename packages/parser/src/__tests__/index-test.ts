@@ -6,64 +6,89 @@ import parseWithTable, {makeNode} from '../parseWithTable';
 import type {ParseTree} from '../parseWithTable';
 
 describe('GraphQL parser', () => {
-  it('parses a simple named query', () => {
+  it('parses a simple document', () => {
     const tokens = [
       ...lex(`
-      query IndexQuery {
-        foo
-        barAlias: bar
-        baz {
-          qux
+        query IndexQuery @deprecated {
+          foo
+          barAlias: bar
+          baz {
+            qux
+          }
         }
-      }
+
+        # BUG: if I remove directive here, we fail to parse
+        query NewQuery @live {
+          hai
+        }
     `),
     ];
 
     expect(parseWithTable<ParseTree>(table, tokens, grammar, makeNode)).toEqual(
       {
-        kind: 'Document',
-        children: [
+        kind: 'DOCUMENT',
+        definitions: [
           {
-            kind: 'Definition',
-            children: [
+            kind: 'OPERATION',
+            name: 'IndexQuery',
+            directives: [
               {
-                kind: 'ExecutableDefinition',
-                children: [
+                kind: 'DIRECTIVE',
+                name: 'deprecated',
+              },
+            ],
+            selections: [
+              {
+                kind: 'FIELD',
+                alias: null,
+                directives: null,
+                name: 'foo',
+                selections: null,
+              },
+              {
+                kind: 'FIELD',
+                alias: 'barAlias',
+                directives: null,
+                name: 'bar',
+                selections: null,
+              },
+              {
+                kind: 'FIELD',
+                alias: null,
+                directives: null,
+                name: 'baz',
+                selections: [
                   {
-                    kind: 'OPERATION',
-                    name: 'IndexQuery',
-                    selections: [
-                      {
-                        kind: 'FIELD',
-                        alias: null,
-                        name: 'foo',
-                        selections: null,
-                      },
-                      {
-                        kind: 'FIELD',
-                        alias: 'barAlias',
-                        name: 'bar',
-                        selections: null,
-                      },
-                      {
-                        kind: 'FIELD',
-                        alias: null,
-                        name: 'baz',
-                        selections: [
-                          {
-                            kind: 'FIELD',
-                            alias: null,
-                            name: 'qux',
-                            selections: null,
-                          },
-                        ],
-                      },
-                    ],
-                    type: 'QUERY',
+                    kind: 'FIELD',
+                    alias: null,
+                    directives: null,
+                    name: 'qux',
+                    selections: null,
                   },
                 ],
               },
             ],
+            type: 'QUERY',
+          },
+          {
+            kind: 'OPERATION',
+            name: 'NewQuery',
+            directives: [
+              {
+                kind: 'DIRECTIVE',
+                name: 'live',
+              },
+            ],
+            selections: [
+              {
+                kind: 'FIELD',
+                alias: null,
+                directives: null,
+                name: 'hai',
+                selections: null,
+              },
+            ],
+            type: 'QUERY',
           },
         ],
       },

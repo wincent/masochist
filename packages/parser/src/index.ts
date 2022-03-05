@@ -22,21 +22,27 @@ const grammarDeclaration = `
   %token OPENING_PAREN CLOSING_PAREN
   %token STRING_VALUE BLOCK_STRING_VALUE
 
-  Document → DefinitionList
+  Document → DefinitionList {
+    $$ = {
+      kind: 'DOCUMENT',
+      definitions: $1,
+    };
+  }
 
   DefinitionList → Definition { $$ = [$1]; }
   DefinitionList → DefinitionList Definition { $1.push($2); $$ = $1; }
 
-  Definition → ExecutableDefinition
+  Definition → ExecutableDefinition { $$ = $1; }
 
-  ExecutableDefinition → OperationDefinition
+  ExecutableDefinition → OperationDefinition { $$ = $1; }
 
-  # TODO: also VariableDefinitionsOpt DirectivesOpt
-  OperationDefinition → OperationType OperationNameOpt SelectionSet {
+  # TODO: also VariableDefinitionsOpt
+  OperationDefinition → OperationType OperationNameOpt DirectivesOpt SelectionSet {
     $$ = {
       kind: 'OPERATION',
       name: $2,
-      selections: $3,
+      directives: $3,
+      selections: $4,
       type: $1,
     };
   }
@@ -44,6 +50,7 @@ const grammarDeclaration = `
     $$ = {
       kind: 'OPERATION',
       name: null,
+      directives: null,
       selections: $1,
       type: 'QUERY',
     };
@@ -75,10 +82,12 @@ const grammarDeclaration = `
 
   Selection → Field { $$ = $1; }
 
+  # TODO: add DirectivesOpt to these
   Field → NAME SelectionSetOpt {
     $$ = {
       kind: 'FIELD',
       alias: null,
+      directives: null,
       name: $1.contents,
       selections: $2,
     };
@@ -87,12 +96,27 @@ const grammarDeclaration = `
     $$ = {
       kind: 'FIELD',
       alias: $1,
+      directives: null,
       name: $2.contents,
       selections: $3,
     };
   }
 
   Alias → NAME COLON { $$ = $1.contents; }
+
+  DirectivesOpt → DirectiveList { $$ = $1; }
+  DirectivesOpt → ε { $$ = null; }
+
+  DirectiveList → Directive { $$ = [$1]; }
+  DirectiveList → DirectiveList Directive { $1.push($2); $$ = $1; }
+
+  # TODO: add arguments
+  Directive → AT NAME {
+    $$ = {
+      kind: 'DIRECTIVE',
+      name: $2.contents,
+    };
+  }
 `;
 
 export const grammar = parseDSL(grammarDeclaration);
