@@ -1,7 +1,8 @@
-import {grammar} from '..';
+import {grammar, itemSets} from '..';
 import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getFollowSets from '../getFollowSets';
 import getItemSets from '../getItemSets';
+import stringifySymbolSets from '../stringifySymbolSets';
 import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
 
 describe('getFollowSets()', () => {
@@ -77,77 +78,64 @@ describe('getFollowSets()', () => {
   });
 
   it('produces follow sets for the GraphQL grammar', () => {
-    expect(getFollowSets(grammar)).toMatchInlineSnapshot(`
-      Object {
-        "Alias": Set {
-          "NAME",
-        },
-        "Definition": Set {
-          "NAME",
-          "OPENING_BRACE",
-          null,
-        },
-        "DefinitionList": Set {
-          "NAME",
-          "OPENING_BRACE",
-          null,
-        },
-        "Directive": Set {
-          "AT",
-          "OPENING_BRACE",
-        },
-        "DirectiveList": Set {
-          "AT",
-          "OPENING_BRACE",
-        },
-        "DirectivesOpt": Set {
-          "OPENING_BRACE",
-        },
-        "Document": Set {
-          null,
-        },
-        "ExecutableDefinition": Set {
-          "NAME",
-          "OPENING_BRACE",
-          null,
-        },
-        "Field": Set {
-          "CLOSING_BRACE",
-          "NAME",
-        },
-        "OperationDefinition": Set {
-          "NAME",
-          "OPENING_BRACE",
-          null,
-        },
-        "OperationNameOpt": Set {
-          "AT",
-          "OPENING_BRACE",
-        },
-        "OperationType": Set {
-          "NAME",
-          "AT",
-          "OPENING_BRACE",
-        },
-        "Selection": Set {
-          "CLOSING_BRACE",
-          "NAME",
-        },
-        "SelectionList": Set {
-          "CLOSING_BRACE",
-          "NAME",
-        },
-        "SelectionSet": Set {
-          "NAME",
-          "OPENING_BRACE",
-          null,
-          "CLOSING_BRACE",
-        },
-        "SelectionSetOpt": Set {
-          "CLOSING_BRACE",
-          "NAME",
-        },
-      }
+    expect('\n' + stringifySymbolSets(getFollowSets(grammar)))
+      .toMatchInlineSnapshot(`
+      "
+      Document             : {null}
+      DefinitionList       : {NAME, OPENING_BRACE, null}
+      DirectivesOpt        : {OPENING_BRACE}
+      OperationNameOpt     : {AT, OPENING_BRACE}
+      OperationType        : {AT, NAME, OPENING_BRACE}
+      SelectionList        : {CLOSING_BRACE, NAME}
+      Alias                : {NAME}
+      DirectiveList        : {AT, OPENING_BRACE}
+      Definition           : {NAME, OPENING_BRACE, null}
+      ExecutableDefinition : {NAME, OPENING_BRACE, null}
+      OperationDefinition  : {NAME, OPENING_BRACE, null}
+      SelectionSet         : {CLOSING_BRACE, NAME, OPENING_BRACE, null}
+      SelectionSetOpt      : {CLOSING_BRACE, NAME}
+      Selection            : {CLOSING_BRACE, NAME}
+      Field                : {CLOSING_BRACE, NAME}
+      Directive            : {AT, OPENING_BRACE}"
+    `);
+  });
+
+  it('produces follow sets for the extended GraphQL grammar', () => {
+    const itemSets = getItemSets(grammar);
+    const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
+    expect('\n' + stringifySymbolSets(getFollowSets(extendedGrammar)))
+      .toMatchInlineSnapshot(`
+      "
+      0/Document'/$            : {null}
+      11/DirectivesOpt/18      : {18/OPENING_BRACE/9}
+      6/OperationNameOpt/11    : {11/AT/21}
+      0/OperationType/6        : {6/NAME/12}
+      9/SelectionList/13       : {13/CLOSING_BRACE/22, 13/NAME/16}
+      0/DefinitionList/2       : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      2/OperationType/6        : {6/NAME/12}
+      9/Alias/17               : {17/NAME/27}
+      11/DirectiveList/19      : {18/OPENING_BRACE/9, 19/AT/21}
+      13/Alias/17              : {17/NAME/27}
+      0/Document/1             : {null}
+      0/Definition/3           : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      0/ExecutableDefinition/4 : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      0/OperationDefinition/5  : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      18/SelectionSet/28       : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      0/SelectionSet/8         : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      2/Definition/10          : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      2/ExecutableDefinition/4 : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      2/OperationDefinition/5  : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      2/SelectionSet/8         : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      9/Selection/14           : {13/CLOSING_BRACE/22, 13/NAME/16}
+      9/Field/15               : {13/CLOSING_BRACE/22, 13/NAME/16}
+      16/SelectionSetOpt/24    : {13/CLOSING_BRACE/22, 13/NAME/16}
+      27/SelectionSetOpt/31    : {13/CLOSING_BRACE/22, 13/NAME/16}
+      13/Selection/23          : {13/CLOSING_BRACE/22, 13/NAME/16}
+      11/Directive/20          : {18/OPENING_BRACE/9, 19/AT/21}
+      19/Directive/29          : {18/OPENING_BRACE/9, 19/AT/21}
+      13/Field/15              : {13/CLOSING_BRACE/22, 13/NAME/16}
+      16/SelectionSet/26       : {13/CLOSING_BRACE/22, 13/NAME/16}
+      27/SelectionSet/26       : {13/CLOSING_BRACE/22, 13/NAME/16}"
     `);
   });
 });

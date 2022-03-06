@@ -20,3 +20,10 @@ export type ItemSet = {
   items: Array<Item>;
   transitions: {[symbol: string]: number};
 };
+
+/**
+ * Used for FIRST and FOLLOW sets.
+ */
+export type SymbolSets = {
+  [nonTerminal: string]: Set<string | null>;
+};

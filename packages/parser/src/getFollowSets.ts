@@ -1,16 +1,12 @@
 import getFirstSets from './getFirstSets';
 
-import type {Grammar} from './types';
+import type {Grammar, SymbolSets} from './types';
 
-type FollowSets = {
-  [nonTerminal: string]: Set<string | null>;
-};
-
-export default function getFollowSets(grammar: Grammar) {
+export default function getFollowSets(grammar: Grammar): SymbolSets {
   const tokens = grammar.tokens;
   const startRule = grammar.rules[0];
   const first = getFirstSets(grammar);
-  const followSets: FollowSets = {
+  const followSets: SymbolSets = {
     [startRule.lhs]: new Set([null]),
   };
 

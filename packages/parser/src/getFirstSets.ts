@@ -1,14 +1,10 @@
-import type {Grammar} from './types';
-
-type FirstSets = {
-  [nonTerminal: string]: Set<string | null>;
-};
+import type {Grammar, SymbolSets} from './types';
 
 /**
  * `first['A']` is the set of terminals which can appear as the first element of
  * any rule (or chain of rules) matching non-terminal `A`.
  */
-export default function getFirstSets(grammar: Grammar): FirstSets {
+export default function getFirstSets(grammar: Grammar): SymbolSets {
   const tokens = grammar.tokens;
 
   const sets: {[nonTerminal: string]: Set<string | null>} = {};
