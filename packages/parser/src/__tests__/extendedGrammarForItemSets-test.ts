@@ -1,5 +1,7 @@
+import {grammar} from '..';
 import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getItemSets from '../getItemSets';
+import stringifyGrammar from '../stringifyGrammar';
 import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
 
 describe('extendedGrammarForItemSets()', () => {
@@ -118,5 +120,72 @@ describe('extendedGrammarForItemSets()', () => {
         {lhs: '5/FooList/6', rhs: ['5/FOO/7']},
       ],
     });
+  });
+
+  it('returns an extended grammar for the GraphQL grammar', () => {
+    const itemSets = getItemSets(grammar);
+    const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
+    expect('\n' + stringifyGrammar(extendedGrammar)).toMatchInlineSnapshot(`
+      "
+      %token 0/NAME/7
+      %token 0/OPENING_BRACE/9
+      %token 11/AT/21
+      %token 13/CLOSING_BRACE/22
+      %token 13/NAME/16
+      %token 16/COLON/25
+      %token 16/OPENING_BRACE/9
+      %token 17/NAME/27
+      %token 18/OPENING_BRACE/9
+      %token 19/AT/21
+      %token 2/NAME/7
+      %token 2/OPENING_BRACE/9
+      %token 21/NAME/30
+      %token 27/OPENING_BRACE/9
+      %token 6/NAME/12
+      %token 9/NAME/16
+
+      r0: 0/Document'/$ → 0/Document/1
+      r1: 0/Document/1 → 0/DefinitionList/2
+      r2: 0/DefinitionList/2 → 0/Definition/3
+      r3: 0/Definition/3 → 0/ExecutableDefinition/4
+      r4: 0/ExecutableDefinition/4 → 0/OperationDefinition/5
+      r5: 0/OperationDefinition/5 → 0/OperationType/6 6/OperationNameOpt/11 11/DirectivesOpt/18 18/SelectionSet/28
+      r6: 0/OperationType/6 → 0/NAME/7
+      r7: 0/OperationDefinition/5 → 0/SelectionSet/8
+      r8: 0/SelectionSet/8 → 0/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/22
+      r9: 0/DefinitionList/2 → 0/DefinitionList/2 2/Definition/10
+      r10: 2/Definition/10 → 2/ExecutableDefinition/4
+      r11: 2/ExecutableDefinition/4 → 2/OperationDefinition/5
+      r12: 2/OperationDefinition/5 → 2/OperationType/6 6/OperationNameOpt/11 11/DirectivesOpt/18 18/SelectionSet/28
+      r13: 2/OperationType/6 → 2/NAME/7
+      r14: 2/OperationDefinition/5 → 2/SelectionSet/8
+      r15: 2/SelectionSet/8 → 2/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/22
+      r16: 6/OperationNameOpt/11 → 6/NAME/12
+      r17: 6/OperationNameOpt/6 → ε
+      r18: 9/SelectionList/13 → 9/Selection/14
+      r19: 9/Selection/14 → 9/Field/15
+      r20: 9/Field/15 → 9/NAME/16 16/SelectionSetOpt/24
+      r21: 9/Field/15 → 9/Alias/17 17/NAME/27 27/SelectionSetOpt/31
+      r22: 9/Alias/17 → 9/NAME/16 16/COLON/25
+      r23: 9/SelectionList/13 → 9/SelectionList/13 13/Selection/23
+      r24: 11/DirectivesOpt/18 → 11/DirectiveList/19
+      r25: 11/DirectiveList/19 → 11/Directive/20
+      r26: 11/Directive/20 → 11/AT/21 21/NAME/30
+      r27: 11/DirectiveList/19 → 11/DirectiveList/19 19/Directive/29
+      r28: 11/DirectivesOpt/11 → ε
+      r29: 13/Selection/23 → 13/Field/15
+      r30: 13/Field/15 → 13/NAME/16 16/SelectionSetOpt/24
+      r31: 13/Field/15 → 13/Alias/17 17/NAME/27 27/SelectionSetOpt/31
+      r32: 13/Alias/17 → 13/NAME/16 16/COLON/25
+      r33: 16/SelectionSetOpt/24 → 16/SelectionSet/26
+      r34: 16/SelectionSet/26 → 16/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/22
+      r35: 16/SelectionSetOpt/16 → ε
+      r36: 18/SelectionSet/28 → 18/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/22
+      r37: 19/Directive/29 → 19/AT/21 21/NAME/30
+      r38: 27/SelectionSetOpt/31 → 27/SelectionSet/26
+      r39: 27/SelectionSet/26 → 27/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/22
+      r40: 27/SelectionSetOpt/27 → ε
+      "
+    `);
   });
 });
