@@ -337,45 +337,45 @@ describe('getParseTable()', () => {
 
       r0: Document' → Document
       r1: Document → DefinitionList {
-          $$ = {
-            kind: 'DOCUMENT',
-            definitions: $1,
-          };
-        }
+        $$ = {
+          kind: 'DOCUMENT',
+          definitions: $1,
+        };
+      }
       r2: DefinitionList → Definition { $$ = [$1]; }
       r3: DefinitionList → DefinitionList Definition { $1.push($2); $$ = $1; }
       r4: Definition → ExecutableDefinition { $$ = $1; }
       r5: ExecutableDefinition → OperationDefinition { $$ = $1; }
       r6: OperationDefinition → OperationType OperationNameOpt DirectivesOpt SelectionSet {
-          $$ = {
-            kind: 'OPERATION',
-            name: $2,
-            directives: $3,
-            selections: $4,
-            type: $1,
-          };
-        }
+        $$ = {
+          kind: 'OPERATION',
+          name: $2,
+          directives: $3,
+          selections: $4,
+          type: $1,
+        };
+      }
       r7: OperationDefinition → SelectionSet {
-          $$ = {
-            kind: 'OPERATION',
-            name: null,
-            directives: null,
-            selections: $1,
-            type: 'QUERY',
-          };
-        }
+        $$ = {
+          kind: 'OPERATION',
+          name: null,
+          directives: null,
+          selections: $1,
+          type: 'QUERY',
+        };
+      }
       r8: OperationType → NAME {{
-          const {contents} = $1;
-          if (contents === 'query') {
-            $$ = 'QUERY';
-          } else if (contents === 'mutation') {
-            $$ = 'MUTATION';
-          } else if (contents === 'subscription') {
-            $$ = 'SUBSCRIPTION';
-          } else {
-            throw new Error('Unsupported operation type: ' + contents);
-          }
-        }}
+        const {contents} = $1;
+        if (contents === 'query') {
+          $$ = 'QUERY';
+        } else if (contents === 'mutation') {
+          $$ = 'MUTATION';
+        } else if (contents === 'subscription') {
+          $$ = 'SUBSCRIPTION';
+        } else {
+          throw new Error('Unsupported operation type: ' + contents);
+        }
+      }}
       r9: OperationNameOpt → NAME { $$ = $1.contents; }
       r10: OperationNameOpt → ε { $$ = null; }
       r11: SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE { $$ = $2; }
@@ -385,34 +385,34 @@ describe('getParseTable()', () => {
       r15: SelectionList → SelectionList Selection { $1.push($2); $$ = $1; }
       r16: Selection → Field { $$ = $1; }
       r17: Field → NAME SelectionSetOpt {
-          $$ = {
-            kind: 'FIELD',
-            alias: null,
-            directives: null,
-            name: $1.contents,
-            selections: $2,
-          };
-        }
+        $$ = {
+          kind: 'FIELD',
+          alias: null,
+          directives: null,
+          name: $1.contents,
+          selections: $2,
+        };
+      }
       r18: Field → Alias NAME SelectionSetOpt {
-          $$ = {
-            kind: 'FIELD',
-            alias: $1,
-            directives: null,
-            name: $2.contents,
-            selections: $3,
-          };
-        }
+        $$ = {
+          kind: 'FIELD',
+          alias: $1,
+          directives: null,
+          name: $2.contents,
+          selections: $3,
+        };
+      }
       r19: Alias → NAME COLON { $$ = $1.contents; }
       r20: DirectivesOpt → DirectiveList { $$ = $1; }
       r21: DirectivesOpt → ε { $$ = null; }
       r22: DirectiveList → Directive { $$ = [$1]; }
       r23: DirectiveList → DirectiveList Directive { $1.push($2); $$ = $1; }
       r24: Directive → AT NAME {
-          $$ = {
-            kind: 'DIRECTIVE',
-            name: $2.contents,
-          };
-        }
+        $$ = {
+          kind: 'DIRECTIVE',
+          name: $2.contents,
+        };
+      }
       "
     `);
   });
