@@ -55,9 +55,7 @@ export default function getItemSets(grammar: Grammar) {
       const item = itemSet.items[i];
       if (item.dot < item.rhs.length) {
         const next = item.rhs[item.dot];
-        if (next !== null) {
-          add(next);
-        }
+        add(next);
       }
     }
   }
