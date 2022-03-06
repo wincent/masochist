@@ -76,8 +76,6 @@ describe('getFollowSets()', () => {
     });
   });
 
-  // you can see this is wrong for OperationNameOpt
-  // contains AT but should also containg OPENING_BRACE
   it('produces follow sets for the GraphQL grammar', () => {
     expect(getFollowSets(grammar)).toMatchInlineSnapshot(`
       Object {
