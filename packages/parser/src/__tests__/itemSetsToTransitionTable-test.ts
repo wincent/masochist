@@ -1,5 +1,7 @@
+import {itemSets, grammar} from '..';
 import getItemSets from '../getItemSets';
 import itemSetsToTransitionTable from '../itemSetsToTransitionTable';
+import stringifyTransitionTable from '../stringifyTransitionTable';
 import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
 
 describe('itemSetsToTransitionTable()', () => {
@@ -99,5 +101,71 @@ describe('itemSetsToTransitionTable()', () => {
       /* 8 */ {},
       /* 9 */ {},
     ]);
+  });
+
+  it('returns a transition table for the GraphQL grammar', () => {
+    expect(
+      '\n' +
+        stringifyTransitionTable(itemSetsToTransitionTable(itemSets, grammar)),
+    ).toMatchInlineSnapshot(`
+      "
+      0:
+        Definition → 3
+        DefinitionList → 2
+        Document → 1
+        ExecutableDefinition → 4
+        NAME → 7
+        OPENING_BRACE → 9
+        OperationDefinition → 5
+        OperationType → 6
+        SelectionSet → 8
+      2:
+        Definition → 10
+        ExecutableDefinition → 4
+        NAME → 7
+        OPENING_BRACE → 9
+        OperationDefinition → 5
+        OperationType → 6
+        SelectionSet → 8
+      6:
+        NAME → 12
+        OperationNameOpt → 11
+      9:
+        Alias → 17
+        Field → 15
+        NAME → 16
+        Selection → 14
+        SelectionList → 13
+      11:
+        AT → 21
+        Directive → 20
+        DirectiveList → 19
+        DirectivesOpt → 18
+      13:
+        Alias → 17
+        CLOSING_BRACE → 22
+        Field → 15
+        NAME → 16
+        Selection → 23
+      16:
+        COLON → 25
+        OPENING_BRACE → 9
+        SelectionSet → 26
+        SelectionSetOpt → 24
+      17:
+        NAME → 27
+      18:
+        OPENING_BRACE → 9
+        SelectionSet → 28
+      19:
+        AT → 21
+        Directive → 29
+      21:
+        NAME → 30
+      27:
+        OPENING_BRACE → 9
+        SelectionSet → 26
+        SelectionSetOpt → 31"
+    `);
   });
 });
