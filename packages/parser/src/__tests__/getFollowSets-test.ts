@@ -1,3 +1,5 @@
+import {dedent} from '@masochist/common';
+
 import {grammar, itemSets} from '..';
 import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getFollowSets from '../getFollowSets';
@@ -77,6 +79,24 @@ describe('getFollowSets()', () => {
     });
   });
 
+  it('produces follow sets for an extended grammar with an epsilon productions', () => {
+    const itemSets = getItemSets(epsilonGrammar);
+    const extendedGrammar = extendedGrammarForItemSets(
+      itemSets,
+      epsilonGrammar,
+    );
+    expect(stringifySymbolSets(getFollowSets(extendedGrammar))).toEqual(
+      dedent`
+        0/S'/$      : {null}
+        5/FooList/6 : {6/CLOSE_BRACKET/8, 6/FOO/9}
+        0/BarOpt/3  : {3/OPEN_BRACKET/5}
+        0/S/1       : {null}
+        0/Program/2 : {null}
+        3/ε/3       : {3/OPEN_BRACKET/5}
+      `,
+    );
+  });
+
   it('produces follow sets for the GraphQL grammar', () => {
     expect('\n' + stringifySymbolSets(getFollowSets(grammar)))
       .toMatchInlineSnapshot(`
@@ -108,11 +128,11 @@ describe('getFollowSets()', () => {
       "
       0/Document'/$            : {null}
       11/DirectivesOpt/18      : {18/OPENING_BRACE/9}
-      6/OperationNameOpt/11    : {11/AT/21}
-      0/OperationType/6        : {6/NAME/12}
+      6/OperationNameOpt/11    : {11/AT/21, 18/OPENING_BRACE/9}
+      0/OperationType/6        : {11/AT/21, 18/OPENING_BRACE/9, 6/NAME/12}
       9/SelectionList/13       : {13/CLOSING_BRACE/22, 13/NAME/16}
       0/DefinitionList/2       : {2/NAME/7, 2/OPENING_BRACE/9, null}
-      2/OperationType/6        : {6/NAME/12}
+      2/OperationType/6        : {11/AT/21, 18/OPENING_BRACE/9, 6/NAME/12}
       9/Alias/17               : {17/NAME/27}
       11/DirectiveList/19      : {18/OPENING_BRACE/9, 19/AT/21}
       13/Alias/17              : {17/NAME/27}
@@ -126,6 +146,7 @@ describe('getFollowSets()', () => {
       2/ExecutableDefinition/4 : {2/NAME/7, 2/OPENING_BRACE/9, null}
       2/OperationDefinition/5  : {2/NAME/7, 2/OPENING_BRACE/9, null}
       2/SelectionSet/8         : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      11/ε/11                  : {11/AT/21, 18/OPENING_BRACE/9}
       9/Selection/14           : {13/CLOSING_BRACE/22, 13/NAME/16}
       9/Field/15               : {13/CLOSING_BRACE/22, 13/NAME/16}
       16/SelectionSetOpt/24    : {13/CLOSING_BRACE/22, 13/NAME/16}
@@ -133,9 +154,12 @@ describe('getFollowSets()', () => {
       13/Selection/23          : {13/CLOSING_BRACE/22, 13/NAME/16}
       11/Directive/20          : {18/OPENING_BRACE/9, 19/AT/21}
       19/Directive/29          : {18/OPENING_BRACE/9, 19/AT/21}
+      18/ε/18                  : {18/OPENING_BRACE/9}
       13/Field/15              : {13/CLOSING_BRACE/22, 13/NAME/16}
       16/SelectionSet/26       : {13/CLOSING_BRACE/22, 13/NAME/16}
-      27/SelectionSet/26       : {13/CLOSING_BRACE/22, 13/NAME/16}"
+      24/ε/24                  : {13/CLOSING_BRACE/22, 13/NAME/16}
+      27/SelectionSet/26       : {13/CLOSING_BRACE/22, 13/NAME/16}
+      31/ε/31                  : {13/CLOSING_BRACE/22, 13/NAME/16}"
     `);
   });
 });

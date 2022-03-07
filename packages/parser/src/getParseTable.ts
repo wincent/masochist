@@ -1,6 +1,6 @@
 import {invariant} from '@masochist/common';
 
-import {RIGHTWARDS_ARROW} from './Constants';
+import {EPSILON, RIGHTWARDS_ARROW} from './Constants';
 import extendedGrammarForItemSets from './extendedGrammarForItemSets';
 import getAugmentedGrammar from './getAugmentedGrammar';
 import getFollowSets from './getFollowSets';
@@ -32,7 +32,12 @@ type Gotos = {
 
 export type ParseTable = Array<[Actions, Gotos]>;
 
-export default function getParseTable(
+/**
+ * As described in 9.7.1.4 of Grune's "Parsing Techniques" and also here:
+ *
+ * https://web.archive.org/web/20211216015406/https://web.cs.dal.ca/~sjackson/lalr1.html
+ */
+function getParseTableBySLR(
   itemSets: Array<ItemSet>,
   transitionTable: TransitionTable,
   grammar: Grammar,
@@ -104,7 +109,7 @@ export default function getParseTable(
   const extendedFollows = getFollowSets(extendedGrammar);
   const augmentedFollows = getFollowSets(augmentedGrammar);
   for (const rule of extendedGrammar.rules) {
-    const [, lhs, end] = rule.lhs.split('/');
+    const [initial, lhs, end] = rule.lhs.split('/');
     if (end === '$') {
       continue; // "$"/EOF was already handled above.
     }
@@ -116,17 +121,16 @@ export default function getParseTable(
 
     // Get the item set from the original grammar that corresponds to extended
     // grammar rule.
-    const ruleNumber = ruleIndices[keyForRule(lhs, rhs)];
     const final = rule.rhs[rule.rhs.length - 1];
-    const itemSet = final ? final.split('/')[2] : end;
-    const actions = table[parseInt(itemSet, 10)][0];
-    const follows = rhs.length
-      ? extendedFollows[rule.lhs]
-      : augmentedFollows[augmentedGrammar.rules[ruleNumber].lhs];
+    const [, symbol, itemSet] = final.split('/');
+    const ruleNumber = ruleIndices[keyForRule(lhs, rhs)];
+    const isEpsilonProduction = symbol === EPSILON;
+    const actions =
+      table[parseInt(isEpsilonProduction ? initial : itemSet, 10)][0];
+
+    const follows = extendedFollows[rule.lhs];
     for (const follow of follows) {
-      const symbol = rhs.length
-        ? (follow ?? '-1/$/-1').split('/')[1]
-        : follow ?? '$';
+      const symbol = (follow ?? '-1/$/-1').split('/')[1];
       const action = actions[symbol];
       if (action) {
         if (
@@ -154,3 +158,21 @@ export default function getParseTable(
 
   return table;
 }
+
+/**
+ * Via Anderson et al's 1975 algorithm, as described in 9.7.1.1 of Grune's
+ * "Parsing Techniques".
+ *
+ * This is the slowest approach, but probably also the most straightforward
+ * one.
+ */
+export function getParseTableSimple(
+  _itemSets: Array<ItemSet>,
+  _transitionTable: TransitionTable,
+  _grammar: Grammar,
+): ParseTable {
+  // TODO: actually implement, maybe
+  return [];
+}
+
+export default getParseTableBySLR;

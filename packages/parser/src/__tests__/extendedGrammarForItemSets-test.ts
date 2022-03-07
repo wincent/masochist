@@ -115,7 +115,7 @@ describe('extendedGrammarForItemSets()', () => {
           ],
         },
         {lhs: '0/BarOpt/3', rhs: ['0/BAR/4']},
-        {lhs: '0/BarOpt/0', rhs: []},
+        {lhs: '0/BarOpt/3', rhs: ['3/ε/3']},
         {lhs: '5/FooList/6', rhs: ['5/FooList/6', '6/FOO/9']},
         {lhs: '5/FooList/6', rhs: ['5/FOO/7']},
       ],
@@ -161,7 +161,7 @@ describe('extendedGrammarForItemSets()', () => {
       r14: 2/OperationDefinition/5 → 2/SelectionSet/8
       r15: 2/SelectionSet/8 → 2/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/22
       r16: 6/OperationNameOpt/11 → 6/NAME/12
-      r17: 6/OperationNameOpt/6 → ε
+      r17: 6/OperationNameOpt/11 → 11/ε/11
       r18: 9/SelectionList/13 → 9/Selection/14
       r19: 9/Selection/14 → 9/Field/15
       r20: 9/Field/15 → 9/NAME/16 16/SelectionSetOpt/24
@@ -172,19 +172,19 @@ describe('extendedGrammarForItemSets()', () => {
       r25: 11/DirectiveList/19 → 11/Directive/20
       r26: 11/Directive/20 → 11/AT/21 21/NAME/30
       r27: 11/DirectiveList/19 → 11/DirectiveList/19 19/Directive/29
-      r28: 11/DirectivesOpt/11 → ε
+      r28: 11/DirectivesOpt/18 → 18/ε/18
       r29: 13/Selection/23 → 13/Field/15
       r30: 13/Field/15 → 13/NAME/16 16/SelectionSetOpt/24
       r31: 13/Field/15 → 13/Alias/17 17/NAME/27 27/SelectionSetOpt/31
       r32: 13/Alias/17 → 13/NAME/16 16/COLON/25
       r33: 16/SelectionSetOpt/24 → 16/SelectionSet/26
       r34: 16/SelectionSet/26 → 16/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/22
-      r35: 16/SelectionSetOpt/16 → ε
+      r35: 16/SelectionSetOpt/24 → 24/ε/24
       r36: 18/SelectionSet/28 → 18/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/22
       r37: 19/Directive/29 → 19/AT/21 21/NAME/30
       r38: 27/SelectionSetOpt/31 → 27/SelectionSet/26
       r39: 27/SelectionSet/26 → 27/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/22
-      r40: 27/SelectionSetOpt/27 → ε
+      r40: 27/SelectionSetOpt/31 → 31/ε/31
       "
     `);
   });

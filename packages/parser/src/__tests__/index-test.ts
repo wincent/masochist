@@ -17,8 +17,7 @@ describe('GraphQL parser', () => {
           }
         }
 
-        # BUG: if I remove directive here, we fail to parse
-        query NewQuery @live {
+        query NewQuery {
           hai
         }
     `),
@@ -73,12 +72,7 @@ describe('GraphQL parser', () => {
           {
             kind: 'OPERATION',
             name: 'NewQuery',
-            directives: [
-              {
-                kind: 'DIRECTIVE',
-                name: 'live',
-              },
-            ],
+            directives: null,
             selections: [
               {
                 kind: 'FIELD',

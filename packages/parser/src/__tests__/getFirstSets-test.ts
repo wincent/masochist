@@ -1,7 +1,10 @@
+import {dedent} from '@masochist/common';
+
 import {grammar} from '..';
 import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getFirstSets from '../getFirstSets';
 import getItemSets from '../getItemSets';
+import stringifySymbolSets from '../stringifySymbolSets';
 import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
 
 describe('getFirstSets()', () => {
@@ -76,66 +79,43 @@ describe('getFirstSets()', () => {
     });
   });
 
+  it('produces first sets for an extended grammar with epsilon productions', () => {
+    const itemSets = getItemSets(epsilonGrammar);
+    const extendedGrammar = extendedGrammarForItemSets(
+      itemSets,
+      epsilonGrammar,
+    );
+    expect(stringifySymbolSets(getFirstSets(extendedGrammar))).toEqual(
+      dedent`
+        0/BarOpt/3  : {0/BAR/4, null}
+        5/FooList/6 : {5/FOO/7}
+        0/Program/2 : {0/BAR/4, 3/OPEN_BRACKET/5}
+        0/S/1       : {0/BAR/4, 3/OPEN_BRACKET/5}
+        0/S'/$      : {0/BAR/4, 3/OPEN_BRACKET/5}
+      `,
+    );
+  });
+
   it('produces first sets for the GraphQL grammar', () => {
-    expect(getFirstSets(grammar)).toMatchInlineSnapshot(`
-      Object {
-        "Alias": Set {
-          "NAME",
-        },
-        "Definition": Set {
-          "NAME",
-          "OPENING_BRACE",
-        },
-        "DefinitionList": Set {
-          "NAME",
-          "OPENING_BRACE",
-        },
-        "Directive": Set {
-          "AT",
-        },
-        "DirectiveList": Set {
-          "AT",
-        },
-        "DirectivesOpt": Set {
-          null,
-          "AT",
-        },
-        "Document": Set {
-          "NAME",
-          "OPENING_BRACE",
-        },
-        "ExecutableDefinition": Set {
-          "NAME",
-          "OPENING_BRACE",
-        },
-        "Field": Set {
-          "NAME",
-        },
-        "OperationDefinition": Set {
-          "NAME",
-          "OPENING_BRACE",
-        },
-        "OperationNameOpt": Set {
-          "NAME",
-          null,
-        },
-        "OperationType": Set {
-          "NAME",
-        },
-        "Selection": Set {
-          "NAME",
-        },
-        "SelectionList": Set {
-          "NAME",
-        },
-        "SelectionSet": Set {
-          "OPENING_BRACE",
-        },
-        "SelectionSetOpt": Set {
-          "OPENING_BRACE",
-          null,
-        },
-      }
+    expect('\n' + stringifySymbolSets(getFirstSets(grammar)))
+      .toMatchInlineSnapshot(`
+      "
+      OperationType        : {NAME}
+      OperationNameOpt     : {NAME, null}
+      SelectionSet         : {OPENING_BRACE}
+      SelectionSetOpt      : {OPENING_BRACE, null}
+      Field                : {NAME}
+      Alias                : {NAME}
+      DirectivesOpt        : {AT, null}
+      Directive            : {AT}
+      OperationDefinition  : {NAME, OPENING_BRACE}
+      Selection            : {NAME}
+      DirectiveList        : {AT}
+      ExecutableDefinition : {NAME, OPENING_BRACE}
+      SelectionList        : {NAME}
+      Definition           : {NAME, OPENING_BRACE}
+      DefinitionList       : {NAME, OPENING_BRACE}
+      Document             : {NAME, OPENING_BRACE}"
     `);
   });
 });
