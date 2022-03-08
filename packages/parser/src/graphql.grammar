@@ -29,14 +29,14 @@ Definition → ExecutableDefinition { $$ = $1; }
 
 ExecutableDefinition → OperationDefinition { $$ = $1; }
 
-# TODO: also VariableDefinitionsOpt
-OperationDefinition → OperationType OperationNameOpt DirectivesOpt SelectionSet {
+OperationDefinition → OperationType OperationNameOpt VariableDefinitionsOpt DirectivesOpt SelectionSet {
   $$ = {
     kind: 'OPERATION',
     name: $2,
-    directives: $3,
-    selections: $4,
+    directives: $4,
+    selections: $5,
     type: $1,
+    variables: $3,
   };
 }
 OperationDefinition → SelectionSet {
@@ -46,6 +46,7 @@ OperationDefinition → SelectionSet {
     directives: null,
     selections: $1,
     type: 'QUERY',
+    variables: null,
   };
 }
 
@@ -64,6 +65,58 @@ OperationType → NAME {{
 
 OperationNameOpt → NAME { $$ = $1.contents; }
 OperationNameOpt → ε { $$ = null; }
+
+VariableDefinitionsOpt → OPENING_PAREN VariableDefinitionList CLOSING_PAREN {
+  $$ = $2;
+}
+VariableDefinitionsOpt → ε { $$ = null; }
+
+VariableDefinitionList → VariableDefinition { $$ = [$1]; }
+VariableDefinitionList → VariableDefinitionList VariableDefinition {
+  $1.push($2); $$ = $1;
+}
+
+# TODO: add DefaultValueOpt and DirectivesOpt
+VariableDefinition → Variable COLON Type {
+  $$ = {
+    kind: 'VARIABLE_DEFINITION',
+    defaultValue: null,
+    directives: null,
+    type: $3,
+    variable: $1,
+  };
+}
+
+Variable → DOLLAR NAME {
+  $$ = {
+    kind: 'VARIABLE',
+    name: $2.contents,
+  };
+}
+
+# TODO: ListType and NonNullType
+Type → NamedType {
+  $$ = {
+    kind: 'NAMED_TYPE',
+    name: $1,
+  };
+}
+
+NamedType → NAME { $$ = $1.contents; }
+
+DirectivesOpt → DirectiveList { $$ = $1; }
+DirectivesOpt → ε { $$ = null; }
+
+DirectiveList → Directive { $$ = [$1]; }
+DirectiveList → DirectiveList Directive { $1.push($2); $$ = $1; }
+
+# TODO: add arguments
+Directive → AT NAME {
+  $$ = {
+    kind: 'DIRECTIVE',
+    name: $2.contents,
+  };
+}
 
 SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE { $$ = $2; }
 
@@ -96,17 +149,3 @@ Field → Alias NAME SelectionSetOpt {
 }
 
 Alias → NAME COLON { $$ = $1.contents; }
-
-DirectivesOpt → DirectiveList { $$ = $1; }
-DirectivesOpt → ε { $$ = null; }
-
-DirectiveList → Directive { $$ = [$1]; }
-DirectiveList → DirectiveList Directive { $1.push($2); $$ = $1; }
-
-# TODO: add arguments
-Directive → AT NAME {
-  $$ = {
-    kind: 'DIRECTIVE',
-    name: $2.contents,
-  };
-}

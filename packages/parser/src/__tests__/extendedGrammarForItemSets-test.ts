@@ -129,18 +129,25 @@ describe('extendedGrammarForItemSets()', () => {
       "
       %token 0/NAME/7
       %token 0/OPENING_BRACE/9
-      %token 11/AT/21
-      %token 13/CLOSING_BRACE/22
+      %token 11/OPENING_PAREN/19
+      %token 13/CLOSING_BRACE/20
       %token 13/NAME/16
-      %token 16/COLON/25
+      %token 16/COLON/23
       %token 16/OPENING_BRACE/9
-      %token 17/NAME/27
-      %token 18/OPENING_BRACE/9
-      %token 19/AT/21
+      %token 17/NAME/25
+      %token 18/AT/29
+      %token 19/DOLLAR/33
       %token 2/NAME/7
       %token 2/OPENING_BRACE/9
-      %token 21/NAME/30
-      %token 27/OPENING_BRACE/9
+      %token 25/OPENING_BRACE/9
+      %token 26/OPENING_BRACE/9
+      %token 27/AT/29
+      %token 29/NAME/37
+      %token 30/CLOSING_PAREN/38
+      %token 30/DOLLAR/33
+      %token 32/COLON/40
+      %token 33/NAME/41
+      %token 40/NAME/44
       %token 6/NAME/12
       %token 9/NAME/16
 
@@ -149,42 +156,52 @@ describe('extendedGrammarForItemSets()', () => {
       r2: 0/DefinitionList/2 → 0/Definition/3
       r3: 0/Definition/3 → 0/ExecutableDefinition/4
       r4: 0/ExecutableDefinition/4 → 0/OperationDefinition/5
-      r5: 0/OperationDefinition/5 → 0/OperationType/6 6/OperationNameOpt/11 11/DirectivesOpt/18 18/SelectionSet/28
+      r5: 0/OperationDefinition/5 → 0/OperationType/6 6/OperationNameOpt/11 11/VariableDefinitionsOpt/18 18/DirectivesOpt/26 26/SelectionSet/35
       r6: 0/OperationType/6 → 0/NAME/7
       r7: 0/OperationDefinition/5 → 0/SelectionSet/8
-      r8: 0/SelectionSet/8 → 0/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/22
+      r8: 0/SelectionSet/8 → 0/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/20
       r9: 0/DefinitionList/2 → 0/DefinitionList/2 2/Definition/10
       r10: 2/Definition/10 → 2/ExecutableDefinition/4
       r11: 2/ExecutableDefinition/4 → 2/OperationDefinition/5
-      r12: 2/OperationDefinition/5 → 2/OperationType/6 6/OperationNameOpt/11 11/DirectivesOpt/18 18/SelectionSet/28
+      r12: 2/OperationDefinition/5 → 2/OperationType/6 6/OperationNameOpt/11 11/VariableDefinitionsOpt/18 18/DirectivesOpt/26 26/SelectionSet/35
       r13: 2/OperationType/6 → 2/NAME/7
       r14: 2/OperationDefinition/5 → 2/SelectionSet/8
-      r15: 2/SelectionSet/8 → 2/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/22
+      r15: 2/SelectionSet/8 → 2/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/20
       r16: 6/OperationNameOpt/11 → 6/NAME/12
       r17: 6/OperationNameOpt/11 → ε
       r18: 9/SelectionList/13 → 9/Selection/14
       r19: 9/Selection/14 → 9/Field/15
-      r20: 9/Field/15 → 9/NAME/16 16/SelectionSetOpt/24
-      r21: 9/Field/15 → 9/Alias/17 17/NAME/27 27/SelectionSetOpt/31
-      r22: 9/Alias/17 → 9/NAME/16 16/COLON/25
-      r23: 9/SelectionList/13 → 9/SelectionList/13 13/Selection/23
-      r24: 11/DirectivesOpt/18 → 11/DirectiveList/19
-      r25: 11/DirectiveList/19 → 11/Directive/20
-      r26: 11/Directive/20 → 11/AT/21 21/NAME/30
-      r27: 11/DirectiveList/19 → 11/DirectiveList/19 19/Directive/29
-      r28: 11/DirectivesOpt/18 → ε
-      r29: 13/Selection/23 → 13/Field/15
-      r30: 13/Field/15 → 13/NAME/16 16/SelectionSetOpt/24
-      r31: 13/Field/15 → 13/Alias/17 17/NAME/27 27/SelectionSetOpt/31
-      r32: 13/Alias/17 → 13/NAME/16 16/COLON/25
-      r33: 16/SelectionSetOpt/24 → 16/SelectionSet/26
-      r34: 16/SelectionSet/26 → 16/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/22
-      r35: 16/SelectionSetOpt/24 → ε
-      r36: 18/SelectionSet/28 → 18/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/22
-      r37: 19/Directive/29 → 19/AT/21 21/NAME/30
-      r38: 27/SelectionSetOpt/31 → 27/SelectionSet/26
-      r39: 27/SelectionSet/26 → 27/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/22
-      r40: 27/SelectionSetOpt/31 → ε
+      r20: 9/Field/15 → 9/NAME/16 16/SelectionSetOpt/22
+      r21: 9/Field/15 → 9/Alias/17 17/NAME/25 25/SelectionSetOpt/34
+      r22: 9/Alias/17 → 9/NAME/16 16/COLON/23
+      r23: 9/SelectionList/13 → 9/SelectionList/13 13/Selection/21
+      r24: 11/VariableDefinitionsOpt/18 → 11/OPENING_PAREN/19 19/VariableDefinitionList/30 30/CLOSING_PAREN/38
+      r25: 11/VariableDefinitionsOpt/18 → ε
+      r26: 13/Selection/21 → 13/Field/15
+      r27: 13/Field/15 → 13/NAME/16 16/SelectionSetOpt/22
+      r28: 13/Field/15 → 13/Alias/17 17/NAME/25 25/SelectionSetOpt/34
+      r29: 13/Alias/17 → 13/NAME/16 16/COLON/23
+      r30: 16/SelectionSetOpt/22 → 16/SelectionSet/24
+      r31: 16/SelectionSet/24 → 16/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/20
+      r32: 16/SelectionSetOpt/22 → ε
+      r33: 18/DirectivesOpt/26 → 18/DirectiveList/27
+      r34: 18/DirectiveList/27 → 18/Directive/28
+      r35: 18/Directive/28 → 18/AT/29 29/NAME/37
+      r36: 18/DirectiveList/27 → 18/DirectiveList/27 27/Directive/36
+      r37: 18/DirectivesOpt/26 → ε
+      r38: 19/VariableDefinitionList/30 → 19/VariableDefinition/31
+      r39: 19/VariableDefinition/31 → 19/Variable/32 32/COLON/40 40/Type/42
+      r40: 19/Variable/32 → 19/DOLLAR/33 33/NAME/41
+      r41: 19/VariableDefinitionList/30 → 19/VariableDefinitionList/30 30/VariableDefinition/39
+      r42: 25/SelectionSetOpt/34 → 25/SelectionSet/24
+      r43: 25/SelectionSet/24 → 25/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/20
+      r44: 25/SelectionSetOpt/34 → ε
+      r45: 26/SelectionSet/35 → 26/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/20
+      r46: 27/Directive/36 → 27/AT/29 29/NAME/37
+      r47: 30/VariableDefinition/39 → 30/Variable/32 32/COLON/40 40/Type/42
+      r48: 30/Variable/32 → 30/DOLLAR/33 33/NAME/41
+      r49: 40/Type/42 → 40/NamedType/43
+      r50: 40/NamedType/43 → 40/NAME/44
       "
     `);
   });

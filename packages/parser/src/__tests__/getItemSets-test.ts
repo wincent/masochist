@@ -174,8 +174,7 @@ describe('getItemSets()', () => {
   });
 
   it('produces item sets for the GraphQL grammar', () => {
-    expect('\n' + stringifyItemSets(itemSets)).toMatchInlineSnapshot(
-      `
+    expect('\n' + stringifyItemSets(itemSets)).toMatchInlineSnapshot(`
       "
       I0:
         Document' → · Document
@@ -183,7 +182,7 @@ describe('getItemSets()', () => {
         DefinitionList → · Definition
         Definition → · ExecutableDefinition
         ExecutableDefinition → · OperationDefinition
-        OperationDefinition → · OperationType OperationNameOpt DirectivesOpt SelectionSet
+        OperationDefinition → · OperationType OperationNameOpt VariableDefinitionsOpt DirectivesOpt SelectionSet
         OperationType → · NAME
         OperationDefinition → · SelectionSet
         SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
@@ -197,7 +196,7 @@ describe('getItemSets()', () => {
         DefinitionList → DefinitionList · Definition
         Definition → · ExecutableDefinition
         ExecutableDefinition → · OperationDefinition
-        OperationDefinition → · OperationType OperationNameOpt DirectivesOpt SelectionSet
+        OperationDefinition → · OperationType OperationNameOpt VariableDefinitionsOpt DirectivesOpt SelectionSet
         OperationType → · NAME
         OperationDefinition → · SelectionSet
         SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
@@ -212,7 +211,7 @@ describe('getItemSets()', () => {
         ExecutableDefinition → OperationDefinition ·
 
       I6:
-        OperationDefinition → OperationType · OperationNameOpt DirectivesOpt SelectionSet
+        OperationDefinition → OperationType · OperationNameOpt VariableDefinitionsOpt DirectivesOpt SelectionSet
         OperationNameOpt → · NAME
         OperationNameOpt → ε ·
 
@@ -235,12 +234,9 @@ describe('getItemSets()', () => {
         DefinitionList → DefinitionList Definition ·
 
       I11:
-        OperationDefinition → OperationType OperationNameOpt · DirectivesOpt SelectionSet
-        DirectivesOpt → · DirectiveList
-        DirectiveList → · Directive
-        Directive → · AT NAME
-        DirectiveList → · DirectiveList Directive
-        DirectivesOpt → ε ·
+        OperationDefinition → OperationType OperationNameOpt · VariableDefinitionsOpt DirectivesOpt SelectionSet
+        VariableDefinitionsOpt → · OPENING_PAREN VariableDefinitionList CLOSING_PAREN
+        VariableDefinitionsOpt → ε ·
 
       I12:
         OperationNameOpt → NAME ·
@@ -270,54 +266,106 @@ describe('getItemSets()', () => {
         Field → Alias · NAME SelectionSetOpt
 
       I18:
-        OperationDefinition → OperationType OperationNameOpt DirectivesOpt · SelectionSet
-        SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
+        OperationDefinition → OperationType OperationNameOpt VariableDefinitionsOpt · DirectivesOpt SelectionSet
+        DirectivesOpt → · DirectiveList
+        DirectiveList → · Directive
+        Directive → · AT NAME
+        DirectiveList → · DirectiveList Directive
+        DirectivesOpt → ε ·
 
       I19:
-        DirectivesOpt → DirectiveList ·
-        DirectiveList → DirectiveList · Directive
-        Directive → · AT NAME
+        VariableDefinitionsOpt → OPENING_PAREN · VariableDefinitionList CLOSING_PAREN
+        VariableDefinitionList → · VariableDefinition
+        VariableDefinition → · Variable COLON Type
+        Variable → · DOLLAR NAME
+        VariableDefinitionList → · VariableDefinitionList VariableDefinition
 
       I20:
-        DirectiveList → Directive ·
-
-      I21:
-        Directive → AT · NAME
-
-      I22:
         SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE ·
 
-      I23:
+      I21:
         SelectionList → SelectionList Selection ·
 
-      I24:
+      I22:
         Field → NAME SelectionSetOpt ·
 
-      I25:
+      I23:
         Alias → NAME COLON ·
 
-      I26:
+      I24:
         SelectionSetOpt → SelectionSet ·
 
-      I27:
+      I25:
         Field → Alias NAME · SelectionSetOpt
         SelectionSetOpt → · SelectionSet
         SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
         SelectionSetOpt → ε ·
 
+      I26:
+        OperationDefinition → OperationType OperationNameOpt VariableDefinitionsOpt DirectivesOpt · SelectionSet
+        SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
+
+      I27:
+        DirectivesOpt → DirectiveList ·
+        DirectiveList → DirectiveList · Directive
+        Directive → · AT NAME
+
       I28:
-        OperationDefinition → OperationType OperationNameOpt DirectivesOpt SelectionSet ·
+        DirectiveList → Directive ·
 
       I29:
-        DirectiveList → DirectiveList Directive ·
+        Directive → AT · NAME
 
       I30:
-        Directive → AT NAME ·
+        VariableDefinitionsOpt → OPENING_PAREN VariableDefinitionList · CLOSING_PAREN
+        VariableDefinitionList → VariableDefinitionList · VariableDefinition
+        VariableDefinition → · Variable COLON Type
+        Variable → · DOLLAR NAME
 
       I31:
+        VariableDefinitionList → VariableDefinition ·
+
+      I32:
+        VariableDefinition → Variable · COLON Type
+
+      I33:
+        Variable → DOLLAR · NAME
+
+      I34:
         Field → Alias NAME SelectionSetOpt ·
+
+      I35:
+        OperationDefinition → OperationType OperationNameOpt VariableDefinitionsOpt DirectivesOpt SelectionSet ·
+
+      I36:
+        DirectiveList → DirectiveList Directive ·
+
+      I37:
+        Directive → AT NAME ·
+
+      I38:
+        VariableDefinitionsOpt → OPENING_PAREN VariableDefinitionList CLOSING_PAREN ·
+
+      I39:
+        VariableDefinitionList → VariableDefinitionList VariableDefinition ·
+
+      I40:
+        VariableDefinition → Variable COLON · Type
+        Type → · NamedType
+        NamedType → · NAME
+
+      I41:
+        Variable → DOLLAR NAME ·
+
+      I42:
+        VariableDefinition → Variable COLON Type ·
+
+      I43:
+        Type → NamedType ·
+
+      I44:
+        NamedType → NAME ·
       "
-    `,
-    );
+    `);
   });
 });

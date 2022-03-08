@@ -100,22 +100,28 @@ describe('getFollowSets()', () => {
     expect('\n' + stringifySymbolSets(getFollowSets(grammar)))
       .toMatchInlineSnapshot(`
       "
-      Document             : {null}
-      DefinitionList       : {NAME, OPENING_BRACE, null}
-      DirectivesOpt        : {OPENING_BRACE}
-      OperationNameOpt     : {AT, OPENING_BRACE}
-      OperationType        : {AT, NAME, OPENING_BRACE}
-      SelectionList        : {CLOSING_BRACE, NAME}
-      Alias                : {NAME}
-      DirectiveList        : {AT, OPENING_BRACE}
-      Definition           : {NAME, OPENING_BRACE, null}
-      ExecutableDefinition : {NAME, OPENING_BRACE, null}
-      OperationDefinition  : {NAME, OPENING_BRACE, null}
-      SelectionSet         : {CLOSING_BRACE, NAME, OPENING_BRACE, null}
-      SelectionSetOpt      : {CLOSING_BRACE, NAME}
-      Selection            : {CLOSING_BRACE, NAME}
-      Field                : {CLOSING_BRACE, NAME}
-      Directive            : {AT, OPENING_BRACE}"
+      Document               : {null}
+      DefinitionList         : {NAME, OPENING_BRACE, null}
+      DirectivesOpt          : {OPENING_BRACE}
+      VariableDefinitionsOpt : {AT, OPENING_BRACE}
+      OperationNameOpt       : {AT, OPENING_BRACE, OPENING_PAREN}
+      OperationType          : {AT, NAME, OPENING_BRACE, OPENING_PAREN}
+      VariableDefinitionList : {CLOSING_PAREN, DOLLAR}
+      Variable               : {COLON}
+      DirectiveList          : {AT, OPENING_BRACE}
+      SelectionList          : {CLOSING_BRACE, NAME}
+      Alias                  : {NAME}
+      Definition             : {NAME, OPENING_BRACE, null}
+      ExecutableDefinition   : {NAME, OPENING_BRACE, null}
+      OperationDefinition    : {NAME, OPENING_BRACE, null}
+      SelectionSet           : {CLOSING_BRACE, NAME, OPENING_BRACE, null}
+      VariableDefinition     : {CLOSING_PAREN, DOLLAR}
+      Type                   : {CLOSING_PAREN, DOLLAR}
+      NamedType              : {CLOSING_PAREN, DOLLAR}
+      Directive              : {AT, OPENING_BRACE}
+      SelectionSetOpt        : {CLOSING_BRACE, NAME}
+      Selection              : {CLOSING_BRACE, NAME}
+      Field                  : {CLOSING_BRACE, NAME}"
     `);
   });
 
@@ -125,36 +131,44 @@ describe('getFollowSets()', () => {
     expect('\n' + stringifySymbolSets(getFollowSets(extendedGrammar)))
       .toMatchInlineSnapshot(`
       "
-      0/Document'/$            : {null}
-      11/DirectivesOpt/18      : {18/OPENING_BRACE/9}
-      6/OperationNameOpt/11    : {11/AT/21, 18/OPENING_BRACE/9}
-      0/OperationType/6        : {11/AT/21, 18/OPENING_BRACE/9, 6/NAME/12}
-      9/SelectionList/13       : {13/CLOSING_BRACE/22, 13/NAME/16}
-      0/DefinitionList/2       : {2/NAME/7, 2/OPENING_BRACE/9, null}
-      2/OperationType/6        : {11/AT/21, 18/OPENING_BRACE/9, 6/NAME/12}
-      9/Alias/17               : {17/NAME/27}
-      11/DirectiveList/19      : {18/OPENING_BRACE/9, 19/AT/21}
-      13/Alias/17              : {17/NAME/27}
-      0/Document/1             : {null}
-      0/Definition/3           : {2/NAME/7, 2/OPENING_BRACE/9, null}
-      0/ExecutableDefinition/4 : {2/NAME/7, 2/OPENING_BRACE/9, null}
-      0/OperationDefinition/5  : {2/NAME/7, 2/OPENING_BRACE/9, null}
-      18/SelectionSet/28       : {2/NAME/7, 2/OPENING_BRACE/9, null}
-      0/SelectionSet/8         : {2/NAME/7, 2/OPENING_BRACE/9, null}
-      2/Definition/10          : {2/NAME/7, 2/OPENING_BRACE/9, null}
-      2/ExecutableDefinition/4 : {2/NAME/7, 2/OPENING_BRACE/9, null}
-      2/OperationDefinition/5  : {2/NAME/7, 2/OPENING_BRACE/9, null}
-      2/SelectionSet/8         : {2/NAME/7, 2/OPENING_BRACE/9, null}
-      9/Selection/14           : {13/CLOSING_BRACE/22, 13/NAME/16}
-      9/Field/15               : {13/CLOSING_BRACE/22, 13/NAME/16}
-      16/SelectionSetOpt/24    : {13/CLOSING_BRACE/22, 13/NAME/16}
-      27/SelectionSetOpt/31    : {13/CLOSING_BRACE/22, 13/NAME/16}
-      13/Selection/23          : {13/CLOSING_BRACE/22, 13/NAME/16}
-      11/Directive/20          : {18/OPENING_BRACE/9, 19/AT/21}
-      19/Directive/29          : {18/OPENING_BRACE/9, 19/AT/21}
-      13/Field/15              : {13/CLOSING_BRACE/22, 13/NAME/16}
-      16/SelectionSet/26       : {13/CLOSING_BRACE/22, 13/NAME/16}
-      27/SelectionSet/26       : {13/CLOSING_BRACE/22, 13/NAME/16}"
+      0/Document'/$                : {null}
+      18/DirectivesOpt/26          : {26/OPENING_BRACE/9}
+      11/VariableDefinitionsOpt/18 : {18/AT/29, 26/OPENING_BRACE/9}
+      6/OperationNameOpt/11        : {11/OPENING_PAREN/19, 18/AT/29, 26/OPENING_BRACE/9}
+      0/OperationType/6            : {11/OPENING_PAREN/19, 18/AT/29, 26/OPENING_BRACE/9, 6/NAME/12}
+      9/SelectionList/13           : {13/CLOSING_BRACE/20, 13/NAME/16}
+      0/DefinitionList/2           : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      2/OperationType/6            : {11/OPENING_PAREN/19, 18/AT/29, 26/OPENING_BRACE/9, 6/NAME/12}
+      9/Alias/17                   : {17/NAME/25}
+      19/VariableDefinitionList/30 : {30/CLOSING_PAREN/38, 30/DOLLAR/33}
+      13/Alias/17                  : {17/NAME/25}
+      18/DirectiveList/27          : {26/OPENING_BRACE/9, 27/AT/29}
+      19/Variable/32               : {32/COLON/40}
+      30/Variable/32               : {32/COLON/40}
+      0/Document/1                 : {null}
+      0/Definition/3               : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      0/ExecutableDefinition/4     : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      0/OperationDefinition/5      : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      26/SelectionSet/35           : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      0/SelectionSet/8             : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      2/Definition/10              : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      2/ExecutableDefinition/4     : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      2/OperationDefinition/5      : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      2/SelectionSet/8             : {2/NAME/7, 2/OPENING_BRACE/9, null}
+      9/Selection/14               : {13/CLOSING_BRACE/20, 13/NAME/16}
+      9/Field/15                   : {13/CLOSING_BRACE/20, 13/NAME/16}
+      16/SelectionSetOpt/22        : {13/CLOSING_BRACE/20, 13/NAME/16}
+      25/SelectionSetOpt/34        : {13/CLOSING_BRACE/20, 13/NAME/16}
+      13/Selection/21              : {13/CLOSING_BRACE/20, 13/NAME/16}
+      13/Field/15                  : {13/CLOSING_BRACE/20, 13/NAME/16}
+      16/SelectionSet/24           : {13/CLOSING_BRACE/20, 13/NAME/16}
+      18/Directive/28              : {26/OPENING_BRACE/9, 27/AT/29}
+      27/Directive/36              : {26/OPENING_BRACE/9, 27/AT/29}
+      19/VariableDefinition/31     : {30/CLOSING_PAREN/38, 30/DOLLAR/33}
+      40/Type/42                   : {30/CLOSING_PAREN/38, 30/DOLLAR/33}
+      30/VariableDefinition/39     : {30/CLOSING_PAREN/38, 30/DOLLAR/33}
+      25/SelectionSet/24           : {13/CLOSING_BRACE/20, 13/NAME/16}
+      40/NamedType/43              : {30/CLOSING_PAREN/38, 30/DOLLAR/33}"
     `);
   });
 });

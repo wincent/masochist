@@ -137,35 +137,56 @@ describe('itemSetsToTransitionTable()', () => {
         Selection → 14
         SelectionList → 13
       11:
-        AT → 21
-        Directive → 20
-        DirectiveList → 19
-        DirectivesOpt → 18
+        OPENING_PAREN → 19
+        VariableDefinitionsOpt → 18
       13:
         Alias → 17
-        CLOSING_BRACE → 22
+        CLOSING_BRACE → 20
         Field → 15
         NAME → 16
-        Selection → 23
+        Selection → 21
       16:
-        COLON → 25
+        COLON → 23
         OPENING_BRACE → 9
-        SelectionSet → 26
-        SelectionSetOpt → 24
+        SelectionSet → 24
+        SelectionSetOpt → 22
       17:
-        NAME → 27
+        NAME → 25
       18:
-        OPENING_BRACE → 9
-        SelectionSet → 28
+        AT → 29
+        Directive → 28
+        DirectiveList → 27
+        DirectivesOpt → 26
       19:
-        AT → 21
-        Directive → 29
-      21:
-        NAME → 30
-      27:
+        DOLLAR → 33
+        Variable → 32
+        VariableDefinition → 31
+        VariableDefinitionList → 30
+      25:
         OPENING_BRACE → 9
-        SelectionSet → 26
-        SelectionSetOpt → 31"
+        SelectionSet → 24
+        SelectionSetOpt → 34
+      26:
+        OPENING_BRACE → 9
+        SelectionSet → 35
+      27:
+        AT → 29
+        Directive → 36
+      29:
+        NAME → 37
+      30:
+        CLOSING_PAREN → 38
+        DOLLAR → 33
+        Variable → 32
+        VariableDefinition → 39
+      32:
+        COLON → 40
+      33:
+        NAME → 41
+      40:
+        NAME → 44
+        NamedType → 43
+        Type → 42"
     `);
   });
 });

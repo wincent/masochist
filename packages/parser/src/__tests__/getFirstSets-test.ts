@@ -100,22 +100,28 @@ describe('getFirstSets()', () => {
     expect('\n' + stringifySymbolSets(getFirstSets(grammar)))
       .toMatchInlineSnapshot(`
       "
-      OperationType        : {NAME}
-      OperationNameOpt     : {NAME, null}
-      SelectionSet         : {OPENING_BRACE}
-      SelectionSetOpt      : {OPENING_BRACE, null}
-      Field                : {NAME}
-      Alias                : {NAME}
-      DirectivesOpt        : {AT, null}
-      Directive            : {AT}
-      OperationDefinition  : {NAME, OPENING_BRACE}
-      Selection            : {NAME}
-      DirectiveList        : {AT}
-      ExecutableDefinition : {NAME, OPENING_BRACE}
-      SelectionList        : {NAME}
-      Definition           : {NAME, OPENING_BRACE}
-      DefinitionList       : {NAME, OPENING_BRACE}
-      Document             : {NAME, OPENING_BRACE}"
+      OperationType          : {NAME}
+      OperationNameOpt       : {NAME, null}
+      VariableDefinitionsOpt : {OPENING_PAREN, null}
+      Variable               : {DOLLAR}
+      NamedType              : {NAME}
+      DirectivesOpt          : {AT, null}
+      Directive              : {AT}
+      SelectionSet           : {OPENING_BRACE}
+      SelectionSetOpt        : {OPENING_BRACE, null}
+      Field                  : {NAME}
+      Alias                  : {NAME}
+      OperationDefinition    : {NAME, OPENING_BRACE}
+      VariableDefinition     : {DOLLAR}
+      Type                   : {NAME}
+      DirectiveList          : {AT}
+      Selection              : {NAME}
+      ExecutableDefinition   : {NAME, OPENING_BRACE}
+      VariableDefinitionList : {DOLLAR}
+      SelectionList          : {NAME}
+      Definition             : {NAME, OPENING_BRACE}
+      DefinitionList         : {NAME, OPENING_BRACE}
+      Document               : {NAME, OPENING_BRACE}"
     `);
   });
 });
