@@ -1,6 +1,6 @@
 import {invariant} from '@masochist/common';
 
-import {EPSILON, RIGHTWARDS_ARROW} from './Constants';
+import {RIGHTWARDS_ARROW} from './Constants';
 import extendedGrammarForItemSets from './extendedGrammarForItemSets';
 import getAugmentedGrammar from './getAugmentedGrammar';
 import getFollowSets from './getFollowSets';
@@ -33,11 +33,12 @@ type Gotos = {
 export type ParseTable = Array<[Actions, Gotos]>;
 
 /**
- * As described in 9.7.1.4 of Grune's "Parsing Techniques" and also here:
+ * Gets the LALR(1) parse table by SLR as described in 9.7.1.4 of Grune's
+ * "Parsing Techniques" and also here:
  *
  * https://web.archive.org/web/20211216015406/https://web.cs.dal.ca/~sjackson/lalr1.html
  */
-function getParseTableBySLR(
+export default function getParseTable(
   itemSets: Array<ItemSet>,
   transitionTable: TransitionTable,
   grammar: Grammar,
@@ -106,8 +107,7 @@ function getParseTableBySLR(
   //
   // These effectively get merged for extended rules that descend from the same
   // rule in the original grammar _and_ arrive at the same final state.
-  const extendedFollows = getFollowSets(extendedGrammar);
-  const augmentedFollows = getFollowSets(augmentedGrammar);
+  const follows = getFollowSets(extendedGrammar);
   for (const rule of extendedGrammar.rules) {
     const [initial, lhs, end] = rule.lhs.split('/');
     if (end === '$') {
@@ -122,14 +122,11 @@ function getParseTableBySLR(
     // Get the item set from the original grammar that corresponds to extended
     // grammar rule.
     const final = rule.rhs[rule.rhs.length - 1];
-    const [, symbol, itemSet] = final.split('/');
+    const itemSet = final ? final.split('/')[2] : initial;
     const ruleNumber = ruleIndices[keyForRule(lhs, rhs)];
-    const isEpsilonProduction = symbol === EPSILON;
-    const actions =
-      table[parseInt(isEpsilonProduction ? initial : itemSet, 10)][0];
+    const actions = table[parseInt(itemSet, 10)][0];
 
-    const follows = extendedFollows[rule.lhs];
-    for (const follow of follows) {
+    for (const follow of follows[rule.lhs]) {
       const symbol = (follow ?? '-1/$/-1').split('/')[1];
       const action = actions[symbol];
       if (action) {
@@ -158,21 +155,3 @@ function getParseTableBySLR(
 
   return table;
 }
-
-/**
- * Via Anderson et al's 1975 algorithm, as described in 9.7.1.1 of Grune's
- * "Parsing Techniques".
- *
- * This is the slowest approach, but probably also the most straightforward
- * one.
- */
-export function getParseTableSimple(
-  _itemSets: Array<ItemSet>,
-  _transitionTable: TransitionTable,
-  _grammar: Grammar,
-): ParseTable {
-  // TODO: actually implement, maybe
-  return [];
-}
-
-export default getParseTableBySLR;

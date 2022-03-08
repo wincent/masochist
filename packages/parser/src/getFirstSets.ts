@@ -1,5 +1,3 @@
-import {EPSILON} from './Constants';
-
 import type {Grammar, SymbolSets} from './types';
 
 /**
@@ -28,9 +26,7 @@ export default function getFirstSets(grammar: Grammar): SymbolSets {
     done = true;
     for (let i = 0; i < grammar.rules.length; i++) {
       const {lhs, rhs} = grammar.rules[i];
-      const isEpsilonProduction =
-        !rhs.length || (rhs.length === 1 && rhs[0].includes(EPSILON));
-      if (!isEpsilonProduction) {
+      if (rhs.length) {
         for (let j = 0; j < rhs.length; j++) {
           const symbol = rhs[j];
           if (tokens.has(symbol)) {

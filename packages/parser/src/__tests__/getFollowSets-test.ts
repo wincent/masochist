@@ -1,6 +1,6 @@
 import {dedent} from '@masochist/common';
 
-import {grammar, itemSets} from '..';
+import {grammar} from '..';
 import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getFollowSets from '../getFollowSets';
 import getItemSets from '../getItemSets';
@@ -92,7 +92,6 @@ describe('getFollowSets()', () => {
         0/BarOpt/3  : {3/OPEN_BRACKET/5}
         0/S/1       : {null}
         0/Program/2 : {null}
-        3/ε/3       : {3/OPEN_BRACKET/5}
       `,
     );
   });
@@ -146,7 +145,6 @@ describe('getFollowSets()', () => {
       2/ExecutableDefinition/4 : {2/NAME/7, 2/OPENING_BRACE/9, null}
       2/OperationDefinition/5  : {2/NAME/7, 2/OPENING_BRACE/9, null}
       2/SelectionSet/8         : {2/NAME/7, 2/OPENING_BRACE/9, null}
-      11/ε/11                  : {11/AT/21, 18/OPENING_BRACE/9}
       9/Selection/14           : {13/CLOSING_BRACE/22, 13/NAME/16}
       9/Field/15               : {13/CLOSING_BRACE/22, 13/NAME/16}
       16/SelectionSetOpt/24    : {13/CLOSING_BRACE/22, 13/NAME/16}
@@ -154,12 +152,9 @@ describe('getFollowSets()', () => {
       13/Selection/23          : {13/CLOSING_BRACE/22, 13/NAME/16}
       11/Directive/20          : {18/OPENING_BRACE/9, 19/AT/21}
       19/Directive/29          : {18/OPENING_BRACE/9, 19/AT/21}
-      18/ε/18                  : {18/OPENING_BRACE/9}
       13/Field/15              : {13/CLOSING_BRACE/22, 13/NAME/16}
       16/SelectionSet/26       : {13/CLOSING_BRACE/22, 13/NAME/16}
-      24/ε/24                  : {13/CLOSING_BRACE/22, 13/NAME/16}
-      27/SelectionSet/26       : {13/CLOSING_BRACE/22, 13/NAME/16}
-      31/ε/31                  : {13/CLOSING_BRACE/22, 13/NAME/16}"
+      27/SelectionSet/26       : {13/CLOSING_BRACE/22, 13/NAME/16}"
     `);
   });
 });

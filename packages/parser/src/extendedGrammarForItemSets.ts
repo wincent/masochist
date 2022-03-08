@@ -1,5 +1,3 @@
-import {EPSILON} from './Constants';
-
 import type {Grammar, ItemSet} from './types';
 
 /**
@@ -38,20 +36,16 @@ export default function extendedGrammarForItemSets(
         const target = itemSet.transitions[item.lhs];
         const lhs = `${i}/${item.lhs}/${target ?? '$'}`;
         let current = i;
-        if (item.rhs.length) {
-          const rhs = item.rhs.map((symbol) => {
-            const target = itemSets[current].transitions[symbol];
-            const annotated = `${current}/${symbol}/${target}`;
-            if (originalTokens.has(symbol)) {
-              tokens.add(annotated);
-            }
-            current = target;
-            return annotated;
-          });
-          rules.push({lhs, rhs});
-        } else {
-          rules.push({lhs, rhs: [`${target}/${EPSILON}/${target}`]});
-        }
+        const rhs = item.rhs.map((symbol) => {
+          const target = itemSets[current].transitions[symbol];
+          const annotated = `${current}/${symbol}/${target}`;
+          if (originalTokens.has(symbol)) {
+            tokens.add(annotated);
+          }
+          current = target;
+          return annotated;
+        });
+        rules.push({lhs, rhs});
       }
     }
   }
