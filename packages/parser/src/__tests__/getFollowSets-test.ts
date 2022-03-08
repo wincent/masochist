@@ -108,6 +108,7 @@ describe('getFollowSets()', () => {
       OperationType          : {AT, NAME, OPENING_BRACE, OPENING_PAREN}
       VariableDefinitionList : {CLOSING_PAREN, DOLLAR}
       Variable               : {COLON}
+      Type                   : {CLOSING_BRACKET, CLOSING_PAREN, DOLLAR}
       DirectiveList          : {AT, OPENING_BRACE}
       SelectionList          : {CLOSING_BRACE, NAME}
       Alias                  : {NAME}
@@ -116,8 +117,8 @@ describe('getFollowSets()', () => {
       OperationDefinition    : {NAME, OPENING_BRACE, null}
       SelectionSet           : {CLOSING_BRACE, NAME, OPENING_BRACE, null}
       VariableDefinition     : {CLOSING_PAREN, DOLLAR}
-      Type                   : {CLOSING_PAREN, DOLLAR}
-      NamedType              : {CLOSING_PAREN, DOLLAR}
+      NamedType              : {CLOSING_BRACKET, CLOSING_PAREN, DOLLAR}
+      ListType               : {CLOSING_BRACKET, CLOSING_PAREN, DOLLAR}
       Directive              : {AT, OPENING_BRACE}
       SelectionSetOpt        : {CLOSING_BRACE, NAME}
       Selection              : {CLOSING_BRACE, NAME}
@@ -145,6 +146,7 @@ describe('getFollowSets()', () => {
       18/DirectiveList/27          : {26/OPENING_BRACE/9, 27/AT/29}
       19/Variable/32               : {32/COLON/40}
       30/Variable/32               : {32/COLON/40}
+      46/Type/47                   : {47/CLOSING_BRACKET/48}
       0/Document/1                 : {null}
       0/Definition/3               : {2/NAME/7, 2/OPENING_BRACE/9, null}
       0/ExecutableDefinition/4     : {2/NAME/7, 2/OPENING_BRACE/9, null}
@@ -168,7 +170,10 @@ describe('getFollowSets()', () => {
       40/Type/42                   : {30/CLOSING_PAREN/38, 30/DOLLAR/33}
       30/VariableDefinition/39     : {30/CLOSING_PAREN/38, 30/DOLLAR/33}
       25/SelectionSet/24           : {13/CLOSING_BRACE/20, 13/NAME/16}
-      40/NamedType/43              : {30/CLOSING_PAREN/38, 30/DOLLAR/33}"
+      40/NamedType/43              : {30/CLOSING_PAREN/38, 30/DOLLAR/33}
+      40/ListType/45               : {30/CLOSING_PAREN/38, 30/DOLLAR/33}
+      46/NamedType/43              : {47/CLOSING_BRACKET/48}
+      46/ListType/45               : {47/CLOSING_BRACKET/48}"
     `);
   });
 });

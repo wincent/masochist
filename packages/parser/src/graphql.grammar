@@ -94,15 +94,23 @@ Variable → DOLLAR NAME {
   };
 }
 
-# TODO: ListType and NonNullType
-Type → NamedType {
+# TODO: also NonNullType
+Type → NamedType { $$ = $1; }
+Type → ListType { $$ = $1; }
+
+NamedType → NAME {
   $$ = {
     kind: 'NAMED_TYPE',
-    name: $1,
+    name: $1.contents,
   };
 }
 
-NamedType → NAME { $$ = $1.contents; }
+ListType → OPENING_BRACKET Type CLOSING_BRACKET {
+  $$ = {
+    kind: 'LIST_TYPE',
+    type: $2,
+  };
+}
 
 DirectivesOpt → DirectiveList { $$ = $1; }
 DirectivesOpt → ε { $$ = null; }

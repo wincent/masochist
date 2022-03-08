@@ -353,6 +353,8 @@ describe('getItemSets()', () => {
         VariableDefinition → Variable COLON · Type
         Type → · NamedType
         NamedType → · NAME
+        Type → · ListType
+        ListType → · OPENING_BRACKET Type CLOSING_BRACKET
 
       I41:
         Variable → DOLLAR NAME ·
@@ -365,6 +367,22 @@ describe('getItemSets()', () => {
 
       I44:
         NamedType → NAME ·
+
+      I45:
+        Type → ListType ·
+
+      I46:
+        ListType → OPENING_BRACKET · Type CLOSING_BRACKET
+        Type → · NamedType
+        NamedType → · NAME
+        Type → · ListType
+        ListType → · OPENING_BRACKET Type CLOSING_BRACKET
+
+      I47:
+        ListType → OPENING_BRACKET Type · CLOSING_BRACKET
+
+      I48:
+        ListType → OPENING_BRACKET Type CLOSING_BRACKET ·
       "
     `);
   });

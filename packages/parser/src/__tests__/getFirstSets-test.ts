@@ -105,6 +105,7 @@ describe('getFirstSets()', () => {
       VariableDefinitionsOpt : {OPENING_PAREN, null}
       Variable               : {DOLLAR}
       NamedType              : {NAME}
+      ListType               : {OPENING_BRACKET}
       DirectivesOpt          : {AT, null}
       Directive              : {AT}
       SelectionSet           : {OPENING_BRACE}
@@ -113,7 +114,7 @@ describe('getFirstSets()', () => {
       Alias                  : {NAME}
       OperationDefinition    : {NAME, OPENING_BRACE}
       VariableDefinition     : {DOLLAR}
-      Type                   : {NAME}
+      Type                   : {NAME, OPENING_BRACKET}
       DirectiveList          : {AT}
       Selection              : {NAME}
       ExecutableDefinition   : {NAME, OPENING_BRACE}
