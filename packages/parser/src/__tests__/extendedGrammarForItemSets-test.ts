@@ -149,9 +149,11 @@ describe('extendedGrammarForItemSets()', () => {
       %token 33/NAME/41
       %token 40/NAME/44
       %token 40/OPENING_BRACKET/46
+      %token 43/BANG/48
+      %token 45/BANG/49
       %token 46/NAME/44
       %token 46/OPENING_BRACKET/46
-      %token 47/CLOSING_BRACKET/48
+      %token 50/CLOSING_BRACKET/51
       %token 6/NAME/12
       %token 9/NAME/16
 
@@ -207,11 +209,17 @@ describe('extendedGrammarForItemSets()', () => {
       r49: 40/Type/42 → 40/NamedType/43
       r50: 40/NamedType/43 → 40/NAME/44
       r51: 40/Type/42 → 40/ListType/45
-      r52: 40/ListType/45 → 40/OPENING_BRACKET/46 46/Type/47 47/CLOSING_BRACKET/48
-      r53: 46/Type/47 → 46/NamedType/43
-      r54: 46/NamedType/43 → 46/NAME/44
-      r55: 46/Type/47 → 46/ListType/45
-      r56: 46/ListType/45 → 46/OPENING_BRACKET/46 46/Type/47 47/CLOSING_BRACKET/48
+      r52: 40/ListType/45 → 40/OPENING_BRACKET/46 46/Type/50 50/CLOSING_BRACKET/51
+      r53: 40/Type/42 → 40/NonNullType/47
+      r54: 40/NonNullType/47 → 40/ListType/45 45/BANG/49
+      r55: 40/NonNullType/47 → 40/NamedType/43 43/BANG/48
+      r56: 46/Type/50 → 46/NamedType/43
+      r57: 46/NamedType/43 → 46/NAME/44
+      r58: 46/Type/50 → 46/ListType/45
+      r59: 46/ListType/45 → 46/OPENING_BRACKET/46 46/Type/50 50/CLOSING_BRACKET/51
+      r60: 46/Type/50 → 46/NonNullType/47
+      r61: 46/NonNullType/47 → 46/ListType/45 45/BANG/49
+      r62: 46/NonNullType/47 → 46/NamedType/43 43/BANG/48
       "
     `);
   });

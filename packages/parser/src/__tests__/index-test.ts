@@ -17,7 +17,12 @@ describe('GraphQL parser', () => {
           }
         }
 
-        query NewQuery($count: Int, $sizes: [Int]) {
+        query NewQuery(
+          $count: Int
+          $sizes: [Int]
+          $factor: Int!
+          $stuff: [Int]!
+        ) {
           hai
         }
     `),
@@ -111,6 +116,41 @@ describe('GraphQL parser', () => {
                   type: {
                     kind: 'NAMED_TYPE',
                     name: 'Int',
+                  },
+                },
+              },
+              {
+                kind: 'VARIABLE_DEFINITION',
+                defaultValue: null,
+                directives: null,
+                variable: {
+                  kind: 'VARIABLE',
+                  name: 'factor',
+                },
+                type: {
+                  kind: 'NON_NULL_TYPE',
+                  type: {
+                    kind: 'NAMED_TYPE',
+                    name: 'Int',
+                  },
+                },
+              },
+              {
+                kind: 'VARIABLE_DEFINITION',
+                defaultValue: null,
+                directives: null,
+                variable: {
+                  kind: 'VARIABLE',
+                  name: 'stuff',
+                },
+                type: {
+                  kind: 'NON_NULL_TYPE',
+                  type: {
+                    kind: 'LIST_TYPE',
+                    type: {
+                      kind: 'NAMED_TYPE',
+                      name: 'Int',
+                    },
                   },
                 },
               },

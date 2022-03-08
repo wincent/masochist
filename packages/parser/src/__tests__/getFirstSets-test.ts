@@ -106,6 +106,7 @@ describe('getFirstSets()', () => {
       Variable               : {DOLLAR}
       NamedType              : {NAME}
       ListType               : {OPENING_BRACKET}
+      NonNullType            : {NAME, OPENING_BRACKET}
       DirectivesOpt          : {AT, null}
       Directive              : {AT}
       SelectionSet           : {OPENING_BRACE}

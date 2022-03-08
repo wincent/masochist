@@ -355,6 +355,9 @@ describe('getItemSets()', () => {
         NamedType → · NAME
         Type → · ListType
         ListType → · OPENING_BRACKET Type CLOSING_BRACKET
+        Type → · NonNullType
+        NonNullType → · ListType BANG
+        NonNullType → · NamedType BANG
 
       I41:
         Variable → DOLLAR NAME ·
@@ -364,12 +367,14 @@ describe('getItemSets()', () => {
 
       I43:
         Type → NamedType ·
+        NonNullType → NamedType · BANG
 
       I44:
         NamedType → NAME ·
 
       I45:
         Type → ListType ·
+        NonNullType → ListType · BANG
 
       I46:
         ListType → OPENING_BRACKET · Type CLOSING_BRACKET
@@ -377,11 +382,23 @@ describe('getItemSets()', () => {
         NamedType → · NAME
         Type → · ListType
         ListType → · OPENING_BRACKET Type CLOSING_BRACKET
+        Type → · NonNullType
+        NonNullType → · ListType BANG
+        NonNullType → · NamedType BANG
 
       I47:
-        ListType → OPENING_BRACKET Type · CLOSING_BRACKET
+        Type → NonNullType ·
 
       I48:
+        NonNullType → NamedType BANG ·
+
+      I49:
+        NonNullType → ListType BANG ·
+
+      I50:
+        ListType → OPENING_BRACKET Type · CLOSING_BRACKET
+
+      I51:
         ListType → OPENING_BRACKET Type CLOSING_BRACKET ·
       "
     `);

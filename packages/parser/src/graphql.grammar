@@ -94,9 +94,9 @@ Variable → DOLLAR NAME {
   };
 }
 
-# TODO: also NonNullType
 Type → NamedType { $$ = $1; }
 Type → ListType { $$ = $1; }
+Type → NonNullType { $$ = $1; }
 
 NamedType → NAME {
   $$ = {
@@ -109,6 +109,19 @@ ListType → OPENING_BRACKET Type CLOSING_BRACKET {
   $$ = {
     kind: 'LIST_TYPE',
     type: $2,
+  };
+}
+
+NonNullType → ListType BANG {
+  $$ = {
+    kind: 'NON_NULL_TYPE',
+    type: $1,
+  };
+}
+NonNullType → NamedType BANG {
+  $$ = {
+    kind: 'NON_NULL_TYPE',
+    type: $1,
   };
 }
 
