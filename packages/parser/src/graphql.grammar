@@ -58,7 +58,7 @@ OperationType → NAME {{
   } else if (contents === 'subscription') {
     $$ = 'SUBSCRIPTION';
   } else {
-    throw new Error('Unsupported operation type: ' + contents);
+    throw new Error(`Unsupported operation type: ${contents}`);
   }
 }}
 

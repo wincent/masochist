@@ -373,7 +373,7 @@ describe('getParseTable()', () => {
         } else if (contents === 'subscription') {
           $$ = 'SUBSCRIPTION';
         } else {
-          throw new Error('Unsupported operation type: ' + contents);
+          throw new Error(\`Unsupported operation type: \${contents}\`);
         }
       }}
       r9: OperationNameOpt → NAME { $$ = $1.contents; }
