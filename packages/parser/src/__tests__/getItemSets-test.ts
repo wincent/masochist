@@ -225,8 +225,8 @@ describe('getItemSets()', () => {
         SelectionSet → OPENING_BRACE · SelectionList CLOSING_BRACE
         SelectionList → · Selection
         Selection → · Field
-        Field → · NAME SelectionSetOpt
-        Field → · Alias NAME SelectionSetOpt
+        Field → · NAME ArgumentsOpt SelectionSetOpt
+        Field → · Alias NAME ArgumentsOpt SelectionSetOpt
         Alias → · NAME COLON
         SelectionList → · SelectionList Selection
 
@@ -245,8 +245,8 @@ describe('getItemSets()', () => {
         SelectionSet → OPENING_BRACE SelectionList · CLOSING_BRACE
         SelectionList → SelectionList · Selection
         Selection → · Field
-        Field → · NAME SelectionSetOpt
-        Field → · Alias NAME SelectionSetOpt
+        Field → · NAME ArgumentsOpt SelectionSetOpt
+        Field → · Alias NAME ArgumentsOpt SelectionSetOpt
         Alias → · NAME COLON
 
       I14:
@@ -256,14 +256,13 @@ describe('getItemSets()', () => {
         Selection → Field ·
 
       I16:
-        Field → NAME · SelectionSetOpt
+        Field → NAME · ArgumentsOpt SelectionSetOpt
         Alias → NAME · COLON
-        SelectionSetOpt → · SelectionSet
-        SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
-        SelectionSetOpt → ε ·
+        ArgumentsOpt → · OPENING_PAREN ArgumentList CLOSING_PAREN
+        ArgumentsOpt → ε ·
 
       I17:
-        Field → Alias · NAME SelectionSetOpt
+        Field → Alias · NAME ArgumentsOpt SelectionSetOpt
 
       I18:
         OperationDefinition → OperationType OperationNameOpt VariableDefinitionsOpt · DirectivesOpt SelectionSet
@@ -287,19 +286,24 @@ describe('getItemSets()', () => {
         SelectionList → SelectionList Selection ·
 
       I22:
-        Field → NAME SelectionSetOpt ·
+        Field → NAME ArgumentsOpt · SelectionSetOpt
+        SelectionSetOpt → · SelectionSet
+        SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
+        SelectionSetOpt → ε ·
 
       I23:
         Alias → NAME COLON ·
 
       I24:
-        SelectionSetOpt → SelectionSet ·
+        ArgumentsOpt → OPENING_PAREN · ArgumentList CLOSING_PAREN
+        ArgumentList → · Argument
+        Argument → · NAME COLON Value
+        ArgumentList → · ArgumentList Argument
 
       I25:
-        Field → Alias NAME · SelectionSetOpt
-        SelectionSetOpt → · SelectionSet
-        SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
-        SelectionSetOpt → ε ·
+        Field → Alias NAME · ArgumentsOpt SelectionSetOpt
+        ArgumentsOpt → · OPENING_PAREN ArgumentList CLOSING_PAREN
+        ArgumentsOpt → ε ·
 
       I26:
         OperationDefinition → OperationType OperationNameOpt VariableDefinitionsOpt DirectivesOpt · SelectionSet
@@ -332,24 +336,44 @@ describe('getItemSets()', () => {
         Variable → DOLLAR · NAME
 
       I34:
-        Field → Alias NAME SelectionSetOpt ·
+        Field → NAME ArgumentsOpt SelectionSetOpt ·
 
       I35:
-        OperationDefinition → OperationType OperationNameOpt VariableDefinitionsOpt DirectivesOpt SelectionSet ·
+        SelectionSetOpt → SelectionSet ·
 
       I36:
-        DirectiveList → DirectiveList Directive ·
+        ArgumentsOpt → OPENING_PAREN ArgumentList · CLOSING_PAREN
+        ArgumentList → ArgumentList · Argument
+        Argument → · NAME COLON Value
 
       I37:
-        Directive → AT NAME ·
+        ArgumentList → Argument ·
 
       I38:
-        VariableDefinitionsOpt → OPENING_PAREN VariableDefinitionList CLOSING_PAREN ·
+        Argument → NAME · COLON Value
 
       I39:
-        VariableDefinitionList → VariableDefinitionList VariableDefinition ·
+        Field → Alias NAME ArgumentsOpt · SelectionSetOpt
+        SelectionSetOpt → · SelectionSet
+        SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
+        SelectionSetOpt → ε ·
 
       I40:
+        OperationDefinition → OperationType OperationNameOpt VariableDefinitionsOpt DirectivesOpt SelectionSet ·
+
+      I41:
+        DirectiveList → DirectiveList Directive ·
+
+      I42:
+        Directive → AT NAME ·
+
+      I43:
+        VariableDefinitionsOpt → OPENING_PAREN VariableDefinitionList CLOSING_PAREN ·
+
+      I44:
+        VariableDefinitionList → VariableDefinitionList VariableDefinition ·
+
+      I45:
         VariableDefinition → Variable COLON · Type DefaultValueOpt
         Type → · NamedType
         NamedType → · NAME
@@ -359,26 +383,44 @@ describe('getItemSets()', () => {
         NonNullType → · ListType BANG
         NonNullType → · NamedType BANG
 
-      I41:
+      I46:
         Variable → DOLLAR NAME ·
 
-      I42:
+      I47:
+        ArgumentsOpt → OPENING_PAREN ArgumentList CLOSING_PAREN ·
+
+      I48:
+        ArgumentList → ArgumentList Argument ·
+
+      I49:
+        Argument → NAME COLON · Value
+        Value → · Variable
+        Variable → · DOLLAR NAME
+        Value → · NumberValue
+        NumberValue → · NUMBER
+        Value → · NamedValue
+        NamedValue → · NAME
+
+      I50:
+        Field → Alias NAME ArgumentsOpt SelectionSetOpt ·
+
+      I51:
         VariableDefinition → Variable COLON Type · DefaultValueOpt
         DefaultValueOpt → · EQUALS ValueConst
         DefaultValueOpt → ε ·
 
-      I43:
+      I52:
         Type → NamedType ·
         NonNullType → NamedType · BANG
 
-      I44:
+      I53:
         NamedType → NAME ·
 
-      I45:
+      I54:
         Type → ListType ·
         NonNullType → ListType · BANG
 
-      I46:
+      I55:
         ListType → OPENING_BRACKET · Type CLOSING_BRACKET
         Type → · NamedType
         NamedType → · NAME
@@ -388,36 +430,56 @@ describe('getItemSets()', () => {
         NonNullType → · ListType BANG
         NonNullType → · NamedType BANG
 
-      I47:
+      I56:
         Type → NonNullType ·
 
-      I48:
+      I57:
+        Argument → NAME COLON Value ·
+
+      I58:
+        Value → Variable ·
+
+      I59:
+        Value → NumberValue ·
+
+      I60:
+        NumberValue → NUMBER ·
+
+      I61:
+        Value → NamedValue ·
+
+      I62:
+        NamedValue → NAME ·
+
+      I63:
         VariableDefinition → Variable COLON Type DefaultValueOpt ·
 
-      I49:
+      I64:
         DefaultValueOpt → EQUALS · ValueConst
-        ValueConst → · NUMBER
-        ValueConst → · NAME
+        ValueConst → · NumberValue
+        NumberValue → · NUMBER
+        ValueConst → · NamedValue
+        NamedValue → · NAME
 
-      I50:
+      I65:
         NonNullType → NamedType BANG ·
 
-      I51:
+      I66:
         NonNullType → ListType BANG ·
 
-      I52:
+      I67:
         ListType → OPENING_BRACKET Type · CLOSING_BRACKET
 
-      I53:
+      I68:
         DefaultValueOpt → EQUALS ValueConst ·
 
-      I54:
-        ValueConst → NUMBER ·
+      I69:
+        ValueConst → NumberValue ·
 
-      I55:
-        ValueConst → NAME ·
+      I70:
+        ValueConst → NamedValue ·
 
-      I56:
+      I71:
         ListType → OPENING_BRACKET Type CLOSING_BRACKET ·
       "
     `);

@@ -108,18 +108,24 @@ describe('getFirstSets()', () => {
       ListType               : {OPENING_BRACKET}
       NonNullType            : {NAME, OPENING_BRACKET}
       DefaultValueOpt        : {EQUALS, null}
-      ValueConst             : {NAME, NUMBER}
+      NumberValue            : {NUMBER}
+      NamedValue             : {NAME}
       DirectivesOpt          : {AT, null}
       Directive              : {AT}
       SelectionSet           : {OPENING_BRACE}
       SelectionSetOpt        : {OPENING_BRACE, null}
       Field                  : {NAME}
       Alias                  : {NAME}
+      ArgumentsOpt           : {OPENING_PAREN, null}
+      Argument               : {NAME}
+      Value                  : {DOLLAR, NAME, NUMBER}
       OperationDefinition    : {NAME, OPENING_BRACE}
       VariableDefinition     : {DOLLAR}
       Type                   : {NAME, OPENING_BRACKET}
+      ValueConst             : {NAME, NUMBER}
       DirectiveList          : {AT}
       Selection              : {NAME}
+      ArgumentList           : {NAME}
       ExecutableDefinition   : {NAME, OPENING_BRACE}
       VariableDefinitionList : {DOLLAR}
       SelectionList          : {NAME}

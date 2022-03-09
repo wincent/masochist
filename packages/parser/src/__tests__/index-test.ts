@@ -23,7 +23,7 @@ describe('GraphQL parser', () => {
           $factor: Int!
           $stuff: [Int]!
         ) {
-          hai
+          hai(count: $count, factor: 20)
         }
     `),
     ];
@@ -45,6 +45,7 @@ describe('GraphQL parser', () => {
               {
                 kind: 'FIELD',
                 alias: null,
+                arguments: null,
                 directives: null,
                 name: 'foo',
                 selections: null,
@@ -52,6 +53,7 @@ describe('GraphQL parser', () => {
               {
                 kind: 'FIELD',
                 alias: 'barAlias',
+                arguments: null,
                 directives: null,
                 name: 'bar',
                 selections: null,
@@ -59,12 +61,14 @@ describe('GraphQL parser', () => {
               {
                 kind: 'FIELD',
                 alias: null,
+                arguments: null,
                 directives: null,
                 name: 'baz',
                 selections: [
                   {
                     kind: 'FIELD',
                     alias: null,
+                    arguments: null,
                     directives: null,
                     name: 'qux',
                     selections: null,
@@ -83,6 +87,24 @@ describe('GraphQL parser', () => {
               {
                 kind: 'FIELD',
                 alias: null,
+                arguments: [
+                  {
+                    kind: 'ARGUMENT',
+                    name: 'count',
+                    value: {
+                      kind: 'VARIABLE',
+                      name: 'count',
+                    },
+                  },
+                  {
+                    kind: 'ARGUMENT',
+                    name: 'factor',
+                    value: {
+                      kind: 'INT',
+                      value: 20,
+                    },
+                  },
+                ],
                 directives: null,
                 name: 'hai',
                 selections: null,

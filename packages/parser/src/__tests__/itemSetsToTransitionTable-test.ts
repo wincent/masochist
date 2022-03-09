@@ -146,10 +146,9 @@ describe('itemSetsToTransitionTable()', () => {
         NAME → 16
         Selection → 21
       16:
+        ArgumentsOpt → 22
         COLON → 23
-        OPENING_BRACE → 9
-        SelectionSet → 24
-        SelectionSetOpt → 22
+        OPENING_PAREN → 24
       17:
         NAME → 25
       18:
@@ -162,54 +161,81 @@ describe('itemSetsToTransitionTable()', () => {
         Variable → 32
         VariableDefinition → 31
         VariableDefinitionList → 30
-      25:
-        OPENING_BRACE → 9
-        SelectionSet → 24
-        SelectionSetOpt → 34
-      26:
+      22:
         OPENING_BRACE → 9
         SelectionSet → 35
+        SelectionSetOpt → 34
+      24:
+        Argument → 37
+        ArgumentList → 36
+        NAME → 38
+      25:
+        ArgumentsOpt → 39
+        OPENING_PAREN → 24
+      26:
+        OPENING_BRACE → 9
+        SelectionSet → 40
       27:
         AT → 29
-        Directive → 36
+        Directive → 41
       29:
-        NAME → 37
+        NAME → 42
       30:
-        CLOSING_PAREN → 38
+        CLOSING_PAREN → 43
         DOLLAR → 33
         Variable → 32
-        VariableDefinition → 39
+        VariableDefinition → 44
       32:
-        COLON → 40
+        COLON → 45
       33:
-        NAME → 41
-      40:
-        ListType → 45
-        NAME → 44
-        NamedType → 43
-        NonNullType → 47
-        OPENING_BRACKET → 46
-        Type → 42
-      42:
-        DefaultValueOpt → 48
-        EQUALS → 49
-      43:
-        BANG → 50
+        NAME → 46
+      36:
+        Argument → 48
+        CLOSING_PAREN → 47
+        NAME → 38
+      38:
+        COLON → 49
+      39:
+        OPENING_BRACE → 9
+        SelectionSet → 35
+        SelectionSetOpt → 50
       45:
-        BANG → 51
-      46:
-        ListType → 45
-        NAME → 44
-        NamedType → 43
-        NonNullType → 47
-        OPENING_BRACKET → 46
-        Type → 52
+        ListType → 54
+        NAME → 53
+        NamedType → 52
+        NonNullType → 56
+        OPENING_BRACKET → 55
+        Type → 51
       49:
-        NAME → 55
-        NUMBER → 54
-        ValueConst → 53
+        DOLLAR → 33
+        NAME → 62
+        NUMBER → 60
+        NamedValue → 61
+        NumberValue → 59
+        Value → 57
+        Variable → 58
+      51:
+        DefaultValueOpt → 63
+        EQUALS → 64
       52:
-        CLOSING_BRACKET → 56"
+        BANG → 65
+      54:
+        BANG → 66
+      55:
+        ListType → 54
+        NAME → 53
+        NamedType → 52
+        NonNullType → 56
+        OPENING_BRACKET → 55
+        Type → 67
+      64:
+        NAME → 62
+        NUMBER → 60
+        NamedValue → 70
+        NumberValue → 69
+        ValueConst → 68
+      67:
+        CLOSING_BRACKET → 71"
     `);
   });
 });

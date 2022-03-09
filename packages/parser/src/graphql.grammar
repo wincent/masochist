@@ -128,8 +128,19 @@ NonNullType → NamedType BANG {
 DefaultValueOpt → EQUALS ValueConst { $$ = $2; }
 DefaultValueOpt → ε { $$ = null; }
 
+ValueConst → NumberValue { $$ = $1; }
+
+# TODO
+# ValueConst → StringValue
+
+ValueConst → NamedValue { $$ = $1; }
+
+# TODO
+# ValueConst → ListValue
+# ValueConst → ObjectValue
+
 # IntValue, FloatValue
-ValueConst → NUMBER {{
+NumberValue → NUMBER {{
   const {contents} = $1;
 
   // TODO: Distinguish between these tokens in the lexer instead?
@@ -140,11 +151,8 @@ ValueConst → NUMBER {{
   }
 }}
 
-# TODO
-# ValueConst → StringValue
-
 # BooleanValue, NullValue, EnumValue
-ValueConst → NAME {{
+NamedValue → NAME {{
   const {contents} = $1;
   if (contents === 'true') {
     $$ = {kind: 'BOOLEAN', value: true};
@@ -156,10 +164,6 @@ ValueConst → NAME {{
     $$ = {kind: 'ENUM', value: contents};
   }
 }}
-
-# TODO
-# ValueConst → ListValue
-# ValueConst → ObjectValue
 
 DirectivesOpt → DirectiveList { $$ = $1; }
 DirectivesOpt → ε { $$ = null; }
@@ -186,23 +190,46 @@ SelectionList → SelectionList Selection { $1.push($2); $$ = $1; }
 Selection → Field { $$ = $1; }
 
 # TODO: add DirectivesOpt to these
-Field → NAME SelectionSetOpt {
+Field → NAME ArgumentsOpt SelectionSetOpt {
   $$ = {
     kind: 'FIELD',
     alias: null,
+    arguments: $2,
     directives: null,
     name: $1.contents,
-    selections: $2,
+    selections: $3,
   };
 }
-Field → Alias NAME SelectionSetOpt {
+Field → Alias NAME ArgumentsOpt SelectionSetOpt {
   $$ = {
     kind: 'FIELD',
     alias: $1,
+    arguments: $3,
     directives: null,
     name: $2.contents,
-    selections: $3,
+    selections: $4,
   };
 }
 
 Alias → NAME COLON { $$ = $1.contents; }
+
+ArgumentsOpt → OPENING_PAREN ArgumentList CLOSING_PAREN { $$ = $2; }
+ArgumentsOpt → ε { $$ = null; }
+
+ArgumentList → Argument { $$ = [$1]; }
+ArgumentList → ArgumentList Argument { $1.push($2); $$ = $1; }
+
+Argument → NAME COLON Value {
+  $$ = {
+    kind: 'ARGUMENT',
+    name: $1.contents,
+    value: $3,
+  };
+}
+
+Value → Variable { $$ = $1; }
+Value → NumberValue { $$ = $1; }
+# TODO: Value → StringValue
+Value → NamedValue { $$ = $1; }
+# TODO: Value → ListValue
+# TODO: Value → ObjectValue
