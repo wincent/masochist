@@ -268,7 +268,7 @@ describe('getItemSets()', () => {
         OperationDefinition → OperationType OperationNameOpt VariableDefinitionsOpt · DirectivesOpt SelectionSet
         DirectivesOpt → · DirectiveList
         DirectiveList → · Directive
-        Directive → · AT NAME
+        Directive → · AT NAME ArgumentsOpt
         DirectiveList → · DirectiveList Directive
         DirectivesOpt → ε ·
 
@@ -312,13 +312,13 @@ describe('getItemSets()', () => {
       I27:
         DirectivesOpt → DirectiveList ·
         DirectiveList → DirectiveList · Directive
-        Directive → · AT NAME
+        Directive → · AT NAME ArgumentsOpt
 
       I28:
         DirectiveList → Directive ·
 
       I29:
-        Directive → AT · NAME
+        Directive → AT · NAME ArgumentsOpt
 
       I30:
         VariableDefinitionsOpt → OPENING_PAREN VariableDefinitionList · CLOSING_PAREN
@@ -365,7 +365,9 @@ describe('getItemSets()', () => {
         DirectiveList → DirectiveList Directive ·
 
       I42:
-        Directive → AT NAME ·
+        Directive → AT NAME · ArgumentsOpt
+        ArgumentsOpt → · OPENING_PAREN ArgumentList CLOSING_PAREN
+        ArgumentsOpt → ε ·
 
       I43:
         VariableDefinitionsOpt → OPENING_PAREN VariableDefinitionList CLOSING_PAREN ·
@@ -398,6 +400,9 @@ describe('getItemSets()', () => {
         Variable → · DOLLAR NAME
         Value → · NumberValue
         NumberValue → · NUMBER
+        Value → · StringValue
+        StringValue → · STRING_VALUE
+        StringValue → · BLOCK_STRING_VALUE
         Value → · NamedValue
         NamedValue → · NAME
 
@@ -405,22 +410,25 @@ describe('getItemSets()', () => {
         Field → Alias NAME ArgumentsOpt SelectionSetOpt ·
 
       I51:
+        Directive → AT NAME ArgumentsOpt ·
+
+      I52:
         VariableDefinition → Variable COLON Type · DefaultValueOpt
         DefaultValueOpt → · EQUALS ValueConst
         DefaultValueOpt → ε ·
 
-      I52:
+      I53:
         Type → NamedType ·
         NonNullType → NamedType · BANG
 
-      I53:
+      I54:
         NamedType → NAME ·
 
-      I54:
+      I55:
         Type → ListType ·
         NonNullType → ListType · BANG
 
-      I55:
+      I56:
         ListType → OPENING_BRACKET · Type CLOSING_BRACKET
         Type → · NamedType
         NamedType → · NAME
@@ -430,31 +438,40 @@ describe('getItemSets()', () => {
         NonNullType → · ListType BANG
         NonNullType → · NamedType BANG
 
-      I56:
+      I57:
         Type → NonNullType ·
 
-      I57:
+      I58:
         Argument → NAME COLON Value ·
 
-      I58:
+      I59:
         Value → Variable ·
 
-      I59:
+      I60:
         Value → NumberValue ·
 
-      I60:
+      I61:
         NumberValue → NUMBER ·
 
-      I61:
-        Value → NamedValue ·
-
       I62:
-        NamedValue → NAME ·
+        Value → StringValue ·
 
       I63:
-        VariableDefinition → Variable COLON Type DefaultValueOpt ·
+        StringValue → STRING_VALUE ·
 
       I64:
+        StringValue → BLOCK_STRING_VALUE ·
+
+      I65:
+        Value → NamedValue ·
+
+      I66:
+        NamedValue → NAME ·
+
+      I67:
+        VariableDefinition → Variable COLON Type DefaultValueOpt ·
+
+      I68:
         DefaultValueOpt → EQUALS · ValueConst
         ValueConst → · NumberValue
         NumberValue → · NUMBER
@@ -467,28 +484,28 @@ describe('getItemSets()', () => {
         ObjectValueConst → · OPENING_BRACE CLOSING_BRACE
         ObjectValueConst → · OPENING_BRACE ObjectFieldConstList CLOSING_BRACE
 
-      I65:
+      I69:
         NonNullType → NamedType BANG ·
 
-      I66:
+      I70:
         NonNullType → ListType BANG ·
 
-      I67:
+      I71:
         ListType → OPENING_BRACKET Type · CLOSING_BRACKET
 
-      I68:
+      I72:
         DefaultValueOpt → EQUALS ValueConst ·
 
-      I69:
+      I73:
         ValueConst → NumberValue ·
 
-      I70:
+      I74:
         ValueConst → NamedValue ·
 
-      I71:
+      I75:
         ValueConst → ListValueConst ·
 
-      I72:
+      I76:
         ListValueConst → OPENING_BRACKET · CLOSING_BRACKET
         ListValueConst → OPENING_BRACKET · ListValueConstList CLOSING_BRACKET
         ListValueConstList → · ValueConst
@@ -504,23 +521,23 @@ describe('getItemSets()', () => {
         ObjectValueConst → · OPENING_BRACE ObjectFieldConstList CLOSING_BRACE
         ListValueConstList → · ListValueConstList ValueConst
 
-      I73:
+      I77:
         ValueConst → ObjectValueConst ·
 
-      I74:
+      I78:
         ObjectValueConst → OPENING_BRACE · CLOSING_BRACE
         ObjectValueConst → OPENING_BRACE · ObjectFieldConstList CLOSING_BRACE
         ObjectFieldConstList → · ObjectFieldConst
         ObjectFieldConst → · NAME COLON ValueConst
         ObjectFieldConstList → · ObjectFieldConstList ObjectFieldConst
 
-      I75:
+      I79:
         ListType → OPENING_BRACKET Type CLOSING_BRACKET ·
 
-      I76:
+      I80:
         ListValueConst → OPENING_BRACKET CLOSING_BRACKET ·
 
-      I77:
+      I81:
         ListValueConst → OPENING_BRACKET ListValueConstList · CLOSING_BRACKET
         ListValueConstList → ListValueConstList · ValueConst
         ValueConst → · NumberValue
@@ -534,36 +551,36 @@ describe('getItemSets()', () => {
         ObjectValueConst → · OPENING_BRACE CLOSING_BRACE
         ObjectValueConst → · OPENING_BRACE ObjectFieldConstList CLOSING_BRACE
 
-      I78:
+      I82:
         ListValueConstList → ValueConst ·
 
-      I79:
+      I83:
         ObjectValueConst → OPENING_BRACE CLOSING_BRACE ·
 
-      I80:
+      I84:
         ObjectValueConst → OPENING_BRACE ObjectFieldConstList · CLOSING_BRACE
         ObjectFieldConstList → ObjectFieldConstList · ObjectFieldConst
         ObjectFieldConst → · NAME COLON ValueConst
 
-      I81:
+      I85:
         ObjectFieldConstList → ObjectFieldConst ·
 
-      I82:
+      I86:
         ObjectFieldConst → NAME · COLON ValueConst
 
-      I83:
+      I87:
         ListValueConst → OPENING_BRACKET ListValueConstList CLOSING_BRACKET ·
 
-      I84:
+      I88:
         ListValueConstList → ListValueConstList ValueConst ·
 
-      I85:
+      I89:
         ObjectValueConst → OPENING_BRACE ObjectFieldConstList CLOSING_BRACE ·
 
-      I86:
+      I90:
         ObjectFieldConstList → ObjectFieldConstList ObjectFieldConst ·
 
-      I87:
+      I91:
         ObjectFieldConst → NAME COLON · ValueConst
         ValueConst → · NumberValue
         NumberValue → · NUMBER
@@ -576,7 +593,7 @@ describe('getItemSets()', () => {
         ObjectValueConst → · OPENING_BRACE CLOSING_BRACE
         ObjectValueConst → · OPENING_BRACE ObjectFieldConstList CLOSING_BRACE
 
-      I88:
+      I92:
         ObjectFieldConst → NAME COLON ValueConst ·
       "
     `);

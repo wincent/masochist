@@ -121,7 +121,8 @@ describe('getFirstSets()', () => {
       Alias                  : {NAME}
       ArgumentsOpt           : {OPENING_PAREN, null}
       Argument               : {NAME}
-      Value                  : {DOLLAR, NAME, NUMBER}
+      Value                  : {BLOCK_STRING_VALUE, DOLLAR, NAME, NUMBER, STRING_VALUE}
+      StringValue            : {BLOCK_STRING_VALUE, STRING_VALUE}
       OperationDefinition    : {NAME, OPENING_BRACE}
       VariableDefinition     : {DOLLAR}
       Type                   : {NAME, OPENING_BRACKET}

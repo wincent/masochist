@@ -199,91 +199,97 @@ describe('itemSetsToTransitionTable()', () => {
         OPENING_BRACE → 9
         SelectionSet → 35
         SelectionSetOpt → 50
+      42:
+        ArgumentsOpt → 51
+        OPENING_PAREN → 24
       45:
-        ListType → 54
-        NAME → 53
-        NamedType → 52
-        NonNullType → 56
-        OPENING_BRACKET → 55
-        Type → 51
+        ListType → 55
+        NAME → 54
+        NamedType → 53
+        NonNullType → 57
+        OPENING_BRACKET → 56
+        Type → 52
       49:
+        BLOCK_STRING_VALUE → 64
         DOLLAR → 33
-        NAME → 62
-        NUMBER → 60
-        NamedValue → 61
-        NumberValue → 59
-        Value → 57
-        Variable → 58
-      51:
-        DefaultValueOpt → 63
-        EQUALS → 64
+        NAME → 66
+        NUMBER → 61
+        NamedValue → 65
+        NumberValue → 60
+        STRING_VALUE → 63
+        StringValue → 62
+        Value → 58
+        Variable → 59
       52:
-        BANG → 65
-      54:
-        BANG → 66
+        DefaultValueOpt → 67
+        EQUALS → 68
+      53:
+        BANG → 69
       55:
-        ListType → 54
-        NAME → 53
-        NamedType → 52
-        NonNullType → 56
-        OPENING_BRACKET → 55
-        Type → 67
-      64:
-        ListValueConst → 71
-        NAME → 62
-        NUMBER → 60
-        NamedValue → 70
-        NumberValue → 69
-        OPENING_BRACE → 74
-        OPENING_BRACKET → 72
-        ObjectValueConst → 73
-        ValueConst → 68
-      67:
-        CLOSING_BRACKET → 75
-      72:
-        CLOSING_BRACKET → 76
-        ListValueConst → 71
-        ListValueConstList → 77
-        NAME → 62
-        NUMBER → 60
-        NamedValue → 70
-        NumberValue → 69
-        OPENING_BRACE → 74
-        OPENING_BRACKET → 72
-        ObjectValueConst → 73
-        ValueConst → 78
-      74:
-        CLOSING_BRACE → 79
-        NAME → 82
-        ObjectFieldConst → 81
-        ObjectFieldConstList → 80
-      77:
-        CLOSING_BRACKET → 83
-        ListValueConst → 71
-        NAME → 62
-        NUMBER → 60
-        NamedValue → 70
-        NumberValue → 69
-        OPENING_BRACE → 74
-        OPENING_BRACKET → 72
-        ObjectValueConst → 73
-        ValueConst → 84
-      80:
-        CLOSING_BRACE → 85
-        NAME → 82
-        ObjectFieldConst → 86
-      82:
-        COLON → 87
-      87:
-        ListValueConst → 71
-        NAME → 62
-        NUMBER → 60
-        NamedValue → 70
-        NumberValue → 69
-        OPENING_BRACE → 74
-        OPENING_BRACKET → 72
-        ObjectValueConst → 73
-        ValueConst → 88"
+        BANG → 70
+      56:
+        ListType → 55
+        NAME → 54
+        NamedType → 53
+        NonNullType → 57
+        OPENING_BRACKET → 56
+        Type → 71
+      68:
+        ListValueConst → 75
+        NAME → 66
+        NUMBER → 61
+        NamedValue → 74
+        NumberValue → 73
+        OPENING_BRACE → 78
+        OPENING_BRACKET → 76
+        ObjectValueConst → 77
+        ValueConst → 72
+      71:
+        CLOSING_BRACKET → 79
+      76:
+        CLOSING_BRACKET → 80
+        ListValueConst → 75
+        ListValueConstList → 81
+        NAME → 66
+        NUMBER → 61
+        NamedValue → 74
+        NumberValue → 73
+        OPENING_BRACE → 78
+        OPENING_BRACKET → 76
+        ObjectValueConst → 77
+        ValueConst → 82
+      78:
+        CLOSING_BRACE → 83
+        NAME → 86
+        ObjectFieldConst → 85
+        ObjectFieldConstList → 84
+      81:
+        CLOSING_BRACKET → 87
+        ListValueConst → 75
+        NAME → 66
+        NUMBER → 61
+        NamedValue → 74
+        NumberValue → 73
+        OPENING_BRACE → 78
+        OPENING_BRACKET → 76
+        ObjectValueConst → 77
+        ValueConst → 88
+      84:
+        CLOSING_BRACE → 89
+        NAME → 86
+        ObjectFieldConst → 90
+      86:
+        COLON → 91
+      91:
+        ListValueConst → 75
+        NAME → 66
+        NUMBER → 61
+        NamedValue → 74
+        NumberValue → 73
+        OPENING_BRACE → 78
+        OPENING_BRACKET → 76
+        ObjectValueConst → 77
+        ValueConst → 92"
     `);
   });
 });

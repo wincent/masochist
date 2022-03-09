@@ -209,10 +209,10 @@ DirectivesOpt → ε { $$ = null; }
 DirectiveList → Directive { $$ = [$1]; }
 DirectiveList → DirectiveList Directive { $1.push($2); $$ = $1; }
 
-# TODO: add arguments
-Directive → AT NAME {
+Directive → AT NAME ArgumentsOpt {
   $$ = {
     kind: 'DIRECTIVE',
+    arguments: $3,
     name: $2.contents,
   };
 }
@@ -267,7 +267,23 @@ Argument → NAME COLON Value {
 
 Value → Variable { $$ = $1; }
 Value → NumberValue { $$ = $1; }
-# TODO: Value → StringValue
+Value → StringValue { $$ = $1; }
 Value → NamedValue { $$ = $1; }
 # TODO: Value → ListValue
 # TODO: Value → ObjectValue
+
+StringValue → STRING_VALUE {
+  $$ = {
+    kind: 'STRING',
+    block: false,
+    value: $1.contents.slice(1, -1),
+  };
+}
+StringValue → BLOCK_STRING_VALUE {
+  $$ = {
+    kind: 'STRING',
+    block: true,
+    // TODO: preprocess value here...
+    value: $1.contents,
+  };
+}

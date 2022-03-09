@@ -9,7 +9,7 @@ describe('GraphQL parser', () => {
   it('parses a simple document', () => {
     const tokens = [
       ...lex(`
-        query IndexQuery @deprecated {
+        query IndexQuery @deprecated(since: "2001-01-01") @live {
           foo
           barAlias: bar
           baz {
@@ -40,6 +40,22 @@ describe('GraphQL parser', () => {
               {
                 kind: 'DIRECTIVE',
                 name: 'deprecated',
+                arguments: [
+                  {
+                    kind: 'ARGUMENT',
+                    name: 'since',
+                    value: {
+                      kind: 'STRING',
+                      block: false,
+                      value: '2001-01-01',
+                    },
+                  },
+                ],
+              },
+              {
+                kind: 'DIRECTIVE',
+                name: 'live',
+                arguments: null,
               },
             ],
             selections: [
