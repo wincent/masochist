@@ -111,6 +111,8 @@ describe('getFollowSets()', () => {
       Variable               : {CLOSING_PAREN, COLON, NAME}
       ListType               : {BANG, CLOSING_BRACKET, CLOSING_PAREN, DOLLAR, EQUALS}
       NamedType              : {BANG, CLOSING_BRACKET, CLOSING_PAREN, DOLLAR, EQUALS}
+      ListValueConstList     : {CLOSING_BRACKET, NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET}
+      ObjectFieldConstList   : {CLOSING_BRACE, NAME}
       DirectiveList          : {AT, OPENING_BRACE}
       SelectionList          : {CLOSING_BRACE, NAME}
       ArgumentsOpt           : {CLOSING_BRACE, NAME, OPENING_BRACE}
@@ -123,9 +125,12 @@ describe('getFollowSets()', () => {
       VariableDefinition     : {CLOSING_PAREN, DOLLAR}
       DefaultValueOpt        : {CLOSING_PAREN, DOLLAR}
       NonNullType            : {CLOSING_BRACKET, CLOSING_PAREN, DOLLAR, EQUALS}
-      ValueConst             : {CLOSING_PAREN, DOLLAR}
-      NumberValue            : {CLOSING_PAREN, DOLLAR, NAME}
-      NamedValue             : {CLOSING_PAREN, DOLLAR, NAME}
+      ValueConst             : {CLOSING_BRACE, CLOSING_BRACKET, CLOSING_PAREN, DOLLAR, NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET}
+      NumberValue            : {CLOSING_BRACE, CLOSING_BRACKET, CLOSING_PAREN, DOLLAR, NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET}
+      NamedValue             : {CLOSING_BRACE, CLOSING_BRACKET, CLOSING_PAREN, DOLLAR, NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET}
+      ListValueConst         : {CLOSING_BRACE, CLOSING_BRACKET, CLOSING_PAREN, DOLLAR, NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET}
+      ObjectValueConst       : {CLOSING_BRACE, CLOSING_BRACKET, CLOSING_PAREN, DOLLAR, NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET}
+      ObjectFieldConst       : {CLOSING_BRACE, NAME}
       Directive              : {AT, OPENING_BRACE}
       SelectionSetOpt        : {CLOSING_BRACE, NAME}
       Selection              : {CLOSING_BRACE, NAME}
@@ -159,11 +164,13 @@ describe('getFollowSets()', () => {
       45/Type/51                   : {30/CLOSING_PAREN/43, 30/DOLLAR/33, 51/EQUALS/64}
       19/Variable/32               : {32/COLON/45}
       30/Variable/32               : {32/COLON/45}
-      55/Type/67                   : {67/CLOSING_BRACKET/71}
+      55/Type/67                   : {67/CLOSING_BRACKET/75}
       45/ListType/54               : {30/CLOSING_PAREN/43, 30/DOLLAR/33, 51/EQUALS/64, 54/BANG/66}
       45/NamedType/52              : {30/CLOSING_PAREN/43, 30/DOLLAR/33, 51/EQUALS/64, 52/BANG/65}
-      55/ListType/54               : {54/BANG/66, 67/CLOSING_BRACKET/71}
-      55/NamedType/52              : {52/BANG/65, 67/CLOSING_BRACKET/71}
+      55/ListType/54               : {54/BANG/66, 67/CLOSING_BRACKET/75}
+      55/NamedType/52              : {52/BANG/65, 67/CLOSING_BRACKET/75}
+      72/ListValueConstList/77     : {77/CLOSING_BRACKET/83, 77/NAME/62, 77/NUMBER/60, 77/OPENING_BRACE/74, 77/OPENING_BRACKET/72}
+      74/ObjectFieldConstList/80   : {80/CLOSING_BRACE/85, 80/NAME/82}
       0/Document/1                 : {null}
       0/Definition/3               : {2/NAME/7, 2/OPENING_BRACE/9, null}
       0/ExecutableDefinition/4     : {2/NAME/7, 2/OPENING_BRACE/9, null}
@@ -195,9 +202,28 @@ describe('getFollowSets()', () => {
       49/NumberValue/59            : {36/CLOSING_PAREN/47, 36/NAME/38}
       49/NamedValue/61             : {36/CLOSING_PAREN/47, 36/NAME/38}
       64/ValueConst/68             : {30/CLOSING_PAREN/43, 30/DOLLAR/33}
-      55/NonNullType/56            : {67/CLOSING_BRACKET/71}
+      55/NonNullType/56            : {67/CLOSING_BRACKET/75}
       64/NumberValue/69            : {30/CLOSING_PAREN/43, 30/DOLLAR/33}
-      64/NamedValue/70             : {30/CLOSING_PAREN/43, 30/DOLLAR/33}"
+      64/NamedValue/70             : {30/CLOSING_PAREN/43, 30/DOLLAR/33}
+      64/ListValueConst/71         : {30/CLOSING_PAREN/43, 30/DOLLAR/33}
+      64/ObjectValueConst/73       : {30/CLOSING_PAREN/43, 30/DOLLAR/33}
+      72/ValueConst/78             : {77/CLOSING_BRACKET/83, 77/NAME/62, 77/NUMBER/60, 77/OPENING_BRACE/74, 77/OPENING_BRACKET/72}
+      72/NumberValue/69            : {77/CLOSING_BRACKET/83, 77/NAME/62, 77/NUMBER/60, 77/OPENING_BRACE/74, 77/OPENING_BRACKET/72}
+      72/NamedValue/70             : {77/CLOSING_BRACKET/83, 77/NAME/62, 77/NUMBER/60, 77/OPENING_BRACE/74, 77/OPENING_BRACKET/72}
+      72/ListValueConst/71         : {77/CLOSING_BRACKET/83, 77/NAME/62, 77/NUMBER/60, 77/OPENING_BRACE/74, 77/OPENING_BRACKET/72}
+      72/ObjectValueConst/73       : {77/CLOSING_BRACKET/83, 77/NAME/62, 77/NUMBER/60, 77/OPENING_BRACE/74, 77/OPENING_BRACKET/72}
+      77/ValueConst/84             : {77/CLOSING_BRACKET/83, 77/NAME/62, 77/NUMBER/60, 77/OPENING_BRACE/74, 77/OPENING_BRACKET/72}
+      74/ObjectFieldConst/81       : {80/CLOSING_BRACE/85, 80/NAME/82}
+      87/ValueConst/88             : {80/CLOSING_BRACE/85, 80/NAME/82}
+      80/ObjectFieldConst/86       : {80/CLOSING_BRACE/85, 80/NAME/82}
+      77/NumberValue/69            : {77/CLOSING_BRACKET/83, 77/NAME/62, 77/NUMBER/60, 77/OPENING_BRACE/74, 77/OPENING_BRACKET/72}
+      77/NamedValue/70             : {77/CLOSING_BRACKET/83, 77/NAME/62, 77/NUMBER/60, 77/OPENING_BRACE/74, 77/OPENING_BRACKET/72}
+      77/ListValueConst/71         : {77/CLOSING_BRACKET/83, 77/NAME/62, 77/NUMBER/60, 77/OPENING_BRACE/74, 77/OPENING_BRACKET/72}
+      77/ObjectValueConst/73       : {77/CLOSING_BRACKET/83, 77/NAME/62, 77/NUMBER/60, 77/OPENING_BRACE/74, 77/OPENING_BRACKET/72}
+      87/NumberValue/69            : {80/CLOSING_BRACE/85, 80/NAME/82}
+      87/NamedValue/70             : {80/CLOSING_BRACE/85, 80/NAME/82}
+      87/ListValueConst/71         : {80/CLOSING_BRACE/85, 80/NAME/82}
+      87/ObjectValueConst/73       : {80/CLOSING_BRACE/85, 80/NAME/82}"
     `);
   });
 });

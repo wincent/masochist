@@ -110,6 +110,9 @@ describe('getFirstSets()', () => {
       DefaultValueOpt        : {EQUALS, null}
       NumberValue            : {NUMBER}
       NamedValue             : {NAME}
+      ListValueConst         : {OPENING_BRACKET}
+      ObjectValueConst       : {OPENING_BRACE}
+      ObjectFieldConst       : {NAME}
       DirectivesOpt          : {AT, null}
       Directive              : {AT}
       SelectionSet           : {OPENING_BRACE}
@@ -122,7 +125,9 @@ describe('getFirstSets()', () => {
       OperationDefinition    : {NAME, OPENING_BRACE}
       VariableDefinition     : {DOLLAR}
       Type                   : {NAME, OPENING_BRACKET}
-      ValueConst             : {NAME, NUMBER}
+      ValueConst             : {NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET}
+      ListValueConstList     : {NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET}
+      ObjectFieldConstList   : {NAME}
       DirectiveList          : {AT}
       Selection              : {NAME}
       ArgumentList           : {NAME}

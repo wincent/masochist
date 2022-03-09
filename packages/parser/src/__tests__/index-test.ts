@@ -19,9 +19,10 @@ describe('GraphQL parser', () => {
 
         query NewQuery(
           $count: Int = 10
-          $sizes: [Int]
+          $sizes: [Int] = [100, 200]
           $factor: Int!
           $stuff: [Int]!
+          $limits: Limits = {min: 100, max: 1000}
         ) {
           hai(count: $count, factor: 20)
         }
@@ -130,7 +131,19 @@ describe('GraphQL parser', () => {
               },
               {
                 kind: 'VARIABLE_DEFINITION',
-                defaultValue: null,
+                defaultValue: {
+                  kind: 'LIST_VALUE',
+                  value: [
+                    {
+                      kind: 'INT',
+                      value: 100,
+                    },
+                    {
+                      kind: 'INT',
+                      value: 200,
+                    },
+                  ],
+                },
                 directives: null,
                 variable: {
                   kind: 'VARIABLE',
@@ -177,6 +190,37 @@ describe('GraphQL parser', () => {
                       name: 'Int',
                     },
                   },
+                },
+              },
+              {
+                kind: 'VARIABLE_DEFINITION',
+                defaultValue: {
+                  kind: 'OBJECT_VALUE',
+                  fields: [
+                    {
+                      name: 'min',
+                      value: {
+                        kind: 'INT',
+                        value: 100,
+                      },
+                    },
+                    {
+                      name: 'max',
+                      value: {
+                        kind: 'INT',
+                        value: 1000,
+                      },
+                    },
+                  ],
+                },
+                directives: null,
+                variable: {
+                  kind: 'VARIABLE',
+                  name: 'limits',
+                },
+                type: {
+                  kind: 'NAMED_TYPE',
+                  name: 'Limits',
                 },
               },
             ],

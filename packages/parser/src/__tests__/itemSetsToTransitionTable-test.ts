@@ -229,13 +229,61 @@ describe('itemSetsToTransitionTable()', () => {
         OPENING_BRACKET → 55
         Type → 67
       64:
+        ListValueConst → 71
         NAME → 62
         NUMBER → 60
         NamedValue → 70
         NumberValue → 69
+        OPENING_BRACE → 74
+        OPENING_BRACKET → 72
+        ObjectValueConst → 73
         ValueConst → 68
       67:
-        CLOSING_BRACKET → 71"
+        CLOSING_BRACKET → 75
+      72:
+        CLOSING_BRACKET → 76
+        ListValueConst → 71
+        ListValueConstList → 77
+        NAME → 62
+        NUMBER → 60
+        NamedValue → 70
+        NumberValue → 69
+        OPENING_BRACE → 74
+        OPENING_BRACKET → 72
+        ObjectValueConst → 73
+        ValueConst → 78
+      74:
+        CLOSING_BRACE → 79
+        NAME → 82
+        ObjectFieldConst → 81
+        ObjectFieldConstList → 80
+      77:
+        CLOSING_BRACKET → 83
+        ListValueConst → 71
+        NAME → 62
+        NUMBER → 60
+        NamedValue → 70
+        NumberValue → 69
+        OPENING_BRACE → 74
+        OPENING_BRACKET → 72
+        ObjectValueConst → 73
+        ValueConst → 84
+      80:
+        CLOSING_BRACE → 85
+        NAME → 82
+        ObjectFieldConst → 86
+      82:
+        COLON → 87
+      87:
+        ListValueConst → 71
+        NAME → 62
+        NUMBER → 60
+        NamedValue → 70
+        NumberValue → 69
+        OPENING_BRACE → 74
+        OPENING_BRACKET → 72
+        ObjectValueConst → 73
+        ValueConst → 88"
     `);
   });
 });

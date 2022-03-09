@@ -460,6 +460,12 @@ describe('getItemSets()', () => {
         NumberValue → · NUMBER
         ValueConst → · NamedValue
         NamedValue → · NAME
+        ValueConst → · ListValueConst
+        ListValueConst → · OPENING_BRACKET CLOSING_BRACKET
+        ListValueConst → · OPENING_BRACKET ListValueConstList CLOSING_BRACKET
+        ValueConst → · ObjectValueConst
+        ObjectValueConst → · OPENING_BRACE CLOSING_BRACE
+        ObjectValueConst → · OPENING_BRACE ObjectFieldConstList CLOSING_BRACE
 
       I65:
         NonNullType → NamedType BANG ·
@@ -480,7 +486,98 @@ describe('getItemSets()', () => {
         ValueConst → NamedValue ·
 
       I71:
+        ValueConst → ListValueConst ·
+
+      I72:
+        ListValueConst → OPENING_BRACKET · CLOSING_BRACKET
+        ListValueConst → OPENING_BRACKET · ListValueConstList CLOSING_BRACKET
+        ListValueConstList → · ValueConst
+        ValueConst → · NumberValue
+        NumberValue → · NUMBER
+        ValueConst → · NamedValue
+        NamedValue → · NAME
+        ValueConst → · ListValueConst
+        ListValueConst → · OPENING_BRACKET CLOSING_BRACKET
+        ListValueConst → · OPENING_BRACKET ListValueConstList CLOSING_BRACKET
+        ValueConst → · ObjectValueConst
+        ObjectValueConst → · OPENING_BRACE CLOSING_BRACE
+        ObjectValueConst → · OPENING_BRACE ObjectFieldConstList CLOSING_BRACE
+        ListValueConstList → · ListValueConstList ValueConst
+
+      I73:
+        ValueConst → ObjectValueConst ·
+
+      I74:
+        ObjectValueConst → OPENING_BRACE · CLOSING_BRACE
+        ObjectValueConst → OPENING_BRACE · ObjectFieldConstList CLOSING_BRACE
+        ObjectFieldConstList → · ObjectFieldConst
+        ObjectFieldConst → · NAME COLON ValueConst
+        ObjectFieldConstList → · ObjectFieldConstList ObjectFieldConst
+
+      I75:
         ListType → OPENING_BRACKET Type CLOSING_BRACKET ·
+
+      I76:
+        ListValueConst → OPENING_BRACKET CLOSING_BRACKET ·
+
+      I77:
+        ListValueConst → OPENING_BRACKET ListValueConstList · CLOSING_BRACKET
+        ListValueConstList → ListValueConstList · ValueConst
+        ValueConst → · NumberValue
+        NumberValue → · NUMBER
+        ValueConst → · NamedValue
+        NamedValue → · NAME
+        ValueConst → · ListValueConst
+        ListValueConst → · OPENING_BRACKET CLOSING_BRACKET
+        ListValueConst → · OPENING_BRACKET ListValueConstList CLOSING_BRACKET
+        ValueConst → · ObjectValueConst
+        ObjectValueConst → · OPENING_BRACE CLOSING_BRACE
+        ObjectValueConst → · OPENING_BRACE ObjectFieldConstList CLOSING_BRACE
+
+      I78:
+        ListValueConstList → ValueConst ·
+
+      I79:
+        ObjectValueConst → OPENING_BRACE CLOSING_BRACE ·
+
+      I80:
+        ObjectValueConst → OPENING_BRACE ObjectFieldConstList · CLOSING_BRACE
+        ObjectFieldConstList → ObjectFieldConstList · ObjectFieldConst
+        ObjectFieldConst → · NAME COLON ValueConst
+
+      I81:
+        ObjectFieldConstList → ObjectFieldConst ·
+
+      I82:
+        ObjectFieldConst → NAME · COLON ValueConst
+
+      I83:
+        ListValueConst → OPENING_BRACKET ListValueConstList CLOSING_BRACKET ·
+
+      I84:
+        ListValueConstList → ListValueConstList ValueConst ·
+
+      I85:
+        ObjectValueConst → OPENING_BRACE ObjectFieldConstList CLOSING_BRACE ·
+
+      I86:
+        ObjectFieldConstList → ObjectFieldConstList ObjectFieldConst ·
+
+      I87:
+        ObjectFieldConst → NAME COLON · ValueConst
+        ValueConst → · NumberValue
+        NumberValue → · NUMBER
+        ValueConst → · NamedValue
+        NamedValue → · NAME
+        ValueConst → · ListValueConst
+        ListValueConst → · OPENING_BRACKET CLOSING_BRACKET
+        ListValueConst → · OPENING_BRACKET ListValueConstList CLOSING_BRACKET
+        ValueConst → · ObjectValueConst
+        ObjectValueConst → · OPENING_BRACE CLOSING_BRACE
+        ObjectValueConst → · OPENING_BRACE ObjectFieldConstList CLOSING_BRACE
+
+      I88:
+        ObjectFieldConst → NAME COLON ValueConst ·
       "
     `);
   });

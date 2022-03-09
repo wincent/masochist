@@ -135,9 +135,8 @@ ValueConst → NumberValue { $$ = $1; }
 
 ValueConst → NamedValue { $$ = $1; }
 
-# TODO
-# ValueConst → ListValue
-# ValueConst → ObjectValue
+ValueConst → ListValueConst { $$ = $1; }
+ValueConst → ObjectValueConst { $$ = $1; }
 
 # IntValue, FloatValue
 NumberValue → NUMBER {{
@@ -164,6 +163,45 @@ NamedValue → NAME {{
     $$ = {kind: 'ENUM', value: contents};
   }
 }}
+
+ListValueConst → OPENING_BRACKET CLOSING_BRACKET {
+  $$ = {
+    kind: 'LIST_VALUE',
+    value: [],
+  };
+}
+ListValueConst → OPENING_BRACKET ListValueConstList CLOSING_BRACKET {
+  $$ = {
+    kind: 'LIST_VALUE',
+    value: $2,
+  };
+}
+
+ListValueConstList → ValueConst { $$ = [$1]; }
+ListValueConstList → ListValueConstList ValueConst { $1.push($2); $$ = $1; }
+
+ObjectValueConst → OPENING_BRACE CLOSING_BRACE {
+  $$  = {
+    kind: 'OBJECT_VALUE',
+    fields: [],
+  };
+}
+ObjectValueConst → OPENING_BRACE ObjectFieldConstList CLOSING_BRACE {
+  $$ = {
+    kind: 'OBJECT_VALUE',
+    fields: $2,
+  };
+}
+
+ObjectFieldConstList → ObjectFieldConst { $$ = [$1]; }
+ObjectFieldConstList → ObjectFieldConstList ObjectFieldConst { $1.push($2); $$ = $1; }
+
+ObjectFieldConst → NAME COLON ValueConst {
+  $$ = {
+    name: $1.contents,
+    value: $3,
+  };
+}
 
 DirectivesOpt → DirectiveList { $$ = $1; }
 DirectivesOpt → ε { $$ = null; }
