@@ -76,11 +76,11 @@ VariableDefinitionList → VariableDefinitionList VariableDefinition {
   $1.push($2); $$ = $1;
 }
 
-# TODO: add DefaultValueOpt and DirectivesOpt
-VariableDefinition → Variable COLON Type {
+# TODO: add DirectivesOpt
+VariableDefinition → Variable COLON Type DefaultValueOpt {
   $$ = {
     kind: 'VARIABLE_DEFINITION',
-    defaultValue: null,
+    defaultValue: $4,
     directives: null,
     type: $3,
     variable: $1,
@@ -124,6 +124,42 @@ NonNullType → NamedType BANG {
     type: $1,
   };
 }
+
+DefaultValueOpt → EQUALS ValueConst { $$ = $2; }
+DefaultValueOpt → ε { $$ = null; }
+
+# IntValue, FloatValue
+ValueConst → NUMBER {{
+  const {contents} = $1;
+
+  // TODO: Distinguish between these tokens in the lexer instead?
+  if (/^-?\d+$/.test(contents)) {
+    $$ = {kind: 'INT', value: parseInt(contents, 10)};
+  } else {
+    $$ = {kind: 'FLOAT', value: contents};
+  }
+}}
+
+# TODO
+# ValueConst → StringValue
+
+# BooleanValue, NullValue, EnumValue
+ValueConst → NAME {{
+  const {contents} = $1;
+  if (contents === 'true') {
+    $$ = {kind: 'BOOLEAN', value: true};
+  } else if (contents === 'false') {
+    $$ = {kind: 'BOOLEAN', value: false};
+  } else if (contents === 'null') {
+    $$ = {kind: 'NULL'};
+  } else {
+    $$ = {kind: 'ENUM', value: contents};
+  }
+}}
+
+# TODO
+# ValueConst → ListValue
+# ValueConst → ObjectValue
 
 DirectivesOpt → DirectiveList { $$ = $1; }
 DirectivesOpt → ε { $$ = null; }

@@ -276,7 +276,7 @@ describe('getItemSets()', () => {
       I19:
         VariableDefinitionsOpt → OPENING_PAREN · VariableDefinitionList CLOSING_PAREN
         VariableDefinitionList → · VariableDefinition
-        VariableDefinition → · Variable COLON Type
+        VariableDefinition → · Variable COLON Type DefaultValueOpt
         Variable → · DOLLAR NAME
         VariableDefinitionList → · VariableDefinitionList VariableDefinition
 
@@ -319,14 +319,14 @@ describe('getItemSets()', () => {
       I30:
         VariableDefinitionsOpt → OPENING_PAREN VariableDefinitionList · CLOSING_PAREN
         VariableDefinitionList → VariableDefinitionList · VariableDefinition
-        VariableDefinition → · Variable COLON Type
+        VariableDefinition → · Variable COLON Type DefaultValueOpt
         Variable → · DOLLAR NAME
 
       I31:
         VariableDefinitionList → VariableDefinition ·
 
       I32:
-        VariableDefinition → Variable · COLON Type
+        VariableDefinition → Variable · COLON Type DefaultValueOpt
 
       I33:
         Variable → DOLLAR · NAME
@@ -350,7 +350,7 @@ describe('getItemSets()', () => {
         VariableDefinitionList → VariableDefinitionList VariableDefinition ·
 
       I40:
-        VariableDefinition → Variable COLON · Type
+        VariableDefinition → Variable COLON · Type DefaultValueOpt
         Type → · NamedType
         NamedType → · NAME
         Type → · ListType
@@ -363,7 +363,9 @@ describe('getItemSets()', () => {
         Variable → DOLLAR NAME ·
 
       I42:
-        VariableDefinition → Variable COLON Type ·
+        VariableDefinition → Variable COLON Type · DefaultValueOpt
+        DefaultValueOpt → · EQUALS ValueConst
+        DefaultValueOpt → ε ·
 
       I43:
         Type → NamedType ·
@@ -390,15 +392,32 @@ describe('getItemSets()', () => {
         Type → NonNullType ·
 
       I48:
-        NonNullType → NamedType BANG ·
+        VariableDefinition → Variable COLON Type DefaultValueOpt ·
 
       I49:
-        NonNullType → ListType BANG ·
+        DefaultValueOpt → EQUALS · ValueConst
+        ValueConst → · NUMBER
+        ValueConst → · NAME
 
       I50:
-        ListType → OPENING_BRACKET Type · CLOSING_BRACKET
+        NonNullType → NamedType BANG ·
 
       I51:
+        NonNullType → ListType BANG ·
+
+      I52:
+        ListType → OPENING_BRACKET Type · CLOSING_BRACKET
+
+      I53:
+        DefaultValueOpt → EQUALS ValueConst ·
+
+      I54:
+        ValueConst → NUMBER ·
+
+      I55:
+        ValueConst → NAME ·
+
+      I56:
         ListType → OPENING_BRACKET Type CLOSING_BRACKET ·
       "
     `);

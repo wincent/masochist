@@ -34,7 +34,7 @@ export default function getFollowSets(grammar: Grammar): SymbolSets {
           }
           if (hasEpsilon) {
             // Need to add everything from FOLLOW(next) too.
-            for (const symbol of followSets[next]) {
+            for (const symbol of followSets[next] || []) {
               followSets[current] = followSets[current] || new Set();
               followSets[current].add(symbol);
             }
@@ -70,15 +70,15 @@ export default function getFollowSets(grammar: Grammar): SymbolSets {
       }
 
       // For rule, "A -> a B b", if ε is in FIRST(b), add everything in
-      // FOLLOW(B) to FOLLOW(A).
+      // FOLLOW(A) to FOLLOW(B).
       const previous = rhs[rhs.length - 2];
       if (previous && !tokens.has(previous) && last && !tokens.has(last)) {
         if (first[last]?.has(null)) {
-          if (followSets[previous]) {
-            for (const symbol of followSets[previous]) {
-              followSets[lhs] = followSets[lhs] || new Set();
-              if (!followSets[lhs].has(symbol)) {
-                followSets[lhs].add(symbol);
+          if (followSets[lhs]) {
+            for (const symbol of followSets[lhs]) {
+              followSets[previous] = followSets[previous] || new Set();
+              if (!followSets[previous].has(symbol)) {
+                followSets[previous].add(symbol);
                 done = false;
               }
             }

@@ -149,11 +149,14 @@ describe('extendedGrammarForItemSets()', () => {
       %token 33/NAME/41
       %token 40/NAME/44
       %token 40/OPENING_BRACKET/46
-      %token 43/BANG/48
-      %token 45/BANG/49
+      %token 42/EQUALS/49
+      %token 43/BANG/50
+      %token 45/BANG/51
       %token 46/NAME/44
       %token 46/OPENING_BRACKET/46
-      %token 50/CLOSING_BRACKET/51
+      %token 49/NAME/55
+      %token 49/NUMBER/54
+      %token 52/CLOSING_BRACKET/56
       %token 6/NAME/12
       %token 9/NAME/16
 
@@ -196,7 +199,7 @@ describe('extendedGrammarForItemSets()', () => {
       r36: 18/DirectiveList/27 → 18/DirectiveList/27 27/Directive/36
       r37: 18/DirectivesOpt/26 → ε
       r38: 19/VariableDefinitionList/30 → 19/VariableDefinition/31
-      r39: 19/VariableDefinition/31 → 19/Variable/32 32/COLON/40 40/Type/42
+      r39: 19/VariableDefinition/31 → 19/Variable/32 32/COLON/40 40/Type/42 42/DefaultValueOpt/48
       r40: 19/Variable/32 → 19/DOLLAR/33 33/NAME/41
       r41: 19/VariableDefinitionList/30 → 19/VariableDefinitionList/30 30/VariableDefinition/39
       r42: 25/SelectionSetOpt/34 → 25/SelectionSet/24
@@ -204,22 +207,26 @@ describe('extendedGrammarForItemSets()', () => {
       r44: 25/SelectionSetOpt/34 → ε
       r45: 26/SelectionSet/35 → 26/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/20
       r46: 27/Directive/36 → 27/AT/29 29/NAME/37
-      r47: 30/VariableDefinition/39 → 30/Variable/32 32/COLON/40 40/Type/42
+      r47: 30/VariableDefinition/39 → 30/Variable/32 32/COLON/40 40/Type/42 42/DefaultValueOpt/48
       r48: 30/Variable/32 → 30/DOLLAR/33 33/NAME/41
       r49: 40/Type/42 → 40/NamedType/43
       r50: 40/NamedType/43 → 40/NAME/44
       r51: 40/Type/42 → 40/ListType/45
-      r52: 40/ListType/45 → 40/OPENING_BRACKET/46 46/Type/50 50/CLOSING_BRACKET/51
+      r52: 40/ListType/45 → 40/OPENING_BRACKET/46 46/Type/52 52/CLOSING_BRACKET/56
       r53: 40/Type/42 → 40/NonNullType/47
-      r54: 40/NonNullType/47 → 40/ListType/45 45/BANG/49
-      r55: 40/NonNullType/47 → 40/NamedType/43 43/BANG/48
-      r56: 46/Type/50 → 46/NamedType/43
-      r57: 46/NamedType/43 → 46/NAME/44
-      r58: 46/Type/50 → 46/ListType/45
-      r59: 46/ListType/45 → 46/OPENING_BRACKET/46 46/Type/50 50/CLOSING_BRACKET/51
-      r60: 46/Type/50 → 46/NonNullType/47
-      r61: 46/NonNullType/47 → 46/ListType/45 45/BANG/49
-      r62: 46/NonNullType/47 → 46/NamedType/43 43/BANG/48
+      r54: 40/NonNullType/47 → 40/ListType/45 45/BANG/51
+      r55: 40/NonNullType/47 → 40/NamedType/43 43/BANG/50
+      r56: 42/DefaultValueOpt/48 → 42/EQUALS/49 49/ValueConst/53
+      r57: 42/DefaultValueOpt/48 → ε
+      r58: 46/Type/52 → 46/NamedType/43
+      r59: 46/NamedType/43 → 46/NAME/44
+      r60: 46/Type/52 → 46/ListType/45
+      r61: 46/ListType/45 → 46/OPENING_BRACKET/46 46/Type/52 52/CLOSING_BRACKET/56
+      r62: 46/Type/52 → 46/NonNullType/47
+      r63: 46/NonNullType/47 → 46/ListType/45 45/BANG/51
+      r64: 46/NonNullType/47 → 46/NamedType/43 43/BANG/50
+      r65: 49/ValueConst/53 → 49/NUMBER/54
+      r66: 49/ValueConst/53 → 49/NAME/55
       "
     `);
   });

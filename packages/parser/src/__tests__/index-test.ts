@@ -18,7 +18,7 @@ describe('GraphQL parser', () => {
         }
 
         query NewQuery(
-          $count: Int
+          $count: Int = 10
           $sizes: [Int]
           $factor: Int!
           $stuff: [Int]!
@@ -92,7 +92,10 @@ describe('GraphQL parser', () => {
             variables: [
               {
                 kind: 'VARIABLE_DEFINITION',
-                defaultValue: null,
+                defaultValue: {
+                  kind: 'INT',
+                  value: 10,
+                },
                 directives: null,
                 variable: {
                   kind: 'VARIABLE',

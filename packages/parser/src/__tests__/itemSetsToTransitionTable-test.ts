@@ -190,19 +190,26 @@ describe('itemSetsToTransitionTable()', () => {
         NonNullType → 47
         OPENING_BRACKET → 46
         Type → 42
+      42:
+        DefaultValueOpt → 48
+        EQUALS → 49
       43:
-        BANG → 48
+        BANG → 50
       45:
-        BANG → 49
+        BANG → 51
       46:
         ListType → 45
         NAME → 44
         NamedType → 43
         NonNullType → 47
         OPENING_BRACKET → 46
-        Type → 50
-      50:
-        CLOSING_BRACKET → 51"
+        Type → 52
+      49:
+        NAME → 55
+        NUMBER → 54
+        ValueConst → 53
+      52:
+        CLOSING_BRACKET → 56"
     `);
   });
 });
