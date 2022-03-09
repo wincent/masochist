@@ -31,6 +31,12 @@ export function makeNode(
   };
 }
 
+function debugLog(...items: Array<unknown>) {
+  if (process.env.DEBUG) {
+    console.log(...items);
+  }
+}
+
 /**
  * Dynamically parse using supplied parse table.
  *
@@ -65,9 +71,10 @@ export default function parseWithTable<P>(
 
     if (!action) {
       throw new Error(
-        `parseWithTable(): Syntax error (no action for ${token.name} (token index ${pointer}) in state ${current})`,
+        `parseWithTable(): Syntax error (no action for ${token.name} (token index ${pointer}) [${token.contents}] in state ${current})`,
       );
     } else if (action.kind === 'Accept') {
+      debugLog('Accept');
       invariant(pointer === tokens.length);
 
       // Expect initial state + accept state.
@@ -75,6 +82,7 @@ export default function parseWithTable<P>(
       const [tree] = stack[1];
       return tree;
     } else if (action.kind === 'Shift') {
+      debugLog('Shift:', token.name, action.state);
       stack.push([token, action.state]);
       pointer++;
     } else if (action.kind === 'Reduce') {
@@ -91,6 +99,7 @@ export default function parseWithTable<P>(
       const [, gotos] = table[next];
       const target = gotos[lhs];
       invariant(target);
+      debugLog('Reduce:', lhs, target);
       if (code) {
         // TODO: in a real implementation of this, would cache this instead of
         // re-scanning it every time.
