@@ -114,14 +114,19 @@ describe('getFirstSets()', () => {
       ExecutableDefinition   : {NAME, OPENING_BRACE}
       Field                  : {NAME}
       ListType               : {OPENING_BRACKET}
+      ListValue              : {OPENING_BRACKET}
       ListValueConst         : {OPENING_BRACKET}
       ListValueConstList     : {BLOCK_STRING_VALUE, NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET, STRING_VALUE}
+      ListValueList          : {BLOCK_STRING_VALUE, DOLLAR, NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET, STRING_VALUE}
       NamedType              : {NAME}
       NamedValue             : {NAME}
       NonNullType            : {NAME, OPENING_BRACKET}
       NumberValue            : {NUMBER}
+      ObjectField            : {NAME}
       ObjectFieldConst       : {NAME}
       ObjectFieldConstList   : {NAME}
+      ObjectFieldList        : {NAME}
+      ObjectValue            : {OPENING_BRACE}
       ObjectValueConst       : {OPENING_BRACE}
       OperationDefinition    : {NAME, OPENING_BRACE}
       OperationNameOpt       : {NAME, null}
@@ -132,7 +137,7 @@ describe('getFirstSets()', () => {
       SelectionSetOpt        : {OPENING_BRACE, null}
       StringValue            : {BLOCK_STRING_VALUE, STRING_VALUE}
       Type                   : {NAME, OPENING_BRACKET}
-      Value                  : {BLOCK_STRING_VALUE, DOLLAR, NAME, NUMBER, STRING_VALUE}
+      Value                  : {BLOCK_STRING_VALUE, DOLLAR, NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET, STRING_VALUE}
       ValueConst             : {BLOCK_STRING_VALUE, NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET, STRING_VALUE}
       Variable               : {DOLLAR}
       VariableDefinition     : {DOLLAR}

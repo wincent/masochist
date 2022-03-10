@@ -24,7 +24,7 @@ describe('GraphQL parser', () => {
           $stuff: [Int]!
           $limits: Limits = {min: 100, max: 1000}
         ) {
-          hai(count: $count, factor: 20)
+          hai(count: $count, factor: 20, sizes: [25, 50])
         }
     `),
     ];
@@ -125,6 +125,23 @@ describe('GraphQL parser', () => {
                     value: {
                       kind: 'INT',
                       value: 20,
+                    },
+                  },
+                  {
+                    kind: 'ARGUMENT',
+                    name: 'sizes',
+                    value: {
+                      kind: 'LIST_VALUE',
+                      value: [
+                        {
+                          kind: 'INT',
+                          value: 25,
+                        },
+                        {
+                          kind: 'INT',
+                          value: 50,
+                        },
+                      ],
                     },
                   },
                 ],

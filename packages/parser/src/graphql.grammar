@@ -264,8 +264,8 @@ Value → Variable { $$ = $1; }
 Value → NumberValue { $$ = $1; }
 Value → StringValue { $$ = $1; }
 Value → NamedValue { $$ = $1; }
-# TODO: Value → ListValue
-# TODO: Value → ObjectValue
+Value → ListValue { $$ = $1; }
+Value → ObjectValue { $$ = $1; }
 
 StringValue → STRING_VALUE {
   $$ = {
@@ -281,5 +281,44 @@ StringValue → BLOCK_STRING_VALUE {
     block: true,
     // TODO: preprocess value here...
     value: $1.contents,
+  };
+}
+
+ListValue → OPENING_BRACKET CLOSING_BRACKET {
+  $$ = {
+    kind: 'LIST_VALUE',
+    value: [],
+  };
+}
+ListValue → OPENING_BRACKET ListValueList CLOSING_BRACKET {
+  $$ = {
+    kind: 'LIST_VALUE',
+    value: $2,
+  };
+}
+
+ListValueList → Value { $$ = [$1]; }
+ListValueList → ListValueList Value { $1.push($2); $$ = $1; }
+
+ObjectValue → OPENING_BRACE CLOSING_BRACE {
+  $$  = {
+    kind: 'OBJECT_VALUE',
+    fields: [],
+  };
+}
+ObjectValue → OPENING_BRACE ObjectFieldList CLOSING_BRACE {
+  $$ = {
+    kind: 'OBJECT_VALUE',
+    fields: $2,
+  };
+}
+
+ObjectFieldList → ObjectField { $$ = [$1]; }
+ObjectFieldList → ObjectFieldList ObjectField { $1.push($2); $$ = $1; }
+
+ObjectField → NAME COLON Value {
+  $$ = {
+    name: $1.contents,
+    value: $3,
   };
 }

@@ -163,45 +163,75 @@ describe('extendedGrammarForItemSets()', () => {
       %token 50/DOLLAR/33
       %token 50/NAME/67
       %token 50/NUMBER/62
+      %token 50/OPENING_BRACE/71
+      %token 50/OPENING_BRACKET/69
       %token 50/STRING_VALUE/64
       %token 51/OPENING_BRACE/9
-      %token 53/EQUALS/70
-      %token 54/BANG/71
-      %token 56/BANG/72
+      %token 53/EQUALS/74
+      %token 54/BANG/75
+      %token 56/BANG/76
       %token 57/NAME/55
       %token 57/OPENING_BRACKET/57
-      %token 70/BLOCK_STRING_VALUE/65
-      %token 70/NAME/67
-      %token 70/NUMBER/62
-      %token 70/OPENING_BRACE/81
-      %token 70/OPENING_BRACKET/79
-      %token 70/STRING_VALUE/64
-      %token 73/CLOSING_BRACKET/82
+      %token 69/BLOCK_STRING_VALUE/65
+      %token 69/CLOSING_BRACKET/78
+      %token 69/DOLLAR/33
+      %token 69/NAME/67
+      %token 69/NUMBER/62
+      %token 69/OPENING_BRACE/71
+      %token 69/OPENING_BRACKET/69
+      %token 69/STRING_VALUE/64
+      %token 71/CLOSING_BRACE/81
+      %token 71/NAME/84
+      %token 74/BLOCK_STRING_VALUE/65
+      %token 74/NAME/67
+      %token 74/NUMBER/62
+      %token 74/OPENING_BRACE/92
+      %token 74/OPENING_BRACKET/90
+      %token 74/STRING_VALUE/64
+      %token 77/CLOSING_BRACKET/93
       %token 79/BLOCK_STRING_VALUE/65
-      %token 79/CLOSING_BRACKET/83
+      %token 79/CLOSING_BRACKET/94
+      %token 79/DOLLAR/33
       %token 79/NAME/67
       %token 79/NUMBER/62
-      %token 79/OPENING_BRACE/81
-      %token 79/OPENING_BRACKET/79
+      %token 79/OPENING_BRACE/71
+      %token 79/OPENING_BRACKET/69
       %token 79/STRING_VALUE/64
-      %token 81/CLOSING_BRACE/86
-      %token 81/NAME/89
-      %token 84/BLOCK_STRING_VALUE/65
-      %token 84/CLOSING_BRACKET/90
-      %token 84/NAME/67
-      %token 84/NUMBER/62
-      %token 84/OPENING_BRACE/81
-      %token 84/OPENING_BRACKET/79
-      %token 84/STRING_VALUE/64
-      %token 87/CLOSING_BRACE/92
-      %token 87/NAME/89
-      %token 89/COLON/94
-      %token 94/BLOCK_STRING_VALUE/65
-      %token 94/NAME/67
-      %token 94/NUMBER/62
-      %token 94/OPENING_BRACE/81
-      %token 94/OPENING_BRACKET/79
-      %token 94/STRING_VALUE/64
+      %token 82/CLOSING_BRACE/96
+      %token 82/NAME/84
+      %token 84/COLON/98
+      %token 90/BLOCK_STRING_VALUE/65
+      %token 90/CLOSING_BRACKET/99
+      %token 90/NAME/67
+      %token 90/NUMBER/62
+      %token 90/OPENING_BRACE/92
+      %token 90/OPENING_BRACKET/90
+      %token 90/STRING_VALUE/64
+      %token 92/CLOSING_BRACE/102
+      %token 92/NAME/105
+      %token 98/BLOCK_STRING_VALUE/65
+      %token 98/DOLLAR/33
+      %token 98/NAME/67
+      %token 98/NUMBER/62
+      %token 98/OPENING_BRACE/71
+      %token 98/OPENING_BRACKET/69
+      %token 98/STRING_VALUE/64
+      %token 100/BLOCK_STRING_VALUE/65
+      %token 100/CLOSING_BRACKET/107
+      %token 100/NAME/67
+      %token 100/NUMBER/62
+      %token 100/OPENING_BRACE/92
+      %token 100/OPENING_BRACKET/90
+      %token 100/STRING_VALUE/64
+      %token 103/CLOSING_BRACE/109
+      %token 103/NAME/105
+      %token 105/COLON/111
+      %token 111/BLOCK_STRING_VALUE/65
+      %token 111/NAME/67
+      %token 111/NUMBER/62
+      %token 111/OPENING_BRACE/92
+      %token 111/OPENING_BRACKET/90
+      %token 111/STRING_VALUE/64
 
       r0: 0/Document'/$ → 0/Document/1
       r1: 0/Document/1 → 0/DefinitionList/2
@@ -224,14 +254,14 @@ describe('extendedGrammarForItemSets()', () => {
       r18: 9/SelectionList/13 → 9/Selection/14
       r19: 9/Selection/14 → 9/Field/15
       r20: 9/Field/15 → 9/NAME/16 16/ArgumentsOpt/22 22/DirectivesOpt/34 34/SelectionSetOpt/46
-      r21: 9/Field/15 → 9/Alias/17 17/NAME/25 25/ArgumentsOpt/38 38/DirectivesOpt/51 51/SelectionSetOpt/68
+      r21: 9/Field/15 → 9/Alias/17 17/NAME/25 25/ArgumentsOpt/38 38/DirectivesOpt/51 51/SelectionSetOpt/72
       r22: 9/Alias/17 → 9/NAME/16 16/COLON/23
       r23: 9/SelectionList/13 → 9/SelectionList/13 13/Selection/21
       r24: 11/VariableDefinitionsOpt/18 → 11/OPENING_PAREN/19 19/VariableDefinitionList/30 30/CLOSING_PAREN/42
       r25: 11/VariableDefinitionsOpt/18 → ε
       r26: 13/Selection/21 → 13/Field/15
       r27: 13/Field/15 → 13/NAME/16 16/ArgumentsOpt/22 22/DirectivesOpt/34 34/SelectionSetOpt/46
-      r28: 13/Field/15 → 13/Alias/17 17/NAME/25 25/ArgumentsOpt/38 38/DirectivesOpt/51 51/SelectionSetOpt/68
+      r28: 13/Field/15 → 13/Alias/17 17/NAME/25 25/ArgumentsOpt/38 38/DirectivesOpt/51 51/SelectionSetOpt/72
       r29: 13/Alias/17 → 13/NAME/16 16/COLON/23
       r30: 16/ArgumentsOpt/22 → 16/OPENING_PAREN/24 24/ArgumentList/35 35/CLOSING_PAREN/48
       r31: 16/ArgumentsOpt/22 → ε
@@ -241,7 +271,7 @@ describe('extendedGrammarForItemSets()', () => {
       r35: 18/DirectiveList/27 → 18/DirectiveList/27 27/Directive/40
       r36: 18/DirectivesOpt/26 → ε
       r37: 19/VariableDefinitionList/30 → 19/VariableDefinition/31
-      r38: 19/VariableDefinition/31 → 19/Variable/32 32/COLON/44 44/Type/53 53/DefaultValueOpt/69
+      r38: 19/VariableDefinition/31 → 19/Variable/32 32/COLON/44 44/Type/53 53/DefaultValueOpt/73
       r39: 19/Variable/32 → 19/DOLLAR/33 33/NAME/45
       r40: 19/VariableDefinitionList/30 → 19/VariableDefinitionList/30 30/VariableDefinition/43
       r41: 22/DirectivesOpt/34 → 22/DirectiveList/27
@@ -256,7 +286,7 @@ describe('extendedGrammarForItemSets()', () => {
       r50: 25/ArgumentsOpt/38 → ε
       r51: 26/SelectionSet/39 → 26/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/20
       r52: 27/Directive/40 → 27/AT/29 29/NAME/41 41/ArgumentsOpt/52
-      r53: 30/VariableDefinition/43 → 30/Variable/32 32/COLON/44 44/Type/53 53/DefaultValueOpt/69
+      r53: 30/VariableDefinition/43 → 30/Variable/32 32/COLON/44 44/Type/53 53/DefaultValueOpt/73
       r54: 30/Variable/32 → 30/DOLLAR/33 33/NAME/45
       r55: 34/SelectionSetOpt/46 → 34/SelectionSet/47
       r56: 34/SelectionSet/47 → 34/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/20
@@ -272,10 +302,10 @@ describe('extendedGrammarForItemSets()', () => {
       r66: 44/Type/53 → 44/NamedType/54
       r67: 44/NamedType/54 → 44/NAME/55
       r68: 44/Type/53 → 44/ListType/56
-      r69: 44/ListType/56 → 44/OPENING_BRACKET/57 57/Type/73 73/CLOSING_BRACKET/82
+      r69: 44/ListType/56 → 44/OPENING_BRACKET/57 57/Type/77 77/CLOSING_BRACKET/93
       r70: 44/Type/53 → 44/NonNullType/58
-      r71: 44/NonNullType/58 → 44/ListType/56 56/BANG/72
-      r72: 44/NonNullType/58 → 44/NamedType/54 54/BANG/71
+      r71: 44/NonNullType/58 → 44/ListType/56 56/BANG/76
+      r72: 44/NonNullType/58 → 44/NamedType/54 54/BANG/75
       r73: 50/Value/59 → 50/Variable/60
       r74: 50/Variable/60 → 50/DOLLAR/33 33/NAME/45
       r75: 50/Value/59 → 50/NumberValue/61
@@ -285,76 +315,133 @@ describe('extendedGrammarForItemSets()', () => {
       r79: 50/StringValue/63 → 50/BLOCK_STRING_VALUE/65
       r80: 50/Value/59 → 50/NamedValue/66
       r81: 50/NamedValue/66 → 50/NAME/67
-      r82: 51/SelectionSetOpt/68 → 51/SelectionSet/47
-      r83: 51/SelectionSet/47 → 51/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/20
-      r84: 51/SelectionSetOpt/68 → ε
-      r85: 53/DefaultValueOpt/69 → 53/EQUALS/70 70/ValueConst/74
-      r86: 53/DefaultValueOpt/69 → ε
-      r87: 57/Type/73 → 57/NamedType/54
-      r88: 57/NamedType/54 → 57/NAME/55
-      r89: 57/Type/73 → 57/ListType/56
-      r90: 57/ListType/56 → 57/OPENING_BRACKET/57 57/Type/73 73/CLOSING_BRACKET/82
-      r91: 57/Type/73 → 57/NonNullType/58
-      r92: 57/NonNullType/58 → 57/ListType/56 56/BANG/72
-      r93: 57/NonNullType/58 → 57/NamedType/54 54/BANG/71
-      r94: 70/ValueConst/74 → 70/NumberValue/75
-      r95: 70/NumberValue/75 → 70/NUMBER/62
-      r96: 70/ValueConst/74 → 70/StringValue/76
-      r97: 70/StringValue/76 → 70/STRING_VALUE/64
-      r98: 70/StringValue/76 → 70/BLOCK_STRING_VALUE/65
-      r99: 70/ValueConst/74 → 70/NamedValue/77
-      r100: 70/NamedValue/77 → 70/NAME/67
-      r101: 70/ValueConst/74 → 70/ListValueConst/78
-      r102: 70/ListValueConst/78 → 70/OPENING_BRACKET/79 79/CLOSING_BRACKET/83
-      r103: 70/ListValueConst/78 → 70/OPENING_BRACKET/79 79/ListValueConstList/84 84/CLOSING_BRACKET/90
-      r104: 70/ValueConst/74 → 70/ObjectValueConst/80
-      r105: 70/ObjectValueConst/80 → 70/OPENING_BRACE/81 81/CLOSING_BRACE/86
-      r106: 70/ObjectValueConst/80 → 70/OPENING_BRACE/81 81/ObjectFieldConstList/87 87/CLOSING_BRACE/92
-      r107: 79/ListValueConstList/84 → 79/ValueConst/85
-      r108: 79/ValueConst/85 → 79/NumberValue/75
-      r109: 79/NumberValue/75 → 79/NUMBER/62
-      r110: 79/ValueConst/85 → 79/StringValue/76
-      r111: 79/StringValue/76 → 79/STRING_VALUE/64
-      r112: 79/StringValue/76 → 79/BLOCK_STRING_VALUE/65
-      r113: 79/ValueConst/85 → 79/NamedValue/77
-      r114: 79/NamedValue/77 → 79/NAME/67
-      r115: 79/ValueConst/85 → 79/ListValueConst/78
-      r116: 79/ListValueConst/78 → 79/OPENING_BRACKET/79 79/CLOSING_BRACKET/83
-      r117: 79/ListValueConst/78 → 79/OPENING_BRACKET/79 79/ListValueConstList/84 84/CLOSING_BRACKET/90
-      r118: 79/ValueConst/85 → 79/ObjectValueConst/80
-      r119: 79/ObjectValueConst/80 → 79/OPENING_BRACE/81 81/CLOSING_BRACE/86
-      r120: 79/ObjectValueConst/80 → 79/OPENING_BRACE/81 81/ObjectFieldConstList/87 87/CLOSING_BRACE/92
-      r121: 79/ListValueConstList/84 → 79/ListValueConstList/84 84/ValueConst/91
-      r122: 81/ObjectFieldConstList/87 → 81/ObjectFieldConst/88
-      r123: 81/ObjectFieldConst/88 → 81/NAME/89 89/COLON/94 94/ValueConst/95
-      r124: 81/ObjectFieldConstList/87 → 81/ObjectFieldConstList/87 87/ObjectFieldConst/93
-      r125: 84/ValueConst/91 → 84/NumberValue/75
-      r126: 84/NumberValue/75 → 84/NUMBER/62
-      r127: 84/ValueConst/91 → 84/StringValue/76
-      r128: 84/StringValue/76 → 84/STRING_VALUE/64
-      r129: 84/StringValue/76 → 84/BLOCK_STRING_VALUE/65
-      r130: 84/ValueConst/91 → 84/NamedValue/77
-      r131: 84/NamedValue/77 → 84/NAME/67
-      r132: 84/ValueConst/91 → 84/ListValueConst/78
-      r133: 84/ListValueConst/78 → 84/OPENING_BRACKET/79 79/CLOSING_BRACKET/83
-      r134: 84/ListValueConst/78 → 84/OPENING_BRACKET/79 79/ListValueConstList/84 84/CLOSING_BRACKET/90
-      r135: 84/ValueConst/91 → 84/ObjectValueConst/80
-      r136: 84/ObjectValueConst/80 → 84/OPENING_BRACE/81 81/CLOSING_BRACE/86
-      r137: 84/ObjectValueConst/80 → 84/OPENING_BRACE/81 81/ObjectFieldConstList/87 87/CLOSING_BRACE/92
-      r138: 87/ObjectFieldConst/93 → 87/NAME/89 89/COLON/94 94/ValueConst/95
-      r139: 94/ValueConst/95 → 94/NumberValue/75
-      r140: 94/NumberValue/75 → 94/NUMBER/62
-      r141: 94/ValueConst/95 → 94/StringValue/76
-      r142: 94/StringValue/76 → 94/STRING_VALUE/64
-      r143: 94/StringValue/76 → 94/BLOCK_STRING_VALUE/65
-      r144: 94/ValueConst/95 → 94/NamedValue/77
-      r145: 94/NamedValue/77 → 94/NAME/67
-      r146: 94/ValueConst/95 → 94/ListValueConst/78
-      r147: 94/ListValueConst/78 → 94/OPENING_BRACKET/79 79/CLOSING_BRACKET/83
-      r148: 94/ListValueConst/78 → 94/OPENING_BRACKET/79 79/ListValueConstList/84 84/CLOSING_BRACKET/90
-      r149: 94/ValueConst/95 → 94/ObjectValueConst/80
-      r150: 94/ObjectValueConst/80 → 94/OPENING_BRACE/81 81/CLOSING_BRACE/86
-      r151: 94/ObjectValueConst/80 → 94/OPENING_BRACE/81 81/ObjectFieldConstList/87 87/CLOSING_BRACE/92
+      r82: 50/Value/59 → 50/ListValue/68
+      r83: 50/ListValue/68 → 50/OPENING_BRACKET/69 69/CLOSING_BRACKET/78
+      r84: 50/ListValue/68 → 50/OPENING_BRACKET/69 69/ListValueList/79 79/CLOSING_BRACKET/94
+      r85: 50/Value/59 → 50/ObjectValue/70
+      r86: 50/ObjectValue/70 → 50/OPENING_BRACE/71 71/CLOSING_BRACE/81
+      r87: 50/ObjectValue/70 → 50/OPENING_BRACE/71 71/ObjectFieldList/82 82/CLOSING_BRACE/96
+      r88: 51/SelectionSetOpt/72 → 51/SelectionSet/47
+      r89: 51/SelectionSet/47 → 51/OPENING_BRACE/9 9/SelectionList/13 13/CLOSING_BRACE/20
+      r90: 51/SelectionSetOpt/72 → ε
+      r91: 53/DefaultValueOpt/73 → 53/EQUALS/74 74/ValueConst/85
+      r92: 53/DefaultValueOpt/73 → ε
+      r93: 57/Type/77 → 57/NamedType/54
+      r94: 57/NamedType/54 → 57/NAME/55
+      r95: 57/Type/77 → 57/ListType/56
+      r96: 57/ListType/56 → 57/OPENING_BRACKET/57 57/Type/77 77/CLOSING_BRACKET/93
+      r97: 57/Type/77 → 57/NonNullType/58
+      r98: 57/NonNullType/58 → 57/ListType/56 56/BANG/76
+      r99: 57/NonNullType/58 → 57/NamedType/54 54/BANG/75
+      r100: 69/ListValueList/79 → 69/Value/80
+      r101: 69/Value/80 → 69/Variable/60
+      r102: 69/Variable/60 → 69/DOLLAR/33 33/NAME/45
+      r103: 69/Value/80 → 69/NumberValue/61
+      r104: 69/NumberValue/61 → 69/NUMBER/62
+      r105: 69/Value/80 → 69/StringValue/63
+      r106: 69/StringValue/63 → 69/STRING_VALUE/64
+      r107: 69/StringValue/63 → 69/BLOCK_STRING_VALUE/65
+      r108: 69/Value/80 → 69/NamedValue/66
+      r109: 69/NamedValue/66 → 69/NAME/67
+      r110: 69/Value/80 → 69/ListValue/68
+      r111: 69/ListValue/68 → 69/OPENING_BRACKET/69 69/CLOSING_BRACKET/78
+      r112: 69/ListValue/68 → 69/OPENING_BRACKET/69 69/ListValueList/79 79/CLOSING_BRACKET/94
+      r113: 69/Value/80 → 69/ObjectValue/70
+      r114: 69/ObjectValue/70 → 69/OPENING_BRACE/71 71/CLOSING_BRACE/81
+      r115: 69/ObjectValue/70 → 69/OPENING_BRACE/71 71/ObjectFieldList/82 82/CLOSING_BRACE/96
+      r116: 69/ListValueList/79 → 69/ListValueList/79 79/Value/95
+      r117: 71/ObjectFieldList/82 → 71/ObjectField/83
+      r118: 71/ObjectField/83 → 71/NAME/84 84/COLON/98 98/Value/106
+      r119: 71/ObjectFieldList/82 → 71/ObjectFieldList/82 82/ObjectField/97
+      r120: 74/ValueConst/85 → 74/NumberValue/86
+      r121: 74/NumberValue/86 → 74/NUMBER/62
+      r122: 74/ValueConst/85 → 74/StringValue/87
+      r123: 74/StringValue/87 → 74/STRING_VALUE/64
+      r124: 74/StringValue/87 → 74/BLOCK_STRING_VALUE/65
+      r125: 74/ValueConst/85 → 74/NamedValue/88
+      r126: 74/NamedValue/88 → 74/NAME/67
+      r127: 74/ValueConst/85 → 74/ListValueConst/89
+      r128: 74/ListValueConst/89 → 74/OPENING_BRACKET/90 90/CLOSING_BRACKET/99
+      r129: 74/ListValueConst/89 → 74/OPENING_BRACKET/90 90/ListValueConstList/100 100/CLOSING_BRACKET/107
+      r130: 74/ValueConst/85 → 74/ObjectValueConst/91
+      r131: 74/ObjectValueConst/91 → 74/OPENING_BRACE/92 92/CLOSING_BRACE/102
+      r132: 74/ObjectValueConst/91 → 74/OPENING_BRACE/92 92/ObjectFieldConstList/103 103/CLOSING_BRACE/109
+      r133: 79/Value/95 → 79/Variable/60
+      r134: 79/Variable/60 → 79/DOLLAR/33 33/NAME/45
+      r135: 79/Value/95 → 79/NumberValue/61
+      r136: 79/NumberValue/61 → 79/NUMBER/62
+      r137: 79/Value/95 → 79/StringValue/63
+      r138: 79/StringValue/63 → 79/STRING_VALUE/64
+      r139: 79/StringValue/63 → 79/BLOCK_STRING_VALUE/65
+      r140: 79/Value/95 → 79/NamedValue/66
+      r141: 79/NamedValue/66 → 79/NAME/67
+      r142: 79/Value/95 → 79/ListValue/68
+      r143: 79/ListValue/68 → 79/OPENING_BRACKET/69 69/CLOSING_BRACKET/78
+      r144: 79/ListValue/68 → 79/OPENING_BRACKET/69 69/ListValueList/79 79/CLOSING_BRACKET/94
+      r145: 79/Value/95 → 79/ObjectValue/70
+      r146: 79/ObjectValue/70 → 79/OPENING_BRACE/71 71/CLOSING_BRACE/81
+      r147: 79/ObjectValue/70 → 79/OPENING_BRACE/71 71/ObjectFieldList/82 82/CLOSING_BRACE/96
+      r148: 82/ObjectField/97 → 82/NAME/84 84/COLON/98 98/Value/106
+      r149: 90/ListValueConstList/100 → 90/ValueConst/101
+      r150: 90/ValueConst/101 → 90/NumberValue/86
+      r151: 90/NumberValue/86 → 90/NUMBER/62
+      r152: 90/ValueConst/101 → 90/StringValue/87
+      r153: 90/StringValue/87 → 90/STRING_VALUE/64
+      r154: 90/StringValue/87 → 90/BLOCK_STRING_VALUE/65
+      r155: 90/ValueConst/101 → 90/NamedValue/88
+      r156: 90/NamedValue/88 → 90/NAME/67
+      r157: 90/ValueConst/101 → 90/ListValueConst/89
+      r158: 90/ListValueConst/89 → 90/OPENING_BRACKET/90 90/CLOSING_BRACKET/99
+      r159: 90/ListValueConst/89 → 90/OPENING_BRACKET/90 90/ListValueConstList/100 100/CLOSING_BRACKET/107
+      r160: 90/ValueConst/101 → 90/ObjectValueConst/91
+      r161: 90/ObjectValueConst/91 → 90/OPENING_BRACE/92 92/CLOSING_BRACE/102
+      r162: 90/ObjectValueConst/91 → 90/OPENING_BRACE/92 92/ObjectFieldConstList/103 103/CLOSING_BRACE/109
+      r163: 90/ListValueConstList/100 → 90/ListValueConstList/100 100/ValueConst/108
+      r164: 92/ObjectFieldConstList/103 → 92/ObjectFieldConst/104
+      r165: 92/ObjectFieldConst/104 → 92/NAME/105 105/COLON/111 111/ValueConst/112
+      r166: 92/ObjectFieldConstList/103 → 92/ObjectFieldConstList/103 103/ObjectFieldConst/110
+      r167: 98/Value/106 → 98/Variable/60
+      r168: 98/Variable/60 → 98/DOLLAR/33 33/NAME/45
+      r169: 98/Value/106 → 98/NumberValue/61
+      r170: 98/NumberValue/61 → 98/NUMBER/62
+      r171: 98/Value/106 → 98/StringValue/63
+      r172: 98/StringValue/63 → 98/STRING_VALUE/64
+      r173: 98/StringValue/63 → 98/BLOCK_STRING_VALUE/65
+      r174: 98/Value/106 → 98/NamedValue/66
+      r175: 98/NamedValue/66 → 98/NAME/67
+      r176: 98/Value/106 → 98/ListValue/68
+      r177: 98/ListValue/68 → 98/OPENING_BRACKET/69 69/CLOSING_BRACKET/78
+      r178: 98/ListValue/68 → 98/OPENING_BRACKET/69 69/ListValueList/79 79/CLOSING_BRACKET/94
+      r179: 98/Value/106 → 98/ObjectValue/70
+      r180: 98/ObjectValue/70 → 98/OPENING_BRACE/71 71/CLOSING_BRACE/81
+      r181: 98/ObjectValue/70 → 98/OPENING_BRACE/71 71/ObjectFieldList/82 82/CLOSING_BRACE/96
+      r182: 100/ValueConst/108 → 100/NumberValue/86
+      r183: 100/NumberValue/86 → 100/NUMBER/62
+      r184: 100/ValueConst/108 → 100/StringValue/87
+      r185: 100/StringValue/87 → 100/STRING_VALUE/64
+      r186: 100/StringValue/87 → 100/BLOCK_STRING_VALUE/65
+      r187: 100/ValueConst/108 → 100/NamedValue/88
+      r188: 100/NamedValue/88 → 100/NAME/67
+      r189: 100/ValueConst/108 → 100/ListValueConst/89
+      r190: 100/ListValueConst/89 → 100/OPENING_BRACKET/90 90/CLOSING_BRACKET/99
+      r191: 100/ListValueConst/89 → 100/OPENING_BRACKET/90 90/ListValueConstList/100 100/CLOSING_BRACKET/107
+      r192: 100/ValueConst/108 → 100/ObjectValueConst/91
+      r193: 100/ObjectValueConst/91 → 100/OPENING_BRACE/92 92/CLOSING_BRACE/102
+      r194: 100/ObjectValueConst/91 → 100/OPENING_BRACE/92 92/ObjectFieldConstList/103 103/CLOSING_BRACE/109
+      r195: 103/ObjectFieldConst/110 → 103/NAME/105 105/COLON/111 111/ValueConst/112
+      r196: 111/ValueConst/112 → 111/NumberValue/86
+      r197: 111/NumberValue/86 → 111/NUMBER/62
+      r198: 111/ValueConst/112 → 111/StringValue/87
+      r199: 111/StringValue/87 → 111/STRING_VALUE/64
+      r200: 111/StringValue/87 → 111/BLOCK_STRING_VALUE/65
+      r201: 111/ValueConst/112 → 111/NamedValue/88
+      r202: 111/NamedValue/88 → 111/NAME/67
+      r203: 111/ValueConst/112 → 111/ListValueConst/89
+      r204: 111/ListValueConst/89 → 111/OPENING_BRACKET/90 90/CLOSING_BRACKET/99
+      r205: 111/ListValueConst/89 → 111/OPENING_BRACKET/90 90/ListValueConstList/100 100/CLOSING_BRACKET/107
+      r206: 111/ValueConst/112 → 111/ObjectValueConst/91
+      r207: 111/ObjectValueConst/91 → 111/OPENING_BRACE/92 92/CLOSING_BRACE/102
+      r208: 111/ObjectValueConst/91 → 111/OPENING_BRACE/92 92/ObjectFieldConstList/103 103/CLOSING_BRACE/109
       "
     `);
   });
