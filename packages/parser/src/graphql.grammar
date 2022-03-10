@@ -76,7 +76,7 @@ VariableDefinitionList → VariableDefinitionList VariableDefinition {
   $1.push($2); $$ = $1;
 }
 
-# TODO: add DirectivesOpt
+# TODO: add DirectivesConstOpt
 VariableDefinition → Variable COLON Type DefaultValueOpt {
   $$ = {
     kind: 'VARIABLE_DEFINITION',
@@ -129,12 +129,8 @@ DefaultValueOpt → EQUALS ValueConst { $$ = $2; }
 DefaultValueOpt → ε { $$ = null; }
 
 ValueConst → NumberValue { $$ = $1; }
-
-# TODO
-# ValueConst → StringValue
-
+ValueConst → StringValue { $$ = $1; }
 ValueConst → NamedValue { $$ = $1; }
-
 ValueConst → ListValueConst { $$ = $1; }
 ValueConst → ObjectValueConst { $$ = $1; }
 
@@ -227,25 +223,24 @@ SelectionList → SelectionList Selection { $1.push($2); $$ = $1; }
 
 Selection → Field { $$ = $1; }
 
-# TODO: add DirectivesOpt to these
-Field → NAME ArgumentsOpt SelectionSetOpt {
+Field → NAME ArgumentsOpt DirectivesOpt SelectionSetOpt {
   $$ = {
     kind: 'FIELD',
     alias: null,
     arguments: $2,
-    directives: null,
+    directives: $3,
     name: $1.contents,
-    selections: $3,
+    selections: $4,
   };
 }
-Field → Alias NAME ArgumentsOpt SelectionSetOpt {
+Field → Alias NAME ArgumentsOpt DirectivesOpt SelectionSetOpt {
   $$ = {
     kind: 'FIELD',
     alias: $1,
     arguments: $3,
-    directives: null,
+    directives: $4,
     name: $2.contents,
-    selections: $4,
+    selections: $5,
   };
 }
 
@@ -276,6 +271,7 @@ StringValue → STRING_VALUE {
   $$ = {
     kind: 'STRING',
     block: false,
+    // TODO: consider doing this slice in the lexer
     value: $1.contents.slice(1, -1),
   };
 }

@@ -70,19 +70,25 @@ export default function getFollowSets(grammar: Grammar): SymbolSets {
       }
 
       // For rule, "A -> a B b", if ε is in FIRST(b), add everything in
-      // FOLLOW(A) to FOLLOW(B).
-      const previous = rhs[rhs.length - 2];
-      if (previous && !tokens.has(previous) && last && !tokens.has(last)) {
-        if (first[last]?.has(null)) {
-          if (followSets[lhs]) {
-            for (const symbol of followSets[lhs]) {
-              followSets[previous] = followSets[previous] || new Set();
-              if (!followSets[previous].has(symbol)) {
-                followSets[previous].add(symbol);
-                done = false;
-              }
+      // FOLLOW(A) to FOLLOW(B). As before, we walk backwards to to ensure that
+      // we "see" through consecutive epsilon-containing non-terminals.
+      for (let j = rhs.length - 2; j >= 0; j--) {
+        const current = rhs[j];
+        const next = rhs[j + 1];
+        if (
+          !tokens.has(current) &&
+          !tokens.has(next) &&
+          first[next].has(null)
+        ) {
+          for (const symbol of followSets[lhs]) {
+            followSets[current] = followSets[current] || new Set();
+            if (!followSets[current].has(symbol)) {
+              followSets[current].add(symbol);
+              done = false;
             }
           }
+        } else {
+          break;
         }
       }
     }

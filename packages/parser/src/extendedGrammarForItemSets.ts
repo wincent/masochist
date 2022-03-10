@@ -20,7 +20,7 @@ import type {Grammar, ItemSet} from './types';
  * we'd annotate like this:
  *
  *     A  →  ε
- *    0 5   5 5
+ *    0 5
  */
 export default function extendedGrammarForItemSets(
   itemSets: Array<ItemSet>,

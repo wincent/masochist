@@ -1,3 +1,4 @@
+import {EPSILON, MIDDLE_DOT} from './Constants';
 import getAugmentedGrammar from './getAugmentedGrammar';
 import groupRulesByLHS from './groupRulesByLHS';
 import keyForRule from './keyForRule';

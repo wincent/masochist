@@ -13,7 +13,7 @@ describe('GraphQL parser', () => {
           foo
           barAlias: bar
           baz {
-            qux
+            qux @defer
           }
         }
 
@@ -86,7 +86,13 @@ describe('GraphQL parser', () => {
                     kind: 'FIELD',
                     alias: null,
                     arguments: null,
-                    directives: null,
+                    directives: [
+                      {
+                        kind: 'DIRECTIVE',
+                        name: 'defer',
+                        arguments: null,
+                      },
+                    ],
                     name: 'qux',
                     selections: null,
                   },

@@ -115,7 +115,7 @@ describe('getFirstSets()', () => {
       Field                  : {NAME}
       ListType               : {OPENING_BRACKET}
       ListValueConst         : {OPENING_BRACKET}
-      ListValueConstList     : {NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET}
+      ListValueConstList     : {BLOCK_STRING_VALUE, NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET, STRING_VALUE}
       NamedType              : {NAME}
       NamedValue             : {NAME}
       NonNullType            : {NAME, OPENING_BRACKET}
@@ -133,7 +133,7 @@ describe('getFirstSets()', () => {
       StringValue            : {BLOCK_STRING_VALUE, STRING_VALUE}
       Type                   : {NAME, OPENING_BRACKET}
       Value                  : {BLOCK_STRING_VALUE, DOLLAR, NAME, NUMBER, STRING_VALUE}
-      ValueConst             : {NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET}
+      ValueConst             : {BLOCK_STRING_VALUE, NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET, STRING_VALUE}
       Variable               : {DOLLAR}
       VariableDefinition     : {DOLLAR}
       VariableDefinitionList : {DOLLAR}
