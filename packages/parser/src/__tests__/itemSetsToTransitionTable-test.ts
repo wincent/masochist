@@ -106,24 +106,27 @@ describe('itemSetsToTransitionTable()', () => {
   it('returns a transition table for the GraphQL grammar', () => {
     expect(
       '\n' +
-        stringifyTransitionTable(itemSetsToTransitionTable(itemSets, grammar)),
+        stringifyTransitionTable(
+          itemSetsToTransitionTable(itemSets, grammar),
+          grammar,
+        ),
     ).toMatchInlineSnapshot(`
       "
       0:
+        NAME → 7
+        OPENING_BRACE → 9
         Definition → 3
         DefinitionList → 2
         Document → 1
         ExecutableDefinition → 4
-        NAME → 7
-        OPENING_BRACE → 9
         OperationDefinition → 5
         OperationType → 6
         SelectionSet → 8
       2:
-        Definition → 10
-        ExecutableDefinition → 4
         NAME → 7
         OPENING_BRACE → 9
+        Definition → 10
+        ExecutableDefinition → 4
         OperationDefinition → 5
         OperationType → 6
         SelectionSet → 8
@@ -131,24 +134,24 @@ describe('itemSetsToTransitionTable()', () => {
         NAME → 12
         OperationNameOpt → 11
       9:
+        NAME → 16
         Alias → 17
         Field → 15
-        NAME → 16
         Selection → 14
         SelectionList → 13
       11:
         OPENING_PAREN → 19
         VariableDefinitionsOpt → 18
       13:
-        Alias → 17
         CLOSING_BRACE → 20
-        Field → 15
         NAME → 16
+        Alias → 17
+        Field → 15
         Selection → 21
       16:
-        ArgumentsOpt → 22
         COLON → 23
         OPENING_PAREN → 24
+        ArgumentsOpt → 22
       17:
         NAME → 25
       18:
@@ -166,12 +169,12 @@ describe('itemSetsToTransitionTable()', () => {
         SelectionSet → 35
         SelectionSetOpt → 34
       24:
+        NAME → 38
         Argument → 37
         ArgumentList → 36
-        NAME → 38
       25:
-        ArgumentsOpt → 39
         OPENING_PAREN → 24
+        ArgumentsOpt → 39
       26:
         OPENING_BRACE → 9
         SelectionSet → 40
@@ -190,9 +193,9 @@ describe('itemSetsToTransitionTable()', () => {
       33:
         NAME → 46
       36:
-        Argument → 48
         CLOSING_PAREN → 47
         NAME → 38
+        Argument → 48
       38:
         COLON → 49
       39:
@@ -200,62 +203,62 @@ describe('itemSetsToTransitionTable()', () => {
         SelectionSet → 35
         SelectionSetOpt → 50
       42:
-        ArgumentsOpt → 51
         OPENING_PAREN → 24
+        ArgumentsOpt → 51
       45:
-        ListType → 55
         NAME → 54
+        OPENING_BRACKET → 56
+        ListType → 55
         NamedType → 53
         NonNullType → 57
-        OPENING_BRACKET → 56
         Type → 52
       49:
         BLOCK_STRING_VALUE → 64
         DOLLAR → 33
         NAME → 66
         NUMBER → 61
+        STRING_VALUE → 63
         NamedValue → 65
         NumberValue → 60
-        STRING_VALUE → 63
         StringValue → 62
         Value → 58
         Variable → 59
       52:
-        DefaultValueOpt → 67
         EQUALS → 68
+        DefaultValueOpt → 67
       53:
         BANG → 69
       55:
         BANG → 70
       56:
-        ListType → 55
         NAME → 54
+        OPENING_BRACKET → 56
+        ListType → 55
         NamedType → 53
         NonNullType → 57
-        OPENING_BRACKET → 56
         Type → 71
       68:
-        ListValueConst → 75
         NAME → 66
         NUMBER → 61
-        NamedValue → 74
-        NumberValue → 73
         OPENING_BRACE → 78
         OPENING_BRACKET → 76
+        ListValueConst → 75
+        NamedValue → 74
+        NumberValue → 73
         ObjectValueConst → 77
         ValueConst → 72
       71:
         CLOSING_BRACKET → 79
       76:
         CLOSING_BRACKET → 80
-        ListValueConst → 75
-        ListValueConstList → 81
         NAME → 66
         NUMBER → 61
-        NamedValue → 74
-        NumberValue → 73
         OPENING_BRACE → 78
         OPENING_BRACKET → 76
+        ListValueConst → 75
+        ListValueConstList → 81
+        NamedValue → 74
+        NumberValue → 73
         ObjectValueConst → 77
         ValueConst → 82
       78:
@@ -265,13 +268,13 @@ describe('itemSetsToTransitionTable()', () => {
         ObjectFieldConstList → 84
       81:
         CLOSING_BRACKET → 87
-        ListValueConst → 75
         NAME → 66
         NUMBER → 61
-        NamedValue → 74
-        NumberValue → 73
         OPENING_BRACE → 78
         OPENING_BRACKET → 76
+        ListValueConst → 75
+        NamedValue → 74
+        NumberValue → 73
         ObjectValueConst → 77
         ValueConst → 88
       84:
@@ -281,13 +284,13 @@ describe('itemSetsToTransitionTable()', () => {
       86:
         COLON → 91
       91:
-        ListValueConst → 75
         NAME → 66
         NUMBER → 61
-        NamedValue → 74
-        NumberValue → 73
         OPENING_BRACE → 78
         OPENING_BRACKET → 76
+        ListValueConst → 75
+        NamedValue → 74
+        NumberValue → 73
         ObjectValueConst → 77
         ValueConst → 92"
     `);

@@ -129,6 +129,10 @@ describe('extendedGrammarForItemSets()', () => {
       "
       %token 0/NAME/7
       %token 0/OPENING_BRACE/9
+      %token 2/NAME/7
+      %token 2/OPENING_BRACE/9
+      %token 6/NAME/12
+      %token 9/NAME/16
       %token 11/OPENING_PAREN/19
       %token 13/CLOSING_BRACE/20
       %token 13/NAME/16
@@ -137,8 +141,6 @@ describe('extendedGrammarForItemSets()', () => {
       %token 17/NAME/25
       %token 18/AT/29
       %token 19/DOLLAR/33
-      %token 2/NAME/7
-      %token 2/OPENING_BRACE/9
       %token 22/OPENING_BRACE/9
       %token 24/NAME/38
       %token 25/OPENING_PAREN/24
@@ -166,7 +168,6 @@ describe('extendedGrammarForItemSets()', () => {
       %token 55/BANG/70
       %token 56/NAME/54
       %token 56/OPENING_BRACKET/56
-      %token 6/NAME/12
       %token 68/NAME/66
       %token 68/NUMBER/61
       %token 68/OPENING_BRACE/78
@@ -187,7 +188,6 @@ describe('extendedGrammarForItemSets()', () => {
       %token 84/CLOSING_BRACE/89
       %token 84/NAME/86
       %token 86/COLON/91
-      %token 9/NAME/16
       %token 91/NAME/66
       %token 91/NUMBER/61
       %token 91/OPENING_BRACE/78

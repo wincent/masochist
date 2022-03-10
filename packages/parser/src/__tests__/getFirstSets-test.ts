@@ -88,10 +88,10 @@ describe('getFirstSets()', () => {
     expect(stringifySymbolSets(getFirstSets(extendedGrammar))).toEqual(
       dedent`
         0/BarOpt/3  : {0/BAR/4, null}
-        5/FooList/6 : {5/FOO/7}
         0/Program/2 : {0/BAR/4, 3/OPEN_BRACKET/5}
-        0/S/1       : {0/BAR/4, 3/OPEN_BRACKET/5}
         0/S'/$      : {0/BAR/4, 3/OPEN_BRACKET/5}
+        0/S/1       : {0/BAR/4, 3/OPEN_BRACKET/5}
+        5/FooList/6 : {5/FOO/7}
       `,
     );
   });
@@ -100,44 +100,44 @@ describe('getFirstSets()', () => {
     expect('\n' + stringifySymbolSets(getFirstSets(grammar)))
       .toMatchInlineSnapshot(`
       "
-      OperationType          : {NAME}
-      OperationNameOpt       : {NAME, null}
-      VariableDefinitionsOpt : {OPENING_PAREN, null}
-      Variable               : {DOLLAR}
-      NamedType              : {NAME}
-      ListType               : {OPENING_BRACKET}
-      NonNullType            : {NAME, OPENING_BRACKET}
-      DefaultValueOpt        : {EQUALS, null}
-      NumberValue            : {NUMBER}
-      NamedValue             : {NAME}
-      ListValueConst         : {OPENING_BRACKET}
-      ObjectValueConst       : {OPENING_BRACE}
-      ObjectFieldConst       : {NAME}
-      DirectivesOpt          : {AT, null}
-      Directive              : {AT}
-      SelectionSet           : {OPENING_BRACE}
-      SelectionSetOpt        : {OPENING_BRACE, null}
-      Field                  : {NAME}
       Alias                  : {NAME}
-      ArgumentsOpt           : {OPENING_PAREN, null}
       Argument               : {NAME}
-      Value                  : {BLOCK_STRING_VALUE, DOLLAR, NAME, NUMBER, STRING_VALUE}
-      StringValue            : {BLOCK_STRING_VALUE, STRING_VALUE}
-      OperationDefinition    : {NAME, OPENING_BRACE}
-      VariableDefinition     : {DOLLAR}
-      Type                   : {NAME, OPENING_BRACKET}
-      ValueConst             : {NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET}
-      ListValueConstList     : {NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET}
-      ObjectFieldConstList   : {NAME}
-      DirectiveList          : {AT}
-      Selection              : {NAME}
       ArgumentList           : {NAME}
-      ExecutableDefinition   : {NAME, OPENING_BRACE}
-      VariableDefinitionList : {DOLLAR}
-      SelectionList          : {NAME}
+      ArgumentsOpt           : {OPENING_PAREN, null}
+      DefaultValueOpt        : {EQUALS, null}
       Definition             : {NAME, OPENING_BRACE}
       DefinitionList         : {NAME, OPENING_BRACE}
-      Document               : {NAME, OPENING_BRACE}"
+      Directive              : {AT}
+      DirectiveList          : {AT}
+      DirectivesOpt          : {AT, null}
+      Document               : {NAME, OPENING_BRACE}
+      ExecutableDefinition   : {NAME, OPENING_BRACE}
+      Field                  : {NAME}
+      ListType               : {OPENING_BRACKET}
+      ListValueConst         : {OPENING_BRACKET}
+      ListValueConstList     : {NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET}
+      NamedType              : {NAME}
+      NamedValue             : {NAME}
+      NonNullType            : {NAME, OPENING_BRACKET}
+      NumberValue            : {NUMBER}
+      ObjectFieldConst       : {NAME}
+      ObjectFieldConstList   : {NAME}
+      ObjectValueConst       : {OPENING_BRACE}
+      OperationDefinition    : {NAME, OPENING_BRACE}
+      OperationNameOpt       : {NAME, null}
+      OperationType          : {NAME}
+      Selection              : {NAME}
+      SelectionList          : {NAME}
+      SelectionSet           : {OPENING_BRACE}
+      SelectionSetOpt        : {OPENING_BRACE, null}
+      StringValue            : {BLOCK_STRING_VALUE, STRING_VALUE}
+      Type                   : {NAME, OPENING_BRACKET}
+      Value                  : {BLOCK_STRING_VALUE, DOLLAR, NAME, NUMBER, STRING_VALUE}
+      ValueConst             : {NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET}
+      Variable               : {DOLLAR}
+      VariableDefinition     : {DOLLAR}
+      VariableDefinitionList : {DOLLAR}
+      VariableDefinitionsOpt : {OPENING_PAREN, null}"
     `);
   });
 });

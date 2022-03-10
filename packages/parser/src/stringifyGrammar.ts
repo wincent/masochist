@@ -1,4 +1,5 @@
 import {EPSILON, RIGHTWARDS_ARROW} from './Constants';
+import numericStringSort from './numericStringSort';
 
 import type {Grammar} from './types';
 
@@ -7,13 +8,12 @@ import type {Grammar} from './types';
  */
 export default function stringifyGrammar(grammar: Grammar): string {
   let output =
-    [...grammar.tokens]
-      .sort()
+    numericStringSort([...grammar.tokens])
       .map((token) => `%token ${token}`)
       .join('\n') + '\n\n';
 
-  output += grammar.rules
-    .map(({lhs, rhs, action}, i) => {
+  const [startRule, ...otherRules] = grammar.rules.map(
+    ({lhs, rhs, action}, i) => {
       const production = rhs.length ? rhs.join(' ') : EPSILON;
       const rule = `r${i}: ${lhs} ${RIGHTWARDS_ARROW} ${production}`;
       if (action) {
@@ -21,8 +21,10 @@ export default function stringifyGrammar(grammar: Grammar): string {
       } else {
         return rule;
       }
-    })
-    .join('\n');
+    },
+  );
+
+  output += [startRule, ...numericStringSort(otherRules)].join('\n');
 
   return output + '\n';
 }
