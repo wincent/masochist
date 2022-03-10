@@ -3,6 +3,7 @@ import {invariant} from '@masochist/common';
 
 import keyToTransition from './NFA/keyToTransition';
 
+// TODO: see if I can just inline Consequent; doesn't need its own type
 import type {
   Expression,
   IfStatement,
