@@ -273,24 +273,29 @@ describe('itemSetsToTransitionTable()', () => {
         NAME → 84
         ObjectField → 83
         ObjectFieldList → 82
+      73:
+        AT → 88
+        DirectiveConst → 87
+        DirectiveConstList → 86
+        DirectivesConstOpt → 85
       74:
         BLOCK_STRING_VALUE → 65
         NAME → 67
         NUMBER → 62
-        OPENING_BRACE → 92
-        OPENING_BRACKET → 90
+        OPENING_BRACE → 96
+        OPENING_BRACKET → 94
         STRING_VALUE → 64
-        ListValueConst → 89
-        NamedValue → 88
-        NumberValue → 86
-        ObjectValueConst → 91
-        StringValue → 87
-        ValueConst → 85
+        ListValueConst → 93
+        NamedValue → 92
+        NumberValue → 90
+        ObjectValueConst → 95
+        StringValue → 91
+        ValueConst → 89
       77:
-        CLOSING_BRACKET → 93
+        CLOSING_BRACKET → 97
       79:
         BLOCK_STRING_VALUE → 65
-        CLOSING_BRACKET → 94
+        CLOSING_BRACKET → 98
         DOLLAR → 33
         NAME → 67
         NUMBER → 62
@@ -302,35 +307,40 @@ describe('itemSetsToTransitionTable()', () => {
         NumberValue → 61
         ObjectValue → 70
         StringValue → 63
-        Value → 95
+        Value → 99
         Variable → 60
       82:
-        CLOSING_BRACE → 96
+        CLOSING_BRACE → 100
         NAME → 84
-        ObjectField → 97
+        ObjectField → 101
       84:
-        COLON → 98
-      90:
+        COLON → 102
+      86:
+        AT → 88
+        DirectiveConst → 103
+      88:
+        NAME → 104
+      94:
         BLOCK_STRING_VALUE → 65
-        CLOSING_BRACKET → 99
+        CLOSING_BRACKET → 105
         NAME → 67
         NUMBER → 62
-        OPENING_BRACE → 92
-        OPENING_BRACKET → 90
+        OPENING_BRACE → 96
+        OPENING_BRACKET → 94
         STRING_VALUE → 64
-        ListValueConst → 89
-        ListValueConstList → 100
-        NamedValue → 88
-        NumberValue → 86
-        ObjectValueConst → 91
-        StringValue → 87
-        ValueConst → 101
-      92:
-        CLOSING_BRACE → 102
-        NAME → 105
-        ObjectFieldConst → 104
-        ObjectFieldConstList → 103
-      98:
+        ListValueConst → 93
+        ListValueConstList → 106
+        NamedValue → 92
+        NumberValue → 90
+        ObjectValueConst → 95
+        StringValue → 91
+        ValueConst → 107
+      96:
+        CLOSING_BRACE → 108
+        NAME → 111
+        ObjectFieldConst → 110
+        ObjectFieldConstList → 109
+      102:
         BLOCK_STRING_VALUE → 65
         DOLLAR → 33
         NAME → 67
@@ -343,41 +353,67 @@ describe('itemSetsToTransitionTable()', () => {
         NumberValue → 61
         ObjectValue → 70
         StringValue → 63
-        Value → 106
+        Value → 112
         Variable → 60
-      100:
+      104:
+        OPENING_PAREN → 114
+        ArgumentsConstOpt → 113
+      106:
         BLOCK_STRING_VALUE → 65
-        CLOSING_BRACKET → 107
+        CLOSING_BRACKET → 115
         NAME → 67
         NUMBER → 62
-        OPENING_BRACE → 92
-        OPENING_BRACKET → 90
+        OPENING_BRACE → 96
+        OPENING_BRACKET → 94
         STRING_VALUE → 64
-        ListValueConst → 89
-        NamedValue → 88
-        NumberValue → 86
-        ObjectValueConst → 91
-        StringValue → 87
-        ValueConst → 108
-      103:
-        CLOSING_BRACE → 109
-        NAME → 105
-        ObjectFieldConst → 110
-      105:
-        COLON → 111
+        ListValueConst → 93
+        NamedValue → 92
+        NumberValue → 90
+        ObjectValueConst → 95
+        StringValue → 91
+        ValueConst → 116
+      109:
+        CLOSING_BRACE → 117
+        NAME → 111
+        ObjectFieldConst → 118
       111:
+        COLON → 119
+      114:
+        NAME → 122
+        ArgumentConst → 121
+        ArgumentConstList → 120
+      119:
         BLOCK_STRING_VALUE → 65
         NAME → 67
         NUMBER → 62
-        OPENING_BRACE → 92
-        OPENING_BRACKET → 90
+        OPENING_BRACE → 96
+        OPENING_BRACKET → 94
         STRING_VALUE → 64
-        ListValueConst → 89
-        NamedValue → 88
-        NumberValue → 86
-        ObjectValueConst → 91
-        StringValue → 87
-        ValueConst → 112"
+        ListValueConst → 93
+        NamedValue → 92
+        NumberValue → 90
+        ObjectValueConst → 95
+        StringValue → 91
+        ValueConst → 123
+      120:
+        CLOSING_PAREN → 124
+        NAME → 122
+        ArgumentConst → 125
+      122:
+        COLON → 126
+      126:
+        BLOCK_STRING_VALUE → 65
+        NAME → 67
+        NUMBER → 62
+        OPENING_BRACE → 96
+        OPENING_BRACKET → 94
+        STRING_VALUE → 64
+        ListValueConst → 93
+        NamedValue → 92
+        NumberValue → 90
+        ObjectValueConst → 95
+        StringValue → 91
+        ValueConst → 127"
     `);
   });
 });

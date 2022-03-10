@@ -76,12 +76,11 @@ VariableDefinitionList → VariableDefinitionList VariableDefinition {
   $1.push($2); $$ = $1;
 }
 
-# TODO: add DirectivesConstOpt
-VariableDefinition → Variable COLON Type DefaultValueOpt {
+VariableDefinition → Variable COLON Type DefaultValueOpt DirectivesConstOpt {
   $$ = {
     kind: 'VARIABLE_DEFINITION',
     defaultValue: $4,
-    directives: null,
+    directives: $5,
     type: $3,
     variable: $1,
   };
@@ -213,6 +212,20 @@ Directive → AT NAME ArgumentsOpt {
   };
 }
 
+DirectivesConstOpt → DirectiveConstList { $$ = $1; }
+DirectivesConstOpt → ε { $$ = null; }
+
+DirectiveConstList → DirectiveConst { $$ = [$1]; }
+DirectiveConstList → DirectiveConstList DirectiveConst { $1.push($2); $$ = $1; }
+
+DirectiveConst → AT NAME ArgumentsConstOpt {
+  $$ = {
+    kind: 'DIRECTIVE',
+    arguments: $3,
+    name: $2.contents,
+  };
+}
+
 SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE { $$ = $2; }
 
 SelectionSetOpt → SelectionSet { $$ = $1; }
@@ -253,6 +266,20 @@ ArgumentList → Argument { $$ = [$1]; }
 ArgumentList → ArgumentList Argument { $1.push($2); $$ = $1; }
 
 Argument → NAME COLON Value {
+  $$ = {
+    kind: 'ARGUMENT',
+    name: $1.contents,
+    value: $3,
+  };
+}
+
+ArgumentsConstOpt → OPENING_PAREN ArgumentConstList CLOSING_PAREN { $$ = $2; }
+ArgumentsConstOpt → ε { $$ = null; }
+
+ArgumentConstList → ArgumentConst { $$ = [$1]; }
+ArgumentConstList → ArgumentConstList ArgumentConst { $1.push($2); $$ = $1; }
+
+ArgumentConst → NAME COLON ValueConst {
   $$ = {
     kind: 'ARGUMENT',
     name: $1.contents,

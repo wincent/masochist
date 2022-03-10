@@ -19,12 +19,12 @@ describe('GraphQL parser', () => {
 
         query NewQuery(
           $count: Int = 10
-          $sizes: [Int] = [100, 200]
+          $sizes: [Int] = [100, 200] @log
           $factor: Int!
           $stuff: [Int]!
           $limits: Limits = {min: 100, max: 1000}
         ) {
-          hai(count: $count, factor: 20, sizes: [25, 50])
+          hai(count: $count, factor: 20, sizes: [25, 50]) @something(times: $count)
         }
     `),
     ];
@@ -145,7 +145,22 @@ describe('GraphQL parser', () => {
                     },
                   },
                 ],
-                directives: null,
+                directives: [
+                  {
+                    kind: 'DIRECTIVE',
+                    arguments: [
+                      {
+                        kind: 'ARGUMENT',
+                        name: 'times',
+                        value: {
+                          kind: 'VARIABLE',
+                          name: 'count',
+                        },
+                      },
+                    ],
+                    name: 'something',
+                  },
+                ],
                 name: 'hai',
                 selections: null,
               },
@@ -183,7 +198,13 @@ describe('GraphQL parser', () => {
                     },
                   ],
                 },
-                directives: null,
+                directives: [
+                  {
+                    kind: 'DIRECTIVE',
+                    arguments: null,
+                    name: 'log',
+                  },
+                ],
                 variable: {
                   kind: 'VARIABLE',
                   name: 'sizes',

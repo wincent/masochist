@@ -102,13 +102,19 @@ describe('getFirstSets()', () => {
       "
       Alias                  : {NAME}
       Argument               : {NAME}
+      ArgumentConst          : {NAME}
+      ArgumentConstList      : {NAME}
       ArgumentList           : {NAME}
+      ArgumentsConstOpt      : {OPENING_PAREN, null}
       ArgumentsOpt           : {OPENING_PAREN, null}
       DefaultValueOpt        : {EQUALS, null}
       Definition             : {NAME, OPENING_BRACE}
       DefinitionList         : {NAME, OPENING_BRACE}
       Directive              : {AT}
+      DirectiveConst         : {AT}
+      DirectiveConstList     : {AT}
       DirectiveList          : {AT}
+      DirectivesConstOpt     : {AT, null}
       DirectivesOpt          : {AT, null}
       Document               : {NAME, OPENING_BRACE}
       ExecutableDefinition   : {NAME, OPENING_BRACE}
