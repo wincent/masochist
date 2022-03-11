@@ -131,300 +131,370 @@ describe('itemSetsToTransitionTable()', () => {
         OperationType → 6
         SelectionSet → 8
       6:
-        NAME → 12
+        NAME → 13
+        ON → 14
+        Name → 12
         OperationNameOpt → 11
       9:
-        ELLIPSIS → 19
-        NAME → 16
-        Alias → 17
-        Field → 15
-        FragmentSpread → 18
-        Selection → 14
-        SelectionList → 13
+        ELLIPSIS → 21
+        NAME → 13
+        ON → 14
+        Alias → 19
+        Field → 17
+        FragmentSpread → 20
+        InlineFragment → 22
+        Name → 18
+        Selection → 16
+        SelectionList → 15
       11:
-        OPENING_PAREN → 21
-        VariableDefinitionsOpt → 20
-      13:
-        CLOSING_BRACE → 22
-        ELLIPSIS → 19
-        NAME → 16
-        Alias → 17
-        Field → 15
-        FragmentSpread → 18
-        Selection → 23
-      16:
-        COLON → 25
-        OPENING_PAREN → 26
-        ArgumentsOpt → 24
-      17:
-        NAME → 27
+        OPENING_PAREN → 24
+        VariableDefinitionsOpt → 23
+      15:
+        CLOSING_BRACE → 25
+        ELLIPSIS → 21
+        NAME → 13
+        ON → 14
+        Alias → 19
+        Field → 17
+        FragmentSpread → 20
+        InlineFragment → 22
+        Name → 18
+        Selection → 26
+      18:
+        COLON → 28
+        OPENING_PAREN → 29
+        ArgumentsOpt → 27
       19:
-        NAME → 28
-      20:
-        AT → 32
-        Directive → 31
-        DirectiveList → 30
-        DirectivesOpt → 29
+        NAME → 13
+        ON → 14
+        Name → 30
       21:
-        DOLLAR → 36
-        Variable → 35
-        VariableDefinition → 34
-        VariableDefinitionList → 33
+        NAME → 33
+        ON → 34
+        FragmentName → 31
+        TypeConditionOpt → 32
+      23:
+        AT → 38
+        Directive → 37
+        DirectiveList → 36
+        DirectivesOpt → 35
       24:
-        AT → 32
-        Directive → 31
-        DirectiveList → 30
-        DirectivesOpt → 37
-      26:
-        NAME → 40
-        Argument → 39
-        ArgumentList → 38
+        DOLLAR → 42
+        Variable → 41
+        VariableDefinition → 40
+        VariableDefinitionList → 39
       27:
-        OPENING_PAREN → 26
-        ArgumentsOpt → 41
-      28:
-        AT → 32
-        Directive → 31
-        DirectiveList → 30
-        DirectivesOpt → 42
+        AT → 38
+        Directive → 37
+        DirectiveList → 36
+        DirectivesOpt → 43
       29:
-        OPENING_BRACE → 9
-        SelectionSet → 43
+        NAME → 13
+        ON → 14
+        Argument → 45
+        ArgumentList → 44
+        Name → 46
       30:
-        AT → 32
-        Directive → 44
+        OPENING_PAREN → 29
+        ArgumentsOpt → 47
+      31:
+        AT → 38
+        Directive → 37
+        DirectiveList → 36
+        DirectivesOpt → 48
       32:
-        NAME → 45
-      33:
-        CLOSING_PAREN → 46
-        DOLLAR → 36
-        Variable → 35
-        VariableDefinition → 47
+        AT → 38
+        Directive → 37
+        DirectiveList → 36
+        DirectivesOpt → 49
+      34:
+        NAME → 13
+        ON → 14
+        Name → 51
+        NamedType → 50
       35:
-        COLON → 48
+        OPENING_BRACE → 9
+        SelectionSet → 52
       36:
-        NAME → 49
-      37:
-        OPENING_BRACE → 9
-        SelectionSet → 51
-        SelectionSetOpt → 50
+        AT → 38
+        Directive → 53
       38:
-        CLOSING_PAREN → 52
-        NAME → 40
-        Argument → 53
-      40:
-        COLON → 54
+        NAME → 13
+        ON → 14
+        Name → 54
+      39:
+        CLOSING_PAREN → 55
+        DOLLAR → 42
+        Variable → 41
+        VariableDefinition → 56
       41:
-        AT → 32
-        Directive → 31
-        DirectiveList → 30
-        DirectivesOpt → 55
-      45:
-        OPENING_PAREN → 26
-        ArgumentsOpt → 56
-      48:
-        NAME → 59
-        OPENING_BRACKET → 61
-        ListType → 60
-        NamedType → 58
-        NonNullType → 62
-        Type → 57
-      54:
-        BLOCK_STRING_VALUE → 69
-        DOLLAR → 36
-        NAME → 71
-        NUMBER → 66
-        OPENING_BRACE → 75
-        OPENING_BRACKET → 73
-        STRING_VALUE → 68
-        ListValue → 72
-        NamedValue → 70
-        NumberValue → 65
-        ObjectValue → 74
-        StringValue → 67
-        Value → 63
-        Variable → 64
-      55:
+        COLON → 57
+      42:
+        NAME → 13
+        ON → 14
+        Name → 58
+      43:
         OPENING_BRACE → 9
-        SelectionSet → 51
-        SelectionSetOpt → 76
+        SelectionSet → 60
+        SelectionSetOpt → 59
+      44:
+        CLOSING_PAREN → 61
+        NAME → 13
+        ON → 14
+        Argument → 62
+        Name → 46
+      46:
+        COLON → 63
+      47:
+        AT → 38
+        Directive → 37
+        DirectiveList → 36
+        DirectivesOpt → 64
+      49:
+        OPENING_BRACE → 9
+        SelectionSet → 65
+      54:
+        OPENING_PAREN → 29
+        ArgumentsOpt → 66
       57:
-        EQUALS → 78
-        DefaultValueOpt → 77
-      58:
-        BANG → 79
-      60:
-        BANG → 80
-      61:
-        NAME → 59
-        OPENING_BRACKET → 61
-        ListType → 60
-        NamedType → 58
-        NonNullType → 62
-        Type → 81
-      73:
-        BLOCK_STRING_VALUE → 69
-        CLOSING_BRACKET → 82
-        DOLLAR → 36
-        NAME → 71
-        NUMBER → 66
-        OPENING_BRACE → 75
-        OPENING_BRACKET → 73
-        STRING_VALUE → 68
-        ListValue → 72
-        ListValueList → 83
-        NamedValue → 70
-        NumberValue → 65
-        ObjectValue → 74
-        StringValue → 67
-        Value → 84
-        Variable → 64
-      75:
-        CLOSING_BRACE → 85
-        NAME → 88
-        ObjectField → 87
-        ObjectFieldList → 86
-      77:
-        AT → 92
-        DirectiveConst → 91
-        DirectiveConstList → 90
-        DirectivesConstOpt → 89
-      78:
-        BLOCK_STRING_VALUE → 69
-        NAME → 71
-        NUMBER → 66
-        OPENING_BRACE → 100
-        OPENING_BRACKET → 98
-        STRING_VALUE → 68
-        ListValueConst → 97
-        NamedValue → 96
-        NumberValue → 94
-        ObjectValueConst → 99
-        StringValue → 95
-        ValueConst → 93
-      81:
-        CLOSING_BRACKET → 101
-      83:
-        BLOCK_STRING_VALUE → 69
-        CLOSING_BRACKET → 102
-        DOLLAR → 36
-        NAME → 71
-        NUMBER → 66
-        OPENING_BRACE → 75
-        OPENING_BRACKET → 73
-        STRING_VALUE → 68
-        ListValue → 72
-        NamedValue → 70
-        NumberValue → 65
-        ObjectValue → 74
-        StringValue → 67
-        Value → 103
-        Variable → 64
+        NAME → 13
+        ON → 14
+        OPENING_BRACKET → 70
+        ListType → 69
+        Name → 51
+        NamedType → 68
+        NonNullType → 71
+        Type → 67
+      63:
+        BLOCK_STRING_VALUE → 78
+        DOLLAR → 42
+        NAME → 13
+        NUMBER → 75
+        ON → 14
+        OPENING_BRACE → 84
+        OPENING_BRACKET → 82
+        STRING_VALUE → 77
+        ListValue → 81
+        Name → 80
+        NamedValue → 79
+        NumberValue → 74
+        ObjectValue → 83
+        StringValue → 76
+        Value → 72
+        Variable → 73
+      64:
+        OPENING_BRACE → 9
+        SelectionSet → 60
+        SelectionSetOpt → 85
+      67:
+        EQUALS → 87
+        DefaultValueOpt → 86
+      68:
+        BANG → 88
+      69:
+        BANG → 89
+      70:
+        NAME → 13
+        ON → 14
+        OPENING_BRACKET → 70
+        ListType → 69
+        Name → 51
+        NamedType → 68
+        NonNullType → 71
+        Type → 90
+      82:
+        BLOCK_STRING_VALUE → 78
+        CLOSING_BRACKET → 91
+        DOLLAR → 42
+        NAME → 13
+        NUMBER → 75
+        ON → 14
+        OPENING_BRACE → 84
+        OPENING_BRACKET → 82
+        STRING_VALUE → 77
+        ListValue → 81
+        ListValueList → 92
+        Name → 80
+        NamedValue → 79
+        NumberValue → 74
+        ObjectValue → 83
+        StringValue → 76
+        Value → 93
+        Variable → 73
+      84:
+        CLOSING_BRACE → 94
+        NAME → 13
+        ON → 14
+        Name → 97
+        ObjectField → 96
+        ObjectFieldList → 95
       86:
-        CLOSING_BRACE → 104
-        NAME → 88
-        ObjectField → 105
-      88:
-        COLON → 106
+        AT → 101
+        DirectiveConst → 100
+        DirectiveConstList → 99
+        DirectivesConstOpt → 98
+      87:
+        BLOCK_STRING_VALUE → 78
+        NAME → 13
+        NUMBER → 75
+        ON → 14
+        OPENING_BRACE → 109
+        OPENING_BRACKET → 107
+        STRING_VALUE → 77
+        ListValueConst → 106
+        Name → 80
+        NamedValue → 105
+        NumberValue → 103
+        ObjectValueConst → 108
+        StringValue → 104
+        ValueConst → 102
       90:
-        AT → 92
-        DirectiveConst → 107
+        CLOSING_BRACKET → 110
       92:
-        NAME → 108
-      98:
-        BLOCK_STRING_VALUE → 69
-        CLOSING_BRACKET → 109
-        NAME → 71
-        NUMBER → 66
-        OPENING_BRACE → 100
-        OPENING_BRACKET → 98
-        STRING_VALUE → 68
-        ListValueConst → 97
-        ListValueConstList → 110
-        NamedValue → 96
-        NumberValue → 94
-        ObjectValueConst → 99
-        StringValue → 95
-        ValueConst → 111
-      100:
-        CLOSING_BRACE → 112
-        NAME → 115
-        ObjectFieldConst → 114
-        ObjectFieldConstList → 113
-      106:
-        BLOCK_STRING_VALUE → 69
-        DOLLAR → 36
-        NAME → 71
-        NUMBER → 66
-        OPENING_BRACE → 75
-        OPENING_BRACKET → 73
-        STRING_VALUE → 68
-        ListValue → 72
-        NamedValue → 70
-        NumberValue → 65
-        ObjectValue → 74
-        StringValue → 67
-        Value → 116
-        Variable → 64
-      108:
-        OPENING_PAREN → 118
-        ArgumentsConstOpt → 117
-      110:
-        BLOCK_STRING_VALUE → 69
-        CLOSING_BRACKET → 119
-        NAME → 71
-        NUMBER → 66
-        OPENING_BRACE → 100
-        OPENING_BRACKET → 98
-        STRING_VALUE → 68
-        ListValueConst → 97
-        NamedValue → 96
-        NumberValue → 94
-        ObjectValueConst → 99
-        StringValue → 95
+        BLOCK_STRING_VALUE → 78
+        CLOSING_BRACKET → 111
+        DOLLAR → 42
+        NAME → 13
+        NUMBER → 75
+        ON → 14
+        OPENING_BRACE → 84
+        OPENING_BRACKET → 82
+        STRING_VALUE → 77
+        ListValue → 81
+        Name → 80
+        NamedValue → 79
+        NumberValue → 74
+        ObjectValue → 83
+        StringValue → 76
+        Value → 112
+        Variable → 73
+      95:
+        CLOSING_BRACE → 113
+        NAME → 13
+        ON → 14
+        Name → 97
+        ObjectField → 114
+      97:
+        COLON → 115
+      99:
+        AT → 101
+        DirectiveConst → 116
+      101:
+        NAME → 13
+        ON → 14
+        Name → 117
+      107:
+        BLOCK_STRING_VALUE → 78
+        CLOSING_BRACKET → 118
+        NAME → 13
+        NUMBER → 75
+        ON → 14
+        OPENING_BRACE → 109
+        OPENING_BRACKET → 107
+        STRING_VALUE → 77
+        ListValueConst → 106
+        ListValueConstList → 119
+        Name → 80
+        NamedValue → 105
+        NumberValue → 103
+        ObjectValueConst → 108
+        StringValue → 104
         ValueConst → 120
-      113:
+      109:
         CLOSING_BRACE → 121
-        NAME → 115
-        ObjectFieldConst → 122
+        NAME → 13
+        ON → 14
+        Name → 124
+        ObjectFieldConst → 123
+        ObjectFieldConstList → 122
       115:
-        COLON → 123
-      118:
-        NAME → 126
-        ArgumentConst → 125
-        ArgumentConstList → 124
-      123:
-        BLOCK_STRING_VALUE → 69
-        NAME → 71
-        NUMBER → 66
-        OPENING_BRACE → 100
-        OPENING_BRACKET → 98
-        STRING_VALUE → 68
-        ListValueConst → 97
-        NamedValue → 96
-        NumberValue → 94
-        ObjectValueConst → 99
-        StringValue → 95
-        ValueConst → 127
+        BLOCK_STRING_VALUE → 78
+        DOLLAR → 42
+        NAME → 13
+        NUMBER → 75
+        ON → 14
+        OPENING_BRACE → 84
+        OPENING_BRACKET → 82
+        STRING_VALUE → 77
+        ListValue → 81
+        Name → 80
+        NamedValue → 79
+        NumberValue → 74
+        ObjectValue → 83
+        StringValue → 76
+        Value → 125
+        Variable → 73
+      117:
+        OPENING_PAREN → 127
+        ArgumentsConstOpt → 126
+      119:
+        BLOCK_STRING_VALUE → 78
+        CLOSING_BRACKET → 128
+        NAME → 13
+        NUMBER → 75
+        ON → 14
+        OPENING_BRACE → 109
+        OPENING_BRACKET → 107
+        STRING_VALUE → 77
+        ListValueConst → 106
+        Name → 80
+        NamedValue → 105
+        NumberValue → 103
+        ObjectValueConst → 108
+        StringValue → 104
+        ValueConst → 129
+      122:
+        CLOSING_BRACE → 130
+        NAME → 13
+        ON → 14
+        Name → 124
+        ObjectFieldConst → 131
       124:
-        CLOSING_PAREN → 128
-        NAME → 126
-        ArgumentConst → 129
-      126:
-        COLON → 130
-      130:
-        BLOCK_STRING_VALUE → 69
-        NAME → 71
-        NUMBER → 66
-        OPENING_BRACE → 100
-        OPENING_BRACKET → 98
-        STRING_VALUE → 68
-        ListValueConst → 97
-        NamedValue → 96
-        NumberValue → 94
-        ObjectValueConst → 99
-        StringValue → 95
-        ValueConst → 131"
+        COLON → 132
+      127:
+        NAME → 13
+        ON → 14
+        ArgumentConst → 134
+        ArgumentConstList → 133
+        Name → 135
+      132:
+        BLOCK_STRING_VALUE → 78
+        NAME → 13
+        NUMBER → 75
+        ON → 14
+        OPENING_BRACE → 109
+        OPENING_BRACKET → 107
+        STRING_VALUE → 77
+        ListValueConst → 106
+        Name → 80
+        NamedValue → 105
+        NumberValue → 103
+        ObjectValueConst → 108
+        StringValue → 104
+        ValueConst → 136
+      133:
+        CLOSING_PAREN → 137
+        NAME → 13
+        ON → 14
+        ArgumentConst → 138
+        Name → 135
+      135:
+        COLON → 139
+      139:
+        BLOCK_STRING_VALUE → 78
+        NAME → 13
+        NUMBER → 75
+        ON → 14
+        OPENING_BRACE → 109
+        OPENING_BRACKET → 107
+        STRING_VALUE → 77
+        ListValueConst → 106
+        Name → 80
+        NamedValue → 105
+        NumberValue → 103
+        ObjectValueConst → 108
+        StringValue → 104
+        ValueConst → 140"
     `);
   });
 });

@@ -10,6 +10,7 @@
 %token EQUALS
 %token NAME
 %token NUMBER
+%token ON
 %token OPENING_BRACE CLOSING_BRACE
 %token OPENING_BRACKET CLOSING_BRACKET
 %token OPENING_PAREN CLOSING_PAREN
@@ -65,8 +66,11 @@ OperationType → NAME {{
   }
 }}
 
-OperationNameOpt → NAME { $$ = $1.contents; }
+OperationNameOpt → Name { $$ = $1; }
 OperationNameOpt → ε { $$ = null; }
+
+Name → NAME { $$ = $1.contents; }
+Name → ON { $$ = null; }
 
 VariableDefinitionsOpt → OPENING_PAREN VariableDefinitionList CLOSING_PAREN {
   $$ = $2;
@@ -88,10 +92,10 @@ VariableDefinition → Variable COLON Type DefaultValueOpt DirectivesConstOpt {
   };
 }
 
-Variable → DOLLAR NAME {
+Variable → DOLLAR Name {
   $$ = {
     kind: 'VARIABLE',
-    name: $2.contents,
+    name: $2,
   };
 }
 
@@ -99,10 +103,10 @@ Type → NamedType { $$ = $1; }
 Type → ListType { $$ = $1; }
 Type → NonNullType { $$ = $1; }
 
-NamedType → NAME {
+NamedType → Name {
   $$ = {
     kind: 'NAMED_TYPE',
-    name: $1.contents,
+    name: $1,
   };
 }
 
@@ -148,16 +152,16 @@ NumberValue → NUMBER {{
 }}
 
 # BooleanValue, NullValue, EnumValue
-NamedValue → NAME {{
-  const {contents} = $1;
-  if (contents === 'true') {
+NamedValue → Name {{
+  const name = $1;
+  if (name === 'true') {
     $$ = {kind: 'BOOLEAN', value: true};
-  } else if (contents === 'false') {
+  } else if (name === 'false') {
     $$ = {kind: 'BOOLEAN', value: false};
-  } else if (contents === 'null') {
+  } else if (name === 'null') {
     $$ = {kind: 'NULL'};
   } else {
-    $$ = {kind: 'ENUM', value: contents};
+    $$ = {kind: 'ENUM', value: name};
   }
 }}
 
@@ -193,9 +197,9 @@ ObjectValueConst → OPENING_BRACE ObjectFieldConstList CLOSING_BRACE {
 ObjectFieldConstList → ObjectFieldConst { $$ = [$1]; }
 ObjectFieldConstList → ObjectFieldConstList ObjectFieldConst { $1.push($2); $$ = $1; }
 
-ObjectFieldConst → NAME COLON ValueConst {
+ObjectFieldConst → Name COLON ValueConst {
   $$ = {
-    name: $1.contents,
+    name: $1,
     value: $3,
   };
 }
@@ -206,11 +210,11 @@ DirectivesOpt → ε { $$ = null; }
 DirectiveList → Directive { $$ = [$1]; }
 DirectiveList → DirectiveList Directive { $1.push($2); $$ = $1; }
 
-Directive → AT NAME ArgumentsOpt {
+Directive → AT Name ArgumentsOpt {
   $$ = {
     kind: 'DIRECTIVE',
     arguments: $3,
-    name: $2.contents,
+    name: $2,
   };
 }
 
@@ -220,11 +224,11 @@ DirectivesConstOpt → ε { $$ = null; }
 DirectiveConstList → DirectiveConst { $$ = [$1]; }
 DirectiveConstList → DirectiveConstList DirectiveConst { $1.push($2); $$ = $1; }
 
-DirectiveConst → AT NAME ArgumentsConstOpt {
+DirectiveConst → AT Name ArgumentsConstOpt {
   $$ = {
     kind: 'DIRECTIVE',
     arguments: $3,
-    name: $2.contents,
+    name: $2,
   };
 }
 
@@ -238,29 +242,30 @@ SelectionList → SelectionList Selection { $1.push($2); $$ = $1; }
 
 Selection → Field { $$ = $1; }
 Selection → FragmentSpread { $$ = $1; }
+Selection → InlineFragment { $$ = $1; }
 
-Field → NAME ArgumentsOpt DirectivesOpt SelectionSetOpt {
+Field → Name ArgumentsOpt DirectivesOpt SelectionSetOpt {
   $$ = {
     kind: 'FIELD',
     alias: null,
     arguments: $2,
     directives: $3,
-    name: $1.contents,
+    name: $1,
     selections: $4,
   };
 }
-Field → Alias NAME ArgumentsOpt DirectivesOpt SelectionSetOpt {
+Field → Alias Name ArgumentsOpt DirectivesOpt SelectionSetOpt {
   $$ = {
     kind: 'FIELD',
     alias: $1,
     arguments: $3,
     directives: $4,
-    name: $2.contents,
+    name: $2,
     selections: $5,
   };
 }
 
-Alias → NAME COLON { $$ = $1.contents; }
+Alias → Name COLON { $$ = $1; }
 
 ArgumentsOpt → OPENING_PAREN ArgumentList CLOSING_PAREN { $$ = $2; }
 ArgumentsOpt → ε { $$ = null; }
@@ -268,10 +273,10 @@ ArgumentsOpt → ε { $$ = null; }
 ArgumentList → Argument { $$ = [$1]; }
 ArgumentList → ArgumentList Argument { $1.push($2); $$ = $1; }
 
-Argument → NAME COLON Value {
+Argument → Name COLON Value {
   $$ = {
     kind: 'ARGUMENT',
-    name: $1.contents,
+    name: $1,
     value: $3,
   };
 }
@@ -282,10 +287,10 @@ ArgumentsConstOpt → ε { $$ = null; }
 ArgumentConstList → ArgumentConst { $$ = [$1]; }
 ArgumentConstList → ArgumentConstList ArgumentConst { $1.push($2); $$ = $1; }
 
-ArgumentConst → NAME COLON ValueConst {
+ArgumentConst → Name COLON ValueConst {
   $$ = {
     kind: 'ARGUMENT',
-    name: $1.contents,
+    name: $1,
     value: $3,
   };
 }
@@ -346,15 +351,15 @@ ObjectValue → OPENING_BRACE ObjectFieldList CLOSING_BRACE {
 ObjectFieldList → ObjectField { $$ = [$1]; }
 ObjectFieldList → ObjectFieldList ObjectField { $1.push($2); $$ = $1; }
 
-ObjectField → NAME COLON Value {
+ObjectField → Name COLON Value {
   $$ = {
-    name: $1.contents,
+    name: $1,
     value: $3,
   };
 }
 
 # Shift/Reduce conflicts here due to use of NAME.
-FragmentDefinition → FragmentKeyword FragmentName OnKeyword NamedType DirectivesOpt SelectionSet {
+FragmentDefinition → FragmentKeyword FragmentName ON NamedType DirectivesOpt SelectionSet {
   $$ = {
     kind: 'FRAGMENT',
     directives: $5,
@@ -372,26 +377,24 @@ FragmentKeyword → NAME {
   $$ = null;
 }
 
-FragmentName → NAME {
-  const {contents} = $1;
-  if (contents === 'on') {
-    throw new Error('Invalid FragmentName "on"');
-  }
-  $$ = contents;
-}
+FragmentName → NAME { $$ = $1.contents; }
 
-OnKeyword → NAME {
-  const {contents} = $1;
-  if (contents !== 'on') {
-    throw new Error(`Expected "on" keyword, got: ${contents}`);
-  }
-  $$ = null;
-}
-
-FragmentSpread → ELLIPSIS NAME DirectivesOpt {
+FragmentSpread → ELLIPSIS FragmentName DirectivesOpt {
   $$ = {
     kind: 'FRAGMENT_SPREAD',
-    name: $2.contents,
+    name: $2,
     directives: $3,
   };
 }
+
+InlineFragment → ELLIPSIS TypeConditionOpt DirectivesOpt SelectionSet {
+  $$ = {
+    kind: 'INLINE_FRAGMENT',
+    directives: $3,
+    on: $2,
+    selections: $4,
+  };
+}
+
+TypeConditionOpt → ON NamedType { $$ = $2; }
+TypeConditionOpt → ε { $$ = null; }

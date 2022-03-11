@@ -100,11 +100,11 @@ describe('getFirstSets()', () => {
     expect('\n' + stringifySymbolSets(getFirstSets(grammar)))
       .toMatchInlineSnapshot(`
       "
-      Alias                  : {NAME}
-      Argument               : {NAME}
-      ArgumentConst          : {NAME}
-      ArgumentConstList      : {NAME}
-      ArgumentList           : {NAME}
+      Alias                  : {NAME, ON}
+      Argument               : {NAME, ON}
+      ArgumentConst          : {NAME, ON}
+      ArgumentConstList      : {NAME, ON}
+      ArgumentList           : {NAME, ON}
       ArgumentsConstOpt      : {OPENING_PAREN, null}
       ArgumentsOpt           : {OPENING_PAREN, null}
       DefaultValueOpt        : {EQUALS, null}
@@ -118,38 +118,40 @@ describe('getFirstSets()', () => {
       DirectivesOpt          : {AT, null}
       Document               : {NAME, OPENING_BRACE}
       ExecutableDefinition   : {NAME, OPENING_BRACE}
-      Field                  : {NAME}
+      Field                  : {NAME, ON}
       FragmentDefinition     : {NAME}
       FragmentKeyword        : {NAME}
       FragmentName           : {NAME}
       FragmentSpread         : {ELLIPSIS}
+      InlineFragment         : {ELLIPSIS}
       ListType               : {OPENING_BRACKET}
       ListValue              : {OPENING_BRACKET}
       ListValueConst         : {OPENING_BRACKET}
-      ListValueConstList     : {BLOCK_STRING_VALUE, NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET, STRING_VALUE}
-      ListValueList          : {BLOCK_STRING_VALUE, DOLLAR, NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET, STRING_VALUE}
-      NamedType              : {NAME}
-      NamedValue             : {NAME}
-      NonNullType            : {NAME, OPENING_BRACKET}
+      ListValueConstList     : {BLOCK_STRING_VALUE, NAME, NUMBER, ON, OPENING_BRACE, OPENING_BRACKET, STRING_VALUE}
+      ListValueList          : {BLOCK_STRING_VALUE, DOLLAR, NAME, NUMBER, ON, OPENING_BRACE, OPENING_BRACKET, STRING_VALUE}
+      Name                   : {NAME, ON}
+      NamedType              : {NAME, ON}
+      NamedValue             : {NAME, ON}
+      NonNullType            : {NAME, ON, OPENING_BRACKET}
       NumberValue            : {NUMBER}
-      ObjectField            : {NAME}
-      ObjectFieldConst       : {NAME}
-      ObjectFieldConstList   : {NAME}
-      ObjectFieldList        : {NAME}
+      ObjectField            : {NAME, ON}
+      ObjectFieldConst       : {NAME, ON}
+      ObjectFieldConstList   : {NAME, ON}
+      ObjectFieldList        : {NAME, ON}
       ObjectValue            : {OPENING_BRACE}
       ObjectValueConst       : {OPENING_BRACE}
-      OnKeyword              : {NAME}
       OperationDefinition    : {NAME, OPENING_BRACE}
-      OperationNameOpt       : {NAME, null}
+      OperationNameOpt       : {NAME, ON, null}
       OperationType          : {NAME}
-      Selection              : {ELLIPSIS, NAME}
-      SelectionList          : {ELLIPSIS, NAME}
+      Selection              : {ELLIPSIS, NAME, ON}
+      SelectionList          : {ELLIPSIS, NAME, ON}
       SelectionSet           : {OPENING_BRACE}
       SelectionSetOpt        : {OPENING_BRACE, null}
       StringValue            : {BLOCK_STRING_VALUE, STRING_VALUE}
-      Type                   : {NAME, OPENING_BRACKET}
-      Value                  : {BLOCK_STRING_VALUE, DOLLAR, NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET, STRING_VALUE}
-      ValueConst             : {BLOCK_STRING_VALUE, NAME, NUMBER, OPENING_BRACE, OPENING_BRACKET, STRING_VALUE}
+      Type                   : {NAME, ON, OPENING_BRACKET}
+      TypeConditionOpt       : {ON, null}
+      Value                  : {BLOCK_STRING_VALUE, DOLLAR, NAME, NUMBER, ON, OPENING_BRACE, OPENING_BRACKET, STRING_VALUE}
+      ValueConst             : {BLOCK_STRING_VALUE, NAME, NUMBER, ON, OPENING_BRACE, OPENING_BRACKET, STRING_VALUE}
       Variable               : {DOLLAR}
       VariableDefinition     : {DOLLAR}
       VariableDefinitionList : {DOLLAR}

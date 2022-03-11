@@ -20,6 +20,10 @@ describe('GraphQL parser', () => {
 
           ...BareFragment
           ...FragmentWithDirective @yo
+
+          ...on SomeType {
+            stuff
+          }
         }
 
         query NewQuery(
@@ -116,6 +120,24 @@ describe('GraphQL parser', () => {
                     kind: 'DIRECTIVE',
                     name: 'yo',
                     arguments: null,
+                  },
+                ],
+              },
+              {
+                kind: 'INLINE_FRAGMENT',
+                directives: null,
+                on: {
+                  kind: 'NAMED_TYPE',
+                  name: 'SomeType',
+                },
+                selections: [
+                  {
+                    kind: 'FIELD',
+                    arguments: null,
+                    alias: null,
+                    directives: null,
+                    name: 'stuff',
+                    selections: null,
                   },
                 ],
               },
