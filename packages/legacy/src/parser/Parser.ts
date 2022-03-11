@@ -1,6 +1,6 @@
 import skein from './skein';
 
-import type {Token} from '@masochist/legacy';
+import type {Token} from '..';
 
 /**
  * The type parameter `A` is the type of the AST nodes produced by the Grammar.

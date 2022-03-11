@@ -16,8 +16,13 @@
     "benchmark:dynamic:lexer": "node lib/benchmark-dynamic-lexer.js",
     "benchmark:reference:lexer": "node lib/benchmark-reference-lexer.js",
     "benchmark:static:lexer": "node lib/benchmark-static-lexer.js",
+    "benchmark:dynamic:parser": "node lib/benchmark-dynamic-parser.js",
+    "benchmark:reference:parser": "node lib/benchmark-reference-parser.js",
     "build": "cd ../.. && yarn build",
     "format": "cd ../.. && yarn format",
+    "inspect:dynamic:parser": "echo 'Go to chrome://inspect' && node --inspect-brk lib/benchmark-dynamic-parser.js",
+    "profile:dynamic:parser": "node --prof --no-logfile-per-isolate lib/benchmark-dynamic-parser.js && node --prof-process v8.log",
+    "profile:deopt:dynamic:parser": "node --trace-opt --trace-deopt lib/benchmark-dynamic-parser.js",
     "test": "cd ../.. && yarn test packages/benchmark"
   }
 }

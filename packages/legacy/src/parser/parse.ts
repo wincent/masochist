@@ -1,4 +1,4 @@
-import {Tokens, isIgnored, lex} from '@masochist/legacy';
+import {Tokens, isIgnored, lex} from '..';
 
 import Parser, {
   Grammar,

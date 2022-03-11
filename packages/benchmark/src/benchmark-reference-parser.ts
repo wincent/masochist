@@ -16,7 +16,7 @@ async function main() {
   process.chdir(scratch);
 
   const corpus = path.join(__dirname, '../../../support/source.graphql');
-  const script = path.join(__dirname, '../lib/benchmark.js');
+  const script = path.join(__dirname, '../lib/benchmark-dynamic-parser.js');
 
   try {
     await access(script, fs.constants.R_OK);
@@ -32,7 +32,7 @@ async function main() {
   const scriptSource = await readFile(script, 'utf8');
 
   const modifiedSource = scriptSource
-    .replace('require("./parse")', 'require("graphql").parse')
+    .replace("require('@masochist/legacy')", "require('graphql')")
     .replace('../../../support', '.');
 
   await writeFile('benchmark.js', modifiedSource);

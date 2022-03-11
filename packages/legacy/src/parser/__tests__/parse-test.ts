@@ -820,7 +820,7 @@ test.each([['source.graphql'], ['generated.graphql']])(
   'integration with %s',
   async (corpus) => {
     const source = await readFile(
-      path.join(__dirname, '../../../../support', corpus),
+      path.join(__dirname, '../../../../../support', corpus),
       'utf8',
     );
 

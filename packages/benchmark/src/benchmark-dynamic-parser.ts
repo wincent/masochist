@@ -3,7 +3,7 @@ import path from 'path';
 import {PerformanceObserver, performance} from 'perf_hooks';
 import {promisify} from 'util';
 
-import parse from './parse';
+import {parse} from '@masochist/legacy';
 
 const readFile = promisify(fs.readFile);
 
