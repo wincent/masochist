@@ -70,7 +70,7 @@ describe('build()', () => {
                   yield new Token('AT', tokenStart, i + 1, input);
                   tokenStart = i + 1;
                   state = START;
-                } else if (ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x6e || ch >= 0x70 && ch <= 0x7a) {
+                } else if (ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x65 || ch >= 0x67 && ch <= 0x6e || ch >= 0x70 && ch <= 0x7a) {
                   state = 18;
                 } else if (ch === 0x5b) {
                   yield new Token('OPENING_BRACKET', tokenStart, i + 1, input);
@@ -80,8 +80,10 @@ describe('build()', () => {
                   yield new Token('CLOSING_BRACKET', tokenStart, i + 1, input);
                   tokenStart = i + 1;
                   state = START;
-                } else if (ch === 0x6f) {
+                } else if (ch === 0x66) {
                   state = 21;
+                } else if (ch === 0x6f) {
+                  state = 22;
                 } else if (ch === 0x7b) {
                   yield new Token('OPENING_BRACE', tokenStart, i + 1, input);
                   tokenStart = i + 1;
@@ -125,11 +127,11 @@ describe('build()', () => {
                 break;
               case 5:
                 if (ch === 0x09 || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
-                  state = 25;
-                } else if (ch === 0x22) {
                   state = 26;
-                } else if (ch === 0x5c) {
+                } else if (ch === 0x22) {
                   state = 27;
+                } else if (ch === 0x5c) {
+                  state = 28;
                 } else {
                   state = REJECT;
                 }
@@ -155,16 +157,16 @@ describe('build()', () => {
                 break;
               case 12:
                 if (ch === 0x2e) {
-                  state = 28;
+                  state = 29;
                 } else {
                   state = REJECT;
                 }
                 break;
               case 13:
                 if (ch === 0x2e) {
-                  state = 29;
-                } else if (ch === 0x45 || ch === 0x65) {
                   state = 30;
+                } else if (ch === 0x45 || ch === 0x65) {
+                  state = 31;
                 } else {
                   yield new Token('NUMBER', tokenStart, i, input);
                   tokenStart = i;
@@ -176,9 +178,9 @@ describe('build()', () => {
                 if (ch >= 0x30 && ch <= 0x39) {
                   state = 14;
                 } else if (ch === 0x2e) {
-                  state = 29;
-                } else if (ch === 0x45 || ch === 0x65) {
                   state = 30;
+                } else if (ch === 0x45 || ch === 0x65) {
+                  state = 31;
                 } else {
                   yield new Token('NUMBER', tokenStart, i, input);
                   tokenStart = i;
@@ -197,10 +199,10 @@ describe('build()', () => {
                 }
                 break;
               case 21:
-                if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x6d || ch >= 0x6f && ch <= 0x7a) {
+                if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x71 || ch >= 0x73 && ch <= 0x7a) {
                   state = 18;
-                } else if (ch === 0x6e) {
-                  state = 31;
+                } else if (ch === 0x72) {
+                  state = 32;
                 } else {
                   yield new Token('NAME', tokenStart, i, input);
                   tokenStart = i;
@@ -208,11 +210,23 @@ describe('build()', () => {
                   continue loop;
                 }
                 break;
-              case 25:
+              case 22:
+                if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x6d || ch >= 0x6f && ch <= 0x7a) {
+                  state = 18;
+                } else if (ch === 0x6e) {
+                  state = 33;
+                } else {
+                  yield new Token('NAME', tokenStart, i, input);
+                  tokenStart = i;
+                  state = START;
+                  continue loop;
+                }
+                break;
+              case 26:
                 if (ch === 0x09 || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
-                  state = 25;
+                  state = 26;
                 } else if (ch === 0x5c) {
-                  state = 27;
+                  state = 28;
                 } else if (ch === 0x22) {
                   yield new Token('STRING_VALUE', tokenStart, i + 1, input);
                   tokenStart = i + 1;
@@ -221,9 +235,9 @@ describe('build()', () => {
                   state = REJECT;
                 }
                 break;
-              case 26:
+              case 27:
                 if (ch === 0x22) {
-                  state = 33;
+                  state = 35;
                 } else {
                   yield new Token('STRING_VALUE', tokenStart, i, input);
                   tokenStart = i;
@@ -231,18 +245,18 @@ describe('build()', () => {
                   continue loop;
                 }
                 break;
-              case 27:
+              case 28:
                 if (ch === 0x22 || ch === 0x2f || ch === 0x62 || ch === 0x66 || ch === 0x6e || ch === 0x72 || ch === 0x74) {
-                  state = 25;
+                  state = 26;
                 } else if (ch === 0x5c) {
-                  state = 34;
+                  state = 36;
                 } else if (ch === 0x75) {
-                  state = 35;
+                  state = 37;
                 } else {
                   state = REJECT;
                 }
                 break;
-              case 28:
+              case 29:
                 if (ch === 0x2e) {
                   yield new Token('ELLIPSIS', tokenStart, i + 1, input);
                   tokenStart = i + 1;
@@ -251,23 +265,35 @@ describe('build()', () => {
                   state = REJECT;
                 }
                 break;
-              case 29:
-                if (ch >= 0x30 && ch <= 0x39) {
-                  state = 37;
-                } else {
-                  state = REJECT;
-                }
-                break;
               case 30:
-                if (ch === 0x2b || ch === 0x2d) {
-                  state = 38;
-                } else if (ch >= 0x30 && ch <= 0x39) {
+                if (ch >= 0x30 && ch <= 0x39) {
                   state = 39;
                 } else {
                   state = REJECT;
                 }
                 break;
               case 31:
+                if (ch === 0x2b || ch === 0x2d) {
+                  state = 40;
+                } else if (ch >= 0x30 && ch <= 0x39) {
+                  state = 41;
+                } else {
+                  state = REJECT;
+                }
+                break;
+              case 32:
+                if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x62 && ch <= 0x7a) {
+                  state = 18;
+                } else if (ch === 0x61) {
+                  state = 42;
+                } else {
+                  yield new Token('NAME', tokenStart, i, input);
+                  tokenStart = i;
+                  state = START;
+                  continue loop;
+                }
+                break;
+              case 33:
                 if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x7a) {
                   state = 18;
                 } else {
@@ -277,56 +303,39 @@ describe('build()', () => {
                   continue loop;
                 }
                 break;
-              case 33:
-                if (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
-                  state = 33;
-                } else if (ch === 0x22) {
-                  state = 40;
-                } else if (ch === 0x5c) {
-                  state = 41;
-                } else {
-                  state = REJECT;
-                }
-                break;
-              case 34:
-                if (ch === 0x2f || ch === 0x62 || ch === 0x66 || ch === 0x6e || ch === 0x72 || ch === 0x74) {
-                  state = 25;
-                } else if (ch === 0x5c) {
-                  state = 34;
-                } else if (ch === 0x75) {
-                  state = 35;
-                } else {
-                  state = REJECT;
-                }
-                break;
               case 35:
-                if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x46 || ch >= 0x61 && ch <= 0x66) {
-                  state = 42;
+                if (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
+                  state = 35;
+                } else if (ch === 0x22) {
+                  state = 43;
+                } else if (ch === 0x5c) {
+                  state = 44;
+                } else {
+                  state = REJECT;
+                }
+                break;
+              case 36:
+                if (ch === 0x2f || ch === 0x62 || ch === 0x66 || ch === 0x6e || ch === 0x72 || ch === 0x74) {
+                  state = 26;
+                } else if (ch === 0x5c) {
+                  state = 36;
+                } else if (ch === 0x75) {
+                  state = 37;
                 } else {
                   state = REJECT;
                 }
                 break;
               case 37:
-                if (ch === 0x45 || ch === 0x65) {
-                  state = 30;
-                } else if (ch >= 0x30 && ch <= 0x39) {
-                  state = 37;
-                } else {
-                  yield new Token('NUMBER', tokenStart, i, input);
-                  tokenStart = i;
-                  state = START;
-                  continue loop;
-                }
-                break;
-              case 38:
-                if (ch >= 0x30 && ch <= 0x39) {
-                  state = 39;
+                if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x46 || ch >= 0x61 && ch <= 0x66) {
+                  state = 45;
                 } else {
                   state = REJECT;
                 }
                 break;
               case 39:
-                if (ch >= 0x30 && ch <= 0x39) {
+                if (ch === 0x45 || ch === 0x65) {
+                  state = 31;
+                } else if (ch >= 0x30 && ch <= 0x39) {
                   state = 39;
                 } else {
                   yield new Token('NUMBER', tokenStart, i, input);
@@ -336,39 +345,80 @@ describe('build()', () => {
                 }
                 break;
               case 40:
-                if (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
-                  state = 33;
-                } else if (ch === 0x5c) {
+                if (ch >= 0x30 && ch <= 0x39) {
                   state = 41;
-                } else if (ch === 0x22) {
-                  state = 43;
                 } else {
                   state = REJECT;
                 }
                 break;
               case 41:
-                if (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
-                  state = 33;
-                } else if (ch === 0x5c) {
+                if (ch >= 0x30 && ch <= 0x39) {
                   state = 41;
-                } else if (ch === 0x22) {
-                  state = 44;
                 } else {
-                  state = REJECT;
+                  yield new Token('NUMBER', tokenStart, i, input);
+                  tokenStart = i;
+                  state = START;
+                  continue loop;
                 }
                 break;
               case 42:
-                if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x46 || ch >= 0x61 && ch <= 0x66) {
-                  state = 45;
+                if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x66 || ch >= 0x68 && ch <= 0x7a) {
+                  state = 18;
+                } else if (ch === 0x67) {
+                  state = 46;
                 } else {
-                  state = REJECT;
+                  yield new Token('NAME', tokenStart, i, input);
+                  tokenStart = i;
+                  state = START;
+                  continue loop;
                 }
                 break;
               case 43:
                 if (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
-                  state = 33;
+                  state = 35;
                 } else if (ch === 0x5c) {
-                  state = 41;
+                  state = 44;
+                } else if (ch === 0x22) {
+                  state = 47;
+                } else {
+                  state = REJECT;
+                }
+                break;
+              case 44:
+                if (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
+                  state = 35;
+                } else if (ch === 0x5c) {
+                  state = 44;
+                } else if (ch === 0x22) {
+                  state = 48;
+                } else {
+                  state = REJECT;
+                }
+                break;
+              case 45:
+                if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x46 || ch >= 0x61 && ch <= 0x66) {
+                  state = 49;
+                } else {
+                  state = REJECT;
+                }
+                break;
+              case 46:
+                if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x6c || ch >= 0x6e && ch <= 0x7a) {
+                  state = 18;
+                } else if (ch === 0x6d) {
+                  state = 50;
+                } else {
+                  yield new Token('NAME', tokenStart, i, input);
+                  tokenStart = i;
+                  state = START;
+                  continue loop;
+                }
+                break;
+              case 47:
+                if (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
+                  state = 35;
+                } else if (ch === 0x5c) {
+                  state = 44;
                 } else if (ch === 0x22) {
                   yield new Token('BLOCK_STRING_VALUE', tokenStart, i + 1, input);
                   tokenStart = i + 1;
@@ -377,38 +427,84 @@ describe('build()', () => {
                   state = REJECT;
                 }
                 break;
-              case 44:
-                if (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
-                  state = 33;
-                } else if (ch === 0x5c) {
-                  state = 41;
-                } else if (ch === 0x22) {
-                  state = 47;
-                } else {
-                  state = REJECT;
-                }
-                break;
-              case 45:
-                if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x46 || ch >= 0x61 && ch <= 0x66) {
-                  state = 48;
-                } else {
-                  state = REJECT;
-                }
-                break;
-              case 47:
-                if (ch === 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
-                  state = 33;
-                } else if (ch === 0x5c) {
-                  state = 41;
-                } else {
-                  state = REJECT;
-                }
-                break;
               case 48:
-                if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x46 || ch >= 0x61 && ch <= 0x66) {
-                  state = 25;
+                if (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
+                  state = 35;
+                } else if (ch === 0x5c) {
+                  state = 44;
+                } else if (ch === 0x22) {
+                  state = 52;
                 } else {
                   state = REJECT;
+                }
+                break;
+              case 49:
+                if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x46 || ch >= 0x61 && ch <= 0x66) {
+                  state = 53;
+                } else {
+                  state = REJECT;
+                }
+                break;
+              case 50:
+                if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x64 || ch >= 0x66 && ch <= 0x7a) {
+                  state = 18;
+                } else if (ch === 0x65) {
+                  state = 54;
+                } else {
+                  yield new Token('NAME', tokenStart, i, input);
+                  tokenStart = i;
+                  state = START;
+                  continue loop;
+                }
+                break;
+              case 52:
+                if (ch === 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
+                  state = 35;
+                } else if (ch === 0x5c) {
+                  state = 44;
+                } else {
+                  state = REJECT;
+                }
+                break;
+              case 53:
+                if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x46 || ch >= 0x61 && ch <= 0x66) {
+                  state = 26;
+                } else {
+                  state = REJECT;
+                }
+                break;
+              case 54:
+                if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x6d || ch >= 0x6f && ch <= 0x7a) {
+                  state = 18;
+                } else if (ch === 0x6e) {
+                  state = 55;
+                } else {
+                  yield new Token('NAME', tokenStart, i, input);
+                  tokenStart = i;
+                  state = START;
+                  continue loop;
+                }
+                break;
+              case 55:
+                if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x73 || ch >= 0x75 && ch <= 0x7a) {
+                  state = 18;
+                } else if (ch === 0x74) {
+                  state = 56;
+                } else {
+                  yield new Token('NAME', tokenStart, i, input);
+                  tokenStart = i;
+                  state = START;
+                  continue loop;
+                }
+                break;
+              case 56:
+                if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x7a) {
+                  state = 18;
+                } else {
+                  yield new Token('FRAGMENT', tokenStart, i, input);
+                  tokenStart = i;
+                  state = START;
+                  continue loop;
                 }
                 break;
               case REJECT:

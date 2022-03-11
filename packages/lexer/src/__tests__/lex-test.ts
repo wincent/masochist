@@ -101,11 +101,11 @@ describe('lex()', () => {
     expect(tokens[2].contents).toBe('baz');
   });
 
-  it('lexes an ON token', () => {
+  it('lexes an FRAGMENT and ON tokens', () => {
     const input = 'fragment foo on bar';
     const tokens = [...lex(input)];
     expect(tokens).toEqual([
-      new Token('NAME', 0, 8, input),
+      new Token('FRAGMENT', 0, 8, input),
       new Token('NAME', 9, 12, input),
       new Token('ON', 13, 15, input),
       new Token('NAME', 16, 19, input),

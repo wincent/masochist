@@ -45,6 +45,7 @@ export const NAME = /[_a-z][_0-9a-z]*/i;
 // "subscription") and rule out invalid usages (eg. fragments cannot be named
 // "on" etc). Because we're using a bottom-up LR parser, we can't do that, and
 // instead need to emit distinct tokens.
+export const FRAGMENT = 'fragment';
 export const ON = 'on';
 
 // Basically:
@@ -225,6 +226,7 @@ export default union({
   //
   // Special NAME tokens (these appear first, so have precedence).
   //
+  FRAGMENT,
   ON,
 
   //
