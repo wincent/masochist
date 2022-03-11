@@ -1,6 +1,6 @@
-import {grammar} from '..';
 import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getItemSets from '../getItemSets';
+import {grammar} from '../parse';
 import stringifyGrammar from '../stringifyGrammar';
 import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
 

@@ -32,7 +32,7 @@ async function main() {
   const scriptSource = await readFile(script, 'utf8');
 
   const modifiedSource = scriptSource
-    .replace("require('@masochist/legacy')", "require('graphql')")
+    .replace(/require\((['"])@masochist\/legacy\1\)/, "require('graphql')")
     .replace('../../../support', '.');
 
   await writeFile('benchmark.js', modifiedSource);

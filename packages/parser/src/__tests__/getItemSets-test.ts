@@ -1,7 +1,7 @@
 import {dedent} from '@masochist/common';
 
-import {itemSets} from '..';
 import getItemSets from '../getItemSets';
+import {itemSets} from '../parse';
 import stringifyItemSets from '../stringifyItemSets';
 import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
 

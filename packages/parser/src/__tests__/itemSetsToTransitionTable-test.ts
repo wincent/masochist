@@ -1,6 +1,6 @@
-import {itemSets, grammar} from '..';
 import getItemSets from '../getItemSets';
 import itemSetsToTransitionTable from '../itemSetsToTransitionTable';
+import {itemSets, grammar} from '../parse';
 import stringifyTransitionTable from '../stringifyTransitionTable';
 import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
 

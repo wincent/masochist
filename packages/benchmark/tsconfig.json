@@ -8,6 +8,7 @@
   "references": [
     {"path": "../common"},
     {"path": "../legacy"},
-    {"path": "../lexer"}
+    {"path": "../lexer"},
+    {"path": "../parser"}
   ]
 }

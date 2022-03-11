@@ -34,7 +34,7 @@ async function main() {
 
   const modifiedSource = scriptSource
     .replace(
-      'require("@masochist/legacy")',
+      /require\((["'])@masochist\/legacy\1\)/,
       dedent`
         {
           lex(input) {

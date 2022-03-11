@@ -5,7 +5,8 @@
   "dependencies": {
     "@masochist/common": "*",
     "@masochist/legacy": "*",
-    "@masochist/lexer": "*"
+    "@masochist/lexer": "*",
+    "@masochist/parser": "*"
   },
   "main": "lib/index.js",
   "author": "Greg Hurrell <greg@hurrell.net>",
@@ -18,6 +19,7 @@
     "benchmark:static:lexer": "node lib/benchmark-static-lexer.js",
     "benchmark:dynamic:parser": "node lib/benchmark-dynamic-parser.js",
     "benchmark:reference:parser": "node lib/benchmark-reference-parser.js",
+    "benchmark:table:parser": "node lib/benchmark-table-parser.js",
     "build": "cd ../.. && yarn build",
     "format": "cd ../.. && yarn format",
     "inspect:dynamic:parser": "echo 'Go to chrome://inspect' && node --inspect-brk lib/benchmark-dynamic-parser.js",

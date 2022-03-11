@@ -1,9 +1,9 @@
 import {dedent} from '@masochist/common';
 
-import {grammar} from '..';
 import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getFirstSets from '../getFirstSets';
 import getItemSets from '../getItemSets';
+import {grammar} from '../parse';
 import stringifySymbolSets from '../stringifySymbolSets';
 import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
 

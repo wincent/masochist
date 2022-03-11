@@ -2,7 +2,7 @@ import lex from '@masochist/lexer';
 import {promises as fs} from 'fs';
 import path from 'path';
 
-import {table, grammar} from '..';
+import {table, grammar} from '../parse';
 import parseWithTable, {makeNode} from '../parseWithTable';
 
 import type {ParseTree} from '../parseWithTable';
