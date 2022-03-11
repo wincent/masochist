@@ -35,6 +35,10 @@ describe('GraphQL parser', () => {
         ) {
           hai(count: $count, factor: 20, sizes: [25, 50]) @something(times: $count)
         }
+
+        fragment BareFragment on Thing @fast {
+          contents
+        }
     `),
     ];
 
@@ -328,6 +332,31 @@ describe('GraphQL parser', () => {
               },
             ],
           },
+          {
+            kind: 'FRAGMENT',
+            name: 'BareFragment',
+            directives: [
+              {
+                kind: 'DIRECTIVE',
+                arguments: null,
+                name: 'fast',
+              },
+            ],
+            on: {
+              kind: 'NAMED_TYPE',
+              name: 'Thing',
+            },
+            selections: [
+              {
+                kind: 'FIELD',
+                alias: null,
+                arguments: null,
+                directives: null,
+                name: 'contents',
+                selections: null,
+              },
+            ],
+          },
         ],
       },
     );
@@ -341,9 +370,8 @@ describe('GraphQL parser', () => {
         'utf8',
       );
 
-      return; // TODO: implement fragment support, then uncomment:
-      // const tokens = [...lex(source)];
-      // expect(parseWithTable(table, tokens, grammar, makeNode)).toMatchSnapshot();
+      const tokens = [...lex(source)];
+      expect(parseWithTable(table, tokens, grammar, makeNode)).toMatchSnapshot();
     },
   );
 });

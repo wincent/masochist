@@ -8,6 +8,7 @@
 %token DOLLAR
 %token ELLIPSIS
 %token EQUALS
+%token FRAGMENT
 %token NAME
 %token NUMBER
 %token ON
@@ -27,8 +28,7 @@ DefinitionList → Definition { $$ = [$1]; }
 DefinitionList → DefinitionList Definition { $1.push($2); $$ = $1; }
 
 Definition → ExecutableDefinition { $$ = $1; }
-# TODO: can't enable this until we solve Shift/Reduce conflicts.
-# Definition → FragmentDefinition { $$ = $1; }
+Definition → FragmentDefinition { $$ = $1; }
 
 ExecutableDefinition → OperationDefinition { $$ = $1; }
 
@@ -70,6 +70,7 @@ OperationNameOpt → Name { $$ = $1; }
 OperationNameOpt → ε { $$ = null; }
 
 Name → NAME { $$ = $1.contents; }
+Name → FRAGMENT { $$ = null; }
 Name → ON { $$ = null; }
 
 VariableDefinitionsOpt → OPENING_PAREN VariableDefinitionList CLOSING_PAREN {
@@ -358,8 +359,7 @@ ObjectField → Name COLON Value {
   };
 }
 
-# Shift/Reduce conflicts here due to use of NAME.
-FragmentDefinition → FragmentKeyword FragmentName ON NamedType DirectivesOpt SelectionSet {
+FragmentDefinition → FRAGMENT FragmentName ON NamedType DirectivesOpt SelectionSet {
   $$ = {
     kind: 'FRAGMENT',
     directives: $5,
@@ -367,14 +367,6 @@ FragmentDefinition → FragmentKeyword FragmentName ON NamedType DirectivesOpt S
     on: $4,
     selections: $6,
   };
-}
-
-FragmentKeyword → NAME {
-  const {contents} = $1;
-  if (contents !== 'fragment') {
-    throw new Error(`Expected "fragment" keyword, got: ${contents}`);
-  }
-  $$ = null;
 }
 
 FragmentName → NAME { $$ = $1.contents; }

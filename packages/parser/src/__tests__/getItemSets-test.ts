@@ -186,6 +186,8 @@ describe('getItemSets()', () => {
         OperationType → · NAME
         OperationDefinition → · SelectionSet
         SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
+        Definition → · FragmentDefinition
+        FragmentDefinition → · FRAGMENT FragmentName ON NamedType DirectivesOpt SelectionSet
         DefinitionList → · DefinitionList Definition
 
       I1:
@@ -200,6 +202,8 @@ describe('getItemSets()', () => {
         OperationType → · NAME
         OperationDefinition → · SelectionSet
         SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
+        Definition → · FragmentDefinition
+        FragmentDefinition → · FRAGMENT FragmentName ON NamedType DirectivesOpt SelectionSet
 
       I3:
         DefinitionList → Definition ·
@@ -214,6 +218,7 @@ describe('getItemSets()', () => {
         OperationDefinition → OperationType · OperationNameOpt VariableDefinitionsOpt DirectivesOpt SelectionSet
         OperationNameOpt → · Name
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
         OperationNameOpt → ε ·
 
@@ -229,6 +234,7 @@ describe('getItemSets()', () => {
         Selection → · Field
         Field → · Name ArgumentsOpt DirectivesOpt SelectionSetOpt
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
         Field → · Alias Name ArgumentsOpt DirectivesOpt SelectionSetOpt
         Alias → · Name COLON
@@ -239,28 +245,39 @@ describe('getItemSets()', () => {
         SelectionList → · SelectionList Selection
 
       I10:
-        DefinitionList → DefinitionList Definition ·
+        Definition → FragmentDefinition ·
 
       I11:
+        FragmentDefinition → FRAGMENT · FragmentName ON NamedType DirectivesOpt SelectionSet
+        FragmentName → · NAME
+
+      I12:
+        DefinitionList → DefinitionList Definition ·
+
+      I13:
         OperationDefinition → OperationType OperationNameOpt · VariableDefinitionsOpt DirectivesOpt SelectionSet
         VariableDefinitionsOpt → · OPENING_PAREN VariableDefinitionList CLOSING_PAREN
         VariableDefinitionsOpt → ε ·
 
-      I12:
+      I14:
         OperationNameOpt → Name ·
 
-      I13:
+      I15:
         Name → NAME ·
 
-      I14:
+      I16:
+        Name → FRAGMENT ·
+
+      I17:
         Name → ON ·
 
-      I15:
+      I18:
         SelectionSet → OPENING_BRACE SelectionList · CLOSING_BRACE
         SelectionList → SelectionList · Selection
         Selection → · Field
         Field → · Name ArgumentsOpt DirectivesOpt SelectionSetOpt
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
         Field → · Alias Name ArgumentsOpt DirectivesOpt SelectionSetOpt
         Alias → · Name COLON
@@ -269,37 +286,44 @@ describe('getItemSets()', () => {
         Selection → · InlineFragment
         InlineFragment → · ELLIPSIS TypeConditionOpt DirectivesOpt SelectionSet
 
-      I16:
+      I19:
         SelectionList → Selection ·
 
-      I17:
+      I20:
         Selection → Field ·
 
-      I18:
+      I21:
         Field → Name · ArgumentsOpt DirectivesOpt SelectionSetOpt
         Alias → Name · COLON
         ArgumentsOpt → · OPENING_PAREN ArgumentList CLOSING_PAREN
         ArgumentsOpt → ε ·
 
-      I19:
+      I22:
         Field → Alias · Name ArgumentsOpt DirectivesOpt SelectionSetOpt
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
 
-      I20:
+      I23:
         Selection → FragmentSpread ·
 
-      I21:
+      I24:
         FragmentSpread → ELLIPSIS · FragmentName DirectivesOpt
         InlineFragment → ELLIPSIS · TypeConditionOpt DirectivesOpt SelectionSet
         FragmentName → · NAME
         TypeConditionOpt → · ON NamedType
         TypeConditionOpt → ε ·
 
-      I22:
+      I25:
         Selection → InlineFragment ·
 
-      I23:
+      I26:
+        FragmentDefinition → FRAGMENT FragmentName · ON NamedType DirectivesOpt SelectionSet
+
+      I27:
+        FragmentName → NAME ·
+
+      I28:
         OperationDefinition → OperationType OperationNameOpt VariableDefinitionsOpt · DirectivesOpt SelectionSet
         DirectivesOpt → · DirectiveList
         DirectiveList → · Directive
@@ -307,20 +331,20 @@ describe('getItemSets()', () => {
         DirectiveList → · DirectiveList Directive
         DirectivesOpt → ε ·
 
-      I24:
+      I29:
         VariableDefinitionsOpt → OPENING_PAREN · VariableDefinitionList CLOSING_PAREN
         VariableDefinitionList → · VariableDefinition
         VariableDefinition → · Variable COLON Type DefaultValueOpt DirectivesConstOpt
         Variable → · DOLLAR Name
         VariableDefinitionList → · VariableDefinitionList VariableDefinition
 
-      I25:
+      I30:
         SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE ·
 
-      I26:
+      I31:
         SelectionList → SelectionList Selection ·
 
-      I27:
+      I32:
         Field → Name ArgumentsOpt · DirectivesOpt SelectionSetOpt
         DirectivesOpt → · DirectiveList
         DirectiveList → · Directive
@@ -328,23 +352,24 @@ describe('getItemSets()', () => {
         DirectiveList → · DirectiveList Directive
         DirectivesOpt → ε ·
 
-      I28:
+      I33:
         Alias → Name COLON ·
 
-      I29:
+      I34:
         ArgumentsOpt → OPENING_PAREN · ArgumentList CLOSING_PAREN
         ArgumentList → · Argument
         Argument → · Name COLON Value
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
         ArgumentList → · ArgumentList Argument
 
-      I30:
+      I35:
         Field → Alias Name · ArgumentsOpt DirectivesOpt SelectionSetOpt
         ArgumentsOpt → · OPENING_PAREN ArgumentList CLOSING_PAREN
         ArgumentsOpt → ε ·
 
-      I31:
+      I36:
         FragmentSpread → ELLIPSIS FragmentName · DirectivesOpt
         DirectivesOpt → · DirectiveList
         DirectiveList → · Directive
@@ -352,7 +377,7 @@ describe('getItemSets()', () => {
         DirectiveList → · DirectiveList Directive
         DirectivesOpt → ε ·
 
-      I32:
+      I37:
         InlineFragment → ELLIPSIS TypeConditionOpt · DirectivesOpt SelectionSet
         DirectivesOpt → · DirectiveList
         DirectiveList → · Directive
@@ -360,69 +385,77 @@ describe('getItemSets()', () => {
         DirectiveList → · DirectiveList Directive
         DirectivesOpt → ε ·
 
-      I33:
-        FragmentName → NAME ·
-
-      I34:
+      I38:
         TypeConditionOpt → ON · NamedType
         NamedType → · Name
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
 
-      I35:
+      I39:
+        FragmentDefinition → FRAGMENT FragmentName ON · NamedType DirectivesOpt SelectionSet
+        NamedType → · Name
+        Name → · NAME
+        Name → · FRAGMENT
+        Name → · ON
+
+      I40:
         OperationDefinition → OperationType OperationNameOpt VariableDefinitionsOpt DirectivesOpt · SelectionSet
         SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
 
-      I36:
+      I41:
         DirectivesOpt → DirectiveList ·
         DirectiveList → DirectiveList · Directive
         Directive → · AT Name ArgumentsOpt
 
-      I37:
+      I42:
         DirectiveList → Directive ·
 
-      I38:
+      I43:
         Directive → AT · Name ArgumentsOpt
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
 
-      I39:
+      I44:
         VariableDefinitionsOpt → OPENING_PAREN VariableDefinitionList · CLOSING_PAREN
         VariableDefinitionList → VariableDefinitionList · VariableDefinition
         VariableDefinition → · Variable COLON Type DefaultValueOpt DirectivesConstOpt
         Variable → · DOLLAR Name
 
-      I40:
+      I45:
         VariableDefinitionList → VariableDefinition ·
 
-      I41:
+      I46:
         VariableDefinition → Variable · COLON Type DefaultValueOpt DirectivesConstOpt
 
-      I42:
+      I47:
         Variable → DOLLAR · Name
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
 
-      I43:
+      I48:
         Field → Name ArgumentsOpt DirectivesOpt · SelectionSetOpt
         SelectionSetOpt → · SelectionSet
         SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
         SelectionSetOpt → ε ·
 
-      I44:
+      I49:
         ArgumentsOpt → OPENING_PAREN ArgumentList · CLOSING_PAREN
         ArgumentList → ArgumentList · Argument
         Argument → · Name COLON Value
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
 
-      I45:
+      I50:
         ArgumentList → Argument ·
 
-      I46:
+      I51:
         Argument → Name · COLON Value
 
-      I47:
+      I52:
         Field → Alias Name ArgumentsOpt · DirectivesOpt SelectionSetOpt
         DirectivesOpt → · DirectiveList
         DirectiveList → · Directive
@@ -430,41 +463,50 @@ describe('getItemSets()', () => {
         DirectiveList → · DirectiveList Directive
         DirectivesOpt → ε ·
 
-      I48:
+      I53:
         FragmentSpread → ELLIPSIS FragmentName DirectivesOpt ·
 
-      I49:
+      I54:
         InlineFragment → ELLIPSIS TypeConditionOpt DirectivesOpt · SelectionSet
         SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
 
-      I50:
+      I55:
         TypeConditionOpt → ON NamedType ·
 
-      I51:
+      I56:
         NamedType → Name ·
 
-      I52:
+      I57:
+        FragmentDefinition → FRAGMENT FragmentName ON NamedType · DirectivesOpt SelectionSet
+        DirectivesOpt → · DirectiveList
+        DirectiveList → · Directive
+        Directive → · AT Name ArgumentsOpt
+        DirectiveList → · DirectiveList Directive
+        DirectivesOpt → ε ·
+
+      I58:
         OperationDefinition → OperationType OperationNameOpt VariableDefinitionsOpt DirectivesOpt SelectionSet ·
 
-      I53:
+      I59:
         DirectiveList → DirectiveList Directive ·
 
-      I54:
+      I60:
         Directive → AT Name · ArgumentsOpt
         ArgumentsOpt → · OPENING_PAREN ArgumentList CLOSING_PAREN
         ArgumentsOpt → ε ·
 
-      I55:
+      I61:
         VariableDefinitionsOpt → OPENING_PAREN VariableDefinitionList CLOSING_PAREN ·
 
-      I56:
+      I62:
         VariableDefinitionList → VariableDefinitionList VariableDefinition ·
 
-      I57:
+      I63:
         VariableDefinition → Variable COLON · Type DefaultValueOpt DirectivesConstOpt
         Type → · NamedType
         NamedType → · Name
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
         Type → · ListType
         ListType → · OPENING_BRACKET Type CLOSING_BRACKET
@@ -472,22 +514,22 @@ describe('getItemSets()', () => {
         NonNullType → · ListType BANG
         NonNullType → · NamedType BANG
 
-      I58:
+      I64:
         Variable → DOLLAR Name ·
 
-      I59:
+      I65:
         Field → Name ArgumentsOpt DirectivesOpt SelectionSetOpt ·
 
-      I60:
+      I66:
         SelectionSetOpt → SelectionSet ·
 
-      I61:
+      I67:
         ArgumentsOpt → OPENING_PAREN ArgumentList CLOSING_PAREN ·
 
-      I62:
+      I68:
         ArgumentList → ArgumentList Argument ·
 
-      I63:
+      I69:
         Argument → Name COLON · Value
         Value → · Variable
         Variable → · DOLLAR Name
@@ -499,6 +541,7 @@ describe('getItemSets()', () => {
         Value → · NamedValue
         NamedValue → · Name
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
         Value → · ListValue
         ListValue → · OPENING_BRACKET CLOSING_BRACKET
@@ -507,36 +550,41 @@ describe('getItemSets()', () => {
         ObjectValue → · OPENING_BRACE CLOSING_BRACE
         ObjectValue → · OPENING_BRACE ObjectFieldList CLOSING_BRACE
 
-      I64:
+      I70:
         Field → Alias Name ArgumentsOpt DirectivesOpt · SelectionSetOpt
         SelectionSetOpt → · SelectionSet
         SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
         SelectionSetOpt → ε ·
 
-      I65:
+      I71:
         InlineFragment → ELLIPSIS TypeConditionOpt DirectivesOpt SelectionSet ·
 
-      I66:
+      I72:
+        FragmentDefinition → FRAGMENT FragmentName ON NamedType DirectivesOpt · SelectionSet
+        SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
+
+      I73:
         Directive → AT Name ArgumentsOpt ·
 
-      I67:
+      I74:
         VariableDefinition → Variable COLON Type · DefaultValueOpt DirectivesConstOpt
         DefaultValueOpt → · EQUALS ValueConst
         DefaultValueOpt → ε ·
 
-      I68:
+      I75:
         Type → NamedType ·
         NonNullType → NamedType · BANG
 
-      I69:
+      I76:
         Type → ListType ·
         NonNullType → ListType · BANG
 
-      I70:
+      I77:
         ListType → OPENING_BRACKET · Type CLOSING_BRACKET
         Type → · NamedType
         NamedType → · Name
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
         Type → · ListType
         ListType → · OPENING_BRACKET Type CLOSING_BRACKET
@@ -544,40 +592,40 @@ describe('getItemSets()', () => {
         NonNullType → · ListType BANG
         NonNullType → · NamedType BANG
 
-      I71:
+      I78:
         Type → NonNullType ·
 
-      I72:
+      I79:
         Argument → Name COLON Value ·
 
-      I73:
+      I80:
         Value → Variable ·
 
-      I74:
+      I81:
         Value → NumberValue ·
 
-      I75:
+      I82:
         NumberValue → NUMBER ·
 
-      I76:
+      I83:
         Value → StringValue ·
 
-      I77:
+      I84:
         StringValue → STRING_VALUE ·
 
-      I78:
+      I85:
         StringValue → BLOCK_STRING_VALUE ·
 
-      I79:
+      I86:
         Value → NamedValue ·
 
-      I80:
+      I87:
         NamedValue → Name ·
 
-      I81:
+      I88:
         Value → ListValue ·
 
-      I82:
+      I89:
         ListValue → OPENING_BRACKET · CLOSING_BRACKET
         ListValue → OPENING_BRACKET · ListValueList CLOSING_BRACKET
         ListValueList → · Value
@@ -591,6 +639,7 @@ describe('getItemSets()', () => {
         Value → · NamedValue
         NamedValue → · Name
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
         Value → · ListValue
         ListValue → · OPENING_BRACKET CLOSING_BRACKET
@@ -600,22 +649,26 @@ describe('getItemSets()', () => {
         ObjectValue → · OPENING_BRACE ObjectFieldList CLOSING_BRACE
         ListValueList → · ListValueList Value
 
-      I83:
+      I90:
         Value → ObjectValue ·
 
-      I84:
+      I91:
         ObjectValue → OPENING_BRACE · CLOSING_BRACE
         ObjectValue → OPENING_BRACE · ObjectFieldList CLOSING_BRACE
         ObjectFieldList → · ObjectField
         ObjectField → · Name COLON Value
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
         ObjectFieldList → · ObjectFieldList ObjectField
 
-      I85:
+      I92:
         Field → Alias Name ArgumentsOpt DirectivesOpt SelectionSetOpt ·
 
-      I86:
+      I93:
+        FragmentDefinition → FRAGMENT FragmentName ON NamedType DirectivesOpt SelectionSet ·
+
+      I94:
         VariableDefinition → Variable COLON Type DefaultValueOpt · DirectivesConstOpt
         DirectivesConstOpt → · DirectiveConstList
         DirectiveConstList → · DirectiveConst
@@ -623,7 +676,7 @@ describe('getItemSets()', () => {
         DirectiveConstList → · DirectiveConstList DirectiveConst
         DirectivesConstOpt → ε ·
 
-      I87:
+      I95:
         DefaultValueOpt → EQUALS · ValueConst
         ValueConst → · NumberValue
         NumberValue → · NUMBER
@@ -633,6 +686,7 @@ describe('getItemSets()', () => {
         ValueConst → · NamedValue
         NamedValue → · Name
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
         ValueConst → · ListValueConst
         ListValueConst → · OPENING_BRACKET CLOSING_BRACKET
@@ -641,19 +695,19 @@ describe('getItemSets()', () => {
         ObjectValueConst → · OPENING_BRACE CLOSING_BRACE
         ObjectValueConst → · OPENING_BRACE ObjectFieldConstList CLOSING_BRACE
 
-      I88:
+      I96:
         NonNullType → NamedType BANG ·
 
-      I89:
+      I97:
         NonNullType → ListType BANG ·
 
-      I90:
+      I98:
         ListType → OPENING_BRACKET Type · CLOSING_BRACKET
 
-      I91:
+      I99:
         ListValue → OPENING_BRACKET CLOSING_BRACKET ·
 
-      I92:
+      I100:
         ListValue → OPENING_BRACKET ListValueList · CLOSING_BRACKET
         ListValueList → ListValueList · Value
         Value → · Variable
@@ -666,6 +720,7 @@ describe('getItemSets()', () => {
         Value → · NamedValue
         NamedValue → · Name
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
         Value → · ListValue
         ListValue → · OPENING_BRACKET CLOSING_BRACKET
@@ -674,57 +729,59 @@ describe('getItemSets()', () => {
         ObjectValue → · OPENING_BRACE CLOSING_BRACE
         ObjectValue → · OPENING_BRACE ObjectFieldList CLOSING_BRACE
 
-      I93:
+      I101:
         ListValueList → Value ·
 
-      I94:
+      I102:
         ObjectValue → OPENING_BRACE CLOSING_BRACE ·
 
-      I95:
+      I103:
         ObjectValue → OPENING_BRACE ObjectFieldList · CLOSING_BRACE
         ObjectFieldList → ObjectFieldList · ObjectField
         ObjectField → · Name COLON Value
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
 
-      I96:
+      I104:
         ObjectFieldList → ObjectField ·
 
-      I97:
+      I105:
         ObjectField → Name · COLON Value
 
-      I98:
+      I106:
         VariableDefinition → Variable COLON Type DefaultValueOpt DirectivesConstOpt ·
 
-      I99:
+      I107:
         DirectivesConstOpt → DirectiveConstList ·
         DirectiveConstList → DirectiveConstList · DirectiveConst
         DirectiveConst → · AT Name ArgumentsConstOpt
 
-      I100:
+      I108:
         DirectiveConstList → DirectiveConst ·
 
-      I101:
+      I109:
         DirectiveConst → AT · Name ArgumentsConstOpt
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
 
-      I102:
+      I110:
         DefaultValueOpt → EQUALS ValueConst ·
 
-      I103:
+      I111:
         ValueConst → NumberValue ·
 
-      I104:
+      I112:
         ValueConst → StringValue ·
 
-      I105:
+      I113:
         ValueConst → NamedValue ·
 
-      I106:
+      I114:
         ValueConst → ListValueConst ·
 
-      I107:
+      I115:
         ListValueConst → OPENING_BRACKET · CLOSING_BRACKET
         ListValueConst → OPENING_BRACKET · ListValueConstList CLOSING_BRACKET
         ListValueConstList → · ValueConst
@@ -736,6 +793,7 @@ describe('getItemSets()', () => {
         ValueConst → · NamedValue
         NamedValue → · Name
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
         ValueConst → · ListValueConst
         ListValueConst → · OPENING_BRACKET CLOSING_BRACKET
@@ -745,34 +803,35 @@ describe('getItemSets()', () => {
         ObjectValueConst → · OPENING_BRACE ObjectFieldConstList CLOSING_BRACE
         ListValueConstList → · ListValueConstList ValueConst
 
-      I108:
+      I116:
         ValueConst → ObjectValueConst ·
 
-      I109:
+      I117:
         ObjectValueConst → OPENING_BRACE · CLOSING_BRACE
         ObjectValueConst → OPENING_BRACE · ObjectFieldConstList CLOSING_BRACE
         ObjectFieldConstList → · ObjectFieldConst
         ObjectFieldConst → · Name COLON ValueConst
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
         ObjectFieldConstList → · ObjectFieldConstList ObjectFieldConst
 
-      I110:
+      I118:
         ListType → OPENING_BRACKET Type CLOSING_BRACKET ·
 
-      I111:
+      I119:
         ListValue → OPENING_BRACKET ListValueList CLOSING_BRACKET ·
 
-      I112:
+      I120:
         ListValueList → ListValueList Value ·
 
-      I113:
+      I121:
         ObjectValue → OPENING_BRACE ObjectFieldList CLOSING_BRACE ·
 
-      I114:
+      I122:
         ObjectFieldList → ObjectFieldList ObjectField ·
 
-      I115:
+      I123:
         ObjectField → Name COLON · Value
         Value → · Variable
         Variable → · DOLLAR Name
@@ -784,6 +843,7 @@ describe('getItemSets()', () => {
         Value → · NamedValue
         NamedValue → · Name
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
         Value → · ListValue
         ListValue → · OPENING_BRACKET CLOSING_BRACKET
@@ -792,18 +852,18 @@ describe('getItemSets()', () => {
         ObjectValue → · OPENING_BRACE CLOSING_BRACE
         ObjectValue → · OPENING_BRACE ObjectFieldList CLOSING_BRACE
 
-      I116:
+      I124:
         DirectiveConstList → DirectiveConstList DirectiveConst ·
 
-      I117:
+      I125:
         DirectiveConst → AT Name · ArgumentsConstOpt
         ArgumentsConstOpt → · OPENING_PAREN ArgumentConstList CLOSING_PAREN
         ArgumentsConstOpt → ε ·
 
-      I118:
+      I126:
         ListValueConst → OPENING_BRACKET CLOSING_BRACKET ·
 
-      I119:
+      I127:
         ListValueConst → OPENING_BRACKET ListValueConstList · CLOSING_BRACKET
         ListValueConstList → ListValueConstList · ValueConst
         ValueConst → · NumberValue
@@ -814,6 +874,7 @@ describe('getItemSets()', () => {
         ValueConst → · NamedValue
         NamedValue → · Name
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
         ValueConst → · ListValueConst
         ListValueConst → · OPENING_BRACKET CLOSING_BRACKET
@@ -822,52 +883,54 @@ describe('getItemSets()', () => {
         ObjectValueConst → · OPENING_BRACE CLOSING_BRACE
         ObjectValueConst → · OPENING_BRACE ObjectFieldConstList CLOSING_BRACE
 
-      I120:
+      I128:
         ListValueConstList → ValueConst ·
 
-      I121:
+      I129:
         ObjectValueConst → OPENING_BRACE CLOSING_BRACE ·
 
-      I122:
+      I130:
         ObjectValueConst → OPENING_BRACE ObjectFieldConstList · CLOSING_BRACE
         ObjectFieldConstList → ObjectFieldConstList · ObjectFieldConst
         ObjectFieldConst → · Name COLON ValueConst
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
 
-      I123:
+      I131:
         ObjectFieldConstList → ObjectFieldConst ·
 
-      I124:
+      I132:
         ObjectFieldConst → Name · COLON ValueConst
 
-      I125:
+      I133:
         ObjectField → Name COLON Value ·
 
-      I126:
+      I134:
         DirectiveConst → AT Name ArgumentsConstOpt ·
 
-      I127:
+      I135:
         ArgumentsConstOpt → OPENING_PAREN · ArgumentConstList CLOSING_PAREN
         ArgumentConstList → · ArgumentConst
         ArgumentConst → · Name COLON ValueConst
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
         ArgumentConstList → · ArgumentConstList ArgumentConst
 
-      I128:
+      I136:
         ListValueConst → OPENING_BRACKET ListValueConstList CLOSING_BRACKET ·
 
-      I129:
+      I137:
         ListValueConstList → ListValueConstList ValueConst ·
 
-      I130:
+      I138:
         ObjectValueConst → OPENING_BRACE ObjectFieldConstList CLOSING_BRACE ·
 
-      I131:
+      I139:
         ObjectFieldConstList → ObjectFieldConstList ObjectFieldConst ·
 
-      I132:
+      I140:
         ObjectFieldConst → Name COLON · ValueConst
         ValueConst → · NumberValue
         NumberValue → · NUMBER
@@ -877,6 +940,7 @@ describe('getItemSets()', () => {
         ValueConst → · NamedValue
         NamedValue → · Name
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
         ValueConst → · ListValueConst
         ListValueConst → · OPENING_BRACKET CLOSING_BRACKET
@@ -885,29 +949,30 @@ describe('getItemSets()', () => {
         ObjectValueConst → · OPENING_BRACE CLOSING_BRACE
         ObjectValueConst → · OPENING_BRACE ObjectFieldConstList CLOSING_BRACE
 
-      I133:
+      I141:
         ArgumentsConstOpt → OPENING_PAREN ArgumentConstList · CLOSING_PAREN
         ArgumentConstList → ArgumentConstList · ArgumentConst
         ArgumentConst → · Name COLON ValueConst
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
 
-      I134:
+      I142:
         ArgumentConstList → ArgumentConst ·
 
-      I135:
+      I143:
         ArgumentConst → Name · COLON ValueConst
 
-      I136:
+      I144:
         ObjectFieldConst → Name COLON ValueConst ·
 
-      I137:
+      I145:
         ArgumentsConstOpt → OPENING_PAREN ArgumentConstList CLOSING_PAREN ·
 
-      I138:
+      I146:
         ArgumentConstList → ArgumentConstList ArgumentConst ·
 
-      I139:
+      I147:
         ArgumentConst → Name COLON · ValueConst
         ValueConst → · NumberValue
         NumberValue → · NUMBER
@@ -917,6 +982,7 @@ describe('getItemSets()', () => {
         ValueConst → · NamedValue
         NamedValue → · Name
         Name → · NAME
+        Name → · FRAGMENT
         Name → · ON
         ValueConst → · ListValueConst
         ListValueConst → · OPENING_BRACKET CLOSING_BRACKET
@@ -925,7 +991,7 @@ describe('getItemSets()', () => {
         ObjectValueConst → · OPENING_BRACE CLOSING_BRACE
         ObjectValueConst → · OPENING_BRACE ObjectFieldConstList CLOSING_BRACE
 
-      I140:
+      I148:
         ArgumentConst → Name COLON ValueConst ·
       "
     `);
