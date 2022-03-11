@@ -1,4 +1,6 @@
 import lex from '@masochist/lexer';
+import {promises as fs} from 'fs';
+import path from 'path';
 
 import {table, grammar} from '..';
 import parseWithTable, {makeNode} from '../parseWithTable';
@@ -15,6 +17,9 @@ describe('GraphQL parser', () => {
           baz {
             qux @defer
           }
+
+          ...BareFragment
+          ...FragmentWithDirective @yo
         }
 
         query NewQuery(
@@ -95,6 +100,22 @@ describe('GraphQL parser', () => {
                     ],
                     name: 'qux',
                     selections: null,
+                  },
+                ],
+              },
+              {
+                kind: 'FRAGMENT_SPREAD',
+                name: 'BareFragment',
+                directives: null,
+              },
+              {
+                kind: 'FRAGMENT_SPREAD',
+                name: 'FragmentWithDirective',
+                directives: [
+                  {
+                    kind: 'DIRECTIVE',
+                    name: 'yo',
+                    arguments: null,
                   },
                 ],
               },
@@ -289,4 +310,18 @@ describe('GraphQL parser', () => {
       },
     );
   });
+
+  it.each([['source.graphql'], ['generated.graphql']])(
+    'parses the %s corpus',
+    async (corpus) => {
+      const source = await fs.readFile(
+        path.join(__dirname, '../../../../support', corpus),
+        'utf8',
+      );
+
+      return; // TODO: implement fragment support, then uncomment:
+      // const tokens = [...lex(source)];
+      // expect(parseWithTable(table, tokens, grammar, makeNode)).toMatchSnapshot();
+    },
+  );
 });

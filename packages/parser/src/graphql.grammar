@@ -26,6 +26,8 @@ DefinitionList → Definition { $$ = [$1]; }
 DefinitionList → DefinitionList Definition { $1.push($2); $$ = $1; }
 
 Definition → ExecutableDefinition { $$ = $1; }
+# TODO: can't enable this until we solve Shift/Reduce conflicts.
+# Definition → FragmentDefinition { $$ = $1; }
 
 ExecutableDefinition → OperationDefinition { $$ = $1; }
 
@@ -235,6 +237,7 @@ SelectionList → Selection { $$ = [$1]; }
 SelectionList → SelectionList Selection { $1.push($2); $$ = $1; }
 
 Selection → Field { $$ = $1; }
+Selection → FragmentSpread { $$ = $1; }
 
 Field → NAME ArgumentsOpt DirectivesOpt SelectionSetOpt {
   $$ = {
@@ -347,5 +350,48 @@ ObjectField → NAME COLON Value {
   $$ = {
     name: $1.contents,
     value: $3,
+  };
+}
+
+# Shift/Reduce conflicts here due to use of NAME.
+FragmentDefinition → FragmentKeyword FragmentName OnKeyword NamedType DirectivesOpt SelectionSet {
+  $$ = {
+    kind: 'FRAGMENT',
+    directives: $5,
+    name: $2,
+    on: $4,
+    selections: $6,
+  };
+}
+
+FragmentKeyword → NAME {
+  const {contents} = $1;
+  if (contents !== 'fragment') {
+    throw new Error(`Expected "fragment" keyword, got: ${contents}`);
+  }
+  $$ = null;
+}
+
+FragmentName → NAME {
+  const {contents} = $1;
+  if (contents === 'on') {
+    throw new Error('Invalid FragmentName "on"');
+  }
+  $$ = contents;
+}
+
+OnKeyword → NAME {
+  const {contents} = $1;
+  if (contents !== 'on') {
+    throw new Error(`Expected "on" keyword, got: ${contents}`);
+  }
+  $$ = null;
+}
+
+FragmentSpread → ELLIPSIS NAME DirectivesOpt {
+  $$ = {
+    kind: 'FRAGMENT_SPREAD',
+    name: $2.contents,
+    directives: $3,
   };
 }

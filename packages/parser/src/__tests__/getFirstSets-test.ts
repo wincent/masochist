@@ -119,6 +119,10 @@ describe('getFirstSets()', () => {
       Document               : {NAME, OPENING_BRACE}
       ExecutableDefinition   : {NAME, OPENING_BRACE}
       Field                  : {NAME}
+      FragmentDefinition     : {NAME}
+      FragmentKeyword        : {NAME}
+      FragmentName           : {NAME}
+      FragmentSpread         : {ELLIPSIS}
       ListType               : {OPENING_BRACKET}
       ListValue              : {OPENING_BRACKET}
       ListValueConst         : {OPENING_BRACKET}
@@ -134,11 +138,12 @@ describe('getFirstSets()', () => {
       ObjectFieldList        : {NAME}
       ObjectValue            : {OPENING_BRACE}
       ObjectValueConst       : {OPENING_BRACE}
+      OnKeyword              : {NAME}
       OperationDefinition    : {NAME, OPENING_BRACE}
       OperationNameOpt       : {NAME, null}
       OperationType          : {NAME}
-      Selection              : {NAME}
-      SelectionList          : {NAME}
+      Selection              : {ELLIPSIS, NAME}
+      SelectionList          : {ELLIPSIS, NAME}
       SelectionSet           : {OPENING_BRACE}
       SelectionSetOpt        : {OPENING_BRACE, null}
       StringValue            : {BLOCK_STRING_VALUE, STRING_VALUE}
