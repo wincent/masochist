@@ -32,7 +32,7 @@ export function makeNode(
 }
 
 function debugLog(...items: Array<unknown>) {
-  if (process.env.DEBUG) {
+  if (process.env['DEBUG']) {
     console.log(...items);
   }
 }
