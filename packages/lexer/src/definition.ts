@@ -37,6 +37,16 @@ export const INTEGER_PART = /-?(0|[1-9]\d*)/;
 export const LINE_TERMINATOR = /\n|\r\n|\r/;
 export const NAME = /[_a-z][_0-9a-z]*/i;
 
+//
+// Reserved NAME words.
+//
+// The reference implementation lexes all words as NAME, and then uses runtime
+// checks to distinguish between operation types (eg. "query", "mutation",
+// "subscription") and rule out invalid usages (eg. fragments cannot be named
+// "on" etc). Because we're using a bottom-up LR parser, we can't do that, and
+// instead need to emit distinct tokens.
+export const ON = 'on';
+
 // Basically:
 //
 // INTEGER_PART
@@ -211,6 +221,11 @@ export default union({
   OPENING_BRACE,
   OPENING_BRACKET,
   OPENING_PAREN,
+
+  //
+  // Special NAME tokens (these appear first, so have precedence).
+  //
+  ON,
 
   //
   // (Other) lexical tokens (2.1.6).

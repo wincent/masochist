@@ -101,6 +101,38 @@ describe('lex()', () => {
     expect(tokens[2].contents).toBe('baz');
   });
 
+  it('lexes an ON token', () => {
+    const input = 'fragment foo on bar';
+    const tokens = [...lex(input)];
+    expect(tokens).toEqual([
+      new Token('NAME', 0, 8, input),
+      new Token('NAME', 9, 12, input),
+      new Token('ON', 13, 15, input),
+      new Token('NAME', 16, 19, input),
+    ]);
+
+    // Note that token contents can be recovered.
+    expect(tokens[0].contents).toBe('fragment');
+    expect(tokens[1].contents).toBe('foo');
+    expect(tokens[2].contents).toBe('on');
+    expect(tokens[3].contents).toBe('bar');
+  });
+
+  it('lexes "on" when it is a substring inside a NAME token', () => {
+    const input = 'aaa_on on_bbb ccc_on_ddd';
+    const tokens = [...lex(input)];
+    expect(tokens).toEqual([
+      new Token('NAME', 0, 6, input),
+      new Token('NAME', 7, 13, input),
+      new Token('NAME', 14, 24, input),
+    ]);
+
+    // Note that token contents can be recovered.
+    expect(tokens[0].contents).toBe('aaa_on');
+    expect(tokens[1].contents).toBe('on_bbb');
+    expect(tokens[2].contents).toBe('ccc_on_ddd');
+  });
+
   it('survives a stress test', async () => {
     // TODO: make some useful assertions instead of just confirming that this
     // doesn't blow up

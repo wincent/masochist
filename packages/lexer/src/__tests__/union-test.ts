@@ -11,6 +11,7 @@ import {
   ELLIPSIS,
   EQUALS,
   NAME,
+  ON,
   OPENING_BRACE,
   OPENING_BRACKET,
   OPENING_PAREN,
@@ -113,5 +114,53 @@ describe('union()', () => {
         /* 17 */ new Set(['ELLIPSIS']),
       ],
     });
+  });
+
+  it('creates a machine that accepts NAME or ON', () => {
+    const table = union({ON, NAME});
+    expect(table).toEqual({
+      acceptStates: new Set([1, 2, 3]),
+      startStates: new Set([0]),
+      transitions: [
+        /* 0 */ new Map([
+          ['Range:A-Z', new Set([1])],
+          ['Atom:_', new Set([1])],
+          ['Range:a-n', new Set([1])],
+          ['Atom:o', new Set([2])],
+          ['Range:p-z', new Set([1])],
+        ]),
+        /* 1 */ new Map([
+          ['Range:0-9', new Set([1])],
+          ['Range:A-Z', new Set([1])],
+          ['Atom:_', new Set([1])],
+          ['Range:a-z', new Set([1])],
+        ]),
+        /* 2 */ new Map([
+          ['Range:0-9', new Set([1])],
+          ['Range:A-Z', new Set([1])],
+          ['Atom:_', new Set([1])],
+          ['Range:a-m', new Set([1])],
+          ['Atom:n', new Set([3])],
+          ['Range:o-z', new Set([1])],
+        ]),
+        /* 3 */ new Map([
+          ['Range:0-9', new Set([1])],
+          ['Range:A-Z', new Set([1])],
+          ['Atom:_', new Set([1])],
+          ['Range:a-z', new Set([1])],
+        ]),
+      ],
+      labels: [
+        /* 0 */ undefined,
+        /* 1 */ new Set(['NAME']),
+        /* 2 */ new Set(['NAME']),
+        /* 3 */ new Set(['ON', 'NAME']),
+      ],
+    });
+
+    // Note that we want to prefer the longest match, but in the event that an
+    // accept state could produce either token (eg. state 3), we'll favor the
+    // token that appeared first in the grammar.
+    expect(Array.from(table.labels?.[3]!)).toEqual(['ON', 'NAME']);
   });
 });
