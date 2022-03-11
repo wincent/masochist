@@ -1,3 +1,3 @@
-export {default as lex, Tokens, isIgnored} from './lex';
+export {default as lex, Tokens, isIgnored} from './lexer/lex';
 
-export type {Token} from './Lexer';
+export type {Token} from './lexer/Lexer';
