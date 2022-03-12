@@ -33,7 +33,7 @@ async function main() {
     }
   }
 
-  await run((source: string) => [...lex(source)]);
+  await run(lex);
 }
 
 function spawn(command: string, ...args: Array<string>) {

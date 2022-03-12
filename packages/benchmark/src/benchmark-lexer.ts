@@ -40,7 +40,7 @@ const BENCHMARK_ITERATIONS = parseInt(
 );
 const CORPUS_MULTIPLIER = parseInt(process.env['CORPUS_MULTIPLIER'] || '1', 10);
 
-export default async function run(lex: (source: string) => void) {
+export default async function run(lex: (source: string) => Generator) {
   const source = (await read('source.graphql')).repeat(CORPUS_MULTIPLIER);
 
   console.log(`Read ${source.length} bytes`); // Assuming ASCII.
@@ -60,7 +60,9 @@ export default async function run(lex: (source: string) => void) {
   // Warm-up.
   performance.mark('A');
   for (let i = 0; i < WARMUP_ITERATIONS; i++) {
-    lex(source);
+    for (const _token of lex(source)) {
+      // Insert "Parser-doing-something" here.
+    }
   }
   performance.mark('B');
   performance.measure('Warm-up', 'A', 'B');
@@ -69,7 +71,9 @@ export default async function run(lex: (source: string) => void) {
 
   performance.mark('C');
   for (let i = 0; i < BENCHMARK_ITERATIONS; i++) {
-    lex(source);
+    for (const _token of lex(source)) {
+      // Insert "Parser-doing-something" here.
+    }
   }
   performance.mark('D');
   performance.measure('Test', 'C', 'D');
