@@ -29,8 +29,19 @@ function tableize(data: {[key: string]: NodeJS.MemoryUsage}): any {
   return table;
 }
 
+const DEFAULT_ITERATIONS = process.env['DEFAULT_ITERATIONS'] || '100';
+const WARMUP_ITERATIONS = parseInt(
+  process.env['WARMUP_ITERATIONS'] || DEFAULT_ITERATIONS,
+  10,
+);
+const BENCHMARK_ITERATIONS = parseInt(
+  process.env['BENCHMARK_ITERATIONS'] || DEFAULT_ITERATIONS,
+  10,
+);
+const CORPUS_MULTIPLIER = parseInt(process.env['CORPUS_MULTIPLIER'] || '1', 10);
+
 export default async function run(lex: (source: string) => void) {
-  const source = await read('source.graphql');
+  const source = (await read('source.graphql')).repeat(CORPUS_MULTIPLIER);
 
   console.log(`Read ${source.length} bytes`); // Assuming ASCII.
 
@@ -44,12 +55,15 @@ export default async function run(lex: (source: string) => void) {
   });
   obs.observe({entryTypes: ['measure']});
 
-  lex(source);
+  // Warm-up.
+  for (let i = 0; i < WARMUP_ITERATIONS; i++) {
+    lex(source);
+  }
 
   memory['warmup'] = process.memoryUsage();
 
   performance.mark('A');
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < BENCHMARK_ITERATIONS; i++) {
     lex(source);
   }
   performance.mark('B');
