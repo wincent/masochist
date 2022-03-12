@@ -50,24 +50,29 @@ export default async function run(lex: (source: string) => void) {
   };
 
   const obs = new PerformanceObserver((items) => {
-    console.log(items.getEntries()[0].duration);
+    for (const measure of items.getEntries()) {
+      console.log(`${measure.name}: ${measure.duration}ms`);
+    }
     performance.clearMarks();
   });
   obs.observe({entryTypes: ['measure']});
 
   // Warm-up.
+  performance.mark('A');
   for (let i = 0; i < WARMUP_ITERATIONS; i++) {
     lex(source);
   }
+  performance.mark('B');
+  performance.measure('Warm-up', 'A', 'B');
 
   memory['warmup'] = process.memoryUsage();
 
-  performance.mark('A');
+  performance.mark('C');
   for (let i = 0; i < BENCHMARK_ITERATIONS; i++) {
     lex(source);
   }
-  performance.mark('B');
-  performance.measure('A to B', 'A', 'B');
+  performance.mark('D');
+  performance.measure('Test', 'C', 'D');
 
   memory['finish'] = process.memoryUsage();
 
