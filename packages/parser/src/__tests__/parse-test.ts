@@ -371,7 +371,9 @@ describe('GraphQL parser', () => {
       );
 
       const tokens = [...lex(source)];
-      expect(parseWithTable(table, tokens, grammar, makeNode)).toMatchSnapshot();
+      expect(
+        parseWithTable(table, tokens, grammar, makeNode),
+      ).toMatchSnapshot();
     },
   );
 });

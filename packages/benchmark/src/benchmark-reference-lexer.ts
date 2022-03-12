@@ -1,61 +1,39 @@
-import {dedent} from '@masochist/common';
 import {spawnSync} from 'child_process';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
 import {promisify} from 'util';
 
-const access = promisify(fs.access);
-const copyFile = promisify(fs.copyFile);
+import run from './benchmark-lexer';
+
 const mkdtemp = promisify(fs.mkdtemp);
-const readFile = promisify(fs.readFile);
-const writeFile = promisify(fs.writeFile);
 
 async function main() {
   const scratch = await mkdtemp(path.join(os.tmpdir(), 'bench-'));
 
   process.chdir(scratch);
 
-  const corpus = path.join(__dirname, '../../../support/source.graphql');
-  const script = path.join(__dirname, '../lib/benchmark-dynamic-lexer.js');
-
-  try {
-    await access(script, fs.constants.R_OK);
-  } catch (error) {
-    console.log(
-      `Unable to access ${script}; did you forget to run "yarn build"?`,
-    );
-    return;
-  }
-
-  await copyFile(corpus, 'source.graphql');
-
-  const scriptSource = await readFile(script, 'utf8');
-
-  const modifiedSource = scriptSource
-    .replace(
-      /require\((["'])@masochist\/legacy\1\)/,
-      dedent`
-        {
-          lex(input) {
-              const {Lexer, Source} = require("graphql");
-              const lexer = new Lexer(new Source(input));
-              while (true) {
-                  if (lexer.advance().kind === '<EOF>') {
-                      break;
-                  }
-              }
-              return [];
-          }
-        }`,
-    )
-    .replace('../../../support', '.');
-
-  await writeFile('benchmark.js', modifiedSource);
-
   spawn('yarn', 'init', '-y');
   spawn('yarn', 'add', 'graphql');
-  spawn('node', 'benchmark.js');
+
+  const {Lexer, Source} = require(path.join(
+    scratch,
+    'node_modules',
+    'graphql',
+  ));
+
+  function* lex(input: string) {
+    const lexer = new Lexer(new Source(input));
+    while (true) {
+      const token = lexer.advance();
+      if (token.kind === '<EOF>') {
+        break;
+      }
+      yield token;
+    }
+  }
+
+  await run((source: string) => [...lex(source)]);
 }
 
 function spawn(command: string, ...args: Array<string>) {

@@ -7,6 +7,6 @@ console.log(
     '\n' +
     '    yarn benchmark:dynamic:parser\n' +
     '    yarn benchmark:reference:parser\n' +
-    '    yarn benchmark:table:parser\n',
+    '    yarn benchmark:table:parser\n' +
     '    yarn benchmark:static:parser\n',
 );
