@@ -59,6 +59,7 @@ export default function parseWithTable<P>(
   let pointer = 0;
 
   const context = vm.createContext({$$: undefined});
+  const bindingsCache: {[code: string]: Array<number>} = {};
 
   while (pointer <= tokens.length) {
     const [, current] = stack[stack.length - 1];
@@ -101,19 +102,24 @@ export default function parseWithTable<P>(
       invariant(target);
       debugLog('Reduce:', lhs, target);
       if (code) {
-        // TODO: in a real implementation of this, would cache this instead of
-        // re-scanning it every time.
-        const scanner = new StringScanner(code);
-        while (!scanner.atEnd) {
-          scanner.scan(/[^$]+/);
-          if (scanner.scan('$')) {
-            const variable = scanner.scan(/\d+/);
-            if (variable) {
-              context[`$${variable}`] = popped[parseInt(variable, 10) - 1];
-            } else {
-              scanner.scan(/\$/);
+        if (!bindingsCache[code]) {
+          const variables = [];
+          const scanner = new StringScanner(code);
+          while (!scanner.atEnd) {
+            scanner.scan(/[^$]+/);
+            if (scanner.scan('$')) {
+              const variable = scanner.scan(/\d+/);
+              if (variable) {
+                variables.push(parseInt(variable, 10));
+              } else {
+                scanner.scan(/\$/);
+              }
             }
           }
+          bindingsCache[code] = variables;
+        }
+        for (const variable of bindingsCache[code]) {
+          context[`$${variable}`] = popped[variable - 1];
         }
         context['$$'] = undefined;
         vm.runInContext(code, context);
