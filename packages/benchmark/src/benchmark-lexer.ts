@@ -44,43 +44,14 @@ export default async function run(lex: (source: string) => void) {
   });
   obs.observe({entryTypes: ['measure']});
 
+  lex(source);
+
+  memory['warmup'] = process.memoryUsage();
+
   performance.mark('A');
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
-  lex(source);
+  for (let i = 0; i < 100; i++) {
+    lex(source);
+  }
   performance.mark('B');
   performance.measure('A to B', 'A', 'B');
 
