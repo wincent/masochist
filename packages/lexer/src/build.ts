@@ -62,11 +62,7 @@ export default function build(table: TransitionTable): Program {
     condition: ast.expression('i <= input.length'),
     block: [ast.statement('const ch = input.charCodeAt(i)')],
   };
-  statements.push({
-    kind: 'LabelStatement',
-    label: 'loop',
-    statement: whileStatement,
-  });
+  statements.push(whileStatement);
 
   const switchStatement: SwitchStatement = {
     kind: 'SwitchStatement',
@@ -139,7 +135,7 @@ export default function build(table: TransitionTable): Program {
           ast.comment('IGNORED token.'),
           ast.statement('tokenStart = i'),
           ast.statement('state = START'),
-          ast.continue('loop'),
+          ast.continue(),
         );
       } else if (isAccept) {
         switchCase.block.push(
@@ -158,7 +154,7 @@ export default function build(table: TransitionTable): Program {
           },
           ast.statement('tokenStart = i'),
           ast.statement('state = START'),
-          ast.continue('loop'),
+          ast.continue(),
         );
       } else {
         throw new Error('Dead state');
@@ -249,7 +245,7 @@ export default function build(table: TransitionTable): Program {
             ast.comment('IGNORED token.'),
             ast.statement('tokenStart = i'),
             ast.statement('state = START'),
-            ast.continue('loop'),
+            ast.continue(),
           ];
         } else if (isAccept) {
           ifStatement.alternate = [
@@ -268,7 +264,7 @@ export default function build(table: TransitionTable): Program {
             },
             ast.statement('tokenStart = i'),
             ast.statement('state = START'),
-            ast.continue('loop'),
+            ast.continue(),
           ];
         } else {
           ifStatement.alternate = [

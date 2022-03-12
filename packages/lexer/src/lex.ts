@@ -5,7 +5,7 @@ export default function *lex(input: string) {
   let state = START;
   let tokenStart = 0;
   let i = tokenStart;
-  loop: while (i <= input.length) {
+  while (i <= input.length) {
     const ch = input.charCodeAt(i);
     switch (state) {
       case START:
@@ -96,14 +96,14 @@ export default function *lex(input: string) {
           // IGNORED token.
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case 2:
         // IGNORED token.
         tokenStart = i;
         state = START;
-        continue loop;
+        continue;
       case 3:
         if (ch === 0x0a) {
           state = 2;
@@ -111,7 +111,7 @@ export default function *lex(input: string) {
           // IGNORED token.
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case 5:
@@ -132,7 +132,7 @@ export default function *lex(input: string) {
           // IGNORED token.
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case 11:
@@ -160,7 +160,7 @@ export default function *lex(input: string) {
           yield new Token('NUMBER', tokenStart, i, input);
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case 14:
@@ -174,7 +174,7 @@ export default function *lex(input: string) {
           yield new Token('NUMBER', tokenStart, i, input);
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case 18:
@@ -184,7 +184,7 @@ export default function *lex(input: string) {
           yield new Token('NAME', tokenStart, i, input);
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case 21:
@@ -196,7 +196,7 @@ export default function *lex(input: string) {
           yield new Token('NAME', tokenStart, i, input);
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case 22:
@@ -208,7 +208,7 @@ export default function *lex(input: string) {
           yield new Token('NAME', tokenStart, i, input);
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case 26:
@@ -231,7 +231,7 @@ export default function *lex(input: string) {
           yield new Token('STRING_VALUE', tokenStart, i, input);
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case 28:
@@ -279,7 +279,7 @@ export default function *lex(input: string) {
           yield new Token('NAME', tokenStart, i, input);
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case 33:
@@ -289,7 +289,7 @@ export default function *lex(input: string) {
           yield new Token('ON', tokenStart, i, input);
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case 35:
@@ -330,7 +330,7 @@ export default function *lex(input: string) {
           yield new Token('NUMBER', tokenStart, i, input);
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case 40:
@@ -347,7 +347,7 @@ export default function *lex(input: string) {
           yield new Token('NUMBER', tokenStart, i, input);
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case 42:
@@ -359,7 +359,7 @@ export default function *lex(input: string) {
           yield new Token('NAME', tokenStart, i, input);
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case 43:
@@ -400,7 +400,7 @@ export default function *lex(input: string) {
           yield new Token('NAME', tokenStart, i, input);
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case 47:
@@ -443,7 +443,7 @@ export default function *lex(input: string) {
           yield new Token('NAME', tokenStart, i, input);
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case 52:
@@ -471,7 +471,7 @@ export default function *lex(input: string) {
           yield new Token('NAME', tokenStart, i, input);
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case 55:
@@ -483,7 +483,7 @@ export default function *lex(input: string) {
           yield new Token('NAME', tokenStart, i, input);
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case 56:
@@ -493,7 +493,7 @@ export default function *lex(input: string) {
           yield new Token('FRAGMENT', tokenStart, i, input);
           tokenStart = i;
           state = START;
-          continue loop;
+          continue;
         }
         break;
       case REJECT:

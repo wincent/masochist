@@ -16,7 +16,7 @@ describe('build()', () => {
           let state = START;
           let tokenStart = 0;
           let i = tokenStart;
-          loop: while (i <= input.length) {
+          while (i <= input.length) {
             const ch = input.charCodeAt(i);
             switch (state) {
               case START:
@@ -107,14 +107,14 @@ describe('build()', () => {
                   // IGNORED token.
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case 2:
                 // IGNORED token.
                 tokenStart = i;
                 state = START;
-                continue loop;
+                continue;
               case 3:
                 if (ch === 0x0a) {
                   state = 2;
@@ -122,7 +122,7 @@ describe('build()', () => {
                   // IGNORED token.
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case 5:
@@ -143,7 +143,7 @@ describe('build()', () => {
                   // IGNORED token.
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case 11:
@@ -171,7 +171,7 @@ describe('build()', () => {
                   yield new Token('NUMBER', tokenStart, i, input);
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case 14:
@@ -185,7 +185,7 @@ describe('build()', () => {
                   yield new Token('NUMBER', tokenStart, i, input);
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case 18:
@@ -195,7 +195,7 @@ describe('build()', () => {
                   yield new Token('NAME', tokenStart, i, input);
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case 21:
@@ -207,7 +207,7 @@ describe('build()', () => {
                   yield new Token('NAME', tokenStart, i, input);
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case 22:
@@ -219,7 +219,7 @@ describe('build()', () => {
                   yield new Token('NAME', tokenStart, i, input);
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case 26:
@@ -242,7 +242,7 @@ describe('build()', () => {
                   yield new Token('STRING_VALUE', tokenStart, i, input);
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case 28:
@@ -290,7 +290,7 @@ describe('build()', () => {
                   yield new Token('NAME', tokenStart, i, input);
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case 33:
@@ -300,7 +300,7 @@ describe('build()', () => {
                   yield new Token('ON', tokenStart, i, input);
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case 35:
@@ -341,7 +341,7 @@ describe('build()', () => {
                   yield new Token('NUMBER', tokenStart, i, input);
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case 40:
@@ -358,7 +358,7 @@ describe('build()', () => {
                   yield new Token('NUMBER', tokenStart, i, input);
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case 42:
@@ -370,7 +370,7 @@ describe('build()', () => {
                   yield new Token('NAME', tokenStart, i, input);
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case 43:
@@ -411,7 +411,7 @@ describe('build()', () => {
                   yield new Token('NAME', tokenStart, i, input);
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case 47:
@@ -454,7 +454,7 @@ describe('build()', () => {
                   yield new Token('NAME', tokenStart, i, input);
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case 52:
@@ -482,7 +482,7 @@ describe('build()', () => {
                   yield new Token('NAME', tokenStart, i, input);
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case 55:
@@ -494,7 +494,7 @@ describe('build()', () => {
                   yield new Token('NAME', tokenStart, i, input);
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case 56:
@@ -504,7 +504,7 @@ describe('build()', () => {
                   yield new Token('FRAGMENT', tokenStart, i, input);
                   tokenStart = i;
                   state = START;
-                  continue loop;
+                  continue;
                 }
                 break;
               case REJECT:
