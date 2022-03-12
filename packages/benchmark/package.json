@@ -28,6 +28,7 @@
     "profile:deopt:reference:lexer": "node --trace-opt --trace-deopt lib/benchmark-reference-lexer.js",
     "profile:deopt:static:lexer": "node --trace-opt --trace-deopt lib/benchmark-static-lexer.js",
     "profile:dynamic:parser": "node --prof --no-logfile-per-isolate lib/benchmark-dynamic-parser.js && node --prof-process v8.log",
+    "profile:table:parser": "node --prof --no-logfile-per-isolate lib/benchmark-table-parser.js && node --prof-process v8.log",
     "profile:dynamic:lexer": "node --trace-warnings --prof --no-logfile-per-isolate lib/benchmark-dynamic-lexer.js && node --prof-process v8.log",
     "profile:reference:lexer": "node --prof --no-logfile-per-isolate lib/benchmark-reference-lexer.js && node --prof-process v8.log",
     "profile:static:lexer": "node --trace-warnings --prof --no-logfile-per-isolate lib/benchmark-static-lexer.js && node --prof-process v8.log",
