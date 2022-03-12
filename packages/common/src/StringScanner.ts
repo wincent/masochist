@@ -17,29 +17,29 @@ export function toAnchoredRegExp(regExp: RegExp | string): RegExp {
 }
 
 export default class StringScanner {
-  #description?: string;
-  #haystack: string;
-  #index: number;
-  #last: string | null;
-  #remaining: string;
+  _description?: string;
+  _haystack: string;
+  _index: number;
+  _last: string | null;
+  _remaining: string;
 
   constructor(haystack: string, description?: string) {
-    this.#description = description;
-    this.#haystack = haystack;
-    this.#index = 0;
-    this.#last = null;
-    this.#remaining = haystack;
+    this._description = description;
+    this._haystack = haystack;
+    this._index = 0;
+    this._last = null;
+    this._remaining = haystack;
   }
 
   get atEnd(): boolean {
-    return this.#remaining.length === 0;
+    return this._remaining.length === 0;
   }
 
   /**
    * For use in error reporting.
    */
   get description(): string {
-    return this.#description ?? 'input string';
+    return this._description ?? 'input string';
   }
 
   /**
@@ -60,11 +60,11 @@ export default class StringScanner {
   }
 
   get index(): number {
-    return this.#index;
+    return this._index;
   }
 
   get last(): string | null {
-    return this.#last;
+    return this._last;
   }
 
   /**
@@ -76,22 +76,22 @@ export default class StringScanner {
    * through the string incrementing counters.
    */
   get location(): [number, number] {
-    if (!this.#index) {
+    if (!this._index) {
       return [1, 1];
     }
 
     const startOfCurrentLine = Math.max(
-      this.#haystack.lastIndexOf('\n', this.#index - 1) + 1,
-      this.#haystack.lastIndexOf('\r', this.#index - 1) + 1,
+      this._haystack.lastIndexOf('\n', this._index - 1) + 1,
+      this._haystack.lastIndexOf('\r', this._index - 1) + 1,
     );
 
-    const column = this.#index - startOfCurrentLine + 1;
+    const column = this._index - startOfCurrentLine + 1;
 
     let line = 0;
     let index = 0;
 
-    this.#haystack.replace(/[^\r\n]*(?:\r?\n|$)/g, (match) => {
-      if (match && index <= this.#index) {
+    this._haystack.replace(/[^\r\n]*(?:\r?\n|$)/g, (match) => {
+      if (match && index <= this._index) {
         line++;
       }
 
@@ -104,7 +104,7 @@ export default class StringScanner {
   }
 
   get remaining(): string {
-    return this.#remaining;
+    return this._remaining;
   }
 
   /**
@@ -114,11 +114,11 @@ export default class StringScanner {
    * reporting pathways, so it is not made to be fast.
    */
   context(line: number, column: number): string {
-    if (this.#haystack === '') {
+    if (this._haystack === '') {
       return '';
     }
 
-    const lines = this.#haystack.split(/(?:\r?\n)/g);
+    const lines = this._haystack.split(/(?:\r?\n)/g);
     const start = Math.max(1, line - 2);
     const end = Math.min(lines.length, line + 3);
     const gutter = end.toString().length + 1;
@@ -152,22 +152,22 @@ export default class StringScanner {
   }
 
   peek(pattern: RegExp | string): boolean {
-    return toAnchoredRegExp(pattern).test(this.#remaining);
+    return toAnchoredRegExp(pattern).test(this._remaining);
   }
 
   scan(pattern: RegExp | string): string | null {
-    const match = this.#remaining.match(toAnchoredRegExp(pattern));
+    const match = this._remaining.match(toAnchoredRegExp(pattern));
 
     if (match) {
       const matchText = match[0];
 
-      this.#remaining = this.#remaining.slice(matchText.length);
-      this.#index += matchText.length;
-      this.#last = matchText;
+      this._remaining = this._remaining.slice(matchText.length);
+      this._index += matchText.length;
+      this._last = matchText;
     } else {
-      this.#last = null;
+      this._last = null;
     }
 
-    return this.#last;
+    return this._last;
   }
 }
