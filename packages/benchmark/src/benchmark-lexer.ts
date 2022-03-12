@@ -65,7 +65,7 @@ export default async function run(lex: (source: string) => void) {
   performance.mark('B');
   performance.measure('Warm-up', 'A', 'B');
 
-  memory['warmup'] = process.memoryUsage();
+  memory['warm-up'] = process.memoryUsage();
 
   performance.mark('C');
   for (let i = 0; i < BENCHMARK_ITERATIONS; i++) {
