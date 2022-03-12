@@ -40,6 +40,18 @@ const BENCHMARK_ITERATIONS = parseInt(
 );
 const CORPUS_MULTIPLIER = parseInt(process.env['CORPUS_MULTIPLIER'] || '1', 10);
 
+function test(
+  source: string,
+  lex: (source: string) => Generator,
+  times: number,
+) {
+  for (let i = 0; i < times; i++) {
+    for (const _token of lex(source)) {
+      // Parser would do something here.
+    }
+  }
+}
+
 export default async function run(lex: (source: string) => Generator) {
   const source = (await read('source.graphql')).repeat(CORPUS_MULTIPLIER);
 
@@ -59,22 +71,14 @@ export default async function run(lex: (source: string) => Generator) {
 
   // Warm-up.
   performance.mark('A');
-  for (let i = 0; i < WARMUP_ITERATIONS; i++) {
-    for (const _token of lex(source)) {
-      // Insert "Parser-doing-something" here.
-    }
-  }
+  test(source, lex, WARMUP_ITERATIONS);
   performance.mark('B');
   performance.measure('Warm-up', 'A', 'B');
 
   memory['warm-up'] = process.memoryUsage();
 
   performance.mark('C');
-  for (let i = 0; i < BENCHMARK_ITERATIONS; i++) {
-    for (const _token of lex(source)) {
-      // Insert "Parser-doing-something" here.
-    }
-  }
+  test(source, lex, BENCHMARK_ITERATIONS);
   performance.mark('D');
   performance.measure('Test', 'C', 'D');
 
