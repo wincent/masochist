@@ -28,8 +28,6 @@ import sortEdges from '../sortEdges';
 import stringifyTransitionTable from '../stringifyTransitionTable';
 import toTransitionTable from '../toTransitionTable';
 
-import keyToTransition from '../keyToTransition';
-
 import type {TransitionTable} from '../TransitionTable';
 
 describe('stringifyTransitionTable()', () => {
@@ -152,59 +150,6 @@ describe('stringifyTransitionTable()', () => {
   });
 
   it('stringifies the lexer transition table', () => {
-    // Demo purposes only; print out data structure for doing table-based
-    // lexing.
-    const out = [];
-    const tokens: Array<string> = [];
-    function getAcceptCode(token: string) {
-      const index = tokens.indexOf(token);
-      if (index === -1) {
-        tokens.push(token);
-        return -tokens.length;
-      } else {
-        return -(index + 1);
-      }
-    }
-    for (let i = 0; i < table.transitions.length; i++) {
-      const state: any = {};
-      if (table.acceptStates.has(i)) {
-        state.else = getAcceptCode(Array.from(table.labels![i]!)[0]);
-      }
-      for (const [on, target] of table.transitions[i].entries()) {
-        const targetNumber = Array.from(target)[0];
-        const t = keyToTransition(on);
-        if (t === null) {
-          throw new Error('Unexpected epsilon trans');
-        } else if (t.kind === 'Atom') {
-          state[t.value.charCodeAt(0)] = targetNumber;
-        } else if (t.kind === 'Range') {
-          const begin = t.from.charCodeAt(0);
-          const end = t.to.charCodeAt(0);
-          if (end === 0xffff) {
-            state.trailer = begin;
-            state.trailerAction = targetNumber;
-          } else {
-            for (let j = begin; j <= end; j++) {
-              state[j] = targetNumber;
-            }
-          }
-        } else if (t.kind === 'Anything') {
-          throw new Error('Unexpected "Anything" kind');
-        }
-      }
-      out.push(state);
-    }
-
-    // Dump table.
-    console.log(
-      '[\n' +
-        out.map((x, i) => `/* ${i} */` + JSON.stringify(x)).join(',\n') +
-        ']\n',
-    );
-
-    // Dump tokens.
-    console.log(JSON.stringify(tokens));
-
     expect(stringifyTransitionTable(table)).toMatchSnapshot();
   });
 });
