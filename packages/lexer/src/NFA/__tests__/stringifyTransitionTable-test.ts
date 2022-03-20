@@ -2,6 +2,7 @@ import {dedent} from '@masochist/common';
 
 import compileRegExp from '../../compileRegExp';
 import {
+  default as table,
   AMPERSAND,
   AT,
   BANG,
@@ -146,6 +147,10 @@ describe('stringifyTransitionTable()', () => {
         /* 17 */ new Set(['ELLIPSIS']),
       ],
     }`);
+  });
+
+  it('stringifies the lexer transition table', () => {
+    expect(stringifyTransitionTable(table)).toMatchSnapshot();
   });
 });
 
