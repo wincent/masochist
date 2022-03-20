@@ -1,4 +1,12 @@
-import type {Expression, Program, Statement, SwitchCase} from './ast';
+import type {
+  Expression,
+  FunctionExpression,
+  MethodDefinition,
+  Program,
+  PropertyDeclaration,
+  Statement,
+  SwitchCase,
+} from './ast';
 import quote from './quote';
 
 const TAB_WIDTH = 2;
@@ -58,13 +66,11 @@ function printExpression(expression: Expression, indent: number): string {
     return (
       'new ' +
       printExpression(expression.object, indent) +
-      (expression.arguments
-        ? '(' +
-          expression.arguments
-            .map((argument) => printExpression(argument, indent))
-            .join(', ') +
-          ')'
-        : '')
+      '(' +
+      expression.arguments
+        .map((argument) => printExpression(argument, indent))
+        .join(', ') +
+      ')'
     );
   } else if (expression.kind === 'NullValue') {
     return 'null';
@@ -130,8 +136,42 @@ function printExpression(expression: Expression, indent: number): string {
   throw new Error('printExpression(): Unreachable');
 }
 
+function printFunctionExpression(
+  expression: FunctionExpression,
+  indent: number,
+): string {
+  return (
+    '(' +
+    expression.arguments.join(', ') +
+    ') {\n' +
+    expression.body
+      .map((statement) => printStatement(statement, indent + 1))
+      .join('') +
+    printIndent(indent) +
+    '}\n'
+  );
+}
+
 function printIndent(indent: number): string {
   return ' '.repeat(indent * TAB_WIDTH);
+}
+
+function printMethodDefinition(
+  definition: MethodDefinition,
+  indent: number,
+): string {
+  return (
+    printIndent(indent) +
+    printExpression(definition.key, indent) +
+    printFunctionExpression(definition.value, indent)
+  );
+}
+
+function printPropertyDeclaration(
+  declaration: PropertyDeclaration,
+  indent: number,
+): string {
+  return printIndent(indent) + `${declaration.name}: ${declaration.type};`;
 }
 
 function printStatement(statement: Statement, indent: number): string {
@@ -151,12 +191,30 @@ function printStatement(statement: Statement, indent: number): string {
     } else {
       return printIndent(indent) + 'break;\n';
     }
+  } else if (statement.kind === 'ClassDeclaration') {
+    return (
+      printIndent(indent) +
+      `class ${statement.id} {\n` +
+      statement.body
+        .map((item) => {
+          if (item.kind === 'MethodDefinition') {
+            return printMethodDefinition(item, indent + 1);
+          } else if (item.kind === 'PropertyDeclaration') {
+            return printPropertyDeclaration(item, indent + 1);
+          }
+        })
+        .join('\n') +
+      printIndent(indent) +
+      '}\n'
+    );
   } else if (statement.kind === 'ContinueStatement') {
     if (statement.label) {
       return printIndent(indent) + `continue ${statement.label};\n`;
     } else {
       return printIndent(indent) + 'continue;\n';
     }
+  } else if (statement.kind === 'EmptyStatement') {
+    return printIndent(indent) + '/* Empty. */;\n';
   } else if (statement.kind === 'ExportDefaultDeclaration') {
     return (
       printIndent(indent) +
@@ -238,6 +296,17 @@ function printStatement(statement: Statement, indent: number): string {
     );
   } else if (statement.kind === 'LineComment') {
     return printIndent(indent) + '//' + statement.contents + '\n';
+  } else if (statement.kind === 'ReturnStatement') {
+    if (statement.expression) {
+      return (
+        printIndent(indent) +
+        'return ' +
+        printExpression(statement.expression, indent) +
+        ';\n'
+      );
+    } else {
+      return printIndent(indent) + 'return;\n';
+    }
   } else if (statement.kind === 'SwitchStatement') {
     return (
       printIndent(indent) +

@@ -25,15 +25,27 @@ describe('lex()', () => {
     // Remove `import Token from './Token'` statement.
     invariant(ast.statements.shift()?.kind === 'ImportStatement');
 
+    // Remove TS property declarations from Lexer class.
+    invariant(ast.statements[2]);
+    invariant(ast.statements[2].kind === 'ClassDeclaration');
+    invariant(ast.statements[2].body.shift()?.kind === 'PropertyDeclaration');
+    invariant(ast.statements[2].body.shift()?.kind === 'PropertyDeclaration');
+    invariant(ast.statements[2].body.shift()?.kind === 'PropertyDeclaration');
+    invariant(ast.statements[2].body.shift()?.kind === 'PropertyDeclaration');
+
+    // Remove TS type annotation from constructor method argument.
+    invariant(ast.statements[2].body[0].kind === 'MethodDefinition');
+    ast.statements[2].body[0].value.arguments = ['input'];
+
     // Hoist function out from `export default` declaration.
-    invariant(ast.statements[0]);
-    invariant(ast.statements[0].kind === 'ExportDefaultDeclaration');
-    invariant(ast.statements[0].declaration.kind === 'FunctionDeclaration');
-    invariant(ast.statements[0].declaration.name === '*lex');
-    ast.statements[0] = ast.statements[0].declaration;
+    invariant(ast.statements[3]);
+    invariant(ast.statements[3].kind === 'ExportDefaultDeclaration');
+    invariant(ast.statements[3].declaration.kind === 'FunctionDeclaration');
+    invariant(ast.statements[3].declaration.name === '*lex');
+    ast.statements[3] = ast.statements[3].declaration;
 
     // Remove TS type annotation from function argument.
-    ast.statements[0].arguments = ['input'];
+    ast.statements[3].arguments = ['input'];
 
     // Elaborate hack to run generated module.
     const code = print(ast);

@@ -9,6 +9,7 @@ type AssignmentStatement = {
   kind: 'AssignmentStatement';
   binding: 'const' | 'let' | 'var' | null;
   // Note: Could need to support destructuring etc in the future.
+  // TODO: support proper expressions here (eg. `this.foo` MemberExpression) in addition to just identifier
   lhs: string;
   rhs: Expression;
 };
@@ -47,6 +48,13 @@ type CallExpression = {
   arguments: Array<Expression>;
 };
 
+type ClassDeclaration = {
+  kind: 'ClassDeclaration';
+  id: string;
+  // TODO: add superclass, if I ever need it
+  body: Array<MethodDefinition | PropertyDeclaration>;
+};
+
 type Consequent = {
   kind: 'Consequent';
   condition: Expression;
@@ -56,6 +64,10 @@ type Consequent = {
 type ContinueStatement = {
   kind: 'ContinueStatement';
   label?: string;
+};
+
+type EmptyStatement = {
+  kind: 'EmptyStatement';
 };
 
 export type Expression =
@@ -83,6 +95,12 @@ type ExpressionStatement = {
 type FunctionDeclaration = {
   kind: 'FunctionDeclaration';
   name: string;
+  arguments: Array<string>;
+  body: Array<Statement>;
+};
+
+export type FunctionExpression = {
+  kind: 'FunctionExpression';
   arguments: Array<string>;
   body: Array<Statement>;
 };
@@ -150,10 +168,16 @@ type MemberExpression = {
   property: Expression;
 };
 
+export type MethodDefinition = {
+  kind: 'MethodDefinition';
+  key: Expression;
+  value: FunctionExpression;
+};
+
 type NewExpression = {
   kind: 'NewExpression';
   object: Expression;
-  arguments?: Array<Expression>;
+  arguments: Array<Expression>;
 };
 
 type NullValue = {
@@ -184,10 +208,23 @@ export type Program = {
   statements: Array<Statement>;
 };
 
+export type PropertyDeclaration = {
+  kind: 'PropertyDeclaration';
+  name: string;
+  type: string;
+};
+
+type ReturnStatement = {
+  kind: 'ReturnStatement';
+  expression?: Expression;
+};
+
 export type Statement =
   | AssignmentStatement
   | BreakStatement
+  | ClassDeclaration
   | ContinueStatement
+  | EmptyStatement
   | ExportDefaultDeclaration
   | ExpressionStatement
   | FunctionDeclaration
@@ -195,6 +232,7 @@ export type Statement =
   | ImportStatement
   | LabelStatement
   | LineComment
+  | ReturnStatement
   | SwitchStatement
   | ThrowStatement
   | WhileStatement;
@@ -290,10 +328,32 @@ const ast = {
     };
   },
 
+  call(
+    callee: Expression | string,
+    ...args: Array<Expression>
+  ): CallExpression {
+    return {
+      kind: 'CallExpression',
+      callee: typeof callee === 'string' ? ast.expression(callee) : callee,
+      arguments: args,
+    };
+  },
+
   comment(contents: string): LineComment {
     return {
       kind: 'LineComment',
       contents: ` ${contents}`,
+    };
+  },
+
+  class(
+    id: string,
+    body: Array<MethodDefinition | PropertyDeclaration>,
+  ): ClassDeclaration {
+    return {
+      kind: 'ClassDeclaration',
+      id,
+      body,
     };
   },
 
@@ -324,6 +384,11 @@ const ast = {
       const indexee = match[1];
       const index = match[2];
       return ast.index(ast.identifier(indexee), ast.identifier(index));
+    }
+
+    match = template.match(/^(\w+)\(\)$/);
+    if (match) {
+      return ast.call(match[1]);
     }
 
     match = template.match(/^(\S+)\s*(<|<=|>=|\+|===)\s*(.+?)\s*$/);
@@ -401,8 +466,32 @@ const ast = {
     return ast.assign('let', lhs, rhs);
   },
 
-  member(object: Expression, property: Expression): MemberExpression {
-    return {kind: 'MemberExpression', object, property};
+  member(
+    object: Expression | string,
+    property: Expression | string,
+  ): MemberExpression {
+    return {
+      kind: 'MemberExpression',
+      object: typeof object === 'string' ? ast.expression(object) : object,
+      property:
+        typeof property === 'string' ? ast.expression(property) : property,
+    };
+  },
+
+  method(
+    key: Expression | string,
+    args: Array<string>,
+    body: Array<Statement>,
+  ): MethodDefinition {
+    return {
+      kind: 'MethodDefinition',
+      key: typeof key === 'string' ? ast.expression(key) : key,
+      value: {
+        kind: 'FunctionExpression',
+        arguments: args,
+        body,
+      },
+    };
   },
 
   new(
@@ -412,17 +501,13 @@ const ast = {
     if (typeof object === 'string') {
       object = ast.identifier(object);
     }
-    if (args.length) {
-      return {
-        kind: 'NewExpression',
-        object,
-        arguments: args.map((arg) => {
-          return typeof arg === 'string' ? ast.expression(arg) : arg;
-        }),
-      };
-    } else {
-      return {kind: 'NewExpression', object};
-    }
+    return {
+      kind: 'NewExpression',
+      object,
+      arguments: args.map((arg) => {
+        return typeof arg === 'string' ? ast.expression(arg) : arg;
+      }),
+    };
   },
 
   number(value: number): NumberValue {
@@ -433,6 +518,14 @@ const ast = {
     return {
       kind: 'ObjectValue',
       entries: Object.entries(entries),
+    };
+  },
+
+  propertyDeclaration(name: string, type: string): PropertyDeclaration {
+    return {
+      kind: 'PropertyDeclaration',
+      name,
+      type,
     };
   },
 
@@ -447,7 +540,20 @@ const ast = {
       }
     }
 
-    match = template.match(/^(\w+)(\+\+)$/);
+    match = template.match(/^return(?:\s+(\w+))?$/);
+    if (match) {
+      const expression = match[1];
+      if (expression) {
+        return {
+          kind: 'ReturnStatement',
+          expression: ast.expression(expression),
+        };
+      } else {
+        return {kind: 'ReturnStatement'};
+      }
+    }
+
+    match = template.match(/^([\w.]+)(\+\+)$/);
     if (match) {
       const name = match[1];
       const operator = match[2];
@@ -459,6 +565,18 @@ const ast = {
           operator,
           operand: {kind: 'Identifier', name},
         },
+      };
+    }
+
+    match = template.match(/^(this\.\w+)\s*=\s*(.+?)\s*$/);
+    if (match) {
+      const lhs = match[1];
+      const rhs = ast.expression(match[2]);
+      return {
+        kind: 'AssignmentStatement',
+        binding: null,
+        lhs,
+        rhs,
       };
     }
 
@@ -481,7 +599,7 @@ const ast = {
         rhs,
       };
     }
-    throw new Error('Not implemented');
+    throw new Error(`Not implemented: ${template}`);
   },
 
   string(value: string): StringValue {
@@ -492,12 +610,23 @@ const ast = {
     return ast.assign('var', lhs, rhs);
   },
 
-  yield(expression: Expression): ExpressionStatement {
+  while(condition: Expression, block: Array<Statement>): WhileStatement {
+    return {
+      kind: 'WhileStatement',
+      condition,
+      block,
+    };
+  },
+
+  yield(expression: Expression | string): ExpressionStatement {
     return {
       kind: 'ExpressionStatement',
       expression: {
         kind: 'YieldExpression',
-        expression,
+        expression:
+          typeof expression === 'string'
+            ? ast.expression(expression)
+            : expression,
       },
     };
   },
@@ -506,12 +635,20 @@ const ast = {
     return {kind: 'BreakStatement'};
   },
 
+  get empty(): EmptyStatement {
+    return {kind: 'EmptyStatement'};
+  },
+
   get false(): BooleanValue {
     return {kind: 'BooleanValue', value: false};
   },
 
   get true(): BooleanValue {
     return {kind: 'BooleanValue', value: true};
+  },
+
+  get return(): ReturnStatement {
+    return {kind: 'ReturnStatement'};
   },
 } as const;
 
