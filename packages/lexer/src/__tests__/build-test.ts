@@ -17,7 +17,7 @@ describe('build()', () => {
           let tokenStart = 0;
           let i = tokenStart;
           while (i <= input.length) {
-            const ch = input.charCodeAt(i);
+            const ch = i < input.length ? input.charCodeAt(i) : -1;
             switch (state) {
               case START:
                 if (ch === 0x09 || ch === 0x20) {

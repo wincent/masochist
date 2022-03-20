@@ -60,7 +60,7 @@ export default function build(table: TransitionTable): Program {
   const whileStatement: WhileStatement = {
     kind: 'WhileStatement',
     condition: ast.expression('i <= input.length'),
-    block: [ast.statement('const ch = input.charCodeAt(i)')],
+    block: [ast.statement('const ch = i < input.length ? input.charCodeAt(i) : -1')],
   };
   statements.push(whileStatement);
 
