@@ -1751,7 +1751,7 @@
               based audio companion.
             </li>
             <li>
-              <a href="http://hextrapolate.wincent.com">Hextrapolate</a>:
+              <a href="https://hex.wincent.com">Hextrapolate</a>:
               Programmers number conversion tool.
             </li>
           </ul>

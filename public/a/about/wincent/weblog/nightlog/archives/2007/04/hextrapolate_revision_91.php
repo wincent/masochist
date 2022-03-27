@@ -699,8 +699,8 @@
           </li>
           <li>
             <em>Product info</em>:
-            <a href="http://hextrapolate.wincent.com/"
-              >http://hextrapolate.wincent.com/</a
+            <a href="https://hex.wincent.com/"
+              >https://hex.wincent.com/</a
             >
           </li>
         </ul>
