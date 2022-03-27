@@ -1,6 +1,7 @@
 ---
 tags: site wiki
 cache_breaker: 1
+title: Migration status (2010)
 ---
 
 This page is a migration checksheet where I am keeping notes on the status of the server move from [INetU](/wiki/INetU) to [AWS](/wiki/AWS). It is based on the similar page that I made two years ago for the [Rackspace](/wiki/Rackspace)-to-[INetU](/wiki/INetU) migration ("[Migration status (2008)](/wiki/Migration_status_%282008%29)").
@@ -93,7 +94,6 @@ Formerly dynamic parts of the site which either have been migrated over to the n
 -   <http://colaiuta.net/> -&gt; <http://wincent.com/a/about/wincent/weblog/>
 -   <http://www.colaiuta.net/> -&gt; <http://wincent.com/a/about/wincent/weblog/>
 -   <http://forums.wincent.com/> -&gt; <https://wincent.com/forums/>
--   <http://hextrapolate.wincent.com/> -&gt; <http://wincent.com/a/products/hextrapolate/>
 -   <http://winhex.wincent.com/> -&gt; <http://wincent.com/a/products/hextrapolate/>
 -   <http://install.wincent.com/> -&gt; <http://wincent.com/a/products/install/>
 -   <http://lists.wincent.com/> -&gt; <http://wincent.com/a/support/lists/>

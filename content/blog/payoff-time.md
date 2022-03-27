@@ -11,7 +11,7 @@ Walrus is essentially a compiler that reads files written in a special templatin
 
 ## The output
 
-It's been very gratifying over the last few days to see it finally come to the point where I can start leveraging it for use in my own applications. [Click here for a screenshot](http://www.wincent.com/a/about/wincent/weblog/hextrapolate_help_screenshot.png) of the help pages for [Hextrapolate](http://hextrapolate.wincent.com).
+It's been very gratifying over the last few days to see it finally come to the point where I can start leveraging it for use in my own applications. [Click here for a screenshot](http://www.wincent.com/a/about/wincent/weblog/hextrapolate_help_screenshot.png) of the help pages for [Hextrapolate](https://hex.wincent.com).
 
 I want the documentation to look beautiful to the user, so the style sheets are based on the current Apple look and feel in [Tiger](http://www.wincent.com/knowledge-base/Tiger). But I want the [HTML](http://www.wincent.com/knowledge-base/HTML) source to look beautiful as well; this is achieved principally through careful design of the [HTML](http://www.wincent.com/knowledge-base/HTML)/[CSS](http://www.wincent.com/knowledge-base/CSS) to minimize the amount of clutter in the markup, and then by cleaning up the whitespace using [Tidy](http://www.wincent.com/knowledge-base/Tidy):
 

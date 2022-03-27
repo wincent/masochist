@@ -25,7 +25,7 @@ This product hasn't been heavily tested with Leopard but conflicting reports hav
 These products aren't yet Leopard-ready but work is well on the way to completion (about 90% done) and so I hope to release Leopard-compatible versions within the next two to three weeks:
 
 -   [Synergy Advance](http://advance.wincent.com): Plug-in based audio companion.
--   [Hextrapolate](http://hextrapolate.wincent.com): Programmers number conversion tool.
+-   [Hextrapolate](https://hex.wincent.com): Programmers number conversion tool.
 
 ### Unknown
 
