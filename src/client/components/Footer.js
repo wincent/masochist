@@ -58,10 +58,6 @@ export default class Footer extends React.Component {
                   target="https://www.linkedin.com/in/greghurrell"
                   text="LinkedIn"
                 />
-                <StaticFooterLink
-                  target="https://keybase.io/wincent"
-                  text="Keybase"
-                />
               </ul>
             </div>
             <div className="four columns">
