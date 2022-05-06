@@ -83,7 +83,22 @@ sudo poweroff
 # Updating all packages
 
 ```bash
-sudo pacman -Syu
+sudo pacman -Syyu # double "y" forces refresh of package databases even if they look up-to-date
+```
+
+or with Yay (to update AUR packages as well):
+
+```bash
+yay -Syyu # or...
+yay # equivalent to `yay -Syu`
+```
+
+# Taking a screenshot
+
+eg. of the selected area:
+
+```bash
+scrot -s output.png # without -s, takes picture of entire screen
 ```
 
 # Inspecting key and mouse events
