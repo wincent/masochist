@@ -17,5 +17,7 @@ module.exports = {
     ...defaults.testPathIgnorePatterns,
     '<rootDir>/packages/[^/]+/lib/',
   ],
-  timers: 'fake',
+  fakeTimers: {
+    enableGlobally: true,
+  },
 };
