@@ -201,6 +201,8 @@ function printStatement(statement: Statement, indent: number): string {
             return printMethodDefinition(item, indent + 1);
           } else if (item.kind === 'PropertyDeclaration') {
             return printPropertyDeclaration(item, indent + 1);
+          } else {
+            throw new Error('printStatement(): Unreachable');
           }
         })
         .join('\n') +
