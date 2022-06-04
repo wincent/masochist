@@ -53,7 +53,7 @@ The net effect of the above on requests is:
 
 Note that all the redirects are a single "hop", which you can see with a command like `curl -L -i http://www.hurrell.net/cv-full.en.html`; it shows an immediate 301 redirect to the HTTPS URL on the GitHub Pages site.
 
-Credit for the Page Rules configuration goes to [this Stack Overflow answer](https://stackoverflow.com/questions/55274360/cloudflare-redirect-domain) and [comment](https://stackoverflow.com/questions/55274360/cloudflare-redirect-domain#comment126284596_64796153)). Conveniently Cloudflare gives you three Page Rules for free with every site.
+Credit for the Page Rules configuration goes to [this Stack Overflow answer](https://stackoverflow.com/questions/55274360/cloudflare-redirect-domain) and [comment](https://stackoverflow.com/questions/55274360/cloudflare-redirect-domain#comment126284596_64796153). Conveniently Cloudflare gives you three Page Rules for free with every site.
 
 ### Case study #2: hex.wincent.com
 
