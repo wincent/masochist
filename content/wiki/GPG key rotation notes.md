@@ -289,6 +289,355 @@ gpg: encrypted with rsa4096 key, ID FF08BAF685DCF99C, created 2014-05-20
 
 Push [the update](https://github.com/wincent/wincent/commit/f0152a2ee4cf7a3a753392ad8dc70c335ddc1200) to GitHub.
 
+## Rotating my `greg@hurrell.net` keys
+
+Starting on my personal laptop, examine the current state of the key:
+
+```shell
+$ gpg --edit-key greg@hurrell.net
+
+Secret subkeys are available.
+
+gpg: checking the trustdb
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: depth: 0  valid:   2  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 2u
+gpg: next trustdb check due at 2024-05-17
+pub  rsa4096/F962DC1A1941CCC4
+     created: 2014-05-20  expires: 2024-05-17  usage: SC
+     trust: ultimate      validity: ultimate
+ssb  rsa4096/FF08BAF685DCF99C
+     created: 2014-05-20  expires: 2024-05-17  usage: E
+ssb  rsa4096/3F73F6C4DFC3A0FA
+     created: 2021-06-04  expired: 2022-06-04  usage: S
+[ultimate] (1). Greg Hurrell <greg@hurrell.net>
+```
+
+Primary key is offline — only the public (`pub`) part is online — so pull the offline copy out of 1Password and import it:
+
+```shell
+$ gpg --import 'greg@hurrell.net GPG key 0xF962DC1A1941CCC4 expires 2024-05-17.asc'
+gpg: key F962DC1A1941CCC4: "Greg Hurrell <greg@hurrell.net>" not changed
+gpg: key F962DC1A1941CCC4: secret key imported
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+gpg:       secret keys read: 1
+gpg:   secret keys imported: 1
+gpg:  secret keys unchanged: 1
+```
+
+Compare output of `gpg --edit-key greg@hurrell.net`, and see that `pub` (public) has now changed to `sec` (secret):
+
+```
+Secret key is available.
+
+sec  rsa4096/F962DC1A1941CCC4
+     created: 2014-05-20  expires: 2024-05-17  usage: SC
+     trust: ultimate      validity: ultimate
+ssb  rsa4096/FF08BAF685DCF99C
+     created: 2014-05-20  expires: 2024-05-17  usage: E
+ssb  rsa4096/3F73F6C4DFC3A0FA
+     created: 2021-06-04  expired: 2022-06-04  usage: S
+[ultimate] (1). Greg Hurrell <greg@hurrell.net>
+```
+
+Reset the expiry of the primary to synchronize it with work key (ie. 1 year):
+
+```
+gpg> expire
+Changing expiration time for the primary key.
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 1y
+Key expires at Sun 11 Jun 19:53:50 2023 CEST
+Is this correct? (y/N) y
+
+sec  rsa4096/F962DC1A1941CCC4
+     created: 2014-05-20  expires: 2023-06-11  usage: SC
+     trust: ultimate      validity: ultimate
+ssb  rsa4096/FF08BAF685DCF99C
+     created: 2014-05-20  expires: 2024-05-17  usage: E
+ssb  rsa4096/3F73F6C4DFC3A0FA
+     created: 2021-06-04  expired: 2022-06-04  usage: S
+[ultimate] (1). Greg Hurrell <greg@hurrell.net>
+```
+
+Create a new signing subkey to replace the expired one:
+
+```
+gpg> addkey
+Please select what kind of key you want:
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+   (5) Elgamal (encrypt only)
+   (6) RSA (encrypt only)
+  (10) ECC (sign only)
+  (12) ECC (encrypt only)
+  (14) Existing key from card
+Your selection? 4
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (3072) 4096
+Requested keysize is 4096 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 1y
+Key expires at Sun 11 Jun 19:54:58 2023 CEST
+Is this correct? (y/N) y
+Really create? (y/N) y
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+
+sec  rsa4096/F962DC1A1941CCC4
+     created: 2014-05-20  expires: 2023-06-11  usage: SC
+     trust: ultimate      validity: ultimate
+ssb  rsa4096/FF08BAF685DCF99C
+     created: 2014-05-20  expires: 2024-05-17  usage: E
+ssb  rsa4096/3F73F6C4DFC3A0FA
+     created: 2021-06-04  expired: 2022-06-04  usage: S
+ssb  rsa4096/70516DBB88E4F779
+     created: 2022-06-11  expires: 2023-06-11  usage: S
+[ultimate] (1). Greg Hurrell <greg@hurrell.net>
+```
+
+Create a new encryption subkey to replace the existing one — it is not expired yet, but we'll take the opportunity to sync up with my work key by having a key that expires on the same date:
+
+```
+gpg> addkey
+Please select what kind of key you want:
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+   (5) Elgamal (encrypt only)
+   (6) RSA (encrypt only)
+  (10) ECC (sign only)
+  (12) ECC (encrypt only)
+  (14) Existing key from card
+Your selection? 6
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (3072) 4096
+Requested keysize is 4096 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 1y
+Key expires at Sun 11 Jun 19:56:23 2023 CEST
+Is this correct? (y/N) y
+Really create? (y/N) y
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+
+sec  rsa4096/F962DC1A1941CCC4
+     created: 2014-05-20  expires: 2023-06-11  usage: SC
+     trust: ultimate      validity: ultimate
+ssb  rsa4096/FF08BAF685DCF99C
+     created: 2014-05-20  expires: 2024-05-17  usage: E
+ssb  rsa4096/3F73F6C4DFC3A0FA
+     created: 2021-06-04  expired: 2022-06-04  usage: S
+ssb  rsa4096/70516DBB88E4F779
+     created: 2022-06-11  expires: 2023-06-11  usage: S
+ssb  rsa4096/F3B7FB88B7466831
+     created: 2022-06-11  expires: 2023-06-11  usage: E
+[ultimate] (1). Greg Hurrell <greg@hurrell.net>
+
+gpg> save
+```
+
+Publish:
+
+```bash
+gpg --send-keys 0xF962DC1A1941CCC4
+gpg --send-keys --keyserver pgp.mit.edu 0xF962DC1A1941CCC4
+gpg --send-keys --keyserver keyserver.ubuntu.com 0xF962DC1A1941CCC4
+```
+
+Export the public key, including the subkeys, for use in GitHub:
+
+```bash
+gpg --export --armor --output 0xF962DC1A1941CCC4.pub.asc 0xF962DC1A1941CCC4
+```
+
+After pasting that into the [GitHub GPG settings](https://github.com/settings/gpg/new), replacing the previous copy (ie. delete the old one, then add the new one; unfortunately you can't do it in the opposite order because the page complains that the key is a duplicate), we can discard the file:
+
+```bash
+rm 0xF962DC1A1941CCC4.pub.asc
+```
+
+Dump everything for storage in 1Password (when storing, tag the item with `gpg` and archive the expired key):
+
+```shell
+gpg --export-secret-keys --armor --output 'greg@hurrell.net GPG key 0xF962DC1A1941CCC4 expires 2023-06-11.asc' 0xF962DC1A1941CCC4
+```
+
+Delete from local filesystem:
+
+```bash
+shred -u \
+  greg@hurrell.net\ GPG\ key\ 0xF962DC1A1941CCC4\ expires\ 2023-06-11.asc \
+  greg@hurrell.net\ GPG\ key\ 0xF962DC1A1941CCC4\ expires\ 2024-05-17.asc
+```
+
+Delete from local keyring:
+
+```
+# Say "yes" to deleting the primary secret key, but not the subkeys.
+# Do this outside of tmux, to avoid it bugging out.
+gpg --delete-secret-keys greg@hurrell.net
+```
+
+Review final result with `gpg --edit-key wincent@github.com`:
+
+```
+Secret subkeys are available.
+
+pub  rsa4096/F962DC1A1941CCC4
+     created: 2014-05-20  expires: 2023-06-11  usage: SC
+     trust: ultimate      validity: ultimate
+ssb  rsa4096/FF08BAF685DCF99C
+     created: 2014-05-20  expires: 2024-05-17  usage: E
+ssb  rsa4096/3F73F6C4DFC3A0FA
+     created: 2021-06-04  expired: 2022-06-04  usage: S
+ssb  rsa4096/70516DBB88E4F779
+     created: 2022-06-11  expires: 2023-06-11  usage: S
+ssb  rsa4096/F3B7FB88B7466831
+     created: 2022-06-11  expires: 2023-06-11  usage: E
+[ultimate] (1). Greg Hurrell <greg@hurrell.net>
+```
+
+As a test, we'll re-encrypt my dotfiles, but first, inspect state of the GPG agent with `gpg-connect-agent 'keyinfo --list' /bye`:
+
+```
+S KEYINFO F72941DFCE9B41F3FDEF46000858514A22278F94 D - - - P - - -
+S KEYINFO 0551973D09041D9CF62AD9DF6F5FA53321C4FB02 D - - - P - - -
+S KEYINFO 5148CD9FB4E523100232C9B2B4CC4E12312D59F1 D - - - P - - -
+S KEYINFO F4B40B7FEF3FC9B99A94E317C202E33A8A5B79F9 D - - - P - - -
+OK
+```
+
+Via `gpg --list-keys --keyid-format=long --with-keygrip --with-fingerprint`, we can ascertain that the `F72941...` keygrip corresponds to my new encryption subkey, `055197...` corresponds to my new signing subkey, `F4B40B...` is my previous signing subkey, and I have no idea what `5148CD...` corresponds to.
+
+Anyway, onto the dotfiles; before we start, let's get my latest work keys seeing as I just updated those on my work machine but my personal laptop doesn't have them:
+
+```shell
+$ gpg --recv-keys 0x62106B56923F3481
+
+gpg: key 62106B56923F3481: "Greg Hurrell <wincent@github.com>" 2 new signatures
+gpg: key 62106B56923F3481: "Greg Hurrell <wincent@github.com>" 1 new subkey
+gpg: Total number processed: 1
+gpg:            new subkeys: 1
+gpg:         new signatures: 2
+```
+
+Now for the real deal:
+
+```bash
+cd $DOTFILES
+bin/git-cipher status # Make sure I have no local changes.
+bin/git-cipher encrypt --force # Without --force, nothing happens because we're up-to-date.
+```
+
+Confirm a sample file has been re-encrypted with the new key:
+
+```shell
+$ gpg --list-packets aspects/ssh/templates/.ssh/.config.erb.encrypted
+gpg: encrypted with rsa4096 key, ID A81880D9C0B03264, created 2022-06-11
+      "Greg Hurrell <wincent@github.com>"
+gpg: encrypted with rsa4096 key, ID F3B7FB88B7466831, created 2022-06-11
+      "Greg Hurrell <greg@hurrell.net>"
+...
+```
+
+Commit the changed files. This time, we have a signing key, so we'll use that to sign the commit and kill two test birds with one stone. First remind myself of the keyid; apparently, [using short IDs is bad](https://evil32.com/), so we use the long form:
+
+```shell
+$ gpg --list-secret-keys --keyid-format=long
+/Users/wincent/.gnupg/pubring.kbx
+---------------------------------
+sec#  rsa4096/F962DC1A1941CCC4 2014-05-20 [SC] [expires: 2023-06-11]
+      4282ED4A05CC894D53A541C3F962DC1A1941CCC4
+uid                 [ultimate] Greg Hurrell <greg@hurrell.net>
+ssb   rsa4096/FF08BAF685DCF99C 2014-05-20 [E] [expires: 2024-05-17]
+ssb   rsa4096/70516DBB88E4F779 2022-06-11 [S] [expires: 2023-06-11]
+ssb   rsa4096/F3B7FB88B7466831 2022-06-11 [E] [expires: 2023-06-11]
+```
+
+Git will want the commit made with `git commit -S4282ED4A05CC894D53A541C3F962DC1A1941CCC4` (note the explicit use of the primary key ID, even though it is offline — Git/GPG know to select the last-created signing subkey ID instead, which would be ID `70516DBB88E4F779`). In my testing, `git commit -S` with no argument works too; GPG guesses the right default secret key as seen here:
+
+```shell
+$ echo hello | gpg -s
+gpg: using "1941CCC4" as default secret key for signing
+...
+```
+
+Verify the commit is good; note the correct key (the most recently created signing subkey) was automatically used:
+
+```shell
+$ git verify-commit HEAD
+gpg: Signature made Sat 11 Jun 20:41:43 2022 CEST
+gpg:                using RSA key C7C225A18975180C4485A1E070516DBB88E4F779
+gpg: Good signature from "Greg Hurrell <greg@hurrell.net>" [ultimate]
+```
+
+The same info can be seen with `git show --show-signature`:
+
+```
+commit d64c9be31a42678b668434968cfa09be21e498f9 (HEAD -> main)
+gpg: Signature made Sat 11 Jun 20:41:43 2022 CEST
+gpg:                using RSA key C7C225A18975180C4485A1E070516DBB88E4F779
+gpg: Good signature from "Greg Hurrell <greg@hurrell.net>" [ultimate]
+Author: Greg Hurrell <greg@hurrell.net>
+Date:   Sat Jun 11 20:40:07 2022 +0200
+
+    chore: update encrypted files with new key
+
+...
+```
+
+Push [the update](https://github.com/wincent/wincent/commit/d64c9be31a42678b668434968cfa09be21e498f9) to GitHub.
+
+Now, two minor follow-ups:
+
+First, just as we pulled in the new work keys onto the personal machine, we should pull the new personal keys onto the work machine:
+
+```shell
+$ gpg --recv-keys 0xF962DC1A1941CCC4
+gpg: key F962DC1A1941CCC4: "Greg Hurrell <greg@hurrell.net>" 3 new signatures
+gpg: key F962DC1A1941CCC4: "Greg Hurrell <greg@hurrell.net>" 2 new subkeys
+gpg: Total number processed: 1
+gpg:            new subkeys: 2
+gpg:         new signatures: 3
+```
+
+Similarly, on my Linux desktop machine I need to do the related changes:
+
+```shell
+$ gpg --recv-keys 0x62106B56923F3481 0xF962DC1A1941CCC4
+```
+
+That will pull the public parts done; we need to get the secret parts out of 1Password:
+
+```
+$ gpg --import 'greg@hurrell.net GPG key 0xF962DC1A1941CCC4 expires 2023-06-11.asc'
+$ gpg --delete-secret-keys greg@hurrell.net # Delete primary secret key, keep subkeys
+$ rm 'greg@hurrell.net GPG key 0xF962DC1A1941CCC4 expires 2023-06-11.asc'
+$ cd $DOTFILES
+$ git pull
+$ git show --show-signature # See signature get verified.
+$ bin/git-cipher decrypt # See we can still decrypt files.
+```
+
 # Older notes
 
 ## Details
