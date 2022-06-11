@@ -497,7 +497,7 @@ Delete from local keyring:
 gpg --delete-secret-keys greg@hurrell.net
 ```
 
-Review final result with `gpg --edit-key wincent@github.com`:
+Review final result with `gpg --edit-key greg@hurrell.net`:
 
 ```
 Secret subkeys are available.
