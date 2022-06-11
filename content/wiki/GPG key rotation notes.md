@@ -10,10 +10,288 @@ title: GPG key rotation notes
 - **Keep the primary key(s) "offline".** As in, keep them in 1Password, and keep only the subkeys on your system(s).
 - **It's ok to have your subkeys on multiple machines.** If you must revoke a key, do it. You will need to put a new subkey on all machines. That's ok. Don't try to use a separate identity for each machine; use your personal identity on all personal machines and your work identity on all work machines.
 - **Use the default encryption subkey.** GPG will make an encryption subkey by default when you create your primary key; just use that. When the subkey expires, then you will create a new encryption subkey.
-- **Create a signing subkey if you need to.** A primary key _is_ a signing key, but because you're storing it offline, you need to generate a signing subkey if (and only if) you need to sign things. Like encryption subkeys, this should have an expiry date; you can periodically issue a new signing subkey.
+- **Create a signing subkey if you need to.** A primary key _is_ a signing key, but because you're storing it offline, you need to generate a signing subkey if (and only if) you need to sign things. Like encryption subkeys, this should have an expiry date; you can periodically issue a new signing subkey.[^work]
 - **Synchronize expiry dates to reduce maintenance burden.** Line up the expiry dates on all the keys so that you can refresh them all at the same time. That generally means updating the expiry on your personal and work primary keys, and generating new encryption (and possibly signing) subkeys. 2 years is a good expiry interval (not too often to be burdensome, not so infrequent that you forget how to update.)
 
-# Details
+[^work]: On my work machine, I don't use a signing key and I don't sign Git commits (I don't even _have_ a signing subkey). This is because most of my work is done on Codespaces, and getting GPG keys working there is a speed bump I'd rather avoid at this time (writing this in June 2022). For my personal machines, I do have a signing key.
+
+# Example rotation procedures
+
+## Rotating my `wincent@github.com` keys
+
+To start with, let's examine the current state of the key:
+
+```shell
+$ gpg --edit-key wincent@github.com
+```
+
+This shows:
+
+```
+Secret subkeys are available.
+
+pub  rsa4096/62106B56923F3481
+     created: 2021-06-04  expired: 2022-06-04  usage: SC
+     trust: ultimate      validity: expired
+ssb  rsa4096/424385B611E36E91
+     created: 2021-06-04  expired: 2022-06-04  usage: E
+[expired] (1). Greg Hurrell <wincent@github.com>
+```
+
+- Normally, when you create a key you get a `sec` (secret) primary key which is also a signing key (usage `SC`: `S` for signing and `C` for primary). By default a `ssb` (subkey) key is also generated, with usage `E` (encryption).
+- Here we see no `sec`, only a `pub` (public) key, which is the public part of the primary key; usage `SC` means signing/primary key; the private part of this key is offline in 1Password.
+- `ssb` is the standard sub-key, usage `E` means encryption.
+
+So, our goal then is to:
+
+1. Import the private primary key from 1Password.
+2. Bump the expiry date on it.
+3. (Optional) Generate a new signing subkey with a matching expiry date; I'll be skipping this step on my work machine because I don't sign stuff there, I only encrypt it.
+4. Generate a new encryption subkey with a matching expiry date.
+5. Publish the updated key to the keyservers.
+6. Export the updated primary key from GnuPG (including the subkeys).
+7. Back up the updated primary key in 1Password.
+8. Take the private part of the primary key offline.
+
+So, with the file from 1Password, import it back into the keyring:
+
+```shell
+$ gpg --import 'wincent@github.com GPG key 0x62106B56923F3481 expires 2022-06-04.asc'
+gpg: key 62106B56923F3481: "Greg Hurrell <wincent@github.com>" not changed
+gpg: key 62106B56923F3481: secret key imported
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+gpg:       secret keys read: 1
+gpg:   secret keys imported: 1
+gpg:  secret keys unchanged: 1
+```
+
+And compare with the previous output of `gpg --edit-key wincent@github.com`:
+
+```
+Secret key is available.
+
+sec  rsa4096/62106B56923F3481
+     created: 2021-06-04  expired: 2022-06-04  usage: SC
+     trust: ultimate      validity: expired
+ssb  rsa4096/424385B611E36E91
+     created: 2021-06-04  expired: 2022-06-04  usage: E
+[expired] (1). Greg Hurrell <wincent@github.com>
+```
+
+Note: output is almost identical to the first time, but now the `pub` (public) primary key is now showing up as `sec` (secret) instead.
+
+Now we bump the expiry date on the primary key by 1 year:
+
+```
+gpg> expire
+Changing expiration time for the primary key.
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 1y
+Key expires at Sun 11 Jun 15:21:10 2023 CEST
+Is this correct? (y/N) y
+
+sec  rsa4096/62106B56923F3481
+     created: 2021-06-04  expires: 2023-06-11  usage: SC
+     trust: ultimate      validity: ultimate
+ssb  rsa4096/424385B611E36E91
+     created: 2021-06-04  expired: 2022-06-04  usage: E
+[ultimate] (1). Greg Hurrell <wincent@github.com>
+
+gpg: WARNING: Your encryption subkey expires soon.
+gpg: You may want to change its expiration date too.
+```
+
+Note the `WARNING` at the end there; in our case, we're going to create a new subkey instead of changing the expiry on the existing one [for a little bit of forward security](https://unix.stackexchange.com/a/177310/140622):
+
+```
+gpg> addkey
+Please select what kind of key you want:
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+   (5) Elgamal (encrypt only)
+   (6) RSA (encrypt only)
+  (10) ECC (sign only)
+  (12) ECC (encrypt only)
+  (14) Existing key from card
+Your selection? 6
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (3072) 4096
+Requested keysize is 4096 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 1y
+Key expires at Sun 11 Jun 15:22:40 2023 CEST
+Is this correct? (y/N) y
+Really create? (y/N) y
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+
+sec  rsa4096/62106B56923F3481
+     created: 2021-06-04  expires: 2023-06-11  usage: SC
+     trust: ultimate      validity: ultimate
+ssb  rsa4096/424385B611E36E91
+     created: 2021-06-04  expired: 2022-06-04  usage: E
+ssb  rsa4096/A81880D9C0B03264
+     created: 2022-06-11  expires: 2023-06-11  usage: E
+[ultimate] (1). Greg Hurrell <wincent@github.com>
+
+gpg> save
+```
+
+Now, publish:
+
+```bash
+gpg --send-keys 0x62106B56923F3481
+gpg --send-keys --keyserver pgp.mit.edu 0x62106B56923F3481
+gpg --send-keys --keyserver keyserver.ubuntu.com 0x62106B56923F3481
+```
+
+Now we can export the public key, including the subkeys, for use in GitHub:
+
+```bash
+gpg --export --armor --output 0x62106B56923F3481.pub.asc 0x62106B56923F3481
+```
+
+This produces a file that looks like this:
+
+```
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQINBGC6kT8BEADYdXxrBAJVRsQUCKTiO7nfCmrvkVWBQ4enU39DsxkdUG1LU3uv
+... many more lines ...
+Jew5lkkOc3gMW6I0e6ELMHERV6Yfy+HvA2O5/ThU19aOzMnGFkKDFFdQh48bdw==
+=K+xm
+-----END PGP PUBLIC KEY BLOCK-----
+```
+
+Which we paste into our [GitHub GPG Settings](https://github.com/settings/gpg/new), and can discard the file:
+
+```bash
+rm 0x62106B56923F3481.pub.asc
+```
+
+Now we export again for stashing in 1Password, this time dumping _everything_ including the secret parts:
+
+```bash
+gpg --export-secret-keys --armor --output 0x62106B56923F3481.primary.asc 0x62106B56923F3481
+```
+
+This one looks similar to the other, but begins and ends with:
+
+```
+-----BEGIN PGP PRIVATE KEY BLOCK-----
+
+...
+
+-----END PGP PRIVATE KEY BLOCK-----
+```
+
+Before stashing that in 1Password I'm going to give it a more informative name:
+
+```bash
+mv 0x62106B56923F3481.primary.asc \
+  'wincent@github.com GPG key 0x62106B56923F3481 expires 2023-06-11.asc'
+```
+
+Delete from local files from filesystem (using `shred` which I got via Homebrew, although it [doesn't "really make sense for modern systems" with SSDs, FileVault etc](https://superuser.com/questions/617515/using-shred-from-the-command-line)):
+
+```bash
+shred -u \
+  wincent@github.com\ GPG\ key\ 0x62106B56923F3481\ expires\ 2022-06-04.asc \
+  wincent@github.com\ GPG\ key\ 0x62106B56923F3481\ expires\ 2023-06-11.asc
+```
+
+Delete from the local keyring:
+
+```bash
+# Say "yes" to deleting the primary secret key, but not the subkeys.
+# Also note: I've found the dialog here to bug out inside tmux; better
+# to run this command in a top-level terminal window instead:
+gpg --delete-secret-keys wincent@github.com
+```
+
+Review final result with `gpg --edit-key wincent@github.com`:
+
+```
+Secret subkeys are available.
+
+pub  rsa4096/62106B56923F3481
+     created: 2021-06-04  expires: 2023-06-11  usage: SC
+     trust: ultimate      validity: ultimate
+ssb  rsa4096/424385B611E36E91
+     created: 2021-06-04  expired: 2022-06-04  usage: E
+ssb  rsa4096/A81880D9C0B03264
+     created: 2022-06-11  expires: 2023-06-11  usage: E
+[ultimate] (1). Greg Hurrell <wincent@github.com>
+```
+
+- We see `pub` (public) instead of `sec` (secret), indicating that our primary secret key is now offline.
+- We see our expired `E` (encryption) subkey as well as our new one.
+
+The main reason I even have this key is so that I can encrypt and decrypt sensitive dotfiles in public repos, so let's test that out. (I don't even have a signing subkey, so uploading the key to GitHub is really just going through the motions for no real reason).
+
+Inspect state in the GPG agent with `gpg-connect-agent 'keyinfo --list' /bye`:
+
+```
+S KEYINFO 65E2EC218B70472DE703EE591DD04665E6C3D311 D - - - C - - -
+S KEYINFO B608A117C14AF4CEC5C5CC299048DA3B1D95AC6C D - - - C - - -
+S KEYINFO E4E775C7F78DBF4872E72E4C58B1A35B253259ED D - - - P - - -
+S KEYINFO 52577084CEE4B10AC7E75601C6BB9D8D15C883BC D - - - P - - -
+OK
+```
+
+As noted in my older notes (below), I'm not actually sure what all those keygrips correspond to. Based on the output of `gpg --list-keys --keyid-format=long --with-keygrip --with-fingerprint`, the `E4E775...` key corresponds to my encryption subkey, but I have no idea what the others are.
+
+```bash
+cd $DOTFILES
+```
+
+Note that `bin/git-cipher decrypt` still works, but produces a bunch of messages like this:
+
+```
+aspects/ssh/templates/.ssh/.config.erb.encrypted -> aspects/ssh/templates/.ssh/config.erb [decrypting ...gpg: Note: secret key 424385B611E36E91 expired at Sat  4 Jun 22:46:55 2022 CEST
+```
+
+Re-encrypt everything with the new subkey (`--force` here is because normally this would be a no-op, as the tool bails out if the plain text inputs aren't newer than the encrypted files):
+
+```bash
+bin/git-cipher encrypt --force
+```
+
+Now see that `bin/git-cipher decrypt` no longer prints the warnings; instead, it prints messages like:
+
+```
+aspects/ssh/templates/.ssh/.config.erb.encrypted -> aspects/ssh/templates/.ssh/config.erb [decrypting ... done]
+```
+
+And we can see that a sample file has indeed been encrypted with the new key:
+
+```shell
+$ gpg --list-packets aspects/ssh/templates/.ssh/.config.erb.encrypted
+gpg: encrypted with rsa4096 key, ID A81880D9C0B03264, created 2022-06-11
+      "Greg Hurrell <wincent@github.com>"
+gpg: encrypted with rsa4096 key, ID FF08BAF685DCF99C, created 2014-05-20
+      "Greg Hurrell <greg@hurrell.net>"
+...
+```
+
+Push [the update](https://github.com/wincent/wincent/commit/f0152a2ee4cf7a3a753392ad8dc70c335ddc1200) to GitHub.
+
+# Older notes
+
+## Details
 
 My current key isn't expiring until 2024-05-17, but I wanted to leave some notes here to remind me that the next time I transition to a new key I should create the master key without an expiry date and instead produce a key revocation certificate stored in a "safe location" (might be in a 1Password vault or printed on paper in a safe somewhere).
 
@@ -36,7 +314,7 @@ So what I am going to do is:
 
 I also would like to have separate keys per machine, but in order to do that, I can't really use subkeys in a convenient way (GnuPG will default to using the newest one). What I could do, is have a _separate primary key_ (different email address) for my work machine, and sign that with the primary key. Or I could just make subkeys with a short expiration date and put them on both machines (that might be easier).
 
-# Process
+## Process
 
 Ok, this is not necessarily the most direct way to do all this, but it's what I came up with.
 
@@ -280,9 +558,9 @@ gpg: encrypted with 4096-bit RSA key, ID FF08BAF685DCF99C, created 2014-05-20
 ...
 ```
 
-One thing to note about all this, at least from the perspective of GitHub (at the time of writing), if you revoke any key (subkey or otherwise), _or_ if a key expires, [commits/tags signed with it no longer show up as verified](https://github.com/isaacs/github/issues/1099). FWIW, that sounds about right to me. If a key is revoked, I personally think that means all bets are off and GitHub is right not to show it as verified (it may even want to show the signing key as revoked, although I don't know if that is possible). If a key expires, that's another story, but it is technically difficult to distinguish between "immutable object signed and verified before key expired" and "immutable object _ostensibly_ signed before expiry but received _after_ it"; ie. GitHub can't really know (and nobody can with certainty) when the commit was made. It can only know that it was signed with a key and that the key currently has a specific expiry date.
+~~One thing to note about all this, at least from the perspective of GitHub (at the time of writing), if you revoke any key (subkey or otherwise), _or_ if a key expires, [commits/tags signed with it no longer show up as verified](https://github.com/isaacs/github/issues/1099). FWIW, that sounds about right to me. If a key is revoked, I personally think that means all bets are off and GitHub is right not to show it as verified (it may even want to show the signing key as revoked, although I don't know if that is possible).~~ If a key expires, that's another story, but it is technically difficult to distinguish between "immutable object signed and verified before key expired" and "immutable object _ostensibly_ signed before expiry but received _after_ it"; ie. GitHub can't really know (and nobody can with certainty) when the commit was made. It can only know that it was signed with a key and that the key currently has a specific expiry date. (Update: As of June 2022, GitHub now [shows signatures as valid even after the signing keys have expired](https://github.blog/changelog/2022-05-31-improved-verification-of-historic-git-commit-signatures/)).
 
-It seems that using non-expiring keys makes the problem mostly go away. You lose your "dead person's switch" though. On the balance, I think I probably still prefer expiring keys. For example, if I die and stop extending the expiry dates, and my commits/tags start showing up as unverified, that probably makes sense.
+~~It seems that using non-expiring keys makes the problem mostly go away. You lose your "dead person's switch" though. On the balance, I think I probably still prefer expiring keys. For example, if I die and stop extending the expiry dates, and my commits/tags start showing up as unverified, that probably makes sense.~~
 
 I am probably going to let subkeys expire and add new ones. If I wanted to extend a subkey expiry date, I would do:
 
@@ -292,7 +570,7 @@ gpg --edit-key 0xF962DC1A1941CCC4
 > expire
 ```
 
-# See also
+## See also
 
 -   [My Twitter thread discussing this](https://twitter.com/wincent/status/1049976519978864640)
 -   [Why expiry dates on master keys don't improve security](https://security.stackexchange.com/questions/14718/does-openpgp-key-expiration-add-to-security/79386#79386) (answer on Stack Exchange from [Jens Erat](https://superuser.com/users/102155/jens-erat)).
