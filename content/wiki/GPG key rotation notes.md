@@ -626,7 +626,7 @@ Similarly, on my Linux desktop machine I need to do the related changes:
 $ gpg --recv-keys 0x62106B56923F3481 0xF962DC1A1941CCC4
 ```
 
-That will pull the public parts done; we need to get the secret parts out of 1Password:
+That will pull the public parts down; we need to get the secret parts out of 1Password:
 
 ```
 $ gpg --import 'greg@hurrell.net GPG key 0xF962DC1A1941CCC4 expires 2023-06-11.asc'
