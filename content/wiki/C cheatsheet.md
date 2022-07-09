@@ -42,17 +42,41 @@ Given a source file, `source.c`, produce output `source.s` with:
 gcc -S source.c
 ```
 
+# `assert()` and `abort()`
+
+`assert(expression)` is a debugging and developmental aid that aborts the program unless `expression` is true. If `-DNDEBUG` is passed to the compiler, the entire construct is omitted. As such, for release builds, `assert()` calls can be considered to be "free".
+
+`abort()` unconditionally terminates the program.
+
+As a rule of thumb:
+
+- Use `assert()` to detect logic bugs, things that "should never happen", during development. In a sense, assertions exist not just to detect invalid assumptions, but to communicate what those assumptions are.
+- Use `abort()` for when things have gone catastrophically wrong, such that continuing isn't a viable option.
+- Neither of these is a substitute for handling _routine_ error states (for example, failure to read or write a file can happen for any number of reasons, and the program should very likely make some attempt at graceful recovery when this happens).
+
 # `size_t`
 
-On Darwin, this is equivalent to `unsigned long` (which nowadays means `uint64_t`, as [defined in `stdint.h`](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/stdint.h.html)), but in general a good heuristic for remembering _when_ to use this and _what_ it is:
+On Darwin, this is equivalent to `unsigned long` (which nowadays means `uint64_t`, as [defined in `<stdint.h>`](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/stdint.h.html)), but in general a good heuristic for remembering _when_ to use this and _what_ it is:
 
 - Use it for things whose size is to be measured in bytes.
 - Its size is big enough to represent whatever the "biggest object" could be on the host system.
-- Technically, `size_t` [is defined, in `stddef.h`, as](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/stddef.h.html) the type of the result of the `sizeof()` operator.
+- Technically, `size_t` [is defined, in `<stddef.h>`, as](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/stddef.h.html) the type of the result of the `sizeof()` operator.
+
+# `ssize_t`
+
+Signed equivalent of `size_t`.
+
+Biggest possible value is `SSIZE_MAX`, defined in `<limits.h>`.
 
 # `static` functions
 
 A function declared with the `static` keyword is not visible outside of the translation unit in which it is defined.
+
+# `static` variables
+
+A variable defined with `static` _outside_ all functions is only visible inside its own translation unit. This is analogous to how `static` applies to functions.
+
+A variable defined with `static` _inside_ a function maintains its value across invocations.
 
 [Objective-C]: /wiki/Objective-C
 [macOS]: /wiki/macOS
