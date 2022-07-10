@@ -62,6 +62,11 @@ On Darwin, this is equivalent to `unsigned long` (which nowadays means `uint64_t
 - Its size is big enough to represent whatever the "biggest object" could be on the host system.
 - Technically, `size_t` [is defined, in `<stddef.h>`, as](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/stddef.h.html) the type of the result of the `sizeof()` operator.
 
+# `sizeof`
+
+- `sizeof("string literal")` includes the trailing `NULL` byte; note this is different from `strlen()`, which returns the number of bytes _before_ the `NULL`.
+- `sizeof(0xff)` is equivalent to `sizeof(int)`; Clang will warn that this is suspicious, so if you really mean it you can write `sizeof(typeof(0xff))` instead.
+
 # `ssize_t`
 
 Signed equivalent of `size_t`.
