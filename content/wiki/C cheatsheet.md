@@ -34,6 +34,13 @@ ie.
 3. Relaunch executable (this time, `nvim`) with `gdb` and the core dump file.
 4. Print the backtrace.
 
+# `NULL` versus `NUL`
+
+- `NULL` is a "NULL pointer" (`((void *)0)`), defined in `<stddef.h>`.
+- `NUL` refers to the "NUL byte" (`'\0'`), used to terminate `NUL`-terminated strings.
+
+Note that despite both being "zero" they have different sizes due to their use in different contexts; the `NULL` pointer will typically be a 64-bit or 32-bit value, while `NUL` will be an 8-bit `char`.
+
 # Viewing generated assembly
 
 Given a source file, `source.c`, produce output `source.s` with:
