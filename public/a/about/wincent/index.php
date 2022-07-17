@@ -695,48 +695,6 @@
           <h4>Is Wincent related to the famous drummer, Vinnie Colaiuta?</h4>
 
           <p>No. There is no relation.</p>
-
-          <h4>Does Wincent have a PEM email certificate?</h4>
-
-          <p>
-            Yes,
-            <a
-              href="https://wincent.com/a/support/tickets/wincent_colaiuta_2008.pem"
-              >this PEM certificate</a
-            >
-            corresponds to Wincent's current email address (<a
-              href="mailto:win@wincent.com"
-              >win@wincent.com</a
-            >) and can be used to send encrypted mail to Wincent or verify his
-            signature on emails. (See
-            <a
-              href="http://www.macdevcenter.com/pub/a/mac/2003/01/20/mail.html?page=1"
-              >this article</a
-            >
-            for information on how to obtain an email certificate and set up
-            encrypted mail on Mac OS X.)
-          </p>
-
-          <p>
-            Older certificates &mdash;
-            <a
-              href="https://wincent.com/a/support/tickets/wincent_colaiuta_2007.pem"
-              >2007</a
-            >, and
-            <a
-              href="https://wincent.com/a/support/tickets/wincent_colaiuta_2006.pem"
-              >2006</a
-            >
-            (which corresponds to Wincent's old address, win@wincent.org)
-            &mdash; and can be used to verify his signature on older emails.
-          </p>
-
-          <p>
-            The quickest way of getting in touch with Wincent is to use the
-            <a href="https://wincent.com/a/contact/">Contact form</a> on this
-            website, but if encryption is important you can send email to
-            <a href="mailto:win@wincent.com">win@wincent.com</a>.
-          </p>
         </div>
       </div>
       <div id="right">
