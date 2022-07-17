@@ -737,15 +737,6 @@
             website, but if encryption is important you can send email to
             <a href="mailto:win@wincent.com">win@wincent.com</a>.
           </p>
-
-          <h4>Does Wincent have a PGP key?</h4>
-
-          <p>
-            Yes, and it can be found at:
-            <a href="https://wincent.com/wincent_colaiuta.pgp.txt"
-              >https://wincent.com/wincent_colaiuta.pgp.txt</a
-            >.
-          </p>
         </div>
       </div>
       <div id="right">
