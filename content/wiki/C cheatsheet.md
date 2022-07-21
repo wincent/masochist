@@ -18,7 +18,13 @@ I've written lots of C or C-like (eg. [Objective-C]) code over the years, but I 
 
 ## With `gdb` on [Arch Linux]
 
-While you can also launch executables with `gdb` (ie. after `yay -S gdb`), you have the additional option of inspecting a core dump after the fact; example:
+You can also launch executables with `gdb` (ie. after `yay -S gdb`).
+
+1. Launch with `gdb executable`.
+2. Run with `r` (or `r [arguments]`).
+3. See backtrace with `bt`.
+
+You have the additional option of inspecting a core dump after the fact; example:
 
 ```
 # unzstd /var/lib/systemd/coredump/core.nvim.1000.008a013d9f0d4e769d9dbcfdd9d9584a.13538.1656944479000000.std
@@ -60,6 +66,29 @@ As a rule of thumb:
 - Use `assert()` to detect logic bugs, things that "should never happen", during development. In a sense, assertions exist not just to detect invalid assumptions, but to communicate what those assumptions are.
 - Use `abort()` for when things have gone catastrophically wrong, such that continuing isn't a viable option.
 - Neither of these is a substitute for handling _routine_ error states (for example, failure to read or write a file can happen for any number of reasons, and the program should very likely make some attempt at graceful recovery when this happens).
+
+# `printf` format markers
+
+From `man 3 printf`:
+
+- `%c`: `char`.
+- `%d`: `int` (printed as signed decimal).
+  - `%dl`: `long int` (printed as unsigned decimal).
+  - `%dl`: `long long int` (printed as unsigned decimal).
+- `%f`: `double`.
+- `%o`: `int` (printed as unsigned octal).
+  - `%oz`: `size_t` (printed as unsigned octal).
+- `%p`: `void *` (printed in hexadecimal).
+- `%s`: `NUL`-terminated string.
+- `%u`: `unsigned` (printed as unsigned decimal).
+  - `%ul`: `unsigned long` (printed as unsigned decimal).
+  - `%ull`: `unsigned long long` (printed as unsigned decimal).
+  - `%uz`: `size_t` (printed as unsigned decimal).
+- `%x`: `unsigned` (printed as unsigned hexadecimal).
+  - `%xl`: `unsigned long` (printed as unsigned hexadecimal).
+  - `%xll`: `unsigned long long` (printed as unsigned hexadecimal).
+  - `%xz`: `size_t` (printed as unsigned hexadecimal).
+- `%%`: literal `%`.
 
 # `size_t`
 
