@@ -39,6 +39,18 @@ cd code/wincent
 netctl restart $PROFILE # eg netctl restart cole-valley
 ```
 
+## Showing current WiFi channel
+
+```bash
+iwlist channel
+```
+
+## Showing other info about current WiFi connection
+
+```bash
+iwconfig
+```
+
 # Pairing or connecting Bluetooth headphones
 
 ```sh
