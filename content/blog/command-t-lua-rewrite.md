@@ -41,11 +41,11 @@ The downside to all this is that Ruby installations are notoriously fragile insi
 
 > I can't get Command-T to work (or it stopped working)...
 >
-> (Various installation commands are run or re-run...)
+> _(Various installation commands are run or re-run...)_
 >
 > I got it working in the end.
 >
-> (Issue gets closed with no code changes being committed.)
+> _(Issue gets closed with no code changes being committed.)_
 
 This alone is probably the main reason why I have never heavily promoted Command-T. Over the years there have been other fuzzy finders that have more features, or are more popular, but none with performance that scales to working on repositories with millions of files, and none which provide such a robust and intuitive ranking of match results. Those are the features that I still care about the most to this day, and that's why I keep on using Command-T. But I don't want to actually _promote_ it, nor do I want to keep adding on features to attract new users, because I know that the bigger the user base, the more support tickets related to version mismatches, and the more hair ripped out from frustrated scalps across the globe. So, I continue on, quietly using Neovim and Command-T to get my job done, and I don't twiddle my editor versions or my Ruby version unless there's good reason to.
 
