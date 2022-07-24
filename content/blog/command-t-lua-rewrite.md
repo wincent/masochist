@@ -4,7 +4,7 @@ tags: blog
 title: Command-T v6.0 — the Lua rewrite
 ---
 
-For a while now I've wanted to do [a ground-up rewrite of Command-T in Lua](https://github.com/wincent/command-t/issues/380). After sitting on the back-burner for many months, I finally got around to doing some work on it. While rewrite isn't done yet, it is so close to being an "MVP"[^mvp] now that I can talk about the new version without worrying too much about the risk of it being vaporware. So, let's start.
+For a while now I've wanted to do [a ground-up rewrite of Command-T in Lua](https://github.com/wincent/command-t/issues/380). After sitting on the back-burner for many months, I finally got around to doing some work on it. While the rewrite isn't done yet, it is so close to being an "MVP"[^mvp] now that I can talk about the new version without worrying too much about the risk of it being vaporware. So, let's start.
 
 [^mvp]: I'm defining "MVP" (Minimal Viable Product) here as having the subset of features that I use heavily on a daily basis: a file finder, a buffer finder, and a "help" finder (for searching the built-in Neovim `:help`).
 
