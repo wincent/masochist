@@ -85,3 +85,20 @@ Differences:
 -   Italic support (even in the terminal)
 -   Back to Consolas, now 13pt most of the time (and 15pt or more if I'm working with glasses, or on a bus with a bumpy ride etc); once I get a machine with a Retina display I think I'll take this down a notch
 -   Still using folding, but less of it
+
+### Update: 24 July 2022
+
+> _(Sponge Bob narrator voice):_ Seven years later
+
+![vim-syntax-coloring-july-2022.png](/system/images/vim-syntax-coloring-july-2022.png)
+
+Differences:
+
+-   I got feedback on [my screencasts](https://www.youtube.com/c/GregHurrell) that a higher-contrast scheme would be better, so I switched to ["bright" from Base16](https://github.com/wincent/wincent/tree/media/colorschemes#bright).
+-   This on a Retina display, so text is sharper. I use [Kitty](https://sw.kovidgoyal.net/kitty/index.html) in some places and [iTerm2](https://iterm2.com/) in others[^why], and the text rendering differs ever so slightly between those; this particular screenshot is taken on Kitty.
+-   Font is 12pt [Adobe Source Code Pro](https://github.com/adobe-fonts/source-code-pro).
+-   This is Neovim rather than Vim.
+-   Overall, settings are tuned for subtlety; for example, I no longer include an `eol` character in `'listchars'`.
+-   I'm using [the indent-blankline.nvim plug-in](https://github.com/lukas-reineke/indent-blankline.nvim) to show indent markers.
+
+[^why]: Why use two terminal emulators? When I got [a Linux machine](https://wincent.com/blog/building-a-pc), I needed a terminal emulator for that and went with Kitty. I would have used it everywhere but I ran into some issues on my work laptop (a macOS machine), although I found them livable on my personal laptop (also a macOS machine, but with a slightly different workload, so the problems weren't deal-breakers). So, I figure it's useful to keep my set-up working relatively well on both emulators, so that I have a fallback option in the future.
