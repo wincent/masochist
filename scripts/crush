@@ -1,9 +1,14 @@
 #!/bin/sh
 
-#
 # Requires `brew install pngcrush` (or equivalent).
 #
-# via: https://www.commandlinefu.com/commands/view/10996/pngcrush-all-.png-files-in-the-directory
+# Via:
 #
+#     https://www.commandlinefu.com/commands/view/10996/pngcrush-all-.png-files-in-the-directory
+#
+# Note that this is _lossless_ compression. For _lossy_ compression, and other
+# alternatives, see:
+#
+#    https://wincent.com/wiki/Compressing_PNGs_for_delivery_on_the_web
 
 find . -name '*.png' -type f | while read line; do pngcrush -ow -brute $line; done
