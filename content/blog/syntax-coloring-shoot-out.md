@@ -90,7 +90,7 @@ Differences:
 
 > _(Sponge Bob narrator voice):_ Seven years later
 
-![vim-syntax-coloring-july-2022.png](/system/images/vim-syntax-coloring-july-2022.png)
+![neovim-syntax-coloring-july-2022.png](/system/images/neovim-syntax-coloring-july-2022.png)
 
 Differences:
 
