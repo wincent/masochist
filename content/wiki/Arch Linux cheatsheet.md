@@ -113,6 +113,10 @@ eg. of the selected area:
 scrot -s output.png # without -s, takes picture of entire screen
 ```
 
+# Trouble-shooting Clipper issues
+
+See [Troubleshooting Clipper on Arch Linux].
+
 # Inspecting key and mouse events
 
 ```bash
@@ -303,3 +307,5 @@ xprop
 - `Control-Super-Shift-Right`: Shrink window rightwards.
 - `Control-Super-Shift-Up`: Shrink window upwards.
 - `Control-Super-Shift-Down`: Shrink window downwards.
+
+[Troubleshooting Clipper on Arch Linux]: /wiki/Troubleshooting_Clipper_on_Arch_Linux
