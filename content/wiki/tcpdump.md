@@ -769,3 +769,9 @@ Remaining things to try:
 - Turn off Location Services (wholesale); this can't remain like that due to corporate policy, but I can do a test at least.
 - Turn off auto-joining (require admin to make changes too).
 - Do WiFi log analysis on personal laptop, for comparison.
+
+# Appendix
+
+Other tools:
+
+- `networkQuality -s`
