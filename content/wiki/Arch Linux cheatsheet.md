@@ -37,7 +37,52 @@ cd code/wincent
 
 ```bash
 netctl restart $PROFILE # eg netctl restart cole-valley
+
+# Alternatively...
+netctl stop $PROFILE
+netctl start $PROFILE
 ```
+
+# Getting status for a WiFi connection
+
+```bash
+netctl status cole-valley
+netctl status digifibra-xz3f
+netctl status digifibra-plus-xz3f
+```
+
+## Checking to see whether a network is enabled and/or active
+
+```bash
+netctl is-enabled cole-valley
+netctl is-enabled digifibra-xz3f
+netctl is-enabled digifibra-plus-xz3f
+
+netctl is-active cole-valley
+netctl is-active digifibra-xz3f
+netctl is-active digifibra-plus-xz3f
+```
+
+# Switching to another WiFi network
+
+```bash
+sudo netctl switch-to cole-valley
+sudo netctl switch-to digifibra-xz3f
+sudo netctl switch-to digifibra-plus-xz3f
+```
+
+# Other WiFi related commands
+
+For more of these, see `man netctl`:
+
+```bash
+netctl list
+sudo netctl enable $PROFILE
+sudo netctl disable $PROFILE
+sudo netctl verify $PROFILE # check for syntax errors
+```
+
+See also, `man netctl.profile` for details on the format of profile files stored under `/etc/netctl/`.
 
 ## Showing current WiFi channel
 
