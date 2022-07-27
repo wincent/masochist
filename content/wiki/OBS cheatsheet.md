@@ -17,10 +17,12 @@ Topics covered:
 
 Overview:
 
-1. Ensure Bluetooth is running and headphones are connected.
-2. ~~Ensure virtual sink is running.~~ (This is now happening automatically.)
-3. Open Audacious, pavucontrol, and OBS (last).
-4. If webcam isn't working (sigh), unplug it and replug it; you may have to remove and re-add the video source in OBS. And if you lose the keyboard and have to disconnect it, it may come back without Colemak, so be ready to run `arst`/`asdf` to put it back.
+1. Make sure passphrase is already in `ssh-agent`, to avoid having to type passphrase on stream: `ssh-add`.
+2. Bump font size in kitty (`Control-Shift-+` x 5).
+2. Ensure Bluetooth is running and headphones are connected.
+3. ~~Ensure virtual sink is running.~~ (This is now happening automatically.)
+4. Open Audacious, pavucontrol, and OBS (last).
+5. If webcam isn't working (sigh), unplug it and replug it; you may have to remove and re-add the video source in OBS. And if you lose the keyboard and have to disconnect it, it may come back without Colemak, so be ready to run `arst`/`asdf` to put it back.
 
 # Bluetooth
 
