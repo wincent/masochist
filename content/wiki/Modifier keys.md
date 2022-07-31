@@ -106,3 +106,10 @@ A variant on the "sacrificial" idea:
 Another variant:
 
 - If using something like xkeysnail, swap Alt and Control _except_ in the terminal.
+
+## Screencasts
+
+I made a couple of screencasts describing my efforts to set up Linux with macOS-style keybindings here:
+
+- [macOS keyboard bindings on Linux](https://youtu.be/TBqTHesnzkI) (December 2020)
+- [macOS dead letters on Linux](https://youtu.be/uh_76A2oEWQ) (July 2022)

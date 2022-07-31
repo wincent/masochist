@@ -58,3 +58,10 @@ As of the commit mentioned earlier, I currently have these shoe-horned into my s
 - `Option-Shift-e u` = `Ú`
 - `Option-u u` = `ü`
 - `Option-Shift-u u` = `Ü`
+- `Shift-Option-Minus` = `—` (em dash)
+- `Shift-Option-2` = `€`
+
+I made a couple of screencasts describing my efforts to set up Linux with these and other macOS-style keybindings here:
+
+- [macOS dead letters on Linux](https://youtu.be/uh_76A2oEWQ) (July 2022)
+- [macOS keyboard bindings on Linux](https://youtu.be/TBqTHesnzkI) (December 2020)
