@@ -3,7 +3,9 @@ tags: wiki
 title: Typing special symbols on a Linux keyboard
 ---
 
-At least in the Colemak layout, the following are compatible with all the hacks I've got in place to make the Linux keyboard behave at least somewhat similarly to how the Mac does. Additionally, as of [9c241271b715a939](https://github.com/wincent/wincent/commit/9c241271b715a939a445eb02828baa6f8036f4d3), I have some macOS-style dead-key bindings in place, noted in the appendix.
+At least in the Colemak layout, the following[^following] are compatible with all the hacks I've got in place to make the Linux keyboard behave at least somewhat similarly to how the Mac does. Additionally, as of [9c241271b715a939](https://github.com/wincent/wincent/commit/9c241271b715a939a445eb02828baa6f8036f4d3), I have some macOS-style dead-key bindings in place, noted in the appendix.
+
+[^following]: As described in ["Multilingual" on the Colemak wiki](https://colemak.com/Multilingual).
 
 # Dead letters
 
@@ -40,7 +42,7 @@ These ones don't work:
 
 # Appendix: macOS-style bindings
 
-These I have shoe-horned into my set-up (plus some extras, but the ones listed below are the ones that you actually have to type in Spanish from time to time):
+As of the commit mentioned earlier, I currently have these shoe-horned into my set-up (plus some extras, but the ones listed below are the ones that you actually have to type in Spanish from time to time) by a combination of [Interception Tools](https://gitlab.com/interception/linux/tools) and [`~/.XCompose`](https://linux.die.net/man/5/compose) (`man 5 Compose`):
 
 - `Option-n n` = `ñ`
 - `Option-Shift-n n` = `Ñ`
