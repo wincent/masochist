@@ -3,7 +3,7 @@ tags: wiki
 title: Typing special symbols on a Linux keyboard
 ---
 
-At least in the Colemak layout, the following are compatible with all the hacks I've got in place to make the Linux keyboard behave at least somewhat similarly to how the Mac does.
+At least in the Colemak layout, the following are compatible with all the hacks I've got in place to make the Linux keyboard behave at least somewhat similarly to how the Mac does. Additionally, as of [9c241271b715a939](https://github.com/wincent/wincent/commit/9c241271b715a939a445eb02828baa6f8036f4d3), I have some macOS-style dead-key bindings in place, noted in the appendix.
 
 # Dead letters
 
@@ -37,3 +37,22 @@ These ones don't work:
 
 - `AltGr + Minus` = `–` (en dash, clashes with "Decrease zoom").
 - `AltGr + Plus` = `×` (multiplication, clashes with "Increase zoom").
+
+# Appendix: macOS-style bindings
+
+These I have shoe-horned into my set-up (plus some extras, but the ones listed below are the ones that you actually have to type in Spanish from time to time):
+
+- `Option-n n` = `ñ`
+- `Option-Shift-n n` = `Ñ`
+- `Option-e a` = `á`
+- `Option-Shift-e a` = `Á`
+- `Option-e e` = `é`
+- `Option-Shift-e e` = `É`
+- `Option-e i` = `í`
+- `Option-Shift-e i` = `Í`
+- `Option-e o` = `ó`
+- `Option-Shift-e o` = `Ó`
+- `Option-e u` = `ú`
+- `Option-Shift-e u` = `Ú`
+- `Option-u u` = `ü`
+- `Option-Shift-u u` = `Ü`
