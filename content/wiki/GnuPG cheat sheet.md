@@ -32,6 +32,21 @@ $ gpg --list-secret-keys
 $ gpg --fingerprint
 ```
 
+# List "tons of stuff" about keys for a given email
+
+```shell
+$ gpg \
+    --list-keys \
+    --keyid-format=long \
+    --with-keygrip \
+    --with-fingerprint \
+    --fingerprint \
+    --list-options=show-unusable-subkeys \
+    $EMAIL
+```
+
+(`show-unusable-subkeys` will show info about revoked/expired subkeys still in the keyring.)
+
 # Deleting keys from a keyring
 
 ## Deleting a private key
