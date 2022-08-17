@@ -842,22 +842,6 @@
             Panther, Tiger) as well as on Leopard and Snow Leopard.
           </p>
 
-          <h5>
-            Synergy 3.4 for Mac OS X 10.2 and later
-            <a href="https://wincent.com/l/synergy3"
-              ><img
-                style="float: right;"
-                src="/a/gfx/download.jpg"
-                alt="Download"
-                width="80"
-                height="32"
-            /></a>
-          </h5>
-
-          <p>
-            <a href="https://wincent.com/l/synergy3">SynergyJaguar.zip</a> (ZIP,
-            2MB).
-          </p>
         </div>
       </div>
       <div id="right">

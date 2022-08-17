@@ -832,50 +832,6 @@
             is being kept online for historical purposes only.
           </p>
 
-          <h4>Synergy installer (latest stable release)</h4>
-
-          <h5>
-            Synergy 3.4 for Mac OS X 10.2 and later
-            <a href="https://wincent.com/l/synergy3"
-              ><img
-                style="float: right;"
-                src="/a/gfx/download.jpg"
-                alt="Download"
-                width="80"
-                height="32"
-            /></a>
-          </h5>
-
-          <p>
-            <a href="https://wincent.com/l/synergy3">SynergyJaguar.zip</a> (ZIP,
-            2MB).
-          </p>
-
-          <h4>Synergy installer (latest alpha/experimental release)</h4>
-
-          <p>
-            This development release works <em>only</em> on Snow Leopard. For a
-            stable release that works on older versions of Mac OS X (Jaguar,
-            Panther, Tiger) as well as on Leopard, please see
-            <a href="tiger/">here</a>.
-          </p>
-
-          <h5>
-            Synergy 4.0.1a for Mac OS X 10.6 and later
-            <a href="https://wincent.com/l/synergy4"
-              ><img
-                style="float: right;"
-                src="/a/gfx/download.jpg"
-                alt="Download"
-                width="80"
-                height="32"
-            /></a>
-          </h5>
-
-          <p>
-            <a href="https://wincent.com/l/synergy4">SynergyBeta.zip</a> (ZIP,
-            1.7MB).
-          </p>
         </div>
       </div>
       <div id="right">
