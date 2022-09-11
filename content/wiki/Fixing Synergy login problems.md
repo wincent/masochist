@@ -1,5 +1,6 @@
 ---
 tags: synergy wiki
+title: Fixing Synergy login problems
 ---
 
 The number one [Synergy](/wiki/Synergy) support issue is the failure of the "Launch at login" checkbox to work.
@@ -16,5 +17,3 @@ If you still are seeing the issue after performing these steps there are a coupl
 Firstly, if your are running on a very small screen and there is no room on the menu bar for Synergy's control buttons then you may think it is not running even when it is.
 
 Alternatively, you may have your preferences set so that Synergy won't show anything in the menu bar if iTunes is not running.
-
-Finally, you may have a glitch local to your system that explains the issue, in which case you should go through the basic troubleshooting tips described [here](/l/bugs). In general following those tips should clean up or identify any anomalies.
