@@ -770,6 +770,19 @@ Remaining things to try:
 - Turn off auto-joining (require admin to make changes too).
 - Do WiFi log analysis on personal laptop, for comparison.
 
+## Final "resolution"
+
+This is immensely unsatisfying, but I did "resolve" the issue in the end without really understanding the root cause. I did this by deleting some preference files and rebooting.
+
+These are the files I got rid of:
+
+- `/Library/Preferences/SystemConfiguration/NetworkInterfaces.plist`
+- `/Library/Preferences/SystemConfiguration/com.apple.airport.preferences.plist`
+- `/Library/Preferences/SystemConfiguration/com.apple.wifi.message-tracer.plist`
+- `/Library/Preferences/SystemConfiguration/preferences.plist`
+
+I even did a textual diff to see what changed between those files and the new files created by the operating system; while there was some churn, nothing in there looked overtly suspicious (and it's a corporate machine so I don't want to post the actual diffs here in case I inadvertently disclose something sensitive), so I might never know what the root cause really was.
+
 # Appendix
 
 Other tools:
