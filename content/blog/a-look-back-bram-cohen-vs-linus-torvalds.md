@@ -7,7 +7,7 @@ I just stumbled across a fascinating mailing list thread in which there's a fair
 
 Now, I've never had a particular liking for either of these personalities, although I've had to recognize that they're very clever individuals. Both of them have been known for occasional demonstrations of arrogance.
 
-But the really interesting thing about [their interchange](http://www.gelato.unsw.edu.au/archives/git/0504/2153.html) is not the fireworks in the thread but the way things look like in hindsight. Having become familiar with Git over the last few days I have to say that Torvalds was right on just about every count. I knew Torvalds was smart, but seeing as I was never really more than an occasional Linux user I never realized just how smart; I'd thought he was just a good programmer who happened to be in the right place at the right time and had a few good ideas. But after closely studying Git I'm a little bit awestruck; Torvalds is a frickin' genius, a true visionary, and somehow managed to just "get it" and instantly, in a flash of insight, come up with "the solution" for version control. In the meantime, Codeville still languishes in pre-1.0 "alphaville" and Git has forged ahead to become (at version 1.5.2.4) the most powerful, high-performance, superbly documented version control system out there and with a stunningly active community.
+But the really interesting thing about [their interchange](https://lore.kernel.org/git/Pine.LNX.4.58.0504261347520.18901@ppc970.osdl.org/) is not the fireworks in the thread but the way things look like in hindsight. Having become familiar with Git over the last few days I have to say that Torvalds was right on just about every count. I knew Torvalds was smart, but seeing as I was never really more than an occasional Linux user I never realized just how smart; I'd thought he was just a good programmer who happened to be in the right place at the right time and had a few good ideas. But after closely studying Git I'm a little bit awestruck; Torvalds is a frickin' genius, a true visionary, and somehow managed to just "get it" and instantly, in a flash of insight, come up with "the solution" for version control. In the meantime, Codeville still languishes in pre-1.0 "alphaville" and Git has forged ahead to become (at version 1.5.2.4) the most powerful, high-performance, superbly documented version control system out there and with a stunningly active community.
 
 > Git is a weekend hack which looks like a weekend hack.
 
@@ -23,7 +23,7 @@ And clicking through [the link](http://article.gmane.org/gmane.comp.version-cont
 
 > 3-way merge is an inappropriate choice of merge algorithm for a modern VCS.
 
-He describes a scenario in which the merge algorithm doesn't produce desirable results. Once you understand the scenario you can scan [the mailing list thread](http://www.gelato.unsw.edu.au/archives/git/0504/2153.html) where Bram and Linus duke it out; selected highlights:
+He describes a scenario in which the merge algorithm doesn't produce desirable results. Once you understand the scenario you can scan [the mailing list thread](https://lore.kernel.org/git/Pine.LNX.4.58.0504261347520.18901@ppc970.osdl.org/) where Bram and Linus duke it out; selected highlights:
 
 > **Bram:** Honestly, that you would think of doing whole-tree three-way merges and even consider moving lines between files shows that you haven't explored the merge problem very deeply. This is a much harder problem than you think it is, and one which has already been solved by other systems.
 >
