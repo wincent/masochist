@@ -13,7 +13,7 @@ title: GPG key rotation notes
 - **Create a signing subkey if you need to.** A primary key _is_ a signing key, but because you're storing it offline, you need to generate a signing subkey if (and only if) you need to sign things. Like encryption subkeys, this should have an expiry date; you can periodically issue a new signing subkey.[^work]
 - **Synchronize expiry dates to reduce maintenance burden.** Line up the expiry dates on all the keys so that you can refresh them all at the same time. That generally means updating the expiry on your personal and work primary keys, and generating new encryption (and possibly signing) subkeys. 2 years is a good expiry interval (not too often to be burdensome, not so infrequent that you forget how to update.)
 
-[^work]: On my work machine, I don't use a signing key and I don't sign Git commits (I don't even _have_ a signing subkey). This is because most of my work is done on Codespaces, and getting GPG keys working there is a speed bump I'd rather avoid at this time (writing this in June 2022). For my personal machines, I do have a signing key.
+[^work]: ~~On my work machine, I don't use a signing key and I don't sign Git commits (I don't even _have_ a signing subkey). This is because most of my work is done on Codespaces, and getting GPG keys working there is a speed bump I'd rather avoid at this time (writing this in June 2022). For my personal machines, I do have a signing key.~~ This is no longer true; I have signing keys on both work and personal machines (but I still don't sign commits on Codespaces).
 
 # Example rotation procedures
 
