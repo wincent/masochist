@@ -1,5 +1,5 @@
 ---
-tags: wiki
+tags: wiki macos ruby
 title: Unbreaking Ruby compilation on macOS "Big Sur" 11.6.2
 ---
 
@@ -60,3 +60,7 @@ After that, building works:
 ruby extconf.rb
 make
 ```
+
+# See also
+
+See also, [Unbreaking Ruby compilation on macOS "Monterey" 12.6.1].
