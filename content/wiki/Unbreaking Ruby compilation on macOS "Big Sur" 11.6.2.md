@@ -63,4 +63,4 @@ make
 
 # See also
 
-See also, [Unbreaking Ruby compilation on macOS "Monterey" 12.6.1].
+See also, [Unbreaking Ruby compilation on macOS "Monterey" 12.6.1](/wiki/Unbreaking_Ruby_compilation_on_macOS_"Monterey"_12.6.1).
