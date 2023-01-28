@@ -12,10 +12,12 @@ After grabbing the ISO image from [the download page](https://archlinux.org/down
 ```bash
 diskutil list # figure out device eg. /dev/disk3
 diskutil unmountDisk /dev/disk3
-sudo dd if=/Users/glh/Downloads/archlinux-2021.03.01-x86_64.iso of=/dev/rdisk3 bs=1m
+sudo dd if=/Users/wincent/Downloads/archlinux-2021.03.01-x86_64.iso of=/dev/rdisk3 bs=1m
 ```
 
-After that, it's a matter of booting from the media (see "Selecting boot device at power-on below) and kicking off the installation script:
+After that, it's a matter of booting from the media (ie. tap F12 repeatedly as described in "Selecting boot device at power-on" below). The option you want is "UEFI: USB", not "UEFI: USB, Partition 2" or "USB". When the GRUB menu appears, the first option will be autoselected and used by default, but it you don't want to wait you can select it yourself (it's "Arch Linux install medium (x86_64, UEFI)").
+
+Kick off the installation script:
 
 ```bash
 loadkeys colemak # "iyasefjr cyifmae" typing colemak-style on qwerty)
@@ -31,6 +33,19 @@ reboot
 
 cd code/wincent
 ./install
+```
+
+In order to do anything useful, need to get SSH key and GPG key onto the box. That means setting:
+
+```
+PasswordAuthentication yes
+```
+
+in `/etc/ssh/sshd_config`, sending a `SIGHUP` to the daemon (eg. something like `pkill -1 sshd`), and then copying over the keys; eg:
+
+```
+scp ~/.ssh/id_ed25519.pub huertas.local:.ssh
+scp -rp ~/.gnupg huertas.local
 ```
 
 # Reconnecting to the WiFi
