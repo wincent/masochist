@@ -31,7 +31,7 @@ I store a detailed copy of these notes (with concrete paths and hostnames etc) o
     2.  Add key files to 1Password, tagged with "ssh", and noting the encryption passphrase.
     3.  Mark old key files as archived in 1Password.
 2.  On personal laptop:
-    2.  Create new key etc.
+    1.  Create new key etc.
         ```
         ssh-add # Make sure old key is in agent; will need it to connect to Linux desktop and push.
         cd ~/.ssh
@@ -66,7 +66,7 @@ I store a detailed copy of these notes (with concrete paths and hostnames etc) o
     5.  Import new personal laptop key into AWS console.
         1. Go to AWS console → EC2 → Key pairs → Actions → Import key pair
         2. Note the key ID
-        4. Paste the key ID into my `create-instance` script in my Ansible configs.
+        3. Paste the key ID into my `create-instance` script in my Ansible configs.
     6.  Rotate my Git backups key.
 3.  Add new public keys to, and remove old keys from:
     1.  GitHub (https://github.com/settings/keys) — all "Authentication", not "Signing" keys.
