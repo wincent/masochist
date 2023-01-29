@@ -48,7 +48,22 @@ scp ~/.ssh/id_ed25519.pub huertas.local:.ssh
 scp -rp ~/.gnupg huertas.local
 ```
 
-# Reconnecting to the WiFi
+# Managing WiFi with `iwctl` (part of [`iwd`](https://wiki.archlinux.org/title/iwd))
+
+```bash
+device list # list devices (eg. wlan0)
+device wlan0 set-property Powered on # turn on
+station wlan0 scan # scan for networks
+station wlan0 get-networks # list networks
+station wlan0 connect "Cole Valley" # connect to a network (tab completion works)
+station wlan0 connect DIGIFIBRA-PLUS-Xz3f # connect to a network
+```
+
+# Managing WiFi with `netctl`
+
+I used to use `netctl` before switching to `iwd`, so just leaving these notes here for posterity.
+
+## Reconnecting to the WiFi
 
 ```bash
 netctl restart $PROFILE # eg netctl restart cole-valley
@@ -58,7 +73,7 @@ netctl stop $PROFILE
 netctl start $PROFILE
 ```
 
-# Getting status for a WiFi connection
+## Getting status for a WiFi connection
 
 ```bash
 netctl status cole-valley
@@ -66,7 +81,7 @@ netctl status digifibra-xz3f
 netctl status digifibra-plus-xz3f
 ```
 
-## Checking to see whether a network is enabled and/or active
+### Checking to see whether a network is enabled and/or active
 
 ```bash
 netctl is-enabled cole-valley
@@ -78,7 +93,7 @@ netctl is-active digifibra-xz3f
 netctl is-active digifibra-plus-xz3f
 ```
 
-# Switching to another WiFi network
+## Switching to another WiFi network
 
 ```bash
 sudo netctl switch-to cole-valley
@@ -86,7 +101,7 @@ sudo netctl switch-to digifibra-xz3f
 sudo netctl switch-to digifibra-plus-xz3f
 ```
 
-# Other WiFi related commands
+## Other WiFi related commands
 
 For more of these, see `man netctl`:
 
