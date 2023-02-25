@@ -45,8 +45,23 @@ in `/etc/ssh/sshd_config`, sending a `SIGHUP` to the daemon (eg. something like 
 
 ```
 scp ~/.ssh/id_ed25519.pub huertas.local:.ssh
-scp -rp ~/.gnupg huertas.local
+scp -rp ~/.gnupg huertas.local:
 ```
+
+Note that if you already have a keyring on the Arch machine and you want to just copy over the secret key without overwriting everything, you can do:
+
+```
+gpg --list-secret-keys --key-id-format LONG # look for "rsa4096/$KEY_ID"
+gpg --export-secret-key $KEY_ID | ssh huertas.local gpg --import --batch
+
+# On the Arch machine:
+gpg --edit-key $KEY_ID # run `trust` to set trust level to ultimate
+```
+
+Source:
+
+- [Stack Overflow, "How to transfer pgp private key to another computer?"](https://stackoverflow.com/a/3176373/2103996) (on using `ssh` to run `gpg --import`)
+- [Stack Overflow, "gpg-agent forwarding: inappropriate ioctl for device"](https://stackoverflow.com/a/73169380/2103996) (on using `--batch`)
 
 # Managing WiFi with `iwctl` (part of [`iwd`](https://wiki.archlinux.org/title/iwd))
 
