@@ -243,7 +243,7 @@ xev
 
 ## Option 1: Use `efibootmgr` to repair the boot table
 
-There may be a better way to fix this (probably in [the UEFI wiki page](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface)), but the following is the easiest way I have found so far to restore bootability to the system, [using `efibootmgr`](https://wiki.gentoo.org/wiki/Efibootmgr) to get the boot entries back in place.
+There may be a better way to fix this (probably in [the UEFI wiki page](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface)), but the following is the most concise way I have found so far to _manually_ restore bootability to the system, [using `efibootmgr`](https://wiki.gentoo.org/wiki/Efibootmgr) to get the boot entries back in place. "Option 2", further down, is decidedly easier and somewhat more automated.
 
 From the installation medium, boot in the UEFI Arch installer. We need this in order to access tools such as `cryptsetup` and `mount` which are stored under `/usr` on the encrypted volume.
 
