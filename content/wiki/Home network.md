@@ -32,9 +32,13 @@ title: Home network
   - IPv4 `192.168.86.1`
   - Subnet mask: `255.255.255.0`
   - DNS `192.168.86.1`
+  - DHCP pool `192.168.86.20` to `192.168.86.250`
   - WiFi clients:
     - quevedo (work laptop, IPv4 `192.168.86.235`, MAC `a0:78:17:9e:71:bd`)
     - retiro (personal laptop, IPv4 `192.168.86.236`, MAC `ac:bc:32:a9:85:cf`)
+  - Mesh peers:
+      - `living-room` (LAN IP `192.168.86.1`, WAN IP `192.168.1.128`and MAC `1c:f2:9a:eb:2f:cd`)
+      - `master-bedroom` (LAN IP `192.168.86.97`, WAN IP `192.168.1.129` and MAC `1c:f2:9a:eb:2f:cd`)
 
 [^dhcp]: Obviously, DHCP-assigned addresses are subject to change, although I have set up DHCP binding for the MAC addresses where possible (ie. on the ISP router).
 [^MAC]: ["Is it dangerous to post my MAC address publicly?"](https://security.stackexchange.com/a/67896/151988)
