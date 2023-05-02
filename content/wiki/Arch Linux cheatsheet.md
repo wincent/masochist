@@ -308,7 +308,7 @@ FS0:
 b
 ```
 
-In addition to `a.nsh` and `b.nsh`, [my installation script](https://wincent.com/link/arch-linux-install.sh) also creates `a.sh` and `b.sh` that can contain copies of the `efibootmgr` commands printed above. This means that, after booting using the above technique, you can run `sudo bash /boot/b.sh && sudo bash /boot/b.sh` to permanently repair the boot table ("permanently", that is, until the next BIOS update). Note the order in which you run these commands matters; running `b.sh` first then `a.sh` ensures that "linux" comes before "linux-lts" in the boot order.
+In addition to `a.nsh` and `b.nsh`, [my installation script](https://wincent.com/link/arch-linux-install.sh) also creates `a.sh` and `b.sh` that can contain copies of the `efibootmgr` commands printed above. This means that, after booting using the above technique, you can run `sudo bash /boot/b.sh && sudo bash /boot/a.sh` to permanently repair the boot table ("permanently", that is, until the next BIOS update). Note the order in which you run these commands matters; running `b.sh` first then `a.sh` ensures that "linux" comes before "linux-lts" in the boot order.
 
 # Seeing fan speed and temperature information
 
