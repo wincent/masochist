@@ -46,7 +46,7 @@ So, our goal then is to:
 
 1. Import the private primary key from 1Password.
 2. Bump the expiry date on it.
-3. (Optional) Generate a new signing subkey with a matching expiry date; I'll be skipping this step on my work machine because I don't sign stuff there, I only encrypt it.
+3. Generate a new signing subkey with a matching expiry date.
 4. Generate a new encryption subkey with a matching expiry date.
 5. Publish the updated key to the keyservers.
 6. Export the updated primary key from GnuPG (including the subkeys).
@@ -150,12 +150,34 @@ ssb  rsa4096/A81880D9C0B03264
 gpg> save
 ```
 
+Repeat the `addkey` command to create a new signing subkey as well. This time, you'll choose:
+
+```
+   (4) RSA (sign only)
+```
+
 Now, publish:
 
 ```bash
 gpg --send-keys 0x62106B56923F3481
 gpg --send-keys --keyserver pgp.mit.edu 0x62106B56923F3481
 gpg --send-keys --keyserver keyserver.ubuntu.com 0x62106B56923F3481
+```
+
+Note, if you see a failure to send like this:
+
+```
+gpg: keyserver send failed: End of file
+```
+
+You may be seeing [a DNS failure as described here](https://unix.stackexchange.com/a/673325/140622); one solution is to look up the IP addresses and use those instead:
+
+```
+dig +short keyserver.ubuntu.com | head -n1
+gpg --send-keys --keyserver 162.213.33.9 0x62106B56923F3481
+dig +short pgp.mit.edu | head -n1
+dig +short cryptonomicon.mit.edu | head -n1
+gpg --send-keys --keyserver 18.9.60.141 0x62106B56923F3481
 ```
 
 Now we can export the public key, including the subkeys, for use in GitHub:
@@ -176,7 +198,18 @@ Jew5lkkOc3gMW6I0e6ELMHERV6Yfy+HvA2O5/ThU19aOzMnGFkKDFFdQh48bdw==
 -----END PGP PUBLIC KEY BLOCK-----
 ```
 
-Which we paste into our [GitHub GPG Settings](https://github.com/settings/gpg/new), and can discard the file:
+Which we paste into:
+
+- [GitHub GPG settings](https://github.com/settings/gpg/new)
+- [GitLab GPG settings](https://gitlab.com/-/profile/gpg_keys)
+- [Source Hut key settings](https://meta.sr.ht/keys)
+- [Codeberg key settings](https://codeberg.org/user/settings/keys) (additionally, Codeberg offers you the ability to "verify" the key by using it to sign a token).
+
+But [not BitBucket yet](https://jira.atlassian.com/browse/BCLOUD-3166)... Maybe later they will add support for it.
+
+**Note:** You have to delete the old version of the key from the UI _first_ before adding the new version in GitHub, GitLab, and Codeberg, otherwise they declare it is a duplicate. Source Hut is the odd one out here, letting you add the new version of the key without deleting the old one.
+
+You can then discard the file:
 
 ```bash
 rm 0x62106B56923F3481.pub.asc
@@ -228,19 +261,25 @@ Review final result with `gpg --edit-key wincent@github.com`:
 Secret subkeys are available.
 
 pub  rsa4096/62106B56923F3481
-     created: 2021-06-04  expires: 2023-06-11  usage: SC
+     created: 2021-06-04  expires: 2024-06-14  usage: SC
      trust: ultimate      validity: ultimate
 ssb  rsa4096/424385B611E36E91
      created: 2021-06-04  expired: 2022-06-04  usage: E
 ssb  rsa4096/A81880D9C0B03264
-     created: 2022-06-11  expires: 2023-06-11  usage: E
+     created: 2022-06-11  expired: 2023-06-11  usage: E
+ssb  rsa4096/9F6B84B5B1E9955E
+     created: 2022-06-20  expired: 2023-06-11  usage: S
+ssb  rsa4096/CA4586F711EDDDF6
+     created: 2023-06-15  expires: 2024-06-14  usage: E
+ssb  rsa4096/568F2553F25CB8CF
+     created: 2023-06-15  expires: 2024-06-14  usage: S
 [ultimate] (1). Greg Hurrell <wincent@github.com>
 ```
 
 - We see `pub` (public) instead of `sec` (secret), indicating that our primary secret key is now offline.
-- We see our expired `E` (encryption) subkey as well as our new one.
+- We see our expired and unexpired `E` (encryption) subkeys, as well as our expired and unexpired `S` (signing) subkeys.
 
-The main reason I even have this key is so that I can encrypt and decrypt sensitive dotfiles in public repos, so let's test that out. (I don't even have a signing subkey, so uploading the key to GitHub is really just going through the motions for no real reason).
+The main reason I even have this key is so that I can encrypt and decrypt sensitive dotfiles in public repos, so let's test that out.
 
 Inspect state in the GPG agent with `gpg-connect-agent 'keyinfo --list' /bye`:
 
@@ -252,42 +291,15 @@ S KEYINFO 52577084CEE4B10AC7E75601C6BB9D8D15C883BC D - - - P - - -
 OK
 ```
 
-As noted in my older notes (below), I'm not actually sure what all those keygrips correspond to. Based on the output of `gpg --list-keys --keyid-format=long --with-keygrip --with-fingerprint`, the `E4E775...` key corresponds to my encryption subkey, but I have no idea what the others are.
-
-```bash
-cd $DOTFILES
-```
-
-Note that `bin/git-cipher decrypt` still works, but produces a bunch of messages like this:
+We'll test this out by re-encrypting the secrets using `bin/git-cipher init`. If you see an error like this:
 
 ```
-aspects/ssh/templates/.ssh/.config.erb.encrypted -> aspects/ssh/templates/.ssh/config.erb [decrypting ...gpg: Note: secret key 424385B611E36E91 expired at Sat  4 Jun 22:46:55 2022 CEST
+gpg: error retrieving 'greg@hurrell.net' via WKD: No data
+gpg: greg@hurrell.net: skipped: No data
+gpg: [stdin]: encryption failed: No data
 ```
 
-Re-encrypt everything with the new subkey (`--force` here is because normally this would be a no-op, as the tool bails out if the plain text inputs aren't newer than the encrypted files):
-
-```bash
-bin/git-cipher encrypt --force
-```
-
-Now see that `bin/git-cipher decrypt` no longer prints the warnings; instead, it prints messages like:
-
-```
-aspects/ssh/templates/.ssh/.config.erb.encrypted -> aspects/ssh/templates/.ssh/config.erb [decrypting ... done]
-```
-
-And we can see that a sample file has indeed been encrypted with the new key:
-
-```shell
-$ gpg --list-packets aspects/ssh/templates/.ssh/.config.erb.encrypted
-gpg: encrypted with rsa4096 key, ID A81880D9C0B03264, created 2022-06-11
-      "Greg Hurrell <wincent@github.com>"
-gpg: encrypted with rsa4096 key, ID FF08BAF685DCF99C, created 2014-05-20
-      "Greg Hurrell <greg@hurrell.net>"
-...
-```
-
-Push [the update](https://github.com/wincent/wincent/commit/f0152a2ee4cf7a3a753392ad8dc70c335ddc1200) to GitHub.
+it may be concealing [the real underlying issue behind a misleading error message](https://unix.stackexchange.com/questions/405599/gpg-error-retrieving-meexample-com-via-wkd#comment725629_405599), which is that the `greg@hurrell.net` subkey is now expired. (If you do the rotation _before_ the expiry, you won't see this error, but if you do, you'll have to rotate the keys on the personal laptop (see below) and _then_ do the test.)
 
 ## Rotating my `greg@hurrell.net` keys
 
@@ -469,7 +481,7 @@ Export the public key, including the subkeys, for use in GitHub:
 gpg --export --armor --output 0xF962DC1A1941CCC4.pub.asc 0xF962DC1A1941CCC4
 ```
 
-After pasting that into the [GitHub GPG settings](https://github.com/settings/gpg/new), replacing the previous copy (ie. delete the old one, then add the new one; unfortunately you can't do it in the opposite order because the page complains that the key is a duplicate), we can discard the file:
+After pasting that into the [GitHub GPG settings](https://github.com/settings/gpg/new), [GitLab GPG settings](https://gitlab.com/-/profile/gpg_keys), [Source Hut key settings](https://meta.sr.ht/keys), and [Codeberg key settings](https://codeberg.org/user/settings/keys), replacing the previous copy (ie. delete the old one, then add the new one; only Source Hut lets you do it in the opposite order because the other pages complain that the key is a duplicate), we can discard the file:
 
 ```bash
 rm 0xF962DC1A1941CCC4.pub.asc
@@ -481,7 +493,7 @@ Dump everything for storage in 1Password (when storing, tag the item with `gpg` 
 gpg --export-secret-keys --armor --output 'greg@hurrell.net GPG key 0xF962DC1A1941CCC4 expires 2023-06-11.asc' 0xF962DC1A1941CCC4
 ```
 
-Delete from local filesystem:
+After storing in 1Password, delete from local filesystem:
 
 ```bash
 shred -u \
@@ -542,16 +554,23 @@ gpg:         new signatures: 2
 
 Now for the real deal:
 
-```bash
-cd $DOTFILES
-bin/git-cipher status # Make sure I have no local changes.
-bin/git-cipher encrypt --force # Without --force, nothing happens because we're up-to-date.
+```shell
+$ cd $DOTFILES
+
+$ bin/git-cipher ls # Make sure I have no local changes.
+
+$ bin/git-cipher init # Dry run: should see something like this:
+preserving existing secrets
+[warning] using default --recipients value of greg@hurrell.net,wincent@github.com; pass something else to override
+[warning] not writing $DOTFILES/.git-cipher/secrets.json.asc because it already exists; re-run with --force to override
+
+$ bin/git-cipher init --force # Real deal.
 ```
 
-Confirm a sample file has been re-encrypted with the new key:
+Confirm the secrets have been re-encrypted with the new key:
 
 ```shell
-$ gpg --list-packets aspects/ssh/templates/.ssh/.config.erb.encrypted
+$ gpg --list-packets .git-cipher/secrets.json.asc
 gpg: encrypted with rsa4096 key, ID A81880D9C0B03264, created 2022-06-11
       "Greg Hurrell <wincent@github.com>"
 gpg: encrypted with rsa4096 key, ID F3B7FB88B7466831, created 2022-06-11
@@ -559,7 +578,7 @@ gpg: encrypted with rsa4096 key, ID F3B7FB88B7466831, created 2022-06-11
 ...
 ```
 
-Commit the changed files. This time, we have a signing key, so we'll use that to sign the commit and kill two test birds with one stone. First remind myself of the keyid; apparently, [using short IDs is bad](https://evil32.com/), so we use the long form:
+Commit the changed files. Because we have a signing key already set up we can confirm that the right signing subkey was used. First remind myself of the keyid; apparently, [using short IDs is bad](https://evil32.com/), so we use the long form:
 
 ```shell
 $ gpg --list-secret-keys --keyid-format=long
@@ -573,7 +592,13 @@ ssb   rsa4096/70516DBB88E4F779 2022-06-11 [S] [expires: 2023-06-11]
 ssb   rsa4096/F3B7FB88B7466831 2022-06-11 [E] [expires: 2023-06-11]
 ```
 
-Git will want the commit made with `git commit -S4282ED4A05CC894D53A541C3F962DC1A1941CCC4` (note the explicit use of the primary key ID, even though it is offline — Git/GPG know to select the last-created signing subkey ID instead, which would be ID `70516DBB88E4F779`). In my testing, `git commit -S` with no argument works too; GPG guesses the right default secret key as seen here:
+You can either:
+
+- Make the commit with an explicit ID; eg. `git commit -S4282ED4A05CC894D53A541C3F962DC1A1941CCC4` (note the explicit use of the primary key ID, even though it is offline — Git/GPG know to select the last-created signing subkey ID instead, which would be ID `70516DBB88E4F779`).
+- In my testing, `git commit -S` with no argument works too; GPG guesses the right default secret key.
+- Skip the `-S` entirely because we have `git config --global commit.gpgSign true` set.
+
+This test shows that the right (primary) key is automatically chosen:
 
 ```shell
 $ echo hello | gpg -s
