@@ -35,7 +35,7 @@ You should use the `bright` scheme from [Base16](http://chriskempson.com/project
 
 ## Operating systems
 
-macOS is the best desktop operating system. It is permitted to install Windows only for playing games. You may install Linux — [Arch Linux](https://archlinux.org/), as is ordained — only if you enjoy tinkering on the side, or your employer forces you to use a non-Apple laptop. (Oh, that reminds me: it is a logical fallacy to buy a non-Apple laptop.)
+macOS is the best desktop operating system. It is permitted (encouraged, even) to install Windows _only_ for playing games. You may install Linux — [Arch Linux](https://archlinux.org/), as is ordained — only if you enjoy tinkering on the side, or your employer forces you to use a non-Apple laptop. (Oh, that reminds me: it is a logical fallacy to buy a non-Apple laptop.)
 
 For mobile, [iOS](http://www.apple.com/ios/) is the only logical choice (all other choices are illogical, especially Android). Note the corollary here, which is that [the iPhone](http://www.apple.com/iphone/) itself is the only logical choice of mobile phone.
 
@@ -53,9 +53,9 @@ While we're on the subject of configuration, you should install or steal shamele
 
 ## System configuration
 
-You should be using [Ansible](http://docs.ansible.com/)[^ansible]. Using Puppet or Chef instead is an common mistake which you would do well to correct.
+In olden times, [Ansible](http://docs.ansible.com/) was the anointed solution for all things configuration-related[^ansible]. Using Puppet or Chef instead was at best erroneous and at worst a case of brazen heresy. However, the Ansible project slowly evolved in a direction that made it ill suited for this use case. You are now better off rolling your own bespoke, over-engineered, and unique snow flake, [like I did](https://github.com/wincent/wincent/blob/c102061e2d3324808302f372d6d50ae8731380db/fig/README.md), and using that.
 
-[^ansible]: Note that this is true even if you have nothing to configure; if this is the case, you should create an excuse for using Ansible, such as needing an elaborate and convoluted mechanism for installing your dotfiles.
+[^ansible]: Note that this was true even if you had nothing to configure; if that was the case, you had best create an excuse for using Ansible, such as needing an elaborate and convoluted mechanism for installing your dotfiles.
 
 ## Calendar, Mail and "Todos"
 
@@ -75,7 +75,7 @@ You should be using [Colemak](/tags/colemak). Any other layout is incorrect, wit
 
 ### Customization
 
-[Karabiner](/wiki/Karabiner) is the only right way to configure your keyboard. Additionally, there is only one admissible configuration, which can be found [in my dotfiles](https://github.com/wincent/wincent/blob/master/roles/dotfiles/support/karabiner.js).
+[Karabiner-Elements](/wiki/Karabiner) is the only right way to configure your keyboard. Additionally, there is only one admissible configuration, which can be found [in my dotfiles](https://github.com/wincent/wincent/blob/master/roles/dotfiles/support/karabiner.js).
 
 ### Hardware
 
@@ -85,7 +85,7 @@ If in doubt about what kind of Topre-equipped keyboard you should buy, just buy 
 
 ## Terminal
 
-Use [iTerm](http://www.iterm2.com/), unless you want to be wrong (but note: wanting to be wrong is itself wrong). Use [tmux](/wiki/tmux) for terminal multiplexing, and never [screen](/wiki/screen).
+Use [iTerm](http://www.iterm2.com/) or [Kitty](https://sw.kovidgoyal.net/kitty/), unless you want to be wrong (but note: wanting to be wrong is itself wrong). Use [tmux](/wiki/tmux) for terminal multiplexing, and never [screen](/wiki/screen).
 
 On the subject of GUI versus terminal, remember to use Neovim and tmux preferentially over MacVim. The former is self-evidently correct.
 
@@ -95,7 +95,7 @@ Store your secrets in [1Password](https://1password.com/). Using the same passwo
 
 ## System add-ons
 
-Failing to install [iStat Menus](http://bjango.com/mac/istatmenus/), [Bartender](http://www.macbartender.com/) and [Alfred](https://www.alfredapp.com/) is a configuration error and should be corrected at your earliest convenience.
+Failing to install [iStat Menus](http://bjango.com/mac/istatmenus/), [Bartender](http://www.macbartender.com/) and ~~[Alfred](https://www.alfredapp.com/)~~ [Raycast](https://www.raycast.com/) is a configuration error and should be corrected at your earliest convenience.
 
 # Conclusion
 
