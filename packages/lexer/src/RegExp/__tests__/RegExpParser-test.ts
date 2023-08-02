@@ -506,43 +506,43 @@ describe('RegExpParser', () => {
     it('matches ESCAPED_CHARACTER RegExp', () => {
       expect(new RegExpParser(ESCAPED_CHARACTER).parse())
         .toMatchInlineSnapshot(`
-        Object {
-          "children": Array [
-            Object {
+        {
+          "children": [
+            {
               "kind": "Atom",
-              "value": "\\\\",
+              "value": "\\",
             },
-            Object {
-              "children": Array [
-                Object {
+            {
+              "children": [
+                {
                   "kind": "Atom",
-                  "value": "\\"",
+                  "value": """,
                 },
-                Object {
+                {
                   "kind": "Atom",
                   "value": "/",
                 },
-                Object {
+                {
                   "kind": "Atom",
-                  "value": "\\\\",
+                  "value": "\\",
                 },
-                Object {
+                {
                   "kind": "Atom",
                   "value": "b",
                 },
-                Object {
+                {
                   "kind": "Atom",
                   "value": "f",
                 },
-                Object {
+                {
                   "kind": "Atom",
                   "value": "n",
                 },
-                Object {
+                {
                   "kind": "Atom",
                   "value": "r",
                 },
-                Object {
+                {
                   "kind": "Atom",
                   "value": "t",
                 },
@@ -558,30 +558,30 @@ describe('RegExpParser', () => {
 
     it('matches ESCAPED_UNICODE RegExp', () => {
       expect(new RegExpParser(ESCAPED_UNICODE).parse()).toMatchInlineSnapshot(`
-        Object {
-          "children": Array [
-            Object {
+        {
+          "children": [
+            {
               "kind": "Atom",
-              "value": "\\\\",
+              "value": "\\",
             },
-            Object {
+            {
               "kind": "Atom",
               "value": "u",
             },
-            Object {
-              "child": Object {
-                "children": Array [
-                  Object {
+            {
+              "child": {
+                "children": [
+                  {
                     "from": "0",
                     "kind": "Range",
                     "to": "9",
                   },
-                  Object {
+                  {
                     "from": "A",
                     "kind": "Range",
                     "to": "F",
                   },
-                  Object {
+                  {
                     "from": "a",
                     "kind": "Range",
                     "to": "f",
@@ -602,15 +602,15 @@ describe('RegExpParser', () => {
 
     it('matches EXPONENT_PART RegExp', () => {
       expect(new RegExpParser(EXPONENT_PART).parse()).toMatchInlineSnapshot(`
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "kind": "Atom",
                   "value": "E",
                 },
-                Object {
+                {
                   "kind": "Atom",
                   "value": "e",
                 },
@@ -618,14 +618,14 @@ describe('RegExpParser', () => {
               "kind": "CharacterClass",
               "negated": false,
             },
-            Object {
-              "child": Object {
-                "children": Array [
-                  Object {
+            {
+              "child": {
+                "children": [
+                  {
                     "kind": "Atom",
                     "value": "+",
                   },
-                  Object {
+                  {
                     "kind": "Atom",
                     "value": "-",
                   },
@@ -637,8 +637,8 @@ describe('RegExpParser', () => {
               "maximum": 1,
               "minimum": 0,
             },
-            Object {
-              "child": Object {
+            {
+              "child": {
                 "from": "0",
                 "kind": "Range",
                 "to": "9",
@@ -655,14 +655,14 @@ describe('RegExpParser', () => {
 
     it('matches FRACTIONAL_PART RegExp', () => {
       expect(new RegExpParser(FRACTIONAL_PART).parse()).toMatchInlineSnapshot(`
-        Object {
-          "children": Array [
-            Object {
+        {
+          "children": [
+            {
               "kind": "Atom",
               "value": ".",
             },
-            Object {
-              "child": Object {
+            {
+              "child": {
                 "from": "0",
                 "kind": "Range",
                 "to": "9",
@@ -679,10 +679,10 @@ describe('RegExpParser', () => {
 
     it('matches INTEGER_PART RegExp', () => {
       expect(new RegExpParser(INTEGER_PART).parse()).toMatchInlineSnapshot(`
-        Object {
-          "children": Array [
-            Object {
-              "child": Object {
+        {
+          "children": [
+            {
+              "child": {
                 "kind": "Atom",
                 "value": "-",
               },
@@ -690,21 +690,21 @@ describe('RegExpParser', () => {
               "maximum": 1,
               "minimum": 0,
             },
-            Object {
-              "children": Array [
-                Object {
+            {
+              "children": [
+                {
                   "kind": "Atom",
                   "value": "0",
                 },
-                Object {
-                  "children": Array [
-                    Object {
+                {
+                  "children": [
+                    {
                       "from": "1",
                       "kind": "Range",
                       "to": "9",
                     },
-                    Object {
-                      "child": Object {
+                    {
+                      "child": {
                         "from": "0",
                         "kind": "Range",
                         "to": "9",
@@ -727,21 +727,21 @@ describe('RegExpParser', () => {
 
     it('matches LINE_TERMINATOR RegExp', () => {
       expect(new RegExpParser(LINE_TERMINATOR).parse()).toMatchInlineSnapshot(`
-        Object {
-          "children": Array [
-            Object {
+        {
+          "children": [
+            {
               "kind": "Atom",
               "value": "
         ",
             },
-            Object {
-              "children": Array [
-                Object {
+            {
+              "children": [
+                {
                   "kind": "Atom",
                   "value": "
         ",
                 },
-                Object {
+                {
                   "kind": "Atom",
                   "value": "
         ",
@@ -749,7 +749,7 @@ describe('RegExpParser', () => {
               ],
               "kind": "Sequence",
             },
-            Object {
+            {
               "kind": "Atom",
               "value": "
         ",
@@ -762,20 +762,20 @@ describe('RegExpParser', () => {
 
     it('matches NAME RegExp', () => {
       expect(new RegExpParser(NAME).parse()).toMatchInlineSnapshot(`
-        Object {
-          "children": Array [
-            Object {
-              "children": Array [
-                Object {
+        {
+          "children": [
+            {
+              "children": [
+                {
                   "from": "A",
                   "kind": "Range",
                   "to": "Z",
                 },
-                Object {
+                {
                   "kind": "Atom",
                   "value": "_",
                 },
-                Object {
+                {
                   "from": "a",
                   "kind": "Range",
                   "to": "z",
@@ -784,24 +784,24 @@ describe('RegExpParser', () => {
               "kind": "CharacterClass",
               "negated": false,
             },
-            Object {
-              "child": Object {
-                "children": Array [
-                  Object {
+            {
+              "child": {
+                "children": [
+                  {
                     "from": "0",
                     "kind": "Range",
                     "to": "9",
                   },
-                  Object {
+                  {
                     "from": "A",
                     "kind": "Range",
                     "to": "Z",
                   },
-                  Object {
+                  {
                     "kind": "Atom",
                     "value": "_",
                   },
-                  Object {
+                  {
                     "from": "a",
                     "kind": "Range",
                     "to": "z",
@@ -822,20 +822,20 @@ describe('RegExpParser', () => {
 
     it('matches SOURCE_CHARACTER RegExp', () => {
       expect(new RegExpParser(SOURCE_CHARACTER).parse()).toMatchInlineSnapshot(`
-        Object {
-          "children": Array [
-            Object {
+        {
+          "children": [
+            {
               "from": "	",
               "kind": "Range",
               "to": "
         ",
             },
-            Object {
+            {
               "kind": "Atom",
               "value": "
         ",
             },
-            Object {
+            {
               "from": " ",
               "kind": "Range",
               "to": "￿",
@@ -849,14 +849,14 @@ describe('RegExpParser', () => {
 
     it('matches WHITESPACE RegExp', () => {
       expect(new RegExpParser(WHITESPACE).parse()).toMatchInlineSnapshot(`
-        Object {
-          "child": Object {
-            "children": Array [
-              Object {
+        {
+          "child": {
+            "children": [
+              {
                 "kind": "Atom",
                 "value": "	",
               },
-              Object {
+              {
                 "kind": "Atom",
                 "value": " ",
               },

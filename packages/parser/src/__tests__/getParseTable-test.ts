@@ -564,7 +564,7 @@ describe('getParseTable()', () => {
         const {contents} = $1;
 
         // TODO: Distinguish between these tokens in the lexer instead?
-        if (/^-?\\\\d+$/.test(contents)) {
+        if (/^-?\\d+$/.test(contents)) {
           $$ = {kind: 'INT', value: parseInt(contents, 10)};
         } else {
           $$ = {kind: 'FLOAT', value: contents};
