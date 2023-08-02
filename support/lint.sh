@@ -6,9 +6,6 @@ cd "$DIRECTORY/.."
 
 cp tsconfig-lint.json tsconfig-dynamic.json
 
+trap "cp tsconfig-empty.json tsconfig-dynamic.json" EXIT
+
 yarn tsc --build --force
-STATUS=$?
-
-cp tsconfig-empty.json tsconfig-dynamic.json
-
-exit $STATUS
