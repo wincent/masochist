@@ -1,13 +1,6 @@
 const {defaults} = require('jest-config');
 
 module.exports = {
-  globals: {
-    'ts-jest': {
-      diagnostics: {
-        warnOnly: true,
-      },
-    },
-  },
   moduleNameMapper: {
     '@masochist/(.+)$': '<rootDir>packages/$1/src',
   },
@@ -18,6 +11,13 @@ module.exports = {
     ...defaults.testPathIgnorePatterns,
     '<rootDir>/packages/[^/]+/lib/',
   ],
+  transform: {
+    '\\.[jt]sx?$': ['ts-jest', {
+      diagnostics: {
+        warnOnly: true,
+      },
+    }],
+  },
   fakeTimers: {
     enableGlobally: true,
   },
