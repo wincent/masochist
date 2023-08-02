@@ -148,7 +148,7 @@ function freeze<T>(object: T): Readonly<T> {
   if (Array.isArray(object)) {
     object.forEach((item) => freeze(item));
     return Object.freeze<T>(object);
-  } else if (typeof object === 'object') {
+  } else if (object && typeof object === 'object') {
     for (const value of Object.values(object)) {
       freeze(value);
     }
