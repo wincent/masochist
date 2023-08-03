@@ -1,12 +1,13 @@
 ---
 tags: macos wiki
+title: Converting MPC audio files to MP3
 ---
 
 Notes made while finding out how to convert [MPC](/wiki/MPC) files to another format suitable for encoding as [MP3](/wiki/MP3) or [AAC](/wiki/AAC).
 
 # Obtaining [mppdec](/wiki/mppdec)
 
-# NOTE: mppdc only runs on PowerPC cpu's (you have to find a very old mac to run it on)
+> **NOTE:** mppdec only runs on PowerPC CPUs (you have to find a very old Mac to run it on).
 
 At the time of writing version 1.95z2 is the latest available version of [mppdec](/wiki/mppdec).
 
