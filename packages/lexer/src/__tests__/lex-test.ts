@@ -22,6 +22,9 @@ describe('lex()', () => {
     // Build lexer.
     const ast = build(definition);
 
+    // Remove leading doc comment.
+    invariant(ast.statements.shift()?.kind === 'DocComment');
+
     // Remove `import Token from './Token'` statement.
     invariant(ast.statements.shift()?.kind === 'ImportStatement');
 
