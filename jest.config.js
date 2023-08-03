@@ -12,11 +12,14 @@ module.exports = {
     '<rootDir>/packages/[^/]+/lib/',
   ],
   transform: {
-    '\\.[jt]sx?$': ['ts-jest', {
-      diagnostics: {
-        warnOnly: true,
+    '\\.[jt]sx?$': [
+      'ts-jest',
+      {
+        diagnostics: {
+          warnOnly: true,
+        },
       },
-    }],
+    ],
   },
   fakeTimers: {
     enableGlobally: true,
