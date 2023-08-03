@@ -269,7 +269,7 @@ export default function build(table: TransitionTable): Program {
     kind: 'Program',
     statements: [
       ast.docComment(
-        'vim: set nomodifiable : DO NOT EDIT - edit `build.ts`, run `make lexer` instead',
+        'vim: set nomodifiable : DO NOT EDIT - edit "build.ts", run "make lexer" instead',
         '',
         '@generated',
       ),

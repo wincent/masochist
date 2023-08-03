@@ -7,12 +7,10 @@ import definition from '../definition';
 describe('build()', () => {
   it('builds an AST', () => {
     const ast = build(definition);
-    const build_ts = '`build.ts`';
-    const make_lexer = '`make lexer`';
     expect(print(ast)).toBe(
       dedent`
         /**
-         * vim: set nomodifiable : DO NOT EDIT - edit ${build_ts}, run ${make_lexer} instead
+         * vim: set nomodifiable : DO NOT EDIT - edit "build.ts", run "make lexer" instead
          *
          * @generated
          */
