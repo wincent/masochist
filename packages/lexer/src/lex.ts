@@ -1,3 +1,8 @@
+/**
+ * vim: set nomodifiable : DO NOT EDIT - edit `build.ts`, run `make lexer` instead
+ *
+ * @generated
+ */
 import Token from './Token';
 const REJECT = -1;
 const START = 0;

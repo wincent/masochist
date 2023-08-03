@@ -215,6 +215,16 @@ function printStatement(statement: Statement, indent: number): string {
     } else {
       return printIndent(indent) + 'continue;\n';
     }
+  } else if (statement.kind === 'DocComment') {
+    return [
+      printIndent(indent) + '/**',
+      statement.contents.map(
+        (line) => printIndent(indent) + [' *', line].filter(Boolean).join(' '),
+      ),
+      printIndent(indent) + ' */\n',
+    ]
+      .flat()
+      .join('\n');
   } else if (statement.kind === 'EmptyStatement') {
     return printIndent(indent) + '/* Empty. */;\n';
   } else if (statement.kind === 'ExportDefaultDeclaration') {

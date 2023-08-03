@@ -268,6 +268,11 @@ export default function build(table: TransitionTable): Program {
   const program: Program = {
     kind: 'Program',
     statements: [
+      ast.docComment(
+        'vim: set nomodifiable : DO NOT EDIT - edit `build.ts`, run `make lexer` instead',
+        '',
+        '@generated',
+      ),
       {
         kind: 'ImportStatement',
         specifiers: [

@@ -66,6 +66,11 @@ type ContinueStatement = {
   label?: string;
 };
 
+type DocComment = {
+  kind: 'DocComment';
+  contents: Array<string>;
+};
+
 type EmptyStatement = {
   kind: 'EmptyStatement';
 };
@@ -224,6 +229,7 @@ export type Statement =
   | BreakStatement
   | ClassDeclaration
   | ContinueStatement
+  | DocComment
   | EmptyStatement
   | ExportDefaultDeclaration
   | ExpressionStatement
@@ -367,6 +373,13 @@ const ast = {
     } else {
       return {kind: 'ContinueStatement'};
     }
+  },
+
+  docComment(...contents: Array<string>): DocComment {
+    return {
+      kind: 'DocComment',
+      contents,
+    };
   },
 
   expression(template: string): Expression {
