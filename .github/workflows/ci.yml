@@ -1,0 +1,107 @@
+name: ci
+
+on:
+  push:
+    branches: [next]
+  pull_request:
+    branches: [next]
+
+env:
+  yarn-cache-name: yarn-cache
+  yarn-cache-path: .yarn
+
+jobs:
+  check-lockfile:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Use or update Yarn cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.yarn-cache-path }}
+          key: ${{ matrix.node-version }}-${{ env.yarn-cache-name }}-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn --cache-folder=${{ env.yarn-cache-path }}
+      - run: git diff --quiet -- yarn.lock
+
+  format-check:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Use or update Yarn cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.yarn-cache-path }}
+          key: ${{ matrix.node-version }}-${{ env.yarn-cache-name }}-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn --cache-folder=${{ env.yarn-cache-path }} --frozen-lockfile
+      - run: yarn --cache-folder=${{ env.yarn-cache-path }} format:check
+
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Use or update Yarn cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.yarn-cache-path }}
+          key: ${{ matrix.node-version }}-${{ env.yarn-cache-name }}-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn --cache-folder=${{ env.yarn-cache-path }} --frozen-lockfile
+      - run: yarn --cache-folder=${{ env.yarn-cache-path }} lint
+
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Use or update Yarn cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.yarn-cache-path }}
+          key: ${{ matrix.node-version }}-${{ env.yarn-cache-name }}-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn --cache-folder=${{ env.yarn-cache-path }} --frozen-lockfile
+      - run: yarn --cache-folder=${{ env.yarn-cache-path }} build
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Use or update Yarn cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.yarn-cache-path }}
+          key: ${{ matrix.node-version }}-${{ env.yarn-cache-name }}-${{ hashFiles('**/yarn.lock') }}
+      - run: yarn --cache-folder=${{ env.yarn-cache-path }} --frozen-lockfile
+      - run: yarn --cache-folder=${{ env.yarn-cache-path }} test

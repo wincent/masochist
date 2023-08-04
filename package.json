@@ -24,8 +24,8 @@
     "build:dry": "tsc --build --dry",
     "build:force": "tsc --build --force",
     "build:watch": "tsc --build --watch",
-    "format": "prettier --loglevel warn --write '**/*.{graphql,js,json,md,ts}'",
-    "format:check": "prettier --loglevel warn --check '**/*.{graphql,js,json,md,ts}'",
+    "format": "prettier --loglevel warn --write '**/*.{graphql,js,json,md,ts,yml}'",
+    "format:check": "prettier --loglevel warn --check '**/*.{graphql,js,json,md,ts,yml}'",
     "lint": "support/lint.sh",
     "test": "jest"
   }
