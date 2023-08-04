@@ -3,14 +3,12 @@ import {invariant} from '@masochist/common';
 
 import keyToTransition from './NFA/keyToTransition';
 
-// TODO: see if I can just inline Consequent; doesn't need its own type
 import type {
+  Consequent,
   Expression,
   IfStatement,
   Program,
   Statement,
-  SwitchCase,
-  SwitchStatement,
   WhileStatement,
 } from '@masochist/codegen';
 import type {Transition} from './NFA/NFA';
@@ -32,15 +30,22 @@ export default function build(table: TransitionTable): Program {
     ],
   };
 
-  const switchStatement: SwitchStatement = {
-    kind: 'SwitchStatement',
-    cases: [],
-    condition: {
-      kind: 'Identifier',
-      name: 'this.state',
+  // Will make one consequent for each state.
+  const consequents: Array<Consequent> = [];
+  whileStatement.block.push(
+    {
+      kind: 'IfStatement',
+      consequents,
+      alternate: [
+        {
+          kind: 'ThrowStatement',
+          // TODO: include state id in error
+          expression: ast.new('Error', ast.string('Unexpected state')),
+        },
+      ],
     },
-  };
-  whileStatement.block.push(switchStatement, ast.statement('this.index++'));
+    ast.statement('this.index++'),
+  );
 
   // 0. Identify accept states reachable from exactly one other state, which
   // themselves have no outgoing edges.
@@ -84,11 +89,13 @@ export default function build(table: TransitionTable): Program {
       conditions[target] = (conditions[target] || []).concat(transition);
     }
 
-    // 2. Build case.
-    const determinant = i === START ? ast.identifier('START') : ast.number(i);
-    const switchCase: SwitchCase = {
-      kind: 'SwitchCase',
-      determinant,
+    // 2. Build state.
+    const consequent: Consequent = {
+      kind: 'Consequent',
+      condition: ast.equals(
+        ast.identifier('this.state'),
+        i === START ? ast.identifier('START') : ast.number(i),
+      ),
       block: [],
     };
     const isAccept = table.acceptStates.has(i)
@@ -99,7 +106,7 @@ export default function build(table: TransitionTable): Program {
 
     if (!conditions.length) {
       if (isIgnored) {
-        switchCase.block.push(
+        consequent.block.push(
           ...filterEmpty(
             ast.comment('IGNORED token.'),
             ast.statement('this.tokenStart = this.index'),
@@ -231,39 +238,24 @@ export default function build(table: TransitionTable): Program {
           ];
         }
       });
-      switchCase.block.push(ifStatement);
+      consequent.block.push(ifStatement);
     }
-    if (
-      switchCase.block[switchCase.block.length - 1].kind !== 'ContinueStatement'
-    ) {
-      switchCase.block.push(ast.break);
-    }
-    switchStatement.cases.push(switchCase);
+    consequents.push(consequent);
   });
 
-  switchStatement.cases.push(
-    {
-      kind: 'SwitchCase',
-      determinant: ast.identifier('REJECT'),
-      block: [
-        {
-          kind: 'ThrowStatement',
-          expression: ast.new('Error', ast.string('Failed to recognize token')),
-        },
-      ],
-    },
-    {
-      kind: 'SwitchCase',
-      determinant: null,
-      block: [
-        {
-          kind: 'ThrowStatement',
-          // TODO: include state id in error
-          expression: ast.new('Error', ast.string('Unexpected state')),
-        },
-      ],
-    },
-  );
+  consequents.push({
+    kind: 'Consequent',
+    condition: ast.equals(
+      ast.identifier('this.state'),
+      ast.identifier('REJECT'),
+    ),
+    block: [
+      {
+        kind: 'ThrowStatement',
+        expression: ast.new('Error', ast.string('Failed to recognize token')),
+      },
+    ],
+  });
 
   const program: Program = {
     kind: 'Program',

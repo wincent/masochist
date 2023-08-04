@@ -17,20 +17,22 @@ type AssignmentStatement = {
 type BinaryExpression = {
   kind: 'BinaryExpression';
   lexpr: Expression;
-  operator:
-    | '!='
-    | '!=='
-    | '&&'
-    | '<'
-    | '<='
-    | '=='
-    | '==='
-    | '>'
-    | '>='
-    | '||'
-    | '+';
+  operator: BinaryOperator;
   rexpr: Expression;
 };
+
+type BinaryOperator =
+  | '!='
+  | '!=='
+  | '&&'
+  | '<'
+  | '<='
+  | '=='
+  | '==='
+  | '>'
+  | '>='
+  | '||'
+  | '+';
 
 type BooleanValue = {
   kind: 'BooleanValue';
@@ -55,7 +57,14 @@ type ClassDeclaration = {
   body: Array<MethodDefinition | PropertyDeclaration>;
 };
 
-type Consequent = {
+// Better AST might be
+// IfStatement
+//    Condition
+//    Consequent (Array<Statement>)
+//    Alternate (can be another IfStatement, for `else if`, or Array<Statement>,
+//    for `else`)
+// The name "Consequent" sucks.
+export type Consequent = {
   kind: 'Consequent';
   condition: Expression;
   block: Array<Statement>;
@@ -325,7 +334,11 @@ const ast = {
     }
   },
 
-  binop(lexpr: Expression, operator: '<', rexpr: Expression): BinaryExpression {
+  binop(
+    lexpr: Expression,
+    operator: BinaryOperator,
+    rexpr: Expression,
+  ): BinaryExpression {
     return {
       kind: 'BinaryExpression',
       lexpr,
@@ -380,6 +393,10 @@ const ast = {
       kind: 'DocComment',
       contents,
     };
+  },
+
+  equals(lexpr: Expression, rexpr: Expression): BinaryExpression {
+    return ast.binop(lexpr, '===', rexpr);
   },
 
   expression(template: string): Expression {

@@ -3,6 +3,7 @@ export {default as print} from './print';
 export {default as quote} from './quote';
 
 export type {
+  Consequent,
   Expression,
   IfStatement,
   Program,
