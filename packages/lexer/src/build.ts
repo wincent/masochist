@@ -145,16 +145,13 @@ export default function build(table: TransitionTable): Program {
               ast.expression(`ch === ${charForComparison(transition.value)}`),
             );
           } else {
-            expressions.push({
-              kind: 'BinaryExpression',
-              lexpr: ast.expression(
-                `ch >= ${charForComparison(transition.from)}`,
+            expressions.push(
+              ast.binop(
+                ast.expression(`ch >= ${charForComparison(transition.from)}`),
+                '&&',
+                ast.expression(`ch <= ${charForComparison(transition.to)}`),
               ),
-              operator: '&&',
-              rexpr: ast.expression(
-                `ch <= ${charForComparison(transition.to)}`,
-              ),
-            });
+            );
           }
         }
         const block: Array<Statement> = inlineableStates.has(j)
