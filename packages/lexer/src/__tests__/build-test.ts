@@ -31,7 +31,7 @@ describe('build()', () => {
 
           next() {
             while (this.index <= this.input.length) {
-              const ch = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
+              let ch = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
               if (this.state === START) {
                 if (ch === 0x09 || ch === 0x20) {
                   this.state = 1;
@@ -126,10 +126,9 @@ describe('build()', () => {
                   this.state = REJECT;
                 }
               } else if (this.state === 1) {
-                let peek = ch;
-                while (peek === 0x09 || peek === 0x20) {
+                while (ch === 0x09 || ch === 0x20) {
                   this.index++;
-                  peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
+                  ch = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
                 }
                 // IGNORED token.
                 this.tokenStart = this.index;
@@ -160,10 +159,9 @@ describe('build()', () => {
                   this.state = REJECT;
                 }
               } else if (this.state === 6) {
-                let peek = ch;
-                while (peek === 0x09 || peek >= 0x20 && peek <= 0xffff) {
+                while (ch === 0x09 || ch >= 0x20 && ch <= 0xffff) {
                   this.index++;
-                  peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
+                  ch = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
                 }
                 // IGNORED token.
                 this.tokenStart = this.index;
@@ -195,10 +193,9 @@ describe('build()', () => {
                   return token;
                 }
               } else if (this.state === 14) {
-                let peek = ch;
-                while (peek >= 0x30 && peek <= 0x39) {
+                while (ch >= 0x30 && ch <= 0x39) {
                   this.index++;
-                  peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
+                  ch = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
                 }
                 if (ch === 0x2e) {
                   this.state = 30;
@@ -211,10 +208,9 @@ describe('build()', () => {
                   return token;
                 }
               } else if (this.state === 18) {
-                let peek = ch;
-                while (peek >= 0x30 && peek <= 0x39 || peek >= 0x41 && peek <= 0x5a || peek === 0x5f || peek >= 0x61 && peek <= 0x7a) {
+                while (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x7a) {
                   this.index++;
-                  peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
+                  ch = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
                 }
                 const token = new Token('NAME', this.tokenStart, this.index, this.input);
                 this.tokenStart = this.index;
@@ -243,10 +239,9 @@ describe('build()', () => {
                   return token;
                 }
               } else if (this.state === 26) {
-                let peek = ch;
-                while (peek === 0x09 || peek >= 0x20 && peek <= 0x21 || peek >= 0x23 && peek <= 0x5b || peek >= 0x5d && peek <= 0xffff) {
+                while (ch === 0x09 || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
                   this.index++;
-                  peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
+                  ch = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
                 }
                 if (ch === 0x5c) {
                   this.state = 28;
@@ -323,10 +318,9 @@ describe('build()', () => {
                   return token;
                 }
               } else if (this.state === 35) {
-                let peek = ch;
-                while (peek >= 0x09 && peek <= 0x0a || peek === 0x0d || peek >= 0x20 && peek <= 0x21 || peek >= 0x23 && peek <= 0x5b || peek >= 0x5d && peek <= 0xffff) {
+                while (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
                   this.index++;
-                  peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
+                  ch = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
                 }
                 if (ch === 0x22) {
                   this.state = 43;
@@ -336,10 +330,9 @@ describe('build()', () => {
                   this.state = REJECT;
                 }
               } else if (this.state === 36) {
-                let peek = ch;
-                while (peek === 0x5c) {
+                while (ch === 0x5c) {
                   this.index++;
-                  peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
+                  ch = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
                 }
                 if (ch === 0x2f || ch === 0x62 || ch === 0x66 || ch === 0x6e || ch === 0x72 || ch === 0x74) {
                   this.state = 26;
@@ -355,10 +348,9 @@ describe('build()', () => {
                   this.state = REJECT;
                 }
               } else if (this.state === 39) {
-                let peek = ch;
-                while (peek >= 0x30 && peek <= 0x39) {
+                while (ch >= 0x30 && ch <= 0x39) {
                   this.index++;
-                  peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
+                  ch = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
                 }
                 if (ch === 0x45 || ch === 0x65) {
                   this.state = 31;
@@ -375,10 +367,9 @@ describe('build()', () => {
                   this.state = REJECT;
                 }
               } else if (this.state === 41) {
-                let peek = ch;
-                while (peek >= 0x30 && peek <= 0x39) {
+                while (ch >= 0x30 && ch <= 0x39) {
                   this.index++;
-                  peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
+                  ch = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
                 }
                 const token = new Token('NUMBER', this.tokenStart, this.index, this.input);
                 this.tokenStart = this.index;
@@ -406,10 +397,9 @@ describe('build()', () => {
                   this.state = REJECT;
                 }
               } else if (this.state === 44) {
-                let peek = ch;
-                while (peek === 0x5c) {
+                while (ch === 0x5c) {
                   this.index++;
-                  peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
+                  ch = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
                 }
                 if (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
                   this.state = 35;

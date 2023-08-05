@@ -23,7 +23,7 @@ export default function build(table: TransitionTable): Program {
     condition: ast.expression('this.index <= this.input.length'),
     block: [
       ast.statement(
-        'const ch = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1',
+        'let ch = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1',
       ),
     ],
   };
@@ -117,15 +117,11 @@ export default function build(table: TransitionTable): Program {
       const selfCondition = conditions[i];
       if (selfCondition) {
         conditions[i] = undefined;
-        consequent.block.push(ast.let('peek', 'ch'));
-        const loop = ast.while(
-          expressionForTransitions(selfCondition, 'peek'),
-          [],
-        );
+        const loop = ast.while(expressionForTransitions(selfCondition), []);
         loop.block.push(
           ast.statement('this.index++'),
           ast.statement(
-            'peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1',
+            'ch = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1',
           ),
         );
         consequent.block.push(loop);
@@ -197,7 +193,10 @@ export default function build(table: TransitionTable): Program {
               ),
             );
           } else {
-            invariant(i !== j, 'Self-transitions should have been excised by now');
+            invariant(
+              i !== j,
+              'Self-transitions should have been excised by now',
+            );
             block.push(ast.statement(`this.state = ${j}`));
           }
           ifStatement.consequents.push({
