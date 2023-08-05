@@ -242,10 +242,7 @@ export default function build(table: TransitionTable): Program {
 
   consequents.push({
     kind: 'Consequent',
-    condition: ast.equals(
-      ast.identifier('this.state'),
-      ast.identifier('REJECT'),
-    ),
+    condition: ast.expression('this.state === REJECT'),
     block: [
       {
         kind: 'ThrowStatement',

@@ -335,15 +335,15 @@ const ast = {
   },
 
   binop(
-    lexpr: Expression,
+    lexpr: Expression | string,
     operator: BinaryOperator,
-    rexpr: Expression,
+    rexpr: Expression | string,
   ): BinaryExpression {
     return {
       kind: 'BinaryExpression',
-      lexpr,
+      lexpr: typeof lexpr === 'string' ? ast.expression(lexpr) : lexpr,
       operator,
-      rexpr,
+      rexpr: typeof rexpr === 'string' ? ast.expression(rexpr) : rexpr,
     };
   },
 
@@ -395,7 +395,10 @@ const ast = {
     };
   },
 
-  equals(lexpr: Expression, rexpr: Expression): BinaryExpression {
+  equals(
+    lexpr: Expression | string,
+    rexpr: Expression | string,
+  ): BinaryExpression {
     return ast.binop(lexpr, '===', rexpr);
   },
 
