@@ -104,4 +104,5 @@ jobs:
           path: ${{ env.yarn-cache-path }}
           key: ${{ matrix.node-version }}-${{ env.yarn-cache-name }}-${{ hashFiles('**/yarn.lock') }}
       - run: yarn --cache-folder=${{ env.yarn-cache-path }} --frozen-lockfile
+      - run: yarn --cache-folder=${{ env.yarn-cache-path }} build # Prime cache.
       - run: yarn --cache-folder=${{ env.yarn-cache-path }} test
