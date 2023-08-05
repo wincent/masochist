@@ -319,9 +319,16 @@ const ast = {
   assign(
     binding: 'const' | 'let' | 'var' | null,
     lhs: string,
-    rhs: Expression | number,
+    rhs: Expression | string | number,
   ): AssignmentStatement {
-    if (typeof rhs === 'number') {
+    if (typeof rhs === 'string') {
+      return {
+        kind: 'AssignmentStatement',
+        binding,
+        lhs,
+        rhs: ast.expression(rhs),
+      };
+    } else if (typeof rhs === 'number') {
       return {
         kind: 'AssignmentStatement',
         binding,
@@ -380,7 +387,7 @@ const ast = {
     };
   },
 
-  const(lhs: string, rhs: Expression | number): AssignmentStatement {
+  const(lhs: string, rhs: Expression | string | number): AssignmentStatement {
     return ast.assign('const', lhs, rhs);
   },
 
@@ -509,7 +516,7 @@ const ast = {
     return {kind: 'IndexExpression', indexee, index};
   },
 
-  let(lhs: string, rhs: Expression | number): AssignmentStatement {
+  let(lhs: string, rhs: Expression | string | number): AssignmentStatement {
     return ast.assign('let', lhs, rhs);
   },
 
@@ -653,7 +660,7 @@ const ast = {
     return {kind: 'StringValue', value};
   },
 
-  var(lhs: string, rhs: Expression | number): AssignmentStatement {
+  var(lhs: string, rhs: Expression | string | number): AssignmentStatement {
     return ast.assign('var', lhs, rhs);
   },
 

@@ -115,14 +115,15 @@ class Lexer {
           this.state = REJECT;
         }
       } else if (this.state === 1) {
-        if (ch === 0x09 || ch === 0x20) {
-          /* Empty. */;
-        } else {
-          // IGNORED token.
-          this.tokenStart = this.index;
-          this.state = START;
-          continue;
+        let peek = ch;
+        while (peek === 0x09 || peek === 0x20) {
+          this.index++;
+          peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
         }
+        // IGNORED token.
+        this.tokenStart = this.index;
+        this.state = START;
+        continue;
       } else if (this.state === 2) {
         // IGNORED token.
         this.tokenStart = this.index;
@@ -148,14 +149,15 @@ class Lexer {
           this.state = REJECT;
         }
       } else if (this.state === 6) {
-        if (ch === 0x09 || ch >= 0x20 && ch <= 0xffff) {
-          /* Empty. */;
-        } else {
-          // IGNORED token.
-          this.tokenStart = this.index;
-          this.state = START;
-          continue;
+        let peek = ch;
+        while (peek === 0x09 || peek >= 0x20 && peek <= 0xffff) {
+          this.index++;
+          peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
         }
+        // IGNORED token.
+        this.tokenStart = this.index;
+        this.state = START;
+        continue;
       } else if (this.state === 11) {
         if (ch === 0x30) {
           this.state = 13;
@@ -182,9 +184,12 @@ class Lexer {
           return token;
         }
       } else if (this.state === 14) {
-        if (ch >= 0x30 && ch <= 0x39) {
-          /* Empty. */;
-        } else if (ch === 0x2e) {
+        let peek = ch;
+        while (peek >= 0x30 && peek <= 0x39) {
+          this.index++;
+          peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
+        }
+        if (ch === 0x2e) {
           this.state = 30;
         } else if (ch === 0x45 || ch === 0x65) {
           this.state = 31;
@@ -195,14 +200,15 @@ class Lexer {
           return token;
         }
       } else if (this.state === 18) {
-        if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x7a) {
-          /* Empty. */;
-        } else {
-          const token = new Token('NAME', this.tokenStart, this.index, this.input);
-          this.tokenStart = this.index;
-          this.state = START;
-          return token;
+        let peek = ch;
+        while (peek >= 0x30 && peek <= 0x39 || peek >= 0x41 && peek <= 0x5a || peek === 0x5f || peek >= 0x61 && peek <= 0x7a) {
+          this.index++;
+          peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
         }
+        const token = new Token('NAME', this.tokenStart, this.index, this.input);
+        this.tokenStart = this.index;
+        this.state = START;
+        return token;
       } else if (this.state === 21) {
         if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x71 || ch >= 0x73 && ch <= 0x7a) {
           this.state = 18;
@@ -226,9 +232,12 @@ class Lexer {
           return token;
         }
       } else if (this.state === 26) {
-        if (ch === 0x09 || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
-          /* Empty. */;
-        } else if (ch === 0x5c) {
+        let peek = ch;
+        while (peek === 0x09 || peek >= 0x20 && peek <= 0x21 || peek >= 0x23 && peek <= 0x5b || peek >= 0x5d && peek <= 0xffff) {
+          this.index++;
+          peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
+        }
+        if (ch === 0x5c) {
           this.state = 28;
         } else if (ch === 0x22) {
           const token = new Token('STRING_VALUE', this.tokenStart, this.index + 1, this.input);
@@ -303,9 +312,12 @@ class Lexer {
           return token;
         }
       } else if (this.state === 35) {
-        if (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
-          /* Empty. */;
-        } else if (ch === 0x22) {
+        let peek = ch;
+        while (peek >= 0x09 && peek <= 0x0a || peek === 0x0d || peek >= 0x20 && peek <= 0x21 || peek >= 0x23 && peek <= 0x5b || peek >= 0x5d && peek <= 0xffff) {
+          this.index++;
+          peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
+        }
+        if (ch === 0x22) {
           this.state = 43;
         } else if (ch === 0x5c) {
           this.state = 44;
@@ -313,10 +325,13 @@ class Lexer {
           this.state = REJECT;
         }
       } else if (this.state === 36) {
+        let peek = ch;
+        while (peek === 0x5c) {
+          this.index++;
+          peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
+        }
         if (ch === 0x2f || ch === 0x62 || ch === 0x66 || ch === 0x6e || ch === 0x72 || ch === 0x74) {
           this.state = 26;
-        } else if (ch === 0x5c) {
-          /* Empty. */;
         } else if (ch === 0x75) {
           this.state = 37;
         } else {
@@ -329,10 +344,13 @@ class Lexer {
           this.state = REJECT;
         }
       } else if (this.state === 39) {
+        let peek = ch;
+        while (peek >= 0x30 && peek <= 0x39) {
+          this.index++;
+          peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
+        }
         if (ch === 0x45 || ch === 0x65) {
           this.state = 31;
-        } else if (ch >= 0x30 && ch <= 0x39) {
-          /* Empty. */;
         } else {
           const token = new Token('NUMBER', this.tokenStart, this.index, this.input);
           this.tokenStart = this.index;
@@ -346,14 +364,15 @@ class Lexer {
           this.state = REJECT;
         }
       } else if (this.state === 41) {
-        if (ch >= 0x30 && ch <= 0x39) {
-          /* Empty. */;
-        } else {
-          const token = new Token('NUMBER', this.tokenStart, this.index, this.input);
-          this.tokenStart = this.index;
-          this.state = START;
-          return token;
+        let peek = ch;
+        while (peek >= 0x30 && peek <= 0x39) {
+          this.index++;
+          peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
         }
+        const token = new Token('NUMBER', this.tokenStart, this.index, this.input);
+        this.tokenStart = this.index;
+        this.state = START;
+        return token;
       } else if (this.state === 42) {
         if (ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x66 || ch >= 0x68 && ch <= 0x7a) {
           this.state = 18;
@@ -376,10 +395,13 @@ class Lexer {
           this.state = REJECT;
         }
       } else if (this.state === 44) {
+        let peek = ch;
+        while (peek === 0x5c) {
+          this.index++;
+          peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1;
+        }
         if (ch >= 0x09 && ch <= 0x0a || ch === 0x0d || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
           this.state = 35;
-        } else if (ch === 0x5c) {
-          /* Empty. */;
         } else if (ch === 0x22) {
           this.state = 48;
         } else {

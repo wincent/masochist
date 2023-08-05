@@ -15,9 +15,7 @@ import type {Transition} from './NFA/NFA';
 import type {TransitionTable} from './NFA/TransitionTable';
 
 export default function build(table: TransitionTable): Program {
-  if (table.startStates.size !== 1) {
-    throw new Error('Need exactly one start state');
-  }
+  invariant(table.startStates.size === 1, 'Need exactly one start state');
   const START = Array.from(table.startStates)[0];
 
   const whileStatement: WhileStatement = {
@@ -47,8 +45,10 @@ export default function build(table: TransitionTable): Program {
     ast.statement('this.index++'),
   );
 
-  // 0. Identify accept states reachable from exactly one other state, which
-  // themselves have no outgoing edges.
+  // Identify accept states reachable from exactly one other state, which
+  // themselves have no outgoing edges. These will be inlined inside the other
+  // state and won't exist as separate states within the machine.
+  const inlineableStates = new Set<number>();
   const statesLeadingToAcceptStates: Array<Set<number>> = [];
   table.transitions.forEach((transitionMap, i) => {
     for (const targets of transitionMap.values()) {
@@ -63,13 +63,13 @@ export default function build(table: TransitionTable): Program {
       }
     }
   });
-  const inlineableStates = new Set<number>();
   statesLeadingToAcceptStates.forEach((set, i) => {
     if (set?.size === 1) {
       inlineableStates.add(i);
     }
   });
 
+  // Now actually generate code for the states.
   table.transitions.forEach((transitionMap, i) => {
     if (inlineableStates.has(i)) {
       return;
@@ -78,14 +78,10 @@ export default function build(table: TransitionTable): Program {
     // 1. Group conditions by target states.
     const conditions: Array<Array<NonNullable<Transition>> | undefined> = [];
     for (const [key, targets] of transitionMap) {
-      if (targets.size !== 1) {
-        throw new Error('Non-deterministic transition');
-      }
+      invariant(targets.size === 1, 'Transitions must be deterministic');
       const target = Array.from(targets)[0];
       const transition = keyToTransition(key);
-      if (transition === null) {
-        throw new Error('Epsilon transition');
-      }
+      invariant(transition !== null, 'Epsilon transitions are not allowed');
       conditions[target] = (conditions[target] || []).concat(transition);
     }
 
@@ -105,147 +101,134 @@ export default function build(table: TransitionTable): Program {
     const isIgnored = isAccept === 'IGNORED';
 
     if (!conditions.length) {
-      if (isIgnored) {
-        consequent.block.push(
-          ...filterEmpty(
-            ast.comment('IGNORED token.'),
-            ast.statement('this.tokenStart = this.index'),
-            i === START ? ast.empty : ast.statement('this.state = START'),
-            ast.continue(),
+      // Should only get here for an ignored state.
+      invariant(isIgnored);
+      consequent.block.push(
+        ...filterEmpty(
+          ast.comment('IGNORED token.'),
+          ast.statement('this.tokenStart = this.index'),
+          i === START ? ast.empty : ast.statement('this.state = START'),
+          ast.continue(),
+        ),
+      );
+    } else {
+      // Process conditions for self-transitions first, because we want to deal
+      // with these in a `while` loop first, before we enter the following `if`.
+      const selfCondition = conditions[i];
+      if (selfCondition) {
+        conditions[i] = undefined;
+        consequent.block.push(ast.let('peek', 'ch'));
+        const loop = ast.while(
+          expressionForTransitions(selfCondition, 'peek'),
+          [],
+        );
+        loop.block.push(
+          ast.statement('this.index++'),
+          ast.statement(
+            'peek = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1',
           ),
         );
-      } else if (isAccept) {
-        throw new Error(
-          'Unexpected accept state due to inlining of inlineable states',
-        );
-      } else {
-        throw new Error('Dead state');
+        consequent.block.push(loop);
       }
-    } else {
-      const ifStatement: IfStatement = {
-        kind: 'IfStatement',
-        consequents: [],
-      };
-      conditions.forEach((transitions, j) => {
-        invariant(transitions);
-        const expressions: Array<Expression> = [];
-        for (const transition of transitions) {
-          if (transition.kind === 'Anything') {
-            // TODO bite the bullet and make "." equal 0x0000 to 0xffff but not:
-            //
-            // - U+000A (\n)
-            // - U+000D (\r)
-            // - U+2028 LINE SEPARATOR
-            // - U+2029 PARAGRAPH SEPARATOR
-            //
-            // Moot for now because I don't have it anywhere in my state machine.
-            expressions.push(ast.true);
-          } else if (transition.kind === 'Atom') {
-            expressions.push(
-              ast.expression(`ch === ${charForComparison(transition.value)}`),
-            );
-          } else {
-            expressions.push(
-              ast.binop(
-                ast.expression(`ch >= ${charForComparison(transition.from)}`),
-                '&&',
-                ast.expression(`ch <= ${charForComparison(transition.to)}`),
-              ),
-            );
-          }
-        }
-        const block: Array<Statement> = [];
-        if (inlineableStates.has(j)) {
-          block.push(
-            ...filterEmpty(
-              {
-                kind: 'AssignmentStatement',
-                binding: 'const',
-                lhs: 'token',
-                rhs: ast.new(
-                  'Token',
-                  ast.string(Array.from(table.labels?.[j] ?? [])[0]),
-                  'this.tokenStart',
-                  'this.index + 1',
-                  'this.input',
-                ),
-              },
-              ast.statement('this.index++'),
-              ast.statement('this.tokenStart = this.index'),
-              i === START ? ast.empty : ast.statement('this.state = START'),
-              ast.statement('return token'),
-            ),
-          );
-        } else {
-          if (i === j) {
-            // This is a self-transition.
-            block.push(ast.empty);
-          } else {
-            block.push(ast.statement(`this.state = ${j}`));
-          }
-        }
-        if (!expressions.length) {
-          throw new Error('Expected a non-empty set of expressions');
-        } else if (expressions.length === 1) {
-          ifStatement.consequents.push({
-            kind: 'Consequent',
-            condition: expressions[0],
-            block,
-          });
-        } else if (expressions.length > 1) {
-          ifStatement.consequents.push({
-            kind: 'Consequent',
-            condition: expressions.reduce((acc, expression) => {
-              if (acc) {
-                return {
-                  kind: 'BinaryExpression',
-                  lexpr: acc,
-                  operator: '||',
-                  rexpr: expression,
-                };
-              } else {
-                return expression;
-              }
-            }),
-            block,
-          });
-        }
-        if (isIgnored) {
-          const hasSelfTransition = Array.from(
-            table.transitions[i].values(),
-          ).some((targets) => targets.has(i));
-          ifStatement.alternate = filterEmpty(
+
+      const hasSelfTransition = Array.from(table.transitions[i].values()).some(
+        (targets) => targets.has(i),
+      );
+      const ignoreToken = isIgnored
+        ? // TODO: deal with these self-transitions as well
+          filterEmpty(
             ast.comment('IGNORED token.'),
             ast.statement('this.tokenStart = this.index'),
             i === START ? ast.empty : ast.statement('this.state = START'),
             hasSelfTransition ? ast.continue() : ast.break,
-          );
-        } else if (isAccept) {
-          ifStatement.alternate = filterEmpty(
-            {
-              kind: 'AssignmentStatement',
-              binding: 'const',
-              lhs: 'token',
-              rhs: ast.new(
+          )
+        : undefined;
+      const acceptToken = isAccept
+        ? filterEmpty(
+            ast.const(
+              'token',
+              ast.new(
                 'Token',
                 ast.string(isAccept),
                 'this.tokenStart',
                 'this.index',
                 'this.input',
               ),
-            },
+            ),
             ast.statement('this.tokenStart = this.index'),
             i === START ? ast.empty : ast.statement('this.state = START'),
             ast.statement('return token'),
-          );
+          )
+        : undefined;
+
+      const remainingConditions = conditions.filter(Boolean).length;
+      if (remainingConditions) {
+        // We need to add our `if` statement.
+        const ifStatement: IfStatement = {
+          kind: 'IfStatement',
+          consequents: [],
+        };
+        conditions.forEach((transitions, j) => {
+          if (!transitions) {
+            // Only previously processed self-transitions can be undefined.
+            invariant(i === j);
+            return;
+          }
+          const condition = expressionForTransitions(transitions);
+          const block: Array<Statement> = [];
+          if (inlineableStates.has(j)) {
+            block.push(
+              ...filterEmpty(
+                ast.assign(
+                  'const',
+                  'token',
+                  ast.new(
+                    'Token',
+                    ast.string(Array.from(table.labels?.[j] ?? [])[0]),
+                    'this.tokenStart',
+                    'this.index + 1',
+                    'this.input',
+                  ),
+                ),
+                ast.statement('this.index++'),
+                ast.statement('this.tokenStart = this.index'),
+                i === START ? ast.empty : ast.statement('this.state = START'),
+                ast.statement('return token'),
+              ),
+            );
+          } else {
+            invariant(i !== j, 'Self-transitions should have been excised by now');
+            block.push(ast.statement(`this.state = ${j}`));
+          }
+          ifStatement.consequents.push({
+            kind: 'Consequent',
+            condition,
+            block,
+          });
+        });
+
+        if (ignoreToken) {
+          ifStatement.alternate = ignoreToken;
+        } else if (acceptToken) {
+          ifStatement.alternate = acceptToken;
         } else {
           ifStatement.alternate = [
             // TODO: only do this if consequents don't provide complete coverage
             ast.statement('this.state = REJECT'),
           ];
         }
-      });
-      consequent.block.push(ifStatement);
+        consequent.block.push(ifStatement);
+      } else {
+        // There was no `if` statement, only a `while` loop. Fall through to
+        // what would have been the `alternate`:
+        if (ignoreToken) {
+          consequent.block.push(...ignoreToken);
+        } else if (acceptToken) {
+          consequent.block.push(...acceptToken);
+        } else {
+          consequent.block.push(ast.statement('this.state = REJECT'));
+        }
+      }
     }
     consequents.push(consequent);
   });
@@ -335,11 +318,7 @@ export default function build(table: TransitionTable): Program {
 }
 
 function charForComparison(value: string): string {
-  if (value.length !== 1) {
-    throw new Error(
-      `charForComparison(): Expected length 1, got length ${value.length}`,
-    );
-  }
+  invariant(value.length === 1);
   const charCode = value.charCodeAt(0);
   if (charCode <= 0xff) {
     return '0x' + charCode.toString(16).padStart(2, '0');
@@ -347,6 +326,65 @@ function charForComparison(value: string): string {
     return '0x' + charCode.toString(16).padStart(4, '0');
   }
 }
+
+/**
+ * Returns a conditional expression for a set of transitions that have
+ * previously been grouped by target state. eg.
+ *
+ *    ch === 0x20 || ch >= 0x30 && ch <= 0xffff
+ *
+ */
+function expressionForTransitions(
+  transitions: Array<NonNullable<Transition>>,
+  identifier: string = 'ch',
+): Expression {
+  invariant(transitions.length);
+  const expressions: Array<Expression> = [];
+  for (const transition of transitions) {
+    if (transition.kind === 'Anything') {
+      // TODO bite the bullet and make "." equal 0x0000 to 0xffff but not:
+      //
+      // - U+000A (\n)
+      // - U+000D (\r)
+      // - U+2028 LINE SEPARATOR
+      // - U+2029 PARAGRAPH SEPARATOR
+      //
+      // Moot for now because I don't have it anywhere in my state machine.
+      expressions.push(ast.true);
+    } else if (transition.kind === 'Atom') {
+      expressions.push(
+        ast.expression(
+          `${identifier} === ${charForComparison(transition.value)}`,
+        ),
+      );
+    } else {
+      expressions.push(
+        ast.binop(
+          ast.expression(
+            `${identifier} >= ${charForComparison(transition.from)}`,
+          ),
+          '&&',
+          ast.expression(
+            `${identifier} <= ${charForComparison(transition.to)}`,
+          ),
+        ),
+      );
+    }
+  }
+
+  if (expressions.length === 1) {
+    return expressions[0];
+  } else {
+    return expressions.reduce((acc, expression) => {
+      if (acc) {
+        return ast.binop(acc, '||', expression);
+      } else {
+        return expression;
+      }
+    });
+  }
+}
+
 function filterEmpty(...statements: Array<Statement>): Array<Statement> {
   return statements.filter((statement) => statement.kind !== 'EmptyStatement');
 }
