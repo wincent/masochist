@@ -154,8 +154,10 @@ export default function build(table: TransitionTable): Program {
             );
           }
         }
-        const block: Array<Statement> = inlineableStates.has(j)
-          ? filterEmpty(
+        const block: Array<Statement> = [];
+        if (inlineableStates.has(j)) {
+          block.push(
+            ...filterEmpty(
               {
                 kind: 'AssignmentStatement',
                 binding: 'const',
@@ -172,8 +174,16 @@ export default function build(table: TransitionTable): Program {
               ast.statement('this.tokenStart = this.index'),
               i === START ? ast.empty : ast.statement('this.state = START'),
               ast.statement('return token'),
-            )
-          : [i === j ? ast.empty : ast.statement(`this.state = ${j}`)];
+            ),
+          );
+        } else {
+          if (i === j) {
+            // This is a self-transition.
+            block.push(ast.empty);
+          } else {
+            block.push(ast.statement(`this.state = ${j}`));
+          }
+        }
         if (!expressions.length) {
           throw new Error('Expected a non-empty set of expressions');
         } else if (expressions.length === 1) {
@@ -230,7 +240,7 @@ export default function build(table: TransitionTable): Program {
           );
         } else {
           ifStatement.alternate = [
-            // TODO: only do this is consequents don't provide complete coverage
+            // TODO: only do this if consequents don't provide complete coverage
             ast.statement('this.state = REJECT'),
           ];
         }
