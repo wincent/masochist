@@ -46,8 +46,10 @@ jobs:
         with:
           path: ${{ env.yarn-cache-path }}
           key: ${{ matrix.node-version }}-${{ env.yarn-cache-name }}-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn --cache-folder=${{ env.yarn-cache-path }} --frozen-lockfile
-      - run: yarn --cache-folder=${{ env.yarn-cache-path }} format:check
+      - name: yarn
+        run: yarn --cache-folder=${{ env.yarn-cache-path }} --frozen-lockfile
+      - name: yarn format:check
+        run: yarn --cache-folder=${{ env.yarn-cache-path }} format:check
 
   lint:
     runs-on: ubuntu-latest
