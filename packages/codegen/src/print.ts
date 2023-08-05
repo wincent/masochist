@@ -75,7 +75,17 @@ function printExpression(expression: Expression, indent: number): string {
   } else if (expression.kind === 'NullValue') {
     return 'null';
   } else if (expression.kind === 'NumberValue') {
-    return expression.value.toString();
+    if (expression.base === 10) {
+      return expression.value.toString();
+    } else if (expression.base === 16) {
+      if (expression.value <= 0xff) {
+        return '0x' + expression.value.toString(16).padStart(2, '0');
+      } else if (expression.value <= 0xffff) {
+        return '0x' + expression.value.toString(16).padStart(4, '0');
+      } else {
+        return '0x' + expression.value.toString(16).padStart(8, '0');
+      }
+    }
   } else if (expression.kind === 'ObjectValue') {
     return (
       '{\n' +

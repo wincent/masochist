@@ -14,6 +14,9 @@ type AssignmentStatement = {
   rhs: Expression;
 };
 
+// TODO: support more bases
+type Base = 10 | 16;
+
 type BinaryExpression = {
   kind: 'BinaryExpression';
   lexpr: Expression;
@@ -201,6 +204,7 @@ type NullValue = {
 type NumberValue = {
   kind: 'NumberValue';
   value: number;
+  base: Base;
 };
 
 type ObjectValue = {
@@ -443,7 +447,17 @@ const ast = {
           kind: 'BinaryExpression',
           lexpr: {kind: 'Identifier', name: lexpr},
           operator,
-          rexpr: {kind: 'NumberValue', value: parseInt(match[0])},
+          rexpr: ast.number(parseInt(match[0])),
+        };
+      }
+
+      match = rexpr.match(/^0x[0-9a-f]+$/i);
+      if (match) {
+        return {
+          kind: 'BinaryExpression',
+          lexpr: {kind: 'Identifier', name: lexpr},
+          operator,
+          rexpr: ast.number(parseInt(match[0], 16), 16),
         };
       }
 
@@ -543,8 +557,8 @@ const ast = {
     };
   },
 
-  number(value: number): NumberValue {
-    return {kind: 'NumberValue', value};
+  number(value: number, base: Base = 10): NumberValue {
+    return {kind: 'NumberValue', value, base};
   },
 
   object(entries: {[key: string]: Expression}): ObjectValue {
