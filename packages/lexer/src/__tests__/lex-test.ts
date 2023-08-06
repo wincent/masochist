@@ -1,5 +1,4 @@
-import {print} from '@masochist/codegen';
-import {invariant} from '@masochist/common';
+import {print, walk} from '@masochist/codegen';
 import vm from 'vm';
 
 import {promises as fs} from 'fs';
@@ -8,6 +7,15 @@ import path from 'path';
 import Token from '../Token';
 import build from '../build';
 import definition from '../definition';
+
+import type {
+  DocComment,
+  ExportDefaultDeclaration,
+  FunctionDeclaration,
+  FunctionExpression,
+  ImportStatement,
+  PropertyDeclaration,
+} from '@masochist/codegen';
 
 /**
  * Note: We're not testing the lexer that's currently written to disk in
@@ -22,49 +30,48 @@ describe('lex()', () => {
     // Build lexer.
     const ast = build(definition);
 
-    // Remove leading doc comment.
-    // TODO: could just strip these _all_ out instead (with a walker/transformer)
-    invariant(ast.statements.shift()?.kind === 'DocComment');
+    walk(ast, {
+      // Remove doc comments.
+      DocComment(_comment: DocComment) {
+        return null;
+      },
 
-    // Remove `import Token from './Token'` statement.
-    invariant(ast.statements.shift()?.kind === 'ImportStatement');
+      // Hoist function out from `export default` declaration.
+      // ie. ExportDefaultDeclaration becomes FunctionDeclaration.
+      ExportDefaultDeclaration(declaration: ExportDefaultDeclaration) {
+        return declaration.declaration;
+      },
 
-    // Remove TS property declarations from Lexer class.
-    invariant(ast.statements[2]);
-    invariant(ast.statements[2].kind === 'ClassDeclaration');
-    invariant(ast.statements[2].body.shift()?.kind === 'PropertyDeclaration');
-    invariant(ast.statements[2].body.shift()?.kind === 'PropertyDeclaration');
-    invariant(ast.statements[2].body.shift()?.kind === 'PropertyDeclaration');
-    invariant(ast.statements[2].body.shift()?.kind === 'PropertyDeclaration');
+      // Remove `import Token from './Token'` statement.
+      ImportStatement(_statement: ImportStatement) {
+        return null;
+      },
 
-    // Remove another doc comment.
-    invariant(ast.statements[2].body.shift()?.kind === 'DocComment');
+      // Strip TS type annotations from FunctionDeclaration arguments.
+      // ie. `function *lex(input: string)` -> `function *lex(input)`
+      FunctionDeclaration(declaration: FunctionDeclaration) {
+        // (Naughtily) mutate in place.
+        declaration.arguments.forEach((argument, i) => {
+          declaration.arguments[i] = argument.replace(/: \w+$/, '');
+        });
+        return declaration;
+      },
 
-    // Remove TS type annotation from constructor method argument.
-    invariant(ast.statements[2].body[0].kind === 'MethodDefinition');
-    ast.statements[2].body[0].value.arguments = ['input'];
+      // Same for FunctionExpression arguments.
+      // ie. `constructor(input: string)` -> `constructor(input)`
+      FunctionExpression(expression: FunctionExpression) {
+        // (Naughtily) mutate in place.
+        expression.arguments.forEach((argument, i) => {
+          expression.arguments[i] = argument.replace(/: \w+$/, '');
+        });
+        return expression;
+      },
 
-    // Remove TS type annotation from other `emit()` method arguments.
-    invariant(ast.statements[2].body[2].kind === 'MethodDefinition');
-    ast.statements[2].body[2].value.arguments =
-      ast.statements[2].body[2].value.arguments.map((argument) => {
-        return argument.replace(/: \w+$/, '');
-      });
-
-    // Remove another doc comment.
-    const removed = ast.statements.splice(3, 1);
-    invariant(removed.length === 1);
-    invariant(removed[0].kind === 'DocComment');
-
-    // Hoist function out from `export default` declaration.
-    invariant(ast.statements[3]);
-    invariant(ast.statements[3].kind === 'ExportDefaultDeclaration');
-    invariant(ast.statements[3].declaration.kind === 'FunctionDeclaration');
-    invariant(ast.statements[3].declaration.name === '*lex');
-    ast.statements[3] = ast.statements[3].declaration;
-
-    // Remove TS type annotation from function argument.
-    ast.statements[3].arguments = ['input'];
+      // Strip TS property declarations (eg. `input: string` etc) from Lexer class.
+      PropertyDeclaration(_declaration: PropertyDeclaration) {
+        return null;
+      },
+    });
 
     // Elaborate hack to run generated module.
     const code = print(ast);

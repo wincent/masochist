@@ -1,11 +1,18 @@
 import {invariant} from '@masochist/common';
 
+export type Node =
+  | FunctionExpression
+  | MethodDefinition
+  | Program
+  | PropertyDeclaration
+  | Statement;
+
 type ArrayValue = {
   kind: 'ArrayValue';
   items: Array<Expression>;
 };
 
-type AssignmentStatement = {
+export type AssignmentStatement = {
   kind: 'AssignmentStatement';
   binding: 'const' | 'let' | 'var' | null;
   // Note: Could need to support destructuring etc in the future.
@@ -47,7 +54,7 @@ type BooleanValue = {
   value: boolean;
 };
 
-type BreakStatement = {
+export type BreakStatement = {
   kind: 'BreakStatement';
   label?: string;
 };
@@ -58,7 +65,7 @@ type CallExpression = {
   arguments: Array<Expression>;
 };
 
-type ClassDeclaration = {
+export type ClassDeclaration = {
   kind: 'ClassDeclaration';
   id: string;
   // TODO: add superclass, if I ever need it
@@ -78,7 +85,7 @@ export type Consequent = {
   block: Array<Statement>;
 };
 
-type ContinueStatement = {
+export type ContinueStatement = {
   kind: 'ContinueStatement';
   label?: string;
 };
@@ -89,12 +96,12 @@ type DecrementExpression = {
   position: 'postfix' | 'prefix';
 };
 
-type DocComment = {
+export type DocComment = {
   kind: 'DocComment';
   contents: Array<string>;
 };
 
-type EmptyStatement = {
+export type EmptyStatement = {
   kind: 'EmptyStatement';
 };
 
@@ -110,17 +117,17 @@ export type Expression =
   | UnaryExpression
   | YieldExpression;
 
-type ExportDefaultDeclaration = {
+export type ExportDefaultDeclaration = {
   kind: 'ExportDefaultDeclaration';
   declaration: FunctionDeclaration; // Later on, may have other types here.
 };
 
-type ExpressionStatement = {
+export type ExpressionStatement = {
   kind: 'ExpressionStatement';
   expression: Expression;
 };
 
-type FunctionDeclaration = {
+export type FunctionDeclaration = {
   kind: 'FunctionDeclaration';
   name: string;
   arguments: Array<string>;
@@ -167,7 +174,7 @@ type ImportSpecifier = {
   local: Identifier;
 };
 
-type ImportStatement = {
+export type ImportStatement = {
   kind: 'ImportStatement';
   specifiers: Array<ImportDefaultSpecifier | ImportSpecifier>;
   source: StringValue;
@@ -185,13 +192,13 @@ type IndexExpression = {
   indexee: Expression;
 };
 
-type LabelStatement = {
+export type LabelStatement = {
   kind: 'LabelStatement';
   label: string;
   statement: Statement;
 };
 
-type LineComment = {
+export type LineComment = {
   kind: 'LineComment';
   contents: string;
 };
@@ -254,11 +261,13 @@ export type PropertyDeclaration = {
   type: string;
 };
 
-type ReturnStatement = {
+export type ReturnStatement = {
   kind: 'ReturnStatement';
   expression?: Expression;
 };
 
+// Note that DocComment and LineComment could technically appear anywhere,
+// but we only allow them in statement positions.
 export type Statement =
   | AssignmentStatement
   | BreakStatement
@@ -312,7 +321,7 @@ type StringValue = {
   value: string;
 };
 
-type ThrowStatement = {
+export type ThrowStatement = {
   kind: 'ThrowStatement';
   expression: Expression;
 };

@@ -11,6 +11,7 @@ import quote from './quote';
 
 const TAB_WIDTH = 2;
 
+// TODO: use `walk()` (may require changes to `walk()`)
 export default function print(ast: Program) {
   return ast.statements
     .map((statement) => {
