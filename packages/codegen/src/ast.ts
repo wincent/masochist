@@ -37,6 +37,11 @@ type BinaryOperator =
   | '||'
   | '+';
 
+type BitwiseNotExpression = {
+  kind: 'BitwiseNotExpression';
+  operand: Expression;
+};
+
 type BooleanValue = {
   kind: 'BooleanValue';
   value: boolean;
@@ -76,6 +81,12 @@ export type Consequent = {
 type ContinueStatement = {
   kind: 'ContinueStatement';
   label?: string;
+};
+
+type DecrementExpression = {
+  kind: 'DecrementExpression';
+  operand: Expression;
+  position: 'postfix' | 'prefix';
 };
 
 type DocComment = {
@@ -162,6 +173,12 @@ type ImportStatement = {
   source: StringValue;
 };
 
+type IncrementExpression = {
+  kind: 'IncrementExpression';
+  operand: Expression;
+  position: 'postfix' | 'prefix';
+};
+
 type IndexExpression = {
   kind: 'IndexExpression';
   index: Expression;
@@ -177,6 +194,11 @@ type LabelStatement = {
 type LineComment = {
   kind: 'LineComment';
   contents: string;
+};
+
+type LogicalNotExpression = {
+  kind: 'LogicalNotExpression';
+  operand: Expression;
 };
 
 type MemberExpression = {
@@ -275,15 +297,11 @@ type TernaryExpression = {
   alternate: Expression;
 };
 
-type UnaryExpression = {
-  kind: 'UnaryExpression';
-  operator:
-    | '!'
-    | '++' // TODO: distinguish pre and postfix operators
-    | '--'
-    | '~';
-  operand: Expression;
-};
+type UnaryExpression =
+  | BitwiseNotExpression
+  | DecrementExpression
+  | IncrementExpression
+  | LogicalNotExpression;
 
 type UndefinedValue = {
   kind: 'UndefinedValue';
@@ -414,15 +432,18 @@ const ast = {
   },
 
   expression(template: string): Expression {
+    // eg. 1234
     if (/^\d+$/.test(template)) {
       return ast.number(parseInt(template));
     }
 
+    // eg. _someIdentifier
     let match = template.match(/^[_a-z]\w*$/i);
     if (match) {
       return ast.identifier(template);
     }
 
+    // eg. identifier[index]
     match = template.match(/^(\w+)\[(\w+)\]$/);
     if (match) {
       const indexee = match[1];
@@ -430,11 +451,35 @@ const ast = {
       return ast.index(ast.identifier(indexee), ast.identifier(index));
     }
 
+    // eg. foo.bar++
+    match = template.match(/^([\w.]+)(?:\+\+)$/);
+    if (match) {
+      const name = match[1];
+      return {
+        kind: 'IncrementExpression',
+        operand: {kind: 'Identifier', name},
+        position: 'postfix',
+      };
+    }
+
+    // eg. ++foo.bar
+    match = template.match(/^(?:\+\+)([\w.]+)$/);
+    if (match) {
+      const name = match[1];
+      return {
+        kind: 'IncrementExpression',
+        operand: {kind: 'Identifier', name},
+        position: 'prefix',
+      };
+    }
+
+    // eg. function()
     match = template.match(/^(\w+)\(\)$/);
     if (match) {
       return ast.call(match[1]);
     }
 
+    // eg. someThing <= otherThing
     match = template.match(/^(\S+)\s*(<|<=|>=|\+|===)\s*(.+?)\s*$/);
     if (match) {
       const lexpr = match[1];
@@ -448,6 +493,7 @@ const ast = {
       );
       const rexpr = match[3];
 
+      // eg. 1000
       match = rexpr.match(/^\d+$/);
       if (match) {
         return {
@@ -458,6 +504,7 @@ const ast = {
         };
       }
 
+      // eg. 0x1234
       match = rexpr.match(/^0x[0-9a-f]+$/i);
       if (match) {
         return {
@@ -468,6 +515,7 @@ const ast = {
         };
       }
 
+      // eg. 'string'
       match = rexpr.match(/^'(.+)'$/);
       if (match) {
         return {
@@ -478,6 +526,7 @@ const ast = {
         };
       }
 
+      // eg. foo.bar
       match = rexpr.match(/^(\S+)\.(\S+)$/);
       if (match) {
         const object: Expression = {kind: 'Identifier', name: match[1]};
@@ -584,6 +633,8 @@ const ast = {
   },
 
   statement(template: string): Statement {
+    // eg. break
+    // eg. break foo
     let match = template.match(/^break(?:\s+(\w+))?$/);
     if (match) {
       const label = match[1];
@@ -594,6 +645,8 @@ const ast = {
       }
     }
 
+    // eg. return
+    // eg. return bar
     match = template.match(/^return(?:\s+(\w+))?$/);
     if (match) {
       const expression = match[1];
@@ -607,21 +660,18 @@ const ast = {
       }
     }
 
-    match = template.match(/^([\w.]+)(\+\+)$/);
+    // eg. foo.bar++
+    // eg. ++foo.bar
+    match =
+      template.match(/^([\w.]+)(\+\+)$/) || template.match(/^(\+\+)([\w.]+)$/);
     if (match) {
-      const name = match[1];
-      const operator = match[2];
-      invariant(operator === '++');
       return {
         kind: 'ExpressionStatement',
-        expression: {
-          kind: 'UnaryExpression',
-          operator,
-          operand: {kind: 'Identifier', name},
-        },
+        expression: ast.expression(template),
       };
     }
 
+    // eg. this.prop = something
     match = template.match(/^(this\.\w+)\s*=\s*(.+?)\s*$/);
     if (match) {
       const lhs = match[1];

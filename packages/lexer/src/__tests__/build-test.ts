@@ -43,8 +43,7 @@ describe('build()', () => {
                   this.state = 3;
                 } else if (ch === 0x21) {
                   const token = new Token('BANG', this.tokenStart, this.index + 1, input);
-                  this.index++;
-                  this.tokenStart = this.index;
+                  this.tokenStart = ++this.index;
                   return token;
                 } else if (ch === 0x22) {
                   this.state = 5;
@@ -52,23 +51,19 @@ describe('build()', () => {
                   this.state = 6;
                 } else if (ch === 0x24) {
                   const token = new Token('DOLLAR', this.tokenStart, this.index + 1, input);
-                  this.index++;
-                  this.tokenStart = this.index;
+                  this.tokenStart = ++this.index;
                   return token;
                 } else if (ch === 0x26) {
                   const token = new Token('AMPERSAND', this.tokenStart, this.index + 1, input);
-                  this.index++;
-                  this.tokenStart = this.index;
+                  this.tokenStart = ++this.index;
                   return token;
                 } else if (ch === 0x28) {
                   const token = new Token('OPENING_PAREN', this.tokenStart, this.index + 1, input);
-                  this.index++;
-                  this.tokenStart = this.index;
+                  this.tokenStart = ++this.index;
                   return token;
                 } else if (ch === 0x29) {
                   const token = new Token('CLOSING_PAREN', this.tokenStart, this.index + 1, input);
-                  this.index++;
-                  this.tokenStart = this.index;
+                  this.tokenStart = ++this.index;
                   return token;
                 } else if (ch === 0x2d) {
                   this.state = 11;
@@ -80,30 +75,25 @@ describe('build()', () => {
                   this.state = 14;
                 } else if (ch === 0x3a) {
                   const token = new Token('COLON', this.tokenStart, this.index + 1, input);
-                  this.index++;
-                  this.tokenStart = this.index;
+                  this.tokenStart = ++this.index;
                   return token;
                 } else if (ch === 0x3d) {
                   const token = new Token('EQUALS', this.tokenStart, this.index + 1, input);
-                  this.index++;
-                  this.tokenStart = this.index;
+                  this.tokenStart = ++this.index;
                   return token;
                 } else if (ch === 0x40) {
                   const token = new Token('AT', this.tokenStart, this.index + 1, input);
-                  this.index++;
-                  this.tokenStart = this.index;
+                  this.tokenStart = ++this.index;
                   return token;
                 } else if (ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x65 || ch >= 0x67 && ch <= 0x6e || ch >= 0x70 && ch <= 0x7a) {
                   this.state = 18;
                 } else if (ch === 0x5b) {
                   const token = new Token('OPENING_BRACKET', this.tokenStart, this.index + 1, input);
-                  this.index++;
-                  this.tokenStart = this.index;
+                  this.tokenStart = ++this.index;
                   return token;
                 } else if (ch === 0x5d) {
                   const token = new Token('CLOSING_BRACKET', this.tokenStart, this.index + 1, input);
-                  this.index++;
-                  this.tokenStart = this.index;
+                  this.tokenStart = ++this.index;
                   return token;
                 } else if (ch === 0x66) {
                   this.state = 21;
@@ -111,18 +101,15 @@ describe('build()', () => {
                   this.state = 22;
                 } else if (ch === 0x7b) {
                   const token = new Token('OPENING_BRACE', this.tokenStart, this.index + 1, input);
-                  this.index++;
-                  this.tokenStart = this.index;
+                  this.tokenStart = ++this.index;
                   return token;
                 } else if (ch === 0x7c) {
                   const token = new Token('BAR', this.tokenStart, this.index + 1, input);
-                  this.index++;
-                  this.tokenStart = this.index;
+                  this.tokenStart = ++this.index;
                   return token;
                 } else if (ch === 0x7d) {
                   const token = new Token('CLOSING_BRACE', this.tokenStart, this.index + 1, input);
-                  this.index++;
-                  this.tokenStart = this.index;
+                  this.tokenStart = ++this.index;
                   return token;
                 } else {
                   this.state = REJECT;
@@ -249,8 +236,7 @@ describe('build()', () => {
                   this.state = 28;
                 } else if (ch === 0x22) {
                   const token = new Token('STRING_VALUE', this.tokenStart, this.index + 1, input);
-                  this.index++;
-                  this.tokenStart = this.index;
+                  this.tokenStart = ++this.index;
                   this.state = START;
                   return token;
                 } else {
@@ -278,8 +264,7 @@ describe('build()', () => {
               } else if (this.state === 29) {
                 if (ch === 0x2e) {
                   const token = new Token('ELLIPSIS', this.tokenStart, this.index + 1, input);
-                  this.index++;
-                  this.tokenStart = this.index;
+                  this.tokenStart = ++this.index;
                   this.state = START;
                   return token;
                 } else {
@@ -434,8 +419,7 @@ describe('build()', () => {
                   this.state = 44;
                 } else if (ch === 0x22) {
                   const token = new Token('BLOCK_STRING_VALUE', this.tokenStart, this.index + 1, input);
-                  this.index++;
-                  this.tokenStart = this.index;
+                  this.tokenStart = ++this.index;
                   this.state = START;
                   return token;
                 } else {

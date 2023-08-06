@@ -32,6 +32,8 @@ function printExpression(expression: Expression, indent: number): string {
       ` ${expression.operator} ` +
       printExpression(expression.rexpr, indent + 1)
     );
+  } else if (expression.kind === 'BitwiseNotExpression') {
+    return '~' + printExpression(expression.operand, indent).trimStart();
   } else if (expression.kind === 'BooleanValue') {
     return expression.value ? 'true' : 'false';
   } else if (expression.kind === 'CallExpression') {
@@ -45,8 +47,20 @@ function printExpression(expression: Expression, indent: number): string {
         .join(', ') +
       ')'
     );
+  } else if (expression.kind === 'DecrementExpression') {
+    if (expression.position === 'postfix') {
+      return printExpression(expression.operand, indent) + '--';
+    } else {
+      return '--' + printExpression(expression.operand, indent).trimStart();
+    }
   } else if (expression.kind === 'Identifier') {
     return expression.name;
+  } else if (expression.kind === 'IncrementExpression') {
+    if (expression.position === 'postfix') {
+      return printExpression(expression.operand, indent) + '++';
+    } else {
+      return '++' + printExpression(expression.operand, indent).trimStart();
+    }
   } else if (expression.kind === 'IndexExpression') {
     return (
       printExpression(expression.indexee, indent) +
@@ -54,6 +68,8 @@ function printExpression(expression: Expression, indent: number): string {
       printExpression(expression.index, indent) +
       ']'
     );
+  } else if (expression.kind === 'LogicalNotExpression') {
+    return '!' + printExpression(expression.operand, indent).trimStart();
   } else if (expression.kind === 'MemberExpression') {
     return (
       printExpression(expression.object, indent + 1) +
@@ -128,12 +144,6 @@ function printExpression(expression: Expression, indent: number): string {
       printExpression(expression.alternate, indent + 1) +
       ')'
     );
-  } else if (expression.kind === 'UnaryExpression') {
-    if (expression.operator === '!' || expression.operator === '~') {
-      return expression.operator + printExpression(expression.operand, indent);
-    } else if (expression.operator === '++' || expression.operator === '--') {
-      return printExpression(expression.operand, indent) + expression.operator;
-    }
   } else if (expression.kind === 'UndefinedValue') {
     return 'undefined';
   } else if (expression.kind === 'YieldExpression') {
