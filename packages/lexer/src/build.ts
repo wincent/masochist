@@ -46,6 +46,7 @@ export default function build(
     kind: 'WhileStatement',
     condition: ast.expression('this.index <= length'),
     block: [
+      ast.const('state', 'this.state'),
       ast.statement(
         'let ch = this.index < length ? input.charCodeAt(this.index) : -1',
       ),
@@ -114,7 +115,7 @@ export default function build(
     const consequent: Consequent = {
       kind: 'Consequent',
       condition: ast.equals(
-        ast.identifier('this.state'),
+        ast.identifier('state'),
         i === START ? ast.identifier('START') : ast.number(i),
       ),
       block: [],
@@ -257,7 +258,7 @@ export default function build(
 
   consequents.push({
     kind: 'Consequent',
-    condition: ast.expression('this.state === REJECT'),
+    condition: ast.expression('state === REJECT'),
     block: [
       {
         kind: 'ThrowStatement',
