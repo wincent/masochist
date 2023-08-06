@@ -11,10 +11,10 @@ class Lexer {
   state: number;
   tokenStart: number;
   index: number;
+
   /**
    * @param {string} input
    */
-
   constructor(input: string) {
     this.input = input;
     this.state = START;
@@ -27,7 +27,6 @@ class Lexer {
    * @param {number} end
    * @param {string} input
    */
-
   emit(name: string, end: number, input: string) {
     const token = new Token(name, this.tokenStart, end, input);
     this.tokenStart = end;
