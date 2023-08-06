@@ -14,9 +14,33 @@ import type {
 import type {Transition} from './NFA/NFA';
 import type {TransitionTable} from './NFA/TransitionTable';
 
-export default function build(table: TransitionTable): Program {
+export type Stats = {
+  [buildStat: string]: number;
+};
+
+export default function build(
+  table: TransitionTable,
+  stats: Stats = {},
+): Program {
   invariant(table.startStates.size === 1, 'Need exactly one start state');
   const START = Array.from(table.startStates)[0];
+
+  stats['startStates'] = table.startStates.size;
+  stats['acceptStates'] = table.acceptStates.size;
+  stats['totalStates'] = table.transitions.length;
+  stats['ignoredTokens'] = (table.labels || []).filter((label) =>
+    label?.has('IGNORED'),
+  ).length;
+
+  // Should be same as 'acceptStates'.
+  stats['totalTokens'] = (table.labels || []).filter(
+    (label) => label?.size,
+  ).length;
+
+  // Optimization stats.
+  stats['inlineableAcceptStates'] = 0;
+  stats['inlinedAcceptStates'] = 0; // Should match 'inlineableAcceptStates'.
+  stats['inlinedSelfTransitions'] = 0;
 
   const whileStatement: WhileStatement = {
     kind: 'WhileStatement',
@@ -68,6 +92,7 @@ export default function build(table: TransitionTable): Program {
       inlineableStates.add(i);
     }
   });
+  stats['inlineableAcceptStates'] = inlineableStates.size;
 
   // Now actually generate code for the states.
   table.transitions.forEach((transitionMap, i) => {
@@ -116,6 +141,7 @@ export default function build(table: TransitionTable): Program {
       // with these in a `while` loop first, before we enter the following `if`.
       const selfCondition = conditions[i];
       if (selfCondition) {
+        stats['inlinedSelfTransitions']++;
         conditions[i] = undefined;
         const loop = ast.while(expressionForTransitions(selfCondition), []);
         loop.block.push(
@@ -188,6 +214,7 @@ export default function build(table: TransitionTable): Program {
                 ast.statement('return token'),
               ),
             );
+            stats['inlinedAcceptStates']++;
           } else {
             invariant(
               i !== j,

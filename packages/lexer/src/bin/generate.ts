@@ -11,8 +11,11 @@ import {promises as fs} from 'fs';
 import definition from '../definition';
 import build from '../build';
 
+import type {Stats} from '../build';
+
 async function main() {
-  const ast = build(definition);
+  const stats: Stats = {};
+  const ast = build(definition, stats);
   const source = print(ast);
   const file = path.join(__dirname, '..', '..', 'src', 'lex.ts');
 
@@ -26,6 +29,8 @@ async function main() {
   if (current !== source) {
     await fs.writeFile(file, source, 'utf8');
   }
+
+  console.table(stats);
 }
 
 main().catch((error) => {
