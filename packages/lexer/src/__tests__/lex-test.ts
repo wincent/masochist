@@ -23,6 +23,7 @@ describe('lex()', () => {
     const ast = build(definition);
 
     // Remove leading doc comment.
+    // TODO: could just strip these _all_ out instead (with a walker/transformer)
     invariant(ast.statements.shift()?.kind === 'DocComment');
 
     // Remove `import Token from './Token'` statement.
@@ -36,9 +37,24 @@ describe('lex()', () => {
     invariant(ast.statements[2].body.shift()?.kind === 'PropertyDeclaration');
     invariant(ast.statements[2].body.shift()?.kind === 'PropertyDeclaration');
 
+    // Remove another doc comment.
+    invariant(ast.statements[2].body.shift()?.kind === 'DocComment');
+
     // Remove TS type annotation from constructor method argument.
     invariant(ast.statements[2].body[0].kind === 'MethodDefinition');
     ast.statements[2].body[0].value.arguments = ['input'];
+
+    // Remove TS type annotation from other `emit()` method arguments.
+    invariant(ast.statements[2].body[2].kind === 'MethodDefinition');
+    ast.statements[2].body[2].value.arguments =
+      ast.statements[2].body[2].value.arguments.map((argument) => {
+        return argument.replace(/: \w+$/, '');
+      });
+
+    // Remove another doc comment.
+    const removed = ast.statements.splice(3, 1);
+    invariant(removed.length === 1);
+    invariant(removed[0].kind === 'DocComment');
 
     // Hoist function out from `export default` declaration.
     invariant(ast.statements[3]);

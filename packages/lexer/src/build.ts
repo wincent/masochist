@@ -18,6 +18,7 @@ export type Stats = {
   [buildStat: string]: number;
 };
 
+// TODO: see if i can avoid so many ternaries
 export default function build(
   table: TransitionTable,
   stats: Stats = {},
@@ -165,19 +166,15 @@ export default function build(
         : undefined;
       const acceptToken = isAccept
         ? filterEmpty(
-            ast.const(
-              'token',
-              ast.new(
-                'Token',
+            i === START ? ast.empty : ast.statement('this.state = START'),
+            ast.return(
+              ast.call(
+                'this.emit',
                 ast.string(isAccept),
-                'this.tokenStart',
                 'this.index',
                 'input',
               ),
             ),
-            ast.statement('this.tokenStart = this.index'),
-            i === START ? ast.empty : ast.statement('this.state = START'),
-            ast.statement('return token'),
           )
         : undefined;
 
@@ -199,20 +196,15 @@ export default function build(
           if (inlineableStates.has(j)) {
             block.push(
               ...filterEmpty(
-                ast.assign(
-                  'const',
-                  'token',
-                  ast.new(
-                    'Token',
+                i === START ? ast.empty : ast.statement('this.state = START'),
+                ast.return(
+                  ast.call(
+                    'this.emit',
                     ast.string(Array.from(table.labels?.[j] ?? [])[0]),
-                    'this.tokenStart',
                     'this.index + 1',
                     'input',
                   ),
                 ),
-                ast.statement('this.tokenStart = ++this.index'),
-                i === START ? ast.empty : ast.statement('this.state = START'),
-                ast.statement('return token'),
               ),
             );
             stats['inlinedAcceptStates']++;
@@ -292,6 +284,10 @@ export default function build(
         ast.propertyDeclaration('state', 'number'),
         ast.propertyDeclaration('tokenStart', 'number'),
         ast.propertyDeclaration('index', 'number'),
+
+        // Cosmetic only, due to: https://github.com/microsoft/TypeScript/issues/9694
+        ast.docComment('@param {string} input'),
+
         ast.method(
           'constructor',
           ['input: string'],
@@ -300,6 +296,25 @@ export default function build(
             ast.statement('this.state = START'),
             ast.statement('this.tokenStart = 0'),
             ast.statement('this.index = 0'),
+          ],
+        ),
+        // Cosmetic only, due to: https://github.com/microsoft/TypeScript/issues/9694
+        ast.docComment(
+          '@param {string} name',
+          '@param {number} end',
+          '@param {string} input',
+        ),
+        ast.method(
+          'emit',
+          ['name: string', 'end: number', 'input: string'],
+          [
+            ast.const(
+              'token',
+              ast.new('Token', 'name', 'this.tokenStart', 'end', 'input'),
+            ),
+            ast.statement('this.tokenStart = end'),
+            ast.statement('this.index = end'),
+            ast.statement('return token'),
           ],
         ),
         ast.method(
@@ -313,10 +328,15 @@ export default function build(
           ],
         ),
       ]),
+      // Cosmetic only, due to: https://github.com/microsoft/TypeScript/issues/9694
+      ast.docComment(
+        '@param {string} input',
+        '@returns {Generator<Token, void, unknown>}',
+      ),
       {
         kind: 'ExportDefaultDeclaration',
-        // Note the TS annotation in the argument here; it's the only explicit
-        // annotation required to make `tsc` accept the generated lexer without
+        // Note the TS annotation in the argument here; it's one of few explicit
+        // annotations required to make `tsc` accept the generated lexer without
         // any errors or warnings. Without this, we'd get:
         //
         //    error TS7006: Parameter 'input' implicitly has an 'any' type.
@@ -334,7 +354,7 @@ export default function build(
                   {
                     kind: 'Consequent',
                     condition: ast.expression('token === null'),
-                    block: [ast.return],
+                    block: [ast.return()],
                   },
                 ],
                 alternate: [ast.yield('token')],

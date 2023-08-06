@@ -217,7 +217,9 @@ function printStatement(statement: Statement, indent: number): string {
       `class ${statement.id} {\n` +
       statement.body
         .map((item) => {
-          if (item.kind === 'MethodDefinition') {
+          if (item.kind === 'DocComment') {
+            return printStatement(item, indent + 1);
+          } else if (item.kind === 'MethodDefinition') {
             return printMethodDefinition(item, indent + 1);
           } else if (item.kind === 'PropertyDeclaration') {
             return printPropertyDeclaration(item, indent + 1);
@@ -225,6 +227,10 @@ function printStatement(statement: Statement, indent: number): string {
             throw new Error('printStatement(): Unreachable');
           }
         })
+        // TODO: fix this
+        // DocComment already has trailing \n
+        // Same for MethodDefinition (via FunctionDeclaration): ends in \n
+        // PropertyDeclaration does not
         .join('\n') +
       printIndent(indent) +
       '}\n'

@@ -62,7 +62,7 @@ type ClassDeclaration = {
   kind: 'ClassDeclaration';
   id: string;
   // TODO: add superclass, if I ever need it
-  body: Array<MethodDefinition | PropertyDeclaration>;
+  body: Array<DocComment | MethodDefinition | PropertyDeclaration>;
 };
 
 // Better AST might be
@@ -378,12 +378,16 @@ const ast = {
 
   call(
     callee: Expression | string,
-    ...args: Array<Expression>
+    ...args: Array<Expression | string>
   ): CallExpression {
     return {
       kind: 'CallExpression',
       callee: typeof callee === 'string' ? ast.expression(callee) : callee,
-      arguments: args,
+      arguments: args.map((argument) => {
+        return typeof argument === 'string'
+          ? ast.expression(argument)
+          : argument;
+      }),
     };
   },
 
@@ -396,7 +400,7 @@ const ast = {
 
   class(
     id: string,
-    body: Array<MethodDefinition | PropertyDeclaration>,
+    body: Array<DocComment | MethodDefinition | PropertyDeclaration>,
   ): ClassDeclaration {
     return {
       kind: 'ClassDeclaration',
@@ -407,6 +411,14 @@ const ast = {
 
   const(lhs: string, rhs: Expression | string | number): AssignmentStatement {
     return ast.assign('const', lhs, rhs);
+  },
+
+  break(label?: string): BreakStatement {
+    if (label) {
+      return {kind: 'BreakStatement', label};
+    } else {
+      return {kind: 'BreakStatement'};
+    }
   },
 
   continue(label?: string): ContinueStatement {
@@ -632,17 +644,29 @@ const ast = {
     };
   },
 
+  return(expression?: Expression | string): ReturnStatement {
+    if (typeof expression === 'string') {
+      return {
+        kind: 'ReturnStatement',
+        expression: ast.expression(expression),
+      };
+    } else if (expression) {
+      return {
+        kind: 'ReturnStatement',
+        expression,
+      };
+    } else {
+      return {kind: 'ReturnStatement'};
+    }
+  },
+
   statement(template: string): Statement {
     // eg. break
     // eg. break foo
     let match = template.match(/^break(?:\s+(\w+))?$/);
     if (match) {
       const label = match[1];
-      if (label) {
-        return {kind: 'BreakStatement', label};
-      } else {
-        return {kind: 'BreakStatement'};
-      }
+      return ast.break(label);
     }
 
     // eg. return
@@ -735,10 +759,6 @@ const ast = {
     };
   },
 
-  get break(): BreakStatement {
-    return {kind: 'BreakStatement'};
-  },
-
   get empty(): EmptyStatement {
     return {kind: 'EmptyStatement'};
   },
@@ -749,10 +769,6 @@ const ast = {
 
   get true(): BooleanValue {
     return {kind: 'BooleanValue', value: true};
-  },
-
-  get return(): ReturnStatement {
-    return {kind: 'ReturnStatement'};
   },
 } as const;
 
