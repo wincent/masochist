@@ -50,4 +50,5 @@ yarn
 (cd packages/v8-deopt-webapp && yarn build)
 node_modules/.bin/v8-deopt-viewer -i $path_to_v8_log
 (cd v8-deopt-viewer && python3 -m http.server)
+open http://localhost:8000
 ```

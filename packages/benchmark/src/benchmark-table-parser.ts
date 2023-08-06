@@ -9,7 +9,7 @@ const readFile = promisify(fs.readFile);
 
 function parse(source: string) {
   const tokens = [...lex(source)];
-  parseWithTable(table, tokens, grammar, makeNode);
+  return parseWithTable(table, tokens, grammar, makeNode);
 }
 
 async function read(file: string): Promise<string> {
