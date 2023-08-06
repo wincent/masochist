@@ -127,16 +127,13 @@ export default function build(table: TransitionTable): Program {
         consequent.block.push(loop);
       }
 
-      const hasSelfTransition = Array.from(table.transitions[i].values()).some(
-        (targets) => targets.has(i),
-      );
       const ignoreToken = isIgnored
-        ? // TODO: deal with these self-transitions as well
-          filterEmpty(
+        ? filterEmpty(
             ast.comment('IGNORED token.'),
             ast.statement('this.tokenStart = this.index'),
+            // TODO: deal with these self-transitions as well
             i === START ? ast.empty : ast.statement('this.state = START'),
-            hasSelfTransition ? ast.continue() : ast.break,
+            ast.continue(),
           )
         : undefined;
       const acceptToken = isAccept

@@ -124,7 +124,7 @@ class Lexer {
           // IGNORED token.
           this.tokenStart = this.index;
           this.state = START;
-          break;
+          continue;
         }
       } else if (this.state === 5) {
         if (ch === 0x09 || ch >= 0x20 && ch <= 0x21 || ch >= 0x23 && ch <= 0x5b || ch >= 0x5d && ch <= 0xffff) {
