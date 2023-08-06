@@ -365,8 +365,6 @@ function walkFunctionDeclaration(
   }
 
   // Children.
-  // TODO: if `arguments` are ever more than 'string', visit them too.
-  // (for now, callers can visit the arguments themselves).
   const body = mapChildren(newDeclaration.body, (statement) => {
     const node = walk(statement, visitor);
     assertIsStatement(node);
@@ -376,6 +374,8 @@ function walkFunctionDeclaration(
     newDeclaration.body = body;
     changed = true;
   }
+  // TODO: if `arguments` are ever more than 'string', visit them too.
+  // (for now, callers can visit the arguments themselves).
 
   // Post-order.
   const finalDeclaration =
@@ -393,11 +393,6 @@ function walkFunctionExpression(
   expression: FunctionExpression,
   visitor: Visitor,
 ): FunctionExpression | null | undefined {
-  // TODO: Revamp
-  visitor.FunctionExpression?.(expression);
-  // TODO: if `arguments` are ever more than 'string', visit them.
-  visitor['FunctionExpression:exit']?.(expression);
-
   // Pre-order
   let changed = false;
   let newExpression = visitor.FunctionExpression?.(expression);
@@ -410,8 +405,6 @@ function walkFunctionExpression(
   }
 
   // Children.
-  // TODO: if `arguments` are ever more than 'string', visit them too.
-  // (for now, callers can visit the arguments themselves).
   const body = mapChildren(newExpression.body, (statement) => {
     const node = walk(statement, visitor);
     assertIsStatement(node);
@@ -421,6 +414,8 @@ function walkFunctionExpression(
     newExpression.body = body;
     changed = true;
   }
+  // TODO: if `arguments` are ever more than 'string', visit them too.
+  // (for now, callers can visit the arguments themselves).
 
   // Post-order.
   const finalExpression = visitor['FunctionExpression:exit']?.(newExpression);

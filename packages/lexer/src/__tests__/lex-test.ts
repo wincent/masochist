@@ -60,7 +60,6 @@ describe('lex()', () => {
       // Same for FunctionExpression arguments.
       // ie. `constructor(input: string)` -> `constructor(input)`
       FunctionExpression(expression: FunctionExpression) {
-        // (Naughtily) mutate in place.
         expression.arguments.forEach((argument, i) => {
           expression.arguments[i] = argument.replace(/: \w+$/, '');
         });
