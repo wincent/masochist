@@ -20,10 +20,10 @@ export default function build(table: TransitionTable): Program {
 
   const whileStatement: WhileStatement = {
     kind: 'WhileStatement',
-    condition: ast.expression('this.index <= this.input.length'),
+    condition: ast.expression('this.index <= length'),
     block: [
       ast.statement(
-        'let ch = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1',
+        'let ch = this.index < length ? input.charCodeAt(this.index) : -1',
       ),
     ],
   };
@@ -121,7 +121,7 @@ export default function build(table: TransitionTable): Program {
         loop.block.push(
           ast.statement('this.index++'),
           ast.statement(
-            'ch = this.index < this.input.length ? this.input.charCodeAt(this.index) : -1',
+            'ch = this.index < length ? input.charCodeAt(this.index) : -1',
           ),
         );
         consequent.block.push(loop);
@@ -148,7 +148,7 @@ export default function build(table: TransitionTable): Program {
                 ast.string(isAccept),
                 'this.tokenStart',
                 'this.index',
-                'this.input',
+                'input',
               ),
             ),
             ast.statement('this.tokenStart = this.index'),
@@ -183,7 +183,7 @@ export default function build(table: TransitionTable): Program {
                     ast.string(Array.from(table.labels?.[j] ?? [])[0]),
                     'this.tokenStart',
                     'this.index + 1',
-                    'this.input',
+                    'input',
                   ),
                 ),
                 ast.statement('this.index++'),
@@ -278,7 +278,16 @@ export default function build(table: TransitionTable): Program {
             ast.statement('this.index = 0'),
           ],
         ),
-        ast.method('next', [], [whileStatement, ast.statement('return null')]),
+        ast.method(
+          'next',
+          [],
+          [
+            ast.const('input', 'this.input'),
+            ast.const('length', 'input.length'),
+            whileStatement,
+            ast.statement('return null'),
+          ],
+        ),
       ]),
       {
         kind: 'ExportDefaultDeclaration',
