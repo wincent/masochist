@@ -317,7 +317,7 @@ export default function build(
         kind: 'ExportDefaultDeclaration',
         // Note the TS annotation in the argument here; it's the only explicit
         // annotation required to make `tsc` accept the generated lexer without
-        // any errors or warnings. Without this, we'd ge:
+        // any errors or warnings. Without this, we'd get:
         //
         //    error TS7006: Parameter 'input' implicitly has an 'any' type.
         //
