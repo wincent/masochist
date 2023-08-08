@@ -1,9 +1,9 @@
 import {dedent} from '@masochist/common';
 
+import {unaugmentedGrammar} from '../definition';
 import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getFirstSets from '../getFirstSets';
 import getItemSets from '../getItemSets';
-import {grammar} from '../parse';
 import stringifySymbolSets from '../stringifySymbolSets';
 import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
 
@@ -97,7 +97,7 @@ describe('getFirstSets()', () => {
   });
 
   it('produces first sets for the GraphQL grammar', () => {
-    expect('\n' + stringifySymbolSets(getFirstSets(grammar)))
+    expect('\n' + stringifySymbolSets(getFirstSets(unaugmentedGrammar)))
       .toMatchInlineSnapshot(`
       "
       Alias                  : {FRAGMENT, NAME, ON}

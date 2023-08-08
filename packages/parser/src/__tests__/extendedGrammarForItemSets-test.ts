@@ -1,6 +1,6 @@
+import {unaugmentedGrammar} from '../definition';
 import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getItemSets from '../getItemSets';
-import {grammar} from '../parse';
 import stringifyGrammar from '../stringifyGrammar';
 import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
 
@@ -123,8 +123,11 @@ describe('extendedGrammarForItemSets()', () => {
   });
 
   it('returns an extended grammar for the GraphQL grammar', () => {
-    const itemSets = getItemSets(grammar);
-    const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
+    const itemSets = getItemSets(unaugmentedGrammar);
+    const extendedGrammar = extendedGrammarForItemSets(
+      itemSets,
+      unaugmentedGrammar,
+    );
     expect('\n' + stringifyGrammar(extendedGrammar)).toMatchInlineSnapshot(`
       "
       %token 0/FRAGMENT/11

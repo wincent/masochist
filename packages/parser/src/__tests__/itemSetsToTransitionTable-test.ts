@@ -1,6 +1,6 @@
+import {itemSets, unaugmentedGrammar} from '../definition';
 import getItemSets from '../getItemSets';
 import itemSetsToTransitionTable from '../itemSetsToTransitionTable';
-import {itemSets, grammar} from '../parse';
 import stringifyTransitionTable from '../stringifyTransitionTable';
 import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
 
@@ -107,8 +107,8 @@ describe('itemSetsToTransitionTable()', () => {
     expect(
       '\n' +
         stringifyTransitionTable(
-          itemSetsToTransitionTable(itemSets, grammar),
-          grammar,
+          itemSetsToTransitionTable(itemSets, unaugmentedGrammar),
+          unaugmentedGrammar,
         ),
     ).toMatchInlineSnapshot(`
       "

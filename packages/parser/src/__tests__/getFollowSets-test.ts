@@ -1,9 +1,9 @@
 import {dedent} from '@masochist/common';
 
+import {unaugmentedGrammar} from '../definition';
 import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getFollowSets from '../getFollowSets';
 import getItemSets from '../getItemSets';
-import {grammar} from '../parse';
 import stringifySymbolSets from '../stringifySymbolSets';
 import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
 
@@ -97,7 +97,7 @@ describe('getFollowSets()', () => {
   });
 
   it('produces follow sets for the GraphQL grammar', () => {
-    expect('\n' + stringifySymbolSets(getFollowSets(grammar)))
+    expect('\n' + stringifySymbolSets(getFollowSets(unaugmentedGrammar)))
       .toMatchInlineSnapshot(`
       "
       Alias                  : {FRAGMENT, NAME, ON}
@@ -159,8 +159,11 @@ describe('getFollowSets()', () => {
   });
 
   it('produces follow sets for the extended GraphQL grammar', () => {
-    const itemSets = getItemSets(grammar);
-    const extendedGrammar = extendedGrammarForItemSets(itemSets, grammar);
+    const itemSets = getItemSets(unaugmentedGrammar);
+    const extendedGrammar = extendedGrammarForItemSets(
+      itemSets,
+      unaugmentedGrammar,
+    );
     expect('\n' + stringifySymbolSets(getFollowSets(extendedGrammar)))
       .toMatchInlineSnapshot(`
       "

@@ -6,6 +6,13 @@ export type Grammar = {
 export type Rule = {
   lhs: string;
   rhs: Array<string>;
+
+  /**
+   * A semantic action (JS code) used to produce an AST node.
+   *
+   * Not to be confused with the accept/reduce/shift `Actions` in the
+   * `ParseTable` type.
+   */
   action?: string;
 };
 

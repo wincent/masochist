@@ -1,5 +1,6 @@
 import {Token} from '@masochist/lexer';
 
+import getAugmentedGrammar from '../getAugmentedGrammar';
 import getItemSets from '../getItemSets';
 import getParseTable from '../getParseTable';
 import itemSetsToTransitionTable from '../itemSetsToTransitionTable';
@@ -10,6 +11,7 @@ import type {ParseTree} from '../parseWithTable';
 
 describe('parseWithTable()', () => {
   it('parses samples for the toy grammar', () => {
+    const augmentedGrammar = getAugmentedGrammar(toyGrammar);
     const itemSets = getItemSets(toyGrammar);
     const transitionTable = itemSetsToTransitionTable(itemSets, toyGrammar);
     const table = getParseTable(itemSets, transitionTable, toyGrammar);
@@ -27,7 +29,7 @@ describe('parseWithTable()', () => {
     expect(tokens[3].contents).toBe('10');
 
     expect(
-      parseWithTable<ParseTree>(table, tokens, toyGrammar, makeNode),
+      parseWithTable<ParseTree>(table, tokens, augmentedGrammar, makeNode),
     ).toEqual({
       kind: 'S',
       children: [
@@ -66,6 +68,7 @@ describe('parseWithTable()', () => {
   });
 
   it('parses samples for the subset grammar', () => {
+    const augmentedGrammar = getAugmentedGrammar(subsetGrammar);
     const itemSets = getItemSets(subsetGrammar);
     const transitionTable = itemSetsToTransitionTable(itemSets, subsetGrammar);
     const table = getParseTable(itemSets, transitionTable, subsetGrammar);
@@ -85,7 +88,7 @@ describe('parseWithTable()', () => {
     expect(tokens[3].contents).toBe('baz');
 
     expect(
-      parseWithTable<ParseTree>(table, tokens, subsetGrammar, makeNode),
+      parseWithTable<ParseTree>(table, tokens, augmentedGrammar, makeNode),
     ).toEqual({
       kind: 'Document',
       children: [
@@ -136,6 +139,7 @@ describe('parseWithTable()', () => {
   });
 
   it('parses samples for the epsilon grammar', () => {
+    const augmentedGrammar = getAugmentedGrammar(epsilonGrammar);
     const itemSets = getItemSets(epsilonGrammar);
     const transitionTable = itemSetsToTransitionTable(itemSets, epsilonGrammar);
     const table = getParseTable(itemSets, transitionTable, epsilonGrammar);
@@ -156,7 +160,7 @@ describe('parseWithTable()', () => {
     expect(tokens[3].contents).toBe('}');
 
     expect(
-      parseWithTable<ParseTree>(table, tokens, epsilonGrammar, makeNode),
+      parseWithTable<ParseTree>(table, tokens, augmentedGrammar, makeNode),
     ).toEqual({
       kind: 'S',
       children: [
@@ -192,7 +196,7 @@ describe('parseWithTable()', () => {
     expect(tokens[2].contents).toBe('}');
 
     expect(
-      parseWithTable<ParseTree>(table, tokens, epsilonGrammar, makeNode),
+      parseWithTable<ParseTree>(table, tokens, augmentedGrammar, makeNode),
     ).toEqual({
       kind: 'S',
       children: [

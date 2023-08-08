@@ -2,8 +2,6 @@ import {StringScanner, invariant} from '@masochist/common';
 import {Token} from '@masochist/lexer';
 import vm from 'vm';
 
-import getAugmentedGrammar from './getAugmentedGrammar';
-
 import type {ParseTable} from './getParseTable';
 import type {Grammar} from './types';
 
@@ -54,7 +52,6 @@ export default function parseWithTable<P>(
 ): P | Token | null {
   const EOF = new Token('$', -1, -1, '');
 
-  const augmentedGrammar = getAugmentedGrammar(grammar);
   const stack: Array<[P | Token | null, number]> = [[null, 0]];
   let pointer = 0;
 
@@ -87,7 +84,7 @@ export default function parseWithTable<P>(
       stack.push([token, action.state]);
       pointer++;
     } else if (action.kind === 'Reduce') {
-      const {lhs, rhs, action: code} = augmentedGrammar.rules[action.rule];
+      const {lhs, rhs, action: code} = grammar.rules[action.rule];
       const popped: Array<P | Token | null> = [];
       invariant(stack.length > rhs.length);
       for (let i = 0; i < rhs.length; i++) {

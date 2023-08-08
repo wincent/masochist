@@ -1,3 +1,6 @@
+// TODO: consider using integer IDs for tokens instead of names, to make
+// comparisons cheaper in the parser. Can look up by token ID in an array
+// instead of in a map by name.
 export default class Token {
   name: string;
   start: number;

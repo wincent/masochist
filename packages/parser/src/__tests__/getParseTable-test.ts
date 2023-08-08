@@ -1,10 +1,10 @@
 import {dedent} from '@masochist/common';
 
+import {grammar, table} from '../definition';
 import getAugmentedGrammar from '../getAugmentedGrammar';
 import getItemSets from '../getItemSets';
 import getParseTable from '../getParseTable';
 import itemSetsToTransitionTable from '../itemSetsToTransitionTable';
-import {grammar, table} from '../parse';
 import stringifyGrammar from '../stringifyGrammar';
 import stringifyParseTable from '../stringifyParseTable';
 import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';
@@ -430,8 +430,7 @@ describe('getParseTable()', () => {
     `);
 
     // Just to make the above actually readable...
-    expect('\n' + stringifyGrammar(getAugmentedGrammar(grammar)))
-      .toMatchInlineSnapshot(`
+    expect('\n' + stringifyGrammar(grammar)).toMatchInlineSnapshot(`
       "
       %token AMPERSAND
       %token AT
