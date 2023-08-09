@@ -54,6 +54,8 @@ function printExpression(expression: Expression, indent: number): string {
     } else {
       return '--' + printExpression(expression.operand, indent).trimStart();
     }
+  } else if (expression.kind === 'FunctionExpression') {
+    return printFunctionExpression(expression, indent, {useKeyword: true});
   } else if (expression.kind === 'Identifier') {
     return expression.name;
   } else if (expression.kind === 'IncrementExpression') {
@@ -160,9 +162,11 @@ function printExpression(expression: Expression, indent: number): string {
 function printFunctionExpression(
   expression: FunctionExpression,
   indent: number,
+  options: {useKeyword: boolean} = {useKeyword: false},
 ): string {
+  const name = expression.name ?? '';
   return (
-    '(' +
+    (options.useKeyword ? `function ${name}(` : `${name}(`) +
     expression.arguments.join(', ') +
     ') {\n' +
     expression.body

@@ -108,6 +108,7 @@ export type EmptyStatement = {
 export type Expression =
   | BinaryExpression
   | CallExpression
+  | FunctionExpression
   | Identifier
   | IndexExpression
   | MemberExpression
@@ -137,6 +138,7 @@ export type FunctionDeclaration = {
 export type FunctionExpression = {
   kind: 'FunctionExpression';
   arguments: Array<string>;
+  name?: string;
   body: Array<Statement>;
 };
 
@@ -226,7 +228,7 @@ type NewExpression = {
   arguments: Array<Expression>;
 };
 
-type NullValue = {
+export type NullValue = {
   kind: 'NullValue';
 };
 
@@ -343,6 +345,19 @@ type YieldExpression = {
  * snippets such as `const REJECT = -1` into an AST node.
  */
 const ast = {
+  array(items: Array<Expression | string>): ArrayValue {
+    return {
+      kind: 'ArrayValue',
+      items: items.map((item) => {
+        if (typeof item === 'string') {
+          return ast.expression(item);
+        } else {
+          return item;
+        }
+      }),
+    };
+  },
+
   assign(
     binding: 'const' | 'let' | 'var' | null,
     lhs: string,
@@ -645,6 +660,13 @@ const ast = {
     };
   },
 
+  program(statements: Array<Statement>): Program {
+    return {
+      kind: 'Program',
+      statements,
+    };
+  },
+
   propertyDeclaration(name: string, type: string): PropertyDeclaration {
     return {
       kind: 'PropertyDeclaration',
@@ -774,6 +796,10 @@ const ast = {
 
   get false(): BooleanValue {
     return {kind: 'BooleanValue', value: false};
+  },
+
+  get null(): NullValue {
+    return {kind: 'NullValue'};
   },
 
   get true(): BooleanValue {

@@ -13,6 +13,7 @@ export type {
   IfStatement,
   ImportStatement,
   MethodDefinition,
+  NullValue,
   Program,
   PropertyDeclaration,
   Statement,
