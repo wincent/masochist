@@ -29,8 +29,8 @@ export default function build(
   stats['startStates'] = table.startStates.size;
   stats['acceptStates'] = table.acceptStates.size;
   stats['totalStates'] = table.transitions.length;
-  stats['ignoredTokens'] = (table.labels || []).filter((label) =>
-    label?.has('IGNORED'),
+  stats['ignoredTokens'] = (table.labels || []).filter(
+    (label) => label?.has('IGNORED'),
   ).length;
 
   // Should be same as 'acceptStates'.
