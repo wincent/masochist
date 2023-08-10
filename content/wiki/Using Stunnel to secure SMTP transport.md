@@ -15,7 +15,7 @@ In May last year I decided to secure access to my [SMTP](/wiki/SMTP), [POP3](/wi
 
 I later discovered not only one, but two drawbacks, to my decision to eschew [Stunnel](/wiki/Stunnel).
 
-Firstly, I observed information leakage across the boundaries of my internal [LAN](/wiki/LAN). This is a necessary evil required by [RFC 2821](/wiki/RFC_2821); the connecting mail client must send a host name or address along with it's `EHLO` message. This is described in [| this article](http://wincent.com/a/about/wincent/weblog/archives/2007/01/information_lea.php).
+Firstly, I observed information leakage across the boundaries of my internal [LAN](/wiki/LAN). This is a necessary evil required by [RFC 2821](/wiki/RFC_2821); the connecting mail client must send a host name or address along with it's `EHLO` message. This is described in [this article](http://wincent.com/a/about/wincent/weblog/archives/2007/01/information_lea.php).
 
 Secondly, after switching to a new [ISP](/wiki/ISP), [Jazztel](/wiki/Jazztel), I discovered that the `Received` headers in all my outgoing mails had ugly "may be forged" warnings in them because the [Jazztel](/wiki/Jazztel)'s administrators have a broken [DNS](/wiki/DNS) set-up in which they don't provide reverse look-up for clients with dynamic IPs. In fact, [Jazztel](/wiki/Jazztel) doesn't even provide reverse lookups for some of their _static_ [IP](/wiki/IP)s; even their own nameserver's IP address doesn't reverse resolve. One of the few [Jazztel](/wiki/Jazztel) addresses which does resolve in both directions is www.jazztel.es.
 
@@ -25,7 +25,7 @@ These "may be forged" warnings are undesirable because they may increase the lik
 
 As the only service affected by this issue is [Secure SMTP](/wiki/Secure_SMTP) I decided to leave my other existing arrangements in place. This includes the existing [Secure SMTP](/wiki/Secure_SMTP) arrangement which allows clients to connect on the standard [SMTP](/wiki/SMTP) port, port 25, and "upgrade" their connection to encrypted transport using `STARTTLS`.
 
-I would set up [Stunnel](/wiki/Stunnel) to listen on port 465, the "unofficial" [SMTP over SSL](/wiki/SMTP_over_SSL) port, and forward connections to the [Sendmail](/wiki/Sendmail) daemon. The use of port 465 technically conflicts (see [| this Wikipedia article](http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers)) but in this case if it's good enough for [Gmail](/wiki/Gmail) it's good enough for me.
+I would set up [Stunnel](/wiki/Stunnel) to listen on port 465, the "unofficial" [SMTP over SSL](/wiki/SMTP_over_SSL) port, and forward connections to the [Sendmail](/wiki/Sendmail) daemon. The use of port 465 technically conflicts (see [this Wikipedia article](http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers)) but in this case if it's good enough for [Gmail](/wiki/Gmail) it's good enough for me.
 
 This was a conservative plan because it afforded me with the option to jump back to the old configuration.
 
