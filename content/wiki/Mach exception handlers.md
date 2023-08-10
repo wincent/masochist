@@ -1,10 +1,15 @@
 ---
 tags: wiki
+title: Mach exception handlers
 ---
 
 # Basic overview
 
-> All faults like these are delivered as Mach exceptions first. BSD has installed a Mach exception handler that converts the Mach exception into a signal. GDB installs its Mach exception handler BEFORE BSD's in the chain of exception handlers to try for a watched task/process. So, GDB sees and reports on Mach exceptions - not signals.&lt;br /&gt; &lt;br /&gt; If you want to provide a signal handler for these, you need to install handlers for SIGSEGV and SIGBUS. SIGSEGV applies when address is completely invalid (nothing mapped there). SIGBUS applies for failures when something is mapped there - but you can't access it (permissions, force unmounts of a mapped file, etc...).&lt;br /&gt; &lt;br /&gt; Because of where GDB sits in the exception path, you will still see its handler kick in BEFORE the process' signal handler. You need to continue past that spot in GDB to see if the process will handle it itself. This also sometimes results in a "premature crashreport" as the crash reporter mechanism also sits in front of the "last resort" BSD signal delivery exception handler. We plan to address this in the future by allowing exception handlers between BSD's signal delivery handler and Mach's default (kill the task) behavior and moving crashreporter's exception handler to sit there. We're still working with the GDB folks to decide where they want their handler to sit (both places have some value in a gdb environment).
+> All faults like these are delivered as Mach exceptions first. BSD has installed a Mach exception handler that converts the Mach exception into a signal. GDB installs its Mach exception handler BEFORE BSD's in the chain of exception handlers to try for a watched task/process. So, GDB sees and reports on Mach exceptions - not signals.
+>
+> If you want to provide a signal handler for these, you need to install handlers for SIGSEGV and SIGBUS. SIGSEGV applies when address is completely invalid (nothing mapped there). SIGBUS applies for failures when something is mapped there - but you can't access it (permissions, force unmounts of a mapped file, etc...).
+>
+> Because of where GDB sits in the exception path, you will still see its handler kick in BEFORE the process' signal handler. You need to continue past that spot in GDB to see if the process will handle it itself. This also sometimes results in a "premature crashreport" as the crash reporter mechanism also sits in front of the "last resort" BSD signal delivery exception handler. We plan to address this in the future by allowing exception handlers between BSD's signal delivery handler and Mach's default (kill the task) behavior and moving crashreporter's exception handler to sit there. We're still working with the GDB folks to decide where they want their handler to sit (both places have some value in a gdb environment).
 
 Jim Magee, Apple, <http://lists.apple.com/archives/darwin-kernel/2003/Nov/msg00007.html>
 

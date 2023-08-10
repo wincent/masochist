@@ -1,5 +1,6 @@
 ---
 tags: cocoa wiki
+title: Cocoa bindings notes
 ---
 
 # `bind:toObject:withKeyPath:options:`
@@ -12,7 +13,11 @@ Matt Neuburg, <http://www.cocoabuilder.com/archive/message/cocoa/2006/7/19/16786
 
 But note:
 
-> "The recommendation is that bindings should not be used between two model objects. Binding views directly to model objects should only be done (and even then it isn't something that is currently suggested) when there is no updating of the values due to changes in the UI (essentially read-only).&lt;br /&gt; &lt;br /&gt; bindings are intended to eliminate glue code between views and model objects&lt;br /&gt; &lt;br /&gt; KVO is the better solution. if the observeValeForKeyPath: method is a bottleneck or results in ugly code it is quite possible to encapsulate that observing code into an object..."
+> "The recommendation is that bindings should not be used between two model objects. Binding views directly to model objects should only be done (and even then it isn't something that is currently suggested) when there is no updating of the values due to changes in the UI (essentially read-only).
+>
+> bindings are intended to eliminate glue code between views and model objects
+>
+> KVO is the better solution. if the observeValeForKeyPath: method is a bottleneck or results in ugly code it is quite possible to encapsulate that observing code into an object..."
 
 Scott Anguish (Apple): <http://www.cocoabuilder.com/archive/message/cocoa/2006/7/21/168062>
 
@@ -30,7 +35,9 @@ Mmalcolm Crawford (Apple): <http://www.cocoabuilder.com/archive/message/cocoa/20
 
 Scott Anguish (Apple): <http://www.cocoabuilder.com/archive/message/cocoa/2005/5/27/137150>
 
-> "Controllers implement the NSEditor/NSEditorRegistration protocols. That means that they correctly handle the cases when documents revert, or save, and forward the correct notifications to the model/view items when that happens. This way models get any uncommitted edits, and can handle them appropriately.&lt;br /&gt; &lt;br /&gt; "Apple doesn't endorse or recommend connecting UI to model directly, nor model&lt;-&gt;model bindings"
+> "Controllers implement the NSEditor/NSEditorRegistration protocols. That means that they correctly handle the cases when documents revert, or save, and forward the correct notifications to the model/view items when that happens. This way models get any uncommitted edits, and can handle them appropriately.
+>
+> "Apple doesn't endorse or recommend connecting UI to model directly, nor model&lt;-&gt;model bindings"
 
 Scott Anguish (Apple): <http://www.cocoabuilder.com/archive/message/cocoa/2005/5/27/137152>
 
@@ -54,7 +61,11 @@ Chris Kane, (Cocoa Frameworks, Apple): <http://www.cocoabuilder.com/archive/mess
 
 <http://www.cocoabuilder.com/archive/message/cocoa/2006/7/17/167781>
 
-> "When you and a superclass both register for KVO notifications, the registrations are necessarily distinct, and you will potentially receive multiple calls to observeValueForKeyPath:... for the same changes, some due to your superclass, some due to your registrations. The ones for you you need to process and not pass up to super. The ones not for you you need to pass up to super and not process (that is, not use or expect anything about the context). You cannot look at the keypath, recognize it, and say "this is for me" and consume it, because the keypath may be interesting to the superclass too, but you can't pass all of those along either, because the superclass may not be interested (and is certainly not interested in your context if this invocation happens to contain your context). Similarly keypath+object is not reliable to distinguish "mine" from "somebody else's".&lt;br /&gt; &lt;br /&gt; "The solution is that the context pointer must be used to provide a globally unique value that you can recognize in your class. If you recognize the value, this notification is for you, otherwise you pass the method call up to super and return. You have to use a value that the other classes in the hierarchy won't (or can't) use.&lt;br /&gt; &lt;br /&gt; "You cannot use NULL as the context pointer, because the superclass (or a subclass) might also use NULL. NULL is a shared value. You can't use selectors, either, because their values are global to the process, and a sub or superclass could potentially use the same one. Plus, recognizing many possible selector values would be a pain and time consuming. It's better to pick one context value."
+> "When you and a superclass both register for KVO notifications, the registrations are necessarily distinct, and you will potentially receive multiple calls to observeValueForKeyPath:... for the same changes, some due to your superclass, some due to your registrations. The ones for you you need to process and not pass up to super. The ones not for you you need to pass up to super and not process (that is, not use or expect anything about the context). You cannot look at the keypath, recognize it, and say "this is for me" and consume it, because the keypath may be interesting to the superclass too, but you can't pass all of those along either, because the superclass may not be interested (and is certainly not interested in your context if this invocation happens to contain your context). Similarly keypath+object is not reliable to distinguish "mine" from "somebody else's".
+>
+> "The solution is that the context pointer must be used to provide a globally unique value that you can recognize in your class. If you recognize the value, this notification is for you, otherwise you pass the method call up to super and return. You have to use a value that the other classes in the hierarchy won't (or can't) use.
+>
+> "You cannot use NULL as the context pointer, because the superclass (or a subclass) might also use NULL. NULL is a shared value. You can't use selectors, either, because their values are global to the process, and a sub or superclass could potentially use the same one. Plus, recognizing many possible selector values would be a pain and time consuming. It's better to pick one context value."
 
 Chris Kane, (Cocoa Frameworks, Apple): <http://www.cocoabuilder.com/archive/message/cocoa/2006/7/18/167800>
 
@@ -65,6 +76,8 @@ Chris goes on to suggest this technique for generating a globally unique pointer
 
 Alternative solution from Jim Correia:
 
-> "So one potential solution here is to allocate a dictionary, use that as the context for your class, and also use it as a dispatch table.&lt;br /&gt; &lt;br /&gt; Since the dictionary is dynamically allocated using it as the void \* context will guarantee uniqueness in the same way as Chris' "ugly" solution in so far as all addresses within the address space are unique."
+> "So one potential solution here is to allocate a dictionary, use that as the context for your class, and also use it as a dispatch table.
+>
+> Since the dictionary is dynamically allocated using it as the void \* context will guarantee uniqueness in the same way as Chris' "ugly" solution in so far as all addresses within the address space are unique."
 
 <http://www.cocoabuilder.com/archive/message/cocoa/2006/7/18/167808>
