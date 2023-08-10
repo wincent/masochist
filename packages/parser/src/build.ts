@@ -61,5 +61,54 @@ export default function build(
         }),
       ),
     ),
+    // TODO: replace
+    ast.rawStatement(`
+      const table = null; // TODO: put actual table in here...
+      const grammar = null; // TODO: put actual augmented grammar in here...
+      const EOF = new Token('$', -1, -1, '');
+
+      export default function parse(input) {
+        const stack = [[null, 0]];
+        const lexer = new Lexer(input);
+
+        let token;
+
+        // TODO: handle EOF here
+        while ((token = lexer.next())) {
+          // ie. Pretty much the same as 'parseWithTable'; I removed some invariants for readability.
+          const [, current] = stack[stack.length - 1];
+          const [actions] = table[current];
+          const action = actions[token.name];
+
+          if (!action) {
+            //throw new Error(
+            //  \`parseWithTable(): Syntax error (no action for $ {token.name} (token index $ {pointer}) [$ {token.contents}] in state $ {current})\`,
+            //);
+          } if (action.kind === 'Accept') {
+            // Expect initial state + accept state.
+            const [tree] = stack[1];
+            return tree;
+          } else if (action.kind === 'Shift') {
+            stack.push([token, action.state]);
+          } else if (action.kind === 'Reduce') {
+            const {lhs, rhs} = grammar.rules[action.rule];
+            const popped: Array<P | Token | null> = [];
+            for (let i = 0; i < rhs.length; i++) {
+              const [node] = stack.pop()!;
+              popped[rhs.length - i - 1] = node;
+            }
+            const [, next] = stack[stack.length - 1];
+            const [, gotos] = table[next];
+            const target = gotos[lhs];
+            const code = ACTIONS[action.rule];
+            if (code) {
+              stack.push([code(...popped), target]);
+            } else {
+              stack.push([makeNode(lhs, popped), target]);
+            }
+          }
+        }
+      }
+    `),
   ]);
 }
