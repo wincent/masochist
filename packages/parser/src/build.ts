@@ -1,7 +1,12 @@
 import {ast} from '@masochist/codegen';
 import {StringScanner} from '@masochist/common';
 
-import type {Expression, NullValue, Program} from '@masochist/codegen';
+import type {
+  Expression,
+  NullValue,
+  Program,
+  Statement,
+} from '@masochist/codegen';
 
 import type {ParseTable} from './getParseTable';
 import type {Grammar} from './types';
@@ -27,40 +32,34 @@ export default function build(
       '',
       '@generated',
     ),
-    ast.assign(
-      'const',
-      'ACTIONS',
-      ast.array(
-        grammar.rules.map((rule): Expression | NullValue => {
-          if (rule.action && rule.action !== '') {
-            stats['semanticActions']++;
-            const variables = new Set<number>();
-            const scanner = new StringScanner(rule.action);
-            while (!scanner.atEnd) {
-              scanner.scan(/[^$]+/);
-              if (scanner.scan('$')) {
-                const variable = scanner.scan(/\d+/);
-                if (variable) {
-                  variables.add(parseInt(variable, 10));
-                } else {
-                  scanner.scan(/\$/);
-                }
-              }
+    ...grammar.rules.map((rule, i): Statement => {
+      if (rule.action && rule.action !== '') {
+        stats['semanticActions']++;
+        const variables = new Set<number>();
+        const scanner = new StringScanner(rule.action);
+        while (!scanner.atEnd) {
+          scanner.scan(/[^$]+/);
+          if (scanner.scan('$')) {
+            const variable = scanner.scan(/\d+/);
+            if (variable) {
+              variables.add(parseInt(variable, 10));
+            } else {
+              scanner.scan(/\$/);
             }
-            // TODO: check for used variables and pass only those?
-            return {
-              kind: 'FunctionExpression',
-              arguments: Array.from(variables)
-                .sort()
-                .map((variable) => `$${variable}`),
-              body: [ast.rawStatement(rule.action), ast.return('$$')],
-            };
-          } else {
-            return ast.null;
           }
-        }),
-      ),
-    ),
+        }
+        // TODO: check for used variables and pass only those?
+        return ast.function(
+          `r${i}`,
+          Array.from(variables)
+            .sort()
+            .map((variable) => `$${variable}`),
+          [ast.rawStatement(rule.action), ast.return('$$')],
+        );
+      } else {
+        return ast.docComment(`r${i}: no production`);
+      }
+    }),
     // TODO: replace
     ast.rawStatement(`
       const table = null; // TODO: put actual table in here...
