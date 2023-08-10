@@ -1,4 +1,5 @@
 import {ast} from '@masochist/codegen';
+import {StringScanner} from '@masochist/common';
 
 import type {Expression, NullValue, Program} from '@masochist/codegen';
 
@@ -33,15 +34,26 @@ export default function build(
         grammar.rules.map((rule): Expression | NullValue => {
           if (rule.action && rule.action !== '') {
             stats['semanticActions']++;
+            const variables = new Set<number>();
+            const scanner = new StringScanner(rule.action);
+            while (!scanner.atEnd) {
+              scanner.scan(/[^$]+/);
+              if (scanner.scan('$')) {
+                const variable = scanner.scan(/\d+/);
+                if (variable) {
+                  variables.add(parseInt(variable, 10));
+                } else {
+                  scanner.scan(/\$/);
+                }
+              }
+            }
             // TODO: check for used variables and pass only those?
             return {
               kind: 'FunctionExpression',
-              arguments: [],
-              body: [
-                // TODO: uncomment this:
-                // ast.statement(rule.action),
-                ast.return('$$'),
-              ],
+              arguments: Array.from(variables)
+                .sort()
+                .map((variable) => `$${variable}`),
+              body: [ast.rawStatement(rule.action), ast.return('$$')],
             };
           } else {
             return ast.null;
