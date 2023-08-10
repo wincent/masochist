@@ -5,7 +5,7 @@ title: Using Stunnel to secure SMTP transport
 
 # Background
 
-In May last year I decided to secure access to my [SMTP](/wiki/SMTP), [POP3](/wiki/POP3) and [IMAP](/wiki/IMAP) services (see the [| original article](http://wincent.com/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php)). I dismissed using [Stunnel](/wiki/Stunnel) and instead decided to configure dedicated servers for [Secure SMTP](/wiki/Secure_SMTP), [POP3S](/wiki/POP3S) and [IMAPS](/wiki/IMAPS). At the time I wrote:
+In May last year I decided to secure access to my [SMTP](/wiki/SMTP), [POP3](/wiki/POP3) and [IMAP](/wiki/IMAP) services (see the [original article](http://wincent.com/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php)). I dismissed using [Stunnel](/wiki/Stunnel) and instead decided to configure dedicated servers for [Secure SMTP](/wiki/Secure_SMTP), [POP3S](/wiki/POP3S) and [IMAPS](/wiki/IMAPS). At the time I wrote:
 
 > I didn't actually try using \[stunnel\] but it seems like a viable option. Basically, the stunnel process serves as a wrapper for the insecure protocol. For example, you fire up stunnel on the server and get it to listen to port 993 (the standard port for IMAPS), and it forwards incoming, encrypted connections to the real IMAP process running on the server (not encrypted). You then set up your local mail client to communicate with SSL to the appropriate ports.
 >
