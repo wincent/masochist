@@ -23,8 +23,10 @@ export default function print(ast: Program) {
 function printExpression(expression: Expression, indent: number): string {
   if (expression.kind === 'ArrayValue') {
     return (
-      '[' +
-      expression.items.map((item) => printExpression(item, indent)).join(', ') +
+      '[\n' +
+      expression.items
+        .map((item) => printExpression(item, indent + 1))
+        .join(',\n') +
       ']'
     );
   } else if (expression.kind === 'BinaryExpression') {
@@ -133,6 +135,8 @@ function printExpression(expression: Expression, indent: number): string {
       printIndent(indent) +
       '}'
     );
+  } else if (expression.kind === 'RawExpression') {
+    return expression.expression;
   } else if (expression.kind === 'StringValue') {
     return quote(expression.value);
   } else if (expression.kind === 'TernaryExpression') {
@@ -344,6 +348,8 @@ function printStatement(statement: Statement, indent: number): string {
     );
   } else if (statement.kind === 'LineComment') {
     return printIndent(indent) + '//' + statement.contents + '\n';
+  } else if (statement.kind === 'RawStatement') {
+    return statement.statement + '\n';
   } else if (statement.kind === 'ReturnStatement') {
     if (statement.expression) {
       return (

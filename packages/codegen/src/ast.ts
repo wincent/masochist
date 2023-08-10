@@ -114,6 +114,7 @@ export type Expression =
   | MemberExpression
   | NewExpression
   | PrimitiveValue
+  | RawExpression
   | TernaryExpression
   | UnaryExpression
   | YieldExpression;
@@ -263,6 +264,24 @@ export type PropertyDeclaration = {
   type: string;
 };
 
+/**
+ * An escape hatch for emittng raw text in an expression position without having
+ * to implement full support for it in this module or in the printer.
+ */
+type RawExpression = {
+  kind: 'RawExpression';
+  expression: string;
+};
+
+/**
+ * An escape hatch for emittng raw text in a statement position without having
+ * to implement full support for it in this module or in the printer.
+ */
+export type RawStatement = {
+  kind: 'RawStatement';
+  statement: string;
+};
+
 export type ReturnStatement = {
   kind: 'ReturnStatement';
   expression?: Expression;
@@ -284,6 +303,7 @@ export type Statement =
   | ImportStatement
   | LabelStatement
   | LineComment
+  | RawStatement
   | ReturnStatement
   | SwitchStatement
   | ThrowStatement
@@ -672,6 +692,20 @@ const ast = {
       kind: 'PropertyDeclaration',
       name,
       type,
+    };
+  },
+
+  rawExpression(expression: string): RawExpression {
+    return {
+      kind: 'RawExpression',
+      expression,
+    };
+  },
+
+  rawStatement(statement: string): RawStatement {
+    return {
+      kind: 'RawStatement',
+      statement,
     };
   },
 

@@ -19,6 +19,7 @@ import type {
   Node,
   Program,
   PropertyDeclaration,
+  RawStatement,
   ReturnStatement,
   SwitchStatement,
   Statement,
@@ -137,6 +138,8 @@ export default function walk(
     return walkPropertyDeclaration(node, visitor);
   } else if (node.kind === 'ReturnStatement') {
     return walkReturnStatement(node, visitor);
+  } else if (node.kind === 'RawStatement') {
+    return walkRawStatement(node, visitor);
   } else if (node.kind === 'SwitchStatement') {
     return walkSwitchStatement(node, visitor);
   } else if (node.kind === 'ThrowStatement') {
@@ -612,6 +615,13 @@ function walkProgram(
   } else {
     return finalProgram;
   }
+}
+
+function walkRawStatement(
+  _statement: RawStatement,
+  _visitor: Visitor,
+): Statement | null | undefined {
+  return undefined; // Unimplemented.
 }
 
 function walkReturnStatement(
