@@ -19,6 +19,13 @@ export default function build(
   stats['semanticActions'] = 0;
 
   return ast.program([
+    // TODO: remove the @ts-nocheck once the file is good.
+    ast.comment('@ts-nocheck'),
+    ast.docComment(
+      'vim: set nomodifiable : DO NOT EDIT - edit "build.ts", run "make lexer" instead',
+      '',
+      '@generated',
+    ),
     ast.assign(
       'const',
       'ACTIONS',
