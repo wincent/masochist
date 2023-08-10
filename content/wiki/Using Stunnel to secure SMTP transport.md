@@ -52,7 +52,7 @@ To point at the directory where I already have my certificates and private keys 
 
 The default configuration runs [Stunnel](/wiki/Stunnel) in a [chroot](/wiki/chroot) jail. Also by default it does not verify client certificates and so there's no need to copy any certificates inside the jail and `CApath` can be commented out (it is commented out by default).
 
-To make the [chroot](/wiki/chroot) as secure as possible I created a new, unprivileged user and group without any login privileges just for [Stunnel](/wiki/Stunnel). I created the jail directory, changed ownership to the [Stunnell](/wiki/Stunnell) user/group, and set permissions of `700` on it.
+To make the [chroot](/wiki/chroot) as secure as possible I created a new, unprivileged user and group without any login privileges just for [Stunnel](/wiki/Stunnel). I created the jail directory, changed ownership to the [Stunnel](/wiki/Stunnel) user/group, and set permissions of `700` on it.
 
 ## Running [Stunnel](/wiki/Stunnel) in test mode
 
