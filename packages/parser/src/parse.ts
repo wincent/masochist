@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * vim: set nomodifiable : DO NOT EDIT - edit "build.ts", run "make lexer" instead
+ * vim: set nomodifiable : DO NOT EDIT - edit "build.ts", run "make parser" instead
  *
  * @generated
  */

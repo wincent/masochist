@@ -23,7 +23,7 @@ export default function build(
     // TODO: remove the @ts-nocheck once the file is good.
     ast.comment('@ts-nocheck'),
     ast.docComment(
-      'vim: set nomodifiable : DO NOT EDIT - edit "build.ts", run "make lexer" instead',
+      'vim: set nomodifiable : DO NOT EDIT - edit "build.ts", run "make parser" instead',
       '',
       '@generated',
     ),
