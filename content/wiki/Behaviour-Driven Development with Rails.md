@@ -1,6 +1,7 @@
 ---
 tags: rspec rails wiki
 cache_breaker: 1
+title: Behaviour-Driven Development with Rails
 ---
 
 # Note
@@ -191,7 +192,11 @@ You can further enhance your testing efforts by using [Heckle](/wiki/Heckle) to 
 
 As noted by the author of [Heckle](/wiki/Heckle) in [this post](http://glu.ttono.us/articles/2006/12/19/tormenting-your-tests-with-heckle):
 
-> **If it modifies code, can’t bad things happen?**&lt;br /&gt; Well, yes. Heckle could feasibly break things. It throws crap into your code on purpose. It flips unless and while loops so infinite loops will probably occur at some point. For the next release I’m planning to put in some sort of timeout to avoid that.&lt;br /&gt; &lt;br /&gt; Additionally, know what your code is doing. If randomly changing a string is going to actually break things irrevocably in testing, you probably should be stubbing those dangerous methods (eg. You probably shouldn’t run Heckle against methods that really delete files during testing if it’s based on a string)
+> **If it modifies code, can’t bad things happen?**
+>
+> Well, yes. Heckle could feasibly break things. It throws crap into your code on purpose. It flips unless and while loops so infinite loops will probably occur at some point. For the next release I’m planning to put in some sort of timeout to avoid that.
+>
+> Additionally, know what your code is doing. If randomly changing a string is going to actually break things irrevocably in testing, you probably should be stubbing those dangerous methods (eg. You probably shouldn’t run Heckle against methods that really delete files during testing if it’s based on a string)
 
 For this reason there is no way to automatically invoke [Heckle](/wiki/Heckle); you have to select a target to mutate and then perform the mutation manually.
 
