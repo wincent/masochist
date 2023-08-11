@@ -1,3 +1,3 @@
-export {default as default} from './lex';
+export {Lexer, default} from './lex';
 
 export {default as Token} from './Token';

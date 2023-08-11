@@ -6,7 +6,7 @@
 import Token from './Token';
 const REJECT = -1;
 const START = 0;
-class Lexer {
+export class Lexer {
   input: string;
   state: number;
   tokenStart: number;

@@ -1,4 +1,5 @@
 // @ts-nocheck
+import {Lexer} from '@masochist/lexer';
 /**
  * vim: set nomodifiable : DO NOT EDIT - edit "build.ts", run "make parser" instead
  *
@@ -5074,10 +5075,422 @@ const gotos = [
   },
   {},
 ];
+const rules = [
+  {
+    lhs: "Document'",
+    rhs: ['Document'],
+  },
+  {
+    lhs: 'Document',
+    rhs: ['DefinitionList'],
+  },
+  {
+    lhs: 'DefinitionList',
+    rhs: ['Definition'],
+  },
+  {
+    lhs: 'DefinitionList',
+    rhs: ['DefinitionList', 'Definition'],
+  },
+  {
+    lhs: 'Definition',
+    rhs: ['ExecutableDefinition'],
+  },
+  {
+    lhs: 'Definition',
+    rhs: ['FragmentDefinition'],
+  },
+  {
+    lhs: 'ExecutableDefinition',
+    rhs: ['OperationDefinition'],
+  },
+  {
+    lhs: 'OperationDefinition',
+    rhs: [
+      'OperationType',
+      'OperationNameOpt',
+      'VariableDefinitionsOpt',
+      'DirectivesOpt',
+      'SelectionSet',
+    ],
+  },
+  {
+    lhs: 'OperationDefinition',
+    rhs: ['SelectionSet'],
+  },
+  {
+    lhs: 'OperationType',
+    rhs: ['NAME'],
+  },
+  {
+    lhs: 'OperationNameOpt',
+    rhs: ['Name'],
+  },
+  {
+    lhs: 'OperationNameOpt',
+    rhs: [],
+  },
+  {
+    lhs: 'Name',
+    rhs: ['NAME'],
+  },
+  {
+    lhs: 'Name',
+    rhs: ['FRAGMENT'],
+  },
+  {
+    lhs: 'Name',
+    rhs: ['ON'],
+  },
+  {
+    lhs: 'VariableDefinitionsOpt',
+    rhs: ['OPENING_PAREN', 'VariableDefinitionList', 'CLOSING_PAREN'],
+  },
+  {
+    lhs: 'VariableDefinitionsOpt',
+    rhs: [],
+  },
+  {
+    lhs: 'VariableDefinitionList',
+    rhs: ['VariableDefinition'],
+  },
+  {
+    lhs: 'VariableDefinitionList',
+    rhs: ['VariableDefinitionList', 'VariableDefinition'],
+  },
+  {
+    lhs: 'VariableDefinition',
+    rhs: ['Variable', 'COLON', 'Type', 'DefaultValueOpt', 'DirectivesConstOpt'],
+  },
+  {
+    lhs: 'Variable',
+    rhs: ['DOLLAR', 'Name'],
+  },
+  {
+    lhs: 'Type',
+    rhs: ['NamedType'],
+  },
+  {
+    lhs: 'Type',
+    rhs: ['ListType'],
+  },
+  {
+    lhs: 'Type',
+    rhs: ['NonNullType'],
+  },
+  {
+    lhs: 'NamedType',
+    rhs: ['Name'],
+  },
+  {
+    lhs: 'ListType',
+    rhs: ['OPENING_BRACKET', 'Type', 'CLOSING_BRACKET'],
+  },
+  {
+    lhs: 'NonNullType',
+    rhs: ['ListType', 'BANG'],
+  },
+  {
+    lhs: 'NonNullType',
+    rhs: ['NamedType', 'BANG'],
+  },
+  {
+    lhs: 'DefaultValueOpt',
+    rhs: ['EQUALS', 'ValueConst'],
+  },
+  {
+    lhs: 'DefaultValueOpt',
+    rhs: [],
+  },
+  {
+    lhs: 'ValueConst',
+    rhs: ['NumberValue'],
+  },
+  {
+    lhs: 'ValueConst',
+    rhs: ['StringValue'],
+  },
+  {
+    lhs: 'ValueConst',
+    rhs: ['NamedValue'],
+  },
+  {
+    lhs: 'ValueConst',
+    rhs: ['ListValueConst'],
+  },
+  {
+    lhs: 'ValueConst',
+    rhs: ['ObjectValueConst'],
+  },
+  {
+    lhs: 'NumberValue',
+    rhs: ['NUMBER'],
+  },
+  {
+    lhs: 'NamedValue',
+    rhs: ['Name'],
+  },
+  {
+    lhs: 'ListValueConst',
+    rhs: ['OPENING_BRACKET', 'CLOSING_BRACKET'],
+  },
+  {
+    lhs: 'ListValueConst',
+    rhs: ['OPENING_BRACKET', 'ListValueConstList', 'CLOSING_BRACKET'],
+  },
+  {
+    lhs: 'ListValueConstList',
+    rhs: ['ValueConst'],
+  },
+  {
+    lhs: 'ListValueConstList',
+    rhs: ['ListValueConstList', 'ValueConst'],
+  },
+  {
+    lhs: 'ObjectValueConst',
+    rhs: ['OPENING_BRACE', 'CLOSING_BRACE'],
+  },
+  {
+    lhs: 'ObjectValueConst',
+    rhs: ['OPENING_BRACE', 'ObjectFieldConstList', 'CLOSING_BRACE'],
+  },
+  {
+    lhs: 'ObjectFieldConstList',
+    rhs: ['ObjectFieldConst'],
+  },
+  {
+    lhs: 'ObjectFieldConstList',
+    rhs: ['ObjectFieldConstList', 'ObjectFieldConst'],
+  },
+  {
+    lhs: 'ObjectFieldConst',
+    rhs: ['Name', 'COLON', 'ValueConst'],
+  },
+  {
+    lhs: 'DirectivesOpt',
+    rhs: ['DirectiveList'],
+  },
+  {
+    lhs: 'DirectivesOpt',
+    rhs: [],
+  },
+  {
+    lhs: 'DirectiveList',
+    rhs: ['Directive'],
+  },
+  {
+    lhs: 'DirectiveList',
+    rhs: ['DirectiveList', 'Directive'],
+  },
+  {
+    lhs: 'Directive',
+    rhs: ['AT', 'Name', 'ArgumentsOpt'],
+  },
+  {
+    lhs: 'DirectivesConstOpt',
+    rhs: ['DirectiveConstList'],
+  },
+  {
+    lhs: 'DirectivesConstOpt',
+    rhs: [],
+  },
+  {
+    lhs: 'DirectiveConstList',
+    rhs: ['DirectiveConst'],
+  },
+  {
+    lhs: 'DirectiveConstList',
+    rhs: ['DirectiveConstList', 'DirectiveConst'],
+  },
+  {
+    lhs: 'DirectiveConst',
+    rhs: ['AT', 'Name', 'ArgumentsConstOpt'],
+  },
+  {
+    lhs: 'SelectionSet',
+    rhs: ['OPENING_BRACE', 'SelectionList', 'CLOSING_BRACE'],
+  },
+  {
+    lhs: 'SelectionSetOpt',
+    rhs: ['SelectionSet'],
+  },
+  {
+    lhs: 'SelectionSetOpt',
+    rhs: [],
+  },
+  {
+    lhs: 'SelectionList',
+    rhs: ['Selection'],
+  },
+  {
+    lhs: 'SelectionList',
+    rhs: ['SelectionList', 'Selection'],
+  },
+  {
+    lhs: 'Selection',
+    rhs: ['Field'],
+  },
+  {
+    lhs: 'Selection',
+    rhs: ['FragmentSpread'],
+  },
+  {
+    lhs: 'Selection',
+    rhs: ['InlineFragment'],
+  },
+  {
+    lhs: 'Field',
+    rhs: ['Name', 'ArgumentsOpt', 'DirectivesOpt', 'SelectionSetOpt'],
+  },
+  {
+    lhs: 'Field',
+    rhs: ['Alias', 'Name', 'ArgumentsOpt', 'DirectivesOpt', 'SelectionSetOpt'],
+  },
+  {
+    lhs: 'Alias',
+    rhs: ['Name', 'COLON'],
+  },
+  {
+    lhs: 'ArgumentsOpt',
+    rhs: ['OPENING_PAREN', 'ArgumentList', 'CLOSING_PAREN'],
+  },
+  {
+    lhs: 'ArgumentsOpt',
+    rhs: [],
+  },
+  {
+    lhs: 'ArgumentList',
+    rhs: ['Argument'],
+  },
+  {
+    lhs: 'ArgumentList',
+    rhs: ['ArgumentList', 'Argument'],
+  },
+  {
+    lhs: 'Argument',
+    rhs: ['Name', 'COLON', 'Value'],
+  },
+  {
+    lhs: 'ArgumentsConstOpt',
+    rhs: ['OPENING_PAREN', 'ArgumentConstList', 'CLOSING_PAREN'],
+  },
+  {
+    lhs: 'ArgumentsConstOpt',
+    rhs: [],
+  },
+  {
+    lhs: 'ArgumentConstList',
+    rhs: ['ArgumentConst'],
+  },
+  {
+    lhs: 'ArgumentConstList',
+    rhs: ['ArgumentConstList', 'ArgumentConst'],
+  },
+  {
+    lhs: 'ArgumentConst',
+    rhs: ['Name', 'COLON', 'ValueConst'],
+  },
+  {
+    lhs: 'Value',
+    rhs: ['Variable'],
+  },
+  {
+    lhs: 'Value',
+    rhs: ['NumberValue'],
+  },
+  {
+    lhs: 'Value',
+    rhs: ['StringValue'],
+  },
+  {
+    lhs: 'Value',
+    rhs: ['NamedValue'],
+  },
+  {
+    lhs: 'Value',
+    rhs: ['ListValue'],
+  },
+  {
+    lhs: 'Value',
+    rhs: ['ObjectValue'],
+  },
+  {
+    lhs: 'StringValue',
+    rhs: ['STRING_VALUE'],
+  },
+  {
+    lhs: 'StringValue',
+    rhs: ['BLOCK_STRING_VALUE'],
+  },
+  {
+    lhs: 'ListValue',
+    rhs: ['OPENING_BRACKET', 'CLOSING_BRACKET'],
+  },
+  {
+    lhs: 'ListValue',
+    rhs: ['OPENING_BRACKET', 'ListValueList', 'CLOSING_BRACKET'],
+  },
+  {
+    lhs: 'ListValueList',
+    rhs: ['Value'],
+  },
+  {
+    lhs: 'ListValueList',
+    rhs: ['ListValueList', 'Value'],
+  },
+  {
+    lhs: 'ObjectValue',
+    rhs: ['OPENING_BRACE', 'CLOSING_BRACE'],
+  },
+  {
+    lhs: 'ObjectValue',
+    rhs: ['OPENING_BRACE', 'ObjectFieldList', 'CLOSING_BRACE'],
+  },
+  {
+    lhs: 'ObjectFieldList',
+    rhs: ['ObjectField'],
+  },
+  {
+    lhs: 'ObjectFieldList',
+    rhs: ['ObjectFieldList', 'ObjectField'],
+  },
+  {
+    lhs: 'ObjectField',
+    rhs: ['Name', 'COLON', 'Value'],
+  },
+  {
+    lhs: 'FragmentDefinition',
+    rhs: [
+      'FRAGMENT',
+      'FragmentName',
+      'ON',
+      'NamedType',
+      'DirectivesOpt',
+      'SelectionSet',
+    ],
+  },
+  {
+    lhs: 'FragmentName',
+    rhs: ['NAME'],
+  },
+  {
+    lhs: 'FragmentSpread',
+    rhs: ['ELLIPSIS', 'FragmentName', 'DirectivesOpt'],
+  },
+  {
+    lhs: 'InlineFragment',
+    rhs: ['ELLIPSIS', 'TypeConditionOpt', 'DirectivesOpt', 'SelectionSet'],
+  },
+  {
+    lhs: 'TypeConditionOpt',
+    rhs: ['ON', 'NamedType'],
+  },
+  {
+    lhs: 'TypeConditionOpt',
+    rhs: [],
+  },
+];
 
-const table = null; // TODO: put actual table in here...
-const grammar = null; // TODO: put actual augmented grammar in here...
-const EOF = new Token('$', -1, -1, '');
 
 export default function parse(input) {
   const stack = [[null, 0]];
@@ -5089,8 +5502,7 @@ export default function parse(input) {
   while ((token = lexer.next())) {
     // ie. Pretty much the same as 'parseWithTable'; I removed some invariants for readability.
     const [, current] = stack[stack.length - 1];
-    const [actions] = table[current];
-    const action = actions[token.name];
+    const action = actions[current][token.name];
 
     if (!action) {
       //throw new Error(
@@ -5104,16 +5516,16 @@ export default function parse(input) {
     } else if (action.kind === 'Shift') {
       stack.push([token, action.state]);
     } else if (action.kind === 'Reduce') {
-      const {lhs, rhs} = grammar.rules[action.rule];
+      console.log(action);
+      const {lhs, rhs} = rules[action.state];
       const popped: Array<P | Token | null> = [];
       for (let i = 0; i < rhs.length; i++) {
         const [node] = stack.pop()!;
         popped[rhs.length - i - 1] = node;
       }
       const [, next] = stack[stack.length - 1];
-      const [, gotos] = table[next];
-      const target = gotos[lhs];
-      const code = ACTIONS[action.rule];
+      const target = gotos[next][lhs];
+      const code = actions[action.state];
       if (code) {
         stack.push([code(...popped), target]);
       } else {

@@ -95,6 +95,8 @@ export default function build(
       'gotos',
       ast.array(
         table.map(([, gotos]) => {
+          // TODO: teach various places in ast to auto-coerce using ast.object?
+          // (challenge is that many nodes look like AST objects already...)
           return ast.object(
             objectMap(gotos, ([nonTerminal, target]) => {
               if (target === null) {
@@ -106,10 +108,20 @@ export default function build(
         }),
       ),
     ),
+    ast.assign(
+      'const',
+      'rules',
+      ast.array(
+        grammar.rules.map((rule) => {
+          return ast.object({
+            lhs: ast.string(rule.lhs),
+            rhs: ast.array(rule.rhs.map(ast.string)),
+          });
+        }),
+      ),
+    ),
     // TODO: replace
     ast.rawStatement(`
-      const table = null; // TODO: put actual table in here...
-      const grammar = null; // TODO: put actual augmented grammar in here...
       const EOF = new Token('$', -1, -1, '');
 
       export default function parse(input) {
@@ -122,8 +134,7 @@ export default function build(
         while ((token = lexer.next())) {
           // ie. Pretty much the same as 'parseWithTable'; I removed some invariants for readability.
           const [, current] = stack[stack.length - 1];
-          const [actions] = table[current];
-          const action = actions[token.name];
+          const action = actions[current][token.name];
 
           if (!action) {
             //throw new Error(
@@ -136,19 +147,20 @@ export default function build(
           } else if (action.kind === 'Shift') {
             stack.push([token, action.state]);
           } else if (action.kind === 'Reduce') {
-            const {lhs, rhs} = grammar.rules[action.rule];
+            const {lhs, rhs} = rules[action.rule];
             const popped: Array<P | Token | null> = [];
             for (let i = 0; i < rhs.length; i++) {
               const [node] = stack.pop()!;
               popped[rhs.length - i - 1] = node;
             }
             const [, next] = stack[stack.length - 1];
-            const [, gotos] = table[next];
-            const target = gotos[lhs];
+            const target = gotos[next][lhs];
             const code = ACTIONS[action.rule];
             if (code) {
               stack.push([code(...popped), target]);
             } else {
+              // TODO: throw? if you want to use the static parser, you have to
+              // provide semanticActions for all productions
               stack.push([makeNode(lhs, popped), target]);
             }
           }

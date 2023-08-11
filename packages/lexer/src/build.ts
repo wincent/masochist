@@ -279,6 +279,7 @@ export default function build(
       },
       ast.statement('const REJECT = -1'),
       ast.statement('const START = 0'),
+      // TODO: export this class
       ast.class('Lexer', [
         ast.propertyDeclaration('input', 'string'),
         ast.propertyDeclaration('state', 'number'),
