@@ -1,4 +1,5 @@
 import type {
+  Argument,
   Expression,
   FunctionExpression,
   MethodDefinition,
@@ -18,6 +19,10 @@ export default function print(ast: Program) {
       return printStatement(statement, 0);
     })
     .join('');
+}
+
+function printArgument(argument: Argument, _indent: number): string {
+  return [argument.name, argument.type].filter(Boolean).join(': ');
 }
 
 function printExpression(expression: Expression, indent: number): string {
@@ -171,7 +176,9 @@ function printFunctionExpression(
   const name = expression.name ?? '';
   return (
     (options.useKeyword ? `function ${name}(` : `${name}(`) +
-    expression.arguments.join(', ') +
+    expression.arguments
+      .map((argument) => printArgument(argument, indent))
+      .join(', ') +
     ') {\n' +
     expression.body
       .map((statement) => printStatement(statement, indent + 1))
@@ -285,7 +292,9 @@ function printStatement(statement: Statement, indent: number): string {
       'function ' +
       statement.name +
       '(' +
-      statement.arguments.join(', ') +
+      statement.arguments
+        .map((argument) => printArgument(argument, indent))
+        .join(', ') +
       ') {\n' +
       statement.body
         .map((statement) => {

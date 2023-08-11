@@ -1,4 +1,4 @@
-import {print, walk} from '@masochist/codegen';
+import {ast, print, walk} from '@masochist/codegen';
 import vm from 'vm';
 
 import {promises as fs} from 'fs';
@@ -9,6 +9,7 @@ import build from '../build';
 import definition from '../definition';
 
 import type {
+  Argument,
   DocComment,
   ExportDefaultDeclaration,
   FunctionDeclaration,
@@ -28,9 +29,9 @@ describe('lex()', () => {
 
   beforeAll(() => {
     // Build lexer.
-    const ast = build(definition);
+    const node = build(definition);
 
-    walk(ast, {
+    walk(node, {
       // Remove doc comments.
       DocComment(_comment: DocComment) {
         return null;
@@ -49,21 +50,11 @@ describe('lex()', () => {
 
       // Strip TS type annotations from FunctionDeclaration arguments.
       // ie. `function *lex(input: string)` -> `function *lex(input)`
-      FunctionDeclaration(declaration: FunctionDeclaration) {
-        // (Naughtily) mutate in place.
-        declaration.arguments.forEach((argument, i) => {
-          declaration.arguments[i] = argument.replace(/: \w+$/, '');
-        });
-        return declaration;
-      },
-
-      // Same for FunctionExpression arguments.
       // ie. `constructor(input: string)` -> `constructor(input)`
-      FunctionExpression(expression: FunctionExpression) {
-        expression.arguments.forEach((argument, i) => {
-          expression.arguments[i] = argument.replace(/: \w+$/, '');
-        });
-        return expression;
+      Argument(argument: Argument) {
+        if (argument.type) {
+          return ast.argument(argument.name);
+        }
       },
 
       // Strip TS property declarations (eg. `input: string` etc) from Lexer class.
@@ -73,7 +64,7 @@ describe('lex()', () => {
     });
 
     // Elaborate hack to run generated module.
-    const code = print(ast);
+    const code = print(node);
     const context = {
       Token,
       *lex(_input: string): Generator<Token, void, unknown> {}, // Placeholder.

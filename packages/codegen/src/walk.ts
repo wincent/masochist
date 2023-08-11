@@ -1,6 +1,7 @@
 import {invariant} from '@masochist/common';
 
 import type {
+  Argument,
   AssignmentStatement,
   BreakStatement,
   ClassDeclaration,
@@ -41,6 +42,9 @@ type Visitor = {
   // not call the post-order visitor with the wrong type.
   //
   // TODO: later on, consider doing similar things for `Expression` subtypes.
+
+  Argument?: (argument: Argument) => Argument | null | undefined;
+  ['Argument:exit']?: (argument: Argument) => Argument | null | undefined;
 
   ClassDeclaration?: (
     declaration: ClassDeclaration,
@@ -102,7 +106,9 @@ export default function walk(
   node: Node,
   visitor: Visitor,
 ): Node | null | undefined {
-  if (node.kind === 'AssignmentStatement') {
+  if (node.kind === 'Argument') {
+    return walkArgument(node, visitor);
+  } else if (node.kind === 'AssignmentStatement') {
     return walkAssignmentStatement(node, visitor);
   } else if (node.kind === 'BreakStatement') {
     return walkBreakStatement(node, visitor);
@@ -179,6 +185,40 @@ function mapChildren<T>(
   }
 
   return changed ? newChildren : children;
+}
+
+function walkArgument(
+  argument: Argument,
+  visitor: Visitor,
+): Argument | null | undefined {
+  // Pre-order.
+  let changed = false;
+  let newArgument = visitor.Argument?.(argument);
+  if (newArgument === null) {
+    return null;
+  } else if (newArgument === undefined) {
+    newArgument = argument;
+  } else if (newArgument.kind !== 'Argument') {
+    // Won't do post-order if node kind changes in pre-order; instead, walk
+    // replacement.
+    const replacement = walk(newArgument, visitor);
+    assertIsArgument(replacement);
+    return replacement;
+  } else {
+    changed = true;
+  }
+
+  // This is a leaf node, so no children to visit.
+
+  // Post-order.
+  const finalArgument = visitor['Argument:exit']?.(newArgument);
+  if (finalArgument === null) {
+    return null;
+  } else if (finalArgument === undefined) {
+    return changed ? newArgument : undefined;
+  } else {
+    return finalArgument;
+  }
 }
 
 function walkAssignmentStatement(
@@ -368,6 +408,15 @@ function walkFunctionDeclaration(
   }
 
   // Children.
+  const args = mapChildren(newDeclaration.arguments, (argument) => {
+    const node = walk(argument, visitor);
+    assertIsArgument(node);
+    return node;
+  });
+  if (args !== newDeclaration.arguments) {
+    newDeclaration.arguments = args;
+    changed = true;
+  }
   const body = mapChildren(newDeclaration.body, (statement) => {
     const node = walk(statement, visitor);
     assertIsStatement(node);
@@ -377,8 +426,6 @@ function walkFunctionDeclaration(
     newDeclaration.body = body;
     changed = true;
   }
-  // TODO: if `arguments` are ever more than 'string', visit them too.
-  // (for now, callers can visit the arguments themselves).
 
   // Post-order.
   const finalDeclaration =
@@ -408,6 +455,15 @@ function walkFunctionExpression(
   }
 
   // Children.
+  const args = mapChildren(newExpression.arguments, (argument) => {
+    const node = walk(argument, visitor);
+    assertIsArgument(node);
+    return node;
+  });
+  if (args !== newExpression.arguments) {
+    newExpression.arguments = args;
+    changed = true;
+  }
   const body = mapChildren(newExpression.body, (statement) => {
     const node = walk(statement, visitor);
     assertIsStatement(node);
@@ -417,8 +473,6 @@ function walkFunctionExpression(
     newExpression.body = body;
     changed = true;
   }
-  // TODO: if `arguments` are ever more than 'string', visit them too.
-  // (for now, callers can visit the arguments themselves).
 
   // Post-order.
   const finalExpression = visitor['FunctionExpression:exit']?.(newExpression);
@@ -551,6 +605,14 @@ function walkPropertyDeclaration(
     return changed ? newDeclaration : undefined;
   } else {
     return finalDeclaration;
+  }
+}
+
+function assertIsArgument(
+  node: Node | null | undefined,
+): asserts node is Argument | null | undefined {
+  if (node != null) {
+    invariant(node.kind === 'Argument');
   }
 }
 

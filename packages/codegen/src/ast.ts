@@ -1,11 +1,18 @@
 import {invariant} from '@masochist/common';
 
 export type Node =
+  | Argument
   | FunctionExpression
   | MethodDefinition
   | Program
   | PropertyDeclaration
   | Statement;
+
+export type Argument = {
+  kind: 'Argument';
+  name: string;
+  type?: string;
+};
 
 type ArrayValue = {
   kind: 'ArrayValue';
@@ -132,13 +139,13 @@ export type ExpressionStatement = {
 export type FunctionDeclaration = {
   kind: 'FunctionDeclaration';
   name: string;
-  arguments: Array<string>;
+  arguments: Array<Argument>;
   body: Array<Statement>;
 };
 
 export type FunctionExpression = {
   kind: 'FunctionExpression';
-  arguments: Array<string>;
+  arguments: Array<Argument>;
   name?: string;
   body: Array<Statement>;
 };
@@ -365,6 +372,26 @@ type YieldExpression = {
  * snippets such as `const REJECT = -1` into an AST node.
  */
 const ast = {
+  argument(template: string): Argument {
+    const index = template.indexOf(':');
+    if (index === -1) {
+      return {
+        kind: 'Argument',
+        name: template,
+      };
+    } else {
+      const [name, type] = [
+        template.slice(0, index).trim(),
+        template.slice(index + 1).trim(),
+      ];
+      return {
+        kind: 'Argument',
+        name,
+        type,
+      };
+    }
+  },
+
   array(items: Array<Expression | string>): ArrayValue {
     return {
       kind: 'ArrayValue',
@@ -608,7 +635,7 @@ const ast = {
     return {
       kind: 'FunctionDeclaration',
       name,
-      arguments: args,
+      arguments: args.map(ast.argument),
       body: statements,
     };
   },
@@ -647,7 +674,7 @@ const ast = {
       key: typeof key === 'string' ? ast.expression(key) : key,
       value: {
         kind: 'FunctionExpression',
-        arguments: args,
+        arguments: args.map(ast.argument),
         body,
       },
     };
