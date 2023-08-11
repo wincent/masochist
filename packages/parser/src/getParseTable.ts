@@ -23,7 +23,7 @@ export type Action =
     };
 
 type Actions = {
-  [terminal: string]: Action | undefined;
+  [terminal: string]: Action;
 };
 
 type Gotos = {

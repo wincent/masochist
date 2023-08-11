@@ -64,10 +64,7 @@ export default function build(
         table.map(([actions]) => {
           return ast.object(
             objectMap(actions, ([terminal, action]) => {
-              if (!action) {
-                // TODO: decide what to do here (doesn't happen for our use case).
-                return [terminal, ast.object({kind: ast.string('Accept')})];
-              } else if (action.kind === 'Reduce') {
+              if (action.kind === 'Reduce') {
                 return [
                   terminal,
                   ast.object({
