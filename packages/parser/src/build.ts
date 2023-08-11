@@ -63,35 +63,32 @@ export default function build(
       ast.array(
         table.map(([actions]) => {
           return ast.object(
-            objectMap<Action | undefined, ObjectValue>(
-              actions,
-              ([terminal, action]) => {
-                if (!action) {
-                  // TODO: decide what to do here (doesn't happen for our use case).
-                  return [terminal, ast.object({kind: ast.string('Accept')})];
-                } else if (action.kind === 'Reduce') {
-                  return [
-                    terminal,
-                    ast.object({
-                      kind: ast.string('Reduce'),
-                      action: ast.identifier(`r${action.rule}`),
-                    }),
-                  ];
-                } else if (action.kind === 'Shift') {
-                  return [
-                    terminal,
-                    ast.object({
-                      kind: ast.string('Shift'),
-                      state: ast.number(action.state),
-                    }),
-                  ];
-                } else if (action.kind === 'Accept') {
-                  return [terminal, ast.object({kind: ast.string('Accept')})];
-                } else {
-                  throw new Error('Unreachable');
-                }
-              },
-            ),
+            objectMap(actions, ([terminal, action]) => {
+              if (!action) {
+                // TODO: decide what to do here (doesn't happen for our use case).
+                return [terminal, ast.object({kind: ast.string('Accept')})];
+              } else if (action.kind === 'Reduce') {
+                return [
+                  terminal,
+                  ast.object({
+                    kind: ast.string('Reduce'),
+                    action: ast.identifier(`r${action.rule}`),
+                  }),
+                ];
+              } else if (action.kind === 'Shift') {
+                return [
+                  terminal,
+                  ast.object({
+                    kind: ast.string('Shift'),
+                    state: ast.number(action.state),
+                  }),
+                ];
+              } else if (action.kind === 'Accept') {
+                return [terminal, ast.object({kind: ast.string('Accept')})];
+              } else {
+                throw new Error('Unreachable');
+              }
+            }),
           );
         }),
       ),
@@ -101,8 +98,14 @@ export default function build(
       'gotos',
       ast.array(
         table.map(([, gotos]) => {
-          // TODO: implement
-          return '1';
+          return ast.object(
+            objectMap(gotos, ([nonTerminal, target]) => {
+              if (target === null) {
+                throw new Error('Not supported');
+              }
+              return [nonTerminal, ast.number(target)];
+            }),
+          );
         }),
       ),
     ),
