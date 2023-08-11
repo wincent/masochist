@@ -97,6 +97,8 @@ export type ContinueStatement = {
   label?: string;
 };
 
+export type Declaration = ClassDeclaration | FunctionDeclaration;
+
 type DecrementExpression = {
   kind: 'DecrementExpression';
   operand: Expression;
@@ -128,7 +130,12 @@ export type Expression =
 
 export type ExportDefaultDeclaration = {
   kind: 'ExportDefaultDeclaration';
-  declaration: FunctionDeclaration; // Later on, may have other types here.
+  declaration: Declaration;
+};
+
+export type ExportNamedDeclaration = {
+  kind: 'ExportNamedDeclaration';
+  declaration: Declaration;
 };
 
 export type ExpressionStatement = {
@@ -304,6 +311,7 @@ export type Statement =
   | DocComment
   | EmptyStatement
   | ExportDefaultDeclaration
+  | ExportNamedDeclaration
   | ExpressionStatement
   | FunctionDeclaration
   | IfStatement
@@ -500,6 +508,13 @@ const ast = {
     }
   },
 
+  default(declaration: Declaration): ExportDefaultDeclaration {
+    return {
+      kind: 'ExportDefaultDeclaration',
+      declaration,
+    };
+  },
+
   docComment(...contents: Array<string>): DocComment {
     return {
       kind: 'DocComment',
@@ -512,6 +527,13 @@ const ast = {
     rexpr: Expression | string,
   ): BinaryExpression {
     return ast.binop(lexpr, '===', rexpr);
+  },
+
+  export(declaration: Declaration): ExportNamedDeclaration {
+    return {
+      kind: 'ExportNamedDeclaration',
+      declaration,
+    };
   },
 
   expression(template: string): Expression {
@@ -642,6 +664,35 @@ const ast = {
 
   identifier(name: string): Identifier {
     return {kind: 'Identifier', name};
+  },
+
+  import(specifiers: string, source: string): ImportStatement {
+    const match = specifiers.match(/^\s*\{\s*(\w+)\s*\}\s*$/);
+    if (match) {
+      return {
+        kind: 'ImportStatement',
+        specifiers: [
+          {
+            kind: 'ImportSpecifier',
+            // TODO: support `{foo as bar}`
+            imported: ast.identifier(match[1]),
+            local: ast.identifier(match[1]),
+          },
+        ],
+        source: ast.string(source),
+      };
+    } else {
+      return {
+        kind: 'ImportStatement',
+        specifiers: [
+          {
+            kind: 'ImportDefaultSpecifier',
+            identifier: ast.identifier(specifiers),
+          },
+        ],
+        source: ast.string(source),
+      };
+    }
   },
 
   index(indexee: Expression, index: Expression): IndexExpression {
@@ -865,6 +916,10 @@ const ast = {
 
   get true(): BooleanValue {
     return {kind: 'BooleanValue', value: true};
+  },
+
+  get undefined(): UndefinedValue {
+    return {kind: 'UndefinedValue'};
   },
 } as const;
 

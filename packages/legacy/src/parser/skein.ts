@@ -1,5 +1,7 @@
 import utf8 from './utf8';
 
+// TODO: swap out for shorter/faster variant eg. 256-128
+
 /**
  * Skein 512-512 (v1.3) algorithm.
  *

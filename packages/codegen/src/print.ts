@@ -280,6 +280,12 @@ function printStatement(statement: Statement, indent: number): string {
       'export default ' +
       printStatement(statement.declaration, indent).trimStart()
     );
+  } else if (statement.kind === 'ExportNamedDeclaration') {
+    return (
+      printIndent(indent) +
+      'export ' +
+      printStatement(statement.declaration, indent).trimStart()
+    );
   } else if (statement.kind === 'ExpressionStatement') {
     return (
       printIndent(indent) +
@@ -345,6 +351,29 @@ function printStatement(statement: Statement, indent: number): string {
         )};` +
         '\n'
       );
+    } else if (
+      statement.specifiers.length === 1 &&
+      statement.specifiers[0].kind === 'ImportSpecifier'
+    ) {
+      const specifier = statement.specifiers[0];
+
+      if (specifier.local.name === specifier.imported.name) {
+        return (
+          printIndent(indent) +
+          `import {${specifier.local.name}} from ${quote(
+            statement.source.value,
+          )};` +
+          '\n'
+        );
+      } else {
+        return (
+          printIndent(indent) +
+          `import {${specifier.imported.name} as ${
+            specifier.local.name
+          }} from ${quote(statement.source.value)};` +
+          '\n'
+        );
+      }
     } else {
       throw new Error('printStatement(): Not yet implemented');
     }

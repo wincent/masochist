@@ -267,82 +267,73 @@ export default function build(
         '',
         '@generated',
       ),
-      {
-        kind: 'ImportStatement',
-        specifiers: [
-          {
-            kind: 'ImportDefaultSpecifier',
-            identifier: ast.identifier('Token'),
-          },
-        ],
-        source: ast.string('./Token'),
-      },
+      ast.import('Token', './Token'),
       ast.statement('const REJECT = -1'),
       ast.statement('const START = 0'),
-      // TODO: export this class
-      ast.class('Lexer', [
-        ast.propertyDeclaration('input', 'string'),
-        ast.propertyDeclaration('state', 'number'),
-        ast.propertyDeclaration('tokenStart', 'number'),
-        ast.propertyDeclaration('index', 'number'),
+      ast.export(
+        ast.class('Lexer', [
+          ast.propertyDeclaration('input', 'string'),
+          ast.propertyDeclaration('state', 'number'),
+          ast.propertyDeclaration('tokenStart', 'number'),
+          ast.propertyDeclaration('index', 'number'),
 
-        // Cosmetic only, due to: https://github.com/microsoft/TypeScript/issues/9694
-        ast.docComment('@param {string} input'),
+          // Cosmetic only, due to: https://github.com/microsoft/TypeScript/issues/9694
+          ast.docComment('@param {string} input'),
 
-        ast.method(
-          'constructor',
-          ['input: string'],
-          [
-            ast.statement('this.input = input'),
-            ast.statement('this.state = START'),
-            ast.statement('this.tokenStart = 0'),
-            ast.statement('this.index = 0'),
-          ],
-        ),
-        // Cosmetic only, due to: https://github.com/microsoft/TypeScript/issues/9694
-        ast.docComment(
-          '@param {string} name',
-          '@param {number} end',
-          '@param {string} input',
-        ),
-        ast.method(
-          'emit',
-          ['name: string', 'end: number', 'input: string'],
-          [
-            ast.const(
-              'token',
-              ast.new('Token', 'name', 'this.tokenStart', 'end', 'input'),
-            ),
-            ast.statement('this.tokenStart = end'),
-            ast.statement('this.index = end'),
-            ast.statement('return token'),
-          ],
-        ),
-        ast.method(
-          'next',
-          [],
-          [
-            ast.const('input', 'this.input'),
-            ast.const('length', 'input.length'),
-            whileStatement,
-            ast.statement('return null'),
-          ],
-        ),
-      ]),
+          ast.method(
+            'constructor',
+            ['input: string'],
+            [
+              ast.statement('this.input = input'),
+              ast.statement('this.state = START'),
+              ast.statement('this.tokenStart = 0'),
+              ast.statement('this.index = 0'),
+            ],
+          ),
+          // Cosmetic only, due to: https://github.com/microsoft/TypeScript/issues/9694
+          ast.docComment(
+            '@param {string} name',
+            '@param {number} end',
+            '@param {string} input',
+          ),
+          ast.method(
+            'emit',
+            ['name: string', 'end: number', 'input: string'],
+            [
+              ast.const(
+                'token',
+                ast.new('Token', 'name', 'this.tokenStart', 'end', 'input'),
+              ),
+              ast.statement('this.tokenStart = end'),
+              ast.statement('this.index = end'),
+              ast.statement('return token'),
+            ],
+          ),
+          ast.method(
+            'next',
+            [],
+            [
+              ast.const('input', 'this.input'),
+              ast.const('length', 'input.length'),
+              whileStatement,
+              ast.statement('return null'),
+            ],
+          ),
+        ]),
+      ),
       // Cosmetic only, due to: https://github.com/microsoft/TypeScript/issues/9694
       ast.docComment(
         '@param {string} input',
         '@returns {Generator<Token, void, unknown>}',
       ),
-      {
-        kind: 'ExportDefaultDeclaration',
+      ast.default(
         // Note the TS annotation in the argument here; it's one of few explicit
         // annotations required to make `tsc` accept the generated lexer without
         // any errors or warnings. Without this, we'd get:
         //
         //    error TS7006: Parameter 'input' implicitly has an 'any' type.
         //
-        declaration: ast.function(
+        ast.function(
           '*lex',
           ['input: string'],
           [
@@ -363,7 +354,7 @@ export default function build(
             ]),
           ],
         ),
-      },
+      ),
     ],
   };
 

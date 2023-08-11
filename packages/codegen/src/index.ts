@@ -9,6 +9,7 @@ export type {
   Consequent,
   DocComment,
   ExportDefaultDeclaration,
+  ExportNamedDeclaration,
   Expression,
   FunctionDeclaration,
   FunctionExpression,

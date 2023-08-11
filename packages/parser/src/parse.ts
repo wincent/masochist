@@ -1,14 +1,15 @@
 // @ts-nocheck
-import {Lexer} from '@masochist/lexer';
 /**
  * vim: set nomodifiable : DO NOT EDIT - edit "build.ts", run "make parser" instead
  *
  * @generated
  */
+import {Lexer} from '@masochist/lexer';
 /**
  * r0: no production
  */
 function r1($1) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'DOCUMENT',
@@ -18,12 +19,14 @@ function r1($1) {
   return $$;
 }
 function r2($1) {
+  let $$ = undefined;
   {
     $$ = [$1];
   }
   return $$;
 }
 function r3($1, $2) {
+  let $$ = undefined;
   {
     $1.push($2);
     $$ = $1;
@@ -31,24 +34,28 @@ function r3($1, $2) {
   return $$;
 }
 function r4($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r5($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r6($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r7($1, $2, $3, $4, $5) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'OPERATION',
@@ -62,6 +69,7 @@ function r7($1, $2, $3, $4, $5) {
   return $$;
 }
 function r8($1) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'OPERATION',
@@ -75,6 +83,7 @@ function r8($1) {
   return $$;
 }
 function r9($1) {
+  let $$ = undefined;
   {
     {
       const {contents} = $1;
@@ -92,54 +101,63 @@ function r9($1) {
   return $$;
 }
 function r10($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r11() {
+  let $$ = undefined;
   {
     $$ = null;
   }
   return $$;
 }
 function r12($1) {
+  let $$ = undefined;
   {
     $$ = $1.contents;
   }
   return $$;
 }
 function r13() {
+  let $$ = undefined;
   {
     $$ = null;
   }
   return $$;
 }
 function r14() {
+  let $$ = undefined;
   {
     $$ = null;
   }
   return $$;
 }
 function r15($2) {
+  let $$ = undefined;
   {
     $$ = $2;
   }
   return $$;
 }
 function r16() {
+  let $$ = undefined;
   {
     $$ = null;
   }
   return $$;
 }
 function r17($1) {
+  let $$ = undefined;
   {
     $$ = [$1];
   }
   return $$;
 }
 function r18($1, $2) {
+  let $$ = undefined;
   {
     $1.push($2);
     $$ = $1;
@@ -147,6 +165,7 @@ function r18($1, $2) {
   return $$;
 }
 function r19($1, $3, $4, $5) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'VARIABLE_DEFINITION',
@@ -159,6 +178,7 @@ function r19($1, $3, $4, $5) {
   return $$;
 }
 function r20($2) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'VARIABLE',
@@ -168,24 +188,28 @@ function r20($2) {
   return $$;
 }
 function r21($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r22($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r23($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r24($1) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'NAMED_TYPE',
@@ -195,6 +219,7 @@ function r24($1) {
   return $$;
 }
 function r25($2) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'LIST_TYPE',
@@ -204,6 +229,7 @@ function r25($2) {
   return $$;
 }
 function r26($1) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'NON_NULL_TYPE',
@@ -213,6 +239,7 @@ function r26($1) {
   return $$;
 }
 function r27($1) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'NON_NULL_TYPE',
@@ -222,48 +249,56 @@ function r27($1) {
   return $$;
 }
 function r28($2) {
+  let $$ = undefined;
   {
     $$ = $2;
   }
   return $$;
 }
 function r29() {
+  let $$ = undefined;
   {
     $$ = null;
   }
   return $$;
 }
 function r30($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r31($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r32($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r33($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r34($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r35($1) {
+  let $$ = undefined;
   {
     {
       const {contents} = $1;
@@ -279,6 +314,7 @@ function r35($1) {
   return $$;
 }
 function r36($1) {
+  let $$ = undefined;
   {
     {
       const name = $1;
@@ -296,6 +332,7 @@ function r36($1) {
   return $$;
 }
 function r37() {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'LIST_VALUE',
@@ -305,6 +342,7 @@ function r37() {
   return $$;
 }
 function r38($2) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'LIST_VALUE',
@@ -314,12 +352,14 @@ function r38($2) {
   return $$;
 }
 function r39($1) {
+  let $$ = undefined;
   {
     $$ = [$1];
   }
   return $$;
 }
 function r40($1, $2) {
+  let $$ = undefined;
   {
     $1.push($2);
     $$ = $1;
@@ -327,6 +367,7 @@ function r40($1, $2) {
   return $$;
 }
 function r41() {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'OBJECT_VALUE',
@@ -336,6 +377,7 @@ function r41() {
   return $$;
 }
 function r42($2) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'OBJECT_VALUE',
@@ -345,12 +387,14 @@ function r42($2) {
   return $$;
 }
 function r43($1) {
+  let $$ = undefined;
   {
     $$ = [$1];
   }
   return $$;
 }
 function r44($1, $2) {
+  let $$ = undefined;
   {
     $1.push($2);
     $$ = $1;
@@ -358,6 +402,7 @@ function r44($1, $2) {
   return $$;
 }
 function r45($1, $3) {
+  let $$ = undefined;
   {
     $$ = {
       name: $1,
@@ -367,24 +412,28 @@ function r45($1, $3) {
   return $$;
 }
 function r46($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r47() {
+  let $$ = undefined;
   {
     $$ = null;
   }
   return $$;
 }
 function r48($1) {
+  let $$ = undefined;
   {
     $$ = [$1];
   }
   return $$;
 }
 function r49($1, $2) {
+  let $$ = undefined;
   {
     $1.push($2);
     $$ = $1;
@@ -392,6 +441,7 @@ function r49($1, $2) {
   return $$;
 }
 function r50($2, $3) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'DIRECTIVE',
@@ -402,24 +452,28 @@ function r50($2, $3) {
   return $$;
 }
 function r51($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r52() {
+  let $$ = undefined;
   {
     $$ = null;
   }
   return $$;
 }
 function r53($1) {
+  let $$ = undefined;
   {
     $$ = [$1];
   }
   return $$;
 }
 function r54($1, $2) {
+  let $$ = undefined;
   {
     $1.push($2);
     $$ = $1;
@@ -427,6 +481,7 @@ function r54($1, $2) {
   return $$;
 }
 function r55($2, $3) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'DIRECTIVE',
@@ -437,30 +492,35 @@ function r55($2, $3) {
   return $$;
 }
 function r56($2) {
+  let $$ = undefined;
   {
     $$ = $2;
   }
   return $$;
 }
 function r57($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r58() {
+  let $$ = undefined;
   {
     $$ = null;
   }
   return $$;
 }
 function r59($1) {
+  let $$ = undefined;
   {
     $$ = [$1];
   }
   return $$;
 }
 function r60($1, $2) {
+  let $$ = undefined;
   {
     $1.push($2);
     $$ = $1;
@@ -468,24 +528,28 @@ function r60($1, $2) {
   return $$;
 }
 function r61($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r62($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r63($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r64($1, $2, $3, $4) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'FIELD',
@@ -499,6 +563,7 @@ function r64($1, $2, $3, $4) {
   return $$;
 }
 function r65($1, $2, $3, $4, $5) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'FIELD',
@@ -512,30 +577,35 @@ function r65($1, $2, $3, $4, $5) {
   return $$;
 }
 function r66($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r67($2) {
+  let $$ = undefined;
   {
     $$ = $2;
   }
   return $$;
 }
 function r68() {
+  let $$ = undefined;
   {
     $$ = null;
   }
   return $$;
 }
 function r69($1) {
+  let $$ = undefined;
   {
     $$ = [$1];
   }
   return $$;
 }
 function r70($1, $2) {
+  let $$ = undefined;
   {
     $1.push($2);
     $$ = $1;
@@ -543,6 +613,7 @@ function r70($1, $2) {
   return $$;
 }
 function r71($1, $3) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'ARGUMENT',
@@ -553,24 +624,28 @@ function r71($1, $3) {
   return $$;
 }
 function r72($2) {
+  let $$ = undefined;
   {
     $$ = $2;
   }
   return $$;
 }
 function r73() {
+  let $$ = undefined;
   {
     $$ = null;
   }
   return $$;
 }
 function r74($1) {
+  let $$ = undefined;
   {
     $$ = [$1];
   }
   return $$;
 }
 function r75($1, $2) {
+  let $$ = undefined;
   {
     $1.push($2);
     $$ = $1;
@@ -578,6 +653,7 @@ function r75($1, $2) {
   return $$;
 }
 function r76($1, $3) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'ARGUMENT',
@@ -588,42 +664,49 @@ function r76($1, $3) {
   return $$;
 }
 function r77($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r78($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r79($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r80($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r81($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r82($1) {
+  let $$ = undefined;
   {
     $$ = $1;
   }
   return $$;
 }
 function r83($1) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'STRING',
@@ -635,6 +718,7 @@ function r83($1) {
   return $$;
 }
 function r84($1) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'STRING',
@@ -646,6 +730,7 @@ function r84($1) {
   return $$;
 }
 function r85() {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'LIST_VALUE',
@@ -655,6 +740,7 @@ function r85() {
   return $$;
 }
 function r86($2) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'LIST_VALUE',
@@ -664,12 +750,14 @@ function r86($2) {
   return $$;
 }
 function r87($1) {
+  let $$ = undefined;
   {
     $$ = [$1];
   }
   return $$;
 }
 function r88($1, $2) {
+  let $$ = undefined;
   {
     $1.push($2);
     $$ = $1;
@@ -677,6 +765,7 @@ function r88($1, $2) {
   return $$;
 }
 function r89() {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'OBJECT_VALUE',
@@ -686,6 +775,7 @@ function r89() {
   return $$;
 }
 function r90($2) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'OBJECT_VALUE',
@@ -695,12 +785,14 @@ function r90($2) {
   return $$;
 }
 function r91($1) {
+  let $$ = undefined;
   {
     $$ = [$1];
   }
   return $$;
 }
 function r92($1, $2) {
+  let $$ = undefined;
   {
     $1.push($2);
     $$ = $1;
@@ -708,6 +800,7 @@ function r92($1, $2) {
   return $$;
 }
 function r93($1, $3) {
+  let $$ = undefined;
   {
     $$ = {
       name: $1,
@@ -717,6 +810,7 @@ function r93($1, $3) {
   return $$;
 }
 function r94($2, $4, $5, $6) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'FRAGMENT',
@@ -729,12 +823,14 @@ function r94($2, $4, $5, $6) {
   return $$;
 }
 function r95($1) {
+  let $$ = undefined;
   {
     $$ = $1.contents;
   }
   return $$;
 }
 function r96($2, $3) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'FRAGMENT_SPREAD',
@@ -745,6 +841,7 @@ function r96($2, $3) {
   return $$;
 }
 function r97($2, $3, $4) {
+  let $$ = undefined;
   {
     $$ = {
       kind: 'INLINE_FRAGMENT',
@@ -756,12 +853,14 @@ function r97($2, $3, $4) {
   return $$;
 }
 function r98($2) {
+  let $$ = undefined;
   {
     $$ = $2;
   }
   return $$;
 }
 function r99() {
+  let $$ = undefined;
   {
     $$ = null;
   }
@@ -5491,6 +5590,7 @@ const rules = [
   },
 ];
 
+// const EOF = new Token('$', -1, -1, '');
 
 export default function parse(input) {
   const stack = [[null, 0]];
@@ -5516,8 +5616,7 @@ export default function parse(input) {
     } else if (action.kind === 'Shift') {
       stack.push([token, action.state]);
     } else if (action.kind === 'Reduce') {
-      console.log(action);
-      const {lhs, rhs} = rules[action.state];
+      const {lhs, rhs} = rules[current];
       const popped: Array<P | Token | null> = [];
       for (let i = 0; i < rhs.length; i++) {
         const [node] = stack.pop()!;
@@ -5525,10 +5624,12 @@ export default function parse(input) {
       }
       const [, next] = stack[stack.length - 1];
       const target = gotos[next][lhs];
-      const code = actions[action.state];
+      const code = action.action;
       if (code) {
         stack.push([code(...popped), target]);
       } else {
+        // TODO: throw? if you want to use the static parser, you have to
+        // provide semanticActions for all productions
         stack.push([makeNode(lhs, popped), target]);
       }
     }

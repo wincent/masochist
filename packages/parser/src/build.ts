@@ -20,6 +20,7 @@ export default function build(
   stats['grammarRules'] = grammar.rules.length;
   stats['parserStates'] = table.length;
   stats['semanticActions'] = 0;
+  stats['actions'] = 0;
 
   return ast.program([
     // TODO: remove the @ts-nocheck once the file is good.
@@ -29,6 +30,7 @@ export default function build(
       '',
       '@generated',
     ),
+    ast.import('{Lexer}', '@masochist/lexer'),
     ...grammar.rules.map((rule, i): Statement => {
       if (rule.action && rule.action !== '') {
         stats['semanticActions']++;
@@ -51,7 +53,11 @@ export default function build(
           Array.from(variables)
             .sort()
             .map((variable) => `$${variable}`),
-          [ast.rawStatement(rule.action), ast.return('$$')],
+          [
+            ast.assign('let', '$$', ast.undefined),
+            ast.rawStatement(rule.action),
+            ast.return('$$'),
+          ],
         );
       } else {
         return ast.docComment(`r${i}: no production`);
@@ -62,6 +68,7 @@ export default function build(
       'actions',
       ast.array(
         table.map(([actions]) => {
+          stats['actions']++;
           return ast.object(
             objectMap(actions, ([terminal, action]) => {
               if (action.kind === 'Reduce') {
@@ -122,7 +129,7 @@ export default function build(
     ),
     // TODO: replace
     ast.rawStatement(`
-      const EOF = new Token('$', -1, -1, '');
+      // const EOF = new Token('$', -1, -1, '');
 
       export default function parse(input) {
         const stack = [[null, 0]];
@@ -147,7 +154,7 @@ export default function build(
           } else if (action.kind === 'Shift') {
             stack.push([token, action.state]);
           } else if (action.kind === 'Reduce') {
-            const {lhs, rhs} = rules[action.rule];
+            const {lhs, rhs} = rules[current];
             const popped: Array<P | Token | null> = [];
             for (let i = 0; i < rhs.length; i++) {
               const [node] = stack.pop()!;
@@ -155,7 +162,7 @@ export default function build(
             }
             const [, next] = stack[stack.length - 1];
             const target = gotos[next][lhs];
-            const code = ACTIONS[action.rule];
+            const code = action.action;
             if (code) {
               stack.push([code(...popped), target]);
             } else {

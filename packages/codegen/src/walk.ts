@@ -6,9 +6,11 @@ import type {
   BreakStatement,
   ClassDeclaration,
   ContinueStatement,
+  Declaration,
   DocComment,
   EmptyStatement,
   ExportDefaultDeclaration,
+  ExportNamedDeclaration,
   ExpressionStatement,
   FunctionDeclaration,
   FunctionExpression,
@@ -61,6 +63,13 @@ type Visitor = {
   ) => Statement | null | undefined;
   ['ExportDefaultDeclaration:exit']?: (
     declaration: ExportDefaultDeclaration,
+  ) => Statement | null | undefined;
+
+  ExportNamedDeclaration?: (
+    declaration: ExportNamedDeclaration,
+  ) => Statement | null | undefined;
+  ['ExportNamedDeclaration:exit']?: (
+    declaration: ExportNamedDeclaration,
   ) => Statement | null | undefined;
 
   FunctionDeclaration?: (
@@ -122,6 +131,8 @@ export default function walk(
     return walkEmptyStatement(node, visitor);
   } else if (node.kind === 'ExportDefaultDeclaration') {
     return walkExportDefaultDeclaration(node, visitor);
+  } else if (node.kind === 'ExportNamedDeclaration') {
+    return walkExportNamedDeclaration(node, visitor);
   } else if (node.kind === 'ExpressionStatement') {
     return walkExpressionStatement(node, visitor);
   } else if (node.kind === 'FunctionDeclaration') {
@@ -359,10 +370,7 @@ function walkExportDefaultDeclaration(
   if (newChild === null) {
     return null;
   } else if (newChild !== undefined) {
-    invariant(
-      newChild.kind === 'FunctionDeclaration',
-      `ExportDefaultDeclaration#declaration must be a FunctionDeclaration (was ${newChild.kind})`,
-    );
+    assertIsDeclaration(newChild);
     newDeclaration.declaration = newChild;
     changed = true;
   }
@@ -370,6 +378,49 @@ function walkExportDefaultDeclaration(
   // Post-order.
   const finalDeclaration =
     visitor['ExportDefaultDeclaration:exit']?.(newDeclaration);
+  if (finalDeclaration === null) {
+    return null;
+  } else if (finalDeclaration === undefined) {
+    return changed ? newDeclaration : undefined;
+  } else {
+    return finalDeclaration;
+  }
+}
+
+function walkExportNamedDeclaration(
+  declaration: ExportNamedDeclaration,
+  visitor: Visitor,
+): Statement | null | undefined {
+  // Pre-order.
+  let changed = false;
+  let newDeclaration = visitor.ExportNamedDeclaration?.(declaration);
+  if (newDeclaration === null) {
+    return null;
+  } else if (newDeclaration === undefined) {
+    newDeclaration = declaration;
+  } else if (newDeclaration.kind !== 'ExportNamedDeclaration') {
+    // Won't do post-order if node kind changes in pre-order; instead, walk
+    // replacement.
+    const replacement = walk(newDeclaration, visitor);
+    assertIsStatement(replacement);
+    return replacement;
+  } else {
+    changed = true;
+  }
+
+  // Children.
+  const newChild = walk(newDeclaration.declaration, visitor);
+  if (newChild === null) {
+    return null;
+  } else if (newChild !== undefined) {
+    assertIsDeclaration(newChild);
+    newDeclaration.declaration = newChild;
+    changed = true;
+  }
+
+  // Post-order.
+  const finalDeclaration =
+    visitor['ExportNamedDeclaration:exit']?.(newDeclaration);
   if (finalDeclaration === null) {
     return null;
   } else if (finalDeclaration === undefined) {
@@ -613,6 +664,16 @@ function assertIsArgument(
 ): asserts node is Argument | null | undefined {
   if (node != null) {
     invariant(node.kind === 'Argument');
+  }
+}
+
+function assertIsDeclaration(
+  node: Node | null | undefined,
+): asserts node is Declaration | null | undefined {
+  if (node != null) {
+    invariant(
+      node.kind === 'ClassDeclaration' || node.kind === 'FunctionDeclaration',
+    );
   }
 }
 

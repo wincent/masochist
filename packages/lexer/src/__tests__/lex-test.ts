@@ -12,8 +12,7 @@ import type {
   Argument,
   DocComment,
   ExportDefaultDeclaration,
-  FunctionDeclaration,
-  FunctionExpression,
+  ExportNamedDeclaration,
   ImportStatement,
   PropertyDeclaration,
 } from '@masochist/codegen';
@@ -41,6 +40,11 @@ describe('lex()', () => {
       // ie. ExportDefaultDeclaration becomes FunctionDeclaration.
       // ie. `export default function *lex()` -> `function *lex()`
       ExportDefaultDeclaration(declaration: ExportDefaultDeclaration) {
+        return declaration.declaration;
+      },
+
+      // Same for `export class Lexer` -> `class Lexer`.
+      ExportNamedDeclaration(declaration: ExportNamedDeclaration) {
         return declaration.declaration;
       },
 
