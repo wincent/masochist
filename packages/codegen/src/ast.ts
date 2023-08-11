@@ -66,7 +66,7 @@ export type BreakStatement = {
   label?: string;
 };
 
-type CallExpression = {
+export type CallExpression = {
   kind: 'CallExpression';
   callee: Expression;
   arguments: Array<Expression>;
@@ -246,7 +246,7 @@ type NumberValue = {
   base: Base;
 };
 
-type ObjectValue = {
+export type ObjectValue = {
   kind: 'ObjectValue';
   entries: Array<[number | string, Expression]>;
 };

@@ -5,6 +5,7 @@ export {default as walk} from './walk';
 
 export type {
   Argument,
+  CallExpression,
   Consequent,
   DocComment,
   ExportDefaultDeclaration,
@@ -15,6 +16,7 @@ export type {
   ImportStatement,
   MethodDefinition,
   NullValue,
+  ObjectValue,
   Program,
   PropertyDeclaration,
   Statement,

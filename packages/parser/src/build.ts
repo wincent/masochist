@@ -1,14 +1,11 @@
 import {ast} from '@masochist/codegen';
-import {StringScanner} from '@masochist/common';
+import {StringScanner, objectMap} from '@masochist/common';
 
-import type {
-  Expression,
-  NullValue,
-  Program,
-  Statement,
-} from '@masochist/codegen';
+import {table} from './definition';
 
-import type {ParseTable} from './getParseTable';
+import type {ObjectValue, Program, Statement} from '@masochist/codegen';
+
+import type {Action, ParseTable} from './getParseTable';
 import type {Grammar} from './types';
 
 export type Stats = {
@@ -60,6 +57,55 @@ export default function build(
         return ast.docComment(`r${i}: no production`);
       }
     }),
+    ast.assign(
+      'const',
+      'actions',
+      ast.array(
+        table.map(([actions]) => {
+          return ast.object(
+            objectMap<Action | undefined, ObjectValue>(
+              actions,
+              ([terminal, action]) => {
+                if (!action) {
+                  // TODO: decide what to do here (doesn't happen for our use case).
+                  return [terminal, ast.object({kind: ast.string('Accept')})];
+                } else if (action.kind === 'Reduce') {
+                  return [
+                    terminal,
+                    ast.object({
+                      kind: ast.string('Reduce'),
+                      action: ast.identifier(`r${action.rule}`),
+                    }),
+                  ];
+                } else if (action.kind === 'Shift') {
+                  return [
+                    terminal,
+                    ast.object({
+                      kind: ast.string('Shift'),
+                      state: ast.number(action.state),
+                    }),
+                  ];
+                } else if (action.kind === 'Accept') {
+                  return [terminal, ast.object({kind: ast.string('Accept')})];
+                } else {
+                  throw new Error('Unreachable');
+                }
+              },
+            ),
+          );
+        }),
+      ),
+    ),
+    ast.assign(
+      'const',
+      'gotos',
+      ast.array(
+        table.map(([, gotos]) => {
+          // TODO: implement
+          return '1';
+        }),
+      ),
+    ),
     // TODO: replace
     ast.rawStatement(`
       const table = null; // TODO: put actual table in here...
