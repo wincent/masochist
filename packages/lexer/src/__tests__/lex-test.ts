@@ -39,6 +39,7 @@ describe('lex()', () => {
 
       // Hoist function out from `export default` declaration.
       // ie. ExportDefaultDeclaration becomes FunctionDeclaration.
+      // ie. `export default function *lex()` -> `function *lex()`
       ExportDefaultDeclaration(declaration: ExportDefaultDeclaration) {
         return declaration.declaration;
       },
