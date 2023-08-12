@@ -2,7 +2,7 @@
 # 08f5b9aae57af115f4a0c297bc204d0a2851d318 with:
 #
 #     (cd .. && git grep -l 'graphql`' | sort | xargs sed -e '/graphql`/,/`/!d') > \
-#        support/fragments.graphql
+#        support/source.graphql
 #
 # and then manually cleaned up and formatted with Prettier.
 #

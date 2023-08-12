@@ -3,7 +3,7 @@
 #
 #     find ../src -name '*.txt' -path '*/__generated__/*' | \
 #       sort | \
-#       xargs cat > support/queries.graphql
+#       xargs cat > support/generated.graphql
 #
 # and then formatted with Prettier. Note that we're only looking for
 # "*.txt" files because those are the ones containing GraphQL (the
