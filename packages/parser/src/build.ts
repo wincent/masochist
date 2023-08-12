@@ -119,8 +119,8 @@ export default function build(
       ast.array(
         grammar.rules.map((rule, i) => {
           return ast.object({
-            lhs: ast.string(rule.lhs),
-            rhs: ast.array(rule.rhs.map(ast.string)),
+            production: ast.string(rule.lhs),
+            pop: ast.number(rule.rhs.length),
             action:
               i === 0
                 ? ast.rawExpression('() => {} /* dummy placeholder */')
@@ -137,7 +137,7 @@ export default function build(
         const stack = [[null, 0]];
         const lexer = new Lexer(input);
 
-        let token;
+        let token = lexer.next() || EOF;
 
         while (true) {
           const [, current] = stack[stack.length - 1];
@@ -153,14 +153,15 @@ export default function build(
             stack.push([token, action.state]);
             token = lexer.next() || EOF;
           } else if (action.kind === 'Reduce') {
-            const {lhs, rhs, action: code} = rules[action.rule];
+            // TODO: instead of pop, set length?
+            const {production, pop, action: code} = rules[action.rule];
             const popped: Array<P | Token | null> = [];
-            for (let i = 0; i < rhs.length; i++) {
+            for (let i = 0; i < pop; i++) {
               const [node] = stack.pop()!;
-              popped[rhs.length - i - 1] = node;
+              popped[pop - i - 1] = node;
             }
             const [, next] = stack[stack.length - 1];
-            const target = gotos[next][lhs];
+            const target = gotos[next][production];
             if (code) {
               stack.push([code(...popped), target]);
             } else {
