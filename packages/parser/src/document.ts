@@ -17,7 +17,7 @@ import itemSetsToTransitionTable from './itemSetsToTransitionTable';
 import parseDSL from './parseDSL';
 
 const grammarDeclaration = fs.readFileSync(
-  path.join(__dirname, '..', 'src', 'graphql.grammar'),
+  path.join(__dirname, '..', 'src', 'document.grammar'),
   'utf8',
 );
 
