@@ -1,5 +1,7 @@
-import {Token} from '@masochist/lexer';
+import {dedent} from '@masochist/common';
+import {Token, default as lex} from '@masochist/lexer';
 
+import {grammar, table} from '../definition';
 import getAugmentedGrammar from '../getAugmentedGrammar';
 import getItemSets from '../getItemSets';
 import getParseTable from '../getParseTable';
@@ -217,5 +219,42 @@ describe('parseWithTable()', () => {
         },
       ],
     });
+  });
+
+  it('parses a sample for the real grammar', () => {
+    let input = dedent`
+      fragment Article on Article {
+        title
+        # TODO: grow this example
+      }
+    `;
+    let tokens = [...lex(input)];
+    expect(parseWithTable<any>(table, tokens, grammar, () => {}))
+      .toMatchInlineSnapshot(`
+      {
+        "definitions": [
+          {
+            "directives": null,
+            "kind": "FRAGMENT",
+            "name": "Article",
+            "on": {
+              "kind": "NAMED_TYPE",
+              "name": "Article",
+            },
+            "selections": [
+              {
+                "alias": null,
+                "arguments": null,
+                "directives": null,
+                "kind": "FIELD",
+                "name": "title",
+                "selections": null,
+              },
+            ],
+          },
+        ],
+        "kind": "DOCUMENT",
+      }
+    `);
   });
 });

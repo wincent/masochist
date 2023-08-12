@@ -1,11 +1,8 @@
 import {ast} from '@masochist/codegen';
 import {StringScanner, objectMap} from '@masochist/common';
 
-import {table} from './definition';
-
-import type {ObjectValue, Program, Statement} from '@masochist/codegen';
-
-import type {Action, ParseTable} from './getParseTable';
+import type {Program, Statement} from '@masochist/codegen';
+import type {ParseTable} from './getParseTable';
 import type {Grammar} from './types';
 
 export type Stats = {
@@ -30,7 +27,7 @@ export default function build(
       '',
       '@generated',
     ),
-    ast.import('{Lexer}', '@masochist/lexer'),
+    ast.import('{Lexer, Token}', '@masochist/lexer'),
     ...grammar.rules.map((rule, i): Statement => {
       if (rule.action && rule.action !== '') {
         stats['semanticActions']++;
@@ -75,8 +72,9 @@ export default function build(
                 return [
                   terminal,
                   ast.object({
+                    // TODO: the pointers and the names are horribly confusing
                     kind: ast.string('Reduce'),
-                    action: ast.identifier(`r${action.rule}`),
+                    rule: ast.number(action.rule),
                   }),
                 ];
               } else if (action.kind === 'Shift') {
@@ -119,17 +117,21 @@ export default function build(
       'const',
       'rules',
       ast.array(
-        grammar.rules.map((rule) => {
+        grammar.rules.map((rule, i) => {
           return ast.object({
             lhs: ast.string(rule.lhs),
             rhs: ast.array(rule.rhs.map(ast.string)),
+            action:
+              i === 0
+                ? ast.rawExpression('() => {} /* dummy placeholder */')
+                : ast.identifier(`r${i}`),
           });
         }),
       ),
     ),
     // TODO: replace
     ast.rawStatement(`
-      // const EOF = new Token('$', -1, -1, '');
+      const EOF = new Token('$', -1, -1, '');
 
       export default function parse(input) {
         const stack = [[null, 0]];
@@ -137,24 +139,21 @@ export default function build(
 
         let token;
 
-        // TODO: handle EOF here
-        while ((token = lexer.next())) {
-          // ie. Pretty much the same as 'parseWithTable'; I removed some invariants for readability.
+        while (true) {
           const [, current] = stack[stack.length - 1];
           const action = actions[current][token.name];
 
           if (!action) {
-            //throw new Error(
-            //  \`parseWithTable(): Syntax error (no action for $ {token.name} (token index $ {pointer}) [$ {token.contents}] in state $ {current})\`,
-            //);
+            throw new Error('syntax error');
           } if (action.kind === 'Accept') {
             // Expect initial state + accept state.
             const [tree] = stack[1];
             return tree;
           } else if (action.kind === 'Shift') {
             stack.push([token, action.state]);
+            token = lexer.next() || EOF;
           } else if (action.kind === 'Reduce') {
-            const {lhs, rhs} = rules[current];
+            const {lhs, rhs, action: code} = rules[action.rule];
             const popped: Array<P | Token | null> = [];
             for (let i = 0; i < rhs.length; i++) {
               const [node] = stack.pop()!;
@@ -162,13 +161,10 @@ export default function build(
             }
             const [, next] = stack[stack.length - 1];
             const target = gotos[next][lhs];
-            const code = action.action;
             if (code) {
               stack.push([code(...popped), target]);
             } else {
-              // TODO: throw? if you want to use the static parser, you have to
-              // provide semanticActions for all productions
-              stack.push([makeNode(lhs, popped), target]);
+              throw new Error('to use static parser must provide semantic action for every production');
             }
           }
         }

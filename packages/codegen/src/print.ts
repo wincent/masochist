@@ -1,3 +1,5 @@
+import {invariant} from '@masochist/common';
+
 import type {
   Argument,
   Expression,
@@ -337,46 +339,46 @@ function printStatement(statement: Statement, indent: number): string {
     lines.push(printIndent(indent) + '}\n');
     return lines.join('');
   } else if (statement.kind === 'ImportStatement') {
-    if (
-      statement.specifiers.length === 1 &&
-      statement.specifiers[0].kind === 'ImportDefaultSpecifier'
-    ) {
-      const specifier = statement.specifiers[0];
-
-      // Indent should always be zero here, but printing it anyway...
-      return (
-        printIndent(indent) +
-        `import ${specifier.identifier.name} from ${quote(
-          statement.source.value,
-        )};` +
-        '\n'
+    // Sort default specifier, if any, to front.
+    const sorted = [...statement.specifiers].sort((a, b) => {
+      invariant(
+        a.kind !== 'ImportDefaultSpecifier' ||
+          b.kind !== 'ImportDefaultSpecifier',
+        'An import can only have one default specifier',
       );
-    } else if (
-      statement.specifiers.length === 1 &&
-      statement.specifiers[0].kind === 'ImportSpecifier'
-    ) {
-      const specifier = statement.specifiers[0];
-
-      if (specifier.local.name === specifier.imported.name) {
-        return (
-          printIndent(indent) +
-          `import {${specifier.local.name}} from ${quote(
-            statement.source.value,
-          )};` +
-          '\n'
-        );
+      if (a.kind === 'ImportDefaultSpecifier') {
+        return -1;
+      } else if (b.kind === 'ImportDefaultSpecifier') {
+        return 1;
       } else {
-        return (
-          printIndent(indent) +
-          `import {${specifier.imported.name} as ${
-            specifier.local.name
-          }} from ${quote(statement.source.value)};` +
-          '\n'
-        );
+        return a.local.name.localeCompare(b.local.name, 'en');
       }
-    } else {
-      throw new Error('printStatement(): Not yet implemented');
-    }
+    });
+
+    let emittedOpeningBrace = false;
+    const specifiers = sorted.map((specifier, i) => {
+      let isLast = i === sorted.length - 1;
+      let openingBrace = emittedOpeningBrace
+        ? ''
+        : ((emittedOpeningBrace = true), '{');
+      let closingBrace = isLast ? '}' : '';
+      if (specifier.kind === 'ImportDefaultSpecifier') {
+        return specifier.identifier.name;
+      } else {
+        if (specifier.local.name !== specifier.imported.name) {
+          return `${openingBrace}${specifier.imported.name} as ${specifier.local.name}${closingBrace}`;
+        } else {
+          return `${openingBrace}${specifier.local.name}${closingBrace}`;
+        }
+      }
+    });
+
+    // Indent should always be zero here, but printing it anyway...
+    return (
+      printIndent(indent) +
+      `import ${specifiers.join(', ')} from ${quote(statement.source.value)};` +
+      '\n'
+    );
   } else if (statement.kind === 'LabelStatement') {
     return (
       printIndent(indent) +

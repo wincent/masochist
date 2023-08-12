@@ -4,7 +4,7 @@
  *
  * @generated
  */
-import {Lexer} from '@masochist/lexer';
+import {Lexer, Token} from '@masochist/lexer';
 /**
  * r0: no production
  */
@@ -901,61 +901,61 @@ const actions = [
     },
     ['$']: {
       kind: 'Reduce',
-      action: r1,
+      rule: 1,
     },
   },
   {
     FRAGMENT: {
       kind: 'Reduce',
-      action: r2,
+      rule: 2,
     },
     NAME: {
       kind: 'Reduce',
-      action: r2,
+      rule: 2,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r2,
+      rule: 2,
     },
     ['$']: {
       kind: 'Reduce',
-      action: r2,
+      rule: 2,
     },
   },
   {
     FRAGMENT: {
       kind: 'Reduce',
-      action: r4,
+      rule: 4,
     },
     NAME: {
       kind: 'Reduce',
-      action: r4,
+      rule: 4,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r4,
+      rule: 4,
     },
     ['$']: {
       kind: 'Reduce',
-      action: r4,
+      rule: 4,
     },
   },
   {
     FRAGMENT: {
       kind: 'Reduce',
-      action: r6,
+      rule: 6,
     },
     NAME: {
       kind: 'Reduce',
-      action: r6,
+      rule: 6,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r6,
+      rule: 6,
     },
     ['$']: {
       kind: 'Reduce',
-      action: r6,
+      rule: 6,
     },
   },
   {
@@ -973,59 +973,59 @@ const actions = [
     },
     OPENING_PAREN: {
       kind: 'Reduce',
-      action: r11,
+      rule: 11,
     },
     AT: {
       kind: 'Reduce',
-      action: r11,
+      rule: 11,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r11,
+      rule: 11,
     },
   },
   {
     NAME: {
       kind: 'Reduce',
-      action: r9,
+      rule: 9,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r9,
+      rule: 9,
     },
     ON: {
       kind: 'Reduce',
-      action: r9,
+      rule: 9,
     },
     OPENING_PAREN: {
       kind: 'Reduce',
-      action: r9,
+      rule: 9,
     },
     AT: {
       kind: 'Reduce',
-      action: r9,
+      rule: 9,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r9,
+      rule: 9,
     },
   },
   {
     FRAGMENT: {
       kind: 'Reduce',
-      action: r8,
+      rule: 8,
     },
     NAME: {
       kind: 'Reduce',
-      action: r8,
+      rule: 8,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r8,
+      rule: 8,
     },
     ['$']: {
       kind: 'Reduce',
-      action: r8,
+      rule: 8,
     },
   },
   {
@@ -1049,19 +1049,19 @@ const actions = [
   {
     FRAGMENT: {
       kind: 'Reduce',
-      action: r5,
+      rule: 5,
     },
     NAME: {
       kind: 'Reduce',
-      action: r5,
+      rule: 5,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r5,
+      rule: 5,
     },
     ['$']: {
       kind: 'Reduce',
-      action: r5,
+      rule: 5,
     },
   },
   {
@@ -1073,19 +1073,19 @@ const actions = [
   {
     FRAGMENT: {
       kind: 'Reduce',
-      action: r3,
+      rule: 3,
     },
     NAME: {
       kind: 'Reduce',
-      action: r3,
+      rule: 3,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r3,
+      rule: 3,
     },
     ['$']: {
       kind: 'Reduce',
-      action: r3,
+      rule: 3,
     },
   },
   {
@@ -1095,247 +1095,247 @@ const actions = [
     },
     AT: {
       kind: 'Reduce',
-      action: r16,
+      rule: 16,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r16,
+      rule: 16,
     },
   },
   {
     OPENING_PAREN: {
       kind: 'Reduce',
-      action: r10,
+      rule: 10,
     },
     AT: {
       kind: 'Reduce',
-      action: r10,
+      rule: 10,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r10,
+      rule: 10,
     },
   },
   {
     OPENING_PAREN: {
       kind: 'Reduce',
-      action: r12,
+      rule: 12,
     },
     AT: {
       kind: 'Reduce',
-      action: r12,
+      rule: 12,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r12,
+      rule: 12,
     },
     COLON: {
       kind: 'Reduce',
-      action: r12,
+      rule: 12,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r12,
+      rule: 12,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r12,
+      rule: 12,
     },
     NAME: {
       kind: 'Reduce',
-      action: r12,
+      rule: 12,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r12,
+      rule: 12,
     },
     ON: {
       kind: 'Reduce',
-      action: r12,
+      rule: 12,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r12,
+      rule: 12,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r12,
+      rule: 12,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r12,
+      rule: 12,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r12,
+      rule: 12,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r12,
+      rule: 12,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r12,
+      rule: 12,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r12,
+      rule: 12,
     },
     BANG: {
       kind: 'Reduce',
-      action: r12,
+      rule: 12,
     },
     EQUALS: {
       kind: 'Reduce',
-      action: r12,
+      rule: 12,
     },
   },
   {
     OPENING_PAREN: {
       kind: 'Reduce',
-      action: r13,
+      rule: 13,
     },
     AT: {
       kind: 'Reduce',
-      action: r13,
+      rule: 13,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r13,
+      rule: 13,
     },
     COLON: {
       kind: 'Reduce',
-      action: r13,
+      rule: 13,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r13,
+      rule: 13,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r13,
+      rule: 13,
     },
     NAME: {
       kind: 'Reduce',
-      action: r13,
+      rule: 13,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r13,
+      rule: 13,
     },
     ON: {
       kind: 'Reduce',
-      action: r13,
+      rule: 13,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r13,
+      rule: 13,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r13,
+      rule: 13,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r13,
+      rule: 13,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r13,
+      rule: 13,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r13,
+      rule: 13,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r13,
+      rule: 13,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r13,
+      rule: 13,
     },
     BANG: {
       kind: 'Reduce',
-      action: r13,
+      rule: 13,
     },
     EQUALS: {
       kind: 'Reduce',
-      action: r13,
+      rule: 13,
     },
   },
   {
     OPENING_PAREN: {
       kind: 'Reduce',
-      action: r14,
+      rule: 14,
     },
     AT: {
       kind: 'Reduce',
-      action: r14,
+      rule: 14,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r14,
+      rule: 14,
     },
     COLON: {
       kind: 'Reduce',
-      action: r14,
+      rule: 14,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r14,
+      rule: 14,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r14,
+      rule: 14,
     },
     NAME: {
       kind: 'Reduce',
-      action: r14,
+      rule: 14,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r14,
+      rule: 14,
     },
     ON: {
       kind: 'Reduce',
-      action: r14,
+      rule: 14,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r14,
+      rule: 14,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r14,
+      rule: 14,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r14,
+      rule: 14,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r14,
+      rule: 14,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r14,
+      rule: 14,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r14,
+      rule: 14,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r14,
+      rule: 14,
     },
     BANG: {
       kind: 'Reduce',
-      action: r14,
+      rule: 14,
     },
     EQUALS: {
       kind: 'Reduce',
-      action: r14,
+      rule: 14,
     },
   },
   {
@@ -1363,45 +1363,45 @@ const actions = [
   {
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r59,
+      rule: 59,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r59,
+      rule: 59,
     },
     NAME: {
       kind: 'Reduce',
-      action: r59,
+      rule: 59,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r59,
+      rule: 59,
     },
     ON: {
       kind: 'Reduce',
-      action: r59,
+      rule: 59,
     },
   },
   {
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r61,
+      rule: 61,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r61,
+      rule: 61,
     },
     NAME: {
       kind: 'Reduce',
-      action: r61,
+      rule: 61,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r61,
+      rule: 61,
     },
     ON: {
       kind: 'Reduce',
-      action: r61,
+      rule: 61,
     },
   },
   {
@@ -1415,31 +1415,31 @@ const actions = [
     },
     AT: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
     NAME: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
     ON: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
   },
   {
@@ -1459,23 +1459,23 @@ const actions = [
   {
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r62,
+      rule: 62,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r62,
+      rule: 62,
     },
     NAME: {
       kind: 'Reduce',
-      action: r62,
+      rule: 62,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r62,
+      rule: 62,
     },
     ON: {
       kind: 'Reduce',
-      action: r62,
+      rule: 62,
     },
   },
   {
@@ -1489,33 +1489,33 @@ const actions = [
     },
     AT: {
       kind: 'Reduce',
-      action: r99,
+      rule: 99,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r99,
+      rule: 99,
     },
   },
   {
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r63,
+      rule: 63,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r63,
+      rule: 63,
     },
     NAME: {
       kind: 'Reduce',
-      action: r63,
+      rule: 63,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r63,
+      rule: 63,
     },
     ON: {
       kind: 'Reduce',
-      action: r63,
+      rule: 63,
     },
   },
   {
@@ -1527,27 +1527,27 @@ const actions = [
   {
     ON: {
       kind: 'Reduce',
-      action: r95,
+      rule: 95,
     },
     AT: {
       kind: 'Reduce',
-      action: r95,
+      rule: 95,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r95,
+      rule: 95,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r95,
+      rule: 95,
     },
     NAME: {
       kind: 'Reduce',
-      action: r95,
+      rule: 95,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r95,
+      rule: 95,
     },
   },
   {
@@ -1557,7 +1557,7 @@ const actions = [
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
   },
   {
@@ -1569,53 +1569,53 @@ const actions = [
   {
     FRAGMENT: {
       kind: 'Reduce',
-      action: r56,
+      rule: 56,
     },
     NAME: {
       kind: 'Reduce',
-      action: r56,
+      rule: 56,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r56,
+      rule: 56,
     },
     ['$']: {
       kind: 'Reduce',
-      action: r56,
+      rule: 56,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r56,
+      rule: 56,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r56,
+      rule: 56,
     },
     ON: {
       kind: 'Reduce',
-      action: r56,
+      rule: 56,
     },
   },
   {
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r60,
+      rule: 60,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r60,
+      rule: 60,
     },
     NAME: {
       kind: 'Reduce',
-      action: r60,
+      rule: 60,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r60,
+      rule: 60,
     },
     ON: {
       kind: 'Reduce',
-      action: r60,
+      rule: 60,
     },
   },
   {
@@ -1625,41 +1625,41 @@ const actions = [
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
     NAME: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
     ON: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
   },
   {
     NAME: {
       kind: 'Reduce',
-      action: r66,
+      rule: 66,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r66,
+      rule: 66,
     },
     ON: {
       kind: 'Reduce',
-      action: r66,
+      rule: 66,
     },
   },
   {
@@ -1683,31 +1683,31 @@ const actions = [
     },
     AT: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
     NAME: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
     ON: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
   },
   {
@@ -1717,23 +1717,23 @@ const actions = [
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
     NAME: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
     ON: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
   },
   {
@@ -1743,7 +1743,7 @@ const actions = [
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
   },
   {
@@ -1787,57 +1787,57 @@ const actions = [
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r46,
+      rule: 46,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r46,
+      rule: 46,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r46,
+      rule: 46,
     },
     NAME: {
       kind: 'Reduce',
-      action: r46,
+      rule: 46,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r46,
+      rule: 46,
     },
     ON: {
       kind: 'Reduce',
-      action: r46,
+      rule: 46,
     },
   },
   {
     AT: {
       kind: 'Reduce',
-      action: r48,
+      rule: 48,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r48,
+      rule: 48,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r48,
+      rule: 48,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r48,
+      rule: 48,
     },
     NAME: {
       kind: 'Reduce',
-      action: r48,
+      rule: 48,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r48,
+      rule: 48,
     },
     ON: {
       kind: 'Reduce',
-      action: r48,
+      rule: 48,
     },
   },
   {
@@ -1867,11 +1867,11 @@ const actions = [
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r17,
+      rule: 17,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r17,
+      rule: 17,
     },
   },
   {
@@ -1901,23 +1901,23 @@ const actions = [
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r58,
+      rule: 58,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r58,
+      rule: 58,
     },
     NAME: {
       kind: 'Reduce',
-      action: r58,
+      rule: 58,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r58,
+      rule: 58,
     },
     ON: {
       kind: 'Reduce',
-      action: r58,
+      rule: 58,
     },
   },
   {
@@ -1941,19 +1941,19 @@ const actions = [
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r69,
+      rule: 69,
     },
     NAME: {
       kind: 'Reduce',
-      action: r69,
+      rule: 69,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r69,
+      rule: 69,
     },
     ON: {
       kind: 'Reduce',
-      action: r69,
+      rule: 69,
     },
   },
   {
@@ -1969,49 +1969,49 @@ const actions = [
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
     NAME: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
     ON: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
   },
   {
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r96,
+      rule: 96,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r96,
+      rule: 96,
     },
     NAME: {
       kind: 'Reduce',
-      action: r96,
+      rule: 96,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r96,
+      rule: 96,
     },
     ON: {
       kind: 'Reduce',
-      action: r96,
+      rule: 96,
     },
   },
   {
@@ -2023,41 +2023,41 @@ const actions = [
   {
     AT: {
       kind: 'Reduce',
-      action: r98,
+      rule: 98,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r98,
+      rule: 98,
     },
   },
   {
     AT: {
       kind: 'Reduce',
-      action: r24,
+      rule: 24,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r24,
+      rule: 24,
     },
     BANG: {
       kind: 'Reduce',
-      action: r24,
+      rule: 24,
     },
     EQUALS: {
       kind: 'Reduce',
-      action: r24,
+      rule: 24,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r24,
+      rule: 24,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r24,
+      rule: 24,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r24,
+      rule: 24,
     },
   },
   {
@@ -2067,55 +2067,55 @@ const actions = [
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r47,
+      rule: 47,
     },
   },
   {
     FRAGMENT: {
       kind: 'Reduce',
-      action: r7,
+      rule: 7,
     },
     NAME: {
       kind: 'Reduce',
-      action: r7,
+      rule: 7,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r7,
+      rule: 7,
     },
     ['$']: {
       kind: 'Reduce',
-      action: r7,
+      rule: 7,
     },
   },
   {
     AT: {
       kind: 'Reduce',
-      action: r49,
+      rule: 49,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r49,
+      rule: 49,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r49,
+      rule: 49,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r49,
+      rule: 49,
     },
     NAME: {
       kind: 'Reduce',
-      action: r49,
+      rule: 49,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r49,
+      rule: 49,
     },
     ON: {
       kind: 'Reduce',
-      action: r49,
+      rule: 49,
     },
   },
   {
@@ -2125,51 +2125,51 @@ const actions = [
     },
     AT: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
     NAME: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
     ON: {
       kind: 'Reduce',
-      action: r68,
+      rule: 68,
     },
   },
   {
     AT: {
       kind: 'Reduce',
-      action: r15,
+      rule: 15,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r15,
+      rule: 15,
     },
   },
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r18,
+      rule: 18,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r18,
+      rule: 18,
     },
   },
   {
@@ -2193,147 +2193,147 @@ const actions = [
   {
     COLON: {
       kind: 'Reduce',
-      action: r20,
+      rule: 20,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r20,
+      rule: 20,
     },
     NAME: {
       kind: 'Reduce',
-      action: r20,
+      rule: 20,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r20,
+      rule: 20,
     },
     ON: {
       kind: 'Reduce',
-      action: r20,
+      rule: 20,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r20,
+      rule: 20,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r20,
+      rule: 20,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r20,
+      rule: 20,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r20,
+      rule: 20,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r20,
+      rule: 20,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r20,
+      rule: 20,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r20,
+      rule: 20,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r20,
+      rule: 20,
     },
   },
   {
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r64,
+      rule: 64,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r64,
+      rule: 64,
     },
     NAME: {
       kind: 'Reduce',
-      action: r64,
+      rule: 64,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r64,
+      rule: 64,
     },
     ON: {
       kind: 'Reduce',
-      action: r64,
+      rule: 64,
     },
   },
   {
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r57,
+      rule: 57,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r57,
+      rule: 57,
     },
     NAME: {
       kind: 'Reduce',
-      action: r57,
+      rule: 57,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r57,
+      rule: 57,
     },
     ON: {
       kind: 'Reduce',
-      action: r57,
+      rule: 57,
     },
   },
   {
     AT: {
       kind: 'Reduce',
-      action: r67,
+      rule: 67,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r67,
+      rule: 67,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r67,
+      rule: 67,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r67,
+      rule: 67,
     },
     NAME: {
       kind: 'Reduce',
-      action: r67,
+      rule: 67,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r67,
+      rule: 67,
     },
     ON: {
       kind: 'Reduce',
-      action: r67,
+      rule: 67,
     },
   },
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r70,
+      rule: 70,
     },
     NAME: {
       kind: 'Reduce',
-      action: r70,
+      rule: 70,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r70,
+      rule: 70,
     },
     ON: {
       kind: 'Reduce',
-      action: r70,
+      rule: 70,
     },
   },
   {
@@ -2381,45 +2381,45 @@ const actions = [
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r58,
+      rule: 58,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r58,
+      rule: 58,
     },
     NAME: {
       kind: 'Reduce',
-      action: r58,
+      rule: 58,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r58,
+      rule: 58,
     },
     ON: {
       kind: 'Reduce',
-      action: r58,
+      rule: 58,
     },
   },
   {
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r97,
+      rule: 97,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r97,
+      rule: 97,
     },
     NAME: {
       kind: 'Reduce',
-      action: r97,
+      rule: 97,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r97,
+      rule: 97,
     },
     ON: {
       kind: 'Reduce',
-      action: r97,
+      rule: 97,
     },
   },
   {
@@ -2431,31 +2431,31 @@ const actions = [
   {
     AT: {
       kind: 'Reduce',
-      action: r50,
+      rule: 50,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r50,
+      rule: 50,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r50,
+      rule: 50,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r50,
+      rule: 50,
     },
     NAME: {
       kind: 'Reduce',
-      action: r50,
+      rule: 50,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r50,
+      rule: 50,
     },
     ON: {
       kind: 'Reduce',
-      action: r50,
+      rule: 50,
     },
   },
   {
@@ -2465,15 +2465,15 @@ const actions = [
     },
     AT: {
       kind: 'Reduce',
-      action: r29,
+      rule: 29,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r29,
+      rule: 29,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r29,
+      rule: 29,
     },
   },
   {
@@ -2483,23 +2483,23 @@ const actions = [
     },
     EQUALS: {
       kind: 'Reduce',
-      action: r21,
+      rule: 21,
     },
     AT: {
       kind: 'Reduce',
-      action: r21,
+      rule: 21,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r21,
+      rule: 21,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r21,
+      rule: 21,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r21,
+      rule: 21,
     },
   },
   {
@@ -2509,23 +2509,23 @@ const actions = [
     },
     EQUALS: {
       kind: 'Reduce',
-      action: r22,
+      rule: 22,
     },
     AT: {
       kind: 'Reduce',
-      action: r22,
+      rule: 22,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r22,
+      rule: 22,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r22,
+      rule: 22,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r22,
+      rule: 22,
     },
   },
   {
@@ -2549,507 +2549,507 @@ const actions = [
   {
     EQUALS: {
       kind: 'Reduce',
-      action: r23,
+      rule: 23,
     },
     AT: {
       kind: 'Reduce',
-      action: r23,
+      rule: 23,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r23,
+      rule: 23,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r23,
+      rule: 23,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r23,
+      rule: 23,
     },
   },
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r71,
+      rule: 71,
     },
     NAME: {
       kind: 'Reduce',
-      action: r71,
+      rule: 71,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r71,
+      rule: 71,
     },
     ON: {
       kind: 'Reduce',
-      action: r71,
+      rule: 71,
     },
   },
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r77,
+      rule: 77,
     },
     NAME: {
       kind: 'Reduce',
-      action: r77,
+      rule: 77,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r77,
+      rule: 77,
     },
     ON: {
       kind: 'Reduce',
-      action: r77,
+      rule: 77,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r77,
+      rule: 77,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r77,
+      rule: 77,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r77,
+      rule: 77,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r77,
+      rule: 77,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r77,
+      rule: 77,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r77,
+      rule: 77,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r77,
+      rule: 77,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r77,
+      rule: 77,
     },
   },
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r78,
+      rule: 78,
     },
     NAME: {
       kind: 'Reduce',
-      action: r78,
+      rule: 78,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r78,
+      rule: 78,
     },
     ON: {
       kind: 'Reduce',
-      action: r78,
+      rule: 78,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r78,
+      rule: 78,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r78,
+      rule: 78,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r78,
+      rule: 78,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r78,
+      rule: 78,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r78,
+      rule: 78,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r78,
+      rule: 78,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r78,
+      rule: 78,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r78,
+      rule: 78,
     },
   },
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r35,
+      rule: 35,
     },
     NAME: {
       kind: 'Reduce',
-      action: r35,
+      rule: 35,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r35,
+      rule: 35,
     },
     ON: {
       kind: 'Reduce',
-      action: r35,
+      rule: 35,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r35,
+      rule: 35,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r35,
+      rule: 35,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r35,
+      rule: 35,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r35,
+      rule: 35,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r35,
+      rule: 35,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r35,
+      rule: 35,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r35,
+      rule: 35,
     },
     AT: {
       kind: 'Reduce',
-      action: r35,
+      rule: 35,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r35,
+      rule: 35,
     },
   },
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r79,
+      rule: 79,
     },
     NAME: {
       kind: 'Reduce',
-      action: r79,
+      rule: 79,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r79,
+      rule: 79,
     },
     ON: {
       kind: 'Reduce',
-      action: r79,
+      rule: 79,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r79,
+      rule: 79,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r79,
+      rule: 79,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r79,
+      rule: 79,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r79,
+      rule: 79,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r79,
+      rule: 79,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r79,
+      rule: 79,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r79,
+      rule: 79,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r79,
+      rule: 79,
     },
   },
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r83,
+      rule: 83,
     },
     NAME: {
       kind: 'Reduce',
-      action: r83,
+      rule: 83,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r83,
+      rule: 83,
     },
     ON: {
       kind: 'Reduce',
-      action: r83,
+      rule: 83,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r83,
+      rule: 83,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r83,
+      rule: 83,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r83,
+      rule: 83,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r83,
+      rule: 83,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r83,
+      rule: 83,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r83,
+      rule: 83,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r83,
+      rule: 83,
     },
     AT: {
       kind: 'Reduce',
-      action: r83,
+      rule: 83,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r83,
+      rule: 83,
     },
   },
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r84,
+      rule: 84,
     },
     NAME: {
       kind: 'Reduce',
-      action: r84,
+      rule: 84,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r84,
+      rule: 84,
     },
     ON: {
       kind: 'Reduce',
-      action: r84,
+      rule: 84,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r84,
+      rule: 84,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r84,
+      rule: 84,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r84,
+      rule: 84,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r84,
+      rule: 84,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r84,
+      rule: 84,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r84,
+      rule: 84,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r84,
+      rule: 84,
     },
     AT: {
       kind: 'Reduce',
-      action: r84,
+      rule: 84,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r84,
+      rule: 84,
     },
   },
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r80,
+      rule: 80,
     },
     NAME: {
       kind: 'Reduce',
-      action: r80,
+      rule: 80,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r80,
+      rule: 80,
     },
     ON: {
       kind: 'Reduce',
-      action: r80,
+      rule: 80,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r80,
+      rule: 80,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r80,
+      rule: 80,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r80,
+      rule: 80,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r80,
+      rule: 80,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r80,
+      rule: 80,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r80,
+      rule: 80,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r80,
+      rule: 80,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r80,
+      rule: 80,
     },
   },
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r36,
+      rule: 36,
     },
     NAME: {
       kind: 'Reduce',
-      action: r36,
+      rule: 36,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r36,
+      rule: 36,
     },
     ON: {
       kind: 'Reduce',
-      action: r36,
+      rule: 36,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r36,
+      rule: 36,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r36,
+      rule: 36,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r36,
+      rule: 36,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r36,
+      rule: 36,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r36,
+      rule: 36,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r36,
+      rule: 36,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r36,
+      rule: 36,
     },
     AT: {
       kind: 'Reduce',
-      action: r36,
+      rule: 36,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r36,
+      rule: 36,
     },
   },
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r81,
+      rule: 81,
     },
     NAME: {
       kind: 'Reduce',
-      action: r81,
+      rule: 81,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r81,
+      rule: 81,
     },
     ON: {
       kind: 'Reduce',
-      action: r81,
+      rule: 81,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r81,
+      rule: 81,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r81,
+      rule: 81,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r81,
+      rule: 81,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r81,
+      rule: 81,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r81,
+      rule: 81,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r81,
+      rule: 81,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r81,
+      rule: 81,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r81,
+      rule: 81,
     },
   },
   {
@@ -3097,51 +3097,51 @@ const actions = [
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r82,
+      rule: 82,
     },
     NAME: {
       kind: 'Reduce',
-      action: r82,
+      rule: 82,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r82,
+      rule: 82,
     },
     ON: {
       kind: 'Reduce',
-      action: r82,
+      rule: 82,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r82,
+      rule: 82,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r82,
+      rule: 82,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r82,
+      rule: 82,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r82,
+      rule: 82,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r82,
+      rule: 82,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r82,
+      rule: 82,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r82,
+      rule: 82,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r82,
+      rule: 82,
     },
   },
   {
@@ -3165,41 +3165,41 @@ const actions = [
   {
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r65,
+      rule: 65,
     },
     ELLIPSIS: {
       kind: 'Reduce',
-      action: r65,
+      rule: 65,
     },
     NAME: {
       kind: 'Reduce',
-      action: r65,
+      rule: 65,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r65,
+      rule: 65,
     },
     ON: {
       kind: 'Reduce',
-      action: r65,
+      rule: 65,
     },
   },
   {
     FRAGMENT: {
       kind: 'Reduce',
-      action: r94,
+      rule: 94,
     },
     NAME: {
       kind: 'Reduce',
-      action: r94,
+      rule: 94,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r94,
+      rule: 94,
     },
     ['$']: {
       kind: 'Reduce',
-      action: r94,
+      rule: 94,
     },
   },
   {
@@ -3209,11 +3209,11 @@ const actions = [
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r52,
+      rule: 52,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r52,
+      rule: 52,
     },
   },
   {
@@ -3253,45 +3253,45 @@ const actions = [
   {
     EQUALS: {
       kind: 'Reduce',
-      action: r27,
+      rule: 27,
     },
     AT: {
       kind: 'Reduce',
-      action: r27,
+      rule: 27,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r27,
+      rule: 27,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r27,
+      rule: 27,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r27,
+      rule: 27,
     },
   },
   {
     EQUALS: {
       kind: 'Reduce',
-      action: r26,
+      rule: 26,
     },
     AT: {
       kind: 'Reduce',
-      action: r26,
+      rule: 26,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r26,
+      rule: 26,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r26,
+      rule: 26,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r26,
+      rule: 26,
     },
   },
   {
@@ -3303,51 +3303,51 @@ const actions = [
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r85,
+      rule: 85,
     },
     NAME: {
       kind: 'Reduce',
-      action: r85,
+      rule: 85,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r85,
+      rule: 85,
     },
     ON: {
       kind: 'Reduce',
-      action: r85,
+      rule: 85,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r85,
+      rule: 85,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r85,
+      rule: 85,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r85,
+      rule: 85,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r85,
+      rule: 85,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r85,
+      rule: 85,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r85,
+      rule: 85,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r85,
+      rule: 85,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r85,
+      rule: 85,
     },
   },
   {
@@ -3395,93 +3395,93 @@ const actions = [
   {
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r87,
+      rule: 87,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r87,
+      rule: 87,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r87,
+      rule: 87,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r87,
+      rule: 87,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r87,
+      rule: 87,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r87,
+      rule: 87,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r87,
+      rule: 87,
     },
     NAME: {
       kind: 'Reduce',
-      action: r87,
+      rule: 87,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r87,
+      rule: 87,
     },
     ON: {
       kind: 'Reduce',
-      action: r87,
+      rule: 87,
     },
   },
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r89,
+      rule: 89,
     },
     NAME: {
       kind: 'Reduce',
-      action: r89,
+      rule: 89,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r89,
+      rule: 89,
     },
     ON: {
       kind: 'Reduce',
-      action: r89,
+      rule: 89,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r89,
+      rule: 89,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r89,
+      rule: 89,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r89,
+      rule: 89,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r89,
+      rule: 89,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r89,
+      rule: 89,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r89,
+      rule: 89,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r89,
+      rule: 89,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r89,
+      rule: 89,
     },
   },
   {
@@ -3505,19 +3505,19 @@ const actions = [
   {
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r91,
+      rule: 91,
     },
     NAME: {
       kind: 'Reduce',
-      action: r91,
+      rule: 91,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r91,
+      rule: 91,
     },
     ON: {
       kind: 'Reduce',
-      action: r91,
+      rule: 91,
     },
   },
   {
@@ -3529,11 +3529,11 @@ const actions = [
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r19,
+      rule: 19,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r19,
+      rule: 19,
     },
   },
   {
@@ -3543,25 +3543,25 @@ const actions = [
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r51,
+      rule: 51,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r51,
+      rule: 51,
     },
   },
   {
     AT: {
       kind: 'Reduce',
-      action: r53,
+      rule: 53,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r53,
+      rule: 53,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r53,
+      rule: 53,
     },
   },
   {
@@ -3581,231 +3581,231 @@ const actions = [
   {
     AT: {
       kind: 'Reduce',
-      action: r28,
+      rule: 28,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r28,
+      rule: 28,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r28,
+      rule: 28,
     },
   },
   {
     AT: {
       kind: 'Reduce',
-      action: r30,
+      rule: 30,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r30,
+      rule: 30,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r30,
+      rule: 30,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r30,
+      rule: 30,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r30,
+      rule: 30,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r30,
+      rule: 30,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r30,
+      rule: 30,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r30,
+      rule: 30,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r30,
+      rule: 30,
     },
     NAME: {
       kind: 'Reduce',
-      action: r30,
+      rule: 30,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r30,
+      rule: 30,
     },
     ON: {
       kind: 'Reduce',
-      action: r30,
+      rule: 30,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r30,
+      rule: 30,
     },
   },
   {
     AT: {
       kind: 'Reduce',
-      action: r31,
+      rule: 31,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r31,
+      rule: 31,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r31,
+      rule: 31,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r31,
+      rule: 31,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r31,
+      rule: 31,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r31,
+      rule: 31,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r31,
+      rule: 31,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r31,
+      rule: 31,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r31,
+      rule: 31,
     },
     NAME: {
       kind: 'Reduce',
-      action: r31,
+      rule: 31,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r31,
+      rule: 31,
     },
     ON: {
       kind: 'Reduce',
-      action: r31,
+      rule: 31,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r31,
+      rule: 31,
     },
   },
   {
     AT: {
       kind: 'Reduce',
-      action: r32,
+      rule: 32,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r32,
+      rule: 32,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r32,
+      rule: 32,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r32,
+      rule: 32,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r32,
+      rule: 32,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r32,
+      rule: 32,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r32,
+      rule: 32,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r32,
+      rule: 32,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r32,
+      rule: 32,
     },
     NAME: {
       kind: 'Reduce',
-      action: r32,
+      rule: 32,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r32,
+      rule: 32,
     },
     ON: {
       kind: 'Reduce',
-      action: r32,
+      rule: 32,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r32,
+      rule: 32,
     },
   },
   {
     AT: {
       kind: 'Reduce',
-      action: r33,
+      rule: 33,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r33,
+      rule: 33,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r33,
+      rule: 33,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r33,
+      rule: 33,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r33,
+      rule: 33,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r33,
+      rule: 33,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r33,
+      rule: 33,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r33,
+      rule: 33,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r33,
+      rule: 33,
     },
     NAME: {
       kind: 'Reduce',
-      action: r33,
+      rule: 33,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r33,
+      rule: 33,
     },
     ON: {
       kind: 'Reduce',
-      action: r33,
+      rule: 33,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r33,
+      rule: 33,
     },
   },
   {
@@ -3849,55 +3849,55 @@ const actions = [
   {
     AT: {
       kind: 'Reduce',
-      action: r34,
+      rule: 34,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r34,
+      rule: 34,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r34,
+      rule: 34,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r34,
+      rule: 34,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r34,
+      rule: 34,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r34,
+      rule: 34,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r34,
+      rule: 34,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r34,
+      rule: 34,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r34,
+      rule: 34,
     },
     NAME: {
       kind: 'Reduce',
-      action: r34,
+      rule: 34,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r34,
+      rule: 34,
     },
     ON: {
       kind: 'Reduce',
-      action: r34,
+      rule: 34,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r34,
+      rule: 34,
     },
   },
   {
@@ -3921,187 +3921,187 @@ const actions = [
   {
     BANG: {
       kind: 'Reduce',
-      action: r25,
+      rule: 25,
     },
     EQUALS: {
       kind: 'Reduce',
-      action: r25,
+      rule: 25,
     },
     AT: {
       kind: 'Reduce',
-      action: r25,
+      rule: 25,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r25,
+      rule: 25,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r25,
+      rule: 25,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r25,
-    },
-  },
-  {
-    CLOSING_PAREN: {
-      kind: 'Reduce',
-      action: r86,
-    },
-    NAME: {
-      kind: 'Reduce',
-      action: r86,
-    },
-    FRAGMENT: {
-      kind: 'Reduce',
-      action: r86,
-    },
-    ON: {
-      kind: 'Reduce',
-      action: r86,
-    },
-    CLOSING_BRACKET: {
-      kind: 'Reduce',
-      action: r86,
-    },
-    DOLLAR: {
-      kind: 'Reduce',
-      action: r86,
-    },
-    NUMBER: {
-      kind: 'Reduce',
-      action: r86,
-    },
-    STRING_VALUE: {
-      kind: 'Reduce',
-      action: r86,
-    },
-    BLOCK_STRING_VALUE: {
-      kind: 'Reduce',
-      action: r86,
-    },
-    OPENING_BRACKET: {
-      kind: 'Reduce',
-      action: r86,
-    },
-    OPENING_BRACE: {
-      kind: 'Reduce',
-      action: r86,
-    },
-    CLOSING_BRACE: {
-      kind: 'Reduce',
-      action: r86,
-    },
-  },
-  {
-    CLOSING_BRACKET: {
-      kind: 'Reduce',
-      action: r88,
-    },
-    DOLLAR: {
-      kind: 'Reduce',
-      action: r88,
-    },
-    NUMBER: {
-      kind: 'Reduce',
-      action: r88,
-    },
-    STRING_VALUE: {
-      kind: 'Reduce',
-      action: r88,
-    },
-    BLOCK_STRING_VALUE: {
-      kind: 'Reduce',
-      action: r88,
-    },
-    OPENING_BRACKET: {
-      kind: 'Reduce',
-      action: r88,
-    },
-    OPENING_BRACE: {
-      kind: 'Reduce',
-      action: r88,
-    },
-    NAME: {
-      kind: 'Reduce',
-      action: r88,
-    },
-    FRAGMENT: {
-      kind: 'Reduce',
-      action: r88,
-    },
-    ON: {
-      kind: 'Reduce',
-      action: r88,
+      rule: 25,
     },
   },
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r90,
+      rule: 86,
     },
     NAME: {
       kind: 'Reduce',
-      action: r90,
+      rule: 86,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r90,
+      rule: 86,
     },
     ON: {
       kind: 'Reduce',
-      action: r90,
+      rule: 86,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r90,
+      rule: 86,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r90,
+      rule: 86,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r90,
+      rule: 86,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r90,
+      rule: 86,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r90,
+      rule: 86,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r90,
+      rule: 86,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r90,
+      rule: 86,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r90,
+      rule: 86,
+    },
+  },
+  {
+    CLOSING_BRACKET: {
+      kind: 'Reduce',
+      rule: 88,
+    },
+    DOLLAR: {
+      kind: 'Reduce',
+      rule: 88,
+    },
+    NUMBER: {
+      kind: 'Reduce',
+      rule: 88,
+    },
+    STRING_VALUE: {
+      kind: 'Reduce',
+      rule: 88,
+    },
+    BLOCK_STRING_VALUE: {
+      kind: 'Reduce',
+      rule: 88,
+    },
+    OPENING_BRACKET: {
+      kind: 'Reduce',
+      rule: 88,
+    },
+    OPENING_BRACE: {
+      kind: 'Reduce',
+      rule: 88,
+    },
+    NAME: {
+      kind: 'Reduce',
+      rule: 88,
+    },
+    FRAGMENT: {
+      kind: 'Reduce',
+      rule: 88,
+    },
+    ON: {
+      kind: 'Reduce',
+      rule: 88,
+    },
+  },
+  {
+    CLOSING_PAREN: {
+      kind: 'Reduce',
+      rule: 90,
+    },
+    NAME: {
+      kind: 'Reduce',
+      rule: 90,
+    },
+    FRAGMENT: {
+      kind: 'Reduce',
+      rule: 90,
+    },
+    ON: {
+      kind: 'Reduce',
+      rule: 90,
+    },
+    CLOSING_BRACKET: {
+      kind: 'Reduce',
+      rule: 90,
+    },
+    DOLLAR: {
+      kind: 'Reduce',
+      rule: 90,
+    },
+    NUMBER: {
+      kind: 'Reduce',
+      rule: 90,
+    },
+    STRING_VALUE: {
+      kind: 'Reduce',
+      rule: 90,
+    },
+    BLOCK_STRING_VALUE: {
+      kind: 'Reduce',
+      rule: 90,
+    },
+    OPENING_BRACKET: {
+      kind: 'Reduce',
+      rule: 90,
+    },
+    OPENING_BRACE: {
+      kind: 'Reduce',
+      rule: 90,
+    },
+    CLOSING_BRACE: {
+      kind: 'Reduce',
+      rule: 90,
     },
   },
   {
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r92,
+      rule: 92,
     },
     NAME: {
       kind: 'Reduce',
-      action: r92,
+      rule: 92,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r92,
+      rule: 92,
     },
     ON: {
       kind: 'Reduce',
-      action: r92,
+      rule: 92,
     },
   },
   {
@@ -4145,15 +4145,15 @@ const actions = [
   {
     AT: {
       kind: 'Reduce',
-      action: r54,
+      rule: 54,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r54,
+      rule: 54,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r54,
+      rule: 54,
     },
   },
   {
@@ -4163,69 +4163,69 @@ const actions = [
     },
     AT: {
       kind: 'Reduce',
-      action: r73,
+      rule: 73,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r73,
+      rule: 73,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r73,
+      rule: 73,
     },
   },
   {
     AT: {
       kind: 'Reduce',
-      action: r37,
+      rule: 37,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r37,
+      rule: 37,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r37,
+      rule: 37,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r37,
+      rule: 37,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r37,
+      rule: 37,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r37,
+      rule: 37,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r37,
+      rule: 37,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r37,
+      rule: 37,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r37,
+      rule: 37,
     },
     NAME: {
       kind: 'Reduce',
-      action: r37,
+      rule: 37,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r37,
+      rule: 37,
     },
     ON: {
       kind: 'Reduce',
-      action: r37,
+      rule: 37,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r37,
+      rule: 37,
     },
   },
   {
@@ -4269,93 +4269,93 @@ const actions = [
   {
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r39,
+      rule: 39,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r39,
+      rule: 39,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r39,
+      rule: 39,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r39,
+      rule: 39,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r39,
+      rule: 39,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r39,
+      rule: 39,
     },
     NAME: {
       kind: 'Reduce',
-      action: r39,
+      rule: 39,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r39,
+      rule: 39,
     },
     ON: {
       kind: 'Reduce',
-      action: r39,
+      rule: 39,
     },
   },
   {
     AT: {
       kind: 'Reduce',
-      action: r41,
+      rule: 41,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r41,
+      rule: 41,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r41,
+      rule: 41,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r41,
+      rule: 41,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r41,
+      rule: 41,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r41,
+      rule: 41,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r41,
+      rule: 41,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r41,
+      rule: 41,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r41,
+      rule: 41,
     },
     NAME: {
       kind: 'Reduce',
-      action: r41,
+      rule: 41,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r41,
+      rule: 41,
     },
     ON: {
       kind: 'Reduce',
-      action: r41,
+      rule: 41,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r41,
+      rule: 41,
     },
   },
   {
@@ -4379,19 +4379,19 @@ const actions = [
   {
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r43,
+      rule: 43,
     },
     NAME: {
       kind: 'Reduce',
-      action: r43,
+      rule: 43,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r43,
+      rule: 43,
     },
     ON: {
       kind: 'Reduce',
-      action: r43,
+      rule: 43,
     },
   },
   {
@@ -4403,33 +4403,33 @@ const actions = [
   {
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r93,
+      rule: 93,
     },
     NAME: {
       kind: 'Reduce',
-      action: r93,
+      rule: 93,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r93,
+      rule: 93,
     },
     ON: {
       kind: 'Reduce',
-      action: r93,
+      rule: 93,
     },
   },
   {
     AT: {
       kind: 'Reduce',
-      action: r55,
+      rule: 55,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r55,
+      rule: 55,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r55,
+      rule: 55,
     },
   },
   {
@@ -4449,165 +4449,165 @@ const actions = [
   {
     AT: {
       kind: 'Reduce',
-      action: r38,
+      rule: 38,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r38,
+      rule: 38,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r38,
+      rule: 38,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r38,
+      rule: 38,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r38,
+      rule: 38,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r38,
+      rule: 38,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r38,
+      rule: 38,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r38,
+      rule: 38,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r38,
+      rule: 38,
     },
     NAME: {
       kind: 'Reduce',
-      action: r38,
+      rule: 38,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r38,
+      rule: 38,
     },
     ON: {
       kind: 'Reduce',
-      action: r38,
+      rule: 38,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r38,
+      rule: 38,
     },
   },
   {
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r40,
+      rule: 40,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r40,
+      rule: 40,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r40,
+      rule: 40,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r40,
+      rule: 40,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r40,
+      rule: 40,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r40,
+      rule: 40,
     },
     NAME: {
       kind: 'Reduce',
-      action: r40,
+      rule: 40,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r40,
+      rule: 40,
     },
     ON: {
       kind: 'Reduce',
-      action: r40,
+      rule: 40,
     },
   },
   {
     AT: {
       kind: 'Reduce',
-      action: r42,
+      rule: 42,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r42,
+      rule: 42,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r42,
+      rule: 42,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      action: r42,
+      rule: 42,
     },
     NUMBER: {
       kind: 'Reduce',
-      action: r42,
+      rule: 42,
     },
     STRING_VALUE: {
       kind: 'Reduce',
-      action: r42,
+      rule: 42,
     },
     BLOCK_STRING_VALUE: {
       kind: 'Reduce',
-      action: r42,
+      rule: 42,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      action: r42,
+      rule: 42,
     },
     OPENING_BRACE: {
       kind: 'Reduce',
-      action: r42,
+      rule: 42,
     },
     NAME: {
       kind: 'Reduce',
-      action: r42,
+      rule: 42,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r42,
+      rule: 42,
     },
     ON: {
       kind: 'Reduce',
-      action: r42,
+      rule: 42,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r42,
+      rule: 42,
     },
   },
   {
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r44,
+      rule: 44,
     },
     NAME: {
       kind: 'Reduce',
-      action: r44,
+      rule: 44,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r44,
+      rule: 44,
     },
     ON: {
       kind: 'Reduce',
-      action: r44,
+      rule: 44,
     },
   },
   {
@@ -4665,19 +4665,19 @@ const actions = [
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r74,
+      rule: 74,
     },
     NAME: {
       kind: 'Reduce',
-      action: r74,
+      rule: 74,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r74,
+      rule: 74,
     },
     ON: {
       kind: 'Reduce',
-      action: r74,
+      rule: 74,
     },
   },
   {
@@ -4689,51 +4689,51 @@ const actions = [
   {
     CLOSING_BRACE: {
       kind: 'Reduce',
-      action: r45,
+      rule: 45,
     },
     NAME: {
       kind: 'Reduce',
-      action: r45,
+      rule: 45,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r45,
+      rule: 45,
     },
     ON: {
       kind: 'Reduce',
-      action: r45,
+      rule: 45,
     },
   },
   {
     AT: {
       kind: 'Reduce',
-      action: r72,
+      rule: 72,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r72,
+      rule: 72,
     },
     DOLLAR: {
       kind: 'Reduce',
-      action: r72,
+      rule: 72,
     },
   },
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r75,
+      rule: 75,
     },
     NAME: {
       kind: 'Reduce',
-      action: r75,
+      rule: 75,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r75,
+      rule: 75,
     },
     ON: {
       kind: 'Reduce',
-      action: r75,
+      rule: 75,
     },
   },
   {
@@ -4773,19 +4773,19 @@ const actions = [
   {
     CLOSING_PAREN: {
       kind: 'Reduce',
-      action: r76,
+      rule: 76,
     },
     NAME: {
       kind: 'Reduce',
-      action: r76,
+      rule: 76,
     },
     FRAGMENT: {
       kind: 'Reduce',
-      action: r76,
+      rule: 76,
     },
     ON: {
       kind: 'Reduce',
-      action: r76,
+      rule: 76,
     },
   },
 ];
@@ -5178,30 +5178,37 @@ const rules = [
   {
     lhs: "Document'",
     rhs: ['Document'],
+    action: () => {} /* dummy placeholder */,
   },
   {
     lhs: 'Document',
     rhs: ['DefinitionList'],
+    action: r1,
   },
   {
     lhs: 'DefinitionList',
     rhs: ['Definition'],
+    action: r2,
   },
   {
     lhs: 'DefinitionList',
     rhs: ['DefinitionList', 'Definition'],
+    action: r3,
   },
   {
     lhs: 'Definition',
     rhs: ['ExecutableDefinition'],
+    action: r4,
   },
   {
     lhs: 'Definition',
     rhs: ['FragmentDefinition'],
+    action: r5,
   },
   {
     lhs: 'ExecutableDefinition',
     rhs: ['OperationDefinition'],
+    action: r6,
   },
   {
     lhs: 'OperationDefinition',
@@ -5212,350 +5219,437 @@ const rules = [
       'DirectivesOpt',
       'SelectionSet',
     ],
+    action: r7,
   },
   {
     lhs: 'OperationDefinition',
     rhs: ['SelectionSet'],
+    action: r8,
   },
   {
     lhs: 'OperationType',
     rhs: ['NAME'],
+    action: r9,
   },
   {
     lhs: 'OperationNameOpt',
     rhs: ['Name'],
+    action: r10,
   },
   {
     lhs: 'OperationNameOpt',
     rhs: [],
+    action: r11,
   },
   {
     lhs: 'Name',
     rhs: ['NAME'],
+    action: r12,
   },
   {
     lhs: 'Name',
     rhs: ['FRAGMENT'],
+    action: r13,
   },
   {
     lhs: 'Name',
     rhs: ['ON'],
+    action: r14,
   },
   {
     lhs: 'VariableDefinitionsOpt',
     rhs: ['OPENING_PAREN', 'VariableDefinitionList', 'CLOSING_PAREN'],
+    action: r15,
   },
   {
     lhs: 'VariableDefinitionsOpt',
     rhs: [],
+    action: r16,
   },
   {
     lhs: 'VariableDefinitionList',
     rhs: ['VariableDefinition'],
+    action: r17,
   },
   {
     lhs: 'VariableDefinitionList',
     rhs: ['VariableDefinitionList', 'VariableDefinition'],
+    action: r18,
   },
   {
     lhs: 'VariableDefinition',
     rhs: ['Variable', 'COLON', 'Type', 'DefaultValueOpt', 'DirectivesConstOpt'],
+    action: r19,
   },
   {
     lhs: 'Variable',
     rhs: ['DOLLAR', 'Name'],
+    action: r20,
   },
   {
     lhs: 'Type',
     rhs: ['NamedType'],
+    action: r21,
   },
   {
     lhs: 'Type',
     rhs: ['ListType'],
+    action: r22,
   },
   {
     lhs: 'Type',
     rhs: ['NonNullType'],
+    action: r23,
   },
   {
     lhs: 'NamedType',
     rhs: ['Name'],
+    action: r24,
   },
   {
     lhs: 'ListType',
     rhs: ['OPENING_BRACKET', 'Type', 'CLOSING_BRACKET'],
+    action: r25,
   },
   {
     lhs: 'NonNullType',
     rhs: ['ListType', 'BANG'],
+    action: r26,
   },
   {
     lhs: 'NonNullType',
     rhs: ['NamedType', 'BANG'],
+    action: r27,
   },
   {
     lhs: 'DefaultValueOpt',
     rhs: ['EQUALS', 'ValueConst'],
+    action: r28,
   },
   {
     lhs: 'DefaultValueOpt',
     rhs: [],
+    action: r29,
   },
   {
     lhs: 'ValueConst',
     rhs: ['NumberValue'],
+    action: r30,
   },
   {
     lhs: 'ValueConst',
     rhs: ['StringValue'],
+    action: r31,
   },
   {
     lhs: 'ValueConst',
     rhs: ['NamedValue'],
+    action: r32,
   },
   {
     lhs: 'ValueConst',
     rhs: ['ListValueConst'],
+    action: r33,
   },
   {
     lhs: 'ValueConst',
     rhs: ['ObjectValueConst'],
+    action: r34,
   },
   {
     lhs: 'NumberValue',
     rhs: ['NUMBER'],
+    action: r35,
   },
   {
     lhs: 'NamedValue',
     rhs: ['Name'],
+    action: r36,
   },
   {
     lhs: 'ListValueConst',
     rhs: ['OPENING_BRACKET', 'CLOSING_BRACKET'],
+    action: r37,
   },
   {
     lhs: 'ListValueConst',
     rhs: ['OPENING_BRACKET', 'ListValueConstList', 'CLOSING_BRACKET'],
+    action: r38,
   },
   {
     lhs: 'ListValueConstList',
     rhs: ['ValueConst'],
+    action: r39,
   },
   {
     lhs: 'ListValueConstList',
     rhs: ['ListValueConstList', 'ValueConst'],
+    action: r40,
   },
   {
     lhs: 'ObjectValueConst',
     rhs: ['OPENING_BRACE', 'CLOSING_BRACE'],
+    action: r41,
   },
   {
     lhs: 'ObjectValueConst',
     rhs: ['OPENING_BRACE', 'ObjectFieldConstList', 'CLOSING_BRACE'],
+    action: r42,
   },
   {
     lhs: 'ObjectFieldConstList',
     rhs: ['ObjectFieldConst'],
+    action: r43,
   },
   {
     lhs: 'ObjectFieldConstList',
     rhs: ['ObjectFieldConstList', 'ObjectFieldConst'],
+    action: r44,
   },
   {
     lhs: 'ObjectFieldConst',
     rhs: ['Name', 'COLON', 'ValueConst'],
+    action: r45,
   },
   {
     lhs: 'DirectivesOpt',
     rhs: ['DirectiveList'],
+    action: r46,
   },
   {
     lhs: 'DirectivesOpt',
     rhs: [],
+    action: r47,
   },
   {
     lhs: 'DirectiveList',
     rhs: ['Directive'],
+    action: r48,
   },
   {
     lhs: 'DirectiveList',
     rhs: ['DirectiveList', 'Directive'],
+    action: r49,
   },
   {
     lhs: 'Directive',
     rhs: ['AT', 'Name', 'ArgumentsOpt'],
+    action: r50,
   },
   {
     lhs: 'DirectivesConstOpt',
     rhs: ['DirectiveConstList'],
+    action: r51,
   },
   {
     lhs: 'DirectivesConstOpt',
     rhs: [],
+    action: r52,
   },
   {
     lhs: 'DirectiveConstList',
     rhs: ['DirectiveConst'],
+    action: r53,
   },
   {
     lhs: 'DirectiveConstList',
     rhs: ['DirectiveConstList', 'DirectiveConst'],
+    action: r54,
   },
   {
     lhs: 'DirectiveConst',
     rhs: ['AT', 'Name', 'ArgumentsConstOpt'],
+    action: r55,
   },
   {
     lhs: 'SelectionSet',
     rhs: ['OPENING_BRACE', 'SelectionList', 'CLOSING_BRACE'],
+    action: r56,
   },
   {
     lhs: 'SelectionSetOpt',
     rhs: ['SelectionSet'],
+    action: r57,
   },
   {
     lhs: 'SelectionSetOpt',
     rhs: [],
+    action: r58,
   },
   {
     lhs: 'SelectionList',
     rhs: ['Selection'],
+    action: r59,
   },
   {
     lhs: 'SelectionList',
     rhs: ['SelectionList', 'Selection'],
+    action: r60,
   },
   {
     lhs: 'Selection',
     rhs: ['Field'],
+    action: r61,
   },
   {
     lhs: 'Selection',
     rhs: ['FragmentSpread'],
+    action: r62,
   },
   {
     lhs: 'Selection',
     rhs: ['InlineFragment'],
+    action: r63,
   },
   {
     lhs: 'Field',
     rhs: ['Name', 'ArgumentsOpt', 'DirectivesOpt', 'SelectionSetOpt'],
+    action: r64,
   },
   {
     lhs: 'Field',
     rhs: ['Alias', 'Name', 'ArgumentsOpt', 'DirectivesOpt', 'SelectionSetOpt'],
+    action: r65,
   },
   {
     lhs: 'Alias',
     rhs: ['Name', 'COLON'],
+    action: r66,
   },
   {
     lhs: 'ArgumentsOpt',
     rhs: ['OPENING_PAREN', 'ArgumentList', 'CLOSING_PAREN'],
+    action: r67,
   },
   {
     lhs: 'ArgumentsOpt',
     rhs: [],
+    action: r68,
   },
   {
     lhs: 'ArgumentList',
     rhs: ['Argument'],
+    action: r69,
   },
   {
     lhs: 'ArgumentList',
     rhs: ['ArgumentList', 'Argument'],
+    action: r70,
   },
   {
     lhs: 'Argument',
     rhs: ['Name', 'COLON', 'Value'],
+    action: r71,
   },
   {
     lhs: 'ArgumentsConstOpt',
     rhs: ['OPENING_PAREN', 'ArgumentConstList', 'CLOSING_PAREN'],
+    action: r72,
   },
   {
     lhs: 'ArgumentsConstOpt',
     rhs: [],
+    action: r73,
   },
   {
     lhs: 'ArgumentConstList',
     rhs: ['ArgumentConst'],
+    action: r74,
   },
   {
     lhs: 'ArgumentConstList',
     rhs: ['ArgumentConstList', 'ArgumentConst'],
+    action: r75,
   },
   {
     lhs: 'ArgumentConst',
     rhs: ['Name', 'COLON', 'ValueConst'],
+    action: r76,
   },
   {
     lhs: 'Value',
     rhs: ['Variable'],
+    action: r77,
   },
   {
     lhs: 'Value',
     rhs: ['NumberValue'],
+    action: r78,
   },
   {
     lhs: 'Value',
     rhs: ['StringValue'],
+    action: r79,
   },
   {
     lhs: 'Value',
     rhs: ['NamedValue'],
+    action: r80,
   },
   {
     lhs: 'Value',
     rhs: ['ListValue'],
+    action: r81,
   },
   {
     lhs: 'Value',
     rhs: ['ObjectValue'],
+    action: r82,
   },
   {
     lhs: 'StringValue',
     rhs: ['STRING_VALUE'],
+    action: r83,
   },
   {
     lhs: 'StringValue',
     rhs: ['BLOCK_STRING_VALUE'],
+    action: r84,
   },
   {
     lhs: 'ListValue',
     rhs: ['OPENING_BRACKET', 'CLOSING_BRACKET'],
+    action: r85,
   },
   {
     lhs: 'ListValue',
     rhs: ['OPENING_BRACKET', 'ListValueList', 'CLOSING_BRACKET'],
+    action: r86,
   },
   {
     lhs: 'ListValueList',
     rhs: ['Value'],
+    action: r87,
   },
   {
     lhs: 'ListValueList',
     rhs: ['ListValueList', 'Value'],
+    action: r88,
   },
   {
     lhs: 'ObjectValue',
     rhs: ['OPENING_BRACE', 'CLOSING_BRACE'],
+    action: r89,
   },
   {
     lhs: 'ObjectValue',
     rhs: ['OPENING_BRACE', 'ObjectFieldList', 'CLOSING_BRACE'],
+    action: r90,
   },
   {
     lhs: 'ObjectFieldList',
     rhs: ['ObjectField'],
+    action: r91,
   },
   {
     lhs: 'ObjectFieldList',
     rhs: ['ObjectFieldList', 'ObjectField'],
+    action: r92,
   },
   {
     lhs: 'ObjectField',
     rhs: ['Name', 'COLON', 'Value'],
+    action: r93,
   },
   {
     lhs: 'FragmentDefinition',
@@ -5567,30 +5661,36 @@ const rules = [
       'DirectivesOpt',
       'SelectionSet',
     ],
+    action: r94,
   },
   {
     lhs: 'FragmentName',
     rhs: ['NAME'],
+    action: r95,
   },
   {
     lhs: 'FragmentSpread',
     rhs: ['ELLIPSIS', 'FragmentName', 'DirectivesOpt'],
+    action: r96,
   },
   {
     lhs: 'InlineFragment',
     rhs: ['ELLIPSIS', 'TypeConditionOpt', 'DirectivesOpt', 'SelectionSet'],
+    action: r97,
   },
   {
     lhs: 'TypeConditionOpt',
     rhs: ['ON', 'NamedType'],
+    action: r98,
   },
   {
     lhs: 'TypeConditionOpt',
     rhs: [],
+    action: r99,
   },
 ];
 
-// const EOF = new Token('$', -1, -1, '');
+const EOF = new Token('$', -1, -1, '');
 
 export default function parse(input) {
   const stack = [[null, 0]];
@@ -5598,16 +5698,12 @@ export default function parse(input) {
 
   let token;
 
-  // TODO: handle EOF here
-  while ((token = lexer.next())) {
-    // ie. Pretty much the same as 'parseWithTable'; I removed some invariants for readability.
+  while (true) {
     const [, current] = stack[stack.length - 1];
     const action = actions[current][token.name];
 
     if (!action) {
-      //throw new Error(
-      //  `parseWithTable(): Syntax error (no action for $ {token.name} (token index $ {pointer}) [$ {token.contents}] in state $ {current})`,
-      //);
+      throw new Error('syntax error');
     }
     if (action.kind === 'Accept') {
       // Expect initial state + accept state.
@@ -5615,8 +5711,9 @@ export default function parse(input) {
       return tree;
     } else if (action.kind === 'Shift') {
       stack.push([token, action.state]);
+      token = lexer.next() || EOF;
     } else if (action.kind === 'Reduce') {
-      const {lhs, rhs} = rules[current];
+      const {lhs, rhs, action: code} = rules[action.rule];
       const popped: Array<P | Token | null> = [];
       for (let i = 0; i < rhs.length; i++) {
         const [node] = stack.pop()!;
@@ -5624,13 +5721,12 @@ export default function parse(input) {
       }
       const [, next] = stack[stack.length - 1];
       const target = gotos[next][lhs];
-      const code = action.action;
       if (code) {
         stack.push([code(...popped), target]);
       } else {
-        // TODO: throw? if you want to use the static parser, you have to
-        // provide semanticActions for all productions
-        stack.push([makeNode(lhs, popped), target]);
+        throw new Error(
+          'to use static parser must provide semantic action for every production',
+        );
       }
     }
   }

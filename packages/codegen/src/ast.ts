@@ -666,19 +666,27 @@ const ast = {
     return {kind: 'Identifier', name};
   },
 
+  /**
+   * eg.
+   *
+   *    import('a', 'b')      -> import a from 'b'
+   *    import('{a}', 'b')    -> import {a} from 'b'
+   *    import('{a, b}', 'c') -> import {a, b} from 'c'
+   *
+   */
   import(specifiers: string, source: string): ImportStatement {
-    const match = specifiers.match(/^\s*\{\s*(\w+)\s*\}\s*$/);
+    const match = specifiers.match(/^\s*\{\s*(.+)\s*\}\s*$/);
     if (match) {
       return {
         kind: 'ImportStatement',
-        specifiers: [
-          {
+        specifiers: match[1].split(/\s*,\s*/).map((specifier) => {
+          return {
             kind: 'ImportSpecifier',
             // TODO: support `{foo as bar}`
-            imported: ast.identifier(match[1]),
-            local: ast.identifier(match[1]),
-          },
-        ],
+            imported: ast.identifier(specifier),
+            local: ast.identifier(specifier),
+          };
+        }),
         source: ast.string(source),
       };
     } else {
