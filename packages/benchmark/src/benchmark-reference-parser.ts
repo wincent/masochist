@@ -2,62 +2,24 @@ import {spawnSync} from 'child_process';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
+
+import run from './benchmark-parser';
+
 import {promisify} from 'util';
 
-const access = promisify(fs.access);
-const copyFile = promisify(fs.copyFile);
 const mkdtemp = promisify(fs.mkdtemp);
-const readFile = promisify(fs.readFile);
-const writeFile = promisify(fs.writeFile);
 
 async function main() {
   const scratch = await mkdtemp(path.join(os.tmpdir(), 'bench-'));
 
   process.chdir(scratch);
 
-  const corpus = path.join(__dirname, '../../../support/source.graphql');
-  const script = path.join(__dirname, '../lib/benchmark-dynamic-parser.js');
-
-  try {
-    await access(script, fs.constants.R_OK);
-  } catch (error) {
-    console.log(
-      `Unable to access ${script}; did you forget to run "yarn build"?`,
-    );
-    return;
-  }
-
-  const scriptSource = await readFile(script, 'utf8');
-
-  const benchmark = path.join(__dirname, '../lib/benchmark-parser.js');
-
-  try {
-    await access(benchmark, fs.constants.R_OK);
-  } catch (error) {
-    console.log(
-      `Unable to access ${benchmark}; did you forget to run "yarn build"?`,
-    );
-    return;
-  }
-
-  const benchmarkSource = await readFile(benchmark, 'utf8');
-
-  await copyFile(corpus, 'source.graphql');
-
-  let modifiedSource = scriptSource.replace(
-    /require\((['"])@masochist\/legacy\1\)/,
-    "require('graphql')",
-  );
-
-  await writeFile('benchmark.js', modifiedSource);
-
-  modifiedSource = benchmarkSource.replace('../../../support', '.');
-
-  await writeFile('benchmark-parser.js', modifiedSource);
-
   spawn('yarn', 'init', '-y');
   spawn('yarn', 'add', 'graphql');
-  spawn('node', 'benchmark.js');
+
+  const {parse} = require(path.join(scratch, 'node_modules', 'graphql'));
+
+  await run(parse);
 }
 
 function spawn(command: string, ...args: Array<string>) {
