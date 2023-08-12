@@ -4,6 +4,8 @@ import path from 'path';
 // TODO: once parser has stabilized, do same thing we do in lex-test.ts and run
 // tests against what _would_ be written to disk as opposed to just importing
 // built artifact.
+// NOTE: not a huge fan of the fact that the default function export in the
+// generated file is called `parse()` and doesn't match the file name...
 import parse from '../parseDocument';
 
 describe('parse()', () => {
