@@ -44,12 +44,19 @@ export default function build(
             }
           }
         }
+        const max = variables.size ? Math.max(...variables) : 0;
         // TODO: check for used variables and pass only those?
         return ast.function(
           `r${i}`,
-          Array.from(variables)
-            .sort()
-            .map((variable) => `$${variable}`),
+          Array(max)
+            .fill(null)
+            .map((_, i) => {
+              if (variables.has(i + 1)) {
+                return `$${i + 1}`;
+              } else {
+                return `_$${i + 1}`;
+              }
+            }),
           [
             ast.assign('let', '$$', ast.undefined),
             ast.rawStatement(rule.action),

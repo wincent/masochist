@@ -15,38 +15,27 @@ describe('parse()', () => {
       }
     `;
 
-    // BUG: Result doesn't match expectations.
-    //
-    // Note this is super ugly right now because of the `Token` instances which
-    // each include full copy of the `source`.
     expect(parse(input)).toMatchInlineSnapshot(`
       {
         "definitions": [
           {
-            "directives": Token {
-              "end": 19,
-              "name": "ON",
-              "source": "fragment Article on Article {
-        title
-        # TODO: grow this example
-      }",
-              "start": 17,
-            },
+            "directives": null,
             "kind": "FRAGMENT",
-            "name": Token {
-              "end": 8,
-              "name": "FRAGMENT",
-              "source": "fragment Article on Article {
-        title
-        # TODO: grow this example
-      }",
-              "start": 0,
-            },
-            "on": "Article",
-            "selections": {
+            "name": "Article",
+            "on": {
               "kind": "NAMED_TYPE",
               "name": "Article",
             },
+            "selections": [
+              {
+                "alias": null,
+                "arguments": null,
+                "directives": null,
+                "kind": "FIELD",
+                "name": "title",
+                "selections": null,
+              },
+            ],
           },
         ],
         "kind": "DOCUMENT",
