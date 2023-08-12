@@ -27,15 +27,33 @@ async function main() {
     return;
   }
 
-  await copyFile(corpus, 'source.graphql');
-
   const scriptSource = await readFile(script, 'utf8');
 
-  const modifiedSource = scriptSource
-    .replace(/require\((['"])@masochist\/legacy\1\)/, "require('graphql')")
-    .replace('../../../support', '.');
+  const benchmark = path.join(__dirname, '../lib/benchmark-parser.js');
+
+  try {
+    await access(benchmark, fs.constants.R_OK);
+  } catch (error) {
+    console.log(
+      `Unable to access ${benchmark}; did you forget to run "yarn build"?`,
+    );
+    return;
+  }
+
+  const benchmarkSource = await readFile(benchmark, 'utf8');
+
+  await copyFile(corpus, 'source.graphql');
+
+  let modifiedSource = scriptSource.replace(
+    /require\((['"])@masochist\/legacy\1\)/,
+    "require('graphql')",
+  );
 
   await writeFile('benchmark.js', modifiedSource);
+
+  modifiedSource = benchmarkSource.replace('../../../support', '.');
+
+  await writeFile('benchmark-parser.js', modifiedSource);
 
   spawn('yarn', 'init', '-y');
   spawn('yarn', 'add', 'graphql');
