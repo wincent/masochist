@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GraphQL parser parses the generated.graphql corpus 1`] = `
+exports[`parse() parses the generated.graphql corpus using the GraphQL grammar 1`] = `
 {
   "definitions": [
     {
@@ -5210,7 +5210,7 @@ exports[`GraphQL parser parses the generated.graphql corpus 1`] = `
 }
 `;
 
-exports[`GraphQL parser parses the source.graphql corpus 1`] = `
+exports[`parse() parses the source.graphql corpus using the GraphQL grammar 1`] = `
 {
   "definitions": [
     {
