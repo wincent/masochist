@@ -222,6 +222,7 @@ describe('parseWithTable()', () => {
   });
 
   it('parses a sample for the real grammar', () => {
+    // Same input as what's in "parse-test.ts".
     let input = dedent`
       fragment Article on Article {
         title
