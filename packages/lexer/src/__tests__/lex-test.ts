@@ -59,6 +59,9 @@ describe('lex()', () => {
       Argument(argument: Argument) {
         if (argument.type) {
           return ast.argument(argument.name);
+        } else {
+          // Be explict, to pacify linter.
+          return undefined;
         }
       },
 
