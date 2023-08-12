@@ -1,7 +1,7 @@
-import {parse} from '@masochist/parser';
+import {parseDocument} from '@masochist/parser';
 
 import run from './benchmark-parser';
 
-run(parse).catch((error) => {
+run(parseDocument).catch((error) => {
   console.log(error);
 });

@@ -1,5 +1,6 @@
 /**
- * Generates the parser implementation and writes it to src/parse.ts.
+ * Generates the parser implementations and writes them to
+ * "src/parseDocument.ts" and "src/parseSchema.ts".
  *
  * Run this with `make parser`.
  */
@@ -16,8 +17,7 @@ import type {Stats} from '../build';
 
 async function main() {
   for (const [grammar, table, filename] of [
-    // TODO: later, rename parse.ts to parseDocument.ts
-    [documentGrammar, documentTable, 'parse.ts'] as const,
+    [documentGrammar, documentTable, 'parseDocument.ts'] as const,
     [schemaGrammar, schemaTable, 'parseSchema.ts'] as const,
   ]) {
     console.log(`Building: ${filename}`);

@@ -4,7 +4,7 @@ import path from 'path';
 // TODO: once parser has stabilized, do same thing we do in lex-test.ts and run
 // tests against what _would_ be written to disk as opposed to just importing
 // built artifact.
-import parse from '../parse';
+import parse from '../parseDocument';
 
 describe('parse()', () => {
   it('parses a simple document using the GraphQL grammar', () => {
