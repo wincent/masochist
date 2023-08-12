@@ -2,7 +2,7 @@ import {Token, default as lex} from '@masochist/lexer';
 import {promises as fs} from 'fs';
 import path from 'path';
 
-import {grammar, table} from '../definition';
+import {grammar, table} from '../document';
 import getAugmentedGrammar from '../getAugmentedGrammar';
 import getItemSets from '../getItemSets';
 import getParseTable from '../getParseTable';

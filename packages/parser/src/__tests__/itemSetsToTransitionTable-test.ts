@@ -1,4 +1,4 @@
-import {itemSets, unaugmentedGrammar} from '../definition';
+import {itemSets, unaugmentedGrammar} from '../document';
 import getItemSets from '../getItemSets';
 import itemSetsToTransitionTable from '../itemSetsToTransitionTable';
 import stringifyTransitionTable from '../stringifyTransitionTable';

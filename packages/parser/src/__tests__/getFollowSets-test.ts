@@ -1,6 +1,6 @@
 import {dedent} from '@masochist/common';
 
-import {unaugmentedGrammar} from '../definition';
+import {unaugmentedGrammar} from '../document';
 import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getFollowSets from '../getFollowSets';
 import getItemSets from '../getItemSets';

@@ -1,6 +1,6 @@
 import {dedent} from '@masochist/common';
 
-import {grammar, table} from '../definition';
+import {grammar, table} from '../document';
 import getAugmentedGrammar from '../getAugmentedGrammar';
 import getItemSets from '../getItemSets';
 import getParseTable from '../getParseTable';

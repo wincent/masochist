@@ -1,4 +1,4 @@
-export {grammar, itemSets, transitionTable, table} from './definition';
+export {grammar, itemSets, transitionTable, table} from './document';
 
 export {default as parseWithTable, makeNode} from './parseWithTable';
 

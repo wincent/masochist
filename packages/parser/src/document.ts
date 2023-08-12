@@ -1,3 +1,12 @@
+/**
+ * Language contructs (such as a grammar, parse table etc) for parsing GraphQL
+ * documents containing operation definitions (queries, mutations,
+ * subscriptions).
+ *
+ * See the separate "schema.ts" for language constructs for parsing to schema
+ * definitions (schemas, types, directives etc).
+ */
+
 import fs from 'fs';
 import path from 'path';
 

@@ -1,4 +1,4 @@
-import {unaugmentedGrammar} from '../definition';
+import {unaugmentedGrammar} from '../document';
 import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getItemSets from '../getItemSets';
 import stringifyGrammar from '../stringifyGrammar';

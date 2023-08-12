@@ -8,7 +8,7 @@ import {print} from '@masochist/codegen';
 import path from 'path';
 import {promises as fs} from 'fs';
 
-import {grammar, table} from '../definition';
+import {grammar, table} from '../document';
 import build from '../build';
 
 import type {Stats} from '../build';
