@@ -8,29 +8,38 @@ import {print} from '@masochist/codegen';
 import path from 'path';
 import {promises as fs} from 'fs';
 
-import {grammar, table} from '../document';
+import {grammar as documentGrammar, table as documentTable} from '../document';
 import build from '../build';
+import {grammar as schemaGrammar, table as schemaTable} from '../schema';
 
 import type {Stats} from '../build';
 
 async function main() {
-  const stats: Stats = {};
-  const ast = build(grammar, table, stats);
-  const source = print(ast);
-  const file = path.join(__dirname, '..', '..', 'src', 'parse.ts');
+  for (const [grammar, table, filename] of [
+    // TODO: later, rename parse.ts to parseDocument.ts
+    [documentGrammar, documentTable, 'parse.ts'] as const,
+    [schemaGrammar, schemaTable, 'parseSchema.ts'] as const,
+  ]) {
+    console.log(`Building: ${filename}`);
 
-  // We write only if different, for the sake of Make...
-  let current;
-  try {
-    current = await fs.readFile(file, 'utf8');
-  } catch {
-    // Doesn't exist.
-  }
-  if (current !== source) {
-    await fs.writeFile(file, source, 'utf8');
-  }
+    const stats: Stats = {};
+    const ast = build(grammar, table, stats);
+    const source = print(ast);
+    const file = path.join(__dirname, '..', '..', 'src', filename);
 
-  console.table(stats);
+    // We write only if different, for the sake of Make...
+    let current;
+    try {
+      current = await fs.readFile(file, 'utf8');
+    } catch {
+      // Doesn't exist.
+    }
+    if (current !== source) {
+      await fs.writeFile(file, source, 'utf8');
+    }
+
+    console.table(stats);
+  }
 }
 
 main().catch((error) => {

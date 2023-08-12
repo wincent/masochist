@@ -1,0 +1,46 @@
+# Based on: https://spec.graphql.org/October2021/#sec-Document-Syntax
+
+%token AMPERSAND
+%token AT
+%token BANG
+%token BAR
+%token COLON
+%token DOLLAR
+%token ELLIPSIS
+%token EQUALS
+%token FRAGMENT
+%token NAME
+%token NUMBER
+%token ON
+%token OPENING_BRACE CLOSING_BRACE
+%token OPENING_BRACKET CLOSING_BRACKET
+%token OPENING_PAREN CLOSING_PAREN
+%token STRING_VALUE BLOCK_STRING_VALUE
+
+TypeSystemDocument → TypeSystemDefinitionList {
+  $$ = {
+    kind: 'TYPE_SYSTEM_DOCUMENT',
+    definitions: $1,
+  };
+}
+
+TypeSystemDefinitionList → TypeSystemDefinition { $$ = [$1]; }
+TypeSystemDefinitionList → TypeSystemDocument TypeSystemDefinition { $1.push($2); $$ = $1; }
+
+# TODO: finish
+# TypeSystemDefinition → DirectiveDefinition { $$ = $1; }
+# TypeSystemDefinition → SchemaDefinition { $$ = $1; }
+TypeSystemDefinition → TypeDefinition { $$ = $1; }
+
+# TODO: other types
+#TypeDefinition → EnumTypeDefinition { $$ = $1; }
+#TypeDefinition → InputObjectTypeDefinition { $$ = $1; }
+#TypeDefinition → InterfaceTypeDefinition { $$ = $1; }
+#TypeDefinition → ObjectTypeDefinition { $$ = $1; }
+TypeDefinition → ScalarTypeDefinition { $$ = $1; }
+#TypeDefinition → UnionTypeDefinition { $$ = $1; }
+
+# TODO: finish this
+# (decide whether to lex `scalar` etc separately, or do what I do in the
+# document.grammar for `OperationType`)
+ScalarTypeDefinition → NAME
