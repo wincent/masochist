@@ -1,7 +1,7 @@
 {
-  "name": "@masochist/parser",
+  "name": "@masochist/typescript",
   "version": "0.0.1",
-  "description": "Masochist parser",
+  "description": "Masochist TypeScript (subset) parser",
   "dependencies": {
     "@masochist/codegen": "*",
     "@masochist/common": "*",
@@ -14,6 +14,6 @@
   "scripts": {
     "build": "cd ../.. && yarn build",
     "format": "cd ../.. && yarn format",
-    "test": "cd ../.. && yarn test packages/parser"
+    "test": "cd ../.. && yarn test packages/typescript"
   }
 }

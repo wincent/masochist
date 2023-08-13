@@ -6,10 +6,8 @@
     "rootDir": "./src"
   },
   "references": [
-    {
-      "path": "../codegen",
-      "path": "../common",
-      "path": "../lexer"
-    }
+    {"path": "../codegen"},
+    {"path": "../common"},
+    {"path": "../lexer"}
   ]
 }

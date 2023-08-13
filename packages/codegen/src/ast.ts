@@ -1,5 +1,8 @@
 import {invariant} from '@masochist/common';
 
+// TODO make a **simple** JS parser with this tooling so I can do a better job
+// of the functions in here that take templates, instead of using regexps.
+
 export type Node =
   | Argument
   | FunctionExpression

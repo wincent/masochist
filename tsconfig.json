@@ -11,6 +11,7 @@
     {"path": "./packages/legacy"},
     {"path": "./packages/lexer"},
     {"path": "./packages/parser"},
-    {"path": "./packages/server"}
+    {"path": "./packages/server"},
+    {"path": "./packages/typescript"}
   ]
 }
