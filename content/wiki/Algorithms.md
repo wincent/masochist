@@ -3,9 +3,9 @@ tags: wiki algorithm
 title: Algorithms
 ---
 
-Occasionally I'm faced with a programming problem for which I know a particular algorithm is appropriate, and I know that I've implemented that algorithm before. Sometimes though, it can be hard to remember exactly where I did it, but it would be useful to be able to consult my previous work to either reuse it or guide a reimplementation of it.
+Occasionally I'm faced with a programming problem for which I know a particular algorithm is appropriate, and I know that I've implemented that algorithm or data structure before. Sometimes though, it can be hard to remember exactly where I did it, but it would be useful to be able to consult my previous work to either reuse it or guide a reimplementation of it.
 
-So, in this article I'm going to provide some links to implementations of various algorithms and techniques that I've implemented in open source repos. All links are to concrete commit hashes, to make sure the links never break if files move around, but be aware that iteration may have continued afterwards and that if you want to see the latest, you should check to see whether there were any subsequent changes.
+So, in this article I'm going to provide some links to implementations of various algorithms, data structures, techniques, and utilities that I've implemented in open source repos. All links are to concrete commit hashes, to make sure the links never break if files move around, but be aware that iteration may have continued afterwards and that if you want to see the latest, you should check to see whether there were any subsequent changes.
 
 ## Data structures
 
