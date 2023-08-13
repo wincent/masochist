@@ -58,9 +58,12 @@ export default function build(
               }
             }),
           [
-            ast.assign('let', '$$', ast.undefined),
-            ast.rawStatement(rule.action.replace(/^{|}$/g, '').trim()),
-            ast.return('$$'),
+            ast.rawStatement(
+              rule.action
+                .replace(/^{|}$/g, '') // Strip semantic action delimiters.
+                .trim()
+                .replace(/\$\$ =/g, 'return'), // TODO: static analysis to make sure this is safe.
+            ),
           ],
         );
       } else {

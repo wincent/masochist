@@ -9,33 +9,23 @@ import {Lexer, Token} from '@masochist/lexer';
  * r0: no production
  */
 function r1($1) {
-  let $$ = undefined;
-  $$ = {
+  return {
     kind: 'TYPE_SYSTEM_DOCUMENT',
     definitions: $1,
   };
-  return $$;
 }
 function r2($1) {
-  let $$ = undefined;
-  $$ = [$1];
-  return $$;
+  return [$1];
 }
 function r3($1, $2) {
-  let $$ = undefined;
   $1.push($2);
-  $$ = $1;
-  return $$;
+  return $1;
 }
 function r4($1) {
-  let $$ = undefined;
-  $$ = $1;
-  return $$;
+  return $1;
 }
 function r5($1) {
-  let $$ = undefined;
-  $$ = $1;
-  return $$;
+  return $1;
 }
 /**
  * r6: no production
