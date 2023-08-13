@@ -152,7 +152,7 @@ So, in this article I'm going to provide some links to implementations of variou
 - [Greedy algorithm](./Greedy_algorithm) notes.
 - [Heap](./Heap) notes.
 - [Minimum Spanning Tree](./Minimum_Spanning_Tree) notes.
-- [Prim's Algorithm](./Prim's_algorithm) notes.
+- [Prim's Algorithm](./Prim's_Algorithm) notes.
 - [Sparse matrix](./Sparse_matrix) notes.
 - [Topological ordering](./Topological_ordering) notes.
 - [Tree rotation](./Tree_rotations) notes.
