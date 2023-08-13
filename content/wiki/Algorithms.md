@@ -13,19 +13,23 @@ So, in this article I'm going to provide some links to implementations of variou
 - Fast String in C ([`str.h`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/str.h), [`str.c`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/str.c)).
 - Heap (min heap) in C ([`heap.h`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/heap.h)/[`heap.c`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/heap.c)).
 - Threadsafe FIFO queue in Objective-C ([`WOQueue.h`](https://github.com/wincent/WOCommon/blob/5d482f6e8e7b05b7982f8fc3ba85929c9ea65b6a/WOQueue.h), [`WOQueue.m`](https://github.com/wincent/WOCommon/blob/5d482f6e8e7b05b7982f8fc3ba85929c9ea65b6a/WOQueue.m)[^private]).
-- ["Reversible" Map in JavaScript](https://github.com/liferay/liferay-frontend-projects/blob/8271bd2398fa26c4987cbd8426615bcb22ee1507/projects/npm-tools/packages/npm-scripts/src/jsp/ReversibleMap.js) (ie. Map which remembers intermediate states and can be rolled back).
-- ["Reversible" Map in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/legacy/src/lexer/ReversibleMap.ts) (ie. Map which remembers intermediate states and can be rolled back).
+- ["Poppable" Set in JavaScript](https://github.com/wincent/masochist/blob/2872a7b46039c2ef708e47f214e94e5167a341b4/src/server/redis/RedisConnectionPool.js#L3-L10) (ie. `Set` which supports "popping" the oldest item).
+- ["Reversible" Map in JavaScript](https://github.com/liferay/liferay-frontend-projects/blob/8271bd2398fa26c4987cbd8426615bcb22ee1507/projects/npm-tools/packages/npm-scripts/src/jsp/ReversibleMap.js) (ie. `Map` which remembers intermediate states and can be rolled back).
+- ["Reversible" Map in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/legacy/src/lexer/ReversibleMap.ts) (ie. `Map` which remembers intermediate states and can be rolled back).
 - [Bitwise ring buffer in TypeScript](https://github.com/wincent/algorithms/blob/8f1511cb40ea416234b21193fdc3b8323f666ba7/src/RingBuffer.ts).
 - [Circular suffix array in TypeScript](https://github.com/wincent/algorithms/blob/8f1511cb40ea416234b21193fdc3b8323f666ba7/src/CircularSuffixArray.ts).
 - [Condition Tree in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/lexer/src/ConditionTree.ts)
+- [Connection pool in JavaScript](https://github.com/wincent/masochist/blob/2872a7b46039c2ef708e47f214e94e5167a341b4/src/server/redis/RedisConnectionPool.js#L12-L50).
 - [Event emitter in TypeScript](https://github.com/wincent/js/blob/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/event-emitter/src/index.ts).
 - [FIFO queue in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/common/src/Queue.ts)
 - [Heap in TypeScript](https://github.com/wincent/algorithms/blob/0eb10c7ddab759636eddf7d41c3f22c852691288/ts/src/Heap.ts).
-- [Immutable Set in TypeScript](https://github.com/wincent/js/blob/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/frozen-set/src/index.ts).
+- [Immutable `Set` in TypeScript](https://github.com/wincent/js/blob/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/frozen-set/src/index.ts).
 - [Interval Tree in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/lexer/src/IntervalTree.ts)
+- [LRU cache in JavaScript](https://github.com/wincent/masochist/blob/2872a7b46039c2ef708e47f214e94e5167a341b4/src/common/LRUCache.js).
 - [Priority queue in TypeScript](https://github.com/wincent/algorithms/blob/0eb10c7ddab759636eddf7d41c3f22c852691288/ts/src/MinPQ.ts).
 - [Red-Black Tree in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/lexer/src/RedBlackTree.ts)
 - [Ring buffer in Rust](https://github.com/wincent/docvim/blob/426bdaa38b2c9d6f71d27f2b52139d1292a9dafb/libs/docvim_diff/src/ring_buffer.rs).
+- [Trie in Perl](https://github.com/git/git/blob/a6a323b31e2bcbac2518bddec71ea7ad558870eb/git-add--interactive.perl#L372-L434).
 - [Union-Find in TypeScript](https://github.com/wincent/algorithms/blob/b2be0a285a708b81973382f8d5de236ad1b069d4/src/UnionFind.ts).
 
 [^private]: For now, this repo is private.
@@ -37,6 +41,7 @@ So, in this article I'm going to provide some links to implementations of variou
 - [Debounce in TypeScript](https://github.com/wincent/js/blob/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/debounce/src/index.ts).
 - [Dedenter in TypeScript](https://github.com/wincent/js/blob/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/dedent/src/index.ts)[^dedent].
 - [Escape HTML in TypeScript](https://github.com/wincent/js/blob/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/escape-html/src/index.ts).
+- [Fisher-Yates shuffle](https://github.com/wincent/conway/blob/deeb4930a290821eeb42c18f78b5a3c7731ad947/life.js#L106-L121).
 - [Git's histogram diff algorithm in Rust](https://github.com/wincent/docvim/blob/426bdaa38b2c9d6f71d27f2b52139d1292a9dafb/libs/docvim_diff/src/histogram.rs).
 - [Indenter in TypeScript](https://github.com/wincent/js/tree/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/indent).
 - [Invariant assertion in TypeScript](https://github.com/wincent/js/blob/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/invariant/src/index.ts) (emits extra diagnostic info in development build, see also [simpler alternative](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/common/src/invariant.ts)).
@@ -48,7 +53,10 @@ So, in this article I'm going to provide some links to implementations of variou
 - [Permutation using Heap's method in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/legacy/src/lexer/permute.ts)
 - [RC-4 pseudo-random number generator in JavaScript](https://github.com/wincent/conway/blob/deeb4930a290821eeb42c18f78b5a3c7731ad947/seedrandom.js) (note: I didn't write this one, but I used it).
 - [Runtime non-nullable assertion in TypeScript](https://github.com/wincent/js/blob/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/nullthrows/src/index.ts).
+- [Simple function memoizer in JavaScript](https://github.com/wincent/masochist/blob/2872a7b46039c2ef708e47f214e94e5167a341b4/src/common/memoize.js).
 - [Stable JSON stringify in TypeScript](https://github.com/wincent/js/blob/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/stable-stringify/src/index.ts) (consistent output irrespective of insertion order; see also [alternative implementation from Relay](https://github.com/facebook/relay/blob/2a86be3e71cdc6511fa994e3de539f72070da1b4/src/query/stableStringify.js)).
+- [String hash function (not cryptographic) in JavaScript](https://github.com/wincent/masochist/blob/2872a7b46039c2ef708e47f214e94e5167a341b4/src/server/hashString.js).
+- [Strip HTML tags in JavaScript](https://github.com/wincent/masochist/blob/2872a7b46039c2ef708e47f214e94e5167a341b4/src/server/stripTags.js).
 - [Throttle in TypeScript](https://github.com/wincent/js/blob/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/throttle/src/index.ts).
 - [Topological traversal using depth-first traversal in JavaScript](https://github.com/liferay/liferay-frontend-projects/blob/8271bd2398fa26c4987cbd8426615bcb22ee1507/projects/npm-tools/packages/npm-scripts/src/typescript/getTypeScriptBuildOrder.js).
 - [Topological traversal using depth-first traversal in Objective-C](https://github.com/wincent/fusion/blob/fc735b967cb3a546a1838a5994fe4d802df1928b/WOFPlugInManager.m#L190-L225).
