@@ -59,7 +59,7 @@ export default function build(
             }),
           [
             ast.assign('let', '$$', ast.undefined),
-            ast.rawStatement(rule.action),
+            ast.rawStatement(rule.action.replace(/^{|}$/g, '')),
             ast.return('$$'),
           ],
         );

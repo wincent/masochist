@@ -10,305 +10,257 @@ import {Lexer, Token} from '@masochist/lexer';
  */
 function r1($1) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'DOCUMENT',
-      definitions: $1,
-    };
-  }
+
+  $$ = {
+    kind: 'DOCUMENT',
+    definitions: $1,
+  };
+
   return $$;
 }
 function r2($1) {
   let $$ = undefined;
-  {
-    $$ = [$1];
-  }
+  $$ = [$1];
   return $$;
 }
 function r3($1, $2) {
   let $$ = undefined;
-  {
-    $1.push($2);
-    $$ = $1;
-  }
+  $1.push($2);
+  $$ = $1;
   return $$;
 }
 function r4($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r5($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r6($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r7($1, $2, $3, $4, $5) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'OPERATION',
-      name: $2,
-      directives: $4,
-      selections: $5,
-      type: $1,
-      variables: $3,
-    };
-  }
+
+  $$ = {
+    kind: 'OPERATION',
+    name: $2,
+    directives: $4,
+    selections: $5,
+    type: $1,
+    variables: $3,
+  };
+
   return $$;
 }
 function r8($1) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'OPERATION',
-      name: null,
-      directives: null,
-      selections: $1,
-      type: 'QUERY',
-      variables: null,
-    };
-  }
+
+  $$ = {
+    kind: 'OPERATION',
+    name: null,
+    directives: null,
+    selections: $1,
+    type: 'QUERY',
+    variables: null,
+  };
+
   return $$;
 }
 function r9($1) {
   let $$ = undefined;
   {
-    {
-      const {contents} = $1;
-      if (contents === 'query') {
-        $$ = 'QUERY';
-      } else if (contents === 'mutation') {
-        $$ = 'MUTATION';
-      } else if (contents === 'subscription') {
-        $$ = 'SUBSCRIPTION';
-      } else {
-        throw new Error(`Unsupported operation type: ${contents}`);
-      }
+    const {contents} = $1;
+    if (contents === 'query') {
+      $$ = 'QUERY';
+    } else if (contents === 'mutation') {
+      $$ = 'MUTATION';
+    } else if (contents === 'subscription') {
+      $$ = 'SUBSCRIPTION';
+    } else {
+      throw new Error(`Unsupported operation type: ${contents}`);
     }
   }
   return $$;
 }
 function r10($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r11() {
   let $$ = undefined;
-  {
-    $$ = null;
-  }
+  $$ = null;
   return $$;
 }
 function r12($1) {
   let $$ = undefined;
-  {
-    $$ = $1.contents;
-  }
+  $$ = $1.contents;
   return $$;
 }
 function r13() {
   let $$ = undefined;
-  {
-    $$ = null;
-  }
+  $$ = null;
   return $$;
 }
 function r14() {
   let $$ = undefined;
-  {
-    $$ = null;
-  }
+  $$ = null;
   return $$;
 }
 function r15(_$1, $2) {
   let $$ = undefined;
-  {
-    $$ = $2;
-  }
+
+  $$ = $2;
+
   return $$;
 }
 function r16() {
   let $$ = undefined;
-  {
-    $$ = null;
-  }
+  $$ = null;
   return $$;
 }
 function r17($1) {
   let $$ = undefined;
-  {
-    $$ = [$1];
-  }
+  $$ = [$1];
   return $$;
 }
 function r18($1, $2) {
   let $$ = undefined;
-  {
-    $1.push($2);
-    $$ = $1;
-  }
+
+  $1.push($2);
+  $$ = $1;
+
   return $$;
 }
 function r19($1, _$2, $3, $4, $5) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'VARIABLE_DEFINITION',
-      defaultValue: $4,
-      directives: $5,
-      type: $3,
-      variable: $1,
-    };
-  }
+
+  $$ = {
+    kind: 'VARIABLE_DEFINITION',
+    defaultValue: $4,
+    directives: $5,
+    type: $3,
+    variable: $1,
+  };
+
   return $$;
 }
 function r20(_$1, $2) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'VARIABLE',
-      name: $2,
-    };
-  }
+
+  $$ = {
+    kind: 'VARIABLE',
+    name: $2,
+  };
+
   return $$;
 }
 function r21($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r22($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r23($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r24($1) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'NAMED_TYPE',
-      name: $1,
-    };
-  }
+
+  $$ = {
+    kind: 'NAMED_TYPE',
+    name: $1,
+  };
+
   return $$;
 }
 function r25(_$1, $2) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'LIST_TYPE',
-      type: $2,
-    };
-  }
+
+  $$ = {
+    kind: 'LIST_TYPE',
+    type: $2,
+  };
+
   return $$;
 }
 function r26($1) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'NON_NULL_TYPE',
-      type: $1,
-    };
-  }
+
+  $$ = {
+    kind: 'NON_NULL_TYPE',
+    type: $1,
+  };
+
   return $$;
 }
 function r27($1) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'NON_NULL_TYPE',
-      type: $1,
-    };
-  }
+
+  $$ = {
+    kind: 'NON_NULL_TYPE',
+    type: $1,
+  };
+
   return $$;
 }
 function r28(_$1, $2) {
   let $$ = undefined;
-  {
-    $$ = $2;
-  }
+  $$ = $2;
   return $$;
 }
 function r29() {
   let $$ = undefined;
-  {
-    $$ = null;
-  }
+  $$ = null;
   return $$;
 }
 function r30($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r31($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r32($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r33($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r34($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r35($1) {
   let $$ = undefined;
   {
-    {
-      const {contents} = $1;
+    const {contents} = $1;
 
-      // TODO: Distinguish between these tokens in the lexer instead?
-      if (/^-?\d+$/.test(contents)) {
-        $$ = {kind: 'INT', value: parseInt(contents, 10)};
-      } else {
-        $$ = {kind: 'FLOAT', value: contents};
-      }
+    // TODO: Distinguish between these tokens in the lexer instead?
+    if (/^-?\d+$/.test(contents)) {
+      $$ = {kind: 'INT', value: parseInt(contents, 10)};
+    } else {
+      $$ = {kind: 'FLOAT', value: contents};
     }
   }
   return $$;
@@ -316,554 +268,468 @@ function r35($1) {
 function r36($1) {
   let $$ = undefined;
   {
-    {
-      const name = $1;
-      if (name === 'true') {
-        $$ = {kind: 'BOOLEAN', value: true};
-      } else if (name === 'false') {
-        $$ = {kind: 'BOOLEAN', value: false};
-      } else if (name === 'null') {
-        $$ = {kind: 'NULL'};
-      } else {
-        $$ = {kind: 'ENUM', value: name};
-      }
+    const name = $1;
+    if (name === 'true') {
+      $$ = {kind: 'BOOLEAN', value: true};
+    } else if (name === 'false') {
+      $$ = {kind: 'BOOLEAN', value: false};
+    } else if (name === 'null') {
+      $$ = {kind: 'NULL'};
+    } else {
+      $$ = {kind: 'ENUM', value: name};
     }
   }
   return $$;
 }
 function r37() {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'LIST_VALUE',
-      value: [],
-    };
-  }
+
+  $$ = {
+    kind: 'LIST_VALUE',
+    value: [],
+  };
+
   return $$;
 }
 function r38(_$1, $2) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'LIST_VALUE',
-      value: $2,
-    };
-  }
+
+  $$ = {
+    kind: 'LIST_VALUE',
+    value: $2,
+  };
+
   return $$;
 }
 function r39($1) {
   let $$ = undefined;
-  {
-    $$ = [$1];
-  }
+  $$ = [$1];
   return $$;
 }
 function r40($1, $2) {
   let $$ = undefined;
-  {
-    $1.push($2);
-    $$ = $1;
-  }
+  $1.push($2);
+  $$ = $1;
   return $$;
 }
 function r41() {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'OBJECT_VALUE',
-      fields: [],
-    };
-  }
+
+  $$ = {
+    kind: 'OBJECT_VALUE',
+    fields: [],
+  };
+
   return $$;
 }
 function r42(_$1, $2) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'OBJECT_VALUE',
-      fields: $2,
-    };
-  }
+
+  $$ = {
+    kind: 'OBJECT_VALUE',
+    fields: $2,
+  };
+
   return $$;
 }
 function r43($1) {
   let $$ = undefined;
-  {
-    $$ = [$1];
-  }
+  $$ = [$1];
   return $$;
 }
 function r44($1, $2) {
   let $$ = undefined;
-  {
-    $1.push($2);
-    $$ = $1;
-  }
+  $1.push($2);
+  $$ = $1;
   return $$;
 }
 function r45($1, _$2, $3) {
   let $$ = undefined;
-  {
-    $$ = {
-      name: $1,
-      value: $3,
-    };
-  }
+
+  $$ = {
+    name: $1,
+    value: $3,
+  };
+
   return $$;
 }
 function r46($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r47() {
   let $$ = undefined;
-  {
-    $$ = null;
-  }
+  $$ = null;
   return $$;
 }
 function r48($1) {
   let $$ = undefined;
-  {
-    $$ = [$1];
-  }
+  $$ = [$1];
   return $$;
 }
 function r49($1, $2) {
   let $$ = undefined;
-  {
-    $1.push($2);
-    $$ = $1;
-  }
+  $1.push($2);
+  $$ = $1;
   return $$;
 }
 function r50(_$1, $2, $3) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'DIRECTIVE',
-      arguments: $3,
-      name: $2,
-    };
-  }
+
+  $$ = {
+    kind: 'DIRECTIVE',
+    arguments: $3,
+    name: $2,
+  };
+
   return $$;
 }
 function r51($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r52() {
   let $$ = undefined;
-  {
-    $$ = null;
-  }
+  $$ = null;
   return $$;
 }
 function r53($1) {
   let $$ = undefined;
-  {
-    $$ = [$1];
-  }
+  $$ = [$1];
   return $$;
 }
 function r54($1, $2) {
   let $$ = undefined;
-  {
-    $1.push($2);
-    $$ = $1;
-  }
+  $1.push($2);
+  $$ = $1;
   return $$;
 }
 function r55(_$1, $2, $3) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'DIRECTIVE',
-      arguments: $3,
-      name: $2,
-    };
-  }
+
+  $$ = {
+    kind: 'DIRECTIVE',
+    arguments: $3,
+    name: $2,
+  };
+
   return $$;
 }
 function r56(_$1, $2) {
   let $$ = undefined;
-  {
-    $$ = $2;
-  }
+  $$ = $2;
   return $$;
 }
 function r57($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r58() {
   let $$ = undefined;
-  {
-    $$ = null;
-  }
+  $$ = null;
   return $$;
 }
 function r59($1) {
   let $$ = undefined;
-  {
-    $$ = [$1];
-  }
+  $$ = [$1];
   return $$;
 }
 function r60($1, $2) {
   let $$ = undefined;
-  {
-    $1.push($2);
-    $$ = $1;
-  }
+  $1.push($2);
+  $$ = $1;
   return $$;
 }
 function r61($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r62($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r63($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r64($1, $2, $3, $4) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'FIELD',
-      alias: null,
-      arguments: $2,
-      directives: $3,
-      name: $1,
-      selections: $4,
-    };
-  }
+
+  $$ = {
+    kind: 'FIELD',
+    alias: null,
+    arguments: $2,
+    directives: $3,
+    name: $1,
+    selections: $4,
+  };
+
   return $$;
 }
 function r65($1, $2, $3, $4, $5) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'FIELD',
-      alias: $1,
-      arguments: $3,
-      directives: $4,
-      name: $2,
-      selections: $5,
-    };
-  }
+
+  $$ = {
+    kind: 'FIELD',
+    alias: $1,
+    arguments: $3,
+    directives: $4,
+    name: $2,
+    selections: $5,
+  };
+
   return $$;
 }
 function r66($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r67(_$1, $2) {
   let $$ = undefined;
-  {
-    $$ = $2;
-  }
+  $$ = $2;
   return $$;
 }
 function r68() {
   let $$ = undefined;
-  {
-    $$ = null;
-  }
+  $$ = null;
   return $$;
 }
 function r69($1) {
   let $$ = undefined;
-  {
-    $$ = [$1];
-  }
+  $$ = [$1];
   return $$;
 }
 function r70($1, $2) {
   let $$ = undefined;
-  {
-    $1.push($2);
-    $$ = $1;
-  }
+  $1.push($2);
+  $$ = $1;
   return $$;
 }
 function r71($1, _$2, $3) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'ARGUMENT',
-      name: $1,
-      value: $3,
-    };
-  }
+
+  $$ = {
+    kind: 'ARGUMENT',
+    name: $1,
+    value: $3,
+  };
+
   return $$;
 }
 function r72(_$1, $2) {
   let $$ = undefined;
-  {
-    $$ = $2;
-  }
+  $$ = $2;
   return $$;
 }
 function r73() {
   let $$ = undefined;
-  {
-    $$ = null;
-  }
+  $$ = null;
   return $$;
 }
 function r74($1) {
   let $$ = undefined;
-  {
-    $$ = [$1];
-  }
+  $$ = [$1];
   return $$;
 }
 function r75($1, $2) {
   let $$ = undefined;
-  {
-    $1.push($2);
-    $$ = $1;
-  }
+  $1.push($2);
+  $$ = $1;
   return $$;
 }
 function r76($1, _$2, $3) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'ARGUMENT',
-      name: $1,
-      value: $3,
-    };
-  }
+
+  $$ = {
+    kind: 'ARGUMENT',
+    name: $1,
+    value: $3,
+  };
+
   return $$;
 }
 function r77($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r78($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r79($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r80($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r81($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r82($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r83($1) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'STRING',
-      block: false,
-      // TODO: consider doing this slice in the lexer
-      value: $1.contents.slice(1, -1),
-    };
-  }
+
+  $$ = {
+    kind: 'STRING',
+    block: false,
+    // TODO: consider doing this slice in the lexer
+    value: $1.contents.slice(1, -1),
+  };
+
   return $$;
 }
 function r84($1) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'STRING',
-      block: true,
-      // TODO: preprocess value here...
-      value: $1.contents,
-    };
-  }
+
+  $$ = {
+    kind: 'STRING',
+    block: true,
+    // TODO: preprocess value here...
+    value: $1.contents,
+  };
+
   return $$;
 }
 function r85() {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'LIST_VALUE',
-      value: [],
-    };
-  }
+
+  $$ = {
+    kind: 'LIST_VALUE',
+    value: [],
+  };
+
   return $$;
 }
 function r86(_$1, $2) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'LIST_VALUE',
-      value: $2,
-    };
-  }
+
+  $$ = {
+    kind: 'LIST_VALUE',
+    value: $2,
+  };
+
   return $$;
 }
 function r87($1) {
   let $$ = undefined;
-  {
-    $$ = [$1];
-  }
+  $$ = [$1];
   return $$;
 }
 function r88($1, $2) {
   let $$ = undefined;
-  {
-    $1.push($2);
-    $$ = $1;
-  }
+  $1.push($2);
+  $$ = $1;
   return $$;
 }
 function r89() {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'OBJECT_VALUE',
-      fields: [],
-    };
-  }
+
+  $$ = {
+    kind: 'OBJECT_VALUE',
+    fields: [],
+  };
+
   return $$;
 }
 function r90(_$1, $2) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'OBJECT_VALUE',
-      fields: $2,
-    };
-  }
+
+  $$ = {
+    kind: 'OBJECT_VALUE',
+    fields: $2,
+  };
+
   return $$;
 }
 function r91($1) {
   let $$ = undefined;
-  {
-    $$ = [$1];
-  }
+  $$ = [$1];
   return $$;
 }
 function r92($1, $2) {
   let $$ = undefined;
-  {
-    $1.push($2);
-    $$ = $1;
-  }
+  $1.push($2);
+  $$ = $1;
   return $$;
 }
 function r93($1, _$2, $3) {
   let $$ = undefined;
-  {
-    $$ = {
-      name: $1,
-      value: $3,
-    };
-  }
+
+  $$ = {
+    name: $1,
+    value: $3,
+  };
+
   return $$;
 }
 function r94(_$1, $2, _$3, $4, $5, $6) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'FRAGMENT',
-      directives: $5,
-      name: $2,
-      on: $4,
-      selections: $6,
-    };
-  }
+
+  $$ = {
+    kind: 'FRAGMENT',
+    directives: $5,
+    name: $2,
+    on: $4,
+    selections: $6,
+  };
+
   return $$;
 }
 function r95($1) {
   let $$ = undefined;
-  {
-    $$ = $1.contents;
-  }
+  $$ = $1.contents;
   return $$;
 }
 function r96(_$1, $2, $3) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'FRAGMENT_SPREAD',
-      name: $2,
-      directives: $3,
-    };
-  }
+
+  $$ = {
+    kind: 'FRAGMENT_SPREAD',
+    name: $2,
+    directives: $3,
+  };
+
   return $$;
 }
 function r97(_$1, $2, $3, $4) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'INLINE_FRAGMENT',
-      directives: $3,
-      on: $2,
-      selections: $4,
-    };
-  }
+
+  $$ = {
+    kind: 'INLINE_FRAGMENT',
+    directives: $3,
+    on: $2,
+    selections: $4,
+  };
+
   return $$;
 }
 function r98(_$1, $2) {
   let $$ = undefined;
-  {
-    $$ = $2;
-  }
+  $$ = $2;
   return $$;
 }
 function r99() {
   let $$ = undefined;
-  {
-    $$ = null;
-  }
+  $$ = null;
   return $$;
 }
 const actions = [

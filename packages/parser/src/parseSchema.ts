@@ -10,41 +10,33 @@ import {Lexer, Token} from '@masochist/lexer';
  */
 function r1($1) {
   let $$ = undefined;
-  {
-    $$ = {
-      kind: 'TYPE_SYSTEM_DOCUMENT',
-      definitions: $1,
-    };
-  }
+
+  $$ = {
+    kind: 'TYPE_SYSTEM_DOCUMENT',
+    definitions: $1,
+  };
+
   return $$;
 }
 function r2($1) {
   let $$ = undefined;
-  {
-    $$ = [$1];
-  }
+  $$ = [$1];
   return $$;
 }
 function r3($1, $2) {
   let $$ = undefined;
-  {
-    $1.push($2);
-    $$ = $1;
-  }
+  $1.push($2);
+  $$ = $1;
   return $$;
 }
 function r4($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 function r5($1) {
   let $$ = undefined;
-  {
-    $$ = $1;
-  }
+  $$ = $1;
   return $$;
 }
 /**
