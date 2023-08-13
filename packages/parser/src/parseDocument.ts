@@ -10,12 +10,10 @@ import {Lexer, Token} from '@masochist/lexer';
  */
 function r1($1) {
   let $$ = undefined;
-
   $$ = {
     kind: 'DOCUMENT',
     definitions: $1,
   };
-
   return $$;
 }
 function r2($1) {
@@ -46,7 +44,6 @@ function r6($1) {
 }
 function r7($1, $2, $3, $4, $5) {
   let $$ = undefined;
-
   $$ = {
     kind: 'OPERATION',
     name: $2,
@@ -55,12 +52,10 @@ function r7($1, $2, $3, $4, $5) {
     type: $1,
     variables: $3,
   };
-
   return $$;
 }
 function r8($1) {
   let $$ = undefined;
-
   $$ = {
     kind: 'OPERATION',
     name: null,
@@ -69,7 +64,6 @@ function r8($1) {
     type: 'QUERY',
     variables: null,
   };
-
   return $$;
 }
 function r9($1) {
@@ -115,9 +109,7 @@ function r14() {
 }
 function r15(_$1, $2) {
   let $$ = undefined;
-
   $$ = $2;
-
   return $$;
 }
 function r16() {
@@ -132,15 +124,12 @@ function r17($1) {
 }
 function r18($1, $2) {
   let $$ = undefined;
-
   $1.push($2);
   $$ = $1;
-
   return $$;
 }
 function r19($1, _$2, $3, $4, $5) {
   let $$ = undefined;
-
   $$ = {
     kind: 'VARIABLE_DEFINITION',
     defaultValue: $4,
@@ -148,17 +137,14 @@ function r19($1, _$2, $3, $4, $5) {
     type: $3,
     variable: $1,
   };
-
   return $$;
 }
 function r20(_$1, $2) {
   let $$ = undefined;
-
   $$ = {
     kind: 'VARIABLE',
     name: $2,
   };
-
   return $$;
 }
 function r21($1) {
@@ -178,42 +164,34 @@ function r23($1) {
 }
 function r24($1) {
   let $$ = undefined;
-
   $$ = {
     kind: 'NAMED_TYPE',
     name: $1,
   };
-
   return $$;
 }
 function r25(_$1, $2) {
   let $$ = undefined;
-
   $$ = {
     kind: 'LIST_TYPE',
     type: $2,
   };
-
   return $$;
 }
 function r26($1) {
   let $$ = undefined;
-
   $$ = {
     kind: 'NON_NULL_TYPE',
     type: $1,
   };
-
   return $$;
 }
 function r27($1) {
   let $$ = undefined;
-
   $$ = {
     kind: 'NON_NULL_TYPE',
     type: $1,
   };
-
   return $$;
 }
 function r28(_$1, $2) {
@@ -283,22 +261,18 @@ function r36($1) {
 }
 function r37() {
   let $$ = undefined;
-
   $$ = {
     kind: 'LIST_VALUE',
     value: [],
   };
-
   return $$;
 }
 function r38(_$1, $2) {
   let $$ = undefined;
-
   $$ = {
     kind: 'LIST_VALUE',
     value: $2,
   };
-
   return $$;
 }
 function r39($1) {
@@ -314,22 +288,18 @@ function r40($1, $2) {
 }
 function r41() {
   let $$ = undefined;
-
   $$ = {
     kind: 'OBJECT_VALUE',
     fields: [],
   };
-
   return $$;
 }
 function r42(_$1, $2) {
   let $$ = undefined;
-
   $$ = {
     kind: 'OBJECT_VALUE',
     fields: $2,
   };
-
   return $$;
 }
 function r43($1) {
@@ -345,12 +315,10 @@ function r44($1, $2) {
 }
 function r45($1, _$2, $3) {
   let $$ = undefined;
-
   $$ = {
     name: $1,
     value: $3,
   };
-
   return $$;
 }
 function r46($1) {
@@ -376,13 +344,11 @@ function r49($1, $2) {
 }
 function r50(_$1, $2, $3) {
   let $$ = undefined;
-
   $$ = {
     kind: 'DIRECTIVE',
     arguments: $3,
     name: $2,
   };
-
   return $$;
 }
 function r51($1) {
@@ -408,13 +374,11 @@ function r54($1, $2) {
 }
 function r55(_$1, $2, $3) {
   let $$ = undefined;
-
   $$ = {
     kind: 'DIRECTIVE',
     arguments: $3,
     name: $2,
   };
-
   return $$;
 }
 function r56(_$1, $2) {
@@ -460,7 +424,6 @@ function r63($1) {
 }
 function r64($1, $2, $3, $4) {
   let $$ = undefined;
-
   $$ = {
     kind: 'FIELD',
     alias: null,
@@ -469,12 +432,10 @@ function r64($1, $2, $3, $4) {
     name: $1,
     selections: $4,
   };
-
   return $$;
 }
 function r65($1, $2, $3, $4, $5) {
   let $$ = undefined;
-
   $$ = {
     kind: 'FIELD',
     alias: $1,
@@ -483,7 +444,6 @@ function r65($1, $2, $3, $4, $5) {
     name: $2,
     selections: $5,
   };
-
   return $$;
 }
 function r66($1) {
@@ -514,13 +474,11 @@ function r70($1, $2) {
 }
 function r71($1, _$2, $3) {
   let $$ = undefined;
-
   $$ = {
     kind: 'ARGUMENT',
     name: $1,
     value: $3,
   };
-
   return $$;
 }
 function r72(_$1, $2) {
@@ -546,13 +504,11 @@ function r75($1, $2) {
 }
 function r76($1, _$2, $3) {
   let $$ = undefined;
-
   $$ = {
     kind: 'ARGUMENT',
     name: $1,
     value: $3,
   };
-
   return $$;
 }
 function r77($1) {
@@ -587,46 +543,38 @@ function r82($1) {
 }
 function r83($1) {
   let $$ = undefined;
-
   $$ = {
     kind: 'STRING',
     block: false,
     // TODO: consider doing this slice in the lexer
     value: $1.contents.slice(1, -1),
   };
-
   return $$;
 }
 function r84($1) {
   let $$ = undefined;
-
   $$ = {
     kind: 'STRING',
     block: true,
     // TODO: preprocess value here...
     value: $1.contents,
   };
-
   return $$;
 }
 function r85() {
   let $$ = undefined;
-
   $$ = {
     kind: 'LIST_VALUE',
     value: [],
   };
-
   return $$;
 }
 function r86(_$1, $2) {
   let $$ = undefined;
-
   $$ = {
     kind: 'LIST_VALUE',
     value: $2,
   };
-
   return $$;
 }
 function r87($1) {
@@ -642,22 +590,18 @@ function r88($1, $2) {
 }
 function r89() {
   let $$ = undefined;
-
   $$ = {
     kind: 'OBJECT_VALUE',
     fields: [],
   };
-
   return $$;
 }
 function r90(_$1, $2) {
   let $$ = undefined;
-
   $$ = {
     kind: 'OBJECT_VALUE',
     fields: $2,
   };
-
   return $$;
 }
 function r91($1) {
@@ -673,17 +617,14 @@ function r92($1, $2) {
 }
 function r93($1, _$2, $3) {
   let $$ = undefined;
-
   $$ = {
     name: $1,
     value: $3,
   };
-
   return $$;
 }
 function r94(_$1, $2, _$3, $4, $5, $6) {
   let $$ = undefined;
-
   $$ = {
     kind: 'FRAGMENT',
     directives: $5,
@@ -691,7 +632,6 @@ function r94(_$1, $2, _$3, $4, $5, $6) {
     on: $4,
     selections: $6,
   };
-
   return $$;
 }
 function r95($1) {
@@ -701,25 +641,21 @@ function r95($1) {
 }
 function r96(_$1, $2, $3) {
   let $$ = undefined;
-
   $$ = {
     kind: 'FRAGMENT_SPREAD',
     name: $2,
     directives: $3,
   };
-
   return $$;
 }
 function r97(_$1, $2, $3, $4) {
   let $$ = undefined;
-
   $$ = {
     kind: 'INLINE_FRAGMENT',
     directives: $3,
     on: $2,
     selections: $4,
   };
-
   return $$;
 }
 function r98(_$1, $2) {

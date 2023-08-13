@@ -10,12 +10,10 @@ import {Lexer, Token} from '@masochist/lexer';
  */
 function r1($1) {
   let $$ = undefined;
-
   $$ = {
     kind: 'TYPE_SYSTEM_DOCUMENT',
     definitions: $1,
   };
-
   return $$;
 }
 function r2($1) {
