@@ -119,7 +119,6 @@ So, in this article I'm going to provide some links to implementations of variou
 
 ## Miscellaneous
 
-- Watchman binary protocol in C ([`watchman.h`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/watchman.h), [`watchman.c`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/watchman.c)).
 - [Conway's Game of Life cellular automaton in JavaScript](https://github.com/wincent/conway/blob/deeb4930a290821eeb42c18f78b5a3c7731ad947/life.js).
 - [Escape shell tokens in TypeScript](https://github.com/wincent/git-cipher/blob/bc6615f3e639c8c6bce65951d1988b2cd3e8b6fe/src/shellEscape.mts).
 - [Format Markdown for display in terminal](https://github.com/wincent/next/blob/490b78ec0dac0209703a04134978be445cbc2d17/src/util/formatMarkdown.ts) (from ["next" project](https://github.com/wincent/next), see also [alternative implementation from git-cipher](https://github.com/wincent/git-cipher/blob/bc6615f3e639c8c6bce65951d1988b2cd3e8b6fe/src/markdown.mts)).
@@ -130,6 +129,7 @@ So, in this article I'm going to provide some links to implementations of variou
 - [Stochastic optimization via simulated annealing in TypeScript](https://github.com/wincent/yak-layout/blob/dffb31e61576c3346a83aeb48afbc51ba49370a6/src/index.js#L865).
 - [Tag reachability using MySQL and Ruby](https://github.com/wincent/wincent-on-rails/blob/1b8d4aa8f3da1c0c8f7e5af23c6934d13f630930/app/models/tag.rb#L54-L104).
 - [UTF-16 to UTF-8 converter in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/legacy/src/parser/utf8.ts)
+- Watchman binary protocol in C ([`watchman.h`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/watchman.h), [`watchman.c`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/watchman.c)).
 
 ## Useful utilities
 
