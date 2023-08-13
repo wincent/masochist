@@ -10,6 +10,7 @@ So, in this article I'm going to provide some links to implementations of variou
 ## Data structures
 
 - Fast Ruby Array alternative in C ([`ary.h`](https://github.com/wincent/wikitext/blob/1c1ef9affa4633e6c169a9c1c8e9b2aee11c3679/ext/wikitext/ary.h), [`ary.c`](https://github.com/wincent/wikitext/blob/1c1ef9affa4633e6c169a9c1c8e9b2aee11c3679/ext/wikitext/ary.c)).
+- Fast Ruby String alternative in C ([`str.h`](https://github.com/wincent/wikitext/blob/1c1ef9affa4633e6c169a9c1c8e9b2aee11c3679/ext/wikitext/str.h), [`str.c`](https://github.com/wincent/wikitext/blob/1c1ef9affa4633e6c169a9c1c8e9b2aee11c3679/ext/wikitext/str.c)).
 - Fast String in C ([`str.h`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/str.h), [`str.c`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/str.c)).
 - Heap (min heap) in C ([`heap.h`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/heap.h)/[`heap.c`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/heap.c)).
 - Threadsafe FIFO queue in Objective-C ([`WOQueue.h`](https://github.com/wincent/WOCommon/blob/5d482f6e8e7b05b7982f8fc3ba85929c9ea65b6a/WOQueue.h), [`WOQueue.m`](https://github.com/wincent/WOCommon/blob/5d482f6e8e7b05b7982f8fc3ba85929c9ea65b6a/WOQueue.m)[^private]).
