@@ -9,11 +9,6 @@ So, in this article I'm going to provide some links to implementations of variou
 
 ## Data structures
 
-- Fast Ruby Array alternative in C ([`ary.h`](https://github.com/wincent/wikitext/blob/1c1ef9affa4633e6c169a9c1c8e9b2aee11c3679/ext/wikitext/ary.h), [`ary.c`](https://github.com/wincent/wikitext/blob/1c1ef9affa4633e6c169a9c1c8e9b2aee11c3679/ext/wikitext/ary.c)).
-- Fast Ruby String alternative in C ([`str.h`](https://github.com/wincent/wikitext/blob/1c1ef9affa4633e6c169a9c1c8e9b2aee11c3679/ext/wikitext/str.h), [`str.c`](https://github.com/wincent/wikitext/blob/1c1ef9affa4633e6c169a9c1c8e9b2aee11c3679/ext/wikitext/str.c)).
-- Fast String in C ([`str.h`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/str.h), [`str.c`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/str.c)).
-- Heap (min heap) in C ([`heap.h`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/heap.h)/[`heap.c`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/heap.c)).
-- Threadsafe FIFO queue in Objective-C ([`WOQueue.h`](https://github.com/wincent/WOCommon/blob/5d482f6e8e7b05b7982f8fc3ba85929c9ea65b6a/WOQueue.h), [`WOQueue.m`](https://github.com/wincent/WOCommon/blob/5d482f6e8e7b05b7982f8fc3ba85929c9ea65b6a/WOQueue.m)[^private]).
 - ["Poppable" Set in JavaScript](https://github.com/wincent/masochist/blob/2872a7b46039c2ef708e47f214e94e5167a341b4/src/server/redis/RedisConnectionPool.js#L3-L10) (ie. `Set` which supports "popping" the oldest item).
 - ["Reversible" Map in JavaScript](https://github.com/liferay/liferay-frontend-projects/blob/8271bd2398fa26c4987cbd8426615bcb22ee1507/projects/npm-tools/packages/npm-scripts/src/jsp/ReversibleMap.js) (ie. `Map` which remembers intermediate states and can be rolled back).
 - ["Reversible" Map in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/legacy/src/lexer/ReversibleMap.ts) (ie. `Map` which remembers intermediate states and can be rolled back).
@@ -23,6 +18,10 @@ So, in this article I'm going to provide some links to implementations of variou
 - [Connection pool in JavaScript](https://github.com/wincent/masochist/blob/2872a7b46039c2ef708e47f214e94e5167a341b4/src/server/redis/RedisConnectionPool.js#L12-L50).
 - [Event emitter in TypeScript](https://github.com/wincent/js/blob/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/event-emitter/src/index.ts).
 - [FIFO queue in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/common/src/Queue.ts)
+- Fast Ruby Array alternative in C ([`ary.h`](https://github.com/wincent/wikitext/blob/1c1ef9affa4633e6c169a9c1c8e9b2aee11c3679/ext/wikitext/ary.h), [`ary.c`](https://github.com/wincent/wikitext/blob/1c1ef9affa4633e6c169a9c1c8e9b2aee11c3679/ext/wikitext/ary.c)).
+- Fast Ruby String alternative in C ([`str.h`](https://github.com/wincent/wikitext/blob/1c1ef9affa4633e6c169a9c1c8e9b2aee11c3679/ext/wikitext/str.h), [`str.c`](https://github.com/wincent/wikitext/blob/1c1ef9affa4633e6c169a9c1c8e9b2aee11c3679/ext/wikitext/str.c)).
+- Fast String in C ([`str.h`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/str.h), [`str.c`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/str.c)).
+- Heap (min heap) in C ([`heap.h`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/heap.h)/[`heap.c`](https://github.com/wincent/command-t/blob/459e9c6e7d5bd8f559bbf8101869d0c9e800b154/lua/wincent/commandt/lib/heap.c)).
 - [Heap in TypeScript](https://github.com/wincent/algorithms/blob/0eb10c7ddab759636eddf7d41c3f22c852691288/ts/src/Heap.ts).
 - [Immutable `Set` in TypeScript](https://github.com/wincent/js/blob/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/frozen-set/src/index.ts).
 - [Interval Tree in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/lexer/src/IntervalTree.ts)
@@ -30,6 +29,7 @@ So, in this article I'm going to provide some links to implementations of variou
 - [Priority queue in TypeScript](https://github.com/wincent/algorithms/blob/0eb10c7ddab759636eddf7d41c3f22c852691288/ts/src/MinPQ.ts).
 - [Red-Black Tree in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/lexer/src/RedBlackTree.ts)
 - [Ring buffer in Rust](https://github.com/wincent/docvim/blob/426bdaa38b2c9d6f71d27f2b52139d1292a9dafb/libs/docvim_diff/src/ring_buffer.rs).
+- Threadsafe FIFO queue in Objective-C ([`WOQueue.h`](https://github.com/wincent/WOCommon/blob/5d482f6e8e7b05b7982f8fc3ba85929c9ea65b6a/WOQueue.h), [`WOQueue.m`](https://github.com/wincent/WOCommon/blob/5d482f6e8e7b05b7982f8fc3ba85929c9ea65b6a/WOQueue.m)[^private]).
 - [Trie in Perl](https://github.com/git/git/blob/a6a323b31e2bcbac2518bddec71ea7ad558870eb/git-add--interactive.perl#L372-L434).
 - [Union-Find in TypeScript](https://github.com/wincent/algorithms/blob/b2be0a285a708b81973382f8d5de236ad1b069d4/src/UnionFind.ts).
 
@@ -114,8 +114,8 @@ So, in this article I'm going to provide some links to implementations of variou
   - [Huffman compression in TypeScript](https://github.com/wincent/algorithms/blob/8f1511cb40ea416234b21193fdc3b8323f666ba7/src/Huffman.ts).
 - [Find collinear points in TypeScript](https://github.com/wincent/algorithms/blob/acc7e6bdc27061570770498c00f91f8e051afb1d/ts/src/FastCollinearPoints.ts) (context: [assignment](https://coursera.cs.princeton.edu/algs4/assignments/collinear/specification.php)).
 - [Percolation model in TypeScript](https://github.com/wincent/algorithms/blob/b2be0a285a708b81973382f8d5de236ad1b069d4/src/Percolation.ts) (context: [assignment](https://coursera.cs.princeton.edu/algs4/assignments/percolation/specification.php)).
-- [kd-tree (2d-tree) in TypeScript](https://github.com/wincent/algorithms/blob/72c5d36cc179849a7c6a552cecd0e939cf13e74c/ts/src/KdTree.ts) (context: [assignment](https://coursera.cs.princeton.edu/algs4/assignments/kdtree/specification.php)).
 - [Seam carving in TypeScript](https://github.com/wincent/algorithms/blob/28b33ad9e080bb3184c0e1ca0e078f7c1865e470/SeamCarver.js) (context: [assignment](https://www.cs.princeton.edu/courses/archive/fall14/cos226/assignments/seamCarving.html)).
+- [kd-tree (2d-tree) in TypeScript](https://github.com/wincent/algorithms/blob/72c5d36cc179849a7c6a552cecd0e939cf13e74c/ts/src/KdTree.ts) (context: [assignment](https://coursera.cs.princeton.edu/algs4/assignments/kdtree/specification.php)).
 
 ## Miscellaneous
 
@@ -141,10 +141,10 @@ So, in this article I'm going to provide some links to implementations of variou
 
 ## Appendix: (non-implementation) notes
 
-- [Adjacency_list](./Adjacency_list) notes.
 - [Adjacency matrix](./Adjacency_matrix) notes.
-- [Binary tree](./Binary_tree) notes.
+- [Adjacency_list](./Adjacency_list) notes.
 - [Binary Search tree](./Binary_Search_Tree) notes.
+- [Binary tree](./Binary_tree) notes.
 - [Breadth-first search](./Breadth-first_search) notes.
 - [Computing the Maximum Weighted Independent Set of a graph path](./Computing_the_Maximum_Weighted_Independent_Set_of_a_graph_path) notes.
 - [Depth-first search](./Depth_first_search) notes.
