@@ -142,7 +142,7 @@ So, in this article I'm going to provide some links to implementations of variou
 ## Appendix: (non-implementation) notes
 
 - [Adjacency matrix](./Adjacency_matrix) notes.
-- [Adjacency_list](./Adjacency_list) notes.
+- [Adjacency list](./Adjacency_list) notes.
 - [Binary Search tree](./Binary_Search_Tree) notes.
 - [Binary tree](./Binary_tree) notes.
 - [Breadth-first search](./Breadth-first_search) notes.
