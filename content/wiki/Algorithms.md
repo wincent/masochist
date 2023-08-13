@@ -138,3 +138,23 @@ So, in this article I'm going to provide some links to implementations of variou
 - [Improved `JSON.stringify()` in TypeScript](https://github.com/wincent/git-cipher/blob/bc6615f3e639c8c6bce65951d1988b2cd3e8b6fe/src/stringify.mts) (more useful representations of non-primitive types).
 - [Yarn workspace management scripts](https://github.com/wincent/js/tree/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/workspace-scripts/src).
 - [Zero-dependency Jest-like testing "framework" in JavaScript](https://github.com/wincent/jost/blob/09450b8a15538e09fbaebab718f29909d4267a61/src/index.js).
+
+## Appendix: (non-implementation) notes
+
+- [Adjacency_list](./Adjacency_list) notes.
+- [Adjacency matrix](./Adjacency_matrix) notes.
+- [Binary tree](./Binary_tree) notes.
+- [Binary Search tree](./Binary_Search_Tree) notes.
+- [Breadth-first search](./Breadth-first_search) notes.
+- [Computing the Maximum Weighted Independent Set of a graph path](./Computing_the_Maximum_Weighted_Independent_Set_of_a_graph_path) notes.
+- [Depth-first search](./Depth_first_search) notes.
+- [Dynamic programming](./Dynamic_programming) notes.
+- [Greedy algorithm](./Greedy_algorithm) notes.
+- [Heap](./Heap) notes.
+- [Minimum Spanning Tree](./Minimum_Spanning_Tree) notes.
+- [Prim's algorithm](./Prim's_algorithm) notes.
+- [Sparse matrix](./Sparse_matrix) notes.
+- [Topological ordering](./Topological_ordering) notes.
+- [Tree rotation](./Tree_rotations) notes.
+- [Tree traversal](./Tree_traversal) notes.
+- [Union-Find](./Union-Find) notes.
