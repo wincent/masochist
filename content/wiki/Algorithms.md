@@ -89,7 +89,7 @@ So, in this article I'm going to provide some links to implementations of variou
 - [Recursive descent parser for Lua in Rust](https://github.com/wincent/docvim/blob/426bdaa38b2c9d6f71d27f2b52139d1292a9dafb/libs/docvim_parser/src/lua.rs) (hand-rolled).
 - [Regular Expression compiler in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/lexer/src/compileRegExp.ts).
 - [Regular Expression escaper in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/common/src/escapeForRegExp.ts).
-- [Regular Expression parser in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/lexer/src/IntervalTree.ts).
+- [Regular Expression parser in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/lexer/src/RegExp/RegExpParser.ts).
 - [Regular Expression to NFA converter in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/lexer/src/NFA/regExpToNFA.ts).
 - [Shell command parser in TypeScript](https://github.com/wincent/next/blob/490b78ec0dac0209703a04134978be445cbc2d17/src/util/parseShell.ts).
 - [Static GraphQL lexer in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/lexer/src/lex.ts) (this is faster than the dynamic one).
