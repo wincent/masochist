@@ -14,9 +14,10 @@ Points of interest and areas for exploration:
 - `codegen`: Tools for emitting TypeScript (AST, pretty printer, visitor/transformer).
 - `common`: Utilities used by other packages.
 - `compiler`: Produces GraphQL-derived artifacts for use at runtime.
+- `graphql`: GraphQL lexer and parsers for schema definitions and executable documents.
 - `legacy`: Previous (dynamic) version of GraphQL lexer and parser (not a current part of Masochist; intended for use only in comparative benchmarks).
-- `lexer`: DFA-based lexer generator and fast GraphQL lexer.
-- `parser`: LALR(1) parser generator and fast GraphQL parsers for schema definitions and executable documents.
+- `lexer`: Generator for fast DFA-based lexers.
+- `parser`: Generator for fast LALR(1) parsers.
 - `server`: Server-side code.
 - `typescript`: Defines a lexer and parser for recognizing a subset of TypeScript (used in conjunction with `codegen` package to produce generated files; lexers, parsers etc[^etc]).
 

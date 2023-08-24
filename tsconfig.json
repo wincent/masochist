@@ -8,6 +8,7 @@
     {"path": "./packages/codegen"},
     {"path": "./packages/common"},
     {"path": "./packages/compiler"},
+    {"path": "./packages/graphql"},
     {"path": "./packages/legacy"},
     {"path": "./packages/lexer"},
     {"path": "./packages/parser"},

@@ -1,7 +1,7 @@
 {
-  "name": "@masochist/typescript",
+  "name": "@masochist/graphql",
   "version": "0.0.1",
-  "description": "Masochist TypeScript (subset) parser",
+  "description": "Masochist GraphQL lexer and parsers for executable documents and schema definitions",
   "dependencies": {
     "@masochist/codegen": "*",
     "@masochist/common": "*",
