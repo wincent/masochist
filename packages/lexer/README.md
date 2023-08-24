@@ -1,5 +1,3 @@
 # `@masochist/lexer`
 
-Technically not the Masochist lexer, but a lexer generator that generates the lexer (`src/lex.ts`).
-
-To update `src/lex.ts`, run `make lexer` from the repository root.
+Technically not the Masochist lexer, but a lexer generator that generates the lexer (found in the `@masochist/graphql` package at `src/lex.ts`).

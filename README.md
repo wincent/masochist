@@ -42,5 +42,5 @@ A Make-based interface also exists for some operations:
 
 - `make`: Performs TypeScript build (via `tsc build`) if necessary.
 - `make diagrams`: Builds state machine diagrams in `packages/lexer/diagrams/`.
-- `make lexer`: Generates static lexer (`packages/lexer/src/lex.ts`).
+- `make graphql`: Generates static lexer (`packages/graphql/src/lex.ts`).
 - `make clean`: Removes all built products (TypeScript outputs + lexer diagrams).

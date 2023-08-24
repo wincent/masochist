@@ -45,10 +45,6 @@ diagrams: packages/lexer/lib/bin/dotify.js
 graphql: packages/graphql/lib/bin/generateLexer.js
 	@node packages/graphql/lib/bin/generateLexer.js
 
-.PHONY: lexer
-lexer: packages/lexer/lib/bin/generate.js
-	@node packages/lexer/lib/bin/generate.js
-
 node_modules: yarn.lock $(PACKAGE_JSON)
 	@yarn
 	@touch $@
