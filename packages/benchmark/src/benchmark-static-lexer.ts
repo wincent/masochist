@@ -1,4 +1,4 @@
-import lex from '@masochist/lexer';
+import {lex} from '@masochist/graphql';
 
 import run from './benchmark-lexer';
 

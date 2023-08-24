@@ -275,8 +275,7 @@ export default function build(
         '',
         '@generated',
       ),
-      // TODO: teach "make graphql" to import from `@masochist/lexer`.
-      ast.import('Token', './Token'),
+      ast.import('{Token}', '@masochist/lexer'),
       ast.statement('const REJECT = -1'),
       ast.statement('const START = 0'),
       ast.export(

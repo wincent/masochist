@@ -14,7 +14,7 @@ describe('build()', () => {
        *
        * @generated
        */
-      import Token from './Token';
+      import {Token} from '@masochist/lexer';
       const REJECT = -1;
       const START = 0;
       export class Lexer {

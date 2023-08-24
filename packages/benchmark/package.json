@@ -4,6 +4,7 @@
   "description": "Masochist benchmarks",
   "dependencies": {
     "@masochist/common": "*",
+    "@masochist/graphql": "*",
     "@masochist/legacy": "*",
     "@masochist/lexer": "*",
     "@masochist/parser": "*"
