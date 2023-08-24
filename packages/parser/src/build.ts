@@ -27,7 +27,8 @@ export default function build(
       '',
       '@generated',
     ),
-    ast.import('{Lexer, Token}', '@masochist/lexer'),
+    ast.import('{Lexer}', '@masochist/graphql'),
+    ast.import('{Token}', '@masochist/lexer'),
     ...grammar.rules.map((rule, i): Statement => {
       if (rule.action && rule.action !== '') {
         stats['semanticActions']++;

@@ -5,7 +5,6 @@
 # Generated files.
 # TODO: eventually, format these with Prettier too.
 /packages/graphql/src/lex.ts
-/packages/lexer/src/lex.ts
 
 # Ignore built files (".js", ".d.ts") under "lib" directories like
 # "packages/lexer/lib/" etc.

@@ -4,7 +4,8 @@
  *
  * @generated
  */
-import {Lexer, Token} from '@masochist/lexer';
+import {Lexer} from '@masochist/graphql';
+import {Token} from '@masochist/lexer';
 /**
  * r0: no production
  */
