@@ -18,10 +18,15 @@ export type Stats = {
   [buildStat: string]: number;
 };
 
+type Options = {
+  buildCommand?: string;
+};
+
 // TODO: see if i can avoid so many ternaries
 export default function build(
   table: TransitionTable,
   stats: Stats = {},
+  options: Options = {},
 ): Program {
   invariant(table.startStates.size === 1, 'Need exactly one start state');
   const START = Array.from(table.startStates)[0];
@@ -259,14 +264,18 @@ export default function build(
     ],
   });
 
+  const buildCommand = options.buildCommand
+    ? `edit "build.ts", run "${options.buildCommand}" instead`
+    : 'edit "build.ts" instead';
   const program: Program = {
     kind: 'Program',
     statements: [
       ast.docComment(
-        'vim: set nomodifiable : DO NOT EDIT - edit "build.ts", run "make lexer" instead',
+        `vim: set nomodifiable : DO NOT EDIT - ${buildCommand}`,
         '',
         '@generated',
       ),
+      // TODO: teach "make graphql" to import from `@masochist/lexer`.
       ast.import('Token', './Token'),
       ast.statement('const REJECT = -1'),
       ast.statement('const START = 0'),

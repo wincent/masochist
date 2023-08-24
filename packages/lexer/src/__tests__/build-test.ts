@@ -10,7 +10,7 @@ describe('build()', () => {
     const ast = build(definition);
     expect(print(ast)).toMatchInlineSnapshot(`
       "/**
-       * vim: set nomodifiable : DO NOT EDIT - edit "build.ts", run "make lexer" instead
+       * vim: set nomodifiable : DO NOT EDIT - edit "build.ts" instead
        *
        * @generated
        */

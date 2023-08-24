@@ -41,6 +41,10 @@ diagrams: packages/lexer/lib/bin/dotify.js
 	@node packages/lexer/lib/bin/dotify.js
 	@$(MAKE) -C packages/lexer -j 4 diagrams
 
+.PHONY: graphql
+graphql: packages/graphql/lib/bin/generateLexer.js
+	@node packages/graphql/lib/bin/generateLexer.js
+
 .PHONY: lexer
 lexer: packages/lexer/lib/bin/generate.js
 	@node packages/lexer/lib/bin/generate.js

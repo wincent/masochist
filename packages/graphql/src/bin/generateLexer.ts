@@ -1,21 +1,21 @@
 /**
  * Generates the lexer implementation and writes it to src/lex.ts.
  *
- * Run this with `make lexer` from the repository root.
+ * Run this with `make graphql` from the repository root.
  */
 
 import {print} from '@masochist/codegen';
+import {build} from '@masochist/lexer';
 import path from 'path';
 import {promises as fs} from 'fs';
 
-import definition from '../definition';
-import build from '../build';
+import lexer from '../lexer';
 
-import type {Stats} from '../build';
+import type {Stats} from '@masochist/lexer';
 
 async function main() {
   const stats: Stats = {};
-  const ast = build(definition, stats, {buildCommand: "make lexer"});
+  const ast = build(lexer, stats, {buildCommand: "make graphql"});
   const source = print(ast);
   const file = path.join(__dirname, '..', '..', 'src', 'lex.ts');
 
