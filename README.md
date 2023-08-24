@@ -7,6 +7,22 @@ Points of interest and areas for exploration:
 - TypeScript.
 - Minimal dependency footprint.
 
+## Packages
+
+- `benchmark`: Benchmarks, profilers, and "deopt" analyzers for the GraphQL lexer and parser[^benchmark].
+- `client`: Client-side code.
+- `codegen`: Tools for emitting TypeScript (AST, pretty printer, visitor/transformer).
+- `common`: Utilities used by other packages.
+- `compiler`: Produces GraphQL-derived artifacts for use at runtime.
+- `legacy`: Previous (dynamic) version of GraphQL lexer and parser (not a current part of Masochist; intended for use only in comparative benchmarks).
+- `lexer`: DFA-based lexer generator and fast GraphQL lexer.
+- `parser`: LALR(1) parser generator and fast GraphQL parsers for schema definitions and executable documents.
+- `server`: Server-side code.
+- `typescript`: Defines a lexer and parser for recognizing a subset of TypeScript (used in conjunction with `codegen` package to produce generated files; lexers, parsers etc[^etc]).
+
+[^benchmark]: For comparison, benchmarks run against the dynamic (legacy) lexer and parser, the reference — ie. [graphql-js](https://github.com/graphql/graphql-js) — lexer and parser, the static lexer and parser, and the table-based parser.
+[^etc]: At the time of writing, we're only generating lexers and parsers, but in the future anticipate potentially generating other things such as custom field resolvers etc.
+
 ## Development
 
 Most development tasks can be completed with `yarn`:
