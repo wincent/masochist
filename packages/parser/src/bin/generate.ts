@@ -2,7 +2,7 @@
  * Generates the parser implementations and writes them to
  * "src/parseDocument.ts" and "src/parseSchema.ts".
  *
- * Run this with `make parser`.
+ * Run this with `make parser` from the repository root.
  */
 
 import {print} from '@masochist/codegen';

@@ -1,7 +1,7 @@
 /**
  * Generates the lexer implementation and writes it to src/lex.ts.
  *
- * Run this with `make lexer`.
+ * Run this with `make lexer` from the repository root.
  */
 
 import {print} from '@masochist/codegen';
