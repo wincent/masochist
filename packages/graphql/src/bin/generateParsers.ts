@@ -2,18 +2,18 @@
  * Generates the parser implementations and writes them to
  * "src/parseDocument.ts" and "src/parseSchema.ts".
  *
- * Run this with `make parser` from the repository root.
+ * Run this with `make graphql` from the repository root.
  */
 
 import {print} from '@masochist/codegen';
+import {build} from '@masochist/parser';
 import path from 'path';
 import {promises as fs} from 'fs';
 
 import {grammar as documentGrammar, table as documentTable} from '../document';
-import build from '../build';
 import {grammar as schemaGrammar, table as schemaTable} from '../schema';
 
-import type {Stats} from '../build';
+import type {Stats} from '@masochist/parser';
 
 async function main() {
   for (const [grammar, table, filename] of [

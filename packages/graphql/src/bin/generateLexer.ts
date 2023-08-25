@@ -1,6 +1,8 @@
 /**
  * Generates the lexer implementation and writes it to src/lex.ts.
  *
+ * TODO: generate `src/lexDocument.ts` and `src/lexSchema.ts` instead.
+ *
  * Run this with `make graphql` from the repository root.
  */
 

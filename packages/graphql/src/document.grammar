@@ -1,4 +1,3 @@
-# TODO: delete
 # Based on: https://spec.graphql.org/October2021/#sec-Document-Syntax
 
 %token AMPERSAND

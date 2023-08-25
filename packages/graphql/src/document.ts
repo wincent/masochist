@@ -1,4 +1,3 @@
-// TODO: delete
 /**
  * Language contructs (such as a grammar, parse table etc) for parsing GraphQL
  * documents containing operation definitions (queries, mutations,
@@ -8,14 +7,15 @@
  * definitions (schemas, types, directives etc).
  */
 
+import {
+  getAugmentedGrammar,
+  getItemSets,
+  getParseTable,
+  itemSetsToTransitionTable,
+  parseDSL,
+} from '@masochist/parser';
 import fs from 'fs';
 import path from 'path';
-
-import getAugmentedGrammar from './getAugmentedGrammar';
-import getItemSets from './getItemSets';
-import getParseTable from './getParseTable';
-import itemSetsToTransitionTable from './itemSetsToTransitionTable';
-import parseDSL from './parseDSL';
 
 const grammarDeclaration = fs.readFileSync(
   path.join(__dirname, '..', 'src', 'document.grammar'),

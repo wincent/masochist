@@ -42,16 +42,13 @@ diagrams: packages/graphql/lib/bin/dotify.js
 	@$(MAKE) -C packages/graphql -j 4 diagrams
 
 .PHONY: graphql
-graphql: packages/graphql/lib/bin/generateLexer.js
+graphql: packages/graphql/lib/bin/generateLexer.js packages/graphql/lib/bin/generateParsers.js
 	@node packages/graphql/lib/bin/generateLexer.js
+	@node packages/graphql/lib/bin/generateParsers.js
 
 node_modules: yarn.lock $(PACKAGE_JSON)
 	@yarn
 	@touch $@
-
-.PHONY: parser
-parser: packages/parser/lib/bin/generate.js
-	@node packages/parser/lib/bin/generate.js
 
 .PHONY: typescript
 typescript: packages/typescript/lib/bin/generate.js
