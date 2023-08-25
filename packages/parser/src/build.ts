@@ -5,6 +5,10 @@ import type {Program, Statement} from '@masochist/codegen';
 import type {ParseTable} from './getParseTable';
 import type {Grammar} from './types';
 
+type Options = {
+  buildCommand?: string;
+};
+
 export type Stats = {
   [buildStat: string]: number;
 };
@@ -13,17 +17,21 @@ export default function build(
   grammar: Grammar,
   table: ParseTable,
   stats: Stats = {},
+  options: Options = {},
 ): Program {
   stats['grammarRules'] = grammar.rules.length;
   stats['parserStates'] = table.length;
   stats['semanticActions'] = 0;
   stats['actions'] = 0;
 
+  const buildCommand = options.buildCommand
+    ? `edit "build.ts", run "${options.buildCommand}" instead`
+    : 'edit "build.ts" instead';
   return ast.program([
     // TODO: remove the @ts-nocheck once the file is good.
     ast.comment('@ts-nocheck'),
     ast.docComment(
-      'vim: set nomodifiable : DO NOT EDIT - edit "build.ts", run "make parser" instead',
+      `vim: set nomodifiable : DO NOT EDIT - ${buildCommand}`,
       '',
       '@generated',
     ),

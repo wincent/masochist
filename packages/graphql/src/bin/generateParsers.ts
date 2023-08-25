@@ -23,7 +23,7 @@ async function main() {
     console.log(`Building: ${filename}`);
 
     const stats: Stats = {};
-    const ast = build(grammar, table, stats);
+    const ast = build(grammar, table, stats, {buildCommand: 'make graphql'});
     const source = print(ast);
     const file = path.join(__dirname, '..', '..', 'src', filename);
 

@@ -3,7 +3,8 @@
 /tsconfig-base.json
 
 # Generated files.
-# TODO: eventually, format these with Prettier too.
+# TODO: eventually, format these with Prettier too, as we're already doing for
+# generated parser files.
 /packages/graphql/src/lex.ts
 
 # Ignore built files (".js", ".d.ts") under "lib" directories like

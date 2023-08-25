@@ -1,4 +1,4 @@
-import {parseDocument} from '@masochist/parser';
+import {parseDocument} from '@masochist/graphql';
 
 import run from './benchmark-parser';
 

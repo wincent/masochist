@@ -14,12 +14,12 @@ import type {
 import type {Transition} from './NFA/NFA';
 import type {TransitionTable} from './NFA/TransitionTable';
 
-export type Stats = {
-  [buildStat: string]: number;
-};
-
 type Options = {
   buildCommand?: string;
+};
+
+export type Stats = {
+  [buildStat: string]: number;
 };
 
 // TODO: see if i can avoid so many ternaries

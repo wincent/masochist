@@ -2,11 +2,11 @@
 // defined, but they depend on artifacts produced by `@masochist/graphql`, so
 // we've moved them in here to avoid a circular dependency.
 
+import {parseWithTable, makeNode} from '@masochist/parser';
 import {promises as fs} from 'fs';
 import path from 'path';
 
-import {grammar, parseWithTable, makeNode, table} from '@masochist/parser';
-
+import {grammar, table} from '../document';
 import lex from '../lex';
 
 describe('parseWithTable()', () => {
