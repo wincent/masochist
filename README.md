@@ -41,6 +41,6 @@ Most development tasks can be completed with `yarn`:
 A Make-based interface also exists for some operations:
 
 - `make`: Performs TypeScript build (via `tsc build`) if necessary.
-- `make diagrams`: Builds state machine diagrams in `packages/lexer/diagrams/`.
+- `make diagrams`: Builds state machine diagrams in `packages/graphql/lexer/diagrams/`.
 - `make graphql`: Generates static lexer (`packages/graphql/src/lex.ts`).
 - `make clean`: Removes all built products (TypeScript outputs + lexer diagrams).
