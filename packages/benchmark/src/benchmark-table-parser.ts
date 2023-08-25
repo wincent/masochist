@@ -1,5 +1,4 @@
-import {lex} from '@masochist/graphql';
-import {grammar, table} from '@masochist/graphql';
+import {grammar, lex, table} from '@masochist/graphql';
 import {makeNode, parseWithTable} from '@masochist/parser';
 
 import run from './benchmark-parser';
