@@ -3,8 +3,15 @@ title: More Mail.app suckage
 tags: blog
 ---
 
+```
 $ cd ~/Library/Mail/Mailboxes/listas/xcode-users.mbox
-    $ ls -lh Messages total 48 -rw-r--r-- 1 wincent wincent 3K Oct 4 23:37 1722199.emlx -rw-r--r-- 1 wincent wincent 2K Oct 4 23:37 1722200.emlx -rw-r--r-- 1 wincent wincent 3K Oct 4 23:37 1722201.emlx -rw-r--r-- 1 wincent wincent 8K Oct 4 23:37 1722202.emlx
+$ ls -lh Messages
+total 48
+-rw-r--r-- 1 wincent wincent 3K Oct 4 23:37 1722199.emlx
+-rw-r--r-- 1 wincent wincent 2K Oct 4 23:37 1722200.emlx
+-rw-r--r-- 1 wincent wincent 3K Oct 4 23:37 1722201.emlx
+-rw-r--r-- 1 wincent wincent 8K Oct 4 23:37 1722202.emlx
+```
 
 That's my xcode-users mailing list folder after cleaning it out, emptying the trash _and_ rebuilding the mailbox. But get this:
 
