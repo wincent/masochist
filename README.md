@@ -24,8 +24,8 @@ For editing, use `git worktree add content content` to create a nested checkout 
 The basic flow for doing a rewrite is:
 
 1. Actually rewrite the content with `git-filter-branch` (a detailed example is discussed [here](https://wincent.com/blog/filter-branch)).
-2. Bump the `redisCacheVersion` cache breaker on the `master` branch.
-3. On the `master` branch run `yarn update-indices` locally.
+2. Bump the `redisCacheVersion` cache breaker on the `main` branch.
+3. On the `main` branch run `yarn update-indices` locally.
 4. Restart local server (`yarn start`); inspect content at http://localhost:3000/ to make sure everything is in order.
 5. Push content (force push).
 6. Push Masochist app.
