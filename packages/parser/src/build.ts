@@ -35,8 +35,9 @@ export default function build(
       '',
       '@generated',
     ),
-    ast.import('{Lexer}', '@masochist/graphql'),
     ast.import('{Token}', '@masochist/lexer'),
+    // TODO: don't assume lexer is written to lex.ts
+    ast.import('{Lexer}', './lex'),
     ...grammar.rules.map((rule, i): Statement => {
       if (rule.action && rule.action !== '') {
         stats['semanticActions']++;

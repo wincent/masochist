@@ -1,11 +1,11 @@
 // @ts-nocheck
 /**
- * vim: set nomodifiable : DO NOT EDIT - edit "build.ts", run "make parser" instead
+ * vim: set nomodifiable : DO NOT EDIT - edit "build.ts", run "make graphql" instead
  *
  * @generated
  */
-import {Lexer} from '@masochist/graphql';
 import {Token} from '@masochist/lexer';
+import {Lexer} from './lex';
 /**
  * r0: no production
  */
