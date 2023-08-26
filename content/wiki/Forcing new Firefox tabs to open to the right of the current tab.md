@@ -10,4 +10,4 @@ Courtesy of [this StackExchange answer](https://superuser.com/a/1372579/322531):
 
 # See also
 
-- [Allowing Firefox tabs to autoshrink like Chrome](/wiki/Allowing_Firefox_tabs_to_autoshrink_like_Chrome)
+-   [Allowing Firefox tabs to autoshrink like Chrome](/wiki/Allowing_Firefox_tabs_to_autoshrink_like_Chrome)

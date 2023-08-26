@@ -7,22 +7,22 @@ Just making some notes for this stuff because I find it tremendously fiddly and 
 
 Topics covered:
 
-- **Bluetooth**.
-- **USB**.
-- **OBS:** OBS itself (screencasting software).
-- **Audacious:** For playing background music.
-- **screenkey:** For showing keypresses.
-- **irssi:** For showing Twitch chat.
-- **VLC:** For checking recordings.
+-   **Bluetooth**.
+-   **USB**.
+-   **OBS:** OBS itself (screencasting software).
+-   **Audacious:** For playing background music.
+-   **screenkey:** For showing keypresses.
+-   **irssi:** For showing Twitch chat.
+-   **VLC:** For checking recordings.
 
 Overview:
 
 1. Make sure passphrase is already in `ssh-agent`, to avoid having to type passphrase on stream: `ssh-add`.
 2. Bump font size in kitty (`Control-Shift-+` x 5).
-2. Ensure Bluetooth is running and headphones are connected.
-3. ~~Ensure virtual sink is running.~~ (This is now happening automatically.)
-4. Open Audacious, pavucontrol, and OBS (last).
-5. If webcam isn't working (sigh), unplug it and replug it; you may have to remove and re-add the video source in OBS. And if you lose the keyboard and have to disconnect it, it may come back without Colemak, so be ready to run `arst`/`asdf` to put it back.
+3. Ensure Bluetooth is running and headphones are connected.
+4. ~~Ensure virtual sink is running.~~ (This is now happening automatically.)
+5. Open Audacious, pavucontrol, and OBS (last).
+6. If webcam isn't working (sigh), unplug it and replug it; you may have to remove and re-add the video source in OBS. And if you lose the keyboard and have to disconnect it, it may come back without Colemak, so be ready to run `arst`/`asdf` to put it back.
 
 # Bluetooth
 
@@ -34,9 +34,9 @@ $ bluetoothctl
 [bluetooth]# quit
 ```
 
-- If sound quality is ever bad and Audacious shows the headset as being stuck on a low-quality codec (like SBC instead of AAC), you may need to `systemctl restart bluetooth` and/or turn the headphones on and off.
-- If no sound at all is coming out of the headset despite everything else seeming to be correct, try switching codecs away from AAC and back.
-- For more Bluetooth troubleshooting hints, see [Arch Linux cheatsheet].
+-   If sound quality is ever bad and Audacious shows the headset as being stuck on a low-quality codec (like SBC instead of AAC), you may need to `systemctl restart bluetooth` and/or turn the headphones on and off.
+-   If no sound at all is coming out of the headset despite everything else seeming to be correct, try switching codecs away from AAC and back.
+-   For more Bluetooth troubleshooting hints, see [Arch Linux cheatsheet].
 
 # USB
 
@@ -46,42 +46,42 @@ If the keyboard spontaneously disconnects after telling OBS to use the webcam as
 
 ## Audio Mixer
 
-- Audacious
-  - Filters:
-    - Duckety "Ducking" McDuckface
-      - Ratio: 12.00:1
-      - Threshold: -35.00 dB (the correct value is very sensitive to the noise level in the environment: the louder I am, the closer I can get to zero; as I and the environment get quieter, I have to drop further into negative territory).
-      - Attack: 6 ms
-      - Release: 1000 ms
-      - Output Gain: 0.00 dB
-      - Sidechain/Ducking source: Mic/Aux
-- Mic/Aux
-  - Filters:
-    - Limiter
-      - Threshold: -9.00 dB
-      - Release: 60 ms
-- Advanced Audio Properties
-  - Audacious:
-    - Volume: -15.0 dB
-    - Audio Monitoring: Monitor and Output
-  - Mic/Aux:
-    - Volume: 0.0 dB
-    - Audio Monitoring: Monitor Off (I used to monitor this, but the lag messes with your brain)
+-   Audacious
+    -   Filters:
+        -   Duckety "Ducking" McDuckface
+            -   Ratio: 12.00:1
+            -   Threshold: -35.00 dB (the correct value is very sensitive to the noise level in the environment: the louder I am, the closer I can get to zero; as I and the environment get quieter, I have to drop further into negative territory).
+            -   Attack: 6 ms
+            -   Release: 1000 ms
+            -   Output Gain: 0.00 dB
+            -   Sidechain/Ducking source: Mic/Aux
+-   Mic/Aux
+    -   Filters:
+        -   Limiter
+            -   Threshold: -9.00 dB
+            -   Release: 60 ms
+-   Advanced Audio Properties
+    -   Audacious:
+        -   Volume: -15.0 dB
+        -   Audio Monitoring: Monitor and Output
+    -   Mic/Aux:
+        -   Volume: 0.0 dB
+        -   Audio Monitoring: Monitor Off (I used to monitor this, but the lag messes with your brain)
 
 ## Scenes
 
-- "Paused"
-  - Sources:
-    - Audacious
-    - Text
-    - Image
-- "Casting"
-  - Sources:
-    - Audacious
-    - Video Capture Device (V4L2)
-    - Screen Capture
-      - Screen DisplayPort-1 (3840x2160 @ 0,0)
-      - Capture Cursor
+-   "Paused"
+    -   Sources:
+        -   Audacious
+        -   Text
+        -   Image
+-   "Casting"
+    -   Sources:
+        -   Audacious
+        -   Video Capture Device (V4L2)
+        -   Screen Capture
+            -   Screen DisplayPort-1 (3840x2160 @ 0,0)
+            -   Capture Cursor
 
 Note: can use the same "Audacious" source in both scenes using "Copy" and "Paste (reference)"
 
@@ -89,70 +89,70 @@ Note: can use the same "Audacious" source in both scenes using "Copy" and "Paste
 
 ### General
 
-- Output:
-  - Automatically record when streaming.
-  - Keep recording when stream stops.
+-   Output:
+    -   Automatically record when streaming.
+    -   Keep recording when stream stops.
 
 ### Stream
 
-- Service: Twitch
-- Server: Auto (Recommended)
-- Stream Key: `$TEH_SECRET_KEY`
-- Maximum Video Bitrate: 6000 kbps
-- Maximum Audio Bitrate: 320 kbps
+-   Service: Twitch
+-   Server: Auto (Recommended)
+-   Stream Key: `$TEH_SECRET_KEY`
+-   Maximum Video Bitrate: 6000 kbps
+-   Maximum Audio Bitrate: 320 kbps
 
 ### Output
 
-- Output Mode: Simple
-  - Streaming
-    - Video Bitrate: 6000 Kbps
-    - Encoder: Software (x264)
-    - Audio Bitrate: 160
-  - Recording
-    - Recording Quality: Same as stream
-    - Recording Format: mkv
-- Output Mode: Advanced
-  - Streaming
-    - Rate Control: CBR
-    - Bitrate: 6000 Kbps
-    - CPU Usage Preset (higher = less CPU): medium
+-   Output Mode: Simple
+    -   Streaming
+        -   Video Bitrate: 6000 Kbps
+        -   Encoder: Software (x264)
+        -   Audio Bitrate: 160
+    -   Recording
+        -   Recording Quality: Same as stream
+        -   Recording Format: mkv
+-   Output Mode: Advanced
+    -   Streaming
+        -   Rate Control: CBR
+        -   Bitrate: 6000 Kbps
+        -   CPU Usage Preset (higher = less CPU): medium
 
 ### Audio
 
-- General
-  - Sample Rate: 48 kHz
-  - Channels: Stereo
-- Global Audio Devices
-  - Mic/Auxiliary Audio: Blue Microphones Analog Stereo
-- Advanced:
-  - Monitoring Device: Monitor of WH-1000XM4
+-   General
+    -   Sample Rate: 48 kHz
+    -   Channels: Stereo
+-   Global Audio Devices
+    -   Mic/Auxiliary Audio: Blue Microphones Analog Stereo
+-   Advanced:
+    -   Monitoring Device: Monitor of WH-1000XM4
 
 One thing to note: I was getting low latency monitoring with this set-up, but as soon as I recorded a test video, latency spiked and didn't go down again until I changed the monitoring device setting to something else and then back again.
 
 ### Video
 
-- Base (Canvas) Resolution: 3840x2160
-- Output (Scaled) Resolution: 1920x1080
-- Downscale Filter: Bilinear (Fastest, but blurry if scaling)
-- Common FPS Values: 30
+-   Base (Canvas) Resolution: 3840x2160
+-   Output (Scaled) Resolution: 1920x1080
+-   Downscale Filter: Bilinear (Fastest, but blurry if scaling)
+-   Common FPS Values: 30
 
 ### Hotkeys
 
-- Casting
-  - Switch to scene: Control + Print
-- Paused
-  - Switch to scene: Control + Pause
-- Mic/Aux
-  - Mute: Control + Pause
-  - Unmute: Control + Print
+-   Casting
+    -   Switch to scene: Control + Print
+-   Paused
+    -   Switch to scene: Control + Pause
+-   Mic/Aux
+    -   Mute: Control + Pause
+    -   Unmute: Control + Print
 
 # Audacious
 
-- Output
-  - Audio Settings...
-    - Audio
-      - Output Settings
-        - Output plugin: PulseAudio Output
+-   Output
+    -   Audio Settings...
+        -   Audio
+            -   Output Settings
+                -   Output plugin: PulseAudio Output
 
 # pavucontrol
 
@@ -168,24 +168,24 @@ If not, create it:
 pactl load-module module-null-sink sink_name=Music
 ```
 
-- Playback
-  - System sounds: 100%
-  - Audacious: 100% - Music Audio/Sink sink (ie. the virtual sink)
-  - ~~OBS-Monitor: Mic/Aux on, 100% - WH-1000XM4~~; actually, this should be _off_ otherwise the lag scrambles your brain.
-  - OBS-Monitor: Audacious on, 100% - WH-1000XM4; if everything is working, you will hear the ducking of the music when you talk, even though you don't hear your own voice.
-- Recording
-  - OBS: Mic/Aux 100% from: Blue Microphones Analog Stereo
-  - OBS: Audacious 100% from: Monitor of Music Audio/Sink sink
-- Output Devices
-  - Everything 100%
-- Input Devices
-  - Everything 100%
-- Configuration
-  - Everything default; eg.
-    - WH-1000XM4
-      - High Fidelity Playback (A2DP Sink, codec AAC)
-    - Blue Microphones
-      - Profile: Analog Stereo Duplex
+-   Playback
+    -   System sounds: 100%
+    -   Audacious: 100% - Music Audio/Sink sink (ie. the virtual sink)
+    -   ~~OBS-Monitor: Mic/Aux on, 100% - WH-1000XM4~~; actually, this should be _off_ otherwise the lag scrambles your brain.
+    -   OBS-Monitor: Audacious on, 100% - WH-1000XM4; if everything is working, you will hear the ducking of the music when you talk, even though you don't hear your own voice.
+-   Recording
+    -   OBS: Mic/Aux 100% from: Blue Microphones Analog Stereo
+    -   OBS: Audacious 100% from: Monitor of Music Audio/Sink sink
+-   Output Devices
+    -   Everything 100%
+-   Input Devices
+    -   Everything 100%
+-   Configuration
+    -   Everything default; eg.
+        -   WH-1000XM4
+            -   High Fidelity Playback (A2DP Sink, codec AAC)
+        -   Blue Microphones
+            -   Profile: Analog Stereo Duplex
 
 Note the extreme sketchiness of the "Unknown input" above, but it seems to be the only way to get all of this stuff plus the monitoring working acceptably. ("Acceptably" is a relative term; the longer my recordings go, the higher the latency of the monitoring seems to creep.)
 
@@ -248,8 +248,8 @@ pip install dbus-python
 After initial set-up (see notes in [Arch Linux cheatsheet]), basic usage:
 
 1. Run `irssi` in a tmux pane; this can be in the background if you want — new messages will cause tmux to show the pane as having received activity, and if they don't, you can try this[^beeps]:
-   - `/set beep_when_window_active ON`
-   - `/set beep_msg_level PUBLIC`
+    - `/set beep_when_window_active ON`
+    - `/set beep_msg_level PUBLIC`
 2. `/connect Twitch`.
 3. `/join #greghurrell`.
 4. When you're done, `/quit` or `/exit`.
@@ -260,4 +260,4 @@ After initial set-up (see notes in [Arch Linux cheatsheet]), basic usage:
 
 You can set VLC audio output to go straight to the headphones (in `pavucontrol`) so that you can review recordings with all of the above set-up still in place.
 
-[Arch Linux cheatsheet]: /wiki/Arch_Linux_cheatsheet
+[arch linux cheatsheet]: /wiki/Arch_Linux_cheatsheet

@@ -27,11 +27,11 @@ $ pngcrush -ow -brute file.png
 
 In an extremely scientific test that I did, I wound up with these sizes, which would tend to confirm the above recommendations (ie. `pngquant` + `optipng` when lossy compression is acceptable; otherwise `pngcrush`):
 
-| File                    | Size     |
-| ----------------------- | -------- |
-| Original                | 212,699  |
-| `pngcrush`              | 122,826  |
-| `pngquant`              | 65,264   |
-| `optipng`               | 130,783  |
-| `pngquant` + `optipng`  | 64,741   |
-| `pngquant` + `pngcrush` | 64,951   |
+| File                    | Size    |
+| ----------------------- | ------- |
+| Original                | 212,699 |
+| `pngcrush`              | 122,826 |
+| `pngquant`              | 65,264  |
+| `optipng`               | 130,783 |
+| `pngquant` + `optipng`  | 64,741  |
+| `pngquant` + `pngcrush` | 64,951  |

@@ -33,4 +33,4 @@ The date calculations above were done with [Ruby](/wiki/Ruby):
 $ ruby -r date -e 'puts (Date.new(2022, 10, 24) - Date.new(2021, 10, 25)).to_i'
 ```
 
-[macOS]: /wiki/macOS
+[macos]: /wiki/macOS

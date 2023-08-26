@@ -5,9 +5,9 @@ title: NodeJS profiling cheatsheet
 
 # Function prefixes
 
-- `^` baseline compiler
-- `*` optimized
-- `~` optimizable
+-   `^` baseline compiler
+-   `*` optimized
+-   `~` optimizable
 
 # `LazyCompile`
 
@@ -17,4 +17,4 @@ title: NodeJS profiling cheatsheet
 
 # Official docs
 
-- https://v8.dev/docs/profile
+-   https://v8.dev/docs/profile

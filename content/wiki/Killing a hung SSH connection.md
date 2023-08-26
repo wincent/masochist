@@ -7,6 +7,6 @@ As per [this StackExchange tip](https://apple.stackexchange.com/a/36691/158927),
 
 # See also
 
-- [SSH escape sequences]
+-   [SSH escape sequences]
 
-[SSH escape sequences]: /wiki/SSH_escape_sequences
+[ssh escape sequences]: /wiki/SSH_escape_sequences

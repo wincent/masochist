@@ -8,11 +8,11 @@ Not to be confused with [Git](/wiki/Git) (currently the most popular [distribute
 
 Alternatives to GitHub include (or included):
 
-- [BitBucket](https://bitbucket.org/).
-- [GitLab](https://gitlab.com/).
-- [Gitorious](/wiki/Gitorious) (now defunct).
-- Git itself, which includes tools for hosting your own repositories using your own infrastructure.
-- Many others...
+-   [BitBucket](https://bitbucket.org/).
+-   [GitLab](https://gitlab.com/).
+-   [Gitorious](/wiki/Gitorious) (now defunct).
+-   Git itself, which includes tools for hosting your own repositories using your own infrastructure.
+-   Many others...
 
 # Official site
 

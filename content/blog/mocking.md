@@ -10,15 +10,15 @@ This comes from something I wrote internally at FB some years ago, back when [Je
 
 A lot of the problems I have with auto-mocking are really just extensions of the problems I have with mocking. There are a couple of really obvious, compelling use cases for mocks:
 
-- Verification of interaction behavior of the system at a well-defined, stable service boundary.
-- Isolation from unwanted or extraneous side-effects (often because they are expensive and so make things slow, or because they are hard to rollback).
+-   Verification of interaction behavior of the system at a well-defined, stable service boundary.
+-   Isolation from unwanted or extraneous side-effects (often because they are expensive and so make things slow, or because they are hard to rollback).
 
 Note that the definition of "service boundary" here permits some flexibility. It could be a service on a network, but it could also be a central module in the system that serves some kind of coordinating role. The important part is actually the "stable" qualifier. If the interaction is well-defined and stable over time, then using a mock probably won't hurt you, even for a small module. In these cases you can build a robust, well-vetted fake, and sub it in for the real service. The fact that you do this for stable abstractions means that the "well-vetted" part won't stop being true.
 
 Once you stray from that well-trodden path, mocks can start to cost more than they're really worth. It's very easy to fall in one of two complementary pits of failure:
 
-- The mock itself is brittle and dependent on the (often irrelevant) implementation details of the system, requiring it to be constantly updated. It's basically like a duplicate implementation expressed in a less convenient form.
-- The mock isolates too well, allowing tests to continue passing when they should fail.
+-   The mock itself is brittle and dependent on the (often irrelevant) implementation details of the system, requiring it to be constantly updated. It's basically like a duplicate implementation expressed in a less convenient form.
+-   The mock isolates too well, allowing tests to continue passing when they should fail.
 
 Of course, by virtue of the fact that auto-mocking is, er, automatic, you end up having to deal with these deleterious effects all over the place. Or, you `dontMock` everywhere to get control back and apply mocking deliberately in specific cases. In the absence of deep white-listing, auto-mocking is a particularly heavy-handed hammer.
 

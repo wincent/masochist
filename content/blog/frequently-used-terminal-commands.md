@@ -213,8 +213,8 @@ I have been running with `NO_HIST_IGNORE_ALL_DUPS`, `NO_HIST_IGNORE_DUPS` and `H
 
 Observations:
 
-- Clearly doing more on work machine than personal machine.
-- I'm going to get rid of `NO_HIST_IGNORE_DUPS` because the consecutive duplicates are driving me up the wall when I hit "up" in the terminal (`HIST_FIND_NO_DUPS` stops you from seeing duplicates when you *search*, but just tapping "up" is not considered a search), so that will affect the numbers somewhat next time around.
+-   Clearly doing more on work machine than personal machine.
+-   I'm going to get rid of `NO_HIST_IGNORE_DUPS` because the consecutive duplicates are driving me up the wall when I hit "up" in the terminal (`HIST_FIND_NO_DUPS` stops you from seeing duplicates when you _search_, but just tapping "up" is not considered a search), so that will affect the numbers somewhat next time around.
 
 # Update: July 2021
 

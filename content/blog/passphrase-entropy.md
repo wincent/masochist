@@ -25,9 +25,9 @@ const colemak = `
   zxcvbkm,./
 `;
 
-const normalize = layout => layout.replace(/\s+/g, "").split("");
+const normalize = (layout) => layout.replace(/\s+/g, "").split("");
 const getCommon = (a, b) => a.filter((char, index) => char === b[index]);
-const escape = char => (char === "." ? "\\." : char);
+const escape = (char) => (char === "." ? "\\." : char);
 
 const chars = getCommon(normalize(qwerty), normalize(colemak));
 const regexp = new RegExp("^[" + chars.map(escape).join("") + "]+$");
@@ -35,9 +35,9 @@ const regexp = new RegExp("^[" + chars.map(escape).join("") + "]+$");
 const words = readFileSync("/usr/share/dict/words")
     .toString()
     .split(/\s+/)
-    .map(s => s.toLowerCase());
+    .map((s) => s.toLowerCase());
 
-const filtered = words.filter(word => word.match(regexp));
+const filtered = words.filter((word) => word.match(regexp));
 
 console.log(
     `Of ${words.length} words,\n` +
@@ -45,7 +45,7 @@ console.log(
         `(${chars.join(", ")}).\n`
 );
 
-filtered.forEach(word => {
+filtered.forEach((word) => {
     console.log(`  ${word}`);
 });
 

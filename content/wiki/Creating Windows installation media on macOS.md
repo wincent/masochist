@@ -24,5 +24,6 @@ wimlib-imagex split /Volumes/CCCOMA_X64FRE_EN-US_DV9/sources/install.wim /Volume
 ```
 
 # Sources
-- ["HOW TO CREATE A WINDOWS 11 BOOTABLE USB ON MAC OS MONTEREY"](https://frankdenneman.nl/2022/12/21/how-to-create-a-windows-11-bootable-usb-on-mac-os-monterey/)
-- ["3 Ways to Create a Bootable Windows 11 USB With a Mac"](https://www.makeuseof.com/how-to-make-a-bootable-windows-11-usb-on-mac/)
+
+-   ["HOW TO CREATE A WINDOWS 11 BOOTABLE USB ON MAC OS MONTEREY"](https://frankdenneman.nl/2022/12/21/how-to-create-a-windows-11-bootable-usb-on-mac-os-monterey/)
+-   ["3 Ways to Create a Bootable Windows 11 USB With a Mac"](https://www.makeuseof.com/how-to-make-a-bootable-windows-11-usb-on-mac/)

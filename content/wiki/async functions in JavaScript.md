@@ -18,7 +18,7 @@ async function other() {
     });
 }
 
-(async function() {
+(async function () {
     console.log("Hello, world!");
     console.log(await other());
     console.log("Hello, world!");
@@ -53,7 +53,7 @@ Beware of using (the non-standard) `done()` on the promise; this will cause the 
 ```javascript
 new Promise((resolve, reject) => {
     setTimeout(() => reject("value"), 1000);
-}).catch(error => {
+}).catch((error) => {
     throw "Error: " + error;
 });
 ```

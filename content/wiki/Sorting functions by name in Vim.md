@@ -27,7 +27,7 @@ const methods = {
 
     baz() {
         // contents
-    }
+    },
 };
 ```
 

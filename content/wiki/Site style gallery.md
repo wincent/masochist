@@ -31,9 +31,9 @@ This is a sample article show-casing how different kinds of Markdown syntax get 
 
 # Inline styles
 
-- *Italics*
-- **Bold**
-- ~~Strikethrough~~
+-   _Italics_
+-   **Bold**
+-   ~~Strikethrough~~
 
 # Blocks
 
@@ -58,7 +58,7 @@ This is a sample article show-casing how different kinds of Markdown syntax get 
 This sentence contains an `inline code` snippet.
 
 ```javascript
-console.log('This is a fenced code block');
+console.log("This is a fenced code block");
 ```
 
 # Links
@@ -71,10 +71,10 @@ This is an email address that is not marked up as a `mailto` link: greg@hurrell.
 
 # Tables
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+| First Header | Second Header |
+| ------------ | ------------- |
+| Content Cell | Content Cell  |
+| Content Cell | Content Cell  |
 
 # Other
 

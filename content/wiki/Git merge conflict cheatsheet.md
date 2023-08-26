@@ -52,8 +52,8 @@ sh format-source.sh
 
 Again, note that during rebasing the "ours"/"theirs" distinction is reversed:
 
-- During rebase: "ours" is the upstream branch, "theirs" is the topic branch.
-- During a normal merge: "ours" is the current branch, "theirs" is the other branch being merged in.
+-   During rebase: "ours" is the upstream branch, "theirs" is the topic branch.
+-   During a normal merge: "ours" is the current branch, "theirs" is the other branch being merged in.
 
 # Scenario: `git stash pop`
 

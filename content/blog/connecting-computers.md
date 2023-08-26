@@ -1,5 +1,5 @@
 ---
-description: 
+description:
 tags: blog
 title: Connecting computers in 2021
 ---

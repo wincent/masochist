@@ -29,4 +29,4 @@ Assuming that's saved into a file called `a.c`, compile and run (on [macOS]) wit
 clang a.c && ./a.out
 ```
 
-[macOS]: /wiki/macOS
+[macos]: /wiki/macOS

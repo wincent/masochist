@@ -15,17 +15,17 @@ In the end, I never did actually get to the bottom or the mystery (🤦) but I d
 
 Things I know:
 
-- Problem doesn't just affect codespaces, nor just corporate-managed remote hosts, but any SSH host, including personal EC2 boxes that I have access to.
-- Problem doesn't affect my personal laptop, only my work laptop (as such, I can't rule out corporate fleet management and security software as the real cause here); both of these machines are running the latest version of macOS at the time of writing (12.4 AKA Monterey).
-- Problem manifests both when the connection is idle and when it is being actively used.
-- Problem manifests both on and off the corporate VPN.
-- Problem manifests on multiple network SSIDs (verified on both 2.4 GHz and 5 GHz networks).
-- Problem manifests even entirely _within_ home network (ie. SSH-ing into another host on my local network).
-- Problem isn't about power (ie. plugging into a power adapter does _not_ make the problem go away; only the mystical properties of the dock stave off the problem).
-- SSH setting `ControlMaster auto` vs `ControlMaster no` makes no difference.
-- SSH setting `TCPKeepAlive no` vs `TCPKeepAlive yes` (default) makes no difference.
-- When multiple connections are open (eg. 2 to a codespace, 1 to another corporate remote host, 1 to an EC2 host), all go down at the same time.
-- Remote hosts all have default settings (so `TCPKeepAlive yes` potentially _is_ an issue there).
+-   Problem doesn't just affect codespaces, nor just corporate-managed remote hosts, but any SSH host, including personal EC2 boxes that I have access to.
+-   Problem doesn't affect my personal laptop, only my work laptop (as such, I can't rule out corporate fleet management and security software as the real cause here); both of these machines are running the latest version of macOS at the time of writing (12.4 AKA Monterey).
+-   Problem manifests both when the connection is idle and when it is being actively used.
+-   Problem manifests both on and off the corporate VPN.
+-   Problem manifests on multiple network SSIDs (verified on both 2.4 GHz and 5 GHz networks).
+-   Problem manifests even entirely _within_ home network (ie. SSH-ing into another host on my local network).
+-   Problem isn't about power (ie. plugging into a power adapter does _not_ make the problem go away; only the mystical properties of the dock stave off the problem).
+-   SSH setting `ControlMaster auto` vs `ControlMaster no` makes no difference.
+-   SSH setting `TCPKeepAlive no` vs `TCPKeepAlive yes` (default) makes no difference.
+-   When multiple connections are open (eg. 2 to a codespace, 1 to another corporate remote host, 1 to an EC2 host), all go down at the same time.
+-   Remote hosts all have default settings (so `TCPKeepAlive yes` potentially _is_ an issue there).
 
 ## The investigation
 
@@ -129,9 +129,9 @@ Looking into ARP (Address Resolution Protocol), the cached mapping between IP ad
 ? (224.0.0.251) at 1:0:5e:0:0:fb on en0 ifscope permanent [ethernet]
 ```
 
-- 192.168.1.1 is the router.
-- 192.168.1.129 is the problem laptop.
-- [The 224.0.0.251 address](https://networkengineering.stackexchange.com/a/51958) is [for multicast on the local network](https://en.wikipedia.org/wiki/Multicast_address).
+-   192.168.1.1 is the router.
+-   192.168.1.129 is the problem laptop.
+-   [The 224.0.0.251 address](https://networkengineering.stackexchange.com/a/51958) is [for multicast on the local network](https://en.wikipedia.org/wiki/Multicast_address).
 
 `arp -a` on 5 GHz WiFi:
 
@@ -143,10 +143,10 @@ Looking into ARP (Address Resolution Protocol), the cached mapping between IP ad
 ? (239.255.255.250) at 1:0:5e:7f:ff:fa on en0 ifscope permanent [ethernet]
 ```
 
-- 192.168.1.131 is the local network test host that I've been `ping`-ing.
-- 192.168.1.255 is a broadcast address; not sure why the other network didn't have that.
-- 239.255.255.250 is also a ["Organization-Local Scope" multicast address](https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xhtml); at first I thought that was because I'm on a VPN on this network, but it turns out that the VPN dropped anyway (although it's possible that it's cached); in any case, if I `ping -c 239.255.255.250` I get a reply back from my laptop.
-- Note the laptop is gone. It appears if I re-run `arp -a` after a `ping 192.168.1.129`:
+-   192.168.1.131 is the local network test host that I've been `ping`-ing.
+-   192.168.1.255 is a broadcast address; not sure why the other network didn't have that.
+-   239.255.255.250 is also a ["Organization-Local Scope" multicast address](https://www.iana.org/assignments/multicast-addresses/multicast-addresses.xhtml); at first I thought that was because I'm on a VPN on this network, but it turns out that the VPN dropped anyway (although it's possible that it's cached); in any case, if I `ping -c 239.255.255.250` I get a reply back from my laptop.
+-   Note the laptop is gone. It appears if I re-run `arp -a` after a `ping 192.168.1.129`:
 
 From [RFC 2365](https://www.rfc-editor.org/rfc/rfc2365.html), here's a definition of what the "administratively scoped multicast address" (ie. the "organization-local scope") means:
 
@@ -277,9 +277,9 @@ As another test, I am running a ping from the Linux box to the router to see if 
 
 Other things I notice:
 
-- Ping times to router are fast (1 to 4 ms).
-- Ping times to M1 laptop are slower, but also highly variable (7 to 8 ms as median, but regularly spiking as high as 200ms).
-- Ping times to Google (IPv6) are a steady 7 to 8 ms (due to their [extensive use](https://serverfault.com/questions/423668/why-is-ping-to-google-servers-and-google-dns-so-low) of local ["Anycast" addresses](https://en.wikipedia.org/wiki/Anycast)).
+-   Ping times to router are fast (1 to 4 ms).
+-   Ping times to M1 laptop are slower, but also highly variable (7 to 8 ms as median, but regularly spiking as high as 200ms).
+-   Ping times to Google (IPv6) are a steady 7 to 8 ms (due to their [extensive use](https://serverfault.com/questions/423668/why-is-ping-to-google-servers-and-google-dns-so-low) of local ["Anycast" addresses](https://en.wikipedia.org/wiki/Anycast)).
 
 I compared ping times to my other Mac laptop to see if they were as variable, and it looks like they are just as variable, and additionally they're also slower, although there don't seem to be as many lost packets... Snippets from `mtr`:
 
@@ -310,7 +310,7 @@ Loss%   Snt   Last   Avg  Best  Wrst StDev
   Packets               Pings
 Loss%   Snt   Last   Avg  Best  Wrst StDev
  0.0%   166    3.9  21.7   3.2 151.6  33.2
- ```
+```
 
 They're definitely bursts, as can be seen in this output, where we see a run of low times (5 to 6 ms) followed by turbulence (up to about 55ms) and then back to the low times again:
 
@@ -395,8 +395,8 @@ Others like [this one](https://developer.apple.com/forums/thread/97805) unhelpfu
 
 Anyway, some example gems include:
 
-- https://apple.stackexchange.com/questions/263638/macbook-pro-experiencing-ping-spikes-to-local-router
-- https://stackoverflow.com/questions/19587701/what-is-awdl-apple-wireless-direct-link-and-how-does-it-work
+-   https://apple.stackexchange.com/questions/263638/macbook-pro-experiencing-ping-spikes-to-local-router
+-   https://stackoverflow.com/questions/19587701/what-is-awdl-apple-wireless-direct-link-and-how-does-it-work
 
 Which together provide some handy tips:
 
@@ -766,9 +766,9 @@ It wasn't Carbon Black, so no smoking gun. (At least, it wasn't the sensor proce
 
 Remaining things to try:
 
-- Turn off Location Services (wholesale); this can't remain like that due to corporate policy, but I can do a test at least.
-- Turn off auto-joining (require admin to make changes too).
-- Do WiFi log analysis on personal laptop, for comparison.
+-   Turn off Location Services (wholesale); this can't remain like that due to corporate policy, but I can do a test at least.
+-   Turn off auto-joining (require admin to make changes too).
+-   Do WiFi log analysis on personal laptop, for comparison.
 
 ## Final "resolution"
 
@@ -776,10 +776,10 @@ This is immensely unsatisfying, but I did "resolve" the issue in the end without
 
 These are the files I got rid of:
 
-- `/Library/Preferences/SystemConfiguration/NetworkInterfaces.plist`
-- `/Library/Preferences/SystemConfiguration/com.apple.airport.preferences.plist`
-- `/Library/Preferences/SystemConfiguration/com.apple.wifi.message-tracer.plist`
-- `/Library/Preferences/SystemConfiguration/preferences.plist`
+-   `/Library/Preferences/SystemConfiguration/NetworkInterfaces.plist`
+-   `/Library/Preferences/SystemConfiguration/com.apple.airport.preferences.plist`
+-   `/Library/Preferences/SystemConfiguration/com.apple.wifi.message-tracer.plist`
+-   `/Library/Preferences/SystemConfiguration/preferences.plist`
 
 I even did a textual diff to see what changed between those files and the new files created by the operating system; while there was some churn, nothing in there looked overtly suspicious (and it's a corporate machine so I don't want to post the actual diffs here in case I inadvertently disclose something sensitive), so I might never know what the root cause really was.
 
@@ -787,4 +787,4 @@ I even did a textual diff to see what changed between those files and the new fi
 
 Other tools:
 
-- `networkQuality -s`
+-   `networkQuality -s`

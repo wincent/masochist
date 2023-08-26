@@ -35,10 +35,10 @@ Now, Git's data structures are optimized for certain operations (eg. returning t
 
 Let's assume that you can tag files with arbitrary tags. The key operations that follow are:
 
-- Finding items with a specific tag.
-- Finding items with a specific combination of tags; which we can break down further into two subcategories that correspond to different meanings of "combination":
-  - Logical "AND" (in set theory terms, intersection).
-  - Logical "OR" (in set theory terms, union).
+-   Finding items with a specific tag.
+-   Finding items with a specific combination of tags; which we can break down further into two subcategories that correspond to different meanings of "combination":
+    -   Logical "AND" (in set theory terms, intersection).
+    -   Logical "OR" (in set theory terms, union).
 
 In practical terms, the "AND" form is more powerful because it allows one to prune the search space in ways that make locating items even within an immense initial set easy to do. The "OR" form may prove useful on occasion too, particularly when you aren't exactly sure of the attributes that might be attached to the thing or things that you're looking for. But by default, the "AND" form is so useful that it suggests a UI paradigm in which one finds things by "drilling down" through the tag space, narrowing the result set by applying increasingly selective combinations of tags, until the desired item is found. The UI can guide the user in their search by not only providing a means of specifying additional tags, but also showing a UI that shows candidate tags at each level that can be used to narrow the search further.
 
@@ -100,23 +100,23 @@ So, at this point, we have a notion for how we might add objects to a store, how
 
 Let's go into a little bit more detail about the exact semantics of what it means to organize information in this way. Based on what we've talked about so far, we can make the following statements:
 
-- Files are addressed by their content and not by their names.
-- We locate files of interest by using tags attached to those files.
-- A file may have any number of tags.
-- Tags may be applied to any number of files.
-- We can search for files using an "AND" relationship (ie. "drilling down" rightwards through the column browser).
-- We can search for files using an "OR" relationship (ie. by using multiple selection in the columns browser).
-- Our text-based search could assume "AND" semantics initially, but easily be extended to support explicit syntax for making combinations of "AND" and "OR", additionally using parentheses to establish precedence.
-- Although files are addressed by content, there is nothing stopping us from recording additional metadata about them, including their original name, file extension, embedded metadata, or a user-provided description, to assist in locating them.
-- File names, if recorded as metadata, need not be unique, because they are never used to address (identify) specific files.
+-   Files are addressed by their content and not by their names.
+-   We locate files of interest by using tags attached to those files.
+-   A file may have any number of tags.
+-   Tags may be applied to any number of files.
+-   We can search for files using an "AND" relationship (ie. "drilling down" rightwards through the column browser).
+-   We can search for files using an "OR" relationship (ie. by using multiple selection in the columns browser).
+-   Our text-based search could assume "AND" semantics initially, but easily be extended to support explicit syntax for making combinations of "AND" and "OR", additionally using parentheses to establish precedence.
+-   Although files are addressed by content, there is nothing stopping us from recording additional metadata about them, including their original name, file extension, embedded metadata, or a user-provided description, to assist in locating them.
+-   File names, if recorded as metadata, need not be unique, because they are never used to address (identify) specific files.
 
 ## Where do we store file metadata?
 
 As mentioned previously, we can store tag information in a SQLite database or a bespoke data structure, but this is only one specific instance of metadata that we might wish to associate with a given file. Here again, we can leverage a generic database or a custom data structure of our own design, but in the abstract, we can think of it as a key-value store[^kv]. Some examples of things we might want to record include:
 
-- Original filename of the item when added.
-- File type information, as encoded by the file extension or otherwise discernible from the file contents.
-- Timestamp information about when the item was added.
+-   Original filename of the item when added.
+-   File type information, as encoded by the file extension or otherwise discernible from the file contents.
+-   Timestamp information about when the item was added.
 
 ## What happens when you add the same file twice?
 
@@ -198,12 +198,12 @@ If we step outside of the relational model, instead of having `objects`, `tags`,
 
 Operations we need to support:
 
-- List all items in name order.
-  - Sort all items arbitrarily by any other metadata property.
-- Given a tag, list items with that tag.
-- Given multiple tags, list items with all of those tags.
-  - Sort these items arbitrarily by any other metadata property.
-- Given an item, report which tags apply to it.
+-   List all items in name order.
+    -   Sort all items arbitrarily by any other metadata property.
+-   Given a tag, list items with that tag.
+-   Given multiple tags, list items with all of those tags.
+    -   Sort these items arbitrarily by any other metadata property.
+-   Given an item, report which tags apply to it.
 
 We could have a tag index for looking up by tag:
 

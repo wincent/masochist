@@ -12,18 +12,18 @@ For a while now I've wanted to do [a ground-up rewrite of Command-T in Lua](http
 
 This isn't the first time I've written about [Command-T](https://github.com/wincent/command-t) on this blog. Back in 2016 I wrote about [how I'd been optimizing the project](https://wincent.com/blog/optimization) over many years. As that post tells, ever since I created Command-T in 2010, its primary goal has been to be the fastest fuzzy finder out there. Over the years, I've found many wins both small and large which have had a compounding effect. If you make something 10% faster, then 10% more, then you find a way to make it 2x faster than that, and then you find a way to make it 10x faster than _that_, the end result winds up being "ludicrously" fast. At the time I wrote the optimization post, some of the major wins included:
 
-- Writing the performance-critical sections (the matching and scoring code) in C.
-- Improving perceived performance, somewhat counterintuitively, by spending _extra_ cycles exhaustively computing possible match scores, so that the results the user is searching for are more likely to appear at the top.
-- Memoizing intermediate results, to make the aforementioned "exhaustive computation" actually feasible.
-- Parallelizing the search across multiple threads.
-- Debouncing user input to improve UI responsiveness by avoiding wasteful computation.
-- Improving scanning speed (ie. finding candidate items to be searched) by delegating it to fast native executables (like `find` or `git`).
-- Avoiding scanning costs by querying an always up-to-date index provided by [Watchman](https://facebook.github.io/watchman/).
-- Reducing cost of talking to Watchman by implementing support for its BSER (Binary Serialization Protocol) in C, rather than dealing with JSON.
-- Prescanning candidates to quickly eliminate non-matches; during this pre-scan, record the rightmost possible location for each character in the search term, which allows us to bail out early during the real matching process when a candidate can't possibly match.
-- Recording bitmasks for both candidates and search terms so that we can quickly discard non-matches as users extend their search terms.
-- Using smaller/faster data types (eg. `float` instead of `double`) where the additional precision isn't beneficial.
-- Using small, size-limited heap data structures for each thread, keeping small partial result sets ordered as we go rather than needing a big and expensive sort over the entire result set at the end.
+-   Writing the performance-critical sections (the matching and scoring code) in C.
+-   Improving perceived performance, somewhat counterintuitively, by spending _extra_ cycles exhaustively computing possible match scores, so that the results the user is searching for are more likely to appear at the top.
+-   Memoizing intermediate results, to make the aforementioned "exhaustive computation" actually feasible.
+-   Parallelizing the search across multiple threads.
+-   Debouncing user input to improve UI responsiveness by avoiding wasteful computation.
+-   Improving scanning speed (ie. finding candidate items to be searched) by delegating it to fast native executables (like `find` or `git`).
+-   Avoiding scanning costs by querying an always up-to-date index provided by [Watchman](https://facebook.github.io/watchman/).
+-   Reducing cost of talking to Watchman by implementing support for its BSER (Binary Serialization Protocol) in C, rather than dealing with JSON.
+-   Prescanning candidates to quickly eliminate non-matches; during this pre-scan, record the rightmost possible location for each character in the search term, which allows us to bail out early during the real matching process when a candidate can't possibly match.
+-   Recording bitmasks for both candidates and search terms so that we can quickly discard non-matches as users extend their search terms.
+-   Using smaller/faster data types (eg. `float` instead of `double`) where the additional precision isn't beneficial.
+-   Using small, size-limited heap data structures for each thread, keeping small partial result sets ordered as we go rather than needing a big and expensive sort over the entire result set at the end.
 
 After all that, I was running out of ideas, short of porting bits of the C code selectively into assembly (and even then, I was doubtful I could hand-craft assembly that would be better than what the compiler would produce). There was one [PR proposing switching to a trie data structure](https://github.com/wincent/command-t/pull/293), which would allow the search space to be pruned much more aggressively, but at the cost of having to set up the structure in the first place; in the end that one remained forever in limbo because it wasn't clear whether it actually would be a win across the board.
 
@@ -55,12 +55,12 @@ So, I thought, let's make a clean break. I'll drop the Ruby requirement, and mov
 
 A huge amount of the Ruby code in Command-T is about managing windows, splits, buffers, and settings. Back in 2010 nobody had dreamed of putting floating windows inside Vim, so if you wanted to present a "UI" to the user you had to fake it. Command-T did this, basically, by:
 
-- Recording the position of all windows and splits.
-- Remembering the values of global settings that need to be manipulated in order to get the "UI" to behave as desired.
-- Creating a new buffer and window for showing the match listing.
-- Setting up global overrides as needed, along with other local settings.
-- Setting up mappings to intercept key presses; the "prompt" was actually just text rendered in Vim's command line.
-- After a file is selected, clean up the prompt area, remove the match listing, restore the global settings, and reestablish the former geometry of windows and splits.
+-   Recording the position of all windows and splits.
+-   Remembering the values of global settings that need to be manipulated in order to get the "UI" to behave as desired.
+-   Creating a new buffer and window for showing the match listing.
+-   Setting up global overrides as needed, along with other local settings.
+-   Setting up mappings to intercept key presses; the "prompt" was actually just text rendered in Vim's command line.
+-   After a file is selected, clean up the prompt area, remove the match listing, restore the global settings, and reestablish the former geometry of windows and splits.
 
 The code worked remarkably well because it was the product of extreme attention to detail and relentless refinement over the years. But it was an enormous hack, and it was incredibly ugly and annoying to maintain. In comparison, throwing up a floating window with the new APIs is an absolute breeze. No need to think about window geometry, no need to set up mappings, no need to construct an elaborate fake prompt. The importance of having a real prompt is not to be understated: with the old approach, Command-T couldn't even support extremely natural things like [the ability to paste a search query](https://github.com/wincent/command-t/issues/217) in a uniform and reliable way; with a real prompt, we get that "for free", along with the all of the standard Vim motions and editing bindings.
 
@@ -82,11 +82,11 @@ This is where things get tricky. The Vim ecosystem encourages people to install 
 
 [My current plans](https://github.com/wincent/command-t/issues/391) for how to do this release with a minimum of pain are as follows:
 
-- The new version, version 6.0, will effectively include _both_ the old Ruby and the new Lua implementations.
-- If the user opts-in to continuing with the Ruby version, everything continues as before. It may be that I _never_ remove the Ruby implementation from the source tree, as the cost of keeping it there isn't really significant in any way.
-- If the user opts-in to using the Lua version, they get that instead. For example, a command like `:CommandT` will map to the Lua implementation. A command that is not yet implemented in the Lua version, like `:CommandTMRU`, continues to map onto the Ruby implementation, for now. If you ever need to fallback and use the Ruby implementation, you can do that by spelling the command with a `K` instead of a `C`; that is, `:CommandTBuffer` will open the Lua-powered buffer finder, but `:KommandTBuffer` can be used to open the Ruby one.
-- It the user doesn't explicitly opt-in one way or another, the system will use the Ruby implementation. We show a message prompting the user to make a decision; technically _this_ is the breaking change (a new message that will bother the user at startup until they take the step of configuring a preference) that requires the bump in version number to v6. As far as breaking changes go, this is about as innocuous as they come, but it is still one that I make reluctantly.
-- In version 7.0, this default will flip over in the opposite direction: if you haven't specified an explicit preference, you'll get the Lua version. By this time, however, I expect pretty much everybody actively using Command-T will already have set their preference. In 7.0 the aliased version of the commands (eg. `:KommandT`) will go away.
+-   The new version, version 6.0, will effectively include _both_ the old Ruby and the new Lua implementations.
+-   If the user opts-in to continuing with the Ruby version, everything continues as before. It may be that I _never_ remove the Ruby implementation from the source tree, as the cost of keeping it there isn't really significant in any way.
+-   If the user opts-in to using the Lua version, they get that instead. For example, a command like `:CommandT` will map to the Lua implementation. A command that is not yet implemented in the Lua version, like `:CommandTMRU`, continues to map onto the Ruby implementation, for now. If you ever need to fallback and use the Ruby implementation, you can do that by spelling the command with a `K` instead of a `C`; that is, `:CommandTBuffer` will open the Lua-powered buffer finder, but `:KommandTBuffer` can be used to open the Ruby one.
+-   It the user doesn't explicitly opt-in one way or another, the system will use the Ruby implementation. We show a message prompting the user to make a decision; technically _this_ is the breaking change (a new message that will bother the user at startup until they take the step of configuring a preference) that requires the bump in version number to v6. As far as breaking changes go, this is about as innocuous as they come, but it is still one that I make reluctantly.
+-   In version 7.0, this default will flip over in the opposite direction: if you haven't specified an explicit preference, you'll get the Lua version. By this time, however, I expect pretty much everybody actively using Command-T will already have set their preference. In 7.0 the aliased version of the commands (eg. `:KommandT`) will go away.
 
 A couple of things to note about this plan:
 

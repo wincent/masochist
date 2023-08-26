@@ -104,7 +104,7 @@ As noted above, Masochist is still a work in progress, but I've gone into it wit
 [textile]: https://en.wikipedia.org/wiki/Textile_(markup_language)
 [twitter]: https://twitter.com/
 [ubb.threads]: https://en.wikipedia.org/wiki/UBB.threads
-[Neovim]: https://github.com/neovim/neovim
+[neovim]: https://github.com/neovim/neovim
 [wordpress]: https://wordpress.org/
 [mailman]: http://www.gnu.org/software/mailman/
 [memcached]: http://memcached.org/

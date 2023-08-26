@@ -13,7 +13,7 @@ function() { /* ... */ }();
 By preceding your anonymous function with a bang, you turn it into a function expression with valid syntax:
 
 ```javascript
-!(function() {
+!(function () {
     var foo, bar, baz;
     // etc...
 })();
@@ -22,10 +22,10 @@ By preceding your anonymous function with a bang, you turn it into a function ex
 This is a byte shorter than the alternatives with valid syntax:
 
 ```javascript
-(function() {
+(function () {
     /* ... */
 })();
-(function() {
+(function () {
     /* ... */
 })();
 ```

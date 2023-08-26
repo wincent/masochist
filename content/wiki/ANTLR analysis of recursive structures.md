@@ -84,6 +84,6 @@ Notice that:
 -   If we were to see some other input like **L L Z** then neither alternative would be predicted
 -   Although the number of possible paths grows exponentially, the prediction [DFA] ends up being very simple
 
-[DFA]: /wiki/DFA
-[ANTLR book]: /wiki/ANTLR_book
-[ANTLR]: /wiki/ANTLR
+[dfa]: /wiki/DFA
+[antlr book]: /wiki/ANTLR_book
+[antlr]: /wiki/ANTLR

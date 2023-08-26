@@ -5,14 +5,14 @@ title: Markdown
 
 # References
 
-- Original definition: http://daringfireball.net/projects/markdown/
-- Wikipedia: https://en.wikipedia.org/wiki/Markdown
-- Standardization: https://spec.commonmark.org/
+-   Original definition: http://daringfireball.net/projects/markdown/
+-   Wikipedia: https://en.wikipedia.org/wiki/Markdown
+-   Standardization: https://spec.commonmark.org/
 
 # Examples
 
-- Bulleted.
-- Lists.
+-   Bulleted.
+-   Lists.
 
 1. Numbered.
 2. Lists.

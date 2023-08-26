@@ -13,4 +13,5 @@ As noted in that post:
 > It seems there’s a hardcoded minimum it won’t go below, so it’s not as ‘tight’ as Chrome, but it’s much better. Enjoy.
 
 # See also
-- [Forcing new Firefox tabs to open to the right of the current tab](/wiki/Forcing_new_Firefox_tabs_to_open_to_the_right_of_the_current_tab)
+
+-   [Forcing new Firefox tabs to open to the right of the current tab](/wiki/Forcing_new_Firefox_tabs_to_open_to_the_right_of_the_current_tab)

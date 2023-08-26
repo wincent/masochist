@@ -13,7 +13,7 @@ Software in this list is either [open source](/wiki/open_source), or otherwise f
 
 ## Blurred
 
-- https://github.com/dwarvesf/Blurred
+-   https://github.com/dwarvesf/Blurred
 
 Supersedes [Isolator](/wiki/Isolator).
 
@@ -110,12 +110,11 @@ See what's going in and out of your tubes. I still use this for its Dock icon, e
 
 Whole-disk backup software that has saved my butt on multiple occasions.
 
-
 ## Things
 
 Prettiest to-do lists this side of Cupertino. Very simple, and not cross-platform, but the features that it does have work extremely well.
 
-- [Things](https://culturedcode.com/things/)
+-   [Things](https://culturedcode.com/things/)
 
 ## [xScope](/wiki/xScope)
 

@@ -64,7 +64,7 @@ Now, the left has a long uphill battle to fight if they're going to win against 
 
 I hope this was helpful, and if you want to talk about any of this, come find [me on Twitter](https://twitter.com/wincent); it seems like a lovely place to have a chat.
 
-[Ciudadanos]: https://es.wikipedia.org/wiki/Ciudadanos_(Espa%C3%B1a)
-[Douglas Murray]: https://en.wikipedia.org/wiki/Douglas_Murray_(author)
-[Partido Popular]: https://en.wikipedia.org/wiki/People%27s_Party_(Spain)
-[Vox]: https://es.wikipedia.org/wiki/Vox_(partido_pol%C3%ADtico)
+[ciudadanos]: https://es.wikipedia.org/wiki/Ciudadanos_(Espa%C3%B1a)
+[douglas murray]: https://en.wikipedia.org/wiki/Douglas_Murray_(author)
+[partido popular]: https://en.wikipedia.org/wiki/People%27s_Party_(Spain)
+[vox]: https://es.wikipedia.org/wiki/Vox_(partido_pol%C3%ADtico)

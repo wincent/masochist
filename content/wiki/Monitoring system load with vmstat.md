@@ -11,10 +11,10 @@ $ vmstat -n -S M -t 1
 
 Options:
 
-- `-n`: display header line once at start rather than periodically.
-- `-S M`: use megabyte (1,048,576) units.
-- `-t`: append timestamp on each line.
-- `1`: delay 1 second between updates.
+-   `-n`: display header line once at start rather than periodically.
+-   `-S M`: use megabyte (1,048,576) units.
+-   `-t`: append timestamp on each line.
+-   `1`: delay 1 second between updates.
 
 Sample output from a mostly idle machine:
 

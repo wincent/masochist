@@ -26,5 +26,5 @@ Fortunately, solution is found [here](https://support.google.com/drive/thread/79
 
 Fun facts:
 
-- `restricted` is not mentioned in `man chflags`.
-- `xattr` isn't in the path when booting in recovery mode, and if you access it directly (eg. `/Volumes/Macintosh HD/usr/bin/xattr`) it will blow up because it can't load the Python interpreter.
+-   `restricted` is not mentioned in `man chflags`.
+-   `xattr` isn't in the path when booting in recovery mode, and if you access it directly (eg. `/Volumes/Macintosh HD/usr/bin/xattr`) it will blow up because it can't load the Python interpreter.

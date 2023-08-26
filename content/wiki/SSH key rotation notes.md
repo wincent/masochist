@@ -7,14 +7,14 @@ I store a detailed copy of these notes (with concrete paths and hostnames etc) o
 
 # Policy
 
-- Use [ED25519](https://en.wikipedia.org/wiki/EdDSA) keys (smaller than, faster than, and at least as secure as, RSA keys).
-- Create one key per machine so that they can be independently revoked if compromised (or, for example, if I switch jobs and have to decommission a work machine).
-- Use the same key for everything (ie. one key that can push to both GitHub and GitLab etc, rather than different keys for different target hosts).
-- Rotate keys once per year, in January, not for security, but for practice (the rotation procedure is complicated enough that I want to prove that I can do it).
-- Use filenames of the form `id_ed25519_$DATE{,.pub}` (eg. `id_ed25519_20230128.pub` etc).
-- Make symlinks at `~/.ssh/id_ed25519` pointing to the real keys so that `ssh` can find/try it by default without needing to explicitly set up `IdentityFile` in the config.
-- Store backups in 1Password.
-- Keep the private keys encrypted (duh).
+-   Use [ED25519](https://en.wikipedia.org/wiki/EdDSA) keys (smaller than, faster than, and at least as secure as, RSA keys).
+-   Create one key per machine so that they can be independently revoked if compromised (or, for example, if I switch jobs and have to decommission a work machine).
+-   Use the same key for everything (ie. one key that can push to both GitHub and GitLab etc, rather than different keys for different target hosts).
+-   Rotate keys once per year, in January, not for security, but for practice (the rotation procedure is complicated enough that I want to prove that I can do it).
+-   Use filenames of the form `id_ed25519_$DATE{,.pub}` (eg. `id_ed25519_20230128.pub` etc).
+-   Make symlinks at `~/.ssh/id_ed25519` pointing to the real keys so that `ssh` can find/try it by default without needing to explicitly set up `IdentityFile` in the config.
+-   Store backups in 1Password.
+-   Keep the private keys encrypted (duh).
 
 # Procedure
 
@@ -63,11 +63,11 @@ I store a detailed copy of these notes (with concrete paths and hostnames etc) o
             ./run install --tags=authorized_keys
             ```
         3.  Manually remove old keys from hosts (Ansible only adds keys, it doesn't remove the old ones).
-    5.  Import new personal laptop key into AWS console.
+    6.  Import new personal laptop key into AWS console.
         1. Go to AWS console → EC2 → Key pairs → Actions → Import key pair
         2. Note the key ID
         3. Paste the key ID into my `create-instance` script in my Ansible configs.
-    6.  Rotate my Git backups key.
+    7.  Rotate my Git backups key.
 3.  Add new public keys to, and remove old keys from:
     1.  GitHub (https://github.com/settings/keys) — all "Authentication", not "Signing" keys.
     2.  GitLab (https://gitlab.com/-/profile/keys): same keys as GitHub, again just for "Authentication", no expiry dates.

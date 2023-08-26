@@ -72,4 +72,4 @@ sudo -u git git for-each-ref --count=10 --sort=-committerdate --sort=-HEAD --for
 
 but I have no idea whether it is the kind of behavior change that they'll accept. We'll see.
 
-[GitHub]: /wiki/GitHub
+[github]: /wiki/GitHub
