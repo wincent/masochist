@@ -41,6 +41,21 @@ diagrams: packages/graphql/lib/bin/dotify.js
 	@node packages/graphql/lib/bin/dotify.js
 	@$(MAKE) -C packages/graphql -j 4 diagrams
 
+.PHONY: docs
+docs: docs/packages-dark.png docs/packages-light.png
+
+docs/packages-dark.dot: support/dotifyDependencyGraph.mjs $(PACKAGE_JSON)
+	@DARK=1 node support/dotifyDependencyGraph.mjs > $@
+
+docs/packages-dark.png: docs/packages-dark.dot
+	@dot -Tpng $< -o $@
+
+docs/packages-light.dot: support/dotifyDependencyGraph.mjs $(PACKAGE_JSON)
+	@node support/dotifyDependencyGraph.mjs > $@
+
+docs/packages-light.png: docs/packages-light.dot
+	@dot -Tpng $< -o $@
+
 .PHONY: graphql
 graphql: packages/graphql/lib/bin/generateLexer.js packages/graphql/lib/bin/generateParsers.js
 	@node packages/graphql/lib/bin/generateLexer.js
