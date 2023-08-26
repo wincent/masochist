@@ -11,7 +11,7 @@ Tonight on a whim I went back to perform a more precise calculation using this q
 ```javascript
 #!/usr/bin/env node
 
-const { readFileSync } = require("fs");
+const {readFileSync} = require('fs');
 
 const qwerty = `
   qwertyuiop
@@ -25,14 +25,14 @@ const colemak = `
   zxcvbkm,./
 `;
 
-const normalize = (layout) => layout.replace(/\s+/g, "").split("");
+const normalize = (layout) => layout.replace(/\s+/g, '').split('');
 const getCommon = (a, b) => a.filter((char, index) => char === b[index]);
-const escape = (char) => (char === "." ? "\\." : char);
+const escape = (char) => (char === '.' ? '\\.' : char);
 
 const chars = getCommon(normalize(qwerty), normalize(colemak));
-const regexp = new RegExp("^[" + chars.map(escape).join("") + "]+$");
+const regexp = new RegExp('^[' + chars.map(escape).join('') + ']+$');
 
-const words = readFileSync("/usr/share/dict/words")
+const words = readFileSync('/usr/share/dict/words')
     .toString()
     .split(/\s+/)
     .map((s) => s.toLowerCase());
@@ -42,22 +42,22 @@ const filtered = words.filter((word) => word.match(regexp));
 console.log(
     `Of ${words.length} words,\n` +
         `${filtered.length} words contain only ${chars.length} common keys\n` +
-        `(${chars.join(", ")}).\n`
+        `(${chars.join(', ')}).\n`,
 );
 
 filtered.forEach((word) => {
     console.log(`  ${word}`);
 });
 
-console.log("\nEntropy (bits) for an n-word passphrase:\n");
+console.log('\nEntropy (bits) for an n-word passphrase:\n');
 const bitsPerWord = Math.floor(Math.log2(filtered.length));
 for (let i = 1; i < 10; i++) {
-    console.log(`${i} word${i > 1 ? "s" : ""}: ${bitsPerWord * i} bits`);
+    console.log(`${i} word${i > 1 ? 's' : ''}: ${bitsPerWord * i} bits`);
 }
 
 console.log(
-    "\nFor comparison, dictionary words each have about 14 bits of entropy\n" +
-        "(source: https://security.stackexchange.com/a/62911/151988)."
+    '\nFor comparison, dictionary words each have about 14 bits of entropy\n' +
+        '(source: https://security.stackexchange.com/a/62911/151988).',
 );
 ```
 

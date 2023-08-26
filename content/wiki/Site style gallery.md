@@ -58,7 +58,7 @@ This is a sample article show-casing how different kinds of Markdown syntax get 
 This sentence contains an `inline code` snippet.
 
 ```javascript
-console.log("This is a fenced code block");
+console.log('This is a fenced code block');
 ```
 
 # Links

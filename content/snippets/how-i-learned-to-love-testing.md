@@ -1,5 +1,5 @@
 ---
-title: "How I Learned to Love Testing"
+title: 'How I Learned to Love Testing'
 tags: snippets
 ---
 

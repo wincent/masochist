@@ -3,5 +3,5 @@ tags: safari javascript wiki
 ---
 
 ```js
-window.console.log("hello world!");
+window.console.log('hello world!');
 ```
