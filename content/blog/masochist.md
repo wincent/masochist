@@ -57,7 +57,7 @@ Nevertheless, I think there's an opportunity here to get _most_ of my content in
 
 GraphQL provides a decent mechanism for providing access to that data, and it allows for composition of data sources (eg. Git plus a database) behind a single, uniform abstraction. For the more highly dynamic bits (comments, issues, source code browsing etc) I can just delegate to third parties. In Facebook/GitHub/Twitter we trust. But there will always likely be _some_ dynamic stuff or metadata that will require a local database (tags, for instance), and GraphQL allows us to put all of that behind a unified facade.
 
-As an added benefit, I get to produce most of my content using the writing tool I most prefer, [Vim]. Combined with a tool like [Marked 2], I've preserved my ability to have live previews.
+As an added benefit, I get to produce most of my content using the writing tool I most prefer, [Neovim]. Combined with a tool like [Marked 2], I've preserved my ability to have live previews.
 
 ## Design principles
 
@@ -70,7 +70,7 @@ As noted above, Masochist is still a work in progress, but I've gone into it wit
     -   If you want people to read your blog-type content, maybe you should just stick it on Facebook or Medium, where people who care about you, or who share you interests, can see it.
     -   Writing content in this repo and having a low-friction way to export it elsewhere (eg. to Facebook, Medium etc) is a bonus (note: haven't gotten to the low-friction exports yet).
 -   Most content should be in plain-text (minimal vendor lock-in) with Markdown preferred.
--   At the same time, I should be able to keep my legion wikitext files and not have to do a forced upgrade of them all at once, even if that means doing something hacky and expedient like forking a Ruby process or spinning up a microservice to do the translation to HTML (note: I ended up building the microservice).
+-   At the same time, I should be able to keep my legion wikitext files and not have to do a forced upgrade of them all at once, even if that means doing something hacky and expedient like forking a Ruby process or spinning up a microservice to do the translation to HTML (note from the future: I ended up building the microservice, and eventually [doing an automated translation](https://wincent.com/blog/filter-branch) from wikitext to Markdown).
 -   You should be able to `git push` to publish content. There should be no complicated build step (with a zillion dependencies).
 -   You should be able to `git push` to deploy code too.
 -   These content and code pushes should involve separate branches, because you should be able to do one without the other.
@@ -104,7 +104,7 @@ As noted above, Masochist is still a work in progress, but I've gone into it wit
 [textile]: https://en.wikipedia.org/wiki/Textile_(markup_language)
 [twitter]: https://twitter.com/
 [ubb.threads]: https://en.wikipedia.org/wiki/UBB.threads
-[vim]: https://github.com/vim/vim
+[Neovim]: https://github.com/neovim/neovim
 [wordpress]: https://wordpress.org/
 [mailman]: http://www.gnu.org/software/mailman/
 [memcached]: http://memcached.org/
