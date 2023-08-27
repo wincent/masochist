@@ -15,7 +15,7 @@ For editing, use `git worktree add content content` to create a nested checkout 
 ## Workflow
 
 -   Edit using Vim.
--   Autocomplete provided via [Deoplete](https://github.com/Shougo/deoplete.nvim) with [custom Markdown completer](https://github.com/wincent/wincent/blob/e465bd5364823de4a6e2eea61101c797e7ab730d/roles/vim/files/.vim/rplugin/python3/deoplete/sources/masochist.py), and [some configuration](https://github.com/wincent/wincent/blob/e465bd5364823de4a6e2eea61101c797e7ab730d/roles/dotfiles/files/.vim/autoload/wincent/autocomplete.vim#L74-L83<Paste>).
+-   Autocomplete provided via [Deoplete](https://github.com/Shougo/deoplete.nvim) with [custom Markdown completer](https://github.com/wincent/wincent/blob/e465bd5364823de4a6e2eea61101c797e7ab730d/roles/vim/files/.vim/rplugin/python3/deoplete/sources/masochist.py), and [some configuration](https://github.com/wincent/wincent/blob/e465bd5364823de4a6e2eea61101c797e7ab730d/roles/dotfiles/files/.vim/autoload/wincent/autocomplete.vim#L74-L83).
 -   Preview Markdown documents in Vim using [the `:Preview` command](https://github.com/wincent/wincent/blob/5e897ff293fb2a10cb0f10671d48e1c373025722/roles/dotfiles/files/.vim/plugin/commands.vim#L1), or from the terminal with [the `preview` script](https://github.com/wincent/wincent/blob/5e897ff293fb2a10cb0f10671d48e1c373025722/roles/dotfiles/files/.zsh/bin/preview).
 -   Publish with `git push`.
 
