@@ -7,6 +7,7 @@ import type {Grammar} from './types';
 
 type Options = {
   buildCommand?: string;
+  name?: string;
 };
 
 export type Stats = {
@@ -27,6 +28,9 @@ export default function build(
   const buildCommand = options.buildCommand
     ? `edit "build.ts", run "${options.buildCommand}" instead`
     : 'edit "build.ts" instead';
+
+  const name = options.name || 'parse';
+
   return ast.program([
     // TODO: remove the @ts-nocheck once the file is good.
     ast.comment('@ts-nocheck'),
@@ -153,7 +157,7 @@ export default function build(
     ast.rawStatement(`
       const EOF = new Token('$', -1, -1, '');
 
-      export default function parse(input) {
+      export default function ${name}(input) {
         const stack = [[null, 0]];
         const lexer = new Lexer(input);
 

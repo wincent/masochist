@@ -1,0 +1,55 @@
+%token ASSIGN
+%token BANG
+%token CLASS
+%token COLON
+%token COMMA
+%token CONST
+%token CONTINUE
+%token DEFAULT
+%token ELSE
+%token EQUALS
+%token EXPORT
+%token FALSE
+%token FOR
+%token FUNCTION
+%token GREATER_THAN
+%token GREATER_THAN_OR_EQUAL
+%token IDENTIFIER
+%token IF
+%token IMPORT
+%token LESS_THAN
+%token LESS_THAN_OR_EQUAL
+%token LET
+%token LOGICAL_AND
+%token LOGICAL_OR
+%token NEW
+%token NUMBER
+%token OPENING_BRACE CLOSING_BRACE
+%token OPENING_BRACKET CLOSING_BRACKET
+%token OPENING_PAREN CLOSING_PAREN
+%token REST
+%token RETURN
+%token SEMICOLON
+%token STRICT_EQUALS
+%token THIS
+%token TRUE
+%token WHILE
+%token YIELD
+
+Expression → BinaryExpression { $$ = $1; }
+
+BinaryExpression → IDENTIFIER STRICT_EQUALS NUMBER {
+  $$ = {
+    kind: 'BinaryExpression',
+    lexpr: {
+      kind: 'Identifier',
+      name: $1.contents,
+    },
+    operator: '===',
+    rexpr: {
+      kind: 'NumberValue',
+      value: parseFloat($3.contents),
+      base: 10,
+    },
+  };
+}

@@ -66,8 +66,9 @@ node_modules: yarn.lock $(PACKAGE_JSON)
 	@touch $@
 
 .PHONY: typescript
-typescript: packages/typescript/lib/bin/generate.js
-	@node packages/typescript/lib/bin/generate.js
+typescript: packages/typescript/lib/bin/generateLexer.js packages/typescript/lib/bin/generateParsers.js
+	@node packages/typescript/lib/bin/generateLexer.js
+	@node packages/typescript/lib/bin/generateParsers.js
 
 $(TSC_SENTINEL): $(PACKAGE_JSON) $(TS_CONFIG) $(TS_SRC) node_modules
 	@yarn run build # runs: tsc --build
