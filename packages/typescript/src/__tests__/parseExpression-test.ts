@@ -4,7 +4,7 @@
 import parseExpression from '../parseExpression';
 
 describe('parseExpression()', () => {
-  it('it parses a strict equality binary expression', () => {
+  it('parses a strict equality binary expression', () => {
     const input = 'foo === 1.5';
     expect(parseExpression(input)).toMatchInlineSnapshot(`
       {
