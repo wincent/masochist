@@ -200,13 +200,9 @@ describe('union()', () => {
 
     const input = '= == ===';
 
-    // BUG: why isn't IGNORED stuff being ignored?
-
     expect([...getLexer(table)(input)]).toEqual([
       new Token('ASSIGN', 0, 1, input),
-      new Token('IGNORED', 1, 2, input),
       new Token('EQUALS', 2, 4, input),
-      new Token('IGNORED', 4, 5, input),
       new Token('STRICT_EQUALS', 5, 8, input),
     ]);
 
@@ -256,7 +252,10 @@ describe('union()', () => {
             let ch = this.index < length ? input.charCodeAt(this.index) : -1;
             if (state === START) {
               if (ch === 0x20) {
-                return this.emit('IGNORED', this.index + 1, input);
+                // IGNORED token.
+                this.index = this.index + 1;
+                this.tokenStart = this.index;
+                continue;
               } else if (ch === 0x3d) {
                 this.state = 2;
               } else {

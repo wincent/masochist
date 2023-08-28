@@ -126,15 +126,16 @@ export default function build(
       ),
       block: [],
     };
-    const isAccept = table.acceptStates.has(i)
-      ? Array.from(table.labels?.[i] ?? [])[0]
-      : undefined;
+    const isAccept = (state: number) =>
+      table.acceptStates.has(state)
+        ? Array.from(table.labels?.[state] ?? [])[0]
+        : undefined;
 
-    const isIgnored = isAccept === 'IGNORED';
+    const isIgnored = (state: number) => isAccept(state) === 'IGNORED';
 
     if (!conditions.length) {
       // Should only get here for an ignored state.
-      invariant(isIgnored);
+      invariant(isIgnored(i));
       consequent.block.push(
         ...filterEmpty(
           ast.comment('IGNORED token.'),
@@ -160,7 +161,7 @@ export default function build(
         consequent.block.push(loop);
       }
 
-      const ignoreToken = isIgnored
+      const ignoreToken = isIgnored(i)
         ? filterEmpty(
             ast.comment('IGNORED token.'),
             ast.statement('this.tokenStart = this.index'),
@@ -169,13 +170,13 @@ export default function build(
             ast.continue(),
           )
         : undefined;
-      const acceptToken = isAccept
+      const acceptToken = isAccept(i)
         ? filterEmpty(
             i === START ? ast.empty : ast.statement('this.state = START'),
             ast.return(
               ast.call(
                 'this.emit',
-                ast.string(isAccept),
+                ast.string(isAccept(i)!),
                 'this.index',
                 'input',
               ),
@@ -199,19 +200,31 @@ export default function build(
           const condition = expressionForTransitions(transitions);
           const block: Array<Statement> = [];
           if (inlineableStates.has(j)) {
-            block.push(
-              ...filterEmpty(
-                i === START ? ast.empty : ast.statement('this.state = START'),
-                ast.return(
-                  ast.call(
-                    'this.emit',
-                    ast.string(Array.from(table.labels?.[j] ?? [])[0]),
-                    'this.index + 1',
-                    'input',
+            if (isIgnored(j)) {
+              block.push(
+                ...filterEmpty(
+                  ast.comment('IGNORED token.'),
+                  ast.statement('this.index = this.index + 1'),
+                  ast.statement('this.tokenStart = this.index'),
+                  i === START ? ast.empty : ast.statement('this.state = START'),
+                  ast.continue(),
+                ),
+              );
+            } else {
+              block.push(
+                ...filterEmpty(
+                  i === START ? ast.empty : ast.statement('this.state = START'),
+                  ast.return(
+                    ast.call(
+                      'this.emit',
+                      ast.string(isAccept(j)!),
+                      'this.index + 1',
+                      'input',
+                    ),
                   ),
                 ),
-              ),
-            );
+              );
+            }
             stats['inlinedAcceptStates']++;
           } else {
             invariant(
