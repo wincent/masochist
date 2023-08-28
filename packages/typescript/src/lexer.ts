@@ -52,37 +52,27 @@ export const LINE_TERMINATOR = /\n|\r\n|\r/; // Note: we require semicolons.
 export const WHITESPACE = /[\t ]+/;
 
 export default union({
+  ASSIGN,
   BANG,
   CLOSING_BRACE,
   CLOSING_BRACKET,
   CLOSING_PAREN,
-  COMMA,
   COLON,
+  COMMA,
+  EQUALS,
+  GREATER_THAN,
+  GREATER_THAN_OR_EQUAL,
+  IDENTIFIER,
+  LESS_THAN,
+  LESS_THAN_OR_EQUAL,
   LOGICAL_AND,
   LOGICAL_OR,
+  NUMBER,
   OPENING_BRACE,
   OPENING_BRACKET,
   OPENING_PAREN,
   REST,
-
-  // Order matters; longer tokens must go first in order to force greedy
-  // matching.
-
-  // >= >
-  GREATER_THAN_OR_EQUAL,
-  GREATER_THAN,
-
-  // <= <
-  LESS_THAN_OR_EQUAL,
-  LESS_THAN,
-
-  // === == =
   STRICT_EQUALS,
-  EQUALS,
-  ASSIGN,
-
-  IDENTIFIER,
-  NUMBER,
 
   IGNORED: ignore(LINE_TERMINATOR, WHITESPACE),
 });

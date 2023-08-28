@@ -223,7 +223,7 @@ export default union({
   OPENING_PAREN,
 
   //
-  // Special NAME tokens (these appear first, so have precedence).
+  // Special NAME tokens.
   //
   FRAGMENT,
   ON,

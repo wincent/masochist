@@ -1,3 +1,7 @@
+import {print} from '@masochist/codegen';
+
+import Token from '../Token';
+import build from '../build';
 import {
   AMPERSAND,
   AT,
@@ -16,9 +20,17 @@ import {
   OPENING_BRACKET,
   OPENING_PAREN,
 } from '../definition';
+import {getLexer} from './helper';
+import ignore from '../ignore';
 import union from '../union';
 
 describe('union()', () => {
+  let lex: (input: string) => Generator<Token, void, unknown>;
+
+  beforeAll(() => {
+    lex = getLexer();
+  });
+
   it('creates a machine with a number of distinct accept states', () => {
     const table = union(
       // Punctuators.
@@ -158,9 +170,139 @@ describe('union()', () => {
       ],
     });
 
-    // Note that we want to prefer the longest match, but in the event that an
-    // accept state could produce either token (eg. state 3), we'll favor the
-    // token that appeared first in the grammar.
+    // Note that we want to prefer the longest match, in the event that an
+    // accept state could produce either token (eg. state 3).
     expect(Array.from(table.labels?.[3]!)).toEqual(['ON', 'NAME']);
+
+    // Sneakily proving the above (transitively) by using lexer:
+    let input = 'no on';
+    let tokens = [...lex(input)];
+    expect(tokens).toEqual([
+      new Token('NAME', 0, 2, input),
+      new Token('ON', 3, 5, input),
+    ]);
+
+    input = 'onwards on';
+    tokens = [...lex(input)];
+    expect(tokens).toEqual([
+      new Token('NAME', 0, 7, input),
+      new Token('ON', 8, 10, input),
+    ]);
+  });
+
+  it('prefers greedy matches', () => {
+    const table = union({
+      ASSIGN: '=',
+      EQUALS: '==',
+      STRICT_EQUALS: '===',
+      IGNORED: ignore(/ /),
+    });
+
+    const input = '= == ===';
+
+    // BUG: why isn't IGNORED stuff being ignored?
+
+    expect([...getLexer(table)(input)]).toEqual([
+      new Token('ASSIGN', 0, 1, input),
+      new Token('IGNORED', 1, 2, input),
+      new Token('EQUALS', 2, 4, input),
+      new Token('IGNORED', 4, 5, input),
+      new Token('STRICT_EQUALS', 5, 8, input),
+    ]);
+
+    // Visual inspection of the generated lexer shows why this works.
+    expect(print(build(table))).toMatchInlineSnapshot(`
+      "/**
+       * vim: set nomodifiable : DO NOT EDIT - edit "build.ts" instead
+       *
+       * @generated
+       */
+      import {Token} from '@masochist/lexer';
+      const REJECT = -1;
+      const START = 0;
+      export class Lexer {
+        input: string;
+        state: number;
+        tokenStart: number;
+        index: number;
+
+        /**
+         * @param {string} input
+         */
+        constructor(input: string) {
+          this.input = input;
+          this.state = START;
+          this.tokenStart = 0;
+          this.index = 0;
+        }
+
+        /**
+         * @param {string} name
+         * @param {number} end
+         * @param {string} input
+         */
+        emit(name: string, end: number, input: string) {
+          const token = new Token(name, this.tokenStart, end, input);
+          this.tokenStart = end;
+          this.index = end;
+          return token;
+        }
+
+        next() {
+          const input = this.input;
+          const length = input.length;
+          while (this.index <= length) {
+            const state = this.state;
+            let ch = this.index < length ? input.charCodeAt(this.index) : -1;
+            if (state === START) {
+              if (ch === 0x20) {
+                return this.emit('IGNORED', this.index + 1, input);
+              } else if (ch === 0x3d) {
+                this.state = 2;
+              } else {
+                this.state = REJECT;
+              }
+            } else if (state === 2) {
+              if (ch === 0x3d) {
+                this.state = 3;
+              } else {
+                this.state = START;
+                return this.emit('ASSIGN', this.index, input);
+              }
+            } else if (state === 3) {
+              if (ch === 0x3d) {
+                this.state = START;
+                return this.emit('STRICT_EQUALS', this.index + 1, input);
+              } else {
+                this.state = START;
+                return this.emit('EQUALS', this.index, input);
+              }
+            } else if (state === REJECT) {
+              throw new Error('Failed to recognize token');
+            } else {
+              throw new Error('Unexpected state');
+            }
+            this.index++;
+          }
+          return null;
+        }
+      }
+      /**
+       * @param {string} input
+       * @returns {Generator<Token, void, unknown>}
+       */
+      export default function *lex(input: string) {
+        const lexer = new Lexer(input);
+        while (true) {
+          const token = lexer.next();
+          if (token === null) {
+            return;
+          } else {
+            yield token;
+          }
+        }
+      }
+      "
+    `);
   });
 });
