@@ -170,16 +170,13 @@ export default function build(
             ast.continue(),
           )
         : undefined;
-      const acceptToken = isAccept(i)
+
+      let name;
+      const acceptToken = (name = isAccept(i))
         ? filterEmpty(
             i === START ? ast.empty : ast.statement('this.state = START'),
             ast.return(
-              ast.call(
-                'this.emit',
-                ast.string(isAccept(i)!),
-                'this.index',
-                'input',
-              ),
+              ast.call('this.emit', ast.string(name), 'this.index', 'input'),
             ),
           )
         : undefined;
@@ -210,14 +207,14 @@ export default function build(
                   ast.continue(),
                 ),
               );
-            } else {
+            } else if ((name = isAccept(j))) {
               block.push(
                 ...filterEmpty(
                   i === START ? ast.empty : ast.statement('this.state = START'),
                   ast.return(
                     ast.call(
                       'this.emit',
-                      ast.string(isAccept(j)!),
+                      ast.string(name),
                       'this.index + 1',
                       'input',
                     ),
