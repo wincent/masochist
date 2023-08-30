@@ -12,7 +12,6 @@
   "main": "lib/index.js",
   "author": "Greg Hurrell <greg@hurrell.net>",
   "license": "MIT",
-  "private": false,
   "scripts": {
     "benchmark": "node lib/index.js",
     "benchmark:dynamic:lexer": "node lib/benchmark-dynamic-lexer.js",

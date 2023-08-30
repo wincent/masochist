@@ -4,6 +4,5 @@
   "description": "Masochist client",
   "main": "lib/index.js",
   "author": "Greg Hurrell <greg@hurrell.net>",
-  "license": "MIT",
-  "private": false
+  "license": "MIT"
 }

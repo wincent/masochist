@@ -28,5 +28,6 @@
     "format:check": "node_modules/prettier/bin/prettier.cjs --log-level warn --check '**/*.{graphql,js,json,md,mjs,ts,yml}'",
     "lint": "support/lint.sh",
     "test": "jest"
-  }
+  },
+  "packageManager": "yarn@3.6.3"
 }

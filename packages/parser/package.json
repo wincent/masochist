@@ -10,7 +10,6 @@
   "main": "lib/index.js",
   "author": "Greg Hurrell <greg@hurrell.net>",
   "license": "MIT",
-  "private": false,
   "scripts": {
     "build": "cd ../.. && yarn build",
     "format": "cd ../.. && yarn format",
