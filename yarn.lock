@@ -2177,7 +2177,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-config@npm:^29.6.4":
+"jest-config@npm:*, jest-config@npm:^29.6.4":
   version: 29.6.4
   resolution: "jest-config@npm:29.6.4"
   dependencies:
@@ -2719,6 +2719,7 @@ __metadata:
     "@types/jest": "*"
     "@types/node": "*"
     jest: "*"
+    jest-config: "*"
     prettier: "*"
     prettier-v2-for-jest-inline-snapshots: "npm:prettier@^2"
     ts-jest: "*"

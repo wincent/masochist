@@ -13,6 +13,7 @@
     "@types/jest": "*",
     "@types/node": "*",
     "jest": "*",
+    "jest-config": "*",
     "prettier": "*",
     "prettier-v2-for-jest-inline-snapshots": "npm:prettier@^2",
     "ts-jest": "*",
