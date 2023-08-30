@@ -7,7 +7,8 @@
     "@masochist/graphql": "*",
     "@masochist/legacy": "*",
     "@masochist/lexer": "*",
-    "@masochist/parser": "*"
+    "@masochist/parser": "*",
+    "graphql": "*"
   },
   "main": "lib/index.js",
   "author": "Greg Hurrell <greg@hurrell.net>",
