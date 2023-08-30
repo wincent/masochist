@@ -18,6 +18,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - name: corepack enable
+        run: corepack enable
       - name: yarn
         run: yarn --immutable --immutable-cache --check-cache
 
@@ -32,6 +34,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - name: corepack enable
+        run: corepack enable
       - name: yarn
         run: yarn --immutable --immutable-cache
       - name: yarn format:check
@@ -48,6 +52,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - name: corepack enable
+        run: corepack enable
       - name: yarn
         run: yarn --immutable --immutable-cache
       - name: yarn lint
@@ -64,6 +70,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - name: corepack enable
+        run: corepack enable
       - name: yarn
         run: yarn --immutable --immutable-cache
       - name: yarn build
@@ -80,6 +88,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - name: corepack enable
+        run: corepack enable
       - name: yarn
         run: yarn --immutable --immutable-cache
       - name: yarn build
