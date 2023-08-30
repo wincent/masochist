@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {Token} from '@masochist/lexer';
 
 import getAugmentedGrammar from '../getAugmentedGrammar';

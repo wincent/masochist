@@ -1,3 +1,5 @@
+import {describe, expect, it} from '@jest/globals';
+
 import compileRegExp from '../../compileRegExp';
 import {NUMBER} from '../../definition';
 import {ACCEPT, NONE, START} from '../NFA';

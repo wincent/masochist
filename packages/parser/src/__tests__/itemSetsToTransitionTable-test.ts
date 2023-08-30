@@ -1,3 +1,5 @@
+import {describe, expect, it} from '@jest/globals';
+
 import getItemSets from '../getItemSets';
 import itemSetsToTransitionTable from '../itemSetsToTransitionTable';
 import {epsilonGrammar, subsetGrammar, toyGrammar} from './grammars';

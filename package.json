@@ -10,7 +10,7 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@types/jest": "*",
+    "@jest/globals": "*",
     "@types/node": "*",
     "jest": "*",
     "jest-config": "*",

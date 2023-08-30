@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {print} from '@masochist/codegen';
 
 import build from '../build';

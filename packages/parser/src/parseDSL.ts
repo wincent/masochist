@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {StringScanner} from '@masochist/common';
 
 import {EPSILON, RIGHTWARDS_ARROW} from './Constants';

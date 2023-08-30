@@ -1,3 +1,4 @@
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import {dedent} from '@masochist/common';
 
 import IntervalTree, {Interval} from '../IntervalTree';

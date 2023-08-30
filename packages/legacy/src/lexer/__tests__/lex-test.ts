@@ -1,3 +1,5 @@
+import {describe, expect, it} from '@jest/globals';
+
 import lex, {isIgnored} from '../lex';
 
 // TODO: move (well, copy/migrate) these to lexer-test.ts

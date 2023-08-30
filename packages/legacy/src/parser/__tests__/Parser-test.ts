@@ -1,3 +1,5 @@
+import {describe, expect, it} from '@jest/globals';
+
 import {Tokens, isIgnored, lex} from '../..';
 
 import Parser, {Grammar, choice, plus, sequence, r, t} from '../Parser';

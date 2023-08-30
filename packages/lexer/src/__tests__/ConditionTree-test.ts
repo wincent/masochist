@@ -1,3 +1,4 @@
+import {beforeEach, describe, expect, it} from '@jest/globals';
 import {dedent, invariant} from '@masochist/common';
 
 import ConditionTree, {CharCode} from '../ConditionTree';

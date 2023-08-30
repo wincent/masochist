@@ -1,3 +1,4 @@
+import {describe, expect, it} from '@jest/globals';
 import {dedent} from '@masochist/common';
 
 import getItemSets from '../getItemSets';

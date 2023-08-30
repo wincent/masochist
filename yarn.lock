@@ -542,7 +542,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/globals@npm:^29.6.4":
+"@jest/globals@npm:*, @jest/globals@npm:^29.6.4":
   version: 29.6.4
   resolution: "@jest/globals@npm:29.6.4"
   dependencies:
@@ -930,16 +930,6 @@ __metadata:
   dependencies:
     "@types/istanbul-lib-report": "*"
   checksum: f1ad54bc68f37f60b30c7915886b92f86b847033e597f9b34f2415acdbe5ed742fa559a0a40050d74cdba3b6a63c342cac1f3a64dba5b68b66a6941f4abd7903
-  languageName: node
-  linkType: hard
-
-"@types/jest@npm:*":
-  version: 29.5.4
-  resolution: "@types/jest@npm:29.5.4"
-  dependencies:
-    expect: ^29.0.0
-    pretty-format: ^29.0.0
-  checksum: 38ed5942f44336452efd0f071eab60aaa57cd8d46530348d0a3aa5a691dcbf1366c4ca8f6ee8364efb45b4413bfefae443e5d4f469246a472a03b21ac11cd4ed
   languageName: node
   linkType: hard
 
@@ -1632,7 +1622,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expect@npm:^29.0.0, expect@npm:^29.6.4":
+"expect@npm:^29.6.4":
   version: 29.6.4
   resolution: "expect@npm:29.6.4"
   dependencies:
@@ -2716,7 +2706,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "masochist-experimental@workspace:."
   dependencies:
-    "@types/jest": "*"
+    "@jest/globals": "*"
     "@types/node": "*"
     jest: "*"
     jest-config: "*"
@@ -3123,7 +3113,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pretty-format@npm:^29.0.0, pretty-format@npm:^29.6.3":
+"pretty-format@npm:^29.6.3":
   version: 29.6.3
   resolution: "pretty-format@npm:29.6.3"
   dependencies:

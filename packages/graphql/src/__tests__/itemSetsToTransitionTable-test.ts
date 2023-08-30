@@ -3,6 +3,7 @@
 // by `@masochist/graphql`, so we've moved them in here to avoid a circular
 // dependency.
 
+import {describe, expect, it} from '@jest/globals';
 import {
   itemSetsToTransitionTable,
   stringifyTransitionTable,

@@ -1,3 +1,5 @@
+import {beforeEach, describe, expect, it} from '@jest/globals';
+
 import ReversibleMap from '../ReversibleMap';
 
 function call(fn: unknown) {

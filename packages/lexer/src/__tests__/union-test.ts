@@ -1,3 +1,4 @@
+import {beforeAll, describe, expect, it} from '@jest/globals';
 import {print} from '@masochist/codegen';
 
 import Token from '../Token';

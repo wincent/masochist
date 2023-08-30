@@ -3,12 +3,14 @@
 // produced by `@masochist/graphql`, so we've moved them in here to avoid a
 // circular dependency.
 
-import {unaugmentedGrammar} from '../document';
+import {describe, expect, it} from '@jest/globals';
 import {
   extendedGrammarForItemSets,
   getItemSets,
   stringifyGrammar,
 } from '@masochist/parser';
+
+import {unaugmentedGrammar} from '../document';
 
 describe('extendedGrammarForItemSets()', () => {
   it('returns an extended grammar for the GraphQL grammar', () => {

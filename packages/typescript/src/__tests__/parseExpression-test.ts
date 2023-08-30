@@ -1,3 +1,5 @@
+import {describe, expect, it} from '@jest/globals';
+
 // TODO: once parser has stabilized, do same thing we do in lex-test.ts and run
 // tests against what _would_ be written to disk as opposed to just importing
 // built artifact.

@@ -1,3 +1,5 @@
+import {beforeEach, describe, expect, it} from '@jest/globals';
+
 import StringScanner, {toAnchoredRegExp} from '../StringScanner';
 
 describe('StringScanner', () => {
