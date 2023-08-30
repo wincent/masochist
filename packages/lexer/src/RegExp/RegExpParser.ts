@@ -1,4 +1,3 @@
-import {describe, expect, it} from '@jest/globals';
 import {StringScanner, invariant} from '@masochist/common';
 
 import normalizeCharacterClass from './normalizeCharacterClass';
