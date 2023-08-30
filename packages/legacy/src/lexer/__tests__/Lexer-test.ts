@@ -480,7 +480,12 @@ describe('Lexer()', () => {
       lexer.lex('foo').next();
 
       expect(onMatch.mock.calls.length).toBe(1);
-      expect(onMatch.mock.calls[0][0][0]).toBe('foo');
+      const array = onMatch.mock.calls[0][0];
+      if (Array.isArray(array)) {
+        expect(array[0]).toBe('foo');
+      } else {
+        throw new Error('expected Array');
+      }
       expect(onMatch.mock.calls[0][1]).toBe(meta);
     });
 

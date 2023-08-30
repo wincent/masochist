@@ -1,4 +1,4 @@
-import {describe, expect, fail, it} from '@jest/globals';
+import {describe, expect, it} from '@jest/globals';
 
 import RegExpParser from '../RegExpParser';
 import normalizeCharacterClass from '../normalizeCharacterClass';
@@ -159,7 +159,7 @@ describe('normalizeCharacterClass()', () => {
 
   function assertCharacterClass(node: Node): asserts node is CharacterClass {
     if (node.kind !== 'CharacterClass') {
-      fail('Needed CharacterClass');
+      throw new Error('Needed CharacterClass');
     }
   }
 
