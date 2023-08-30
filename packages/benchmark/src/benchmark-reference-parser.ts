@@ -17,7 +17,9 @@ async function main() {
   spawn('yarn', 'init', '-y');
   spawn('yarn', 'add', 'graphql');
 
-  const {parse} = require(path.join(scratch, 'node_modules', 'graphql'));
+  const {parse} = require(
+    path.join(scratch, ['node', 'modules'].join('_'), 'graphql'),
+  );
 
   await run(parse);
 }

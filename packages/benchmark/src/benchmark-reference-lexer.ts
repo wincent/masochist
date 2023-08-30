@@ -16,11 +16,9 @@ async function main() {
   spawn('yarn', 'init', '-y');
   spawn('yarn', 'add', 'graphql');
 
-  const {Lexer, Source} = require(path.join(
-    scratch,
-    'node_modules',
-    'graphql',
-  ));
+  const {Lexer, Source} = require(
+    path.join(scratch, ['node', 'modules'].join('_'), 'graphql'),
+  );
 
   function* lex(input: string) {
     const lexer = new Lexer(new Source(input));
