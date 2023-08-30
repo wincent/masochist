@@ -1,4 +1,4 @@
-import {describe, expect, it} from '@jest/globals';
+import {expect, test} from '@jest/globals';
 import {dedent} from '@masochist/common';
 import fs from 'fs';
 import path from 'path';

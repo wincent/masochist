@@ -1,4 +1,4 @@
-import {describe, expect, it} from '@jest/globals';
+import {describe, expect, fail, it} from '@jest/globals';
 
 import RegExpParser from '../RegExpParser';
 import normalizeCharacterClass from '../normalizeCharacterClass';
