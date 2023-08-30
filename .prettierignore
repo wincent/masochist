@@ -2,6 +2,10 @@
 # of updating.
 /tsconfig-base.json
 
+# Files generated/manages by Yarn.
+/.pnp.loader.mjs
+/.yarnrc.yml
+
 # Ignore built files (".js", ".d.ts") under "lib" directories like
 # "packages/lexer/lib/" etc.
 lib
