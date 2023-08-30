@@ -7,7 +7,7 @@ on:
     branches: [next]
 
 jobs:
-  check-lockfile:
+  check-lockfile-and-cache:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -19,9 +19,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: yarn
-        run: yarn
-      - name: Check yarn.lock for changes
-        run: git diff --quiet -- yarn.lock
+        run: yarn --immutable --immutable-cache --check-cache
 
   format-check:
     runs-on: ubuntu-latest
@@ -35,7 +33,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: yarn
-        run: yarn --frozen-lockfile
+        run: yarn --immutable --immutable-cache
       - name: yarn format:check
         run: yarn format:check
 
@@ -51,7 +49,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: yarn
-        run: yarn --frozen-lockfile
+        run: yarn --immutable --immutable-cache
       - name: yarn lint
         run: yarn lint
 
@@ -67,7 +65,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: yarn
-        run: yarn --frozen-lockfile
+        run: yarn --immutable --immutable-cache
       - name: yarn build
         run: yarn build
 
@@ -83,7 +81,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: yarn
-        run: yarn --frozen-lockfile
+        run: yarn --immutable --immutable-cache
       - name: yarn build
         run: yarn build # Prime cache.
       - name: yarn test
