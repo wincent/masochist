@@ -3,6 +3,8 @@ import {describe, expect, fail, it} from '@jest/globals';
 import RegExpParser from '../RegExpParser';
 import normalizeCharacterClass from '../normalizeCharacterClass';
 
+import type {CharacterClass, Node} from '../RegExpParser';
+
 describe('normalizeCharacterClass()', () => {
   it('does nothing to an already normalized class', () => {
     expect(
@@ -155,11 +157,15 @@ describe('normalizeCharacterClass()', () => {
     });
   });
 
-  it('inverts nested negated classes (eg. \\D)', () => {
-    const characterClass = new RegExpParser(/\D/).parse();
-    if (characterClass.kind !== 'CharacterClass') {
+  function assertCharacterClass(node: Node): asserts node is CharacterClass {
+    if (node.kind !== 'CharacterClass') {
       fail('Needed CharacterClass');
     }
+  }
+
+  it('inverts nested negated classes (eg. \\D)', () => {
+    const characterClass = new RegExpParser(/\D/).parse();
+    assertCharacterClass(characterClass);
     expect(normalizeCharacterClass(characterClass)).toEqual({
       kind: 'CharacterClass',
       children: [
