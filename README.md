@@ -31,6 +31,7 @@ Points of interest and areas for exploration:
 
 Most development tasks can be completed with `yarn`:
 
+- `corepack enable`: To ensure appropriate Yarn version selection[^once].
 - `yarn build`: Performs TypeScript build (ie. `tsc --build`).
 - `yarn build:clean`: Removes TypeScript build products (ie. `tsc --build --clean`).
 - `yarn build:dry`: Report what would be built without making changes (ie. `tsc --build --dry`).
@@ -40,6 +41,8 @@ Most development tasks can be completed with `yarn`:
 - `yarn format:check`: Checking formatting of all source files.
 - `yarn lint`: Run TypeScript (`tsc`-powered) lints.
 - `yarn test`: Run test suite using Jest.
+
+[^once]: Needed only once per checkout.
 
 A Make-based interface also exists for some operations:
 
