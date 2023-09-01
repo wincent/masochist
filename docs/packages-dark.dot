@@ -21,6 +21,7 @@ digraph dependency_graph {
   "@masochist/benchmark" -> "@masochist/legacy" [color = "white", fontcolor = "white"];
   "@masochist/benchmark" -> "@masochist/lexer" [color = "white", fontcolor = "white"];
   "@masochist/benchmark" -> "@masochist/parser" [color = "white", fontcolor = "white"];
+  "@masochist/benchmark" -> "graphql" [color = "white", fontcolor = "white"];
   "@masochist/codegen" -> "@masochist/common" [color = "white", fontcolor = "white"];
   "@masochist/compiler" -> "@masochist/common" [color = "white", fontcolor = "white"];
   "@masochist/compiler" -> "@masochist/legacy" [color = "white", fontcolor = "white"];
