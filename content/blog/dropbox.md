@@ -4,7 +4,9 @@ title: File system organization guidelines
 twitter: https://twitter.com/wincent/status/1044167354295480320
 ---
 
-The other day I was [lamenting on Twitter](https://twitter.com/wincent/status/1039961366600314880) how tricky it can be to do something as simple as organize your Dropbox folder:
+The other day I was [lamenting on Twitter](https://twitter.com/wincent/status/1039961366600314880) how tricky it can be to do something as simple as organize your Dropbox[^dropbox] folder:
+
+[^dropbox]: Some time after writing this article, I switched from Dropbox to [Sync](https://www.sync.com/), but most of the organization guidelines apply equally well there too (and internal symlinks seem to work a bit better than they did on Dropbox).
 
 > So speaking of organizing my Dropbox folder... I'm facing again the whole taxonomy vs folksonomy thing. Taxonomies are seductive hierarchical classification systems that lure you with their siren song of logic, order, and sense-making.
 >
@@ -134,7 +136,7 @@ The decision on whether to embed the date in a single folder name with hyphens, 
 
 > **Recommendation:** Break dates up into nested folders (eg. "YYYY/MM/DD") only when the total volume of contained items makes the alternative (eg. "YYYY-MM-DD") impractical.
 
-## Where in the file name should the data appear?
+## Where in the file name should the date appear?
 
 The obvious options here are to put the date at the beginning or the end of the file name.
 
