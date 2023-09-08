@@ -12,7 +12,10 @@ import {Lexer} from './lex';
 function r1($1) {
   return $1;
 }
-function r2($1, _$2, $3) {
+function r2($1) {
+  return $1;
+}
+function r3($1, _$2, $3) {
   return {
     kind: 'BinaryExpression',
     lexpr: {
@@ -20,11 +23,17 @@ function r2($1, _$2, $3) {
       name: $1.contents,
     },
     operator: '===',
-    rexpr: {
-      kind: 'NumberValue',
-      value: parseFloat($3.contents),
-      base: 10,
-    },
+    rexpr: $3,
+  };
+}
+function r4($1) {
+  return $1;
+}
+function r5($1) {
+  return {
+    kind: 'NumberValue',
+    value: parseFloat($1.contents),
+    base: 10,
   };
 }
 const actions = [
@@ -32,6 +41,10 @@ const actions = [
     IDENTIFIER: {
       kind: 'Shift',
       state: 3,
+    },
+    NUMBER: {
+      kind: 'Shift',
+      state: 6,
     },
   },
   {
@@ -48,13 +61,7 @@ const actions = [
   {
     STRICT_EQUALS: {
       kind: 'Shift',
-      state: 4,
-    },
-  },
-  {
-    NUMBER: {
-      kind: 'Shift',
-      state: 5,
+      state: 7,
     },
   },
   {
@@ -63,16 +70,54 @@ const actions = [
       rule: 2,
     },
   },
+  {
+    ['$']: {
+      kind: 'Reduce',
+      rule: 4,
+    },
+  },
+  {
+    ['$']: {
+      kind: 'Reduce',
+      rule: 5,
+    },
+  },
+  {
+    IDENTIFIER: {
+      kind: 'Shift',
+      state: 3,
+    },
+    NUMBER: {
+      kind: 'Shift',
+      state: 6,
+    },
+  },
+  {
+    ['$']: {
+      kind: 'Reduce',
+      rule: 3,
+    },
+  },
 ];
 const gotos = [
   {
     BinaryExpression: 2,
     Expression: 1,
+    NumberValue: 5,
+    PrimitiveValue: 4,
   },
   {},
   {},
   {},
   {},
+  {},
+  {},
+  {
+    BinaryExpression: 2,
+    Expression: 8,
+    NumberValue: 5,
+    PrimitiveValue: 4,
+  },
   {},
 ];
 const rules = [
@@ -87,9 +132,24 @@ const rules = [
     action: r1,
   },
   {
+    production: 'Expression',
+    pop: 1,
+    action: r2,
+  },
+  {
     production: 'BinaryExpression',
     pop: 3,
-    action: r2,
+    action: r3,
+  },
+  {
+    production: 'PrimitiveValue',
+    pop: 1,
+    action: r4,
+  },
+  {
+    production: 'NumberValue',
+    pop: 1,
+    action: r5,
   },
 ];
 

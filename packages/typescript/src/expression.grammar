@@ -37,8 +37,9 @@
 %token YIELD
 
 Expression → BinaryExpression { $$ = $1; }
+Expression → PrimitiveValue { $$ = $1; }
 
-BinaryExpression → IDENTIFIER STRICT_EQUALS NUMBER {
+BinaryExpression → IDENTIFIER STRICT_EQUALS Expression {
   $$ = {
     kind: 'BinaryExpression',
     lexpr: {
@@ -46,10 +47,21 @@ BinaryExpression → IDENTIFIER STRICT_EQUALS NUMBER {
       name: $1.contents,
     },
     operator: '===',
-    rexpr: {
-      kind: 'NumberValue',
-      value: parseFloat($3.contents),
-      base: 10,
-    },
+    rexpr: $3,
+  };
+}
+
+# TODO: need to tokenize reserved words like null, undefined, true, false
+# differently in order for this to work.
+PrimitiveValue → NumberValue { $$ = $1; }
+#PrimitiveValue → BooleanValue { $$ = $1; }
+#PrimitiveValue → NullValue { $$ = $1; }
+#PrimitiveValue → UndefinedValue { $$ = $1; }
+
+NumberValue → NUMBER {
+  $$ = {
+    kind: 'NumberValue',
+    value: parseFloat($1.contents),
+    base: 10,
   };
 }
