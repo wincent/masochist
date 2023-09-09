@@ -3,9 +3,8 @@
 // we've moved them in here to avoid a circular dependency.
 
 import {describe, expect, it} from 'bun:test';
-import {stringifyGrammar, stringifyParseTable} from '@masochist/parser';
 
-import {grammar, table} from '../document';
+import {table} from '../document';
 
 describe('getParseTable()', () => {
   it('returns a ParseTable for the GraphQL grammar', () => {
