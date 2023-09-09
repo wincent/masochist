@@ -130,22 +130,25 @@ export default function getParseTable(
       const symbol = (follow ?? '-1/$/-1').split('/')[1];
       const action = actions[symbol];
       if (action) {
-        if (
-          action.kind === 'Accept' ||
-          (action.kind === 'Reduce' && action.rule !== ruleNumber) ||
-          action.kind === 'Shift'
-        ) {
-          throw new Error(
-            `getParseTable(): ${action.kind}/Reduce conflict - ` +
-              `existing ${action.kind} (${
-                action.kind === 'Reduce'
-                  ? action.rule
-                  : action.kind === 'Shift'
-                  ? action.state
-                  : 'n/a'
-              }) for state ${itemSet}, symbol ${symbol} ` +
-              `processing rule: ${lhs} ${RIGHTWARDS_ARROW} ${rhs.join(' ')}`,
-          );
+        const conflictMessage =
+          `${action.kind}/Reduce conflict - existing ${action.kind} (${
+            action.kind === 'Reduce'
+              ? action.rule
+              : action.kind === 'Shift'
+              ? action.state
+              : 'n/a'
+          }) for state ${itemSet}, symbol ${symbol} ` +
+          `processing rule: ${lhs} ${RIGHTWARDS_ARROW} ${rhs.join(' ')}`;
+        if (action.kind === 'Accept') {
+          throw new Error(`getParseTable(): ${conflictMessage}`);
+        } else if (action.kind === 'Shift') {
+          // Prefer shift, emit warning, like yacc/Bison (etc) do. See:
+          // - https://www.ibm.com/docs/en/zos/2.2.0?topic=ambiguities-rules-help-remove
+          // - https://www.gnu.org/software/bison/manual/bison.html#Shift_002fReduce
+          console.log(`[warning] getParseTable(): ${conflictMessage}`);
+        } else if (action.kind === 'Reduce' && action.rule !== ruleNumber) {
+          // TODO: Prefer rule that appears earlier in grammar.
+          throw new Error(`getParseTable(): ${conflictMessage}`);
         }
       } else {
         actions[symbol] = {kind: 'Reduce', rule: ruleNumber};

@@ -37,22 +37,26 @@
 %token YIELD
 
 Expression → BinaryExpression { $$ = $1; }
+Expression → IDENTIFIER {
+  $$ = {
+    kind: 'Identifier',
+    name: $1.contents,
+  };
+}
 Expression → PrimitiveValue { $$ = $1; }
+Expression → OPENING_PAREN Expression CLOSING_PAREN { $$ = $2; }
 
-BinaryExpression → IDENTIFIER STRICT_EQUALS Expression {
+BinaryExpression → Expression STRICT_EQUALS Expression {
   $$ = {
     kind: 'BinaryExpression',
-    lexpr: {
-      kind: 'Identifier',
-      name: $1.contents,
-    },
+    lexpr: $1,
     operator: '===',
     rexpr: $3,
   };
 }
 
 # TODO: need to tokenize reserved words like null, undefined, true, false
-# differently in order for this to work.
+# differently in order for this to work; or do a check in the action.
 PrimitiveValue → NumberValue { $$ = $1; }
 #PrimitiveValue → BooleanValue { $$ = $1; }
 #PrimitiveValue → NullValue { $$ = $1; }
