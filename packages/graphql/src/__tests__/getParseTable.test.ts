@@ -9,10 +9,6 @@ import {grammar, table} from '../document';
 
 describe('getParseTable()', () => {
   it('returns a ParseTable for the GraphQL grammar', () => {
-    expect(
-      stringifyParseTable(table) +
-        // Just to make the above actually readable...
-        stringifyGrammar(grammar),
-    ).toMatchSnapshot();
+    expect(stringifyParseTable(table)).toMatchSnapshot();
   });
 });
