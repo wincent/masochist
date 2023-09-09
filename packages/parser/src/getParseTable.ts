@@ -102,6 +102,8 @@ export default function getParseTable(
     ruleIndices[keyForRule(lhs, rhs)] = i;
   });
 
+  const conflictWarnings = new Set();
+
   // Map follow sets from extended grammar rules back onto original grammar
   // rules.
   //
@@ -145,7 +147,10 @@ export default function getParseTable(
           // Prefer shift, emit warning, like yacc/Bison (etc) do. See:
           // - https://www.ibm.com/docs/en/zos/2.2.0?topic=ambiguities-rules-help-remove
           // - https://www.gnu.org/software/bison/manual/bison.html#Shift_002fReduce
-          console.log(`[warning] getParseTable(): ${conflictMessage}`);
+          if (!conflictWarnings.has(conflictMessage)) {
+            console.log(`[warning] getParseTable(): ${conflictMessage}`);
+            conflictWarnings.add(conflictMessage);
+          }
         } else if (action.kind === 'Reduce' && action.rule !== ruleNumber) {
           // TODO: Prefer rule that appears earlier in grammar.
           throw new Error(`getParseTable(): ${conflictMessage}`);
