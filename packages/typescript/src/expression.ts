@@ -5,13 +5,12 @@ import {
   itemSetsToTransitionTable,
   parseDSL,
 } from '@masochist/parser';
-import fs from 'fs';
+import Bun from 'bun';
 import path from 'path';
 
-const grammarDeclaration = fs.readFileSync(
-  path.join(__dirname, '..', 'src', 'expression.grammar'),
-  'utf8',
-);
+const grammarDeclaration = await Bun.file(
+  path.join(import.meta.dir, '..', 'src', 'expression.grammar'),
+).text();
 
 export const unaugmentedGrammar = parseDSL(grammarDeclaration);
 export const grammar = getAugmentedGrammar(unaugmentedGrammar);

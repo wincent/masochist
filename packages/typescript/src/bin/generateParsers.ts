@@ -7,8 +7,8 @@
 
 import {print} from '@masochist/codegen';
 import {build} from '@masochist/parser';
+import Bun from 'bun';
 import path from 'path';
-import {promises as fs} from 'fs';
 
 import {
   grammar as expressionGrammar,
@@ -34,17 +34,17 @@ async function main() {
       name: filename.replace(/\.ts/, ''),
     });
     const source = print(ast);
-    const file = path.join(__dirname, '..', '..', 'src', filename);
+    const file = path.join(import.meta.dir, '..', '..', 'src', filename);
 
     // We write only if different, for the sake of Make...
     let current;
     try {
-      current = await fs.readFile(file, 'utf8');
+      current = await Bun.file(file).text();
     } catch {
       // Doesn't exist.
     }
     if (current !== source) {
-      await fs.writeFile(file, source, 'utf8');
+      await Bun.write(file, source);
     }
 
     console.table(stats);

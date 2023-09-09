@@ -8,12 +8,12 @@
     "@masochist/lexer": "*",
     "@masochist/parser": "*"
   },
-  "main": "lib/index.js",
+  "main": "src/index.ts",
   "author": "Greg Hurrell <greg@hurrell.net>",
   "license": "MIT",
   "scripts": {
-    "build": "cd ../.. && yarn build",
-    "format": "cd ../.. && yarn format",
-    "test": "cd ../.. && yarn test packages/typescript"
+    "build": "cd ../.. && bun tsc",
+    "format": "cd ../.. && bun format",
+    "test": "cd ../.. && bun test packages/typescript"
   }
 }

@@ -1,0 +1,98 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`union() prefers greedy matches 1`] = `
+"/**
+ * vim: set nomodifiable : DO NOT EDIT - edit "build.ts" instead
+ *
+ * @generated
+ */
+import {Token} from '@masochist/lexer';
+const REJECT = -1;
+const START = 0;
+export class Lexer {
+  input: string;
+  state: number;
+  tokenStart: number;
+  index: number;
+
+  /**
+   * @param {string} input
+   */
+  constructor(input: string) {
+    this.input = input;
+    this.state = START;
+    this.tokenStart = 0;
+    this.index = 0;
+  }
+
+  /**
+   * @param {string} name
+   * @param {number} end
+   * @param {string} input
+   */
+  emit(name: string, end: number, input: string) {
+    const token = new Token(name, this.tokenStart, end, input);
+    this.tokenStart = end;
+    this.index = end;
+    return token;
+  }
+
+  next() {
+    const input = this.input;
+    const length = input.length;
+    while (this.index <= length) {
+      const state = this.state;
+      let ch = this.index < length ? input.charCodeAt(this.index) : -1;
+      if (state === START) {
+        if (ch === 0x20) {
+          // IGNORED token.
+          this.index = this.index + 1;
+          this.tokenStart = this.index;
+          continue;
+        } else if (ch === 0x3d) {
+          this.state = 2;
+        } else {
+          this.state = REJECT;
+        }
+      } else if (state === 2) {
+        if (ch === 0x3d) {
+          this.state = 3;
+        } else {
+          this.state = START;
+          return this.emit('ASSIGN', this.index, input);
+        }
+      } else if (state === 3) {
+        if (ch === 0x3d) {
+          this.state = START;
+          return this.emit('STRICT_EQUALS', this.index + 1, input);
+        } else {
+          this.state = START;
+          return this.emit('EQUALS', this.index, input);
+        }
+      } else if (state === REJECT) {
+        throw new Error('Failed to recognize token');
+      } else {
+        throw new Error('Unexpected state');
+      }
+      this.index++;
+    }
+    return null;
+  }
+}
+/**
+ * @param {string} input
+ * @returns {Generator<Token, void, unknown>}
+ */
+export default function *lex(input: string) {
+  const lexer = new Lexer(input);
+  while (true) {
+    const token = lexer.next();
+    if (token === null) {
+      return;
+    } else {
+      yield token;
+    }
+  }
+}
+"
+`;

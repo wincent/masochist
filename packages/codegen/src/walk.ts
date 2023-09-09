@@ -2,32 +2,53 @@ import {invariant} from '@masochist/common';
 
 import type {
   Argument,
+  ArrayValue,
   AssignmentStatement,
+  BinaryExpression,
+  BitwiseNotExpression,
+  BooleanValue,
   BreakStatement,
+  CallExpression,
   ClassDeclaration,
   ContinueStatement,
   Declaration,
+  DecrementExpression,
   DocComment,
   EmptyStatement,
   ExportDefaultDeclaration,
   ExportNamedDeclaration,
+  Expression,
   ExpressionStatement,
   FunctionDeclaration,
   FunctionExpression,
+  Identifier,
   IfStatement,
+  IncrementExpression,
+  IndexExpression,
   ImportStatement,
   LabelStatement,
   LineComment,
+  LogicalNotExpression,
+  MemberExpression,
   MethodDefinition,
+  NewExpression,
   Node,
+  NullValue,
+  NumberValue,
+  ObjectValue,
   Program,
   PropertyDeclaration,
+  RawExpression,
   RawStatement,
   ReturnStatement,
+  StringValue,
   SwitchStatement,
   Statement,
+  TernaryExpression,
   ThrowStatement,
+  UndefinedValue,
   WhileStatement,
+  YieldExpression,
 } from './ast';
 
 type Visitor = {
@@ -47,6 +68,13 @@ type Visitor = {
 
   Argument?: (argument: Argument) => Argument | null | undefined;
   ['Argument:exit']?: (argument: Argument) => Argument | null | undefined;
+
+  AssignmentStatement?: (
+    assignment: AssignmentStatement,
+  ) => Statement | null | undefined;
+  ['AssignmentStatement:exit']?: (
+    assignment: AssignmentStatement,
+  ) => Statement | null | undefined;
 
   ClassDeclaration?: (
     declaration: ClassDeclaration,
@@ -117,14 +145,26 @@ export default function walk(
 ): Node | null | undefined {
   if (node.kind === 'Argument') {
     return walkArgument(node, visitor);
+  } else if (node.kind === 'ArrayValue') {
+    return walkArrayValue(node, visitor);
   } else if (node.kind === 'AssignmentStatement') {
     return walkAssignmentStatement(node, visitor);
+  } else if (node.kind === 'BinaryExpression') {
+    return walkBinaryExpression(node, visitor);
+  } else if (node.kind === 'BitwiseNotExpression') {
+    return walkBitwiseNotExpression(node, visitor);
+  } else if (node.kind === 'BooleanValue') {
+    return walkBooleanValue(node, visitor);
   } else if (node.kind === 'BreakStatement') {
     return walkBreakStatement(node, visitor);
+  } else if (node.kind === 'CallExpression') {
+    return walkCallExpression(node, visitor);
   } else if (node.kind === 'ClassDeclaration') {
     return walkClassDeclaration(node, visitor);
   } else if (node.kind === 'ContinueStatement') {
     return walkContinueStatement(node, visitor);
+  } else if (node.kind === 'DecrementExpression') {
+    return walkDecrementExpression(node, visitor);
   } else if (node.kind === 'DocComment') {
     return walkDocComment(node, visitor);
   } else if (node.kind === 'EmptyStatement') {
@@ -139,30 +179,58 @@ export default function walk(
     return walkFunctionDeclaration(node, visitor);
   } else if (node.kind === 'FunctionExpression') {
     return walkFunctionExpression(node, visitor);
+  } else if (node.kind === 'Identifier') {
+    return walkIdentifier(node, visitor);
   } else if (node.kind === 'IfStatement') {
     return walkIfStatement(node, visitor);
   } else if (node.kind === 'ImportStatement') {
     return walkImportStatement(node, visitor);
+  } else if (node.kind === 'IncrementExpression') {
+    return walkIncrementExpression(node, visitor);
+  } else if (node.kind === 'IndexExpression') {
+    return walkIndexExpression(node, visitor);
   } else if (node.kind === 'LabelStatement') {
     return walkLabelStatement(node, visitor);
   } else if (node.kind === 'LineComment') {
     return walkLineComment(node, visitor);
+  } else if (node.kind === 'LogicalNotExpression') {
+    return walkLogicalNotExpression(node, visitor);
+  } else if (node.kind === 'MemberExpression') {
+    return walkMemberExpression(node, visitor);
   } else if (node.kind === 'MethodDefinition') {
     return walkMethodDefinition(node, visitor);
+  } else if (node.kind === 'NewExpression') {
+    return walkNewExpression(node, visitor);
+  } else if (node.kind === 'NullValue') {
+    return walkNullValue(node, visitor);
+  } else if (node.kind === 'NumberValue') {
+    return walkNumberValue(node, visitor);
+  } else if (node.kind === 'ObjectValue') {
+    return walkObjectValue(node, visitor);
   } else if (node.kind === 'Program') {
     return walkProgram(node, visitor);
   } else if (node.kind === 'PropertyDeclaration') {
     return walkPropertyDeclaration(node, visitor);
   } else if (node.kind === 'ReturnStatement') {
     return walkReturnStatement(node, visitor);
+  } else if (node.kind === 'RawExpression') {
+    return walkRawExpression(node, visitor);
   } else if (node.kind === 'RawStatement') {
     return walkRawStatement(node, visitor);
+  } else if (node.kind === 'StringValue') {
+    return walkStringValue(node, visitor);
   } else if (node.kind === 'SwitchStatement') {
     return walkSwitchStatement(node, visitor);
+  } else if (node.kind === 'TernaryExpression') {
+    return walkTernaryExpression(node, visitor);
   } else if (node.kind === 'ThrowStatement') {
     return walkThrowStatement(node, visitor);
+  } else if (node.kind === 'UndefinedValue') {
+    return walkUndefinedValue(node, visitor);
   } else if (node.kind === 'WhileStatement') {
     return walkWhileStatement(node, visitor);
+  } else if (node.kind === 'YieldExpression') {
+    return walkYieldExpression(node, visitor);
   } else {
     // Use TS to enforce exhaustiveness of this conditional.
     unreachable(node);
@@ -232,10 +300,73 @@ function walkArgument(
   }
 }
 
-function walkAssignmentStatement(
-  _statement: AssignmentStatement,
+function walkArrayValue(
+  _value: ArrayValue,
   _visitor: Visitor,
+): Expression | null | undefined {
+  return undefined; // Unimplemented.
+}
+
+function walkAssignmentStatement(
+  statement: AssignmentStatement,
+  visitor: Visitor,
 ): Statement | null | undefined {
+  // Pre-order.
+  let changed = false;
+  let newStatement = visitor.AssignmentStatement?.(statement);
+  if (newStatement === null) {
+    return null;
+  } else if (newStatement === undefined) {
+    newStatement = statement;
+  } else if (newStatement.kind !== 'AssignmentStatement') {
+    // Won't do post-order if node kind changes in pre-order; instead, walk
+    // replacement.
+    const replacement = walk(newStatement, visitor);
+    assertIsStatement(replacement);
+    return replacement;
+  } else {
+    changed = true;
+  }
+
+  // Children.
+  const newChild = walk(newStatement.rhs, visitor);
+  if (newChild === null) {
+    return null;
+  } else if (newChild !== undefined) {
+    assertIsExpression(newChild);
+    newStatement.rhs = newChild;
+    changed = true;
+  }
+
+  // Post-order.
+  const finalStatement = visitor['AssignmentStatement:exit']?.(newStatement);
+  if (finalStatement === null) {
+    return null;
+  } else if (finalStatement === undefined) {
+    return changed ? newStatement : undefined;
+  } else {
+    return finalStatement;
+  }
+}
+
+function walkBinaryExpression(
+  _expression: BinaryExpression,
+  _visitor: Visitor,
+): Expression | null | undefined {
+  return undefined; // Unimplemented.
+}
+
+function walkBitwiseNotExpression(
+  _expression: BitwiseNotExpression,
+  _visitor: Visitor,
+): Expression | null | undefined {
+  return undefined; // Unimplemented.
+}
+
+function walkBooleanValue(
+  _value: BooleanValue,
+  _visitor: Visitor,
+): Expression | null | undefined {
   return undefined; // Unimplemented.
 }
 
@@ -243,6 +374,13 @@ function walkBreakStatement(
   _statement: BreakStatement,
   _visitor: Visitor,
 ): Statement | null | undefined {
+  return undefined; // Unimplemented.
+}
+
+function walkCallExpression(
+  _expression: CallExpression,
+  _visitor: Visitor,
+): Expression | null | undefined {
   return undefined; // Unimplemented.
 }
 
@@ -300,6 +438,13 @@ function walkContinueStatement(
   _statement: ContinueStatement,
   _visitor: Visitor,
 ): Statement | null | undefined {
+  return undefined; // Unimplemented.
+}
+
+function walkDecrementExpression(
+  _expression: DecrementExpression,
+  _visitor: Visitor,
+): Expression | null | undefined {
   return undefined; // Unimplemented.
 }
 
@@ -536,10 +681,24 @@ function walkFunctionExpression(
   }
 }
 
+function walkIdentifier(
+  _Identifier: Identifier,
+  _visitor: Visitor,
+): Expression | null | undefined {
+  return undefined; // Unimplemented.
+}
+
 function walkIfStatement(
   _statement: IfStatement,
   _visitor: Visitor,
 ): Statement | null | undefined {
+  return undefined; // Unimplemented.
+}
+
+function walkIncrementExpression(
+  _expression: IncrementExpression,
+  _visitor: Visitor,
+): Expression | null | undefined {
   return undefined; // Unimplemented.
 }
 
@@ -577,6 +736,13 @@ function walkImportStatement(
   }
 }
 
+function walkIndexExpression(
+  _expression: IndexExpression,
+  _visitor: Visitor,
+): Expression | null | undefined {
+  return undefined; // Unimplemented.
+}
+
 function walkLabelStatement(
   _statement: LabelStatement,
   _visitor: Visitor,
@@ -588,6 +754,20 @@ function walkLineComment(
   _statement: LineComment,
   _visitor: Visitor,
 ): Statement | null | undefined {
+  return undefined; // Unimplemented.
+}
+
+function walkLogicalNotExpression(
+  _expression: LogicalNotExpression,
+  _visitor: Visitor,
+): Expression | null | undefined {
+  return undefined; // Unimplemented.
+}
+
+function walkMemberExpression(
+  _expression: MemberExpression,
+  _visitor: Visitor,
+): Expression | null | undefined {
   return undefined; // Unimplemented.
 }
 
@@ -630,6 +810,34 @@ function walkMethodDefinition(
   }
 }
 
+function walkNewExpression(
+  _expression: NewExpression,
+  _visitor: Visitor,
+): Expression | null | undefined {
+  return undefined; // Unimplemented.
+}
+
+function walkNullValue(
+  _value: NullValue,
+  _visitor: Visitor,
+): Expression | null | undefined {
+  return undefined; // Unimplemented.
+}
+
+function walkNumberValue(
+  _value: NumberValue,
+  _visitor: Visitor,
+): Expression | null | undefined {
+  return undefined; // Unimplemented.
+}
+
+function walkObjectValue(
+  _value: ObjectValue,
+  _visitor: Visitor,
+): Expression | null | undefined {
+  return undefined; // Unimplemented.
+}
+
 function walkPropertyDeclaration(
   declaration: PropertyDeclaration,
   visitor: Visitor,
@@ -659,48 +867,18 @@ function walkPropertyDeclaration(
   }
 }
 
-function assertIsArgument(
-  node: Node | null | undefined,
-): asserts node is Argument | null | undefined {
-  if (node != null) {
-    invariant(node.kind === 'Argument');
-  }
+function walkStringValue(
+  _value: StringValue,
+  _visitor: Visitor,
+): Expression | null | undefined {
+  return undefined; // Unimplemented.
 }
 
-function assertIsDeclaration(
-  node: Node | null | undefined,
-): asserts node is Declaration | null | undefined {
-  if (node != null) {
-    invariant(
-      node.kind === 'ClassDeclaration' || node.kind === 'FunctionDeclaration',
-    );
-  }
-}
-
-function assertIsStatement(
-  node: Node | null | undefined,
-): asserts node is Statement | null | undefined {
-  if (node != null) {
-    invariant(
-      node.kind === 'AssignmentStatement' ||
-        node.kind === 'BreakStatement' ||
-        node.kind === 'ClassDeclaration' ||
-        node.kind === 'ContinueStatement' ||
-        node.kind === 'DocComment' ||
-        node.kind === 'EmptyStatement' ||
-        node.kind === 'ExportDefaultDeclaration' ||
-        node.kind === 'ExpressionStatement' ||
-        node.kind === 'FunctionDeclaration' ||
-        node.kind === 'IfStatement' ||
-        node.kind === 'ImportStatement' ||
-        node.kind === 'LabelStatement' ||
-        node.kind === 'LineComment' ||
-        node.kind === 'ReturnStatement' ||
-        node.kind === 'SwitchStatement' ||
-        node.kind === 'ThrowStatement' ||
-        node.kind === 'WhileStatement',
-    );
-  }
+function walkUndefinedValue(
+  _value: UndefinedValue,
+  _visitor: Visitor,
+): Expression | null | undefined {
+  return undefined; // Unimplemented.
 }
 
 function walkProgram(
@@ -740,6 +918,13 @@ function walkProgram(
   }
 }
 
+function walkRawExpression(
+  _expression: RawExpression,
+  _visitor: Visitor,
+): Expression | null | undefined {
+  return undefined; // Unimplemented.
+}
+
 function walkRawStatement(
   _statement: RawStatement,
   _visitor: Visitor,
@@ -761,6 +946,13 @@ function walkSwitchStatement(
   return undefined; // Unimplemented.
 }
 
+function walkTernaryExpression(
+  _expression: TernaryExpression,
+  _visitor: Visitor,
+): Expression | null | undefined {
+  return undefined; // Unimplemented.
+}
+
 function walkThrowStatement(
   _statement: ThrowStatement,
   _visitor: Visitor,
@@ -773,4 +965,85 @@ function walkWhileStatement(
   _visitor: Visitor,
 ): Statement | null | undefined {
   return undefined; // Unimplemented.
+}
+
+function walkYieldExpression(
+  _expression: YieldExpression,
+  _visitor: Visitor,
+): Expression | null | undefined {
+  return undefined; // Unimplemented.
+}
+
+function assertIsArgument(
+  node: Node | null | undefined,
+): asserts node is Argument | null | undefined {
+  if (node != null) {
+    invariant(node.kind === 'Argument');
+  }
+}
+
+function assertIsDeclaration(
+  node: Node | null | undefined,
+): asserts node is Declaration | null | undefined {
+  if (node != null) {
+    invariant(
+      node.kind === 'ClassDeclaration' || node.kind === 'FunctionDeclaration',
+    );
+  }
+}
+
+function assertIsExpression(
+  node: Node | null | undefined,
+): asserts node is Expression | null | undefined {
+  if (node != null) {
+    invariant(
+      node.kind === 'BinaryExpression' ||
+        node.kind === 'CallExpression' ||
+        node.kind === 'FunctionExpression' ||
+        node.kind === 'Identifier' ||
+        node.kind === 'IndexExpression' ||
+        node.kind === 'MemberExpression' ||
+        node.kind === 'NewExpression' ||
+        node.kind === 'ArrayValue' ||
+        node.kind === 'BooleanValue' ||
+        node.kind === 'NullValue' ||
+        node.kind === 'NumberValue' ||
+        node.kind === 'ObjectValue' ||
+        node.kind === 'StringValue' ||
+        node.kind === 'UndefinedValue' ||
+        node.kind === 'RawExpression' ||
+        node.kind === 'TernaryExpression' ||
+        node.kind === 'BitwiseNotExpression' ||
+        node.kind === 'DecrementExpression' ||
+        node.kind === 'IncrementExpression' ||
+        node.kind === 'LogicalNotExpression' ||
+        node.kind === 'YieldExpression',
+    );
+  }
+}
+
+function assertIsStatement(
+  node: Node | null | undefined,
+): asserts node is Statement | null | undefined {
+  if (node != null) {
+    invariant(
+      node.kind === 'AssignmentStatement' ||
+        node.kind === 'BreakStatement' ||
+        node.kind === 'ClassDeclaration' ||
+        node.kind === 'ContinueStatement' ||
+        node.kind === 'DocComment' ||
+        node.kind === 'EmptyStatement' ||
+        node.kind === 'ExportDefaultDeclaration' ||
+        node.kind === 'ExpressionStatement' ||
+        node.kind === 'FunctionDeclaration' ||
+        node.kind === 'IfStatement' ||
+        node.kind === 'ImportStatement' ||
+        node.kind === 'LabelStatement' ||
+        node.kind === 'LineComment' ||
+        node.kind === 'ReturnStatement' ||
+        node.kind === 'SwitchStatement' ||
+        node.kind === 'ThrowStatement' ||
+        node.kind === 'WhileStatement',
+    );
+  }
 }

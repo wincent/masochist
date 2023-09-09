@@ -1,0 +1,7 @@
+# See: https://bun.sh/docs/install/lockfile
+# Requires:
+#
+#   git config diff.lockb.textconv bun
+#   git config diff.lockb.binary true
+#
+*.lockb diff=lockb

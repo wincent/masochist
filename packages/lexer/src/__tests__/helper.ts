@@ -1,4 +1,5 @@
 import {ast, print, walk} from '@masochist/codegen';
+import assert from 'node:assert';
 import {createContext, runInContext} from 'node:vm';
 
 import Token from '../Token';
@@ -36,12 +37,22 @@ export function getLexer(
 
     // Hoist function out from `export default` declaration.
     // ie. ExportDefaultDeclaration becomes FunctionDeclaration.
-    // ie. `export default function *lex()` -> `function *lex()`
+    // ie. `export default function *lex()` -> `lex = function *()`
     ExportDefaultDeclaration(declaration: ExportDefaultDeclaration) {
-      return declaration.declaration;
+      if (declaration.declaration.kind === 'FunctionDeclaration') {
+        assert(declaration.declaration.name === '*lex');
+        return ast.assign(null, 'lex', {
+          kind: 'FunctionExpression',
+          arguments: declaration.declaration.arguments,
+          name: '*',
+          body: declaration.declaration.body,
+        });
+      } else {
+        return null;
+      }
     },
 
-    // Same for `export class Lexer` -> `class Lexer`.
+    // Turn `export class Lexer` -> `class Lexer`.
     ExportNamedDeclaration(declaration: ExportNamedDeclaration) {
       return declaration.declaration;
     },
@@ -51,8 +62,9 @@ export function getLexer(
       return null;
     },
 
-    // Strip TS type annotations from FunctionDeclaration arguments.
-    // ie. `function *lex(input: string)` -> `function *lex(input)`
+    // Strip TS type annotations from FunctionDeclaration and
+    // FunctionExpression arguments.
+    // ie. `function *(input: string)` -> `function *(input)`
     // ie. `constructor(input: string)` -> `constructor(input)`
     Argument(argument: Argument) {
       if (argument.type) {

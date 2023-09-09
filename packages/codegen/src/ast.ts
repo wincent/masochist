@@ -5,7 +5,7 @@ import {invariant} from '@masochist/common';
 
 export type Node =
   | Argument
-  | FunctionExpression
+  | Expression
   | MethodDefinition
   | Program
   | PropertyDeclaration
@@ -17,7 +17,7 @@ export type Argument = {
   type?: string;
 };
 
-type ArrayValue = {
+export type ArrayValue = {
   kind: 'ArrayValue';
   items: Array<Expression>;
 };
@@ -34,7 +34,7 @@ export type AssignmentStatement = {
 // TODO: support more bases
 type Base = 10 | 16;
 
-type BinaryExpression = {
+export type BinaryExpression = {
   kind: 'BinaryExpression';
   lexpr: Expression;
   operator: BinaryOperator;
@@ -54,12 +54,12 @@ type BinaryOperator =
   | '||'
   | '+';
 
-type BitwiseNotExpression = {
+export type BitwiseNotExpression = {
   kind: 'BitwiseNotExpression';
   operand: Expression;
 };
 
-type BooleanValue = {
+export type BooleanValue = {
   kind: 'BooleanValue';
   value: boolean;
 };
@@ -102,7 +102,7 @@ export type ContinueStatement = {
 
 export type Declaration = ClassDeclaration | FunctionDeclaration;
 
-type DecrementExpression = {
+export type DecrementExpression = {
   kind: 'DecrementExpression';
   operand: Expression;
   position: 'postfix' | 'prefix';
@@ -160,7 +160,7 @@ export type FunctionExpression = {
   body: Array<Statement>;
 };
 
-type Identifier = {
+export type Identifier = {
   kind: 'Identifier';
   name: string;
 };
@@ -200,13 +200,13 @@ export type ImportStatement = {
   source: StringValue;
 };
 
-type IncrementExpression = {
+export type IncrementExpression = {
   kind: 'IncrementExpression';
   operand: Expression;
   position: 'postfix' | 'prefix';
 };
 
-type IndexExpression = {
+export type IndexExpression = {
   kind: 'IndexExpression';
   index: Expression;
   indexee: Expression;
@@ -223,12 +223,12 @@ export type LineComment = {
   contents: string;
 };
 
-type LogicalNotExpression = {
+export type LogicalNotExpression = {
   kind: 'LogicalNotExpression';
   operand: Expression;
 };
 
-type MemberExpression = {
+export type MemberExpression = {
   kind: 'MemberExpression';
   object: Expression;
   property: Expression;
@@ -240,7 +240,7 @@ export type MethodDefinition = {
   value: FunctionExpression;
 };
 
-type NewExpression = {
+export type NewExpression = {
   kind: 'NewExpression';
   object: Expression;
   arguments: Array<Expression>;
@@ -250,7 +250,7 @@ export type NullValue = {
   kind: 'NullValue';
 };
 
-type NumberValue = {
+export type NumberValue = {
   kind: 'NumberValue';
   value: number;
   base: Base;
@@ -285,7 +285,7 @@ export type PropertyDeclaration = {
  * An escape hatch for emittng raw text in an expression position without having
  * to implement full support for it in this module or in the printer.
  */
-type RawExpression = {
+export type RawExpression = {
   kind: 'RawExpression';
   expression: string;
 };
@@ -339,7 +339,7 @@ export type SwitchStatement = {
   condition: Expression;
 };
 
-type TernaryExpression = {
+export type TernaryExpression = {
   kind: 'TernaryExpression';
   condition: Expression;
   consequent: Expression;
@@ -352,11 +352,11 @@ type UnaryExpression =
   | IncrementExpression
   | LogicalNotExpression;
 
-type UndefinedValue = {
+export type UndefinedValue = {
   kind: 'UndefinedValue';
 };
 
-type StringValue = {
+export type StringValue = {
   kind: 'StringValue';
   value: string;
 };
@@ -372,7 +372,7 @@ export type WhileStatement = {
   block: Array<Statement>;
 };
 
-type YieldExpression = {
+export type YieldExpression = {
   kind: 'YieldExpression';
   expression?: Expression;
 };

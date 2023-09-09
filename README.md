@@ -29,24 +29,23 @@ Points of interest and areas for exploration:
 
 ## Development
 
-Most development tasks can be completed with `yarn`:
+Most development tasks can be completed with `bun`:
 
-- `corepack enable`: To ensure appropriate Yarn version selection[^once].
-- `yarn build`: Performs TypeScript build (ie. `tsc --build`).
-- `yarn build:clean`: Removes TypeScript build products (ie. `tsc --build --clean`).
-- `yarn build:dry`: Report what would be built without making changes (ie. `tsc --build --dry`).
-- `yarn build:force`: Build even if built TypeScript projects are up-to-date (ie. `tsc --build --force`).
-- `yarn build:watch`: Build TypeScript in "watch" mode (ie. `tsc --build --watch`).
-- `yarn format`: Format all source files with Prettier.
-- `yarn format:check`: Checking formatting of all source files.
-- `yarn lint`: Run TypeScript (`tsc`-powered) lints.
-- `yarn test`: Run test suite using Jest.
+- `bun tsc`: Performs TypeScript build (ie. `tsc --build --emitDeclarationOnly`).
+- `bun tsc:clean`: Removes TypeScript build products (ie. `tsc --build --clean`).
+- `bun tsc:dry`: Report what would be built without making changes (ie. `tsc --build --dry`).
+- `bun tsc:force`: Build even if built TypeScript projects are up-to-date (ie. `tsc --build --force --emitDeclarationOnly`).
+- `bun tsc:watch`: Build TypeScript in "watch" mode (ie. `tsc --build --watch --emitDeclarationOnly`).
+- `bun format`: Format all source files with Prettier.
+- `bun format:check`: Checking formatting of all source files.
+- `bun lint`: Run TypeScript (`tsc`-powered) lints.
+- `bun test`: Run test suite.
 
 [^once]: Needed only once per checkout.
 
 A Make-based interface also exists for some operations:
 
-- `make`: Performs TypeScript build (via `tsc build`) if necessary.
+- `make`: Performs TypeScript build if necessary.
 - `make diagrams`: Builds state machine diagrams in `packages/graphql/lexer/diagrams/`.
 - `make graphql`: Generates static lexer (`packages/graphql/src/lex.ts`).
 - `make clean`: Removes all built products (TypeScript outputs + lexer diagrams).

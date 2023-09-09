@@ -1,3 +1,4 @@
+import Bun from 'bun';
 import {promises as fs} from 'fs';
 import path from 'path';
 import {fileURLToPath} from 'url';
@@ -20,10 +21,9 @@ async function main(options = {}) {
   for (const entry of await fs.readdir(packages, {withFileTypes: true})) {
     if (entry.isDirectory()) {
       try {
-        const packageJSON = await fs.readFile(
+        const packageJSON = await Bun.file(
           path.join(packages, entry.name, 'package.json'),
-          'utf8',
-        );
+        ).text();
         const parsed = JSON.parse(packageJSON);
         if (parsed.dependencies) {
           for (const dependency of Object.keys(parsed.dependencies)) {

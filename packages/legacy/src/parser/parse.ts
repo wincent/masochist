@@ -1,4 +1,4 @@
-import {Tokens, isIgnored, lex} from '..';
+import {Tokens, isIgnored, lex} from '../index';
 
 import Parser, {
   Grammar,

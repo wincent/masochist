@@ -7,92 +7,44 @@ on:
     branches: [next]
 
 jobs:
-  check-lockfile-and-cache:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
-    steps:
-      - uses: actions/checkout@v3
-      - name: Run actions/setup-node@v3 (${{ matrix.node-version}})
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: corepack enable
-        run: corepack enable
-      - name: yarn
-        run: yarn --immutable --immutable-cache --check-cache
-
   format-check:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
     steps:
       - uses: actions/checkout@v3
-      - name: Run actions/setup-node@v3 (${{ matrix.node-version}})
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: corepack enable
-        run: corepack enable
-      - name: yarn
-        run: yarn --immutable --immutable-cache
-      - name: yarn format:check
-        run: yarn format:check
+      - uses: oven-sh/setup-bun@v1
+      - name: bun
+        run: bun install --frozen-lockfile
+      - name: bun format:check
+        run: bun format:check
 
   lint:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
     steps:
       - uses: actions/checkout@v3
-      - name: Run actions/setup-node@v3 (${{ matrix.node-version}})
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: corepack enable
-        run: corepack enable
-      - name: yarn
-        run: yarn --immutable --immutable-cache
-      - name: yarn lint
-        run: yarn lint
+      - uses: oven-sh/setup-bun@v1
+      - name: bun
+        run: bun install --frozen-lockfile
+      - name: bun lint
+        run: bun lint
 
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
     steps:
       - uses: actions/checkout@v3
-      - name: Run actions/setup-node@v3 (${{ matrix.node-version}})
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: corepack enable
-        run: corepack enable
-      - name: yarn
-        run: yarn --immutable --immutable-cache
-      - name: yarn build
-        run: yarn build
+      - uses: oven-sh/setup-bun@v1
+      - name: bun
+        run: bun install --frozen-lockfile
+      - name: bun tsc
+        run: bun tsc
 
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
     steps:
       - uses: actions/checkout@v3
-      - name: Run actions/setup-node@v3 (${{ matrix.node-version}})
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: corepack enable
-        run: corepack enable
-      - name: yarn
-        run: yarn --immutable --immutable-cache
-      - name: yarn build
-        run: yarn build # Prime cache.
-      - name: yarn test
-        run: yarn test
+      - uses: oven-sh/setup-bun@v1
+      - name: bun
+        run: bun install --frozen-lockfile
+      - name: bun tsc
+        run: bun tsc # Prime cache.
+      - name: bun test
+        run: bun test

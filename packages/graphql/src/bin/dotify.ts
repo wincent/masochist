@@ -20,6 +20,7 @@ import {
   sortEdges,
   toTransitionTable,
 } from '@masochist/lexer';
+import Bun from 'bun';
 import {promises as fs} from 'fs';
 import path from 'path';
 
@@ -142,12 +143,12 @@ async function main() {
       );
       let current;
       try {
-        current = await fs.readFile(dot, 'utf8');
+        current = await Bun.file(dot).text();
       } catch {
         // Doesn't exist.
       }
       if (current !== contents) {
-        await fs.writeFile(dot, contents, 'utf8');
+        await Bun.write(dot, contents);
       }
     }
 
@@ -157,7 +158,7 @@ async function main() {
     README += `![${name}](./${name}-light.png#gh-light-mode-only)\n`;
   }
 
-  await fs.writeFile(path.join(directory, 'README.md'), README, 'utf8');
+  await Bun.write(path.join(directory, 'README.md'), README);
 }
 
 main().catch((error) => {

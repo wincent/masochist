@@ -1,34 +1,35 @@
 {
   "name": "masochist-experimental",
   "version": "0.0.1",
-  "description": "Website infrastructure for overengineers",
-  "main": "index.js",
   "author": "Greg Hurrell <greg@hurrell.net>",
-  "license": "MIT",
-  "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "main": "index.ts",
   "devDependencies": {
-    "@jest/globals": "*",
-    "@types/node": "*",
-    "jest": "*",
-    "jest-config": "*",
+    "bun-types": "*",
     "prettier": "*",
-    "prettier-v2-for-jest-inline-snapshots": "npm:prettier@^2",
-    "ts-jest": "*",
     "typescript": "*"
   },
+  "description": "Website infrastructure for overengineers",
+  "license": "MIT",
+  "private": true,
   "scripts": {
-    "build": "tsc --build",
-    "build:clean": "tsc --build --clean",
-    "build:dry": "tsc --build --dry",
-    "build:force": "tsc --build --force",
-    "build:watch": "tsc --build --watch",
-    "format": "yarn run prettier --log-level warn --write '**/*.{graphql,js,json,md,mjs,ts,yml}'",
-    "format:check": "yarn run prettier --log-level warn --check '**/*.{graphql,js,json,md,mjs,ts,yml}'",
-    "lint": "support/lint.sh",
-    "test": "jest"
+    "benchmark": "cd packages/benchmark && bun benchmark",
+    "benchmark:dynamic:lexer": "cd packages/benchmark && bun benchmark:dynamic:lexer",
+    "benchmark:reference:lexer": "cd packages/benchmark && bun benchmark:reference:lexer",
+    "benchmark:static:lexer": "cd packages/benchmark && bun benchmark:static:lexer",
+    "benchmark:dynamic:parser": "cd packages/benchmark && bun benchmark:dynamic:parser",
+    "benchmark:reference:parser": "cd packages/benchmark && bun benchmark:reference:parser",
+    "benchmark:table:parser": "cd packages/benchmark && bun benchmark:table:parser",
+    "benchmark:static:parser": "cd packages/benchmark && bun benchmark:static:parser",
+    "tsc": "tsc --build --emitDeclarationOnly",
+    "tsc:clean": "tsc --build --clean",
+    "tsc:dry": "tsc --build --dry",
+    "tsc:force": "tsc --build --force --emitDeclarationOnly",
+    "tsc:watch": "tsc --build --watch --emitDeclarationOnly",
+    "format": "prettier --log-level warn --write '**/*.{graphql,js,json,md,mjs,ts,yml}'",
+    "format:check": "prettier --log-level warn --check '**/*.{graphql,js,json,md,mjs,ts,yml}'",
+    "lint": "support/lint.sh"
   },
-  "packageManager": "yarn@3.6.3"
+  "workspaces": [
+    "packages/*"
+  ]
 }

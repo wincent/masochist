@@ -1,12 +1,12 @@
 console.log(
   'Usage:\n' +
     '\n' +
-    '    yarn benchmark:dynamic:lexer\n' +
-    '    yarn benchmark:reference:lexer\n' +
-    '    yarn benchmark:static:lexer\n' +
+    '    bun benchmark:dynamic:lexer\n' +
+    '    bun benchmark:reference:lexer\n' +
+    '    bun benchmark:static:lexer\n' +
     '\n' +
-    '    yarn benchmark:dynamic:parser\n' +
-    '    yarn benchmark:reference:parser\n' +
-    '    yarn benchmark:table:parser\n' +
-    '    yarn benchmark:static:parser\n',
+    '    bun benchmark:dynamic:parser\n' +
+    '    bun benchmark:reference:parser\n' +
+    '    bun benchmark:table:parser\n' +
+    '    bun benchmark:static:parser\n',
 );

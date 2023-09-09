@@ -1,0 +1,33 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parseExpression() parses a strict equality binary expression 1`] = `
+{
+  "kind": "BinaryExpression",
+  "lexpr": {
+    "kind": "Identifier",
+    "name": "foo",
+  },
+  "operator": "===",
+  "rexpr": {
+    "base": 10,
+    "kind": "NumberValue",
+    "value": 1.5,
+  },
+}
+`;
+
+exports[`parseExpression() parses expressions using parentheses 1`] = `
+{
+  "kind": "BinaryExpression",
+  "lexpr": {
+    "kind": "Identifier",
+    "name": "foo",
+  },
+  "operator": "===",
+  "rexpr": {
+    "base": 10,
+    "kind": "NumberValue",
+    "value": 1.5,
+  },
+}
+`;

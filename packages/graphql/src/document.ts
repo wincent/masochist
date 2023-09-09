@@ -14,13 +14,12 @@ import {
   itemSetsToTransitionTable,
   parseDSL,
 } from '@masochist/parser';
-import fs from 'fs';
+import Bun from 'bun';
 import path from 'path';
 
-const grammarDeclaration = fs.readFileSync(
-  path.join(__dirname, '..', 'src', 'document.grammar'),
-  'utf8',
-);
+const grammarDeclaration = await Bun.file(
+  path.join(import.meta.dir, '..', 'src', 'document.grammar'),
+).text();
 
 // Numerous tests rely on the unaugmented grammar.
 export const unaugmentedGrammar = parseDSL(grammarDeclaration);
