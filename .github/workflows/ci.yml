@@ -44,7 +44,5 @@ jobs:
       - uses: oven-sh/setup-bun@v1
       - name: bun
         run: bun install --frozen-lockfile
-      - name: bun tsc
-        run: bun tsc # Prime cache.
       - name: bun test
         run: bun test
