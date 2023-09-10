@@ -37,14 +37,14 @@ export function getLexer(
 
     // Hoist function out from `export default` declaration.
     // ie. ExportDefaultDeclaration becomes FunctionDeclaration.
-    // ie. `export default function *lex()` -> `lex = function *()`
+    // ie. `export default function *lex()` -> `lex = function *lex()`
     ExportDefaultDeclaration(declaration: ExportDefaultDeclaration) {
       if (declaration.declaration.kind === 'FunctionDeclaration') {
         assert(declaration.declaration.name === '*lex');
         return ast.assign(null, 'lex', {
           kind: 'FunctionExpression',
           arguments: declaration.declaration.arguments,
-          name: '*',
+          name: declaration.declaration.name,
           body: declaration.declaration.body,
         });
       } else {
