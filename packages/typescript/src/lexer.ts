@@ -52,6 +52,26 @@ export const LINE_TERMINATOR = /\n|\r\n|\r/; // Note: we require semicolons.
 export const WHITESPACE = /[\t ]+/;
 
 export default union({
+  // Order matters; reserved keywords must come before identifiers.
+  CLASS,
+  CONST,
+  CONTINUE,
+  DEFAULT,
+  ELSE,
+  EXPORT,
+  FALSE,
+  FOR,
+  FUNCTION,
+  IF,
+  IMPORT,
+  LET,
+  NEW,
+  RETURN,
+  THIS,
+  TRUE,
+  WHILE,
+  YIELD,
+
   ASSIGN,
   BANG,
   CLOSING_BRACE,
@@ -72,6 +92,7 @@ export default union({
   OPENING_BRACKET,
   OPENING_PAREN,
   REST,
+  SEMICOLON,
   STRICT_EQUALS,
 
   IGNORED: ignore(LINE_TERMINATOR, WHITESPACE),

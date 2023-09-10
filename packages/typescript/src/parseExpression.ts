@@ -13,10 +13,7 @@ function r1($1) {
   return $1;
 }
 function r2($1) {
-  return {
-    kind: 'Identifier',
-    name: $1.contents,
-  };
+  return $1;
 }
 function r3($1) {
   return $1;
@@ -33,9 +30,15 @@ function r5($1, _$2, $3) {
   };
 }
 function r6($1) {
-  return $1;
+  return {
+    kind: 'Identifier',
+    name: $1.contents,
+  };
 }
 function r7($1) {
+  return $1;
+}
+function r8($1) {
   return {
     kind: 'NumberValue',
     value: parseFloat($1.contents),
@@ -46,15 +49,15 @@ const actions = [
   {
     IDENTIFIER: {
       kind: 'Shift',
-      state: 3,
+      state: 4,
     },
     NUMBER: {
       kind: 'Shift',
-      state: 6,
+      state: 7,
     },
     OPENING_PAREN: {
       kind: 'Shift',
-      state: 7,
+      state: 8,
     },
   },
   {
@@ -63,7 +66,7 @@ const actions = [
     },
     STRICT_EQUALS: {
       kind: 'Shift',
-      state: 8,
+      state: 9,
     },
   },
   {
@@ -97,20 +100,6 @@ const actions = [
   {
     STRICT_EQUALS: {
       kind: 'Reduce',
-      rule: 3,
-    },
-    ['$']: {
-      kind: 'Reduce',
-      rule: 3,
-    },
-    CLOSING_PAREN: {
-      kind: 'Reduce',
-      rule: 3,
-    },
-  },
-  {
-    STRICT_EQUALS: {
-      kind: 'Reduce',
       rule: 6,
     },
     ['$']: {
@@ -125,6 +114,20 @@ const actions = [
   {
     STRICT_EQUALS: {
       kind: 'Reduce',
+      rule: 3,
+    },
+    ['$']: {
+      kind: 'Reduce',
+      rule: 3,
+    },
+    CLOSING_PAREN: {
+      kind: 'Reduce',
+      rule: 3,
+    },
+  },
+  {
+    STRICT_EQUALS: {
+      kind: 'Reduce',
       rule: 7,
     },
     ['$']: {
@@ -134,50 +137,64 @@ const actions = [
     CLOSING_PAREN: {
       kind: 'Reduce',
       rule: 7,
+    },
+  },
+  {
+    STRICT_EQUALS: {
+      kind: 'Reduce',
+      rule: 8,
+    },
+    ['$']: {
+      kind: 'Reduce',
+      rule: 8,
+    },
+    CLOSING_PAREN: {
+      kind: 'Reduce',
+      rule: 8,
     },
   },
   {
     IDENTIFIER: {
       kind: 'Shift',
-      state: 3,
+      state: 4,
     },
     NUMBER: {
       kind: 'Shift',
-      state: 6,
+      state: 7,
     },
     OPENING_PAREN: {
       kind: 'Shift',
-      state: 7,
+      state: 8,
     },
   },
   {
     IDENTIFIER: {
       kind: 'Shift',
-      state: 3,
+      state: 4,
     },
     NUMBER: {
       kind: 'Shift',
-      state: 6,
+      state: 7,
     },
     OPENING_PAREN: {
       kind: 'Shift',
-      state: 7,
+      state: 8,
     },
   },
   {
     CLOSING_PAREN: {
       kind: 'Shift',
-      state: 11,
+      state: 12,
     },
     STRICT_EQUALS: {
       kind: 'Shift',
-      state: 8,
+      state: 9,
     },
   },
   {
     STRICT_EQUALS: {
       kind: 'Shift',
-      state: 8,
+      state: 9,
     },
     ['$']: {
       kind: 'Reduce',
@@ -207,8 +224,9 @@ const gotos = [
   {
     BinaryExpression: 2,
     Expression: 1,
-    NumberValue: 5,
-    PrimitiveValue: 4,
+    Identifier: 3,
+    NumberValue: 6,
+    PrimitiveValue: 5,
   },
   {},
   {},
@@ -216,17 +234,20 @@ const gotos = [
   {},
   {},
   {},
-  {
-    BinaryExpression: 2,
-    Expression: 9,
-    NumberValue: 5,
-    PrimitiveValue: 4,
-  },
+  {},
   {
     BinaryExpression: 2,
     Expression: 10,
-    NumberValue: 5,
-    PrimitiveValue: 4,
+    Identifier: 3,
+    NumberValue: 6,
+    PrimitiveValue: 5,
+  },
+  {
+    BinaryExpression: 2,
+    Expression: 11,
+    Identifier: 3,
+    NumberValue: 6,
+    PrimitiveValue: 5,
   },
   {},
   {},
@@ -264,14 +285,19 @@ const rules = [
     action: r5,
   },
   {
-    production: 'PrimitiveValue',
+    production: 'Identifier',
     pop: 1,
     action: r6,
   },
   {
-    production: 'NumberValue',
+    production: 'PrimitiveValue',
     pop: 1,
     action: r7,
+  },
+  {
+    production: 'NumberValue',
+    pop: 1,
+    action: r8,
   },
 ];
 

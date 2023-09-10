@@ -36,7 +36,9 @@ debug:
 .PHONY: diagrams
 diagrams: packages/graphql/src/bin/dotify.ts
 	@bun packages/graphql/src/bin/dotify.ts
+	@bun packages/typescript/src/bin/dotify.ts
 	@$(MAKE) -C packages/graphql -j 4 diagrams
+	@$(MAKE) -C packages/typescript -j 4 diagrams
 
 .PHONY: docs
 docs: docs/packages-dark.png docs/packages-light.png

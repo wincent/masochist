@@ -127,7 +127,7 @@ async function main() {
   let README = '# `@masochist/graphql` state machine diagrams\n';
 
   const directory = path.join(
-    path.dirname(__filename),
+    path.dirname(import.meta.path),
     '..',
     '..',
     'lexer',

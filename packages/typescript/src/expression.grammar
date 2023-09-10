@@ -37,12 +37,7 @@
 %token YIELD
 
 Expression → BinaryExpression { $$ = $1; }
-Expression → IDENTIFIER {
-  $$ = {
-    kind: 'Identifier',
-    name: $1.contents,
-  };
-}
+Expression → Identifier { $$ = $1; }
 Expression → PrimitiveValue { $$ = $1; }
 Expression → OPENING_PAREN Expression CLOSING_PAREN { $$ = $2; }
 
@@ -55,7 +50,14 @@ BinaryExpression → Expression STRICT_EQUALS Expression {
   };
 }
 
-# TODO: need to tokenize reserved words like null, undefined, true, false
+Identifier → IDENTIFIER {
+  $$ = {
+    kind: 'Identifier',
+    name: $1.contents,
+  };
+}
+
+# TODO: need to tokenize reserved words like null, undefined
 # differently in order for this to work; or do a check in the action.
 PrimitiveValue → NumberValue { $$ = $1; }
 #PrimitiveValue → BooleanValue { $$ = $1; }

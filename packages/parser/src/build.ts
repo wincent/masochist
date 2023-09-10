@@ -76,7 +76,7 @@ export default function build(
               rule.action
                 .replace(/^{|}$/g, '') // Strip semantic action delimiters.
                 .trim()
-                .replace(/\$\$ =/g, 'return'), // TODO: static analysis to make sure this is safe.
+                .replace(/\$\$\s*=\s*/g, 'return '), // TODO: static analysis to make sure this is safe.
             ),
           ],
         );

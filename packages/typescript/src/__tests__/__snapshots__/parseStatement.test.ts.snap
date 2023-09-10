@@ -1,0 +1,63 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parseStatement() parses a const boolean assignment statement 1`] = `
+{
+  "binding": "const",
+  "kind": "AssignmentStatement",
+  "lhs": {
+    "kind": "Identifier",
+    "name": "isFoo",
+  },
+  "rhs": {
+    "kind": "BooleanValue",
+    "value": true,
+  },
+}
+`;
+
+exports[`parseStatement() parses a let boolean assignment statement 1`] = `
+{
+  "binding": "let",
+  "kind": "AssignmentStatement",
+  "lhs": {
+    "kind": "Identifier",
+    "name": "isFoo",
+  },
+  "rhs": {
+    "kind": "BooleanValue",
+    "value": false,
+  },
+}
+`;
+
+exports[`parseStatement() parses a const number assignment statement 1`] = `
+{
+  "binding": "const",
+  "kind": "AssignmentStatement",
+  "lhs": {
+    "kind": "Identifier",
+    "name": "isFoo",
+  },
+  "rhs": {
+    "base": 10,
+    "kind": "NumberValue",
+    "value": 1,
+  },
+}
+`;
+
+exports[`parseStatement() parses a let number assignment statement 1`] = `
+{
+  "binding": "let",
+  "kind": "AssignmentStatement",
+  "lhs": {
+    "kind": "Identifier",
+    "name": "isFoo",
+  },
+  "rhs": {
+    "base": 10,
+    "kind": "NumberValue",
+    "value": 2,
+  },
+}
+`;

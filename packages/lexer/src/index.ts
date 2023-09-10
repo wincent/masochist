@@ -1,6 +1,7 @@
 export type {TransitionTable} from './NFA/TransitionTable';
 export type {Stats} from './build';
 
+export {getLexer} from './__tests__/helper';
 export {default as NFAToDFA} from './NFA/NFAToDFA';
 export {default as Token} from './Token';
 export {default as build} from './build';

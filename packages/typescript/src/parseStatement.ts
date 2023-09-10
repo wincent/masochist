@@ -12,19 +12,57 @@ import {Lexer} from './lex';
 function r1($1) {
   return $1;
 }
-function r2(_$1, $2, $3) {
+function r2(_$1, $2, _$3, $4) {
   return {
     kind: 'AssignmentStatement',
     binding: 'const',
-    lhs: {
-      kind: 'Identifier',
-      name: $2.contents,
-    },
-    rhs: {
-      kind: 'NumberValue',
-      value: parseFloat($3.contents),
-      base: 10,
-    },
+    lhs: $2,
+    rhs: $4,
+  };
+}
+function r3(_$1, $2, _$3, $4) {
+  return {
+    kind: 'AssignmentStatement',
+    binding: 'let',
+    lhs: $2,
+    rhs: $4,
+  };
+}
+function r4($1) {
+  return {
+    kind: 'Identifier',
+    name: $1.contents,
+  };
+}
+function r5($1) {
+  return $1;
+}
+function r6($1) {
+  return $1;
+}
+function r7($1) {
+  return $1;
+}
+function r8($1) {
+  return $1;
+}
+function r9() {
+  return {
+    kind: 'BooleanValue',
+    value: false,
+  };
+}
+function r10() {
+  return {
+    kind: 'BooleanValue',
+    value: true,
+  };
+}
+function r11($1) {
+  return {
+    kind: 'NumberValue',
+    value: parseFloat($1.contents),
+    base: 10,
   };
 }
 const actions = [
@@ -32,6 +70,10 @@ const actions = [
     CONST: {
       kind: 'Shift',
       state: 3,
+    },
+    LET: {
+      kind: 'Shift',
+      state: 4,
     },
   },
   {
@@ -48,19 +90,125 @@ const actions = [
   {
     IDENTIFIER: {
       kind: 'Shift',
-      state: 4,
+      state: 6,
+    },
+  },
+  {
+    IDENTIFIER: {
+      kind: 'Shift',
+      state: 6,
     },
   },
   {
     ASSIGN: {
       kind: 'Shift',
-      state: 5,
+      state: 8,
     },
   },
   {
-    NUMBER: {
+    ASSIGN: {
+      kind: 'Reduce',
+      rule: 4,
+    },
+    SEMICOLON: {
+      kind: 'Reduce',
+      rule: 4,
+    },
+  },
+  {
+    ASSIGN: {
+      kind: 'Shift',
+      state: 9,
+    },
+  },
+  {
+    FALSE: {
+      kind: 'Shift',
+      state: 14,
+    },
+    IDENTIFIER: {
       kind: 'Shift',
       state: 6,
+    },
+    NUMBER: {
+      kind: 'Shift',
+      state: 17,
+    },
+    TRUE: {
+      kind: 'Shift',
+      state: 15,
+    },
+  },
+  {
+    FALSE: {
+      kind: 'Shift',
+      state: 14,
+    },
+    IDENTIFIER: {
+      kind: 'Shift',
+      state: 6,
+    },
+    NUMBER: {
+      kind: 'Shift',
+      state: 17,
+    },
+    TRUE: {
+      kind: 'Shift',
+      state: 15,
+    },
+  },
+  {
+    SEMICOLON: {
+      kind: 'Shift',
+      state: 19,
+    },
+  },
+  {
+    SEMICOLON: {
+      kind: 'Reduce',
+      rule: 5,
+    },
+  },
+  {
+    SEMICOLON: {
+      kind: 'Reduce',
+      rule: 6,
+    },
+  },
+  {
+    SEMICOLON: {
+      kind: 'Reduce',
+      rule: 7,
+    },
+  },
+  {
+    SEMICOLON: {
+      kind: 'Reduce',
+      rule: 9,
+    },
+  },
+  {
+    SEMICOLON: {
+      kind: 'Reduce',
+      rule: 10,
+    },
+  },
+  {
+    SEMICOLON: {
+      kind: 'Reduce',
+      rule: 8,
+    },
+  },
+  {
+    SEMICOLON: {
+      kind: 'Reduce',
+      rule: 11,
+    },
+  },
+  {
+    SEMICOLON: {
+      kind: 'Shift',
+      state: 20,
     },
   },
   {
@@ -69,12 +217,48 @@ const actions = [
       rule: 2,
     },
   },
+  {
+    ['$']: {
+      kind: 'Reduce',
+      rule: 3,
+    },
+  },
 ];
 const gotos = [
   {
     AssignmentStatement: 2,
     Statement: 1,
   },
+  {},
+  {},
+  {
+    Identifier: 5,
+  },
+  {
+    Identifier: 7,
+  },
+  {},
+  {},
+  {},
+  {
+    BooleanValue: 13,
+    Expression: 10,
+    Identifier: 11,
+    NumberValue: 16,
+    PrimitiveValue: 12,
+  },
+  {
+    BooleanValue: 13,
+    Expression: 18,
+    Identifier: 11,
+    NumberValue: 16,
+    PrimitiveValue: 12,
+  },
+  {},
+  {},
+  {},
+  {},
+  {},
   {},
   {},
   {},
@@ -95,8 +279,53 @@ const rules = [
   },
   {
     production: 'AssignmentStatement',
-    pop: 4,
+    pop: 5,
     action: r2,
+  },
+  {
+    production: 'AssignmentStatement',
+    pop: 5,
+    action: r3,
+  },
+  {
+    production: 'Identifier',
+    pop: 1,
+    action: r4,
+  },
+  {
+    production: 'Expression',
+    pop: 1,
+    action: r5,
+  },
+  {
+    production: 'Expression',
+    pop: 1,
+    action: r6,
+  },
+  {
+    production: 'PrimitiveValue',
+    pop: 1,
+    action: r7,
+  },
+  {
+    production: 'PrimitiveValue',
+    pop: 1,
+    action: r8,
+  },
+  {
+    production: 'BooleanValue',
+    pop: 1,
+    action: r9,
+  },
+  {
+    production: 'BooleanValue',
+    pop: 1,
+    action: r10,
+  },
+  {
+    production: 'NumberValue',
+    pop: 1,
+    action: r11,
   },
 ];
 
