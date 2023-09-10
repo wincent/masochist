@@ -148,7 +148,7 @@ async function main() {
     YIELD: machine(YIELD),
   };
 
-  let README = '# `@masochist/typescript` state machine diagram\n';
+  let README = '# `@masochist/typescript` state machine diagrams\n';
 
   const directory = path.join(
     path.dirname(import.meta.path),
