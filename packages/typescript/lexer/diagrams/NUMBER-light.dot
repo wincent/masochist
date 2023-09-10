@@ -1,0 +1,28 @@
+digraph finite_state_machine {
+  bgcolor = "transparent";
+  rankdir = LR;
+  ratio = 0.5625; // 16:9.
+
+  // Invisible node from which to draw start transition to start state.
+  node [style = invis]; -1;
+
+  // Accept states.
+  node [color = "black", fontcolor = "black", style = "", shape = doublecircle]; 2;
+  node [color = "black", fontcolor = "black", style = "", shape = doublecircle]; 3;
+  node [color = "black", fontcolor = "black", style = "", shape = doublecircle]; 5;
+
+  // Catch-all (default) for remaining states.
+  node [color = "black", fontcolor = "black", style = "", shape = circle, xlabel = ""];
+
+  -1 -> 0 [color = "black", fontcolor = "black"];
+  0 -> 1 [color = "black", fontcolor = "black", label = "-"];
+  0 -> 2 [color = "black", fontcolor = "black", label = "0"];
+  0 -> 3 [color = "black", fontcolor = "black", label = "1-9"];
+  1 -> 2 [color = "black", fontcolor = "black", label = "0"];
+  1 -> 3 [color = "black", fontcolor = "black", label = "1-9"];
+  2 -> 4 [color = "black", fontcolor = "black", label = "."];
+  3 -> 4 [color = "black", fontcolor = "black", label = "."];
+  3 -> 3 [color = "black", fontcolor = "black", label = "0-9"];
+  4 -> 5 [color = "black", fontcolor = "black", label = "0-9"];
+  5 -> 5 [color = "black", fontcolor = "black", label = "0-9"];
+}
