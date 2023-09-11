@@ -2,15 +2,22 @@
 // defined, but they depend on artifacts produced by `@masochist/graphql`, so
 // we've moved them in here to avoid a circular dependency.
 
-import Bun from 'bun';
-import {describe, expect, it} from 'bun:test';
+import {getLexer} from '@masochist/lexer/src/internal';
 import {parseWithTable, makeNode} from '@masochist/parser';
+import Bun from 'bun';
+import {beforeAll, describe, expect, it} from 'bun:test';
 import path from 'path';
 
-import {grammar, table} from '../document';
-import lex from '../lex';
+import {grammar, table as parseTable} from '../document';
+import {default as lexerTable} from '../lexer';
 
 describe('parseWithTable()', () => {
+  let lex: ReturnType<typeof getLexer>['lex'];
+
+  beforeAll(() => {
+    lex = getLexer(lexerTable).lex;
+  });
+
   it('parses a simple document using the GraphQL grammar', () => {
     const tokens = [
       ...lex(`
@@ -45,7 +52,9 @@ describe('parseWithTable()', () => {
     `),
     ];
 
-    expect(parseWithTable(table, tokens, grammar, makeNode)).toMatchSnapshot();
+    expect(
+      parseWithTable(parseTable, tokens, grammar, makeNode),
+    ).toMatchSnapshot();
   });
 
   it.each([['source.graphql'], ['generated.graphql']])(
@@ -57,7 +66,7 @@ describe('parseWithTable()', () => {
 
       const tokens = [...lex(source)];
       expect(
-        parseWithTable(table, tokens, grammar, makeNode),
+        parseWithTable(parseTable, tokens, grammar, makeNode),
       ).toMatchSnapshot();
     },
   );

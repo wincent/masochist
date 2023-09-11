@@ -3,7 +3,10 @@
 // we've moved them in here to avoid a circular dependency.
 
 import {describe, expect, it} from 'bun:test';
-import {getFirstSets, stringifySymbolSets} from '@masochist/parser';
+import {
+  getFirstSets,
+  stringifySymbolSets,
+} from '@masochist/parser/src/internal';
 
 import {unaugmentedGrammar} from '../document';
 

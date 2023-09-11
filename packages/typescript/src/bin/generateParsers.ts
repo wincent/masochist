@@ -31,7 +31,7 @@ async function main() {
     const stats: Stats = {};
     const ast = build(grammar, table, stats, {
       buildCommand: 'make graphql',
-      name: filename.replace(/\.ts/, ''),
+      name: filename.replace('.ts', ''),
     });
     const source = print(ast);
     const file = path.join(import.meta.dir, '..', '..', 'src', filename);

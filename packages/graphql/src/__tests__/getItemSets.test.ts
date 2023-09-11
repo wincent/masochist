@@ -3,7 +3,7 @@
 // we've moved them in here to avoid a circular dependency.
 
 import {describe, expect, it} from 'bun:test';
-import {stringifyItemSets} from '@masochist/parser';
+import {stringifyItemSets} from '@masochist/parser/src/internal';
 
 import {itemSets} from '../document';
 

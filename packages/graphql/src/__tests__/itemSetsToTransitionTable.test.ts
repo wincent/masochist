@@ -4,10 +4,8 @@
 // dependency.
 
 import {describe, expect, it} from 'bun:test';
-import {
-  itemSetsToTransitionTable,
-  stringifyTransitionTable,
-} from '@masochist/parser';
+import {itemSetsToTransitionTable} from '@masochist/parser';
+import {stringifyTransitionTable} from '@masochist/parser/src/internal';
 
 import {itemSets, unaugmentedGrammar} from '../document';
 

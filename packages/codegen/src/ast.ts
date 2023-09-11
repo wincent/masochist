@@ -82,6 +82,12 @@ export type ClassDeclaration = {
   body: Array<DocComment | MethodDefinition | PropertyDeclaration>;
 };
 
+export type ClassExpression = {
+  kind: 'ClassExpression';
+  id: string;
+  body: Array<DocComment | MethodDefinition | PropertyDeclaration>;
+};
+
 // Better AST might be
 // IfStatement
 //    Condition
@@ -120,6 +126,7 @@ export type EmptyStatement = {
 export type Expression =
   | BinaryExpression
   | CallExpression
+  | ClassExpression
   | FunctionExpression
   | Identifier
   | IndexExpression
@@ -486,6 +493,17 @@ const ast = {
   ): ClassDeclaration {
     return {
       kind: 'ClassDeclaration',
+      id,
+      body,
+    };
+  },
+
+  classExpression(
+    id: string,
+    body: Array<DocComment | MethodDefinition | PropertyDeclaration>,
+  ): ClassExpression {
+    return {
+      kind: 'ClassExpression',
       id,
       body,
     };

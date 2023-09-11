@@ -3,12 +3,12 @@
 // we've moved them in here to avoid a circular dependency.
 
 import {describe, expect, it} from 'bun:test';
+import {getItemSets} from '@masochist/parser';
 import {
   extendedGrammarForItemSets,
   getFollowSets,
-  getItemSets,
   stringifySymbolSets,
-} from '@masochist/parser';
+} from '@masochist/parser/src/internal';
 
 import {unaugmentedGrammar} from '../document';
 

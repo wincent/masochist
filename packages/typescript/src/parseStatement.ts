@@ -328,9 +328,7 @@ const rules = [
     action: r11,
   },
 ];
-
 const EOF = new Token('$', -1, -1, '');
-
 export default function parseStatement(input) {
   const stack = [[null, 0]];
   const lexer = new Lexer(input);

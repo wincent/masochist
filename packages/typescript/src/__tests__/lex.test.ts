@@ -1,9 +1,7 @@
-import {getLexer} from '@masochist/lexer';
+import {getLexer} from '@masochist/lexer/src/internal';
 import {beforeAll, describe, expect, it} from 'bun:test';
 
 import table from '../lexer';
-
-import type {Token} from '@masochist/lexer';
 
 type Tokenish = {
   name: string;
@@ -13,10 +11,10 @@ type Tokenish = {
 };
 
 describe('lex()', () => {
-  let lex: (input: string) => Generator<Token, void, unknown>;
+  let lex: ReturnType<typeof getLexer>['lex'];
 
   beforeAll(() => {
-    lex = getLexer(table);
+    lex = getLexer(table).lex;
   });
 
   function lexOne(input: string): Tokenish {

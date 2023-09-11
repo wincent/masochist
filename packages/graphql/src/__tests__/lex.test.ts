@@ -1,15 +1,20 @@
+// These tests used to live in `@masochist/lexer`, where `getLexer()` is
+// defined, but they depend on artifacts produced by `@masochist/graphql`, so
+// we've moved them in here to avoid a circular dependency.
+
+import {Token} from '@masochist/lexer';
+import {getLexer} from '@masochist/lexer/src/internal';
 import Bun from 'bun';
 import {beforeAll, describe, expect, it} from 'bun:test';
 import path from 'node:path';
 
-import Token from '../Token';
-import {getLexer} from './helper';
+import table from '../lexer';
 
 describe('lex()', () => {
-  let lex: (input: string) => Generator<Token, void, unknown>;
+  let lex: ReturnType<typeof getLexer>['lex'];
 
   beforeAll(() => {
-    lex = getLexer();
+    lex = getLexer(table).lex;
   });
 
   it('can lex a NAME token right at the end', () => {

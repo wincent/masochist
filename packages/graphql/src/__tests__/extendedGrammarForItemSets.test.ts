@@ -4,11 +4,11 @@
 // circular dependency.
 
 import {describe, expect, it} from 'bun:test';
+import {getItemSets} from '@masochist/parser';
 import {
   extendedGrammarForItemSets,
-  getItemSets,
   stringifyGrammar,
-} from '@masochist/parser';
+} from '@masochist/parser/src/internal';
 
 import {unaugmentedGrammar} from '../document';
 

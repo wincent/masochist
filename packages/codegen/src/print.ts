@@ -1,7 +1,8 @@
-import {invariant} from '@masochist/common';
+import {invariant, unreachable} from '@masochist/common';
 
 import type {
   Argument,
+  DocComment,
   Expression,
   FunctionExpression,
   MethodDefinition,
@@ -25,6 +26,40 @@ export default function print(ast: Program) {
 
 function printArgument(argument: Argument, _indent: number): string {
   return [argument.name, argument.type].filter(Boolean).join(': ');
+}
+
+function printClass(
+  id: string,
+  body: Array<DocComment | MethodDefinition | PropertyDeclaration>,
+  indent: number,
+): string {
+  return (
+    `class ${id} {\n` +
+    body
+      .map((item, i) => {
+        const predecessor = body[i - 1]?.kind;
+        if (item.kind === 'DocComment') {
+          if (i === 0) {
+            return printStatement(item, indent + 1);
+          } else {
+            return '\n' + printStatement(item, indent + 1);
+          }
+        } else if (item.kind === 'MethodDefinition') {
+          if (predecessor === 'DocComment' || i === 0) {
+            return printMethodDefinition(item, indent + 1);
+          } else {
+            return '\n' + printMethodDefinition(item, indent + 1);
+          }
+        } else if (item.kind === 'PropertyDeclaration') {
+          return printPropertyDeclaration(item, indent + 1);
+        } else {
+          unreachable(item);
+        }
+      })
+      .join('') +
+    printIndent(indent) +
+    '}'
+  );
 }
 
 function printExpression(expression: Expression, indent: number): string {
@@ -57,6 +92,8 @@ function printExpression(expression: Expression, indent: number): string {
         .join(', ') +
       ')'
     );
+  } else if (expression.kind === 'ClassExpression') {
+    return printClass(expression.id, expression.body, indent);
   } else if (expression.kind === 'DecrementExpression') {
     if (expression.position === 'postfix') {
       return printExpression(expression.operand, indent) + '--';
@@ -113,6 +150,8 @@ function printExpression(expression: Expression, indent: number): string {
       } else {
         return '0x' + expression.value.toString(16).padStart(8, '0');
       }
+    } else {
+      unreachable(expression.base);
     }
   } else if (expression.kind === 'ObjectValue') {
     return (
@@ -166,8 +205,9 @@ function printExpression(expression: Expression, indent: number): string {
     } else {
       return 'yield';
     }
+  } else {
+    unreachable(expression);
   }
-  throw new Error('printExpression(): Unreachable');
 }
 
 function printFunctionExpression(
@@ -230,34 +270,7 @@ function printStatement(statement: Statement, indent: number): string {
       return printIndent(indent) + 'break;\n';
     }
   } else if (statement.kind === 'ClassDeclaration') {
-    return (
-      printIndent(indent) +
-      `class ${statement.id} {\n` +
-      statement.body
-        .map((item, i) => {
-          const predecessor = statement.body[i - 1]?.kind;
-          if (item.kind === 'DocComment') {
-            if (i === 0) {
-              return printStatement(item, indent + 1);
-            } else {
-              return '\n' + printStatement(item, indent + 1);
-            }
-          } else if (item.kind === 'MethodDefinition') {
-            if (predecessor === 'DocComment' || i === 0) {
-              return printMethodDefinition(item, indent + 1);
-            } else {
-              return '\n' + printMethodDefinition(item, indent + 1);
-            }
-          } else if (item.kind === 'PropertyDeclaration') {
-            return printPropertyDeclaration(item, indent + 1);
-          } else {
-            throw new Error('printStatement(): Unreachable');
-          }
-        })
-        .join('') +
-      printIndent(indent) +
-      '}\n'
-    );
+    return printClass(statement.id, statement.body, indent) + '\n';
   } else if (statement.kind === 'ContinueStatement') {
     if (statement.label) {
       return printIndent(indent) + `continue ${statement.label};\n`;
@@ -436,8 +449,9 @@ function printStatement(statement: Statement, indent: number): string {
       printIndent(indent) +
       '}\n'
     );
+  } else {
+    unreachable(statement);
   }
-  throw new Error('printStatement(): Unreachable');
 }
 
 // TODO: if declares any block-scoped variables, wrap in curlies

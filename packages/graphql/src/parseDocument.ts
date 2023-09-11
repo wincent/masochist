@@ -208,7 +208,7 @@ function r40($1, $2) {
   return $1;
 }
 function r41() {
-  $$ = {
+  return {
     kind: 'OBJECT_VALUE',
     fields: [],
   };
@@ -414,7 +414,7 @@ function r88($1, $2) {
   return $1;
 }
 function r89() {
-  $$ = {
+  return {
     kind: 'OBJECT_VALUE',
     fields: [],
   };
@@ -5281,10 +5281,8 @@ const rules = [
     action: r99,
   },
 ];
-
 const EOF = new Token('$', -1, -1, '');
-
-export default function parse(input) {
+export default function parseDocument(input) {
   const stack = [[null, 0]];
   const lexer = new Lexer(input);
 

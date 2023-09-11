@@ -20,6 +20,7 @@ export type {
   ObjectValue,
   Program,
   PropertyDeclaration,
+  RawStatement,
   Statement,
   SwitchCase,
   SwitchStatement,

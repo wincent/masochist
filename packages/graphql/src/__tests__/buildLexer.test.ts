@@ -1,0 +1,33 @@
+// These tests used to live in `@masochist/lexer`, where `build` is defined, but
+// they depend on artifacts produced by `@masochist/graphql`, so we've moved
+// them in here to avoid a circular dependency.
+
+import {describe, expect, it} from 'bun:test';
+import {print} from '@masochist/codegen';
+import {build} from '@masochist/lexer';
+
+import lexer from '../lexer';
+
+import type {Stats} from '@masochist/lexer';
+
+describe('build()', () => {
+  it('builds an AST', () => {
+    const ast = build(lexer);
+    expect(print(ast)).toMatchSnapshot();
+  });
+
+  it('reports stats', () => {
+    const stats: Stats = {};
+
+    build(lexer, stats);
+
+    expect(stats['startStates']).toBe(1);
+    expect(stats['acceptStates']).toBe(36);
+    expect(stats['totalStates']).toBe(57);
+    expect(stats['ignoredTokens']).toBe(4);
+    expect(stats['totalTokens']).toBe(36);
+    expect(stats['inlineableAcceptStates']).toBe(16);
+    expect(stats['inlinedAcceptStates']).toBe(16);
+    expect(stats['inlinedSelfTransitions']).toBe(10);
+  });
+});

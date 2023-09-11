@@ -1,4 +1,4 @@
-import {invariant} from '@masochist/common';
+import {invariant, unreachable} from '@masochist/common';
 
 import type {
   Argument,
@@ -10,6 +10,7 @@ import type {
   BreakStatement,
   CallExpression,
   ClassDeclaration,
+  ClassExpression,
   ContinueStatement,
   Declaration,
   DecrementExpression,
@@ -83,6 +84,13 @@ type Visitor = {
     declaration: ClassDeclaration,
   ) => Statement | null | undefined;
 
+  ClassExpression?: (
+    expression: ClassExpression,
+  ) => Expression | null | undefined;
+  ['ClassExpression:exit']?: (
+    expression: ClassExpression,
+  ) => Expression | null | undefined;
+
   DocComment?: (comment: DocComment) => Statement | null | undefined;
   ['DocComment:exit']?: (comment: DocComment) => Statement | null | undefined;
 
@@ -137,6 +145,11 @@ type Visitor = {
   ['PropertyDeclaration:exit']?: (
     declaration: PropertyDeclaration,
   ) => PropertyDeclaration | null | undefined;
+
+  RawStatement?: (statement: RawStatement) => Statement | null | undefined;
+  ['RawStatement:exit']?: (
+    statement: RawStatement,
+  ) => Statement | null | undefined;
 };
 
 export default function walk(
@@ -161,6 +174,8 @@ export default function walk(
     return walkCallExpression(node, visitor);
   } else if (node.kind === 'ClassDeclaration') {
     return walkClassDeclaration(node, visitor);
+  } else if (node.kind === 'ClassExpression') {
+    return walkClassExpression(node, visitor);
   } else if (node.kind === 'ContinueStatement') {
     return walkContinueStatement(node, visitor);
   } else if (node.kind === 'DecrementExpression') {
@@ -237,10 +252,6 @@ export default function walk(
   }
 }
 
-function unreachable(_value: never): never {
-  throw new Error('unreachable(): Unreachable code was reached');
-}
-
 function mapChildren<T>(
   children: Array<T>,
   callback: (child: T) => T | null | undefined,
@@ -277,12 +288,6 @@ function walkArgument(
     return null;
   } else if (newArgument === undefined) {
     newArgument = argument;
-  } else if (newArgument.kind !== 'Argument') {
-    // Won't do post-order if node kind changes in pre-order; instead, walk
-    // replacement.
-    const replacement = walk(newArgument, visitor);
-    assertIsArgument(replacement);
-    return replacement;
   } else {
     changed = true;
   }
@@ -323,7 +328,11 @@ function walkAssignmentStatement(
     // replacement.
     const replacement = walk(newStatement, visitor);
     assertIsStatement(replacement);
-    return replacement;
+    if (replacement === undefined) {
+      return newStatement;
+    } else {
+      return replacement;
+    }
   } else {
     changed = true;
   }
@@ -400,7 +409,11 @@ function walkClassDeclaration(
     // replacement.
     const replacement = walk(newDeclaration, visitor);
     assertIsStatement(replacement);
-    return replacement;
+    if (replacement === undefined) {
+      return newDeclaration;
+    } else {
+      return replacement;
+    }
   } else {
     changed = true;
   }
@@ -434,6 +447,60 @@ function walkClassDeclaration(
   }
 }
 
+function walkClassExpression(
+  expression: ClassExpression,
+  visitor: Visitor,
+): Expression | null | undefined {
+  // Pre-order
+  let changed = false;
+  let newExpression = visitor.ClassExpression?.(expression);
+  if (newExpression === null) {
+    return null;
+  } else if (newExpression === undefined) {
+    newExpression = expression;
+  } else if (newExpression.kind !== 'ClassExpression') {
+    // Won't do post-order if node kind changes in pre-order; instead, walk
+    // replacement.
+    const replacement = walk(newExpression, visitor);
+    assertIsExpression(replacement);
+    if (replacement === undefined) {
+      return newExpression;
+    } else {
+      return replacement;
+    }
+  } else {
+    changed = true;
+  }
+
+  // Children.
+  const body = mapChildren(newExpression.body, (statement) => {
+    const node = walk(statement, visitor);
+    invariant(
+      node === null ||
+        node === undefined ||
+        node.kind === 'DocComment' ||
+        node.kind === 'PropertyDeclaration' ||
+        node.kind === 'MethodDefinition',
+      'ClassExpression body may only contain DocComment, PropertyDeclaration, MethodDefinition nodes',
+    );
+    return node;
+  });
+  if (body !== newExpression.body) {
+    newExpression.body = body;
+    changed = true;
+  }
+
+  // Post-order.
+  const finalExpression = visitor['ClassExpression:exit']?.(newExpression);
+  if (finalExpression === null) {
+    return null;
+  } else if (finalExpression === undefined) {
+    return changed ? newExpression : undefined;
+  } else {
+    return finalExpression;
+  }
+}
+
 function walkContinueStatement(
   _statement: ContinueStatement,
   _visitor: Visitor,
@@ -464,7 +531,11 @@ function walkDocComment(
     // replacement.
     const replacement = walk(newComment, visitor);
     assertIsStatement(replacement);
-    return replacement;
+    if (replacement === undefined) {
+      return newComment;
+    } else {
+      return replacement;
+    }
   } else {
     changed = true;
   }
@@ -505,7 +576,11 @@ function walkExportDefaultDeclaration(
     // replacement.
     const replacement = walk(newDeclaration, visitor);
     assertIsStatement(replacement);
-    return replacement;
+    if (replacement === undefined) {
+      return newDeclaration;
+    } else {
+      return replacement;
+    }
   } else {
     changed = true;
   }
@@ -548,7 +623,11 @@ function walkExportNamedDeclaration(
     // replacement.
     const replacement = walk(newDeclaration, visitor);
     assertIsStatement(replacement);
-    return replacement;
+    if (replacement === undefined) {
+      return newDeclaration;
+    } else {
+      return replacement;
+    }
   } else {
     changed = true;
   }
@@ -598,7 +677,11 @@ function walkFunctionDeclaration(
     // replacement.
     const replacement = walk(newDeclaration, visitor);
     assertIsStatement(replacement);
-    return replacement;
+    if (replacement === undefined) {
+      return newDeclaration;
+    } else {
+      return replacement;
+    }
   } else {
     changed = true;
   }
@@ -718,7 +801,11 @@ function walkImportStatement(
     // replacement.
     const replacement = walk(newStatement, visitor);
     assertIsStatement(replacement);
-    return replacement;
+    if (replacement === undefined) {
+      return newStatement;
+    } else {
+      return replacement;
+    }
   } else {
     changed = true;
   }
@@ -926,10 +1013,41 @@ function walkRawExpression(
 }
 
 function walkRawStatement(
-  _statement: RawStatement,
-  _visitor: Visitor,
+  statement: RawStatement,
+  visitor: Visitor,
 ): Statement | null | undefined {
-  return undefined; // Unimplemented.
+  // Pre-order.
+  let changed = false;
+  let newStatement = visitor.RawStatement?.(statement);
+  if (newStatement === null) {
+    return null;
+  } else if (newStatement === undefined) {
+    newStatement = statement;
+  } else if (newStatement.kind !== 'RawStatement') {
+    // Won't do post-order if node kind changes in pre-order; instead, walk
+    // replacement.
+    const replacement = walk(newStatement, visitor);
+    assertIsStatement(replacement);
+    if (replacement === undefined) {
+      return newStatement;
+    } else {
+      return replacement;
+    }
+  } else {
+    changed = true;
+  }
+
+  // This is a leaf node, so no children to visit.
+
+  // Post-order.
+  const finalStatement = visitor['RawStatement:exit']?.(newStatement);
+  if (finalStatement === null) {
+    return null;
+  } else if (finalStatement === undefined) {
+    return changed ? newStatement : undefined;
+  } else {
+    return finalStatement;
+  }
 }
 
 function walkReturnStatement(
@@ -999,6 +1117,7 @@ function assertIsExpression(
     invariant(
       node.kind === 'BinaryExpression' ||
         node.kind === 'CallExpression' ||
+        node.kind === 'ClassExpression' ||
         node.kind === 'FunctionExpression' ||
         node.kind === 'Identifier' ||
         node.kind === 'IndexExpression' ||
@@ -1040,6 +1159,7 @@ function assertIsStatement(
         node.kind === 'ImportStatement' ||
         node.kind === 'LabelStatement' ||
         node.kind === 'LineComment' ||
+        node.kind === 'RawStatement' ||
         node.kind === 'ReturnStatement' ||
         node.kind === 'SwitchStatement' ||
         node.kind === 'ThrowStatement' ||

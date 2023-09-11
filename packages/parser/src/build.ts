@@ -153,47 +153,61 @@ export default function build(
         }),
       ),
     ),
-    // TODO: replace
-    ast.rawStatement(`
-      const EOF = new Token('$', -1, -1, '');
+    ast.const(
+      'EOF',
+      ast.new(
+        'Token',
+        ast.string('$'),
+        ast.number(-1),
+        ast.number(-1),
+        ast.string(''),
+      ),
+    ),
+    ast.default(
+      ast.function(
+        name,
+        ['input'],
+        [
+          // TODO: replace rawStatement
+          ast.rawStatement(`
+            const stack = [[null, 0]];
+            const lexer = new Lexer(input);
 
-      export default function ${name}(input) {
-        const stack = [[null, 0]];
-        const lexer = new Lexer(input);
+            let token = lexer.next() || EOF;
 
-        let token = lexer.next() || EOF;
+            while (true) {
+              const [, current] = stack[stack.length - 1];
+              const action = actions[current][token.name];
 
-        while (true) {
-          const [, current] = stack[stack.length - 1];
-          const action = actions[current][token.name];
-
-          if (!action) {
-            throw new Error('syntax error');
-          } if (action.kind === 'Accept') {
-            // Expect initial state + accept state.
-            const [tree] = stack[1];
-            return tree;
-          } else if (action.kind === 'Shift') {
-            stack.push([token, action.state]);
-            token = lexer.next() || EOF;
-          } else if (action.kind === 'Reduce') {
-            // TODO: instead of pop, set length?
-            const {production, pop, action: code} = rules[action.rule];
-            const popped: Array<P | Token | null> = [];
-            for (let i = 0; i < pop; i++) {
-              const [node] = stack.pop()!;
-              popped[pop - i - 1] = node;
+              if (!action) {
+                throw new Error('syntax error');
+              } if (action.kind === 'Accept') {
+                // Expect initial state + accept state.
+                const [tree] = stack[1];
+                return tree;
+              } else if (action.kind === 'Shift') {
+                stack.push([token, action.state]);
+                token = lexer.next() || EOF;
+              } else if (action.kind === 'Reduce') {
+                // TODO: instead of pop, set length?
+                const {production, pop, action: code} = rules[action.rule];
+                const popped: Array<P | Token | null> = [];
+                for (let i = 0; i < pop; i++) {
+                  const [node] = stack.pop()!;
+                  popped[pop - i - 1] = node;
+                }
+                const [, next] = stack[stack.length - 1];
+                const target = gotos[next][production];
+                if (code) {
+                  stack.push([code(...popped), target]);
+                } else {
+                  throw new Error('to use static parser must provide semantic action for every production');
+                }
+              }
             }
-            const [, next] = stack[stack.length - 1];
-            const target = gotos[next][production];
-            if (code) {
-              stack.push([code(...popped), target]);
-            } else {
-              throw new Error('to use static parser must provide semantic action for every production');
-            }
-          }
-        }
-      }
-    `),
+          `),
+        ],
+      ),
+    ),
   ]);
 }

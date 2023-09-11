@@ -4,7 +4,6 @@ import {createContext, runInContext} from 'node:vm';
 
 import Token from '../Token';
 import build from '../build';
-import definition from '../definition';
 
 import type {
   Argument,
@@ -17,15 +16,28 @@ import type {
 
 import type {TransitionTable} from '../NFA/TransitionTable';
 
-/**
- * Note: We're not testing the lexer that's currently written to disk in
- * ../lex.ts, but rather the one that _would_ be written if we were to
- * regenerate it right now.
- */
+interface Lexer {
+  input: string;
+  state: number;
+  tokenStart: number;
+  index: number;
 
-export function getLexer(
-  table: TransitionTable = definition,
-): (input: string) => Generator<Token, void, unknown> {
+  constructor(input: string): Lexer;
+
+  emit(name: string, end: number, input: string): Token;
+
+  next(): Token | null;
+}
+
+/**
+ * We use `getLexer()`, not to test the lexer that's currently written to disk
+ * but rather the one that _would_ be written if we were to regenerate it right
+ * now.
+ */
+export function getLexer(table: TransitionTable): {
+  Lexer: Lexer;
+  lex: (input: string) => Generator<Token, void, unknown>;
+} {
   // Build lexer.
   const node = build(table);
 
@@ -52,9 +64,17 @@ export function getLexer(
       }
     },
 
-    // Turn `export class Lexer` -> `class Lexer`.
+    // Turn `export class Lexer` -> `Lexer = class Lexer`.
     ExportNamedDeclaration(declaration: ExportNamedDeclaration) {
-      return declaration.declaration;
+      assert(declaration.declaration.kind === 'ClassDeclaration');
+      return ast.assign(
+        null,
+        'Lexer',
+        ast.classExpression(
+          declaration.declaration.id,
+          declaration.declaration.body,
+        ),
+      );
     },
 
     // Remove `import Token from './Token'` statement.
@@ -64,7 +84,7 @@ export function getLexer(
 
     // Strip TS type annotations from FunctionDeclaration and
     // FunctionExpression arguments.
-    // ie. `function *(input: string)` -> `function *(input)`
+    // ie. `function *lex(input: string)` -> `function *lex(input)`
     // ie. `constructor(input: string)` -> `constructor(input)`
     Argument(argument: Argument) {
       if (argument.type) {
@@ -81,14 +101,23 @@ export function getLexer(
     },
   });
 
-  // Elaborate hack to run generated module.
+  // Run the generated module in a sandbox.
   const code = print(node);
-  const context = {
+  const context: {
+    Lexer?: Lexer;
+    Token: typeof Token;
+    lex?: (input: string) => Generator<Token, void, unknown>;
+  } = {
     Token,
-    *lex(_input: string): Generator<Token, void, unknown> {}, // Placeholder.
   };
   createContext(context);
   runInContext(code, context);
 
-  return context.lex;
+  assert(context.Lexer);
+  assert(context.lex);
+
+  return {
+    Lexer: context.Lexer,
+    lex: context.lex,
+  };
 }

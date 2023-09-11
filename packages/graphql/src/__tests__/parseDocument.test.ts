@@ -1,15 +1,19 @@
+import {getParser} from '@masochist/parser/src/internal';
+
 import Bun from 'bun';
-import {describe, expect, it} from 'bun:test';
+import {beforeAll, describe, expect, it} from 'bun:test';
 import path from 'path';
 
-// TODO: once parser has stabilized, do same thing we do in lex.test.ts and run
-// tests against what _would_ be written to disk as opposed to just importing
-// built artifact.
-// NOTE: not a huge fan of the fact that the default function export in the
-// generated file is called `parse()` and doesn't match the file name...
-import parse from '../parseDocument';
+import {grammar, table} from '../document';
+import lexer from '../lexer';
 
 describe('parse()', () => {
+  let parse: ReturnType<typeof getParser>;
+
+  beforeAll(() => {
+    parse = getParser(grammar, table, lexer);
+  });
+
   it('parses a simple document using the GraphQL grammar', () => {
     const input = `
       query IndexQuery @deprecated(since: "2001-01-01") @live {

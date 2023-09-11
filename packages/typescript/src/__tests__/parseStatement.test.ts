@@ -1,11 +1,16 @@
-import {describe, expect, it} from 'bun:test';
+import {getParser} from '@masochist/parser/src/internal';
+import {beforeAll, describe, expect, it} from 'bun:test';
 
-// TODO: once parser has stabilized, do same thing we do in lex.test.ts and run
-// tests against what _would_ be written to disk as opposed to just importing
-// built artifact.
-import parseStatement from '../parseStatement';
+import lexer from '../lexer';
+import {grammar, table} from '../statement';
 
 describe('parseStatement()', () => {
+  let parseStatement: ReturnType<typeof getParser>;
+
+  beforeAll(() => {
+    parseStatement = getParser(grammar, table, lexer);
+  });
+
   it('parses a const boolean assignment statement', () => {
     const input = 'const isFoo = true;';
     expect(parseStatement(input)).toMatchSnapshot();

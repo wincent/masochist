@@ -1,0 +1,362 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegExpParser matches ESCAPED_CHARACTER RegExp 1`] = `
+{
+  "children": [
+    {
+      "kind": "Atom",
+      "value": "\",
+    },
+    {
+      "children": [
+        {
+          "kind": "Atom",
+          "value": """,
+        },
+        {
+          "kind": "Atom",
+          "value": "/",
+        },
+        {
+          "kind": "Atom",
+          "value": "\",
+        },
+        {
+          "kind": "Atom",
+          "value": "b",
+        },
+        {
+          "kind": "Atom",
+          "value": "f",
+        },
+        {
+          "kind": "Atom",
+          "value": "n",
+        },
+        {
+          "kind": "Atom",
+          "value": "r",
+        },
+        {
+          "kind": "Atom",
+          "value": "t",
+        },
+      ],
+      "kind": "CharacterClass",
+      "negated": false,
+    },
+  ],
+  "kind": "Sequence",
+}
+`;
+
+exports[`RegExpParser matches ESCAPED_UNICODE RegExp 1`] = `
+{
+  "children": [
+    {
+      "kind": "Atom",
+      "value": "\",
+    },
+    {
+      "kind": "Atom",
+      "value": "u",
+    },
+    {
+      "child": {
+        "children": [
+          {
+            "from": "0",
+            "kind": "Range",
+            "to": "9",
+          },
+          {
+            "from": "A",
+            "kind": "Range",
+            "to": "F",
+          },
+          {
+            "from": "a",
+            "kind": "Range",
+            "to": "f",
+          },
+        ],
+        "kind": "CharacterClass",
+        "negated": false,
+      },
+      "kind": "Repeat",
+      "maximum": 4,
+      "minimum": 4,
+    },
+  ],
+  "kind": "Sequence",
+}
+`;
+
+exports[`RegExpParser matches EXPONENT_PART RegExp 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "kind": "Atom",
+          "value": "E",
+        },
+        {
+          "kind": "Atom",
+          "value": "e",
+        },
+      ],
+      "kind": "CharacterClass",
+      "negated": false,
+    },
+    {
+      "child": {
+        "children": [
+          {
+            "kind": "Atom",
+            "value": "+",
+          },
+          {
+            "kind": "Atom",
+            "value": "-",
+          },
+        ],
+        "kind": "CharacterClass",
+        "negated": false,
+      },
+      "kind": "Repeat",
+      "maximum": 1,
+      "minimum": 0,
+    },
+    {
+      "child": {
+        "from": "0",
+        "kind": "Range",
+        "to": "9",
+      },
+      "kind": "Repeat",
+      "maximum": Infinity,
+      "minimum": 1,
+    },
+  ],
+  "kind": "Sequence",
+}
+`;
+
+exports[`RegExpParser matches FRACTIONAL_PART RegExp 1`] = `
+{
+  "children": [
+    {
+      "kind": "Atom",
+      "value": ".",
+    },
+    {
+      "child": {
+        "from": "0",
+        "kind": "Range",
+        "to": "9",
+      },
+      "kind": "Repeat",
+      "maximum": Infinity,
+      "minimum": 1,
+    },
+  ],
+  "kind": "Sequence",
+}
+`;
+
+exports[`RegExpParser matches INTEGER_PART RegExp 1`] = `
+{
+  "children": [
+    {
+      "child": {
+        "kind": "Atom",
+        "value": "-",
+      },
+      "kind": "Repeat",
+      "maximum": 1,
+      "minimum": 0,
+    },
+    {
+      "children": [
+        {
+          "kind": "Atom",
+          "value": "0",
+        },
+        {
+          "children": [
+            {
+              "from": "1",
+              "kind": "Range",
+              "to": "9",
+            },
+            {
+              "child": {
+                "from": "0",
+                "kind": "Range",
+                "to": "9",
+              },
+              "kind": "Repeat",
+              "maximum": Infinity,
+              "minimum": 0,
+            },
+          ],
+          "kind": "Sequence",
+        },
+      ],
+      "kind": "Alternate",
+    },
+  ],
+  "kind": "Sequence",
+}
+`;
+
+exports[`RegExpParser matches LINE_TERMINATOR RegExp 1`] = `
+{
+  "children": [
+    {
+      "kind": "Atom",
+      "value": 
+"
+"
+,
+    },
+    {
+      "children": [
+        {
+          "kind": "Atom",
+          "value": 
+"
+"
+,
+        },
+        {
+          "kind": "Atom",
+          "value": 
+"
+"
+,
+        },
+      ],
+      "kind": "Sequence",
+    },
+    {
+      "kind": "Atom",
+      "value": 
+"
+"
+,
+    },
+  ],
+  "kind": "Alternate",
+}
+`;
+
+exports[`RegExpParser matches NAME RegExp 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "from": "A",
+          "kind": "Range",
+          "to": "Z",
+        },
+        {
+          "kind": "Atom",
+          "value": "_",
+        },
+        {
+          "from": "a",
+          "kind": "Range",
+          "to": "z",
+        },
+      ],
+      "kind": "CharacterClass",
+      "negated": false,
+    },
+    {
+      "child": {
+        "children": [
+          {
+            "from": "0",
+            "kind": "Range",
+            "to": "9",
+          },
+          {
+            "from": "A",
+            "kind": "Range",
+            "to": "Z",
+          },
+          {
+            "kind": "Atom",
+            "value": "_",
+          },
+          {
+            "from": "a",
+            "kind": "Range",
+            "to": "z",
+          },
+        ],
+        "kind": "CharacterClass",
+        "negated": false,
+      },
+      "kind": "Repeat",
+      "maximum": Infinity,
+      "minimum": 0,
+    },
+  ],
+  "kind": "Sequence",
+}
+`;
+
+exports[`RegExpParser matches SOURCE_CHARACTER RegExp 1`] = `
+{
+  "children": [
+    {
+      "from": "	",
+      "kind": "Range",
+      "to": 
+"
+"
+,
+    },
+    {
+      "kind": "Atom",
+      "value": 
+"
+"
+,
+    },
+    {
+      "from": " ",
+      "kind": "Range",
+      "to": "￿",
+    },
+  ],
+  "kind": "CharacterClass",
+  "negated": false,
+}
+`;
+
+exports[`RegExpParser matches WHITESPACE RegExp 1`] = `
+{
+  "child": {
+    "children": [
+      {
+        "kind": "Atom",
+        "value": "	",
+      },
+      {
+        "kind": "Atom",
+        "value": " ",
+      },
+    ],
+    "kind": "CharacterClass",
+    "negated": false,
+  },
+  "kind": "Repeat",
+  "maximum": Infinity,
+  "minimum": 1,
+}
+`;

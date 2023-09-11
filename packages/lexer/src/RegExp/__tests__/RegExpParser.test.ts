@@ -1,16 +1,5 @@
 import {describe, expect, it} from 'bun:test';
 
-import {
-  ESCAPED_CHARACTER,
-  ESCAPED_UNICODE,
-  EXPONENT_PART,
-  FRACTIONAL_PART,
-  INTEGER_PART,
-  LINE_TERMINATOR,
-  NAME,
-  SOURCE_CHARACTER,
-  WHITESPACE,
-} from '../../definition';
 import RegExpParser from '../RegExpParser';
 
 describe('RegExpParser', () => {
@@ -504,44 +493,6 @@ describe('RegExpParser', () => {
     });
   });
 
-  describe('real-world examples', () => {
-    it('matches ESCAPED_CHARACTER RegExp', () => {
-      expect(new RegExpParser(ESCAPED_CHARACTER).parse()).toMatchSnapshot();
-    });
-
-    it('matches ESCAPED_UNICODE RegExp', () => {
-      expect(new RegExpParser(ESCAPED_UNICODE).parse()).toMatchSnapshot();
-    });
-
-    it('matches EXPONENT_PART RegExp', () => {
-      expect(new RegExpParser(EXPONENT_PART).parse()).toMatchSnapshot();
-    });
-
-    it('matches FRACTIONAL_PART RegExp', () => {
-      expect(new RegExpParser(FRACTIONAL_PART).parse()).toMatchSnapshot();
-    });
-
-    it('matches INTEGER_PART RegExp', () => {
-      expect(new RegExpParser(INTEGER_PART).parse()).toMatchSnapshot();
-    });
-
-    it('matches LINE_TERMINATOR RegExp', () => {
-      expect(new RegExpParser(LINE_TERMINATOR).parse()).toMatchSnapshot();
-    });
-
-    it('matches NAME RegExp', () => {
-      expect(new RegExpParser(NAME).parse()).toMatchSnapshot();
-    });
-
-    it('matches SOURCE_CHARACTER RegExp', () => {
-      expect(new RegExpParser(SOURCE_CHARACTER).parse()).toMatchSnapshot();
-    });
-
-    it('matches WHITESPACE RegExp', () => {
-      expect(new RegExpParser(WHITESPACE).parse()).toMatchSnapshot();
-    });
-  });
-
   describe('regression tests', () => {
     it('handles Unicode escapes inside ranges inside character classes', () => {
       expect(new RegExpParser(/[\u0020-\uffff]/).parse()).toEqual({
@@ -551,4 +502,7 @@ describe('RegExpParser', () => {
       });
     });
   });
+
+  // See also: GraphQL-based tests in `@masochist/graphql`, specifically in
+  // the file `src/NFA/__tests__/removeEpsilons.test.ts`.
 });

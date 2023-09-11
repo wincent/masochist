@@ -165,10 +165,8 @@ const rules = [
     action: r6,
   },
 ];
-
 const EOF = new Token('$', -1, -1, '');
-
-export default function parse(input) {
+export default function parseSchema(input) {
   const stack = [[null, 0]];
   const lexer = new Lexer(input);
 

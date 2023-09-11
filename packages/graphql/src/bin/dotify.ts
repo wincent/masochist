@@ -9,9 +9,9 @@
  */
 
 import {escapeForRegExp} from '@masochist/common';
+import {ignore} from '@masochist/lexer';
 import {
   compileRegExp,
-  ignore,
   NFAToDFA,
   dotifyTransitionTable,
   minimizeDFA,
@@ -19,7 +19,7 @@ import {
   removeEpsilons,
   sortEdges,
   toTransitionTable,
-} from '@masochist/lexer';
+} from '@masochist/lexer/src/internal';
 import Bun from 'bun';
 import {promises as fs} from 'fs';
 import path from 'path';
