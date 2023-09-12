@@ -38,7 +38,6 @@ export function getParser(
     },
 
     // Hoist function out from `export default` declaration.
-    // ie. ExportDefaultDeclaration becomes FunctionDeclaration.
     // ie. `export default function parse()` -> `parse = function parse()`
     ExportDefaultDeclaration(declaration: ExportDefaultDeclaration) {
       if (declaration.declaration.kind === 'FunctionDeclaration') {

@@ -48,7 +48,6 @@ export function getLexer(table: TransitionTable): {
     },
 
     // Hoist function out from `export default` declaration.
-    // ie. ExportDefaultDeclaration becomes FunctionDeclaration.
     // ie. `export default function *lex()` -> `lex = function *lex()`
     ExportDefaultDeclaration(declaration: ExportDefaultDeclaration) {
       if (declaration.declaration.kind === 'FunctionDeclaration') {
@@ -82,8 +81,8 @@ export function getLexer(table: TransitionTable): {
       return null;
     },
 
-    // Strip TS type annotations from FunctionDeclaration and
-    // FunctionExpression arguments.
+    // Strip TS type annotations from `FunctionDeclaration` and
+    // `FunctionExpression` arguments.
     // ie. `function *lex(input: string)` -> `function *lex(input)`
     // ie. `constructor(input: string)` -> `constructor(input)`
     Argument(argument: Argument) {
