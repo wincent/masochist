@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig-base.json",
   "files": [],
-  "include": [],
+  "include": ["support/**.ts"],
   "references": [
     {"path": "./packages/benchmark"},
     {"path": "./packages/client"},

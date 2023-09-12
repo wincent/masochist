@@ -43,14 +43,14 @@ diagrams: packages/graphql/src/bin/dotify.ts
 .PHONY: docs
 docs: docs/packages-dark.png docs/packages-light.png
 
-docs/packages-dark.dot: support/dotifyDependencyGraph.mjs $(PACKAGE_JSON)
-	@DARK=1 bun support/dotifyDependencyGraph.mjs > $@
+docs/packages-dark.dot: support/dotifyDependencyGraph.ts $(PACKAGE_JSON)
+	@DARK=1 bun support/dotifyDependencyGraph.ts > $@
 
 docs/packages-dark.png: docs/packages-dark.dot
 	@dot -Tpng $< -o $@
 
-docs/packages-light.dot: support/dotifyDependencyGraph.mjs $(PACKAGE_JSON)
-	@bun support/dotifyDependencyGraph.mjs > $@
+docs/packages-light.dot: support/dotifyDependencyGraph.ts $(PACKAGE_JSON)
+	@bun support/dotifyDependencyGraph.ts > $@
 
 docs/packages-light.png: docs/packages-light.dot
 	@dot -Tpng $< -o $@

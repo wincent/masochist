@@ -1,6 +1,6 @@
 // vim: set nomodifiable : DO NOT EDIT
 //
-// Edit "support/dotifyDependencyGraph.mjs" and run "make docs" instead.
+// Edit "support/dotifyDependencyGraph.ts" and run "make docs" instead.
 //
 // @generated
 
@@ -8,13 +8,13 @@ digraph dependency_graph {
   bgcolor = "transparent";
 
   node[color = "white", fontcolor = "white"]; "@masochist/benchmark"
-  node[color = "white", fontcolor = "white"]; "@masochist/codegen"
-  node[color = "white", fontcolor = "white"]; "@masochist/compiler"
-  node[color = "white", fontcolor = "white"]; "@masochist/graphql"
-  node[color = "white", fontcolor = "white"]; "@masochist/legacy"
   node[color = "white", fontcolor = "white"]; "@masochist/lexer"
-  node[color = "white", fontcolor = "white"]; "@masochist/parser"
   node[color = "white", fontcolor = "white"]; "@masochist/typescript"
+  node[color = "white", fontcolor = "white"]; "@masochist/legacy"
+  node[color = "white", fontcolor = "white"]; "@masochist/parser"
+  node[color = "white", fontcolor = "white"]; "@masochist/codegen"
+  node[color = "white", fontcolor = "white"]; "@masochist/graphql"
+  node[color = "white", fontcolor = "white"]; "@masochist/compiler"
 
   "@masochist/benchmark" -> "@masochist/common" [color = "white", fontcolor = "white"];
   "@masochist/benchmark" -> "@masochist/graphql" [color = "white", fontcolor = "white"];
@@ -22,21 +22,21 @@ digraph dependency_graph {
   "@masochist/benchmark" -> "@masochist/lexer" [color = "white", fontcolor = "white"];
   "@masochist/benchmark" -> "@masochist/parser" [color = "white", fontcolor = "white"];
   "@masochist/benchmark" -> "graphql" [color = "white", fontcolor = "white"];
-  "@masochist/codegen" -> "@masochist/common" [color = "white", fontcolor = "white"];
-  "@masochist/compiler" -> "@masochist/common" [color = "white", fontcolor = "white"];
-  "@masochist/compiler" -> "@masochist/legacy" [color = "white", fontcolor = "white"];
-  "@masochist/graphql" -> "@masochist/codegen" [color = "white", fontcolor = "white"];
-  "@masochist/graphql" -> "@masochist/common" [color = "white", fontcolor = "white"];
-  "@masochist/graphql" -> "@masochist/lexer" [color = "white", fontcolor = "white"];
-  "@masochist/graphql" -> "@masochist/parser" [color = "white", fontcolor = "white"];
-  "@masochist/legacy" -> "@masochist/common" [color = "white", fontcolor = "white"];
   "@masochist/lexer" -> "@masochist/codegen" [color = "white", fontcolor = "white"];
   "@masochist/lexer" -> "@masochist/common" [color = "white", fontcolor = "white"];
-  "@masochist/parser" -> "@masochist/codegen" [color = "white", fontcolor = "white"];
-  "@masochist/parser" -> "@masochist/common" [color = "white", fontcolor = "white"];
-  "@masochist/parser" -> "@masochist/lexer" [color = "white", fontcolor = "white"];
   "@masochist/typescript" -> "@masochist/codegen" [color = "white", fontcolor = "white"];
   "@masochist/typescript" -> "@masochist/common" [color = "white", fontcolor = "white"];
   "@masochist/typescript" -> "@masochist/lexer" [color = "white", fontcolor = "white"];
   "@masochist/typescript" -> "@masochist/parser" [color = "white", fontcolor = "white"];
+  "@masochist/legacy" -> "@masochist/common" [color = "white", fontcolor = "white"];
+  "@masochist/parser" -> "@masochist/codegen" [color = "white", fontcolor = "white"];
+  "@masochist/parser" -> "@masochist/common" [color = "white", fontcolor = "white"];
+  "@masochist/parser" -> "@masochist/lexer" [color = "white", fontcolor = "white"];
+  "@masochist/codegen" -> "@masochist/common" [color = "white", fontcolor = "white"];
+  "@masochist/graphql" -> "@masochist/codegen" [color = "white", fontcolor = "white"];
+  "@masochist/graphql" -> "@masochist/common" [color = "white", fontcolor = "white"];
+  "@masochist/graphql" -> "@masochist/lexer" [color = "white", fontcolor = "white"];
+  "@masochist/graphql" -> "@masochist/parser" [color = "white", fontcolor = "white"];
+  "@masochist/compiler" -> "@masochist/common" [color = "white", fontcolor = "white"];
+  "@masochist/compiler" -> "@masochist/legacy" [color = "white", fontcolor = "white"];
 }

@@ -3,20 +3,26 @@ import {promises as fs} from 'fs';
 import path from 'path';
 import {fileURLToPath} from 'url';
 
+type Options = {
+  dark?: boolean;
+};
+
 const __filename = fileURLToPath(import.meta.url);
 
-function log(...args) {
+function log(...args: Array<any>) {
   console.log(...args);
 }
 
-async function main(options = {}) {
+async function main(options: Options = {}) {
   const color = [
     `color = "${options.dark ? 'white' : 'black'}"`,
     `fontcolor = "${options.dark ? 'white' : 'black'}"`,
   ].join(', ');
 
   // Build dependency graph.
-  const dependencies = {};
+  const dependencies: {
+    [name: string]: Set<string>;
+  } = {};
   const packages = path.join(__filename, '..', '..', 'packages');
   for (const entry of await fs.readdir(packages, {withFileTypes: true})) {
     if (entry.isDirectory()) {
@@ -41,7 +47,7 @@ async function main(options = {}) {
   log('// vim: set nomodifiable : DO NOT EDIT');
   log('//');
   log(
-    '// Edit "support/dotifyDependencyGraph.mjs" and run "make docs" instead.',
+    '// Edit "support/dotifyDependencyGraph.ts" and run "make docs" instead.',
   );
   log('//');
   log('// @generated');
@@ -61,6 +67,6 @@ async function main(options = {}) {
   log('}');
 }
 
-main({dark: process.env['DARK']}).catch((error) => {
+main({dark: !!process.env['DARK']}).catch((error) => {
   console.log(error);
 });
