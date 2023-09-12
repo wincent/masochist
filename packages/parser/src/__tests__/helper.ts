@@ -69,6 +69,8 @@ export function getParser(
             .replace(/const popped(:\s*.+\s*=)/, 'const popped =')
             .replace('!;', ';'),
         };
+      } else {
+        return undefined; // Avoid TS7030: Not all code paths return a value.
       }
     },
   });
