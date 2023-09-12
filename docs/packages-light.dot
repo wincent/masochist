@@ -8,13 +8,13 @@ digraph dependency_graph {
   bgcolor = "transparent";
 
   node[color = "black", fontcolor = "black"]; "@masochist/benchmark"
-  node[color = "black", fontcolor = "black"]; "@masochist/lexer"
-  node[color = "black", fontcolor = "black"]; "@masochist/typescript"
-  node[color = "black", fontcolor = "black"]; "@masochist/legacy"
-  node[color = "black", fontcolor = "black"]; "@masochist/parser"
   node[color = "black", fontcolor = "black"]; "@masochist/codegen"
-  node[color = "black", fontcolor = "black"]; "@masochist/graphql"
   node[color = "black", fontcolor = "black"]; "@masochist/compiler"
+  node[color = "black", fontcolor = "black"]; "@masochist/graphql"
+  node[color = "black", fontcolor = "black"]; "@masochist/legacy"
+  node[color = "black", fontcolor = "black"]; "@masochist/lexer"
+  node[color = "black", fontcolor = "black"]; "@masochist/parser"
+  node[color = "black", fontcolor = "black"]; "@masochist/typescript"
 
   "@masochist/benchmark" -> "@masochist/common" [color = "black", fontcolor = "black"];
   "@masochist/benchmark" -> "@masochist/graphql" [color = "black", fontcolor = "black"];
@@ -22,21 +22,21 @@ digraph dependency_graph {
   "@masochist/benchmark" -> "@masochist/lexer" [color = "black", fontcolor = "black"];
   "@masochist/benchmark" -> "@masochist/parser" [color = "black", fontcolor = "black"];
   "@masochist/benchmark" -> "graphql" [color = "black", fontcolor = "black"];
-  "@masochist/lexer" -> "@masochist/codegen" [color = "black", fontcolor = "black"];
-  "@masochist/lexer" -> "@masochist/common" [color = "black", fontcolor = "black"];
-  "@masochist/typescript" -> "@masochist/codegen" [color = "black", fontcolor = "black"];
-  "@masochist/typescript" -> "@masochist/common" [color = "black", fontcolor = "black"];
-  "@masochist/typescript" -> "@masochist/lexer" [color = "black", fontcolor = "black"];
-  "@masochist/typescript" -> "@masochist/parser" [color = "black", fontcolor = "black"];
-  "@masochist/legacy" -> "@masochist/common" [color = "black", fontcolor = "black"];
-  "@masochist/parser" -> "@masochist/codegen" [color = "black", fontcolor = "black"];
-  "@masochist/parser" -> "@masochist/common" [color = "black", fontcolor = "black"];
-  "@masochist/parser" -> "@masochist/lexer" [color = "black", fontcolor = "black"];
   "@masochist/codegen" -> "@masochist/common" [color = "black", fontcolor = "black"];
+  "@masochist/compiler" -> "@masochist/common" [color = "black", fontcolor = "black"];
+  "@masochist/compiler" -> "@masochist/legacy" [color = "black", fontcolor = "black"];
   "@masochist/graphql" -> "@masochist/codegen" [color = "black", fontcolor = "black"];
   "@masochist/graphql" -> "@masochist/common" [color = "black", fontcolor = "black"];
   "@masochist/graphql" -> "@masochist/lexer" [color = "black", fontcolor = "black"];
   "@masochist/graphql" -> "@masochist/parser" [color = "black", fontcolor = "black"];
-  "@masochist/compiler" -> "@masochist/common" [color = "black", fontcolor = "black"];
-  "@masochist/compiler" -> "@masochist/legacy" [color = "black", fontcolor = "black"];
+  "@masochist/legacy" -> "@masochist/common" [color = "black", fontcolor = "black"];
+  "@masochist/lexer" -> "@masochist/codegen" [color = "black", fontcolor = "black"];
+  "@masochist/lexer" -> "@masochist/common" [color = "black", fontcolor = "black"];
+  "@masochist/parser" -> "@masochist/codegen" [color = "black", fontcolor = "black"];
+  "@masochist/parser" -> "@masochist/common" [color = "black", fontcolor = "black"];
+  "@masochist/parser" -> "@masochist/lexer" [color = "black", fontcolor = "black"];
+  "@masochist/typescript" -> "@masochist/codegen" [color = "black", fontcolor = "black"];
+  "@masochist/typescript" -> "@masochist/common" [color = "black", fontcolor = "black"];
+  "@masochist/typescript" -> "@masochist/lexer" [color = "black", fontcolor = "black"];
+  "@masochist/typescript" -> "@masochist/parser" [color = "black", fontcolor = "black"];
 }

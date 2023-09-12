@@ -55,12 +55,20 @@ async function main(options: Options = {}) {
   log('digraph dependency_graph {');
   log('  bgcolor = "transparent";');
   log('');
-  for (const name of Object.keys(dependencies)) {
+  for (const name of Object.keys(dependencies).sort()) {
     log(`  node[${color}]; "${name}"`);
   }
   log('');
-  for (const [name, deps] of Object.entries(dependencies)) {
-    for (const dep of deps) {
+  for (const [name, deps] of Object.entries(dependencies).sort(([a], [b]) => {
+    if (a > b) {
+      return 1;
+    } else if (b > a) {
+      return -1;
+    } else {
+      return 0;
+    }
+  })) {
+    for (const dep of [...deps].sort()) {
       log(`  "${name}" -> "${dep}" [${color}];`);
     }
   }
