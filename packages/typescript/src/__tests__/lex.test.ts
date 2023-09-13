@@ -226,5 +226,76 @@ describe('lex()', () => {
         },
       ]);
     });
+
+    it('parses a const nested array assignment', () => {
+      expect(lexAll('const stack = [[null, 0]];')).toEqual([
+        {
+          name: 'CONST',
+          start: 0,
+          end: 5,
+          contents: 'const',
+        },
+        {
+          name: 'IDENTIFIER',
+          start: 6,
+          end: 11,
+          contents: 'stack',
+        },
+        {
+          name: 'ASSIGN',
+          start: 12,
+          end: 13,
+          contents: '=',
+        },
+        {
+          name: 'OPENING_BRACKET',
+          start: 14,
+          end: 15,
+          contents: '[',
+        },
+        {
+          name: 'OPENING_BRACKET',
+          start: 15,
+          end: 16,
+          contents: '[',
+        },
+        {
+          name: 'NULL',
+          start: 16,
+          end: 20,
+          contents: 'null',
+        },
+        {
+          name: 'COMMA',
+          start: 20,
+          end: 21,
+          contents: ',',
+        },
+        {
+          name: 'NUMBER',
+          start: 22,
+          end: 23,
+          contents: '0',
+        },
+        {
+          name: 'CLOSING_BRACKET',
+          start: 23,
+          end: 24,
+          contents: ']',
+        },
+        {
+          name: 'CLOSING_BRACKET',
+          start: 24,
+          end: 25,
+          contents: ']',
+        },
+        {
+          name: 'SEMICOLON',
+          start: 25,
+          end: 26,
+          contents: ';',
+        },
+      ]);
+    });
   });
 });

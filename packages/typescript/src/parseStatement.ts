@@ -46,19 +46,49 @@ function r7($1) {
 function r8($1) {
   return $1;
 }
-function r9() {
+function r9($1) {
+  return $1;
+}
+function r10($1) {
+  return $1;
+}
+function r11() {
+  return {
+    kind: 'ArrayValue',
+    items: [],
+  };
+}
+function r12(_$1, $2) {
+  return {
+    kind: 'ArrayValue',
+    items: $2,
+  };
+}
+function r13($1) {
+  return [$1];
+}
+function r14($1, _$2, $3) {
+  $1.push($3);
+  return $1;
+}
+function r15() {
   return {
     kind: 'BooleanValue',
     value: false,
   };
 }
-function r10() {
+function r16() {
   return {
     kind: 'BooleanValue',
     value: true,
   };
 }
-function r11($1) {
+function r17() {
+  return {
+    kind: 'NullValue',
+  };
+}
+function r18($1) {
   return {
     kind: 'NumberValue',
     value: parseFloat($1.contents),
@@ -114,6 +144,14 @@ const actions = [
       kind: 'Reduce',
       rule: 4,
     },
+    CLOSING_BRACKET: {
+      kind: 'Reduce',
+      rule: 4,
+    },
+    COMMA: {
+      kind: 'Reduce',
+      rule: 4,
+    },
   },
   {
     ASSIGN: {
@@ -124,47 +162,71 @@ const actions = [
   {
     FALSE: {
       kind: 'Shift',
-      state: 14,
+      state: 16,
     },
     IDENTIFIER: {
       kind: 'Shift',
       state: 6,
     },
+    NULL: {
+      kind: 'Shift',
+      state: 19,
+    },
     NUMBER: {
       kind: 'Shift',
-      state: 17,
+      state: 21,
+    },
+    OPENING_BRACKET: {
+      kind: 'Shift',
+      state: 14,
     },
     TRUE: {
       kind: 'Shift',
-      state: 15,
+      state: 17,
     },
   },
   {
     FALSE: {
       kind: 'Shift',
-      state: 14,
+      state: 16,
     },
     IDENTIFIER: {
       kind: 'Shift',
       state: 6,
     },
-    NUMBER: {
-      kind: 'Shift',
-      state: 17,
-    },
-    TRUE: {
-      kind: 'Shift',
-      state: 15,
-    },
-  },
-  {
-    SEMICOLON: {
+    NULL: {
       kind: 'Shift',
       state: 19,
     },
+    NUMBER: {
+      kind: 'Shift',
+      state: 21,
+    },
+    OPENING_BRACKET: {
+      kind: 'Shift',
+      state: 14,
+    },
+    TRUE: {
+      kind: 'Shift',
+      state: 17,
+    },
   },
   {
     SEMICOLON: {
+      kind: 'Shift',
+      state: 23,
+    },
+  },
+  {
+    SEMICOLON: {
+      kind: 'Reduce',
+      rule: 5,
+    },
+    CLOSING_BRACKET: {
+      kind: 'Reduce',
+      rule: 5,
+    },
+    COMMA: {
       kind: 'Reduce',
       rule: 5,
     },
@@ -174,23 +236,57 @@ const actions = [
       kind: 'Reduce',
       rule: 6,
     },
+    CLOSING_BRACKET: {
+      kind: 'Reduce',
+      rule: 6,
+    },
+    COMMA: {
+      kind: 'Reduce',
+      rule: 6,
+    },
   },
   {
     SEMICOLON: {
       kind: 'Reduce',
       rule: 7,
     },
-  },
-  {
-    SEMICOLON: {
+    CLOSING_BRACKET: {
       kind: 'Reduce',
-      rule: 9,
+      rule: 7,
+    },
+    COMMA: {
+      kind: 'Reduce',
+      rule: 7,
     },
   },
   {
-    SEMICOLON: {
-      kind: 'Reduce',
-      rule: 10,
+    CLOSING_BRACKET: {
+      kind: 'Shift',
+      state: 24,
+    },
+    FALSE: {
+      kind: 'Shift',
+      state: 16,
+    },
+    IDENTIFIER: {
+      kind: 'Shift',
+      state: 6,
+    },
+    NULL: {
+      kind: 'Shift',
+      state: 19,
+    },
+    NUMBER: {
+      kind: 'Shift',
+      state: 21,
+    },
+    OPENING_BRACKET: {
+      kind: 'Shift',
+      state: 14,
+    },
+    TRUE: {
+      kind: 'Shift',
+      state: 17,
     },
   },
   {
@@ -198,17 +294,103 @@ const actions = [
       kind: 'Reduce',
       rule: 8,
     },
+    CLOSING_BRACKET: {
+      kind: 'Reduce',
+      rule: 8,
+    },
+    COMMA: {
+      kind: 'Reduce',
+      rule: 8,
+    },
   },
   {
     SEMICOLON: {
       kind: 'Reduce',
-      rule: 11,
+      rule: 15,
+    },
+    CLOSING_BRACKET: {
+      kind: 'Reduce',
+      rule: 15,
+    },
+    COMMA: {
+      kind: 'Reduce',
+      rule: 15,
+    },
+  },
+  {
+    SEMICOLON: {
+      kind: 'Reduce',
+      rule: 16,
+    },
+    CLOSING_BRACKET: {
+      kind: 'Reduce',
+      rule: 16,
+    },
+    COMMA: {
+      kind: 'Reduce',
+      rule: 16,
+    },
+  },
+  {
+    SEMICOLON: {
+      kind: 'Reduce',
+      rule: 9,
+    },
+    CLOSING_BRACKET: {
+      kind: 'Reduce',
+      rule: 9,
+    },
+    COMMA: {
+      kind: 'Reduce',
+      rule: 9,
+    },
+  },
+  {
+    SEMICOLON: {
+      kind: 'Reduce',
+      rule: 17,
+    },
+    CLOSING_BRACKET: {
+      kind: 'Reduce',
+      rule: 17,
+    },
+    COMMA: {
+      kind: 'Reduce',
+      rule: 17,
+    },
+  },
+  {
+    SEMICOLON: {
+      kind: 'Reduce',
+      rule: 10,
+    },
+    CLOSING_BRACKET: {
+      kind: 'Reduce',
+      rule: 10,
+    },
+    COMMA: {
+      kind: 'Reduce',
+      rule: 10,
+    },
+  },
+  {
+    SEMICOLON: {
+      kind: 'Reduce',
+      rule: 18,
+    },
+    CLOSING_BRACKET: {
+      kind: 'Reduce',
+      rule: 18,
+    },
+    COMMA: {
+      kind: 'Reduce',
+      rule: 18,
     },
   },
   {
     SEMICOLON: {
       kind: 'Shift',
-      state: 20,
+      state: 27,
     },
   },
   {
@@ -218,9 +400,93 @@ const actions = [
     },
   },
   {
+    SEMICOLON: {
+      kind: 'Reduce',
+      rule: 11,
+    },
+    CLOSING_BRACKET: {
+      kind: 'Reduce',
+      rule: 11,
+    },
+    COMMA: {
+      kind: 'Reduce',
+      rule: 11,
+    },
+  },
+  {
+    CLOSING_BRACKET: {
+      kind: 'Shift',
+      state: 28,
+    },
+    COMMA: {
+      kind: 'Shift',
+      state: 29,
+    },
+  },
+  {
+    CLOSING_BRACKET: {
+      kind: 'Reduce',
+      rule: 13,
+    },
+    COMMA: {
+      kind: 'Reduce',
+      rule: 13,
+    },
+  },
+  {
     ['$']: {
       kind: 'Reduce',
       rule: 3,
+    },
+  },
+  {
+    SEMICOLON: {
+      kind: 'Reduce',
+      rule: 12,
+    },
+    CLOSING_BRACKET: {
+      kind: 'Reduce',
+      rule: 12,
+    },
+    COMMA: {
+      kind: 'Reduce',
+      rule: 12,
+    },
+  },
+  {
+    FALSE: {
+      kind: 'Shift',
+      state: 16,
+    },
+    IDENTIFIER: {
+      kind: 'Shift',
+      state: 6,
+    },
+    NULL: {
+      kind: 'Shift',
+      state: 19,
+    },
+    NUMBER: {
+      kind: 'Shift',
+      state: 21,
+    },
+    OPENING_BRACKET: {
+      kind: 'Shift',
+      state: 14,
+    },
+    TRUE: {
+      kind: 'Shift',
+      state: 17,
+    },
+  },
+  {
+    CLOSING_BRACKET: {
+      kind: 'Reduce',
+      rule: 14,
+    },
+    COMMA: {
+      kind: 'Reduce',
+      rule: 14,
     },
   },
 ];
@@ -241,17 +507,35 @@ const gotos = [
   {},
   {},
   {
-    BooleanValue: 13,
+    ArrayValue: 13,
+    BooleanValue: 15,
     Expression: 10,
     Identifier: 11,
-    NumberValue: 16,
+    NullValue: 18,
+    NumberValue: 20,
     PrimitiveValue: 12,
   },
   {
-    BooleanValue: 13,
-    Expression: 18,
+    ArrayValue: 13,
+    BooleanValue: 15,
+    Expression: 22,
     Identifier: 11,
-    NumberValue: 16,
+    NullValue: 18,
+    NumberValue: 20,
+    PrimitiveValue: 12,
+  },
+  {},
+  {},
+  {},
+  {},
+  {
+    ArrayItemList: 25,
+    ArrayValue: 13,
+    BooleanValue: 15,
+    Expression: 26,
+    Identifier: 11,
+    NullValue: 18,
+    NumberValue: 20,
     PrimitiveValue: 12,
   },
   {},
@@ -264,6 +548,19 @@ const gotos = [
   {},
   {},
   {},
+  {},
+  {},
+  {},
+  {},
+  {
+    ArrayValue: 13,
+    BooleanValue: 15,
+    Expression: 30,
+    Identifier: 11,
+    NullValue: 18,
+    NumberValue: 20,
+    PrimitiveValue: 12,
+  },
   {},
 ];
 const rules = [
@@ -313,19 +610,54 @@ const rules = [
     action: r8,
   },
   {
-    production: 'BooleanValue',
+    production: 'PrimitiveValue',
     pop: 1,
     action: r9,
   },
   {
-    production: 'BooleanValue',
+    production: 'PrimitiveValue',
     pop: 1,
     action: r10,
   },
   {
+    production: 'ArrayValue',
+    pop: 2,
+    action: r11,
+  },
+  {
+    production: 'ArrayValue',
+    pop: 3,
+    action: r12,
+  },
+  {
+    production: 'ArrayItemList',
+    pop: 1,
+    action: r13,
+  },
+  {
+    production: 'ArrayItemList',
+    pop: 3,
+    action: r14,
+  },
+  {
+    production: 'BooleanValue',
+    pop: 1,
+    action: r15,
+  },
+  {
+    production: 'BooleanValue',
+    pop: 1,
+    action: r16,
+  },
+  {
+    production: 'NullValue',
+    pop: 1,
+    action: r17,
+  },
+  {
     production: 'NumberValue',
     pop: 1,
-    action: r11,
+    action: r18,
   },
 ];
 const EOF = new Token('$', -1, -1, '');

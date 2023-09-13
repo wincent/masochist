@@ -25,8 +25,8 @@
     "tsc:dry": "tsc --build --dry",
     "tsc:force": "tsc --build --force --emitDeclarationOnly",
     "tsc:watch": "tsc --build --watch --emitDeclarationOnly",
-    "format": "prettier --log-level warn --write '**/*.{graphql,js,json,md,mjs,ts,yml}'",
-    "format:check": "prettier --log-level warn --check '**/*.{graphql,js,json,md,mjs,ts,yml}'",
+    "format": "support/format.sh",
+    "format:check": "support/check-format.sh",
     "lint": "support/lint.sh"
   },
   "workspaces": [

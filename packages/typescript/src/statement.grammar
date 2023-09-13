@@ -23,6 +23,7 @@
 %token LOGICAL_AND
 %token LOGICAL_OR
 %token NEW
+%token NULL
 %token NUMBER
 %token OPENING_BRACE CLOSING_BRACE
 %token OPENING_BRACKET CLOSING_BRACKET
@@ -65,8 +66,25 @@ Identifier → IDENTIFIER {
 Expression → Identifier { $$ = $1; }
 Expression → PrimitiveValue { $$ = $1; }
 
+PrimitiveValue → ArrayValue { $$ = $1; }
 PrimitiveValue → BooleanValue { $$ = $1; }
+PrimitiveValue → NullValue { $$ = $1; }
 PrimitiveValue → NumberValue { $$ = $1; }
+
+ArrayValue → OPENING_BRACKET CLOSING_BRACKET {
+  $$ = {
+    kind: 'ArrayValue',
+    items: [],
+  };
+}
+ArrayValue → OPENING_BRACKET ArrayItemList CLOSING_BRACKET {
+  $$ = {
+    kind: 'ArrayValue',
+    items: $2,
+  };
+}
+ArrayItemList → Expression { $$ = [$1]; }
+ArrayItemList → ArrayItemList COMMA Expression { $1.push($3); $$ = $1; }
 
 BooleanValue → FALSE {
   $$ = {
@@ -78,6 +96,12 @@ BooleanValue → TRUE {
   $$ = {
     kind: 'BooleanValue',
     value: true,
+  };
+}
+
+NullValue → NULL {
+  $$ = {
+    kind: 'NullValue',
   };
 }
 

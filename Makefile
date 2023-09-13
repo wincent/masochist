@@ -5,11 +5,10 @@ PACKAGE_MAKEFILES = $(shell find packages -maxdepth 2 -type f -name Makefile)
 PACKAGE_DIRS = $(dir $(PACKAGE_MAKEFILES))
 TSC_SENTINEL = .tsc.make-sentinel
 TS_CONFIG = $(wildcard tsconfig*.json packages/*/tsconfig*.json)
-TS_SRC = $(wildcard packages/*/src/*.ts) $(wildcard packages/*/src/**/*.ts)
+TS_SRC = $(shell find packages/*/src support -type f -name '*.ts')
 TS_LIB = $(subst /src/,/lib/,$(TS_SRC))
-TS_D_OUT = $(pathsubst %.ts,%.d.ts,$(TS_LIB))
+TS_D_OUT = $(TS_LIB:.ts=.d.ts)
 
-.PHONY: build
 build: $(TS_D_OUT)
 
 .PHONY: clean
@@ -23,15 +22,19 @@ clean:
 .PHONY: debug
 debug:
 	@echo PACKAGE_JSON
-	@echo $(PACKAGE_JSON)
+	@echo $(PACKAGE_JSON) | sed 's/ /\n/g'
+	@echo
 	@echo TS_CONFIG
-	@echo $(TS_CONFIG)
+	@echo $(TS_CONFIG) | sed 's/ /\n/g'
+	@echo
 	@echo TS_SRC
-	@echo $(TS_SRC)
+	@echo $(TS_SRC) | sed 's/ /\n/g'
+	@echo
 	@echo TS_LIB
-	@echo $(TS_LIB)
+	@echo $(TS_LIB) | sed 's/ /\n/g'
+	@echo
 	@echo TS_D_OUT
-	@echo $(TS_D_OUT)
+	@echo $(TS_D_OUT) | sed 's/ /\n/g'
 
 .PHONY: diagrams
 diagrams: packages/graphql/src/bin/dotify.ts
@@ -56,29 +59,27 @@ docs/packages-light.png: docs/packages-light.dot
 	@dot -Tpng $< -o $@
 
 .PHONY: graphql
-graphql: packages/graphql/src/bin/generateLexer.ts packages/graphql/src/bin/generateParsers.ts
+graphql: packages/graphql/src/lex.ts packages/graphql/src/parseDocument.ts packages/graphql/src/parseSchema.ts
 	@bun packages/graphql/src/bin/generateLexer.ts
 	@bun packages/graphql/src/bin/generateParsers.ts
+	@bun format $^
 
-node_modules: bun.lockdb $(PACKAGE_JSON)
+node_modules: bun.lockb $(PACKAGE_JSON)
 	@bun install
 	@touch $@
 
 .PHONY: typescript
-typescript: packages/typescript/src/bin/generateLexer.ts packages/typescript/src/bin/generateParsers.ts
+typescript: packages/typescript/src/lex.ts packages/typescript/src/parseExpression.ts packages/typescript/src/parseStatement.ts
 	@bun packages/typescript/src/bin/generateLexer.ts
 	@bun packages/typescript/src/bin/generateParsers.ts
+	@bun format $^
 
 $(TSC_SENTINEL): $(PACKAGE_JSON) $(TS_CONFIG) $(TS_SRC) node_modules
-	@bun run build # runs: tsc --build --emitDeclarationOnly
-	@touch $(TSC_SENTINEL)
-
-bun.lockb: $(PACKAGE_JSON)
-	@bun install
+	@bun run tsc
 	@touch $@
 
 # Use dummy/sentinel file so that we can run `tsc` once and have it produce all
 # output files (instead of running once for each out-of-date output file).
 #
 # See: https://www.cmcrossroads.com/article/rules-multiple-outputs-gnu-make
-$(TS_D_OUT): .tsc.make-sentinel
+$(TS_D_OUT): $(TSC_SENTINEL)

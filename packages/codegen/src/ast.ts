@@ -832,6 +832,10 @@ const ast = {
     }
   },
 
+  // statementV2(source: string): Statement {
+  //   // TODO: (temporarily) use copy of parseStatement.ts copied into this package by the Makefile
+  // },
+
   statement(template: string): Statement {
     // eg. break
     // eg. break foo

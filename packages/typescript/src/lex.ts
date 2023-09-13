@@ -331,11 +331,14 @@ export class Lexer {
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
           (ch >= 0x61 && ch <= 0x64) ||
-          (ch >= 0x66 && ch <= 0x7a)
+          (ch >= 0x66 && ch <= 0x74) ||
+          (ch >= 0x76 && ch <= 0x7a)
         ) {
           this.state = 18;
         } else if (ch === 0x65) {
           this.state = 52;
+        } else if (ch === 0x75) {
+          this.state = 53;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -350,7 +353,7 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x65) {
-          this.state = 53;
+          this.state = 54;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -366,9 +369,9 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x68) {
-          this.state = 54;
-        } else if (ch === 0x72) {
           this.state = 55;
+        } else if (ch === 0x72) {
+          this.state = 56;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -383,7 +386,7 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x68) {
-          this.state = 56;
+          this.state = 57;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -398,7 +401,7 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x69) {
-          this.state = 57;
+          this.state = 58;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -419,7 +422,7 @@ export class Lexer {
         }
       } else if (state === 37) {
         if (ch >= 0x30 && ch <= 0x39) {
-          this.state = 60;
+          this.state = 61;
         } else {
           this.state = REJECT;
         }
@@ -440,7 +443,7 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x61) {
-          this.state = 62;
+          this.state = 63;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -455,7 +458,7 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x6e) {
-          this.state = 63;
+          this.state = 64;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -470,7 +473,7 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x66) {
-          this.state = 64;
+          this.state = 65;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -485,7 +488,7 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x73) {
-          this.state = 65;
+          this.state = 66;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -500,7 +503,7 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x70) {
-          this.state = 66;
+          this.state = 67;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -515,7 +518,7 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x6c) {
-          this.state = 67;
+          this.state = 68;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -530,7 +533,7 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x72) {
-          this.state = 68;
+          this.state = 69;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -545,7 +548,7 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x6e) {
-          this.state = 69;
+          this.state = 70;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -572,7 +575,7 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x70) {
-          this.state = 70;
+          this.state = 71;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -587,7 +590,7 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x74) {
-          this.state = 71;
+          this.state = 72;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -602,7 +605,7 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x77) {
-          this.state = 72;
+          this.state = 73;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -612,12 +615,12 @@ export class Lexer {
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x73) ||
-          (ch >= 0x75 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x6b) ||
+          (ch >= 0x6d && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x74) {
-          this.state = 73;
+        } else if (ch === 0x6c) {
+          this.state = 74;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -627,32 +630,17 @@ export class Lexer {
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x68) ||
-          (ch >= 0x6a && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x73) ||
+          (ch >= 0x75 && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x69) {
-          this.state = 74;
-        } else {
-          this.state = START;
-          return this.emit('IDENTIFIER', this.index, input);
-        }
-      } else if (state === 55) {
-        if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x74) ||
-          (ch >= 0x76 && ch <= 0x7a)
-        ) {
-          this.state = 18;
-        } else if (ch === 0x75) {
+        } else if (ch === 0x74) {
           this.state = 75;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
         }
-      } else if (state === 56) {
+      } else if (state === 55) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
@@ -667,7 +655,37 @@ export class Lexer {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
         }
+      } else if (state === 56) {
+        if (
+          (ch >= 0x30 && ch <= 0x39) ||
+          (ch >= 0x41 && ch <= 0x5a) ||
+          ch === 0x5f ||
+          (ch >= 0x61 && ch <= 0x74) ||
+          (ch >= 0x76 && ch <= 0x7a)
+        ) {
+          this.state = 18;
+        } else if (ch === 0x75) {
+          this.state = 77;
+        } else {
+          this.state = START;
+          return this.emit('IDENTIFIER', this.index, input);
+        }
       } else if (state === 57) {
+        if (
+          (ch >= 0x30 && ch <= 0x39) ||
+          (ch >= 0x41 && ch <= 0x5a) ||
+          ch === 0x5f ||
+          (ch >= 0x61 && ch <= 0x68) ||
+          (ch >= 0x6a && ch <= 0x7a)
+        ) {
+          this.state = 18;
+        } else if (ch === 0x69) {
+          this.state = 78;
+        } else {
+          this.state = START;
+          return this.emit('IDENTIFIER', this.index, input);
+        }
+      } else if (state === 58) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
@@ -677,19 +695,19 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x65) {
-          this.state = 77;
+          this.state = 79;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
         }
-      } else if (state === 60) {
+      } else if (state === 61) {
         while (ch >= 0x30 && ch <= 0x39) {
           this.index++;
           ch = this.index < length ? input.charCodeAt(this.index) : -1;
         }
         this.state = START;
         return this.emit('NUMBER', this.index, input);
-      } else if (state === 62) {
+      } else if (state === 63) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
@@ -699,23 +717,6 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x73) {
-          this.state = 78;
-        } else {
-          this.state = START;
-          return this.emit('IDENTIFIER', this.index, input);
-        }
-      } else if (state === 63) {
-        if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x72) ||
-          (ch >= 0x75 && ch <= 0x7a)
-        ) {
-          this.state = 18;
-        } else if (ch === 0x73) {
-          this.state = 79;
-        } else if (ch === 0x74) {
           this.state = 80;
         } else {
           this.state = START;
@@ -726,11 +727,14 @@ export class Lexer {
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x62 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x72) ||
+          (ch >= 0x75 && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x61) {
+        } else if (ch === 0x73) {
           this.state = 81;
+        } else if (ch === 0x74) {
+          this.state = 82;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -740,12 +744,11 @@ export class Lexer {
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x64) ||
-          (ch >= 0x66 && ch <= 0x7a)
+          (ch >= 0x62 && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x65) {
-          this.state = 82;
+        } else if (ch === 0x61) {
+          this.state = 83;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -755,12 +758,12 @@ export class Lexer {
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6e) ||
-          (ch >= 0x70 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x64) ||
+          (ch >= 0x66 && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x6f) {
-          this.state = 83;
+        } else if (ch === 0x65) {
+          this.state = 84;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -770,17 +773,32 @@ export class Lexer {
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x72) ||
-          (ch >= 0x74 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x6e) ||
+          (ch >= 0x70 && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x73) {
-          this.state = 84;
+        } else if (ch === 0x6f) {
+          this.state = 85;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
         }
       } else if (state === 68) {
+        if (
+          (ch >= 0x30 && ch <= 0x39) ||
+          (ch >= 0x41 && ch <= 0x5a) ||
+          ch === 0x5f ||
+          (ch >= 0x61 && ch <= 0x72) ||
+          (ch >= 0x74 && ch <= 0x7a)
+        ) {
+          this.state = 18;
+        } else if (ch === 0x73) {
+          this.state = 86;
+        } else {
+          this.state = START;
+          return this.emit('IDENTIFIER', this.index, input);
+        }
+      } else if (state === 69) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
@@ -792,7 +810,7 @@ export class Lexer {
           this.state = START;
           return this.emit('FOR', this.index, input);
         }
-      } else if (state === 69) {
+      } else if (state === 70) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
@@ -802,22 +820,7 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x63) {
-          this.state = 85;
-        } else {
-          this.state = START;
-          return this.emit('IDENTIFIER', this.index, input);
-        }
-      } else if (state === 70) {
-        if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6e) ||
-          (ch >= 0x70 && ch <= 0x7a)
-        ) {
-          this.state = 18;
-        } else if (ch === 0x6f) {
-          this.state = 86;
+          this.state = 87;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -827,12 +830,15 @@ export class Lexer {
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x6e) ||
+          (ch >= 0x70 && ch <= 0x7a)
         ) {
           this.state = 18;
+        } else if (ch === 0x6f) {
+          this.state = 88;
         } else {
           this.state = START;
-          return this.emit('LET', this.index, input);
+          return this.emit('IDENTIFIER', this.index, input);
         }
       } else if (state === 72) {
         if (
@@ -844,34 +850,31 @@ export class Lexer {
           this.state = 18;
         } else {
           this.state = START;
-          return this.emit('NEW', this.index, input);
+          return this.emit('LET', this.index, input);
         }
       } else if (state === 73) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x74) ||
-          (ch >= 0x76 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x75) {
-          this.state = 87;
         } else {
           this.state = START;
-          return this.emit('IDENTIFIER', this.index, input);
+          return this.emit('NEW', this.index, input);
         }
       } else if (state === 74) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x72) ||
-          (ch >= 0x74 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x6b) ||
+          (ch >= 0x6d && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x73) {
-          this.state = 88;
+        } else if (ch === 0x6c) {
+          this.state = 89;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -881,12 +884,12 @@ export class Lexer {
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x64) ||
-          (ch >= 0x66 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x74) ||
+          (ch >= 0x76 && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x65) {
-          this.state = 89;
+        } else if (ch === 0x75) {
+          this.state = 90;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -896,12 +899,12 @@ export class Lexer {
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6b) ||
-          (ch >= 0x6d && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x72) ||
+          (ch >= 0x74 && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x6c) {
-          this.state = 90;
+        } else if (ch === 0x73) {
+          this.state = 91;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -911,12 +914,12 @@ export class Lexer {
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6b) ||
-          (ch >= 0x6d && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x64) ||
+          (ch >= 0x66 && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x6c) {
-          this.state = 91;
+        } else if (ch === 0x65) {
+          this.state = 92;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -926,12 +929,12 @@ export class Lexer {
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x72) ||
-          (ch >= 0x74 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x6b) ||
+          (ch >= 0x6d && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x73) {
-          this.state = 92;
+        } else if (ch === 0x6c) {
+          this.state = 93;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -941,12 +944,12 @@ export class Lexer {
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x73) ||
-          (ch >= 0x75 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x6b) ||
+          (ch >= 0x6d && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x74) {
-          this.state = 93;
+        } else if (ch === 0x6c) {
+          this.state = 94;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -956,12 +959,12 @@ export class Lexer {
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x68) ||
-          (ch >= 0x6a && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x72) ||
+          (ch >= 0x74 && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x69) {
-          this.state = 94;
+        } else if (ch === 0x73) {
+          this.state = 95;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -971,17 +974,47 @@ export class Lexer {
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x74) ||
-          (ch >= 0x76 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x73) ||
+          (ch >= 0x75 && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x75) {
-          this.state = 95;
+        } else if (ch === 0x74) {
+          this.state = 96;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
         }
       } else if (state === 82) {
+        if (
+          (ch >= 0x30 && ch <= 0x39) ||
+          (ch >= 0x41 && ch <= 0x5a) ||
+          ch === 0x5f ||
+          (ch >= 0x61 && ch <= 0x68) ||
+          (ch >= 0x6a && ch <= 0x7a)
+        ) {
+          this.state = 18;
+        } else if (ch === 0x69) {
+          this.state = 97;
+        } else {
+          this.state = START;
+          return this.emit('IDENTIFIER', this.index, input);
+        }
+      } else if (state === 83) {
+        if (
+          (ch >= 0x30 && ch <= 0x39) ||
+          (ch >= 0x41 && ch <= 0x5a) ||
+          ch === 0x5f ||
+          (ch >= 0x61 && ch <= 0x74) ||
+          (ch >= 0x76 && ch <= 0x7a)
+        ) {
+          this.state = 18;
+        } else if (ch === 0x75) {
+          this.state = 98;
+        } else {
+          this.state = START;
+          return this.emit('IDENTIFIER', this.index, input);
+        }
+      } else if (state === 84) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
@@ -993,52 +1026,7 @@ export class Lexer {
           this.state = START;
           return this.emit('ELSE', this.index, input);
         }
-      } else if (state === 83) {
-        if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x71) ||
-          (ch >= 0x73 && ch <= 0x7a)
-        ) {
-          this.state = 18;
-        } else if (ch === 0x72) {
-          this.state = 96;
-        } else {
-          this.state = START;
-          return this.emit('IDENTIFIER', this.index, input);
-        }
-      } else if (state === 84) {
-        if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x64) ||
-          (ch >= 0x66 && ch <= 0x7a)
-        ) {
-          this.state = 18;
-        } else if (ch === 0x65) {
-          this.state = 97;
-        } else {
-          this.state = START;
-          return this.emit('IDENTIFIER', this.index, input);
-        }
       } else if (state === 85) {
-        if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x73) ||
-          (ch >= 0x75 && ch <= 0x7a)
-        ) {
-          this.state = 18;
-        } else if (ch === 0x74) {
-          this.state = 98;
-        } else {
-          this.state = START;
-          return this.emit('IDENTIFIER', this.index, input);
-        }
-      } else if (state === 86) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
@@ -1053,17 +1041,32 @@ export class Lexer {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
         }
+      } else if (state === 86) {
+        if (
+          (ch >= 0x30 && ch <= 0x39) ||
+          (ch >= 0x41 && ch <= 0x5a) ||
+          ch === 0x5f ||
+          (ch >= 0x61 && ch <= 0x64) ||
+          (ch >= 0x66 && ch <= 0x7a)
+        ) {
+          this.state = 18;
+        } else if (ch === 0x65) {
+          this.state = 100;
+        } else {
+          this.state = START;
+          return this.emit('IDENTIFIER', this.index, input);
+        }
       } else if (state === 87) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x71) ||
-          (ch >= 0x73 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x73) ||
+          (ch >= 0x75 && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x72) {
-          this.state = 100;
+        } else if (ch === 0x74) {
+          this.state = 101;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -1073,12 +1076,15 @@ export class Lexer {
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x71) ||
+          (ch >= 0x73 && ch <= 0x7a)
         ) {
           this.state = 18;
+        } else if (ch === 0x72) {
+          this.state = 102;
         } else {
           this.state = START;
-          return this.emit('THIS', this.index, input);
+          return this.emit('IDENTIFIER', this.index, input);
         }
       } else if (state === 89) {
         if (
@@ -1090,19 +1096,19 @@ export class Lexer {
           this.state = 18;
         } else {
           this.state = START;
-          return this.emit('TRUE', this.index, input);
+          return this.emit('NULL', this.index, input);
         }
       } else if (state === 90) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x64) ||
-          (ch >= 0x66 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x71) ||
+          (ch >= 0x73 && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x65) {
-          this.state = 101;
+        } else if (ch === 0x72) {
+          this.state = 103;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -1112,15 +1118,12 @@ export class Lexer {
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x63) ||
-          (ch >= 0x65 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x64) {
-          this.state = 102;
         } else {
           this.state = START;
-          return this.emit('IDENTIFIER', this.index, input);
+          return this.emit('THIS', this.index, input);
         }
       } else if (state === 92) {
         if (
@@ -1132,9 +1135,51 @@ export class Lexer {
           this.state = 18;
         } else {
           this.state = START;
-          return this.emit('CLASS', this.index, input);
+          return this.emit('TRUE', this.index, input);
         }
       } else if (state === 93) {
+        if (
+          (ch >= 0x30 && ch <= 0x39) ||
+          (ch >= 0x41 && ch <= 0x5a) ||
+          ch === 0x5f ||
+          (ch >= 0x61 && ch <= 0x64) ||
+          (ch >= 0x66 && ch <= 0x7a)
+        ) {
+          this.state = 18;
+        } else if (ch === 0x65) {
+          this.state = 104;
+        } else {
+          this.state = START;
+          return this.emit('IDENTIFIER', this.index, input);
+        }
+      } else if (state === 94) {
+        if (
+          (ch >= 0x30 && ch <= 0x39) ||
+          (ch >= 0x41 && ch <= 0x5a) ||
+          ch === 0x5f ||
+          (ch >= 0x61 && ch <= 0x63) ||
+          (ch >= 0x65 && ch <= 0x7a)
+        ) {
+          this.state = 18;
+        } else if (ch === 0x64) {
+          this.state = 105;
+        } else {
+          this.state = START;
+          return this.emit('IDENTIFIER', this.index, input);
+        }
+      } else if (state === 95) {
+        if (
+          (ch >= 0x30 && ch <= 0x39) ||
+          (ch >= 0x41 && ch <= 0x5a) ||
+          ch === 0x5f ||
+          (ch >= 0x61 && ch <= 0x7a)
+        ) {
+          this.state = 18;
+        } else {
+          this.state = START;
+          return this.emit('CLASS', this.index, input);
+        }
+      } else if (state === 96) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
@@ -1146,7 +1191,7 @@ export class Lexer {
           this.state = START;
           return this.emit('CONST', this.index, input);
         }
-      } else if (state === 94) {
+      } else if (state === 97) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
@@ -1156,12 +1201,12 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x6e) {
-          this.state = 103;
+          this.state = 106;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
         }
-      } else if (state === 95) {
+      } else if (state === 98) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
@@ -1171,49 +1216,7 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x6c) {
-          this.state = 104;
-        } else {
-          this.state = START;
-          return this.emit('IDENTIFIER', this.index, input);
-        }
-      } else if (state === 96) {
-        if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x73) ||
-          (ch >= 0x75 && ch <= 0x7a)
-        ) {
-          this.state = 18;
-        } else if (ch === 0x74) {
-          this.state = 105;
-        } else {
-          this.state = START;
-          return this.emit('IDENTIFIER', this.index, input);
-        }
-      } else if (state === 97) {
-        if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
-        ) {
-          this.state = 18;
-        } else {
-          this.state = START;
-          return this.emit('FALSE', this.index, input);
-        }
-      } else if (state === 98) {
-        if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x68) ||
-          (ch >= 0x6a && ch <= 0x7a)
-        ) {
-          this.state = 18;
-        } else if (ch === 0x69) {
-          this.state = 106;
+          this.state = 107;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -1228,7 +1231,7 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x74) {
-          this.state = 107;
+          this.state = 108;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -1238,56 +1241,29 @@ export class Lexer {
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6d) ||
-          (ch >= 0x6f && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x6e) {
-          this.state = 108;
         } else {
           this.state = START;
-          return this.emit('IDENTIFIER', this.index, input);
+          return this.emit('FALSE', this.index, input);
         }
       } else if (state === 101) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x68) ||
+          (ch >= 0x6a && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else {
-          this.state = START;
-          return this.emit('WHILE', this.index, input);
-        }
-      } else if (state === 102) {
-        if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
-        ) {
-          this.state = 18;
-        } else {
-          this.state = START;
-          return this.emit('YIELD', this.index, input);
-        }
-      } else if (state === 103) {
-        if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x74) ||
-          (ch >= 0x76 && ch <= 0x7a)
-        ) {
-          this.state = 18;
-        } else if (ch === 0x75) {
+        } else if (ch === 0x69) {
           this.state = 109;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
         }
-      } else if (state === 104) {
+      } else if (state === 102) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
@@ -1302,6 +1278,33 @@ export class Lexer {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
         }
+      } else if (state === 103) {
+        if (
+          (ch >= 0x30 && ch <= 0x39) ||
+          (ch >= 0x41 && ch <= 0x5a) ||
+          ch === 0x5f ||
+          (ch >= 0x61 && ch <= 0x6d) ||
+          (ch >= 0x6f && ch <= 0x7a)
+        ) {
+          this.state = 18;
+        } else if (ch === 0x6e) {
+          this.state = 111;
+        } else {
+          this.state = START;
+          return this.emit('IDENTIFIER', this.index, input);
+        }
+      } else if (state === 104) {
+        if (
+          (ch >= 0x30 && ch <= 0x39) ||
+          (ch >= 0x41 && ch <= 0x5a) ||
+          ch === 0x5f ||
+          (ch >= 0x61 && ch <= 0x7a)
+        ) {
+          this.state = 18;
+        } else {
+          this.state = START;
+          return this.emit('WHILE', this.index, input);
+        }
       } else if (state === 105) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
@@ -1312,19 +1315,19 @@ export class Lexer {
           this.state = 18;
         } else {
           this.state = START;
-          return this.emit('EXPORT', this.index, input);
+          return this.emit('YIELD', this.index, input);
         }
       } else if (state === 106) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6e) ||
-          (ch >= 0x70 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x74) ||
+          (ch >= 0x76 && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x6f) {
-          this.state = 111;
+        } else if (ch === 0x75) {
+          this.state = 112;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -1334,12 +1337,15 @@ export class Lexer {
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x73) ||
+          (ch >= 0x75 && ch <= 0x7a)
         ) {
           this.state = 18;
+        } else if (ch === 0x74) {
+          this.state = 113;
         } else {
           this.state = START;
-          return this.emit('IMPORT', this.index, input);
+          return this.emit('IDENTIFIER', this.index, input);
         }
       } else if (state === 108) {
         if (
@@ -1351,19 +1357,19 @@ export class Lexer {
           this.state = 18;
         } else {
           this.state = START;
-          return this.emit('RETURN', this.index, input);
+          return this.emit('EXPORT', this.index, input);
         }
       } else if (state === 109) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
           ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x64) ||
-          (ch >= 0x66 && ch <= 0x7a)
+          (ch >= 0x61 && ch <= 0x6e) ||
+          (ch >= 0x70 && ch <= 0x7a)
         ) {
           this.state = 18;
-        } else if (ch === 0x65) {
-          this.state = 112;
+        } else if (ch === 0x6f) {
+          this.state = 114;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
@@ -1378,9 +1384,48 @@ export class Lexer {
           this.state = 18;
         } else {
           this.state = START;
-          return this.emit('DEFAULT', this.index, input);
+          return this.emit('IMPORT', this.index, input);
         }
       } else if (state === 111) {
+        if (
+          (ch >= 0x30 && ch <= 0x39) ||
+          (ch >= 0x41 && ch <= 0x5a) ||
+          ch === 0x5f ||
+          (ch >= 0x61 && ch <= 0x7a)
+        ) {
+          this.state = 18;
+        } else {
+          this.state = START;
+          return this.emit('RETURN', this.index, input);
+        }
+      } else if (state === 112) {
+        if (
+          (ch >= 0x30 && ch <= 0x39) ||
+          (ch >= 0x41 && ch <= 0x5a) ||
+          ch === 0x5f ||
+          (ch >= 0x61 && ch <= 0x64) ||
+          (ch >= 0x66 && ch <= 0x7a)
+        ) {
+          this.state = 18;
+        } else if (ch === 0x65) {
+          this.state = 115;
+        } else {
+          this.state = START;
+          return this.emit('IDENTIFIER', this.index, input);
+        }
+      } else if (state === 113) {
+        if (
+          (ch >= 0x30 && ch <= 0x39) ||
+          (ch >= 0x41 && ch <= 0x5a) ||
+          ch === 0x5f ||
+          (ch >= 0x61 && ch <= 0x7a)
+        ) {
+          this.state = 18;
+        } else {
+          this.state = START;
+          return this.emit('DEFAULT', this.index, input);
+        }
+      } else if (state === 114) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
@@ -1390,12 +1435,12 @@ export class Lexer {
         ) {
           this.state = 18;
         } else if (ch === 0x6e) {
-          this.state = 113;
+          this.state = 116;
         } else {
           this.state = START;
           return this.emit('IDENTIFIER', this.index, input);
         }
-      } else if (state === 112) {
+      } else if (state === 115) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||
@@ -1407,7 +1452,7 @@ export class Lexer {
           this.state = START;
           return this.emit('CONTINUE', this.index, input);
         }
-      } else if (state === 113) {
+      } else if (state === 116) {
         if (
           (ch >= 0x30 && ch <= 0x39) ||
           (ch >= 0x41 && ch <= 0x5a) ||

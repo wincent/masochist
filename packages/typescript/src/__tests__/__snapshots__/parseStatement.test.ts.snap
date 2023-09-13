@@ -61,3 +61,32 @@ exports[`parseStatement() parses a let number assignment statement 1`] = `
   },
 }
 `;
+
+exports[`parseStatement() parses a const nested array assignment 1`] = `
+{
+  "binding": "const",
+  "kind": "AssignmentStatement",
+  "lhs": {
+    "kind": "Identifier",
+    "name": "stack",
+  },
+  "rhs": {
+    "items": [
+      {
+        "items": [
+          {
+            "kind": "NullValue",
+          },
+          {
+            "base": 10,
+            "kind": "NumberValue",
+            "value": 0,
+          },
+        ],
+        "kind": "ArrayValue",
+      },
+    ],
+    "kind": "ArrayValue",
+  },
+}
+`;

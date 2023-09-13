@@ -22,6 +22,9 @@ export type Stats = {
   [buildStat: string]: number;
 };
 
+// TODO: copy Token class into lexer (to remove need for @masochist/lexer
+// import, which means i can then copy the lexer and the parser into codegen)
+
 // TODO: see if i can avoid so many ternaries
 export default function build(
   table: TransitionTable,

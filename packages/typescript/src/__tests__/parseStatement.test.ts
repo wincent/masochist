@@ -8,6 +8,7 @@ describe('parseStatement()', () => {
   let parseStatement: ReturnType<typeof getParser>;
 
   beforeAll(() => {
+    // TODO: run these tests against disk version _as well_
     parseStatement = getParser(grammar, table, lexer);
   });
 
@@ -28,6 +29,11 @@ describe('parseStatement()', () => {
 
   it('parses a let number assignment statement', () => {
     const input = 'let isFoo = 2;';
+    expect(parseStatement(input)).toMatchSnapshot();
+  });
+
+  it('parses a const nested array assignment', () => {
+    const input = 'const stack = [[null, 0]];';
     expect(parseStatement(input)).toMatchSnapshot();
   });
 });

@@ -38,6 +38,7 @@ export const IF = 'if';
 export const IMPORT = 'import';
 export const LET = 'let';
 export const NEW = 'new';
+export const NULL = 'null';
 export const RETURN = 'return';
 export const THIS = 'this';
 export const TRUE = 'true';
@@ -66,6 +67,7 @@ export default union({
   IMPORT,
   LET,
   NEW,
+  NULL,
   RETURN,
   THIS,
   TRUE,

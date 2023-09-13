@@ -39,6 +39,9 @@ export default function build(
       '',
       '@generated',
     ),
+    // TODO: import this from local lexer instead? (need to avoid circular imports)
+    // or otherwise see if i can do without this; i only have it to represent
+    // EOF which i might be able to represent with null instead
     ast.import('{Token}', '@masochist/lexer'),
     // TODO: don't assume lexer is written to lex.ts
     ast.import('{Lexer}', './lex'),
@@ -168,7 +171,8 @@ export default function build(
         name,
         ['input'],
         [
-          // TODO: replace rawStatement
+          // TODO: replace rawStatement, line by line...
+          //ast.statementV2('const stack = [[null, 0]];'),
           ast.rawStatement(`
             const stack = [[null, 0]];
             const lexer = new Lexer(input);
