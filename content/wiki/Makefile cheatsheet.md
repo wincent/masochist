@@ -1,12 +1,15 @@
 ---
 tags: make wiki
 cache_breaker: 1
+title: Makefile cheatsheet
 ---
 
 # Automatic variables
 
--   `$@`: file being generated
--   `$<`: first pre-requisite
+-   `$@`: File being generated (ie. the "target" in Make parlance).
+-   `$<`: First pre-requisite.
+-   `$^`: All prerequisites (separated by spaces).
+-   `$?`: All prerequisites newer than the target (separated by spaces).
 
 # Functions
 
