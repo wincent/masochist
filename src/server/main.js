@@ -229,6 +229,7 @@ if (__DEV__) {
 }
 
 app.get('/heartbeat', (request, response) => {
+  response.set('Content-Type', 'text/plain');
   response.send('༼ つ ◕_◕ ༽つ');
 });
 
