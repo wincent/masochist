@@ -10,8 +10,8 @@ import type {
   DocComment,
   ExportDefaultDeclaration,
   ExportNamedDeclaration,
-  ImportStatement,
   PropertyDeclaration,
+  RawStatement,
 } from '@masochist/codegen';
 
 import type {TransitionTable} from '../NFA/TransitionTable';
@@ -34,12 +34,12 @@ interface Lexer {
  * but rather the one that _would_ be written if we were to regenerate it right
  * now.
  */
-export function getLexer(table: TransitionTable): {
+export async function getLexer(table: TransitionTable): Promise<{
   Lexer: Lexer;
   lex: (input: string) => Generator<Token, void, unknown>;
-} {
+}> {
   // Build lexer.
-  const node = build(table);
+  const node = await build(table);
 
   walk(node, {
     // Remove doc comments.
@@ -47,11 +47,10 @@ export function getLexer(table: TransitionTable): {
       return null;
     },
 
-    // Hoist function out from `export default` declaration.
+    // Hoist function out from `export default` declaration:
     // ie. `export default function *lex()` -> `lex = function *lex()`
     ExportDefaultDeclaration(declaration: ExportDefaultDeclaration) {
       if (declaration.declaration.kind === 'FunctionDeclaration') {
-        assert(declaration.declaration.name === '*lex');
         return ast.assign(null, 'lex', {
           kind: 'FunctionExpression',
           arguments: declaration.declaration.arguments,
@@ -76,11 +75,6 @@ export function getLexer(table: TransitionTable): {
       );
     },
 
-    // Remove `import Token from './Token'` statement.
-    ImportStatement(_statement: ImportStatement) {
-      return null;
-    },
-
     // Strip TS type annotations from `FunctionDeclaration` and
     // `FunctionExpression` arguments.
     // ie. `function *lex(input: string)` -> `function *lex(input)`
@@ -97,6 +91,19 @@ export function getLexer(table: TransitionTable): {
     // Strip TS property declarations (eg. `input: string` etc) from Lexer class.
     PropertyDeclaration(_declaration: PropertyDeclaration) {
       return null;
+    },
+
+    // Strip out TS property declarations, and TS type annotations from injected
+    // "Token.ts" file.
+    RawStatement({statement}: RawStatement) {
+      // TODO: once codegen can use real parser, parse the file instead of using
+      // RawStatement.
+      return {
+        kind: 'RawStatement',
+        statement: statement
+          .replace(/^\s*\w+: \w+;/gm, '') // Type declarations.
+          .replace(/(\w+): \w+/g, '$1'), // Type annotations on arguments.
+      };
     },
   });
 

@@ -17,7 +17,7 @@ import type {Stats} from '@masochist/lexer';
 
 async function main() {
   const stats: Stats = {};
-  const ast = build(lexer, stats, {buildCommand: 'make graphql'});
+  const ast = await build(lexer, stats, {buildCommand: 'make graphql'});
   const source = print(ast);
   const file = path.join(import.meta.dir, '..', '..', 'src', 'lex.ts');
 

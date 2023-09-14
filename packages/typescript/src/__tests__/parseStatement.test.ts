@@ -5,11 +5,11 @@ import lexer from '../lexer';
 import {grammar, table} from '../statement';
 
 describe('parseStatement()', () => {
-  let parseStatement: ReturnType<typeof getParser>;
+  let parseStatement: Awaited<ReturnType<typeof getParser>>;
 
-  beforeAll(() => {
+  beforeAll(async () => {
     // TODO: run these tests against disk version _as well_
-    parseStatement = getParser(grammar, table, lexer);
+    parseStatement = await getParser(grammar, table, lexer);
   });
 
   it('parses a const boolean assignment statement', () => {

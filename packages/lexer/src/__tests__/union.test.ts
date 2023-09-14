@@ -8,7 +8,7 @@ import ignore from '../ignore';
 import union from '../union';
 
 describe('union()', () => {
-  it('prefers greedy matches', () => {
+  it('prefers greedy matches', async () => {
     const table = union({
       ASSIGN: '=',
       EQUALS: '==',
@@ -18,14 +18,14 @@ describe('union()', () => {
 
     const input = '= == ===';
 
-    expect([...getLexer(table).lex(input)]).toEqual([
+    expect([...(await getLexer(table)).lex(input)]).toEqual([
       new Token('ASSIGN', 0, 1, input),
       new Token('EQUALS', 2, 4, input),
       new Token('STRICT_EQUALS', 5, 8, input),
     ]);
 
     // Visual inspection of the generated lexer shows why this works.
-    expect(print(build(table))).toMatchSnapshot();
+    expect(print(await build(table))).toMatchSnapshot();
   });
 
   // See also: GraphQL-based tests in `@masochist/graphql`, specifically in

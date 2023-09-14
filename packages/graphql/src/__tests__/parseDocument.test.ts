@@ -8,10 +8,10 @@ import {grammar, table} from '../document';
 import lexer from '../lexer';
 
 describe('parse()', () => {
-  let parse: ReturnType<typeof getParser>;
+  let parse: Awaited<ReturnType<typeof getParser>>;
 
-  beforeAll(() => {
-    parse = getParser(grammar, table, lexer);
+  beforeAll(async () => {
+    parse = await getParser(grammar, table, lexer);
   });
 
   it('parses a simple document using the GraphQL grammar', () => {

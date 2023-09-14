@@ -11,15 +11,15 @@ import lexer from '../lexer';
 import type {Stats} from '@masochist/lexer';
 
 describe('build()', () => {
-  it('builds an AST', () => {
-    const ast = build(lexer);
+  it('builds an AST', async () => {
+    const ast = await build(lexer);
     expect(print(ast)).toMatchSnapshot();
   });
 
-  it('reports stats', () => {
+  it('reports stats', async () => {
     const stats: Stats = {};
 
-    build(lexer, stats);
+    await build(lexer, stats);
 
     expect(stats['startStates']).toBe(1);
     expect(stats['acceptStates']).toBe(36);

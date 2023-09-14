@@ -22,13 +22,13 @@ import type {Grammar} from '../types';
  * written to disk but rather the ones that _would_ be written if we were to
  * regenerate them right now.
  */
-export function getParser(
+export async function getParser(
   grammar: Grammar,
   parseTable: ParseTable,
   lexerTable: TransitionTable,
-): (input: string) => unknown {
+): Promise<(input: string) => unknown> {
   // Build lexer.
-  const {Lexer} = getLexer(lexerTable);
+  const {Lexer} = await getLexer(lexerTable);
   const node = build(grammar, parseTable);
 
   walk(node, {

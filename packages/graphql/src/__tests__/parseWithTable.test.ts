@@ -12,10 +12,10 @@ import {grammar, table as parseTable} from '../document';
 import {default as lexerTable} from '../lexer';
 
 describe('parseWithTable()', () => {
-  let lex: ReturnType<typeof getLexer>['lex'];
+  let lex: Awaited<ReturnType<typeof getLexer>>['lex'];
 
-  beforeAll(() => {
-    lex = getLexer(lexerTable).lex;
+  beforeAll(async () => {
+    lex = (await getLexer(lexerTable)).lex;
   });
 
   it('parses a simple document using the GraphQL grammar', () => {

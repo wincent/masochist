@@ -27,10 +27,10 @@ import {
 import table from '../lexer';
 
 describe('union()', () => {
-  let lex: ReturnType<typeof getLexer>['lex'];
+  let lex: Awaited<ReturnType<typeof getLexer>>['lex'];
 
-  beforeAll(() => {
-    lex = getLexer(table).lex;
+  beforeAll(async () => {
+    lex = (await getLexer(table)).lex;
   });
 
   it('creates a machine with a number of distinct accept states', () => {

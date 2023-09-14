@@ -1,5 +1,6 @@
 import {ast} from '@masochist/codegen';
 import {invariant} from '@masochist/common';
+import path from 'node:path';
 
 import keyToTransition from './NFA/keyToTransition';
 
@@ -22,15 +23,12 @@ export type Stats = {
   [buildStat: string]: number;
 };
 
-// TODO: copy Token class into lexer (to remove need for @masochist/lexer
-// import, which means i can then copy the lexer and the parser into codegen)
-
 // TODO: see if i can avoid so many ternaries
-export default function build(
+export default async function build(
   table: TransitionTable,
   stats: Stats = {},
   options: Options = {},
-): Program {
+): Promise<Program> {
   invariant(table.startStates.size === 1, 'Need exactly one start state');
   const START = Array.from(table.startStates)[0];
 
@@ -288,7 +286,15 @@ export default function build(
         '',
         '@generated',
       ),
-      ast.import('{Token}', '@masochist/lexer'),
+
+      // TODO: once codegen can use real parser, parse the file instead of using
+      // RawStatement; and use walk to strip out bits "the right" way.
+      ast.rawStatement(
+        (await Bun.file(path.join(import.meta.dir, 'Token.ts')).text()).replace(
+          /^\s*\bexport\s+default\s+/m,
+          '',
+        ),
+      ),
       ast.statement('const REJECT = -1'),
       ast.statement('const START = 0'),
       ast.export(

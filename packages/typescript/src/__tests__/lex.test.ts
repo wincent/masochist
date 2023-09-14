@@ -11,10 +11,10 @@ type Tokenish = {
 };
 
 describe('lex()', () => {
-  let lex: ReturnType<typeof getLexer>['lex'];
+  let lex: Awaited<ReturnType<typeof getLexer>>['lex'];
 
-  beforeAll(() => {
-    lex = getLexer(table).lex;
+  beforeAll(async () => {
+    lex = (await getLexer(table)).lex;
   });
 
   function lexOne(input: string): Tokenish {

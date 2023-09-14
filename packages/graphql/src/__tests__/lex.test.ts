@@ -11,10 +11,10 @@ import path from 'node:path';
 import table from '../lexer';
 
 describe('lex()', () => {
-  let lex: ReturnType<typeof getLexer>['lex'];
+  let lex: Awaited<ReturnType<typeof getLexer>>['lex'];
 
-  beforeAll(() => {
-    lex = getLexer(table).lex;
+  beforeAll(async () => {
+    lex = (await getLexer(table)).lex;
   });
 
   it('can lex a NAME token right at the end', () => {

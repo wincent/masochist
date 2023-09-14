@@ -15,7 +15,7 @@ import type {Stats} from '@masochist/lexer';
 
 async function main() {
   const stats: Stats = {};
-  const ast = build(lexer, stats, {buildCommand: 'make typescript'});
+  const ast = await build(lexer, stats, {buildCommand: 'make typescript'});
   const source = print(ast);
   const file = path.join(import.meta.dir, '..', '..', 'src', 'lex.ts');
 
