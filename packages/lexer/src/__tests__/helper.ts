@@ -93,14 +93,15 @@ export async function getLexer(table: TransitionTable): Promise<{
       return null;
     },
 
-    // Strip out TS property declarations, and TS type annotations from injected
-    // "Token.ts" file.
+    // Hoist `export class Token` to `class Token`, strip TS property
+    // declarations, and TS type annotations from injected "Token.ts" file.
     RawStatement({statement}: RawStatement) {
       // TODO: once codegen can use real parser, parse the file instead of using
       // RawStatement.
       return {
         kind: 'RawStatement',
         statement: statement
+          .replace(/^\s*\bexport\s+/m, '') //
           .replace(/^\s*\w+: \w+;/gm, '') // Type declarations.
           .replace(/(\w+): \w+/g, '$1'), // Type annotations on arguments.
       };

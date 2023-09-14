@@ -39,12 +39,8 @@ export default function build(
       '',
       '@generated',
     ),
-    // TODO: import this from local lexer instead? (need to avoid circular imports)
-    // or otherwise see if i can do without this; i only have it to represent
-    // EOF which i might be able to represent with null instead
-    ast.import('{Token}', '@masochist/lexer'),
     // TODO: don't assume lexer is written to lex.ts
-    ast.import('{Lexer}', './lex'),
+    ast.import('{Lexer, Token}', './lex'),
     ...grammar.rules.map((rule, i): Statement => {
       if (rule.action && rule.action !== '') {
         stats['semanticActions']++;

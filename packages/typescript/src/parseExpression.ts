@@ -4,8 +4,7 @@
  *
  * @generated
  */
-import {Token} from '@masochist/lexer';
-import {Lexer} from './lex';
+import {Lexer, Token} from './lex';
 /**
  * r0: no production
  */

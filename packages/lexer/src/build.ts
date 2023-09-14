@@ -292,7 +292,7 @@ export default async function build(
       ast.rawStatement(
         (await Bun.file(path.join(import.meta.dir, 'Token.ts')).text()).replace(
           /^\s*\bexport\s+default\s+/m,
-          '',
+          'export ',
         ),
       ),
       ast.statement('const REJECT = -1'),

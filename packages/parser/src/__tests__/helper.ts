@@ -52,8 +52,7 @@ export async function getParser(
       }
     },
 
-    // Remove `import {Token} from '@masochist/lexer'` statement.
-    // Remove `import {Lexer} from './lex'` statement.
+    // Remove `import {Lexer, Token} from './lex'` statement.
     ImportStatement(_statement: ImportStatement) {
       return null;
     },
