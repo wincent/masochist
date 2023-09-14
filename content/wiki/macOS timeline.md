@@ -26,6 +26,7 @@ title: macOS timeline
 -   [macOS] 11.0 ([10.16]): [Big Sur](https://en.wikipedia.org/wiki/MacOS_Big_Sur), released 12 November 2020 (402 days after Catalina).
 -   [macOS] 12.0: [Monterey](https://en.wikipedia.org/wiki/MacOS_Monterey), released 25 October 2021 (347 days after Big Sur).
 -   [macOS] 13.0: [Ventura](https://en.wikipedia.org/wiki/MacOS_Ventura), released 24 October 2022 (364 days after Monterey).
+-   [macOS] 14.0: [Sonoma](https://en.wikipedia.org/wiki/MacOS_Sonoma), released 26 September 2023 (337 days after Ventura).
 
 The date calculations above were done with [Ruby](/wiki/Ruby):
 
