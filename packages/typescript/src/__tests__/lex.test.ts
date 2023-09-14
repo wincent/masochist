@@ -227,7 +227,7 @@ describe('lex()', () => {
       ]);
     });
 
-    it('parses a const nested array assignment', () => {
+    it('lexes a const nested array assignment', () => {
       expect(lexAll('const stack = [[null, 0]];')).toEqual([
         {
           name: 'CONST',
@@ -294,6 +294,152 @@ describe('lex()', () => {
           start: 25,
           end: 26,
           contents: ';',
+        },
+      ]);
+    });
+
+    it('lexes a (default) export class declaration', () => {
+      expect(
+        lexAll(`
+          export default class Token {
+            name: string;
+            start: number;
+            end: number;
+            source: string;
+          }
+        `),
+      ).toEqual([
+        {
+          contents: 'export',
+          end: 17,
+          name: 'EXPORT',
+          start: 11,
+        },
+        {
+          contents: 'default',
+          end: 25,
+          name: 'DEFAULT',
+          start: 18,
+        },
+        {
+          contents: 'class',
+          end: 31,
+          name: 'CLASS',
+          start: 26,
+        },
+        {
+          contents: 'Token',
+          end: 37,
+          name: 'IDENTIFIER',
+          start: 32,
+        },
+        {
+          contents: '{',
+          end: 39,
+          name: 'OPENING_BRACE',
+          start: 38,
+        },
+        {
+          contents: 'name',
+          end: 56,
+          name: 'IDENTIFIER',
+          start: 52,
+        },
+        {
+          contents: ':',
+          end: 57,
+          name: 'COLON',
+          start: 56,
+        },
+        {
+          contents: 'string',
+          end: 64,
+          name: 'IDENTIFIER',
+          start: 58,
+        },
+        {
+          contents: ';',
+          end: 65,
+          name: 'SEMICOLON',
+          start: 64,
+        },
+        {
+          contents: 'start',
+          end: 83,
+          name: 'IDENTIFIER',
+          start: 78,
+        },
+        {
+          contents: ':',
+          end: 84,
+          name: 'COLON',
+          start: 83,
+        },
+        {
+          contents: 'number',
+          end: 91,
+          name: 'IDENTIFIER',
+          start: 85,
+        },
+        {
+          contents: ';',
+          end: 92,
+          name: 'SEMICOLON',
+          start: 91,
+        },
+        {
+          contents: 'end',
+          end: 108,
+          name: 'IDENTIFIER',
+          start: 105,
+        },
+        {
+          contents: ':',
+          end: 109,
+          name: 'COLON',
+          start: 108,
+        },
+        {
+          contents: 'number',
+          end: 116,
+          name: 'IDENTIFIER',
+          start: 110,
+        },
+        {
+          contents: ';',
+          end: 117,
+          name: 'SEMICOLON',
+          start: 116,
+        },
+        {
+          contents: 'source',
+          end: 136,
+          name: 'IDENTIFIER',
+          start: 130,
+        },
+        {
+          contents: ':',
+          end: 137,
+          name: 'COLON',
+          start: 136,
+        },
+        {
+          contents: 'string',
+          end: 144,
+          name: 'IDENTIFIER',
+          start: 138,
+        },
+        {
+          contents: ';',
+          end: 145,
+          name: 'SEMICOLON',
+          start: 144,
+        },
+        {
+          contents: '}',
+          end: 157,
+          name: 'CLOSING_BRACE',
+          start: 156,
         },
       ]);
     });

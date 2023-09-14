@@ -38,6 +38,8 @@
 %token YIELD
 
 Statement → AssignmentStatement { $$ = $1; }
+Statement → ClassDeclaration { $$ = $1; }
+Statement → ExportDefaultDeclaration { $$ = $1; }
 
 AssignmentStatement → CONST Identifier ASSIGN Expression SEMICOLON {
   $$ = {
@@ -110,5 +112,47 @@ NumberValue → NUMBER {
     kind: 'NumberValue',
     value: parseFloat($1.contents),
     base: 10,
+  };
+}
+
+ExportDefaultDeclaration → EXPORT DEFAULT Declaration {
+  $$ = {
+    kind: 'ExportDefaultDeclaration',
+    declaration: $3,
+  };
+}
+
+Declaration → ClassDeclaration { $$ = $1; }
+# TODO: Declaration → FunctionDeclaration
+
+ClassDeclaration → CLASS Identifier OPENING_BRACE CLOSING_BRACE {
+  $$ = {
+    kind: 'ClassDeclaration',
+    id: $2.name,
+    body: [],
+  };
+}
+
+ClassDeclaration → CLASS Identifier OPENING_BRACE ClassBodyList CLOSING_BRACE {
+  $$ = {
+    kind: 'ClassDeclaration',
+    id: $2.name,
+    body: $4,
+  };
+}
+
+ClassBodyList → ClassBodyListItem { $$ = [$1]; }
+ClassBodyList → ClassBodyList ClassBodyListItem { $1.push($2); $$ = $1; }
+
+# TODO: ClassBodyListItem → DocComment { $$ = $1; }
+# TODO: ClassBodyListItem → MethodDefinition { $$ = $1; }
+ClassBodyListItem → PropertyDeclaration { $$ = $1; }
+
+# TODO: make this support richer `type` values than just Identifier-like ones.
+PropertyDeclaration → Identifier COLON Identifier SEMICOLON {
+  $$ = {
+    kind: 'PropertyDeclaration',
+    name: $1.name,
+    type: $3.name,
   };
 }

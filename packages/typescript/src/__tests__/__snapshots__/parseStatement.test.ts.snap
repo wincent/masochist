@@ -90,3 +90,35 @@ exports[`parseStatement() parses a const nested array assignment 1`] = `
   },
 }
 `;
+
+exports[`parseStatement() parses a (default) export class declaration 1`] = `
+{
+  "declaration": {
+    "body": [
+      {
+        "kind": "PropertyDeclaration",
+        "name": "name",
+        "type": "string",
+      },
+      {
+        "kind": "PropertyDeclaration",
+        "name": "start",
+        "type": "number",
+      },
+      {
+        "kind": "PropertyDeclaration",
+        "name": "end",
+        "type": "number",
+      },
+      {
+        "kind": "PropertyDeclaration",
+        "name": "source",
+        "type": "string",
+      },
+    ],
+    "id": "Token",
+    "kind": "ClassDeclaration",
+  },
+  "kind": "ExportDefaultDeclaration",
+}
+`;
