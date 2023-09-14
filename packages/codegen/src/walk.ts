@@ -338,7 +338,15 @@ function walkAssignmentStatement(
   }
 
   // Children.
-  const newChild = walk(newStatement.rhs, visitor);
+  let newChild = walk(newStatement.lhs, visitor);
+  if (newChild === null) {
+    return null;
+  } else if (newChild !== undefined) {
+    assertIsExpression(newChild);
+    newStatement.lhs = newChild;
+    changed = true;
+  }
+  newChild = walk(newStatement.rhs, visitor);
   if (newChild === null) {
     return null;
   } else if (newChild !== undefined) {

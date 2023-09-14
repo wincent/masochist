@@ -167,10 +167,9 @@ export default function build(
         name,
         ['input'],
         [
+          ast.statementV2('const stack = [[null, 0]];'),
           // TODO: replace rawStatement, line by line...
-          //ast.statementV2('const stack = [[null, 0]];'),
           ast.rawStatement(`
-            const stack = [[null, 0]];
             const lexer = new Lexer(input);
 
             let token = lexer.next() || EOF;

@@ -73,6 +73,7 @@ typescript: packages/typescript/src/lex.ts packages/typescript/src/parseExpressi
 	@bun packages/typescript/src/bin/generateLexer.ts
 	@bun packages/typescript/src/bin/generateParsers.ts
 	@bun format $^
+	@cp $^ packages/codegen/src/
 
 $(TSC_SENTINEL): $(PACKAGE_JSON) $(TS_CONFIG) $(TS_SRC) node_modules
 	@bun run tsc

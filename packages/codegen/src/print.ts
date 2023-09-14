@@ -258,7 +258,7 @@ function printStatement(statement: Statement, indent: number): string {
     return (
       printIndent(indent) +
       binding +
-      statement.lhs +
+      printExpression(statement.lhs, indent + 1) +
       ' = ' +
       printExpression(statement.rhs, indent + 1) +
       ';\n'

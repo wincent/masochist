@@ -1,5 +1,7 @@
 import {invariant} from '@masochist/common';
 
+import parseStatement from './parseStatement';
+
 // TODO make a **simple** JS parser with this tooling so I can do a better job
 // of the functions in here that take templates, instead of using regexps.
 
@@ -25,9 +27,9 @@ export type ArrayValue = {
 export type AssignmentStatement = {
   kind: 'AssignmentStatement';
   binding: 'const' | 'let' | 'var' | null;
-  // Note: Could need to support destructuring etc in the future.
-  // TODO: support proper expressions here (eg. `this.foo` MemberExpression) in addition to just identifier
-  lhs: string;
+  // TODO: support proper expressions here (eg. `this.foo` MemberExpression)
+  // (ie. destructuring etc, but not _all_ expressions; eg PrimitiveValue)
+  lhs: Expression;
   rhs: Expression;
 };
 
@@ -432,21 +434,21 @@ const ast = {
       return {
         kind: 'AssignmentStatement',
         binding,
-        lhs,
+        lhs: ast.expression(lhs), // TODO: limit this, not all expressions OK
         rhs: ast.expression(rhs),
       };
     } else if (typeof rhs === 'number') {
       return {
         kind: 'AssignmentStatement',
         binding,
-        lhs,
+        lhs: ast.expression(lhs), // TODO: limit this, not all expressions OK
         rhs: ast.number(rhs),
       };
     } else {
       return {
         kind: 'AssignmentStatement',
         binding,
-        lhs,
+        lhs: ast.expression(lhs), // TODO: limit this, not all expressions OK
         rhs,
       };
     }
@@ -832,9 +834,11 @@ const ast = {
     }
   },
 
-  // statementV2(source: string): Statement {
-  //   // TODO: (temporarily) use copy of parseStatement.ts copied into this package by the Makefile
-  // },
+  statementV2(source: string): Statement {
+    // TODO: fix types - need to extend our grammar DSL to allow me to write
+    // type declarations in it, and annotate productions.
+    return parseStatement(source) as any;
+  },
 
   statement(template: string): Statement {
     // eg. break
@@ -879,7 +883,7 @@ const ast = {
       return {
         kind: 'AssignmentStatement',
         binding: null,
-        lhs,
+        lhs: ast.identifier(lhs),
         rhs,
       };
     }
@@ -899,7 +903,7 @@ const ast = {
       return {
         kind: 'AssignmentStatement',
         binding: binding ?? null,
-        lhs,
+        lhs: ast.expression(lhs),
         rhs,
       };
     }
