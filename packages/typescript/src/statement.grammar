@@ -98,12 +98,6 @@ PrimitiveValue → BooleanValue { $$ = $1; }
 PrimitiveValue → NullValue { $$ = $1; }
 PrimitiveValue → NumberValue { $$ = $1; }
 
-ArrayValue → OPENING_BRACKET CLOSING_BRACKET {
-  $$ = {
-    kind: 'ArrayValue',
-    items: [],
-  };
-}
 ArrayValue → OPENING_BRACKET ArrayItemList CLOSING_BRACKET {
   $$ = {
     kind: 'ArrayValue',
@@ -112,6 +106,7 @@ ArrayValue → OPENING_BRACKET ArrayItemList CLOSING_BRACKET {
 }
 ArrayItemList → Expression { $$ = [$1]; }
 ArrayItemList → ArrayItemList COMMA Expression { $1.push($3); $$ = $1; }
+ArrayItemList → ε { $$ = []; }
 
 BooleanValue → FALSE {
   $$ = {

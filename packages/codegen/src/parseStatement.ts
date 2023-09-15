@@ -84,24 +84,21 @@ function r16($1) {
 function r17($1) {
   return $1;
 }
-function r18() {
-  return {
-    kind: 'ArrayValue',
-    items: [],
-  };
-}
-function r19(_$1, $2) {
+function r18(_$1, $2) {
   return {
     kind: 'ArrayValue',
     items: $2,
   };
 }
-function r20($1) {
+function r19($1) {
   return [$1];
 }
-function r21($1, _$2, $3) {
+function r20($1, _$2, $3) {
   $1.push($3);
   return $1;
+}
+function r21() {
+  return [];
 }
 function r22() {
   return {
@@ -503,10 +500,6 @@ const actions = [
     },
   },
   {
-    CLOSING_BRACKET: {
-      kind: 'Shift',
-      state: 30,
-    },
     FALSE: {
       kind: 'Shift',
       state: 14,
@@ -534,6 +527,14 @@ const actions = [
     TRUE: {
       kind: 'Shift',
       state: 15,
+    },
+    CLOSING_BRACKET: {
+      kind: 'Reduce',
+      rule: 21,
+    },
+    COMMA: {
+      kind: 'Reduce',
+      rule: 21,
     },
   },
   {
@@ -815,7 +816,7 @@ const actions = [
   {
     DEFAULT: {
       kind: 'Shift',
-      state: 34,
+      state: 33,
     },
   },
   {
@@ -899,7 +900,7 @@ const actions = [
     },
     SEMICOLON: {
       kind: 'Shift',
-      state: 35,
+      state: 34,
     },
     THIS: {
       kind: 'Shift',
@@ -908,6 +909,12 @@ const actions = [
     TRUE: {
       kind: 'Shift',
       state: 15,
+    },
+  },
+  {
+    ASSIGN: {
+      kind: 'Shift',
+      state: 36,
     },
   },
   {
@@ -917,12 +924,6 @@ const actions = [
     },
   },
   {
-    ASSIGN: {
-      kind: 'Shift',
-      state: 38,
-    },
-  },
-  {
     FALSE: {
       kind: 'Shift',
       state: 14,
@@ -983,35 +984,13 @@ const actions = [
     },
   },
   {
-    ASSIGN: {
-      kind: 'Reduce',
-      rule: 18,
-    },
-    DOT: {
-      kind: 'Reduce',
-      rule: 18,
-    },
     CLOSING_BRACKET: {
-      kind: 'Reduce',
-      rule: 18,
+      kind: 'Shift',
+      state: 40,
     },
     COMMA: {
-      kind: 'Reduce',
-      rule: 18,
-    },
-    SEMICOLON: {
-      kind: 'Reduce',
-      rule: 18,
-    },
-  },
-  {
-    CLOSING_BRACKET: {
       kind: 'Shift',
       state: 41,
-    },
-    COMMA: {
-      kind: 'Shift',
-      state: 42,
     },
   },
   {
@@ -1021,17 +1000,17 @@ const actions = [
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      rule: 20,
+      rule: 19,
     },
     COMMA: {
       kind: 'Reduce',
-      rule: 20,
+      rule: 19,
     },
   },
   {
     OPENING_BRACE: {
       kind: 'Shift',
-      state: 43,
+      state: 42,
     },
   },
   {
@@ -1105,7 +1084,7 @@ const actions = [
     },
     SEMICOLON: {
       kind: 'Shift',
-      state: 46,
+      state: 45,
     },
   },
   {
@@ -1175,7 +1154,7 @@ const actions = [
     },
     SEMICOLON: {
       kind: 'Shift',
-      state: 49,
+      state: 48,
     },
   },
   {
@@ -1203,23 +1182,23 @@ const actions = [
   {
     ASSIGN: {
       kind: 'Reduce',
-      rule: 19,
+      rule: 18,
     },
     DOT: {
       kind: 'Reduce',
-      rule: 19,
+      rule: 18,
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      rule: 19,
+      rule: 18,
     },
     COMMA: {
       kind: 'Reduce',
-      rule: 19,
+      rule: 18,
     },
     SEMICOLON: {
       kind: 'Reduce',
-      rule: 19,
+      rule: 18,
     },
   },
   {
@@ -1443,7 +1422,7 @@ const actions = [
     },
     SEMICOLON: {
       kind: 'Shift',
-      state: 56,
+      state: 55,
     },
   },
   {
@@ -1453,7 +1432,7 @@ const actions = [
     },
     SEMICOLON: {
       kind: 'Shift',
-      state: 57,
+      state: 56,
     },
   },
   {
@@ -1521,17 +1500,17 @@ const actions = [
     },
     CLOSING_BRACKET: {
       kind: 'Reduce',
-      rule: 21,
+      rule: 20,
     },
     COMMA: {
       kind: 'Reduce',
-      rule: 21,
+      rule: 20,
     },
   },
   {
     CLOSING_BRACE: {
       kind: 'Shift',
-      state: 58,
+      state: 57,
     },
     IDENTIFIER: {
       kind: 'Shift',
@@ -1560,13 +1539,13 @@ const actions = [
   },
   {
     COLON: {
-      kind: 'Shift',
-      state: 61,
-    },
-    OPENING_PAREN: {
       kind: 'Shift',
       state: 60,
     },
+    OPENING_PAREN: {
+      kind: 'Shift',
+      state: 59,
+    },
   },
   {
     CLOSING_BRACE: {
@@ -1784,12 +1763,12 @@ const actions = [
   },
   {
     CLOSING_PAREN: {
+      kind: 'Shift',
+      state: 65,
+    },
+    COMMA: {
       kind: 'Shift',
       state: 66,
-    },
-    COMMA: {
-      kind: 'Shift',
-      state: 67,
     },
   },
   {
@@ -1805,7 +1784,7 @@ const actions = [
   {
     COLON: {
       kind: 'Shift',
-      state: 68,
+      state: 67,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
@@ -1819,13 +1798,13 @@ const actions = [
   {
     SEMICOLON: {
       kind: 'Shift',
-      state: 69,
+      state: 68,
     },
   },
   {
     OPENING_BRACE: {
       kind: 'Shift',
-      state: 70,
+      state: 69,
     },
   },
   {
@@ -1927,7 +1906,7 @@ const actions = [
     },
     CLOSING_BRACE: {
       kind: 'Shift',
-      state: 75,
+      state: 74,
     },
     CONST: {
       kind: 'Shift',
@@ -2125,10 +2104,10 @@ const gotos = [
   {},
   {},
   {
-    ArrayItemList: 31,
+    ArrayItemList: 30,
     ArrayValue: 11,
     BooleanValue: 13,
-    Expression: 32,
+    Expression: 31,
     Identifier: 7,
     MemberExpression: 9,
     NullValue: 16,
@@ -2144,7 +2123,7 @@ const gotos = [
   {},
   {},
   {
-    Identifier: 33,
+    Identifier: 32,
   },
   {},
   {},
@@ -2152,7 +2131,7 @@ const gotos = [
   {
     ArrayValue: 11,
     BooleanValue: 13,
-    Expression: 36,
+    Expression: 35,
     Identifier: 7,
     MemberExpression: 9,
     NullValue: 16,
@@ -2161,6 +2140,16 @@ const gotos = [
   },
   {},
   {},
+  {
+    ArrayValue: 11,
+    BooleanValue: 13,
+    Expression: 38,
+    Identifier: 7,
+    MemberExpression: 9,
+    NullValue: 16,
+    NumberValue: 18,
+    PrimitiveValue: 10,
+  },
   {
     ArrayValue: 11,
     BooleanValue: 13,
@@ -2171,26 +2160,25 @@ const gotos = [
     NumberValue: 18,
     PrimitiveValue: 10,
   },
+  {},
+  {},
+  {},
+  {
+    ClassDeclaration: 44,
+    Declaration: 43,
+  },
+  {},
+  {},
   {
     ArrayValue: 11,
     BooleanValue: 13,
-    Expression: 40,
+    Expression: 46,
     Identifier: 7,
     MemberExpression: 9,
     NullValue: 16,
     NumberValue: 18,
     PrimitiveValue: 10,
   },
-  {},
-  {},
-  {},
-  {},
-  {
-    ClassDeclaration: 45,
-    Declaration: 44,
-  },
-  {},
-  {},
   {
     ArrayValue: 11,
     BooleanValue: 13,
@@ -2201,23 +2189,13 @@ const gotos = [
     NumberValue: 18,
     PrimitiveValue: 10,
   },
-  {
-    ArrayValue: 11,
-    BooleanValue: 13,
-    Expression: 48,
-    Identifier: 7,
-    MemberExpression: 9,
-    NullValue: 16,
-    NumberValue: 18,
-    PrimitiveValue: 10,
-  },
   {},
   {},
   {},
   {
     ArrayValue: 11,
     BooleanValue: 13,
-    Expression: 50,
+    Expression: 49,
     Identifier: 7,
     MemberExpression: 9,
     NullValue: 16,
@@ -2225,11 +2203,11 @@ const gotos = [
     PrimitiveValue: 10,
   },
   {
-    ClassBodyList: 51,
-    ClassBodyListItem: 52,
-    Identifier: 54,
-    MethodDefinition: 53,
-    PropertyDeclaration: 55,
+    ClassBodyList: 50,
+    ClassBodyListItem: 51,
+    Identifier: 53,
+    MethodDefinition: 52,
+    PropertyDeclaration: 54,
   },
   {},
   {},
@@ -2239,10 +2217,10 @@ const gotos = [
   {},
   {},
   {
-    ClassBodyListItem: 59,
-    Identifier: 54,
-    MethodDefinition: 53,
-    PropertyDeclaration: 55,
+    ClassBodyListItem: 58,
+    Identifier: 53,
+    MethodDefinition: 52,
+    PropertyDeclaration: 54,
   },
   {},
   {},
@@ -2253,24 +2231,24 @@ const gotos = [
   {},
   {},
   {
-    Argument: 63,
-    ArgumentList: 62,
+    Argument: 62,
+    ArgumentList: 61,
+    Identifier: 63,
+  },
+  {
     Identifier: 64,
   },
-  {
-    Identifier: 65,
-  },
   {},
   {},
   {},
   {},
   {},
   {
-    Argument: 71,
-    Identifier: 64,
+    Argument: 70,
+    Identifier: 63,
   },
   {
-    Identifier: 72,
+    Identifier: 71,
   },
   {},
   {
@@ -2286,8 +2264,8 @@ const gotos = [
     NumberValue: 18,
     PrimitiveValue: 10,
     ReturnStatement: 24,
-    Statement: 74,
-    StatementList: 73,
+    Statement: 73,
+    StatementList: 72,
   },
   {},
   {},
@@ -2304,7 +2282,7 @@ const gotos = [
     NumberValue: 18,
     PrimitiveValue: 10,
     ReturnStatement: 24,
-    Statement: 76,
+    Statement: 75,
   },
   {},
   {},
@@ -2403,22 +2381,22 @@ const rules = [
   },
   {
     production: 'ArrayValue',
-    pop: 2,
-    action: r18,
-  },
-  {
-    production: 'ArrayValue',
     pop: 3,
-    action: r19,
+    action: r18,
   },
   {
     production: 'ArrayItemList',
     pop: 1,
-    action: r20,
+    action: r19,
   },
   {
     production: 'ArrayItemList',
     pop: 3,
+    action: r20,
+  },
+  {
+    production: 'ArrayItemList',
+    pop: 0,
     action: r21,
   },
   {
