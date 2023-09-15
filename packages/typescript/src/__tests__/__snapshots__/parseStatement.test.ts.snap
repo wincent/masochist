@@ -225,6 +225,26 @@ exports[`parseStatement() parses a (default) export class declaration 1`] = `
           "kind": "FunctionExpression",
         },
       },
+      {
+        "key": {
+          "kind": "Identifier",
+          "name": "contents",
+        },
+        "kind": "MethodDefinition",
+        "value": {
+          "arguments": [],
+          "body": [
+            {
+              "expression": {
+                "kind": "Identifier",
+                "name": "value",
+              },
+              "kind": "ReturnStatement",
+            },
+          ],
+          "kind": "FunctionExpression",
+        },
+      },
     ],
     "id": "Token",
     "kind": "ClassDeclaration",

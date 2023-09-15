@@ -63,6 +63,11 @@ describe('parseStatement()', () => {
           this.end = end;
           this.source = source;
         }
+
+        // Make this a getter. Add rest of real contents to it.
+        contents() {
+          return value;
+        }
       }
     `;
     expect(parseStatement(input)).toMatchSnapshot();
