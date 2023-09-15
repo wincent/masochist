@@ -136,26 +136,22 @@ function r26(_$1, _$2, $3) {
 function r27($1) {
   return $1;
 }
-function r28(_$1, $2) {
-  return {
-    kind: 'ClassDeclaration',
-    id: $2.name,
-    body: [],
-  };
-}
-function r29(_$1, $2, _$3, $4) {
+function r28(_$1, $2, _$3, $4) {
   return {
     kind: 'ClassDeclaration',
     id: $2.name,
     body: $4,
   };
 }
-function r30($1) {
+function r29($1) {
   return [$1];
 }
-function r31($1, $2) {
+function r30($1, $2) {
   $1.push($2);
   return $1;
+}
+function r31() {
+  return [];
 }
 function r32($1) {
   return $1;
@@ -1257,14 +1253,14 @@ const actions = [
     },
   },
   {
-    CLOSING_BRACE: {
-      kind: 'Shift',
-      state: 51,
-    },
     IDENTIFIER: {
       kind: 'Shift',
       state: 8,
     },
+    CLOSING_BRACE: {
+      kind: 'Reduce',
+      rule: 31,
+    },
   },
   {
     ['$']: {
@@ -1438,6 +1434,16 @@ const actions = [
     NUMBER: {
       kind: 'Reduce',
       rule: 44,
+    },
+  },
+  {
+    DOT: {
+      kind: 'Shift',
+      state: 29,
+    },
+    SEMICOLON: {
+      kind: 'Shift',
+      state: 56,
     },
   },
   {
@@ -1448,16 +1454,6 @@ const actions = [
     SEMICOLON: {
       kind: 'Shift',
       state: 57,
-    },
-  },
-  {
-    DOT: {
-      kind: 'Shift',
-      state: 29,
-    },
-    SEMICOLON: {
-      kind: 'Shift',
-      state: 58,
     },
   },
   {
@@ -1533,67 +1529,9 @@ const actions = [
     },
   },
   {
-    ['$']: {
-      kind: 'Reduce',
-      rule: 28,
-    },
-    CLOSING_BRACE: {
-      kind: 'Reduce',
-      rule: 28,
-    },
-    CONST: {
-      kind: 'Reduce',
-      rule: 28,
-    },
-    LET: {
-      kind: 'Reduce',
-      rule: 28,
-    },
-    CLASS: {
-      kind: 'Reduce',
-      rule: 28,
-    },
-    EXPORT: {
-      kind: 'Reduce',
-      rule: 28,
-    },
-    RETURN: {
-      kind: 'Reduce',
-      rule: 28,
-    },
-    THIS: {
-      kind: 'Reduce',
-      rule: 28,
-    },
-    IDENTIFIER: {
-      kind: 'Reduce',
-      rule: 28,
-    },
-    OPENING_BRACKET: {
-      kind: 'Reduce',
-      rule: 28,
-    },
-    FALSE: {
-      kind: 'Reduce',
-      rule: 28,
-    },
-    TRUE: {
-      kind: 'Reduce',
-      rule: 28,
-    },
-    NULL: {
-      kind: 'Reduce',
-      rule: 28,
-    },
-    NUMBER: {
-      kind: 'Reduce',
-      rule: 28,
-    },
-  },
-  {
     CLOSING_BRACE: {
       kind: 'Shift',
-      state: 59,
+      state: 58,
     },
     IDENTIFIER: {
       kind: 'Shift',
@@ -1603,11 +1541,11 @@ const actions = [
   {
     CLOSING_BRACE: {
       kind: 'Reduce',
-      rule: 30,
+      rule: 29,
     },
     IDENTIFIER: {
       kind: 'Reduce',
-      rule: 30,
+      rule: 29,
     },
   },
   {
@@ -1622,13 +1560,13 @@ const actions = [
   },
   {
     COLON: {
-      kind: 'Shift',
-      state: 62,
-    },
-    OPENING_PAREN: {
       kind: 'Shift',
       state: 61,
     },
+    OPENING_PAREN: {
+      kind: 'Shift',
+      state: 60,
+    },
   },
   {
     CLOSING_BRACE: {
@@ -1759,69 +1697,69 @@ const actions = [
   {
     ['$']: {
       kind: 'Reduce',
-      rule: 29,
+      rule: 28,
     },
     CLOSING_BRACE: {
       kind: 'Reduce',
-      rule: 29,
+      rule: 28,
     },
     CONST: {
       kind: 'Reduce',
-      rule: 29,
+      rule: 28,
     },
     LET: {
       kind: 'Reduce',
-      rule: 29,
+      rule: 28,
     },
     CLASS: {
       kind: 'Reduce',
-      rule: 29,
+      rule: 28,
     },
     EXPORT: {
       kind: 'Reduce',
-      rule: 29,
+      rule: 28,
     },
     RETURN: {
       kind: 'Reduce',
-      rule: 29,
+      rule: 28,
     },
     THIS: {
       kind: 'Reduce',
-      rule: 29,
+      rule: 28,
     },
     IDENTIFIER: {
       kind: 'Reduce',
-      rule: 29,
+      rule: 28,
     },
     OPENING_BRACKET: {
       kind: 'Reduce',
-      rule: 29,
+      rule: 28,
     },
     FALSE: {
       kind: 'Reduce',
-      rule: 29,
+      rule: 28,
     },
     TRUE: {
       kind: 'Reduce',
-      rule: 29,
+      rule: 28,
     },
     NULL: {
       kind: 'Reduce',
-      rule: 29,
+      rule: 28,
     },
     NUMBER: {
       kind: 'Reduce',
-      rule: 29,
+      rule: 28,
     },
   },
   {
     CLOSING_BRACE: {
       kind: 'Reduce',
-      rule: 31,
+      rule: 30,
     },
     IDENTIFIER: {
       kind: 'Reduce',
-      rule: 31,
+      rule: 30,
     },
   },
   {
@@ -1846,12 +1784,12 @@ const actions = [
   },
   {
     CLOSING_PAREN: {
+      kind: 'Shift',
+      state: 66,
+    },
+    COMMA: {
       kind: 'Shift',
       state: 67,
-    },
-    COMMA: {
-      kind: 'Shift',
-      state: 68,
     },
   },
   {
@@ -1867,7 +1805,7 @@ const actions = [
   {
     COLON: {
       kind: 'Shift',
-      state: 69,
+      state: 68,
     },
     CLOSING_PAREN: {
       kind: 'Reduce',
@@ -1881,13 +1819,13 @@ const actions = [
   {
     SEMICOLON: {
       kind: 'Shift',
-      state: 70,
+      state: 69,
     },
   },
   {
     OPENING_BRACE: {
       kind: 'Shift',
-      state: 71,
+      state: 70,
     },
   },
   {
@@ -1989,7 +1927,7 @@ const actions = [
     },
     CLOSING_BRACE: {
       kind: 'Shift',
-      state: 76,
+      state: 75,
     },
     CONST: {
       kind: 'Shift',
@@ -2287,11 +2225,24 @@ const gotos = [
     PrimitiveValue: 10,
   },
   {
-    ClassBodyList: 52,
-    ClassBodyListItem: 53,
-    Identifier: 55,
-    MethodDefinition: 54,
-    PropertyDeclaration: 56,
+    ClassBodyList: 51,
+    ClassBodyListItem: 52,
+    Identifier: 54,
+    MethodDefinition: 53,
+    PropertyDeclaration: 55,
+  },
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {
+    ClassBodyListItem: 59,
+    Identifier: 54,
+    MethodDefinition: 53,
+    PropertyDeclaration: 55,
   },
   {},
   {},
@@ -2302,38 +2253,24 @@ const gotos = [
   {},
   {},
   {
-    ClassBodyListItem: 60,
-    Identifier: 55,
-    MethodDefinition: 54,
-    PropertyDeclaration: 56,
+    Argument: 63,
+    ArgumentList: 62,
+    Identifier: 64,
   },
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
   {
-    Argument: 64,
-    ArgumentList: 63,
     Identifier: 65,
   },
-  {
-    Identifier: 66,
-  },
   {},
   {},
   {},
   {},
   {},
   {
-    Argument: 72,
-    Identifier: 65,
+    Argument: 71,
+    Identifier: 64,
   },
   {
-    Identifier: 73,
+    Identifier: 72,
   },
   {},
   {
@@ -2349,8 +2286,8 @@ const gotos = [
     NumberValue: 18,
     PrimitiveValue: 10,
     ReturnStatement: 24,
-    Statement: 75,
-    StatementList: 74,
+    Statement: 74,
+    StatementList: 73,
   },
   {},
   {},
@@ -2367,7 +2304,7 @@ const gotos = [
     NumberValue: 18,
     PrimitiveValue: 10,
     ReturnStatement: 24,
-    Statement: 77,
+    Statement: 76,
   },
   {},
   {},
@@ -2516,22 +2453,22 @@ const rules = [
   },
   {
     production: 'ClassDeclaration',
-    pop: 4,
-    action: r28,
-  },
-  {
-    production: 'ClassDeclaration',
     pop: 5,
-    action: r29,
+    action: r28,
   },
   {
     production: 'ClassBodyList',
     pop: 1,
-    action: r30,
+    action: r29,
   },
   {
     production: 'ClassBodyList',
     pop: 2,
+    action: r30,
+  },
+  {
+    production: 'ClassBodyList',
+    pop: 0,
     action: r31,
   },
   {

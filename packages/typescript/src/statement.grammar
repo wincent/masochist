@@ -150,14 +150,6 @@ ExportDefaultDeclaration → EXPORT DEFAULT Declaration {
 Declaration → ClassDeclaration { $$ = $1; }
 # TODO: Declaration → FunctionDeclaration
 
-ClassDeclaration → CLASS Identifier OPENING_BRACE CLOSING_BRACE {
-  $$ = {
-    kind: 'ClassDeclaration',
-    id: $2.name,
-    body: [],
-  };
-}
-
 ClassDeclaration → CLASS Identifier OPENING_BRACE ClassBodyList CLOSING_BRACE {
   $$ = {
     kind: 'ClassDeclaration',
@@ -168,6 +160,7 @@ ClassDeclaration → CLASS Identifier OPENING_BRACE ClassBodyList CLOSING_BRACE 
 
 ClassBodyList → ClassBodyListItem { $$ = [$1]; }
 ClassBodyList → ClassBodyList ClassBodyListItem { $1.push($2); $$ = $1; }
+ClassBodyList → ε { $$ = []; }
 
 # TODO: ClassBodyListItem → DocComment { $$ = $1; }
 ClassBodyListItem → MethodDefinition { $$ = $1; }
