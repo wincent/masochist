@@ -50,6 +50,7 @@ export const IDENTIFIER = /[_a-z][_0-9a-z]*/i;
 export const NUMBER = /-?(0|[1-9]\d*)(\.\d+)?/;
 
 // Ignored.
+export const COMMENT = /\/\/[^\n\r]*(?:\r?\n)?/;
 export const LINE_TERMINATOR = /\n|\r\n|\r/; // Note: we require semicolons.
 export const WHITESPACE = /[\t ]+/;
 
@@ -99,5 +100,5 @@ export default union({
   SEMICOLON,
   STRICT_EQUALS,
 
-  IGNORED: ignore(LINE_TERMINATOR, WHITESPACE),
+  IGNORED: ignore(COMMENT, LINE_TERMINATOR, WHITESPACE),
 });

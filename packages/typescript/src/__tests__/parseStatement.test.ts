@@ -57,6 +57,7 @@ describe('parseStatement()', () => {
         source: string;
 
         constructor(name: string, start: number, end: number, source: string) {
+          // No validation, for speed; we trust the generated lexer to be flawless.
           this.name = name;
           this.start = start;
           this.end = end;
