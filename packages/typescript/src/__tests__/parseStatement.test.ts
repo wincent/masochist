@@ -55,6 +55,13 @@ describe('parseStatement()', () => {
         start: number;
         end: number;
         source: string;
+
+        constructor(name: string, start: number, end: number, source: string) {
+          this.name = name;
+          this.start = start;
+          this.end = end;
+          this.source = source;
+        }
       }
     `;
     expect(parseStatement(input)).toMatchSnapshot();

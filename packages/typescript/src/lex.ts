@@ -189,7 +189,8 @@ export class Lexer {
         if (ch === 0x2e) {
           this.state = 36;
         } else {
-          this.state = REJECT;
+          this.state = START;
+          return this.emit('DOT', this.index, input);
         }
       } else if (state === 11) {
         if (ch === 0x2e) {

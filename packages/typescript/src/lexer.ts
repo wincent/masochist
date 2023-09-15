@@ -8,6 +8,7 @@ export const CLOSING_BRACKET = ']';
 export const CLOSING_PAREN = ')';
 export const COMMA = ',';
 export const COLON = ':';
+export const DOT = '.';
 export const EQUALS = '==';
 export const GREATER_THAN = '>';
 export const GREATER_THAN_OR_EQUAL = '>=';
@@ -81,6 +82,7 @@ export default union({
   CLOSING_PAREN,
   COLON,
   COMMA,
+  DOT,
   EQUALS,
   GREATER_THAN,
   GREATER_THAN_OR_EQUAL,

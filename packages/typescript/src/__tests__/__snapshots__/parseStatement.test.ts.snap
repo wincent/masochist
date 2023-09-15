@@ -115,6 +115,116 @@ exports[`parseStatement() parses a (default) export class declaration 1`] = `
         "name": "source",
         "type": "string",
       },
+      {
+        "key": {
+          "kind": "Identifier",
+          "name": "constructor",
+        },
+        "kind": "MethodDefinition",
+        "value": {
+          "arguments": [
+            {
+              "kind": "Argument",
+              "name": "name",
+              "type": "string",
+            },
+            {
+              "kind": "Argument",
+              "name": "start",
+              "type": "number",
+            },
+            {
+              "kind": "Argument",
+              "name": "end",
+              "type": "number",
+            },
+            {
+              "kind": "Argument",
+              "name": "source",
+              "type": "string",
+            },
+          ],
+          "body": [
+            {
+              "binding": null,
+              "kind": "AssignmentStatement",
+              "lhs": {
+                "kind": "MemberExpression",
+                "object": {
+                  "kind": "Identifier",
+                  "name": "this",
+                },
+                "property": {
+                  "kind": "Identifier",
+                  "name": "name",
+                },
+              },
+              "rhs": {
+                "kind": "Identifier",
+                "name": "name",
+              },
+            },
+            {
+              "binding": null,
+              "kind": "AssignmentStatement",
+              "lhs": {
+                "kind": "MemberExpression",
+                "object": {
+                  "kind": "Identifier",
+                  "name": "this",
+                },
+                "property": {
+                  "kind": "Identifier",
+                  "name": "start",
+                },
+              },
+              "rhs": {
+                "kind": "Identifier",
+                "name": "start",
+              },
+            },
+            {
+              "binding": null,
+              "kind": "AssignmentStatement",
+              "lhs": {
+                "kind": "MemberExpression",
+                "object": {
+                  "kind": "Identifier",
+                  "name": "this",
+                },
+                "property": {
+                  "kind": "Identifier",
+                  "name": "end",
+                },
+              },
+              "rhs": {
+                "kind": "Identifier",
+                "name": "end",
+              },
+            },
+            {
+              "binding": null,
+              "kind": "AssignmentStatement",
+              "lhs": {
+                "kind": "MemberExpression",
+                "object": {
+                  "kind": "Identifier",
+                  "name": "this",
+                },
+                "property": {
+                  "kind": "Identifier",
+                  "name": "source",
+                },
+              },
+              "rhs": {
+                "kind": "Identifier",
+                "name": "source",
+              },
+            },
+          ],
+          "kind": "FunctionExpression",
+        },
+      },
     ],
     "id": "Token",
     "kind": "ClassDeclaration",

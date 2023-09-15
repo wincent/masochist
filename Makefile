@@ -37,7 +37,7 @@ debug:
 	@echo $(TS_D_OUT) | sed 's/ /\n/g'
 
 .PHONY: diagrams
-diagrams: packages/graphql/src/bin/dotify.ts
+diagrams: packages/graphql/src/bin/dotify.ts packages/typescript/src/bin/dotify.ts
 	@bun packages/graphql/src/bin/dotify.ts
 	@bun packages/typescript/src/bin/dotify.ts
 	@$(MAKE) -C packages/graphql -j 4 diagrams

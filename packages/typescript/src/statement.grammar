@@ -6,6 +6,7 @@
 %token CONST
 %token CONTINUE
 %token DEFAULT
+%token DOT
 %token ELSE
 %token EQUALS
 %token EXPORT
@@ -57,6 +58,14 @@ AssignmentStatement → LET Identifier ASSIGN Expression SEMICOLON {
     rhs: $4,
   };
 }
+AssignmentStatement → Expression ASSIGN Expression SEMICOLON {
+  $$ = {
+    kind: 'AssignmentStatement',
+    binding: null,
+    lhs: $1,
+    rhs: $3,
+  };
+}
 
 Identifier → IDENTIFIER {
   $$ = {
@@ -65,8 +74,23 @@ Identifier → IDENTIFIER {
   };
 }
 
+Expression → THIS {
+  $$ = {
+    kind: 'Identifier',
+    name: 'this',
+  };
+}
 Expression → Identifier { $$ = $1; }
+Expression → MemberExpression { $$ = $1; }
 Expression → PrimitiveValue { $$ = $1; }
+
+MemberExpression → Expression DOT Expression {
+  $$ = {
+    kind: 'MemberExpression',
+    object: $1,
+    property: $3,
+  };
+}
 
 PrimitiveValue → ArrayValue { $$ = $1; }
 PrimitiveValue → BooleanValue { $$ = $1; }
@@ -145,8 +169,47 @@ ClassBodyList → ClassBodyListItem { $$ = [$1]; }
 ClassBodyList → ClassBodyList ClassBodyListItem { $1.push($2); $$ = $1; }
 
 # TODO: ClassBodyListItem → DocComment { $$ = $1; }
-# TODO: ClassBodyListItem → MethodDefinition { $$ = $1; }
+ClassBodyListItem → MethodDefinition { $$ = $1; }
 ClassBodyListItem → PropertyDeclaration { $$ = $1; }
+
+# TODO: support computed property names as well
+# TODO: support return type annotations
+MethodDefinition →
+  Identifier OPENING_PAREN ArgumentList CLOSING_PAREN OPENING_BRACE
+    StatementList
+  CLOSING_BRACE {
+    $$ = {
+      kind: 'MethodDefinition',
+      key: $1,
+      value: {
+        kind: 'FunctionExpression',
+        arguments: $3,
+        body: $6,
+      },
+    };
+  }
+
+ArgumentList → Argument { $$ = [$1]; }
+# TODO: supporting trailing comma at end of argument list
+ArgumentList → ArgumentList COMMA Argument { $1.push($3); $$ = $1; }
+
+Argument → Identifier {
+  $$ = {
+    kind: 'Argument',
+    name: $1.name,
+  };
+}
+# TODO: support richer types than Identifier-like
+Argument → Identifier COLON Identifier {
+  $$ = {
+    kind: 'Argument',
+    name: $1.name,
+    type: $3.name,
+  };
+}
+
+StatementList → Statement { $$ = [$1]; }
+StatementList → StatementList Statement { $1.push($2); $$ = $1; }
 
 # TODO: make this support richer `type` values than just Identifier-like ones.
 PropertyDeclaration → Identifier COLON Identifier SEMICOLON {

@@ -1,4 +1,4 @@
-# `@masochist/typescript` state machine diagram
+# `@masochist/typescript` state machine diagrams
 
 ## lexer
 
@@ -64,6 +64,11 @@
 
 ![DEFAULT](./DEFAULT-dark.png#gh-dark-mode-only)
 ![DEFAULT](./DEFAULT-light.png#gh-light-mode-only)
+
+## DOT
+
+![DOT](./DOT-dark.png#gh-dark-mode-only)
+![DOT](./DOT-light.png#gh-light-mode-only)
 
 ## ELSE
 

@@ -6,6 +6,7 @@
 %token CONST
 %token CONTINUE
 %token DEFAULT
+%token DOT
 %token ELSE
 %token EQUALS
 %token EXPORT
