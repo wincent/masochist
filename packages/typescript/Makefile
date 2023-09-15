@@ -1,7 +1,7 @@
-.DEFAULT: png
+.DEFAULT: svg
 
 DOT = $(wildcard lexer/diagrams/*.dot)
-PNG = $(patsubst %.dot,%.png,$(DOT))
+SVG = $(patsubst %.dot,%.svg,$(DOT))
 
 .PHONY: clean
 clean:
@@ -12,11 +12,11 @@ clean:
 debug:
 	@echo DOT
 	@echo $(DOT)
-	@echo PNG
-	@echo $(PNG)
+	@echo SVG
+	@echo $(SVG)
 
 .PHONY: diagrams
-diagrams: $(PNG)
+diagrams: $(SVG)
 
-%.png: %.dot
-	dot -Tpng $< -o $@
+%.svg: %.dot
+	dot -Tsvg $< -o $@

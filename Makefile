@@ -44,19 +44,19 @@ diagrams: packages/graphql/src/bin/dotify.ts packages/typescript/src/bin/dotify.
 	@$(MAKE) -C packages/typescript -j 4 diagrams
 
 .PHONY: docs
-docs: docs/packages-dark.png docs/packages-light.png
+docs: docs/packages-dark.svg docs/packages-light.svg
 
 docs/packages-dark.dot: support/dotifyDependencyGraph.ts $(PACKAGE_JSON)
 	@DARK=1 bun support/dotifyDependencyGraph.ts > $@
 
-docs/packages-dark.png: docs/packages-dark.dot
-	@dot -Tpng $< -o $@
+docs/packages-dark.svg: docs/packages-dark.dot
+	@dot -Tsvg $< -o $@
 
 docs/packages-light.dot: support/dotifyDependencyGraph.ts $(PACKAGE_JSON)
 	@bun support/dotifyDependencyGraph.ts > $@
 
-docs/packages-light.png: docs/packages-light.dot
-	@dot -Tpng $< -o $@
+docs/packages-light.svg: docs/packages-light.dot
+	@dot -Tsvg $< -o $@
 
 .PHONY: graphql
 graphql: packages/graphql/src/lex.ts packages/graphql/src/parseDocument.ts packages/graphql/src/parseSchema.ts

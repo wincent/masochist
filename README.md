@@ -24,8 +24,8 @@ Points of interest and areas for exploration:
 [^benchmark]: For comparison, benchmarks run against the dynamic (legacy) lexer and parser, the reference — ie. [graphql-js](https://github.com/graphql/graphql-js) — lexer and parser, the static lexer and parser, and the table-based parser.
 [^etc]: At the time of writing, we're only generating lexers and parsers, but in the future anticipate potentially generating other things such as custom field resolvers etc.
 
-![Dependency graph](./docs/packages-dark.png#gh-dark-mode-only)
-![Dependency graph](./docs/packages-light.png#gh-light-mode-only)
+![Dependency graph](./docs/packages-dark.svg#gh-dark-mode-only)
+![Dependency graph](./docs/packages-light.svg#gh-light-mode-only)
 
 ## Development
 

@@ -154,8 +154,8 @@ async function main() {
 
     README += '\n';
     README += `## ${name}\n\n`;
-    README += `![${name}](./${name}-dark.png#gh-dark-mode-only)\n`;
-    README += `![${name}](./${name}-light.png#gh-light-mode-only)\n`;
+    README += `![${name}](./${name}-dark.svg#gh-dark-mode-only)\n`;
+    README += `![${name}](./${name}-light.svg#gh-light-mode-only)\n`;
   }
 
   await Bun.write(path.join(directory, 'README.md'), README);
