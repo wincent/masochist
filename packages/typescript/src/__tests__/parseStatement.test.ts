@@ -66,6 +66,7 @@ describe('parseStatement()', () => {
 
         // Make this a getter. Add rest of real contents to it.
         contents() {
+          const value = this.source.slice(this.start, this.end);
           return value;
         }
       }

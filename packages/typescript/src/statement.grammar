@@ -81,9 +81,23 @@ Expression → THIS {
     name: 'this',
   };
 }
+Expression → CallExpression { $$ = $1; }
 Expression → Identifier { $$ = $1; }
 Expression → MemberExpression { $$ = $1; }
 Expression → PrimitiveValue { $$ = $1; }
+
+CallExpression → Expression OPENING_PAREN ExpressionList CLOSING_PAREN {
+  $$ = {
+    kind: 'CallExpression',
+    callee: $1,
+    arguments: $3,
+  };
+}
+
+# TODO: supporting trailing comma at end of expression list
+ExpressionList → Expression { $$ = [$1]; }
+ExpressionList → ExpressionList COMMA Expression { $1.push($3); $$ = $1; }
+ExpressionList → ε { $$ = []; }
 
 MemberExpression → Expression DOT Expression {
   $$ = {
@@ -178,8 +192,8 @@ MethodDefinition →
     };
   }
 
-ArgumentList → Argument { $$ = [$1]; }
 # TODO: supporting trailing comma at end of argument list
+ArgumentList → Argument { $$ = [$1]; }
 ArgumentList → ArgumentList COMMA Argument { $1.push($3); $$ = $1; }
 ArgumentList → ε { $$ = []; }
 

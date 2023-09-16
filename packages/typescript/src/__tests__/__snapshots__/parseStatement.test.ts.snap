@@ -235,6 +235,59 @@ exports[`parseStatement() parses a (default) export class declaration 1`] = `
           "arguments": [],
           "body": [
             {
+              "binding": "const",
+              "kind": "AssignmentStatement",
+              "lhs": {
+                "kind": "Identifier",
+                "name": "value",
+              },
+              "rhs": {
+                "kind": "MemberExpression",
+                "object": {
+                  "kind": "Identifier",
+                  "name": "this",
+                },
+                "property": {
+                  "kind": "MemberExpression",
+                  "object": {
+                    "kind": "Identifier",
+                    "name": "source",
+                  },
+                  "property": {
+                    "arguments": [
+                      {
+                        "kind": "MemberExpression",
+                        "object": {
+                          "kind": "Identifier",
+                          "name": "this",
+                        },
+                        "property": {
+                          "kind": "Identifier",
+                          "name": "start",
+                        },
+                      },
+                      {
+                        "kind": "MemberExpression",
+                        "object": {
+                          "kind": "Identifier",
+                          "name": "this",
+                        },
+                        "property": {
+                          "kind": "Identifier",
+                          "name": "end",
+                        },
+                      },
+                    ],
+                    "callee": {
+                      "kind": "Identifier",
+                      "name": "slice",
+                    },
+                    "kind": "CallExpression",
+                  },
+                },
+              },
+            },
+            {
               "expression": {
                 "kind": "Identifier",
                 "name": "value",
