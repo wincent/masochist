@@ -75,41 +75,38 @@ describe('parseStatement()', () => {
     // TODO: add rest of Token.ts example here ^^^
   });
 
-  it(
-    'implements left-associativity for chained member expressions',
-    () => {
-      const input = `const a = b.c.d;`;
-      const parsed = parseStatement(input);
+  it('implements left-associativity for chained member expressions', () => {
+    const input = `const a = b.c.d;`;
+    const parsed = parseStatement(input);
 
-      expect(parsed).toEqual({
-        binding: 'const',
-        kind: 'AssignmentStatement',
-        lhs: {
-          kind: 'Identifier',
-          name: 'a',
-        },
-        rhs: {
+    expect(parsed).toEqual({
+      binding: 'const',
+      kind: 'AssignmentStatement',
+      lhs: {
+        kind: 'Identifier',
+        name: 'a',
+      },
+      rhs: {
+        kind: 'MemberExpression',
+        object: {
           kind: 'MemberExpression',
           object: {
-            kind: 'MemberExpression',
-            object: {
-              kind: 'Identifier',
-              name: 'b',
-            },
-            property: {
-              kind: 'Identifier',
-              name: 'c',
-            },
+            kind: 'Identifier',
+            name: 'b',
           },
           property: {
             kind: 'Identifier',
-            name: 'd',
+            name: 'c',
           },
         },
-      });
+        property: {
+          kind: 'Identifier',
+          name: 'd',
+        },
+      },
+    });
 
-      // Just to make that clear:
-      expect(parseStatement(`const a = (b.c).d;`)).toEqual(parsed);
-    },
-  );
+    // Just to make that clear:
+    expect(parseStatement(`const a = (b.c).d;`)).toEqual(parsed);
+  });
 });
