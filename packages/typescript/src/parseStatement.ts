@@ -1490,8 +1490,8 @@ const actions = [
   },
   {
     DOT: {
-      kind: 'Shift',
-      state: 32,
+      kind: 'Reduce',
+      rule: 19,
     },
     OPENING_PAREN: {
       kind: 'Shift',

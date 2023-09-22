@@ -1,5 +1,5 @@
 import {getParser} from '@masochist/parser/src/internal';
-import {beforeAll, describe, expect, it, test} from 'bun:test';
+import {beforeAll, describe, expect, it} from 'bun:test';
 
 import lexer from '../lexer';
 import {grammar, table} from '../statement';
@@ -75,7 +75,7 @@ describe('parseStatement()', () => {
     // TODO: add rest of Token.ts example here ^^^
   });
 
-  it.todo(
+  it(
     'implements left-associativity for chained member expressions',
     () => {
       const input = `const a = b.c.d;`;
@@ -91,10 +91,6 @@ describe('parseStatement()', () => {
         rhs: {
           kind: 'MemberExpression',
           object: {
-            kind: 'Identifier',
-            name: 'd',
-          },
-          property: {
             kind: 'MemberExpression',
             object: {
               kind: 'Identifier',
@@ -104,6 +100,10 @@ describe('parseStatement()', () => {
               kind: 'Identifier',
               name: 'c',
             },
+          },
+          property: {
+            kind: 'Identifier',
+            name: 'd',
           },
         },
       });

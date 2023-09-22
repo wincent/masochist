@@ -1,11 +1,13 @@
-import type {Grammar, ItemSet} from './types';
+import type {Grammar, ItemSet, Rule} from './types';
+
+import keyForRule from './keyForRule';
 
 /**
- * Turns a rule like:
+ * Returns a new grammar with rules like:
  *
  *     A → B C
  *
- * into a rule with start and end states annotated:
+ * turned into rules with start and end states annotated:
  *
  *      A  →  B    C
  *     0 4   0 2  2 7
@@ -29,9 +31,15 @@ export default function extendedGrammarForItemSets(
   itemSets: Array<ItemSet>,
   grammar: Grammar,
 ): Grammar {
-  const rules = [];
+  const rules: Array<Rule> = [];
   const tokens: Grammar['tokens'] = new Map();
-  const originalTokens = grammar.tokens;
+
+  // Prepare look-up for original rules.
+  const ruleIndices: {[key: string]: number} = {};
+  grammar.rules.forEach(({lhs, rhs}, i) => {
+    ruleIndices[keyForRule(lhs, rhs)] = i;
+  });
+
   for (let i = 0; i < itemSets.length; i++) {
     const itemSet = itemSets[i];
     for (const item of itemSet.items) {
@@ -42,14 +50,20 @@ export default function extendedGrammarForItemSets(
         const rhs = item.rhs.map((symbol) => {
           const target = itemSets[current].transitions[symbol];
           const annotated = `${current}/${symbol}/${target}`;
-          const originalToken = originalTokens.get(symbol);
+          const originalToken = grammar.tokens.get(symbol);
           if (originalToken) {
             tokens.set(annotated, originalToken);
           }
           current = target;
           return annotated;
         });
-        rules.push({lhs, rhs});
+        const key = keyForRule(item.lhs, item.rhs);
+        const precedence = grammar.rules[ruleIndices[key]]?.precedence;
+        if (precedence) {
+          rules.push({lhs, rhs, precedence});
+        } else {
+          rules.push({lhs, rhs});
+        }
       }
     }
   }

@@ -89,9 +89,14 @@ export default function parseDSL(dsl: string): Grammar {
       scanner.scan(ws);
       scanner.expect(RIGHTWARDS_ARROW);
       scanner.scan(ws);
-      const rhs = scanner.scan(EPSILON) ? [] : [scanner.expect(symbol)];
-      let action: string | undefined;
       let precedence: number | undefined;
+      const rhs: Array<string> = [];
+      if (!scanner.scan(EPSILON)) {
+        const scanned = scanner.expect(symbol);
+        rhs.push(scanned);
+        precedence = tokens.get(scanned)?.precedence;
+      }
+      let action: string | undefined;
 
       while (!scanner.atEnd) {
         scanner.scan(ws);
@@ -127,7 +132,7 @@ export default function parseDSL(dsl: string): Grammar {
           const scanned = scanner.scan(symbol);
           if (scanned) {
             const token = tokens.get(scanned);
-            if (token && token.precedence !== undefined) {
+            if (token) {
               precedence = token.precedence;
             }
             rhs.push(scanned);

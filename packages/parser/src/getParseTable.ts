@@ -144,12 +144,27 @@ export default function getParseTable(
         if (action.kind === 'Accept') {
           throw new Error(`getParseTable(): ${conflictMessage}`);
         } else if (action.kind === 'Shift') {
-          // Prefer shift, emit warning, like yacc/Bison (etc) do. See:
-          // - https://www.ibm.com/docs/en/zos/2.2.0?topic=ambiguities-rules-help-remove
-          // - https://www.gnu.org/software/bison/manual/bison.html#Shift_002fReduce
-          if (!conflictWarnings.has(conflictMessage)) {
-            console.log(`[warning] getParseTable(): ${conflictMessage}`);
-            conflictWarnings.add(conflictMessage);
+          const token = tokens.get(symbol);
+          if (token?.precedence && rule.precedence) {
+            if (token.precedence > rule.precedence) {
+              // Shift.
+            } else if (rule.precedence < token.precedence) {
+              // TODO: check for reduce/reduce conflict here?
+              actions[symbol] = {kind: 'Reduce', rule: ruleNumber};
+            } else if (token.associativity === 'right') {
+              // Shift.
+            } else if (token.associativity === 'left') {
+              // TODO: check for reduce/reduce conflict here?
+              actions[symbol] = {kind: 'Reduce', rule: ruleNumber};
+            }
+          } else {
+            // Otherwise, prefer shift, emit warning, like yacc/Bison (etc) do. See:
+            // - https://www.ibm.com/docs/en/zos/2.2.0?topic=ambiguities-rules-help-remove
+            // - https://www.gnu.org/software/bison/manual/bison.html#Shift_002fReduce
+            if (!conflictWarnings.has(conflictMessage)) {
+              console.log(`[warning] getParseTable(): ${conflictMessage}`);
+              conflictWarnings.add(conflictMessage);
+            }
           }
         } else if (action.kind === 'Reduce' && action.rule !== ruleNumber) {
           // TODO: Prefer rule that appears earlier in grammar.

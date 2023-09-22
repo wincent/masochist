@@ -38,6 +38,9 @@
 %token WHILE
 %token YIELD
 
+# Operator precedence.
+%left DOT
+
 Statement → AssignmentStatement { $$ = $1; }
 Statement → ClassDeclaration { $$ = $1; }
 Statement → ExportDefaultDeclaration { $$ = $1; }
