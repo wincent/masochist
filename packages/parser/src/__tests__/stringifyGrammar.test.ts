@@ -2,6 +2,7 @@ import {describe, expect, it} from 'bun:test';
 import {dedent} from '@masochist/common';
 
 import getAugmentedGrammar from '../getAugmentedGrammar';
+import parseDSL from '../parseDSL';
 import stringifyGrammar from '../stringifyGrammar';
 import {toyGrammar} from './grammars';
 
@@ -26,6 +27,39 @@ describe('stringifyGrammar()', () => {
         r5: V ${ARROW} x
         r6: V ${ARROW} star E
       ` + '\n',
+    );
+  });
+
+  it('stringifies a grammar with %left and %right directives', () => {
+    expect(
+      stringifyGrammar(
+        parseDSL(`
+      %token EXPONENT MINUS NUMBER PLUS
+
+      %left MINUS PLUS
+      %right EXPONENT
+
+      Expression → Expression MINUS Expression
+      Expression → Expression PLUS Expression
+      Expression → Expression EXPONENT Expression
+      Expression → NUMBER
+    `),
+      ),
+    ).toEqual(
+      dedent`
+      %token EXPONENT
+      %token MINUS
+      %token NUMBER
+      %token PLUS
+
+      %left MINUS PLUS
+      %right EXPONENT
+
+      r0: Expression → Expression MINUS Expression
+      r1: Expression → Expression PLUS Expression
+      r2: Expression → Expression EXPONENT Expression
+      r3: Expression → NUMBER
+    ` + '\n',
     );
   });
 });

@@ -10,8 +10,9 @@ import type {Grammar, ItemSet} from './types';
  *      A  →  B    C
  *     0 4   0 2  2 7
  *
- * ie. the rule is in item set 0, transitioning on A to 4, on B
- * to 2, and from there, on C to 7.
+ * ie. the rule is in item set 0, transitioning on A to 4, on B to 2, and from
+ * there, on C to 7. As an implementation detail, the annotations are encoded in
+ * the string representation as "0/A/4", "0/B/2", and "2/C/7" respectively.
  *
  * For, an epsilon production:
  *
@@ -21,13 +22,15 @@ import type {Grammar, ItemSet} from './types';
  *
  *     A  →  ε
  *    0 5
+ *
+ * Again, the start and end states are encoded as "0/A/5".
  */
 export default function extendedGrammarForItemSets(
   itemSets: Array<ItemSet>,
   grammar: Grammar,
 ): Grammar {
   const rules = [];
-  const tokens = new Set<string>();
+  const tokens: Grammar['tokens'] = new Map();
   const originalTokens = grammar.tokens;
   for (let i = 0; i < itemSets.length; i++) {
     const itemSet = itemSets[i];
@@ -39,8 +42,9 @@ export default function extendedGrammarForItemSets(
         const rhs = item.rhs.map((symbol) => {
           const target = itemSets[current].transitions[symbol];
           const annotated = `${current}/${symbol}/${target}`;
-          if (originalTokens.has(symbol)) {
-            tokens.add(annotated);
+          const originalToken = originalTokens.get(symbol);
+          if (originalToken) {
+            tokens.set(annotated, originalToken);
           }
           current = target;
           return annotated;

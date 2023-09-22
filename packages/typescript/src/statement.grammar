@@ -75,6 +75,7 @@ Identifier → IDENTIFIER {
   };
 }
 
+Expression → OPENING_PAREN Expression CLOSING_PAREN { $$ = $2; }
 Expression → THIS {
   $$ = {
     kind: 'Identifier',

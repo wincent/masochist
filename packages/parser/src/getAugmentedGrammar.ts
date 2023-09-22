@@ -16,25 +16,19 @@ export default function getAugmentedGrammar(grammar: Grammar): Grammar {
 
   // And now, much singing and dancing to return a deep copy of the grammar.
   return {
-    tokens: new Set(grammar.tokens),
+    tokens: new Map(grammar.tokens.entries()),
     rules: [
       {
         lhs: `${startRule.lhs}'`,
         rhs: [startRule.lhs],
       },
-      ...grammar.rules.map(({lhs, rhs, action}) => {
-        if (action) {
-          return {
-            action,
-            lhs,
-            rhs: [...rhs],
-          };
-        } else {
-          return {
-            lhs,
-            rhs: [...rhs],
-          };
-        }
+      ...grammar.rules.map(({lhs, rhs, action, precedence}) => {
+        return {
+          action,
+          lhs,
+          rhs: [...rhs],
+          precedence,
+        };
       }),
     ],
   };

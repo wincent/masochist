@@ -128,7 +128,11 @@ export default class StringScanner {
     for (let i = start; i <= end; i++) {
       output += i === line ? '>' : ' ';
       output += i.toString().padStart(gutter);
-      output += ` | ${lines[i - 1]}\n`;
+      if (lines[i - 1].trim()) {
+        output += ` | ${lines[i - 1]}\n`;
+      } else {
+        output += ` |\n`;
+      }
 
       if (i === line) {
         output += '|'.padStart(gutter + 3);
@@ -144,7 +148,9 @@ export default class StringScanner {
 
     if (result === null) {
       throw new Error(
-        `Expected ${description ?? pattern} at ${this.fullContext}`,
+        `StringScanner(): Expected ${description ?? pattern} at ${
+          this.fullContext
+        }`,
       );
     }
 
@@ -153,6 +159,20 @@ export default class StringScanner {
 
   peek(pattern: RegExp | string): boolean {
     return toAnchoredRegExp(pattern).test(this._remaining);
+  }
+
+  rewind() {
+    if (this._last === null) {
+      if (this._index) {
+        throw new Error(`StringScanner(): cannot rewind() more than once`);
+      } else {
+        throw new Error(`StringScanner(): cannot rewind() at index 0`);
+      }
+    } else {
+      this._remaining = this._last + this._remaining;
+      this._index = this._index - this._last.length;
+      this._last = null;
+    }
   }
 
   scan(pattern: RegExp | string): string | null {

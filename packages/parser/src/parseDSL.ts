@@ -9,7 +9,8 @@ export default function parseDSL(dsl: string): Grammar {
   const scanner = new StringScanner(dsl);
   const ws = /\s+/;
   const symbol = /\w+/;
-  const tokens = new Set<string>();
+  const tokens: Grammar['tokens'] = new Map();
+  let precedence = 1;
   const rules: Array<Rule> = [];
   while (!scanner.atEnd) {
     // Skip comments.
@@ -19,23 +20,65 @@ export default function parseDSL(dsl: string): Grammar {
 
     // Scan %tokens.
     if (scanner.scan(/%token\b/)) {
-      const symbols = [];
+      let count = 0;
       while (!scanner.atEnd) {
         scanner.scan(/[\t +]/);
-        if (scanner.scan(symbol)) {
-          symbols.push(scanner.last!);
+        const scanned = scanner.scan(symbol);
+        if (scanned) {
+          if (tokens.has(scanned)) {
+            scanner.rewind();
+            throw new Error(
+              `parseDSL(): Cannot redeclare token ${scanned} at ${scanner.fullContext}`,
+            );
+          }
+          count++;
+          tokens.set(scanned, {});
         } else {
           break;
         }
       }
-      if (symbols.length) {
-        for (const symbol of symbols) {
-          tokens.add(symbol);
-        }
+      if (count) {
         continue;
       } else {
         throw new Error(
-          `parseDSL(): expected at least one symbol after %token at ${scanner.fullContext}`,
+          `parseDSL(): Expected at least one symbol after %token at ${scanner.fullContext}`,
+        );
+      }
+    }
+
+    // Scan %left/%right.
+    if (scanner.scan(/%(left|right)\b/)) {
+      let count = 0;
+      const associativity = scanner.last === '%left' ? 'left' : 'right';
+      while (!scanner.atEnd) {
+        scanner.scan(/[\t +]/);
+        const scanned = scanner.scan(symbol);
+        if (scanned) {
+          const token = tokens.get(scanned);
+          if (!token) {
+            scanner.rewind();
+            throw new Error(
+              `parseDSL(): Cannot specify precedence for unknown token ${scanned} at ${scanner.fullContext}`,
+            );
+          } else if (token.precedence !== undefined) {
+            scanner.rewind();
+            throw new Error(
+              `parseDSL(): Cannot redeclare precedence for token ${scanned} at ${scanner.fullContext}`,
+            );
+          }
+          count++;
+          token.associativity = associativity;
+          token.precedence = precedence;
+        } else {
+          break;
+        }
+      }
+      if (count) {
+        precedence++;
+        continue;
+      } else {
+        throw new Error(
+          `parseDSL(): Expected at least one symbol after %${associativity} at ${scanner.fullContext}`,
         );
       }
     }
@@ -47,7 +90,8 @@ export default function parseDSL(dsl: string): Grammar {
       scanner.expect(RIGHTWARDS_ARROW);
       scanner.scan(ws);
       const rhs = scanner.scan(EPSILON) ? [] : [scanner.expect(symbol)];
-      let action = '';
+      let action: string | undefined;
+      let precedence: number | undefined;
 
       while (!scanner.atEnd) {
         scanner.scan(ws);
@@ -79,20 +123,32 @@ export default function parseDSL(dsl: string): Grammar {
           break;
         } else if (scanner.scan(EPSILON)) {
           // Epsilon is nothing; we don't even represent it with `null`.
-        } else if (scanner.scan(symbol)) {
-          rhs.push(scanner.last!);
-        } else if (scanner.peek('#')) {
-          // Comment.
-          break;
-        } else if (scanner.scan(/\W+/)) {
-          throw new Error(
-            `parseDSL(): Unexpected input at ${scanner.fullContext}`,
-          );
+        } else {
+          const scanned = scanner.scan(symbol);
+          if (scanned) {
+            const token = tokens.get(scanned);
+            if (token && token.precedence !== undefined) {
+              precedence = token.precedence;
+            }
+            rhs.push(scanned);
+          } else if (scanner.peek('#')) {
+            // Comment.
+            break;
+          } else if (scanner.scan(/\W+/)) {
+            throw new Error(
+              `parseDSL(): Unexpected input at ${scanner.fullContext}`,
+            );
+          }
         }
       }
 
-      if (action) {
+      // Keep `undefined` noise out of the tests.
+      if (action && precedence !== undefined) {
+        rules.push({lhs, rhs, action, precedence});
+      } else if (action) {
         rules.push({lhs, rhs, action});
+      } else if (precedence !== undefined) {
+        rules.push({lhs, rhs, precedence});
       } else {
         rules.push({lhs, rhs});
       }

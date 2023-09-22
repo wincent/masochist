@@ -9,14 +9,14 @@ describe('extendedGrammarForItemSets()', () => {
     const itemSets = getItemSets(toyGrammar);
     const extendedGrammar = extendedGrammarForItemSets(itemSets, toyGrammar);
     expect(extendedGrammar).toEqual({
-      tokens: new Set([
-        '3/eq/7',
-        '0/x/4',
-        '0/star/5',
-        '5/x/4',
-        '5/star/5',
-        '7/x/4',
-        '7/star/5',
+      tokens: new Map([
+        ['3/eq/7', {}],
+        ['0/x/4', {}],
+        ['0/star/5', {}],
+        ['5/x/4', {}],
+        ['5/star/5', {}],
+        ['7/x/4', {}],
+        ['7/star/5', {}],
       ]),
       rules: [
         {lhs: "0/S'/$", rhs: ['0/S/1']},
@@ -40,12 +40,12 @@ describe('extendedGrammarForItemSets()', () => {
     const itemSets = getItemSets(subsetGrammar);
     const extendedGrammar = extendedGrammarForItemSets(itemSets, subsetGrammar);
     expect(extendedGrammar).toEqual({
-      tokens: new Set([
-        '0/OPENING_BRACE/7',
-        '9/CLOSING_BRACE/13',
-        '2/OPENING_BRACE/7',
-        '7/NAME/12',
-        '9/NAME/12',
+      tokens: new Map([
+        ['0/OPENING_BRACE/7', {}],
+        ['9/CLOSING_BRACE/13', {}],
+        ['2/OPENING_BRACE/7', {}],
+        ['7/NAME/12', {}],
+        ['9/NAME/12', {}],
       ]),
       rules: [
         {lhs: "0/Document'/$", rhs: ['0/Document/1']},
@@ -95,12 +95,12 @@ describe('extendedGrammarForItemSets()', () => {
       epsilonGrammar,
     );
     expect(extendedGrammar).toEqual({
-      tokens: new Set([
-        '3/OPEN_BRACKET/5',
-        '6/CLOSE_BRACKET/8',
-        '0/BAR/4',
-        '6/FOO/9',
-        '5/FOO/7',
+      tokens: new Map([
+        ['3/OPEN_BRACKET/5', {}],
+        ['6/CLOSE_BRACKET/8', {}],
+        ['0/BAR/4', {}],
+        ['6/FOO/9', {}],
+        ['5/FOO/7', {}],
       ]),
       rules: [
         {lhs: "0/S'/$", rhs: ['0/S/1']},

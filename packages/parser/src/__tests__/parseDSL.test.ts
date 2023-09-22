@@ -15,13 +15,21 @@ describe('parseDSL()', () => {
         {lhs: 'V', rhs: ['x']},
         {lhs: 'V', rhs: ['star', 'E']},
       ],
-      tokens: new Set(['eq', 'star', 'x']),
+      tokens: new Map([
+        ['eq', {}],
+        ['star', {}],
+        ['x', {}],
+      ]),
     });
   });
 
   it('produces grammar from subsetGrammarDeclaration', () => {
     expect(parseDSL(subsetGrammarDeclaration)).toEqual({
-      tokens: new Set(['CLOSING_BRACE', 'NAME', 'OPENING_BRACE']),
+      tokens: new Map([
+        ['CLOSING_BRACE', {}],
+        ['NAME', {}],
+        ['OPENING_BRACE', {}],
+      ]),
       rules: [
         {lhs: 'Document', rhs: ['DefinitionList']},
         {
@@ -97,7 +105,52 @@ describe('parseDSL()', () => {
         {lhs: 'Second', rhs: ['B'], action: '{ $$ = $1.toUpperCase() }'},
         {lhs: 'Third', rhs: ['C']},
       ],
-      tokens: new Set(['A', 'B', 'C']),
+      tokens: new Map([
+        ['A', {}],
+        ['B', {}],
+        ['C', {}],
+      ]),
+    });
+  });
+
+  it('parses %left and %right precedence declarations', () => {
+    expect(
+      parseDSL(`
+        %token EXPONENT MINUS NUMBER PLUS
+
+        %left MINUS PLUS
+        %right EXPONENT
+
+        Expression → Expression MINUS Expression
+        Expression → Expression PLUS Expression
+        Expression → Expression EXPONENT Expression
+        Expression → NUMBER
+      `),
+    ).toEqual({
+      rules: [
+        {
+          lhs: 'Expression',
+          rhs: ['Expression', 'MINUS', 'Expression'],
+          precedence: 1,
+        },
+        {
+          lhs: 'Expression',
+          rhs: ['Expression', 'PLUS', 'Expression'],
+          precedence: 1,
+        },
+        {
+          lhs: 'Expression',
+          rhs: ['Expression', 'EXPONENT', 'Expression'],
+          precedence: 2,
+        },
+        {lhs: 'Expression', rhs: ['NUMBER']},
+      ],
+      tokens: new Map([
+        ['EXPONENT', {associativity: 'right', precedence: 2}],
+        ['MINUS', {associativity: 'left', precedence: 1}],
+        ['NUMBER', {}],
+        ['PLUS', {associativity: 'left', precedence: 1}],
+      ]),
     });
   });
 
@@ -112,7 +165,7 @@ describe('parseDSL()', () => {
 
   it('complains when %tokens is not passed any symbols', () => {
     expect(() => parseDSL('%token')).toThrow(dedent`
-      expected at least one symbol after %token at line 1, column 7 of input string
+      Expected at least one symbol after %token at line 1, column 7 of input string
 
       > 1 | %token
           |       ^
@@ -121,13 +174,16 @@ describe('parseDSL()', () => {
     // But one token is fine.
     expect(parseDSL('%token FOO')).toEqual({
       rules: [],
-      tokens: new Set(['FOO']),
+      tokens: new Map([['FOO', {}]]),
     });
 
     // As are multiple tokens on a single line.
     expect(parseDSL('%token FOO BAR')).toEqual({
       rules: [],
-      tokens: new Set(['FOO', 'BAR']),
+      tokens: new Map([
+        ['FOO', {}],
+        ['BAR', {}],
+      ]),
     });
 
     // Or multiple lines with tokens.
@@ -137,7 +193,83 @@ describe('parseDSL()', () => {
         %token MORE
         %token OTHER
     `),
-    ).toEqual({rules: [], tokens: new Set(['FOO', 'BAR', 'MORE', 'OTHER'])});
+    ).toEqual({
+      rules: [],
+      tokens: new Map([
+        ['FOO', {}],
+        ['BAR', {}],
+        ['MORE', {}],
+        ['OTHER', {}],
+      ]),
+    });
+  });
+
+  it('complains if a %token is redeclared', () => {
+    expect(() =>
+      parseDSL(`
+      %token foo bar
+      %token baz foo
+    `),
+    ).toThrow(dedent`
+      Cannot redeclare token foo at line 3, column 18 of input string
+
+        1 |
+        2 |       %token foo bar
+      > 3 |       %token baz foo
+          |                  ^
+        4 |
+    `);
+  });
+
+  it('complains if %left/%right refer to undeclared tokens', () => {
+    expect(() =>
+      parseDSL(`
+      %token foo bar
+      %left qux
+    `),
+    ).toThrow(dedent`
+      Cannot specify precedence for unknown token qux at line 3, column 13 of input string
+
+        1 |
+        2 |       %token foo bar
+      > 3 |       %left qux
+          |             ^
+        4 |
+    `);
+  });
+
+  it('complains if %left/%right directives are redeclared', () => {
+    expect(() =>
+      parseDSL(`
+      %token foo bar
+      %left foo foo
+    `),
+    ).toThrow(dedent`
+      Cannot redeclare precedence for token foo at line 3, column 17 of input string
+
+        1 |
+        2 |       %token foo bar
+      > 3 |       %left foo foo
+          |                 ^
+        4 |
+    `);
+  });
+
+  it('complains if %left/%right directives have no symbols', () => {
+    expect(() =>
+      parseDSL(`
+      %token foo bar
+      %left
+    `),
+    ).toThrow(dedent`
+      Expected at least one symbol after %left at line 3, column 12 of input string
+
+        1 |
+        2 |       %token foo bar
+      > 3 |       %left
+          |            ^
+        4 |
+    `);
   });
 
   it('complains if actions have unbalanced parens', () => {
@@ -153,7 +285,7 @@ describe('parseDSL()', () => {
 
         4 |           doSomething();
         5 |       }
-      > 6 |     
+      > 6 |
           |     ^
     `);
   });

@@ -9,7 +9,7 @@ export default function itemSetsToTransitionTable(
   grammar: Grammar,
 ): TransitionTable {
   const table: TransitionTable = [];
-  const terminals = [...grammar.tokens].sort();
+  const terminals = [...grammar.tokens.keys()].sort();
   const augmentedGrammar = getAugmentedGrammar(grammar);
   const nonTerminals = augmentedGrammar.rules.map(({lhs}) => lhs).sort();
 

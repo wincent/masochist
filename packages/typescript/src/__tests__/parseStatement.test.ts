@@ -1,5 +1,5 @@
 import {getParser} from '@masochist/parser/src/internal';
-import {beforeAll, describe, expect, it} from 'bun:test';
+import {beforeAll, describe, expect, it, test} from 'bun:test';
 
 import lexer from '../lexer';
 import {grammar, table} from '../statement';
@@ -74,4 +74,42 @@ describe('parseStatement()', () => {
     expect(parseStatement(input)).toMatchSnapshot();
     // TODO: add rest of Token.ts example here ^^^
   });
+
+  it.todo(
+    'implements left-associativity for chained member expressions',
+    () => {
+      const input = `const a = b.c.d;`;
+      const parsed = parseStatement(input);
+
+      expect(parsed).toEqual({
+        binding: 'const',
+        kind: 'AssignmentStatement',
+        lhs: {
+          kind: 'Identifier',
+          name: 'a',
+        },
+        rhs: {
+          kind: 'MemberExpression',
+          object: {
+            kind: 'Identifier',
+            name: 'd',
+          },
+          property: {
+            kind: 'MemberExpression',
+            object: {
+              kind: 'Identifier',
+              name: 'b',
+            },
+            property: {
+              kind: 'Identifier',
+              name: 'c',
+            },
+          },
+        },
+      });
+
+      // Just to make that clear:
+      expect(parseStatement(`const a = (b.c).d;`)).toEqual(parsed);
+    },
+  );
 });

@@ -165,6 +165,34 @@ describe('StringScanner', () => {
     });
   });
 
+  describe('rewind()', () => {
+    let scanner: StringScanner;
+
+    beforeEach(() => {
+      scanner = new StringScanner('foobar');
+    });
+
+    it('allows you to rewind one step', () => {
+      scanner.expect('foo');
+      scanner.rewind();
+      scanner.expect('foo');
+      scanner.expect('bar');
+      scanner.rewind();
+      scanner.expect('bar');
+    });
+
+    it('complains if used at beginning of string', () => {
+      expect(() => scanner.rewind()).toThrow('cannot rewind() at index 0');
+    });
+
+    it('complains if used twice in a row', () => {
+      scanner.expect('foo');
+      scanner.expect('bar');
+      scanner.rewind();
+      expect(() => scanner.rewind()).toThrow('cannot rewind() more than once');
+    });
+  });
+
   describe('scan()', () => {
     it('scans regular expressions', () => {
       const scanner = new StringScanner('over 9000');
