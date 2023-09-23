@@ -261,13 +261,13 @@ describe('getParseTable()', () => {
         %token FOO
         %token OPEN_BRACKET
 
-        r0: S' → S
-        r1: S → Program
-        r2: Program → BarOpt OPEN_BRACKET FooList CLOSE_BRACKET
-        r3: FooList → FooList FOO
-        r4: FooList → FOO
-        r5: BarOpt → BAR
-        r6: BarOpt → ε
+        r0 : S' → S
+        r1 : S → Program
+        r2 : Program → BarOpt OPEN_BRACKET FooList CLOSE_BRACKET
+        r3 : FooList → FooList FOO
+        r4 : FooList → FOO
+        r5 : BarOpt → BAR
+        r6 : BarOpt → ε
       ` + '\n',
     );
   });

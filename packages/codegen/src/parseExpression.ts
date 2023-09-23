@@ -23,9 +23,9 @@ function r4(_$1, $2) {
 function r5($1, _$2, $3) {
   return {
     kind: 'BinaryExpression',
-    lexpr: $1,
+    lhs: $1,
     operator: '===',
-    rexpr: $3,
+    rhs: $3,
   };
 }
 function r6($1) {

@@ -16,9 +16,11 @@ export const LESS_THAN = '<';
 export const LESS_THAN_OR_EQUAL = '<=';
 export const LOGICAL_AND = '&&';
 export const LOGICAL_OR = '||';
+export const MINUS = '-';
 export const OPENING_BRACE = '{';
 export const OPENING_BRACKET = '[';
 export const OPENING_PAREN = '(';
+export const PLUS = '+';
 export const REST = '...';
 export const SEMICOLON = ';';
 export const STRICT_EQUALS = '===';
@@ -92,10 +94,12 @@ export default union({
   LESS_THAN_OR_EQUAL,
   LOGICAL_AND,
   LOGICAL_OR,
+  MINUS,
   NUMBER,
   OPENING_BRACE,
   OPENING_BRACKET,
   OPENING_PAREN,
+  PLUS,
   REST,
   SEMICOLON,
   STRICT_EQUALS,

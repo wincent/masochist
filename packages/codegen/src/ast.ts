@@ -38,9 +38,9 @@ type Base = 10 | 16;
 
 export type BinaryExpression = {
   kind: 'BinaryExpression';
-  lexpr: Expression;
+  lhs: Expression;
   operator: BinaryOperator;
-  rexpr: Expression;
+  rhs: Expression;
 };
 
 type BinaryOperator =
@@ -54,7 +54,8 @@ type BinaryOperator =
   | '>'
   | '>='
   | '||'
-  | '+';
+  | '+'
+  | '=';
 
 export type BitwiseNotExpression = {
   kind: 'BitwiseNotExpression';
@@ -455,15 +456,15 @@ const ast = {
   },
 
   binop(
-    lexpr: Expression | string,
+    lhs: Expression | string,
     operator: BinaryOperator,
-    rexpr: Expression | string,
+    rhs: Expression | string,
   ): BinaryExpression {
     return {
       kind: 'BinaryExpression',
-      lexpr: typeof lexpr === 'string' ? ast.expression(lexpr) : lexpr,
+      lhs: typeof lhs === 'string' ? ast.expression(lhs) : lhs,
       operator,
-      rexpr: typeof rexpr === 'string' ? ast.expression(rexpr) : rexpr,
+      rhs: typeof rhs === 'string' ? ast.expression(rhs) : rhs,
     };
   },
 
@@ -545,11 +546,8 @@ const ast = {
     };
   },
 
-  equals(
-    lexpr: Expression | string,
-    rexpr: Expression | string,
-  ): BinaryExpression {
-    return ast.binop(lexpr, '===', rexpr);
+  equals(lhs: Expression | string, rhs: Expression | string): BinaryExpression {
+    return ast.binop(lhs, '===', rhs);
   },
 
   export(declaration: Declaration): ExportNamedDeclaration {
@@ -610,7 +608,7 @@ const ast = {
     // eg. someThing <= otherThing
     match = template.match(/^(\S+)\s*(<|<=|>=|\+|===)\s*(.+?)\s*$/);
     if (match) {
-      const lexpr = match[1];
+      const lhs = match[1];
       const operator = match[2];
       invariant(
         operator === '<' ||
@@ -619,51 +617,51 @@ const ast = {
           operator === '+' ||
           operator === '===',
       );
-      const rexpr = match[3];
+      const rhs = match[3];
 
       // eg. 1000
-      match = rexpr.match(/^\d+$/);
+      match = rhs.match(/^\d+$/);
       if (match) {
         return {
           kind: 'BinaryExpression',
-          lexpr: {kind: 'Identifier', name: lexpr},
+          lhs: {kind: 'Identifier', name: lhs},
           operator,
-          rexpr: ast.number(parseInt(match[0])),
+          rhs: ast.number(parseInt(match[0])),
         };
       }
 
       // eg. 0x1234
-      match = rexpr.match(/^0x[0-9a-f]+$/i);
+      match = rhs.match(/^0x[0-9a-f]+$/i);
       if (match) {
         return {
           kind: 'BinaryExpression',
-          lexpr: {kind: 'Identifier', name: lexpr},
+          lhs: {kind: 'Identifier', name: lhs},
           operator,
-          rexpr: ast.number(parseInt(match[0], 16), 16),
+          rhs: ast.number(parseInt(match[0], 16), 16),
         };
       }
 
       // eg. 'string'
-      match = rexpr.match(/^'(.+)'$/);
+      match = rhs.match(/^'(.+)'$/);
       if (match) {
         return {
           kind: 'BinaryExpression',
-          lexpr: {kind: 'Identifier', name: lexpr},
+          lhs: {kind: 'Identifier', name: lhs},
           operator,
-          rexpr: {kind: 'StringValue', value: match[1]},
+          rhs: {kind: 'StringValue', value: match[1]},
         };
       }
 
       // eg. foo.bar
-      match = rexpr.match(/^(\S+)\.(\S+)$/);
+      match = rhs.match(/^(\S+)\.(\S+)$/);
       if (match) {
         const object: Expression = {kind: 'Identifier', name: match[1]};
         const property: Expression = {kind: 'Identifier', name: match[2]};
         return {
           kind: 'BinaryExpression',
-          lexpr: {kind: 'Identifier', name: lexpr},
+          lhs: {kind: 'Identifier', name: lhs},
           operator,
-          rexpr: {kind: 'MemberExpression', object, property},
+          rhs: {kind: 'MemberExpression', object, property},
         };
       }
     }

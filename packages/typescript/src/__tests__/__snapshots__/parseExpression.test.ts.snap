@@ -3,12 +3,12 @@
 exports[`parseExpression() parses a strict equality binary expression 1`] = `
 {
   "kind": "BinaryExpression",
-  "lexpr": {
+  "lhs": {
     "kind": "Identifier",
     "name": "foo",
   },
   "operator": "===",
-  "rexpr": {
+  "rhs": {
     "base": 10,
     "kind": "NumberValue",
     "value": 1.5,
@@ -19,12 +19,12 @@ exports[`parseExpression() parses a strict equality binary expression 1`] = `
 exports[`parseExpression() parses expressions using parentheses 1`] = `
 {
   "kind": "BinaryExpression",
-  "lexpr": {
+  "lhs": {
     "kind": "Identifier",
     "name": "foo",
   },
   "operator": "===",
-  "rexpr": {
+  "rhs": {
     "base": 10,
     "kind": "NumberValue",
     "value": 1.5,

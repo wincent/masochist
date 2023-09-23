@@ -44,14 +44,19 @@ export default function stringifyGrammar(grammar: Grammar): string {
   }
 
   const [startRule, ...otherRules] = grammar.rules.map(
-    ({lhs, rhs, action}, i) => {
+    ({lhs, rhs, action, precedence}, i) => {
       const production = rhs.length ? rhs.join(' ') : EPSILON;
-      const rule = `r${i}: ${lhs} ${RIGHTWARDS_ARROW} ${production}`;
-      if (action) {
-        return `${rule} ${action}`;
-      } else {
-        return rule;
-      }
+      return [
+        `r${i}`,
+        precedence ? `[precedence = ${precedence}]` : undefined,
+        ':',
+        lhs,
+        RIGHTWARDS_ARROW,
+        production,
+        action,
+      ]
+        .filter(Boolean)
+        .join(' ');
     },
   );
 

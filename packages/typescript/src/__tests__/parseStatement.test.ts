@@ -90,6 +90,153 @@ describe('parseStatement()', () => {
     // TODO: add rest of Token.ts example here ^^^
   });
 
+  it('implements right-associativity for chained assignment expressions', () => {
+    // Single item in "chain".
+    expect(parseStatement('a = b;')).toEqual({
+      binding: null,
+      kind: 'AssignmentStatement',
+      lhs: {
+        kind: 'Identifier',
+        name: 'a',
+      },
+      rhs: {
+        kind: 'Identifier',
+        name: 'b',
+      },
+    });
+
+    // Two items in "chain".
+    expect(parseStatement('a = b = c;')).toEqual({
+      binding: null,
+      kind: 'AssignmentStatement',
+      lhs: {
+        kind: 'Identifier',
+        name: 'a',
+      },
+      rhs: {
+        kind: 'BinaryExpression',
+        lhs: {
+          kind: 'Identifier',
+          name: 'b',
+        },
+        operator: '=',
+        rhs: {
+          kind: 'Identifier',
+          name: 'c',
+        },
+      },
+    });
+
+    // Six items in "chain", using another way of showing right-associativity.
+    expect(parseStatement('a = b = c = d = e = f;')).toEqual(
+      parseStatement('a = (b = (c = (d = (e = f))));'),
+    );
+  });
+
+  it('implements left-associativity for chained additions', () => {
+    // Single item in "chain".
+    expect(parseStatement('a + b;')).toEqual({
+      kind: 'ExpressionStatement',
+      expression: {
+        kind: 'BinaryExpression',
+        lhs: {
+          kind: 'Identifier',
+          name: 'a',
+        },
+        operator: '+',
+        rhs: {
+          kind: 'Identifier',
+          name: 'b',
+        },
+      },
+    });
+
+    // Two items in "chain".
+    expect(parseStatement('a + b + c;')).toEqual({
+      kind: 'ExpressionStatement',
+      expression: {
+        kind: 'BinaryExpression',
+        lhs: {
+          kind: 'BinaryExpression',
+          lhs: {
+            kind: 'Identifier',
+            name: 'a',
+          },
+          operator: '+',
+          rhs: {
+            kind: 'Identifier',
+            name: 'b',
+          },
+        },
+        operator: '+',
+        rhs: {
+          kind: 'Identifier',
+          name: 'c',
+        },
+      },
+    });
+
+    // Six items in "chain", using another way of showing left-associativity.
+    expect(parseStatement('a + b + c + d + e + f;')).toEqual(
+      parseStatement('((((a + b) + c) + d) + e) + f;'),
+    );
+  });
+
+  it('implements left-associativity for chained subtractions', () => {
+    // Single item in "chain".
+    expect(parseStatement('a - b;')).toEqual({
+      kind: 'ExpressionStatement',
+      expression: {
+        kind: 'BinaryExpression',
+        lhs: {
+          kind: 'Identifier',
+          name: 'a',
+        },
+        operator: '-',
+        rhs: {
+          kind: 'Identifier',
+          name: 'b',
+        },
+      },
+    });
+
+    // Two items in "chain".
+    expect(parseStatement('a - b - c;')).toEqual({
+      kind: 'ExpressionStatement',
+      expression: {
+        kind: 'BinaryExpression',
+        lhs: {
+          kind: 'BinaryExpression',
+          lhs: {
+            kind: 'Identifier',
+            name: 'a',
+          },
+          operator: '-',
+          rhs: {
+            kind: 'Identifier',
+            name: 'b',
+          },
+        },
+        operator: '-',
+        rhs: {
+          kind: 'Identifier',
+          name: 'c',
+        },
+      },
+    });
+
+    // Six items in "chain", using another way of showing left-associativity.
+    expect(parseStatement('a - b - c - d - e - f;')).toEqual(
+      parseStatement('((((a - b) - c) - d) - e) - f;'),
+    );
+  });
+
+  it('treats plus and minus operators as having the same precedence', () => {
+    expect(parseStatement('a - b - c + d + e - f + g;')).toEqual(
+      parseStatement('(((((a - b) - c) + d) + e) - f) + g;'),
+    );
+  });
+
   it('implements left-associativity for chained member expressions', () => {
     const input = 'const a = b.c.d;';
     const parsed = parseStatement(input);
@@ -121,8 +268,10 @@ describe('parseStatement()', () => {
       },
     });
 
-    // Just to make that clear:
-    expect(parseStatement(`const a = (b.c).d;`)).toEqual(parsed);
+    // Showing that we can go deeper:
+    expect(parseStatement(`const a = b.c.d.e.f.g;`)).toEqual(
+      parseStatement(`const a = ((((b.c).d).e).f).g;`),
+    );
   });
 
   it.todo(

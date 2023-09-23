@@ -73,9 +73,9 @@ function printExpression(expression: Expression, indent: number): string {
     );
   } else if (expression.kind === 'BinaryExpression') {
     return (
-      printExpression(expression.lexpr, indent + 1) +
+      printExpression(expression.lhs, indent + 1) +
       ` ${expression.operator} ` +
-      printExpression(expression.rexpr, indent + 1)
+      printExpression(expression.rhs, indent + 1)
     );
   } else if (expression.kind === 'BitwiseNotExpression') {
     return '~' + printExpression(expression.operand, indent).trimStart();

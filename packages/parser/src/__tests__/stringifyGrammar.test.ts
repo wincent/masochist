@@ -19,13 +19,13 @@ describe('stringifyGrammar()', () => {
         %token star
         %token x
 
-        r0: S' ${ARROW} S
-        r1: S ${ARROW} N
-        r2: N ${ARROW} V eq E
-        r3: N ${ARROW} E
-        r4: E ${ARROW} V
-        r5: V ${ARROW} x
-        r6: V ${ARROW} star E
+        r0 : S' ${ARROW} S
+        r1 : S ${ARROW} N
+        r2 : N ${ARROW} V eq E
+        r3 : N ${ARROW} E
+        r4 : E ${ARROW} V
+        r5 : V ${ARROW} x
+        r6 : V ${ARROW} star E
       ` + '\n',
     );
   });
@@ -55,10 +55,10 @@ describe('stringifyGrammar()', () => {
       %left MINUS PLUS
       %right EXPONENT
 
-      r0: Expression → Expression MINUS Expression
-      r1: Expression → Expression PLUS Expression
-      r2: Expression → Expression EXPONENT Expression
-      r3: Expression → NUMBER
+      r0 [precedence = 1] : Expression → Expression MINUS Expression
+      r1 [precedence = 1] : Expression → Expression PLUS Expression
+      r2 [precedence = 2] : Expression → Expression EXPONENT Expression
+      r3 : Expression → NUMBER
     ` + '\n',
     );
   });

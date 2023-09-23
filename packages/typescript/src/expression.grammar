@@ -45,9 +45,9 @@ Expression → OPENING_PAREN Expression CLOSING_PAREN { $$ = $2; }
 BinaryExpression → Expression STRICT_EQUALS Expression {
   $$ = {
     kind: 'BinaryExpression',
-    lexpr: $1,
+    lhs: $1,
     operator: '===',
-    rexpr: $3,
+    rhs: $3,
   };
 }
 

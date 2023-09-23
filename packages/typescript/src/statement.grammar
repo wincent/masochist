@@ -23,12 +23,14 @@
 %token LET
 %token LOGICAL_AND
 %token LOGICAL_OR
+%token MINUS
 %token NEW
 %token NULL
 %token NUMBER
 %token OPENING_BRACE CLOSING_BRACE
 %token OPENING_BRACKET CLOSING_BRACKET
 %token OPENING_PAREN CLOSING_PAREN
+%token PLUS
 %token REST
 %token RETURN
 %token SEMICOLON
@@ -38,7 +40,9 @@
 %token WHILE
 %token YIELD
 
-# Operator precedence.
+# Operator precedence (lowest to highest).
+%right ASSIGN
+%left PLUS MINUS
 %left DOT
 
 Statement → AssignmentStatement { $$ = $1; }
@@ -47,28 +51,28 @@ Statement → ExportDefaultDeclaration { $$ = $1; }
 Statement → ExpressionStatement { $$ = $1; }
 Statement → ReturnStatement { $$ = $1; }
 
-AssignmentStatement → CONST Identifier ASSIGN Expression SEMICOLON {
+AssignmentStatement → CONST AssignmentExpression SEMICOLON {
   $$ = {
     kind: 'AssignmentStatement',
     binding: 'const',
-    lhs: $2,
-    rhs: $4,
+    lhs: $2.lhs,
+    rhs: $2.rhs,
   };
 }
-AssignmentStatement → LET Identifier ASSIGN Expression SEMICOLON {
+AssignmentStatement → LET AssignmentExpression SEMICOLON {
   $$ = {
     kind: 'AssignmentStatement',
     binding: 'let',
-    lhs: $2,
-    rhs: $4,
+    lhs: $2.lhs,
+    rhs: $2.rhs,
   };
 }
-AssignmentStatement → Expression ASSIGN Expression SEMICOLON {
+AssignmentStatement → AssignmentExpression SEMICOLON {
   $$ = {
     kind: 'AssignmentStatement',
     binding: null,
-    lhs: $1,
-    rhs: $3,
+    lhs: $1.lhs,
+    rhs: $1.rhs,
   };
 }
 
@@ -86,10 +90,39 @@ Expression → THIS {
     name: 'this',
   };
 }
+Expression → AssignmentExpression { $$ = $1; }
+Expression → BinaryExpression { $$ = $1; }
 Expression → CallExpression { $$ = $1; }
 Expression → Identifier { $$ = $1; }
 Expression → MemberExpression { $$ = $1; }
 Expression → PrimitiveValue { $$ = $1; }
+
+AssignmentExpression → Expression ASSIGN Expression {
+  $$ = {
+    kind: 'BinaryExpression',
+    lhs: $1,
+    operator: '=',
+    rhs: $3,
+  };
+}
+
+BinaryExpression → Expression MINUS Expression {
+  $$ = {
+    kind: 'BinaryExpression',
+    lhs: $1,
+    operator: '-',
+    rhs: $3,
+  };
+}
+
+BinaryExpression → Expression PLUS Expression {
+  $$ = {
+    kind: 'BinaryExpression',
+    lhs: $1,
+    operator: '+',
+    rhs: $3,
+  };
+}
 
 CallExpression → Expression OPENING_PAREN ExpressionList CLOSING_PAREN {
   $$ = {

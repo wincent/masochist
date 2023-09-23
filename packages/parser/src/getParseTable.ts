@@ -148,7 +148,7 @@ export default function getParseTable(
           if (token?.precedence && rule.precedence) {
             if (token.precedence > rule.precedence) {
               // Shift.
-            } else if (rule.precedence < token.precedence) {
+            } else if (rule.precedence > token.precedence) {
               // TODO: check for reduce/reduce conflict here?
               actions[symbol] = {kind: 'Reduce', rule: ruleNumber};
             } else if (token.associativity === 'right') {
