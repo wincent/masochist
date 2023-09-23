@@ -169,10 +169,9 @@ export default function build(
         [
           ast.statementV2('const stack = [[null, 0]];'),
           ast.statementV2('const lexer = new Lexer(input);'),
+          ast.statementV2('let token = lexer.next() || EOF;'),
           // TODO: replace rawStatement, line by line...
           ast.rawStatement(`
-            let token = lexer.next() || EOF;
-
             while (true) {
               const [, current] = stack[stack.length - 1];
               const action = actions[current][token.name];

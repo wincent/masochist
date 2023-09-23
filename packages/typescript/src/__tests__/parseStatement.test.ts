@@ -57,6 +57,41 @@ describe('parseStatement()', async () => {
         });
       });
 
+      it('parses a logical OR expression', () => {
+        const input = 'let token = lexer.next() || EOF;';
+        expect(parseStatement(input)).toEqual({
+          kind: 'AssignmentStatement',
+          binding: 'let',
+          lhs: {
+            kind: 'Identifier',
+            name: 'token',
+          },
+          rhs: {
+            kind: 'BinaryExpression',
+            lhs: {
+              kind: 'CallExpression',
+              callee: {
+                kind: 'MemberExpression',
+                object: {
+                  kind: 'Identifier',
+                  name: 'lexer',
+                },
+                property: {
+                  kind: 'Identifier',
+                  name: 'next',
+                },
+              },
+              arguments: [],
+            },
+            operator: '||',
+            rhs: {
+              kind: 'Identifier',
+              name: 'EOF',
+            },
+          },
+        });
+      });
+
       it('parses a const boolean assignment statement', () => {
         const input = 'const isFoo = true;';
         expect(parseStatement(input)).toMatchSnapshot();

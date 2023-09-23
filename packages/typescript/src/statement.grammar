@@ -42,6 +42,8 @@
 
 # Operator precedence (lowest to highest).
 %right ASSIGN
+%left LOGICAL_OR
+%left LOGICAL_AND
 %left PLUS MINUS
 %left DOT
 
@@ -103,6 +105,24 @@ AssignmentExpression → Expression ASSIGN Expression {
     kind: 'BinaryExpression',
     lhs: $1,
     operator: '=',
+    rhs: $3,
+  };
+}
+
+BinaryExpression → Expression LOGICAL_AND Expression {
+  $$ = {
+    kind: 'BinaryExpression',
+    lhs: $1,
+    operator: '&&',
+    rhs: $3,
+  };
+}
+
+BinaryExpression → Expression LOGICAL_OR Expression {
+  $$ = {
+    kind: 'BinaryExpression',
+    lhs: $1,
+    operator: '||',
     rhs: $3,
   };
 }
