@@ -11,7 +11,7 @@ import type {Grammar, Item, ItemSet} from './types';
  * somewhere inside the RHS, indicating what has just been recognized or is
  * about to be recognized. For example, a rule like the following, with an added
  * "dot" (•) before the final `Expression`, would represent having just seen a
- * `PLUS` terminal and about to see an `Expression` non-terminal.
+ * `PLUS` terminal and being about to see an `Expression` non-terminal.
  *
  *    BinaryExpression → Expression PLUS • Expression
  *
