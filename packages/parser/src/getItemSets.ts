@@ -8,7 +8,7 @@ import type {Grammar, Item, ItemSet} from './types';
  * Constructs "item sets" from the grammar, starting with the start rule.
  *
  * An item set contains rules from the grammar with a "dot" pointer placed
- * somewhere inside the LHS, indicating what has just been recognized or is
+ * somewhere inside the RHS, indicating what has just been recognized or is
  * about to be recognized. For example, a rule like the following, with an added
  * "dot" (•) before the final `Expression`, would represent having just seen a
  * `PLUS` terminal and about to see an `Expression` non-terminal.
