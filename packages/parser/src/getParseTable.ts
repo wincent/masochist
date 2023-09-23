@@ -147,18 +147,17 @@ export default function getParseTable(
           const token = tokens.get(symbol);
           if (token?.precedence && rule.precedence) {
             if (token.precedence > rule.precedence) {
-              // Shift.
+              // Leave shift in place.
             } else if (rule.precedence > token.precedence) {
-              // TODO: check for reduce/reduce conflict here?
               actions[symbol] = {kind: 'Reduce', rule: ruleNumber};
             } else if (token.associativity === 'right') {
-              // Shift.
+              // Leave shift in place.
             } else if (token.associativity === 'left') {
-              // TODO: check for reduce/reduce conflict here?
               actions[symbol] = {kind: 'Reduce', rule: ruleNumber};
             }
           } else {
-            // Otherwise, prefer shift, emit warning, like yacc/Bison (etc) do. See:
+            // Leave shift in place, but emit warning, like yacc/Bison (etc) do.
+            // See:
             // - https://www.ibm.com/docs/en/zos/2.2.0?topic=ambiguities-rules-help-remove
             // - https://www.gnu.org/software/bison/manual/bison.html#Shift_002fReduce
             if (!conflictWarnings.has(conflictMessage)) {

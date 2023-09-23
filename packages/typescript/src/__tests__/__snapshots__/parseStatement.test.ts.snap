@@ -1,6 +1,6 @@
 // Bun Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`parseStatement() parses a const boolean assignment statement 1`] = `
+exports[`parseStatement() parser derived from grammar parses a const boolean assignment statement 1`] = `
 {
   "binding": "const",
   "kind": "AssignmentStatement",
@@ -15,7 +15,7 @@ exports[`parseStatement() parses a const boolean assignment statement 1`] = `
 }
 `;
 
-exports[`parseStatement() parses a let boolean assignment statement 1`] = `
+exports[`parseStatement() parser derived from grammar parses a let boolean assignment statement 1`] = `
 {
   "binding": "let",
   "kind": "AssignmentStatement",
@@ -30,7 +30,7 @@ exports[`parseStatement() parses a let boolean assignment statement 1`] = `
 }
 `;
 
-exports[`parseStatement() parses a const number assignment statement 1`] = `
+exports[`parseStatement() parser derived from grammar parses a const number assignment statement 1`] = `
 {
   "binding": "const",
   "kind": "AssignmentStatement",
@@ -46,7 +46,7 @@ exports[`parseStatement() parses a const number assignment statement 1`] = `
 }
 `;
 
-exports[`parseStatement() parses a let number assignment statement 1`] = `
+exports[`parseStatement() parser derived from grammar parses a let number assignment statement 1`] = `
 {
   "binding": "let",
   "kind": "AssignmentStatement",
@@ -62,7 +62,7 @@ exports[`parseStatement() parses a let number assignment statement 1`] = `
 }
 `;
 
-exports[`parseStatement() parses a const nested array assignment 1`] = `
+exports[`parseStatement() parser derived from grammar parses a const nested array assignment 1`] = `
 {
   "binding": "const",
   "kind": "AssignmentStatement",
@@ -91,7 +91,7 @@ exports[`parseStatement() parses a const nested array assignment 1`] = `
 }
 `;
 
-exports[`parseStatement() parses a (default) export class declaration 1`] = `
+exports[`parseStatement() parser derived from grammar parses a (default) export class declaration 1`] = `
 {
   "declaration": {
     "body": [
@@ -242,49 +242,49 @@ exports[`parseStatement() parses a (default) export class declaration 1`] = `
                 "name": "value",
               },
               "rhs": {
-                "kind": "MemberExpression",
-                "object": {
+                "arguments": [
+                  {
+                    "kind": "MemberExpression",
+                    "object": {
+                      "kind": "Identifier",
+                      "name": "this",
+                    },
+                    "property": {
+                      "kind": "Identifier",
+                      "name": "start",
+                    },
+                  },
+                  {
+                    "kind": "MemberExpression",
+                    "object": {
+                      "kind": "Identifier",
+                      "name": "this",
+                    },
+                    "property": {
+                      "kind": "Identifier",
+                      "name": "end",
+                    },
+                  },
+                ],
+                "callee": {
                   "kind": "MemberExpression",
                   "object": {
-                    "kind": "Identifier",
-                    "name": "this",
+                    "kind": "MemberExpression",
+                    "object": {
+                      "kind": "Identifier",
+                      "name": "this",
+                    },
+                    "property": {
+                      "kind": "Identifier",
+                      "name": "source",
+                    },
                   },
                   "property": {
                     "kind": "Identifier",
-                    "name": "source",
-                  },
-                },
-                "property": {
-                  "arguments": [
-                    {
-                      "kind": "MemberExpression",
-                      "object": {
-                        "kind": "Identifier",
-                        "name": "this",
-                      },
-                      "property": {
-                        "kind": "Identifier",
-                        "name": "start",
-                      },
-                    },
-                    {
-                      "kind": "MemberExpression",
-                      "object": {
-                        "kind": "Identifier",
-                        "name": "this",
-                      },
-                      "property": {
-                        "kind": "Identifier",
-                        "name": "end",
-                      },
-                    },
-                  ],
-                  "callee": {
-                    "kind": "Identifier",
                     "name": "slice",
                   },
-                  "kind": "CallExpression",
                 },
+                "kind": "CallExpression",
               },
             },
             {
@@ -306,35 +306,308 @@ exports[`parseStatement() parses a (default) export class declaration 1`] = `
 }
 `;
 
-exports[`parseStatement() parses a chained member expression as a call expression callee 1`] = `
+exports[`parseStatement() parser persisted to disk parses a const boolean assignment statement 1`] = `
 {
   "binding": "const",
   "kind": "AssignmentStatement",
   "lhs": {
     "kind": "Identifier",
-    "name": "a",
+    "name": "isFoo",
   },
   "rhs": {
-    "kind": "MemberExpression",
-    "object": {
-      "kind": "MemberExpression",
-      "object": {
-        "kind": "Identifier",
-        "name": "b",
-      },
-      "property": {
-        "kind": "Identifier",
-        "name": "c",
-      },
-    },
-    "property": {
-      "arguments": [],
-      "callee": {
-        "kind": "Identifier",
-        "name": "d",
-      },
-      "kind": "CallExpression",
-    },
+    "kind": "BooleanValue",
+    "value": true,
   },
+}
+`;
+
+exports[`parseStatement() parser persisted to disk parses a let boolean assignment statement 1`] = `
+{
+  "binding": "let",
+  "kind": "AssignmentStatement",
+  "lhs": {
+    "kind": "Identifier",
+    "name": "isFoo",
+  },
+  "rhs": {
+    "kind": "BooleanValue",
+    "value": false,
+  },
+}
+`;
+
+exports[`parseStatement() parser persisted to disk parses a const number assignment statement 1`] = `
+{
+  "binding": "const",
+  "kind": "AssignmentStatement",
+  "lhs": {
+    "kind": "Identifier",
+    "name": "isFoo",
+  },
+  "rhs": {
+    "base": 10,
+    "kind": "NumberValue",
+    "value": 1,
+  },
+}
+`;
+
+exports[`parseStatement() parser persisted to disk parses a let number assignment statement 1`] = `
+{
+  "binding": "let",
+  "kind": "AssignmentStatement",
+  "lhs": {
+    "kind": "Identifier",
+    "name": "isFoo",
+  },
+  "rhs": {
+    "base": 10,
+    "kind": "NumberValue",
+    "value": 2,
+  },
+}
+`;
+
+exports[`parseStatement() parser persisted to disk parses a const nested array assignment 1`] = `
+{
+  "binding": "const",
+  "kind": "AssignmentStatement",
+  "lhs": {
+    "kind": "Identifier",
+    "name": "stack",
+  },
+  "rhs": {
+    "items": [
+      {
+        "items": [
+          {
+            "kind": "NullValue",
+          },
+          {
+            "base": 10,
+            "kind": "NumberValue",
+            "value": 0,
+          },
+        ],
+        "kind": "ArrayValue",
+      },
+    ],
+    "kind": "ArrayValue",
+  },
+}
+`;
+
+exports[`parseStatement() parser persisted to disk parses a (default) export class declaration 1`] = `
+{
+  "declaration": {
+    "body": [
+      {
+        "kind": "PropertyDeclaration",
+        "name": "name",
+        "type": "string",
+      },
+      {
+        "kind": "PropertyDeclaration",
+        "name": "start",
+        "type": "number",
+      },
+      {
+        "kind": "PropertyDeclaration",
+        "name": "end",
+        "type": "number",
+      },
+      {
+        "kind": "PropertyDeclaration",
+        "name": "source",
+        "type": "string",
+      },
+      {
+        "key": {
+          "kind": "Identifier",
+          "name": "constructor",
+        },
+        "kind": "MethodDefinition",
+        "value": {
+          "arguments": [
+            {
+              "kind": "Argument",
+              "name": "name",
+              "type": "string",
+            },
+            {
+              "kind": "Argument",
+              "name": "start",
+              "type": "number",
+            },
+            {
+              "kind": "Argument",
+              "name": "end",
+              "type": "number",
+            },
+            {
+              "kind": "Argument",
+              "name": "source",
+              "type": "string",
+            },
+          ],
+          "body": [
+            {
+              "binding": null,
+              "kind": "AssignmentStatement",
+              "lhs": {
+                "kind": "MemberExpression",
+                "object": {
+                  "kind": "Identifier",
+                  "name": "this",
+                },
+                "property": {
+                  "kind": "Identifier",
+                  "name": "name",
+                },
+              },
+              "rhs": {
+                "kind": "Identifier",
+                "name": "name",
+              },
+            },
+            {
+              "binding": null,
+              "kind": "AssignmentStatement",
+              "lhs": {
+                "kind": "MemberExpression",
+                "object": {
+                  "kind": "Identifier",
+                  "name": "this",
+                },
+                "property": {
+                  "kind": "Identifier",
+                  "name": "start",
+                },
+              },
+              "rhs": {
+                "kind": "Identifier",
+                "name": "start",
+              },
+            },
+            {
+              "binding": null,
+              "kind": "AssignmentStatement",
+              "lhs": {
+                "kind": "MemberExpression",
+                "object": {
+                  "kind": "Identifier",
+                  "name": "this",
+                },
+                "property": {
+                  "kind": "Identifier",
+                  "name": "end",
+                },
+              },
+              "rhs": {
+                "kind": "Identifier",
+                "name": "end",
+              },
+            },
+            {
+              "binding": null,
+              "kind": "AssignmentStatement",
+              "lhs": {
+                "kind": "MemberExpression",
+                "object": {
+                  "kind": "Identifier",
+                  "name": "this",
+                },
+                "property": {
+                  "kind": "Identifier",
+                  "name": "source",
+                },
+              },
+              "rhs": {
+                "kind": "Identifier",
+                "name": "source",
+              },
+            },
+          ],
+          "kind": "FunctionExpression",
+        },
+      },
+      {
+        "key": {
+          "kind": "Identifier",
+          "name": "contents",
+        },
+        "kind": "MethodDefinition",
+        "value": {
+          "arguments": [],
+          "body": [
+            {
+              "binding": "const",
+              "kind": "AssignmentStatement",
+              "lhs": {
+                "kind": "Identifier",
+                "name": "value",
+              },
+              "rhs": {
+                "arguments": [
+                  {
+                    "kind": "MemberExpression",
+                    "object": {
+                      "kind": "Identifier",
+                      "name": "this",
+                    },
+                    "property": {
+                      "kind": "Identifier",
+                      "name": "start",
+                    },
+                  },
+                  {
+                    "kind": "MemberExpression",
+                    "object": {
+                      "kind": "Identifier",
+                      "name": "this",
+                    },
+                    "property": {
+                      "kind": "Identifier",
+                      "name": "end",
+                    },
+                  },
+                ],
+                "callee": {
+                  "kind": "MemberExpression",
+                  "object": {
+                    "kind": "MemberExpression",
+                    "object": {
+                      "kind": "Identifier",
+                      "name": "this",
+                    },
+                    "property": {
+                      "kind": "Identifier",
+                      "name": "source",
+                    },
+                  },
+                  "property": {
+                    "kind": "Identifier",
+                    "name": "slice",
+                  },
+                },
+                "kind": "CallExpression",
+              },
+            },
+            {
+              "expression": {
+                "kind": "Identifier",
+                "name": "value",
+              },
+              "kind": "ReturnStatement",
+            },
+          ],
+          "kind": "FunctionExpression",
+        },
+      },
+    ],
+    "id": "Token",
+    "kind": "ClassDeclaration",
+  },
+  "kind": "ExportDefaultDeclaration",
 }
 `;

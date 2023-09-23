@@ -1718,37 +1718,9 @@ const actions = [
     },
   },
   {
-    FALSE: {
-      kind: 'Shift',
-      state: 18,
-    },
     IDENTIFIER: {
       kind: 'Shift',
       state: 12,
-    },
-    NULL: {
-      kind: 'Shift',
-      state: 21,
-    },
-    NUMBER: {
-      kind: 'Shift',
-      state: 23,
-    },
-    OPENING_BRACKET: {
-      kind: 'Shift',
-      state: 16,
-    },
-    OPENING_PAREN: {
-      kind: 'Shift',
-      state: 7,
-    },
-    THIS: {
-      kind: 'Shift',
-      state: 8,
-    },
-    TRUE: {
-      kind: 'Shift',
-      state: 19,
     },
   },
   {
@@ -2296,17 +2268,17 @@ const actions = [
       kind: 'Reduce',
       rule: 25,
     },
-    DOT: {
-      kind: 'Reduce',
-      rule: 25,
-    },
     MINUS: {
       kind: 'Reduce',
       rule: 25,
     },
     OPENING_PAREN: {
-      kind: 'Shift',
-      state: 37,
+      kind: 'Reduce',
+      rule: 25,
+    },
+    DOT: {
+      kind: 'Reduce',
+      rule: 25,
     },
     PLUS: {
       kind: 'Reduce',
@@ -3432,17 +3404,7 @@ const gotos = [
     PrimitiveValue: 14,
   },
   {
-    ArrayValue: 15,
-    AssignmentExpression: 42,
-    BinaryExpression: 9,
-    BooleanValue: 17,
-    CallExpression: 10,
-    Expression: 55,
-    Identifier: 11,
-    MemberExpression: 13,
-    NullValue: 20,
-    NumberValue: 22,
-    PrimitiveValue: 14,
+    Identifier: 55,
   },
   {
     ArrayValue: 15,

@@ -137,7 +137,7 @@ ExpressionList → Expression { $$ = [$1]; }
 ExpressionList → ExpressionList COMMA Expression { $1.push($3); $$ = $1; }
 ExpressionList → ε { $$ = []; }
 
-MemberExpression → Expression DOT Expression {
+MemberExpression → Expression DOT Identifier {
   $$ = {
     kind: 'MemberExpression',
     object: $1,

@@ -272,6 +272,9 @@ describe('getParseTable()', () => {
     );
   });
 
-  // See also: GraphQL-based tests in `@masochist/graphql`, specifically in
-  // the file `src/__tests__/getParseTable.test.ts`.
+  // See also:
+  // - GraphQL-based tests in `@masochist/graphql`, specifically in the file
+  //   `src/__tests__/getParseTable.test.ts`.
+  // - TypeScript-based tests in `@masochist/typescript', specifically in the
+  //   file `src/__tests__/getParseTable.test.ts`.
 });

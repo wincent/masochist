@@ -18,6 +18,8 @@ export default function parseDSL(dsl: string): Grammar {
       continue;
     }
 
+    // TODO: parse %import directive for importing type definitions
+
     // Scan %tokens.
     if (scanner.scan(/%token\b/)) {
       let count = 0;

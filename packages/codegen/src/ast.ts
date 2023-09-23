@@ -241,7 +241,7 @@ export type LogicalNotExpression = {
 export type MemberExpression = {
   kind: 'MemberExpression';
   object: Expression;
-  property: Expression;
+  property: Identifier;
 };
 
 export type MethodDefinition = {
@@ -734,13 +734,13 @@ const ast = {
 
   member(
     object: Expression | string,
-    property: Expression | string,
+    property: Identifier | string,
   ): MemberExpression {
     return {
       kind: 'MemberExpression',
       object: typeof object === 'string' ? ast.expression(object) : object,
       property:
-        typeof property === 'string' ? ast.expression(property) : property,
+        typeof property === 'string' ? ast.identifier(property) : property,
     };
   },
 
