@@ -44,6 +44,7 @@
 %right ASSIGN
 %left LOGICAL_OR
 %left LOGICAL_AND
+%left EQUALS STRICT_EQUALS # TODO: !== and != as well
 %left PLUS MINUS
 %left DOT
 
@@ -52,6 +53,7 @@ Statement → ClassDeclaration { $$ = $1; }
 Statement → ExportDefaultDeclaration { $$ = $1; }
 Statement → ExpressionStatement { $$ = $1; }
 Statement → ReturnStatement { $$ = $1; }
+Statement → WhileStatement { $$ = $1; }
 
 AssignmentStatement → CONST AssignmentExpression SEMICOLON {
   $$ = {
@@ -141,6 +143,24 @@ BinaryExpression → Expression PLUS Expression {
     kind: 'BinaryExpression',
     lhs: $1,
     operator: '+',
+    rhs: $3,
+  };
+}
+
+BinaryExpression → Expression EQUALS Expression {
+  $$ = {
+    kind: 'BinaryExpression',
+    lhs: $1,
+    operator: '==',
+    rhs: $3,
+  };
+}
+
+BinaryExpression → Expression STRICT_EQUALS Expression {
+  $$ = {
+    kind: 'BinaryExpression',
+    lhs: $1,
+    operator: '===',
     rhs: $3,
   };
 }
@@ -283,6 +303,7 @@ Argument → Identifier COLON Identifier {
 
 StatementList → Statement { $$ = [$1]; }
 StatementList → StatementList Statement { $1.push($2); $$ = $1; }
+StatementList → ε { $$ = []; }
 
 # TODO: make this support richer `type` values than just Identifier-like ones.
 PropertyDeclaration → Identifier COLON Identifier SEMICOLON {
@@ -311,3 +332,14 @@ ReturnStatement → RETURN Expression SEMICOLON {
     expression: $2,
   };
 }
+
+WhileStatement →
+  WHILE OPENING_PAREN Expression CLOSING_PAREN OPENING_BRACE
+    StatementList
+  CLOSING_BRACE {
+    $$ = {
+      kind: 'WhileStatement',
+      condition: $3,
+      block: $6,
+    };
+  }

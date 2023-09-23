@@ -372,6 +372,64 @@ describe('parseStatement()', async () => {
           },
         });
       });
+
+      it('parses an empty while statement', () => {
+        expect(parseStatement('while (true) {}')).toEqual({
+          kind: 'WhileStatement',
+          condition: {
+            kind: 'BooleanValue',
+            value: true,
+          },
+          block: [],
+        });
+      });
+
+      it('parses a non-empty while statement', () => {
+        expect(
+          parseStatement(`
+          while (foo() === 0) {
+            bar(true);
+          }
+        `),
+        ).toEqual({
+          kind: 'WhileStatement',
+          condition: {
+            kind: 'BinaryExpression',
+            lhs: {
+              kind: 'CallExpression',
+              callee: {
+                kind: 'Identifier',
+                name: 'foo',
+              },
+              arguments: [],
+            },
+            operator: '===',
+            rhs: {
+              kind: 'NumberValue',
+              value: 0,
+              base: 10,
+            },
+          },
+          block: [
+            {
+              kind: 'ExpressionStatement',
+              expression: {
+                kind: 'CallExpression',
+                callee: {
+                  kind: 'Identifier',
+                  name: 'bar',
+                },
+                arguments: [
+                  {
+                    kind: 'BooleanValue',
+                    value: true,
+                  },
+                ],
+              },
+            },
+          ],
+        });
+      });
     },
   );
 });
