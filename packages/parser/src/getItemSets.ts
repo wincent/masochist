@@ -16,15 +16,15 @@ import type {Grammar, Item, ItemSet} from './types';
  *    BinaryExpression → Expression PLUS • Expression
  *
  * As already mentioned, the first item set begins with the grammar's start
- * rule. Whenever the dot is before a non-terminal, we can add the rules for
- * that non-terminal to the set.
+ * rule with the dot at the beginning of the RHS. Whenever the dot is before a
+ * non-terminal, we can add the rules for that non-terminal to the set.
  *
  * We create additional item sets by taking each and imagining that we've
  * provided a next symbol to advance the dot pointer.
  *
  * Why bother creating the item sets? Because we can use them to create a
- * transition table (see `itemSetsToTransitionTable()`) by determine which item
- * set to go to for each input.
+ * transition table (see `itemSetsToTransitionTable()`) by determining which
+ * item set to go to for each input.
  */
 export default function getItemSets(grammar: Grammar) {
   const tokens = grammar.tokens;
