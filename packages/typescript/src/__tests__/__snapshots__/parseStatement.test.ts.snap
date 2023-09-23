@@ -305,3 +305,36 @@ exports[`parseStatement() parses a (default) export class declaration 1`] = `
   "kind": "ExportDefaultDeclaration",
 }
 `;
+
+exports[`parseStatement() parses a chained member expression as a call expression callee 1`] = `
+{
+  "binding": "const",
+  "kind": "AssignmentStatement",
+  "lhs": {
+    "kind": "Identifier",
+    "name": "a",
+  },
+  "rhs": {
+    "kind": "MemberExpression",
+    "object": {
+      "kind": "MemberExpression",
+      "object": {
+        "kind": "Identifier",
+        "name": "b",
+      },
+      "property": {
+        "kind": "Identifier",
+        "name": "c",
+      },
+    },
+    "property": {
+      "arguments": [],
+      "callee": {
+        "kind": "Identifier",
+        "name": "d",
+      },
+      "kind": "CallExpression",
+    },
+  },
+}
+`;

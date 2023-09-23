@@ -14,6 +14,21 @@ describe('parseStatement()', () => {
     // parseStatement = (await import('../parseStatement')).default;
   });
 
+  it('parses a call', () => {
+    const input = 'click();';
+    expect(parseStatement(input)).toEqual({
+      kind: 'ExpressionStatement',
+      expression: {
+        kind: 'CallExpression',
+        arguments: [],
+        callee: {
+          kind: 'Identifier',
+          name: 'click',
+        },
+      },
+    });
+  });
+
   it('parses a const boolean assignment statement', () => {
     const input = 'const isFoo = true;';
     expect(parseStatement(input)).toMatchSnapshot();
@@ -76,7 +91,7 @@ describe('parseStatement()', () => {
   });
 
   it('implements left-associativity for chained member expressions', () => {
-    const input = `const a = b.c.d;`;
+    const input = 'const a = b.c.d;';
     const parsed = parseStatement(input);
 
     expect(parsed).toEqual({
@@ -109,4 +124,43 @@ describe('parseStatement()', () => {
     // Just to make that clear:
     expect(parseStatement(`const a = (b.c).d;`)).toEqual(parsed);
   });
+
+  it.todo(
+    'parses a chained member expression as a call expression callee',
+    () => {
+      const input = 'const a = b.c.d();';
+      const parsed = parseStatement(input);
+
+      expect(parsed).toEqual({
+        binding: 'const',
+        kind: 'AssignmentStatement',
+        lhs: {
+          kind: 'Identifier',
+          name: 'a',
+        },
+        rhs: {
+          kind: 'CallExpression',
+          arguments: [],
+          callee: {
+            kind: 'MemberExpression',
+            object: {
+              kind: 'MemberExpression',
+              object: {
+                kind: 'Identifier',
+                name: 'b',
+              },
+              property: {
+                kind: 'Identifier',
+                name: 'c',
+              },
+            },
+            property: {
+              kind: 'Identifier',
+              name: 'd',
+            },
+          },
+        },
+      });
+    },
+  );
 });
