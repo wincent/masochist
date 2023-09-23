@@ -2,6 +2,12 @@ import getFirstSets from './getFirstSets';
 
 import type {Grammar, SymbolSets} from './types';
 
+/**
+ * We use follow sets when constructing the parse table (see `getParseTable()`).
+ * Follow sets tell us what terminal symbols may follow a given non-terminal.
+ * The parse table uses this to make "shift"/"reduce"/"accept" decisions based
+ * on lookahead at the next symbol.
+ */
 export default function getFollowSets(grammar: Grammar): SymbolSets {
   const tokens = grammar.tokens;
   const startRule = grammar.rules[0];

@@ -3,6 +3,9 @@ import type {Grammar, SymbolSets} from './types';
 /**
  * `first['A']` is the set of terminals which can appear as the first element of
  * any rule (or chain of rules) matching non-terminal `A`.
+ *
+ * We use "first sets" while computing "follow sets" (ie. lookahead heuristics)
+ * in `getFollowSets()`.
  */
 export default function getFirstSets(grammar: Grammar): SymbolSets {
   const tokens = grammar.tokens;

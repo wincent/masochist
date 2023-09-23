@@ -4,6 +4,15 @@ import type {Grammar, ItemSet} from './types';
 
 export type TransitionTable = Array<{[symbol: string]: number | undefined}>;
 
+/**
+ * The transition table is a key ingredient in the formation of the parse
+ * table (see `getParseTable()`). Specifically:
+ *
+ * - Non-terminals in the transition table end up becoming "gotos" in the parse
+ *   table.
+ * - Terminals in the transition table become "shift" actions in the parse
+ *   table.
+ */
 export default function itemSetsToTransitionTable(
   itemSets: Array<ItemSet>,
   grammar: Grammar,
