@@ -302,7 +302,6 @@ const rules = [
 const EOF = new Token('$', -1, -1, '');
 export default function parseExpression(input) {
   const stack = [[null, 0]];
-
   const lexer = new Lexer(input);
 
   let token = lexer.next() || EOF;

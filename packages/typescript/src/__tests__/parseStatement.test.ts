@@ -32,6 +32,31 @@ describe('parseStatement()', async () => {
         });
       });
 
+      it('parses a `new` expression', () => {
+        const input = 'const lexer = new Lexer(input);';
+        expect(parseStatement(input)).toEqual({
+          kind: 'AssignmentStatement',
+          binding: 'const',
+          lhs: {
+            kind: 'Identifier',
+            name: 'lexer',
+          },
+          rhs: {
+            kind: 'NewExpression',
+            object: {
+              kind: 'Identifier',
+              name: 'Lexer',
+            },
+            arguments: [
+              {
+                kind: 'Identifier',
+                name: 'input',
+              },
+            ],
+          },
+        });
+      });
+
       it('parses a const boolean assignment statement', () => {
         const input = 'const isFoo = true;';
         expect(parseStatement(input)).toMatchSnapshot();

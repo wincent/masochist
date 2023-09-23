@@ -166,8 +166,11 @@ export default function getParseTable(
             }
           }
         } else if (action.kind === 'Reduce' && action.rule !== ruleNumber) {
-          // TODO: Prefer rule that appears earlier in grammar.
-          throw new Error(`getParseTable(): ${conflictMessage}`);
+          // Warn, but prefer rule that appears earlier in grammar.
+          if (!conflictWarnings.has(conflictMessage)) {
+            console.log(`[warning] getParseTable(): ${conflictMessage}`);
+            conflictWarnings.add(conflictMessage);
+          }
         }
       } else {
         actions[symbol] = {kind: 'Reduce', rule: ruleNumber};

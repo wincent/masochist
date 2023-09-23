@@ -95,6 +95,7 @@ Expression → BinaryExpression { $$ = $1; }
 Expression → CallExpression { $$ = $1; }
 Expression → Identifier { $$ = $1; }
 Expression → MemberExpression { $$ = $1; }
+Expression → NewExpression { $$ = $1; }
 Expression → PrimitiveValue { $$ = $1; }
 
 AssignmentExpression → Expression ASSIGN Expression {
@@ -121,6 +122,16 @@ BinaryExpression → Expression PLUS Expression {
     lhs: $1,
     operator: '+',
     rhs: $3,
+  };
+}
+
+# Note: `NewExpression` must come before `CallExpression` to settle
+# reduce/reduce conflict.
+NewExpression → NEW Expression OPENING_PAREN ExpressionList CLOSING_PAREN {
+  $$ = {
+    kind: 'NewExpression',
+    object: $2,
+    arguments: $4,
   };
 }
 
