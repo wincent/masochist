@@ -46,6 +46,9 @@ Most development tasks can be completed with `bun`:
 A Make-based interface also exists for some operations:
 
 - `make`: Performs TypeScript build if necessary.
-- `make diagrams`: Builds state machine diagrams in `packages/graphql/lexer/diagrams/`.
-- `make graphql`: Generates static lexer (`packages/graphql/src/lex.ts`).
+- `make debug`: Prints debug information for troubleshooting the Makefile dependency graph.
+- `make diagrams`: Builds state machine diagrams in `packages/graphql/lexer/diagrams/` and `packages/typescript/lexer/diagrams`.
+- `make docs`: Updates dependency graph images for this README.
+- `make graphql`: Generates static lexer (`packages/graphql/src/lex.ts`) and parsers (`packages/graphql/src/parseDocument.ts` and `packages/graphql/src/parseSchema.ts`).
+- `make typescript`: Generates static TypeScript lexer (`packages/typescript/src/lex.ts`) and parsers (`packages/typescript/src/parseExpression.ts` and `packages/typescript/src/parseStatement.ts`).
 - `make clean`: Removes all built products (TypeScript outputs + lexer diagrams).
