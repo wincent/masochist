@@ -9,7 +9,7 @@ Points of interest and areas for exploration:
 
 ## Packages
 
-- [`benchmark`](packages/benchmark): Benchmarks, profilers, and "deopt" analyzers for the GraphQL lexer and parser[^benchmark].
+- [`benchmark`](packages/benchmark): Benchmarks for the GraphQL lexer and parser[^benchmark].
 - [`client`](packages/client): Client-side code.
 - [`codegen`](packages/codegen): Tools for emitting TypeScript (AST, pretty printer, visitor/transformer).
 - [`common`](packages/common): Utilities used by other packages.
