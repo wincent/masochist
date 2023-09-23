@@ -167,9 +167,7 @@ const rules = [
 const EOF = new Token('$', -1, -1, '');
 export default function parseSchema(input) {
   const stack = [[null, 0]];
-
   const lexer = new Lexer(input);
-
   let token = lexer.next() || EOF;
 
   while (true) {
@@ -199,6 +197,7 @@ export default function parseSchema(input) {
       if (code) {
         stack.push([code(...popped), target]);
       } else {
+        // TODO: make this a static, not a runtime, check
         throw new Error(
           'to use static parser must provide semantic action for every production',
         );

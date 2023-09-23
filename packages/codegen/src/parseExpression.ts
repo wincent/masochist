@@ -332,6 +332,7 @@ export default function parseExpression(input) {
       if (code) {
         stack.push([code(...popped), target]);
       } else {
+        // TODO: make this a static, not a runtime, check
         throw new Error(
           'to use static parser must provide semantic action for every production',
         );
