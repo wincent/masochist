@@ -16,6 +16,7 @@ export type {
   IfStatement,
   ImportStatement,
   MethodDefinition,
+  Node,
   NullValue,
   ObjectProperty,
   ObjectValue,

@@ -1,4 +1,5 @@
 import {ast, walk} from '@masochist/codegen';
+import {assertIsStatement} from '@masochist/codegen/src/internal';
 import {invariant} from '@masochist/common';
 import assert from 'node:assert';
 import path from 'node:path';
@@ -7,6 +8,7 @@ import type {
   Consequent,
   Expression,
   IfStatement,
+  Node,
   Program,
   Statement,
   WhileStatement,
@@ -271,7 +273,7 @@ export default async function build(
   const source = await Bun.file(path.join(import.meta.dir, 'Token.ts')).text();
   const statements = ast.statements(source);
   assert(statements.length === 1);
-  let tokenClass = statements[0];
+  let tokenClass: Node | null | undefined = statements[0];
   tokenClass = walk(tokenClass, {
     // Turn: `export default class Token { ... }`
     // Into: `export class Token { ... }`
@@ -281,7 +283,9 @@ export default async function build(
         declaration: declaration.declaration,
       };
     },
-  }) as any; // TODO: FIXME: wants Statement type, not Node | null | undefined
+  });
+  assert(tokenClass);
+  assertIsStatement(tokenClass);
 
   const buildCommand = options.buildCommand
     ? `edit "build.ts", run "${options.buildCommand}" instead`

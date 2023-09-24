@@ -1173,7 +1173,7 @@ function assertIsExpression(
   }
 }
 
-function assertIsStatement(
+export function assertIsStatement(
   node: Node | null | undefined,
 ): asserts node is Statement | null | undefined {
   if (node != null) {
@@ -1185,6 +1185,7 @@ function assertIsStatement(
         node.kind === 'DocComment' ||
         node.kind === 'EmptyStatement' ||
         node.kind === 'ExportDefaultDeclaration' ||
+        node.kind === 'ExportNamedDeclaration' ||
         node.kind === 'ExpressionStatement' ||
         node.kind === 'FunctionDeclaration' ||
         node.kind === 'IfStatement' ||
