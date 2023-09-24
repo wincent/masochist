@@ -88,7 +88,7 @@ export default function lex(input: string) {
       match('"'),
     );
 
-    const choices: {[K in TokenName]: Matcher<unknown, unknown>} = {
+    const choices: { [K in TokenName]: Matcher<unknown, unknown> } = {
       //
       // Punctuators (2.1.8).
       //

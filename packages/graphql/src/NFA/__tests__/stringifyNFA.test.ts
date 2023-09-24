@@ -3,8 +3,8 @@
 // we've moved them in here to avoid a circular dependency.
 
 import {dedent} from '@masochist/common';
-import {fromTransitionTable, stringifyNFA} from '@masochist/lexer/src/internal';
 import {union} from '@masochist/lexer';
+import {fromTransitionTable, stringifyNFA} from '@masochist/lexer/src/internal';
 import {describe, expect, it} from 'bun:test';
 
 import {

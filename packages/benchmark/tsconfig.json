@@ -6,10 +6,10 @@
     "rootDir": "./src"
   },
   "references": [
-    {"path": "../common"},
-    {"path": "../graphql"},
-    {"path": "../legacy"},
-    {"path": "../lexer"},
-    {"path": "../parser"}
+    { "path": "../common" },
+    { "path": "../graphql" },
+    { "path": "../legacy" },
+    { "path": "../lexer" },
+    { "path": "../parser" }
   ]
 }

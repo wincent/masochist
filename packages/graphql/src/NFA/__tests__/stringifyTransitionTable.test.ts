@@ -17,7 +17,6 @@ import {
 import {describe, expect, it} from 'bun:test';
 
 import {
-  default as table,
   AMPERSAND,
   AT,
   BANG,
@@ -34,6 +33,7 @@ import {
   OPENING_BRACE,
   OPENING_BRACKET,
   OPENING_PAREN,
+  default as table,
 } from '../../lexer';
 
 import type {TransitionTable} from '@masochist/lexer';

@@ -76,8 +76,10 @@ export default function stringifyTransitionTable({
 }
 
 function formatTargets(targets: Set<number>): string {
-  return `new Set([${Array.from(targets)
-    .sort()
-    .map((id) => id.toString())
-    .join(', ')}])`;
+  return `new Set([${
+    Array.from(targets)
+      .sort()
+      .map((id) => id.toString())
+      .join(', ')
+  }])`;
 }

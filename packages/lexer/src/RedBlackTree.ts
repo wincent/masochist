@@ -173,8 +173,8 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
             const leftPadding = Math.floor(padding / 2);
             const rightPadding = Math.ceil(padding / 2);
             const leftIndex = Math.floor(left.width / 2) + leftPadding;
-            const rightIndex =
-              width - Math.ceil(right.width / 2) - rightPadding;
+            const rightIndex = width - Math.ceil(right.width / 2) -
+              rightPadding;
             const middleIndex = clamp(
               Math.floor(width / 2),
               leftIndex,
@@ -194,14 +194,13 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
             const RIGHT_LINK = isRed(subtree.right)
               ? BOX_DRAWINGS_HEAVY_DOWN_AND_LEFT
               : BOX_DRAWINGS_LIGHT_DOWN_AND_LEFT;
-            const UP_LINK =
-              isRed(subtree.left) && isRed(subtree.right)
-                ? BOX_DRAWINGS_HEAVY_UP_AND_HORIZONTAL
-                : isRed(subtree.left)
-                ? BOX_DRAWINGS_RIGHT_LIGHT_AND_LEFT_UP_HEAVY
-                : isRed(subtree.right)
-                ? BOX_DRAWINGS_LEFT_LIGHT_AND_RIGHT_UP_HEAVY
-                : BOX_DRAWINGS_LIGHT_UP_AND_HORIZONTAL;
+            const UP_LINK = isRed(subtree.left) && isRed(subtree.right)
+              ? BOX_DRAWINGS_HEAVY_UP_AND_HORIZONTAL
+              : isRed(subtree.left)
+              ? BOX_DRAWINGS_RIGHT_LIGHT_AND_LEFT_UP_HEAVY
+              : isRed(subtree.right)
+              ? BOX_DRAWINGS_LEFT_LIGHT_AND_RIGHT_UP_HEAVY
+              : BOX_DRAWINGS_LIGHT_UP_AND_HORIZONTAL;
 
             return (
               [
@@ -210,12 +209,12 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
 
                 // Edges.
                 ' '.repeat(leftIndex) +
-                  LEFT_LINK +
-                  LEFT_HORIZONTAL.repeat(middleIndex - leftIndex - 1) +
-                  UP_LINK +
-                  RIGHT_HORIZONTAL.repeat(rightIndex - middleIndex - 1) +
-                  RIGHT_LINK +
-                  ' '.repeat(width - rightIndex - 1),
+                LEFT_LINK +
+                LEFT_HORIZONTAL.repeat(middleIndex - leftIndex - 1) +
+                UP_LINK +
+                RIGHT_HORIZONTAL.repeat(rightIndex - middleIndex - 1) +
+                RIGHT_LINK +
+                ' '.repeat(width - rightIndex - 1),
 
                 // Subtrees.
                 ...zip(

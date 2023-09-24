@@ -693,7 +693,6 @@ const ast = {
    *    import('a', 'b')      -> import a from 'b'
    *    import('{a}', 'b')    -> import {a} from 'b'
    *    import('{a, b}', 'c') -> import {a, b} from 'c'
-   *
    */
   import(specifiers: string, source: string): ImportStatement {
     const match = specifiers.match(/^\s*\{\s*(.+)\s*\}\s*$/);
@@ -739,8 +738,9 @@ const ast = {
     return {
       kind: 'MemberExpression',
       object: typeof object === 'string' ? ast.expression(object) : object,
-      property:
-        typeof property === 'string' ? ast.identifier(property) : property,
+      property: typeof property === 'string'
+        ? ast.identifier(property)
+        : property,
     };
   },
 
@@ -864,8 +864,8 @@ const ast = {
 
     // eg. foo.bar++
     // eg. ++foo.bar
-    match =
-      template.match(/^([\w.]+)(\+\+)$/) || template.match(/^(\+\+)([\w.]+)$/);
+    match = template.match(/^([\w.]+)(\+\+)$/) ||
+      template.match(/^(\+\+)([\w.]+)$/);
     if (match) {
       return {
         kind: 'ExpressionStatement',
@@ -929,10 +929,9 @@ const ast = {
       kind: 'ExpressionStatement',
       expression: {
         kind: 'YieldExpression',
-        expression:
-          typeof expression === 'string'
-            ? ast.expression(expression)
-            : expression,
+        expression: typeof expression === 'string'
+          ? ast.expression(expression)
+          : expression,
       },
     };
   },

@@ -4782,7 +4782,7 @@ const rules = [
   {
     production: "Document'",
     pop: 1,
-    action: () => {} /* dummy placeholder */,
+    action: () => {}, /* dummy placeholder */
   },
   {
     production: 'Document',

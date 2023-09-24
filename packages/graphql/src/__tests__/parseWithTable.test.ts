@@ -3,7 +3,7 @@
 // we've moved them in here to avoid a circular dependency.
 
 import {getLexer} from '@masochist/lexer/src/internal';
-import {parseWithTable, makeNode} from '@masochist/parser';
+import {makeNode, parseWithTable} from '@masochist/parser';
 import Bun from 'bun';
 import {beforeAll, describe, expect, it} from 'bun:test';
 import path from 'path';

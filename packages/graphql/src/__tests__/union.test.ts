@@ -60,9 +60,10 @@ describe('union()', () => {
     );
 
     expect(table).toEqual({
-      acceptStates: new Set([
-        1, 2, 3, 4, 5, 17, 7, 8, 9, 10, 11, 12, 13, 14, 15,
-      ]),
+      acceptStates: new Set(
+        // dprint-ignore
+        [ 1, 2, 3, 4, 5, 17, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+      ),
       startStates: new Set([0]),
       transitions: [
         /* 0 */ new Map([

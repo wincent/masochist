@@ -24,9 +24,9 @@ import type {
   FunctionExpression,
   Identifier,
   IfStatement,
+  ImportStatement,
   IncrementExpression,
   IndexExpression,
-  ImportStatement,
   LabelStatement,
   LineComment,
   LogicalNotExpression,
@@ -42,9 +42,9 @@ import type {
   RawExpression,
   RawStatement,
   ReturnStatement,
+  Statement,
   StringValue,
   SwitchStatement,
-  Statement,
   TernaryExpression,
   ThrowStatement,
   UndefinedValue,
@@ -604,8 +604,9 @@ function walkExportDefaultDeclaration(
   }
 
   // Post-order.
-  const finalDeclaration =
-    visitor['ExportDefaultDeclaration:exit']?.(newDeclaration);
+  const finalDeclaration = visitor['ExportDefaultDeclaration:exit']?.(
+    newDeclaration,
+  );
   if (finalDeclaration === null) {
     return null;
   } else if (finalDeclaration === undefined) {
@@ -651,8 +652,9 @@ function walkExportNamedDeclaration(
   }
 
   // Post-order.
-  const finalDeclaration =
-    visitor['ExportNamedDeclaration:exit']?.(newDeclaration);
+  const finalDeclaration = visitor['ExportNamedDeclaration:exit']?.(
+    newDeclaration,
+  );
   if (finalDeclaration === null) {
     return null;
   } else if (finalDeclaration === undefined) {
@@ -715,8 +717,9 @@ function walkFunctionDeclaration(
   }
 
   // Post-order.
-  const finalDeclaration =
-    visitor['FunctionDeclaration:exit']?.(newDeclaration);
+  const finalDeclaration = visitor['FunctionDeclaration:exit']?.(
+    newDeclaration,
+  );
   if (finalDeclaration === null) {
     return null;
   } else if (finalDeclaration === undefined) {
@@ -951,8 +954,9 @@ function walkPropertyDeclaration(
   // This is a leaf node, so no children to visit.
 
   // Post-order.
-  const finalDeclaration =
-    visitor['PropertyDeclaration:exit']?.(newDeclaration);
+  const finalDeclaration = visitor['PropertyDeclaration:exit']?.(
+    newDeclaration,
+  );
   if (finalDeclaration === null) {
     return null;
   } else if (finalDeclaration === undefined) {

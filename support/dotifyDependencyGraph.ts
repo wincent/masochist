@@ -59,15 +59,17 @@ async function main(options: Options = {}) {
     log(`  node[${color}]; "${name}"`);
   }
   log('');
-  for (const [name, deps] of Object.entries(dependencies).sort(([a], [b]) => {
-    if (a > b) {
-      return 1;
-    } else if (b > a) {
-      return -1;
-    } else {
-      return 0;
-    }
-  })) {
+  for (
+    const [name, deps] of Object.entries(dependencies).sort(([a], [b]) => {
+      if (a > b) {
+        return 1;
+      } else if (b > a) {
+        return -1;
+      } else {
+        return 0;
+      }
+    })
+  ) {
     for (const dep of [...deps].sort()) {
       log(`  "${name}" -> "${dep}" [${color}];`);
     }

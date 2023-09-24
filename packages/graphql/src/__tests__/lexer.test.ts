@@ -5,10 +5,13 @@ import lexer from '../lexer';
 describe('lexer', () => {
   it('is a transition table containing the state machine for the lexer', () => {
     expect(lexer).toEqual({
-      acceptStates: new Set([
-        1, 2, 3, 4, 34, 27, 51, 6, 7, 8, 9, 10, 13, 39, 41, 14, 38, 15, 16, 17,
-        18, 19, 20, 21, 32, 42, 46, 50, 54, 55, 56, 22, 33, 23, 24, 25,
-      ]),
+      acceptStates: new Set(
+        // dprint-ignore
+        [
+          1, 2, 3, 4, 34, 27, 51, 6, 7, 8, 9, 10, 13, 39, 41, 14, 38, 15, 16,
+          17, 18, 19, 20, 21, 32, 42, 46, 50, 54, 55, 56, 22, 33, 23, 24, 25,
+        ],
+      ),
       startStates: new Set([0]),
       transitions: [
         /* 0 */ new Map([

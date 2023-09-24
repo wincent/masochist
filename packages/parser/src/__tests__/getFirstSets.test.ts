@@ -1,5 +1,5 @@
-import {describe, expect, it} from 'bun:test';
 import {dedent} from '@masochist/common';
+import {describe, expect, it} from 'bun:test';
 
 import extendedGrammarForItemSets from '../extendedGrammarForItemSets';
 import getFirstSets from '../getFirstSets';

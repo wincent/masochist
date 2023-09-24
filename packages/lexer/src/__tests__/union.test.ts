@@ -1,11 +1,11 @@
-import {describe, expect, it} from 'bun:test';
 import {print} from '@masochist/codegen';
+import {describe, expect, it} from 'bun:test';
 
 import Token from '../Token';
 import build from '../build';
-import {getLexer} from './helper';
 import ignore from '../ignore';
 import union from '../union';
+import {getLexer} from './helper';
 
 describe('union()', () => {
   it('prefers greedy matches', async () => {

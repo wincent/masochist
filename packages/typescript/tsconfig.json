@@ -6,9 +6,9 @@
     "rootDir": "./src"
   },
   "references": [
-    {"path": "../codegen"},
-    {"path": "../common"},
-    {"path": "../lexer"},
-    {"path": "../parser"}
+    { "path": "../codegen" },
+    { "path": "../common" },
+    { "path": "../lexer" },
+    { "path": "../parser" }
   ]
 }

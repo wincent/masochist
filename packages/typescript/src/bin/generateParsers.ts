@@ -22,10 +22,12 @@ import {
 import type {Stats} from '@masochist/parser';
 
 async function main() {
-  for (const [grammar, table, filename] of [
-    [expressionGrammar, expressionTable, 'parseExpression.ts'] as const,
-    [statementGrammar, statementTable, 'parseStatement.ts'] as const,
-  ]) {
+  for (
+    const [grammar, table, filename] of [
+      [expressionGrammar, expressionTable, 'parseExpression.ts'] as const,
+      [statementGrammar, statementTable, 'parseStatement.ts'] as const,
+    ]
+  ) {
     console.log(`Building: ${filename}`);
 
     const stats: Stats = {};

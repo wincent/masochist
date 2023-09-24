@@ -1,0 +1,60 @@
+{
+  "lineWidth": 80,
+  "useTabs": false,
+  "indentWidth": 2,
+  "typescript": {
+    // See: https://github.com/dprint/dprint-plugin-typescript/blob/main/src/configuration/types.rs
+    "arrowFunction.useParentheses": "force",
+    "binaryExpression.operatorPosition": "maintain",
+    "conditionalExpression.operatorPosition": "maintain",
+    "conditionalType.operatorPosition": "maintain",
+    "exportDeclaration.sortNamedExports": "caseSensitive",
+    "exportDeclaration.spaceSurroundingNamedExports": false,
+    "forInStatement.useBraces": "always",
+    "forOfStatement.useBraces": "always",
+    "forStatement.useBraces": "always",
+    "functionExpression.spaceAfterFunctionKeyword": true,
+    "ifStatement.useBraces": "always",
+    "importDeclaration.sortNamedImports": "caseSensitive",
+    "importDeclaration.spaceSurroundingNamedImports": false,
+    "module.sortExportDeclarations": "caseSensitive",
+    "module.sortImportDeclarations": "caseSensitive",
+    "spaceSurroundingProperties": false,
+    "quoteStyle": "preferSingle",
+    "whileStatement.useBraces": "always"
+  },
+  "json": {
+    // See: https://github.com/dprint/dprint-plugin-json/blob/main/src/configuration/configuration.rs
+  },
+  "markdown": {
+    // See: https://github.com/dprint/dprint-plugin-markdown/blob/main/src/configuration/types.rs
+  },
+  "prettier": {
+    // See: https://prettier.io/docs/en/options
+    "bracketSpacing": false,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "useTabs": false
+  },
+  "toml": {
+    // See: https://github.com/dprint/dprint-plugin-toml/blob/main/src/configuration/configuration.rs
+  },
+  "excludes": [
+    "**/lib",
+    "**/node_modules",
+    "tsconfig-base.json"
+  ],
+  "includes": [
+    // Prettier will handle .graphql and .yaml; dprint everything else.
+    "**/*.{graphql,json,md,ts,yaml}"
+  ],
+
+  // Update with: `dprint config update`.
+  "plugins": [
+    "https://plugins.dprint.dev/typescript-0.87.1.wasm",
+    "https://plugins.dprint.dev/json-0.17.4.wasm",
+    "https://plugins.dprint.dev/markdown-0.16.1.wasm",
+    "https://plugins.dprint.dev/toml-0.5.4.wasm",
+    "https://plugins.dprint.dev/prettier-0.27.0.json@3557a62b4507c55a47d8cde0683195b14d13c41dda66d0f0b0e111aed107e2fe"
+  ]
+}

@@ -2,7 +2,7 @@ import {expect, test} from 'bun:test';
 
 import {Tokens, isIgnored, lex} from '../../index';
 
-import Parser, {Grammar, choice, plus, sequence, r, t} from '../Parser';
+import Parser, {Grammar, choice, plus, r, sequence, t} from '../Parser';
 
 /**
  * Simplified type for GraphQL AST nodes.

@@ -148,9 +148,9 @@ export default class StringScanner {
 
     if (result === null) {
       throw new Error(
-        `StringScanner(): Expected ${description ?? pattern} at ${
-          this.fullContext
-        }`,
+        `StringScanner(): Expected ${
+          description ?? pattern
+        } at ${this.fullContext}`,
       );
     }
 

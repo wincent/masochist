@@ -1,7 +1,4 @@
-# Keep this file as close as possible to original `tsc --init` output, for ease
-# of updating.
-/tsconfig-base.json
-
-# Ignore built files (".d.ts") under "lib" directories like
-# "packages/lexer/lib/" etc.
-lib
+# Not used, for now, because we're only using Prettier to format GraphQL and
+# YAML files, and there are none of those that we'd wish to ignore at this time.
+#
+# See ".dprint.jsonc" for JSON, Markdown, and TS configuration.

@@ -1,5 +1,5 @@
-import {describe, expect, it} from 'bun:test';
 import {Token} from '@masochist/lexer';
+import {describe, expect, it} from 'bun:test';
 
 import getAugmentedGrammar from '../getAugmentedGrammar';
 import getItemSets from '../getItemSets';

@@ -25,18 +25,16 @@ export default function sortEdges(nfa: NFA): NFA {
       }
 
       // Then sort by low char code.
-      const aLow =
-        a.on.kind === 'Anything'
-          ? 0x0000
-          : a.on.kind === 'Atom'
-          ? a.on.value
-          : a.on.from;
-      const bLow =
-        b.on.kind === 'Anything'
-          ? 0x0000
-          : b.on.kind === 'Atom'
-          ? b.on.value
-          : b.on.from;
+      const aLow = a.on.kind === 'Anything'
+        ? 0x0000
+        : a.on.kind === 'Atom'
+        ? a.on.value
+        : a.on.from;
+      const bLow = b.on.kind === 'Anything'
+        ? 0x0000
+        : b.on.kind === 'Atom'
+        ? b.on.value
+        : b.on.from;
       if (aLow < bLow) {
         return -1;
       } else if (aLow > bLow) {
@@ -44,18 +42,16 @@ export default function sortEdges(nfa: NFA): NFA {
       }
 
       // Then sort by high char code.
-      const aHigh =
-        a.on.kind === 'Anything'
-          ? 0xffff
-          : a.on.kind === 'Atom'
-          ? a.on.value
-          : a.on.to;
-      const bHigh =
-        b.on.kind === 'Anything'
-          ? 0xffff
-          : b.on.kind === 'Atom'
-          ? b.on.value
-          : b.on.to;
+      const aHigh = a.on.kind === 'Anything'
+        ? 0xffff
+        : a.on.kind === 'Atom'
+        ? a.on.value
+        : a.on.to;
+      const bHigh = b.on.kind === 'Anything'
+        ? 0xffff
+        : b.on.kind === 'Atom'
+        ? b.on.value
+        : b.on.to;
       if (aHigh < bHigh) {
         return -1;
       } else if (aHigh > bHigh) {

@@ -1,5 +1,5 @@
-import {beforeEach, describe, expect, it} from 'bun:test';
 import {dedent} from '@masochist/common';
+import {beforeEach, describe, expect, it} from 'bun:test';
 
 import IntervalTree, {Interval} from '../IntervalTree';
 import ComparableString from './ComparableString';

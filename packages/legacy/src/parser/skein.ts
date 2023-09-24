@@ -55,13 +55,12 @@ export default function skein(text: string | Array<number>): string {
 
   tweak = [
     [0, 0],
-    // prettier-ignore
     [
       (
         0x40 + // First = 1.
         0x30 // Type = 48 (Message).
       ) << 24,
-      0
+      0,
     ],
   ];
 
@@ -79,13 +78,11 @@ export default function skein(text: string | Array<number>): string {
   block(c, tweak, message, position);
 
   tweak[0][1] = 8; // Bytes processed so far (including pending block).
-  tweak[1][0] =
-    // prettier-ignore
-    (
-      0x80 + // Last = 1.
-      0x40 + // First = 1.
-      0x3f // Type = 63 (Output).
-    ) << 24;
+  tweak[1][0] = (
+    0x80 + // Last = 1.
+    0x40 + // First = 1.
+    0x3f // Type = 63 (Output).
+  ) << 24;
 
   block(c, tweak, [], 0);
 
@@ -190,7 +187,7 @@ function block(
   //
   // `R` defines rotation constants used to rotate-left.
   //
-  // prettier-ignore
+  // dprint-ignore
   const R = [
     46, 36, 19, 37, 33, 42, 14, 27, 17, 49, 36, 39, 44, 56, 54, 9, 39,
     30, 34, 24, 13, 17, 10, 50, 25, 29, 39, 43, 8, 22, 56, 35,

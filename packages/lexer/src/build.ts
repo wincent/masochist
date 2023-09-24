@@ -164,22 +164,22 @@ export default async function build(
 
       const ignoreToken = isIgnored(i)
         ? filterEmpty(
-            ast.comment('IGNORED token.'),
-            ast.statement('this.tokenStart = this.index'),
-            // TODO: deal with these self-transitions as well
-            i === START ? ast.empty : ast.statement('this.state = START'),
-            ast.continue(),
-          )
+          ast.comment('IGNORED token.'),
+          ast.statement('this.tokenStart = this.index'),
+          // TODO: deal with these self-transitions as well
+          i === START ? ast.empty : ast.statement('this.state = START'),
+          ast.continue(),
+        )
         : undefined;
 
       let name;
       const acceptToken = (name = isAccept(i))
         ? filterEmpty(
-            i === START ? ast.empty : ast.statement('this.state = START'),
-            ast.return(
-              ast.call('this.emit', ast.string(name), 'this.index', 'input'),
-            ),
-          )
+          i === START ? ast.empty : ast.statement('this.state = START'),
+          ast.return(
+            ast.call('this.emit', ast.string(name), 'this.index', 'input'),
+          ),
+        )
         : undefined;
 
       const remainingConditions = conditions.filter(Boolean).length;
@@ -403,7 +403,6 @@ function charForComparison(value: string): string {
  * previously been grouped by target state. eg.
  *
  *    ch === 0x20 || ch >= 0x30 && ch <= 0xffff
- *
  */
 function expressionForTransitions(
   transitions: Array<NonNullable<Transition>>,

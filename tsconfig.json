@@ -3,16 +3,16 @@
   "files": [],
   "include": ["support/**.ts"],
   "references": [
-    {"path": "./packages/benchmark"},
-    {"path": "./packages/client"},
-    {"path": "./packages/codegen"},
-    {"path": "./packages/common"},
-    {"path": "./packages/compiler"},
-    {"path": "./packages/graphql"},
-    {"path": "./packages/legacy"},
-    {"path": "./packages/lexer"},
-    {"path": "./packages/parser"},
-    {"path": "./packages/server"},
-    {"path": "./packages/typescript"}
+    { "path": "./packages/benchmark" },
+    { "path": "./packages/client" },
+    { "path": "./packages/codegen" },
+    { "path": "./packages/common" },
+    { "path": "./packages/compiler" },
+    { "path": "./packages/graphql" },
+    { "path": "./packages/legacy" },
+    { "path": "./packages/lexer" },
+    { "path": "./packages/parser" },
+    { "path": "./packages/server" },
+    { "path": "./packages/typescript" }
   ]
 }

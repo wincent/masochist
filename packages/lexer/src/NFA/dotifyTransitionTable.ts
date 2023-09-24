@@ -1,6 +1,6 @@
+import type {TransitionTable} from './TransitionTable';
 import keyToTransition from './keyToTransition';
 import stringifyTransition, {EPSILON} from './stringifyTransition';
-import type {TransitionTable} from './TransitionTable';
 
 /**
  * Creates a Graphviz representation of a TransitionTable, in the DOT language,
@@ -26,13 +26,17 @@ export default function dotifyTransitionTable(
     const count = startStates.size;
     lines.push(
       '',
-      `  // Invisible ${pluralize(
-        count,
-        'node',
-      )} from which to draw start ${pluralize(
-        count,
-        'transition',
-      )} to start ${pluralize(count, 'state')}.`,
+      `  // Invisible ${
+        pluralize(
+          count,
+          'node',
+        )
+      } from which to draw start ${
+        pluralize(
+          count,
+          'transition',
+        )
+      } to start ${pluralize(count, 'state')}.`,
     );
     const states = Array.from(startStates)
       .map((state) => -(state + 1)) // Offset by 1 to avoid ever having "-0".

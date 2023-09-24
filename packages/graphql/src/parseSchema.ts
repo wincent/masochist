@@ -131,7 +131,7 @@ const rules = [
   {
     production: "TypeSystemDocument'",
     pop: 1,
-    action: () => {} /* dummy placeholder */,
+    action: () => {}, /* dummy placeholder */
   },
   {
     production: 'TypeSystemDocument',

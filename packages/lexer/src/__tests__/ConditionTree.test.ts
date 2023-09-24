@@ -1,5 +1,5 @@
-import {beforeEach, describe, expect, it} from 'bun:test';
 import {dedent, invariant} from '@masochist/common';
+import {beforeEach, describe, expect, it} from 'bun:test';
 
 import ConditionTree, {CharCode} from '../ConditionTree';
 import {Interval} from '../IntervalTree';

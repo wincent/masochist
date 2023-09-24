@@ -8,10 +8,9 @@ import type {Grammar} from './types';
  */
 export default function stringifyGrammar(grammar: Grammar): string {
   // Output %token declarations.
-  let output =
-    numericStringSort([...grammar.tokens.keys()])
-      .map((token) => `%token ${token}`)
-      .join('\n') + '\n\n';
+  let output = numericStringSort([...grammar.tokens.keys()])
+    .map((token) => `%token ${token}`)
+    .join('\n') + '\n\n';
 
   // Output precedence declarations (%left/%right).
   const operators: Array<['left' | 'right', Array<string>]> = [];

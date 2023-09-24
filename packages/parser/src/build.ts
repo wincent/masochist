@@ -144,10 +144,9 @@ export default function build(
           return ast.object({
             production: ast.string(rule.lhs),
             pop: ast.number(rule.rhs.length),
-            action:
-              i === 0
-                ? ast.rawExpression('() => {} /* dummy placeholder */')
-                : ast.identifier(`r${i}`),
+            action: i === 0
+              ? ast.rawExpression('() => {} /* dummy placeholder */')
+              : ast.identifier(`r${i}`),
           });
         }),
       ),

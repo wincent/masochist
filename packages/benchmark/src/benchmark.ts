@@ -2,8 +2,8 @@ type Table = {
   [label: string]:
     | MemoryUsageObject
     | {
-        [category: string]: number | undefined;
-      };
+      [category: string]: number | undefined;
+    };
 };
 
 function mb(bytes: number): string {

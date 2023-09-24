@@ -1,5 +1,5 @@
-import {describe, expect, it} from 'bun:test';
 import {dedent} from '@masochist/common';
+import {describe, expect, it} from 'bun:test';
 
 import parseDSL from '../parseDSL';
 import {subsetGrammarDeclaration, toyGrammarDeclaration} from './grammars';
@@ -92,8 +92,7 @@ describe('parseDSL()', () => {
         {
           lhs: 'Something',
           rhs: ['Another'],
-          action:
-            '{\n' +
+          action: '{\n' +
             '          // Oh look, this is a multiline action.\n' +
             '          $$ = thing() +\n' +
             '            $1 +\n' +
@@ -209,7 +208,7 @@ describe('parseDSL()', () => {
       parseDSL(`
       %token foo bar
       %token baz foo
-    `),
+    `)
     ).toThrow(dedent`
       Cannot redeclare token foo at line 3, column 18 of input string
 
@@ -226,7 +225,7 @@ describe('parseDSL()', () => {
       parseDSL(`
       %token foo bar
       %left qux
-    `),
+    `)
     ).toThrow(dedent`
       Cannot specify precedence for unknown token qux at line 3, column 13 of input string
 
@@ -243,7 +242,7 @@ describe('parseDSL()', () => {
       parseDSL(`
       %token foo bar
       %left foo foo
-    `),
+    `)
     ).toThrow(dedent`
       Cannot redeclare precedence for token foo at line 3, column 17 of input string
 
@@ -260,7 +259,7 @@ describe('parseDSL()', () => {
       parseDSL(`
       %token foo bar
       %left
-    `),
+    `)
     ).toThrow(dedent`
       Expected at least one symbol after %left at line 3, column 12 of input string
 
@@ -279,7 +278,7 @@ describe('parseDSL()', () => {
         if (true) {
           doSomething();
       }
-    `),
+    `)
     ).toThrow(dedent`
       Unbalanced braces in action at line 6, column 5 of input string
 

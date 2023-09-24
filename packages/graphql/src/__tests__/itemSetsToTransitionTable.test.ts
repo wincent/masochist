@@ -3,9 +3,9 @@
 // by `@masochist/graphql`, so we've moved them in here to avoid a circular
 // dependency.
 
-import {describe, expect, it} from 'bun:test';
 import {itemSetsToTransitionTable} from '@masochist/parser';
 import {stringifyTransitionTable} from '@masochist/parser/src/internal';
+import {describe, expect, it} from 'bun:test';
 
 import {itemSets, unaugmentedGrammar} from '../document';
 

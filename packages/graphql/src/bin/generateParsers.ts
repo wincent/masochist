@@ -16,10 +16,12 @@ import {grammar as schemaGrammar, table as schemaTable} from '../schema';
 import type {Stats} from '@masochist/parser';
 
 async function main() {
-  for (const [grammar, table, filename] of [
-    [documentGrammar, documentTable, 'parseDocument.ts'] as const,
-    [schemaGrammar, schemaTable, 'parseSchema.ts'] as const,
-  ]) {
+  for (
+    const [grammar, table, filename] of [
+      [documentGrammar, documentTable, 'parseDocument.ts'] as const,
+      [schemaGrammar, schemaTable, 'parseSchema.ts'] as const,
+    ]
+  ) {
     console.log(`Building: ${filename}`);
 
     const stats: Stats = {};

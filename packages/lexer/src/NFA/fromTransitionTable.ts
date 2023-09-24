@@ -19,8 +19,7 @@ export default function fromTransitionTable({
   const newStartStates: Array<NFA> = [];
 
   function getState(id: number) {
-    const flags =
-      (startStates.has(id) ? START : NONE) |
+    const flags = (startStates.has(id) ? START : NONE) |
       (acceptStates.has(id) ? ACCEPT : NONE);
     if (!states[id]) {
       if (labels?.[id]) {

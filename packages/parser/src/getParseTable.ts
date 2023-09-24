@@ -11,16 +11,16 @@ import type {Grammar, ItemSet} from './types';
 
 export type Action =
   | {
-      kind: 'Accept';
-    }
+    kind: 'Accept';
+  }
   | {
-      kind: 'Reduce';
-      rule: number;
-    }
+    kind: 'Reduce';
+    rule: number;
+  }
   | {
-      kind: 'Shift';
-      state: number;
-    };
+    kind: 'Shift';
+    state: number;
+  };
 
 type Actions = {
   [terminal: string]: Action;

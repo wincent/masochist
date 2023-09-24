@@ -1,7 +1,7 @@
 import {escapeForRegExp} from '@masochist/common';
 
-import permute from './permute';
 import ReversibleMap from './ReversibleMap';
+import permute from './permute';
 
 /**
  * An object with an `exec()` method for recognizing a unit of text, and other
@@ -401,10 +401,9 @@ export default class Lexer<K, V> {
         return cachedMatchers.get(stringOrRegExp)!;
       }
 
-      const pattern =
-        typeof stringOrRegExp === 'string'
-          ? escapeForRegExp(stringOrRegExp)
-          : stringOrRegExp.source;
+      const pattern = typeof stringOrRegExp === 'string'
+        ? escapeForRegExp(stringOrRegExp)
+        : stringOrRegExp.source;
 
       const regExp = new RegExp(`(?:${pattern})`, 'uy');
 
@@ -1018,10 +1017,9 @@ export default class Lexer<K, V> {
       }
 
       // TODO: report index, maybe.
-      const context =
-        input.length - index > 20
-          ? `${input.slice(index, index + 20)}...`
-          : input.slice(index);
+      const context = input.length - index > 20
+        ? `${input.slice(index, index + 20)}...`
+        : input.slice(index);
 
       throw new Error(`${reason} at: ${JSON.stringify(context)}`);
     };
@@ -1069,7 +1067,6 @@ export default class Lexer<K, V> {
 
         return peek.peeked !== null;
       },
-
       // Mix these in with `Object.assign` so that TypeScript can infer the
       // correct type for `peek`.
       {peeked: undefined as undefined | null | RegExpExecArray},

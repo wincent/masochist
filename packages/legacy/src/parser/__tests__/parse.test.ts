@@ -1,6 +1,6 @@
+import {dedent} from '@masochist/common';
 import Bun from 'bun';
 import {expect, test} from 'bun:test';
-import {dedent} from '@masochist/common';
 import path from 'node:path';
 
 import parse from '../parse';
@@ -171,7 +171,7 @@ test('parsing a document with a non-exclusive anonymous operation', () => {
     {
       bar
     }
-  `),
+  `)
   ).toThrow(/Anonymous operation must be the only operation in the document/);
 
   expect(() =>
@@ -183,7 +183,7 @@ test('parsing a document with a non-exclusive anonymous operation', () => {
     {
       bar
     }
-  `),
+  `)
   ).toThrow(/Anonymous operation must be the only operation in the document/);
 });
 
@@ -206,7 +206,7 @@ test('parsing a document with trailing lexical tokens', () => {
     {
       foo
     }} # <-- Note excess parenthesis here.
-  `),
+  `)
   ).toThrow(dedent`
     Parse error:
 

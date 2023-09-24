@@ -22,10 +22,9 @@ export function makeNode(
 ): ParseTree | Token | null {
   return {
     kind: lhs,
-    children:
-      children.length === 1 && Array.isArray(children[0])
-        ? children[0]
-        : children,
+    children: children.length === 1 && Array.isArray(children[0])
+      ? children[0]
+      : children,
   };
 }
 

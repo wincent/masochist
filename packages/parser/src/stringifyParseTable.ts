@@ -87,8 +87,8 @@ export default function stringifyParseTable(parseTable: ParseTable): string {
     );
   });
   const header = padded.shift();
-  const separator =
-    '|' + widths.map((width) => '-'.repeat(width)).join('|') + '|';
+  const separator = '|' + widths.map((width) => '-'.repeat(width)).join('|') +
+    '|';
 
   return [header, separator, ...padded].join('\n') + '\n';
 }

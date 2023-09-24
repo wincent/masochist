@@ -5,9 +5,9 @@ import Parser, {
   choice,
   optional,
   plus,
+  r,
   sequence,
   star,
-  r,
   t,
 } from './Parser';
 

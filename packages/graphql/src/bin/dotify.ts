@@ -11,8 +11,8 @@
 import {escapeForRegExp} from '@masochist/common';
 import {ignore} from '@masochist/lexer';
 import {
-  compileRegExp,
   NFAToDFA,
+  compileRegExp,
   dotifyTransitionTable,
   minimizeDFA,
   regExpToNFA,
@@ -25,7 +25,6 @@ import {promises as fs} from 'fs';
 import path from 'path';
 
 import {
-  default as lexer,
   AMPERSAND,
   AT,
   BANG,
@@ -56,6 +55,7 @@ import {
   STRING_VALUE,
   UNICODE_BOM,
   WHITESPACE,
+  default as lexer,
 } from '../lexer';
 
 import type {TransitionTable} from '@masochist/lexer';
@@ -69,10 +69,9 @@ function ignoredTokens() {
 
 function machine(pattern: TransitionTable | RegExp | string) {
   if (typeof pattern === 'string' || pattern instanceof RegExp) {
-    const regExp =
-      typeof pattern === 'string'
-        ? new RegExp(escapeForRegExp(pattern))
-        : pattern;
+    const regExp = typeof pattern === 'string'
+      ? new RegExp(escapeForRegExp(pattern))
+      : pattern;
 
     let nfa = regExpToNFA(compileRegExp(regExp));
     nfa = removeEpsilons(nfa);

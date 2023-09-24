@@ -5505,7 +5505,7 @@ const rules = [
   {
     production: "Statement'",
     pop: 1,
-    action: () => {} /* dummy placeholder */,
+    action: () => {}, /* dummy placeholder */
   },
   {
     production: 'Statement',
@@ -5840,7 +5840,12 @@ const rules = [
 ];
 const EOF = new Token('$', -1, -1, '');
 export default function parseStatement(input) {
-  const stack = [[null, 0]];
+  const stack = [
+    [
+      null,
+      0,
+    ],
+  ];
   const lexer = new Lexer(input);
   let token = lexer.next() || EOF;
 

@@ -493,7 +493,6 @@ function wrap(maybeReference: string | Expression): Expression {
  * as opposed to:
  *
  *    expressions.map(expression => expression.hash)
- *
  */
 function hash(expression: Expression): string {
   return expression.hash;
@@ -634,9 +633,11 @@ export function t(
   predicate?: (contents: string) => boolean,
 ): TerminalSymbol {
   return withProperties({
-    hash: `t:${skein(
-      [name, predicate?.toString() ?? ''].map(skein).join(':'),
-    )}`,
+    hash: `t:${
+      skein(
+        [name, predicate?.toString() ?? ''].map(skein).join(':'),
+      )
+    }`,
     kind: 'TOKEN',
     name,
     predicate,

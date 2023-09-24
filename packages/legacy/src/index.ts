@@ -1,4 +1,4 @@
-export {default as lex, Tokens, isIgnored} from './lexer/lex';
+export {Tokens, default as lex, isIgnored} from './lexer/lex';
 
 export {default as parse} from './parser/parse';
 

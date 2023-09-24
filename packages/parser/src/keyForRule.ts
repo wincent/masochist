@@ -10,7 +10,6 @@ import {EPSILON} from './Constants';
  *
  *    A:b-B-C
  *    A:ε
- *
  */
 export default function keyForRule(lhs: string, rhs: Array<string>): string {
   if (rhs.length) {

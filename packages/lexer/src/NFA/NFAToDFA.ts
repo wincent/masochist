@@ -76,16 +76,16 @@ export default function NFAToDFA(nfa: NFA): NFA {
         );
         const node = labels.size
           ? {
-              id: nextID++,
-              flags: NONE,
-              edges: [],
-              labels,
-            }
+            id: nextID++,
+            flags: NONE,
+            edges: [],
+            labels,
+          }
           : {
-              id: nextID++,
-              flags: NONE,
-              edges: [],
-            };
+            id: nextID++,
+            flags: NONE,
+            edges: [],
+          };
         ids[node.id] = targets;
         reverseIds[key] = node;
         queue.enqueue(node);

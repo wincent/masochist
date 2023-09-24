@@ -3,10 +3,10 @@
 // framework-internal tests in other packages can make use of the low-level
 // implementation details.
 
+export {getParser} from './__tests__/helper';
 export {default as extendedGrammarForItemSets} from './extendedGrammarForItemSets';
 export {default as getFirstSets} from './getFirstSets';
 export {default as getFollowSets} from './getFollowSets';
-export {getParser} from './__tests__/helper';
 export {default as stringifyGrammar} from './stringifyGrammar';
 export {default as stringifyItemSets} from './stringifyItemSets';
 export {default as stringifyParseTable} from './stringifyParseTable';

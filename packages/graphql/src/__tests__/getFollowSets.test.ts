@@ -2,13 +2,13 @@
 // defined, but they depend on artifacts produced by `@masochist/graphql`, so
 // we've moved them in here to avoid a circular dependency.
 
-import {describe, expect, it} from 'bun:test';
 import {getItemSets} from '@masochist/parser';
 import {
   extendedGrammarForItemSets,
   getFollowSets,
   stringifySymbolSets,
 } from '@masochist/parser/src/internal';
+import {describe, expect, it} from 'bun:test';
 
 import {unaugmentedGrammar} from '../document';
 

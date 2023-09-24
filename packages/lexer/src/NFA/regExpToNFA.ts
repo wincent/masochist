@@ -3,8 +3,8 @@ import clearFlag from './clearFlag';
 import getAcceptStates from './getAcceptStates';
 import getStartStates from './getStartStates';
 
-import type {Edge, Flags, NFA} from './NFA';
 import type {Node} from '../RegExp/RegExpParser';
+import type {Edge, Flags, NFA} from './NFA';
 import setFlag from './setFlag';
 
 export default function regExpToNFA(

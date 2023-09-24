@@ -34,22 +34,20 @@ export default function union(patterns: {
     edges: Object.entries(patterns).map(([label, pattern]) => ({
       on: null,
       to: (() => {
-        const nfa =
-          typeof pattern === 'string' || pattern instanceof RegExp
-            ? (() => {
-                const regExp =
-                  typeof pattern === 'string'
-                    ? new RegExp(escapeForRegExp(pattern))
-                    : pattern;
+        const nfa = typeof pattern === 'string' || pattern instanceof RegExp
+          ? (() => {
+            const regExp = typeof pattern === 'string'
+              ? new RegExp(escapeForRegExp(pattern))
+              : pattern;
 
-                let nfa = regExpToNFA(compileRegExp(regExp));
-                nfa = removeEpsilons(nfa);
-                nfa = NFAToDFA(nfa);
-                nfa = sortEdges(nfa);
-                nfa = minimizeDFA(nfa);
-                return nfa;
-              })()
-            : fromTransitionTable(pattern);
+            let nfa = regExpToNFA(compileRegExp(regExp));
+            nfa = removeEpsilons(nfa);
+            nfa = NFAToDFA(nfa);
+            nfa = sortEdges(nfa);
+            nfa = minimizeDFA(nfa);
+            return nfa;
+          })()
+          : fromTransitionTable(pattern);
 
         nfa.flags = clearFlag(nfa.flags, START);
         visitNFA(nfa, (node) => {

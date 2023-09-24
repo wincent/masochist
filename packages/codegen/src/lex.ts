@@ -103,17 +103,10 @@ export class Lexer {
         } else if (ch === 0x3e) {
           this.state = 19;
         } else if (
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x62) ||
-          (ch >= 0x67 && ch <= 0x68) ||
-          (ch >= 0x6a && ch <= 0x6b) ||
-          ch === 0x6d ||
-          (ch >= 0x6f && ch <= 0x71) ||
-          ch === 0x73 ||
-          (ch >= 0x75 && ch <= 0x76) ||
-          ch === 0x78 ||
-          ch === 0x7a
+          ch >= 0x41 && ch <= 0x5a || ch === 0x5f || ch >= 0x61 && ch <= 0x62 ||
+          ch >= 0x67 && ch <= 0x68 || ch >= 0x6a && ch <= 0x6b || ch === 0x6d ||
+          ch >= 0x6f && ch <= 0x71 || ch === 0x73 || ch >= 0x75 && ch <= 0x76 ||
+          ch === 0x78 || ch === 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x5b) {
@@ -246,10 +239,8 @@ export class Lexer {
         }
       } else if (state === 20) {
         while (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.index++;
           ch = this.index < length ? input.charCodeAt(this.index) : -1;
@@ -258,12 +249,9 @@ export class Lexer {
         return this.emit('IDENTIFIER', this.index, input);
       } else if (state === 23) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6b) ||
-          (ch >= 0x6d && ch <= 0x6e) ||
-          (ch >= 0x70 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x6b || ch >= 0x6d && ch <= 0x6e ||
+          ch >= 0x70 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x6c) {
@@ -276,11 +264,8 @@ export class Lexer {
         }
       } else if (state === 24) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x64) ||
-          (ch >= 0x66 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x64 || ch >= 0x66 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x65) {
@@ -291,12 +276,9 @@ export class Lexer {
         }
       } else if (state === 25) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6b) ||
-          (ch >= 0x6d && ch <= 0x77) ||
-          (ch >= 0x79 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x6b || ch >= 0x6d && ch <= 0x77 ||
+          ch >= 0x79 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x6c) {
@@ -309,12 +291,9 @@ export class Lexer {
         }
       } else if (state === 26) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x62 && ch <= 0x6e) ||
-          (ch >= 0x70 && ch <= 0x74) ||
-          (ch >= 0x76 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x62 && ch <= 0x6e || ch >= 0x70 && ch <= 0x74 ||
+          ch >= 0x76 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x61) {
@@ -329,12 +308,9 @@ export class Lexer {
         }
       } else if (state === 27) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x65) ||
-          (ch >= 0x67 && ch <= 0x6c) ||
-          (ch >= 0x6e && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x65 || ch >= 0x67 && ch <= 0x6c ||
+          ch >= 0x6e && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x66) {
@@ -347,11 +323,8 @@ export class Lexer {
         }
       } else if (state === 28) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x64) ||
-          (ch >= 0x66 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x64 || ch >= 0x66 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x65) {
@@ -362,12 +335,9 @@ export class Lexer {
         }
       } else if (state === 29) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x64) ||
-          (ch >= 0x66 && ch <= 0x74) ||
-          (ch >= 0x76 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x64 || ch >= 0x66 && ch <= 0x74 ||
+          ch >= 0x76 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x65) {
@@ -380,11 +350,8 @@ export class Lexer {
         }
       } else if (state === 30) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x64) ||
-          (ch >= 0x66 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x64 || ch >= 0x66 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x65) {
@@ -395,12 +362,9 @@ export class Lexer {
         }
       } else if (state === 31) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x67) ||
-          (ch >= 0x69 && ch <= 0x71) ||
-          (ch >= 0x73 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x67 || ch >= 0x69 && ch <= 0x71 ||
+          ch >= 0x73 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x68) {
@@ -413,11 +377,8 @@ export class Lexer {
         }
       } else if (state === 32) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x67) ||
-          (ch >= 0x69 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x67 || ch >= 0x69 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x68) {
@@ -428,11 +389,8 @@ export class Lexer {
         }
       } else if (state === 33) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x68) ||
-          (ch >= 0x6a && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x68 || ch >= 0x6a && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x69) {
@@ -457,10 +415,8 @@ export class Lexer {
         }
       } else if (state === 39) {
         while (
-          (ch >= 0x00 && ch <= 0x09) ||
-          (ch >= 0x0b && ch <= 0x0c) ||
-          (ch >= 0x0e && ch <= 0x3e) ||
-          (ch >= 0x40 && ch <= 0xffff)
+          ch >= 0x00 && ch <= 0x09 || ch >= 0x0b && ch <= 0x0c ||
+          ch >= 0x0e && ch <= 0x3e || ch >= 0x40 && ch <= 0xffff
         ) {
           this.index++;
           ch = this.index < length ? input.charCodeAt(this.index) : -1;
@@ -489,10 +445,8 @@ export class Lexer {
         }
       } else if (state === 44) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x62 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x62 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x61) {
@@ -503,11 +457,8 @@ export class Lexer {
         }
       } else if (state === 45) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6d) ||
-          (ch >= 0x6f && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x6d || ch >= 0x6f && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x6e) {
@@ -518,11 +469,8 @@ export class Lexer {
         }
       } else if (state === 46) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x65) ||
-          (ch >= 0x67 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x65 || ch >= 0x67 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x66) {
@@ -533,11 +481,8 @@ export class Lexer {
         }
       } else if (state === 47) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x72) ||
-          (ch >= 0x74 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x72 || ch >= 0x74 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x73) {
@@ -548,11 +493,8 @@ export class Lexer {
         }
       } else if (state === 48) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6f) ||
-          (ch >= 0x71 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x6f || ch >= 0x71 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x70) {
@@ -563,11 +505,8 @@ export class Lexer {
         }
       } else if (state === 49) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6b) ||
-          (ch >= 0x6d && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x6b || ch >= 0x6d && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x6c) {
@@ -578,11 +517,8 @@ export class Lexer {
         }
       } else if (state === 50) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x71) ||
-          (ch >= 0x73 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x71 || ch >= 0x73 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x72) {
@@ -593,11 +529,8 @@ export class Lexer {
         }
       } else if (state === 51) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6d) ||
-          (ch >= 0x6f && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x6d || ch >= 0x6f && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x6e) {
@@ -608,10 +541,8 @@ export class Lexer {
         }
       } else if (state === 52) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
@@ -620,11 +551,8 @@ export class Lexer {
         }
       } else if (state === 53) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6f) ||
-          (ch >= 0x71 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x6f || ch >= 0x71 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x70) {
@@ -635,11 +563,8 @@ export class Lexer {
         }
       } else if (state === 54) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x73) ||
-          (ch >= 0x75 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x73 || ch >= 0x75 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x74) {
@@ -650,11 +575,8 @@ export class Lexer {
         }
       } else if (state === 55) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x76) ||
-          (ch >= 0x78 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x76 || ch >= 0x78 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x77) {
@@ -665,11 +587,8 @@ export class Lexer {
         }
       } else if (state === 56) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6b) ||
-          (ch >= 0x6d && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x6b || ch >= 0x6d && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x6c) {
@@ -680,11 +599,8 @@ export class Lexer {
         }
       } else if (state === 57) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x73) ||
-          (ch >= 0x75 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x73 || ch >= 0x75 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x74) {
@@ -695,11 +611,8 @@ export class Lexer {
         }
       } else if (state === 58) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x68) ||
-          (ch >= 0x6a && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x68 || ch >= 0x6a && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x69) {
@@ -710,11 +623,8 @@ export class Lexer {
         }
       } else if (state === 59) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x74) ||
-          (ch >= 0x76 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x74 || ch >= 0x76 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x75) {
@@ -725,11 +635,8 @@ export class Lexer {
         }
       } else if (state === 60) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x68) ||
-          (ch >= 0x6a && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x68 || ch >= 0x6a && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x69) {
@@ -740,11 +647,8 @@ export class Lexer {
         }
       } else if (state === 61) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x64) ||
-          (ch >= 0x66 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x64 || ch >= 0x66 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x65) {
@@ -759,11 +663,9 @@ export class Lexer {
           ch = this.index < length ? input.charCodeAt(this.index) : -1;
         }
         if (
-          (ch >= 0x00 && ch <= 0x09) ||
-          (ch >= 0x0b && ch <= 0x0c) ||
-          (ch >= 0x0e && ch <= 0x39) ||
-          (ch >= 0x3b && ch <= 0x3e) ||
-          (ch >= 0x40 && ch <= 0xffff)
+          ch >= 0x00 && ch <= 0x09 || ch >= 0x0b && ch <= 0x0c ||
+          ch >= 0x0e && ch <= 0x39 || ch >= 0x3b && ch <= 0x3e ||
+          ch >= 0x40 && ch <= 0xffff
         ) {
           this.state = 39;
         } else if (ch === 0x3a) {
@@ -783,11 +685,8 @@ export class Lexer {
         return this.emit('NUMBER', this.index, input);
       } else if (state === 67) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x72) ||
-          (ch >= 0x74 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x72 || ch >= 0x74 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x73) {
@@ -798,11 +697,8 @@ export class Lexer {
         }
       } else if (state === 68) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x72) ||
-          (ch >= 0x75 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x72 || ch >= 0x75 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x73) {
@@ -815,10 +711,8 @@ export class Lexer {
         }
       } else if (state === 69) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x62 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x62 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x61) {
@@ -829,11 +723,8 @@ export class Lexer {
         }
       } else if (state === 70) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x64) ||
-          (ch >= 0x66 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x64 || ch >= 0x66 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x65) {
@@ -844,11 +735,8 @@ export class Lexer {
         }
       } else if (state === 71) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6e) ||
-          (ch >= 0x70 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x6e || ch >= 0x70 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x6f) {
@@ -859,11 +747,8 @@ export class Lexer {
         }
       } else if (state === 72) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x72) ||
-          (ch >= 0x74 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x72 || ch >= 0x74 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x73) {
@@ -874,10 +759,8 @@ export class Lexer {
         }
       } else if (state === 73) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
@@ -886,11 +769,8 @@ export class Lexer {
         }
       } else if (state === 74) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x62) ||
-          (ch >= 0x64 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x62 || ch >= 0x64 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x63) {
@@ -901,11 +781,8 @@ export class Lexer {
         }
       } else if (state === 75) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6e) ||
-          (ch >= 0x70 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x6e || ch >= 0x70 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x6f) {
@@ -916,10 +793,8 @@ export class Lexer {
         }
       } else if (state === 76) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
@@ -928,10 +803,8 @@ export class Lexer {
         }
       } else if (state === 77) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
@@ -940,11 +813,8 @@ export class Lexer {
         }
       } else if (state === 78) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6b) ||
-          (ch >= 0x6d && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x6b || ch >= 0x6d && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x6c) {
@@ -955,11 +825,8 @@ export class Lexer {
         }
       } else if (state === 79) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x74) ||
-          (ch >= 0x76 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x74 || ch >= 0x76 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x75) {
@@ -970,11 +837,8 @@ export class Lexer {
         }
       } else if (state === 80) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x72) ||
-          (ch >= 0x74 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x72 || ch >= 0x74 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x73) {
@@ -985,11 +849,8 @@ export class Lexer {
         }
       } else if (state === 81) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x64) ||
-          (ch >= 0x66 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x64 || ch >= 0x66 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x65) {
@@ -1000,11 +861,8 @@ export class Lexer {
         }
       } else if (state === 82) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6b) ||
-          (ch >= 0x6d && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x6b || ch >= 0x6d && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x6c) {
@@ -1015,11 +873,8 @@ export class Lexer {
         }
       } else if (state === 83) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6b) ||
-          (ch >= 0x6d && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x6b || ch >= 0x6d && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x6c) {
@@ -1032,10 +887,8 @@ export class Lexer {
         if (ch === 0x0a) {
           this.state = 2;
         } else if (
-          (ch >= 0x00 && ch <= 0x09) ||
-          (ch >= 0x0b && ch <= 0x0c) ||
-          (ch >= 0x0e && ch <= 0x3e) ||
-          (ch >= 0x40 && ch <= 0xffff)
+          ch >= 0x00 && ch <= 0x09 || ch >= 0x0b && ch <= 0x0c ||
+          ch >= 0x0e && ch <= 0x3e || ch >= 0x40 && ch <= 0xffff
         ) {
           this.state = 39;
         } else if (ch === 0x3f) {
@@ -1050,11 +903,8 @@ export class Lexer {
         }
       } else if (state === 85) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x72) ||
-          (ch >= 0x74 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x72 || ch >= 0x74 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x73) {
@@ -1065,11 +915,8 @@ export class Lexer {
         }
       } else if (state === 86) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x73) ||
-          (ch >= 0x75 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x73 || ch >= 0x75 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x74) {
@@ -1080,11 +927,8 @@ export class Lexer {
         }
       } else if (state === 87) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x68) ||
-          (ch >= 0x6a && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x68 || ch >= 0x6a && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x69) {
@@ -1095,11 +939,8 @@ export class Lexer {
         }
       } else if (state === 88) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x74) ||
-          (ch >= 0x76 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x74 || ch >= 0x76 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x75) {
@@ -1110,10 +951,8 @@ export class Lexer {
         }
       } else if (state === 89) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
@@ -1122,11 +961,8 @@ export class Lexer {
         }
       } else if (state === 90) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x71) ||
-          (ch >= 0x73 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x71 || ch >= 0x73 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x72) {
@@ -1137,11 +973,8 @@ export class Lexer {
         }
       } else if (state === 91) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x64) ||
-          (ch >= 0x66 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x64 || ch >= 0x66 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x65) {
@@ -1152,11 +985,8 @@ export class Lexer {
         }
       } else if (state === 92) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x73) ||
-          (ch >= 0x75 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x73 || ch >= 0x75 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x74) {
@@ -1167,11 +997,8 @@ export class Lexer {
         }
       } else if (state === 93) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x71) ||
-          (ch >= 0x73 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x71 || ch >= 0x73 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x72) {
@@ -1182,10 +1009,8 @@ export class Lexer {
         }
       } else if (state === 94) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
@@ -1194,11 +1019,8 @@ export class Lexer {
         }
       } else if (state === 95) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x71) ||
-          (ch >= 0x73 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x71 || ch >= 0x73 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x72) {
@@ -1209,10 +1031,8 @@ export class Lexer {
         }
       } else if (state === 96) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
@@ -1221,10 +1041,8 @@ export class Lexer {
         }
       } else if (state === 97) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
@@ -1233,11 +1051,8 @@ export class Lexer {
         }
       } else if (state === 98) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x64) ||
-          (ch >= 0x66 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x64 || ch >= 0x66 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x65) {
@@ -1248,11 +1063,8 @@ export class Lexer {
         }
       } else if (state === 99) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x63) ||
-          (ch >= 0x65 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x63 || ch >= 0x65 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x64) {
@@ -1269,10 +1081,8 @@ export class Lexer {
         }
       } else if (state === 101) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
@@ -1281,10 +1091,8 @@ export class Lexer {
         }
       } else if (state === 102) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
@@ -1293,11 +1101,8 @@ export class Lexer {
         }
       } else if (state === 103) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6d) ||
-          (ch >= 0x6f && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x6d || ch >= 0x6f && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x6e) {
@@ -1308,11 +1113,8 @@ export class Lexer {
         }
       } else if (state === 104) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6b) ||
-          (ch >= 0x6d && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x6b || ch >= 0x6d && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x6c) {
@@ -1323,11 +1125,8 @@ export class Lexer {
         }
       } else if (state === 105) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x73) ||
-          (ch >= 0x75 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x73 || ch >= 0x75 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x74) {
@@ -1338,10 +1137,8 @@ export class Lexer {
         }
       } else if (state === 106) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
@@ -1350,11 +1147,8 @@ export class Lexer {
         }
       } else if (state === 107) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x68) ||
-          (ch >= 0x6a && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x68 || ch >= 0x6a && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x69) {
@@ -1365,11 +1159,8 @@ export class Lexer {
         }
       } else if (state === 108) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x73) ||
-          (ch >= 0x75 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x73 || ch >= 0x75 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x74) {
@@ -1380,11 +1171,8 @@ export class Lexer {
         }
       } else if (state === 109) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6d) ||
-          (ch >= 0x6f && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x6d || ch >= 0x6f && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x6e) {
@@ -1395,10 +1183,8 @@ export class Lexer {
         }
       } else if (state === 110) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
@@ -1407,10 +1193,8 @@ export class Lexer {
         }
       } else if (state === 111) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
@@ -1419,11 +1203,8 @@ export class Lexer {
         }
       } else if (state === 112) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x74) ||
-          (ch >= 0x76 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x74 || ch >= 0x76 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x75) {
@@ -1434,11 +1215,8 @@ export class Lexer {
         }
       } else if (state === 113) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x73) ||
-          (ch >= 0x75 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x73 || ch >= 0x75 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x74) {
@@ -1449,10 +1227,8 @@ export class Lexer {
         }
       } else if (state === 114) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
@@ -1461,11 +1237,8 @@ export class Lexer {
         }
       } else if (state === 115) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6e) ||
-          (ch >= 0x70 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x6e || ch >= 0x70 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x6f) {
@@ -1476,10 +1249,8 @@ export class Lexer {
         }
       } else if (state === 116) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
@@ -1488,10 +1259,8 @@ export class Lexer {
         }
       } else if (state === 117) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
@@ -1500,11 +1269,8 @@ export class Lexer {
         }
       } else if (state === 118) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x64) ||
-          (ch >= 0x66 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x64 || ch >= 0x66 && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x65) {
@@ -1515,10 +1281,8 @@ export class Lexer {
         }
       } else if (state === 119) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
@@ -1527,11 +1291,8 @@ export class Lexer {
         }
       } else if (state === 120) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x6d) ||
-          (ch >= 0x6f && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x6d || ch >= 0x6f && ch <= 0x7a
         ) {
           this.state = 20;
         } else if (ch === 0x6e) {
@@ -1542,10 +1303,8 @@ export class Lexer {
         }
       } else if (state === 121) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
@@ -1554,10 +1313,8 @@ export class Lexer {
         }
       } else if (state === 122) {
         if (
-          (ch >= 0x30 && ch <= 0x39) ||
-          (ch >= 0x41 && ch <= 0x5a) ||
-          ch === 0x5f ||
-          (ch >= 0x61 && ch <= 0x7a)
+          ch >= 0x30 && ch <= 0x39 || ch >= 0x41 && ch <= 0x5a || ch === 0x5f ||
+          ch >= 0x61 && ch <= 0x7a
         ) {
           this.state = 20;
         } else {
