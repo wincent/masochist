@@ -17,6 +17,7 @@ export type {
   ImportStatement,
   MethodDefinition,
   NullValue,
+  ObjectProperty,
   ObjectValue,
   Program,
   PropertyDeclaration,

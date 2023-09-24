@@ -289,6 +289,51 @@ exports[`parseStatement() parser derived from grammar parses a (default) export 
             },
             {
               "expression": {
+                "arguments": [
+                  {
+                    "kind": "Identifier",
+                    "name": "this",
+                  },
+                  {
+                    "kind": "StringValue",
+                    "value": "'contents'",
+                  },
+                  {
+                    "kind": "ObjectValue",
+                    "properties": [
+                      {
+                        "computed": false,
+                        "key": {
+                          "kind": "Identifier",
+                          "name": "value",
+                        },
+                        "kind": "ObjectProperty",
+                        "shorthand": true,
+                        "value": {
+                          "kind": "Identifier",
+                          "name": "value",
+                        },
+                      },
+                    ],
+                  },
+                ],
+                "callee": {
+                  "kind": "MemberExpression",
+                  "object": {
+                    "kind": "Identifier",
+                    "name": "Object",
+                  },
+                  "property": {
+                    "kind": "Identifier",
+                    "name": "defineProperty",
+                  },
+                },
+                "kind": "CallExpression",
+              },
+              "kind": "ExpressionStatement",
+            },
+            {
+              "expression": {
                 "kind": "Identifier",
                 "name": "value",
               },
@@ -592,6 +637,51 @@ exports[`parseStatement() parser persisted to disk parses a (default) export cla
                 },
                 "kind": "CallExpression",
               },
+            },
+            {
+              "expression": {
+                "arguments": [
+                  {
+                    "kind": "Identifier",
+                    "name": "this",
+                  },
+                  {
+                    "kind": "StringValue",
+                    "value": "'contents'",
+                  },
+                  {
+                    "kind": "ObjectValue",
+                    "properties": [
+                      {
+                        "computed": false,
+                        "key": {
+                          "kind": "Identifier",
+                          "name": "value",
+                        },
+                        "kind": "ObjectProperty",
+                        "shorthand": true,
+                        "value": {
+                          "kind": "Identifier",
+                          "name": "value",
+                        },
+                      },
+                    ],
+                  },
+                ],
+                "callee": {
+                  "kind": "MemberExpression",
+                  "object": {
+                    "kind": "Identifier",
+                    "name": "Object",
+                  },
+                  "property": {
+                    "kind": "Identifier",
+                    "name": "defineProperty",
+                  },
+                },
+                "kind": "CallExpression",
+              },
+              "kind": "ExpressionStatement",
             },
             {
               "expression": {

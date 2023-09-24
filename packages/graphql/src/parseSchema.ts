@@ -38,7 +38,7 @@ const actions = [
     },
   },
   {
-    ['$']: {
+    $: {
       kind: 'Accept',
     },
     NAME: {
@@ -51,7 +51,7 @@ const actions = [
       kind: 'Reduce',
       rule: 1,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 1,
     },
@@ -61,7 +61,7 @@ const actions = [
       kind: 'Reduce',
       rule: 2,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 2,
     },
@@ -71,7 +71,7 @@ const actions = [
       kind: 'Reduce',
       rule: 4,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 4,
     },
@@ -81,7 +81,7 @@ const actions = [
       kind: 'Reduce',
       rule: 5,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 5,
     },
@@ -91,7 +91,7 @@ const actions = [
       kind: 'Reduce',
       rule: 6,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 6,
     },
@@ -101,7 +101,7 @@ const actions = [
       kind: 'Reduce',
       rule: 3,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 3,
     },
@@ -166,7 +166,12 @@ const rules = [
 ];
 const EOF = new Token('$', -1, -1, '');
 export default function parseSchema(input) {
-  const stack = [[null, 0]];
+  const stack = [
+    [
+      null,
+      0,
+    ],
+  ];
   const lexer = new Lexer(input);
   let token = lexer.next() || EOF;
 

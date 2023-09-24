@@ -32,6 +32,7 @@
 %token RETURN
 %token SEMICOLON
 %token STRICT_EQUALS
+%token STRING_VALUE
 %token THIS
 %token TRUE
 %token WHILE

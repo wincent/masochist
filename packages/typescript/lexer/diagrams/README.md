@@ -200,6 +200,11 @@
 ![STRICT_EQUALS](./STRICT_EQUALS-dark.svg#gh-dark-mode-only)
 ![STRICT_EQUALS](./STRICT_EQUALS-light.svg#gh-light-mode-only)
 
+## STRING_VALUE
+
+![STRING_VALUE](./STRING_VALUE-dark.svg#gh-dark-mode-only)
+![STRING_VALUE](./STRING_VALUE-light.svg#gh-light-mode-only)
+
 ## THIS
 
 ![THIS](./THIS-dark.svg#gh-dark-mode-only)

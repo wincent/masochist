@@ -11,7 +11,6 @@ import type {
   Statement,
   SwitchCase,
 } from './ast';
-import quote from './quote';
 
 const TAB_WIDTH = 2;
 
@@ -156,25 +155,33 @@ function printExpression(expression: Expression, indent: number): string {
   } else if (expression.kind === 'ObjectValue') {
     return (
       '{\n' +
-      expression.entries
-        .map(([propertyName, value]) => {
-          let property: string;
-          if (typeof propertyName === 'number') {
-            property = propertyName.toString();
-          } else if (/^[a-z_][0-9a-z_]*$/i.test(propertyName)) {
-            property = propertyName;
-          } else {
-            property = `[${quote(propertyName)}]`;
-          }
-          if (value.kind === 'Identifier' && value.name === property) {
-            // Use object property shorthand.
-            return printIndent(indent + 1) + `${property},`;
-          } else {
-            return (
-              printIndent(indent + 1) +
-              `${property}: ${printExpression(value, indent + 1)},`
+      expression.properties
+        .map((property) => {
+          let lhs = printIndent(indent + 1);
+          if (property.computed) {
+            lhs += `[${printExpression(property.key, indent + 1)}]`;
+          } else if (property.shorthand) {
+            if (
+              property.key.kind !== 'Identifier' ||
+              property.value.kind !== 'Identifier' ||
+              property.key.name !== property.value.name
+            ) {
+              throw new Error(
+                'print(): can only print shorthand ObjectProperty with ' +
+                  'matching key/value identifiers',
+              );
+            }
+            return lhs + `${printExpression(property.key, indent + 1)},`;
+          } else if (property.computed && property.shorthand) {
+            throw new Error(
+              'print(): cannot render computed shorthand ObjectProperty',
             );
+          } else {
+            // TODO: if it's a NumberValue, have to render values like `1.1` as
+            // `['1.1']:`.
+            lhs = printExpression(property.key, indent + 1);
           }
+          return lhs + `: ${printExpression(property.value, indent + 1)},`;
         })
         .join('\n') +
       '\n' +
@@ -184,7 +191,7 @@ function printExpression(expression: Expression, indent: number): string {
   } else if (expression.kind === 'RawExpression') {
     return expression.expression;
   } else if (expression.kind === 'StringValue') {
-    return quote(expression.value);
+    return expression.value;
   } else if (expression.kind === 'TernaryExpression') {
     return (
       // TODO: add smarts to use newlines if needed, and only use parens if
@@ -353,6 +360,7 @@ function printStatement(statement: Statement, indent: number): string {
     return lines.join('');
   } else if (statement.kind === 'ImportStatement') {
     // Sort default specifier, if any, to front.
+    // TODO: don't bother with this because dprint may disagree
     const sorted = [...statement.specifiers].sort((a, b) => {
       invariant(
         a.kind !== 'ImportDefaultSpecifier' ||
@@ -389,7 +397,7 @@ function printStatement(statement: Statement, indent: number): string {
     // Indent should always be zero here, but printing it anyway...
     return (
       printIndent(indent) +
-      `import ${specifiers.join(', ')} from ${quote(statement.source.value)};` +
+      `import ${specifiers.join(', ')} from ${statement.source.value};` +
       '\n'
     );
   } else if (statement.kind === 'LabelStatement') {

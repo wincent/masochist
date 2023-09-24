@@ -486,7 +486,7 @@ const actions = [
     },
   },
   {
-    ['$']: {
+    $: {
       kind: 'Accept',
     },
   },
@@ -503,7 +503,7 @@ const actions = [
       kind: 'Shift',
       state: 9,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 1,
     },
@@ -521,7 +521,7 @@ const actions = [
       kind: 'Reduce',
       rule: 2,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 2,
     },
@@ -539,7 +539,7 @@ const actions = [
       kind: 'Reduce',
       rule: 4,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 4,
     },
@@ -557,7 +557,7 @@ const actions = [
       kind: 'Reduce',
       rule: 6,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 6,
     },
@@ -627,7 +627,7 @@ const actions = [
       kind: 'Reduce',
       rule: 8,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 8,
     },
@@ -663,7 +663,7 @@ const actions = [
       kind: 'Reduce',
       rule: 5,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 5,
     },
@@ -687,7 +687,7 @@ const actions = [
       kind: 'Reduce',
       rule: 3,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 3,
     },
@@ -1183,7 +1183,7 @@ const actions = [
       kind: 'Reduce',
       rule: 56,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 56,
     },
@@ -1687,7 +1687,7 @@ const actions = [
       kind: 'Reduce',
       rule: 7,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 7,
     },
@@ -2801,7 +2801,7 @@ const actions = [
       kind: 'Reduce',
       rule: 94,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 94,
     },
@@ -5282,7 +5282,12 @@ const rules = [
 ];
 const EOF = new Token('$', -1, -1, '');
 export default function parseDocument(input) {
-  const stack = [[null, 0]];
+  const stack = [
+    [
+      null,
+      0,
+    ],
+  ];
   const lexer = new Lexer(input);
   let token = lexer.next() || EOF;
 

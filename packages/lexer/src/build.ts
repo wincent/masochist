@@ -134,17 +134,34 @@ export default async function build(
 
     const isIgnored = (state: number) => isAccept(state) === 'IGNORED';
 
-    if (!conditions.length) {
-      // Should only get here for an ignored state.
-      invariant(isIgnored(i));
-      consequent.block.push(
-        ...filterEmpty(
-          ast.comment('IGNORED token.'),
-          ast.statement('this.tokenStart = this.index'),
-          i === START ? ast.empty : ast.statement('this.state = START'),
-          ast.continue(),
+    const ignoreToken = isIgnored(i)
+      ? filterEmpty(
+        ast.comment('IGNORED token.'),
+        ast.statement('this.tokenStart = this.index'),
+        // TODO: deal with these self-transitions as well
+        i === START ? ast.empty : ast.statement('this.state = START'),
+        ast.continue(),
+      )
+      : undefined;
+
+    let name;
+    const acceptToken = (name = isAccept(i))
+      ? filterEmpty(
+        i === START ? ast.empty : ast.statement('this.state = START'),
+        ast.return(
+          ast.call('this.emit', ast.string(name), 'this.index', 'input'),
         ),
-      );
+      )
+      : undefined;
+
+    if (!conditions.length) {
+      if (ignoreToken) {
+        consequent.block.push(...ignoreToken);
+      } else if (acceptToken) {
+        consequent.block.push(...acceptToken);
+      } else {
+        throw new Error('build(): no transitions to follow');
+      }
     } else {
       // Process conditions for self-transitions first, because we want to deal
       // with these in a `while` loop first, before we enter the following `if`.
@@ -161,26 +178,6 @@ export default async function build(
         );
         consequent.block.push(loop);
       }
-
-      const ignoreToken = isIgnored(i)
-        ? filterEmpty(
-          ast.comment('IGNORED token.'),
-          ast.statement('this.tokenStart = this.index'),
-          // TODO: deal with these self-transitions as well
-          i === START ? ast.empty : ast.statement('this.state = START'),
-          ast.continue(),
-        )
-        : undefined;
-
-      let name;
-      const acceptToken = (name = isAccept(i))
-        ? filterEmpty(
-          i === START ? ast.empty : ast.statement('this.state = START'),
-          ast.return(
-            ast.call('this.emit', ast.string(name), 'this.index', 'input'),
-          ),
-        )
-        : undefined;
 
       const remainingConditions = conditions.filter(Boolean).length;
       if (remainingConditions) {

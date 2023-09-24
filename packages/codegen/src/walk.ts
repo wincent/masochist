@@ -36,6 +36,7 @@ import type {
   Node,
   NullValue,
   NumberValue,
+  ObjectProperty,
   ObjectValue,
   Program,
   PropertyDeclaration,
@@ -220,6 +221,8 @@ export default function walk(
     return walkNullValue(node, visitor);
   } else if (node.kind === 'NumberValue') {
     return walkNumberValue(node, visitor);
+  } else if (node.kind === 'ObjectProperty') {
+    return walkObjectProperty(node, visitor);
   } else if (node.kind === 'ObjectValue') {
     return walkObjectValue(node, visitor);
   } else if (node.kind === 'Program') {
@@ -926,6 +929,13 @@ function walkNumberValue(
   _value: NumberValue,
   _visitor: Visitor,
 ): Expression | null | undefined {
+  return undefined; // Unimplemented.
+}
+
+function walkObjectProperty(
+  _value: ObjectProperty,
+  _visitor: Visitor,
+): ObjectProperty | null | undefined {
   return undefined; // Unimplemented.
 }
 

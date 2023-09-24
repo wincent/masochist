@@ -1,6 +1,7 @@
 import {invariant} from '@masochist/common';
 
 import parseStatement from './parseStatement';
+import quote from './quote';
 
 // TODO make a **simple** JS parser with this tooling so I can do a better job
 // of the functions in here that take templates, instead of using regexps.
@@ -9,6 +10,7 @@ export type Node =
   | Argument
   | Expression
   | MethodDefinition
+  | ObjectProperty
   | Program
   | PropertyDeclaration
   | Statement;
@@ -268,7 +270,17 @@ export type NumberValue = {
 
 export type ObjectValue = {
   kind: 'ObjectValue';
-  entries: Array<[number | string, Expression]>;
+  properties: Array<ObjectProperty>;
+};
+
+export type ObjectProperty = {
+  kind: 'ObjectProperty';
+  key: Identifier | NumberValue | Expression;
+  value: Expression;
+  computed: boolean;
+  shorthand: boolean;
+  // TODO: support object methods
+  // method: boolean,
 };
 
 type PrimitiveValue =
@@ -368,7 +380,7 @@ export type UndefinedValue = {
 
 export type StringValue = {
   kind: 'StringValue';
-  value: string;
+  value: string; // `value` must already be quoted/delimited.
 };
 
 export type ThrowStatement = {
@@ -783,7 +795,18 @@ const ast = {
   object(entries: {[key: string]: Expression}): ObjectValue {
     return {
       kind: 'ObjectValue',
-      entries: Object.entries(entries),
+      properties: Object.entries(entries).map(([key, value]) => {
+        return {
+          kind: 'ObjectProperty',
+          key: {
+            kind: 'Identifier',
+            name: key,
+          },
+          value,
+          computed: false,
+          shorthand: false,
+        };
+      }),
     };
   },
 
@@ -909,7 +932,7 @@ const ast = {
   },
 
   string(value: string): StringValue {
-    return {kind: 'StringValue', value};
+    return {kind: 'StringValue', value: quote(value)};
   },
 
   var(lhs: string, rhs: Expression | string | number): AssignmentStatement {

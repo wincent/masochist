@@ -51,6 +51,45 @@ export const YIELD = 'yield';
 export const IDENTIFIER = /[_a-z][_0-9a-z]*/i;
 export const NUMBER = /-?(0|[1-9]\d*)(\.\d+)?/;
 
+// String literals.
+// See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types
+
+const OCTAL_ESCAPE = /\\[0-7][0-7][0-7]/;
+const HEX_ESCAPE = /\\x[0-9A-Fa-f][0-9A-Fa-f]/;
+const UNICODE_ESCAPE = /\\u[0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f]/;
+const EXTENDED_UNICODE_ESCAPE =
+  /\\u\{[0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f][0-9A-Fa-f]\}/;
+const CHARACTER_ESCAPE = /\\./;
+
+const SINGLE_QUOTED_STRING = "'(" +
+  [
+    OCTAL_ESCAPE,
+    HEX_ESCAPE,
+    UNICODE_ESCAPE,
+    EXTENDED_UNICODE_ESCAPE,
+    CHARACTER_ESCAPE,
+    /[^'\\]/,
+  ]
+    .map((regExp) => regExp.toString().slice(1, -1))
+    .join('|') +
+  ")*'";
+const DOUBLE_QUOTED_STRING = '"(' +
+  [
+    OCTAL_ESCAPE,
+    HEX_ESCAPE,
+    UNICODE_ESCAPE,
+    EXTENDED_UNICODE_ESCAPE,
+    CHARACTER_ESCAPE,
+    /[^"\\]/,
+  ]
+    .map((regExp) => regExp.toString().slice(1, -1))
+    .join('|') +
+  ')*"';
+
+export const STRING_VALUE = new RegExp(
+  SINGLE_QUOTED_STRING + '|' + DOUBLE_QUOTED_STRING,
+);
+
 // Ignored.
 export const COMMENT = /\/\/[^\n\r]*(?:\r?\n)?/;
 export const LINE_TERMINATOR = /\n|\r\n|\r/; // Note: we require semicolons.
@@ -103,6 +142,7 @@ export default union({
   REST,
   SEMICOLON,
   STRICT_EQUALS,
+  STRING_VALUE,
 
   IGNORED: ignore(COMMENT, LINE_TERMINATOR, WHITESPACE),
 });

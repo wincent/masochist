@@ -60,7 +60,7 @@ const actions = [
     },
   },
   {
-    ['$']: {
+    $: {
       kind: 'Accept',
     },
     STRICT_EQUALS: {
@@ -73,7 +73,7 @@ const actions = [
       kind: 'Reduce',
       rule: 1,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 1,
     },
@@ -87,7 +87,7 @@ const actions = [
       kind: 'Reduce',
       rule: 2,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 2,
     },
@@ -101,7 +101,7 @@ const actions = [
       kind: 'Reduce',
       rule: 6,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 6,
     },
@@ -115,7 +115,7 @@ const actions = [
       kind: 'Reduce',
       rule: 3,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 3,
     },
@@ -129,7 +129,7 @@ const actions = [
       kind: 'Reduce',
       rule: 7,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 7,
     },
@@ -143,7 +143,7 @@ const actions = [
       kind: 'Reduce',
       rule: 8,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 8,
     },
@@ -195,7 +195,7 @@ const actions = [
       kind: 'Shift',
       state: 9,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 5,
     },
@@ -209,7 +209,7 @@ const actions = [
       kind: 'Reduce',
       rule: 4,
     },
-    ['$']: {
+    $: {
       kind: 'Reduce',
       rule: 4,
     },

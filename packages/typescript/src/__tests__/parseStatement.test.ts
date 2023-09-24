@@ -117,6 +117,49 @@ describe('parseStatement()', async () => {
         expect(parseStatement(input)).toMatchSnapshot();
       });
 
+      it('parses an object with shorthand property', () => {
+        const input = "Object.defineProperty(this, 'contents', {value});";
+        expect(parseStatement(input)).toEqual({
+          kind: 'ExpressionStatement',
+          expression: {
+            kind: 'CallExpression',
+            callee: {
+              kind: 'MemberExpression',
+              object: {
+                kind: 'Identifier',
+                name: 'Object',
+              },
+              property: {
+                kind: 'Identifier',
+                name: 'defineProperty',
+              },
+            },
+            arguments: [{
+              kind: 'Identifier',
+              name: 'this',
+            }, {
+              kind: 'StringValue',
+              value: "'contents'",
+            }, {
+              kind: 'ObjectValue',
+              properties: [{
+                kind: 'ObjectProperty',
+                key: {
+                  kind: 'Identifier',
+                  name: 'value',
+                },
+                value: {
+                  kind: 'Identifier',
+                  name: 'value',
+                },
+                computed: false,
+                shorthand: true,
+              }],
+            }],
+          },
+        });
+      });
+
       it('parses an empty class declaration', () => {
         const input = 'class Foo {}';
         expect(parseStatement(input)).toEqual({
@@ -142,9 +185,10 @@ describe('parseStatement()', async () => {
               this.source = source;
             }
 
-            // Make this a getter. Add rest of real contents to it.
+            // TODO: Make this a getter.
             contents() {
               const value = this.source.slice(this.start, this.end);
+              Object.defineProperty(this, 'contents', {value});
               return value;
             }
           }
