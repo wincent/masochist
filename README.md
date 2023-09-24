@@ -47,7 +47,7 @@ A Make-based interface also exists for some operations:
 
 - `make`: Performs TypeScript build if necessary.
 - `make debug`: Prints debug information for troubleshooting the Makefile dependency graph.
-- `make diagrams`: Builds state machine diagrams in [`packages/graphql/lexer/diagrams/`](packages/graphql/lexer/diagrams/) and [`packages/typescript/lexer/diagrams`](packages/typescript/lexer/diagrams).
+- `make diagrams`: Builds state machine diagrams in [`packages/graphql/lexer/diagrams/`](packages/graphql/lexer/diagrams) and [`packages/typescript/lexer/diagrams/`](packages/typescript/lexer/diagrams).
 - `make docs`: Updates dependency graph images for this README.
 - `make graphql`: Generates static lexer ([`packages/graphql/src/lex.ts`](packages/graphql/src/lex.ts)) and parsers ([`packages/graphql/src/parseDocument.ts`](packages/graphql/src/parseDocument.ts) and [`packages/graphql/src/parseSchema.ts`](packages/graphql/src/parseSchema.ts)).
 - `make typescript`: Generates static TypeScript lexer ([`packages/typescript/src/lex.ts`](packages/typescript/src/lex.ts)) and parsers ([`packages/typescript/src/parseExpression.ts`](packages/typescript/src/parseExpression.ts) and [`packages/typescript/src/parseStatement.ts`](packages/typescript/src/parseStatement.ts)).
