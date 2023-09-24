@@ -5,6 +5,7 @@ import type {
   DocComment,
   Expression,
   FunctionExpression,
+  GetAccessor,
   MethodDefinition,
   Program,
   PropertyDeclaration,
@@ -29,7 +30,9 @@ function printArgument(argument: Argument, _indent: number): string {
 
 function printClass(
   id: string,
-  body: Array<DocComment | MethodDefinition | PropertyDeclaration>,
+  body: Array<
+    DocComment | GetAccessor | MethodDefinition | PropertyDeclaration
+  >,
   indent: number,
 ): string {
   return (
@@ -43,6 +46,12 @@ function printClass(
           } else {
             return '\n' + printStatement(item, indent + 1);
           }
+        } else if (item.kind === 'GetAccessor') {
+          return printIndent(indent + 1) +
+            `get ${item.name}() {\n` +
+            item.body.map((statement) => printStatement(statement, indent + 2))
+              .join('') +
+            printIndent(indent + 1) + '}\n';
         } else if (item.kind === 'MethodDefinition') {
           if (predecessor === 'DocComment' || i === 0) {
             return printMethodDefinition(item, indent + 1);

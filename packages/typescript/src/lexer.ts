@@ -48,6 +48,12 @@ export const TRUE = 'true';
 export const WHILE = 'while';
 export const YIELD = 'yield';
 
+// Special identifiers.
+// See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#identifiers_with_special_meanings
+
+export const GET = 'get';
+// others: arguments, as, async, eval, from, get, of, set
+
 export const IDENTIFIER = /[_a-z][_0-9a-z]*/i;
 export const NUMBER = /-?(0|[1-9]\d*)(\.\d+)?/;
 
@@ -96,7 +102,8 @@ export const LINE_TERMINATOR = /\n|\r\n|\r/; // Note: we require semicolons.
 export const WHITESPACE = /[\t ]+/;
 
 export default union({
-  // Order matters; reserved keywords must come before identifiers.
+  // Order matters; reserved keywords and special identifiers must come before
+  // normal identifiers.
   CLASS,
   CONST,
   CONTINUE,
@@ -106,6 +113,7 @@ export default union({
   FALSE,
   FOR,
   FUNCTION,
+  GET,
   IF,
   IMPORT,
   LET,

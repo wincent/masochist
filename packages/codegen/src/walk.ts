@@ -22,6 +22,7 @@ import type {
   ExpressionStatement,
   FunctionDeclaration,
   FunctionExpression,
+  GetAccessor,
   Identifier,
   IfStatement,
   ImportStatement,
@@ -195,6 +196,8 @@ export default function walk(
     return walkFunctionDeclaration(node, visitor);
   } else if (node.kind === 'FunctionExpression') {
     return walkFunctionExpression(node, visitor);
+  } else if (node.kind === 'GetAccessor') {
+    return walkGetAccessor(node, visitor);
   } else if (node.kind === 'Identifier') {
     return walkIdentifier(node, visitor);
   } else if (node.kind === 'IfStatement') {
@@ -778,8 +781,15 @@ function walkFunctionExpression(
   }
 }
 
+function walkGetAccessor(
+  _accessor: GetAccessor,
+  _visitor: Visitor,
+): GetAccessor | null | undefined {
+  return undefined; // Unimplemented.
+}
+
 function walkIdentifier(
-  _Identifier: Identifier,
+  _identifier: Identifier,
   _visitor: Visitor,
 ): Expression | null | undefined {
   return undefined; // Unimplemented.

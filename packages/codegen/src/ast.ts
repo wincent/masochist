@@ -10,6 +10,7 @@ export type Node =
   | Argument
   | Expression
   | MethodDefinition
+  | GetAccessor
   | ObjectProperty
   | Program
   | PropertyDeclaration
@@ -84,13 +85,17 @@ export type ClassDeclaration = {
   kind: 'ClassDeclaration';
   id: string;
   // TODO: add superclass, if I ever need it
-  body: Array<DocComment | MethodDefinition | PropertyDeclaration>;
+  body: Array<
+    DocComment | GetAccessor | MethodDefinition | PropertyDeclaration
+  >;
 };
 
 export type ClassExpression = {
   kind: 'ClassExpression';
   id: string;
-  body: Array<DocComment | MethodDefinition | PropertyDeclaration>;
+  body: Array<
+    DocComment | GetAccessor | MethodDefinition | PropertyDeclaration
+  >;
 };
 
 // Better AST might be
@@ -169,6 +174,14 @@ export type FunctionExpression = {
   kind: 'FunctionExpression';
   arguments: Array<Argument>;
   name?: string;
+  body: Array<Statement>;
+};
+
+// TODO: instead of name: string, allow Expression (because you can write `get
+// ['somethingComputed']() { ... }` too).
+export type GetAccessor = {
+  kind: 'GetAccessor';
+  name: string;
   body: Array<Statement>;
 };
 
@@ -515,7 +528,9 @@ const ast = {
 
   classExpression(
     id: string,
-    body: Array<DocComment | MethodDefinition | PropertyDeclaration>,
+    body: Array<
+      DocComment | GetAccessor | MethodDefinition | PropertyDeclaration
+    >,
   ): ClassExpression {
     return {
       kind: 'ClassExpression',

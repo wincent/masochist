@@ -13,6 +13,7 @@
 %token FALSE
 %token FOR
 %token FUNCTION
+%token GET
 %token GREATER_THAN
 %token GREATER_THAN_OR_EQUAL
 %token IDENTIFIER
@@ -82,6 +83,12 @@ AssignmentStatement → AssignmentExpression SEMICOLON {
 }
 
 Identifier → IDENTIFIER {
+  $$ = {
+    kind: 'Identifier',
+    name: $1.contents,
+  };
+}
+Identifier → GET {
   $$ = {
     kind: 'Identifier',
     name: $1.contents,
@@ -320,8 +327,19 @@ ClassBodyList → ClassBodyList ClassBodyListItem { $1.push($2); $$ = $1; }
 ClassBodyList → ε { $$ = []; }
 
 # TODO: ClassBodyListItem → DocComment { $$ = $1; }
+ClassBodyListItem → GetAccessor { $$ = $1; }
 ClassBodyListItem → MethodDefinition { $$ = $1; }
 ClassBodyListItem → PropertyDeclaration { $$ = $1; }
+
+GetAccessor → GET Identifier OPENING_PAREN CLOSING_PAREN OPENING_BRACE
+    StatementList
+  CLOSING_BRACE {
+    $$ = {
+      kind: 'GetAccessor',
+      name: $2.name,
+      body: $6,
+    };
+  }
 
 # TODO: support computed property names as well
 # TODO: support return type annotations

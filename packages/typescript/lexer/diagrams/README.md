@@ -100,6 +100,11 @@
 ![FUNCTION](./FUNCTION-dark.svg#gh-dark-mode-only)
 ![FUNCTION](./FUNCTION-light.svg#gh-light-mode-only)
 
+## GET
+
+![GET](./GET-dark.svg#gh-dark-mode-only)
+![GET](./GET-light.svg#gh-light-mode-only)
+
 ## GREATER_THAN
 
 ![GREATER_THAN](./GREATER_THAN-dark.svg#gh-dark-mode-only)

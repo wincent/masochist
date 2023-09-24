@@ -226,122 +226,115 @@ exports[`parseStatement() parser derived from grammar parses a (default) export 
         },
       },
       {
-        "key": {
-          "kind": "Identifier",
-          "name": "contents",
-        },
-        "kind": "MethodDefinition",
-        "value": {
-          "arguments": [],
-          "body": [
-            {
-              "binding": "const",
-              "kind": "AssignmentStatement",
-              "lhs": {
-                "kind": "Identifier",
-                "name": "value",
-              },
-              "rhs": {
-                "arguments": [
-                  {
-                    "kind": "MemberExpression",
-                    "object": {
-                      "kind": "Identifier",
-                      "name": "this",
-                    },
-                    "property": {
-                      "kind": "Identifier",
-                      "name": "start",
-                    },
-                  },
-                  {
-                    "kind": "MemberExpression",
-                    "object": {
-                      "kind": "Identifier",
-                      "name": "this",
-                    },
-                    "property": {
-                      "kind": "Identifier",
-                      "name": "end",
-                    },
-                  },
-                ],
-                "callee": {
+        "body": [
+          {
+            "binding": "const",
+            "kind": "AssignmentStatement",
+            "lhs": {
+              "kind": "Identifier",
+              "name": "value",
+            },
+            "rhs": {
+              "arguments": [
+                {
                   "kind": "MemberExpression",
                   "object": {
-                    "kind": "MemberExpression",
-                    "object": {
-                      "kind": "Identifier",
-                      "name": "this",
-                    },
-                    "property": {
-                      "kind": "Identifier",
-                      "name": "source",
-                    },
-                  },
-                  "property": {
-                    "kind": "Identifier",
-                    "name": "slice",
-                  },
-                },
-                "kind": "CallExpression",
-              },
-            },
-            {
-              "expression": {
-                "arguments": [
-                  {
                     "kind": "Identifier",
                     "name": "this",
                   },
-                  {
-                    "kind": "StringValue",
-                    "value": "'contents'",
+                  "property": {
+                    "kind": "Identifier",
+                    "name": "start",
                   },
-                  {
-                    "kind": "ObjectValue",
-                    "properties": [
-                      {
-                        "computed": false,
-                        "key": {
-                          "kind": "Identifier",
-                          "name": "value",
-                        },
-                        "kind": "ObjectProperty",
-                        "shorthand": true,
-                        "value": {
-                          "kind": "Identifier",
-                          "name": "value",
-                        },
-                      },
-                    ],
-                  },
-                ],
-                "callee": {
+                },
+                {
                   "kind": "MemberExpression",
                   "object": {
                     "kind": "Identifier",
-                    "name": "Object",
+                    "name": "this",
                   },
                   "property": {
                     "kind": "Identifier",
-                    "name": "defineProperty",
+                    "name": "end",
                   },
                 },
-                "kind": "CallExpression",
+              ],
+              "callee": {
+                "kind": "MemberExpression",
+                "object": {
+                  "kind": "MemberExpression",
+                  "object": {
+                    "kind": "Identifier",
+                    "name": "this",
+                  },
+                  "property": {
+                    "kind": "Identifier",
+                    "name": "source",
+                  },
+                },
+                "property": {
+                  "kind": "Identifier",
+                  "name": "slice",
+                },
               },
-              "kind": "ExpressionStatement",
+              "kind": "CallExpression",
             },
-            {
-              "expression": {
-                "kind": "Identifier",
-                "name": "value",
+          },
+          {
+            "expression": {
+              "arguments": [
+                {
+                  "kind": "Identifier",
+                  "name": "this",
+                },
+                {
+                  "kind": "StringValue",
+                  "value": "'contents'",
+                },
+                {
+                  "kind": "ObjectValue",
+                  "properties": [
+                    {
+                      "computed": false,
+                      "key": {
+                        "kind": "Identifier",
+                        "name": "value",
+                      },
+                      "kind": "ObjectProperty",
+                      "shorthand": true,
+                      "value": {
+                        "kind": "Identifier",
+                        "name": "value",
+                      },
+                    },
+                  ],
+                },
+              ],
+              "callee": {
+                "kind": "MemberExpression",
+                "object": {
+                  "kind": "Identifier",
+                  "name": "Object",
+                },
+                "property": {
+                  "kind": "Identifier",
+                  "name": "defineProperty",
+                },
               },
-              "kind": "ReturnStatement",
+              "kind": "CallExpression",
             },
-          ],
-          "kind": "FunctionExpression",
-        },
+            "kind": "ExpressionStatement",
+          },
+          {
+            "expression": {
+              "kind": "Identifier",
+              "name": "value",
+            },
+            "kind": "ReturnStatement",
+          },
+        ],
+        "kind": "GetAccessor",
+        "name": "contents",
       },
     ],
     "id": "Token",
@@ -577,122 +570,115 @@ exports[`parseStatement() parser persisted to disk parses a (default) export cla
         },
       },
       {
-        "key": {
-          "kind": "Identifier",
-          "name": "contents",
-        },
-        "kind": "MethodDefinition",
-        "value": {
-          "arguments": [],
-          "body": [
-            {
-              "binding": "const",
-              "kind": "AssignmentStatement",
-              "lhs": {
-                "kind": "Identifier",
-                "name": "value",
-              },
-              "rhs": {
-                "arguments": [
-                  {
-                    "kind": "MemberExpression",
-                    "object": {
-                      "kind": "Identifier",
-                      "name": "this",
-                    },
-                    "property": {
-                      "kind": "Identifier",
-                      "name": "start",
-                    },
-                  },
-                  {
-                    "kind": "MemberExpression",
-                    "object": {
-                      "kind": "Identifier",
-                      "name": "this",
-                    },
-                    "property": {
-                      "kind": "Identifier",
-                      "name": "end",
-                    },
-                  },
-                ],
-                "callee": {
+        "body": [
+          {
+            "binding": "const",
+            "kind": "AssignmentStatement",
+            "lhs": {
+              "kind": "Identifier",
+              "name": "value",
+            },
+            "rhs": {
+              "arguments": [
+                {
                   "kind": "MemberExpression",
                   "object": {
-                    "kind": "MemberExpression",
-                    "object": {
-                      "kind": "Identifier",
-                      "name": "this",
-                    },
-                    "property": {
-                      "kind": "Identifier",
-                      "name": "source",
-                    },
-                  },
-                  "property": {
-                    "kind": "Identifier",
-                    "name": "slice",
-                  },
-                },
-                "kind": "CallExpression",
-              },
-            },
-            {
-              "expression": {
-                "arguments": [
-                  {
                     "kind": "Identifier",
                     "name": "this",
                   },
-                  {
-                    "kind": "StringValue",
-                    "value": "'contents'",
+                  "property": {
+                    "kind": "Identifier",
+                    "name": "start",
                   },
-                  {
-                    "kind": "ObjectValue",
-                    "properties": [
-                      {
-                        "computed": false,
-                        "key": {
-                          "kind": "Identifier",
-                          "name": "value",
-                        },
-                        "kind": "ObjectProperty",
-                        "shorthand": true,
-                        "value": {
-                          "kind": "Identifier",
-                          "name": "value",
-                        },
-                      },
-                    ],
-                  },
-                ],
-                "callee": {
+                },
+                {
                   "kind": "MemberExpression",
                   "object": {
                     "kind": "Identifier",
-                    "name": "Object",
+                    "name": "this",
                   },
                   "property": {
                     "kind": "Identifier",
-                    "name": "defineProperty",
+                    "name": "end",
                   },
                 },
-                "kind": "CallExpression",
+              ],
+              "callee": {
+                "kind": "MemberExpression",
+                "object": {
+                  "kind": "MemberExpression",
+                  "object": {
+                    "kind": "Identifier",
+                    "name": "this",
+                  },
+                  "property": {
+                    "kind": "Identifier",
+                    "name": "source",
+                  },
+                },
+                "property": {
+                  "kind": "Identifier",
+                  "name": "slice",
+                },
               },
-              "kind": "ExpressionStatement",
+              "kind": "CallExpression",
             },
-            {
-              "expression": {
-                "kind": "Identifier",
-                "name": "value",
+          },
+          {
+            "expression": {
+              "arguments": [
+                {
+                  "kind": "Identifier",
+                  "name": "this",
+                },
+                {
+                  "kind": "StringValue",
+                  "value": "'contents'",
+                },
+                {
+                  "kind": "ObjectValue",
+                  "properties": [
+                    {
+                      "computed": false,
+                      "key": {
+                        "kind": "Identifier",
+                        "name": "value",
+                      },
+                      "kind": "ObjectProperty",
+                      "shorthand": true,
+                      "value": {
+                        "kind": "Identifier",
+                        "name": "value",
+                      },
+                    },
+                  ],
+                },
+              ],
+              "callee": {
+                "kind": "MemberExpression",
+                "object": {
+                  "kind": "Identifier",
+                  "name": "Object",
+                },
+                "property": {
+                  "kind": "Identifier",
+                  "name": "defineProperty",
+                },
               },
-              "kind": "ReturnStatement",
+              "kind": "CallExpression",
             },
-          ],
-          "kind": "FunctionExpression",
-        },
+            "kind": "ExpressionStatement",
+          },
+          {
+            "expression": {
+              "kind": "Identifier",
+              "name": "value",
+            },
+            "kind": "ReturnStatement",
+          },
+        ],
+        "kind": "GetAccessor",
+        "name": "contents",
       },
     ],
     "id": "Token",

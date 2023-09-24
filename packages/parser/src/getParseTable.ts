@@ -1,6 +1,6 @@
 import {invariant} from '@masochist/common';
 
-import {RIGHTWARDS_ARROW} from './Constants';
+import {EPSILON, RIGHTWARDS_ARROW} from './Constants';
 import extendedGrammarForItemSets from './extendedGrammarForItemSets';
 import getAugmentedGrammar from './getAugmentedGrammar';
 import getFollowSets from './getFollowSets';
@@ -132,17 +132,19 @@ export default function getParseTable(
       const symbol = (follow ?? '-1/$/-1').split('/')[1];
       const action = actions[symbol];
       if (action) {
-        const conflictMessage =
-          `${action.kind}/Reduce conflict - existing ${action.kind} (${
+        let conflictMessage =
+          `getParseTable(): ${action.kind}/Reduce conflict; existing ${action.kind} (${
             action.kind === 'Reduce'
               ? action.rule
               : action.kind === 'Shift'
               ? action.state
               : 'n/a'
-          }) for state ${itemSet}, symbol ${symbol} ` +
-          `processing rule: ${lhs} ${RIGHTWARDS_ARROW} ${rhs.join(' ')}`;
+          }) for state ${itemSet}\n  Symbol ${symbol}\n` +
+          `  Rule ${lhs} ${RIGHTWARDS_ARROW} ${
+            rhs.length ? rhs.join(' ') : EPSILON
+          }`;
         if (action.kind === 'Accept') {
-          throw new Error(`getParseTable(): ${conflictMessage}`);
+          throw new Error(conflictMessage);
         } else if (action.kind === 'Shift') {
           const token = tokens.get(symbol);
           if (token?.precedence && rule.precedence) {
@@ -160,15 +162,24 @@ export default function getParseTable(
             // See:
             // - https://www.ibm.com/docs/en/zos/2.2.0?topic=ambiguities-rules-help-remove
             // - https://www.gnu.org/software/bison/manual/bison.html#Shift_002fReduce
+            conflictMessage += '\n  Resolution: preferring existing shift';
             if (!conflictWarnings.has(conflictMessage)) {
-              console.log(`[warning] getParseTable(): ${conflictMessage}`);
+              console.log(conflictMessage);
               conflictWarnings.add(conflictMessage);
             }
           }
         } else if (action.kind === 'Reduce' && action.rule !== ruleNumber) {
           // Warn, but prefer rule that appears earlier in grammar.
+          action.rule = Math.min(action.rule, ruleNumber);
+          const rule = extendedGrammar.rules[action.rule];
+          const lhs = rule.lhs.split('/')[1];
+          const rhs = rule.rhs.map((symbol) => symbol.split('/')[1]);
+          conflictMessage +=
+            `\n  Resolution: preferring earlier rule ${lhs} ${RIGHTWARDS_ARROW} ${
+              rhs.length ? rhs.join(' ') : EPSILON
+            }`;
           if (!conflictWarnings.has(conflictMessage)) {
-            console.log(`[warning] getParseTable(): ${conflictMessage}`);
+            console.log(conflictMessage);
             conflictWarnings.add(conflictMessage);
           }
         }

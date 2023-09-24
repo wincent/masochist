@@ -185,8 +185,7 @@ describe('parseStatement()', async () => {
               this.source = source;
             }
 
-            // TODO: Make this a getter.
-            contents() {
+            get contents() {
               const value = this.source.slice(this.start, this.end);
               Object.defineProperty(this, 'contents', {value});
               return value;
@@ -195,6 +194,54 @@ describe('parseStatement()', async () => {
         `;
         expect(parseStatement(input)).toMatchSnapshot();
         // TODO: add rest of Token.ts example here ^^^
+      });
+
+      it('recognizes "get" as an identifier in non-accessor positions', () => {
+        expect(parseStatement('let get = true;')).toEqual({
+          kind: 'AssignmentStatement',
+          binding: 'let',
+          lhs: {
+            kind: 'Identifier',
+            name: 'get',
+          },
+          rhs: {
+            kind: 'BooleanValue',
+            value: true,
+          },
+        });
+
+        // Hard mode: `get` in a place you'd normally expect to see an accessor.
+        expect(parseStatement(`
+          class Foo {
+            get(stuff) {
+              return stuff;
+            }
+          }
+        `)).toEqual({
+          kind: 'ClassDeclaration',
+          id: 'Foo',
+          body: [{
+            kind: 'MethodDefinition',
+            key: {
+              kind: 'Identifier',
+              name: 'get',
+            },
+            value: {
+              kind: 'FunctionExpression',
+              arguments: [{
+                kind: 'Argument',
+                name: 'stuff',
+              }],
+              body: [{
+                kind: 'ReturnStatement',
+                expression: {
+                  kind: 'Identifier',
+                  name: 'stuff',
+                },
+              }],
+            },
+          }],
+        });
       });
 
       it('implements right-associativity for chained assignment expressions', () => {
