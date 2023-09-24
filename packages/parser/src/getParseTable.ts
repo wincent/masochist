@@ -1,10 +1,10 @@
 import {invariant} from '@masochist/common';
 
-import {EPSILON, RIGHTWARDS_ARROW} from './Constants';
 import extendedGrammarForItemSets from './extendedGrammarForItemSets';
 import getAugmentedGrammar from './getAugmentedGrammar';
 import getFollowSets from './getFollowSets';
 import keyForRule from './keyForRule';
+import stringifyRule from './stringifyRule';
 
 import type {TransitionTable} from './itemSetsToTransitionTable';
 import type {Grammar, ItemSet} from './types';
@@ -140,9 +140,7 @@ export default function getParseTable(
               ? action.state
               : 'n/a'
           }) for state ${itemSet}\n  Symbol ${symbol}\n` +
-          `  Rule ${lhs} ${RIGHTWARDS_ARROW} ${
-            rhs.length ? rhs.join(' ') : EPSILON
-          }`;
+          `  Rule ${stringifyRule({lhs, rhs})}`;
         if (action.kind === 'Accept') {
           throw new Error(conflictMessage);
         } else if (action.kind === 'Shift') {
@@ -174,10 +172,9 @@ export default function getParseTable(
           const rule = extendedGrammar.rules[action.rule];
           const lhs = rule.lhs.split('/')[1];
           const rhs = rule.rhs.map((symbol) => symbol.split('/')[1]);
-          conflictMessage +=
-            `\n  Resolution: preferring earlier rule ${lhs} ${RIGHTWARDS_ARROW} ${
-              rhs.length ? rhs.join(' ') : EPSILON
-            }`;
+          conflictMessage += `\n  Resolution: preferring earlier rule ${
+            stringifyRule({lhs, rhs})
+          }`;
           if (!conflictWarnings.has(conflictMessage)) {
             console.log(conflictMessage);
             conflictWarnings.add(conflictMessage);

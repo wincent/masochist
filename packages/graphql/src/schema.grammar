@@ -43,4 +43,4 @@ TypeDefinition → ScalarTypeDefinition { $$ = $1; }
 # TODO: finish this
 # (decide whether to lex `scalar` etc separately, or do what I do in the
 # document.grammar for `OperationType`)
-ScalarTypeDefinition → NAME
+ScalarTypeDefinition → NAME { $$ = $1; }

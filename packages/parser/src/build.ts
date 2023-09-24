@@ -1,9 +1,11 @@
 import {ast} from '@masochist/codegen';
 import {StringScanner, objectMap} from '@masochist/common';
+import assert from 'node:assert';
+import stringifyRule from './stringifyRule';
 
 import type {Program, Statement} from '@masochist/codegen';
 import type {ParseTable} from './getParseTable';
-import type {Grammar} from './types';
+import type {Grammar, Rule} from './types';
 
 type Options = {
   buildCommand?: string;
@@ -14,12 +16,40 @@ export type Stats = {
   [buildStat: string]: number;
 };
 
+// A Grammar subtype representing a grammar that has semantic actions for all
+// rules. A grammar must be of this type in order for us to build a static
+// parser for it.
+type StaticGrammar = Omit<Grammar, 'rules'> & {rules: Array<StaticRule>};
+type StaticRule = Omit<Rule, 'action'> & {action: NonNullable<Rule['action']>};
+
+function assertStaticGrammar(
+  grammar: Grammar,
+): asserts grammar is StaticGrammar {
+  for (const rule of grammar.rules) {
+    if (!rule.action) {
+      throw new Error(
+        `assertStaticGrammar(): supplied grammar is not static (no semantic action provided for rule: ${
+          stringifyRule(rule)
+        })`,
+      );
+    }
+  }
+}
+
 export default function build(
   grammar: Grammar,
   table: ParseTable,
   stats: Stats = {},
   options: Options = {},
 ): Program {
+  assert(grammar.rules.length);
+
+  // The first rule in an augmented grammar doesn't actually produce anything.
+  // Naughtily mutate the passed in grammar to make all rules StaticRule.
+  grammar.rules[0].action = '{ /* dummy placeholder */ }';
+
+  assertStaticGrammar(grammar);
+
   stats['grammarRules'] = grammar.rules.length;
   stats['parserStates'] = table.length;
   stats['semanticActions'] = 0;
@@ -144,9 +174,7 @@ export default function build(
           return ast.object({
             production: ast.string(rule.lhs),
             pop: ast.number(rule.rhs.length),
-            action: i === 0
-              ? ast.rawExpression('() => {} /* dummy placeholder */')
-              : ast.identifier(`r${i}`),
+            action: ast.identifier(`r${i}`),
           });
         }),
       ),
@@ -194,12 +222,7 @@ export default function build(
                 }
                 const [, next] = stack[stack.length - 1];
                 const target = gotos[next][production];
-                if (code) {
-                  stack.push([code(...popped), target]);
-                } else {
-                  // TODO: make this a static, not a runtime, check
-                  throw new Error('to use static parser must provide semantic action for every production');
-                }
+                stack.push([code(...popped), target]);
               }
             }
           `),

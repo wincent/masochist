@@ -5,9 +5,9 @@
  * @generated
  */
 import {Lexer, Token} from './lex';
-/**
- * r0: no production
- */
+function r0() {
+  /* dummy placeholder */
+}
 function r1($1) {
   return {
     kind: 'TYPE_SYSTEM_DOCUMENT',
@@ -27,9 +27,9 @@ function r4($1) {
 function r5($1) {
   return $1;
 }
-/**
- * r6: no production
- */
+function r6($1) {
+  return $1;
+}
 const actions = [
   {
     NAME: {
@@ -131,7 +131,7 @@ const rules = [
   {
     production: "TypeSystemDocument'",
     pop: 1,
-    action: () => {}, /* dummy placeholder */
+    action: r0,
   },
   {
     production: 'TypeSystemDocument',
@@ -199,14 +199,7 @@ export default function parseSchema(input) {
       }
       const [, next] = stack[stack.length - 1];
       const target = gotos[next][production];
-      if (code) {
-        stack.push([code(...popped), target]);
-      } else {
-        // TODO: make this a static, not a runtime, check
-        throw new Error(
-          'to use static parser must provide semantic action for every production',
-        );
-      }
+      stack.push([code(...popped), target]);
     }
   }
 }

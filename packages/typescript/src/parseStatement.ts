@@ -5,9 +5,9 @@
  * @generated
  */
 import {Lexer, Token} from './lex';
-/**
- * r0: no production
- */
+function r0() {
+  /* dummy placeholder */
+}
 function r1($1) {
   return $1;
 }
@@ -7444,7 +7444,7 @@ const rules = [
   {
     production: "Statement'",
     pop: 1,
-    action: () => {}, /* dummy placeholder */
+    action: r0,
   },
   {
     production: 'Statement',
@@ -7882,14 +7882,7 @@ export default function parseStatement(input) {
       }
       const [, next] = stack[stack.length - 1];
       const target = gotos[next][production];
-      if (code) {
-        stack.push([code(...popped), target]);
-      } else {
-        // TODO: make this a static, not a runtime, check
-        throw new Error(
-          'to use static parser must provide semantic action for every production',
-        );
-      }
+      stack.push([code(...popped), target]);
     }
   }
 }
