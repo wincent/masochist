@@ -194,9 +194,11 @@ export default function build(
         name,
         ['input'],
         [
-          ast.statementV2('const stack = [[null, 0]];'),
-          ast.statementV2('const lexer = new Lexer(input);'),
-          ast.statementV2('let token = lexer.next() || EOF;'),
+          ...ast.statements(`
+            const stack = [[null, 0]];
+            const lexer = new Lexer(input);
+            let token = lexer.next() || EOF;
+          `),
           // TODO: replace rawStatement, line by line...
           ast.rawStatement(`
             while (true) {
@@ -204,7 +206,8 @@ export default function build(
               const action = actions[current][token.name];
 
               if (!action) {
-                throw new Error('syntax error');
+                // TODO: maybe show stack here?
+                throw new Error('syntax error at symbol ' + token.name);
               } if (action.kind === 'Accept') {
                 // Expect initial state + accept state.
                 const [tree] = stack[1];

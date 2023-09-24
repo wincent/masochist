@@ -50,6 +50,10 @@
 %left PLUS MINUS
 %left DOT
 
+StatementList → Statement { $$ = [$1]; }
+StatementList → StatementList Statement { $1.push($2); $$ = $1; }
+StatementList → ε { $$ = []; }
+
 Statement → AssignmentStatement { $$ = $1; }
 Statement → ClassDeclaration { $$ = $1; }
 Statement → ExportDefaultDeclaration { $$ = $1; }
@@ -377,10 +381,6 @@ Argument → Identifier COLON Identifier {
     type: $3.name,
   };
 }
-
-StatementList → Statement { $$ = [$1]; }
-StatementList → StatementList Statement { $1.push($2); $$ = $1; }
-StatementList → ε { $$ = []; }
 
 # TODO: make this support richer `type` values than just Identifier-like ones.
 PropertyDeclaration → Identifier COLON Identifier SEMICOLON {

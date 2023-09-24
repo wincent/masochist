@@ -30,6 +30,7 @@ type Gotos = {
   [nonTerminal: string]: number | null;
 };
 
+// TODO: add stats to this
 export type ParseTable = Array<[Actions, Gotos]>;
 
 /**

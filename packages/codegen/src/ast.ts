@@ -870,12 +870,14 @@ const ast = {
     }
   },
 
-  statementV2(source: string): Statement {
+  statements(source: string): Array<Statement> {
     // TODO: fix types - need to extend our grammar DSL to allow me to write
     // type declarations in it, and annotate productions.
+    // TODO: consider renaming this to `parseStatements()`
     return parseStatement(source) as any;
   },
 
+  // TODO: replace this with `statements()` above
   statement(template: string): Statement {
     // eg. break
     // eg. break foo

@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * vim: set nomodifiable : DO NOT EDIT - edit "build.ts", run "make graphql" instead
+ * vim: set nomodifiable : DO NOT EDIT - edit "build.ts", run "make typescript" instead
  *
  * @generated
  */
@@ -315,7 +315,8 @@ export default function parseExpression(input) {
     const action = actions[current][token.name];
 
     if (!action) {
-      throw new Error('syntax error');
+      // TODO: maybe show stack here?
+      throw new Error('syntax error at symbol ' + token.name);
     }
     if (action.kind === 'Accept') {
       // Expect initial state + accept state.

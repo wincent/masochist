@@ -1,242 +1,184 @@
 // Bun Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`parseStatement() parser derived from grammar parses a const boolean assignment statement 1`] = `
-{
-  "binding": "const",
-  "kind": "AssignmentStatement",
-  "lhs": {
-    "kind": "Identifier",
-    "name": "isFoo",
+[
+  {
+    "binding": "const",
+    "kind": "AssignmentStatement",
+    "lhs": {
+      "kind": "Identifier",
+      "name": "isFoo",
+    },
+    "rhs": {
+      "kind": "BooleanValue",
+      "value": true,
+    },
   },
-  "rhs": {
-    "kind": "BooleanValue",
-    "value": true,
-  },
-}
+]
 `;
 
 exports[`parseStatement() parser derived from grammar parses a let boolean assignment statement 1`] = `
-{
-  "binding": "let",
-  "kind": "AssignmentStatement",
-  "lhs": {
-    "kind": "Identifier",
-    "name": "isFoo",
+[
+  {
+    "binding": "let",
+    "kind": "AssignmentStatement",
+    "lhs": {
+      "kind": "Identifier",
+      "name": "isFoo",
+    },
+    "rhs": {
+      "kind": "BooleanValue",
+      "value": false,
+    },
   },
-  "rhs": {
-    "kind": "BooleanValue",
-    "value": false,
-  },
-}
+]
 `;
 
 exports[`parseStatement() parser derived from grammar parses a const number assignment statement 1`] = `
-{
-  "binding": "const",
-  "kind": "AssignmentStatement",
-  "lhs": {
-    "kind": "Identifier",
-    "name": "isFoo",
+[
+  {
+    "binding": "const",
+    "kind": "AssignmentStatement",
+    "lhs": {
+      "kind": "Identifier",
+      "name": "isFoo",
+    },
+    "rhs": {
+      "base": 10,
+      "kind": "NumberValue",
+      "value": 1,
+    },
   },
-  "rhs": {
-    "base": 10,
-    "kind": "NumberValue",
-    "value": 1,
-  },
-}
+]
 `;
 
 exports[`parseStatement() parser derived from grammar parses a let number assignment statement 1`] = `
-{
-  "binding": "let",
-  "kind": "AssignmentStatement",
-  "lhs": {
-    "kind": "Identifier",
-    "name": "isFoo",
+[
+  {
+    "binding": "let",
+    "kind": "AssignmentStatement",
+    "lhs": {
+      "kind": "Identifier",
+      "name": "isFoo",
+    },
+    "rhs": {
+      "base": 10,
+      "kind": "NumberValue",
+      "value": 2,
+    },
   },
-  "rhs": {
-    "base": 10,
-    "kind": "NumberValue",
-    "value": 2,
-  },
-}
+]
 `;
 
 exports[`parseStatement() parser derived from grammar parses a const nested array assignment 1`] = `
-{
-  "binding": "const",
-  "kind": "AssignmentStatement",
-  "lhs": {
-    "kind": "Identifier",
-    "name": "stack",
+[
+  {
+    "binding": "const",
+    "kind": "AssignmentStatement",
+    "lhs": {
+      "kind": "Identifier",
+      "name": "stack",
+    },
+    "rhs": {
+      "items": [
+        {
+          "items": [
+            {
+              "kind": "NullValue",
+            },
+            {
+              "base": 10,
+              "kind": "NumberValue",
+              "value": 0,
+            },
+          ],
+          "kind": "ArrayValue",
+        },
+      ],
+      "kind": "ArrayValue",
+    },
   },
-  "rhs": {
-    "items": [
-      {
-        "items": [
-          {
-            "kind": "NullValue",
-          },
-          {
-            "base": 10,
-            "kind": "NumberValue",
-            "value": 0,
-          },
-        ],
-        "kind": "ArrayValue",
-      },
-    ],
-    "kind": "ArrayValue",
-  },
-}
+]
 `;
 
 exports[`parseStatement() parser derived from grammar parses a (default) export class declaration 1`] = `
-{
-  "declaration": {
-    "body": [
-      {
-        "kind": "PropertyDeclaration",
-        "name": "name",
-        "type": "string",
-      },
-      {
-        "kind": "PropertyDeclaration",
-        "name": "start",
-        "type": "number",
-      },
-      {
-        "kind": "PropertyDeclaration",
-        "name": "end",
-        "type": "number",
-      },
-      {
-        "kind": "PropertyDeclaration",
-        "name": "source",
-        "type": "string",
-      },
-      {
-        "key": {
-          "kind": "Identifier",
-          "name": "constructor",
+[
+  {
+    "declaration": {
+      "body": [
+        {
+          "kind": "PropertyDeclaration",
+          "name": "name",
+          "type": "string",
         },
-        "kind": "MethodDefinition",
-        "value": {
-          "arguments": [
-            {
-              "kind": "Argument",
-              "name": "name",
-              "type": "string",
-            },
-            {
-              "kind": "Argument",
-              "name": "start",
-              "type": "number",
-            },
-            {
-              "kind": "Argument",
-              "name": "end",
-              "type": "number",
-            },
-            {
-              "kind": "Argument",
-              "name": "source",
-              "type": "string",
-            },
-          ],
-          "body": [
-            {
-              "binding": null,
-              "kind": "AssignmentStatement",
-              "lhs": {
-                "kind": "MemberExpression",
-                "object": {
-                  "kind": "Identifier",
-                  "name": "this",
+        {
+          "kind": "PropertyDeclaration",
+          "name": "start",
+          "type": "number",
+        },
+        {
+          "kind": "PropertyDeclaration",
+          "name": "end",
+          "type": "number",
+        },
+        {
+          "kind": "PropertyDeclaration",
+          "name": "source",
+          "type": "string",
+        },
+        {
+          "key": {
+            "kind": "Identifier",
+            "name": "constructor",
+          },
+          "kind": "MethodDefinition",
+          "value": {
+            "arguments": [
+              {
+                "kind": "Argument",
+                "name": "name",
+                "type": "string",
+              },
+              {
+                "kind": "Argument",
+                "name": "start",
+                "type": "number",
+              },
+              {
+                "kind": "Argument",
+                "name": "end",
+                "type": "number",
+              },
+              {
+                "kind": "Argument",
+                "name": "source",
+                "type": "string",
+              },
+            ],
+            "body": [
+              {
+                "binding": null,
+                "kind": "AssignmentStatement",
+                "lhs": {
+                  "kind": "MemberExpression",
+                  "object": {
+                    "kind": "Identifier",
+                    "name": "this",
+                  },
+                  "property": {
+                    "kind": "Identifier",
+                    "name": "name",
+                  },
                 },
-                "property": {
+                "rhs": {
                   "kind": "Identifier",
                   "name": "name",
                 },
               },
-              "rhs": {
-                "kind": "Identifier",
-                "name": "name",
-              },
-            },
-            {
-              "binding": null,
-              "kind": "AssignmentStatement",
-              "lhs": {
-                "kind": "MemberExpression",
-                "object": {
-                  "kind": "Identifier",
-                  "name": "this",
-                },
-                "property": {
-                  "kind": "Identifier",
-                  "name": "start",
-                },
-              },
-              "rhs": {
-                "kind": "Identifier",
-                "name": "start",
-              },
-            },
-            {
-              "binding": null,
-              "kind": "AssignmentStatement",
-              "lhs": {
-                "kind": "MemberExpression",
-                "object": {
-                  "kind": "Identifier",
-                  "name": "this",
-                },
-                "property": {
-                  "kind": "Identifier",
-                  "name": "end",
-                },
-              },
-              "rhs": {
-                "kind": "Identifier",
-                "name": "end",
-              },
-            },
-            {
-              "binding": null,
-              "kind": "AssignmentStatement",
-              "lhs": {
-                "kind": "MemberExpression",
-                "object": {
-                  "kind": "Identifier",
-                  "name": "this",
-                },
-                "property": {
-                  "kind": "Identifier",
-                  "name": "source",
-                },
-              },
-              "rhs": {
-                "kind": "Identifier",
-                "name": "source",
-              },
-            },
-          ],
-          "kind": "FunctionExpression",
-        },
-      },
-      {
-        "body": [
-          {
-            "binding": "const",
-            "kind": "AssignmentStatement",
-            "lhs": {
-              "kind": "Identifier",
-              "name": "value",
-            },
-            "rhs": {
-              "arguments": [
-                {
+              {
+                "binding": null,
+                "kind": "AssignmentStatement",
+                "lhs": {
                   "kind": "MemberExpression",
                   "object": {
                     "kind": "Identifier",
@@ -247,7 +189,15 @@ exports[`parseStatement() parser derived from grammar parses a (default) export 
                     "name": "start",
                   },
                 },
-                {
+                "rhs": {
+                  "kind": "Identifier",
+                  "name": "start",
+                },
+              },
+              {
+                "binding": null,
+                "kind": "AssignmentStatement",
+                "lhs": {
                   "kind": "MemberExpression",
                   "object": {
                     "kind": "Identifier",
@@ -258,10 +208,15 @@ exports[`parseStatement() parser derived from grammar parses a (default) export 
                     "name": "end",
                   },
                 },
-              ],
-              "callee": {
-                "kind": "MemberExpression",
-                "object": {
+                "rhs": {
+                  "kind": "Identifier",
+                  "name": "end",
+                },
+              },
+              {
+                "binding": null,
+                "kind": "AssignmentStatement",
+                "lhs": {
                   "kind": "MemberExpression",
                   "object": {
                     "kind": "Identifier",
@@ -272,315 +227,314 @@ exports[`parseStatement() parser derived from grammar parses a (default) export 
                     "name": "source",
                   },
                 },
-                "property": {
+                "rhs": {
                   "kind": "Identifier",
-                  "name": "slice",
+                  "name": "source",
                 },
               },
-              "kind": "CallExpression",
-            },
+            ],
+            "kind": "FunctionExpression",
           },
-          {
-            "expression": {
-              "arguments": [
-                {
-                  "kind": "Identifier",
-                  "name": "this",
-                },
-                {
-                  "kind": "StringValue",
-                  "value": "'contents'",
-                },
-                {
-                  "kind": "ObjectValue",
-                  "properties": [
-                    {
-                      "computed": false,
-                      "key": {
-                        "kind": "Identifier",
-                        "name": "value",
-                      },
-                      "kind": "ObjectProperty",
-                      "shorthand": true,
-                      "value": {
-                        "kind": "Identifier",
-                        "name": "value",
-                      },
+        },
+        {
+          "body": [
+            {
+              "binding": "const",
+              "kind": "AssignmentStatement",
+              "lhs": {
+                "kind": "Identifier",
+                "name": "value",
+              },
+              "rhs": {
+                "arguments": [
+                  {
+                    "kind": "MemberExpression",
+                    "object": {
+                      "kind": "Identifier",
+                      "name": "this",
                     },
-                  ],
+                    "property": {
+                      "kind": "Identifier",
+                      "name": "start",
+                    },
+                  },
+                  {
+                    "kind": "MemberExpression",
+                    "object": {
+                      "kind": "Identifier",
+                      "name": "this",
+                    },
+                    "property": {
+                      "kind": "Identifier",
+                      "name": "end",
+                    },
+                  },
+                ],
+                "callee": {
+                  "kind": "MemberExpression",
+                  "object": {
+                    "kind": "MemberExpression",
+                    "object": {
+                      "kind": "Identifier",
+                      "name": "this",
+                    },
+                    "property": {
+                      "kind": "Identifier",
+                      "name": "source",
+                    },
+                  },
+                  "property": {
+                    "kind": "Identifier",
+                    "name": "slice",
+                  },
                 },
-              ],
-              "callee": {
-                "kind": "MemberExpression",
-                "object": {
-                  "kind": "Identifier",
-                  "name": "Object",
-                },
-                "property": {
-                  "kind": "Identifier",
-                  "name": "defineProperty",
-                },
+                "kind": "CallExpression",
               },
-              "kind": "CallExpression",
             },
-            "kind": "ExpressionStatement",
-          },
-          {
-            "expression": {
-              "kind": "Identifier",
-              "name": "value",
+            {
+              "expression": {
+                "arguments": [
+                  {
+                    "kind": "Identifier",
+                    "name": "this",
+                  },
+                  {
+                    "kind": "StringValue",
+                    "value": "'contents'",
+                  },
+                  {
+                    "kind": "ObjectValue",
+                    "properties": [
+                      {
+                        "computed": false,
+                        "key": {
+                          "kind": "Identifier",
+                          "name": "value",
+                        },
+                        "kind": "ObjectProperty",
+                        "shorthand": true,
+                        "value": {
+                          "kind": "Identifier",
+                          "name": "value",
+                        },
+                      },
+                    ],
+                  },
+                ],
+                "callee": {
+                  "kind": "MemberExpression",
+                  "object": {
+                    "kind": "Identifier",
+                    "name": "Object",
+                  },
+                  "property": {
+                    "kind": "Identifier",
+                    "name": "defineProperty",
+                  },
+                },
+                "kind": "CallExpression",
+              },
+              "kind": "ExpressionStatement",
             },
-            "kind": "ReturnStatement",
-          },
-        ],
-        "kind": "GetAccessor",
-        "name": "contents",
-      },
-    ],
-    "id": "Token",
-    "kind": "ClassDeclaration",
+            {
+              "expression": {
+                "kind": "Identifier",
+                "name": "value",
+              },
+              "kind": "ReturnStatement",
+            },
+          ],
+          "kind": "GetAccessor",
+          "name": "contents",
+        },
+      ],
+      "id": "Token",
+      "kind": "ClassDeclaration",
+    },
+    "kind": "ExportDefaultDeclaration",
   },
-  "kind": "ExportDefaultDeclaration",
-}
+]
 `;
 
 exports[`parseStatement() parser persisted to disk parses a const boolean assignment statement 1`] = `
-{
-  "binding": "const",
-  "kind": "AssignmentStatement",
-  "lhs": {
-    "kind": "Identifier",
-    "name": "isFoo",
+[
+  {
+    "binding": "const",
+    "kind": "AssignmentStatement",
+    "lhs": {
+      "kind": "Identifier",
+      "name": "isFoo",
+    },
+    "rhs": {
+      "kind": "BooleanValue",
+      "value": true,
+    },
   },
-  "rhs": {
-    "kind": "BooleanValue",
-    "value": true,
-  },
-}
+]
 `;
 
 exports[`parseStatement() parser persisted to disk parses a let boolean assignment statement 1`] = `
-{
-  "binding": "let",
-  "kind": "AssignmentStatement",
-  "lhs": {
-    "kind": "Identifier",
-    "name": "isFoo",
+[
+  {
+    "binding": "let",
+    "kind": "AssignmentStatement",
+    "lhs": {
+      "kind": "Identifier",
+      "name": "isFoo",
+    },
+    "rhs": {
+      "kind": "BooleanValue",
+      "value": false,
+    },
   },
-  "rhs": {
-    "kind": "BooleanValue",
-    "value": false,
-  },
-}
+]
 `;
 
 exports[`parseStatement() parser persisted to disk parses a const number assignment statement 1`] = `
-{
-  "binding": "const",
-  "kind": "AssignmentStatement",
-  "lhs": {
-    "kind": "Identifier",
-    "name": "isFoo",
+[
+  {
+    "binding": "const",
+    "kind": "AssignmentStatement",
+    "lhs": {
+      "kind": "Identifier",
+      "name": "isFoo",
+    },
+    "rhs": {
+      "base": 10,
+      "kind": "NumberValue",
+      "value": 1,
+    },
   },
-  "rhs": {
-    "base": 10,
-    "kind": "NumberValue",
-    "value": 1,
-  },
-}
+]
 `;
 
 exports[`parseStatement() parser persisted to disk parses a let number assignment statement 1`] = `
-{
-  "binding": "let",
-  "kind": "AssignmentStatement",
-  "lhs": {
-    "kind": "Identifier",
-    "name": "isFoo",
+[
+  {
+    "binding": "let",
+    "kind": "AssignmentStatement",
+    "lhs": {
+      "kind": "Identifier",
+      "name": "isFoo",
+    },
+    "rhs": {
+      "base": 10,
+      "kind": "NumberValue",
+      "value": 2,
+    },
   },
-  "rhs": {
-    "base": 10,
-    "kind": "NumberValue",
-    "value": 2,
-  },
-}
+]
 `;
 
 exports[`parseStatement() parser persisted to disk parses a const nested array assignment 1`] = `
-{
-  "binding": "const",
-  "kind": "AssignmentStatement",
-  "lhs": {
-    "kind": "Identifier",
-    "name": "stack",
+[
+  {
+    "binding": "const",
+    "kind": "AssignmentStatement",
+    "lhs": {
+      "kind": "Identifier",
+      "name": "stack",
+    },
+    "rhs": {
+      "items": [
+        {
+          "items": [
+            {
+              "kind": "NullValue",
+            },
+            {
+              "base": 10,
+              "kind": "NumberValue",
+              "value": 0,
+            },
+          ],
+          "kind": "ArrayValue",
+        },
+      ],
+      "kind": "ArrayValue",
+    },
   },
-  "rhs": {
-    "items": [
-      {
-        "items": [
-          {
-            "kind": "NullValue",
-          },
-          {
-            "base": 10,
-            "kind": "NumberValue",
-            "value": 0,
-          },
-        ],
-        "kind": "ArrayValue",
-      },
-    ],
-    "kind": "ArrayValue",
-  },
-}
+]
 `;
 
 exports[`parseStatement() parser persisted to disk parses a (default) export class declaration 1`] = `
-{
-  "declaration": {
-    "body": [
-      {
-        "kind": "PropertyDeclaration",
-        "name": "name",
-        "type": "string",
-      },
-      {
-        "kind": "PropertyDeclaration",
-        "name": "start",
-        "type": "number",
-      },
-      {
-        "kind": "PropertyDeclaration",
-        "name": "end",
-        "type": "number",
-      },
-      {
-        "kind": "PropertyDeclaration",
-        "name": "source",
-        "type": "string",
-      },
-      {
-        "key": {
-          "kind": "Identifier",
-          "name": "constructor",
+[
+  {
+    "declaration": {
+      "body": [
+        {
+          "kind": "PropertyDeclaration",
+          "name": "name",
+          "type": "string",
         },
-        "kind": "MethodDefinition",
-        "value": {
-          "arguments": [
-            {
-              "kind": "Argument",
-              "name": "name",
-              "type": "string",
-            },
-            {
-              "kind": "Argument",
-              "name": "start",
-              "type": "number",
-            },
-            {
-              "kind": "Argument",
-              "name": "end",
-              "type": "number",
-            },
-            {
-              "kind": "Argument",
-              "name": "source",
-              "type": "string",
-            },
-          ],
-          "body": [
-            {
-              "binding": null,
-              "kind": "AssignmentStatement",
-              "lhs": {
-                "kind": "MemberExpression",
-                "object": {
-                  "kind": "Identifier",
-                  "name": "this",
+        {
+          "kind": "PropertyDeclaration",
+          "name": "start",
+          "type": "number",
+        },
+        {
+          "kind": "PropertyDeclaration",
+          "name": "end",
+          "type": "number",
+        },
+        {
+          "kind": "PropertyDeclaration",
+          "name": "source",
+          "type": "string",
+        },
+        {
+          "key": {
+            "kind": "Identifier",
+            "name": "constructor",
+          },
+          "kind": "MethodDefinition",
+          "value": {
+            "arguments": [
+              {
+                "kind": "Argument",
+                "name": "name",
+                "type": "string",
+              },
+              {
+                "kind": "Argument",
+                "name": "start",
+                "type": "number",
+              },
+              {
+                "kind": "Argument",
+                "name": "end",
+                "type": "number",
+              },
+              {
+                "kind": "Argument",
+                "name": "source",
+                "type": "string",
+              },
+            ],
+            "body": [
+              {
+                "binding": null,
+                "kind": "AssignmentStatement",
+                "lhs": {
+                  "kind": "MemberExpression",
+                  "object": {
+                    "kind": "Identifier",
+                    "name": "this",
+                  },
+                  "property": {
+                    "kind": "Identifier",
+                    "name": "name",
+                  },
                 },
-                "property": {
+                "rhs": {
                   "kind": "Identifier",
                   "name": "name",
                 },
               },
-              "rhs": {
-                "kind": "Identifier",
-                "name": "name",
-              },
-            },
-            {
-              "binding": null,
-              "kind": "AssignmentStatement",
-              "lhs": {
-                "kind": "MemberExpression",
-                "object": {
-                  "kind": "Identifier",
-                  "name": "this",
-                },
-                "property": {
-                  "kind": "Identifier",
-                  "name": "start",
-                },
-              },
-              "rhs": {
-                "kind": "Identifier",
-                "name": "start",
-              },
-            },
-            {
-              "binding": null,
-              "kind": "AssignmentStatement",
-              "lhs": {
-                "kind": "MemberExpression",
-                "object": {
-                  "kind": "Identifier",
-                  "name": "this",
-                },
-                "property": {
-                  "kind": "Identifier",
-                  "name": "end",
-                },
-              },
-              "rhs": {
-                "kind": "Identifier",
-                "name": "end",
-              },
-            },
-            {
-              "binding": null,
-              "kind": "AssignmentStatement",
-              "lhs": {
-                "kind": "MemberExpression",
-                "object": {
-                  "kind": "Identifier",
-                  "name": "this",
-                },
-                "property": {
-                  "kind": "Identifier",
-                  "name": "source",
-                },
-              },
-              "rhs": {
-                "kind": "Identifier",
-                "name": "source",
-              },
-            },
-          ],
-          "kind": "FunctionExpression",
-        },
-      },
-      {
-        "body": [
-          {
-            "binding": "const",
-            "kind": "AssignmentStatement",
-            "lhs": {
-              "kind": "Identifier",
-              "name": "value",
-            },
-            "rhs": {
-              "arguments": [
-                {
+              {
+                "binding": null,
+                "kind": "AssignmentStatement",
+                "lhs": {
                   "kind": "MemberExpression",
                   "object": {
                     "kind": "Identifier",
@@ -591,7 +545,15 @@ exports[`parseStatement() parser persisted to disk parses a (default) export cla
                     "name": "start",
                   },
                 },
-                {
+                "rhs": {
+                  "kind": "Identifier",
+                  "name": "start",
+                },
+              },
+              {
+                "binding": null,
+                "kind": "AssignmentStatement",
+                "lhs": {
                   "kind": "MemberExpression",
                   "object": {
                     "kind": "Identifier",
@@ -602,10 +564,15 @@ exports[`parseStatement() parser persisted to disk parses a (default) export cla
                     "name": "end",
                   },
                 },
-              ],
-              "callee": {
-                "kind": "MemberExpression",
-                "object": {
+                "rhs": {
+                  "kind": "Identifier",
+                  "name": "end",
+                },
+              },
+              {
+                "binding": null,
+                "kind": "AssignmentStatement",
+                "lhs": {
                   "kind": "MemberExpression",
                   "object": {
                     "kind": "Identifier",
@@ -616,74 +583,131 @@ exports[`parseStatement() parser persisted to disk parses a (default) export cla
                     "name": "source",
                   },
                 },
-                "property": {
+                "rhs": {
                   "kind": "Identifier",
-                  "name": "slice",
+                  "name": "source",
                 },
               },
-              "kind": "CallExpression",
-            },
+            ],
+            "kind": "FunctionExpression",
           },
-          {
-            "expression": {
-              "arguments": [
-                {
-                  "kind": "Identifier",
-                  "name": "this",
-                },
-                {
-                  "kind": "StringValue",
-                  "value": "'contents'",
-                },
-                {
-                  "kind": "ObjectValue",
-                  "properties": [
-                    {
-                      "computed": false,
-                      "key": {
-                        "kind": "Identifier",
-                        "name": "value",
-                      },
-                      "kind": "ObjectProperty",
-                      "shorthand": true,
-                      "value": {
-                        "kind": "Identifier",
-                        "name": "value",
-                      },
+        },
+        {
+          "body": [
+            {
+              "binding": "const",
+              "kind": "AssignmentStatement",
+              "lhs": {
+                "kind": "Identifier",
+                "name": "value",
+              },
+              "rhs": {
+                "arguments": [
+                  {
+                    "kind": "MemberExpression",
+                    "object": {
+                      "kind": "Identifier",
+                      "name": "this",
                     },
-                  ],
+                    "property": {
+                      "kind": "Identifier",
+                      "name": "start",
+                    },
+                  },
+                  {
+                    "kind": "MemberExpression",
+                    "object": {
+                      "kind": "Identifier",
+                      "name": "this",
+                    },
+                    "property": {
+                      "kind": "Identifier",
+                      "name": "end",
+                    },
+                  },
+                ],
+                "callee": {
+                  "kind": "MemberExpression",
+                  "object": {
+                    "kind": "MemberExpression",
+                    "object": {
+                      "kind": "Identifier",
+                      "name": "this",
+                    },
+                    "property": {
+                      "kind": "Identifier",
+                      "name": "source",
+                    },
+                  },
+                  "property": {
+                    "kind": "Identifier",
+                    "name": "slice",
+                  },
                 },
-              ],
-              "callee": {
-                "kind": "MemberExpression",
-                "object": {
-                  "kind": "Identifier",
-                  "name": "Object",
-                },
-                "property": {
-                  "kind": "Identifier",
-                  "name": "defineProperty",
-                },
+                "kind": "CallExpression",
               },
-              "kind": "CallExpression",
             },
-            "kind": "ExpressionStatement",
-          },
-          {
-            "expression": {
-              "kind": "Identifier",
-              "name": "value",
+            {
+              "expression": {
+                "arguments": [
+                  {
+                    "kind": "Identifier",
+                    "name": "this",
+                  },
+                  {
+                    "kind": "StringValue",
+                    "value": "'contents'",
+                  },
+                  {
+                    "kind": "ObjectValue",
+                    "properties": [
+                      {
+                        "computed": false,
+                        "key": {
+                          "kind": "Identifier",
+                          "name": "value",
+                        },
+                        "kind": "ObjectProperty",
+                        "shorthand": true,
+                        "value": {
+                          "kind": "Identifier",
+                          "name": "value",
+                        },
+                      },
+                    ],
+                  },
+                ],
+                "callee": {
+                  "kind": "MemberExpression",
+                  "object": {
+                    "kind": "Identifier",
+                    "name": "Object",
+                  },
+                  "property": {
+                    "kind": "Identifier",
+                    "name": "defineProperty",
+                  },
+                },
+                "kind": "CallExpression",
+              },
+              "kind": "ExpressionStatement",
             },
-            "kind": "ReturnStatement",
-          },
-        ],
-        "kind": "GetAccessor",
-        "name": "contents",
-      },
-    ],
-    "id": "Token",
-    "kind": "ClassDeclaration",
+            {
+              "expression": {
+                "kind": "Identifier",
+                "name": "value",
+              },
+              "kind": "ReturnStatement",
+            },
+          ],
+          "kind": "GetAccessor",
+          "name": "contents",
+        },
+      ],
+      "id": "Token",
+      "kind": "ClassDeclaration",
+    },
+    "kind": "ExportDefaultDeclaration",
   },
-  "kind": "ExportDefaultDeclaration",
-}
+]
 `;

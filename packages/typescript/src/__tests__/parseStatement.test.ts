@@ -19,7 +19,7 @@ describe('parseStatement()', async () => {
     (_description, parseStatement: Awaited<ReturnType<typeof getParser>>) => {
       it('parses a call', () => {
         const input = 'click();';
-        expect(parseStatement(input)).toEqual({
+        expect(parseStatement(input)).toEqual([{
           kind: 'ExpressionStatement',
           expression: {
             kind: 'CallExpression',
@@ -29,12 +29,31 @@ describe('parseStatement()', async () => {
               name: 'click',
             },
           },
-        });
+        }]);
+      });
+
+      it('parses multiple calls', () => {
+        const input = `
+          click();
+          click();
+        `;
+        const statement = {
+          kind: 'ExpressionStatement',
+          expression: {
+            kind: 'CallExpression',
+            arguments: [],
+            callee: {
+              kind: 'Identifier',
+              name: 'click',
+            },
+          },
+        };
+        expect(parseStatement(input)).toEqual([statement, statement]);
       });
 
       it('parses a `new` expression', () => {
         const input = 'const lexer = new Lexer(input);';
-        expect(parseStatement(input)).toEqual({
+        expect(parseStatement(input)).toEqual([{
           kind: 'AssignmentStatement',
           binding: 'const',
           lhs: {
@@ -54,12 +73,12 @@ describe('parseStatement()', async () => {
               },
             ],
           },
-        });
+        }]);
       });
 
       it('parses a logical OR expression', () => {
         const input = 'let token = lexer.next() || EOF;';
-        expect(parseStatement(input)).toEqual({
+        expect(parseStatement(input)).toEqual([{
           kind: 'AssignmentStatement',
           binding: 'let',
           lhs: {
@@ -89,7 +108,7 @@ describe('parseStatement()', async () => {
               name: 'EOF',
             },
           },
-        });
+        }]);
       });
 
       it('parses a const boolean assignment statement', () => {
@@ -119,7 +138,7 @@ describe('parseStatement()', async () => {
 
       it('parses an object with shorthand property', () => {
         const input = "Object.defineProperty(this, 'contents', {value});";
-        expect(parseStatement(input)).toEqual({
+        expect(parseStatement(input)).toEqual([{
           kind: 'ExpressionStatement',
           expression: {
             kind: 'CallExpression',
@@ -157,16 +176,16 @@ describe('parseStatement()', async () => {
               }],
             }],
           },
-        });
+        }]);
       });
 
       it('parses an empty class declaration', () => {
         const input = 'class Foo {}';
-        expect(parseStatement(input)).toEqual({
+        expect(parseStatement(input)).toEqual([{
           kind: 'ClassDeclaration',
           id: 'Foo',
           body: [],
-        });
+        }]);
       });
 
       it('parses a (default) export class declaration', () => {
@@ -197,7 +216,7 @@ describe('parseStatement()', async () => {
       });
 
       it('recognizes "get" as an identifier in non-accessor positions', () => {
-        expect(parseStatement('let get = true;')).toEqual({
+        expect(parseStatement('let get = true;')).toEqual([{
           kind: 'AssignmentStatement',
           binding: 'let',
           lhs: {
@@ -208,7 +227,7 @@ describe('parseStatement()', async () => {
             kind: 'BooleanValue',
             value: true,
           },
-        });
+        }]);
 
         // Hard mode: `get` in a place you'd normally expect to see an accessor.
         expect(parseStatement(`
@@ -217,7 +236,7 @@ describe('parseStatement()', async () => {
               return stuff;
             }
           }
-        `)).toEqual({
+        `)).toEqual([{
           kind: 'ClassDeclaration',
           id: 'Foo',
           body: [{
@@ -241,12 +260,12 @@ describe('parseStatement()', async () => {
               }],
             },
           }],
-        });
+        }]);
       });
 
       it('implements right-associativity for chained assignment expressions', () => {
         // Single item in "chain".
-        expect(parseStatement('a = b;')).toEqual({
+        expect(parseStatement('a = b;')).toEqual([{
           binding: null,
           kind: 'AssignmentStatement',
           lhs: {
@@ -257,10 +276,10 @@ describe('parseStatement()', async () => {
             kind: 'Identifier',
             name: 'b',
           },
-        });
+        }]);
 
         // Two items in "chain".
-        expect(parseStatement('a = b = c;')).toEqual({
+        expect(parseStatement('a = b = c;')).toEqual([{
           binding: null,
           kind: 'AssignmentStatement',
           lhs: {
@@ -279,7 +298,7 @@ describe('parseStatement()', async () => {
               name: 'c',
             },
           },
-        });
+        }]);
 
         // Six items in "chain", using another way of showing right-associativity.
         expect(parseStatement('a = b = c = d = e = f;')).toEqual(
@@ -289,7 +308,7 @@ describe('parseStatement()', async () => {
 
       it('implements left-associativity for chained additions', () => {
         // Single item in "chain".
-        expect(parseStatement('a + b;')).toEqual({
+        expect(parseStatement('a + b;')).toEqual([{
           kind: 'ExpressionStatement',
           expression: {
             kind: 'BinaryExpression',
@@ -303,10 +322,10 @@ describe('parseStatement()', async () => {
               name: 'b',
             },
           },
-        });
+        }]);
 
         // Two items in "chain".
-        expect(parseStatement('a + b + c;')).toEqual({
+        expect(parseStatement('a + b + c;')).toEqual([{
           kind: 'ExpressionStatement',
           expression: {
             kind: 'BinaryExpression',
@@ -328,7 +347,7 @@ describe('parseStatement()', async () => {
               name: 'c',
             },
           },
-        });
+        }]);
 
         // Six items in "chain", using another way of showing left-associativity.
         expect(parseStatement('a + b + c + d + e + f;')).toEqual(
@@ -338,7 +357,7 @@ describe('parseStatement()', async () => {
 
       it('implements left-associativity for chained subtractions', () => {
         // Single item in "chain".
-        expect(parseStatement('a - b;')).toEqual({
+        expect(parseStatement('a - b;')).toEqual([{
           kind: 'ExpressionStatement',
           expression: {
             kind: 'BinaryExpression',
@@ -352,10 +371,10 @@ describe('parseStatement()', async () => {
               name: 'b',
             },
           },
-        });
+        }]);
 
         // Two items in "chain".
-        expect(parseStatement('a - b - c;')).toEqual({
+        expect(parseStatement('a - b - c;')).toEqual([{
           kind: 'ExpressionStatement',
           expression: {
             kind: 'BinaryExpression',
@@ -377,7 +396,7 @@ describe('parseStatement()', async () => {
               name: 'c',
             },
           },
-        });
+        }]);
 
         // Six items in "chain", using another way of showing left-associativity.
         expect(parseStatement('a - b - c - d - e - f;')).toEqual(
@@ -395,7 +414,7 @@ describe('parseStatement()', async () => {
         const input = 'const a = b.c.d;';
         const parsed = parseStatement(input);
 
-        expect(parsed).toEqual({
+        expect(parsed).toEqual([{
           binding: 'const',
           kind: 'AssignmentStatement',
           lhs: {
@@ -420,7 +439,7 @@ describe('parseStatement()', async () => {
               name: 'd',
             },
           },
-        });
+        }]);
 
         // Showing that we can go deeper:
         expect(parseStatement(`const a = b.c.d.e.f.g;`)).toEqual(
@@ -432,7 +451,7 @@ describe('parseStatement()', async () => {
         const input = 'const a = b.c.d();';
         const parsed = parseStatement(input);
 
-        expect(parsed).toEqual({
+        expect(parsed).toEqual([{
           binding: 'const',
           kind: 'AssignmentStatement',
           lhs: {
@@ -461,18 +480,18 @@ describe('parseStatement()', async () => {
               },
             },
           },
-        });
+        }]);
       });
 
       it('parses an empty while statement', () => {
-        expect(parseStatement('while (true) {}')).toEqual({
+        expect(parseStatement('while (true) {}')).toEqual([{
           kind: 'WhileStatement',
           condition: {
             kind: 'BooleanValue',
             value: true,
           },
           block: [],
-        });
+        }]);
       });
 
       it('parses a non-empty while statement', () => {
@@ -482,7 +501,7 @@ describe('parseStatement()', async () => {
             bar(true);
           }
         `),
-        ).toEqual({
+        ).toEqual([{
           kind: 'WhileStatement',
           condition: {
             kind: 'BinaryExpression',
@@ -519,7 +538,7 @@ describe('parseStatement()', async () => {
               },
             },
           ],
-        });
+        }]);
       });
     },
   );
