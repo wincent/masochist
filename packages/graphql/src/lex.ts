@@ -3,9 +3,6 @@
  *
  * @generated
  */
-// TODO: consider using integer IDs for tokens instead of names, to make
-// comparisons cheaper in the parser. Can look up by token ID in an array
-// instead of in a map by name.
 export class Token {
   name: string;
   start: number;
@@ -13,20 +10,19 @@ export class Token {
   source: string;
 
   constructor(name: string, start: number, end: number, source: string) {
-    // No validation, for speed; we trust the generated lexer to be flawless.
     this.name = name;
     this.start = start;
     this.end = end;
     this.source = source;
   }
-
   get contents() {
     const value = this.source.slice(this.start, this.end);
-    Object.defineProperty(this, 'contents', {value});
+    Object.defineProperty(this, 'contents', {
+      value,
+    });
     return value;
   }
 }
-
 const REJECT = -1;
 const START = 0;
 export class Lexer {

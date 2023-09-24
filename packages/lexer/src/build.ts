@@ -1,8 +1,7 @@
-import {ast} from '@masochist/codegen';
+import {ast, walk} from '@masochist/codegen';
 import {invariant} from '@masochist/common';
+import assert from 'node:assert';
 import path from 'node:path';
-
-import keyToTransition from './NFA/keyToTransition';
 
 import type {
   Consequent,
@@ -14,6 +13,7 @@ import type {
 } from '@masochist/codegen';
 import type {Transition} from './NFA/NFA';
 import type {TransitionTable} from './NFA/TransitionTable';
+import keyToTransition from './NFA/keyToTransition';
 
 type Options = {
   buildCommand?: string;
@@ -268,6 +268,21 @@ export default async function build(
     }],
   });
 
+  const source = await Bun.file(path.join(import.meta.dir, 'Token.ts')).text();
+  const statements = ast.statements(source);
+  assert(statements.length === 1);
+  let tokenClass = statements[0];
+  tokenClass = walk(tokenClass, {
+    // Turn: `export default class Token { ... }`
+    // Into: `export class Token { ... }`
+    ExportDefaultDeclaration(declaration) {
+      return {
+        kind: 'ExportNamedDeclaration',
+        declaration: declaration.declaration,
+      };
+    },
+  }) as any; // TODO: FIXME: wants Statement type, not Node | null | undefined
+
   const buildCommand = options.buildCommand
     ? `edit "build.ts", run "${options.buildCommand}" instead`
     : 'edit "build.ts" instead';
@@ -279,15 +294,7 @@ export default async function build(
         '',
         '@generated',
       ),
-
-      // TODO: once codegen can use real parser, parse the file instead of using
-      // RawStatement; and use walk to strip out bits "the right" way.
-      ast.rawStatement(
-        (await Bun.file(path.join(import.meta.dir, 'Token.ts')).text()).replace(
-          /^\s*\bexport\s+default\s+/m,
-          'export ',
-        ),
-      ),
+      tokenClass,
       ast.statement('const REJECT = -1'),
       ast.statement('const START = 0'),
       ast.export(

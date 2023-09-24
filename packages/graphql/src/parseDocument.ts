@@ -5040,7 +5040,8 @@ export default function parseDocument(input) {
     const action = actions[current][token.name];
 
     if (!action) {
-      throw new Error('syntax error');
+      // TODO: maybe show stack here?
+      throw new Error('syntax error at symbol ' + token.name);
     }
     if (action.kind === 'Accept') {
       // Expect initial state + accept state.
