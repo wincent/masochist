@@ -13,16 +13,14 @@ describe('removeEpsilons()', () => {
     expect(removeEpsilons(regExpToNFA(compileRegExp(/a/)))).toEqual({
       id: 0,
       flags: START,
-      edges: [
-        {
-          on: {kind: 'Atom', value: 'a'},
-          to: {
-            id: 1,
-            flags: ACCEPT,
-            edges: [],
-          },
+      edges: [{
+        on: {kind: 'Atom', value: 'a'},
+        to: {
+          id: 1,
+          flags: ACCEPT,
+          edges: [],
         },
-      ],
+      }],
     });
   });
 
@@ -30,16 +28,14 @@ describe('removeEpsilons()', () => {
     expect(removeEpsilons(regExpToNFA(compileRegExp(/./)))).toEqual({
       id: 0,
       flags: START,
-      edges: [
-        {
-          on: {kind: 'Anything'},
-          to: {
-            id: 1,
-            flags: ACCEPT,
-            edges: [],
-          },
+      edges: [{
+        on: {kind: 'Anything'},
+        to: {
+          id: 1,
+          flags: ACCEPT,
+          edges: [],
         },
-      ],
+      }],
     });
   });
 
@@ -47,34 +43,28 @@ describe('removeEpsilons()', () => {
     expect(removeEpsilons(regExpToNFA(compileRegExp(/foo/)))).toEqual({
       id: 0,
       flags: START,
-      edges: [
-        {
-          on: {kind: 'Atom', value: 'f'},
-          to: {
-            id: 1,
-            flags: NONE,
-            edges: [
-              {
+      edges: [{
+        on: {kind: 'Atom', value: 'f'},
+        to: {
+          id: 1,
+          flags: NONE,
+          edges: [{
+            on: {kind: 'Atom', value: 'o'},
+            to: {
+              id: 3,
+              flags: NONE,
+              edges: [{
                 on: {kind: 'Atom', value: 'o'},
                 to: {
-                  id: 3,
-                  flags: NONE,
-                  edges: [
-                    {
-                      on: {kind: 'Atom', value: 'o'},
-                      to: {
-                        id: 5,
-                        flags: ACCEPT,
-                        edges: [],
-                      },
-                    },
-                  ],
+                  id: 5,
+                  flags: ACCEPT,
+                  edges: [],
                 },
-              },
-            ],
-          },
+              }],
+            },
+          }],
         },
-      ],
+      }],
     });
   });
 
@@ -82,32 +72,28 @@ describe('removeEpsilons()', () => {
     expect(removeEpsilons(regExpToNFA(compileRegExp(/a|b|c/)))).toEqual({
       id: 6,
       flags: START,
-      edges: [
-        {
-          on: {kind: 'Atom', value: 'c'},
-          to: {
-            id: 5,
-            flags: ACCEPT,
-            edges: [],
-          },
+      edges: [{
+        on: {kind: 'Atom', value: 'c'},
+        to: {
+          id: 5,
+          flags: ACCEPT,
+          edges: [],
         },
-        {
-          on: {kind: 'Atom', value: 'b'},
-          to: {
-            id: 3,
-            flags: ACCEPT,
-            edges: [],
-          },
+      }, {
+        on: {kind: 'Atom', value: 'b'},
+        to: {
+          id: 3,
+          flags: ACCEPT,
+          edges: [],
         },
-        {
-          on: {kind: 'Atom', value: 'a'},
-          to: {
-            id: 1,
-            flags: ACCEPT,
-            edges: [],
-          },
+      }, {
+        on: {kind: 'Atom', value: 'a'},
+        to: {
+          id: 1,
+          flags: ACCEPT,
+          edges: [],
         },
-      ],
+      }],
     });
   });
 
@@ -115,24 +101,21 @@ describe('removeEpsilons()', () => {
     expect(removeEpsilons(regExpToNFA(compileRegExp(/[a-z0]/)))).toEqual({
       id: 4,
       flags: START,
-      edges: [
-        {
-          on: {kind: 'Range', from: 'a', to: 'z'},
-          to: {
-            id: 3,
-            flags: ACCEPT,
-            edges: [],
-          },
+      edges: [{
+        on: {kind: 'Range', from: 'a', to: 'z'},
+        to: {
+          id: 3,
+          flags: ACCEPT,
+          edges: [],
         },
-        {
-          on: {kind: 'Atom', value: '0'},
-          to: {
-            id: 1,
-            flags: ACCEPT,
-            edges: [],
-          },
+      }, {
+        on: {kind: 'Atom', value: '0'},
+        to: {
+          id: 1,
+          flags: ACCEPT,
+          edges: [],
         },
-      ],
+      }],
     });
   });
 
@@ -140,16 +123,14 @@ describe('removeEpsilons()', () => {
     expect(removeEpsilons(regExpToNFA(compileRegExp(/a?/)))).toEqual({
       id: 0,
       flags: START | ACCEPT,
-      edges: [
-        {
-          on: {kind: 'Atom', value: 'a'},
-          to: {
-            id: 1,
-            flags: ACCEPT,
-            edges: [],
-          },
+      edges: [{
+        on: {kind: 'Atom', value: 'a'},
+        to: {
+          id: 1,
+          flags: ACCEPT,
+          edges: [],
         },
-      ],
+      }],
     });
   });
 
@@ -168,16 +149,14 @@ describe('removeEpsilons()', () => {
     const start: NFA = {
       id: 2,
       flags: (START | ACCEPT) as Flags,
-      edges: [
-        {
-          on: {kind: 'Atom', value: 'a'},
-          to: {
-            id: 1,
-            flags: ACCEPT,
-            edges: [],
-          },
+      edges: [{
+        on: {kind: 'Atom', value: 'a'},
+        to: {
+          id: 1,
+          flags: ACCEPT,
+          edges: [],
         },
-      ],
+      }],
     };
     start.edges[0].to.edges.push({
       on: {kind: 'Atom', value: 'a'},
@@ -190,16 +169,14 @@ describe('removeEpsilons()', () => {
     const start: NFA = {
       id: 0,
       flags: START,
-      edges: [
-        {
-          on: {kind: 'Atom', value: 'a'},
-          to: {
-            id: 1,
-            flags: ACCEPT,
-            edges: [],
-          },
+      edges: [{
+        on: {kind: 'Atom', value: 'a'},
+        to: {
+          id: 1,
+          flags: ACCEPT,
+          edges: [],
         },
-      ],
+      }],
     };
     start.edges[0].to.edges.push({
       on: {kind: 'Atom', value: 'a'},
@@ -212,34 +189,28 @@ describe('removeEpsilons()', () => {
     expect(removeEpsilons(regExpToNFA(compileRegExp(/a{3}/)))).toEqual({
       id: 0,
       flags: START,
-      edges: [
-        {
-          on: {kind: 'Atom', value: 'a'},
-          to: {
-            id: 1,
-            flags: NONE,
-            edges: [
-              {
+      edges: [{
+        on: {kind: 'Atom', value: 'a'},
+        to: {
+          id: 1,
+          flags: NONE,
+          edges: [{
+            on: {kind: 'Atom', value: 'a'},
+            to: {
+              id: 3,
+              flags: NONE,
+              edges: [{
                 on: {kind: 'Atom', value: 'a'},
                 to: {
-                  id: 3,
-                  flags: NONE,
-                  edges: [
-                    {
-                      on: {kind: 'Atom', value: 'a'},
-                      to: {
-                        id: 5,
-                        flags: ACCEPT,
-                        edges: [],
-                      },
-                    },
-                  ],
+                  id: 5,
+                  flags: ACCEPT,
+                  edges: [],
                 },
-              },
-            ],
-          },
+              }],
+            },
+          }],
         },
-      ],
+      }],
     });
   });
 
@@ -247,43 +218,35 @@ describe('removeEpsilons()', () => {
     expect(removeEpsilons(regExpToNFA(compileRegExp(/a{2,4}/)))).toEqual({
       id: 0,
       flags: START,
-      edges: [
-        {
-          on: {kind: 'Atom', value: 'a'},
-          to: {
-            id: 1,
-            flags: NONE,
-            edges: [
-              {
+      edges: [{
+        on: {kind: 'Atom', value: 'a'},
+        to: {
+          id: 1,
+          flags: NONE,
+          edges: [{
+            on: {kind: 'Atom', value: 'a'},
+            to: {
+              id: 3,
+              flags: ACCEPT,
+              edges: [{
                 on: {kind: 'Atom', value: 'a'},
                 to: {
-                  id: 3,
+                  id: 5,
                   flags: ACCEPT,
-                  edges: [
-                    {
-                      on: {kind: 'Atom', value: 'a'},
-                      to: {
-                        id: 5,
-                        flags: ACCEPT,
-                        edges: [
-                          {
-                            on: {kind: 'Atom', value: 'a'},
-                            to: {
-                              id: 7,
-                              flags: ACCEPT,
-                              edges: [],
-                            },
-                          },
-                        ],
-                      },
+                  edges: [{
+                    on: {kind: 'Atom', value: 'a'},
+                    to: {
+                      id: 7,
+                      flags: ACCEPT,
+                      edges: [],
                     },
-                  ],
+                  }],
                 },
-              },
-            ],
-          },
+              }],
+            },
+          }],
         },
-      ],
+      }],
     });
   });
 

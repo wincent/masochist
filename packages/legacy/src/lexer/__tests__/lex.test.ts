@@ -19,18 +19,18 @@ test('lexing whitespace', () => {
 test('lexing a comment', () => {
   const tokens = [...lex('# this is a comment')];
 
-  expect(tokens).toEqual([
-    {contents: '# this is a comment', index: 0, name: 'COMMENT'},
-  ]);
+  expect(tokens).toEqual([{
+    contents: '# this is a comment',
+    index: 0,
+    name: 'COMMENT',
+  }]);
 });
 
 test('lexing multiple comments', () => {
-  const tokens = [
-    ...lex(`
+  const tokens = [...lex(`
     # this is a comment
     # this is another
-  `),
-  ];
+  `)];
 
   expect(tokens).toEqual([
     {contents: '\n', index: 0, name: 'LINE_TERMINATOR'},
@@ -50,11 +50,11 @@ test('lexing multiple comments', () => {
 test('lexing a commas', () => {
   const tokens = [...lex(',,,')];
 
-  expect(tokens).toEqual([
-    {contents: ',', index: 0, name: 'COMMA'},
-    {contents: ',', index: 1, name: 'COMMA'},
-    {contents: ',', index: 2, name: 'COMMA'},
-  ]);
+  expect(tokens).toEqual([{contents: ',', index: 0, name: 'COMMA'}, {
+    contents: ',',
+    index: 1,
+    name: 'COMMA',
+  }, {contents: ',', index: 2, name: 'COMMA'}]);
 
   expect(tokens.every(isIgnored)).toBe(true);
 });
@@ -78,41 +78,55 @@ test('lexing names', () => {
 });
 
 test('lexing float values', () => {
-  expect([...lex('0.1')]).toEqual([
-    {contents: '0.1', index: 0, name: 'FLOAT_VALUE'},
-  ]);
+  expect([...lex('0.1')]).toEqual([{
+    contents: '0.1',
+    index: 0,
+    name: 'FLOAT_VALUE',
+  }]);
 
-  expect([...lex('-0.10')]).toEqual([
-    {contents: '-0.10', index: 0, name: 'FLOAT_VALUE'},
-  ]);
+  expect([...lex('-0.10')]).toEqual([{
+    contents: '-0.10',
+    index: 0,
+    name: 'FLOAT_VALUE',
+  }]);
 
-  expect([...lex('-1.4')]).toEqual([
-    {contents: '-1.4', index: 0, name: 'FLOAT_VALUE'},
-  ]);
+  expect([...lex('-1.4')]).toEqual([{
+    contents: '-1.4',
+    index: 0,
+    name: 'FLOAT_VALUE',
+  }]);
 
-  expect([...lex('-200.5')]).toEqual([
-    {contents: '-200.5', index: 0, name: 'FLOAT_VALUE'},
-  ]);
+  expect([...lex('-200.5')]).toEqual([{
+    contents: '-200.5',
+    index: 0,
+    name: 'FLOAT_VALUE',
+  }]);
 
-  expect([...lex('0.1e-10')]).toEqual([
-    {contents: '0.1e-10', index: 0, name: 'FLOAT_VALUE'},
-  ]);
+  expect([...lex('0.1e-10')]).toEqual([{
+    contents: '0.1e-10',
+    index: 0,
+    name: 'FLOAT_VALUE',
+  }]);
 
-  expect([...lex('-0.10E+2')]).toEqual([
-    {contents: '-0.10E+2', index: 0, name: 'FLOAT_VALUE'},
-  ]);
+  expect([...lex('-0.10E+2')]).toEqual([{
+    contents: '-0.10E+2',
+    index: 0,
+    name: 'FLOAT_VALUE',
+  }]);
 
   // TODO: these are all supposed to fail now
   // https://github.com/graphql/graphql-spec/pull/601#issuecomment-518954455
-  expect([...lex('1.23f')]).toEqual([
-    {contents: '1.23', index: 0, name: 'FLOAT_VALUE'},
-    {contents: 'f', index: 4, name: 'NAME'},
-  ]);
+  expect([...lex('1.23f')]).toEqual([{
+    contents: '1.23',
+    index: 0,
+    name: 'FLOAT_VALUE',
+  }, {contents: 'f', index: 4, name: 'NAME'}]);
 
-  expect([...lex('1.234_5')]).toEqual([
-    {contents: '1.234', index: 0, name: 'FLOAT_VALUE'},
-    {contents: '_5', index: 5, name: 'NAME'},
-  ]);
+  expect([...lex('1.234_5')]).toEqual([{
+    contents: '1.234',
+    index: 0,
+    name: 'FLOAT_VALUE',
+  }, {contents: '_5', index: 5, name: 'NAME'}]);
 
   // This one was always supposed to be an error.
   expect(() => [...lex('1.2ß')]).toThrow('Failed to consume all input');
@@ -121,85 +135,99 @@ test('lexing float values', () => {
 test('lexing integer values', () => {
   expect([...lex('0')]).toEqual([{contents: '0', index: 0, name: 'INT_VALUE'}]);
 
-  expect([...lex('-0')]).toEqual([
-    {contents: '-0', index: 0, name: 'INT_VALUE'},
-  ]);
+  expect([...lex('-0')]).toEqual([{
+    contents: '-0',
+    index: 0,
+    name: 'INT_VALUE',
+  }]);
 
-  expect([...lex('-1')]).toEqual([
-    {contents: '-1', index: 0, name: 'INT_VALUE'},
-  ]);
+  expect([...lex('-1')]).toEqual([{
+    contents: '-1',
+    index: 0,
+    name: 'INT_VALUE',
+  }]);
 
-  expect([...lex('-200')]).toEqual([
-    {contents: '-200', index: 0, name: 'INT_VALUE'},
-  ]);
+  expect([...lex('-200')]).toEqual([{
+    contents: '-200',
+    index: 0,
+    name: 'INT_VALUE',
+  }]);
 
   // TODO: these are all supposed to fail now
   // https://github.com/graphql/graphql-spec/pull/601#issuecomment-518954455
-  expect([...lex('0xF1')]).toEqual([
-    {contents: '0', index: 0, name: 'INT_VALUE'},
-    {contents: 'xF1', index: 1, name: 'NAME'},
-  ]);
-  expect([...lex('0b10')]).toEqual([
-    {contents: '0', index: 0, name: 'INT_VALUE'},
-    {contents: 'b10', index: 1, name: 'NAME'},
-  ]);
-  expect([...lex('123abc')]).toEqual([
-    {contents: '123', index: 0, name: 'INT_VALUE'},
-    {contents: 'abc', index: 3, name: 'NAME'},
-  ]);
-  expect([...lex('1_234')]).toEqual([
-    {contents: '1', index: 0, name: 'INT_VALUE'},
-    {contents: '_234', index: 1, name: 'NAME'},
-  ]);
+  expect([...lex('0xF1')]).toEqual([{
+    contents: '0',
+    index: 0,
+    name: 'INT_VALUE',
+  }, {contents: 'xF1', index: 1, name: 'NAME'}]);
+  expect([...lex('0b10')]).toEqual([{
+    contents: '0',
+    index: 0,
+    name: 'INT_VALUE',
+  }, {contents: 'b10', index: 1, name: 'NAME'}]);
+  expect([...lex('123abc')]).toEqual([{
+    contents: '123',
+    index: 0,
+    name: 'INT_VALUE',
+  }, {contents: 'abc', index: 3, name: 'NAME'}]);
+  expect([...lex('1_234')]).toEqual([{
+    contents: '1',
+    index: 0,
+    name: 'INT_VALUE',
+  }, {contents: '_234', index: 1, name: 'NAME'}]);
 
   // This one was always supposed to be an error.
   expect(() => [...lex('1ß')]).toThrow('Failed to consume all input');
 });
 
 test('lexing strings', () => {
-  expect([...lex('""')]).toEqual([
-    {contents: '""', index: 0, name: 'STRING_VALUE'},
-  ]);
+  expect([...lex('""')]).toEqual([{
+    contents: '""',
+    index: 0,
+    name: 'STRING_VALUE',
+  }]);
 
-  expect([...lex('"foo, bar, baz"')]).toEqual([
-    {contents: '"foo, bar, baz"', index: 0, name: 'STRING_VALUE'},
-  ]);
+  expect([...lex('"foo, bar, baz"')]).toEqual([{
+    contents: '"foo, bar, baz"',
+    index: 0,
+    name: 'STRING_VALUE',
+  }]);
 
-  expect([...lex('"foo, \\"bar\\", baz"')]).toEqual([
-    {contents: '"foo, \\"bar\\", baz"', index: 0, name: 'STRING_VALUE'},
-  ]);
+  expect([...lex('"foo, \\"bar\\", baz"')]).toEqual([{
+    contents: '"foo, \\"bar\\", baz"',
+    index: 0,
+    name: 'STRING_VALUE',
+  }]);
 
-  expect([...lex('"foo,\\n, bar"')]).toEqual([
-    {contents: '"foo,\\n, bar"', index: 0, name: 'STRING_VALUE'},
-  ]);
+  expect([...lex('"foo,\\n, bar"')]).toEqual([{
+    contents: '"foo,\\n, bar"',
+    index: 0,
+    name: 'STRING_VALUE',
+  }]);
 
-  expect([...lex('"\\u02ec\\u039F"')]).toEqual([
-    {contents: '"\\u02ec\\u039F"', index: 0, name: 'STRING_VALUE'},
-  ]);
+  expect([...lex('"\\u02ec\\u039F"')]).toEqual([{
+    contents: '"\\u02ec\\u039F"',
+    index: 0,
+    name: 'STRING_VALUE',
+  }]);
 });
 
 test('lexing block strings', () => {
-  expect([...lex('"""a block string"""')]).toEqual([
-    {
-      contents: '"""a block string"""',
-      index: 0,
-      name: 'BLOCK_STRING_VALUE',
-    },
-  ]);
+  expect([...lex('"""a block string"""')]).toEqual([{
+    contents: '"""a block string"""',
+    index: 0,
+    name: 'BLOCK_STRING_VALUE',
+  }]);
 
-  expect([
-    ...lex(`"""
+  expect([...lex(`"""
       a multiline block string
-    """`),
-  ]).toEqual([
-    {
-      contents: `"""
+    """`)]).toEqual([{
+    contents: `"""
       a multiline block string
     """`,
-      index: 0,
-      name: 'BLOCK_STRING_VALUE',
-    },
-  ]);
+    index: 0,
+    name: 'BLOCK_STRING_VALUE',
+  }]);
 });
 
 test('lexing punctuators', () => {

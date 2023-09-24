@@ -44,13 +44,11 @@ describe('Lexer()', () => {
         };
       });
 
-      expect([...lexer.lex('thingthing')]).toEqual([
-        {
-          contents: 'thingthing',
-          index: 0,
-          name: 'THING',
-        },
-      ]);
+      expect([...lexer.lex('thingthing')]).toEqual([{
+        contents: 'thingthing',
+        index: 0,
+        name: 'THING',
+      }]);
     });
 
     it('wraps a matcher so it can be augmented without mutation', () => {
@@ -74,13 +72,11 @@ describe('Lexer()', () => {
         };
       });
 
-      expect([...lexer.lex('foo:foo')]).toEqual([
-        {
-          contents: 'foo:foo',
-          index: 0,
-          name: 'TOKEN',
-        },
-      ]);
+      expect([...lexer.lex('foo:foo')]).toEqual([{
+        contents: 'foo:foo',
+        index: 0,
+        name: 'TOKEN',
+      }]);
 
       // Note how ORIGINAL is used to match COPY, but after SEPARATOR we
       // match ORGINAL alone and see that it wasn't mutated (ie. it didn't
@@ -105,21 +101,17 @@ describe('Lexer()', () => {
     });
 
     it('matches a series of matchers irrespective of order', () => {
-      expect([...lexer.lex('foobarbaz')]).toEqual([
-        {
-          contents: 'foobarbaz',
-          index: 0,
-          name: 'ALL',
-        },
-      ]);
+      expect([...lexer.lex('foobarbaz')]).toEqual([{
+        contents: 'foobarbaz',
+        index: 0,
+        name: 'ALL',
+      }]);
 
-      expect([...lexer.lex('bazbarfoo')]).toEqual([
-        {
-          contents: 'bazbarfoo',
-          index: 0,
-          name: 'ALL',
-        },
-      ]);
+      expect([...lexer.lex('bazbarfoo')]).toEqual([{
+        contents: 'bazbarfoo',
+        index: 0,
+        name: 'ALL',
+      }]);
     });
 
     it('fails if any matcher fails to match', () => {
@@ -177,23 +169,19 @@ describe('Lexer()', () => {
         });
       });
 
-      expect([...lexer.lex('foobarbaz')]).toEqual([
-        {
-          contents: 'foo',
-          index: 0,
-          name: 'FOO',
-        },
-        {
-          contents: 'bar',
-          index: 3,
-          name: 'BAR',
-        },
-        {
-          contents: 'baz',
-          index: 6,
-          name: 'BAZ',
-        },
-      ]);
+      expect([...lexer.lex('foobarbaz')]).toEqual([{
+        contents: 'foo',
+        index: 0,
+        name: 'FOO',
+      }, {
+        contents: 'bar',
+        index: 3,
+        name: 'BAR',
+      }, {
+        contents: 'baz',
+        index: 6,
+        name: 'BAZ',
+      }]);
     });
 
     it('produces tokens using matchers defined in a Map', () => {
@@ -205,31 +193,23 @@ describe('Lexer()', () => {
         const FOO = match('foo');
 
         return choose(
-          new Map([
-            ['FOO', FOO],
-            ['BAR', BAR],
-            ['BAZ', BAZ],
-          ]),
+          new Map([['FOO', FOO], ['BAR', BAR], ['BAZ', BAZ]]),
         );
       });
 
-      expect([...lexer.lex('foobarbaz')]).toEqual([
-        {
-          contents: 'foo',
-          index: 0,
-          name: 'FOO',
-        },
-        {
-          contents: 'bar',
-          index: 3,
-          name: 'BAR',
-        },
-        {
-          contents: 'baz',
-          index: 6,
-          name: 'BAZ',
-        },
-      ]);
+      expect([...lexer.lex('foobarbaz')]).toEqual([{
+        contents: 'foo',
+        index: 0,
+        name: 'FOO',
+      }, {
+        contents: 'bar',
+        index: 3,
+        name: 'BAR',
+      }, {
+        contents: 'baz',
+        index: 6,
+        name: 'BAZ',
+      }]);
     });
   });
 
@@ -245,13 +225,11 @@ describe('Lexer()', () => {
         };
       });
 
-      expect([...lexer.lex('onetwo')]).toEqual([
-        {
-          contents: 'onetwo',
-          index: 0,
-          name: 'PAIR',
-        },
-      ]);
+      expect([...lexer.lex('onetwo')]).toEqual([{
+        contents: 'onetwo',
+        index: 0,
+        name: 'PAIR',
+      }]);
     });
   });
 
@@ -272,13 +250,11 @@ describe('Lexer()', () => {
       });
 
       it('lexes strings', () => {
-        expect([...lexer.lex('thing')]).toEqual([
-          {
-            contents: 'thing',
-            index: 0,
-            name: 'THING',
-          },
-        ]);
+        expect([...lexer.lex('thing')]).toEqual([{
+          contents: 'thing',
+          index: 0,
+          name: 'THING',
+        }]);
       });
 
       it('returns an iterator', () => {
@@ -316,13 +292,11 @@ describe('Lexer()', () => {
       });
 
       it('lexes patterns', () => {
-        expect([...lexer.lex('foo10')]).toEqual([
-          {
-            contents: 'foo10',
-            index: 0,
-            name: 'THING',
-          },
-        ]);
+        expect([...lexer.lex('foo10')]).toEqual([{
+          contents: 'foo10',
+          index: 0,
+          name: 'THING',
+        }]);
       });
 
       it('treats patterns as anchored', () => {
@@ -349,21 +323,17 @@ describe('Lexer()', () => {
         };
       });
 
-      expect([...lexer.lex('foobaz')]).toEqual([
-        {
-          contents: 'foobaz',
-          index: 0,
-          name: 'MAYBE',
-        },
-      ]);
+      expect([...lexer.lex('foobaz')]).toEqual([{
+        contents: 'foobaz',
+        index: 0,
+        name: 'MAYBE',
+      }]);
 
-      expect([...lexer.lex('foobarbaz')]).toEqual([
-        {
-          contents: 'foobarbaz',
-          index: 0,
-          name: 'MAYBE',
-        },
-      ]);
+      expect([...lexer.lex('foobarbaz')]).toEqual([{
+        contents: 'foobarbaz',
+        index: 0,
+        name: 'MAYBE',
+      }]);
     });
   });
 
@@ -381,13 +351,11 @@ describe('Lexer()', () => {
         };
       });
 
-      expect([...lexer.lex('onetwothree')]).toEqual([
-        {
-          contents: 'onetwothree',
-          index: 0,
-          name: 'SERIES',
-        },
-      ]);
+      expect([...lexer.lex('onetwothree')]).toEqual([{
+        contents: 'onetwothree',
+        index: 0,
+        name: 'SERIES',
+      }]);
     });
   });
 
@@ -434,26 +402,22 @@ describe('Lexer()', () => {
       });
 
       // When active is "false", we can only match a/b.
-      expect([...lexer.lex('ababaabb')]).toEqual([
-        {
-          contents: 'ababaabb',
-          index: 0,
-          name: 'WORD',
-        },
-      ]);
+      expect([...lexer.lex('ababaabb')]).toEqual([{
+        contents: 'ababaabb',
+        index: 0,
+        name: 'WORD',
+      }]);
 
       expect(() => [...lexer.lex('axb')]).toThrow(/Failed to match/);
 
       // When active is "true", we can match anything.
       active = true;
 
-      expect([...lexer.lex('ababzzzaabb')]).toEqual([
-        {
-          contents: 'ababzzzaabb',
-          index: 0,
-          name: 'WORD',
-        },
-      ]);
+      expect([...lexer.lex('ababzzzaabb')]).toEqual([{
+        contents: 'ababzzzaabb',
+        index: 0,
+        name: 'WORD',
+      }]);
     });
   });
 
@@ -576,59 +540,23 @@ describe('Lexer()', () => {
         };
       });
 
-      expect([...lexer.lex('abcjk')]).toEqual([
-        {
-          contents: 'abcjk',
-          index: 0,
-          name: '...',
-        },
-      ]);
+      expect([...lexer.lex('abcjk')]).toEqual([{
+        contents: 'abcjk',
+        index: 0,
+        name: '...',
+      }]);
 
       expect(snapshots).toEqual([
         ['match: a', [['a', true]]],
-        [
-          'match: b',
-          [
-            ['a', true],
-            ['b', true],
-          ],
-        ],
+        ['match: b', [['a', true], ['b', true]]],
         ['match: c', [['b', true]]],
-        [
-          'match: c',
-          [
-            ['a', true],
-            ['b', true],
-            ['c:2', true],
-          ],
-        ],
-        [
-          'match: c',
-          [
-            ['a', true],
-            ['b', true],
-            ['c:3', true],
-          ],
-        ],
-        [
-          'match: j',
-          [
-            ['a', true],
-            ['b', true],
-            ['c:3', true],
-            ['j', true],
-          ],
-        ],
-        [
-          'match: k',
-          [
-            ['a', true],
-            ['b', true],
-            ['c:3', true],
-            ['j', true],
-            ['k', true],
-          ],
-        ],
+        ['match: c', [['a', true], ['b', true], ['c:2', true]]],
+        ['match: c', [['a', true], ['b', true], ['c:3', true]]],
+        ['match: j', [['a', true], ['b', true], ['c:3', true], ['j', true]]],
+        ['match: k', [['a', true], ['b', true], ['c:3', true], ['j', true], [
+          'k',
+          true,
+        ]]],
       ]);
     });
   });
@@ -645,13 +573,11 @@ describe('Lexer()', () => {
         };
       });
 
-      expect([...lexer.lex('bar')]).toEqual([
-        {
-          contents: 'bar',
-          index: 0,
-          name: 'ONE_OF',
-        },
-      ]);
+      expect([...lexer.lex('bar')]).toEqual([{
+        contents: 'bar',
+        index: 0,
+        name: 'ONE_OF',
+      }]);
     });
   });
 
@@ -667,13 +593,11 @@ describe('Lexer()', () => {
         };
       });
 
-      expect([...lexer.lex('foo')]).toEqual([
-        {
-          contents: 'foo',
-          index: 0,
-          name: 'PASS',
-        },
-      ]);
+      expect([...lexer.lex('foo')]).toEqual([{
+        contents: 'foo',
+        index: 0,
+        name: 'PASS',
+      }]);
     });
   });
 
@@ -689,21 +613,17 @@ describe('Lexer()', () => {
         };
       });
 
-      expect([...lexer.lex('foo')]).toEqual([
-        {
-          contents: 'foo',
-          index: 0,
-          name: 'REPEAT',
-        },
-      ]);
+      expect([...lexer.lex('foo')]).toEqual([{
+        contents: 'foo',
+        index: 0,
+        name: 'REPEAT',
+      }]);
 
-      expect([...lexer.lex('foofoofoo')]).toEqual([
-        {
-          contents: 'foofoofoo',
-          index: 0,
-          name: 'REPEAT',
-        },
-      ]);
+      expect([...lexer.lex('foofoofoo')]).toEqual([{
+        contents: 'foofoofoo',
+        index: 0,
+        name: 'REPEAT',
+      }]);
     });
   });
 
@@ -721,13 +641,11 @@ describe('Lexer()', () => {
         };
       });
 
-      expect([...lexer.lex('foobarbaz')]).toEqual([
-        {
-          contents: 'foobarbaz',
-          index: 0,
-          name: 'SEQUENCE',
-        },
-      ]);
+      expect([...lexer.lex('foobarbaz')]).toEqual([{
+        contents: 'foobarbaz',
+        index: 0,
+        name: 'SEQUENCE',
+      }]);
     });
   });
 
@@ -747,26 +665,21 @@ describe('Lexer()', () => {
     });
 
     it('matches 0 or more times up-to-and-including a predicate', () => {
-      expect([...lexer.lex('x')]).toEqual([
-        {
-          contents: 'x',
-          index: 0,
-          name: 'TO',
-        },
-      ]);
+      expect([...lexer.lex('x')]).toEqual([{
+        contents: 'x',
+        index: 0,
+        name: 'TO',
+      }]);
 
-      expect([...lexer.lex('aaxaaaax')]).toEqual([
-        {
-          contents: 'aax',
-          index: 0,
-          name: 'TO',
-        },
-        {
-          contents: 'aaaax',
-          index: 3,
-          name: 'TO',
-        },
-      ]);
+      expect([...lexer.lex('aaxaaaax')]).toEqual([{
+        contents: 'aax',
+        index: 0,
+        name: 'TO',
+      }, {
+        contents: 'aaaax',
+        index: 3,
+        name: 'TO',
+      }]);
     });
 
     it('fails at the end of the input for unseen predicates', () => {
@@ -799,37 +712,30 @@ describe('Lexer()', () => {
 
     it('matches 0 or more times up-to-and-not-including a predicate', () => {
       // 0-times.
-      expect([...lexer.lex('x')]).toEqual([
-        {
-          contents: 'x',
-          index: 0,
-          name: 'X',
-        },
-      ]);
+      expect([...lexer.lex('x')]).toEqual([{
+        contents: 'x',
+        index: 0,
+        name: 'X',
+      }]);
 
       // n-times.
-      expect([...lexer.lex('aaax')]).toEqual([
-        {
-          contents: 'aaa',
-          index: 0,
-          name: 'A',
-        },
-        {
-          contents: 'x',
-          index: 3,
-          name: 'X',
-        },
-      ]);
+      expect([...lexer.lex('aaax')]).toEqual([{
+        contents: 'aaa',
+        index: 0,
+        name: 'A',
+      }, {
+        contents: 'x',
+        index: 3,
+        name: 'X',
+      }]);
     });
 
     it('succeeds at the end of the input even without seeing predicate', () => {
-      expect([...lexer.lex('aaaa')]).toEqual([
-        {
-          contents: 'aaaa',
-          index: 0,
-          name: 'A',
-        },
-      ]);
+      expect([...lexer.lex('aaaa')]).toEqual([{
+        contents: 'aaaa',
+        index: 0,
+        name: 'A',
+      }]);
     });
   });
 
@@ -849,13 +755,11 @@ describe('Lexer()', () => {
         };
       });
 
-      expect([...lexer.lex('abbbbb')]).toEqual([
-        {
-          contents: 'abbbbb',
-          index: 0,
-          name: 'WHEN',
-        },
-      ]);
+      expect([...lexer.lex('abbbbb')]).toEqual([{
+        contents: 'abbbbb',
+        index: 0,
+        name: 'WHEN',
+      }]);
 
       expect(() => [...lexer.lex('foo')]).toThrow(
         'Failed to match predicate("a", "b")+ at: "foo"',

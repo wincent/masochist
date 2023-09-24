@@ -33,38 +33,29 @@ describe('parseWithTable()', () => {
       parseWithTable<ParseTree>(table, tokens, augmentedGrammar, makeNode),
     ).toEqual({
       kind: 'S',
-      children: [
-        {
-          kind: 'N',
-          children: [
-            {
+      children: [{
+        kind: 'N',
+        children: [
+          {
+            kind: 'V',
+            children: [tokens[0]],
+          },
+          tokens[1],
+          {
+            kind: 'E',
+            children: [{
               kind: 'V',
-              children: [tokens[0]],
-            },
-            tokens[1],
-            {
-              kind: 'E',
-              children: [
-                {
+              children: [tokens[2], {
+                kind: 'E',
+                children: [{
                   kind: 'V',
-                  children: [
-                    tokens[2],
-                    {
-                      kind: 'E',
-                      children: [
-                        {
-                          kind: 'V',
-                          children: [tokens[3]],
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-      ],
+                  children: [tokens[3]],
+                }],
+              }],
+            }],
+          },
+        ],
+      }],
     });
   });
 
@@ -92,50 +83,34 @@ describe('parseWithTable()', () => {
       parseWithTable<ParseTree>(table, tokens, augmentedGrammar, makeNode),
     ).toEqual({
       kind: 'Document',
-      children: [
-        {
-          kind: 'Definition',
-          children: [
-            {
-              kind: 'ExecutableDefinition',
-              children: [
-                {
-                  kind: 'OperationDefinition',
-                  children: [
-                    {
-                      kind: 'Selection',
-                      children: [
-                        {
-                          kind: 'Field',
-                          children: [tokens[1]],
-                        },
-                      ],
-                    },
-                    {
-                      kind: 'Selection',
-                      children: [
-                        {
-                          kind: 'Field',
-                          children: [tokens[2]],
-                        },
-                      ],
-                    },
-                    {
-                      kind: 'Selection',
-                      children: [
-                        {
-                          kind: 'Field',
-                          children: [tokens[3]],
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-      ],
+      children: [{
+        kind: 'Definition',
+        children: [{
+          kind: 'ExecutableDefinition',
+          children: [{
+            kind: 'OperationDefinition',
+            children: [{
+              kind: 'Selection',
+              children: [{
+                kind: 'Field',
+                children: [tokens[1]],
+              }],
+            }, {
+              kind: 'Selection',
+              children: [{
+                kind: 'Field',
+                children: [tokens[2]],
+              }],
+            }, {
+              kind: 'Selection',
+              children: [{
+                kind: 'Field',
+                children: [tokens[3]],
+              }],
+            }],
+          }],
+        }],
+      }],
     });
   });
 
@@ -164,23 +139,21 @@ describe('parseWithTable()', () => {
       parseWithTable<ParseTree>(table, tokens, augmentedGrammar, makeNode),
     ).toEqual({
       kind: 'S',
-      children: [
-        {
-          kind: 'Program',
-          children: [
-            {
-              kind: 'BarOpt',
-              children: [tokens[0]],
-            },
-            tokens[1],
-            {
-              kind: 'FooList',
-              children: [tokens[2]],
-            },
-            tokens[3],
-          ],
-        },
-      ],
+      children: [{
+        kind: 'Program',
+        children: [
+          {
+            kind: 'BarOpt',
+            children: [tokens[0]],
+          },
+          tokens[1],
+          {
+            kind: 'FooList',
+            children: [tokens[2]],
+          },
+          tokens[3],
+        ],
+      }],
     });
 
     // Now, without optional BAR.
@@ -200,23 +173,21 @@ describe('parseWithTable()', () => {
       parseWithTable<ParseTree>(table, tokens, augmentedGrammar, makeNode),
     ).toEqual({
       kind: 'S',
-      children: [
-        {
-          kind: 'Program',
-          children: [
-            {
-              kind: 'BarOpt',
-              children: [],
-            },
-            tokens[0],
-            {
-              kind: 'FooList',
-              children: [tokens[1]],
-            },
-            tokens[2],
-          ],
-        },
-      ],
+      children: [{
+        kind: 'Program',
+        children: [
+          {
+            kind: 'BarOpt',
+            children: [],
+          },
+          tokens[0],
+          {
+            kind: 'FooList',
+            children: [tokens[1]],
+          },
+          tokens[2],
+        ],
+      }],
     });
   });
 

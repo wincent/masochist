@@ -19,8 +19,7 @@ describe('parseWithTable()', () => {
   });
 
   it('parses a simple document using the GraphQL grammar', () => {
-    const tokens = [
-      ...lex(`
+    const tokens = [...lex(`
         query IndexQuery @deprecated(since: "2001-01-01") @live {
           foo
           barAlias: bar
@@ -49,8 +48,7 @@ describe('parseWithTable()', () => {
         fragment BareFragment on Thing @fast {
           contents
         }
-    `),
-    ];
+    `)];
 
     expect(
       parseWithTable(parseTable, tokens, grammar, makeNode),

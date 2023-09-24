@@ -100,14 +100,12 @@ export default function build(
                 return `_$${i + 1}`;
               }
             }),
-          [
-            ast.rawStatement(
-              rule.action
-                .replace(/^{|}$/g, '') // Strip semantic action delimiters.
-                .trim()
-                .replace(/\$\$\s*=\s*/g, 'return '), // TODO: static analysis to make sure this is safe.
-            ),
-          ],
+          [ast.rawStatement(
+            rule.action
+              .replace(/^{|}$/g, '') // Strip semantic action delimiters.
+              .trim()
+              .replace(/\$\$\s*=\s*/g, 'return '), // TODO: static analysis to make sure this is safe.
+          )],
         );
       } else {
         return ast.docComment(`r${i}: no production`);

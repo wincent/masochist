@@ -60,26 +60,22 @@ describe('minimizeDFA()', () => {
         transitions: [
           /* 0 */ new Map([['Atom:\\', new Set([1])]]),
           /* 1 */ new Map([['Atom:u', new Set([2])]]),
-          /* 2 */ new Map([
-            ['Range:0-9', new Set([3])],
-            ['Range:A-F', new Set([3])],
-            ['Range:a-f', new Set([3])],
-          ]),
-          /* 3 */ new Map([
-            ['Range:0-9', new Set([4])],
-            ['Range:A-F', new Set([4])],
-            ['Range:a-f', new Set([4])],
-          ]),
-          /* 4 */ new Map([
-            ['Range:0-9', new Set([5])],
-            ['Range:A-F', new Set([5])],
-            ['Range:a-f', new Set([5])],
-          ]),
-          /* 5 */ new Map([
-            ['Range:a-f', new Set([6])],
-            ['Range:A-F', new Set([6])],
-            ['Range:0-9', new Set([6])],
-          ]),
+          /* 2 */ new Map([['Range:0-9', new Set([3])], [
+            'Range:A-F',
+            new Set([3]),
+          ], ['Range:a-f', new Set([3])]]),
+          /* 3 */ new Map([['Range:0-9', new Set([4])], [
+            'Range:A-F',
+            new Set([4]),
+          ], ['Range:a-f', new Set([4])]]),
+          /* 4 */ new Map([['Range:0-9', new Set([5])], [
+            'Range:A-F',
+            new Set([5]),
+          ], ['Range:a-f', new Set([5])]]),
+          /* 5 */ new Map([['Range:a-f', new Set([6])], [
+            'Range:A-F',
+            new Set([6]),
+          ], ['Range:0-9', new Set([6])]]),
           /* 6 */ new Map(),
         ],
       });
@@ -90,15 +86,11 @@ describe('minimizeDFA()', () => {
         acceptStates: new Set([3]),
         startStates: new Set([0]),
         transitions: [
-          /* 0 */ new Map([
-            ['Atom:E', new Set([1])],
-            ['Atom:e', new Set([1])],
-          ]),
-          /* 1 */ new Map([
-            ['Atom:+', new Set([2])],
-            ['Atom:-', new Set([2])],
-            ['Range:0-9', new Set([3])],
-          ]),
+          /* 0 */ new Map([['Atom:E', new Set([1])], ['Atom:e', new Set([1])]]),
+          /* 1 */ new Map([['Atom:+', new Set([2])], ['Atom:-', new Set([2])], [
+            'Range:0-9',
+            new Set([3]),
+          ]]),
           /* 2 */ new Map([['Range:0-9', new Set([3])]]),
           /* 3 */ new Map([['Range:0-9', new Set([3])]]),
         ],
@@ -122,15 +114,14 @@ describe('minimizeDFA()', () => {
         acceptStates: new Set([2, 3]),
         startStates: new Set([0]),
         transitions: [
-          /* 0 */ new Map([
-            ['Atom:-', new Set([1])],
-            ['Atom:0', new Set([2])],
-            ['Range:1-9', new Set([3])],
-          ]),
-          /* 1 */ new Map([
-            ['Atom:0', new Set([2])],
-            ['Range:1-9', new Set([3])],
-          ]),
+          /* 0 */ new Map([['Atom:-', new Set([1])], ['Atom:0', new Set([2])], [
+            'Range:1-9',
+            new Set([3]),
+          ]]),
+          /* 1 */ new Map([['Atom:0', new Set([2])], [
+            'Range:1-9',
+            new Set([3]),
+          ]]),
           /* 2 */ new Map(),
           /* 3 */ new Map([['Range:0-9', new Set([3])]]),
         ],
@@ -142,10 +133,10 @@ describe('minimizeDFA()', () => {
         acceptStates: new Set([1, 2]),
         startStates: new Set([0]),
         transitions: [
-          /* 0 */ new Map([
-            ['Atom:\n', new Set([1])],
-            ['Atom:\r', new Set([2])],
-          ]),
+          /* 0 */ new Map([['Atom:\n', new Set([1])], [
+            'Atom:\r',
+            new Set([2]),
+          ]]),
           /* 1 */ new Map(),
           /* 2 */ new Map([['Atom:\n', new Set([1])]]),
         ],
@@ -157,11 +148,10 @@ describe('minimizeDFA()', () => {
         acceptStates: new Set([1]),
         startStates: new Set([0]),
         transitions: [
-          /* 0 */ new Map([
-            ['Range:a-z', new Set([1])],
-            ['Range:A-Z', new Set([1])],
-            ['Atom:_', new Set([1])],
-          ]),
+          /* 0 */ new Map([['Range:a-z', new Set([1])], [
+            'Range:A-Z',
+            new Set([1]),
+          ], ['Atom:_', new Set([1])]]),
           /* 1 */ new Map([
             ['Range:a-z', new Set([1])],
             ['Range:A-Z', new Set([1])],
@@ -177,20 +167,18 @@ describe('minimizeDFA()', () => {
         acceptStates: new Set([2, 6, 8, 3]),
         startStates: new Set([0]),
         transitions: [
-          /* 0 */ new Map([
-            ['Atom:-', new Set([1])],
-            ['Atom:0', new Set([2])],
-            ['Range:1-9', new Set([3])],
-          ]),
-          /* 1 */ new Map([
-            ['Atom:0', new Set([2])],
-            ['Range:1-9', new Set([3])],
-          ]),
-          /* 2 */ new Map([
-            ['Atom:.', new Set([4])],
-            ['Atom:E', new Set([5])],
-            ['Atom:e', new Set([5])],
-          ]),
+          /* 0 */ new Map([['Atom:-', new Set([1])], ['Atom:0', new Set([2])], [
+            'Range:1-9',
+            new Set([3]),
+          ]]),
+          /* 1 */ new Map([['Atom:0', new Set([2])], [
+            'Range:1-9',
+            new Set([3]),
+          ]]),
+          /* 2 */ new Map([['Atom:.', new Set([4])], ['Atom:E', new Set([5])], [
+            'Atom:e',
+            new Set([5]),
+          ]]),
           /* 3 */ new Map([
             ['Atom:.', new Set([4])],
             ['Range:0-9', new Set([3])],
@@ -198,16 +186,14 @@ describe('minimizeDFA()', () => {
             ['Atom:e', new Set([5])],
           ]),
           /* 4 */ new Map([['Range:0-9', new Set([6])]]),
-          /* 5 */ new Map([
-            ['Atom:+', new Set([7])],
-            ['Atom:-', new Set([7])],
-            ['Range:0-9', new Set([8])],
-          ]),
-          /* 6 */ new Map([
-            ['Range:0-9', new Set([6])],
-            ['Atom:E', new Set([5])],
-            ['Atom:e', new Set([5])],
-          ]),
+          /* 5 */ new Map([['Atom:+', new Set([7])], ['Atom:-', new Set([7])], [
+            'Range:0-9',
+            new Set([8]),
+          ]]),
+          /* 6 */ new Map([['Range:0-9', new Set([6])], [
+            'Atom:E',
+            new Set([5]),
+          ], ['Atom:e', new Set([5])]]),
           /* 7 */ new Map([['Range:0-9', new Set([8])]]),
           /* 8 */ new Map([['Range:0-9', new Set([8])]]),
         ],
@@ -219,11 +205,10 @@ describe('minimizeDFA()', () => {
         acceptStates: new Set([1]),
         startStates: new Set([0]),
         transitions: [
-          /* 0 */ new Map([
-            ['Range: -\uffff', new Set([1])],
-            ['Range:\t-\n', new Set([1])],
-            ['Atom:\r', new Set([1])],
-          ]),
+          /* 0 */ new Map([['Range: -\uffff', new Set([1])], [
+            'Range:\t-\n',
+            new Set([1]),
+          ], ['Atom:\r', new Set([1])]]),
           /* 1 */ new Map(),
         ],
       });
@@ -253,26 +238,22 @@ describe('minimizeDFA()', () => {
             ['Atom:"', new Set([1])],
             ['Atom:u', new Set([3])],
           ]),
-          /* 3 */ new Map([
-            ['Range:0-9', new Set([4])],
-            ['Range:A-F', new Set([4])],
-            ['Range:a-f', new Set([4])],
-          ]),
-          /* 4 */ new Map([
-            ['Range:0-9', new Set([5])],
-            ['Range:A-F', new Set([5])],
-            ['Range:a-f', new Set([5])],
-          ]),
-          /* 5 */ new Map([
-            ['Range:0-9', new Set([6])],
-            ['Range:A-F', new Set([6])],
-            ['Range:a-f', new Set([6])],
-          ]),
-          /* 6 */ new Map([
-            ['Range:a-f', new Set([1])],
-            ['Range:A-F', new Set([1])],
-            ['Range:0-9', new Set([1])],
-          ]),
+          /* 3 */ new Map([['Range:0-9', new Set([4])], [
+            'Range:A-F',
+            new Set([4]),
+          ], ['Range:a-f', new Set([4])]]),
+          /* 4 */ new Map([['Range:0-9', new Set([5])], [
+            'Range:A-F',
+            new Set([5]),
+          ], ['Range:a-f', new Set([5])]]),
+          /* 5 */ new Map([['Range:0-9', new Set([6])], [
+            'Range:A-F',
+            new Set([6]),
+          ], ['Range:a-f', new Set([6])]]),
+          /* 6 */ new Map([['Range:a-f', new Set([1])], [
+            'Range:A-F',
+            new Set([1]),
+          ], ['Range:0-9', new Set([1])]]),
         ],
       });
     });
@@ -313,26 +294,22 @@ describe('minimizeDFA()', () => {
             ['Atom:\\', new Set([4])],
             ['Atom:u', new Set([5])],
           ]),
-          /* 5 */ new Map([
-            ['Range:0-9', new Set([6])],
-            ['Range:A-F', new Set([6])],
-            ['Range:a-f', new Set([6])],
-          ]),
-          /* 6 */ new Map([
-            ['Range:0-9', new Set([7])],
-            ['Range:A-F', new Set([7])],
-            ['Range:a-f', new Set([7])],
-          ]),
-          /* 7 */ new Map([
-            ['Range:0-9', new Set([8])],
-            ['Range:A-F', new Set([8])],
-            ['Range:a-f', new Set([8])],
-          ]),
-          /* 8 */ new Map([
-            ['Range:0-9', new Set([1])],
-            ['Range:A-F', new Set([1])],
-            ['Range:a-f', new Set([1])],
-          ]),
+          /* 5 */ new Map([['Range:0-9', new Set([6])], [
+            'Range:A-F',
+            new Set([6]),
+          ], ['Range:a-f', new Set([6])]]),
+          /* 6 */ new Map([['Range:0-9', new Set([7])], [
+            'Range:A-F',
+            new Set([7]),
+          ], ['Range:a-f', new Set([7])]]),
+          /* 7 */ new Map([['Range:0-9', new Set([8])], [
+            'Range:A-F',
+            new Set([8]),
+          ], ['Range:a-f', new Set([8])]]),
+          /* 8 */ new Map([['Range:0-9', new Set([1])], [
+            'Range:A-F',
+            new Set([1]),
+          ], ['Range:a-f', new Set([1])]]),
         ],
       });
     });
@@ -342,14 +319,14 @@ describe('minimizeDFA()', () => {
         acceptStates: new Set([1]),
         startStates: new Set([0]),
         transitions: [
-          /* 0 */ new Map([
-            ['Atom: ', new Set([1])],
-            ['Atom:\t', new Set([1])],
-          ]),
-          /* 1 */ new Map([
-            ['Atom: ', new Set([1])],
-            ['Atom:\t', new Set([1])],
-          ]),
+          /* 0 */ new Map([['Atom: ', new Set([1])], [
+            'Atom:\t',
+            new Set([1]),
+          ]]),
+          /* 1 */ new Map([['Atom: ', new Set([1])], [
+            'Atom:\t',
+            new Set([1]),
+          ]]),
         ],
       });
     });

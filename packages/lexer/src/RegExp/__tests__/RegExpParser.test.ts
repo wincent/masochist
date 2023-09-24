@@ -27,42 +27,30 @@ describe('RegExpParser', () => {
   it('parses a sequence with the "i" flag', () => {
     expect(new RegExpParser(/abc/i).parse()).toEqual({
       kind: 'Sequence',
-      children: [
-        {
-          kind: 'CharacterClass',
-          children: [
-            {kind: 'Atom', value: 'A'},
-            {kind: 'Atom', value: 'a'},
-          ],
-          negated: false,
-        },
-        {
-          kind: 'CharacterClass',
-          children: [
-            {kind: 'Atom', value: 'B'},
-            {kind: 'Atom', value: 'b'},
-          ],
-          negated: false,
-        },
-        {
-          kind: 'CharacterClass',
-          children: [
-            {kind: 'Atom', value: 'C'},
-            {kind: 'Atom', value: 'c'},
-          ],
-          negated: false,
-        },
-      ],
+      children: [{
+        kind: 'CharacterClass',
+        children: [{kind: 'Atom', value: 'A'}, {kind: 'Atom', value: 'a'}],
+        negated: false,
+      }, {
+        kind: 'CharacterClass',
+        children: [{kind: 'Atom', value: 'B'}, {kind: 'Atom', value: 'b'}],
+        negated: false,
+      }, {
+        kind: 'CharacterClass',
+        children: [{kind: 'Atom', value: 'C'}, {kind: 'Atom', value: 'c'}],
+        negated: false,
+      }],
     });
   });
 
   it('parses a character class with the "i" flag', () => {
     const expected = {
       kind: 'CharacterClass',
-      children: [
-        {kind: 'Range', from: 'A', to: 'Z'},
-        {kind: 'Range', from: 'a', to: 'z'},
-      ],
+      children: [{kind: 'Range', from: 'A', to: 'Z'}, {
+        kind: 'Range',
+        from: 'a',
+        to: 'z',
+      }],
       negated: false,
     };
 
@@ -79,38 +67,30 @@ describe('RegExpParser', () => {
   it('parses alternates', () => {
     expect(new RegExpParser(/a|b/).parse()).toEqual({
       kind: 'Alternate',
-      children: [
-        {
-          kind: 'Atom',
-          value: 'a',
-        },
-        {
-          kind: 'Atom',
-          value: 'b',
-        },
-      ],
+      children: [{
+        kind: 'Atom',
+        value: 'a',
+      }, {
+        kind: 'Atom',
+        value: 'b',
+      }],
     });
 
     expect(new RegExpParser(/foo|bar/).parse()).toEqual({
       kind: 'Alternate',
-      children: [
-        {
-          kind: 'Sequence',
-          children: [
-            {kind: 'Atom', value: 'f'},
-            {kind: 'Atom', value: 'o'},
-            {kind: 'Atom', value: 'o'},
-          ],
-        },
-        {
-          kind: 'Sequence',
-          children: [
-            {kind: 'Atom', value: 'b'},
-            {kind: 'Atom', value: 'a'},
-            {kind: 'Atom', value: 'r'},
-          ],
-        },
-      ],
+      children: [{
+        kind: 'Sequence',
+        children: [{kind: 'Atom', value: 'f'}, {kind: 'Atom', value: 'o'}, {
+          kind: 'Atom',
+          value: 'o',
+        }],
+      }, {
+        kind: 'Sequence',
+        children: [{kind: 'Atom', value: 'b'}, {kind: 'Atom', value: 'a'}, {
+          kind: 'Atom',
+          value: 'r',
+        }],
+      }],
     });
   });
 
@@ -142,11 +122,10 @@ describe('RegExpParser', () => {
       maximum: Infinity,
       child: {
         kind: 'Sequence',
-        children: [
-          {kind: 'Atom', value: 'f'},
-          {kind: 'Atom', value: 'o'},
-          {kind: 'Atom', value: 'o'},
-        ],
+        children: [{kind: 'Atom', value: 'f'}, {kind: 'Atom', value: 'o'}, {
+          kind: 'Atom',
+          value: 'o',
+        }],
       },
     });
   });
@@ -265,11 +244,10 @@ describe('RegExpParser', () => {
   it('parses a simple character class', () => {
     expect(new RegExpParser(/[ajz]/).parse()).toEqual({
       kind: 'CharacterClass',
-      children: [
-        {kind: 'Atom', value: 'a'},
-        {kind: 'Atom', value: 'j'},
-        {kind: 'Atom', value: 'z'},
-      ],
+      children: [{kind: 'Atom', value: 'a'}, {kind: 'Atom', value: 'j'}, {
+        kind: 'Atom',
+        value: 'z',
+      }],
       negated: false,
     });
   });
@@ -307,12 +285,10 @@ describe('RegExpParser', () => {
   it('parses a character class containing a range', () => {
     expect(new RegExpParser(/[adft-z]/).parse()).toEqual({
       kind: 'CharacterClass',
-      children: [
-        {kind: 'Atom', value: 'a'},
-        {kind: 'Atom', value: 'd'},
-        {kind: 'Atom', value: 'f'},
-        {kind: 'Range', from: 't', to: 'z'},
-      ],
+      children: [{kind: 'Atom', value: 'a'}, {kind: 'Atom', value: 'd'}, {
+        kind: 'Atom',
+        value: 'f',
+      }, {kind: 'Range', from: 't', to: 'z'}],
       negated: false,
     });
   });
@@ -334,11 +310,10 @@ describe('RegExpParser', () => {
   it('treats "^" as a literal "^" when not the first thing in a character class', () => {
     expect(new RegExpParser(/[a^1]/).parse()).toEqual({
       kind: 'CharacterClass',
-      children: [
-        {kind: 'Atom', value: '1'},
-        {kind: 'Atom', value: '^'},
-        {kind: 'Atom', value: 'a'},
-      ],
+      children: [{kind: 'Atom', value: '1'}, {kind: 'Atom', value: '^'}, {
+        kind: 'Atom',
+        value: 'a',
+      }],
       negated: false,
     });
   });
@@ -346,11 +321,10 @@ describe('RegExpParser', () => {
   it('treats "." as a literal "." when inside a character class', () => {
     expect(new RegExpParser(/[a1.]/).parse()).toEqual({
       kind: 'CharacterClass',
-      children: [
-        {kind: 'Atom', value: '.'},
-        {kind: 'Atom', value: '1'},
-        {kind: 'Atom', value: 'a'},
-      ],
+      children: [{kind: 'Atom', value: '.'}, {kind: 'Atom', value: '1'}, {
+        kind: 'Atom',
+        value: 'a',
+      }],
       negated: false,
     });
   });
@@ -358,11 +332,10 @@ describe('RegExpParser', () => {
   it('treats "-" as a literal "-" at the start of a character class', () => {
     expect(new RegExpParser(/[-a5]/).parse()).toEqual({
       kind: 'CharacterClass',
-      children: [
-        {kind: 'Atom', value: '-'},
-        {kind: 'Atom', value: '5'},
-        {kind: 'Atom', value: 'a'},
-      ],
+      children: [{kind: 'Atom', value: '-'}, {kind: 'Atom', value: '5'}, {
+        kind: 'Atom',
+        value: 'a',
+      }],
       negated: false,
     });
   });
@@ -370,11 +343,10 @@ describe('RegExpParser', () => {
   it('treats "-" as a literal "-" at the end of a character class', () => {
     expect(new RegExpParser(/[a5-]/).parse()).toEqual({
       kind: 'CharacterClass',
-      children: [
-        {kind: 'Atom', value: '-'},
-        {kind: 'Atom', value: '5'},
-        {kind: 'Atom', value: 'a'},
-      ],
+      children: [{kind: 'Atom', value: '-'}, {kind: 'Atom', value: '5'}, {
+        kind: 'Atom',
+        value: 'a',
+      }],
       negated: false,
     });
   });
@@ -404,11 +376,11 @@ describe('RegExpParser', () => {
   it('parses a range with the "i" flag', () => {
     expect(new RegExpParser(/[X-c]/i).parse()).toEqual({
       kind: 'CharacterClass',
-      children: [
-        {kind: 'Range', from: 'A', to: 'C'},
-        {kind: 'Range', from: 'X', to: 'c'},
-        {kind: 'Range', from: 'x', to: 'z'},
-      ],
+      children: [{kind: 'Range', from: 'A', to: 'C'}, {
+        kind: 'Range',
+        from: 'X',
+        to: 'c',
+      }, {kind: 'Range', from: 'x', to: 'z'}],
       negated: false,
     });
   });
@@ -416,16 +388,12 @@ describe('RegExpParser', () => {
   it('parses an atom followed by "+"', () => {
     expect(new RegExpParser(/foo+/).parse()).toEqual({
       kind: 'Sequence',
-      children: [
-        {kind: 'Atom', value: 'f'},
-        {kind: 'Atom', value: 'o'},
-        {
-          kind: 'Repeat',
-          minimum: 1,
-          maximum: Infinity,
-          child: {kind: 'Atom', value: 'o'},
-        },
-      ],
+      children: [{kind: 'Atom', value: 'f'}, {kind: 'Atom', value: 'o'}, {
+        kind: 'Repeat',
+        minimum: 1,
+        maximum: Infinity,
+        child: {kind: 'Atom', value: 'o'},
+      }],
     });
   });
 
@@ -442,21 +410,16 @@ describe('RegExpParser', () => {
     // But escaped versions are fine.
     expect(new RegExpParser(/\^foo/).parse()).toEqual({
       kind: 'Sequence',
-      children: [
-        {kind: 'Atom', value: '^'},
-        {kind: 'Atom', value: 'f'},
-        {kind: 'Atom', value: 'o'},
-        {kind: 'Atom', value: 'o'},
-      ],
+      children: [{kind: 'Atom', value: '^'}, {kind: 'Atom', value: 'f'}, {
+        kind: 'Atom',
+        value: 'o',
+      }, {kind: 'Atom', value: 'o'}],
     });
 
     // And it's ok inside character classes.
     expect(new RegExpParser(/[a^]/).parse()).toEqual({
       kind: 'CharacterClass',
-      children: [
-        {kind: 'Atom', value: '^'},
-        {kind: 'Atom', value: 'a'},
-      ],
+      children: [{kind: 'Atom', value: '^'}, {kind: 'Atom', value: 'a'}],
       negated: false,
     });
   });
@@ -474,21 +437,20 @@ describe('RegExpParser', () => {
     // But escaped versions are fine.
     expect(new RegExpParser(/foo\$/).parse()).toEqual({
       kind: 'Sequence',
-      children: [
-        {kind: 'Atom', value: 'f'},
-        {kind: 'Atom', value: 'o'},
-        {kind: 'Atom', value: 'o'},
-        {kind: 'Atom', value: '$'},
-      ],
+      children: [{kind: 'Atom', value: 'f'}, {kind: 'Atom', value: 'o'}, {
+        kind: 'Atom',
+        value: 'o',
+      }, {kind: 'Atom', value: '$'}],
     });
 
     // And it's ok inside character classes.
     expect(new RegExpParser(/[$abc]/).parse()).toEqual({
       kind: 'CharacterClass',
-      children: [
-        {kind: 'Atom', value: '$'},
-        {kind: 'Range', from: 'a', to: 'c'},
-      ],
+      children: [{kind: 'Atom', value: '$'}, {
+        kind: 'Range',
+        from: 'a',
+        to: 'c',
+      }],
       negated: false,
     });
   });

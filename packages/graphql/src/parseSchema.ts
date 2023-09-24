@@ -30,83 +30,74 @@ function r5($1) {
 function r6($1) {
   return $1;
 }
-const actions = [
-  {
-    NAME: {
-      kind: 'Shift',
-      state: 6,
-    },
+const actions = [{
+  NAME: {
+    kind: 'Shift',
+    state: 6,
   },
-  {
-    $: {
-      kind: 'Accept',
-    },
-    NAME: {
-      kind: 'Shift',
-      state: 6,
-    },
+}, {
+  $: {
+    kind: 'Accept',
   },
-  {
-    NAME: {
-      kind: 'Reduce',
-      rule: 1,
-    },
-    $: {
-      kind: 'Reduce',
-      rule: 1,
-    },
+  NAME: {
+    kind: 'Shift',
+    state: 6,
   },
-  {
-    NAME: {
-      kind: 'Reduce',
-      rule: 2,
-    },
-    $: {
-      kind: 'Reduce',
-      rule: 2,
-    },
+}, {
+  NAME: {
+    kind: 'Reduce',
+    rule: 1,
   },
-  {
-    NAME: {
-      kind: 'Reduce',
-      rule: 4,
-    },
-    $: {
-      kind: 'Reduce',
-      rule: 4,
-    },
+  $: {
+    kind: 'Reduce',
+    rule: 1,
   },
-  {
-    NAME: {
-      kind: 'Reduce',
-      rule: 5,
-    },
-    $: {
-      kind: 'Reduce',
-      rule: 5,
-    },
+}, {
+  NAME: {
+    kind: 'Reduce',
+    rule: 2,
   },
-  {
-    NAME: {
-      kind: 'Reduce',
-      rule: 6,
-    },
-    $: {
-      kind: 'Reduce',
-      rule: 6,
-    },
+  $: {
+    kind: 'Reduce',
+    rule: 2,
   },
-  {
-    NAME: {
-      kind: 'Reduce',
-      rule: 3,
-    },
-    $: {
-      kind: 'Reduce',
-      rule: 3,
-    },
+}, {
+  NAME: {
+    kind: 'Reduce',
+    rule: 4,
   },
-];
+  $: {
+    kind: 'Reduce',
+    rule: 4,
+  },
+}, {
+  NAME: {
+    kind: 'Reduce',
+    rule: 5,
+  },
+  $: {
+    kind: 'Reduce',
+    rule: 5,
+  },
+}, {
+  NAME: {
+    kind: 'Reduce',
+    rule: 6,
+  },
+  $: {
+    kind: 'Reduce',
+    rule: 6,
+  },
+}, {
+  NAME: {
+    kind: 'Reduce',
+    rule: 3,
+  },
+  $: {
+    kind: 'Reduce',
+    rule: 3,
+  },
+}];
 const gotos = [
   {
     ScalarTypeDefinition: 5,
@@ -127,51 +118,38 @@ const gotos = [
   {},
   {},
 ];
-const rules = [
-  {
-    production: "TypeSystemDocument'",
-    pop: 1,
-    action: r0,
-  },
-  {
-    production: 'TypeSystemDocument',
-    pop: 1,
-    action: r1,
-  },
-  {
-    production: 'TypeSystemDefinitionList',
-    pop: 1,
-    action: r2,
-  },
-  {
-    production: 'TypeSystemDefinitionList',
-    pop: 2,
-    action: r3,
-  },
-  {
-    production: 'TypeSystemDefinition',
-    pop: 1,
-    action: r4,
-  },
-  {
-    production: 'TypeDefinition',
-    pop: 1,
-    action: r5,
-  },
-  {
-    production: 'ScalarTypeDefinition',
-    pop: 1,
-    action: r6,
-  },
-];
+const rules = [{
+  production: "TypeSystemDocument'",
+  pop: 1,
+  action: r0,
+}, {
+  production: 'TypeSystemDocument',
+  pop: 1,
+  action: r1,
+}, {
+  production: 'TypeSystemDefinitionList',
+  pop: 1,
+  action: r2,
+}, {
+  production: 'TypeSystemDefinitionList',
+  pop: 2,
+  action: r3,
+}, {
+  production: 'TypeSystemDefinition',
+  pop: 1,
+  action: r4,
+}, {
+  production: 'TypeDefinition',
+  pop: 1,
+  action: r5,
+}, {
+  production: 'ScalarTypeDefinition',
+  pop: 1,
+  action: r6,
+}];
 const EOF = new Token('$', -1, -1, '');
 export default function parseSchema(input) {
-  const stack = [
-    [
-      null,
-      0,
-    ],
-  ];
+  const stack = [[null, 0]];
   const lexer = new Lexer(input);
   let token = lexer.next() || EOF;
 

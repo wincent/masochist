@@ -48,10 +48,7 @@ describe('lexer', () => {
           ['Atom:}', new Set([25])],
           ['Atom:\ufeff', new Set([2])],
         ]),
-        /* 1 */ new Map([
-          ['Atom:\t', new Set([1])],
-          ['Atom: ', new Set([1])],
-        ]),
+        /* 1 */ new Map([['Atom:\t', new Set([1])], ['Atom: ', new Set([1])]]),
         /* 2 */ new Map(),
         /* 3 */ new Map([['Atom:\n', new Set([2])]]),
         /* 4 */ new Map(),
@@ -63,18 +60,18 @@ describe('lexer', () => {
           ['Atom:\\', new Set([28])],
           ['Range:]-\uffff', new Set([26])],
         ]),
-        /* 6 */ new Map([
-          ['Atom:\t', new Set([6])],
-          ['Range: -\uffff', new Set([6])],
-        ]),
+        /* 6 */ new Map([['Atom:\t', new Set([6])], [
+          'Range: -\uffff',
+          new Set([6]),
+        ]]),
         /* 7 */ new Map(),
         /* 8 */ new Map(),
         /* 9 */ new Map(),
         /* 10 */ new Map(),
-        /* 11 */ new Map([
-          ['Atom:0', new Set([13])],
-          ['Range:1-9', new Set([14])],
-        ]),
+        /* 11 */ new Map([['Atom:0', new Set([13])], [
+          'Range:1-9',
+          new Set([14]),
+        ]]),
         /* 12 */ new Map([['Atom:.', new Set([29])]]),
         /* 13 */ new Map([
           ['Atom:.', new Set([30])],
@@ -177,17 +174,15 @@ describe('lexer', () => {
           ['Atom:t', new Set([26])],
           ['Atom:u', new Set([37])],
         ]),
-        /* 37 */ new Map([
-          ['Range:0-9', new Set([45])],
-          ['Range:A-F', new Set([45])],
-          ['Range:a-f', new Set([45])],
-        ]),
+        /* 37 */ new Map([['Range:0-9', new Set([45])], [
+          'Range:A-F',
+          new Set([45]),
+        ], ['Range:a-f', new Set([45])]]),
         /* 38 */ new Map(),
-        /* 39 */ new Map([
-          ['Range:0-9', new Set([39])],
-          ['Atom:E', new Set([31])],
-          ['Atom:e', new Set([31])],
-        ]),
+        /* 39 */ new Map([['Range:0-9', new Set([39])], [
+          'Atom:E',
+          new Set([31]),
+        ], ['Atom:e', new Set([31])]]),
         /* 40 */ new Map([['Range:0-9', new Set([41])]]),
         /* 41 */ new Map([['Range:0-9', new Set([41])]]),
         /* 42 */ new Map([
@@ -216,11 +211,10 @@ describe('lexer', () => {
           ['Atom:\\', new Set([44])],
           ['Range:]-\uffff', new Set([35])],
         ]),
-        /* 45 */ new Map([
-          ['Range:0-9', new Set([49])],
-          ['Range:A-F', new Set([49])],
-          ['Range:a-f', new Set([49])],
-        ]),
+        /* 45 */ new Map([['Range:0-9', new Set([49])], [
+          'Range:A-F',
+          new Set([49]),
+        ], ['Range:a-f', new Set([49])]]),
         /* 46 */ new Map([
           ['Range:0-9', new Set([18])],
           ['Range:A-Z', new Set([18])],
@@ -247,11 +241,10 @@ describe('lexer', () => {
           ['Atom:\\', new Set([44])],
           ['Range:]-\uffff', new Set([35])],
         ]),
-        /* 49 */ new Map([
-          ['Range:0-9', new Set([53])],
-          ['Range:A-F', new Set([53])],
-          ['Range:a-f', new Set([53])],
-        ]),
+        /* 49 */ new Map([['Range:0-9', new Set([53])], [
+          'Range:A-F',
+          new Set([53]),
+        ], ['Range:a-f', new Set([53])]]),
         /* 50 */ new Map([
           ['Range:0-9', new Set([18])],
           ['Range:A-Z', new Set([18])],
@@ -268,11 +261,10 @@ describe('lexer', () => {
           ['Atom:\\', new Set([44])],
           ['Range:]-\uffff', new Set([35])],
         ]),
-        /* 53 */ new Map([
-          ['Range:0-9', new Set([26])],
-          ['Range:A-F', new Set([26])],
-          ['Range:a-f', new Set([26])],
-        ]),
+        /* 53 */ new Map([['Range:0-9', new Set([26])], [
+          'Range:A-F',
+          new Set([26]),
+        ], ['Range:a-f', new Set([26])]]),
         /* 54 */ new Map([
           ['Range:0-9', new Set([18])],
           ['Range:A-Z', new Set([18])],

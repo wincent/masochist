@@ -10,20 +10,18 @@ describe('normalizeCharacterClass()', () => {
     expect(
       normalizeCharacterClass({
         kind: 'CharacterClass',
-        children: [
-          {kind: 'Atom', value: 'A'},
-          {kind: 'Atom', value: 'J'},
-          {kind: 'Atom', value: 'Q'},
-        ],
+        children: [{kind: 'Atom', value: 'A'}, {kind: 'Atom', value: 'J'}, {
+          kind: 'Atom',
+          value: 'Q',
+        }],
         negated: false,
       }),
     ).toEqual({
       kind: 'CharacterClass',
-      children: [
-        {kind: 'Atom', value: 'A'},
-        {kind: 'Atom', value: 'J'},
-        {kind: 'Atom', value: 'Q'},
-      ],
+      children: [{kind: 'Atom', value: 'A'}, {kind: 'Atom', value: 'J'}, {
+        kind: 'Atom',
+        value: 'Q',
+      }],
       negated: false,
     });
   });
@@ -43,11 +41,10 @@ describe('normalizeCharacterClass()', () => {
       }),
     ).toEqual({
       kind: 'CharacterClass',
-      children: [
-        {kind: 'Atom', value: 'A'},
-        {kind: 'Atom', value: 'J'},
-        {kind: 'Atom', value: 'Q'},
-      ],
+      children: [{kind: 'Atom', value: 'A'}, {kind: 'Atom', value: 'J'}, {
+        kind: 'Atom',
+        value: 'Q',
+      }],
       negated: false,
     });
   });
@@ -56,20 +53,18 @@ describe('normalizeCharacterClass()', () => {
     expect(
       normalizeCharacterClass({
         kind: 'CharacterClass',
-        children: [
-          {kind: 'Atom', value: 'J'},
-          {kind: 'Atom', value: 'Q'},
-          {kind: 'Atom', value: 'A'},
-        ],
+        children: [{kind: 'Atom', value: 'J'}, {kind: 'Atom', value: 'Q'}, {
+          kind: 'Atom',
+          value: 'A',
+        }],
         negated: false,
       }),
     ).toEqual({
       kind: 'CharacterClass',
-      children: [
-        {kind: 'Atom', value: 'A'},
-        {kind: 'Atom', value: 'J'},
-        {kind: 'Atom', value: 'Q'},
-      ],
+      children: [{kind: 'Atom', value: 'A'}, {kind: 'Atom', value: 'J'}, {
+        kind: 'Atom',
+        value: 'Q',
+      }],
       negated: false,
     });
   });
@@ -78,11 +73,10 @@ describe('normalizeCharacterClass()', () => {
     expect(
       normalizeCharacterClass({
         kind: 'CharacterClass',
-        children: [
-          {kind: 'Atom', value: 'x'},
-          {kind: 'Atom', value: 'y'},
-          {kind: 'Atom', value: 'z'},
-        ],
+        children: [{kind: 'Atom', value: 'x'}, {kind: 'Atom', value: 'y'}, {
+          kind: 'Atom',
+          value: 'z',
+        }],
         negated: false,
       }),
     ).toEqual({
@@ -102,10 +96,11 @@ describe('normalizeCharacterClass()', () => {
       }),
     ).toEqual({
       kind: 'CharacterClass',
-      children: [
-        {kind: 'Range', from: '\u0000', to: 'G'},
-        {kind: 'Range', from: 'Q', to: '\uffff'},
-      ],
+      children: [{kind: 'Range', from: '\u0000', to: 'G'}, {
+        kind: 'Range',
+        from: 'Q',
+        to: '\uffff',
+      }],
       negated: false,
     });
 
@@ -140,19 +135,16 @@ describe('normalizeCharacterClass()', () => {
     expect(
       normalizeCharacterClass({
         kind: 'CharacterClass',
-        children: [
-          {kind: 'Atom', value: 'H'},
-          {kind: 'Atom', value: 'P'},
-        ],
+        children: [{kind: 'Atom', value: 'H'}, {kind: 'Atom', value: 'P'}],
         negated: true,
       }),
     ).toEqual({
       kind: 'CharacterClass',
-      children: [
-        {kind: 'Range', from: '\u0000', to: 'G'},
-        {kind: 'Range', from: 'I', to: 'O'},
-        {kind: 'Range', from: 'Q', to: '\uffff'},
-      ],
+      children: [{kind: 'Range', from: '\u0000', to: 'G'}, {
+        kind: 'Range',
+        from: 'I',
+        to: 'O',
+      }, {kind: 'Range', from: 'Q', to: '\uffff'}],
       negated: false,
     });
   });
@@ -168,10 +160,11 @@ describe('normalizeCharacterClass()', () => {
     assertCharacterClass(characterClass);
     expect(normalizeCharacterClass(characterClass)).toEqual({
       kind: 'CharacterClass',
-      children: [
-        {kind: 'Range', from: '\u0000', to: '/'},
-        {kind: 'Range', from: ':', to: '\uffff'},
-      ],
+      children: [{kind: 'Range', from: '\u0000', to: '/'}, {
+        kind: 'Range',
+        from: ':',
+        to: '\uffff',
+      }],
       negated: false,
     });
   });

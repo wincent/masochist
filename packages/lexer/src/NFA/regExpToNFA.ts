@@ -40,16 +40,14 @@ export default function regExpToNFA(
   ) {
     return {
       id: genId(),
-      edges: [
-        {
-          on: node,
-          to: {
-            id: genId(),
-            edges: [],
-            flags: ACCEPT,
-          },
+      edges: [{
+        on: node,
+        to: {
+          id: genId(),
+          edges: [],
+          flags: ACCEPT,
         },
-      ],
+      }],
       flags: START,
     };
   } else if (node.kind === 'Repeat') {

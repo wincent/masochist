@@ -739,12 +739,10 @@ const ast = {
     } else {
       return {
         kind: 'ImportStatement',
-        specifiers: [
-          {
-            kind: 'ImportDefaultSpecifier',
-            identifier: ast.identifier(specifiers),
-          },
-        ],
+        specifiers: [{
+          kind: 'ImportDefaultSpecifier',
+          identifier: ast.identifier(specifiers),
+        }],
         source: ast.string(source),
       };
     }

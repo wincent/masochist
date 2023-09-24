@@ -44,181 +44,167 @@ function r8($1) {
     base: 10,
   };
 }
-const actions = [
-  {
-    IDENTIFIER: {
-      kind: 'Shift',
-      state: 4,
-    },
-    NUMBER: {
-      kind: 'Shift',
-      state: 7,
-    },
-    OPENING_PAREN: {
-      kind: 'Shift',
-      state: 8,
-    },
+const actions = [{
+  IDENTIFIER: {
+    kind: 'Shift',
+    state: 4,
   },
-  {
-    $: {
-      kind: 'Accept',
-    },
-    STRICT_EQUALS: {
-      kind: 'Shift',
-      state: 9,
-    },
+  NUMBER: {
+    kind: 'Shift',
+    state: 7,
   },
-  {
-    STRICT_EQUALS: {
-      kind: 'Reduce',
-      rule: 1,
-    },
-    $: {
-      kind: 'Reduce',
-      rule: 1,
-    },
-    CLOSING_PAREN: {
-      kind: 'Reduce',
-      rule: 1,
-    },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 8,
   },
-  {
-    STRICT_EQUALS: {
-      kind: 'Reduce',
-      rule: 2,
-    },
-    $: {
-      kind: 'Reduce',
-      rule: 2,
-    },
-    CLOSING_PAREN: {
-      kind: 'Reduce',
-      rule: 2,
-    },
+}, {
+  $: {
+    kind: 'Accept',
   },
-  {
-    STRICT_EQUALS: {
-      kind: 'Reduce',
-      rule: 6,
-    },
-    $: {
-      kind: 'Reduce',
-      rule: 6,
-    },
-    CLOSING_PAREN: {
-      kind: 'Reduce',
-      rule: 6,
-    },
+  STRICT_EQUALS: {
+    kind: 'Shift',
+    state: 9,
   },
-  {
-    STRICT_EQUALS: {
-      kind: 'Reduce',
-      rule: 3,
-    },
-    $: {
-      kind: 'Reduce',
-      rule: 3,
-    },
-    CLOSING_PAREN: {
-      kind: 'Reduce',
-      rule: 3,
-    },
+}, {
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 1,
   },
-  {
-    STRICT_EQUALS: {
-      kind: 'Reduce',
-      rule: 7,
-    },
-    $: {
-      kind: 'Reduce',
-      rule: 7,
-    },
-    CLOSING_PAREN: {
-      kind: 'Reduce',
-      rule: 7,
-    },
+  $: {
+    kind: 'Reduce',
+    rule: 1,
   },
-  {
-    STRICT_EQUALS: {
-      kind: 'Reduce',
-      rule: 8,
-    },
-    $: {
-      kind: 'Reduce',
-      rule: 8,
-    },
-    CLOSING_PAREN: {
-      kind: 'Reduce',
-      rule: 8,
-    },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 1,
   },
-  {
-    IDENTIFIER: {
-      kind: 'Shift',
-      state: 4,
-    },
-    NUMBER: {
-      kind: 'Shift',
-      state: 7,
-    },
-    OPENING_PAREN: {
-      kind: 'Shift',
-      state: 8,
-    },
+}, {
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 2,
   },
-  {
-    IDENTIFIER: {
-      kind: 'Shift',
-      state: 4,
-    },
-    NUMBER: {
-      kind: 'Shift',
-      state: 7,
-    },
-    OPENING_PAREN: {
-      kind: 'Shift',
-      state: 8,
-    },
+  $: {
+    kind: 'Reduce',
+    rule: 2,
   },
-  {
-    CLOSING_PAREN: {
-      kind: 'Shift',
-      state: 12,
-    },
-    STRICT_EQUALS: {
-      kind: 'Shift',
-      state: 9,
-    },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 2,
   },
-  {
-    STRICT_EQUALS: {
-      kind: 'Shift',
-      state: 9,
-    },
-    $: {
-      kind: 'Reduce',
-      rule: 5,
-    },
-    CLOSING_PAREN: {
-      kind: 'Reduce',
-      rule: 5,
-    },
+}, {
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 6,
   },
-  {
-    STRICT_EQUALS: {
-      kind: 'Reduce',
-      rule: 4,
-    },
-    $: {
-      kind: 'Reduce',
-      rule: 4,
-    },
-    CLOSING_PAREN: {
-      kind: 'Reduce',
-      rule: 4,
-    },
+  $: {
+    kind: 'Reduce',
+    rule: 6,
   },
-];
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 6,
+  },
+}, {
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 3,
+  },
+  $: {
+    kind: 'Reduce',
+    rule: 3,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 3,
+  },
+}, {
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 7,
+  },
+  $: {
+    kind: 'Reduce',
+    rule: 7,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 7,
+  },
+}, {
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 8,
+  },
+  $: {
+    kind: 'Reduce',
+    rule: 8,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 8,
+  },
+}, {
+  IDENTIFIER: {
+    kind: 'Shift',
+    state: 4,
+  },
+  NUMBER: {
+    kind: 'Shift',
+    state: 7,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 8,
+  },
+}, {
+  IDENTIFIER: {
+    kind: 'Shift',
+    state: 4,
+  },
+  NUMBER: {
+    kind: 'Shift',
+    state: 7,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 8,
+  },
+}, {
+  CLOSING_PAREN: {
+    kind: 'Shift',
+    state: 12,
+  },
+  STRICT_EQUALS: {
+    kind: 'Shift',
+    state: 9,
+  },
+}, {
+  STRICT_EQUALS: {
+    kind: 'Shift',
+    state: 9,
+  },
+  $: {
+    kind: 'Reduce',
+    rule: 5,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 5,
+  },
+}, {
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 4,
+  },
+  $: {
+    kind: 'Reduce',
+    rule: 4,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 4,
+  },
+}];
 const gotos = [
   {
     BinaryExpression: 2,
@@ -252,61 +238,46 @@ const gotos = [
   {},
   {},
 ];
-const rules = [
-  {
-    production: "Expression'",
-    pop: 1,
-    action: r0,
-  },
-  {
-    production: 'Expression',
-    pop: 1,
-    action: r1,
-  },
-  {
-    production: 'Expression',
-    pop: 1,
-    action: r2,
-  },
-  {
-    production: 'Expression',
-    pop: 1,
-    action: r3,
-  },
-  {
-    production: 'Expression',
-    pop: 3,
-    action: r4,
-  },
-  {
-    production: 'BinaryExpression',
-    pop: 3,
-    action: r5,
-  },
-  {
-    production: 'Identifier',
-    pop: 1,
-    action: r6,
-  },
-  {
-    production: 'PrimitiveValue',
-    pop: 1,
-    action: r7,
-  },
-  {
-    production: 'NumberValue',
-    pop: 1,
-    action: r8,
-  },
-];
+const rules = [{
+  production: "Expression'",
+  pop: 1,
+  action: r0,
+}, {
+  production: 'Expression',
+  pop: 1,
+  action: r1,
+}, {
+  production: 'Expression',
+  pop: 1,
+  action: r2,
+}, {
+  production: 'Expression',
+  pop: 1,
+  action: r3,
+}, {
+  production: 'Expression',
+  pop: 3,
+  action: r4,
+}, {
+  production: 'BinaryExpression',
+  pop: 3,
+  action: r5,
+}, {
+  production: 'Identifier',
+  pop: 1,
+  action: r6,
+}, {
+  production: 'PrimitiveValue',
+  pop: 1,
+  action: r7,
+}, {
+  production: 'NumberValue',
+  pop: 1,
+  action: r8,
+}];
 const EOF = new Token('$', -1, -1, '');
 export default function parseExpression(input) {
-  const stack = [
-    [
-      null,
-      0,
-    ],
-  ];
+  const stack = [[null, 0]];
   const lexer = new Lexer(input);
   let token = lexer.next() || EOF;
 

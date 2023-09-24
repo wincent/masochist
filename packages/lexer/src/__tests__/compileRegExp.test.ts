@@ -10,12 +10,10 @@ describe('compileRegExp()', () => {
       children: [
         {
           kind: 'CharacterClass',
-          children: [
-            {kind: 'Atom', value: '0'},
-            {kind: 'Atom', value: '5'},
-            {kind: 'Atom', value: 'a'},
-            {kind: 'Atom', value: 'j'},
-          ],
+          children: [{kind: 'Atom', value: '0'}, {kind: 'Atom', value: '5'}, {
+            kind: 'Atom',
+            value: 'a',
+          }, {kind: 'Atom', value: 'j'}],
           negated: false,
         },
         {kind: 'Atom', value: 'f'},

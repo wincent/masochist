@@ -11,10 +11,10 @@ describe('parseStatement()', async () => {
   // to "parseStatement.ts". This allows us to do hacky things like inject
   // debug statements into the parser on disk for trouble-shooting purposes, if
   // needed.
-  describe.each([
-    ['parser derived from grammar', await getParser(grammar, table, lexer)],
-    ['parser persisted to disk', parseStatement as any /* TODO: fix type */],
-  ])(
+  describe.each([[
+    'parser derived from grammar',
+    await getParser(grammar, table, lexer),
+  ], ['parser persisted to disk', parseStatement as any /* TODO: fix type */]])(
     '%s',
     (_description, parseStatement: Awaited<ReturnType<typeof getParser>>) => {
       it('parses a call', () => {
@@ -66,12 +66,10 @@ describe('parseStatement()', async () => {
               kind: 'Identifier',
               name: 'Lexer',
             },
-            arguments: [
-              {
-                kind: 'Identifier',
-                name: 'input',
-              },
-            ],
+            arguments: [{
+              kind: 'Identifier',
+              name: 'input',
+            }],
           },
         }]);
       });
@@ -520,24 +518,20 @@ describe('parseStatement()', async () => {
               base: 10,
             },
           },
-          block: [
-            {
-              kind: 'ExpressionStatement',
-              expression: {
-                kind: 'CallExpression',
-                callee: {
-                  kind: 'Identifier',
-                  name: 'bar',
-                },
-                arguments: [
-                  {
-                    kind: 'BooleanValue',
-                    value: true,
-                  },
-                ],
+          block: [{
+            kind: 'ExpressionStatement',
+            expression: {
+              kind: 'CallExpression',
+              callee: {
+                kind: 'Identifier',
+                name: 'bar',
               },
+              arguments: [{
+                kind: 'BooleanValue',
+                value: true,
+              }],
             },
-          ],
+          }],
         }]);
       });
     },

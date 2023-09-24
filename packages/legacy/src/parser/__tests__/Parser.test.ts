@@ -30,26 +30,20 @@ type Operation = {
 type Selection = Field;
 
 const grammar: Grammar<ASTNode> = {
-  document: [
-    plus('definition'),
-    (definitions): ASTNode => ({
-      definitions,
-      kind: 'DOCUMENT',
-    }),
-  ],
+  document: [plus('definition'), (definitions): ASTNode => ({
+    definitions,
+    kind: 'DOCUMENT',
+  })],
 
   definition: choice('operation'),
 
   operation: choice('anonymousOperation', 'queryOperation'),
 
-  anonymousOperation: [
-    r('selectionSet'),
-    (selections): ASTNode => ({
-      kind: 'OPERATION',
-      selections,
-      type: 'QUERY',
-    }),
-  ],
+  anonymousOperation: [r('selectionSet'), (selections): ASTNode => ({
+    kind: 'OPERATION',
+    selections,
+    type: 'QUERY',
+  })],
 
   queryOperation: sequence(
     t(Tokens.NAME, (contents) => contents === 'query'),
@@ -68,13 +62,10 @@ const grammar: Grammar<ASTNode> = {
     ([selections]): ASTNode => selections,
   ],
 
-  field: [
-    t(Tokens.NAME),
-    (name: string): ASTNode => ({
-      kind: 'FIELD',
-      name,
-    }),
-  ],
+  field: [t(Tokens.NAME), (name: string): ASTNode => ({
+    kind: 'FIELD',
+    name,
+  })],
 
   // TODO: flesh these out
   fragmentSpread: t(Tokens.ELLIPSIS),
@@ -92,18 +83,14 @@ test('blinking light', () => {
   `);
 
   expect(parser.parse(tokens)).toEqual({
-    definitions: [
-      {
-        type: 'QUERY',
-        selections: [
-          {
-            kind: 'FIELD',
-            name: 'foo',
-          },
-        ],
-        kind: 'OPERATION',
-      },
-    ],
+    definitions: [{
+      type: 'QUERY',
+      selections: [{
+        kind: 'FIELD',
+        name: 'foo',
+      }],
+      kind: 'OPERATION',
+    }],
     kind: 'DOCUMENT',
   });
 });
@@ -129,11 +116,9 @@ test.skip('grammar hashes', () => {
         hash: expect.stringMatching(/^choice:[a-f0-9]{128}/),
       }),
       queryOperation: expect.objectContaining({
-        expressions: expect.arrayContaining([
-          expect.objectContaining({
-            hash: expect.stringMatching(/^t:[a-f0-9]{128}/),
-          }),
-        ]),
+        expressions: expect.arrayContaining([expect.objectContaining({
+          hash: expect.stringMatching(/^t:[a-f0-9]{128}/),
+        })]),
         hash: expect.stringMatching(/^sequence:[a-f0-9]{128}/),
       }),
       selectionSet: expect.objectContaining({

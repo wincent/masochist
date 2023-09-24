@@ -49,11 +49,10 @@ describe('NFAToDFA()', () => {
       acceptStates: new Set([1, 2, 3]),
       startStates: new Set([0]),
       transitions: [
-        /* 0 */ new Map([
-          ['Atom:a', new Set([1])],
-          ['Atom:b', new Set([2])],
-          ['Atom:c', new Set([3])],
-        ]),
+        /* 0 */ new Map([['Atom:a', new Set([1])], ['Atom:b', new Set([2])], [
+          'Atom:c',
+          new Set([3]),
+        ]]),
         /* 1 */ new Map(),
         /* 2 */ new Map(),
         /* 3 */ new Map(),
@@ -66,10 +65,10 @@ describe('NFAToDFA()', () => {
       acceptStates: new Set([1, 2]),
       startStates: new Set([0]),
       transitions: [
-        /* 0 */ new Map([
-          ['Atom:0', new Set([1])],
-          ['Range:a-z', new Set([2])],
-        ]),
+        /* 0 */ new Map([['Atom:0', new Set([1])], [
+          'Range:a-z',
+          new Set([2]),
+        ]]),
         /* 1 */ new Map(),
         /* 2 */ new Map(),
       ],

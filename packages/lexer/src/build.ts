@@ -66,13 +66,11 @@ export default async function build(
     {
       kind: 'IfStatement',
       consequents,
-      alternate: [
-        {
-          kind: 'ThrowStatement',
-          // TODO: include state id in error
-          expression: ast.new('Error', ast.string('Unexpected state')),
-        },
-      ],
+      alternate: [{
+        kind: 'ThrowStatement',
+        // TODO: include state id in error
+        expression: ast.new('Error', ast.string('Unexpected state')),
+      }],
     },
     ast.statement('this.index++'),
   );
@@ -264,12 +262,10 @@ export default async function build(
   consequents.push({
     kind: 'Consequent',
     condition: ast.expression('state === REJECT'),
-    block: [
-      {
-        kind: 'ThrowStatement',
-        expression: ast.new('Error', ast.string('Failed to recognize token')),
-      },
-    ],
+    block: [{
+      kind: 'ThrowStatement',
+      expression: ast.new('Error', ast.string('Failed to recognize token')),
+    }],
   });
 
   const buildCommand = options.buildCommand
@@ -366,13 +362,11 @@ export default async function build(
               ast.const('token', ast.call(ast.member('lexer', 'next'))),
               {
                 kind: 'IfStatement',
-                consequents: [
-                  {
-                    kind: 'Consequent',
-                    condition: ast.expression('token === null'),
-                    block: [ast.return()],
-                  },
-                ],
+                consequents: [{
+                  kind: 'Consequent',
+                  condition: ast.expression('token === null'),
+                  block: [ast.return()],
+                }],
                 alternate: [ast.yield('token')],
               },
             ]),

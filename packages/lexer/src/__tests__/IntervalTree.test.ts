@@ -398,12 +398,10 @@ describe('IntervalTree', () => {
         tree.put(cp, 30);
         tree.put(lx, 40);
 
-        expect(tree.search(item('m'))).toEqual([
-          [az, 10],
-          [by, 20],
-          [cp, 30],
-          [lx, 40],
-        ]);
+        expect(tree.search(item('m'))).toEqual([[az, 10], [by, 20], [cp, 30], [
+          lx,
+          40,
+        ]]);
       });
 
       it('returns a range overlapping with an interval to its left', () => {
@@ -457,12 +455,10 @@ describe('IntervalTree', () => {
         tree.put(lx, 40);
         tree.put(wz, 50);
 
-        expect(tree.search(range('m', 'v'))).toEqual([
-          [az, 10],
-          [by, 20],
-          [cp, 30],
-          [lx, 40],
-        ]);
+        expect(tree.search(range('m', 'v'))).toEqual([[az, 10], [by, 20], [
+          cp,
+          30,
+        ], [lx, 40]]);
       });
     });
 

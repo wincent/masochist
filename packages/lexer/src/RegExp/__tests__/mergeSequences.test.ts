@@ -21,24 +21,20 @@ describe('mergeSequences()', () => {
   it('merges into a preceding sequence', () => {
     expect(merge(/(foo)b/)).toEqual({
       kind: 'Sequence',
-      children: [
-        {kind: 'Atom', value: 'f'},
-        {kind: 'Atom', value: 'o'},
-        {kind: 'Atom', value: 'o'},
-        {kind: 'Atom', value: 'b'},
-      ],
+      children: [{kind: 'Atom', value: 'f'}, {kind: 'Atom', value: 'o'}, {
+        kind: 'Atom',
+        value: 'o',
+      }, {kind: 'Atom', value: 'b'}],
     });
   });
 
   it('merges into a following sequence', () => {
     expect(merge(/o(bar)/)).toEqual({
       kind: 'Sequence',
-      children: [
-        {kind: 'Atom', value: 'o'},
-        {kind: 'Atom', value: 'b'},
-        {kind: 'Atom', value: 'a'},
-        {kind: 'Atom', value: 'r'},
-      ],
+      children: [{kind: 'Atom', value: 'o'}, {kind: 'Atom', value: 'b'}, {
+        kind: 'Atom',
+        value: 'a',
+      }, {kind: 'Atom', value: 'r'}],
     });
   });
 

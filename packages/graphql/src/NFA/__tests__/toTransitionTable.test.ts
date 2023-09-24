@@ -62,56 +62,46 @@ describe('toTransitionTable()', () => {
       transitions: [
         /* 0 */ new Map([['Atom:\\', new Set([1])]]),
         /* 1 */ new Map([['Atom:u', new Set([2])]]),
-        /* 2 */ new Map([
-          ['Range:0-9', new Set([3])],
-          ['Range:A-F', new Set([4])],
-          ['Range:a-f', new Set([5])],
-        ]),
-        /* 3 */ new Map([
-          ['Range:0-9', new Set([6])],
-          ['Range:A-F', new Set([7])],
-          ['Range:a-f', new Set([8])],
-        ]),
-        /* 4 */ new Map([
-          ['Range:0-9', new Set([6])],
-          ['Range:A-F', new Set([7])],
-          ['Range:a-f', new Set([8])],
-        ]),
-        /* 5 */ new Map([
-          ['Range:0-9', new Set([6])],
-          ['Range:A-F', new Set([7])],
-          ['Range:a-f', new Set([8])],
-        ]),
-        /* 6 */ new Map([
-          ['Range:0-9', new Set([9])],
-          ['Range:A-F', new Set([10])],
-          ['Range:a-f', new Set([11])],
-        ]),
-        /* 7 */ new Map([
-          ['Range:0-9', new Set([9])],
-          ['Range:A-F', new Set([10])],
-          ['Range:a-f', new Set([11])],
-        ]),
-        /* 8 */ new Map([
-          ['Range:0-9', new Set([9])],
-          ['Range:A-F', new Set([10])],
-          ['Range:a-f', new Set([11])],
-        ]),
-        /* 9 */ new Map([
-          ['Range:0-9', new Set([12])],
-          ['Range:A-F', new Set([13])],
-          ['Range:a-f', new Set([14])],
-        ]),
-        /* 10 */ new Map([
-          ['Range:0-9', new Set([12])],
-          ['Range:A-F', new Set([13])],
-          ['Range:a-f', new Set([14])],
-        ]),
-        /* 11 */ new Map([
-          ['Range:0-9', new Set([12])],
-          ['Range:A-F', new Set([13])],
-          ['Range:a-f', new Set([14])],
-        ]),
+        /* 2 */ new Map([['Range:0-9', new Set([3])], [
+          'Range:A-F',
+          new Set([4]),
+        ], ['Range:a-f', new Set([5])]]),
+        /* 3 */ new Map([['Range:0-9', new Set([6])], [
+          'Range:A-F',
+          new Set([7]),
+        ], ['Range:a-f', new Set([8])]]),
+        /* 4 */ new Map([['Range:0-9', new Set([6])], [
+          'Range:A-F',
+          new Set([7]),
+        ], ['Range:a-f', new Set([8])]]),
+        /* 5 */ new Map([['Range:0-9', new Set([6])], [
+          'Range:A-F',
+          new Set([7]),
+        ], ['Range:a-f', new Set([8])]]),
+        /* 6 */ new Map([['Range:0-9', new Set([9])], [
+          'Range:A-F',
+          new Set([10]),
+        ], ['Range:a-f', new Set([11])]]),
+        /* 7 */ new Map([['Range:0-9', new Set([9])], [
+          'Range:A-F',
+          new Set([10]),
+        ], ['Range:a-f', new Set([11])]]),
+        /* 8 */ new Map([['Range:0-9', new Set([9])], [
+          'Range:A-F',
+          new Set([10]),
+        ], ['Range:a-f', new Set([11])]]),
+        /* 9 */ new Map([['Range:0-9', new Set([12])], [
+          'Range:A-F',
+          new Set([13]),
+        ], ['Range:a-f', new Set([14])]]),
+        /* 10 */ new Map([['Range:0-9', new Set([12])], [
+          'Range:A-F',
+          new Set([13]),
+        ], ['Range:a-f', new Set([14])]]),
+        /* 11 */ new Map([['Range:0-9', new Set([12])], [
+          'Range:A-F',
+          new Set([13]),
+        ], ['Range:a-f', new Set([14])]]),
         /* 12 */ new Map(),
         /* 13 */ new Map(),
         /* 14 */ new Map(),
@@ -124,20 +114,15 @@ describe('toTransitionTable()', () => {
       acceptStates: new Set([5]),
       startStates: new Set([0]),
       transitions: [
-        /* 0 */ new Map([
-          ['Atom:E', new Set([1])],
-          ['Atom:e', new Set([2])],
-        ]),
-        /* 1 */ new Map([
-          ['Atom:+', new Set([3])],
-          ['Atom:-', new Set([4])],
-          ['Range:0-9', new Set([5])],
-        ]),
-        /* 2 */ new Map([
-          ['Atom:+', new Set([3])],
-          ['Atom:-', new Set([4])],
-          ['Range:0-9', new Set([5])],
-        ]),
+        /* 0 */ new Map([['Atom:E', new Set([1])], ['Atom:e', new Set([2])]]),
+        /* 1 */ new Map([['Atom:+', new Set([3])], ['Atom:-', new Set([4])], [
+          'Range:0-9',
+          new Set([5]),
+        ]]),
+        /* 2 */ new Map([['Atom:+', new Set([3])], ['Atom:-', new Set([4])], [
+          'Range:0-9',
+          new Set([5]),
+        ]]),
         /* 3 */ new Map([['Range:0-9', new Set([5])]]),
         /* 4 */ new Map([['Range:0-9', new Set([5])]]),
         /* 5 */ new Map([['Range:0-9', new Set([5])]]),
@@ -162,15 +147,14 @@ describe('toTransitionTable()', () => {
       acceptStates: new Set([2, 3, 4]),
       startStates: new Set([0]),
       transitions: [
-        /* 0 */ new Map([
-          ['Atom:-', new Set([1])],
-          ['Atom:0', new Set([2])],
-          ['Range:1-9', new Set([3])],
-        ]),
-        /* 1 */ new Map([
-          ['Atom:0', new Set([2])],
-          ['Range:1-9', new Set([3])],
-        ]),
+        /* 0 */ new Map([['Atom:-', new Set([1])], ['Atom:0', new Set([2])], [
+          'Range:1-9',
+          new Set([3]),
+        ]]),
+        /* 1 */ new Map([['Atom:0', new Set([2])], [
+          'Range:1-9',
+          new Set([3]),
+        ]]),
         /* 2 */ new Map(),
         /* 3 */ new Map([['Range:0-9', new Set([4])]]),
         /* 4 */ new Map([['Range:0-9', new Set([4])]]),
@@ -183,10 +167,7 @@ describe('toTransitionTable()', () => {
       acceptStates: new Set([1, 2, 3]),
       startStates: new Set([0]),
       transitions: [
-        /* 0 */ new Map([
-          ['Atom:\n', new Set([1])],
-          ['Atom:\r', new Set([2])],
-        ]),
+        /* 0 */ new Map([['Atom:\n', new Set([1])], ['Atom:\r', new Set([2])]]),
         /* 1 */ new Map(),
         /* 2 */ new Map([['Atom:\n', new Set([3])]]),
         /* 3 */ new Map(),
@@ -255,11 +236,10 @@ describe('toTransitionTable()', () => {
       acceptStates: new Set([1, 2, 3]),
       startStates: new Set([0]),
       transitions: [
-        /* 0 */ new Map([
-          ['Range:\t-\n', new Set([1])],
-          ['Atom:\r', new Set([2])],
-          ['Range: -\uffff', new Set([3])],
-        ]),
+        /* 0 */ new Map([['Range:\t-\n', new Set([1])], [
+          'Atom:\r',
+          new Set([2]),
+        ], ['Range: -\uffff', new Set([3])]]),
         /* 1 */ new Map(),
         /* 2 */ new Map(),
         /* 3 */ new Map(),
@@ -272,18 +252,9 @@ describe('toTransitionTable()', () => {
       acceptStates: new Set([1, 2]),
       startStates: new Set([0]),
       transitions: [
-        /* 0 */ new Map([
-          ['Atom:\t', new Set([1])],
-          ['Atom: ', new Set([2])],
-        ]),
-        /* 1 */ new Map([
-          ['Atom:\t', new Set([1])],
-          ['Atom: ', new Set([2])],
-        ]),
-        /* 2 */ new Map([
-          ['Atom:\t', new Set([1])],
-          ['Atom: ', new Set([2])],
-        ]),
+        /* 0 */ new Map([['Atom:\t', new Set([1])], ['Atom: ', new Set([2])]]),
+        /* 1 */ new Map([['Atom:\t', new Set([1])], ['Atom: ', new Set([2])]]),
+        /* 2 */ new Map([['Atom:\t', new Set([1])], ['Atom: ', new Set([2])]]),
       ],
     });
   });

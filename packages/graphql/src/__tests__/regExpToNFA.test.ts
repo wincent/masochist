@@ -17,10 +17,7 @@ describe('regExpToNFA()', () => {
       acceptStates: new Set([42, 25, 37, 41]),
       startStates: new Set([0]),
       transitions: [
-        /* 0 */ new Map([
-          ['Atom:-', new Set([1])],
-          ['Epsilon', new Set([9])],
-        ]),
+        /* 0 */ new Map([['Atom:-', new Set([1])], ['Epsilon', new Set([9])]]),
         /* 1 */ new Map([['Epsilon', new Set([9])]]),
         /* 2 */ new Map([['Atom:0', new Set([3])]]),
         /* 3 */ new Map([['Epsilon', new Set([42])]]),

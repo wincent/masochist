@@ -390,28 +390,26 @@ describe('zip()', () => {
 
   it('zips two equal length arrays', () => {
     expect(zip(['foo'], ['bar'])).toEqual([['foo', 'bar']]);
-    expect(zip(['foo', 'baz'], ['bar', 'qux'])).toEqual([
-      ['foo', 'bar'],
-      ['baz', 'qux'],
-    ]);
+    expect(zip(['foo', 'baz'], ['bar', 'qux'])).toEqual([['foo', 'bar'], [
+      'baz',
+      'qux',
+    ]]);
   });
 
   it('zips a shorter array with a longer one', () => {
     expect(zip([], ['foo'])).toEqual([[null, 'foo']]);
-    expect(zip(['foo'], ['bar', 'baz', 'qux'])).toEqual([
-      ['foo', 'bar'],
-      [null, 'baz'],
-      [null, 'qux'],
-    ]);
+    expect(zip(['foo'], ['bar', 'baz', 'qux'])).toEqual([['foo', 'bar'], [
+      null,
+      'baz',
+    ], [null, 'qux']]);
   });
 
   it('zips a longer array with a shorter one', () => {
     expect(zip(['foo'], [])).toEqual([['foo', null]]);
-    expect(zip(['foo', 'bar', 'baz'], ['qux'])).toEqual([
-      ['foo', 'qux'],
-      ['bar', null],
-      ['baz', null],
-    ]);
+    expect(zip(['foo', 'bar', 'baz'], ['qux'])).toEqual([['foo', 'qux'], [
+      'bar',
+      null,
+    ], ['baz', null]]);
   });
 
   it('is polymorphic', () => {

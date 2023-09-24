@@ -42,12 +42,10 @@ describe('lex()', () => {
   });
 
   it('lexes multiple comments', () => {
-    const tokens = [
-      ...lex(`
+    const tokens = [...lex(`
         # this is a comment
         # this is another
-      `),
-    ];
+      `)];
     expect(tokens).toEqual([]);
   });
 

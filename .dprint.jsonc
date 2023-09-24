@@ -4,6 +4,7 @@
   "indentWidth": 2,
   "typescript": {
     // See: https://github.com/dprint/dprint-plugin-typescript/blob/main/src/configuration/types.rs
+    "arrayExpression.preferSingleLine": true,
     "arrowFunction.useParentheses": "force",
     "binaryExpression.operatorPosition": "maintain",
     "conditionalExpression.operatorPosition": "maintain",

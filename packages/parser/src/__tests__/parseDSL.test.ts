@@ -15,21 +15,16 @@ describe('parseDSL()', () => {
         {lhs: 'V', rhs: ['x']},
         {lhs: 'V', rhs: ['star', 'E']},
       ],
-      tokens: new Map([
-        ['eq', {}],
-        ['star', {}],
-        ['x', {}],
-      ]),
+      tokens: new Map([['eq', {}], ['star', {}], ['x', {}]]),
     });
   });
 
   it('produces grammar from subsetGrammarDeclaration', () => {
     expect(parseDSL(subsetGrammarDeclaration)).toEqual({
-      tokens: new Map([
-        ['CLOSING_BRACE', {}],
-        ['NAME', {}],
-        ['OPENING_BRACE', {}],
-      ]),
+      tokens: new Map([['CLOSING_BRACE', {}], ['NAME', {}], [
+        'OPENING_BRACE',
+        {},
+      ]]),
       rules: [
         {lhs: 'Document', rhs: ['DefinitionList']},
         {
@@ -104,11 +99,7 @@ describe('parseDSL()', () => {
         {lhs: 'Second', rhs: ['B'], action: '{ $$ = $1.toUpperCase() }'},
         {lhs: 'Third', rhs: ['C']},
       ],
-      tokens: new Map([
-        ['A', {}],
-        ['B', {}],
-        ['C', {}],
-      ]),
+      tokens: new Map([['A', {}], ['B', {}], ['C', {}]]),
     });
   });
 
@@ -126,24 +117,19 @@ describe('parseDSL()', () => {
         Expression → NUMBER
       `),
     ).toEqual({
-      rules: [
-        {
-          lhs: 'Expression',
-          rhs: ['Expression', 'MINUS', 'Expression'],
-          precedence: 1,
-        },
-        {
-          lhs: 'Expression',
-          rhs: ['Expression', 'PLUS', 'Expression'],
-          precedence: 1,
-        },
-        {
-          lhs: 'Expression',
-          rhs: ['Expression', 'EXPONENT', 'Expression'],
-          precedence: 2,
-        },
-        {lhs: 'Expression', rhs: ['NUMBER']},
-      ],
+      rules: [{
+        lhs: 'Expression',
+        rhs: ['Expression', 'MINUS', 'Expression'],
+        precedence: 1,
+      }, {
+        lhs: 'Expression',
+        rhs: ['Expression', 'PLUS', 'Expression'],
+        precedence: 1,
+      }, {
+        lhs: 'Expression',
+        rhs: ['Expression', 'EXPONENT', 'Expression'],
+        precedence: 2,
+      }, {lhs: 'Expression', rhs: ['NUMBER']}],
       tokens: new Map([
         ['EXPONENT', {associativity: 'right', precedence: 2}],
         ['MINUS', {associativity: 'left', precedence: 1}],
@@ -179,10 +165,7 @@ describe('parseDSL()', () => {
     // As are multiple tokens on a single line.
     expect(parseDSL('%token FOO BAR')).toEqual({
       rules: [],
-      tokens: new Map([
-        ['FOO', {}],
-        ['BAR', {}],
-      ]),
+      tokens: new Map([['FOO', {}], ['BAR', {}]]),
     });
 
     // Or multiple lines with tokens.
@@ -194,12 +177,7 @@ describe('parseDSL()', () => {
     `),
     ).toEqual({
       rules: [],
-      tokens: new Map([
-        ['FOO', {}],
-        ['BAR', {}],
-        ['MORE', {}],
-        ['OTHER', {}],
-      ]),
+      tokens: new Map([['FOO', {}], ['BAR', {}], ['MORE', {}], ['OTHER', {}]]),
     });
   });
 

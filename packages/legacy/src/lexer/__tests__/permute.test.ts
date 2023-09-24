@@ -11,10 +11,7 @@ test('permute a array of one item', () => {
 });
 
 test('permute a array of two items', () => {
-  expect(permute(['a', 'b'])).toEqual([
-    ['a', 'b'],
-    ['b', 'a'],
-  ]);
+  expect(permute(['a', 'b'])).toEqual([['a', 'b'], ['b', 'a']]);
 });
 
 test('permute an array of 3 items', () => {

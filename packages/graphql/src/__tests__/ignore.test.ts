@@ -36,16 +36,13 @@ describe('ignore()', () => {
           ['Atom:,', new Set([2])],
           ['Atom:\ufeff', new Set([2])],
         ]),
-        /* 1 */ new Map([
-          ['Atom:\t', new Set([1])],
-          ['Atom: ', new Set([1])],
-        ]),
+        /* 1 */ new Map([['Atom:\t', new Set([1])], ['Atom: ', new Set([1])]]),
         /* 2 */ new Map(),
         /* 3 */ new Map([['Atom:\n', new Set([2])]]),
-        /* 4 */ new Map([
-          ['Atom:\t', new Set([4])],
-          ['Range: -\uffff', new Set([4])],
-        ]),
+        /* 4 */ new Map([['Atom:\t', new Set([4])], [
+          'Range: -\uffff',
+          new Set([4]),
+        ]]),
       ],
     });
   });

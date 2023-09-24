@@ -33,13 +33,11 @@ export default function getItemSets(grammar: Grammar) {
   const startRule = augmentedGrammar.rules[0];
 
   const i0: ItemSet = {
-    items: [
-      {
-        lhs: startRule.lhs,
-        rhs: startRule.rhs,
-        dot: 0,
-      },
-    ],
+    items: [{
+      lhs: startRule.lhs,
+      rhs: startRule.rhs,
+      dot: 0,
+    }],
     transitions: {},
   };
 

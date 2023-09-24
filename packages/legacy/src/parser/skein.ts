@@ -53,16 +53,13 @@ export default function skein(text: string | Array<number>): string {
 
   let position = 0;
 
-  tweak = [
-    [0, 0],
-    [
-      (
-        0x40 + // First = 1.
-        0x30 // Type = 48 (Message).
-      ) << 24,
-      0,
-    ],
-  ];
+  tweak = [[0, 0], [
+    (
+      0x40 + // First = 1.
+      0x30 // Type = 48 (Message).
+    ) << 24,
+    0,
+  ]];
 
   let length = message.length;
 

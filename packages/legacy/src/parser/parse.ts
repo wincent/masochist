@@ -194,47 +194,41 @@ namespace GraphQL {
 }
 
 const GRAMMAR: Grammar<GraphQL.Node> = {
-  document: [
-    plus('definition'),
-    (definitions): GraphQL.Document => {
-      let anonymous = 0;
-      let operations = 0;
+  document: [plus('definition'), (definitions): GraphQL.Document => {
+    let anonymous = 0;
+    let operations = 0;
 
-      definitions.forEach((definition: GraphQL.Definition) => {
-        if (definition.kind === 'OPERATION') {
-          operations++;
-        }
-
-        if (definition.name === undefined) {
-          anonymous++;
-        }
-      });
-
-      if (anonymous && operations > 1) {
-        throw new Error(
-          'Anonymous operation must be the only operation in the document',
-        );
+    definitions.forEach((definition: GraphQL.Definition) => {
+      if (definition.kind === 'OPERATION') {
+        operations++;
       }
 
-      return {
-        definitions,
-        kind: 'DOCUMENT',
-      };
-    },
-  ],
+      if (definition.name === undefined) {
+        anonymous++;
+      }
+    });
+
+    if (anonymous && operations > 1) {
+      throw new Error(
+        'Anonymous operation must be the only operation in the document',
+      );
+    }
+
+    return {
+      definitions,
+      kind: 'DOCUMENT',
+    };
+  }],
 
   definition: choice('operation', 'fragment'),
 
   operation: choice('anonymousOperation', 'queryOperation'),
 
-  anonymousOperation: [
-    r('selectionSet'),
-    (selections): GraphQL.Operation => ({
-      kind: 'OPERATION',
-      selections,
-      type: 'QUERY',
-    }),
-  ],
+  anonymousOperation: [r('selectionSet'), (selections): GraphQL.Operation => ({
+    kind: 'OPERATION',
+    selections,
+    type: 'QUERY',
+  })],
 
   queryOperation: [
     sequence(
@@ -335,21 +329,15 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     }),
   ],
 
-  float: [
-    t(Tokens.FLOAT_VALUE),
-    (contents): GraphQL.FloatValue => ({
-      kind: 'FLOAT',
-      value: contents,
-    }),
-  ],
+  float: [t(Tokens.FLOAT_VALUE), (contents): GraphQL.FloatValue => ({
+    kind: 'FLOAT',
+    value: contents,
+  })],
 
-  int: [
-    t(Tokens.INT_VALUE),
-    (contents): GraphQL.IntValue => ({
-      kind: 'INT',
-      value: parseInt(contents, 10),
-    }),
-  ],
+  int: [t(Tokens.INT_VALUE), (contents): GraphQL.IntValue => ({
+    kind: 'INT',
+    value: parseInt(contents, 10),
+  })],
 
   list: [
     sequence(
@@ -444,13 +432,10 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
 
   type: choice('nonNullType', 'namedType', 'listType'),
 
-  namedType: [
-    t(Tokens.NAME),
-    (name): GraphQL.NamedType => ({
-      kind: 'NAMED_TYPE',
-      name,
-    }),
-  ],
+  namedType: [t(Tokens.NAME), (name): GraphQL.NamedType => ({
+    kind: 'NAMED_TYPE',
+    name,
+  })],
 
   listType: [
     sequence(
