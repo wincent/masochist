@@ -22,13 +22,13 @@ export type Stats = {
 type StaticGrammar = Omit<Grammar, 'rules'> & {rules: Array<StaticRule>};
 type StaticRule = Omit<Rule, 'action'> & {action: NonNullable<Rule['action']>};
 
-function assertStaticGrammar(
+function assertIsStaticGrammar(
   grammar: Grammar,
 ): asserts grammar is StaticGrammar {
   for (const rule of grammar.rules) {
     if (!rule.action) {
       throw new Error(
-        `assertStaticGrammar(): supplied grammar is not static (no semantic action provided for rule: ${
+        `assertIsStaticGrammar(): supplied grammar is not static (no semantic action provided for rule: ${
           stringifyRule(rule)
         })`,
       );
@@ -48,7 +48,7 @@ export default function build(
   // Naughtily mutate the passed in grammar to make all rules StaticRule.
   grammar.rules[0].action = '{ /* dummy placeholder */ }';
 
-  assertStaticGrammar(grammar);
+  assertIsStaticGrammar(grammar);
 
   stats['grammarRules'] = grammar.rules.length;
   stats['parserStates'] = table.length;
