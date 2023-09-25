@@ -13,9 +13,11 @@ digraph finite_state_machine {
   node [color = "black", fontcolor = "black", style = "", shape = circle, xlabel = ""];
 
   -1 -> 0 [color = "black", fontcolor = "black"];
+  0 -> 1 [color = "black", fontcolor = "black", label = "$"];
   0 -> 1 [color = "black", fontcolor = "black", label = "A-Z"];
   0 -> 1 [color = "black", fontcolor = "black", label = "_"];
   0 -> 1 [color = "black", fontcolor = "black", label = "a-z"];
+  1 -> 1 [color = "black", fontcolor = "black", label = "$"];
   1 -> 1 [color = "black", fontcolor = "black", label = "0-9"];
   1 -> 1 [color = "black", fontcolor = "black", label = "A-Z"];
   1 -> 1 [color = "black", fontcolor = "black", label = "_"];

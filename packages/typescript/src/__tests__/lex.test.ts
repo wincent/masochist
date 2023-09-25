@@ -56,6 +56,13 @@ describe('lex()', () => {
       end: 3,
       contents: 'foo',
     });
+
+    expect(lexOne('$foo')).toEqual({
+      name: 'IDENTIFIER',
+      start: 0,
+      end: 4,
+      contents: '$foo',
+    });
   });
 
   it('lexes a let keyword', () => {

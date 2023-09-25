@@ -54,10 +54,9 @@ export const YIELD = 'yield';
 export const GET = 'get';
 // others: arguments, as, async, eval, from, get, of, set
 
-// TODO: add $ here
-// don't bother with non-ASCII identifiers as described in:
+// Note that we're not bothering with non-ASCII identifiers as described in:
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#identifiers
-export const IDENTIFIER = /[_a-z][_0-9a-z]*/i;
+export const IDENTIFIER = /[_a-z$][_0-9a-z$]*/i;
 export const NUMBER = /-?(0|[1-9]\d*)(\.\d+)?/;
 
 // String literals.
