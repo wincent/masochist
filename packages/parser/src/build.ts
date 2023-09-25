@@ -1,4 +1,5 @@
 import {ast} from '@masochist/codegen';
+import {filterEmpty} from '@masochist/codegen/src/internal';
 import {StringScanner, objectMap} from '@masochist/common';
 import assert from 'node:assert';
 import stringifyRule from './stringifyRule';
@@ -61,7 +62,7 @@ export default function build(
 
   const name = options.name || 'parse';
 
-  return ast.program([
+  return ast.program(filterEmpty(
     // TODO: remove the @ts-nocheck once the file is good.
     ast.comment('@ts-nocheck'),
     ast.docComment(
@@ -71,6 +72,7 @@ export default function build(
     ),
     // TODO: don't assume lexer is written to lex.ts
     ast.import('{Lexer, Token}', './lex'),
+    grammar.prologue ? ast.rawStatement(grammar.prologue) : ast.empty,
     ...grammar.rules.map((rule, i): Statement => {
       if (rule.action && rule.action !== '') {
         stats['semanticActions']++;
@@ -94,10 +96,18 @@ export default function build(
           Array(max)
             .fill(null)
             .map((_, i) => {
-              if (variables.has(i + 1)) {
-                return `$${i + 1}`;
+              const argument = variables.has(i + 1)
+                ? `$${i + 1}`
+                : `_$${i + 1}`;
+              if (grammar.prologue) {
+                // Assume that prologue defines types, and we should emit them.
+                const symbol = rule.rhs[i];
+                const argumentType = grammar.tokens.has(symbol)
+                  ? 'Token'
+                  : symbol;
+                return `${argument}: ${argumentType}`;
               } else {
-                return `_$${i + 1}`;
+                return argument;
               }
             }),
           [ast.rawStatement(
@@ -230,5 +240,5 @@ export default function build(
         ],
       ),
     ),
-  ]);
+  ));
 }

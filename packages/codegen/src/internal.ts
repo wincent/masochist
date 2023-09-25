@@ -3,4 +3,5 @@
 // framework-internal code in other packages can make use of the low-level
 // implementation details.
 
+export {default as filterEmpty} from './filterEmpty';
 export {assertIsStatement} from './walk';

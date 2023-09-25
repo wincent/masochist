@@ -296,7 +296,7 @@ export type ObjectProperty = {
   // method: boolean,
 };
 
-type PrimitiveValue =
+export type PrimitiveValue =
   | ArrayValue
   | BooleanValue
   | NullValue

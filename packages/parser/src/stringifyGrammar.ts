@@ -7,8 +7,15 @@ import type {Grammar} from './types';
  * Debugging helper.
  */
 export default function stringifyGrammar(grammar: Grammar): string {
+  let output = '';
+
+  // Output prologue
+  if (grammar.prologue) {
+    output = grammar.prologue + '\n';
+  }
+
   // Output %token declarations.
-  let output = numericStringSort([...grammar.tokens.keys()])
+  output += numericStringSort([...grammar.tokens.keys()])
     .map((token) => `%token ${token}`)
     .join('\n') + '\n\n';
 

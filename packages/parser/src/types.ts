@@ -1,4 +1,5 @@
 export type Grammar = {
+  prologue?: string;
   tokens: Map<
     string,
     {

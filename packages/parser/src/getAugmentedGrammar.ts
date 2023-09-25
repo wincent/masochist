@@ -31,5 +31,6 @@ export default function getAugmentedGrammar(grammar: Grammar): Grammar {
         };
       }),
     ],
+    prologue: grammar.prologue,
   };
 }

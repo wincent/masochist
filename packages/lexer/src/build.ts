@@ -1,5 +1,5 @@
 import {ast, walk} from '@masochist/codegen';
-import {assertIsStatement} from '@masochist/codegen/src/internal';
+import {assertIsStatement, filterEmpty} from '@masochist/codegen/src/internal';
 import {invariant} from '@masochist/common';
 import assert from 'node:assert';
 import path from 'node:path';
@@ -455,8 +455,4 @@ function expressionForTransitions(
       }
     });
   }
-}
-
-function filterEmpty(...statements: Array<Statement>): Array<Statement> {
-  return statements.filter((statement) => statement.kind !== 'EmptyStatement');
 }

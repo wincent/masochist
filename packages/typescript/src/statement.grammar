@@ -1,3 +1,53 @@
+%{
+  import type {
+    Argument,
+    ArrayValue,
+    AssignmentStatement,
+    BinaryExpression,
+    BooleanValue,
+    CallExpression,
+    ClassDeclaration,
+    Declaration,
+    ExportDefaultDeclaration,
+    Expression,
+    ExpressionStatement,
+    GetAccessor,
+    Identifier,
+    MemberExpression,
+    MethodDefinition,
+    NewExpression,
+    NullValue,
+    NumberValue,
+    ObjectProperty,
+    ObjectValue,
+    PrimitiveValue,
+    PropertyDeclaration,
+    ReturnStatement,
+    Statement,
+    StringValue,
+    WhileStatement,
+  } from '@masochist/codegen';
+  // TODO: beware self-import (in codegen, because we copy built
+  // parseStatement.ts to codegen package)
+
+  // Intermediate/local types.
+  type ArgumentList = Array<Argument>;
+  type AssignmentExpression = {
+    kind: 'BinaryExpression';
+    lhs: Expression;
+    operator: '=';
+    rhs: Expression;
+  };
+  type ClassBodyList = Array<ClassBodyListItem>;
+  type ClassBodyListItem =
+    | GetAccessor
+    | MethodDefinition
+    | PropertyDeclaration;
+  type ExpressionList = Array<Expression>;
+  type ObjectPropertyList = Array<ObjectProperty>;
+  type StatementList = Array<Statement>;
+%}
+
 %token ASSIGN
 %token BANG
 %token CLASS
@@ -264,15 +314,12 @@ PrimitiveValue → NullValue { $$ = $1; }
 PrimitiveValue → NumberValue { $$ = $1; }
 PrimitiveValue → StringValue { $$ = $1; }
 
-ArrayValue → OPENING_BRACKET ArrayItemList CLOSING_BRACKET {
+ArrayValue → OPENING_BRACKET ExpressionList CLOSING_BRACKET {
   $$ = {
     kind: 'ArrayValue',
     items: $2,
   };
 }
-ArrayItemList → Expression { $$ = [$1]; }
-ArrayItemList → ArrayItemList COMMA Expression { $1.push($3); $$ = $1; }
-ArrayItemList → ε { $$ = []; }
 
 BooleanValue → FALSE {
   $$ = {

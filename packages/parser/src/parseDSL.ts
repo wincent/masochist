@@ -11,6 +11,7 @@ export default function parseDSL(dsl: string): Grammar {
   const symbol = /\w+/;
   const tokens: Grammar['tokens'] = new Map();
   let precedence = 1;
+  let prologue = '';
   const rules: Array<Rule> = [];
   while (!scanner.atEnd) {
     // Skip comments.
@@ -18,7 +19,11 @@ export default function parseDSL(dsl: string): Grammar {
       continue;
     }
 
-    // TODO: parse %import directive for importing type definitions
+    // Scan "prologue".
+    if (scanner.scan(/%\{/)) {
+      prologue += scanner.expect(/.*?(?=%\})/s);
+      scanner.expect(/%\}/);
+    }
 
     // Scan %tokens.
     if (scanner.scan(/%token\b/)) {
@@ -168,5 +173,9 @@ export default function parseDSL(dsl: string): Grammar {
 
     throw new Error(`parseDSL(): Unexpected input at ${scanner.fullContext}`);
   }
-  return {tokens, rules};
+  if (prologue) {
+    return {prologue, tokens, rules};
+  } else {
+    return {tokens, rules};
+  }
 }
