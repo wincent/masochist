@@ -4,5 +4,10 @@
   "description": "Masochist server",
   "main": "src/index.ts",
   "author": "Greg Hurrell <greg@hurrell.net>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "cd ../.. && bun tsc",
+    "format": "cd ../.. && bun format",
+    "test": "cd ../.. && bun test packages/server"
+  }
 }

@@ -19,6 +19,7 @@ Points of interest and areas for exploration:
 - [`lexer`](packages/lexer): Generator for fast DFA-based lexers.
 - [`parser`](packages/parser): Generator for fast LALR(1) parsers.
 - [`server`](packages/server): Server-side code.
+- [`types`](packages/types): Shared type definitions used across multiple Masochist packages.
 - [`typescript`](packages/typescript): Defines a lexer and parser for recognizing a subset of TypeScript (used in conjunction with `codegen` package to produce generated files; lexers, parsers etc[^etc]).
 
 [^benchmark]: For comparison, benchmarks run against the dynamic (legacy) lexer and parser, the reference — ie. [graphql-js](https://github.com/graphql/graphql-js) — lexer and parser, the static lexer and parser, and the table-based parser.

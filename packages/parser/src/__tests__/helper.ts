@@ -7,6 +7,8 @@ import {createContext, runInContext} from 'node:vm';
 import build from '../build';
 
 import type {
+  Argument,
+  AssignmentStatement,
   DocComment,
   ExportDefaultDeclaration,
   ImportStatement,
@@ -32,6 +34,33 @@ export async function getParser(
   const node = build(grammar, parseTable);
 
   walk(node, {
+    // Strip type annotation:
+    // - `function parse(input: string)` → `function parse(input)`
+    Argument(argument: Argument) {
+      if (argument.type) {
+        return {
+          ...argument,
+          type: undefined,
+        };
+      } else {
+        return undefined; // Avoid TS7030: Not all code paths return a value.
+      }
+    },
+
+    // Strip type annotations:
+    // - `const actions: Actions = [...]` → `const actions = [...]`
+    // - `const gotos: Gotos = [...]`     → `const gotos = [...]`
+    AssignmentStatement(statement: AssignmentStatement) {
+      if (statement.type) {
+        return {
+          ...statement,
+          type: undefined,
+        };
+      } else {
+        return undefined; // Avoid TS7030: Not all code paths return a value.
+      }
+    },
+
     // Remove doc comments.
     DocComment(_comment: DocComment) {
       return null;

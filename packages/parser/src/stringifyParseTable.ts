@@ -1,6 +1,7 @@
 import {unreachable} from '@masochist/common';
 
-import type {Action, ParseTable} from './getParseTable';
+import type {Action} from '@masochist/types';
+import type {ParseTable} from './getParseTable';
 
 /**
  * Debugging helper

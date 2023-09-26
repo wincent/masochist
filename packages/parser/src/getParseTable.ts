@@ -6,29 +6,9 @@ import getFollowSets from './getFollowSets';
 import keyForRule from './keyForRule';
 import stringifyRule from './stringifyRule';
 
+import type {Actions, Gotos} from '@masochist/types';
 import type {TransitionTable} from './itemSetsToTransitionTable';
 import type {Grammar, ItemSet} from './types';
-
-export type Action =
-  | {
-    kind: 'Accept';
-  }
-  | {
-    kind: 'Reduce';
-    rule: number;
-  }
-  | {
-    kind: 'Shift';
-    state: number;
-  };
-
-type Actions = {
-  [terminal: string]: Action;
-};
-
-type Gotos = {
-  [nonTerminal: string]: number;
-};
 
 // TODO: add stats to this
 export type ParseTable = Array<[Actions, Gotos]>;

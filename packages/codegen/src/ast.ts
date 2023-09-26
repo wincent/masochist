@@ -37,6 +37,7 @@ export type AssignmentStatement = {
   // TODO: support proper expressions here (eg. `this.foo` MemberExpression)
   // (ie. destructuring etc, but not _all_ expressions; eg PrimitiveValue)
   lhs: Expression;
+  type?: string;
   rhs: Expression;
 };
 
@@ -230,6 +231,7 @@ export type ImportStatement = {
   kind: 'ImportStatement';
   specifiers: Array<ImportDefaultSpecifier | ImportSpecifier>;
   source: StringValue;
+  type: boolean;
 };
 
 export type IncrementExpression = {
@@ -462,12 +464,14 @@ const ast = {
     binding: 'const' | 'let' | 'var' | null,
     lhs: string,
     rhs: Expression | string | number,
+    options?: {type?: string},
   ): AssignmentStatement {
     if (typeof rhs === 'string') {
       return {
         kind: 'AssignmentStatement',
         binding,
         lhs: ast.expression(lhs), // TODO: limit this, not all expressions OK
+        type: options?.type,
         rhs: ast.expression(rhs),
       };
     } else if (typeof rhs === 'number') {
@@ -475,6 +479,7 @@ const ast = {
         kind: 'AssignmentStatement',
         binding,
         lhs: ast.expression(lhs), // TODO: limit this, not all expressions OK
+        type: options?.type,
         rhs: ast.number(rhs),
       };
     } else {
@@ -482,6 +487,7 @@ const ast = {
         kind: 'AssignmentStatement',
         binding,
         lhs: ast.expression(lhs), // TODO: limit this, not all expressions OK
+        type: options?.type,
         rhs,
       };
     }
@@ -726,11 +732,16 @@ const ast = {
   /**
    * eg.
    *
-   *    import('a', 'b')      -> import a from 'b'
-   *    import('{a}', 'b')    -> import {a} from 'b'
-   *    import('{a, b}', 'c') -> import {a, b} from 'c'
+   *    import('a', 'b')                 -> import a from 'b'
+   *    import('{a}', 'b')               -> import {a} from 'b'
+   *    import('{a, b}', 'c')            -> import {a, b} from 'c'
+   *    import('{a}', 'b', {type: true}) -> import type {a} from 'b'
    */
-  import(specifiers: string, source: string): ImportStatement {
+  import(
+    specifiers: string,
+    source: string,
+    options?: {type: boolean},
+  ): ImportStatement {
     const match = specifiers.match(/^\s*\{\s*(.+)\s*\}\s*$/);
     if (match) {
       return {
@@ -744,6 +755,7 @@ const ast = {
           };
         }),
         source: ast.string(source),
+        type: !!options?.type,
       };
     } else {
       return {
@@ -753,8 +765,13 @@ const ast = {
           identifier: ast.identifier(specifiers),
         }],
         source: ast.string(source),
+        type: !!options?.type,
       };
     }
+  },
+
+  importType(specifiers: string, source: string): ImportStatement {
+    return ast.import(specifiers, source, {type: true});
   },
 
   index(indexee: Expression, index: Expression): IndexExpression {

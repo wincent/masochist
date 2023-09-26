@@ -4,6 +4,7 @@
  *
  * @generated
  */
+import type {Actions, Gotos} from '@masochist/types';
 import {Lexer, Token} from './lex';
 function r0() {
   /* dummy placeholder */
@@ -44,7 +45,7 @@ function r8($1) {
     base: 10,
   };
 }
-const actions = [{
+const actions: Array<Actions> = [{
   IDENTIFIER: {
     kind: 'Shift',
     state: 4,
@@ -205,7 +206,7 @@ const actions = [{
     rule: 4,
   },
 }];
-const gotos = [
+const gotos: Array<Gotos> = [
   {
     BinaryExpression: 2,
     Expression: 1,
@@ -276,7 +277,7 @@ const rules = [{
   action: r8,
 }];
 const EOF = new Token('$', -1, -1, '');
-export default function parseExpression(input) {
+export default function parseExpression(input: string) {
   const stack = [[null, 0]];
   const lexer = new Lexer(input);
   let token = lexer.next() || EOF;

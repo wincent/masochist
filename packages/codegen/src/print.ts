@@ -277,6 +277,7 @@ function printStatement(statement: Statement, indent: number): string {
       printIndent(indent) +
       binding +
       printExpression(statement.lhs, indent + 1) +
+      (statement.type ? `: ${statement.type}` : '') +
       ' = ' +
       printExpression(statement.rhs, indent + 1) +
       ';\n'
@@ -373,7 +374,7 @@ function printStatement(statement: Statement, indent: number): string {
     return lines.join('');
   } else if (statement.kind === 'ImportStatement') {
     // Sort default specifier, if any, to front.
-    // TODO: don't bother with this because dprint may disagree
+    // TODO: don't bother with that because dprint may disagree
     const sorted = [...statement.specifiers].sort((a, b) => {
       invariant(
         a.kind !== 'ImportDefaultSpecifier' ||
@@ -410,7 +411,9 @@ function printStatement(statement: Statement, indent: number): string {
     // Indent should always be zero here, but printing it anyway...
     return (
       printIndent(indent) +
-      `import ${specifiers.join(', ')} from ${statement.source.value};` +
+      `import ${statement.type ? 'type ' : ''}${
+        specifiers.join(', ')
+      } from ${statement.source.value};` +
       '\n'
     );
   } else if (statement.kind === 'LabelStatement') {

@@ -4,6 +4,7 @@
  *
  * @generated
  */
+import type {Actions, Gotos} from '@masochist/types';
 import {Lexer, Token} from './lex';
 
 import type {
@@ -509,7 +510,7 @@ function r77(
     block: $6,
   };
 }
-const actions = [{
+const actions: Array<Actions> = [{
   CLASS: {
     kind: 'Shift',
     state: 33,
@@ -6669,7 +6670,7 @@ const actions = [{
     rule: 67,
   },
 }];
-const gotos = [
+const gotos: Array<Gotos> = [
   {
     ArrayValue: 21,
     AssignmentExpression: 6,
@@ -7665,7 +7666,7 @@ const rules = [{
   action: r77,
 }];
 const EOF = new Token('$', -1, -1, '');
-export default function parseStatement(input) {
+export default function parseStatement(input: string) {
   const stack = [[null, 0]];
   const lexer = new Lexer(input);
   let token = lexer.next() || EOF;

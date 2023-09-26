@@ -72,6 +72,7 @@ export default function build(
     ),
     // TODO: don't assume lexer is written to lex.ts
     ast.import('{Lexer, Token}', './lex'),
+    ast.importType('{Actions, Gotos}', '@masochist/types'),
     grammar.prologue ? ast.rawStatement(grammar.prologue) : ast.empty,
     ...grammar.rules.map((rule, i): Statement => {
       if (rule.action && rule.action !== '') {
@@ -163,6 +164,7 @@ export default function build(
           );
         }),
       ),
+      {type: 'Array<Actions>'},
     ),
     // TODO: "as const" this (can't hurt, might help)
     ast.assign(
@@ -182,6 +184,7 @@ export default function build(
           );
         }),
       ),
+      {type: 'Array<Gotos>'},
     ),
     // TODO: "as const" this (can't hurt, might help)
     ast.assign(
@@ -210,7 +213,7 @@ export default function build(
     ast.default(
       ast.function({
         name,
-        arguments: ['input'],
+        arguments: ['input: string'],
         // TODO: return type Production
         // (need to include assertIsProduction in order for that to work)
         // or return type $StartingProduction

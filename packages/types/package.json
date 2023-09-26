@@ -1,8 +1,8 @@
 {
-  "name": "@masochist/client",
+  "name": "@masochist/types",
   "version": "0.0.1",
-  "description": "Masochist client",
-  "main": "src/index.ts",
+  "description": "Masochist type definitions",
+  "types": "src/index.d.ts",
   "author": "Greg Hurrell <greg@hurrell.net>",
   "license": "MIT",
   "scripts": {

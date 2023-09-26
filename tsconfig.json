@@ -13,6 +13,7 @@
     { "path": "./packages/lexer" },
     { "path": "./packages/parser" },
     { "path": "./packages/server" },
+    { "path": "./packages/types" },
     { "path": "./packages/typescript" }
   ]
 }
