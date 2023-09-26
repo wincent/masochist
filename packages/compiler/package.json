@@ -1,9 +1,6 @@
 {
   "name": "@masochist/compiler",
   "version": "0.0.1",
-  "dependencies": {
-    "@masochist/common": "*"
-  },
   "description": "Masochist compiler",
   "main": "src/index.ts",
   "author": "Greg Hurrell <greg@hurrell.net>",

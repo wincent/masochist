@@ -36,6 +36,8 @@ async function main(options: Options = {}) {
             dependencies[parsed.name] = dependencies[parsed.name] || new Set();
             dependencies[parsed.name].add(dependency);
           }
+        } else {
+          dependencies[parsed.name] = new Set();
         }
       } catch {
         // Swallow.
