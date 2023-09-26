@@ -23,6 +23,7 @@ import type {
   MemberExpression,
   MethodDefinition,
   NewExpression,
+  Node,
   NullValue,
   NumberValue,
   ObjectProperty,

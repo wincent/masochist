@@ -171,7 +171,7 @@ export default function parseSchema(input) {
     } else if (action.kind === 'Reduce') {
       // TODO: instead of pop, set length?
       const {production, pop, action: code} = rules[action.rule];
-      const popped: Array<P | Token | null> = [];
+      const popped: Array<Production | Token | null> = [];
       for (let i = 0; i < pop; i++) {
         const [node] = stack.pop()!;
         popped[pop - i - 1] = node;

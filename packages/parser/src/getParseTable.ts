@@ -27,7 +27,7 @@ type Actions = {
 };
 
 type Gotos = {
-  [nonTerminal: string]: number | null;
+  [nonTerminal: string]: number;
 };
 
 // TODO: add stats to this
