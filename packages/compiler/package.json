@@ -2,8 +2,7 @@
   "name": "@masochist/compiler",
   "version": "0.0.1",
   "dependencies": {
-    "@masochist/common": "*",
-    "@masochist/legacy": "*"
+    "@masochist/common": "*"
   },
   "description": "Masochist compiler",
   "main": "src/index.ts",

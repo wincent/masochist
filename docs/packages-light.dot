@@ -25,7 +25,6 @@ digraph dependency_graph {
   "@masochist/codegen" -> "@masochist/common" [color = "black", fontcolor = "black"];
   "@masochist/codegen" -> "@masochist/types" [color = "black", fontcolor = "black"];
   "@masochist/compiler" -> "@masochist/common" [color = "black", fontcolor = "black"];
-  "@masochist/compiler" -> "@masochist/legacy" [color = "black", fontcolor = "black"];
   "@masochist/graphql" -> "@masochist/codegen" [color = "black", fontcolor = "black"];
   "@masochist/graphql" -> "@masochist/common" [color = "black", fontcolor = "black"];
   "@masochist/graphql" -> "@masochist/lexer" [color = "black", fontcolor = "black"];
