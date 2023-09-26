@@ -237,7 +237,9 @@ function printFunctionExpression(
     expression.arguments
       .map((argument) => printArgument(argument, indent))
       .join(', ') +
-    ') {\n' +
+    ')' +
+    (expression.type ? `: ${expression.type}` : '') +
+    ' {\n' +
     expression.body
       .map((statement) => printStatement(statement, indent + 1))
       .join('') +
@@ -332,7 +334,9 @@ function printStatement(statement: Statement, indent: number): string {
       statement.arguments
         .map((argument) => printArgument(argument, indent))
         .join(', ') +
-      ') {\n' +
+      ')' +
+      (statement.type ? `: ${statement.type}` : '') +
+      ' {\n' +
       statement.body
         .map((statement) => {
           return printStatement(statement, indent + 1);

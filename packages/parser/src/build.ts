@@ -91,9 +91,9 @@ export default function build(
         }
         const max = variables.size ? Math.max(...variables) : 0;
         // TODO: check for used variables and pass only those?
-        return ast.function(
-          `r${i}`,
-          Array(max)
+        return ast.function({
+          name: `r${i}`,
+          arguments: Array(max)
             .fill(null)
             .map((_, i) => {
               const argument = variables.has(i + 1)
@@ -110,13 +110,20 @@ export default function build(
                 return argument;
               }
             }),
-          [ast.rawStatement(
+          body: [ast.rawStatement(
             rule.action
               .replace(/^{|}$/g, '') // Strip semantic action delimiters.
               .trim()
               .replace(/\$\$\s*=\s*/g, 'return '), // TODO: static analysis to make sure this is safe.
           )],
-        );
+          type: grammar.prologue ?
+            (
+              // Dummy start rule for augmented grammar will return nothing.
+              // All other rules return the type of the prgouction.
+              rule.lhs.endsWith("'") ? 'void' : rule.lhs
+            ) :
+            undefined,
+        });
       } else {
         return ast.docComment(`r${i}: no production`);
       }
@@ -198,10 +205,10 @@ export default function build(
       ),
     ),
     ast.default(
-      ast.function(
+      ast.function({
         name,
-        ['input'],
-        [
+        arguments: ['input'],
+        body: [
           ...ast.statements(`
             const stack = [[null, 0]];
             const lexer = new Lexer(input);
@@ -238,7 +245,7 @@ export default function build(
             }
           `),
         ],
-      ),
+      }),
     ),
   ));
 }

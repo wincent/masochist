@@ -19,6 +19,10 @@ export type Node =
 export type Argument = {
   kind: 'Argument';
   name: string;
+  // TODO: instead of using opaque strings, implement at least some basic
+  // internal structure (enough to represent primitive types, object types etc)
+  // although not urgently needed, because I am using type aliases everywhere
+  // for now
   type?: string;
 };
 
@@ -168,6 +172,7 @@ export type FunctionDeclaration = {
   name: string;
   arguments: Array<Argument>;
   body: Array<Statement>;
+  type?: string;
 };
 
 export type FunctionExpression = {
@@ -175,6 +180,7 @@ export type FunctionExpression = {
   arguments: Array<Argument>;
   name?: string;
   body: Array<Statement>;
+  type?: string;
 };
 
 // TODO: instead of name: string, allow Expression (because you can write `get
@@ -697,16 +703,18 @@ const ast = {
     return ast.identifier(template);
   },
 
-  function(
-    name: string,
-    args: Array<string>,
-    statements: Array<Statement>,
-  ): FunctionDeclaration {
+  function({name, arguments: args, type, body}: {
+    name: string;
+    arguments: Array<string>;
+    body: Array<Statement>;
+    type?: string;
+  }): FunctionDeclaration {
     return {
       kind: 'FunctionDeclaration',
       name,
       arguments: args.map(ast.argument),
-      body: statements,
+      type,
+      body,
     };
   },
 

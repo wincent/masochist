@@ -54,38 +54,38 @@ type ExpressionList = Array<Expression>;
 type ObjectPropertyList = Array<ObjectProperty>;
 type StatementList = Array<Statement>;
 
-function r0() {
+function r0(): void {
   /* dummy placeholder */
 }
-function r1($1: Statement) {
+function r1($1: Statement): StatementList {
   return [$1];
 }
-function r2($1: StatementList, $2: Statement) {
+function r2($1: StatementList, $2: Statement): StatementList {
   $1.push($2);
   return $1;
 }
-function r3() {
+function r3(): StatementList {
   return [];
 }
-function r4($1: AssignmentStatement) {
+function r4($1: AssignmentStatement): Statement {
   return $1;
 }
-function r5($1: ClassDeclaration) {
+function r5($1: ClassDeclaration): Statement {
   return $1;
 }
-function r6($1: ExportDefaultDeclaration) {
+function r6($1: ExportDefaultDeclaration): Statement {
   return $1;
 }
-function r7($1: ExpressionStatement) {
+function r7($1: ExpressionStatement): Statement {
   return $1;
 }
-function r8($1: ReturnStatement) {
+function r8($1: ReturnStatement): Statement {
   return $1;
 }
-function r9($1: WhileStatement) {
+function r9($1: WhileStatement): Statement {
   return $1;
 }
-function r10(_$1: Token, $2: AssignmentExpression) {
+function r10(_$1: Token, $2: AssignmentExpression): AssignmentStatement {
   return {
     kind: 'AssignmentStatement',
     binding: 'const',
@@ -93,7 +93,7 @@ function r10(_$1: Token, $2: AssignmentExpression) {
     rhs: $2.rhs,
   };
 }
-function r11(_$1: Token, $2: AssignmentExpression) {
+function r11(_$1: Token, $2: AssignmentExpression): AssignmentStatement {
   return {
     kind: 'AssignmentStatement',
     binding: 'let',
@@ -101,7 +101,7 @@ function r11(_$1: Token, $2: AssignmentExpression) {
     rhs: $2.rhs,
   };
 }
-function r12($1: AssignmentExpression) {
+function r12($1: AssignmentExpression): AssignmentStatement {
   return {
     kind: 'AssignmentStatement',
     binding: null,
@@ -109,52 +109,52 @@ function r12($1: AssignmentExpression) {
     rhs: $1.rhs,
   };
 }
-function r13($1: Token) {
+function r13($1: Token): Identifier {
   return {
     kind: 'Identifier',
     name: $1.contents,
   };
 }
-function r14($1: Token) {
+function r14($1: Token): Identifier {
   return {
     kind: 'Identifier',
     name: $1.contents,
   };
 }
-function r15(_$1: Token, $2: Expression) {
+function r15(_$1: Token, $2: Expression): Expression {
   return $2;
 }
-function r16() {
+function r16(): Expression {
   return {
     kind: 'Identifier',
     name: 'this',
   };
 }
-function r17($1: AssignmentExpression) {
+function r17($1: AssignmentExpression): Expression {
   return $1;
 }
-function r18($1: BinaryExpression) {
+function r18($1: BinaryExpression): Expression {
   return $1;
 }
-function r19($1: CallExpression) {
+function r19($1: CallExpression): Expression {
   return $1;
 }
-function r20($1: Identifier) {
+function r20($1: Identifier): Expression {
   return $1;
 }
-function r21($1: MemberExpression) {
+function r21($1: MemberExpression): Expression {
   return $1;
 }
-function r22($1: NewExpression) {
+function r22($1: NewExpression): Expression {
   return $1;
 }
-function r23($1: ObjectValue) {
+function r23($1: ObjectValue): Expression {
   return $1;
 }
-function r24($1: PrimitiveValue) {
+function r24($1: PrimitiveValue): Expression {
   return $1;
 }
-function r25($1: Expression, _$2: Token, $3: Expression) {
+function r25($1: Expression, _$2: Token, $3: Expression): AssignmentExpression {
   return {
     kind: 'BinaryExpression',
     lhs: $1,
@@ -162,7 +162,7 @@ function r25($1: Expression, _$2: Token, $3: Expression) {
     rhs: $3,
   };
 }
-function r26($1: Expression, _$2: Token, $3: Expression) {
+function r26($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
   return {
     kind: 'BinaryExpression',
     lhs: $1,
@@ -170,7 +170,7 @@ function r26($1: Expression, _$2: Token, $3: Expression) {
     rhs: $3,
   };
 }
-function r27($1: Expression, _$2: Token, $3: Expression) {
+function r27($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
   return {
     kind: 'BinaryExpression',
     lhs: $1,
@@ -178,7 +178,7 @@ function r27($1: Expression, _$2: Token, $3: Expression) {
     rhs: $3,
   };
 }
-function r28($1: Expression, _$2: Token, $3: Expression) {
+function r28($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
   return {
     kind: 'BinaryExpression',
     lhs: $1,
@@ -186,7 +186,7 @@ function r28($1: Expression, _$2: Token, $3: Expression) {
     rhs: $3,
   };
 }
-function r29($1: Expression, _$2: Token, $3: Expression) {
+function r29($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
   return {
     kind: 'BinaryExpression',
     lhs: $1,
@@ -194,7 +194,7 @@ function r29($1: Expression, _$2: Token, $3: Expression) {
     rhs: $3,
   };
 }
-function r30($1: Expression, _$2: Token, $3: Expression) {
+function r30($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
   return {
     kind: 'BinaryExpression',
     lhs: $1,
@@ -202,7 +202,7 @@ function r30($1: Expression, _$2: Token, $3: Expression) {
     rhs: $3,
   };
 }
-function r31($1: Expression, _$2: Token, $3: Expression) {
+function r31($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
   return {
     kind: 'BinaryExpression',
     lhs: $1,
@@ -210,54 +210,63 @@ function r31($1: Expression, _$2: Token, $3: Expression) {
     rhs: $3,
   };
 }
-function r32(_$1: Token, $2: Expression, _$3: Token, $4: ExpressionList) {
+function r32(
+  _$1: Token,
+  $2: Expression,
+  _$3: Token,
+  $4: ExpressionList,
+): NewExpression {
   return {
     kind: 'NewExpression',
     object: $2,
     arguments: $4,
   };
 }
-function r33($1: Expression, _$2: Token, $3: ExpressionList) {
+function r33($1: Expression, _$2: Token, $3: ExpressionList): CallExpression {
   return {
     kind: 'CallExpression',
     callee: $1,
     arguments: $3,
   };
 }
-function r34($1: Expression) {
+function r34($1: Expression): ExpressionList {
   return [$1];
 }
-function r35($1: ExpressionList, _$2: Token, $3: Expression) {
+function r35($1: ExpressionList, _$2: Token, $3: Expression): ExpressionList {
   $1.push($3);
   return $1;
 }
-function r36() {
+function r36(): ExpressionList {
   return [];
 }
-function r37($1: Expression, _$2: Token, $3: Identifier) {
+function r37($1: Expression, _$2: Token, $3: Identifier): MemberExpression {
   return {
     kind: 'MemberExpression',
     object: $1,
     property: $3,
   };
 }
-function r38(_$1: Token, $2: ObjectPropertyList) {
+function r38(_$1: Token, $2: ObjectPropertyList): ObjectValue {
   return {
     kind: 'ObjectValue',
     properties: $2,
   };
 }
-function r39($1: ObjectProperty) {
+function r39($1: ObjectProperty): ObjectPropertyList {
   return [$1];
 }
-function r40($1: ObjectPropertyList, _$2: Token, $3: ObjectProperty) {
+function r40(
+  $1: ObjectPropertyList,
+  _$2: Token,
+  $3: ObjectProperty,
+): ObjectPropertyList {
   $1.push($3);
   return $1;
 }
-function r41() {
+function r41(): ObjectPropertyList {
   return [];
 }
-function r42($1: Identifier, _$2: Token, $3: Expression) {
+function r42($1: Identifier, _$2: Token, $3: Expression): ObjectProperty {
   return {
     kind: 'ObjectProperty',
     key: $1,
@@ -266,7 +275,7 @@ function r42($1: Identifier, _$2: Token, $3: Expression) {
     shorthand: false,
   };
 }
-function r43($1: Identifier) {
+function r43($1: Identifier): ObjectProperty {
   return {
     kind: 'ObjectProperty',
     key: $1,
@@ -275,7 +284,7 @@ function r43($1: Identifier) {
     shorthand: true,
   };
 }
-function r44($1: NumberValue, _$2: Token, $3: Expression) {
+function r44($1: NumberValue, _$2: Token, $3: Expression): ObjectProperty {
   return {
     kind: 'ObjectProperty',
     key: $1,
@@ -290,7 +299,7 @@ function r45(
   _$3: Token,
   _$4: Token,
   $5: Expression,
-) {
+): ObjectProperty {
   return {
     kind: 'ObjectProperty',
     key: $2,
@@ -299,90 +308,99 @@ function r45(
     shorthand: false,
   };
 }
-function r46($1: ArrayValue) {
+function r46($1: ArrayValue): PrimitiveValue {
   return $1;
 }
-function r47($1: BooleanValue) {
+function r47($1: BooleanValue): PrimitiveValue {
   return $1;
 }
-function r48($1: NullValue) {
+function r48($1: NullValue): PrimitiveValue {
   return $1;
 }
-function r49($1: NumberValue) {
+function r49($1: NumberValue): PrimitiveValue {
   return $1;
 }
-function r50($1: StringValue) {
+function r50($1: StringValue): PrimitiveValue {
   return $1;
 }
-function r51(_$1: Token, $2: ExpressionList) {
+function r51(_$1: Token, $2: ExpressionList): ArrayValue {
   return {
     kind: 'ArrayValue',
     items: $2,
   };
 }
-function r52() {
+function r52(): BooleanValue {
   return {
     kind: 'BooleanValue',
     value: false,
   };
 }
-function r53() {
+function r53(): BooleanValue {
   return {
     kind: 'BooleanValue',
     value: true,
   };
 }
-function r54() {
+function r54(): NullValue {
   return {
     kind: 'NullValue',
   };
 }
-function r55($1: Token) {
+function r55($1: Token): NumberValue {
   return {
     kind: 'NumberValue',
     value: parseFloat($1.contents),
     base: 10,
   };
 }
-function r56($1: Token) {
+function r56($1: Token): StringValue {
   return {
     kind: 'StringValue',
     value: $1.contents,
   };
 }
-function r57(_$1: Token, _$2: Token, $3: Declaration) {
+function r57(
+  _$1: Token,
+  _$2: Token,
+  $3: Declaration,
+): ExportDefaultDeclaration {
   return {
     kind: 'ExportDefaultDeclaration',
     declaration: $3,
   };
 }
-function r58($1: ClassDeclaration) {
+function r58($1: ClassDeclaration): Declaration {
   return $1;
 }
-function r59(_$1: Token, $2: Identifier, _$3: Token, $4: ClassBodyList) {
+function r59(
+  _$1: Token,
+  $2: Identifier,
+  _$3: Token,
+  $4: ClassBodyList,
+): ClassDeclaration {
   return {
     kind: 'ClassDeclaration',
     id: $2.name,
     body: $4,
   };
 }
-function r60($1: ClassBodyListItem) {
+function r60($1: ClassBodyListItem): ClassBodyList {
   return [$1];
 }
-function r61($1: ClassBodyList, $2: ClassBodyListItem) {
+function r61($1: ClassBodyList, $2: ClassBodyListItem): ClassBodyList {
   $1.push($2);
   return $1;
 }
-function r62() {
+function r62(): ClassBodyList {
   return [];
 }
-function r63($1: GetAccessor) {
+function r63($1: GetAccessor): ClassBodyListItem {
   return $1;
 }
-function r64($1: MethodDefinition) {
+function r64($1: MethodDefinition): ClassBodyListItem {
   return $1;
 }
-function r65($1: PropertyDeclaration) {
+function r65($1: PropertyDeclaration): ClassBodyListItem {
   return $1;
 }
 function r66(
@@ -392,7 +410,7 @@ function r66(
   _$4: Token,
   _$5: Token,
   $6: StatementList,
-) {
+): GetAccessor {
   return {
     kind: 'GetAccessor',
     name: $2.name,
@@ -406,7 +424,7 @@ function r67(
   _$4: Token,
   _$5: Token,
   $6: StatementList,
-) {
+): MethodDefinition {
   return {
     kind: 'MethodDefinition',
     key: $1,
@@ -417,48 +435,48 @@ function r67(
     },
   };
 }
-function r68($1: Argument) {
+function r68($1: Argument): ArgumentList {
   return [$1];
 }
-function r69($1: ArgumentList, _$2: Token, $3: Argument) {
+function r69($1: ArgumentList, _$2: Token, $3: Argument): ArgumentList {
   $1.push($3);
   return $1;
 }
-function r70() {
+function r70(): ArgumentList {
   return [];
 }
-function r71($1: Identifier) {
+function r71($1: Identifier): Argument {
   return {
     kind: 'Argument',
     name: $1.name,
   };
 }
-function r72($1: Identifier, _$2: Token, $3: Identifier) {
+function r72($1: Identifier, _$2: Token, $3: Identifier): Argument {
   return {
     kind: 'Argument',
     name: $1.name,
     type: $3.name,
   };
 }
-function r73($1: Identifier, _$2: Token, $3: Identifier) {
+function r73($1: Identifier, _$2: Token, $3: Identifier): PropertyDeclaration {
   return {
     kind: 'PropertyDeclaration',
     name: $1.name,
     type: $3.name,
   };
 }
-function r74($1: Expression) {
+function r74($1: Expression): ExpressionStatement {
   return {
     kind: 'ExpressionStatement',
     expression: $1,
   };
 }
-function r75() {
+function r75(): ReturnStatement {
   return {
     kind: 'ReturnStatement',
   };
 }
-function r76(_$1: Token, $2: Expression) {
+function r76(_$1: Token, $2: Expression): ReturnStatement {
   return {
     kind: 'ReturnStatement',
     expression: $2,
@@ -471,7 +489,7 @@ function r77(
   _$4: Token,
   _$5: Token,
   $6: StatementList,
-) {
+): WhileStatement {
   return {
     kind: 'WhileStatement',
     condition: $3,

@@ -364,10 +364,10 @@ export default async function build(
         //
         //    error TS7006: Parameter 'input' implicitly has an 'any' type.
         //
-        ast.function(
-          '*lex',
-          ['input: string'],
-          [
+        ast.function({
+          name: '*lex',
+          arguments: ['input: string'],
+          body: [
             ast.const('lexer', ast.new('Lexer', 'input')),
             ast.while(ast.true, [
               ast.const('token', ast.call(ast.member('lexer', 'next'))),
@@ -382,7 +382,7 @@ export default async function build(
               },
             ]),
           ],
-        ),
+        }),
       ),
     ],
   };
