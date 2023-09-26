@@ -11,7 +11,7 @@ import type {
   PropertyDeclaration,
   Statement,
   SwitchCase,
-} from './ast';
+} from '@masochist/types';
 
 const TAB_WIDTH = 2;
 

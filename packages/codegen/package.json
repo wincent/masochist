@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "Masochist codegen",
   "dependencies": {
-    "@masochist/common": "*"
+    "@masochist/common": "*",
+    "@masochist/types": "*"
   },
   "main": "src/index.ts",
   "author": "Greg Hurrell <greg@hurrell.net>",

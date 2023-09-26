@@ -12,7 +12,7 @@ import type {
   ExportNamedDeclaration,
   PropertyDeclaration,
   RawStatement,
-} from '@masochist/codegen';
+} from '@masochist/types';
 
 import type {TransitionTable} from '../NFA/TransitionTable';
 

@@ -35,9 +35,7 @@ import type {
   Statement,
   StringValue,
   WhileStatement,
-} from '@masochist/codegen';
-// TODO: beware self-import (in codegen, because we copy built
-// parseStatement.ts to codegen package)
+} from '@masochist/types';
 
 // Intermediate/local types.
 type ArgumentList = Array<Argument>;

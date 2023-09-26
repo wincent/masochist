@@ -5,7 +5,8 @@
   "dependencies": {
     "@masochist/codegen": "*",
     "@masochist/common": "*",
-    "@masochist/lexer": "*"
+    "@masochist/lexer": "*",
+    "@masochist/types": "*"
   },
   "main": "src/index.ts",
   "author": "Greg Hurrell <greg@hurrell.net>",

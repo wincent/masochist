@@ -4,7 +4,7 @@ import {StringScanner, objectMap, unreachable} from '@masochist/common';
 import assert from 'node:assert';
 import stringifyRule from './stringifyRule';
 
-import type {Program, Statement} from '@masochist/codegen';
+import type {Program, Statement} from '@masochist/types';
 import type {ParseTable} from './getParseTable';
 import type {Grammar, Rule} from './types';
 

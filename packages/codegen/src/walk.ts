@@ -52,7 +52,7 @@ import type {
   UndefinedValue,
   WhileStatement,
   YieldExpression,
-} from './ast';
+} from '@masochist/types';
 
 type Visitor = {
   // What visitor return values mean, for now:

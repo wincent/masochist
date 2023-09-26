@@ -6,6 +6,7 @@ import {createContext, runInContext} from 'node:vm';
 
 import build from '../build';
 
+import type {TransitionTable} from '@masochist/lexer';
 import type {
   Argument,
   AssignmentStatement,
@@ -13,8 +14,7 @@ import type {
   ExportDefaultDeclaration,
   ImportStatement,
   RawStatement,
-} from '@masochist/codegen';
-import type {TransitionTable} from '@masochist/lexer';
+} from '@masochist/types';
 
 import type {ParseTable} from '../getParseTable';
 import type {Grammar} from '../types';

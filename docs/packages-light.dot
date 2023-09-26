@@ -23,20 +23,25 @@ digraph dependency_graph {
   "@masochist/benchmark" -> "@masochist/parser" [color = "black", fontcolor = "black"];
   "@masochist/benchmark" -> "graphql" [color = "black", fontcolor = "black"];
   "@masochist/codegen" -> "@masochist/common" [color = "black", fontcolor = "black"];
+  "@masochist/codegen" -> "@masochist/types" [color = "black", fontcolor = "black"];
   "@masochist/compiler" -> "@masochist/common" [color = "black", fontcolor = "black"];
   "@masochist/compiler" -> "@masochist/legacy" [color = "black", fontcolor = "black"];
   "@masochist/graphql" -> "@masochist/codegen" [color = "black", fontcolor = "black"];
   "@masochist/graphql" -> "@masochist/common" [color = "black", fontcolor = "black"];
   "@masochist/graphql" -> "@masochist/lexer" [color = "black", fontcolor = "black"];
   "@masochist/graphql" -> "@masochist/parser" [color = "black", fontcolor = "black"];
+  "@masochist/graphql" -> "@masochist/types" [color = "black", fontcolor = "black"];
   "@masochist/legacy" -> "@masochist/common" [color = "black", fontcolor = "black"];
   "@masochist/lexer" -> "@masochist/codegen" [color = "black", fontcolor = "black"];
   "@masochist/lexer" -> "@masochist/common" [color = "black", fontcolor = "black"];
+  "@masochist/lexer" -> "@masochist/types" [color = "black", fontcolor = "black"];
   "@masochist/parser" -> "@masochist/codegen" [color = "black", fontcolor = "black"];
   "@masochist/parser" -> "@masochist/common" [color = "black", fontcolor = "black"];
   "@masochist/parser" -> "@masochist/lexer" [color = "black", fontcolor = "black"];
+  "@masochist/parser" -> "@masochist/types" [color = "black", fontcolor = "black"];
   "@masochist/typescript" -> "@masochist/codegen" [color = "black", fontcolor = "black"];
   "@masochist/typescript" -> "@masochist/common" [color = "black", fontcolor = "black"];
   "@masochist/typescript" -> "@masochist/lexer" [color = "black", fontcolor = "black"];
   "@masochist/typescript" -> "@masochist/parser" [color = "black", fontcolor = "black"];
+  "@masochist/typescript" -> "@masochist/types" [color = "black", fontcolor = "black"];
 }

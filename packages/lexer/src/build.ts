@@ -12,7 +12,7 @@ import type {
   Program,
   Statement,
   WhileStatement,
-} from '@masochist/codegen';
+} from '@masochist/types';
 import type {Transition} from './NFA/NFA';
 import type {TransitionTable} from './NFA/TransitionTable';
 import keyToTransition from './NFA/keyToTransition';

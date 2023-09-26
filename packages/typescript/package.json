@@ -6,7 +6,8 @@
     "@masochist/codegen": "*",
     "@masochist/common": "*",
     "@masochist/lexer": "*",
-    "@masochist/parser": "*"
+    "@masochist/parser": "*",
+    "@masochist/types": "*"
   },
   "main": "src/index.ts",
   "author": "Greg Hurrell <greg@hurrell.net>",

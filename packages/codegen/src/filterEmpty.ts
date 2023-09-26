@@ -1,4 +1,4 @@
-import type {Statement} from './ast';
+import type {Statement} from '@masochist/types';
 
 export default function filterEmpty(
   ...statements: Array<Statement>
