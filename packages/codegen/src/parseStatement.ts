@@ -54,6 +54,18 @@ type ExpressionList = Array<Expression>;
 type ObjectPropertyList = Array<ObjectProperty>;
 type StatementList = Array<Statement>;
 
+type Production =
+  | Node
+  | ArgumentList
+  | AssignmentExpression
+  | ClassBodyList
+  | ClassBodyListItem
+  | ExpressionList
+  | ObjectPropertyList
+  | StatementList;
+
+// TODO: as isStatementList assertion?
+
 function r0(): void {
   /* dummy placeholder */
 }
@@ -7675,7 +7687,7 @@ export default function parseStatement(input) {
     } else if (action.kind === 'Reduce') {
       // TODO: instead of pop, set length?
       const {production, pop, action: code} = rules[action.rule];
-      const popped: Array<P | Token | null> = [];
+      const popped: Array<Production | Token | null> = [];
       for (let i = 0; i < pop; i++) {
         const [node] = stack.pop()!;
         popped[pop - i - 1] = node;

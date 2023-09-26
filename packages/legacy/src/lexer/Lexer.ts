@@ -1,4 +1,4 @@
-import {escapeForRegExp} from '@masochist/common';
+import {escapeForRegExp, unreachable} from '@masochist/common';
 
 import ReversibleMap from './ReversibleMap';
 import permute from './permute';
@@ -920,10 +920,12 @@ export default class Lexer<K, V> {
           }
         }
 
-        fail('Failed to consume all input');
-
-        // See: https://stackoverflow.com/a/46434101
-        throw new Error('Unreachable code (fake error for TypeScript)');
+        // Need `unreachable()` here because TypeScript ignores `never` return
+        // type of `fail()` for some inscrutable reason; perhaps an ancient
+        // vestige of the performance optimization mentione in:
+        //
+        // - https://stackoverflow.com/a/46434101
+        unreachable(fail('Failed to consume all input'));
       };
     };
 

@@ -1,3 +1,5 @@
+import {unreachable} from '@masochist/common';
+
 import type {Action, ParseTable} from './getParseTable';
 
 /**
@@ -16,7 +18,7 @@ export default function stringifyParseTable(parseTable: ParseTable): string {
     } else if (action.kind === 'Reduce') {
       return ` r${action.rule} `;
     } else {
-      throw new Error('actionToString(): Unreachable');
+      unreachable(action);
     }
   }
 

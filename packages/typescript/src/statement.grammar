@@ -46,6 +46,18 @@
   type ExpressionList = Array<Expression>;
   type ObjectPropertyList = Array<ObjectProperty>;
   type StatementList = Array<Statement>;
+
+  type Production =
+    | Node
+    | ArgumentList
+    | AssignmentExpression
+    | ClassBodyList
+    | ClassBodyListItem
+    | ExpressionList
+    | ObjectPropertyList
+    | StatementList;
+
+  // TODO: as isStatementList assertion?
 %}
 
 %token ASSIGN

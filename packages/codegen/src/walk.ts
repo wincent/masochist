@@ -253,7 +253,6 @@ export default function walk(
   } else if (node.kind === 'YieldExpression') {
     return walkYieldExpression(node, visitor);
   } else {
-    // Use TS to enforce exhaustiveness of this conditional.
     unreachable(node);
   }
 }

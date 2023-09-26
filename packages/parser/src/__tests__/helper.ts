@@ -59,6 +59,7 @@ export async function getParser(
 
     // Brutal hack to strip out a type annotation and a non-null assertion in
     // the middle of a multi-line RawStatement.
+    // TODO: once this raw statement is gone, this will need to change
     RawStatement(statement: RawStatement) {
       if (statement.statement.match(/const popped:/)) {
         return {

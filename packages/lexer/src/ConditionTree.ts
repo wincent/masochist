@@ -1,3 +1,5 @@
+import {unreachable} from '@masochist/common';
+
 import IntervalTree, {Interval} from './IntervalTree';
 
 import type {Edge, NFA, Transition} from './NFA/NFA';
@@ -187,7 +189,7 @@ export default class ConditionTree extends IntervalTree<CharCode, Set<NFA>> {
         new CharCode(transition.to.charCodeAt(0)),
       );
     } else {
-      throw new Error('ConditionTree._getInterval(): Unreachable');
+      unreachable(transition);
     }
   }
 }

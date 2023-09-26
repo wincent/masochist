@@ -1,6 +1,6 @@
 import {ast} from '@masochist/codegen';
 import {filterEmpty} from '@masochist/codegen/src/internal';
-import {StringScanner, objectMap} from '@masochist/common';
+import {StringScanner, objectMap, unreachable} from '@masochist/common';
 import assert from 'node:assert';
 import stringifyRule from './stringifyRule';
 
@@ -128,6 +128,7 @@ export default function build(
         return ast.docComment(`r${i}: no production`);
       }
     }),
+    // TODO: "as const" this (can't hurt, might help)
     ast.assign(
       'const',
       'actions',
@@ -156,13 +157,14 @@ export default function build(
               } else if (action.kind === 'Accept') {
                 return [terminal, ast.object({kind: ast.string('Accept')})];
               } else {
-                throw new Error('Unreachable');
+                unreachable(action);
               }
             }),
           );
         }),
       ),
     ),
+    // TODO: "as const" this (can't hurt, might help)
     ast.assign(
       'const',
       'gotos',
@@ -181,6 +183,7 @@ export default function build(
         }),
       ),
     ),
+    // TODO: "as const" this (can't hurt, might help)
     ast.assign(
       'const',
       'rules',
@@ -208,7 +211,12 @@ export default function build(
       ast.function({
         name,
         arguments: ['input'],
+        // TODO: return type Production
+        // (need to include assertIsProduction in order for that to work)
+        // or return type $StartingProduction
+        // (need assertion for that too)
         body: [
+          // TODO: const stack: Array<[Production | Token | null, number]> = [[null, 0]];
           ...ast.statements(`
             const stack = [[null, 0]];
             const lexer = new Lexer(input);
@@ -233,7 +241,7 @@ export default function build(
               } else if (action.kind === 'Reduce') {
                 // TODO: instead of pop, set length?
                 const {production, pop, action: code} = rules[action.rule];
-                const popped: Array<P | Token | null> = [];
+                const popped: Array<Production | Token | null> = [];
                 for (let i = 0; i < pop; i++) {
                   const [node] = stack.pop()!;
                   popped[pop - i - 1] = node;
