@@ -60,11 +60,13 @@
     | ClassBodyListItem
     | ExpressionList
     | ObjectPropertyList
-    | StatementList;
+    | StatementList
+    | TypeList;
 
   // TODO: as isStatementList assertion?
 %}
 
+%token AS
 %token ASSIGN
 %token BANG
 %token BITWISE_OR
@@ -131,6 +133,8 @@ Statement → ExpressionStatement { $$ = $1; }
 Statement → ReturnStatement { $$ = $1; }
 Statement → WhileStatement { $$ = $1; }
 
+# TODO: disallow some Expression variants here
+# (eg. Identifier good, destructuring syntax good, CallExpression etc bad)
 AssignmentStatement → CONST Expression COLON Type ASSIGN Expression SEMICOLON {
   $$ = {
     kind: 'AssignmentStatement',
@@ -197,7 +201,18 @@ Expression → THIS {
 Expression → AssignmentExpression { $$ = $1; }
 Expression → BinaryExpression { $$ = $1; }
 Expression → CallExpression { $$ = $1; }
+
+# TODO: Make this more sophisticated; there are places where parens are needed:
+# eg. `const x = foo as number;` is fine
+# but `foo as Callable();` is not fine (needs to be `(foo as Callable)()`).
+Expression → Identifier AS Type {
+  $$ = {
+    ...$1,
+    cast: $3,
+  };
+}
 Expression → Identifier { $$ = $1; }
+
 Expression → MemberExpression { $$ = $1; }
 Expression → NewExpression { $$ = $1; }
 Expression → ObjectValue { $$ = $1; }

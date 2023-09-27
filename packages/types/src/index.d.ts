@@ -183,6 +183,9 @@ export type GetAccessor = {
 export type Identifier = {
   kind: 'Identifier';
   name: string;
+  // Adding `cast` to all expression types would be a pain, so I'm only going to
+  // do it on an as-needed basis. For now, that means just here.
+  cast?: Type;
 };
 
 export type IfStatement = {

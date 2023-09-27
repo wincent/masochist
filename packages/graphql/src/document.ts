@@ -13,6 +13,7 @@ import {
   getParseTable,
   itemSetsToTransitionTable,
   parseDSL,
+  validateGrammar,
 } from '@masochist/parser';
 import Bun from 'bun';
 import path from 'path';
@@ -22,7 +23,7 @@ const grammarDeclaration = await Bun.file(
 ).text();
 
 // Numerous tests rely on the unaugmented grammar.
-export const unaugmentedGrammar = parseDSL(grammarDeclaration);
+export const unaugmentedGrammar = validateGrammar(parseDSL(grammarDeclaration));
 
 export const grammar = getAugmentedGrammar(unaugmentedGrammar);
 export const itemSets = getItemSets(unaugmentedGrammar);

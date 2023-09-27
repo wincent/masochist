@@ -7,7 +7,7 @@
 import type {Actions, Gotos} from '@masochist/types';
 import {Lexer, Token} from './lex';
 function r0() {
-  /* dummy placeholder */
+  return null;
 }
 function r1($1) {
   return $1;
@@ -307,9 +307,10 @@ export default function parseExpression(input: string) {
       }
       const [, next] = stack[stack.length - 1];
       const target = gotos[next][production];
-      // TODO: "code as any" here makes last error go away
-      // ("spread argument must either have a tuple type or be passed to a rest parameter.")
-      stack.push([code(...popped), target]);
+      // "as any" cast here suppresses:
+      // - TS2590: Expression produces a union type that is too complex to represent.
+      // - TS2556: A spread argument must either have a tuple type or be passed to a rest parameter.
+      stack.push([(code as any)(...popped), target]);
     }
   }
 }

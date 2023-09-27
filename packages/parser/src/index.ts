@@ -7,3 +7,4 @@ export {default as getParseTable} from './getParseTable';
 export {default as itemSetsToTransitionTable} from './itemSetsToTransitionTable';
 export {default as parseDSL} from './parseDSL';
 export {default as parseWithTable, makeNode} from './parseWithTable';
+export {default as validateGrammar} from './validateGrammar';

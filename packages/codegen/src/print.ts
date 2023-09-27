@@ -112,7 +112,9 @@ function printExpression(expression: Expression, indent: number): string {
   } else if (expression.kind === 'FunctionExpression') {
     return printFunctionExpression(expression, indent, {useKeyword: true});
   } else if (expression.kind === 'Identifier') {
-    return expression.name;
+    return expression.cast
+      ? `(${expression.name} as ${printType(expression.cast, indent + 1)})`
+      : expression.name;
   } else if (expression.kind === 'IncrementExpression') {
     if (expression.position === 'postfix') {
       return printExpression(expression.operand, indent) + '++';

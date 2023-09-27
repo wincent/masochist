@@ -354,8 +354,8 @@ const ast = {
     };
   },
 
-  identifier(name: string): Identifier {
-    return {kind: 'Identifier', name};
+  identifier(name: string, cast?: Type): Identifier {
+    return {kind: 'Identifier', name, cast};
   },
 
   /**

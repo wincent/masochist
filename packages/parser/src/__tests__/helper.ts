@@ -100,8 +100,8 @@ export async function getParser(
       return null;
     },
 
-    // Brutal hack to strip out a type annotation and a non-null assertion in
-    // the middle of a multi-line RawStatement.
+    // Brutal hack to strip out a type annotation, a non-null assertion, and a
+    // cast in the middle of a multi-line RawStatement.
     RawStatement(statement: RawStatement) {
       if (statement.statement.match(/const popped:/)) {
         // TODO: once this raw statement is gone, this will need to change
@@ -109,7 +109,8 @@ export async function getParser(
           kind: 'RawStatement',
           statement: statement.statement
             .replace(/const popped(:\s*.+\s*=)/, 'const popped =')
-            .replace('!;', ';'),
+            .replace('!;', ';')
+            .replace(/ as any\b/, ''),
         };
       } else if (statement.statement.match(/\bimport type\b/)) {
         // Skip the entire prologue; it's only for types.

@@ -52,8 +52,9 @@ export const YIELD = 'yield';
 // Special identifiers.
 // See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#identifiers_with_special_meanings
 
+export const AS = 'as';
 export const GET = 'get';
-// others: arguments, as, async, eval, from, get, of, set
+// others: arguments, async, eval, from, get, of, set
 
 // Note that we're not bothering with non-ASCII identifiers as described in:
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#identifiers
@@ -107,6 +108,7 @@ export const WHITESPACE = /[\t ]+/;
 export default union({
   // Order matters; reserved keywords and special identifiers must come before
   // normal identifiers.
+  AS,
   CLASS,
   CONST,
   CONTINUE,

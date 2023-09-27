@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * vim: set nomodifiable : DO NOT EDIT - edit "build.ts", run "make typescript" instead
  *
@@ -68,12 +67,13 @@ type Production =
   | ClassBodyListItem
   | ExpressionList
   | ObjectPropertyList
-  | StatementList;
+  | StatementList
+  | TypeList;
 
 // TODO: as isStatementList assertion?
 
-function r0(): void {
-  /* dummy placeholder */
+function r0(): null {
+  return null;
 }
 function r1($1: Statement): StatementList {
   return [$1];
@@ -199,22 +199,28 @@ function r20($1: BinaryExpression): Expression {
 function r21($1: CallExpression): Expression {
   return $1;
 }
-function r22($1: Identifier): Expression {
+function r22($1: Identifier, _$2: Token, $3: Type): Expression {
+  return {
+    ...$1,
+    cast: $3,
+  };
+}
+function r23($1: Identifier): Expression {
   return $1;
 }
-function r23($1: MemberExpression): Expression {
+function r24($1: MemberExpression): Expression {
   return $1;
 }
-function r24($1: NewExpression): Expression {
+function r25($1: NewExpression): Expression {
   return $1;
 }
-function r25($1: ObjectValue): Expression {
+function r26($1: ObjectValue): Expression {
   return $1;
 }
-function r26($1: PrimitiveValue): Expression {
+function r27($1: PrimitiveValue): Expression {
   return $1;
 }
-function r27($1: Expression, _$2: Token, $3: Expression): AssignmentExpression {
+function r28($1: Expression, _$2: Token, $3: Expression): AssignmentExpression {
   return {
     kind: 'BinaryExpression',
     lhs: $1,
@@ -222,7 +228,7 @@ function r27($1: Expression, _$2: Token, $3: Expression): AssignmentExpression {
     rhs: $3,
   };
 }
-function r28($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
+function r29($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
   return {
     kind: 'BinaryExpression',
     lhs: $1,
@@ -230,7 +236,7 @@ function r28($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
     rhs: $3,
   };
 }
-function r29($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
+function r30($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
   return {
     kind: 'BinaryExpression',
     lhs: $1,
@@ -238,7 +244,7 @@ function r29($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
     rhs: $3,
   };
 }
-function r30($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
+function r31($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
   return {
     kind: 'BinaryExpression',
     lhs: $1,
@@ -246,7 +252,7 @@ function r30($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
     rhs: $3,
   };
 }
-function r31($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
+function r32($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
   return {
     kind: 'BinaryExpression',
     lhs: $1,
@@ -254,7 +260,7 @@ function r31($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
     rhs: $3,
   };
 }
-function r32($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
+function r33($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
   return {
     kind: 'BinaryExpression',
     lhs: $1,
@@ -262,7 +268,7 @@ function r32($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
     rhs: $3,
   };
 }
-function r33($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
+function r34($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
   return {
     kind: 'BinaryExpression',
     lhs: $1,
@@ -270,7 +276,7 @@ function r33($1: Expression, _$2: Token, $3: Expression): BinaryExpression {
     rhs: $3,
   };
 }
-function r34(
+function r35(
   _$1: Token,
   $2: Expression,
   _$3: Token,
@@ -282,40 +288,40 @@ function r34(
     arguments: $4,
   };
 }
-function r35($1: Expression, _$2: Token, $3: ExpressionList): CallExpression {
+function r36($1: Expression, _$2: Token, $3: ExpressionList): CallExpression {
   return {
     kind: 'CallExpression',
     callee: $1,
     arguments: $3,
   };
 }
-function r36($1: Expression): ExpressionList {
+function r37($1: Expression): ExpressionList {
   return [$1];
 }
-function r37($1: ExpressionList, _$2: Token, $3: Expression): ExpressionList {
+function r38($1: ExpressionList, _$2: Token, $3: Expression): ExpressionList {
   $1.push($3);
   return $1;
 }
-function r38(): ExpressionList {
+function r39(): ExpressionList {
   return [];
 }
-function r39($1: Expression, _$2: Token, $3: Identifier): MemberExpression {
+function r40($1: Expression, _$2: Token, $3: Identifier): MemberExpression {
   return {
     kind: 'MemberExpression',
     object: $1,
     property: $3,
   };
 }
-function r40(_$1: Token, $2: ObjectPropertyList): ObjectValue {
+function r41(_$1: Token, $2: ObjectPropertyList): ObjectValue {
   return {
     kind: 'ObjectValue',
     properties: $2,
   };
 }
-function r41($1: ObjectProperty): ObjectPropertyList {
+function r42($1: ObjectProperty): ObjectPropertyList {
   return [$1];
 }
-function r42(
+function r43(
   $1: ObjectPropertyList,
   _$2: Token,
   $3: ObjectProperty,
@@ -323,10 +329,10 @@ function r42(
   $1.push($3);
   return $1;
 }
-function r43(): ObjectPropertyList {
+function r44(): ObjectPropertyList {
   return [];
 }
-function r44($1: Identifier, _$2: Token, $3: Expression): ObjectProperty {
+function r45($1: Identifier, _$2: Token, $3: Expression): ObjectProperty {
   return {
     kind: 'ObjectProperty',
     key: $1,
@@ -335,7 +341,7 @@ function r44($1: Identifier, _$2: Token, $3: Expression): ObjectProperty {
     shorthand: false,
   };
 }
-function r45($1: Identifier): ObjectProperty {
+function r46($1: Identifier): ObjectProperty {
   return {
     kind: 'ObjectProperty',
     key: $1,
@@ -344,7 +350,7 @@ function r45($1: Identifier): ObjectProperty {
     shorthand: true,
   };
 }
-function r46($1: NumberValue, _$2: Token, $3: Expression): ObjectProperty {
+function r47($1: NumberValue, _$2: Token, $3: Expression): ObjectProperty {
   return {
     kind: 'ObjectProperty',
     key: $1,
@@ -353,7 +359,7 @@ function r46($1: NumberValue, _$2: Token, $3: Expression): ObjectProperty {
     shorthand: false,
   };
 }
-function r47(
+function r48(
   _$1: Token,
   $2: Expression,
   _$3: Token,
@@ -368,102 +374,102 @@ function r47(
     shorthand: false,
   };
 }
-function r48($1: ArrayValue): PrimitiveValue {
+function r49($1: ArrayValue): PrimitiveValue {
   return $1;
 }
-function r49($1: BooleanValue): PrimitiveValue {
+function r50($1: BooleanValue): PrimitiveValue {
   return $1;
 }
-function r50($1: NullValue): PrimitiveValue {
+function r51($1: NullValue): PrimitiveValue {
   return $1;
 }
-function r51($1: NumberValue): PrimitiveValue {
+function r52($1: NumberValue): PrimitiveValue {
   return $1;
 }
-function r52($1: StringValue): PrimitiveValue {
+function r53($1: StringValue): PrimitiveValue {
   return $1;
 }
-function r53(_$1: Token, $2: ExpressionList): ArrayValue {
+function r54(_$1: Token, $2: ExpressionList): ArrayValue {
   return {
     kind: 'ArrayValue',
     items: $2,
   };
 }
-function r54(): BooleanValue {
+function r55(): BooleanValue {
   return {
     kind: 'BooleanValue',
     value: false,
   };
 }
-function r55(): BooleanValue {
+function r56(): BooleanValue {
   return {
     kind: 'BooleanValue',
     value: true,
   };
 }
-function r56(): NullValue {
+function r57(): NullValue {
   return {
     kind: 'NullValue',
   };
 }
-function r57($1: Token): NumberValue {
+function r58($1: Token): NumberValue {
   return {
     kind: 'NumberValue',
     value: parseFloat($1.contents),
     base: 10,
   };
 }
-function r58($1: Token): StringValue {
+function r59($1: Token): StringValue {
   return {
     kind: 'StringValue',
     value: $1.contents,
   };
 }
-function r59($1: GenericType): Type {
+function r60($1: GenericType): Type {
   return $1;
 }
-function r60($1: NamedType): Type {
+function r61($1: NamedType): Type {
   return $1;
 }
-function r61($1: TupleType): Type {
+function r62($1: TupleType): Type {
   return $1;
 }
-function r62($1: UnionType): Type {
+function r63($1: UnionType): Type {
   return $1;
 }
-function r63($1: Identifier, _$2: Token, $3: TypeList): GenericType {
+function r64($1: Identifier, _$2: Token, $3: TypeList): GenericType {
   return {
     kind: 'GenericType',
     name: $1.name,
     parameters: $3,
   };
 }
-function r64($1: Type): TypeList {
+function r65($1: Type): TypeList {
   return [$1];
 }
-function r65($1: TypeList, _$2: Token, $3: Type): TypeList {
+function r66($1: TypeList, _$2: Token, $3: Type): TypeList {
   $1.push($3);
   return $1;
 }
-function r66($1: Identifier): NamedType {
+function r67($1: Identifier): NamedType {
   return {
     kind: 'NamedType',
     name: $1.name,
   };
 }
-function r67($1: Token): NamedType {
+function r68($1: Token): NamedType {
   return {
     kind: 'NamedType',
     name: $1.contents,
   };
 }
-function r68(_$1: Token, $2: TypeList): TupleType {
+function r69(_$1: Token, $2: TypeList): TupleType {
   return {
     kind: 'TupleType',
     elements: $2,
   };
 }
-function r69($1: Type, _$2: Token, $3: Type): UnionType {
+function r70($1: Type, _$2: Token, $3: Type): UnionType {
   return ($1.kind === 'UnionType')
     ? {
       kind: 'UnionType',
@@ -474,7 +480,7 @@ function r69($1: Type, _$2: Token, $3: Type): UnionType {
       variants: [$1, $3],
     };
 }
-function r70(
+function r71(
   _$1: Token,
   _$2: Token,
   $3: Declaration,
@@ -484,10 +490,10 @@ function r70(
     declaration: $3,
   };
 }
-function r71($1: ClassDeclaration): Declaration {
+function r72($1: ClassDeclaration): Declaration {
   return $1;
 }
-function r72(
+function r73(
   _$1: Token,
   $2: Identifier,
   _$3: Token,
@@ -499,26 +505,26 @@ function r72(
     body: $4,
   };
 }
-function r73($1: ClassBodyListItem): ClassBodyList {
+function r74($1: ClassBodyListItem): ClassBodyList {
   return [$1];
 }
-function r74($1: ClassBodyList, $2: ClassBodyListItem): ClassBodyList {
+function r75($1: ClassBodyList, $2: ClassBodyListItem): ClassBodyList {
   $1.push($2);
   return $1;
 }
-function r75(): ClassBodyList {
+function r76(): ClassBodyList {
   return [];
 }
-function r76($1: GetAccessor): ClassBodyListItem {
+function r77($1: GetAccessor): ClassBodyListItem {
   return $1;
 }
-function r77($1: MethodDefinition): ClassBodyListItem {
+function r78($1: MethodDefinition): ClassBodyListItem {
   return $1;
 }
-function r78($1: PropertyDeclaration): ClassBodyListItem {
+function r79($1: PropertyDeclaration): ClassBodyListItem {
   return $1;
 }
-function r79(
+function r80(
   _$1: Token,
   $2: Identifier,
   _$3: Token,
@@ -532,7 +538,7 @@ function r79(
     body: $6,
   };
 }
-function r80(
+function r81(
   $1: Identifier,
   _$2: Token,
   $3: ArgumentList,
@@ -550,54 +556,54 @@ function r80(
     },
   };
 }
-function r81($1: Argument): ArgumentList {
+function r82($1: Argument): ArgumentList {
   return [$1];
 }
-function r82($1: ArgumentList, _$2: Token, $3: Argument): ArgumentList {
+function r83($1: ArgumentList, _$2: Token, $3: Argument): ArgumentList {
   $1.push($3);
   return $1;
 }
-function r83(): ArgumentList {
+function r84(): ArgumentList {
   return [];
 }
-function r84($1: Identifier): Argument {
+function r85($1: Identifier): Argument {
   return {
     kind: 'Argument',
     name: $1.name,
   };
 }
-function r85($1: Identifier, _$2: Token, $3: Identifier): Argument {
+function r86($1: Identifier, _$2: Token, $3: Identifier): Argument {
   return {
     kind: 'Argument',
     name: $1.name,
     type: $3.name,
   };
 }
-function r86($1: Identifier, _$2: Token, $3: Identifier): PropertyDeclaration {
+function r87($1: Identifier, _$2: Token, $3: Identifier): PropertyDeclaration {
   return {
     kind: 'PropertyDeclaration',
     name: $1.name,
     type: $3.name,
   };
 }
-function r87($1: Expression): ExpressionStatement {
+function r88($1: Expression): ExpressionStatement {
   return {
     kind: 'ExpressionStatement',
     expression: $1,
   };
 }
-function r88(): ReturnStatement {
+function r89(): ReturnStatement {
   return {
     kind: 'ReturnStatement',
   };
 }
-function r89(_$1: Token, $2: Expression): ReturnStatement {
+function r90(_$1: Token, $2: Expression): ReturnStatement {
   return {
     kind: 'ReturnStatement',
     expression: $2,
   };
 }
-function r90(
+function r91(
   _$1: Token,
   _$2: Token,
   $3: Expression,
@@ -789,19 +795,19 @@ const actions: Array<Actions> = [{
     kind: 'Reduce',
     rule: 1,
   },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 1,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 1,
-  },
   IDENTIFIER: {
     kind: 'Reduce',
     rule: 1,
   },
   GET: {
+    kind: 'Reduce',
+    rule: 1,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 1,
+  },
+  WHILE: {
     kind: 'Reduce',
     rule: 1,
   },
@@ -870,19 +876,19 @@ const actions: Array<Actions> = [{
     kind: 'Reduce',
     rule: 4,
   },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 4,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 4,
-  },
   IDENTIFIER: {
     kind: 'Reduce',
     rule: 4,
   },
   GET: {
+    kind: 'Reduce',
+    rule: 4,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 4,
+  },
+  WHILE: {
     kind: 'Reduce',
     rule: 4,
   },
@@ -1339,67 +1345,75 @@ const actions: Array<Actions> = [{
     rule: 21,
   },
 }, {
+  AS: {
+    kind: 'Shift',
+    state: 57,
+  },
   ASSIGN: {
     kind: 'Reduce',
-    rule: 22,
+    rule: 23,
   },
   LOGICAL_AND: {
     kind: 'Reduce',
-    rule: 22,
+    rule: 23,
   },
   OPENING_PAREN: {
     kind: 'Reduce',
-    rule: 22,
+    rule: 23,
   },
   DOT: {
     kind: 'Reduce',
-    rule: 22,
+    rule: 23,
   },
   LOGICAL_OR: {
     kind: 'Reduce',
-    rule: 22,
+    rule: 23,
   },
   MINUS: {
     kind: 'Reduce',
-    rule: 22,
+    rule: 23,
   },
   PLUS: {
     kind: 'Reduce',
-    rule: 22,
+    rule: 23,
   },
   EQUALS: {
     kind: 'Reduce',
-    rule: 22,
+    rule: 23,
   },
   STRICT_EQUALS: {
     kind: 'Reduce',
-    rule: 22,
+    rule: 23,
   },
   SEMICOLON: {
     kind: 'Reduce',
-    rule: 22,
+    rule: 23,
   },
   COLON: {
     kind: 'Reduce',
-    rule: 22,
+    rule: 23,
   },
   CLOSING_PAREN: {
     kind: 'Reduce',
-    rule: 22,
+    rule: 23,
   },
   CLOSING_BRACKET: {
     kind: 'Reduce',
-    rule: 22,
+    rule: 23,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 22,
+    rule: 23,
   },
   CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 22,
+    rule: 23,
   },
 }, {
+  AS: {
+    kind: 'Reduce',
+    rule: 15,
+  },
   ASSIGN: {
     kind: 'Reduce',
     rule: 15,
@@ -1477,6 +1491,10 @@ const actions: Array<Actions> = [{
     rule: 15,
   },
 }, {
+  AS: {
+    kind: 'Reduce',
+    rule: 16,
+  },
   ASSIGN: {
     kind: 'Reduce',
     rule: 16,
@@ -1556,124 +1574,124 @@ const actions: Array<Actions> = [{
 }, {
   ASSIGN: {
     kind: 'Reduce',
-    rule: 23,
+    rule: 24,
   },
   LOGICAL_AND: {
     kind: 'Reduce',
-    rule: 23,
+    rule: 24,
   },
   OPENING_PAREN: {
     kind: 'Reduce',
-    rule: 23,
+    rule: 24,
   },
   DOT: {
     kind: 'Reduce',
-    rule: 23,
+    rule: 24,
   },
   LOGICAL_OR: {
     kind: 'Reduce',
-    rule: 23,
+    rule: 24,
   },
   MINUS: {
     kind: 'Reduce',
-    rule: 23,
+    rule: 24,
   },
   PLUS: {
     kind: 'Reduce',
-    rule: 23,
+    rule: 24,
   },
   EQUALS: {
     kind: 'Reduce',
-    rule: 23,
+    rule: 24,
   },
   STRICT_EQUALS: {
     kind: 'Reduce',
-    rule: 23,
+    rule: 24,
   },
   SEMICOLON: {
     kind: 'Reduce',
-    rule: 23,
+    rule: 24,
   },
   COLON: {
     kind: 'Reduce',
-    rule: 23,
+    rule: 24,
   },
   CLOSING_PAREN: {
     kind: 'Reduce',
-    rule: 23,
+    rule: 24,
   },
   CLOSING_BRACKET: {
     kind: 'Reduce',
-    rule: 23,
+    rule: 24,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 23,
+    rule: 24,
   },
   CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 23,
+    rule: 24,
   },
 }, {
   ASSIGN: {
     kind: 'Reduce',
-    rule: 24,
+    rule: 25,
   },
   LOGICAL_AND: {
     kind: 'Reduce',
-    rule: 24,
+    rule: 25,
   },
   OPENING_PAREN: {
     kind: 'Reduce',
-    rule: 24,
+    rule: 25,
   },
   DOT: {
     kind: 'Reduce',
-    rule: 24,
+    rule: 25,
   },
   LOGICAL_OR: {
     kind: 'Reduce',
-    rule: 24,
+    rule: 25,
   },
   MINUS: {
     kind: 'Reduce',
-    rule: 24,
+    rule: 25,
   },
   PLUS: {
     kind: 'Reduce',
-    rule: 24,
+    rule: 25,
   },
   EQUALS: {
     kind: 'Reduce',
-    rule: 24,
+    rule: 25,
   },
   STRICT_EQUALS: {
     kind: 'Reduce',
-    rule: 24,
+    rule: 25,
   },
   SEMICOLON: {
     kind: 'Reduce',
-    rule: 24,
+    rule: 25,
   },
   COLON: {
     kind: 'Reduce',
-    rule: 24,
+    rule: 25,
   },
   CLOSING_PAREN: {
     kind: 'Reduce',
-    rule: 24,
+    rule: 25,
   },
   CLOSING_BRACKET: {
     kind: 'Reduce',
-    rule: 24,
+    rule: 25,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 24,
+    rule: 25,
   },
   CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 24,
+    rule: 25,
   },
 }, {
   FALSE: {
@@ -1727,63 +1745,63 @@ const actions: Array<Actions> = [{
 }, {
   ASSIGN: {
     kind: 'Reduce',
-    rule: 25,
+    rule: 26,
   },
   LOGICAL_AND: {
     kind: 'Reduce',
-    rule: 25,
+    rule: 26,
   },
   OPENING_PAREN: {
     kind: 'Reduce',
-    rule: 25,
+    rule: 26,
   },
   DOT: {
     kind: 'Reduce',
-    rule: 25,
+    rule: 26,
   },
   LOGICAL_OR: {
     kind: 'Reduce',
-    rule: 25,
+    rule: 26,
   },
   MINUS: {
     kind: 'Reduce',
-    rule: 25,
+    rule: 26,
   },
   PLUS: {
     kind: 'Reduce',
-    rule: 25,
+    rule: 26,
   },
   EQUALS: {
     kind: 'Reduce',
-    rule: 25,
+    rule: 26,
   },
   STRICT_EQUALS: {
     kind: 'Reduce',
-    rule: 25,
+    rule: 26,
   },
   SEMICOLON: {
     kind: 'Reduce',
-    rule: 25,
+    rule: 26,
   },
   COLON: {
     kind: 'Reduce',
-    rule: 25,
+    rule: 26,
   },
   CLOSING_PAREN: {
     kind: 'Reduce',
-    rule: 25,
+    rule: 26,
   },
   CLOSING_BRACKET: {
     kind: 'Reduce',
-    rule: 25,
+    rule: 26,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 25,
+    rule: 26,
   },
   CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 25,
+    rule: 26,
   },
 }, {
   GET: {
@@ -1800,137 +1818,137 @@ const actions: Array<Actions> = [{
   },
   OPENING_BRACKET: {
     kind: 'Shift',
-    state: 62,
+    state: 63,
   },
   CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 43,
+    rule: 44,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 43,
+    rule: 44,
   },
 }, {
   ASSIGN: {
     kind: 'Reduce',
-    rule: 26,
+    rule: 27,
   },
   LOGICAL_AND: {
     kind: 'Reduce',
-    rule: 26,
+    rule: 27,
   },
   OPENING_PAREN: {
     kind: 'Reduce',
-    rule: 26,
+    rule: 27,
   },
   DOT: {
     kind: 'Reduce',
-    rule: 26,
+    rule: 27,
   },
   LOGICAL_OR: {
     kind: 'Reduce',
-    rule: 26,
+    rule: 27,
   },
   MINUS: {
     kind: 'Reduce',
-    rule: 26,
+    rule: 27,
   },
   PLUS: {
     kind: 'Reduce',
-    rule: 26,
+    rule: 27,
   },
   EQUALS: {
     kind: 'Reduce',
-    rule: 26,
+    rule: 27,
   },
   STRICT_EQUALS: {
     kind: 'Reduce',
-    rule: 26,
+    rule: 27,
   },
   SEMICOLON: {
     kind: 'Reduce',
-    rule: 26,
+    rule: 27,
   },
   COLON: {
     kind: 'Reduce',
-    rule: 26,
+    rule: 27,
   },
   CLOSING_PAREN: {
     kind: 'Reduce',
-    rule: 26,
+    rule: 27,
   },
   CLOSING_BRACKET: {
     kind: 'Reduce',
-    rule: 26,
+    rule: 27,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 26,
+    rule: 27,
   },
   CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 26,
+    rule: 27,
   },
 }, {
   ASSIGN: {
     kind: 'Reduce',
-    rule: 48,
+    rule: 49,
   },
   LOGICAL_AND: {
     kind: 'Reduce',
-    rule: 48,
+    rule: 49,
   },
   OPENING_PAREN: {
     kind: 'Reduce',
-    rule: 48,
+    rule: 49,
   },
   DOT: {
     kind: 'Reduce',
-    rule: 48,
+    rule: 49,
   },
   LOGICAL_OR: {
     kind: 'Reduce',
-    rule: 48,
+    rule: 49,
   },
   MINUS: {
     kind: 'Reduce',
-    rule: 48,
+    rule: 49,
   },
   PLUS: {
     kind: 'Reduce',
-    rule: 48,
+    rule: 49,
   },
   EQUALS: {
     kind: 'Reduce',
-    rule: 48,
+    rule: 49,
   },
   STRICT_EQUALS: {
     kind: 'Reduce',
-    rule: 48,
+    rule: 49,
   },
   SEMICOLON: {
     kind: 'Reduce',
-    rule: 48,
+    rule: 49,
   },
   COLON: {
     kind: 'Reduce',
-    rule: 48,
+    rule: 49,
   },
   CLOSING_PAREN: {
     kind: 'Reduce',
-    rule: 48,
+    rule: 49,
   },
   CLOSING_BRACKET: {
     kind: 'Reduce',
-    rule: 48,
+    rule: 49,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 48,
+    rule: 49,
   },
   CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 48,
+    rule: 49,
   },
 }, {
   FALSE: {
@@ -1983,194 +2001,11 @@ const actions: Array<Actions> = [{
   },
   CLOSING_BRACKET: {
     kind: 'Reduce',
-    rule: 38,
+    rule: 39,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 38,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  LOGICAL_AND: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  DOT: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  LOGICAL_OR: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  MINUS: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  PLUS: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  STRICT_EQUALS: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  SEMICOLON: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  COLON: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 54,
-  },
-  LOGICAL_AND: {
-    kind: 'Reduce',
-    rule: 54,
-  },
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 54,
-  },
-  DOT: {
-    kind: 'Reduce',
-    rule: 54,
-  },
-  LOGICAL_OR: {
-    kind: 'Reduce',
-    rule: 54,
-  },
-  MINUS: {
-    kind: 'Reduce',
-    rule: 54,
-  },
-  PLUS: {
-    kind: 'Reduce',
-    rule: 54,
-  },
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 54,
-  },
-  STRICT_EQUALS: {
-    kind: 'Reduce',
-    rule: 54,
-  },
-  SEMICOLON: {
-    kind: 'Reduce',
-    rule: 54,
-  },
-  COLON: {
-    kind: 'Reduce',
-    rule: 54,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 54,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 54,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 54,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 54,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 55,
-  },
-  LOGICAL_AND: {
-    kind: 'Reduce',
-    rule: 55,
-  },
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 55,
-  },
-  DOT: {
-    kind: 'Reduce',
-    rule: 55,
-  },
-  LOGICAL_OR: {
-    kind: 'Reduce',
-    rule: 55,
-  },
-  MINUS: {
-    kind: 'Reduce',
-    rule: 55,
-  },
-  PLUS: {
-    kind: 'Reduce',
-    rule: 55,
-  },
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 55,
-  },
-  STRICT_EQUALS: {
-    kind: 'Reduce',
-    rule: 55,
-  },
-  SEMICOLON: {
-    kind: 'Reduce',
-    rule: 55,
-  },
-  COLON: {
-    kind: 'Reduce',
-    rule: 55,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 55,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 55,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 55,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 55,
+    rule: 39,
   },
 }, {
   ASSIGN: {
@@ -2232,6 +2067,67 @@ const actions: Array<Actions> = [{
   CLOSING_BRACE: {
     kind: 'Reduce',
     rule: 50,
+  },
+}, {
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 55,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 55,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 55,
+  },
+  DOT: {
+    kind: 'Reduce',
+    rule: 55,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 55,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 55,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 55,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 55,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 55,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 55,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 55,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 55,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Reduce',
+    rule: 55,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 55,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 55,
   },
 }, {
   ASSIGN: {
@@ -2537,6 +2433,128 @@ const actions: Array<Actions> = [{
   CLOSING_BRACE: {
     kind: 'Reduce',
     rule: 58,
+  },
+}, {
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 53,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 53,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 53,
+  },
+  DOT: {
+    kind: 'Reduce',
+    rule: 53,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 53,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 53,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 53,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 53,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 53,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 53,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 53,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 53,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Reduce',
+    rule: 53,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 53,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 53,
+  },
+}, {
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 59,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 59,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 59,
+  },
+  DOT: {
+    kind: 'Reduce',
+    rule: 59,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 59,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 59,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 59,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 59,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 59,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 59,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 59,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 59,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Reduce',
+    rule: 59,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 59,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 59,
   },
 }, {
   CONST: {
@@ -2563,19 +2581,19 @@ const actions: Array<Actions> = [{
     kind: 'Reduce',
     rule: 5,
   },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 5,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 5,
-  },
   IDENTIFIER: {
     kind: 'Reduce',
     rule: 5,
   },
   GET: {
+    kind: 'Reduce',
+    rule: 5,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 5,
+  },
+  WHILE: {
     kind: 'Reduce',
     rule: 5,
   },
@@ -2653,19 +2671,19 @@ const actions: Array<Actions> = [{
     kind: 'Reduce',
     rule: 6,
   },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 6,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 6,
-  },
   IDENTIFIER: {
     kind: 'Reduce',
     rule: 6,
   },
   GET: {
+    kind: 'Reduce',
+    rule: 6,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 6,
+  },
+  WHILE: {
     kind: 'Reduce',
     rule: 6,
   },
@@ -2712,7 +2730,7 @@ const actions: Array<Actions> = [{
 }, {
   DEFAULT: {
     kind: 'Shift',
-    state: 66,
+    state: 67,
   },
 }, {
   CONST: {
@@ -2739,19 +2757,19 @@ const actions: Array<Actions> = [{
     kind: 'Reduce',
     rule: 7,
   },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 7,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 7,
-  },
   IDENTIFIER: {
     kind: 'Reduce',
     rule: 7,
   },
   GET: {
+    kind: 'Reduce',
+    rule: 7,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 7,
+  },
+  WHILE: {
     kind: 'Reduce',
     rule: 7,
   },
@@ -2820,19 +2838,19 @@ const actions: Array<Actions> = [{
     kind: 'Reduce',
     rule: 8,
   },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 8,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 8,
-  },
   IDENTIFIER: {
     kind: 'Reduce',
     rule: 8,
   },
   GET: {
+    kind: 'Reduce',
+    rule: 8,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 8,
+  },
+  WHILE: {
     kind: 'Reduce',
     rule: 8,
   },
@@ -2915,7 +2933,7 @@ const actions: Array<Actions> = [{
   },
   SEMICOLON: {
     kind: 'Shift',
-    state: 67,
+    state: 68,
   },
   STRING_VALUE: {
     kind: 'Shift',
@@ -2954,19 +2972,19 @@ const actions: Array<Actions> = [{
     kind: 'Reduce',
     rule: 9,
   },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 9,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 9,
-  },
   IDENTIFIER: {
     kind: 'Reduce',
     rule: 9,
   },
   GET: {
+    kind: 'Reduce',
+    rule: 9,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 9,
+  },
+  WHILE: {
     kind: 'Reduce',
     rule: 9,
   },
@@ -3012,99 +3030,99 @@ const actions: Array<Actions> = [{
   },
 }, {
   OPENING_PAREN: {
-    kind: 'Shift',
-    state: 69,
-  },
-}, {
-  CONST: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  LET: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  CLASS: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  EXPORT: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  THIS: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  IDENTIFIER: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  GET: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  NEW: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  FALSE: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  TRUE: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  NULL: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Shift',
-    state: 71,
-  },
-  COLON: {
     kind: 'Shift',
     state: 70,
   },
+}, {
+  CONST: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  LET: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  CLASS: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  EXPORT: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  THIS: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  IDENTIFIER: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  GET: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  WHILE: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  NEW: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  OPENING_BRACE: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  OPENING_BRACKET: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  FALSE: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  TRUE: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  NULL: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  NUMBER: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  STRING_VALUE: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  $: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 2,
+  },
+}, {
+  ASSIGN: {
+    kind: 'Shift',
+    state: 72,
+  },
+  COLON: {
+    kind: 'Shift',
+    state: 71,
+  },
   DOT: {
     kind: 'Shift',
     state: 49,
@@ -3201,11 +3219,11 @@ const actions: Array<Actions> = [{
 }, {
   ASSIGN: {
     kind: 'Shift',
-    state: 73,
+    state: 74,
   },
   COLON: {
     kind: 'Shift',
-    state: 72,
+    state: 73,
   },
   DOT: {
     kind: 'Shift',
@@ -3264,19 +3282,19 @@ const actions: Array<Actions> = [{
     kind: 'Reduce',
     rule: 14,
   },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 14,
-  },
   IDENTIFIER: {
     kind: 'Reduce',
     rule: 14,
   },
   GET: {
+    kind: 'Reduce',
+    rule: 14,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 14,
+  },
+  WHILE: {
     kind: 'Reduce',
     rule: 14,
   },
@@ -3469,11 +3487,11 @@ const actions: Array<Actions> = [{
   },
   CLOSING_PAREN: {
     kind: 'Reduce',
-    rule: 38,
+    rule: 39,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 38,
+    rule: 39,
   },
 }, {
   GET: {
@@ -3732,83 +3750,83 @@ const actions: Array<Actions> = [{
 }, {
   CONST: {
     kind: 'Reduce',
-    rule: 87,
+    rule: 88,
   },
   LET: {
     kind: 'Reduce',
-    rule: 87,
+    rule: 88,
   },
   CLASS: {
     kind: 'Reduce',
-    rule: 87,
+    rule: 88,
   },
   EXPORT: {
     kind: 'Reduce',
-    rule: 87,
+    rule: 88,
   },
   OPENING_PAREN: {
     kind: 'Reduce',
-    rule: 87,
+    rule: 88,
   },
   THIS: {
     kind: 'Reduce',
-    rule: 87,
-  },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 87,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 87,
+    rule: 88,
   },
   IDENTIFIER: {
     kind: 'Reduce',
-    rule: 87,
+    rule: 88,
   },
   GET: {
     kind: 'Reduce',
-    rule: 87,
+    rule: 88,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 88,
+  },
+  WHILE: {
+    kind: 'Reduce',
+    rule: 88,
   },
   NEW: {
     kind: 'Reduce',
-    rule: 87,
+    rule: 88,
   },
   OPENING_BRACE: {
     kind: 'Reduce',
-    rule: 87,
+    rule: 88,
   },
   OPENING_BRACKET: {
     kind: 'Reduce',
-    rule: 87,
+    rule: 88,
   },
   FALSE: {
     kind: 'Reduce',
-    rule: 87,
+    rule: 88,
   },
   TRUE: {
     kind: 'Reduce',
-    rule: 87,
+    rule: 88,
   },
   NULL: {
     kind: 'Reduce',
-    rule: 87,
+    rule: 88,
   },
   NUMBER: {
     kind: 'Reduce',
-    rule: 87,
+    rule: 88,
   },
   STRING_VALUE: {
     kind: 'Reduce',
-    rule: 87,
+    rule: 88,
   },
   $: {
     kind: 'Reduce',
-    rule: 87,
+    rule: 88,
   },
   CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 87,
+    rule: 88,
   },
 }, {
   ASSIGN: {
@@ -3816,70 +3834,33 @@ const actions: Array<Actions> = [{
     state: 46,
   },
   CLOSING_PAREN: {
-    kind: 'Shift',
-    state: 83,
-  },
-  DOT: {
-    kind: 'Shift',
-    state: 49,
-  },
-  EQUALS: {
-    kind: 'Shift',
-    state: 53,
-  },
-  LOGICAL_AND: {
-    kind: 'Shift',
-    state: 47,
-  },
-  LOGICAL_OR: {
-    kind: 'Shift',
-    state: 50,
-  },
-  MINUS: {
-    kind: 'Shift',
-    state: 51,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 48,
-  },
-  PLUS: {
-    kind: 'Shift',
-    state: 52,
-  },
-  STRICT_EQUALS: {
-    kind: 'Shift',
-    state: 54,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Shift',
-    state: 46,
-  },
-  DOT: {
-    kind: 'Shift',
-    state: 49,
-  },
-  EQUALS: {
-    kind: 'Shift',
-    state: 53,
-  },
-  LOGICAL_AND: {
-    kind: 'Shift',
-    state: 47,
-  },
-  LOGICAL_OR: {
-    kind: 'Shift',
-    state: 50,
-  },
-  MINUS: {
-    kind: 'Shift',
-    state: 51,
-  },
-  OPENING_PAREN: {
     kind: 'Shift',
     state: 84,
   },
+  DOT: {
+    kind: 'Shift',
+    state: 49,
+  },
+  EQUALS: {
+    kind: 'Shift',
+    state: 53,
+  },
+  LOGICAL_AND: {
+    kind: 'Shift',
+    state: 47,
+  },
+  LOGICAL_OR: {
+    kind: 'Shift',
+    state: 50,
+  },
+  MINUS: {
+    kind: 'Shift',
+    state: 51,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 48,
+  },
   PLUS: {
     kind: 'Shift',
     state: 52,
@@ -3889,46 +3870,6 @@ const actions: Array<Actions> = [{
     state: 54,
   },
 }, {
-  CLOSING_BRACE: {
-    kind: 'Shift',
-    state: 85,
-  },
-  COMMA: {
-    kind: 'Shift',
-    state: 86,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 41,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 41,
-  },
-}, {
-  COLON: {
-    kind: 'Shift',
-    state: 87,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 45,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 45,
-  },
-}, {
-  COLON: {
-    kind: 'Shift',
-    state: 88,
-  },
-}, {
-  FALSE: {
-    kind: 'Shift',
-    state: 24,
-  },
   GET: {
     kind: 'Shift',
     state: 14,
@@ -3937,48 +3878,11 @@ const actions: Array<Actions> = [{
     kind: 'Shift',
     state: 13,
   },
-  NEW: {
-    kind: 'Shift',
-    state: 17,
-  },
   NULL: {
     kind: 'Shift',
-    state: 27,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 29,
-  },
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 19,
+    state: 89,
   },
   OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 22,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 8,
-  },
-  STRING_VALUE: {
-    kind: 'Shift',
-    state: 31,
-  },
-  THIS: {
-    kind: 'Shift',
-    state: 9,
-  },
-  TRUE: {
-    kind: 'Shift',
-    state: 25,
-  },
-}, {
-  CLOSING_BRACKET: {
-    kind: 'Shift',
-    state: 90,
-  },
-  COMMA: {
     kind: 'Shift',
     state: 91,
   },
@@ -4009,6 +3913,137 @@ const actions: Array<Actions> = [{
   },
   OPENING_PAREN: {
     kind: 'Shift',
+    state: 93,
+  },
+  PLUS: {
+    kind: 'Shift',
+    state: 52,
+  },
+  STRICT_EQUALS: {
+    kind: 'Shift',
+    state: 54,
+  },
+}, {
+  CLOSING_BRACE: {
+    kind: 'Shift',
+    state: 94,
+  },
+  COMMA: {
+    kind: 'Shift',
+    state: 95,
+  },
+}, {
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 42,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 42,
+  },
+}, {
+  COLON: {
+    kind: 'Shift',
+    state: 96,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 46,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 46,
+  },
+}, {
+  COLON: {
+    kind: 'Shift',
+    state: 97,
+  },
+}, {
+  FALSE: {
+    kind: 'Shift',
+    state: 24,
+  },
+  GET: {
+    kind: 'Shift',
+    state: 14,
+  },
+  IDENTIFIER: {
+    kind: 'Shift',
+    state: 13,
+  },
+  NEW: {
+    kind: 'Shift',
+    state: 17,
+  },
+  NULL: {
+    kind: 'Shift',
+    state: 27,
+  },
+  NUMBER: {
+    kind: 'Shift',
+    state: 29,
+  },
+  OPENING_BRACE: {
+    kind: 'Shift',
+    state: 19,
+  },
+  OPENING_BRACKET: {
+    kind: 'Shift',
+    state: 22,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 8,
+  },
+  STRING_VALUE: {
+    kind: 'Shift',
+    state: 31,
+  },
+  THIS: {
+    kind: 'Shift',
+    state: 9,
+  },
+  TRUE: {
+    kind: 'Shift',
+    state: 25,
+  },
+}, {
+  CLOSING_BRACKET: {
+    kind: 'Shift',
+    state: 99,
+  },
+  COMMA: {
+    kind: 'Shift',
+    state: 100,
+  },
+}, {
+  ASSIGN: {
+    kind: 'Shift',
+    state: 46,
+  },
+  DOT: {
+    kind: 'Shift',
+    state: 49,
+  },
+  EQUALS: {
+    kind: 'Shift',
+    state: 53,
+  },
+  LOGICAL_AND: {
+    kind: 'Shift',
+    state: 47,
+  },
+  LOGICAL_OR: {
+    kind: 'Shift',
+    state: 50,
+  },
+  MINUS: {
+    kind: 'Shift',
+    state: 51,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
     state: 48,
   },
   PLUS: {
@@ -4021,20 +4056,20 @@ const actions: Array<Actions> = [{
   },
   CLOSING_BRACKET: {
     kind: 'Reduce',
-    rule: 36,
+    rule: 37,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 36,
+    rule: 37,
   },
   CLOSING_PAREN: {
     kind: 'Reduce',
-    rule: 36,
+    rule: 37,
   },
 }, {
   OPENING_BRACE: {
     kind: 'Shift',
-    state: 92,
+    state: 101,
   },
 }, {
   CLASS: {
@@ -4044,83 +4079,83 @@ const actions: Array<Actions> = [{
 }, {
   CONST: {
     kind: 'Reduce',
-    rule: 88,
+    rule: 89,
   },
   LET: {
     kind: 'Reduce',
-    rule: 88,
+    rule: 89,
   },
   CLASS: {
     kind: 'Reduce',
-    rule: 88,
+    rule: 89,
   },
   EXPORT: {
     kind: 'Reduce',
-    rule: 88,
+    rule: 89,
   },
   OPENING_PAREN: {
     kind: 'Reduce',
-    rule: 88,
+    rule: 89,
   },
   THIS: {
     kind: 'Reduce',
-    rule: 88,
+    rule: 89,
+  },
+  IDENTIFIER: {
+    kind: 'Reduce',
+    rule: 89,
+  },
+  GET: {
+    kind: 'Reduce',
+    rule: 89,
   },
   RETURN: {
     kind: 'Reduce',
-    rule: 88,
+    rule: 89,
   },
   WHILE: {
     kind: 'Reduce',
-    rule: 88,
-  },
-  IDENTIFIER: {
-    kind: 'Reduce',
-    rule: 88,
-  },
-  GET: {
-    kind: 'Reduce',
-    rule: 88,
+    rule: 89,
   },
   NEW: {
     kind: 'Reduce',
-    rule: 88,
+    rule: 89,
   },
   OPENING_BRACE: {
     kind: 'Reduce',
-    rule: 88,
+    rule: 89,
   },
   OPENING_BRACKET: {
     kind: 'Reduce',
-    rule: 88,
+    rule: 89,
   },
   FALSE: {
     kind: 'Reduce',
-    rule: 88,
+    rule: 89,
   },
   TRUE: {
     kind: 'Reduce',
-    rule: 88,
+    rule: 89,
   },
   NULL: {
     kind: 'Reduce',
-    rule: 88,
+    rule: 89,
   },
   NUMBER: {
     kind: 'Reduce',
-    rule: 88,
+    rule: 89,
   },
   STRING_VALUE: {
     kind: 'Reduce',
-    rule: 88,
+    rule: 89,
   },
   $: {
     kind: 'Reduce',
-    rule: 88,
+    rule: 89,
   },
   CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 88,
+    rule: 89,
   },
 }, {
   ASSIGN: {
@@ -4157,7 +4192,7 @@ const actions: Array<Actions> = [{
   },
   SEMICOLON: {
     kind: 'Shift',
-    state: 95,
+    state: 104,
   },
   STRICT_EQUALS: {
     kind: 'Shift',
@@ -4223,686 +4258,13 @@ const actions: Array<Actions> = [{
   },
   NULL: {
     kind: 'Shift',
-    state: 101,
+    state: 89,
   },
   OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 103,
-  },
-}, {
-  FALSE: {
-    kind: 'Shift',
-    state: 24,
-  },
-  GET: {
-    kind: 'Shift',
-    state: 14,
-  },
-  IDENTIFIER: {
-    kind: 'Shift',
-    state: 13,
-  },
-  NEW: {
-    kind: 'Shift',
-    state: 17,
-  },
-  NULL: {
-    kind: 'Shift',
-    state: 27,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 29,
-  },
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 19,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 22,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 8,
-  },
-  STRING_VALUE: {
-    kind: 'Shift',
-    state: 31,
-  },
-  THIS: {
-    kind: 'Shift',
-    state: 9,
-  },
-  TRUE: {
-    kind: 'Shift',
-    state: 25,
-  },
-}, {
-  GET: {
-    kind: 'Shift',
-    state: 14,
-  },
-  IDENTIFIER: {
-    kind: 'Shift',
-    state: 13,
-  },
-  NULL: {
-    kind: 'Shift',
-    state: 101,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 103,
-  },
-}, {
-  FALSE: {
-    kind: 'Shift',
-    state: 24,
-  },
-  GET: {
-    kind: 'Shift',
-    state: 14,
-  },
-  IDENTIFIER: {
-    kind: 'Shift',
-    state: 13,
-  },
-  NEW: {
-    kind: 'Shift',
-    state: 17,
-  },
-  NULL: {
-    kind: 'Shift',
-    state: 27,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 29,
-  },
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 19,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 22,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 8,
-  },
-  STRING_VALUE: {
-    kind: 'Shift',
-    state: 31,
-  },
-  THIS: {
-    kind: 'Shift',
-    state: 9,
-  },
-  TRUE: {
-    kind: 'Shift',
-    state: 25,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Shift',
-    state: 46,
-  },
-  DOT: {
-    kind: 'Shift',
-    state: 49,
-  },
-  EQUALS: {
-    kind: 'Shift',
-    state: 53,
-  },
-  LOGICAL_AND: {
-    kind: 'Shift',
-    state: 47,
-  },
-  LOGICAL_OR: {
-    kind: 'Shift',
-    state: 50,
-  },
-  MINUS: {
-    kind: 'Shift',
-    state: 51,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 48,
-  },
-  PLUS: {
-    kind: 'Shift',
-    state: 52,
-  },
-  STRICT_EQUALS: {
-    kind: 'Shift',
-    state: 54,
-  },
-  SEMICOLON: {
-    kind: 'Reduce',
-    rule: 27,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 27,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 27,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 27,
-  },
-  COLON: {
-    kind: 'Reduce',
-    rule: 27,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 27,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 28,
-  },
-  DOT: {
-    kind: 'Shift',
-    state: 49,
-  },
-  EQUALS: {
-    kind: 'Shift',
-    state: 53,
-  },
-  LOGICAL_AND: {
-    kind: 'Reduce',
-    rule: 28,
-  },
-  LOGICAL_OR: {
-    kind: 'Reduce',
-    rule: 28,
-  },
-  MINUS: {
-    kind: 'Shift',
-    state: 51,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 48,
-  },
-  PLUS: {
-    kind: 'Shift',
-    state: 52,
-  },
-  STRICT_EQUALS: {
-    kind: 'Shift',
-    state: 54,
-  },
-  SEMICOLON: {
-    kind: 'Reduce',
-    rule: 28,
-  },
-  COLON: {
-    kind: 'Reduce',
-    rule: 28,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 28,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 28,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 28,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 28,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Shift',
-    state: 108,
-  },
-  COMMA: {
     kind: 'Shift',
     state: 91,
   },
 }, {
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  LOGICAL_AND: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  DOT: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  LOGICAL_OR: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  MINUS: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  PLUS: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  STRICT_EQUALS: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  SEMICOLON: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  COLON: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 29,
-  },
-  DOT: {
-    kind: 'Shift',
-    state: 49,
-  },
-  EQUALS: {
-    kind: 'Shift',
-    state: 53,
-  },
-  LOGICAL_AND: {
-    kind: 'Shift',
-    state: 47,
-  },
-  LOGICAL_OR: {
-    kind: 'Reduce',
-    rule: 29,
-  },
-  MINUS: {
-    kind: 'Shift',
-    state: 51,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 48,
-  },
-  PLUS: {
-    kind: 'Shift',
-    state: 52,
-  },
-  STRICT_EQUALS: {
-    kind: 'Shift',
-    state: 54,
-  },
-  SEMICOLON: {
-    kind: 'Reduce',
-    rule: 29,
-  },
-  COLON: {
-    kind: 'Reduce',
-    rule: 29,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 29,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 29,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 29,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 29,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  DOT: {
-    kind: 'Shift',
-    state: 49,
-  },
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  LOGICAL_AND: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  LOGICAL_OR: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  MINUS: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 48,
-  },
-  PLUS: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  STRICT_EQUALS: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  SEMICOLON: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  COLON: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  DOT: {
-    kind: 'Shift',
-    state: 49,
-  },
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  LOGICAL_AND: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  LOGICAL_OR: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  MINUS: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 48,
-  },
-  PLUS: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  STRICT_EQUALS: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  SEMICOLON: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  COLON: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  DOT: {
-    kind: 'Shift',
-    state: 49,
-  },
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  LOGICAL_AND: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  LOGICAL_OR: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  MINUS: {
-    kind: 'Shift',
-    state: 51,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 48,
-  },
-  PLUS: {
-    kind: 'Shift',
-    state: 52,
-  },
-  STRICT_EQUALS: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  SEMICOLON: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  COLON: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  DOT: {
-    kind: 'Shift',
-    state: 49,
-  },
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  LOGICAL_AND: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  LOGICAL_OR: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  MINUS: {
-    kind: 'Shift',
-    state: 51,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 48,
-  },
-  PLUS: {
-    kind: 'Shift',
-    state: 52,
-  },
-  STRICT_EQUALS: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  SEMICOLON: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  COLON: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 17,
-  },
-  LOGICAL_AND: {
-    kind: 'Reduce',
-    rule: 17,
-  },
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 17,
-  },
-  DOT: {
-    kind: 'Reduce',
-    rule: 17,
-  },
-  LOGICAL_OR: {
-    kind: 'Reduce',
-    rule: 17,
-  },
-  MINUS: {
-    kind: 'Reduce',
-    rule: 17,
-  },
-  PLUS: {
-    kind: 'Reduce',
-    rule: 17,
-  },
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 17,
-  },
-  STRICT_EQUALS: {
-    kind: 'Reduce',
-    rule: 17,
-  },
-  SEMICOLON: {
-    kind: 'Reduce',
-    rule: 17,
-  },
-  COLON: {
-    kind: 'Reduce',
-    rule: 17,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 17,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 17,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 17,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 17,
-  },
-}, {
   FALSE: {
     kind: 'Shift',
     state: 24,
@@ -4951,75 +4313,6 @@ const actions: Array<Actions> = [{
     kind: 'Shift',
     state: 25,
   },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 38,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 38,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  LOGICAL_AND: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  DOT: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  LOGICAL_OR: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  MINUS: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  PLUS: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  STRICT_EQUALS: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  SEMICOLON: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  COLON: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 40,
-  },
 }, {
   GET: {
     kind: 'Shift',
@@ -5028,63 +4321,14 @@ const actions: Array<Actions> = [{
   IDENTIFIER: {
     kind: 'Shift',
     state: 13,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 29,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 62,
-  },
-}, {
-  FALSE: {
-    kind: 'Shift',
-    state: 24,
-  },
-  GET: {
-    kind: 'Shift',
-    state: 14,
-  },
-  IDENTIFIER: {
-    kind: 'Shift',
-    state: 13,
-  },
-  NEW: {
-    kind: 'Shift',
-    state: 17,
   },
   NULL: {
     kind: 'Shift',
-    state: 27,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 29,
-  },
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 19,
+    state: 89,
   },
   OPENING_BRACKET: {
     kind: 'Shift',
-    state: 22,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 8,
-  },
-  STRING_VALUE: {
-    kind: 'Shift',
-    state: 31,
-  },
-  THIS: {
-    kind: 'Shift',
-    state: 9,
-  },
-  TRUE: {
-    kind: 'Shift',
-    state: 25,
+    state: 91,
   },
 }, {
   FALSE: {
@@ -5140,10 +4384,6 @@ const actions: Array<Actions> = [{
     kind: 'Shift',
     state: 46,
   },
-  CLOSING_BRACKET: {
-    kind: 'Shift',
-    state: 113,
-  },
   DOT: {
     kind: 'Shift',
     state: 49,
@@ -5175,381 +4415,35 @@ const actions: Array<Actions> = [{
   STRICT_EQUALS: {
     kind: 'Shift',
     state: 54,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 53,
-  },
-  LOGICAL_AND: {
-    kind: 'Reduce',
-    rule: 53,
-  },
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 53,
-  },
-  DOT: {
-    kind: 'Reduce',
-    rule: 53,
-  },
-  LOGICAL_OR: {
-    kind: 'Reduce',
-    rule: 53,
-  },
-  MINUS: {
-    kind: 'Reduce',
-    rule: 53,
-  },
-  PLUS: {
-    kind: 'Reduce',
-    rule: 53,
-  },
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 53,
-  },
-  STRICT_EQUALS: {
-    kind: 'Reduce',
-    rule: 53,
   },
   SEMICOLON: {
     kind: 'Reduce',
-    rule: 53,
-  },
-  COLON: {
-    kind: 'Reduce',
-    rule: 53,
+    rule: 28,
   },
   CLOSING_PAREN: {
     kind: 'Reduce',
-    rule: 53,
+    rule: 28,
   },
   CLOSING_BRACKET: {
     kind: 'Reduce',
-    rule: 53,
+    rule: 28,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 53,
+    rule: 28,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 28,
   },
   CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 53,
-  },
-}, {
-  FALSE: {
-    kind: 'Shift',
-    state: 24,
-  },
-  GET: {
-    kind: 'Shift',
-    state: 14,
-  },
-  IDENTIFIER: {
-    kind: 'Shift',
-    state: 13,
-  },
-  NEW: {
-    kind: 'Shift',
-    state: 17,
-  },
-  NULL: {
-    kind: 'Shift',
-    state: 27,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 29,
-  },
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 19,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 22,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 8,
-  },
-  STRING_VALUE: {
-    kind: 'Shift',
-    state: 31,
-  },
-  THIS: {
-    kind: 'Shift',
-    state: 9,
-  },
-  TRUE: {
-    kind: 'Shift',
-    state: 25,
-  },
-}, {
-  GET: {
-    kind: 'Shift',
-    state: 118,
-  },
-  IDENTIFIER: {
-    kind: 'Shift',
-    state: 13,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 75,
-  },
-}, {
-  CONST: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  LET: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  CLASS: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  EXPORT: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  THIS: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  IDENTIFIER: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  GET: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  NEW: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  FALSE: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  TRUE: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  NULL: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-}, {
-  CONST: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  LET: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  CLASS: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  EXPORT: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  THIS: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  IDENTIFIER: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  GET: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  NEW: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  FALSE: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  TRUE: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  NULL: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-}, {
-  CONST: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  LET: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  CLASS: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  EXPORT: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  THIS: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  IDENTIFIER: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  GET: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  NEW: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  FALSE: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  TRUE: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  NULL: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 89,
+    rule: 28,
   },
 }, {
   ASSIGN: {
-    kind: 'Shift',
-    state: 46,
-  },
-  CLOSING_PAREN: {
-    kind: 'Shift',
-    state: 122,
+    kind: 'Reduce',
+    rule: 29,
   },
   DOT: {
     kind: 'Shift',
@@ -5560,12 +4454,12 @@ const actions: Array<Actions> = [{
     state: 53,
   },
   LOGICAL_AND: {
-    kind: 'Shift',
-    state: 47,
+    kind: 'Reduce',
+    rule: 29,
   },
   LOGICAL_OR: {
-    kind: 'Shift',
-    state: 50,
+    kind: 'Reduce',
+    rule: 29,
   },
   MINUS: {
     kind: 'Shift',
@@ -5583,123 +4477,879 @@ const actions: Array<Actions> = [{
     kind: 'Shift',
     state: 54,
   },
-}, {
-  ASSIGN: {
-    kind: 'Shift',
-    state: 123,
-  },
-  BITWISE_OR: {
-    kind: 'Shift',
-    state: 124,
-  },
-}, {
-  ASSIGN: {
+  SEMICOLON: {
     kind: 'Reduce',
-    rule: 59,
+    rule: 29,
   },
-  BITWISE_OR: {
+  COLON: {
     kind: 'Reduce',
-    rule: 59,
+    rule: 29,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 29,
   },
   CLOSING_BRACKET: {
     kind: 'Reduce',
-    rule: 59,
+    rule: 29,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 59,
+    rule: 29,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 29,
+  },
+}, {
+  CLOSING_PAREN: {
+    kind: 'Shift',
+    state: 110,
+  },
+  COMMA: {
+    kind: 'Shift',
+    state: 100,
+  },
+}, {
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 40,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 40,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 40,
+  },
+  DOT: {
+    kind: 'Reduce',
+    rule: 40,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 40,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 40,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 40,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 40,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 40,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 40,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 40,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 40,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Reduce',
+    rule: 40,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 40,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 40,
+  },
+}, {
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 30,
+  },
+  DOT: {
+    kind: 'Shift',
+    state: 49,
+  },
+  EQUALS: {
+    kind: 'Shift',
+    state: 53,
+  },
+  LOGICAL_AND: {
+    kind: 'Shift',
+    state: 47,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 30,
+  },
+  MINUS: {
+    kind: 'Shift',
+    state: 51,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 48,
+  },
+  PLUS: {
+    kind: 'Shift',
+    state: 52,
+  },
+  STRICT_EQUALS: {
+    kind: 'Shift',
+    state: 54,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 30,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 30,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 30,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Reduce',
+    rule: 30,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 30,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 30,
+  },
+}, {
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 31,
+  },
+  DOT: {
+    kind: 'Shift',
+    state: 49,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 31,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 31,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 31,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 31,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 48,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 31,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 31,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 31,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 31,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 31,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Reduce',
+    rule: 31,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 31,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 31,
+  },
+}, {
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 32,
+  },
+  DOT: {
+    kind: 'Shift',
+    state: 49,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 32,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 32,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 32,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 32,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 48,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 32,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 32,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 32,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 32,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 32,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Reduce',
+    rule: 32,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 32,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 32,
+  },
+}, {
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 33,
+  },
+  DOT: {
+    kind: 'Shift',
+    state: 49,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 33,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 33,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 33,
+  },
+  MINUS: {
+    kind: 'Shift',
+    state: 51,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 48,
+  },
+  PLUS: {
+    kind: 'Shift',
+    state: 52,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 33,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 33,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 33,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 33,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Reduce',
+    rule: 33,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 33,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 33,
+  },
+}, {
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 34,
+  },
+  DOT: {
+    kind: 'Shift',
+    state: 49,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 34,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 34,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 34,
+  },
+  MINUS: {
+    kind: 'Shift',
+    state: 51,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 48,
+  },
+  PLUS: {
+    kind: 'Shift',
+    state: 52,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 34,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 34,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 34,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 34,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Reduce',
+    rule: 34,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 34,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 34,
+  },
+}, {
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 17,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 17,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 17,
+  },
+  DOT: {
+    kind: 'Reduce',
+    rule: 17,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 17,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 17,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 17,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 17,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 17,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 17,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 17,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 17,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Reduce',
+    rule: 17,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 17,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 17,
+  },
+}, {
+  BITWISE_OR: {
+    kind: 'Shift',
+    state: 111,
+  },
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 22,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 22,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 22,
+  },
+  DOT: {
+    kind: 'Reduce',
+    rule: 22,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 22,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 22,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 22,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 22,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 22,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 22,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 22,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 22,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Reduce',
+    rule: 22,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 22,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 22,
+  },
+}, {
+  BITWISE_OR: {
+    kind: 'Reduce',
+    rule: 60,
+  },
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 60,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 60,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 60,
+  },
+  DOT: {
+    kind: 'Reduce',
+    rule: 60,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 60,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 60,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 60,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 60,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 60,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 60,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 60,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 60,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Reduce',
+    rule: 60,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 60,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 60,
   },
   GREATER_THAN: {
     kind: 'Reduce',
-    rule: 59,
+    rule: 60,
   },
 }, {
   LESS_THAN: {
     kind: 'Shift',
-    state: 125,
-  },
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 66,
+    state: 112,
   },
   BITWISE_OR: {
     kind: 'Reduce',
-    rule: 66,
+    rule: 67,
+  },
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 67,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 67,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 67,
+  },
+  DOT: {
+    kind: 'Reduce',
+    rule: 67,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 67,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 67,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 67,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 67,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 67,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 67,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 67,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 67,
   },
   CLOSING_BRACKET: {
     kind: 'Reduce',
-    rule: 66,
+    rule: 67,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 66,
+    rule: 67,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 67,
   },
   GREATER_THAN: {
     kind: 'Reduce',
-    rule: 66,
+    rule: 67,
   },
 }, {
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 60,
-  },
   BITWISE_OR: {
     kind: 'Reduce',
-    rule: 60,
+    rule: 61,
+  },
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 61,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 61,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 61,
+  },
+  DOT: {
+    kind: 'Reduce',
+    rule: 61,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 61,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 61,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 61,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 61,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 61,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 61,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 61,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 61,
   },
   CLOSING_BRACKET: {
     kind: 'Reduce',
-    rule: 60,
+    rule: 61,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 60,
+    rule: 61,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 61,
   },
   GREATER_THAN: {
     kind: 'Reduce',
-    rule: 60,
+    rule: 61,
   },
 }, {
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 67,
-  },
   BITWISE_OR: {
     kind: 'Reduce',
-    rule: 67,
+    rule: 68,
+  },
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 68,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 68,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 68,
+  },
+  DOT: {
+    kind: 'Reduce',
+    rule: 68,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 68,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 68,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 68,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 68,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 68,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 68,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 68,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 68,
   },
   CLOSING_BRACKET: {
     kind: 'Reduce',
-    rule: 67,
+    rule: 68,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 67,
+    rule: 68,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 68,
   },
   GREATER_THAN: {
     kind: 'Reduce',
-    rule: 67,
+    rule: 68,
   },
 }, {
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 61,
-  },
   BITWISE_OR: {
     kind: 'Reduce',
-    rule: 61,
+    rule: 62,
+  },
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 62,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 62,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 62,
+  },
+  DOT: {
+    kind: 'Reduce',
+    rule: 62,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 62,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 62,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 62,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 62,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 62,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 62,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 62,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 62,
   },
   CLOSING_BRACKET: {
     kind: 'Reduce',
-    rule: 61,
+    rule: 62,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 61,
+    rule: 62,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 62,
   },
   GREATER_THAN: {
     kind: 'Reduce',
-    rule: 61,
+    rule: 62,
   },
 }, {
   GET: {
@@ -5712,37 +5362,322 @@ const actions: Array<Actions> = [{
   },
   NULL: {
     kind: 'Shift',
-    state: 101,
+    state: 89,
   },
   OPENING_BRACKET: {
     kind: 'Shift',
-    state: 103,
+    state: 91,
+  },
+}, {
+  BITWISE_OR: {
+    kind: 'Reduce',
+    rule: 63,
+  },
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 63,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 63,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 63,
+  },
+  DOT: {
+    kind: 'Reduce',
+    rule: 63,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 63,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 63,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 63,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 63,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 63,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 63,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 63,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 63,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Reduce',
+    rule: 63,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 63,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 63,
+  },
+  GREATER_THAN: {
+    kind: 'Reduce',
+    rule: 63,
+  },
+}, {
+  FALSE: {
+    kind: 'Shift',
+    state: 24,
+  },
+  GET: {
+    kind: 'Shift',
+    state: 14,
+  },
+  IDENTIFIER: {
+    kind: 'Shift',
+    state: 13,
+  },
+  NEW: {
+    kind: 'Shift',
+    state: 17,
+  },
+  NULL: {
+    kind: 'Shift',
+    state: 27,
+  },
+  NUMBER: {
+    kind: 'Shift',
+    state: 29,
+  },
+  OPENING_BRACE: {
+    kind: 'Shift',
+    state: 19,
+  },
+  OPENING_BRACKET: {
+    kind: 'Shift',
+    state: 22,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 8,
+  },
+  STRING_VALUE: {
+    kind: 'Shift',
+    state: 31,
+  },
+  THIS: {
+    kind: 'Shift',
+    state: 9,
+  },
+  TRUE: {
+    kind: 'Shift',
+    state: 25,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 39,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 39,
   },
 }, {
   ASSIGN: {
     kind: 'Reduce',
-    rule: 62,
+    rule: 41,
   },
-  BITWISE_OR: {
+  LOGICAL_AND: {
     kind: 'Reduce',
-    rule: 62,
+    rule: 41,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 41,
+  },
+  DOT: {
+    kind: 'Reduce',
+    rule: 41,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 41,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 41,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 41,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 41,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 41,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 41,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 41,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 41,
   },
   CLOSING_BRACKET: {
     kind: 'Reduce',
-    rule: 62,
+    rule: 41,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 62,
+    rule: 41,
   },
-  GREATER_THAN: {
+  CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 62,
+    rule: 41,
+  },
+}, {
+  GET: {
+    kind: 'Shift',
+    state: 14,
+  },
+  IDENTIFIER: {
+    kind: 'Shift',
+    state: 13,
+  },
+  NUMBER: {
+    kind: 'Shift',
+    state: 29,
+  },
+  OPENING_BRACKET: {
+    kind: 'Shift',
+    state: 63,
+  },
+}, {
+  FALSE: {
+    kind: 'Shift',
+    state: 24,
+  },
+  GET: {
+    kind: 'Shift',
+    state: 14,
+  },
+  IDENTIFIER: {
+    kind: 'Shift',
+    state: 13,
+  },
+  NEW: {
+    kind: 'Shift',
+    state: 17,
+  },
+  NULL: {
+    kind: 'Shift',
+    state: 27,
+  },
+  NUMBER: {
+    kind: 'Shift',
+    state: 29,
+  },
+  OPENING_BRACE: {
+    kind: 'Shift',
+    state: 19,
+  },
+  OPENING_BRACKET: {
+    kind: 'Shift',
+    state: 22,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 8,
+  },
+  STRING_VALUE: {
+    kind: 'Shift',
+    state: 31,
+  },
+  THIS: {
+    kind: 'Shift',
+    state: 9,
+  },
+  TRUE: {
+    kind: 'Shift',
+    state: 25,
+  },
+}, {
+  FALSE: {
+    kind: 'Shift',
+    state: 24,
+  },
+  GET: {
+    kind: 'Shift',
+    state: 14,
+  },
+  IDENTIFIER: {
+    kind: 'Shift',
+    state: 13,
+  },
+  NEW: {
+    kind: 'Shift',
+    state: 17,
+  },
+  NULL: {
+    kind: 'Shift',
+    state: 27,
+  },
+  NUMBER: {
+    kind: 'Shift',
+    state: 29,
+  },
+  OPENING_BRACE: {
+    kind: 'Shift',
+    state: 19,
+  },
+  OPENING_BRACKET: {
+    kind: 'Shift',
+    state: 22,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 8,
+  },
+  STRING_VALUE: {
+    kind: 'Shift',
+    state: 31,
+  },
+  THIS: {
+    kind: 'Shift',
+    state: 9,
+  },
+  TRUE: {
+    kind: 'Shift',
+    state: 25,
   },
 }, {
   ASSIGN: {
     kind: 'Shift',
     state: 46,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Shift',
+    state: 119,
   },
   DOT: {
     kind: 'Shift',
@@ -5772,17 +5707,416 @@ const actions: Array<Actions> = [{
     kind: 'Shift',
     state: 52,
   },
-  SEMICOLON: {
-    kind: 'Shift',
-    state: 128,
-  },
   STRICT_EQUALS: {
     kind: 'Shift',
     state: 54,
   },
+}, {
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 54,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 54,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 54,
+  },
+  DOT: {
+    kind: 'Reduce',
+    rule: 54,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 54,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 54,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 54,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 54,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 54,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 54,
+  },
   COLON: {
     kind: 'Reduce',
-    rule: 27,
+    rule: 54,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 54,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Reduce',
+    rule: 54,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 54,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 54,
+  },
+}, {
+  FALSE: {
+    kind: 'Shift',
+    state: 24,
+  },
+  GET: {
+    kind: 'Shift',
+    state: 14,
+  },
+  IDENTIFIER: {
+    kind: 'Shift',
+    state: 13,
+  },
+  NEW: {
+    kind: 'Shift',
+    state: 17,
+  },
+  NULL: {
+    kind: 'Shift',
+    state: 27,
+  },
+  NUMBER: {
+    kind: 'Shift',
+    state: 29,
+  },
+  OPENING_BRACE: {
+    kind: 'Shift',
+    state: 19,
+  },
+  OPENING_BRACKET: {
+    kind: 'Shift',
+    state: 22,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 8,
+  },
+  STRING_VALUE: {
+    kind: 'Shift',
+    state: 31,
+  },
+  THIS: {
+    kind: 'Shift',
+    state: 9,
+  },
+  TRUE: {
+    kind: 'Shift',
+    state: 25,
+  },
+}, {
+  GET: {
+    kind: 'Shift',
+    state: 124,
+  },
+  IDENTIFIER: {
+    kind: 'Shift',
+    state: 13,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 76,
+  },
+}, {
+  CONST: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  LET: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  CLASS: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  EXPORT: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  THIS: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  IDENTIFIER: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  GET: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  WHILE: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  NEW: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  OPENING_BRACE: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  OPENING_BRACKET: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  FALSE: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  TRUE: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  NULL: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  NUMBER: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  STRING_VALUE: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  $: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 71,
+  },
+}, {
+  CONST: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  LET: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  CLASS: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  EXPORT: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  THIS: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  IDENTIFIER: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  GET: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  WHILE: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  NEW: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  OPENING_BRACE: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  OPENING_BRACKET: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  FALSE: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  TRUE: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  NULL: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  NUMBER: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  STRING_VALUE: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  $: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 72,
+  },
+}, {
+  CONST: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  LET: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  CLASS: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  EXPORT: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  THIS: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  IDENTIFIER: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  GET: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  WHILE: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  NEW: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  OPENING_BRACE: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  OPENING_BRACKET: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  FALSE: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  TRUE: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  NULL: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  NUMBER: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  STRING_VALUE: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  $: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 90,
+  },
+}, {
+  ASSIGN: {
+    kind: 'Shift',
+    state: 46,
+  },
+  CLOSING_PAREN: {
+    kind: 'Shift',
+    state: 128,
+  },
+  DOT: {
+    kind: 'Shift',
+    state: 49,
+  },
+  EQUALS: {
+    kind: 'Shift',
+    state: 53,
+  },
+  LOGICAL_AND: {
+    kind: 'Shift',
+    state: 47,
+  },
+  LOGICAL_OR: {
+    kind: 'Shift',
+    state: 50,
+  },
+  MINUS: {
+    kind: 'Shift',
+    state: 51,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 48,
+  },
+  PLUS: {
+    kind: 'Shift',
+    state: 52,
+  },
+  STRICT_EQUALS: {
+    kind: 'Shift',
+    state: 54,
   },
 }, {
   ASSIGN: {
@@ -5791,7 +6125,7 @@ const actions: Array<Actions> = [{
   },
   BITWISE_OR: {
     kind: 'Shift',
-    state: 124,
+    state: 111,
   },
 }, {
   ASSIGN: {
@@ -5836,271 +6170,141 @@ const actions: Array<Actions> = [{
   },
   COLON: {
     kind: 'Reduce',
-    rule: 27,
+    rule: 28,
+  },
+}, {
+  ASSIGN: {
+    kind: 'Shift',
+    state: 131,
+  },
+  BITWISE_OR: {
+    kind: 'Shift',
+    state: 111,
+  },
+}, {
+  ASSIGN: {
+    kind: 'Shift',
+    state: 46,
+  },
+  DOT: {
+    kind: 'Shift',
+    state: 49,
+  },
+  EQUALS: {
+    kind: 'Shift',
+    state: 53,
+  },
+  LOGICAL_AND: {
+    kind: 'Shift',
+    state: 47,
+  },
+  LOGICAL_OR: {
+    kind: 'Shift',
+    state: 50,
+  },
+  MINUS: {
+    kind: 'Shift',
+    state: 51,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 48,
+  },
+  PLUS: {
+    kind: 'Shift',
+    state: 52,
+  },
+  SEMICOLON: {
+    kind: 'Shift',
+    state: 132,
+  },
+  STRICT_EQUALS: {
+    kind: 'Shift',
+    state: 54,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 28,
   },
 }, {
   ASSIGN: {
     kind: 'Reduce',
-    rule: 35,
+    rule: 36,
   },
   LOGICAL_AND: {
     kind: 'Reduce',
-    rule: 35,
+    rule: 36,
   },
   OPENING_PAREN: {
     kind: 'Reduce',
-    rule: 35,
+    rule: 36,
   },
   DOT: {
     kind: 'Reduce',
-    rule: 35,
+    rule: 36,
   },
   LOGICAL_OR: {
     kind: 'Reduce',
-    rule: 35,
+    rule: 36,
   },
   MINUS: {
     kind: 'Reduce',
-    rule: 35,
+    rule: 36,
   },
   PLUS: {
     kind: 'Reduce',
-    rule: 35,
+    rule: 36,
   },
   EQUALS: {
     kind: 'Reduce',
-    rule: 35,
+    rule: 36,
   },
   STRICT_EQUALS: {
     kind: 'Reduce',
-    rule: 35,
+    rule: 36,
   },
   SEMICOLON: {
     kind: 'Reduce',
-    rule: 35,
+    rule: 36,
   },
   COLON: {
     kind: 'Reduce',
-    rule: 35,
+    rule: 36,
   },
   CLOSING_PAREN: {
     kind: 'Reduce',
-    rule: 35,
+    rule: 36,
   },
   CLOSING_BRACKET: {
     kind: 'Reduce',
-    rule: 35,
+    rule: 36,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 35,
+    rule: 36,
   },
   CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 35,
+    rule: 36,
   },
 }, {
-  CLOSING_PAREN: {
+  GET: {
     kind: 'Shift',
-    state: 131,
+    state: 14,
   },
-  COMMA: {
+  IDENTIFIER: {
+    kind: 'Shift',
+    state: 13,
+  },
+  NULL: {
+    kind: 'Shift',
+    state: 89,
+  },
+  OPENING_BRACKET: {
     kind: 'Shift',
     state: 91,
   },
 }, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 42,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 42,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Shift',
-    state: 46,
-  },
-  DOT: {
-    kind: 'Shift',
-    state: 49,
-  },
-  EQUALS: {
-    kind: 'Shift',
-    state: 53,
-  },
-  LOGICAL_AND: {
-    kind: 'Shift',
-    state: 47,
-  },
-  LOGICAL_OR: {
-    kind: 'Shift',
-    state: 50,
-  },
-  MINUS: {
-    kind: 'Shift',
-    state: 51,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 48,
-  },
-  PLUS: {
-    kind: 'Shift',
-    state: 52,
-  },
-  STRICT_EQUALS: {
-    kind: 'Shift',
-    state: 54,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 44,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 44,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Shift',
-    state: 46,
-  },
-  DOT: {
-    kind: 'Shift',
-    state: 49,
-  },
-  EQUALS: {
-    kind: 'Shift',
-    state: 53,
-  },
-  LOGICAL_AND: {
-    kind: 'Shift',
-    state: 47,
-  },
-  LOGICAL_OR: {
-    kind: 'Shift',
-    state: 50,
-  },
-  MINUS: {
-    kind: 'Shift',
-    state: 51,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 48,
-  },
-  PLUS: {
-    kind: 'Shift',
-    state: 52,
-  },
-  STRICT_EQUALS: {
-    kind: 'Shift',
-    state: 54,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 46,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 46,
-  },
-}, {
-  COLON: {
-    kind: 'Shift',
-    state: 132,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Shift',
-    state: 46,
-  },
-  DOT: {
-    kind: 'Shift',
-    state: 49,
-  },
-  EQUALS: {
-    kind: 'Shift',
-    state: 53,
-  },
-  LOGICAL_AND: {
-    kind: 'Shift',
-    state: 47,
-  },
-  LOGICAL_OR: {
-    kind: 'Shift',
-    state: 50,
-  },
-  MINUS: {
-    kind: 'Shift',
-    state: 51,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 48,
-  },
-  PLUS: {
-    kind: 'Shift',
-    state: 52,
-  },
-  STRICT_EQUALS: {
-    kind: 'Shift',
-    state: 54,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 37,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 37,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 37,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Shift',
-    state: 133,
-  },
-  GET: {
-    kind: 'Shift',
-    state: 118,
-  },
-  IDENTIFIER: {
-    kind: 'Shift',
-    state: 13,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 73,
-  },
-  GET: {
-    kind: 'Reduce',
-    rule: 73,
-  },
-  IDENTIFIER: {
-    kind: 'Reduce',
-    rule: 73,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 76,
-  },
-  GET: {
-    kind: 'Reduce',
-    rule: 76,
-  },
-  IDENTIFIER: {
-    kind: 'Reduce',
-    rule: 76,
-  },
-}, {
   GET: {
     kind: 'Shift',
     state: 14,
@@ -6109,162 +6313,346 @@ const actions: Array<Actions> = [{
     kind: 'Shift',
     state: 13,
   },
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 16,
-  },
-  COLON: {
-    kind: 'Reduce',
-    rule: 16,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 77,
-  },
-  GET: {
-    kind: 'Reduce',
-    rule: 77,
-  },
-  IDENTIFIER: {
-    kind: 'Reduce',
-    rule: 77,
-  },
-}, {
-  COLON: {
+  NULL: {
     kind: 'Shift',
-    state: 137,
+    state: 89,
   },
-  OPENING_PAREN: {
+  OPENING_BRACKET: {
+    kind: 'Shift',
+    state: 91,
+  },
+}, {
+  CLOSING_BRACKET: {
+    kind: 'Shift',
+    state: 135,
+  },
+  COMMA: {
     kind: 'Shift',
     state: 136,
   },
 }, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 78,
+  BITWISE_OR: {
+    kind: 'Shift',
+    state: 111,
   },
-  GET: {
+  CLOSING_BRACKET: {
     kind: 'Reduce',
-    rule: 78,
+    rule: 65,
   },
-  IDENTIFIER: {
+  COMMA: {
     kind: 'Reduce',
-    rule: 78,
+    rule: 65,
+  },
+  GREATER_THAN: {
+    kind: 'Reduce',
+    rule: 65,
   },
 }, {
-  OPENING_BRACE: {
+  CLOSING_PAREN: {
+    kind: 'Shift',
+    state: 137,
+  },
+  COMMA: {
+    kind: 'Shift',
+    state: 100,
+  },
+}, {
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 43,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 43,
+  },
+}, {
+  ASSIGN: {
+    kind: 'Shift',
+    state: 46,
+  },
+  DOT: {
+    kind: 'Shift',
+    state: 49,
+  },
+  EQUALS: {
+    kind: 'Shift',
+    state: 53,
+  },
+  LOGICAL_AND: {
+    kind: 'Shift',
+    state: 47,
+  },
+  LOGICAL_OR: {
+    kind: 'Shift',
+    state: 50,
+  },
+  MINUS: {
+    kind: 'Shift',
+    state: 51,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 48,
+  },
+  PLUS: {
+    kind: 'Shift',
+    state: 52,
+  },
+  STRICT_EQUALS: {
+    kind: 'Shift',
+    state: 54,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 45,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 45,
+  },
+}, {
+  ASSIGN: {
+    kind: 'Shift',
+    state: 46,
+  },
+  DOT: {
+    kind: 'Shift',
+    state: 49,
+  },
+  EQUALS: {
+    kind: 'Shift',
+    state: 53,
+  },
+  LOGICAL_AND: {
+    kind: 'Shift',
+    state: 47,
+  },
+  LOGICAL_OR: {
+    kind: 'Shift',
+    state: 50,
+  },
+  MINUS: {
+    kind: 'Shift',
+    state: 51,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 48,
+  },
+  PLUS: {
+    kind: 'Shift',
+    state: 52,
+  },
+  STRICT_EQUALS: {
+    kind: 'Shift',
+    state: 54,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 47,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 47,
+  },
+}, {
+  COLON: {
     kind: 'Shift',
     state: 138,
   },
 }, {
-  FALSE: {
+  ASSIGN: {
     kind: 'Shift',
-    state: 24,
+    state: 46,
   },
-  GET: {
+  DOT: {
     kind: 'Shift',
-    state: 14,
+    state: 49,
   },
-  IDENTIFIER: {
+  EQUALS: {
     kind: 'Shift',
-    state: 13,
+    state: 53,
   },
-  NEW: {
+  LOGICAL_AND: {
     kind: 'Shift',
-    state: 17,
+    state: 47,
   },
-  NULL: {
+  LOGICAL_OR: {
     kind: 'Shift',
-    state: 27,
+    state: 50,
   },
-  NUMBER: {
+  MINUS: {
     kind: 'Shift',
-    state: 29,
-  },
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 19,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 22,
+    state: 51,
   },
   OPENING_PAREN: {
     kind: 'Shift',
-    state: 8,
+    state: 48,
   },
-  STRING_VALUE: {
+  PLUS: {
     kind: 'Shift',
-    state: 31,
+    state: 52,
   },
-  THIS: {
+  STRICT_EQUALS: {
     kind: 'Shift',
-    state: 9,
+    state: 54,
   },
-  TRUE: {
-    kind: 'Shift',
-    state: 25,
-  },
-}, {
-  GET: {
-    kind: 'Shift',
-    state: 14,
-  },
-  IDENTIFIER: {
-    kind: 'Shift',
-    state: 13,
-  },
-  NULL: {
-    kind: 'Shift',
-    state: 101,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 103,
-  },
-}, {
-  GET: {
-    kind: 'Shift',
-    state: 14,
-  },
-  IDENTIFIER: {
-    kind: 'Shift',
-    state: 13,
-  },
-  NULL: {
-    kind: 'Shift',
-    state: 101,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 103,
-  },
-}, {
   CLOSING_BRACKET: {
-    kind: 'Shift',
-    state: 142,
+    kind: 'Reduce',
+    rule: 38,
   },
   COMMA: {
-    kind: 'Shift',
-    state: 143,
+    kind: 'Reduce',
+    rule: 38,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 38,
   },
 }, {
-  BITWISE_OR: {
+  CLOSING_BRACE: {
+    kind: 'Shift',
+    state: 139,
+  },
+  GET: {
     kind: 'Shift',
     state: 124,
   },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 64,
+  IDENTIFIER: {
+    kind: 'Shift',
+    state: 13,
   },
-  COMMA: {
+}, {
+  CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 64,
+    rule: 74,
   },
-  GREATER_THAN: {
+  GET: {
     kind: 'Reduce',
-    rule: 64,
+    rule: 74,
+  },
+  IDENTIFIER: {
+    kind: 'Reduce',
+    rule: 74,
+  },
+}, {
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 77,
+  },
+  GET: {
+    kind: 'Reduce',
+    rule: 77,
+  },
+  IDENTIFIER: {
+    kind: 'Reduce',
+    rule: 77,
+  },
+}, {
+  GET: {
+    kind: 'Shift',
+    state: 14,
+  },
+  IDENTIFIER: {
+    kind: 'Shift',
+    state: 13,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 16,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 16,
+  },
+}, {
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 78,
+  },
+  GET: {
+    kind: 'Reduce',
+    rule: 78,
+  },
+  IDENTIFIER: {
+    kind: 'Reduce',
+    rule: 78,
+  },
+}, {
+  COLON: {
+    kind: 'Shift',
+    state: 143,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 142,
+  },
+}, {
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 79,
+  },
+  GET: {
+    kind: 'Reduce',
+    rule: 79,
+  },
+  IDENTIFIER: {
+    kind: 'Reduce',
+    rule: 79,
+  },
+}, {
+  OPENING_BRACE: {
+    kind: 'Shift',
+    state: 144,
+  },
+}, {
+  FALSE: {
+    kind: 'Shift',
+    state: 24,
+  },
+  GET: {
+    kind: 'Shift',
+    state: 14,
+  },
+  IDENTIFIER: {
+    kind: 'Shift',
+    state: 13,
+  },
+  NEW: {
+    kind: 'Shift',
+    state: 17,
+  },
+  NULL: {
+    kind: 'Shift',
+    state: 27,
+  },
+  NUMBER: {
+    kind: 'Shift',
+    state: 29,
+  },
+  OPENING_BRACE: {
+    kind: 'Shift',
+    state: 19,
+  },
+  OPENING_BRACKET: {
+    kind: 'Shift',
+    state: 22,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 8,
+  },
+  STRING_VALUE: {
+    kind: 'Shift',
+    state: 31,
+  },
+  THIS: {
+    kind: 'Shift',
+    state: 9,
+  },
+  TRUE: {
+    kind: 'Shift',
+    state: 25,
   },
 }, {
   CONST: {
@@ -6291,19 +6679,19 @@ const actions: Array<Actions> = [{
     kind: 'Reduce',
     rule: 11,
   },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 11,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 11,
-  },
   IDENTIFIER: {
     kind: 'Reduce',
     rule: 11,
   },
   GET: {
+    kind: 'Reduce',
+    rule: 11,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 11,
+  },
+  WHILE: {
     kind: 'Reduce',
     rule: 11,
   },
@@ -6421,19 +6809,19 @@ const actions: Array<Actions> = [{
     kind: 'Reduce',
     rule: 13,
   },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 13,
-  },
   IDENTIFIER: {
     kind: 'Reduce',
     rule: 13,
   },
   GET: {
+    kind: 'Reduce',
+    rule: 13,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 13,
+  },
+  WHILE: {
     kind: 'Reduce',
     rule: 13,
   },
@@ -6476,67 +6864,231 @@ const actions: Array<Actions> = [{
   CLOSING_BRACE: {
     kind: 'Reduce',
     rule: 13,
+  },
+}, {
+  BITWISE_OR: {
+    kind: 'Reduce',
+    rule: 70,
+  },
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 70,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 70,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 70,
+  },
+  DOT: {
+    kind: 'Reduce',
+    rule: 70,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 70,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 70,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 70,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 70,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 70,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 70,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 70,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 70,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Reduce',
+    rule: 70,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 70,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 70,
+  },
+  GREATER_THAN: {
+    kind: 'Reduce',
+    rule: 70,
+  },
+}, {
+  COMMA: {
+    kind: 'Shift',
+    state: 136,
+  },
+  GREATER_THAN: {
+    kind: 'Shift',
+    state: 147,
+  },
+}, {
+  BITWISE_OR: {
+    kind: 'Reduce',
+    rule: 69,
+  },
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 69,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 69,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 69,
+  },
+  DOT: {
+    kind: 'Reduce',
+    rule: 69,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 69,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 69,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 69,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 69,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 69,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 69,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 69,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 69,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Reduce',
+    rule: 69,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 69,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 69,
+  },
+  GREATER_THAN: {
+    kind: 'Reduce',
+    rule: 69,
+  },
+}, {
+  GET: {
+    kind: 'Shift',
+    state: 14,
+  },
+  IDENTIFIER: {
+    kind: 'Shift',
+    state: 13,
+  },
+  NULL: {
+    kind: 'Shift',
+    state: 89,
+  },
+  OPENING_BRACKET: {
+    kind: 'Shift',
+    state: 91,
   },
 }, {
   ASSIGN: {
     kind: 'Reduce',
-    rule: 34,
+    rule: 35,
   },
   LOGICAL_AND: {
     kind: 'Reduce',
-    rule: 34,
+    rule: 35,
   },
   OPENING_PAREN: {
     kind: 'Reduce',
-    rule: 34,
+    rule: 35,
   },
   DOT: {
     kind: 'Reduce',
-    rule: 34,
+    rule: 35,
   },
   LOGICAL_OR: {
     kind: 'Reduce',
-    rule: 34,
+    rule: 35,
   },
   MINUS: {
     kind: 'Reduce',
-    rule: 34,
+    rule: 35,
   },
   PLUS: {
     kind: 'Reduce',
-    rule: 34,
+    rule: 35,
   },
   EQUALS: {
     kind: 'Reduce',
-    rule: 34,
+    rule: 35,
   },
   STRICT_EQUALS: {
     kind: 'Reduce',
-    rule: 34,
+    rule: 35,
   },
   SEMICOLON: {
     kind: 'Reduce',
-    rule: 34,
+    rule: 35,
   },
   COLON: {
     kind: 'Reduce',
-    rule: 34,
+    rule: 35,
   },
   CLOSING_PAREN: {
     kind: 'Reduce',
-    rule: 34,
+    rule: 35,
   },
   CLOSING_BRACKET: {
     kind: 'Reduce',
-    rule: 34,
+    rule: 35,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 34,
+    rule: 35,
   },
   CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 34,
+    rule: 35,
   },
 }, {
   FALSE: {
@@ -6590,101 +7142,101 @@ const actions: Array<Actions> = [{
 }, {
   CONST: {
     kind: 'Reduce',
-    rule: 72,
+    rule: 73,
   },
   LET: {
     kind: 'Reduce',
-    rule: 72,
+    rule: 73,
   },
   CLASS: {
     kind: 'Reduce',
-    rule: 72,
+    rule: 73,
   },
   EXPORT: {
     kind: 'Reduce',
-    rule: 72,
+    rule: 73,
   },
   OPENING_PAREN: {
     kind: 'Reduce',
-    rule: 72,
+    rule: 73,
   },
   THIS: {
     kind: 'Reduce',
-    rule: 72,
-  },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 72,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 72,
+    rule: 73,
   },
   IDENTIFIER: {
     kind: 'Reduce',
-    rule: 72,
+    rule: 73,
   },
   GET: {
     kind: 'Reduce',
-    rule: 72,
+    rule: 73,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 73,
+  },
+  WHILE: {
+    kind: 'Reduce',
+    rule: 73,
   },
   NEW: {
     kind: 'Reduce',
-    rule: 72,
+    rule: 73,
   },
   OPENING_BRACE: {
     kind: 'Reduce',
-    rule: 72,
+    rule: 73,
   },
   OPENING_BRACKET: {
     kind: 'Reduce',
-    rule: 72,
+    rule: 73,
   },
   FALSE: {
     kind: 'Reduce',
-    rule: 72,
+    rule: 73,
   },
   TRUE: {
     kind: 'Reduce',
-    rule: 72,
+    rule: 73,
   },
   NULL: {
     kind: 'Reduce',
-    rule: 72,
+    rule: 73,
   },
   NUMBER: {
     kind: 'Reduce',
-    rule: 72,
+    rule: 73,
   },
   STRING_VALUE: {
     kind: 'Reduce',
-    rule: 72,
+    rule: 73,
   },
   $: {
     kind: 'Reduce',
-    rule: 72,
+    rule: 73,
   },
   CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 72,
+    rule: 73,
   },
 }, {
   CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 74,
+    rule: 75,
   },
   GET: {
     kind: 'Reduce',
-    rule: 74,
+    rule: 75,
   },
   IDENTIFIER: {
     kind: 'Reduce',
-    rule: 74,
+    rule: 75,
   },
 }, {
   OPENING_PAREN: {
     kind: 'Shift',
-    state: 146,
+    state: 150,
   },
 }, {
   GET: {
@@ -6697,11 +7249,11 @@ const actions: Array<Actions> = [{
   },
   CLOSING_PAREN: {
     kind: 'Reduce',
-    rule: 83,
+    rule: 84,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 83,
+    rule: 84,
   },
 }, {
   GET: {
@@ -6824,79 +7376,11 @@ const actions: Array<Actions> = [{
   },
   SEMICOLON: {
     kind: 'Shift',
-    state: 152,
+    state: 156,
   },
   STRICT_EQUALS: {
     kind: 'Shift',
     state: 54,
-  },
-}, {
-  BITWISE_OR: {
-    kind: 'Reduce',
-    rule: 69,
-  },
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 69,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 69,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 69,
-  },
-  GREATER_THAN: {
-    kind: 'Reduce',
-    rule: 69,
-  },
-}, {
-  COMMA: {
-    kind: 'Shift',
-    state: 143,
-  },
-  GREATER_THAN: {
-    kind: 'Shift',
-    state: 153,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  BITWISE_OR: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  GREATER_THAN: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-}, {
-  GET: {
-    kind: 'Shift',
-    state: 14,
-  },
-  IDENTIFIER: {
-    kind: 'Shift',
-    state: 13,
-  },
-  NULL: {
-    kind: 'Shift',
-    state: 101,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 103,
   },
 }, {
   ASSIGN: {
@@ -6933,11 +7417,97 @@ const actions: Array<Actions> = [{
   },
   SEMICOLON: {
     kind: 'Shift',
-    state: 155,
+    state: 157,
   },
   STRICT_EQUALS: {
     kind: 'Shift',
     state: 54,
+  },
+}, {
+  BITWISE_OR: {
+    kind: 'Reduce',
+    rule: 64,
+  },
+  ASSIGN: {
+    kind: 'Reduce',
+    rule: 64,
+  },
+  LOGICAL_AND: {
+    kind: 'Reduce',
+    rule: 64,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 64,
+  },
+  DOT: {
+    kind: 'Reduce',
+    rule: 64,
+  },
+  LOGICAL_OR: {
+    kind: 'Reduce',
+    rule: 64,
+  },
+  MINUS: {
+    kind: 'Reduce',
+    rule: 64,
+  },
+  PLUS: {
+    kind: 'Reduce',
+    rule: 64,
+  },
+  EQUALS: {
+    kind: 'Reduce',
+    rule: 64,
+  },
+  STRICT_EQUALS: {
+    kind: 'Reduce',
+    rule: 64,
+  },
+  SEMICOLON: {
+    kind: 'Reduce',
+    rule: 64,
+  },
+  COLON: {
+    kind: 'Reduce',
+    rule: 64,
+  },
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 64,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Reduce',
+    rule: 64,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 64,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 64,
+  },
+  GREATER_THAN: {
+    kind: 'Reduce',
+    rule: 64,
+  },
+}, {
+  BITWISE_OR: {
+    kind: 'Shift',
+    state: 111,
+  },
+  CLOSING_BRACKET: {
+    kind: 'Reduce',
+    rule: 66,
+  },
+  COMMA: {
+    kind: 'Reduce',
+    rule: 66,
+  },
+  GREATER_THAN: {
+    kind: 'Reduce',
+    rule: 66,
   },
 }, {
   ASSIGN: {
@@ -6978,341 +7548,74 @@ const actions: Array<Actions> = [{
   },
   CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 47,
+    rule: 48,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 47,
+    rule: 48,
   },
 }, {
   CLOSING_PAREN: {
-    kind: 'Shift',
-    state: 156,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Shift',
-    state: 157,
-  },
-  COMMA: {
     kind: 'Shift',
     state: 158,
   },
 }, {
   CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 81,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 81,
-  },
-}, {
-  COLON: {
     kind: 'Shift',
     state: 159,
   },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 84,
-  },
   COMMA: {
-    kind: 'Reduce',
-    rule: 84,
-  },
-}, {
-  SEMICOLON: {
     kind: 'Shift',
     state: 160,
   },
 }, {
-  CLASS: {
-    kind: 'Shift',
-    state: 33,
+  CLOSING_PAREN: {
+    kind: 'Reduce',
+    rule: 82,
   },
-  CLOSING_BRACE: {
+  COMMA: {
+    kind: 'Reduce',
+    rule: 82,
+  },
+}, {
+  COLON: {
     kind: 'Shift',
     state: 161,
   },
-  CONST: {
-    kind: 'Shift',
-    state: 4,
-  },
-  EXPORT: {
-    kind: 'Shift',
-    state: 35,
-  },
-  FALSE: {
-    kind: 'Shift',
-    state: 24,
-  },
-  GET: {
-    kind: 'Shift',
-    state: 14,
-  },
-  IDENTIFIER: {
-    kind: 'Shift',
-    state: 13,
-  },
-  LET: {
-    kind: 'Shift',
-    state: 5,
-  },
-  NEW: {
-    kind: 'Shift',
-    state: 17,
-  },
-  NULL: {
-    kind: 'Shift',
-    state: 27,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 29,
-  },
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 19,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 22,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 8,
-  },
-  RETURN: {
-    kind: 'Shift',
-    state: 38,
-  },
-  STRING_VALUE: {
-    kind: 'Shift',
-    state: 31,
-  },
-  THIS: {
-    kind: 'Shift',
-    state: 9,
-  },
-  TRUE: {
-    kind: 'Shift',
-    state: 25,
-  },
-  WHILE: {
-    kind: 'Shift',
-    state: 40,
-  },
-}, {
-  CONST: {
+  CLOSING_PAREN: {
     kind: 'Reduce',
-    rule: 10,
-  },
-  LET: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  CLASS: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  EXPORT: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  THIS: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  IDENTIFIER: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  GET: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  NEW: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  FALSE: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  TRUE: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  NULL: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-}, {
-  ASSIGN: {
-    kind: 'Reduce',
-    rule: 63,
-  },
-  BITWISE_OR: {
-    kind: 'Reduce',
-    rule: 63,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 63,
+    rule: 85,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 63,
-  },
-  GREATER_THAN: {
-    kind: 'Reduce',
-    rule: 63,
+    rule: 85,
   },
 }, {
-  BITWISE_OR: {
-    kind: 'Shift',
-    state: 124,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 65,
-  },
-  COMMA: {
-    kind: 'Reduce',
-    rule: 65,
-  },
-  GREATER_THAN: {
-    kind: 'Reduce',
-    rule: 65,
-  },
-}, {
-  CONST: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  LET: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  CLASS: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  EXPORT: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  THIS: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  IDENTIFIER: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  GET: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  NEW: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  FALSE: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  TRUE: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  NULL: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-}, {
-  OPENING_BRACE: {
+  SEMICOLON: {
     kind: 'Shift',
     state: 162,
   },
 }, {
-  OPENING_BRACE: {
+  CLASS: {
+    kind: 'Shift',
+    state: 33,
+  },
+  CLOSING_BRACE: {
     kind: 'Shift',
     state: 163,
   },
-}, {
+  CONST: {
+    kind: 'Shift',
+    state: 4,
+  },
+  EXPORT: {
+    kind: 'Shift',
+    state: 35,
+  },
+  FALSE: {
+    kind: 'Shift',
+    state: 24,
+  },
   GET: {
     kind: 'Shift',
     state: 14,
@@ -7321,108 +7624,337 @@ const actions: Array<Actions> = [{
     kind: 'Shift',
     state: 13,
   },
-}, {
-  GET: {
+  LET: {
     kind: 'Shift',
-    state: 14,
+    state: 5,
   },
-  IDENTIFIER: {
+  NEW: {
     kind: 'Shift',
-    state: 13,
+    state: 17,
   },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 86,
+  NULL: {
+    kind: 'Shift',
+    state: 27,
   },
-  GET: {
-    kind: 'Reduce',
-    rule: 86,
+  NUMBER: {
+    kind: 'Shift',
+    state: 29,
   },
-  IDENTIFIER: {
-    kind: 'Reduce',
-    rule: 86,
+  OPENING_BRACE: {
+    kind: 'Shift',
+    state: 19,
+  },
+  OPENING_BRACKET: {
+    kind: 'Shift',
+    state: 22,
+  },
+  OPENING_PAREN: {
+    kind: 'Shift',
+    state: 8,
+  },
+  RETURN: {
+    kind: 'Shift',
+    state: 38,
+  },
+  STRING_VALUE: {
+    kind: 'Shift',
+    state: 31,
+  },
+  THIS: {
+    kind: 'Shift',
+    state: 9,
+  },
+  TRUE: {
+    kind: 'Shift',
+    state: 25,
+  },
+  WHILE: {
+    kind: 'Shift',
+    state: 40,
   },
 }, {
   CONST: {
     kind: 'Reduce',
-    rule: 90,
+    rule: 10,
   },
   LET: {
     kind: 'Reduce',
-    rule: 90,
+    rule: 10,
   },
   CLASS: {
     kind: 'Reduce',
-    rule: 90,
+    rule: 10,
   },
   EXPORT: {
     kind: 'Reduce',
-    rule: 90,
+    rule: 10,
   },
   OPENING_PAREN: {
     kind: 'Reduce',
-    rule: 90,
+    rule: 10,
   },
   THIS: {
     kind: 'Reduce',
-    rule: 90,
-  },
-  RETURN: {
-    kind: 'Reduce',
-    rule: 90,
-  },
-  WHILE: {
-    kind: 'Reduce',
-    rule: 90,
+    rule: 10,
   },
   IDENTIFIER: {
     kind: 'Reduce',
-    rule: 90,
+    rule: 10,
   },
   GET: {
     kind: 'Reduce',
-    rule: 90,
+    rule: 10,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 10,
+  },
+  WHILE: {
+    kind: 'Reduce',
+    rule: 10,
   },
   NEW: {
     kind: 'Reduce',
-    rule: 90,
+    rule: 10,
   },
   OPENING_BRACE: {
     kind: 'Reduce',
-    rule: 90,
+    rule: 10,
   },
   OPENING_BRACKET: {
     kind: 'Reduce',
-    rule: 90,
+    rule: 10,
   },
   FALSE: {
     kind: 'Reduce',
-    rule: 90,
+    rule: 10,
   },
   TRUE: {
     kind: 'Reduce',
-    rule: 90,
+    rule: 10,
   },
   NULL: {
     kind: 'Reduce',
-    rule: 90,
+    rule: 10,
   },
   NUMBER: {
     kind: 'Reduce',
-    rule: 90,
+    rule: 10,
   },
   STRING_VALUE: {
     kind: 'Reduce',
-    rule: 90,
+    rule: 10,
   },
   $: {
     kind: 'Reduce',
-    rule: 90,
+    rule: 10,
   },
   CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 90,
+    rule: 10,
+  },
+}, {
+  CONST: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  LET: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  CLASS: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  EXPORT: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  THIS: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  IDENTIFIER: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  GET: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  WHILE: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  NEW: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  OPENING_BRACE: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  OPENING_BRACKET: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  FALSE: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  TRUE: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  NULL: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  NUMBER: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  STRING_VALUE: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  $: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 12,
+  },
+}, {
+  OPENING_BRACE: {
+    kind: 'Shift',
+    state: 164,
+  },
+}, {
+  OPENING_BRACE: {
+    kind: 'Shift',
+    state: 165,
+  },
+}, {
+  GET: {
+    kind: 'Shift',
+    state: 14,
+  },
+  IDENTIFIER: {
+    kind: 'Shift',
+    state: 13,
+  },
+}, {
+  GET: {
+    kind: 'Shift',
+    state: 14,
+  },
+  IDENTIFIER: {
+    kind: 'Shift',
+    state: 13,
+  },
+}, {
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 87,
+  },
+  GET: {
+    kind: 'Reduce',
+    rule: 87,
+  },
+  IDENTIFIER: {
+    kind: 'Reduce',
+    rule: 87,
+  },
+}, {
+  CONST: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  LET: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  CLASS: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  EXPORT: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  OPENING_PAREN: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  THIS: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  IDENTIFIER: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  GET: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  RETURN: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  WHILE: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  NEW: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  OPENING_BRACE: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  OPENING_BRACKET: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  FALSE: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  TRUE: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  NULL: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  NUMBER: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  STRING_VALUE: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  $: {
+    kind: 'Reduce',
+    rule: 91,
+  },
+  CLOSING_BRACE: {
+    kind: 'Reduce',
+    rule: 91,
   },
 }, {
   CLASS: {
@@ -7581,20 +8113,20 @@ const actions: Array<Actions> = [{
 }, {
   CLOSING_PAREN: {
     kind: 'Reduce',
-    rule: 82,
+    rule: 83,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 82,
+    rule: 83,
   },
 }, {
   CLOSING_PAREN: {
     kind: 'Reduce',
-    rule: 85,
+    rule: 86,
   },
   COMMA: {
     kind: 'Reduce',
-    rule: 85,
+    rule: 86,
   },
 }, {
   CLASS: {
@@ -7603,7 +8135,7 @@ const actions: Array<Actions> = [{
   },
   CLOSING_BRACE: {
     kind: 'Shift',
-    state: 168,
+    state: 170,
   },
   CONST: {
     kind: 'Shift',
@@ -7680,7 +8212,7 @@ const actions: Array<Actions> = [{
   },
   CLOSING_BRACE: {
     kind: 'Shift',
-    state: 169,
+    state: 171,
   },
   CONST: {
     kind: 'Shift',
@@ -7753,28 +8285,28 @@ const actions: Array<Actions> = [{
 }, {
   CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 79,
+    rule: 80,
   },
   GET: {
     kind: 'Reduce',
-    rule: 79,
+    rule: 80,
   },
   IDENTIFIER: {
     kind: 'Reduce',
-    rule: 79,
+    rule: 80,
   },
 }, {
   CLOSING_BRACE: {
     kind: 'Reduce',
-    rule: 80,
+    rule: 81,
   },
   GET: {
     kind: 'Reduce',
-    rule: 80,
+    rule: 81,
   },
   IDENTIFIER: {
     kind: 'Reduce',
-    rule: 80,
+    rule: 81,
   },
 }];
 const gotos: Array<Gotos> = [
@@ -7891,7 +8423,7 @@ const gotos: Array<Gotos> = [
     BinaryExpression: 10,
     BooleanValue: 23,
     CallExpression: 11,
-    Expression: 57,
+    Expression: 58,
     Identifier: 12,
     MemberExpression: 15,
     NewExpression: 16,
@@ -7903,10 +8435,10 @@ const gotos: Array<Gotos> = [
   },
   {},
   {
-    Identifier: 60,
-    NumberValue: 61,
-    ObjectProperty: 59,
-    ObjectPropertyList: 58,
+    Identifier: 61,
+    NumberValue: 62,
+    ObjectProperty: 60,
+    ObjectPropertyList: 59,
   },
   {},
   {},
@@ -7916,8 +8448,8 @@ const gotos: Array<Gotos> = [
     BinaryExpression: 10,
     BooleanValue: 23,
     CallExpression: 11,
-    Expression: 64,
-    ExpressionList: 63,
+    Expression: 65,
+    ExpressionList: 64,
     Identifier: 12,
     MemberExpression: 15,
     NewExpression: 16,
@@ -7938,31 +8470,8 @@ const gotos: Array<Gotos> = [
   {},
   {},
   {
-    Identifier: 65,
+    Identifier: 66,
   },
-  {},
-  {},
-  {},
-  {},
-  {
-    ArrayValue: 21,
-    AssignmentExpression: 43,
-    BinaryExpression: 10,
-    BooleanValue: 23,
-    CallExpression: 11,
-    Expression: 68,
-    Identifier: 12,
-    MemberExpression: 15,
-    NewExpression: 16,
-    NullValue: 26,
-    NumberValue: 28,
-    ObjectValue: 18,
-    PrimitiveValue: 20,
-    StringValue: 30,
-  },
-  {},
-  {},
-  {},
   {},
   {},
   {},
@@ -7973,7 +8482,7 @@ const gotos: Array<Gotos> = [
     BinaryExpression: 10,
     BooleanValue: 23,
     CallExpression: 11,
-    Expression: 74,
+    Expression: 69,
     Identifier: 12,
     MemberExpression: 15,
     NewExpression: 16,
@@ -7983,6 +8492,13 @@ const gotos: Array<Gotos> = [
     PrimitiveValue: 20,
     StringValue: 30,
   },
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
   {
     ArrayValue: 21,
     AssignmentExpression: 43,
@@ -8005,8 +8521,7 @@ const gotos: Array<Gotos> = [
     BinaryExpression: 10,
     BooleanValue: 23,
     CallExpression: 11,
-    Expression: 64,
-    ExpressionList: 76,
+    Expression: 76,
     Identifier: 12,
     MemberExpression: 15,
     NewExpression: 16,
@@ -8015,9 +8530,6 @@ const gotos: Array<Gotos> = [
     ObjectValue: 18,
     PrimitiveValue: 20,
     StringValue: 30,
-  },
-  {
-    Identifier: 77,
   },
   {
     ArrayValue: 21,
@@ -8025,7 +8537,8 @@ const gotos: Array<Gotos> = [
     BinaryExpression: 10,
     BooleanValue: 23,
     CallExpression: 11,
-    Expression: 78,
+    Expression: 65,
+    ExpressionList: 77,
     Identifier: 12,
     MemberExpression: 15,
     NewExpression: 16,
@@ -8034,6 +8547,9 @@ const gotos: Array<Gotos> = [
     ObjectValue: 18,
     PrimitiveValue: 20,
     StringValue: 30,
+  },
+  {
+    Identifier: 78,
   },
   {
     ArrayValue: 21,
@@ -8099,8 +8615,32 @@ const gotos: Array<Gotos> = [
     PrimitiveValue: 20,
     StringValue: 30,
   },
+  {
+    ArrayValue: 21,
+    AssignmentExpression: 43,
+    BinaryExpression: 10,
+    BooleanValue: 23,
+    CallExpression: 11,
+    Expression: 83,
+    Identifier: 12,
+    MemberExpression: 15,
+    NewExpression: 16,
+    NullValue: 26,
+    NumberValue: 28,
+    ObjectValue: 18,
+    PrimitiveValue: 20,
+    StringValue: 30,
+  },
   {},
   {},
+  {
+    GenericType: 86,
+    Identifier: 87,
+    NamedType: 88,
+    TupleType: 90,
+    Type: 85,
+    UnionType: 92,
+  },
   {},
   {},
   {},
@@ -8112,7 +8652,7 @@ const gotos: Array<Gotos> = [
     BinaryExpression: 10,
     BooleanValue: 23,
     CallExpression: 11,
-    Expression: 89,
+    Expression: 98,
     Identifier: 12,
     MemberExpression: 15,
     NewExpression: 16,
@@ -8126,35 +8666,11 @@ const gotos: Array<Gotos> = [
   {},
   {},
   {
-    ClassDeclaration: 94,
-    Declaration: 93,
+    ClassDeclaration: 103,
+    Declaration: 102,
   },
   {},
   {},
-  {
-    ArrayValue: 21,
-    AssignmentExpression: 43,
-    BinaryExpression: 10,
-    BooleanValue: 23,
-    CallExpression: 11,
-    Expression: 96,
-    Identifier: 12,
-    MemberExpression: 15,
-    NewExpression: 16,
-    NullValue: 26,
-    NumberValue: 28,
-    ObjectValue: 18,
-    PrimitiveValue: 20,
-    StringValue: 30,
-  },
-  {
-    GenericType: 98,
-    Identifier: 99,
-    NamedType: 100,
-    TupleType: 102,
-    Type: 97,
-    UnionType: 104,
-  },
   {
     ArrayValue: 21,
     AssignmentExpression: 43,
@@ -8172,12 +8688,12 @@ const gotos: Array<Gotos> = [
     StringValue: 30,
   },
   {
-    GenericType: 98,
-    Identifier: 99,
-    NamedType: 100,
-    TupleType: 102,
+    GenericType: 86,
+    Identifier: 87,
+    NamedType: 88,
+    TupleType: 90,
     Type: 106,
-    UnionType: 104,
+    UnionType: 92,
   },
   {
     ArrayValue: 21,
@@ -8195,38 +8711,13 @@ const gotos: Array<Gotos> = [
     PrimitiveValue: 20,
     StringValue: 30,
   },
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
   {
-    ArrayValue: 21,
-    AssignmentExpression: 43,
-    BinaryExpression: 10,
-    BooleanValue: 23,
-    CallExpression: 11,
-    Expression: 64,
-    ExpressionList: 109,
-    Identifier: 12,
-    MemberExpression: 15,
-    NewExpression: 16,
-    NullValue: 26,
-    NumberValue: 28,
-    ObjectValue: 18,
-    PrimitiveValue: 20,
-    StringValue: 30,
-  },
-  {},
-  {
-    Identifier: 60,
-    NumberValue: 61,
-    ObjectProperty: 110,
+    GenericType: 86,
+    Identifier: 87,
+    NamedType: 88,
+    TupleType: 90,
+    Type: 108,
+    UnionType: 92,
   },
   {
     ArrayValue: 21,
@@ -8234,23 +8725,7 @@ const gotos: Array<Gotos> = [
     BinaryExpression: 10,
     BooleanValue: 23,
     CallExpression: 11,
-    Expression: 111,
-    Identifier: 12,
-    MemberExpression: 15,
-    NewExpression: 16,
-    NullValue: 26,
-    NumberValue: 28,
-    ObjectValue: 18,
-    PrimitiveValue: 20,
-    StringValue: 30,
-  },
-  {
-    ArrayValue: 21,
-    AssignmentExpression: 43,
-    BinaryExpression: 10,
-    BooleanValue: 23,
-    CallExpression: 11,
-    Expression: 112,
+    Expression: 109,
     Identifier: 12,
     MemberExpression: 15,
     NewExpression: 16,
@@ -8262,13 +8737,60 @@ const gotos: Array<Gotos> = [
   },
   {},
   {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {
+    GenericType: 86,
+    Identifier: 87,
+    NamedType: 88,
+    TupleType: 90,
+    Type: 114,
+    TypeList: 113,
+    UnionType: 92,
+  },
+  {},
   {
     ArrayValue: 21,
     AssignmentExpression: 43,
     BinaryExpression: 10,
     BooleanValue: 23,
     CallExpression: 11,
-    Expression: 114,
+    Expression: 65,
+    ExpressionList: 115,
+    Identifier: 12,
+    MemberExpression: 15,
+    NewExpression: 16,
+    NullValue: 26,
+    NumberValue: 28,
+    ObjectValue: 18,
+    PrimitiveValue: 20,
+    StringValue: 30,
+  },
+  {},
+  {
+    Identifier: 61,
+    NumberValue: 62,
+    ObjectProperty: 116,
+  },
+  {
+    ArrayValue: 21,
+    AssignmentExpression: 43,
+    BinaryExpression: 10,
+    BooleanValue: 23,
+    CallExpression: 11,
+    Expression: 117,
     Identifier: 12,
     MemberExpression: 15,
     NewExpression: 16,
@@ -8279,57 +8801,21 @@ const gotos: Array<Gotos> = [
     StringValue: 30,
   },
   {
-    ClassBodyList: 115,
-    ClassBodyListItem: 116,
-    GetAccessor: 117,
-    Identifier: 120,
-    MethodDefinition: 119,
-    PropertyDeclaration: 121,
+    ArrayValue: 21,
+    AssignmentExpression: 43,
+    BinaryExpression: 10,
+    BooleanValue: 23,
+    CallExpression: 11,
+    Expression: 118,
+    Identifier: 12,
+    MemberExpression: 15,
+    NewExpression: 16,
+    NullValue: 26,
+    NumberValue: 28,
+    ObjectValue: 18,
+    PrimitiveValue: 20,
+    StringValue: 30,
   },
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {
-    GenericType: 98,
-    Identifier: 99,
-    NamedType: 100,
-    TupleType: 102,
-    Type: 127,
-    TypeList: 126,
-    UnionType: 104,
-  },
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {
-    ClassBodyListItem: 134,
-    GetAccessor: 117,
-    Identifier: 120,
-    MethodDefinition: 119,
-    PropertyDeclaration: 121,
-  },
-  {},
-  {},
-  {
-    Identifier: 135,
-  },
-  {},
-  {},
   {},
   {},
   {
@@ -8338,7 +8824,7 @@ const gotos: Array<Gotos> = [
     BinaryExpression: 10,
     BooleanValue: 23,
     CallExpression: 11,
-    Expression: 139,
+    Expression: 120,
     Identifier: 12,
     MemberExpression: 15,
     NewExpression: 16,
@@ -8349,41 +8835,61 @@ const gotos: Array<Gotos> = [
     StringValue: 30,
   },
   {
-    GenericType: 98,
-    Identifier: 99,
-    NamedType: 100,
-    TupleType: 102,
-    Type: 140,
-    UnionType: 104,
+    ClassBodyList: 121,
+    ClassBodyListItem: 122,
+    GetAccessor: 123,
+    Identifier: 126,
+    MethodDefinition: 125,
+    PropertyDeclaration: 127,
   },
-  {
-    GenericType: 98,
-    Identifier: 99,
-    NamedType: 100,
-    TupleType: 102,
-    Type: 127,
-    TypeList: 141,
-    UnionType: 104,
-  },
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
   {},
   {},
   {},
   {
-    ArrayValue: 21,
-    AssignmentExpression: 43,
-    BinaryExpression: 10,
-    BooleanValue: 23,
-    CallExpression: 11,
-    Expression: 144,
-    Identifier: 12,
-    MemberExpression: 15,
-    NewExpression: 16,
-    NullValue: 26,
-    NumberValue: 28,
-    ObjectValue: 18,
-    PrimitiveValue: 20,
-    StringValue: 30,
+    GenericType: 86,
+    Identifier: 87,
+    NamedType: 88,
+    TupleType: 90,
+    Type: 133,
+    UnionType: 92,
   },
+  {
+    GenericType: 86,
+    Identifier: 87,
+    NamedType: 88,
+    TupleType: 90,
+    Type: 114,
+    TypeList: 134,
+    UnionType: 92,
+  },
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {
+    ClassBodyListItem: 140,
+    GetAccessor: 123,
+    Identifier: 126,
+    MethodDefinition: 125,
+    PropertyDeclaration: 127,
+  },
+  {},
+  {},
+  {
+    Identifier: 141,
+  },
+  {},
+  {},
   {},
   {},
   {
@@ -8403,15 +8909,61 @@ const gotos: Array<Gotos> = [
     StringValue: 30,
   },
   {},
+  {
+    ArrayValue: 21,
+    AssignmentExpression: 43,
+    BinaryExpression: 10,
+    BooleanValue: 23,
+    CallExpression: 11,
+    Expression: 146,
+    Identifier: 12,
+    MemberExpression: 15,
+    NewExpression: 16,
+    NullValue: 26,
+    NumberValue: 28,
+    ObjectValue: 18,
+    PrimitiveValue: 20,
+    StringValue: 30,
+  },
+  {},
+  {},
   {},
   {},
   {
-    Argument: 148,
-    ArgumentList: 147,
-    Identifier: 149,
+    GenericType: 86,
+    Identifier: 87,
+    NamedType: 88,
+    TupleType: 90,
+    Type: 148,
+    UnionType: 92,
+  },
+  {},
+  {
+    ArrayValue: 21,
+    AssignmentExpression: 43,
+    BinaryExpression: 10,
+    BooleanValue: 23,
+    CallExpression: 11,
+    Expression: 149,
+    Identifier: 12,
+    MemberExpression: 15,
+    NewExpression: 16,
+    NullValue: 26,
+    NumberValue: 28,
+    ObjectValue: 18,
+    PrimitiveValue: 20,
+    StringValue: 30,
+  },
+  {},
+  {},
+  {},
+  {
+    Argument: 152,
+    ArgumentList: 151,
+    Identifier: 153,
   },
   {
-    Identifier: 150,
+    Identifier: 154,
   },
   {
     ArrayValue: 21,
@@ -8433,22 +8985,13 @@ const gotos: Array<Gotos> = [
     PrimitiveValue: 20,
     ReturnStatement: 37,
     Statement: 2,
-    StatementList: 151,
+    StatementList: 155,
     StringValue: 30,
     WhileStatement: 39,
   },
   {},
   {},
   {},
-  {},
-  {
-    GenericType: 98,
-    Identifier: 99,
-    NamedType: 100,
-    TupleType: 102,
-    Type: 154,
-    UnionType: 104,
-  },
   {},
   {},
   {},
@@ -8483,14 +9026,12 @@ const gotos: Array<Gotos> = [
   {},
   {},
   {},
-  {},
-  {},
   {
-    Argument: 164,
-    Identifier: 149,
+    Argument: 166,
+    Identifier: 153,
   },
   {
-    Identifier: 165,
+    Identifier: 167,
   },
   {},
   {},
@@ -8514,7 +9055,7 @@ const gotos: Array<Gotos> = [
     PrimitiveValue: 20,
     ReturnStatement: 37,
     Statement: 2,
-    StatementList: 166,
+    StatementList: 168,
     StringValue: 30,
     WhileStatement: 39,
   },
@@ -8538,7 +9079,7 @@ const gotos: Array<Gotos> = [
     PrimitiveValue: 20,
     ReturnStatement: 37,
     Statement: 2,
-    StatementList: 167,
+    StatementList: 169,
     StringValue: 30,
     WhileStatement: 39,
   },
@@ -8683,7 +9224,7 @@ const rules = [{
   action: r21,
 }, {
   production: 'Expression',
-  pop: 1,
+  pop: 3,
   action: r22,
 }, {
   production: 'Expression',
@@ -8702,11 +9243,11 @@ const rules = [{
   pop: 1,
   action: r26,
 }, {
-  production: 'AssignmentExpression',
-  pop: 3,
+  production: 'Expression',
+  pop: 1,
   action: r27,
 }, {
-  production: 'BinaryExpression',
+  production: 'AssignmentExpression',
   pop: 3,
   action: r28,
 }, {
@@ -8730,64 +9271,64 @@ const rules = [{
   pop: 3,
   action: r33,
 }, {
+  production: 'BinaryExpression',
+  pop: 3,
+  action: r34,
+}, {
   production: 'NewExpression',
   pop: 5,
-  action: r34,
+  action: r35,
 }, {
   production: 'CallExpression',
   pop: 4,
-  action: r35,
-}, {
-  production: 'ExpressionList',
-  pop: 1,
   action: r36,
 }, {
   production: 'ExpressionList',
-  pop: 3,
+  pop: 1,
   action: r37,
 }, {
   production: 'ExpressionList',
-  pop: 0,
+  pop: 3,
   action: r38,
+}, {
+  production: 'ExpressionList',
+  pop: 0,
+  action: r39,
 }, {
   production: 'MemberExpression',
   pop: 3,
-  action: r39,
+  action: r40,
 }, {
   production: 'ObjectValue',
   pop: 3,
-  action: r40,
-}, {
-  production: 'ObjectPropertyList',
-  pop: 1,
   action: r41,
 }, {
   production: 'ObjectPropertyList',
-  pop: 3,
+  pop: 1,
   action: r42,
 }, {
   production: 'ObjectPropertyList',
-  pop: 0,
+  pop: 3,
   action: r43,
 }, {
-  production: 'ObjectProperty',
-  pop: 3,
+  production: 'ObjectPropertyList',
+  pop: 0,
   action: r44,
 }, {
   production: 'ObjectProperty',
-  pop: 1,
+  pop: 3,
   action: r45,
 }, {
   production: 'ObjectProperty',
-  pop: 3,
+  pop: 1,
   action: r46,
 }, {
   production: 'ObjectProperty',
-  pop: 5,
+  pop: 3,
   action: r47,
 }, {
-  production: 'PrimitiveValue',
-  pop: 1,
+  production: 'ObjectProperty',
+  pop: 5,
   action: r48,
 }, {
   production: 'PrimitiveValue',
@@ -8806,31 +9347,31 @@ const rules = [{
   pop: 1,
   action: r52,
 }, {
-  production: 'ArrayValue',
-  pop: 3,
+  production: 'PrimitiveValue',
+  pop: 1,
   action: r53,
 }, {
-  production: 'BooleanValue',
-  pop: 1,
+  production: 'ArrayValue',
+  pop: 3,
   action: r54,
 }, {
   production: 'BooleanValue',
   pop: 1,
   action: r55,
 }, {
-  production: 'NullValue',
+  production: 'BooleanValue',
   pop: 1,
   action: r56,
 }, {
-  production: 'NumberValue',
+  production: 'NullValue',
   pop: 1,
   action: r57,
 }, {
-  production: 'StringValue',
+  production: 'NumberValue',
   pop: 1,
   action: r58,
 }, {
-  production: 'Type',
+  production: 'StringValue',
   pop: 1,
   action: r59,
 }, {
@@ -8846,60 +9387,60 @@ const rules = [{
   pop: 1,
   action: r62,
 }, {
-  production: 'GenericType',
-  pop: 4,
+  production: 'Type',
+  pop: 1,
   action: r63,
 }, {
-  production: 'TypeList',
-  pop: 1,
+  production: 'GenericType',
+  pop: 4,
   action: r64,
 }, {
   production: 'TypeList',
-  pop: 3,
+  pop: 1,
   action: r65,
 }, {
-  production: 'NamedType',
-  pop: 1,
+  production: 'TypeList',
+  pop: 3,
   action: r66,
 }, {
   production: 'NamedType',
   pop: 1,
   action: r67,
 }, {
-  production: 'TupleType',
-  pop: 3,
+  production: 'NamedType',
+  pop: 1,
   action: r68,
 }, {
-  production: 'UnionType',
+  production: 'TupleType',
   pop: 3,
   action: r69,
 }, {
-  production: 'ExportDefaultDeclaration',
+  production: 'UnionType',
   pop: 3,
   action: r70,
 }, {
+  production: 'ExportDefaultDeclaration',
+  pop: 3,
+  action: r71,
+}, {
   production: 'Declaration',
   pop: 1,
-  action: r71,
+  action: r72,
 }, {
   production: 'ClassDeclaration',
   pop: 5,
-  action: r72,
-}, {
-  production: 'ClassBodyList',
-  pop: 1,
   action: r73,
 }, {
   production: 'ClassBodyList',
-  pop: 2,
+  pop: 1,
   action: r74,
 }, {
   production: 'ClassBodyList',
-  pop: 0,
+  pop: 2,
   action: r75,
 }, {
-  production: 'ClassBodyListItem',
-  pop: 1,
+  production: 'ClassBodyList',
+  pop: 0,
   action: r76,
 }, {
   production: 'ClassBodyListItem',
@@ -8910,53 +9451,57 @@ const rules = [{
   pop: 1,
   action: r78,
 }, {
-  production: 'GetAccessor',
-  pop: 7,
+  production: 'ClassBodyListItem',
+  pop: 1,
   action: r79,
 }, {
-  production: 'MethodDefinition',
+  production: 'GetAccessor',
   pop: 7,
   action: r80,
 }, {
-  production: 'ArgumentList',
-  pop: 1,
+  production: 'MethodDefinition',
+  pop: 7,
   action: r81,
 }, {
   production: 'ArgumentList',
-  pop: 3,
+  pop: 1,
   action: r82,
 }, {
   production: 'ArgumentList',
-  pop: 0,
+  pop: 3,
   action: r83,
 }, {
-  production: 'Argument',
-  pop: 1,
+  production: 'ArgumentList',
+  pop: 0,
   action: r84,
 }, {
   production: 'Argument',
-  pop: 3,
+  pop: 1,
   action: r85,
+}, {
+  production: 'Argument',
+  pop: 3,
+  action: r86,
 }, {
   production: 'PropertyDeclaration',
   pop: 4,
-  action: r86,
-}, {
-  production: 'ExpressionStatement',
-  pop: 2,
   action: r87,
 }, {
-  production: 'ReturnStatement',
+  production: 'ExpressionStatement',
   pop: 2,
   action: r88,
 }, {
   production: 'ReturnStatement',
-  pop: 3,
+  pop: 2,
   action: r89,
+}, {
+  production: 'ReturnStatement',
+  pop: 3,
+  action: r90,
 }, {
   production: 'WhileStatement',
   pop: 7,
-  action: r90,
+  action: r91,
 }];
 const EOF = new Token('$', -1, -1, '');
 export default function parseStatement(input: string) {
@@ -8989,9 +9534,10 @@ export default function parseStatement(input: string) {
       }
       const [, next] = stack[stack.length - 1];
       const target = gotos[next][production];
-      // TODO: "code as any" here makes last error go away
-      // ("spread argument must either have a tuple type or be passed to a rest parameter.")
-      stack.push([code(...popped), target]);
+      // "as any" cast here suppresses:
+      // - TS2590: Expression produces a union type that is too complex to represent.
+      // - TS2556: A spread argument must either have a tuple type or be passed to a rest parameter.
+      stack.push([(code as any)(...popped), target]);
     }
   }
 }

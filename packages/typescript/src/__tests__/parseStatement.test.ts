@@ -386,6 +386,50 @@ describe('parseStatement()', async () => {
         }]);
       });
 
+      it('parses a cast', () => {
+        // TODO: support rest params in CallExpression, so that I can use
+        // "...popped" in the example, like I do in the generated parser.
+        const input = 'stack.push([(code as any)(popped), target]);';
+        expect(parseStatement(input)).toEqual([{
+          kind: 'ExpressionStatement',
+          expression: {
+            kind: 'CallExpression',
+            callee: {
+              kind: 'MemberExpression',
+              object: {
+                kind: 'Identifier',
+                name: 'stack',
+              },
+              property: {
+                kind: 'Identifier',
+                name: 'push',
+              },
+            },
+            arguments: [{
+              kind: 'ArrayValue',
+              items: [{
+                kind: 'CallExpression',
+                callee: {
+                  kind: 'Identifier',
+                  name: 'code',
+                  cast: {
+                    kind: 'NamedType',
+                    name: 'any',
+                  },
+                },
+                arguments: [{
+                  kind: 'Identifier',
+                  name: 'popped',
+                }],
+              }, {
+                kind: 'Identifier',
+                name: 'target',
+              }],
+            }],
+          },
+        }]);
+      });
+
       it('parses an object with shorthand property', () => {
         const input = "Object.defineProperty(this, 'contents', {value});";
         expect(parseStatement(input)).toEqual([{

@@ -47,7 +47,7 @@ export default function build(
 
   // The first rule in an augmented grammar doesn't actually produce anything.
   // Naughtily mutate the passed in grammar to make all rules StaticRule.
-  grammar.rules[0].action = '{ /* dummy placeholder */ }';
+  grammar.rules[0].action = '{ return null; }';
 
   assertIsStaticGrammar(grammar);
 
@@ -62,9 +62,11 @@ export default function build(
 
   const name = options.name || 'parse';
 
+  // Assume that prologue defines types, and we should emit them.
+  const emitTypes = !!grammar.prologue;
+
   return ast.program(filterEmpty(
-    // TODO: remove the @ts-nocheck once the file is good.
-    ast.comment('@ts-nocheck'),
+    emitTypes ? ast.empty : ast.comment('@ts-nocheck'),
     ast.docComment(
       `vim: set nomodifiable : DO NOT EDIT - ${buildCommand}`,
       '',
@@ -100,8 +102,7 @@ export default function build(
               const argument = variables.has(i + 1)
                 ? `$${i + 1}`
                 : `_$${i + 1}`;
-              if (grammar.prologue) {
-                // Assume that prologue defines types, and we should emit them.
+              if (emitTypes) {
                 const symbol = rule.rhs[i];
                 const argumentType = grammar.tokens.has(symbol)
                   ? 'Token'
@@ -117,11 +118,11 @@ export default function build(
               .trim()
               .replace(/\$\$\s*=\s*/g, 'return '), // TODO: static analysis to make sure this is safe.
           )],
-          type: grammar.prologue ?
+          type: emitTypes ?
             (
               // Dummy start rule for augmented grammar will return nothing.
               // All other rules return the type of the prgouction.
-              rule.lhs.endsWith("'") ? 'void' : rule.lhs
+              rule.lhs.endsWith("'") ? 'null' : rule.lhs
             ) :
             undefined,
         });
@@ -269,9 +270,10 @@ export default function build(
                 }
                 const [, next] = stack[stack.length - 1];
                 const target = gotos[next][production];
-                // TODO: "code as any" here makes last error go away
-                // ("spread argument must either have a tuple type or be passed to a rest parameter.")
-                stack.push([code(...popped), target]);
+                // "as any" cast here suppresses:
+                // - TS2590: Expression produces a union type that is too complex to represent.
+                // - TS2556: A spread argument must either have a tuple type or be passed to a rest parameter.
+                stack.push([(code as any)(...popped), target]);
               }
             }
           `),
