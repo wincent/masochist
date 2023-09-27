@@ -3,6 +3,7 @@ import {ignore, union} from '@masochist/lexer';
 // Operators.
 export const ASSIGN = '=';
 export const BANG = '!';
+export const BITWISE_OR = '|';
 export const CLOSING_BRACE = '}';
 export const CLOSING_BRACKET = ']';
 export const CLOSING_PAREN = ')';
@@ -129,6 +130,7 @@ export default union({
 
   ASSIGN,
   BANG,
+  BITWISE_OR,
   CLOSING_BRACE,
   CLOSING_BRACKET,
   CLOSING_PAREN,

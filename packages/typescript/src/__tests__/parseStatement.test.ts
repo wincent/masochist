@@ -134,6 +134,258 @@ describe('parseStatement()', async () => {
         expect(parseStatement(input)).toMatchSnapshot();
       });
 
+      it('parses a named type const assignment', () => {
+        const input = 'const stack: Foo = [[null, 0]];';
+        expect(parseStatement(input)).toEqual([{
+          kind: 'AssignmentStatement',
+          binding: 'const',
+          lhs: {
+            kind: 'Identifier',
+            name: 'stack',
+          },
+          type: {
+            kind: 'NamedType',
+            name: 'Foo',
+          },
+          rhs: {
+            kind: 'ArrayValue',
+            items: [{
+              kind: 'ArrayValue',
+              items: [{
+                kind: 'NullValue',
+              }, {
+                kind: 'NumberValue',
+                value: 0,
+                base: 10,
+              }],
+            }],
+          },
+        }]);
+      });
+
+      it('parses a generic type const assignment (single parameter)', () => {
+        const input = 'const stack: Foo<Qux> = [[null, 0]];';
+        expect(parseStatement(input)).toEqual([{
+          kind: 'AssignmentStatement',
+          binding: 'const',
+          lhs: {
+            kind: 'Identifier',
+            name: 'stack',
+          },
+          type: {
+            kind: 'GenericType',
+            name: 'Foo',
+            parameters: [{
+              kind: 'NamedType',
+              name: 'Qux',
+            }],
+          },
+          rhs: {
+            kind: 'ArrayValue',
+            items: [{
+              kind: 'ArrayValue',
+              items: [{
+                kind: 'NullValue',
+              }, {
+                kind: 'NumberValue',
+                value: 0,
+                base: 10,
+              }],
+            }],
+          },
+        }]);
+      });
+
+      it('parses a generic type const assignment (multiple parameter)', () => {
+        const input = 'const stack: Foo<T, K> = [[null, 0]];';
+        expect(parseStatement(input)).toEqual([{
+          kind: 'AssignmentStatement',
+          binding: 'const',
+          lhs: {
+            kind: 'Identifier',
+            name: 'stack',
+          },
+          type: {
+            kind: 'GenericType',
+            name: 'Foo',
+            parameters: [{
+              kind: 'NamedType',
+              name: 'T',
+            }, {
+              kind: 'NamedType',
+              name: 'K',
+            }],
+          },
+          rhs: {
+            kind: 'ArrayValue',
+            items: [{
+              kind: 'ArrayValue',
+              items: [{
+                kind: 'NullValue',
+              }, {
+                kind: 'NumberValue',
+                value: 0,
+                base: 10,
+              }],
+            }],
+          },
+        }]);
+      });
+
+      it('parses a tuple type const assignment (single parameter)', () => {
+        const input = 'const stack: [Qux] = [[null, 0]];';
+        expect(parseStatement(input)).toEqual([{
+          kind: 'AssignmentStatement',
+          binding: 'const',
+          lhs: {
+            kind: 'Identifier',
+            name: 'stack',
+          },
+          type: {
+            kind: 'TupleType',
+            elements: [{
+              kind: 'NamedType',
+              name: 'Qux',
+            }],
+          },
+          rhs: {
+            kind: 'ArrayValue',
+            items: [{
+              kind: 'ArrayValue',
+              items: [{
+                kind: 'NullValue',
+              }, {
+                kind: 'NumberValue',
+                value: 0,
+                base: 10,
+              }],
+            }],
+          },
+        }]);
+      });
+
+      it('parses a tuple type const assignment (multiple parameter)', () => {
+        const input = 'const stack: [T, K] = [[null, 0]];';
+        expect(parseStatement(input)).toEqual([{
+          kind: 'AssignmentStatement',
+          binding: 'const',
+          lhs: {
+            kind: 'Identifier',
+            name: 'stack',
+          },
+          type: {
+            kind: 'TupleType',
+            elements: [{
+              kind: 'NamedType',
+              name: 'T',
+            }, {
+              kind: 'NamedType',
+              name: 'K',
+            }],
+          },
+          rhs: {
+            kind: 'ArrayValue',
+            items: [{
+              kind: 'ArrayValue',
+              items: [{
+                kind: 'NullValue',
+              }, {
+                kind: 'NumberValue',
+                value: 0,
+                base: 10,
+              }],
+            }],
+          },
+        }]);
+      });
+
+      it('parses a union type const assignment', () => {
+        const input = 'const stack: A | B | C = [[null, 0]];';
+        expect(parseStatement(input)).toEqual([{
+          kind: 'AssignmentStatement',
+          binding: 'const',
+          lhs: {
+            kind: 'Identifier',
+            name: 'stack',
+          },
+          type: {
+            kind: 'UnionType',
+            variants: [{
+              kind: 'NamedType',
+              name: 'A',
+            }, {
+              kind: 'NamedType',
+              name: 'B',
+            }, {
+              kind: 'NamedType',
+              name: 'C',
+            }],
+          },
+          rhs: {
+            kind: 'ArrayValue',
+            items: [{
+              kind: 'ArrayValue',
+              items: [{
+                kind: 'NullValue',
+              }, {
+                kind: 'NumberValue',
+                value: 0,
+                base: 10,
+              }],
+            }],
+          },
+        }]);
+      });
+
+      it('parses a nested type const assignment', () => {
+        const input =
+          'const stack: Array<[Production | Token | null, number]> = [[null, 0]];';
+        expect(parseStatement(input)).toEqual([{
+          kind: 'AssignmentStatement',
+          binding: 'const',
+          lhs: {
+            kind: 'Identifier',
+            name: 'stack',
+          },
+          type: {
+            kind: 'GenericType',
+            name: 'Array',
+            parameters: [{
+              kind: 'TupleType',
+              elements: [{
+                kind: 'UnionType',
+                variants: [{
+                  kind: 'NamedType',
+                  name: 'Production',
+                }, {
+                  kind: 'NamedType',
+                  name: 'Token',
+                }, {
+                  kind: 'NamedType',
+                  name: 'null',
+                }],
+              }, {
+                kind: 'NamedType',
+                name: 'number',
+              }],
+            }],
+          },
+          rhs: {
+            kind: 'ArrayValue',
+            items: [{
+              kind: 'ArrayValue',
+              items: [{
+                kind: 'NullValue',
+              }, {
+                kind: 'NumberValue',
+                value: 0,
+                base: 10,
+              }],
+            }],
+          },
+        }]);
+      });
+
       it('parses an object with shorthand property', () => {
         const input = "Object.defineProperty(this, 'contents', {value});";
         expect(parseStatement(input)).toEqual([{

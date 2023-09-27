@@ -448,7 +448,8 @@ export class Lexer {
           this.state = START;
           return this.emit('LOGICAL_OR', this.index + 1, input);
         } else {
-          this.state = REJECT;
+          this.state = START;
+          return this.emit('BITWISE_OR', this.index, input);
         }
       } else if (state === 40) {
         this.state = START;

@@ -49,6 +49,7 @@ import type {
   SwitchStatement,
   TernaryExpression,
   ThrowStatement,
+  Type,
   UndefinedValue,
   WhileStatement,
   YieldExpression,
@@ -246,6 +247,14 @@ export default function walk(
     return walkTernaryExpression(node, visitor);
   } else if (node.kind === 'ThrowStatement') {
     return walkThrowStatement(node, visitor);
+  } else if (
+    node.kind === 'GenericType' ||
+    node.kind === 'NamedType' ||
+    node.kind === 'TupleType' ||
+    node.kind === 'UnionType'
+  ) {
+    // Using a single implementation (a no-op for now!) for all `Type` nodes.
+    return walkType(node, visitor);
   } else if (node.kind === 'UndefinedValue') {
     return walkUndefinedValue(node, visitor);
   } else if (node.kind === 'WhileStatement') {
@@ -350,6 +359,17 @@ function walkAssignmentStatement(
     assertIsExpression(newChild);
     newStatement.lhs = newChild;
     changed = true;
+  }
+  if (newStatement.type) {
+    newChild = walk(newStatement.type, visitor);
+    if (newChild === null) {
+      // TODO: remove type (can I mutate?)
+      changed = true;
+    } else if (newChild !== undefined) {
+      // TODO: replace type (can I mutate?)
+      // TODO: assertIsType
+      changed = true;
+    }
   }
   newChild = walk(newStatement.rhs, visitor);
   if (newChild === null) {
@@ -989,6 +1009,13 @@ function walkStringValue(
   _value: StringValue,
   _visitor: Visitor,
 ): Expression | null | undefined {
+  return undefined; // Unimplemented.
+}
+
+function walkType(
+  _type: Type,
+  _visitor: Visitor,
+): Type | null | undefined {
   return undefined; // Unimplemented.
 }
 

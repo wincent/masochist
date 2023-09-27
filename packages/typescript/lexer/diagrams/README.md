@@ -20,6 +20,11 @@
 ![BANG](./BANG-dark.svg#gh-dark-mode-only)
 ![BANG](./BANG-light.svg#gh-light-mode-only)
 
+## BITWISE_OR
+
+![BITWISE_OR](./BITWISE_OR-dark.svg#gh-dark-mode-only)
+![BITWISE_OR](./BITWISE_OR-light.svg#gh-light-mode-only)
+
 ## CLASS
 
 ![CLASS](./CLASS-dark.svg#gh-dark-mode-only)

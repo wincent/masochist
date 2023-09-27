@@ -150,7 +150,7 @@ const rules = [{
 }];
 const EOF = new Token('$', -1, -1, '');
 export default function parseSchema(input: string) {
-  const stack = [[null, 0]];
+  const stack: Array<[Production | Token | null, number]> = [[null, 0]];
   const lexer = new Lexer(input);
   let token = lexer.next() || EOF;
 
@@ -179,6 +179,8 @@ export default function parseSchema(input: string) {
       }
       const [, next] = stack[stack.length - 1];
       const target = gotos[next][production];
+      // TODO: "code as any" here makes last error go away
+      // ("spread argument must either have a tuple type or be passed to a rest parameter.")
       stack.push([code(...popped), target]);
     }
   }

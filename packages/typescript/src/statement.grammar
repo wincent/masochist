@@ -11,10 +11,12 @@
     ExportDefaultDeclaration,
     Expression,
     ExpressionStatement,
+    GenericType,
     GetAccessor,
     Identifier,
     MemberExpression,
     MethodDefinition,
+    NamedType,
     NewExpression,
     Node,
     NullValue,
@@ -26,6 +28,9 @@
     ReturnStatement,
     Statement,
     StringValue,
+    TupleType,
+    Type,
+    UnionType,
     WhileStatement,
   } from '@masochist/types';
 
@@ -45,6 +50,7 @@
   type ExpressionList = Array<Expression>;
   type ObjectPropertyList = Array<ObjectProperty>;
   type StatementList = Array<Statement>;
+  type TypeList = Array<Type>;
 
   type Production =
     | Node
@@ -61,6 +67,7 @@
 
 %token ASSIGN
 %token BANG
+%token BITWISE_OR
 %token CLASS
 %token COLON
 %token COMMA
@@ -104,7 +111,9 @@
 %token YIELD
 
 # Operator precedence (lowest to highest).
+%left COMMA
 %right ASSIGN
+%left BITWISE_OR
 %left LOGICAL_OR
 %left LOGICAL_AND
 %left EQUALS STRICT_EQUALS # TODO: !== and != as well
@@ -122,20 +131,38 @@ Statement → ExpressionStatement { $$ = $1; }
 Statement → ReturnStatement { $$ = $1; }
 Statement → WhileStatement { $$ = $1; }
 
-AssignmentStatement → CONST AssignmentExpression SEMICOLON {
+AssignmentStatement → CONST Expression COLON Type ASSIGN Expression SEMICOLON {
   $$ = {
     kind: 'AssignmentStatement',
     binding: 'const',
-    lhs: $2.lhs,
-    rhs: $2.rhs,
+    lhs: $2,
+    type: $4,
+    rhs: $6,
   };
 }
-AssignmentStatement → LET AssignmentExpression SEMICOLON {
+AssignmentStatement → CONST Expression ASSIGN Expression SEMICOLON {
+  $$ = {
+    kind: 'AssignmentStatement',
+    binding: 'const',
+    lhs: $2,
+    rhs: $4,
+  };
+}
+AssignmentStatement → LET Expression COLON Type ASSIGN Expression SEMICOLON {
   $$ = {
     kind: 'AssignmentStatement',
     binding: 'let',
-    lhs: $2.lhs,
-    rhs: $2.rhs,
+    lhs: $2,
+    type: $4,
+    rhs: $6,
+  };
+}
+AssignmentStatement → LET Expression ASSIGN Expression SEMICOLON {
+  $$ = {
+    kind: 'AssignmentStatement',
+    binding: 'let',
+    lhs: $2,
+    rhs: $4,
   };
 }
 AssignmentStatement → AssignmentExpression SEMICOLON {
@@ -364,6 +391,58 @@ StringValue → STRING_VALUE {
     kind: 'StringValue',
     value: $1.contents,
   };
+}
+
+Type → GenericType { $$ = $1; }
+Type → NamedType { $$ = $1; }
+Type → TupleType { $$ = $1; }
+Type → UnionType { $$ = $1; }
+
+GenericType → Identifier LESS_THAN TypeList GREATER_THAN {
+  $$ = {
+    kind: 'GenericType',
+    name: $1.name,
+    parameters: $3,
+  };
+}
+
+# Note: TypeList cannot be empty.
+TypeList → Type { $$ = [$1]; }
+TypeList → TypeList COMMA Type { $1.push($3); $$ = $1; }
+
+NamedType → Identifier {
+  $$ = {
+    kind: 'NamedType',
+    name: $1.name,
+  };
+}
+NamedType → NULL {
+  $$ = {
+    kind: 'NamedType',
+    name: $1.contents,
+  };
+}
+
+# For now, not allowing empty tuples.
+TupleType → OPENING_BRACKET TypeList CLOSING_BRACKET {
+  $$ = {
+    kind: 'TupleType',
+    elements: $2,
+  };
+}
+
+# Not handling anything like `(A | B) | (C | D)` (which would be `A | B | C | D`
+# anyway.
+UnionType → Type BITWISE_OR Type {
+  $$ = ($1.kind === 'UnionType')
+    ? {
+      kind: 'UnionType',
+      variants: [...$1.variants, $3],
+    }
+    : {
+      kind: 'UnionType',
+      variants: [$1, $3],
+    };
 }
 
 ExportDefaultDeclaration → EXPORT DEFAULT Declaration {

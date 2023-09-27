@@ -69,6 +69,7 @@ digraph finite_state_machine {
   node [color = "black", fontcolor = "black", style = "", shape = doublecircle, xlabel = "IDENTIFIER"]; 35;
   node [color = "black", fontcolor = "black", style = "", shape = doublecircle, xlabel = "IDENTIFIER"]; 36;
   node [color = "black", fontcolor = "black", style = "", shape = doublecircle, xlabel = "OPENING_BRACE"]; 37;
+  node [color = "black", fontcolor = "black", style = "", shape = doublecircle, xlabel = "BITWISE_OR"]; 38;
   node [color = "black", fontcolor = "black", style = "", shape = doublecircle, xlabel = "CLOSING_BRACE"]; 39;
   node [color = "black", fontcolor = "black", style = "", shape = doublecircle, xlabel = "BANG"]; 4;
   node [color = "black", fontcolor = "black", style = "", shape = doublecircle, xlabel = "STRING_VALUE"]; 40;

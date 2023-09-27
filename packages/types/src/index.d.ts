@@ -24,7 +24,7 @@ export type AssignmentStatement = {
   // TODO: support proper expressions here (eg. `this.foo` MemberExpression)
   // (ie. destructuring etc, but not _all_ expressions; eg PrimitiveValue)
   lhs: Expression;
-  type?: string;
+  type?: Type;
   rhs: Expression;
 };
 
@@ -275,7 +275,8 @@ export type Node =
   | ObjectProperty
   | Program
   | PropertyDeclaration
-  | Statement;
+  | Statement
+  | Type;
 
 export type NullValue = {
   kind: 'NullValue';
@@ -405,6 +406,37 @@ export type StringValue = {
 export type ThrowStatement = {
   kind: 'ThrowStatement';
   expression: Expression;
+};
+
+export type Type =
+  | GenericType
+  | NamedType
+  | TupleType
+  | UnionType;
+
+// eg. T<K>
+export type GenericType = {
+  kind: 'GenericType';
+  name: string;
+  parameters: Array<Type>;
+};
+
+// eg. T
+export type NamedType = {
+  kind: 'NamedType';
+  name: string;
+};
+
+// eg. [T, U]
+export type TupleType = {
+  kind: 'TupleType';
+  elements: Array<Type>;
+};
+
+// eg. T | U
+export type UnionType = {
+  kind: 'UnionType';
+  variants: Array<Type>;
 };
 
 export type WhileStatement = {

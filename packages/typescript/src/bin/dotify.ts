@@ -27,6 +27,7 @@ import path from 'path';
 import {
   ASSIGN,
   BANG,
+  BITWISE_OR,
   CLASS,
   CLOSING_BRACE,
   CLOSING_BRACKET,
@@ -108,6 +109,7 @@ async function main() {
     // Individual machines.
     ASSIGN: machine(ASSIGN),
     BANG: machine(BANG),
+    BITWISE_OR: machine(BITWISE_OR),
     CLASS: machine(CLASS),
     CLOSING_BRACE: machine(CLOSING_BRACE),
     CLOSING_BRACKET: machine(CLOSING_BRACKET),

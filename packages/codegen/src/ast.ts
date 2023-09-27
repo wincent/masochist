@@ -42,6 +42,7 @@ import type {
   ReturnStatement,
   Statement,
   StringValue,
+  Type,
   UndefinedValue,
   WhileStatement,
 } from '@masochist/types';
@@ -92,7 +93,7 @@ const ast = {
     binding: 'const' | 'let' | 'var' | null,
     lhs: string,
     rhs: Expression | string | number,
-    options?: {type?: string},
+    options?: {type?: Type},
   ): AssignmentStatement {
     if (typeof rhs === 'string') {
       return {

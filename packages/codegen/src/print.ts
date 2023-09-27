@@ -11,6 +11,7 @@ import type {
   PropertyDeclaration,
   Statement,
   SwitchCase,
+  Type,
 } from '@masochist/types';
 
 const TAB_WIDTH = 2;
@@ -277,7 +278,7 @@ function printStatement(statement: Statement, indent: number): string {
       printIndent(indent) +
       binding +
       printExpression(statement.lhs, indent + 1) +
-      (statement.type ? `: ${statement.type}` : '') +
+      (statement.type ? `: ${printType(statement.type, indent + 1)}` : '') +
       ' = ' +
       printExpression(statement.rhs, indent + 1) +
       ';\n'
@@ -492,4 +493,26 @@ function printSwitchCase(switchCase: SwitchCase, indent: number): string {
       })
       .join('')
   );
+}
+
+function printType(type: Type, indent: number): string {
+  if (type.kind === 'GenericType') {
+    return type.name + '<' + type.parameters
+      .map((parameter) => printType(parameter, indent + 1))
+      .join(', ') +
+      '>';
+  } else if (type.kind === 'NamedType') {
+    return type.name;
+  } else if (type.kind === 'TupleType') {
+    return '[' + type.elements
+      .map((element) => printType(element, indent + 1))
+      .join(', ') +
+      ']';
+  } else if (type.kind === 'UnionType') {
+    return type.variants
+      .map((variant) => printType(variant, indent + 1))
+      .join(' | ');
+  } else {
+    unreachable(type);
+  }
 }

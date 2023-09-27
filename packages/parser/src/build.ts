@@ -164,7 +164,16 @@ export default function build(
           );
         }),
       ),
-      {type: 'Array<Actions>'},
+      {
+        type: {
+          kind: 'GenericType',
+          name: 'Array',
+          parameters: [{
+            kind: 'NamedType',
+            name: 'Actions',
+          }],
+        },
+      },
     ),
     // TODO: "as const" this (can't hurt, might help)
     ast.assign(
@@ -184,7 +193,16 @@ export default function build(
           );
         }),
       ),
-      {type: 'Array<Gotos>'},
+      {
+        type: {
+          kind: 'GenericType',
+          name: 'Array',
+          parameters: [{
+            kind: 'NamedType',
+            name: 'Gotos',
+          }],
+        },
+      },
     ),
     // TODO: "as const" this (can't hurt, might help)
     ast.assign(
@@ -213,15 +231,15 @@ export default function build(
     ast.default(
       ast.function({
         name,
+        // TODO: use real Type objects in Argument too
         arguments: ['input: string'],
         // TODO: return type Production
         // (need to include assertIsProduction in order for that to work)
         // or return type $StartingProduction
         // (need assertion for that too)
         body: [
-          // TODO: const stack: Array<[Production | Token | null, number]> = [[null, 0]];
           ...ast.statements(`
-            const stack = [[null, 0]];
+            const stack: Array<[Production | Token | null, number]> = [[null, 0]];
             const lexer = new Lexer(input);
             let token = lexer.next() || EOF;
           `),
@@ -251,6 +269,8 @@ export default function build(
                 }
                 const [, next] = stack[stack.length - 1];
                 const target = gotos[next][production];
+                // TODO: "code as any" here makes last error go away
+                // ("spread argument must either have a tuple type or be passed to a rest parameter.")
                 stack.push([code(...popped), target]);
               }
             }

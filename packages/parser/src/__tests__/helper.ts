@@ -12,6 +12,7 @@ import type {
   AssignmentStatement,
   DocComment,
   ExportDefaultDeclaration,
+  FunctionDeclaration,
   ImportStatement,
   RawStatement,
 } from '@masochist/types';
@@ -81,6 +82,19 @@ export async function getParser(
       }
     },
 
+    // Strip function return types; eg:
+    // `function r3(): StatementList { ... }` → `function r3() { ... }`
+    FunctionDeclaration(declaration: FunctionDeclaration) {
+      if (declaration.type) {
+        return {
+          ...declaration,
+          type: undefined,
+        };
+      } else {
+        return undefined; // Avoid TS7030: Not all code paths return a value.
+      }
+    },
+
     // Remove `import {Lexer, Token} from './lex'` statement.
     ImportStatement(_statement: ImportStatement) {
       return null;
@@ -88,15 +102,19 @@ export async function getParser(
 
     // Brutal hack to strip out a type annotation and a non-null assertion in
     // the middle of a multi-line RawStatement.
-    // TODO: once this raw statement is gone, this will need to change
     RawStatement(statement: RawStatement) {
       if (statement.statement.match(/const popped:/)) {
+        // TODO: once this raw statement is gone, this will need to change
         return {
           kind: 'RawStatement',
           statement: statement.statement
             .replace(/const popped(:\s*.+\s*=)/, 'const popped =')
             .replace('!;', ';'),
         };
+      } else if (statement.statement.match(/\bimport type\b/)) {
+        // Skip the entire prologue; it's only for types.
+        // TODO: actually flag the prologue with a marker
+        return null;
       } else {
         return undefined; // Avoid TS7030: Not all code paths return a value.
       }
