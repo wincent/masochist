@@ -839,7 +839,9 @@ describe('parseStatement()', async () => {
             const lexer = new Lexer(input);
             let token = lexer.next() || EOF;
             while (true) {
-              throw new Error('syntax error at symbol ' + token.name);
+              if (!action) {
+                throw new Error('syntax error at symbol ' + token.name);
+              }
               return tree;
               stack.push([token, action.state]);
               token = lexer.next() || EOF;
@@ -848,264 +850,277 @@ describe('parseStatement()', async () => {
             }
         `),
         ).toEqual([{
-          'kind': 'AssignmentStatement',
-          'binding': 'const',
-          'lhs': {
-            'kind': 'Identifier',
-            'name': 'stack',
+          kind: 'AssignmentStatement',
+          binding: 'const',
+          lhs: {
+            kind: 'Identifier',
+            name: 'stack',
           },
-          'type': {
-            'kind': 'GenericType',
-            'name': 'Array',
-            'parameters': [{
-              'kind': 'TupleType',
-              'elements': [{
-                'kind': 'UnionType',
-                'variants': [{
-                  'kind': 'NamedType',
-                  'name': 'Production',
+          type: {
+            kind: 'GenericType',
+            name: 'Array',
+            parameters: [{
+              kind: 'TupleType',
+              elements: [{
+                kind: 'UnionType',
+                variants: [{
+                  kind: 'NamedType',
+                  name: 'Production',
                 }, {
-                  'kind': 'NamedType',
-                  'name': 'Token',
+                  kind: 'NamedType',
+                  name: 'Token',
                 }, {
-                  'kind': 'NamedType',
-                  'name': 'null',
+                  kind: 'NamedType',
+                  name: 'null',
                 }],
               }, {
-                'kind': 'NamedType',
-                'name': 'number',
+                kind: 'NamedType',
+                name: 'number',
               }],
             }],
           },
-          'rhs': {
-            'kind': 'ArrayValue',
-            'items': [{
-              'kind': 'ArrayValue',
-              'items': [{
-                'kind': 'NullValue',
+          rhs: {
+            kind: 'ArrayValue',
+            items: [{
+              kind: 'ArrayValue',
+              items: [{
+                kind: 'NullValue',
               }, {
-                'kind': 'NumberValue',
-                'value': 0,
-                'base': 10,
+                kind: 'NumberValue',
+                value: 0,
+                base: 10,
               }],
             }],
           },
         }, {
-          'kind': 'AssignmentStatement',
-          'binding': 'const',
-          'lhs': {
-            'kind': 'Identifier',
-            'name': 'lexer',
+          kind: 'AssignmentStatement',
+          binding: 'const',
+          lhs: {
+            kind: 'Identifier',
+            name: 'lexer',
           },
-          'rhs': {
-            'kind': 'NewExpression',
-            'object': {
-              'kind': 'Identifier',
-              'name': 'Lexer',
+          rhs: {
+            kind: 'NewExpression',
+            object: {
+              kind: 'Identifier',
+              name: 'Lexer',
             },
-            'arguments': [{
-              'kind': 'Identifier',
-              'name': 'input',
+            arguments: [{
+              kind: 'Identifier',
+              name: 'input',
             }],
           },
         }, {
-          'kind': 'AssignmentStatement',
-          'binding': 'let',
-          'lhs': {
-            'kind': 'Identifier',
-            'name': 'token',
+          kind: 'AssignmentStatement',
+          binding: 'let',
+          lhs: {
+            kind: 'Identifier',
+            name: 'token',
           },
-          'rhs': {
-            'kind': 'BinaryExpression',
-            'lhs': {
-              'kind': 'CallExpression',
-              'callee': {
-                'kind': 'MemberExpression',
-                'object': {
-                  'kind': 'Identifier',
-                  'name': 'lexer',
+          rhs: {
+            kind: 'BinaryExpression',
+            lhs: {
+              kind: 'CallExpression',
+              callee: {
+                kind: 'MemberExpression',
+                object: {
+                  kind: 'Identifier',
+                  name: 'lexer',
                 },
-                'property': {
-                  'kind': 'Identifier',
-                  'name': 'next',
+                property: {
+                  kind: 'Identifier',
+                  name: 'next',
                 },
               },
-              'arguments': [],
+              arguments: [],
             },
-            'operator': '||',
-            'rhs': {
-              'kind': 'Identifier',
-              'name': 'EOF',
+            operator: '||',
+            rhs: {
+              kind: 'Identifier',
+              name: 'EOF',
             },
           },
         }, {
-          'kind': 'WhileStatement',
-          'condition': {
-            'kind': 'BooleanValue',
-            'value': true,
+          kind: 'WhileStatement',
+          condition: {
+            kind: 'BooleanValue',
+            value: true,
           },
-          'block': [{
-            'kind': 'ThrowStatement',
-            'expression': {
-              'kind': 'NewExpression',
-              'object': {
-                'kind': 'Identifier',
-                'name': 'Error',
-              },
-              'arguments': [{
-                'kind': 'BinaryExpression',
-                'lhs': {
-                  'kind': 'StringValue',
-                  'value': "'syntax error at symbol '",
+          block: [{
+            kind: 'IfStatement',
+            consequents: [{
+              kind: 'Consequent',
+              condition: {
+                kind: 'LogicalNotExpression',
+                operand: {
+                  kind: 'Identifier',
+                  name: 'action',
                 },
-                'operator': '+',
-                'rhs': {
-                  'kind': 'MemberExpression',
-                  'object': {
-                    'kind': 'Identifier',
-                    'name': 'token',
+              },
+              block: [{
+                kind: 'ThrowStatement',
+                expression: {
+                  kind: 'NewExpression',
+                  object: {
+                    kind: 'Identifier',
+                    name: 'Error',
                   },
-                  'property': {
-                    'kind': 'Identifier',
-                    'name': 'name',
-                  },
+                  arguments: [{
+                    kind: 'BinaryExpression',
+                    lhs: {
+                      kind: 'StringValue',
+                      value: "'syntax error at symbol '",
+                    },
+                    operator: '+',
+                    rhs: {
+                      kind: 'MemberExpression',
+                      object: {
+                        kind: 'Identifier',
+                        name: 'token',
+                      },
+                      property: {
+                        kind: 'Identifier',
+                        name: 'name',
+                      },
+                    },
+                  }],
                 },
               }],
+            }],
+          }, {
+            kind: 'ReturnStatement',
+            expression: {
+              kind: 'Identifier',
+              name: 'tree',
             },
           }, {
-            'kind': 'ReturnStatement',
-            'expression': {
-              'kind': 'Identifier',
-              'name': 'tree',
-            },
-          }, {
-            'kind': 'ExpressionStatement',
-            'expression': {
-              'kind': 'CallExpression',
-              'callee': {
-                'kind': 'MemberExpression',
-                'object': {
-                  'kind': 'Identifier',
-                  'name': 'stack',
+            kind: 'ExpressionStatement',
+            expression: {
+              kind: 'CallExpression',
+              callee: {
+                kind: 'MemberExpression',
+                object: {
+                  kind: 'Identifier',
+                  name: 'stack',
                 },
-                'property': {
-                  'kind': 'Identifier',
-                  'name': 'push',
+                property: {
+                  kind: 'Identifier',
+                  name: 'push',
                 },
               },
-              'arguments': [{
-                'kind': 'ArrayValue',
-                'items': [{
-                  'kind': 'Identifier',
-                  'name': 'token',
+              arguments: [{
+                kind: 'ArrayValue',
+                items: [{
+                  kind: 'Identifier',
+                  name: 'token',
                 }, {
-                  'kind': 'MemberExpression',
-                  'object': {
-                    'kind': 'Identifier',
-                    'name': 'action',
+                  kind: 'MemberExpression',
+                  object: {
+                    kind: 'Identifier',
+                    name: 'action',
                   },
-                  'property': {
-                    'kind': 'Identifier',
-                    'name': 'state',
+                  property: {
+                    kind: 'Identifier',
+                    name: 'state',
                   },
                 }],
               }],
             },
           }, {
-            'kind': 'AssignmentStatement',
-            'binding': null,
-            'lhs': {
-              'kind': 'Identifier',
-              'name': 'token',
+            kind: 'AssignmentStatement',
+            binding: null,
+            lhs: {
+              kind: 'Identifier',
+              name: 'token',
             },
-            'rhs': {
-              'kind': 'BinaryExpression',
-              'lhs': {
-                'kind': 'CallExpression',
-                'callee': {
-                  'kind': 'MemberExpression',
-                  'object': {
-                    'kind': 'Identifier',
-                    'name': 'lexer',
+            rhs: {
+              kind: 'BinaryExpression',
+              lhs: {
+                kind: 'CallExpression',
+                callee: {
+                  kind: 'MemberExpression',
+                  object: {
+                    kind: 'Identifier',
+                    name: 'lexer',
                   },
-                  'property': {
-                    'kind': 'Identifier',
-                    'name': 'next',
+                  property: {
+                    kind: 'Identifier',
+                    name: 'next',
                   },
                 },
-                'arguments': [],
+                arguments: [],
               },
-              'operator': '||',
-              'rhs': {
-                'kind': 'Identifier',
-                'name': 'EOF',
+              operator: '||',
+              rhs: {
+                kind: 'Identifier',
+                name: 'EOF',
               },
             },
           }, {
-            'kind': 'AssignmentStatement',
-            'binding': 'const',
-            'lhs': {
-              'kind': 'Identifier',
-              'name': 'popped',
+            kind: 'AssignmentStatement',
+            binding: 'const',
+            lhs: {
+              kind: 'Identifier',
+              name: 'popped',
             },
-            'type': {
-              'kind': 'GenericType',
-              'name': 'Array',
-              'parameters': [{
-                'kind': 'UnionType',
-                'variants': [{
-                  'kind': 'NamedType',
-                  'name': 'Production',
+            type: {
+              kind: 'GenericType',
+              name: 'Array',
+              parameters: [{
+                kind: 'UnionType',
+                variants: [{
+                  kind: 'NamedType',
+                  name: 'Production',
                 }, {
-                  'kind': 'NamedType',
-                  'name': 'Token',
+                  kind: 'NamedType',
+                  name: 'Token',
                 }, {
-                  'kind': 'NamedType',
-                  'name': 'null',
+                  kind: 'NamedType',
+                  name: 'null',
                 }],
               }],
             },
-            'rhs': {
-              'kind': 'ArrayValue',
-              'items': [],
+            rhs: {
+              kind: 'ArrayValue',
+              items: [],
             },
           }, {
-            'kind': 'ExpressionStatement',
-            'expression': {
-              'kind': 'CallExpression',
-              'callee': {
-                'kind': 'MemberExpression',
-                'object': {
-                  'kind': 'Identifier',
-                  'name': 'stack',
+            kind: 'ExpressionStatement',
+            expression: {
+              kind: 'CallExpression',
+              callee: {
+                kind: 'MemberExpression',
+                object: {
+                  kind: 'Identifier',
+                  name: 'stack',
                 },
-                'property': {
-                  'kind': 'Identifier',
-                  'name': 'push',
+                property: {
+                  kind: 'Identifier',
+                  name: 'push',
                 },
               },
-              'arguments': [{
-                'kind': 'ArrayValue',
-                'items': [{
-                  'kind': 'CallExpression',
-                  'callee': {
-                    'kind': 'Identifier',
-                    'name': 'code',
-                    'cast': {
-                      'kind': 'NamedType',
-                      'name': 'any',
+              arguments: [{
+                kind: 'ArrayValue',
+                items: [{
+                  kind: 'CallExpression',
+                  callee: {
+                    kind: 'Identifier',
+                    name: 'code',
+                    cast: {
+                      kind: 'NamedType',
+                      name: 'any',
                     },
                   },
-                  'arguments': [{
+                  arguments: [{
                     kind: 'SpreadElement',
                     expression: {
-                      'kind': 'Identifier',
-                      'name': 'popped',
+                      kind: 'Identifier',
+                      name: 'popped',
                     },
                   }],
                 }, {
-                  'kind': 'Identifier',
-                  'name': 'target',
+                  kind: 'Identifier',
+                  name: 'target',
                 }],
               }],
             },

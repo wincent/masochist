@@ -90,7 +90,7 @@ export default async function benchmark(callback: () => void) {
 
   const time = {
     'warm-up': {duration: b - a},
-    run: {duration: d - c},
+    'run': {duration: d - c},
   };
 
   print('\nMemory usage:\n\n');

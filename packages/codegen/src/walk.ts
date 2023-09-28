@@ -71,86 +71,86 @@ type Visitor = {
   //
   // TODO: later on, consider doing similar things for `Expression` subtypes.
 
-  Argument?: (argument: Argument) => Argument | null | undefined;
+  'Argument'?: (argument: Argument) => Argument | null | undefined;
   ['Argument:exit']?: (argument: Argument) => Argument | null | undefined;
 
-  AssignmentStatement?: (
+  'AssignmentStatement'?: (
     assignment: AssignmentStatement,
   ) => Statement | null | undefined;
   ['AssignmentStatement:exit']?: (
     assignment: AssignmentStatement,
   ) => Statement | null | undefined;
 
-  ClassDeclaration?: (
+  'ClassDeclaration'?: (
     declaration: ClassDeclaration,
   ) => Statement | null | undefined;
   ['ClassDeclaration:exit']?: (
     declaration: ClassDeclaration,
   ) => Statement | null | undefined;
 
-  ClassExpression?: (
+  'ClassExpression'?: (
     expression: ClassExpression,
   ) => Expression | null | undefined;
   ['ClassExpression:exit']?: (
     expression: ClassExpression,
   ) => Expression | null | undefined;
 
-  DocComment?: (comment: DocComment) => Statement | null | undefined;
+  'DocComment'?: (comment: DocComment) => Statement | null | undefined;
   ['DocComment:exit']?: (comment: DocComment) => Statement | null | undefined;
 
-  ExportDefaultDeclaration?: (
+  'ExportDefaultDeclaration'?: (
     declaration: ExportDefaultDeclaration,
   ) => Statement | null | undefined;
   ['ExportDefaultDeclaration:exit']?: (
     declaration: ExportDefaultDeclaration,
   ) => Statement | null | undefined;
 
-  ExportNamedDeclaration?: (
+  'ExportNamedDeclaration'?: (
     declaration: ExportNamedDeclaration,
   ) => Statement | null | undefined;
   ['ExportNamedDeclaration:exit']?: (
     declaration: ExportNamedDeclaration,
   ) => Statement | null | undefined;
 
-  FunctionDeclaration?: (
+  'FunctionDeclaration'?: (
     declaration: FunctionDeclaration,
   ) => Statement | null | undefined;
   ['FunctionDeclaration:exit']?: (
     declaration: FunctionDeclaration,
   ) => Statement | null | undefined;
 
-  FunctionExpression?: (
+  'FunctionExpression'?: (
     expression: FunctionExpression,
   ) => FunctionExpression | null | undefined;
   ['FunctionExpression:exit']?: (
     expression: FunctionExpression,
   ) => FunctionExpression | null | undefined;
 
-  ImportStatement?: (
+  'ImportStatement'?: (
     statement: ImportStatement,
   ) => Statement | null | undefined;
   ['ImportStatement:exit']?: (
     statement: ImportStatement,
   ) => Statement | null | undefined;
 
-  MethodDefinition?: (
+  'MethodDefinition'?: (
     definition: MethodDefinition,
   ) => MethodDefinition | null | undefined;
   ['MethodDefinition:exit']?: (
     definition: MethodDefinition,
   ) => MethodDefinition | null | undefined;
 
-  Program?: (program: Program) => Program | null | undefined;
+  'Program'?: (program: Program) => Program | null | undefined;
   ['Program:exit']?: (program: Program) => Program | null | undefined;
 
-  PropertyDeclaration?: (
+  'PropertyDeclaration'?: (
     declaration: PropertyDeclaration,
   ) => PropertyDeclaration | null | undefined;
   ['PropertyDeclaration:exit']?: (
     declaration: PropertyDeclaration,
   ) => PropertyDeclaration | null | undefined;
 
-  RawStatement?: (statement: RawStatement) => Statement | null | undefined;
+  'RawStatement'?: (statement: RawStatement) => Statement | null | undefined;
   ['RawStatement:exit']?: (
     statement: RawStatement,
   ) => Statement | null | undefined;

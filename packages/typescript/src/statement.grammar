@@ -14,6 +14,8 @@
     GenericType,
     GetAccessor,
     Identifier,
+    IfStatement,
+    LogicalNotExpression,
     MemberExpression,
     MethodDefinition,
     NamedType,
@@ -133,6 +135,7 @@ Statement → AssignmentStatement { $$ = $1; }
 Statement → ClassDeclaration { $$ = $1; }
 Statement → ExportDefaultDeclaration { $$ = $1; }
 Statement → ExpressionStatement { $$ = $1; }
+Statement → IfStatement { $$ = $1; }
 Statement → ReturnStatement { $$ = $1; }
 Statement → ThrowStatement { $$ = $1; }
 Statement → WhileStatement { $$ = $1; }
@@ -217,6 +220,7 @@ Expression → Identifier AS Type {
 }
 Expression → Identifier { $$ = $1; }
 
+Expression → LogicalNotExpression { $$ = $1; }
 Expression → MemberExpression { $$ = $1; }
 Expression → NewExpression { $$ = $1; }
 Expression → ObjectValue { $$ = $1; }
@@ -314,6 +318,13 @@ SpreadElement → REST Expression {
   $$ = {
     kind: 'SpreadElement',
     expression: $2,
+  };
+}
+
+LogicalNotExpression → BANG Expression {
+  $$ = {
+    kind: 'LogicalNotExpression',
+    operand: $2,
   };
 }
 
@@ -562,6 +573,20 @@ ExpressionStatement → Expression SEMICOLON {
     expression: $1,
   };
 }
+
+IfStatement →
+  IF OPENING_PAREN Expression CLOSING_PAREN OPENING_BRACE
+    StatementList
+  CLOSING_BRACE {
+    $$ = {
+      kind: 'IfStatement',
+      consequents: [{
+        kind: 'Consequent',
+        condition: $3,
+        block: $6,
+      }],
+    };
+  }
 
 ThrowStatement → THROW Expression SEMICOLON {
   $$ = {

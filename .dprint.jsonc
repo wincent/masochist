@@ -22,6 +22,7 @@
     "module.sortImportDeclarations": "caseSensitive",
     "spaceSurroundingProperties": false,
     "quoteStyle": "preferSingle",
+    "quoteProps": "consistent",
     "whileStatement.useBraces": "always"
   },
   "json": {
