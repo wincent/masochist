@@ -45,6 +45,7 @@ export const NEW = 'new';
 export const NULL = 'null';
 export const RETURN = 'return';
 export const THIS = 'this';
+export const THROW = 'throw';
 export const TRUE = 'true';
 export const WHILE = 'while';
 export const YIELD = 'yield';
@@ -126,6 +127,7 @@ export default union({
   NULL,
   RETURN,
   THIS,
+  THROW,
   TRUE,
   WHILE,
   YIELD,

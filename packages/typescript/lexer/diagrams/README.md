@@ -220,6 +220,11 @@
 ![THIS](./THIS-dark.svg#gh-dark-mode-only)
 ![THIS](./THIS-light.svg#gh-light-mode-only)
 
+## THROW
+
+![THROW](./THROW-dark.svg#gh-dark-mode-only)
+![THROW](./THROW-light.svg#gh-light-mode-only)
+
 ## TRUE
 
 ![TRUE](./TRUE-dark.svg#gh-dark-mode-only)

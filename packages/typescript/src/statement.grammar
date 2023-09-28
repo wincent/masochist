@@ -108,6 +108,7 @@
 %token STRICT_EQUALS
 %token STRING_VALUE
 %token THIS
+%token THROW
 %token TRUE
 %token WHILE
 %token YIELD
@@ -131,6 +132,7 @@ Statement → ClassDeclaration { $$ = $1; }
 Statement → ExportDefaultDeclaration { $$ = $1; }
 Statement → ExpressionStatement { $$ = $1; }
 Statement → ReturnStatement { $$ = $1; }
+Statement → ThrowStatement { $$ = $1; }
 Statement → WhileStatement { $$ = $1; }
 
 # TODO: disallow some Expression variants here
@@ -547,6 +549,13 @@ ExpressionStatement → Expression SEMICOLON {
   $$ = {
     kind: 'ExpressionStatement',
     expression: $1,
+  };
+}
+
+ThrowStatement → THROW Expression SEMICOLON {
+  $$ = {
+    kind: 'ThrowStatement',
+    expression: $2,
   };
 }
 

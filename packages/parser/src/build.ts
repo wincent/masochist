@@ -121,7 +121,7 @@ export default function build(
           type: emitTypes ?
             (
               // Dummy start rule for augmented grammar will return nothing.
-              // All other rules return the type of the prgouction.
+              // All other rules return the type of the production.
               rule.lhs.endsWith("'") ? 'null' : rule.lhs
             ) :
             undefined,
@@ -219,16 +219,7 @@ export default function build(
         }),
       ),
     ),
-    ast.const(
-      'EOF',
-      ast.new(
-        'Token',
-        ast.string('$'),
-        ast.number(-1),
-        ast.number(-1),
-        ast.string(''),
-      ),
-    ),
+    ...ast.statements("const EOF = new Token('$', -1, -1, '');"),
     ast.default(
       ast.function({
         name,
