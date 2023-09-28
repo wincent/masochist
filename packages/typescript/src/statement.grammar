@@ -26,8 +26,10 @@
     PrimitiveValue,
     PropertyDeclaration,
     ReturnStatement,
+    SpreadElement,
     Statement,
     StringValue,
+    ThrowStatement,
     TupleType,
     Type,
     UnionType,
@@ -47,7 +49,7 @@
     | GetAccessor
     | MethodDefinition
     | PropertyDeclaration;
-  type ExpressionList = Array<Expression>;
+  type ExpressionList = Array<Expression | SpreadElement>;
   type ObjectPropertyList = Array<ObjectProperty>;
   type StatementList = Array<Statement>;
   type TypeList = Array<Type>;
@@ -303,8 +305,17 @@ CallExpression → Expression OPENING_PAREN ExpressionList CLOSING_PAREN {
 
 # TODO: supporting trailing comma at end of expression list
 ExpressionList → Expression { $$ = [$1]; }
+ExpressionList → SpreadElement { $$ = [$1]; }
 ExpressionList → ExpressionList COMMA Expression { $1.push($3); $$ = $1; }
+ExpressionList → ExpressionList COMMA SpreadElement { $1.push($3); $$ = $1; }
 ExpressionList → ε { $$ = []; }
+
+SpreadElement → REST Expression {
+  $$ = {
+    kind: 'SpreadElement',
+    expression: $2,
+  };
+}
 
 MemberExpression → Expression DOT Identifier {
   $$ = {

@@ -387,9 +387,7 @@ describe('parseStatement()', async () => {
       });
 
       it('parses a cast', () => {
-        // TODO: support rest params in CallExpression, so that I can use
-        // "...popped" in the example, like I do in the generated parser.
-        const input = 'stack.push([(code as any)(popped), target]);';
+        const input = 'stack.push([(code as any)(...popped), target]);';
         expect(parseStatement(input)).toEqual([{
           kind: 'ExpressionStatement',
           expression: {
@@ -418,8 +416,11 @@ describe('parseStatement()', async () => {
                   },
                 },
                 arguments: [{
-                  kind: 'Identifier',
-                  name: 'popped',
+                  kind: 'SpreadElement',
+                  expression: {
+                    kind: 'Identifier',
+                    name: 'popped',
+                  },
                 }],
               }, {
                 kind: 'Identifier',
@@ -843,7 +844,7 @@ describe('parseStatement()', async () => {
               stack.push([token, action.state]);
               token = lexer.next() || EOF;
               const popped: Array<Production | Token | null> = [];
-              stack.push([(code as any)(popped), target]);
+              stack.push([(code as any)(...popped), target]);
             }
         `),
         ).toEqual([{
@@ -1096,8 +1097,11 @@ describe('parseStatement()', async () => {
                     },
                   },
                   'arguments': [{
-                    'kind': 'Identifier',
-                    'name': 'popped',
+                    kind: 'SpreadElement',
+                    expression: {
+                      'kind': 'Identifier',
+                      'name': 'popped',
+                    },
                   }],
                 }, {
                   'kind': 'Identifier',

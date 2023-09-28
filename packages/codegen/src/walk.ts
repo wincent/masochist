@@ -44,6 +44,7 @@ import type {
   RawExpression,
   RawStatement,
   ReturnStatement,
+  SpreadElement,
   Statement,
   StringValue,
   SwitchStatement,
@@ -239,6 +240,8 @@ export default function walk(
     return walkRawExpression(node, visitor);
   } else if (node.kind === 'RawStatement') {
     return walkRawStatement(node, visitor);
+  } else if (node.kind === 'SpreadElement') {
+    return walkSpreadElement(node, visitor);
   } else if (node.kind === 'StringValue') {
     return walkStringValue(node, visitor);
   } else if (node.kind === 'SwitchStatement') {
@@ -1003,6 +1006,13 @@ function walkPropertyDeclaration(
   } else {
     return finalDeclaration;
   }
+}
+
+function walkSpreadElement(
+  _element: SpreadElement,
+  _visitor: Visitor,
+): Expression | SpreadElement | null | undefined {
+  return undefined; // Unimplemented.
 }
 
 function walkStringValue(

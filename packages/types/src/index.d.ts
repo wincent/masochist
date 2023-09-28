@@ -15,7 +15,7 @@ export type Argument = {
 
 export type ArrayValue = {
   kind: 'ArrayValue';
-  items: Array<Expression>;
+  items: Array<Expression | SpreadElement>;
 };
 
 export type AssignmentStatement = {
@@ -71,7 +71,7 @@ export type BreakStatement = {
 export type CallExpression = {
   kind: 'CallExpression';
   callee: Expression;
-  arguments: Array<Expression>;
+  arguments: Array<Expression | SpreadElement>;
 };
 
 export type ClassDeclaration = {
@@ -172,6 +172,13 @@ export type FunctionExpression = {
   type?: string;
 };
 
+// eg. T<K>
+export type GenericType = {
+  kind: 'GenericType';
+  name: string;
+  parameters: Array<Type>;
+};
+
 // TODO: instead of name: string, allow Expression (because you can write `get
 // ['somethingComputed']() { ... }` too).
 export type GetAccessor = {
@@ -264,10 +271,16 @@ export type MethodDefinition = {
   value: FunctionExpression;
 };
 
+// eg. T
+export type NamedType = {
+  kind: 'NamedType';
+  name: string;
+};
+
 export type NewExpression = {
   kind: 'NewExpression';
   object: Expression;
-  arguments: Array<Expression>;
+  arguments: Array<Expression | SpreadElement>;
 };
 
 export type Node =
@@ -278,6 +291,7 @@ export type Node =
   | ObjectProperty
   | Program
   | PropertyDeclaration
+  | SpreadElement
   | Statement
   | Type;
 
@@ -349,6 +363,11 @@ export type ReturnStatement = {
   expression?: Expression;
 };
 
+export type SpreadElement = {
+  kind: 'SpreadElement';
+  expression: Expression;
+};
+
 // Note that DocComment and LineComment could technically appear anywhere,
 // but we only allow them in statement positions.
 export type Statement =
@@ -411,30 +430,17 @@ export type ThrowStatement = {
   expression: Expression;
 };
 
-export type Type =
-  | GenericType
-  | NamedType
-  | TupleType
-  | UnionType;
-
-// eg. T<K>
-export type GenericType = {
-  kind: 'GenericType';
-  name: string;
-  parameters: Array<Type>;
-};
-
-// eg. T
-export type NamedType = {
-  kind: 'NamedType';
-  name: string;
-};
-
 // eg. [T, U]
 export type TupleType = {
   kind: 'TupleType';
   elements: Array<Type>;
 };
+
+export type Type =
+  | GenericType
+  | NamedType
+  | TupleType
+  | UnionType;
 
 // eg. T | U
 export type UnionType = {

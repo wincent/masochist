@@ -9,6 +9,7 @@ import type {
   MethodDefinition,
   Program,
   PropertyDeclaration,
+  SpreadElement,
   Statement,
   SwitchCase,
   Type,
@@ -71,7 +72,10 @@ function printClass(
   );
 }
 
-function printExpression(expression: Expression, indent: number): string {
+function printExpression(
+  expression: Expression | SpreadElement,
+  indent: number,
+): string {
   if (expression.kind === 'ArrayValue') {
     return (
       '[\n' +
@@ -202,6 +206,8 @@ function printExpression(expression: Expression, indent: number): string {
     );
   } else if (expression.kind === 'RawExpression') {
     return expression.expression;
+  } else if (expression.kind === 'SpreadElement') {
+    return '...' + printExpression(expression.expression, indent);
   } else if (expression.kind === 'StringValue') {
     return expression.value;
   } else if (expression.kind === 'TernaryExpression') {
