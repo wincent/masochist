@@ -261,7 +261,6 @@ export default function build(
                 stack.push([token, action.state]);
                 token = lexer.next() || EOF;
               } else if (action.kind === 'Reduce') {
-                // TODO: instead of pop, set length?
                 const {production, pop, action: code} = rules[action.rule];
                 const popped: Array<Production | Token | null> = [];
                 for (let i = 0; i < pop; i++) {
