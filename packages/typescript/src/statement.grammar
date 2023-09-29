@@ -13,6 +13,7 @@
     ExportDefaultDeclaration,
     Expression,
     ExpressionStatement,
+    ForStatement,
     GenericType,
     GetAccessor,
     Identifier,
@@ -41,6 +42,8 @@
     TupleType,
     Type,
     UnionType,
+    VariableDeclaration,
+    VariableDeclarator,
     WhileStatement,
   } from '@masochist/types';
 
@@ -63,6 +66,7 @@
   type ObjectPropertyList = Array<ObjectProperty>;
   type StatementList = Array<Statement>;
   type TypeList = Array<Type>;
+  type VariableDeclaratorList = Array<VariableDeclarator>;
 
   type Production =
     | Node
@@ -145,6 +149,7 @@ Statement → AssignmentStatement { $$ = $1; }
 Statement → ClassDeclaration { $$ = $1; }
 Statement → ExportDefaultDeclaration { $$ = $1; }
 Statement → ExpressionStatement { $$ = $1; }
+Statement → ForStatement { $$ = $1; }
 Statement → IfStatement { $$ = $1; }
 Statement → ReturnStatement { $$ = $1; }
 Statement → ThrowStatement { $$ = $1; }
@@ -271,6 +276,38 @@ AssignmentExpression → Expression ASSIGN Expression {
   };
 }
 
+BinaryExpression → Expression GREATER_THAN Expression {
+  $$ = {
+    kind: 'BinaryExpression',
+    lhs: $1,
+    operator: '>',
+    rhs: $3,
+  };
+}
+BinaryExpression → Expression GREATER_THAN_OR_EQUAL Expression {
+  $$ = {
+    kind: 'BinaryExpression',
+    lhs: $1,
+    operator: '>=',
+    rhs: $3,
+  };
+}
+BinaryExpression → Expression LESS_THAN Expression {
+  $$ = {
+    kind: 'BinaryExpression',
+    lhs: $1,
+    operator: '<',
+    rhs: $3,
+  };
+}
+BinaryExpression → Expression LESS_THAN_OR_EQUAL Expression {
+  $$ = {
+    kind: 'BinaryExpression',
+    lhs: $1,
+    operator: '<=',
+    rhs: $3,
+  };
+}
 BinaryExpression → Expression LOGICAL_AND Expression {
   $$ = {
     kind: 'BinaryExpression',
@@ -279,7 +316,6 @@ BinaryExpression → Expression LOGICAL_AND Expression {
     rhs: $3,
   };
 }
-
 BinaryExpression → Expression LOGICAL_OR Expression {
   $$ = {
     kind: 'BinaryExpression',
@@ -288,7 +324,6 @@ BinaryExpression → Expression LOGICAL_OR Expression {
     rhs: $3,
   };
 }
-
 BinaryExpression → Expression MINUS Expression {
   $$ = {
     kind: 'BinaryExpression',
@@ -297,7 +332,6 @@ BinaryExpression → Expression MINUS Expression {
     rhs: $3,
   };
 }
-
 BinaryExpression → Expression PLUS Expression {
   $$ = {
     kind: 'BinaryExpression',
@@ -306,7 +340,6 @@ BinaryExpression → Expression PLUS Expression {
     rhs: $3,
   };
 }
-
 BinaryExpression → Expression EQUALS Expression {
   $$ = {
     kind: 'BinaryExpression',
@@ -315,7 +348,6 @@ BinaryExpression → Expression EQUALS Expression {
     rhs: $3,
   };
 }
-
 BinaryExpression → Expression STRICT_EQUALS Expression {
   $$ = {
     kind: 'BinaryExpression',
@@ -644,6 +676,53 @@ ExpressionStatement → Expression SEMICOLON {
   $$ = {
     kind: 'ExpressionStatement',
     expression: $1,
+  };
+}
+
+# TODO: make VariableDeclaration, Expression, Expression optional
+ForStatement →
+  FOR OPENING_PAREN
+    VariableDeclaration SEMICOLON Expression SEMICOLON Expression
+  CLOSING_PAREN OPENING_BRACE
+    StatementList
+  CLOSING_BRACE {
+    $$ = {
+      kind: 'ForStatement',
+      initializer: $3,
+      condition: $5,
+      update: $7,
+      block: $10,
+    };
+  }
+
+# TODO: deal with non-`let` declarators
+VariableDeclaration → LET VariableDeclaratorList {
+  $$ = {
+    kind: 'VariableDeclaration',
+    binding: 'let',
+    declarators: $2,
+  };
+}
+
+# For now, not allowing empty VariableDeclaratorList.
+VariableDeclaratorList → VariableDeclarator { $$ = [$1]; }
+VariableDeclaratorList → VariableDeclaratorList VariableDeclarator {
+  $1.push($2);
+  $$ = $1;
+}
+
+VariableDeclarator → Id ASSIGN Expression {
+  $$ = {
+    kind: 'VariableDeclarator',
+    lhs: $1,
+    rhs: $3,
+  };
+}
+VariableDeclarator → Id {
+  $$ = {
+    kind: 'VariableDeclarator',
+    lhs: $1,
+    rhs: null,
   };
 }
 

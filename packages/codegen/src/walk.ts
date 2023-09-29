@@ -20,6 +20,7 @@ import type {
   ExportNamedDeclaration,
   Expression,
   ExpressionStatement,
+  ForStatement,
   FunctionDeclaration,
   FunctionExpression,
   GetAccessor,
@@ -195,6 +196,8 @@ export default function walk(
     return walkExportNamedDeclaration(node, visitor);
   } else if (node.kind === 'ExpressionStatement') {
     return walkExpressionStatement(node, visitor);
+  } else if (node.kind === 'ForStatement') {
+    return walkForStatement(node, visitor);
   } else if (node.kind === 'FunctionDeclaration') {
     return walkFunctionDeclaration(node, visitor);
   } else if (node.kind === 'FunctionExpression') {
@@ -700,7 +703,14 @@ function walkExportNamedDeclaration(
 }
 
 function walkExpressionStatement(
-  _tatement: ExpressionStatement,
+  _statement: ExpressionStatement,
+  _visitor: Visitor,
+): Statement | null | undefined {
+  return undefined; // Unimplemented.
+}
+
+function walkForStatement(
+  _statement: ForStatement,
   _visitor: Visitor,
 ): Statement | null | undefined {
   return undefined; // Unimplemented.

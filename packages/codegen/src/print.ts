@@ -7,6 +7,7 @@ import type {
   FunctionExpression,
   GetAccessor,
   MethodDefinition,
+  Pattern,
   Program,
   PropertyDeclaration,
   SpreadElement,
@@ -274,6 +275,35 @@ function printMethodDefinition(
   );
 }
 
+function printPattern(pattern: Pattern, indent: number): string {
+  if (pattern.kind === 'ArrayPattern') {
+    return (
+      '[' +
+      pattern.elements.map((element) => printExpression(element, indent + 1))
+        .join(', ') +
+      ']'
+    );
+  } else if (pattern.kind === 'ObjectPattern') {
+    return (
+      '{' +
+      pattern.properties.map((property) => {
+        // TODO: assert that doesn't have silly attributes? eg. computed: true
+        if (property.shorthand) {
+          return printExpression(property.key, indent + 1);
+        } else {
+          return [
+            printExpression(property.key, indent + 1),
+            printExpression(property.value, indent + 1),
+          ].join(': ');
+        }
+      }) +
+      '}'
+    );
+  } else {
+    unreachable(pattern);
+  }
+}
+
 function printPropertyDeclaration(
   declaration: PropertyDeclaration,
   indent: number,
@@ -298,11 +328,7 @@ function printStatement(statement: Statement, indent: number): string {
       return (
         printIndent(indent) +
         binding +
-        '[' +
-        statement.lhs.elements.map((element) =>
-          printExpression(element, indent + 1)
-        ).join(', ') +
-        ']' +
+        printPattern(statement.lhs, indent + 1) +
         (statement.type ? `: ${printType(statement.type, indent + 1)}` : '') +
         ' = ' +
         printExpression(statement.rhs, indent + 1) +
@@ -312,19 +338,7 @@ function printStatement(statement: Statement, indent: number): string {
       return (
         printIndent(indent) +
         binding +
-        '{' +
-        statement.lhs.properties.map((property) => {
-          // TODO: assert that doesn't have silly attributes? eg. computed: true
-          if (property.shorthand) {
-            return printExpression(property.key, indent + 1);
-          } else {
-            return [
-              printExpression(property.key, indent + 1),
-              printExpression(property.value, indent + 1),
-            ].join(': ');
-          }
-        }) +
-        '}' +
+        printPattern(statement.lhs, indent + 1) +
         (statement.type ? `: ${printType(statement.type, indent + 1)}` : '') +
         ' = ' +
         printExpression(statement.rhs, indent + 1) +
@@ -376,6 +390,37 @@ function printStatement(statement: Statement, indent: number): string {
       printIndent(indent) +
       printExpression(statement.expression, indent) +
       ';\n'
+    );
+  } else if (statement.kind === 'ForStatement') {
+    const declaration = statement.initializer;
+    return (
+      printIndent(indent) +
+      'for (' +
+      (declaration.binding ? `${declaration.binding} ` : '') +
+      declaration.declarators.map(({lhs, rhs}) => {
+        let declarator;
+        if (lhs.kind === 'Identifier') {
+          declarator = printExpression(lhs, indent + 1);
+        } else {
+          declarator = printPattern(lhs, indent + 1);
+        }
+        if (rhs) {
+          declarator += ` = ${printExpression(rhs, indent + 1)}`;
+        }
+        return declarator;
+      }).join(', ') +
+      '; ' +
+      printExpression(statement.condition, indent + 1) +
+      '; ' +
+      printExpression(statement.update, indent + 1) +
+      ') {\n' +
+      statement.block
+        .map((statement) => {
+          return printStatement(statement, indent + 1);
+        })
+        .join('') +
+      printIndent(indent) +
+      '}\n'
     );
   } else if (statement.kind === 'FunctionDeclaration') {
     return (

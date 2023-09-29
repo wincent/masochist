@@ -959,9 +959,9 @@ describe('parseStatement()', async () => {
         }]);
       });
 
-      // TODO: ForStatement
       // TODO: LineComment
       // TODO: ability to omit elements in ArrayPattern
+      // TODO: non-null assertions (NonNullExpression)
       it('parses a large chunk of the static parser definition', () => {
         expect(
           parseStatement(`
@@ -980,6 +980,10 @@ describe('parseStatement()', async () => {
               } else if (action.kind === 'Reduce') {
                 const {production, pop, action: code} = rules[action.rule];
                 const popped: Array<Production | Token | null> = [];
+                for (let i = 0; i < pop; i++) {
+                  const [node] = stack.pop();
+                  popped[pop - i - 1] = node;
+                }
                 stack.push([(code as any)(...popped), target]);
               }
             }
@@ -1155,14 +1159,14 @@ describe('parseStatement()', async () => {
                   },
                   rhs: {
                     kind: 'IndexExpression',
-                    indexee: {
-                      kind: 'Identifier',
-                      name: 'stack',
-                    },
                     index: {
                       kind: 'NumberValue',
                       value: 1,
                       base: 10,
+                    },
+                    indexee: {
+                      kind: 'Identifier',
+                      name: 'stack',
                     },
                   },
                 }, {
@@ -1367,6 +1371,108 @@ describe('parseStatement()', async () => {
                     kind: 'ArrayValue',
                     items: [],
                   },
+                }, {
+                  kind: 'ForStatement',
+                  initializer: {
+                    kind: 'VariableDeclaration',
+                    binding: 'let',
+                    declarators: [{
+                      kind: 'VariableDeclarator',
+                      lhs: {
+                        kind: 'Identifier',
+                        name: 'i',
+                      },
+                      rhs: {
+                        kind: 'NumberValue',
+                        value: 0,
+                        base: 10,
+                      },
+                    }],
+                  },
+                  condition: {
+                    kind: 'BinaryExpression',
+                    lhs: {
+                      kind: 'Identifier',
+                      name: 'i',
+                    },
+                    operator: '<',
+                    rhs: {
+                      kind: 'Identifier',
+                      name: 'pop',
+                    },
+                  },
+                  update: {
+                    kind: 'IncrementExpression',
+                    operand: {
+                      kind: 'Identifier',
+                      name: 'i',
+                    },
+                    position: 'postfix',
+                  },
+                  block: [{
+                    kind: 'AssignmentStatement',
+                    binding: 'const',
+                    lhs: {
+                      kind: 'ArrayPattern',
+                      elements: [{
+                        kind: 'Identifier',
+                        name: 'node',
+                      }],
+                    },
+                    rhs: {
+                      kind: 'CallExpression',
+                      callee: {
+                        kind: 'MemberExpression',
+                        object: {
+                          kind: 'Identifier',
+                          name: 'stack',
+                        },
+                        property: {
+                          kind: 'Identifier',
+                          name: 'pop',
+                        },
+                      },
+                      arguments: [],
+                    },
+                  }, {
+                    kind: 'ExpressionStatement',
+                    expression: {
+                      kind: 'BinaryExpression',
+                      lhs: {
+                        kind: 'IndexExpression',
+                        index: {
+                          kind: 'BinaryExpression',
+                          lhs: {
+                            kind: 'BinaryExpression',
+                            lhs: {
+                              kind: 'Identifier',
+                              name: 'pop',
+                            },
+                            operator: '-',
+                            rhs: {
+                              kind: 'Identifier',
+                              name: 'i',
+                            },
+                          },
+                          operator: '-',
+                          rhs: {
+                            kind: 'NumberValue',
+                            value: 1,
+                            base: 10,
+                          },
+                        },
+                        indexee: {
+                          kind: 'Identifier',
+                          name: 'popped',
+                        },
+                      },
+                      operator: '=',
+                      rhs: {
+                        kind: 'Identifier',
+                        name: 'node',
+                      },
+                    },
+                  }],
                 }, {
                   kind: 'ExpressionStatement',
                   expression: {

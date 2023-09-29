@@ -159,6 +159,14 @@ export type ExpressionStatement = {
   expression: Expression;
 };
 
+export type ForStatement = {
+  kind: 'ForStatement';
+  initializer: VariableDeclaration;
+  condition: Expression;
+  update: Expression;
+  block: Array<Statement>;
+};
+
 export type FunctionDeclaration = {
   kind: 'FunctionDeclaration';
   name: string;
@@ -396,6 +404,7 @@ export type Statement =
   | ExportDefaultDeclaration
   | ExportNamedDeclaration
   | ExpressionStatement
+  | ForStatement
   | FunctionDeclaration
   | IfStatement
   | ImportStatement
@@ -462,6 +471,18 @@ export type Type =
 export type UnionType = {
   kind: 'UnionType';
   variants: Array<Type>;
+};
+
+export type VariableDeclaration = {
+  kind: 'VariableDeclaration';
+  binding: 'const' | 'let' | 'var' | null;
+  declarators: Array<VariableDeclarator>;
+};
+
+export type VariableDeclarator = {
+  kind: 'VariableDeclarator';
+  lhs: Identifier | Pattern;
+  rhs: Expression | null;
 };
 
 export type WhileStatement = {
