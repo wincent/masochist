@@ -13,6 +13,11 @@ export type Argument = {
   type?: string;
 };
 
+export type ArrayPattern = {
+  kind: 'ArrayPattern';
+  elements: Array<Identifier>;
+};
+
 export type ArrayValue = {
   kind: 'ArrayValue';
   items: Array<Expression | SpreadElement>;
@@ -21,9 +26,7 @@ export type ArrayValue = {
 export type AssignmentStatement = {
   kind: 'AssignmentStatement';
   binding: 'const' | 'let' | 'var' | null;
-  // TODO: support proper expressions here (eg. `this.foo` MemberExpression)
-  // (ie. destructuring etc, but not _all_ expressions; eg PrimitiveValue)
-  lhs: Expression;
+  lhs: Identifier | Pattern;
   type?: Type;
   rhs: Expression;
 };
@@ -239,8 +242,8 @@ export type IncrementExpression = {
 
 export type IndexExpression = {
   kind: 'IndexExpression';
-  index: Expression;
   indexee: Expression;
+  index: Expression;
 };
 
 export type LabelStatement = {
@@ -289,6 +292,7 @@ export type Node =
   | MethodDefinition
   | GetAccessor
   | ObjectProperty
+  | Pattern
   | Program
   | PropertyDeclaration
   | SpreadElement
@@ -305,6 +309,14 @@ export type NumberValue = {
   base: Base;
 };
 
+export type ObjectPattern = {
+  kind: 'ObjectPattern';
+  // Note: re-using `ObjectProperty` here although there are a number of things
+  // it has that can't be applied in the context of `ObjectPattern` (like
+  // computed or number keys, or NumberValue etc).
+  properties: Array<ObjectProperty>;
+};
+
 export type ObjectValue = {
   kind: 'ObjectValue';
   properties: Array<ObjectProperty>;
@@ -319,6 +331,10 @@ export type ObjectProperty = {
   // TODO: support object methods
   // method: boolean,
 };
+
+export type Pattern =
+  | ArrayPattern
+  | ObjectPattern;
 
 export type PrimitiveValue =
   | ArrayValue

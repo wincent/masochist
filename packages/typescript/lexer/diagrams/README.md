@@ -65,6 +65,11 @@
 ![CONTINUE](./CONTINUE-dark.svg#gh-dark-mode-only)
 ![CONTINUE](./CONTINUE-light.svg#gh-light-mode-only)
 
+## DECREMENT
+
+![DECREMENT](./DECREMENT-dark.svg#gh-dark-mode-only)
+![DECREMENT](./DECREMENT-light.svg#gh-light-mode-only)
+
 ## DEFAULT
 
 ![DEFAULT](./DEFAULT-dark.svg#gh-dark-mode-only)
@@ -134,6 +139,11 @@
 
 ![IMPORT](./IMPORT-dark.svg#gh-dark-mode-only)
 ![IMPORT](./IMPORT-light.svg#gh-light-mode-only)
+
+## INCREMENT
+
+![INCREMENT](./INCREMENT-dark.svg#gh-dark-mode-only)
+![INCREMENT](./INCREMENT-light.svg#gh-light-mode-only)
 
 ## LESS_THAN
 

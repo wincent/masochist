@@ -9,10 +9,12 @@ export const CLOSING_BRACKET = ']';
 export const CLOSING_PAREN = ')';
 export const COMMA = ',';
 export const COLON = ':';
+export const DECREMENT = '--';
 export const DOT = '.';
 export const EQUALS = '==';
 export const GREATER_THAN = '>';
 export const GREATER_THAN_OR_EQUAL = '>=';
+export const INCREMENT = '++';
 export const LESS_THAN = '<';
 export const LESS_THAN_OR_EQUAL = '<=';
 export const LOGICAL_AND = '&&';
@@ -140,10 +142,12 @@ export default union({
   CLOSING_PAREN,
   COLON,
   COMMA,
+  DECREMENT,
   DOT,
   EQUALS,
   GREATER_THAN,
   GREATER_THAN_OR_EQUAL,
+  INCREMENT,
   IDENTIFIER,
   LESS_THAN,
   LESS_THAN_OR_EQUAL,

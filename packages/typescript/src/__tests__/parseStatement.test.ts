@@ -832,6 +832,136 @@ describe('parseStatement()', async () => {
         }]);
       });
 
+      it('parses a conditional', () => {
+        expect(parseStatement(`
+            if (true) {
+              alert("It's true. All of it.");
+            }
+        `)).toEqual([{
+          kind: 'IfStatement',
+          consequents: [{
+            kind: 'Consequent',
+            condition: {
+              kind: 'BooleanValue',
+              value: true,
+            },
+            block: [{
+              kind: 'ExpressionStatement',
+              expression: {
+                kind: 'CallExpression',
+                callee: {
+                  kind: 'Identifier',
+                  name: 'alert',
+                },
+                arguments: [{
+                  kind: 'StringValue',
+                  value: `"It's true. All of it."`,
+                }],
+              },
+            }],
+          }],
+        }]);
+      });
+
+      it('parses index expressions', () => {
+        expect(parseStatement(`
+          rules[action.rule];
+          gotos[next][production];
+        `)).toEqual([{
+          kind: 'ExpressionStatement',
+          expression: {
+            kind: 'IndexExpression',
+            indexee: {
+              kind: 'Identifier',
+              name: 'rules',
+            },
+            index: {
+              kind: 'MemberExpression',
+              object: {
+                kind: 'Identifier',
+                name: 'action',
+              },
+              property: {
+                kind: 'Identifier',
+                name: 'rule',
+              },
+            },
+          },
+        }, {
+          kind: 'ExpressionStatement',
+          expression: {
+            kind: 'IndexExpression',
+            indexee: {
+              kind: 'IndexExpression',
+              indexee: {
+                kind: 'Identifier',
+                name: 'gotos',
+              },
+              index: {
+                kind: 'Identifier',
+                name: 'next',
+              },
+            },
+            index: {
+              kind: 'Identifier',
+              name: 'production',
+            },
+          },
+        }]);
+      });
+
+      it('parses increment and decrement expressions', () => {
+        expect(parseStatement(`
+          i++;
+          ++i;
+          j--;
+          --j;
+        `)).toEqual([{
+          kind: 'ExpressionStatement',
+          expression: {
+            kind: 'IncrementExpression',
+            operand: {
+              kind: 'Identifier',
+              name: 'i',
+            },
+            position: 'postfix',
+          },
+        }, {
+          kind: 'ExpressionStatement',
+          expression: {
+            kind: 'IncrementExpression',
+            operand: {
+              kind: 'Identifier',
+              name: 'i',
+            },
+            position: 'prefix',
+          },
+        }, {
+          kind: 'ExpressionStatement',
+          expression: {
+            kind: 'DecrementExpression',
+            operand: {
+              kind: 'Identifier',
+              name: 'j',
+            },
+            position: 'postfix',
+          },
+        }, {
+          kind: 'ExpressionStatement',
+          expression: {
+            kind: 'DecrementExpression',
+            operand: {
+              kind: 'Identifier',
+              name: 'j',
+            },
+            position: 'prefix',
+          },
+        }]);
+      });
+
+      // TODO: ForStatement
+      // TODO: LineComment
+      // TODO: ability to omit elements in ArrayPattern
       it('parses a large chunk of the static parser definition', () => {
         expect(
           parseStatement(`
@@ -841,194 +971,84 @@ describe('parseStatement()', async () => {
             while (true) {
               if (!action) {
                 throw new Error('syntax error at symbol ' + token.name);
+              } else if (action.kind === 'Accept') {
+                const [tree] = stack[1];
+                return tree;
+              } else if (action.kind === 'Shift') {
+                stack.push([token, action.state]);
+                token = lexer.next() || EOF;
+              } else if (action.kind === 'Reduce') {
+                const {production, pop, action: code} = rules[action.rule];
+                const popped: Array<Production | Token | null> = [];
+                stack.push([(code as any)(...popped), target]);
               }
-              return tree;
-              stack.push([token, action.state]);
-              token = lexer.next() || EOF;
-              const popped: Array<Production | Token | null> = [];
-              stack.push([(code as any)(...popped), target]);
             }
         `),
-        ).toEqual([{
-          kind: 'AssignmentStatement',
-          binding: 'const',
-          lhs: {
-            kind: 'Identifier',
-            name: 'stack',
-          },
-          type: {
-            kind: 'GenericType',
-            name: 'Array',
-            parameters: [{
-              kind: 'TupleType',
-              elements: [{
-                kind: 'UnionType',
-                variants: [{
-                  kind: 'NamedType',
-                  name: 'Production',
+        ).toEqual(
+          [{
+            kind: 'AssignmentStatement',
+            binding: 'const',
+            lhs: {
+              kind: 'Identifier',
+              name: 'stack',
+            },
+            type: {
+              kind: 'GenericType',
+              name: 'Array',
+              parameters: [{
+                kind: 'TupleType',
+                elements: [{
+                  kind: 'UnionType',
+                  variants: [{
+                    kind: 'NamedType',
+                    name: 'Production',
+                  }, {
+                    kind: 'NamedType',
+                    name: 'Token',
+                  }, {
+                    kind: 'NamedType',
+                    name: 'null',
+                  }],
                 }, {
                   kind: 'NamedType',
-                  name: 'Token',
-                }, {
-                  kind: 'NamedType',
-                  name: 'null',
+                  name: 'number',
                 }],
-              }, {
-                kind: 'NamedType',
-                name: 'number',
               }],
-            }],
-          },
-          rhs: {
-            kind: 'ArrayValue',
-            items: [{
+            },
+            rhs: {
               kind: 'ArrayValue',
               items: [{
-                kind: 'NullValue',
-              }, {
-                kind: 'NumberValue',
-                value: 0,
-                base: 10,
-              }],
-            }],
-          },
-        }, {
-          kind: 'AssignmentStatement',
-          binding: 'const',
-          lhs: {
-            kind: 'Identifier',
-            name: 'lexer',
-          },
-          rhs: {
-            kind: 'NewExpression',
-            object: {
-              kind: 'Identifier',
-              name: 'Lexer',
-            },
-            arguments: [{
-              kind: 'Identifier',
-              name: 'input',
-            }],
-          },
-        }, {
-          kind: 'AssignmentStatement',
-          binding: 'let',
-          lhs: {
-            kind: 'Identifier',
-            name: 'token',
-          },
-          rhs: {
-            kind: 'BinaryExpression',
-            lhs: {
-              kind: 'CallExpression',
-              callee: {
-                kind: 'MemberExpression',
-                object: {
-                  kind: 'Identifier',
-                  name: 'lexer',
-                },
-                property: {
-                  kind: 'Identifier',
-                  name: 'next',
-                },
-              },
-              arguments: [],
-            },
-            operator: '||',
-            rhs: {
-              kind: 'Identifier',
-              name: 'EOF',
-            },
-          },
-        }, {
-          kind: 'WhileStatement',
-          condition: {
-            kind: 'BooleanValue',
-            value: true,
-          },
-          block: [{
-            kind: 'IfStatement',
-            consequents: [{
-              kind: 'Consequent',
-              condition: {
-                kind: 'LogicalNotExpression',
-                operand: {
-                  kind: 'Identifier',
-                  name: 'action',
-                },
-              },
-              block: [{
-                kind: 'ThrowStatement',
-                expression: {
-                  kind: 'NewExpression',
-                  object: {
-                    kind: 'Identifier',
-                    name: 'Error',
-                  },
-                  arguments: [{
-                    kind: 'BinaryExpression',
-                    lhs: {
-                      kind: 'StringValue',
-                      value: "'syntax error at symbol '",
-                    },
-                    operator: '+',
-                    rhs: {
-                      kind: 'MemberExpression',
-                      object: {
-                        kind: 'Identifier',
-                        name: 'token',
-                      },
-                      property: {
-                        kind: 'Identifier',
-                        name: 'name',
-                      },
-                    },
-                  }],
-                },
-              }],
-            }],
-          }, {
-            kind: 'ReturnStatement',
-            expression: {
-              kind: 'Identifier',
-              name: 'tree',
-            },
-          }, {
-            kind: 'ExpressionStatement',
-            expression: {
-              kind: 'CallExpression',
-              callee: {
-                kind: 'MemberExpression',
-                object: {
-                  kind: 'Identifier',
-                  name: 'stack',
-                },
-                property: {
-                  kind: 'Identifier',
-                  name: 'push',
-                },
-              },
-              arguments: [{
                 kind: 'ArrayValue',
                 items: [{
-                  kind: 'Identifier',
-                  name: 'token',
+                  kind: 'NullValue',
                 }, {
-                  kind: 'MemberExpression',
-                  object: {
-                    kind: 'Identifier',
-                    name: 'action',
-                  },
-                  property: {
-                    kind: 'Identifier',
-                    name: 'state',
-                  },
+                  kind: 'NumberValue',
+                  value: 0,
+                  base: 10,
                 }],
               }],
             },
           }, {
             kind: 'AssignmentStatement',
-            binding: null,
+            binding: 'const',
+            lhs: {
+              kind: 'Identifier',
+              name: 'lexer',
+            },
+            rhs: {
+              kind: 'NewExpression',
+              object: {
+                kind: 'Identifier',
+                name: 'Lexer',
+              },
+              arguments: [{
+                kind: 'Identifier',
+                name: 'input',
+              }],
+            },
+          }, {
+            kind: 'AssignmentStatement',
+            binding: 'let',
             lhs: {
               kind: 'Identifier',
               name: 'token',
@@ -1057,75 +1077,341 @@ describe('parseStatement()', async () => {
               },
             },
           }, {
-            kind: 'AssignmentStatement',
-            binding: 'const',
-            lhs: {
-              kind: 'Identifier',
-              name: 'popped',
+            kind: 'WhileStatement',
+            condition: {
+              kind: 'BooleanValue',
+              value: true,
             },
-            type: {
-              kind: 'GenericType',
-              name: 'Array',
-              parameters: [{
-                kind: 'UnionType',
-                variants: [{
-                  kind: 'NamedType',
-                  name: 'Production',
-                }, {
-                  kind: 'NamedType',
-                  name: 'Token',
-                }, {
-                  kind: 'NamedType',
-                  name: 'null',
-                }],
-              }],
-            },
-            rhs: {
-              kind: 'ArrayValue',
-              items: [],
-            },
-          }, {
-            kind: 'ExpressionStatement',
-            expression: {
-              kind: 'CallExpression',
-              callee: {
-                kind: 'MemberExpression',
-                object: {
-                  kind: 'Identifier',
-                  name: 'stack',
-                },
-                property: {
-                  kind: 'Identifier',
-                  name: 'push',
-                },
-              },
-              arguments: [{
-                kind: 'ArrayValue',
-                items: [{
-                  kind: 'CallExpression',
-                  callee: {
+            block: [{
+              kind: 'IfStatement',
+              consequents: [{
+                kind: 'Consequent',
+                condition: {
+                  kind: 'LogicalNotExpression',
+                  operand: {
                     kind: 'Identifier',
-                    name: 'code',
-                    cast: {
-                      kind: 'NamedType',
-                      name: 'any',
+                    name: 'action',
+                  },
+                },
+                block: [{
+                  kind: 'ThrowStatement',
+                  expression: {
+                    kind: 'NewExpression',
+                    object: {
+                      kind: 'Identifier',
+                      name: 'Error',
+                    },
+                    arguments: [{
+                      kind: 'BinaryExpression',
+                      lhs: {
+                        kind: 'StringValue',
+                        value: "'syntax error at symbol '",
+                      },
+                      operator: '+',
+                      rhs: {
+                        kind: 'MemberExpression',
+                        object: {
+                          kind: 'Identifier',
+                          name: 'token',
+                        },
+                        property: {
+                          kind: 'Identifier',
+                          name: 'name',
+                        },
+                      },
+                    }],
+                  },
+                }],
+              }, {
+                kind: 'Consequent',
+                condition: {
+                  kind: 'BinaryExpression',
+                  lhs: {
+                    kind: 'MemberExpression',
+                    object: {
+                      kind: 'Identifier',
+                      name: 'action',
+                    },
+                    property: {
+                      kind: 'Identifier',
+                      name: 'kind',
                     },
                   },
-                  arguments: [{
-                    kind: 'SpreadElement',
-                    expression: {
+                  operator: '===',
+                  rhs: {
+                    kind: 'StringValue',
+                    value: "'Accept'",
+                  },
+                },
+                block: [{
+                  kind: 'AssignmentStatement',
+                  binding: 'const',
+                  lhs: {
+                    kind: 'ArrayPattern',
+                    elements: [{
                       kind: 'Identifier',
-                      name: 'popped',
+                      name: 'tree',
+                    }],
+                  },
+                  rhs: {
+                    kind: 'IndexExpression',
+                    indexee: {
+                      kind: 'Identifier',
+                      name: 'stack',
                     },
-                  }],
+                    index: {
+                      kind: 'NumberValue',
+                      value: 1,
+                      base: 10,
+                    },
+                  },
                 }, {
-                  kind: 'Identifier',
-                  name: 'target',
+                  kind: 'ReturnStatement',
+                  expression: {
+                    kind: 'Identifier',
+                    name: 'tree',
+                  },
+                }],
+              }, {
+                kind: 'Consequent',
+                condition: {
+                  kind: 'BinaryExpression',
+                  lhs: {
+                    kind: 'MemberExpression',
+                    object: {
+                      kind: 'Identifier',
+                      name: 'action',
+                    },
+                    property: {
+                      kind: 'Identifier',
+                      name: 'kind',
+                    },
+                  },
+                  operator: '===',
+                  rhs: {
+                    kind: 'StringValue',
+                    value: "'Shift'",
+                  },
+                },
+                block: [{
+                  kind: 'ExpressionStatement',
+                  expression: {
+                    kind: 'CallExpression',
+                    callee: {
+                      kind: 'MemberExpression',
+                      object: {
+                        kind: 'Identifier',
+                        name: 'stack',
+                      },
+                      property: {
+                        kind: 'Identifier',
+                        name: 'push',
+                      },
+                    },
+                    arguments: [{
+                      kind: 'ArrayValue',
+                      items: [{
+                        kind: 'Identifier',
+                        name: 'token',
+                      }, {
+                        kind: 'MemberExpression',
+                        object: {
+                          kind: 'Identifier',
+                          name: 'action',
+                        },
+                        property: {
+                          kind: 'Identifier',
+                          name: 'state',
+                        },
+                      }],
+                    }],
+                  },
+                }, {
+                  kind: 'AssignmentStatement',
+                  binding: null,
+                  lhs: {
+                    kind: 'Identifier',
+                    name: 'token',
+                  },
+                  rhs: {
+                    kind: 'BinaryExpression',
+                    lhs: {
+                      kind: 'CallExpression',
+                      callee: {
+                        kind: 'MemberExpression',
+                        object: {
+                          kind: 'Identifier',
+                          name: 'lexer',
+                        },
+                        property: {
+                          kind: 'Identifier',
+                          name: 'next',
+                        },
+                      },
+                      arguments: [],
+                    },
+                    operator: '||',
+                    rhs: {
+                      kind: 'Identifier',
+                      name: 'EOF',
+                    },
+                  },
+                }],
+              }, {
+                kind: 'Consequent',
+                condition: {
+                  kind: 'BinaryExpression',
+                  lhs: {
+                    kind: 'MemberExpression',
+                    object: {
+                      kind: 'Identifier',
+                      name: 'action',
+                    },
+                    property: {
+                      kind: 'Identifier',
+                      name: 'kind',
+                    },
+                  },
+                  operator: '===',
+                  rhs: {
+                    kind: 'StringValue',
+                    value: "'Reduce'",
+                  },
+                },
+                block: [{
+                  kind: 'AssignmentStatement',
+                  binding: 'const',
+                  lhs: {
+                    kind: 'ObjectPattern',
+                    properties: [{
+                      kind: 'ObjectProperty',
+                      key: {
+                        kind: 'Identifier',
+                        name: 'production',
+                      },
+                      value: {
+                        kind: 'Identifier',
+                        name: 'production',
+                      },
+                      computed: false,
+                      shorthand: true,
+                    }, {
+                      kind: 'ObjectProperty',
+                      key: {
+                        kind: 'Identifier',
+                        name: 'pop',
+                      },
+                      value: {
+                        kind: 'Identifier',
+                        name: 'pop',
+                      },
+                      computed: false,
+                      shorthand: true,
+                    }, {
+                      kind: 'ObjectProperty',
+                      key: {
+                        kind: 'Identifier',
+                        name: 'action',
+                      },
+                      value: {
+                        kind: 'Identifier',
+                        name: 'code',
+                      },
+                      computed: false,
+                      shorthand: false,
+                    }],
+                  },
+                  rhs: {
+                    kind: 'IndexExpression',
+                    index: {
+                      kind: 'MemberExpression',
+                      object: {
+                        kind: 'Identifier',
+                        name: 'action',
+                      },
+                      property: {
+                        kind: 'Identifier',
+                        name: 'rule',
+                      },
+                    },
+                    indexee: {
+                      kind: 'Identifier',
+                      name: 'rules',
+                    },
+                  },
+                }, {
+                  kind: 'AssignmentStatement',
+                  binding: 'const',
+                  lhs: {
+                    kind: 'Identifier',
+                    name: 'popped',
+                  },
+                  type: {
+                    kind: 'GenericType',
+                    name: 'Array',
+                    parameters: [{
+                      kind: 'UnionType',
+                      variants: [{
+                        kind: 'NamedType',
+                        name: 'Production',
+                      }, {
+                        kind: 'NamedType',
+                        name: 'Token',
+                      }, {
+                        kind: 'NamedType',
+                        name: 'null',
+                      }],
+                    }],
+                  },
+                  rhs: {
+                    kind: 'ArrayValue',
+                    items: [],
+                  },
+                }, {
+                  kind: 'ExpressionStatement',
+                  expression: {
+                    kind: 'CallExpression',
+                    callee: {
+                      kind: 'MemberExpression',
+                      object: {
+                        kind: 'Identifier',
+                        name: 'stack',
+                      },
+                      property: {
+                        kind: 'Identifier',
+                        name: 'push',
+                      },
+                    },
+                    arguments: [{
+                      kind: 'ArrayValue',
+                      items: [{
+                        kind: 'CallExpression',
+                        callee: {
+                          kind: 'Identifier',
+                          name: 'code',
+                          cast: {
+                            kind: 'NamedType',
+                            name: 'any',
+                          },
+                        },
+                        arguments: [{
+                          kind: 'SpreadElement',
+                          expression: {
+                            kind: 'Identifier',
+                            name: 'popped',
+                          },
+                        }],
+                      }, {
+                        kind: 'Identifier',
+                        name: 'target',
+                      }],
+                    }],
+                  },
                 }],
               }],
-            },
+            }],
           }],
-        }]);
+        );
       });
     },
   );

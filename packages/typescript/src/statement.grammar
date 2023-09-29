@@ -1,6 +1,7 @@
 %{
   import type {
     Argument,
+    ArrayPattern,
     ArrayValue,
     AssignmentStatement,
     BinaryExpression,
@@ -8,6 +9,7 @@
     CallExpression,
     ClassDeclaration,
     Declaration,
+    DecrementExpression,
     ExportDefaultDeclaration,
     Expression,
     ExpressionStatement,
@@ -15,6 +17,8 @@
     GetAccessor,
     Identifier,
     IfStatement,
+    IncrementExpression,
+    IndexExpression,
     LogicalNotExpression,
     MemberExpression,
     MethodDefinition,
@@ -23,8 +27,10 @@
     Node,
     NullValue,
     NumberValue,
+    ObjectPattern,
     ObjectProperty,
     ObjectValue,
+    Pattern,
     PrimitiveValue,
     PropertyDeclaration,
     ReturnStatement,
@@ -52,6 +58,8 @@
     | MethodDefinition
     | PropertyDeclaration;
   type ExpressionList = Array<Expression | SpreadElement>;
+  type Id = Identifier | Pattern;
+  type IdentifierList = Array<Identifier>;
   type ObjectPropertyList = Array<ObjectProperty>;
   type StatementList = Array<Statement>;
   type TypeList = Array<Type>;
@@ -79,6 +87,7 @@
 %token COMMA
 %token CONST
 %token CONTINUE
+%token DECREMENT
 %token DEFAULT
 %token DOT
 %token ELSE
@@ -91,6 +100,7 @@
 %token GREATER_THAN
 %token GREATER_THAN_OR_EQUAL
 %token IDENTIFIER
+%token INCREMENT
 %token IF
 %token IMPORT
 %token LESS_THAN
@@ -140,9 +150,7 @@ Statement → ReturnStatement { $$ = $1; }
 Statement → ThrowStatement { $$ = $1; }
 Statement → WhileStatement { $$ = $1; }
 
-# TODO: disallow some Expression variants here
-# (eg. Identifier good, destructuring syntax good, CallExpression etc bad)
-AssignmentStatement → CONST Expression COLON Type ASSIGN Expression SEMICOLON {
+AssignmentStatement → CONST Id COLON Type ASSIGN Expression SEMICOLON {
   $$ = {
     kind: 'AssignmentStatement',
     binding: 'const',
@@ -151,7 +159,7 @@ AssignmentStatement → CONST Expression COLON Type ASSIGN Expression SEMICOLON 
     rhs: $6,
   };
 }
-AssignmentStatement → CONST Expression ASSIGN Expression SEMICOLON {
+AssignmentStatement → CONST Id ASSIGN Expression SEMICOLON {
   $$ = {
     kind: 'AssignmentStatement',
     binding: 'const',
@@ -159,7 +167,7 @@ AssignmentStatement → CONST Expression ASSIGN Expression SEMICOLON {
     rhs: $4,
   };
 }
-AssignmentStatement → LET Expression COLON Type ASSIGN Expression SEMICOLON {
+AssignmentStatement → LET Id COLON Type ASSIGN Expression SEMICOLON {
   $$ = {
     kind: 'AssignmentStatement',
     binding: 'let',
@@ -168,7 +176,7 @@ AssignmentStatement → LET Expression COLON Type ASSIGN Expression SEMICOLON {
     rhs: $6,
   };
 }
-AssignmentStatement → LET Expression ASSIGN Expression SEMICOLON {
+AssignmentStatement → LET Id ASSIGN Expression SEMICOLON {
   $$ = {
     kind: 'AssignmentStatement',
     binding: 'let',
@@ -176,12 +184,37 @@ AssignmentStatement → LET Expression ASSIGN Expression SEMICOLON {
     rhs: $4,
   };
 }
-AssignmentStatement → AssignmentExpression SEMICOLON {
+AssignmentStatement → Identifier ASSIGN Expression SEMICOLON {
   $$ = {
     kind: 'AssignmentStatement',
     binding: null,
-    lhs: $1.lhs,
-    rhs: $1.rhs,
+    lhs: $1,
+    rhs: $3,
+  };
+}
+
+Id → Identifier { $$ = $1; }
+Id → Pattern { $$ = $1; }
+
+Pattern → ArrayPattern { $$ = $1; }
+Pattern → ObjectPattern { $$ = $1; }
+
+ArrayPattern → OPENING_BRACKET IdentifierList CLOSING_BRACKET {
+  $$ = {
+    kind: 'ArrayPattern',
+    elements: $2,
+  };
+}
+
+# Note: IdentifierList cannot be empty.
+IdentifierList → Identifier { $$ = [$1]; }
+IdentifierList → IdentifierList COMMA Identifier { $1.push($3); $$ = $1; }
+
+# TODO: use a more restricted type than ObjectPropertyList
+ObjectPattern → OPENING_BRACE ObjectPropertyList CLOSING_BRACE {
+  $$ = {
+    kind: 'ObjectPattern',
+    properties: $2,
   };
 }
 
@@ -208,6 +241,8 @@ Expression → THIS {
 Expression → AssignmentExpression { $$ = $1; }
 Expression → BinaryExpression { $$ = $1; }
 Expression → CallExpression { $$ = $1; }
+Expression → DecrementExpression { $$ = $1; }
+Expression → IncrementExpression { $$ = $1; }
 
 # TODO: Make this more sophisticated; there are places where parens are needed:
 # eg. `const x = foo as number;` is fine
@@ -220,6 +255,7 @@ Expression → Identifier AS Type {
 }
 Expression → Identifier { $$ = $1; }
 
+Expression → IndexExpression { $$ = $1; }
 Expression → LogicalNotExpression { $$ = $1; }
 Expression → MemberExpression { $$ = $1; }
 Expression → NewExpression { $$ = $1; }
@@ -318,6 +354,43 @@ SpreadElement → REST Expression {
   $$ = {
     kind: 'SpreadElement',
     expression: $2,
+  };
+}
+
+DecrementExpression → DECREMENT Expression {
+  $$ = {
+    kind: 'DecrementExpression',
+    operand: $2,
+    position: 'prefix',
+  };
+}
+DecrementExpression → Expression DECREMENT {
+  $$ = {
+    kind: 'DecrementExpression',
+    operand: $1,
+    position: 'postfix',
+  };
+}
+IncrementExpression → INCREMENT Expression {
+  $$ = {
+    kind: 'IncrementExpression',
+    operand: $2,
+    position: 'prefix',
+  };
+}
+IncrementExpression → Expression INCREMENT {
+  $$ = {
+    kind: 'IncrementExpression',
+    operand: $1,
+    position: 'postfix',
+  };
+}
+
+IndexExpression → Expression OPENING_BRACKET Expression CLOSING_BRACKET {
+  $$ = {
+    kind: 'IndexExpression',
+    index: $3,
+    indexee: $1,
   };
 }
 
@@ -573,6 +646,20 @@ ExpressionStatement → Expression SEMICOLON {
     expression: $1,
   };
 }
+
+IfStatement →
+  IF OPENING_PAREN Expression CLOSING_PAREN OPENING_BRACE
+    StatementList
+  CLOSING_BRACE ELSE IfStatement {
+    $$ = {
+      kind: 'IfStatement',
+      consequents: [{
+        kind: 'Consequent',
+        condition: $3,
+        block: $6,
+      }, ...$9.consequents],
+    };
+  }
 
 IfStatement →
   IF OPENING_PAREN Expression CLOSING_PAREN OPENING_BRACE

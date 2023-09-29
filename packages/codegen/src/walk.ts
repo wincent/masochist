@@ -39,6 +39,7 @@ import type {
   NumberValue,
   ObjectProperty,
   ObjectValue,
+  Pattern,
   Program,
   PropertyDeclaration,
   RawExpression,
@@ -230,6 +231,12 @@ export default function walk(
     return walkObjectProperty(node, visitor);
   } else if (node.kind === 'ObjectValue') {
     return walkObjectValue(node, visitor);
+  } else if (
+    node.kind === 'ArrayPattern' ||
+    node.kind === 'ObjectPattern'
+  ) {
+    // Using a single implementation (a no-op for now!) for all `Pattern` nodes.
+    return walkPattern(node, visitor);
   } else if (node.kind === 'Program') {
     return walkProgram(node, visitor);
   } else if (node.kind === 'PropertyDeclaration') {
@@ -359,7 +366,7 @@ function walkAssignmentStatement(
   if (newChild === null) {
     return null;
   } else if (newChild !== undefined) {
-    assertIsExpression(newChild);
+    assertIsId(newChild);
     newStatement.lhs = newChild;
     changed = true;
   }
@@ -1036,6 +1043,13 @@ function walkUndefinedValue(
   return undefined; // Unimplemented.
 }
 
+function walkPattern(
+  _pattern: Pattern,
+  _visitor: Visitor,
+): Pattern | null | undefined {
+  return undefined; // Unimplemented.
+}
+
 function walkProgram(
   program: Program,
   visitor: Visitor,
@@ -1178,33 +1192,51 @@ function assertIsDeclaration(
   }
 }
 
+export function isExpression(node: Node): node is Expression {
+  return (
+    node.kind === 'BinaryExpression' ||
+    node.kind === 'CallExpression' ||
+    node.kind === 'ClassExpression' ||
+    node.kind === 'FunctionExpression' ||
+    node.kind === 'Identifier' ||
+    node.kind === 'IndexExpression' ||
+    node.kind === 'MemberExpression' ||
+    node.kind === 'NewExpression' ||
+    node.kind === 'ArrayValue' ||
+    node.kind === 'BooleanValue' ||
+    node.kind === 'NullValue' ||
+    node.kind === 'NumberValue' ||
+    node.kind === 'ObjectValue' ||
+    node.kind === 'StringValue' ||
+    node.kind === 'UndefinedValue' ||
+    node.kind === 'RawExpression' ||
+    node.kind === 'TernaryExpression' ||
+    node.kind === 'BitwiseNotExpression' ||
+    node.kind === 'DecrementExpression' ||
+    node.kind === 'IncrementExpression' ||
+    node.kind === 'LogicalNotExpression' ||
+    node.kind === 'YieldExpression'
+  );
+}
+
 function assertIsExpression(
   node: Node | null | undefined,
-): asserts node is Expression | null | undefined {
+): asserts node is Expression {
+  if (node != null) {
+    invariant(isExpression(node));
+  }
+}
+
+// "Id" here is a shorthand for things that can appear on the LHS of assignment
+// statements (ie. of Identifier or Pattern types).
+export function assertIsId(
+  node: Node | null | undefined,
+): asserts node is Identifier | Pattern {
   if (node != null) {
     invariant(
-      node.kind === 'BinaryExpression' ||
-        node.kind === 'CallExpression' ||
-        node.kind === 'ClassExpression' ||
-        node.kind === 'FunctionExpression' ||
+      node.kind === 'ArrayPattern' ||
         node.kind === 'Identifier' ||
-        node.kind === 'IndexExpression' ||
-        node.kind === 'MemberExpression' ||
-        node.kind === 'NewExpression' ||
-        node.kind === 'ArrayValue' ||
-        node.kind === 'BooleanValue' ||
-        node.kind === 'NullValue' ||
-        node.kind === 'NumberValue' ||
-        node.kind === 'ObjectValue' ||
-        node.kind === 'StringValue' ||
-        node.kind === 'UndefinedValue' ||
-        node.kind === 'RawExpression' ||
-        node.kind === 'TernaryExpression' ||
-        node.kind === 'BitwiseNotExpression' ||
-        node.kind === 'DecrementExpression' ||
-        node.kind === 'IncrementExpression' ||
-        node.kind === 'LogicalNotExpression' ||
-        node.kind === 'YieldExpression',
+        node.kind === 'ObjectPattern',
     );
   }
 }

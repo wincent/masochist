@@ -244,7 +244,7 @@ export default function build(
               if (!action) {
                 // TODO: maybe show stack here?
                 throw new Error('syntax error at symbol ' + token.name);
-              } if (action.kind === 'Accept') {
+              } else if (action.kind === 'Accept') {
                 // Expect initial state + accept state.
                 const [tree] = stack[1];
                 return tree;

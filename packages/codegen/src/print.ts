@@ -15,6 +15,8 @@ import type {
   Type,
 } from '@masochist/types';
 
+import {isExpression} from './walk';
+
 const TAB_WIDTH = 2;
 
 // TODO: use `walk()` (may require changes to `walk()`)
@@ -282,15 +284,55 @@ function printPropertyDeclaration(
 function printStatement(statement: Statement, indent: number): string {
   if (statement.kind === 'AssignmentStatement') {
     const binding = statement.binding ? `${statement.binding} ` : '';
-    return (
-      printIndent(indent) +
-      binding +
-      printExpression(statement.lhs, indent + 1) +
-      (statement.type ? `: ${printType(statement.type, indent + 1)}` : '') +
-      ' = ' +
-      printExpression(statement.rhs, indent + 1) +
-      ';\n'
-    );
+    if (isExpression(statement.lhs)) {
+      return (
+        printIndent(indent) +
+        binding +
+        printExpression(statement.lhs, indent + 1) +
+        (statement.type ? `: ${printType(statement.type, indent + 1)}` : '') +
+        ' = ' +
+        printExpression(statement.rhs, indent + 1) +
+        ';\n'
+      );
+    } else if (statement.lhs.kind === 'ArrayPattern') {
+      return (
+        printIndent(indent) +
+        binding +
+        '[' +
+        statement.lhs.elements.map((element) =>
+          printExpression(element, indent + 1)
+        ).join(', ') +
+        ']' +
+        (statement.type ? `: ${printType(statement.type, indent + 1)}` : '') +
+        ' = ' +
+        printExpression(statement.rhs, indent + 1) +
+        ';\n'
+      );
+    } else if (statement.lhs.kind === 'ObjectPattern') {
+      return (
+        printIndent(indent) +
+        binding +
+        '{' +
+        statement.lhs.properties.map((property) => {
+          // TODO: assert that doesn't have silly attributes? eg. computed: true
+          if (property.shorthand) {
+            return printExpression(property.key, indent + 1);
+          } else {
+            return [
+              printExpression(property.key, indent + 1),
+              printExpression(property.value, indent + 1),
+            ].join(': ');
+          }
+        }) +
+        '}' +
+        (statement.type ? `: ${printType(statement.type, indent + 1)}` : '') +
+        ' = ' +
+        printExpression(statement.rhs, indent + 1) +
+        ';\n'
+      );
+    } else {
+      unreachable(statement.lhs);
+    }
   } else if (statement.kind === 'BreakStatement') {
     if (statement.label) {
       return printIndent(indent) + `break ${statement.label};\n`;

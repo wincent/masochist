@@ -2,6 +2,7 @@ import {invariant} from '@masochist/common';
 
 import parseStatement from './parseStatement';
 import quote from './quote';
+import {assertIsId} from './walk';
 
 import type {
   Argument,
@@ -95,11 +96,13 @@ const ast = {
     rhs: Expression | string | number,
     options?: {type?: Type},
   ): AssignmentStatement {
+    const lexpr = ast.expression(lhs);
+    assertIsId(lexpr);
     if (typeof rhs === 'string') {
       return {
         kind: 'AssignmentStatement',
         binding,
-        lhs: ast.expression(lhs), // TODO: limit this, not all expressions OK
+        lhs: lexpr,
         type: options?.type,
         rhs: ast.expression(rhs),
       };
@@ -107,7 +110,7 @@ const ast = {
       return {
         kind: 'AssignmentStatement',
         binding,
-        lhs: ast.expression(lhs), // TODO: limit this, not all expressions OK
+        lhs: lexpr,
         type: options?.type,
         rhs: ast.number(rhs),
       };
@@ -115,7 +118,7 @@ const ast = {
       return {
         kind: 'AssignmentStatement',
         binding,
-        lhs: ast.expression(lhs), // TODO: limit this, not all expressions OK
+        lhs: lexpr,
         type: options?.type,
         rhs,
       };
@@ -588,13 +591,14 @@ const ast = {
           binding === 'var' ||
           binding === undefined,
       );
-      const lhs = match[2];
+      const lhs = ast.expression(match[2]);
+      assertIsId(lhs);
       const rhs = ast.expression(match[3]);
 
       return {
         kind: 'AssignmentStatement',
         binding: binding ?? null,
-        lhs: ast.expression(lhs),
+        lhs,
         rhs,
       };
     }
