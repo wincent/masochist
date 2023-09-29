@@ -1,6 +1,9 @@
+import {ast, print} from '@masochist/codegen';
+import {dedent} from '@masochist/common';
 import {getParser} from '@masochist/parser/src/internal';
 import {describe, expect, it} from 'bun:test';
 
+import type {Statement} from '@masochist/types';
 import lexer from '../lexer';
 import parseStatement from '../parseStatement';
 import {grammar, table} from '../statement';
@@ -13,10 +16,15 @@ describe('parseStatement()', async () => {
   // needed.
   describe.each([[
     'parser derived from grammar',
-    await getParser(grammar, table, lexer),
-  ], ['parser persisted to disk', parseStatement as any /* TODO: fix type */]])(
+    await getParser<Array<Statement>>(grammar, table, lexer),
+  ], [
+    'parser persisted to disk',
+    parseStatement as ((
+      input: string,
+    ) => Array<Statement>),
+  ]])(
     '%s',
-    (_description, parseStatement: Awaited<ReturnType<typeof getParser>>) => {
+    (_description, parseStatement) => {
       it('parses a call', () => {
         const input = 'click();';
         expect(parseStatement(input)).toEqual([{
@@ -1518,6 +1526,24 @@ describe('parseStatement()', async () => {
             }],
           }],
         );
+      });
+
+      // These are easier to write than the other tests because they don't
+      // surface the AST. But as such, they offer weaker guarantees.
+      describe('round-trip tests', () => {
+        function roundTrip(source: string) {
+          return print(ast.program(parseStatement(source)));
+        }
+
+        it('round-trips a for-statement', () => {
+          const source = dedent`
+            for (let i = 0; i < pop; i++) {
+              const [node] = stack.pop();
+              popped[pop - i - 1] = node;
+            }
+          `;
+          expect(roundTrip(source)).toEqual(source + '\n');
+        });
       });
     },
   );

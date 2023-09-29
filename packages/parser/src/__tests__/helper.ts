@@ -25,11 +25,11 @@ import type {Grammar} from '../types';
  * written to disk but rather the ones that _would_ be written if we were to
  * regenerate them right now.
  */
-export async function getParser(
+export async function getParser<T = unknown>(
   grammar: Grammar,
   parseTable: ParseTable,
   lexerTable: TransitionTable,
-): Promise<(input: string) => unknown> {
+): Promise<(input: string) => T> {
   // Build lexer.
   const {Lexer} = await getLexer(lexerTable);
   const node = build(grammar, parseTable);
@@ -137,5 +137,5 @@ export async function getParser(
 
   assert(context.parse);
 
-  return context.parse;
+  return context.parse as (input: string) => T;
 }
