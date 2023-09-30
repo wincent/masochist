@@ -82,7 +82,11 @@ export type ClassDeclaration = {
   id: string;
   // TODO: add superclass, if I ever need it
   body: Array<
-    DocComment | GetAccessor | MethodDefinition | PropertyDeclaration
+    | DocComment
+    | GetAccessor
+    | LineComment
+    | MethodDefinition
+    | PropertyDeclaration
   >;
 };
 

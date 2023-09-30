@@ -515,7 +515,6 @@ describe('parseStatement()', async () => {
           }
         `;
         expect(parseStatement(input)).toMatchSnapshot();
-        // TODO: add rest of Token.ts example here ^^^
       });
 
       it('recognizes "get" as an identifier in non-accessor positions', () => {

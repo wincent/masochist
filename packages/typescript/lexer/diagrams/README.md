@@ -75,6 +75,11 @@
 ![DEFAULT](./DEFAULT-dark.svg#gh-dark-mode-only)
 ![DEFAULT](./DEFAULT-light.svg#gh-light-mode-only)
 
+## DOC_COMMENT
+
+![DOC_COMMENT](./DOC_COMMENT-dark.svg#gh-dark-mode-only)
+![DOC_COMMENT](./DOC_COMMENT-light.svg#gh-light-mode-only)
+
 ## DOT
 
 ![DOT](./DOT-dark.svg#gh-dark-mode-only)
@@ -159,6 +164,11 @@
 
 ![LET](./LET-dark.svg#gh-dark-mode-only)
 ![LET](./LET-light.svg#gh-light-mode-only)
+
+## LINE_COMMENT
+
+![LINE_COMMENT](./LINE_COMMENT-dark.svg#gh-dark-mode-only)
+![LINE_COMMENT](./LINE_COMMENT-light.svg#gh-light-mode-only)
 
 ## LINE_TERMINATOR
 

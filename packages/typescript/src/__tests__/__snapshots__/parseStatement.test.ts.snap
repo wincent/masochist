@@ -157,6 +157,10 @@ exports[`parseStatement() parser derived from grammar parses a (default) export 
             ],
             "body": [
               {
+                "contents": " No validation, for speed; we trust the generated lexer to be flawless.",
+                "kind": "LineComment",
+              },
+              {
                 "expression": {
                   "kind": "BinaryExpression",
                   "lhs": {
@@ -524,6 +528,10 @@ exports[`parseStatement() parser persisted to disk parses a (default) export cla
               },
             ],
             "body": [
+              {
+                "contents": " No validation, for speed; we trust the generated lexer to be flawless.",
+                "kind": "LineComment",
+              },
               {
                 "expression": {
                   "kind": "BinaryExpression",

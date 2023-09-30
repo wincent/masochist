@@ -272,8 +272,10 @@ export default async function build(
 
   const source = await Bun.file(path.join(import.meta.dir, 'Token.ts')).text();
   const statements = ast.statements(source);
-  assert(statements.length === 1);
-  let tokenClass: Node | null | undefined = statements[0];
+  let tokenClass: Node | null | undefined = statements.find((node) =>
+    node.kind === 'ExportDefaultDeclaration'
+  );
+  assert(tokenClass);
   tokenClass = walk(tokenClass, {
     // Turn: `export default class Token { ... }`
     // Into: `export class Token { ... }`

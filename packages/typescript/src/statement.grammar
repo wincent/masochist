@@ -10,6 +10,7 @@
     ClassDeclaration,
     Declaration,
     DecrementExpression,
+    DocComment,
     ExportDefaultDeclaration,
     Expression,
     ExpressionStatement,
@@ -20,6 +21,7 @@
     IfStatement,
     IncrementExpression,
     IndexExpression,
+    LineComment,
     LogicalNotExpression,
     MemberExpression,
     MethodDefinition,
@@ -94,6 +96,7 @@
 %token CONTINUE
 %token DECREMENT
 %token DEFAULT
+%token DOC_COMMENT
 %token DOT
 %token ELSE
 %token EQUALS
@@ -111,6 +114,7 @@
 %token LESS_THAN
 %token LESS_THAN_OR_EQUAL
 %token LET
+%token LINE_COMMENT
 %token LOGICAL_AND
 %token LOGICAL_OR
 %token MINUS
@@ -148,10 +152,12 @@ StatementList → ε { $$ = []; }
 
 Statement → AssignmentStatement { $$ = $1; }
 Statement → ClassDeclaration { $$ = $1; }
+Statement → DocComment { $$ = $1; }
 Statement → ExportDefaultDeclaration { $$ = $1; }
 Statement → ExpressionStatement { $$ = $1; }
 Statement → ForStatement { $$ = $1; }
 Statement → IfStatement { $$ = $1; }
+Statement → LineComment { $$ = $1; }
 Statement → ReturnStatement { $$ = $1; }
 Statement → ThrowStatement { $$ = $1; }
 Statement → WhileStatement { $$ = $1; }
@@ -618,10 +624,19 @@ ClassBodyList → ClassBodyListItem { $$ = [$1]; }
 ClassBodyList → ClassBodyList ClassBodyListItem { $1.push($2); $$ = $1; }
 ClassBodyList → ε { $$ = []; }
 
-# TODO: ClassBodyListItem → DocComment { $$ = $1; }
+ClassBodyListItem → DocComment { $$ = $1; }
 ClassBodyListItem → GetAccessor { $$ = $1; }
+ClassBodyListItem → LineComment { $$ = $1; }
 ClassBodyListItem → MethodDefinition { $$ = $1; }
 ClassBodyListItem → PropertyDeclaration { $$ = $1; }
+
+DocComment → DOC_COMMENT {
+  $$ = {
+    kind: 'DocComment',
+    // TODO: parse internal structure here
+    contents: [$1.contents],
+  };
+}
 
 GetAccessor → GET Identifier OPENING_PAREN CLOSING_PAREN OPENING_BRACE
     StatementList
@@ -632,6 +647,13 @@ GetAccessor → GET Identifier OPENING_PAREN CLOSING_PAREN OPENING_BRACE
       body: $6,
     };
   }
+
+LineComment → LINE_COMMENT {
+  $$ = {
+    kind: 'LineComment',
+    contents: $1.contents.slice(2), // Strip leading "//".
+  };
+}
 
 # TODO: support computed property names as well
 # TODO: support return type annotations

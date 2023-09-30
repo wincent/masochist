@@ -6,3 +6,5 @@
 - Relies on simplifying assumptions:
   - All statements should end with a semi-colon.
   - Anywhere a multi-statement block may appear (ie. `for`, `if`, `while` etc), it must be delimited by curly braces. This is true even when the block will contain only a single statement.
+  - Comments only appear in statement positions (ie. not in between two expressions).
+  - Speaking of comments, we assume only line comments (ie. `//`) _documentation_ comments (ie. `/** ... */`) exist.

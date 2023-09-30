@@ -1,5 +1,7 @@
 import {ignore, union} from '@masochist/lexer';
 
+import type {TransitionTable} from '@masochist/lexer';
+
 // Operators.
 export const ASSIGN = '=';
 export const BANG = '!';
@@ -103,8 +105,34 @@ export const STRING_VALUE = new RegExp(
   SINGLE_QUOTED_STRING + '|' + DOUBLE_QUOTED_STRING,
 );
 
+// Comments are normally be ignored by engines, but we want to print them, so we
+// preserve them.
+export const LINE_COMMENT = /\/\/[^\n\r]*(?:\r?\n)?/;
+
+// Rolling DOC_COMMENT state machine by hand because we don't support non-greedy
+// matches in regular expressions.
+export const DOC_COMMENT: TransitionTable = { // /\/*.+*\//;
+  acceptStates: new Set([5]),
+  startStates: new Set([0]),
+  transitions: [
+    /* 0 */ new Map([['Atom:/', new Set([1])]]),
+    /* 1 */ new Map([['Atom:*', new Set([2])]]),
+    /* 2 */ new Map([['Atom:*', new Set([3])]]),
+    /* 3 */ new Map([
+      ['Range:\u0000-)', new Set([3])],
+      ['Atom:*', new Set([4])],
+      ['Range:+-\uffff', new Set([3])],
+    ]),
+    /* 4 */ new Map([
+      ['Range:\u0000-.', new Set([3])],
+      ['Atom:/', new Set([5])],
+      ['Range:0-\uffff', new Set([3])],
+    ]),
+    /* 5 */ new Map(),
+  ],
+};
+
 // Ignored.
-export const COMMENT = /\/\/[^\n\r]*(?:\r?\n)?/;
 export const LINE_TERMINATOR = /\n|\r\n|\r/; // Note: we require semicolons.
 export const WHITESPACE = /[\t ]+/;
 
@@ -151,6 +179,7 @@ export default union({
   IDENTIFIER,
   LESS_THAN,
   LESS_THAN_OR_EQUAL,
+  LINE_COMMENT,
   LOGICAL_AND,
   LOGICAL_OR,
   MINUS,
@@ -164,5 +193,5 @@ export default union({
   STRICT_EQUALS,
   STRING_VALUE,
 
-  IGNORED: ignore(COMMENT, LINE_TERMINATOR, WHITESPACE),
+  IGNORED: ignore(LINE_TERMINATOR, WHITESPACE),
 });

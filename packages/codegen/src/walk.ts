@@ -481,9 +481,10 @@ function walkClassDeclaration(
       node === null ||
         node === undefined ||
         node.kind === 'DocComment' ||
-        node.kind === 'PropertyDeclaration' ||
-        node.kind === 'MethodDefinition',
-      'ClassDeclaration body may only contain DocComment, PropertyDeclaration, MethodDefinition nodes',
+        node.kind === 'LineComment' ||
+        node.kind === 'MethodDefinition' ||
+        node.kind === 'PropertyDeclaration',
+      'ClassDeclaration body may only contain DocComment, LineComment, MethodDefinition, PropertyDeclaration nodes',
     );
     return node;
   });
