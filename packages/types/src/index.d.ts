@@ -137,6 +137,7 @@ export type Expression =
   | Identifier
   | IndexExpression
   | MemberExpression
+  | NonNullExpression
   | NewExpression
   | PrimitiveValue
   | RawExpression
@@ -286,6 +287,11 @@ export type MethodDefinition = {
 export type NamedType = {
   kind: 'NamedType';
   name: string;
+};
+
+export type NonNullExpression = {
+  kind: 'NonNullExpression';
+  expression: Expression;
 };
 
 export type NewExpression = {

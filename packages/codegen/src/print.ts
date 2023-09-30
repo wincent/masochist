@@ -155,6 +155,8 @@ function printExpression(
         .join(', ') +
       ')'
     );
+  } else if (expression.kind === 'NonNullExpression') {
+    return printExpression(expression.expression, indent) + '!';
   } else if (expression.kind === 'NullValue') {
     return 'null';
   } else if (expression.kind === 'NumberValue') {

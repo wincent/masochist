@@ -969,7 +969,6 @@ describe('parseStatement()', async () => {
 
       // TODO: LineComment
       // TODO: ability to omit elements in ArrayPattern
-      // TODO: non-null assertions (NonNullExpression)
       it('parses a large chunk of the static parser definition', () => {
         expect(
           parseStatement(`
@@ -989,7 +988,7 @@ describe('parseStatement()', async () => {
                 const {production, pop, action: code} = rules[action.rule];
                 const popped: Array<Production | Token | null> = [];
                 for (let i = 0; i < pop; i++) {
-                  const [node] = stack.pop();
+                  const [node] = stack.pop()!;
                   popped[pop - i - 1] = node;
                 }
                 stack.push([(code as any)(...popped), target]);
@@ -1428,19 +1427,22 @@ describe('parseStatement()', async () => {
                       }],
                     },
                     rhs: {
-                      kind: 'CallExpression',
-                      callee: {
-                        kind: 'MemberExpression',
-                        object: {
-                          kind: 'Identifier',
-                          name: 'stack',
+                      kind: 'NonNullExpression',
+                      expression: {
+                        kind: 'CallExpression',
+                        callee: {
+                          kind: 'MemberExpression',
+                          object: {
+                            kind: 'Identifier',
+                            name: 'stack',
+                          },
+                          property: {
+                            kind: 'Identifier',
+                            name: 'pop',
+                          },
                         },
-                        property: {
-                          kind: 'Identifier',
-                          name: 'pop',
-                        },
+                        arguments: [],
                       },
-                      arguments: [],
                     },
                   }, {
                     kind: 'ExpressionStatement',
@@ -1536,9 +1538,11 @@ describe('parseStatement()', async () => {
         }
 
         it('round-trips a for-statement', () => {
+          // Bonus: includes ArrayPattern, NonNullExpression, CallExpression,
+          // IndexExpression etc.
           const source = dedent`
             for (let i = 0; i < pop; i++) {
-              const [node] = stack.pop();
+              const [node] = stack.pop()!;
               popped[pop - i - 1] = node;
             }
           `;

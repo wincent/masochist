@@ -26,6 +26,7 @@
     NamedType,
     NewExpression,
     Node,
+    NonNullExpression,
     NullValue,
     NumberValue,
     ObjectPattern,
@@ -237,6 +238,12 @@ Identifier → GET {
 }
 
 Expression → OPENING_PAREN Expression CLOSING_PAREN { $$ = $2; }
+Expression → Expression BANG {
+  $$ = {
+    kind: 'NonNullExpression',
+    expression: $1,
+  };
+}
 Expression → THIS {
   $$ = {
     kind: 'Identifier',

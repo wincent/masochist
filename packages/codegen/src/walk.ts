@@ -36,6 +36,7 @@ import type {
   MethodDefinition,
   NewExpression,
   Node,
+  NonNullExpression,
   NullValue,
   NumberValue,
   ObjectProperty,
@@ -142,6 +143,13 @@ type Visitor = {
     definition: MethodDefinition,
   ) => MethodDefinition | null | undefined;
 
+  'NonNullExpression'?: (
+    expression: NonNullExpression,
+  ) => Expression | null | undefined;
+  ['NonNullExpression:exit']?: (
+    expression: NonNullExpression,
+  ) => Expression | null | undefined;
+
   'Program'?: (program: Program) => Program | null | undefined;
   ['Program:exit']?: (program: Program) => Program | null | undefined;
 
@@ -226,6 +234,8 @@ export default function walk(
     return walkMethodDefinition(node, visitor);
   } else if (node.kind === 'NewExpression') {
     return walkNewExpression(node, visitor);
+  } else if (node.kind === 'NonNullExpression') {
+    return walkNonNullExpression(node, visitor);
   } else if (node.kind === 'NullValue') {
     return walkNullValue(node, visitor);
   } else if (node.kind === 'NumberValue') {
@@ -967,6 +977,52 @@ function walkNewExpression(
   return undefined; // Unimplemented.
 }
 
+function walkNonNullExpression(
+  expression: NonNullExpression,
+  visitor: Visitor,
+): Expression | null | undefined {
+  // Pre-order
+  let changed = false;
+  let newExpression = visitor.NonNullExpression?.(expression);
+  if (newExpression === null) {
+    return null;
+  } else if (newExpression === undefined) {
+    newExpression = expression;
+  } else if (newExpression.kind !== 'NonNullExpression') {
+    // Won't do post-order if node kind changes in pre-order; instead, walk
+    // replacement.
+    const replacement = walk(newExpression, visitor);
+    assertIsExpression(replacement);
+    if (replacement === undefined) {
+      return newExpression;
+    } else {
+      return replacement;
+    }
+  } else {
+    changed = true;
+  }
+
+  // Children.
+  const newChild = walk(newExpression.expression, visitor);
+  if (newChild === null) {
+    return null;
+  } else if (newChild !== undefined) {
+    assertIsExpression(newChild);
+    newExpression.expression = newChild;
+    changed = true;
+  }
+
+  // Post-order.
+  const finalExpression = visitor['NonNullExpression:exit']?.(newExpression);
+  if (finalExpression === null) {
+    return null;
+  } else if (finalExpression === undefined) {
+    return changed ? newExpression : undefined;
+  } else {
+    return finalExpression;
+  }
+}
+
 function walkNullValue(
   _value: NullValue,
   _visitor: Visitor,
@@ -1214,6 +1270,7 @@ export function isExpression(node: Node): node is Expression {
     node.kind === 'NewExpression' ||
     node.kind === 'ArrayValue' ||
     node.kind === 'BooleanValue' ||
+    node.kind === 'NonNullExpression' ||
     node.kind === 'NullValue' ||
     node.kind === 'NumberValue' ||
     node.kind === 'ObjectValue' ||
