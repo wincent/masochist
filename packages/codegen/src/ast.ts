@@ -72,7 +72,11 @@ const ast = {
       return {
         kind: 'Argument',
         name,
-        type,
+        type: {
+          // TODO: don't assume NamedType here.
+          kind: 'NamedType',
+          name: type,
+        },
       };
     }
   },
@@ -162,7 +166,13 @@ const ast = {
 
   class(
     id: string,
-    body: Array<DocComment | MethodDefinition | PropertyDeclaration>,
+    body: Array<
+      | DocComment
+      | GetAccessor
+      | LineComment
+      | MethodDefinition
+      | PropertyDeclaration
+    >,
   ): ClassDeclaration {
     return {
       kind: 'ClassDeclaration',
@@ -174,7 +184,11 @@ const ast = {
   classExpression(
     id: string,
     body: Array<
-      DocComment | GetAccessor | MethodDefinition | PropertyDeclaration
+      | DocComment
+      | GetAccessor
+      | LineComment
+      | MethodDefinition
+      | PropertyDeclaration
     >,
   ): ClassExpression {
     return {
@@ -352,7 +366,13 @@ const ast = {
       kind: 'FunctionDeclaration',
       name,
       arguments: args.map(ast.argument),
-      type,
+      type: type ?
+        {
+          // TODO: don't assume NamedType here.
+          kind: 'NamedType',
+          name: type,
+        } :
+        undefined,
       body,
     };
   },
@@ -492,7 +512,11 @@ const ast = {
     return {
       kind: 'PropertyDeclaration',
       name,
-      type,
+      type: {
+        // TODO: don't assume NamedType here.
+        kind: 'NamedType',
+        name: type,
+      },
     };
   },
 

@@ -11,6 +11,7 @@
     Declaration,
     DecrementExpression,
     DocComment,
+    EmptySlot,
     ExportDefaultDeclaration,
     Expression,
     ExpressionStatement,
@@ -28,7 +29,6 @@
     NamedType,
     NewExpression,
     Node,
-    NonNullExpression,
     NullValue,
     NumberValue,
     ObjectPattern,
@@ -60,13 +60,16 @@
   };
   type ClassBodyList = Array<ClassBodyListItem>;
   type ClassBodyListItem =
+    | DocComment
     | GetAccessor
+    | LineComment
     | MethodDefinition
     | PropertyDeclaration;
   type ExpressionList = Array<Expression | SpreadElement>;
   type Id = Identifier | Pattern;
-  type IdentifierList = Array<Identifier>;
+  type IdentifierList = Array<Identifier | EmptySlot>;
   type ObjectPropertyList = Array<ObjectProperty>;
+  type OptionalExpressionList = Array<Expression | SpreadElement | EmptySlot>;
   type StatementList = Array<Statement>;
   type TypeList = Array<Type>;
   type VariableDeclaratorList = Array<VariableDeclarator>;
@@ -218,9 +221,14 @@ ArrayPattern → OPENING_BRACKET IdentifierList CLOSING_BRACKET {
   };
 }
 
-# Note: IdentifierList cannot be empty.
+# Similar to OptionalExpressionList, slots may be empty.
 IdentifierList → Identifier { $$ = [$1]; }
-IdentifierList → IdentifierList COMMA Identifier { $1.push($3); $$ = $1; }
+IdentifierList → Identifier COMMA { $$ = [$1]; }
+IdentifierList → COMMA { $$ = [{kind: 'EmptySlot'}]; }
+IdentifierList → IdentifierList Identifier COMMA { $1.push($2); $$ = $1; }
+IdentifierList → IdentifierList Identifier { $1.push($2); $$ = $1; }
+IdentifierList → IdentifierList COMMA { $1.push({kind: 'EmptySlot'}); $$ = $1; }
+IdentifierList → ε { $$ = []; }
 
 # TODO: use a more restricted type than ObjectPropertyList
 ObjectPattern → OPENING_BRACE ObjectPropertyList CLOSING_BRACE {
@@ -509,12 +517,25 @@ PrimitiveValue → NullValue { $$ = $1; }
 PrimitiveValue → NumberValue { $$ = $1; }
 PrimitiveValue → StringValue { $$ = $1; }
 
-ArrayValue → OPENING_BRACKET ExpressionList CLOSING_BRACKET {
+ArrayValue → OPENING_BRACKET OptionalExpressionList CLOSING_BRACKET {
   $$ = {
     kind: 'ArrayValue',
     items: $2,
   };
 }
+
+# Just like an ExpressionList, but slots may be empty (eg. `[, 2, 3,]`).
+OptionalExpressionList → Expression { $$ = [$1]; }
+OptionalExpressionList → Expression COMMA { $$ = [$1]; }
+OptionalExpressionList → SpreadElement { $$ = [$1]; }
+OptionalExpressionList → SpreadElement COMMA{ $$ = [$1]; }
+OptionalExpressionList → COMMA{ $$ = [{kind: 'EmptySlot'}]; }
+OptionalExpressionList → OptionalExpressionList Expression COMMA { $1.push($2); $$ = $1; }
+OptionalExpressionList → OptionalExpressionList Expression { $1.push($2); $$ = $1; }
+OptionalExpressionList → OptionalExpressionList SpreadElement COMMA { $1.push($2); $$ = $1; }
+OptionalExpressionList → OptionalExpressionList SpreadElement { $1.push($2); $$ = $1; }
+OptionalExpressionList → OptionalExpressionList COMMA { $1.push({kind: 'EmptySlot'}); $$ = $1; }
+OptionalExpressionList → ε { $$ = []; }
 
 BooleanValue → FALSE {
   $$ = {
@@ -683,21 +704,19 @@ Argument → Identifier {
     name: $1.name,
   };
 }
-# TODO: support richer types than Identifier-like
-Argument → Identifier COLON Identifier {
+Argument → Identifier COLON Type {
   $$ = {
     kind: 'Argument',
     name: $1.name,
-    type: $3.name,
+    type: $3,
   };
 }
 
-# TODO: make this support richer `type` values than just Identifier-like ones.
-PropertyDeclaration → Identifier COLON Identifier SEMICOLON {
+PropertyDeclaration → Identifier COLON Type SEMICOLON {
   $$ = {
     kind: 'PropertyDeclaration',
     name: $1.name,
-    type: $3.name,
+    type: $3,
   };
 }
 

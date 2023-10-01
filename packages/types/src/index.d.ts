@@ -6,21 +6,17 @@
 export type Argument = {
   kind: 'Argument';
   name: string;
-  // TODO: instead of using opaque strings, implement at least some basic
-  // internal structure (enough to represent primitive types, object types etc)
-  // although not urgently needed, because I am using type aliases everywhere
-  // for now
-  type?: string;
+  type?: Type;
 };
 
 export type ArrayPattern = {
   kind: 'ArrayPattern';
-  elements: Array<Identifier>;
+  elements: Array<Identifier | EmptySlot>;
 };
 
 export type ArrayValue = {
   kind: 'ArrayValue';
-  items: Array<Expression | SpreadElement>;
+  items: Array<Expression | SpreadElement | EmptySlot>;
 };
 
 export type AssignmentStatement = {
@@ -94,7 +90,11 @@ export type ClassExpression = {
   kind: 'ClassExpression';
   id: string;
   body: Array<
-    DocComment | GetAccessor | MethodDefinition | PropertyDeclaration
+    | DocComment
+    | GetAccessor
+    | LineComment
+    | MethodDefinition
+    | PropertyDeclaration
   >;
 };
 
@@ -127,6 +127,10 @@ export type DecrementExpression = {
 export type DocComment = {
   kind: 'DocComment';
   contents: Array<string>;
+};
+
+export type EmptySlot = {
+  kind: 'EmptySlot';
 };
 
 export type EmptyStatement = {
@@ -166,9 +170,9 @@ export type ExpressionStatement = {
 
 export type ForStatement = {
   kind: 'ForStatement';
-  initializer: VariableDeclaration;
-  condition: Expression;
-  update: Expression;
+  initializer: VariableDeclaration; // TODO: | null;
+  condition: Expression; // TODO: | null;
+  update: Expression; // TODO: | null;
   block: Array<Statement>;
 };
 
@@ -177,7 +181,7 @@ export type FunctionDeclaration = {
   name: string;
   arguments: Array<Argument>;
   body: Array<Statement>;
-  type?: string;
+  type?: Type;
 };
 
 export type FunctionExpression = {
@@ -185,7 +189,7 @@ export type FunctionExpression = {
   arguments: Array<Argument>;
   name?: string;
   body: Array<Statement>;
-  type?: string;
+  type?: Type;
 };
 
 // eg. T<K>
@@ -306,6 +310,8 @@ export type NewExpression = {
 
 export type Node =
   | Argument
+  | Consequent
+  | EmptySlot
   | Expression
   | MethodDefinition
   | GetAccessor
@@ -315,7 +321,8 @@ export type Node =
   | PropertyDeclaration
   | SpreadElement
   | Statement
-  | Type;
+  | Type
+  | VariableDeclaration;
 
 export type NullValue = {
   kind: 'NullValue';
@@ -371,7 +378,7 @@ export type Program = {
 export type PropertyDeclaration = {
   kind: 'PropertyDeclaration';
   name: string;
-  type: string;
+  type: Type;
 };
 
 /**

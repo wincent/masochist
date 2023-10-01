@@ -8,13 +8,12 @@ import build from '../build';
 
 import type {TransitionTable} from '@masochist/lexer';
 import type {
-  Argument,
-  AssignmentStatement,
   DocComment,
   ExportDefaultDeclaration,
-  FunctionDeclaration,
   ImportStatement,
+  NonNullExpression,
   RawStatement,
+  Type,
 } from '@masochist/types';
 
 import type {ParseTable} from '../getParseTable';
@@ -35,31 +34,28 @@ export async function getParser<T = unknown>(
   const node = build(grammar, parseTable);
 
   walk(node, {
-    // Strip type annotation:
+    // Strip type annotations.
+    //
+    // Argument types:
+    //
     // - `function parse(input: string)` → `function parse(input)`
-    Argument(argument: Argument) {
-      if (argument.type) {
-        return {
-          ...argument,
-          type: undefined,
-        };
-      } else {
-        return undefined; // Avoid TS7030: Not all code paths return a value.
-      }
-    },
-
-    // Strip type annotations:
+    //
+    // Return types:
+    //
+    // - `function r3(): StatementList { ... }` → `function r3() { ... }`
+    //
+    // Assignment statement types:
+    //
     // - `const actions: Actions = [...]` → `const actions = [...]`
-    // - `const gotos: Gotos = [...]`     → `const gotos = [...]`
-    AssignmentStatement(statement: AssignmentStatement) {
-      if (statement.type) {
-        return {
-          ...statement,
-          type: undefined,
-        };
-      } else {
-        return undefined; // Avoid TS7030: Not all code paths return a value.
-      }
+    // - `const gotos: Gotos = [...]` → `const gotos = [...]`
+    // - `const popped: Array<Production | Token | null> = []` →
+    //   `const popped = []`
+    //
+    // Casts:
+    //
+    // - `code as any` → `code`.
+    Type(_type: Type) {
+      return null;
     },
 
     // Remove doc comments.
@@ -82,37 +78,19 @@ export async function getParser<T = unknown>(
       }
     },
 
-    // Strip function return types; eg:
-    // `function r3(): StatementList { ... }` → `function r3() { ... }`
-    FunctionDeclaration(declaration: FunctionDeclaration) {
-      if (declaration.type) {
-        return {
-          ...declaration,
-          type: undefined,
-        };
-      } else {
-        return undefined; // Avoid TS7030: Not all code paths return a value.
-      }
-    },
-
     // Remove `import {Lexer, Token} from './lex'` statement.
     ImportStatement(_statement: ImportStatement) {
       return null;
     },
 
-    // Brutal hack to strip out a type annotation, a non-null assertion, and a
-    // cast in the middle of a multi-line RawStatement.
+    // `stack.pop()!` → `stack.pop()`
+    NonNullExpression(expression: NonNullExpression) {
+      return expression.expression;
+    },
+
+    // Skip the prologue.
     RawStatement(statement: RawStatement) {
-      if (statement.statement.match(/const popped:/)) {
-        // TODO: once this raw statement is gone, this will need to change
-        return {
-          kind: 'RawStatement',
-          statement: statement.statement
-            .replace(/const popped(:\s*.+\s*=)/, 'const popped =')
-            .replace('!;', ';')
-            .replace(/ as any\b/, ''),
-        };
-      } else if (statement.statement.match(/\bimport type\b/)) {
+      if (statement.statement.match(/\bimport type\b/)) {
         // Skip the entire prologue; it's only for types.
         // TODO: actually flag the prologue with a marker
         return null;

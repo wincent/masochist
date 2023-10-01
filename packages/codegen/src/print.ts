@@ -3,6 +3,7 @@ import {invariant, unreachable} from '@masochist/common';
 import type {
   Argument,
   DocComment,
+  EmptySlot,
   Expression,
   FunctionExpression,
   GetAccessor,
@@ -30,8 +31,12 @@ export default function print(ast: Program) {
     .join('');
 }
 
-function printArgument(argument: Argument, _indent: number): string {
-  return [argument.name, argument.type].filter(Boolean).join(': ');
+function printArgument(argument: Argument, indent: number): string {
+  if (argument.type) {
+    return `${argument.name}: ${printType(argument.type, indent)}`;
+  } else {
+    return argument.name;
+  }
 }
 
 function printClass(
@@ -91,7 +96,7 @@ function printClass(
 }
 
 function printExpression(
-  expression: Expression | SpreadElement,
+  expression: Expression | SpreadElement | EmptySlot,
   indent: number,
 ): string {
   if (expression.kind === 'ArrayValue') {
@@ -131,6 +136,8 @@ function printExpression(
     } else {
       return '--' + printExpression(expression.operand, indent).trimStart();
     }
+  } else if (expression.kind === 'EmptySlot') {
+    return '';
   } else if (expression.kind === 'FunctionExpression') {
     return printFunctionExpression(expression, indent, {useKeyword: true});
   } else if (expression.kind === 'Identifier') {
@@ -267,7 +274,7 @@ function printFunctionExpression(
       .map((argument) => printArgument(argument, indent))
       .join(', ') +
     ')' +
-    (expression.type ? `: ${expression.type}` : '') +
+    (expression.type ? `: ${printType(expression.type, indent + 1)}` : '') +
     ' {\n' +
     expression.body
       .map((statement) => printStatement(statement, indent + 1))
@@ -325,7 +332,8 @@ function printPropertyDeclaration(
   declaration: PropertyDeclaration,
   indent: number,
 ): string {
-  return printIndent(indent) + `${declaration.name}: ${declaration.type};\n`;
+  return printIndent(indent) +
+    `${declaration.name}: ${printType(declaration.type, indent)};\n`;
 }
 
 function printStatement(statement: Statement, indent: number): string {
@@ -449,7 +457,7 @@ function printStatement(statement: Statement, indent: number): string {
         .map((argument) => printArgument(argument, indent))
         .join(', ') +
       ')' +
-      (statement.type ? `: ${statement.type}` : '') +
+      (statement.type ? `: ${printType(statement.type, indent + 1)}` : '') +
       ' {\n' +
       statement.body
         .map((statement) => {

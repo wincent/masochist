@@ -360,12 +360,6 @@ export default async function build(
         '@returns {Generator<Token, void, unknown>}',
       ),
       ast.default(
-        // Note the TS annotation in the argument here; it's one of few explicit
-        // annotations required to make `tsc` accept the generated lexer without
-        // any errors or warnings. Without this, we'd get:
-        //
-        //    error TS7006: Parameter 'input' implicitly has an 'any' type.
-        //
         ast.function({
           name: '*lex',
           arguments: ['input: string'],

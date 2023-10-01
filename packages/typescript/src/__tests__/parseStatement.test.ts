@@ -142,6 +142,202 @@ describe('parseStatement()', async () => {
         expect(parseStatement(input)).toMatchSnapshot();
       });
 
+      it('parses an array with a trailing comma', () => {
+        const input = '[1, 2,];';
+        expect(parseStatement(input)).toEqual([{
+          kind: 'ExpressionStatement',
+          expression: {
+            kind: 'ArrayValue',
+            items: [{
+              kind: 'NumberValue',
+              value: 1,
+              base: 10,
+            }, {
+              kind: 'NumberValue',
+              value: 2,
+              base: 10,
+            }],
+          },
+        }]);
+      });
+
+      it('parses an array with a leading comma', () => {
+        const input = '[, 1, 2];';
+        expect(parseStatement(input)).toEqual([{
+          kind: 'ExpressionStatement',
+          expression: {
+            kind: 'ArrayValue',
+            items: [{
+              kind: 'EmptySlot',
+            }, {
+              kind: 'NumberValue',
+              value: 1,
+              base: 10,
+            }, {
+              kind: 'NumberValue',
+              value: 2,
+              base: 10,
+            }],
+          },
+        }]);
+      });
+
+      it('parses an array with an empty slot in the middle', () => {
+        const input = '[1,,  2];';
+        expect(parseStatement(input)).toEqual([{
+          kind: 'ExpressionStatement',
+          expression: {
+            kind: 'ArrayValue',
+            items: [{
+              kind: 'NumberValue',
+              value: 1,
+              base: 10,
+            }, {
+              kind: 'EmptySlot',
+            }, {
+              kind: 'NumberValue',
+              value: 2,
+              base: 10,
+            }],
+          },
+        }]);
+      });
+
+      it('parses an array with multiple empty slots and spreads', () => {
+        const input = '[, 1,,, ...spread, ...more, 2,];';
+        expect(parseStatement(input)).toEqual([{
+          kind: 'ExpressionStatement',
+          expression: {
+            kind: 'ArrayValue',
+            items: [{
+              kind: 'EmptySlot',
+            }, {
+              kind: 'NumberValue',
+              value: 1,
+              base: 10,
+            }, {
+              kind: 'EmptySlot',
+            }, {
+              kind: 'EmptySlot',
+            }, {
+              kind: 'SpreadElement',
+              expression: {
+                kind: 'Identifier',
+                name: 'spread',
+              },
+            }, {
+              kind: 'SpreadElement',
+              expression: {
+                kind: 'Identifier',
+                name: 'more',
+              },
+            }, {
+              kind: 'NumberValue',
+              value: 2,
+              base: 10,
+            }],
+          },
+        }]);
+      });
+
+      it('parses an array pattern with a trailing comma', () => {
+        const input = 'const [a, b,] = c;';
+        expect(parseStatement(input)).toEqual([{
+          kind: 'AssignmentStatement',
+          binding: 'const',
+          lhs: {
+            kind: 'ArrayPattern',
+            elements: [{
+              kind: 'Identifier',
+              name: 'a',
+            }, {
+              kind: 'Identifier',
+              name: 'b',
+            }],
+          },
+          rhs: {
+            kind: 'Identifier',
+            name: 'c',
+          },
+        }]);
+      });
+
+      it('parses an array pattern with a leading comma', () => {
+        const input = 'const [, a, b] = c;';
+        expect(parseStatement(input)).toEqual([{
+          kind: 'AssignmentStatement',
+          binding: 'const',
+          lhs: {
+            kind: 'ArrayPattern',
+            elements: [{
+              kind: 'EmptySlot',
+            }, {
+              kind: 'Identifier',
+              name: 'a',
+            }, {
+              kind: 'Identifier',
+              name: 'b',
+            }],
+          },
+          rhs: {
+            kind: 'Identifier',
+            name: 'c',
+          },
+        }]);
+      });
+
+      it('parses an array pattern with an empty slot in the middle', () => {
+        const input = 'const [a,, b] = c;';
+        expect(parseStatement(input)).toEqual([{
+          kind: 'AssignmentStatement',
+          binding: 'const',
+          lhs: {
+            kind: 'ArrayPattern',
+            elements: [{
+              kind: 'Identifier',
+              name: 'a',
+            }, {
+              kind: 'EmptySlot',
+            }, {
+              kind: 'Identifier',
+              name: 'b',
+            }],
+          },
+          rhs: {
+            kind: 'Identifier',
+            name: 'c',
+          },
+        }]);
+      });
+
+      it('parses an array pattern with multiple empty slots', () => {
+        const input = 'const [, a,,, b,] = c;';
+        expect(parseStatement(input)).toEqual([{
+          kind: 'AssignmentStatement',
+          binding: 'const',
+          lhs: {
+            kind: 'ArrayPattern',
+            elements: [{
+              kind: 'EmptySlot',
+            }, {
+              kind: 'Identifier',
+              name: 'a',
+            }, {
+              kind: 'EmptySlot',
+            }, {
+              kind: 'EmptySlot',
+            }, {
+              kind: 'Identifier',
+              name: 'b',
+            }],
+          },
+          rhs: {
+            kind: 'Identifier',
+            name: 'c',
+          },
+        }]);
+      });
+
       it('parses a named type const assignment', () => {
         const input = 'const stack: Foo = [[null, 0]];';
         expect(parseStatement(input)).toEqual([{
@@ -966,8 +1162,6 @@ describe('parseStatement()', async () => {
         }]);
       });
 
-      // TODO: LineComment
-      // TODO: ability to omit elements in ArrayPattern
       it('parses a large chunk of the static parser definition', () => {
         expect(
           parseStatement(`
@@ -975,7 +1169,11 @@ describe('parseStatement()', async () => {
             const lexer = new Lexer(input);
             let token = lexer.next() || EOF;
             while (true) {
+              const [, current] = stack[stack.length - 1];
+              const action = actions[current][token.name];
+
               if (!action) {
+                // TODO: maybe show stack here?
                 throw new Error('syntax error at symbol ' + token.name);
               } else if (action.kind === 'Accept') {
                 const [tree] = stack[1];
@@ -990,6 +1188,12 @@ describe('parseStatement()', async () => {
                   const [node] = stack.pop()!;
                   popped[pop - i - 1] = node;
                 }
+                const [, next] = stack[stack.length - 1];
+                const target = gotos[next][production];
+
+                // Use "as any" cast to suppress:
+                // - TS2590: Expression produces a union type that is too complex to represent.
+                // - TS2556: A spread argument must either have a tuple type or be passed to a rest parameter.
                 stack.push([(code as any)(...popped), target]);
               }
             }
@@ -1093,6 +1297,77 @@ describe('parseStatement()', async () => {
               value: true,
             },
             block: [{
+              kind: 'AssignmentStatement',
+              binding: 'const',
+              lhs: {
+                kind: 'ArrayPattern',
+                elements: [{
+                  kind: 'EmptySlot',
+                }, {
+                  kind: 'Identifier',
+                  name: 'current',
+                }],
+              },
+              rhs: {
+                kind: 'IndexExpression',
+                index: {
+                  kind: 'BinaryExpression',
+                  lhs: {
+                    kind: 'MemberExpression',
+                    object: {
+                      kind: 'Identifier',
+                      name: 'stack',
+                    },
+                    property: {
+                      kind: 'Identifier',
+                      name: 'length',
+                    },
+                  },
+                  operator: '-',
+                  rhs: {
+                    kind: 'NumberValue',
+                    value: 1,
+                    base: 10,
+                  },
+                },
+                indexee: {
+                  kind: 'Identifier',
+                  name: 'stack',
+                },
+              },
+            }, {
+              kind: 'AssignmentStatement',
+              binding: 'const',
+              lhs: {
+                kind: 'Identifier',
+                name: 'action',
+              },
+              rhs: {
+                kind: 'IndexExpression',
+                index: {
+                  kind: 'MemberExpression',
+                  object: {
+                    kind: 'Identifier',
+                    name: 'token',
+                  },
+                  property: {
+                    kind: 'Identifier',
+                    name: 'name',
+                  },
+                },
+                indexee: {
+                  kind: 'IndexExpression',
+                  index: {
+                    kind: 'Identifier',
+                    name: 'current',
+                  },
+                  indexee: {
+                    kind: 'Identifier',
+                    name: 'actions',
+                  },
+                },
+              },
+            }, {
               kind: 'IfStatement',
               consequents: [{
                 kind: 'Consequent',
@@ -1104,6 +1379,9 @@ describe('parseStatement()', async () => {
                   },
                 },
                 block: [{
+                  kind: 'LineComment',
+                  contents: ' TODO: maybe show stack here?',
+                }, {
                   kind: 'ThrowStatement',
                   expression: {
                     kind: 'NewExpression',
@@ -1482,6 +1760,81 @@ describe('parseStatement()', async () => {
                       },
                     },
                   }],
+                }, {
+                  kind: 'AssignmentStatement',
+                  binding: 'const',
+                  lhs: {
+                    kind: 'ArrayPattern',
+                    elements: [{
+                      kind: 'EmptySlot',
+                    }, {
+                      kind: 'Identifier',
+                      name: 'next',
+                    }],
+                  },
+                  rhs: {
+                    kind: 'IndexExpression',
+                    index: {
+                      kind: 'BinaryExpression',
+                      lhs: {
+                        kind: 'MemberExpression',
+                        object: {
+                          kind: 'Identifier',
+                          name: 'stack',
+                        },
+                        property: {
+                          kind: 'Identifier',
+                          name: 'length',
+                        },
+                      },
+                      operator: '-',
+                      rhs: {
+                        kind: 'NumberValue',
+                        value: 1,
+                        base: 10,
+                      },
+                    },
+                    indexee: {
+                      kind: 'Identifier',
+                      name: 'stack',
+                    },
+                  },
+                }, {
+                  kind: 'AssignmentStatement',
+                  binding: 'const',
+                  lhs: {
+                    kind: 'Identifier',
+                    name: 'target',
+                  },
+                  rhs: {
+                    kind: 'IndexExpression',
+                    index: {
+                      kind: 'Identifier',
+                      name: 'production',
+                    },
+                    indexee: {
+                      kind: 'IndexExpression',
+                      index: {
+                        kind: 'Identifier',
+                        name: 'next',
+                      },
+                      indexee: {
+                        kind: 'Identifier',
+                        name: 'gotos',
+                      },
+                    },
+                  },
+                }, {
+                  kind: 'LineComment',
+                  contents: ' Use "as any" cast to suppress:',
+                }, {
+                  kind: 'LineComment',
+                  contents:
+                    ' - TS2590: Expression produces a union type that is too complex to represent.',
+                }, {
+                  kind: 'LineComment',
+                  contents:
+                    ' - TS2556: A spread argument must either have a tuple type or be passed to a rest parameter.',
                 }, {
                   kind: 'ExpressionStatement',
                   expression: {

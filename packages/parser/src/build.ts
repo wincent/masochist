@@ -223,20 +223,16 @@ export default function build(
     ast.default(
       ast.function({
         name,
-        // TODO: use real Type objects in Argument too
         arguments: ['input: string'],
         // TODO: return type Production
         // (need to include assertIsProduction in order for that to work)
         // or return type $StartingProduction
         // (need assertion for that too)
-        body: [
-          ...ast.statements(`
+        body: [...ast.statements(`
             const stack: Array<[Production | Token | null, number]> = [[null, 0]];
             const lexer = new Lexer(input);
             let token = lexer.next() || EOF;
-          `),
-          // TODO: replace rawStatement, line by line...
-          ast.rawStatement(`
+
             while (true) {
               const [, current] = stack[stack.length - 1];
               const action = actions[current][token.name];
@@ -260,14 +256,14 @@ export default function build(
                 }
                 const [, next] = stack[stack.length - 1];
                 const target = gotos[next][production];
-                // "as any" cast here suppresses:
+
+                // Use "as any" cast to suppress:
                 // - TS2590: Expression produces a union type that is too complex to represent.
                 // - TS2556: A spread argument must either have a tuple type or be passed to a rest parameter.
                 stack.push([(code as any)(...popped), target]);
               }
             }
-          `),
-        ],
+          `)],
       }),
     ),
   ));

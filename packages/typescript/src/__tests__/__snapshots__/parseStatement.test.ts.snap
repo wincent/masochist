@@ -109,22 +109,34 @@ exports[`parseStatement() parser derived from grammar parses a (default) export 
         {
           "kind": "PropertyDeclaration",
           "name": "name",
-          "type": "string",
+          "type": {
+            "kind": "NamedType",
+            "name": "string",
+          },
         },
         {
           "kind": "PropertyDeclaration",
           "name": "start",
-          "type": "number",
+          "type": {
+            "kind": "NamedType",
+            "name": "number",
+          },
         },
         {
           "kind": "PropertyDeclaration",
           "name": "end",
-          "type": "number",
+          "type": {
+            "kind": "NamedType",
+            "name": "number",
+          },
         },
         {
           "kind": "PropertyDeclaration",
           "name": "source",
-          "type": "string",
+          "type": {
+            "kind": "NamedType",
+            "name": "string",
+          },
         },
         {
           "key": {
@@ -137,22 +149,34 @@ exports[`parseStatement() parser derived from grammar parses a (default) export 
               {
                 "kind": "Argument",
                 "name": "name",
-                "type": "string",
+                "type": {
+                  "kind": "NamedType",
+                  "name": "string",
+                },
               },
               {
                 "kind": "Argument",
                 "name": "start",
-                "type": "number",
+                "type": {
+                  "kind": "NamedType",
+                  "name": "number",
+                },
               },
               {
                 "kind": "Argument",
                 "name": "end",
-                "type": "number",
+                "type": {
+                  "kind": "NamedType",
+                  "name": "number",
+                },
               },
               {
                 "kind": "Argument",
                 "name": "source",
-                "type": "string",
+                "type": {
+                  "kind": "NamedType",
+                  "name": "string",
+                },
               },
             ],
             "body": [
@@ -481,22 +505,34 @@ exports[`parseStatement() parser persisted to disk parses a (default) export cla
         {
           "kind": "PropertyDeclaration",
           "name": "name",
-          "type": "string",
+          "type": {
+            "kind": "NamedType",
+            "name": "string",
+          },
         },
         {
           "kind": "PropertyDeclaration",
           "name": "start",
-          "type": "number",
+          "type": {
+            "kind": "NamedType",
+            "name": "number",
+          },
         },
         {
           "kind": "PropertyDeclaration",
           "name": "end",
-          "type": "number",
+          "type": {
+            "kind": "NamedType",
+            "name": "number",
+          },
         },
         {
           "kind": "PropertyDeclaration",
           "name": "source",
-          "type": "string",
+          "type": {
+            "kind": "NamedType",
+            "name": "string",
+          },
         },
         {
           "key": {
@@ -509,22 +545,34 @@ exports[`parseStatement() parser persisted to disk parses a (default) export cla
               {
                 "kind": "Argument",
                 "name": "name",
-                "type": "string",
+                "type": {
+                  "kind": "NamedType",
+                  "name": "string",
+                },
               },
               {
                 "kind": "Argument",
                 "name": "start",
-                "type": "number",
+                "type": {
+                  "kind": "NamedType",
+                  "name": "number",
+                },
               },
               {
                 "kind": "Argument",
                 "name": "end",
-                "type": "number",
+                "type": {
+                  "kind": "NamedType",
+                  "name": "number",
+                },
               },
               {
                 "kind": "Argument",
                 "name": "source",
-                "type": "string",
+                "type": {
+                  "kind": "NamedType",
+                  "name": "string",
+                },
               },
             ],
             "body": [

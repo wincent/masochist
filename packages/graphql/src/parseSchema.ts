@@ -153,11 +153,9 @@ export default function parseSchema(input: string) {
   const stack: Array<[Production | Token | null, number]> = [[null, 0]];
   const lexer = new Lexer(input);
   let token = lexer.next() || EOF;
-
   while (true) {
     const [, current] = stack[stack.length - 1];
     const action = actions[current][token.name];
-
     if (!action) {
       // TODO: maybe show stack here?
       throw new Error('syntax error at symbol ' + token.name);
@@ -177,7 +175,7 @@ export default function parseSchema(input: string) {
       }
       const [, next] = stack[stack.length - 1];
       const target = gotos[next][production];
-      // "as any" cast here suppresses:
+      // Use "as any" cast to suppress:
       // - TS2590: Expression produces a union type that is too complex to represent.
       // - TS2556: A spread argument must either have a tuple type or be passed to a rest parameter.
       stack.push([(code as any)(...popped), target]);

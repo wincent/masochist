@@ -11,10 +11,12 @@ import type {
   CallExpression,
   ClassDeclaration,
   ClassExpression,
+  Consequent,
   ContinueStatement,
   Declaration,
   DecrementExpression,
   DocComment,
+  EmptySlot,
   EmptyStatement,
   ExportDefaultDeclaration,
   ExportNamedDeclaration,
@@ -55,6 +57,7 @@ import type {
   ThrowStatement,
   Type,
   UndefinedValue,
+  VariableDeclaration,
   WhileStatement,
   YieldExpression,
 } from '@masochist/types';
@@ -77,12 +80,22 @@ type Visitor = {
   'Argument'?: (argument: Argument) => Argument | null | undefined;
   ['Argument:exit']?: (argument: Argument) => Argument | null | undefined;
 
+  'ArrayValue'?: (value: ArrayValue) => Expression | null | undefined;
+  ['ArrayValue:exit']?: (value: ArrayValue) => Expression | null | undefined;
+
   'AssignmentStatement'?: (
     assignment: AssignmentStatement,
   ) => Statement | null | undefined;
   ['AssignmentStatement:exit']?: (
     assignment: AssignmentStatement,
   ) => Statement | null | undefined;
+
+  'CallExpression'?: (
+    expression: CallExpression,
+  ) => Expression | null | undefined;
+  ['CallExpression:exit']?: (
+    expression: CallExpression,
+  ) => Expression | null | undefined;
 
   'ClassDeclaration'?: (
     declaration: ClassDeclaration,
@@ -97,6 +110,13 @@ type Visitor = {
   ['ClassExpression:exit']?: (
     expression: ClassExpression,
   ) => Expression | null | undefined;
+
+  'Consequent'?: (
+    consequent: Consequent,
+  ) => Consequent | null | undefined;
+  ['Consequent:exit']?: (
+    consequent: Consequent,
+  ) => Consequent | null | undefined;
 
   'DocComment'?: (comment: DocComment) => Statement | null | undefined;
   ['DocComment:exit']?: (comment: DocComment) => Statement | null | undefined;
@@ -115,6 +135,20 @@ type Visitor = {
     declaration: ExportNamedDeclaration,
   ) => Statement | null | undefined;
 
+  'ExpressionStatement'?: (
+    statement: ExpressionStatement,
+  ) => Statement | null | undefined;
+  ['ExpressionStatement:exit']?: (
+    statement: ExpressionStatement,
+  ) => Statement | null | undefined;
+
+  'ForStatement'?: (
+    statement: ForStatement,
+  ) => Statement | null | undefined;
+  ['ForStatement:exit']?: (
+    statement: ForStatement,
+  ) => Statement | null | undefined;
+
   'FunctionDeclaration'?: (
     declaration: FunctionDeclaration,
   ) => Statement | null | undefined;
@@ -129,12 +163,26 @@ type Visitor = {
     expression: FunctionExpression,
   ) => FunctionExpression | null | undefined;
 
+  'IfStatement'?: (
+    statement: IfStatement,
+  ) => Statement | null | undefined;
+  ['IfStatement:exit']?: (
+    statement: IfStatement,
+  ) => Statement | null | undefined;
+
   'ImportStatement'?: (
     statement: ImportStatement,
   ) => Statement | null | undefined;
   ['ImportStatement:exit']?: (
     statement: ImportStatement,
   ) => Statement | null | undefined;
+
+  'Identifier'?: (
+    identifier: Identifier,
+  ) => Identifier | null | undefined;
+  ['Identifier:exit']?: (
+    identifier: Identifier,
+  ) => Identifier | null | undefined;
 
   'MethodDefinition'?: (
     definition: MethodDefinition,
@@ -164,6 +212,18 @@ type Visitor = {
   ['RawStatement:exit']?: (
     statement: RawStatement,
   ) => Statement | null | undefined;
+
+  'Type'?: (type: Type) => Type | null | undefined;
+  ['Type:exit']?: (
+    type: Type,
+  ) => Type | null | undefined;
+
+  'WhileStatement'?: (
+    statement: WhileStatement,
+  ) => Statement | null | undefined;
+  ['WhileStatement:exit']?: (
+    statement: WhileStatement,
+  ) => Statement | null | undefined;
 };
 
 export default function walk(
@@ -190,12 +250,16 @@ export default function walk(
     return walkClassDeclaration(node, visitor);
   } else if (node.kind === 'ClassExpression') {
     return walkClassExpression(node, visitor);
+  } else if (node.kind === 'Consequent') {
+    return walkConsequent(node, visitor);
   } else if (node.kind === 'ContinueStatement') {
     return walkContinueStatement(node, visitor);
   } else if (node.kind === 'DecrementExpression') {
     return walkDecrementExpression(node, visitor);
   } else if (node.kind === 'DocComment') {
     return walkDocComment(node, visitor);
+  } else if (node.kind === 'EmptySlot') {
+    return walkEmptySlot(node, visitor);
   } else if (node.kind === 'EmptyStatement') {
     return walkEmptyStatement(node, visitor);
   } else if (node.kind === 'ExportDefaultDeclaration') {
@@ -276,10 +340,12 @@ export default function walk(
     node.kind === 'TupleType' ||
     node.kind === 'UnionType'
   ) {
-    // Using a single implementation (a no-op for now!) for all `Type` nodes.
+    // Using a single implementation for all `Type` nodes.
     return walkType(node, visitor);
   } else if (node.kind === 'UndefinedValue') {
     return walkUndefinedValue(node, visitor);
+  } else if (node.kind === 'VariableDeclaration') {
+    return walkVariableDeclaration(node, visitor);
   } else if (node.kind === 'WhileStatement') {
     return walkWhileStatement(node, visitor);
   } else if (node.kind === 'YieldExpression') {
@@ -329,7 +395,24 @@ function walkArgument(
     changed = true;
   }
 
-  // This is a leaf node, so no children to visit.
+  // Children.
+  if (newArgument.type) {
+    const newType = walk(newArgument.type, visitor);
+    if (newType === null) {
+      newArgument = {
+        ...newArgument,
+        type: undefined,
+      };
+      changed = true;
+    } else if (newType !== undefined) {
+      assertIsType(newType);
+      newArgument = {
+        ...newArgument,
+        type: newType,
+      };
+      changed = true;
+    }
+  }
 
   // Post-order.
   const finalArgument = visitor['Argument:exit']?.(newArgument);
@@ -343,10 +426,58 @@ function walkArgument(
 }
 
 function walkArrayValue(
-  _value: ArrayValue,
-  _visitor: Visitor,
-): Expression | null | undefined {
-  return undefined; // Unimplemented.
+  value: ArrayValue,
+  visitor: Visitor,
+): Expression | SpreadElement | EmptySlot | null | undefined {
+  // Pre-order
+  let changed = false;
+  let newValue = visitor.ArrayValue?.(value);
+  if (newValue === null) {
+    return null;
+  } else if (newValue === undefined) {
+    newValue = value;
+  } else if (newValue.kind !== 'ArrayValue') {
+    // Won't do post-order if node kind changes in pre-order; instead, walk
+    // replacement.
+    const replacement = walk(newValue, visitor);
+    assertIsExpression(replacement);
+    if (replacement === undefined) {
+      return newValue;
+    } else {
+      return replacement;
+    }
+  } else {
+    changed = true;
+  }
+
+  // Children.
+  const items = mapChildren(newValue.items, (statement) => {
+    const node = walk(statement, visitor);
+    invariant(
+      node == null ||
+        isExpression(node) ||
+        node.kind === 'EmptySlot' ||
+        node.kind === 'SpreadElement',
+    );
+    return node;
+  });
+  if (items !== newValue.items) {
+    newValue = {
+      ...newValue,
+      items,
+    };
+    changed = true;
+  }
+
+  // Post-order.
+  const finalValue = visitor['ArrayValue:exit']?.(newValue);
+  if (finalValue === null) {
+    return null;
+  } else if (finalValue === undefined) {
+    return changed ? newValue : undefined;
+  } else {
+    return finalValue;
+  }
 }
 
 function walkAssignmentStatement(
@@ -386,11 +517,17 @@ function walkAssignmentStatement(
   if (newStatement.type) {
     newChild = walk(newStatement.type, visitor);
     if (newChild === null) {
-      // TODO: remove type (can I mutate?)
+      newStatement = {
+        ...newStatement,
+        type: undefined,
+      };
       changed = true;
     } else if (newChild !== undefined) {
-      // TODO: replace type (can I mutate?)
-      // TODO: assertIsType
+      assertIsType(newChild);
+      newStatement = {
+        ...newStatement,
+        type: newChild,
+      };
       changed = true;
     }
   }
@@ -443,10 +580,68 @@ function walkBreakStatement(
 }
 
 function walkCallExpression(
-  _expression: CallExpression,
-  _visitor: Visitor,
+  expression: CallExpression,
+  visitor: Visitor,
 ): Expression | null | undefined {
-  return undefined; // Unimplemented.
+  // Pre-order
+  let changed = false;
+  let newExpression = visitor.CallExpression?.(expression);
+  if (newExpression === null) {
+    return null;
+  } else if (newExpression === undefined) {
+    newExpression = expression;
+  } else if (newExpression.kind !== 'CallExpression') {
+    // Won't do post-order if node kind changes in pre-order; instead, walk
+    // replacement.
+    const replacement = walk(newExpression, visitor);
+    assertIsExpression(replacement);
+    if (replacement === undefined) {
+      return newExpression;
+    } else {
+      return replacement;
+    }
+  } else {
+    changed = true;
+  }
+
+  // Children.
+  const newCallee = walk(newExpression.callee, visitor);
+  if (newCallee === null) {
+    return null;
+  } else if (newCallee !== undefined) {
+    assertIsExpression(newCallee);
+    newExpression = {
+      ...newExpression,
+      callee: newCallee,
+    };
+    changed = true;
+  }
+  const newArguments = mapChildren(newExpression.arguments, (arg) => {
+    const node = walk(arg, visitor);
+    invariant(
+      node == null ||
+        isExpression(node) ||
+        node.kind === 'SpreadElement',
+    );
+    return node;
+  });
+  if (newArguments !== newExpression.arguments) {
+    newExpression = {
+      ...newExpression,
+      arguments: newArguments,
+    };
+    changed = true;
+  }
+
+  // Post-order.
+  const finalExpression = visitor['CallExpression:exit']?.(newExpression);
+  if (finalExpression === null) {
+    return null;
+  } else if (finalExpression === undefined) {
+    return changed ? newExpression : undefined;
+  } else {
+    return finalExpression;
+  }
 }
 
 function walkClassDeclaration(
@@ -481,10 +676,11 @@ function walkClassDeclaration(
       node === null ||
         node === undefined ||
         node.kind === 'DocComment' ||
+        node.kind === 'GetAccessor' ||
         node.kind === 'LineComment' ||
         node.kind === 'MethodDefinition' ||
         node.kind === 'PropertyDeclaration',
-      'ClassDeclaration body may only contain DocComment, LineComment, MethodDefinition, PropertyDeclaration nodes',
+      'ClassDeclaration body may only contain DocComment, GetAccessor, LineComment, MethodDefinition, PropertyDeclaration nodes',
     );
     return node;
   });
@@ -536,9 +732,11 @@ function walkClassExpression(
       node === null ||
         node === undefined ||
         node.kind === 'DocComment' ||
-        node.kind === 'PropertyDeclaration' ||
-        node.kind === 'MethodDefinition',
-      'ClassExpression body may only contain DocComment, PropertyDeclaration, MethodDefinition nodes',
+        node.kind === 'GetAccessor' ||
+        node.kind === 'LineComment' ||
+        node.kind === 'MethodDefinition' ||
+        node.kind === 'PropertyDeclaration',
+      'ClassExpression body may only contain DocComment, GetAccessor, LineComment, MethodDefinition, PropertyDeclaration nodes',
     );
     return node;
   });
@@ -555,6 +753,67 @@ function walkClassExpression(
     return changed ? newExpression : undefined;
   } else {
     return finalExpression;
+  }
+}
+
+function walkConsequent(
+  consequent: Consequent,
+  visitor: Visitor,
+): Consequent | null | undefined {
+  // Pre-order
+  let changed = false;
+  let newConsequent = visitor.Consequent?.(consequent);
+  if (newConsequent === null) {
+    return null;
+  } else if (newConsequent === undefined) {
+    newConsequent = consequent;
+  } else if (newConsequent.kind !== 'Consequent') {
+    // Won't do post-order if node kind changes in pre-order; instead, walk
+    // replacement.
+    const replacement = walk(newConsequent, visitor);
+    assertIsConsequent(replacement);
+    if (replacement === undefined) {
+      return newConsequent;
+    } else {
+      return replacement;
+    }
+  } else {
+    changed = true;
+  }
+
+  // Children.
+  const newCondition = walk(newConsequent.condition, visitor);
+  if (newCondition === null) {
+    return null;
+  } else if (newCondition !== undefined) {
+    assertIsExpression(newCondition);
+    newConsequent = {
+      ...newConsequent,
+      condition: newCondition,
+    };
+    changed = true;
+  }
+  const block = mapChildren(newConsequent.block, (statement) => {
+    const node = walk(statement, visitor);
+    assertIsStatement(node);
+    return node;
+  });
+  if (block !== newConsequent.block) {
+    newConsequent = {
+      ...newConsequent,
+      block,
+    };
+    changed = true;
+  }
+
+  // Post-order.
+  const finalConsequent = visitor['Consequent:exit']?.(newConsequent);
+  if (finalConsequent === null) {
+    return null;
+  } else if (finalConsequent === undefined) {
+    return changed ? newConsequent : undefined;
+  } else {
+    return finalConsequent;
   }
 }
 
@@ -608,6 +867,17 @@ function walkDocComment(
   } else {
     return finalComment;
   }
+}
+
+// Implementing this may be awkward because EmptySlot can appear in both
+// ArrayValue and ArrayPattern contexts; in the former, we accept any of
+// Expression or SpreadElement, but in the latter we accept only Identifier.
+// That is, what should the return type for this method be?
+function walkEmptySlot(
+  _slot: EmptySlot,
+  _visitor: Visitor,
+): EmptySlot | null | undefined {
+  return undefined; // Unimplemented.
 }
 
 function walkEmptyStatement(
@@ -714,17 +984,140 @@ function walkExportNamedDeclaration(
 }
 
 function walkExpressionStatement(
-  _statement: ExpressionStatement,
-  _visitor: Visitor,
+  statement: ExpressionStatement,
+  visitor: Visitor,
 ): Statement | null | undefined {
-  return undefined; // Unimplemented.
+  // Pre-order
+  let changed = false;
+  let newStatement = visitor.ExpressionStatement?.(statement);
+  if (newStatement === null) {
+    return null;
+  } else if (newStatement === undefined) {
+    newStatement = statement;
+  } else if (newStatement.kind !== 'ExpressionStatement') {
+    // Won't do post-order if node kind changes in pre-order; instead, walk
+    // replacement.
+    const replacement = walk(newStatement, visitor);
+    assertIsStatement(replacement);
+    if (replacement === undefined) {
+      return newStatement;
+    } else {
+      return replacement;
+    }
+  } else {
+    changed = true;
+  }
+
+  // Children.
+  const newExpression = walk(newStatement.expression, visitor);
+  if (newExpression === null) {
+    return null;
+  } else if (newExpression !== undefined) {
+    assertIsExpression(newExpression);
+    newStatement = {
+      ...newStatement,
+      expression: newExpression,
+    };
+    changed = true;
+  }
+
+  // Post-order.
+  const finalStatement = visitor['ExpressionStatement:exit']?.(newStatement);
+  if (finalStatement === null) {
+    return null;
+  } else if (finalStatement === undefined) {
+    return changed ? newStatement : undefined;
+  } else {
+    return finalStatement;
+  }
 }
 
 function walkForStatement(
-  _statement: ForStatement,
-  _visitor: Visitor,
+  statement: ForStatement,
+  visitor: Visitor,
 ): Statement | null | undefined {
-  return undefined; // Unimplemented.
+  // Pre-order
+  let changed = false;
+  let newStatement = visitor.ForStatement?.(statement);
+  if (newStatement === null) {
+    return null;
+  } else if (newStatement === undefined) {
+    newStatement = statement;
+  } else if (newStatement.kind !== 'ForStatement') {
+    // Won't do post-order if node kind changes in pre-order; instead, walk
+    // replacement.
+    const replacement = walk(newStatement, visitor);
+    assertIsStatement(replacement);
+    if (replacement === undefined) {
+      return newStatement;
+    } else {
+      return replacement;
+    }
+  } else {
+    changed = true;
+  }
+
+  // Children.
+  const newInitializer = walk(newStatement.initializer, visitor);
+  if (newInitializer === null) {
+    // TODO: in future, `null` will mean remove (once initializer is optional)
+    return null;
+  } else if (newInitializer !== undefined) {
+    invariant(newInitializer.kind === 'VariableDeclaration');
+    newStatement = {
+      ...newStatement,
+      initializer: newInitializer,
+    };
+    changed = true;
+  }
+  const newCondition = walk(newStatement.condition, visitor);
+  if (newCondition === null) {
+    // TODO: in future, `null` will mean remove (once condition is optional)
+    return null;
+  } else if (newCondition !== undefined) {
+    assertIsExpression(newCondition);
+    newStatement = {
+      ...newStatement,
+      condition: newCondition,
+    };
+    changed = true;
+  }
+  const newUpdate = walk(newStatement.update, visitor);
+  if (newUpdate === null) {
+    // TODO: in future, `null` will mean remove (once update is optional)
+    return null;
+  } else if (newUpdate !== undefined) {
+    assertIsExpression(newUpdate);
+    newStatement = {
+      ...newStatement,
+      update: newUpdate,
+    };
+    changed = true;
+  }
+  const block = mapChildren(newStatement.block, (statement) => {
+    const node = walk(statement, visitor);
+    assertIsStatement(node);
+    return node;
+  });
+  if (block !== newStatement.block) {
+    newStatement = {
+      ...newStatement,
+      block,
+    };
+    changed = true;
+  }
+
+  // Post-order.
+  const finalStatement = visitor['ForStatement:exit']?.(
+    newStatement,
+  );
+  if (finalStatement === null) {
+    return null;
+  } else if (finalStatement === undefined) {
+    return changed ? newStatement : undefined;
+  } else {
+    return finalStatement;
+  }
 }
 
 function walkFunctionDeclaration(
@@ -770,6 +1163,23 @@ function walkFunctionDeclaration(
   if (body !== newDeclaration.body) {
     newDeclaration.body = body;
     changed = true;
+  }
+  if (newDeclaration.type) {
+    const newType = walk(newDeclaration.type, visitor);
+    if (newType === null) {
+      newDeclaration = {
+        ...newDeclaration,
+        type: undefined,
+      };
+      changed = true;
+    } else if (newType !== undefined) {
+      assertIsType(newType);
+      newDeclaration = {
+        ...newDeclaration,
+        type: newType,
+      };
+      changed = true;
+    }
   }
 
   // Post-order.
@@ -819,6 +1229,23 @@ function walkFunctionExpression(
     newExpression.body = body;
     changed = true;
   }
+  if (newExpression.type) {
+    const newType = walk(newExpression.type, visitor);
+    if (newType === null) {
+      newExpression = {
+        ...newExpression,
+        type: undefined,
+      };
+      changed = true;
+    } else if (newType !== undefined) {
+      assertIsType(newType);
+      newExpression = {
+        ...newExpression,
+        type: newType,
+      };
+      changed = true;
+    }
+  }
 
   // Post-order.
   const finalExpression = visitor['FunctionExpression:exit']?.(newExpression);
@@ -838,18 +1265,117 @@ function walkGetAccessor(
   return undefined; // Unimplemented.
 }
 
+// Note about the return type: Identifiers are used in several different
+// contexts, so it is hard to permit a broader return type that Identifier here.
 function walkIdentifier(
-  _identifier: Identifier,
-  _visitor: Visitor,
-): Expression | null | undefined {
-  return undefined; // Unimplemented.
+  identifier: Identifier,
+  visitor: Visitor,
+): Identifier | null | undefined {
+  // Pre-order.
+  let changed = false;
+  let newIdentifier = visitor.Identifier?.(identifier);
+  if (newIdentifier === null) {
+    return null;
+  } else if (newIdentifier === undefined) {
+    newIdentifier = identifier;
+  } else {
+    changed = true;
+  }
+
+  // Children.
+  if (newIdentifier.cast) {
+    const newType = walk(newIdentifier.cast, visitor);
+    if (newType === null) {
+      newIdentifier = {
+        ...newIdentifier,
+        cast: undefined,
+      };
+      changed = true;
+    } else if (newType !== undefined) {
+      assertIsType(newType);
+      newIdentifier = {
+        ...newIdentifier,
+        cast: newType,
+      };
+      changed = true;
+    }
+  }
+
+  // Post-order.
+  const finalIdentifier = visitor['Identifier:exit']?.(newIdentifier);
+  if (finalIdentifier === null) {
+    return null;
+  } else if (finalIdentifier === undefined) {
+    return changed ? newIdentifier : undefined;
+  } else {
+    return finalIdentifier;
+  }
 }
 
 function walkIfStatement(
-  _statement: IfStatement,
-  _visitor: Visitor,
+  statement: IfStatement,
+  visitor: Visitor,
 ): Statement | null | undefined {
-  return undefined; // Unimplemented.
+  // Pre-order
+  let changed = false;
+  let newStatement = visitor.IfStatement?.(statement);
+  if (newStatement === null) {
+    return null;
+  } else if (newStatement === undefined) {
+    newStatement = statement;
+  } else if (newStatement.kind !== 'IfStatement') {
+    // Won't do post-order if node kind changes in pre-order; instead, walk
+    // replacement.
+    const replacement = walk(newStatement, visitor);
+    assertIsStatement(replacement);
+    if (replacement === undefined) {
+      return newStatement;
+    } else {
+      return replacement;
+    }
+  } else {
+    changed = true;
+  }
+
+  // Children.
+  const consequents = mapChildren(newStatement.consequents, (consequent) => {
+    const node = walk(consequent, visitor);
+    assertIsConsequent(node);
+    return node;
+  });
+  if (consequents !== newStatement.consequents) {
+    newStatement = {
+      ...newStatement,
+      consequents,
+    };
+    changed = true;
+  }
+  if (newStatement.alternate) {
+    const alternate = mapChildren(newStatement.alternate, (statement) => {
+      const node = walk(statement, visitor);
+      assertIsStatement(node);
+      return node;
+    });
+    if (alternate !== newStatement.alternate) {
+      newStatement = {
+        ...newStatement,
+        alternate,
+      };
+      changed = true;
+    }
+  }
+
+  // Post-order.
+  const finalStatement = visitor['IfStatement:exit']?.(
+    newStatement,
+  );
+  if (finalStatement === null) {
+    return null;
+  } else if (finalStatement === undefined) {
+    return changed ? newStatement : undefined;
+  } else {
+    return finalStatement;
+  }
 }
 
 function walkIncrementExpression(
@@ -1067,7 +1593,18 @@ function walkPropertyDeclaration(
     changed = true;
   }
 
-  // This is a leaf node, so no children to visit.
+  // Children.
+  if (newDeclaration.type) {
+    const newType = walk(newDeclaration.type, visitor);
+    if (newType !== undefined) {
+      assertIsType(newType);
+      newDeclaration = {
+        ...newDeclaration,
+        type: newType,
+      };
+      changed = true;
+    }
+  }
 
   // Post-order.
   const finalDeclaration = visitor['PropertyDeclaration:exit']?.(
@@ -1097,16 +1634,45 @@ function walkStringValue(
 }
 
 function walkType(
-  _type: Type,
-  _visitor: Visitor,
+  type: Type,
+  visitor: Visitor,
 ): Type | null | undefined {
-  return undefined; // Unimplemented.
+  // Pre-order.
+  let changed = false;
+  let newType = visitor.Type?.(type);
+  if (newType === null) {
+    return null;
+  } else if (newType === undefined) {
+    newType = type;
+  } else {
+    changed = true;
+  }
+
+  // This is a leaf node, so no children to visit.
+  // TODO: only for now... eventually we will visit structure of Type.
+
+  // Post-order.
+  const finalType = visitor['Type:exit']?.(newType);
+  if (finalType === null) {
+    return null;
+  } else if (finalType === undefined) {
+    return changed ? newType : undefined;
+  } else {
+    return finalType;
+  }
 }
 
 function walkUndefinedValue(
   _value: UndefinedValue,
   _visitor: Visitor,
 ): Expression | null | undefined {
+  return undefined; // Unimplemented.
+}
+
+function walkVariableDeclaration(
+  _declaration: VariableDeclaration,
+  _visitor: Visitor,
+): VariableDeclaration | null | undefined {
   return undefined; // Unimplemented.
 }
 
@@ -1228,10 +1794,64 @@ function walkThrowStatement(
 }
 
 function walkWhileStatement(
-  _statement: WhileStatement,
-  _visitor: Visitor,
+  statement: WhileStatement,
+  visitor: Visitor,
 ): Statement | null | undefined {
-  return undefined; // Unimplemented.
+  // Pre-order
+  let changed = false;
+  let newStatement = visitor.WhileStatement?.(statement);
+  if (newStatement === null) {
+    return null;
+  } else if (newStatement === undefined) {
+    newStatement = statement;
+  } else if (newStatement.kind !== 'WhileStatement') {
+    // Won't do post-order if node kind changes in pre-order; instead, walk
+    // replacement.
+    const replacement = walk(newStatement, visitor);
+    assertIsStatement(replacement);
+    if (replacement === undefined) {
+      return newStatement;
+    } else {
+      return replacement;
+    }
+  } else {
+    changed = true;
+  }
+
+  // Children.
+  const newCondition = walk(newStatement.condition, visitor);
+  if (newCondition === null) {
+    return null;
+  } else if (newCondition !== undefined) {
+    assertIsExpression(newCondition);
+    newStatement = {
+      ...newStatement,
+      condition: newCondition,
+    };
+    changed = true;
+  }
+  const block = mapChildren(newStatement.block, (statement) => {
+    const node = walk(statement, visitor);
+    assertIsStatement(node);
+    return node;
+  });
+  if (block !== newStatement.block) {
+    newStatement = {
+      ...newStatement,
+      block,
+    };
+    changed = true;
+  }
+
+  // Post-order.
+  const finalStatement = visitor['WhileStatement:exit']?.(newStatement);
+  if (finalStatement === null) {
+    return null;
+  } else if (finalStatement === undefined) {
+    return changed ? newStatement : undefined;
+  } else {
+    return finalStatement;
+  }
 }
 
 function walkYieldExpression(
@@ -1249,6 +1869,13 @@ function assertIsArgument(
   }
 }
 
+function assertIsConsequent(
+  node: Node | null | undefined,
+): asserts node is Consequent | null | undefined {
+  if (node != null) {
+    invariant(node.kind === 'Consequent');
+  }
+}
 function assertIsDeclaration(
   node: Node | null | undefined,
 ): asserts node is Declaration | null | undefined {
@@ -1323,6 +1950,7 @@ export function assertIsStatement(
         node.kind === 'ExportDefaultDeclaration' ||
         node.kind === 'ExportNamedDeclaration' ||
         node.kind === 'ExpressionStatement' ||
+        node.kind === 'ForStatement' ||
         node.kind === 'FunctionDeclaration' ||
         node.kind === 'IfStatement' ||
         node.kind === 'ImportStatement' ||
@@ -1335,4 +1963,15 @@ export function assertIsStatement(
         node.kind === 'WhileStatement',
     );
   }
+}
+
+function assertIsType(node: Node | null | undefined): asserts node is Type {
+  invariant(
+    node && (
+      node.kind === 'GenericType' ||
+      node.kind === 'NamedType' ||
+      node.kind === 'TupleType' ||
+      node.kind === 'UnionType'
+    ),
+  );
 }

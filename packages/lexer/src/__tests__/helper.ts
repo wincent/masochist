@@ -6,12 +6,11 @@ import Token from '../Token';
 import build from '../build';
 
 import type {
-  Argument,
   DocComment,
   ExportDefaultDeclaration,
   ExportNamedDeclaration,
   PropertyDeclaration,
-  RawStatement,
+  Type,
 } from '@masochist/types';
 
 import type {TransitionTable} from '../NFA/TransitionTable';
@@ -75,36 +74,16 @@ export async function getLexer(table: TransitionTable): Promise<{
       );
     },
 
-    // Strip TS type annotations from `FunctionDeclaration` and
-    // `FunctionExpression` arguments.
+    // Strip TS type annotations.
     // ie. `function *lex(input: string)` -> `function *lex(input)`
     // ie. `constructor(input: string)` -> `constructor(input)`
-    Argument(argument: Argument) {
-      if (argument.type) {
-        return ast.argument(argument.name);
-      } else {
-        // Be explict, to pacify linter.
-        return undefined;
-      }
+    Type(_type: Type) {
+      return null;
     },
 
     // Strip TS property declarations (eg. `input: string` etc) from Lexer class.
     PropertyDeclaration(_declaration: PropertyDeclaration) {
       return null;
-    },
-
-    // Hoist `export class Token` to `class Token`, strip TS property
-    // declarations, and TS type annotations from injected "Token.ts" file.
-    RawStatement({statement}: RawStatement) {
-      // TODO: once codegen can use real parser, parse the file instead of using
-      // RawStatement.
-      return {
-        kind: 'RawStatement',
-        statement: statement
-          .replace(/^\s*\bexport\s+/m, '') //
-          .replace(/^\s*\w+: \w+;/gm, '') // Type declarations.
-          .replace(/(\w+): \w+/g, '$1'), // Type annotations on arguments.
-      };
     },
   });
 
