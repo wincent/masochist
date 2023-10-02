@@ -25,6 +25,28 @@ describe('parseStatement()', async () => {
   ]])(
     '%s',
     (_description, parseStatement) => {
+      it('parses a DocComment', () => {
+        const input = `
+          /**
+           * A very interesting function indeed.
+           *
+           * @param {string} name
+           * @param {number} end
+           * @param {string} input
+           */
+        `;
+        expect(parseStatement(input)).toEqual([{
+          kind: 'DocComment',
+          contents: [
+            ' A very interesting function indeed.',
+            '',
+            ' @param {string} name',
+            ' @param {number} end',
+            ' @param {string} input',
+          ],
+        }]);
+      });
+
       it('parses a call', () => {
         const input = 'click();';
         expect(parseStatement(input)).toEqual([{

@@ -774,10 +774,27 @@ function r128($1: PropertyDeclaration): ClassBodyListItem {
   return $1;
 }
 function r129($1: Token): DocComment {
+  const lines = $1.contents.split(/\r?\n/);
   return {
     kind: 'DocComment',
-    // TODO: parse internal structure here
-    contents: [$1.contents],
+    contents: lines.flatMap(
+      (line, i) => {
+        if (i === 0 && lines.length === 1) {
+          // Only 1 line.
+          return line
+            .replace(/^\/\*\*/, '')
+            .replace(/[ \t]*\*\/$/, '');
+        } else if (i === 0) {
+          // On first line.
+          return line.replace(/^\/\*\*/, '') || [];
+        } else if (i === lines.length - 1) {
+          // On last line.
+          return line.replace(/[ \t]*\*\/$/, '') || [];
+        } else {
+          return line.replace(/^[ \t]*\*/, '');
+        }
+      },
+    ),
   };
 }
 function r130(

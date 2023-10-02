@@ -110,8 +110,10 @@ export const STRING_VALUE = new RegExp(
 export const LINE_COMMENT = /\/\/[^\n\r]*(?:\r?\n)?/;
 
 // Rolling DOC_COMMENT state machine by hand because we don't support non-greedy
-// matches in regular expressions.
-export const DOC_COMMENT: TransitionTable = { // /\/*.+*\//;
+// matches in regular expressions. Basically equivalent to:
+//
+//      /\/\*\*.+\*\//
+export const DOC_COMMENT: TransitionTable = {
   acceptStates: new Set([5]),
   startStates: new Set([0]),
   transitions: [
@@ -171,6 +173,7 @@ export default union({
   COLON,
   COMMA,
   DECREMENT,
+  DOC_COMMENT,
   DOT,
   EQUALS,
   GREATER_THAN,
