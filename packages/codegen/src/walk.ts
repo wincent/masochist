@@ -767,17 +767,8 @@ function walkConsequent(
     return null;
   } else if (newConsequent === undefined) {
     newConsequent = consequent;
-  } else if (newConsequent.kind !== 'Consequent') {
-    // Won't do post-order if node kind changes in pre-order; instead, walk
-    // replacement.
-    const replacement = walk(newConsequent, visitor);
-    assertIsConsequent(replacement);
-    if (replacement === undefined) {
-      return newConsequent;
-    } else {
-      return replacement;
-    }
   } else {
+    assertIsConsequent(newConsequent);
     changed = true;
   }
 
