@@ -143,7 +143,7 @@ export default function getParseTable(
             // - https://www.gnu.org/software/bison/manual/bison.html#Shift_002fReduce
             conflictMessage += '\n  Resolution: preferring existing shift';
             if (!conflictWarnings.has(conflictMessage)) {
-              console.log(conflictMessage);
+              log(conflictMessage);
               conflictWarnings.add(conflictMessage);
             }
           }
@@ -157,7 +157,7 @@ export default function getParseTable(
             stringifyRule({lhs, rhs})
           }`;
           if (!conflictWarnings.has(conflictMessage)) {
-            console.log(conflictMessage);
+            log(conflictMessage);
             conflictWarnings.add(conflictMessage);
           }
         }
@@ -168,4 +168,10 @@ export default function getParseTable(
   }
 
   return table;
+}
+
+function log(message: string) {
+  if (!process.env['TEST']) {
+    console.log(message);
+  }
 }
