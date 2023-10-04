@@ -136,6 +136,7 @@
 %token REST
 %token RETURN
 %token SEMICOLON
+%token STAR
 %token STRICT_EQUALS
 %token STRING_VALUE
 %token THIS
@@ -152,6 +153,7 @@
 %left LOGICAL_AND
 %left EQUALS STRICT_EQUALS # TODO: !== and != as well
 %left PLUS MINUS
+%left STAR
 %left DOT
 
 StatementList → Statement { $$ = [$1]; }
@@ -363,6 +365,14 @@ BinaryExpression → Expression PLUS Expression {
     kind: 'BinaryExpression',
     lhs: $1,
     operator: '+',
+    rhs: $3,
+  };
+}
+BinaryExpression → Expression STAR Expression {
+  $$ = {
+    kind: 'BinaryExpression',
+    lhs: $1,
+    operator: '*',
     rhs: $3,
   };
 }

@@ -27,6 +27,7 @@ export const OPENING_BRACKET = '[';
 export const OPENING_PAREN = '(';
 export const PLUS = '+';
 export const REST = '...';
+export const STAR = '*';
 export const SEMICOLON = ';';
 export const STRICT_EQUALS = '===';
 
@@ -193,6 +194,7 @@ export default union({
   PLUS,
   REST,
   SEMICOLON,
+  STAR,
   STRICT_EQUALS,
   STRING_VALUE,
 

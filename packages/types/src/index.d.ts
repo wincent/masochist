@@ -50,6 +50,9 @@ type BinaryOperator =
   | '||'
   | '+'
   | '-'
+  | '*'
+  | '/'
+  | '%'
   | '=';
 
 export type BitwiseNotExpression = {
