@@ -115,14 +115,6 @@ export default function parseSchema(input: string) {
     if (action === undefined) {
       // TODO: maybe show stack here?
       throw new Error('syntax error at symbol ' + token.name);
-    } else if (action === 0) {
-      // Accept.
-      const [tree] = stack[1];
-      return tree;
-    } else if (action > 0) {
-      // Shift.
-      stack.push([token, action]);
-      token = lexer.next() || EOF;
     } else if (action < 0) {
       // Reduce.
       // TODO: compare Math.abs with -, but will have to implement
@@ -139,6 +131,14 @@ export default function parseSchema(input: string) {
       // - TS2590: Expression produces a union type that is too complex to represent.
       // - TS2556: A spread argument must either have a tuple type or be passed to a rest parameter.
       stack.push([(code as any)(...popped), target]);
+    } else if (action > 0) {
+      // Shift.
+      stack.push([token, action]);
+      token = lexer.next() || EOF;
+    } else if (action === 0) {
+      // Accept.
+      const [tree] = stack[1];
+      return tree;
     }
   }
 }

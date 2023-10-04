@@ -55,6 +55,9 @@ export default function build(
   stats['parserStates'] = table.length;
   stats['semanticActions'] = 0;
   stats['actions'] = 0;
+  stats['reduceActions'] = 0;
+  stats['shiftActions'] = 0;
+  stats['acceptActions'] = 0;
 
   const buildCommand = options.buildCommand
     ? `edit "build.ts", run "${options.buildCommand}" instead`
@@ -140,10 +143,13 @@ export default function build(
           return ast.object(
             objectMap(actions, ([terminal, action]) => {
               if (action.kind === 'Reduce') {
+                stats['reduceActions']++;
                 return [terminal, ast.number(-action.rule)];
               } else if (action.kind === 'Shift') {
+                stats['shiftActions']++;
                 return [terminal, ast.number(action.state)];
               } else if (action.kind === 'Accept') {
+                stats['acceptActions']++;
                 return [terminal, ast.number(0)];
               } else {
                 unreachable(action);
@@ -241,14 +247,6 @@ export default function build(
               if (action === undefined) {
                 // TODO: maybe show stack here?
                 throw new Error('syntax error at symbol ' + token.name);
-              } else if (action === 0) {
-                // Accept.
-                const [tree] = stack[1];
-                return tree;
-              } else if (action > 0) {
-                // Shift.
-                stack.push([token, action]);
-                token = lexer.next() || EOF;
               } else if (action < 0) {
                 // Reduce.
                 // TODO: compare Math.abs with -, but will have to implement
@@ -266,6 +264,14 @@ export default function build(
                 // - TS2590: Expression produces a union type that is too complex to represent.
                 // - TS2556: A spread argument must either have a tuple type or be passed to a rest parameter.
                 stack.push([(code as any)(...popped), target]);
+              } else if (action > 0) {
+                // Shift.
+                stack.push([token, action]);
+                token = lexer.next() || EOF;
+              } else if (action === 0) {
+                // Accept.
+                const [tree] = stack[1];
+                return tree;
               }
             }
           `)],
