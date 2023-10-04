@@ -337,6 +337,7 @@ export default function walk(
   } else if (
     node.kind === 'GenericType' ||
     node.kind === 'NamedType' ||
+    node.kind === 'ObjectType' ||
     node.kind === 'TupleType' ||
     node.kind === 'UnionType'
   ) {
@@ -1961,6 +1962,7 @@ function assertIsType(node: Node | null | undefined): asserts node is Type {
     node && (
       node.kind === 'GenericType' ||
       node.kind === 'NamedType' ||
+      node.kind === 'ObjectType' ||
       node.kind === 'TupleType' ||
       node.kind === 'UnionType'
     ),

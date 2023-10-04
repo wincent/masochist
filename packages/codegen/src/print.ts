@@ -623,6 +623,26 @@ function printType(type: Type, indent: number): string {
       '>';
   } else if (type.kind === 'NamedType') {
     return type.name;
+  } else if (type.kind === 'ObjectType') {
+    return '{' + type.members
+      .map((member) => {
+        if (member.kind === 'ObjectTypeIndex') {
+          return '[' +
+            printExpression(member.keyName, indent) +
+            ': ' +
+            printType(member.keyType, indent) +
+            ']: ' +
+            printType(member.valueType, indent);
+        } else if (member.kind === 'ObjectTypeProperty') {
+          return printExpression(member.key, indent) +
+            ': ' +
+            printType(member.value, indent);
+        } else {
+          unreachable(member);
+        }
+      })
+      .join('; ') +
+      '}';
   } else if (type.kind === 'TupleType') {
     return '[' + type.elements
       .map((element) => printType(element, indent + 1))

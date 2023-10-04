@@ -4,7 +4,7 @@
  *
  * @generated
  */
-import type {Actions, Gotos} from '@masochist/types';
+import type {Gotos} from '@masochist/types';
 import {Lexer, Token} from './lex';
 function r0() {
   return null;
@@ -45,166 +45,56 @@ function r8($1) {
     base: 10,
   };
 }
-const actions: Array<Actions> = [{
-  IDENTIFIER: {
-    kind: 'Shift',
-    state: 4,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 7,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 8,
-  },
+const actions: Array<{[token: string]: number}> = [{
+  IDENTIFIER: 4,
+  NUMBER: 7,
+  OPENING_PAREN: 8,
 }, {
-  $: {
-    kind: 'Accept',
-  },
-  STRICT_EQUALS: {
-    kind: 'Shift',
-    state: 9,
-  },
+  $: 0,
+  STRICT_EQUALS: 9,
 }, {
-  STRICT_EQUALS: {
-    kind: 'Reduce',
-    rule: 1,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 1,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 1,
-  },
+  STRICT_EQUALS: -1,
+  $: -1,
+  CLOSING_PAREN: -1,
 }, {
-  STRICT_EQUALS: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 2,
-  },
+  STRICT_EQUALS: -2,
+  $: -2,
+  CLOSING_PAREN: -2,
 }, {
-  STRICT_EQUALS: {
-    kind: 'Reduce',
-    rule: 6,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 6,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 6,
-  },
+  STRICT_EQUALS: -6,
+  $: -6,
+  CLOSING_PAREN: -6,
 }, {
-  STRICT_EQUALS: {
-    kind: 'Reduce',
-    rule: 3,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 3,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 3,
-  },
+  STRICT_EQUALS: -3,
+  $: -3,
+  CLOSING_PAREN: -3,
 }, {
-  STRICT_EQUALS: {
-    kind: 'Reduce',
-    rule: 7,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 7,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 7,
-  },
+  STRICT_EQUALS: -7,
+  $: -7,
+  CLOSING_PAREN: -7,
 }, {
-  STRICT_EQUALS: {
-    kind: 'Reduce',
-    rule: 8,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 8,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 8,
-  },
+  STRICT_EQUALS: -8,
+  $: -8,
+  CLOSING_PAREN: -8,
 }, {
-  IDENTIFIER: {
-    kind: 'Shift',
-    state: 4,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 7,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 8,
-  },
+  IDENTIFIER: 4,
+  NUMBER: 7,
+  OPENING_PAREN: 8,
 }, {
-  IDENTIFIER: {
-    kind: 'Shift',
-    state: 4,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 7,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 8,
-  },
+  IDENTIFIER: 4,
+  NUMBER: 7,
+  OPENING_PAREN: 8,
 }, {
-  CLOSING_PAREN: {
-    kind: 'Shift',
-    state: 12,
-  },
-  STRICT_EQUALS: {
-    kind: 'Shift',
-    state: 9,
-  },
+  CLOSING_PAREN: 12,
+  STRICT_EQUALS: 9,
 }, {
-  STRICT_EQUALS: {
-    kind: 'Shift',
-    state: 9,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 5,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 5,
-  },
+  STRICT_EQUALS: 9,
+  $: -5,
+  CLOSING_PAREN: -5,
 }, {
-  STRICT_EQUALS: {
-    kind: 'Reduce',
-    rule: 4,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 4,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 4,
-  },
+  STRICT_EQUALS: -4,
+  $: -4,
+  CLOSING_PAREN: -4,
 }];
 const gotos: Array<Gotos> = [
   {
@@ -284,18 +174,22 @@ export default function parseExpression(input: string) {
   while (true) {
     const [, current] = stack[stack.length - 1];
     const action = actions[current][token.name];
-    if (!action) {
+    if (action === undefined) {
       // TODO: maybe show stack here?
       throw new Error('syntax error at symbol ' + token.name);
-    } else if (action.kind === 'Accept') {
-      // Expect initial state + accept state.
+    } else if (action === 0) {
+      // Accept.
       const [tree] = stack[1];
       return tree;
-    } else if (action.kind === 'Shift') {
-      stack.push([token, action.state]);
+    } else if (action > 0) {
+      // Shift.
+      stack.push([token, action]);
       token = lexer.next() || EOF;
-    } else if (action.kind === 'Reduce') {
-      const {production, pop, action: code} = rules[action.rule];
+    } else if (action < 0) {
+      // Reduce.
+      // TODO: compare Math.abs with -, but will have to implement
+      // unary minus (currently only have it for literals)
+      const {production, pop, action: code} = rules[Math.abs(action)];
       const popped: Array<Production | Token | null> = [];
       for (let i = 0; i < pop; i++) {
         const [node] = stack.pop()!;

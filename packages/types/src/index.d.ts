@@ -342,6 +342,28 @@ export type ObjectPattern = {
   properties: Array<ObjectProperty>;
 };
 
+// eg. {[a: string]: T, b: U}
+export type ObjectType = {
+  kind: 'ObjectType';
+  members: Array<ObjectTypeIndex | ObjectTypeProperty>;
+};
+
+// eg. {[key: string]: T}
+export type ObjectTypeIndex = {
+  kind: 'ObjectTypeIndex';
+  keyName: Identifier;
+  keyType: Type;
+  valueType: Type;
+};
+
+// eg. {a: T}
+// TODO: support optional properties.
+export type ObjectTypeProperty = {
+  kind: 'ObjectTypeProperty';
+  key: Identifier;
+  value: Type;
+};
+
 export type ObjectValue = {
   kind: 'ObjectValue';
   properties: Array<ObjectProperty>;
@@ -481,6 +503,7 @@ export type TupleType = {
 export type Type =
   | GenericType
   | NamedType
+  | ObjectType
   | TupleType
   | UnionType;
 

@@ -33,6 +33,9 @@
     NumberValue,
     ObjectPattern,
     ObjectProperty,
+    ObjectType,
+    ObjectTypeIndex,
+    ObjectTypeProperty,
     ObjectValue,
     Pattern,
     PrimitiveValue,
@@ -69,6 +72,8 @@
   type Id = Identifier | Pattern;
   type IdentifierList = Array<Identifier | EmptySlot>;
   type ObjectPropertyList = Array<ObjectProperty>;
+  type ObjectTypeMemberList = Array<ObjectTypeMemberListItem>;
+  type ObjectTypeMemberListItem = ObjectTypeIndex | ObjectTypeProperty;
   type OptionalExpressionList = Array<Expression | SpreadElement | EmptySlot>;
   type StatementList = Array<Statement>;
   type TypeList = Array<Type>;
@@ -573,6 +578,7 @@ StringValue → STRING_VALUE {
 
 Type → GenericType { $$ = $1; }
 Type → NamedType { $$ = $1; }
+Type → ObjectType { $$ = $1; }
 Type → TupleType { $$ = $1; }
 Type → UnionType { $$ = $1; }
 
@@ -598,6 +604,38 @@ NamedType → NULL {
   $$ = {
     kind: 'NamedType',
     name: $1.contents,
+  };
+}
+
+ObjectType → OPENING_BRACE ObjectTypeMemberList CLOSING_BRACE {
+  $$ = {
+    kind: 'ObjectType',
+    members: $2,
+  };
+}
+
+ObjectTypeMemberList → ObjectTypeMemberListItem { $$ = [$1]; }
+ObjectTypeMemberList → ObjectTypeMemberList ObjectTypeMemberListItem { $1.push($2); $$ = $1; }
+ObjectTypeMemberList → ε { $$ = []; }
+
+ObjectTypeMemberListItem → ObjectTypeIndex { $$ = $1; }
+ObjectTypeMemberListItem → ObjectTypeProperty { $$ = $1; }
+
+ObjectTypeIndex → OPENING_BRACKET Identifier COLON Type CLOSING_BRACKET COLON
+Type SEMICOLON {
+  $$ = {
+    kind: 'ObjectTypeIndex',
+    keyName: $2,
+    keyType: $4,
+    valueType: $7,
+  };
+}
+
+ObjectTypeProperty → Identifier COLON Type SEMICOLON {
+  $$ = {
+    kind: 'ObjectTypeProperty',
+    key: $1,
+    value: $3,
   };
 }
 

@@ -74,7 +74,7 @@ export default function build(
     ),
     // TODO: don't assume lexer is written to lex.ts
     ast.import('{Lexer, Token}', './lex'),
-    ast.importType('{Actions, Gotos}', '@masochist/types'),
+    ast.importType('{Gotos}', '@masochist/types'),
     grammar.prologue ? ast.rawStatement(grammar.prologue) : ast.empty,
     ...grammar.rules.map((rule, i): Statement => {
       if (rule.action && rule.action !== '') {
@@ -140,24 +140,11 @@ export default function build(
           return ast.object(
             objectMap(actions, ([terminal, action]) => {
               if (action.kind === 'Reduce') {
-                return [
-                  terminal,
-                  ast.object({
-                    // TODO: the pointers and the names are horribly confusing
-                    kind: ast.string('Reduce'),
-                    rule: ast.number(action.rule),
-                  }),
-                ];
+                return [terminal, ast.number(-action.rule)];
               } else if (action.kind === 'Shift') {
-                return [
-                  terminal,
-                  ast.object({
-                    kind: ast.string('Shift'),
-                    state: ast.number(action.state),
-                  }),
-                ];
+                return [terminal, ast.number(action.state)];
               } else if (action.kind === 'Accept') {
-                return [terminal, ast.object({kind: ast.string('Accept')})];
+                return [terminal, ast.number(0)];
               } else {
                 unreachable(action);
               }
@@ -170,8 +157,22 @@ export default function build(
           kind: 'GenericType',
           name: 'Array',
           parameters: [{
-            kind: 'NamedType',
-            name: 'Actions',
+            kind: 'ObjectType',
+            members: [{
+              kind: 'ObjectTypeIndex',
+              keyName: {
+                kind: 'Identifier',
+                name: 'token',
+              },
+              keyType: {
+                kind: 'NamedType',
+                name: 'string',
+              },
+              valueType: {
+                kind: 'NamedType',
+                name: 'number',
+              },
+            }],
           }],
         },
       },
@@ -237,18 +238,22 @@ export default function build(
               const [, current] = stack[stack.length - 1];
               const action = actions[current][token.name];
 
-              if (!action) {
+              if (action === undefined) {
                 // TODO: maybe show stack here?
                 throw new Error('syntax error at symbol ' + token.name);
-              } else if (action.kind === 'Accept') {
-                // Expect initial state + accept state.
+              } else if (action === 0) {
+                // Accept.
                 const [tree] = stack[1];
                 return tree;
-              } else if (action.kind === 'Shift') {
-                stack.push([token, action.state]);
+              } else if (action > 0) {
+                // Shift.
+                stack.push([token, action]);
                 token = lexer.next() || EOF;
-              } else if (action.kind === 'Reduce') {
-                const {production, pop, action: code} = rules[action.rule];
+              } else if (action < 0) {
+                // Reduce.
+                // TODO: compare Math.abs with -, but will have to implement
+                // unary minus (currently only have it for literals)
+                const {production, pop, action: code} = rules[Math.abs(action)];
                 const popped: Array<Production | Token | null> = [];
                 for (let i = 0; i < pop; i++) {
                   const [node] = stack.pop()!;

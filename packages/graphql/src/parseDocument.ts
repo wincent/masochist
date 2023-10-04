@@ -4,7 +4,7 @@
  *
  * @generated
  */
-import type {Actions, Gotos} from '@masochist/types';
+import type {Gotos} from '@masochist/types';
 import {Lexer, Token} from './lex';
 function r0() {
   return null;
@@ -471,3778 +471,1061 @@ function r98(_$1, $2) {
 function r99() {
   return null;
 }
-const actions: Array<Actions> = [{
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 11,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 7,
-  },
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 9,
-  },
-}, {
-  $: {
-    kind: 'Accept',
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 11,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 7,
-  },
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 9,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 1,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 2,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 4,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 4,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 4,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 4,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 6,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 6,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 6,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 6,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 11,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 11,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 11,
-  },
-}, {
-  NAME: {
-    kind: 'Reduce',
-    rule: 9,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 9,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 9,
-  },
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 9,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 9,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 9,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 8,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 8,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 8,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 8,
-  },
-}, {
-  ELLIPSIS: {
-    kind: 'Shift',
-    state: 24,
-  },
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 5,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 5,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 5,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 5,
-  },
-}, {
-  NAME: {
-    kind: 'Shift',
-    state: 27,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 3,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 3,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 3,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 3,
-  },
-}, {
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 29,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 16,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 16,
-  },
-}, {
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 10,
-  },
-}, {
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  COLON: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  BANG: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 12,
-  },
-}, {
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-  COLON: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-  BANG: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 13,
-  },
-}, {
-  OPENING_PAREN: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-  COLON: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-  BANG: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 14,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Shift',
-    state: 30,
-  },
-  ELLIPSIS: {
-    kind: 'Shift',
-    state: 24,
-  },
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 59,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 59,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 59,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 59,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 59,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 61,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 61,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 61,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 61,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 61,
-  },
-}, {
-  COLON: {
-    kind: 'Shift',
-    state: 33,
-  },
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 34,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 62,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 62,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 62,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 62,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 62,
-  },
-}, {
-  NAME: {
-    kind: 'Shift',
-    state: 27,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 38,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 99,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 99,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 63,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 63,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 63,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 63,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 63,
-  },
-}, {
-  ON: {
-    kind: 'Shift',
-    state: 39,
-  },
-}, {
-  ON: {
-    kind: 'Reduce',
-    rule: 95,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 95,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 95,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 95,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 95,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 95,
-  },
-}, {
-  AT: {
-    kind: 'Shift',
-    state: 43,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-}, {
-  DOLLAR: {
-    kind: 'Shift',
-    state: 47,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 56,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 56,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 56,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 56,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 56,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 56,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 56,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 60,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 60,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 60,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 60,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 60,
-  },
-}, {
-  AT: {
-    kind: 'Shift',
-    state: 43,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-}, {
-  NAME: {
-    kind: 'Reduce',
-    rule: 66,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 66,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 66,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-}, {
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 34,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-}, {
-  AT: {
-    kind: 'Shift',
-    state: 43,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-}, {
-  AT: {
-    kind: 'Shift',
-    state: 43,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-}, {
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 9,
-  },
-}, {
-  AT: {
-    kind: 'Shift',
-    state: 43,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 46,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 46,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 46,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 46,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 46,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 46,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 48,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 48,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 48,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 48,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 48,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 48,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 48,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Shift',
-    state: 61,
-  },
-  DOLLAR: {
-    kind: 'Shift',
-    state: 47,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 17,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 17,
-  },
-}, {
-  COLON: {
-    kind: 'Shift',
-    state: 63,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-}, {
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 9,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 58,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 58,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 58,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 58,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 58,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Shift',
-    state: 67,
-  },
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 69,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 69,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 69,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 69,
-  },
-}, {
-  COLON: {
-    kind: 'Shift',
-    state: 69,
-  },
-}, {
-  AT: {
-    kind: 'Shift',
-    state: 43,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 96,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 96,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 96,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 96,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 96,
-  },
-}, {
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 9,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 98,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 98,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 24,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 24,
-  },
-  BANG: {
-    kind: 'Reduce',
-    rule: 24,
-  },
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 24,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 24,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 24,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 24,
-  },
-}, {
-  AT: {
-    kind: 'Shift',
-    state: 43,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 47,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 7,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 7,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 7,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 7,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 49,
-  },
-}, {
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 34,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 68,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 15,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 15,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 18,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 18,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 77,
-  },
-}, {
-  COLON: {
-    kind: 'Reduce',
-    rule: 20,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 20,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 20,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 20,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 20,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 20,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 20,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 20,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 20,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 20,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 20,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 20,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 20,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 64,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 64,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 64,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 64,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 64,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 57,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 57,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 57,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 57,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 57,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 67,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 67,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 67,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 67,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 67,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 67,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 67,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 70,
-  },
-}, {
-  BLOCK_STRING_VALUE: {
-    kind: 'Shift',
-    state: 85,
-  },
-  DOLLAR: {
-    kind: 'Shift',
-    state: 47,
-  },
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 82,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 91,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 89,
-  },
-  STRING_VALUE: {
-    kind: 'Shift',
-    state: 84,
-  },
-}, {
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 9,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 58,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 58,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 58,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 58,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 58,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 97,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 97,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 97,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 97,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 97,
-  },
-}, {
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 9,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 50,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 50,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 50,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 50,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 50,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 50,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 50,
-  },
-}, {
-  EQUALS: {
-    kind: 'Shift',
-    state: 95,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 29,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 29,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 29,
-  },
-}, {
-  BANG: {
-    kind: 'Shift',
-    state: 96,
-  },
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 21,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 21,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 21,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 21,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 21,
-  },
-}, {
-  BANG: {
-    kind: 'Shift',
-    state: 97,
-  },
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 22,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 22,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 22,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 22,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 22,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 77,
-  },
-}, {
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 23,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 23,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 23,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 23,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 23,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 71,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 77,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 77,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 77,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 77,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 77,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 77,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 77,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 77,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 77,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 77,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 77,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 77,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 78,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 78,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 78,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 78,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 78,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 78,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 78,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 78,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 78,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 78,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 78,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 78,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 35,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 35,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 35,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 35,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 35,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 35,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 35,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 35,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 35,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 35,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 35,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 35,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 35,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 79,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 79,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 79,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 79,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 79,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 79,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 79,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 79,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 79,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 79,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 79,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 79,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 83,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 83,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 83,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 83,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 83,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 83,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 83,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 83,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 83,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 83,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 83,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 83,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 83,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 84,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 84,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 84,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 84,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 84,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 84,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 84,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 84,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 84,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 84,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 84,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 84,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 84,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 80,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 80,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 80,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 80,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 80,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 80,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 80,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 80,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 80,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 80,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 80,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 80,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 36,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 36,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 36,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 36,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 36,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 36,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 36,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 36,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 36,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 36,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 36,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 36,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 36,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 81,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 81,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 81,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 81,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 81,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 81,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 81,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 81,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 81,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 81,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 81,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 81,
-  },
-}, {
-  BLOCK_STRING_VALUE: {
-    kind: 'Shift',
-    state: 85,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Shift',
-    state: 99,
-  },
-  DOLLAR: {
-    kind: 'Shift',
-    state: 47,
-  },
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 82,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 91,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 89,
-  },
-  STRING_VALUE: {
-    kind: 'Shift',
-    state: 84,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 82,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 82,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 82,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 82,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 82,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 82,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 82,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 82,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 82,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 82,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 82,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 82,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Shift',
-    state: 102,
-  },
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 65,
-  },
-  ELLIPSIS: {
-    kind: 'Reduce',
-    rule: 65,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 65,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 65,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 65,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 94,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 94,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 94,
-  },
-  $: {
-    kind: 'Reduce',
-    rule: 94,
-  },
-}, {
-  AT: {
-    kind: 'Shift',
-    state: 109,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 52,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 52,
-  },
-}, {
-  BLOCK_STRING_VALUE: {
-    kind: 'Shift',
-    state: 85,
-  },
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 82,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 117,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 115,
-  },
-  STRING_VALUE: {
-    kind: 'Shift',
-    state: 84,
-  },
-}, {
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 27,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 27,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 27,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 27,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 27,
-  },
-}, {
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 26,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 26,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 26,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 26,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 26,
-  },
-}, {
-  CLOSING_BRACKET: {
-    kind: 'Shift',
-    state: 118,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 85,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 85,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 85,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 85,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 85,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 85,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 85,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 85,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 85,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 85,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 85,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 85,
-  },
-}, {
-  BLOCK_STRING_VALUE: {
-    kind: 'Shift',
-    state: 85,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Shift',
-    state: 119,
-  },
-  DOLLAR: {
-    kind: 'Shift',
-    state: 47,
-  },
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 82,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 91,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 89,
-  },
-  STRING_VALUE: {
-    kind: 'Shift',
-    state: 84,
-  },
-}, {
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 87,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 87,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 87,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 87,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 87,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 87,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 87,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 87,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 87,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 87,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 89,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Shift',
-    state: 121,
-  },
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 91,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 91,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 91,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 91,
-  },
-}, {
-  COLON: {
-    kind: 'Shift',
-    state: 123,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 19,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 19,
-  },
-}, {
-  AT: {
-    kind: 'Shift',
-    state: 109,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 51,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 51,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 53,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 53,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 53,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 28,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 28,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 28,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 30,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 31,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 32,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 33,
-  },
-}, {
-  BLOCK_STRING_VALUE: {
-    kind: 'Shift',
-    state: 85,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Shift',
-    state: 126,
-  },
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 82,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 117,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 115,
-  },
-  STRING_VALUE: {
-    kind: 'Shift',
-    state: 84,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 34,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 34,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 34,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 34,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 34,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 34,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 34,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 34,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 34,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 34,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 34,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 34,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 34,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Shift',
-    state: 129,
-  },
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-}, {
-  BANG: {
-    kind: 'Reduce',
-    rule: 25,
-  },
-  EQUALS: {
-    kind: 'Reduce',
-    rule: 25,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 25,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 25,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 25,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 25,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 86,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 86,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 86,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 86,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 86,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 86,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 86,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 86,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 86,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 86,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 86,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 86,
-  },
-}, {
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 88,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 88,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 88,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 88,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 88,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 88,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 88,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 88,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 88,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 88,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 90,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 90,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 90,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 90,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 90,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 90,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 90,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 90,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 90,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 90,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 90,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 90,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 92,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 92,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 92,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 92,
-  },
-}, {
-  BLOCK_STRING_VALUE: {
-    kind: 'Shift',
-    state: 85,
-  },
-  DOLLAR: {
-    kind: 'Shift',
-    state: 47,
-  },
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 82,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 91,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 89,
-  },
-  STRING_VALUE: {
-    kind: 'Shift',
-    state: 84,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 54,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 54,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 54,
-  },
-}, {
-  OPENING_PAREN: {
-    kind: 'Shift',
-    state: 135,
-  },
-  AT: {
-    kind: 'Reduce',
-    rule: 73,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 73,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 73,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 37,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 37,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 37,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 37,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 37,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 37,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 37,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 37,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 37,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 37,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 37,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 37,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 37,
-  },
-}, {
-  BLOCK_STRING_VALUE: {
-    kind: 'Shift',
-    state: 85,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Shift',
-    state: 136,
-  },
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 82,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 117,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 115,
-  },
-  STRING_VALUE: {
-    kind: 'Shift',
-    state: 84,
-  },
-}, {
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 39,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 41,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 41,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 41,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 41,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 41,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 41,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 41,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 41,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 41,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 41,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 41,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 41,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 41,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Shift',
-    state: 138,
-  },
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 43,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 43,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 43,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 43,
-  },
-}, {
-  COLON: {
-    kind: 'Shift',
-    state: 140,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 93,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 93,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 93,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 93,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 55,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 55,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 55,
-  },
-}, {
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 38,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 38,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 38,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 38,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 38,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 38,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 38,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 38,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 38,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 38,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 38,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 38,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 38,
-  },
-}, {
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 40,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 42,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 42,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 42,
-  },
-  CLOSING_BRACKET: {
-    kind: 'Reduce',
-    rule: 42,
-  },
-  NUMBER: {
-    kind: 'Reduce',
-    rule: 42,
-  },
-  STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 42,
-  },
-  BLOCK_STRING_VALUE: {
-    kind: 'Reduce',
-    rule: 42,
-  },
-  OPENING_BRACKET: {
-    kind: 'Reduce',
-    rule: 42,
-  },
-  OPENING_BRACE: {
-    kind: 'Reduce',
-    rule: 42,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 42,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 42,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 42,
-  },
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 42,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 44,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 44,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 44,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 44,
-  },
-}, {
-  BLOCK_STRING_VALUE: {
-    kind: 'Shift',
-    state: 85,
-  },
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 82,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 117,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 115,
-  },
-  STRING_VALUE: {
-    kind: 'Shift',
-    state: 84,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Shift',
-    state: 145,
-  },
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 74,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 74,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 74,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 74,
-  },
-}, {
-  COLON: {
-    kind: 'Shift',
-    state: 147,
-  },
-}, {
-  CLOSING_BRACE: {
-    kind: 'Reduce',
-    rule: 45,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 45,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 45,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 45,
-  },
-}, {
-  AT: {
-    kind: 'Reduce',
-    rule: 72,
-  },
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 72,
-  },
-  DOLLAR: {
-    kind: 'Reduce',
-    rule: 72,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 75,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 75,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 75,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 75,
-  },
-}, {
-  BLOCK_STRING_VALUE: {
-    kind: 'Shift',
-    state: 85,
-  },
-  FRAGMENT: {
-    kind: 'Shift',
-    state: 16,
-  },
-  NAME: {
-    kind: 'Shift',
-    state: 15,
-  },
-  NUMBER: {
-    kind: 'Shift',
-    state: 82,
-  },
-  ON: {
-    kind: 'Shift',
-    state: 17,
-  },
-  OPENING_BRACE: {
-    kind: 'Shift',
-    state: 117,
-  },
-  OPENING_BRACKET: {
-    kind: 'Shift',
-    state: 115,
-  },
-  STRING_VALUE: {
-    kind: 'Shift',
-    state: 84,
-  },
-}, {
-  CLOSING_PAREN: {
-    kind: 'Reduce',
-    rule: 76,
-  },
-  NAME: {
-    kind: 'Reduce',
-    rule: 76,
-  },
-  FRAGMENT: {
-    kind: 'Reduce',
-    rule: 76,
-  },
-  ON: {
-    kind: 'Reduce',
-    rule: 76,
-  },
+const actions: Array<{[token: string]: number}> = [{
+  FRAGMENT: 11,
+  NAME: 7,
+  OPENING_BRACE: 9,
+}, {
+  $: 0,
+}, {
+  FRAGMENT: 11,
+  NAME: 7,
+  OPENING_BRACE: 9,
+  $: -1,
+}, {
+  FRAGMENT: -2,
+  NAME: -2,
+  OPENING_BRACE: -2,
+  $: -2,
+}, {
+  FRAGMENT: -4,
+  NAME: -4,
+  OPENING_BRACE: -4,
+  $: -4,
+}, {
+  FRAGMENT: -6,
+  NAME: -6,
+  OPENING_BRACE: -6,
+  $: -6,
+}, {
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+  OPENING_PAREN: -11,
+  AT: -11,
+  OPENING_BRACE: -11,
+}, {
+  NAME: -9,
+  FRAGMENT: -9,
+  ON: -9,
+  OPENING_PAREN: -9,
+  AT: -9,
+  OPENING_BRACE: -9,
+}, {
+  FRAGMENT: -8,
+  NAME: -8,
+  OPENING_BRACE: -8,
+  $: -8,
+}, {
+  ELLIPSIS: 24,
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+}, {
+  FRAGMENT: -5,
+  NAME: -5,
+  OPENING_BRACE: -5,
+  $: -5,
+}, {
+  NAME: 27,
+}, {
+  FRAGMENT: -3,
+  NAME: -3,
+  OPENING_BRACE: -3,
+  $: -3,
+}, {
+  OPENING_PAREN: 29,
+  AT: -16,
+  OPENING_BRACE: -16,
+}, {
+  OPENING_PAREN: -10,
+  AT: -10,
+  OPENING_BRACE: -10,
+}, {
+  OPENING_PAREN: -12,
+  AT: -12,
+  OPENING_BRACE: -12,
+  COLON: -12,
+  CLOSING_BRACE: -12,
+  ELLIPSIS: -12,
+  NAME: -12,
+  FRAGMENT: -12,
+  ON: -12,
+  CLOSING_PAREN: -12,
+  CLOSING_BRACKET: -12,
+  DOLLAR: -12,
+  NUMBER: -12,
+  STRING_VALUE: -12,
+  BLOCK_STRING_VALUE: -12,
+  OPENING_BRACKET: -12,
+  BANG: -12,
+  EQUALS: -12,
+}, {
+  OPENING_PAREN: -13,
+  AT: -13,
+  OPENING_BRACE: -13,
+  COLON: -13,
+  CLOSING_BRACE: -13,
+  ELLIPSIS: -13,
+  NAME: -13,
+  FRAGMENT: -13,
+  ON: -13,
+  CLOSING_PAREN: -13,
+  CLOSING_BRACKET: -13,
+  DOLLAR: -13,
+  NUMBER: -13,
+  STRING_VALUE: -13,
+  BLOCK_STRING_VALUE: -13,
+  OPENING_BRACKET: -13,
+  BANG: -13,
+  EQUALS: -13,
+}, {
+  OPENING_PAREN: -14,
+  AT: -14,
+  OPENING_BRACE: -14,
+  COLON: -14,
+  CLOSING_BRACE: -14,
+  ELLIPSIS: -14,
+  NAME: -14,
+  FRAGMENT: -14,
+  ON: -14,
+  CLOSING_PAREN: -14,
+  CLOSING_BRACKET: -14,
+  DOLLAR: -14,
+  NUMBER: -14,
+  STRING_VALUE: -14,
+  BLOCK_STRING_VALUE: -14,
+  OPENING_BRACKET: -14,
+  BANG: -14,
+  EQUALS: -14,
+}, {
+  CLOSING_BRACE: 30,
+  ELLIPSIS: 24,
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+}, {
+  CLOSING_BRACE: -59,
+  ELLIPSIS: -59,
+  NAME: -59,
+  FRAGMENT: -59,
+  ON: -59,
+}, {
+  CLOSING_BRACE: -61,
+  ELLIPSIS: -61,
+  NAME: -61,
+  FRAGMENT: -61,
+  ON: -61,
+}, {
+  COLON: 33,
+  OPENING_PAREN: 34,
+  AT: -68,
+  OPENING_BRACE: -68,
+  CLOSING_BRACE: -68,
+  ELLIPSIS: -68,
+  NAME: -68,
+  FRAGMENT: -68,
+  ON: -68,
+}, {
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+}, {
+  CLOSING_BRACE: -62,
+  ELLIPSIS: -62,
+  NAME: -62,
+  FRAGMENT: -62,
+  ON: -62,
+}, {
+  NAME: 27,
+  ON: 38,
+  AT: -99,
+  OPENING_BRACE: -99,
+}, {
+  CLOSING_BRACE: -63,
+  ELLIPSIS: -63,
+  NAME: -63,
+  FRAGMENT: -63,
+  ON: -63,
+}, {
+  ON: 39,
+}, {
+  ON: -95,
+  AT: -95,
+  CLOSING_BRACE: -95,
+  ELLIPSIS: -95,
+  NAME: -95,
+  FRAGMENT: -95,
+}, {
+  AT: 43,
+  OPENING_BRACE: -47,
+}, {
+  DOLLAR: 47,
+}, {
+  FRAGMENT: -56,
+  NAME: -56,
+  OPENING_BRACE: -56,
+  $: -56,
+  CLOSING_BRACE: -56,
+  ELLIPSIS: -56,
+  ON: -56,
+}, {
+  CLOSING_BRACE: -60,
+  ELLIPSIS: -60,
+  NAME: -60,
+  FRAGMENT: -60,
+  ON: -60,
+}, {
+  AT: 43,
+  OPENING_BRACE: -47,
+  CLOSING_BRACE: -47,
+  ELLIPSIS: -47,
+  NAME: -47,
+  FRAGMENT: -47,
+  ON: -47,
+}, {
+  NAME: -66,
+  FRAGMENT: -66,
+  ON: -66,
+}, {
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+}, {
+  OPENING_PAREN: 34,
+  AT: -68,
+  OPENING_BRACE: -68,
+  CLOSING_BRACE: -68,
+  ELLIPSIS: -68,
+  NAME: -68,
+  FRAGMENT: -68,
+  ON: -68,
+}, {
+  AT: 43,
+  CLOSING_BRACE: -47,
+  ELLIPSIS: -47,
+  NAME: -47,
+  FRAGMENT: -47,
+  ON: -47,
+}, {
+  AT: 43,
+  OPENING_BRACE: -47,
+}, {
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+}, {
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+}, {
+  OPENING_BRACE: 9,
+}, {
+  AT: 43,
+  OPENING_BRACE: -46,
+  CLOSING_BRACE: -46,
+  ELLIPSIS: -46,
+  NAME: -46,
+  FRAGMENT: -46,
+  ON: -46,
+}, {
+  AT: -48,
+  OPENING_BRACE: -48,
+  CLOSING_BRACE: -48,
+  ELLIPSIS: -48,
+  NAME: -48,
+  FRAGMENT: -48,
+  ON: -48,
+}, {
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+}, {
+  CLOSING_PAREN: 61,
+  DOLLAR: 47,
+}, {
+  CLOSING_PAREN: -17,
+  DOLLAR: -17,
+}, {
+  COLON: 63,
+}, {
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+}, {
+  OPENING_BRACE: 9,
+  CLOSING_BRACE: -58,
+  ELLIPSIS: -58,
+  NAME: -58,
+  FRAGMENT: -58,
+  ON: -58,
+}, {
+  CLOSING_PAREN: 67,
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+}, {
+  CLOSING_PAREN: -69,
+  NAME: -69,
+  FRAGMENT: -69,
+  ON: -69,
+}, {
+  COLON: 69,
+}, {
+  AT: 43,
+  OPENING_BRACE: -47,
+  CLOSING_BRACE: -47,
+  ELLIPSIS: -47,
+  NAME: -47,
+  FRAGMENT: -47,
+  ON: -47,
+}, {
+  CLOSING_BRACE: -96,
+  ELLIPSIS: -96,
+  NAME: -96,
+  FRAGMENT: -96,
+  ON: -96,
+}, {
+  OPENING_BRACE: 9,
+}, {
+  AT: -98,
+  OPENING_BRACE: -98,
+}, {
+  AT: -24,
+  OPENING_BRACE: -24,
+  BANG: -24,
+  EQUALS: -24,
+  CLOSING_PAREN: -24,
+  DOLLAR: -24,
+  CLOSING_BRACKET: -24,
+}, {
+  AT: 43,
+  OPENING_BRACE: -47,
+}, {
+  FRAGMENT: -7,
+  NAME: -7,
+  OPENING_BRACE: -7,
+  $: -7,
+}, {
+  AT: -49,
+  OPENING_BRACE: -49,
+  CLOSING_BRACE: -49,
+  ELLIPSIS: -49,
+  NAME: -49,
+  FRAGMENT: -49,
+  ON: -49,
+}, {
+  OPENING_PAREN: 34,
+  AT: -68,
+  OPENING_BRACE: -68,
+  CLOSING_BRACE: -68,
+  ELLIPSIS: -68,
+  NAME: -68,
+  FRAGMENT: -68,
+  ON: -68,
+}, {
+  AT: -15,
+  OPENING_BRACE: -15,
+}, {
+  CLOSING_PAREN: -18,
+  DOLLAR: -18,
+}, {
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+  OPENING_BRACKET: 77,
+}, {
+  COLON: -20,
+  CLOSING_PAREN: -20,
+  NAME: -20,
+  FRAGMENT: -20,
+  ON: -20,
+  CLOSING_BRACKET: -20,
+  DOLLAR: -20,
+  NUMBER: -20,
+  STRING_VALUE: -20,
+  BLOCK_STRING_VALUE: -20,
+  OPENING_BRACKET: -20,
+  OPENING_BRACE: -20,
+  CLOSING_BRACE: -20,
+}, {
+  CLOSING_BRACE: -64,
+  ELLIPSIS: -64,
+  NAME: -64,
+  FRAGMENT: -64,
+  ON: -64,
+}, {
+  CLOSING_BRACE: -57,
+  ELLIPSIS: -57,
+  NAME: -57,
+  FRAGMENT: -57,
+  ON: -57,
+}, {
+  AT: -67,
+  OPENING_BRACE: -67,
+  CLOSING_BRACE: -67,
+  ELLIPSIS: -67,
+  NAME: -67,
+  FRAGMENT: -67,
+  ON: -67,
+}, {
+  CLOSING_PAREN: -70,
+  NAME: -70,
+  FRAGMENT: -70,
+  ON: -70,
+}, {
+  BLOCK_STRING_VALUE: 85,
+  DOLLAR: 47,
+  FRAGMENT: 16,
+  NAME: 15,
+  NUMBER: 82,
+  ON: 17,
+  OPENING_BRACE: 91,
+  OPENING_BRACKET: 89,
+  STRING_VALUE: 84,
+}, {
+  OPENING_BRACE: 9,
+  CLOSING_BRACE: -58,
+  ELLIPSIS: -58,
+  NAME: -58,
+  FRAGMENT: -58,
+  ON: -58,
+}, {
+  CLOSING_BRACE: -97,
+  ELLIPSIS: -97,
+  NAME: -97,
+  FRAGMENT: -97,
+  ON: -97,
+}, {
+  OPENING_BRACE: 9,
+}, {
+  AT: -50,
+  OPENING_BRACE: -50,
+  CLOSING_BRACE: -50,
+  ELLIPSIS: -50,
+  NAME: -50,
+  FRAGMENT: -50,
+  ON: -50,
+}, {
+  EQUALS: 95,
+  AT: -29,
+  CLOSING_PAREN: -29,
+  DOLLAR: -29,
+}, {
+  BANG: 96,
+  EQUALS: -21,
+  AT: -21,
+  CLOSING_PAREN: -21,
+  DOLLAR: -21,
+  CLOSING_BRACKET: -21,
+}, {
+  BANG: 97,
+  EQUALS: -22,
+  AT: -22,
+  CLOSING_PAREN: -22,
+  DOLLAR: -22,
+  CLOSING_BRACKET: -22,
+}, {
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+  OPENING_BRACKET: 77,
+}, {
+  EQUALS: -23,
+  AT: -23,
+  CLOSING_PAREN: -23,
+  DOLLAR: -23,
+  CLOSING_BRACKET: -23,
+}, {
+  CLOSING_PAREN: -71,
+  NAME: -71,
+  FRAGMENT: -71,
+  ON: -71,
+}, {
+  CLOSING_PAREN: -77,
+  NAME: -77,
+  FRAGMENT: -77,
+  ON: -77,
+  CLOSING_BRACKET: -77,
+  DOLLAR: -77,
+  NUMBER: -77,
+  STRING_VALUE: -77,
+  BLOCK_STRING_VALUE: -77,
+  OPENING_BRACKET: -77,
+  OPENING_BRACE: -77,
+  CLOSING_BRACE: -77,
+}, {
+  CLOSING_PAREN: -78,
+  NAME: -78,
+  FRAGMENT: -78,
+  ON: -78,
+  CLOSING_BRACKET: -78,
+  DOLLAR: -78,
+  NUMBER: -78,
+  STRING_VALUE: -78,
+  BLOCK_STRING_VALUE: -78,
+  OPENING_BRACKET: -78,
+  OPENING_BRACE: -78,
+  CLOSING_BRACE: -78,
+}, {
+  CLOSING_PAREN: -35,
+  NAME: -35,
+  FRAGMENT: -35,
+  ON: -35,
+  CLOSING_BRACKET: -35,
+  DOLLAR: -35,
+  NUMBER: -35,
+  STRING_VALUE: -35,
+  BLOCK_STRING_VALUE: -35,
+  OPENING_BRACKET: -35,
+  OPENING_BRACE: -35,
+  AT: -35,
+  CLOSING_BRACE: -35,
+}, {
+  CLOSING_PAREN: -79,
+  NAME: -79,
+  FRAGMENT: -79,
+  ON: -79,
+  CLOSING_BRACKET: -79,
+  DOLLAR: -79,
+  NUMBER: -79,
+  STRING_VALUE: -79,
+  BLOCK_STRING_VALUE: -79,
+  OPENING_BRACKET: -79,
+  OPENING_BRACE: -79,
+  CLOSING_BRACE: -79,
+}, {
+  CLOSING_PAREN: -83,
+  NAME: -83,
+  FRAGMENT: -83,
+  ON: -83,
+  CLOSING_BRACKET: -83,
+  DOLLAR: -83,
+  NUMBER: -83,
+  STRING_VALUE: -83,
+  BLOCK_STRING_VALUE: -83,
+  OPENING_BRACKET: -83,
+  OPENING_BRACE: -83,
+  AT: -83,
+  CLOSING_BRACE: -83,
+}, {
+  CLOSING_PAREN: -84,
+  NAME: -84,
+  FRAGMENT: -84,
+  ON: -84,
+  CLOSING_BRACKET: -84,
+  DOLLAR: -84,
+  NUMBER: -84,
+  STRING_VALUE: -84,
+  BLOCK_STRING_VALUE: -84,
+  OPENING_BRACKET: -84,
+  OPENING_BRACE: -84,
+  AT: -84,
+  CLOSING_BRACE: -84,
+}, {
+  CLOSING_PAREN: -80,
+  NAME: -80,
+  FRAGMENT: -80,
+  ON: -80,
+  CLOSING_BRACKET: -80,
+  DOLLAR: -80,
+  NUMBER: -80,
+  STRING_VALUE: -80,
+  BLOCK_STRING_VALUE: -80,
+  OPENING_BRACKET: -80,
+  OPENING_BRACE: -80,
+  CLOSING_BRACE: -80,
+}, {
+  CLOSING_PAREN: -36,
+  NAME: -36,
+  FRAGMENT: -36,
+  ON: -36,
+  CLOSING_BRACKET: -36,
+  DOLLAR: -36,
+  NUMBER: -36,
+  STRING_VALUE: -36,
+  BLOCK_STRING_VALUE: -36,
+  OPENING_BRACKET: -36,
+  OPENING_BRACE: -36,
+  AT: -36,
+  CLOSING_BRACE: -36,
+}, {
+  CLOSING_PAREN: -81,
+  NAME: -81,
+  FRAGMENT: -81,
+  ON: -81,
+  CLOSING_BRACKET: -81,
+  DOLLAR: -81,
+  NUMBER: -81,
+  STRING_VALUE: -81,
+  BLOCK_STRING_VALUE: -81,
+  OPENING_BRACKET: -81,
+  OPENING_BRACE: -81,
+  CLOSING_BRACE: -81,
+}, {
+  BLOCK_STRING_VALUE: 85,
+  CLOSING_BRACKET: 99,
+  DOLLAR: 47,
+  FRAGMENT: 16,
+  NAME: 15,
+  NUMBER: 82,
+  ON: 17,
+  OPENING_BRACE: 91,
+  OPENING_BRACKET: 89,
+  STRING_VALUE: 84,
+}, {
+  CLOSING_PAREN: -82,
+  NAME: -82,
+  FRAGMENT: -82,
+  ON: -82,
+  CLOSING_BRACKET: -82,
+  DOLLAR: -82,
+  NUMBER: -82,
+  STRING_VALUE: -82,
+  BLOCK_STRING_VALUE: -82,
+  OPENING_BRACKET: -82,
+  OPENING_BRACE: -82,
+  CLOSING_BRACE: -82,
+}, {
+  CLOSING_BRACE: 102,
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+}, {
+  CLOSING_BRACE: -65,
+  ELLIPSIS: -65,
+  NAME: -65,
+  FRAGMENT: -65,
+  ON: -65,
+}, {
+  FRAGMENT: -94,
+  NAME: -94,
+  OPENING_BRACE: -94,
+  $: -94,
+}, {
+  AT: 109,
+  CLOSING_PAREN: -52,
+  DOLLAR: -52,
+}, {
+  BLOCK_STRING_VALUE: 85,
+  FRAGMENT: 16,
+  NAME: 15,
+  NUMBER: 82,
+  ON: 17,
+  OPENING_BRACE: 117,
+  OPENING_BRACKET: 115,
+  STRING_VALUE: 84,
+}, {
+  EQUALS: -27,
+  AT: -27,
+  CLOSING_PAREN: -27,
+  DOLLAR: -27,
+  CLOSING_BRACKET: -27,
+}, {
+  EQUALS: -26,
+  AT: -26,
+  CLOSING_PAREN: -26,
+  DOLLAR: -26,
+  CLOSING_BRACKET: -26,
+}, {
+  CLOSING_BRACKET: 118,
+}, {
+  CLOSING_PAREN: -85,
+  NAME: -85,
+  FRAGMENT: -85,
+  ON: -85,
+  CLOSING_BRACKET: -85,
+  DOLLAR: -85,
+  NUMBER: -85,
+  STRING_VALUE: -85,
+  BLOCK_STRING_VALUE: -85,
+  OPENING_BRACKET: -85,
+  OPENING_BRACE: -85,
+  CLOSING_BRACE: -85,
+}, {
+  BLOCK_STRING_VALUE: 85,
+  CLOSING_BRACKET: 119,
+  DOLLAR: 47,
+  FRAGMENT: 16,
+  NAME: 15,
+  NUMBER: 82,
+  ON: 17,
+  OPENING_BRACE: 91,
+  OPENING_BRACKET: 89,
+  STRING_VALUE: 84,
+}, {
+  CLOSING_BRACKET: -87,
+  DOLLAR: -87,
+  NUMBER: -87,
+  STRING_VALUE: -87,
+  BLOCK_STRING_VALUE: -87,
+  OPENING_BRACKET: -87,
+  OPENING_BRACE: -87,
+  NAME: -87,
+  FRAGMENT: -87,
+  ON: -87,
+}, {
+  CLOSING_PAREN: -89,
+  NAME: -89,
+  FRAGMENT: -89,
+  ON: -89,
+  CLOSING_BRACKET: -89,
+  DOLLAR: -89,
+  NUMBER: -89,
+  STRING_VALUE: -89,
+  BLOCK_STRING_VALUE: -89,
+  OPENING_BRACKET: -89,
+  OPENING_BRACE: -89,
+  CLOSING_BRACE: -89,
+}, {
+  CLOSING_BRACE: 121,
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+}, {
+  CLOSING_BRACE: -91,
+  NAME: -91,
+  FRAGMENT: -91,
+  ON: -91,
+}, {
+  COLON: 123,
+}, {
+  CLOSING_PAREN: -19,
+  DOLLAR: -19,
+}, {
+  AT: 109,
+  CLOSING_PAREN: -51,
+  DOLLAR: -51,
+}, {
+  AT: -53,
+  CLOSING_PAREN: -53,
+  DOLLAR: -53,
+}, {
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+}, {
+  AT: -28,
+  CLOSING_PAREN: -28,
+  DOLLAR: -28,
+}, {
+  AT: -30,
+  CLOSING_PAREN: -30,
+  DOLLAR: -30,
+  CLOSING_BRACKET: -30,
+  NUMBER: -30,
+  STRING_VALUE: -30,
+  BLOCK_STRING_VALUE: -30,
+  OPENING_BRACKET: -30,
+  OPENING_BRACE: -30,
+  NAME: -30,
+  FRAGMENT: -30,
+  ON: -30,
+  CLOSING_BRACE: -30,
+}, {
+  AT: -31,
+  CLOSING_PAREN: -31,
+  DOLLAR: -31,
+  CLOSING_BRACKET: -31,
+  NUMBER: -31,
+  STRING_VALUE: -31,
+  BLOCK_STRING_VALUE: -31,
+  OPENING_BRACKET: -31,
+  OPENING_BRACE: -31,
+  NAME: -31,
+  FRAGMENT: -31,
+  ON: -31,
+  CLOSING_BRACE: -31,
+}, {
+  AT: -32,
+  CLOSING_PAREN: -32,
+  DOLLAR: -32,
+  CLOSING_BRACKET: -32,
+  NUMBER: -32,
+  STRING_VALUE: -32,
+  BLOCK_STRING_VALUE: -32,
+  OPENING_BRACKET: -32,
+  OPENING_BRACE: -32,
+  NAME: -32,
+  FRAGMENT: -32,
+  ON: -32,
+  CLOSING_BRACE: -32,
+}, {
+  AT: -33,
+  CLOSING_PAREN: -33,
+  DOLLAR: -33,
+  CLOSING_BRACKET: -33,
+  NUMBER: -33,
+  STRING_VALUE: -33,
+  BLOCK_STRING_VALUE: -33,
+  OPENING_BRACKET: -33,
+  OPENING_BRACE: -33,
+  NAME: -33,
+  FRAGMENT: -33,
+  ON: -33,
+  CLOSING_BRACE: -33,
+}, {
+  BLOCK_STRING_VALUE: 85,
+  CLOSING_BRACKET: 126,
+  FRAGMENT: 16,
+  NAME: 15,
+  NUMBER: 82,
+  ON: 17,
+  OPENING_BRACE: 117,
+  OPENING_BRACKET: 115,
+  STRING_VALUE: 84,
+}, {
+  AT: -34,
+  CLOSING_PAREN: -34,
+  DOLLAR: -34,
+  CLOSING_BRACKET: -34,
+  NUMBER: -34,
+  STRING_VALUE: -34,
+  BLOCK_STRING_VALUE: -34,
+  OPENING_BRACKET: -34,
+  OPENING_BRACE: -34,
+  NAME: -34,
+  FRAGMENT: -34,
+  ON: -34,
+  CLOSING_BRACE: -34,
+}, {
+  CLOSING_BRACE: 129,
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+}, {
+  BANG: -25,
+  EQUALS: -25,
+  AT: -25,
+  CLOSING_PAREN: -25,
+  DOLLAR: -25,
+  CLOSING_BRACKET: -25,
+}, {
+  CLOSING_PAREN: -86,
+  NAME: -86,
+  FRAGMENT: -86,
+  ON: -86,
+  CLOSING_BRACKET: -86,
+  DOLLAR: -86,
+  NUMBER: -86,
+  STRING_VALUE: -86,
+  BLOCK_STRING_VALUE: -86,
+  OPENING_BRACKET: -86,
+  OPENING_BRACE: -86,
+  CLOSING_BRACE: -86,
+}, {
+  CLOSING_BRACKET: -88,
+  DOLLAR: -88,
+  NUMBER: -88,
+  STRING_VALUE: -88,
+  BLOCK_STRING_VALUE: -88,
+  OPENING_BRACKET: -88,
+  OPENING_BRACE: -88,
+  NAME: -88,
+  FRAGMENT: -88,
+  ON: -88,
+}, {
+  CLOSING_PAREN: -90,
+  NAME: -90,
+  FRAGMENT: -90,
+  ON: -90,
+  CLOSING_BRACKET: -90,
+  DOLLAR: -90,
+  NUMBER: -90,
+  STRING_VALUE: -90,
+  BLOCK_STRING_VALUE: -90,
+  OPENING_BRACKET: -90,
+  OPENING_BRACE: -90,
+  CLOSING_BRACE: -90,
+}, {
+  CLOSING_BRACE: -92,
+  NAME: -92,
+  FRAGMENT: -92,
+  ON: -92,
+}, {
+  BLOCK_STRING_VALUE: 85,
+  DOLLAR: 47,
+  FRAGMENT: 16,
+  NAME: 15,
+  NUMBER: 82,
+  ON: 17,
+  OPENING_BRACE: 91,
+  OPENING_BRACKET: 89,
+  STRING_VALUE: 84,
+}, {
+  AT: -54,
+  CLOSING_PAREN: -54,
+  DOLLAR: -54,
+}, {
+  OPENING_PAREN: 135,
+  AT: -73,
+  CLOSING_PAREN: -73,
+  DOLLAR: -73,
+}, {
+  AT: -37,
+  CLOSING_PAREN: -37,
+  DOLLAR: -37,
+  CLOSING_BRACKET: -37,
+  NUMBER: -37,
+  STRING_VALUE: -37,
+  BLOCK_STRING_VALUE: -37,
+  OPENING_BRACKET: -37,
+  OPENING_BRACE: -37,
+  NAME: -37,
+  FRAGMENT: -37,
+  ON: -37,
+  CLOSING_BRACE: -37,
+}, {
+  BLOCK_STRING_VALUE: 85,
+  CLOSING_BRACKET: 136,
+  FRAGMENT: 16,
+  NAME: 15,
+  NUMBER: 82,
+  ON: 17,
+  OPENING_BRACE: 117,
+  OPENING_BRACKET: 115,
+  STRING_VALUE: 84,
+}, {
+  CLOSING_BRACKET: -39,
+  NUMBER: -39,
+  STRING_VALUE: -39,
+  BLOCK_STRING_VALUE: -39,
+  OPENING_BRACKET: -39,
+  OPENING_BRACE: -39,
+  NAME: -39,
+  FRAGMENT: -39,
+  ON: -39,
+}, {
+  AT: -41,
+  CLOSING_PAREN: -41,
+  DOLLAR: -41,
+  CLOSING_BRACKET: -41,
+  NUMBER: -41,
+  STRING_VALUE: -41,
+  BLOCK_STRING_VALUE: -41,
+  OPENING_BRACKET: -41,
+  OPENING_BRACE: -41,
+  NAME: -41,
+  FRAGMENT: -41,
+  ON: -41,
+  CLOSING_BRACE: -41,
+}, {
+  CLOSING_BRACE: 138,
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+}, {
+  CLOSING_BRACE: -43,
+  NAME: -43,
+  FRAGMENT: -43,
+  ON: -43,
+}, {
+  COLON: 140,
+}, {
+  CLOSING_BRACE: -93,
+  NAME: -93,
+  FRAGMENT: -93,
+  ON: -93,
+}, {
+  AT: -55,
+  CLOSING_PAREN: -55,
+  DOLLAR: -55,
+}, {
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+}, {
+  AT: -38,
+  CLOSING_PAREN: -38,
+  DOLLAR: -38,
+  CLOSING_BRACKET: -38,
+  NUMBER: -38,
+  STRING_VALUE: -38,
+  BLOCK_STRING_VALUE: -38,
+  OPENING_BRACKET: -38,
+  OPENING_BRACE: -38,
+  NAME: -38,
+  FRAGMENT: -38,
+  ON: -38,
+  CLOSING_BRACE: -38,
+}, {
+  CLOSING_BRACKET: -40,
+  NUMBER: -40,
+  STRING_VALUE: -40,
+  BLOCK_STRING_VALUE: -40,
+  OPENING_BRACKET: -40,
+  OPENING_BRACE: -40,
+  NAME: -40,
+  FRAGMENT: -40,
+  ON: -40,
+}, {
+  AT: -42,
+  CLOSING_PAREN: -42,
+  DOLLAR: -42,
+  CLOSING_BRACKET: -42,
+  NUMBER: -42,
+  STRING_VALUE: -42,
+  BLOCK_STRING_VALUE: -42,
+  OPENING_BRACKET: -42,
+  OPENING_BRACE: -42,
+  NAME: -42,
+  FRAGMENT: -42,
+  ON: -42,
+  CLOSING_BRACE: -42,
+}, {
+  CLOSING_BRACE: -44,
+  NAME: -44,
+  FRAGMENT: -44,
+  ON: -44,
+}, {
+  BLOCK_STRING_VALUE: 85,
+  FRAGMENT: 16,
+  NAME: 15,
+  NUMBER: 82,
+  ON: 17,
+  OPENING_BRACE: 117,
+  OPENING_BRACKET: 115,
+  STRING_VALUE: 84,
+}, {
+  CLOSING_PAREN: 145,
+  FRAGMENT: 16,
+  NAME: 15,
+  ON: 17,
+}, {
+  CLOSING_PAREN: -74,
+  NAME: -74,
+  FRAGMENT: -74,
+  ON: -74,
+}, {
+  COLON: 147,
+}, {
+  CLOSING_BRACE: -45,
+  NAME: -45,
+  FRAGMENT: -45,
+  ON: -45,
+}, {
+  AT: -72,
+  CLOSING_PAREN: -72,
+  DOLLAR: -72,
+}, {
+  CLOSING_PAREN: -75,
+  NAME: -75,
+  FRAGMENT: -75,
+  ON: -75,
+}, {
+  BLOCK_STRING_VALUE: 85,
+  FRAGMENT: 16,
+  NAME: 15,
+  NUMBER: 82,
+  ON: 17,
+  OPENING_BRACE: 117,
+  OPENING_BRACKET: 115,
+  STRING_VALUE: 84,
+}, {
+  CLOSING_PAREN: -76,
+  NAME: -76,
+  FRAGMENT: -76,
+  ON: -76,
 }];
 const gotos: Array<Gotos> = [
   {
@@ -5038,18 +2321,22 @@ export default function parseDocument(input: string) {
   while (true) {
     const [, current] = stack[stack.length - 1];
     const action = actions[current][token.name];
-    if (!action) {
+    if (action === undefined) {
       // TODO: maybe show stack here?
       throw new Error('syntax error at symbol ' + token.name);
-    } else if (action.kind === 'Accept') {
-      // Expect initial state + accept state.
+    } else if (action === 0) {
+      // Accept.
       const [tree] = stack[1];
       return tree;
-    } else if (action.kind === 'Shift') {
-      stack.push([token, action.state]);
+    } else if (action > 0) {
+      // Shift.
+      stack.push([token, action]);
       token = lexer.next() || EOF;
-    } else if (action.kind === 'Reduce') {
-      const {production, pop, action: code} = rules[action.rule];
+    } else if (action < 0) {
+      // Reduce.
+      // TODO: compare Math.abs with -, but will have to implement
+      // unary minus (currently only have it for literals)
+      const {production, pop, action: code} = rules[Math.abs(action)];
       const popped: Array<Production | Token | null> = [];
       for (let i = 0; i < pop; i++) {
         const [node] = stack.pop()!;
