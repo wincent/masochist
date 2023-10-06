@@ -261,7 +261,6 @@ export default function build(
                 const target = gotos[next][production];
 
                 // Use "as any" cast to suppress:
-                // - TS2590: Expression produces a union type that is too complex to represent.
                 // - TS2556: A spread argument must either have a tuple type or be passed to a rest parameter.
                 stack.push([(code as any)(...popped), target]);
               } else if (action > 0) {
