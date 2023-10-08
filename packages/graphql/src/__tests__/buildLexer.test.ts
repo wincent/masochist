@@ -22,10 +22,10 @@ describe('build()', () => {
     await build(lexer, stats);
 
     expect(stats['startStates']).toBe(1);
-    expect(stats['acceptStates']).toBe(36);
-    expect(stats['totalStates']).toBe(57);
+    expect(stats['acceptStates']).toBe(97);
+    expect(stats['totalStates']).toBe(118);
     expect(stats['ignoredTokens']).toBe(4);
-    expect(stats['totalTokens']).toBe(36);
+    expect(stats['totalTokens']).toBe(97);
     expect(stats['inlineableAcceptStates']).toBe(16);
     expect(stats['inlinedAcceptStates']).toBe(16);
     expect(stats['inlinedSelfTransitions']).toBe(10);

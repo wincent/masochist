@@ -37,15 +37,25 @@ export const LINE_TERMINATOR = /\n|\r\n|\r/;
 export const NAME = /[_a-z][_0-9a-z]*/i;
 
 //
-// Reserved NAME words.
+// Keyword NAME words.
 //
 // The reference implementation lexes all words as NAME, and then uses runtime
 // checks to distinguish between operation types (eg. "query", "mutation",
 // "subscription") and rule out invalid usages (eg. fragments cannot be named
-// "on" etc). Because we're using a bottom-up LR parser, we can't do that, and
-// instead need to emit distinct tokens.
+// "on" etc). Because we're using a bottom-up LR parser, it's easier for us to
+// instead emit distinct tokens.
+export const ENUM = 'enum';
 export const FRAGMENT = 'fragment';
+export const IMPLEMENTS = 'implements';
+export const INTERFACE = 'interface';
+export const MUTATION = 'mutation';
 export const ON = 'on';
+export const QUERY = 'query';
+export const SCALAR = 'scalar';
+export const SCHEMA = 'schema';
+export const SUBSCRIPTION = 'subscription';
+export const TYPE = 'type';
+export const UNION = 'union';
 
 // Basically:
 //
@@ -225,8 +235,17 @@ export default union({
   //
   // Special NAME tokens.
   //
+  ENUM,
   FRAGMENT,
+  IMPLEMENTS,
+  INTERFACE,
+  MUTATION,
   ON,
+  QUERY,
+  SCALAR,
+  SUBSCRIPTION,
+  TYPE,
+  UNION,
 
   //
   // (Other) lexical tokens (2.1.6).

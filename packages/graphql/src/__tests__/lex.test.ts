@@ -132,7 +132,7 @@ describe('lex()', () => {
       }
     `;
     expect([...lex(input)]).toEqual([
-      new Token('NAME', 7, 12, input),
+      new Token('QUERY', 7, 12, input),
       new Token('NAME', 13, 17, input),
       new Token('OPENING_BRACE', 18, 19, input),
       new Token('NAME', 28, 34, input),

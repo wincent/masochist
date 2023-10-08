@@ -9,7 +9,9 @@ I0:
   Definition → · ExecutableDefinition
   ExecutableDefinition → · OperationDefinition
   OperationDefinition → · OperationType OperationNameOpt VariableDefinitionsOpt DirectivesOpt SelectionSet
-  OperationType → · NAME
+  OperationType → · QUERY
+  OperationType → · MUTATION
+  OperationType → · SUBSCRIPTION
   OperationDefinition → · SelectionSet
   SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
   Definition → · FragmentDefinition
@@ -25,7 +27,9 @@ I2:
   Definition → · ExecutableDefinition
   ExecutableDefinition → · OperationDefinition
   OperationDefinition → · OperationType OperationNameOpt VariableDefinitionsOpt DirectivesOpt SelectionSet
-  OperationType → · NAME
+  OperationType → · QUERY
+  OperationType → · MUTATION
+  OperationType → · SUBSCRIPTION
   OperationDefinition → · SelectionSet
   SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
   Definition → · FragmentDefinition
@@ -44,24 +48,48 @@ I6:
   OperationDefinition → OperationType · OperationNameOpt VariableDefinitionsOpt DirectivesOpt SelectionSet
   OperationNameOpt → · Name
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
   OperationNameOpt → ε ·
 
 I7:
-  OperationType → NAME ·
+  OperationType → QUERY ·
 
 I8:
-  OperationDefinition → SelectionSet ·
+  OperationType → MUTATION ·
 
 I9:
+  OperationType → SUBSCRIPTION ·
+
+I10:
+  OperationDefinition → SelectionSet ·
+
+I11:
   SelectionSet → OPENING_BRACE · SelectionList CLOSING_BRACE
   SelectionList → · Selection
   Selection → · Field
   Field → · Name ArgumentsOpt DirectivesOpt SelectionSetOpt
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
   Field → · Alias Name ArgumentsOpt DirectivesOpt SelectionSetOpt
   Alias → · Name COLON
   Selection → · FragmentSpread
@@ -70,41 +98,77 @@ I9:
   InlineFragment → · ELLIPSIS TypeConditionOpt DirectivesOpt SelectionSet
   SelectionList → · SelectionList Selection
 
-I10:
+I12:
   Definition → FragmentDefinition ·
 
-I11:
+I13:
   FragmentDefinition → FRAGMENT · FragmentName ON NamedType DirectivesOpt SelectionSet
   FragmentName → · NAME
 
-I12:
+I14:
   DefinitionList → DefinitionList Definition ·
 
-I13:
+I15:
   OperationDefinition → OperationType OperationNameOpt · VariableDefinitionsOpt DirectivesOpt SelectionSet
   VariableDefinitionsOpt → · OPENING_PAREN VariableDefinitionList CLOSING_PAREN
   VariableDefinitionsOpt → ε ·
 
-I14:
+I16:
   OperationNameOpt → Name ·
 
-I15:
+I17:
   Name → NAME ·
 
-I16:
+I18:
+  Name → ENUM ·
+
+I19:
   Name → FRAGMENT ·
 
-I17:
+I20:
+  Name → IMPLEMENTS ·
+
+I21:
+  Name → INTERFACE ·
+
+I22:
   Name → ON ·
 
-I18:
+I23:
+  Name → QUERY ·
+
+I24:
+  Name → SCALAR ·
+
+I25:
+  Name → SCHEMA ·
+
+I26:
+  Name → SUBSCRIPTION ·
+
+I27:
+  Name → TYPE ·
+
+I28:
+  Name → UNION ·
+
+I29:
   SelectionSet → OPENING_BRACE SelectionList · CLOSING_BRACE
   SelectionList → SelectionList · Selection
   Selection → · Field
   Field → · Name ArgumentsOpt DirectivesOpt SelectionSetOpt
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
   Field → · Alias Name ArgumentsOpt DirectivesOpt SelectionSetOpt
   Alias → · Name COLON
   Selection → · FragmentSpread
@@ -112,44 +176,53 @@ I18:
   Selection → · InlineFragment
   InlineFragment → · ELLIPSIS TypeConditionOpt DirectivesOpt SelectionSet
 
-I19:
+I30:
   SelectionList → Selection ·
 
-I20:
+I31:
   Selection → Field ·
 
-I21:
+I32:
   Field → Name · ArgumentsOpt DirectivesOpt SelectionSetOpt
   Alias → Name · COLON
   ArgumentsOpt → · OPENING_PAREN ArgumentList CLOSING_PAREN
   ArgumentsOpt → ε ·
 
-I22:
+I33:
   Field → Alias · Name ArgumentsOpt DirectivesOpt SelectionSetOpt
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
 
-I23:
+I34:
   Selection → FragmentSpread ·
 
-I24:
+I35:
   FragmentSpread → ELLIPSIS · FragmentName DirectivesOpt
   InlineFragment → ELLIPSIS · TypeConditionOpt DirectivesOpt SelectionSet
   FragmentName → · NAME
   TypeConditionOpt → · ON NamedType
   TypeConditionOpt → ε ·
 
-I25:
+I36:
   Selection → InlineFragment ·
 
-I26:
+I37:
   FragmentDefinition → FRAGMENT FragmentName · ON NamedType DirectivesOpt SelectionSet
 
-I27:
+I38:
   FragmentName → NAME ·
 
-I28:
+I39:
   OperationDefinition → OperationType OperationNameOpt VariableDefinitionsOpt · DirectivesOpt SelectionSet
   DirectivesOpt → · DirectiveList
   DirectiveList → · Directive
@@ -157,20 +230,20 @@ I28:
   DirectiveList → · DirectiveList Directive
   DirectivesOpt → ε ·
 
-I29:
+I40:
   VariableDefinitionsOpt → OPENING_PAREN · VariableDefinitionList CLOSING_PAREN
   VariableDefinitionList → · VariableDefinition
   VariableDefinition → · Variable COLON Type DefaultValueOpt DirectivesConstOpt
   Variable → · DOLLAR Name
   VariableDefinitionList → · VariableDefinitionList VariableDefinition
 
-I30:
+I41:
   SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE ·
 
-I31:
+I42:
   SelectionList → SelectionList Selection ·
 
-I32:
+I43:
   Field → Name ArgumentsOpt · DirectivesOpt SelectionSetOpt
   DirectivesOpt → · DirectiveList
   DirectiveList → · Directive
@@ -178,24 +251,33 @@ I32:
   DirectiveList → · DirectiveList Directive
   DirectivesOpt → ε ·
 
-I33:
+I44:
   Alias → Name COLON ·
 
-I34:
+I45:
   ArgumentsOpt → OPENING_PAREN · ArgumentList CLOSING_PAREN
   ArgumentList → · Argument
   Argument → · Name COLON Value
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
   ArgumentList → · ArgumentList Argument
 
-I35:
+I46:
   Field → Alias Name · ArgumentsOpt DirectivesOpt SelectionSetOpt
   ArgumentsOpt → · OPENING_PAREN ArgumentList CLOSING_PAREN
   ArgumentsOpt → ε ·
 
-I36:
+I47:
   FragmentSpread → ELLIPSIS FragmentName · DirectivesOpt
   DirectivesOpt → · DirectiveList
   DirectiveList → · Directive
@@ -203,7 +285,7 @@ I36:
   DirectiveList → · DirectiveList Directive
   DirectivesOpt → ε ·
 
-I37:
+I48:
   InlineFragment → ELLIPSIS TypeConditionOpt · DirectivesOpt SelectionSet
   DirectivesOpt → · DirectiveList
   DirectiveList → · Directive
@@ -211,77 +293,122 @@ I37:
   DirectiveList → · DirectiveList Directive
   DirectivesOpt → ε ·
 
-I38:
+I49:
   TypeConditionOpt → ON · NamedType
   NamedType → · Name
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
 
-I39:
+I50:
   FragmentDefinition → FRAGMENT FragmentName ON · NamedType DirectivesOpt SelectionSet
   NamedType → · Name
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
 
-I40:
+I51:
   OperationDefinition → OperationType OperationNameOpt VariableDefinitionsOpt DirectivesOpt · SelectionSet
   SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
 
-I41:
+I52:
   DirectivesOpt → DirectiveList ·
   DirectiveList → DirectiveList · Directive
   Directive → · AT Name ArgumentsOpt
 
-I42:
+I53:
   DirectiveList → Directive ·
 
-I43:
+I54:
   Directive → AT · Name ArgumentsOpt
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
 
-I44:
+I55:
   VariableDefinitionsOpt → OPENING_PAREN VariableDefinitionList · CLOSING_PAREN
   VariableDefinitionList → VariableDefinitionList · VariableDefinition
   VariableDefinition → · Variable COLON Type DefaultValueOpt DirectivesConstOpt
   Variable → · DOLLAR Name
 
-I45:
+I56:
   VariableDefinitionList → VariableDefinition ·
 
-I46:
+I57:
   VariableDefinition → Variable · COLON Type DefaultValueOpt DirectivesConstOpt
 
-I47:
+I58:
   Variable → DOLLAR · Name
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
 
-I48:
+I59:
   Field → Name ArgumentsOpt DirectivesOpt · SelectionSetOpt
   SelectionSetOpt → · SelectionSet
   SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
   SelectionSetOpt → ε ·
 
-I49:
+I60:
   ArgumentsOpt → OPENING_PAREN ArgumentList · CLOSING_PAREN
   ArgumentList → ArgumentList · Argument
   Argument → · Name COLON Value
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
 
-I50:
+I61:
   ArgumentList → Argument ·
 
-I51:
+I62:
   Argument → Name · COLON Value
 
-I52:
+I63:
   Field → Alias Name ArgumentsOpt · DirectivesOpt SelectionSetOpt
   DirectivesOpt → · DirectiveList
   DirectiveList → · Directive
@@ -289,20 +416,20 @@ I52:
   DirectiveList → · DirectiveList Directive
   DirectivesOpt → ε ·
 
-I53:
+I64:
   FragmentSpread → ELLIPSIS FragmentName DirectivesOpt ·
 
-I54:
+I65:
   InlineFragment → ELLIPSIS TypeConditionOpt DirectivesOpt · SelectionSet
   SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
 
-I55:
+I66:
   TypeConditionOpt → ON NamedType ·
 
-I56:
+I67:
   NamedType → Name ·
 
-I57:
+I68:
   FragmentDefinition → FRAGMENT FragmentName ON NamedType · DirectivesOpt SelectionSet
   DirectivesOpt → · DirectiveList
   DirectiveList → · Directive
@@ -310,52 +437,61 @@ I57:
   DirectiveList → · DirectiveList Directive
   DirectivesOpt → ε ·
 
-I58:
+I69:
   OperationDefinition → OperationType OperationNameOpt VariableDefinitionsOpt DirectivesOpt SelectionSet ·
 
-I59:
+I70:
   DirectiveList → DirectiveList Directive ·
 
-I60:
+I71:
   Directive → AT Name · ArgumentsOpt
   ArgumentsOpt → · OPENING_PAREN ArgumentList CLOSING_PAREN
   ArgumentsOpt → ε ·
 
-I61:
+I72:
   VariableDefinitionsOpt → OPENING_PAREN VariableDefinitionList CLOSING_PAREN ·
 
-I62:
+I73:
   VariableDefinitionList → VariableDefinitionList VariableDefinition ·
 
-I63:
+I74:
   VariableDefinition → Variable COLON · Type DefaultValueOpt DirectivesConstOpt
   Type → · NamedType
   NamedType → · Name
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
   Type → · ListType
   ListType → · OPENING_BRACKET Type CLOSING_BRACKET
   Type → · NonNullType
   NonNullType → · ListType BANG
   NonNullType → · NamedType BANG
 
-I64:
+I75:
   Variable → DOLLAR Name ·
 
-I65:
+I76:
   Field → Name ArgumentsOpt DirectivesOpt SelectionSetOpt ·
 
-I66:
+I77:
   SelectionSetOpt → SelectionSet ·
 
-I67:
+I78:
   ArgumentsOpt → OPENING_PAREN ArgumentList CLOSING_PAREN ·
 
-I68:
+I79:
   ArgumentList → ArgumentList Argument ·
 
-I69:
+I80:
   Argument → Name COLON · Value
   Value → · Variable
   Variable → · DOLLAR Name
@@ -367,8 +503,17 @@ I69:
   Value → · NamedValue
   NamedValue → · Name
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
   Value → · ListValue
   ListValue → · OPENING_BRACKET CLOSING_BRACKET
   ListValue → · OPENING_BRACKET ListValueList CLOSING_BRACKET
@@ -376,82 +521,91 @@ I69:
   ObjectValue → · OPENING_BRACE CLOSING_BRACE
   ObjectValue → · OPENING_BRACE ObjectFieldList CLOSING_BRACE
 
-I70:
+I81:
   Field → Alias Name ArgumentsOpt DirectivesOpt · SelectionSetOpt
   SelectionSetOpt → · SelectionSet
   SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
   SelectionSetOpt → ε ·
 
-I71:
+I82:
   InlineFragment → ELLIPSIS TypeConditionOpt DirectivesOpt SelectionSet ·
 
-I72:
+I83:
   FragmentDefinition → FRAGMENT FragmentName ON NamedType DirectivesOpt · SelectionSet
   SelectionSet → · OPENING_BRACE SelectionList CLOSING_BRACE
 
-I73:
+I84:
   Directive → AT Name ArgumentsOpt ·
 
-I74:
+I85:
   VariableDefinition → Variable COLON Type · DefaultValueOpt DirectivesConstOpt
   DefaultValueOpt → · EQUALS ValueConst
   DefaultValueOpt → ε ·
 
-I75:
+I86:
   Type → NamedType ·
   NonNullType → NamedType · BANG
 
-I76:
+I87:
   Type → ListType ·
   NonNullType → ListType · BANG
 
-I77:
+I88:
   ListType → OPENING_BRACKET · Type CLOSING_BRACKET
   Type → · NamedType
   NamedType → · Name
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
   Type → · ListType
   ListType → · OPENING_BRACKET Type CLOSING_BRACKET
   Type → · NonNullType
   NonNullType → · ListType BANG
   NonNullType → · NamedType BANG
 
-I78:
+I89:
   Type → NonNullType ·
 
-I79:
+I90:
   Argument → Name COLON Value ·
 
-I80:
+I91:
   Value → Variable ·
 
-I81:
+I92:
   Value → NumberValue ·
 
-I82:
+I93:
   NumberValue → NUMBER ·
 
-I83:
+I94:
   Value → StringValue ·
 
-I84:
+I95:
   StringValue → STRING_VALUE ·
 
-I85:
+I96:
   StringValue → BLOCK_STRING_VALUE ·
 
-I86:
+I97:
   Value → NamedValue ·
 
-I87:
+I98:
   NamedValue → Name ·
 
-I88:
+I99:
   Value → ListValue ·
 
-I89:
+I100:
   ListValue → OPENING_BRACKET · CLOSING_BRACKET
   ListValue → OPENING_BRACKET · ListValueList CLOSING_BRACKET
   ListValueList → · Value
@@ -465,8 +619,17 @@ I89:
   Value → · NamedValue
   NamedValue → · Name
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
   Value → · ListValue
   ListValue → · OPENING_BRACKET CLOSING_BRACKET
   ListValue → · OPENING_BRACKET ListValueList CLOSING_BRACKET
@@ -475,26 +638,35 @@ I89:
   ObjectValue → · OPENING_BRACE ObjectFieldList CLOSING_BRACE
   ListValueList → · ListValueList Value
 
-I90:
+I101:
   Value → ObjectValue ·
 
-I91:
+I102:
   ObjectValue → OPENING_BRACE · CLOSING_BRACE
   ObjectValue → OPENING_BRACE · ObjectFieldList CLOSING_BRACE
   ObjectFieldList → · ObjectField
   ObjectField → · Name COLON Value
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
   ObjectFieldList → · ObjectFieldList ObjectField
 
-I92:
+I103:
   Field → Alias Name ArgumentsOpt DirectivesOpt SelectionSetOpt ·
 
-I93:
+I104:
   FragmentDefinition → FRAGMENT FragmentName ON NamedType DirectivesOpt SelectionSet ·
 
-I94:
+I105:
   VariableDefinition → Variable COLON Type DefaultValueOpt · DirectivesConstOpt
   DirectivesConstOpt → · DirectiveConstList
   DirectiveConstList → · DirectiveConst
@@ -502,7 +674,7 @@ I94:
   DirectiveConstList → · DirectiveConstList DirectiveConst
   DirectivesConstOpt → ε ·
 
-I95:
+I106:
   DefaultValueOpt → EQUALS · ValueConst
   ValueConst → · NumberValue
   NumberValue → · NUMBER
@@ -512,8 +684,17 @@ I95:
   ValueConst → · NamedValue
   NamedValue → · Name
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
   ValueConst → · ListValueConst
   ListValueConst → · OPENING_BRACKET CLOSING_BRACKET
   ListValueConst → · OPENING_BRACKET ListValueConstList CLOSING_BRACKET
@@ -521,19 +702,19 @@ I95:
   ObjectValueConst → · OPENING_BRACE CLOSING_BRACE
   ObjectValueConst → · OPENING_BRACE ObjectFieldConstList CLOSING_BRACE
 
-I96:
+I107:
   NonNullType → NamedType BANG ·
 
-I97:
+I108:
   NonNullType → ListType BANG ·
 
-I98:
+I109:
   ListType → OPENING_BRACKET Type · CLOSING_BRACKET
 
-I99:
+I110:
   ListValue → OPENING_BRACKET CLOSING_BRACKET ·
 
-I100:
+I111:
   ListValue → OPENING_BRACKET ListValueList · CLOSING_BRACKET
   ListValueList → ListValueList · Value
   Value → · Variable
@@ -546,8 +727,17 @@ I100:
   Value → · NamedValue
   NamedValue → · Name
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
   Value → · ListValue
   ListValue → · OPENING_BRACKET CLOSING_BRACKET
   ListValue → · OPENING_BRACKET ListValueList CLOSING_BRACKET
@@ -555,59 +745,77 @@ I100:
   ObjectValue → · OPENING_BRACE CLOSING_BRACE
   ObjectValue → · OPENING_BRACE ObjectFieldList CLOSING_BRACE
 
-I101:
+I112:
   ListValueList → Value ·
 
-I102:
+I113:
   ObjectValue → OPENING_BRACE CLOSING_BRACE ·
 
-I103:
+I114:
   ObjectValue → OPENING_BRACE ObjectFieldList · CLOSING_BRACE
   ObjectFieldList → ObjectFieldList · ObjectField
   ObjectField → · Name COLON Value
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
 
-I104:
+I115:
   ObjectFieldList → ObjectField ·
 
-I105:
+I116:
   ObjectField → Name · COLON Value
 
-I106:
+I117:
   VariableDefinition → Variable COLON Type DefaultValueOpt DirectivesConstOpt ·
 
-I107:
+I118:
   DirectivesConstOpt → DirectiveConstList ·
   DirectiveConstList → DirectiveConstList · DirectiveConst
   DirectiveConst → · AT Name ArgumentsConstOpt
 
-I108:
+I119:
   DirectiveConstList → DirectiveConst ·
 
-I109:
+I120:
   DirectiveConst → AT · Name ArgumentsConstOpt
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
 
-I110:
+I121:
   DefaultValueOpt → EQUALS ValueConst ·
 
-I111:
+I122:
   ValueConst → NumberValue ·
 
-I112:
+I123:
   ValueConst → StringValue ·
 
-I113:
+I124:
   ValueConst → NamedValue ·
 
-I114:
+I125:
   ValueConst → ListValueConst ·
 
-I115:
+I126:
   ListValueConst → OPENING_BRACKET · CLOSING_BRACKET
   ListValueConst → OPENING_BRACKET · ListValueConstList CLOSING_BRACKET
   ListValueConstList → · ValueConst
@@ -619,8 +827,17 @@ I115:
   ValueConst → · NamedValue
   NamedValue → · Name
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
   ValueConst → · ListValueConst
   ListValueConst → · OPENING_BRACKET CLOSING_BRACKET
   ListValueConst → · OPENING_BRACKET ListValueConstList CLOSING_BRACKET
@@ -629,35 +846,44 @@ I115:
   ObjectValueConst → · OPENING_BRACE ObjectFieldConstList CLOSING_BRACE
   ListValueConstList → · ListValueConstList ValueConst
 
-I116:
+I127:
   ValueConst → ObjectValueConst ·
 
-I117:
+I128:
   ObjectValueConst → OPENING_BRACE · CLOSING_BRACE
   ObjectValueConst → OPENING_BRACE · ObjectFieldConstList CLOSING_BRACE
   ObjectFieldConstList → · ObjectFieldConst
   ObjectFieldConst → · Name COLON ValueConst
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
   ObjectFieldConstList → · ObjectFieldConstList ObjectFieldConst
 
-I118:
+I129:
   ListType → OPENING_BRACKET Type CLOSING_BRACKET ·
 
-I119:
+I130:
   ListValue → OPENING_BRACKET ListValueList CLOSING_BRACKET ·
 
-I120:
+I131:
   ListValueList → ListValueList Value ·
 
-I121:
+I132:
   ObjectValue → OPENING_BRACE ObjectFieldList CLOSING_BRACE ·
 
-I122:
+I133:
   ObjectFieldList → ObjectFieldList ObjectField ·
 
-I123:
+I134:
   ObjectField → Name COLON · Value
   Value → · Variable
   Variable → · DOLLAR Name
@@ -669,8 +895,17 @@ I123:
   Value → · NamedValue
   NamedValue → · Name
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
   Value → · ListValue
   ListValue → · OPENING_BRACKET CLOSING_BRACKET
   ListValue → · OPENING_BRACKET ListValueList CLOSING_BRACKET
@@ -678,18 +913,18 @@ I123:
   ObjectValue → · OPENING_BRACE CLOSING_BRACE
   ObjectValue → · OPENING_BRACE ObjectFieldList CLOSING_BRACE
 
-I124:
+I135:
   DirectiveConstList → DirectiveConstList DirectiveConst ·
 
-I125:
+I136:
   DirectiveConst → AT Name · ArgumentsConstOpt
   ArgumentsConstOpt → · OPENING_PAREN ArgumentConstList CLOSING_PAREN
   ArgumentsConstOpt → ε ·
 
-I126:
+I137:
   ListValueConst → OPENING_BRACKET CLOSING_BRACKET ·
 
-I127:
+I138:
   ListValueConst → OPENING_BRACKET ListValueConstList · CLOSING_BRACKET
   ListValueConstList → ListValueConstList · ValueConst
   ValueConst → · NumberValue
@@ -700,8 +935,17 @@ I127:
   ValueConst → · NamedValue
   NamedValue → · Name
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
   ValueConst → · ListValueConst
   ListValueConst → · OPENING_BRACKET CLOSING_BRACKET
   ListValueConst → · OPENING_BRACKET ListValueConstList CLOSING_BRACKET
@@ -709,54 +953,72 @@ I127:
   ObjectValueConst → · OPENING_BRACE CLOSING_BRACE
   ObjectValueConst → · OPENING_BRACE ObjectFieldConstList CLOSING_BRACE
 
-I128:
+I139:
   ListValueConstList → ValueConst ·
 
-I129:
+I140:
   ObjectValueConst → OPENING_BRACE CLOSING_BRACE ·
 
-I130:
+I141:
   ObjectValueConst → OPENING_BRACE ObjectFieldConstList · CLOSING_BRACE
   ObjectFieldConstList → ObjectFieldConstList · ObjectFieldConst
   ObjectFieldConst → · Name COLON ValueConst
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
 
-I131:
+I142:
   ObjectFieldConstList → ObjectFieldConst ·
 
-I132:
+I143:
   ObjectFieldConst → Name · COLON ValueConst
 
-I133:
+I144:
   ObjectField → Name COLON Value ·
 
-I134:
+I145:
   DirectiveConst → AT Name ArgumentsConstOpt ·
 
-I135:
+I146:
   ArgumentsConstOpt → OPENING_PAREN · ArgumentConstList CLOSING_PAREN
   ArgumentConstList → · ArgumentConst
   ArgumentConst → · Name COLON ValueConst
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
   ArgumentConstList → · ArgumentConstList ArgumentConst
 
-I136:
+I147:
   ListValueConst → OPENING_BRACKET ListValueConstList CLOSING_BRACKET ·
 
-I137:
+I148:
   ListValueConstList → ListValueConstList ValueConst ·
 
-I138:
+I149:
   ObjectValueConst → OPENING_BRACE ObjectFieldConstList CLOSING_BRACE ·
 
-I139:
+I150:
   ObjectFieldConstList → ObjectFieldConstList ObjectFieldConst ·
 
-I140:
+I151:
   ObjectFieldConst → Name COLON · ValueConst
   ValueConst → · NumberValue
   NumberValue → · NUMBER
@@ -766,8 +1028,17 @@ I140:
   ValueConst → · NamedValue
   NamedValue → · Name
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
   ValueConst → · ListValueConst
   ListValueConst → · OPENING_BRACKET CLOSING_BRACKET
   ListValueConst → · OPENING_BRACKET ListValueConstList CLOSING_BRACKET
@@ -775,30 +1046,39 @@ I140:
   ObjectValueConst → · OPENING_BRACE CLOSING_BRACE
   ObjectValueConst → · OPENING_BRACE ObjectFieldConstList CLOSING_BRACE
 
-I141:
+I152:
   ArgumentsConstOpt → OPENING_PAREN ArgumentConstList · CLOSING_PAREN
   ArgumentConstList → ArgumentConstList · ArgumentConst
   ArgumentConst → · Name COLON ValueConst
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
 
-I142:
+I153:
   ArgumentConstList → ArgumentConst ·
 
-I143:
+I154:
   ArgumentConst → Name · COLON ValueConst
 
-I144:
+I155:
   ObjectFieldConst → Name COLON ValueConst ·
 
-I145:
+I156:
   ArgumentsConstOpt → OPENING_PAREN ArgumentConstList CLOSING_PAREN ·
 
-I146:
+I157:
   ArgumentConstList → ArgumentConstList ArgumentConst ·
 
-I147:
+I158:
   ArgumentConst → Name COLON · ValueConst
   ValueConst → · NumberValue
   NumberValue → · NUMBER
@@ -808,8 +1088,17 @@ I147:
   ValueConst → · NamedValue
   NamedValue → · Name
   Name → · NAME
+  Name → · ENUM
   Name → · FRAGMENT
+  Name → · IMPLEMENTS
+  Name → · INTERFACE
   Name → · ON
+  Name → · QUERY
+  Name → · SCALAR
+  Name → · SCHEMA
+  Name → · SUBSCRIPTION
+  Name → · TYPE
+  Name → · UNION
   ValueConst → · ListValueConst
   ListValueConst → · OPENING_BRACKET CLOSING_BRACKET
   ListValueConst → · OPENING_BRACKET ListValueConstList CLOSING_BRACKET
@@ -817,7 +1106,7 @@ I147:
   ObjectValueConst → · OPENING_BRACE CLOSING_BRACE
   ObjectValueConst → · OPENING_BRACE ObjectFieldConstList CLOSING_BRACE
 
-I148:
+I159:
   ArgumentConst → Name COLON ValueConst ·
 "
 `;

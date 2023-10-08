@@ -7,15 +7,25 @@
 %token COLON
 %token DOLLAR
 %token ELLIPSIS
+%token ENUM
 %token EQUALS
 %token FRAGMENT
+%token IMPLEMENTS
+%token INTERFACE
+%token MUTATION
 %token NAME
 %token NUMBER
 %token ON
 %token OPENING_BRACE CLOSING_BRACE
 %token OPENING_BRACKET CLOSING_BRACKET
 %token OPENING_PAREN CLOSING_PAREN
+%token QUERY
+%token SCALAR
+%token SCHEMA
 %token STRING_VALUE BLOCK_STRING_VALUE
+%token SUBSCRIPTION
+%token TYPE
+%token UNION
 
 Document → DefinitionList {
   $$ = {
@@ -53,25 +63,25 @@ OperationDefinition → SelectionSet {
   };
 }
 
-OperationType → NAME {{
-  const {contents} = $1;
-  if (contents === 'query') {
-    $$ = 'QUERY';
-  } else if (contents === 'mutation') {
-    $$ = 'MUTATION';
-  } else if (contents === 'subscription') {
-    $$ = 'SUBSCRIPTION';
-  } else {
-    throw new Error(`Unsupported operation type: ${contents}`);
-  }
-}}
+OperationType → QUERY { $$ = 'QUERY'; }
+OperationType → MUTATION { $$ = 'MUTATION'; }
+OperationType → SUBSCRIPTION { $$ = 'SUBSCRIPTION'; }
 
 OperationNameOpt → Name { $$ = $1; }
 OperationNameOpt → ε { $$ = null; }
 
 Name → NAME { $$ = $1.contents; }
+Name → ENUM { $$ = 'enum'; }
 Name → FRAGMENT { $$ = 'fragment'; }
+Name → IMPLEMENTS { $$ = 'implements'; }
+Name → INTERFACE { $$ = 'interface'; }
 Name → ON { $$ = 'on'; }
+Name → QUERY { $$ = 'query'; }
+Name → SCALAR { $$ = 'scalar'; }
+Name → SCHEMA { $$ = 'schema'; }
+Name → SUBSCRIPTION { $$ = 'subscription'; }
+Name → TYPE { $$ = 'type'; }
+Name → UNION { $$ = 'union'; }
 
 VariableDefinitionsOpt → OPENING_PAREN VariableDefinitionList CLOSING_PAREN {
   $$ = $2;
