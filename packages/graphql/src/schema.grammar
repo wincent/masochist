@@ -17,6 +17,7 @@
 %token OPENING_PAREN CLOSING_PAREN
 %token SCALAR
 %token STRING_VALUE BLOCK_STRING_VALUE
+%token UNION
 
 TypeSystemDocument → TypeSystemDefinitionList {
   $$ = {
@@ -39,7 +40,7 @@ TypeSystemDefinition → TypeDefinition { $$ = $1; }
 #TypeDefinition → InterfaceTypeDefinition { $$ = $1; }
 #TypeDefinition → ObjectTypeDefinition { $$ = $1; }
 TypeDefinition → ScalarTypeDefinition { $$ = $1; }
-#TypeDefinition → UnionTypeDefinition { $$ = $1; }
+TypeDefinition → UnionTypeDefinition { $$ = $1; }
 
 # TODO: Add optional directives
 ScalarTypeDefinition → Description SCALAR NAME {
@@ -54,6 +55,43 @@ ScalarTypeDefinition → SCALAR NAME {
     kind: 'SCALAR',
     name: $2.contents,
   };
+}
+
+# TODO: Add optional directives
+UnionTypeDefinition → Description UNION NAME EQUALS UnionTypeList {
+  $$ = {
+    kind: 'UNION',
+    name: $3.contents,
+    members: $5,
+    description: $1.value.trim(),
+  };
+}
+UnionTypeDefinition → Description UNION NAME EQUALS BAR UnionTypeList {
+  $$ = {
+    kind: 'UNION',
+    name: $3.contents,
+    members: $6,
+    description: $1.value.trim(),
+  };
+}
+UnionTypeDefinition → UNION NAME EQUALS UnionTypeList {
+  $$ = {
+    kind: 'UNION',
+    name: $2.contents,
+    members: $4,
+  };
+}
+UnionTypeDefinition → UNION NAME EQUALS BAR UnionTypeList {
+  $$ = {
+    kind: 'UNION',
+    name: $2.contents,
+    members: $5,
+  };
+}
+UnionTypeList → UnionTypeListItem { $$ = [$1]; }
+UnionTypeList → UnionTypeList BAR UnionTypeListItem { $1.push($3); $$ = $1; }
+UnionTypeListItem → NAME {
+  $$ = $1.contents;
 }
 
 Description → StringValue { $$ = $1; }

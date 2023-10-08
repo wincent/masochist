@@ -43,4 +43,98 @@ describe('parse()', () => {
       }],
     });
   });
+
+  it('parses a union type', () => {
+    const input = `union Content = Article | Page | Post | Snippet`;
+
+    expect(parse(input)).toEqual({
+      kind: 'TYPE_SYSTEM_DOCUMENT',
+      definitions: [{
+        kind: 'UNION',
+        name: 'Content',
+        members: [
+          'Article',
+          'Page',
+          'Post',
+          'Snippet',
+        ],
+      }],
+    });
+  });
+
+  it('parses a union type with a description', () => {
+    const input = `
+      """
+      A piece of content (an Article, a Page, a Post, or a Snippet)
+      """
+      union Content = Article | Page | Post | Snippet
+    `;
+
+    expect(parse(input)).toEqual({
+      kind: 'TYPE_SYSTEM_DOCUMENT',
+      definitions: [{
+        kind: 'UNION',
+        name: 'Content',
+        members: [
+          'Article',
+          'Page',
+          'Post',
+          'Snippet',
+        ],
+        description: 'A piece of content (an Article, a Page, a Post, or a Snippet)',
+      }],
+    });
+  });
+
+  it('parses a union type with optional leading separator', () => {
+    const input = `
+      union Content =
+        | Article
+        | Page
+        | Post
+        | Snippet
+    `;
+
+    expect(parse(input)).toEqual({
+      kind: 'TYPE_SYSTEM_DOCUMENT',
+      definitions: [{
+        kind: 'UNION',
+        name: 'Content',
+        members: [
+          'Article',
+          'Page',
+          'Post',
+          'Snippet',
+        ],
+      }],
+    });
+  });
+
+  it('parses a union type with a description and optional leading separator', () => {
+    const input = `
+      """
+      A piece of content (an Article, a Page, a Post, or a Snippet)
+      """
+      union Content =
+        | Article
+        | Page
+        | Post
+        | Snippet
+    `;
+
+    expect(parse(input)).toEqual({
+      kind: 'TYPE_SYSTEM_DOCUMENT',
+      definitions: [{
+        kind: 'UNION',
+        name: 'Content',
+        members: [
+          'Article',
+          'Page',
+          'Post',
+          'Snippet',
+        ],
+        description: 'A piece of content (an Article, a Page, a Post, or a Snippet)',
+      }],
+    });
+  });
 });
