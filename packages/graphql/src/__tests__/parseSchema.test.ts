@@ -560,6 +560,14 @@ describe('parse()', async () => {
           }],
         });
       });
+
+      it('parses the schema corpus', async () => {
+        const source = await Bun.file(
+          path.join(import.meta.dir, '../../../../support/schema.graphql'),
+        ).text();
+
+        expect(parse(source)).toMatchSnapshot();
+      });
     },
   );
 });

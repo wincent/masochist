@@ -1,0 +1,3357 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parse() parser dynamically derived from grammar parses the schema corpus 1`] = `
+{
+  "definitions": [
+    {
+      "kind": "SCHEMA",
+      "mutation": undefined,
+      "query": "Root",
+      "subscription": undefined,
+    },
+    {
+      "description": "A wiki article",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The ID of an object",
+          "kind": "FIELD",
+          "name": "id",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "The article's title",
+          "kind": "FIELD",
+          "name": "title",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "The title of the article after resolving redirects",
+          "kind": "FIELD",
+          "name": "resolvedTitle",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "The destination ([[wiki article]] or URL) the article should redirect to",
+          "kind": "FIELD",
+          "name": "redirect",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "body",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Markup",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Succinct summary of the article content",
+          "kind": "FIELD",
+          "name": "description",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "URL for the article",
+          "kind": "FIELD",
+          "name": "url",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "tags",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "LIST_TYPE",
+              "type": {
+                "kind": "NON_NULL_TYPE",
+                "type": {
+                  "kind": "NAMED_TYPE",
+                  "name": "TagName",
+                },
+              },
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "URL to edit the article",
+          "kind": "FIELD",
+          "name": "editURL",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "history",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "History",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When the content was first created",
+          "kind": "FIELD",
+          "name": "createdAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When the content was last updated",
+          "kind": "FIELD",
+          "name": "updatedAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+      ],
+      "implements": [
+        "Node",
+        "Tagged",
+        "Versioned",
+      ],
+      "kind": "OBJECT_TYPE",
+      "name": "Article",
+    },
+    {
+      "description": "A connection to a list of items.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "Information to aid in pagination.",
+          "kind": "FIELD",
+          "name": "pageInfo",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "PageInfo",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A list of edges.",
+          "kind": "FIELD",
+          "name": "edges",
+          "type": {
+            "kind": "LIST_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "ArticleEdge",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "ArticleConnection",
+    },
+    {
+      "description": "An edge in a connection.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The item at the end of the edge",
+          "kind": "FIELD",
+          "name": "node",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "Article",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A cursor for use in pagination",
+          "kind": "FIELD",
+          "name": "cursor",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "ArticleEdge",
+    },
+    {
+      "kind": "UNION",
+      "members": [
+        "Article",
+        "Page",
+        "Post",
+        "Snippet",
+      ],
+      "name": "Content",
+    },
+    {
+      "description": "A JSON-style (ISO 8601) date",
+      "kind": "SCALAR",
+      "name": "DateTime",
+    },
+    {
+      "description": "Revision history for the object",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "URL showing revision history for the object",
+          "kind": "FIELD",
+          "name": "url",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "History",
+    },
+    {
+      "description": "The textual markup for a piece of content",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "Unique string that may be used as a DOM identifier (or a prefix of one)",
+          "kind": "FIELD",
+          "name": "DOMIdentifier",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Unprocessed plain-text source of the markup",
+          "kind": "FIELD",
+          "name": "raw",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "The format of the markup source",
+          "kind": "FIELD",
+          "name": "format",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "MARKUP_FORMAT_TYPE",
+            },
+          },
+        },
+        {
+          "arguments": [
+            {
+              "description": "Base heading level [0-6]",
+              "kind": "INPUT_VALUE",
+              "name": "baseHeadingLevel",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+          ],
+          "description": "HTML output of transformed markup",
+          "kind": "FIELD",
+          "name": "html",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "Markup",
+    },
+    {
+      "kind": "ENUM_TYPE",
+      "name": "MARKUP_FORMAT_TYPE",
+      "values": [
+        {
+          "kind": "ENUM_VALUE",
+          "name": "C",
+        },
+        {
+          "kind": "ENUM_VALUE",
+          "name": "HTML",
+        },
+        {
+          "kind": "ENUM_VALUE",
+          "name": "M",
+        },
+        {
+          "kind": "ENUM_VALUE",
+          "name": "MD",
+        },
+        {
+          "kind": "ENUM_VALUE",
+          "name": "PATCH",
+        },
+        {
+          "kind": "ENUM_VALUE",
+          "name": "RB",
+        },
+        {
+          "kind": "ENUM_VALUE",
+          "name": "SH",
+        },
+        {
+          "kind": "ENUM_VALUE",
+          "name": "TXT",
+        },
+      ],
+    },
+    {
+      "description": "An object with an ID",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The id of the object.",
+          "kind": "FIELD",
+          "name": "id",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+        },
+      ],
+      "kind": "INTERFACE",
+      "name": "Node",
+    },
+    {
+      "description": "A page",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The ID of an object",
+          "kind": "FIELD",
+          "name": "id",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "The page's title",
+          "kind": "FIELD",
+          "name": "title",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "body",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Markup",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Succinct summary of the page content",
+          "kind": "FIELD",
+          "name": "description",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "URL for the page",
+          "kind": "FIELD",
+          "name": "url",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "history",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "History",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "tags",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "LIST_TYPE",
+              "type": {
+                "kind": "NON_NULL_TYPE",
+                "type": {
+                  "kind": "NAMED_TYPE",
+                  "name": "TagName",
+                },
+              },
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When the content was first created",
+          "kind": "FIELD",
+          "name": "createdAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When the content was last updated",
+          "kind": "FIELD",
+          "name": "updatedAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+      ],
+      "implements": [
+        "Node",
+        "Tagged",
+        "Versioned",
+      ],
+      "kind": "OBJECT_TYPE",
+      "name": "Page",
+    },
+    {
+      "description": "Information about pagination in a connection.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "When paginating forwards, are there more items?",
+          "kind": "FIELD",
+          "name": "hasNextPage",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Boolean",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When paginating backwards, are there more items?",
+          "kind": "FIELD",
+          "name": "hasPreviousPage",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Boolean",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When paginating backwards, the cursor to continue.",
+          "kind": "FIELD",
+          "name": "startCursor",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When paginating forwards, the cursor to continue.",
+          "kind": "FIELD",
+          "name": "endCursor",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "PageInfo",
+    },
+    {
+      "description": "A blog post",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The ID of an object",
+          "kind": "FIELD",
+          "name": "id",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "The blog post's title",
+          "kind": "FIELD",
+          "name": "title",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "body",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Markup",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Estimate of time necessary to read the post, in minutes",
+          "kind": "FIELD",
+          "name": "readTime",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Succinct summary of the post content",
+          "kind": "FIELD",
+          "name": "description",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "URL for the post",
+          "kind": "FIELD",
+          "name": "url",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "history",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "History",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "tags",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "LIST_TYPE",
+              "type": {
+                "kind": "NON_NULL_TYPE",
+                "type": {
+                  "kind": "NAMED_TYPE",
+                  "name": "TagName",
+                },
+              },
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When the content was first created",
+          "kind": "FIELD",
+          "name": "createdAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When the content was last updated",
+          "kind": "FIELD",
+          "name": "updatedAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+      ],
+      "implements": [
+        "Node",
+        "Tagged",
+        "Versioned",
+      ],
+      "kind": "OBJECT_TYPE",
+      "name": "Post",
+    },
+    {
+      "description": "A connection to a list of items.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "Information to aid in pagination.",
+          "kind": "FIELD",
+          "name": "pageInfo",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "PageInfo",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A list of edges.",
+          "kind": "FIELD",
+          "name": "edges",
+          "type": {
+            "kind": "LIST_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "PostEdge",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "PostConnection",
+    },
+    {
+      "description": "An edge in a connection.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The item at the end of the edge",
+          "kind": "FIELD",
+          "name": "node",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "Post",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A cursor for use in pagination",
+          "kind": "FIELD",
+          "name": "cursor",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "PostEdge",
+    },
+    {
+      "fields": [
+        {
+          "arguments": [
+            {
+              "description": "The ID of an object",
+              "kind": "INPUT_VALUE",
+              "name": "id",
+              "type": {
+                "kind": "NON_NULL_TYPE",
+                "type": {
+                  "kind": "NAMED_TYPE",
+                  "name": "ID",
+                },
+              },
+            },
+          ],
+          "description": "Fetches an object given its ID",
+          "kind": "FIELD",
+          "name": "node",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "Node",
+          },
+        },
+        {
+          "arguments": [
+            {
+              "description": "Returns the items in the list that come after the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "after",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the first n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "first",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+            {
+              "description": "Returns the items in the list that come before the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "before",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the last n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "last",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+          ],
+          "description": "All wiki articles",
+          "kind": "FIELD",
+          "name": "articles",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "ArticleConnection",
+            },
+          },
+        },
+        {
+          "arguments": [
+            {
+              "description": "Returns the items in the list that come after the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "after",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the first n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "first",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+            {
+              "description": "Returns the items in the list that come before the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "before",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the last n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "last",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+          ],
+          "description": "All blog posts",
+          "kind": "FIELD",
+          "name": "posts",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "PostConnection",
+            },
+          },
+        },
+        {
+          "arguments": [
+            {
+              "description": "Returns the items in the list that come after the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "after",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the first n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "first",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+            {
+              "description": "Returns the items in the list that come before the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "before",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the last n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "last",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+          ],
+          "description": "All snippets",
+          "kind": "FIELD",
+          "name": "snippets",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "SnippetConnection",
+            },
+          },
+        },
+        {
+          "arguments": [
+            {
+              "description": "Returns the items in the list that come after the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "after",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the first n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "first",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+            {
+              "description": "Returns the items in the list that come before the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "before",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the last n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "last",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+          ],
+          "description": "All tags",
+          "kind": "FIELD",
+          "name": "tags",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "TagConnection",
+            },
+          },
+        },
+        {
+          "arguments": [
+            {
+              "description": "Returns the items in the list that come after the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "after",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the first n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "first",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+            {
+              "description": "Returns the items in the list that come before the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "before",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the last n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "last",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+            {
+              "description": "One or more search terms, separated by spaces",
+              "kind": "INPUT_VALUE",
+              "name": "q",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+          ],
+          "description": "Search results",
+          "kind": "FIELD",
+          "name": "search",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "SearchResultConnection",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "Root",
+    },
+    {
+      "description": "A connection to a list of items.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "Information to aid in pagination.",
+          "kind": "FIELD",
+          "name": "pageInfo",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "PageInfo",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A list of edges.",
+          "kind": "FIELD",
+          "name": "edges",
+          "type": {
+            "kind": "LIST_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "SearchResultEdge",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Total number of search results",
+          "kind": "FIELD",
+          "name": "count",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "SearchResultConnection",
+    },
+    {
+      "description": "An edge in a connection.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The item at the end of the edge",
+          "kind": "FIELD",
+          "name": "node",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "Content",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A cursor for use in pagination",
+          "kind": "FIELD",
+          "name": "cursor",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "SearchResultEdge",
+    },
+    {
+      "description": "A snippet",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The ID of an object",
+          "kind": "FIELD",
+          "name": "id",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "The snippet's title",
+          "kind": "FIELD",
+          "name": "title",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "body",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Markup",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Succinct summary of the snippet content",
+          "kind": "FIELD",
+          "name": "description",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [
+            {
+              "kind": "INPUT_VALUE",
+              "name": "format",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "MARKUP_FORMAT_TYPE",
+              },
+            },
+          ],
+          "description": "Raw source of snippet",
+          "kind": "FIELD",
+          "name": "source",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "URL for the snippet",
+          "kind": "FIELD",
+          "name": "url",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "history",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "History",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "tags",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "LIST_TYPE",
+              "type": {
+                "kind": "NON_NULL_TYPE",
+                "type": {
+                  "kind": "NAMED_TYPE",
+                  "name": "TagName",
+                },
+              },
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When the content was first created",
+          "kind": "FIELD",
+          "name": "createdAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When the content was last updated",
+          "kind": "FIELD",
+          "name": "updatedAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+      ],
+      "implements": [
+        "Node",
+        "Tagged",
+        "Versioned",
+      ],
+      "kind": "OBJECT_TYPE",
+      "name": "Snippet",
+    },
+    {
+      "description": "A connection to a list of items.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "Information to aid in pagination.",
+          "kind": "FIELD",
+          "name": "pageInfo",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "PageInfo",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A list of edges.",
+          "kind": "FIELD",
+          "name": "edges",
+          "type": {
+            "kind": "LIST_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "SnippetEdge",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "SnippetConnection",
+    },
+    {
+      "description": "An edge in a connection.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The item at the end of the edge",
+          "kind": "FIELD",
+          "name": "node",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "Snippet",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A cursor for use in pagination",
+          "kind": "FIELD",
+          "name": "cursor",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "SnippetEdge",
+    },
+    {
+      "description": "A tag",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The ID of an object",
+          "kind": "FIELD",
+          "name": "id",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "The tag's name",
+          "kind": "FIELD",
+          "name": "name",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "TagName",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Count of items tagged with the tag",
+          "kind": "FIELD",
+          "name": "count",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "URL for the tag",
+          "kind": "FIELD",
+          "name": "url",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+        {
+          "arguments": [
+            {
+              "description": "Returns the items in the list that come after the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "after",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the first n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "first",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+            {
+              "description": "Returns the items in the list that come before the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "before",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the last n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "last",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+          ],
+          "description": "Items tagged with a particular tag",
+          "kind": "FIELD",
+          "name": "taggables",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "TaggableConnection",
+            },
+          },
+        },
+      ],
+      "implements": [
+        "Node",
+      ],
+      "kind": "OBJECT_TYPE",
+      "name": "Tag",
+    },
+    {
+      "description": "A connection to a list of items.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "Information to aid in pagination.",
+          "kind": "FIELD",
+          "name": "pageInfo",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "PageInfo",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A list of edges.",
+          "kind": "FIELD",
+          "name": "edges",
+          "type": {
+            "kind": "LIST_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "TagEdge",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Total number of tags",
+          "kind": "FIELD",
+          "name": "count",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "TagConnection",
+    },
+    {
+      "description": "An edge in a connection.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The item at the end of the edge",
+          "kind": "FIELD",
+          "name": "node",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "Tag",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A cursor for use in pagination",
+          "kind": "FIELD",
+          "name": "cursor",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "TagEdge",
+    },
+    {
+      "description": "A connection to a list of items.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "Information to aid in pagination.",
+          "kind": "FIELD",
+          "name": "pageInfo",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "PageInfo",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A list of edges.",
+          "kind": "FIELD",
+          "name": "edges",
+          "type": {
+            "kind": "LIST_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "TaggableEdge",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Number of tags",
+          "kind": "FIELD",
+          "name": "count",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "TaggableConnection",
+    },
+    {
+      "description": "An edge in a connection.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The item at the end of the edge",
+          "kind": "FIELD",
+          "name": "node",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "Content",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A cursor for use in pagination",
+          "kind": "FIELD",
+          "name": "cursor",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "TaggableEdge",
+    },
+    {
+      "description": "An object with a tags field",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "A list of tag names",
+          "kind": "FIELD",
+          "name": "tags",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "LIST_TYPE",
+              "type": {
+                "kind": "NON_NULL_TYPE",
+                "type": {
+                  "kind": "NAMED_TYPE",
+                  "name": "TagName",
+                },
+              },
+            },
+          },
+        },
+      ],
+      "kind": "INTERFACE",
+      "name": "Tagged",
+    },
+    {
+      "description": "A tag name",
+      "kind": "SCALAR",
+      "name": "TagName",
+    },
+    {
+      "description": "An object with history and timestamp fields",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "When the content was first created",
+          "kind": "FIELD",
+          "name": "createdAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Revision history for the object",
+          "kind": "FIELD",
+          "name": "history",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "History",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When the content was last updated",
+          "kind": "FIELD",
+          "name": "updatedAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+      ],
+      "kind": "INTERFACE",
+      "name": "Versioned",
+    },
+  ],
+  "kind": "TYPE_SYSTEM_DOCUMENT",
+}
+`;
+
+exports[`parse() parser persisted to disk parses the schema corpus 1`] = `
+{
+  "definitions": [
+    {
+      "kind": "SCHEMA",
+      "mutation": undefined,
+      "query": "Root",
+      "subscription": undefined,
+    },
+    {
+      "description": "A wiki article",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The ID of an object",
+          "kind": "FIELD",
+          "name": "id",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "The article's title",
+          "kind": "FIELD",
+          "name": "title",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "The title of the article after resolving redirects",
+          "kind": "FIELD",
+          "name": "resolvedTitle",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "The destination ([[wiki article]] or URL) the article should redirect to",
+          "kind": "FIELD",
+          "name": "redirect",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "body",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Markup",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Succinct summary of the article content",
+          "kind": "FIELD",
+          "name": "description",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "URL for the article",
+          "kind": "FIELD",
+          "name": "url",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "tags",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "LIST_TYPE",
+              "type": {
+                "kind": "NON_NULL_TYPE",
+                "type": {
+                  "kind": "NAMED_TYPE",
+                  "name": "TagName",
+                },
+              },
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "URL to edit the article",
+          "kind": "FIELD",
+          "name": "editURL",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "history",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "History",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When the content was first created",
+          "kind": "FIELD",
+          "name": "createdAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When the content was last updated",
+          "kind": "FIELD",
+          "name": "updatedAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+      ],
+      "implements": [
+        "Node",
+        "Tagged",
+        "Versioned",
+      ],
+      "kind": "OBJECT_TYPE",
+      "name": "Article",
+    },
+    {
+      "description": "A connection to a list of items.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "Information to aid in pagination.",
+          "kind": "FIELD",
+          "name": "pageInfo",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "PageInfo",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A list of edges.",
+          "kind": "FIELD",
+          "name": "edges",
+          "type": {
+            "kind": "LIST_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "ArticleEdge",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "ArticleConnection",
+    },
+    {
+      "description": "An edge in a connection.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The item at the end of the edge",
+          "kind": "FIELD",
+          "name": "node",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "Article",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A cursor for use in pagination",
+          "kind": "FIELD",
+          "name": "cursor",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "ArticleEdge",
+    },
+    {
+      "kind": "UNION",
+      "members": [
+        "Article",
+        "Page",
+        "Post",
+        "Snippet",
+      ],
+      "name": "Content",
+    },
+    {
+      "description": "A JSON-style (ISO 8601) date",
+      "kind": "SCALAR",
+      "name": "DateTime",
+    },
+    {
+      "description": "Revision history for the object",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "URL showing revision history for the object",
+          "kind": "FIELD",
+          "name": "url",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "History",
+    },
+    {
+      "description": "The textual markup for a piece of content",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "Unique string that may be used as a DOM identifier (or a prefix of one)",
+          "kind": "FIELD",
+          "name": "DOMIdentifier",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Unprocessed plain-text source of the markup",
+          "kind": "FIELD",
+          "name": "raw",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "The format of the markup source",
+          "kind": "FIELD",
+          "name": "format",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "MARKUP_FORMAT_TYPE",
+            },
+          },
+        },
+        {
+          "arguments": [
+            {
+              "description": "Base heading level [0-6]",
+              "kind": "INPUT_VALUE",
+              "name": "baseHeadingLevel",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+          ],
+          "description": "HTML output of transformed markup",
+          "kind": "FIELD",
+          "name": "html",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "Markup",
+    },
+    {
+      "kind": "ENUM_TYPE",
+      "name": "MARKUP_FORMAT_TYPE",
+      "values": [
+        {
+          "kind": "ENUM_VALUE",
+          "name": "C",
+        },
+        {
+          "kind": "ENUM_VALUE",
+          "name": "HTML",
+        },
+        {
+          "kind": "ENUM_VALUE",
+          "name": "M",
+        },
+        {
+          "kind": "ENUM_VALUE",
+          "name": "MD",
+        },
+        {
+          "kind": "ENUM_VALUE",
+          "name": "PATCH",
+        },
+        {
+          "kind": "ENUM_VALUE",
+          "name": "RB",
+        },
+        {
+          "kind": "ENUM_VALUE",
+          "name": "SH",
+        },
+        {
+          "kind": "ENUM_VALUE",
+          "name": "TXT",
+        },
+      ],
+    },
+    {
+      "description": "An object with an ID",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The id of the object.",
+          "kind": "FIELD",
+          "name": "id",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+        },
+      ],
+      "kind": "INTERFACE",
+      "name": "Node",
+    },
+    {
+      "description": "A page",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The ID of an object",
+          "kind": "FIELD",
+          "name": "id",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "The page's title",
+          "kind": "FIELD",
+          "name": "title",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "body",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Markup",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Succinct summary of the page content",
+          "kind": "FIELD",
+          "name": "description",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "URL for the page",
+          "kind": "FIELD",
+          "name": "url",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "history",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "History",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "tags",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "LIST_TYPE",
+              "type": {
+                "kind": "NON_NULL_TYPE",
+                "type": {
+                  "kind": "NAMED_TYPE",
+                  "name": "TagName",
+                },
+              },
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When the content was first created",
+          "kind": "FIELD",
+          "name": "createdAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When the content was last updated",
+          "kind": "FIELD",
+          "name": "updatedAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+      ],
+      "implements": [
+        "Node",
+        "Tagged",
+        "Versioned",
+      ],
+      "kind": "OBJECT_TYPE",
+      "name": "Page",
+    },
+    {
+      "description": "Information about pagination in a connection.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "When paginating forwards, are there more items?",
+          "kind": "FIELD",
+          "name": "hasNextPage",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Boolean",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When paginating backwards, are there more items?",
+          "kind": "FIELD",
+          "name": "hasPreviousPage",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Boolean",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When paginating backwards, the cursor to continue.",
+          "kind": "FIELD",
+          "name": "startCursor",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When paginating forwards, the cursor to continue.",
+          "kind": "FIELD",
+          "name": "endCursor",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "PageInfo",
+    },
+    {
+      "description": "A blog post",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The ID of an object",
+          "kind": "FIELD",
+          "name": "id",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "The blog post's title",
+          "kind": "FIELD",
+          "name": "title",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "body",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Markup",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Estimate of time necessary to read the post, in minutes",
+          "kind": "FIELD",
+          "name": "readTime",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Succinct summary of the post content",
+          "kind": "FIELD",
+          "name": "description",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "URL for the post",
+          "kind": "FIELD",
+          "name": "url",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "history",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "History",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "tags",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "LIST_TYPE",
+              "type": {
+                "kind": "NON_NULL_TYPE",
+                "type": {
+                  "kind": "NAMED_TYPE",
+                  "name": "TagName",
+                },
+              },
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When the content was first created",
+          "kind": "FIELD",
+          "name": "createdAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When the content was last updated",
+          "kind": "FIELD",
+          "name": "updatedAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+      ],
+      "implements": [
+        "Node",
+        "Tagged",
+        "Versioned",
+      ],
+      "kind": "OBJECT_TYPE",
+      "name": "Post",
+    },
+    {
+      "description": "A connection to a list of items.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "Information to aid in pagination.",
+          "kind": "FIELD",
+          "name": "pageInfo",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "PageInfo",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A list of edges.",
+          "kind": "FIELD",
+          "name": "edges",
+          "type": {
+            "kind": "LIST_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "PostEdge",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "PostConnection",
+    },
+    {
+      "description": "An edge in a connection.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The item at the end of the edge",
+          "kind": "FIELD",
+          "name": "node",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "Post",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A cursor for use in pagination",
+          "kind": "FIELD",
+          "name": "cursor",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "PostEdge",
+    },
+    {
+      "fields": [
+        {
+          "arguments": [
+            {
+              "description": "The ID of an object",
+              "kind": "INPUT_VALUE",
+              "name": "id",
+              "type": {
+                "kind": "NON_NULL_TYPE",
+                "type": {
+                  "kind": "NAMED_TYPE",
+                  "name": "ID",
+                },
+              },
+            },
+          ],
+          "description": "Fetches an object given its ID",
+          "kind": "FIELD",
+          "name": "node",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "Node",
+          },
+        },
+        {
+          "arguments": [
+            {
+              "description": "Returns the items in the list that come after the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "after",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the first n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "first",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+            {
+              "description": "Returns the items in the list that come before the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "before",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the last n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "last",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+          ],
+          "description": "All wiki articles",
+          "kind": "FIELD",
+          "name": "articles",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "ArticleConnection",
+            },
+          },
+        },
+        {
+          "arguments": [
+            {
+              "description": "Returns the items in the list that come after the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "after",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the first n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "first",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+            {
+              "description": "Returns the items in the list that come before the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "before",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the last n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "last",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+          ],
+          "description": "All blog posts",
+          "kind": "FIELD",
+          "name": "posts",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "PostConnection",
+            },
+          },
+        },
+        {
+          "arguments": [
+            {
+              "description": "Returns the items in the list that come after the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "after",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the first n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "first",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+            {
+              "description": "Returns the items in the list that come before the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "before",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the last n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "last",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+          ],
+          "description": "All snippets",
+          "kind": "FIELD",
+          "name": "snippets",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "SnippetConnection",
+            },
+          },
+        },
+        {
+          "arguments": [
+            {
+              "description": "Returns the items in the list that come after the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "after",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the first n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "first",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+            {
+              "description": "Returns the items in the list that come before the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "before",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the last n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "last",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+          ],
+          "description": "All tags",
+          "kind": "FIELD",
+          "name": "tags",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "TagConnection",
+            },
+          },
+        },
+        {
+          "arguments": [
+            {
+              "description": "Returns the items in the list that come after the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "after",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the first n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "first",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+            {
+              "description": "Returns the items in the list that come before the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "before",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the last n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "last",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+            {
+              "description": "One or more search terms, separated by spaces",
+              "kind": "INPUT_VALUE",
+              "name": "q",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+          ],
+          "description": "Search results",
+          "kind": "FIELD",
+          "name": "search",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "SearchResultConnection",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "Root",
+    },
+    {
+      "description": "A connection to a list of items.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "Information to aid in pagination.",
+          "kind": "FIELD",
+          "name": "pageInfo",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "PageInfo",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A list of edges.",
+          "kind": "FIELD",
+          "name": "edges",
+          "type": {
+            "kind": "LIST_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "SearchResultEdge",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Total number of search results",
+          "kind": "FIELD",
+          "name": "count",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "SearchResultConnection",
+    },
+    {
+      "description": "An edge in a connection.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The item at the end of the edge",
+          "kind": "FIELD",
+          "name": "node",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "Content",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A cursor for use in pagination",
+          "kind": "FIELD",
+          "name": "cursor",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "SearchResultEdge",
+    },
+    {
+      "description": "A snippet",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The ID of an object",
+          "kind": "FIELD",
+          "name": "id",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "The snippet's title",
+          "kind": "FIELD",
+          "name": "title",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "body",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Markup",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Succinct summary of the snippet content",
+          "kind": "FIELD",
+          "name": "description",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [
+            {
+              "kind": "INPUT_VALUE",
+              "name": "format",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "MARKUP_FORMAT_TYPE",
+              },
+            },
+          ],
+          "description": "Raw source of snippet",
+          "kind": "FIELD",
+          "name": "source",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "URL for the snippet",
+          "kind": "FIELD",
+          "name": "url",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "history",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "History",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "kind": "FIELD",
+          "name": "tags",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "LIST_TYPE",
+              "type": {
+                "kind": "NON_NULL_TYPE",
+                "type": {
+                  "kind": "NAMED_TYPE",
+                  "name": "TagName",
+                },
+              },
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When the content was first created",
+          "kind": "FIELD",
+          "name": "createdAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When the content was last updated",
+          "kind": "FIELD",
+          "name": "updatedAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+      ],
+      "implements": [
+        "Node",
+        "Tagged",
+        "Versioned",
+      ],
+      "kind": "OBJECT_TYPE",
+      "name": "Snippet",
+    },
+    {
+      "description": "A connection to a list of items.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "Information to aid in pagination.",
+          "kind": "FIELD",
+          "name": "pageInfo",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "PageInfo",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A list of edges.",
+          "kind": "FIELD",
+          "name": "edges",
+          "type": {
+            "kind": "LIST_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "SnippetEdge",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "SnippetConnection",
+    },
+    {
+      "description": "An edge in a connection.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The item at the end of the edge",
+          "kind": "FIELD",
+          "name": "node",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "Snippet",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A cursor for use in pagination",
+          "kind": "FIELD",
+          "name": "cursor",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "SnippetEdge",
+    },
+    {
+      "description": "A tag",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The ID of an object",
+          "kind": "FIELD",
+          "name": "id",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "The tag's name",
+          "kind": "FIELD",
+          "name": "name",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "TagName",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Count of items tagged with the tag",
+          "kind": "FIELD",
+          "name": "count",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "URL for the tag",
+          "kind": "FIELD",
+          "name": "url",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+        {
+          "arguments": [
+            {
+              "description": "Returns the items in the list that come after the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "after",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the first n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "first",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+            {
+              "description": "Returns the items in the list that come before the specified cursor.",
+              "kind": "INPUT_VALUE",
+              "name": "before",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "String",
+              },
+            },
+            {
+              "description": "Returns the last n items from the list.",
+              "kind": "INPUT_VALUE",
+              "name": "last",
+              "type": {
+                "kind": "NAMED_TYPE",
+                "name": "Int",
+              },
+            },
+          ],
+          "description": "Items tagged with a particular tag",
+          "kind": "FIELD",
+          "name": "taggables",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "TaggableConnection",
+            },
+          },
+        },
+      ],
+      "implements": [
+        "Node",
+      ],
+      "kind": "OBJECT_TYPE",
+      "name": "Tag",
+    },
+    {
+      "description": "A connection to a list of items.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "Information to aid in pagination.",
+          "kind": "FIELD",
+          "name": "pageInfo",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "PageInfo",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A list of edges.",
+          "kind": "FIELD",
+          "name": "edges",
+          "type": {
+            "kind": "LIST_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "TagEdge",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Total number of tags",
+          "kind": "FIELD",
+          "name": "count",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "TagConnection",
+    },
+    {
+      "description": "An edge in a connection.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The item at the end of the edge",
+          "kind": "FIELD",
+          "name": "node",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "Tag",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A cursor for use in pagination",
+          "kind": "FIELD",
+          "name": "cursor",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "TagEdge",
+    },
+    {
+      "description": "A connection to a list of items.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "Information to aid in pagination.",
+          "kind": "FIELD",
+          "name": "pageInfo",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "PageInfo",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A list of edges.",
+          "kind": "FIELD",
+          "name": "edges",
+          "type": {
+            "kind": "LIST_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "TaggableEdge",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Number of tags",
+          "kind": "FIELD",
+          "name": "count",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "TaggableConnection",
+    },
+    {
+      "description": "An edge in a connection.",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "The item at the end of the edge",
+          "kind": "FIELD",
+          "name": "node",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "Content",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "A cursor for use in pagination",
+          "kind": "FIELD",
+          "name": "cursor",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+        },
+      ],
+      "implements": [],
+      "kind": "OBJECT_TYPE",
+      "name": "TaggableEdge",
+    },
+    {
+      "description": "An object with a tags field",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "A list of tag names",
+          "kind": "FIELD",
+          "name": "tags",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "LIST_TYPE",
+              "type": {
+                "kind": "NON_NULL_TYPE",
+                "type": {
+                  "kind": "NAMED_TYPE",
+                  "name": "TagName",
+                },
+              },
+            },
+          },
+        },
+      ],
+      "kind": "INTERFACE",
+      "name": "Tagged",
+    },
+    {
+      "description": "A tag name",
+      "kind": "SCALAR",
+      "name": "TagName",
+    },
+    {
+      "description": "An object with history and timestamp fields",
+      "fields": [
+        {
+          "arguments": [],
+          "description": "When the content was first created",
+          "kind": "FIELD",
+          "name": "createdAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+        {
+          "arguments": [],
+          "description": "Revision history for the object",
+          "kind": "FIELD",
+          "name": "history",
+          "type": {
+            "kind": "NON_NULL_TYPE",
+            "type": {
+              "kind": "NAMED_TYPE",
+              "name": "History",
+            },
+          },
+        },
+        {
+          "arguments": [],
+          "description": "When the content was last updated",
+          "kind": "FIELD",
+          "name": "updatedAt",
+          "type": {
+            "kind": "NAMED_TYPE",
+            "name": "DateTime",
+          },
+        },
+      ],
+      "kind": "INTERFACE",
+      "name": "Versioned",
+    },
+  ],
+  "kind": "TYPE_SYSTEM_DOCUMENT",
+}
+`;

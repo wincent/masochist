@@ -404,6 +404,7 @@ const actions: Array<{[token: string]: number}> = [{
   UNION: 20,
 }, {
   $: 0,
+}, {
   BLOCK_STRING_VALUE: 8,
   ENUM: 12,
   INTERFACE: 14,
@@ -412,15 +413,6 @@ const actions: Array<{[token: string]: number}> = [{
   STRING_VALUE: 7,
   TYPE: 16,
   UNION: 20,
-}, {
-  SCHEMA: -1,
-  ENUM: -1,
-  INTERFACE: -1,
-  TYPE: -1,
-  SCALAR: -1,
-  UNION: -1,
-  STRING_VALUE: -1,
-  BLOCK_STRING_VALUE: -1,
   $: -1,
 }, {
   SCHEMA: -2,
@@ -1137,6 +1129,7 @@ const gotos: Array<Gotos> = [
     TypeSystemDocument: 1,
     UnionTypeDefinition: 19,
   },
+  {},
   {
     Description: 5,
     EnumTypeDefinition: 11,
@@ -1149,7 +1142,6 @@ const gotos: Array<Gotos> = [
     TypeSystemDefinition: 21,
     UnionTypeDefinition: 19,
   },
-  {},
   {},
   {},
   {},
