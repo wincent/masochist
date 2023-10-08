@@ -7,9 +7,11 @@
 %token COLON
 %token DOLLAR
 %token ELLIPSIS
+%token ENUM
 %token EQUALS
 %token FRAGMENT
 %token IMPLEMENTS
+%token INTERFACE
 %token MUTATION
 %token NAME
 %token NUMBER
@@ -98,12 +100,63 @@ OperationTypeListItem → SUBSCRIPTION COLON NAME {
 }
 
 # TODO: other types
-#TypeDefinition → EnumTypeDefinition { $$ = $1; }
+TypeDefinition → EnumTypeDefinition { $$ = $1; }
 #TypeDefinition → InputObjectTypeDefinition { $$ = $1; }
 #TypeDefinition → InterfaceTypeDefinition { $$ = $1; }
 TypeDefinition → ObjectTypeDefinition { $$ = $1; }
 TypeDefinition → ScalarTypeDefinition { $$ = $1; }
 TypeDefinition → UnionTypeDefinition { $$ = $1; }
+
+EnumTypeDefinition → Description ENUM NAME OPENING_BRACE EnumValuesList CLOSING_BRACE {
+  if ($5.some(({name}) => {
+    return (
+      name === 'true' ||
+      name === 'false' ||
+      name === 'null'
+    );
+  })) {
+    throw new Error('enum values may not include "true", "false" or "null"');
+  }
+  $$ = {
+    kind: 'ENUM_TYPE',
+    name: $3.contents,
+    description: $1.value.trim(),
+    values: $5,
+  };
+}
+EnumTypeDefinition → ENUM NAME OPENING_BRACE EnumValuesList CLOSING_BRACE {
+  if ($4.some(({name}) => {
+    return (
+      name === 'true' ||
+      name === 'false' ||
+      name === 'null'
+    );
+  })) {
+    throw new Error('enum values may not include "true", "false" or "null"');
+  }
+  $$ = {
+    kind: 'ENUM_TYPE',
+    name: $2.contents,
+    values: $4,
+  };
+}
+
+EnumValuesList → EnumValuesListItem { $$ = [$1]; }
+EnumValuesList → EnumValuesList EnumValuesListItem { $1.push($2); $$ = $1; }
+
+EnumValuesListItem → Description NAME {
+  $$ = {
+    kind: 'ENUM_VALUE',
+    name: $2.contents,
+    description: $1.value.trim(),
+  };
+}
+EnumValuesListItem → NAME {
+  $$ = {
+    kind: 'ENUM_VALUE',
+    name: $1.contents,
+  };
+}
 
 ObjectTypeDefinition → Description TYPE NAME Implements OPENING_BRACE FieldDefinitionList CLOSING_BRACE {
   $$ = {
@@ -286,6 +339,7 @@ NamedType → NAME {
     name: $1.contents,
   };
 }
+# TODO: add back in reserved words here (enum etc)
 
 NonNullType → NamedType BANG {
   $$ = {

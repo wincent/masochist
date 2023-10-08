@@ -4,9 +4,9 @@ import Bun from 'bun';
 import {describe, expect, it} from 'bun:test';
 import path from 'path';
 
+import lexer from '../lexer';
 import parseSchema from '../parseSchema';
 import {grammar, table} from '../schema';
-import lexer from '../lexer';
 
 describe('parse()', async () => {
   // We run these tests against a fresh copy of the parser, derived at runtime
@@ -17,10 +17,7 @@ describe('parse()', async () => {
   describe.each([[
     'parser dynamically derived from grammar',
     await getParser(grammar, table, lexer),
-  ], [
-    'parser persisted to disk',
-    parseSchema,
-  ]])(
+  ], ['parser persisted to disk', parseSchema]])(
     '%s',
     (_description, parse) => {
       describe('parsing schema definitions', () => {
@@ -76,7 +73,9 @@ describe('parse()', async () => {
             }
           `;
 
-          expect(() => parse(input)).toThrow('SCHEMA type requires a "query" operation type');
+          expect(() => parse(input)).toThrow(
+            'SCHEMA type requires a "query" operation type',
+          );
         });
 
         it('disallows repeated types', () => {
@@ -89,7 +88,9 @@ describe('parse()', async () => {
             }
           `;
 
-          expect(() => parse(input)).toThrow('operation types may only appear once each in SCHEMA type');
+          expect(() => parse(input)).toThrow(
+            'operation types may only appear once each in SCHEMA type',
+          );
         });
       });
 
@@ -131,12 +132,7 @@ describe('parse()', async () => {
           definitions: [{
             kind: 'UNION',
             name: 'Content',
-            members: [
-              'Article',
-              'Page',
-              'Post',
-              'Snippet',
-            ],
+            members: ['Article', 'Page', 'Post', 'Snippet'],
           }],
         });
       });
@@ -154,13 +150,9 @@ describe('parse()', async () => {
           definitions: [{
             kind: 'UNION',
             name: 'Content',
-            members: [
-              'Article',
-              'Page',
-              'Post',
-              'Snippet',
-            ],
-            description: 'A piece of content (an Article, a Page, a Post, or a Snippet)',
+            members: ['Article', 'Page', 'Post', 'Snippet'],
+            description:
+              'A piece of content (an Article, a Page, a Post, or a Snippet)',
           }],
         });
       });
@@ -179,12 +171,7 @@ describe('parse()', async () => {
           definitions: [{
             kind: 'UNION',
             name: 'Content',
-            members: [
-              'Article',
-              'Page',
-              'Post',
-              'Snippet',
-            ],
+            members: ['Article', 'Page', 'Post', 'Snippet'],
           }],
         });
       });
@@ -206,13 +193,9 @@ describe('parse()', async () => {
           definitions: [{
             kind: 'UNION',
             name: 'Content',
-            members: [
-              'Article',
-              'Page',
-              'Post',
-              'Snippet',
-            ],
-            description: 'A piece of content (an Article, a Page, a Post, or a Snippet)',
+            members: ['Article', 'Page', 'Post', 'Snippet'],
+            description:
+              'A piece of content (an Article, a Page, a Post, or a Snippet)',
           }],
         });
       });
@@ -335,11 +318,7 @@ describe('parse()', async () => {
             kind: 'OBJECT_TYPE',
             name: 'Post',
             description: 'A blog post',
-            implements: [
-              'Node',
-              'Tagged',
-              'Versioned',
-            ],
+            implements: ['Node', 'Tagged', 'Versioned'],
             fields: [{
               kind: 'FIELD',
               name: 'id',
@@ -375,7 +354,8 @@ describe('parse()', async () => {
             }, {
               kind: 'FIELD',
               name: 'readTime',
-              description: 'Estimate of time necessary to read the post, in minutes',
+              description:
+                'Estimate of time necessary to read the post, in minutes',
               arguments: [],
               type: {
                 kind: 'NON_NULL_TYPE',
@@ -454,6 +434,95 @@ describe('parse()', async () => {
             }],
           }],
         });
+      });
+
+      it('parses an enum type', () => {
+        const input = `
+          enum MARKUP_FORMAT_TYPE {
+            C
+            HTML
+            M
+            MD
+            PATCH
+            RB
+            SH
+            TXT
+          }
+        `;
+
+        expect(parse(input)).toEqual({
+          kind: 'TYPE_SYSTEM_DOCUMENT',
+          definitions: [{
+            kind: 'ENUM_TYPE',
+            name: 'MARKUP_FORMAT_TYPE',
+            values: [{
+              kind: 'ENUM_VALUE',
+              name: 'C',
+            }, {
+              kind: 'ENUM_VALUE',
+              name: 'HTML',
+            }, {
+              kind: 'ENUM_VALUE',
+              name: 'M',
+            }, {
+              kind: 'ENUM_VALUE',
+              name: 'MD',
+            }, {
+              kind: 'ENUM_VALUE',
+              name: 'PATCH',
+            }, {
+              kind: 'ENUM_VALUE',
+              name: 'RB',
+            }, {
+              kind: 'ENUM_VALUE',
+              name: 'SH',
+            }, {
+              kind: 'ENUM_VALUE',
+              name: 'TXT',
+            }],
+          }],
+        });
+      });
+
+      it('parses an enum type with descriptions', () => {
+        const input = `
+          """
+          Floop borgen.
+          """
+          enum BIMBOM {
+            """
+            ROFLMAO.
+            """
+            CROOP
+          }
+        `;
+
+        expect(parse(input)).toEqual({
+          kind: 'TYPE_SYSTEM_DOCUMENT',
+          definitions: [{
+            kind: 'ENUM_TYPE',
+            name: 'BIMBOM',
+            description: 'Floop borgen.',
+            values: [{
+              kind: 'ENUM_VALUE',
+              name: 'CROOP',
+              description: 'ROFLMAO.',
+            }],
+          }],
+        });
+      });
+
+      it('rejects an enum type with a banned word', () => {
+        const input = `
+          enum MY_BAD {
+            THING
+            false
+          }
+        `;
+
+        expect(() => parse(input)).toThrow(
+          'enum values may not include "true", "false" or "null"',
+        );
       });
     },
   );

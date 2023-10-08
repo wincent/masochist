@@ -97,7 +97,67 @@ function r14($1) {
 function r15($1) {
   return $1;
 }
-function r16($1, _$2, $3, $4, _$5, $6) {
+function r16($1) {
+  return $1;
+}
+function r17($1, _$2, $3, _$4, $5) {
+  if (
+    $5.some(({name}) => {
+      return (
+        name === 'true' ||
+        name === 'false' ||
+        name === 'null'
+      );
+    })
+  ) {
+    throw new Error('enum values may not include "true", "false" or "null"');
+  }
+  return {
+    kind: 'ENUM_TYPE',
+    name: $3.contents,
+    description: $1.value.trim(),
+    values: $5,
+  };
+}
+function r18(_$1, $2, _$3, $4) {
+  if (
+    $4.some(({name}) => {
+      return (
+        name === 'true' ||
+        name === 'false' ||
+        name === 'null'
+      );
+    })
+  ) {
+    throw new Error('enum values may not include "true", "false" or "null"');
+  }
+  return {
+    kind: 'ENUM_TYPE',
+    name: $2.contents,
+    values: $4,
+  };
+}
+function r19($1) {
+  return [$1];
+}
+function r20($1, $2) {
+  $1.push($2);
+  return $1;
+}
+function r21($1, $2) {
+  return {
+    kind: 'ENUM_VALUE',
+    name: $2.contents,
+    description: $1.value.trim(),
+  };
+}
+function r22($1) {
+  return {
+    kind: 'ENUM_VALUE',
+    name: $1.contents,
+  };
+}
+function r23($1, _$2, $3, $4, _$5, $6) {
   return {
     kind: 'OBJECT_TYPE',
     name: $3.contents,
@@ -106,7 +166,7 @@ function r16($1, _$2, $3, $4, _$5, $6) {
     fields: $6,
   };
 }
-function r17($1, _$2, $3, _$4, $5) {
+function r24($1, _$2, $3, _$4, $5) {
   return {
     kind: 'OBJECT_TYPE',
     name: $3.contents,
@@ -115,7 +175,7 @@ function r17($1, _$2, $3, _$4, $5) {
     fields: $5,
   };
 }
-function r18(_$1, $2, $3, _$4, $5) {
+function r25(_$1, $2, $3, _$4, $5) {
   return {
     kind: 'OBJECT_TYPE',
     name: $2.contents,
@@ -123,7 +183,7 @@ function r18(_$1, $2, $3, _$4, $5) {
     fields: $5,
   };
 }
-function r19(_$1, $2, _$3, $4) {
+function r26(_$1, $2, _$3, $4) {
   return {
     kind: 'OBJECT_TYPE',
     name: $2.contents,
@@ -131,62 +191,18 @@ function r19(_$1, $2, _$3, $4) {
     fields: $4,
   };
 }
-function r20(_$1, _$2, $3) {
+function r27(_$1, _$2, $3) {
   return $3;
 }
-function r21(_$1, $2) {
+function r28(_$1, $2) {
   return $2;
 }
-function r22($1) {
+function r29($1) {
   return [$1.contents];
 }
-function r23($1, _$2, $3) {
+function r30($1, _$2, $3) {
   $1.push($3.contents);
   return $1;
-}
-function r24($1) {
-  return [$1];
-}
-function r25($1, $2) {
-  $1.push($2);
-  return $1;
-}
-function r26($1, $2, $3, _$4, $5) {
-  return {
-    kind: 'FIELD',
-    name: $2.contents,
-    description: $1.value.trim(),
-    arguments: $3,
-    type: $5,
-  };
-}
-function r27(_$1, $2, _$3, $4) {
-  return {
-    kind: 'FIELD',
-    name: $2.contents,
-    arguments: $2,
-    type: $4,
-  };
-}
-function r28($1, $2, _$3, $4) {
-  return {
-    kind: 'FIELD',
-    name: $2.contents,
-    description: $1.value.trim(),
-    arguments: [],
-    type: $4,
-  };
-}
-function r29($1, _$2, $3) {
-  return {
-    kind: 'FIELD',
-    name: $1.contents,
-    arguments: [],
-    type: $3,
-  };
-}
-function r30(_$1, $2) {
-  return $2;
 }
 function r31($1) {
   return [$1];
@@ -195,7 +211,51 @@ function r32($1, $2) {
   $1.push($2);
   return $1;
 }
-function r33($1, $2, _$3, $4) {
+function r33($1, $2, $3, _$4, $5) {
+  return {
+    kind: 'FIELD',
+    name: $2.contents,
+    description: $1.value.trim(),
+    arguments: $3,
+    type: $5,
+  };
+}
+function r34(_$1, $2, _$3, $4) {
+  return {
+    kind: 'FIELD',
+    name: $2.contents,
+    arguments: $2,
+    type: $4,
+  };
+}
+function r35($1, $2, _$3, $4) {
+  return {
+    kind: 'FIELD',
+    name: $2.contents,
+    description: $1.value.trim(),
+    arguments: [],
+    type: $4,
+  };
+}
+function r36($1, _$2, $3) {
+  return {
+    kind: 'FIELD',
+    name: $1.contents,
+    arguments: [],
+    type: $3,
+  };
+}
+function r37(_$1, $2) {
+  return $2;
+}
+function r38($1) {
+  return [$1];
+}
+function r39($1, $2) {
+  $1.push($2);
+  return $1;
+}
+function r40($1, $2, _$3, $4) {
   return {
     kind: 'INPUT_VALUE',
     name: $2.contents,
@@ -205,27 +265,27 @@ function r33($1, $2, _$3, $4) {
     type: $4,
   };
 }
-function r34($1, _$2, $3) {
+function r41($1, _$2, $3) {
   return {
     kind: 'INPUT_VALUE',
     name: $1.contents,
     type: $3,
   };
 }
-function r35($1, _$2, $3) {
+function r42($1, _$2, $3) {
   return {
     kind: 'SCALAR',
     name: $3.contents,
     description: $1.value.trim(),
   };
 }
-function r36(_$1, $2) {
+function r43(_$1, $2) {
   return {
     kind: 'SCALAR',
     name: $2.contents,
   };
 }
-function r37($1, _$2, $3, _$4, $5) {
+function r44($1, _$2, $3, _$4, $5) {
   return {
     kind: 'UNION',
     name: $3.contents,
@@ -233,7 +293,7 @@ function r37($1, _$2, $3, _$4, $5) {
     description: $1.value.trim(),
   };
 }
-function r38($1, _$2, $3, _$4, _$5, $6) {
+function r45($1, _$2, $3, _$4, _$5, $6) {
   return {
     kind: 'UNION',
     name: $3.contents,
@@ -241,75 +301,75 @@ function r38($1, _$2, $3, _$4, _$5, $6) {
     description: $1.value.trim(),
   };
 }
-function r39(_$1, $2, _$3, $4) {
+function r46(_$1, $2, _$3, $4) {
   return {
     kind: 'UNION',
     name: $2.contents,
     members: $4,
   };
 }
-function r40(_$1, $2, _$3, _$4, $5) {
+function r47(_$1, $2, _$3, _$4, $5) {
   return {
     kind: 'UNION',
     name: $2.contents,
     members: $5,
   };
 }
-function r41($1) {
+function r48($1) {
   return [$1];
 }
-function r42($1, _$2, $3) {
+function r49($1, _$2, $3) {
   $1.push($3);
   return $1;
 }
-function r43($1) {
+function r50($1) {
   return $1.contents;
 }
-function r44($1) {
+function r51($1) {
   return $1;
 }
-function r45($1) {
+function r52($1) {
   return {
     kind: 'STRING',
     block: false,
     value: $1.contents.slice(1, -1),
   };
 }
-function r46($1) {
+function r53($1) {
   return {
     kind: 'STRING',
     block: true,
     value: $1.contents.slice(3, -3),
   };
 }
-function r47($1) {
+function r54($1) {
   return $1;
 }
-function r48($1) {
+function r55($1) {
   return $1;
 }
-function r49($1) {
+function r56($1) {
   return $1;
 }
-function r50($1) {
+function r57($1) {
   return {
     kind: 'NAMED_TYPE',
     name: $1.contents,
   };
 }
-function r51($1) {
+function r58($1) {
   return {
     kind: 'NON_NULL_TYPE',
     type: $1,
   };
 }
-function r52($1) {
+function r59($1) {
   return {
     kind: 'NON_NULL_TYPE',
     type: $1,
   };
 }
-function r53(_$1, $2) {
+function r60(_$1, $2) {
   return {
     kind: 'LIST_TYPE',
     type: $2,
@@ -317,21 +377,24 @@ function r53(_$1, $2) {
 }
 const actions: Array<{[token: string]: number}> = [{
   BLOCK_STRING_VALUE: 8,
-  SCALAR: 14,
+  ENUM: 12,
+  SCALAR: 16,
   SCHEMA: 9,
   STRING_VALUE: 7,
-  TYPE: 12,
-  UNION: 16,
+  TYPE: 14,
+  UNION: 18,
 }, {
   $: 0,
   BLOCK_STRING_VALUE: 8,
-  SCALAR: 14,
+  ENUM: 12,
+  SCALAR: 16,
   SCHEMA: 9,
   STRING_VALUE: 7,
-  TYPE: 12,
-  UNION: 16,
+  TYPE: 14,
+  UNION: 18,
 }, {
   SCHEMA: -1,
+  ENUM: -1,
   TYPE: -1,
   SCALAR: -1,
   UNION: -1,
@@ -340,6 +403,7 @@ const actions: Array<{[token: string]: number}> = [{
   $: -1,
 }, {
   SCHEMA: -2,
+  ENUM: -2,
   TYPE: -2,
   SCALAR: -2,
   UNION: -2,
@@ -348,6 +412,7 @@ const actions: Array<{[token: string]: number}> = [{
   $: -2,
 }, {
   SCHEMA: -4,
+  ENUM: -4,
   TYPE: -4,
   SCALAR: -4,
   UNION: -4,
@@ -355,32 +420,37 @@ const actions: Array<{[token: string]: number}> = [{
   BLOCK_STRING_VALUE: -4,
   $: -4,
 }, {
-  SCALAR: 20,
-  SCHEMA: 18,
-  TYPE: 19,
-  UNION: 21,
+  ENUM: 21,
+  SCALAR: 23,
+  SCHEMA: 20,
+  TYPE: 22,
+  UNION: 24,
 }, {
-  SCHEMA: -44,
-  TYPE: -44,
-  SCALAR: -44,
-  UNION: -44,
-  NAME: -44,
+  SCHEMA: -51,
+  ENUM: -51,
+  TYPE: -51,
+  SCALAR: -51,
+  UNION: -51,
+  NAME: -51,
 }, {
-  SCHEMA: -45,
-  TYPE: -45,
-  SCALAR: -45,
-  UNION: -45,
-  NAME: -45,
+  SCHEMA: -52,
+  ENUM: -52,
+  TYPE: -52,
+  SCALAR: -52,
+  UNION: -52,
+  NAME: -52,
 }, {
-  SCHEMA: -46,
-  TYPE: -46,
-  SCALAR: -46,
-  UNION: -46,
-  NAME: -46,
+  SCHEMA: -53,
+  ENUM: -53,
+  TYPE: -53,
+  SCALAR: -53,
+  UNION: -53,
+  NAME: -53,
 }, {
-  OPENING_BRACE: 22,
+  OPENING_BRACE: 25,
 }, {
   SCHEMA: -5,
+  ENUM: -5,
   TYPE: -5,
   SCALAR: -5,
   UNION: -5,
@@ -389,6 +459,7 @@ const actions: Array<{[token: string]: number}> = [{
   $: -5,
 }, {
   SCHEMA: -13,
+  ENUM: -13,
   TYPE: -13,
   SCALAR: -13,
   UNION: -13,
@@ -396,9 +467,10 @@ const actions: Array<{[token: string]: number}> = [{
   BLOCK_STRING_VALUE: -13,
   $: -13,
 }, {
-  NAME: 23,
+  NAME: 26,
 }, {
   SCHEMA: -14,
+  ENUM: -14,
   TYPE: -14,
   SCALAR: -14,
   UNION: -14,
@@ -406,9 +478,10 @@ const actions: Array<{[token: string]: number}> = [{
   BLOCK_STRING_VALUE: -14,
   $: -14,
 }, {
-  NAME: 24,
+  NAME: 27,
 }, {
   SCHEMA: -15,
+  ENUM: -15,
   TYPE: -15,
   SCALAR: -15,
   UNION: -15,
@@ -416,9 +489,21 @@ const actions: Array<{[token: string]: number}> = [{
   BLOCK_STRING_VALUE: -15,
   $: -15,
 }, {
-  NAME: 25,
+  NAME: 28,
+}, {
+  SCHEMA: -16,
+  ENUM: -16,
+  TYPE: -16,
+  SCALAR: -16,
+  UNION: -16,
+  STRING_VALUE: -16,
+  BLOCK_STRING_VALUE: -16,
+  $: -16,
+}, {
+  NAME: 29,
 }, {
   SCHEMA: -3,
+  ENUM: -3,
   TYPE: -3,
   SCALAR: -3,
   UNION: -3,
@@ -426,91 +511,108 @@ const actions: Array<{[token: string]: number}> = [{
   BLOCK_STRING_VALUE: -3,
   $: -3,
 }, {
-  OPENING_BRACE: 26,
+  OPENING_BRACE: 30,
 }, {
-  NAME: 27,
+  NAME: 31,
 }, {
-  NAME: 28,
+  NAME: 32,
 }, {
-  NAME: 29,
+  NAME: 33,
 }, {
-  MUTATION: 33,
-  QUERY: 32,
-  SUBSCRIPTION: 34,
+  NAME: 34,
 }, {
-  IMPLEMENTS: 37,
-  OPENING_BRACE: 36,
+  MUTATION: 38,
+  QUERY: 37,
+  SUBSCRIPTION: 39,
 }, {
-  SCHEMA: -36,
-  TYPE: -36,
-  SCALAR: -36,
-  UNION: -36,
-  STRING_VALUE: -36,
-  BLOCK_STRING_VALUE: -36,
-  $: -36,
+  OPENING_BRACE: 40,
 }, {
-  EQUALS: 38,
+  IMPLEMENTS: 43,
+  OPENING_BRACE: 42,
 }, {
-  MUTATION: 33,
-  QUERY: 32,
-  SUBSCRIPTION: 34,
+  SCHEMA: -43,
+  ENUM: -43,
+  TYPE: -43,
+  SCALAR: -43,
+  UNION: -43,
+  STRING_VALUE: -43,
+  BLOCK_STRING_VALUE: -43,
+  $: -43,
 }, {
-  IMPLEMENTS: 37,
-  OPENING_BRACE: 41,
+  EQUALS: 44,
 }, {
-  SCHEMA: -35,
-  TYPE: -35,
-  SCALAR: -35,
-  UNION: -35,
-  STRING_VALUE: -35,
-  BLOCK_STRING_VALUE: -35,
-  $: -35,
+  MUTATION: 38,
+  QUERY: 37,
+  SUBSCRIPTION: 39,
 }, {
-  EQUALS: 42,
+  OPENING_BRACE: 46,
 }, {
-  CLOSING_BRACE: 43,
-  MUTATION: 33,
-  QUERY: 32,
-  SUBSCRIPTION: 34,
+  IMPLEMENTS: 43,
+  OPENING_BRACE: 48,
+}, {
+  SCHEMA: -42,
+  ENUM: -42,
+  TYPE: -42,
+  SCALAR: -42,
+  UNION: -42,
+  STRING_VALUE: -42,
+  BLOCK_STRING_VALUE: -42,
+  $: -42,
+}, {
+  EQUALS: 49,
+}, {
+  CLOSING_BRACE: 50,
+  MUTATION: 38,
+  QUERY: 37,
+  SUBSCRIPTION: 39,
 }, {
   CLOSING_BRACE: -8,
   QUERY: -8,
   MUTATION: -8,
   SUBSCRIPTION: -8,
 }, {
-  COLON: 45,
+  COLON: 52,
 }, {
-  COLON: 46,
+  COLON: 53,
 }, {
-  COLON: 47,
-}, {
-  OPENING_BRACE: 48,
+  COLON: 54,
 }, {
   BLOCK_STRING_VALUE: 8,
-  NAME: 52,
+  NAME: 58,
   STRING_VALUE: 7,
 }, {
-  AMPERSAND: 53,
-  NAME: 55,
-}, {
-  BAR: 57,
-  NAME: 59,
-}, {
-  CLOSING_BRACE: 60,
-  MUTATION: 33,
-  QUERY: 32,
-  SUBSCRIPTION: 34,
-}, {
-  OPENING_BRACE: 61,
+  OPENING_BRACE: 59,
 }, {
   BLOCK_STRING_VALUE: 8,
-  NAME: 52,
+  NAME: 63,
   STRING_VALUE: 7,
 }, {
-  BAR: 64,
-  NAME: 59,
+  AMPERSAND: 64,
+  NAME: 66,
+}, {
+  BAR: 68,
+  NAME: 70,
+}, {
+  CLOSING_BRACE: 71,
+  MUTATION: 38,
+  QUERY: 37,
+  SUBSCRIPTION: 39,
+}, {
+  BLOCK_STRING_VALUE: 8,
+  NAME: 58,
+  STRING_VALUE: 7,
+}, {
+  OPENING_BRACE: 73,
+}, {
+  BLOCK_STRING_VALUE: 8,
+  NAME: 63,
+  STRING_VALUE: 7,
+}, {
+  BAR: 76,
+  NAME: 70,
 }, {
   SCHEMA: -7,
+  ENUM: -7,
   TYPE: -7,
   SCALAR: -7,
   UNION: -7,
@@ -523,69 +625,90 @@ const actions: Array<{[token: string]: number}> = [{
   MUTATION: -9,
   SUBSCRIPTION: -9,
 }, {
-  NAME: 65,
+  NAME: 77,
+}, {
+  NAME: 78,
+}, {
+  NAME: 79,
+}, {
+  BLOCK_STRING_VALUE: 8,
+  CLOSING_BRACE: 80,
+  NAME: 58,
+  STRING_VALUE: 7,
+}, {
+  CLOSING_BRACE: -19,
+  NAME: -19,
+  STRING_VALUE: -19,
+  BLOCK_STRING_VALUE: -19,
+}, {
+  NAME: 82,
+}, {
+  CLOSING_BRACE: -22,
+  NAME: -22,
+  STRING_VALUE: -22,
+  BLOCK_STRING_VALUE: -22,
+}, {
+  BLOCK_STRING_VALUE: 8,
+  NAME: 63,
+  STRING_VALUE: 7,
+}, {
+  BLOCK_STRING_VALUE: 8,
+  CLOSING_BRACE: 84,
+  NAME: 63,
+  STRING_VALUE: 7,
+}, {
+  CLOSING_BRACE: -31,
+  NAME: -31,
+  STRING_VALUE: -31,
+  BLOCK_STRING_VALUE: -31,
+}, {
+  NAME: 86,
+}, {
+  COLON: 88,
+  OPENING_PAREN: 89,
 }, {
   NAME: 66,
 }, {
-  NAME: 67,
+  AMPERSAND: 91,
+  OPENING_BRACE: -28,
 }, {
-  BLOCK_STRING_VALUE: 8,
-  NAME: 52,
-  STRING_VALUE: 7,
+  AMPERSAND: -29,
+  OPENING_BRACE: -29,
 }, {
-  BLOCK_STRING_VALUE: 8,
-  CLOSING_BRACE: 69,
-  NAME: 52,
-  STRING_VALUE: 7,
+  BAR: 92,
+  SCHEMA: -46,
+  ENUM: -46,
+  TYPE: -46,
+  SCALAR: -46,
+  UNION: -46,
+  STRING_VALUE: -46,
+  BLOCK_STRING_VALUE: -46,
+  $: -46,
 }, {
-  CLOSING_BRACE: -24,
-  NAME: -24,
-  STRING_VALUE: -24,
-  BLOCK_STRING_VALUE: -24,
+  NAME: 70,
 }, {
-  NAME: 71,
+  BAR: -48,
+  SCHEMA: -48,
+  ENUM: -48,
+  TYPE: -48,
+  SCALAR: -48,
+  UNION: -48,
+  STRING_VALUE: -48,
+  BLOCK_STRING_VALUE: -48,
+  $: -48,
 }, {
-  COLON: 73,
-  OPENING_PAREN: 74,
-}, {
-  NAME: 55,
-}, {
-  AMPERSAND: 76,
-  OPENING_BRACE: -21,
-}, {
-  AMPERSAND: -22,
-  OPENING_BRACE: -22,
-}, {
-  BAR: 77,
-  SCHEMA: -39,
-  TYPE: -39,
-  SCALAR: -39,
-  UNION: -39,
-  STRING_VALUE: -39,
-  BLOCK_STRING_VALUE: -39,
-  $: -39,
-}, {
-  NAME: 59,
-}, {
-  BAR: -41,
-  SCHEMA: -41,
-  TYPE: -41,
-  SCALAR: -41,
-  UNION: -41,
-  STRING_VALUE: -41,
-  BLOCK_STRING_VALUE: -41,
-  $: -41,
-}, {
-  BAR: -43,
-  SCHEMA: -43,
-  TYPE: -43,
-  SCALAR: -43,
-  UNION: -43,
-  STRING_VALUE: -43,
-  BLOCK_STRING_VALUE: -43,
-  $: -43,
+  BAR: -50,
+  SCHEMA: -50,
+  ENUM: -50,
+  TYPE: -50,
+  SCALAR: -50,
+  UNION: -50,
+  STRING_VALUE: -50,
+  BLOCK_STRING_VALUE: -50,
+  $: -50,
 }, {
   SCHEMA: -6,
+  ENUM: -6,
   TYPE: -6,
   SCALAR: -6,
   UNION: -6,
@@ -594,24 +717,30 @@ const actions: Array<{[token: string]: number}> = [{
   $: -6,
 }, {
   BLOCK_STRING_VALUE: 8,
-  NAME: 52,
+  CLOSING_BRACE: 94,
+  NAME: 58,
   STRING_VALUE: 7,
 }, {
   BLOCK_STRING_VALUE: 8,
-  CLOSING_BRACE: 80,
-  NAME: 52,
+  NAME: 63,
   STRING_VALUE: 7,
 }, {
-  BAR: 77,
-  SCHEMA: -37,
-  TYPE: -37,
-  SCALAR: -37,
-  UNION: -37,
-  STRING_VALUE: -37,
-  BLOCK_STRING_VALUE: -37,
-  $: -37,
+  BLOCK_STRING_VALUE: 8,
+  CLOSING_BRACE: 96,
+  NAME: 63,
+  STRING_VALUE: 7,
 }, {
-  NAME: 59,
+  BAR: 92,
+  SCHEMA: -44,
+  ENUM: -44,
+  TYPE: -44,
+  SCALAR: -44,
+  UNION: -44,
+  STRING_VALUE: -44,
+  BLOCK_STRING_VALUE: -44,
+  $: -44,
+}, {
+  NAME: 70,
 }, {
   CLOSING_BRACE: -10,
   QUERY: -10,
@@ -628,75 +757,8 @@ const actions: Array<{[token: string]: number}> = [{
   MUTATION: -12,
   SUBSCRIPTION: -12,
 }, {
-  BLOCK_STRING_VALUE: 8,
-  CLOSING_BRACE: 82,
-  NAME: 52,
-  STRING_VALUE: 7,
-}, {
-  SCHEMA: -19,
-  TYPE: -19,
-  SCALAR: -19,
-  UNION: -19,
-  STRING_VALUE: -19,
-  BLOCK_STRING_VALUE: -19,
-  $: -19,
-}, {
-  CLOSING_BRACE: -25,
-  NAME: -25,
-  STRING_VALUE: -25,
-  BLOCK_STRING_VALUE: -25,
-}, {
-  COLON: 84,
-  OPENING_PAREN: 74,
-}, {
-  COLON: 85,
-}, {
-  NAME: 88,
-  OPENING_BRACKET: 91,
-}, {
-  BLOCK_STRING_VALUE: 8,
-  NAME: 95,
-  STRING_VALUE: 7,
-}, {
-  AMPERSAND: 76,
-  OPENING_BRACE: -20,
-}, {
-  NAME: 96,
-}, {
-  NAME: 59,
-}, {
-  BAR: 77,
-  SCHEMA: -40,
-  TYPE: -40,
-  SCALAR: -40,
-  UNION: -40,
-  STRING_VALUE: -40,
-  BLOCK_STRING_VALUE: -40,
-  $: -40,
-}, {
-  BLOCK_STRING_VALUE: 8,
-  CLOSING_BRACE: 98,
-  NAME: 52,
-  STRING_VALUE: 7,
-}, {
-  SCHEMA: -17,
-  TYPE: -17,
-  SCALAR: -17,
-  UNION: -17,
-  STRING_VALUE: -17,
-  BLOCK_STRING_VALUE: -17,
-  $: -17,
-}, {
-  BAR: 77,
-  SCHEMA: -38,
-  TYPE: -38,
-  SCALAR: -38,
-  UNION: -38,
-  STRING_VALUE: -38,
-  BLOCK_STRING_VALUE: -38,
-  $: -38,
-}, {
   SCHEMA: -18,
+  ENUM: -18,
   TYPE: -18,
   SCALAR: -18,
   UNION: -18,
@@ -704,176 +766,280 @@ const actions: Array<{[token: string]: number}> = [{
   BLOCK_STRING_VALUE: -18,
   $: -18,
 }, {
-  COLON: 99,
+  CLOSING_BRACE: -20,
+  NAME: -20,
+  STRING_VALUE: -20,
+  BLOCK_STRING_VALUE: -20,
 }, {
-  NAME: 88,
-  OPENING_BRACKET: 91,
-}, {
-  NAME: 88,
-  OPENING_BRACKET: 91,
-}, {
-  CLOSING_BRACE: -29,
-  NAME: -29,
-  STRING_VALUE: -29,
-  BLOCK_STRING_VALUE: -29,
-}, {
-  BANG: 102,
-  CLOSING_BRACE: -47,
-  NAME: -47,
-  STRING_VALUE: -47,
-  BLOCK_STRING_VALUE: -47,
-  CLOSING_BRACKET: -47,
-  CLOSING_PAREN: -47,
-}, {
-  BANG: -50,
-  CLOSING_BRACE: -50,
-  NAME: -50,
-  STRING_VALUE: -50,
-  BLOCK_STRING_VALUE: -50,
-  CLOSING_BRACKET: -50,
-  CLOSING_PAREN: -50,
-}, {
-  CLOSING_BRACE: -48,
-  NAME: -48,
-  STRING_VALUE: -48,
-  BLOCK_STRING_VALUE: -48,
-  CLOSING_BRACKET: -48,
-  CLOSING_PAREN: -48,
-}, {
-  BANG: 103,
-  CLOSING_BRACE: -49,
-  NAME: -49,
-  STRING_VALUE: -49,
-  BLOCK_STRING_VALUE: -49,
-  CLOSING_BRACKET: -49,
-  CLOSING_PAREN: -49,
-}, {
-  NAME: 88,
-  OPENING_BRACKET: 91,
+  CLOSING_BRACE: -21,
+  NAME: -21,
+  STRING_VALUE: -21,
+  BLOCK_STRING_VALUE: -21,
 }, {
   BLOCK_STRING_VALUE: 8,
-  CLOSING_PAREN: 105,
-  NAME: 95,
+  CLOSING_BRACE: 98,
+  NAME: 63,
   STRING_VALUE: 7,
 }, {
-  CLOSING_PAREN: -31,
-  NAME: -31,
-  STRING_VALUE: -31,
-  BLOCK_STRING_VALUE: -31,
+  SCHEMA: -26,
+  ENUM: -26,
+  TYPE: -26,
+  SCALAR: -26,
+  UNION: -26,
+  STRING_VALUE: -26,
+  BLOCK_STRING_VALUE: -26,
+  $: -26,
 }, {
-  NAME: 107,
-}, {
-  COLON: 108,
-}, {
-  AMPERSAND: -23,
-  OPENING_BRACE: -23,
-}, {
-  BAR: -42,
-  SCHEMA: -42,
-  TYPE: -42,
-  SCALAR: -42,
-  UNION: -42,
-  STRING_VALUE: -42,
-  BLOCK_STRING_VALUE: -42,
-  $: -42,
-}, {
-  SCHEMA: -16,
-  TYPE: -16,
-  SCALAR: -16,
-  UNION: -16,
-  STRING_VALUE: -16,
-  BLOCK_STRING_VALUE: -16,
-  $: -16,
-}, {
-  NAME: 88,
-  OPENING_BRACKET: 91,
-}, {
-  CLOSING_BRACE: -28,
-  NAME: -28,
-  STRING_VALUE: -28,
-  BLOCK_STRING_VALUE: -28,
-}, {
-  CLOSING_BRACE: -27,
-  NAME: -27,
-  STRING_VALUE: -27,
-  BLOCK_STRING_VALUE: -27,
-}, {
-  CLOSING_BRACE: -51,
-  NAME: -51,
-  STRING_VALUE: -51,
-  BLOCK_STRING_VALUE: -51,
-  CLOSING_BRACKET: -51,
-  CLOSING_PAREN: -51,
-}, {
-  CLOSING_BRACE: -52,
-  NAME: -52,
-  STRING_VALUE: -52,
-  BLOCK_STRING_VALUE: -52,
-  CLOSING_BRACKET: -52,
-  CLOSING_PAREN: -52,
-}, {
-  CLOSING_BRACKET: 110,
-}, {
-  COLON: -30,
-}, {
-  CLOSING_PAREN: -32,
+  CLOSING_BRACE: -32,
   NAME: -32,
   STRING_VALUE: -32,
   BLOCK_STRING_VALUE: -32,
 }, {
-  COLON: 111,
+  COLON: 100,
+  OPENING_PAREN: 89,
 }, {
-  NAME: 88,
-  OPENING_BRACKET: 91,
+  COLON: 101,
 }, {
-  CLOSING_BRACE: -26,
-  NAME: -26,
-  STRING_VALUE: -26,
-  BLOCK_STRING_VALUE: -26,
+  NAME: 104,
+  OPENING_BRACKET: 107,
 }, {
-  BANG: -53,
-  CLOSING_BRACE: -53,
-  NAME: -53,
-  STRING_VALUE: -53,
-  BLOCK_STRING_VALUE: -53,
-  CLOSING_BRACKET: -53,
-  CLOSING_PAREN: -53,
+  BLOCK_STRING_VALUE: 8,
+  NAME: 111,
+  STRING_VALUE: 7,
 }, {
-  NAME: 88,
-  OPENING_BRACKET: 91,
+  AMPERSAND: 91,
+  OPENING_BRACE: -27,
 }, {
-  CLOSING_PAREN: -34,
+  NAME: 112,
+}, {
+  NAME: 70,
+}, {
+  BAR: 92,
+  SCHEMA: -47,
+  ENUM: -47,
+  TYPE: -47,
+  SCALAR: -47,
+  UNION: -47,
+  STRING_VALUE: -47,
+  BLOCK_STRING_VALUE: -47,
+  $: -47,
+}, {
+  SCHEMA: -17,
+  ENUM: -17,
+  TYPE: -17,
+  SCALAR: -17,
+  UNION: -17,
+  STRING_VALUE: -17,
+  BLOCK_STRING_VALUE: -17,
+  $: -17,
+}, {
+  BLOCK_STRING_VALUE: 8,
+  CLOSING_BRACE: 114,
+  NAME: 63,
+  STRING_VALUE: 7,
+}, {
+  SCHEMA: -24,
+  ENUM: -24,
+  TYPE: -24,
+  SCALAR: -24,
+  UNION: -24,
+  STRING_VALUE: -24,
+  BLOCK_STRING_VALUE: -24,
+  $: -24,
+}, {
+  BAR: 92,
+  SCHEMA: -45,
+  ENUM: -45,
+  TYPE: -45,
+  SCALAR: -45,
+  UNION: -45,
+  STRING_VALUE: -45,
+  BLOCK_STRING_VALUE: -45,
+  $: -45,
+}, {
+  SCHEMA: -25,
+  ENUM: -25,
+  TYPE: -25,
+  SCALAR: -25,
+  UNION: -25,
+  STRING_VALUE: -25,
+  BLOCK_STRING_VALUE: -25,
+  $: -25,
+}, {
+  COLON: 115,
+}, {
+  NAME: 104,
+  OPENING_BRACKET: 107,
+}, {
+  NAME: 104,
+  OPENING_BRACKET: 107,
+}, {
+  CLOSING_BRACE: -36,
+  NAME: -36,
+  STRING_VALUE: -36,
+  BLOCK_STRING_VALUE: -36,
+}, {
+  BANG: 118,
+  CLOSING_BRACE: -54,
+  NAME: -54,
+  STRING_VALUE: -54,
+  BLOCK_STRING_VALUE: -54,
+  CLOSING_BRACKET: -54,
+  CLOSING_PAREN: -54,
+}, {
+  BANG: -57,
+  CLOSING_BRACE: -57,
+  NAME: -57,
+  STRING_VALUE: -57,
+  BLOCK_STRING_VALUE: -57,
+  CLOSING_BRACKET: -57,
+  CLOSING_PAREN: -57,
+}, {
+  CLOSING_BRACE: -55,
+  NAME: -55,
+  STRING_VALUE: -55,
+  BLOCK_STRING_VALUE: -55,
+  CLOSING_BRACKET: -55,
+  CLOSING_PAREN: -55,
+}, {
+  BANG: 119,
+  CLOSING_BRACE: -56,
+  NAME: -56,
+  STRING_VALUE: -56,
+  BLOCK_STRING_VALUE: -56,
+  CLOSING_BRACKET: -56,
+  CLOSING_PAREN: -56,
+}, {
+  NAME: 104,
+  OPENING_BRACKET: 107,
+}, {
+  BLOCK_STRING_VALUE: 8,
+  CLOSING_PAREN: 121,
+  NAME: 111,
+  STRING_VALUE: 7,
+}, {
+  CLOSING_PAREN: -38,
+  NAME: -38,
+  STRING_VALUE: -38,
+  BLOCK_STRING_VALUE: -38,
+}, {
+  NAME: 123,
+}, {
+  COLON: 124,
+}, {
+  AMPERSAND: -30,
+  OPENING_BRACE: -30,
+}, {
+  BAR: -49,
+  SCHEMA: -49,
+  ENUM: -49,
+  TYPE: -49,
+  SCALAR: -49,
+  UNION: -49,
+  STRING_VALUE: -49,
+  BLOCK_STRING_VALUE: -49,
+  $: -49,
+}, {
+  SCHEMA: -23,
+  ENUM: -23,
+  TYPE: -23,
+  SCALAR: -23,
+  UNION: -23,
+  STRING_VALUE: -23,
+  BLOCK_STRING_VALUE: -23,
+  $: -23,
+}, {
+  NAME: 104,
+  OPENING_BRACKET: 107,
+}, {
+  CLOSING_BRACE: -35,
+  NAME: -35,
+  STRING_VALUE: -35,
+  BLOCK_STRING_VALUE: -35,
+}, {
+  CLOSING_BRACE: -34,
   NAME: -34,
   STRING_VALUE: -34,
   BLOCK_STRING_VALUE: -34,
 }, {
-  CLOSING_PAREN: -33,
+  CLOSING_BRACE: -58,
+  NAME: -58,
+  STRING_VALUE: -58,
+  BLOCK_STRING_VALUE: -58,
+  CLOSING_BRACKET: -58,
+  CLOSING_PAREN: -58,
+}, {
+  CLOSING_BRACE: -59,
+  NAME: -59,
+  STRING_VALUE: -59,
+  BLOCK_STRING_VALUE: -59,
+  CLOSING_BRACKET: -59,
+  CLOSING_PAREN: -59,
+}, {
+  CLOSING_BRACKET: 126,
+}, {
+  COLON: -37,
+}, {
+  CLOSING_PAREN: -39,
+  NAME: -39,
+  STRING_VALUE: -39,
+  BLOCK_STRING_VALUE: -39,
+}, {
+  COLON: 127,
+}, {
+  NAME: 104,
+  OPENING_BRACKET: 107,
+}, {
+  CLOSING_BRACE: -33,
   NAME: -33,
   STRING_VALUE: -33,
   BLOCK_STRING_VALUE: -33,
+}, {
+  BANG: -60,
+  CLOSING_BRACE: -60,
+  NAME: -60,
+  STRING_VALUE: -60,
+  BLOCK_STRING_VALUE: -60,
+  CLOSING_BRACKET: -60,
+  CLOSING_PAREN: -60,
+}, {
+  NAME: 104,
+  OPENING_BRACKET: 107,
+}, {
+  CLOSING_PAREN: -41,
+  NAME: -41,
+  STRING_VALUE: -41,
+  BLOCK_STRING_VALUE: -41,
+}, {
+  CLOSING_PAREN: -40,
+  NAME: -40,
+  STRING_VALUE: -40,
+  BLOCK_STRING_VALUE: -40,
 }];
 const gotos: Array<Gotos> = [
   {
     Description: 5,
-    ObjectTypeDefinition: 11,
-    ScalarTypeDefinition: 13,
+    EnumTypeDefinition: 11,
+    ObjectTypeDefinition: 13,
+    ScalarTypeDefinition: 15,
     SchemaDefinition: 4,
     StringValue: 6,
     TypeDefinition: 10,
     TypeSystemDefinition: 3,
     TypeSystemDefinitionList: 2,
     TypeSystemDocument: 1,
-    UnionTypeDefinition: 15,
+    UnionTypeDefinition: 17,
   },
   {
     Description: 5,
-    ObjectTypeDefinition: 11,
-    ScalarTypeDefinition: 13,
+    EnumTypeDefinition: 11,
+    ObjectTypeDefinition: 13,
+    ScalarTypeDefinition: 15,
     SchemaDefinition: 4,
     StringValue: 6,
     TypeDefinition: 10,
-    TypeSystemDefinition: 17,
-    UnionTypeDefinition: 15,
+    TypeSystemDefinition: 19,
+    UnionTypeDefinition: 17,
   },
   {},
   {},
@@ -895,176 +1061,210 @@ const gotos: Array<Gotos> = [
   {},
   {},
   {},
-  {
-    OperationTypeList: 30,
-    OperationTypeListItem: 31,
-  },
-  {
-    Implements: 35,
-  },
-  {},
-  {},
-  {
-    OperationTypeList: 39,
-    OperationTypeListItem: 31,
-  },
-  {
-    Implements: 40,
-  },
-  {},
-  {},
-  {
-    OperationTypeListItem: 44,
-  },
-  {},
-  {},
   {},
   {},
   {},
   {
-    Description: 51,
-    FieldDefinition: 50,
-    FieldDefinitionList: 49,
-    StringValue: 6,
-  },
-  {
-    ImplementsList: 54,
-  },
-  {
-    UnionTypeList: 56,
-    UnionTypeListItem: 58,
-  },
-  {
-    OperationTypeListItem: 44,
+    OperationTypeList: 35,
+    OperationTypeListItem: 36,
   },
   {},
   {
-    Description: 51,
-    FieldDefinition: 50,
-    FieldDefinitionList: 62,
-    StringValue: 6,
+    Implements: 41,
   },
+  {},
+  {},
   {
-    UnionTypeList: 63,
-    UnionTypeListItem: 58,
+    OperationTypeList: 45,
+    OperationTypeListItem: 36,
+  },
+  {},
+  {
+    Implements: 47,
+  },
+  {},
+  {},
+  {
+    OperationTypeListItem: 51,
   },
   {},
   {},
   {},
   {},
-  {},
   {
-    Description: 51,
-    FieldDefinition: 50,
-    FieldDefinitionList: 68,
-    StringValue: 6,
-  },
-  {
-    Description: 51,
-    FieldDefinition: 70,
-    StringValue: 6,
-  },
-  {},
-  {},
-  {
-    Arguments: 72,
-  },
-  {
-    ImplementsList: 75,
-  },
-  {},
-  {},
-  {},
-  {
-    UnionTypeList: 78,
-    UnionTypeListItem: 58,
-  },
-  {},
-  {},
-  {},
-  {
-    Description: 51,
-    FieldDefinition: 50,
-    FieldDefinitionList: 79,
-    StringValue: 6,
-  },
-  {
-    Description: 51,
-    FieldDefinition: 70,
+    Description: 57,
+    EnumValuesList: 55,
+    EnumValuesListItem: 56,
     StringValue: 6,
   },
   {},
   {
-    UnionTypeList: 81,
-    UnionTypeListItem: 58,
+    Description: 62,
+    FieldDefinition: 61,
+    FieldDefinitionList: 60,
+    StringValue: 6,
   },
-  {},
-  {},
-  {},
   {
-    Description: 51,
-    FieldDefinition: 70,
+    ImplementsList: 65,
+  },
+  {
+    UnionTypeList: 67,
+    UnionTypeListItem: 69,
+  },
+  {
+    OperationTypeListItem: 51,
+  },
+  {
+    Description: 57,
+    EnumValuesList: 72,
+    EnumValuesListItem: 56,
     StringValue: 6,
   },
   {},
-  {},
   {
-    Arguments: 83,
-  },
-  {},
-  {
-    ListType: 90,
-    NamedType: 87,
-    NonNullType: 89,
-    Type: 86,
-  },
-  {
-    Description: 94,
-    InputValueDefinition: 93,
-    InputValueDefinitionList: 92,
+    Description: 62,
+    FieldDefinition: 61,
+    FieldDefinitionList: 74,
     StringValue: 6,
   },
-  {},
-  {},
   {
-    UnionTypeListItem: 97,
+    UnionTypeList: 75,
+    UnionTypeListItem: 69,
   },
   {},
+  {},
+  {},
+  {},
+  {},
   {
-    Description: 51,
-    FieldDefinition: 70,
+    Description: 57,
+    EnumValuesListItem: 81,
     StringValue: 6,
   },
   {},
   {},
   {},
-  {},
   {
-    ListType: 90,
-    NamedType: 87,
-    NonNullType: 89,
-    Type: 100,
+    Description: 62,
+    FieldDefinition: 61,
+    FieldDefinitionList: 83,
+    StringValue: 6,
   },
   {
-    ListType: 90,
-    NamedType: 87,
-    NonNullType: 89,
-    Type: 101,
+    Description: 62,
+    FieldDefinition: 85,
+    StringValue: 6,
   },
   {},
   {},
-  {},
-  {},
-  {},
   {
-    ListType: 90,
-    NamedType: 87,
-    NonNullType: 89,
-    Type: 104,
+    Arguments: 87,
   },
   {
-    Description: 94,
-    InputValueDefinition: 106,
+    ImplementsList: 90,
+  },
+  {},
+  {},
+  {},
+  {
+    UnionTypeList: 93,
+    UnionTypeListItem: 69,
+  },
+  {},
+  {},
+  {},
+  {
+    Description: 57,
+    EnumValuesListItem: 81,
+    StringValue: 6,
+  },
+  {
+    Description: 62,
+    FieldDefinition: 61,
+    FieldDefinitionList: 95,
+    StringValue: 6,
+  },
+  {
+    Description: 62,
+    FieldDefinition: 85,
+    StringValue: 6,
+  },
+  {},
+  {
+    UnionTypeList: 97,
+    UnionTypeListItem: 69,
+  },
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {
+    Description: 62,
+    FieldDefinition: 85,
+    StringValue: 6,
+  },
+  {},
+  {},
+  {
+    Arguments: 99,
+  },
+  {},
+  {
+    ListType: 106,
+    NamedType: 103,
+    NonNullType: 105,
+    Type: 102,
+  },
+  {
+    Description: 110,
+    InputValueDefinition: 109,
+    InputValueDefinitionList: 108,
+    StringValue: 6,
+  },
+  {},
+  {},
+  {
+    UnionTypeListItem: 113,
+  },
+  {},
+  {},
+  {
+    Description: 62,
+    FieldDefinition: 85,
+    StringValue: 6,
+  },
+  {},
+  {},
+  {},
+  {},
+  {
+    ListType: 106,
+    NamedType: 103,
+    NonNullType: 105,
+    Type: 116,
+  },
+  {
+    ListType: 106,
+    NamedType: 103,
+    NonNullType: 105,
+    Type: 117,
+  },
+  {},
+  {},
+  {},
+  {},
+  {},
+  {
+    ListType: 106,
+    NamedType: 103,
+    NonNullType: 105,
+    Type: 120,
+  },
+  {
+    Description: 110,
+    InputValueDefinition: 122,
     StringValue: 6,
   },
   {},
@@ -1074,10 +1274,10 @@ const gotos: Array<Gotos> = [
   {},
   {},
   {
-    ListType: 90,
-    NamedType: 87,
-    NonNullType: 89,
-    Type: 109,
+    ListType: 106,
+    NamedType: 103,
+    NonNullType: 105,
+    Type: 125,
   },
   {},
   {},
@@ -1088,18 +1288,18 @@ const gotos: Array<Gotos> = [
   {},
   {},
   {
-    ListType: 90,
-    NamedType: 87,
-    NonNullType: 89,
-    Type: 112,
+    ListType: 106,
+    NamedType: 103,
+    NonNullType: 105,
+    Type: 128,
   },
   {},
   {},
   {
-    ListType: 90,
-    NamedType: 87,
-    NonNullType: 89,
-    Type: 113,
+    ListType: 106,
+    NamedType: 103,
+    NonNullType: 105,
+    Type: 129,
   },
   {},
   {},
@@ -1169,157 +1369,185 @@ const rules = [{
   pop: 1,
   action: r15,
 }, {
-  production: 'ObjectTypeDefinition',
-  pop: 7,
+  production: 'TypeDefinition',
+  pop: 1,
   action: r16,
 }, {
-  production: 'ObjectTypeDefinition',
+  production: 'EnumTypeDefinition',
   pop: 6,
   action: r17,
 }, {
-  production: 'ObjectTypeDefinition',
-  pop: 6,
+  production: 'EnumTypeDefinition',
+  pop: 5,
   action: r18,
 }, {
-  production: 'ObjectTypeDefinition',
-  pop: 5,
+  production: 'EnumValuesList',
+  pop: 1,
   action: r19,
 }, {
-  production: 'Implements',
-  pop: 3,
+  production: 'EnumValuesList',
+  pop: 2,
   action: r20,
 }, {
-  production: 'Implements',
+  production: 'EnumValuesListItem',
   pop: 2,
   action: r21,
 }, {
-  production: 'ImplementsList',
+  production: 'EnumValuesListItem',
   pop: 1,
   action: r22,
 }, {
-  production: 'ImplementsList',
-  pop: 3,
+  production: 'ObjectTypeDefinition',
+  pop: 7,
   action: r23,
 }, {
-  production: 'FieldDefinitionList',
-  pop: 1,
+  production: 'ObjectTypeDefinition',
+  pop: 6,
   action: r24,
 }, {
-  production: 'FieldDefinitionList',
-  pop: 2,
+  production: 'ObjectTypeDefinition',
+  pop: 6,
   action: r25,
 }, {
-  production: 'FieldDefinition',
+  production: 'ObjectTypeDefinition',
   pop: 5,
   action: r26,
 }, {
-  production: 'FieldDefinition',
-  pop: 4,
+  production: 'Implements',
+  pop: 3,
   action: r27,
 }, {
-  production: 'FieldDefinition',
-  pop: 4,
+  production: 'Implements',
+  pop: 2,
   action: r28,
 }, {
-  production: 'FieldDefinition',
-  pop: 3,
+  production: 'ImplementsList',
+  pop: 1,
   action: r29,
 }, {
-  production: 'Arguments',
+  production: 'ImplementsList',
   pop: 3,
   action: r30,
 }, {
-  production: 'InputValueDefinitionList',
+  production: 'FieldDefinitionList',
   pop: 1,
   action: r31,
 }, {
-  production: 'InputValueDefinitionList',
+  production: 'FieldDefinitionList',
   pop: 2,
   action: r32,
 }, {
-  production: 'InputValueDefinition',
-  pop: 4,
+  production: 'FieldDefinition',
+  pop: 5,
   action: r33,
 }, {
-  production: 'InputValueDefinition',
-  pop: 3,
+  production: 'FieldDefinition',
+  pop: 4,
   action: r34,
 }, {
-  production: 'ScalarTypeDefinition',
-  pop: 3,
+  production: 'FieldDefinition',
+  pop: 4,
   action: r35,
 }, {
-  production: 'ScalarTypeDefinition',
-  pop: 2,
+  production: 'FieldDefinition',
+  pop: 3,
   action: r36,
 }, {
-  production: 'UnionTypeDefinition',
-  pop: 5,
+  production: 'Arguments',
+  pop: 3,
   action: r37,
 }, {
-  production: 'UnionTypeDefinition',
-  pop: 6,
+  production: 'InputValueDefinitionList',
+  pop: 1,
   action: r38,
 }, {
-  production: 'UnionTypeDefinition',
-  pop: 4,
+  production: 'InputValueDefinitionList',
+  pop: 2,
   action: r39,
 }, {
-  production: 'UnionTypeDefinition',
-  pop: 5,
+  production: 'InputValueDefinition',
+  pop: 4,
   action: r40,
 }, {
-  production: 'UnionTypeList',
-  pop: 1,
+  production: 'InputValueDefinition',
+  pop: 3,
   action: r41,
 }, {
-  production: 'UnionTypeList',
+  production: 'ScalarTypeDefinition',
   pop: 3,
   action: r42,
 }, {
-  production: 'UnionTypeListItem',
-  pop: 1,
+  production: 'ScalarTypeDefinition',
+  pop: 2,
   action: r43,
 }, {
-  production: 'Description',
-  pop: 1,
+  production: 'UnionTypeDefinition',
+  pop: 5,
   action: r44,
 }, {
-  production: 'StringValue',
-  pop: 1,
+  production: 'UnionTypeDefinition',
+  pop: 6,
   action: r45,
 }, {
-  production: 'StringValue',
-  pop: 1,
+  production: 'UnionTypeDefinition',
+  pop: 4,
   action: r46,
 }, {
-  production: 'Type',
-  pop: 1,
+  production: 'UnionTypeDefinition',
+  pop: 5,
   action: r47,
 }, {
-  production: 'Type',
+  production: 'UnionTypeList',
   pop: 1,
   action: r48,
 }, {
-  production: 'Type',
-  pop: 1,
+  production: 'UnionTypeList',
+  pop: 3,
   action: r49,
 }, {
-  production: 'NamedType',
+  production: 'UnionTypeListItem',
   pop: 1,
   action: r50,
 }, {
-  production: 'NonNullType',
-  pop: 2,
+  production: 'Description',
+  pop: 1,
   action: r51,
+}, {
+  production: 'StringValue',
+  pop: 1,
+  action: r52,
+}, {
+  production: 'StringValue',
+  pop: 1,
+  action: r53,
+}, {
+  production: 'Type',
+  pop: 1,
+  action: r54,
+}, {
+  production: 'Type',
+  pop: 1,
+  action: r55,
+}, {
+  production: 'Type',
+  pop: 1,
+  action: r56,
+}, {
+  production: 'NamedType',
+  pop: 1,
+  action: r57,
 }, {
   production: 'NonNullType',
   pop: 2,
-  action: r52,
+  action: r58,
+}, {
+  production: 'NonNullType',
+  pop: 2,
+  action: r59,
 }, {
   production: 'ListType',
   pop: 3,
-  action: r53,
+  action: r60,
 }];
 const EOF = new Token('$', -1, -1, '');
 export default function parseSchema(input: string) {
