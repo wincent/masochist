@@ -28,46 +28,117 @@ function r4($1) {
 function r5($1) {
   return $1;
 }
-function r6($1) {
+function r6($1, _$2, $3) {
+  return {
+    kind: 'SCALAR',
+    name: $3.contents,
+    description: $1.value.trim(),
+  };
+}
+function r7(_$1, $2) {
+  return {
+    kind: 'SCALAR',
+    name: $2.contents,
+  };
+}
+function r8($1) {
   return $1;
 }
+function r9($1) {
+  return {
+    kind: 'STRING',
+    block: false,
+    value: $1.contents.slice(1, -1),
+  };
+}
+function r10($1) {
+  return {
+    kind: 'STRING',
+    block: true,
+    value: $1.contents.slice(3, -3),
+  };
+}
 const actions: Array<{[token: string]: number}> = [{
-  NAME: 6,
+  BLOCK_STRING_VALUE: 9,
+  SCALAR: 10,
+  STRING_VALUE: 8,
 }, {
   $: 0,
-  NAME: 6,
+  BLOCK_STRING_VALUE: 9,
+  SCALAR: 10,
+  STRING_VALUE: 8,
 }, {
-  NAME: -1,
+  SCALAR: -1,
+  STRING_VALUE: -1,
+  BLOCK_STRING_VALUE: -1,
   $: -1,
 }, {
-  NAME: -2,
+  SCALAR: -2,
+  STRING_VALUE: -2,
+  BLOCK_STRING_VALUE: -2,
   $: -2,
 }, {
-  NAME: -4,
+  SCALAR: -4,
+  STRING_VALUE: -4,
+  BLOCK_STRING_VALUE: -4,
   $: -4,
 }, {
-  NAME: -5,
+  SCALAR: -5,
+  STRING_VALUE: -5,
+  BLOCK_STRING_VALUE: -5,
   $: -5,
 }, {
-  NAME: -6,
-  $: -6,
+  SCALAR: 12,
 }, {
-  NAME: -3,
+  SCALAR: -8,
+}, {
+  SCALAR: -9,
+}, {
+  SCALAR: -10,
+}, {
+  NAME: 13,
+}, {
+  SCALAR: -3,
+  STRING_VALUE: -3,
+  BLOCK_STRING_VALUE: -3,
   $: -3,
+}, {
+  NAME: 14,
+}, {
+  SCALAR: -7,
+  STRING_VALUE: -7,
+  BLOCK_STRING_VALUE: -7,
+  $: -7,
+}, {
+  SCALAR: -6,
+  STRING_VALUE: -6,
+  BLOCK_STRING_VALUE: -6,
+  $: -6,
 }];
 const gotos: Array<Gotos> = [
   {
+    Description: 6,
     ScalarTypeDefinition: 5,
+    StringValue: 7,
     TypeDefinition: 4,
     TypeSystemDefinition: 3,
     TypeSystemDefinitionList: 2,
     TypeSystemDocument: 1,
   },
   {
+    Description: 6,
     ScalarTypeDefinition: 5,
+    StringValue: 7,
     TypeDefinition: 4,
-    TypeSystemDefinition: 7,
+    TypeSystemDefinition: 11,
   },
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
   {},
   {},
   {},
@@ -101,8 +172,24 @@ const rules = [{
   action: r5,
 }, {
   production: 'ScalarTypeDefinition',
-  pop: 1,
+  pop: 3,
   action: r6,
+}, {
+  production: 'ScalarTypeDefinition',
+  pop: 2,
+  action: r7,
+}, {
+  production: 'Description',
+  pop: 1,
+  action: r8,
+}, {
+  production: 'StringValue',
+  pop: 1,
+  action: r9,
+}, {
+  production: 'StringValue',
+  pop: 1,
+  action: r10,
 }];
 const EOF = new Token('$', -1, -1, '');
 export default function parseSchema(input: string) {

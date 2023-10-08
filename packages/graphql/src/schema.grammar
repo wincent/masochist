@@ -15,6 +15,7 @@
 %token OPENING_BRACE CLOSING_BRACE
 %token OPENING_BRACKET CLOSING_BRACKET
 %token OPENING_PAREN CLOSING_PAREN
+%token SCALAR
 %token STRING_VALUE BLOCK_STRING_VALUE
 
 TypeSystemDocument → TypeSystemDefinitionList {
@@ -40,7 +41,34 @@ TypeSystemDefinition → TypeDefinition { $$ = $1; }
 TypeDefinition → ScalarTypeDefinition { $$ = $1; }
 #TypeDefinition → UnionTypeDefinition { $$ = $1; }
 
-# TODO: finish this
-# (decide whether to lex `scalar` etc separately, or do what I do in the
-# document.grammar for `OperationType`)
-ScalarTypeDefinition → NAME { $$ = $1; }
+# TODO: Add optional directives
+ScalarTypeDefinition → Description SCALAR NAME {
+  $$ = {
+    kind: 'SCALAR',
+    name: $3.contents,
+    description: $1.value.trim(),
+  };
+}
+ScalarTypeDefinition → SCALAR NAME {
+  $$ = {
+    kind: 'SCALAR',
+    name: $2.contents,
+  };
+}
+
+Description → StringValue { $$ = $1; }
+
+StringValue → STRING_VALUE {
+  $$ = {
+    kind: 'STRING',
+    block: false,
+    value: $1.contents.slice(1, -1),
+  };
+}
+StringValue → BLOCK_STRING_VALUE {
+  $$ = {
+    kind: 'STRING',
+    block: true,
+    value: $1.contents.slice(3, -3),
+  };
+}
