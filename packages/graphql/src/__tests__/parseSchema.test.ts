@@ -524,6 +524,42 @@ describe('parse()', async () => {
           'enum values may not include "true", "false" or "null"',
         );
       });
+
+      it('parses an interface', () => {
+        const input = `
+          """
+          An object with an ID
+          """
+          interface Node {
+            """
+            The id of the object.
+            """
+            id: ID!
+          }
+        `;
+
+        expect(parse(input)).toEqual({
+          kind: 'TYPE_SYSTEM_DOCUMENT',
+          definitions: [{
+            kind: 'INTERFACE',
+            name: 'Node',
+            description: 'An object with an ID',
+            fields: [{
+              kind: 'FIELD',
+              name: 'id',
+              description: 'The id of the object.',
+              arguments: [],
+              type: {
+                kind: 'NON_NULL_TYPE',
+                type: {
+                  kind: 'NAMED_TYPE',
+                  name: 'ID',
+                },
+              },
+            }],
+          }],
+        });
+      });
     },
   );
 });
