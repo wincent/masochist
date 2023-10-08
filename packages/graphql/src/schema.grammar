@@ -9,14 +9,18 @@
 %token ELLIPSIS
 %token EQUALS
 %token FRAGMENT
+%token MUTATION
 %token NAME
 %token NUMBER
 %token ON
 %token OPENING_BRACE CLOSING_BRACE
 %token OPENING_BRACKET CLOSING_BRACKET
 %token OPENING_PAREN CLOSING_PAREN
+%token QUERY
 %token SCALAR
+%token SCHEMA
 %token STRING_VALUE BLOCK_STRING_VALUE
+%token SUBSCRIPTION
 %token UNION
 
 TypeSystemDocument → TypeSystemDefinitionList {
@@ -31,8 +35,65 @@ TypeSystemDefinitionList → TypeSystemDocument TypeSystemDefinition { $1.push($
 
 # TODO: finish
 # TypeSystemDefinition → DirectiveDefinition { $$ = $1; }
-# TypeSystemDefinition → SchemaDefinition { $$ = $1; }
+TypeSystemDefinition → SchemaDefinition { $$ = $1; }
 TypeSystemDefinition → TypeDefinition { $$ = $1; }
+
+SchemaDefinition → Description SCHEMA OPENING_BRACE OperationTypeList CLOSING_BRACE {
+  const query = $4.find(({kind}) => kind === 'QUERY')?.name;
+  const mutation = $4.find(({kind}) => kind === 'MUTATION')?.name;
+  const subscription = $4.find(({kind}) => kind === 'SUBSCRIPTION')?.name;
+  if (!query) {
+    throw new Error('SCHEMA type requires a "query" operation type');
+  }
+  if (new Set($4.map(({kind}) => kind)).size !== $4.length) {
+    throw new Error('operation types may only appear once each in SCHEMA type');
+  }
+  $$ = {
+    kind: 'SCHEMA',
+    description: $1.value.trim(),
+    query,
+    mutation,
+    subscription,
+  };
+}
+SchemaDefinition → SCHEMA OPENING_BRACE OperationTypeList CLOSING_BRACE {
+  const query = $3.find(({kind}) => kind === 'QUERY')?.name;
+  const mutation = $3.find(({kind}) => kind === 'MUTATION')?.name;
+  const subscription = $3.find(({kind}) => kind === 'SUBSCRIPTION')?.name;
+  if (!query) {
+    throw new Error('SCHEMA type requires a "query" operation type');
+  }
+  if (new Set($3.map(({kind}) => kind)).size !== $3.length) {
+    throw new Error('operation types may only appear once each in SCHEMA type');
+  }
+  $$ = {
+    kind: 'SCHEMA',
+    query,
+    mutation,
+    subscription,
+  };
+}
+
+OperationTypeList → OperationTypeListItem { $$ = [$1]; }
+OperationTypeList → OperationTypeList OperationTypeListItem { $1.push($2); $$ = $1; }
+OperationTypeListItem → QUERY COLON NAME {
+  $$ = {
+    kind: 'QUERY',
+    name: $3.contents,
+  };
+}
+OperationTypeListItem → MUTATION COLON NAME {
+  $$ = {
+    kind: 'MUTATION',
+    name: $3.contents,
+  };
+}
+OperationTypeListItem → SUBSCRIPTION COLON NAME {
+  $$ = {
+    kind: 'SUBSCRIPTION',
+    name: $3.contents,
+  };
+}
 
 # TODO: other types
 #TypeDefinition → EnumTypeDefinition { $$ = $1; }

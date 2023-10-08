@@ -243,6 +243,7 @@ export default union({
   ON,
   QUERY,
   SCALAR,
+  SCHEMA,
   SUBSCRIPTION,
   TYPE,
   UNION,

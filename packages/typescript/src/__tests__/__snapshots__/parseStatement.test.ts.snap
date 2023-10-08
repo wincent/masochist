@@ -1,6 +1,6 @@
 // Bun Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`parseStatement() parser derived from grammar parses a const boolean assignment statement 1`] = `
+exports[`parseStatement() parser dynamically derived from grammar parses a const boolean assignment statement 1`] = `
 [
   {
     "binding": "const",
@@ -17,7 +17,7 @@ exports[`parseStatement() parser derived from grammar parses a const boolean ass
 ]
 `;
 
-exports[`parseStatement() parser derived from grammar parses a let boolean assignment statement 1`] = `
+exports[`parseStatement() parser dynamically derived from grammar parses a let boolean assignment statement 1`] = `
 [
   {
     "binding": "let",
@@ -34,7 +34,7 @@ exports[`parseStatement() parser derived from grammar parses a let boolean assig
 ]
 `;
 
-exports[`parseStatement() parser derived from grammar parses a const number assignment statement 1`] = `
+exports[`parseStatement() parser dynamically derived from grammar parses a const number assignment statement 1`] = `
 [
   {
     "binding": "const",
@@ -52,7 +52,7 @@ exports[`parseStatement() parser derived from grammar parses a const number assi
 ]
 `;
 
-exports[`parseStatement() parser derived from grammar parses a let number assignment statement 1`] = `
+exports[`parseStatement() parser dynamically derived from grammar parses a let number assignment statement 1`] = `
 [
   {
     "binding": "let",
@@ -70,7 +70,7 @@ exports[`parseStatement() parser derived from grammar parses a let number assign
 ]
 `;
 
-exports[`parseStatement() parser derived from grammar parses a const nested array assignment 1`] = `
+exports[`parseStatement() parser dynamically derived from grammar parses a const nested array assignment 1`] = `
 [
   {
     "binding": "const",
@@ -101,7 +101,7 @@ exports[`parseStatement() parser derived from grammar parses a const nested arra
 ]
 `;
 
-exports[`parseStatement() parser derived from grammar parses a (default) export class declaration 1`] = `
+exports[`parseStatement() parser dynamically derived from grammar parses a (default) export class declaration 1`] = `
 [
   {
     "declaration": {

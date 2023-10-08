@@ -15,7 +15,7 @@ describe('parseStatement()', async () => {
   // debug statements into the parser on disk for trouble-shooting purposes, if
   // needed.
   describe.each([[
-    'parser derived from grammar',
+    'parser dynamically derived from grammar',
     await getParser<Array<Statement>>(grammar, table, lexer),
   ], [
     'parser persisted to disk',
