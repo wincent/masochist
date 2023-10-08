@@ -70,8 +70,8 @@ OperationNameOpt → Name { $$ = $1; }
 OperationNameOpt → ε { $$ = null; }
 
 Name → NAME { $$ = $1.contents; }
-Name → FRAGMENT { $$ = null; }
-Name → ON { $$ = null; }
+Name → FRAGMENT { $$ = 'fragment'; }
+Name → ON { $$ = 'on'; }
 
 VariableDefinitionsOpt → OPENING_PAREN VariableDefinitionList CLOSING_PAREN {
   $$ = $2;

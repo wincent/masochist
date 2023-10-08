@@ -75,10 +75,10 @@ function r12($1) {
   return $1.contents;
 }
 function r13() {
-  return null;
+  return 'fragment';
 }
 function r14() {
-  return null;
+  return 'on';
 }
 function r15(_$1, $2) {
   return $2;
