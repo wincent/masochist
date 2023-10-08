@@ -216,6 +216,245 @@ describe('parse()', async () => {
           }],
         });
       });
+
+      it('parses an object type', () => {
+        const input = `
+          type History {
+            url: String!
+          }
+        `;
+
+        expect(parse(input)).toEqual({
+          kind: 'TYPE_SYSTEM_DOCUMENT',
+          definitions: [{
+            kind: 'OBJECT_TYPE',
+            name: 'History',
+            implements: [],
+            fields: [{
+              kind: 'FIELD',
+              name: 'url',
+              arguments: [],
+              type: {
+                kind: 'NON_NULL_TYPE',
+                type: {
+                  kind: 'NAMED_TYPE',
+                  name: 'String',
+                },
+              },
+            }],
+          }],
+        });
+      });
+
+      it('parses an object type with descriptions', () => {
+        const input = `
+          """
+          Revision history for the object
+          """
+          type History {
+            """
+            URL showing revision history for the object
+            """
+            url: String!
+          }
+        `;
+
+        expect(parse(input)).toEqual({
+          kind: 'TYPE_SYSTEM_DOCUMENT',
+          definitions: [{
+            kind: 'OBJECT_TYPE',
+            name: 'History',
+            description: 'Revision history for the object',
+            implements: [],
+            fields: [{
+              kind: 'FIELD',
+              name: 'url',
+              description: 'URL showing revision history for the object',
+              arguments: [],
+              type: {
+                kind: 'NON_NULL_TYPE',
+                type: {
+                  kind: 'NAMED_TYPE',
+                  name: 'String',
+                },
+              },
+            }],
+          }],
+        });
+      });
+
+      it('parses an object type with an "implements" keyword', () => {
+        const input = `
+          """
+          A blog post
+          """
+          type Post implements Node & Tagged & Versioned {
+            """
+            The ID of an object
+            """
+            id: ID!
+
+            """
+            The blog post's title
+            """
+            title: String
+            body: Markup!
+
+            """
+            Estimate of time necessary to read the post, in minutes
+            """
+            readTime: Int!
+
+            """
+            Succinct summary of the post content
+            """
+            description: String
+
+            """
+            URL for the post
+            """
+            url: String!
+            history: History!
+            tags: [TagName!]!
+
+            """
+            When the content was first created
+            """
+            createdAt: DateTime
+
+            """
+            When the content was last updated
+            """
+            updatedAt: DateTime
+          }
+        `;
+
+        expect(parse(input)).toEqual({
+          kind: 'TYPE_SYSTEM_DOCUMENT',
+          definitions: [{
+            kind: 'OBJECT_TYPE',
+            name: 'Post',
+            description: 'A blog post',
+            implements: [
+              'Node',
+              'Tagged',
+              'Versioned',
+            ],
+            fields: [{
+              kind: 'FIELD',
+              name: 'id',
+              description: 'The ID of an object',
+              arguments: [],
+              type: {
+                kind: 'NON_NULL_TYPE',
+                type: {
+                  kind: 'NAMED_TYPE',
+                  name: 'ID',
+                },
+              },
+            }, {
+              kind: 'FIELD',
+              name: 'title',
+              description: "The blog post's title",
+              arguments: [],
+              type: {
+                kind: 'NAMED_TYPE',
+                name: 'String',
+              },
+            }, {
+              kind: 'FIELD',
+              name: 'body',
+              arguments: [],
+              type: {
+                kind: 'NON_NULL_TYPE',
+                type: {
+                  kind: 'NAMED_TYPE',
+                  name: 'Markup',
+                },
+              },
+            }, {
+              kind: 'FIELD',
+              name: 'readTime',
+              description: 'Estimate of time necessary to read the post, in minutes',
+              arguments: [],
+              type: {
+                kind: 'NON_NULL_TYPE',
+                type: {
+                  kind: 'NAMED_TYPE',
+                  name: 'Int',
+                },
+              },
+            }, {
+              kind: 'FIELD',
+              name: 'description',
+              description: 'Succinct summary of the post content',
+              arguments: [],
+              type: {
+                kind: 'NAMED_TYPE',
+                name: 'String',
+              },
+            }, {
+              kind: 'FIELD',
+              name: 'url',
+              description: 'URL for the post',
+              arguments: [],
+              type: {
+                kind: 'NON_NULL_TYPE',
+                type: {
+                  kind: 'NAMED_TYPE',
+                  name: 'String',
+                },
+              },
+            }, {
+              kind: 'FIELD',
+              name: 'history',
+              arguments: [],
+              type: {
+                kind: 'NON_NULL_TYPE',
+                type: {
+                  kind: 'NAMED_TYPE',
+                  name: 'History',
+                },
+              },
+            }, {
+              kind: 'FIELD',
+              name: 'tags',
+              arguments: [],
+              type: {
+                kind: 'NON_NULL_TYPE',
+                type: {
+                  kind: 'LIST_TYPE',
+                  type: {
+                    kind: 'NON_NULL_TYPE',
+                    type: {
+                      kind: 'NAMED_TYPE',
+                      name: 'TagName',
+                    },
+                  },
+                },
+              },
+            }, {
+              kind: 'FIELD',
+              name: 'createdAt',
+              description: 'When the content was first created',
+              arguments: [],
+              type: {
+                kind: 'NAMED_TYPE',
+                name: 'DateTime',
+              },
+            }, {
+              kind: 'FIELD',
+              name: 'updatedAt',
+              description: 'When the content was last updated',
+              arguments: [],
+              type: {
+                kind: 'NAMED_TYPE',
+                name: 'DateTime',
+              },
+            }],
+          }],
+        });
+      });
     },
   );
 });
