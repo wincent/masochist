@@ -116,7 +116,7 @@ describe('IntervalTree', () => {
         expect(tree.has(j)).toBe(false);
 
         tree.deleteMin();
-        expect(tree.isEmpty()).toBe(true);
+        expect(tree.empty).toBe(true);
         expect(tree.has(z)).toBe(false);
       });
     });
@@ -136,14 +136,14 @@ describe('IntervalTree', () => {
         tree.put(a, 1);
 
         tree.delete(a);
-        expect(tree.isEmpty()).toBe(true);
+        expect(tree.empty).toBe(true);
         expect(tree.has(a)).toBe(false);
 
         // Note that we can remove based on any match of `low` value.
         const x = item('x');
         tree.put(x, 10);
         tree.delete(range('x', 'z'));
-        expect(tree.isEmpty()).toBe(true);
+        expect(tree.empty).toBe(true);
         expect(tree.has(x)).toBe(false);
       });
 
@@ -243,14 +243,14 @@ describe('IntervalTree', () => {
       });
     });
 
-    describe('isEmpty()', () => {
+    describe('empty', () => {
       it('starts off true', () => {
-        expect(tree.isEmpty()).toBe(true);
+        expect(tree.empty).toBe(true);
       });
 
       it('returns true when the tree is non-empty', () => {
         tree.put(item('a'), 10);
-        expect(tree.isEmpty()).toBe(false);
+        expect(tree.empty).toBe(false);
       });
     });
 

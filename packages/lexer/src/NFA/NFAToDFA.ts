@@ -47,7 +47,7 @@ export default function NFAToDFA(nfa: NFA): NFA {
   const queue = new Queue<NFA>();
   queue.enqueue(dfa);
 
-  while (!queue.isEmpty()) {
+  while (!queue.empty) {
     // Grab next DFA state to process.
     const next = queue.dequeue()!;
 

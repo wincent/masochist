@@ -43,7 +43,7 @@ const MIDDLE_DOT = '\u00b7'; // ·
  *
  *     https://www.cs.princeton.edu/~rs/talks/LLRB/LLRB.pdf
  */
-export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
+export default class RedBlackTree<Tk extends Comparable<Tk>, Tv extends {}> {
   _root: Node<Tk, Tv> | null;
 
   constructor() {
@@ -63,7 +63,7 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
   }
 
   deleteMin(): void {
-    if (!this.isEmpty()) {
+    if (!this.empty) {
       this._root = this._deleteMin(this._root!);
       if (this._root) {
         this._root.color = BLACK;
@@ -90,7 +90,7 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
     return this.get(key) !== null;
   }
 
-  isEmpty(): boolean {
+  get empty(): boolean {
     return this._root === null;
   }
 
@@ -109,14 +109,14 @@ export default class RedBlackTree<Tk extends Comparable<Tk>, Tv> {
    * Returns the largest key in the tree.
    */
   max(): Tk | null {
-    return this.isEmpty() ? null : this._max(this._root!).key;
+    return this.empty ? null : this._max(this._root!).key;
   }
 
   /**
    * Returns the smallest key in the tree.
    */
   min(): Tk | null {
-    return this.isEmpty() ? null : this._min(this._root!).key;
+    return this.empty ? null : this._min(this._root!).key;
   }
 
   put(key: Tk, value: Tv) {

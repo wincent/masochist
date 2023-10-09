@@ -111,7 +111,7 @@ describe('RedBlackTree', () => {
         expect(rbt.size).toBe(1);
         del(rbt, new ComparableString('L'));
         expect(rbt.size).toBe(0);
-        expect(rbt.isEmpty()).toBe(true);
+        expect(rbt.empty).toBe(true);
       });
     });
 
@@ -156,29 +156,29 @@ describe('RedBlackTree', () => {
       });
     });
 
-    describe('isEmpty()', () => {
+    describe('empty', () => {
       it('returns false until empty', () => {
-        expect(rbt.isEmpty()).toBe(false);
+        expect(rbt.empty).toBe(false);
         del(rbt, new ComparableString('S'));
-        expect(rbt.isEmpty()).toBe(false);
+        expect(rbt.empty).toBe(false);
         del(rbt, new ComparableString('E'));
-        expect(rbt.isEmpty()).toBe(false);
+        expect(rbt.empty).toBe(false);
         del(rbt, new ComparableString('A'));
-        expect(rbt.isEmpty()).toBe(false);
+        expect(rbt.empty).toBe(false);
         del(rbt, new ComparableString('R'));
-        expect(rbt.isEmpty()).toBe(false);
+        expect(rbt.empty).toBe(false);
         del(rbt, new ComparableString('C'));
-        expect(rbt.isEmpty()).toBe(false);
+        expect(rbt.empty).toBe(false);
         del(rbt, new ComparableString('H'));
-        expect(rbt.isEmpty()).toBe(false);
+        expect(rbt.empty).toBe(false);
         del(rbt, new ComparableString('X'));
-        expect(rbt.isEmpty()).toBe(false);
+        expect(rbt.empty).toBe(false);
         del(rbt, new ComparableString('M'));
-        expect(rbt.isEmpty()).toBe(false);
+        expect(rbt.empty).toBe(false);
         del(rbt, new ComparableString('P'));
-        expect(rbt.isEmpty()).toBe(false);
+        expect(rbt.empty).toBe(false);
         del(rbt, new ComparableString('L'));
-        expect(rbt.isEmpty()).toBe(true);
+        expect(rbt.empty).toBe(true);
       });
     });
 
@@ -475,7 +475,7 @@ function isBST(tree: RedBlackTree<Tk, Tv>): boolean {
     return is(h.left, min, h.key) && is(h.right, h.key, max);
   }
 
-  if (tree.isEmpty()) {
+  if (tree.empty) {
     return true;
   } else {
     const min = tree.min();

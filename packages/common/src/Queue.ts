@@ -1,20 +1,23 @@
-type Item<T> = {
-  next: Item<T> | null;
+type Entry<T extends {}> = {
+  next: Entry<T> | null;
   value: T;
 };
 
-export default class Queue<T> {
-  #head: Item<T> | null;
-  #length: number;
-  #tail: Item<T> | null;
+/**
+ * A FIFO queue backed by a linked list.
+ */
+export default class Queue<T extends {}> {
+  _head: Entry<T> | null;
+  _tail: Entry<T> | null;
+  _length: number;
 
   /**
    * Optionally takes an iterable of items with which to initially seed the queue.
    */
   constructor(items?: Iterable<T>) {
-    this.#head = null;
-    this.#tail = null;
-    this.#length = 0;
+    this._head = null;
+    this._tail = null;
+    this._length = 0;
 
     if (items) {
       for (const item of items) {
@@ -23,45 +26,45 @@ export default class Queue<T> {
     }
   }
 
-  dequeue() {
-    const node = this.#head;
-    if (node) {
-      this.#head = node.next;
-      this.#length--;
-      if (this.#head === null) {
-        this.#tail = null;
+  enqueue(item: T) {
+    const entry = {
+      next: null,
+      value: item,
+    };
+    if (this._tail) {
+      this._tail.next = entry;
+      this._tail = entry;
+    } else {
+      this._head = entry;
+      this._tail = entry;
+    }
+    this._length++;
+  }
+
+  dequeue(): T | null {
+    const entry = this._head;
+    if (entry) {
+      this._head = entry.next;
+      this._length--;
+      if (this._head === null) {
+        this._tail = null;
       }
-      return node.value;
+      return entry.value;
     } else {
       return null;
     }
   }
 
-  enqueue(item: T) {
-    const node = {
-      next: null,
-      value: item,
-    };
-    if (this.#tail) {
-      this.#tail.next = node;
-      this.#tail = node;
-    } else {
-      this.#head = node;
-      this.#tail = node;
-    }
-    this.#length++;
+  get empty(): boolean {
+    return this._length === 0;
   }
 
-  isEmpty() {
-    return this.#length === 0;
-  }
-
-  get length() {
-    return this.#length;
+  get length(): number {
+    return this._length;
   }
 
   *[Symbol.iterator]() {
-    while (!this.isEmpty()) {
+    while (!this.empty) {
       yield this.dequeue()!;
     }
   }

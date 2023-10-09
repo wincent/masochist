@@ -5,14 +5,14 @@ import Queue from '../Queue';
 describe('Queue', () => {
   it('starts off empty', () => {
     const queue = new Queue();
-    expect(queue.isEmpty()).toBe(true);
+    expect(queue.empty).toBe(true);
     expect(queue.length).toBe(0);
   });
 
   it('enqueues', () => {
     const queue = new Queue();
     queue.enqueue('hello');
-    expect(queue.isEmpty()).toBe(false);
+    expect(queue.empty).toBe(false);
     expect(queue.length).toBe(1);
     queue.enqueue('world');
     expect(queue.length).toBe(2);

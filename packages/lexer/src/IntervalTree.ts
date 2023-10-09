@@ -40,7 +40,7 @@ export class Interval<Tk extends Comparable<Tk>> {
 
 export default class IntervalTree<
   Tk extends Comparable<Tk>,
-  Tv,
+  Tv extends {},
 > extends RedBlackTree<Interval<Tk>, Tv> {
   /**
    * Returns all key/value pairs overlapping with the supplied `interval`.

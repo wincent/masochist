@@ -18,7 +18,7 @@ describe('ConditionTree', () => {
   it('can store atoms', () => {
     const s0 = state(0);
     tree.add({on: atom('x'), to: s0});
-    expect(tree.isEmpty()).toBe(false);
+    expect(tree.empty).toBe(false);
     expect(tree.size).toBe(1);
 
     const entries = [...tree.entries()];
@@ -45,7 +45,7 @@ describe('ConditionTree', () => {
   it('can store ranges', () => {
     const s0 = state(0);
     tree.add({on: range('a', 'z'), to: s0});
-    expect(tree.isEmpty()).toBe(false);
+    expect(tree.empty).toBe(false);
     expect(tree.size).toBe(1);
 
     const entries = [...tree.entries()];
@@ -71,7 +71,7 @@ describe('ConditionTree', () => {
   it('can store "Anything" ranges', () => {
     const s0 = state(0);
     tree.add({on: anything(), to: s0});
-    expect(tree.isEmpty()).toBe(false);
+    expect(tree.empty).toBe(false);
     expect(tree.size).toBe(1);
 
     const entries = [...tree.entries()];
