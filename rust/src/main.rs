@@ -20,14 +20,16 @@ struct Opt {
 async fn main() {
     let opt = Opt::from_args();
 
-    let content_repo = env::var("MASOCHIST_CONTENT_REPO").unwrap_or(String::from("/srv/masochist/content"));
+    let content_repo =
+        env::var("MASOCHIST_CONTENT_REPO").unwrap_or(String::from("/srv/masochist/content"));
 
     let head = match Command::new("git")
         .current_dir(&content_repo)
         .arg("rev-parse")
         .arg("content")
         .output()
-        .await {
+        .await
+    {
         Ok(head_output) => {
             if head_output.status.success() {
                 String::from_utf8_lossy(&head_output.stdout).into_owned()
@@ -51,7 +53,8 @@ async fn main() {
         .arg("--format=%T")
         .arg(&commit_hash)
         .output()
-        .await {
+        .await
+    {
         Ok(tree_output) => {
             if tree_output.status.success() {
                 String::from_utf8_lossy(&tree_output.stdout).into_owned()
