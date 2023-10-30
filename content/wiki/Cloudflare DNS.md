@@ -77,7 +77,7 @@ Credit for the Page Rules configuration goes to [this Stack Overflow answer](htt
 
 ### Case study #3: s3.wincent.com
 
-As the name suggests, this is a AWS S3 bucket, which I use for hosting binary archives. Normally, these would only be accessible over HTTP, not HTTPS, because Amazon uses a wildcard certifate that does not match buckets with dots in their names (ie. it covers `bucket.s3.amazonaws.com` but not `s3.wincent.com.s3.amazonaws.com`). Ideally I would have chosen a different bucket name, but this one was created many moons ago, and there are links to it out in the wild.
+As the name suggests, this hostname is associated with an AWS S3 bucket, which I use for hosting binary archives. I originally used `s3.wincent.com` as the bucket name, but later switched to `wincent`, because Amazon uses a wildcard certifate that does not match buckets with dots in their names (ie. it covers `wincent.s3.amazonaws.com` but not `s3.wincent.com.s3.amazonaws.com`).
 
 As suggested in [this ServerFault Pro-Tip](https://serverfault.com/a/661982), we can see the certificate info as follows (edited for brevity, but note the `Subject Alternative Name` info, which says `DNS:*.s3.amazonaws.com, DNS:s3.amazonaws.com`):
 
@@ -98,7 +98,4 @@ Certificate:
 #### Cloudflare set-up
 
 -   DNS for `wincent.com`:
-    -   `CNAME` `s3` → `s3.wincent.com.s3.amazonaws.com` (proxied)
--   Under SSL/TLS, turn on "Flexible" mode (default is "Full"):
-    -   Note that this means the traffic between Cloudflare and Amazon is not encrypted, so downloading from https://s3.wincent.com only gives the illusion of security.
-    -   Also note that the "Flexible" mode applies to the entire domain, but this is OK because I'm not using Cloudflare proxying for anything else under wincent.com.
+    -   `CNAME` `s3` → `wincent.s3.amazonaws.com` (proxied)
