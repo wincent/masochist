@@ -74,3 +74,31 @@ Credit for the Page Rules configuration goes to [this Stack Overflow answer](htt
         -   `A` record for `wincent.com` root pointing at another Elastic IP.
         -   `CAA` record `wincent.com` saying that `letsencrypt.org` is allowed to issue certificates; this works because GitHub Pages uses Let's Encrypt to create the certificate for `hex.wincent.com` and I also use Let's Encrypt to generate the other certificates for `wincent.com`, `git.wincent.com` (etc) domains on EC2. If GitHub Pages ever switches to a different Certificate Authority, I'll have to add another `CAA` record.
 -   Page Rules for `wincent.com`: none.
+
+### Case study #3: s3.wincent.com
+
+As the name suggests, this is a AWS S3 bucket, which I use for hosting binary archives. Normally, these would only be accessible over HTTP, not HTTPS, because Amazon uses a wildcard certifate that does not match buckets with dots in their names (ie. it covers `bucket.s3.amazonaws.com` but not `s3.wincent.com.s3.amazonaws.com`). Ideally I would have chosen a different bucket name, but this one was created many moons ago, and there are links to it out in the wild.
+
+As suggested in [this ServerFault Pro-Tip](https://serverfault.com/a/661982), we can see the certificate info as follows (edited for brevity, but note the `Subject Alternative Name` info, which says `DNS:*.s3.amazonaws.com, DNS:s3.amazonaws.com`):
+
+```shell
+$ echo | openssl s_client -showcerts \
+  -servername s3.wincent.com.s3.amazonaws.com \
+  -connect s3.wincent.com.s3.amazonaws.com:443 2> /dev/null | \
+  openssl x509 -inform pem -noout -text
+Certificate:
+    Data:
+            ...
+        X509v3 extensions:
+            ...
+            X509v3 Subject Alternative Name:
+                DNS:*.s3.amazonaws.com, DNS:s3.amazonaws.com
+```
+
+#### Cloudflare set-up
+
+-   DNS for `wincent.com`:
+    -   `CNAME` `s3` → `s3.wincent.com.s3.amazonaws.com` (proxied)
+-   Under SSL/TLS, turn on "Flexible" mode (default is "Full"):
+    -   Note that this means the traffic between Cloudflare and Amazon is not encrypted, so downloading from https://s3.wincent.com only gives the illusion of security.
+    -   Also note that the "Flexible" mode applies to the entire domain, but this is OK because I'm not using Cloudflare proxying for anything else under wincent.com.
