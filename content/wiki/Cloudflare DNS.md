@@ -77,7 +77,7 @@ Credit for the Page Rules configuration goes to [this Stack Overflow answer](htt
 
 ### Case study #3: s3.wincent.com
 
-As the name suggests, this hostname is associated with an AWS S3 bucket, which I use for hosting binary archives. I originally used `s3.wincent.com` as the bucket name, but later switched to `wincent`, because Amazon uses a wildcard certifate that does not match buckets with dots in their names (ie. it covers `wincent.s3.amazonaws.com` but not `s3.wincent.com.s3.amazonaws.com`).
+As the name suggests, this hostname is associated with an AWS S3 bucket, which I use for hosting binary archives. I originally used `s3.wincent.com` as the bucket name, but later switched to `wincent`, because Amazon uses a wildcard certificate that does not match buckets with dots in their names (ie. it covers `wincent.s3.amazonaws.com` but not `s3.wincent.com.s3.amazonaws.com`).
 
 As suggested in [this ServerFault Pro-Tip](https://serverfault.com/a/661982), we can see the certificate info as follows (edited for brevity, but note the `Subject Alternative Name` info, which says `DNS:*.s3.amazonaws.com, DNS:s3.amazonaws.com`):
 
