@@ -163,4 +163,4 @@ So there you have it... yet another article in the "double-checked locking is br
 
 #### Update: 18 February 2007
 
-Here is [the take by](http://ridiculousfish.com/blog/archives/2007/02/17/barrier/) Peter Ammon, [an Apple engineer on the AppKit team](http://weblog.scifihifi.com/2005/05/26/say-hello-to-ridiculous-fish/). Highly recommended reading.
+Here is [the take by](https://ridiculousfish.com/blog/posts/barrier.html) Peter Ammon, [an Apple engineer on the AppKit team](http://weblog.scifihifi.com/2005/05/26/say-hello-to-ridiculous-fish/). Highly recommended reading.
