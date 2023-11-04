@@ -9,7 +9,8 @@ tags: arch linux snippets
 #                                                                              #
 #           NOTE: For the latest version of this script, see:                  #
 #                                                                              #
-#           https://wincent.com/link/arch-linux-install.sh                     #
+#           https://wincent.com/link/arch/desktop.sh (desktop version)         #
+#           https://wincent.com/link/arch/zbook.sh   (laptop version)          #
 #                                                                              #
 ################################################################################
 
@@ -119,6 +120,7 @@ echo "root:\$__PASSPHRASE__" | chpasswd
 useradd -m -g users -G wheel wincent
 echo "wincent:\$__PASSPHRASE__" | chpasswd
 echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel
+echo 'Defaults:wincent !lecture' > /etc/sudoers.d/wincent
 
 log "Setting up boot"
 pacman -S --noconfirm efibootmgr dosfstools os-prober mtools

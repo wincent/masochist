@@ -21,9 +21,12 @@ Kick off the installation script:
 
 ```bash
 loadkeys colemak # "iyasefjr cyifmae" typing colemak-style on qwerty)
+setfont ter-132b # Switch to a larger font, if needed.
 iwctl station wlan0 connect $SSID
-curl -LO https://wincent.com/link/arch-linux-install.sh
-bash arch-linux-install.sh
+curl -LO https://wincent.com/link/arch/desktop.sh
+# or: curl -LO https://wincent.com/link/arch/zbook.sh
+bash desktop.sh
+# or: bash zbook.sh
 
 # etc...
 
