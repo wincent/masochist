@@ -3,10 +3,11 @@ import {dedent} from '@masochist/common';
 import {getParser} from '@masochist/parser/src/internal';
 import {describe, expect, it} from 'bun:test';
 
-import type {Statement} from '@masochist/types';
 import lexer from '../lexer';
 import parseStatement from '../parseStatement';
 import {grammar, table} from '../statement';
+
+import type {Statement} from '@masochist/types';
 
 describe('parseStatement()', async () => {
   // We run these tests against a fresh copy of the parser, derived at runtime
@@ -67,7 +68,7 @@ describe('parseStatement()', async () => {
           click();
           click();
         `;
-        const statement = {
+        const statement: Statement = {
           kind: 'ExpressionStatement',
           expression: {
             kind: 'CallExpression',

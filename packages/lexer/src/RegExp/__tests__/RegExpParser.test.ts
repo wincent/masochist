@@ -2,6 +2,8 @@ import {describe, expect, it} from 'bun:test';
 
 import RegExpParser from '../RegExpParser';
 
+import type {Node} from '../RegExpParser';
+
 describe('RegExpParser', () => {
   it('parses a single atom', () => {
     expect(new RegExpParser(/a/).parse()).toEqual({
@@ -44,7 +46,7 @@ describe('RegExpParser', () => {
   });
 
   it('parses a character class with the "i" flag', () => {
-    const expected = {
+    const expected: Node = {
       kind: 'CharacterClass',
       children: [{kind: 'Range', from: 'A', to: 'Z'}, {
         kind: 'Range',
