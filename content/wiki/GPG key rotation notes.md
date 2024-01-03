@@ -15,6 +15,18 @@ title: GPG key rotation notes
 
 [^work]: ~~On my work machine, I don't use a signing key and I don't sign Git commits (I don't even _have_ a signing subkey). This is because most of my work is done on Codespaces, and getting GPG keys working there is a speed bump I'd rather avoid at this time (writing this in June 2022). For my personal machines, I do have a signing key.~~ This is no longer true; I have signing keys on both work and personal machines (but I still don't sign commits on Codespaces).
 
+At the moment, I have two active GPG keys:
+
+- [`F962DC1A1941CCC4`](https://keyserver.ubuntu.com/pks/lookup?search=F962DC1A1941CCC4&fingerprint=on&op=index), associated with my personal email address (`greg@hurrell.net`).
+- [`62106B56923F3481`](https://keyserver.ubuntu.com/pks/lookup?search=62106B56923F3481&fingerprint=on&op=index), associated with my work email address (`wincent@github.com`).
+
+I have those set up with the major repository hosts (eg. GitHub, GitLab, BitBucket, Codeberg, and Source Hut) so that they can display signed commits and tags as verified. Additionally, I have some older keys registered that I previously used to sign objects:
+
+- [`6F252437134D9429`](https://keyserver.ubuntu.com/pks/lookup?search=6F252437134D9429&fingerprint=on&op=index), associated with an old address (`win@wincent.com`); this one expired on 2017-07-07, and one of the oldest objects I can find signed with that was [the Command-T 1.8 release tag](https://github.com/wincent/command-t/releases/tag/1.8) (in [the 1.9 release tag](https://github.com/wincent/command-t/releases/tag/1.9) you can see I switched to my `F962DC1A1941CCC4`/`greg@hurrell.net` key).
+- [`6B746F3C37BAF280`](https://keyserver.ubuntu.com/pks/lookup?search=6B746F3C37BAF280&fingerprint=on&op=index), also associated with `win@wincent.com`; it is set to expire on 2024-01-12, and I can't actually find any example objects that I ever signed with this one, but I am keeping it around just in case[^think].
+
+[^think]: If I had to guess, I'd say I probably created this second key in some past time when I thought I should have one key per machine, instead of one key per identity.
+
 # Example rotation procedures
 
 ## Rotating my `wincent@github.com` keys
