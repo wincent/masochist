@@ -10,14 +10,20 @@ title: GPG
 
 ## Active keys, as of July 2022
 
--   [`F962DC1A1941CCC4 (Greg Hurrell <greg@hurrell.net>)`](/snippets/F962DC1A1941CCC4.txt)
--   [`62106B56923F3481 (Greg Hurrell <wincent@github.com>)`](/snippets/62106B56923F3481.txt)
+-   [`F962DC1A1941CCC4 (Greg Hurrell <greg@hurrell.net>)`](https://keyserver.ubuntu.com/pks/lookup?search=F962DC1A1941CCC4&fingerprint=on&op=index)
+-   [`62106B56923F3481 (Greg Hurrell <wincent@github.com>)`](https://keyserver.ubuntu.com/pks/lookup?search=62106B56923F3481&fingerprint=on&op=index)
 
 ## Inactive keys
 
--   [`6B746F3C37BAF280 (Wincent Colaiuta <win@wincent.com>)`](/snippets/6B746F3C37BAF280.txt) (expiring 2024-01-12)
--   [`6F252437134D9429 (Wincent Colaiuta <win@wincent.com>)`](/snippets/6F252437134D9429.txt) (expired 2017-07-07)
+-   [`6B746F3C37BAF280 (Wincent Colaiuta <win@wincent.com>)`](https://keyserver.ubuntu.com/pks/lookup?search=6B746F3C37BAF280&fingerprint=on&op=index) (expiring 2024-01-12)
+-   [`6F252437134D9429 (Wincent Colaiuta <win@wincent.com>)`](https://keyserver.ubuntu.com/pks/lookup?search=6F252437134D9429&fingerprint=on&op=index) (expired 2017-07-07)
 
 # Official site
 
 -   <http://www.gnupg.org/>
+
+# See also
+
+-   [GPG key rotation notes]
+
+[GPG key rotation notes]: /wiki/GPG_key_rotation_notes
