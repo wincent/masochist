@@ -23,12 +23,12 @@ I store a detailed copy of these notes (with concrete paths and hostnames etc) o
         ```
         ssh-add # Make sure old key is in agent; in case we need it to connect to Linux desktop.
         cd ~/.ssh
-        ssh-keygen -t ed25519 -f id_ed25519_20230129
-        ln -sf id_ed25519_20230129 id_ed25519
-        ln -sf id_ed25519_20230129.pub id_ed25519.pub
-        rm id_ed25519_2022*
+        ssh-keygen -t ed25519 -f id_ed25519_20240103
+        ln -sf id_ed25519_20240103 id_ed25519
+        ln -sf id_ed25519_20240103.pub id_ed25519.pub
+        rm id_ed25519_2023*
         ```
-    2.  Add key files to 1Password, tagged with "ssh", and noting the encryption passphrase.
+    2.  Add key files to 1Password, tagged with "ssh", and noting the encryption passphrase[^trick].
     3.  Mark old key files as archived in 1Password.
 2.  On personal laptop:
     1.  Create new key etc.
@@ -69,8 +69,10 @@ I store a detailed copy of these notes (with concrete paths and hostnames etc) o
         3. Paste the key ID into my `create-instance` script in my Ansible configs.
     7.  Rotate my Git backups key.
 3.  Add new public keys to, and remove old keys from:
-    1.  GitHub (https://github.com/settings/keys) — all "Authentication", not "Signing" keys.
+    1.  GitHub (https://github.com/settings/keys) — all "Authentication", not "Signing" keys; note that the work key should be authorized for SSO with the GitHub organization.
     2.  GitLab (https://gitlab.com/-/profile/keys): same keys as GitHub, again just for "Authentication", no expiry dates.
     3.  BitBucket (https://bitbucket.org/account/settings/ssh-keys/): same keys as GitHub.
     4.  Codeberg (https://codeberg.org/user/settings/keys): same keys as GitHub, although we don't make use of the backup key here yet.
     5.  Sourcehut (https://meta.sr.ht/keys): same keys as GitHub, although again we aren't making use of backup key here yet.
+
+[^trick]: To make this easy, it's better to just duplicate the existing item and then edit it (you can replace the associated key file); that way, you don't have to set up the tags again, or worry about adding the key to the wrong vault etc.
