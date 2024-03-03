@@ -21,12 +21,12 @@ Nightly builds are produced by many great open source projects such as [WebKit](
 
 I've written a [Ruby](http://www.wincent.com/knowledge-base/Ruby) script that performs the following steps for each product:
 
-1.  Checks the [Git](http://www.wincent.com/knowledge-base/Git) revision number of the latest version of the codebase: if the revision number hasn't changed since the last run then this means that no changes have been finalized and the product is skipped. You can see which changes are being checked in in real-time by subscribing to the [Git log](wincent.com/a/about/wincent/weblog/svn-log/atom.xml).
+1.  Checks the [Git](http://www.wincent.com/knowledge-base/Git) revision number of the latest version of the codebase: if the revision number hasn't changed since the last run then this means that no changes have been finalized and the product is skipped. You can see which changes are being checked in in real-time by subscribing to the Git log.
 2.  If changes have been made checks out (clones) a complete copy of the latest version of the codebase.
 3.  Performs a full build of the software; this may be a multi-step process.
 4.  Runs any automated tests.
 5.  Uploads the built software to the server. Each nightly will be identified by a unique combination of product name and Git hash: for example, the first Synergy nightly was labelled as "Synergy (revision 325)"; note that the revision number is _not_ the same as the official version number used to label official releases.
-6.  Publishes a new entry to the [Nightlog](http://www.wincent.com/a/about/wincent/weblog/nightlog/) ([feed](http://www.wincent.com/a/about/wincent/weblog/nightlog/atom.xml)) including basic information about the build (name, size, checksum, download URL and so forth).
+6.  Publishes a new entry to the [Nightlog](http://www.wincent.com/a/about/wincent/weblog/nightlog/) including basic information about the build (name, size, checksum, download URL and so forth).
 
 Although the builds are called "nightlies" there are a number of reasons why a new nightly might not appear on any given day:
 
@@ -43,7 +43,7 @@ Although the builds are called "nightlies" there are a number of reasons why a n
 -   List of [Synergy Advance nightlies](http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/synergy_advance/)
 -   List of [Hextrapolate nightlies](http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/hextrapolate/)
 -   The [Nightlog archives](http://www.wincent.com/a/about/wincent/weblog/nightlog/) for all products.
--   The [Nightlog RSS feed](http://www.wincent.com/a/about/wincent/weblog/nightlog/atom.xml).
+-   The Nightlog RSS feed.
 -   Summary of recent entries to the Nightlog (see the right-hand column of my [personal weblog](http://colaiuta.net/)).
 
 ### Disclaimer

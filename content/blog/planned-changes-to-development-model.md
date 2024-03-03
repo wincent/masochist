@@ -15,7 +15,7 @@ I've been taking small steps towards a more open development model for many mont
 
 -   Making more of my projects open source: WOTest, Bansshee, [WinSwitch](http://winswitch.wincent.com), [atosym](http://www.wincent.com/a/products/atosym/), [Wincent Build Tools](http://www.wincent.com/a/products/buildtools/), and [Wincent Strings Utility](http://strings.wincent.com/).
 -   Moving the code for these open source projects into a publicly accessible [Subversion](http://www.wincent.com/knowledge-base/Subversion) repository.
--   Publishing an [RSS feed](http://www.wincent.com/a/about/wincent/weblog/svn-log/atom.xml) of _all_ commits so that customers can see source code changes even in closed-source products.
+-   Publishing an RSS feed of _all_ commits so that customers can see source code changes even in closed-source products.
 -   Putting bug reports and feature requests out in the open in a publicly accessible database.
 -   Having open-to-all beta-testing mailing lists.
 
