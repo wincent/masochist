@@ -1737,16 +1737,6 @@
               Programmers number conversion tool.
             </li>
           </ul>
-          <a name="Unknown"></a>
-          <h3>Unknown</h3>
-
-          <p>The status of the following product on Leopard is unknown:</p>
-          <ul>
-            <li>
-              <a href="http://atosym.wincent.com/">atosym</a>: Address-to-symbol
-              conversion aid for programmers.
-            </li>
-          </ul>
           <a name="All%20other%20products"></a>
           <h3>All other products</h3>
 
