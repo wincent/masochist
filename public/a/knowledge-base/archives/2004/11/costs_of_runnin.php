@@ -931,7 +931,7 @@
               <a href="http://www.movabletype.org/">Movable Type</a> (for
               various sections of this website, including the one you're reading
               now), and <a href="http://ubbcentral.com/">UBB.threads</a> (for
-              the <a href="http://forums.wincent.com/">forums</a>). Each of
+              the forums). Each of
               those will set you back a couple hundred dollars.
             </p>
 

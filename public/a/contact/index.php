@@ -690,12 +690,6 @@
             documentation.
           </li>
           <li>
-            Talk to other users on the
-            <a href="http://forums.wincent.com/"
-              >support and discussion forums</a
-            >
-          </li>
-          <li>
             Visit the <a href="https://wincent.com/a/news/">news page</a> to see
             if there are any known issues that have recently been discovered
           </li>

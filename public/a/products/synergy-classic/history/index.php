@@ -2783,7 +2783,7 @@
             </li>
             <li>
               [New] Support and discussion forums for Synergy and other Wincent
-              products now online at forums.wincent.com.
+              products now online.
             </li>
             <li>
               [New] Automated serial recovery system for users who lose their

@@ -704,56 +704,6 @@
             retrieve your code
           </p>
 
-          <h4>Support forums</h4>
-
-          <p>
-            The
-            <a href="http://forums.wincent.com/"
-              >support and discussion forums</a
-            >
-            provide you with a place where you can share your experiences and
-            ask questions with other users at any hour of the day or night. The
-            forums are equipped with a search function so that you can locate
-            answers to previously asked questions.
-          </p>
-
-          <p class="more">
-            Click <a href="http://forums.wincent.com/">here</a> to visit the
-            forums
-          </p>
-
-          <h4>Bug tracking and feature requests database</h4>
-
-          <p>
-            You can use the
-            bug tracking and feature requests database
-            to submit bug reports and feature requests, as well as see what
-            other users have reported and requested already.
-          </p>
-
-          <h4>Mailing lists</h4>
-
-          <p>There are two types of mailing lists that you can join:</p>
-
-          <ul>
-            <li>
-              <em>Announcement mailing lists</em>: Low-volume lists
-              (approximately one message per month) sent to advise of updates to
-              existing products.
-            </li>
-            <li>
-              <em>Beta testing lists</em>: Discussion lists for those who wish
-              to participate in a beta testing program for a Wincent product.
-            </li>
-          </ul>
-
-          <p>
-            For more information, or to subscribe or unsubscribe, proceed to
-            <a href="https://wincent.com/a/support/lists/"
-              >the mailing lists page</a
-            >.
-          </p>
-
           <h4>Knowledge base</h4>
 
           <p>

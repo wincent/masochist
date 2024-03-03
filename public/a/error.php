@@ -679,11 +679,6 @@
               >
             </li>
             <li>
-              <a href="http://forums.wincent.com/"
-                >Discussion and support forums</a
-              >
-            </li>
-            <li>
               <a href="https://wincent.com/a/news/">News</a> (formerly
               wincent.org)
             </li>

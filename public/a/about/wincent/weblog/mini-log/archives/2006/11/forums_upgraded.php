@@ -692,7 +692,7 @@
             href="https://wincent.com/knowledge-base/UBB.threads_7.0.1_to_7.0.2_upgrade_notes"
             >Upgraded</a
           >
-          the <a href="http://forums.wincent.com/">forums</a>.
+          the forums.
         </p>
 
         <div id="a000922more"><div id="more"></div></div>
