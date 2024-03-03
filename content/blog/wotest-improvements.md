@@ -3,7 +3,7 @@ title: WOTest improvements
 tags: blog
 ---
 
-I'm very happy with some improvements that I [checked in](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/2006/11/wotest_r129_5_items_changed.php) to [WOTest](http://test.wincent.com/) last night and which improve the readability and usefulness of test results.
+I'm very happy with some improvements that I [checked in](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/2006/11/wotest_r129_5_items_changed.php) to WOTest last night and which improve the readability and usefulness of test results.
 
 The problem was that in many cases I was depending on `NSValue`'s not very human-friendly `description` method and as a result simple numbers like 500,000 were being printed in hexadecimal representation as `<0007a120>`. Actually, the problem was even worse on little-endian architectures (like on my Intel iMac) because the description was printed as `<20a10700>`, which at a casual glance has almost nothing to do with 500,000.
 

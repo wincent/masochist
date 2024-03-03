@@ -9,10 +9,10 @@ With [Leopard](http://www.wincent.com/knowledge-base/Leopard) only 15 hours from
 
 The following products have received extensive testing on pre-release versions of Leopard and are expected to work with a high degree of compatibility. When Apple ships the final version to developers further testing will be performed to see if any further changes are required:
 
--   [Synergy](http://synergy.wincent.com): the lightweight, robust, and feature-packed iTunes controller.
--   [Install](http://install.wincent.com): simple and dependable installation solution for developers.
--   [WOTest](http://test.wincent.com): open source Objective-C unit testing framework.
--   [Wincent Strings Utility](http://strings.wincent.com): open source localization helper tool for developers.
+-   Synergy: the lightweight, robust, and feature-packed iTunes controller.
+-   Install: simple and dependable installation solution for developers.
+-   WOTest: open source Objective-C unit testing framework.
+-   Wincent Strings Utility: open source localization helper tool for developers.
 
 ### Beta-status
 

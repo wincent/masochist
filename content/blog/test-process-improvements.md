@@ -58,7 +58,7 @@ Ruby is great for writing tests for two reasons:
     // the Objective-C way:
     WO_TEST_EQ(thing, @"foo");
 
-There's nothing wrong with the [Objective-C](http://www.wincent.com/knowledge-base/Objective-C) way (using [WOTest](http://test.wincent.com/)) of course, but the RSpec way is nicer. Note that it works no matter what `thing` is; it can even be `nil` or `false` and the test will work as you would expect. The WOTest version will work too regardless of what `thing` is (it can be a `NULL` pointer, for instance) but it's not as elegant.
+There's nothing wrong with the [Objective-C](http://www.wincent.com/knowledge-base/Objective-C) way (using WOTest) of course, but the RSpec way is nicer. Note that it works no matter what `thing` is; it can even be `nil` or `false` and the test will work as you would expect. The WOTest version will work too regardless of what `thing` is (it can be a `NULL` pointer, for instance) but it's not as elegant.
 
 When I saw [RSpec](http://www.wincent.com/knowledge-base/RSpec) I wanted to modify WOTest to use a similar syntax (`should` and `shouldNot` messages added via a category on `NSObject`) using [Higher Order Messaging](http://www.wincent.com/knowledge-base/Higher%20Order%20Messaging) to allow expressions like:
 

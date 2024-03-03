@@ -9,7 +9,7 @@ Back in August [I wrote the following](http://www.wincent.com/a/about/wincent/we
 >
 > Yes, it works; yes, it allows you to write shorter, more compact code using a natural-language style. But it just feels wrong.
 
-I had already used a HOM-style syntax for my mock object implementation in my [WOTest](http://test.wincent.com/) Objective-C unit testing framework, although I never really felt convinced that it was the "right thing" to do.
+I had already used a HOM-style syntax for my mock object implementation in my WOTest Objective-C unit testing framework, although I never really felt convinced that it was the "right thing" to do.
 
 Yesterday, I allowed true HOM to creep into WOCommon in the form of an `ifResponds` implementation.
 
