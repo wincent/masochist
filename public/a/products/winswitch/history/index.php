@@ -757,7 +757,7 @@
             </li>
             <li>
               Now ships with the
-              <a href="http://test.wincent.com/">WOTest</a> unit testing
+              WOTest unit testing
               framework so that users can run the test suite locally.
             </li>
             <li>

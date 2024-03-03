@@ -242,10 +242,10 @@ xmlns="http://purl.org/rss/1.0/">
 
 <p>The following products have received extensive testing on pre-release versions of Leopard and are expected to work with a high degree of compatibility. When Apple ships the final version to developers further testing will be performed to see if any further changes are required:</p>
 <ul>
-<li><a href='http://synergy.wincent.com'>Synergy</a>: the lightweight, robust, and feature-packed iTunes controller. </li>
-<li><a href='http://install.wincent.com'>Install</a>: simple and dependable installation solution for developers.</li>
-<li><a href='http://test.wincent.com'>WOTest</a>: open source Objective-C unit testing framework.</li>
-<li><a href='http://strings.wincent.com'>Wincent Strings Utility</a>: open source localization helper tool for developers.</li>
+<li>Synergy: the lightweight, robust, and feature-packed iTunes controller. </li>
+<li>Install: simple and dependable installation solution for developers.</li>
+<li>WOTest: open source Objective-C unit testing framework.</li>
+<li>Wincent Strings Utility: open source localization helper tool for developers.</li>
 </ul>
 <a name='Beta-status'></a><h3>Beta-status</h3>
 

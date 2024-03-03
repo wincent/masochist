@@ -675,7 +675,7 @@
             The Wincent Buildtools (or simply, "buildtools") is a collection of
             scripts, tools and configuration files used in the build processes
             of a number of Wincent products (such as
-            <a href="http://test.wincent.com/">WOTest</a>).
+            WOTest).
           </p>
 
           <h4><a id="download" name="download"></a>Downloads</h4>

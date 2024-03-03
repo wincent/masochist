@@ -755,7 +755,7 @@
             </li>
             <li>
               [Enhancement] Integrated
-              <a href="http://test.wincent.com/">WOTest</a> unit testing
+              WOTest unit testing
               framework.
             </li>
             <li>[Enhancement] Can now enter leading zeros.</li>

@@ -688,7 +688,7 @@
         <h3>Location caching</h3>
 
         <p>
-          <a href="http://test.wincent.com/">WOTest</a> now caches the last
+          WOTest now caches the last
           known location (file path and line number) during testing so that if
           you get an uncaught exception you can click on the Xcode build results
           window and be taken directly to the source file which is the most

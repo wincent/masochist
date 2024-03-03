@@ -1713,7 +1713,7 @@
               dependable installation solution for developers.
             </li>
             <li>
-              <a href="http://test.wincent.com">WOTest</a>: open source
+              WOTest: open source
               Objective-C unit testing framework.
             </li>
             <li>

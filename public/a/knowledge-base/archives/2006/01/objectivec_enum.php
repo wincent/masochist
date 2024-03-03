@@ -974,7 +974,7 @@ enumerate (fileName, fileArray)
               want to check out the finished macros, now named
               <tt>WO_ENUMERATE</tt>, <tt>WO_KEY_ENUMERATE</tt> and
               <tt>WO_REVERSE_ENUMERATE</tt>, see the <tt>WOEnumerate.h</tt> file
-              in <a href="http://test.wincent.com/">WOTest</a>.
+              in WOTest.
             </p>
           </div>
         </div>

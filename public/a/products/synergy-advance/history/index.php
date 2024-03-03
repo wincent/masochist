@@ -1254,7 +1254,7 @@
             </li>
             <li>
               [Enhancement] Now ships with the
-              <a href="http://test.wincent.com/">WOTest</a> unit testing
+              WOTest unit testing
               framework, allowing users to perform on-site low-level testing.
             </li>
             <li>
