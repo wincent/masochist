@@ -1196,7 +1196,7 @@
             If you look at the
             <a href="https://wincent.com/a/products/">products listing</a>
             you'll see that there is now a new entry in the ranks,
-            <a href="http://renamer.wincent.com/">REnamer</a>.
+            REnamer.
           </p>
           <p>
             REnamer is a file renaming utility based on three design principles:
@@ -1219,7 +1219,7 @@
           </p>
           <p>
             Please head on over to the
-            <a href="http://renamer.wincent.com/">product page</a> and check out
+            product page and check out
             the sneak preview screencast which shows a small part of REnamer in
             action. Sign up to the beta testing mailing list while you're there
             too.
