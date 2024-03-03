@@ -18,7 +18,7 @@ For a quick example of producing a very simple executable with [Ragel](/wiki/Rag
 
 # Examples
 
-[This lexer](http://git.wincent.com/wikitext.git/blob/HEAD:/ext/wikitext_ragel.rl) is an extended example of a scanner written using Ragel (part of my [Wikitext](/wiki/Wikitext) project).
+The lexer is an extended example of a scanner written using Ragel (part of my [Wikitext](/wiki/Wikitext) project).
 
 # See also
 

@@ -12,4 +12,3 @@ From the docs, mkdtemp:
 -   Downloads: <http://rubyforge.org/frs/?group_id=7076>
 -   Official project page: <http://rubyforge.org/projects/mkdtemp>
 -   Documentation: <http://mkdtemp.rubyforge.org/>
--   Source code (browser): <http://git.wincent.com/mkdtemp.git>

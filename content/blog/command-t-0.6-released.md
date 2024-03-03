@@ -10,4 +10,4 @@ This is a minor feature release that adds the ability to provide an optional sta
 
 Incidentally, as the basic functionality is now solidly in place, and with a number of successful releases under its belt it seems that most issues with compatibility on Mac OS X, Windows and Linux are sorted out, so the next release is likely to be 1.0.
 
-So, if you're a [VIM](/wiki/VIM) user check out the [screencasts](/products/command-t) and give the plug-in a try. If you'd like to support development you can use [the donations page](/products/command-t/donations) to make a donation, or consider submitting a patch for the project (the source code can be browsed [here](http://git.wincent.com/command-t.git)).
+So, if you're a [VIM](/wiki/VIM) user check out the [screencasts](/products/command-t) and give the plug-in a try. If you'd like to support development you can use [the donations page](/products/command-t/donations) to make a donation, or consider submitting a patch for the project.

@@ -24,6 +24,6 @@ Seeing as one of the primary design goals in my own [wikitext](/wiki/wikitext) t
                                                 user     system      total        real
     markdown README concatenated 32 times   0.040000   0.000000   0.040000 (  0.033533)
 
-So that's 33 milliseconds on my lowly 1.83 GHz iMac, not bad at all... The truth is, a single 10,912-line file (354,400 bytes) isn't really long enough to produce a meaningful benchmark with a fast translator. The [benchmarks I normally](http://git.wincent.com/wikitext.git?a=tree;f=benchmarks;h=cb26bbf2c3b48dbde3b5e618d5df902e0fa42385;hb=112a5772ff64ec95a0d606726972be7d7a93831b) use with wikitext actually use four different input samples, each repeated 100,000 times.
+So that's 33 milliseconds on my lowly 1.83 GHz iMac, not bad at all... The truth is, a single 10,912-line file (354,400 bytes) isn't really long enough to produce a meaningful benchmark with a fast translator. The benchmarks I normally use with wikitext actually use four different input samples, each repeated 100,000 times.
 
 I'd also like to compare memory use, but I'm not really sure what the best way to do that would be.

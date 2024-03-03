@@ -1,6 +1,7 @@
 ---
 tags: subversion git wiki
 cache_breaker: 1
+title: Migrating the WinSwitch repository from Subversion to Git
 ---
 
 # Local import
@@ -33,8 +34,6 @@ cache_breaker: 1
 You can now create a clone of the repo using:
 
     $ git clone git://git.wincent.com/WinSwitch.git
-
-And you can browse the repo at: <http://git.wincent.com/WinSwitch.git>
 
 # Local cleanup
 

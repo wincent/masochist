@@ -8,6 +8,6 @@ cache_breaker: 1
 
 A binary download (for OS X 10.8 [Mountain Lion](/wiki/Mountain_Lion)) can be found on the [Clipper product page](/products/clipper).
 
-For more details, see [the 0.1 README](http://git.wincent.com/clipper.git/blob/a36d3601b21ea9938ed97203d7973bd5e8436625:/README.md).
+For more details, see the 0.1 README.
 
 **Update:** I've added a screencast to the [Clipper product page](/products/clipper) demonstrating what it can do.

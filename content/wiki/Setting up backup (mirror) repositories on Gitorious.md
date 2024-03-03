@@ -1,6 +1,7 @@
 ---
 tags: git wiki
 cache_breaker: 1
+title: Setting up backup (mirror) repositories on Gitorious
 ---
 
 # For the impatient
@@ -43,7 +44,7 @@ Instead of the longer:
     2.  Slug (for example "wohotkey")
     3.  Categories (for example "objective-c mac-os-x")
     4.  License (for example "BSD License")
-    5.  Home URL (for example, <http://git.wincent.com/WOHotKey.git>)
+    5.  Home URL
     6.  Bugtracker URL (for example, <https://wincent.com/issues/>)
 4.  Disable the wiki
 5.  Provide a Description (for example, "Mirror of the official WOHotKey repository at git.wincent.com")

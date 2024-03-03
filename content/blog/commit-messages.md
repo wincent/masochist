@@ -75,7 +75,7 @@ I'm better now, really I am. Ever since switching to [Git](/wiki/Git), where the
 
 It's not just the tool; it's also the Git development community itself. I recommend subscribing to the Git mailing list even if only to learn about the development process. One of the things (among many) you'll pick up is how to write great commit messages, and the value of doing so.
 
-You can browse some of my Git repos [here](http://git.wincent.com/) to see the kind of messages I write now ([example 1](http://git.wincent.com/wikitext.git?a=commitdiff;h=e7f856d82e7bfbfc616df73b00e857e8a5c0024e), [example 2](http://git.wincent.com/wikitext.git?a=commitdiff;h=8003f54c9481ed7f0717f4069fd042b217e80a88)). Nice, atomic changes, bundled with tests and with nice clear commit messages.
+Nice, atomic changes, bundled with tests and with nice clear commit messages.
 
 As another example, below is the last handful of commits on the [Rails](/wiki/Rails) app running behind this site. It might seem like a lot of writing -- there are 1,232 commits in the "master" branch, and the total line count for all the messages is currently 15,520 lines(!) -- but crafting messages like this makes it so much easier to go back over the history, find specific changes, and figure out what I was doing and why. It also encourages me to think clearly about the _why_ of the changes I make, and adopt a more disciplined approach to coding in general, with a focus on robust testing, correctness, elegance, good design, and much more.
 

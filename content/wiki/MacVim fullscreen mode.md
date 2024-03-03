@@ -1,6 +1,7 @@
 ---
 tags: vim wiki
 cache_breaker: 1
+title: MacVim fullscreen mode
 ---
 
 To enter fullscreen mode:
@@ -19,7 +20,7 @@ Grow to maximum horizontal size on entering fullscreen mode:
 
     :set fuopt+=maxhorz
 
-For an example config, check out my `.gvimrc` file [here](http://git.wincent.com/wincent.git?a=blob;f=.gvimrc), specifically:
+For an example config, check out my `.gvimrc` file, specifically:
 
     set fuopt+=maxhorz                      " grow to maximum horizontal width on entering fullscreen mode
     macmenu &Edit.Find.Find\.\.\. key=<nop> " free up Command-F

@@ -7,10 +7,6 @@ Version 0.3 of the [Walrus](/wiki/Walrus) gem has just been released. Walrus is 
 
 For over 3 years now, Walrus has been powered by its own sophisticated, embedded "[packrat](/wiki/packrat)" parser generator. The generator has at last been extracted into a separate gem called [Walrat](/wiki/Walrat) for ease of use in other projects (see [the release announcement](/blog/walrat-0.1-released)). Version 0.3 of Walrus is the first release without the embedded parser generator, and instead depends on Walrat as an external dependency.
 
-# Changelog and source code
-
-A full list of changes in this release can be viewed [here](http://git.wincent.com/Walrus.git/shortlog/refs/tags/0.3). The source code can be explored via [the project source code repository](http://git.wincent.com/Walrus.git).
-
 # Installation
 
 ```shell

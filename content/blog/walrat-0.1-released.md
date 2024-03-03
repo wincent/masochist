@@ -10,7 +10,7 @@ cache_breaker: 1
 -   "[packrat](/wiki/packrat)" (memoizing) parsers cable of recognizing [Parsing Expression Grammars](/wiki/Parsing_Expression_Grammars) (PEG), including grammars that use left-recursion
 -   [Abstract Syntax Tree](/wiki/Abstract_Syntax_Tree) builders that can build trees of arbitrary complexity
 
-Walrat was originally written in early 2007 as part of the [Walrus](/wiki/Walrus) [object-oriented templating](/wiki/object-oriented_templating) system. This 0.1 release marks its extraction into a separate [gem](/wiki/gem) for easier reuse in other projects. The [Walrus grammar](http://git.wincent.com/Walrus.git/blob/HEAD:/lib/walrus/grammar.rb) is an excellent example of some of the more advanced parsing techniques that can be achieved using Walrat, including:
+Walrat was originally written in early 2007 as part of the [Walrus](/wiki/Walrus) [object-oriented templating](/wiki/object-oriented_templating) system. This 0.1 release marks its extraction into a separate [gem](/wiki/gem) for easier reuse in other projects. The Walrus grammar is an excellent example of some of the more advanced parsing techniques that can be achieved using Walrat, including:
 
 -   dynamic definition of grammars and parsers at runtime using a simple DSL
 -   standard PEG constructs such as ordered choice, concatenation, repetition, predicates
@@ -67,10 +67,6 @@ Walrat currently only supports Ruby 1.8, although Ruby 1.9 compatibility work is
 ```shell
 $ sudo gem install walrat
 ```
-
-## Source code
-
-The [Git](/wiki/Git) source code repository can be explored in a browser using [the web interface](http://git.wincent.com/walrat.git).
 
 ## Donations
 

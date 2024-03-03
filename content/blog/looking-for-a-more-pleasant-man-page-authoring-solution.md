@@ -4,7 +4,7 @@ tags: perl documentation blog
 cache_breaker: 1
 ---
 
-I've written [man pages](/wiki/man_pages) before. It's horrible. Just [look at this syntax](http://git.wincent.com/wincent-strings-util.git?a=blob_plain;f=wincent-strings-util.1;hb=HEAD).
+I've written [man pages](/wiki/man_pages) before. It's horrible. Just look at the syntax.
 
 I have to write a new man page from scratch for another product and I'm wondering if there is a less unpleasant way of producing these things.
 

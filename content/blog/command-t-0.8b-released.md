@@ -16,8 +16,8 @@ But as I said, the overhaul was a major one, and the new algorithm still needs t
 
 # Additional details
 
-A full change-log appears under HISTORY in [the documentation](http://git.wincent.com/command-t.git/blob/HEAD:/doc/command-t.txt), and all commits in this release are listed [here](http://git.wincent.com/command-t.git/shortlog/refs/tags/0.8b).
+A full change-log appears under HISTORY in the documentation.
 
 In the announcements for the previous two releases, 0.6 and 0.7, I said that "the basic functionality is now solidly in place, and with a number of successful releases under its belt it seems that most issues with compatibility on Mac OS X, Windows and Linux are sorted out, so a 1.0 release is likely in the near future". With this release that road-map has changed a little and I plan to knock out at least a couple more point releases before declaring 1.0.
 
-So, if you're a [VIM](/wiki/VIM) user check out the [screencasts](/products/command-t) and give the plug-in a try. If you'd like to support development you can use [the donations page](/products/command-t/donations) to make a donation, or consider submitting a patch for the project (the source code can be browsed [here](http://git.wincent.com/command-t.git)).
+So, if you're a [VIM](/wiki/VIM) user check out the [screencasts](/products/command-t) and give the plug-in a try. If you'd like to support development you can use [the donations page](/products/command-t/donations) to make a donation, or consider submitting a patch for the project.

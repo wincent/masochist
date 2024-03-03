@@ -1,6 +1,7 @@
 ---
 tags: subversion wiki
 cache_breaker: 1
+title: Subversion
 ---
 
 # Introduction
@@ -41,7 +42,7 @@ Products for which public Subversion repositories existed include:
 -   [Wincent Strings Utility](/wiki/Wincent_Strings_Utility)
 -   [WOTest](/wiki/WOTest)
 
-All of these projects have been migrated over to [Git](/wiki/Git) (see <http://git.wincent.com/> for a web-based interface to the new Git-hosted public repositories).
+All of these projects have been migrated over to [Git](/wiki/Git).
 
 # See also
 

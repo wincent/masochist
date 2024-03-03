@@ -1,6 +1,7 @@
 ---
 tags: wikitext wiki
 cache_breaker: 1
+title: Wikitext
 ---
 
 [Wikitext](/wiki/Wikitext) is an easily editable, plaintext markup language for producing [HTML](/wiki/HTML) output. It is used as the source text format for popular wiki software such as [MediaWiki](/wiki/MediaWiki).
@@ -12,7 +13,6 @@ I've written a [wikitext](/wiki/wikitext) translator for use in this website. Se
 -   rubygems.org page: <http://rubygems.org/gems/wikitext>
 -   [RubyForge](/wiki/RubyForge) project page: <http://rubyforge.org/projects/wikitext> (no longer updated)
 -   [Git](/wiki/Git) repository browsers:
-    -   <http://git.wincent.com/wikitext.git>
     -   [integrated repo browser](/repos/wikitext)
 
 # Sample markup

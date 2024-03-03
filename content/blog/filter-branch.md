@@ -28,7 +28,7 @@ This is a terrible but fun idea. When I created Masochist I took all of my conte
 
 -   You get content versioning "for free".
 -   Minimal vendor lock-in effects, only minor ones in terms of format (seeing as Markdown is easily translated into other formats).
--   Easy, distributed backups: just push to another (free) Git host, such as [GitHub](https://github.com/wincent/masochist), [GitLab](https://gitlab.com/wincent/masochist), [Bitbucket](https://bitbucket.org/ghurrell/masochist) etc or [your own server](https://git.wincent.com/masochist.git).
+-   Easy, distributed backups: just push to another (free) Git host, such as [GitHub](https://github.com/wincent/masochist), [GitLab](https://gitlab.com/wincent/masochist), [Bitbucket](https://bitbucket.org/ghurrell/masochist) etc.
 
 Nevertheless, there are some complications too. The first one is that you have to decide how you are going to model the content metadata that previously lived in your neat little DB tables: things like "created at" and "deleted at" timestamps, or which tags apply to which pieces of content.
 

@@ -33,7 +33,7 @@ The Git log was [set up](http://www.wincent.com/knowledge-base/Setting_up_a_Subv
 
 #### Gitweb
 
-Along with the move from Subversion to Git we get a nice web-based interface for browsing the public source code repositories which correspond to the open source projects used in my development. The Gitweb interface can be found at [git.wincent.com](http://git.wincent.com/) and provides multiple ways of viewing the repository and its history, including RSS feeds.
+Along with the move from Subversion to Git we get a nice web-based interface for browsing the public source code repositories which correspond to the open source projects used in my development.
 
 #### Nightly builds
 

@@ -8,7 +8,7 @@ For a while now I've wanted to have a [Git](/wiki/Git) repo browser integrated i
 
 This would be the last big step in a long journey that [started with a desire](http://www.wincent.com/a/about/wincent/weblog/archives/2008/02/the_joy_of_dele.php) to replace a hodge-podge of third-party applications — written in different languages, from different vendors, and with different user account systems — with a single, unified application.
 
-I've already come a long way. I no longer have to worry about installing updates and watching for security notifications for Movable Type, MediaWiki, Bugzilla, UBB.threads and so on. The plan is to also add [Gitweb](/wiki/Gitweb), which I currently have running at <http://git.wincent.com/>, to that list of things that I'll no longer have to update.
+I've already come a long way. I no longer have to worry about installing updates and watching for security notifications for Movable Type, MediaWiki, Bugzilla, UBB.threads and so on. The plan is to also add [Gitweb](/wiki/Gitweb), to that list of things that I'll no longer have to update.
 
 Over summer I got most of the functionality for the repo browser in place, but didn't go public with it because there were still some missing pieces:
 

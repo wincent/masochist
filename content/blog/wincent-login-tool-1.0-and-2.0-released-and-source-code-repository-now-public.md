@@ -26,9 +26,7 @@ The 2.0 series, on the other hand, uses new [APIs](/wiki/APIs) recently added by
 
 # Source code release
 
-I've also made the [Git](/wiki/Git) source code repository open, and the code is available under the [BSD license](/wiki/BSD_license). You can browse the repo here:
-
--   <http://git.wincent.com/login-tool.git>
+I've also made the [Git](/wiki/Git) source code repository open, and the code is available under the [BSD license](/wiki/BSD_license).
 
 Periodically-updated backup mirrors are already in place at [GitHub](/wiki/GitHub) and [Gitorous](/wiki/Gitorous):
 

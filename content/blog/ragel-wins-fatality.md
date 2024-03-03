@@ -3,9 +3,9 @@ title: Ragel wins! Fatality!
 tags: blog
 ---
 
-One of my projects is a [fast wikitext-to-HTML translator](http://git.wincent.com/wikitext.git). It's a [Ruby](http://www.wincent.com/knowledge-base/Ruby) extension written in [C](http://www.wincent.com/knowledge-base/C) with speed being one of its top design goals (robustness, predictability and security being the others). I'm working on this because the [Rails](http://www.wincent.com/knowledge-base/Rails) rewrite of this site will use [wikitext markup](http://www.wincent.com/knowledge-base/wikitext%20markup) for basically everything. Rails has a bad reputation for being slow and resource hungry, and that's why one of my primary objectives is speed; I don't want my wikitext parser being a bottleneck.
+One of my projects is a fast wikitext-to-HTML translator. It's a [Ruby](http://www.wincent.com/knowledge-base/Ruby) extension written in [C](http://www.wincent.com/knowledge-base/C) with speed being one of its top design goals (robustness, predictability and security being the others). I'm working on this because the [Rails](http://www.wincent.com/knowledge-base/Rails) rewrite of this site will use [wikitext markup](http://www.wincent.com/knowledge-base/wikitext%20markup) for basically everything. Rails has a bad reputation for being slow and resource hungry, and that's why one of my primary objectives is speed; I don't want my wikitext parser being a bottleneck.
 
-The translator itself consists of a [hand-coded parser written in C](http://git.wincent.com/wikitext.git?a=blob;f=ext/wikitext.c;h=59eab1da4da6c799ab148c4131d31e8d77c82d5e;hb=HEAD) paired with a scanner/tokenizer/lexer generated from a [grammar specification](http://git.wincent.com/wikitext.git?a=blob;f=ext/Wikitext.g;h=77bc2cc72a65d601843fc759d279a687b3daca81;hb=HEAD).
+The translator itself consists of a hand-coded parser written in C paired with a scanner/tokenizer/lexer generated from a grammar specification.
 
 Up until now the scanner used a [ANTLR](http://www.wincent.com/knowledge-base/ANTLR)-generated lexer using the "C target" (although ANTLR itself is written in Java, it can target multiple languages, including C). The C target is the current speed king among ANTLR targets and is likely to remain so for the foreseeable future. It too is engineered with speed in mind and is quite frugal with resources (for example, when emitting tokens it maintains pointers into the input stream rather than making a copy of the substring for each token).
 
@@ -69,7 +69,7 @@ If you look at the slow-down caused as you add more and more multi-byte characte
 
 So what are we seeing here? 8.24 seconds to tokenize 352 megabytes of input text, which equates to roughly 42.72 megabytes per second on my lowly iMac with its 1.86 GHz Intel Core Duo.
 
-Here's the [initial version](http://git.wincent.com/wikitext.git?a=blob;f=experimental/wikitext_ragel.rl;h=5ab1e2787129acac1d8706fcd53047a4fffd242f;hb=refs/heads/ragel) of the Ragel scanner (although it may have evolved somewhat by the time you read this). As you can see, moving to Ragel comes at a small cost: you're running much "closer to the metal" and concerning yourself with pointers and token structures and the like. In a sense this is one of the things I most like about Ragel; I can actually see what it's doing and control it in every aspect: it's enigma-free.
+Moving to Ragel comes at a small cost: you're running much "closer to the metal" and concerning yourself with pointers and token structures and the like. In a sense this is one of the things I most like about Ragel; I can actually see what it's doing and control it in every aspect: it's enigma-free.
 
 But the cost brings a benefit too. Check out the corresponding numbers for the ANTLR scanner:
 

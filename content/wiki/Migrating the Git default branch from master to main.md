@@ -26,13 +26,13 @@ So, as [reported here](https://twitter.com/wincent/status/1401338775175892994), 
     git config branch.main.merge refs/heads/main
     ```
 
-3.  Add [a hook](https://github.com/wincent/wincent/blob/main/support/hooks/pre-push) to `.git/hooks/pre-push` that will update the local `master` whenever `main` is pushed, and a [remote `post-receive` hook](https://github.com/wincent/wincent/blob/main/support/hooks/post-receive) that does the analogous job on [git.wincent.com](https://git.wincent.com), where I am running my own `git-daemon`.
+3.  Add [a hook](https://github.com/wincent/wincent/blob/main/support/hooks/pre-push) to `.git/hooks/pre-push` that will update the local `master` whenever `main` is pushed, and a [remote `post-receive` hook](https://github.com/wincent/wincent/blob/main/support/hooks/post-receive) that does the analogous job on git.wincent.com, where I am running my own `git-daemon`.
 
 4.  Push `main` for the first time.
 
 5.  Set the default branch to `main` in GitHub, GitLab, and BitBucket.
 
-6.  Additionally, on [git.wincent.com](https://git.wincent.com), it is necessary to update the `HEAD` so that `git clone` operations from it check out `main` instead of `master`:
+6.  Additionally, on git.wincent.com, it is necessary to update the `HEAD` so that `git clone` operations from it check out `main` instead of `master`:
 
     ```
     sudo -u git git symbolic-ref HEAD refs/heads/main

@@ -66,6 +66,6 @@ But despite my complaints about forking, like I said, the GitHub team has worked
 
 I ended up spending a lot of time complaining in this post, and it took me less than a minute to write those bullet points where I describe the good stuff, but there really is no overstating the usefulness of those features.
 
-If you're hosting an [open source](/wiki/open_source) project on a site that doesn't have at least half of those features, then it's not a serious collaboration tool. Yes, that means that my own site, with its lowly GitWeb installation at [git.wincent.com](http://git.wincent.com/), isn't "serious" and won't be until I add those features.
+If you're hosting an [open source](/wiki/open_source) project on a site that doesn't have at least half of those features, then it's not a serious collaboration tool.
 
 I'll put up with all of GitHub's fork-craziness, and promise never to rant on that particular topic again, in exchange for those core collaboration features that I've listed above. I really do take my hat off to the team. They've come a long, long way from their early "let's dress Git up in pretty CSS" days, and have delivered some real innovations in the collaboration space.

@@ -1,6 +1,6 @@
 ---
 tags: wincent.products wiki
+title: Wincent Strings Util
 ---
 
 -   Official product page: <http://strings.wincent.com/>
--   [Web](/wiki/Web)-based interface to [Git](/wiki/Git) repository: <http://git.wincent.com/wincent-strings-util.git>

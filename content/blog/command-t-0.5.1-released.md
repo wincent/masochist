@@ -12,4 +12,4 @@ Well, the screencasts are now up on the [Command-T product page](/products/comma
 
 The latest release is 0.5.1, made available yesterday. This is a maintenance release that fixes a compatibility regression with Ruby 1.9.1.
 
-So, if you're a [VIM](/wiki/VIM) user check out the [screencasts](/products/command-t) and give the plug-in a try. If you'd like to support development you can use [the donations page](/products/command-t/donations) to make a donation, or consider submitting a patch for the project (the source code can be browsed [here](http://git.wincent.com/command-t.git)).
+So, if you're a [VIM](/wiki/VIM) user check out the [screencasts](/products/command-t) and give the plug-in a try. If you'd like to support development you can use [the donations page](/products/command-t/donations) to make a donation, or consider submitting a patch for the project.

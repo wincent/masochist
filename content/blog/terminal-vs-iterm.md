@@ -29,4 +29,4 @@ But it doesn't modify the tab title, only the window title.
 
 # Update
 
-Used the "ghastly hack" mentioned above as a basis for [this](http://git.wincent.com/wincent.git/commitdiff/f8a8493f12c726bc641be43b5973adb6d6348222). Note that it's not so much the hack itself that is "ghastly" as the fact that Apple could release a tab implementation with such a horrid usability flaw.
+Used the "ghastly hack" mentioned above. Note that it's not so much the hack itself that is "ghastly" as the fact that Apple could release a tab implementation with such a horrid usability flaw.

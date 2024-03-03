@@ -18,10 +18,6 @@ The initial source code release is based off the code that was used to build ver
 
 Synergy will still be available for download and purchase on wincent.com. Maybe in the future my circumstances will change and I'll be able to fully re-enter the world of Mac OS X development, in which case I'd like to work on getting Synergy into Apple's App Store.
 
-In any case, here's the code, in all its shameful glory.
-
--   <http://git.wincent.com/synergy.git>
-
 Periodically-updated backup mirrors are already in place at [GitHub](/wiki/GitHub) and [Gitorious](/wiki/Gitorious):
 
 -   <http://github.com/wincent/synergy/>
