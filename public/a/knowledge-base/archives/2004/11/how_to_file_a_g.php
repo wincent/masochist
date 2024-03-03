@@ -801,17 +801,9 @@
 
             <p>
               Searching the database is very easy. On the front page of the
-              database (<a href="http://bugs.wincent.com/">bugs.wincent.com</a>)
+              database
               is a search field that's labeled "Enter a bug # or some search
-              terms". There is also a
-              <a href="https://wincent.com/a/support/bugs/query.cgi"
-                >much more sophisticated search form</a
-              >
-              as well as an
-              <a href="https://wincent.com/a/support/bugs/quicksearch.html"
-                >alternative search interface</a
-              >, but the truth is that the default search field is usually
-              enough to find what you're looking for.
+              terms".
             </p>
 
             <p>

@@ -811,7 +811,7 @@
             <ol>
               <li>
                 Search the
-                <a href="http://bugs.wincent.com/">bugs database</a> to see if
+                bugs database to see if
                 the bug has already been reported. If it has, add your comments
                 to the existing report; otherwise file a new report.
               </li>
@@ -832,7 +832,7 @@
               eliminating bugs. As such you should not post any feature requests
               back to the mailing list (you are should post your feature
               requests to the
-              <a href="http://bugs.wincent.com/">bug tracking database</a>, but
+              bug tracking database, but
               in doing so you are submitting requests for a future release of
               the product and not for the version currently under beta testing).
             </p>

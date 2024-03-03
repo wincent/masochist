@@ -788,17 +788,9 @@
           </ul>
 
           <p>
-            In addition to the issues listed on this page the
-            <a href="http://bugs.wincent.com/"
-              >bug and feature requests database</a
-            >
-            contains descriptions of issues reported by users.
-          </p>
-
-          <p>
             If you discover an issue that is not listed here or in the bugs and
             feature requests database please
-            <a href="http://bugs.wincent.com/">file a bug report</a>.
+            file a bug report.
           </p>
 
           <p>

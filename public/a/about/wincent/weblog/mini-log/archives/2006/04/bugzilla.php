@@ -688,7 +688,7 @@
         <h3>Bugzilla</h3>
 
         <p>
-          Upgraded my <a href="http://bugs.wincent.com/">local install</a> from
+          Upgraded my local install from
           2.20.1 to
           <a href="http://www.bugzilla.org/releases/2.22/release-notes.html"
             >2.22</a

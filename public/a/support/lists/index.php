@@ -695,8 +695,8 @@
             beta testing program for a Wincent product. Once you subscribe to
             the list, you will receive notifications when new betas are
             available for download. If you discover an issue with the beta, you
-            should first file a bug report at
-            <a href="http://bugs.wincent.com/">bugs.wincent.com</a> (after
+            should first file a bug report
+            (after
             searching for a pre-existing bug report for the same issue), and
             then post a message back to the list with a link to your bug report.
             In this way all beta testers can keep informed of the issue and

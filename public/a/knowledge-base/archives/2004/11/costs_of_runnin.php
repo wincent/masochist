@@ -938,9 +938,7 @@
             <p>
               Fortunately, some things are free, like the
               <a href="http://www.bugzilla.org/">Bugzilla</a>
-              <a href="http://bugs.wincent.com/"
-                >bug tracking and feature request database</a
-              >. The operating system on the server itself is free too (<a
+              bug tracking and feature request database. The operating system on the server itself is free too (<a
                 href="http://www.freebsd.org/"
                 >FreeBSD</a
               >). Of course, if you want these great free packages to stay

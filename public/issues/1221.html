@@ -70,8 +70,8 @@
                 <h1 class="bug major">
                   Bug #1221:
                   <span data-name="issue[summary]">
-                    Update Apache redirects to point at wincent.com instead of
-                    rails.wincent.com
+                    Update Apache redirects to point at main host instead of
+                    rails subdomain
                   </span>
                 </h1>
                 <table class="issue-metadata">
@@ -121,47 +121,8 @@
                   <p>
                     Now that the app is being served out of wincent.com, we can
                     update some old redirects which Apache is still pointing at
-                    rails.wincent.com.
+                    the "rails" subdomain.
                   </p>
-                  <pre>$ grep -B 4 rails wincent.com.conf 
-    RewriteRule ^/?(.*) <a href="https://wincent.com/a/products/bansshee/$1" class="external">https://wincent.com/a/products/bansshee/$1</a> [redirect=permanent,last]
-
-    # bugs.wincent.com   
-    RewriteCond %{HTTP_HOST} ^bugs.wincent.com$ [nocase]
-    RewriteRule .? <a href="http://rails.wincent.com/issues/" class="external">http://rails.wincent.com/issues/</a> [redirect=permanent,last]
-
-    # colaiuta.net, www.colaiuta.net
-    RewriteCond %{HTTP_HOST} ^colaiuta.net$ [nocase,OR]
-    RewriteCond %{HTTP_HOST} ^www.colaiuta.net$ [nocase]
-    RewriteRule .? <a href="http://rails.wincent.com/blog/" class="external">http://rails.wincent.com/blog/</a> [redirect=permanent,last]
-
-    # forums.wincent.com
-    RewriteCond %{HTTP_HOST} ^forums.wincent.com$ [nocase]
-    RewriteRule .? <a href="http://rails.wincent.com/forums/" class="external">http://rails.wincent.com/forums/</a> [redirect=permanent,last]
---
-
-    # wincent.org, www.wincent.org
-    RewriteCond %{HTTP_HOST} ^wincent.org$ [nocase,OR]
-    RewriteCond %{HTTP_HOST} ^www.wincent.org$ [nocase]
-    RewriteRule .? <a href="http://rails.wincent.com/blog/" class="external">http://rails.wincent.com/blog/</a> [redirect=permanent,last]
---
-
-  # catch everything under /a/support/bugs/
-  &lt;Directory /home/wincent.com/public_html/a/support/bugs&gt;
-    RewriteEngine on
-    RewriteRule ^/?(.*) <a href="http://rails.wincent.com/issues/" class="external">http://rails.wincent.com/issues/</a>? [redirect=permanent,last]
---
-
-  # catch everything under /a/support/forums/
-  &lt;Directory /home/wincent.com/public_html/a/support/forums&gt;
-    RewriteEngine on
-    RewriteRule ^/?(.*) <a href="http://rails.wincent.com/forums/" class="external">http://rails.wincent.com/forums/</a>? [redirect=permanent,last]
---
-
-  # catch everything under /a/support/kb/
-  &lt;Directory /home/wincent.com/public_html/a/support/kb&gt;
-    RewriteEngine on
-    RewriteRule ^/?(.*) <a href="http://rails.wincent.com/wiki/" class="external">http://rails.wincent.com/wiki/</a>? [redirect=permanent,last]</pre>
                 </div>
               </form>
             </div>

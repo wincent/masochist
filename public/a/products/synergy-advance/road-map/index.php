@@ -786,7 +786,7 @@
             The list of known issues in this public preview is
             <a href="../known-issues/">available here</a>. If you find an issue
             that is not listed there please
-            <a href="http://bugs.wincent.com/">file a bug report</a>.
+            file a bug report.
           </p>
 
           <p>

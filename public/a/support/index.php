@@ -726,16 +726,9 @@
 
           <p>
             You can use the
-            <a href="http://bugs.wincent.com/"
-              >bug tracking and feature requests database</a
-            >
+            bug tracking and feature requests database
             to submit bug reports and feature requests, as well as see what
             other users have reported and requested already.
-          </p>
-
-          <p class="more">
-            Click <a href="http://bugs.wincent.com/">here</a> to visit the
-            database
           </p>
 
           <h4>Mailing lists</h4>

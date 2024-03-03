@@ -869,8 +869,7 @@
 
           <p>
             You can file bug reports and view the progress towards resolving
-            existing bugs by visiting the public bug-tracking interface at
-            <a href="http://bugs.wincent.com/">bugs.wincent.com</a>.
+            existing bugs by visiting the public bug-tracking interface.
           </p>
         </div>
       </div>

@@ -684,14 +684,6 @@
               >
             </li>
             <li>
-              <a href="http://bugs.wincent.com/"
-                >Bug tracking and feature requests</a
-              >
-            </li>
-            <li>
-              <a href="https://wincent.com/a/support/lists/">Mailing lists</a>
-            </li>
-            <li>
               <a href="https://wincent.com/a/news/">News</a> (formerly
               wincent.org)
             </li>

@@ -152,7 +152,7 @@ deny from all
 </item>
 <item>
 <title>Lightweight issue tracking</title>
-<description><![CDATA[<p>I use <a href="http://www.bugzilla.org/">Bugzilla</a> to power my <a href="http://bugs.wincent.com/">public feature requests and bug tracking database</a>. But sometimes when I am writing code I want to quickly insert a reminder into the source code itself rather than opening an issue in the database. Rather than keeping a separate "TODO" list I just write a comment in the code like this:</p>
+<description><![CDATA[<p>I use <a href="http://www.bugzilla.org/">Bugzilla</a> to power my public feature requests and bug tracking database. But sometimes when I am writing code I want to quickly insert a reminder into the source code itself rather than opening an issue in the database. Rather than keeping a separate "TODO" list I just write a comment in the code like this:</p>
 
 <pre>// TODO: add user preference for opacity</pre>
 

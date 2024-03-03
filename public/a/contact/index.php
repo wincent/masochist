@@ -642,9 +642,7 @@
         <h4>I have a feature request</h4>
         <p>
           The best way to make a feature request is to use the
-          <a href="http://bugs.wincent.com/"
-            >bug tracking and feature request database</a
-          >. If you have an idea for a great new feature then it's probable that
+          bug tracking and feature request database. If you have an idea for a great new feature then it's probable that
           other users will want the same thing too. By using the database you
           can see what other people have asked for and what is already being
           worked on. By adding comments to or voting for an existing feature
@@ -657,17 +655,11 @@
           The database runs the industry-standard
           <a href="http://bugzilla.org/">Bugzilla</a>.
         </p>
-        <p class="more-categories">
-          Click <a href="http://bugs.wincent.com/">here</a> to use the feature
-          request database
-        </p>
         <h4>I want to report a bug</h4>
         <p>
           Just like your feature requests, your bug report will be most
           effective if you lodge it using the
-          <a href="http://bugs.wincent.com/"
-            >bug tracking and feature request database</a
-          >. In many cases the bugs you find will depend on specific
+          bug tracking and feature request database. In many cases the bugs you find will depend on specific
           characteristics of your machine or its configuration; often Wincent
           cannot reproduce the bug here. By using the database to share
           information with other users, the common underlying triggers can be
@@ -677,10 +669,6 @@
           and vote that gets filed using the database, so using the database is
           the quickest way to get your issue fixed. The database runs the
           industry-standard <a href="http://bugzilla.org/">Bugzilla</a>.
-        </p>
-        <p class="more-categories">
-          Click <a href="http://bugs.wincent.com/">here</a> to use the bug
-          tracking database
         </p>
         <h4>I need technical support</h4>
         <p>
@@ -713,7 +701,7 @@
           </li>
           <li>
             Search the
-            <a href="http://bugs.wincent.com/">bug tracking database</a> to see
+            bug tracking database to see
             if your issue is already under investigation
           </li>
           <li>
@@ -793,27 +781,8 @@
         <p>
           If you think you've found a broken link, a mistake, or a technical
           problem on the website, please use the
-          <a href="http://bugs.wincent.com/">bug tracking database</a>. When you
-          report the problem using the database, you have two options:
+          bug tracking database.
         </p>
-        <ul>
-          <li>
-            If the problem appears in the online documentation of a specific
-            product, you can
-            <a href="http://bugs.wincent.com/enter_bug.cgi"
-              >report the bug against that product</a
-            >
-            and choose the "Website" component of the product.
-          </li>
-          <li>
-            If the problem appears elsewhere on the website and is not related
-            to a specific product, you can
-            <a href="http://bugs.wincent.com/enter_bug.cgi?product=wincent.com"
-              >report the bug against the "wincent.com" product</a
-            >
-            that is listed in the database.
-          </li>
-        </ul>
         <p>
           For more information about the bug tracking database, see the notes on
           reporting bugs above.

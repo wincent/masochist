@@ -1245,7 +1245,7 @@ sidered to be implemented, and no warning is issued for them.</pre>
 </author>
 <dc:subject>Development</dc:subject>
 <content type="text/html" mode="escaped" xml:lang="en" xml:base="https://wincent.com/a/knowledge-base/">
-<![CDATA[<p>I use <a href="http://www.bugzilla.org/">Bugzilla</a> to power my <a href="http://bugs.wincent.com/">public feature requests and bug tracking database</a>. But sometimes when I am writing code I want to quickly insert a reminder into the source code itself rather than opening an issue in the database. Rather than keeping a separate "TODO" list I just write a comment in the code like this:</p>
+<![CDATA[<p>I use <a href="http://www.bugzilla.org/">Bugzilla</a> to power my public feature requests and bug tracking database. But sometimes when I am writing code I want to quickly insert a reminder into the source code itself rather than opening an issue in the database. Rather than keeping a separate "TODO" list I just write a comment in the code like this:</p>
 
 <pre>// TODO: add user preference for opacity</pre>
 

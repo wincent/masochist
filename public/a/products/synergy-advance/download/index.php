@@ -733,7 +733,7 @@
             This is prerelease software. Before downloading it please consult
             the <a href="../road-map/">road map</a> and the
             <a href="../known-issues/">known issues</a>. If you find any bugs
-            please <a href="http://bugs.wincent.com/">file a bug report</a> (bug
+            please file a bug report (bug
             reporting guidelines are
             <a
               href="https://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php"

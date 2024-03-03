@@ -810,7 +810,7 @@
         <h3 id="a002124">Bugzilla upgrade</h3>
 
         Yesterday I performed a major upgrade to the Bugzilla feature requests
-        and bug tracking database currently deployed at bugs.wincent.com. This
+        and bug tracking database. This
         is the biggest update ever since I first started using Bugzilla back in
         late October 2004, bringing many new features...
         <p>

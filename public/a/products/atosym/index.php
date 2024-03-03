@@ -636,17 +636,6 @@
                 >Discussion & support forums</a
               >
             </li>
-            <li>
-              <a
-                href="http://lists.wincent.com/mailman/listinfo/atosym-announce"
-                >Mailing list</a
-              >
-            </li>
-            <li>
-              <a href="http://bugs.wincent.com/"
-                >Bug reports & feature requests</a
-              >
-            </li>
           </ul>
           <h2>On this page</h2>
           <ul>

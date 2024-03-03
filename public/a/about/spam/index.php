@@ -650,51 +650,6 @@
             list you must manually subscribe yourself.
           </p>
 
-          <h4>Outgoing mail (from Wincent)</h4>
-
-          <p>
-            If you have anti-spam filters or challenge-response systems on your
-            mail server then you may wish to add the following addresses to your
-            whitelist:
-          </p>
-
-          <ul>
-            <li>
-              License codes for purchased software are sent from my personal
-              email address,
-              <a href="mailto:win@wincent.com">win@wincent.com</a>. The same
-              applies to re-issued license codes sent using the
-              <a href="https://wincent.com/a/support/registration/"
-                >automated lost license recovery system</a
-              >.
-            </li>
-            <li>
-              Daily digests from the forums are sent from
-              <strong>forums-noreply@wincent.com</strong> (only to people who
-              explicitly subscribe to those digests); the "noreply" in the name
-              indicates that this is a sending-only account and you shouldn't
-              reply to it.
-            </li>
-            <li>
-              Mail sent by the <a href="http://bugzilla.org/">Bugzilla</a>
-              <a href="http://bugs.wincent.com/"
-                >bug tracking and feature requests database</a
-              >
-              is sent from <strong>bugzilla-noreply@wincent.com</strong>; once
-              again the "noreply" indicates that you shouldn't reply to these
-              messages.
-            </li>
-            <li>
-              If I ever need to contact you personally (for example, in response
-              to a
-              <a href="https://wincent.com/a/support/tickets/"
-                >support ticket</a
-              >
-              or a crash report) then I will do so from my personal email
-              address, <a href="mailto:win@wincent.com">win@wincent.com</a>.
-            </li>
-          </ul>
-
           <p>
             I have a blanket policy against challenge-response systems. I don't
             use them myself and I don't respond to any challenges that I receive

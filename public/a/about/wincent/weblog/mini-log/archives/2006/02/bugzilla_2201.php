@@ -688,7 +688,7 @@
         <h3>Bugzilla 2.20.1</h3>
 
         <p>
-          Upgraded <a href="http://bugs.wincent.com/">my Bugzilla install</a> to
+          Upgraded my Bugzilla install to
           2.20.1. This software just gets better and better, although it bugs me
           that every time you run <tt>checksetup.pl</tt> it changes the access
           permissions on your files and you have to manually reset them so that

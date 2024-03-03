@@ -748,9 +748,7 @@
 
         <p>
           I use <a href="http://www.bugzilla.org/">Bugzilla</a> to power my
-          <a href="http://bugs.wincent.com/"
-            >public feature requests and bug tracking database</a
-          >. But sometimes when I am writing code I want to quickly insert a
+          public feature requests and bug tracking database. But sometimes when I am writing code I want to quickly insert a
           reminder into the source code itself rather than opening an issue in
           the database. Rather than keeping a separate "TODO" list I just write
           a comment in the code like this:
