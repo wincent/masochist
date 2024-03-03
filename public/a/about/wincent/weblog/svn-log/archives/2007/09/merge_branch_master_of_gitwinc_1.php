@@ -7,7 +7,7 @@
 
     <title>
       Git activity log: Merge branch 'master' of
-      git.wincent.com:[filtered]/Synergy (Synergy, 7bc11aa)
+      git.typechecked.net:[filtered]/Synergy (Synergy, 7bc11aa)
     </title>
 
     <link rel="stylesheet" href="/a/styles.css" type="text/css" />
@@ -690,7 +690,7 @@
         <h2>September 16, 2007</h2>
 
         <h3>
-          Merge branch 'master' of git.wincent.com:[filtered]/Synergy (Synergy,
+          Merge branch 'master' of git.typechecked.net:[filtered]/Synergy (Synergy,
           7bc11aa)
         </h3>
 

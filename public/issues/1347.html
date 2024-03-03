@@ -7,7 +7,7 @@
       name="viewport"
     />
     <title>
-      Bug #1347: Symlink target links broken in git.wincent.com &middot;
+      Bug #1347: Symlink target links broken in git.typechecked.net &middot;
       wincent.com
     </title>
     <link
@@ -70,7 +70,7 @@
                 <h1 class="bug major">
                   Bug #1347:
                   <span data-name="issue[summary]">
-                    Symlink target links broken in git.wincent.com
+                    Symlink target links broken in git.typechecked.net
                   </span>
                 </h1>
                 <table class="issue-metadata">
@@ -116,52 +116,17 @@
                 <div class="issue-description-body">
                   <p>
                     Just noticed this one. Try looking at a tree view which has
-                    symlinks in it, like
-                    <a
-                      href="http://git.wincent.com/wincent.git?a=tree;h=21ad41f773c68061fb60f51f0aceb08b51f05654;hb=21ad41f773c68061fb60f51f0aceb08b51f05654"
-                      class="external"
-                      >this one</a
-                    >, for example.
+                    symlinks in it.
                   </p>
                   <p>
                     Note that you can click on the symlink names
-                    <code>dot-vimrc</code> etc, with no problem:
+                    <code>dot-vimrc</code> etc, with no problem.
                   </p>
-                  <ul>
-                    <li>
-                      <a
-                        href="http://git.wincent.com/wincent.git?a=blob;f=dot-vimrc;h=1490f7ab0821b037ba088c07c62fb49964a83530;hb=21ad41f773c68061fb60f51f0aceb08b51f05654"
-                        class="external"
-                        >http://git.wincent.com/wincent.git?a=blob;f=dot-vimrc;h=1490f7ab0821b037ba088c07c62fb49964a83530;hb=21ad41f773c68061fb60f51f0aceb08b51f05654</a
-                      >
-                    </li>
-                  </ul>
                   <p>
                     But if you try to click on the target
-                    <code>.vimrc</code> itself:
+                    <code>.vimrc</code> itself you end up getting redirected to a broken
+                    <a href="/wiki/URL">URL</a>.
                   </p>
-                  <ul>
-                    <li>
-                      <a
-                        href="http://git.wincent.com/wincent.git?a=object;f=.vimrc;hb=21ad41f773c68061fb60f51f0aceb08b51f05654"
-                        class="external"
-                        >http://git.wincent.com/wincent.git?a=object;f=.vimrc;hb=21ad41f773c68061fb60f51f0aceb08b51f05654</a
-                      >
-                    </li>
-                  </ul>
-                  <p>
-                    You end up getting redirected to a broken
-                    <a href="/wiki/URL">URL</a>:
-                  </p>
-                  <ul>
-                    <li>
-                      <a
-                        href="http://git.wincent.com/wincent.git/wincent.git?a=blob;f=.vimrc;h=af0bcf33b19955c6e75a95a19607312d5056a0dd;hb=21ad41f773c68061fb60f51f0aceb08b51f05654"
-                        class="external"
-                        >http://git.wincent.com/wincent.git/wincent.git?a=blob;f=.vimrc;h=af0bcf33b19955c6e75a95a19607312d5056a0dd;hb=21ad41f773c68061fb60f51f0aceb08b51f05654</a
-                      >
-                    </li>
-                  </ul>
                   <p>
                     Tried this on other
                     <a href="/wiki/Gitweb">Gitweb</a> installs, eg

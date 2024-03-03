@@ -400,7 +400,7 @@ $ sudo monit stop git</pre
                   <p>Looking at using something hacky like:</p>
                   <pre>
 check program git-clone
-  with path &quot;/bin/sh -c 'cd $(/bin/mktemp -d) &amp;&amp; /usr/bin/git clone --bare --depth 1 --quiet --single-branch git://git.wincent.com/wincent.git'&quot;
+  with path &quot;/bin/sh -c 'cd $(/bin/mktemp -d) &amp;&amp; /usr/bin/git clone --bare --depth 1 --quiet --single-branch git://git.typechecked.net/wincent.git'&quot;
   if status != 0
   then exec &quot;/usr/bin/pkill git-daemon &amp;&amp; /usr/bin/pkill git-upload-pack &amp;&amp; sleep 5 &amp;&amp; /usr/bin/pkill -9 git-daemon &amp;&amp; /usr/bin/pkill -9 git-upload-pack&quot;</pre
                   >

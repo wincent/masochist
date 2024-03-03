@@ -760,12 +760,7 @@ Line 10 of "source.m" starts at address 0x1f70 &lt;main+78&gt; and
             You can also check out the latest version of the source via Git:
           </p>
 
-          <pre>git clone git://git.wincent.com/atosym.git</pre>
-
-          <p>
-            Or view the source code using the web-based repository browser at
-            <a href="http://git.wincent.com/atosym.git">git.wincent.com</a>.
-          </p>
+          <pre>git clone git://git.typechecked.net/atosym.git</pre>
 
           <p>
             An older version of the source code is available in the legacy

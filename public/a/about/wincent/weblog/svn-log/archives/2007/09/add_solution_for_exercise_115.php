@@ -31,7 +31,7 @@
     <link
       rel="prev"
       href="https://wincent.com/a/about/wincent/weblog/svn-log/archives/2007/09/merge_branch_master_of_gitwinc.php"
-      title="Merge branch 'master' of git.wincent.com:[filtered]/snippets (snippets, 5b6eb07)"
+      title="Merge branch 'master' of git.typechecked.net:[filtered]/snippets (snippets, 5b6eb07)"
     />
 
     <link
@@ -671,7 +671,7 @@
           <a
             href="https://wincent.com/a/about/wincent/weblog/svn-log/archives/2007/09/merge_branch_master_of_gitwinc.php"
             >&laquo; Merge branch 'master' of
-            git.wincent.com:[filtered]/snippets (snippets, 5b6eb07)</a
+            git.typechecked.net:[filtered]/snippets (snippets, 5b6eb07)</a
           >
           |
 

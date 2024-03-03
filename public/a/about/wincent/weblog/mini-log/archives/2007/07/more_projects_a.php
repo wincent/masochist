@@ -695,9 +695,7 @@
           as well, so that people don't have to look in two places to get an
           overview of all changes (previously only the closed source commits
           were posted to the Git log and the open source commits were trackable
-          through the
-          <a href="https://wincent.com/knowledge-base/Gitweb">Gitweb</a>
-          interface at <a href="http://git.wincent.com/">git.wincent.com</a>).
+          through the Gitweb interface.
         </p>
 
         <div id="a002529more"><div id="more"></div></div>

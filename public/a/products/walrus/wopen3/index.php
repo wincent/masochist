@@ -678,14 +678,7 @@
 
           <h4>Obtaining via Git</h4>
 
-          <pre>git clone git://git.wincent.com/wopen3.git</pre>
-
-          <h4>Browsing the Git source repository</h4>
-
-          <p>
-            The source code repository can be explored in a browser using the
-            <a href="http://git.wincent.com/wopen3.git">the web interface</a>.
-          </p>
+          <pre>git clone git://git.typechecked.net/wopen3.git</pre>
 
           <h4>Obtaining via Subversion</h4>
 

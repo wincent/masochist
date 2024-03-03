@@ -1370,9 +1370,7 @@
 
           <p>
             One of my projects is a
-            <a href="http://git.wincent.com/wikitext.git"
-              >fast wikitext-to-HTML translator</a
-            >. It's a
+            fast wikitext-to-HTML translator. It's a
             <a href="https://wincent.com/knowledge-base/Ruby">Ruby</a> extension
             written in <a href="https://wincent.com/knowledge-base/C">C</a> with
             speed being one of its top design goals (robustness, predictability
@@ -1388,15 +1386,9 @@
           </p>
           <p>
             The translator itself consists of a
-            <a
-              href="http://git.wincent.com/wikitext.git?a=blob;f=ext/wikitext.c;h=59eab1da4da6c799ab148c4131d31e8d77c82d5e;hb=HEAD"
-              >hand-coded parser written in C</a
-            >
+            hand-coded parser written in C
             paired with a scanner/tokenizer/lexer generated from a
-            <a
-              href="http://git.wincent.com/wikitext.git?a=blob;f=ext/Wikitext.g;h=77bc2cc72a65d601843fc759d279a687b3daca81;hb=HEAD"
-              >grammar specification</a
-            >.
+            grammar specification.
           </p>
           <p>
             Up until now the scanner used a
@@ -1997,15 +1989,6 @@
           </p>
 
           <p>I've got the flu right now, so apologies for the voice.</p>
-
-          <p>
-            <a
-              href="http://git.wincent.com/wincent-strings-util.git?a=commitdiff;h=7cd221dde42ac9b5ee7849e3d1b52b89216d00a2;hp=a318aff03659fc513a79f0b9b27c1df92e8f7ea1"
-              >Here is the commit</a
-            >
-            where I integrate this procedure into
-            <a href="http://strings.wincent.com/">Wincent Strings Utility</a>.
-          </p>
 
           <h3>Update</h3>
 

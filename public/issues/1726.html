@@ -153,18 +153,7 @@
                   <ul>
                     <li>
                       the relative-link syntax is by design very restrictive; if
-                      you look at the
-                      <a
-                        href="http://git.wincent.com/wikitext.git/blob/HEAD:/ext/parser.c"
-                        class="external"
-                        >parser</a
-                      >
-                      (specifically around
-                      <a
-                        href="http://git.wincent.com/wikitext.git/blob/HEAD:/ext/parser.c#l2240"
-                        class="external"
-                        >line 2240</a
-                      >) you'll see this:
+                      you look at the parser you'll see this:
                     </li>
                   </ul>
                   <pre
@@ -175,18 +164,7 @@
             // strings in square brackets which don't match this syntax get passed through literally; eg:
             //      he was very angery [sic] about the turn of events</pre>
                   <p>
-                    ie. it expects either a URI or a path (and you can see how
-                    these are scanned in
-                    <a
-                      href="http://git.wincent.com/wikitext.git/blob/HEAD:/ext/wikitext_ragel.rl"
-                      class="external"
-                      >the lexer</a
-                    >, specifically around
-                    <a
-                      href="http://git.wincent.com/wikitext.git/blob/HEAD:/ext/wikitext_ragel.rl#l81"
-                      class="external"
-                      >line 81</a
-                    >), and everything else is let through as is. This is
+                    ie. it expects either a URI or a path, and everything else is let through as is. This is
                     because there are many places in normal text (like the
                     &quot;[sic]&quot; example) where square brackets are
                     legitimate and natural, and we don't want such places
@@ -238,13 +216,7 @@
                   </p>
                   <p>
                     Basically, I didn't want things to become that complex when
-                    I added this feature (see
-                    <a
-                      href="http://git.wincent.com/wikitext.git/commitdiff/7491ebc6c20030bb09e5762c1f8eb0c475244324"
-                      class="external"
-                      >the commit</a
-                    >
-                    and the <a href="/issues/1208">related ticket</a>), and I
+                    I added this feature, and I
                     still don't really want to now. So if you want to have a
                     crack at it, feel free and I'd be happy to look at your
                     patch, but I can't promise you that I'll include it.
@@ -346,12 +318,8 @@
                     Looking at the code, looks like our rollback is backfiring
                     on us because instead of just printing the left bracket and
                     the path, we are also printing the backtick and not
-                    assigning it any special meaning. The bug looks to be around
-                    <a
-                      href="http://git.wincent.com/wikitext.git/blob/HEAD:/ext/parser.c#l2049"
-                      class="external"
-                      >line 2056</a
-                    >. We're emitting the backtick, but we should just restart
+                    assigning it any special meaning.
+                    We're emitting the backtick, but we should just restart
                     the processing loop and handle it in the
                     <code>case TT</code> rule.
                   </p>
@@ -382,16 +350,7 @@ if it starts with `&lt;nowiki&gt;[/&lt;/nowiki&gt;` then you can assume</pre
                   >
                 </cite>
                 <blockquote>
-                  <p>Fixed that little bug:</p>
-                  <ul>
-                    <li>
-                      <a
-                        href="http://git.wincent.com/wikitext.git/commitdiff/4c93572da5c4f5e7db2f5189b2ea671f0edd708b"
-                        class="external"
-                        >http://git.wincent.com/wikitext.git/commitdiff/4c93572da5c4f5e7db2f5189b2ea671f0edd708b</a
-                      >
-                    </li>
-                  </ul>
+                  <p>Fixed that little bug.</p>
                   <p>
                     And yes, it also explains/fixes the disappearing
                     &quot;?&quot; in your initial example.

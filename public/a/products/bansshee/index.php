@@ -683,15 +683,7 @@
             example, to check out into a directory named <tt>bansshee</tt>:
           </p>
 
-          <pre>git clone git://git.wincent.com/bansshee.git</pre>
-
-          <p>
-            A
-            <a href="http://git.wincent.com/bansshee.git"
-              >web-based repository browser</a
-            >
-            is also available.
-          </p>
+          <pre>git clone git://git.typechecked.net/bansshee.git</pre>
 
           <h4><a id="donations" name="donations"></a>Donations</h4>
 

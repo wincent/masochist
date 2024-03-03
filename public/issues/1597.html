@@ -166,11 +166,7 @@
                   </p>
                   <p>
                     If you look at the development history in
-                    <a
-                      href="http://git.wincent.com/command-t.git"
-                      class="external"
-                      >the Git repo for the project</a
-                    >, you can see that I first developed the prototype in pure
+                    the Git repo for the project, you can see that I first developed the prototype in pure
                     Ruby and only later ported the performance-critical bits to
                     C. So, yes, it could be done. Will mark this ticket as open
                     and try to get to it shortly.
@@ -197,12 +193,7 @@
                   </ul>
                   <p>
                     To get a suitable Ruby environment and build tools. It's
-                    documented in
-                    <a
-                      href="http://git.wincent.com/command-t.git/blob/HEAD:/doc/command-t.txt"
-                      class="external"
-                      >the docs</a
-                    >
+                    documented in the docs
                     if you want to give it a try.
                   </p>
                 </blockquote>
@@ -260,33 +251,7 @@
                   >
                 </cite>
                 <blockquote>
-                  <p>Yeah it was pretty much a three-step process:</p>
-                  <ul>
-                    <li>
-                      <a
-                        href="http://git.wincent.com/command-t.git/commitdiff/11defb6d114ad4928dd96984d09959b2f0e0dab7"
-                        class="external"
-                        >http://git.wincent.com/command-t.git/commitdiff/11defb6d114ad4928dd96984d09959b2f0e0dab7</a
-                      >
-                      (port <code>Match</code> class to C)
-                    </li>
-                    <li>
-                      <a
-                        href="http://git.wincent.com/command-t.git/commitdiff/e8f992a06ecbdbca819e3736730b3ce4f8c2d019"
-                        class="external"
-                        >http://git.wincent.com/command-t.git/commitdiff/e8f992a06ecbdbca819e3736730b3ce4f8c2d019</a
-                      >
-                      (extract some common stuff into separate file)
-                    </li>
-                    <li>
-                      <a
-                        href="http://git.wincent.com/command-t.git/commitdiff/e2cd3705d91ca1b9aca94c5608033cd8549712b2"
-                        class="external"
-                        >http://git.wincent.com/command-t.git/commitdiff/e2cd3705d91ca1b9aca94c5608033cd8549712b2</a
-                      >
-                      (port <code>Matcher</code> class to C)
-                    </li>
-                  </ul>
+                  <p>Yeah it was pretty much a three-step process.</p>
                   <p>
                     So we're basically talking about resurrecting the old
                     <code>match.rb</code> and <code>matcher.rb</code> files, and

@@ -33,7 +33,7 @@
     <link
       rel="prev"
       href="https://wincent.com/a/about/wincent/weblog/svn-log/archives/2007/09/merge_branch_master_of_gitwinc_2.php"
-      title="Merge branch 'master' of git.wincent.com:[filtered]/Synergy (Synergy, 7bc11aa)"
+      title="Merge branch 'master' of git.typechecked.net:[filtered]/Synergy (Synergy, 7bc11aa)"
     />
 
     <link
@@ -672,7 +672,7 @@
         <p align="right">
           <a
             href="https://wincent.com/a/about/wincent/weblog/svn-log/archives/2007/09/merge_branch_master_of_gitwinc_2.php"
-            >&laquo; Merge branch 'master' of git.wincent.com:[filtered]/Synergy
+            >&laquo; Merge branch 'master' of git.typechecked.net:[filtered]/Synergy
             (Synergy, 7bc11aa)</a
           >
           |

@@ -1443,7 +1443,7 @@ index da08fa4..b75b0d2 100644
                     confirm that it fixes the problem for them that would be
                     great. (Note you might actually have to use the
                     <code>HEAD</code> version from
-                    git://git.wincent.com/command-t.git seeing as this patch
+                    git://git.typechecked.net/command-t.git seeing as this patch
                     builds on top of other recent commits.)
                   </p>
                   <p>
@@ -1459,31 +1459,6 @@ index da08fa4..b75b0d2 100644
                   </p>
                 </blockquote>
               </li>
-              <li class="comment admin" id="comment_6404">
-                <cite>
-                  <a href="/users/greg-hurrell">Greg Hurrell</a>
-                  <span class="when"
-                    ><a href="#comment_6404"
-                      ><time data-relative="true">2010-11-04T09:42:18Z</time></a
-                    ></span
-                  >
-                </cite>
-                <blockquote>
-                  <p>
-                    And here is the commit which actually has the conditional in
-                    the right order:
-                  </p>
-                  <ul>
-                    <li>
-                      <a
-                        href="http://git.wincent.com/command-t.git/commitdiff/069bc3f320e9349bff17330f1ccf7c17ee185df3"
-                        class="external"
-                        >http://git.wincent.com/command-t.git/commitdiff/069bc3f320e9349bff17330f1ccf7c17ee185df3</a
-                      >
-                    </li>
-                  </ul>
-                </blockquote>
-              </li>
               <li class="comment admin" id="comment_6405">
                 <cite>
                   <a href="/users/greg-hurrell">Greg Hurrell</a>
@@ -1494,16 +1469,7 @@ index da08fa4..b75b0d2 100644
                   >
                 </cite>
                 <blockquote>
-                  <p>And here's a better fix:</p>
-                  <ul>
-                    <li>
-                      <a
-                        href="http://git.wincent.com/command-t.git/commitdiff/aced8ced811d040b26f72f237abe9bd375c4e522"
-                        class="external"
-                        >http://git.wincent.com/command-t.git/commitdiff/aced8ced811d040b26f72f237abe9bd375c4e522</a
-                      >
-                    </li>
-                  </ul>
+                  <p>And here's a better fix.</p>
                 </blockquote>
               </li>
               <li class="comment" id="comment_6406">
@@ -1723,63 +1689,12 @@ Zero count: silent b 0</pre
                   </p>
                   <p>
                     Specifically, the <code>match_window.rb</code> file should
-                    have these changes in it:
+                    have these changes.
                   </p>
-                  <ul>
-                    <li>
-                      <a
-                        href="http://git.wincent.com/command-t.git/commitdiff/fa3847004abdf5f87333043a3ea5296458e454b7"
-                        class="external"
-                        >http://git.wincent.com/command-t.git/commitdiff/fa3847004abdf5f87333043a3ea5296458e454b7</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        href="http://git.wincent.com/command-t.git/commitdiff/aced8ced811d040b26f72f237abe9bd375c4e522"
-                        class="external"
-                        >http://git.wincent.com/command-t.git/commitdiff/aced8ced811d040b26f72f237abe9bd375c4e522</a
-                      >
-                    </li>
-                  </ul>
-                  <p>And <code>controller.rb</code> should have these:</p>
-                  <ul>
-                    <li>
-                      <a
-                        href="http://git.wincent.com/command-t.git/commitdiff/8f38e57f24e3ef86717c6068c5d6212ec1f30480"
-                        class="external"
-                        >http://git.wincent.com/command-t.git/commitdiff/8f38e57f24e3ef86717c6068c5d6212ec1f30480</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        href="http://git.wincent.com/command-t.git/commitdiff/89dab21b1048c507f9e84ccfaff46bfe4d2c1d9f"
-                        class="external"
-                        >http://git.wincent.com/command-t.git/commitdiff/89dab21b1048c507f9e84ccfaff46bfe4d2c1d9f</a
-                      >
-                    </li>
-                  </ul>
                   <p>
                     If either of those files doesn't look like they do in the
-                    repo, something didn't get installed properly. Here are the
-                    links to the entire files as they currently are in
-                    1.0b/HEAD:
+                    repo, something didn't get installed properly.
                   </p>
-                  <ul>
-                    <li>
-                      <a
-                        href="http://git.wincent.com/command-t.git/blob/66bd7e81adb05fa836993f85970069e6201c71e1:/ruby/command-t/controller.rb"
-                        class="external"
-                        >http://git.wincent.com/command-t.git/blob/66bd7e81adb05fa836993f85970069e6201c71e1:/ruby/command-t/controller.rb</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        href="http://git.wincent.com/command-t.git/blob/66bd7e81adb05fa836993f85970069e6201c71e1:/ruby/command-t/match_window.rb"
-                        class="external"
-                        >http://git.wincent.com/command-t.git/blob/66bd7e81adb05fa836993f85970069e6201c71e1:/ruby/command-t/match_window.rb</a
-                      >
-                    </li>
-                  </ul>
                   <p>
                     If those definitely are installed correctly, then I'll need
                     to know more about exactly what the failure is that you're

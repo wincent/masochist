@@ -192,13 +192,7 @@
                 </p>
                 <p>
                   If you look in the Command-T source, specifically the
-                  <code
-                    ><a
-                      href="http://git.wincent.com/command-t.git/blob/HEAD:/ruby/command-t/match_window.rb"
-                      class="external"
-                      >MatchWindow</a
-                    ></code
-                  >class, you'll see that inside the match window it sets the
+                  <code>MatchWindow</code>class, you'll see that inside the match window it sets the
                   <code>timeoutlen</code> to <code>0</code> in order to make the
                   keys respond immediately; my suspicion is that by setting
                   <code>notimeout</code> you prevent the
@@ -329,11 +323,7 @@ index 93af32f..c15016a 100644
               <blockquote>
                 <p>
                   <code>timeoutlen</code> already is saved and restored (see
-                  <a
-                    href="http://git.wincent.com/command-t.git/blob/40ba35c2debaa66c1a6d6aec1208693c67f6d1ab:/ruby/command-t/settings.rb"
-                    class="external"
-                    >the settings.rb file</a
-                  >).
+                  the settings.rb file).
                 </p>
                 <p>Can you explain why or how it is not being restored?</p>
               </blockquote>

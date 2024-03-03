@@ -91,7 +91,7 @@ You could do this in any number of ways but the way I'm doing it is using two lo
 ##### Structure
 
 * `main` branch checked out.
-* `origin` remote pointing at git.wincent.com.
+* `origin` remote pointing at git.typechecked.net.
 * `github` remote pointing at [GitHub](https://github.com/wincent/masochist).
 * `masochist` remote set up to do Heroku-style deploy-on-push, pointing at an Amazon EC2 instance configured using Ansible.
 * `content` remote set up to do a Heroku-style update-on-push for content changes, pointing at the corresponding repository on EC2.
@@ -112,7 +112,7 @@ $ git push github # If you can't be bothered waiting for it to auto-replicate.
 
 * `content` branch checked out.
 * `content` remote configured to do Heroku-style push-to-publish.
-* `origin` remote pointing at git.wincent.com.
+* `origin` remote pointing at git.typechecked.net.
 * `github` remote pointing at [GitHub](https://github.com/wincent/masochist).
 
 ##### Commands

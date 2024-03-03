@@ -7,7 +7,7 @@
 
     <title>
       Git activity log: Merge branch 'master' of
-      git.wincent.com:[filtered]/snippets (snippets, 5b6eb07)
+      git.typechecked.net:[filtered]/snippets (snippets, 5b6eb07)
     </title>
 
     <link rel="stylesheet" href="/a/styles.css" type="text/css" />
@@ -689,7 +689,7 @@
         <h2>September 11, 2007</h2>
 
         <h3>
-          Merge branch 'master' of git.wincent.com:[filtered]/snippets
+          Merge branch 'master' of git.typechecked.net:[filtered]/snippets
           (snippets, 5b6eb07)
         </h3>
 

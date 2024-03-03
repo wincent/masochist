@@ -710,7 +710,7 @@
 
           <p>You can also clone the latest version of the source using Git:</p>
 
-          <pre>git clone git://git.wincent.com/wincent-strings-util.git</pre>
+          <pre>git clone git://git.typechecked.net/wincent-strings-util.git</pre>
 
           <p>
             An older version of the repository is kept online for historical
