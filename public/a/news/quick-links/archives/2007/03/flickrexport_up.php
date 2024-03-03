@@ -675,7 +675,7 @@
           FlickrExport for iPhoto and FlickrExport for Aperture have been
           <a href="http://www.connectedflow.com/blog/?p=61">updated</a> to
           versions 2.0.6 and 1.0.1 respectively. Both use the Wincent
-          <a href="http://install.wincent.com/">Install</a> software.
+          Install software.
         </p>
 
         <div id="a001348more"><div id="more"></div></div>

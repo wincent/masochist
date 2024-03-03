@@ -659,7 +659,7 @@
             href="http://connectedflow.com/flickrexport/releasenotesaperture.php"
             >is out</a
           >. It uses the Wincent
-          <a href="http://install.wincent.com/">Install</a> software.
+          Install software.
         </p>
 
         <p class="posted">Posted 12:24 PM</p>
@@ -674,7 +674,7 @@
             href="http://connectedflow.com/flickrexport/releasenotesaperture.php"
             >is out</a
           >. It uses the Wincent
-          <a href="http://install.wincent.com/">Install</a> software.
+          Install software.
         </p>
 
         <p class="posted">Posted 12:39 PM</p>

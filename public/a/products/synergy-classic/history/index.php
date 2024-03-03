@@ -1801,7 +1801,7 @@
           <ul>
             <li>
               [Enhancement] Upgraded installer to
-              <a href="http://install.wincent.com/">Install</a> version 1.3,
+              Install version 1.3,
               which is a Universal Binary that runs natively on both PowerPC and
               Intel processors.
             </li>
@@ -1885,7 +1885,7 @@
             </li>
             <li>
               [Note] Now uses
-              <a href="http://install.wincent.com/">Install</a> version 1.3
+              Install version 1.3
               which provides more reliable upgrades for users performing upgrade
               installs (specifically it offers to clean up files from prior
               installations even if those files are in locations that are

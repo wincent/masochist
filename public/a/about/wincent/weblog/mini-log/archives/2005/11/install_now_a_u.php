@@ -676,7 +676,7 @@
         <h3>Install now a Universal Binary</h3>
 
         <p>
-          <a href="http://install.wincent.com/">Install</a> is now a Universal
+          Install is now a Universal
           Binary. Tested on PowerPC and Intel and everything seems to be
           working. Yay.
         </p>

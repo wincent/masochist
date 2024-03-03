@@ -678,7 +678,7 @@
           2.0.4 from
           <a href="http://www.stclairsw.com/">St Clair Software</a> is out; it
           is a popular app that uses Wincent's
-          <a href="http://install.wincent.com/">Install</a> application.
+          Install application.
         </p>
 
         <div id="a000150more"><div id="more"></div></div>

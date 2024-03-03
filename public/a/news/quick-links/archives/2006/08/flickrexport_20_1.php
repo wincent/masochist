@@ -674,7 +674,7 @@
         <p>
           <a href="http://www.connectedflow.com/blog/?p=39">Version 2.0.2</a> of
           the Flickr accessory is out. It uses the Wincent
-          <a href="http://install.wincent.com/">Install</a> software.
+          Install software.
         </p>
 
         <div id="a000397more"><div id="more"></div></div>

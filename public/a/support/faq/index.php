@@ -789,7 +789,7 @@
 
           <p>
             Note that the automated systems apply to all Wincent products with
-            the exception of <a href="http://install.wincent.com/">Install</a>;
+            the exception of Install;
             Install purchases are processed manually because they require
             special access to the Wincent server and must be set up manually.
             The expected processing times appear on the

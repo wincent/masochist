@@ -1079,7 +1079,7 @@ defaults write com.wincent.WinSwitch &quot;Menu bar style&quot; '5'
             <li>Japanese localization by Yuzuru Shiraiwa.</li>
             <li>
               Now uses
-              <a href="http://install.wincent.com/">Install version 1.2.2</a>
+              Install version 1.2.2
               (<a
                 href="https://wincent.com/a/products/install/history/index.php#1.2.2"
                 >changes</a
@@ -1111,7 +1111,7 @@ defaults write com.wincent.WinSwitch &quot;Menu bar style&quot; '5'
             </li>
             <li>
               Now uses
-              <a href="http://install.wincent.com/">Install version 1.2.1</a>,
+              Install version 1.2.1,
               which includes several
               <a
                 href="https://wincent.com/a/products/install/history/index.php#1.2.1"
@@ -1195,9 +1195,7 @@ defaults write com.wincent.WinSwitch &quot;Menu bar style&quot; '5'
             <li>Fixed leaking NSMenuItems, and NSAttributableString leak.</li>
             <li>German localization by Jan Maas.</li>
             <li>
-              Improved installer (<a href="http://install.wincent.com/"
-                >Install 1.2</a
-              >;
+              Improved installer (Install 1.2;
               <a
                 href="https://wincent.com/a/products/install/history/index.php#1.2"
                 >changes</a
@@ -1247,7 +1245,7 @@ defaults write com.wincent.WinSwitch &quot;Menu bar style&quot; '5'
             </li>
             <li>
               Package and distribute with
-              <a href="http://install.wincent.com/">Install version 1.1.2</a>
+              Install version 1.1.2
               (<a
                 href="https://wincent.com/a/products/install/history/index.php#1.1.2"
                 >changes</a

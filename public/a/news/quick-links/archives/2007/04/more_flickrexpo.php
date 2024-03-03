@@ -675,7 +675,7 @@
           Lite for Aperture have been
           <a href="http://www.connectedflow.com/blog/?p=62">updated</a> to
           versions 2.0.7, 1.0.2 and 1.0.2 respectively. All use the Wincent
-          <a href="http://install.wincent.com/">Install</a> software.
+          Install software.
         </p>
 
         <div id="a001757more"><div id="more"></div></div>

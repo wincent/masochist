@@ -897,9 +897,7 @@
               you are not required to provide an attribution to Wincent in your
               product documentation, supporting materials or website, although
               any such reference you might make to Wincent and to the Install
-              website (&lt;<a href="http://install.wincent.com/"
-                >http://install.wincent.com/</a
-              >&gt;) would be appreciated;
+              website would be appreciated;
             </li>
             <li>
               You may not modify nor reverse engineer the binary data of the

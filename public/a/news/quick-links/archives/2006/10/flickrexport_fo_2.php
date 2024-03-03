@@ -678,7 +678,7 @@
             href="http://connectedflow.com/flickrexport/releasenotesaperture.php"
             >is out</a
           >. It uses the Wincent
-          <a href="http://install.wincent.com/">Install</a> software.
+          Install software.
         </p>
 
         <div id="a000619more"><div id="more"></div></div>

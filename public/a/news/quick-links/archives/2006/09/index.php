@@ -664,7 +664,7 @@
             >FlickrExport for iPhoto</a
           >
           which precedes it, it uses the Wincent
-          <a href="http://install.wincent.com">Install</a> software.
+          Install software.
         </p>
 
         <p class="posted">Posted 7:32 PM</p>

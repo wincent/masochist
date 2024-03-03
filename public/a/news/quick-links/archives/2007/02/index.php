@@ -655,7 +655,7 @@
         <p>
           <a href="http://connectedflow.com/">Connected Flow</a> has released a
           new Aperture plug-in that uses
-          <a href="http://install.wincent.com/">Wincent's Install</a> tool.
+          Wincent's Install tool.
           Links appear on the Install
           <a href="https://wincent.com/a/products/install/download/"
             >downloads page</a

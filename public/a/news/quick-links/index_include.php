@@ -9,7 +9,7 @@
       for Aperture have been
       <a href="http://www.connectedflow.com/blog/?p=65">updated</a> to versions
       2.0.9, 1.0.4 and 1.0.4 respectively. All use the Wincent
-      <a href="http://install.wincent.com/">Install</a> software.
+      Install software.
     </p>
   </li>
 </ul>
@@ -23,7 +23,7 @@
       for Aperture have been
       <a href="http://www.connectedflow.com/blog/?p=63">updated</a> to versions
       2.0.8, 1.0.3 and 1.0.3 respectively. All use the Wincent
-      <a href="http://install.wincent.com/">Install</a> software.
+      Install software.
     </p>
   </li>
 </ul>
@@ -37,7 +37,7 @@
       for Aperture have been
       <a href="http://www.connectedflow.com/blog/?p=62">updated</a> to versions
       2.0.7, 1.0.2 and 1.0.2 respectively. All use the Wincent
-      <a href="http://install.wincent.com/">Install</a> software.
+      Install software.
     </p>
   </li>
 </ul>
@@ -50,7 +50,7 @@
       FlickrExport for iPhoto and FlickrExport for Aperture have been
       <a href="http://www.connectedflow.com/blog/?p=61">updated</a> to versions
       2.0.6 and 1.0.1 respectively. Both use the Wincent
-      <a href="http://install.wincent.com/">Install</a> software.
+      Install software.
     </p>
   </li>
 </ul>
@@ -62,7 +62,7 @@
     <p>
       <a href="http://connectedflow.com/">Connected Flow</a> has released a new
       Aperture plug-in that uses
-      <a href="http://install.wincent.com/">Wincent's Install</a> tool. Links
+      Wincent's Install tool. Links
       appear on the Install
       <a href="https://wincent.com/a/products/install/download/"
         >downloads page</a
@@ -81,7 +81,7 @@
       <a href="http://connectedflow.com/flickrexport/releasenotesaperture.php"
         >is out</a
       >. It uses the Wincent
-      <a href="http://install.wincent.com/">Install</a> software.
+      Install software.
     </p>
   </li>
 </ul>
@@ -96,7 +96,7 @@
       <a href="http://connectedflow.com/flickrexport/releasenotesaperture.php"
         >is out</a
       >. It uses the Wincent
-      <a href="http://install.wincent.com/">Install</a> software.
+      Install software.
     </p>
   </li>
 </ul>
@@ -111,7 +111,7 @@
       <a href="http://connectedflow.com/flickrexport/releasenotesaperture.php"
         >is out</a
       >. It uses the Wincent
-      <a href="http://install.wincent.com/">Install</a> software.
+      Install software.
     </p>
   </li>
 </ul>
@@ -126,7 +126,7 @@
       <a href="http://connectedflow.com/flickrexport/releasenotesaperture.php"
         >is out</a
       >. It uses the Wincent
-      <a href="http://install.wincent.com/">Install</a> software.
+      Install software.
     </p>
   </li>
 
@@ -135,7 +135,7 @@
     <p>
       <a href="http://www.connectedflow.com/blog/?p=49">Version 2.0.5</a> of the
       Flickr accessory is out. It uses the Wincent
-      <a href="http://install.wincent.com/">Install</a> software.
+      Install software.
     </p>
   </li>
 </ul>
@@ -147,7 +147,7 @@
     <p>
       <a href="http://www.connectedflow.com/blog/?p=48">Version 2.0.4</a> of the
       Flickr accessory is out. It uses the Wincent
-      <a href="http://install.wincent.com/">Install</a> software.
+      Install software.
     </p>
   </li>
 </ul>
@@ -162,7 +162,7 @@
       <a href="http://connectedflow.com/flickrexport/releasenotesaperture.php"
         >is out</a
       >. It uses the Wincent
-      <a href="http://install.wincent.com/">Install</a> software.
+      Install software.
     </p>
   </li>
 
@@ -171,7 +171,7 @@
     <p>
       <a href="http://www.connectedflow.com/blog/?p=46">Version 2.0.3</a> of the
       Flickr accessory is out. It uses the Wincent
-      <a href="http://install.wincent.com/">Install</a> software.
+      Install software.
     </p>
   </li>
 </ul>
@@ -186,7 +186,7 @@
       <a href="http://connectedflow.com/flickrexport/releasenotesaperture.php"
         >is out</a
       >. It uses the Wincent
-      <a href="http://install.wincent.com/">Install</a> software.
+      Install software.
     </p>
   </li>
 </ul>
@@ -207,7 +207,7 @@
         >FlickrExport for iPhoto</a
       >
       which precedes it, it uses the Wincent
-      <a href="http://install.wincent.com">Install</a> software.
+      Install software.
     </p>
   </li>
 </ul>

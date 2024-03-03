@@ -659,7 +659,7 @@
             href="http://connectedflow.com/flickrexport/releasenotesaperture.php"
             >is out</a
           >. It uses the Wincent
-          <a href="http://install.wincent.com/">Install</a> software.
+          Install software.
         </p>
 
         <p class="posted">Posted 11:04 AM</p>
@@ -669,7 +669,7 @@
         <p>
           <a href="http://www.connectedflow.com/blog/?p=49">Version 2.0.5</a> of
           the Flickr accessory is out. It uses the Wincent
-          <a href="http://install.wincent.com/">Install</a> software.
+          Install software.
         </p>
 
         <p class="posted">Posted 10:26 AM</p>
@@ -680,7 +680,7 @@
         <p>
           <a href="http://www.connectedflow.com/blog/?p=48">Version 2.0.4</a> of
           the Flickr accessory is out. It uses the Wincent
-          <a href="http://install.wincent.com/">Install</a> software.
+          Install software.
         </p>
 
         <p class="posted">Posted 3:44 PM</p>
@@ -695,7 +695,7 @@
             href="http://connectedflow.com/flickrexport/releasenotesaperture.php"
             >is out</a
           >. It uses the Wincent
-          <a href="http://install.wincent.com/">Install</a> software.
+          Install software.
         </p>
 
         <p class="posted">Posted 3:49 PM</p>
@@ -705,7 +705,7 @@
         <p>
           <a href="http://www.connectedflow.com/blog/?p=46">Version 2.0.3</a> of
           the Flickr accessory is out. It uses the Wincent
-          <a href="http://install.wincent.com/">Install</a> software.
+          Install software.
         </p>
 
         <p class="posted">Posted 1:38 PM</p>
@@ -720,7 +720,7 @@
             href="http://connectedflow.com/flickrexport/releasenotesaperture.php"
             >is out</a
           >. It uses the Wincent
-          <a href="http://install.wincent.com/">Install</a> software.
+          Install software.
         </p>
 
         <p class="posted">Posted 2:36 PM</p>
