@@ -1,6 +1,7 @@
 ---
 tags: leopard nginx nginx.upload.module wiki
 cache_breaker: 1
+title: Updating to nginx 0.6.36 with the nginx upload module 2.0.9
 ---
 
 I wasn't going to update to [nginx 0.6.36](/wiki/nginx_0.6.36) but seeing as I am about to start testing the [nginx upload module](/wiki/nginx_upload_module) (see [ticket \#1193](/issues/1193)) and I would have to rebuild [nginx](/wiki/nginx) anyway for that, I thought I'd use the latest stable release.
@@ -38,7 +39,7 @@ Not really sure why it's trying to create that directory, seeing as my config ex
 
       server {
         listen 127.0.0.1:3001;
-        server_name rails.wincent.local;
+        server_name rails.example.local;
         rewrite ^/(.*) https://localhost:3002/$1 permanent;
         client_body_temp_path /Users/wincent/trabajo/unversioned/wincent.com/src/tmp/client_body_temp;
         fastcgi_temp_path /Users/wincent/trabajo/unversioned/wincent.com/src/tmp/fast_cgi_temp;
@@ -51,7 +52,7 @@ Not really sure why it's trying to create that directory, seeing as my config ex
         ssl on;
         ssl_certificate /Users/wincent/trabajo/unversioned/wincent.com/src/config/local/ssl.crt;
         ssl_certificate_key /Users/wincent/trabajo/unversioned/wincent.com/src/config/local/ssl.key;
-        server_name rails.wincent.local;
+        server_name rails.example.local;
         root /Users/wincent/trabajo/unversioned/wincent.com/src/public;
         client_body_temp_path /Users/wincent/trabajo/unversioned/wincent.com/src/tmp/client_body_temp;
         fastcgi_temp_path /Users/wincent/trabajo/unversioned/wincent.com/src/tmp/fast_cgi_temp;
