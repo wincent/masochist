@@ -144,38 +144,9 @@
                 <blockquote>
                   <p>Quick reminder on how to do this:</p>
                   <pre>
-aws put s3.wincent.com/synergy/releases/synergy-4.4.zip \
+aws put s3-host/synergy/releases/synergy-4.4.zip \
         ~/local/path/to/Synergy4.4.zip</pre
                   >
-                  <p>
-                    Would upload <code>Synergy4.4.zip</code> to the bucket
-                    <code>s3.wincent.com</code> with key
-                    <code>synergy/releases/synergy-4.4.zip</code>, from where it
-                    could be downloaded using any of:
-                  </p>
-                  <ul>
-                    <li>
-                      <a
-                        href="http://s3.wincent.com/synergy/releases/synergy-4.4.zip"
-                        class="external"
-                        >http://s3.wincent.com/synergy/releases/synergy-4.4.zip</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        href="http://s3.wincent.com.s3.amazonaws.com/synergy/releases/synergy-4.4.zip"
-                        class="external"
-                        >http://s3.wincent.com.s3.amazonaws.com/synergy/releases/synergy-4.4.zip</a
-                      >
-                    </li>
-                    <li>
-                      <a
-                        href="http://s3.amazonaws.com/s3.wincent.com/synergy/releases/synergy-4.4.zip"
-                        class="external"
-                        >http://s3.amazonaws.com/s3.wincent.com/synergy/releases/synergy-4.4.zip</a
-                      >
-                    </li>
-                  </ul>
                 </blockquote>
               </li>
               <li class="comment admin" id="comment_5326">
@@ -190,11 +161,11 @@ aws put s3.wincent.com/synergy/releases/synergy-4.4.zip \
                 <blockquote>
                   <p>And to be publicly readable:</p>
                   <pre>
-aws put s3.wincent.com/synergy/releases/synergy-4.4.zip?acl --set-acl=public-read</pre
+aws put s3-host/synergy/releases/synergy-4.4.zip?acl --set-acl=public-read</pre
                   >
                   <p>Or more briefly:</p>
                   <pre>
-aws put s3.wincent.com/synergy/releases/synergy-4.4.zip?acl --public</pre
+aws put s3-host/synergy/releases/synergy-4.4.zip?acl --public</pre
                   >
                 </blockquote>
               </li>
