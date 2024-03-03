@@ -3475,7 +3475,7 @@
               website is now a mirror of the current documentation.
             </li>
             <li>
-              [Addition] Bug tracking interface now in place at bugs.wincent.org
+              [Addition] Bug tracking interface now in place
               with public access for users wishing to report bugs or check on
               their progress towards resolution.
             </li>
