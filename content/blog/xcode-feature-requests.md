@@ -10,4 +10,4 @@ Just filed a couple of feature requests/bug reports with Apple (see? this time I
 
 These get added to my previous request to have Info.plist processing work on InfoPlist.strings files as well. Wonder when Apple will do that one... I may just have to quickly whip something up to do it myself...
 
-\[_Update_: I've now updated [Wincent Strings Utility](http://strings.wincent.com/) to do the InfoPlist.strings preprocessing. I'll prepare a 1.1b release which includes the new feature soon. Now I just have to go about converting a bunch of projects over to use the new functionality.\]
+\[_Update_: I've now updated Wincent Strings Utility to do the InfoPlist.strings preprocessing. I'll prepare a 1.1b release which includes the new feature soon. Now I just have to go about converting a bunch of projects over to use the new functionality.\]

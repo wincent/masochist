@@ -8,8 +8,8 @@ This is a tiny update to [Wincent Strings Utility](/wiki/Wincent_Strings_Utility
 
 Wincent Strings Utility is a [command-line](/wiki/command-line) tool designed to help developers with the task of localization. [This plaintext copy of the manpage](http://wincent.com/a/products/wincent-strings-util/wincent-strings-util.1.txt) describes its different modes of operation.
 
-This release will _only_ run on [Snow Leopard](/wiki/Snow_Leopard), but older versions of the software which will work on older versions of [Mac OS X](/wiki/Mac_OS_X) are still available from [strings.wincent.com](http://strings.wincent.com/).
+This release will _only_ run on [Snow Leopard](/wiki/Snow_Leopard), but older versions of the software which will work on older versions of [Mac OS X](/wiki/Mac_OS_X) are still available.
 
-You can download the [installer package](http://wincent.com/a/products/wincent-strings-util/download/wincent-strings-util-2.0.1.zip), [source tarball](http://wincent.com/a/products/wincent-strings-util/download/wincent-strings-util-2.0.1-src.tar.gz), or check out the [official product page](http://strings.wincent.com/) for information about obtaining the source via [Git](/wiki/Git).
+You can download the [installer package](http://wincent.com/a/products/wincent-strings-util/download/wincent-strings-util-2.0.1.zip), [source tarball](http://wincent.com/a/products/wincent-strings-util/download/wincent-strings-util-2.0.1-src.tar.gz), or check out the official product page for information about obtaining the source via [Git](/wiki/Git).
 
 This is an [open source](/wiki/open_source) product licensed under the [GPL](/wiki/GPL), so if you find it useful please consider [making a donation](https://www.paypal.com/xclick/business=win@wincent.com&item_name=Wincent+Strings+Utility+donation&no_note=1&currency_code=EUR&lc=GB).

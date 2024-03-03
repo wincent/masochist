@@ -1,6 +1,6 @@
 ---
 tags: wincent.products wiki
 title: Wincent Strings Util
+redirect: [[Wincent Strings Utility]]
 ---
 
--   Official product page: <http://strings.wincent.com/>
