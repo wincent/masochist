@@ -31,7 +31,7 @@ These products aren't yet Leopard-ready but work is well on the way to completio
 
 The status of the following product on Leopard is unknown:
 
--   [atosym](http://atosym.wincent.com/): Address-to-symbol conversion aid for programmers.
+-   atosym: Address-to-symbol conversion aid for programmers.
 
 ### All other products
 
