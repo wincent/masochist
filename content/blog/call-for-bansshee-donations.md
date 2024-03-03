@@ -3,7 +3,7 @@ title: Call for Bansshee donations
 tags: blog
 ---
 
-[Bansshee](http://bansshee.wincent.com/) is a free, open-source tool to thwart dictionary-based SSH attacks. As a convenience to users there are three domains, bansshee.com, bansshee.net, and bansshee.org, that resolve to the Bansshee project page. These are coming up for renewal soon (they expire on 11 April 2008) so I'm turning to the public to ask for donations to cover the cost of their ongoing registration.
+Bansshee is a free, open-source tool to thwart dictionary-based SSH attacks. As a convenience to users there are three domains, bansshee.com, bansshee.net, and bansshee.org, that resolve to the Bansshee project page. These are coming up for renewal soon (they expire on 11 April 2008) so I'm turning to the public to ask for donations to cover the cost of their ongoing registration.
 
 They're currently registered with [joker.com](https://joker.com/), and the renewal price for each domain is \$12.00. [Last time](http://www.wincent.com/a/about/wincent/weblog/archives/2007/03/a_call_for_help.php) I made this request help was quick in coming, so I am hoping that the same will be true in this case.
 
