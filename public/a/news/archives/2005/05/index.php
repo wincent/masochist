@@ -672,41 +672,6 @@
           >
         </p>
 
-        <h2>May 22, 2005</h2>
-
-        <h3 id="a000077">
-          Calling all developers: visit piratewatch.wincent.com
-        </h3>
-
-        <p>
-          I've launched <a href="http://piratewatch.org/">piratewatch.org</a> to
-          help developers find that sweet spot where they can invest a minimal
-          amount of time in fighting piracy yet maximize the effectiveness of
-          their efforts. The result: a stronger business which can afford to
-          invest more resources into making great products.
-        </p>
-        <p>
-          <a
-            href="https://wincent.com/a/news/archives/2005/05/calling_all_dev.php"
-            >Read full article</a
-          >
-        </p>
-
-        <p class="more-categories">
-          More
-          <a href="https://wincent.com/a/news/archives/site_news/">Site news</a>
-          articles
-        </p>
-
-        <p class="posted">
-          Posted by wincent at
-          <a
-            href="https://wincent.com/a/news/archives/2005/05/calling_all_dev.php"
-          >
-            8:12 PM</a
-          >
-        </p>
-
         <h2>May 17, 2005</h2>
 
         <h3 id="a000071">SpamSieve 2.3.1 updated for Mac OS X 10.4.1 Tiger</h3>

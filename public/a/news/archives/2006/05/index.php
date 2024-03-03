@@ -702,36 +702,6 @@
           >
         </p>
 
-        <h2>May 21, 2006</h2>
-
-        <h3 id="a000325">piratewatch.org moves to piratewatch.wincent.com</h3>
-
-        <p>
-          Effective immediately, piratewatch.org has moved to
-          <a href="http://piratewatch.wincent.com/">piratewatch.wincent.com</a>.
-        </p>
-        <p>
-          <a
-            href="https://wincent.com/a/news/archives/2006/05/piratewatchorg.php"
-            >Read full article</a
-          >
-        </p>
-
-        <p class="more-categories">
-          More
-          <a href="https://wincent.com/a/news/archives/site_news/">Site news</a>
-          articles
-        </p>
-
-        <p class="posted">
-          Posted by wincent at
-          <a
-            href="https://wincent.com/a/news/archives/2006/05/piratewatchorg.php"
-          >
-            1:42 AM</a
-          >
-        </p>
-
         <h2>May 9, 2006</h2>
 
         <h3 id="a000316">Email response times</h3>
