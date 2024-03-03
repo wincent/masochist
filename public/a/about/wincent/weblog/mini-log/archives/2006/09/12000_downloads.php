@@ -676,7 +676,7 @@
         <h3>12,000 downloads</h3>
 
         <p>
-          Of <a href="http://synergy.wincent.com/">Synergy 3.0</a> in the first
+          Of <a href="http://wincent.com/">Synergy 3.0</a> in the first
           48 hours since it was released. Works out to about 1 download every 14
           seconds.
         </p>

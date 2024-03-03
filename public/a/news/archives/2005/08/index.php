@@ -665,7 +665,7 @@
         <h3 id="a000133">Synergy gets 5-Mice rating in Macworld</h3>
 
         <p>
-          <a href="http://synergy.wincent.com/">Synergy</a> has been awarded a
+          <a href="http://wincent.com/">Synergy</a> has been awarded a
           coveted, 5-mice rating in the August 2005 issue of
           <a href="http://www.macworld.com/">Macworld</a>.
         </p>

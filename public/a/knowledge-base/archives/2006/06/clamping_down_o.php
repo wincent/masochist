@@ -767,7 +767,7 @@
               distinguished from spam messages with subjects like
               "-6月23-24日（深-圳）开-讲-" and "Автомобильные шины и диски!
               Низкие цены!", thanks to familiar words like "<a
-                href="http://synergy.wincent.com/"
+                href="http://wincent.com/"
                 >Synergy</a
               >" in their subject lines.
             </p>

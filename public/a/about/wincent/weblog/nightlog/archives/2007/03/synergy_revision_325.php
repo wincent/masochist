@@ -681,8 +681,8 @@
           </li>
           <li>
             <em>Product info</em>:
-            <a href="http://synergy.wincent.com/"
-              >http://synergy.wincent.com/</a
+            <a href="http://wincent.com/"
+              >http://wincent.com/</a
             >
           </li>
         </ul>

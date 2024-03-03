@@ -2251,8 +2251,8 @@
             <li>
               [New] Corrections and many additions to the Online Button Set
               gallery at
-              <a href="http://synergy.wincent.com/buttons/"
-                >&lt;http://synergy.wincent.com/buttons/&gt;</a
+              <a href="http://wincent.com/buttons/"
+                >&lt;http://wincent.com/buttons/&gt;</a
               >. The gallery now contains just under 60 free sets; including 11
               new sets (by David Drucker, Eric Stumbaugh, Oliver Waters, Phil
               Daulton, Stephen Way and Wynn H Burton).
@@ -2299,8 +2299,8 @@
             </li>
             <li>
               [Feature] Online Button Set gallery launched at
-              <a href="http://synergy.wincent.com/buttons/"
-                >&lt;http://synergy.wincent.com/buttons/&gt;</a
+              <a href="http://wincent.com/buttons/"
+                >&lt;http://wincent.com/buttons/&gt;</a
               >; there are currently 48 free button sets available for download,
               including 10 never-seen-before sets ("Aqua", "Aqua Buttons with
               Drop Shadow", "Synblack", "iTunes", "Icky", "iTunes Bordered",

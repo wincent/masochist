@@ -665,7 +665,7 @@
         <h3 id="a000305">Synergy 2.8 available for download</h3>
 
         <p>
-          <a href="http://synergy.wincent.com/">Synergy</a> 2.8 has been
+          <a href="http://wincent.com/">Synergy</a> 2.8 has been
           released.
         </p>
         <p>
@@ -800,7 +800,7 @@
         <h3 id="a000277">Synergy 2.7 released</h3>
 
         <p>
-          <a href="http://synergy.wincent.com/">Synergy</a> 2.7 has been
+          <a href="http://wincent.com/">Synergy</a> 2.7 has been
           released.
         </p>
         <p>

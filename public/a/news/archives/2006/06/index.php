@@ -733,7 +733,7 @@
         <h3 id="a000350">Synergy 2.9 available for download</h3>
 
         <p>
-          <a href="http://synergy.wincent.com/">Synergy</a> 2.9 has been
+          <a href="http://wincent.com/">Synergy</a> 2.9 has been
           released.
         </p>
         <p>

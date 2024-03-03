@@ -666,7 +666,7 @@
 
         <p>
           The second release candidate for
-          <a href="http://synergy.wincent.com/">Synergy</a> 2.3 has just been
+          <a href="http://wincent.com/">Synergy</a> 2.3 has just been
           released.
         </p>
         <p>
@@ -699,7 +699,7 @@
 
         <p>
           The release candidate for
-          <a href="http://synergy.wincent.com/">Synergy</a> 2.3 has just been
+          <a href="http://wincent.com/">Synergy</a> 2.3 has just been
           released.
         </p>
         <p>
@@ -793,7 +793,7 @@
 
         <p>
           The release candidate for
-          <a href="http://synergy.wincent.com/">Synergy</a> 2.2 has just been
+          <a href="http://wincent.com/">Synergy</a> 2.2 has just been
           released to beta testers. If you're interested in getting access to
           this kind of build in the future subscribe to the synergy-beta mailing
           list.

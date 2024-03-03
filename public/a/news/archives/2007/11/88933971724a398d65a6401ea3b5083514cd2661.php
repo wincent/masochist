@@ -722,7 +722,7 @@
 
         <p>
           Some users were unable to install the
-          <a href="http://synergy.wincent.com">Synergy</a> 3.5a release made
+          <a href="http://wincent.com">Synergy</a> 3.5a release made
           available a
           <a
             href="https://wincent.com/a/news/archives/2007/11/synergy_35a_rel.php"

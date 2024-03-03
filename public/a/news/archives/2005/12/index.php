@@ -665,7 +665,7 @@
         <h3 id="a000161">Synergy 2.3 released</h3>
 
         <p>
-          <a href="http://synergy.wincent.com/">Synergy</a> 2.3 has just been
+          <a href="http://wincent.com/">Synergy</a> 2.3 has just been
           released.
         </p>
         <p>

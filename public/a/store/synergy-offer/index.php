@@ -644,7 +644,7 @@
             >buy</a
           >
           a <a href="http://synergyadvance.com/">Synergy Advance</a> license and
-          get a free <a href="http://synergy.wincent.com/">Synergy</a> license.
+          get a free <a href="http://wincent.com/">Synergy</a> license.
           This is a great opportunity to get a license for both products, or to
           use the complimentary Synergy license as a gift for somebody else.
         </p>

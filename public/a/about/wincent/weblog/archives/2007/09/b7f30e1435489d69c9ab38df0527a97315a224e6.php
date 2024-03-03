@@ -734,7 +734,7 @@
           <a href="https://wincent.com/knowledge-base/Mail.app">Mail.app</a> has
           only been returning a subset of the expected results when I search for
           a particular mail. For example, if a customer that purchased a
-          <a href="http://synergy.wincent.com/">Synergy</a> license in the last
+          <a href="http://wincent.com/">Synergy</a> license in the last
           week asks for their registration information to be resent then I can
           find it, usually within seconds; but if someone who purchased back in
           2003 asks me then Mail.app never turns up any results. Using

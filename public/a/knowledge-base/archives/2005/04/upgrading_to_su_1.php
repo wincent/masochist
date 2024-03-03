@@ -777,7 +777,7 @@
                 href="http://svnbook.red-bean.com/en/1.1/ch05s03.html#svn-ch-5-sect-3.5"
                 >here</a
               >. For example, to dump my
-              <a href="http://synergy.wincent.com/">Synergy</a> repository I
+              <a href="http://wincent.com/">Synergy</a> repository I
               used a bunch of commands like this (where ~/Developer/svnrep/ is
               the folder where I keep all my repositories):
             </p>

@@ -827,7 +827,7 @@
             Redistribution in any form without permission is disallowed. Rather
             than redistributing Synergy independently please direct others to
             the Synergy website,
-            <a href="http://synergy.wincent.com/">synergy.wincent.com</a>, to
+            <a href="http://wincent.com/">wincent.com</a>, to
             download the product.
           </p>
 

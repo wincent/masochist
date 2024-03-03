@@ -1591,7 +1591,7 @@
         <h3 id="a000350">Synergy 2.9 available for download</h3>
 
         <p>
-          <a href="http://synergy.wincent.com/">Synergy</a> 2.9 has been
+          <a href="http://wincent.com/">Synergy</a> 2.9 has been
           released.
         </p>
         <p>
@@ -1644,7 +1644,7 @@
         <h3 id="a000305">Synergy 2.8 available for download</h3>
 
         <p>
-          <a href="http://synergy.wincent.com/">Synergy</a> 2.8 has been
+          <a href="http://wincent.com/">Synergy</a> 2.8 has been
           released.
         </p>
         <p>
@@ -1747,7 +1747,7 @@
         <h3 id="a000277">Synergy 2.7 released</h3>
 
         <p>
-          <a href="http://synergy.wincent.com/">Synergy</a> 2.7 has been
+          <a href="http://wincent.com/">Synergy</a> 2.7 has been
           released.
         </p>
         <p>
@@ -1888,7 +1888,7 @@
         <h3 id="a000240">Synergy 2.6 released</h3>
 
         <p>
-          <a href="http://synergy.wincent.com/">Synergy</a> 2.6 has been
+          <a href="http://wincent.com/">Synergy</a> 2.6 has been
           released.
         </p>
         <p>
@@ -1938,7 +1938,7 @@
         <h3 id="a000202">Synergy 2.5 released</h3>
 
         <p>
-          <a href="http://synergy.wincent.com/">Synergy</a> 2.5 has just been
+          <a href="http://wincent.com/">Synergy</a> 2.5 has just been
           released.
         </p>
         <p>
@@ -1962,7 +1962,7 @@
         <h3 id="a000181">Synergy 2.4 released</h3>
 
         <p>
-          <a href="http://synergy.wincent.com/">Synergy</a> 2.4 has just been
+          <a href="http://wincent.com/">Synergy</a> 2.4 has just been
           released.
         </p>
         <p>
@@ -2032,7 +2032,7 @@
         <h3 id="a000161">Synergy 2.3 released</h3>
 
         <p>
-          <a href="http://synergy.wincent.com/">Synergy</a> 2.3 has just been
+          <a href="http://wincent.com/">Synergy</a> 2.3 has just been
           released.
         </p>
         <p>
@@ -2085,7 +2085,7 @@
 
         <p>
           The second release candidate for
-          <a href="http://synergy.wincent.com/">Synergy</a> 2.3 has just been
+          <a href="http://wincent.com/">Synergy</a> 2.3 has just been
           released.
         </p>
         <p>
@@ -2110,7 +2110,7 @@
 
         <p>
           The release candidate for
-          <a href="http://synergy.wincent.com/">Synergy</a> 2.3 has just been
+          <a href="http://wincent.com/">Synergy</a> 2.3 has just been
           released.
         </p>
         <p>
@@ -2180,7 +2180,7 @@
 
         <p>
           The release candidate for
-          <a href="http://synergy.wincent.com/">Synergy</a> 2.2 has just been
+          <a href="http://wincent.com/">Synergy</a> 2.2 has just been
           released to beta testers. If you're interested in getting access to
           this kind of build in the future subscribe to the synergy-beta mailing
           list.
@@ -2206,7 +2206,7 @@
         <h3 id="a000133">Synergy gets 5-Mice rating in Macworld</h3>
 
         <p>
-          <a href="http://synergy.wincent.com/">Synergy</a> has been awarded a
+          <a href="http://wincent.com/">Synergy</a> has been awarded a
           coveted, 5-mice rating in the August 2005 issue of
           <a href="http://www.macworld.com/">Macworld</a>.
         </p>

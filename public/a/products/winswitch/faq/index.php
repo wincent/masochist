@@ -1219,7 +1219,7 @@ defaults write com.wincent.WinSwitch &quot;Menu bar style&quot; '5'</pre
 
           <p>
             The buttons in the <a href="../screenshots/">screenshots</a> are
-            provided by <a href="http://synergy.wincent.com/">Synergy</a>, an
+            provided by <a href="http://wincent.com/">Synergy</a>, an
             inexpensive and fully-featured iTunes controller with hot key
             support, album cover downloads, and customizable floater.
           </p>
