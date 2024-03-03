@@ -1,5 +1,6 @@
 ---
 tags: development wincent wiki
+title: Preparing a new release of Wincent Strings Utility for release
 ---
 
 This example uses version 1.1; change the version numbers as appropriate.
@@ -39,6 +40,6 @@ This example uses version 1.1; change the version numbers as appropriate.
 
 14\. Post announcement to wincent.org
 
-15\. Post announcement to forums.wincent.com
+15\. Post announcement to forums
 
 16\. There is no step 16.

@@ -1,5 +1,6 @@
 ---
 tags: ubb.threads wiki
+title: UBB.threads 7.1 to 7.1.1 upgrade notes
 ---
 
 A little tired of doing multi-step manual upgrades to [UBB.threads](/wiki/UBB.threads) (for example, see the notes for the last upgrade, "[UBB.threads 7.0.2 to 7.1 upgrade notes](/wiki/UBB.threads_7.0.2_to_7.1_upgrade_notes)"), I decided to come up with a shell script that would at least guide the process.
@@ -119,7 +120,7 @@ Here is the first draft of the script. It is customized for my own setup and not
 
     cd
 
-    echo "Dumping forums.wincent.com database"
+    echo "Dumping forums database"
     mysqldump --opt -u $USERNAME1 -p -h localhost $DATABASE1 | bzip2 -c > $BACKUP1.sql.bz2
 
     echo "Dumping piratewatch.wincent.com database"
@@ -128,7 +129,7 @@ Here is the first draft of the script. It is customized for my own setup and not
     echo "You may now be prompted for your sudo password for the file backup"
     sudo -v
 
-    echo "Backing up forums.wincent.com files"
+    echo "Backing up forums files"
     cd $INSTALL1
     sudo tar -c -v . > ~/$BACKUP1.tar
     gzip --verbose -9 ~/$BACKUP1.tar
@@ -138,7 +139,7 @@ Here is the first draft of the script. It is customized for my own setup and not
     sudo tar -c -v . > ~/$BACKUP2.tar
     gzip --verbose -9 ~/$BACKUP2.tar
 
-    echo "Will now relax the permissions on the forums.wincent.com installation folder"
+    echo "Will now relax the permissions on the installation folder"
     continue_or_abort
     cd $INSTALL1
     sudo chmod -Rv 777 .
