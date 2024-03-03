@@ -50,7 +50,7 @@ Date:   Mon Apr 28 22:31:00 2008 +0200
     This is a temporary measure which will hopefully allow us to diagnose
     and fix bug #668.
     
-    See: http://rails.wincent.com/issues/668
+    See: http://wincent.com/issues/668
     
     Signed-off-by: Wincent Colaiuta <win@wincent.com>
 
@@ -75,7 +75,7 @@ Date:   Mon Apr 28 14:01:28 2008 +0200
     
     This will hopefully allow us to close bug #668.
     
-    See: http://rails.wincent.com/issues/668
+    See: http://wincent.com/issues/668
     
     Signed-off-by: Wincent Colaiuta <win@wincent.com>
 
@@ -87,7 +87,7 @@ Date:   Mon Apr 28 12:56:59 2008 +0200
     
     This fixes bug #657.
     
-    See: http://rails.wincent.com/issues/657
+    See: http://wincent.com/issues/657
     
     Signed-off-by: Wincent Colaiuta <win@wincent.com>
 

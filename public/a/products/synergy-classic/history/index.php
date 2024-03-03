@@ -979,7 +979,7 @@
             <li>
               Final fix for missing cover art problem caused by iTunes 7.6.1 and
               7.6.2 (fixes
-              <a href="http://rails.wincent.com/issues/668">bug #668</a>).
+              <a href="http://wincent.com/issues/668">bug #668</a>).
             </li>
           </ul>
 
@@ -989,12 +989,12 @@
             <li>
               Work around missing cover art problem caused by iTunes 7.6.1 and
               7.6.2 (fixes
-              <a href="http://rails.wincent.com/issues/668">bug #668</a>).
+              <a href="http://wincent.com/issues/668">bug #668</a>).
             </li>
             <li>Speed up cover art retrieval.</li>
             <li>
               Catch NSGenericExceptions thrown by Leopard Script Bridge (fixes
-              <a href="http://rails.wincent.com/issues/657">bug #657</a>).
+              <a href="http://wincent.com/issues/657">bug #657</a>).
             </li>
             <li>
               <strong>Note:</strong> the crashes caused by NSAppleScript under
@@ -1028,7 +1028,7 @@
             <li>
               Work around missing cover art problem caused by iTunes 7.6.1 and
               7.6.2 (fixes
-              <a href="http://rails.wincent.com/issues/668">bug #668</a>).
+              <a href="http://wincent.com/issues/668">bug #668</a>).
             </li>
             <li>Speed up cover art retrieval.</li>
           </ul>

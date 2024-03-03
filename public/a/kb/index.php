@@ -665,14 +665,7 @@
           <h3>Wiki maintenance</h3>
 
           <p>
-            The old wiki has now been migrated to
-            <a href="http://rails.wincent.com/wiki/">rails.wincent.com/wiki/</a
-            >.
-          </p>
-
-          <p>
-            A static mirror of the old content is available
-            <a href="http://kbase.wincent.com/old/">here</a>.
+            The old wiki has now been migrated.
           </p>
         </div>
       </div>

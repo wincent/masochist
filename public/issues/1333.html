@@ -128,26 +128,15 @@
                     </p>
                     <p>
                       I needn't have bothered; the problem is plain as day and
-                      would have revealed itself if i'd looked properly:
+                      would have revealed itself if i'd looked properly.
                     </p>
-                    <pre>&lt;     &lt;id&gt;tag:rails.wincent.com,2008:posts/152&lt;/id&gt;
----
-&gt;     &lt;id&gt;tag:wincent.com,2008:posts/152&lt;/id&gt;
-5c5
-&lt;     &lt;link href=&quot;<a href="https://rails.wincent.com/blog/why-merging-hurts-in-subversion-but-is-easy-in-git" class="external">https://rails.wincent.com/blog/why-merging-hurts-in-subversion-but-is-easy-in-git</a>&quot; rel=&quot;alternate&quot; type=&quot;text/html&quot;/&gt;
----
-&gt;     &lt;link href=&quot;<a href="https://wincent.com/blog/why-merging-hurts-in-subversion-but-is-easy-in-git" class="external">https://wincent.com/blog/why-merging-hurts-in-subversion-but-is-easy-in-git</a>&quot; rel=&quot;alternate&quot; type=&quot;text/html&quot;/&gt;
-16c16
-&lt;     &lt;content src=&quot;<a href="https://rails.wincent.com/blog/why-merging-hurts-in-subversion-but-is-easy-in-git" class="external">https://rails.wincent.com/blog/why-merging-hurts-in-subversion-but-is-easy-in-git</a>&quot;/&gt;
----
-&gt;     &lt;content src=&quot;<a href="https://wincent.com/blog/why-merging-hurts-in-subversion-but-is-easy-in-git" class="external">https://wincent.com/blog/why-merging-hurts-in-subversion-but-is-easy-in-git</a>&quot;/&gt;</pre>
                   </blockquote>
                   <p>And this is my reply:</p>
                   <blockquote>
                     <p>
-                      So if someone accesses the site via rails.wincent.com and
-                      is the first to view the feed since the last time the
-                      cache was cleared, &quot;rails.wincent.com&quot; will be
+                      So if someone accesses the site via the rails subdomain
+                      and is the first to view the feed since the last time the
+                      cache was cleared, &quot;rails&quot; will be
                       used in all the entries.
                     </p>
                     <p>
@@ -163,8 +152,8 @@
                     <p>Bugger.</p>
                     <p>
                       I think I'm going to apply some nginx redirection magic to
-                      force all accesses to rails.wincent.com to go to
-                      wincent.com. Unless you have a better suggestion.
+                      force all accesses.
+                      Unless you have a better suggestion.
                     </p>
                     <p>Thanks for your astute trouble-shooting.</p>
                   </blockquote>

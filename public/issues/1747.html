@@ -526,7 +526,7 @@ if (-f $request_filename/index.html) {
                     this (with tweaks to make sure that only GET posts are
                     affected):
                   </p>
-                  <pre># rewrite all requests to rails.wincent.com back to wincent.com
+                  <pre># rewrite all requests to back to wincent.com
 if ($host != wincent.com) {
   rewrite ^(.*) <a href="https://wincent.com$1" class="external">https://wincent.com$1</a> permanent;
 }

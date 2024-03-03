@@ -121,7 +121,7 @@
                     <a href="/issues/1200">ticket #1200</a> (currently private
                     at the time of writing), I'd like to change the URL for this
                     <a href="/wiki/Rails">Rails</a> app to wincent.com rather
-                    than rails.wincent.com
+                    than the rails subdomain.
                   </p>
                   <p>
                     In order to do this will need to &quot;pass through&quot;
@@ -245,7 +245,7 @@
                       will keep working just fine
                     </li>
                     <li>
-                      Any access via &quot;rails.wincent.com&quot; won't need
+                      Any access via the &quot;rails&quot; subdomain won't need
                       special handling; only access via &quot;wincent.com&quot;
                     </li>
                     <li>
@@ -360,7 +360,7 @@ drwxr-xr-x  2 wincent.com wincent.com  4096 Dec  8  2006 xml-schema</pre
                   <p>
                     Once the DNS changes go live will need to update my
                     <code>app_config.yml</code> so that outgoing emails use the
-                    shorter wincent.com hostname instead of rails.wincent.com.
+                    shorter wincent.com hostname instead of the rails subdomain.
                   </p>
                 </blockquote>
               </li>
@@ -376,13 +376,13 @@ drwxr-xr-x  2 wincent.com wincent.com  4096 Dec  8  2006 xml-schema</pre
                 <blockquote>
                   <p>
                     Will also need to update my SSL certs once the changes go
-                    live (the rails.wincent.com IP is currently using the
-                    rails.wincent.com cert, but once wincent.com starts as the
+                    live (the rails subdomain IP is currently using the
+                    rails subdomain cert, but once wincent.com starts as the
                     front end of the app I'll need to swap in the wincent.com
                     cert).
                   </p>
                   <p>
-                    Will probably also want to set up rails.wincent.com to
+                    Will probably also want to set up the rails subdomain to
                     listen on another IP so that I can have a valid cert for
                     that as well (can only have one valid cert per IP).
                   </p>
