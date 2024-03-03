@@ -1,6 +1,7 @@
 ---
 tags: aws wiki
 cache_breaker: 1
+title: aws (command line tool)
 ---
 
 `aws` is a simplified [command line](/wiki/command_line) interface to [Amazon Web Services](/wiki/Amazon_Web_Services).
@@ -40,7 +41,7 @@ If you have an appropriate `/etc/mime.types` file the `aws` tool will automatica
 
 # Uploading
 
-The main bucket I use for public distribution via [HTTP](/wiki/HTTP) is `s3.wincent.com`. (See "[HTTPS access to Amazon S3 buckets](/wiki/HTTPS_access_to_Amazon_S3_buckets)" for info on distribution via [HTTPS](/wiki/HTTPS).)
+The main bucket I use for public distribution via [HTTP](/wiki/HTTP) ~~is~~ was something like `s3.example.com`. (See "[HTTPS access to Amazon S3 buckets](/wiki/HTTPS_access_to_Amazon_S3_buckets)" for info on distribution via [HTTPS](/wiki/HTTPS).)
 
 "Objects" uploaded into the bucket (really files) are identified by textual keys. Keys can have path-like names to give the appearance of hierarchical organization, but in reality buckets are just shallow/flat collections. This means that the following "paths" all refer to objects in the "top" (and _only_) level in the bucket:
 
@@ -51,8 +52,8 @@ The main bucket I use for public distribution via [HTTP](/wiki/HTTP) is `s3.winc
 As an example, to upload `synergy-4.4.zip` into the appropriate bucket:
 
 ```shell
-$ aws put s3.wincent.com/synergy/releases/synergy-4.4.zip /local/path/to/Synergy4.4.zip
-$ aws put s3.wincent.com/synergy/releases/synergy-4.4.zip?acl --public
+$ aws put s3.example.com/synergy/releases/synergy-4.4.zip /local/path/to/Synergy4.4.zip
+$ aws put s3.example.com/synergy/releases/synergy-4.4.zip?acl --public
 ```
 
 The second line is necessary to override the default ACL (which only allows the owner access to the object but nobody else).

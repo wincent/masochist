@@ -1,6 +1,7 @@
 ---
 tags: aws s3 wiki
 cache_breaker: 1
+title: HTTPS access to Amazon S3 buckets
 ---
 
 Amazon [S3](/wiki/S3) maintains [SSL](/wiki/SSL) certificates for:
@@ -31,8 +32,8 @@ So you have two options here:
 
 The latter option may be trickier as the bucket name may already be taken.
 
-In my case I have s3.wincent.com set up as a CNAME alias for s3.wincent.com.s3.amazonaws.com, and this works fine for HTTP requests using URLs of the form `http://s3.wincent.com/[KEY]`.
+In my case I had (something like) `s3.example.com` set up as a CNAME alias for `s3.example.com.s3.amazonaws.com`, and this works fine for HTTP requests using URLs of the form `http://s3.example.com/[KEY]`.
 
 For HTTPS requests I have a different bucket set up, "wincent", which means I can use URLs of the form `https://wincent.s3.amazonaws.com/[KEY]`, or of course, `https://s3.amazonaws.com/wincent/[KEY]`.
 
-I can also issue requests for items in the "s3.wincent.com" bucket over HTTPS using URLs of the form `https://s3.amazonaws.com/s3.wincent.com/[KEY]`.
+I can also issue requests for items in the `s3.example.com` bucket over HTTPS using URLs of the form `https://s3.amazonaws.com/s3.example.com/[KEY]`.

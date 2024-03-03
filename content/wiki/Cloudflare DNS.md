@@ -75,16 +75,18 @@ Credit for the Page Rules configuration goes to [this Stack Overflow answer](htt
         -   `CAA` record `wincent.com` saying that `letsencrypt.org` is allowed to issue certificates; this works because GitHub Pages uses Let's Encrypt to create the certificate for `hex.wincent.com` and I also use Let's Encrypt to generate the other certificates for `wincent.com`, `git.wincent.com` (etc) domains on EC2. If GitHub Pages ever switches to a different Certificate Authority, I'll have to add another `CAA` record.
 -   Page Rules for `wincent.com`: none.
 
-### Case study #3: s3.wincent.com
+### Case study #3: s3.example.com[^example]
 
-As the name suggests, this hostname is associated with an AWS S3 bucket, which I use for hosting binary archives. I originally used `s3.wincent.com` as the bucket name, but later switched to `wincent`, because Amazon uses a wildcard certificate that does not match buckets with dots in their names (ie. it covers `wincent.s3.amazonaws.com` but not `s3.wincent.com.s3.amazonaws.com`).
+[^example]: This wasn't the actual hostname I was using, just an example of the form `s3.$something.com`.
+
+As the name suggests, this hostname is associated with an AWS S3 bucket, which I use for hosting binary archives. I originally used `s3.example.com` as the bucket name, but later switched to `wincent`, because Amazon uses a wildcard certificate that does not match buckets with dots in their names (ie. it covers `wincent.s3.amazonaws.com` but not `s3.example.com.s3.amazonaws.com`).
 
 As suggested in [this ServerFault Pro-Tip](https://serverfault.com/a/661982), we can see the certificate info as follows (edited for brevity, but note the `Subject Alternative Name` info, which says `DNS:*.s3.amazonaws.com, DNS:s3.amazonaws.com`):
 
 ```shell
 $ echo | openssl s_client -showcerts \
-  -servername s3.wincent.com.s3.amazonaws.com \
-  -connect s3.wincent.com.s3.amazonaws.com:443 2> /dev/null | \
+  -servername s3.example.com.s3.amazonaws.com \
+  -connect s3.example.com.s3.amazonaws.com:443 2> /dev/null | \
   openssl x509 -inform pem -noout -text
 Certificate:
     Data:
