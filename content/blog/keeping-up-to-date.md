@@ -13,7 +13,7 @@ An [XML feed](feed://wincent.com/a/news/atom.xml) of the product and site news w
 
 #### Mailing lists
 
-An alternative means of finding out about new product releases and updates is to subscribe to one of the opt-in mailing lists. The purpose and functioning of the lists are described [on this page](http://www.wincent.com/a/support/lists/) and you can subscribe or browse the archives by visiting <http://lists.wincent.com/>.
+An alternative means of finding out about new product releases and updates is to subscribe to one of the opt-in mailing lists. The purpose and functioning of the lists are described [on this page](http://www.wincent.com/a/support/lists/).
 
 #### Wincent Colaiuta's personal weblog
 

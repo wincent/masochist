@@ -71,4 +71,4 @@ But had failed to do:
 
     $ sudo chkconfig mailman on
 
-It turns out that even though `clamd` was not running for a few minutes it didn't prevent mail delivery during that time. Mailman was even less of a worry given the amount of traffic on my [mailing lists](http://lists.wincent.com/). So all in all I am very happy with the upgrade and will apply any other kernel updates in the future
+It turns out that even though `clamd` was not running for a few minutes it didn't prevent mail delivery during that time. Mailman was even less of a worry given the amount of traffic on my mailing lists. So all in all I am very happy with the upgrade and will apply any other kernel updates in the future

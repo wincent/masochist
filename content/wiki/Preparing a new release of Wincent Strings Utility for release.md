@@ -36,7 +36,7 @@ This example uses version 1.1; change the version numbers as appropriate.
 
 12\. Submit notification to VersionTracker, MacUpdate.
 
-13\. Post announcements to [announcements lists](http://lists.wincent.com/).
+13\. Post announcements to announcements lists.
 
 14\. Post announcement to wincent.org
 
