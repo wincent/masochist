@@ -691,12 +691,6 @@
               >https://wincent.com/a/products/synergy-advance/download/nightlies/SynergyAdvanceNightly(451).dmg</a
             >
           </li>
-          <li>
-            <em>Product info</em>:
-            <a href="http://advance.wincent.com/"
-              >http://advance.wincent.com/</a
-            >
-          </li>
         </ul>
 
         <blockquote>

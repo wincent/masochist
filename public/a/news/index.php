@@ -1561,7 +1561,7 @@
             the next phase (migration to Garbage Collection) is underway. I'm
             hoping to have an alpha version out soon, with a Leopard-targeted
             release of
-            <a href="http://advance.wincent.com/">Synergy Advance</a> following
+            Synergy Advance following
             close behind.
           </p>
 
@@ -1729,11 +1729,11 @@
           </p>
           <ul>
             <li>
-              <a href="http://advance.wincent.com">Synergy Advance</a>: Plug-in
+              Synergy Advance: Plug-in
               based audio companion.
             </li>
             <li>
-              <a href="https://hex.wincent.com">Hextrapolate</a>:
+              Hextrapolate:
               Programmers number conversion tool.
             </li>
           </ul>
