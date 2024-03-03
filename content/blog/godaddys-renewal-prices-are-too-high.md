@@ -13,6 +13,6 @@ This is some feedback I just sent to [GoDaddy](http://www.godaddy.com/), on the 
 
 This is a shame. [I like GoDaddy](http://www.wincent.com/a/about/wincent/weblog/archives/2005/05/godaddy_vs_netw.php). But they've disappointed me in this case.
 
-If someone else wants to snap up the domain I will be happy to continue hosting it on this server. At some point DNS look-ups for piratewatch.org will start to fail (when GoDaddy pulls the plug). In the meantime I have moved the site to [piratewatch.wincent.com](http://piratewatch.wincent.com/).
+If someone else wants to snap up the domain I will be happy to continue hosting it on this server. At some point DNS look-ups for piratewatch.org will start to fail (when GoDaddy pulls the plug). In the meantime I have moved the site to.
 
 **Update June 2006:** I notice someone else has snapped up the domain.

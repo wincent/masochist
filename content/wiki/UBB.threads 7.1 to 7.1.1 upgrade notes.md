@@ -123,9 +123,6 @@ Here is the first draft of the script. It is customized for my own setup and not
     echo "Dumping forums database"
     mysqldump --opt -u $USERNAME1 -p -h localhost $DATABASE1 | bzip2 -c > $BACKUP1.sql.bz2
 
-    echo "Dumping piratewatch.wincent.com database"
-    mysqldump --opt -u $USERNAME2 -p -h localhost $DATABASE2 | bzip2 -c > $BACKUP2.sql.bz2
-
     echo "You may now be prompted for your sudo password for the file backup"
     sudo -v
 
@@ -134,24 +131,12 @@ Here is the first draft of the script. It is customized for my own setup and not
     sudo tar -c -v . > ~/$BACKUP1.tar
     gzip --verbose -9 ~/$BACKUP1.tar
 
-    echo "Backing up piratewatch.wincent.com files"
-    cd $INSTALL2
-    sudo tar -c -v . > ~/$BACKUP2.tar
-    gzip --verbose -9 ~/$BACKUP2.tar
-
     echo "Will now relax the permissions on the installation folder"
     continue_or_abort
     cd $INSTALL1
     sudo chmod -Rv 777 .
     upload_instructions
     reset_permissions "$APACHE1"
-
-    echo "Will now relax permissions on the piratewatch.wincent.com installation folder"
-    continue_or_abort
-    cd $INSTALL2
-    sudo chmod -Rv 777 .
-    upload_instructions
-    reset_permissions "$APACHE2"
 
     echo
     echo "All done! You can now re-open your forums"
