@@ -49,7 +49,7 @@ Pretty much the same story as WinSwitch, "Wincent" + "Hex" = "WinHex". Another s
 
 ##### Install
 
-I think I got this one right, as you can't get much simpler than "Install". I wanted to follow Apple's trend of giving their apps simple names like "Mail" and "Address Book" (a trend they have clearly departed from with recent releases like Safari, Exposé and Dashboard). The one downside is that you'll never get your hands on a domain name like "install.com" so the software has to live at [install.wincent.com](http://install.wincent.com/).
+I think I got this one right, as you can't get much simpler than "Install". I wanted to follow Apple's trend of giving their apps simple names like "Mail" and "Address Book" (a trend they have clearly departed from with recent releases like Safari, Exposé and Dashboard). The one downside is that you'll never get your hands on a domain name like "install.com".
 
 #### Branding
 

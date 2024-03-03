@@ -11,7 +11,7 @@ But I think that sometimes the zoomed-in view on all the details -- the commit l
 
 #### This year
 
-Since the start of the year there have been a number of maintenance releases of various products, containing bug fixes, optimizations, and minor feature enhancements. These include [Synergy](http://synergy.wincent.com) 3.1.1b, 3.1.1, 3.1.2b, 3.1.2, 3.1.3b, 3.1.3, 3.1.4b and 3.1.4; [Synergy Advance](http://advance.wincent.com/) 0.5b and 0.5.1b; [Hextrapolate](https://hex.wincent.com) 2.0b and 2.0; and [Install](http://install.wincent.com/) 1.3.1.
+Since the start of the year there have been a number of maintenance releases of various products, containing bug fixes, optimizations, and minor feature enhancements. These include [Synergy](http://synergy.wincent.com) 3.1.1b, 3.1.1, 3.1.2b, 3.1.2, 3.1.3b, 3.1.3, 3.1.4b and 3.1.4; [Synergy Advance](http://advance.wincent.com/) 0.5b and 0.5.1b; [Hextrapolate](https://hex.wincent.com) 2.0b and 2.0; and Install 1.3.1.
 
 Apart from these visible releases there have been a few key areas of "behind the scenes" focus:
 
