@@ -9,4 +9,4 @@ If you're a one-man shop like I am you're likely to spend all your time communic
 
 Those developers who participated have lost in the short term, in my opinion. In the long term they _might_ come out in front, but only if the "mindspace" that they've earned in this show lasts for long enough for them to get some full-price sales out of it.
 
-If the organizers had approached me to participate I would have thought about it. The numbers in my case are not as scandalous seeing as [Synergy](http://synergy.wincent.com/) only costs 5€ anyway, but if I was selling a higher-priced app like TextMate (which currently goes for 39€) there's no way I would've participated, not in a million years.
+If the organizers had approached me to participate I would have thought about it. The numbers in my case are not as scandalous seeing as Synergy only costs 5€ anyway, but if I was selling a higher-priced app like TextMate (which currently goes for 39€) there's no way I would've participated, not in a million years.

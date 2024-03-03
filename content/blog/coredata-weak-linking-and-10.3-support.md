@@ -3,7 +3,7 @@ title: CoreData, weak linking and 10.3 support
 tags: blog
 ---
 
-Ok. So when I started work on [Synergy Advance](http://synergyadvance.com/) I decided to raise the bar on the minimum required OS version to Mac OS X 10.3 (Panther). It just made things easier to drop Jaguar (10.2) support and it allowed me to use delicious new technologies like [Cocoa Bindings](http://developer.apple.com/documentation/Cocoa/Conceptual/CocoaBindings/CocoaBindings.html). In the meantime I've continued to support Jaguar in [Synergy](http://synergy.wincent.com/) even though it's caused some difficulties along the way.
+Ok. So when I started work on [Synergy Advance](http://synergyadvance.com/) I decided to raise the bar on the minimum required OS version to Mac OS X 10.3 (Panther). It just made things easier to drop Jaguar (10.2) support and it allowed me to use delicious new technologies like [Cocoa Bindings](http://developer.apple.com/documentation/Cocoa/Conceptual/CocoaBindings/CocoaBindings.html). In the meantime I've continued to support Jaguar in Synergy even though it's caused some difficulties along the way.
 
 Well, when Tiger came along I decided that I would keep my Panther support in place in Synergy Advance but add some extra functionality when the app was launched on Tiger. The trouble that I'm currently facing is that the divide between what can be done in the two versions of the OS is just getting too wide, and one of the major problems is [Core Data](http://developer.apple.com/macosx/coredata.html). It's just too damn powerful, and I can do too many things with it that I can't even contemplate trying to replicate them on Panther.
 

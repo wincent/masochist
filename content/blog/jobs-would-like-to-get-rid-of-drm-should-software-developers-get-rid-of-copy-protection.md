@@ -11,7 +11,7 @@ But I think there's an interesting question here: is there an analogy between DR
 
 #### Why it wouldn't work for software
 
-Let me explain: when you download music from the iTMS it is protected by DRM; when you download software like [Synergy](http://synergy.wincent.com/) it is protected by a serial number system.
+Let me explain: when you download music from the iTMS it is protected by DRM; when you download software like Synergy it is protected by a serial number system.
 
 Jobs is basically saying that he'd embrace a model in which you could download DRM-free music from the iTMS. Does that mean that I could or should start distributing software without any serial number system?
 

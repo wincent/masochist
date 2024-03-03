@@ -8,4 +8,3 @@ tags: snippets
 -   _Size_: 1,560,146 bytes
 -   _SHA1 checksum_: f2487f400ed8e88a4d8860bd8ced0f56787fb40e
 -   _Direct link_: <http://www.wincent.com/a/products/synergy-classic/download/nightlies/SynergyNightly(339).dmg>
--   _Product info_: <http://synergy.wincent.com/>

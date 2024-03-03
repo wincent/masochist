@@ -7,7 +7,7 @@ When I first got a home-based Internet connection 10 years ago Google didn't exi
 
 Now, 10 years later, I can type my name into Google and see a trail that stretches across time and space. All the dumb questions I ever asked to a mailing list are on record. All the misguided suggestions or incorrect assertions I ever posted in a newsgroup are engraved into the annals of history. Every joke I tried that wasn't funny is recorded, as is every sarcastic comment or annoyed utterance.
 
-Back when I started none of this mattered, but in the age of Google there is is no such thing as comfortable anonymity. This is partly why I never make posts to mailing lists like [cocoa-dev](http://lists.apple.com/mailman/listinfo/cocoa-dev). I have a corporate image to uphold; maybe it's stupid vanity but I just don't want the author of [Synergy](http://synergy.wincent.com/) to be seen asking dumb questions about Cocoa Bindings. Sadly, this means I'm a lurker.
+Back when I started none of this mattered, but in the age of Google there is is no such thing as comfortable anonymity. This is partly why I never make posts to mailing lists like [cocoa-dev](http://lists.apple.com/mailman/listinfo/cocoa-dev). I have a corporate image to uphold; maybe it's stupid vanity but I just don't want the author of Synergy to be seen asking dumb questions about Cocoa Bindings. Sadly, this means I'm a lurker.
 
 If I had known then what I know now I would never, ever have posted to a mailing list or a newsgroup with anything other than a throwaway address. Just think of all the spam I could have avoided...
 

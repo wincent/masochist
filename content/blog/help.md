@@ -7,11 +7,11 @@ I [previously wrote](http://www.wincent.com/a/about/wincent/weblog/archives/2007
 
 > The sky really is the limit on this one. One of the things that has always frustrated me about Apple's Help system is that it is very difficult to take the same documentation and use it both in the application itself as well as mirroring a copy to your website. If you use Apple's proprietary link style then your pages won't work on the web; if you use normal HTML links then you lose the frills that you get in Apple's Help Viewer. Furthermore, the system is poorly documented: most of the information is out-of-date or just plain missing (some of the [best information](http://andymatuschak.org/articles/2005/12/18/help-with-apple-help) is not actually provided by Apple). What happens if Apple changes the way it works in the future? For theses reasons I've always been reluctant to include in-application Help. But using Walrus I am able to easily have the best of both worlds. I can have a helper function that emits Apple-style links if a particular environment variable is set at the time the templates are filled, and emits standard HTML links in other cases. If Apple ever changes the link format I'll just have to tweak the helper method and recompile.
 
-I've just pushed out updates ([1](http://www.wincent.com/a/news/archives/2007/04/hextrapolate_20_1.php), [2](http://www.wincent.com/a/news/archives/2007/04/synergy_312_now.php)) to [Hextrapolate](https://hex.wincent.com/) and [Synergy](http://synergy.wincent.com/) which show the difference between my new approach and my old one.
+I've just pushed out updates ([1](http://www.wincent.com/a/news/archives/2007/04/hextrapolate_20_1.php), [2](http://www.wincent.com/a/news/archives/2007/04/synergy_312_now.php)) to [Hextrapolate](https://hex.wincent.com/) and Synergy which show the difference between my new approach and my old one.
 
 ### The old
 
-[Synergy](http://synergy.wincent.com/) uses [online help documentation](http://www.wincent.com/a/products/synergy-classic/). It's fairly extensive, but obviously can't be read offline unless you previously mirror it.
+Synergy uses [online help documentation](http://www.wincent.com/a/products/synergy-classic/). It's fairly extensive, but obviously can't be read offline unless you previously mirror it.
 
 When Synergy first came out I actually used embedded help documentation that could be viewed using Apple's Help Viewer. Back in version 1.2 (August 2004) I decided to stop doing that and instead keep all the help online. I was motivated by:
 

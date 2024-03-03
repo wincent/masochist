@@ -8,7 +8,7 @@ Still plenty to be fixed as [noted in the announcement](http://www.wincent.com/a
     START: Wed Apr 04 06:10:41 +0200 2007
     PROJECT: synergy_jaguar
 
-So [Synergy](http://synergy.wincent.com) gets skipped because there have been no changes committed since [the last nightly](http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_340.php) was uploaded; 21 lines logged later...
+So Synergy gets skipped because there have been no changes committed since [the last nightly](http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_340.php) was uploaded; 21 lines logged later...
 
     SKIPPING: revision 340 already uploaded for this project
     PROJECT: synergy_advance

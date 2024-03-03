@@ -5,7 +5,7 @@ tags: blog
 
 I've spent the day making improvements to my [product activation](http://www.wincent.com/a/support/activation/) systems and I am fairly pleased with the results. These changes should make the product activation experience (which is already pretty good) even better for customers (when talking about copy protection there are two kinds of improvements you can make: those which make life easier for your customers and those which make life harder for pirates; the changes I've made today belong to the former class).
 
-I started thinking about this earlier this month when a [Synergy Advance](http://synergyadvance.com/) user wrote in asking:
+I started thinking about this earlier this month when a Synergy Advance user wrote in asking:
 
 > Is there no way to "deactivate" authentication on a system you're departing?
 
@@ -15,7 +15,7 @@ The user in question works in the press and changes machines frequently. My resp
 >
 > The limits (in the case of a single-user license like yours, five installs) have proven to be a good compromise. In the year and a half since Synergy Advance was first released the vast majority have only activated once, and more than 99% of users haven't hit the limit. The handful of users who have hit the limit have contacted me and I've reset their limits. In a case like yours where you've not only hit the limit but you also know that you're likely to hit it again, I can set a higher-than-usual limit so that you won't be bothered by it.
 >
-> It's true that the solution is not perfect but it has proven to be a successful compromise; unlike [Synergy](http://synergy.wincent.com/) which has always been very heavily pirated I've yet to see any Synergy Advance license code leaks. Basically it forces attackers to use cracking (harder) rather than mere license sharing (easier), and it seems to work very well.
+> It's true that the solution is not perfect but it has proven to be a successful compromise; unlike Synergy which has always been very heavily pirated I've yet to see any Synergy Advance license code leaks. Basically it forces attackers to use cracking (harder) rather than mere license sharing (easier), and it seems to work very well.
 
 With specific reference to the "deauthorization" idea I wrote this:
 

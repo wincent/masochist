@@ -3,7 +3,7 @@ title: Core Image Fun House
 tags: blog
 ---
 
-With every major release of Mac OS X Apple delivers some delicious new APIs to developers. I've missed out on these a lot in the past because I've wanted my products to support older versions of Mac OS X. It's true that you can employ a number of tricks like weak linking to make your software run on multiple OS versions, but the complexity of your code increases as does the difficulty of adequately testing it. [Synergy](http://synergy.wincent.com/), for example, began development on Jaguar back in 2002 and it doesn't make use of any post-10.2 API.
+With every major release of Mac OS X Apple delivers some delicious new APIs to developers. I've missed out on these a lot in the past because I've wanted my products to support older versions of Mac OS X. It's true that you can employ a number of tricks like weak linking to make your software run on multiple OS versions, but the complexity of your code increases as does the difficulty of adequately testing it. Synergy, for example, began development on Jaguar back in 2002 and it doesn't make use of any post-10.2 API.
 
 Products that I released later on, such as [Synergy Advance](http://synergyadvance.com/) take advantage of newer APIs found in Panther (Cocoa Bindings, for example). But I've still tended to keep things at the level of the "lowest common denominator", and when Tiger came out I still tried to use only APIs that were available on Panther as well.
 

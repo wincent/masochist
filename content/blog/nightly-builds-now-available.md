@@ -3,7 +3,7 @@ title: Nightly builds now available
 tags: blog
 ---
 
-In March 2007 I [announced](http://www.wincent.com/a/about/wincent/weblog/archives/2007/03/planned_changes.php) my intention to make nightly builds available, starting with [Synergy](http://synergy.wincent.com) and after a couple of weeks of testing, Synergy Advance and then [Hextrapolate](https://hex.wincent.com/), with other products to follow.
+In March 2007 I [announced](http://www.wincent.com/a/about/wincent/weblog/archives/2007/03/planned_changes.php) my intention to make nightly builds available, starting with Synergy and after a couple of weeks of testing, Synergy Advance and then [Hextrapolate](https://hex.wincent.com/), with other products to follow.
 
 First up, what is a nightly build? The folks at [Mozilla](http://mozilla.org/) (makers of [FireFox](http://getfirefox.com/)) describe them as follows:
 

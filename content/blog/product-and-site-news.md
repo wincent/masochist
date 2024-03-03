@@ -9,7 +9,7 @@ As part of the site redesign, there is a new section (which you are reading righ
 
 The site now known as "[wincent.org](http://wincent.org)" began its life on the web in 1997 as "Wincent's Website", although it did not move to its own domain name until a couple of years later. On moving to the dot-org domain, it switched to a weblog format.
 
-In 2002 with the release of [Synergy](http://synergy.wincent.com/), the nature of the site changed. It now had to serve not only as an informational weblog, but as a product website as well.
+In 2002 with the release of Synergy, the nature of the site changed. It now had to serve not only as an informational weblog, but as a product website as well.
 
 In 2003 I acquired the [wincent.com](http://www.wincent.com/) domain name and tried to establish a separation between the commercial content (products) which would be hosted on [wincent.com](http://www.wincent.com/), and the non-commercial content (articles, tips, information) which would continued to be hosted on [wincent.org](http://wincent.org/).
 

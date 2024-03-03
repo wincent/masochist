@@ -3,7 +3,7 @@ title: Lots of refactoring
 tags: blog
 ---
 
-Sometimes you make bad decisions that later come back to bite you. About three years ago when I started work on [Synergy Advance](http://synergyadvance.com/) I was still relatively new to [Subversion](http://subversion.tigris.org/). So, rather than creating a new repository I decided to store the Synergy Advance code within a subdirectory of the [Synergy](http://synergy.wincent.com/) repository.
+Sometimes you make bad decisions that later come back to bite you. About three years ago when I started work on Synergy Advance I was still relatively new to [Subversion](http://subversion.tigris.org/). So, rather than creating a new repository I decided to store the Synergy Advance code within a subdirectory of the Synergy repository.
 
 I've been living with the uncomfortable consequences of that decision ever since. The two codebases are completely separate but because they live in the same repository it means that the `tags` and `branches` subdirectories are cluttered with entries for two projects instead of one. Worse still, the `trunk` itself is shared by two separate projects and sometimes, through lack of discipline or by mistake, commits (changesets) that should really be split up into two separate actions (one for each project) end up getting shoved into the repository in one go.
 

@@ -8,6 +8,5 @@ tags: snippets
 -   _Size_: 2,145,865 bytes
 -   _SHA1 checksum_: 8fc76f4c8ef1351a2259c253a1a7580b114e123b
 -   _Direct link_: <http://www.wincent.com/a/products/synergy-classic/download/nightlies/Synergy3.5a2+(c7eb0af).zip>
--   _Product info_: <http://synergy.wincent.com/>
 
 _Note_: This nightly requires Mac OS X 10.5 (Leopard). If you require a version of that runs on older versions of Mac OS X please see <http://www.wincent.com/a/products/synergy-classic/download/tiger/>.
