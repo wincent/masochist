@@ -3,7 +3,7 @@ title: Bugzilla upgrade
 tags: blog
 ---
 
-Yesterday I performed a major upgrade to the [Bugzilla](http://www.wincent.com/knowledge-base/Bugzilla) feature requests and bug tracking database currently deployed at [bugs.wincent.com](http://bugs.wincent.com/). This is the biggest update ever since I first started using [Bugzilla](http://www.wincent.com/knowledge-base/Bugzilla) back in late October 2004, bringing many new features and improvements.
+Yesterday I performed a major upgrade to the [Bugzilla](http://www.wincent.com/knowledge-base/Bugzilla) feature requests and bug tracking database. This is the biggest update ever since I first started using [Bugzilla](http://www.wincent.com/knowledge-base/Bugzilla) back in late October 2004, bringing many new features and improvements.
 
 I'll be watching it closely over the next few days to make sure that everything is still working as expected. If you encounter any issues or have other feedback please let me know at <win@wincent.com>.
 

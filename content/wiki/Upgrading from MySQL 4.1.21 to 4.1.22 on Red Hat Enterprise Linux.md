@@ -1,5 +1,6 @@
 ---
 tags: red.hat mysql wiki
+title: Upgrading from MySQL 4.1.21 to 4.1.22 on Red Hat Enterprise Linux
 ---
 
 # The upgrade
@@ -97,11 +98,11 @@ Downtime was less than 60 seconds.
 
 -   Try connecting to MySQL from the command line
 -   Check that website works:
-    -   PHP + MySQL still works?: <http://forums.wincent.com/>
-    -   Perl + MySQL still works?: <http://bugs.wincent.com/>
-    -   Python + Apache still works?: <http://lists.wincent.com/>
-    -   Regular HTTP still works?: <http://wincent.com/>
-    -   HTTPS still works?: <https://secure.wincent.com/a/store/>
+    -   PHP + MySQL still works?
+    -   Perl + MySQL still works?
+    -   Python + Apache still works?
+    -   Regular HTTP still works?
+    -   HTTPS still works?
 -   Check to see versions of installed RPMs:
 
 <!-- -->

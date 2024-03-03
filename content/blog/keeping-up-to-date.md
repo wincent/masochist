@@ -47,16 +47,14 @@ For background information see [this article](http://www.wincent.com/a/about/win
 
 #### Bugs and feature requests database
 
-If you're interested in keeping up to date with progress towards a specific bug fix or feature implementation you can add yourself as a "CC" to the corresponding issue in the bugs and feature requests database (<http://bugs.wincent.com/>). You can then tailor your preferences to control how and when you'll be notified when changes are made to the issue.
-
-The database also features a [powerful query interface](http://www.wincent.com/a/support/bugs/query.cgi). For example, I made [this query](http://www.wincent.com/a/support/bugs/buglist.cgi?query_format=advanced&short_desc_type=allwordssubstr&short_desc=&long_desc_type=allwordssubstr&long_desc=&bug_file_loc_type=allwordssubstr&bug_file_loc=&keywords_type=allwords&keywords=&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&bug_status=RESOLVED&bug_status=VERIFIED&bug_status=CLOSED&emailassigned_to1=1&emailtype1=substring&email1=&emailassigned_to2=1&emailreporter2=1&emailcc2=1&emailtype2=substring&email2=&bugidtype=include&bug_id=&votes=&chfieldfrom=-7d&chfieldto=Now&chfield=%5BBug+creation%5D&chfield=alias&chfield=assigned_to&chfield=bug_file_loc&chfield=bug_severity&chfield=bug_status&chfield=cclist_accessible&chfield=component&chfield=deadline&chfield=everconfirmed&chfield=keywords&chfield=op_sys&chfield=priority&chfield=product&chfield=qa_contact&chfield=rep_platform&chfield=reporter&chfield=reporter_accessible&chfield=resolution&chfield=short_desc&chfield=status_whiteboard&chfield=target_milestone&chfield=version&chfield=votes&chfieldvalue=&cmdtype=doit&order=Reuse+same+sort+as+last+time&field0-0-0=noop&type0-0-0=noop&value0-0-0=) by entering "-7d" in one of the relative date fields; it shows all of the issues which have changed in some way over the last seven days.
+If you're interested in keeping up to date with progress towards a specific bug fix or feature implementation you can add yourself as a "CC" to the corresponding issue in the bugs and feature requests database. You can then tailor your preferences to control how and when you'll be notified when changes are made to the issue.
 
 #### Forums
 
-Although I try to post most of the information about my progress to my [personal weblog](http://colaiuta.net/), questions occasionally crop up in the forums (<http://forums.wincent.com/>) which may be of interest. Once you have an account for the forums you can "subscribe" to them and be notified once per day (if there are new posts).
+Although I try to post most of the information about my progress to my personal weblog, questions occasionally crop up in the forums which may be of interest. Once you have an account for the forums you can "subscribe" to them and be notified once per day (if there are new posts).
 
 #### Knowledge base
 
-I often make notes in the [knowledge base](http://www.wincent.com/knowledge-base/) about things I am working on and technical problems I am solving.
+I often make notes in the knowledge base about things I am working on and technical problems I am solving.
 
-The knowledge base is wiki-based and features a ["Recent changes"](http://www.wincent.com/knowledge-base/Special:Recentchanges) page and a corresponding [XML feed](feed://wincent.com/a/kb/index.php?title=Special:Recentchanges&feed=atom) that you can use to monitor activity.
+The knowledge base is wiki-based and features a "Recent changes" page and a corresponding XML feed that you can use to monitor activity.

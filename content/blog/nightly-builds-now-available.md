@@ -13,7 +13,7 @@ Nightly builds are produced by many great open source projects such as [WebKit](
 
 ### Benefits
 
--   Users can confirm that [bugs](http://bugs.wincent.com/) are fixed soon after [changes](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/index.php) are committed to the source code repository.
+-   Users can confirm that bugs are fixed soon after [changes](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/index.php) are committed to the source code repository.
 -   Users don't have to wait for an official release in order to start benefitting from new features under development.
 -   Greater transparency of the development process: users can see progress as it is being made.
 
@@ -52,7 +52,7 @@ As noted on the Nightlog pages:
 
 > Nightly builds are generated once per day by an automated system; they are not official releases and they receive no human testing prior to being uploaded. They are provided with no warranty of any kind; use them at your own risk.
 
-If you discover a problem please report it via the [bug tracking and feature requests database](http://bugs.wincent.com/), or contact me by sending an email to <win@wincent.com>.
+If you discover a problem please report it via the bug tracking and feature requests database, or contact me by sending an email to <win@wincent.com>.
 
 ### See also
 

@@ -1,5 +1,6 @@
 ---
 tags: red.hat mysql wiki
+title: Upgrading from MySQL 4.1.20 to 4.1.21 on Red Hat Enterprise Linux
 ---
 
 # Downloading
@@ -135,11 +136,11 @@ Check that [Apache](/wiki/Apache) and [MySQL](/wiki/MySQL) is running:
 
 Check that website works:
 
--   PHP + MySQL still works?: <http://forums.wincent.com/>
--   Perl + MySQL still works?: <http://bugs.wincent.com/>
--   Python + Apache still works?: <http://lists.wincent.com/>
--   Regular HTTP still works?: <http://wincent.com/>
--   HTTPS still works?: <https://secure.wincent.com/a/store/>
+-   PHP + MySQL still works?
+-   Perl + MySQL still works?
+-   Python + Apache still works?
+-   Regular HTTP still works?
+-   HTTPS still works?
 
 Check to see versions of installed RPMs:
 

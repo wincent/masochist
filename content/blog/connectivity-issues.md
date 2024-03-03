@@ -3,7 +3,7 @@ title: Connectivity issues
 tags: blog
 ---
 
-I've just been informed that our local network provider will be changed over at some point this month (the exact date isn't known). This website will continue to be operational throughout as it is hosted offsite — so the [store](http://store.wincent.com/), the [forums](http://forums.wincent.com), the [mailing lists](http://lists.wincent.com/), the [bug and feature requests database](http://bugs.wincent.com/), the [knowledge base](http://kbase.wincent.com), the [lost serial retrieval interface](https://secure.wincent.com/a/support/registration/), the public source code repository and so on will all continue to be available — but my local connectivity will go down for a period that will most likely range from a few days to as much as two weeks. This means that email response times might be a bit slower than usual during the outage. I'll post an update here once the changeover is complete.
+I've just been informed that our local network provider will be changed over at some point this month (the exact date isn't known). This website will continue to be operational throughout as it is hosted offsite — so the store, the forums, the mailing lists, the bug and feature requests database, the knowledge base, the lost serial retrieval interface, the public source code repository and so on will all continue to be available — but my local connectivity will go down for a period that will most likely range from a few days to as much as two weeks. This means that email response times might be a bit slower than usual during the outage. I'll post an update here once the changeover is complete.
 
 ### Update
 
