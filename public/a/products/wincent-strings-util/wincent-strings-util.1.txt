@@ -214,8 +214,7 @@ HISTORY
 	   o   Includes this man page.
 
      The first public release of wincent-strings-util took place on February
-     19, 2006. The latest version is always available from
-     http://strings.wincent.com/.
+     19, 2006.
 
 AUTHORS
      Wincent Colaiuta (https://wincent.com/)

@@ -1392,12 +1392,12 @@
 
           <p>
             I've just released an update to the
-            <a href="http://strings.wincent.com/">Wincent Strings Utility</a>,
+            Wincent Strings Utility,
             the localization helper tool for developers. Version 1.2 is
             basically a total rewrite for
             <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a>
             which adds a bunch of new features and improvements. See the
-            <a href="http://strings.wincent.com/">official product page</a> for
+            official product page for
             a full list of changes, download links, and further information.
           </p>
           <p>
@@ -1699,7 +1699,7 @@
               Objective-C unit testing framework.
             </li>
             <li>
-              <a href="http://strings.wincent.com">Wincent Strings Utility</a>:
+              Wincent Strings Utility:
               open source localization helper tool for developers.
             </li>
           </ul>
