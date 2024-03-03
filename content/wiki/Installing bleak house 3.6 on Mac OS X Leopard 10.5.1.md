@@ -1,5 +1,6 @@
 ---
 tags: bleak.house wiki
+title: Installing bleak house 3.6 on Mac OS X Leopard 10.5.1
 ---
 
 These notes were made while installing [bleak_house](/wiki/bleak_house) 3.6 on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.1.
@@ -306,7 +307,7 @@ Now, to actually use this you'll want to ensure that `/usr/local/ruby-bleak-hous
 
 Will then automatically use it.
 
-For this sandbox to actually be useful you'll probably want to bootstrap it with a minimum of [gems](/wiki/gems). For example, I wanted to test [Walrus](http://walrus.wincent.com/) in this environment; all of these commands were executed with `/usr/local/ruby-bleak_house/bin` at the start of the `PATH`:
+For this sandbox to actually be useful you'll probably want to bootstrap it with a minimum of [gems](/wiki/gems). For example, I wanted to test Walrus in this environment; all of these commands were executed with `/usr/local/ruby-bleak_house/bin` at the start of the `PATH`:
 
     # with RubyGems we won't get very far
     wget http://rubyforge.org/frs/download.php/29548/rubygems-1.0.1.tgz

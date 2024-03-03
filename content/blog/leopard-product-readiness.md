@@ -38,4 +38,4 @@ The status of the following product on Leopard is unknown:
 There are a number of other products which aren't specifically tied to the Mac OS X platform, and so should work on Leopard just as they did under Tiger:
 
 -   Bansshee: protection against SSH dictionary attacks.
--   [Walrus](http://walrus.wincent.com): object-oriented templating system written in [Ruby](http://www.wincent.com/knowledge-base/Ruby).
+-   Walrus: object-oriented templating system written in [Ruby](http://www.wincent.com/knowledge-base/Ruby).

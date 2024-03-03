@@ -31,7 +31,7 @@ Thanks to [SVK](http://www.wincent.com/knowledge-base/SVK) (which provides a loc
 
 It shouldn't be too much work to set this up; I can probably just modify the current nightlies script and pass in a command-line switch to get the desired behaviour.
 
-This is just one of the ways in which my recent work using [Ruby](http://www.wincent.com/knowledge-base/Ruby) to write [Walrus](http://walrus.wincent.com/) has made me a better programmer; working with the excellent [Autotest](http://www.wincent.com/knowledge-base/Autotest) suite prompted me to take this step.
+This is just one of the ways in which my recent work using [Ruby](http://www.wincent.com/knowledge-base/Ruby) to write Walrus has made me a better programmer; working with the excellent [Autotest](http://www.wincent.com/knowledge-base/Autotest) suite prompted me to take this step.
 
 ### Packaging tests
 
