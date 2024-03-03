@@ -1,10 +1,11 @@
 ---
 tags: nginx ssl wiki
+title: SSL certificate renewal notes 2010
 ---
 
 My previous [SSL](/wiki/SSL) certificate was a [RapidSSL](/wiki/RapidSSL)-issued certificate, and I'm going with the same (cheapest) reseller that I did last time (see "[SSL certificate renewal notes 2008](/wiki/SSL_certificate_renewal_notes_2008)"): [ServerTastic](http://www.servertastic.com/) (a 5-year renewal for $50, or $10 per year).
 
-I have two certificates for wincent.com and rails.wincent.com which both expire 23 january 2010. I'll be letting the certificate for rails.wincent.com expire as the domain is not actively used anymore and only redirects to wincent.com.
+I have two certificates for typechecked.net and rails.typechecked.net which both expire 23 january 2010. I'll be letting the certificate for rails.typechecked.net expire as the domain is not actively used anymore and only redirects to wincent.com.
 
 I also have a [RapidSSL](/wiki/RapidSSL) certificate for secure.wincent.com but that doesn't expire until 23 May 2013 so I won't be renewing that one just yet (and in fact, by the time 2013 comes around the domain is unlikely to be in active use anyway).
 
