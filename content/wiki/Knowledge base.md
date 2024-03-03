@@ -1,15 +1,16 @@
 ---
 tags: wiki
 cache_breaker: 1
+title: Knowledge base
 ---
 
 ## History
 
 The [Knowledge Base](/wiki/Knowledge_Base) is a collection of useful information that I compile about topics of interest to a technical audience, particularly [Mac OS X](/wiki/Mac_OS_X) users and developers. It was originally published as a series of entries in a [Movable Type](/wiki/Movable_Type)-backed [weblog](/wiki/weblog) at <http://wincent.com/a/knowledge-base/> (but note that that [URL](/wiki/URL) may well be defunct by the time you read this; I will provide a static mirror at some point so that the content doesn't go away forever).
 
-I used the [weblog](/wiki/weblog) format from November 2004 through to August 2006, but it was a poor fit for this type of information which would better be organized in a [wiki](/wiki/wiki). So from August 2006 through to early 2008 I maintained a new version of the [Knowledge Base](/wiki/Knowledge_Base) using a [MediaWiki](/wiki/MediaWiki) installation at [kbase.wincent.com](http://kbase.wincent.com/). During this time the Knowledge Base accumulated hundreds of pages of information.
+I used the [weblog](/wiki/weblog) format from November 2004 through to August 2006, but it was a poor fit for this type of information which would better be organized in a [wiki](/wiki/wiki). So from August 2006 through to early 2008 I maintained a new version of the [Knowledge Base](/wiki/Knowledge_Base) using a [MediaWiki](/wiki/MediaWiki) installation. During this time the Knowledge Base accumulated hundreds of pages of information.
 
-When the [wincent.com](http://wincent.com/) site redesign went live in April 2008 the old [Knowledge Base](/wiki/Knowledge_Base) was replaced with the custom [wiki](/wiki/wiki) that you're reading right now. A static mirror of the old [MediaWiki](/wiki/MediaWiki) content will continue to be available at <http://kbase.wincent.com/old/> while requests for <http://kbase.wincent.com/> will be redirected to this wiki.
+When the [wincent.com](http://wincent.com/) site redesign went live in April 2008 the old [Knowledge Base](/wiki/Knowledge_Base) was replaced with the custom [wiki](/wiki/wiki) that you're reading right now. A static mirror of the old [MediaWiki](/wiki/MediaWiki) content will continue to be available while requests will be redirected to this wiki.
 
 In addition, the old content was exported from the [MediaWiki](/wiki/MediaWiki) installation via an [XML](/wiki/XML) dump and imported into the new [wiki](/wiki/wiki). The export/import was fairly straightforward and _most_ of the content has made it through with only minor glitches or omissions, largely due to the fact that the [wikitext](/wiki/wikitext) markup used in the new wiki was designed from the beginning with a large degree of MediaWiki compatibility in mind.
 

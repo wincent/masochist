@@ -64,7 +64,7 @@ I have to take the blame for many of the misunderstandings evinced in many of th
 
 -   "I can see why it was necessary for him to link to his own KB, instead of just linking directly to wordpress.org"
 
-I often link to articles in the [Knowledge Base](http://kbase.wincent.com/) rather than linking directly to an external site because it allows me to provide annotated links rather than plain ones, although in the case of the [WordPress](http://www.wincent.com/knowledge-base/WordPress) there is nothing much to see (other than the [category link](http://www.wincent.com/knowledge-base/Category:WordPress) which itself reveals quite a few WordPress-related articles).
+I often link to articles in the Knowledge Base rather than linking directly to an external site because it allows me to provide annotated links rather than plain ones, although in the case of the [WordPress](http://www.wincent.com/knowledge-base/WordPress) there is nothing much to see (other than the [category link](http://www.wincent.com/knowledge-base/Category:WordPress) which itself reveals quite a few WordPress-related articles).
 
 -   "Did the WP team steal his first born or something?"
 

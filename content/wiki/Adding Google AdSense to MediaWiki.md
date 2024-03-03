@@ -1,5 +1,6 @@
 ---
 tags: google adsense wiki
+title: Adding Google AdSense to MediaWiki
 ---
 
 I started off from [this article](http://www.dankohn.com/archives/000338.html) which offers an out-of-date but still helpful summary of one way of adding [Google AdSense](/wiki/Google_AdSense) to a [MediaWiki](/wiki/MediaWiki) installation.
@@ -90,7 +91,7 @@ Given that I perform my [MediaWiki](/wiki/MediaWiki) updates using [Subversion](
 
 Seeing as I was editing the template I decided to address a long-standing annoyance with the clickable Wincent logo in the top-left corner of every page on the wiki.
 
-The problem is that clicking on the logo takes you to the top of the wiki (<http://kbase.wincent.com/>) instead of the top of the domain (<http://wincent.com/>). I think this is confusing to users. If they want to go to the top page of the wiki they can click the "Main Page" link (the first item in the "navigation" portal on the left). I think most users would expect that clicking on the logo, however, should take them to the principal page of the entire site which in this case is the top of the domain, not the top of the wiki. So one more change was in order:
+The problem is that clicking on the logo takes you to the top of the wiki instead of the top of the domain (<http://wincent.com/>). I think this is confusing to users. If they want to go to the top page of the wiki they can click the "Main Page" link (the first item in the "navigation" portal on the left). I think most users would expect that clicking on the logo, however, should take them to the principal page of the entire site which in this case is the top of the domain, not the top of the wiki. So one more change was in order:
 
     --- skins/MonoBook.php  (revision 20020)
     +++ skins/MonoBook.php  (working copy)
