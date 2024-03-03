@@ -1001,11 +1001,11 @@
 
         <p>
           Yesterday I was working on getting
-          <a href="http://winswitch.wincent.com/">WinSwitch</a> up and running
+          WinSwitch up and running
           as a Universal Binary. One of the hold-ups has been that a couple of
           the frameworks that WinSwitch depends on, WOBezel and WOHotKey, have
           been under heavy development as part of my work on
-          <a href="http://synergyadvance.com/">Synergy Advance</a>. This
+          Synergy Advance. This
           required some changes to WinSwitch to get the whole thing back into a
           buildable state.
         </p>

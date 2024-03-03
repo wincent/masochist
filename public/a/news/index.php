@@ -1715,7 +1715,7 @@
           </p>
           <ul>
             <li>
-              <a href="http://winswitch.wincent.com/">WinSwitch</a>: Fast User
+              WinSwitch: Fast User
               Switching menu replacement.
             </li>
           </ul>

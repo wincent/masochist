@@ -677,8 +677,8 @@
 
         <p>
           Forgot to mention these the other day. Put out minor updates to
-          <a href="http://winswitch.wincent.com/">WinSwitch</a> (3.2.1) and
-          <a href="http://synergyadvance.com/">Synergy Advance</a> (0.4b4) to
+          WinSwitch (3.2.1) and
+          Synergy Advance (0.4b4) to
           remove spurious crash warnings.
         </p>
 

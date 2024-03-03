@@ -871,16 +871,6 @@
               User Switching
               <ul>
                 <li><a href="https://wincent.com/">Wincent company page</a></li>
-                <li>
-                  <a href="http://winswitch.wincent.com/"
-                    >WinSwitch product information</a
-                  >
-                </li>
-                <li>
-                  <a href="https://wincent.com/download?item=WinSwitch.dmg"
-                    >WinSwitch download</a
-                  >
-                </li>
               </ul>
             </li>
           </ul>
