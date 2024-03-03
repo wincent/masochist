@@ -1029,7 +1029,7 @@
           <h3 id="a004168">Call for Bansshee donations</h3>
 
           <p>
-            <a href="http://bansshee.wincent.com/">Bansshee</a> is a free,
+            Bansshee is a free,
             open-source tool to thwart dictionary-based SSH attacks. As a
             convenience to users there are three domains, bansshee.com,
             bansshee.net, and bansshee.org, that resolve to the Bansshee project
@@ -1775,7 +1775,7 @@
           </p>
           <ul>
             <li>
-              <a href="http://bansshee.wincent.com">Bansshee</a>: protection
+              Bansshee: protection
               against SSH dictionary attacks.
             </li>
             <li>

@@ -44,7 +44,7 @@
 
 <item>
 <title>Call for Bansshee donations</title>
-<description><![CDATA[<p><a href='http://bansshee.wincent.com/'>Bansshee</a> is a free, open-source tool to thwart dictionary-based SSH attacks. As a convenience to users there are three domains, bansshee.com, bansshee.net, and bansshee.org, that resolve to the Bansshee project page. These are coming up for renewal soon (they expire on 11 April 2008) so I'm turning to the public to ask for donations to cover the cost of their ongoing registration.</p>
+<description><![CDATA[<p>Bansshee is a free, open-source tool to thwart dictionary-based SSH attacks. As a convenience to users there are three domains, bansshee.com, bansshee.net, and bansshee.org, that resolve to the Bansshee project page. These are coming up for renewal soon (they expire on 11 April 2008) so I'm turning to the public to ask for donations to cover the cost of their ongoing registration.</p>
 <p>They're currently registered with <a href='https://joker.com/'>joker.com</a>, and the renewal price for each domain is $12.00. <a href='https://wincent.com/a/about/wincent/weblog/archives/2007/03/a_call_for_help.php'>Last time</a> I made this request help was quick in coming, so I am hoping that the same will be true in this case.</p>
 <p>If you'd like to help with the renewal you can send your donation to me via PayPal using <a href='https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=Bansshee+DNS+donation&amp;no_note=1&amp;currency_code=USD&amp;lc=en'>this link</a>. My priority will be to keep the dot-org domain alive; the others will follow suit if I receive enough donations. You can contact me at <a href='mailto:win@wincent.com'>win@wincent.com</a> if you have any questions or comments.</p>
 <p>As was the case last time, the project will continue to survive even if I can't renew the domains, but I'd like to keep providing them if I can.</p>
@@ -224,8 +224,8 @@
 
 <p>There are a number of other products which aren't specifically tied to the Mac OS X platform, and so should work on Leopard just as they did under Tiger:</p>
 <ul>
-<li><a href='http://bansshee.wincent.com'>Bansshee</a>: protection against SSH dictionary attacks.</li>
-<li><a href='http://walrus.wincent.com'>Walrus</a>: object-oriented templating system written in <a href='https://wincent.com/knowledge-base/Ruby'>Ruby</a>.</li>
+<li>Bansshee: protection against SSH dictionary attacks.</li>
+<li>Walrus: object-oriented templating system written in <a href='https://wincent.com/knowledge-base/Ruby'>Ruby</a>.</li>
 </ul>
 ]]></description>
 <link>https://wincent.com/a/news/archives/2007/10/leopard_product.php</link>
