@@ -8,18 +8,6 @@
     <title>Git activity log: WOCommon r177, 13 items changed</title>
 
     <link rel="stylesheet" href="/a/styles.css" type="text/css" />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="RSS"
-      href="https://wincent.com/a/about/wincent/weblog/svn-log/index.rdf"
-    />
-    <link
-      rel="alternate"
-      type="application/atom+xml"
-      title="Atom"
-      href="https://wincent.com/a/about/wincent/weblog/svn-log/atom.xml"
-    />
 
     <link
       rel="start"

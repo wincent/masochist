@@ -812,11 +812,6 @@
             >. Please see the
             <a href="https://wincent.com/s/nightlies/"
               >nightlies information page</a
-            >
-            and
-            <a
-              href="https://wincent.com/a/about/wincent/weblog/nightlog/atom.xml"
-              >RSS feed</a
             >.
           </p>
         </div>

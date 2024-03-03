@@ -696,16 +696,6 @@
 
           <pre>svn co svn://svn.wincent.com/buildtools/trunk buildtools</pre>
 
-          <p>
-            <a href="feed://wincent.com/a/about/wincent/weblog/svn-log/atom.xml"
-              >An XML feed</a
-            >
-            showing recent commits to the repository is also available (<a
-              href="https://wincent.com/s/progress/"
-              >more information</a
-            >).
-          </p>
-
           <h4><a id="donations" name="donations"></a>Donations</h4>
 
           <p>

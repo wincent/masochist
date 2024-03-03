@@ -8,18 +8,6 @@
     <title>Git activity log: Add dot-files (snippets, 9f0e5f3)</title>
 
     <link rel="stylesheet" href="/a/styles.css" type="text/css" />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="RSS"
-      href="https://wincent.com/a/about/wincent/weblog/svn-log/index.rdf"
-    />
-    <link
-      rel="alternate"
-      type="application/atom+xml"
-      title="Atom"
-      href="https://wincent.com/a/about/wincent/weblog/svn-log/atom.xml"
-    />
 
     <link
       rel="start"

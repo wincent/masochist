@@ -8,12 +8,6 @@
     <title>Nightlog: Synergy (revision ffaa428)</title>
 
     <link rel="stylesheet" href="/a/styles.css" type="text/css" />
-    <link
-      rel="alternate"
-      type="application/atom+xml"
-      title="Atom"
-      href="https://wincent.com/a/about/wincent/weblog/nightlog/atom.xml"
-    />
 
     <link
       rel="start"

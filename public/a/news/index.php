@@ -6,24 +6,6 @@
     <meta name="generator" content="http://www.movabletype.org/" />
     <title>wincent.com news</title>
     <link rel="stylesheet" href="/a/styles.css" type="text/css" />
-    <link
-      rel="alternate"
-      type="application/atom+xml"
-      title="Atom"
-      href="https://wincent.com/a/news/atom.xml"
-    />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="RSS 1.0"
-      href="https://wincent.com/a/news/index.rdf"
-    />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="RSS 2.0"
-      href="https://wincent.com/a/news/index.xml"
-    />
   </head>
 
   <body>

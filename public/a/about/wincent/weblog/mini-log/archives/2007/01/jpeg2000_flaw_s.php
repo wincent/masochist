@@ -8,18 +8,6 @@
     <title>Mini-log: JPEG2000 flaw (Safari denial-of-service)</title>
 
     <link rel="stylesheet" href="/a/styles.css" type="text/css" />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="RSS"
-      href="https://wincent.com/a/about/wincent/weblog/mini-log/index.rdf"
-    />
-    <link
-      rel="alternate"
-      type="application/atom+xml"
-      title="Atom"
-      href="https://wincent.com/a/about/wincent/weblog/mini-log/atom.xml"
-    />
 
     <link
       rel="start"

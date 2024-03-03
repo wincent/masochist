@@ -6,24 +6,6 @@
     <meta name="generator" content="http://www.movabletype.org/" />
     <title>wincent.com knowledge base</title>
     <link rel="stylesheet" href="/a/styles.css" type="text/css" />
-    <link
-      rel="alternate"
-      type="application/atom+xml"
-      title="Atom"
-      href="https://wincent.com/a/knowledge-base/atom.xml"
-    />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="RSS 1.0"
-      href="https://wincent.com/a/knowledge-base/index.rdf"
-    />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title="RSS 2.0"
-      href="https://wincent.com/a/knowledge-base/index.xml"
-    />
   </head>
 
   <body>
@@ -1525,11 +1507,6 @@ deny from all
             </li>
           </ul>
 
-          <div class="link-note">
-            <a href="https://wincent.com/a/knowledge-base/index.rdf"
-              >Syndicate this site (XML)</a
-            >
-          </div>
         </div>
       </div>
 

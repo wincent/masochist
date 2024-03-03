@@ -5,12 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Wincent Colaiuta's weblog</title>
     <link rel="stylesheet" href="/a/styles.css" type="text/css" />
-    <link
-      rel="alternate"
-      type="application/atom+xml"
-      title="Atom"
-      href="https://wincent.com/a/about/wincent/weblog/atom.xml"
-    />
 
     <link rel="openid.server" href="https://wincent.com/id.php" />
     <link rel="openid.delegate" href="https://wincent.com/id.php" />
@@ -2353,11 +2347,6 @@
           </p>
           <hr />
 
-          <div class="link-note">
-            <a href="https://wincent.com/a/about/wincent/weblog/atom.xml"
-              >Subscribe (XML)</a
-            >
-          </div>
         </div>
       </div>
 

@@ -100,5 +100,3 @@
     </p>
   </li>
 </ul>
-
-<p><a href="feed://wincent.com/a/news/atom.xml">Product news RSS feed</a></p>

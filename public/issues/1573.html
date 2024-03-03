@@ -188,16 +188,7 @@ for post in @posts
                 <blockquote>
                   <p>
                     And in that same example, I can see the top-level of the
-                    feed contains:
-                  </p>
-                  <pre>&lt;link type=&quot;text/html&quot; rel=&quot;alternate&quot; href=&quot;<a href="http://localhost:3000/blog" class="external">http://localhost:3000/blog</a>&quot;/&gt;
-&lt;link type=&quot;application/atom+xml&quot; rel=&quot;self&quot; href=&quot;<a href="http://localhost:3000/blog.atom" class="external">http://localhost:3000/blog.atom</a>&quot;/&gt;</pre>
-                  <p>Which is generated like this:</p>
-                  <pre>
-xml.link :rel =&gt; 'alternate', :type =&gt; 'text/html', :href =&gt; request.url.gsub(/\.atom$/, '')
-xml.link :rel =&gt; 'self', :type =&gt; 'application/atom+xml', :href =&gt; request.url</pre
-                  >
-                  <p>So that will need to change as well.</p>
+                    feed will need to change as well.</p>
                 </blockquote>
               </li>
               <li class="comment admin" id="comment_5688">
