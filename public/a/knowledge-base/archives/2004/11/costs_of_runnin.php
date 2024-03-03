@@ -821,7 +821,7 @@
               still charged at the insane rate of 10 cents per megabyte. I also
               pay for hosting with
               <a href="http://www.pair.com/">pair.com</a> over in the US where
-              bandwidth is cheaper. That server, us.wincent.com, hosts many of
+              bandwidth is cheaper. That server hosts many of
               the images for this website as well as downloadable files. By
               spending a little extra money in the US I can hopefully reduce my
               Australian bandwidth bill. Pair is not the cheapest, but they have

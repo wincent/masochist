@@ -690,11 +690,11 @@
         <p>
           Dock icon stuff. Just a couple of examples:
           <a
-            href="http://us.wincent.com/a/about/wincent/weblog/dock-icon-preview.png"
+            href="https://wincent.com/a/about/wincent/weblog/dock-icon-preview.png"
             >badging</a
           >,
           <a
-            href="http://us.wincent.com/a/about/wincent/weblog/dock-icon-preview2.png"
+            href="https://wincent.com/a/about/wincent/weblog/dock-icon-preview2.png"
             >full icon</a
           >.
         </p>
