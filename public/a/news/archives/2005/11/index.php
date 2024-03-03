@@ -808,7 +808,7 @@
           <a href="http://synergy.wincent.com/">Synergy</a> 2.2 has just been
           released to beta testers. If you're interested in getting access to
           this kind of build in the future subscribe to the synergy-beta mailing
-          list at <a href="http://lists.wincent.com/">lists.wincent.com</a>.
+          list.
         </p>
         <p>
           <a

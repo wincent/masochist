@@ -735,16 +735,7 @@
           <p>
             Version <a href="../history/#0.5.1b">0.5.1b</a>, the precursor to
             the sixth public preview release has now been seeded to beta
-            testers. For more information see
-            <a
-              href="http://lists.wincent.com/pipermail/synergy-advance-beta/2007-May/000007.html"
-              >the announcement</a
-            >
-            posted to the
-            <a
-              href="http://lists.wincent.com/mailman/listinfo/synergy-advance-beta/"
-              >Synergy Advance beta testers mailing list</a
-            >.
+            testers.
           </p>
 
           <h5>26 April 2007</h5>

@@ -644,7 +644,7 @@
             never send you spam. Wincent will never sell or make available your
             email address or any of your other personal information to third
             parties. Wincent does provide
-            <a href="http://lists.wincent.com/">mailing lists</a> for users who
+            mailing lists for users who
             wish to remain informed but these lists are strictly "opt-in" and
             Wincent will never subscribe a user to a list; if you wish to join a
             list you must manually subscribe yourself.

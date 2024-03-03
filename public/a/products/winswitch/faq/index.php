@@ -1132,64 +1132,15 @@ defaults write com.wincent.WinSwitch 'User picture size' -float 19.0</pre
           <p class="more">[<a href="#top">Back to top...</a>]</p>
 
           <h4>
-            <a name="announce" id="announce"></a>How do I subscribe/unsubscribe
-            to the winswitch-announce mailing list?
-          </h4>
-
-          <p>
-            The
-            <a
-              href="http://lists.wincent.com/mailman/listinfo/winswitch-announce"
-              >winswitch-announce mailing list</a
-            >
-            is a low-traffic list (approximately one message per month) that is
-            used to notify people when a new version of WinSwitch has become
-            available. Please see
-            <a
-              href="http://lists.wincent.com/mailman/listinfo/winswitch-announce"
-              >the list page</a
-            >
-            to subscribe or unsubscribe.
-          </p>
-
-          <p class="more">[<a href="#top">Back to top...</a>]</p>
-
-          <h4>
             <a name="beta" id="beta"></a>How do I participate in the WinSwitch
             beta program?
           </h4>
-
-          <p>
-            You join the beta programme by subscribing to the
-            <a href="http://lists.wincent.com/mailman/listinfo/winswitch-beta"
-              >winswitch-beta mailing list</a
-            >. When a new beta becomes available, a message is sent to the
-            mailing list containing instructions on how to download the beta.
-          </p>
-
-          <p>
-            The list is a moderated discussion list, meaning that you can reply
-            to the list and share your impressions with other beta testers. The
-            moderation is in place to prevent spam or viruses.
-          </p>
 
           <p>
             You file bug reports and feedback on the betas by replying, sending
             a message back to the mailing list. In this way all the beta testers
             can see if an issue is under investigation, and can easily add
             information to the discussion to help isolate the causes.
-          </p>
-
-          <p>
-            To subscribe to or unsubscribe from the mailing list please see
-            <a href="http://lists.wincent.com/mailman/listinfo/winswitch-beta"
-              >the list page</a
-            >.
-          </p>
-
-          <p>
-            The list of subscribers will not be disclosed or sold to any third
-            parties, so your privacy is protected.
           </p>
 
           <p class="more">[<a href="#top">Back to top...</a>]</p>

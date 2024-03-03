@@ -1542,11 +1542,6 @@
               <a
                 href="https://wincent.com/a/products/synergy-classic/features/audioscrobbler/"
                 >here</a
-              >
-              and the announcement to the beta testers mailing list can be found
-              <a
-                href="http://lists.wincent.com/pipermail/synergy-beta/2006-November/000003.html"
-                >here</a
               >.
             </li>
             <li>

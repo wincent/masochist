@@ -1035,25 +1035,6 @@
             <a href="../download/">download page</a>.
           </p>
 
-          <h5>23 August 2007</h5>
-
-          <h4>
-            Synergy <a href="../history/#3.1.5b">3.1.5b</a> released to beta
-            testers
-          </h4>
-
-          <p>
-            The announcement posted to the
-            <a href="http://lists.wincent.com/mailman/listinfo/synergy-beta"
-              >Synergy beta testers mailing list</a
-            >
-            can be read
-            <a
-              href="http://lists.wincent.com/pipermail/synergy-beta/2007-August/000012.html"
-              >here</a
-            >.
-          </p>
-
           <h5>23 July 2007</h5>
 
           <h4>Synergy <a href="../history/#3.1.4">3.1.4</a> released</h4>
@@ -1061,25 +1042,6 @@
           <p>
             Available for immediate download from the
             <a href="../download/">download page</a>.
-          </p>
-
-          <h5>9 July 2007</h5>
-
-          <h4>
-            Synergy <a href="../history/#3.1.4b">3.1.4b</a> released to beta
-            testers
-          </h4>
-
-          <p>
-            The announcement posted to the
-            <a href="http://lists.wincent.com/mailman/listinfo/synergy-beta"
-              >Synergy beta testers mailing list</a
-            >
-            can be read
-            <a
-              href="http://lists.wincent.com/pipermail/synergy-beta/2007-July/000011.html"
-              >here</a
-            >.
           </p>
 
           <h5>11 June 2007</h5>
@@ -1091,25 +1053,6 @@
             <a href="../download/">download page</a>.
           </p>
 
-          <h5>15 May 2007</h5>
-
-          <h4>
-            Synergy <a href="../history/#3.1.3b">3.1.3b</a> released to beta
-            testers
-          </h4>
-
-          <p>
-            The announcement posted to the
-            <a href="http://lists.wincent.com/mailman/listinfo/synergy-beta"
-              >Synergy beta testers mailing list</a
-            >
-            can be read
-            <a
-              href="http://lists.wincent.com/pipermail/synergy-beta/2007-May/000010.html"
-              >here</a
-            >.
-          </p>
-
           <h5>23 April 2007</h5>
 
           <h4>Synergy <a href="../history/#3.1.2">3.1.2</a> released</h4>
@@ -1117,25 +1060,6 @@
           <p>
             Available for immediate download from the
             <a href="../download/">download page</a>.
-          </p>
-
-          <h5>10 April 2007</h5>
-
-          <h4>
-            Synergy <a href="../history/#3.1.2b">3.1.2b</a> released to beta
-            testers
-          </h4>
-
-          <p>
-            The announcement posted to the
-            <a href="http://lists.wincent.com/mailman/listinfo/synergy-beta"
-              >Synergy beta testers mailing list</a
-            >
-            can be read
-            <a
-              href="http://lists.wincent.com/pipermail/synergy-beta/2007-April/000008.html"
-              >here</a
-            >.
           </p>
 
           <h5>26 March 2007</h5>
@@ -1179,25 +1103,6 @@
             for more information).
           </p>
 
-          <h5>8 March 2007</h5>
-
-          <h4>
-            Synergy <a href="../history/#3.1.1b">3.1.1b</a> released to beta
-            testers
-          </h4>
-
-          <p>
-            The announcement posted to the
-            <a href="http://lists.wincent.com/mailman/listinfo/synergy-beta"
-              >Synergy beta testers mailing list</a
-            >
-            can be read
-            <a
-              href="http://lists.wincent.com/pipermail/synergy-beta/2007-March/000006.html"
-              >here</a
-            >.
-          </p>
-
           <h5>4 December 2006</h5>
 
           <h4>Synergy <a href="../history/#3.1">3.1</a> released</h4>
@@ -1218,41 +1123,6 @@
             <a
               href="https://wincent.com/a/products/synergy-classic/testimonials/"
               >the testimonials page</a
-            >.
-          </p>
-
-          <h5>13 November 2006</h5>
-
-          <h4>
-            Synergy <a href="../history/#3.1b2">3.1b2</a> released to beta
-            testers
-          </h4>
-
-          <p>
-            The announcement posted to the
-            <a href="http://lists.wincent.com/mailman/listinfo/synergy-beta"
-              >Synergy beta testers mailing list</a
-            >
-            can be read
-            <a
-              href="http://lists.wincent.com/pipermail/synergy-beta/2006-November/000004.html"
-              >here</a
-            >.
-          </p>
-
-          <h4>
-            Synergy <a href="../history/#3.1b">3.1b</a> released to beta testers
-          </h4>
-
-          <p>
-            The announcement posted to the
-            <a href="http://lists.wincent.com/mailman/listinfo/synergy-beta"
-              >Synergy beta testers mailing list</a
-            >
-            can be read
-            <a
-              href="http://lists.wincent.com/pipermail/synergy-beta/2006-November/000003.html"
-              >here</a
             >.
           </p>
 
