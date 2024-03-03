@@ -5,7 +5,7 @@ tags: git blog
 
 I've just set up a couple of [Git](/wiki/Git) repository mirrors for my [open source](/wiki/open_source) projects.
 
-The _authoritative, official_ repositories continue to be hosted at git.wincent.com.
+The _authoritative, official_ repositories continue to be hosted at git.typechecked.net.
 
 But now there are _mirror, backup_ repositories hosted at:
 

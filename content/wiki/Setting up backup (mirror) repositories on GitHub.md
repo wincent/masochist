@@ -1,6 +1,7 @@
 ---
 tags: git wiki
 cache_breaker: 1
+title: Setting up backup (mirror) repositories on GitHub
 ---
 
 # For the impatient
@@ -21,7 +22,7 @@ I typically work with a few of local repositories (one on my old iMac desktop ma
 
        "authoritative"                            backup/mirror
           bare repo   ------------------------->    bare repo
-      (git.wincent.com)       push --mirror          (GitHub)
+      (git.typechecked.net)   push --mirror         (GitHub)
               ^
               |
               | push
@@ -109,7 +110,7 @@ Instead of the longer:
 2.  Under "Your Repositories", click "New Repository"
 3.  Fill out the "Project Name", "Description" and "Homepage URL" fields:
     1.  "Project Name", for example, might be something like "Wikitext"
-    2.  "Description" could be something like "Mirror of the official Wikitext repository at git.wincent.com"
+    2.  "Description" could be something like "Mirror of the official Wikitext repository at git.typechecked.net"
     3.  "Homepage URL", for example, could be something like <http://wikitext.rubyforge.org/>
 4.  Turn off the "Wiki", "Issues" and "Downloads" features (that functionality is already provided on the wincent.com site)
 

@@ -23,7 +23,7 @@ title: Migrating the WinSwitch repository from Subversion to Git
 # Initial push
 
     $ git tag -s r77 # tag initial Subversion import, corresponding to revision 77
-    $ git remote add origin git.wincent.com:/pub/git/path_to_public_repos/WinSwitch.git
+    $ git remote add origin git.typechecked.net:/pub/git/path_to_public_repos/WinSwitch.git
     $ git config branch.master.remote origin
     $ git config branch.master.merge refs/heads/master
     $ git push --all
@@ -33,7 +33,7 @@ title: Migrating the WinSwitch repository from Subversion to Git
 
 You can now create a clone of the repo using:
 
-    $ git clone git://git.wincent.com/WinSwitch.git
+    $ git clone git://git.typechecked.net/WinSwitch.git
 
 # Local cleanup
 

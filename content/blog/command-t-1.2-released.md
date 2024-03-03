@@ -26,7 +26,7 @@ So, if you're unfortunate enough to be using Windows, or if you're the sort that
 
 ```shell
 $ cd path/to/your/pathogen/bundle # probably ~/.vim/bundle
-$ git clone git://git.wincent.com/command-t.git
+$ git clone git://git.typechecked.net/command-t.git
 $ cd command-t
 $ rake make
 ```

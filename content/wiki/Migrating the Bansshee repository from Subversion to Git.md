@@ -144,7 +144,7 @@ I also added the `-v` switch to get verbose output and the `-I` switch to automa
 
 ## Publishing the repository on the remote server
 
-Now I had a fully working local repository but I wanted an always-available, public, "authoritative" clone on git.wincent.com. How this is done, and how to push the content from the local repository out onto the public one is covered in "[Setting up a brand new public Git repository](/wiki/Setting_up_a_brand_new_public_Git_repository)".
+Now I had a fully working local repository but I wanted an always-available, public, "authoritative" clone on git.typechecked.net. How this is done, and how to push the content from the local repository out onto the public one is covered in "[Setting up a brand new public Git repository](/wiki/Setting_up_a_brand_new_public_Git_repository)".
 
 # See also
 

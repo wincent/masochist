@@ -47,11 +47,11 @@ Instead of the longer:
     5.  Home URL
     6.  Bugtracker URL (for example, <https://wincent.com/issues/>)
 4.  Disable the wiki
-5.  Provide a Description (for example, "Mirror of the official WOHotKey repository at git.wincent.com")
+5.  Provide a Description (for example, "Mirror of the official WOHotKey repository at git.typechecked.net")
 6.  Click on "Create project"
 
 Now create a new repository:
 
 1.  Fill in:
     1.  Name (for example, "WOHotKey")
-    2.  Description (for example, "Mirror of the official WOHotKey repository at git.wincent.com")
+    2.  Description (for example, "Mirror of the official WOHotKey repository at git.typechecked.net")

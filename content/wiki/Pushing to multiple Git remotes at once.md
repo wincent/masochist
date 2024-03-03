@@ -9,20 +9,20 @@ For example, consider a clone of my dotfiles repo that has these two remotes, `o
 $ git remote -v
 github  git@github.com:wincent/wincent.git (fetch)
 github  git@github.com:wincent/wincent.git (push)
-origin  git@git.wincent.com:public/wincent.git (fetch)
-origin  git@git.wincent.com:public/wincent.git (push)
+origin  git@git.typechecked.net:public/wincent.git (fetch)
+origin  git@git.typechecked.net:public/wincent.git (push)
 ```
 
 We can add a new `all` remote:
 
 ```shell
-$ git remote add all git@git.wincent.com:public/wincent.git
+$ git remote add all git@git.typechecked.net:public/wincent.git
 ```
 
 And then set two `pushurl` URLs for it:
 
 ```shell
-$ git remote set-url --add --push all git@git.wincent.com:public/wincent.git
+$ git remote set-url --add --push all git@git.typechecked.net:public/wincent.git
 $ git remote set-url --add --push all git@github.com:wincent/wincent.git
 ```
 
@@ -30,22 +30,22 @@ Yielding the following:
 
 ```shell
 $ git remote -v
-all     git@git.wincent.com:public/wincent.git (fetch)
-all     git@git.wincent.com:public/wincent.git (push)
+all     git@git.typechecked.net:public/wincent.git (fetch)
+all     git@git.typechecked.net:public/wincent.git (push)
 all     git@github.com:wincent/wincent.git (push)
 github  git@github.com:wincent/wincent.git (fetch)
 github  git@github.com:wincent/wincent.git (push)
-origin  git@git.wincent.com:public/wincent.git (fetch)
-origin  git@git.wincent.com:public/wincent.git (push)
+origin  git@git.typechecked.net:public/wincent.git (fetch)
+origin  git@git.typechecked.net:public/wincent.git (push)
 ```
 
 This is the full config for the `all` remote as seen in the clone's `.git/config`:
 
 ```
 [remote "all"]
-	url = git@git.wincent.com:public/wincent.git
+	url = git@git.typechecked.net:public/wincent.git
 	fetch = +refs/heads/*:refs/remotes/all/*
-	pushurl = git@git.wincent.com:public/wincent.git
+	pushurl = git@git.typechecked.net:public/wincent.git
 	pushurl = git@github.com:wincent/wincent.git
 ```
 

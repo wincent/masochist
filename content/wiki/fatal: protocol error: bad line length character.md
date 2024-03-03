@@ -1,9 +1,10 @@
 ---
 tags: git wiki
 cache_breaker: 1
+title: fatal: protocol error: bad line length character
 ---
 
-`fatal: protocol error: bad line length character` is an error I started seeing when trying to perform `git clone`, `git fetch` or `git pull` from public [Git](/wiki/Git) repositories hosted at git.wincent.com. I am not entirely sure when the problem started but I first noticed it after updating my local Git install to version 1.6.4 (see "[Updating to Git 1.6.4](/wiki/Updating_to_Git_1.6.4)"), with the server still running 1.6.3.3 (see "[Updating to Git 1.6.3.3](/wiki/Updating_to_Git_1.6.3.3)").
+`fatal: protocol error: bad line length character` is an error I started seeing when trying to perform `git clone`, `git fetch` or `git pull` from public [Git](/wiki/Git) repositories hosted at git.typechecked.net. I am not entirely sure when the problem started but I first noticed it after updating my local Git install to version 1.6.4 (see "[Updating to Git 1.6.4](/wiki/Updating_to_Git_1.6.4)"), with the server still running 1.6.3.3 (see "[Updating to Git 1.6.3.3](/wiki/Updating_to_Git_1.6.3.3)").
 
 # Troubleshooting
 
@@ -13,7 +14,7 @@ First step, try using another version of Git to perform the clone. On the server
 $ git --version
 git version 1.6.3.3
 $ cd /tmp
-$ git clone git://git.wincent.com/WOPublic.git
+$ git clone git://git.typechecked.net/WOPublic.git
 Initialized empty Git repository in /tmp/WOPublic/.git/
 fatal: protocol error: bad line length character
 ```
@@ -25,7 +26,7 @@ Now we repeat our server-side `clone` test:
 ```shell
 $ git --version
 git version 1.6.4
-$ git clone git://git.wincent.com/WOPublic.git
+$ git clone git://git.typechecked.net/WOPublic.git
 Initialized empty Git repository in /tmp/WOPublic/.git/
 fatal: protocol error: bad line length character
 ```
@@ -47,7 +48,7 @@ So we can see here that the problem is almost certainly not on the client side, 
 I wanted to see if this affected all repositories or just the one I was working with at that moment ([WOPublic](/wiki/WOPublic)), but it turns out that the message is always the same, even for non-existent repos such as this fictional "xyz" one:
 
 ```shell
-$ git clone git://git.wincent.com/xyz
+$ git clone git://git.typechecked.net/xyz
 Initialized empty Git repository in /private/tmp/xyz/.git/
 fatal: protocol error: bad line length character
 ```

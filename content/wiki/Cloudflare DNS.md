@@ -70,9 +70,9 @@ Credit for the Page Rules configuration goes to [this Stack Overflow answer](htt
 -   DNS for `wincent.com`:
     -   `CNAME` `hex` → `wincent.github.io`
     -   A zillion other `A` and `CNAME` records for various things hosted elsewhere, like:
-        -   `A` record for `git.wincent.com` pointing at an EC2 Elastic IP.
+        -   `A` record for `git.typechecked.net` pointing at an EC2 Elastic IP.
         -   `A` record for `wincent.com` root pointing at another Elastic IP.
-        -   `CAA` record `wincent.com` saying that `letsencrypt.org` is allowed to issue certificates; this works because GitHub Pages uses Let's Encrypt to create the certificate for `hex.wincent.com` and I also use Let's Encrypt to generate the other certificates for `wincent.com`, `git.wincent.com` (etc) domains on EC2. If GitHub Pages ever switches to a different Certificate Authority, I'll have to add another `CAA` record.
+        -   `CAA` record `wincent.com` saying that `letsencrypt.org` is allowed to issue certificates; this works because GitHub Pages uses Let's Encrypt to create the certificate for `hex.wincent.com` and I also use Let's Encrypt to generate the other certificates for `wincent.com`, `git.typechecked.net` (etc) domains on EC2. If GitHub Pages ever switches to a different Certificate Authority, I'll have to add another `CAA` record.
 -   Page Rules for `wincent.com`: none.
 
 ### Case study #3: s3.example.com[^example]

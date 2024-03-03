@@ -1,6 +1,7 @@
 ---
 tags: homebrew macos wiki
 cache_breaker: 1
+title: OS X install notes (March 2013)
 ---
 
 Notes made moving from dying old machine to newer one with a smaller hard drive.
@@ -110,7 +111,7 @@ Also:
 ```shell
 $ mkdir -p ~/personal/unversioned
 $ cd !$
-$ git clone --recursive git.wincent.com:/pub/git/public/wincent.git wincent.git
+$ git clone --recursive git.typechecked.net:/pub/git/public/wincent.git wincent.git
 $ cd wincent.git
 $ ./bootstrap.rb
 ```

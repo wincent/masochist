@@ -139,7 +139,7 @@ On the remote machine, Ansible sets up two users so that the Node.js and Ruby ap
 
 -   Push to the "masochist" remote to deploy a new version of the app (ie. `git push masochist`).
 -   Push to the "wikiserve" remote to deploy a new version of the wikiserve microservice (ie. `git push wikiserve`).
--   Push to the "origin" remote (ie. `git push origin`, or simply `git push`) to do a code-only push without a deploy; this sends the code up to git.wincent.com, and from there it gets mirrored to GitHub, GitLab and Bitbucket automatically.
+-   Push to the "origin" remote (ie. `git push origin`, or simply `git push`) to do a code-only push without a deploy; this sends the code up to git.typechecked.net, and from there it gets mirrored to GitHub, GitLab and Bitbucket automatically.
 
 A nice perk of this is that the `--decorate` functionality of `git-log` can show me at a glance what I have deployed and to where:
 

@@ -10,7 +10,7 @@ I just released version 1.8 of [Command-T](/wiki/Command-T), the powerful, [open
 
 This release speeds up the [Watchman](https://github.com/facebook/watchman) scanner by teaching Command-T to speak the Watchman binary protocol (instead of the JSON protocol). This makes it almost twice as fast as before. Additionally, minor fixes to the build process were made which should ease some difficulties people were having on some platforms.
 
-As always, a full change-log appears under HISTORY in [the documentation](http://git.wincent.com/command-t.git/blob_plain/1.8:/doc/command-t.txt), and you can explore the commits in the release [here](/repos/command-t/tags/1.8). (Note: the integrated repository browser that I'm linking to here is still relatively new and doesn't have a full feature set yet. You may prefer to view the commits [on GitHub](https://github.com/wincent/Command-T/compare/1.7...1.8).)
+As always, a full change-log appears under HISTORY in [the documentation](http://git.typechecked.net/command-t.git/blob_plain/1.8:/doc/command-t.txt), and you can explore the commits in the release [here](/repos/command-t/tags/1.8). (Note: the integrated repository browser that I'm linking to here is still relatively new and doesn't have a full feature set yet. You may prefer to view the commits [on GitHub](https://github.com/wincent/Command-T/compare/1.7...1.8).)
 
 # Installation
 
@@ -24,7 +24,7 @@ So, if you're unfortunate enough to be using Windows, or if you're the sort that
 
 ```shell
 $ cd path/to/your/pathogen/bundle # probably ~/.vim/bundle
-$ git clone git://git.wincent.com/command-t.git
+$ git clone git://git.typechecked.net/command-t.git
 $ cd command-t
 $ rake make
 ```
