@@ -682,7 +682,7 @@
             href="http://svn.ruby-lang.org/cgi-bin/viewvc.cgi?view=rev&amp;revision=12380"
             >As you can see</a
           >. This is good news, as I use them in
-          <a href="http://walrus.wincent.com/">Walrus</a> to support
+          Walrus to support
           left-cursive grammars in a recursive descent parser.
         </p>
 

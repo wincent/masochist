@@ -659,7 +659,7 @@
           </p>
 
           <p>
-            Wopen3 is part of <a href="http://walrus.wincent.com/">Walrus</a>,
+            Wopen3 is part of Walrus,
             distributed as a separate
             <a href="https://wincent.com/knowledge-base/Gem">gem</a> for easy
             reuse.

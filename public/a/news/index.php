@@ -1751,7 +1751,7 @@
               against SSH dictionary attacks.
             </li>
             <li>
-              <a href="http://walrus.wincent.com">Walrus</a>: object-oriented
+              Walrus: object-oriented
               templating system written in
               <a href="https://wincent.com/knowledge-base/Ruby">Ruby</a>.
             </li>

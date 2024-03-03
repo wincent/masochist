@@ -752,7 +752,7 @@
               >
             </li>
             <li>
-              <a href="http://walrus.wincent.com/">Walrus</a> (free, GPL
+              Walrus (free, GPL
               license):
               <a
                 href="https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=Walrus+donation&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"

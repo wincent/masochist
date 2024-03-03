@@ -714,9 +714,9 @@
               </p>
             </li>
             <li>
-              <a href="http://walrus.wincent.com/">Walrus</a>
+              Walrus
               <p class="more">
-                Current version: <a href="http://walrus.wincent.com/">0.1</a>
+                Current version: 0.1
               </p>
             </li>
           </ul>
