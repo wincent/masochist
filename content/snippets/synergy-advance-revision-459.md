@@ -8,4 +8,3 @@ tags: snippets
 -   _Size_: 3,286,346 bytes
 -   _SHA1 checksum_: b438be20926ffe69441b66311020bf50de9524f6
 -   _Direct link_: <http://www.wincent.com/a/products/synergy-advance/download/nightlies/SynergyAdvanceNightly(459).dmg>
--   _Product info_: <http://advance.wincent.com/>

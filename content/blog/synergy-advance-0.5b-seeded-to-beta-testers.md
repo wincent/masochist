@@ -3,7 +3,7 @@ title: Synergy Advance 0.5b seeded to beta testers
 tags: blog
 ---
 
-If you've been monitoring the [nightly builds](http://www.wincent.com/s/nightlies/) then you'll know that [Synergy Advance](http://advance.wincent.com/) 0.5 has been nearing completion.
+If you've been monitoring the [nightly builds](http://www.wincent.com/s/nightlies/) then you'll know that Synergy Advance 0.5 has been nearing completion.
 
 There is now little work left to be done before 0.5 is declared final, so today the first official beta release was seeded to testers. There are still some minor issues to be fixed during the beta period, but the software is quite usable in its current form.
 

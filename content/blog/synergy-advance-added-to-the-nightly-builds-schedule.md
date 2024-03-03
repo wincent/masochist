@@ -5,7 +5,7 @@ tags: blog
 
 Last month I began trialing the new [nightly builds system](http://www.wincent.com/a/news/archives/2007/03/nightly_builds.php) with [nightlies](http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/synergy/) for [Synergy](http://synergy.wincent.com/). This is because I want to move towards a more [open development process](http://www.wincent.com/a/about/wincent/weblog/archives/2007/03/planned_changes.php).
 
-Today [Synergy Advance](http://advance.wincent.com/) has been added to the nightly builds schedule.
+Today Synergy Advance has been added to the nightly builds schedule.
 
 These builds are for the curious who wish to get a sneak peak at work in progress towards the next version. The current official release (0.4) is still the one that is recommended for daily use and is available from the [downloads page](http://www.wincent.com/a/products/synergy-advance/download/).
 

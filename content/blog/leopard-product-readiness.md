@@ -18,14 +18,14 @@ The following products have received extensive testing on pre-release versions o
 
 This product hasn't been heavily tested with Leopard but conflicting reports have been received that it continues to work under the new operating system; others report that they've been unable to install it. When the Leopard final arrives further investigation will be undertaken.
 
--   [WinSwitch](http://winswitch.wincent.com/): Fast User Switching menu replacement.
+-   WinSwitch: Fast User Switching menu replacement.
 
 ### Coming soon
 
 These products aren't yet Leopard-ready but work is well on the way to completion (about 90% done) and so I hope to release Leopard-compatible versions within the next two to three weeks:
 
--   [Synergy Advance](http://advance.wincent.com): Plug-in based audio companion.
--   [Hextrapolate](https://hex.wincent.com): Programmers number conversion tool.
+-   Synergy Advance: Plug-in based audio companion.
+-   Hextrapolate: Programmers number conversion tool.
 
 ### Unknown
 

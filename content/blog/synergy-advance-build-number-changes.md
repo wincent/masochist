@@ -3,7 +3,7 @@ title: Synergy Advance build number changes
 tags: blog
 ---
 
-As of today the build numbering system used in [Synergy Advance](http://advance.wincent.com/) has undergone a once-off change and I wanted to explain here to help clear up any confusion that it may cause.
+As of today the build numbering system used in Synergy Advance has undergone a once-off change and I wanted to explain here to help clear up any confusion that it may cause.
 
 The changes are described in full in the "[Build numbers](http://www.wincent.com/knowledge-base/Build%20numbers)" article but here's the brief overview:
 
