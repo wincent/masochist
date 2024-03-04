@@ -87,4 +87,4 @@ The only case where the HOM "collect" pattern is necessary is where you must pas
 
 But my policy with respect to implementing new HOM patterns at the moment is that I don't bother touching them until I actually run into a real-world case where I need the new pattern. HOM is basically an open-ended playground in which you could waste a lot of time building sand castles, so I'm carefully keeping only to stuff that I actually need/want to use.
 
-Performance numbers on the code described in this post [coming soon](http://colaiuta.net/).
+Performance numbers on the code described in this post coming soon.

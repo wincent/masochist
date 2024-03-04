@@ -100,4 +100,4 @@ Compare that with [Marcel Weiher's version](http://www.metaobject.com/Research.h
 
 #### Next...
 
-I'll have more to say on [HOM](http://www.wincent.com/a/about/wincent/weblog/archives/hom/) within the next few days. Specifically the topic of "the BOOL return problem". Watch [this space](http://colaiuta.net/) for more.
+I'll have more to say on [HOM](http://www.wincent.com/a/about/wincent/weblog/archives/hom/) within the next few days. Specifically the topic of "the BOOL return problem". Watch this space for more.

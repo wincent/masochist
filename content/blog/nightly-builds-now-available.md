@@ -44,7 +44,7 @@ Although the builds are called "nightlies" there are a number of reasons why a n
 -   List of [Hextrapolate nightlies](http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/hextrapolate/)
 -   The [Nightlog archives](http://www.wincent.com/a/about/wincent/weblog/nightlog/) for all products.
 -   The Nightlog RSS feed.
--   Summary of recent entries to the Nightlog (see the right-hand column of my [personal weblog](http://colaiuta.net/)).
+-   Summary of recent entries to the Nightlog (see the right-hand column of my personal weblog).
 
 ### Disclaimer
 

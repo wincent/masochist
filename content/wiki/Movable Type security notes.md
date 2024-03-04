@@ -1,5 +1,6 @@
 ---
 tags: movable.type wiki
+title: Movable Type security notes
 ---
 
 # Turn off comments and search if you can
@@ -10,7 +11,7 @@ If you don't need don't need comments then you can set up a very, very secure [M
 
 Tips on how to do this appear below.
 
-If you can turn off comments and search then you can effectively hide all traces of your [Movable Type](/wiki/Movable_Type) installation from the public eye and just use it as a convenient tool for generating static but easily-updateable pages. Most people won't even know you're running [Movable Type](/wiki/Movable_Type). By putting your install in an out-of-the-way location, you can use [security through obscurity](/wiki/security_through_obscurity) (not always a bad thing) to protect you from any flaws that might be in the product. I use this technique on my personal [weblog](/wiki/weblog) (<http://colaiuta.net/>) and on my products news page (<http://wincent.org/>), both powered by [Movable Type](/wiki/Movable_Type) behind the scenes.
+If you can turn off comments and search then you can effectively hide all traces of your [Movable Type](/wiki/Movable_Type) installation from the public eye and just use it as a convenient tool for generating static but easily-updateable pages. Most people won't even know you're running [Movable Type](/wiki/Movable_Type). By putting your install in an out-of-the-way location, you can use [security through obscurity](/wiki/security_through_obscurity) (not always a bad thing) to protect you from any flaws that might be in the product. I use this technique on my personal [weblog](/wiki/weblog) and on my products news page, both powered by [Movable Type](/wiki/Movable_Type) behind the scenes.
 
 See below for more information on hiding your [Movable Type](/wiki/Movable_Type) installation.
 

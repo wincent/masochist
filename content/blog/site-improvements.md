@@ -19,7 +19,7 @@ Fixed some broken links. Fixed a number of places where you could click an item 
 
 #### Subversion log
 
-The Subversion log which appears in the bottom portion of the left-hand column on [my weblog](http://colaiuta.net/) has been significantly improved.
+The Subversion log which appears in the bottom portion of the left-hand column on my weblog has been significantly improved.
 
 Clicking on an entry in the feed now takes you to a separate page for that entry. Previously there were no such individual pages and you were taken to a gigantic page listing all of the entries.
 
@@ -28,7 +28,7 @@ Now there are individual pages with forward and back links; there is now a [mast
 
 #### Mini-log
 
-Much the same treatment has been given to the "Mini-log" in the left-hand column of [my weblog](http://colaiuta.net/).
+Much the same treatment has been given to the "Mini-log" in the left-hand column of my weblog.
 
 There are now individual entry pages ([example entry](http://www.wincent.com/a/about/wincent/weblog/mini-log/archives/2006/10/interface_build.php)) linked to from the, date-based archives, and a [master archive index](http://www.wincent.com/a/about/wincent/weblog/mini-log/archives/index.php) that provides links to the date-based archives.
 

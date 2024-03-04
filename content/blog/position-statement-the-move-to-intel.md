@@ -3,7 +3,7 @@ title: Position statement: the move to Intel
 tags: blog
 ---
 
-Yesterday Steve Jobs announced that Apple will transition to Intel processors. I'm very excited about the move and I think it will be the best for Apple customers in the long run. In fact, even in the short term I think we'll see some benefits; I just wish they'd done it sooner. I've written [a more personal response](http://www.wincent.com/a/about/wincent/weblog/archives/2005/06/the_move_to_int.php) on my [weblog](http://colaiuta.net/) but here I wanted to make an official statement on the position of Wincent Software with respect to the move.
+Yesterday Steve Jobs announced that Apple will transition to Intel processors. I'm very excited about the move and I think it will be the best for Apple customers in the long run. In fact, even in the short term I think we'll see some benefits; I just wish they'd done it sooner. I've written [a more personal response](http://www.wincent.com/a/about/wincent/weblog/archives/2005/06/the_move_to_int.php) on my weblog but here I wanted to make an official statement on the position of Wincent Software with respect to the move.
 
 In short, Wincent fully supports the move to Intel processors. All Wincent [products](http://www.wincent.com/) will be made available as "Universal Binaries" which will run on both the PowerPC and Intel platforms. I've already ordered the Developer Transition Kit so you can rest assured that all Wincent products will be ready and heavily tested by the time the first Intel-based Apple machines are released to the market.
 

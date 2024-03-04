@@ -19,11 +19,11 @@ I also maintain a personal weblog at <http://www.wincent.com/a/about/wincent/web
 
 #### Mini-log
 
-In a sidebar on the left-hand side of [my personal weblog](http://colaiuta.net/) you can find the "Mini-log". This is where I post quick comments or links that are too short to warrant a full entry on my weblog. A separate feed for the Mini-log is available, and the archives can be found [here](http://www.wincent.com/a/about/wincent/weblog/mini-log/archives/).
+In a sidebar on the left-hand side of my personal weblog you can find the "Mini-log". This is where I post quick comments or links that are too short to warrant a full entry on my weblog. A separate feed for the Mini-log is available, and the archives can be found [here](http://www.wincent.com/a/about/wincent/weblog/mini-log/archives/).
 
 #### Git log (formerly the Subversion log)
 
-For an extremely low-level look at the development work I'm doing you can check out my "Git log" (formerly called the "Subversion log"). This appears in the sidebar of [my personal weblog](http://colaiuta.net/), below the "Mini-log". The Git log shows the commit log messages that accompany every finalized set of changes to the code bases for my products. The general pattern is to work on a discrete set of changes and then "commit" them to the repository when they reach some sort of important milestone; the "milestone" may be something as simple as the elimination of a particular compiler warning during the build or the addition of a new file, and they can be as significant as implementing a big new feature or importing an entirely new product into the repository. For more information see this [brief outline of Subversion](http://www.wincent.com/wiki/Subversion) and [Git](http://www.wincent.com/wiki/Git).
+For an extremely low-level look at the development work I'm doing you can check out my "Git log" (formerly called the "Subversion log"). This appears in the sidebar of my personal weblog, below the "Mini-log". The Git log shows the commit log messages that accompany every finalized set of changes to the code bases for my products. The general pattern is to work on a discrete set of changes and then "commit" them to the repository when they reach some sort of important milestone; the "milestone" may be something as simple as the elimination of a particular compiler warning during the build or the addition of a new file, and they can be as significant as implementing a big new feature or importing an entirely new product into the repository. For more information see this [brief outline of Subversion](http://www.wincent.com/wiki/Subversion) and [Git](http://www.wincent.com/wiki/Git).
 
 A feed is available of the Git log, as are [archives](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/).
 
@@ -35,7 +35,7 @@ Along with the move from Subversion to Git we get a nice web-based interface for
 
 #### Nightly builds
 
-In the right-hand column of my [weblog](http://colaiuta.net/) you'll see a section labelled "Nightlog". This is a collection of links to the latest automated nightly builds that have been uploaded to the server. If you click on those links you'll see a disclaimer like this one:
+In the right-hand column of my weblog you'll see a section labelled "Nightlog". This is a collection of links to the latest automated nightly builds that have been uploaded to the server. If you click on those links you'll see a disclaimer like this one:
 
 > Nightly builds are generated once per day by an automated system; they are not official releases and they receive no human testing prior to being uploaded. They are provided with no warranty of any kind; use them at your own risk.
 

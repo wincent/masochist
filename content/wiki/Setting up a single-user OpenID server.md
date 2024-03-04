@@ -1,5 +1,6 @@
 ---
 tags: wiki
+title: Setting up a single-user OpenID server
 ---
 
 These are notes made while setting up my own single-user [OpenID](/wiki/OpenID) server. I wanted to set up my own server for the same reasons stated by [Christopher Niemira](/wiki/Christopher_Niemira), author of [phpMyID](/wiki/phpMyID), who [writes](http://siege.org/projects/phpMyID/):
@@ -80,33 +81,31 @@ The following [HTML](/wiki/HTML) needed to be added to the page residing at my "
     <link rel="openid.delegate" href="https://secure.wincent.com/id.php" />
     <meta http-equiv="X-XRDS-Location" content="https://secure.wincent.com/id.php" />
 
-In my case, this was <http://colaiuta.net/> (my [weblog](/wiki/weblog)).
-
 # Results
 
 To test the system I made my first post using [OpenID](/wiki/OpenID)-based authentication [here](http://chanson.livejournal.com/170068.html). There are two problems with the result:
 
-1.  The "from" line reads as <http://wincent.com/a/about/wincent/weblog/>, which doesn't exactly make clear the identity of the poster; this is because <http://colaiuta.net/> just redirects to my [weblog](/wiki/weblog) at the other [URL](/wiki/URL).
+1.  The "from" line reads as <http://wincent.com/a/about/wincent/weblog/>, which doesn't exactly make clear the identity of the poster; this is because it just redirects to my [weblog](/wiki/weblog) at the other [URL](/wiki/URL).
 2.  The [the user profile](http://www.livejournal.com/userinfo.bml?userid=12856127&t=I&mode=full) linked to from the comment doesn't include the extra information that I included in my configuration.
 
-The second problem is probably a limitation of [LiveJournal](/wiki/LiveJournal) and there's not much that I can do about that. I decided to address the former problem by choosing a better [URL](/wiki/URL) for future identification. So I set up a simple page at <http://wincent.colaiuta.net/> with the following content:
+The second problem is probably a limitation of [LiveJournal](/wiki/LiveJournal) and there's not much that I can do about that. I decided to address the former problem by choosing a better [URL](/wiki/URL) for future identification. So I set up a simple page with the following content:
 
     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
             "http://www.w3.org/TR/html4/loose.dtd">
     <html lang="en">
     <head>
       <meta http-equiv="content-type" content="text/html; charset=utf-8">
-      <title>wincent.colaiuta.net</title>
+      <title>example.com</title>
       <link rel="openid.server" href="https://secure.wincent.com/id.php">
       <link rel="openid.delegate" href="https://secure.wincent.com/id.php">
       <meta http-equiv="X-XRDS-Location" content="https://secure.wincent.com/id.php">
     </head>
     <body>
     <ul>
-      <li>Wincent Colaiuta's personal weblog: <a href="http://colaiuta.net/">colaiuta.net</a></li>
+      <li>Wincent Colaiuta's personal weblog: <a href="http://example.com/">example.com</a></li>
       <li>Mac OS X software: <a href="http://wincent.com/">wincent.com</a></li>
     </ul>
     </body>
     </html>
 
-From now on when I sign in using that [URL](/wiki/URL) the identity should be a much more intelligible, "wincent.colaiuta.net".
+From now on when I sign in using that [URL](/wiki/URL) the identity should be much more intelligible.
