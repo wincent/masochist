@@ -7,11 +7,11 @@ So I just found out that when PayPal rolled out their new website they [broke al
 
 The first thing I did was go to their "link generation wizard" and create some new links to see if there were any material differences. Links which used to start
 
-    www.paypal.com/xclick/business=win@wincent.com
+    www.paypal.com/xclick/business=win@example.com
 
 Now start:
 
-    www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=win@wincent.com
+    www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=win@example.com
 
 But it turns out that that wasn't the problem. The problem was the `lc=en` parameter that I had in the query string. Remove it and the "Page not found" errors go away. I'm posting this in the hope that it will help others caught off guard by this change.
 

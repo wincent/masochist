@@ -10,4 +10,4 @@ Note that this release will _only_ run on [Snow Leopard](/wiki/Snow_Leopard), bu
 
 You can download the [installer package](http://wincent.com/a/products/wincent-strings-util/download/wincent-strings-util-2.0.pkg.zip), [source tarball](http://wincent.com/a/products/wincent-strings-util/download/wincent-strings-util-2.0-src.tar.gz), or check out the official product page for information about obtaining the source via [Git](/wiki/Git).
 
-This is an [open source](/wiki/open_source) product licensed under the [GPL](/wiki/GPL), so if you find it useful please consider [making a donation](https://www.paypal.com/xclick/business=win@wincent.com&item_name=Wincent+Strings+Utility+donation&no_note=1&currency_code=EUR&lc=GB).
+This is an [open source](/wiki/open_source) product licensed under the [GPL](/wiki/GPL), so if you find it useful please consider making a donation.

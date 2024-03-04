@@ -9,4 +9,4 @@ An official release of WOTest has not yet been prepared as there are still some 
 
 In order to build WOTest the [Wincent Build Tools](http://wincent.com/a/products/buildtools/) ("buildtools") are required. These were also [made available under the terms of the GPL](http://wincent.com/a/news/archives/2006/09/wincent_buildto.php) only two days ago. buildtools is a collection of useful scripts that help with common build tasks such as localization, stripping and applying custom icons to folders.
 
-Both products are being made available as free software, licensed under the GNU GPL (General Public License). Donations are welcome. Together, these projects represent the product of hundreds of hours of work; if you find them to be useful please consider [making a donation](https://www.paypal.com/xclick/business=win@wincent.com&item_name=GPL+software+donation&no_note=1&currency_code=EUR&lc=en).
+Both products are being made available as free software, licensed under the GNU GPL (General Public License). Donations are welcome. Together, these projects represent the product of hundreds of hours of work; if you find them to be useful please consider making a donation.

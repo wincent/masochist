@@ -5,4 +5,4 @@ tags: blog
 
 I've just released an update to the Wincent Strings Utility, the localization helper tool for developers. Version 1.2 is basically a total rewrite for [Leopard](http://wincent.com/wiki/Leopard) which adds a bunch of new features and improvements. See the official product page for a full list of changes, download links, and further information.
 
-It's free software released under a GPL license, downloadable in both source and executable forms, [donations are welcomed](https://www.paypal.com/xclick/business=win@wincent.com&item_name=Wincent+Strings+Utility+donation&no_note=1&currency_code=EUR&lc=GB).
+It's free software released under a GPL license, downloadable in both source and executable forms, donations are welcomed.

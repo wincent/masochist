@@ -28,4 +28,4 @@ Dir.mktmpdir do |dir|
 end
 ```
 
-The new version can be installed via `gem install mkdtemp` (or `sudo gem install mkdtemp`). If you find the Gem useful, please consider making a [donation via PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=win@wincent.com&item_name=mkdtemp+donation&no_note=1&currency_code=EUR&lc=GB) to <win@wincent.com>.
+The new version can be installed via `gem install mkdtemp` (or `sudo gem install mkdtemp`). If you find the Gem useful, please consider making a donation via PayPal.

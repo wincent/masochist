@@ -18,4 +18,4 @@ result.stderr   # => ''
 result.stdout   # => 'commit 491411b3...'
 ```
 
-The new version can be installed via `sudo gem install wopen3`. If you find the Gem useful, please consider making a [donation via PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=win@wincent.com&item_name=Wopen3+donation&no_note=1&currency_code=EUR&lc=GB) to <win@wincent.com>.
+The new version can be installed via `sudo gem install wopen3`. If you find the Gem useful, please consider making a donation via PayPal.
