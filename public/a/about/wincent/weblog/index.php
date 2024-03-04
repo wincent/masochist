@@ -1123,8 +1123,7 @@
             related to my business. If you're looking for information about my
             products please go to
             <a href="https://wincent.com/">wincent.com</a>, and for official
-            news <a href="https://wincent.com/a/news/">see here</a>. Shortcut to
-            this weblog: <a href="https://wincent.com/blog">colaiuta.net</a>.
+            news <a href="https://wincent.com/a/news/">see here</a>.
           </p>
           <hr />
 

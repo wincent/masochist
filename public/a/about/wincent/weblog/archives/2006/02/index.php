@@ -943,7 +943,7 @@
           how to get it separately# can ask Omni for perms to distribute
           modified
           sourcehttp://www.omnigroup.com/developer/sourcecode/sourcelicense/#
-          write article about this on colaiuta.net...# basically their license
+          write article about this # basically their license
           makes derivative works pretty darn hard...
         </p>
         <p>

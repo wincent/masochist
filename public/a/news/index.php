@@ -877,10 +877,7 @@
         <div class="content">
           <h3>Wincent product and site news</h3>
           <p>
-            Welcome to the official Wincent product and site news weblog. My
-            personal weblog, where I post development progress reports and other
-            notes not necessarily related to my business, can be found at
-            <a href="https://wincent.com/blog">colaiuta.net</a>.
+            Welcome to the official Wincent product and site news weblog.
           </p>
           <hr />
 
