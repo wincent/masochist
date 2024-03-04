@@ -670,19 +670,6 @@
             >Interface Builder trick &raquo;</a
           >
         </p>
-
-        <h2>October 10, 2006</h2>
-
-        <h3>Redirect</h3>
-
-        <p>
-          <a href="http://store.wincent.com/">store.wincent.com</a> now
-          redirects <a href="https://wincent.com/a/store/">here</a>.
-        </p>
-
-        <div id="a000604more"><div id="more"></div></div>
-
-        <p class="posted">Posted by wincent at October 10, 2006 10:29 AM</p>
       </div>
     </div>
 
