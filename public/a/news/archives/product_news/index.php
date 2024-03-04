@@ -1616,7 +1616,7 @@
 
         <p>
           The fifth public preview release of
-          <a href="http://synergyadvance.com/">Synergy Advance</a> (0.4) is now
+          Synergy Advance (0.4) is now
           on the servers and it boasts an
           <a href="https://wincent.com/a/products/synergy-advance/history/#0.4"
             >extensive set</a
@@ -1770,7 +1770,7 @@
 
         <p>
           A new beta release of
-          <a href="http://synergyadvance.com/">Synergy Advance</a> has been
+          Synergy Advance has been
           seeded to beta testers, fixing the failure to launch problems (<a
             href="https://wincent.com/a/support/bugs/show_bug.cgi?id=387"
             >bug #387</a
@@ -1802,7 +1802,7 @@
 
         <p>
           The second 0.4 beta release of
-          <a href="http://synergyadvance.com/">Synergy Advance</a> has been
+          Synergy Advance has been
           seeded to beta testers. See the
           <a
             href="https://wincent.com/a/knowledge-base/archives/2005/04/information_for.php"
@@ -1834,7 +1834,7 @@
         <h3 id="a000260">Synergy Advance 0.4 beta</h3>
 
         <p>
-          <a href="http://synergyadvance.com/">Synergy Advance</a> version 0.4
+          Synergy Advance version 0.4
           beta has just been released to beta testers.
         </p>
         <p>

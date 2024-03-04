@@ -1259,7 +1259,7 @@
 
         <p>
           So I had implemented an Apple Event "idle function" in
-          <a href="http://synergyadvance.com/">Synergy Advance</a> so that it
+          Synergy Advance so that it
           would remain responsive to the user even when iTunes blocked and
           refused to respond to Apple Events (as it does when its preferences
           window is open, for example).

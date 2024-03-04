@@ -831,7 +831,7 @@
 
         <p>
           A new beta release of
-          <a href="http://synergyadvance.com/">Synergy Advance</a> has been
+          Synergy Advance has been
           seeded to beta testers, fixing the failure to launch problems (<a
             href="https://wincent.com/a/support/bugs/show_bug.cgi?id=387"
             >bug #387</a
@@ -871,7 +871,7 @@
 
         <p>
           The second 0.4 beta release of
-          <a href="http://synergyadvance.com/">Synergy Advance</a> has been
+          Synergy Advance has been
           seeded to beta testers. See the
           <a
             href="https://wincent.com/a/knowledge-base/archives/2005/04/information_for.php"

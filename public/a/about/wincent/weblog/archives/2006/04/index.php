@@ -882,7 +882,7 @@
 
         <p>
           When the first public preview of
-          <a href="http://synergyadvance.com/">Synergy Advance</a> came out in
+          Synergy Advance came out in
           May 2005 it was the first
           <a href="https://wincent.com/a/products/">Wincent product</a> to
           incorporate a self-checksumming feature. Call it "anti-corruption" if

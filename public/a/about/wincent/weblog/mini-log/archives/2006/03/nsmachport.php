@@ -678,7 +678,7 @@
 
         <p>
           I'm leaking Mach ports (one per detached thread) in the development
-          build of <a href="http://synergyadvance.com/">Synergy Advance</a>, so
+          build of Synergy Advance, so
           I've made a category on <tt>NSMachPort</tt> in my WODebug framework to
           help me find out when, why and what's happening.
         </p>

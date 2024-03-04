@@ -939,7 +939,7 @@
               application from the Terminal instead of double-clicking it in the
               Finder. As an example, let's imagine that you want to run a copy
               of
-              <a href="http://synergyadvance.com/">Synergy Advance</a> installed
+              Synergy Advance installed
               in your <tt>/Applications/</tt> folder; you would enter the
               following commands (split across multiple lines for readability):
             </p>

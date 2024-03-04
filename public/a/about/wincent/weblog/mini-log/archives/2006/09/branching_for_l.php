@@ -686,7 +686,7 @@
             >created a new branch</a
           >
           of <a href="http://wincent.com/">Synergy</a> and
-          <a href="http://synergyadvance.com/">Synergy Advance</a> so that I can
+          Synergy Advance so that I can
           start implementing Leopard-only features on the trunk.
         </p>
 

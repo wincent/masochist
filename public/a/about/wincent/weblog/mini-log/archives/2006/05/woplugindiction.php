@@ -677,7 +677,7 @@
 
         <p>
           I've been cleaning up the
-          <a href="http://synergyadvance.com/">Synergy Advance</a> plug-in
+          Synergy Advance plug-in
           architecture, working on a <tt>WOPlugInArray</tt> class designed to
           serve as a model for use with <tt>NSTreeController</tt> and the user
           interface for managing plug-ins which will appear in the next release.

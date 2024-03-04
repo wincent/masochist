@@ -751,7 +751,7 @@
               be open source like
               <a href="https://wincent.com/a/products/winswitch/">WinSwitch</a>
               or closed source like
-              <a href="http://synergyadvance.com/">Synergy Advance</a>. In the
+              Synergy Advance. In the
               programs, pre-release builds are made available to participants
               for download. The participants report bugs or problems found in
               the build; Wincent then attempts to fix the problem and produces

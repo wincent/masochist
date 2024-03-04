@@ -677,7 +677,7 @@
 
         <p>
           Fixed the incorrect version information in
-          <a href="http://synergyadvance.com/">Synergy Advance's</a>
+          Synergy Advance's
           <tt>Info.plist</tt> and <tt>InfoPlist.strings</tt> files (main
           application bundle only).
         </p>

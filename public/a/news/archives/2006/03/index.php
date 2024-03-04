@@ -665,7 +665,7 @@
         <h3 id="a000260">Synergy Advance 0.4 beta</h3>
 
         <p>
-          <a href="http://synergyadvance.com/">Synergy Advance</a> version 0.4
+          Synergy Advance version 0.4
           beta has just been released to beta testers.
         </p>
         <p>

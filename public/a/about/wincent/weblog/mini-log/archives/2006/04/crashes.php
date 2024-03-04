@@ -687,7 +687,7 @@
           (an abort), both caused by some sort of flakey and unreliable
           behaviour across different versions of Mac OS X, different versions of
           the development tools, and different versions of
-          <a href="http://synergyadvance.com/">Synergy Advance</a>. Basically I
+          Synergy Advance. Basically I
           had no choice but to completely remove the anti-corruption features
           which is a shame because I spent so much time developing them and they
           have worked well up until now; but now there are just too many

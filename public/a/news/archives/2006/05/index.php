@@ -727,7 +727,7 @@
 
         <p>
           The fifth public preview release of
-          <a href="http://synergyadvance.com/">Synergy Advance</a> (0.4) is now
+          Synergy Advance (0.4) is now
           on the servers and it boasts an
           <a href="https://wincent.com/a/products/synergy-advance/history/#0.4"
             >extensive set</a

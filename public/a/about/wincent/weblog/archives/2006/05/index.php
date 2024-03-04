@@ -1036,7 +1036,7 @@
         <p>
           Currently working on a rule editor like the one in Mail.app. This is
           necessary for a
-          <a href="http://synergyadvance.com/">Synergy Advance</a> plug-in that
+          Synergy Advance plug-in that
           I'm hoping to finish this week.
         </p>
         <p>
