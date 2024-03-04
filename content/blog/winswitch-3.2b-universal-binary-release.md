@@ -7,6 +7,6 @@ tags: blog
 
 This is use-at-your-own risk beta software that is likely to have bugs. The previous stable release (version 3.1) is [still available](http://wincent.com/a/products/winswitch/download/) for download on the downloads page.
 
-WinSwitch is freeware but I depend on donations to cover the costs of distribution and development, so please consider [making a contribution](https://secure.wincent.com/a/products/winswitch/donate/). The download-to-donation ratio is well over 1,000 to 1, so please think about helping out.
+WinSwitch is freeware but I depend on donations to cover the costs of distribution and development, so please consider [making a contribution](https://wincent.com/a/products/winswitch/donate/). The download-to-donation ratio is well over 1,000 to 1, so please think about helping out.
 
 If you haven't used WinSwitch before [take a look at the screenshots](http://wincent.com/a/products/winswitch/screenshots/) or head over to the [downloads page](http://wincent.com/a/products/winswitch/download/) and take it for a spin!

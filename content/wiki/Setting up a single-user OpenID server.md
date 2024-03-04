@@ -77,9 +77,9 @@ This last point is just basic security practice whenever I'm forced to use [PHP]
 
 The following [HTML](/wiki/HTML) needed to be added to the page residing at my "identity" [URL](/wiki/URL):
 
-    <link rel="openid.server" href="https://secure.wincent.com/id.php" />
-    <link rel="openid.delegate" href="https://secure.wincent.com/id.php" />
-    <meta http-equiv="X-XRDS-Location" content="https://secure.wincent.com/id.php" />
+    <link rel="openid.server" href="https://wincent.com/id.php" />
+    <link rel="openid.delegate" href="https://wincent.com/id.php" />
+    <meta http-equiv="X-XRDS-Location" content="https://wincent.com/id.php" />
 
 # Results
 
@@ -96,9 +96,9 @@ The second problem is probably a limitation of [LiveJournal](/wiki/LiveJournal) 
     <head>
       <meta http-equiv="content-type" content="text/html; charset=utf-8">
       <title>example.com</title>
-      <link rel="openid.server" href="https://secure.wincent.com/id.php">
-      <link rel="openid.delegate" href="https://secure.wincent.com/id.php">
-      <meta http-equiv="X-XRDS-Location" content="https://secure.wincent.com/id.php">
+      <link rel="openid.server" href="https://wincent.com/id.php">
+      <link rel="openid.delegate" href="https://wincent.com/id.php">
+      <meta http-equiv="X-XRDS-Location" content="https://wincent.com/id.php">
     </head>
     <body>
     <ul>

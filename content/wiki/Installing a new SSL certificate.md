@@ -1,6 +1,7 @@
 ---
 tags: ssl wiki
 cache_breaker: 1
+title: Installing a new SSL certificate
 ---
 
 I [recently wrote](http://wincent.com/a/about/wincent/weblog/archives/2007/01/ssl_fun.php) about obtaining a new [SSL](/wiki/SSL) certificate. Here are some notes made during the procedure.
@@ -11,7 +12,7 @@ My first step was to generate a new [CSR](/wiki/CSR) (certificate signing reques
 
     cd /etc/httpd/conf
     sudo -s
-    openssl req -new -key ssl.key/server.key -out secure.wincent.com.csr
+    openssl req -new -key ssl.key/server.key -out wincent.com.csr
 
 This was actually a (harmless) mistake as I later discovered that I had used a key other than the one I intended. On receiving the signed certificate I made a backup of what I thought was the old certificate:
 
@@ -75,7 +76,7 @@ I am still not entirely sure that the configuration is perfect because on testin
     verify return:0
     ---
     Certificate chain
-     0 s:/C=AU/O=secure.wincent.com/OU=GT42117481/OU=See www.rapidssl.com/resources/cps (c)07/OU=Domain Control Validated - RapidSSL(R)/CN=secure.wincent.com
+     0 s:/C=AU/O=wincent.com/OU=GT42117481/OU=See www.rapidssl.com/resources/cps (c)07/OU=Domain Control Validated - RapidSSL(R)/CN=wincent.com
        i:/C=US/O=Equifax Secure Inc./CN=Equifax Secure Global eBusiness CA-1
      1 s:/C=US/O=Equifax Secure Inc./CN=Equifax Secure Global eBusiness CA-1
        i:/C=US/O=Equifax Secure Inc./CN=Equifax Secure Global eBusiness CA-1
@@ -119,18 +120,18 @@ Note that although verification couldn't proceed, there is no repetition in the 
 This compares with the messages I was initially seeing when I first tested (prior to installing the new `ca.crt`:
 
     CONNECTED(00000003)
-    depth=0 /C=AU/O=secure.wincent.com/OU=GT42117481/OU=See www.rapidssl.com/resources/cps (c)07/OU=Domain Control Validated - RapidSSL(R)/CN=secure.wincent.com
+    depth=0 /C=AU/O=wincent.com/OU=GT42117481/OU=See www.rapidssl.com/resources/cps (c)07/OU=Domain Control Validated - RapidSSL(R)/CN=wincent.com
     verify error:num=20:unable to get local issuer certificate
     verify return:1
-    depth=0 /C=AU/O=secure.wincent.com/OU=GT42117481/OU=See www.rapidssl.com/resources/cps (c)07/OU=Domain Control Validated - RapidSSL(R)/CN=secure.wincent.com
+    depth=0 /C=AU/O=wincent.com/OU=GT42117481/OU=See www.rapidssl.com/resources/cps (c)07/OU=Domain Control Validated - RapidSSL(R)/CN=wincent.com
     verify error:num=27:certificate not trusted
     verify return:1
-    depth=0 /C=AU/O=secure.wincent.com/OU=GT42117481/OU=See www.rapidssl.com/resources/cps (c)07/OU=Domain Control Validated - RapidSSL(R)/CN=secure.wincent.com
+    depth=0 /C=AU/O=wincent.com/OU=GT42117481/OU=See www.rapidssl.com/resources/cps (c)07/OU=Domain Control Validated - RapidSSL(R)/CN=wincent.com
     verify error:num=21:unable to verify the first certificate
     verify return:1
     ---
     Certificate chain
-     0 s:/C=AU/O=secure.wincent.com/OU=GT42117481/OU=See www.rapidssl.com/resources/cps (c)07/OU=Domain Control Validated - RapidSSL(R)/CN=secure.wincent.com
+     0 s:/C=AU/O=wincent.com/OU=GT42117481/OU=See www.rapidssl.com/resources/cps (c)07/OU=Domain Control Validated - RapidSSL(R)/CN=wincent.com
        i:/C=US/O=Equifax Secure Inc./CN=Equifax Secure Global eBusiness CA-1
     ---
 
@@ -152,7 +153,7 @@ Note that I haven't tested this and I can't remember whether this is an avenue t
 Unlike [Apache](/wiki/Apache) and [sendmail](/wiki/sendmail), these services don't allow you to configure them to look for separate key and root certificate files (or if they do, I don't know of the configuration options) so I had to concatenate the key with the new certificate (already in [PEM](/wiki/PEM) format). In the past I've found that the ordering of elements is crucial; so I stuck with the order that has worked for me in the past: private key then the certificate:
 
     cat server.key.rapidssl \
-        secure.wincent.com.crt.rapidssl \
+        wincent.com.crt.rapidssl \
         ca.crt.rapidssl > \
         /path/to/certs/imapd.pem.rapidssl
 

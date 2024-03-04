@@ -7,7 +7,7 @@ My previous [SSL](/wiki/SSL) certificate was a [RapidSSL](/wiki/RapidSSL)-issued
 
 I have two certificates for typechecked.net and rails.typechecked.net which both expire 23 january 2010. I'll be letting the certificate for rails.typechecked.net expire as the domain is not actively used anymore and only redirects to wincent.com.
 
-I also have a [RapidSSL](/wiki/RapidSSL) certificate for secure.wincent.com but that doesn't expire until 23 May 2013 so I won't be renewing that one just yet (and in fact, by the time 2013 comes around the domain is unlikely to be in active use anyway).
+I also have a [RapidSSL](/wiki/RapidSSL) certificate for wincent.com but that doesn't expire until 23 May 2013 so I won't be renewing that one just yet (and in fact, by the time 2013 comes around the domain is unlikely to be in active use anyway).
 
 The basic process for renewal is:
 

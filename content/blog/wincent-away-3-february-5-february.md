@@ -7,11 +7,11 @@ I will be going to a conference starting Friday 3 February 2006 and ending Sunda
 
 In the meantime, please use the online support resources that are available to you 24 hours per day:
 
--   [Lost license code retrieval system](https://secure.wincent.com/a/support/registration/)
+-   [Lost license code retrieval system](https://wincent.com/a/support/registration/)
 -   [Support forums](http://wincent.com/a/support/forums/)
 -   [Bug tracking and feature requests database](http://wincent.com/a/support/bugs/)
 -   [Knowledge base](http://wincent.com/a/knowledge-base/) and [product information pages](http://wincent.com/a/products/)
--   [The Wincent online store](https://secure.wincent.com/a/store/) (licenses immediately delivered by automated systems)
+-   [The Wincent online store](https://wincent.com/a/store/) (licenses immediately delivered by automated systems)
 
 Please take care to supply the correct email address when purchasing products and if using PayPal make sure your account settings are up to date. Licenses are issued immediately by automated systems, so all you'll have to do is make sure that you provide a working email address and you will receive your license even though I'm out of town. You may also wish to make sure that your spam filters don't mistakenly eat any such messages, and if you have a challenge-response anti-spam system you'll need to turn that off or manually override it (the license issuing system ignores such challenges). For reference, licenses are sent from "win at wincent dot org", so you might want to white-list that address.
 

@@ -3,9 +3,9 @@ tags: apache sendmail cyrus ssl wiki
 title: SSL certificate renewal notes 2012
 ---
 
-I've been using [RapidSSL](/wiki/RapidSSL) for my [SSL](/wiki/SSL) certificates for a few years now, using [ServerTastic](http://www.servertastic.com/) because it's been the cheapest reseller (\$50 for a 5/year renewal). Right now I have one cert for wincent.com and another for secure.wincent.com (buying two separate certs is still considerably cheaper than getting a wildcard cert, although one day I'll probably cave in and get a wildcard cert in order to gracefully handle and redirect HTTPS requests coming in to wincent.com and possibly other subdomains as well).
+I've been using [RapidSSL](/wiki/RapidSSL) for my [SSL](/wiki/SSL) certificates for a few years now, using [ServerTastic](http://www.servertastic.com/) because it's been the cheapest reseller (\$50 for a 5/year renewal). Right now I have one cert for wincent.com and another for wincent.com (buying two separate certs is still considerably cheaper than getting a wildcard cert, although one day I'll probably cave in and get a wildcard cert in order to gracefully handle and redirect HTTPS requests coming in to wincent.com and possibly other subdomains as well).
 
-This year I was forced into renewing a little early because Chrome started complaining about the signature algorithm used on the older of my two certs (the certificate in question was for secure.wincent.com, and set to expire on 23 May 2013; just under 11 months from now). I had originally thought that by the time it expired I might have migrated all my SSL traffic onto wincent.com, but that hasn't happened. This is the first time I've been "bitten" by my selection of cheaper certificates.
+This year I was forced into renewing a little early because Chrome started complaining about the signature algorithm used on the older of my two certs (the certificate in question was for wincent.com, and set to expire on 23 May 2013; just under 11 months from now). I had originally thought that by the time it expired I might have migrated all my SSL traffic onto wincent.com, but that hasn't happened. This is the first time I've been "bitten" by my selection of cheaper certificates.
 
 This time I went with [Namecheap](http://namecheap.com), as they offered a marginally better deal (\$9.49/year for 4 years).
 
@@ -70,7 +70,7 @@ I answered the questions as follows:
     Locality Name (eg, city) [Newbury]:Glenelg South
     Organization Name (eg, company) [My Company Ltd]:wincent.com
     Organizational Unit Name (eg, section) []:
-    Common Name (eg, your name or your server's hostname) []:secure.wincent.com
+    Common Name (eg, your name or your server's hostname) []:wincent.com
     Email Address []:win@wincent.com
 
     Please enter the following 'extra' attributes
@@ -155,7 +155,7 @@ At this point we can restart sendmail and test:
     # without the CApath, you'll get a warning about a
     # self-signed certificate being in the chain
     # http://stackoverflow.com/questions/4103472
-    openssl s_client -starttls smtp -connect secure.wincent.com:25 -CApath /etc/pki/tls/certs
+    openssl s_client -starttls smtp -connect wincent.com:25 -CApath /etc/pki/tls/certs
 
 # Cyrus
 
@@ -189,10 +189,10 @@ And we can restart Cyrus:
 And verify in [Mail.app](/wiki/Mail.app) and on the [command line](/wiki/command_line):
 
     # test secure IMAP
-    openssl s_client -connect secure.wincent.com:993  -CApath /etc/pki/tls/certs
+    openssl s_client -connect wincent.com:993  -CApath /etc/pki/tls/certs
 
     # test secure POP
-    openssl s_client -connect secure.wincent.com:995  -CApath /etc/pki/tls/certs
+    openssl s_client -connect wincent.com:995  -CApath /etc/pki/tls/certs
 
 # nginx
 

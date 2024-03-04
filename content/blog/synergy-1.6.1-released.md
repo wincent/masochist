@@ -7,4 +7,4 @@ I've just put an update to [Synergy](http://wincent.com/a/products/synergy-class
 
 This is a cosmetic issue only, so there is no need to upgrade to 1.6.1 if you have upgraded to 1.6 already. I just wanted to put this amended build out quickly though, to avoid potential confusion for registered users who haven't yet upgraded, and might mistakenly think that they have to re-enter their license codes.
 
-Download it [here](http://wincent.com/download.php?item=Synergy.dmg) (1MB), [purchase](https://secure.wincent.com/a/products/synergy-classic/purchase/) or [donate](https://secure.wincent.com/a/products/synergy-classic/donate/) here, and [retrieve your lost license codes here](https://secure.wincent.com/a/support/registration/).
+Download it [here](http://wincent.com/download.php?item=Synergy.dmg) (1MB), [purchase](https://wincent.com/a/products/synergy-classic/purchase/) or [donate](https://wincent.com/a/products/synergy-classic/donate/) here, and [retrieve your lost license codes here](https://wincent.com/a/support/registration/).

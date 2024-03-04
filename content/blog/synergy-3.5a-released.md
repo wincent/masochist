@@ -9,4 +9,4 @@ Today marks the availability of the first release in the 3.5 series, a total rew
 
 A full changelog appears [here](http://wincent.com/a/products/synergy-classic/history/#3.5a).
 
-You can download the new release [from here](http://wincent.com/download.php?item=SynergyBeta.dmg) and purchase a license using [this page](https://secure.wincent.com/a/products/synergy-classic/purchase/). The 3.2-series can still be downloaded [from here](http://wincent.com/download.php?item=SynergyJaguar.dmg). This is a free upgrade for users who already hold a valid Synergy license.
+You can download the new release [from here](http://wincent.com/download.php?item=SynergyBeta.dmg) and purchase a license using [this page](https://wincent.com/a/products/synergy-classic/purchase/). The 3.2-series can still be downloaded [from here](http://wincent.com/download.php?item=SynergyJaguar.dmg). This is a free upgrade for users who already hold a valid Synergy license.

@@ -8,4 +8,4 @@ I'm pleased to announce the availability of the latest release in the [Synergy](
 
 A full changelog appears [here](http://wincent.com/a/products/synergy-classic/history/).
 
-You can download the new release from [this page](http://wincent.com/a/products/synergy-classic/download/) ([direct link](http://wincent.com/download.php?item=SynergyJaguar.zip)) and purchase a license using [this page](https://secure.wincent.com/a/products/synergy-classic/purchase/).
+You can download the new release from [this page](http://wincent.com/a/products/synergy-classic/download/) ([direct link](http://wincent.com/download.php?item=SynergyJaguar.zip)) and purchase a license using [this page](https://wincent.com/a/products/synergy-classic/purchase/).

@@ -11,4 +11,4 @@ The 31 bullet points in the [full change list](http://wincent.com/a/products/syn
 
 I am hoping that most of the major architectural overhauls are complete so I should be able to add features quite quickly from here on. The current plan is to hit 1.0 by the time [Apple](http://wincent.com/wiki/Apple) releases [Leopard](http://wincent.com/wiki/Leopard) in October 2007.
 
-If you'd like to try it out, please see the [downloads page](http://wincent.com/a/products/synergy-advance/download/). The previous, stable release (version 0.4) will continue to be available from there. Licenses can be purchased [here](https://secure.wincent.com/a/products/synergy-advance/purchase/).
+If you'd like to try it out, please see the [downloads page](http://wincent.com/a/products/synergy-advance/download/). The previous, stable release (version 0.4) will continue to be available from there. Licenses can be purchased [here](https://wincent.com/a/products/synergy-advance/purchase/).

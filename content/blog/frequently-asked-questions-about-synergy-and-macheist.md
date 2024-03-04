@@ -30,7 +30,7 @@ If you install a different version of Synergy, it will behave as un unregistered
 
 # How do I update to a newer version?
 
-You can use a later version by [purchasing a standard license](https://secure.wincent.com/a/products/synergy-classic/purchase/) — licenses start at 5 euros each — or you can use Synergy on a trial basis during the standard demo period.
+You can use a later version by [purchasing a standard license](https://wincent.com/a/products/synergy-classic/purchase/) — licenses start at 5 euros each — or you can use Synergy on a trial basis during the standard demo period.
 
 # Will the Macheist version notify me of new versions?
 

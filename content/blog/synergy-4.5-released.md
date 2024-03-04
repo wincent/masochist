@@ -14,4 +14,4 @@ For many users this release will be a free upgrade: see [this blog post](/blog/s
 
 The [Synergy](/wiki/Synergy) product pages were recently completely revamped for 4.0, so be sure to [check them out](/products/synergy).
 
-You can download the new release from [the download page](/products/synergy/download) and purchase a license using [this page](https://secure.wincent.com/a/products/synergy-classic/purchase/).
+You can download the new release from [the download page](/products/synergy/download) and purchase a license using [this page](https://wincent.com/a/products/synergy-classic/purchase/).

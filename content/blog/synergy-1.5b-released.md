@@ -7,4 +7,4 @@ I'm very pleased to announce the release of [Synergy 1.5b](http://wincent.com/a/
 
 > HOLY MOLY! .. you are for real when you say it is FASTER! ..
 
-[Download it here](http://wincent.com/download.php?item=Synergy.dmg) (946KB), [purchase](https://secure.wincent.com/a/products/synergy-classic/purchase/) or [donate](https://secure.wincent.com/a/products/synergy-classic/donate/) here, and [retrieve your lost license codes here](https://secure.wincent.com/a/support/registration/).
+[Download it here](http://wincent.com/download.php?item=Synergy.dmg) (946KB), [purchase](https://wincent.com/a/products/synergy-classic/purchase/) or [donate](https://wincent.com/a/products/synergy-classic/donate/) here, and [retrieve your lost license codes here](https://wincent.com/a/support/registration/).

@@ -7,7 +7,7 @@ I've just prepared an update to the [Synergy](/wiki/Synergy) 3.4 series, version
 
 If you are a 3.4 user and aren't using [Snow Leopard](/wiki/Snow_Leopard) yet then there is absolutely no reason to update to 3.4.1.
 
-[Synergy](/wiki/Synergy) is a lightweight, highly-customizable [iTunes](/wiki/iTunes) controller. You can download the new release from [the download page](/products/synergy/download) and purchase a license using [this page](https://secure.wincent.com/a/products/synergy-classic/purchase/). The Synergy product pages were recently completely revamped for 4.0, so be sure to [check them out](/products/synergy).
+[Synergy](/wiki/Synergy) is a lightweight, highly-customizable [iTunes](/wiki/iTunes) controller. You can download the new release from [the download page](/products/synergy/download) and purchase a license using [this page](https://wincent.com/a/products/synergy-classic/purchase/). The Synergy product pages were recently completely revamped for 4.0, so be sure to [check them out](/products/synergy).
 
 See also:
 

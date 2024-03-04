@@ -1,6 +1,7 @@
 ---
 tags: ssl wiki
 cache_breaker: 1
+title: SSL certificate renewal notes 2008
 ---
 
 My previous [SSL](/wiki/SSL) certificate was a [RapidSSL](/wiki/RapidSSL)-issued certificate, and the cheapest reseller I could find at time of renewal (late April 2008) was [ServerTastic](http://www.servertastic.com/) (a 5-year renewal for $50, or $10 per year).
@@ -21,14 +22,14 @@ Instructions for how to do this appear [here](http://www.rapidssl.com/freessl/fr
     cd path/to/ssl/certs/and/keys
 
     # move old CSR out the way
-    mv secure.wincent.com.csr.rapidssl secure.wincent.com.csr.rapidssl.2007
+    mv wincent.com.csr.rapidssl wincent.com.csr.rapidssl.2007
 
     # create a new CSR
-    openssl req -new -key server.key -out secure.wincent.com.csr.rapidssl.2008
+    openssl req -new -key server.key -out wincent.com.csr.rapidssl.2008
 
     # review the new CSR, comparing it against the previous one for correctness
-    openssl req -noout -text -in secure.wincent.com.csr.rapidssl.2008
-    openssl req -noout -text -in secure.wincent.com.csr.rapidssl.2007
+    openssl req -noout -text -in wincent.com.csr.rapidssl.2008
+    openssl req -noout -text -in wincent.com.csr.rapidssl.2007
 
 Here is how I answered the questions during CSR generation:
 
@@ -44,7 +45,7 @@ Here is how I answered the questions during CSR generation:
     Locality Name (eg, city) [Newbury]:Rundle Mall
     Organization Name (eg, company) [My Company Ltd]:wincent.com
     Organizational Unit Name (eg, section) []:
-    Common Name (eg, your name or your server's hostname) []:secure.wincent.com
+    Common Name (eg, your name or your server's hostname) []:wincent.com
     Email Address []:win@wincent.com
 
     Please enter the following 'extra' attributes
@@ -59,10 +60,10 @@ Here is how I answered the questions during CSR generation:
 [RapidSSL](/wiki/RapidSSL) provides [installation instructions](http://www.rapidssl.com/ssl-certificate-support/install-ssl-certificate/apache_apache_ssl.htm) for [Apache](/wiki/Apache) running [mod_ssl](/wiki/mod_ssl).
 
     # move old certificate backup out of the way
-    mv secure.wincent.com.crt.rapidssl secure.wincent.com.crt.rapidssl.2007
+    mv wincent.com.crt.rapidssl wincent.com.crt.rapidssl.2007
 
     # put the new certificate where Apache expects to find it
-    cp secure.wincent.com.crt.rapidssl.2008 secure.wincent.com.crt
+    cp wincent.com.crt.rapidssl.2008 wincent.com.crt
 
     # go live with the new certificate
     apachectl configtest
@@ -78,7 +79,7 @@ Visting a secure [URL](/wiki/URL) confirms that the new certificate is valid unt
     mv sendmail.pem.rapidssl sendmail.pem.rapidssl.2007
 
     # install new certificate
-    cp /path/to/secure.wincent.com.crt.rapidssl.2008 sendmail.pem.rapidssl.2008
+    cp /path/to/wincent.com.crt.rapidssl.2008 sendmail.pem.rapidssl.2008
     cp sendmail.pem.rapidssl.2008 sendmail.pem
 
     # go live with the new certificate
@@ -86,7 +87,7 @@ Visting a secure [URL](/wiki/URL) confirms that the new certificate is valid unt
 
 I first did some elementary testing from [Mail.app](/wiki/Mail.app) using the "Connection Inspector" window. I then followed this up with a [telnet](/wiki/telnet)-style test:
 
-    openssl s_client -starttls pop -connect secure.wincent.com:25
+    openssl s_client -starttls pop -connect wincent.com:25
 
 ### Cyrus
 
@@ -106,7 +107,7 @@ I first did some elementary testing from [Mail.app](/wiki/Mail.app) using the "C
 Again, I tested using [Mail.app](/wiki/Mail.app) and also did the following tests in the [Terminal](/wiki/Terminal):
 
     # test secure IMAP
-    openssl s_client -connect secure.wincent.com:993
+    openssl s_client -connect wincent.com:993
 
     # test secure POP
-    openssl s_client -connect secure.wincent.com:995
+    openssl s_client -connect wincent.com:995
