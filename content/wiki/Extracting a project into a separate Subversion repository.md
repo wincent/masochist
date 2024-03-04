@@ -1,5 +1,6 @@
 ---
 tags: wiki
+title: Extracting a project into a separate Subversion repository
 ---
 
 This is a more conservative approach than that detailed in the Subversion book. Instead of dumping and using `svndumpfilter` to include only the relevant paths, we dump the repository, load the entire repository, and then delete excluded portions by hand:
@@ -15,5 +16,5 @@ This is a more conservative approach than that detailed in the Subversion book. 
 
 After loading in the new contents (with a different [UUID](/wiki/UUID)) it's necessary to massage the repository into the desired shape:
 
-    svn ls svn://svn.wincent.com/project-name/tags
-    svn rm svn://svn.wincent.com/project-name/tags/unwanted-tag
+    svn ls svn://svn.example.com/project-name/tags
+    svn rm svn://svn.example.com/project-name/tags/unwanted-tag

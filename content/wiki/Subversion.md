@@ -27,7 +27,7 @@ The benefits of using a version control system like Subversion include:
 
 Up until July 2007, all of the code for all [Wincent](/wiki/Wincent) products was managed via [Subversion](/wiki/Subversion) (with an additional [SVK](/wiki/SVK) layer used for development purposes). In July 2007 I started migrating to [Git](/wiki/Git).
 
-The source code for Wincent's open source products was available to the public via Subversion access to a public repository hosted at svn.wincent.com. The closed source products were also stored in a Subversion repository.
+The source code for Wincent's open source products was available to the public via Subversion access to a public repository. The closed source products were also stored in a Subversion repository.
 
 When this article was originally prepared (December 2007) the Subversion repositories were still online but no new commits had been made to them for many months; all continuing development work takes place using Git.
 

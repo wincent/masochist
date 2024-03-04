@@ -1,5 +1,6 @@
 ---
 tags: version.control wiki
+title: Merging
 ---
 
 # Merging using [SVK](/wiki/SVK)
@@ -184,8 +185,8 @@ See "[Synergy branch notes](/wiki/Synergy_branch_notes)" for information about t
 
 Finally, prior to releasing 3.1.1 and switching from [Subversion](/wiki/Subversion) to [SVK](/wiki/SVK) for future branch management, I merged the last batch of changes:
 
-    svn co svn+ssh://svn.wincent.com/Synergy/trunk trunk
-    svn co svn+ssh://svn.wincent.com/Synergy/branches/panther panther
+    svn co svn+ssh://svn.example.com/Synergy/trunk trunk
+    svn co svn+ssh://svn.example.com/Synergy/branches/panther panther
     opendiff panther trunk
     svn log panther --limit 10
     svn log trunk --limit 1

@@ -16,7 +16,7 @@ I've previously written about moving from [Subversion](/wiki/Subversion) to [Git
 
 I first performed an initial test run on my local machine running [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard).
 
-    git svnimport -C bansshee.git svn://svn.wincent.com/bansshee
+    git svnimport -C bansshee.git svn://svn.example.com/bansshee
 
 I used the `-C` option to explicitly define the desired output directory as I didn't want the new [Git](/wiki/Git) repository to be created in the current directory.
 
@@ -61,7 +61,7 @@ I also added the `-v` switch to get verbose output and the `-I` switch to automa
 
     $ cd ..
     $ rm -rf bansshee.git
-    $ git svnimport -v -A ~/.svn-authors -I .gitignore -C bansshee.git svn://svn.wincent.com/bansshee
+    $ git svnimport -v -A ~/.svn-authors -I .gitignore -C bansshee.git svn://svn.example.com/bansshee
     Initialized empty Git repository in /Users/wincent/trabajo/unversioned/bansshee/bansshee.git/.git/
     Processing from 1 to 4 ...
     Fetching from 1 to 4 ...

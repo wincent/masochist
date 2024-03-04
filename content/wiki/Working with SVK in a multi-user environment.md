@@ -1,5 +1,6 @@
 ---
 tags: svk wiki
+title: Working with SVK in a multi-user environment
 ---
 
 When I first started working with [SVK](/wiki/SVK) I was working alone and from a single machine. My work cycle was basically:
@@ -32,7 +33,6 @@ When I started doing development work in [Leopard](/wiki/Leopard) itself and fin
 I was surprised to see that after working on another branch my commits were failing even though I had done an `svk up` beforehand:
 
     Commit into mirrored path: merging back directly.
-    Merging back to mirror source svn://svn.wincent.com/WOTest.
     A checksum mismatch occurred: Base checksum mismatch on '/trunk/NSException+WOTest.m':
        expected:  ab5055a21d72459b6fe6c8bd4c959e20
          actual:  7d57db2ecf5e25fc15762d8bb1feb6cb

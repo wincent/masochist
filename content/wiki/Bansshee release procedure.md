@@ -1,5 +1,6 @@
 ---
 tags: bansshee wiki
+title: Bansshee release procedure
 ---
 
 -   Clean-up working copy and commit any remaining changes.
@@ -7,14 +8,14 @@ tags: bansshee wiki
 
 <!-- -->
 
-    svn cp svn+ssh://svn.wincent.com/bansshee/trunk \
-           svn+ssh://svn.wincent.com/bansshee/tags/1.0-RELEASE
+    svn cp svn+ssh://svn.example.com/bansshee/trunk \
+           svn+ssh://svn.example.com/bansshee/tags/1.0-RELEASE
 
 -   Prepare an archive:
 
 <!-- -->
 
-    svn export svn://svn.wincent.com/bansshee/tags/1.0-RELEASE bansshee
+    svn export svn://svn.example.com/bansshee/tags/1.0-RELEASE bansshee
     zip -r bansshee-1.0.zip bansshee
 
 -   Upload archive

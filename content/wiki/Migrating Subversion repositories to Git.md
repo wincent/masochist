@@ -1,9 +1,10 @@
 ---
 tags: subversion git wiki
 cache_breaker: 1
+title: Migrating Subversion repositories to Git
 ---
 
-I used to host a number of public [Subversion](/wiki/Subversion) repositories for [open source](/wiki/open_source) projects at svn.wincent.com. Due to long-standing dissatisfaction with Subversion's inadequate support for [branching](/wiki/branching) and [merging](/wiki/merging), in early 2007 I started using [SVK](/wiki/SVK) locally as an additional layer while maintaining the server-side infrastructure.
+I used to host a number of public [Subversion](/wiki/Subversion) repositories for [open source](/wiki/open_source) projects. Due to long-standing dissatisfaction with Subversion's inadequate support for [branching](/wiki/branching) and [merging](/wiki/merging), in early 2007 I started using [SVK](/wiki/SVK) locally as an additional layer while maintaining the server-side infrastructure.
 
 But although SVK is very good, it is written in [Perl](/wiki/Perl) and has proved to be quite slow. SVK's local mirroring eliminates the network bottleneck for some operations, but still proves to be quite slow overall. [Git](/wiki/Git) on the other hand delivers most of the advantages of SVK (see "[Git advantages](/wiki/Git_advantages)" and "[SVK advantages](/wiki/SVK_advantages)") but additionally offers unrivalled speed for most operations, is more powerful and more robust in my judgement, and offers excellent documentation (see "[Git documentation](/wiki/Git_documentation)" on par or better than Subversion's and far in advance of SVK's).
 

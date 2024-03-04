@@ -1,17 +1,18 @@
 ---
 tags: subversion wiki
+title: Creating branches with Subversion
 ---
 
 # Example: creating "tiger" branch for [buildtools](/wiki/buildtools)
 
     # perform the actual branch
-    svn cp svn+ssh://svn.wincent.com/buildtools/trunk
-           svn+ssh://svn.wincent.com/buildtools/branches/tiger
+    svn cp svn+ssh://svn.example.com/buildtools/trunk
+           svn+ssh://svn.example.com/buildtools/branches/tiger
 
     # check out clean copies of the two trees in the appropriate locations
     cd trabajo
-    svn co svn+ssh://svn.wincent.com/buildtools/branches/tiger tiger/buildtools
-    svn co svn+ssh://svn.wincent.com/buildtools/trunk leopard/buildtools
+    svn co svn+ssh://svn.example.com/buildtools/branches/tiger tiger/buildtools
+    svn co svn+ssh://svn.example.com/buildtools/trunk leopard/buildtools
 
 Previously all work was gather undered the `trabajo` directory. Now it is structured like so:
 

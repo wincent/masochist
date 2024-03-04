@@ -8,7 +8,7 @@ title: Migrating the WinSwitch repository from Subversion to Git
 
     $ cat ~/.svn-authors
     wincent = Wincent Colaiuta <win@wincent.com>
-    $ git svn clone --stdlayout -A ~/.svn-authors svn+ssh://svn.wincent.com/WinSwitch src
+    $ git svn clone --stdlayout -A ~/.svn-authors svn+ssh://svn.example.com/WinSwitch src
 
 # Remote configuration
 

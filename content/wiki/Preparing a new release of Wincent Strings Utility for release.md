@@ -19,7 +19,7 @@ This example uses version 1.1; change the version numbers as appropriate.
 
 7\. Export a clean copy of the source tree:
 
-    svn export svn://svn.wincent.com/wincent-strings-util/tags/1.1 wincent-strings-util-1.1
+    svn export svn://svn.example.com/wincent-strings-util/tags/1.1 wincent-strings-util-1.1
 
 8\. Copy the freshly built executable into the exported source tree:
 

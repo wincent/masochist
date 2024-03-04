@@ -1,5 +1,6 @@
 ---
 tags: subversion wiki
+title: WOCommon branch notes
 ---
 
 On 28 October 2006 I branched [WOCommon](/wiki/WOCommon). The existing codebase would continue development on the `tiger` branch and [Leopard](/wiki/Leopard)-related development would take place on the "trunk".
@@ -18,7 +19,7 @@ It was then necessary to do a "switch" to point the existing working copy at the
 
     cd svn-files
     svn info
-    svn switch svn+ssh://svn.wincent.com/WOCommon/branches/tiger .
+    svn switch svn+ssh://svn.example.com/WOCommon/branches/tiger .
     svn info
 
 As described in the article, [Creating branches with Subversion](/wiki/Creating_branches_with_Subversion), all of this is rooted in a hierarchy that begins with `trabajo/tiger/`:

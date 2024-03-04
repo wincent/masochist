@@ -1,5 +1,6 @@
 ---
 tags: subversion wiki
+title: Setting up multiple repository access methods with Subversion
 ---
 
 # Motivation
@@ -47,8 +48,8 @@ You would set such a variable with the following command:
 
 I also had to add the following to my `.ssh/config` to prevent [SSH](/wiki/SSH) from trying to authenticate me as user `wincent` instead of user `svn`:
 
-    Host svn.wincent.com
-      HostName svn.wincent.com
+    Host svn.example.com
+      HostName svn.example.com
       User svn
 
 ## Server-side set-up
@@ -77,7 +78,7 @@ The public key itself begins with a key-type marker, `ssh-dss`, followed by the 
 
 Perform a test checkout via `svn+ssh` to confirm that everything is working as expected:
 
-    svn co svn+ssh://svn.wincent.com/project-name/trunk
+    svn co svn+ssh://svn.example.com/project-name/trunk
 
 In order for this to work I found that I had to set the shell of the `svn` user to `/bin/sh` (previously it was `/sbin/nologin`). Note that even though a login shell is defined for that user it is not possible to actually gain a login shell because logins are explicitly disallowed for the `svn` user in the `/etc/shadow` file (that is, the password field contains only "\*", indicating that the logins are not permitted for that user).
 
@@ -124,8 +125,8 @@ The above functionality is already implemented and working. If people express an
 
 ## Working copy switching
 
-    svn switch --relocate svn://svn.wincent.com/project-name/trunk \
-                          svn+ssh://svn.wincent.com/project-name/trunk
+    svn switch --relocate svn://svn.example.com/project-name/trunk \
+                          svn+ssh://svn.example.com/project-name/trunk
 
 ## See also
 

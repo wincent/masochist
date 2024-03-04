@@ -1,6 +1,7 @@
 ---
 tags: subversion wiki
 cache_breaker: 1
+title: Migrating a Subversion repository from one machine to another
 ---
 
 Notes made while migrating the [Wincent Strings Util](/wiki/Wincent_Strings_Util) repository from the local repository to the public (Internet) repository.
@@ -19,12 +20,12 @@ Notes made while migrating the [Wincent Strings Util](/wiki/Wincent_Strings_Util
 
 5\. Check out a local working copy from the remote repository:
 
-    svn co svn://svn.wincent.com/project-name/trunk
+    svn co svn://svn.example.com/project-name/trunk
 
 Alternatively, if an existing local working copy is already up-to-date you can do the following to update it to point at the new remote repository:
 
     svn switch --relocate http://localhost:8080/svnrep/project-name/trunk \
-                          svn://svn.wincent.com/project-name/trunk
+                          svn://svn.example.com/project-name/trunk
 
 # Caveat
 
@@ -42,16 +43,16 @@ It is not clear whether the fault lies with `svnadmin`, or with the filesystem u
 
 I then tried switching copies using:
 
-    svn switch svn://svn.wincent.com/project-name/trunk
+    svn switch svn://svn.example.com/project-name/trunk
 
 But was informed by Subversion that:
 
-    svn: 'svn://svn.wincent.com/project-name/trunk'
+    svn: 'svn://svn.example.com/project-name/trunk'
     is not the same repository as
     'http://localhost:8080/svnrep/project-name'
 
 So I was forced to check out a new copy:
 
-    svn co svn://svn.wincent.com/project-name/trunk
+    svn co svn://svn.example.com/project-name/trunk
 
 Alternatively, passing the `--relocate` flag would also work.

@@ -1,5 +1,6 @@
 ---
 tags: subversion wiki
+title: Creating a new Subversion repository
 ---
 
 # Creating the repository
@@ -48,10 +49,10 @@ Then create repository content as described below (create `branches`, `tags` and
 
     mkdir trunk tags branches
     mv "project-files" trunk/
-    svn import svn+ssh://svn.wincent.com/project-name
+    svn import svn+ssh://svn.example.com/project-name
 
 # Initial checkout of working copy
 
     mkdir pre-import
     mv branches tags trunk pre-import/
-    svn co svn+ssh://svn.wincent.com/project-name/trunk trunk
+    svn co svn+ssh://svn.example.com/project-name/trunk trunk

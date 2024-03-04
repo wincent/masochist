@@ -1,5 +1,6 @@
 ---
 tags: subversion wiki
+title: Setting up additional machines to access Subversion via SSH
 ---
 
 Before going away for the weekend I wanted to set up my laptop so that I could access the [Subversion](/wiki/Subversion) repository via [SSH](/wiki/SSH). This article is the set of steps I had to perform to do this, and is a simplified version of the original configuration described in [Setting up multiple repository access methods with Subversion](/wiki/Setting_up_multiple_repository_access_methods_with_Subversion). The laptop is a clean install of a pre-release version of [Mac OS X](/wiki/Mac_OS_X), so it is effectively "empty" and has no configuration in place.
@@ -39,8 +40,8 @@ Launch the SSH agent application with the option key held down so that you can a
 
 Finally, log out so that the environment changes will take effect. The `~/.ssh/config` file will need to be modified (or created) to contain the following:
 
-    Host svn.wincent.com
-      HostName svn.wincent.com
+    Host svn.example.com
+      HostName svn.example.com
       User svn
 
 # Extras
