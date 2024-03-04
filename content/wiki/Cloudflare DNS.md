@@ -55,15 +55,15 @@ Note that all the redirects are a single "hop", which you can see with a command
 
 Credit for the Page Rules configuration goes to [this Stack Overflow answer](https://stackoverflow.com/questions/55274360/cloudflare-redirect-domain) and [comment](https://stackoverflow.com/questions/55274360/cloudflare-redirect-domain#comment126284596_64796153). Conveniently Cloudflare gives you three Page Rules for free with every site.
 
-### Case study #2: hex.wincent.com
+### Case study #2: hex.typechecked.net
 
 #### GitHub set-up
 
 -   Source code: [github.com/wincent/hextrapolate](https://github.com/wincent/hextrapolate).
 -   [Build script](https://github.com/wincent/hextrapolate/blob/main/publish.sh).
 -   [`gh-pages` branch](https://github.com/wincent/hextrapolate/tree/gh-pages).
-    -   [wincent.github.io/hextrapolate](https://wincent.github.io/hextrapolate): GitHub pages site for this repo (redirects to `hex.wincent.com`).
-    -   [`CNAME` configuration](https://github.com/wincent/hextrapolate/blob/gh-pages/CNAME), telling GitHub that there's a `CNAME` for `hex.wincent.com` pointing at the GitHub pages site for this repo.
+    -   [wincent.github.io/hextrapolate](https://wincent.github.io/hextrapolate): GitHub pages site for this repo (redirects to `hex.typechecked.net`).
+    -   [`CNAME` configuration](https://github.com/wincent/hextrapolate/blob/gh-pages/CNAME), telling GitHub that there's a `CNAME` for `hex.typechecked.net` pointing at the GitHub pages site for this repo.
 
 #### Cloudflare set-up
 
@@ -72,7 +72,7 @@ Credit for the Page Rules configuration goes to [this Stack Overflow answer](htt
     -   A zillion other `A` and `CNAME` records for various things hosted elsewhere, like:
         -   `A` record for `git.typechecked.net` pointing at an EC2 Elastic IP.
         -   `A` record for `wincent.com` root pointing at another Elastic IP.
-        -   `CAA` record `wincent.com` saying that `letsencrypt.org` is allowed to issue certificates; this works because GitHub Pages uses Let's Encrypt to create the certificate for `hex.wincent.com` and I also use Let's Encrypt to generate the other certificates for `wincent.com`, `git.typechecked.net` (etc) domains on EC2. If GitHub Pages ever switches to a different Certificate Authority, I'll have to add another `CAA` record.
+        -   `CAA` record `wincent.com` saying that `letsencrypt.org` is allowed to issue certificates; this works because GitHub Pages uses Let's Encrypt to create the certificate for `hex.typechecked.net` and I also use Let's Encrypt to generate the other certificates for `wincent.com`, `git.typechecked.net` (etc) domains on EC2. If GitHub Pages ever switches to a different Certificate Authority, I'll have to add another `CAA` record.
 -   Page Rules for `wincent.com`: none.
 
 ### Case study #3: s3.example.com[^example]

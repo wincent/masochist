@@ -7,7 +7,7 @@ I [previously wrote](http://wincent.com/a/about/wincent/weblog/archives/2007/04/
 
 > The sky really is the limit on this one. One of the things that has always frustrated me about Apple's Help system is that it is very difficult to take the same documentation and use it both in the application itself as well as mirroring a copy to your website. If you use Apple's proprietary link style then your pages won't work on the web; if you use normal HTML links then you lose the frills that you get in Apple's Help Viewer. Furthermore, the system is poorly documented: most of the information is out-of-date or just plain missing (some of the [best information](http://andymatuschak.org/articles/2005/12/18/help-with-apple-help) is not actually provided by Apple). What happens if Apple changes the way it works in the future? For theses reasons I've always been reluctant to include in-application Help. But using Walrus I am able to easily have the best of both worlds. I can have a helper function that emits Apple-style links if a particular environment variable is set at the time the templates are filled, and emits standard HTML links in other cases. If Apple ever changes the link format I'll just have to tweak the helper method and recompile.
 
-I've just pushed out updates ([1](http://wincent.com/a/news/archives/2007/04/hextrapolate_20_1.php), [2](http://wincent.com/a/news/archives/2007/04/synergy_312_now.php)) to [Hextrapolate](https://hex.wincent.com/) and Synergy which show the difference between my new approach and my old one.
+I've just pushed out updates ([1](http://wincent.com/a/news/archives/2007/04/hextrapolate_20_1.php), [2](http://wincent.com/a/news/archives/2007/04/synergy_312_now.php)) to Hextrapolate and Synergy which show the difference between my new approach and my old one.
 
 ### The old
 
@@ -31,7 +31,7 @@ Things have changed a lot since 2004.
 -   Using helper methods in Walrus allows me to single-source my documentation and write my links the same way for the two targets (in-application help and web-based help); it also adds a layer of abstraction that insulates me from any changes that Apple might make to their proprietary and/or undocumented APIs in the future.
 -   Writing the documentation is a whole lot more pleasant because I can write it in [Textile](http://wincent.com/wiki/Textile) and let Walrus handle the rest.
 
-So [Hextrapolate](https://hex.wincent.com/) provides the best of both worlds for both user and developer. Users win because they get easy-to-use, task-based documentation in a familiar format (styled after the Apple application help that they're used to and delivered via the Help Viewer application that they all know).
+So Hextrapolate provides the best of both worlds for both user and developer. Users win because they get easy-to-use, task-based documentation in a familiar format (styled after the Apple application help that they're used to and delivered via the Help Viewer application that they all know).
 
 They can view the documentation at any time, even when they're offline, because it's embedded inside the application. But prospective users who don't have the application installed can look at it [online too](http://wincent.com/a/products/hextrapolate/help/front_page.html). The embedded help is easily searchable using the Help Viewer, and the online help is easily searched using the [all-powerful Google](http://wincent.com/a/site-map/search/).
 

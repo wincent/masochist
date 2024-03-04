@@ -3,7 +3,7 @@ title: Hextrapolate 2.0 now available
 tags: blog
 ---
 
-Following a [successful beta testing period](http://wincent.com/a/news/archives/2007/04/hextrapolate_20.php) the new version of [Hextrapolate](https://hex.wincent.com) (formerly WinHex), 2.0, is now available.
+Following a [successful beta testing period](http://wincent.com/a/news/archives/2007/04/hextrapolate_20.php) the new version of Hextrapolate (formerly WinHex), 2.0, is now available.
 
 This is a ground-up rewrite of the original WinHex number conversion utility with many new features, bug fixes and enhancements. This is also the first Universal Binary release for Hextrapolate. See the [full changelog](http://wincent.com/a/products/hextrapolate/history/) for all the details. The name-change took place to avoid confusion with a Windows product of the same name.
 

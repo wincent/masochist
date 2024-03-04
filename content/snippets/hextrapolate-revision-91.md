@@ -8,4 +8,3 @@ tags: snippets
 -   _Size_: 2,455,605 bytes
 -   _SHA1 checksum_: 6a9fafacf05d865cc155f33f192c89f86f541e28
 -   _Direct link_: <http://wincent.com/a/products/hextrapolate/download/nightlies/HextrapolateNightly(91).dmg>
--   _Product info_: <https://hex.wincent.com/>

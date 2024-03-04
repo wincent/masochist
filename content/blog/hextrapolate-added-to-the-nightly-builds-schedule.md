@@ -3,7 +3,7 @@ title: Hextrapolate added to the nightly builds schedule
 tags: blog
 ---
 
-[Hextrapolate](https://hex.wincent.com/) has now been added to the [nightly builds schedule](http://wincent.com/s/nightlies/) and the [first build](http://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/hextrapolate_revision_91.php) is now up (see also the [full list of Hextrapolate nightlies](http://wincent.com/a/about/wincent/weblog/nightlog/archives/hextrapolate/)).
+Hextrapolate has now been added to the [nightly builds schedule](http://wincent.com/s/nightlies/) and the [first build](http://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/hextrapolate_revision_91.php) is now up (see also the [full list of Hextrapolate nightlies](http://wincent.com/a/about/wincent/weblog/nightlog/archives/hextrapolate/)).
 
 If you're interested in closely following the development process you may be interested in the nightlog feed, my personal weblog, the Subversion log, and the other resources mentioned [in this summary](http://wincent.com/s/progress/).
 
