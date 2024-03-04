@@ -16,10 +16,10 @@ During 2006 I [gradually toughened up my anti-spam arsenal](http://www.wincent.c
 -   Auto-whitelisting.
 -   Bayesian training.
 
-I later took [further steps](http://www.wincent.com/knowledge-base/Combatting_spam) at the server level:
+I later took [further steps](http://www.wincent.com/wiki/Combatting_spam) at the server level:
 
--   [Blocking non-local senders for local-only recipients](http://www.wincent.com/knowledge-base/Blocking_non-local_senders_for_local-only_recipients).
--   Conservative [DNS-based blacklisting](http://www.wincent.com/knowledge-base/DNS-based_blacklisting).
+-   [Blocking non-local senders for local-only recipients](http://www.wincent.com/wiki/Blocking_non-local_senders_for_local-only_recipients).
+-   Conservative [DNS-based blacklisting](http://www.wincent.com/wiki/DNS-based_blacklisting).
 
 And at the policy level:
 
@@ -27,7 +27,7 @@ And at the policy level:
 -   Using easily cancellable addresses when providing email addresses to third parties.
 -   Migrating away from old addresses which receive a lot of spam to newer addresses.
 
-As [discussed here](http://www.wincent.com/knowledge-base/Combatting_spam) these changes combined to significantly reduce the number of spam messages getting to my mail box each day; I don't have any hard figures for the entire period but the evidence I do have suggests that the number of spams thwarted by these measures is of the order of several hundred per day.
+As [discussed here](http://www.wincent.com/wiki/Combatting_spam) these changes combined to significantly reduce the number of spam messages getting to my mail box each day; I don't have any hard figures for the entire period but the evidence I do have suggests that the number of spams thwarted by these measures is of the order of several hundred per day.
 
 #### SpamSieve
 

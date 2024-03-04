@@ -3,7 +3,7 @@ title: Allan Odgaard on file type detection in TextMate
 tags: blog
 ---
 
-I've never been able to get [TextMate](http://www.wincent.com/knowledge-base/TextMate) to reliably detect [Ruby](http://www.wincent.com/knowledge-base/Ruby), [Rails](http://www.wincent.com/knowledge-base/Rails) and [RSpec](http://www.wincent.com/knowledge-base/RSpec) files. Allan Odgaard, the author of TextMate, [explains here](http://macromates.com/blog/2007/file-type-detection-rspec-rails) how to bend the system to your will.
+I've never been able to get [TextMate](http://www.wincent.com/wiki/TextMate) to reliably detect [Ruby](http://www.wincent.com/wiki/Ruby), [Rails](http://www.wincent.com/wiki/Rails) and [RSpec](http://www.wincent.com/wiki/RSpec) files. Allan Odgaard, the author of TextMate, [explains here](http://macromates.com/blog/2007/file-type-detection-rspec-rails) how to bend the system to your will.
 
 I think there's something obviously wrong with the design when it takes this much effort to get file extensions correctly mapped, but I also suspect that you're not about to see the system overhauled (there are too many bundles out there which use it); at least there _is_ a workaround, no matter unnecessarily complicated it may seem.
 

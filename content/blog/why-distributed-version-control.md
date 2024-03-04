@@ -7,7 +7,7 @@ I just got an email from [Uli Kusterer](http://www.zathras.de/angelweb/home.htm)
 
 > Could you maybe elaborate on your reasons as to why distributed version control is great? You said it'd take pages, but even just a short rundown would be interesting. Does it make feature branches easier? Does it encourage people to do more refactoring? Just curious to hear someone's opinion on this.
 
-I'll answer this with specific reference to [Git](http://www.wincent.com/knowledge-base/Git) seeing that's the [distributed version control](http://www.wincent.com/knowledge-base/distributed%20version%20control) system with which I have the most experience. Although I could rave on about how Git is the best thing since sliced bread for so many reasons, I'll try to limit myself specifically to its distributed nature.
+I'll answer this with specific reference to [Git](http://www.wincent.com/wiki/Git) seeing that's the [distributed version control](http://www.wincent.com/wiki/distributed%20version%20control) system with which I have the most experience. Although I could rave on about how Git is the best thing since sliced bread for so many reasons, I'll try to limit myself specifically to its distributed nature.
 
 ### History
 
@@ -81,7 +81,7 @@ I've tried to restrict my points above to the aspects in which distributed versi
 
 To finish up I'll just briefly mention some points about Git that don't really have anything to do with its distributed nature but which make it a great version control system.
 
--   Speed: _apart_ from the fast offline access already mentioned, Git itself is a speed-demon. Most of it is written in lean-and-mean [C](http://www.wincent.com/knowledge-base/C) code, with some high-level user-interface stuff written using scripting languages. This isn't just a coincidence; from the very beginning it was designed to be quick and it's one of the things that will most impact you when you try it out.
+-   Speed: _apart_ from the fast offline access already mentioned, Git itself is a speed-demon. Most of it is written in lean-and-mean [C](http://www.wincent.com/wiki/C) code, with some high-level user-interface stuff written using scripting languages. This isn't just a coincidence; from the very beginning it was designed to be quick and it's one of the things that will most impact you when you try it out.
 -   Simplicity: repositories use a simple data model (four object types, history represented as a directed acyclic graph) that you can grok with a few minutes of study; this means that you can actually understand how Git works under the covers.
 -   Robustness: The simplicity makes for fewer bugs and a codebase that you can really trust.
 -   Maturity: Git's already at 1.5+ and it shows...

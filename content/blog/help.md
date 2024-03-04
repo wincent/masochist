@@ -29,17 +29,17 @@ Things have changed a lot since 2004.
 -   Apple's Help Viewer is now WebKit-based and can correctly render anything that Safari can render, which is pretty much anything if you adhere to the standards.
 -   CSS support means that you don't have to worry about chasing moving targets: you can separate your content from your presentation and update the latter on demand without having to trawl through your content and modify it.
 -   Using helper methods in Walrus allows me to single-source my documentation and write my links the same way for the two targets (in-application help and web-based help); it also adds a layer of abstraction that insulates me from any changes that Apple might make to their proprietary and/or undocumented APIs in the future.
--   Writing the documentation is a whole lot more pleasant because I can write it in [Textile](http://www.wincent.com/knowledge-base/Textile) and let Walrus handle the rest.
+-   Writing the documentation is a whole lot more pleasant because I can write it in [Textile](http://www.wincent.com/wiki/Textile) and let Walrus handle the rest.
 
 So [Hextrapolate](https://hex.wincent.com/) provides the best of both worlds for both user and developer. Users win because they get easy-to-use, task-based documentation in a familiar format (styled after the Apple application help that they're used to and delivered via the Help Viewer application that they all know).
 
 They can view the documentation at any time, even when they're offline, because it's embedded inside the application. But prospective users who don't have the application installed can look at it [online too](http://www.wincent.com/a/products/hextrapolate/help/front_page.html). The embedded help is easily searchable using the Help Viewer, and the online help is easily searched using the [all-powerful Google](http://www.wincent.com/a/site-map/search/).
 
-I win as a developer too for the reasons already stated; above all because I can write the source documentation once and compile it for multiple targets. And it's not just rapid in the do-it-all-in-a-single-step sense; it's agile in the development sense too. Because Walrus is written in [Ruby](http://www.wincent.com/knowledge-base/Ruby) I was able to add the dual-targetting capability in less than five-minutes, literally.
+I win as a developer too for the reasons already stated; above all because I can write the source documentation once and compile it for multiple targets. And it's not just rapid in the do-it-all-in-a-single-step sense; it's agile in the development sense too. Because Walrus is written in [Ruby](http://www.wincent.com/wiki/Ruby) I was able to add the dual-targetting capability in less than five-minutes, literally.
 
 ### The future
 
-If you've been following the [Subversion log](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/) this past week you'll see that I've been laying low on the check-in front. I've been looking at speeding up Walrus by converting the parser (generated Ruby code) to a ultra-fast C extension. I first looked at using [Ragel](http://www.wincent.com/knowledge-base/Ragel) but am now leaning towards [ANTLR](http://www.wincent.com/knowledge-base/ANTLR) due to the complexity of the parser.
+If you've been following the [Subversion log](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/) this past week you'll see that I've been laying low on the check-in front. I've been looking at speeding up Walrus by converting the parser (generated Ruby code) to a ultra-fast C extension. I first looked at using [Ragel](http://www.wincent.com/wiki/Ragel) but am now leaning towards [ANTLR](http://www.wincent.com/wiki/ANTLR) due to the complexity of the parser.
 
 The current parser works, but it's slower than I'd like. I basically consider it a proof-of-concept prototype that demonstrates that the underlying grammar and workflow is a good, working idea, and that it's worthwhile going down to the metal and making a native, compiled parser for it. The compiler itself will continue to be Ruby.
 

@@ -1,5 +1,6 @@
 ---
 tags: perl movabletype wiki
+title: Writing a WikiText plug-in for MovableType
 ---
 
 # The script
@@ -39,7 +40,7 @@ Here's the first version of my first [MovableType](/wiki/MovableType) plugin:
             require Text::MediawikiFormat;
             my $text        = shift;
             my $context     = shift;
-            my $converted   = Text::MediawikiFormat::format($text, {}, { prefix => 'http://wincent.com/knowledge-base/' });
+            my $converted   = Text::MediawikiFormat::format($text, {}, { prefix => 'http://wincent.com/wiki/' });
             $converted;
         }
     });

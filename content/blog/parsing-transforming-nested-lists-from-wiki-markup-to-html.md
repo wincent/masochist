@@ -3,9 +3,9 @@ title: Parsing/transforming nested lists from wiki markup to HTML
 tags: blog
 ---
 
-In working on my [wikitext](http://www.wincent.com/knowledge-base/wikitext)-to-HTML transformer I saved the ugliest bit for last: parsing/transforming nested lists. I started off with parsing simple span-level elements like `em` and `strong` tags, then moved on to block level items like paragraphs and `pre` blocks, and nesting containers like `blockquote` blocks. But I had to keep putting off lists.
+In working on my [wikitext](http://www.wincent.com/wiki/wikitext)-to-HTML transformer I saved the ugliest bit for last: parsing/transforming nested lists. I started off with parsing simple span-level elements like `em` and `strong` tags, then moved on to block level items like paragraphs and `pre` blocks, and nesting containers like `blockquote` blocks. But I had to keep putting off lists.
 
-Given input like the following (using the same syntax as that used by [MediaWiki](http://www.wincent.com/knowledge-base/MediaWiki)):
+Given input like the following (using the same syntax as that used by [MediaWiki](http://www.wincent.com/wiki/MediaWiki)):
 
     # this is an ordered list
     # which continues
@@ -22,7 +22,7 @@ Given input like the following (using the same syntax as that used by [MediaWiki
     # and finally all the way
     #****** and finishes with an invalid item
 
-We want a corresponding nested list described in valid [HTML](http://www.wincent.com/knowledge-base/HTML).
+We want a corresponding nested list described in valid [HTML](http://www.wincent.com/wiki/HTML).
 
 As this is wikitext, we want to handle the last item (the invalid) one gracefully. It mustn't break the validity of the HTML but we don't want a silent failure either. We don't want to increase the nesting level several times in one go (probably not what the author intended); it really only makes sense to increase the nesting-level once per line. So the solution will be to handle it the same way Wikipedia does and consider the first `*` to mark the beginning of a nested list and subsequent (invalid) `*` to belong to the first item of that list; this is important because it means they will be displayed back to the user and hopefully alert him/her of the error.
 
@@ -77,4 +77,4 @@ When rendered this will look like this:
 4.  and finally all the way
     -   \*\*\*\*\* and finishes with an invalid item
 
-So anyway, it's done now, in about 130 lines of well-commented [C](http://www.wincent.com/knowledge-base/C) code. Surprisingly, despite the recursive structure of the lists the actual transformation code is entirely iterative and no recursion is involved. I still don't know if this is the best way to do it but it is what seemed to be the simplest solution. Indenting could be added to make the structure of the source clearer but as this is intended to be (mostly) read by machines and not humans it doesn't seem like its worth the trade-offs in complexity and speed.
+So anyway, it's done now, in about 130 lines of well-commented [C](http://www.wincent.com/wiki/C) code. Surprisingly, despite the recursive structure of the lists the actual transformation code is entirely iterative and no recursion is involved. I still don't know if this is the best way to do it but it is what seemed to be the simplest solution. Indenting could be added to make the structure of the source clearer but as this is intended to be (mostly) read by machines and not humans it doesn't seem like its worth the trade-offs in complexity and speed.

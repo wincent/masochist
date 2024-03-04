@@ -9,7 +9,7 @@ tags: blog
 
 Now, in my opinion this is a bit of [a bikeshed argument](http://en.wikipedia.org/wiki/Color_of_the_bikeshed). I have my own preferences which I apply to projects that I control, and I try to adhere to the standards set by other projects when making contributions to them, but I don't bother pouring more fuel on the fire when this kind of debate is raging on a mailing list.
 
-If you check out the top [Google](http://www.wincent.com/knowledge-base/Google) hits on the subject you'll get some nice arguments on both sides, some interesting proposals, as well as some questionable affirmations:
+If you check out the top [Google](http://www.wincent.com/wiki/Google) hits on the subject you'll get some nice arguments on both sides, some interesting proposals, as well as some questionable affirmations:
 
 1.  <http://www.jwz.org/doc/tabs-vs-spaces.html>
 2.  <http://blogs.msdn.com/cyrusn/archive/2004/09/14/229474.aspx>

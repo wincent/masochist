@@ -5,7 +5,7 @@ tags: blog
 
 If this weren't such a pain it would be hilarious: my embattled iMac's brand new Super Drive has given up the ghost after only a couple of weeks of operation.
 
-Not having a working Super Drive was a serious concern because it impeded my ability to install [Leopard](http://www.wincent.com/knowledge-base/Leopard) seeds and made system recovery in the event of a hard drive failure next to impossible. So I went to [considerable lengths](http://www.wincent.com/a/about/wincent/weblog/archives/2007/08/new_imac_superd.php) to acquire and install a new drive.
+Not having a working Super Drive was a serious concern because it impeded my ability to install [Leopard](http://www.wincent.com/wiki/Leopard) seeds and made system recovery in the event of a hard drive failure next to impossible. So I went to [considerable lengths](http://www.wincent.com/a/about/wincent/weblog/archives/2007/08/new_imac_superd.php) to acquire and install a new drive.
 
 Well, last night I installed a new Leopard seed after booting off the drive. The machine booted fine and the install disc was visible on the desktop and its contents could be seen in the Finder, but I had to go out.
 

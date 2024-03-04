@@ -3,7 +3,7 @@ title: Involuntary Reboot Log #15
 tags: involuntary.reboot.log blog
 ---
 
-There are some applications that when they crash are capable of taking the whole system down. [Xcode](http://www.wincent.com/knowledge-base/Xcode) is one of them. I have no idea why or how they can do this. And I don't think it is actually the application's fault but something in [Mac OS X](http://www.wincent.com/knowledge-base/Mac%20OS%20X). That's my intuition anyway.
+There are some applications that when they crash are capable of taking the whole system down. [Xcode](http://www.wincent.com/wiki/Xcode) is one of them. I have no idea why or how they can do this. And I don't think it is actually the application's fault but something in [Mac OS X](http://www.wincent.com/wiki/Mac%20OS%20X). That's my intuition anyway.
 
 This isn't the catastrophic freeze from the Mac OS 9 days, nor the kernel panic of the modern era: instead, the computer continues on (seconds on clock continue to update, Dock icons animate, hard drive makes noise, mouse pointer moves) but your attempts at interaction with it have no effect. Clicking the mouse or pressing keys has no visible effect, mousing over the Dock doesn't produce any tool-tips; it's as though you were separated from your machine by a pane of glass.
 

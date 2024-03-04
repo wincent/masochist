@@ -3,7 +3,7 @@ title: Planned changes to development model
 tags: blog
 ---
 
-I've [commented elsewhere](http://www.wincent.com/a/support/forums/ubbthreads.php?ubb=showflatΝmber=1008&page=1) that I plan on approximating a [continuous integration](http://www.wincent.com/knowledge-base/continuous%20integration) model of development in future releases of Synergy Advance (and all my products in fact).
+I've [commented elsewhere](http://www.wincent.com/a/support/forums/ubbthreads.php?ubb=showflatΝmber=1008&page=1) that I plan on approximating a [continuous integration](http://www.wincent.com/wiki/continuous%20integration) model of development in future releases of Synergy Advance (and all my products in fact).
 
 In my comment I wrote:
 
@@ -14,7 +14,7 @@ This makes sense for business reasons (customers get their hands on releases mor
 I've been taking small steps towards a more open development model for many months now:
 
 -   Making more of my projects open source: WOTest, Bansshee, WinSwitch, [atosym](http://www.wincent.com/a/products/atosym/), [Wincent Build Tools](http://www.wincent.com/a/products/buildtools/), and Wincent Strings Utility.
--   Moving the code for these open source projects into a publicly accessible [Subversion](http://www.wincent.com/knowledge-base/Subversion) repository.
+-   Moving the code for these open source projects into a publicly accessible [Subversion](http://www.wincent.com/wiki/Subversion) repository.
 -   Publishing an RSS feed of _all_ commits so that customers can see source code changes even in closed-source products.
 -   Putting bug reports and feature requests out in the open in a publicly accessible database.
 -   Having open-to-all beta-testing mailing lists.

@@ -5,7 +5,7 @@ tags: involuntary.reboot.log blog
 
 You gotta love this. Actually, you gotta hate it. I just committed the sacrilege of daring to open Parallels and as my just comeuppance my machine immediately slowed to treacle speeds ultimately becoming unusable. In the end even the clock stopped updating and the mouse wouldn't move. At that point I had already waited through two songs (iTunes continued to play in the background) but when the third song should have started there was only silence.
 
-I was able to [SSH](http://www.wincent.com/knowledge-base/SSH) in from another machine and observe that the Window Server was hogging 98% of the CPU, 768 Mach ports, and 3.5 GB of virtual memory. Killing off Parallels didn't work, even with `sudo kill -9`, and it went into zombie mode. So there was only one thing for it: `sudo reboot`.
+I was able to [SSH](http://www.wincent.com/wiki/SSH) in from another machine and observe that the Window Server was hogging 98% of the CPU, 768 Mach ports, and 3.5 GB of virtual memory. Killing off Parallels didn't work, even with `sudo kill -9`, and it went into zombie mode. So there was only one thing for it: `sudo reboot`.
 
 Adios, unsaved email which I was in the middle of composing.
 

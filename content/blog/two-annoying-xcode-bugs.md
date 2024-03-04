@@ -33,7 +33,7 @@ I am still too annoyed about this — and too busy trying to get the next previe
 
 #### Update: March 2007
 
-For some more insights into the different build settings for processing and preprocessing `Info.plist` files see [this Knowledge base article](http://www.wincent.com/knowledge-base/Setting_up_a_nightly_build_system).
+For some more insights into the different build settings for processing and preprocessing `Info.plist` files see [this Knowledge base article](http://www.wincent.com/wiki/Setting_up_a_nightly_build_system).
 
 ### Annoying bug \#2
 

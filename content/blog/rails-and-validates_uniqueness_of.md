@@ -3,7 +3,7 @@ title: Rails and validates_uniqueness_of
 tags: blog
 ---
 
-I'm a [Rails](http://www.wincent.com/knowledge-base/Rails) dabbler who has never actually deployed an application yet but has been working in spare moments on a new version of this site that will be powered by Rails.
+I'm a [Rails](http://www.wincent.com/wiki/Rails) dabbler who has never actually deployed an application yet but has been working in spare moments on a new version of this site that will be powered by Rails.
 
 I was puzzled today to see excess `SELECT` queries whenever I saved a record. The queries were for attributes that were entirely unrelated to what I was manipulating.
 

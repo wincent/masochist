@@ -3,9 +3,9 @@ title: Version numbers
 tags: blog
 ---
 
-I've always been a little confused by [Apple](http://www.wincent.com/knowledge-base/Apple)'s "[Property List Key Reference](http://developer.apple.com/documentation/MacOSX/Conceptual/BPRuntimeConfig/Articles/PListKeys.html)". It seemed that the documented purpose of some of the property list keys deviated from the actual behaviour of the OS, especial in relation with the display of version numbers in the Finder.
+I've always been a little confused by [Apple](http://www.wincent.com/wiki/Apple)'s "[Property List Key Reference](http://developer.apple.com/documentation/MacOSX/Conceptual/BPRuntimeConfig/Articles/PListKeys.html)". It seemed that the documented purpose of some of the property list keys deviated from the actual behaviour of the OS, especial in relation with the display of version numbers in the Finder.
 
-The documentation seems to have undergone a number of [revisions](http://developer.apple.com/documentation/MacOSX/Conceptual/BPRuntimeConfig/RevisionHistory.html) lately ("Undocumented the CFBundleGetInfoString key", "Added details on the new purpose of the CFBundleGetInfoString key", "Reintroduced the CFBundleGetInfoString key") and this is the current state of affairs under [Leopard](http://www.wincent.com/knowledge-base/Leopard):
+The documentation seems to have undergone a number of [revisions](http://developer.apple.com/documentation/MacOSX/Conceptual/BPRuntimeConfig/RevisionHistory.html) lately ("Undocumented the CFBundleGetInfoString key", "Added details on the new purpose of the CFBundleGetInfoString key", "Reintroduced the CFBundleGetInfoString key") and this is the current state of affairs under [Leopard](http://www.wincent.com/wiki/Leopard):
 
 ## Behaviour
 
@@ -45,4 +45,4 @@ More information can be found in the documentation for the `orderFrontStandardAb
 
 ## Conclusion
 
-So there you have it. The docs make it very clear that your build numbers should be "monotonically increasing strings" comprising "one or more period-separated integers". Great if you use [Subversion](http://www.wincent.com/knowledge-base/Subversion)-based build numbers; you'll need to ignore those rules if your build numbers are actually SHA-1 hashes (based on [Git](http://www.wincent.com/knowledge-base/Git) commits, for example). Likewise your release versions are supposed to be of the form "x.y.z"; bad luck if you want to do "1.0-rc1" or "2.1b3" and the like, but it seems unlikely that any harm will come from not following these rules (or are they guidelines?) to their fullest.
+So there you have it. The docs make it very clear that your build numbers should be "monotonically increasing strings" comprising "one or more period-separated integers". Great if you use [Subversion](http://www.wincent.com/wiki/Subversion)-based build numbers; you'll need to ignore those rules if your build numbers are actually SHA-1 hashes (based on [Git](http://www.wincent.com/wiki/Git) commits, for example). Likewise your release versions are supposed to be of the form "x.y.z"; bad luck if you want to do "1.0-rc1" or "2.1b3" and the like, but it seems unlikely that any harm will come from not following these rules (or are they guidelines?) to their fullest.

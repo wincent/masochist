@@ -3,7 +3,7 @@ title: New MacBook Pros
 tags: blog
 ---
 
-I love the specs on [Apple](http://www.wincent.com/knowledge-base/Apple)'s new [MacBook Pros](http://www.apple.com/macbookpro/) (nice [summary here](http://www.appleinsider.com/articles/07/06/05/apple_introduces_santa_rosa_based_macbook_pros.html)). Now, I'm not personally in the market for a portable right now but I still think it's awesome the rate at which Apple's improving their hardware nowadays. Not like the dark and gloomy Motorola days when disappointing product announcements were made with great fanfare at MacWorld; now Apple routinely rolls out significant, regular hardware upgrades as a matter of course.
+I love the specs on [Apple](http://www.wincent.com/wiki/Apple)'s new [MacBook Pros](http://www.apple.com/macbookpro/) (nice [summary here](http://www.appleinsider.com/articles/07/06/05/apple_introduces_santa_rosa_based_macbook_pros.html)). Now, I'm not personally in the market for a portable right now but I still think it's awesome the rate at which Apple's improving their hardware nowadays. Not like the dark and gloomy Motorola days when disappointing product announcements were made with great fanfare at MacWorld; now Apple routinely rolls out significant, regular hardware upgrades as a matter of course.
 
 The new MacBook Pro is significantly more powerful than my own Intel desktop machine (an iMac) which is just over a year old. Comparing the two:
 
