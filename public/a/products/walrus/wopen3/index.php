@@ -680,15 +680,6 @@
 
           <pre>git clone git://git.typechecked.net/wopen3.git</pre>
 
-          <h4>Obtaining via Subversion</h4>
-
-          <pre>svn co svn://svn.wincent.com/Walrus/trunk/wopen3</pre>
-
-          <p>
-            <strong>Note:</strong> All new development work is managed in the
-            Git repository; the Subversion repository is being left on line for
-            historical reasons only.
-          </p>
         </div>
       </div>
       <div id="right">

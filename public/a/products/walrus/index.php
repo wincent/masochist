@@ -773,16 +773,6 @@
 
           <pre>git clone git://git.typechecked.net/Walrus.git</pre>
 
-          <h4>Obtaining via Subversion</h4>
-
-          <pre>svn co svn://svn.wincent.com/Walrus/trunk</pre>
-
-          <p>
-            <strong>Note:</strong> All new development work is managed in the
-            Git repository; the Subversion repository is being left on line for
-            historical reasons only.
-          </p>
-
           <h4>Building from source</h4>
 
           <p>

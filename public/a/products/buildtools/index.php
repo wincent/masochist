@@ -688,14 +688,6 @@
             (52KB, revision 35, 6 September 2006).
           </p>
 
-          <p>
-            You can also check out the latest version of the source via
-            Subversion; for example, to check out into a directory named
-            <tt>buildtools</tt>:
-          </p>
-
-          <pre>svn co svn://svn.wincent.com/buildtools/trunk buildtools</pre>
-
           <h4><a id="donations" name="donations"></a>Donations</h4>
 
           <p>

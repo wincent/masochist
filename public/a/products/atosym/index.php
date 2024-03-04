@@ -751,13 +751,6 @@ Line 10 of "source.m" starts at address 0x1f70 &lt;main+78&gt; and
 
           <pre>git clone git://git.typechecked.net/atosym.git</pre>
 
-          <p>
-            An older version of the source code is available in the legacy
-            Subversion repository:
-          </p>
-
-          <pre>svn co svn://svn.wincent.com/atosym/trunk</pre>
-
           <h4><a id="donations" name="donations"></a>Donations</h4>
 
           <p>

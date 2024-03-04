@@ -707,13 +707,6 @@
 
           <pre>git clone git://git.typechecked.net/wincent-strings-util.git</pre>
 
-          <p>
-            An older version of the repository is kept online for historical
-            reasons only and can be checked out via Subversion:
-          </p>
-
-          <pre>svn co svn://svn.wincent.com/wincent-strings-util/trunk</pre>
-
           <h3><a id="donations" name="donations"></a>Donations</h3>
 
           <p>

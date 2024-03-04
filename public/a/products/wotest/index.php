@@ -750,22 +750,6 @@
             <li>Complete test suite</li>
           </ul>
 
-          <h5><a id="download" name="download"></a>Download</h5>
-
-          <p>
-            You can check out the latest version of the source via Subversion;
-            for example, to check out into a directory named <tt>WOTest</tt>:
-          </p>
-
-          <pre>svn co svn://svn.wincent.com/WOTest/trunk WOTest</pre>
-
-          <p>
-            To build WOTest the <a href="../buildtools">Wincent Build Tools</a>,
-            also licensed under the GPL, are required:
-          </p>
-
-          <pre>svn co svn://svn.wincent.com/buildtools/trunk buildtools</pre>
-
           <h4><a id="history" name="history"></a>History</h4>
 
           <h5>Revision 102 (8 September 2006)</h5>
