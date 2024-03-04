@@ -1452,35 +1452,11 @@
           </blockquote>
 
           <p class="more">
-            <a href="http://wincent.org/article/articleview/215/"
-              >More info...</a
-            >
-            |
             <a
               href="http://www.techtv.com/callforhelp/shownotes/story/0,24330,3651255,00.html"
               >TechTV page...</a
             >
           </p>
-
-          <h5>19 March 2004</h5>
-
-          <h4>Synergy licenses now start at 5&euro; (Euros)</h4>
-
-          <p>
-            See
-            <a href="http://wincent.org/article/articleview/211/"
-              >this update</a
-            >
-            for more information.
-          </p>
-
-          <h5>15 October 2003</h5>
-
-          <h4>What's happening with Amazon?</h4>
-
-          Read
-          <a href="http://wincent.org/article/articleview/171/">this update</a>
-          for details on the current situation with Amazon.
 
           <h5>28 August 2003</h5>
 

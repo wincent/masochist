@@ -643,7 +643,7 @@
             Wincent Colaiuta is a software developer, Mac commentator and
             recognised authority on Mac OS X. He maintains a web presence at
             wincent.com, the official Wincent software site which now
-            incorporates what was previously known as wincent.org, a Mac-centric
+            incorporates a Mac-centric
             weblog and information site. Wincent's personal blog can be found
             <a href="https://wincent.com/a/about/wincent/weblog/">here</a>.
           </p>
@@ -652,7 +652,7 @@
             Wincent became well known in the world of the Mac web in 2001 in the
             lead-up to the release of Mac OS X 10.0 due to his infamous series
             of pre-release expos&eacute;s of the highly anticipated operating
-            system. At its peak, the wincent.org website was attracting more
+            system. At its peak, the website was attracting more
             than 50,000 page views per day.
           </p>
 

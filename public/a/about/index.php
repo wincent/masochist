@@ -638,7 +638,7 @@
           <p>
             Wincent was founded in 1997 by
             <a href="wincent/">Wincent Colaiuta</a>. It began as a simple
-            website, predominantly in weblog format, hosted at wincent.org.
+            website, predominantly in weblog format.
             Since then it has evolved into a small but popular software
             development company, but it continues to be a one-man operation.
           </p>
@@ -687,8 +687,7 @@
 
           <p>
             The <a href="../news/">news page</a> and
-            <a href="../wiki/">knowledge base</a> (formerly found at
-            wincent.org) continue to provide valuable Mac tips, news and
+            <a href="../wiki/">knowledge base</a> continue to provide valuable Mac tips, news and
             commentary. These do not seek to compete with other Mac websites by
             merely duplicating their content. Rather, Wincent seeks to publish
             the tips and information that are not easily found elsewhere on the

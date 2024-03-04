@@ -9,7 +9,7 @@
 	<string>Copyright ¬© 2004 Wincent Colaiuta, All Rights Reserved.</string>
 	<!-- If you want to minimise exposure of your email address on the web so as to avoid spam, omit the "Author email" key. -->
 	<key>Author email</key>
-	<string>win@wincent.org</string>
+	<string>root@localhost</string>
 	<key>Author name</key>
 	<string>Wincent Colaiuta</string>
 	<!-- You can use the "Author organization" key to promote your organization or business. -->

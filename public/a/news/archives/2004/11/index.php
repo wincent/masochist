@@ -751,10 +751,7 @@
         <h3 id="a000015">New site layout</h3>
 
         <p>
-          About the new site design for
-          <a href="https://wincent.com/">wincent.com</a>,
-          <a href="http://wincent.org/">wincent.org</a> and all their
-          subdomains.
+          About the new site design
         </p>
         <p>
           <a
@@ -818,8 +815,7 @@
           As part of the site redesign, there is a new section (which you are
           reading right now), "Product and site news". This section (together
           with the <a href="/a/knowledge-base/">Knowledge base</a> section)
-          takes over from the weblog at
-          <a href="http://wincent.org/">wincent.org</a>, which has existed in
+          takes over from the weblog, which has existed in
           one form or another since 1997...
         </p>
         <p>

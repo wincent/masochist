@@ -1076,7 +1076,7 @@
             </li>
           </ul>
 
-          <h4><a href="../news/">News</a> (formerly wincent.org)</h4>
+          <h4><a href="../news/">News</a></h4>
 
           <ul>
             <li>
@@ -1103,8 +1103,7 @@
           </ul>
 
           <h4>
-            <a href="../knowledge-base/">Knowledge base</a> (formerly
-            wincent.org)
+            <a href="../knowledge-base/">Knowledge base</a>
           </h4>
 
           <ul>

@@ -2480,19 +2480,11 @@
             <li>[Note] Qualified for use with Mac OS X 10.3.3.</li>
             <li>[Note] Now uses Install version 1.1.2.</li>
             <li>
-              [Note] It appears that Amazon access may again be re-instated. See
-              <a href="http://wincent.org/article/articleview/171/"
-                >&lt;http://wincent.org/article/articleview/171/&gt;</a
-              >
-              for details.
+              [Note] It appears that Amazon access may again be re-instated.
             </li>
             <li>
               [Note] Price adjustment: Synergy licenses now start at 5&euro;
-              (Euros) instead of $5USD. See
-              <a href="http://wincent.org/article/articleview/211/"
-                >&lt;http://wincent.org/article/articleview/211/&gt;</a
-              >
-              for more information.
+              (Euros) instead of $5USD.
             </li>
           </ul>
 
@@ -2648,11 +2640,7 @@
             <li>
               [Note] This release temporarily disables automatic album cover
               downloading, while issues with Amazon are being
-              negotiated/resolved. See
-              <a href="http://wincent.org/article/articleview/171/"
-                >&lt;http://wincent.org/article/articleview/171/&gt;</a
-              >
-              for more information. Please note that you can continue to use
+              negotiated/resolved. Please note that you can continue to use
               Synergy with any covers that you have already downloaded, and with
               any covers embedded in your music files via iTunes.
             </li>
@@ -2970,7 +2958,7 @@
               optionally pre-process ID3 tags to remove words likely to confuse
               the Amazon search engine (for example, "Disc 1", "Disc 2",
               "Soundtrack", "OST" and so forth); if you have suggestions for
-              other words that should be filtered, email me at win@wincent.org.
+              other words that should be filtered, email me.
             </li>
             <li>
               [Enhancement] Further speed improvements by replacing
@@ -3118,8 +3106,7 @@
             <li>
               [Feature] Additional button styles: "Unremarkable", by Lawrence
               Campbell; "Multicolored", by "Hien". If you would like to see your
-              own button styles included in a future version, please contact me
-              at win@wincent.org.
+              own button styles included in a future version, please contact me.
             </li>
             <li>
               [Feature] Option to choose a random button style at startup, and
@@ -3171,7 +3158,7 @@
               control buttons (graphics provided by Hector Cabarcas). If you
               would like to submit additional button graphics, read the
               guidelines in the Frequently Asked Questions and then send them to
-              me at win@wincent.org.
+              me.
             </li>
             <li>
               [Feature] Ability to set iTunes rating (0 to 5 stars) using hot

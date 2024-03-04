@@ -679,8 +679,7 @@
               >
             </li>
             <li>
-              <a href="https://wincent.com/a/news/">News</a> (formerly
-              wincent.org)
+              <a href="https://wincent.com/a/news/">News</a>
             </li>
             <li>
               <a href="https://wincent.com/a/about/privacy/">Privacy policy</a>

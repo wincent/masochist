@@ -789,7 +789,7 @@
               shareware authors when I started out, because I went down the
               server colocation path back in 2002, before I even released my
               first product. At that point I had already been running the
-              <a href="http://wincent.org/">wincent.org</a> website for several
+              website for several
               years, out of my own pocket. I had had a long run of troubles with
               unreliable hosts: sharing the machine with thousands of other
               sites, unreliable or downright broken email, down time, lack of
