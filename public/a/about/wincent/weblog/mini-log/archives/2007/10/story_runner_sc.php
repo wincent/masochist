@@ -683,7 +683,7 @@
             href="http://evang.eli.st/blog/2007/10/8/story-runner-top-to-bottom-screencast"
             >35 minute screencast</a
           >
-          showing <a href="https://wincent.com/knowledge-base/RSpec">RSpec</a>'s
+          showing <a href="https://wincent.com/wiki/RSpec">RSpec</a>'s
           new Story Runner in action (see also Pat's
           <a
             href="http://evang.eli.st/blog/2007/9/1/user-stories-with-rspec-s-story-runner"

@@ -728,7 +728,7 @@
 
         <p>
           A write-up of my
-          <a href="https://wincent.com/knowledge-base/Leopard_migration_plans"
+          <a href="https://wincent.com/wiki/Leopard_migration_plans"
             >Leopard migration plans</a
           >.
         </p>

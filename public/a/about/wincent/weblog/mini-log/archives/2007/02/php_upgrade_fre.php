@@ -678,7 +678,7 @@
         <p>
           Security holes galore fixed in all your favorite PHP apps! UBB.threads
           <a
-            href="https://wincent.com/knowledge-base/UBB.threads_7.0.2_to_7.1_upgrade_notes"
+            href="https://wincent.com/wiki/UBB.threads_7.0.2_to_7.1_upgrade_notes"
             >7.0.2 to 7.1</a
           >; WordPress
           <a
@@ -686,7 +686,7 @@
             >2.1 to 2.1.1</a
           >; and MediaWiki
           <a
-            href="https://wincent.com/knowledge-base/Upgrading_from_MediaWiki_1.6.9_to_1.6.10_using_Subversion#.5B.5BSubversion.5D.5D_update_notes"
+            href="https://wincent.com/wiki/Upgrading_from_MediaWiki_1.6.9_to_1.6.10_using_Subversion#.5B.5BSubversion.5D.5D_update_notes"
             >1.6.9 to 1.6.10</a
           >.
         </p>

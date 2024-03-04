@@ -677,7 +677,7 @@
 
         <p>
           <a
-            href="https://wincent.com/knowledge-base/Upgrading_from_WordPress_2.0.6_to_2.0.7_using_Subversion"
+            href="https://wincent.com/wiki/Upgrading_from_WordPress_2.0.6_to_2.0.7_using_Subversion"
             >Another upgrade</a
           >.
         </p>

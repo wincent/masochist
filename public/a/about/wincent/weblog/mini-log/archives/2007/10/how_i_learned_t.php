@@ -679,8 +679,8 @@
 
         <p>
           If you're not already on the
-          <a href="https://wincent.com/knowledge-base/RSpec">RSpec</a>/<a
-            href="https://wincent.com/knowledge-base/BDD"
+          <a href="https://wincent.com/wiki/RSpec">RSpec</a>/<a
+            href="https://wincent.com/wiki/BDD"
             >BDD</a
           >
           bandwagon check out

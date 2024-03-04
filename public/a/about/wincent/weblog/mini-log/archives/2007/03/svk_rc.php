@@ -676,7 +676,7 @@
         <h3>SVK RC</h3>
 
         <p>
-          <a href="https://wincent.com/knowledge-base/SVK%202.0.1rc1"
+          <a href="https://wincent.com/wiki/SVK%202.0.1rc1"
             >SVK 2.0.1rc1</a
           >
           is out.

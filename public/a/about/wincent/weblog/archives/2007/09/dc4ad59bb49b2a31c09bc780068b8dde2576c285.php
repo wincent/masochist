@@ -733,7 +733,7 @@
             href="http://weblog.rubyonrails.com/2007/9/25/designing-scalable-architectures"
             >again arguing</a
           >
-          that <a href="https://wincent.com/knowledge-base/Rails">Rails</a> is,
+          that <a href="https://wincent.com/wiki/Rails">Rails</a> is,
           after all, scalable:
         </p>
         <blockquote>
@@ -768,7 +768,7 @@
           It doesn't mean that Rails programmers should all just throw in the
           towel: but it does mean that there is still much work to be done on
           improving performance, both in Rails and in
-          <a href="https://wincent.com/knowledge-base/Ruby">Ruby</a> itself.
+          <a href="https://wincent.com/wiki/Ruby">Ruby</a> itself.
         </p>
 
         <div id="a002756more"><div id="more"></div></div>

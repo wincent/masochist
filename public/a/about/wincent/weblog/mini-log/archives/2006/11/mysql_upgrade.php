@@ -678,7 +678,7 @@
         <p>
           From
           <a
-            href="https://wincent.com/knowledge-base/Upgrading_from_MySQL_4.1.21_to_4.1.22_on_Red_Hat_Enterprise_Linux"
+            href="https://wincent.com/wiki/Upgrading_from_MySQL_4.1.21_to_4.1.22_on_Red_Hat_Enterprise_Linux"
             >4.1.21 to 4.1.22</a
           >.
         </p>

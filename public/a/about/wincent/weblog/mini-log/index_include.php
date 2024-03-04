@@ -18,11 +18,11 @@
         >most welcome update</a
       >
       that brings
-      <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a>
+      <a href="https://wincent.com/wiki/Leopard">Leopard</a>
       compatibility at last. I make simple <tt>tar</tt>-based backups of my home
       directory every two hours via a <tt>cron</tt> job, but I've been without
       whole-disk backups for a while now because
-      <a href="https://wincent.com/knowledge-base/SuperDuper!">SuperDuper!</a>
+      <a href="https://wincent.com/wiki/SuperDuper!">SuperDuper!</a>
       has been out of action. It's good to have it back!
     </p>
   </li>
@@ -33,8 +33,8 @@
   <li>
     <h4>backtrace(3)</h4>
     <p>
-      Cool new <a href="https://wincent.com/knowledge-base/API">API</a> for
-      <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a> that I
+      Cool new <a href="https://wincent.com/wiki/API">API</a> for
+      <a href="https://wincent.com/wiki/Leopard">Leopard</a> that I
       just found out about.
     </p>
   </li>
@@ -108,8 +108,8 @@
         >full changelog</a
       >). I doubt I'll bother upgrading though from the default 1.4.4
       installation that comes with
-      <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a>, seeing
-      as I use <a href="https://wincent.com/knowledge-base/Git">Git</a> for
+      <a href="https://wincent.com/wiki/Leopard">Leopard</a>, seeing
+      as I use <a href="https://wincent.com/wiki/Git">Git</a> for
       everything now.
     </p>
   </li>
@@ -152,7 +152,7 @@
         >closest competitor</a
       >
       (JRuby), which isn't surprising, seeing as JRuby is built on
-      <a href="https://wincent.com/knowledge-base/Java">Java</a> (not exactly
+      <a href="https://wincent.com/wiki/Java">Java</a> (not exactly
       known for its blistering speed).
     </p>
   </li>

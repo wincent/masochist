@@ -679,7 +679,7 @@
           <a href="http://rubyforge.org/frs/shownotes.php?release_id=10485"
             >Bugfixes, apparently</a
           >. See the &quot;<a
-            href="https://wincent.com/knowledge-base/Upgrading%20to%20ruby-debug%200.8.1"
+            href="https://wincent.com/wiki/Upgrading%20to%20ruby-debug%200.8.1"
             >Upgrading to ruby-debug 0.8.1</a
           >&quot;.
         </p>

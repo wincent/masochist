@@ -654,9 +654,9 @@
 
           <p>
             Walrus is a free Object-Oriented templating engine written in
-            <a href="https://wincent.com/knowledge-base/Ruby">Ruby</a> and
+            <a href="https://wincent.com/wiki/Ruby">Ruby</a> and
             licensed under the
-            <a href="https://wincent.com/knowledge-base/GPL">GPL</a>. Plain text
+            <a href="https://wincent.com/wiki/GPL">GPL</a>. Plain text
             templates are compiled down to Ruby code; final output is produced
             by executing ("filling") the compiled templates. A
             <tt>walrus</tt> commandline tool is included to make compiling and
@@ -670,7 +670,7 @@
           <p>
             Walrus was inspired by the
             <a
-              href="https://wincent.com/knowledge-base/Cheetah_%28template_engine%29"
+              href="https://wincent.com/wiki/Cheetah_%28template_engine%29"
               >Cheetah</a
             >
             template engine written in Python.

@@ -677,10 +677,10 @@
 
         <p>
           I just released my first
-          <a href="https://wincent.com/knowledge-base/RubyGem">RubyGem</a> or
-          <a href="https://wincent.com/knowledge-base/RubyForge">RubyForge</a>.
+          <a href="https://wincent.com/wiki/RubyGem">RubyGem</a> or
+          <a href="https://wincent.com/wiki/RubyForge">RubyForge</a>.
           It's a very simple replacement for Open3 in the
-          <a href="https://wincent.com/knowledge-base/Ruby%20Standard%20Library"
+          <a href="https://wincent.com/wiki/Ruby%20Standard%20Library"
             >Ruby Standard Library</a
           >. You can get
           <a href="http://rubyforge.org/frs/shownotes.php?release_id=10715"

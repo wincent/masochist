@@ -686,9 +686,9 @@
             >full changelog</a
           >). I doubt I'll bother upgrading though from the default 1.4.4
           installation that comes with
-          <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a>,
+          <a href="https://wincent.com/wiki/Leopard">Leopard</a>,
           seeing as I use
-          <a href="https://wincent.com/knowledge-base/Git">Git</a> for
+          <a href="https://wincent.com/wiki/Git">Git</a> for
           everything now.
         </p>
 

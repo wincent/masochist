@@ -651,11 +651,11 @@
                   >most welcome update</a
                 >
                 that brings
-                <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a>
+                <a href="https://wincent.com/wiki/Leopard">Leopard</a>
                 compatibility at last. I make simple <tt>tar</tt>-based backups
                 of my home directory every two hours via a <tt>cron</tt> job,
                 but I've been without whole-disk backups for a while now because
-                <a href="https://wincent.com/knowledge-base/SuperDuper!"
+                <a href="https://wincent.com/wiki/SuperDuper!"
                   >SuperDuper!</a
                 >
                 has been out of action. It's good to have it back!
@@ -669,8 +669,8 @@
               <h4>backtrace(3)</h4>
               <p>
                 Cool new
-                <a href="https://wincent.com/knowledge-base/API">API</a> for
-                <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a>
+                <a href="https://wincent.com/wiki/API">API</a> for
+                <a href="https://wincent.com/wiki/Leopard">Leopard</a>
                 that I just found out about.
               </p>
             </li>
@@ -748,9 +748,9 @@
                   >full changelog</a
                 >). I doubt I'll bother upgrading though from the default 1.4.4
                 installation that comes with
-                <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a
+                <a href="https://wincent.com/wiki/Leopard">Leopard</a
                 >, seeing as I use
-                <a href="https://wincent.com/knowledge-base/Git">Git</a> for
+                <a href="https://wincent.com/wiki/Git">Git</a> for
                 everything now.
               </p>
             </li>
@@ -794,7 +794,7 @@
                   >closest competitor</a
                 >
                 (JRuby), which isn't surprising, seeing as JRuby is built on
-                <a href="https://wincent.com/knowledge-base/Java">Java</a> (not
+                <a href="https://wincent.com/wiki/Java">Java</a> (not
                 exactly known for its blistering speed).
               </p>
             </li>
@@ -1365,13 +1365,13 @@
           <p>
             One of my projects is a
             fast wikitext-to-HTML translator. It's a
-            <a href="https://wincent.com/knowledge-base/Ruby">Ruby</a> extension
-            written in <a href="https://wincent.com/knowledge-base/C">C</a> with
+            <a href="https://wincent.com/wiki/Ruby">Ruby</a> extension
+            written in <a href="https://wincent.com/wiki/C">C</a> with
             speed being one of its top design goals (robustness, predictability
             and security being the others). I'm working on this because the
-            <a href="https://wincent.com/knowledge-base/Rails">Rails</a> rewrite
+            <a href="https://wincent.com/wiki/Rails">Rails</a> rewrite
             of this site will use
-            <a href="https://wincent.com/knowledge-base/wikitext%20markup"
+            <a href="https://wincent.com/wiki/wikitext%20markup"
               >wikitext markup</a
             >
             for basically everything. Rails has a bad reputation for being slow
@@ -1386,7 +1386,7 @@
           </p>
           <p>
             Up until now the scanner used a
-            <a href="https://wincent.com/knowledge-base/ANTLR">ANTLR</a
+            <a href="https://wincent.com/wiki/ANTLR">ANTLR</a
             >-generated lexer using the &quot;C target&quot; (although ANTLR
             itself is written in Java, it can target multiple languages,
             including C). The C target is the current speed king among ANTLR
@@ -1399,7 +1399,7 @@
           <p>
             And the results were quite snappy. But for some time I've had the
             sneaking suspicion that a
-            <a href="https://wincent.com/knowledge-base/Ragel">Ragel</a
+            <a href="https://wincent.com/wiki/Ragel">Ragel</a
             >-generated scanner would be faster. I suspected this even though
             ANTLR uses all sorts of clever tricks like trying to predict which
             path to take and only backtracking if prediction fails.
@@ -1539,7 +1539,7 @@
             Apart from the risk of damage to my data, I am starting to get sick
             of these Disk First Aid runs (during which the machine is unusable),
             which go especially slowly because
-            <a href="https://wincent.com/knowledge-base/Spotlight">Spotlight</a>
+            <a href="https://wincent.com/wiki/Spotlight">Spotlight</a>
             decides to reindex <em>all</em> of my volumes every time I have one
             of these failures.
           </p>
@@ -1552,7 +1552,7 @@
             in which I complained about the lack of RAM in the low-end iMacs. It
             was pointed out to me that real-world RAM really is cheap nowadays
             (even if RAM from
-            <a href="https://wincent.com/knowledge-base/Apple">Apple</a> is
+            <a href="https://wincent.com/wiki/Apple">Apple</a> is
             not). You can max out an iMac to 4 GB for a mere $100 at
             <a href="http://macsales.com">my retailer of choice</a> (OWC), and
             for someone like me living in Europe and buying the RAM from the US
@@ -1599,7 +1599,7 @@
 
           <p>
             I'm a
-            <a href="https://wincent.com/knowledge-base/Rails">Rails</a> dabbler
+            <a href="https://wincent.com/wiki/Rails">Rails</a> dabbler
             who has never actually deployed an application yet but has been
             working in spare moments on a new version of this site that will be
             powered by Rails.
@@ -1703,7 +1703,7 @@
             has 2 gig) despite having a faster processor (a 2 GHz Core 2 Duo as
             opposed to the 1.83 GHz Core Duo I currently have). RAM is very
             important for performance when compiling code in
-            <a href="https://wincent.com/knowledge-base/Xcode">Xcode</a>, mostly
+            <a href="https://wincent.com/wiki/Xcode">Xcode</a>, mostly
             due to the amount of memory occupied by precompiled headers.
           </p>
           <p>
@@ -1741,14 +1741,14 @@
           <h3 id="a003732">Git 1.5.4-rc4</h3>
 
           <p>
-            <a href="https://wincent.com/knowledge-base/Git%201.5.4-rc4"
+            <a href="https://wincent.com/wiki/Git%201.5.4-rc4"
               >Git 1.5.4-rc4</a
             >
             is out, and the final 1.5.4 release is likely to come soon, probably
             before the end of the month. My favorite change in this build is the
             fix for the performance regression when commiting a single file
             specified on the
-            <a href="https://wincent.com/knowledge-base/command%20line"
+            <a href="https://wincent.com/wiki/command%20line"
               >command line</a
             >
             (eg. <tt>git commit foo</tt>) as this is something that I do
@@ -1757,9 +1757,9 @@
           <p>
             The regression was only in the development version and has never
             made it into a released version of
-            <a href="https://wincent.com/knowledge-base/Git">Git</a>, but I've
+            <a href="https://wincent.com/wiki/Git">Git</a>, but I've
             been tracking the master branch for some time now (see &quot;<a
-              href="https://wincent.com/knowledge-base/Tracking%20the%20Git%20maint%20or%20master%20branches"
+              href="https://wincent.com/wiki/Tracking%20the%20Git%20maint%20or%20master%20branches"
               >Tracking the Git maint or master branches</a
             >&quot;) so I had definitely noticed the problem.
           </p>
@@ -1796,7 +1796,7 @@
           </p>
           <p>
             I'll be migrating to
-            <a href="https://wincent.com/knowledge-base/RHEL%205">RHEL 5</a>
+            <a href="https://wincent.com/wiki/RHEL%205">RHEL 5</a>
             (from RHEL 3). I don't have a firm date for the migration yet, and I
             need to do quite a bit of research before then about the best way to
             get all my data across. This will basically be a clean install on a
@@ -1825,7 +1825,7 @@
             I'm very happy about this because it means I will be able to
             gradually retire bits of legacy software and replace all of this
             with a single, lean, unified
-            <a href="https://wincent.com/knowledge-base/Rails">Rails</a>
+            <a href="https://wincent.com/wiki/Rails">Rails</a>
             application which handles everything for me (bug tracking, customer
             support tracking, forums, the wiki, and so forth).
           </p>

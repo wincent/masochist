@@ -680,7 +680,7 @@
             href="http://www.n8gray.org/blog/2007/04/27/introducing-backup-bouncer/"
             >Interesting</a
           >. Nice to see that
-          <a href="https://wincent.com/knowledge-base/SuperDuper!"
+          <a href="https://wincent.com/wiki/SuperDuper!"
             >SuperDuper!</a
           >
           (the tool I use to do a daily mirror of my entire startup volume)

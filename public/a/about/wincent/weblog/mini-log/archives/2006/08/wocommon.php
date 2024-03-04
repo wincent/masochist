@@ -677,7 +677,7 @@
 
         <p>
           Started work on a new code-sharing project,
-          <a href="https://wincent.com/knowledge-base/WOCommon">WOCommon</a>.
+          <a href="https://wincent.com/wiki/WOCommon">WOCommon</a>.
         </p>
 
         <div id="a000370more"><div id="more"></div></div>

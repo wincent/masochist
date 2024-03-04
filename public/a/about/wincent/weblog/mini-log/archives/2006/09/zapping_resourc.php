@@ -677,7 +677,7 @@
 
         <p>
           <a
-            href="https://wincent.com/knowledge-base/Zapping_resource_forks_from_the_commandline"
+            href="https://wincent.com/wiki/Zapping_resource_forks_from_the_commandline"
             >Easily</a
           >.
         </p>

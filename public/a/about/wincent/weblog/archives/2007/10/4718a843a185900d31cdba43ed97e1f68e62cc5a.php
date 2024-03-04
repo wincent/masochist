@@ -731,15 +731,15 @@
 
         <p>
           I just made a curious realization while trying to build
-          <a href="https://wincent.com/knowledge-base/MySQL">MySQL</a> for
-          <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a>: I
+          <a href="https://wincent.com/wiki/MySQL">MySQL</a> for
+          <a href="https://wincent.com/wiki/Leopard">Leopard</a>: I
           don't know how to create new daemon user. No doubt this is
           ridiculously easy with Mac OS X Server, but in the non-server version
           it's far from obvious.
         </p>
         <p>
           The NetInfo Manager utility has finally be laid to rest, but so have
-          <a href="https://wincent.com/knowledge-base/command%20line"
+          <a href="https://wincent.com/wiki/command%20line"
             >command line</a
           >
           tools like <tt>adduser</tt>. The <tt>/etc/passwd</tt> file starts with
@@ -775,7 +775,7 @@
         <ul>
           <li>
             Luckily, thanks to somebody who didn't know that Leopard was under
-            an <a href="https://wincent.com/knowledge-base/NDA">NDA</a>, found
+            an <a href="https://wincent.com/wiki/NDA">NDA</a>, found
             <a
               href="http://www.michaelnygard.com/blog/2007/04/moving_your_home_directory_on.html"
               >this article</a

@@ -677,12 +677,12 @@
 
         <p>
           Been quite busy with
-          <a href="https://wincent.com/knowledge-base/Rails">Rails</a> stuff
+          <a href="https://wincent.com/wiki/Rails">Rails</a> stuff
           lately (website improvements); as an example, he's an article I just
           posted to the
-          <a href="https://wincent.com/knowledge-base/wiki">wiki</a> with the
+          <a href="https://wincent.com/wiki/wiki">wiki</a> with the
           lessons learned from this morning: &quot;<a
-            href="https://wincent.com/knowledge-base/Validating%20passwords%20with%20Ruby%20on%20Rails"
+            href="https://wincent.com/wiki/Validating%20passwords%20with%20Ruby%20on%20Rails"
             >Validating passwords with Ruby on Rails</a
           >&quot;.
         </p>

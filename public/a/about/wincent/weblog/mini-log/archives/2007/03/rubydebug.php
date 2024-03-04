@@ -679,7 +679,7 @@
           <a href="http://rubyforge.org/frs/shownotes.php?release_id=10392"
             >Updated to 0.8</a
           >. See &quot;<a
-            href="https://wincent.com/knowledge-base/Updating%20to%20ruby-debug%201.8%20using%20RubyGems"
+            href="https://wincent.com/wiki/Updating%20to%20ruby-debug%201.8%20using%20RubyGems"
             >Updating to ruby-debug 1.8 using RubyGems</a
           >&quot;.
         </p>

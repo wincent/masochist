@@ -677,7 +677,7 @@
 
         <p>
           <a
-            href="https://wincent.com/knowledge-base/Building_and_installing_Ruby_1.8.5_on_Red_Hat_Enterprise_Linux_ES_3"
+            href="https://wincent.com/wiki/Building_and_installing_Ruby_1.8.5_on_Red_Hat_Enterprise_Linux_ES_3"
             >Upgrade</a
           >.
         </p>

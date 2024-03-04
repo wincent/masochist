@@ -682,7 +682,7 @@
           <a href="http://drewthaler.blogspot.com/2007/10/don-be-zfs-hater.html"
             >posts</a
           >
-          on <a href="https://wincent.com/knowledge-base/ZFS">ZFS</a> worth
+          on <a href="https://wincent.com/wiki/ZFS">ZFS</a> worth
           linking to.
           <a href="http://www.macjournals.com/news/2007/10/04">This one</a>, on
           the other hand, isn't worth linking to at all, but I'm doing so

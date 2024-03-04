@@ -683,7 +683,7 @@
             >fantastic explanation</a
           >
           of <em>why</em>
-          <a href="https://wincent.com/knowledge-base/Git">Git</a> does it so
+          <a href="https://wincent.com/wiki/Git">Git</a> does it so
           well.
         </p>
 

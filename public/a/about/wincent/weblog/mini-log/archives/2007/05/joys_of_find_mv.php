@@ -679,7 +679,7 @@
 
         <p>
           <a
-            href="https://wincent.com/knowledge-base/Automated%20moving%20of%20files%20using%20find"
+            href="https://wincent.com/wiki/Automated%20moving%20of%20files%20using%20find"
             >Automated moving of files using find</a
           >.
         </p>

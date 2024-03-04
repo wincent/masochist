@@ -687,7 +687,7 @@
 
           <p>
             The <a href="../news/">news page</a> and
-            <a href="../knowledge-base/">knowledge base</a> (formerly found at
+            <a href="../wiki/">knowledge base</a> (formerly found at
             wincent.org) continue to provide valuable Mac tips, news and
             commentary. These do not seek to compete with other Mac websites by
             merely duplicating their content. Rather, Wincent seeks to publish

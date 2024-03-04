@@ -676,11 +676,11 @@
         <h3>redMine</h3>
 
         <p>
-          <a href="https://wincent.com/knowledge-base/redMine">redMine</a> is a
+          <a href="https://wincent.com/wiki/redMine">redMine</a> is a
           very impressive project management system built using
-          <a href="https://wincent.com/knowledge-base/Rails">Rails</a>. Still in
+          <a href="https://wincent.com/wiki/Rails">Rails</a>. Still in
           the very early stages but I already like the look of it better than
-          <a href="https://wincent.com/knowledge-base/Trac">Trac</a>.
+          <a href="https://wincent.com/wiki/Trac">Trac</a>.
         </p>
 
         <div id="a001472more"><div id="more"></div></div>

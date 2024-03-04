@@ -1128,13 +1128,13 @@
             <a href="http://wincent.com">Synergy</a>, the fifth alpha
             release in the brand new 3.5 series. The last release, version 3.2,
             was
-            <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a
+            <a href="https://wincent.com/wiki/Leopard">Leopard</a
             >-compatible but would also run on all versions of
-            <a href="https://wincent.com/knowledge-base/Mac%20OS%20X"
+            <a href="https://wincent.com/wiki/Mac%20OS%20X"
               >Mac OS X</a
             >
             from
-            <a href="https://wincent.com/knowledge-base/Jaguar">Jaguar</a>
+            <a href="https://wincent.com/wiki/Jaguar">Jaguar</a>
             onwards.
           </p>
           <p>
@@ -1256,13 +1256,13 @@
             <a href="http://wincent.com">Synergy</a>, the fourth alpha
             release in the brand new 3.5 series. The last release, version 3.2,
             was
-            <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a
+            <a href="https://wincent.com/wiki/Leopard">Leopard</a
             >-compatible but would also run on all versions of
-            <a href="https://wincent.com/knowledge-base/Mac%20OS%20X"
+            <a href="https://wincent.com/wiki/Mac%20OS%20X"
               >Mac OS X</a
             >
             from
-            <a href="https://wincent.com/knowledge-base/Jaguar">Jaguar</a>
+            <a href="https://wincent.com/wiki/Jaguar">Jaguar</a>
             onwards.
           </p>
           <p>
@@ -1325,13 +1325,13 @@
             <a href="http://wincent.com">Synergy</a>, the third alpha
             release in the brand new 3.5 series. The last release, version 3.2,
             was
-            <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a
+            <a href="https://wincent.com/wiki/Leopard">Leopard</a
             >-compatible but would also run on all versions of
-            <a href="https://wincent.com/knowledge-base/Mac%20OS%20X"
+            <a href="https://wincent.com/wiki/Mac%20OS%20X"
               >Mac OS X</a
             >
             from
-            <a href="https://wincent.com/knowledge-base/Jaguar">Jaguar</a>
+            <a href="https://wincent.com/wiki/Jaguar">Jaguar</a>
             onwards.
           </p>
           <p>
@@ -1395,7 +1395,7 @@
             Wincent Strings Utility,
             the localization helper tool for developers. Version 1.2 is
             basically a total rewrite for
-            <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a>
+            <a href="https://wincent.com/wiki/Leopard">Leopard</a>
             which adds a bunch of new features and improvements. See the
             official product page for
             a full list of changes, download links, and further information.
@@ -1480,13 +1480,13 @@
           <p>
             The last <a href="http://wincent.com">Synergy</a> release,
             version 3.2, was
-            <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a
+            <a href="https://wincent.com/wiki/Leopard">Leopard</a
             >-compatible but would also run on all versions of
-            <a href="https://wincent.com/knowledge-base/Mac%20OS%20X"
+            <a href="https://wincent.com/wiki/Mac%20OS%20X"
               >Mac OS X</a
             >
             from
-            <a href="https://wincent.com/knowledge-base/Jaguar">Jaguar</a>
+            <a href="https://wincent.com/wiki/Jaguar">Jaguar</a>
             onwards.
           </p>
           <p>
@@ -1545,15 +1545,15 @@
             Although the latest version of
             <a href="http://wincent.com/">Synergy</a> already runs quite
             well on all versions of
-            <a href="https://wincent.com/knowledge-base/Mac%20OS%20X"
+            <a href="https://wincent.com/wiki/Mac%20OS%20X"
               >Mac OS X</a
             >
             from
-            <a href="https://wincent.com/knowledge-base/Jaguar">Jaguar</a> right
+            <a href="https://wincent.com/wiki/Jaguar">Jaguar</a> right
             up to (and including)
-            <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a>, I
+            <a href="https://wincent.com/wiki/Leopard">Leopard</a>, I
             have been working on a rewrite in
-            <a href="https://wincent.com/knowledge-base/Objective-C%202.0"
+            <a href="https://wincent.com/wiki/Objective-C%202.0"
               >Objective-C 2.0</a
             >
             which will is specifically designed for Leopard. The first phase of
@@ -1636,9 +1636,9 @@
 
           <p>
             I've just learned that
-            <a href="https://wincent.com/knowledge-base/Apple">Apple</a> has
+            <a href="https://wincent.com/wiki/Apple">Apple</a> has
             made the final release of
-            <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a>
+            <a href="https://wincent.com/wiki/Leopard">Leopard</a>
             available to developers (via download) several weeks earlier than
             expected (in the case of Tiger they didn't make a download available
             and developers had to wait for mailed copies).
@@ -1672,7 +1672,7 @@
 
           <p>
             With
-            <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a>
+            <a href="https://wincent.com/wiki/Leopard">Leopard</a>
             only 15 hours from release it's time for a product status report:
           </p>
           <a name="Leopard-ready"></a>
@@ -1753,7 +1753,7 @@
             <li>
               Walrus: object-oriented
               templating system written in
-              <a href="https://wincent.com/knowledge-base/Ruby">Ruby</a>.
+              <a href="https://wincent.com/wiki/Ruby">Ruby</a>.
             </li>
           </ul>
 

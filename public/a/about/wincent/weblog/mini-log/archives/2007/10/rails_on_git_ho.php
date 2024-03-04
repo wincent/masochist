@@ -679,14 +679,14 @@
 
         <p>
           The <em>entire</em> history of the
-          <a href="https://wincent.com/knowledge-base/Rails">Rails</a>
+          <a href="https://wincent.com/wiki/Rails">Rails</a>
           repository occupies only 9MB when
           <a href="http://www.sanityinc.com/articles/rails-on-git"
             >imported into Git</a
           >
           (via <a href="http://mjtsai.com/blog">Michael Tsai's weblog</a>). More
           good publicity for
-          <a href="https://wincent.com/knowledge-base/Git">Git</a> and some
+          <a href="https://wincent.com/wiki/Git">Git</a> and some
           playfully snide remarks about Rails make for some pleasing reading.
         </p>
 

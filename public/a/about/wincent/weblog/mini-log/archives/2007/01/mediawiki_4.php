@@ -677,7 +677,7 @@
 
         <p>
           <a
-            href="https://wincent.com/knowledge-base/Upgrading_from_MediaWiki_1.6.8_to_1.6.9_using_Subversion"
+            href="https://wincent.com/wiki/Upgrading_from_MediaWiki_1.6.8_to_1.6.9_using_Subversion"
             >1.6.9</a
           >.
         </p>

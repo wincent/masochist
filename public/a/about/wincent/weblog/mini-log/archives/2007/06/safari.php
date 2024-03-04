@@ -677,7 +677,7 @@
 
         <p>
           Apple moving forward with
-          <a href="https://wincent.com/knowledge-base/Safari">Safari</a> at a
+          <a href="https://wincent.com/wiki/Safari">Safari</a> at a
           <a href="http://webkit.org/blog/111/safari-302-beta-available/"
             >surprising pace</a
           >.

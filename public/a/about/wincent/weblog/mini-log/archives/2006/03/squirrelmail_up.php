@@ -678,7 +678,7 @@
         <p>
           And some
           <a
-            href="https://wincent.com/a/knowledge-base/archives/2006/03/eliminating_xau.php"
+            href="https://wincent.com/a/wiki/archives/2006/03/eliminating_xau.php"
             >tweaks</a
           >.
         </p>

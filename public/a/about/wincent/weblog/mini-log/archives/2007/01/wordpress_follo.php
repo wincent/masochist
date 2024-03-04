@@ -680,7 +680,7 @@
           <a href="http://wordpress.org/">WordPress</a> folks finally got around
           to tagging their 2.0.6 release, so I did
           <a
-            href="https://wincent.com/knowledge-base/Upgrading_from_WordPress_2.0.5_to_2.0.6_using_Subversion"
+            href="https://wincent.com/wiki/Upgrading_from_WordPress_2.0.5_to_2.0.6_using_Subversion"
             >the upgrade</a
           >.
         </p>

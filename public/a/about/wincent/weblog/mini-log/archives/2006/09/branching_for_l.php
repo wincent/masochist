@@ -682,7 +682,7 @@
             >pleased I am with the Leopard API changes</a
           >,
           <a
-            href="https://wincent.com/knowledge-base/Creating_branches_with_Subversion"
+            href="https://wincent.com/wiki/Creating_branches_with_Subversion"
             >created a new branch</a
           >
           of <a href="http://wincent.com/">Synergy</a> and

@@ -677,7 +677,7 @@
 
         <p>
           The first official non-X version of OpenOffice.org for
-          <a href="https://wincent.com/knowledge-base/Mac%20OS%20X">Mac OS X</a>
+          <a href="https://wincent.com/wiki/Mac%20OS%20X">Mac OS X</a>
           is out. I was so surprised I checked the calendar to make sure it
           wasn't April 1st... Still a long way to go, but this is a very
           important step. More details

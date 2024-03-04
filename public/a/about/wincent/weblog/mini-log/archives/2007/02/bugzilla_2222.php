@@ -677,7 +677,7 @@
 
         <p>
           <a
-            href="https://wincent.com/knowledge-base/Bugzilla_2.22.1_to_2.22.2_upgrade_notes"
+            href="https://wincent.com/wiki/Bugzilla_2.22.1_to_2.22.2_upgrade_notes"
             >Upgrade notes</a
           >.
         </p>

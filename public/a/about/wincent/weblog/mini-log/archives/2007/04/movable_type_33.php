@@ -677,7 +677,7 @@
 
         <p>
           See &quot;<a
-            href="https://wincent.com/knowledge-base/Upgrading%20from%20Movable%20Type%20version%203.34%20to%203.35"
+            href="https://wincent.com/wiki/Upgrading%20from%20Movable%20Type%20version%203.34%20to%203.35"
             >Upgrading from Movable Type version 3.34 to 3.35</a
           >&quot;.
         </p>

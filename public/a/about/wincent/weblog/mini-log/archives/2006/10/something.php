@@ -678,7 +678,7 @@
         <p>
           ...that's been
           <a
-            href="https://wincent.com/knowledge-base/Internet_connection_sharing_using_an_ad_hoc_AirPort_network_on_Mac_OS_X_Tiger"
+            href="https://wincent.com/wiki/Internet_connection_sharing_using_an_ad_hoc_AirPort_network_on_Mac_OS_X_Tiger"
             >bugging me for a while now</a
           >.
         </p>

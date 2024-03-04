@@ -687,7 +687,7 @@
         </p>
         <p>
           Looking forward to using it, although until the
-          <a href="https://wincent.com/knowledge-base/API">API</a> is final I'm
+          <a href="https://wincent.com/wiki/API">API</a> is final I'm
           not going to touch it; too many other things on the go right now to
           spend time chasing a moving API.
         </p>

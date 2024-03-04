@@ -731,14 +731,14 @@
 
         <p>
           Lately
-          <a href="https://wincent.com/knowledge-base/Mail.app">Mail.app</a> has
+          <a href="https://wincent.com/wiki/Mail.app">Mail.app</a> has
           only been returning a subset of the expected results when I search for
           a particular mail. For example, if a customer that purchased a
           <a href="http://wincent.com/">Synergy</a> license in the last
           week asks for their registration information to be resent then I can
           find it, usually within seconds; but if someone who purchased back in
           2003 asks me then Mail.app never turns up any results. Using
-          <a href="https://wincent.com/knowledge-base/Spotlight">Spotlight</a>
+          <a href="https://wincent.com/wiki/Spotlight">Spotlight</a>
           from outside of Mail.app also fails to return any results even though
           the emails are <em>known</em> to exist, so I can only conclude that
           Spotlight is broken. A manual search (sorting by column, manually
@@ -752,7 +752,7 @@
           involves logging into PayPal to find a record of a transaction which
           took place almost five years ago, and I can then confirm using
           <tt>grep -R</tt> from the
-          <a href="https://wincent.com/knowledge-base/command%20line"
+          <a href="https://wincent.com/wiki/command%20line"
             >command line</a
           >
           that the registration notice is indeed still present in my

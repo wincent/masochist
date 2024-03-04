@@ -683,7 +683,7 @@
             >An example</a
           >
           of why I try to keep the number of installed plug-ins down in a
-          <a href="https://wincent.com/knowledge-base/Rails">Rails</a>
+          <a href="https://wincent.com/wiki/Rails">Rails</a>
           application. It's all too easy to see a &quot;neat feature&quot; and
           think, &quot;Great! It's a one-line install!&quot;, but the code is
           unlikely to be as closely vetted as the core Rails codebase itself.

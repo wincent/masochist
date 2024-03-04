@@ -672,11 +672,11 @@
             >most welcome update</a
           >
           that brings
-          <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a>
+          <a href="https://wincent.com/wiki/Leopard">Leopard</a>
           compatibility at last. I make simple <tt>tar</tt>-based backups of my
           home directory every two hours via a <tt>cron</tt> job, but I've been
           without whole-disk backups for a while now because
-          <a href="https://wincent.com/knowledge-base/SuperDuper!"
+          <a href="https://wincent.com/wiki/SuperDuper!"
             >SuperDuper!</a
           >
           has been out of action. It's good to have it back!

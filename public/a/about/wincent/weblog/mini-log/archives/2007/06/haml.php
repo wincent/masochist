@@ -677,7 +677,7 @@
 
         <p>
           Just started using
-          <a href="https://wincent.com/knowledge-base/Haml">Haml</a>. Very
+          <a href="https://wincent.com/wiki/Haml">Haml</a>. Very
           impressed so far.
         </p>
 

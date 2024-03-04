@@ -687,7 +687,7 @@
             >2</a
           >) -- invented or not, real or fake -- because if you keep even the
           most casual eye on developments in the
-          <a href="https://wincent.com/knowledge-base/Apple">Apple</a> world
+          <a href="https://wincent.com/wiki/Apple">Apple</a> world
           (this includes basically all readers of this weblog) then you already
           know this.
         </p>

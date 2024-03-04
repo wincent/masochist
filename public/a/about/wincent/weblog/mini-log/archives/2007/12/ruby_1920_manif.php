@@ -684,7 +684,7 @@
             >closest competitor</a
           >
           (JRuby), which isn't surprising, seeing as JRuby is built on
-          <a href="https://wincent.com/knowledge-base/Java">Java</a> (not
+          <a href="https://wincent.com/wiki/Java">Java</a> (not
           exactly known for its blistering speed).
         </p>
 

@@ -678,8 +678,8 @@
         <h3>backtrace(3)</h3>
 
         <p>
-          Cool new <a href="https://wincent.com/knowledge-base/API">API</a> for
-          <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a> that
+          Cool new <a href="https://wincent.com/wiki/API">API</a> for
+          <a href="https://wincent.com/wiki/Leopard">Leopard</a> that
           I just found out about.
         </p>
 

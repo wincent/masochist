@@ -684,7 +684,7 @@
             >work</a
           >
           on a port was done by
-          <a href="https://wincent.com/knowledge-base/Apple">Apple</a>'s Greg
+          <a href="https://wincent.com/wiki/Apple">Apple</a>'s Greg
           Parker.
         </p>
 

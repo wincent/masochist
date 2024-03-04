@@ -649,9 +649,9 @@
 
           <p>
             Wopen3 is a free replacement (released under the
-            <a href="https://wincent.com/knowledge-base/GPL">GPL</a>) for Open3
+            <a href="https://wincent.com/wiki/GPL">GPL</a>) for Open3
             in the
-            <a href="https://wincent.com/knowledge-base/Ruby_Standard_Library"
+            <a href="https://wincent.com/wiki/Ruby_Standard_Library"
               >Ruby Standard Library</a
             >. Unlike Open3, Wopen3 does not throw away the exit code of the
             executed (grandchild) process. Only a child process is spawned and
@@ -661,7 +661,7 @@
           <p>
             Wopen3 is part of Walrus,
             distributed as a separate
-            <a href="https://wincent.com/knowledge-base/Gem">gem</a> for easy
+            <a href="https://wincent.com/wiki/Gem">gem</a> for easy
             reuse.
           </p>
 

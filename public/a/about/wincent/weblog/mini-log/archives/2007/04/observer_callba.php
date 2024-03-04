@@ -677,7 +677,7 @@
 
         <p>
           My first
-          <a href="https://wincent.com/knowledge-base/Rails">Rails</a> ticket:
+          <a href="https://wincent.com/wiki/Rails">Rails</a> ticket:
           <a href="http://dev.rubyonrails.org/ticket/7968">#7698</a>.
         </p>
 

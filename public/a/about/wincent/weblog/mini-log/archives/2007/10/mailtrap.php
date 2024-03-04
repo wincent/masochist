@@ -681,7 +681,7 @@
           <a href="http://matt.blogs.it/entries/00002655.html">Mailtrap</a> is a
           &quot;fake&quot; SMTP server that allows you to really send mails in
           your
-          <a href="https://wincent.com/knowledge-base/Rails">Rails</a> tests; it
+          <a href="https://wincent.com/wiki/Rails">Rails</a> tests; it
           doesn't actually deliver the messages anywhere, but writes them to
           <tt>/var/tmp/mailtrap.log</tt> for your inspection. Not sure whether
           I'll use this but it's an interesting option.

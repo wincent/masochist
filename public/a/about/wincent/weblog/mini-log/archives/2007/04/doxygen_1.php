@@ -676,7 +676,7 @@
         <h3>Doxygen</h3>
 
         <p>
-          <a href="https://wincent.com/knowledge-base/Doxygen%201.5.2"
+          <a href="https://wincent.com/wiki/Doxygen%201.5.2"
             >Doxygen 1.5.2</a
           >
           is out.

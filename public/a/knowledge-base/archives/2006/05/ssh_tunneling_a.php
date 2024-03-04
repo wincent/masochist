@@ -875,7 +875,7 @@ sudo ssh -L 10143:wincent.com:143 \
             <p>
               I later went ahead to explore the use of
               <a
-                href="https://wincent.com/knowledge-base/Using_Stunnel_to_secure_SMTP_transport"
+                href="https://wincent.com/wiki/Using_Stunnel_to_secure_SMTP_transport"
                 >Stunnel</a
               >. It co-exists peacefully with the <tt>STARTTLS</tt> solution.
             </p>

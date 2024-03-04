@@ -683,10 +683,10 @@
             href="http://weblog.rubyonrails.com/2007/11/9/rails-2-0-release-candidate-1"
             >first official release candidate is out</a
           >. Not upgrading just yet because I haven't even gotten a proper
-          <a href="https://wincent.com/knowledge-base/Rails">Rails</a>
+          <a href="https://wincent.com/wiki/Rails">Rails</a>
           development environment set up on
-          <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a> yet
-          (<a href="https://wincent.com/knowledge-base/MySQL">MySQL</a> being
+          <a href="https://wincent.com/wiki/Leopard">Leopard</a> yet
+          (<a href="https://wincent.com/wiki/MySQL">MySQL</a> being
           the road-block there; haven't been able to build from source yet and I
           prefer to wait for the MySQL team's next release).
         </p>

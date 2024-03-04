@@ -679,12 +679,12 @@
           I once read somewhere that you should learn a new programming language
           every year to boost your mental agility. The last language I learnt
           was
-          <a href="https://wincent.com/knowledge-base/Object-Oriented"
+          <a href="https://wincent.com/wiki/Object-Oriented"
             >Object-Oriented</a
           >
-          (<a href="https://wincent.com/knowledge-base/Ruby">Ruby</a>). I've
+          (<a href="https://wincent.com/wiki/Ruby">Ruby</a>). I've
           decided that the next one will be functional (<a
-            href="https://wincent.com/knowledge-base/Haskell"
+            href="https://wincent.com/wiki/Haskell"
             >Haskell</a
           >). To that end I've just installed
           <a href="http://www.haskell.org/hugs/">Hugs 98</a>. As massively

@@ -685,7 +685,7 @@
             >speedups</a
           >
           in
-          <a href="https://wincent.com/knowledge-base/RubyCocoa">RubyCocoa</a>.
+          <a href="https://wincent.com/wiki/RubyCocoa">RubyCocoa</a>.
         </p>
 
         <div id="a002200more"><div id="more"></div></div>

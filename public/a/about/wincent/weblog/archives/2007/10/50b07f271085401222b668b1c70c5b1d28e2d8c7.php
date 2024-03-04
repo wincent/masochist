@@ -748,10 +748,10 @@
         </blockquote>
         <p>
           I'll answer this with specific reference to
-          <a href="https://wincent.com/knowledge-base/Git">Git</a> seeing that's
+          <a href="https://wincent.com/wiki/Git">Git</a> seeing that's
           the
           <a
-            href="https://wincent.com/knowledge-base/distributed%20version%20control"
+            href="https://wincent.com/wiki/distributed%20version%20control"
             >distributed version control</a
           >
           system with which I have the most experience. Although I could rave on
@@ -1043,7 +1043,7 @@ git init</pre
                 Speed: <em>apart</em> from the fast offline access already
                 mentioned, Git itself is a speed-demon. Most of it is written in
                 lean-and-mean
-                <a href="https://wincent.com/knowledge-base/C">C</a> code, with
+                <a href="https://wincent.com/wiki/C">C</a> code, with
                 some high-level user-interface stuff written using scripting
                 languages. This isn't just a coincidence; from the very
                 beginning it was designed to be quick and it's one of the things

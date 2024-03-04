@@ -677,11 +677,11 @@
 
         <p>
           <a
-            href="https://wincent.com/knowledge-base/Building_and_installing_Ruby_1.8.6_on_Red_Hat_Enterprise_Linux_ES_3"
+            href="https://wincent.com/wiki/Building_and_installing_Ruby_1.8.6_on_Red_Hat_Enterprise_Linux_ES_3"
             >Red Hat upgrade notes</a
           >;
           <a
-            href="https://wincent.com/knowledge-base/Building_and_installing_Ruby_1.8.6_on_Mac_OS_X_Tiger"
+            href="https://wincent.com/wiki/Building_and_installing_Ruby_1.8.6_on_Mac_OS_X_Tiger"
             >Mac OS X upgrade notes</a
           >.
         </p>

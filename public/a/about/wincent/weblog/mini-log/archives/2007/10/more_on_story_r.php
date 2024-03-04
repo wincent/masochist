@@ -683,7 +683,7 @@
             href="http://www.vaporbase.com/postings/Beginners_Guide_to_Rspec_on_Story_Runner"
             >nice intro</a
           >. People are obviously very excited about
-          <a href="https://wincent.com/knowledge-base/RSpec">RSpec</a>'s
+          <a href="https://wincent.com/wiki/RSpec">RSpec</a>'s
           forthcoming Story Runner. As I mentioned in my last post, however, I'm
           not going to touch it until the API has firmed up a bit.
         </p>

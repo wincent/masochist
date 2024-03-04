@@ -689,7 +689,7 @@
             >the many glitches</a
           >
           I've seen so far running
-          <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a>.
+          <a href="https://wincent.com/wiki/Leopard">Leopard</a>.
         </p>
 
         <div id="a002898more"><div id="more"></div></div>

@@ -677,7 +677,7 @@
 
         <p>
           <a
-            href="https://wincent.com/knowledge-base/ClamAV_0.88.7_to_0.90.1_upgrade_notes"
+            href="https://wincent.com/wiki/ClamAV_0.88.7_to_0.90.1_upgrade_notes"
             >Notes</a
           >.
         </p>

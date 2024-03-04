@@ -681,7 +681,7 @@
           <a href="http://people.redhat.com/drepper/defprogramming.pdf"
             >Nice article from Red Hat's Ulrich Drepper</a
           >
-          (<a href="https://wincent.com/knowledge-base/PDF">PDF</a>);
+          (<a href="https://wincent.com/wiki/PDF">PDF</a>);
           <a href="http://people.redhat.com/drepper/Defensive-slides.pdf"
             >related slides</a
           >

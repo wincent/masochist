@@ -729,7 +729,7 @@
 
         <p>
           I've always been a little confused by
-          <a href="https://wincent.com/knowledge-base/Apple">Apple</a>'s
+          <a href="https://wincent.com/wiki/Apple">Apple</a>'s
           &quot;<a
             href="http://developer.apple.com/documentation/MacOSX/Conceptual/BPRuntimeConfig/Articles/PListKeys.html"
             >Property List Key Reference</a
@@ -747,7 +747,7 @@
           &quot;Added details on the new purpose of the CFBundleGetInfoString
           key&quot;, &quot;Reintroduced the CFBundleGetInfoString key&quot;) and
           this is the current state of affairs under
-          <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a>:
+          <a href="https://wincent.com/wiki/Leopard">Leopard</a>:
         </p>
         <a name="Behaviour"></a>
         <h2>Behaviour</h2>
@@ -865,11 +865,11 @@
               numbers should be &quot;monotonically increasing strings&quot;
               comprising &quot;one or more period-separated integers&quot;.
               Great if you use
-              <a href="https://wincent.com/knowledge-base/Subversion"
+              <a href="https://wincent.com/wiki/Subversion"
                 >Subversion</a
               >-based build numbers; you'll need to ignore those rules if your
               build numbers are actually SHA-1 hashes (based on
-              <a href="https://wincent.com/knowledge-base/Git">Git</a> commits,
+              <a href="https://wincent.com/wiki/Git">Git</a> commits,
               for example). Likewise your release versions are supposed to be of
               the form &quot;x.y.z&quot;; bad luck if you want to do
               &quot;1.0-rc1&quot; or &quot;2.1b3&quot; and the like, but it

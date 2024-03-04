@@ -729,7 +729,7 @@
 
         <p>
           I've always been a little confused by
-          <a href="https://wincent.com/knowledge-base/Apple">Apple</a>'s
+          <a href="https://wincent.com/wiki/Apple">Apple</a>'s
           &quot;<a
             href="http://developer.apple.com/documentation/MacOSX/Conceptual/BPRuntimeConfig/Articles/PListKeys.html"
             >Property List Key Reference</a
@@ -747,7 +747,7 @@
           &quot;Added details on the new purpose of the CFBundleGetInfoString
           key&quot;, &quot;Reintroduced the CFBundleGetInfoString key&quot;) and
           this is the current state of affairs under
-          <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a>:
+          <a href="https://wincent.com/wiki/Leopard">Leopard</a>:
         </p>
         <a name="Behaviour"></a>
         <h2>Behaviour</h2>

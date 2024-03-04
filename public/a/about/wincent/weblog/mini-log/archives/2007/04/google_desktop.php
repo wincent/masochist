@@ -679,11 +679,11 @@
           <a href="http://desktop.google.com/mac/">Google Desktop for Mac</a> is
           out, at least in beta form. Probably very interesting for Gmail users.
           I'm not a Gmailer myself, so I'll be sticking with
-          <a href="https://wincent.com/knowledge-base/Spotlight">Spotlight</a>.
+          <a href="https://wincent.com/wiki/Spotlight">Spotlight</a>.
           We can all expect a much-improved
-          <a href="https://wincent.com/knowledge-base/Spotlight">Spotlight</a>
+          <a href="https://wincent.com/wiki/Spotlight">Spotlight</a>
           experience in
-          <a href="https://wincent.com/knowledge-base/Leopard">Leopard</a>
+          <a href="https://wincent.com/wiki/Leopard">Leopard</a>
           anyway.
         </p>
 

@@ -677,7 +677,7 @@
 
         <p>
           Finished a couple of
-          <a href="https://wincent.com/knowledge-base/Subversion_1.4.0_upgrade"
+          <a href="https://wincent.com/wiki/Subversion_1.4.0_upgrade"
             >fairly painful Subversion upgrades</a
           >
           (1.3.2 to 1.4.0) on both my local machine (Mac OS X) and the public

@@ -679,7 +679,7 @@
           WOSingleton is now totally thread-safe as a result of research I did
           during and after writing
           <a
-            href="https://wincent.com/a/knowledge-base/archives/2006/01/locking_doublec.php"
+            href="https://wincent.com/a/wiki/archives/2006/01/locking_doublec.php"
             >this article</a
           >. Did some nice optimizations too while I was at it.
         </p>

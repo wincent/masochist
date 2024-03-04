@@ -685,7 +685,7 @@
         </p>
         <p>
           NeoOffice is a fantastic boon to
-          <a href="https://wincent.com/knowledge-base/Mac%20OS%20X">Mac OS X</a>
+          <a href="https://wincent.com/wiki/Mac%20OS%20X">Mac OS X</a>
           users, but the lag can be a bit painful at times.
         </p>
 

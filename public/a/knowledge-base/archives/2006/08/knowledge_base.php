@@ -727,14 +727,14 @@
           The current knowledge base format (chronological posts, categorized,
           like a weblog) has always been somewhat limiting. I have recently
           started a
-          <a href="https://wincent.com/knowledge-base/">new, wiki-based</a>
+          <a href="https://wincent.com/wiki/">new, wiki-based</a>
           knowledge base. It's still very much a work in progress, but for the
           curious it can be found at:
         </p>
 
         <p>
-          <a href="https://wincent.com/knowledge-base/"
-            >https://wincent.com/knowledge-base/</a
+          <a href="https://wincent.com/wiki/"
+            >https://wincent.com/wiki/</a
           >
         </p>
 

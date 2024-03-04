@@ -677,7 +677,7 @@
 
         <p>
           <a
-            href="https://wincent.com/knowledge-base/Upgrading%20to%20ruby-debug%200.9.3"
+            href="https://wincent.com/wiki/Upgrading%20to%20ruby-debug%200.9.3"
             >Upgrading to ruby-debug 0.9.3</a
           >.
         </p>
