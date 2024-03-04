@@ -3,7 +3,7 @@ title: Embedding build numbers painlessly
 tags: blog
 ---
 
-Earlier today I was lamenting in the "mini-log" that lives on the left-hand side of my [weblog](http://www.wincent.com/a/about/wincent/weblog/):
+Earlier today I was lamenting in the "mini-log" that lives on the left-hand side of my [weblog](http://wincent.com/a/about/wincent/weblog/):
 
 > Synergy Advance is a huge project with lots of dependencies. I'd really like to know why it insists on rebuilding almost all of the dependent projects every time I build... It means that if I change a single line of code I end up having to recompile the entire project and that takes many, many minutes. Do that lots of times in the day and it starts to add up.
 

@@ -9,6 +9,6 @@ As a result some of the menu items in the 3.5a3 release were in Spanish when the
 
 See:
 
-http://www.wincent.com/a/support/bugs/show\_bug.cgi?id=637
+http://wincent.com/a/support/bugs/show\_bug.cgi?id=637
 
 Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;

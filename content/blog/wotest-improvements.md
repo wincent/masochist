@@ -3,13 +3,13 @@ title: WOTest improvements
 tags: blog
 ---
 
-I'm very happy with some improvements that I [checked in](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/2006/11/wotest_r129_5_items_changed.php) to WOTest last night and which improve the readability and usefulness of test results.
+I'm very happy with some improvements that I [checked in](http://wincent.com/a/about/wincent/weblog/svn-log/archives/2006/11/wotest_r129_5_items_changed.php) to WOTest last night and which improve the readability and usefulness of test results.
 
 The problem was that in many cases I was depending on `NSValue`'s not very human-friendly `description` method and as a result simple numbers like 500,000 were being printed in hexadecimal representation as `<0007a120>`. Actually, the problem was even worse on little-endian architectures (like on my Intel iMac) because the description was printed as `<20a10700>`, which at a casual glance has almost nothing to do with 500,000.
 
 After the improvements the test results now look like those shown in this screenshot (click for a larger version):
 
-[![](/system/images/legacy/results_t.png)](http://www.wincent.com/a/about/wincent/weblog/results.png)
+[![](/system/images/legacy/results_t.png)](http://wincent.com/a/about/wincent/weblog/results.png)
 
 In this case we see a test failed because we expected 20,000 but got 200,000. Clicking on the red error message in the build results window takes us directly to the test in the appropriate source file. Turns out the test itself is wrong; the `20000` needs to be changed to `200000`. The new output formatting makes it easy to spot the error, and as an added bonus there's type information in the output as well:
 

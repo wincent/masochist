@@ -12,11 +12,11 @@ So I tried to rule things out one by one. Internet connection sharing was turned
     sudo ipfw add deny ip from 192.168.1.34 to any
     sudo ipfw add deny ip from any to 192.168.1.34
 
-I have no idea why this didn't work but I continued to see [TCP](http://www.wincent.com/wiki/TCP) traffic. Variations on these rules didn't seem to work either. I then committed the mistake that required the reboot:
+I have no idea why this didn't work but I continued to see [TCP](http://wincent.com/wiki/TCP) traffic. Variations on these rules didn't seem to work either. I then committed the mistake that required the reboot:
 
     sudo ipfw add deny all from any to any
 
-That stopped the traffic all right but it stopped everything else, including [NetInfo](http://www.wincent.com/wiki/NetInfo) lookups, and that meant that the following didn't work:
+That stopped the traffic all right but it stopped everything else, including [NetInfo](http://wincent.com/wiki/NetInfo) lookups, and that meant that the following didn't work:
 
     sudo ipfw delete 100
 

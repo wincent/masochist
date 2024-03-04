@@ -1,8 +1,9 @@
 ---
 tags: apache sendmail cyrus ssl wiki
+title: SSL certificate renewal notes 2012
 ---
 
-I've been using [RapidSSL](/wiki/RapidSSL) for my [SSL](/wiki/SSL) certificates for a few years now, using [ServerTastic](http://www.servertastic.com/) because it's been the cheapest reseller (\$50 for a 5/year renewal). Right now I have one cert for wincent.com and another for secure.wincent.com (buying two separate certs is still considerably cheaper than getting a wildcard cert, although one day I'll probably cave in and get a wildcard cert in order to gracefully handle and redirect HTTPS requests coming in to www.wincent.com and possibly other subdomains as well).
+I've been using [RapidSSL](/wiki/RapidSSL) for my [SSL](/wiki/SSL) certificates for a few years now, using [ServerTastic](http://www.servertastic.com/) because it's been the cheapest reseller (\$50 for a 5/year renewal). Right now I have one cert for wincent.com and another for secure.wincent.com (buying two separate certs is still considerably cheaper than getting a wildcard cert, although one day I'll probably cave in and get a wildcard cert in order to gracefully handle and redirect HTTPS requests coming in to wincent.com and possibly other subdomains as well).
 
 This year I was forced into renewing a little early because Chrome started complaining about the signature algorithm used on the older of my two certs (the certificate in question was for secure.wincent.com, and set to expire on 23 May 2013; just under 11 months from now). I had originally thought that by the time it expired I might have migrated all my SSL traffic onto wincent.com, but that hasn't happened. This is the first time I've been "bitten" by my selection of cheaper certificates.
 

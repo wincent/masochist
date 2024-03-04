@@ -3,9 +3,9 @@ title: One of the things Git gets right
 tags: blog
 ---
 
-There is an [interesting thread](http://marc.info/?l=git&m=119637184605851&w=2) on the [Git](http://www.wincent.com/wiki/Git) mailing list going on right now which demonstrates exactly what it is that Git gets right about modelling history.
+There is an [interesting thread](http://marc.info/?l=git&m=119637184605851&w=2) on the [Git](http://wincent.com/wiki/Git) mailing list going on right now which demonstrates exactly what it is that Git gets right about modelling history.
 
-Basically, it doesn't worry about storing metadata about file renames, file moves, file copies and the like, which is a mistake which almost every other [SCM](http://www.wincent.com/wiki/SCM) makes. Git only cares about whole trees, and which commits where parents of which commits; it's this chaining of commits from child to parent (to grandparent...) which allows Git to model the notion of "history" and things like [branching](http://www.wincent.com/wiki/branching) and [merging](http://www.wincent.com/wiki/merging) (two or more commits which have the same parent obviously indicate where a branch was forked, and a commit with two or more parents is where a merge took place).
+Basically, it doesn't worry about storing metadata about file renames, file moves, file copies and the like, which is a mistake which almost every other [SCM](http://wincent.com/wiki/SCM) makes. Git only cares about whole trees, and which commits where parents of which commits; it's this chaining of commits from child to parent (to grandparent...) which allows Git to model the notion of "history" and things like [branching](http://wincent.com/wiki/branching) and [merging](http://wincent.com/wiki/merging) (two or more commits which have the same parent obviously indicate where a branch was forked, and a commit with two or more parents is where a merge took place).
 
 The model is rock solid and infallible because it is simple.
 

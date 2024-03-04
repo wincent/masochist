@@ -3,9 +3,9 @@ title: Darn GoDaddy
 tags: blog
 ---
 
-GoDaddy continues [to scam](http://www.wincent.com/a/about/wincent/weblog/archives/2006/07/godaddy_scam.php) with respect to private registrations but I've found one way to get around it.
+GoDaddy continues [to scam](http://wincent.com/a/about/wincent/weblog/archives/2006/07/godaddy_scam.php) with respect to private registrations but I've found one way to get around it.
 
-I used to have 32 domains registered with GoDaddy. A while back I [let one of them go](http://www.wincent.com/a/about/wincent/weblog/archives/2006/05/godaddys_renewa.php) due to my dissatisfaction with GoDaddy's "bait and switch" pricing policy: get 'em in with cheap prices and then gouge 'em on renewal. I preferred to forgo the domain rather than give in to their bandit tactics.
+I used to have 32 domains registered with GoDaddy. A while back I [let one of them go](http://wincent.com/a/about/wincent/weblog/archives/2006/05/godaddys_renewa.php) due to my dissatisfaction with GoDaddy's "bait and switch" pricing policy: get 'em in with cheap prices and then gouge 'em on renewal. I preferred to forgo the domain rather than give in to their bandit tactics.
 
 This is manifested at its worst in their private registration scams, recently taken to new heights. Back when I first wrote about this I got some feedback from a GoDaddy employee:
 

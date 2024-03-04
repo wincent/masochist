@@ -33,4 +33,4 @@ And the new, root-signed certificate:
 
 Also nice to see that they in fact extended the expiry date by more than a year, adding on a few additional weeks (to 5 May 2008) for free.
 
-Installing the certificate was fairly easy; I made some notes about it [here](http://www.wincent.com/wiki/Installing_a_new_SSL_certificate).
+Installing the certificate was fairly easy; I made some notes about it [here](http://wincent.com/wiki/Installing_a_new_SSL_certificate).

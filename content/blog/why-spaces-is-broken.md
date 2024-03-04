@@ -11,4 +11,4 @@ Finally found it, in [a comment](http://fukamachi.org/wp/2007/10/31/leopard/#com
 >
 > And that means that I've yet to find a real use for Spaces because my work pattern tends to be task or project-oriented rather than app oriented (eg. a Terminal window showing the source folder of a particular project, the accompanying Xcode windows, perhaps a Finder window showing the build folder etc). When you work this way Spaces doesn't really help you because you can't have one project per space. It seems suited only to completely unrelated tasks which use entirely different apps, and in my workflows there are all too few tasks that you can think of in total isolation like that.
 
-Two weeks later of full-time [Leopard](http://www.wincent.com/wiki/Leopard) use and I still haven't found a use for spaces.
+Two weeks later of full-time [Leopard](http://wincent.com/wiki/Leopard) use and I still haven't found a use for spaces.

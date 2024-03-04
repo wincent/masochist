@@ -3,7 +3,7 @@ title: The Colloquy MOAB
 tags: blog
 ---
 
-So today's [MOAB](http://www.wincent.com/a/about/wincent/weblog/archives/apple/moab/) entry is [a bug in Colloquy](http://projects.info-pull.com/moab/MOAB-16-01-2007.html), the [open source IRC client](http://colloquy.info/).
+So today's [MOAB](http://wincent.com/a/about/wincent/weblog/archives/apple/moab/) entry is [a bug in Colloquy](http://projects.info-pull.com/moab/MOAB-16-01-2007.html), the [open source IRC client](http://colloquy.info/).
 
 As was the case with the [earlier VLC bug](http://projects.info-pull.com/moab/MOAB-02-01-2007.html), it was fixed promptly as soon as it was reported. But this is open source. Why did the organizers choose to publish the vulnerability without first notifying the vendors? Why didn't they just submit patches?
 

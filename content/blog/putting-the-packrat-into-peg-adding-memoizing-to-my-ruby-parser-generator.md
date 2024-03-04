@@ -3,9 +3,9 @@ title: Putting the "packrat" into PEG: adding memoizing to my Ruby parser genera
 tags: blog
 ---
 
-I've previously written about writing a [basic parser generator](http://www.wincent.com/a/about/wincent/weblog/archives/2007/01/writing_a_parse.php) in Ruby and then [adding support](http://www.wincent.com/a/about/wincent/weblog/archives/2007/02/abstract_syntax.php) for [Abstract Syntax Trees](http://en.wikipedia.org/wiki/Abstract_syntax_tree).
+I've previously written about writing a [basic parser generator](http://wincent.com/a/about/wincent/weblog/archives/2007/01/writing_a_parse.php) in Ruby and then [adding support](http://wincent.com/a/about/wincent/weblog/archives/2007/02/abstract_syntax.php) for [Abstract Syntax Trees](http://en.wikipedia.org/wiki/Abstract_syntax_tree).
 
-In my [first article](http://www.wincent.com/a/about/wincent/weblog/archives/2007/01/writing_a_parse.php) I noted:
+In my [first article](http://wincent.com/a/about/wincent/weblog/archives/2007/01/writing_a_parse.php) I noted:
 
 > Although I didn't know it when I started, I was writing a parser generator that would produce a parser based on a [Parsing Expression Grammar](http://en.wikipedia.org/wiki/Parsing_expression_grammar) (PEG).
 
@@ -47,4 +47,4 @@ I will post more data when it becomes available.
 
 #### Update: 16 February 2007
 
-Some [more numbers](http://www.wincent.com/a/about/wincent/weblog/archives/2007/02/updated_packrat.php).
+Some [more numbers](http://wincent.com/a/about/wincent/weblog/archives/2007/02/updated_packrat.php).

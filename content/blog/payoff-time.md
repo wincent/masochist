@@ -3,17 +3,17 @@ title: Payoff time
 tags: blog
 ---
 
-Along with my other development work, since the start of the year I've been working on an object-oriented templating system called Walrus. Its functionality is similar to that of the [Cheetah](http://www.wincent.com/wiki/Cheetah) templating engine but it's written in [Ruby](http://www.wincent.com/wiki/Ruby) instead of in Python. It's a wheel that I was forced to reinvent for two reasons: one, the fact that I don't know Python; and two, problems with Cheetah (missing features or undesired behaviours) which I couldn't correct because I don't know Python... At this stage it offers only a subset of the Cheetah functionality but it's powerful enough to do what I designed it for: making documentation for display in Apple's Help Viewer.
+Along with my other development work, since the start of the year I've been working on an object-oriented templating system called Walrus. Its functionality is similar to that of the [Cheetah](http://wincent.com/wiki/Cheetah) templating engine but it's written in [Ruby](http://wincent.com/wiki/Ruby) instead of in Python. It's a wheel that I was forced to reinvent for two reasons: one, the fact that I don't know Python; and two, problems with Cheetah (missing features or undesired behaviours) which I couldn't correct because I don't know Python... At this stage it offers only a subset of the Cheetah functionality but it's powerful enough to do what I designed it for: making documentation for display in Apple's Help Viewer.
 
-It turns out that what started out as a simple project ended up becoming quite a bit more complex. But I'm very glad I did it because I learned a great deal along the way and my familiarity with Ruby has gone through the roof: something that will be very useful as I work on the [Rails](http://www.wincent.com/wiki/Rails) rewrite of this site and start using the Ruby scripting bridge that [Apple](http://www.wincent.com/wiki/Apple) will ship with [Leopard](http://www.wincent.com/wiki/Leopard).
+It turns out that what started out as a simple project ended up becoming quite a bit more complex. But I'm very glad I did it because I learned a great deal along the way and my familiarity with Ruby has gone through the roof: something that will be very useful as I work on the [Rails](http://wincent.com/wiki/Rails) rewrite of this site and start using the Ruby scripting bridge that [Apple](http://wincent.com/wiki/Apple) will ship with [Leopard](http://wincent.com/wiki/Leopard).
 
-Walrus is essentially a compiler that reads files written in a special templating markup (almost identical to that used by Cheetah) and compiles them down to Ruby code. The final output is produced by "filling" (running) the compiled templates. There is a `walrus` [command line](http://www.wincent.com/wiki/command%20line) tool that serves as a front end and makes it easy to process templates in batch style. At its core Walrus employs a [packrat](http://www.wincent.com/wiki/packrat) parser which can recognize any [PEG](http://www.wincent.com/wiki/PEG) and even accepts constructs that wouldn't usually be legal in a [PEG](http://www.wincent.com/wiki/PEG) such as left-recursive productions. The parser is capable of producing arbitrarily complex [ASTs](http://www.wincent.com/wiki/ASTs). Although I'm using it to produce help documentation the design is general enough to be used in any situation where you want to transform text from one format to another. All this means that it is a tool that could end up proving quite useful.
+Walrus is essentially a compiler that reads files written in a special templating markup (almost identical to that used by Cheetah) and compiles them down to Ruby code. The final output is produced by "filling" (running) the compiled templates. There is a `walrus` [command line](http://wincent.com/wiki/command%20line) tool that serves as a front end and makes it easy to process templates in batch style. At its core Walrus employs a [packrat](http://wincent.com/wiki/packrat) parser which can recognize any [PEG](http://wincent.com/wiki/PEG) and even accepts constructs that wouldn't usually be legal in a [PEG](http://wincent.com/wiki/PEG) such as left-recursive productions. The parser is capable of producing arbitrarily complex [ASTs](http://wincent.com/wiki/ASTs). Although I'm using it to produce help documentation the design is general enough to be used in any situation where you want to transform text from one format to another. All this means that it is a tool that could end up proving quite useful.
 
 ## The output
 
-It's been very gratifying over the last few days to see it finally come to the point where I can start leveraging it for use in my own applications. [Click here for a screenshot](http://www.wincent.com/a/about/wincent/weblog/hextrapolate_help_screenshot.png) of the help pages for [Hextrapolate](https://hex.wincent.com).
+It's been very gratifying over the last few days to see it finally come to the point where I can start leveraging it for use in my own applications. [Click here for a screenshot](http://wincent.com/a/about/wincent/weblog/hextrapolate_help_screenshot.png) of the help pages for [Hextrapolate](https://hex.wincent.com).
 
-I want the documentation to look beautiful to the user, so the style sheets are based on the current Apple look and feel in [Tiger](http://www.wincent.com/wiki/Tiger). But I want the [HTML](http://www.wincent.com/wiki/HTML) source to look beautiful as well; this is achieved principally through careful design of the [HTML](http://www.wincent.com/wiki/HTML)/[CSS](http://www.wincent.com/wiki/CSS) to minimize the amount of clutter in the markup, and then by cleaning up the whitespace using [Tidy](http://www.wincent.com/wiki/Tidy):
+I want the documentation to look beautiful to the user, so the style sheets are based on the current Apple look and feel in [Tiger](http://wincent.com/wiki/Tiger). But I want the [HTML](http://wincent.com/wiki/HTML) source to look beautiful as well; this is achieved principally through careful design of the [HTML](http://wincent.com/wiki/HTML)/[CSS](http://wincent.com/wiki/CSS) to minimize the amount of clutter in the markup, and then by cleaning up the whitespace using [Tidy](http://wincent.com/wiki/Tidy):
 
     <html>
     <head>
@@ -62,7 +62,7 @@ Below you can see the Walrus source used to produce the document. Things to note
 -   The `#def` directive for defining blocks of material.
 -   The `#set` directive for assigning values to placeholders.
 -   Incorporating the value of a placeholder using the `$placeholder` syntax; note that placeholders can optionally accept parameters and be nested inside other placeholders.
--   The ability to use [Textile](http://www.wincent.com/wiki/Textile)-like markup in the documentation.
+-   The ability to use [Textile](http://wincent.com/wiki/Textile)-like markup in the documentation.
     -   This is not part of the Walrus core itself but is easily layered on top.
     -   I'm using backticks (`` ` ``) instead of hash/pound (`#`) to indicate numbered lists; this is because hash/pound has special meaning in both Walrus and Textile markup so it is much more comfortable to simply use a different character rather than trying to escape it.
 
@@ -230,7 +230,7 @@ In other words, most of the time you only have to focus on the true _content_ of
 
 ### The "PHP" model
 
-So how is this different from the traditional [PHP](http://www.wincent.com/wiki/PHP)-style model of template re-use? In that model you define a master container and then you split off common elements into separate documents (header, footer etc). Each page basically looks like this:
+So how is this different from the traditional [PHP](http://wincent.com/wiki/PHP)-style model of template re-use? In that model you define a master container and then you split off common elements into separate documents (header, footer etc). Each page basically looks like this:
 
     include('header')
     ...
@@ -257,7 +257,7 @@ Sounds nice, but one day you decide that you want to show a sidebar on the other
 
 ### Object-orientation to the rescue
 
-If you are a [Ruby](http://www.wincent.com/wiki/Ruby) or [Objective-C](http://www.wincent.com/wiki/Objective-C) programmer then you already know the solution to this problem: you need an inheritance hierarchy. Common elements move "up" in the hierarchy (towards the root) where they can be easily inherited. Specialized elements move "down" in the hierarchy as overrides. In this way you keep things [DRY](http://www.wincent.com/wiki/DRY); you don't repeat yourself but instead ensure that information/behaviour is embodied at one and only one place in the hierarchy.
+If you are a [Ruby](http://wincent.com/wiki/Ruby) or [Objective-C](http://wincent.com/wiki/Objective-C) programmer then you already know the solution to this problem: you need an inheritance hierarchy. Common elements move "up" in the hierarchy (towards the root) where they can be easily inherited. Specialized elements move "down" in the hierarchy as overrides. In this way you keep things [DRY](http://wincent.com/wiki/DRY); you don't repeat yourself but instead ensure that information/behaviour is embodied at one and only one place in the hierarchy.
 
 This idea is equally applicable to documents, not just to programming. The conundrum faced by the PHP developer in the previous section would be addressed using object-oriented templating using a class hierarchy like the following:
 

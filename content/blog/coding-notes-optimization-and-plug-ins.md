@@ -9,7 +9,7 @@ Computers are getting faster and faster all the time. Often when I have to make 
 
 This doesn't mean you can throw efficiency concerns out the window. When you see an opportunity to make something faster without losing maintainability you should take it, especially if it's an easy change to make. It's good to get in the habit of writing code that executes quickly.
 
-Yesterday I had a situation where I did have to do some optimization. [Synergy Advance](http://www.wincent.com/a/products/synergy-advance/) has the ability to do some fancy stuff with the Dock icon. But I found that compositing a non-trival amount of stuff multiple times per second was using over 40% of one CPU. Ouch. Turn off the bells and whistles and CPU usage dropped back down below 1% again. But I like bells and whistles. After optimization it was using less than 1% of one CPU even with everything turned on. A case of optimization the even Knuth would agree with.
+Yesterday I had a situation where I did have to do some optimization. [Synergy Advance](http://wincent.com/a/products/synergy-advance/) has the ability to do some fancy stuff with the Dock icon. But I found that compositing a non-trival amount of stuff multiple times per second was using over 40% of one CPU. Ouch. Turn off the bells and whistles and CPU usage dropped back down below 1% again. But I like bells and whistles. After optimization it was using less than 1% of one CPU even with everything turned on. A case of optimization the even Knuth would agree with.
 
 #### Plug-ins
 

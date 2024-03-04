@@ -3,15 +3,15 @@ title: Why functional programming
 tags: blog
 ---
 
-So in my spare time I've started learning [Haskell](http://www.wincent.com/wiki/Haskell) because I think it's the right time to learn [functional programming](http://www.wincent.com/wiki/functional%20programming).
+So in my spare time I've started learning [Haskell](http://wincent.com/wiki/Haskell) because I think it's the right time to learn [functional programming](http://wincent.com/wiki/functional%20programming).
 
-I started thinking about this almost exactly one year ago when I read [this post](http://codemines.blogspot.com/2006/09/another-thread-on-threads.html) by [Mark Bessey](http://codemines.blogspot.com/), a former [Apple](http://www.wincent.com/wiki/Apple) employee that used to [work with](http://www.friday.com/bbum/2006/09/03/into-the-codemines/) [Bill Bumgarner](http://www.friday.com/bbum) on [Xcode](http://www.wincent.com/wiki/Xcode):
+I started thinking about this almost exactly one year ago when I read [this post](http://codemines.blogspot.com/2006/09/another-thread-on-threads.html) by [Mark Bessey](http://codemines.blogspot.com/), a former [Apple](http://wincent.com/wiki/Apple) employee that used to [work with](http://www.friday.com/bbum/2006/09/03/into-the-codemines/) [Bill Bumgarner](http://www.friday.com/bbum) on [Xcode](http://wincent.com/wiki/Xcode):
 
 > When really massively-parallel systems start to become more common, the programming model will have to change. The simplicity of implementation of the shared-memory model will inevitably give way to more explicitly compartmentalized models. What languages you'll likely use to program these beasts is an interesting question - most likely, it'll be a functional language, something like Haskell, or Erlang. I've been lax in getting up to speed on functional programming, and I'm going to make an effort to do better. I recommend that you do the same.
 
 It's worth reading the [entire article](http://codemines.blogspot.com/2006/09/another-thread-on-threads.html), as well as the [preceding](http://codemines.blogspot.com/2006/09/hell-is-multi-threaded-c-program.html) [parts](http://codemines.blogspot.com/2006/08/now-they-have-two-problems.html).
 
-But my basic gut feeling is that Mark could very well be right. While Apple continues to improve their toolset, [APIs](http://www.wincent.com/wiki/APIs) and [Objective-C](http://www.wincent.com/wiki/Objective-C) itself to make it easier to write threaded programs (some details of which are already known, and others we can't talk about in public until the wraps are off Leopard), the fundamental problem is that massively-parallel consumer systems are going to start arriving much faster than we're able to improve our threaded programming techniques.
+But my basic gut feeling is that Mark could very well be right. While Apple continues to improve their toolset, [APIs](http://wincent.com/wiki/APIs) and [Objective-C](http://wincent.com/wiki/Objective-C) itself to make it easier to write threaded programs (some details of which are already known, and others we can't talk about in public until the wraps are off Leopard), the fundamental problem is that massively-parallel consumer systems are going to start arriving much faster than we're able to improve our threaded programming techniques.
 
 8-core consumer machines are already readily available; expect 16-core machines in the near future. The recent trend is clear that ongoing Moore's Law improvements are less and less about clock speed increases and more and more about increasing the number of cores and reducing the power consumption (performance per watt). Life would certainly be simpler if CPU performance had continued to increase purely from clock speed gains, but sadly it's already evident that that particular avenue for advancement is getting narrower and narrower.
 
@@ -38,7 +38,7 @@ Functional programming offers an exit, freeing us from thinking about those impl
     fac 0 = 1
     fac n = fac (n - 1) * n
 
-And a comparable implementation in an imperative language, in this case [Ruby](http://www.wincent.com/wiki/Ruby):
+And a comparable implementation in an imperative language, in this case [Ruby](http://wincent.com/wiki/Ruby):
 
     def fac n
       n == 0 ? 1 : fac(n - 1) * n
@@ -72,4 +72,4 @@ So we're going to see the number of cores go up exponentially in the future and 
 
 -   Companies like Apple will continue to improve their frameworks, languages and tools to make it easier for programmers to do the right thing with respect to threads, and harder to do the wrong thing. Things like garbage collection help to address a bunch of thread-related memory management problems; monolithic APIs like Core Data are great for doing the "heavy lifting" and Apple is free to implement infrastructure there behind the API which works well on multiple cores (ditto for any of the "high-performance" APIs such as Core Image and friends) .
 -   Programmers will have to learn to distribute work across multiple processes, not multiple threads, because in many cases this will be more scalable and in most it will be more robust.
--   Those supporting processes which don't need to interact with the user interface will probably be best written in a functional programming language, where the compiler can take on a large part of making the most of the opportunities for parallelism on a multi-core machine. (Even though there are already language bindings for wedding together Haskell and C code, I still expect most UI-level code on [Mac OS X](http://www.wincent.com/wiki/Mac%20OS%20X) to be written in Objective-C, if for no other reason than that's what the frameworks do and will use, and that's where the impedance match is.)
+-   Those supporting processes which don't need to interact with the user interface will probably be best written in a functional programming language, where the compiler can take on a large part of making the most of the opportunities for parallelism on a multi-core machine. (Even though there are already language bindings for wedding together Haskell and C code, I still expect most UI-level code on [Mac OS X](http://wincent.com/wiki/Mac%20OS%20X) to be written in Objective-C, if for no other reason than that's what the frameworks do and will use, and that's where the impedance match is.)

@@ -3,7 +3,7 @@ title: Bootable ZFS
 tags: blog
 ---
 
-It's nice to have [official confirmation](http://trac.macosforge.org/projects/zfs/wiki/faq) from an Apple employee that progress is being made towards making [ZFS](http://www.wincent.com/wiki/ZFS) an option for formatting [Mac OS X](http://www.wincent.com/wiki/Mac%20OS%20X) startup disks:
+It's nice to have [official confirmation](http://trac.macosforge.org/projects/zfs/wiki/faq) from an Apple employee that progress is being made towards making [ZFS](http://wincent.com/wiki/ZFS) an option for formatting [Mac OS X](http://wincent.com/wiki/Mac%20OS%20X) startup disks:
 
 > **Can I boot off of ZFS?** Not yet but we are working on it. Since booting off of ZFS requires changes to other parts of the system we won't likely be able to release it in a magical tarball. However our goal is to be able to have it available for the next OS X release and sooner if we can.
 

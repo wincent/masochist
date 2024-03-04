@@ -1,5 +1,6 @@
 ---
 tags: wiki
+title: Screencasts
 ---
 
 [Screencasting](/wiki/Screencasting) is the process of capturing the video (and possibly audio) output of the computer for publication on the Internet.
@@ -10,7 +11,7 @@ Example screencasts:
 
 An older [screencasts](/wiki/screencasts) archive can be found at:
 
--   http://www.wincent.com/a/about/wincent/weblog/archives/screencasts/
+-   http://wincent.com/a/about/wincent/weblog/archives/screencasts/
 
 # See also
 

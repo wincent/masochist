@@ -3,7 +3,7 @@ title: PayPal breakages
 tags: blog
 ---
 
-So I just found out that when PayPal rolled out their new website they [broke all of my payment links](http://www.wincent.com/a/news/archives/2007/10/paypal_rolls_ou.php). It looks like it took as many as 9 hours for a user to report this to me, and I don't know how many sales I lost. This couldn't happen at a worse time seeing as only yesterday I rolled out a new version of Synergy; if you're a developer (and I presume most of the people who read this weblog are) then you'll know that it's release day when you see your biggest downloads and sales.
+So I just found out that when PayPal rolled out their new website they [broke all of my payment links](http://wincent.com/a/news/archives/2007/10/paypal_rolls_ou.php). It looks like it took as many as 9 hours for a user to report this to me, and I don't know how many sales I lost. This couldn't happen at a worse time seeing as only yesterday I rolled out a new version of Synergy; if you're a developer (and I presume most of the people who read this weblog are) then you'll know that it's release day when you see your biggest downloads and sales.
 
 The first thing I did was go to their "link generation wizard" and create some new links to see if there were any material differences. Links which used to start
 

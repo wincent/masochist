@@ -3,7 +3,7 @@ title: Xcode "Input/Output Files" bug
 tags: blog
 ---
 
-The other day [I was lamenting](http://www.wincent.com/a/about/wincent/weblog/archives/2006/02/clicketyclick.php) that sometimes I spend far too much time doing non-coding tasks in Xcode when I'd rather be churning out reams of beautifully syntax highlighted, immaculately indented and [wrapped](http://www.wincent.com/a/about/wincent/weblog/archives/2006/02/to_wrap_or_not.php) Objective-C code. Today's non-coding efforts (requiring a couple of hours) were directed against the infamous "Input/Output Files Dependency Bug". I say "infamous" because it's a theme which keeps cropping up on the Xcode Users mailing list.
+The other day [I was lamenting](http://wincent.com/a/about/wincent/weblog/archives/2006/02/clicketyclick.php) that sometimes I spend far too much time doing non-coding tasks in Xcode when I'd rather be churning out reams of beautifully syntax highlighted, immaculately indented and [wrapped](http://wincent.com/a/about/wincent/weblog/archives/2006/02/to_wrap_or_not.php) Objective-C code. Today's non-coding efforts (requiring a couple of hours) were directed against the infamous "Input/Output Files Dependency Bug". I say "infamous" because it's a theme which keeps cropping up on the Xcode Users mailing list.
 
 ### The bug
 
@@ -17,7 +17,7 @@ In short, the behavior is entirely inconsistent, utterly baffling, and annoying.
 
 ### The workaround
 
-I've actually [written about this little bug before](http://www.wincent.com/a/about/wincent/weblog/archives/2006/02/two_annoying_xc.php). About 9 days ago I implemented a workaround that functioned perfectly but which still struck me as an ugly kludge: I had my shell script check the modification dates and do the comparison that Xcode seemingly couldn't do itself.
+I've actually [written about this little bug before](http://wincent.com/a/about/wincent/weblog/archives/2006/02/two_annoying_xc.php). About 9 days ago I implemented a workaround that functioned perfectly but which still struck me as an ugly kludge: I had my shell script check the modification dates and do the comparison that Xcode seemingly couldn't do itself.
 
 Today, sick of checking my shell scripts in various projects for ones which mysteriously worked and others which didn't, I stumbled across the already-mentioned environment variables which pass Input and Output Files to shell scripts. This meant I could throw out my hard-coded kludge and replace it with a generic script that reads those environment variables and does the comparison. Its output looks like this:
 

@@ -7,6 +7,6 @@ We now have confirmation that the problem described in bug \#636 is caused by st
 
 See:
 
-http://www.wincent.com/a/support/bugs/show\_bug.cgi?id=636
+http://wincent.com/a/support/bugs/show\_bug.cgi?id=636
 
 Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;

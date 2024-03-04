@@ -5,20 +5,20 @@ tags: blog
 
 > Jesus H. Christ, it must suck giant wet donkey balls to be stuck on an archaic OS where you need to be dropping into the terminal and tweaking configuration files and compiling shit all the time.
 
-Can you guess the "archaic" OS that Pilgrim is [talking about](http://diveintomark.org/archives/2007/11/11/installing-mysql-on-ubuntu)? None other than [Leopard](http://www.wincent.com/wiki/Leopard).
+Can you guess the "archaic" OS that Pilgrim is [talking about](http://diveintomark.org/archives/2007/11/11/installing-mysql-on-ubuntu)? None other than [Leopard](http://wincent.com/wiki/Leopard).
 
 > I hope the translucent menu bar is worth it.
 
 Yeah, pretty much.
 
-The article itself is mostly troll but there is one seed of truth underneath it all: [MySQL](http://www.wincent.com/wiki/MySQL) _is_ unnecessarily hard to install on Leopard. Of course, it's still not that hard. This should be enough:
+The article itself is mostly troll but there is one seed of truth underneath it all: [MySQL](http://wincent.com/wiki/MySQL) _is_ unnecessarily hard to install on Leopard. Of course, it's still not that hard. This should be enough:
 
     # from inside the source tree
     ./configure --prefix=/usr/local/mysql &&
     make test &&
     sudo make install
 
-In other words basically the exact same steps that work for any open source project out there. MySQL will hopefully update their binary installers soon so that even that much [commandline](http://www.wincent.com/wiki/commandline) interaction can be dispensed with.
+In other words basically the exact same steps that work for any open source project out there. MySQL will hopefully update their binary installers soon so that even that much [commandline](http://wincent.com/wiki/commandline) interaction can be dispensed with.
 
 But in short, Pilgrim is exaggerating and most of his complaints are total non-issues; why?
 
@@ -28,7 +28,7 @@ The security issues might be a concern if you run a server on the public Interne
 
 The launch-at-startup behaviour is a non-issue too. We're talking about desktop machines here, not always-on servers. Automatically launching MySQL at startup is easily enough done, and it will be easier with the binary installer, but why would you want to do it?
 
-I'll bet that most people installing MySQL on their Mac OS X desktop machines are [Rails](http://www.wincent.com/wiki/Rails) developers (or similar) who want to do local testing. For such people starting up is a simple matter of `sudo -b mysqld_safe` at the start of their development session. Launching at startup is a waste of time; do you really think that those people are connected to their MySQL database from the very first minute that they power up their machine? Do these same people auto-launch everything in their Applications folder every time they log in "just in case" they need it later on?
+I'll bet that most people installing MySQL on their Mac OS X desktop machines are [Rails](http://wincent.com/wiki/Rails) developers (or similar) who want to do local testing. For such people starting up is a simple matter of `sudo -b mysqld_safe` at the start of their development session. Launching at startup is a waste of time; do you really think that those people are connected to their MySQL database from the very first minute that they power up their machine? Do these same people auto-launch everything in their Applications folder every time they log in "just in case" they need it later on?
 
 And those horrendous ADC terms and conditions. Every copy of Mac OS X comes with the Xcode Tools so Pilgrim's complaint is irrelevant; membership is not required nor is submitting your personal information to Apple.
 

@@ -3,7 +3,7 @@ title: Parser generator update
 tags: blog
 ---
 
-One of the things that's been so good about [writing the parser generator](http://www.wincent.com/a/about/wincent/weblog/archives/2007/01/writing_a_parse.php) [for Walrus](http://www.wincent.com/a/about/wincent/weblog/archives/2007/02/abstract_syntax.php) is that it has made the code much more flexible, much easier to develop iteratively. In my original design I had a hand-coded parser and a simple grammar that imposed a number of restrictions to make the parser's job easier:
+One of the things that's been so good about [writing the parser generator](http://wincent.com/a/about/wincent/weblog/archives/2007/01/writing_a_parse.php) [for Walrus](http://wincent.com/a/about/wincent/weblog/archives/2007/02/abstract_syntax.php) is that it has made the code much more flexible, much easier to develop iteratively. In my original design I had a hand-coded parser and a simple grammar that imposed a number of restrictions to make the parser's job easier:
 
 -   There were only three characters with special meaning, `#`, `$` and `\`.
 -   The parser was strictly line-oriented:
@@ -48,7 +48,7 @@ Apart from being quicker and less error prone than hand-coded the parser, the ge
 
 As the grammar complexity increases, the speed gap between the memoizing and non-memoizing cases closes. I've now got 202 specs: with memoizing the parser takes 6.411 seconds to run them; without memoizing the runtime is 5.162 seconds. That's with quite short input texts; I expect the gap to close even more as the input size grows.
 
-This performance improvement comes at a time when I had made [some changes](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/2007/02/walrus_r44_6_items_changed.php) imposing stricter identification of cache hits and misses in the memoizer (making hits less likely but making sure that the parse tree generated with memoizing turned on really is identical to that produced with memoizing turned off). At the moment a run yields 3,956 hits and 26,749 misses. I'll be interested to watch those numbers when I try large input texts.
+This performance improvement comes at a time when I had made [some changes](http://wincent.com/a/about/wincent/weblog/svn-log/archives/2007/02/walrus_r44_6_items_changed.php) imposing stricter identification of cache hits and misses in the memoizer (making hits less likely but making sure that the parse tree generated with memoizing turned on really is identical to that produced with memoizing turned off). At the moment a run yields 3,956 hits and 26,749 misses. I'll be interested to watch those numbers when I try large input texts.
 
 ### Walrus grammar enhancements
 
@@ -105,6 +105,6 @@ The object-oriented design of the system made it very quick to add this behaviou
 
 #### Ability to override skipping parslet for specific rules
 
-Rather than just specifying a [default parslet](http://www.wincent.com/a/about/wincent/weblog/archives/2007/02/abstract_syntax.php) for skipping between tokens, you can now override that on a per-rule basis. This means either specifying a different parslet for that rule or specifying `nil` to entirely turn off skipping for that rule.
+Rather than just specifying a [default parslet](http://wincent.com/a/about/wincent/weblog/archives/2007/02/abstract_syntax.php) for skipping between tokens, you can now override that on a per-rule basis. This means either specifying a different parslet for that rule or specifying `nil` to entirely turn off skipping for that rule.
 
 As an example, consider a scenario in which you want your default inter-token parslet to skip over newlines and whitespace (where "whitespace" is spaces, tabs but not newlines). Then imagine a rule where you want to skip only whitespace not newlines. The solution is to override the skipping token for that rule. I've used this in the Walrus grammar for parsing directives (which should not span multiple lines unless an explicit line continuation marker is used) and for parsing things like multi-line comments and string literals (where I don't want any skipping at all).

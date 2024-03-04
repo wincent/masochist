@@ -3,7 +3,7 @@ title: Upcoming DNS changes
 tags: blog
 ---
 
-In preparation for [the server move](http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php) at the end of this month I'll soon be migrating DNS servers.
+In preparation for [the server move](http://wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php) at the end of this month I'll soon be migrating DNS servers.
 
 I'll be doing everything I can to minimize downtime, and hopefully come close to eliminating it entirely as there will be a one week overlap period in which both the old and the new servers are simultaneously online. But in the spirit of keeping people informed, this post is about the first step in the process: the DNS changes. The old server will continue to run, the IP addresses won't change (yet), but the authoritative DNS servers will be changed from my old to my new host.
 

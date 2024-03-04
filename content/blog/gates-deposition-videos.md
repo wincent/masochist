@@ -3,7 +3,7 @@ title: Gates deposition videos
 tags: blog
 ---
 
-A few days ago a [Groklaw article](http://www.groklaw.net/article.php?story=20070201160753532) drew my attention to the availability of [video footage](http://iowaconsumercase.org/lc-8.html) from Bill Gate's 1998 anti-trust case deposition. I promptly used [MPlayer](http://www.wincent.com/wiki/MPlayer) to [capture the MMS streams to disk](http://www.wincent.com/wiki/Capturing_an_MMS_stream_to_disk) and over the last few days I've been allowing the footage (over a dozen hours) to play in the background while I work.
+A few days ago a [Groklaw article](http://www.groklaw.net/article.php?story=20070201160753532) drew my attention to the availability of [video footage](http://iowaconsumercase.org/lc-8.html) from Bill Gate's 1998 anti-trust case deposition. I promptly used [MPlayer](http://wincent.com/wiki/MPlayer) to [capture the MMS streams to disk](http://wincent.com/wiki/Capturing_an_MMS_stream_to_disk) and over the last few days I've been allowing the footage (over a dozen hours) to play in the background while I work.
 
 It's truly amazing. I'd read [transcript excerpts](http://www.theregister.co.uk/1998/11/17/gates_video_not_a_beautiful/print.html) before but I'd never heard or seen more than a few seconds of the actual video or audio footage.
 

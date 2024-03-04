@@ -3,9 +3,9 @@ title: Comments on weblogs
 tags: blog
 ---
 
-As the question of comments on weblogs has [come up](http://www.wincent.com/a/about/wincent/weblog/archives/2007/06/wordpress_follo.php) I thought I'd post an explanation of why this weblog doesn't have comments.
+As the question of comments on weblogs has [come up](http://wincent.com/a/about/wincent/weblog/archives/2007/06/wordpress_follo.php) I thought I'd post an explanation of why this weblog doesn't have comments.
 
-[John Gruber](http://www.wincent.com/wiki/John%20Gruber), author of [Daring Fireball](http://www.wincent.com/wiki/Daring%20Fireball), had some interesting things to say on the topic in the "[Daring Fireball Live](http://www.macworld.com/weblogs/mwpodcast/2007/01/mwpod68/index.php)" podcast that was produced in Macworld San Francisco earlier this year. I've transcribed the relevant snippet from about the 55 minute mark, with some minor edits for clarity (seeing as this was a live, unscripted podcast and not polished writing):
+[John Gruber](http://wincent.com/wiki/John%20Gruber), author of [Daring Fireball](http://wincent.com/wiki/Daring%20Fireball), had some interesting things to say on the topic in the "[Daring Fireball Live](http://www.macworld.com/weblogs/mwpodcast/2007/01/mwpod68/index.php)" podcast that was produced in Macworld San Francisco earlier this year. I've transcribed the relevant snippet from about the 55 minute mark, with some minor edits for clarity (seeing as this was a live, unscripted podcast and not polished writing):
 
 > **Gruber:** One of the complaints I used to get all the time back in 2002, 2003 is, "You don't have comments on your website. You know your site is not really a blog because it doesn't have comments", and I would just email them back and say, "OK, it's not a blog".
 >
@@ -29,9 +29,9 @@ But another reason I have which John doesn't mention is that I'm simply not inte
 
 And as John says, it's not fear of people disagreeing with me. It's not that I wish to avoid criticism; it's that I think that the act of arguing is almost always a poor use of time (see [this image](http://carcino.gen.nz/images/index.php/00b9a680/463c5922); beware: it's politically incorrect): I say "A", you say "B", and in 99% of cases at the end of all this I continue believing "A" and you continue to believe "B". I figure that if people feel strongly enough about what I've written that they feel compelled to contact me then my email address (win@wincent.com) is plastered all over this website. In this way the feedback that does reach me tends to be the kind that I am more likely to be interested in. And as John says, if you want your comments to be public then there's the whole Internet out there.
 
-A particularly good example of this is the [storm-in-a-teacup](http://photomatt.net/2007/06/22/on-wp-security/) caused by my [WordPress article](http://www.wincent.com/a/about/wincent/weblog/archives/2007/06/wordpress_flaw.php). I criticize [WordPress](http://www.wincent.com/wiki/WordPress), the author provides a reasoned response, and then dozens of pseudo-anonymous observers decide to jump in on the discussion. I am just not interested in sinking down into the endless black well that this kind of discussion represents, and I am even less interested in actually _hosting_ such arguments on my own weblog.
+A particularly good example of this is the [storm-in-a-teacup](http://photomatt.net/2007/06/22/on-wp-security/) caused by my [WordPress article](http://wincent.com/a/about/wincent/weblog/archives/2007/06/wordpress_flaw.php). I criticize [WordPress](http://wincent.com/wiki/WordPress), the author provides a reasoned response, and then dozens of pseudo-anonymous observers decide to jump in on the discussion. I am just not interested in sinking down into the endless black well that this kind of discussion represents, and I am even less interested in actually _hosting_ such arguments on my own weblog.
 
-If I wanted an example of why I'm don't have comments on my weblog then I couldn't hope for a better example than [this case in point](http://photomatt.net/2007/06/22/on-wp-security/), being as it is a very pro-[WordPress](http://www.wincent.com/wiki/WordPress) site, and I had just criticized [WordPress](http://www.wincent.com/wiki/WordPress).
+If I wanted an example of why I'm don't have comments on my weblog then I couldn't hope for a better example than [this case in point](http://photomatt.net/2007/06/22/on-wp-security/), being as it is a very pro-[WordPress](http://wincent.com/wiki/WordPress) site, and I had just criticized [WordPress](http://wincent.com/wiki/WordPress).
 
 ### Insults
 
@@ -64,21 +64,21 @@ I have to take the blame for many of the misunderstandings evinced in many of th
 
 -   "I can see why it was necessary for him to link to his own KB, instead of just linking directly to wordpress.org"
 
-I often link to articles in the Knowledge Base rather than linking directly to an external site because it allows me to provide annotated links rather than plain ones, although in the case of the [WordPress](http://www.wincent.com/wiki/WordPress) there is nothing much to see (other than the [category link](http://www.wincent.com/wiki/Category:WordPress) which itself reveals quite a few WordPress-related articles).
+I often link to articles in the Knowledge Base rather than linking directly to an external site because it allows me to provide annotated links rather than plain ones, although in the case of the [WordPress](http://wincent.com/wiki/WordPress) there is nothing much to see (other than the [category link](http://wincent.com/wiki/Category:WordPress) which itself reveals quite a few WordPress-related articles).
 
 -   "Did the WP team steal his first born or something?"
 
 Lots of people got the impression that I was angry, "harsh" or "whining" and I didn't mean to convey either of those emotions. That's one of the problems of cold, dry text on the Internet without any accompanying extra-verbal clues such as tone of voice. I guess I should have been a little more careful with my tone.
 
-Another thing that people may not realize is that I was a [WP](http://www.wincent.com/wiki/WP) user for quite some time (from back around the 1.5 days up to but not including 2.1.3) and I did enjoy using it; it was just that the security thing started to exasperate me to the point where I decide to let it go. I actually switched to WP initially, like many others, because of the commercialization of [MT](http://www.wincent.com/wiki/MT). But when I set up the weblog for wincent.com I decided to use MT because it seemed technically superior for mission-critical applications whereas WP still seemed the best for personal or hobbyist use (and I continued to use it on personal projects).
+Another thing that people may not realize is that I was a [WP](http://wincent.com/wiki/WP) user for quite some time (from back around the 1.5 days up to but not including 2.1.3) and I did enjoy using it; it was just that the security thing started to exasperate me to the point where I decide to let it go. I actually switched to WP initially, like many others, because of the commercialization of [MT](http://wincent.com/wiki/MT). But when I set up the weblog for wincent.com I decided to use MT because it seemed technically superior for mission-critical applications whereas WP still seemed the best for personal or hobbyist use (and I continued to use it on personal projects).
 
 -   "He's also ignored the way you guys handle crises like security issues. You're generally open, honest and totally trustworthy."
 
-This misses the entire point of my post, which is _all about_ the handling of security issues. I've now explained this multiple times ([here](http://www.wincent.com/a/about/wincent/weblog/archives/2007/04/wordpress_213_b.php), [here](http://www.wincent.com/a/about/wincent/weblog/archives/2007/06/wordpress_flaw.php) and [here](http://www.wincent.com/a/about/wincent/weblog/archives/2007/06/wordpress_follo.php)).
+This misses the entire point of my post, which is _all about_ the handling of security issues. I've now explained this multiple times ([here](http://wincent.com/a/about/wincent/weblog/archives/2007/04/wordpress_213_b.php), [here](http://wincent.com/a/about/wincent/weblog/archives/2007/06/wordpress_flaw.php) and [here](http://wincent.com/a/about/wincent/weblog/archives/2007/06/wordpress_follo.php)).
 
 -   "I have tried MT and blogger before, but I simply find Wordpress easier to control and maintain."
 
-Yes, no arguments there. The WP upgrade process is much easier, especially when using [Subversion](http://www.wincent.com/wiki/Subversion) ([info](http://www.wincent.com/wiki/Upgrading_WordPress_using_Subversion)). The MT upgrade process is considerably more painful ([example](http://www.wincent.com/wiki/Upgrading_from_Movable_Type_version_3.34_to_3.35)). But MT's technical advantages (the ability to produce a totally static weblog) in my specific usage context make it the choice for me, despite its other problems.
+Yes, no arguments there. The WP upgrade process is much easier, especially when using [Subversion](http://wincent.com/wiki/Subversion) ([info](http://wincent.com/wiki/Upgrading_WordPress_using_Subversion)). The MT upgrade process is considerably more painful ([example](http://wincent.com/wiki/Upgrading_from_Movable_Type_version_3.34_to_3.35)). But MT's technical advantages (the ability to produce a totally static weblog) in my specific usage context make it the choice for me, despite its other problems.
 
 ### Totally mistaken
 
@@ -90,7 +90,7 @@ Related to the category of "misunderstandings" is the category of "totally mista
 -   "People like that will take potshots at WP, and you all out of some desperate hope to gain some traction."
 -   "Who wants to bet Wincent still uses IE6?"
 
-Well, I'm a [Mac OS X](http://www.wincent.com/wiki/Mac%20OS%20X) user, so no, I'm not "still using IE6", although my personal browser selection has little to do with the unrelated topic of web application security.
+Well, I'm a [Mac OS X](http://wincent.com/wiki/Mac%20OS%20X) user, so no, I'm not "still using IE6", although my personal browser selection has little to do with the unrelated topic of web application security.
 
 Many of these comments speculate about me trying to get attention through my post but that certainly wasn't my goal. I had no idea that Michael Tsai would pick up my article, and that from there it would reach Daring Fireball, and from there elicit a response from Matt. This was just me posting my opinions to my humble little weblog with its small readership. If I was still a WordPress user I would've had different goals and would've chosen different channels in an effort to get the WP team to tighten up their processes; but I am not a WP user and I merely wanted to spend five minutes penning a quick expression of my disappointment ("look, I decided to drop WordPress a while back and looks like things are continuing as they were before").
 
@@ -116,7 +116,7 @@ Ironic but not surprising given the number of organizations out there whose name
 
 The earliest appearance of the WordPress logo that I could find in [the archives](http://web.archive.org/web/*/http://wordpress.org) was back on [27 December 2005](http://web.archive.org/web/20051227053045/http://www.wordpress.org/).
 
-Looking back in [the archives](http://web.archive.org/web/*/http://wincent.com) for the Wincent logo the earliest appearance I could find was back on [27 September 2003](http://web.archive.org/web/20030927071700/http://www.wincent.com/).
+Looking back in [the archives](http://web.archive.org/web/*/http://wincent.com) for the Wincent logo the earliest appearance I could find was back on [27 September 2003](http://web.archive.org/web/20030927071700/http://wincent.com/).
 
 ### Rational responses
 
@@ -141,6 +141,6 @@ Things change, newer browsers gain market share, CSS support improves, and of co
 
 -   "With MT4 poised for release, you can prolly expect more of this kind of mudslinging."
 
-This again quite misses the point: I'm no [MT fanboy](http://www.wincent.com/wiki/MT%20fanboy), rather I am someone who has used both [MT](http://www.wincent.com/wiki/MT) and [WP](http://www.wincent.com/wiki/WP) and is disappointed with the approach to security taken by the [WP](http://www.wincent.com/wiki/WP) team. I recommend [MT](http://www.wincent.com/wiki/MT) for those for whom security is important, and I specifically abstain from recommending [WP](http://www.wincent.com/wiki/WP) to non-technical users who are unlikely to have the expertise to upgrade or realize the importance of doing so.
+This again quite misses the point: I'm no [MT fanboy](http://wincent.com/wiki/MT%20fanboy), rather I am someone who has used both [MT](http://wincent.com/wiki/MT) and [WP](http://wincent.com/wiki/WP) and is disappointed with the approach to security taken by the [WP](http://wincent.com/wiki/WP) team. I recommend [MT](http://wincent.com/wiki/MT) for those for whom security is important, and I specifically abstain from recommending [WP](http://wincent.com/wiki/WP) to non-technical users who are unlikely to have the expertise to upgrade or realize the importance of doing so.
 
-I personally am looking forward to the day when I am neither an [MT](http://www.wincent.com/wiki/MT) nor a [WP](http://www.wincent.com/wiki/WP) user. I am tired of running so many third party applications (forums, bug trackers, mailing lists, weblogs, wikis etc) and having to be constantly updating them, not to get features (that would be optional) but to patch security holes (not optional). For some time now I have been dedicating some of my spare time to learning [Rails](http://www.wincent.com/wiki/Rails) so that I can eventually replace _all_ of the third-party stuff I use with a single in-house solution; not a Swiss Army Knife of web applications that does everything all the other apps do, but an extremely simple, tailored solution that does exactly what I need and _nothing_ more. Then my third-party security concerns will be focussed on a single point of possible failure ([Rails](http://www.wincent.com/wiki/Rails) itself), and of course, my own code.
+I personally am looking forward to the day when I am neither an [MT](http://wincent.com/wiki/MT) nor a [WP](http://wincent.com/wiki/WP) user. I am tired of running so many third party applications (forums, bug trackers, mailing lists, weblogs, wikis etc) and having to be constantly updating them, not to get features (that would be optional) but to patch security holes (not optional). For some time now I have been dedicating some of my spare time to learning [Rails](http://wincent.com/wiki/Rails) so that I can eventually replace _all_ of the third-party stuff I use with a single in-house solution; not a Swiss Army Knife of web applications that does everything all the other apps do, but an extremely simple, tailored solution that does exactly what I need and _nothing_ more. Then my third-party security concerns will be focussed on a single point of possible failure ([Rails](http://wincent.com/wiki/Rails) itself), and of course, my own code.

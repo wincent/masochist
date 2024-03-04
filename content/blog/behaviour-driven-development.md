@@ -5,7 +5,7 @@ tags: blog
 
 Today I felt like showing off my stunning ignorance of Ruby on Rails by doing a screencast on Behaviour-Driven Development.
 
-[![](/system/images/legacy/bdd-screencast.png)](http://www.wincent.com/a/about/wincent/weblog/screencasts/BDD.mov)
+[![](/system/images/legacy/bdd-screencast.png)](http://wincent.com/a/about/wincent/weblog/screencasts/BDD.mov)
 
 Well, not really. Showing the world how slow and clumsy I am in Rails wasn't my prime objective (even though I did do a pretty good job of it!)
 
@@ -13,7 +13,7 @@ I'm parading my ignorance because I want to convey something about Behaviour-Dri
 
 Of course, it's not only good for beginners, even if that's where it really shines. With the help of autotest, an experienced coder can blaze ahead writing specs and code in parallel and getting continuous feedback. Even a beginner can get into a very quick spec-code-confirm cycle and get real work done very quickly.
 
-In fact, I wish that I could work this way in Objective-C too... I do try to use a continuous integration approach there, and I do run tests continuously in the background ([see this article for more details](http://www.wincent.com/a/about/wincent/weblog/archives/2007/04/test_process_im.php)), but Objective-C is a compiled language and that's always going to limit your turnaround time.
+In fact, I wish that I could work this way in Objective-C too... I do try to use a continuous integration approach there, and I do run tests continuously in the background ([see this article for more details](http://wincent.com/a/about/wincent/weblog/archives/2007/04/test_process_im.php)), but Objective-C is a compiled language and that's always going to limit your turnaround time.
 
 The screencast isn't perfect, but it's an accurate representation of the way you work in BDD. You think about the behaviour you want to implement, write specs to describe the behaviour, make assertions to confirm the behaviour is implemented, confirm that the specs fail (because you haven't written the code yet), _then_ write the code, and finally confirm that the specs now pass.
 

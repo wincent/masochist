@@ -3,7 +3,7 @@ title: Another new backup regimen, 4.33 years later
 tags: s3 blog
 ---
 
-It's been a while since [I last wrote](http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/new_backup_regi.php) about my backup regimen. Having suffered countless hard drive failures and episodes of mysterious filesystem corruption over the years, I'd learnt to approach the subject of backups fairly obsessively.
+It's been a while since [I last wrote](http://wincent.com/a/about/wincent/weblog/archives/2007/07/new_backup_regi.php) about my backup regimen. Having suffered countless hard drive failures and episodes of mysterious filesystem corruption over the years, I'd learnt to approach the subject of backups fairly obsessively.
 
 At its height, I backed up not only to external drives four times per day, but went so far as to burn an encrypted DVD of my home directory every single day. Nowadays, my sole machine is a MacBook Air (without a DVD burner), and while I continue to maintain a bootable backup on an external drive using the ever-reliable [SuperDuper!](/wiki/SuperDuper%21), the rest of my backups are now living on the [cloud](/wiki/cloud).
 

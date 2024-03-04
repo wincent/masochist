@@ -8,7 +8,7 @@ tags: blog
 Strong points:
 
 -   Very small and simple; not much code to it
--   Better type checking (via categories) than [most HOM implementations](http://www.wincent.com/a/about/wincent/weblog/archives/2006/08/thoughts_on_hig.php)
+-   Better type checking (via categories) than [most HOM implementations](http://wincent.com/a/about/wincent/weblog/archives/2006/08/thoughts_on_hig.php)
 
 Weak points:
 

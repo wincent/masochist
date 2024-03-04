@@ -3,7 +3,7 @@ title: Fighting GoDaddy
 tags: blog
 ---
 
-The [trick I previously described](http://www.wincent.com/a/about/wincent/weblog/archives/2006/08/darn_godaddy.php) for working around GoDaddy's galling [bait-and-switch scam](http://www.wincent.com/a/about/wincent/weblog/archives/2006/07/godaddy_scam.php) on private registrations no longer works. I tried to remove privacy on an expiring domain and then renew it, adding private registration, and GoDaddy's interface allows me to specify privacy in the lead-up to the checkout but on getting there there is no privacy in my cart and no apparent way to add it.
+The [trick I previously described](http://wincent.com/a/about/wincent/weblog/archives/2006/08/darn_godaddy.php) for working around GoDaddy's galling [bait-and-switch scam](http://wincent.com/a/about/wincent/weblog/archives/2006/07/godaddy_scam.php) on private registrations no longer works. I tried to remove privacy on an expiring domain and then renew it, adding private registration, and GoDaddy's interface allows me to specify privacy in the lead-up to the checkout but on getting there there is no privacy in my cart and no apparent way to add it.
 
 #### Updated workaround
 
@@ -14,6 +14,6 @@ The [trick I previously described](http://www.wincent.com/a/about/wincent/weblog
 
 #### Drawbacks
 
--   The total renewal price with privacy is [still too high](http://www.wincent.com/a/about/wincent/weblog/archives/2006/05/godaddys_renewa.php) (US$11.69) but still better than the ridiculous US$18.19 that GoDaddy wanted to charge.
+-   The total renewal price with privacy is [still too high](http://wincent.com/a/about/wincent/weblog/archives/2006/05/godaddys_renewa.php) (US$11.69) but still better than the ridiculous US$18.19 that GoDaddy wanted to charge.
 -   The workaround requires you to perform two transactions instead of one.
 -   Given that the workaround involves two separate transactions, your personal information is exposed in the public WHOIS database for a longer period of time; still only a number of minutes, but annoying nonetheless. An additional annoyance was that during the period of vulnerability GoDaddy/Domains by Proxy provided an out-of-date email address in the WHOIS registry (a real account, not a spam honey-pot address); I have no idea why they published this information, seeing as I updated that email address with both GoDaddy/Domans by Proxy long ago.

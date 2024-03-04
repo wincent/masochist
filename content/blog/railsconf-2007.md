@@ -5,7 +5,7 @@ tags: blog
 
 I've been a little surprised to see so little coverage of [RailsConf](http://conferences.oreillynet.com/rails/). There's be no hint of activity on the [official Rails weblog](http://weblog.rubyonrails.org/), and if I hadn't been reminded about it by a mention on [railscasts.com](http://railscasts.com) I would have entirely forgotten that it was taking place.
 
-So far the most interesting [coverage](http://www.oreillynet.com/conferences/blog/railsconf/) has been [this post](http://jroller.com/page/obie?entry=railsconf_2007_opening_keynote) by Obie Fernandez where he lets us know what was said about [Rails](http://www.wincent.com/wiki/Rails) 2.0:
+So far the most interesting [coverage](http://www.oreillynet.com/conferences/blog/railsconf/) has been [this post](http://jroller.com/page/obie?entry=railsconf_2007_opening_keynote) by Obie Fernandez where he lets us know what was said about [Rails](http://wincent.com/wiki/Rails) 2.0:
 
 1.  Breakpoints are back AND drop-in debugging is now supported! The debugging console pops up right in the Mongrel process. Looks really good and powerful. David says, "Kent \#Sibilev deserves a world of thanks for getting this to work.
 2.  HTTP performance improvements. The \_include_tags now have a :cache=&gt;true option that combines JS and CSS files together and gzips them to drastically improve performance.
@@ -17,7 +17,7 @@ So far the most interesting [coverage](http://www.oreillynet.com/conferences/blo
 8.  MIT license assumed now. Plugin generator script adds the MIT license by default.
 9.  Spring cleaning. Improvements to basic Rails code and lots of 1.2 deprecations being moved out completely now.
 
-Of these, the performance improvements are always welcome, the debugging stuff could prove useful, the improved migrations sound appealing, but the thing which I most care about is the [API](http://www.wincent.com/wiki/API): will there be a lot of breakage in the move to 2.0? (And for that matter, what's the timeline on 2.0 coming out?)
+Of these, the performance improvements are always welcome, the debugging stuff could prove useful, the improved migrations sound appealing, but the thing which I most care about is the [API](http://wincent.com/wiki/API): will there be a lot of breakage in the move to 2.0? (And for that matter, what's the timeline on 2.0 coming out?)
 
 ### Update
 

@@ -5,7 +5,7 @@ tags: blog
 
 ![](/system/images/legacy/8cores.png)
 
-And I want [one](http://www.apple.com/macpro/). Four times as many cores as my current iMac, and each core nearly twice as fast; it wouldn't surprise me if the thing was eight times faster in all. Would be nice to get those [17 minute builds](http://www.wincent.com/a/about/wincent/weblog/archives/2007/04/the_first_syner.php) down to 2 minutes!
+And I want [one](http://www.apple.com/macpro/). Four times as many cores as my current iMac, and each core nearly twice as fast; it wouldn't surprise me if the thing was eight times faster in all. Would be nice to get those [17 minute builds](http://wincent.com/a/about/wincent/weblog/archives/2007/04/the_first_syner.php) down to 2 minutes!
 
 #### Update
 

@@ -11,7 +11,7 @@ Where `external.host.name` was the name corresponding to the external (world-fac
 
 I confirmed that mail received from friends running Mail.app on Mac OS X also included the IP address of their internal networks, yet when I checked the headers produced by a different Mac OS X client (Entourage) the IP address wasn't present.
 
-So in order to get to the bottom of this I decided to rule out Mail.app and connect directly to my server using the command line as [described here](http://www.wincent.com/wiki/Testing_services_with_telnet).
+So in order to get to the bottom of this I decided to rule out Mail.app and connect directly to my server using the command line as [described here](http://wincent.com/wiki/Testing_services_with_telnet).
 
 #### The verdict
 

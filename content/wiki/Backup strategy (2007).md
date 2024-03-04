@@ -1,5 +1,6 @@
 ---
 tags: macos wiki backup
+title: Backup strategy (2007)
 ---
 
 # First lines of defense (pre-backup)
@@ -57,7 +58,7 @@ Encryption
 
 ## Local links
 
--   An article about my new backup strategy as of July 2007: <http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/new_backup_regi.php>
+-   An article about my new backup strategy as of July 2007: <http://wincent.com/a/about/wincent/weblog/archives/2007/07/new_backup_regi.php>
 
 # See also
 

@@ -33,7 +33,7 @@ I am still too annoyed about this — and too busy trying to get the next previe
 
 #### Update: March 2007
 
-For some more insights into the different build settings for processing and preprocessing `Info.plist` files see [this Knowledge base article](http://www.wincent.com/wiki/Setting_up_a_nightly_build_system).
+For some more insights into the different build settings for processing and preprocessing `Info.plist` files see [this Knowledge base article](http://wincent.com/wiki/Setting_up_a_nightly_build_system).
 
 ### Annoying bug \#2
 
@@ -51,4 +51,4 @@ These little bugs are annoying because they make you feel like you tools are wor
 
 But don't get me wrong, apart from little faults like this, I love Xcode. With each release it gets faster, more stable, more flexible. Most days it gives me no trouble at all and allows me to manage large and complex projects with aplomb.
 
-And I tip my hat to Apple for making these tools available for free (true, I pay Apple \$500 a year for membership in the [Apple Developer Connection](http://connect.apple.com/) but anybody can get the tools for free by signing up for a free ADC "Online" account). If they didn't offer them for free then I never would have decided to try out Project Builder four years ago and learn Cocoa (the result was [Synergy](http://www.wincent.com/a/products/synergy-classic/)). In general, both their tools and their documentation are of absolutely outstanding quality. It's one of the reasons why I can't stomach the idea of ever switching to Windows and closed, proprietary, non-free tools.
+And I tip my hat to Apple for making these tools available for free (true, I pay Apple \$500 a year for membership in the [Apple Developer Connection](http://connect.apple.com/) but anybody can get the tools for free by signing up for a free ADC "Online" account). If they didn't offer them for free then I never would have decided to try out Project Builder four years ago and learn Cocoa (the result was [Synergy](http://wincent.com/a/products/synergy-classic/)). In general, both their tools and their documentation are of absolutely outstanding quality. It's one of the reasons why I can't stomach the idea of ever switching to Windows and closed, proprietary, non-free tools.

@@ -3,7 +3,7 @@ title: Involuntary Reboot Log #20
 tags: involuntary.reboot.log blog
 ---
 
-Another hard reset, this time not due to a fault in [Mac OS X](http://www.wincent.com/wiki/Mac%20OS%20X) but rather due to my iMac's flakey construction (checking a USB cable at the back of the enclosure resulted in the wonky power socket temporarily cutting power to the machine). Another half hour lost while rebooting from the install DVD and running Disk First Aid.
+Another hard reset, this time not due to a fault in [Mac OS X](http://wincent.com/wiki/Mac%20OS%20X) but rather due to my iMac's flakey construction (checking a USB cable at the back of the enclosure resulted in the wonky power socket temporarily cutting power to the machine). Another half hour lost while rebooting from the install DVD and running Disk First Aid.
 
 On a related note, my external USB speakers (SoundSticks) are no longer recognized by the system.
 

@@ -14,7 +14,7 @@ There are number of possible consumer/producer models in single and multi-thread
 3.  **Multi-threaded, single producer/single consumer:** a single thread (such as the main thread) is responsible for adding items to the queue and there is a single worker thread in the background acting as a consumer (removing items from the queue).
 4.  **Multi-threaded, multiple producers/single consumer:** multiple threads add items to the queue (producers) but only one thread acts a consumer (removing items from the queue).
 
-Yesterday I [wrote about my threading work](http://www.wincent.com/a/about/wincent/weblog/archives/2006/03/threading_nicet.php) on Synergy Advance and commented:
+Yesterday I [wrote about my threading work](http://wincent.com/a/about/wincent/weblog/archives/2006/03/threading_nicet.php) on Synergy Advance and commented:
 
 > My next step is to serialize this (there's no good argument for having multiple threads communicating with iTunes at once; it will be much better to have a single worker thread handle all communication using a one-at-a-time queuing model) but it should be fairly easy now that I've written the WOQueue class.
 

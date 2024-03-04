@@ -3,7 +3,7 @@ title: Automated stripping
 tags: blog
 ---
 
-Back from the conference. Today I addressed the one remaining issue in my build chain ([previously mentioned here](http://www.wincent.com/a/about/wincent/weblog/archives/2006/03/dstroot_install.php)): an automated process to produce release builds with debugging symbols stripped while keeping an unstripped copy locally for the purposes of deciphering crash reports.
+Back from the conference. Today I addressed the one remaining issue in my build chain ([previously mentioned here](http://wincent.com/a/about/wincent/weblog/archives/2006/03/dstroot_install.php)): an automated process to produce release builds with debugging symbols stripped while keeping an unstripped copy locally for the purposes of deciphering crash reports.
 
 So, as far as can tell, my many weeks of work beating my Xcode tool chain into shape are at an end. A full clean and build of Synergy Advance (measured using `time xcodebuild clean build -target "Synergy Advance.app" -configuration Release`) takes about six and a half minutes. The total number of lines of code is in the vicinity of 120,000 lines (for the application itself, supporting frameworks, plug-ins and unit tests).
 

@@ -25,7 +25,7 @@ No need for "FileMaker Pro Mobile 7" (which runs on Palm OS and Pocket PC); just
 
 #### My own naming policies
 
-If you've seen my own [products](http://www.wincent.com/) you'll be quick to point out that perhaps I'm not practising what I'm preaching. But there is a method in my madness, as well as some mistakes and some lessons learned.
+If you've seen my own [products](http://wincent.com/) you'll be quick to point out that perhaps I'm not practising what I'm preaching. But there is a method in my madness, as well as some mistakes and some lessons learned.
 
 ##### Synergy
 
@@ -41,7 +41,7 @@ When I started work on this new product I needed a new name. The app works in th
 
 I wasn't feeling very creative the day I came up with this name. "Wincent" + "Switch" = "WinSwitch". I guess it serves its purpose, even if the name doesn't have a lot of intrinsic beauty. One downside that I soon discovered was that many people associate the prefix "Win" with "Windows" and for some reason consider it offensive and insulting that I name my product that way... I've received angry emails, threats and abuse about it, believe it or not. I guess this is the response of what's known as the (very) vocal minority.
 
-This wasn't the first product I've made that starts with "Win" and it won't be the last (if I release [this product](http://www.wincent.com/a/about/wincent/weblog/archives/2005/05/aegizmo_aebuild.php) it will most likely be called WinGizmo), but as a general rule I'll be avoiding names like this where practical in the future. The Mac audience is very particular about these things...
+This wasn't the first product I've made that starts with "Win" and it won't be the last (if I release [this product](http://wincent.com/a/about/wincent/weblog/archives/2005/05/aegizmo_aebuild.php) it will most likely be called WinGizmo), but as a general rule I'll be avoiding names like this where practical in the future. The Mac audience is very particular about these things...
 
 ##### WinHex
 

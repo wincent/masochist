@@ -7,11 +7,11 @@ _In general_ I never throw out any mail, apart from spam that is. I have persona
 
 Lately my homedir backups have been getting uncomfortably large because my `~/Library/Mail/` folder alone was weighing in at over 6GB.
 
-Instead of hanging on to my mailing list archives (my [cocoa-dev](http://lists.apple.com/mailman/listinfo/cocoa-dev) folder is now a gigabyte) I've decided that I'm going to trust [Google](http://www.wincent.com/wiki/Google) to index them for me and Apple to keep a copy of every message.
+Instead of hanging on to my mailing list archives (my [cocoa-dev](http://lists.apple.com/mailman/listinfo/cocoa-dev) folder is now a gigabyte) I've decided that I'm going to trust [Google](http://wincent.com/wiki/Google) to index them for me and Apple to keep a copy of every message.
 
 I've also been throwing out old attachments. Generally if an attachment is important I save it elsewhere immediately (media, for example, usually end up getting imported into iTunes or iPhoto). But I've started going back over old emails and stripping off all attachments. I figure if I haven't looked at it in the last month or so then I'll probably never need to. Note that this doesn't actually result in any size saving until you rebuild the corresponding mailbox.
 
-The other thing is that the oldest messages have survived many generations of import/export from and to various email clients. I've used [Mail.app](http://www.wincent.com/wiki/Mail.app) pretty much from the beginning on [Mac OS X](http://www.wincent.com/wiki/Mac%20OS%20X), but prior to that I used Eudora, Outlook Express and Entourage; I may even have used Netscape Mail at one point but I can't remember.
+The other thing is that the oldest messages have survived many generations of import/export from and to various email clients. I've used [Mail.app](http://wincent.com/wiki/Mail.app) pretty much from the beginning on [Mac OS X](http://wincent.com/wiki/Mac%20OS%20X), but prior to that I used Eudora, Outlook Express and Entourage; I may even have used Netscape Mail at one point but I can't remember.
 
 Along the way some information has been lost of mangled. After rebuilding I noticed that a lot of really old mails were showing up with today's date and the time at which I performed the rebuild. On inspecting the corresponding `mbox` file (200 megabytes in size and containing 300 million lines) I saw entries that had headers like this:
 

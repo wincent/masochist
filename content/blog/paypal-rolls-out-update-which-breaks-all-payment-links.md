@@ -9,4 +9,4 @@ I've already contacted PayPal but until this problem is solved please consider u
 
 ### Update
 
-Still no word from PayPal but through trial and error I've been able to get the links working again. If you're selling online and have been hit by this problem see [my notes](http://www.wincent.com/a/about/wincent/weblog/archives/2007/10/paypal_breakage.php) on the solution.
+Still no word from PayPal but through trial and error I've been able to get the links working again. If you're selling online and have been hit by this problem see [my notes](http://wincent.com/a/about/wincent/weblog/archives/2007/10/paypal_breakage.php) on the solution.

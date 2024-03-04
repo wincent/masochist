@@ -9,7 +9,7 @@ Here's a quick example trimmed down to show only the relevant context. In this c
 
     - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
     {
-        // check Dock icon state: http://www.wincent.com/a/support/bugs/show_bug.cgi?id=393
+        // check Dock icon state: http://wincent.com/a/support/bugs/show_bug.cgi?id=393
         BOOL wasVisibleAtLaunch = [[WODockIcon sharedIcon] isVisible];
         BOOL shouldBeVisible    = (![defaults boolForKey:WO_PREF_GENERAL_NO_ICON_IN_DOCK]);
         unless (wasVisibleAtLaunch == shouldBeVisible)

@@ -3,7 +3,7 @@ title: Product activation improvements
 tags: blog
 ---
 
-I've spent the day making improvements to my [product activation](http://www.wincent.com/a/support/activation/) systems and I am fairly pleased with the results. These changes should make the product activation experience (which is already pretty good) even better for customers (when talking about copy protection there are two kinds of improvements you can make: those which make life easier for your customers and those which make life harder for pirates; the changes I've made today belong to the former class).
+I've spent the day making improvements to my [product activation](http://wincent.com/a/support/activation/) systems and I am fairly pleased with the results. These changes should make the product activation experience (which is already pretty good) even better for customers (when talking about copy protection there are two kinds of improvements you can make: those which make life easier for your customers and those which make life harder for pirates; the changes I've made today belong to the former class).
 
 I started thinking about this earlier this month when a Synergy Advance user wrote in asking:
 
@@ -51,7 +51,7 @@ Thankfully the necessary modifications turned out to be relatively clean and eas
 
 I was then able to go through the database and insert appropriate creation dates (because most of the licenses were accompanied by PayPal Instant Payment Notifications or Kagi KRPS posts and so the purchase date information was available to me), again with a single SQL statement for each one (although I admit that these were fairly ghastly looking). I adjusted the few manually-generated licenses by hand. I prepared a cron script that will be run once per day and update the database, basically awarding users an additional activation per year. Finally, I went all the way back to Day 1 and made the adjustments for licenses purchased more than one year ago so that they would receive the same benefits as if this system had been in place all along.
 
-A little bit more detail about the result can be seen under the heading, ["How many activations may I perform?"](http://www.wincent.com/a/support/activation/#limits) on the [product activation](http://www.wincent.com/a/support/activation/) page. Here is an excerpt, although you should make a point of visiting [the page in question](http://www.wincent.com/a/support/activation/#limits) to be certain that you're reading the most up-to-date information possible:
+A little bit more detail about the result can be seen under the heading, ["How many activations may I perform?"](http://wincent.com/a/support/activation/#limits) on the [product activation](http://wincent.com/a/support/activation/) page. Here is an excerpt, although you should make a point of visiting [the page in question](http://wincent.com/a/support/activation/#limits) to be certain that you're reading the most up-to-date information possible:
 
 > At the time of writing (September 2006) the number of activations that may be performed for a single-user license is five. A single-user license permits you to install and run the software on a single machine, but the activation limit is set to five activations, not one, to allow for scenarios such as switching to a new machine, replacing your hard drive, or performing a full system re-install. This is because the spirit of the activation system is to target mass piracy, not penalize honest, paying customers.
 >

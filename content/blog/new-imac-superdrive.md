@@ -3,7 +3,7 @@ title: New iMac "Superdrive"
 tags: blog
 ---
 
-The [replacement Superdrive](http://www.wincent.com/a/about/wincent/weblog/archives/2007/08/imac_reliabilit.php) for the iMac arrived today and I just finished installing it.
+The [replacement Superdrive](http://wincent.com/a/about/wincent/weblog/archives/2007/08/imac_reliabilit.php) for the iMac arrived today and I just finished installing it.
 
 There's only one word to describe the job: _nasty_.
 
@@ -15,7 +15,7 @@ Once inside getting the optical drive out is a royal pain (torx screws even on t
 
 I put everything back together and the drive is recognized by the system profiler and it works. Good. Now I can get back to my daily backups. Also, the new drive doesn't eject discs onto the floor; it just spits them out far enough for you to grab them when you're ready.
 
-All of this didn't come without a scare. I [previously mentioned](http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/involuntary_reb_12.php) that the machine's power socket (or whatever it's attached to) is at the end of its life. After reassembling the machine it wouldn't turn on. For a few minutes I feared I'd fried or damaged something inside. Reseating the power cable "fixed" it.
+All of this didn't come without a scare. I [previously mentioned](http://wincent.com/a/about/wincent/weblog/archives/2007/07/involuntary_reb_12.php) that the machine's power socket (or whatever it's attached to) is at the end of its life. After reassembling the machine it wouldn't turn on. For a few minutes I feared I'd fried or damaged something inside. Reseating the power cable "fixed" it.
 
 So will be treating the machine with kid gloves from here on, trying not to touch it and trying not to even bump the desk, and hope that it continues to work until I save up the money for a replacement machine.
 

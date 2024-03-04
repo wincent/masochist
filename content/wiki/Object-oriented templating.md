@@ -1,6 +1,7 @@
 ---
 tags: development wiki
 cache_breaker: 1
+title: Object-oriented templating
 ---
 
 [Object-oriented templating](/wiki/Object-oriented_templating) is a [object-oriented](/wiki/object-oriented) templating approach inspired by [object-oriented programming](/wiki/object-oriented_programming).
@@ -16,5 +17,5 @@ Executing the compiled templates, otherwise known as "filling" them, produces th
 
 # Related posts
 
--   <http://www.wincent.com/a/about/wincent/weblog/archives/2006/10/objectoriented.php>
--   <http://www.wincent.com/a/about/wincent/weblog/archives/2007/04/payoff_time.php>
+-   <http://wincent.com/a/about/wincent/weblog/archives/2006/10/objectoriented.php>
+-   <http://wincent.com/a/about/wincent/weblog/archives/2007/04/payoff_time.php>

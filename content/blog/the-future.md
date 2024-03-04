@@ -46,4 +46,4 @@ Some of the latest notable activity (most recent activity first):
 -   Bug fixes to Wincent Strings Utility.
 -   `WORegularExpression`, a ([PCRE](http://www.pcre.org/)) wrapper class.
 -   Learnt the API for adding a contextual menu plug-in to the Finder.
--   A huge amount of work on [anti-spam measures](http://www.wincent.com/wiki/Combating_spam), requiring me to do a lot of learning about [Sendmail](http://www.wincent.com/a/kb/index.php?title=Special:Search&ns0=1&redirs=0&searchx=1&search=Sendmail&limit=500&offset=0)
+-   A huge amount of work on [anti-spam measures](http://wincent.com/wiki/Combating_spam), requiring me to do a lot of learning about [Sendmail](http://wincent.com/a/kb/index.php?title=Special:Search&ns0=1&redirs=0&searchx=1&search=Sendmail&limit=500&offset=0)

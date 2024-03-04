@@ -3,7 +3,7 @@ title: Using cross-development SDKs for configure/make-based UNIX tools and libr
 tags: blog
 ---
 
-It's been a long time since I did a [WinHex](http://www.wincent.com/a/products/winhex/) release. One of the reasons has been that I've had trouble compiling the [GMP arbitrary precision arithmetic library](http://swox.com/gmp/) upon which WinSwitch depends. Since the last release, GMP has been updated a couple of times, the version of [GCC](http://gcc.gnu.org/) that Apple ships with Mac OS X Xcode tools has seen updates too, and the first Intel-based machines are now available to the public.
+It's been a long time since I did a [WinHex](http://wincent.com/a/products/winhex/) release. One of the reasons has been that I've had trouble compiling the [GMP arbitrary precision arithmetic library](http://swox.com/gmp/) upon which WinSwitch depends. Since the last release, GMP has been updated a couple of times, the version of [GCC](http://gcc.gnu.org/) that Apple ships with Mac OS X Xcode tools has seen updates too, and the first Intel-based machines are now available to the public.
 
 For a while newer versions of GCC were incapable of compiling GMP, but Apple's default compiler changed from GCC 2.95 to 3.3 and later to 4.0. Mixing applications and libraries built by different versions of GCC is not always a good idea. At some point (with the final 4.0 release, I believe) it became possible to compile GMP on a Mac again. GMP itself was updated to 4.1.4 and then to 4.2. As things currently stand, GMP will compile fine out of the box on a PowerPC platform running Mac OS X 10.4. It will only compile on Intel-based machines if you force it to use generic (but slower) C code rather than assembly.
 
