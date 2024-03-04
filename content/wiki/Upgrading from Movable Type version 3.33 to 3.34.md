@@ -1,5 +1,6 @@
 ---
 tags: movable.type wiki
+title: Upgrading from Movable Type version 3.33 to 3.34
 ---
 
 # Downloading
@@ -16,7 +17,7 @@ Amazingly, downloading was even more painful than ever. Not only did the [tar](/
 But this time [six apart](/wiki/six_apart) required me to provide an email address before downloading. It's annoying enough that you have to jump through hoops and sign in via their [TypeKey](/wiki/TypeKey) registration service before downloading; but this time they required an active, deliverable email address in order to proceed with the download. This is actually a multi-step process:
 
 1.  Answer yes, let [six apart](/wiki/six_apart) have my email address.
-2.  Find out that given that your email address on file with [TypeKey](/wiki/TypeKey) is unconfirmed that you must "Activate" it. Of course, in my case, the old address I'd provided, <win@wincent.org>, has long since been deactivated due to spam, so I didn't receive the confirmation email.
+2.  Find out that given that your email address on file with [TypeKey](/wiki/TypeKey) is unconfirmed that you must "Activate" it. Of course, in my case, the old address I'd provided, has long since been deactivated due to spam, so I didn't receive the confirmation email.
 3.  Request for the confirmation email to be resent, this time providing a different (throwaway) email address.
 
 I'm actually secretly hoping that I receive spam at the throwaway address as it will fuel my already substantial dislike for [six apart](/wiki/six_apart) and its nauseating business practices. They shouldn't be making it this hard for paying customers to get security updates for their buggy software. They shouldn't need my email address for any reason and they most definitely shouldn't be requiring that I supply it to them before letting me download.

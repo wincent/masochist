@@ -23,7 +23,7 @@ I could go on but by now you're getting the idea. And that's only in the realm o
 
 Well, I'm sick of running. I'm sick of hiding. I don't want my customers to have to jump through hoops in order to contact me. I used to think that controlling spam required proper server-level measures (blacklisting, filtering, proper [sendmail](http://www.wincent.com/wiki/sendmail) configuration) combined with client-level filtering _and_ a big dose of obscurity (email hiding) thrown in.
 
-For a long time I tried to keep my email address off the site, and in the places where I did show it I used cryptic equivalents like "win at this domain". I tried to channel all contact through a web contact form. I even migrated from my old address <win@wincent.org> to <win@wincent.com> because the old address was receiving too much spam.
+For a long time I tried to keep my email address off the site, and in the places where I did show it I used cryptic equivalents like "win at this domain". I tried to channel all contact through a web contact form. I even migrated from my old address because the old address was receiving too much spam.
 
 Well, I'm a bit tired of all that. I think it sends the wrong message to customers. It _really_ means, "Spammers, I don't want to hear from you", but it can actually make customers feel like I'm saying, "Customers, I don't want to hear from you". This isn't true. I _do_ want to hear from customers. Customer feedback helps to improve products and keeps one motivated. Even the "bad" types of customer contact (complaints, "silly" questions) are in indication of things that you should be doing better (ways your documentation could be improved, ways your interfaces could be changed so that those kinds of questions don't crop up).
 

@@ -36,7 +36,7 @@ Individual entries and date based archives feature forward and back links, as we
 
 #### Quick links
 
-Again, improvements to the archives for the "Quick links" section that appears in the left column of the [main site news page](http://wincent.org/): individual entry pages ([example](http://www.wincent.com/a/news/quick-links/archives/2006/11/flickrexport_fo_4.php)) linked to from the feed with forward and back links, and an "up" link to the [master archive index](http://www.wincent.com/a/news/quick-links/archives/) (previously there was just one gigantic page containing all the entries ever posted). The master archive index provides links to new date-based archive pages ([example](http://www.wincent.com/a/news/quick-links/archives/2006/10/)).
+Again, improvements to the archives for the "Quick links" section that appears in the left column of the main site news page: individual entry pages ([example](http://www.wincent.com/a/news/quick-links/archives/2006/11/flickrexport_fo_4.php)) linked to from the feed with forward and back links, and an "up" link to the [master archive index](http://www.wincent.com/a/news/quick-links/archives/) (previously there was just one gigantic page containing all the entries ever posted). The master archive index provides links to new date-based archive pages ([example](http://www.wincent.com/a/news/quick-links/archives/2006/10/)).
 
 #### Personal weblog
 

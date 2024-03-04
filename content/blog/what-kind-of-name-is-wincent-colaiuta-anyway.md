@@ -17,7 +17,7 @@ As you can see, at that point it was mostly a collection of hideously boring aca
 
 # The 2000s
 
-By the year 2000, the site had morphed into wincent.org, on which I wrote about Mac stuff. I signed most posts as "Wincent Colaiuta", although I also playfully corrupted the name in any number of ways, including "Wincenzo", "Wyncienxo" and "Colyiuta".
+By the year 2000, the site had morphed and I wrote about Mac stuff. I signed most posts as "Wincent Colaiuta", although I also playfully corrupted the name in any number of ways, including "Wincenzo", "Wyncienxo" and "Colyiuta".
 
 # Mac OS X
 

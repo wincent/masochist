@@ -38,7 +38,7 @@ This example uses version 1.1; change the version numbers as appropriate.
 
 13\. Post announcements to announcements lists.
 
-14\. Post announcement to wincent.org
+14\. Post announcement to the blog.
 
 15\. Post announcement to forums
 

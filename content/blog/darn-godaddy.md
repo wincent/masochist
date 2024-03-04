@@ -57,7 +57,7 @@ I subsequently complained but haven't yet received a reply (several days have pa
 
 #### The workaround
 
-Well, it turns out there is a workaround. This time around the domains in question were important ones (such as wincent.org) that I couldn't let slip by, so I decided that I would rather forgo my privacy then give in to GoDaddy's trickstering. I have a post office box address so I can at least allow my WHOIS information to be public without disclosing my residential or work address.
+Well, it turns out there is a workaround. This time around the domains in question were important ones that I couldn't let slip by, so I decided that I would rather forgo my privacy then give in to GoDaddy's trickstering. I have a post office box address so I can at least allow my WHOIS information to be public without disclosing my residential or work address.
 
 I figured I would renew the domains for one year without privacy and then renew them again shortly after with privacy added back on.
 

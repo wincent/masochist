@@ -33,7 +33,7 @@ Like many users, my first experience publishing a website was back in the 1990s,
 
 ## Shared hosting
 
-My first "real" website — one with its own domain name — was actually wincent.org, which if the WHOIS results don't deceive me, was registered back in September 1999. My chosen webhost had just about the best name you could hope to have: [webhosting.com](http://webhosting.com/). (Despite this auspicious beginning, the company in question eventually dwindled out of existence, and the webhosting.com domain now takes you to an AT&T page.)
+My first "real" website — one with its own domain name — was, if the WHOIS results don't deceive me, registered back in September 1999. My chosen webhost had just about the best name you could hope to have: [webhosting.com](http://webhosting.com/). (Despite this auspicious beginning, the company in question eventually dwindled out of existence, and the webhosting.com domain now takes you to an AT&T page.)
 
 This was a shared hosting environment, costing about \$24.95 per month. I remember logging in via [SSH](/wiki/SSH) ([shell](/wiki/shell) access was permitted), doing a `cd .. && ls`, and observing the literally _thousands_ of other customers that were cohabiting on the poor, overloaded server. It was no wonder that performance would occasionally drop through the floor when one of those customers had a runaway [PHP](/wiki/PHP) or [Perl](/wiki/Perl) app which exhausted all of the available connections to the database server. The [POP](/wiki/POP) and [SMTP](/wiki/SMTP) server was another machine and was similarly unreliable; I didn't have shell access to that one, but the regular outages lead me to expect that once again thousands of users were all competing for the scarce resources on the poor little server.
 

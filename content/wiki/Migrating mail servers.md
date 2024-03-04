@@ -1,6 +1,7 @@
 ---
 tags: migration mail wiki
 cache_breaker: 1
+title: Migrating mail servers
 ---
 
 These notes were made while migrating my mail server server from my old host, [Rackspace](/wiki/Rackspace), to my new host, [INetU](/wiki/INetU).
@@ -45,22 +46,22 @@ The major crunch is now over so you can now going about doing the rest of the mi
 
 ## Monitoring for [DNS](/wiki/DNS) changes
 
-My hosts manage the [DNS](/wiki/DNS) for me and that means that I don't have precise control over _when_ the changes that I've requested will go live, although I have an approximate idea. In my case I wanted the [MX](/wiki/MX) records updated for both wincent.com and wincent.org. I used the following [shell](/wiki/shell) snippet to query their nameservers every 60 seconds to see when the changes went live:
+My hosts manage the [DNS](/wiki/DNS) for me and that means that I don't have precise control over _when_ the changes that I've requested will go live, although I have an approximate idea. In my case I wanted the [MX](/wiki/MX) records updated. I used the following [shell](/wiki/shell) snippet to query their nameservers every 60 seconds to see when the changes went live:
 
     while true
     do
-      dig @ns3.inetu.net MX wincent.com | grep MX | egrep -v '^;'
-      dig @ns4.inetu.net MX wincent.com | grep MX | egrep -v '^;'
-      dig @ns3.inetu.net MX wincent.org | grep MX | egrep -v '^;'
-      dig @ns4.inetu.net MX wincent.org | grep MX | egrep -v '^;'
+      dig @ns3.inetu.net MX example.com | grep MX | egrep -v '^;'
+      dig @ns4.inetu.net MX example.com | grep MX | egrep -v '^;'
+      dig @ns3.inetu.net MX example.org | grep MX | egrep -v '^;'
+      dig @ns4.inetu.net MX example.org | grep MX | egrep -v '^;'
       sleep 60
     done
 
 This basically yields four lines like this each minute:
 
-    wincent.com.		600	IN	MX	10 secure.wincent.com.
-    wincent.com.		600	IN	MX	10 secure.wincent.com.
-    wincent.org.		600	IN	MX	10 secure.wincent.com.
-    wincent.org.		600	IN	MX	10 secure.wincent.com.
+    example.com.		600	IN	MX	10 secure.wincent.com.
+    example.com.		600	IN	MX	10 secure.wincent.com.
+    example.org.		600	IN	MX	10 secure.wincent.com.
+    example.org.		600	IN	MX	10 secure.wincent.com.
 
 As soon as the server name on the right changed I knew the DNS update had taken place.

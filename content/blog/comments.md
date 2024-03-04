@@ -11,7 +11,7 @@ In keeping with my recent penchant for writing [rambling](/blog/old-stuff-that-r
 
 # ~~The Perl era~~ The primordial ooze
 
-Back in the late 90s my website at [wincent.org](http://wincent.org) acquired its first recognizably blog-like surface. The pages were static HTML. I added a "message board" at the bottom of each page, implemented as a combination of [Perl](/wiki/Perl) [CGI](/wiki/CGI) scripts and [SSIs](https://en.wikipedia.org/wiki/Server_Side_Includes), using the filesystem as a flat-file database. You can still find some examples of these message threads if you [poke around web.archive.org](http://web.archive.org/web/20000816012023/http://wincent.org/articles/criticism/1999,11,22,gfx2.shtml).
+Back in the late 90s my website acquired its first recognizably blog-like surface. The pages were static HTML. I added a "message board" at the bottom of each page, implemented as a combination of [Perl](/wiki/Perl) [CGI](/wiki/CGI) scripts and [SSIs](https://en.wikipedia.org/wiki/Server_Side_Includes), using the filesystem as a flat-file database. You can still find some examples of these message threads if you [poke around web.archive.org](http://web.archive.org/web/20000816012023/http://wincent.org/articles/criticism/1999,11,22,gfx2.shtml).
 
 At this point I had no idea what I was doing and added all this because it was fun to do, and it seemed to be something that "real websites" had.
 
