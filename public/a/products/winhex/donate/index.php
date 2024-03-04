@@ -692,33 +692,6 @@
             <a href="https://wincent.com/a/about/">click here</a>.
           </p>
 
-          <h4>Donate using PayPal</h4>
-
-          <p>
-            <a
-              href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=win@wincent.com&amp;item_name=WinHex+donation&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-              ><img
-                style="float:right;"
-                src="../../../gfx/paypal-donate-button.gif"
-                alt="PayPal button"
-                width="73"
-                height="44"/></a
-            >To make a donation of any amount (as little as 1&euro;) using
-            PayPal,
-            <a
-              href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=win@wincent.com&amp;item_name=WinHex+donation&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-              >click here</a
-            >.
-          </p>
-
-          <p>
-            Donations of 50&euro; or more will earn you a permanent listing on
-            the website as a sponsor. Sponsors may determine how they wish to
-            appear in the listing (whether they want to include a link to their
-            site or a contact address; they may also optionally provide a button
-            graphic at the standard size of 88 by 31 pixels).
-          </p>
-
           <h4>How else can I support development?</h4>
 
           <h5>Provide a localization</h5>

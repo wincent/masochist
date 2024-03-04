@@ -717,55 +717,31 @@
             </li>
             <li>
               <a href="https://wincent.com/a/products/wotest/">WOTest</a> (free,
-              GPL license):
-              <a
-                href="https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=WOTest+donation&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-                >donate</a
-              >
+              GPL license)
             </li>
             <li>
               <a href="https://wincent.com/a/products/wincent-strings-util/"
                 >Wincent Strings Utility</a
               >
-              (free, GPL license):
-              <a
-                href="https://www.paypal.com/xclick/business=win@wincent.com&item_name=Wincent+Strings+Utility+donation&no_note=1&currency_code=EUR&lc=GB"
-                >donate</a
-              >
+              (free, GPL license)
             </li>
             <li>
               <a href="https://wincent.com/a/products/atosym/">atosym</a> (free,
-              GPL license):
-              <a
-                href="https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=atosym+donation&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-                >donate</a
-              >
+              GPL license)
             </li>
             <li>
               <a href="https://wincent.com/a/products/buildtools/"
                 >buildtools</a
               >
-              (free, GPL license):
-              <a
-                href="https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=buildtools+donation&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-                >donate</a
-              >
+              (free, GPL license)
             </li>
             <li>
               Walrus (free, GPL
-              license):
-              <a
-                href="https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=Walrus+donation&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-                >donate</a
-              >
+              license)
             </li>
             <li>
               <a href="https://wincent.com/a/products/bansshee/">bansshee</a>
-              (free, GPL license):
-              <a
-                href="https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=bansshee+donation&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-                >donate</a
-              >
+              (free, GPL license)
             </li>
           </ul>
 

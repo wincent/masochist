@@ -688,12 +688,7 @@
           <h4><a id="donations" name="donations"></a>Donations</h4>
 
           <p>
-            Bansshee is free software released under the BSD license. If it is
-            useful to you, please consider making a
-            <a
-              href="https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=Bansshee+donation&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-              >donation</a
-            >.
+            Bansshee is free software released under the BSD license.
           </p>
 
           <h4><a id="history" name="history"></a>History</h4>

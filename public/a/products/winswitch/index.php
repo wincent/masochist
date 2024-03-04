@@ -925,36 +925,6 @@
             </p>
           </div>
 
-          <h4>Donate</h4>
-
-          <p>
-            Although WinSwitch is freeware, it's required me to do
-            <a href="history/">many, many hours</a> of unpaid work, and making
-            it available for download is a costly exercise. If you feel like
-            WinSwitch has been of use to you, or you want to support further
-            development, you can make a small
-            <a href="https://wincent.com/a/products/winswitch/donate/"
-              >donation</a
-            >:
-            <a
-              href="https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=WinSwitch+donation&amp;amount=5.00&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-              >5&euro; (Euros)</a
-            >,
-            <a
-              href="https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=WinSwitch+donation&amp;amount=10.00&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-              >10&euro; (Euros)</a
-            >,
-            <a
-              href="https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=WinSwitch+donation&amp;amount=20.00&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-              >20&euro; (Euros)</a
-            >
-            or
-            <a
-              href="https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=WinSwitch+donation&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-              >any other amount</a
-            >.
-          </p>
-
           <p align="left" class="sectionBody">
             Since releasing WinSwitch, there has been only one donation for
             every thousand downloads. I hope that if you value the product that

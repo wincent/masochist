@@ -711,11 +711,7 @@
 
           <p>
             Wincent Strings Utility is free software released under the GPL
-            license. If it is useful to you, please consider making a
-            <a
-              href="https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=Wincent+Strings+Utility+donation&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-              >donation</a
-            >.
+            license.
           </p>
 
           <h3><a id="history" name="history"></a>History</h3>

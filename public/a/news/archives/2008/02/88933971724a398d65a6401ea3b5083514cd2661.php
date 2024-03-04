@@ -742,11 +742,8 @@
         </p>
         <p>
           If you'd like to help with the renewal you can send your donation to
-          me via PayPal using
-          <a
-            href="https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=Bansshee+DNS+donation&amp;no_note=1&amp;currency_code=USD&amp;lc=en"
-            >this link</a
-          >. You can contact me at
+          me via PayPal.
+          You can contact me at
           <a href="mailto:win@wincent.com">win@wincent.com</a> if you have any
           questions or comments.
         </p>

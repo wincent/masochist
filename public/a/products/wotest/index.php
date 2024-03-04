@@ -720,17 +720,6 @@
             process from within your own applications.
           </p>
 
-          <h4><a id="donations" name="donations"></a>Donations</h4>
-
-          <p>
-            WOTest is free software released under the GPL license. If it is
-            useful to you, please consider making a
-            <a
-              href="https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=WOTest+donation&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-              >donation</a
-            >.
-          </p>
-
           <!--
           <p><strong>Total downloads so far:</strong> <br />
           <em>(last updated )</em></p>

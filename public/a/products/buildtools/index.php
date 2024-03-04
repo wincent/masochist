@@ -692,11 +692,6 @@
 
           <p>
             <tt>buildtools</tt> is free software released under the GPL license.
-            If it is useful to you, please consider making a
-            <a
-              href="https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=buildtools+donation&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-              >donation</a
-            >.
           </p>
 
           <!--

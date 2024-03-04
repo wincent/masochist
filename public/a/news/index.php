@@ -1029,11 +1029,8 @@
           </p>
           <p>
             If you'd like to help with the renewal you can send your donation to
-            me via PayPal using
-            <a
-              href="https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=Bansshee+DNS+donation&amp;no_note=1&amp;currency_code=USD&amp;lc=en"
-              >this link</a
-            >. My priority will be to keep the dot-org domain alive; the others
+            me via PayPal.
+            My priority will be to keep the dot-org domain alive; the others
             will follow suit if I receive enough donations. You can contact me
             at <a href="mailto:win@wincent.com">win@wincent.com</a> if you have
             any questions or comments.
@@ -1399,11 +1396,7 @@
           </p>
           <p>
             It's free software released under a GPL license, downloadable in
-            both source and executable forms,
-            <a
-              href="https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=Wincent+Strings+Utility+donation&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-              >donations are welcomed</a
-            >.
+            both source and executable forms.
           </p>
 
           <p class="more-categories">

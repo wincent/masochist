@@ -636,55 +636,6 @@
       </div>
       <div id="center">
         <div class="content">
-          <h3>Donations and sponsorship</h3>
-
-          <h4>Why donate?</h4>
-
-          <p>
-            Making a donation helps fund further development &mdash; updates to
-            this and to other Wincent products, as well and brand new products
-            &mdash; by contributing to the many costs of running a software
-            small business. I've written a
-            <a href="https://wincent.com/a/knowledge-base/">Knowledge Base</a>
-            article
-            <a
-              href="https://wincent.com/a/knowledge-base/archives/2004/11/costs_of_runnin.php"
-              >here</a
-            >
-            about exactly what kind of costs are involved.
-          </p>
-
-          <p>
-            For more information about me and the company,
-            <a href="https://wincent.com/a/about/">click here</a>.
-          </p>
-
-          <h4>Donate using PayPal</h4>
-
-          <p>
-            <a
-              href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=win@wincent.com&amp;item_name=GetSmart+Pro+donation&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-              ><img
-                style="float:right;"
-                src="../../../gfx/paypal-donate-button.gif"
-                alt="PayPal button"
-                width="73"
-                height="44"/></a
-            >To make a donation of any amount (as little as 1&euro;) using
-            PayPal,
-            <a
-              href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=win@wincent.com&amp;item_name=GetSmart+Pro+donation&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-              >click here</a
-            >.
-          </p>
-
-          <p>
-            Donations of 50&euro; or more will earn you a permanent listing on
-            the website as a sponsor. Sponsors may determine how they wish to
-            appear in the listing (whether they want to include a link to their
-            site or a contact address; they may also optionally provide a button
-            graphic at the standard size of 88 by 31 pixels).
-          </p>
         </div>
       </div>
       <div id="right">

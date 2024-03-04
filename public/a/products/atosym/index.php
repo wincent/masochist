@@ -754,12 +754,7 @@ Line 10 of "source.m" starts at address 0x1f70 &lt;main+78&gt; and
           <h4><a id="donations" name="donations"></a>Donations</h4>
 
           <p>
-            <tt>atosym</tt> is free software released under the BSD license. If
-            it is useful to you, please consider making a
-            <a
-              href="https://www.paypal.com/xclick/business=win@wincent.com&amp;item_name=atosym+donation&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-              >donation</a
-            >.
+            <tt>atosym</tt> is free software released under the BSD license.
           </p>
 
           <h4>Links</h4>

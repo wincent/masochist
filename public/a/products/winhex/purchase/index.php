@@ -670,33 +670,10 @@
       <div id="center">
         <div class="content">
           <h3>Purchase a WinHex license</h3>
-
-          <p>
-            <a
-              href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=win@wincent.com&amp;item_name=WinHex+for+Mac+OS+X+10.3+and+later&amp;amount=5.00&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-              ><img
-                style="float:right;"
-                src="../../../gfx/paypal-purchase-button.gif"
-                alt="PayPal button"
-                width="73"
-                height="44"/></a
-            >To purchase a license for WinHex for Mac OS X 10.3 and later using
-            PayPal (5&euro;),
-            <a
-              href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=win@wincent.com&amp;item_name=WinHex+for+Mac+OS+X+10.3+and+later&amp;amount=5.00&amp;no_note=1&amp;currency_code=EUR&amp;lc=GB"
-              >click here</a
-            >.
-          </p>
-
           <p>
             You may use WinHex for free on a trial basis for a maximum of seven
             days. If you wish to continue using it beyond the seven day trial
             period you will be required to purchase a license.
-          </p>
-
-          <p>
-            You may also wish to
-            <a href="../donate/">become a site sponsor or make a donation</a>.
           </p>
         </div>
       </div>
