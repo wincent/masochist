@@ -27,6 +27,6 @@ These are the results for the iMac equipped with 2 GB of RAM:
 
 ### Conclusion
 
-The 64-bit Dual 2.5 GHZ G5 PowerPC which this humble iMac is replacing took about 6.5 minutes to compile [Synergy Advance](http://synergyadvance.com/). The new iMac, which is about one third of the price of the G5, does it in less than 5 minutes. And it does it [much, much more quietly](http://www.wincent.com/a/about/wincent/weblog/archives/2006/05/memory_for_the.php). The upgrade eliminates in one fell swoop 21 minutes of virtual memory disk thrashing.
+The 64-bit Dual 2.5 GHZ G5 PowerPC which this humble iMac is replacing took about 6.5 minutes to compile Synergy Advance. The new iMac, which is about one third of the price of the G5, does it in less than 5 minutes. And it does it [much, much more quietly](http://www.wincent.com/a/about/wincent/weblog/archives/2006/05/memory_for_the.php). The upgrade eliminates in one fell swoop 21 minutes of virtual memory disk thrashing.
 
 I am absolutely floored.

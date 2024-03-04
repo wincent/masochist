@@ -3,7 +3,7 @@ title: DSTROOT, install_name_tool and Interface Builder palettes
 tags: blog
 ---
 
-Yesterday I was working on getting WinSwitch up and running as a Universal Binary. One of the hold-ups has been that a couple of the frameworks that WinSwitch depends on, WOBezel and WOHotKey, have been under heavy development as part of my work on [Synergy Advance](http://synergyadvance.com/). This required some changes to WinSwitch to get the whole thing back into a buildable state.
+Yesterday I was working on getting WinSwitch up and running as a Universal Binary. One of the hold-ups has been that a couple of the frameworks that WinSwitch depends on, WOBezel and WOHotKey, have been under heavy development as part of my work on Synergy Advance. This required some changes to WinSwitch to get the whole thing back into a buildable state.
 
 One of the things that was broken was that I had refactored some classes in WOBezel. What used to be `WOBezelWindow` was now `WOAlertBezelWindow` and I had to update my nib files. But when I tried to open my nib files Interface Builder refused to open them because it couldn't unarchive the instances of `WOHotKeyCaptureView` in the nibs.
 

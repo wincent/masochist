@@ -23,7 +23,7 @@ This was a painful lesson for me to learn. Three years ago I started sticking co
 
 If I had known about Subversion externals sooner I might have taken this decision earlier and saved myself a lot of work.
 
-Another thing I wished I had known about earlier is the `BUNDLE_LOADER` build setting. Prior to learning about that I stuck all my common code for [Synergy Advance](http://synergyadvance.com/) in a framework of its own. In this way preference panes, plug-in bundles, and the application itself could all benefit from the same code. But making a framework increased the complexity of my build chain, my dependency graph, and lengthened my build times.
+Another thing I wished I had known about earlier is the `BUNDLE_LOADER` build setting. Prior to learning about that I stuck all my common code for Synergy Advance in a framework of its own. In this way preference panes, plug-in bundles, and the application itself could all benefit from the same code. But making a framework increased the complexity of my build chain, my dependency graph, and lengthened my build times.
 
 `BUNDLE_LOADER` makes that all unnecessary. The common code now resides in the application, and when building plug-ins and other bundles which depend on that code you instruct the linker to look for any missing symbols in the application. No more framework. Not only are the builds faster but application load times are as well. If I had known about `BUNDLE_LOADER` I could have saved a considerable volume of work.
 

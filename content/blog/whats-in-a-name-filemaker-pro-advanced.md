@@ -5,7 +5,7 @@ tags: blog
 
 I just read [this article](http://www.thinksecret.com/news/0505fm8.html) at rumor site [Think Secret](http://www.thinksecret.com/), where they claim that "FileMaker Developer 7" will be renamed to "FileMaker Pro 8 Advanced" in its next version.
 
-I know that some have questioned why I chose to name my new product "[Synergy Advance](http://synergyadvance.com/)", but this move by FileMaker seems a little bit ridiculous to me. In this short article I want to make some comments about the rumored move and also explain why my own products are named the way they are.
+I know that some have questioned why I chose to name my new product "Synergy Advance", but this move by FileMaker seems a little bit ridiculous to me. In this short article I want to make some comments about the rumored move and also explain why my own products are named the way they are.
 
 #### Why so many adjectives?
 

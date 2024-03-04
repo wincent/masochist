@@ -1,5 +1,6 @@
 ---
 tags: email sendmail wiki
+title: Blocking non-local senders for local-only recipients
 ---
 
 The → symbol (right-pointing arrow) is used to indicate a tab:
@@ -28,18 +29,6 @@ The following is a [LogWatch](/wiki/LogWatch) sample taken from the [wincent.co
         mail@example.com
           from [218.79.81.44]    1 time(s).
           from [58.49.252.42]    1 time(s).
-
-        mail@synergyadvance.com
-          from [211.210.49.138]    1 time(s).
-          from [58.33.221.99]    1 time(s).
-
-        mail@wincent.com
-          from [124.90.37.98]    1 time(s).
-          from [222.113.223.160]    1 time(s).
-          from [222.216.162.133]    1 time(s).
-          from [222.64.100.75]    1 time(s).
-          from [222.98.98.252]    1 time(s).
-          from [60.1.85.195]    1 time(s).
 
         uucp@example.com
           from 136.142.180.60.broad.wz.zj.dynamic.cndata.com [60.180.142.136]    1 time(s).

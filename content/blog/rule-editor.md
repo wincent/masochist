@@ -3,7 +3,7 @@ title: Rule editor
 tags: blog
 ---
 
-Currently working on a rule editor like the one in Mail.app. This is necessary for a [Synergy Advance](http://synergyadvance.com/) plug-in that I'm hoping to finish this week.
+Currently working on a rule editor like the one in Mail.app. This is necessary for a Synergy Advance plug-in that I'm hoping to finish this week.
 
 My first task was to reproduce the look of the Mail.app rule editor. Next I got drag-and-drop support in place (for re-ordering rules; this is something that Mail.app doesn't support). Right now I am about to work on getting the editor to auto-resize as you add and remove rules, as well as causing the parent view (in this case inside a normal NSWindow) to resize as well.
 

@@ -3,7 +3,7 @@ title: WODockIcon class
 tags: blog
 ---
 
-When I first started [Synergy Advance](http://synergyadvance.com/) one of my early goals was to implement the ability for the user to show and hide the Dock icon at will. I also envisaged the ability to show the cover art of the currently playing track in the Dock. This was fairly simple, so I just stuck the code for it in the application's main controller class.
+When I first started Synergy Advance one of my early goals was to implement the ability for the user to show and hide the Dock icon at will. I also envisaged the ability to show the cover art of the currently playing track in the Dock. This was fairly simple, so I just stuck the code for it in the application's main controller class.
 
 But since then things have gotten more complicated. After the icon was designed, and it turned out to be a speaker, the obvious idea was to animate that speaker during playback (credit goes to [Elroy](http://elroyonline.net/), the designer of the icon, for that idea). Then I decided to add a progress meter. Then, seeing as the animated icon looked so cool, it seemed only natural to offer to show the cover art in the Dock as a badge rather than as a full icon. All of this is optional so the user can turn any of these features on or off in different combinations with the other options.
 

@@ -23,7 +23,7 @@ Ironically this paradigm (the fastest) may _seem_ to be the slowest because of t
 
 ### A new paradigm
 
-I began to wonder if there was a way of blending these paradigms into something new, something that would be better for the particular set of problems I am trying to solve in my work on [Synergy Advance](http://synergyadvance.com/). I don't claim to have invented this design pattern but it's not something I've seen before. The basic idea can be broken up as follows:
+I began to wonder if there was a way of blending these paradigms into something new, something that would be better for the particular set of problems I am trying to solve in my work on Synergy Advance. I don't claim to have invented this design pattern but it's not something I've seen before. The basic idea can be broken up as follows:
 
 > The main thread spawns a worker thread to handle potentially long-running tasks.
 
