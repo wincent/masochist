@@ -693,8 +693,8 @@
           </li>
           <li>
             <em>Product info</em>:
-            <a href="https://hex.wincent.com/"
-              >https://hex.wincent.com/</a
+            <a href="https://hex.typechecked.net/"
+              >https://hex.typechecked.net/</a
             >
           </li>
         </ul>

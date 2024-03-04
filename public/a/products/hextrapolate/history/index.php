@@ -713,7 +713,7 @@
           <ul>
             <li>
               [Note] WinHex has now changed its name to
-              <a href="https://hex.wincent.com/">Hextrapolate</a>. The
+              Hextrapolate. The
               name change has taken place at the request of
               <a href="http://www.x-ways.net/index-m.html"
                 >X-Ways Software Technology</a

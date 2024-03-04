@@ -672,7 +672,7 @@
             All new products released <em>after</em> April 2005 use product
             activation; this includes
             <a href="../../products/synergy-advance/">Synergy Advance</a> and
-            <a href="https://hex.wincent.com/">Hextrapolate</a>.
+            Hextrapolate.
             Products released <em>prior</em> to April 2005 &mdash;
             <a href="../../products/synergy-classic/">Synergy</a>,
             <a href="../../products/winswitch/">WinSwitch</a> and
