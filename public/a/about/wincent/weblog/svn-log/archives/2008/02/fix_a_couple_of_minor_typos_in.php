@@ -681,7 +681,7 @@
           Fix a couple of minor typos in the documentation (wikitext, 2cb477a)
         </h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004163more"><div id="more"></div></div>
 

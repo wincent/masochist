@@ -696,7 +696,7 @@
           this stage that only means the controller and the MainMenu).
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003400more"><div id="more"></div></div>
 

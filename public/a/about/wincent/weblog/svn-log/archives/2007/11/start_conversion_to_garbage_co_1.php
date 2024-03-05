@@ -685,7 +685,7 @@
           many of the dealloc methods could be entirely removed, and were.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003141more"><div id="more"></div></div>
 

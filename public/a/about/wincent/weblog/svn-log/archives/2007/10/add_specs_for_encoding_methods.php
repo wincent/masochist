@@ -692,7 +692,7 @@
           changes the order in which the paths in question are tested.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003033more"><div id="more"></div></div>
 

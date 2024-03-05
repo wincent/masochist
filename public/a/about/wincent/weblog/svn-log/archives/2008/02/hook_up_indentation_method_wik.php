@@ -681,7 +681,7 @@
 
         <p>At the moment doesn't do anything but it's ready to go.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003995more"><div id="more"></div></div>
 

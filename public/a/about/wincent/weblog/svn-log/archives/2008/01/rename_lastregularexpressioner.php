@@ -691,7 +691,7 @@
           the other in the &quot;Replace&quot; string) are now more consistent.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003749more"><div id="more"></div></div>
 

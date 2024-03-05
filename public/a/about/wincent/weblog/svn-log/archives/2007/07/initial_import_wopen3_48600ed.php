@@ -680,7 +680,7 @@
           963908b833e9f0976fdfea00484c87d19e81850f).
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002515more"><div id="more"></div></div>
 

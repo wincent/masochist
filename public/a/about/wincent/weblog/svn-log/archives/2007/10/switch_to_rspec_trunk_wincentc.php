@@ -685,7 +685,7 @@
           release (1.0.8) doesn't work with the Rails 2.0 preview.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003060more"><div id="more"></div></div>
 

@@ -704,7 +704,7 @@
           slab of UTF-8 text 4.860000 0.000000 4.860000 ( 5.016289)
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003899more"><div id="more"></div></div>
 

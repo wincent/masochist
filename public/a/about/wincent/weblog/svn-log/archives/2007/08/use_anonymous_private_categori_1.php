@@ -683,7 +683,7 @@
           it to produce better warnings about missing methods.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002637more"><div id="more"></div></div>
 

@@ -682,7 +682,7 @@
           Tweak Rakefile: rebuild whenever ary.h changes (wikitext, e942be5)
         </h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003883more"><div id="more"></div></div>
 

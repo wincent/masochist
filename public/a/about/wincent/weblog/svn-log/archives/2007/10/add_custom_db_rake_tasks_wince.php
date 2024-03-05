@@ -683,7 +683,7 @@
           environment, or all environments at once.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003063more"><div id="more"></div></div>
 

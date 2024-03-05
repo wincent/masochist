@@ -695,7 +695,7 @@
           new workaround in a subsequent commit.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002609more"><div id="more"></div></div>
 

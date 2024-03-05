@@ -685,7 +685,7 @@
           items in a div, and center the cloud within the div).
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003969more"><div id="more"></div></div>
 

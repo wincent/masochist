@@ -690,7 +690,7 @@
           we can have non-chatty builds on RHEL 5.1.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004185more"><div id="more"></div></div>
 

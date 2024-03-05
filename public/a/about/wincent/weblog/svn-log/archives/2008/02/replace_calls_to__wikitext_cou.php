@@ -681,7 +681,7 @@
           Replace calls to _Wikitext_count with ary_count (wikitext, 9108643)
         </h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003887more"><div id="more"></div></div>
 

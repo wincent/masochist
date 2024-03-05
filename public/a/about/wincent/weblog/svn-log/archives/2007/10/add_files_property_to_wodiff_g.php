@@ -681,7 +681,7 @@
 
         <p>Expose the WODiff object's files array to outside world.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002995more"><div id="more"></div></div>
 

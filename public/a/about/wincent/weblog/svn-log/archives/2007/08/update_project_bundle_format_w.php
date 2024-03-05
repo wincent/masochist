@@ -679,7 +679,7 @@
 
         <p>Update the project bundle format to the new Xcode 3.0 format.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002651more"><div id="more"></div></div>
 

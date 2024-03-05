@@ -679,7 +679,7 @@
 
         <h3>Add links/create action (wincent.com, 9d91051)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003815more"><div id="more"></div></div>
 

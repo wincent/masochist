@@ -681,7 +681,7 @@
 
         <p>Prepare for 3.5a4 release.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003497more"><div id="more"></div></div>
 

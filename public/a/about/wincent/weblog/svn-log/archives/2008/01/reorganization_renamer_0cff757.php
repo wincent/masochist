@@ -682,7 +682,7 @@
           plug-in, Tool becomes tool, and Tests becomes tests).
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003578more"><div id="more"></div></div>
 

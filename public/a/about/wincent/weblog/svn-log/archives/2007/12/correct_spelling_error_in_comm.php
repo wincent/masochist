@@ -680,7 +680,7 @@
 
         <h3>Correct spelling error in comment (buildtools, 97d9623)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003372more"><div id="more"></div></div>
 

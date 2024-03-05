@@ -687,7 +687,7 @@
           applicaton helper so that all views can benefit from it.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004064more"><div id="more"></div></div>
 

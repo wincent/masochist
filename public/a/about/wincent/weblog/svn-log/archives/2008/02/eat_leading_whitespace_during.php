@@ -683,7 +683,7 @@
 
         <p>As mentioned in e8b3b86, we need to eat whitespace here.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003923more"><div id="more"></div></div>
 

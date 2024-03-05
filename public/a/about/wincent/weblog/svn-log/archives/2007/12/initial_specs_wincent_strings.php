@@ -689,7 +689,7 @@
           it, simply because it's a nice framework for doing this kind of thing.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003326more"><div id="more"></div></div>
 

@@ -677,7 +677,7 @@
 
         <h3>Upgrade to PCRE 7.6 (REnamer, f6f39c8)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003805more"><div id="more"></div></div>
 

@@ -690,7 +690,7 @@
           need to add that to the lsit of conditions too.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004048more"><div id="more"></div></div>
 

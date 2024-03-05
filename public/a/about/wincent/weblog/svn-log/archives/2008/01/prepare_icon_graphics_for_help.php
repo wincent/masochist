@@ -681,7 +681,7 @@
 
         <p>16x16 and 32x32 versions of the REnamer icon.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003680more"><div id="more"></div></div>
 

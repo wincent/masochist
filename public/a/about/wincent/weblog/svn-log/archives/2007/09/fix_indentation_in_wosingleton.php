@@ -679,7 +679,7 @@
 
         <p>Missing space in one line of WOSingleton.m.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002715more"><div id="more"></div></div>
 

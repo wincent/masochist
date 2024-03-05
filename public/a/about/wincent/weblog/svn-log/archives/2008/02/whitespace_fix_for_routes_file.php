@@ -682,7 +682,7 @@
 
         <p>Add missing newline at end of file to quieten diff output.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003946more"><div id="more"></div></div>
 

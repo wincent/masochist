@@ -685,7 +685,7 @@
 
         <p>Similar commit for link sanitization to follow.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003924more"><div id="more"></div></div>
 

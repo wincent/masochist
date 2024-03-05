@@ -688,7 +688,7 @@
           can just bind to the WOREnamerController instance directly.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003699more"><div id="more"></div></div>
 

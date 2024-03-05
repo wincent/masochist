@@ -678,7 +678,7 @@
 
         <h3>Set up gitignore for PCRE 7.5 (REnamer, 869faff)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003566more"><div id="more"></div></div>
 

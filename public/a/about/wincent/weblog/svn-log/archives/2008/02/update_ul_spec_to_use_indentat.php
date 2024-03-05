@@ -681,7 +681,7 @@
 
         <h3>Update ul spec to use indentation helper (wikitext, ea4a291)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004059more"><div id="more"></div></div>
 

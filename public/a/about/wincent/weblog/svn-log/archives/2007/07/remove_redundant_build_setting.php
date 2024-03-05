@@ -682,7 +682,7 @@
           the PRODUCT_NAME in place (needed by Xcode for dependency analysis).
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002572more"><div id="more"></div></div>
 

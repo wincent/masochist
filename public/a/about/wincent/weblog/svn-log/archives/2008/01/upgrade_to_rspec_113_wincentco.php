@@ -682,7 +682,7 @@
 
         <p>This is necessary for compatability with ZenTest 3.9.0.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003944more"><div id="more"></div></div>
 

@@ -684,7 +684,7 @@
           header, footer, and some notes on the navigation bar.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003777more"><div id="more"></div></div>
 

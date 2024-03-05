@@ -686,7 +686,7 @@
           runtime, so compile it as pure C rather than Objective-C.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002964more"><div id="more"></div></div>
 

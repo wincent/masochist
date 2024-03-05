@@ -682,7 +682,7 @@
 
         <p>Also tag the buildtools repository for each release.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003769more"><div id="more"></div></div>
 

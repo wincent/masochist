@@ -697,7 +697,7 @@
           so small and all the edits apply to the same range of lines.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003109more"><div id="more"></div></div>
 

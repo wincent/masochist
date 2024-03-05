@@ -684,7 +684,7 @@
           hashes and a &quot;master&quot; ref specification.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;<br /></p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;<br /></p>
 
         <div id="a002419more"><div id="more"></div></div>
 

@@ -681,7 +681,7 @@
           implementation is between 3 and 5 times faster than the Iconv module.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003032more"><div id="more"></div></div>
 

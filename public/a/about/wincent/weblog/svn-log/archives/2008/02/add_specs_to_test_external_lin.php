@@ -683,7 +683,7 @@
           Add specs to test external_link_class overrides (wikitext, a69f859)
         </h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003993more"><div id="more"></div></div>
 

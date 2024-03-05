@@ -686,7 +686,7 @@
           paranoid but I don't won't to get caught out in the future.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003020more"><div id="more"></div></div>
 

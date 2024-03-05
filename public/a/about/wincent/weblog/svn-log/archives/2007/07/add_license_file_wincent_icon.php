@@ -678,7 +678,7 @@
 
         <p>Add a copy of the full GPL (version 3) text to the repository.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002549more"><div id="more"></div></div>
 

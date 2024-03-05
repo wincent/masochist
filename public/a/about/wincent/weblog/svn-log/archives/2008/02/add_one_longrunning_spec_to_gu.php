@@ -698,7 +698,7 @@
           seeing problems in the benchmarks because they ran for longer.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004178more"><div id="more"></div></div>
 

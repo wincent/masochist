@@ -701,7 +701,7 @@
           this way without any Ruby message sends at all.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003037more"><div id="more"></div></div>
 

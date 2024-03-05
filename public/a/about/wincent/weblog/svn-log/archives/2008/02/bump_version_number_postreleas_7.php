@@ -690,7 +690,7 @@
           Creole, as it should be nice and easy to parse.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004116more"><div id="more"></div></div>
 

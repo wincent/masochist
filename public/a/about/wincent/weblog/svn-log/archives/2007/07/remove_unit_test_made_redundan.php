@@ -694,7 +694,7 @@
           collection. This commit removes the now-redundant test.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002528more"><div id="more"></div></div>
 

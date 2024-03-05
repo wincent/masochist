@@ -680,7 +680,7 @@
 
         <h3>Add show method to comments controller (wincent.com, 35495cb)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003963more"><div id="more"></div></div>
 

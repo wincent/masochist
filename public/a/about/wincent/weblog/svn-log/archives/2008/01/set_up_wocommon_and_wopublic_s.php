@@ -679,7 +679,7 @@
 
         <h3>Set up WOCommon and WOPublic symlinks (REnamer, 71513e9)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003500more"><div id="more"></div></div>
 

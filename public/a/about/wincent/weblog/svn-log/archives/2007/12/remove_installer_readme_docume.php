@@ -683,7 +683,7 @@
           These are no longer relevant as we no longer even have an installer.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003370more"><div id="more"></div></div>
 

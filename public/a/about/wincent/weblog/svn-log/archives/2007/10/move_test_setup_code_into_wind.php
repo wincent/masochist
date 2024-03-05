@@ -687,7 +687,7 @@
           is already set up and the WODiffView has been initialized).
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002997more"><div id="more"></div></div>
 

@@ -680,7 +680,7 @@
 
         <p>Modernize dates and remove unnecessary frills from headers.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002729more"><div id="more"></div></div>
 

@@ -695,7 +695,7 @@
           This simplifies the code greatly and makes it much more robust.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002929more"><div id="more"></div></div>
 

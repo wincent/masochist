@@ -695,7 +695,7 @@
           in a &quot;subclass-friendly&quot; way.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002620more"><div id="more"></div></div>
 

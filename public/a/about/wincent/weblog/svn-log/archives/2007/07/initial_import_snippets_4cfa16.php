@@ -676,7 +676,7 @@
 
         <p>Initial repositor import (contains only README file).</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;<br /></p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;<br /></p>
 
         <div id="a002402more"><div id="more"></div></div>
 

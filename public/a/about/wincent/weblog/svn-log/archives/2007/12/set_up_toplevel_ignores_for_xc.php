@@ -684,7 +684,7 @@
           Ignore the &quot;index&quot; folder created in the SRCROOT by Xcode 3.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003279more"><div id="more"></div></div>
 

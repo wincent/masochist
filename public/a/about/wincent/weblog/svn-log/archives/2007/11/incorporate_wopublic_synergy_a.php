@@ -678,7 +678,7 @@
 
         <p>Fix build breakage caused by moving WOAssert into WOPublic.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003121more"><div id="more"></div></div>
 

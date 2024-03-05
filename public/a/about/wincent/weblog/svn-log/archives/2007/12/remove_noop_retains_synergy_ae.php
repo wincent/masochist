@@ -679,7 +679,7 @@
 
         <p>These don't belong in here under GC.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003285more"><div id="more"></div></div>
 

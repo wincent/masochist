@@ -693,7 +693,7 @@
           have to be added back in by hand because this did not carry across.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003356more"><div id="more"></div></div>
 

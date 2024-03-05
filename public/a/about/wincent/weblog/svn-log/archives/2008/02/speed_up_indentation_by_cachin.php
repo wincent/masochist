@@ -706,7 +706,7 @@
 
         <p>longer slab of ASCII text 13.510000 0.060000</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004007more"><div id="more"></div></div>
 

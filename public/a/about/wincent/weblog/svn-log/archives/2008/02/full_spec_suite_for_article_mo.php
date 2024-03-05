@@ -681,7 +681,7 @@
 
         <p>This spec suite covers every line of code in the Article model.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004093more"><div id="more"></div></div>
 

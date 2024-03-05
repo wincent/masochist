@@ -683,7 +683,7 @@
           is that this script be used as part of the build process.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003175more"><div id="more"></div></div>
 

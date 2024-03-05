@@ -688,7 +688,7 @@
           dimensions, just modify an existing one.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003669more"><div id="more"></div></div>
 

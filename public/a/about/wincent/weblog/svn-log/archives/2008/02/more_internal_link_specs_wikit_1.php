@@ -680,7 +680,7 @@
 
         <h3>More internal link specs (wikitext, c92f50a)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003934more"><div id="more"></div></div>
 

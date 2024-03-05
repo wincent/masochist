@@ -681,7 +681,7 @@
 
         <p>Include upgrade notes in application README.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003194more"><div id="more"></div></div>
 

@@ -681,7 +681,7 @@
 
         <p>Add extraction notes to the specs for the Taggable module.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003083more"><div id="more"></div></div>
 

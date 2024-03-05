@@ -683,7 +683,7 @@
 
         <p>Just like update_attribute except calls save! instead of save.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003795more"><div id="more"></div></div>
 

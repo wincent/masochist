@@ -682,7 +682,7 @@
 
         <p>Initial import (corresponds to Subversion revision 8717).</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003791more"><div id="more"></div></div>
 

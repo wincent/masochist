@@ -685,7 +685,7 @@
           under GC, so add a warning as a reminder that it needs to be revised.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002880more"><div id="more"></div></div>
 

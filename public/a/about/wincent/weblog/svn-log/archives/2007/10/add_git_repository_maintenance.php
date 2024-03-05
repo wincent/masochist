@@ -684,7 +684,7 @@
           job, and which does a &quot;git gc&quot; on all repositories.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002856more"><div id="more"></div></div>
 

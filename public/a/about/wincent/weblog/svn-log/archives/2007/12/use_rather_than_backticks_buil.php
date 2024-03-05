@@ -680,7 +680,7 @@
 
         <p>$() is superior because it can be nested if need be.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003353more"><div id="more"></div></div>
 

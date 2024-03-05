@@ -686,7 +686,7 @@
 
         <p>I overlooked including this in the original 2.0 RC 1 commit.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003149more"><div id="more"></div></div>
 

@@ -678,7 +678,7 @@
 
         <h3>Bump version number prior to release (wikitext, ce01c88)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004123more"><div id="more"></div></div>
 

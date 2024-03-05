@@ -681,7 +681,7 @@
 
         <p>Replace calls to NSAutorelease release with NSAutorelease drain.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003118more"><div id="more"></div></div>
 

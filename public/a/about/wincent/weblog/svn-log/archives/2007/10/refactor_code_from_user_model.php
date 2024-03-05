@@ -710,7 +710,7 @@
           conservative and I won't be taking it any further for the time-being.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003089more"><div id="more"></div></div>
 

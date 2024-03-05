@@ -690,7 +690,7 @@
           integrity. (The Rails validation is about UI polish, not integrity.)
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004216more"><div id="more"></div></div>
 

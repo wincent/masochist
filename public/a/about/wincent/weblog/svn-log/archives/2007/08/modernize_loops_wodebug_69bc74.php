@@ -676,7 +676,7 @@
 
         <p>Modernize loops by switching to Objective-C 2.0 fast enumeration.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002655more"><div id="more"></div></div>
 

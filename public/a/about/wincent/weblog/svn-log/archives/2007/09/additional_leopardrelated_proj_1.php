@@ -694,7 +694,7 @@
           show-branch&quot; more often to remind me where I actually am).
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003132more"><div id="more"></div></div>
 

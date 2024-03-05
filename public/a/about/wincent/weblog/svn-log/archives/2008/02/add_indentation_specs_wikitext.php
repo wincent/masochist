@@ -686,7 +686,7 @@
           portion won't break the nice indentation of the template as a whole.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004004more"><div id="more"></div></div>
 

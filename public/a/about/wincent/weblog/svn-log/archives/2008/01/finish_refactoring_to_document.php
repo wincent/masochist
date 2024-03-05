@@ -689,7 +689,7 @@
           refactoring is now done and all that's left are polish issues.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003728more"><div id="more"></div></div>
 

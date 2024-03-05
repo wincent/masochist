@@ -689,7 +689,7 @@
           PRINTABLE, IMG_START, PRINTABLE, IMG_END, PRINTABLE sequence.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004154more"><div id="more"></div></div>
 

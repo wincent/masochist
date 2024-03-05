@@ -686,7 +686,7 @@
           more places, not just in the headers.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003508more"><div id="more"></div></div>
 

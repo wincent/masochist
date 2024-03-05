@@ -688,7 +688,7 @@
           security practice (the model may be extended in the future).
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004092more"><div id="more"></div></div>
 

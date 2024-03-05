@@ -681,7 +681,7 @@
           (effectively all source files in the Wincent Build Tools).
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002484more"><div id="more"></div></div>
 

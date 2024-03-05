@@ -677,7 +677,7 @@
 
         <p>Xcode 3.0 no longer supports Zero Link, so turn it off.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002532more"><div id="more"></div></div>
 

@@ -684,7 +684,7 @@
           necessary to get the test suite building and running again.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003460more"><div id="more"></div></div>
 

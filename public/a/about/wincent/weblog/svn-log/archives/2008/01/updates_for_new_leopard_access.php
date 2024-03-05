@@ -687,7 +687,7 @@
           conformance with the new look in Apple's help pages on Leopard.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003662more"><div id="more"></div></div>
 

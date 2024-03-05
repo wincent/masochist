@@ -681,7 +681,7 @@
 
         <p>Two spec files were missing the executable bit.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004120more"><div id="more"></div></div>
 

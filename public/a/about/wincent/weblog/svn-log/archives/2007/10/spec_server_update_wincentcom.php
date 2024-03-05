@@ -682,7 +682,7 @@
           actually been included in the move to the RSpec trunk (b8c4b59).
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003065more"><div id="more"></div></div>
 

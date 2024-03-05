@@ -688,7 +688,7 @@
           in a plist or strings file, so issue a warning if found.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003358more"><div id="more"></div></div>
 

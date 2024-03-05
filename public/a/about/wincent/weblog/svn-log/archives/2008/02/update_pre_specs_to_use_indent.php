@@ -681,7 +681,7 @@
 
         <h3>Update pre specs to use indentation helper (wikitext, 221ca57)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004056more"><div id="more"></div></div>
 

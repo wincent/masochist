@@ -687,7 +687,7 @@
           documentation. Later on will look at embedding in-application help.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003495more"><div id="more"></div></div>
 

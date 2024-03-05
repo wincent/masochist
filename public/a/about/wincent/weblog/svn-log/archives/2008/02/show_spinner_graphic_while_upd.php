@@ -683,7 +683,7 @@
           Show spinner graphic while updating preview (wincent.com, a7dd462)
         </h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004084more"><div id="more"></div></div>
 

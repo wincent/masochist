@@ -684,7 +684,7 @@
 
         <p>Update format to match rest of code base.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002885more"><div id="more"></div></div>
 

@@ -683,7 +683,7 @@
           Set up FixtureReplacement and note how to do so in the documentation.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003057more"><div id="more"></div></div>
 

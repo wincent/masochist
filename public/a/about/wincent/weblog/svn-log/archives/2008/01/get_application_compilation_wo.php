@@ -683,7 +683,7 @@
 
         <p>We now have a buildable, runnable application on Leopard.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003529more"><div id="more"></div></div>
 

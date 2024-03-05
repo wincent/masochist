@@ -679,7 +679,7 @@
 
         <p>Remove invisible non-ASCII character in wiki_text.c source file.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003016more"><div id="more"></div></div>
 

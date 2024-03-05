@@ -687,7 +687,7 @@
           old code and instead relying on the new code in WOCommon.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003226more"><div id="more"></div></div>
 

@@ -682,7 +682,7 @@
           and advise Git to ignore the &quot;previous_failures.txt&quot; file.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003053more"><div id="more"></div></div>
 

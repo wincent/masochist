@@ -678,7 +678,7 @@
 
         <p>Add missing GPL v3 license header to Rakefile.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002516more"><div id="more"></div></div>
 

@@ -678,7 +678,7 @@
 
         <h3>Add URI matching rule (wikitext, e956ebb)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003866more"><div id="more"></div></div>
 

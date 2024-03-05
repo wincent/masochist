@@ -689,7 +689,7 @@
           the Doxygen comments have been updated to warn against subclassing.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002746more"><div id="more"></div></div>
 

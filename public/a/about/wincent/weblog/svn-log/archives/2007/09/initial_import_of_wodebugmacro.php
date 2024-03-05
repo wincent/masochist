@@ -685,7 +685,7 @@
 
         <p>Direct import of public portions from WOCommon.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002913more"><div id="more"></div></div>
 

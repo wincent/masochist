@@ -683,7 +683,7 @@
           preferences (if any) and installation of the command-line tool.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002958more"><div id="more"></div></div>
 

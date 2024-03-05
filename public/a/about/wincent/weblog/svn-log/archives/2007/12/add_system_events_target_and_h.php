@@ -687,7 +687,7 @@
           itself (as generated on 10.5.1) is included with this commit.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003214more"><div id="more"></div></div>
 

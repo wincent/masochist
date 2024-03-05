@@ -681,7 +681,7 @@
           svn.hamptoncatlin.com) was down so I exported using the SVN protocol.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003052more"><div id="more"></div></div>
 

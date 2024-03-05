@@ -681,7 +681,7 @@
 
         <h3>Add permalink column to products table (wincent.com, a4263df)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004218more"><div id="more"></div></div>
 

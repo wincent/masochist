@@ -692,7 +692,7 @@
           are stripped so the change has no effect in those parts of the string.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004109more"><div id="more"></div></div>
 

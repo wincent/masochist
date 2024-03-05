@@ -683,7 +683,7 @@
 
         <p>The vast majority of button sets are designed with this in mind.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003135more"><div id="more"></div></div>
 

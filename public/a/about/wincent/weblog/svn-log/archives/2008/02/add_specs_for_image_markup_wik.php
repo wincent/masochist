@@ -680,7 +680,7 @@
 
         <h3>Add specs for image markup (wikitext, 8358662)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004157more"><div id="more"></div></div>
 

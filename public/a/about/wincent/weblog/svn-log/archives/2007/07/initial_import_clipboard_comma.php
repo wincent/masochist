@@ -680,7 +680,7 @@
 
         <p>Corresponds to tip of trunk from old Subversion repository (r15).</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002442more"><div id="more"></div></div>
 

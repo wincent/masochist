@@ -679,7 +679,7 @@
 
         <h3>Upgrade to Haml 1.8.1 (wincent.com, 55f9609)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003812more"><div id="more"></div></div>
 

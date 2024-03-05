@@ -680,7 +680,7 @@
 
         <h3>Update products link in navbar (wincent.com, 76cf73f)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004227more"><div id="more"></div></div>
 

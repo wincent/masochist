@@ -20,7 +20,7 @@
       production mode should be fast enough) so we can turn it back on again.
     </p>
 
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 
   <li>
@@ -44,7 +44,7 @@
       queries because the Taggables have already been fetched.
     </p>
 
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 </ul>
 
@@ -52,7 +52,7 @@
 <ul>
   <li>
     <h4>Add product creation with icon uploading (wincent.com, b970662)</h4>
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 
   <li>
@@ -66,19 +66,19 @@
       on demand.
     </p>
 
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 
   <li>
     <h4>Update products link in navbar (wincent.com, 76cf73f)</h4>
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 
   <li>
     <h4>
       Add products listing to index, links are permalinks (wincent.com, 63db015)
     </h4>
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 
   <li>
@@ -89,7 +89,7 @@
       &quot;product_path&quot; didn't work.
     </p>
 
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 
   <li>
@@ -99,14 +99,14 @@
       controller itself.
     </p>
 
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 
   <li>
     <h4>
       Teach products controller to find all products (wincent.com, b794161)
     </h4>
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 
   <li>
@@ -115,7 +115,7 @@
     </h4>
     <p>And accompanying specs.</p>
 
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 
   <li>
@@ -125,14 +125,14 @@
       should pass.
     </p>
 
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 
   <li>
     <h4>Validate uniqueness of product permalinks (wincent.com, a33cdbc)</h4>
     <p>This is the validation and the corresponding spec.</p>
 
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 
   <li>
@@ -142,12 +142,12 @@
       FixtureReplacement.
     </p>
 
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 
   <li>
     <h4>Add permalink column to products table (wincent.com, a4263df)</h4>
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 </ul>
 
@@ -163,7 +163,7 @@
       controller, and concretely the &quot;index&quot; action.
     </p>
 
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 
   <li>
@@ -177,21 +177,21 @@
       integrity. (The Rails validation is about UI polish, not integrity.)
     </p>
 
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 
   <li>
     <h4>Require product names to be unique (wincent.com, b023972)</h4>
     <p>Add validation and corresponding spec.</p>
 
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 
   <li>
     <h4>Require name in products model (wincent.com, e323bf2)</h4>
     <p>Add validation and corresponding spec.</p>
 
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 
   <li>
@@ -201,14 +201,14 @@
       validations.
     </p>
 
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 
   <li>
     <h4>Make sure product name is not nil (wincent.com, 8ef596d)</h4>
     <p>Add a database-level constraint.</p>
 
-    <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+    <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
   </li>
 </ul>
 

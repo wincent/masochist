@@ -696,7 +696,7 @@
           &quot;-e&quot; set so as to abort early in the event of an error.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003170more"><div id="more"></div></div>
 

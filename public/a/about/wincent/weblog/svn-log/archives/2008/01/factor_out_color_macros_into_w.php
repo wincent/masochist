@@ -694,7 +694,7 @@
           have all classes which need to know about HUD colors import that.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003672more"><div id="more"></div></div>
 

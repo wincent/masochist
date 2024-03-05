@@ -678,7 +678,7 @@
 
         <h3>Ignore dot-so files on Linux (wikitext, 25c10e2)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004122more"><div id="more"></div></div>
 

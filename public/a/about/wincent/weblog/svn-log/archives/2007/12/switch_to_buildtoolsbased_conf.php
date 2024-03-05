@@ -686,7 +686,7 @@
           is BASE_DIR, which has been replaced with SRCROOT).
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003250more"><div id="more"></div></div>
 

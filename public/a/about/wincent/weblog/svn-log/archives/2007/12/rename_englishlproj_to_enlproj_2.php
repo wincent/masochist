@@ -685,7 +685,7 @@
           build should continue to work with no other modifications.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003410more"><div id="more"></div></div>
 

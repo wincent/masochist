@@ -684,7 +684,7 @@
 
         <p>This should really be NSUserDefaults here.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003520more"><div id="more"></div></div>
 

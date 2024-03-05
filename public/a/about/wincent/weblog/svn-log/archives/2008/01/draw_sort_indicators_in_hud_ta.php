@@ -689,7 +689,7 @@
           may be better off doing the drawing directly without calling super.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003597more"><div id="more"></div></div>
 

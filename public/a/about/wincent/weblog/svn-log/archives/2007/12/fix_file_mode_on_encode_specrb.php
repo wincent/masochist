@@ -683,7 +683,7 @@
           Fix file mode on encode_spec.rb (Wincent Strings Utility, b3e8416)
         </h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003339more"><div id="more"></div></div>
 

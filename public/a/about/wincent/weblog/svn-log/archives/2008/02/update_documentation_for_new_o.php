@@ -681,7 +681,7 @@
 
         <p>Add documentation for space_as_underscore and img_prefix.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004162more"><div id="more"></div></div>
 

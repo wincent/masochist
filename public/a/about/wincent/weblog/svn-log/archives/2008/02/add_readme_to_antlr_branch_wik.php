@@ -679,7 +679,7 @@
 
         <h3>Add readme to &quot;antlr&quot; branch (wikitext, 173f665)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003880more"><div id="more"></div></div>
 

@@ -685,7 +685,7 @@
           into the spec helper, where it can be used by all controller specs.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004089more"><div id="more"></div></div>
 

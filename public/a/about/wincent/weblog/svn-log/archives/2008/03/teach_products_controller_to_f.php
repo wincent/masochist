@@ -682,7 +682,7 @@
           Teach products controller to find all products (wincent.com, b794161)
         </h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004223more"><div id="more"></div></div>
 

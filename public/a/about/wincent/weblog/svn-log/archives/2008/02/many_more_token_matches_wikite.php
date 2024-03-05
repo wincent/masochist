@@ -682,7 +682,7 @@
           the H1_END (etc) tokens in order to detect the end-of-file condition.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003864more"><div id="more"></div></div>
 

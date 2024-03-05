@@ -680,7 +680,7 @@
 
         <h3>Fix typo in unordered list specs (wikitext, 2e7ed73)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003834more"><div id="more"></div></div>
 

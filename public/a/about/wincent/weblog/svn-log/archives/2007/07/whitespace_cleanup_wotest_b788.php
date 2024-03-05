@@ -681,7 +681,7 @@
           consistently) and trailing whitespace at the end of lines.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002525more"><div id="more"></div></div>
 

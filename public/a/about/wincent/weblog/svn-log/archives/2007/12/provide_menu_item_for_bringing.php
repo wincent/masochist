@@ -702,7 +702,7 @@
           decide to auto-quit the application when the last window is closed.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003448more"><div id="more"></div></div>
 

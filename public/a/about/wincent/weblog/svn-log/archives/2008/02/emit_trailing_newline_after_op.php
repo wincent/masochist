@@ -690,7 +690,7 @@
           nesting, it's necessary to start the block content on a new line.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003983more"><div id="more"></div></div>
 

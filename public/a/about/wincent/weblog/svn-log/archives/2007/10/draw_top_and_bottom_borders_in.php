@@ -694,7 +694,7 @@
           and bottom border drawing to a single place in the code).
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003011more"><div id="more"></div></div>
 

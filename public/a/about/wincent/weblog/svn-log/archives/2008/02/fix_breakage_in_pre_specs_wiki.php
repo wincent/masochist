@@ -684,7 +684,7 @@
           entering a PRE block for the first time.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004011more"><div id="more"></div></div>
 

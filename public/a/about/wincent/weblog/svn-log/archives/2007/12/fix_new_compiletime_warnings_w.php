@@ -685,7 +685,7 @@
           so make some tweaks to ensure warning-free builds.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003284more"><div id="more"></div></div>
 

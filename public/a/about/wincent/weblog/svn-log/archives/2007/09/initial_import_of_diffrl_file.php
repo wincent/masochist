@@ -686,7 +686,7 @@
           along the way to show what input it is seeing.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002921more"><div id="more"></div></div>
 

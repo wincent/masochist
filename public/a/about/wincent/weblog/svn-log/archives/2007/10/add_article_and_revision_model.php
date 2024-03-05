@@ -685,7 +685,7 @@
           benefit from the versioning you get with the wiki workflow.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003076more"><div id="more"></div></div>
 

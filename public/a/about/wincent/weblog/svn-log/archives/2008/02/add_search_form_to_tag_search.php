@@ -689,7 +689,7 @@
           enabled and click on the &quot;Search&quot; link in the navbar.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004196more"><div id="more"></div></div>
 

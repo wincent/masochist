@@ -676,7 +676,7 @@
 
         <p>Extend copyright range to 2007 for all files modified in 2007.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002587more"><div id="more"></div></div>
 

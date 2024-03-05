@@ -679,7 +679,7 @@
 
         <p>Add RDoc documentation for operation from the command line.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;<br /></p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;<br /></p>
 
         <div id="a002418more"><div id="more"></div></div>
 

@@ -679,7 +679,7 @@
 
         <p>This is already implicit thanks to the precompiled prefix header.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003526more"><div id="more"></div></div>
 

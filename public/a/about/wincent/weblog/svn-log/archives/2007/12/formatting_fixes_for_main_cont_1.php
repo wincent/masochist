@@ -683,7 +683,7 @@
           Minor rewrapping for readability, and remove some unnecessary braces.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003402more"><div id="more"></div></div>
 

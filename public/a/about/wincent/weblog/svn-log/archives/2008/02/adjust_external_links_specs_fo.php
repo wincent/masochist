@@ -679,7 +679,7 @@
 
         <h3>Adjust external links specs for indentation (wikitext, 63b004e)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003997more"><div id="more"></div></div>
 

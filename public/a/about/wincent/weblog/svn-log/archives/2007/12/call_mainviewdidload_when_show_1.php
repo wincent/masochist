@@ -687,7 +687,7 @@
           pane gets properly initialized at load time.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003417more"><div id="more"></div></div>
 

@@ -691,7 +691,7 @@
           however (the new window doesn't become main).
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003735more"><div id="more"></div></div>
 

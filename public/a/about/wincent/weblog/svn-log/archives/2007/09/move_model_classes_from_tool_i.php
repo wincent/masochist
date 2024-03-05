@@ -684,7 +684,7 @@
           modified to merely locate and call the GUI application.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002945more"><div id="more"></div></div>
 

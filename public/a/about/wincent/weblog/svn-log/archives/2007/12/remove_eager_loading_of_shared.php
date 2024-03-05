@@ -700,7 +700,7 @@
           both fast and safe. In this light the macro is the sanest solution.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003274more"><div id="more"></div></div>
 

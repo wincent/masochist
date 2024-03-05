@@ -683,7 +683,7 @@
 
         <p>Clean out irrelevant references from backup notification script.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003107more"><div id="more"></div></div>
 

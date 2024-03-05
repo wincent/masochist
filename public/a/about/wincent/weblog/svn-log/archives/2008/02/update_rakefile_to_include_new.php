@@ -692,7 +692,7 @@
 
         <p>In addition to the normal &quot;require 'wikitext'&quot;.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004171more"><div id="more"></div></div>
 

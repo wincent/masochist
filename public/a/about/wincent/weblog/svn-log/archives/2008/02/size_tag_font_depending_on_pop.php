@@ -690,7 +690,7 @@
           impopular tags) through to 2.0em (for the most popular).
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003968more"><div id="more"></div></div>
 

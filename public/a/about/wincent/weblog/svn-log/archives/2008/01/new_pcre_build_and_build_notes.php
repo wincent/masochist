@@ -682,7 +682,7 @@
 
         <p>This corresponds to the 7.4 release.</p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003506more"><div id="more"></div></div>
 

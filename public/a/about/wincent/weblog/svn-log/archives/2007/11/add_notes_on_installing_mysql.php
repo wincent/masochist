@@ -687,7 +687,7 @@
           instructions added to the config/database.yml file in Rails 2.0RC2.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003198more"><div id="more"></div></div>
 

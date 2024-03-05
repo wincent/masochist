@@ -689,7 +689,7 @@
           emailMessage:subject:to: method rather than casting to Cocoa objects.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002870more"><div id="more"></div></div>
 

@@ -687,7 +687,7 @@
           data changes the entire spec suite will be run automatically.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a003954more"><div id="more"></div></div>
 

@@ -679,7 +679,7 @@
 
         <h3>Add specs for articles routing (wincent.com, bc941e4)</h3>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004095more"><div id="more"></div></div>
 

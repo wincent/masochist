@@ -685,7 +685,7 @@
           edits, so the ability to go back in time is not as important).
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a004075more"><div id="more"></div></div>
 

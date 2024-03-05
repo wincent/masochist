@@ -686,7 +686,7 @@
           seed another (psuedo-random) generator.
         </p>
 
-        <p>Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</p>
+        <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 
         <div id="a002864more"><div id="more"></div></div>
 
