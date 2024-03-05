@@ -1357,7 +1357,7 @@ defaults write com.wincent.WinSwitch &quot;Menu bar style&quot; '5'
             align="middle"
         /></a>
       </p>
-      <p><a href="mailto:win@wincent.com">Report broken link</a></p>
+
     </div>
   </body>
 </html>

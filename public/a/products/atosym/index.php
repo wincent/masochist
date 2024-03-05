@@ -888,7 +888,7 @@ Line 10 of "source.m" starts at address 0x1f70 &lt;main+78&gt; and
             align="middle"
         /></a>
       </p>
-      <p><a href="mailto:win@wincent.com">Report broken link</a></p>
+
     </div>
   </body>
 </html>

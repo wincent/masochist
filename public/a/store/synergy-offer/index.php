@@ -781,7 +781,7 @@ Copy and paste license code here</textarea
             align="middle"
         /></a>
       </p>
-      <p><a href="mailto:win@wincent.com">Report broken link</a></p>
+
     </div>
   </body>
 </html>

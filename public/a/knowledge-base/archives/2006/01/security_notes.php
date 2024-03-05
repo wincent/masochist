@@ -1424,7 +1424,7 @@ php_admin_value open_basedir "/home/johnsmith/public_html/"</pre
             align="middle"
         /></a>
       </p>
-      <p><a href="mailto:win@wincent.com">Report broken link</a></p>
+
     </div>
   </body>
 </html>
