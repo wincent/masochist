@@ -760,7 +760,7 @@
             <p>Basically, headers like the following were being added:</p>
 
             <pre>
-X-Authentication-Warning: s69819.wincent.com: apache set sender to user@example.com using -f</pre
+X-Authentication-Warning: s69819.example.com: apache set sender to user@example.com using -f</pre
             >
 
             <h3>The solution</h3>

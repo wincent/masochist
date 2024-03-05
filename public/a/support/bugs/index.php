@@ -674,11 +674,6 @@
             Bugzilla-powered tracker will be replaced with a custom Rails
             application. Please check back again soon.
           </p>
-
-          <p>
-            If you'd like to report a bug via email, my address is
-            <a href="mailto:win@wincent.com">win@wincent.com</a>.
-          </p>
         </div>
       </div>
       <div id="right">

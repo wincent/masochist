@@ -1271,24 +1271,11 @@
 
           <ul>
             <li>[Note] Qualified for use with iTunes version 7.4.2.</li>
-            <li>
-              [Note] Depending on the release date for Leopard this may be the
-              last release before Leopard comes out; if you have access to the
-              Leopard seeds please
-              <a href="mailto:win@wincent.com">notify me</a> of any problems you
-              encounter running Synergy on the latest seed.
-            </li>
           </ul>
 
           <h4><a id="3.1.5b" name="3.1.5b"></a>3.1.5b (23 August 2007)</h4>
 
           <ul>
-            <li>
-              [Note] More changes for Leopard compatibility; those of you who
-              have access to Leopard please
-              <a href="mailto:win@wincent.com">notify me</a> of any problems you
-              encounter running Synergy on Leopard.
-            </li>
             <li>[Note] Qualified for use with iTunes version 7.3.2.</li>
           </ul>
 

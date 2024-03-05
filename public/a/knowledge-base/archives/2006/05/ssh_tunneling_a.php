@@ -786,7 +786,7 @@
 sudo ssh -L 143:wincent.com:143 \
          -L 110:wincent.com:110 \
          -L 25:wincent.com:25   \
-         robinson@wincent.com</pre
+         robinson@example.com</pre
             >
 
             <p>
@@ -803,7 +803,7 @@ sudo ssh -L 143:wincent.com:143 \
 sudo ssh -L 10143:wincent.com:143 \
          -L 10110:wincent.com:110 \
          -L 10025:wincent.com:25   \
-         robinson@wincent.com</pre
+         robinson@example.com</pre
             >
 
             <p>
@@ -812,7 +812,7 @@ sudo ssh -L 10143:wincent.com:143 \
               network traffic that's sent to the local ports on this machine to
               the remote ports on the host". The traffic is encrypted over the
               SSH connection. (Needless to say, the account
-              "robinson@wincent.com" doesn't actually exist; I'm just using it
+              "robinson@example.com" doesn't actually exist; I'm just using it
               for illustration purposes. I guess it'll only be a question of a
               few weeks before I start seeing spam directed to that non-existent
               address...)

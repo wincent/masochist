@@ -780,9 +780,7 @@
               interface showing registered user email address and buttons for
               purchasing, registering, unregistering and recovering lost license
               codes. Codes have already been sent to existing registered users;
-              please contact me (<a href="mailto:support@wincent.com"
-                >support@wincent.com</a
-              >) if you have not received your code.
+              please contact me if you have not received your code.
             </li>
           </ul>
 

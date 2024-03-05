@@ -655,9 +655,7 @@
 
           <p>
             <a href="../../about/">Wincent</a> offers a range of web design
-            services under the Exact Web Design (<a href="http://exactweb.net/"
-              >exactweb.net</a
-            >) brand.
+            services.
           </p>
 
           <ul>

@@ -1009,7 +1009,7 @@
         I'm pleased to announce that Install version 1.3.1 is now available to
         licensees. This is a maintenance release; for more details see the full
         change history, or the announcement posted to the install-announce
-        mailing list. Please contact me at win@wincent.com...
+        mailing list...
         <p>
           <a
             href="https://wincent.com/a/news/archives/2007/06/install_131_rel.php"

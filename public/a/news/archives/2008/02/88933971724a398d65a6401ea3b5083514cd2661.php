@@ -741,13 +741,6 @@
           same will be true in this case.
         </p>
         <p>
-          If you'd like to help with the renewal you can send your donation to
-          me via PayPal.
-          You can contact me at
-          <a href="mailto:win@wincent.com">win@wincent.com</a> if you have any
-          questions or comments.
-        </p>
-        <p>
           As was the case last time, the project will continue to survive even
           if I can't renew the domains, but I'd like to keep providing them if I
           can.

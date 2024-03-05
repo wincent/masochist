@@ -1031,9 +1031,7 @@
             If you'd like to help with the renewal you can send your donation to
             me via PayPal.
             My priority will be to keep the dot-org domain alive; the others
-            will follow suit if I receive enough donations. You can contact me
-            at <a href="mailto:win@wincent.com">win@wincent.com</a> if you have
-            any questions or comments.
+            will follow suit if I receive enough donations.
           </p>
           <p>
             As was the case last time, the project will continue to survive even
@@ -1088,13 +1086,6 @@
             bansshee.org, on Monday. If that goes well then I'll continue
             switching the other domains (13 of them) to the INetU DNS servers in
             the course of the week.
-          </p>
-          <p>
-            If you notice any problems please get in touch with me (<a
-              href="mailto:win@wincent.com"
-              >win@wincent.com</a
-            >). wincent.com itself will probably be the last domain to get
-            switched over.
           </p>
 
           <p class="more-categories">
@@ -1598,10 +1589,7 @@
           <p>
             If you sent me email in the last few hours there is a small chance
             that I might not have received it. If you're expecting a reply from
-            me but haven't received one please get in touch with me (<a
-              href="mailto:win@wincent.com"
-              >win@wincent.com</a
-            >).
+            me but haven't received one please get in touch with me.
           </p>
 
           <p class="more-categories">

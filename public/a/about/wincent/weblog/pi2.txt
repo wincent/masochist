@@ -1,6 +1,6 @@
 Mime-Version: 1.0 (Apple Message framework v752.3)
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <90D4679A-F819-471B-9D28-87CDDB049712@wincent.com>
+Message-Id: <90D4679A-F819-471B-9D28-87CDDB049712@example.com>
 Content-Type: text/plain;
 	charset=WINDOWS-1252;
 	delsp=yes;
