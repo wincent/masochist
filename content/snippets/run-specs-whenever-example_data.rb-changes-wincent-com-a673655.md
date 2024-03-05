@@ -5,4 +5,4 @@ tags: snippets
 
 Add an .autotest file so that whenever the FixtureReplacement sample data changes the entire spec suite will be run automatically.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

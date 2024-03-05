@@ -5,4 +5,4 @@ tags: snippets
 
 These now cover a number of edge cases with invalid input.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

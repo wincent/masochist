@@ -7,4 +7,4 @@ The check_cr() function was misbehaving when the input files contained spaces in
 
 Now the check_cr() function will accept filenames with spaces (or even tabs) in their names. It will not handle filenames with linefeeds in them, but this should not be a very common case.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

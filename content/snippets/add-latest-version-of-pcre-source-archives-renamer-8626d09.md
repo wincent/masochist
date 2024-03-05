@@ -5,4 +5,4 @@ tags: snippets
 
 This corresponds to the 7.4 release.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

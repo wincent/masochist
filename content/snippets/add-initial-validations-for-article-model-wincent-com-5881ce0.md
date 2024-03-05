@@ -5,4 +5,4 @@ tags: snippets
 
 At this stage we just validate the presence of the title.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -7,4 +7,4 @@ In general I prefer in-place editing where possible but there are some cases whe
 
 Not sure why, but at some point my "admin_only" and "logged_in_only" helpers broke, so I've simplified them by removing the "simple_concat" method and now they're working again.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

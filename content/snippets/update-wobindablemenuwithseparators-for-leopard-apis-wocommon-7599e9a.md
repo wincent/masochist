@@ -5,4 +5,4 @@ tags: snippets
 
 Now uses NSMenuItem instances rather than untyped objects which conform to the NSMenuItem protocol.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

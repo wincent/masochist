@@ -5,4 +5,4 @@ tags: snippets
 
 From NSDictionary creation category. This commit also includes some minor re-wrapping close to the removed method (no substantive changes).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

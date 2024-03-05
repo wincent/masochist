@@ -9,4 +9,4 @@ So in this commit we have a host of new stuff: new CSS, more view templates, the
 
 From here on will try to be more disciplined and break up the changes a little more!
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

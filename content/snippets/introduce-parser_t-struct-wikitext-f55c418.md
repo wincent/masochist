@@ -7,4 +7,4 @@ This will make passing parameters around much easier because we'll be able to pa
 
 Once fully completed this will be a substantial clean-up and a big enhancement for maintainability.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

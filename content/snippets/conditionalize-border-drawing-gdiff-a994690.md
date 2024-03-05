@@ -5,4 +5,4 @@ tags: snippets
 
 Only attempt drawing if the border's rectangle intersects with the visible area.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

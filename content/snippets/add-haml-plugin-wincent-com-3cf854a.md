@@ -5,4 +5,4 @@ tags: snippets
 
 Note that HTTP access to hamptoncatlin.com and subdomains (including svn.hamptoncatlin.com) was down so I exported using the SVN protocol.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

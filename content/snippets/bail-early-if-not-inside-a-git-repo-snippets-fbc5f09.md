@@ -5,4 +5,4 @@ tags: snippets
 
 This should allow us to continue gracefully if building from a source other than a Git repository working tree (like a tarball, for example).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

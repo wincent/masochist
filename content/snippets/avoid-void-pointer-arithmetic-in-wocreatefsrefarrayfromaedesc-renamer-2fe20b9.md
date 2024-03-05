@@ -5,4 +5,4 @@ tags: snippets
 
 This code reads more nicely and is perhaps less error prone if we do it without void pointer arithmetic.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

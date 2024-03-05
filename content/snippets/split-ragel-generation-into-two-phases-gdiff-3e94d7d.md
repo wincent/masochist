@@ -13,4 +13,4 @@ The generation of dot files was removed entirely to eliminate a potential source
 
 Although the spurious rebuilds persist (curiously only in Release builds, not in Debug builds) I am going to keep this commit as I think the two phase approach is more robust. I can later add in dot-file generation as a separate target if desired.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

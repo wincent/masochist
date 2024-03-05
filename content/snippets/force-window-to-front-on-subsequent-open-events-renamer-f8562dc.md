@@ -7,4 +7,4 @@ Now we force the main window to the front on subsequent "open" events, which mea
 
 I am not sure exactly why I have to force this in this way, nor why the controller's window message returns nil, but it works.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

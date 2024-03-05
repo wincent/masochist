@@ -7,4 +7,4 @@ Ripping out the atoi() calls allows another great simplification to the state ma
 
 This not only saves a few lines of code, it should also be faster due to the saved function calls.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

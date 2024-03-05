@@ -7,4 +7,4 @@ Instead of putting the gutter views and file views inside a scroll view put only
 
 I am not sure whether this is a limitation of the Cocoa text system or there is some kind of magic incantation that would have enabled it to work the other way, but without access to the source code it seems doubtful that it would be worth the effort of trying to figure out what's going on in the bowels of AppKit.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

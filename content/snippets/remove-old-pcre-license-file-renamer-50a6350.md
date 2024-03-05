@@ -5,4 +5,4 @@ tags: snippets
 
 Will later add a copy phase to copy the license from the new version into the built product.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

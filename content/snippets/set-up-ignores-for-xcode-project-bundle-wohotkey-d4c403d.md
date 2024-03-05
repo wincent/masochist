@@ -5,4 +5,4 @@ tags: snippets
 
 Set the standard ignores for the Xcode project bundle (all "mode1" files and their variants, all "pbxuser" files except for "default.pbxuser").
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

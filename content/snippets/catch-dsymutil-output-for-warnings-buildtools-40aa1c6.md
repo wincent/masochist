@@ -7,4 +7,4 @@ Use the regular expression matcher built in to Bash 3.0 and up to check the dsym
 
 This approach is better than letter the dsymutil-generated warnings go through to the user because it makes explicit the likely cause as well as the required solution.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

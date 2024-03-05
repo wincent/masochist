@@ -9,4 +9,4 @@ The docs do recognize that you might want to make something else your nib owner 
 
 The solution here is to do some special initialization in our NSWindowController subclass. We locate and instantiate the nib ourselves with the desired owner (the document subclass), find the "MainWindow" among the top-level objects, call super using initWithWindow: (so it gets a reference to the window). In this way we both get the owner that we want and the window controller properly gets a reference to the window it should control.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

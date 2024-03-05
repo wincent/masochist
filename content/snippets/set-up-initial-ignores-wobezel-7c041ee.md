@@ -5,4 +5,4 @@ tags: snippets
 
 Add ".gitignore" file to ignore "bak" and "temp" files.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

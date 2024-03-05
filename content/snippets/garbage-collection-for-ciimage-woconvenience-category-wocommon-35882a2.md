@@ -5,4 +5,4 @@ tags: snippets
 
 Remove old reference-counting code (no longer needed under GC and Leopard).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

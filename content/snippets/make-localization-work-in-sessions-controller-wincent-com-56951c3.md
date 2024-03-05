@@ -5,4 +5,4 @@ tags: snippets
 
 Fix a few typos ("localize" for "localized") and add a "require" to get localization working in the sessions controller.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

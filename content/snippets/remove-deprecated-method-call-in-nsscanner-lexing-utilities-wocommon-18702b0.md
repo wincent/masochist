@@ -5,4 +5,4 @@ tags: snippets
 
 "copy" is now recommended in favor of the deprecated "string" method, but in this case we don't even need to worry about that: just pass back the temporary string, even though it's mutable.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

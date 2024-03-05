@@ -5,4 +5,4 @@ tags: snippets
 
 Teach the new wrapper application to take on these two responsibilities that were previously handled by the installer.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

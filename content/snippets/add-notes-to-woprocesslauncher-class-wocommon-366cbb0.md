@@ -5,4 +5,4 @@ tags: snippets
 
 The retain-based model used by the WOProcessLauncher class won't work under GC, so add a warning as a reminder that it needs to be revised.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

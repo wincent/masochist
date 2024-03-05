@@ -3,4 +3,4 @@ title: Add specs for case insensitive tokenization of TT tokens (wikitext, 93ceb
 tags: snippets
 ---
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

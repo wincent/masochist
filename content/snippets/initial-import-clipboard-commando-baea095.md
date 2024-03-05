@@ -5,4 +5,4 @@ tags: snippets
 
 Corresponds to tip of trunk from old Subversion repository (r15).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

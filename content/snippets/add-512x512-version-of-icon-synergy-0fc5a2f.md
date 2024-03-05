@@ -5,4 +5,4 @@ tags: snippets
 
 As noted elsewhere for Synergy Advance, the latest Leopard seed allows me to finally integrate the high-resolution version of the Synergy icon.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

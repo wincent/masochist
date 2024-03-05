@@ -5,4 +5,4 @@ tags: snippets
 
 Now that this code no longer needs to run on Jaguar we can replace the old-fashioned mutexes with @sychronized blocks.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

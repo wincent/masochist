@@ -7,4 +7,4 @@ The latest preview seed of Leopard mysteriously breaks much of the HOM code that
 
 So this commit either modifies or outright removes about 90 files from the source tree; somewhat painful to throw away so much work, but it seems the pragmatic thing to do.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

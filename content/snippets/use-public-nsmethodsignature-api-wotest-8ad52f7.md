@@ -5,4 +5,4 @@ tags: snippets
 
 Use formerly private API, now exposed in Leopard.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -52,7 +52,7 @@ As noted on the Nightlog pages:
 
 > Nightly builds are generated once per day by an automated system; they are not official releases and they receive no human testing prior to being uploaded. They are provided with no warranty of any kind; use them at your own risk.
 
-If you discover a problem please report it via the bug tracking and feature requests database, or contact me by sending an email to <win@wincent.com>.
+If you discover a problem please report it via the bug tracking and feature requests database, or contact me by sending an email to <example@example.com>.
 
 ### See also
 

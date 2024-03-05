@@ -5,4 +5,4 @@ tags: snippets
 
 These don't belong in here under GC.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

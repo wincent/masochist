@@ -9,4 +9,4 @@ These changes basically make the UpdateStringsFile.sh script redundant, so remov
 
 I am still not entirely happy with this script -- it is now showing its age -- despite the fact that it works. In the future will probably do some more refactoring to clean this up and correctly distribute responsibilities among this, the UpdateXibs.sh script, and possibly others.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

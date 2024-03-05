@@ -5,4 +5,4 @@ tags: snippets
 
 It isn't immediately obvious that the in_place_editor_field method expects a symbol or string parameter that indicates the name of an instance variable (normal locals won't work), so document that.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

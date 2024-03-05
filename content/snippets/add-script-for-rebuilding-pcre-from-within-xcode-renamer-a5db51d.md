@@ -5,4 +5,4 @@ tags: snippets
 
 I'd still like to make this more dynamic, but it is a good start.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

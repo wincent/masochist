@@ -5,4 +5,4 @@ tags: snippets
 
 Although we don't strictly need to parse the input file passed in using the -strings switch (as we're just doing a simple find and replace) parse it anyway because in this way we can hopefully get the encoding right on files which don't have BOMs.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

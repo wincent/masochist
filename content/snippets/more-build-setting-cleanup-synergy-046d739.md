@@ -5,4 +5,4 @@ tags: snippets
 
 Remove old version number settings and the disk image script that made use of them.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

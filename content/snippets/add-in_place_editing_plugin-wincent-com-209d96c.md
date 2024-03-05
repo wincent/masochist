@@ -5,4 +5,4 @@ tags: snippets
 
 Initial import (corresponds to Subversion revision 8717).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

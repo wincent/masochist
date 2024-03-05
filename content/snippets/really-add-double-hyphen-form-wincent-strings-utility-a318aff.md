@@ -7,4 +7,4 @@ The previous commit didn't go far enough because the Fl macro only appends a sin
 
 Also, for better consistency, use Fl everywhere, not just on optional switches. This means that non-optional switches also appear in bold.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

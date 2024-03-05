@@ -9,4 +9,4 @@ This was never a big deal as the structs themselves were typically small (defaul
 
 The key piece of the puzzle is that the object returned by Data_Wrap_Struct must be locatable on the C stack in order for Ruby to refrain from collecting it prematurely. Without the volatile keyword the compiler will see that the pointer is initialized and then never used again and is free to optimize it away to nothing, which then allows Ruby to go ahead and free the structure before its time. The volatile keyword here prevents this optimization, at least in GCC, and is apparently an "accepted hack" that is used in the Ruby source itself.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

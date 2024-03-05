@@ -5,4 +5,4 @@ tags: snippets
 
 Remove scripts made redundant by use of Walrus templates.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

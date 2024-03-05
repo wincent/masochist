@@ -9,4 +9,4 @@ This was a bit of an anomaly, as other HUD classes had to include the table view
 
 So extract the color macros out into a separate file, WOHUD.h, and have all classes which need to know about HUD colors import that.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

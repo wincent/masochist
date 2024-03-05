@@ -5,4 +5,4 @@ tags: snippets
 
 Need tokens for these so that they can be treated specially in the internal link handling (these are the only entities allowed in the link target).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

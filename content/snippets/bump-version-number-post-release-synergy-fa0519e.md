@@ -5,4 +5,4 @@ tags: snippets
 
 Bump version number to 3.5a2+.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

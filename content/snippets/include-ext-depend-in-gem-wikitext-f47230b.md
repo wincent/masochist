@@ -5,4 +5,4 @@ tags: snippets
 
 This needed in order for "gem install" to work.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 There is no useful substitute for this call, and testing shows that this codepath is never exercised, at least not on Mac OS X 10.5.1, so drop it.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

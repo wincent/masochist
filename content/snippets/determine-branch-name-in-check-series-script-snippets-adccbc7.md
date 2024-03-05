@@ -9,4 +9,4 @@ In order to get the list of commits that really belong to the topic branch and o
 
 This commit adds code for automatically detecting what branch we are on (by reading and parsing GIT_DIR/HEAD), finding out the "remote" and "merge" values for that branch, and then using them to get an accurate list of the commits unique to the topic branch.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

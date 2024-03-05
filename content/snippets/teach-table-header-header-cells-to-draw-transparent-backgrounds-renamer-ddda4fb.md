@@ -5,4 +5,4 @@ tags: snippets
 
 This unfortuantely requires overriding a private method, but it seems to be the only way.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

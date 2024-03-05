@@ -5,4 +5,4 @@ tags: snippets
 
 Remove redundant build settings on aggregate targets, leaving only the PRODUCT_NAME intact (necessary for dependency analysis).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

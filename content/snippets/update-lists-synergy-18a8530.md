@@ -5,4 +5,4 @@ tags: snippets
 
 Preparing for release of 3.5a4.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

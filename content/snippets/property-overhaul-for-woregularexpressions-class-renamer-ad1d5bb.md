@@ -7,4 +7,4 @@ Replace hand-coded accessors with Objective-C 2.0 properties and synthesized acc
 
 This should probably be a series of commits but I the changes were made simultaneously seeing as they required pretty much each file to be swept over in its entirety.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

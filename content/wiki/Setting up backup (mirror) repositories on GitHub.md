@@ -237,7 +237,7 @@ Start editing the crontab:
 
 And give it content something like this:
 
-    MAILTO="win@wincent.com"
+    MAILTO="example@example.com"
     PATH=/usr/local/bin:/bin:/usr/bin
     @hourly ${HOME}/tools/github-mirror.sh
 

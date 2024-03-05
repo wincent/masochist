@@ -5,4 +5,4 @@ tags: snippets
 
 Use tabs consistently (previously there were mixed hard tabs and soft tabs).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

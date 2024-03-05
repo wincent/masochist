@@ -5,4 +5,4 @@ tags: snippets
 
 Tell Git to ignore ".bak" and ".temp" files, as well as the temporary file created as part of the build numbering system.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

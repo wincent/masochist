@@ -5,4 +5,4 @@ tags: snippets
 
 It appears that PCRE_MATCH_LIMIT and its companion, PCRE_MATCH_LIMIT_RECURSION, no longer appear in the test suite, so change the code comments accordingly to match.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

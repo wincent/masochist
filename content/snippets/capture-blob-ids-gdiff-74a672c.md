@@ -11,4 +11,4 @@ Given that this requires the addition of the ASCII capture machinery I also use 
 
 At this point I did some experimentation and discovered that quoted paths and numeric escapes of the form "\\ddd" are used whenever a path contains non-ASCII characters in it. This commit includes some proof-of-concept code for recognizing and recording these numeric escapes, although as noted in the comments to make it actually work I'll need to instead capture raw bytes one by one (most likely into an NSMutableData object) and finally converting the data to a string in one shot rather than working at the per-character level as I currently do.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

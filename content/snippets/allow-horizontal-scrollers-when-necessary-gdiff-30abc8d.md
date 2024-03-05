@@ -5,4 +5,4 @@ tags: snippets
 
 Although we don't want our scroll views to have vertical scrollers we do want them to have horizontal ones if the displayed content is too wide.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

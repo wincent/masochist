@@ -5,4 +5,4 @@ tags: snippets
 
 We don't need to go through a mediating NSObjectController here, we can just bind to the WOREnamerController instance directly.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

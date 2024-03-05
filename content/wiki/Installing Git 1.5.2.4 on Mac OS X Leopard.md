@@ -1,5 +1,6 @@
 ---
 tags: git wiki
+title: Installing Git 1.5.2.4 on Mac OS X Leopard
 ---
 
 Notes made while installing [Git 1.5.2.4](/wiki/Git_1.5.2.4) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard).
@@ -55,7 +56,7 @@ I also had to undertake some of the configuration described in "[Git quickstart]
 
     # personalize these with your own name and email address
     git config --global user.name "Wincent Colaiuta"
-    git config --global user.email "win@wincent.com"
+    git config --global user.email "example@example.com"
 
     # colorize output
     git config --global color.status auto

@@ -7,4 +7,4 @@ Note also that we just use "git log --pretty=format" rather than piping through 
 
 There is a strange behavioural discrepancy here with newlines depending on whether the script is run interactively or via Xcode; work around it by just echo a blank line rather than trying to pass "\\n".
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

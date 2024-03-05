@@ -5,4 +5,4 @@ tags: snippets
 
 Add specs for the -extract switch and fix a bug discovered as a result.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

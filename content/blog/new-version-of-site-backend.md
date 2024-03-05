@@ -6,7 +6,7 @@ cache_breaker: 1
 
 I'm currently testing a new version of the [Rails](/wiki/Rails) application that powers this site. Once that's complete I'll be taking the site offline briefly in order to deploy to the production environment. Read on for a full listing of what's coming.
 
-**Update:** The new version has now been deployed. Please [let me know](mailto:win@wincent.com){.mailto} if you notice any problems.
+**Update:** The new version has now been deployed. Please [let me know](mailto:example@example.com){.mailto} if you notice any problems.
 
 # What's new
 

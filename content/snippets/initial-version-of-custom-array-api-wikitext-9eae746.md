@@ -5,4 +5,4 @@ tags: snippets
 
 This is a minimal implementation, not a full replacement for the Ruby Array class, but it does what we need it to.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

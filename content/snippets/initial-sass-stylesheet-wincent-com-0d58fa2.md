@@ -5,4 +5,4 @@ tags: snippets
 
 Just a few top level elements styled for now, as well as flashes and the beginnings of the header and footer.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

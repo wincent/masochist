@@ -5,4 +5,4 @@ tags: snippets
 
 Remove embedded $Id$ tags from all source files. These are specific to Subversion and are no longer relevant due to the migration to Git.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

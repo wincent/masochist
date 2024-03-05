@@ -5,4 +5,4 @@ tags: snippets
 
 Add Rakefile task for uploading RDoc documentation to RubyForge website.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

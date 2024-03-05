@@ -5,4 +5,4 @@ tags: snippets
 
 Provide a write accessor which accepts an internal link prefix in UTF-8 encoding, stores it to an instance variable, and also stores a UCS-2 copy in a separate instance variable. The latter will be used during transformations while the former is the version that's visible to the caller via the API.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

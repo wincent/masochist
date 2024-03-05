@@ -5,4 +5,4 @@ tags: snippets
 
 Remove the dealloc method entirely, as it is now redundant under GC.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

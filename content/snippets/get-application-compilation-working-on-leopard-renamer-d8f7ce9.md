@@ -5,4 +5,4 @@ tags: snippets
 
 We now have a buildable, runnable application on Leopard.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

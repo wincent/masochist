@@ -31,4 +31,4 @@ I still believe that server-side measures and client-side filtering are very imp
 
 As part of this I have plans to revamp this site and make it more open and integrated. Yes, my initial dislike for all things [Web 2.0](http://wincent.com/wiki/Web%202.0) has settled down and I'm planning on taking from it the best bits and leaving out the bits I don't like. Once the revamp is done you'll still find a [contact form](http://wincent.com/a/contact/mail/) for those who can't send email, but you'll find my email address writ up front and large for those who want to get in touch quickly and easily via email.
 
-Please contact me (<win@wincent.com>) if you have any comments or suggestions.
+Please contact me (<example@example.com>) if you have any comments or suggestions.

@@ -66,4 +66,4 @@ See [this post](/blog/clearing-up-confusion-about-synergy-version-numbers) for m
 
 As a general business principle I am strongly in favor of rewarding customers with discounts, but in the case of Synergy, the license price is so low (5€) that there is really no scope for applying discounts.
 
-While a straight discount is not possible, I would be happy to explore other ways of rewarding your patronage. If you are a Macheist user and would like to purchase a license, you're welcome to [get in touch with me](mailto:win@wincent.com){.mailto} and I'll organize a complimentary license for a friend of your choice.
+While a straight discount is not possible, I would be happy to explore other ways of rewarding your patronage. If you are a Macheist user and would like to purchase a license, you're welcome to get in touch with me and I'll organize a complimentary license for a friend of your choice.

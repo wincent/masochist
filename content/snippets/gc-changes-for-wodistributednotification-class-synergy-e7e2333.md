@@ -5,4 +5,4 @@ tags: snippets
 
 The autorelease calls are no longer needed, doubly so because this is a singleton class and was never released prior to GC anyway.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

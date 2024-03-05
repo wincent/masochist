@@ -9,4 +9,4 @@ This commit therefore gets rid of the simplistic find-and-replace substitution t
 
 The algorithm is smart enough to detect direct and indirect infinite recursion (self-referential subsitutions), allow repeated substitutions, and bail in the event that no suitable substitution can be found.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

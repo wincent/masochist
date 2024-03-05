@@ -7,7 +7,7 @@ title: GnuPG cheat sheet
 # Export a public key
 
 ```shell
-$ gpg --export -a win@wincent.com
+$ gpg --export -a example@example.com
 ```
 
 Sample output [here](/snippets/122).
@@ -90,7 +90,7 @@ gpg: sending key 134D9429 to hkp server keys.gnupg.net
 ```shell
 $ gpg --keyserver pgp.mit.edu --recv-keys 0x134D9429
 gpg: requesting key 134D9429 from hkp server pgp.mit.edu
-gpg: key 134D9429: "Wincent Colaiuta <win@wincent.com>" not changed
+gpg: key 134D9429: "Greg Hurrell <greg@hurrell.net>" not changed
 gpg: Total number processed: 1
 gpg:              unchanged: 1
 ```

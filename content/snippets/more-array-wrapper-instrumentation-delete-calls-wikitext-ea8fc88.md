@@ -7,4 +7,4 @@ This time we instrument delete calls. Turns out that almost all of them (about 2
 
 So we'll optimize for exactly that case: deleting from the end (most likely by simply changing the count).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

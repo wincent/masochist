@@ -7,4 +7,4 @@ Add tests to explore known issues with matching UTF-8 text. Add an errorCode pro
 
 The actual cause of the problem was that I was passing in the string length in characters rather than bytes.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

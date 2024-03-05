@@ -5,4 +5,4 @@ tags: snippets
 
 Still have to implement the code that raises an exception for inacceptable input, but the basic set of specs already passes.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

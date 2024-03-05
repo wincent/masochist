@@ -5,4 +5,4 @@ tags: snippets
 
 As mentioned in 9729ba7, clean things up by extracting the sort descriptor functionality into a separate category.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

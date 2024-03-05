@@ -5,4 +5,4 @@ tags: snippets
 
 WOHelp and WOSynergyHelp are no longer used.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

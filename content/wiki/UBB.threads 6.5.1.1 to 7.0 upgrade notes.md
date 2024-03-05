@@ -1,5 +1,6 @@
 ---
 tags: ubb.threads wiki
+title: UBB.threads 6.5.1.1 to 7.0 upgrade notes
 ---
 
 # Backup
@@ -108,7 +109,7 @@ Only glitch at end is that I saw some [PHP](/wiki/PHP) warnings with regard to m
         -   Primary Settings
             -   General
                 -   Community Name: Wincent Forums
-                -   Board Email Address: <forums-noreply@wincent.com>
+                -   Board Email Address: <noreply@example.com>
                 -   Show Debug Information in Footer? no
             -   Censor
                 -   Enable Censor?: yes

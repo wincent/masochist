@@ -5,4 +5,4 @@ tags: snippets
 
 Make the target package name argument optional as well; if it is not supplied the a name will be derived from the PRODUCT_NAME build setting by appending ".pkg".
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

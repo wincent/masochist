@@ -1,12 +1,13 @@
 ---
 tags: git wiki
+title: Git repository maintenance
 ---
 
 In order to keep repository size and performance at their best I set up a simple cron job to run `git gc` (see `man git-gc` for more information) once per month.
 
 The `crontab` entry looks like this:
 
-    MAILTO="win@wincent.com"
+    MAILTO="example@example.com"
     @monthly	/path/to/tools/gc-git-repos.sh
 
 And the script is basically:

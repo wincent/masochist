@@ -11,4 +11,4 @@ Upon switching to git these checkouts were no longer quite as "lightweight" as b
 
 So I've decided to slightly modify the symlink structure so that all projects which use WOCommon will share the same checked out copy. We lose some redundancy but gain more robustness in the process (less scope for forgetting to pull updates, less chance of accidentally editing the wrong file if Xcode decides to open up the wrong copy of a common file etc).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

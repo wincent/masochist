@@ -5,4 +5,4 @@ tags: snippets
 
 Fix braindead permissions that somehow creeped into the old Subversion repository (executable bits set on non-executable files), and which therefore were migrated over to the new Git repository as well.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -3,7 +3,7 @@ title: Site enhancements
 tags: site blog
 ---
 
-I've just deployed a new version of the site backend, so as always, please let me know (either by [ticket](/issues/new) or [email](mailto:win@wincent.com){.mailto}) if you spot any problems.
+I've just deployed a new version of the site backend, so as always, please let me know (either by [ticket](/issues/new) or [email](mailto:example@example.com){.mailto}) if you spot any problems.
 
 The tastiest bit of new functionality in this round of updates is the ability to accept comments on blog posts. It's actually something that has been implemented ever since day one (about a year ago now), but I never turned it on because there were some minor issues that I wanted to address first (described in [ticket \#1261](/issues/1261)); things like some ugly [CSS](/wiki/CSS) on the comments listing and some inefficient queries.
 

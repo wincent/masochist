@@ -5,4 +5,4 @@ tags: snippets
 
 The latest version of Xcode upgrades the object version format.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

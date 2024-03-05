@@ -9,4 +9,4 @@ I didn't do this originally due to lack of foresight; but the truth is that a us
 
 The nicest way to handle this is to have one application instance which uses a "document" model and opens one window for each batch of files to be renamed.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

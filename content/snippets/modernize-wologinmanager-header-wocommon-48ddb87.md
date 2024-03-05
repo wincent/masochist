@@ -5,4 +5,4 @@ tags: snippets
 
 Lose references to WOBase and modernize date formats.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

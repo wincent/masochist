@@ -11,4 +11,4 @@ This commit address a couple of TODO items:
 
 At the same time, this commit also provides some whitespace fixes, updates the copyright year, and removes some Subversion-related crud. All of this is bundled together in a single commit because the file is so small and all the edits apply to the same range of lines.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

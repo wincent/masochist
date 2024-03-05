@@ -5,4 +5,4 @@ tags: snippets
 
 Show "en-US" and "es-ES" etc in the URI rather than "1", "2" and so on.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

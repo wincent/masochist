@@ -5,4 +5,4 @@ tags: snippets
 
 There are now quite a few files related to the HUD functionality, so group these together in the Xcode project.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

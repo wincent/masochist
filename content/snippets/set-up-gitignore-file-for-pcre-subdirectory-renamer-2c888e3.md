@@ -5,4 +5,4 @@ tags: snippets
 
 This allows us to build PCRE in-place in the source tree without polluting the Git status output.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

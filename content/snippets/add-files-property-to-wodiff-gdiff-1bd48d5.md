@@ -5,4 +5,4 @@ tags: snippets
 
 Expose the WODiff object's files array to outside world.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

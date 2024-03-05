@@ -5,4 +5,4 @@ tags: snippets
 
 This fills in the gap left by the removal of the "create revisions" migration.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

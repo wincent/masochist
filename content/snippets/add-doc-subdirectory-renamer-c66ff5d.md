@@ -5,4 +5,4 @@ tags: snippets
 
 At the moment includes notes for website developers and prototype screenshots.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

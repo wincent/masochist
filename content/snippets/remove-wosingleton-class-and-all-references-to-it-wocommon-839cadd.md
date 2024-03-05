@@ -11,4 +11,4 @@ With the advent of garbage collection I revisited my solution once again and dec
 
 Although this approach requires a small amount of code per new singleton class, the result is faster, simpler and less likely to have unidentified bugs.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

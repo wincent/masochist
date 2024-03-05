@@ -9,4 +9,4 @@ The next most obvious option is just calling the "current_user=" method but that
 
 So in the end we just reach in and set the "@current_user" instance variable directly. Note that we have to intercept the call to the "login_before" before filter otherwise it will proceed to clear the instance variable as soon as we initiate an actual request.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

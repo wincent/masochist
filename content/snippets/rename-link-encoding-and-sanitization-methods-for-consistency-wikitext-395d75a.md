@@ -5,4 +5,4 @@ tags: snippets
 
 Now all the public methods in Wikitext::Parser begin with "Wikitext_parser".
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

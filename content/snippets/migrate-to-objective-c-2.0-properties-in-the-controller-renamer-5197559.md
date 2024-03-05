@@ -5,4 +5,4 @@ tags: snippets
 
 This is the first phase of the migration: declaration and synthesis.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 This cleanup includes a fix for some odd interaction in one case: a blockquote block containing paragraphs alternating with nested pre blocks.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

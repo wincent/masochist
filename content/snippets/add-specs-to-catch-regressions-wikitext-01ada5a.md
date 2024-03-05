@@ -5,4 +5,4 @@ tags: snippets
 
 Add several more specs related to recently discovered flaws to make sure the issues don't creep back in again.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

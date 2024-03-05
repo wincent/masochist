@@ -11,4 +11,4 @@ On the left we have an NSView which is used to group together a WOGutterView (fo
 
 When resizing the window all "columns" should remain fixed in width except for the two WOFileViews, which should grow and shrink as required to fill all of the available space. All columns resize vertically to fill all available space.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

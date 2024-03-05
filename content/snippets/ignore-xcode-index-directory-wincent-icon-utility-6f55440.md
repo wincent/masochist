@@ -5,4 +5,4 @@ tags: snippets
 
 Set up .gitignore file for the new "index" directory created by Xcode 3.0.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

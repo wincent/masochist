@@ -5,4 +5,4 @@ tags: snippets
 
 This will allow us to open a new REnamer "document" for any kind of dropped file or folder.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

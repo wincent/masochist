@@ -5,4 +5,4 @@ tags: snippets
 
 Add prefix function from text and substring function which returns True if the first passed String is a substring of the second String.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

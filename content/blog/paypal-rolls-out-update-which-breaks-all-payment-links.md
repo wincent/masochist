@@ -5,7 +5,7 @@ tags: blog
 
 As of about 9 hours ago, PayPal has rolled out a new website and now anyone trying to [purchase](https://wincent.com/a/store/) one of my products via PayPal will see a "Page not found" error upon arriving at PayPal.
 
-I've already contacted PayPal but until this problem is solved please consider using [Kagi](https://wincent.com/s/kagi/) instead, or just go to PayPal and send me a payment with a description of the product that you'd like to buy. You can do this using the "Send Money" tab at PayPal and sending your payment to <win@wincent.com>. Apologies for the inconvenience!
+I've already contacted PayPal but until this problem is solved please consider using [Kagi](https://wincent.com/s/kagi/) instead, or just go to PayPal and send me a payment with a description of the product that you'd like to buy. You can do this using the "Send Money" tab at PayPal and sending your payment to <example@example.com>. Apologies for the inconvenience!
 
 ### Update
 

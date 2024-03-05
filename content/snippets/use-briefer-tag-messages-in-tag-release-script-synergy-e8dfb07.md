@@ -5,4 +5,4 @@ tags: snippets
 
 Drop the initial leading "Tagging" text in the tag messages.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

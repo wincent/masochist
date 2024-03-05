@@ -7,4 +7,4 @@ First up, under Garbage Collection we can use a shorter idiom to initialize the 
 
 Secondly, note that we can do this processing in application:openFiles: rather than in init.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

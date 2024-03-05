@@ -5,4 +5,4 @@ tags: snippets
 
 We were copying to argv\[1\] when we really wanted to copy to &argv\[1\].
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

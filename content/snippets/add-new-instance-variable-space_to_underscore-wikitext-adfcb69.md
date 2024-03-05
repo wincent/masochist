@@ -7,4 +7,4 @@ This instance variable will permit the creation of MediaWiki-style links, where 
 
 The benefit is prettier URLs; the downside is that \[\[foo bar\]\] and \[\[foo_bar\]\] now point to the same article. As this is a trade off it will default to off by default.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 The sheet callback logic was slightly broken when it came to distinguishing between application termination and window closing.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

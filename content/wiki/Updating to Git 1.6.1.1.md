@@ -1,5 +1,6 @@
 ---
 tags: git updates wiki
+title: Updating to Git 1.6.1.1
 ---
 
 I didn't update my local [Mac OS X](/wiki/Mac_OS_X) install because 1.6.1.1 still has failing tests on Mac OS X.
@@ -57,7 +58,7 @@ The fix is already in the "next" branch, but hasn't made it into a released vers
         pwd prints the same result whether or not PWD is set.
 
         Signed-off-by: Marcel M. Cary <marcel@oak.homeunix.org>
-        Tested-by: Wincent Colaiuta <win@wincent.com> (on Mac OS X 10.5.5)
+        Tested-by: Greg Hurrell <greg@hurrell.net> (on Mac OS X 10.5.5)
         Tested-by: Marcel Koeppen <git-dev@marzelpan.de> (on Mac OS X 10.5.6)
         Signed-off-by: Junio C Hamano <gitster@pobox.com>
 

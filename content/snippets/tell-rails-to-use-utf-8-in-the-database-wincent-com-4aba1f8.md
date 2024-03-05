@@ -5,4 +5,4 @@ tags: snippets
 
 Update the configuration to reflect the encoding used in the databases.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

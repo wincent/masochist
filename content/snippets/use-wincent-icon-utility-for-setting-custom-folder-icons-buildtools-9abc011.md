@@ -7,4 +7,4 @@ The most recent update to the Xcode Tools breaks the previously existing mechani
 
 I've developed a custom Foundation/Carbon tool to replace the old procedure; this commit switches over buildtools to use the new tool. I will document the new dependency in another commit.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

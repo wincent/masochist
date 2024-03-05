@@ -5,4 +5,4 @@ tags: snippets
 
 First draft of installation back end added to main application controller.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

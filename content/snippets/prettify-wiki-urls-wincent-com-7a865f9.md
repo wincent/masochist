@@ -9,4 +9,4 @@ I've added a corresponding validation. I prefer explicitly disallowing the under
 
 I think this is an acceptable tradeoff because attractive URLs are important and space is exceedingly common in article titles whereas underscore is not.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

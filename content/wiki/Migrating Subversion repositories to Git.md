@@ -144,7 +144,7 @@ Without really knowing the cause of the failure it seemed wise to try another me
 
 So I then tried the second alternative:
 
-    echo "wincent = Wincent Colaiuta <win@wincent.com>" >> ~/.svn-authors
+    echo "wincent = Greg Hurrell <greg@hurrell.net>" >> ~/.svn-authors
     git svnimport -i -v -I .gitignore -A ~/.svn-authors -C WOTest svn://svn.example.com/repo
 
 Although this worked on my local ([Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger)) machine, it failed on my remote [Red Hat Enterprise Linux](/wiki/Red_Hat_Enterprise_Linux) machine because it didn't have the necessary prerequisites installed (`SVN::Core` and friends). It had worked on the [Mac OS X](/wiki/Mac_OS_X) box because I had already built the [Subversion](/wiki/Subversion) [Perl](/wiki/Perl) bindings when installing [SVK](/wiki/SVK). I tried to build the bindings on the [Red Hat](/wiki/Red_Hat) box but withot success (see "[Upgrading to Subversion 1.4.4](/wiki/Upgrading_to_Subversion_1.4.4)").
@@ -228,7 +228,7 @@ I later also tried the approach of creating a repository on my local machine wit
     # repository set-up
     cd Walrus.git
     sudo -u git touch git-daemon-export-ok
-    echo "Walrus.git win@wincent.com" | sudo tee -a path_to_conf_dir/gitweb-projects
+    echo "Walrus.git example@example.com" | sudo tee -a path_to_conf_dir/gitweb-projects
     echo "Object-oriented templating system" | sudo tee description
 
     # remove local junk
@@ -312,7 +312,7 @@ $ git fetch --tags /Seguridad/remote/wincent1.inetu.net/var/lib/svn/repositories
 
 My initial attempts at importing were done on the remote server directly, so I also added this to the `~/.gitconfig` for the `git` user, seeing as I'll be the only one doing commits for the foreseeable future:
 
-    sudo -H -u git git config --global user.email win@wincent.com
+    sudo -H -u git git config --global user.email example@example.com
     sudo -H -u git git config --global user.name "Wincent Colaiuta"
 
 I suspect that this information is not actually required when pushing from an appropriately configured _local_ repository, because the author information from the local repository should be used.

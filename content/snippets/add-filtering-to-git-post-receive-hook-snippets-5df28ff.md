@@ -7,4 +7,4 @@ The Git post-receive hook can now be used to automatically filter out potentiall
 
 For example, the term "\[filtered\]" will be replaced in the weblog post version of this commit message.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 The nightly builds are made using shallow clones and so can't produce release notes during the build.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

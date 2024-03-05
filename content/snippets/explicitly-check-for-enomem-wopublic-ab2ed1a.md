@@ -7,4 +7,4 @@ POSIX allows the size argument to malloc to be 0 (in which case either a NULL po
 
 Of course, I personally think that it would almost always be an error to ask malloc for zero bytes, but in that case the mistake will eventually be caught anyway, when the caller tries to write to the returned pointer.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

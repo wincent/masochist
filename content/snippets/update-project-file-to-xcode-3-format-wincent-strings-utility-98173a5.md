@@ -5,4 +5,4 @@ tags: snippets
 
 Update compatibility option to Xcode 3.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

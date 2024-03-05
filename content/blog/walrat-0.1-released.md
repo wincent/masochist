@@ -70,4 +70,4 @@ $ sudo gem install walrat
 
 ## Donations
 
-[Walrat](/wiki/Walrat) is free, [open source](/wiki/open_source) software released under the BSD license. If you find it useful and would like to support further development you can [make a donation](/products/walrat/donations) via PayPal to <win@wincent.com>.
+[Walrat](/wiki/Walrat) is free, [open source](/wiki/open_source) software released under the BSD license. If you find it useful and would like to support further development you can [make a donation](/products/walrat/donations) via PayPal to <example@example.com>.

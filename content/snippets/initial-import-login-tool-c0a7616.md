@@ -5,4 +5,4 @@ tags: snippets
 
 Corresponding to revision 1 of the old Subversion repository.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 Populate the wiki_text.c file with comments indicating future planned changes.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

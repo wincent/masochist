@@ -7,4 +7,4 @@ FixtureReplacement uses mass assignment under the hood to create new object inst
 
 This patch makes FixtureReplacement use update_attribute to set the attributes one by one and thus avoid the mass assignment and the possibility of exceptions. A copy has also been sent to Scott Taylor (the author of FixtureReplacement).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 The looser check done by member: (using isEqual:) is more appropriate here than the one done by containsObject: (an identity comparison done using pointer equality, I believe).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

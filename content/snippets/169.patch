@@ -3,7 +3,7 @@ tags: snippets
 ---
 
 From 5a10ea623cefdd23b5fa9ab4d83318eb09b76c7d Mon Sep 17 00:00:00 2001
-From: Wincent Colaiuta <win@wincent.com>
+From: Greg Hurrell <greg@hurrell.net>
 Date: Thu, 19 Dec 2013 07:55:01 -0800
 Subject: [PATCH] Defer processor count detection until runtime
 
@@ -29,7 +29,7 @@ like the test suite that shouldn't have to bother with passing it in,
 but I don't worry about more robust sanity checking, leaving that up to
 the CommandT::Util method instead.
 
-Signed-off-by: Wincent Colaiuta <win@wincent.com>
+Signed-off-by: Greg Hurrell <greg@hurrell.net>
 ---
  bin/benchmark.rb             |  10 ++--
  ruby/command-t/controller.rb |   7 ++-

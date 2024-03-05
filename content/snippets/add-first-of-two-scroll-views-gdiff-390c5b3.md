@@ -7,4 +7,4 @@ Rather than replicate all the work done by NSScrollView (and behind the scenes N
 
 The previously used NSView that was used for grouping purposes is still required seeing as an NSScrollView expects a single document view. The autoresizing machinery works without modification using the scrollview as a drop-in replacement for the NSView.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

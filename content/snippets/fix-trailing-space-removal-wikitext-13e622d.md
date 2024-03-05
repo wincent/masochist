@@ -9,4 +9,4 @@ But when running under "space_to_underscore" mode it was enough to actually prev
 
 It worked when "space_to_underscore" was false only because each space was actually three characters (%20) so the test passed anyway.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -7,4 +7,4 @@ The behaviour of the @encode directive has changed on Leopard and this breaks a 
 
 This commit adds some special cases for these types of comparisons which now perform simple pointer equality tests instead of failing. I also removed one test which failed on Tiger (when nil was encoded as a numeric scalar) but no longer fails on Leopard.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 This is basically a total rewrite of the tool, throwing out all the old code and instead relying on the new code in WOCommon.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

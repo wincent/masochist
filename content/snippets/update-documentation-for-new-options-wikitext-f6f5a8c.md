@@ -5,4 +5,4 @@ tags: snippets
 
 Add documentation for space_as_underscore and img_prefix.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

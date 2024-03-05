@@ -7,4 +7,4 @@ When starting a brand new list may need to pop back to (but not including) the n
 
 With this change all the specs are back passing again.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

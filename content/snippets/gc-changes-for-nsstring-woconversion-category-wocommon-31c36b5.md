@@ -5,4 +5,4 @@ tags: snippets
 
 With GC under Leopard, must use CFRelease rather than WO_RELEASE.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 A previous commit included a variable rename, but one instance of the old name was left behind.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

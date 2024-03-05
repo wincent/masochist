@@ -5,4 +5,4 @@ tags: snippets
 
 More additional localized resources transferred across from Install repository. These ones for localization of the "Files" folder in the installer.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

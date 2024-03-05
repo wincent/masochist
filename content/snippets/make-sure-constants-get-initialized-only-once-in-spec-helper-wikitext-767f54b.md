@@ -5,4 +5,4 @@ tags: snippets
 
 This is necessary to prevent warnings about "already initialized constant" when running the specs under autotest.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

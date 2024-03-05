@@ -5,4 +5,4 @@ tags: snippets
 
 Must update the "non_space" pointer when reallocating the buffer in the link encoder, otherwise we can crash.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

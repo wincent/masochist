@@ -5,4 +5,4 @@ tags: snippets
 
 There is really no need for this here as a normal message send can be used without provoking any GCC warnings.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

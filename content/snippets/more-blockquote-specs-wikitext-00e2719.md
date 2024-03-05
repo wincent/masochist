@@ -5,4 +5,4 @@ tags: snippets
 
 These demonstrate the use of the "dedent" helper introduced in 54a7a69.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

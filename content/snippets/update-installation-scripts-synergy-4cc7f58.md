@@ -9,4 +9,4 @@ To make things cleaner all of the staging and preparation now takes place in the
 
 Output is considerably less verbose, and the scripts now run with "-e" set so as to abort early in the event of an error.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

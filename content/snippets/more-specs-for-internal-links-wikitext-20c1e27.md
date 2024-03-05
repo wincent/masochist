@@ -5,4 +5,4 @@ tags: snippets
 
 Test a nasty link which requires encoding and sanitizing, as well as overridding the link prefix.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

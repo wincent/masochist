@@ -5,4 +5,4 @@ tags: snippets
 
 Move from the abstract singleton implementation provided by WOSingleton to a local, "advisory" pattern provided within the WOSysctl wrapper class itself.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

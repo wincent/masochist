@@ -7,4 +7,4 @@ Make a really clear distinction between "assertions" and "checks". The former ar
 
 At the same time I got rid of the bascically unused WORequire and WO_DEBUG_ONLY macros.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 Bump GC setting from "supported" to "required".
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

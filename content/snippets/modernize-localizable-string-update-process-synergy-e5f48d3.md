@@ -5,4 +5,4 @@ tags: snippets
 
 Ditch old shell script build phases for updating strings in favor of just calling UpdateStringsFiles.sh from buildtools.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

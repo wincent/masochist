@@ -5,4 +5,4 @@ tags: snippets
 
 Add the Wikitext::Parser::Token class to make writing tokenization specs a little easier.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

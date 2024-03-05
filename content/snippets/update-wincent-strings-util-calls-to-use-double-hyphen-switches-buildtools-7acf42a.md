@@ -5,4 +5,4 @@ tags: snippets
 
 Keep in synch with wincent-strings-util 1.2-rc1+.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

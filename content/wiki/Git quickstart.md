@@ -1,6 +1,7 @@
 ---
 tags: git wiki
 cache_breaker: 1
+title: Git quickstart
 ---
 
 # Installation
@@ -17,7 +18,7 @@ See:
 
     # personalize these with your own name and email address
     git config --global user.name "Wincent Colaiuta"
-    git config --global user.email "win@wincent.com"
+    git config --global user.email "example@example.com"
 
     # decorate logs
     git config --global log.decorate short
@@ -57,7 +58,7 @@ See:
     # refer to the "See also" section below for additional information
     echo "alias git git@vger.kernel.org" >> ~/.gitaliases
     echo "alias junio gitster@pobox.com" >> ~/.gitaliases
-    echo "alias me win@wincent.com" >> ~/.gitaliases
+    echo "alias me example@example.com" >> ~/.gitaliases
 
     # another feature that will be available in 1.5.4 onwards
     # this is useful when you use topic branches for grouping together logically related changes

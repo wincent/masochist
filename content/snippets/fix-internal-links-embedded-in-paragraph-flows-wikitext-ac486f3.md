@@ -5,4 +5,4 @@ tags: snippets
 
 And spec to catch any regressions.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

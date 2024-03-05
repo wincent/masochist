@@ -5,4 +5,4 @@ tags: snippets
 
 Basic demonstration of embedding internal and external links in a larger slab of wikitext.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

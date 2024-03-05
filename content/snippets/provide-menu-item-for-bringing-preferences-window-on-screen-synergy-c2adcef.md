@@ -9,4 +9,4 @@ An interesting case is when there are unapplied changes; if the user tries to cl
 
 In order to support this repeated showing of the preferences window had to use the setReleasedWhenClosed: method. Note that I may later decide to auto-quit the application when the last window is closed.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

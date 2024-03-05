@@ -7,4 +7,4 @@ Although the encoding conversion methods already receive extensive indirect test
 
 As a result of adding these specs I discovered one minor issue: that one of the failing code paths would never be exercised because it was effectively masked by another failing code path; so this commit also changes the order in which the paths in question are tested.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

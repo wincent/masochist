@@ -11,4 +11,4 @@ In the end I decided that making adjustments for Cocoa's idiosyncrasies was too 
 
 There is still more to do: there is a minor visual smear when moving the vertical scrollbar (I think this may be due to a rounding issue), and at the moment I haven't yet added the arrows inside the circular buttons.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

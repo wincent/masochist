@@ -5,4 +5,4 @@ tags: snippets
 
 Still much that could be added but this is basic coverage.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

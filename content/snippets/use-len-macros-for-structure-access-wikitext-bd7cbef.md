@@ -5,4 +5,4 @@ tags: snippets
 
 Use macros to insulate against possible future changes in Ruby structures.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

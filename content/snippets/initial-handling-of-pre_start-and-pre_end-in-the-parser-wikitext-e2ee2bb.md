@@ -5,4 +5,4 @@ tags: snippets
 
 This handles the basic case. Will be adding specs to explore the edge cases and make the necessary changes to handle them.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

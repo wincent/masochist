@@ -15,4 +15,4 @@ After:
 
 longer slab of ASCII text 13.510000 0.060000
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

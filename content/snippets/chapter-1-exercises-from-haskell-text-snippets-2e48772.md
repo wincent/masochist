@@ -5,4 +5,4 @@ tags: snippets
 
 Initial exercise solutions from Chapter 1 of "The Haskell road to logic, math and programming".
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -9,4 +9,4 @@ If we try the latter then we get ActionController::InvalidAuthenticityToken exce
 
 We must only clear the session after the before filters run, and the correct place to do that is in the sessions controller "destroy" (logout) action.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -9,4 +9,4 @@ I did consider instead eagerly loading a lightweight proxy which would allow the
 
 The shared manager access already occurs via a thread-safe double-checked locking method with memory barriers, so it should be both fast and safe. In this light the macro is the sanest solution.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

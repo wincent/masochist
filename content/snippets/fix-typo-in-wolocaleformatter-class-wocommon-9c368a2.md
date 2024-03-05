@@ -5,4 +5,4 @@ tags: snippets
 
 Fix a minor (documentation) typo in the WOLocaleFormatter implementation file.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

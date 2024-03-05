@@ -5,4 +5,4 @@ tags: snippets
 
 In the release notes script, source Common.sh and use its functions for emitting diagnostic messages.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

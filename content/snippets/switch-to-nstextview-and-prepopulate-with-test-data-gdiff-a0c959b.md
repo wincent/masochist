@@ -7,4 +7,4 @@ Now WOFileView is an NSTextView subclass rather than just a direct NSView subcla
 
 There are still some rough edges and other things to take care of, namely: the horizontal scroll bars don't appear until the window size is manipulated, and; text is drawn aliased (would prefer unaliased text in this case).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -7,4 +7,4 @@ When encoding a link target perform a quick prescan to see if this is a "special
 
 Seeing as the prescan does constitute extra work, only perform it if the treat_slash_as_special instance variable is set to true. On the other hand, when the prescan does identify a special link it aborts the encoding right there and less work is done in that case.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -9,4 +9,4 @@ But seeing as I'd like to roll out another release soon I'd like to have failure
 
 In the long, long term this kind of issue will be solved by a total rewrite (either a Ragel lexer, or an ANTLR lexer/parser).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

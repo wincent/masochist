@@ -7,4 +7,4 @@ Add basic instrumentation to the array wrapper functions to see how big they gro
 
 64 entries (64 bytes) is probably more than enough for most uses.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

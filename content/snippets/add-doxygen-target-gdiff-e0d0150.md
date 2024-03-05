@@ -7,4 +7,4 @@ This commit adds a Doxygen target for producing code-level documentation. At the
 
 Likewise, the latest version of Graphviz (2.8) (whose "dot" tool is invoked by Doxygen to depict inheritance hierarchies) doesn't yet build on Leopard, although I suspect an existing binary would work without problems.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

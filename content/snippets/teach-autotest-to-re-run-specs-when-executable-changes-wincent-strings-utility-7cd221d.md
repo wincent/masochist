@@ -7,4 +7,4 @@ Re-run all specs whenever any source file changes, the project file changes, or 
 
 This requires ZenTest 3.8.0, I believe.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

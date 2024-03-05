@@ -5,4 +5,4 @@ tags: snippets
 
 In light of the recent and ongoing refactoring, clarify some of the function descriptions in code comments to avoid possible confusion.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

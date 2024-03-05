@@ -7,4 +7,4 @@ Using the shared support folder rather than the localizable resources folder sho
 
 As noted elsewhere in the source, these types of security measures are an unwinnable battle; basically any application that runs with elevated privileges should be considered vulnerable of other users have write access to any part of it. Despite this, a "defense in depth" strategy suggests that plugging these minor holes is still a worthwhile idea, especially when the effort of doing so is minimal.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -7,4 +7,4 @@ Although there should never be any need to have more than one instance of WORegi
 
 So this commit removes the dependency on WOSingleton as it is an unnecessary complication.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 The number of specs was starting to get unmanageably large for a single file so split them up into multiple files, grouped according to tag or general functionality.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

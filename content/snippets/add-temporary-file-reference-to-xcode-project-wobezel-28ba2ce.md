@@ -7,4 +7,4 @@ I've added the com.wincent.buildtools.gitrev.h file to the Xcode project in the 
 
 This is definitely a bug in Xcode and one that I don't recall seeing in the last version; I'm going to commit this change anyway seeing as it doesn't do any harm to keep it in the tree.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

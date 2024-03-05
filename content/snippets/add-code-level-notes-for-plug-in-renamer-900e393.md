@@ -5,4 +5,4 @@ tags: snippets
 
 These are just comments added when auditing the plug-in code; things to do, points to remember and so on.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

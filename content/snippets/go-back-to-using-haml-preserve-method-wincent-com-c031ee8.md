@@ -9,4 +9,4 @@ The main issue with it is that it involves applying two totally redundant transf
 
 This time-wasting transform is especially a shame because of all the effort I've put in to making the wikitext translator fast, so I'd still like to find an elegant way to teach Haml how to pass designated blocks of text without touching the formatting in any way.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

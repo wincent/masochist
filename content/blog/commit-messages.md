@@ -80,7 +80,7 @@ Nice, atomic changes, bundled with tests and with nice clear commit messages.
 As another example, below is the last handful of commits on the [Rails](/wiki/Rails) app running behind this site. It might seem like a lot of writing -- there are 1,232 commits in the "master" branch, and the total line count for all the messages is currently 15,520 lines(!) -- but crafting messages like this makes it so much easier to go back over the history, find specific changes, and figure out what I was doing and why. It also encourages me to think clearly about the _why_ of the changes I make, and adopt a more disciplined approach to coding in general, with a focus on robust testing, correctness, elegance, good design, and much more.
 
     commit 4def946cc0c18f842470753d997337e01596332e
-    Author: Wincent Colaiuta <win@wincent.com>
+    Author: Greg Hurrell <greg@hurrell.net>
     Date:   Wed Apr 1 23:04:24 2009 +0200
 
         Capistrano: change command order in help
@@ -89,10 +89,10 @@ As another example, below is the last handful of commits on the [Rails](/wiki/Ra
         page _before_ running any database migrations on
         the remote server.
 
-        Signed-off-by: Wincent Colaiuta <win@wincent.com>
+        Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
     commit 0ef7f8b33b6de405b02b1c841b40e205b96d1dbc
-    Author: Wincent Colaiuta <win@wincent.com>
+    Author: Greg Hurrell <greg@hurrell.net>
     Date:   Tue Mar 31 19:24:44 2009 +0200
 
         Update tweet preview field every 5 seconds
@@ -101,10 +101,10 @@ As another example, below is the last handful of commits on the [Rails](/wiki/Ra
         provide very frequent updates without hurting the
         server.
 
-        Signed-off-by: Wincent Colaiuta <win@wincent.com>
+        Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
     commit bb14daa73d4ffc80c6652cd3c61bb183c601dc7e
-    Author: Wincent Colaiuta <win@wincent.com>
+    Author: Greg Hurrell <greg@hurrell.net>
     Date:   Tue Mar 31 18:34:32 2009 +0200
 
         Avoid explict array sorting in specs (using =~)
@@ -120,10 +120,10 @@ As another example, below is the last handful of commits on the [Rails](/wiki/Ra
         what the array contents were, not about the ordering
         within the arrays).
 
-        Signed-off-by: Wincent Colaiuta <win@wincent.com>
+        Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
     commit 10d18dfbbed4d2e0e287b4169964dff9223001da
-    Author: Wincent Colaiuta <win@wincent.com>
+    Author: Greg Hurrell <greg@hurrell.net>
     Date:   Tue Mar 31 18:12:55 2009 +0200
 
         Remove "spam" attribute from all models which have it
@@ -153,6 +153,6 @@ As another example, below is the last handful of commits on the [Rails](/wiki/Ra
           https://wincent.com/issues/1264
           https://wincent.com/issues/734
 
-        Signed-off-by: Wincent Colaiuta <win@wincent.com>
+        Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 So I confess. I used to write crappy commit messages. But I'm reformed now. Really, I am.

@@ -5,4 +5,4 @@ tags: snippets
 
 Add WOMachine tests to confirm that Leopard detection works properly.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

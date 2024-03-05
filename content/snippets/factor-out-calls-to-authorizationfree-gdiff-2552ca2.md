@@ -7,4 +7,4 @@ This commit creates a new method that handles the call to AuthorizationFree and 
 
 This commit also fixes a bug wherein the failure cases did not result in the early termination of the method.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

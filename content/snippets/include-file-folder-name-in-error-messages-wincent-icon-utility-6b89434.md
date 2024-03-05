@@ -5,4 +5,4 @@ tags: snippets
 
 Make the error messages slightly more helpful by including the name of the file or folder related to the failed operation.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

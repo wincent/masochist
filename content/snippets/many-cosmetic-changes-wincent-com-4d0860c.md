@@ -5,4 +5,4 @@ tags: snippets
 
 These are tweaks to the CSS, additional graphics and juggling around some links in the articles and posts controllers.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

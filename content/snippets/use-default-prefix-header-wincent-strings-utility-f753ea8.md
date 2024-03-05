@@ -5,4 +5,4 @@ tags: snippets
 
 Rather than using a custom prefix header use the default prefix header for Foundation tools (inherited via build setting from Wincent Build Tools configuration).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

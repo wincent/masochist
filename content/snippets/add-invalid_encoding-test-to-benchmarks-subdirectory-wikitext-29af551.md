@@ -15,4 +15,4 @@ It's important to do these long-running tests because when I was initially figur
 
 On my machine this script reports 2.55MB RSIZE, 18.53MB VSIZE, 1.66MB private and 820KB shared, and those figures don't budge at all during the entire run.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

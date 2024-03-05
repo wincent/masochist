@@ -5,4 +5,4 @@ tags: snippets
 
 Update bundle with references to new files.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

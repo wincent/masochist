@@ -5,4 +5,4 @@ tags: snippets
 
 Just tying up a couple of loose ends that fell out from the rewrite; we fully-initialize the plug-in structure now just in case there's random garbage in the memory returned by malloc(), and also restore the check for NULL before calling CFRelease on the menu item title.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

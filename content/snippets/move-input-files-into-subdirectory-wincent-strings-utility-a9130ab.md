@@ -5,4 +5,4 @@ tags: snippets
 
 Keep the spec directory cleaner by moving the input files into their own subdirectory.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

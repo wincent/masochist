@@ -5,4 +5,4 @@ tags: snippets
 
 This is based on a clean checkout of the 1.1.2 tag in the Growl repository. The only modification is that Garbage Collection has been enabled in the build settings.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 The PackageMaker document mistakenly specified the path to the installer window background PDF using an absolute rather than a relative path. This commit amends that, making it use a relative path.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

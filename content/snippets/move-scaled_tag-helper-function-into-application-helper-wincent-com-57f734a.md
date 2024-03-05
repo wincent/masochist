@@ -5,4 +5,4 @@ tags: snippets
 
 Move the scaled_tag helper function from the tags helper to the main applicaton helper so that all views can benefit from it.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

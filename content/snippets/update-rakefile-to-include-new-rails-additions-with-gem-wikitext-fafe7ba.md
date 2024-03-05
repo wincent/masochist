@@ -9,4 +9,4 @@ require 'wikitext/string' require 'wikitext/rails'
 
 In addition to the normal "require 'wikitext'".
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

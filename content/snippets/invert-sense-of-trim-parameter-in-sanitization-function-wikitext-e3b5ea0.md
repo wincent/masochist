@@ -7,4 +7,4 @@ There are only two real call sites of this function, one in rollback mode and th
 
 This in turn will help us when converting spaces to underscores when space_to_underscore is set to Qtrue.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

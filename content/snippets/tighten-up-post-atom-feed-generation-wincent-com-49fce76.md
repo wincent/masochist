@@ -7,4 +7,4 @@ Supply author -- it is required by the standard -- and use summary plus link-to-
 
 This commit includes some additional links in the code comments to the related standards and summaries of them.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

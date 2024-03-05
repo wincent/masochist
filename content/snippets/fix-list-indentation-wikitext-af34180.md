@@ -9,4 +9,4 @@ For example, when it is just a standard list item containing some text we want i
 
 We implementing this by introducing another imaginary token, NESTED_LIST, which is present when a nested list is present and guides the dedentation process accordingly.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 "Named used" corrected to read "Named using" in two places.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

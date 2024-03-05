@@ -9,4 +9,4 @@ It turned out that the cleaner way to do this was to register from within the sc
 
 All the same, keeping this change as the reordering was not necessarily a bad thing.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

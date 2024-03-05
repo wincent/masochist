@@ -25,4 +25,4 @@ The git-diff tool is searched for in the locations defined by the PATH environme
 
 At the moment the tool doesn't actually do anything with the input. A future commit will add the ability to locate the GUI application and pass the input to it for processing.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

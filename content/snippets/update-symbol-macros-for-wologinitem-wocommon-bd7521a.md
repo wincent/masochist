@@ -5,4 +5,4 @@ tags: snippets
 
 Currently has no effect, but in place for the next time the symbols are updated.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

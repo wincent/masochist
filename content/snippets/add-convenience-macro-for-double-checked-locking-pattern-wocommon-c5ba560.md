@@ -7,4 +7,4 @@ In the most common usage case of the double-checked locking pattern (lazy initia
 
 Make a macro for this use case, which uses double-checked locking with memory barriers for safety, synchronizes against "self" (which will work well in class methods for singletons, and well in instance methods for other types of lazy initialization), and returns the result.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

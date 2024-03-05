@@ -5,4 +5,4 @@ tags: snippets
 
 Ignore all pbxuser files (except default.pbxuser) and all mode1 files.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

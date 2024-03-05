@@ -7,4 +7,4 @@ The authentication code is so intimately intertwined with the User model and all
 
 Remove the specs which redundantly re-test stuff that is already tested elsewhere. This makes one less site to have to worry about updating when refactoring.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

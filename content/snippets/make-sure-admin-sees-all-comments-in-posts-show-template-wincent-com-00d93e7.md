@@ -5,4 +5,4 @@ tags: snippets
 
 Previously the admin would only see comments awaiting moderation. Now he sees all non-spam comments.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

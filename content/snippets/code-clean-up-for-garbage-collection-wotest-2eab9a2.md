@@ -7,4 +7,4 @@ I've made a pass through the codebase eliminating message sends that have effect
 
 I also performed some minor reformatting (better wrapping and column alignment) where the already-mentioned changes touch code which would benefit from such reformatting (improved readability); there are still plenty of places in the codebase where the wrapping could be tweaked to make better use of the full 132 columns.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

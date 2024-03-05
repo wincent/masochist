@@ -5,4 +5,4 @@ tags: snippets
 
 This change breaks backwards compatibility with Xcode 2.x series.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

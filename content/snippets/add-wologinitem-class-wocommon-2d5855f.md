@@ -5,4 +5,4 @@ tags: snippets
 
 As part of an OO wrapper for the new API added to Launch Services for accessing login items add a WOLoginItem class and methods to WOLoginManager for retrieving arrays of login items.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

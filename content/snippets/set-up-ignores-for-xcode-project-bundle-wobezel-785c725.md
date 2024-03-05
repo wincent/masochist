@@ -5,4 +5,4 @@ tags: snippets
 
 Ignore all "mode1" files and their variants, and all "pbxuser" files with the exception of "default.pbxuser".
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

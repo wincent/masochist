@@ -5,4 +5,4 @@ tags: snippets
 
 This brings us into line with the behaviour of Perl, which will emit a "Substitution replacement not terminated at line x" message in such a case.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

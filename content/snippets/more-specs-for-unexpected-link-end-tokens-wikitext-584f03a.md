@@ -5,4 +5,4 @@ tags: snippets
 
 Basically just testing in more scopes; some of the scopes that I thought didn't work (EM) actually did, it was just that my original specs had a typo in them.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

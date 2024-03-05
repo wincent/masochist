@@ -5,4 +5,4 @@ tags: snippets
 
 Update copyright years for PCRE, add author email address, and add hyperlink to the REnamer help.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

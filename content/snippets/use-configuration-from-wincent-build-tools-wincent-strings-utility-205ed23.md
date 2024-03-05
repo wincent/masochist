@@ -5,4 +5,4 @@ tags: snippets
 
 Replace hard-coded settings with configuration inherited from the Wincent Build Tools.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

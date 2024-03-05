@@ -5,4 +5,4 @@ tags: snippets
 
 Teach the app to look for the new standalone preferences app rather than the one installed in {\~/,/}Library/PreferencePanes/.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

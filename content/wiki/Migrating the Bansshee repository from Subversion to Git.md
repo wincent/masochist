@@ -55,7 +55,7 @@ The import was a success but as the output of `git log` shows the [Subversion](/
 
 So this time I performed the import again, using the `-A` switch and a table mapping [Subversion](/wiki/Subversion) usernames to full [Git](/wiki/Git) username-plus-email records that I had prepared like this:
 
-    echo "wincent = Wincent Colaiuta <win@wincent.com>" >> ~/.svn-authors
+    echo "wincent = Greg Hurrell <greg@hurrell.net>" >> ~/.svn-authors
 
 I also added the `-v` switch to get verbose output and the `-I` switch to automatically translate `svn:ignore` properties to the [Git](/wiki/Git) equivalent (although it turns out that this repository didn't actually have any `svn:ignore` properties):
 

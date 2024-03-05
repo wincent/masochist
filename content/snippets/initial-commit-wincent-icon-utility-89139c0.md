@@ -5,4 +5,4 @@ tags: snippets
 
 Basic command line tool prototype (untested) for setting a custom folder icon.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

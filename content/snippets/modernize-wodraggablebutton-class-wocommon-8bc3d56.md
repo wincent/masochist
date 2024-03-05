@@ -5,4 +5,4 @@ tags: snippets
 
 Switch to GC and Objective-C 2.0 properties.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

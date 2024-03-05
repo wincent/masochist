@@ -5,4 +5,4 @@ tags: snippets
 
 At this stage I just have basic tokenization working for a few token types, as well as a basic Rakefile for building and a starting point for specs and autotest.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

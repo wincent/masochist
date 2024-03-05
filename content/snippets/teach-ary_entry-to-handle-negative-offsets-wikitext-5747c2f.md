@@ -5,4 +5,4 @@ tags: snippets
 
 We sometimes pass in values like -1 to ask for the last item in the array.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

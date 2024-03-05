@@ -5,4 +5,4 @@ tags: snippets
 
 As mentioned in 75355bc, we can avoid emitting to the log and thus improve security a little bit.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

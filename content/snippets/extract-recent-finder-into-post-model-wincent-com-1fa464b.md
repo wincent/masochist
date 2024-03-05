@@ -5,4 +5,4 @@ tags: snippets
 
 This method is used by both the normal (html) index as the Atom feed.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

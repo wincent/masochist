@@ -5,4 +5,4 @@ tags: snippets
 
 Now that the Wincent Strings Utility is no longer distributed with the Wincent Build Tools it is no longer necessary to mention it in the license file.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

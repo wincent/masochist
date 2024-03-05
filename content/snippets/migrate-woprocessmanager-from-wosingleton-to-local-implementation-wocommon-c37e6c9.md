@@ -5,4 +5,4 @@ tags: snippets
 
 Dump the abstract enforced singleton pattern obtained from using WOSingleton as a superclass and instead use a lightweight local advisory implementation implemented using a double-checked locking pattern with memory barriers.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

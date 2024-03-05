@@ -7,4 +7,4 @@ Prefix all log messages with "REnamer" so as to distinguish them from other mess
 
 We only want to use the log function to notify of real errors that impede functionality, so as to keep console noise down to a minimum.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

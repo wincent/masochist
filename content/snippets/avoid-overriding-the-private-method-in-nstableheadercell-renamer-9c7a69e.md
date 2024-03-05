@@ -5,4 +5,4 @@ tags: snippets
 
 Refactor to achieve same results without relying on the override of a private method in NSTableHeaderCell.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

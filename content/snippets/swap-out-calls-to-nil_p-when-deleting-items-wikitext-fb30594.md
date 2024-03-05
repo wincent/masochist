@@ -5,4 +5,4 @@ tags: snippets
 
 Without this substitution we can never empty the stack because we never notice when we're done.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

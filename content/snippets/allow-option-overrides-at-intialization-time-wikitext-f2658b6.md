@@ -5,4 +5,4 @@ tags: snippets
 
 This is a convenience provided so that you can set your defaults at intialization time rather than following an "initialize-then-customize" pattern.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

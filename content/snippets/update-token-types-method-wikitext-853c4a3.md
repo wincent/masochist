@@ -5,4 +5,4 @@ tags: snippets
 
 This for the newly added STRONG_START, STRONG_END, EM_START and EM_END tokens.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

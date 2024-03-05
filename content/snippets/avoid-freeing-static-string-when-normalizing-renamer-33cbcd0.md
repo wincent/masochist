@@ -9,4 +9,4 @@ We could dynamically allocate an empty string and return that instead (which the
 
 As this is an internal-only API with just two call sites, we have those sites explicitly check for that global before invoking free.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

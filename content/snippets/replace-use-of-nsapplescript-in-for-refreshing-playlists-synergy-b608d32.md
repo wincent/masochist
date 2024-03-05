@@ -5,4 +5,4 @@ tags: snippets
 
 NSAppleScript appears to cause crashes in a GC environment, so dump it in favor of the Scripting Bridge.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 For now we explicitly check and throw an exception, but as this is intended to check programmer errors should really use an assert macro (which will only be active in debug builds).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

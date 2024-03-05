@@ -54,7 +54,7 @@ Here is how I answered the questions during CSR generation:
     Organization Name (eg, company) [My Company Ltd]:wincent.com
     Organizational Unit Name (eg, section) []:
     Common Name (eg, your name or your server's hostname) []:wincent.com
-    Email Address []:win@wincent.com
+    Email Address []:example@example.com
 
     Please enter the following 'extra' attributes
     to be sent with your certificate request

@@ -7,4 +7,4 @@ Not sure whether this is a good idea or not so I haven't included this code in t
 
 This is a space-for-time tradeoff which we probably only need to make if profiling indicates that it's required.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

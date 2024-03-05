@@ -7,4 +7,4 @@ The "commonInit" pattern previously used by the WOHotKeyCaptureTextField and WOH
 
 This commit proofs these classes against that (albeit highly unlikely) possibility by using a class-specific name for the commonInit method. In this way the shared initialization code is still kept in one place, in a "subclass-friendly" way.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -9,4 +9,4 @@ So here I add a "dedent" helper which will allow me to indent the spec data for 
 
 As a safety valve I make sure that we're not asked to dedent more whitespace than we actually have.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

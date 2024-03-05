@@ -5,4 +5,4 @@ tags: snippets
 
 Add folder reference to WOPublic to make management through Xcode a little easier.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

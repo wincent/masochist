@@ -7,4 +7,4 @@ Now that we are targetting a larger backup volume, switch to more frequent backu
 
 This is the practical limit for backup frequency as each backup currently takes about 1 hour and 40 minutes.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

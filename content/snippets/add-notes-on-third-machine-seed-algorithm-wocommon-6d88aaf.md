@@ -5,4 +5,4 @@ tags: snippets
 
 Sketch preliminary outline for a new, more flexibile machine seed generation algorithm.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

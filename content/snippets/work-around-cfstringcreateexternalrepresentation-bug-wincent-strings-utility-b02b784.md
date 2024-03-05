@@ -9,4 +9,4 @@ The docs suggest that a BOM should be added to the beginning of the string, but 
 
 The workaround is to manually add the BOM, while double-checking to make sure that the system doesn't add one (just in case the behaviour of the system changes in the future).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

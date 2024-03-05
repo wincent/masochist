@@ -5,4 +5,4 @@ tags: snippets
 
 As first phase, replace dealloc methods with finalize ones; in fact many of the dealloc methods could be entirely removed, and were.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

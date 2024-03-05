@@ -9,4 +9,4 @@ But having this set doesn't work too well when building nightlies, where we want
 
 So set up a temporary override from within the nightlies script to allow us to have the best of both worlds.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

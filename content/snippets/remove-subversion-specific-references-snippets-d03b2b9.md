@@ -5,4 +5,4 @@ tags: snippets
 
 Clean out irrelevant references from backup notification script.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

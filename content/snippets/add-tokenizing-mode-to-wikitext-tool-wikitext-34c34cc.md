@@ -5,4 +5,4 @@ tags: snippets
 
 In this mode the output from "tokenize" is pretty printed.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 Replace unwanted tabs with spaces in entire codebase.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

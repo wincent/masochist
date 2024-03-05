@@ -5,4 +5,4 @@ tags: snippets
 
 Improve the design of the tagging system to make it more consistent over the "new" (create) and "edit" (update) templates and actions.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

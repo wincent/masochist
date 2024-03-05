@@ -7,4 +7,4 @@ It turns out that the public-readonly/private-readwrite property pattern is not 
 
 This commit applies the new workaround and references the Radar and test case that correspond to the issue.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt; Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt; Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

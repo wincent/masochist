@@ -5,4 +5,4 @@ tags: snippets
 
 This seems to be closer to the actual encoding used in the test input files.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

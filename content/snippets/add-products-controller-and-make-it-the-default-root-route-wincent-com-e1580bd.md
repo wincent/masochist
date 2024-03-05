@@ -5,4 +5,4 @@ tags: snippets
 
 Requests for the application root (/) now get routed to this new products controller, and concretely the "index" action.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -9,4 +9,4 @@ This results in a much simpler controller implementation, and there is better lo
 
 When the controller needs to access the subviews (for example to initiate scrolling) I will add the appropriate properties or action methods to the WODiffView class.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

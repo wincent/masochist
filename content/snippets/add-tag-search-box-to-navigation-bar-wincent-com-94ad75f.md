@@ -5,4 +5,4 @@ tags: snippets
 
 May later swap in full-text search box here, but for now go with tags as it is simpler.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

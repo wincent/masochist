@@ -3,7 +3,7 @@ title: Major update to site backend
 tags: site blog
 ---
 
-I've just deployed a rather large update to the [Rails](/wiki/Rails) [app](/wiki/app) which powers this site. There were _lots_ of changes, so if anything is behaving strangely please get in touch with me by email (<win@wincent.com>) or by opening a [ticket](/wiki/ticket).
+I've just deployed a rather large update to the [Rails](/wiki/Rails) [app](/wiki/app) which powers this site. There were _lots_ of changes, so if anything is behaving strangely please get in touch with me by email (<example@example.com>) or by opening a [ticket](/wiki/ticket).
 
 If you look at the number of lines changed since the last deployment it looks quite scary:
 

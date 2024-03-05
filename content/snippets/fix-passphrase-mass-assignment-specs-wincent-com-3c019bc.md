@@ -5,4 +5,4 @@ tags: snippets
 
 Must test the mass assignment of the passphrase and the passphrase confirmaton at once otherwise validation will prevent the spec from succeeding.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

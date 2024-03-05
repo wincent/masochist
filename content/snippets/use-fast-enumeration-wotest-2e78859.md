@@ -5,4 +5,4 @@ tags: snippets
 
 Switch to Objective-C 2.0 Fast Enumeration.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

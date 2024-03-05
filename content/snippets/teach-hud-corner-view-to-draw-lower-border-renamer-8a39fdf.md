@@ -5,4 +5,4 @@ tags: snippets
 
 This is for consistency with the custom table header cell. It should work equally well in unflipped (the default) and flipped coordinate systems.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

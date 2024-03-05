@@ -5,4 +5,4 @@ tags: snippets
 
 This will be later used when making the tableview more HUD-friendly.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

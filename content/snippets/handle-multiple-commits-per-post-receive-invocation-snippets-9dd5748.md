@@ -24,4 +24,4 @@ comes with Git, this race would be quite difficult to avoid, but luckily it is\
 not very likely (especially in my set-up where I am basically the only\
 committer).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;\
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;\

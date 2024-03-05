@@ -5,4 +5,4 @@ tags: snippets
 
 Only occurs when space_to_underscore is set to true.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

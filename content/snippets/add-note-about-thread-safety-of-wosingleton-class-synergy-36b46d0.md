@@ -5,4 +5,4 @@ tags: snippets
 
 Basically, it's not thread-safe, so add a note that it should only be used in the single-threaded context.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

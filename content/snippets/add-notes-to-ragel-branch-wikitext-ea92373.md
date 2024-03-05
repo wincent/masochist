@@ -5,4 +5,4 @@ tags: snippets
 
 Add text file explaining what the "ragel" branch is and what it will be used for.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

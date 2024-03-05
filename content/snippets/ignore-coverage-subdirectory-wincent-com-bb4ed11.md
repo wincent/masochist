@@ -5,4 +5,4 @@ tags: snippets
 
 This is where output gets written when running "rake spec:rcov".
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

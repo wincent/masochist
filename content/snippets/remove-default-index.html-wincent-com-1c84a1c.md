@@ -5,4 +5,4 @@ tags: snippets
 
 We want to actually exercise the Rails stack, so we'll let the route fall through to a simple controller.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -7,4 +7,4 @@ This commit adds a Locale class, a Translation class, and corresponding controll
 
 This is only a partial implementation, not a full localization stack. Later on may add special support for localized model attributes and possibly other things if the need arises.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

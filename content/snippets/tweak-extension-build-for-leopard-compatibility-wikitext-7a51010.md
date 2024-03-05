@@ -7,4 +7,4 @@ These tweaks fix the build breakage under Leopard caused by the fact that the AN
 
 In the future may actually produce a Universal version of the runtime, at which point will remove this somewhat kludgy hack.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

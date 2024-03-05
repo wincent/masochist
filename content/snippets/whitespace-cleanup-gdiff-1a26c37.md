@@ -5,4 +5,4 @@ tags: snippets
 
 Fix unwanted trailing whitespace that crept in with the last commit.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

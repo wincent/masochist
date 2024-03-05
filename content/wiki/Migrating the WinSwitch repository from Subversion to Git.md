@@ -7,7 +7,7 @@ title: Migrating the WinSwitch repository from Subversion to Git
 # Local import
 
     $ cat ~/.svn-authors
-    wincent = Wincent Colaiuta <win@wincent.com>
+    wincent = Greg Hurrell <greg@hurrell.net>
     $ git svn clone --stdlayout -A ~/.svn-authors svn+ssh://svn.example.com/WinSwitch src
 
 # Remote configuration
@@ -18,7 +18,7 @@ title: Migrating the WinSwitch repository from Subversion to Git
     $ sudo -H -u git git --bare init
     $ sudo -u git touch git-daemon-export-ok
     $ echo "Fast User Switching menu replacement for Mac OS X" | sudo -u git tee description
-    $ echo "WinSwitch.git win@wincent.com" | sudo -u git tee -a /pub/git/conf/gitweb-projects
+    $ echo "WinSwitch.git example@example.com" | sudo -u git tee -a /pub/git/conf/gitweb-projects
 
 # Initial push
 

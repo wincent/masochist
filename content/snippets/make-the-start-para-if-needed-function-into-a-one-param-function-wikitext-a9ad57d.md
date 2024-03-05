@@ -5,4 +5,4 @@ tags: snippets
 
 The clean-up for this function has now been taken as far as it can go as we're down to a single parameter.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

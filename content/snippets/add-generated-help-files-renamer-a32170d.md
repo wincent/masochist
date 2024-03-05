@@ -5,4 +5,4 @@ tags: snippets
 
 Add CSS and gfx files (static) as well as generated (dynamic) files produced during test run.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

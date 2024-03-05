@@ -7,7 +7,7 @@ I just released version 1.6 of [Command-T](/wiki/Command-T), the powerful, [open
 
 # What's new
 
-On systems with POSIX threads (such as OS X, Linux), Command-T will now parallelize search operations, making it significantly faster to navigate large projects. As this is a fairly invasive and low-level change, please [let me know](mailto:win@wincent.com){.mailto} if you see anything odd.
+On systems with POSIX threads (such as OS X, Linux), Command-T will now parallelize search operations, making it significantly faster to navigate large projects. As this is a fairly invasive and low-level change, please let me know if you see anything odd.
 
 As always, a full change-log appears under HISTORY in the documentation, and you can explore the commits in the release [here](/repos/command-t/tags/1.6). (Note: the integrated repository browser that I'm linking to here is still relatively new and doesn't have a full feature set yet.)
 

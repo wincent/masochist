@@ -5,4 +5,4 @@ tags: snippets
 
 I've had a fair bit of trouble getting things back up and running with the move to ANTLR 3.0.1, so I'm going to store a known-good version of ANTLR (source archive plus patches) in the repository. This may be paranoid but I don't won't to get caught out in the future.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

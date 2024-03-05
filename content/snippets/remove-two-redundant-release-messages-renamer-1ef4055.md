@@ -5,4 +5,4 @@ tags: snippets
 
 There were still two release messages in the codebase that somehow escaped detection until now. These are useless under Garbage Collection, so remove them.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 In this case most of the old dealloc method is redundant under Garbage Collection; keep only the relevant bit and stick it in a finalize method.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

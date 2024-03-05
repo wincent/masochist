@@ -9,4 +9,4 @@ I believe I've fixed this now by completely removing both entries from the index
 
 When Apple's port of ZFS goes final I'll be using it in case-sensitive mode, if they provide one.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

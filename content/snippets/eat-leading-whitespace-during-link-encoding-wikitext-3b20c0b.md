@@ -5,4 +5,4 @@ tags: snippets
 
 As mentioned in e8b3b86, we need to eat whitespace here.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

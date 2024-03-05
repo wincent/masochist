@@ -5,4 +5,4 @@ tags: snippets
 
 Store public SSH keys in snippets repository.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

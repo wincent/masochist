@@ -5,4 +5,4 @@ tags: snippets
 
 Update the ".gitignore" file to also ignore temporary files (with ".bak" and ".temp" extensions).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

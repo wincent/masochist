@@ -5,4 +5,4 @@ tags: snippets
 
 These specs test "special" links in the context of internal link markup.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

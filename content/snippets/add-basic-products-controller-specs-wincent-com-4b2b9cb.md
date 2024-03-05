@@ -5,4 +5,4 @@ tags: snippets
 
 These are the shared application controller specs which all controllers should pass.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

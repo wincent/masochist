@@ -5,4 +5,4 @@ tags: snippets
 
 Without this we can't see those new tokens in our token dumps during debugging.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

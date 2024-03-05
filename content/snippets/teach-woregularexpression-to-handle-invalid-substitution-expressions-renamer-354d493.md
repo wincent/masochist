@@ -7,4 +7,4 @@ If a substitution is invalid we return nil.
 
 We check for substitution validity at the time when the substitution string is set, to avoid doing it repeatedly in a tight loop when working on many files.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

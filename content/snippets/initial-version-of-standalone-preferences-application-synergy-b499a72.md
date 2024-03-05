@@ -13,4 +13,4 @@ So evaluating all this, it seems the best course of action is to host the prefer
 
 An additional benefit of this move is that from now on Synergy will not require an installer because as a standalone application it can be installed anywhere.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

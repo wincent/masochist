@@ -13,4 +13,4 @@ short slab of ASCII text 1.570000 0.010000 1.580000 ( 1.705596) short slab of UT
 
 So that one change alone cuts 33% off the execution time. The combined scanner/parser is now nearly 8 times faster than it was under ANTLR and nearly 3 times faster than it was after the move to Ragel but before I started optimizing the parser.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

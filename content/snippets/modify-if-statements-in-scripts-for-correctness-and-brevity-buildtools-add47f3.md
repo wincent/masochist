@@ -5,4 +5,4 @@ tags: snippets
 
 Correct one erroneous "if" statement (in StripDSYM.sh) and use shorter form (using the "-z" test) in several others.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

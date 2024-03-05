@@ -5,4 +5,4 @@ tags: snippets
 
 This is just the bare skeleton created by "script/generate model".
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

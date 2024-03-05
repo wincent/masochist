@@ -5,4 +5,4 @@ tags: snippets
 
 Add note recommending the use of check macros (rather than assertion macros) in unit tests.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

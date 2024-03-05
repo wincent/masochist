@@ -5,4 +5,4 @@ tags: snippets
 
 Convert more old accesors to use the new Objective-C 2.0 properties (WOSynergyFloaterController, WOSynergyFloaterView and SynergyController).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -9,4 +9,4 @@ This allows the best of both worlds: readable, hard-wrapped text in the console 
 
 The cost of all this is that commit message bodies should only be standard text, not code snippets or anything which would require literal newlines to be echoed.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

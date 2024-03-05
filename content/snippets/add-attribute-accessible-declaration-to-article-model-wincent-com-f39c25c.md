@@ -5,4 +5,4 @@ tags: snippets
 
 The whole thing is accessible, but add this anyway as basic good security practice (the model may be extended in the future).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

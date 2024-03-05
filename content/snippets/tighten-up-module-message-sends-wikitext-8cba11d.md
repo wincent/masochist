@@ -5,4 +5,4 @@ tags: snippets
 
 Pass in the module rather than just using "self". Although passing self was harmless (because the conversion methods never references it), passing in the module is technically more correct.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

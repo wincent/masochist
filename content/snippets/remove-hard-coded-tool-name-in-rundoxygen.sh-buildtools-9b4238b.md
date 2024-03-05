@@ -5,4 +5,4 @@ tags: snippets
 
 Replace hard-coded tool name in RunDoxygen.sh with special shell variable, bringing it in line with with the other scripts in the buildtools do.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

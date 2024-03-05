@@ -5,4 +5,4 @@ tags: snippets
 
 Implementing the isVar/setVar pattern requires an explicit "getter" attribute when declaring the property, so add this.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

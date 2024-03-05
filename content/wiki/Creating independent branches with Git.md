@@ -1,6 +1,7 @@
 ---
 tags: git wiki
 cache_breaker: 1
+title: Creating independent branches with Git
 ---
 
 # The short version
@@ -99,7 +100,7 @@ In order to do this you need to make direct use of the low-level "plumbing":
     This corresponds to the 3.2 (Jaguar) release tag from the old
     Subversion repository.
 
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
     HERE
 
     # now create a commit from the tree object previously created

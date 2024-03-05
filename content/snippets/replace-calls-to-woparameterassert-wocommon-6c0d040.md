@@ -5,4 +5,4 @@ tags: snippets
 
 Replace a bunch of calls to WOParameterAssert with NSParameterAssert (follow-up on recent assertion/check enhancements).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

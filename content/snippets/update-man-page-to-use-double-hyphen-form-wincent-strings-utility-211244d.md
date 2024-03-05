@@ -5,4 +5,4 @@ tags: snippets
 
 Although the usage information inside the executable was updated when the options changed from single to double-hyphen form, the man page was not.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

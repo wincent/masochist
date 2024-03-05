@@ -5,4 +5,4 @@ tags: snippets
 
 Trim the fat off the headers in various classes and categories.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

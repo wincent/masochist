@@ -9,4 +9,4 @@ This change was motivated because the test apparatus is quite brittle, basically
 
 I will instead be adding more tests in "native" style (ie. hand-written tests rather than trying to leverage the PCRE ones).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

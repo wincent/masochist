@@ -5,4 +5,4 @@ tags: snippets
 
 At this stage this is just some basic Haml and graphics for the header, footer, and some notes on the navigation bar.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

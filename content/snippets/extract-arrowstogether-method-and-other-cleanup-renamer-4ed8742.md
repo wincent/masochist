@@ -7,4 +7,4 @@ Things are slightly neater with the code that determines whether the scroll arro
 
 By way of other cleanup, we also rename the knob variable to knobRect for consistency with the other variables in the rectForPart: method.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

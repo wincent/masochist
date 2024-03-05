@@ -7,4 +7,4 @@ There are actually three states we need to distinguish among here: posts where c
 
 In the first two cases we'll show comment-related stuff in the views, but in the last case we won't show anything at all.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

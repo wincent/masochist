@@ -9,4 +9,4 @@ This commit adds a special case for such comparisons: truly equal pointers are c
 
 This is a conservative approach because in reality the only kind of pointer comparison which makes sense in practice is an equality test, not an ordering test.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

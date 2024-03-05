@@ -7,4 +7,4 @@ This solves an issue with the old implementation which used execv() where it wou
 
 As a nice side effect, this simplifies the code considerably and should run faster too with large numbers of files because we are basically working with FSRefs the whole time rather than converting them to path representations.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -9,4 +9,4 @@ See:
 
 http://wincent.com/a/support/bugs/show\_bug.cgi?id=636
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -9,4 +9,4 @@ At the same time some unused instance variables were disposed of or marked for f
 
 Note that due to an apparent bug in the compiler I was unable to implement the public-readonly/private-readwrite pattern as suggested in the documentation, and so the readonly/readwrite portions are commented out. I will be making a reduced test case for this and filing a Radar. Watch for a future commit that adds the Radar number in a comment.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

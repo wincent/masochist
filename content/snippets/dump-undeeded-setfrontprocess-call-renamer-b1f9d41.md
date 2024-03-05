@@ -5,4 +5,4 @@ tags: snippets
 
 Now that this is not a background-only app we don't need this call any more.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

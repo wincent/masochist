@@ -7,4 +7,4 @@ Previously the Git post-receive hook just created new posts as commits were rece
 
 This means that there will be a perceived delay between the commit date and the time it shows up on the activity log, but this accurately reflects the way in which commits are not actually published until somebody does a "git push". It also avoids the clumping together effect of the old system where a bunch of commits that took place over a period of time would appear to have happened all at once when pushed out.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

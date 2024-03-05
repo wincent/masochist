@@ -5,4 +5,4 @@ tags: snippets
 
 Direct import of public portions from WOCommon.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

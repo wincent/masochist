@@ -9,4 +9,4 @@ This is more secure than providing an account with a default password, although 
 
 In this commit we add colorization (bold green) and some surrounding asterisks to make sure that the password is not drowned out amid all the other output.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

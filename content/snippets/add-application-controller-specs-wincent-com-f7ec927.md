@@ -5,4 +5,4 @@ tags: snippets
 
 These specs are defined as shared behaviours, and so can be incorporated by reference in the specs of all application controller subclasses.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

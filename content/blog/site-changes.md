@@ -8,7 +8,7 @@ The changes [mentioned yesterday](/blog/upcoming-site-changes) are now in place.
 -   new product pages for [Synergy](/wiki/Synergy): these are much more navigable and attractive than the old pages
 -   a host backend updates (170 commits)
 
-A full listing of code-level changes appears below. As always, if you spot any glitches please let me know (via email to <win@wincent.com>, or opening a [ticket](/wiki/ticket) in the [issue tracker](/wiki/issue_tracker).
+A full listing of code-level changes appears below. As always, if you spot any glitches please let me know (via email to <example@example.com>, or opening a [ticket](/wiki/ticket) in the [issue tracker](/wiki/issue_tracker).
 
     ec73672 script/deploy: fix incorrect paths in "switch" subcommand
     9b66b93 script/deploy: migrate using "migrations" environment

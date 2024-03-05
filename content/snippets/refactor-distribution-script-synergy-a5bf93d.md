@@ -5,4 +5,4 @@ tags: snippets
 
 Use a couple of temporary variables to make long lines fit on a single line, rather than splitting them across multiple lines.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

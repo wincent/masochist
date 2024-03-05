@@ -5,4 +5,4 @@ tags: snippets
 
 Use the nicer, SCM-friendly nib format that's new with Leopard and Xcode 3.0.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

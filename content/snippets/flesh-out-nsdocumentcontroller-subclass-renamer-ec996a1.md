@@ -7,4 +7,4 @@ This finishes the refactoring, giving us a nicer separation of responsibilities 
 
 As noted in the code comments in the later, this could later be expanded to support the "re-opening" of "documents".
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

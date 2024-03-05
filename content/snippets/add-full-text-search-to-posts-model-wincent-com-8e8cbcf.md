@@ -5,4 +5,4 @@ tags: snippets
 
 This commit includes tweaks to get my acts_as_searchable model working.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

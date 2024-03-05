@@ -5,4 +5,4 @@ tags: snippets
 
 Sync the project bundle with the other changes that have been made to support multi-window operation.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

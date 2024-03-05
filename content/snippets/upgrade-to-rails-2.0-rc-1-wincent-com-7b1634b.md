@@ -5,4 +5,4 @@ tags: snippets
 
 Almost all Rails files touched by this upgrade, even though many of the changes are just bogus whitespace churn.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

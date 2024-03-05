@@ -5,4 +5,4 @@ tags: snippets
 
 Spelling error in code documentation comment.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

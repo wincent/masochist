@@ -5,4 +5,4 @@ tags: snippets
 
 Replace instances of \#ifdef with \#if.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

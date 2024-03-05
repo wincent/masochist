@@ -9,4 +9,4 @@ This commit tries to centralize as much of this code as possible inside the Auth
 
 There still is quite a bit of explicit authentication logic in the user model itself (mostly validation and callback related), and I am not sure what to do about that. Although the idea of keeping authentication code bundled together in one place is superficially appealing, if taken to far it can actually make the code less readable. As such, the refactoring done in this commit is relatively conservative and I won't be taking it any further for the time-being.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

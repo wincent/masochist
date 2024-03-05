@@ -9,4 +9,4 @@ I looked at jettisoning this override entirely but experimentation shows that th
 
 So for now the override stays.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

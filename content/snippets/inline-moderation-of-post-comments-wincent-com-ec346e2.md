@@ -7,4 +7,4 @@ Add two buttons underneath each comment, but only when logged in as an admin use
 
 At the top of the listing we show three comment counts: published comments, comments awaiting moderation, and spam comments. On the main listing page the comment count that we show is actually the sum of published comments and comments awaiting moderation.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

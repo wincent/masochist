@@ -5,4 +5,4 @@ tags: snippets
 
 Remove duplicate tags in search query and limit the total number to 10 to guard against attacks on the database. It is highly unlikely that a search with more than 10 tags would return any results anyway, given that the average number of tags per item is probably well under five.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

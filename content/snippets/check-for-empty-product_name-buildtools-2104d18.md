@@ -5,4 +5,4 @@ tags: snippets
 
 Check for empty PRODUCT_NAME and bail with an error message if necessary. We don't want an empty PRODUCT_NAME because that would yield a nonsensical target package name ".pkg".
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 This is for testing what remote users would see in production mode in the event of an error.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

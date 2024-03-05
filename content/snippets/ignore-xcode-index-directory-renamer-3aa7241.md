@@ -5,4 +5,4 @@ tags: snippets
 
 Set up a .gitignore entry for the index directory created in the source root by Xcode 3.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

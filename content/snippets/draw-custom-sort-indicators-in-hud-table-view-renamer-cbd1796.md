@@ -5,4 +5,4 @@ tags: snippets
 
 The default sort indicators are practically invisible with the HUD colors, so draw some custom ones instead.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

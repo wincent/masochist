@@ -5,4 +5,4 @@ tags: snippets
 
 Read in the info written out by the distro.sh script.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

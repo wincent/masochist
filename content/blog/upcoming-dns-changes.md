@@ -9,4 +9,4 @@ I'll be doing everything I can to minimize downtime, and hopefully come close to
 
 The DNS is currently provided by Rackspace, but my new provider, [INetU](http://www.inetu.net/) already has their DNS configured and ready to take over. Throughout the following week I'll be gradually "flipping switches". The first domains to be flipped over will be bansshee.com, bansshee.net and bansshee.org, on Monday. If that goes well then I'll continue switching the other domains (13 of them) to the INetU DNS servers in the course of the week.
 
-If you notice any problems please get in touch with me (<win@wincent.com>). wincent.com itself will probably be the last domain to get switched over.
+If you notice any problems please get in touch with me (<example@example.com>). wincent.com itself will probably be the last domain to get switched over.

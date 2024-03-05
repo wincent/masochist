@@ -7,4 +7,4 @@ Add a menu item to bring up the installer dialog, set up the bindings and connec
 
 This is only the user interface; the back end has not yet been put in place.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

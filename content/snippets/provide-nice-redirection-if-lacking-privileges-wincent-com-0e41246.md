@@ -5,4 +5,4 @@ tags: snippets
 
 Redirect the user to the login page if they request something for which they don't have privileges.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

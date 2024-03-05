@@ -9,4 +9,4 @@ There is now only one class which requires singleton functionality and it now ha
 
 At the same time as removing WOSingleton, also removed some other cruft classes that had been lying arond for ages as part of an experimental refactoring which was abandoned.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

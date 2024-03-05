@@ -5,4 +5,4 @@ tags: snippets
 
 Explicitly return the value from the block (the block itself) will evaluate to nil.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

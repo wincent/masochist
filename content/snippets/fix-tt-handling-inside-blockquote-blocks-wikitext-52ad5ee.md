@@ -7,4 +7,4 @@ This was a corner case which was failing: a BLOCKQUOTE block with some text on o
 
 We fix this by cleaning up the handling of excess element popping.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

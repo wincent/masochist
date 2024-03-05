@@ -7,4 +7,4 @@ Simplify the model by removing the supporting "statuses" class. There is no need
 
 In order to get pagination and sorting working I had to teach both the paginator and the sortable module to pass on the relevant query parameters when generating URLs.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

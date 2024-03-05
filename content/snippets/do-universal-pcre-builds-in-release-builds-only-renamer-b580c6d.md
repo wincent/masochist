@@ -5,4 +5,4 @@ tags: snippets
 
 In Debug builds just build for the native architecture (i386).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

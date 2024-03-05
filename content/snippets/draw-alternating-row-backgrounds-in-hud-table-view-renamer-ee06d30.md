@@ -5,4 +5,4 @@ tags: snippets
 
 This is a preliminary implementation that only has effect in the populated rows. A subsequent commit will handle drawing the background in unpopulated rows.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

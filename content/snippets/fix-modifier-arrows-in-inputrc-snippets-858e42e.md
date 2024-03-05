@@ -7,4 +7,4 @@ This is really a two-step process; first, you need to have Control-Left and Cont
 
 The apparently useless Option-Left/Option-Right bindings are now commented out. It seems that they don't work unless you do configuration in the Terminal preferences, but once you've done that you no longer need the bindings anyway.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

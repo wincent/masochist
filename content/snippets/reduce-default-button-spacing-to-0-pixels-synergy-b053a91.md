@@ -5,4 +5,4 @@ tags: snippets
 
 The vast majority of button sets are designed with this in mind.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -26,7 +26,7 @@ A lot of this is described in detail in "[Setting up a brand new public Git repo
 Initialized empty Git repository in ...
 Enter a one-line description (for GitWeb): Mirror of github.com/fgnass/spin.js
 Mirror of github.com/fgnass/spin.js
-spin.js.git Wincent+Colaiuta+<win@wincent.com>
+spin.js.git Wincent+Colaiuta+<example@example.com>
 git://git.typechecked.net/spin.js.git
 Enter name of backup repo at GitHub (eg. Command-T): spin.js
 Enter name of backup project at Gitorious (eg. fusion-mac-os-x): github-mirrors
@@ -45,9 +45,9 @@ git://git.typechecked.net/spin.js.git
 
 Contents (tail) of gitweb-projects file:
 
-synergy.git Wincent+Colaiuta+<win@wincent.com>
-clipper.git Wincent+Colaiuta+<win@wincent.com>
-spin.js.git Wincent+Colaiuta+<win@wincent.com>
+synergy.git Wincent+Colaiuta+<example@example.com>
+clipper.git Wincent+Colaiuta+<example@example.com>
+spin.js.git Wincent+Colaiuta+<example@example.com>
 
 Contents of config file:
 

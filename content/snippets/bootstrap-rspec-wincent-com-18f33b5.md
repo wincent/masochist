@@ -5,4 +5,4 @@ tags: snippets
 
 Prepare the application by running "script/generate rspec", and advise Git to ignore the "previous_failures.txt" file.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

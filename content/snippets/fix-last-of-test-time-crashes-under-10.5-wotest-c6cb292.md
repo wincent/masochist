@@ -7,4 +7,4 @@ Fix another test-time crash that's new under 10.5, this one stemming from the us
 
 So for now we just skip those tests.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

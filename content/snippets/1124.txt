@@ -12,7 +12,6 @@ bf14a9f Update vendor/cache, which had fallen out of sync
 ac23e52 Kill off some unused CSS
 f60e229 Add a clarifying comment to ArticleObserver
 9c5184a Add a Clipper link to the product nav
-f9dba4d Remove a few references to win@wincent.com
 48690f9 Add a TODO missed in previous sweep
 f370dbe Likely fix for Spring-woes
 c43676e Update Browserify bundle

@@ -7,4 +7,4 @@ To coincide with the update to Rails 2.0RC2, update the copy of the RSpec trunk 
 
 Note that in the upgrade notes I've used "git rm -r" rather than "rm -r" to blow away the old version as it makes adding the new files back in a little easier.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

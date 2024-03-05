@@ -5,4 +5,4 @@ tags: snippets
 
 Unwrap some method signatures for better readability in one of the NSString categories.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

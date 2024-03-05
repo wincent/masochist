@@ -9,4 +9,4 @@ I would have liked to propagate this same change to the other nibs using ibtool 
 
 So, for now I am temporarily removing the unsynchronizable nibs entirely; I will have to create new nibs (copies of the English nibs) and copy the strings across by hand from the older localizations that I have on file. This will be a lengthy and painful job, so it might be sometime before it gets completed.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

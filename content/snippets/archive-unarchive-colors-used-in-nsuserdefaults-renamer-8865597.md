@@ -5,4 +5,4 @@ tags: snippets
 
 Necessary because can only store NSData objects in NSUserDefaults, not NSColor instances.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 Initial import corresponding to the tip of the trunk (Leopard) in the current Subversion repository (revision 399).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

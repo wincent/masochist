@@ -7,4 +7,4 @@ This is the first step in adding support for literal &lt;blockquote&gt; and &lt;
 
 Because blockquote and pre blocks are intimately interrelated I won't allow mixing the two types of syntax, as it could produce results too confusing for the user.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

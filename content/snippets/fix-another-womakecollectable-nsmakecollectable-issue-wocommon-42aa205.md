@@ -5,4 +5,4 @@ tags: snippets
 
 Another CFTypeRef which should have been id type.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

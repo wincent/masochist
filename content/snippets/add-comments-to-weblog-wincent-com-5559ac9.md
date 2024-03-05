@@ -7,4 +7,4 @@ This required some nasty dynamic programming due to the nature of nested polymor
 
 The other change which tags along for the ride here is per-page page title overrides.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

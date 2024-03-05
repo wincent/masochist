@@ -7,4 +7,4 @@ Leopard has a bug in the NSGetSizeAndAlignment() function which prevents it from
 
 So this commit \#ifdefs out the tests which fail as a result of this bug. A simplified testcase demonstrating the problem has be en added to the "other" subdirectory. A Radar has been filed (&lt;rdar://problem/5357040&gt;); currently awaiting on a fix from Apple.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

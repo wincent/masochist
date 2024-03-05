@@ -5,7 +5,7 @@ tags: site blog
 
 Just deployed a new version of the site, mostly consisting of changes to the supporting infrastructure (testing frameworks and the like). About the only user visible change should be that [JavaScript](/wiki/JavaScript) is now minimized a little more efficiently using the [Google](/wiki/Google) [Closure](/wiki/Closure) compiler, so page loads should be about 1% faster.
 
-Other than that it should be business as usual, but if you do spot any problems please let me know via email (to <win@wincent.com>) or via a [ticket](/wiki/ticket) in the [issue tracker](/wiki/issue_tracker).
+Other than that it should be business as usual, but if you do spot any problems please let me know via email (to <example@example.com>) or via a [ticket](/wiki/ticket) in the [issue tracker](/wiki/issue_tracker).
 
 The full list of code-level changes appears below:
 

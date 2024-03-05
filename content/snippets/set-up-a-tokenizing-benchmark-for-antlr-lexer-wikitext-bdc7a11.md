@@ -7,4 +7,4 @@ This function doesn't actually do anything with the tokens, it just asks the lex
 
 The intention is to measure the raw speed of the tokenization part only (ie. the part due to ANTLR only).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

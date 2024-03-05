@@ -7,4 +7,4 @@ In setting up the test sample files I inadvertently included a sample file gener
 
 This commit modifies the state machine to skip over any such preamble prior to attempting to recognize the "meat" of the diff. This means that gdiff will be able to operate not only on the bare diff output of "git-diff" but also on that of "git-show" and potentially other sources as well (patch emails are a possibility, for example, although they may require some pre-processing if they are encoded using a transport encoding).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

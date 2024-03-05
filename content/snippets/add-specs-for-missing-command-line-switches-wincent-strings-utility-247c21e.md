@@ -5,4 +5,4 @@ tags: snippets
 
 Test case where --strings is supplied without --info and vice versa.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

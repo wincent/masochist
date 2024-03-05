@@ -5,4 +5,4 @@ tags: snippets
 
 In the flipped coordinate system case, the border would be drawn one pixel too low.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

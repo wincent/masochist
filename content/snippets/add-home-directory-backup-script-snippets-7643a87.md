@@ -7,4 +7,4 @@ This new script is designed to complement the daily "burn to DVD" script that I'
 
 It is intended to be run four times a day from a cron job.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

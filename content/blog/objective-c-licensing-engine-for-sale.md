@@ -55,4 +55,4 @@ You will receive:
 -   full [Git](/wiki/Git) repository containing entire project history (currently 107 commits)
 -   full rights to the code base; that is, rather than merely licensing the code base you will be acquiring it along with all rights to it, to do with as you please
 
-If you're interested and have any questions, please feel free to get in touch with me via email (<win@wincent.com>) or by posting a comment here. In the case of official enquiries from known software companies (ie. received from an official, public email address associated with the company) I'm prepared to discuss technical details or provide sample code as appropriate.
+If you're interested and have any questions, please feel free to get in touch with me via email (<example@example.com>) or by posting a comment here. In the case of official enquiries from known software companies (ie. received from an official, public email address associated with the company) I'm prepared to discuss technical details or provide sample code as appropriate.

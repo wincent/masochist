@@ -1,5 +1,6 @@
 ---
 tags: sendmail git wiki
+title: Troubleshooting "git send-email" problems
 ---
 
 While `git send-email` itself is a fairly simple, conservatively-written program, it is written in [Perl](/wiki/Perl) and depends on a number of [CPAN](/wiki/CPAN) modules and that in turn makes it fairly brittle and sensitive to changes in the system. In particular, if you move outside of the most basic usage patterns and start wanting to use things like [SMTP](/wiki/SMTP) authentication and [SSL](/wiki/SSL) then you're more likely to run into problems. For example, see "[Installing Net::SMTP::SSL for sending patches with Git over secure SMTP](/wiki/Installing_Net%3a%3aSMTP%3a%3aSSL_for_sending_patches_with_Git_over_secure_SMTP)", which describes the problems I had when first trying to get it to work.
@@ -7,7 +8,7 @@ While `git send-email` itself is a fairly simple, conservatively-written program
 It's been a while since I submitted any patches via `git send-email`, and since then [Git](/wiki/Git) itself has gone through many updates, as has my operating system ([Mac OS X](/wiki/Mac_OS_X)) and the [CPAN](/wiki/CPAN) has been in constant churn. After an initial, successful invocation using the `--dry-run` switch, I tried the real thing, and I guess it's not surprising that it didn't work:
 
     ...
-    (body) Adding cc: Wincent Colaiuta <win@wincent.com> from line 'Signed-off-by: Wincent Colaiuta <win@wincent.com>'
+    (body) Adding cc: Wincent Colaiuta <example@example.com> from line 'Signed-off-by: Wincent Colaiuta <example@example.com>'
     Use of uninitialized value in concatenation (.) or string at /System/Library/Perl/5.8.8/darwin-thread-multi-2level/Scalar/Util.pm line 30.
      is only avaliable with the XS version at /Library/Perl/5.8.8/IO/Socket/SSL.pm line 30
     BEGIN failed--compilation aborted at /Library/Perl/5.8.8/IO/Socket/SSL.pm line 30.
@@ -41,7 +42,7 @@ In the end, the only thing that would make `git send-email` work was to manually
 That mostly fixed the problem:
 
     ...
-    (body) Adding cc: Wincent Colaiuta <win@wincent.com> from line 'Signed-off-by: Wincent Colaiuta <win@wincent.com>'
+    (body) Adding cc: Wincent Colaiuta <example@example.com> from line 'Signed-off-by: Wincent Colaiuta <example@example.com>'
     5.7.0 authentication failed
 
 So at this point it looks like the breakage wasn't caused by any changes to `git send-email` itself, nor by any manual manipulation of installed [CPAN](/wiki/CPAN) modules on my system (I explicitly avoid touching that wobbly house of cards unless really forced to). My prime suspect here is breakage in the [Apple](/wiki/Apple)-provided `Scalar::Util` module installed at `/System/Library/Perl/5.8.8/darwin-thread-multi-2level/Scalar/Util.pm`.

@@ -5,4 +5,4 @@ tags: snippets
 
 This is a prerequisite before we can look at autolinking email addresses in the parser.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

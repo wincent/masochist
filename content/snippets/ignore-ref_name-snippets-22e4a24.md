@@ -9,4 +9,4 @@ example, distinguishing between unannotated tags, annotated tags, branch\
 commits and tracking branch events, as demonstrated in the post-receive-email\
 hook that comes with Git) I can always do something with the ref_name.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;\
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;\

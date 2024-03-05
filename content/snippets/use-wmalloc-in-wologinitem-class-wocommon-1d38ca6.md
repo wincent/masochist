@@ -5,4 +5,4 @@ tags: snippets
 
 Saves a few lines of code; will later switch to wmalloc elsewhere in the codebase as well.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

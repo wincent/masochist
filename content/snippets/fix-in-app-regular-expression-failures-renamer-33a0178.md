@@ -9,4 +9,4 @@ We work around this by using fileSystemRepresentation rather than UTF-8 string, 
 
 This should be fine because we are operating on filesystem objects -- we know the original name will always be decomposed UTF-8 -- so there is no harm in always returning decomposed UTF-8 as well; in other words, this normalization will not lead to spurious rename operations (same file name merely composed differently).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

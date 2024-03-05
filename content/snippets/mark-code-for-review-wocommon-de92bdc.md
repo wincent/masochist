@@ -5,4 +5,4 @@ tags: snippets
 
 The NSThread convenience category needs to be reevaluated in the light of GC; the previous technique of passing pointers around inside NSNumber needs to be reconsidered.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

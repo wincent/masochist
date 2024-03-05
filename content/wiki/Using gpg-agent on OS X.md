@@ -1,5 +1,6 @@
 ---
 tags: gpg wiki
+title: Using gpg-agent on OS X
 ---
 
 I just started using `gpg-agent` for the first time on [OS X](/wiki/OS_X). Coming from my familiarity with `ssh-agent` and `ssh-add`, there were some surprises.
@@ -23,7 +24,7 @@ The reason I started investigating this is so I could do batch encryption and de
 Here the command I want to run is something like:
 
 ```shell
-$ gpg -a -q --batch --no-tty --yes -r win@wincent.com -o $FILE.encrypted -e $FILE
+$ gpg -a -q --batch --no-tty --yes -r example@example.com -o $FILE.encrypted -e $FILE
 ```
 
 Encryption is done with the public key, so you don't need to enter a passphrase, but I was nevertheless getting derailed by a prompt:
@@ -35,7 +36,7 @@ Encryption is done with the public key, so you don't need to enter a passphrase,
 I believe the cause is that my key pair was generated on another machine, and when I switched machines, it lost its trust settings. They can be restored (to "ultimate" trust) with:
 
 ```shell
-$ gpg --edit-key win@wincent.com
+$ gpg --edit-key example@example.com
 ```
 
 and then entering `trust` at the prompt, entering and confirming the desired trust level (`5`) and then issuing a `quit`.
@@ -73,7 +74,7 @@ This is where it gets tricky. As I said above, there is no man page. Furthermore
 Finally, you need a `KEYGRIP`, which [this mailing list post](http://lists.gnupg.org/pipermail/gnupg-users/2010-January/037876.html) informs us is actually the fingerprint of the key, and not just the fingerprint, but the subkey fingerprint, which you can display with the arcane `gpg --fingerprint --fingerprint` command.
 
 ```shell
-$ KEYGRIP=$(gpg --fingerprint --fingerprint win@wincent.com | grep fingerprint | tail -1 | cut -d= -f2 | sed -e 's/ //g')
+$ KEYGRIP=$(gpg --fingerprint --fingerprint example@example.com | grep fingerprint | tail -1 | cut -d= -f2 | sed -e 's/ //g')
 $ /usr/local/opt/gpg-agent/libexec/gpg-preset-passphrase --preset $KEYGRIP
 ```
 

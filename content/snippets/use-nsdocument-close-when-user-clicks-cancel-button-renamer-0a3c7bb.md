@@ -5,4 +5,4 @@ tags: snippets
 
 Rather than trying to effect manual clean-up, let the document system handle it.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

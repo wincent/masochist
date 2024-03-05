@@ -5,4 +5,4 @@ tags: snippets
 
 Clean up Data_Wrap_Struct usage a little by encapsulating the pattern of "call Data_Wrap_Struct() and store return value on stack in a variable marked as volatile" in a macro.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

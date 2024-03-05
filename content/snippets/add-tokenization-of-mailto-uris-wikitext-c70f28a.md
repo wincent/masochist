@@ -7,4 +7,4 @@ We already had tokenization of email addresses, which in combination with autoli
 
 Now we have tokenization of "mailto" URIs, which means that we now also have the option of using the standard external link syntax, like we would with any other URI, to provide the link text rather than just making the address itself clickable.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

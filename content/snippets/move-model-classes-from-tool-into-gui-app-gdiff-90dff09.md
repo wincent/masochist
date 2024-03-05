@@ -5,4 +5,4 @@ tags: snippets
 
 Move WOChange, WODiff and WOFile into the GUI app; the tool will be modified to merely locate and call the GUI application.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -15,8 +15,8 @@ title: GPG
 
 ## Inactive keys
 
--   [`6B746F3C37BAF280 (Wincent Colaiuta <win@wincent.com>)`](https://keyserver.ubuntu.com/pks/lookup?search=6B746F3C37BAF280&fingerprint=on&op=index) (expiring 2024-01-12)
--   [`6F252437134D9429 (Wincent Colaiuta <win@wincent.com>)`](https://keyserver.ubuntu.com/pks/lookup?search=6F252437134D9429&fingerprint=on&op=index) (expired 2017-07-07)
+-   [`6B746F3C37BAF280 (Greg Hurrell <greg@hurrell.net>)`](https://keyserver.ubuntu.com/pks/lookup?search=6B746F3C37BAF280&fingerprint=on&op=index) (expiring 2024-01-12)
+-   [`6F252437134D9429 (Greg Hurrell <greg@hurrell.net>)`](https://keyserver.ubuntu.com/pks/lookup?search=6F252437134D9429&fingerprint=on&op=index) (expired 2017-07-07)
 
 # Official site
 

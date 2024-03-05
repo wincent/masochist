@@ -5,4 +5,4 @@ tags: snippets
 
 Set up a gitignore file to ignore everything inside the test subdirectory.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

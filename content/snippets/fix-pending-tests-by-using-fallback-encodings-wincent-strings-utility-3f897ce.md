@@ -7,4 +7,4 @@ Instead of using the deprecated NSString stringWithContentsOfFile: method (not s
 
 In this way we can explicitly try NSUTF16StringEncoding (should work for any file that has a BOM) and then fall back to NSUTF16LittleEndianStringEncoding and NSUTF16BigEndianStringEncoding if parsing fails.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

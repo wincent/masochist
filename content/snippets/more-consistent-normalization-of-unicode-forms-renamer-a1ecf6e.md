@@ -7,4 +7,4 @@ This commit includes tests to probe the Unicode normalization issues and fixes t
 
 The key change is that WOCreateMatchDictionary has been changed to work using byte ranges rather than character ranges. A nice side effect is that the WOCharacterCountForUTF8String function can be entirely removed.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

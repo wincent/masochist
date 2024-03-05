@@ -5,4 +5,4 @@ tags: snippets
 
 Remove the now-redundant Subversion "$Id$ keywords from the code base.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

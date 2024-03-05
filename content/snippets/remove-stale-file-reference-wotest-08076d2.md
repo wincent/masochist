@@ -5,4 +5,4 @@ tags: snippets
 
 The project had a reference to the no-longer-used WOEnumerate.h header.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

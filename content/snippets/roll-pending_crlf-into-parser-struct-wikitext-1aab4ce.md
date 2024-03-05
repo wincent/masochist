@@ -5,4 +5,4 @@ tags: snippets
 
 This is a nice clean-up that gets rid of another parameter to the "start para if necessary" function.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 But only update it when the Git HEAD commit changes, to avoid spurious recompiles in Xcode.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

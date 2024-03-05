@@ -5,4 +5,4 @@ tags: snippets
 
 Supplying -base without any options is legal; it just means that no transformation is applied to the input before outputting.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

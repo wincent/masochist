@@ -5,4 +5,4 @@ tags: snippets
 
 In the final version of Objetive-C 2.0 the property declaration and re-declaration semantics changed slightly; explicitly mention the "copy" attribute in the original declaration to silence the build warning.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

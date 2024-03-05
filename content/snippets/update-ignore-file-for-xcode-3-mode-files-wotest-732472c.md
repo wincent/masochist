@@ -5,4 +5,4 @@ tags: snippets
 
 Xcode 3 mode files have a new extension (mode1v3), so update the ignore file accordingly.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

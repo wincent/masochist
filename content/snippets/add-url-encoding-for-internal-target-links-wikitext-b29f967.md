@@ -7,4 +7,4 @@ Add machinery for converting strings into URL-encoded strings suitable for use a
 
 In order for the new functions to make use of the existing text-encoding conversion methods a few minor tweaks had to be made to the conversion functions (because in these cases the conversion is under controlled conditions the converted width is not important in some cases, and in others there is no need to free the target buffer in the event of an error because it is not dynamically allocated).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

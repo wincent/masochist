@@ -5,4 +5,4 @@ tags: snippets
 
 This commit adds some specs which uncovered the problem as well as the rather simple fix.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 The check_cr function scans the currently directory recursively checking text files for Windows or (Classic) Mac line endings (carriage returns). Progress is reported in the console as each file is scanned.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

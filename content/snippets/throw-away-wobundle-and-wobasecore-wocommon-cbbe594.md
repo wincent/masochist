@@ -7,4 +7,4 @@ Apple deprecated some crucial API in Leopard and my options were as follows: ign
 
 Rather than chase a moving target or balance on shakey ground (pick your metaphor) I decided to rip the old code out and forget about it. This means ripping out WOBundle and the entire WOBaseCore bundle; some of the necessary functionality in WOBaseCore has been migrated into other classes in WOCommon. On the bright side, this is a simplification, even if it does mean sacrificing some very useful functionality that proved itself pre-Leopard.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

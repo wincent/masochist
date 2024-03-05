@@ -5,4 +5,4 @@ tags: snippets
 
 According to the documentation, programmatically created NSScrollViews have no scrollers, so remove the redundant calls to the setHasVerticalScroller: method.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

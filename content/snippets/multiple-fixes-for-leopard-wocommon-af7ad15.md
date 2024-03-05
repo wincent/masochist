@@ -5,4 +5,4 @@ tags: snippets
 
 Many tweaks and fixes related to Garbage Collection under Leopard, necessary to get the test suite building and running again.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 Corresponds to revision 92 (tip of the trunk, Leopard) in the old Subversion repository.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

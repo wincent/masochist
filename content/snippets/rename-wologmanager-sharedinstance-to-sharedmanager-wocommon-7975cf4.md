@@ -5,4 +5,4 @@ tags: snippets
 
 Prefer the more descriptive name, sharedManager, to the generic, sharedInstance for the singleton instance of the WOLogManager class.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -30,4 +30,4 @@ As this is a fairly big change I'll be rolling it out cautiously and keeping an 
 -   The first line of a commit message is shown by default, but you can click on it to toggle the display of the full message on and off
 -   Clicking on line numbers when viewing diffs gives you a link that will try scrolling to that line (obviously depends on the page length as to whether it can actually scroll that far)
 
-So feel free to have a play round with it and let me know (either via email to <win@wincent.com> or a ticket on the [issue tracker](/wiki/issue_tracker)) if you see any breakage or weirdness. I'll be monitoring how things go and will add additional repositories as time goes by.
+So feel free to have a play round with it and let me know (either via email to <example@example.com> or a ticket on the [issue tracker](/wiki/issue_tracker)) if you see any breakage or weirdness. I'll be monitoring how things go and will add additional repositories as time goes by.

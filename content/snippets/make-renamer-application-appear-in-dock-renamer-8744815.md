@@ -7,4 +7,4 @@ This is part of a general style change. In the prototype, the principal object o
 
 Now, the application is the star and the plugin lives inside the application bundle. This opens up some other possibilities for UI interaction, like responding to items dragged and dropped onto the Dock icon or the application in the Finder.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

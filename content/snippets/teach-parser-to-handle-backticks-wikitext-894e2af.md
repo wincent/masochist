@@ -5,4 +5,4 @@ tags: snippets
 
 This commit includes specs to show that valid input is correctly processed. I've still to add specs for invalid input.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

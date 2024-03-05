@@ -9,4 +9,4 @@ Application-specific behaviour that is now in the subclass includes the row-resi
 
 These limitations work well for REnamer, so I've run with them; I am sure that there are other ways but they would be more complex so best to leave them unexplored until they are actually needed.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 These show what happens when you insert unterminated links in a large slab of wikitext.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

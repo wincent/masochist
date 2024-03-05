@@ -5,4 +5,4 @@ tags: snippets
 
 This was a bit of an oversight, as I always meant to incorporate it alongside HTTP URIs.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

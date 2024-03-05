@@ -7,4 +7,4 @@ Although it's not mentioned in the pcretest manpage as far as I can tell, in add
 
 Roll in support for this, thus fixing a bunch of different test failures.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

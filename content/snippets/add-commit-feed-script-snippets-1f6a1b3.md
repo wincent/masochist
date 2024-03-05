@@ -6,4 +6,4 @@ tags: snippets
 This is the original version of the script (designed for use with Subversion).\
 It will need to be updated to work with Git.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;\
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;\

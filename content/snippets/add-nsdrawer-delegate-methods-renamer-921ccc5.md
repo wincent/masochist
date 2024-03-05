@@ -9,4 +9,4 @@ The docs would suggest that the delegate should receive a drawerWillResizeConten
 
 I am not sure whether this is a big enough deal to implement a work around just yet, so for now just making note of this here and in the code.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

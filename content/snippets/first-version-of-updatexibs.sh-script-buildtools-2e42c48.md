@@ -5,4 +5,4 @@ tags: snippets
 
 At this stage it doesn't do much -- just check for the existence of target xib and strings files and creates them if they are missing -- but subsequently I will add incremental localization abilities.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

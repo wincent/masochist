@@ -7,4 +7,4 @@ It would be nice if we could normalize everything to ASCII but Iconv can't be tr
 
 We perform one database query to see if there's a clash to make sure that we generate a unique permalink each time. This would be racy in a multi-user scenario but it's envisaged that I'll be the only one publishing articles so this is probably fine.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

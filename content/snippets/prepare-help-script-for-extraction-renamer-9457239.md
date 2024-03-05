@@ -5,4 +5,4 @@ tags: snippets
 
 Generalize things in the help.sh script in preparatin for extraction into buildtools.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

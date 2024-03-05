@@ -5,4 +5,4 @@ tags: snippets
 
 Mostly just making everything darker.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

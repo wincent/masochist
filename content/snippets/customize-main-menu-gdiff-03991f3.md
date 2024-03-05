@@ -5,4 +5,4 @@ tags: snippets
 
 Replace generic references to the application in the default main menu nib with its actual name.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

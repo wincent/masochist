@@ -9,4 +9,4 @@ So prune the irrelevant bits.
 
 This commit also includes a simple shell script for tagging releases in Git; seeing as each release should really be tagged in at least three repositories (Synergy itself, WOCommon and WOPublic), it's easier to do this with a single script.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

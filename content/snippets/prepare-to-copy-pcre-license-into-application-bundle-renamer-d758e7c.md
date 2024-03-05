@@ -5,4 +5,4 @@ tags: snippets
 
 This is just setting up a symlink so that we can install future versions of PCRE and automatically pick up the latest license file.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

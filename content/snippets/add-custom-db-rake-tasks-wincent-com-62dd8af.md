@@ -5,4 +5,4 @@ tags: snippets
 
 Convenience tasks for migrating and resetting the databases under each environment, or all environments at once.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

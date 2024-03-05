@@ -5,4 +5,4 @@ tags: snippets
 
 Extract the initial set up of the scripting bridge into a separate function for easier reuse.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

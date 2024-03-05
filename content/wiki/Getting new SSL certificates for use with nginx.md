@@ -34,7 +34,7 @@ This is how I answered the questions:
     Organization Name (eg, company) [My Company Ltd]:typechecked.net
     Organizational Unit Name (eg, section) []:
     Common Name (eg, your name or your server's hostname) []:typechecked.net
-    Email Address []:win@wincent.com
+    Email Address []:example@example.com
 
     Please enter the following 'extra' attributes
     to be sent with your certificate request

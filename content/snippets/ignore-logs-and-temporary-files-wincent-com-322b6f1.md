@@ -5,4 +5,4 @@ tags: snippets
 
 Set up .gitignore files in the log and tmp subdirectories, and remove empty log files that were previously added.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

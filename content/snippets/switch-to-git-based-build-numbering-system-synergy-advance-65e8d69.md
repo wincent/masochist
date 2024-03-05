@@ -5,4 +5,4 @@ tags: snippets
 
 Replace the old Subversion-based build numbering with the new Git-based system.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

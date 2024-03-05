@@ -5,4 +5,4 @@ tags: snippets
 
 Located in the source root so that it can be found without changing the default header search path.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

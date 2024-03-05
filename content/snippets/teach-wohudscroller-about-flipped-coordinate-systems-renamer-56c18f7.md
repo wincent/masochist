@@ -7,4 +7,4 @@ Similiar to commit f19e388, here we teach WOHUDScroller to draw correctly depend
 
 Rather than eliminating repetition here, I think clarity is more important, so I've explicitly specified the path for each of the permutations of ascending/descending, horizontal/vertical, and flipped/unflipped.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

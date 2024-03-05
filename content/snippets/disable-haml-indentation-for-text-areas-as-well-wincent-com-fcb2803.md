@@ -7,4 +7,4 @@ In "edit" forms Haml was indenting the text that appeared inside &lt;textarea&gt
 
 So wrap the text areas in preserve() calls to prevent this. This results in some very ugly source code so I am keen to find a more elegant solution.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

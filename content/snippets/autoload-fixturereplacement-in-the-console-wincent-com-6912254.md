@@ -5,4 +5,4 @@ tags: snippets
 
 Add an .irbrc file which includes the FixtureReplacement module whenever firing up the Rails console.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

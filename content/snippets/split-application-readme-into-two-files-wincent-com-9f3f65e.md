@@ -5,4 +5,4 @@ tags: snippets
 
 Now we have setup notes and design notes.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

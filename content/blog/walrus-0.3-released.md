@@ -15,7 +15,7 @@ $ sudo gem install walrus
 
 # Donations
 
-[Walrus](/wiki/Walrus) is free, [open source](/wiki/open_source) software released under the BSD license. If you find it useful and would like to support further development you can [make a donation](/products/walrus/donations) via PayPal to <win@wincent.com>.
+[Walrus](/wiki/Walrus) is free, [open source](/wiki/open_source) software released under the BSD license. If you find it useful and would like to support further development you can [make a donation](/products/walrus/donations) via PayPal to <example@example.com>.
 
 # See also
 

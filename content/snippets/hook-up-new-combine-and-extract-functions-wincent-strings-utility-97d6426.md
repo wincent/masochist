@@ -9,4 +9,4 @@ The extract() function looks at a base strings file (in the development language
 
 The combine() function takes a partial strings file (of the kind produced by the extract() function) and integrates it with an existing file using a simple additive algorithm (not a merge). It is considered an error if there is any overlap in the keys in the two files.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -9,4 +9,4 @@ This commit removes the unwanted phase.
 
 Two more appropriate solutions for installing the manual page would be either preparing an Installer package (for installations outside of Xcode) or setting up a completely separate "Install" target (for use within Xcode) that could be fired off explicitly when desired.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

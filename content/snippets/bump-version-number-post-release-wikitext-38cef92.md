@@ -7,4 +7,4 @@ Now at 0.2.1. The next release will be 0.3. The next (and perhaps last) feature 
 
 The syntax will most likely be "{{foo.png}}", inspired by Creole, as it should be nice and easy to parse.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

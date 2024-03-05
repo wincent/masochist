@@ -5,4 +5,4 @@ tags: snippets
 
 Use the "see other" response, seeing as these redirections are always permanent and should always be GET requests.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

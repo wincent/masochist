@@ -5,4 +5,4 @@ tags: snippets
 
 Remove $Id$ tags as they were Subversion specific and are no longer useful now that the code is in a Git repository.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

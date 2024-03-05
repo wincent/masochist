@@ -11,4 +11,4 @@ Secondly, the arch names (as reported by lipo) are no longer necessarily "ppc" a
 
 My initial solution was to iterate through VALID_ARCHS trying them out one by one and building up a list of actually-present architectures, but in the end the simplest solution was to forget about using lipo to split things into thin binaries and just work with Universal binaries at every step; this is possible because it seems that the entire tool chain (atos, strip, GDB with dSYM etc) is now capable of working with Universal Binaries.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

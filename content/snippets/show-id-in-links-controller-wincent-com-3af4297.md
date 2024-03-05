@@ -5,4 +5,4 @@ tags: snippets
 
 This is an admin-only view, and the permalink is optional, so it makes sense to show the id here in the index view.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

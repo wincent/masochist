@@ -7,4 +7,4 @@ A synthesized setter on a mutable property, combined with the copy attribute, wi
 
 So in this case must provide a non-synthesized setter which correctly employs mutableCopy.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

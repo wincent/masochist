@@ -7,4 +7,4 @@ The Objective-C 2.0 runtime in Leopard expects more methods to be implemented in
 
 This commit adds two such methods to the WOLightweightRoot implementation, doesNotRecognizeSelector: and methodSignatureForSelector:, thus eliminating a crash that would derail the test run.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

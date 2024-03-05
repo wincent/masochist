@@ -5,4 +5,4 @@ tags: snippets
 
 This includes an update to the Status model specs, overriding the default specs provided by RSpec.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

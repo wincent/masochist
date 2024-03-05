@@ -5,4 +5,4 @@ tags: snippets
 
 These specs show how the transformer responds in the face of odd or questionable input (strange characters in link text, for example).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

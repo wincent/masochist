@@ -9,4 +9,4 @@ I originally had a third change here as well, enabling column selection, but tha
 
 Note that a few issues still remain: the sort indicators appear but do not change direction when sort direction is changed, and the highlighting behaviour is incorrect.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

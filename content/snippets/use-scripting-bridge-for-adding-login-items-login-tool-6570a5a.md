@@ -5,4 +5,4 @@ tags: snippets
 
 This appears to be a correct translation of the old code, and saves many lines. It doesn't work, however, so further troubleshooting will be required.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

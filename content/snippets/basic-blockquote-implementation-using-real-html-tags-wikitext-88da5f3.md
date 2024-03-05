@@ -5,4 +5,4 @@ tags: snippets
 
 Still need to write more specs to be sure I've covered all the edge cases, but the basic stuff seems to work.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

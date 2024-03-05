@@ -5,7 +5,7 @@ tags: blog
 
 When I first got on the Internet I used to want to know about email as soon as it was sent to me. I always set the checking interval to the minimum available; I can't remember what this was at first, but it was in the ballpark of 5, 10 or 15 minutes. When I got a mail client that could check every minute I dropped the interval to a minute.
 
-Then came spam. The came customers. Then came mailing lists with ever greater traffic. Over the years I've tried to get smarter and smarter about spam, principally by using good filtering and classifying ([SpamSieve](http://c-command.com/spamsieve/) is the shining star of the troop), some conservative server-side blacklisting, and not by trying to hide my email address (<win@wincent.com>).
+Then came spam. The came customers. Then came mailing lists with ever greater traffic. Over the years I've tried to get smarter and smarter about spam, principally by using good filtering and classifying ([SpamSieve](http://c-command.com/spamsieve/) is the shining star of the troop), some conservative server-side blacklisting, and not by trying to hide my email address (<example@example.com>).
 
 Nowadays spam "only" takes about an hour of my time each month; the hour in which I clean out my spam mailbox, looking for false positives, and training [SpamAssassin](http://wincent.com/wiki/SpamAssassin) on its false negatives (for me SpamAssassin still only catches less than half the spam that SpamSieve does). In fact one of the reasons I'm writing this post is that today was my cleanout day; I've processed over 9,000 spam messages.
 

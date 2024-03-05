@@ -5,4 +5,4 @@ tags: snippets
 
 Add a note() function to Common.sh, as well as documentation which clarifies the purpose of and difference between note(), err() and warn().
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

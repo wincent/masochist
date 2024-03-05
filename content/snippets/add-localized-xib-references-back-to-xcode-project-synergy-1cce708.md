@@ -5,4 +5,4 @@ tags: snippets
 
 Now that the localized xibs are back in action again, add them back to the Xcode project.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

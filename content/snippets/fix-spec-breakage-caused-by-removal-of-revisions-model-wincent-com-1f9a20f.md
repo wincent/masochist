@@ -5,4 +5,4 @@ tags: snippets
 
 These were some lingering files which should have been removed at the same time as the Revisions model.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

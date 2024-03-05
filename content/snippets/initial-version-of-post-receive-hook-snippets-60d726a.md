@@ -12,4 +12,4 @@ Rather than having two, scripts however, the plan is to roll the functionality\
 of this script and that of the commit-feed.rb script into a single Ruby\
 script which handles everything.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;\
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;\

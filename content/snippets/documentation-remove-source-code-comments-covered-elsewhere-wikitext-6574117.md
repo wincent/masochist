@@ -7,4 +7,4 @@ Remove redundant RDoc comments from the main wikitext module source file as thes
 
 At the same time update the definition of "treat_slashes_as_special" to reflect the new, stricter definition of what classifies as a special link.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 Use pragma mark directives to add headings and separators to groups of related methods in the MyDocument class.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

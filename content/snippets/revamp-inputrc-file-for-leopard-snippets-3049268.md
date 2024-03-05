@@ -7,4 +7,4 @@ It appears that Apple has commandeered the up and down cursor keys in the new ve
 
 Whatever the cause, this commit re-instates the old desired behaviour, as well as setting up key combinations for word-based movement and jumping to the beginning and end of lines.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

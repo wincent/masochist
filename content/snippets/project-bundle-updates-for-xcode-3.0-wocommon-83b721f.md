@@ -5,4 +5,4 @@ tags: snippets
 
 Update project bundle for compatibility with Xcode 3.0.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

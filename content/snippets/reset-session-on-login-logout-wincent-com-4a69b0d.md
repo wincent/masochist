@@ -5,4 +5,4 @@ tags: snippets
 
 Rather than trying to nudge the session into the desired shape (which might be error prone), reset it entirely using reset_session.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -7,4 +7,4 @@ This allows wincent-strings-util to be used as a general "clean up" tool for loc
 
 To make performing diffs easier we can use wincent-strings-util to normalize these non-significant differences, hopefully making the task of integrating changes much easier.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

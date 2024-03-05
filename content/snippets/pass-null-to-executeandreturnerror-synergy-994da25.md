@@ -11,4 +11,4 @@ As a defensive tactic I'm updating all invocations of the method to pass NULL fo
 
 So basically this is a "try it and see" change to see if it eliminates the sporadic crashes. If it doesn't then more drastic measures will be required, most likely involving the replacement of NSAppleScript with something else (the scripting bridge, for example).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

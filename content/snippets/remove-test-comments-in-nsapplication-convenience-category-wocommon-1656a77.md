@@ -5,4 +5,4 @@ tags: snippets
 
 Testing has now confirmed that the "activate" method is indeed necessary so remove the comments about possibly removing it.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

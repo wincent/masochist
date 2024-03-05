@@ -5,4 +5,4 @@ tags: snippets
 
 And update app notes on upgrade procedure.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

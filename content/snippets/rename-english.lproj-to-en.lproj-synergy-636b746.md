@@ -5,4 +5,4 @@ tags: snippets
 
 For consistency with other projects and with Apple's recommendations. This renaming includes updating all Xcode project references, so the build should continue to work with no other modifications.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

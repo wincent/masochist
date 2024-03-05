@@ -5,4 +5,4 @@ tags: snippets
 
 Remove a number of legacy retain calls which are now no-ops.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

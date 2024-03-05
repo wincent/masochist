@@ -9,4 +9,4 @@ In many places the code has been touched up for better readability.
 
 The functions for handling the new options are in place but not hooked up yet.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

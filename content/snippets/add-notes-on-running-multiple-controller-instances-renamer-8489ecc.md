@@ -5,4 +5,4 @@ tags: snippets
 
 This would in theory allow us to have multiple windows and multiple renames in progress at the same time.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

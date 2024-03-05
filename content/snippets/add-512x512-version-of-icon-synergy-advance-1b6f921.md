@@ -5,4 +5,4 @@ tags: snippets
 
 Icon Composer has been fixed in the latest Leopard seed, allowing me to add the high-resolution version of the icon to the existing ".icns" file.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

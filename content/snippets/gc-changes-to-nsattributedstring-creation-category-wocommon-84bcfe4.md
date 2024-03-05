@@ -5,4 +5,4 @@ tags: snippets
 
 Under GC the attributedString method is effectively equivalent to sending a copy message, so mark the method as deprecated and advise callers to use copy instead.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

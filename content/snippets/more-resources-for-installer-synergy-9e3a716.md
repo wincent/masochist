@@ -5,4 +5,4 @@ tags: snippets
 
 Add additional resources for the installer (material for Contents/Resources/).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

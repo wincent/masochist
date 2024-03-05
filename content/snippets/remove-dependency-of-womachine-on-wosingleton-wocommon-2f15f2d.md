@@ -5,4 +5,4 @@ tags: snippets
 
 Implement a simple (non-abstract) advisory singleton pattern for WOMachine.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

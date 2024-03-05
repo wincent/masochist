@@ -5,4 +5,4 @@ tags: snippets
 
 This is a preliminary Rakefile that can be used to build the extension, run the specs, and wrap up the built extension in a skeletal Rails plugin.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

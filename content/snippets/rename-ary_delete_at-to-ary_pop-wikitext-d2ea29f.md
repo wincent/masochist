@@ -5,4 +5,4 @@ tags: snippets
 
 This better reflects what we actually expect the function to do and guards against the possibility of asking it to do more than it can in the future.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

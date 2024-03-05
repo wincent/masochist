@@ -5,4 +5,4 @@ tags: snippets
 
 This should make life easier for callers who may want to rollback but aren't sure: basically they can just rollback anyway and if there is nothing to be done the functions will return early.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

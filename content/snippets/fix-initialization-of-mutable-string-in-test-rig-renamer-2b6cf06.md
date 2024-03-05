@@ -5,4 +5,4 @@ tags: snippets
 
 We should be starting with an empty string and populate it as we go. This fixes about 242 test failures.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

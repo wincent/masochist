@@ -7,4 +7,4 @@ Set up some phoney outlets to the top-level objects in the nib so as to create s
 
 I am not entirely sure of all the cases in which this is required (I know that it is required for standalone controllers) so I have created outlets for all "real" (instantiated) top-level objects (at this stage that only means the controller and the MainMenu).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

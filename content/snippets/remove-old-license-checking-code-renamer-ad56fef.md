@@ -5,4 +5,4 @@ tags: snippets
 
 Will add in the new code later on.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

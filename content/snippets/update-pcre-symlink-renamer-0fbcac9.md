@@ -5,4 +5,4 @@ tags: snippets
 
 Point to the new version, 7.5.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

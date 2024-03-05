@@ -7,4 +7,4 @@ I was originally planning on storing a copy of the wikitext source in the databa
 
 This commit adds a couple of helper methods to the String class for doing this conveniently.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

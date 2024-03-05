@@ -5,4 +5,4 @@ tags: snippets
 
 Rename resources folder to match Apple's recommendations.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

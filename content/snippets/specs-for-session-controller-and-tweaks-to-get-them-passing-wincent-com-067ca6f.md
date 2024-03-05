@@ -5,4 +5,4 @@ tags: snippets
 
 The session controller is now fully specced; some tweaks were necessary in order to get all specs passing.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

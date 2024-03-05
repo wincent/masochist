@@ -55,7 +55,7 @@ This last point is just basic security practice whenever I'm forced to use [PHP]
     < #     'fullname'              => 'Joe Example',
     ---
     >       'nickname'              => 'Wincent',
-    >       'email'                 => 'win@wincent.com',
+    >       'email'                 => 'example@example.com',
     >       'fullname'              => 'Wincent Colaiuta',
     44,46c45,47
     < #     'country'               => 'US',

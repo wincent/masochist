@@ -1,5 +1,6 @@
 ---
 tags: red.hat wiki
+title: Red Hat kernel-2.4.21-40.EL to kernel-2.4.21-47.EL upgrade notes
 ---
 
 Here are notes I made during an extensive update (including a kernel update) to my [Red Hat](/wiki/Red_Hat) system. The upgrade was from [Red Hat](/wiki/Red_Hat) Enterprise Linux ES release 3 (Taroon Update 7) to Taroon Update 8. The kernel was bumped from 2.4.21-40.EL to 2.4.21-47.EL.
@@ -164,7 +165,7 @@ Here are notes I made during an extensive update (including a kernel update) to 
     kernel-utils                            2.4            8.37.15Pkg name/pattern
 
     $ uname -a
-    Linux s69819.wincent.com 2.4.21-40.EL #1 Thu Feb 2 22:22:40 EST 2006 i686 athlon i386 GNU/Linux
+    Linux s69819.example.com 2.4.21-40.EL #1 Thu Feb 2 22:22:40 EST 2006 i686 athlon i386 GNU/Linux
     $ cat /etc/redhat-release
     Red Hat Enterprise Linux ES release 3 (Taroon Update 7)
     $ sudo up2date --nox -u
@@ -666,14 +667,14 @@ Here are notes I made during an extensive update (including a kernel update) to 
     Broadcast message from root (pts/0) (Thu Jul 20 11:15:12 2006):
 
     The system is going down for reboot NOW!
-    $ Read from remote host wincent.com: Connection reset by peer
-    Connection to wincent.com closed.
+    $ Read from remote host example.com: Connection reset by peer
+    Connection to example.com closed.
 
 # Perform post-install checks
 
-    $ ssh user@wincent.com
+    $ ssh user@example.com
     $ uname -a
-    Linux s69819.wincent.com 2.4.21-47.EL #1 Wed Jul 5 20:39:00 EDT 2006 i686 athlon i386 GNU/Linux
+    Linux s69819.example.com 2.4.21-47.EL #1 Wed Jul 5 20:39:00 EDT 2006 i686 athlon i386 GNU/Linux
     $ cat /etc/redhat-release
     Red Hat Enterprise Linux ES release 3 (Taroon Update 8)
     $ sudo service --status-all
@@ -711,7 +712,7 @@ It turns out that the system update broke my [Bugzilla](/wiki/Bugzilla) install 
     $ sudo /usr/bin/perl -MCPAN -e 'install "CGI"'
     $ sudo /usr/bin/perl -MCPAN -e 'install "CPAN"'
     $ sudo ./checksetup.pl
-    $ sudo chown -R wincent.com:wincent.com .
+    $ sudo chown -R example.com:example.com .
     $ sudo chmod 644 .htaccess
     $ sudo chmod -R 644 skins
     $ sudo chmod 755 skins

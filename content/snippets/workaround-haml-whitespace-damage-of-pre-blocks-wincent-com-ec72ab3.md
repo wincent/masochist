@@ -7,4 +7,4 @@ Haml provides a preserve() helper for this which I am reluctantly using. Downsid
 
 I'm currently investigating an alternative workaround, the seed of which you can see in the application helper. Basically I want to suppress all indentation inside the given block; if I can come up with a workable solution will submit a patch to Haml.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

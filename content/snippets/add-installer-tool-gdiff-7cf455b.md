@@ -7,4 +7,4 @@ Due to shortcomings in Apple's AuthorizationExecuteWithPrivileges API (namely, t
 
 Hideously cumbersome approach but it's the way the Apple sample code does it.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

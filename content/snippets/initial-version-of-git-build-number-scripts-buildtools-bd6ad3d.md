@@ -9,4 +9,4 @@ This replaces the old scripts which did the same thing in Subversion terms; in t
 
 Note that due to a bug in Git the "local changes" variant does not yet work (this is where the build number has a "+" appended to it to indicate local changes since the last commit).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

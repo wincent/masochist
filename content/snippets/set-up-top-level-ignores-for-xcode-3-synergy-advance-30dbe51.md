@@ -5,4 +5,4 @@ tags: snippets
 
 Ignore the "index" folder created in the SRCROOT by Xcode 3.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

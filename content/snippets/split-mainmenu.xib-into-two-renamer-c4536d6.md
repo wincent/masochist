@@ -5,4 +5,4 @@ tags: snippets
 
 Separate out the functionality that was in the MainMenu.xib into two segments: app-wide stuff (like the preference window) and per-window stuff (like the preview pane, the Find/Replace window etc).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

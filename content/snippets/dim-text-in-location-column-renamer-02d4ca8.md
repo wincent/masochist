@@ -5,4 +5,4 @@ tags: snippets
 
 Use a more subdued color in the location column seeing as this is really just supplemental information and we don't want to distract the user.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

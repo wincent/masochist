@@ -7,4 +7,4 @@ When showing all items marked with a single tag (ie. the "show" action of the ta
 
 Now we reduce the number of queries by grabbing all Taggables for a given taggable type in one hit. In other words, given 3 matching Articles and 10 matching Posts, we now do 2 queries during access checking rather than 13; and when we display the Taggables in the view there are no additional queries because the Taggables have already been fetched.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

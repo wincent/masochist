@@ -5,4 +5,4 @@ tags: snippets
 
 Add default.pbxuser in the Xcode project bundle.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

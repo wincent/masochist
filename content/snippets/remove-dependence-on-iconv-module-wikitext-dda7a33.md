@@ -9,4 +9,4 @@ This change doesn't break any of the existing specs, but I'll be adding addition
 
 I also intend to add some benchmarks in a future commit to compare performance with the old implementation.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

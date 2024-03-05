@@ -5,4 +5,4 @@ tags: snippets
 
 Set up a gitignore file to ignore unwanted files in the Xcode project bundle, remove previously added but unwanted files, add default.pbxuser file.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

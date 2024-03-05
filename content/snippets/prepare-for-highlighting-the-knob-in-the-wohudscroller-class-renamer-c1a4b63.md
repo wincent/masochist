@@ -15,4 +15,4 @@ I looked at various workarounds, including overriding private NSView methods and
 
 So the only robust and future-proof solution seems to be to override mouseDown: completely and not call super. This commit is one step that lays the ground work for that change. More to follow.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

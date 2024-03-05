@@ -5,4 +5,4 @@ tags: snippets
 
 This was originally in the sessions controller specs, but move it up into the spec helper, where it can be used by all controller specs.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

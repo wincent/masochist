@@ -5,4 +5,4 @@ tags: snippets
 
 Just like update_attribute except calls save! instead of save.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

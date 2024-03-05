@@ -7,4 +7,4 @@ Unfortunately I found a case where the early scan-time suppression of leading an
 
 So this commit adds a trimming function which is called only when the link is fully parsed, confirmed valid, and ready to be emitted.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 Restore PRODUCT_NAME build setting to aggregate targets; it appears that it is necessary for dependency analysis.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

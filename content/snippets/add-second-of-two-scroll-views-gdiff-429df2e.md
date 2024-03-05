@@ -7,4 +7,4 @@ Completing the work started in 390c5b3, the right hand side is now also located 
 
 This required some reworking of the WODiffView autoresizing code, and in the process I discovered that the incorporation of the "slack" in the glue view (introduced in commit 50b3dbc) was being thrown away during window resizes; so as part of the updates to the autoresizing code I now ensure that the slack is accommodated by the glue view during window resizing as well.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

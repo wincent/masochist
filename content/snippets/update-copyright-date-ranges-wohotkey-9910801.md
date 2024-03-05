@@ -5,4 +5,4 @@ tags: snippets
 
 Update copyright date ranges to include 2007 for all files modified this year.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

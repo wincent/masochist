@@ -5,4 +5,4 @@ tags: snippets
 
 The code documentation for the CIImage tinting category makes reference to "autoreleased" objects which no longer makes sense under GC.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

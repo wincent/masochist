@@ -5,4 +5,4 @@ tags: snippets
 
 For consistency, use "git describe" rather than git-describe.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

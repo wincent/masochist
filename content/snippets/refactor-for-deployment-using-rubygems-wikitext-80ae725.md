@@ -19,4 +19,4 @@ So this commit refactors the working tree to match the typical RubyGems pattern 
 
 As all of these changes have to be made in a single batch to keep the specs passing I am not splitting this up into a series of smaller commits.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

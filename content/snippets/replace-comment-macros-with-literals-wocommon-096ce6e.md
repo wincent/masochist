@@ -7,4 +7,4 @@ Remove the comment start and end macros which were previoulsy necessary due to a
 
 In doing so, I also noticed that one of the macros was in fact incorrect (missing a character) although the bug never surfaced in actual use because I never made use of that particular comment mode; the string literal is now corrected.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

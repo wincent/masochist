@@ -7,4 +7,4 @@ By explicitly popping back to the closest BLOCKQUOTE block (if any) we can avoid
 
 This is better because it keeps the logic for the PRE case more localized.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

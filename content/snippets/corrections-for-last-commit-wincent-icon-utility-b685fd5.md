@@ -5,4 +5,4 @@ tags: snippets
 
 Correct two problems introduced in the last commit: one misnamed function and one case typo in a variable name.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

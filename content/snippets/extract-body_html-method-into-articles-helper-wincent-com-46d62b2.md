@@ -11,4 +11,4 @@ Same for the "edit" template, where we use the text in the preview.
 
 Finally in the "show" template we use the method to display the body normally, not as a preview.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

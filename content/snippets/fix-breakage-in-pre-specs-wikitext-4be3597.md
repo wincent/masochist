@@ -5,4 +5,4 @@ tags: snippets
 
 This is required to prevent us from emitting an initial CRLF upon entering a PRE block for the first time.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

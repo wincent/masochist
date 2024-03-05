@@ -5,4 +5,4 @@ tags: snippets
 
 Remove information on Subversion externals and replace it with info on relative project locations.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

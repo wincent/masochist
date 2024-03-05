@@ -5,4 +5,4 @@ tags: snippets
 
 Add skeletal methods called whenever the user interacts with the scroller. For the time being doesn't actually do anything, pending the addition of the model code.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

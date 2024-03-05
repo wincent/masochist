@@ -5,4 +5,4 @@ tags: snippets
 
 This spec suite covers every line of code in the Article model.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

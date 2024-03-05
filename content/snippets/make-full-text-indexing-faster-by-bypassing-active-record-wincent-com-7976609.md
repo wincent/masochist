@@ -7,4 +7,4 @@ Well, not bypassing it entirely as we still go through connection.insert, but st
 
 In all likelihood I'll defer indexing and do it in a background process.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

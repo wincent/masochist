@@ -7,4 +7,4 @@ We do this during the sanitization phase because its only at that point that we 
 
 A follow-up link will make the same change for link encoding.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

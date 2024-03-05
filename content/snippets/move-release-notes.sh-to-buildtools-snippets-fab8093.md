@@ -5,4 +5,4 @@ tags: snippets
 
 This really belongs in the buildtools repo, so move it there.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

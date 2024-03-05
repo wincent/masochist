@@ -5,4 +5,4 @@ tags: snippets
 
 Fix a minor typo in the code documentation for the WODebugMacros.h header.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

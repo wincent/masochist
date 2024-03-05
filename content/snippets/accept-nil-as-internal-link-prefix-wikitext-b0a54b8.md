@@ -5,4 +5,4 @@ tags: snippets
 
 This will be interpreted to mean "no prefix".
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -7,4 +7,4 @@ When run from inside an Xcode shell script phase the TARGET_BUILD_DIR environmen
 
 When the environment variable is not set, fall back to just running whatever copy of wincent-strings-util happens to be found first in the PATH.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

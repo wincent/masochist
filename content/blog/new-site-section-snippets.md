@@ -18,4 +18,4 @@ I finally got around to adding this and I'm calling them, logically, "snippets".
 
 So from here on I should be able to keep the [blog](/blog) much more focussed on "real news" and less cluttered with transitory notes and such.
 
-As this is a new feature please let me know via the [issue tracker](/wiki/issue_tracker) or email to <win@wincent.com> if you spot any glitches.
+As this is a new feature please let me know via the [issue tracker](/wiki/issue_tracker) or email to <example@example.com> if you spot any glitches.

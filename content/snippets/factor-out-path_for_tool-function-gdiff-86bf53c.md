@@ -5,4 +5,4 @@ tags: snippets
 
 Move tool-locating code into a separate function where it can be used by both the command-line tool (to locate git-diff) and the GUI tool (to locate git-cat-file).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -7,4 +7,4 @@ Make life slightly easier for callers by automatically appending the wildcard (a
 
 This assumes a convention that tags will following a "product name-product version" naming pattern.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

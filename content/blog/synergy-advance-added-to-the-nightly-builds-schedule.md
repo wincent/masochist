@@ -15,4 +15,4 @@ The usual disclaimers apply to the nightly builds:
 
 I would describe the current Synergy Advance nightly ([Subversion](http://wincent.com/wiki/Subversion) revision 429) as being alpha-quality. There are many rough edges, known issues, and things that plain just don't work yet. If you keep your eye on the Nightlog RSS feed and the Subversion commits feed you'll see that things very rapidly move towards beta-level and then final release before the end of this month (April 2007).
 
-If you have any questions you're welcome to contact me at <win@wincent.com>.
+If you have any questions you're welcome to contact me at <example@example.com>.

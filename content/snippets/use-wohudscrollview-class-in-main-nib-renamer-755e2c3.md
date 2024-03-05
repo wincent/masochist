@@ -5,4 +5,4 @@ tags: snippets
 
 Start using the just-created WOHUDScrollView class in the main menu nib.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

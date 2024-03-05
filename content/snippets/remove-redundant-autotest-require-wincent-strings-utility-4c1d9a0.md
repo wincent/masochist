@@ -5,4 +5,4 @@ tags: snippets
 
 This was cruft left in from a temporary investigation. Harmless, but cruft nonetheless.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

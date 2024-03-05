@@ -7,4 +7,4 @@ It appears that System Events is broken on Leopard: telling it to add a new logi
 
 So this commit preprocesses the non-working solutions away and falls back to old-fashioned direct manipulation of the loginwindow.plist. This actually is supported by Apple and is listed in their docs as one of the ways of adding login items.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

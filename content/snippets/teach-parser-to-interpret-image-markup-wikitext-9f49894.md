@@ -15,4 +15,4 @@ The "alt" attribute is added because it is required for XHTML validity. In the f
 
 {{foo.png|a picture of foo}}
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

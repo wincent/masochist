@@ -5,4 +5,4 @@ tags: snippets
 
 This fixes the issue mentioned in the last commit.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 At the same time the project bundle format was upgraded to the latest version of Xcode.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

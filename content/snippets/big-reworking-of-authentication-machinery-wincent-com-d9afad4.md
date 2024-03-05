@@ -5,4 +5,4 @@ tags: snippets
 
 Basically consists of massaging this into a working state in response to lots of manual testing.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

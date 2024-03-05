@@ -5,4 +5,4 @@ tags: snippets
 
 Update copyright year range to extend to 2007 and remove superfluous "All rights reserved" string.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

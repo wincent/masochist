@@ -5,4 +5,4 @@ tags: snippets
 
 This is necessary for compatability with ZenTest 3.9.0.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 This can then be used to, for example, set a default sort order in the index action of the tags controller.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

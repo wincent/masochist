@@ -5,4 +5,4 @@ tags: snippets
 
 Whitespace cleanup for the entire codebase (over 2,100 lines in the diff): convert tabs to spaces and eliminate trailing whitespace.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -15,4 +15,4 @@ This also demonstrates the use of a simple pre-processing phase. In this case I'
 
 In reality you'd probably provide your own custom implementation seeing as your needs are likely to be different form mine, but this demonstrates the kind of thing that you would do.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

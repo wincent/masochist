@@ -5,4 +5,4 @@ tags: snippets
 
 These are now provided by the system instead, so remove the functions and their corresponding tests.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

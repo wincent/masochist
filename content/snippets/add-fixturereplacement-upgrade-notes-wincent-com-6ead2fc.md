@@ -5,4 +5,4 @@ tags: snippets
 
 Include upgrade notes in application README.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

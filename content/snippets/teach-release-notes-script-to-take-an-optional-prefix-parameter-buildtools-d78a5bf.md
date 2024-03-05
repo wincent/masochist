@@ -9,4 +9,4 @@ In the "main" project repository we just invoke the script as normal (without pa
 
 In the secondary repositories we pass a "tag prefix" which we use to locate the tags corresponding to the release of the "main" project; in other words this depends on a convention in which we create tags in the secondary repositories which have a unique prefix which identifies the main project.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

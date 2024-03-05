@@ -5,4 +5,4 @@ tags: snippets
 
 Preface each section of the code-level release notes with a label that indicates the repository that the changes came from.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

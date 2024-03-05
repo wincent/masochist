@@ -7,4 +7,4 @@ Instead of storing the paths in a CFArray (requiring CFString creation, conversi
 
 If the contextual menu is slow when used on many thousands of items it definitely won't be because of CF overhead, but because of the Apple Event communication mechanism.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

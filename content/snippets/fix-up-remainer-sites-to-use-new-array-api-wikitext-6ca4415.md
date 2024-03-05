@@ -5,4 +5,4 @@ tags: snippets
 
 Change the parameter types to all the remaining sites where we call the new array API.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

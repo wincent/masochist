@@ -7,4 +7,4 @@ This allows you to create Rails view templates written in pure wikitext. It's in
 
 For example, given a controller "ThingsController" and an action "show_stuff", a template named "show_stuff.html.wikitext in the "app/views/things/" folder would be rendered using the wikitext parser.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

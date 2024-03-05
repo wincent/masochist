@@ -5,4 +5,4 @@ tags: snippets
 
 Add the validation, corresponding spec, and example data for FixtureReplacement.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

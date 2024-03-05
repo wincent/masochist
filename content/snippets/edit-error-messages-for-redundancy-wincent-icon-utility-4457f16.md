@@ -5,4 +5,4 @@ tags: snippets
 
 Remove the redundant "icns" reference in a couple of the error messages.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

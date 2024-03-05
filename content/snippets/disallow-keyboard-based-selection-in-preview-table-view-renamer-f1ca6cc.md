@@ -5,4 +5,4 @@ tags: snippets
 
 I'm not sure whether I'll keep this change but this at least shows how selection can easily be suppressed from within the delegate.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

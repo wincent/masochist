@@ -5,4 +5,4 @@ tags: snippets
 
 This started off by updating the copyright years and normalizing a few inconsistencies in the headers. I also decided to trim off bad trailing whitespace, so this commit actually touches the codebase in more places, not just in the headers.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

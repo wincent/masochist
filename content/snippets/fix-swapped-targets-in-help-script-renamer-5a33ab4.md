@@ -5,4 +5,4 @@ tags: snippets
 
 The original version of the help documentation generation script had the web and in-application targets back to front.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

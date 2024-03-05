@@ -5,4 +5,4 @@ tags: snippets
 
 Here we were emitting a literally greater-than sign when we should have been producing a named entity.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

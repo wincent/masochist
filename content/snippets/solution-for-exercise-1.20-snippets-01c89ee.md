@@ -5,4 +5,4 @@ tags: snippets
 
 Add function that takes a list of lists and returns a list of their lengths.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

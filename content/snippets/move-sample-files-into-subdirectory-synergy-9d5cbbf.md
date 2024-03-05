@@ -5,4 +5,4 @@ tags: snippets
 
 Move sample track change items, button sets etc into an "Extras" subdirectory to make it clearer where users should start the first time they extract the distribution archive.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

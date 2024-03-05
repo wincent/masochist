@@ -5,4 +5,4 @@ tags: snippets
 
 These are tests for both the WORegularExpression class, and the NSString category upon which the substitution validity checks are built.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

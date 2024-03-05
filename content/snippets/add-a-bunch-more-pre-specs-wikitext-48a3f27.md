@@ -9,4 +9,4 @@ The basic behaviour is to allow a literal &lt;pre&gt; only at the very top level
 
 If an unexpected &lt;pre&gt; or &lt;/pre&gt; token appears anywhere else, echo it in escaped form to provide feedback to the user; I think this is better feedback than just autoclosing the previous spans/blocks and then starting a &lt;pre&gt; block anyway.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

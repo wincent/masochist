@@ -7,4 +7,4 @@ White (or light grey) text is needed in HUD stlye windows, so change the text co
 
 Even so, a NSTextField/NSTextFieldCell subclass will still be required, I believe, in order to suppress the unwanted blue selection highlighting.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

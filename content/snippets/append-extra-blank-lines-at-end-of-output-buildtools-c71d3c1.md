@@ -7,4 +7,4 @@ When emitting release notes for a project that is spread out across multiple rep
 
 Add two extra line feeds to make this easier: one because "git log" doesn't seem to emit one, and another to provide visual separation between sections.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

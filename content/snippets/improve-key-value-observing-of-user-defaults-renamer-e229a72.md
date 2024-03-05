@@ -5,4 +5,4 @@ tags: snippets
 
 Instead of observing the controller, we can observe the defaults object directly.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

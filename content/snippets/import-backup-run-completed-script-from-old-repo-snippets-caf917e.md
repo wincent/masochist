@@ -5,4 +5,4 @@ tags: snippets
 
 Move across from Subversion repository to (now not so new) Git repo.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

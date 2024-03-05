@@ -21,7 +21,7 @@ I want the documentation to look beautiful to the user, so the style sheets are 
     <title>Resetting the preferences</title>
     <meta name="generator" content="Walrus 0.1">
     <meta name="author" content="Wincent Colaiuta">
-    <meta name="author-email" content="win@wincent.com">
+    <meta name="author-email" content="example@example.com">
     <meta name="copyright" content="Copyright 2007 Wincent Colaiuta">
     <link href="../css/base.css" rel="stylesheet" media="all" type="text/css">
     <meta name="description" content="Resetting the preferences">

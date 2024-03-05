@@ -5,4 +5,4 @@ tags: snippets
 
 There should be a fairly easy workaround for this in the next release (post 2.0.2).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 The default NSView subclass templates include no-op methods that can be overridden. Seeing as the WODiffView class is unlikely to ever need to override these methods, remove them and fall through to the super class implementations.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

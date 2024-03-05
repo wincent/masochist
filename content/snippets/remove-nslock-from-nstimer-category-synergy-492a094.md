@@ -5,4 +5,4 @@ tags: snippets
 
 NSLock was required when the code had to run on Jaguar (because the @synchronized directive was not available); now this limitation is no longer applicable so replace the NSLock idiom with @synchronized.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

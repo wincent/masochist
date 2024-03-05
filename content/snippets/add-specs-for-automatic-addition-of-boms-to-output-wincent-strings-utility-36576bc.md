@@ -7,4 +7,4 @@ Make sure that when the input file has no BOM, we automatically add one to the o
 
 At the moment these specs are marked as pending because the parse() function is choking on input files that don't have BOMs.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

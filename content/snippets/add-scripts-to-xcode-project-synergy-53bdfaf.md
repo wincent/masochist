@@ -5,4 +5,4 @@ tags: snippets
 
 Add installation scripts to Xcode project file for easier managment and editing.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

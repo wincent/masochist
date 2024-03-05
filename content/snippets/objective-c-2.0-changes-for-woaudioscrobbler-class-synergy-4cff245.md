@@ -5,4 +5,4 @@ tags: snippets
 
 -   properties - remove retain/release/autorelease calls - use class extension (anonymous category) for private methods - C99 for loop syntax
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

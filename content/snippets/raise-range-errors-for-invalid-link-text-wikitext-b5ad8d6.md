@@ -5,4 +5,4 @@ tags: snippets
 
 Raise an error if link text includes "&gt;" or "&lt;". In practice this should never happen because the only intended caller is the Wikitext::Parser itself, but put this in just in case.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

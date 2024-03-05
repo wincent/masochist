@@ -7,4 +7,4 @@ Previous clicking in the non-knob part of the lost resulted in a "page up" or "p
 
 There is still one change I'd like to make (making the page up/down intervals larger), but that will have to be done in the NSScrollView subclass.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

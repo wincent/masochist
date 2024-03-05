@@ -5,4 +5,4 @@ tags: snippets
 
 Teach the app to use the new whitespace preservation hack for Haml.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

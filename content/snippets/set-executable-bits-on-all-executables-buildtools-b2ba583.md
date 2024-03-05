@@ -5,4 +5,4 @@ tags: snippets
 
 This commit sets the executable bit on a number of shell scripts that were missing their executable bits.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

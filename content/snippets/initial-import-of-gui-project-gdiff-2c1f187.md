@@ -5,4 +5,4 @@ tags: snippets
 
 This is just the freshly-created template for the GUI part of gdiff, with default content as provided by Xcode.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 WOCDSAWrapper now uses its own local implementation of the singleton pattern rather than depending on WOSingleton.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

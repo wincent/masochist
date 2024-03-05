@@ -5,4 +5,4 @@ tags: snippets
 
 Assuming an 8-character tab stop, expand tabs when calculating line widths. This means that the results are now a true "column count" rather than a "character count".
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

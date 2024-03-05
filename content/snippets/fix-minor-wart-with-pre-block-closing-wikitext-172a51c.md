@@ -13,4 +13,4 @@ Rather than like this:
 
 While the former displayed fine in the browser, the latter looks better in the HTML source.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

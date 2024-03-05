@@ -7,4 +7,4 @@ This is the companion commit to 7f506d3 which wrapped ary structs. The purpose o
 
 Note that in order for this change to be made I had to change the initialization of the tabulation struct; it needs to be initialized in the parse function so that it can be added to the stack in the appropriate scope, and this in turn means that it needs to be pre-initialized rather than lazily initialized.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

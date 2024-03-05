@@ -5,4 +5,4 @@ tags: snippets
 
 Function expects (a pointer to) an array of structs, not a pointer to an array of pointers to structs.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

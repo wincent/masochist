@@ -7,4 +7,4 @@ This commit makes a number of changes to the project bundle to bring it in line 
 
 This includes use of the 10.5 SDK, the removal of legacy build settings, use of GCC 4.0 across the board, and the renaming of the Development/Deployment build configurations to Debug/Release.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

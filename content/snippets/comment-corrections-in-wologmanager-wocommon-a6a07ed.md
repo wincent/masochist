@@ -5,4 +5,4 @@ tags: snippets
 
 Remove some out-of-date comments and clarify others.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

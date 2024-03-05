@@ -9,4 +9,4 @@ This allows us to simplify the "pop from stack", "pop from stack up to", "pop ex
 
 A nice side effect of this change is that the calling parser code can be simplified in many places too; I as able to trim off a number of repeated lines that were no longer necessary, or which could be moved out into the functions.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 Move commit-feed script into "git" subdirectory.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;\
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;\

@@ -7,4 +7,4 @@ While trying to debug a failure case I noticed that it was possible for the scri
 
 So be more verbose about what's happening, and install an exit trap to draw attention to an unexpected early exit.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

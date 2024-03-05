@@ -13,4 +13,4 @@ Note that this is different than what the "find_and_preserve" method does; that 
 
 In the meantime I am going to continue looking for a more elegant solution.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

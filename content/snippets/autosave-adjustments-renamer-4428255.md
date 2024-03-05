@@ -7,4 +7,4 @@ Turn off column order and size autosaving for the preview table; it doesn't work
 
 At the same time, turn on autosaving for the preview pane itself.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

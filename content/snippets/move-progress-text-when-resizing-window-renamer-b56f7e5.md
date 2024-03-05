@@ -5,4 +5,4 @@ tags: snippets
 
 Was a fixed distance from the left edge of the window; instead, keep it centered underneath the progress bar.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

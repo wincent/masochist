@@ -5,4 +5,4 @@ tags: snippets
 
 Do Wikipedia style borders around PRE blocks to make them stand out better.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

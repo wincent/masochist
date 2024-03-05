@@ -1,6 +1,7 @@
 ---
 tags: wiki
 cache_breaker: 1
+title: Bug reports
 ---
 
 # Troubleshooting
@@ -55,7 +56,7 @@ It's very important that you provide high-quality information with your bug repo
 
 If your bug involves a crash, look for a crash log in `/Users/<your user name>/Library/Logs/CrashReporter/`.
 
-If the log entry is relatively short, you can paste it directly into your bug report. If the log is very long, you can email it to me at <win@wincent.com>. (The ability to add attachments to the issue tracker is coming soon. Some products include a built in crash reporter which allows you to submit crash reports with a click.)
+If the log entry is relatively short, you can paste it directly into your bug report. If the log is very long, you can email it to me at <example@example.com>. (The ability to add attachments to the issue tracker is coming soon. Some products include a built in crash reporter which allows you to submit crash reports with a click.)
 
 ## Use the Activity Monitor
 

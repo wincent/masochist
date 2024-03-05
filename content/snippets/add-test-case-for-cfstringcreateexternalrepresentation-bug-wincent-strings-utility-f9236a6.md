@@ -5,4 +5,4 @@ tags: snippets
 
 I've now created a basic test case demonstrating the CFStringCreateExternalRepresentation() bug; the Radar for the issue is 5661397.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

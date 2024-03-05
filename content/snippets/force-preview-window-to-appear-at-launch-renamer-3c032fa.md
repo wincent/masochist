@@ -7,4 +7,4 @@ The preview window won't necessarily appear at launch time unless we force it's 
 
 This doesn't seem to work for subsequent "open" events, however (the new window doesn't become main).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

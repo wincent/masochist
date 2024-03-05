@@ -5,4 +5,4 @@ tags: snippets
 
 It's necessary to remove these references in order to get the console to work (because FixtureReplacement sees the data and expects to find the corresponding model).
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

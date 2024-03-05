@@ -5,4 +5,4 @@ tags: snippets
 
 Instead of requiring the caller to manually specify the URL, add a ":nested" option which can be passed a model name. The helper method then constructs a URL appropriately.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

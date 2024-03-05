@@ -7,4 +7,4 @@ This is the first step in making in-place editing play nicely with the validatio
 
 The next step will be to see if we can get the parent controller to display a flash message explaining the cause of the validation failure.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

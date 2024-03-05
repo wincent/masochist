@@ -5,4 +5,4 @@ tags: snippets
 
 Given that 6 is the default dedent quantity there's no need to explicitly specify it.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

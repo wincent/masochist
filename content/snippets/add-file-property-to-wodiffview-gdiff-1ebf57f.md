@@ -5,4 +5,4 @@ tags: snippets
 
 Let WODiffView have a reference to its represented file object.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -5,4 +5,4 @@ tags: snippets
 
 The tool depends on some classes and categories from WOCommon.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

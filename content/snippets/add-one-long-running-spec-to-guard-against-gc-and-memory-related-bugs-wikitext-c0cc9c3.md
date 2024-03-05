@@ -7,4 +7,4 @@ Add a spec that processes a string 100,000 times. This causes the spec suite to 
 
 Without this it appears that the entire spec suite can run without ever triggering GC (or at least, without ever triggering GC enough to expose any memory-related flaws). I know this because in developing the Data_Wrap_Struct code I was seeing the spec suite pass but was seeing problems in the benchmarks because they ran for longer.
 
-Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;
