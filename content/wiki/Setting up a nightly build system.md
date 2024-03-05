@@ -1,5 +1,6 @@
 ---
 tags: xcode development wiki
+title: Setting up a nightly build system
 ---
 
 # A preliminary note
@@ -83,4 +84,4 @@ Cleaning and re-building, as well as blowing away the "Build" and "Build-interme
 
 # See also
 
--   Wincent nightlies information page: <http://wincent.com/s/nightlies/>
+-   Wincent nightlies information page: <http://typechecked.net/s/nightlies/>

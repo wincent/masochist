@@ -3,4 +3,4 @@ title: ruby-debug
 tags: snippets
 ---
 
-[Updated to 0.8](http://rubyforge.org/frs/shownotes.php?release_id=10392). See "[Updating to ruby-debug 1.8 using RubyGems](http://wincent.com/wiki/Updating%20to%20ruby-debug%201.8%20using%20RubyGems)".
+[Updated to 0.8](http://rubyforge.org/frs/shownotes.php?release_id=10392). See "[Updating to ruby-debug 1.8 using RubyGems](http://typechecked.net/wiki/Updating%20to%20ruby-debug%201.8%20using%20RubyGems)".

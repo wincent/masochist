@@ -1,5 +1,5 @@
 ---
-title: Extract ugly code into new Articles helper (wincent.com, 3773864)
+title: Extract ugly code into new Articles helper (typechecked.net, 3773864)
 tags: snippets
 ---
 

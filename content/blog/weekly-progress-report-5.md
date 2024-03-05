@@ -126,7 +126,7 @@ Here comes another code-level progress report. As per usual, the standard discla
 
     6 files changed, 285 insertions(+), 7 deletions(-)
 
-# unversioned/wincent.com
+# unversioned/typechecked.net
 
     3b7fa81 Remove admin_only helper
     f578782 Update to Haml/Sass 2.2.0

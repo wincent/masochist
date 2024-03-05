@@ -96,7 +96,7 @@ It's been a while since I posted the last report, but now I am back online again
 
     1 files changed, 42 insertions(+), 47 deletions(-)
 
-# unversioned/wincent.com
+# unversioned/typechecked.net
 
     0c0c89c First cut at syntaxHighlight function
     015f237 Apply syntax highlighting repeatedly

@@ -1,5 +1,5 @@
 ---
-title: Remove references to Revision model in example data (wincent.com, efa788e)
+title: Remove references to Revision model in example data (typechecked.net, efa788e)
 tags: snippets
 ---
 

@@ -293,7 +293,7 @@ Periodically we will also do the following
 -   If necessary, refactor [specs](/wiki/specs) to avoid duplicated code; if any of your specs break then you know that your refactoring introduced an error
 -   Selectively run [Heckle](/wiki/Heckle) against specific specs, classes, modules and methods to look for holes, flaws or weaknesses in the specs
 
-I've [posted this screencast](http://wincent.com/a/about/wincent/weblog/archives/2007/05/behaviourdriven.php) to my personal [weblog](/wiki/weblog) showing one cycle of this iterative development approach in action.
+I've [posted this screencast](http://typechecked.net/a/about/wincent/weblog/archives/2007/05/behaviourdriven.php) to my personal [weblog](/wiki/weblog) showing one cycle of this iterative development approach in action.
 
 # General guidelines
 

@@ -1,5 +1,5 @@
 ---
-title: Initialize with new Rails application (wincent.com, 94617f2)
+title: Initialize with new Rails application (typechecked.net, 94617f2)
 tags: snippets
 ---
 

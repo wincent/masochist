@@ -1,5 +1,5 @@
 ---
-title: Update example data to get specs passing (wincent.com, 0a11fad)
+title: Update example data to get specs passing (typechecked.net, 0a11fad)
 tags: snippets
 ---
 

@@ -1,14 +1,15 @@
 ---
 tags: wiki
+title: Wincent
 ---
 
 Information about Wincent (the company):
 
--   <http://wincent.com/a/about/>
+-   <http://typechecked.net/a/about/>
 
 Information about Wincent Colaiuta (the person):
 
--   <http://wincent.com/a/about/wincent/>
+-   <http://typechecked.net/a/about/wincent/>
 
 Information about [Wincent](/wiki/Wincent) products:
 

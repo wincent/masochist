@@ -3,7 +3,7 @@ title: Leopard product readiness
 tags: blog
 ---
 
-With [Leopard](http://wincent.com/wiki/Leopard) only 15 hours from release it's time for a product status report:
+With [Leopard](http://typechecked.net/wiki/Leopard) only 15 hours from release it's time for a product status report:
 
 ### Leopard-ready
 
@@ -38,4 +38,4 @@ The status of the following product on Leopard is unknown:
 There are a number of other products which aren't specifically tied to the Mac OS X platform, and so should work on Leopard just as they did under Tiger:
 
 -   Bansshee: protection against SSH dictionary attacks.
--   Walrus: object-oriented templating system written in [Ruby](http://wincent.com/wiki/Ruby).
+-   Walrus: object-oriented templating system written in [Ruby](http://typechecked.net/wiki/Ruby).

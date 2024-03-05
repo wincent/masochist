@@ -1,5 +1,5 @@
 ---
-title: Add sample database configuration file (wincent.com, aedc881)
+title: Add sample database configuration file (typechecked.net, aedc881)
 tags: snippets
 ---
 

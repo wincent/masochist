@@ -1,5 +1,5 @@
 ---
-title: Add tag search box to navigation bar (wincent.com, 94ad75f)
+title: Add tag search box to navigation bar (typechecked.net, 94ad75f)
 tags: snippets
 ---
 

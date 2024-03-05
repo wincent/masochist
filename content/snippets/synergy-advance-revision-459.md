@@ -7,4 +7,4 @@ tags: snippets
 -   _Uploaded_: Thu Apr 26 11:15:19 +0200 2007
 -   _Size_: 3,286,346 bytes
 -   _SHA1 checksum_: b438be20926ffe69441b66311020bf50de9524f6
--   _Direct link_: <http://wincent.com/a/products/synergy-advance/download/nightlies/SynergyAdvanceNightly(459).dmg>
+-   _Direct link_: <http://typechecked.net/a/products/synergy-advance/download/nightlies/SynergyAdvanceNightly(459).dmg>

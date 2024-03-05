@@ -1,5 +1,5 @@
 ---
-title: Extract body_html method into Articles helper (wincent.com, 46d62b2)
+title: Extract body_html method into Articles helper (typechecked.net, 46d62b2)
 tags: snippets
 ---
 

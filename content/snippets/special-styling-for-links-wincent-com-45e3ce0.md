@@ -1,5 +1,5 @@
 ---
-title: Special styling for links (wincent.com, 45e3ce0)
+title: Special styling for links (typechecked.net, 45e3ce0)
 tags: snippets
 ---
 

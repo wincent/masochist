@@ -22,7 +22,7 @@ See [combining rulesets](/wiki/combining_rulesets) for an example combining the 
 
 # Efficacy
 
-The following is a [LogWatch](/wiki/LogWatch) sample taken from the [wincent.com](/wiki/wincent.com) mail server during a 24 hour period in early July 2006 showing that the custom ruleset blocked approximately 178 incoming messages. A couple of the domain names in the report have been changed to [example.com](/wiki/example.com) to protect the innocent.
+The following is a [LogWatch](/wiki/LogWatch) sample taken from the [typechecked.net](/wiki/typechecked.net) mail server during a 24 hour period in early July 2006 showing that the custom ruleset blocked approximately 178 incoming messages. A couple of the domain names in the report have been changed to [example.com](/wiki/example.com) to protect the innocent.
 
     Internal users (denied):
 

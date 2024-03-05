@@ -1,5 +1,5 @@
 ---
-title: Add comments about polymorphic_url problems (wincent.com, 2e87120)
+title: Add comments about polymorphic_url problems (typechecked.net, 2e87120)
 tags: snippets
 ---
 

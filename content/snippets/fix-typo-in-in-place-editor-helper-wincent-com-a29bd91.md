@@ -1,5 +1,5 @@
 ---
-title: Fix typo in in place editor helper (wincent.com, a29bd91)
+title: Fix typo in in place editor helper (typechecked.net, a29bd91)
 tags: snippets
 ---
 

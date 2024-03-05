@@ -1,5 +1,5 @@
 ---
-title: Teach FixtureReplacement to avoid mass assignment (wincent.com, 80cf713)
+title: Teach FixtureReplacement to avoid mass assignment (typechecked.net, 80cf713)
 tags: snippets
 ---
 

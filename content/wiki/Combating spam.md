@@ -1,5 +1,6 @@
 ---
 tags: email wiki
+title: Combating spam
 ---
 
 # Server-level blocking
@@ -27,7 +28,7 @@ tags: email wiki
 
 ## Efficacy of server-side spam blocking
 
-The following results show the number of messages blocked (rejected or discarded) at the [wincent.com](/wiki/wincent.com) mail server level in a typical 24 hour period due to the anti-spam technologies and techniques linked to from this page. They are not necessarily statistically valid samples, based on a very small data set collected during June and July of 2006, but they do provide some indication of the amount of spam which is being beaten at the server and never makes it through to the client.
+The following results show the number of messages blocked (rejected or discarded) at the [typechecked.net](/wiki/typechecked.net) mail server level in a typical 24 hour period due to the anti-spam technologies and techniques linked to from this page. They are not necessarily statistically valid samples, based on a very small data set collected during June and July of 2006, but they do provide some indication of the amount of spam which is being beaten at the server and never makes it through to the client.
 
 -   [Automatically deleting high-scoring spam](/wiki/Automatically_deleting_high-scoring_spam): 47 messages
 -   [Address migration](/wiki/Address_migration): 142 messages
@@ -69,7 +70,7 @@ The following results are from a test period of 24 hours in mid-July 2006:
 -   [SpamSieve](/wiki/SpamSieve) correctly identified all 62 spam messages as spam, with no false positives and no false negatives.
 -   [SpamSieve](/wiki/SpamSieve)'s accuracy during the test period was a perfect 100%.
 
-These results show that the new server-level measures have had a significant impact on the number of spam messages reaching the client. Prior to implementing the measures the average spam count (the average of spam messages received at the client level per day) was steadily climbing and had reached over 170 spam messages per day. The [oldest stats that I have available](http://wincent.com/a/about/wincent/weblog/archives/2005/11/spamsieve_one_y.php) are for a one year period between November 2004 and November 2005 in which I had received an average of about 40 spam messages per day and 11% of all email I received was spam. Today (mid-July 2006) the cumulative average is 75 spam messages per day and 22% of all email I've received has been spam. It seems likely that this proportion can only increase from here given that on the day of the test 38% of all mail received by the client was spam, approaching the average of 50% [claimed by Symantec](http://www.washingtonpost.com/wp-dyn/content/article/2006/05/16/AR2006051601873.html?referrer=email&referrer=email).
+These results show that the new server-level measures have had a significant impact on the number of spam messages reaching the client. Prior to implementing the measures the average spam count (the average of spam messages received at the client level per day) was steadily climbing and had reached over 170 spam messages per day. The [oldest stats that I have available](http://typechecked.net/a/about/wincent/weblog/archives/2005/11/spamsieve_one_y.php) are for a one year period between November 2004 and November 2005 in which I had received an average of about 40 spam messages per day and 11% of all email I received was spam. Today (mid-July 2006) the cumulative average is 75 spam messages per day and 22% of all email I've received has been spam. It seems likely that this proportion can only increase from here given that on the day of the test 38% of all mail received by the client was spam, approaching the average of 50% [claimed by Symantec](http://www.washingtonpost.com/wp-dyn/content/article/2006/05/16/AR2006051601873.html?referrer=email&referrer=email).
 
 So these statistics show that the volume of [spam](/wiki/spam) attacks has spectacularly increased but that the new server-level measures have been effective in curbing their impact.
 

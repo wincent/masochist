@@ -1,5 +1,5 @@
 ---
-title: Move login form into a partial (wincent.com, 8c98144)
+title: Move login form into a partial (typechecked.net, 8c98144)
 tags: snippets
 ---
 

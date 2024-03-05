@@ -1,5 +1,5 @@
 ---
-title: Initial cut at "issues" controller index (wincent.com, ff28775)
+title: Initial cut at "issues" controller index (typechecked.net, ff28775)
 tags: snippets
 ---
 

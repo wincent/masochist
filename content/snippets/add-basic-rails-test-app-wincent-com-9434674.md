@@ -1,5 +1,5 @@
 ---
-title: Add basic Rails test app (wincent.com, 9434674)
+title: Add basic Rails test app (typechecked.net, 9434674)
 tags: snippets
 ---
 

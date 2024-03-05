@@ -1,5 +1,5 @@
 ---
-title: Migration tweaks (wincent.com, 44d306e)
+title: Migration tweaks (typechecked.net, 44d306e)
 tags: snippets
 ---
 

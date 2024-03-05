@@ -1,5 +1,5 @@
 ---
-title: Various improvements to tagging and validation (wincent.com, 9c09d17)
+title: Various improvements to tagging and validation (typechecked.net, 9c09d17)
 tags: snippets
 ---
 

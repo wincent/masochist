@@ -1,5 +1,5 @@
 ---
-title: Autoload FixtureReplacement in the console (wincent.com, 6912254)
+title: Autoload FixtureReplacement in the console (typechecked.net, 6912254)
 tags: snippets
 ---
 

@@ -3,7 +3,7 @@ title: Special offer: Buy Synergy Advance and get a free Synergy license
 tags: blog
 ---
 
-To celebrate the holiday season and get more people on board testing the preview releases of Synergy Advance Wincent is announcing a special offer during the month of December: [buy](https://wincent.com/a/products/synergy-advance/purchase/) a Synergy Advance license and get a free Synergy license. This is a great opportunity to get a license for both products, or to use the complimentary Synergy license as a gift for somebody else.
+To celebrate the holiday season and get more people on board testing the preview releases of Synergy Advance Wincent is announcing a special offer during the month of December: [buy](https://typechecked.net/a/products/synergy-advance/purchase/) a Synergy Advance license and get a free Synergy license. This is a great opportunity to get a license for both products, or to use the complimentary Synergy license as a gift for somebody else.
 
 #### Conditions
 
@@ -13,7 +13,7 @@ To celebrate the holiday season and get more people on board testing the preview
 
 #### Getting the free license
 
-To get your free Synergy license you fill out [this form](https://wincent.com/a/store/synergy-offer/) _after_ purchasing Synergy Advance. The form will ask you to enter the following information:
+To get your free Synergy license you fill out [this form](https://typechecked.net/a/store/synergy-offer/) _after_ purchasing Synergy Advance. The form will ask you to enter the following information:
 
 -   Your name.
 -   Your Synergy Advance registration email address.
@@ -25,9 +25,9 @@ Free licenses will be sent within 24 to 48 hours after receiving your submission
 
 #### Links
 
--   [Purchase Synergy Advance](https://wincent.com/a/products/synergy-advance/purchase/)
--   [Request your free Synergy license](https://wincent.com/a/store/synergy-offer/)
--   [Synergy Advance product information](http://wincent.com/a/products/synergy-advance/)
--   [Synergy Advance download](http://wincent.com/a/products/synergy-classic/download/)
--   [Synergy product information](http://wincent.com/a/products/synergy-classic/)
--   [Synergy download](http://wincent.com/a/products/synergy-advance/download/)
+-   [Purchase Synergy Advance](https://typechecked.net/a/products/synergy-advance/purchase/)
+-   [Request your free Synergy license](https://typechecked.net/a/store/synergy-offer/)
+-   [Synergy Advance product information](http://typechecked.net/a/products/synergy-advance/)
+-   [Synergy Advance download](http://typechecked.net/a/products/synergy-classic/download/)
+-   [Synergy product information](http://typechecked.net/a/products/synergy-classic/)
+-   [Synergy download](http://typechecked.net/a/products/synergy-advance/download/)

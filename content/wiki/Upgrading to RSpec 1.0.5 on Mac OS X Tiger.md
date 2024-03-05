@@ -1,6 +1,7 @@
 ---
 tags: rspec tiger updates wiki
 cache_breaker: 1
+title: Upgrading to RSpec 1.0.5 on Mac OS X Tiger
 ---
 
 These notes were made while upgrading from [RSpec 1.0.4](/wiki/RSpec_1.0.4) to [RSpec 1.0.5](/wiki/RSpec_1.0.5) on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger).
@@ -76,7 +77,7 @@ First double check that all [specs](/wiki/specs) are passing for [Walrus](/wiki/
 
 # [TextMate](/wiki/TextMate)
 
-This time seeing as I had [some local changes](http://wincent.com/a/about/wincent/weblog/archives/2007/05/rspec_changes.php) to my [TextMate](/wiki/TextMate) bundle I didn't want to perform the normal upgrade procedure:
+This time seeing as I had [some local changes](http://typechecked.net/a/about/wincent/weblog/archives/2007/05/rspec_changes.php) to my [TextMate](/wiki/TextMate) bundle I didn't want to perform the normal upgrade procedure:
 
     cd ~/Library/Application\ Support/TextMate/Bundles/RSpec.tmbundle
     svn up

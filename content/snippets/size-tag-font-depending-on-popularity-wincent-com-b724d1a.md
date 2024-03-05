@@ -1,5 +1,5 @@
 ---
-title: Size tag font depending on popularity (wincent.com, b724d1a)
+title: Size tag font depending on popularity (typechecked.net, b724d1a)
 tags: snippets
 ---
 

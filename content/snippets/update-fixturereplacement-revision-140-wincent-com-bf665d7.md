@@ -1,5 +1,5 @@
 ---
-title: Update FixtureReplacement (revision 140) (wincent.com, bf665d7)
+title: Update FixtureReplacement (revision 140) (typechecked.net, bf665d7)
 tags: snippets
 ---
 

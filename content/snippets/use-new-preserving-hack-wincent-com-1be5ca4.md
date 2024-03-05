@@ -1,5 +1,5 @@
 ---
-title: Use new preserving hack (wincent.com, 1be5ca4)
+title: Use new preserving hack (typechecked.net, 1be5ca4)
 tags: snippets
 ---
 

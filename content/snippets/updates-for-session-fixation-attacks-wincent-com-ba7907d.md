@@ -1,5 +1,5 @@
 ---
-title: Updates for session fixation attacks (wincent.com, ba7907d)
+title: Updates for session fixation attacks (typechecked.net, ba7907d)
 tags: snippets
 ---
 

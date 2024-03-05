@@ -1,5 +1,5 @@
 ---
-title: Allow custom matcher to work with associations (wincent.com, b2c76ac)
+title: Allow custom matcher to work with associations (typechecked.net, b2c76ac)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Update products link in navbar (wincent.com, 76cf73f)
+title: Update products link in navbar (typechecked.net, 76cf73f)
 tags: snippets
 ---
 

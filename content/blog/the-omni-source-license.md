@@ -3,7 +3,7 @@ title: The Omni Source License
 tags: blog
 ---
 
-Today I released a new product, [Wincent Strings Utility](http://wincent.com/a/products/wincent-strings-util/) ([full release announcement here](http://wincent.com/a/news/archives/2006/02/wincent_strings.php)). It's a derivative work of the [Omni Group's](http://www.omnigroup.com/) [stringsUtil](http://www.omnigroup.com/ftp/pub/localization/) and I wanted to make a few comments about their license, the [Omni Source License](http://www.omnigroup.com/developer/sourcecode/sourcelicense/).
+Today I released a new product, [Wincent Strings Utility](http://typechecked.net/a/products/wincent-strings-util/) ([full release announcement here](http://typechecked.net/a/news/archives/2006/02/wincent_strings.php)). It's a derivative work of the [Omni Group's](http://www.omnigroup.com/) [stringsUtil](http://www.omnigroup.com/ftp/pub/localization/) and I wanted to make a few comments about their license, the [Omni Source License](http://www.omnigroup.com/developer/sourcecode/sourcelicense/).
 
 Firstly, although it's an open source license, it actually makes it very difficult to distribute a derivative work:
 
@@ -24,7 +24,7 @@ Some of the provisions in the license are a little odd or at least (from my poin
 -   You must include a man page (first time I've ever had to write one!).
 -   You must rename the executable to avoid confusion.
 
-This last provision is an interesting one because it's really the only reason that I've released this derivative as new "product". If the source code had been under the BSD license or the GPL I most likely would have kept the old name, rolled it into my buildtools package, and never done a new product release at all. (See [the release announcement](http://wincent.com/a/news/archives/2006/02/wincent_strings.php) for more comments on the buildtools package and why I am putting it together.)
+This last provision is an interesting one because it's really the only reason that I've released this derivative as new "product". If the source code had been under the BSD license or the GPL I most likely would have kept the old name, rolled it into my buildtools package, and never done a new product release at all. (See [the release announcement](http://typechecked.net/a/news/archives/2006/02/wincent_strings.php) for more comments on the buildtools package and why I am putting it together.)
 
 In any case I've written to Omni asking for permission to distribute modified source code ([here they imply](http://www.omnigroup.com/developer/sourcecode/sourcelicense/) that you can ask for such permission). We'll see how they respond. \[_Update, 23 February 2006:_ Omni has granted me permission to distribute modified source code.\]
 

@@ -7,7 +7,7 @@ title: Cloudflare DNS
 
 In May 2022 I switched to using [Cloudflare Registrar](https://blog.cloudflare.com/cloudflare-registrar/) for my domain registrations (from [Namecheap](https://www.namecheap.com/)) because they offer domain renewals at fair prices. Basically, they run the registry "at cost" as a kind of loss-leader for their other offerings. I don't know how long they will keep this up, but their registrar went public in 2018, so it's 4 years so far at the time of writing. Back in the day, Namecheap used to offer reasonably fair renewal prices too — that's why I ran into their warm embrace, fleeing from an abusive relationship with [GoDaddy](https://www.godaddy.com/), pausing in an intermediate rebound relationship with [Joker](https://joker.com/) along the way — but unfortunately, it wasn't to last...
 
-Anyway, Cloudflare also hosts the DNS for free, allowing me to save a few pennies by switching that away too (from [Amazon Route 53](https://aws.amazon.com/route53/)). All of this follows on from another cost-saving measure I undertook in 2021, which was [moving some static pages](https://wincent.com/blog/simplified-ansible-set-up) from [Amazon EC2](https://aws.amazon.com/ec2/) (paid) to [GitHub Pages](https://pages.github.com/) (free). Speaking of free, I stopped paying for SSL certificates once [Let's Encrypt](https://letsencrypt.org/) took off; any time I need an SSL certificate for a site I run, I use that, and for sites I don't run (eg. GitHub Pages, Cloudflare URL forwarding etc) the corresponding providers deal with the SSL for free. Overall, having a simple, static presence online has gotten a lot cheaper since the early days.
+Anyway, Cloudflare also hosts the DNS for free, allowing me to save a few pennies by switching that away too (from [Amazon Route 53](https://aws.amazon.com/route53/)). All of this follows on from another cost-saving measure I undertook in 2021, which was [moving some static pages](https://typechecked.net/blog/simplified-ansible-set-up) from [Amazon EC2](https://aws.amazon.com/ec2/) (paid) to [GitHub Pages](https://pages.github.com/) (free). Speaking of free, I stopped paying for SSL certificates once [Let's Encrypt](https://letsencrypt.org/) took off; any time I need an SSL certificate for a site I run, I use that, and for sites I don't run (eg. GitHub Pages, Cloudflare URL forwarding etc) the corresponding providers deal with the SSL for free. Overall, having a simple, static presence online has gotten a lot cheaper since the early days.
 
 ## Static hosting on GitHub Pages with redirects
 
@@ -67,13 +67,13 @@ Credit for the Page Rules configuration goes to [this Stack Overflow answer](htt
 
 #### Cloudflare set-up
 
--   DNS for `wincent.com`:
+-   DNS for `typechecked.net`:
     -   `CNAME` `hex` → `wincent.github.io`
     -   A zillion other `A` and `CNAME` records for various things hosted elsewhere, like:
         -   `A` record for `git.typechecked.net` pointing at an EC2 Elastic IP.
-        -   `A` record for `wincent.com` root pointing at another Elastic IP.
-        -   `CAA` record `wincent.com` saying that `letsencrypt.org` is allowed to issue certificates; this works because GitHub Pages uses Let's Encrypt to create the certificate for `hex.typechecked.net` and I also use Let's Encrypt to generate the other certificates for `wincent.com`, `git.typechecked.net` (etc) domains on EC2. If GitHub Pages ever switches to a different Certificate Authority, I'll have to add another `CAA` record.
--   Page Rules for `wincent.com`: none.
+        -   `A` record for `typechecked.net` root pointing at another Elastic IP.
+        -   `CAA` record `typechecked.net` saying that `letsencrypt.org` is allowed to issue certificates; this works because GitHub Pages uses Let's Encrypt to create the certificate for `hex.typechecked.net` and I also use Let's Encrypt to generate the other certificates for `typechecked.net`, `git.typechecked.net` (etc) domains on EC2. If GitHub Pages ever switches to a different Certificate Authority, I'll have to add another `CAA` record.
+-   Page Rules for `typechecked.net`: none.
 
 ### Case study #3: s3.example.com[^example]
 
@@ -99,5 +99,5 @@ Certificate:
 
 #### Cloudflare set-up
 
--   DNS for `wincent.com`:
+-   DNS for `typechecked.net`:
     -   `CNAME` `s3` → `wincent.s3.amazonaws.com` (proxied)

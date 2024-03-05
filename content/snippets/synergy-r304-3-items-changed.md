@@ -3,4 +3,4 @@ title: Synergy r304, 3 items changed
 tags: snippets
 ---
 
-Tweak Norwegian localization, fixed http://wincent.com/a/support/bugs/show\_bug.cgi?id=495
+Tweak Norwegian localization, fixed http://typechecked.net/a/support/bugs/show\_bug.cgi?id=495

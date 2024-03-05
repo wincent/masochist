@@ -5,9 +5,9 @@ title: SSL certificate renewal notes 2010
 
 My previous [SSL](/wiki/SSL) certificate was a [RapidSSL](/wiki/RapidSSL)-issued certificate, and I'm going with the same (cheapest) reseller that I did last time (see "[SSL certificate renewal notes 2008](/wiki/SSL_certificate_renewal_notes_2008)"): [ServerTastic](http://www.servertastic.com/) (a 5-year renewal for $50, or $10 per year).
 
-I have two certificates for typechecked.net and rails.typechecked.net which both expire 23 january 2010. I'll be letting the certificate for rails.typechecked.net expire as the domain is not actively used anymore and only redirects to wincent.com.
+I have two certificates for typechecked.net and rails.typechecked.net which both expire 23 january 2010. I'll be letting the certificate for rails.typechecked.net expire as the domain is not actively used anymore and only redirects to typechecked.net.
 
-I also have a [RapidSSL](/wiki/RapidSSL) certificate for wincent.com but that doesn't expire until 23 May 2013 so I won't be renewing that one just yet (and in fact, by the time 2013 comes around the domain is unlikely to be in active use anyway).
+I also have a [RapidSSL](/wiki/RapidSSL) certificate for typechecked.net but that doesn't expire until 23 May 2013 so I won't be renewing that one just yet (and in fact, by the time 2013 comes around the domain is unlikely to be in active use anyway).
 
 The basic process for renewal is:
 
@@ -30,14 +30,14 @@ Instructions for how to do this appear [here](http://www.rapidssl.com/freessl/fr
 
     # move old CSR out the way
     cd certs
-    mv wincent.com.csr wincent.com.csr.rapidssl.2009
+    mv typechecked.net.csr typechecked.net.csr.rapidssl.2009
 
     # create a new CSR
-    openssl req -new -key ../keys/wincent.com.key -out wincent.com.csr.rapidssl.2010
+    openssl req -new -key ../keys/typechecked.net.key -out typechecked.net.csr.rapidssl.2010
 
     # review the new CSR, comparing it against the previous one for correctness
-    openssl req -noout -text -in wincent.com.csr.rapidssl.2010
-    openssl req -noout -text -in wincent.com.csr.rapidssl.2009
+    openssl req -noout -text -in typechecked.net.csr.rapidssl.2010
+    openssl req -noout -text -in typechecked.net.csr.rapidssl.2009
 
 Here is how I answered the questions during CSR generation:
 
@@ -51,9 +51,9 @@ Here is how I answered the questions during CSR generation:
     Country Name (2 letter code) [GB]:AU
     State or Province Name (full name) [Berkshire]:South Australia
     Locality Name (eg, city) [Newbury]:Glenelg South
-    Organization Name (eg, company) [My Company Ltd]:wincent.com
+    Organization Name (eg, company) [My Company Ltd]:typechecked.net
     Organizational Unit Name (eg, section) []:
-    Common Name (eg, your name or your server's hostname) []:wincent.com
+    Common Name (eg, your name or your server's hostname) []:typechecked.net
     Email Address []:example@example.com
 
     Please enter the following 'extra' attributes
@@ -70,14 +70,14 @@ This time I'll be renewing for a full 5-years in order to get the maximum discou
 ## nginx
 
     # make backup of old certificate
-    cp wincent.com.crt wincent.com.crt.rapidssl.2009
+    cp typechecked.net.crt typechecked.net.crt.rapidssl.2009
 
     # copy new certificate (from RapidSSL email) into new file
-    vim wincent.com.crt.rapidssl.2010
+    vim typechecked.net.crt.rapidssl.2010
 
     # from here on will use a symbolic link to point to the latest cert
-    rm wincent.com.crt
-    ln -s wincent.com.crt.rapidssl.2010 wincent.com.crt
+    rm typechecked.net.crt
+    ln -s typechecked.net.crt.rapidssl.2010 typechecked.net.crt
 
     # make sure that nginx likes the new cert
     /usr/local/nginx/sbin/nginx -t -c /usr/local/nginx/conf/nginx.conf

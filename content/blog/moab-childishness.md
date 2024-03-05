@@ -3,7 +3,7 @@ title: MOAB childishness
 tags: blog
 ---
 
-I [wrote yesterday](http://wincent.com/a/about/wincent/weblog/archives/2007/01/month_of_apple_1.php):
+I [wrote yesterday](http://typechecked.net/a/about/wincent/weblog/archives/2007/01/month_of_apple_1.php):
 
 > \[R\]eally, "fixing" this stuff with APE is like using a radio-controlled robot to stick a band-aid on the arm of a running child
 

@@ -1,5 +1,5 @@
 ---
-title: Add localization support (wincent.com, 342183f)
+title: Add localization support (typechecked.net, 342183f)
 tags: snippets
 ---
 

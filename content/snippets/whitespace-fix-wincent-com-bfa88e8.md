@@ -1,5 +1,5 @@
 ---
-title: Whitespace fix (wincent.com, bfa88e8)
+title: Whitespace fix (typechecked.net, bfa88e8)
 tags: snippets
 ---
 

@@ -1,5 +1,6 @@
 ---
 tags: subversion wiki
+title: Subversion 1.4.0 upgrade
 ---
 
 These notes were made during the upgrade from [Subversion](/wiki/Subversion) version 1.3.2 to the new version 1.4.0.
@@ -26,7 +27,7 @@ The changelog for APR 0.9.7 (`apr/CHANGES`) appears to suggest that the [`ac_cv_
       *) Fix issue with poll() followed by net I/O yielding EAGAIN on
          Mac OS 10.4 (Darwin 8). [Wilfredo Sanchez]
 
-So we'll skip that, unlike [in previous upgrades](http://wincent.com/a/knowledge-base/archives/2006/04/subversion_131.php):
+So we'll skip that, unlike [in previous upgrades](http://typechecked.net/a/knowledge-base/archives/2006/04/subversion_131.php):
 
     sh ./autogen.sh
     ./configure
@@ -285,7 +286,7 @@ Looks as though I should have passed `--disable-mod-activation` ("Do not enable 
 
 Will have to edit `httpd.conf` by handle to remove the duplicate.
 
-So in all the upgrade to 1.4.0 proved to be one the nastiest, messiest Subversion installs yet. In the [many, many Subversion upgrades I've done in recent years](http://www.google.com/search?client=safari&rls=es&q=site:wincent.com+subversion&ie=UTF-8&oe=UTF-8) I don't remember ever having had problems with `apxs` like I did this time (turns out that I avoided these problems [last time](http://wincent.com/a/knowledge-base/archives/2006/06/intel_imac_setu.php) but I'd forgotten about that). Perhaps some devilish changes were made to my `PATH` since the last time that caused all this difficulty.
+So in all the upgrade to 1.4.0 proved to be one the nastiest, messiest Subversion installs yet. In the [many, many Subversion upgrades I've done in recent years](http://www.google.com/search?client=safari&rls=es&q=site:typechecked.net+subversion&ie=UTF-8&oe=UTF-8) I don't remember ever having had problems with `apxs` like I did this time (turns out that I avoided these problems [last time](http://typechecked.net/a/knowledge-base/archives/2006/06/intel_imac_setu.php) but I'd forgotten about that). Perhaps some devilish changes were made to my `PATH` since the last time that caused all this difficulty.
 
 ## Update, October 2006
 

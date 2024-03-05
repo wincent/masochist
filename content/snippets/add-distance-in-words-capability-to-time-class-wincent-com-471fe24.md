@@ -1,5 +1,5 @@
 ---
-title: Add "distance in words" capability to Time class (wincent.com, 471fe24)
+title: Add "distance in words" capability to Time class (typechecked.net, 471fe24)
 tags: snippets
 ---
 

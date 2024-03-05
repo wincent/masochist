@@ -1,5 +1,5 @@
 ---
-title: Add search form to tag search results page (wincent.com, d828803)
+title: Add search form to tag search results page (typechecked.net, d828803)
 tags: snippets
 ---
 

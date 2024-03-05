@@ -1,5 +1,5 @@
 ---
-title: New models, lib additions and refactoring (wincent.com, a9173ba)
+title: New models, lib additions and refactoring (typechecked.net, a9173ba)
 tags: snippets
 ---
 

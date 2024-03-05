@@ -184,7 +184,7 @@ Here comes another code-level progress report. As per usual, the standard discla
 
     13 files changed, 246 insertions(+), 47 deletions(-)
 
-# unversioned/wincent.com
+# unversioned/typechecked.net
 
     96cbb03 CSS: right-pad blockquotes
     b6909bd Update to Haml 2.2.3

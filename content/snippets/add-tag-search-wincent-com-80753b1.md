@@ -1,5 +1,5 @@
 ---
-title: Add tag search (wincent.com, 80753b1)
+title: Add tag search (typechecked.net, 80753b1)
 tags: snippets
 ---
 

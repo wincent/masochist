@@ -1,5 +1,5 @@
 ---
-title: Shorten body_html helper (wincent.com, e54a968)
+title: Shorten body_html helper (typechecked.net, e54a968)
 tags: snippets
 ---
 

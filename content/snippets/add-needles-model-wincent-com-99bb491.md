@@ -1,5 +1,5 @@
 ---
-title: Add "needles" model (wincent.com, 99bb491)
+title: Add "needles" model (typechecked.net, 99bb491)
 tags: snippets
 ---
 

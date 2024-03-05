@@ -1,5 +1,5 @@
 ---
-title: Move login_as method into spec helper (wincent.com, 8e136a7)
+title: Move login_as method into spec helper (typechecked.net, 8e136a7)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Whitespace fix (wincent.com, df00cf2)
+title: Whitespace fix (typechecked.net, df00cf2)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Teach products controller to find all products (wincent.com, b794161)
+title: Teach products controller to find all products (typechecked.net, b794161)
 tags: snippets
 ---
 

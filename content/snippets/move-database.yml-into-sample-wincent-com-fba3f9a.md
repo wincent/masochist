@@ -1,5 +1,5 @@
 ---
-title: Move database.yml into sample (wincent.com, fba3f9a)
+title: Move database.yml into sample (typechecked.net, fba3f9a)
 tags: snippets
 ---
 

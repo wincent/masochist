@@ -1,5 +1,5 @@
 ---
-title: Initial Sass stylesheet (wincent.com, 0d58fa2)
+title: Initial Sass stylesheet (typechecked.net, 0d58fa2)
 tags: snippets
 ---
 

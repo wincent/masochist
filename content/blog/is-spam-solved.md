@@ -3,23 +3,23 @@ title: Is spam "solved"?
 tags: blog
 ---
 
-Just over a year ago I wrote about [Bill Gates' failed prediction](http://wincent.com/a/about/wincent/weblog/archives/2006/01/spam_to_be_elim.php) that spam would be "solved" by the beginning of 2006. Microsoft tried to deny the demonstrable failure of this prediction by redefining the meaning of the word "solved" in a [way that does not bear inspection](http://wincent.com/a/about/wincent/weblog/archives/2006/01/spam_will_be_so.php).
+Just over a year ago I wrote about [Bill Gates' failed prediction](http://typechecked.net/a/about/wincent/weblog/archives/2006/01/spam_to_be_elim.php) that spam would be "solved" by the beginning of 2006. Microsoft tried to deny the demonstrable failure of this prediction by redefining the meaning of the word "solved" in a [way that does not bear inspection](http://typechecked.net/a/about/wincent/weblog/archives/2006/01/spam_will_be_so.php).
 
 So it's time for my annual review of the spam situation (in fact, I'm a few weeks late). What's the view on spam like from here a year later?
 
 #### Countermeasures
 
-During 2006 I [gradually toughened up my anti-spam arsenal](http://wincent.com/a/knowledge-base/archives/2006/06/clamping_down_o.php) by introducing a number of new measures at the server level which reduce the amount of spam getting downloaded to the local machine and increase the likelihood that the spam which does get through will be tagged as such before it even hits Mail.app's filters:
+During 2006 I [gradually toughened up my anti-spam arsenal](http://typechecked.net/a/knowledge-base/archives/2006/06/clamping_down_o.php) by introducing a number of new measures at the server level which reduce the amount of spam getting downloaded to the local machine and increase the likelihood that the spam which does get through will be tagged as such before it even hits Mail.app's filters:
 
 -   Tougher scoring on non-English messages.
 -   Automatic deletion of extremely high-scoring spam.
 -   Auto-whitelisting.
 -   Bayesian training.
 
-I later took [further steps](http://wincent.com/wiki/Combatting_spam) at the server level:
+I later took [further steps](http://typechecked.net/wiki/Combatting_spam) at the server level:
 
--   [Blocking non-local senders for local-only recipients](http://wincent.com/wiki/Blocking_non-local_senders_for_local-only_recipients).
--   Conservative [DNS-based blacklisting](http://wincent.com/wiki/DNS-based_blacklisting).
+-   [Blocking non-local senders for local-only recipients](http://typechecked.net/wiki/Blocking_non-local_senders_for_local-only_recipients).
+-   Conservative [DNS-based blacklisting](http://typechecked.net/wiki/DNS-based_blacklisting).
 
 And at the policy level:
 
@@ -27,11 +27,11 @@ And at the policy level:
 -   Using easily cancellable addresses when providing email addresses to third parties.
 -   Migrating away from old addresses which receive a lot of spam to newer addresses.
 
-As [discussed here](http://wincent.com/wiki/Combatting_spam) these changes combined to significantly reduce the number of spam messages getting to my mail box each day; I don't have any hard figures for the entire period but the evidence I do have suggests that the number of spams thwarted by these measures is of the order of several hundred per day.
+As [discussed here](http://typechecked.net/wiki/Combatting_spam) these changes combined to significantly reduce the number of spam messages getting to my mail box each day; I don't have any hard figures for the entire period but the evidence I do have suggests that the number of spams thwarted by these measures is of the order of several hundred per day.
 
 #### SpamSieve
 
-Spam that does get through to the client level is largely handled by [SpamSieve](http://wincent.com/a/about/wincent/weblog/archives/2005/11/spamsieve_one_y.php). The current client-level statistics are as follows:
+Spam that does get through to the client level is largely handled by [SpamSieve](http://typechecked.net/a/about/wincent/weblog/archives/2005/11/spamsieve_one_y.php). The current client-level statistics are as follows:
 
     Filtered Mail
     190,575 Good Messages

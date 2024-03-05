@@ -1,5 +1,5 @@
 ---
-title: Ignore coverage subdirectory (wincent.com, bb4ed11)
+title: Ignore coverage subdirectory (typechecked.net, bb4ed11)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Drop HTML caching from revisions table (wincent.com, 5313bbb)
+title: Drop HTML caching from revisions table (typechecked.net, 5313bbb)
 tags: snippets
 ---
 

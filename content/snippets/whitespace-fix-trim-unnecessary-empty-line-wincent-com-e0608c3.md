@@ -1,5 +1,5 @@
 ---
-title: Whitespace fix: trim unnecessary empty line (wincent.com, e0608c3)
+title: Whitespace fix: trim unnecessary empty line (typechecked.net, e0608c3)
 tags: snippets
 ---
 

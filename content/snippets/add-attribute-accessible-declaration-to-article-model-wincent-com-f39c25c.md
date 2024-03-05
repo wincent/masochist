@@ -1,5 +1,5 @@
 ---
-title: Add attribute accessible declaration to Article model (wincent.com, f39c25c)
+title: Add attribute accessible declaration to Article model (typechecked.net, f39c25c)
 tags: snippets
 ---
 

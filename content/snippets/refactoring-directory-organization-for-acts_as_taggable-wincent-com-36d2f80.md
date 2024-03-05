@@ -1,5 +1,5 @@
 ---
-title: Refactoring (directory organization) for acts_as_taggable (wincent.com, 36d2f80)
+title: Refactoring (directory organization) for acts_as_taggable (typechecked.net, 36d2f80)
 tags: snippets
 ---
 

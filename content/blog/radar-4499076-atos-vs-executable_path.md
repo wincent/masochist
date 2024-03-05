@@ -3,7 +3,7 @@ title: Radar #4499076: atos vs @executable_path
 tags: blog
 ---
 
-Using `atos` is a bit of a pain with anything that uses embedded frameworks. Unfortunately it's something I need to do in order to [decipher crash reports](http://wincent.com/a/about/wincent/weblog/archives/2006/03/automated_strip.php).
+Using `atos` is a bit of a pain with anything that uses embedded frameworks. Unfortunately it's something I need to do in order to [decipher crash reports](http://typechecked.net/a/about/wincent/weblog/archives/2006/03/automated_strip.php).
 
 > When running "atos" on my binaries with the "-o" switch the utility fails to work and I get error messages like the following; in this example we are talking about an executable that links against an embedded copy of the Growl framework:
 >

@@ -1,5 +1,5 @@
 ---
-title: Start populating site-wide nav bar (wincent.com, 477b843)
+title: Start populating site-wide nav bar (typechecked.net, 477b843)
 tags: snippets
 ---
 

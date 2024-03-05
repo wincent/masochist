@@ -1,5 +1,5 @@
 ---
-title: Add confirmation of emails (wincent.com, 78a395a)
+title: Add confirmation of emails (typechecked.net, 78a395a)
 tags: snippets
 ---
 

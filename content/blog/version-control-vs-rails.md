@@ -7,7 +7,7 @@ Version Control wins.
 
 ### What actually happened
 
-Try to upgrade to the first release candidate for [Rails](http://wincent.com/wiki/Rails) 2.0:
+Try to upgrade to the first release candidate for [Rails](http://typechecked.net/wiki/Rails) 2.0:
 
     rake rails:freeze:edge TAG=rel_2-0-0_RC1
 
@@ -18,11 +18,11 @@ This didn't work due to a connection failure, but before trying again I did a `g
 It get's better. You _can't_ try again because of the damage done by the previous failure:
 
     rake aborted!
-    no such file to load -- /Users/wincent/trabajo/unversioned/wincent.com/src/config/../vendor/rails/railties/lib/initializer
-    /Users/wincent/trabajo/unversioned/wincent.com/src/rakefile:4
+    no such file to load -- /Users/wincent/trabajo/unversioned/typechecked.net/src/config/../vendor/rails/railties/lib/initializer
+    /Users/wincent/trabajo/unversioned/typechecked.net/src/rakefile:4
     (See full trace by running task with --trace)
 
-Version control to the rescue, specifically [Git](http://wincent.com/wiki/Git):
+Version control to the rescue, specifically [Git](http://typechecked.net/wiki/Git):
 
     git co vendor/rails
 

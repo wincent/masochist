@@ -1,5 +1,5 @@
 ---
-title: Add stories subdirectory (wincent.com, 521539e)
+title: Add stories subdirectory (typechecked.net, 521539e)
 tags: snippets
 ---
 

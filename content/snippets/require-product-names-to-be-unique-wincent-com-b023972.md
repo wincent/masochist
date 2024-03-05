@@ -1,5 +1,5 @@
 ---
-title: Require product names to be unique (wincent.com, b023972)
+title: Require product names to be unique (typechecked.net, b023972)
 tags: snippets
 ---
 

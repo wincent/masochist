@@ -5,10 +5,10 @@ tags: spam blog
 
 Over the last few years I have posted periodic updates on the amount of spam that I receive, to satisfy my curiosity about whether the trend is upwards, and how much so.
 
--   [February 2007](http://wincent.com/a/about/wincent/weblog/archives/2007/02/is_spam_solved.php) (full report)
--   [2006 figures](http://wincent.com/a/about/wincent/weblog/archives/2006/01/spam_will_be_so.php) (partial)
--   [2005 figures](http://wincent.com/a/about/wincent/weblog/archives/2006/01/spam_to_be_elim.php) (partial)
--   [2005](http://wincent.com/a/about/wincent/weblog/archives/2005/11/spamsieve_one_y.php) (full report, posted November 2005)
+-   [February 2007](http://typechecked.net/a/about/wincent/weblog/archives/2007/02/is_spam_solved.php) (full report)
+-   [2006 figures](http://typechecked.net/a/about/wincent/weblog/archives/2006/01/spam_will_be_so.php) (partial)
+-   [2005 figures](http://typechecked.net/a/about/wincent/weblog/archives/2006/01/spam_to_be_elim.php) (partial)
+-   [2005](http://typechecked.net/a/about/wincent/weblog/archives/2005/11/spamsieve_one_y.php) (full report, posted November 2005)
 
 Well, the verdict is in, and the problem is indeed continuing to get worse.
 

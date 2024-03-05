@@ -1,5 +1,6 @@
 ---
 tags: wincent.products wiki
+title: Wincent products
 ---
 
-Please see <http://wincent.com/> for a product listing.
+Please see <http://typechecked.net/> for a product listing.

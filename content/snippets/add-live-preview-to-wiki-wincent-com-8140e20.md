@@ -1,5 +1,5 @@
 ---
-title: Add live preview to wiki (wincent.com, 8140e20)
+title: Add live preview to wiki (typechecked.net, 8140e20)
 tags: snippets
 ---
 

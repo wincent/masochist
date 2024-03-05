@@ -1,5 +1,5 @@
 ---
-title: User spec fixes for mass assignment (wincent.com, ab7e57d)
+title: User spec fixes for mass assignment (typechecked.net, ab7e57d)
 tags: snippets
 ---
 

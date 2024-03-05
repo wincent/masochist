@@ -1,5 +1,5 @@
 ---
-title: Add specs for articles routing (wincent.com, bc941e4)
+title: Add specs for articles routing (typechecked.net, bc941e4)
 tags: snippets
 ---
 

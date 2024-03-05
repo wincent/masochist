@@ -150,8 +150,8 @@ As another example, below is the last handful of commits on the [Rails](/wiki/Ra
         So, out it comes.
 
         See:
-          https://wincent.com/issues/1264
-          https://wincent.com/issues/734
+          https://typechecked.net/issues/1264
+          https://typechecked.net/issues/734
 
         Signed-off-by: Greg Hurrell <greg@hurrell.net>
 

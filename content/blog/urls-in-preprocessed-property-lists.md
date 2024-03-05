@@ -17,7 +17,7 @@ Continue reading to see my initial approaches to working around the problems...
 Today Xcode's `Info.plist` preprocessing feature started producing invalid XML for me, thus preventing any of my builds from completing. Source XML like this:
 
         <key>WOPlugInVendorWebsite</key>
-        <string>http://wincent.com/</string>
+        <string>http://typechecked.net/</string>
     </dict>
     </plist>
 

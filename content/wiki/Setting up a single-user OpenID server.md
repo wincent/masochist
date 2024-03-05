@@ -77,15 +77,15 @@ This last point is just basic security practice whenever I'm forced to use [PHP]
 
 The following [HTML](/wiki/HTML) needed to be added to the page residing at my "identity" [URL](/wiki/URL):
 
-    <link rel="openid.server" href="https://wincent.com/id.php" />
-    <link rel="openid.delegate" href="https://wincent.com/id.php" />
-    <meta http-equiv="X-XRDS-Location" content="https://wincent.com/id.php" />
+    <link rel="openid.server" href="https://typechecked.net/id.php" />
+    <link rel="openid.delegate" href="https://typechecked.net/id.php" />
+    <meta http-equiv="X-XRDS-Location" content="https://typechecked.net/id.php" />
 
 # Results
 
 To test the system I made my first post using [OpenID](/wiki/OpenID)-based authentication [here](http://chanson.livejournal.com/170068.html). There are two problems with the result:
 
-1.  The "from" line reads as <http://wincent.com/a/about/wincent/weblog/>, which doesn't exactly make clear the identity of the poster; this is because it just redirects to my [weblog](/wiki/weblog) at the other [URL](/wiki/URL).
+1.  The "from" line reads as <http://typechecked.net/a/about/wincent/weblog/>, which doesn't exactly make clear the identity of the poster; this is because it just redirects to my [weblog](/wiki/weblog) at the other [URL](/wiki/URL).
 2.  The [the user profile](http://www.livejournal.com/userinfo.bml?userid=12856127&t=I&mode=full) linked to from the comment doesn't include the extra information that I included in my configuration.
 
 The second problem is probably a limitation of [LiveJournal](/wiki/LiveJournal) and there's not much that I can do about that. I decided to address the former problem by choosing a better [URL](/wiki/URL) for future identification. So I set up a simple page with the following content:
@@ -96,14 +96,14 @@ The second problem is probably a limitation of [LiveJournal](/wiki/LiveJournal) 
     <head>
       <meta http-equiv="content-type" content="text/html; charset=utf-8">
       <title>example.com</title>
-      <link rel="openid.server" href="https://wincent.com/id.php">
-      <link rel="openid.delegate" href="https://wincent.com/id.php">
-      <meta http-equiv="X-XRDS-Location" content="https://wincent.com/id.php">
+      <link rel="openid.server" href="https://typechecked.net/id.php">
+      <link rel="openid.delegate" href="https://typechecked.net/id.php">
+      <meta http-equiv="X-XRDS-Location" content="https://typechecked.net/id.php">
     </head>
     <body>
     <ul>
       <li>Wincent Colaiuta's personal weblog: <a href="http://example.com/">example.com</a></li>
-      <li>Mac OS X software: <a href="http://wincent.com/">wincent.com</a></li>
+      <li>Mac OS X software: <a href="http://typechecked.net/">typechecked.net</a></li>
     </ul>
     </body>
     </html>

@@ -1,5 +1,7 @@
 ---
-redirect: http://wincent.com/a/products/synergy-advance/
-cache_breaker: 1
 tags: wiki
+title: Synergy Advance
+cache_breaker: 1
+redirect: http://typechecked.net/a/products/synergy-advance/
 ---
+

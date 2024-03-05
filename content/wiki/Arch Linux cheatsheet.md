@@ -23,8 +23,8 @@ Kick off the installation script:
 loadkeys colemak # "iyasefjr cyifmae" typing colemak-style on qwerty)
 setfont ter-132b # Switch to a larger font, if needed.
 iwctl station wlan0 connect $SSID
-curl -LO https://wincent.com/link/arch/desktop.sh
-# or: curl -LO https://wincent.com/link/arch/zbook.sh
+curl -LO https://typechecked.net/link/arch/desktop.sh
+# or: curl -LO https://typechecked.net/link/arch/zbook.sh
 bash desktop.sh
 # or: bash zbook.sh
 
@@ -312,7 +312,7 @@ FS0:
 b
 ```
 
-In addition to `a.nsh` and `b.nsh`, [my installation script](https://wincent.com/link/arch-linux-install.sh) also creates `a.sh` and `b.sh` that can contain copies of the `efibootmgr` commands printed above. This means that, after booting using the above technique, you can run `sudo bash /boot/b.sh && sudo bash /boot/a.sh` to permanently repair the boot table ("permanently", that is, until the next BIOS update). Note the order in which you run these commands matters; running `b.sh` first then `a.sh` ensures that "linux" comes before "linux-lts" in the boot order.
+In addition to `a.nsh` and `b.nsh`, [my installation script](https://typechecked.net/link/arch-linux-install.sh) also creates `a.sh` and `b.sh` that can contain copies of the `efibootmgr` commands printed above. This means that, after booting using the above technique, you can run `sudo bash /boot/b.sh && sudo bash /boot/a.sh` to permanently repair the boot table ("permanently", that is, until the next BIOS update). Note the order in which you run these commands matters; running `b.sh` first then `a.sh` ensures that "linux" comes before "linux-lts" in the boot order.
 
 # Seeing fan speed and temperature information
 

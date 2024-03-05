@@ -1,6 +1,7 @@
 ---
 tags: apache nginx wiki
 cache_breaker: 1
+title: Serving Mac OS X installation packages over HTTP using nginx and Apache
 ---
 
 I was wondering if it would be wise to serve [Mac OS X](/wiki/Mac_OS_X) installation packages (`.pkg`) files directly over [HTTP](/wiki/HTTP), or whether browsers would choke on them and do silly things like display them as garbled text in the browser window rather than writing them out to disk. (Up till now I've always wrapped them up in a [zip](/wiki/zip) archive just to be on the safe side, despite the fact that this requires users to perform an additional extraction step before using the package, which has always annoyed me.)
@@ -9,7 +10,7 @@ I was wondering if it would be wise to serve [Mac OS X](/wiki/Mac_OS_X) installa
 
 ```shell
 $ curl -O -D header-dump \
-  http://wincent.com/a/products/wincent-icon-util/download/WincentIconUtility.pkg
+  http://typechecked.net/a/products/wincent-icon-util/download/WincentIconUtility.pkg
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100 23488  100 23488    0     0  16723      0  0:00:01  0:00:01 --:--:-- 20213

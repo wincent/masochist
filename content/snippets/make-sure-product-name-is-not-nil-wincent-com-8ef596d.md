@@ -1,5 +1,5 @@
 ---
-title: Make sure product name is not nil (wincent.com, 8ef596d)
+title: Make sure product name is not nil (typechecked.net, 8ef596d)
 tags: snippets
 ---
 

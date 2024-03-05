@@ -5,7 +5,7 @@ tags: blog
 
 In June last year I ordered a Developer Transition Kit (DTK). The idea is that you paid Apple $999 and they sent you an Intel-based Mac you could use for development and testing. The market value of the machine must have been way over $999 but the catch was that you'd have to return the unit to Apple before the end of 2006. In other words, you were effectively renting the machine, not purchasing it.
 
-I figured this was a fair enough deal. After all, when you purchase a Mac for, say, $2,000, and you sell it a year and a half later for $1,000 you've effectively invested \$1,000 in "renting" the machine for 18 months. This is the way buying and selling computers works. And having the DTK has allowed me to get my [products](http://wincent.com/) converted to Universal Binaries in time for the release of their first Intel-based machines.
+I figured this was a fair enough deal. After all, when you purchase a Mac for, say, $2,000, and you sell it a year and a half later for $1,000 you've effectively invested \$1,000 in "renting" the machine for 18 months. This is the way buying and selling computers works. And having the DTK has allowed me to get my [products](http://typechecked.net/) converted to Universal Binaries in time for the release of their first Intel-based machines.
 
 Well, today Apple announced their [DTK Exchange Program](http://developer.apple.com/dtkexchange/index.html). In short, you return your DTK to Apple and they give you one of the new Intel-based [iMacs](http://www.apple.com/imac/). Yes, they _give_ it to you (or sell it, if you want to look at it that way). From the [FAQ](http://developer.apple.com/dtkexchange/faq.html):
 

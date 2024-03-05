@@ -1,10 +1,11 @@
 ---
 tags: movable.type wiki
+title: Upgrading from Movable Type version 3.34 to 3.35
 ---
 
 # Background
 
-I've written in the past that [I don't like the Movable Type upgrade](http://wincent.com/a/about/wincent/weblog/archives/2006/09/the_movable_typ.php) procedure. The last upgrade was the worst one ever (see "[Upgrading from Movable Type version 3.33 to 3.34](/wiki/Upgrading_from_Movable_Type_version_3.33_to_3.34)").
+I've written in the past that [I don't like the Movable Type upgrade](http://typechecked.net/a/about/wincent/weblog/archives/2006/09/the_movable_typ.php) procedure. The last upgrade was the worst one ever (see "[Upgrading from Movable Type version 3.33 to 3.34](/wiki/Upgrading_from_Movable_Type_version_3.33_to_3.34)").
 
 Thankfully, for version 3.35 they've [instituted](http://www.sixapart.com/movabletype/news/2007/04/mt335_released.html) a long overdue change:
 

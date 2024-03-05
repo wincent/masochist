@@ -1,5 +1,5 @@
 ---
-title: Add initial validations for Article model (wincent.com, 5881ce0)
+title: Add initial validations for Article model (typechecked.net, 5881ce0)
 tags: snippets
 ---
 

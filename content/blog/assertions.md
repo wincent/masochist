@@ -7,7 +7,7 @@ In "[Disable assertions and logging in your Release build](http://chanson.livejo
 
 For my first couple of years as a Cocoa programmer I almost never used assertions. When I wanted to test for programming errors I would do an explicit test, create an exception and explicitly raise it. This was fairly verbose so I didn't do it very often.
 
-Then I discovered the joy of assertions and have been using them increasingly over the last few years. It's part of the [fail early](http://wincent.com/wiki/fail%20early) philosophy that complements [unit testing](http://wincent.com/wiki/unit%20testing) so well.
+Then I discovered the joy of assertions and have been using them increasingly over the last few years. It's part of the [fail early](http://typechecked.net/wiki/fail%20early) philosophy that complements [unit testing](http://typechecked.net/wiki/unit%20testing) so well.
 
 I never used to turn off assertions in release builds because I figured the speed hit was negligible, and I wanted my shipping code to be the same code that I had tested during development. Why test one thing and then ship something different to customers?
 
@@ -20,9 +20,9 @@ I haven't yet shipped a product with assertions disabled, but I have been thinki
 
 > You might be tempted to implement this using a form of assertion, since by default assertions in Cocoa will throw an exception. But remember, this is part of the API contract of your class, not just an internal detail that should never go wrong! Thus if you do implement this using an assertion, and you disable assertions in your Release build, your Release build will wind up implementing your API incorrectly.
 
-My problem is that I have been using `NSParameterAssert` extensively for a long time now to enforce the [API](http://wincent.com/wiki/API) contract of my classes. That is, I generally have three aspects that must all match up:
+My problem is that I have been using `NSParameterAssert` extensively for a long time now to enforce the [API](http://typechecked.net/wiki/API) contract of my classes. That is, I generally have three aspects that must all match up:
 
-1.  Inline [Doxygen](http://wincent.com/wiki/Doxygen) documentation which states, "If passed `X` raises `Y`".
+1.  Inline [Doxygen](http://typechecked.net/wiki/Doxygen) documentation which states, "If passed `X` raises `Y`".
 2.  Unit tests which check that if passed `X`, does indeed raise Y.
 3.  In the implementation itself, use of `NSParameterAssert` to raise `Y` if passed `X`.
 
@@ -36,4 +36,4 @@ My code already had a very clean division between assertions, error conditions a
 -   Exceptions are for signalling unexpected conditions outside the control of the programmer: you should be prepared to catch exceptions and deal with them appropriately. Exceptions are for things that are _not_ "my fault", but I should be prepared to deal with them (and failure to do so is once again "my fault").
 -   Error conditions: every time you make a call to another API you should be prepared to check the return value for an error code or `nil` return value. Error conditions are just like exceptions in the sense that they signal unexpected conditions outside of your control. Likewise, even though the error condition is not "your fault", failure to handle it makes it so.
 
-Evidently my use of `NSParameterAssert` made the separation not clean enough, by blurring the line between assertions and exceptions. I guess we'll just have to add this to the "[Don't repeat the mistakes I made](http://wincent.com/wiki/Don%27t_repeat_the_mistakes_I_made)" list.
+Evidently my use of `NSParameterAssert` made the separation not clean enough, by blurring the line between assertions and exceptions. I guess we'll just have to add this to the "[Don't repeat the mistakes I made](http://typechecked.net/wiki/Don%27t_repeat_the_mistakes_I_made)" list.

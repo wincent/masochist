@@ -3,7 +3,7 @@ title: Test-Driven Development
 tags: blog
 ---
 
-I've previously written about [my love affair with Object-Oriented Templating](http://wincent.com/a/about/wincent/weblog/archives/2006/10/objectoriented.php) in general terms and as manifested in the beautiful [Cheetah](http://cheetahtemplate.org/) templating system.
+I've previously written about [my love affair with Object-Oriented Templating](http://typechecked.net/a/about/wincent/weblog/archives/2006/10/objectoriented.php) in general terms and as manifested in the beautiful [Cheetah](http://cheetahtemplate.org/) templating system.
 
 But there are a few minor problems with Cheetah:
 

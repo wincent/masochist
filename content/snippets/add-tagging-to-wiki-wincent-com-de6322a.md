@@ -1,5 +1,5 @@
 ---
-title: Add tagging to wiki (wincent.com, de6322a)
+title: Add tagging to wiki (typechecked.net, de6322a)
 tags: snippets
 ---
 

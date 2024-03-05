@@ -1,5 +1,5 @@
 ---
-title: Clean up in in place editor helper macros (wincent.com, 3fa763d)
+title: Clean up in in place editor helper macros (typechecked.net, 3fa763d)
 tags: snippets
 ---
 

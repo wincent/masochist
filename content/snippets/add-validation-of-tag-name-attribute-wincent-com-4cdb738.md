@@ -1,5 +1,5 @@
 ---
-title: Add validation of tag name attribute (wincent.com, 4cdb738)
+title: Add validation of tag name attribute (typechecked.net, 4cdb738)
 tags: snippets
 ---
 

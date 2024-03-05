@@ -3,7 +3,7 @@ title: Git traction
 tags: blog
 ---
 
-The barometer is on the move and it indicates a groundswell of interest in [Git](http://wincent.com/wiki/Git). At first I wondered if this was just because _I_ have become interested in Git lately (here's my [most recent post](http://wincent.com/a/about/wincent/weblog/archives/2007/07/git_hooks.php)) and so have been on the lookout for more Git-related content. Then I realized that this isn't just me looking for confirmation; the confirmation is actually coming knocking on my door with various people who are in my feeds list writing about Git.
+The barometer is on the move and it indicates a groundswell of interest in [Git](http://typechecked.net/wiki/Git). At first I wondered if this was just because _I_ have become interested in Git lately (here's my [most recent post](http://typechecked.net/a/about/wincent/weblog/archives/2007/07/git_hooks.php)) and so have been on the lookout for more Git-related content. Then I realized that this isn't just me looking for confirmation; the confirmation is actually coming knocking on my door with various people who are in my feeds list writing about Git.
 
 These aren't "version control people", they're Mac programmers just like me. A few days ago there was [Michael Tsai](http://mjtsai.com/blog/2007/07/15/subversion-to-git/), then today I noticed these posts from [Fraser Speirs](http://speirs.org/2007/07/19/a-subversion-user-looks-at-git/) and [Bill Bumgarner](http://www.friday.com/bbum/2007/07/19/git-will-eat-subversions-lunch/).
 
@@ -13,11 +13,11 @@ But whatever the reason, it's good to see it.
 
 ## Fraser's take
 
-Fraser seems to have spent the time digging into [Git](http://wincent.com/wiki/Git) so as to gain an appreciation for its architecture.
+Fraser seems to have spent the time digging into [Git](http://typechecked.net/wiki/Git) so as to gain an appreciation for its architecture.
 
 -   The index: Fraser seems to "get" the index but I would add that I think the key concept here is that the index is not a cache, it's a _staging area_. When you start thinking about it in those terms you start to see its possibilities rather than worrying about the inconvenience of the "additional step".
 -   Merging nibs: Good points on that; I haven't done a merge involving nibs yet, so I'll have to reserve judgement on that.
--   Externals: I've come to realize that this is a non-problem thanks to the fact that I had to face this issue and workaround it with [SVK](http://wincent.com/wiki/SVK); and in doing so I realized that a combination of separate checkouts and symbolic links is conceptually and architecturally much cleaner than Subversion externals anyway: the only downside is that your "externals" don't hitch along for the ride automatically, you have to remember to update/commit them. Fraser's hypothesized solution is an interesting one.
+-   Externals: I've come to realize that this is a non-problem thanks to the fact that I had to face this issue and workaround it with [SVK](http://typechecked.net/wiki/SVK); and in doing so I realized that a combination of separate checkouts and symbolic links is conceptually and architecturally much cleaner than Subversion externals anyway: the only downside is that your "externals" don't hitch along for the ride automatically, you have to remember to update/commit them. Fraser's hypothesized solution is an interesting one.
 -   Repository layout: spot on, the `.svn` directories littered throughout a Subversion checkout are a hideous mess; "litter" is the operative word.
 
 ## Bill's take
@@ -45,7 +45,7 @@ And when we throw the myriad other benefits that Git has over Subversion, Git be
 -   Amazing branching and merging support; and branches, like tags are not tacked on as an afterthought like they are in Subversion
 -   An incredibly simple, elegant architecutre
 -   Working copy (repository) format that is often more compact and always richer than the Subversion equivalent
--   A powerful, flexible [command line](http://wincent.com/wiki/command%20line) interface which is pleasant to use and blows the doors off Subversion once you've taken the trouble to learn it
+-   A powerful, flexible [command line](http://typechecked.net/wiki/command%20line) interface which is pleasant to use and blows the doors off Subversion once you've taken the trouble to learn it
 
 Bill finishes with:
 

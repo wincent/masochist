@@ -3,7 +3,7 @@ title: Mock objects in WOTest
 tags: blog
 ---
 
-Well, continuing on from [my last post on the topic](http://wincent.com/a/about/wincent/weblog/archives/2005/06/handling_except.php) I'm blazing ahead with my [unit testing](http://wincent.com/a/about/wincent/weblog/archives/2005/06/unit_testing_an.php) framework, WOTest. I've gotten the custom root class support finished (and tested, of course!) and have now moved on to rolling in mock object support.
+Well, continuing on from [my last post on the topic](http://typechecked.net/a/about/wincent/weblog/archives/2005/06/handling_except.php) I'm blazing ahead with my [unit testing](http://typechecked.net/a/about/wincent/weblog/archives/2005/06/unit_testing_an.php) framework, WOTest. I've gotten the custom root class support finished (and tested, of course!) and have now moved on to rolling in mock object support.
 
 Now, I've never used mock objects in my own unit testing in the past but I think it will be something useful to add. There are a few design patterns that one could use to implement it (see how [jMock](http://www.jmock.org/getting-started.html), [NMock](http://www.nmock.org/) and [OCMock](http://www.mulle-kybernetik.com/software/OCMock/) do it) and of these I think the most attractive one is the "[trampoline](http://cocoadev.com/index.pl?HigherOrderMessaging)" pattern. The trampoline pattern is attractive because it allows a very minimal, elegant syntax, which is exactly what I've strived for with the test macros used in the rest of the framework.
 

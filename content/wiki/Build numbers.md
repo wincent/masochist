@@ -1,5 +1,6 @@
 ---
 tags: xcode development wincent wiki
+title: Build numbers
 ---
 
 When writing up the article "[Setting up a nightly build system](/wiki/Setting_up_a_nightly_build_system)" I implemented a system that used a [build number](/wiki/build_number) based on the current [Subversion](/wiki/Subversion) revision of the code base. The revision number appeared in brackets after the main version number; for example:
@@ -368,4 +369,4 @@ Below is the text of the old version of the script, just prior to modification. 
 
 Like the nightly build system, the new system is able to avoid gratuitous changes to the [Subversion](/wiki/Subversion) repository caused by changes to the build number. Instead of storing the build number in a file that is checked into the repository we are now free to dynamically create the file before building and throw it away afterwards; it can be ignored.
 
-I've written and [added a new script](http://wincent.com/a/about/wincent/weblog/svn-log/archives/2007/03/buildtools_r51_1_item_changed.php) to the [Wincent Build Tools](/wiki/Wincent_Build_Tools) that when run in a checked out [SVK](/wiki/SVK) working copy uses `svk info` to extract the current [Subversion](/wiki/Subversion) revision number. The [Subversion](/wiki/Subversion) revision number is used because it is more authoritative (because it refers to a central repository). A [later revision](http://wincent.com/a/about/wincent/weblog/svn-log/archives/2007/04/buildtools_r67_1_item_changed.php) of the script only writes out the file containing the version number if it has actually changed; this helps to avoid triggering gratuitous rebuilds.
+I've written and [added a new script](http://typechecked.net/a/about/wincent/weblog/svn-log/archives/2007/03/buildtools_r51_1_item_changed.php) to the [Wincent Build Tools](/wiki/Wincent_Build_Tools) that when run in a checked out [SVK](/wiki/SVK) working copy uses `svk info` to extract the current [Subversion](/wiki/Subversion) revision number. The [Subversion](/wiki/Subversion) revision number is used because it is more authoritative (because it refers to a central repository). A [later revision](http://typechecked.net/a/about/wincent/weblog/svn-log/archives/2007/04/buildtools_r67_1_item_changed.php) of the script only writes out the file containing the version number if it has actually changed; this helps to avoid triggering gratuitous rebuilds.

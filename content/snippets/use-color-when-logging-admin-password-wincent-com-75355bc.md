@@ -1,5 +1,5 @@
 ---
-title: Use color when logging admin password (wincent.com, 75355bc)
+title: Use color when logging admin password (typechecked.net, 75355bc)
 tags: snippets
 ---
 

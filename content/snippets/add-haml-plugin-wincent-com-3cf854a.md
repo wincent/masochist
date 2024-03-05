@@ -1,5 +1,5 @@
 ---
-title: Add Haml plugin (wincent.com, 3cf854a)
+title: Add Haml plugin (typechecked.net, 3cf854a)
 tags: snippets
 ---
 

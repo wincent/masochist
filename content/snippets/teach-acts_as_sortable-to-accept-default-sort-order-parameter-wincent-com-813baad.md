@@ -1,5 +1,5 @@
 ---
-title: Teach acts_as_sortable to accept default sort order parameter (wincent.com, 813baad)
+title: Teach acts_as_sortable to accept default sort order parameter (typechecked.net, 813baad)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Make full-text indexing faster by bypassing Active Record (wincent.com, 7976609)
+title: Make full-text indexing faster by bypassing Active Record (typechecked.net, 7976609)
 tags: snippets
 ---
 

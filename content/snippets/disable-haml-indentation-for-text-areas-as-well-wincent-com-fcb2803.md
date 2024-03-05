@@ -1,5 +1,5 @@
 ---
-title: Disable Haml indentation for text areas as well (wincent.com, fcb2803)
+title: Disable Haml indentation for text areas as well (typechecked.net, fcb2803)
 tags: snippets
 ---
 

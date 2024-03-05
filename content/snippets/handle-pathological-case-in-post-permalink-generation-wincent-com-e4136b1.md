@@ -1,5 +1,5 @@
 ---
-title: Handle pathological case in post permalink generation (wincent.com, e4136b1)
+title: Handle pathological case in post permalink generation (typechecked.net, e4136b1)
 tags: snippets
 ---
 

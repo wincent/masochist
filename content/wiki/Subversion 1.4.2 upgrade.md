@@ -1,5 +1,6 @@
 ---
 tags: subversion wiki
+title: Subversion 1.4.2 upgrade
 ---
 
 These notes were made during the upgrade from [Subversion](/wiki/Subversion) version 1.4.0 to the new version 1.4.2.
@@ -52,7 +53,7 @@ And many test failures in the `make check`. Evidently it will be necessary to ma
 
 I've uploaded the scripts I used to perform the static build here:
 
--   <http://wincent.com/gpl/svn-1.4.2/intel/svn-mac-build.zip>
+-   <http://typechecked.net/gpl/svn-1.4.2/intel/svn-mac-build.zip>
 
 These are modifications of the scripts by D.J. Hagberg who maintains static builds of Subversion for various platforms.
 

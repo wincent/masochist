@@ -1,5 +1,5 @@
 ---
-title: Tighten up post Atom feed generation (wincent.com, 49fce76)
+title: Tighten up post Atom feed generation (typechecked.net, 49fce76)
 tags: snippets
 ---
 

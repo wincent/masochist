@@ -1,5 +1,5 @@
 ---
-title: Add routing for wiki (wincent.com, 1e83226)
+title: Add routing for wiki (typechecked.net, 1e83226)
 tags: snippets
 ---
 

@@ -1,5 +1,6 @@
 ---
 tags: testing javascript wiki
+title: JavaScript testing frameworks
 ---
 
 # "[BDD](/wiki/BDD)" testing frameworks
@@ -12,4 +13,4 @@ tags: testing javascript wiki
 
 # See also
 
--   All items tagged with "[javascript](/tags/javascript)" and "[testing](/tags/testing)": <https://wincent.com/tags/search?q=javascript+testing>
+-   All items tagged with "[javascript](/tags/javascript)" and "[testing](/tags/testing)": <https://typechecked.net/tags/search?q=javascript+testing>

@@ -59,9 +59,9 @@ My hosts manage the [DNS](/wiki/DNS) for me and that means that I don't have pre
 
 This basically yields four lines like this each minute:
 
-    example.com.		600	IN	MX	10 wincent.com.
-    example.com.		600	IN	MX	10 wincent.com.
-    example.org.		600	IN	MX	10 wincent.com.
-    example.org.		600	IN	MX	10 wincent.com.
+    example.com.		600	IN	MX	10 typechecked.net.
+    example.com.		600	IN	MX	10 typechecked.net.
+    example.org.		600	IN	MX	10 typechecked.net.
+    example.org.		600	IN	MX	10 typechecked.net.
 
 As soon as the server name on the right changed I knew the DNS update had taken place.

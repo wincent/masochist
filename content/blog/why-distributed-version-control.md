@@ -3,11 +3,11 @@ title: Why distributed version control
 tags: blog
 ---
 
-I just got an email from [Uli Kusterer](http://www.zathras.de/angelweb/home.htm) asking me to expand on my [comments the other day](http://wincent.com/a/about/wincent/weblog/archives/2007/10/ben_collinssuss.php) that Ben Collins-Sussman doesn't "get" distributed version control:
+I just got an email from [Uli Kusterer](http://www.zathras.de/angelweb/home.htm) asking me to expand on my [comments the other day](http://typechecked.net/a/about/wincent/weblog/archives/2007/10/ben_collinssuss.php) that Ben Collins-Sussman doesn't "get" distributed version control:
 
 > Could you maybe elaborate on your reasons as to why distributed version control is great? You said it'd take pages, but even just a short rundown would be interesting. Does it make feature branches easier? Does it encourage people to do more refactoring? Just curious to hear someone's opinion on this.
 
-I'll answer this with specific reference to [Git](http://wincent.com/wiki/Git) seeing that's the [distributed version control](http://wincent.com/wiki/distributed%20version%20control) system with which I have the most experience. Although I could rave on about how Git is the best thing since sliced bread for so many reasons, I'll try to limit myself specifically to its distributed nature.
+I'll answer this with specific reference to [Git](http://typechecked.net/wiki/Git) seeing that's the [distributed version control](http://typechecked.net/wiki/distributed%20version%20control) system with which I have the most experience. Although I could rave on about how Git is the best thing since sliced bread for so many reasons, I'll try to limit myself specifically to its distributed nature.
 
 ### History
 
@@ -81,13 +81,13 @@ I've tried to restrict my points above to the aspects in which distributed versi
 
 To finish up I'll just briefly mention some points about Git that don't really have anything to do with its distributed nature but which make it a great version control system.
 
--   Speed: _apart_ from the fast offline access already mentioned, Git itself is a speed-demon. Most of it is written in lean-and-mean [C](http://wincent.com/wiki/C) code, with some high-level user-interface stuff written using scripting languages. This isn't just a coincidence; from the very beginning it was designed to be quick and it's one of the things that will most impact you when you try it out.
+-   Speed: _apart_ from the fast offline access already mentioned, Git itself is a speed-demon. Most of it is written in lean-and-mean [C](http://typechecked.net/wiki/C) code, with some high-level user-interface stuff written using scripting languages. This isn't just a coincidence; from the very beginning it was designed to be quick and it's one of the things that will most impact you when you try it out.
 -   Simplicity: repositories use a simple data model (four object types, history represented as a directed acyclic graph) that you can grok with a few minutes of study; this means that you can actually understand how Git works under the covers.
 -   Robustness: The simplicity makes for fewer bugs and a codebase that you can really trust.
 -   Maturity: Git's already at 1.5+ and it shows...
--   Innovation: ...but not ready to sit back and rest on its laurels the Git community is blazing ahead with constant innovations (the recently added `git stash`, [for example](http://wincent.com/a/about/wincent/weblog/archives/2007/09/stash.php)).
+-   Innovation: ...but not ready to sit back and rest on its laurels the Git community is blazing ahead with constant innovations (the recently added `git stash`, [for example](http://typechecked.net/a/about/wincent/weblog/archives/2007/09/stash.php)).
 -   Community: The Git community is highly active and has some impressively competent programmers in it. Subscribe to the mailing list and look at what must be one of the most impressive development processes in the open source world. I have learnt a lot from this inspiring community in the last few months and have changed a lot of my own practices for the better.
 -   Interface: Git is a pleasure to use from the command line (automatic paging, colorized output) but also comes with some excellent cross-platform GUI tools for visualizing history (gitk), preparing commits (git-gui), and web-based repository browsing (gitweb).
 -   Documentation: There is a wealth of high-quality documentation. Basic use can be learnt in only a few minutes, but if you want to delve deeper there is as much material as you could possibly want. Even if you don't want to become a Git expert the man pages are a great reference to consult whenever you want to do something out of the ordinary.
 -   Clean working copies: When you clone a repository everything goes into a single `.git` subdirectory; no more `.svn` metadata littering the entire repository hierarchy and causing problems inside Mac OS X bundles.
--   Philosophy: Git avoids the entire metadata arms race entirely by tracking content and nothing more. In other words, it doesn't bother trying to remember things like when you renamed one file to another, it merely remembers what the tree looked like before and after. It can look at the tree whenever necessary to infer whether or not a rename occurred. I [previously tried to explain](http://wincent.com/a/about/wincent/weblog/archives/2007/07/a_look_back_bra.php) why this particular design decision was a flash of genius.
+-   Philosophy: Git avoids the entire metadata arms race entirely by tracking content and nothing more. In other words, it doesn't bother trying to remember things like when you renamed one file to another, it merely remembers what the tree looked like before and after. It can look at the tree whenever necessary to infer whether or not a rename occurred. I [previously tried to explain](http://typechecked.net/a/about/wincent/weblog/archives/2007/07/a_look_back_bra.php) why this particular design decision was a flash of genius.

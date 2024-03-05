@@ -1,5 +1,5 @@
 ---
-title: Update to Rails 2.0 preview (1.2.4.7499) (wincent.com, 4eddb40)
+title: Update to Rails 2.0 preview (1.2.4.7499) (typechecked.net, 4eddb40)
 tags: snippets
 ---
 

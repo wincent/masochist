@@ -1,5 +1,5 @@
 ---
-title: Add convenience methods to String class for translating wikitext markup (wincent.com, 8a32b3d)
+title: Add convenience methods to String class for translating wikitext markup (typechecked.net, 8a32b3d)
 tags: snippets
 ---
 

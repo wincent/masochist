@@ -3,11 +3,11 @@ title: HOM performance test results
 tags: blog
 ---
 
-The [promised](http://wincent.com/a/about/wincent/weblog/archives/2006/11/hom_improvement.php) test results. Totally unscientific and no substitute for proper testing and profiling in a real-world application, but they do give some orientative information. These results are for a completely unoptimized implementation; I won't be optimizing until (and if) a real performance bottleneck is discovered in a real-world application.
+The [promised](http://typechecked.net/a/about/wincent/weblog/archives/2006/11/hom_improvement.php) test results. Totally unscientific and no substitute for proper testing and profiling in a real-world application, but they do give some orientative information. These results are for a completely unoptimized implementation; I won't be optimizing until (and if) a real performance bottleneck is discovered in a real-world application.
 
 #### "If responds" performance
 
-As [noted previously](http://wincent.com/a/about/wincent/weblog/archives/2006/11/hom_update.php) this is pretty much a worst case scenario for [HOM](http://wincent.com/a/about/wincent/weblog/archives/hom/).
+As [noted previously](http://typechecked.net/a/about/wincent/weblog/archives/2006/11/hom_update.php) this is pretty much a worst case scenario for [HOM](http://typechecked.net/a/about/wincent/weblog/archives/hom/).
 
     "If responds" HOM tests (responding case, 1000000 iterations):
         Convenience version                     : Usage: 0.136457/0.001732/0.138189 (user/system/total)
@@ -65,7 +65,7 @@ Those figures are for the case where the target actually does respond. In the ca
         Traditional version                     : Usage: 0.322217/0.007786/0.330003 (user/system/total)
         valueForKey version                     : Usage: 0.310846/0.007819/0.318665 (user/system/total)
 
-These numbers are pretty much the same as [reported last time](http://wincent.com/a/about/wincent/weblog/archives/2006/11/hom_update.php), although there are minor improvements across the board because of lower memory consumption (a new autorelease pool is now created for each test and destroyed before moving on to the next test):
+These numbers are pretty much the same as [reported last time](http://typechecked.net/a/about/wincent/weblog/archives/2006/11/hom_update.php), although there are minor improvements across the board because of lower memory consumption (a new autorelease pool is now created for each test and destroyed before moving on to the next test):
 
 Array size HOM relative speed (unoptimized)
 
@@ -99,7 +99,7 @@ Performance improves as the array size increases, reaching the optimum performan
         Traditional 'first' version             : Usage: 0.000011/0.000005/0.000016 (user/system/total)
         valueForKey 'first' version             : Usage: 0.000016/0.000004/0.000020 (user/system/total)
 
-Doing a "select" HOM on an array of one element is not exactly an optimal usage case, regardless of the technique used, so performance is very similar across the board. The [new "chained" version](http://wincent.com/a/about/wincent/weblog/archives/2006/11/hom_improvement.php) of the "select" HOM beats the old version by a significant amount (about twice as fast) and can also do things the original version couldn't do (nesting to 3 or more levels).
+Doing a "select" HOM on an array of one element is not exactly an optimal usage case, regardless of the technique used, so performance is very similar across the board. The [new "chained" version](http://typechecked.net/a/about/wincent/weblog/archives/2006/11/hom_improvement.php) of the "select" HOM beats the old version by a significant amount (about twice as fast) and can also do things the original version couldn't do (nesting to 3 or more levels).
 
 The best HOM version is about 4 times slower than the non-HOM version when nesting to 1 level, less than 3 times slower when nesting to 2 levels, and only 16% slower when nesting to 3 levels. At 4 levels of nesting the HOM version pulls in front (about 23% faster).
 

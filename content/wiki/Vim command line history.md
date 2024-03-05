@@ -1,5 +1,6 @@
 ---
 tags: vim wiki
+title: Vim command line history
 ---
 
 # See recent command history
@@ -112,7 +113,7 @@ index 1882cf6..8b78443 100644
        end
 
        it 'handles comment creation on posts with periods in the title' do
-         # see: https://wincent.com/issues/1410
+         # see: https://typechecked.net/issues/1410
 -        post('/blog/foo.bar/comments').should map_to('comments#create', :post_id => 'foo.bar')
 +        expect(post: '/blog/foo.bar/comments').to route_to('comments#create', post_id: 'foo.bar')
        end

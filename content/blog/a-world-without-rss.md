@@ -3,9 +3,9 @@ title: A world without RSS
 tags: blog
 ---
 
-After [yesterday's hard reset](http://wincent.com/a/about/wincent/weblog/archives/2007/11/involuntary_reb_17.php) it looked for a moment like I was going to have to live in a world without RSS. Possibly without mail too. Probably wouldn't be a bad thing.
+After [yesterday's hard reset](http://typechecked.net/a/about/wincent/weblog/archives/2007/11/involuntary_reb_17.php) it looked for a moment like I was going to have to live in a world without RSS. Possibly without mail too. Probably wouldn't be a bad thing.
 
-After rebooting, dancing the merry Disk First Aid jig, and rebooting again, my copy of [Mail.app](http://wincent.com/wiki/Mail.app) wouldn't start up. Basically, it would beachball permanently on startup using almost zero CPU. Samples taken with Activity Monitor showed some kind of thread deadlock, all threads blocking in either `__semwait_signal` (most threads) or `mach_msg_trap` (in the thread running the main runloop).
+After rebooting, dancing the merry Disk First Aid jig, and rebooting again, my copy of [Mail.app](http://typechecked.net/wiki/Mail.app) wouldn't start up. Basically, it would beachball permanently on startup using almost zero CPU. Samples taken with Activity Monitor showed some kind of thread deadlock, all threads blocking in either `__semwait_signal` (most threads) or `mach_msg_trap` (in the thread running the main runloop).
 
 So something was hosed. I used `lsof` to get the list of open files, looking for corruption. One of the frames in the stack trace was `handleSqliteError`, but the only obvious SQLite database that was open was `~/Library/PubSub/Database/Database.sqlite3` and it looked to be fine.
 

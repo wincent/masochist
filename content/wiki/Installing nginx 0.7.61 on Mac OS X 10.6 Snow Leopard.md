@@ -1,6 +1,7 @@
 ---
 tags: nginx pcre upload wiki
 cache_breaker: 1
+title: Installing nginx 0.7.61 on Mac OS X 10.6 Snow Leopard
 ---
 
 # Installing [PCRE](/wiki/PCRE)
@@ -66,7 +67,7 @@ More relative path glitches. The config file has a `include mime.types;` line in
 $ cp /usr/local/nginx/conf/mime.types tmp/mime.types
 $ script/nginx
 nginx not running: starting
-[warn]: duplicate MIME type "text/html" in /Users/wincent/trabajo/unversioned/wincent.com/src/tmp/nginx-local.conf:25
+[warn]: duplicate MIME type "text/html" in /Users/wincent/trabajo/unversioned/typechecked.net/src/tmp/nginx-local.conf:25
 [warn]: 1024 worker_connections are more than open file resource limit: 256
 ```
 
@@ -97,7 +98,7 @@ So start by fixing the first one and retrying:
 ```shell
 $ script/nginx
 nginx not running: starting
-[warn]: duplicate MIME type "text/html" in /Users/wincent/trabajo/unversioned/wincent.com/src/tmp/nginx-local.conf:25
+[warn]: duplicate MIME type "text/html" in /Users/wincent/trabajo/unversioned/typechecked.net/src/tmp/nginx-local.conf:25
 ```
 
 As for the second one, commenting out the `text/html` in the `gzip_types` directive makes it go away. Looks like this is expected:

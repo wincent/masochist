@@ -1,8 +1,9 @@
 ---
 tags: c objective.c wiki
+title: Testing whether a bit is set
 ---
 
-I originally posted this to my [weblog](/wiki/weblog) as an article titled, "[Clever boolean return trick](http://wincent.com/a/about/wincent/weblog/archives/2007/05/clever_boolean.php)". I'm now reposting the contents here for completeness of the [wiki](/wiki/wiki).
+I originally posted this to my [weblog](/wiki/weblog) as an article titled, "[Clever boolean return trick](http://typechecked.net/a/about/wincent/weblog/archives/2007/05/clever_boolean.php)". I'm now reposting the contents here for completeness of the [wiki](/wiki/wiki).
 
 # The clever boolean return trick
 

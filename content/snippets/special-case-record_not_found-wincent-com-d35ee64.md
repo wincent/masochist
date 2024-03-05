@@ -1,5 +1,5 @@
 ---
-title: Special case record_not_found (wincent.com, d35ee64)
+title: Special case record_not_found (typechecked.net, d35ee64)
 tags: snippets
 ---
 

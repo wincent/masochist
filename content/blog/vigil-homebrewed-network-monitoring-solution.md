@@ -14,7 +14,7 @@ Here's what the [DSL](/wiki/DSL) for defining hosts looks like right now:
 # 60 seconds is actually the default but you can override it like this
 vigil.defaults[:interval] = 60.seconds
 
-host 'wincent.com' do |host|
+host 'typechecked.net' do |host|
 
   # the :every option can be used to override the checking interval
   # for a specific monitoring task

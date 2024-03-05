@@ -1,5 +1,5 @@
 ---
-title: Add performance request script from Rails 2.0 RC 1 (wincent.com, 3df8d19)
+title: Add performance request script from Rails 2.0 RC 1 (typechecked.net, 3df8d19)
 tags: snippets
 ---
 

@@ -13,7 +13,7 @@ In 2002 with the release of Synergy, the nature of the site changed. It now had 
 
 In 2003 I acquired the dot-com domain name and tried to establish a separation between the commercial content (products) which would be hosted on the dot-com, and the non-commercial content (articles, tips, information) which would continued to be hosted on the dot-org.
 
-But as I've added more and more [products](http://wincent.com/a/products/) to the lineup, the separation between the dot-com and the dot-org domains hasn't been all that clear. To add to the confusion, additional subdomains have sometimes made it hard to locate information. For example, users who search for information may not realize that there are useful resources on the parent site, forums, a bug-tracking and feature request database, and the weblog.
+But as I've added more and more [products](http://typechecked.net/a/products/) to the lineup, the separation between the dot-com and the dot-org domains hasn't been all that clear. To add to the confusion, additional subdomains have sometimes made it hard to locate information. For example, users who search for information may not realize that there are useful resources on the parent site, forums, a bug-tracking and feature request database, and the weblog.
 
 The site redesign is largely directed at clearing up all this confusion and unifying the dot-com and dot-org domains into one easy to navigate website.
 

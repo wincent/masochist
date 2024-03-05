@@ -30,7 +30,7 @@ If you install a different version of Synergy, it will behave as un unregistered
 
 # How do I update to a newer version?
 
-You can use a later version by [purchasing a standard license](https://wincent.com/a/products/synergy-classic/purchase/) — licenses start at 5 euros each — or you can use Synergy on a trial basis during the standard demo period.
+You can use a later version by [purchasing a standard license](https://typechecked.net/a/products/synergy-classic/purchase/) — licenses start at 5 euros each — or you can use Synergy on a trial basis during the standard demo period.
 
 # Will the Macheist version notify me of new versions?
 
@@ -40,7 +40,7 @@ By default Synergy will check for new versions and notify you when one is availa
 >
 > Version 3.4 (released 25 June 2009) is now available for download. Please note that this is not a free upgrade, but you may trial the new version at no cost for 7 days. At the end of the trial you may either purchase the new version for 5 euros, or re-install the MacHeist promo edition that you are using now. Click "Update Now" to visit the download page in your default browser. Click "Later" to dismiss the dialog and upgrade later.
 
-If you don't want to see new version notifications you can turn them off as [detailed in the Synergy FAQ](http://wincent.com/a/products/synergy-classic/faq/#versioncheck).
+If you don't want to see new version notifications you can turn them off as [detailed in the Synergy FAQ](http://typechecked.net/a/products/synergy-classic/faq/#versioncheck).
 
 # How do I use Synergy for free?
 

@@ -1,5 +1,5 @@
 ---
-title: Drop Revisions model (wincent.com, b6312eb)
+title: Drop Revisions model (typechecked.net, b6312eb)
 tags: snippets
 ---
 

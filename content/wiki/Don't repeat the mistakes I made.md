@@ -1,8 +1,9 @@
 ---
 tags: development wiki
+title: Don't repeat the mistakes I made
 ---
 
-In November 2006 I wrote an article called "[Son, don't repeat the same mistakes I made](http://wincent.com/a/about/wincent/weblog/archives/2006/11/son_dont_repeat.php)" describing some of the little development "gotchas" that I wish I had found out about earlier on.
+In November 2006 I wrote an article called "[Son, don't repeat the same mistakes I made](http://typechecked.net/a/about/wincent/weblog/archives/2006/11/son_dont_repeat.php)" describing some of the little development "gotchas" that I wish I had found out about earlier on.
 
 Given that these are the kinds of lessons that one keeps on learning I've decided to make a [wiki](/wiki/wiki) article on the subject which I will be able to add to over time.
 
@@ -91,4 +92,4 @@ Or [xcconfig files](/wiki/xcconfig_files). The advice here is short: use them. I
 
 # Keep assertions for programming errors only
 
-Using `NSParameterAssert` is almost always a mistake. Assertions should be reserved for catching programming errors only and _not_ for enforcing your public [API](/wiki/API) contract. See the article, "[Assertions](http://wincent.com/a/about/wincent/weblog/archives/2007/05/assertions.php)".
+Using `NSParameterAssert` is almost always a mistake. Assertions should be reserved for catching programming errors only and _not_ for enforcing your public [API](/wiki/API) contract. See the article, "[Assertions](http://typechecked.net/a/about/wincent/weblog/archives/2007/05/assertions.php)".

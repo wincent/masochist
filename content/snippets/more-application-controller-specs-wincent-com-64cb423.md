@@ -1,5 +1,5 @@
 ---
-title: More application controller specs (wincent.com, 64cb423)
+title: More application controller specs (typechecked.net, 64cb423)
 tags: snippets
 ---
 

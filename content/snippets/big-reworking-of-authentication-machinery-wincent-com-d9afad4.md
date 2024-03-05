@@ -1,5 +1,5 @@
 ---
-title: Big reworking of authentication machinery (wincent.com, d9afad4)
+title: Big reworking of authentication machinery (typechecked.net, d9afad4)
 tags: snippets
 ---
 

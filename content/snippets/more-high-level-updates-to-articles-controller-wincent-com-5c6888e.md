@@ -1,5 +1,5 @@
 ---
-title: More high-level updates to Articles controller (wincent.com, 5c6888e)
+title: More high-level updates to Articles controller (typechecked.net, 5c6888e)
 tags: snippets
 ---
 

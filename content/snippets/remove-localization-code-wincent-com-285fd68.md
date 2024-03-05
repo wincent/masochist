@@ -1,5 +1,5 @@
 ---
-title: Remove localization code (wincent.com, 285fd68)
+title: Remove localization code (typechecked.net, 285fd68)
 tags: snippets
 ---
 

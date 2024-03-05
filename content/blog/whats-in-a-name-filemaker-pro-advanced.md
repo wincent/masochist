@@ -25,7 +25,7 @@ No need for "FileMaker Pro Mobile 7" (which runs on Palm OS and Pocket PC); just
 
 #### My own naming policies
 
-If you've seen my own [products](http://wincent.com/) you'll be quick to point out that perhaps I'm not practising what I'm preaching. But there is a method in my madness, as well as some mistakes and some lessons learned.
+If you've seen my own [products](http://typechecked.net/) you'll be quick to point out that perhaps I'm not practising what I'm preaching. But there is a method in my madness, as well as some mistakes and some lessons learned.
 
 ##### Synergy
 
@@ -41,7 +41,7 @@ When I started work on this new product I needed a new name. The app works in th
 
 I wasn't feeling very creative the day I came up with this name. "Wincent" + "Switch" = "WinSwitch". I guess it serves its purpose, even if the name doesn't have a lot of intrinsic beauty. One downside that I soon discovered was that many people associate the prefix "Win" with "Windows" and for some reason consider it offensive and insulting that I name my product that way... I've received angry emails, threats and abuse about it, believe it or not. I guess this is the response of what's known as the (very) vocal minority.
 
-This wasn't the first product I've made that starts with "Win" and it won't be the last (if I release [this product](http://wincent.com/a/about/wincent/weblog/archives/2005/05/aegizmo_aebuild.php) it will most likely be called WinGizmo), but as a general rule I'll be avoiding names like this where practical in the future. The Mac audience is very particular about these things...
+This wasn't the first product I've made that starts with "Win" and it won't be the last (if I release [this product](http://typechecked.net/a/about/wincent/weblog/archives/2005/05/aegizmo_aebuild.php) it will most likely be called WinGizmo), but as a general rule I'll be avoiding names like this where practical in the future. The Mac audience is very particular about these things...
 
 ##### WinHex
 
@@ -53,6 +53,6 @@ I think I got this one right, as you can't get much simpler than "Install". I wa
 
 #### Branding
 
-Branding is important, the company brand that is. "Wincent" is not a very pretty name but neither is it a common one so it makes for a good brand. I'm far from famous but it _is_ a name that is relatively well known among Mac users, mostly due to the articles I published before Mac OS X 10.0 came out; in those days my site used to get half a million page views per month (a significant amount in those days, although today a truly popular site would need to rack up that kind of hit count every day). I don't write those sensationalistic articles any more but wincent.com still gets well over a quarter of a million page views per month; miles away from the most popular Mac sites but still enough to qualify as a blip on the radar.
+Branding is important, the company brand that is. "Wincent" is not a very pretty name but neither is it a common one so it makes for a good brand. I'm far from famous but it _is_ a name that is relatively well known among Mac users, mostly due to the articles I published before Mac OS X 10.0 came out; in those days my site used to get half a million page views per month (a significant amount in those days, although today a truly popular site would need to rack up that kind of hit count every day). I don't write those sensationalistic articles any more but typechecked.net still gets well over a quarter of a million page views per month; miles away from the most popular Mac sites but still enough to qualify as a blip on the radar.
 
 "Synergy", although known to a lot of Mac users isn't so useful as a brand name because its meaning is diluted by use for so many other purposes. Consider that if you search Google for "synergy mac" you'll get about half a million hits (out of about eight million hits that use the word "synergy"). In comparison "wincent mac" gets you over 50,000 hits out of about 130,000 pages that use the word "wincent". If you compare the ratios you'll see that the word "wincent" is much more densely/strongly associated with me and my company, which is exactly what you want when you are trying to build up a brand in people's mindspace.

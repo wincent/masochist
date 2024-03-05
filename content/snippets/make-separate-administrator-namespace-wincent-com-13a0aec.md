@@ -1,5 +1,5 @@
 ---
-title: Make separate administrator namespace (wincent.com, 13a0aec)
+title: Make separate administrator namespace (typechecked.net, 13a0aec)
 tags: snippets
 ---
 

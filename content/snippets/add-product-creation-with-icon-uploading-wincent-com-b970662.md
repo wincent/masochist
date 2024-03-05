@@ -1,5 +1,5 @@
 ---
-title: Add product creation with icon uploading (wincent.com, b970662)
+title: Add product creation with icon uploading (typechecked.net, b970662)
 tags: snippets
 ---
 

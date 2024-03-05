@@ -1,13 +1,14 @@
 ---
 tags: site wiki
 cache_breaker: 1
+title: List of wiki redirects
 ---
 
 I currently abuse [wiki](/wiki/wiki) links throughout the site as a means of quickly inserting shortcuts to key pages.
 
-For example, when I type `[[ticket]]`, that creates a link to the wiki page, <https://wincent.com/wiki/ticket>, which is set up to redirect to the "new ticket" page at <https://wincent.com/issues/new>. So in essence, it's just laziness so that I don't have to type `[/issues/new ticket]`.
+For example, when I type `[[ticket]]`, that creates a link to the wiki page, <https://typechecked.net/wiki/ticket>, which is set up to redirect to the "new ticket" page at <https://typechecked.net/issues/new>. So in essence, it's just laziness so that I don't have to type `[/issues/new ticket]`.
 
-In reality, typing `[/issues/new ticket]` isn't so bad. But that's something I couldn't do until Wikitext version 1.4.0; prior to that I had to use full URLs (`[https://wincent.com/issues/new ticket]`). That was cumbersome and also caused inappropriate "external link" icons to appear next to all such links.
+In reality, typing `[/issues/new ticket]` isn't so bad. But that's something I couldn't do until Wikitext version 1.4.0; prior to that I had to use full URLs (`[https://typechecked.net/issues/new ticket]`). That was cumbersome and also caused inappropriate "external link" icons to appear next to all such links.
 
 This page exists to serve as a reminder of which wiki article titles are currently being "abused" in this way.
 
@@ -18,11 +19,11 @@ This page exists to serve as a reminder of which wiki article titles are current
 -   [forum](/wiki/forum) and [forums](/wiki/forums)
 -   [issue tracker](/wiki/issue_tracker)
 -   [login](/wiki/login)
--   [Synergy](/wiki/Synergy): redirects to <https://wincent.com/products/synergy>
+-   [Synergy](/wiki/Synergy): redirects to <https://typechecked.net/products/synergy>
 
 ## Redirects to parts of the old site
 
--   [Synergy Advance](/wiki/Synergy_Advance): redirects to <http://wincent.com/a/products/synergy-advance/>
+-   [Synergy Advance](/wiki/Synergy_Advance): redirects to <http://typechecked.net/a/products/synergy-advance/>
 
 ## Redirects to external sites
 

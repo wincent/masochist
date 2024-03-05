@@ -1,5 +1,5 @@
 ---
-title: Set up navbar (wincent.com, 6b3cfb4)
+title: Set up navbar (typechecked.net, 6b3cfb4)
 tags: snippets
 ---
 

@@ -3,7 +3,7 @@ title: Update to the "Drunken Batman is an asshole" story
 tags: blog
 ---
 
-First, as background if you haven't read the original story, [here it is](http://wincent.com/a/about/wincent/weblog/archives/2006/03/drukenbatman_ge.php).
+First, as background if you haven't read the original story, [here it is](http://typechecked.net/a/about/wincent/weblog/archives/2006/03/drukenbatman_ge.php).
 
 Now for the update.
 
@@ -126,7 +126,7 @@ _To be clear, posting a crasher image in a weblog article isn't the same as writ
 
 > Looks like old Wince read to much unserfriendly lately and got an inspiration how to generate some traffic for his b-list blog. Just leave the blighter alone.
 
-_To be clear: I'm not trying to generate traffic to my "b-list blog". Look on my website (<http://wincent.com/>) for links to the weblog; you'll find **one** buried in the never-visited backwaters of the site. I'm a software developer, not a "weblogger". My personal weblog is where I post articles about stuff that I'm working on for people that want a behind-the-scenes look at my software development. I also post the occasional rant that I think may be of interest to the one or two friends that I know read the weblog. I don't promote the weblog in any way. I don't try to drive traffic to it. When I posted the original "Batman on the shitlist" article I didn't make any attempt to contact the "Batman" himself; I merely posted it because I felt his conduct deserved comment. If one wants traffic I really think there are better ways to go about getting it; I see about 1,000 referrals from "Mr Batman" in my server logs: big deal._
+_To be clear: I'm not trying to generate traffic to my "b-list blog". Look on my website (<http://typechecked.net/>) for links to the weblog; you'll find **one** buried in the never-visited backwaters of the site. I'm a software developer, not a "weblogger". My personal weblog is where I post articles about stuff that I'm working on for people that want a behind-the-scenes look at my software development. I also post the occasional rant that I think may be of interest to the one or two friends that I know read the weblog. I don't promote the weblog in any way. I don't try to drive traffic to it. When I posted the original "Batman on the shitlist" article I didn't make any attempt to contact the "Batman" himself; I merely posted it because I felt his conduct deserved comment. If one wants traffic I really think there are better ways to go about getting it; I see about 1,000 referrals from "Mr Batman" in my server logs: big deal._
 
 _I don't really care that you don't like my weblog or consider it "b-list"; what I don't like is that you mistakenly think that I aspire for it to be anything else but that. My website gets a modest quarter of a million page views per month; of that figure the weblog accounts for a measly 5,000 page views. It's just not something that is in any way important to me. My weblogging days are in the past; I was a "weblogger" years before "Mr Batman" started his website, before the term "weblog" had even been coined. I had my "five minutes of fame" when Mac OS X came out, attracting about 50,000 page views per day. I even got "real work" out of it, receiving payment for writing articles for a number of sites. I was even invited to write books. But years ago I decided that I was much more interested in software development and that's my principal activity._
 

@@ -1,5 +1,5 @@
 ---
-title: Assign found products for view (wincent.com, 98ab4ca)
+title: Assign found products for view (typechecked.net, 98ab4ca)
 tags: snippets
 ---
 

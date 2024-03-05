@@ -1,5 +1,5 @@
 ---
-title: Require admin privileges in order to edit translations (wincent.com, 7fbf92c)
+title: Require admin privileges in order to edit translations (typechecked.net, 7fbf92c)
 tags: snippets
 ---
 

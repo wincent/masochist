@@ -1,5 +1,5 @@
 ---
-title: Add products controller and make it the default (root) route (wincent.com, e1580bd)
+title: Add products controller and make it the default (root) route (typechecked.net, e1580bd)
 tags: snippets
 ---
 

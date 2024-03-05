@@ -13,8 +13,8 @@ So, we're talking here about something like the "pasties" you can post at <http:
 
 I finally got around to adding this and I'm calling them, logically, "snippets". My first publication in snippet form is [this list of changes](/snippets/1) included in the just-deployed update. Consistent with the other parts of the site, it's got syntax highlighting, tags, commenting, and there are [Atom](/wiki/Atom) feeds that you can subscribe to to keep up-to-date:
 
--   <https://wincent.com/snippets.atom> summarizes the latest snippets;
--   and per-snippet feeds — like the one at <https://wincent.com/snippets/1.atom> — allow you to track when new comments are added to any given snippet
+-   <https://typechecked.net/snippets.atom> summarizes the latest snippets;
+-   and per-snippet feeds — like the one at <https://typechecked.net/snippets/1.atom> — allow you to track when new comments are added to any given snippet
 
 So from here on I should be able to keep the [blog](/blog) much more focussed on "real news" and less cluttered with transitory notes and such.
 

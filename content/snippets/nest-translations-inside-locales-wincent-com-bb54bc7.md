@@ -1,5 +1,5 @@
 ---
-title: Nest translations inside locales (wincent.com, bb54bc7)
+title: Nest translations inside locales (typechecked.net, bb54bc7)
 tags: snippets
 ---
 

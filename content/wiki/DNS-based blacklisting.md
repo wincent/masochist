@@ -1,6 +1,7 @@
 ---
 tags: email sendmail wiki
 cache_breaker: 1
+title: DNS-based blacklisting
 ---
 
 This example shows how to add a [DNS-based blacklist](/wiki/DNS-based_blacklist) to the [sendmail](/wiki/sendmail) configuration file. In this case the SBL-XBL list provided by [Spamhaus](/wiki/Spamhaus), one of the most reputable and accurate blacklists, is used for the purposes of illustration.
@@ -39,7 +40,7 @@ The telnet-based test will try sending mail to "postmaster@[example.com](/wiki/e
 
 # Efficacy
 
-During a test period of 24 hours in mid-July 2006 on the [wincent.com](/wiki/wincent.com) mail server the [DNS-based blacklist](/wiki/DNS-based_blacklist) described here stopped 261 connection attempts.
+During a test period of 24 hours in mid-July 2006 on the [typechecked.net](/wiki/typechecked.net) mail server the [DNS-based blacklist](/wiki/DNS-based_blacklist) described here stopped 261 connection attempts.
 
 For other efficacy statistics see [combatting spam](/wiki/combatting_spam).
 

@@ -3,4 +3,4 @@ title: Subversion 1.4.4
 tags: snippets
 ---
 
-[Upgrade notes](http://wincent.com/wiki/Upgrading_to_Subversion_1.4.4).
+[Upgrade notes](http://typechecked.net/wiki/Upgrading_to_Subversion_1.4.4).

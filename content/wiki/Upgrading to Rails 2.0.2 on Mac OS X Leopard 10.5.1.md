@@ -1,6 +1,7 @@
 ---
 tags: rails updates wiki
 cache_breaker: 1
+title: Upgrading to Rails 2.0.2 on Mac OS X Leopard 10.5.1
 ---
 
 Notes made while upgrading to [Rails 2.0.2](/wiki/Rails_2.0.2) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.1.
@@ -340,7 +341,7 @@ I thought this would be very straightforward as I was just upgrading from 2.0RC2
 
     (See full trace by running task with --trace)
 
-At this point [Rails](/wiki/Rails) had deleted itself from the `vendor` directory (and not for the [first time](http://wincent.com/a/about/wincent/weblog/archives/2007/11/version_control.php)), which would obviously be very, very bad news if this were a production system; luckily it is only a development one and I am managing the project with [Git](/wiki/Git) so I was able to restore the destroyed files with a quick:
+At this point [Rails](/wiki/Rails) had deleted itself from the `vendor` directory (and not for the [first time](http://typechecked.net/a/about/wincent/weblog/archives/2007/11/version_control.php)), which would obviously be very, very bad news if this were a production system; luckily it is only a development one and I am managing the project with [Git](/wiki/Git) so I was able to restore the destroyed files with a quick:
 
     # note that I have a "co" alias defined for "checkout"
     git co vendor/rails

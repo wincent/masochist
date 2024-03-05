@@ -1,5 +1,5 @@
 ---
-title: Fix locale specs (wincent.com, aa385f3)
+title: Fix locale specs (typechecked.net, aa385f3)
 tags: snippets
 ---
 

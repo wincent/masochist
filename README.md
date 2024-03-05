@@ -9,7 +9,7 @@ For editing, use `git worktree add content content` to create a nested checkout 
 ## Scripts
 
 -   `scripts/new-article`: create a new wiki article.
--   `scripts/new-irl-entry`: create a new (snippet) entry in the "[Involuntary Reboot Log](https://wincent.com/tags/involuntary.reboot.log)".
+-   `scripts/new-irl-entry`: create a new (snippet) entry in the "[Involuntary Reboot Log](https://typechecked.net/tags/involuntary.reboot.log)".
 -   `scripts/new-snippet`: create a new snippet.
 
 ## Workflow
@@ -23,7 +23,7 @@ For editing, use `git worktree add content content` to create a nested checkout 
 
 The basic flow for doing a rewrite is:
 
-1. Actually rewrite the content with `git-filter-branch` (a detailed example is discussed [here](https://wincent.com/blog/filter-branch)).
+1. Actually rewrite the content with `git-filter-branch` (a detailed example is discussed [here](https://typechecked.net/blog/filter-branch)).
 2. Bump the `redisCacheVersion` cache breaker on the `main` branch.
 3. On the `main` branch run `yarn update-indices` locally.
 4. Restart local server (`yarn start`); inspect content at http://localhost:3000/ to make sure everything is in order.

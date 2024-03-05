@@ -1,5 +1,5 @@
 ---
-title: Refactor code from User model into Authentication module (wincent.com, f625239)
+title: Refactor code from User model into Authentication module (typechecked.net, f625239)
 tags: snippets
 ---
 

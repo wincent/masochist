@@ -1,5 +1,5 @@
 ---
-title: Initial version of design prototype (wincent.com, 403b233)
+title: Initial version of design prototype (typechecked.net, 403b233)
 tags: snippets
 ---
 

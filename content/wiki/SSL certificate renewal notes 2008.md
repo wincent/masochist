@@ -22,14 +22,14 @@ Instructions for how to do this appear [here](http://www.rapidssl.com/freessl/fr
     cd path/to/ssl/certs/and/keys
 
     # move old CSR out the way
-    mv wincent.com.csr.rapidssl wincent.com.csr.rapidssl.2007
+    mv typechecked.net.csr.rapidssl typechecked.net.csr.rapidssl.2007
 
     # create a new CSR
-    openssl req -new -key server.key -out wincent.com.csr.rapidssl.2008
+    openssl req -new -key server.key -out typechecked.net.csr.rapidssl.2008
 
     # review the new CSR, comparing it against the previous one for correctness
-    openssl req -noout -text -in wincent.com.csr.rapidssl.2008
-    openssl req -noout -text -in wincent.com.csr.rapidssl.2007
+    openssl req -noout -text -in typechecked.net.csr.rapidssl.2008
+    openssl req -noout -text -in typechecked.net.csr.rapidssl.2007
 
 Here is how I answered the questions during CSR generation:
 
@@ -43,9 +43,9 @@ Here is how I answered the questions during CSR generation:
     Country Name (2 letter code) [GB]:AU
     State or Province Name (full name) [Berkshire]:South Australia
     Locality Name (eg, city) [Newbury]:Rundle Mall
-    Organization Name (eg, company) [My Company Ltd]:wincent.com
+    Organization Name (eg, company) [My Company Ltd]:typechecked.net
     Organizational Unit Name (eg, section) []:
-    Common Name (eg, your name or your server's hostname) []:wincent.com
+    Common Name (eg, your name or your server's hostname) []:typechecked.net
     Email Address []:example@example.com
 
     Please enter the following 'extra' attributes
@@ -60,10 +60,10 @@ Here is how I answered the questions during CSR generation:
 [RapidSSL](/wiki/RapidSSL) provides [installation instructions](http://www.rapidssl.com/ssl-certificate-support/install-ssl-certificate/apache_apache_ssl.htm) for [Apache](/wiki/Apache) running [mod_ssl](/wiki/mod_ssl).
 
     # move old certificate backup out of the way
-    mv wincent.com.crt.rapidssl wincent.com.crt.rapidssl.2007
+    mv typechecked.net.crt.rapidssl typechecked.net.crt.rapidssl.2007
 
     # put the new certificate where Apache expects to find it
-    cp wincent.com.crt.rapidssl.2008 wincent.com.crt
+    cp typechecked.net.crt.rapidssl.2008 typechecked.net.crt
 
     # go live with the new certificate
     apachectl configtest
@@ -79,7 +79,7 @@ Visting a secure [URL](/wiki/URL) confirms that the new certificate is valid unt
     mv sendmail.pem.rapidssl sendmail.pem.rapidssl.2007
 
     # install new certificate
-    cp /path/to/wincent.com.crt.rapidssl.2008 sendmail.pem.rapidssl.2008
+    cp /path/to/typechecked.net.crt.rapidssl.2008 sendmail.pem.rapidssl.2008
     cp sendmail.pem.rapidssl.2008 sendmail.pem
 
     # go live with the new certificate
@@ -87,7 +87,7 @@ Visting a secure [URL](/wiki/URL) confirms that the new certificate is valid unt
 
 I first did some elementary testing from [Mail.app](/wiki/Mail.app) using the "Connection Inspector" window. I then followed this up with a [telnet](/wiki/telnet)-style test:
 
-    openssl s_client -starttls pop -connect wincent.com:25
+    openssl s_client -starttls pop -connect typechecked.net:25
 
 ### Cyrus
 
@@ -107,7 +107,7 @@ I first did some elementary testing from [Mail.app](/wiki/Mail.app) using the "C
 Again, I tested using [Mail.app](/wiki/Mail.app) and also did the following tests in the [Terminal](/wiki/Terminal):
 
     # test secure IMAP
-    openssl s_client -connect wincent.com:993
+    openssl s_client -connect typechecked.net:993
 
     # test secure POP
-    openssl s_client -connect wincent.com:995
+    openssl s_client -connect typechecked.net:995

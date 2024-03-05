@@ -7,7 +7,7 @@ Sometimes I think people in the open source world could learn to be a lot nicer.
 
 Take [this ticket](http://dev.rubyonrails.org/ticket/9851) for example:
 
-1.  User runs into error with [Rails](http://wincent.com/wiki/Rails), thinks he's found a bug and opens a ticket; in reality he was just using it wrong but that's beside the point here, because...
+1.  User runs into error with [Rails](http://typechecked.net/wiki/Rails), thinks he's found a bug and opens a ticket; in reality he was just using it wrong but that's beside the point here, because...
 2.  User investigates problem and comes up with patch to fix it.
 3.  Key rails contributor comes down on user saying, "Please read the association docs or take this to the email list - _Trac is not a support forum._" (emphasis added).
 

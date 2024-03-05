@@ -1,5 +1,5 @@
 ---
-title: Run specs whenever example_data.rb changes (wincent.com, a673655)
+title: Run specs whenever example_data.rb changes (typechecked.net, a673655)
 tags: snippets
 ---
 

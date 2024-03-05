@@ -3,4 +3,4 @@ title: Ruby 1.9/2.0 manifold faster...
 tags: snippets
 ---
 
-...than it's [closest competitor](http://antoniocangiano.com/2007/12/03/the-great-ruby-shootout/) (JRuby), which isn't surprising, seeing as JRuby is built on [Java](http://wincent.com/wiki/Java) (not exactly known for its blistering speed).
+...than it's [closest competitor](http://antoniocangiano.com/2007/12/03/the-great-ruby-shootout/) (JRuby), which isn't surprising, seeing as JRuby is built on [Java](http://typechecked.net/wiki/Java) (not exactly known for its blistering speed).

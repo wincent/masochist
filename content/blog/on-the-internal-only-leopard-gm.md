@@ -11,7 +11,7 @@ In "Indies Roll the Dice on Final Leopard", [Steven Frank](http://stevenf.com/20
 >
 > There has been speculation that it's to prevent prerelease piracy of the OS, but that argument doesn't hold much water -- in the best possible case, they are simply delaying piracy by about a week. The more likely scenario is that the final build will appear on BitTorrent trackers before it appears on store shelves despite this quaint measure. Such was certainly the case with Tiger.
 
-Well, I actually think it _is_ to do with piracy. Apple knows that if they seeded a real release candidate, a release candidate which could end up being the GM, it would wind up on trackers a weeks (or weeks) before retail release. Literally tens of thousands would download it, and thousands of those weekend pirates are ultra-enthusiastic [Mac OS X](http://wincent.com/wiki/Mac%20OS%20X) users who would otherwise be in line at the Apple store on 26 October ready to hand over their \$129. Apple has proven to be pretty effective at getting Mac OS X torrents taken down at high-profile sites in the past, but no amount of damage control can be perfect.
+Well, I actually think it _is_ to do with piracy. Apple knows that if they seeded a real release candidate, a release candidate which could end up being the GM, it would wind up on trackers a weeks (or weeks) before retail release. Literally tens of thousands would download it, and thousands of those weekend pirates are ultra-enthusiastic [Mac OS X](http://typechecked.net/wiki/Mac%20OS%20X) users who would otherwise be in line at the Apple store on 26 October ready to hand over their \$129. Apple has proven to be pretty effective at getting Mac OS X torrents taken down at high-profile sites in the past, but no amount of damage control can be perfect.
 
 So when the stakes are this high (a million dollars' worth of lost sales would be worth worrying about even for an economic behemoth like Apple), you can see the reason they care about pre-release piracy.
 
@@ -33,6 +33,6 @@ So yes, it sucks. Yes, complaining to Apple about it is almost certainly useless
 
 ### Update (28 October 2007)
 
-I [just learned](http://wincent.com/a/news/archives/2007/10/leopard_update.php) that Apple has made the final version available to developers via download. The date in the downloads listing is shown as 26 October, the same day as the retail release, although I only just found out about it now and I don't know when it truly became available.
+I [just learned](http://typechecked.net/a/news/archives/2007/10/leopard_update.php) that Apple has made the final version available to developers via download. The date in the downloads listing is shown as 26 October, the same day as the retail release, although I only just found out about it now and I don't know when it truly became available.
 
 While this is a pleasant surprise for developers like me who had decided to wait for Apple to deliver a copy as promised in return for their $500 ADC Select membership, and certainly a big improvement over what happened with Tiger, I am sure there a lot of pissed-off developers out there who waited in line at the Apple Store on Friday and handed over $129 for something that they couldn't possibly have known that Apple was about to make available to them for free (especially considering Apple's track record).

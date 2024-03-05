@@ -56,4 +56,4 @@ Perhaps it's good to have a non-arbitrary limit, but in this day and age of big 
 
 ### Conclusions
 
-I'm thinking about making the switch to 132-columns. If you have any thoughts on comments on the issue I'd greatly appreciate hearing them (either [in the forums](http://wincent.com/a/support/forums/postlist.php?Cat=0&Board=lounge) or [directly via email](http://wincent.com/a/contact/mail/)).
+I'm thinking about making the switch to 132-columns. If you have any thoughts on comments on the issue I'd greatly appreciate hearing them (either [in the forums](http://typechecked.net/a/support/forums/postlist.php?Cat=0&Board=lounge) or [directly via email](http://typechecked.net/a/contact/mail/)).

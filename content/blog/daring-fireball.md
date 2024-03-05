@@ -7,7 +7,7 @@ Several months ago Gruber [made his full site feed](http://daringfireball.net/20
 
 I may well be the only person that thinks this, but having tried it for a few months now I can say that I actually liked it the way things were before.
 
-Gruber [has this to say](http://wincent.com/a/about/wincent/weblog/archives/2007/06/comments_on_web.php) about who he's writing for:
+Gruber [has this to say](http://typechecked.net/a/about/wincent/weblog/archives/2007/06/comments_on_web.php) about who he's writing for:
 
 > And so I have this version of me and I'm writing for him. He's interested in the exact same things I'm interested in, he reads the other same websites I read, and my thought is I'm writing for him and I want him to like this website so much that he reads it from the top to the bottom, and he reads everything I write. He reads every word of it, and he goes through the menu, and every single word, I mean literally: the copyright statement, what software I use to use this, he's read it all.
 

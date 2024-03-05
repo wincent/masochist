@@ -1,5 +1,5 @@
 ---
-title: Extract common tag results code into a partial (wincent.com, b470ec6)
+title: Extract common tag results code into a partial (typechecked.net, b470ec6)
 tags: snippets
 ---
 

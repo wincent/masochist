@@ -1,5 +1,5 @@
 ---
-title: Cleanup whitespace in links routing spec (wincent.com, a7b7f59)
+title: Cleanup whitespace in links routing spec (typechecked.net, a7b7f59)
 tags: snippets
 ---
 

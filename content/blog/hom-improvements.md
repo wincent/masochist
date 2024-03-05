@@ -3,7 +3,7 @@ title: HOM improvements
 tags: blog
 ---
 
-One of the things which tricked me when I [first started](http://wincent.com/a/about/wincent/weblog/svn-log/archives/2006/11/wocommon_r165_8_items_changed.php) with [HOM](http://wincent.com/a/about/wincent/weblog/archives/hom/) (an entire 6 days ago) was that I would see examples like this:
+One of the things which tricked me when I [first started](http://typechecked.net/a/about/wincent/weblog/svn-log/archives/2006/11/wocommon_r165_8_items_changed.php) with [HOM](http://typechecked.net/a/about/wincent/weblog/archives/hom/) (an entire 6 days ago) was that I would see examples like this:
 
     [[collection select] hasPrefix:@"foo"];
 
@@ -19,7 +19,7 @@ This is an unfortunate breakdown of a couple of the key principles that underlie
 
 In my implementation of this pattern that means having one class for handling the first variation (`WOHOMSelectProxy`) and another pair of classes for handling the second one (`WOHOMSelectWhereProxy` and `WOHOMWhereProxy`). This works but you're probably wondering what you do if you ever want to send more than two argument messages... (And yes, I've chosen to use different classes for different types of trampoline behaviour; this allows me to keep my source files shorter and more manageable, group my unit tests into smaller, more manageable groups, and import _only_ the HOM functionality that I am interested in for any given project rather than having to link to a gigantic framework.)
 
-So last night it occurred to me that this distinction between the two variations was unnecessary. I've [just checked in](http://wincent.com/a/about/wincent/weblog/svn-log/archives/2006/11/wocommon_r186_14_items_changed.php) a new HOM class, `WOHOMChainedSelectProxy`, that allows you to use a single HOM regardless of whether you're doing a straight "select" or a "select where". It's "chained" because you can chain as many levels together as you want: one, two, three, four, the sky is the (non-arbitrary) limit. In other words, all of the following work:
+So last night it occurred to me that this distinction between the two variations was unnecessary. I've [just checked in](http://typechecked.net/a/about/wincent/weblog/svn-log/archives/2006/11/wocommon_r186_14_items_changed.php) a new HOM class, `WOHOMChainedSelectProxy`, that allows you to use a single HOM regardless of whether you're doing a straight "select" or a "select where". It's "chained" because you can chain as many levels together as you want: one, two, three, four, the sky is the (non-arbitrary) limit. In other words, all of the following work:
 
     [[collection select] hasPrefix:@"foo"];
     [[[collection select] stringValue] hasPrefix:@"foo"];
@@ -59,7 +59,7 @@ It's also interesting to compare the syntax for chaining argument messages used 
 
 #### Concluding comments
 
-This definitely isn't the only "select" HOM that you'll ever need. There is still a strong justification for [a "select first" HOM](http://wincent.com/a/about/wincent/weblog/svn-log/archives/2006/11/wocommon_r184_23_items_changed.php), for example, because such a HOM is more efficient: rather than iterating of the entire collection it can stop and immediately return as soon as it finds the desired element. It can also explicitly return a single object rather than wrapping the found item up in a single-item array:
+This definitely isn't the only "select" HOM that you'll ever need. There is still a strong justification for [a "select first" HOM](http://typechecked.net/a/about/wincent/weblog/svn-log/archives/2006/11/wocommon_r184_23_items_changed.php), for example, because such a HOM is more efficient: rather than iterating of the entire collection it can stop and immediately return as soon as it finds the desired element. It can also explicitly return a single object rather than wrapping the found item up in a single-item array:
 
     // the "select first" version
     id item = [[collection selectFirst] hasPrefix:@"foo"];

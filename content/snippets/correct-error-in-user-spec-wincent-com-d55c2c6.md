@@ -1,5 +1,5 @@
 ---
-title: Correct error in User spec (wincent.com, d55c2c6)
+title: Correct error in User spec (typechecked.net, d55c2c6)
 tags: snippets
 ---
 

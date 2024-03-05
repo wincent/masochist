@@ -1,5 +1,5 @@
 ---
-title: Drop redundant authentication specs (wincent.com, 1545453)
+title: Drop redundant authentication specs (typechecked.net, 1545453)
 tags: snippets
 ---
 

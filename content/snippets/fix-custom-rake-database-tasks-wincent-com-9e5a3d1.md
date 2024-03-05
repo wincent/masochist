@@ -1,5 +1,5 @@
 ---
-title: Fix custom rake database tasks (wincent.com, 9e5a3d1)
+title: Fix custom rake database tasks (typechecked.net, 9e5a3d1)
 tags: snippets
 ---
 

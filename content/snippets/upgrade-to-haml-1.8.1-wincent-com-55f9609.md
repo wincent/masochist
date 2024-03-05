@@ -1,5 +1,5 @@
 ---
-title: Upgrade to Haml 1.8.1 (wincent.com, 55f9609)
+title: Upgrade to Haml 1.8.1 (typechecked.net, 55f9609)
 tags: snippets
 ---
 

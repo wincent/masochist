@@ -1,5 +1,5 @@
 ---
-title: Show id in Links controller (wincent.com, 3af4297)
+title: Show id in Links controller (typechecked.net, 3af4297)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Fix passphrase mass assignment specs (wincent.com, 3c019bc)
+title: Fix passphrase mass assignment specs (typechecked.net, 3c019bc)
 tags: snippets
 ---
 

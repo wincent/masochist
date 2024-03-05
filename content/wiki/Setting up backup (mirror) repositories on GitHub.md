@@ -112,7 +112,7 @@ Instead of the longer:
     1.  "Project Name", for example, might be something like "Wikitext"
     2.  "Description" could be something like "Mirror of the official Wikitext repository at git.typechecked.net"
     3.  "Homepage URL", for example, could be something like <http://wikitext.rubyforge.org/>
-4.  Turn off the "Wiki", "Issues" and "Downloads" features (that functionality is already provided on the wincent.com site)
+4.  Turn off the "Wiki", "Issues" and "Downloads" features (that functionality is already provided on the typechecked.net site)
 
 # Setting up a `README` file
 

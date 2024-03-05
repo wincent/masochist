@@ -1,5 +1,5 @@
 ---
-title: Update FixtureReplacement example data (wincent.com, d6ad037)
+title: Update FixtureReplacement example data (typechecked.net, d6ad037)
 tags: snippets
 ---
 

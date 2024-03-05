@@ -1,5 +1,5 @@
 ---
-title: Specs for session controller and tweaks to get them passing (wincent.com, 067ca6f)
+title: Specs for session controller and tweaks to get them passing (typechecked.net, 067ca6f)
 tags: snippets
 ---
 

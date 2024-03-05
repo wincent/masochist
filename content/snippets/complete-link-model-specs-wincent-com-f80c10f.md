@@ -1,5 +1,5 @@
 ---
-title: Complete Link model specs (wincent.com, f80c10f)
+title: Complete Link model specs (typechecked.net, f80c10f)
 tags: snippets
 ---
 

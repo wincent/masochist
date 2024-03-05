@@ -3,7 +3,7 @@ title: Dock icon update
 tags: blog
 ---
 
-Non-square album art is [working again](http://wincent.com/a/about/wincent/weblog/svn-log/archives/2006/12/synergy_advance_r380_5_items_c.php) as shown in the screenshot below (see [yesterday's post](http://wincent.com/a/about/wincent/weblog/archives/2006/12/core_image_fun.php) for an image showing the incorrect behaviour):
+Non-square album art is [working again](http://typechecked.net/a/about/wincent/weblog/svn-log/archives/2006/12/synergy_advance_r380_5_items_c.php) as shown in the screenshot below (see [yesterday's post](http://typechecked.net/a/about/wincent/weblog/archives/2006/12/core_image_fun.php) for an image showing the incorrect behaviour):
 
 ![](/system/images/legacy/fixed-non-square.png)
 

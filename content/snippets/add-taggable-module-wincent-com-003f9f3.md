@@ -1,5 +1,5 @@
 ---
-title: Add Taggable module (wincent.com, 003f9f3)
+title: Add Taggable module (typechecked.net, 003f9f3)
 tags: snippets
 ---
 

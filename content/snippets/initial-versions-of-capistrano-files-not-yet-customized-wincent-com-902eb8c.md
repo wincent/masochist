@@ -1,5 +1,5 @@
 ---
-title: Initial versions of Capistrano files (not yet customized) (wincent.com, 902eb8c)
+title: Initial versions of Capistrano files (not yet customized) (typechecked.net, 902eb8c)
 tags: snippets
 ---
 

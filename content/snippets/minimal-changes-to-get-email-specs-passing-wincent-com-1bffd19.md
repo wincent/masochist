@@ -1,5 +1,5 @@
 ---
-title: Minimal changes to get Email specs passing (wincent.com, 1bffd19)
+title: Minimal changes to get Email specs passing (typechecked.net, 1bffd19)
 tags: snippets
 ---
 

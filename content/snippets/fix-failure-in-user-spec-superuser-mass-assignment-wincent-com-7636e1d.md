@@ -1,5 +1,5 @@
 ---
-title: Fix failure in user spec (superuser mass assignment) (wincent.com, 7636e1d)
+title: Fix failure in user spec (superuser mass assignment) (typechecked.net, 7636e1d)
 tags: snippets
 ---
 

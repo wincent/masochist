@@ -1,5 +1,5 @@
 ---
-title: Use 303 response for link redirection in links controller (wincent.com, 96a1203)
+title: Use 303 response for link redirection in links controller (typechecked.net, 96a1203)
 tags: snippets
 ---
 

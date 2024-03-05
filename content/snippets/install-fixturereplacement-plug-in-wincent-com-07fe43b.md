@@ -1,5 +1,5 @@
 ---
-title: Install FixtureReplacement plug-in (wincent.com, 07fe43b)
+title: Install FixtureReplacement plug-in (typechecked.net, 07fe43b)
 tags: snippets
 ---
 

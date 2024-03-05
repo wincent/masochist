@@ -1,5 +1,5 @@
 ---
-title: Fix formatting in user specs (wincent.com, cedd461)
+title: Fix formatting in user specs (typechecked.net, cedd461)
 tags: snippets
 ---
 

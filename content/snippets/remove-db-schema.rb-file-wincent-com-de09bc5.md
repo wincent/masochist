@@ -1,5 +1,5 @@
 ---
-title: Remove db/schema.rb file (wincent.com, de09bc5)
+title: Remove db/schema.rb file (typechecked.net, de09bc5)
 tags: snippets
 ---
 

@@ -149,7 +149,7 @@ A nice perk of this is that the `--decorate` functionality of `git-log` can show
 * a299c81 Freshen up a comment (17 hours ago) <Greg Hurrell>
 ```
 
-For convenience, I have a separate copy of the repo on my local machine, with the "content" branch checked out, that I use for editing content. Publishing this is a simple `git push` (shorthand for `git push content`). Here again I can choose to do a Git-only push to distribute the content upstream to GitHub and elsewhere (without actually making it go live on wincent.com yet) by doing `git push origin`. From there it will be mirrored onwards, or I can do a `git push github`, `git push gitlab` or `git push bitbucket` (if I am too impatient for the hourly mirror to kick in).
+For convenience, I have a separate copy of the repo on my local machine, with the "content" branch checked out, that I use for editing content. Publishing this is a simple `git push` (shorthand for `git push content`). Here again I can choose to do a Git-only push to distribute the content upstream to GitHub and elsewhere (without actually making it go live on typechecked.net yet) by doing `git push origin`. From there it will be mirrored onwards, or I can do a `git push github`, `git push gitlab` or `git push bitbucket` (if I am too impatient for the hourly mirror to kick in).
 
 Overall I am very happy so far with this set up, and am tweaking my Vim-based editing set-up to give me the kinds of niceties and shortcuts that come in handy for content editing. This will serve me well until I embark on my next crazy adventure, which will be [making a desktop application](https://github.com/wincent/masochist/issues/35) to provide myself with a slick local editing experience.
 

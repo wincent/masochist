@@ -1,5 +1,5 @@
 ---
-title: spec_server update (wincent.com, f7ea090)
+title: spec_server update (typechecked.net, f7ea090)
 tags: snippets
 ---
 

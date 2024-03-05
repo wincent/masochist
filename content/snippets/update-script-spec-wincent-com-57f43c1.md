@@ -1,5 +1,5 @@
 ---
-title: Update script/spec (wincent.com, 57f43c1)
+title: Update script/spec (typechecked.net, 57f43c1)
 tags: snippets
 ---
 

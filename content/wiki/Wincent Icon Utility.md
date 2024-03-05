@@ -4,7 +4,7 @@ cache_breaker: 1
 title: Wincent Icon Utility
 ---
 
-[Wincent Icon Utility](/wiki/Wincent_Icon_Utility) is a small [command line](/wiki/command_line) tool for taking an ".icns" icons file and applying it to a directory as a custom folder icon. A plaintext copy of the [man page](/wiki/man_page) can be found [here](http://wincent.com/a/products/wincent-icon-util/wincent-icon-util.1.txt).
+[Wincent Icon Utility](/wiki/Wincent_Icon_Utility) is a small [command line](/wiki/command_line) tool for taking an ".icns" icons file and applying it to a directory as a custom folder icon. A plaintext copy of the [man page](/wiki/man_page) can be found [here](http://typechecked.net/a/products/wincent-icon-util/wincent-icon-util.1.txt).
 
 # See also
 

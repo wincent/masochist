@@ -3,8 +3,8 @@ title: Coffee shop internet
 tags: starbucks snippets
 ---
 
-$ ping wincent.com
-PING wincent.com (184.73.232.208): 56 data bytes
+$ ping typechecked.net
+PING typechecked.net (184.73.232.208): 56 data bytes
 Request timeout for icmp_seq 0
 Request timeout for icmp_seq 1
 64 bytes from 184.73.232.208: icmp_seq=0 ttl=46 time=2142.175 ms
@@ -23,6 +23,6 @@ Request timeout for icmp_seq 12
 64 bytes from 184.73.232.208: icmp_seq=12 ttl=46 time=1699.033 ms
 64 bytes from 184.73.232.208: icmp_seq=13 ttl=46 time=698.401 ms
 ^C
---- wincent.com ping statistics ---
+--- typechecked.net ping statistics ---
 16 packets transmitted, 13 packets received, 18.8% packet loss
 round-trip min/avg/max/stddev = 459.481/1455.417/3175.602/868.584 ms

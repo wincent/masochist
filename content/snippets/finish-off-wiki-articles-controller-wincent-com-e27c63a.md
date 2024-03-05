@@ -1,5 +1,5 @@
 ---
-title: Finish off (wiki) articles controller (wincent.com, e27c63a)
+title: Finish off (wiki) articles controller (typechecked.net, e27c63a)
 tags: snippets
 ---
 

@@ -1,9 +1,10 @@
 ---
 tags: haml wiki
+title: Haml 1.8.0
 ---
 
 -   Release notes on official website: <http://haml.hamptoncatlin.com/release-notes> (unfortunately these are non-historical and change with each release)
--   Local mirror of release notes: <http://wincent.com/mirror/haml-1.8.0/haml.hamptoncatlin.com/release-notes.html>
+-   Local mirror of release notes: <http://typechecked.net/mirror/haml-1.8.0/haml.hamptoncatlin.com/release-notes.html>
 
 # See also
 

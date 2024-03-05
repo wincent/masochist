@@ -3,7 +3,7 @@ title: Half-star ratings from the menus
 tags: blog
 ---
 
-Following up on [yesterday's post](http://wincent.com/a/about/wincent/weblog/archives/2007/05/synergy_advance_3.php), I've just finished adding the ability to set half-star ratings from the new Dock menu in Synergy Advance by holding down the Option key. The same is to follow for the Global Menu.
+Following up on [yesterday's post](http://typechecked.net/a/about/wincent/weblog/archives/2007/05/synergy_advance_3.php), I've just finished adding the ability to set half-star ratings from the new Dock menu in Synergy Advance by holding down the Option key. The same is to follow for the Global Menu.
 
 ![](/system/images/legacy/half-stars-1.png)
 

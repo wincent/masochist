@@ -1,5 +1,5 @@
 ---
-title: Shuffle some migration numbers (wincent.com, 3e766e7)
+title: Shuffle some migration numbers (typechecked.net, 3e766e7)
 tags: snippets
 ---
 

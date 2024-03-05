@@ -82,4 +82,4 @@ Make sure that your report only contains one problem.
 
 # About this page
 
-This is an updated version of the article that I wrote in 2004 titled, "[How to file a good bug report](http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php)".
+This is an updated version of the article that I wrote in 2004 titled, "[How to file a good bug report](http://typechecked.net/a/knowledge-base/archives/2004/11/how_to_file_a_g.php)".

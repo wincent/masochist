@@ -44,9 +44,9 @@ Michael Tsai contacted me with the answer:
 
 > The mbox and mbox.SKindex files are left over from Panther. Tiger's Mail doesn't use them at all. So it's not a bug but rather that it doesn't clean up after itself when you first update to Tiger.
 
-Looking at the mod dates on the files corroborates this (see the [Mac OS X timeline](http://wincent.com/wiki/Mac%20OS%20X%20timeline) for the dates), so I'll just blow them away.
+Looking at the mod dates on the files corroborates this (see the [Mac OS X timeline](http://typechecked.net/wiki/Mac%20OS%20X%20timeline) for the dates), so I'll just blow them away.
 
-The funny thing is, I was mentally hanging on to a bit of misinformation that I read way back then... someone somewhere (don't remember) claimed that because that [Spotlight](http://wincent.com/wiki/Spotlight) was a per-file thing Apple had to split up the mailboxes into individual messages (true) but that they kept the monolithic mailboxes around for use by Mail.app (evidently false)... so I've been carrying that misconception all this time.
+The funny thing is, I was mentally hanging on to a bit of misinformation that I read way back then... someone somewhere (don't remember) claimed that because that [Spotlight](http://typechecked.net/wiki/Spotlight) was a per-file thing Apple had to split up the mailboxes into individual messages (true) but that they kept the monolithic mailboxes around for use by Mail.app (evidently false)... so I've been carrying that misconception all this time.
 
     # this alone trims the size down by over a gig
     cd ~/Library/Mail/Mailboxes

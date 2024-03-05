@@ -9,7 +9,7 @@ Just saw [this post](http://www.zeldman.com/2007/09/27/something-new-at-apple-st
 >
 > One day, all sites will be built like this. View Source for an inspiring glimpse of how semantic and accessible even a grid-based, image-intensive, pixel-perfect site can be.
 
-Although [the store front](http://store.apple.com/) looks absolutely magnificent I am not so sure about the source. There is a _lot_ of superfluous whitespace which makes it much harder to read than it should be. [Tidy](http://wincent.com/wiki/Tidy) reports these warnings (but no hard errors):
+Although [the store front](http://store.apple.com/) looks absolutely magnificent I am not so sure about the source. There is a _lot_ of superfluous whitespace which makes it much harder to read than it should be. [Tidy](http://typechecked.net/wiki/Tidy) reports these warnings (but no hard errors):
 
     line 439 column 217 - Warning: nested emphasis <span>
     line 1601 column 238 - Warning: unescaped & which should be written as &
@@ -40,4 +40,4 @@ Although [the store front](http://store.apple.com/) looks absolutely magnificent
     Info: Document content looks like HTML Proprietary
     26 warnings, 0 errors were found!
 
-Pipe it through `tidy -i` and it does look great, but without it I'm left feeling unsatisfied looking at the source. Maybe Apple needs to take some inspiration from [Haml](http://wincent.com/wiki/Haml).
+Pipe it through `tidy -i` and it does look great, but without it I'm left feeling unsatisfied looking at the source. Maybe Apple needs to take some inspiration from [Haml](http://typechecked.net/wiki/Haml).

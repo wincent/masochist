@@ -1,5 +1,5 @@
 ---
-title: Fix sessions controller specs (wincent.com, e89c44d)
+title: Fix sessions controller specs (typechecked.net, e89c44d)
 tags: snippets
 ---
 

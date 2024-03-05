@@ -1,5 +1,5 @@
 ---
-title: Inline moderation of post comments (wincent.com, ec346e2)
+title: Inline moderation of post comments (typechecked.net, ec346e2)
 tags: snippets
 ---
 

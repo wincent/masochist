@@ -1,5 +1,5 @@
 ---
-title: Modify in_place_editor_field for better nested route support (wincent.com, e2ac00d)
+title: Modify in_place_editor_field for better nested route support (typechecked.net, e2ac00d)
 tags: snippets
 ---
 

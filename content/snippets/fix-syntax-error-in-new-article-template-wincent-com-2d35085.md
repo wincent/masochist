@@ -1,5 +1,5 @@
 ---
-title: Fix syntax error in new article template (wincent.com, 2d35085)
+title: Fix syntax error in new article template (typechecked.net, 2d35085)
 tags: snippets
 ---
 

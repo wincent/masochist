@@ -1,5 +1,5 @@
 ---
-title: Extract "recent" finder into Post model (wincent.com, 1fa464b)
+title: Extract "recent" finder into Post model (typechecked.net, 1fa464b)
 tags: snippets
 ---
 

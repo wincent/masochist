@@ -101,7 +101,7 @@ Which would mean that you could write...
 
     WO_SELECT(object, @selector(hasPrefix:), @"foo");
 
-... which is marginally better but still far from desirable, and even further from the the ideal of [true HOM](http://wincent.com/a/about/wincent/weblog/archives/2006/11/hom_update.php).
+... which is marginally better but still far from desirable, and even further from the the ideal of [true HOM](http://typechecked.net/a/about/wincent/weblog/archives/2006/11/hom_update.php).
 
 #### The underscore trick
 
@@ -276,7 +276,7 @@ To make this thread-safe would require the use of thread-local storage, and thre
 
 > One unfortunate consequence of these goals is that certain HOMs become difficult or impossible to implement. The classic filter messages, -select and -reject, cannot be implemented in a simple, portable manner because the messages given to them typically return BOOL, but the HOM needs to return an object. This could be at least partially rectified by writing filter messages which only act on mutable containers and don't return anything, but this is less than ideal.
 
-Of all the possible solutions, the Wolfus (`ID`) macro-based solution seems to be the best of a bad bunch, and it is a macro-based solution that I went with when I [checked in](http://wincent.com/a/about/wincent/weblog/svn-log/archives/2006/11/wocommon_r179_11_items_changed.php) my own "select" implementation yesterday.
+Of all the possible solutions, the Wolfus (`ID`) macro-based solution seems to be the best of a bad bunch, and it is a macro-based solution that I went with when I [checked in](http://typechecked.net/a/about/wincent/weblog/svn-log/archives/2006/11/wocommon_r179_11_items_changed.php) my own "select" implementation yesterday.
 
 It's probably worth reminding ourselves why we care about all this anyway. The kind of HOM pattern that we can easily implement without kludges (the "collect" pattern) is exactly the kind of pattern we could do faster using normal Cocoa calls:
 
@@ -287,7 +287,7 @@ It's probably worth reminding ourselves why we care about all this anyway. The k
     // and this is the Cocoa equivalent for NSArray
     [collection valueForKey:@"foobar"];
 
-The Cocoa version wins on speed, is only a few characters longer, and works on 10.3 and up. The HOM version may lose a bit on speed ([depending on the number of elements in the array](http://wincent.com/a/about/wincent/weblog/archives/2006/11/hom_update.php)), wins the character count contest by a few chars, and (depending on the implementation) can work on any version of Mac OS X and with any kind of collection object (not just NSArray); my implementation goes a step further and works with any object at all.
+The Cocoa version wins on speed, is only a few characters longer, and works on 10.3 and up. The HOM version may lose a bit on speed ([depending on the number of elements in the array](http://typechecked.net/a/about/wincent/weblog/archives/2006/11/hom_update.php)), wins the character count contest by a few chars, and (depending on the implementation) can work on any version of Mac OS X and with any kind of collection object (not just NSArray); my implementation goes a step further and works with any object at all.
 
 In terms of clarity of intention it's probably a tie. The HOM alternative is highly readable to anyone familiar with HOM. Other programmers may need a clarifying comment. The Cocoa version looks extremely readable at first glance but it requires a constant string key instead of a bare selector and its operation may not be immediately evident; a "value for key" method might suggest to some that a single element is being returned, not an array containing the values for the key of the objects in the receiver.
 

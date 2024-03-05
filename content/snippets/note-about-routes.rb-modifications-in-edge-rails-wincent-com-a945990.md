@@ -1,5 +1,5 @@
 ---
-title: Note about routes.rb modifications in Edge Rails (wincent.com, a945990)
+title: Note about routes.rb modifications in Edge Rails (typechecked.net, a945990)
 tags: snippets
 ---
 

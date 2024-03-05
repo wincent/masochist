@@ -1,5 +1,5 @@
 ---
-title: Add FixtureReplacement upgrade notes (wincent.com, 6ead2fc)
+title: Add FixtureReplacement upgrade notes (typechecked.net, 6ead2fc)
 tags: snippets
 ---
 

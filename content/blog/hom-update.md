@@ -3,7 +3,7 @@ title: HOM update
 tags: blog
 ---
 
-A couple of days ago I [wrote](http://wincent.com/a/about/wincent/weblog/archives/2006/11/more_thoughts_o.php) about my first venture into HOM (Higher Order Messaging) in the form of a `ifResponds` selector.
+A couple of days ago I [wrote](http://typechecked.net/a/about/wincent/weblog/archives/2006/11/more_thoughts_o.php) about my first venture into HOM (Higher Order Messaging) in the form of a `ifResponds` selector.
 
 I included some results that showed that the HOM implementation was about 100 times slower than the non-HOM version, but I probably should have added that the "if responds" HOM is pretty much a worst-case scenario. You go through all the set-up and overhead for a once-off message send. Compare that to the collection HOMs where you can incur that set-up cost once and then iterate cheaply over a collection that may contain hundreds, thousands or even millions of items.
 
@@ -61,7 +61,7 @@ So for very small collections the performance difference is negligible, but as t
 
 #### Is HOM really HOM?
 
-In [my last article](http://wincent.com/a/about/wincent/weblog/archives/2006/11/more_thoughts_o.php) on HOM, I asked, is HOM really HOM? The "higher order" part of HOM refers to the fact that you're sending a message to a message. Well, actually, that's only what you _want_ to do:
+In [my last article](http://typechecked.net/a/about/wincent/weblog/archives/2006/11/more_thoughts_o.php) on HOM, I asked, is HOM really HOM? The "higher order" part of HOM refers to the fact that you're sending a message to a message. Well, actually, that's only what you _want_ to do:
 
     [collection select: hasPrefix:@"foo"];
 
@@ -75,7 +75,7 @@ Actually-existing HOM is not actually HOM at all, a point that even [the seminal
 >
 > \[I\]nstead of passing the argument message to the prefix message directly, which isn't possible, \[in Higher Order Messaging\] the prefix message returns an object that is then sent the argument message.
 
-So HOM doesn't actually exist, except as a theoretical ideal. What does exist is an working model that is equivalent in functional terms to the theoretical ideal. No "higher order" messages are actually sent, but the end result is just the same as if they were. Knowing that this fact is acknowledged by the originators of the "HOM" moniker makes me feel a lot more comfortable than I [did before](http://wincent.com/a/about/wincent/weblog/archives/2006/08/thoughts_on_hig.php) with the whole idea.
+So HOM doesn't actually exist, except as a theoretical ideal. What does exist is an working model that is equivalent in functional terms to the theoretical ideal. No "higher order" messages are actually sent, but the end result is just the same as if they were. Knowing that this fact is acknowledged by the originators of the "HOM" moniker makes me feel a lot more comfortable than I [did before](http://typechecked.net/a/about/wincent/weblog/archives/2006/08/thoughts_on_hig.php) with the whole idea.
 
 Still, I think there _may_ be a problem here. It's entirely suitable to invent a new term to describe a different kind of messaging (messages that take messages as parameters). But it probably causes confusion when you then apply that term to something that doesn't actually exist yet; what we call "HOM" today isn't HOM: it's Traditional Messaging That Allows Us To Obtain A Result That's Approximately Equivalent To What We'd Get If We Had A Real HOM Implementation. I guess that "TMTAUTOARTAETWWGIWHARHI" is not as catchy as HOM. I think the cognitive dissonance provoked by the gap between the term and the reality goes a long way to explaining my resistance to HOM in the past.
 
@@ -100,4 +100,4 @@ Compare that with [Marcel Weiher's version](http://www.metaobject.com/Research.h
 
 #### Next...
 
-I'll have more to say on [HOM](http://wincent.com/a/about/wincent/weblog/archives/hom/) within the next few days. Specifically the topic of "the BOOL return problem". Watch this space for more.
+I'll have more to say on [HOM](http://typechecked.net/a/about/wincent/weblog/archives/hom/) within the next few days. Specifically the topic of "the BOOL return problem". Watch this space for more.

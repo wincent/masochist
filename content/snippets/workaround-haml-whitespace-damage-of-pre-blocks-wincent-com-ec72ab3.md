@@ -1,5 +1,5 @@
 ---
-title: Workaround Haml whitespace damage of pre blocks (wincent.com, ec72ab3)
+title: Workaround Haml whitespace damage of pre blocks (typechecked.net, ec72ab3)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Show spinner graphic while updating preview (wincent.com, a7dd462)
+title: Show spinner graphic while updating preview (typechecked.net, a7dd462)
 tags: snippets
 ---
 

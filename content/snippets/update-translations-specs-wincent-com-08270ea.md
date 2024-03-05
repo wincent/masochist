@@ -1,5 +1,5 @@
 ---
-title: Update translations specs (wincent.com, 08270ea)
+title: Update translations specs (typechecked.net, 08270ea)
 tags: snippets
 ---
 

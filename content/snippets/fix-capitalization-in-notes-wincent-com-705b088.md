@@ -1,5 +1,5 @@
 ---
-title: Fix capitalization in notes (wincent.com, 705b088)
+title: Fix capitalization in notes (typechecked.net, 705b088)
 tags: snippets
 ---
 

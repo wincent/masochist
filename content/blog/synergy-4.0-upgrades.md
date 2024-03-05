@@ -16,7 +16,7 @@ If you purchased your license on or after 5 September 2006 (the release date of 
 
 # Upgrading from versions older than 3.0
 
-If you purchased your license more than 3 years ago (prior to 5 September 2006 and the release of version 3.0) then your license will not work with version 4.0. You can either [purchase a new license](https://wincent.com/a/products/synergy-classic/purchase/), or continue to use an older version of Synergy: your license will always be valid for all versions of Synergy _prior_ to 4.0.
+If you purchased your license more than 3 years ago (prior to 5 September 2006 and the release of version 3.0) then your license will not work with version 4.0. You can either [purchase a new license](https://typechecked.net/a/products/synergy-classic/purchase/), or continue to use an older version of Synergy: your license will always be valid for all versions of Synergy _prior_ to 4.0.
 
 If you decide not to upgrade yet, don't worry: Synergy 3.4 does work on [Snow Leopard](/wiki/Snow_Leopard).
 
@@ -36,6 +36,6 @@ All single-user licenses for Synergy 4.0 purchased through PayPal are 5€. Due 
 
 # How much notice will licensed users receive before the next paid upgrade?
 
-In this case I've tried to give very advanced notice ([starting back in January 2008](http://wincent.com/a/news/archives/2008/01/synergy_35a3_re.php)) and be extremely liberal about how old licenses can be and still be valid for the new version (3 years).
+In this case I've tried to give very advanced notice ([starting back in January 2008](http://typechecked.net/a/news/archives/2008/01/synergy_35a3_re.php)) and be extremely liberal about how old licenses can be and still be valid for the new version (3 years).
 
 If there are ever any plans to introduce any further paid upgrades in the future, I will announce them with as much advance notice as possible.

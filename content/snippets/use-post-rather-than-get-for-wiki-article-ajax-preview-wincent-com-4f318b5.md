@@ -1,5 +1,5 @@
 ---
-title: Use "post" rather than "get" for wiki article AJAX preview (wincent.com, 4f318b5)
+title: Use "post" rather than "get" for wiki article AJAX preview (typechecked.net, 4f318b5)
 tags: snippets
 ---
 

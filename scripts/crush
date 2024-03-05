@@ -9,6 +9,6 @@
 # Note that this is _lossless_ compression. For _lossy_ compression, and other
 # alternatives, see:
 #
-#    https://wincent.com/wiki/Compressing_PNGs_for_delivery_on_the_web
+#    https://typechecked.net/wiki/Compressing_PNGs_for_delivery_on_the_web
 
 find . -name '*.png' -type f | while read line; do pngcrush -ow -brute $line; done

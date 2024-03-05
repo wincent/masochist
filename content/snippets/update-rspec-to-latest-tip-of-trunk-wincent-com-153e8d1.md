@@ -1,5 +1,5 @@
 ---
-title: Update RSpec to latest tip of trunk (wincent.com, 153e8d1)
+title: Update RSpec to latest tip of trunk (typechecked.net, 153e8d1)
 tags: snippets
 ---
 

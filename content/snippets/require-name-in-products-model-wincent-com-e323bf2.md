@@ -1,5 +1,5 @@
 ---
-title: Require name in products model (wincent.com, e323bf2)
+title: Require name in products model (typechecked.net, e323bf2)
 tags: snippets
 ---
 

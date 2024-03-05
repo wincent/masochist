@@ -1,5 +1,5 @@
 ---
-title: Update RSpec (revision 3014) (wincent.com, ff78fe9)
+title: Update RSpec (revision 3014) (typechecked.net, ff78fe9)
 tags: snippets
 ---
 

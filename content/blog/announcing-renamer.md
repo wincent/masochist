@@ -3,7 +3,7 @@ title: Announcing REnamer
 tags: blog
 ---
 
-If you look at the [products listing](http://wincent.com/a/products/) you'll see that there is now a new entry in the ranks, REnamer.
+If you look at the [products listing](http://typechecked.net/a/products/) you'll see that there is now a new entry in the ranks, REnamer.
 
 REnamer is a file renaming utility based on three design principles: power, simplicity, and elegance.
 

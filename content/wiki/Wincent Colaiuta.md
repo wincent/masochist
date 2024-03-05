@@ -4,7 +4,7 @@ title: Wincent Colaiuta
 ---
 
 -   ["What kind of name is Wincent Colaiuta anyway?"](/blog/what-kind-of-name-is-wincent-colaiuta-anyway)[^older]
--   Personal weblog: [wincent.com/blog](https://wincent.com/blog)
+-   Personal weblog: [typechecked.net/blog](https://typechecked.net/blog)
 -   Software: [github/wincent](https://github.com/wincent)
 
-[^older]: Older info about ["Wincent Colaiuta"](http://wincent.com/a/about/wincent/)
+[^older]: Older info about ["Wincent Colaiuta"](http://typechecked.net/a/about/wincent/)

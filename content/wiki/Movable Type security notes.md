@@ -7,7 +7,7 @@ title: Movable Type security notes
 
 If you don't need don't need comments then you can set up a very, very secure [Movable Type](/wiki/Movable_Type) installation. There's really no excuse not to turn off search; just set up a [Google](/wiki/Google) search page for your site, like this one:
 
--   <http://wincent.com/a/site-map/search/>
+-   <http://typechecked.net/a/site-map/search/>
 
 Tips on how to do this appear below.
 

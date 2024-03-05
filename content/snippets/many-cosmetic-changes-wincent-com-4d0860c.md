@@ -1,5 +1,5 @@
 ---
-title: Many cosmetic changes (wincent.com, 4d0860c)
+title: Many cosmetic changes (typechecked.net, 4d0860c)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Teach the in place editor to play nicely with forgery protection (wincent.com, 2b5cbd0)
+title: Teach the in place editor to play nicely with forgery protection (typechecked.net, 2b5cbd0)
 tags: snippets
 ---
 

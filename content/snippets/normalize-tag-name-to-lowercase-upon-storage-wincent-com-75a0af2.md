@@ -1,5 +1,5 @@
 ---
-title: Normalize tag name to lowercase upon storage (wincent.com, 75a0af2)
+title: Normalize tag name to lowercase upon storage (typechecked.net, 75a0af2)
 tags: snippets
 ---
 
