@@ -1,5 +1,6 @@
 ---
 tags: email wiki
+title: Freshclam error: "Problem with internal logger"
 ---
 
 Confirm that there are hung [freshclam](/wiki/freshclam) processes on the system:
@@ -24,4 +25,4 @@ Inspect the log:
 
 # See also
 
-<http://wincent.com/a/knowledge-base/archives/2006/06/freshclam_probl.php>
+<https://typechecked.net/a/knowledge-base/archives/2006/06/freshclam_probl.php>

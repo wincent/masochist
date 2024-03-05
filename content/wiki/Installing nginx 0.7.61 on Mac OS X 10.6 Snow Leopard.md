@@ -58,7 +58,7 @@ So the second error remains: it is looking for the config file at `/usr/local/ng
 ```shell
 $ script/nginx
 nginx not running: starting
-[emerg]: open() "/Users/wincent/trabajo/unversioned/wincent.com/src/tmp/mime.types" failed (2: No such file or directory) in /Users/wincent/trabajo/unversioned/wincent.com/src/tmp/nginx-local.conf:11
+[emerg]: open() "/Users/wincent/trabajo/unversioned/example.com/src/tmp/mime.types" failed (2: No such file or directory) in /Users/wincent/trabajo/unversioned/example.com/src/tmp/nginx-local.conf:11
 ```
 
 More relative path glitches. The config file has a `include mime.types;` line in it. Eliminate that error and retry:

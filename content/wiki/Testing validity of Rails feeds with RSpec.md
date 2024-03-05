@@ -1,6 +1,7 @@
 ---
 tags: rspec rails atom xml wiki
 cache_breaker: 1
+title: Testing validity of Rails feeds with RSpec
 ---
 
 It's actually quite hard to find information about testing feeds because _so_ many pages out there feature the words "feed" nowadays, but some of the first results that I turned up talked about the [FeedValidator](/wiki/FeedValidator) [gem](/wiki/gem).
@@ -40,7 +41,7 @@ Googling for information on these "non determinist" errors suggested that this _
 Trying another format:
 
     $ java -jar trang-20030619/trang.jar spec/2005-08-17-atom.rnc spec/atom.dtd
-    /Users/wincent/trabajo/unversioned/wincent.com/src/spec/2005-08-17-atom.rnc:306:13: error: sorry, wildcards are not supported
+    /Users/wincent/trabajo/unversioned/example.com/src/spec/2005-08-17-atom.rnc:306:13: error: sorry, wildcards are not supported
     ...
 
 And many more errors omitted from the excerpt... Evidently a DTD cannot express all of the constraints that can be specified in a RelaxNG schema.

@@ -64,7 +64,7 @@ So time to see what's going on using a debugging script:
     use strict;
     use Net::SMTP::SSL;
     $IO::Socket::SSL::DEBUG = 1;
-    my $smtp = Net::SMTP::SSL->new('wincent.com', Port => 465, Debug => 1,) or die "didn't work";
+    my $smtp = Net::SMTP::SSL->new('example.com', Port => 465, Debug => 1,) or die "didn't work";
     my $auth = $smtp->auth('username', 'passphrase') or die $smtp->message;
 
 Here is the relevant snippet of the output:
