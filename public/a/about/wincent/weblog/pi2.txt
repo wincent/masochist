@@ -6,7 +6,7 @@ Content-Type: text/plain;
 	delsp=yes;
 	format=flowed
 To: pi2@nym.hush.com
-From: Wincent Colaiuta <win@wincent.com>
+From: Greg Hurrell <greg@hurrell.net>
 Subject: Clarification
 Date: Sun, 9 Sep 2007 14:07:28 +0200
 

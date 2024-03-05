@@ -1,27 +1,27 @@
 Changes from 3.5a3 to 3.5a4:
 
 commit 7ce4a27ed2c4699b4b5e6bfb752d3ef4a7d0bf87
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Tue Jan 8 09:57:02 2008 +0100
 
     Minor syntax fixes
     
     Add missing backslash in multi-line macro and missing #import statement.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit e4c120fd220b3156ab918d6808f2970351421d80
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Tue Jan 8 09:50:22 2008 +0100
 
     Bump version number prior to release
     
     Prepare for 3.5a4 release.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit fc2cb8c5d6d6528f7b722e44ef76b9d63772b790
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Tue Jan 8 09:42:50 2008 +0100
 
     Update README file to include upgrade instructions
@@ -30,10 +30,10 @@ Date:   Tue Jan 8 09:42:50 2008 +0100
     the system and offers to clean it up for you; mention this in the README
     file so that people looking for upgrade instructions won't be confused.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit ff31fab9fe40e605d80b9610a3bcc1aa46d6f754
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Tue Jan 8 09:36:24 2008 +0100
 
     Hook up Help menu item in Synergy Preferences
@@ -41,20 +41,20 @@ Date:   Tue Jan 8 09:36:24 2008 +0100
     For the time being this just takes the user to the online documentation.
     Later on will look at embedding in-application help.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 18a853013db1c2bf788377ba16e0640cff5a2aeb
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Tue Jan 8 09:11:16 2008 +0100
 
     Update lists
     
     Preparing for release of 3.5a4.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit cc76597d7f9e0aeec29dfb3fdf73a267c2b01447
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Tue Jan 8 08:53:46 2008 +0100
 
     Translate Spanish text in Synergy Preferences nib into English
@@ -73,14 +73,14 @@ Date:   Tue Jan 8 08:53:46 2008 +0100
     
     https://wincent.com/a/support/bugs/show_bug.cgi?id=637
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 9848c4fd6f0ab729b0bbfe068608f48a0ab38e02
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Mon Jan 7 16:49:46 2008 +0100
 
     Bump version number post-release
     
     Bump version number to 3.5a3+.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>

@@ -1,7 +1,7 @@
 Changes from 3.5a2 to 3.5a3:
 
 commit eaa73964476005136920f584788bdd00899a8257
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Mon Jan 7 14:12:11 2008 +0100
 
     Update README for release
@@ -9,10 +9,10 @@ Date:   Mon Jan 7 14:12:11 2008 +0100
     Presentation tweaks to README prior to release (sans serif fonts,
     clickable hyperlinks).
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 3a62f8b16a780b610d262cb17e51ba6942f70241
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Mon Jan 7 14:09:56 2008 +0100
 
     Ignore LyX temporary files
@@ -20,10 +20,10 @@ Date:   Mon Jan 7 14:09:56 2008 +0100
     Add entry to gitignore file to ignore the temporary backup files created
     by LyX.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 39dc302da98370904d0af88070244d78e8e6a8a2
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Mon Jan 7 14:00:28 2008 +0100
 
     Update user-visible strings for release
@@ -33,20 +33,20 @@ Date:   Mon Jan 7 14:00:28 2008 +0100
     detected during the localizable strings update (genstrings was reporting
     a non-UTF-8 source file).
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 39f627d1691837696931587ebd9247a6e913bbf6
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Mon Jan 7 13:38:59 2008 +0100
 
     Update copyright years
     
     Extend range to include 2008.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 994da25a7af1e5a412eb5212014e620ecf880b12
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Mon Jan 7 13:24:08 2008 +0100
 
     Pass NULL to executeAndReturnError:
@@ -70,10 +70,10 @@ Date:   Mon Jan 7 13:24:08 2008 +0100
     required, most likely involving the replacement of NSAppleScript with
     something else (the scripting bridge, for example).
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 7ae6b07b9b7704b58a77113ef6c52fb35167c1fb
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Fri Dec 28 13:55:24 2007 +0100
 
     Add README to distribution
@@ -83,10 +83,10 @@ Date:   Fri Dec 28 13:55:24 2007 +0100
     Preferences pane to standalone application, and the new minimum system
     version requirement).
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 10c1f84dcb9bad873a0155308033d0651f93d3b3
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Fri Dec 28 13:31:03 2007 +0100
 
     Add LSMinimumSystemVersion to Info.plist
@@ -96,10 +96,10 @@ Date:   Fri Dec 28 13:31:03 2007 +0100
     instead rely on the system to do so thanks to the LSMinimumSystemVersion
     key in the Info property list.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit c7eb0af3cce75f580e31a1a80417c1f929e3697a
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 27 17:21:32 2007 +0100
 
     Close the application when last window is closed
@@ -108,10 +108,10 @@ Date:   Thu Dec 27 17:21:32 2007 +0100
     user will already have seen/dismissed the "Apply"/"Don't Apply" sheet,
     so don't resurrect the window and show the sheet again.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit c2adcefc476470f518ef9b34df8a571054b8e05e
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 27 17:14:25 2007 +0100
 
     Provide menu item for bringing preferences window on screen
@@ -128,10 +128,10 @@ Date:   Thu Dec 27 17:14:25 2007 +0100
     to use the setReleasedWhenClosed: method. Note that I may later decide
     to auto-quit the application when the last window is closed.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 52c8406582974abf6467f5ce347152b4f3fcc4dc
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 27 16:31:51 2007 +0100
 
     Fix window closing and termination behaviour
@@ -140,18 +140,18 @@ Date:   Thu Dec 27 16:31:51 2007 +0100
     distinguishing between application termination and window
     closing.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 5ff68349753f109b36d2fbc098d7869b30a160ec
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 27 15:43:47 2007 +0100
 
     Make test for non-shallow clone silent
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit bb1efedb17422f3791fdda3d0c8c71017d513f5c
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 27 15:37:27 2007 +0100
 
     Don't produce release notes for nightlies
@@ -159,20 +159,20 @@ Date:   Thu Dec 27 15:37:27 2007 +0100
     The nightly builds are made using shallow clones and so can't produce
     release notes during the build.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 74f817b6466bea0837792d42233a96860d54c26a
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 27 15:13:22 2007 +0100
 
     Produce detailed release notes during the build
     
     In addition to the brief release notes already generated.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 26d81a66aa9084b9419bebbfc374f3be0326c632
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 27 14:44:05 2007 +0100
 
     Avoid uninitialized use of variable
@@ -181,10 +181,10 @@ Date:   Thu Dec 27 14:44:05 2007 +0100
     used prior to initialization. Fix by moving the initialize to the very
     top of the method body.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit d1c8738d750b552672f46e3acd61a6b2b2c27e22
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 27 14:43:22 2007 +0100
 
     Add back NSHumanReadableCopyright
@@ -192,10 +192,10 @@ Date:   Thu Dec 27 14:43:22 2007 +0100
     I was a little too quick to remove this key from my InfoPlist.strings
     files; it is used in the default About box.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit ba00d754bb2dbe7d59d887ae5d47187a11524dcc
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 27 13:10:41 2007 +0100
 
     Xcode project buzz
@@ -203,10 +203,10 @@ Date:   Thu Dec 27 13:10:41 2007 +0100
     Xcode insists on adding/removing comments in the project.pbxproj file
     (no substantive changes made). Commit it to keep "git status" quiet.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 0f767e735cbf8fe09e4e0960e7e3f54feba53a03
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 27 01:12:42 2007 +0100
 
     Echo zip name to target build directory
@@ -214,10 +214,10 @@ Date:   Thu Dec 27 01:12:42 2007 +0100
     So that the nightly script can find out the name of the distribution
     archive without having to duplicate the logic of the distro.sh script.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit c9bbb458a8f155dc2c29b1cc91b6699740066dfc
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Wed Dec 26 23:56:53 2007 +0100
 
     Use short relative paths in zip archive
@@ -227,10 +227,10 @@ Date:   Wed Dec 26 23:56:53 2007 +0100
     paths as short as possible by changing into the target build dir before
     preparing the archive.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 9d5cbbf63ffd0f4447d3ba0b0648e8948bcc9e37
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Wed Dec 26 23:55:55 2007 +0100
 
     Move sample files into subdirectory
@@ -239,10 +239,10 @@ Date:   Wed Dec 26 23:55:55 2007 +0100
     subdirectory to make it clearer where users should start the
     first time they extract the distribution archive.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 1064c1910bf353c1dd30e21967f8893493cee773
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Wed Dec 26 23:46:22 2007 +0100
 
     New distribution script
@@ -251,10 +251,10 @@ Date:   Wed Dec 26 23:46:22 2007 +0100
     Seeing as this is a simple drag-and-drop install now, just use a zip
     archive and avoid the complication of a disk image.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 257953e2c2c52b65101a2c202b8c2df9e0c84cf1
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Wed Dec 26 20:58:51 2007 +0100
 
     Use new login API from WOCommon
@@ -264,10 +264,10 @@ Date:   Wed Dec 26 20:58:51 2007 +0100
     method and avoid duplication; this allows us to rip out a sizeable hunk
     of old code.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 6b5a1787ab7a9ecc3756f60c7926575728fa4f33
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Wed Dec 26 17:01:29 2007 +0100
 
     Dispose of old "install" subfolder
@@ -277,10 +277,10 @@ Date:   Wed Dec 26 17:01:29 2007 +0100
     included with the Synergy distribution) are moved to a new top-level
     subfolder, "distribution".
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit a93bd552e61b31971b4796ce699df3dc9ab211c7
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Wed Dec 26 16:32:30 2007 +0100
 
     Update Launch Services and login items at launch
@@ -288,10 +288,10 @@ Date:   Wed Dec 26 16:32:30 2007 +0100
     Teach the new wrapper application to take on these two responsibilities
     that were previously handled by the installer.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit e5f48d3d3c38c20d967745d80559a376c2dd57b4
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Mon Dec 24 19:08:14 2007 +0100
 
     Modernize localizable string update process
@@ -299,20 +299,20 @@ Date:   Mon Dec 24 19:08:14 2007 +0100
     Ditch old shell script build phases for updating strings in favor of
     just calling UpdateStringsFiles.sh from buildtools.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 0f1a10855255bf99ea0842ac7eb816f54589f24d
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Mon Dec 24 19:07:11 2007 +0100
 
     Remove installer README documents
     
     These are no longer relevant as we no longer even have an installer.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 2b03b13f6a1b79ce0d9bec9a9e83a0c3db5382fd
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Mon Dec 24 16:47:38 2007 +0100
 
     Tweak property list keys to match latest documented behaviour
@@ -324,10 +324,10 @@ Date:   Mon Dec 24 16:47:38 2007 +0100
     the InfoPlist.strings files for localizations which were lacking them
     (at this stage untranslated).
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 801a8fdc609ccee9d0364b0b8495c608958e8c24
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sun Dec 23 23:40:00 2007 +0100
 
     Change button set handling for installerless distribution
@@ -336,10 +336,10 @@ Date:   Sun Dec 23 23:40:00 2007 +0100
     bundled inside the application. Minor code changes to allow the
     preference pane to share the button sets with the application.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 4a9cbcf8b195cee2e9694c7d42b4d0391a35798e
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sun Dec 23 22:25:44 2007 +0100
 
     Call mainViewDidLoad when showing preference pane
@@ -347,10 +347,10 @@ Date:   Sun Dec 23 22:25:44 2007 +0100
     Add missing call in WOPreferencePane class to ensure the preference pane
     gets properly initialized at load time.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit a0adca54c1659c1922a213714fec15b16f3ebf2f
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sun Dec 23 22:07:29 2007 +0100
 
     Update shell script for new development language path
@@ -359,10 +359,10 @@ Date:   Sun Dec 23 22:07:29 2007 +0100
     path (English.lproj). Change it to work with the new development
     language (en.lproj).
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 1cce70825c4584ac8ddee00332035939ff1f9aea
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sun Dec 23 21:44:25 2007 +0100
 
     Add localized xib references back to Xcode project
@@ -370,10 +370,10 @@ Date:   Sun Dec 23 21:44:25 2007 +0100
     Now that the localized xibs are back in action again, add them back to
     the Xcode project.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 350ab6636c66c03b71ef47682131410058a4e476
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sun Dec 23 21:30:48 2007 +0100
 
     Run UpdateXibs.sh and integrate old localization info
@@ -386,10 +386,10 @@ Date:   Sun Dec 23 21:30:48 2007 +0100
     where the old strings applied cleanly any custom geometry will have to
     be added back in by hand because this did not carry across.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 6a36f053eee58e47dbfb452295ec2f7b896e74a7
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 20 21:08:25 2007 +0100
 
     Fix permissions
@@ -398,10 +398,10 @@ Date:   Thu Dec 20 21:08:25 2007 +0100
     repository (executable bits set on non-executable files), and which
     therefore were migrated over to the new Git repository as well.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 8e17063b47b995cd860c26cadc168782c8827914
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 20 21:07:28 2007 +0100
 
     Add some TODO comments in the Synergy Preferences controller
@@ -411,18 +411,18 @@ Date:   Thu Dec 20 21:07:28 2007 +0100
     of the now-redundant installation files in whole or in part (yet to be
     decided).
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 2e2938dcbb189be6a46f83dca377387042be1ce7
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 20 21:06:09 2007 +0100
 
     Remove old pbproj bundle from SynergyReg subdirectory
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 636b7466f84cdb20bdb602ca9ae2f4bc2ded8a59
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 20 20:53:58 2007 +0100
 
     Rename English.lproj to en.lproj
@@ -431,10 +431,10 @@ Date:   Thu Dec 20 20:53:58 2007 +0100
     This renaming includes updating all Xcode project references, so the
     build should continue to work with no other modifications.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 28983e700440823b25259f6c221c7c3f9a31ce53
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 20 20:20:33 2007 +0100
 
     Reference top-level nib objects for GC and clean localizations
@@ -454,20 +454,20 @@ Date:   Thu Dec 20 20:20:33 2007 +0100
     have on file. This will be a lengthy and painful job, so it might be
     sometime before it gets completed.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit b1b2b98efe90dbf40e03832d58b6d9f899ea0e76
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 20 19:42:22 2007 +0100
 
     Upgrade xibs to latest format
     
     Using "ibtool --upgrade".
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit c797be546519b184c8a9ab4d8ef42fc19c885439
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 20 19:29:06 2007 +0100
 
     Convert all nibs to xibs
@@ -475,20 +475,20 @@ Date:   Thu Dec 20 19:29:06 2007 +0100
     Use the nicer, SCM-friendly nib format that's new with Leopard and Xcode
     3.0.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit d6cee753c0ba0e210b01cfe9add53b2a17432e67
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 20 18:46:17 2007 +0100
 
     Remove NSMenuExtra header
     
     It's unused, so get rid of the clutter.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 10bd7f607be0de1d0d501983d5524bc7c57d2089
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 20 18:43:31 2007 +0100
 
     Update release procedure and development notes
@@ -504,10 +504,10 @@ Date:   Thu Dec 20 18:43:31 2007 +0100
     repositories (Synergy itself, WOCommon and WOPublic), it's easier to do
     this with a single script.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 38001f58aa3a2f9f45930df5440acfe46f1da512
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 20 18:03:55 2007 +0100
 
     Update versioning and targets
@@ -518,30 +518,30 @@ Date:   Thu Dec 20 18:03:55 2007 +0100
     number and copyright years are automatically propagated through to the
     localized InfoPlist.strings files.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 0bd53831bb66336c57ed76750343d93e3fd1fd6f
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 20 14:52:42 2007 +0100
 
     Add custom icon for standalone preferences application
     
     This is the same as the standard Synergy icon.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit a77d9066b4001d100a1d3de944d5fcb15f1ce5e2
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 20 13:44:32 2007 +0100
 
     Formatting fixes for main controller
     
     Minor rewrapping for readability, and remove some unnecessary braces.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 9d4a9345495d9490940daf1c71b53f65ac178acf
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 20 13:42:30 2007 +0100
 
     Add built-in uninstaller for global installs
@@ -550,10 +550,10 @@ Date:   Thu Dec 20 13:42:30 2007 +0100
     the same for global installs (which require root privileges to
     uninstall).
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit b2cc4760a67add6e9e2ccbfd134ba40f7cf5171f
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 20 03:02:17 2007 +0100
 
     Force strong references to top-level nib objects
@@ -567,10 +567,10 @@ Date:   Thu Dec 20 03:02:17 2007 +0100
     outlets for all "real" (instantiated) top-level objects (at this stage
     that only means the controller and the MainMenu).
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 0b7051e2b017a3d832833666e299b649f62a555d
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu Dec 20 01:41:10 2007 +0100
 
     Build-in uninstaller for old versions
@@ -580,10 +580,10 @@ Date:   Thu Dec 20 01:41:10 2007 +0100
     first implementation is for local (non-root) installs only. A subsequent
     commit will add global uninstall capability.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 81aea3b461fa739ce0e47e77f898ea50976d2129
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Wed Dec 19 13:40:04 2007 +0100
 
     Adjust "preferences" menu item
@@ -591,10 +591,10 @@ Date:   Wed Dec 19 13:40:04 2007 +0100
     Teach the app to look for the new standalone preferences app rather than
     the one installed in {~/,/}Library/PreferencePanes/.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 3cc04061eab7ebb31b8a0a3b080842a6ec6f5dbe
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Wed Dec 19 13:01:24 2007 +0100
 
     More Objective-C 2.0 properties
@@ -603,10 +603,10 @@ Date:   Wed Dec 19 13:01:24 2007 +0100
     (WOSynergyFloaterController, WOSynergyFloaterView and
     SynergyController).
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit cb9a22cd16bc5324dcecb51a2e29ef970a88ea78
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Wed Dec 19 12:59:56 2007 +0100
 
     Handle application and window closing
@@ -617,10 +617,10 @@ Date:   Wed Dec 19 12:59:56 2007 +0100
     rather than the subclass as specified by the NSPrincipalClass key in the
     bundle info property list.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit b499a72b49ca4e1ade691d6be5d8ae2833b7e6ba
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Wed Dec 19 11:38:57 2007 +0100
 
     Initial version of standalone preferences application
@@ -658,20 +658,20 @@ Date:   Wed Dec 19 11:38:57 2007 +0100
     not require an installer because as a standalone application it can
     be installed anywhere.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit c27254fe11348e5bca00b67206a5a6c1577bd309
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sun Dec 16 00:37:23 2007 +0100
 
     Remove unused help classes
     
     WOHelp and WOSynergyHelp are no longer used.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit d48f69deda65e69f12af7faab58f2d049b8a4cc7
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sat Dec 15 23:58:03 2007 +0100
 
     Remove WOSingleton class and other cruft
@@ -689,10 +689,10 @@ Date:   Sat Dec 15 23:58:03 2007 +0100
     cruft classes that had been lying arond for ages as part of an
     experimental refactoring which was abandoned.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit bde3657d178c47eb8645ff46745e0774ab2b0503
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sat Dec 15 23:55:31 2007 +0100
 
     Update embedded Growl framework to 1.1.2
@@ -701,30 +701,30 @@ Date:   Sat Dec 15 23:55:31 2007 +0100
     repository. The only modification is that Garbage Collection has
     been enabled in the build settings.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 3dc2d5cbd530c62c3398e7ddbb5dbfbebf012544
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sat Dec 15 22:55:21 2007 +0100
 
     Remove unused variable
     
     Recent refactoring makes this variable unused, so dump it.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit ae22fe718d1c49c5f83416094bf226e98d78027d
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sat Dec 15 22:47:46 2007 +0100
 
     Remove no-op retains
     
     These don't belong in here under GC.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit cbfc2de315bd68c00e6a1c4d5090177cc709cec8
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sat Dec 15 20:20:06 2007 +0100
 
     Fix new compile-time warnings with new GCC
@@ -732,10 +732,10 @@ Date:   Sat Dec 15 20:20:06 2007 +0100
     The new version of GCC issues some warnings where the old one didn't,
     so make some tweaks to ensure warning-free builds.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 584f867014559ca8df56f5b559536f26b0591785
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sat Dec 15 17:54:25 2007 +0100
 
     Major code audit and clean-up for GC
@@ -745,10 +745,10 @@ Date:   Sat Dec 15 17:54:25 2007 +0100
     allocation patterns, fast enumeration and so forth). In all inserted
     just over 1200 lines and deleted over 2000.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit cd5a4edde68b229c09e679de7a3fe35f0ac75bd8
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sat Dec 15 12:20:28 2007 +0100
 
     Modernize NSTimer pausing category
@@ -756,10 +756,10 @@ Date:   Sat Dec 15 12:20:28 2007 +0100
     Now that this code no longer needs to run on Jaguar we can replace the
     old-fashioned mutexes with @sychronized blocks.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit a73dbe7ba57fd8d1c51c7eb0691f3f039a347f15
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Mon Dec 10 12:09:39 2007 +0100
 
     New version of login-tool
@@ -767,10 +767,10 @@ Date:   Mon Dec 10 12:09:39 2007 +0100
     Bundle the new version of login-tool (based on 10.5 Launch Services API)
     in the installer.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 4cff245e0ef75dea5b9bc972420ea30a376e12db
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sun Dec 9 15:01:27 2007 +0100
 
     Objective-C 2.0 changes for WOAudioscrobbler class
@@ -780,10 +780,10 @@ Date:   Sun Dec 9 15:01:27 2007 +0100
     - use class extension (anonymous category) for private methods
     - C99 for loop syntax
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit dc7cec2e862fee1f43d49c62d19396338f57f295
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sat Dec 8 19:16:29 2007 +0100
 
     Clean up code comments in WOSysctl.c
@@ -792,10 +792,10 @@ Date:   Sat Dec 8 19:16:29 2007 +0100
     false positives in code comments came up; remove them seeing as they
     are chatty and superfluous anyway.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit e7e23331ae3e0d2ccd0b670630466d6dcff1fb7b
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sat Dec 8 18:38:05 2007 +0100
 
     GC changes for WODistributedNotification class
@@ -803,10 +803,10 @@ Date:   Sat Dec 8 18:38:05 2007 +0100
     The autorelease calls are no longer needed, doubly so because this is a
     singleton class and was never released prior to GC anyway.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit d1202aef3594baf698fe5754fbd3c194c0852486
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sat Dec 8 17:18:43 2007 +0100
 
     Add reminder to use WOAssert in NSTimer category
@@ -815,20 +815,20 @@ Date:   Sat Dec 8 17:18:43 2007 +0100
     intended to check programmer errors should really use an assert macro
     (which will only be active in debug builds).
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 35ae835bc33ac863fe46f87d6a0fe7b2f903d821
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sat Dec 8 15:50:34 2007 +0100
 
     Remove irrelevant comment from WOKeyCaptureView
     
     Remove comment that's no longer relevant under GC.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 492a094d9c501150b05ef0af73379ba521a2ba3e
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sat Dec 8 15:48:46 2007 +0100
 
     Remove NSLock from NSTimer category
@@ -837,10 +837,10 @@ Date:   Sat Dec 8 15:48:46 2007 +0100
     @synchronized directive was not available); now this limitation is
     no longer applicable so replace the NSLock idiom with @synchronized.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 137534a7ee8dd718848859d2ad02ac28533bb7f9
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Sat Dec 8 15:44:44 2007 +0100
 
     NSTimer category updates for GC
@@ -848,20 +848,20 @@ Date:   Sat Dec 8 15:44:44 2007 +0100
     Remove comment about "leaking" singleton which no longer make any sense
     under Garbage Collection.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit dc7ef44f5d4ad0345d47c05a31c92f9a8a07f893
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Fri Dec 7 22:48:46 2007 +0100
 
     Prune development notes
     
     Remove section on login items (no longer relevant).
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 046d739838dcbdeb35164ebf66e2c99f1cb32972
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Fri Dec 7 22:46:32 2007 +0100
 
     More build setting cleanup
@@ -869,10 +869,10 @@ Date:   Fri Dec 7 22:46:32 2007 +0100
     Remove old version number settings and the disk image script that made use
     of them.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 3d41f2fb83e2d83f4b00061b469b9c0f6f9621dc
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Fri Dec 7 22:41:55 2007 +0100
 
     Switch to buildtools-based configuration
@@ -882,10 +882,10 @@ Date:   Fri Dec 7 22:41:55 2007 +0100
     many custom build settings as possible at the same time (one of these
     is BASE_DIR, which has been replaced with SRCROOT).
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit a2cc76951c65650561e33391db5568ac00164eef
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Fri Dec 7 22:10:47 2007 +0100
 
     Add new build of login-tool
@@ -895,10 +895,10 @@ Date:   Fri Dec 7 22:10:47 2007 +0100
     login" issues, although there are known problems with Apple's
     implementation of login items under Leopard.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit 894da4c27d87428d2fe2c40c4ca5b5de0a089755
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Tue Nov 27 14:37:20 2007 +0100
 
     Produce code-level release notes during build
@@ -906,14 +906,14 @@ Date:   Tue Nov 27 14:37:20 2007 +0100
     Use the new ReleaseNotes.sh script to automatically generate code-level
     release notes during the build process.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
 
 commit fa0519e8d53bea683d3ad26599edfa966ba140fb
-Author: Wincent Colaiuta <win@wincent.com>
+Author: Greg Hurrell <greg@hurrell.net>
 Date:   Tue Nov 27 14:20:54 2007 +0100
 
     Bump version number post-release
     
     Bump version number to 3.5a2+.
     
-    Signed-off-by: Wincent Colaiuta <win@wincent.com>
+    Signed-off-by: Greg Hurrell <greg@hurrell.net>
