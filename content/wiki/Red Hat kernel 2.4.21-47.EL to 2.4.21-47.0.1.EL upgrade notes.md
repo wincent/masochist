@@ -1,5 +1,6 @@
 ---
 tags: red.hat wiki
+title: Red Hat kernel 2.4.21-47.EL to 2.4.21-47.0.1.EL upgrade notes
 ---
 
 Here are some notes that I made while performing the kernel upgrade on my [Red Hat](/wiki/Red_Hat) box from version 2.4.21-47.EL to 2.4.21-47.0.1.EL. These are based on the general upgrade procedure described in the article, [Red Hat Enterprise Linux kernel update procedure](/wiki/Red_Hat_Enterprise_Linux_kernel_update_procedure).
@@ -29,7 +30,7 @@ Here are some notes that I made while performing the kernel upgrade on my [Red H
 There were no non-kernel RPMs to update, so I skipped the `up2date --nox -u` step.
 
     # uname -a
-    Linux s69819.wincent.com 2.4.21-47.EL #1 Wed Jul 5 20:39:00 EDT 2006 i686 athlon i386 GNU/Linux
+    Linux s69819.example.com 2.4.21-47.EL #1 Wed Jul 5 20:39:00 EDT 2006 i686 athlon i386 GNU/Linux
     # cat /etc/redhat-release
     Red Hat Enterprise Linux ES release 3 (Taroon Update 8)
     # ls -laF /boot
@@ -98,7 +99,7 @@ I later realized that additional modules are installed with each kernel in `/lib
     $ uptime
      09:07:56  up 1 min,  1 user,  load average: 0.77, 0.25, 0.09
     $ uname -a
-    Linux s69819.wincent.com 2.4.21-47.0.1.EL #1 Fri Oct 13 17:55:16 EDT 2006 i686 athlon i386 GNU/Linux
+    Linux s69819.example.com 2.4.21-47.0.1.EL #1 Fri Oct 13 17:55:16 EDT 2006 i686 athlon i386 GNU/Linux
     $ cat /etc/redhat-release
     Red Hat Enterprise Linux ES release 3 (Taroon Update 8)
 

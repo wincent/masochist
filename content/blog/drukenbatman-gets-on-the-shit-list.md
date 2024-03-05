@@ -48,7 +48,7 @@ The first message in full:
 
     Return-Path: <drunkenb@gmail.com>
     Received: from nproxy.gmail.com (nproxy.gmail.com [64.233.182.189])
-        by s69819.wincent.com (8.12.11.20060308/8.12.11) with ESMTP id k2VImHYR012480
+        by s69819.example.com (8.12.11.20060308/8.12.11) with ESMTP id k2VImHYR012480
         for <example@example.com>; Fri, 31 Mar 2006 12:48:18 -0600
     Received: by nproxy.gmail.com with SMTP id q29so667244nfc
             for <example@example.com>; Fri, 31 Mar 2006 10:48:17 -0800 (PST)
@@ -145,7 +145,7 @@ The second:
 
     Return-Path: <drunkenb@gmail.com>
     Received: from nproxy.gmail.com (nproxy.gmail.com [64.233.182.188])
-        by s69819.wincent.com (8.12.11.20060308/8.12.11) with ESMTP id k34K7KEQ026825
+        by s69819.example.com (8.12.11.20060308/8.12.11) with ESMTP id k34K7KEQ026825
         for <example@example.com>; Tue, 4 Apr 2006 15:07:20 -0500
     Received: by nproxy.gmail.com with SMTP id q29so1245264nfc
             for <example@example.com>; Tue, 04 Apr 2006 13:07:19 -0700 (PDT)

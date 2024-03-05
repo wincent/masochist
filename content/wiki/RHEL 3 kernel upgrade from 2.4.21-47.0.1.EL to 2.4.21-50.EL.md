@@ -1,5 +1,6 @@
 ---
 tags: red.hat wiki
+title: RHEL 3 kernel upgrade from 2.4.21-47.0.1.EL to 2.4.21-50.EL
 ---
 
 These notes made while performing a [RHEL](/wiki/RHEL) 3 kernel upgrade from version 2.4.21-47.0.1.EL to 2.4.21-50.EL (gotta love those version numbers!).
@@ -49,7 +50,7 @@ Get a list of updates:
 For comparison with after the upgrade:
 
     # uname -a
-    Linux s69819.wincent.com 2.4.21-47.0.1.EL #1 Fri Oct 13 17:55:16 EDT 2006 i686 athlon i386 GNU/Linux
+    Linux s69819.example.com 2.4.21-47.0.1.EL #1 Fri Oct 13 17:55:16 EDT 2006 i686 athlon i386 GNU/Linux
     # cat /etc/redhat-release
     Red Hat Enterprise Linux ES release 3 (Taroon Update 9)
     # rpm -qa | grep kernel
@@ -162,7 +163,7 @@ Cross your fingers, hold your breath, and reboot the server which is on the othe
 73 seconds later, after logging in again:
 
     $ uname -a
-    Linux s69819.wincent.com 2.4.21-50.EL #1 Tue May 8 17:18:10 EDT 2007 i686 athlon i386 GNU/Linux
+    Linux s69819.example.com 2.4.21-50.EL #1 Tue May 8 17:18:10 EDT 2007 i686 athlon i386 GNU/Linux
     $ cat /etc/redhat-release
     Red Hat Enterprise Linux ES release 3 (Taroon Update 9)
 

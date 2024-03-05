@@ -49,7 +49,7 @@ Of course, being the cautious fellow I am I didn't just run `up2date` and forget
     $ cat /etc/redhat-release
     Red Hat Enterprise Linux ES release 3 (Taroon Update 5)
     $ uname -a
-    Linux s69819.wincent.com 2.4.21-32.0.1.EL #1 Tue May 17 17:55:54 EDT 2005 i686 athlon i386 GNU/Linux
+    Linux s69819.example.com 2.4.21-32.0.1.EL #1 Tue May 17 17:55:54 EDT 2005 i686 athlon i386 GNU/Linux
 
 I looked in `/boot/` to make sure that the kernel files were correctly installed, and confirmed that the appropriate modifications to `/boot/grub/grub.conf` had been made. I also did a `sudo up2date -uf redhat-release` after looking at exactly what files were included in the "redhat-release" package and determining that doing the update wouldn't break anything.
 
@@ -60,7 +60,7 @@ I looked in `/boot/` to make sure that the kernel files were correctly installed
     $ cat /etc/redhat-release
     Red Hat Enterprise Linux ES release 3 (Taroon Update 6)
     $ uname -a
-    Linux s69819.wincent.com 2.4.21-37.0.1.EL #1 Wed Jan 11 18:43:39 EST 2006 i686 athlon i386 GNU/Linux
+    Linux s69819.example.com 2.4.21-37.0.1.EL #1 Wed Jan 11 18:43:39 EST 2006 i686 athlon i386 GNU/Linux
 
 I did a `sudo service --status-all` and to my surprise saw that [Mailman](http://www.gnu.org/software/mailman/index.html) and [clamd](http://www.clamav.net/) were not running. A `sudo chkconfig --list` revealed that they were not set to launch at boot time. The problem was that I had done the following when I configured them for the first time:
 
