@@ -958,7 +958,7 @@
     <div id="footer">
       <p>
         Copyright &copy; 1997-2009
-        <a href="mailto:win@wincent.com">Wincent Colaiuta</a>.
+
       </p>
       <p>Page last updated 13:57:36, 20 May 2014.</p>
       <p>

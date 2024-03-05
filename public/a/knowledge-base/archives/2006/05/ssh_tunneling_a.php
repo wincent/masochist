@@ -1195,7 +1195,7 @@ define(`confSERVER_KEY',`/usr/share/ssl/certs/sendmail.pem')dnl</pre
     <div id="footer">
       <p>
         Copyright &copy; 1997-2009
-        <a href="mailto:win@wincent.com">Wincent Colaiuta</a>.
+
       </p>
       <p>Page last updated 00:30:12, 19 February 2010.</p>
       <p>

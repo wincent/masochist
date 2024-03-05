@@ -869,7 +869,7 @@ Line 10 of "source.m" starts at address 0x1f70 &lt;main+78&gt; and
     <div id="footer">
       <p>
         Copyright &copy; 1997-2009
-        <a href="mailto:win@wincent.com">Wincent Colaiuta</a>.
+
       </p>
       <p>Page last updated 00:30:11, 19 February 2010.</p>
       <p>

@@ -762,7 +762,7 @@ Copy and paste license code here</textarea
     <div id="footer">
       <p>
         Copyright &copy; 1997-2009
-        <a href="mailto:win@wincent.com">Wincent Colaiuta</a>.
+
       </p>
       <p>Page last updated 18:37:22, 19 February 2010.</p>
       <p>
