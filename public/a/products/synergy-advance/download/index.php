@@ -757,51 +757,6 @@
 
           <h4>Synergy Advance</h4>
 
-          <h5>Latest stable release</h5>
-
-          <p>Requires Mac OS X 10.3 (Panther) or later</p>
-
-          <p>
-            <a href="https://typechecked.net/download.php?item=SynergyAdvance.dmg"
-              ><img
-                style="float: right;"
-                src="/a/gfx/download.jpg"
-                alt="Download"
-                width="80"
-                height="32"/></a
-            >Synergy Advance Public Preview Release 0.4 for Mac OS X 10.3 and
-            later:
-            <a href="https://typechecked.net/download.php?item=SynergyAdvance.dmg"
-              >SynergyAdvance0.4.dmg</a
-            >
-            (disk image, 3.0MB, SHA1 checksum:
-            29453b47d4a4c80fb1f3097dfbfc84db2c92cb0f).
-          </p>
-          <p></p>
-
-          <h5>Latest beta (development) release</h5>
-
-          <p>Requires Mac OS X 10.4 (Tiger) or later.</p>
-
-          <p>
-            <a
-              href="https://typechecked.net/download.php?item=SynergyAdvanceBeta.dmg"
-              ><img
-                style="float: right;"
-                src="/a/gfx/download.jpg"
-                alt="Download"
-                width="80"
-                height="32"/></a
-            >Synergy Advance Public Preview Release 0.5.1b:
-            <a
-              href="https://typechecked.net/download.php?item=SynergyAdvanceBeta.dmg"
-              >SynergyAdvance0.5.1b.dmg</a
-            >
-            (disk image, 3.2MB, SHA1 checksum:
-            e5f9cebdcbca54966c0ccdf572edef9066bfdec4).
-          </p>
-          <p></p>
-
           <h5>Cutting edge nightly build</h5>
 
           <p>

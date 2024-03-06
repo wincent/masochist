@@ -684,13 +684,6 @@
           <li>
             <em>SHA1 checksum</em>: b438be20926ffe69441b66311020bf50de9524f6
           </li>
-          <li>
-            <em>Direct link</em>:
-            <a
-              href="https://typechecked.net/a/products/synergy-advance/download/nightlies/SynergyAdvanceNightly(459).dmg"
-              >https://typechecked.net/a/products/synergy-advance/download/nightlies/SynergyAdvanceNightly(459).dmg</a
-            >
-          </li>
         </ul>
 
         <blockquote>

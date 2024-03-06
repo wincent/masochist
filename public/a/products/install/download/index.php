@@ -851,15 +851,10 @@
               <strong>Synergy</strong>: iTunes menubar control, hot keys, cover
               art display
               <ul>
-                <li><a href="https://typechecked.net/">typechecked.netpany page</a></li>
+                <li><a href="https://typechecked.net/">Wincent company page</a></li>
                 <li>
                   <a href="http://typechecked.net/"
                     >Synergy product information</a
-                  >
-                </li>
-                <li>
-                  <a href="https://typechecked.net/download.php?item=Synergy.dmg"
-                    >Synergy download</a
                   >
                 </li>
               </ul>
@@ -870,7 +865,7 @@
               <strong>WinSwitch</strong>: Menu enhancement for Panther's Fast
               User Switching
               <ul>
-                <li><a href="https://typechecked.net/">typechecked.netpany page</a></li>
+                <li><a href="https://typechecked.net/">Wincent Company page</a></li>
               </ul>
             </li>
           </ul>

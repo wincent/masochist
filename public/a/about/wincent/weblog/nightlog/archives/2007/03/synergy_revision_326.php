@@ -685,13 +685,6 @@
             <em>SHA1 checksum</em>: 86a11d24c94cdddf1abdfe5d456cb59368c2ceb3
           </li>
           <li>
-            <em>Direct link</em>:
-            <a
-              href="https://typechecked.net/a/products/synergy-classic/download/nightlies/SynergyNightly(326).dmg"
-              >https://typechecked.net/a/products/synergy-classic/download/nightlies/SynergyNightly(326).dmg</a
-            >
-          </li>
-          <li>
             <em>Product info</em>:
             <a href="http://typechecked.net/"
               >http://typechecked.net/</a

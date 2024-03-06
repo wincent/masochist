@@ -700,48 +700,6 @@
             for instructions on how to do this.
           </p>
 
-          <h4>Hextrapolate application</h4>
-
-          <h5>
-            Hextrapolate 2.0 for Mac OS X 10.4 and later
-            <a href="https://typechecked.net/download.php?item=Hextrapolate.dmg"
-              ><img
-                style="float: right;"
-                src="/a/gfx/download.jpg"
-                alt="Download"
-                width="80"
-                height="32"
-            /></a>
-          </h5>
-
-          <p>
-            <a href="https://typechecked.net/download.php?item=Hextrapolate.dmg"
-              >Hextrapolate2.0</a
-            >
-            (disk image, 2.3MB, SHA1 checksum:
-            d2c18221cabc67df4cdfb5c392d99562a6504931).
-          </p>
-
-          <p>Mac OS X 10.3 users, please see the WinHex download below:</p>
-
-          <h5>
-            WinHex 1.0b2 for Mac OS X 10.3 and later
-            <a href="https://typechecked.net/download.php?item=WinHex.zip"
-              ><img
-                style="float: right;"
-                src="/a/gfx/download.jpg"
-                alt="Download"
-                width="80"
-                height="32"
-            /></a>
-          </h5>
-
-          <p>
-            <a href="https://typechecked.net/download.php?item=WinHex.zip"
-              >WinHex1.0b2.zip</a
-            >
-            (ZIP, 160KB, MD5 checksum: de0243fbd6273ba3ccdac242391ed865).
-          </p>
         </div>
       </div>
       <div id="right">

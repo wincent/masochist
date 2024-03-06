@@ -685,13 +685,6 @@
             <em>SHA1 checksum</em>: 37d9e3592e6a7d584bff509b53811ef19c1da6ef
           </li>
           <li>
-            <em>Direct link</em>:
-            <a
-              href="https://typechecked.net/a/products/synergy-classic/download/nightlies/Synergy3.5a4(4e616e0).zip"
-              >https://typechecked.net/a/products/synergy-classic/download/nightlies/Synergy3.5a4(4e616e0).zip</a
-            >
-          </li>
-          <li>
             <em>Product info</em>:
             <a href="http://typechecked.net/"
               >http://typechecked.net/</a

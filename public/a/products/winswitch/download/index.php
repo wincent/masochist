@@ -706,75 +706,7 @@
             for instructions on how to do this.
           </p>
 
-          <h4>WinSwitch installer (Universal Binary)</h4>
-
-          <h5>
-            WinSwitch 3.2.1 for Mac OS X 10.3 and later
-            <a href="https://typechecked.net/download.php?item=WinSwitch.dmg"
-              ><img
-                style="float:right;"
-                src="/a/gfx/download.jpg"
-                alt="Download"
-                width="80"
-                height="32"
-            /></a>
-          </h5>
-
-          <p>
-            <a href="https://typechecked.net/download.php?item=WinSwitch.dmg"
-              >WinSwitch3.2.1.dmg</a
-            >
-            (Disk Image, 1.5MB, SHA1 checksum:
-            76ef9ca7ec3db5d100dc3929437b4ce098f00f76)
-          </p>
-
-          <h4>WinSwitch source</h4>
-
-          <h5>
-            WinSwitch 3.0.1 source code
-            <a
-              href="https://typechecked.net/download.php?item=WinSwitchSource.tar.gz"
-              ><img
-                style="float:right;"
-                src="/a/gfx/download.jpg"
-                alt="Download"
-                width="80"
-                height="32"
-            /></a>
-          </h5>
-
-          <p>
-            <a
-              href="https://typechecked.net/download.php?item=WinSwitchSource.tar.gz"
-              >WinSwitch3.0.1Source.tar.gz</a
-            >
-            (tar/gzip archive, 824KB, SHA1 checksum:
-            96ecd7483b58db9adac37c6582f69c928c4cbdb2).
-          </p>
-
           <h4>WinSwitch localization pack</h4>
-
-          <h5>
-            WinSwitch 3.0b localization pack
-            <a
-              href="https://typechecked.net/download.php?item=WinSwitchLocalizationPack.tar.gz"
-              ><img
-                style="float:right;"
-                src="/a/gfx/download.jpg"
-                alt="Download"
-                width="80"
-                height="32"
-            /></a>
-          </h5>
-
-          <p>
-            <a
-              href="https://typechecked.net/download.php?item=WinSwitchLocalizationPack.tar.gz"
-              >WinSwitch3.0bLocalizationPack.tar.gz</a
-            >
-            (tar/gzip archive, 16KB, MD5 checksum:
-            6c9900747a426579b6eca2b0f72648c2).
-          </p>
 
           <p>
             For tips and information about localization, please see this

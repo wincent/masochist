@@ -730,20 +730,6 @@
           >. If you are one of these users, please download the updated version
           (3.5a2) which is now on the servers.
         </p>
-        <p>
-          You can download the updated release
-          <a href="https://typechecked.net/download.php?item=SynergyBeta.dmg"
-            >from here</a
-          >
-          and purchase a license using
-          <a href="https://typechecked.net/a/products/synergy-classic/purchase/"
-            >this page</a
-          >. The 3.2-series can still be downloaded
-          <a href="https://typechecked.net/download.php?item=SynergyJaguar.dmg"
-            >from here</a
-          >. This is a free upgrade for users who already hold a valid Synergy
-          license.
-        </p>
 
         <div id="a-00001more"><div id="more"></div></div>
 

@@ -1148,10 +1148,8 @@
             and purchase a license using
             <a href="https://typechecked.net/a/products/synergy-classic/purchase/"
               >this page</a
-            >. The 3.2 series can still be downloaded
-            <a href="https://typechecked.net/download.php?item=SynergyJaguar.dmg"
-              >from here</a
-            >. Once the 3.5 series goes final it will be a free upgrade to all
+            >.
+            Once the 3.5 series goes final it will be a free upgrade to all
             users who have purchased a license for Synergy 3.0 or higher (that
             is, if you purchased on or after 5 September 2006 then 3.5 will be a
             free upgrade for you).
@@ -1276,10 +1274,8 @@
             and purchase a license using
             <a href="https://typechecked.net/a/products/synergy-classic/purchase/"
               >this page</a
-            >. The 3.2 series can still be downloaded
-            <a href="https://typechecked.net/download.php?item=SynergyJaguar.dmg"
-              >from here</a
-            >. Once the 3.5 series goes final it will be a free upgrade to all
+            >.
+            Once the 3.5 series goes final it will be a free upgrade to all
             users who have purchased a license for Synergy 3.0 or higher (that
             is, if you purchased on or after 5 September 2006 then 3.5 will be a
             free upgrade for you).
@@ -1345,10 +1341,8 @@
             and purchase a license using
             <a href="https://typechecked.net/a/products/synergy-classic/purchase/"
               >this page</a
-            >. The 3.2 series can still be downloaded
-            <a href="https://typechecked.net/download.php?item=SynergyJaguar.dmg"
-              >from here</a
-            >. Once the 3.5 series goes final it will be a free upgrade to all
+            >.
+            Once the 3.5 series goes final it will be a free upgrade to all
             users who have purchased a license for Synergy 3.0 or higher (that
             is, if you purchased on or after 5 September 2006 then 3.5 will be a
             free upgrade for you).
@@ -1425,20 +1419,6 @@
             >
             (3.5a2) which is now on the servers.
           </p>
-          <p>
-            You can download the updated release
-            <a href="https://typechecked.net/download.php?item=SynergyBeta.dmg"
-              >from here</a
-            >
-            and purchase a license using
-            <a href="https://typechecked.net/a/products/synergy-classic/purchase/"
-              >this page</a
-            >. The 3.2-series can still be downloaded
-            <a href="https://typechecked.net/download.php?item=SynergyJaguar.dmg"
-              >from here</a
-            >. This is a free upgrade for users who already hold a valid Synergy
-            license.
-          </p>
 
           <p class="more-categories">
             More
@@ -1486,20 +1466,6 @@
               href="https://typechecked.net/a/products/synergy-classic/history/#3.5a"
               >here</a
             >.
-          </p>
-          <p>
-            You can download the new release
-            <a href="https://typechecked.net/download.php?item=SynergyBeta.dmg"
-              >from here</a
-            >
-            and purchase a license using
-            <a href="https://typechecked.net/a/products/synergy-classic/purchase/"
-              >this page</a
-            >. The 3.2-series can still be downloaded
-            <a href="https://typechecked.net/download.php?item=SynergyJaguar.dmg"
-              >from here</a
-            >. This is a free upgrade for users who already hold a valid Synergy
-            license.
           </p>
 
           <p class="more-categories">

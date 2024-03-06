@@ -670,16 +670,7 @@
           <h5><a id="download" name="download"></a>Download</h5>
 
           <p>
-            Version 1.0.1 is available for
-            <a
-              href="https://typechecked.net/a/products/bansshee/download/bansshee-1.0.1.tar.gz"
-              >download here</a
-            >
-            (28KB).
-          </p>
-
-          <p>
-            You can also check out the latest version of the source via Git; for
+            You can check out the latest version of the source via Git; for
             example, to check out into a directory named <tt>bansshee</tt>:
           </p>
 

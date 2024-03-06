@@ -685,13 +685,6 @@
             <em>SHA1 checksum</em>: 6a9fafacf05d865cc155f33f192c89f86f541e28
           </li>
           <li>
-            <em>Direct link</em>:
-            <a
-              href="https://typechecked.net/a/products/hextrapolate/download/nightlies/HextrapolateNightly(91).dmg"
-              >https://typechecked.net/a/products/hextrapolate/download/nightlies/HextrapolateNightly(91).dmg</a
-            >
-          </li>
-          <li>
             <em>Product info</em>:
             <a href="https://hex.typechecked.net/"
               >https://hex.typechecked.net/</a
