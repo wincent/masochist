@@ -1,6 +1,6 @@
 type Table = {
   [label: string]:
-    | MemoryUsageObject
+    | NodeJS.MemoryUsage
     | {
       [category: string]: number | undefined;
     };
