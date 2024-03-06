@@ -1165,7 +1165,7 @@
           <p>
             At some point during this week email might temporarily go down,
             hopefully only for about an hour (delivery failures should be
-            temporary), and the typechecked.net domain itself will go down at
+            temporary), and the site itself will go down at
             roughly the same time too. When it comes back up we'll be running on
             the new server. If you make a purchase during that time you might
             have to wait an hour or two for your license information, but we'll

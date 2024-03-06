@@ -670,7 +670,7 @@
             complimentary license information:
           </p>
           <ul>
-            <li>Email address: <code>free@typechecked.net</code></li>
+            <li>Email address: <code>free@wincent.com</code></li>
             <li>
               Serial number: <code>SYN-100-dce6-7589-307e-0497-98c7</code>
             </li>

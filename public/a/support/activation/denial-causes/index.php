@@ -762,8 +762,7 @@
 
           <p>
             Any Wincent product that requires product activation must send a
-            specially formatted activation request to the typechecked.net server (or
-            more precisely the typechecked.net subdomain) at the time of activation.
+            specially formatted activation request to the typechecked.net server at the time of activation.
             The format is extremely simple and contains only two pieces of
             information (randomly generated numbers that could not be used to
             identify you personally if anybody were observing the activation).
