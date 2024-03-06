@@ -9,6 +9,6 @@ Firstly, because my old address, has been plastered all over the Internet for ab
 
 Secondly, I registered the dot-org in 1999 but since obtaining the dot-com (not sure exactly when, I think it was in 2002 or 2003) I have gradually been moving more and more aspects of my business over to the dot-com domain. It makes sense that outgoing mail should come from dot-com and not dot-org.
 
-So until the end of June this year I will continue to accept delivery at the old address. After that I will probably start bouncing mail and including the URL for [the contact form](http://typechecked.net/a/contact/mail/) in the bounce message.
+So until the end of June this year I will continue to accept delivery at the old address. After that I will probably start bouncing mail and including the URL for the contact form in the bounce message.
 
 Effective immediately, all outgoing email will be coming from the new address. The new address is the same as the old address, except it's dot-com rather than dot-org. An updated copy of my PEM email certificate (encryption and signature verification) has been added to [this page](http://typechecked.net/a/about/wincent/).

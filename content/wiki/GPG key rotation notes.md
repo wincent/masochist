@@ -22,10 +22,10 @@ At the moment, I have two active GPG keys:
 
 I have those set up with the major repository hosts (eg. GitHub, GitLab, BitBucket, Codeberg, and Source Hut) so that they can display signed commits and tags as verified. Additionally, I have some older[^older] keys registered that I previously used to sign objects:
 
-- [`6F252437134D9429`](https://keyserver.ubuntu.com/pks/lookup?search=6F252437134D9429&fingerprint=on&op=index), associated with an old address (`example@example.com`); this one expired on 2017-07-07, and one of the oldest objects I can find signed with that was [the Command-T 1.8 release tag](https://github.com/wincent/command-t/releases/tag/1.8) back in March 2014 (in [the 1.9 release tag](https://github.com/wincent/command-t/releases/tag/1.9) in May 2014 you can see I switched to my `F962DC1A1941CCC4`/`greg@hurrell.net` key).
-- [`6B746F3C37BAF280`](https://keyserver.ubuntu.com/pks/lookup?search=6B746F3C37BAF280&fingerprint=on&op=index), also associated with `example@example.com`; it is set to expire on 2024-01-12, and I can't actually find any example objects that I ever signed with this one, but I am keeping it around just in case[^think].
+- [`6F252437134D9429`](https://keyserver.ubuntu.com/pks/lookup?search=6F252437134D9429&fingerprint=on&op=index), associated with an old address (`win@wincent.com`); this one expired on 2017-07-07, and one of the oldest objects I can find signed with that was [the Command-T 1.8 release tag](https://github.com/wincent/command-t/releases/tag/1.8) back in March 2014 (in [the 1.9 release tag](https://github.com/wincent/command-t/releases/tag/1.9) in May 2014 you can see I switched to my `F962DC1A1941CCC4`/`greg@hurrell.net` key).
+- [`6B746F3C37BAF280`](https://keyserver.ubuntu.com/pks/lookup?search=6B746F3C37BAF280&fingerprint=on&op=index), also associated with `win@wincent.com`; it is set to expire on 2024-01-12, and I can't actually find any example objects that I ever signed with this one, but I am keeping it around just in case[^think].
 
-[^older]: These ones are only registered with GitHub, because it is the main source host. Only one of them is registered with Source Hut (for some reason, it let me add `6B746F3C37BAF280` but rejects `6F252437134D9429`). Neither is registered with Codeberg (because Codeberg either requires me to verify the key by using it to sign a challenge — and I don't have the private key handy right now — or by adding `example@example.com` as a verified email address, which I don't want to do because I retired that one from circulation a while ago.) GitLab rejects both keys as invalid, and BitBucket doesn't support GPG keys at all despite there being [a ticket open for it](https://jira.atlassian.com/browse/BCLOUD-3166) for over 12 year now.
+[^older]: These ones are only registered with GitHub, because it is the main source host. Only one of them is registered with Source Hut (for some reason, it let me add `6B746F3C37BAF280` but rejects `6F252437134D9429`). Neither is registered with Codeberg (because Codeberg either requires me to verify the key by using it to sign a challenge — and I don't have the private key handy right now — or by adding `win@wincent.com` as a verified email address, which I don't want to do because I retired that one from circulation a while ago.) GitLab rejects both keys as invalid, and BitBucket doesn't support GPG keys at all despite there being [a ticket open for it](https://jira.atlassian.com/browse/BCLOUD-3166) for over 12 year now.
 
 [^think]: If I had to guess, I'd say I probably created this second key in some past time when I thought I should have one key per machine, instead of one key per identity.
 
@@ -691,7 +691,7 @@ Actually, I'm persuaded by [this argument](https://riseup.net/en/security/messag
 
 So what I am going to do is:
 
--   (Preliminary: clean out old private primary keys for example@example.com)
+-   (Preliminary: clean out old private primary keys)
 -   Leave the expiry date on my current primary key.
 -   Generate a revocation certificate and store it somewhere pretty safe (eg. 1Password).
 -   Optionally, create a new subkey for encryption (note: [primary key is a signing key, and an encryption subkey is automatically generated](https://wiki.debian.org/Subkeys), so can actually just use that).
@@ -711,24 +711,24 @@ Ok, this is not necessarily the most direct way to do all this, but it's what I 
 gpg --list-secret-keys --keyid-format=long --with-keygrip --with-fingerprint
 
 # Export my old expired key, for copying into 1Password
-gpg --export-secret-keys --armor --output 'example@example.com GPG key 0x6F252437134D9429 expired 2017-07-07.asc' 0x6F252437134D9429
+gpg --export-secret-keys --armor --output 'win@wincent.com GPG key 0x6F252437134D9429 expired 2017-07-07.asc' 0x6F252437134D9429
 
 # After adding the file to 1Password (use `srm` instead of `rm` preferrably).
-rm 'example@example.com GPG key 0x6F252437134D9429 expired 2017-07-07.asc'
+rm 'win@wincent.com GPG key 0x6F252437134D9429 expired 2017-07-07.asc'
 gpg --delete-secret-keys 0x6F252437134D9429
 
-# Going to do the same for my newer, unexpired example@example.com key, because I don't use it.
-gpg --export-secret-keys --armor --output 'example@example.com GPG key 0x6B746F3C37BAF280 expires 2024-01-12.asc' 0x6B746F3C37BAF280
+# Going to do the same for my newer, unexpired win@wincent.com key, because I don't use it.
+gpg --export-secret-keys --armor --output 'win@wincent.com GPG key 0x6B746F3C37BAF280 expires 2024-01-12.asc' 0x6B746F3C37BAF280
 
 # After adding the file to 1Password.
 gpg --delete-secret-keys 0x6B746F3C37BAF280
 
 # Prove that I can reimport it (note: need same passphrase used when exporting)
-gpg --import 'example@example.com GPG key 0x6B746F3C37BAF280 expires 2024-01-12.asc'
+gpg --import 'win@wincent.com GPG key 0x6B746F3C37BAF280 expires 2024-01-12.asc'
 
 # Final clean-up.
 gpg --delete-secret-keys 0x6B746F3C37BAF280
-rm 'example@example.com GPG key 0x6B746F3C37BAF280 expires 2024-01-12.asc'
+rm 'win@wincent.com GPG key 0x6B746F3C37BAF280 expires 2024-01-12.asc'
 
 # Generate separate identity for work.
 gpg --full-generate-key
@@ -774,7 +774,7 @@ rm 'wincent@github.com GPG key 0x62106B56923F3481 expires 2022-06-04.asc'
 gpg --delete-secret-keys 0x62106B56923F3481
 
 # Create a key revocation certificate for my main key.
-# (Note that I am not going to do that for my example@example.com key;
+# (Note that I am not going to do that for my win@wincent.com key;
 # I'm just going to let that one die off slowly, because I am lazy).
 gpg --gen-revoke --output 'greg@hurrell.net GPG revocation certificate for key 0xF962DC1A1941CCC4.rev' 0xF962DC1A1941CCC4
 > 0 = No reason specified

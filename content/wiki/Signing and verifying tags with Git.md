@@ -27,7 +27,7 @@ I was puzzled at first to find that I could never verify signatures using [Git 1
 This appears to successfully sign the tag:
 
     Necesita una frase contraseña para desbloquear la clave secreta
-    del usuario: "Greg Hurrell <greg@hurrell.net>"
+    del usuario: "Wincent Colaiuta <win@wincent.com>"
     clave DSA de 1024 bits, ID 134D9429, creada el 2007-07-10
 
 But verification does not work:
@@ -40,12 +40,12 @@ As shown below:
     object 3418e660181ac2e25dcdd561ef5aa4e584203c68
     type commit
     tag v0.2
-    tagger Greg Hurrell <greg@hurrell.net> Tue Jul 10 15:58:56 2007 +0200
+    tagger Wincent Colaiuta <win@wincent.com> Tue Jul 10 15:58:56 2007 +0200
 
     Yet another tag.
     sed: 1: "/-----BEGIN PGP/Q": invalid command code Q
     gpg: Firmado el Tue Jul 10 15:59:03 2007 CEST usando clave DSA ID 134D9429
-    gpg: Firma INCORRECTA de "Greg Hurrell <greg@hurrell.net>"
+    gpg: Firma INCORRECTA de "Wincent Colaiuta <win@wincent.com>"
 
 First, note the `sed` error ("`invalid command code Q`") and the fact that the signature is rejected ("Firma INCORRECTA").
 
