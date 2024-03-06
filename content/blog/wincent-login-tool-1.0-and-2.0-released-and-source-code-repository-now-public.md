@@ -35,7 +35,4 @@ Periodically-updated backup mirrors are already in place at [GitHub](/wiki/GitHu
 
 # Binary downloads
 
-There are no official product pages yet, and perhaps there never will be, but pre-built executables have been placed at the following locations:
-
--   <http://typechecked.net/a/products/login-tool/download/login-tool-1.0.zip>
--   <http://typechecked.net/a/products/login-tool/download/login-tool-2.0.zip>
+There are no official product pages yet, and perhaps there never will be, but pre-built executables have been placed.

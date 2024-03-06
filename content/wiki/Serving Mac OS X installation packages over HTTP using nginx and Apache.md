@@ -10,7 +10,7 @@ I was wondering if it would be wise to serve [Mac OS X](/wiki/Mac_OS_X) installa
 
 ```shell
 $ curl -O -D header-dump \
-  http://typechecked.net/a/products/wincent-icon-util/download/WincentIconUtility.pkg
+  http://example.com/a/products/wincent-icon-util/download/WincentIconUtility.pkg
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100 23488  100 23488    0     0  16723      0  0:00:01  0:00:01 --:--:-- 20213
