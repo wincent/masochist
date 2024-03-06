@@ -21,4 +21,4 @@ I am still putting together a downloadable package, hope to post it soon to <htt
 
 #### Update
 
-Bansshee has been [publicly released](http://bansshee.org/).
+Bansshee has been publicly released.

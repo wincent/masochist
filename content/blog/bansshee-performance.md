@@ -3,7 +3,7 @@ title: Bansshee performance
 tags: blog
 ---
 
-So [Bansshee](http://bansshee.org/) is out.
+So Bansshee is out.
 
 I wrote it [back in April this year](http://typechecked.net/a/about/wincent/weblog/archives/2006/04/bansshee_my_ans.php) and since then it has been [performing without skipping a beat](http://typechecked.net/a/about/wincent/weblog/archives/2006/04/bansshee_update.php).
 

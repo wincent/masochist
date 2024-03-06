@@ -52,4 +52,4 @@ Anyway, so I'm currently testing it. If it performs as I expect I'll publicly re
 
 #### Update
 
-Bansshee has been [publicly released](http://bansshee.org/).
+Bansshee has been publicly released.
