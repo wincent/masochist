@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/the-omni-source-license"
-        >https://wincent.com/blog/the-omni-source-license</a
+      <a href="https://typechecked.net/blog/the-omni-source-license"
+        >https://typechecked.net/blog/the-omni-source-license</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/the-omni-source-license');
+    window.location.replace('https://typechecked.net/blog/the-omni-source-license');
   </script>
 </html>

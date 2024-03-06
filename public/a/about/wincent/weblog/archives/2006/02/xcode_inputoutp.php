@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/xcode-input-output-files-bug"
-        >https://wincent.com/blog/xcode-input-output-files-bug</a
+      <a href="https://typechecked.net/blog/xcode-input-output-files-bug"
+        >https://typechecked.net/blog/xcode-input-output-files-bug</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/xcode-input-output-files-bug',
+      'https://typechecked.net/blog/xcode-input-output-files-bug',
     );
   </script>
 </html>

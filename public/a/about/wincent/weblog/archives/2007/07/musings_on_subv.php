@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/musings-on-subversion-svk-and-git"
-        >https://wincent.com/blog/musings-on-subversion-svk-and-git</a
+      <a href="https://typechecked.net/blog/musings-on-subversion-svk-and-git"
+        >https://typechecked.net/blog/musings-on-subversion-svk-and-git</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/musings-on-subversion-svk-and-git',
+      'https://typechecked.net/blog/musings-on-subversion-svk-and-git',
     );
   </script>
 </html>

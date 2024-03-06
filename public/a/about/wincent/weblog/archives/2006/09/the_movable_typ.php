@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/the-movable-type-upgrade-procedure-sucks"
-        >https://wincent.com/blog/the-movable-type-upgrade-procedure-sucks</a
+        href="https://typechecked.net/blog/the-movable-type-upgrade-procedure-sucks"
+        >https://typechecked.net/blog/the-movable-type-upgrade-procedure-sucks</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/the-movable-type-upgrade-procedure-sucks',
+      'https://typechecked.net/blog/the-movable-type-upgrade-procedure-sucks',
     );
   </script>
 </html>

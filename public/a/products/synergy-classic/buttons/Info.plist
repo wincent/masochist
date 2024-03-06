@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<!-- This is a sample file. You should edit the values in this file, delete these explanatory comments, and include the file inside your button set's "synergyButtons" folder. -->
-	<!-- All keys in this file are optional. You can remove any keys that you do not wish to include. If you submit this button set to Wincent, the information will be made public on the wincent.com website (and will be visible within the user interface of Synergy Advance), so you should therefore omit any information that you wish to keep confidential (for example, you may wish to keep your email address away from the eyes of spammers. -->
+	<!-- All keys in this file are optional. You can remove any keys that you do not wish to include. If you submit this button set to Wincent, the information will be made public on the typechecked.net website (and will be visible within the user interface of Synergy Advance), so you should therefore omit any information that you wish to keep confidential (for example, you may wish to keep your email address away from the eyes of spammers. -->
 	<!-- In submitting button sets to Wincent, you retain the copyright on the work that you have created, but you grant Wincent an unlimited, royalty-free license to redistribute the copyrighted work, either by making it available for download or by including it within Synergy and/or Synergy Advance. The "Wincent Colaiuta" in the copyright attribution below is for example purposes only. You should delete it. -->
 	<key>Author copyright</key>
 	<string>Copyright ¬© 2004 Wincent Colaiuta, All Rights Reserved.</string>
@@ -17,7 +17,7 @@
 	<string>Wincent</string>
 	<!-- You can promote your website or the website of your organization or business by including the "Author website" key. -->
 	<key>Author website</key>
-	<string>https://wincent.com/</string>
+	<string>https://typechecked.net/</string>
 	<!-- If your set is specifically designed to be used with the buttons placed next to each other with a zero-pixel gap in between them, you should set the "Default button spacing" key to a value of 0 (zero). If your set does not specifically require this then you should omit the key and allow the users of your button set to use their preexisting button spacing preference. -->
 	<key>Default button spacing</key>
 	<integer>0</integer>

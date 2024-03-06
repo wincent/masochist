@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/urls-in-preprocessed-property-lists"
-        >https://wincent.com/blog/urls-in-preprocessed-property-lists</a
+      <a href="https://typechecked.net/blog/urls-in-preprocessed-property-lists"
+        >https://typechecked.net/blog/urls-in-preprocessed-property-lists</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/urls-in-preprocessed-property-lists',
+      'https://typechecked.net/blog/urls-in-preprocessed-property-lists',
     );
   </script>
 </html>

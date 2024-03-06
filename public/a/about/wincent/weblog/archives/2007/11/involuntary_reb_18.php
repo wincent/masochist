@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/involuntary-reboot-log-21"
-        >https://wincent.com/blog/involuntary-reboot-log-21</a
+      <a href="https://typechecked.net/blog/involuntary-reboot-log-21"
+        >https://typechecked.net/blog/involuntary-reboot-log-21</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/involuntary-reboot-log-21',
+      'https://typechecked.net/blog/involuntary-reboot-log-21',
     );
   </script>
 </html>

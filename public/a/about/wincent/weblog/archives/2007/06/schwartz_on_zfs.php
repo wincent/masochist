@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/schwartz-on-zfs-again"
-        >https://wincent.com/blog/schwartz-on-zfs-again</a
+      <a href="https://typechecked.net/blog/schwartz-on-zfs-again"
+        >https://typechecked.net/blog/schwartz-on-zfs-again</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/schwartz-on-zfs-again');
+    window.location.replace('https://typechecked.net/blog/schwartz-on-zfs-again');
   </script>
 </html>

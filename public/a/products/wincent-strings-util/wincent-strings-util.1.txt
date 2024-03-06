@@ -217,7 +217,7 @@ HISTORY
      19, 2006.
 
 AUTHORS
-     Wincent Colaiuta (https://wincent.com/)
+     Wincent Colaiuta (https://typechecked.net/)
      Omni Development (http://www.omnigroup.com/)
 
 LICENSE

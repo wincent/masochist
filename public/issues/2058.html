@@ -8,7 +8,7 @@
     />
     <title>
       Bug #2058: Broken output for autolinked URL in pre tag (when combined with
-      syntax highlighting) &middot; wincent.com
+      syntax highlighting) &middot; typechecked.net
     </title>
     <link
       rel="stylesheet"
@@ -84,7 +84,7 @@
                   <tr>
                     <th>Product</th>
                     <td>
-                      wincent.com
+                      typechecked.net
                     </td>
                   </tr>
                   <tr>
@@ -120,14 +120,14 @@
                 <div class="issue-description-body">
                   <p>Sample broken input:</p>
                   <pre class="ruby-syntax">render
-rendered.should have_link('Home', href: '<a href="https://wincent.com/'" class="external">https://wincent.com/'</a>)</pre>
+rendered.should have_link('Home', href: '<a href="https://typechecked.net/'" class="external">https://typechecked.net/'</a>)</pre>
                   <p>
                     Here's the same, without the
                     <code>lang=&quot;ruby&quot;</code> attribute on the
                     <code>&lt;pre&gt;</code> tag:
                   </p>
                   <pre>render
-rendered.should have_link('Home', href: '<a href="https://wincent.com/'" class="external">https://wincent.com/'</a>)</pre>
+rendered.should have_link('Home', href: '<a href="https://typechecked.net/'" class="external">https://typechecked.net/'</a>)</pre>
                   <p>
                     So it's not a bug in the Wikitext gem, but in the way it
                     interplays with the syntax highlighting on this site.
@@ -173,7 +173,7 @@ rendered.should have_link('Home', href: '<a href="https://wincent.com/'" class="
                   <p><strong>Product</strong> changed:</p>
                   <ul>
                     <li><strong>From:</strong> wikitext</li>
-                    <li><strong>To:</strong> wincent.com</li>
+                    <li><strong>To:</strong> typechecked.net</li>
                   </ul>
                 </blockquote>
               </li>
@@ -189,7 +189,7 @@ rendered.should have_link('Home', href: '<a href="https://wincent.com/'" class="
                 <blockquote>
                   <p><strong>Product</strong> changed:</p>
                   <ul>
-                    <li><strong>From:</strong> wincent.com</li>
+                    <li><strong>From:</strong> typechecked.net</li>
                     <li><strong>To:</strong> wikitext</li>
                   </ul>
                 </blockquote>
@@ -207,7 +207,7 @@ rendered.should have_link('Home', href: '<a href="https://wincent.com/'" class="
                   <p><strong>Product</strong> changed:</p>
                   <ul>
                     <li><strong>From:</strong> wikitext</li>
-                    <li><strong>To:</strong> wincent.com</li>
+                    <li><strong>To:</strong> typechecked.net</li>
                   </ul>
                 </blockquote>
               </li>

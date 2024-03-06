@@ -1,6 +1,6 @@
 # What
 
-This repo contains the source code and content for my website at [wincent.com].
+This repo contains the source code and content for my website at [typechecked.net].
 
 Content is authored in plain-text-friendly markup formats like [Markdown] and
 served using a dynamic stack (described below). New code can be deployed and
@@ -148,4 +148,4 @@ $ git push masochist
 [Redis]: http://redis.io/
 [Relay]: http://facebook.github.io/relay/
 [Vim]: https://github.com/vim/vim
-[wincent.com]: https://wincent.com
+[typechecked.net]: https://typechecked.net/

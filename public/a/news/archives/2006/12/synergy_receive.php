@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/synergy-receives-very-nice-rating-in-atpm-review"
-        >https://wincent.com/blog/synergy-receives-very-nice-rating-in-atpm-review</a
+        href="https://typechecked.net/blog/synergy-receives-very-nice-rating-in-atpm-review"
+        >https://typechecked.net/blog/synergy-receives-very-nice-rating-in-atpm-review</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/synergy-receives-very-nice-rating-in-atpm-review',
+      'https://typechecked.net/blog/synergy-receives-very-nice-rating-in-atpm-review',
     );
   </script>
 </html>

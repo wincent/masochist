@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/a-world-without-rss"
-        >https://wincent.com/blog/a-world-without-rss</a
+      <a href="https://typechecked.net/blog/a-world-without-rss"
+        >https://typechecked.net/blog/a-world-without-rss</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/a-world-without-rss');
+    window.location.replace('https://typechecked.net/blog/a-world-without-rss');
   </script>
 </html>

@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/synergy-advance-public-preview-release-0.1"
-        >https://wincent.com/blog/synergy-advance-public-preview-release-0.1</a
+        href="https://typechecked.net/blog/synergy-advance-public-preview-release-0.1"
+        >https://typechecked.net/blog/synergy-advance-public-preview-release-0.1</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/synergy-advance-public-preview-release-0.1',
+      'https://typechecked.net/blog/synergy-advance-public-preview-release-0.1',
     );
   </script>
 </html>

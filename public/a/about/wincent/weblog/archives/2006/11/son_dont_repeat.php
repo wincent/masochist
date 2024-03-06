@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/son-dont-repeat-the-same-mistakes-i-made"
-        >https://wincent.com/blog/son-dont-repeat-the-same-mistakes-i-made</a
+        href="https://typechecked.net/blog/son-dont-repeat-the-same-mistakes-i-made"
+        >https://typechecked.net/blog/son-dont-repeat-the-same-mistakes-i-made</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/son-dont-repeat-the-same-mistakes-i-made',
+      'https://typechecked.net/blog/son-dont-repeat-the-same-mistakes-i-made',
     );
   </script>
 </html>

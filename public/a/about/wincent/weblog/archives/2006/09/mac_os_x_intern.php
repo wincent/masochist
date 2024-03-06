@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/mac-os-x-internet-connection-sharing-hacked"
-        >https://wincent.com/blog/mac-os-x-internet-connection-sharing-hacked</a
+        href="https://typechecked.net/blog/mac-os-x-internet-connection-sharing-hacked"
+        >https://typechecked.net/blog/mac-os-x-internet-connection-sharing-hacked</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/mac-os-x-internet-connection-sharing-hacked',
+      'https://typechecked.net/blog/mac-os-x-internet-connection-sharing-hacked',
     );
   </script>
 </html>

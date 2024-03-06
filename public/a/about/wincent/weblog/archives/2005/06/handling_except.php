@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/handling-exceptions-with-custom-root-classes"
-        >https://wincent.com/blog/handling-exceptions-with-custom-root-classes</a
+        href="https://typechecked.net/blog/handling-exceptions-with-custom-root-classes"
+        >https://typechecked.net/blog/handling-exceptions-with-custom-root-classes</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/handling-exceptions-with-custom-root-classes',
+      'https://typechecked.net/blog/handling-exceptions-with-custom-root-classes',
     );
   </script>
 </html>

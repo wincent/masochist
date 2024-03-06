@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/my-favorite-programming-book"
-        >https://wincent.com/blog/my-favorite-programming-book</a
+      <a href="https://typechecked.net/blog/my-favorite-programming-book"
+        >https://typechecked.net/blog/my-favorite-programming-book</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/my-favorite-programming-book',
+      'https://typechecked.net/blog/my-favorite-programming-book',
     );
   </script>
 </html>

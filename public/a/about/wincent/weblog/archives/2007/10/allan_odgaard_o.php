@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/allan-odgaard-on-file-type-detection-in-textmate"
-        >https://wincent.com/blog/allan-odgaard-on-file-type-detection-in-textmate</a
+        href="https://typechecked.net/blog/allan-odgaard-on-file-type-detection-in-textmate"
+        >https://typechecked.net/blog/allan-odgaard-on-file-type-detection-in-textmate</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/allan-odgaard-on-file-type-detection-in-textmate',
+      'https://typechecked.net/blog/allan-odgaard-on-file-type-detection-in-textmate',
     );
   </script>
 </html>

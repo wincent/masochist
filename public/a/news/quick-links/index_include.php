@@ -64,7 +64,7 @@
       Aperture plug-in that uses
       Wincent's Install tool. Links
       appear on the Install
-      <a href="https://wincent.com/a/products/install/download/"
+      <a href="https://typechecked.net/a/products/install/download/"
         >downloads page</a
       >.
     </p>
@@ -213,7 +213,7 @@
 </ul>
 
 <p class="more">
-  <a href="https://wincent.com/a/news/quick-links/archives/"
+  <a href="https://typechecked.net/a/news/quick-links/archives/"
     >Quick links archives...</a
   >
 </p>

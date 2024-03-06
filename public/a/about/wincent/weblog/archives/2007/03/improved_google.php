@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/improved-google-search-and-adsense"
-        >https://wincent.com/blog/improved-google-search-and-adsense</a
+      <a href="https://typechecked.net/blog/improved-google-search-and-adsense"
+        >https://typechecked.net/blog/improved-google-search-and-adsense</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/improved-google-search-and-adsense',
+      'https://typechecked.net/blog/improved-google-search-and-adsense',
     );
   </script>
 </html>

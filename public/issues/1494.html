@@ -8,7 +8,7 @@
     />
     <title>
       Feature request #1494: Don't show dotfiles unless query contains a dot
-      &middot; wincent.com
+      &middot; typechecked.net
     </title>
     <link
       rel="stylesheet"
@@ -241,8 +241,8 @@
                   <p>We want to match.</p>
                   <p>But given:</p>
                   <pre>
-foo/bar/wincent.com/.secret/baz
-foo/bar/wincent.com/baz
+foo/bar/typechecked.net/.secret/baz
+foo/bar/typechecked.net/baz
 foo/bar/.secret/baz</pre
                   >
                   <p>
@@ -257,7 +257,7 @@ foo/bar/.secret/baz</pre
                   <p>The pitfall here is given paths like:</p>
                   <pre>
 .Trash/wanted.docs/other/map/baz
-web/wincent.com/baz</pre
+web/typechecked.net/baz</pre
                   >
                   <p>And a search string like:</p>
                   <pre>w.comb</pre>
@@ -412,9 +412,9 @@ end</pre
                   <ul>
                     <li><code>foo/bar/.secret/baz</code> (filtered)</li>
                     <li>
-                      <code>foo/bar/wincent.com/.secret/baz</code> (filtered)
+                      <code>foo/bar/typechecked.net/.secret/baz</code> (filtered)
                     </li>
-                    <li><code>foo/bar/wincent.com/baz</code></li>
+                    <li><code>foo/bar/typechecked.net/baz</code></li>
                     <li><code>foo/bar/.secret/baz</code> (filtered)</li>
                   </ul>
                   <p>Query:</p>
@@ -429,7 +429,7 @@ end</pre
                     <li>
                       <code>.Trash/wanted.docs/other/map/baz</code> (filtered)
                     </li>
-                    <li><code>web/wincent.com/baz</code></li>
+                    <li><code>web/typechecked.net/baz</code></li>
                   </ul>
                   <p>Query:</p>
                   <ul>

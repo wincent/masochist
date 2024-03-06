@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/paypal-scammers"
-        >https://wincent.com/blog/paypal-scammers</a
+      <a href="https://typechecked.net/blog/paypal-scammers"
+        >https://typechecked.net/blog/paypal-scammers</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/paypal-scammers');
+    window.location.replace('https://typechecked.net/blog/paypal-scammers');
   </script>
 </html>

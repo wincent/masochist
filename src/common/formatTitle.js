@@ -1,3 +1,3 @@
 export default function formatTitle(title) {
-  return [...(title ? [title] : []), 'wincent.com'].join(' · ');
+  return [...(title ? [title] : []), 'typechecked.net'].join(' · ');
 }

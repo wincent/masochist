@@ -6,8 +6,8 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/a/contact/mail/"
-        >https://wincent.com/a/contact/mail/</a
+      <a href="https://typechecked.net/a/contact/mail/"
+        >https://typechecked.net/a/contact/mail/</a
       >
     </p>
   </body>

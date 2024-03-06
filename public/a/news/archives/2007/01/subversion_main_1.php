@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/subversion-maintenance-1"
-        >https://wincent.com/blog/subversion-maintenance-1</a
+      <a href="https://typechecked.net/blog/subversion-maintenance-1"
+        >https://typechecked.net/blog/subversion-maintenance-1</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/subversion-maintenance-1',
+      'https://typechecked.net/blog/subversion-maintenance-1',
     );
   </script>
 </html>

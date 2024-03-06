@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="http://www.movabletype.org/" />
-    <title>wincent.com news</title>
+    <title>typechecked.net news</title>
     <link rel="stylesheet" href="/a/styles.css" type="text/css" />
   </head>
 
@@ -13,10 +13,10 @@
       style="text-align: center; font-family: 'Lucida Grande'; margin: 5px 250px 5px 250px; padding: 5px; font-size: x-small; border: 2px solid silver; -webkit-border-radius: 0.5em; -moz-border-radius: 0.5em; background: #fefefe;"
     >
       <p>
-        You are currently looking at an older section of the wincent.com
+        You are currently looking at an older section of the typechecked.net
         website.<br />
         Please check the new version of the site at
-        <a href="https://wincent.com/">https://wincent.com/</a> for updated
+        <a href="https://typechecked.net/">https://typechecked.net/</a> for updated
         content.<br />
       </p>
     </div>
@@ -76,7 +76,7 @@
           align="center"
           valign="middle"
         >
-          <a href="https://wincent.com/"
+          <a href="https://typechecked.net/"
             ><img
               src="/a/gfx/wincent-logo-small-gray-bg.jpg"
               width="43"
@@ -84,7 +84,7 @@
               alt="wincent"
               align="middle"
           /></a>
-          <a href="https://wincent.com/a/news/"
+          <a href="https://typechecked.net/a/news/"
             ><img
               src="/a/gfx/news-header.jpg"
               width="384"
@@ -130,7 +130,7 @@
           <ul style="width: 73px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/products/"
+                href="https://typechecked.net/a/products/"
                 title="Full products listing"
                 ><img
                   src="/a/gfx/header/products-off.jpg"
@@ -141,35 +141,35 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/products/synergy"
+                    href="https://typechecked.net/products/synergy"
                     title="The original iTunes menu bar controller"
                     >Synergy &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/products/synergy/download"
+                        href="https://typechecked.net/products/synergy/download"
                         title="Download Synergy"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-classic/purchase/"
+                        href="https://typechecked.net/a/products/synergy-classic/purchase/"
                         title="Purchase Synergy"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/products/synergy/help"
+                        href="https://typechecked.net/products/synergy/help"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-classic/buttons/"
+                        href="https://typechecked.net/a/products/synergy-classic/buttons/"
                         title="Free button sets"
                         >Button Sets</a
                       >
@@ -178,35 +178,35 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/synergy-advance/"
+                    href="https://typechecked.net/a/products/synergy-advance/"
                     title="Multi-purpose audio companion"
                     >Synergy Advance &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/download/"
+                        href="https://typechecked.net/a/products/synergy-advance/download/"
                         title="Download Synergy Advance"
                         >Download preview</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/purchase/"
+                        href="https://typechecked.net/a/products/synergy-advance/purchase/"
                         title="Purchase Synergy Advance"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/donate/"
+                        href="https://typechecked.net/a/products/synergy-advance/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/donate/"
+                        href="https://typechecked.net/a/products/synergy-advance/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
@@ -215,35 +215,35 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/winswitch/"
+                    href="https://typechecked.net/a/products/winswitch/"
                     title="Enhanced replacement for Apple's Fast User Switching menu"
                     >WinSwitch &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/download/"
+                        href="https://typechecked.net/a/products/winswitch/download/"
                         title="Download WinSwitch"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/donate/"
+                        href="https://typechecked.net/a/products/winswitch/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/donate/"
+                        href="https://typechecked.net/a/products/winswitch/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/faq/"
+                        href="https://typechecked.net/a/products/winswitch/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -252,28 +252,28 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/hextrapolate/"
+                    href="https://typechecked.net/a/products/hextrapolate/"
                     title="Programmers number conversion tool"
                     >Hextrapolate &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/hextrapolate/download/"
+                        href="https://typechecked.net/a/products/hextrapolate/download/"
                         title="Download Hextrapolate"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/hextrapolate/purchase/"
+                        href="https://typechecked.net/a/products/hextrapolate/purchase/"
                         title="Purchase Hextrapolate"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/hextrapolate/faq/"
+                        href="https://typechecked.net/a/products/hextrapolate/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -282,42 +282,42 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/install/"
+                    href="https://typechecked.net/a/products/install/"
                     title="Installation and deployment solution for developers"
                     >Install &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/download/"
+                        href="https://typechecked.net/a/products/install/download/"
                         title="Install downloads"
                         >Downloads</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/purchase/"
+                        href="https://typechecked.net/a/products/install/purchase/"
                         title="Purchase Install"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/donate/"
+                        href="https://typechecked.net/a/products/install/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/donate/"
+                        href="https://typechecked.net/a/products/install/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/faq/"
+                        href="https://typechecked.net/a/products/install/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -326,14 +326,14 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/getsmart-pro/"
+                    href="https://typechecked.net/a/products/getsmart-pro/"
                     title="Intelligent download manager"
                     >GetSmart Pro &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/getsmart-pro/donate/"
+                        href="https://typechecked.net/a/products/getsmart-pro/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
@@ -342,7 +342,7 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/"
+                    href="https://typechecked.net/a/products/"
                     title="Full product listing"
                     >Other products...</a
                   >
@@ -352,7 +352,7 @@
           </ul>
         </td>
         <td width="48" height="25">
-          <a href="https://wincent.com/a/store/" title="Wincent online store"
+          <a href="https://typechecked.net/a/store/" title="Wincent online store"
             ><img
               src="/a/gfx/header/store-off.jpg"
               width="48"
@@ -364,7 +364,7 @@
           <ul style="width: 63px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/services/"
+                href="https://typechecked.net/a/services/"
                 title="Full services listing"
                 ><img
                   src="/a/gfx/header/services-off.jpg"
@@ -375,28 +375,28 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/custom-development/"
+                    href="https://typechecked.net/a/services/custom-development/"
                     title="Custom software development"
                     >Custom Development</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/mac-consultancy/"
+                    href="https://typechecked.net/a/services/mac-consultancy/"
                     title="Apple and Mac OS X consultancy"
                     >Apple/Mac Consultancy</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/web-design/"
+                    href="https://typechecked.net/a/services/web-design/"
                     title="Web design services"
                     >Web Design</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/hosting/"
+                    href="https://typechecked.net/a/services/hosting/"
                     title="Internet web and email hosting"
                     >Hosting</a
                   >
@@ -409,7 +409,7 @@
           <ul style="width: 62px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/support/"
+                href="https://typechecked.net/a/support/"
                 title="Support resources and links"
                 ><img
                   src="/a/gfx/header/support-off.jpg"
@@ -420,56 +420,56 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/registration/"
+                    href="https://typechecked.net/a/support/registration/"
                     title="Retrieve lost license codes"
                     >Lost License Codes</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/bugs/"
+                    href="https://typechecked.net/a/support/bugs/"
                     title="Bug tracking and feature request database"
                     >Bugs and Feature Requests</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/demo-licenses/"
+                    href="https://typechecked.net/a/support/demo-licenses/"
                     title="Obtain a demonstration license"
                     >Demonstration licenses</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/forums/"
+                    href="https://typechecked.net/a/support/forums/"
                     title="Discussion and support forums"
                     >Forums</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/faq/"
+                    href="https://typechecked.net/a/support/faq/"
                     title="Frequently Asked Questions"
                     >FAQ</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/activation/"
+                    href="https://typechecked.net/a/support/activation/"
                     title="Product activation and information"
                     >Product Activation</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/tickets/"
+                    href="https://typechecked.net/a/support/tickets/"
                     title="Open or view a support ticket"
                     >Support Tickets</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/lists/"
+                    href="https://typechecked.net/a/support/lists/"
                     title="Subscribe/unsubscribe to/from a mailing list"
                     >Mailing lists</a
                   >
@@ -481,7 +481,7 @@
         <td width="53" height="25">
           <ul style="width: 53px; height: 25px;">
             <li class="menu">
-              <a href="https://wincent.com/a/about/" title="Company information"
+              <a href="https://typechecked.net/a/about/" title="Company information"
                 ><img
                   src="/a/gfx/header/about-off.jpg"
                   width="53"
@@ -491,14 +491,14 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/about/wincent/"
+                    href="https://typechecked.net/a/about/wincent/"
                     title="About Wincent Colaiuta: the person"
                     >About Wincent Colaiuta</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/about/privacy/"
+                    href="https://typechecked.net/a/about/privacy/"
                     title="About the Wincent Privacy Policy"
                     >Privacy Policy</a
                   >
@@ -511,7 +511,7 @@
           <ul style="width: 49px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/news/"
+                href="https://typechecked.net/a/news/"
                 title="Latest news items in weblog format"
                 ><img
                   src="/a/gfx/header/news-on.jpg"
@@ -522,28 +522,28 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/news/archives/mac_os_x_news/"
+                    href="https://typechecked.net/a/news/archives/mac_os_x_news/"
                     title="Apple and Mac OS X-related news"
                     >Mac OS X News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/news/archives/product_news/"
+                    href="https://typechecked.net/a/news/archives/product_news/"
                     title="Wincent product news"
                     >Product News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/news/archives/site_news/"
+                    href="https://typechecked.net/a/news/archives/site_news/"
                     title="Site-related news"
                     >Site News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/blog"
+                    href="https://typechecked.net/blog"
                     title="Development and other notes from Wincent"
                     >Wincent Colaiuta's weblog</a
                   >
@@ -554,7 +554,7 @@
         </td>
         <td width="107" height="25">
           <a
-            href="https://wincent.com/wiki"
+            href="https://typechecked.net/wiki"
             title="Categorized Mac OS X tips and information"
             ><img
               src="/a/gfx/header/knowledge-base-off.jpg"
@@ -564,7 +564,7 @@
           /></a>
         </td>
         <td width="62" height="25">
-          <a href="https://wincent.com/a/contact/" title="Contact email form"
+          <a href="https://typechecked.net/a/contact/" title="Contact email form"
             ><img
               src="/a/gfx/header/contact-off.jpg"
               width="62"
@@ -575,7 +575,7 @@
         <td width="72" height="25">
           <ul style="width: 72px; height: 25px;">
             <li class="menu">
-              <a href="https://wincent.com/a/site-map/" title="Site overview"
+              <a href="https://typechecked.net/a/site-map/" title="Site overview"
                 ><img
                   src="/a/gfx/header/site-map-off.jpg"
                   width="72"
@@ -585,7 +585,7 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/site-map/search/"
+                    href="https://typechecked.net/a/site-map/search/"
                     title="Site search"
                     >Search</a
                   >
@@ -618,7 +618,7 @@
     </table>
 
     <div id="breadcrumbs">
-      <p><a href="https://wincent.com/">Main</a>&nbsp;&gt;&nbsp;News</p>
+      <p><a href="https://typechecked.net/">Main</a>&nbsp;&gt;&nbsp;News</p>
     </div>
 
     <div id="container">
@@ -693,7 +693,7 @@
                 released a new Aperture plug-in that uses
                 Wincent's Install
                 tool. Links appear on the Install
-                <a href="https://wincent.com/a/products/install/download/"
+                <a href="https://typechecked.net/a/products/install/download/"
                   >downloads page</a
                 >.
               </p>
@@ -866,7 +866,7 @@
           </ul>
 
           <p class="more">
-            <a href="https://wincent.com/a/news/quick-links/archives/"
+            <a href="https://typechecked.net/a/news/quick-links/archives/"
               >Quick links archives...</a
             >
           </p>
@@ -888,7 +888,7 @@
           <p>
             I've been working on moving to the new server for
             <a
-              href="https://wincent.com/a/news/archives/2008/02/server_migratio.php"
+              href="https://typechecked.net/a/news/archives/2008/02/server_migratio.php"
               >nearly a month now</a
             >, a process which has been quite slow because all the data has to
             be exported from a number of &quot;legacy&quot; applications and
@@ -919,7 +919,7 @@
           <p>
             At some point during this week email might temporarily go down,
             hopefully only for about an hour (delivery failures should be
-            temporary), and the wincent.com domain itself will go down at
+            temporary), and the typechecked.net domain itself will go down at
             roughly the same time too. When it comes back up we'll be running on
             the new server. If you make a purchase during that time you might
             have to wait an hour or two for your license information, but we'll
@@ -940,7 +940,7 @@
 
           <p class="more-categories">
             More
-            <a href="https://wincent.com/a/news/archives/site_news/"
+            <a href="https://typechecked.net/a/news/archives/site_news/"
               >Site news</a
             >
             articles
@@ -949,7 +949,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/news/archives/2008/03/final_server_mi.php"
+              href="https://typechecked.net/a/news/archives/2008/03/final_server_mi.php"
               >12:53 AM</a
             >
           </p>
@@ -961,7 +961,7 @@
           <p>
             The
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php"
               >server migration</a
             >
             from Rackspace to INetU is currently underway. My aim is do this
@@ -989,7 +989,7 @@
 
           <p class="more-categories">
             More
-            <a href="https://wincent.com/a/news/archives/site_news/"
+            <a href="https://typechecked.net/a/news/archives/site_news/"
               >Site news</a
             >
             articles
@@ -998,7 +998,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/news/archives/2008/02/server_migratio.php"
+              href="https://typechecked.net/a/news/archives/2008/02/server_migratio.php"
               >12:01 PM</a
             >
           </p>
@@ -1021,7 +1021,7 @@
             <a href="https://joker.com/">joker.com</a>, and the renewal price
             for each domain is $12.00.
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2007/03/a_call_for_help.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2007/03/a_call_for_help.php"
               >Last time</a
             >
             I made this request help was quick in coming, so I am hoping that
@@ -1041,7 +1041,7 @@
 
           <p class="more-categories">
             More
-            <a href="https://wincent.com/a/news/archives/product_news/"
+            <a href="https://typechecked.net/a/news/archives/product_news/"
               >Product news</a
             >
             articles
@@ -1050,7 +1050,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/news/archives/2008/02/call_for_banssh.php"
+              href="https://typechecked.net/a/news/archives/2008/02/call_for_banssh.php"
               >10:36 AM</a
             >
           </p>
@@ -1062,7 +1062,7 @@
           <p>
             In preparation for
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php"
               >the server move</a
             >
             at the end of this month I'll soon be migrating DNS servers.
@@ -1090,7 +1090,7 @@
 
           <p class="more-categories">
             More
-            <a href="https://wincent.com/a/news/archives/site_news/"
+            <a href="https://typechecked.net/a/news/archives/site_news/"
               >Site news</a
             >
             articles
@@ -1099,7 +1099,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/news/archives/2008/02/upcoming_dns_ch.php"
+              href="https://typechecked.net/a/news/archives/2008/02/upcoming_dns_ch.php"
               >10:27 PM</a
             >
           </p>
@@ -1110,16 +1110,16 @@
 
           <p>
             I'm pleased to announce the availability of version 3.5a5 of
-            <a href="http://wincent.com">Synergy</a>, the fifth alpha
+            <a href="http://typechecked.net">Synergy</a>, the fifth alpha
             release in the brand new 3.5 series. The last release, version 3.2,
             was
-            <a href="https://wincent.com/wiki/Leopard">Leopard</a
+            <a href="https://typechecked.net/wiki/Leopard">Leopard</a
             >-compatible but would also run on all versions of
-            <a href="https://wincent.com/wiki/Mac%20OS%20X"
+            <a href="https://typechecked.net/wiki/Mac%20OS%20X"
               >Mac OS X</a
             >
             from
-            <a href="https://wincent.com/wiki/Jaguar">Jaguar</a>
+            <a href="https://typechecked.net/wiki/Jaguar">Jaguar</a>
             onwards.
           </p>
           <p>
@@ -1136,20 +1136,20 @@
           <p>
             A full changelog appears
             <a
-              href="https://wincent.com/a/products/synergy-classic/history/#3.5a5"
+              href="https://typechecked.net/a/products/synergy-classic/history/#3.5a5"
               >here</a
             >.
           </p>
           <p>
             You can download the new release
-            <a href="https://wincent.com/download.php?item=SynergyBeta.zip"
+            <a href="https://typechecked.net/download.php?item=SynergyBeta.zip"
               >from here</a
             >
             and purchase a license using
-            <a href="https://wincent.com/a/products/synergy-classic/purchase/"
+            <a href="https://typechecked.net/a/products/synergy-classic/purchase/"
               >this page</a
             >. The 3.2 series can still be downloaded
-            <a href="https://wincent.com/download.php?item=SynergyJaguar.dmg"
+            <a href="https://typechecked.net/download.php?item=SynergyJaguar.dmg"
               >from here</a
             >. Once the 3.5 series goes final it will be a free upgrade to all
             users who have purchased a license for Synergy 3.0 or higher (that
@@ -1159,7 +1159,7 @@
 
           <p class="more-categories">
             More
-            <a href="https://wincent.com/a/news/archives/product_news/"
+            <a href="https://typechecked.net/a/news/archives/product_news/"
               >Product news</a
             >
             articles
@@ -1168,7 +1168,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/news/archives/2008/01/synergy_35a5_re.php"
+              href="https://typechecked.net/a/news/archives/2008/01/synergy_35a5_re.php"
               >12:35 PM</a
             >
           </p>
@@ -1179,7 +1179,7 @@
 
           <p>
             If you look at the
-            <a href="https://wincent.com/a/products/">products listing</a>
+            <a href="https://typechecked.net/a/products/">products listing</a>
             you'll see that there is now a new entry in the ranks,
             REnamer.
           </p>
@@ -1217,7 +1217,7 @@
 
           <p class="more-categories">
             More
-            <a href="https://wincent.com/a/news/archives/product_news/"
+            <a href="https://typechecked.net/a/news/archives/product_news/"
               >Product news</a
             >
             articles
@@ -1226,7 +1226,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/news/archives/2008/01/announcing_rena.php"
+              href="https://typechecked.net/a/news/archives/2008/01/announcing_rena.php"
             >
               2:32 PM</a
             >
@@ -1238,16 +1238,16 @@
 
           <p>
             I'm pleased to announce the availability of version 3.5a4 of
-            <a href="http://wincent.com">Synergy</a>, the fourth alpha
+            <a href="http://typechecked.net">Synergy</a>, the fourth alpha
             release in the brand new 3.5 series. The last release, version 3.2,
             was
-            <a href="https://wincent.com/wiki/Leopard">Leopard</a
+            <a href="https://typechecked.net/wiki/Leopard">Leopard</a
             >-compatible but would also run on all versions of
-            <a href="https://wincent.com/wiki/Mac%20OS%20X"
+            <a href="https://typechecked.net/wiki/Mac%20OS%20X"
               >Mac OS X</a
             >
             from
-            <a href="https://wincent.com/wiki/Jaguar">Jaguar</a>
+            <a href="https://typechecked.net/wiki/Jaguar">Jaguar</a>
             onwards.
           </p>
           <p>
@@ -1264,20 +1264,20 @@
           <p>
             A full changelog appears
             <a
-              href="https://wincent.com/a/products/synergy-classic/history/#3.5a4"
+              href="https://typechecked.net/a/products/synergy-classic/history/#3.5a4"
               >here</a
             >.
           </p>
           <p>
             You can download the new release
-            <a href="https://wincent.com/download.php?item=SynergyBeta.zip"
+            <a href="https://typechecked.net/download.php?item=SynergyBeta.zip"
               >from here</a
             >
             and purchase a license using
-            <a href="https://wincent.com/a/products/synergy-classic/purchase/"
+            <a href="https://typechecked.net/a/products/synergy-classic/purchase/"
               >this page</a
             >. The 3.2 series can still be downloaded
-            <a href="https://wincent.com/download.php?item=SynergyJaguar.dmg"
+            <a href="https://typechecked.net/download.php?item=SynergyJaguar.dmg"
               >from here</a
             >. Once the 3.5 series goes final it will be a free upgrade to all
             users who have purchased a license for Synergy 3.0 or higher (that
@@ -1287,7 +1287,7 @@
 
           <p class="more-categories">
             More
-            <a href="https://wincent.com/a/news/archives/product_news/"
+            <a href="https://typechecked.net/a/news/archives/product_news/"
               >Product news</a
             >
             articles
@@ -1296,7 +1296,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/news/archives/2008/01/synergy_35a4_re.php"
+              href="https://typechecked.net/a/news/archives/2008/01/synergy_35a4_re.php"
               >10:15 AM</a
             >
           </p>
@@ -1307,16 +1307,16 @@
 
           <p>
             I'm very pleased to announce the availability of version 3.5a3 of
-            <a href="http://wincent.com">Synergy</a>, the third alpha
+            <a href="http://typechecked.net">Synergy</a>, the third alpha
             release in the brand new 3.5 series. The last release, version 3.2,
             was
-            <a href="https://wincent.com/wiki/Leopard">Leopard</a
+            <a href="https://typechecked.net/wiki/Leopard">Leopard</a
             >-compatible but would also run on all versions of
-            <a href="https://wincent.com/wiki/Mac%20OS%20X"
+            <a href="https://typechecked.net/wiki/Mac%20OS%20X"
               >Mac OS X</a
             >
             from
-            <a href="https://wincent.com/wiki/Jaguar">Jaguar</a>
+            <a href="https://typechecked.net/wiki/Jaguar">Jaguar</a>
             onwards.
           </p>
           <p>
@@ -1333,20 +1333,20 @@
           <p>
             A full changelog appears
             <a
-              href="https://wincent.com/a/products/synergy-classic/history/#3.5a3"
+              href="https://typechecked.net/a/products/synergy-classic/history/#3.5a3"
               >here</a
             >.
           </p>
           <p>
             You can download the new release
-            <a href="https://wincent.com/download.php?item=SynergyBeta.zip"
+            <a href="https://typechecked.net/download.php?item=SynergyBeta.zip"
               >from here</a
             >
             and purchase a license using
-            <a href="https://wincent.com/a/products/synergy-classic/purchase/"
+            <a href="https://typechecked.net/a/products/synergy-classic/purchase/"
               >this page</a
             >. The 3.2 series can still be downloaded
-            <a href="https://wincent.com/download.php?item=SynergyJaguar.dmg"
+            <a href="https://typechecked.net/download.php?item=SynergyJaguar.dmg"
               >from here</a
             >. Once the 3.5 series goes final it will be a free upgrade to all
             users who have purchased a license for Synergy 3.0 or higher (that
@@ -1356,7 +1356,7 @@
 
           <p class="more-categories">
             More
-            <a href="https://wincent.com/a/news/archives/product_news/"
+            <a href="https://typechecked.net/a/news/archives/product_news/"
               >Product news</a
             >
             articles
@@ -1365,7 +1365,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/news/archives/2008/01/synergy_35a3_re.php"
+              href="https://typechecked.net/a/news/archives/2008/01/synergy_35a3_re.php"
             >
               6:17 PM</a
             >
@@ -1380,7 +1380,7 @@
             Wincent Strings Utility,
             the localization helper tool for developers. Version 1.2 is
             basically a total rewrite for
-            <a href="https://wincent.com/wiki/Leopard">Leopard</a>
+            <a href="https://typechecked.net/wiki/Leopard">Leopard</a>
             which adds a bunch of new features and improvements. See the
             official product page for
             a full list of changes, download links, and further information.
@@ -1392,7 +1392,7 @@
 
           <p class="more-categories">
             More
-            <a href="https://wincent.com/a/news/archives/product_news/"
+            <a href="https://typechecked.net/a/news/archives/product_news/"
               >Product news</a
             >
             articles
@@ -1401,7 +1401,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/news/archives/2008/01/wincent_strings_2.php"
+              href="https://typechecked.net/a/news/archives/2008/01/wincent_strings_2.php"
             >
               8:50 PM</a
             >
@@ -1413,28 +1413,28 @@
 
           <p>
             Some users were unable to install the
-            <a href="http://wincent.com">Synergy</a> 3.5a release made
+            <a href="http://typechecked.net">Synergy</a> 3.5a release made
             available a
             <a
-              href="https://wincent.com/a/news/archives/2007/11/synergy_35a_rel.php"
+              href="https://typechecked.net/a/news/archives/2007/11/synergy_35a_rel.php"
               >couple of hours ago</a
             >. If you are one of these users, please download the
             <a
-              href="https://wincent.com/a/products/synergy-classic/history/#3.5a2"
+              href="https://typechecked.net/a/products/synergy-classic/history/#3.5a2"
               >updated version</a
             >
             (3.5a2) which is now on the servers.
           </p>
           <p>
             You can download the updated release
-            <a href="https://wincent.com/download.php?item=SynergyBeta.dmg"
+            <a href="https://typechecked.net/download.php?item=SynergyBeta.dmg"
               >from here</a
             >
             and purchase a license using
-            <a href="https://wincent.com/a/products/synergy-classic/purchase/"
+            <a href="https://typechecked.net/a/products/synergy-classic/purchase/"
               >this page</a
             >. The 3.2-series can still be downloaded
-            <a href="https://wincent.com/download.php?item=SynergyJaguar.dmg"
+            <a href="https://typechecked.net/download.php?item=SynergyJaguar.dmg"
               >from here</a
             >. This is a free upgrade for users who already hold a valid Synergy
             license.
@@ -1442,7 +1442,7 @@
 
           <p class="more-categories">
             More
-            <a href="https://wincent.com/a/news/archives/product_news/"
+            <a href="https://typechecked.net/a/news/archives/product_news/"
               >Product news</a
             >
             articles
@@ -1451,7 +1451,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/news/archives/2007/11/synergy_35a2_re.php"
+              href="https://typechecked.net/a/news/archives/2007/11/synergy_35a2_re.php"
               >12:34 PM</a
             >
           </p>
@@ -1459,15 +1459,15 @@
           <h3 id="a003173">Synergy 3.5a released</h3>
 
           <p>
-            The last <a href="http://wincent.com">Synergy</a> release,
+            The last <a href="http://typechecked.net">Synergy</a> release,
             version 3.2, was
-            <a href="https://wincent.com/wiki/Leopard">Leopard</a
+            <a href="https://typechecked.net/wiki/Leopard">Leopard</a
             >-compatible but would also run on all versions of
-            <a href="https://wincent.com/wiki/Mac%20OS%20X"
+            <a href="https://typechecked.net/wiki/Mac%20OS%20X"
               >Mac OS X</a
             >
             from
-            <a href="https://wincent.com/wiki/Jaguar">Jaguar</a>
+            <a href="https://typechecked.net/wiki/Jaguar">Jaguar</a>
             onwards.
           </p>
           <p>
@@ -1483,20 +1483,20 @@
           <p>
             A full changelog appears
             <a
-              href="https://wincent.com/a/products/synergy-classic/history/#3.5a"
+              href="https://typechecked.net/a/products/synergy-classic/history/#3.5a"
               >here</a
             >.
           </p>
           <p>
             You can download the new release
-            <a href="https://wincent.com/download.php?item=SynergyBeta.dmg"
+            <a href="https://typechecked.net/download.php?item=SynergyBeta.dmg"
               >from here</a
             >
             and purchase a license using
-            <a href="https://wincent.com/a/products/synergy-classic/purchase/"
+            <a href="https://typechecked.net/a/products/synergy-classic/purchase/"
               >this page</a
             >. The 3.2-series can still be downloaded
-            <a href="https://wincent.com/download.php?item=SynergyJaguar.dmg"
+            <a href="https://typechecked.net/download.php?item=SynergyJaguar.dmg"
               >from here</a
             >. This is a free upgrade for users who already hold a valid Synergy
             license.
@@ -1504,7 +1504,7 @@
 
           <p class="more-categories">
             More
-            <a href="https://wincent.com/a/news/archives/product_news/"
+            <a href="https://typechecked.net/a/news/archives/product_news/"
               >Product news</a
             >
             articles
@@ -1513,7 +1513,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/news/archives/2007/11/synergy_35a_rel.php"
+              href="https://typechecked.net/a/news/archives/2007/11/synergy_35a_rel.php"
               >10:01 AM</a
             >
           </p>
@@ -1524,17 +1524,17 @@
 
           <p>
             Although the latest version of
-            <a href="http://wincent.com/">Synergy</a> already runs quite
+            <a href="http://typechecked.net/">Synergy</a> already runs quite
             well on all versions of
-            <a href="https://wincent.com/wiki/Mac%20OS%20X"
+            <a href="https://typechecked.net/wiki/Mac%20OS%20X"
               >Mac OS X</a
             >
             from
-            <a href="https://wincent.com/wiki/Jaguar">Jaguar</a> right
+            <a href="https://typechecked.net/wiki/Jaguar">Jaguar</a> right
             up to (and including)
-            <a href="https://wincent.com/wiki/Leopard">Leopard</a>, I
+            <a href="https://typechecked.net/wiki/Leopard">Leopard</a>, I
             have been working on a rewrite in
-            <a href="https://wincent.com/wiki/Objective-C%202.0"
+            <a href="https://typechecked.net/wiki/Objective-C%202.0"
               >Objective-C 2.0</a
             >
             which will is specifically designed for Leopard. The first phase of
@@ -1548,7 +1548,7 @@
 
           <p class="more-categories">
             More
-            <a href="https://wincent.com/a/news/archives/product_news/"
+            <a href="https://typechecked.net/a/news/archives/product_news/"
               >Product news</a
             >
             articles
@@ -1557,7 +1557,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/news/archives/2007/11/leopard_progres.php"
+              href="https://typechecked.net/a/news/archives/2007/11/leopard_progres.php"
             >
               1:13 PM</a
             >
@@ -1594,7 +1594,7 @@
 
           <p class="more-categories">
             More
-            <a href="https://wincent.com/a/news/archives/site_news/"
+            <a href="https://typechecked.net/a/news/archives/site_news/"
               >Site news</a
             >
             articles
@@ -1603,7 +1603,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/news/archives/2007/11/temporary_outag.php"
+              href="https://typechecked.net/a/news/archives/2007/11/temporary_outag.php"
               >11:22 AM</a
             >
           </p>
@@ -1614,9 +1614,9 @@
 
           <p>
             I've just learned that
-            <a href="https://wincent.com/wiki/Apple">Apple</a> has
+            <a href="https://typechecked.net/wiki/Apple">Apple</a> has
             made the final release of
-            <a href="https://wincent.com/wiki/Leopard">Leopard</a>
+            <a href="https://typechecked.net/wiki/Leopard">Leopard</a>
             available to developers (via download) several weeks earlier than
             expected (in the case of Tiger they didn't make a download available
             and developers had to wait for mailed copies).
@@ -1630,7 +1630,7 @@
 
           <p class="more-categories">
             More
-            <a href="https://wincent.com/a/news/archives/product_news/"
+            <a href="https://typechecked.net/a/news/archives/product_news/"
               >Product news</a
             >
             articles
@@ -1639,7 +1639,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/news/archives/2007/10/leopard_update.php"
+              href="https://typechecked.net/a/news/archives/2007/10/leopard_update.php"
               >12:59 PM</a
             >
           </p>
@@ -1650,7 +1650,7 @@
 
           <p>
             With
-            <a href="https://wincent.com/wiki/Leopard">Leopard</a>
+            <a href="https://typechecked.net/wiki/Leopard">Leopard</a>
             only 15 hours from release it's time for a product status report:
           </p>
           <a name="Leopard-ready"></a>
@@ -1665,7 +1665,7 @@
           </p>
           <ul>
             <li>
-              <a href="http://wincent.com">Synergy</a>: the lightweight,
+              <a href="http://typechecked.net">Synergy</a>: the lightweight,
               robust, and feature-packed iTunes controller.
             </li>
             <li>
@@ -1731,13 +1731,13 @@
             <li>
               Walrus: object-oriented
               templating system written in
-              <a href="https://wincent.com/wiki/Ruby">Ruby</a>.
+              <a href="https://typechecked.net/wiki/Ruby">Ruby</a>.
             </li>
           </ul>
 
           <p class="more-categories">
             More
-            <a href="https://wincent.com/a/news/archives/product_news/"
+            <a href="https://typechecked.net/a/news/archives/product_news/"
               >Product news</a
             >
             articles
@@ -1746,14 +1746,14 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/news/archives/2007/10/leopard_product.php"
+              href="https://typechecked.net/a/news/archives/2007/10/leopard_product.php"
             >
               2:25 AM</a
             >
           </p>
 
           <p class="more">
-            <a href="https://wincent.com/a/about/wincent/weblog/archives/"
+            <a href="https://typechecked.net/a/about/wincent/weblog/archives/"
               >More articles...</a
             >
           </p>
@@ -1768,8 +1768,8 @@
             <form method="get" action="http://www.google.com/search">
               <input type="text" name="q" size="20" maxlength="255" value="" />
               <input type="hidden" name="hl" value="en" />
-              <input type="hidden" name="domains" value="wincent.com" />
-              <input type="hidden" name="sitesearch" value="wincent.com" />
+              <input type="hidden" name="domains" value="typechecked.net" />
+              <input type="hidden" name="sitesearch" value="typechecked.net" />
               <input type="hidden" name="ie" value="UTF-8" />
               <input type="hidden" name="oe" value="UTF-8" />
               <input type="submit" name="btnG" value="Search" />
@@ -1784,80 +1784,80 @@
 
           <ul>
             <li>
-              <a href="https://wincent.com/a/news/archives/2008/03/"
+              <a href="https://typechecked.net/a/news/archives/2008/03/"
                 >March 2008</a
               >
             </li>
 
             <li>
-              <a href="https://wincent.com/a/news/archives/2008/02/"
+              <a href="https://typechecked.net/a/news/archives/2008/02/"
                 >February 2008</a
               >
             </li>
 
             <li>
-              <a href="https://wincent.com/a/news/archives/2008/01/"
+              <a href="https://typechecked.net/a/news/archives/2008/01/"
                 >January 2008</a
               >
             </li>
 
             <li>
-              <a href="https://wincent.com/a/news/archives/2007/11/"
+              <a href="https://typechecked.net/a/news/archives/2007/11/"
                 >November 2007</a
               >
             </li>
 
             <li>
-              <a href="https://wincent.com/a/news/archives/2007/10/"
+              <a href="https://typechecked.net/a/news/archives/2007/10/"
                 >October 2007</a
               >
             </li>
 
             <li>
-              <a href="https://wincent.com/a/news/archives/2007/09/"
+              <a href="https://typechecked.net/a/news/archives/2007/09/"
                 >September 2007</a
               >
             </li>
 
             <li>
-              <a href="https://wincent.com/a/news/archives/2007/08/"
+              <a href="https://typechecked.net/a/news/archives/2007/08/"
                 >August 2007</a
               >
             </li>
 
             <li>
-              <a href="https://wincent.com/a/news/archives/2007/07/"
+              <a href="https://typechecked.net/a/news/archives/2007/07/"
                 >July 2007</a
               >
             </li>
 
             <li>
-              <a href="https://wincent.com/a/news/archives/2007/06/"
+              <a href="https://typechecked.net/a/news/archives/2007/06/"
                 >June 2007</a
               >
             </li>
 
             <li>
-              <a href="https://wincent.com/a/news/archives/2007/05/"
+              <a href="https://typechecked.net/a/news/archives/2007/05/"
                 >May 2007</a
               >
             </li>
 
             <li>
-              <a href="https://wincent.com/a/news/archives/2007/04/"
+              <a href="https://typechecked.net/a/news/archives/2007/04/"
                 >April 2007</a
               >
             </li>
 
             <li>
-              <a href="https://wincent.com/a/news/archives/2007/03/"
+              <a href="https://typechecked.net/a/news/archives/2007/03/"
                 >March 2007</a
               >
             </li>
           </ul>
 
           <p class="more">
-            <a href="https://wincent.com/a/news/archives/"
+            <a href="https://typechecked.net/a/news/archives/"
               >Full article listing...</a
             >
           </p>
@@ -1867,77 +1867,77 @@
           <ul>
             <li>
               <a
-                href="https://wincent.com/a/news/archives/2008/03/final_server_mi.php"
+                href="https://typechecked.net/a/news/archives/2008/03/final_server_mi.php"
                 >Final server migration this week</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/news/archives/2008/02/server_migratio.php"
+                href="https://typechecked.net/a/news/archives/2008/02/server_migratio.php"
                 >Server migration in progress</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/news/archives/2008/02/call_for_banssh.php"
+                href="https://typechecked.net/a/news/archives/2008/02/call_for_banssh.php"
                 >Call for Bansshee donations</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/news/archives/2008/02/upcoming_dns_ch.php"
+                href="https://typechecked.net/a/news/archives/2008/02/upcoming_dns_ch.php"
                 >Upcoming DNS changes</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/news/archives/2008/01/synergy_35a5_re.php"
+                href="https://typechecked.net/a/news/archives/2008/01/synergy_35a5_re.php"
                 >Synergy 3.5a5 released</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/news/archives/2008/01/announcing_rena.php"
+                href="https://typechecked.net/a/news/archives/2008/01/announcing_rena.php"
                 >Announcing REnamer</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/news/archives/2008/01/synergy_35a4_re.php"
+                href="https://typechecked.net/a/news/archives/2008/01/synergy_35a4_re.php"
                 >Synergy 3.5a4 released</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/news/archives/2008/01/synergy_35a3_re.php"
+                href="https://typechecked.net/a/news/archives/2008/01/synergy_35a3_re.php"
                 >Synergy 3.5a3 released</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/news/archives/2008/01/wincent_strings_2.php"
+                href="https://typechecked.net/a/news/archives/2008/01/wincent_strings_2.php"
                 >Wincent Strings Utility 1.2</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/news/archives/2007/11/synergy_35a2_re.php"
+                href="https://typechecked.net/a/news/archives/2007/11/synergy_35a2_re.php"
                 >Synergy 3.5a2 released</a
               >
             </li>
           </ul>
 
           <p class="more">
-            <a href="https://wincent.com/a/news/archives/"
+            <a href="https://typechecked.net/a/news/archives/"
               >Full article listing...</a
             >
           </p>

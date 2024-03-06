@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/darn-paypal"
-        >https://wincent.com/blog/darn-paypal</a
+      <a href="https://typechecked.net/blog/darn-paypal"
+        >https://typechecked.net/blog/darn-paypal</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/darn-paypal');
+    window.location.replace('https://typechecked.net/blog/darn-paypal');
   </script>
 </html>

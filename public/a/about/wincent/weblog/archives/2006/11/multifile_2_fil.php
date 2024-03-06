@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/multi-file-2-files-xcode-file-templates"
-        >https://wincent.com/blog/multi-file-2-files-xcode-file-templates</a
+      <a href="https://typechecked.net/blog/multi-file-2-files-xcode-file-templates"
+        >https://typechecked.net/blog/multi-file-2-files-xcode-file-templates</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/multi-file-2-files-xcode-file-templates',
+      'https://typechecked.net/blog/multi-file-2-files-xcode-file-templates',
     );
   </script>
 </html>

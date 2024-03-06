@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/wincent-strings-util"
-        >https://wincent.com/blog/wincent-strings-util</a
+      <a href="https://typechecked.net/blog/wincent-strings-util"
+        >https://typechecked.net/blog/wincent-strings-util</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/wincent-strings-util');
+    window.location.replace('https://typechecked.net/blog/wincent-strings-util');
   </script>
 </html>

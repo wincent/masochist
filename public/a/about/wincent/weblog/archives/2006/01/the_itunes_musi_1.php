@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/the-itunes-music-store"
-        >https://wincent.com/blog/the-itunes-music-store</a
+      <a href="https://typechecked.net/blog/the-itunes-music-store"
+        >https://typechecked.net/blog/the-itunes-music-store</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/the-itunes-music-store');
+    window.location.replace('https://typechecked.net/blog/the-itunes-music-store');
   </script>
 </html>

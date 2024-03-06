@@ -8,7 +8,7 @@
     process which has been quite slow because all the data has to be exported
     from a number of &quot;legacy&quot; applications and imported into a
     brand... [<a
-      href="https://wincent.com/a/news/archives/2008/03/final_server_mi.php"
+      href="https://typechecked.net/a/news/archives/2008/03/final_server_mi.php"
       >More...</a
     >]
   </li>
@@ -22,7 +22,7 @@
     is do this very carefully, service by service, and keep downtime to a
     minimum; hopefully minutes rather than hours. Just in case there is any
     interruption during the... [<a
-      href="https://wincent.com/a/news/archives/2008/02/server_migratio.php"
+      href="https://typechecked.net/a/news/archives/2008/02/server_migratio.php"
       >More...</a
     >]
   </li>
@@ -36,7 +36,7 @@
     As a convenience to users there are three domains, bansshee.com,
     bansshee.net, and bansshee.org, that resolve to the Bansshee project page.
     These are coming up for renewal soon (they expire... [<a
-      href="https://wincent.com/a/news/archives/2008/02/call_for_banssh.php"
+      href="https://typechecked.net/a/news/archives/2008/02/call_for_banssh.php"
       >More...</a
     >]
   </li>
@@ -49,7 +49,7 @@
     In preparation for the server move at the end of this month I'll soon be
     migrating DNS servers. I'll be doing everything I can to minimize downtime,
     and hopefully come close to eliminating it entirely as there will be a...
-    [<a href="https://wincent.com/a/news/archives/2008/02/upcoming_dns_ch.php"
+    [<a href="https://typechecked.net/a/news/archives/2008/02/upcoming_dns_ch.php"
       >More...</a
     >]
   </li>
@@ -63,12 +63,12 @@
     fifth alpha release in the brand new 3.5 series. The last release, version
     3.2, was Leopard-compatible but would also run on all versions of Mac OS X
     from... [<a
-      href="https://wincent.com/a/news/archives/2008/01/synergy_35a5_re.php"
+      href="https://typechecked.net/a/news/archives/2008/01/synergy_35a5_re.php"
       >More...</a
     >]
   </li>
 </ul>
 
 <p class="more">
-  <a href="https://wincent.com/a/news/">More news articles...</a>
+  <a href="https://typechecked.net/a/news/">More news articles...</a>
 </p>

@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/wodockicon-class"
-        >https://wincent.com/blog/wodockicon-class</a
+      <a href="https://typechecked.net/blog/wodockicon-class"
+        >https://typechecked.net/blog/wodockicon-class</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/wodockicon-class');
+    window.location.replace('https://typechecked.net/blog/wodockicon-class');
   </script>
 </html>

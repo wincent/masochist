@@ -7,7 +7,7 @@
     <h1>Moved Permanently</h1>
     <p>
       The document has moved
-      <a href="https://wincent.com/a/products/renamer/nav-box.php">here</a>.
+      <a href="https://typechecked.net/a/products/renamer/nav-box.php">here</a>.
     </p>
   </body>
 </html>

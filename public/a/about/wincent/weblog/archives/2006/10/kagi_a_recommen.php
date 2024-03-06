@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/kagi-a-recommendation-for-developers"
-        >https://wincent.com/blog/kagi-a-recommendation-for-developers</a
+      <a href="https://typechecked.net/blog/kagi-a-recommendation-for-developers"
+        >https://typechecked.net/blog/kagi-a-recommendation-for-developers</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/kagi-a-recommendation-for-developers',
+      'https://typechecked.net/blog/kagi-a-recommendation-for-developers',
     );
   </script>
 </html>

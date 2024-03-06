@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/mediawiki-updates"
-        >https://wincent.com/blog/mediawiki-updates</a
+      <a href="https://typechecked.net/blog/mediawiki-updates"
+        >https://typechecked.net/blog/mediawiki-updates</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/mediawiki-updates');
+    window.location.replace('https://typechecked.net/blog/mediawiki-updates');
   </script>
 </html>

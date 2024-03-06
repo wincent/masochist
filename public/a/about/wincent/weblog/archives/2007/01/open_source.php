@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/open-source"
-        >https://wincent.com/blog/open-source</a
+      <a href="https://typechecked.net/blog/open-source"
+        >https://typechecked.net/blog/open-source</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/open-source');
+    window.location.replace('https://typechecked.net/blog/open-source');
   </script>
 </html>

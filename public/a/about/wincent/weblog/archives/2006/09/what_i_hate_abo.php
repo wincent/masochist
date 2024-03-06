@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/what-i-hate-about-the-mac-os-x-panic-dialog"
-        >https://wincent.com/blog/what-i-hate-about-the-mac-os-x-panic-dialog</a
+        href="https://typechecked.net/blog/what-i-hate-about-the-mac-os-x-panic-dialog"
+        >https://typechecked.net/blog/what-i-hate-about-the-mac-os-x-panic-dialog</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/what-i-hate-about-the-mac-os-x-panic-dialog',
+      'https://typechecked.net/blog/what-i-hate-about-the-mac-os-x-panic-dialog',
     );
   </script>
 </html>

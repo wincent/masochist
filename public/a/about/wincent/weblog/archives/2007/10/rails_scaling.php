@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/rails-scaling"
-        >https://wincent.com/blog/rails-scaling</a
+      <a href="https://typechecked.net/blog/rails-scaling"
+        >https://typechecked.net/blog/rails-scaling</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/rails-scaling');
+    window.location.replace('https://typechecked.net/blog/rails-scaling');
   </script>
 </html>

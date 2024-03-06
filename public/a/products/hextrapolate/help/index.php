@@ -6,8 +6,8 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/a/products/hextrapolate/help/front_page.html"
-        >https://wincent.com/a/products/hextrapolate/help/front_page.html</a
+      <a href="https://typechecked.net/a/products/hextrapolate/help/front_page.html"
+        >https://typechecked.net/a/products/hextrapolate/help/front_page.html</a
       >
     </p>
   </body>

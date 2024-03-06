@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/xcode-fun-recipe"
-        >https://wincent.com/blog/xcode-fun-recipe</a
+      <a href="https://typechecked.net/blog/xcode-fun-recipe"
+        >https://typechecked.net/blog/xcode-fun-recipe</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/xcode-fun-recipe');
+    window.location.replace('https://typechecked.net/blog/xcode-fun-recipe');
   </script>
 </html>

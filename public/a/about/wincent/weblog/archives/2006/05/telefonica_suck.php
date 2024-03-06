@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/telef-nica-sucks"
-        >https://wincent.com/blog/telef-nica-sucks</a
+      <a href="https://typechecked.net/blog/telef-nica-sucks"
+        >https://typechecked.net/blog/telef-nica-sucks</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/telef-nica-sucks');
+    window.location.replace('https://typechecked.net/blog/telef-nica-sucks');
   </script>
 </html>

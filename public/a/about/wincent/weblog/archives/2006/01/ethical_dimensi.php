@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/ethical-dimensions-of-pirating-ilife-06"
-        >https://wincent.com/blog/ethical-dimensions-of-pirating-ilife-06</a
+      <a href="https://typechecked.net/blog/ethical-dimensions-of-pirating-ilife-06"
+        >https://typechecked.net/blog/ethical-dimensions-of-pirating-ilife-06</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/ethical-dimensions-of-pirating-ilife-06',
+      'https://typechecked.net/blog/ethical-dimensions-of-pirating-ilife-06',
     );
   </script>
 </html>

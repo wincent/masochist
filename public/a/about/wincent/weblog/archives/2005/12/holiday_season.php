@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/holiday-season-2005-free-synergy-licenses-promotion"
-        >https://wincent.com/blog/holiday-season-2005-free-synergy-licenses-promotion</a
+        href="https://typechecked.net/blog/holiday-season-2005-free-synergy-licenses-promotion"
+        >https://typechecked.net/blog/holiday-season-2005-free-synergy-licenses-promotion</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/holiday-season-2005-free-synergy-licenses-promotion',
+      'https://typechecked.net/blog/holiday-season-2005-free-synergy-licenses-promotion',
     );
   </script>
 </html>

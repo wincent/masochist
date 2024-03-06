@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/leopard-api-changes"
-        >https://wincent.com/blog/leopard-api-changes</a
+      <a href="https://typechecked.net/blog/leopard-api-changes"
+        >https://typechecked.net/blog/leopard-api-changes</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/leopard-api-changes');
+    window.location.replace('https://typechecked.net/blog/leopard-api-changes');
   </script>
 </html>

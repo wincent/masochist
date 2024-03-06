@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/creating-new-daemon-users-on-leopard"
-        >https://wincent.com/blog/creating-new-daemon-users-on-leopard</a
+      <a href="https://typechecked.net/blog/creating-new-daemon-users-on-leopard"
+        >https://typechecked.net/blog/creating-new-daemon-users-on-leopard</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/creating-new-daemon-users-on-leopard',
+      'https://typechecked.net/blog/creating-new-daemon-users-on-leopard',
     );
   </script>
 </html>

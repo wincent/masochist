@@ -7,7 +7,7 @@
       name="viewport"
     />
     <title>
-      Bug #1711: Atom feeds can contain bad links to the rails subdomain &middot; wincent.com
+      Bug #1711: Atom feeds can contain bad links to the rails subdomain &middot; typechecked.net
     </title>
     <link
       rel="stylesheet"
@@ -82,7 +82,7 @@
                   <tr>
                     <th>Product</th>
                     <td>
-                      wincent.com
+                      typechecked.net
                     </td>
                   </tr>
                   <tr>
@@ -139,12 +139,12 @@
                       This is caused by someone or something hitting the feed
                       under the &quot;rails&quot; host (which is
                       just an alias), and the feed then gets cached with all the
-                      URLs pointing at the rails subdomain instead of wincent.com,
+                      URLs pointing at the rails subdomain instead of typechecked.net,
                       ruining the feed for everybody.
                     </p>
                     <p>
                       I actually fixed this a long time ago by explicitly
-                      forcing it to always use wincent.com as the host
+                      forcing it to always use typechecked.net as the host
                       regardless of what host is used in the request, but it
                       looks like something in Rails 3 has broken that. Oddly,
                       the spec suite, which explicitly tests this, passes fine.
@@ -160,7 +160,7 @@
                     a rewrite rule to permanently redirect any request.
                     This means that it should be impossible
                     to touch the Rails app at all without going through
-                    &quot;wincent.com&quot; as the host, so cached feeds should
+                    &quot;typechecked.net&quot; as the host, so cached feeds should
                     no longer get polluted in this way.
                   </p>
                   <p>

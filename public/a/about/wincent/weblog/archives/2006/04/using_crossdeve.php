@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/using-cross-development-sdks-for-configure-make-based-unix-tools-and-libraries"
-        >https://wincent.com/blog/using-cross-development-sdks-for-configure-make-based-unix-tools-and-libraries</a
+        href="https://typechecked.net/blog/using-cross-development-sdks-for-configure-make-based-unix-tools-and-libraries"
+        >https://typechecked.net/blog/using-cross-development-sdks-for-configure-make-based-unix-tools-and-libraries</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/using-cross-development-sdks-for-configure-make-based-unix-tools-and-libraries',
+      'https://typechecked.net/blog/using-cross-development-sdks-for-configure-make-based-unix-tools-and-libraries',
     );
   </script>
 </html>

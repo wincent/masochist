@@ -1,13 +1,13 @@
 <h2>Bansshee links</h2>
 <ul>
-  <li><a href="https://wincent.com/a/products/bansshee/">Information</a></li>
+  <li><a href="https://typechecked.net/a/products/bansshee/">Information</a></li>
   <li>
-    <a href="https://wincent.com/forums/bansshee"
+    <a href="https://typechecked.net/forums/bansshee"
       >Discussion & support forums</a
     >
   </li>
   <li>
-    <a href="https://wincent.com/support">Bug reports & feature requests</a>
+    <a href="https://typechecked.net/support">Bug reports & feature requests</a>
   </li>
 </ul>
 <h2>On this page</h2>

@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/when-will-non-wwdc-attendees-get-the-leopard-beta"
-        >https://wincent.com/blog/when-will-non-wwdc-attendees-get-the-leopard-beta</a
+        href="https://typechecked.net/blog/when-will-non-wwdc-attendees-get-the-leopard-beta"
+        >https://typechecked.net/blog/when-will-non-wwdc-attendees-get-the-leopard-beta</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/when-will-non-wwdc-attendees-get-the-leopard-beta',
+      'https://typechecked.net/blog/when-will-non-wwdc-attendees-get-the-leopard-beta',
     );
   </script>
 </html>

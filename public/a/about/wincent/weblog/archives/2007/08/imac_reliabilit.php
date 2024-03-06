@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/imac-reliability-woes"
-        >https://wincent.com/blog/imac-reliability-woes</a
+      <a href="https://typechecked.net/blog/imac-reliability-woes"
+        >https://typechecked.net/blog/imac-reliability-woes</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/imac-reliability-woes');
+    window.location.replace('https://typechecked.net/blog/imac-reliability-woes');
   </script>
 </html>

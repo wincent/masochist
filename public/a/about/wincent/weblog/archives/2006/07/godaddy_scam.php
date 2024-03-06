@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/godaddy-scam"
-        >https://wincent.com/blog/godaddy-scam</a
+      <a href="https://typechecked.net/blog/godaddy-scam"
+        >https://typechecked.net/blog/godaddy-scam</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/godaddy-scam');
+    window.location.replace('https://typechecked.net/blog/godaddy-scam');
   </script>
 </html>

@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/will-it-blend"
-        >https://wincent.com/blog/will-it-blend</a
+      <a href="https://typechecked.net/blog/will-it-blend"
+        >https://typechecked.net/blog/will-it-blend</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/will-it-blend');
+    window.location.replace('https://typechecked.net/blog/will-it-blend');
   </script>
 </html>

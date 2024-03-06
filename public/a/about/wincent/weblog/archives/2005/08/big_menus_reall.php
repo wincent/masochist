@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/big-menus-really-big-menus-and-frickin-huge-menus"
-        >https://wincent.com/blog/big-menus-really-big-menus-and-frickin-huge-menus</a
+        href="https://typechecked.net/blog/big-menus-really-big-menus-and-frickin-huge-menus"
+        >https://typechecked.net/blog/big-menus-really-big-menus-and-frickin-huge-menus</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/big-menus-really-big-menus-and-frickin-huge-menus',
+      'https://typechecked.net/blog/big-menus-really-big-menus-and-frickin-huge-menus',
     );
   </script>
 </html>

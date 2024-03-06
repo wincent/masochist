@@ -8,7 +8,7 @@
     />
     <title>
       Bug #1563: Rails 3: outgoing emails in development environment have HTTP
-      links rather than HTTPS ones &middot; wincent.com
+      links rather than HTTPS ones &middot; typechecked.net
     </title>
     <link
       rel="stylesheet"
@@ -84,7 +84,7 @@
                   <tr>
                     <th>Product</th>
                     <td>
-                      wincent.com
+                      typechecked.net
                     </td>
                   </tr>
                   <tr>
@@ -156,7 +156,7 @@
                     In fact, even if we could inspect it, we wouldn't want to,
                     because we want to ensure that all outgoing links use the
                     authoritative, &quot;canonical&quot; URL, which in our case
-                    means protocol HTTPS, host wincent.com, and port 443. (ie.
+                    means protocol HTTPS, host typechecked.net, and port 443. (ie.
                     if we made a mistake in our firewall config and someone
                     somehow managed to connect directly on port 80, or via
                     another port Mongrel was listening on, we wouldn't want the
@@ -173,20 +173,20 @@
                     We only set explicit port number if it is a non-standard
                     port (eg. not 80 or 443), otherwise we needlessly get the
                     port number in URLs (ie.
-                    <a href="https://wincent.com:443/foo" class="external"
-                      >https://wincent.com:443/foo</a
+                    <a href="https://typechecked.net:443/foo" class="external"
+                      >https://typechecked.net:443/foo</a
                     >
                     when
-                    <a href="https://wincent.com/foo" class="external"
-                      >https://wincent.com/foo</a
+                    <a href="https://typechecked.net/foo" class="external"
+                      >https://typechecked.net/foo</a
                     >
                     would suffice, or
-                    <a href="https://wincent.com:80/bar" class="external"
-                      >https://wincent.com:80/bar</a
+                    <a href="https://typechecked.net:80/bar" class="external"
+                      >https://typechecked.net:80/bar</a
                     >
                     when
-                    <a href="https://wincent.com/bar" class="external"
-                      >https://wincent.com/bar</a
+                    <a href="https://typechecked.net/bar" class="external"
+                      >https://typechecked.net/bar</a
                     >
                     would suffice). So this in practice means that we only set
                     up the host value.
@@ -212,12 +212,12 @@
                     <em>unless</em> we pass in an explicit port number of 443.
                     Unfortunately this means that our links will always have a
                     redundant port number in them (ie.
-                    <a href="https://wincent.com:443/foo" class="external"
-                      >https://wincent.com:443/foo</a
+                    <a href="https://typechecked.net:443/foo" class="external"
+                      >https://typechecked.net:443/foo</a
                     >
                     instead of
-                    <a href="https://wincent.com/foo" class="external"
-                      >https://wincent.com/foo</a
+                    <a href="https://typechecked.net/foo" class="external"
+                      >https://typechecked.net/foo</a
                     >). Luckily, we can avoid this by passing in
                     <code>:protocol =&gt; 'https'</code>.
                   </p>

@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="http://www.movabletype.org/" />
 
-    <title>wincent.com news: archives</title>
+    <title>typechecked.net news: archives</title>
 
     <link rel="stylesheet" href="/a/styles.css" type="text/css" />
   </head>
@@ -15,10 +15,10 @@
       style="text-align: center; font-family: 'Lucida Grande'; margin: 5px 250px 5px 250px; padding: 5px; font-size: x-small; border: 2px solid silver; -webkit-border-radius: 0.5em; -moz-border-radius: 0.5em; background: #fefefe;"
     >
       <p>
-        You are currently looking at an older section of the wincent.com
+        You are currently looking at an older section of the typechecked.net
         website.<br />
         Please check the new version of the site at
-        <a href="https://wincent.com/">https://wincent.com/</a> for updated
+        <a href="https://typechecked.net/">https://typechecked.net/</a> for updated
         content.<br />
       </p>
     </div>
@@ -78,7 +78,7 @@
           align="center"
           valign="middle"
         >
-          <a href="https://wincent.com/"
+          <a href="https://typechecked.net/"
             ><img
               src="/a/gfx/wincent-logo-small-gray-bg.jpg"
               width="43"
@@ -86,7 +86,7 @@
               alt="wincent"
               align="middle"
           /></a>
-          <a href="https://wincent.com/a/news/"
+          <a href="https://typechecked.net/a/news/"
             ><img
               src="/a/gfx/news-header.jpg"
               width="384"
@@ -132,7 +132,7 @@
           <ul style="width: 73px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/products/"
+                href="https://typechecked.net/a/products/"
                 title="Full products listing"
                 ><img
                   src="/a/gfx/header/products-off.jpg"
@@ -143,35 +143,35 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/products/synergy"
+                    href="https://typechecked.net/products/synergy"
                     title="The original iTunes menu bar controller"
                     >Synergy &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/products/synergy/download"
+                        href="https://typechecked.net/products/synergy/download"
                         title="Download Synergy"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-classic/purchase/"
+                        href="https://typechecked.net/a/products/synergy-classic/purchase/"
                         title="Purchase Synergy"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/products/synergy/help"
+                        href="https://typechecked.net/products/synergy/help"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-classic/buttons/"
+                        href="https://typechecked.net/a/products/synergy-classic/buttons/"
                         title="Free button sets"
                         >Button Sets</a
                       >
@@ -180,35 +180,35 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/synergy-advance/"
+                    href="https://typechecked.net/a/products/synergy-advance/"
                     title="Multi-purpose audio companion"
                     >Synergy Advance &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/download/"
+                        href="https://typechecked.net/a/products/synergy-advance/download/"
                         title="Download Synergy Advance"
                         >Download preview</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/purchase/"
+                        href="https://typechecked.net/a/products/synergy-advance/purchase/"
                         title="Purchase Synergy Advance"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/donate/"
+                        href="https://typechecked.net/a/products/synergy-advance/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/donate/"
+                        href="https://typechecked.net/a/products/synergy-advance/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
@@ -217,35 +217,35 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/winswitch/"
+                    href="https://typechecked.net/a/products/winswitch/"
                     title="Enhanced replacement for Apple's Fast User Switching menu"
                     >WinSwitch &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/download/"
+                        href="https://typechecked.net/a/products/winswitch/download/"
                         title="Download WinSwitch"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/donate/"
+                        href="https://typechecked.net/a/products/winswitch/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/donate/"
+                        href="https://typechecked.net/a/products/winswitch/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/faq/"
+                        href="https://typechecked.net/a/products/winswitch/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -254,28 +254,28 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/hextrapolate/"
+                    href="https://typechecked.net/a/products/hextrapolate/"
                     title="Programmers number conversion tool"
                     >Hextrapolate &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/hextrapolate/download/"
+                        href="https://typechecked.net/a/products/hextrapolate/download/"
                         title="Download Hextrapolate"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/hextrapolate/purchase/"
+                        href="https://typechecked.net/a/products/hextrapolate/purchase/"
                         title="Purchase Hextrapolate"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/hextrapolate/faq/"
+                        href="https://typechecked.net/a/products/hextrapolate/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -284,42 +284,42 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/install/"
+                    href="https://typechecked.net/a/products/install/"
                     title="Installation and deployment solution for developers"
                     >Install &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/download/"
+                        href="https://typechecked.net/a/products/install/download/"
                         title="Install downloads"
                         >Downloads</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/purchase/"
+                        href="https://typechecked.net/a/products/install/purchase/"
                         title="Purchase Install"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/donate/"
+                        href="https://typechecked.net/a/products/install/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/donate/"
+                        href="https://typechecked.net/a/products/install/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/faq/"
+                        href="https://typechecked.net/a/products/install/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -328,14 +328,14 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/getsmart-pro/"
+                    href="https://typechecked.net/a/products/getsmart-pro/"
                     title="Intelligent download manager"
                     >GetSmart Pro &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/getsmart-pro/donate/"
+                        href="https://typechecked.net/a/products/getsmart-pro/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
@@ -344,7 +344,7 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/"
+                    href="https://typechecked.net/a/products/"
                     title="Full product listing"
                     >Other products...</a
                   >
@@ -354,7 +354,7 @@
           </ul>
         </td>
         <td width="48" height="25">
-          <a href="https://wincent.com/a/store/" title="Wincent online store"
+          <a href="https://typechecked.net/a/store/" title="Wincent online store"
             ><img
               src="/a/gfx/header/store-off.jpg"
               width="48"
@@ -366,7 +366,7 @@
           <ul style="width: 63px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/services/"
+                href="https://typechecked.net/a/services/"
                 title="Full services listing"
                 ><img
                   src="/a/gfx/header/services-off.jpg"
@@ -377,28 +377,28 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/custom-development/"
+                    href="https://typechecked.net/a/services/custom-development/"
                     title="Custom software development"
                     >Custom Development</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/mac-consultancy/"
+                    href="https://typechecked.net/a/services/mac-consultancy/"
                     title="Apple and Mac OS X consultancy"
                     >Apple/Mac Consultancy</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/web-design/"
+                    href="https://typechecked.net/a/services/web-design/"
                     title="Web design services"
                     >Web Design</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/hosting/"
+                    href="https://typechecked.net/a/services/hosting/"
                     title="Internet web and email hosting"
                     >Hosting</a
                   >
@@ -411,7 +411,7 @@
           <ul style="width: 62px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/support/"
+                href="https://typechecked.net/a/support/"
                 title="Support resources and links"
                 ><img
                   src="/a/gfx/header/support-off.jpg"
@@ -422,56 +422,56 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/registration/"
+                    href="https://typechecked.net/a/support/registration/"
                     title="Retrieve lost license codes"
                     >Lost License Codes</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/bugs/"
+                    href="https://typechecked.net/a/support/bugs/"
                     title="Bug tracking and feature request database"
                     >Bugs and Feature Requests</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/demo-licenses/"
+                    href="https://typechecked.net/a/support/demo-licenses/"
                     title="Obtain a demonstration license"
                     >Demonstration licenses</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/forums/"
+                    href="https://typechecked.net/a/support/forums/"
                     title="Discussion and support forums"
                     >Forums</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/faq/"
+                    href="https://typechecked.net/a/support/faq/"
                     title="Frequently Asked Questions"
                     >FAQ</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/activation/"
+                    href="https://typechecked.net/a/support/activation/"
                     title="Product activation and information"
                     >Product Activation</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/tickets/"
+                    href="https://typechecked.net/a/support/tickets/"
                     title="Open or view a support ticket"
                     >Support Tickets</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/lists/"
+                    href="https://typechecked.net/a/support/lists/"
                     title="Subscribe/unsubscribe to/from a mailing list"
                     >Mailing lists</a
                   >
@@ -483,7 +483,7 @@
         <td width="53" height="25">
           <ul style="width: 53px; height: 25px;">
             <li class="menu">
-              <a href="https://wincent.com/a/about/" title="Company information"
+              <a href="https://typechecked.net/a/about/" title="Company information"
                 ><img
                   src="/a/gfx/header/about-off.jpg"
                   width="53"
@@ -493,14 +493,14 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/about/wincent/"
+                    href="https://typechecked.net/a/about/wincent/"
                     title="About Wincent Colaiuta: the person"
                     >About Wincent Colaiuta</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/about/privacy/"
+                    href="https://typechecked.net/a/about/privacy/"
                     title="About the Wincent Privacy Policy"
                     >Privacy Policy</a
                   >
@@ -513,7 +513,7 @@
           <ul style="width: 49px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/news/"
+                href="https://typechecked.net/a/news/"
                 title="Latest news items in weblog format"
                 ><img
                   src="/a/gfx/header/news-on.jpg"
@@ -524,28 +524,28 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/news/archives/mac_os_x_news/"
+                    href="https://typechecked.net/a/news/archives/mac_os_x_news/"
                     title="Apple and Mac OS X-related news"
                     >Mac OS X News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/news/archives/product_news/"
+                    href="https://typechecked.net/a/news/archives/product_news/"
                     title="Wincent product news"
                     >Product News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/news/archives/site_news/"
+                    href="https://typechecked.net/a/news/archives/site_news/"
                     title="Site-related news"
                     >Site News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/blog"
+                    href="https://typechecked.net/blog"
                     title="Development and other notes from Wincent"
                     >Wincent Colaiuta's weblog</a
                   >
@@ -556,7 +556,7 @@
         </td>
         <td width="107" height="25">
           <a
-            href="https://wincent.com/wiki"
+            href="https://typechecked.net/wiki"
             title="Categorized Mac OS X tips and information"
             ><img
               src="/a/gfx/header/knowledge-base-off.jpg"
@@ -566,7 +566,7 @@
           /></a>
         </td>
         <td width="62" height="25">
-          <a href="https://wincent.com/a/contact/" title="Contact email form"
+          <a href="https://typechecked.net/a/contact/" title="Contact email form"
             ><img
               src="/a/gfx/header/contact-off.jpg"
               width="62"
@@ -577,7 +577,7 @@
         <td width="72" height="25">
           <ul style="width: 72px; height: 25px;">
             <li class="menu">
-              <a href="https://wincent.com/a/site-map/" title="Site overview"
+              <a href="https://typechecked.net/a/site-map/" title="Site overview"
                 ><img
                   src="/a/gfx/header/site-map-off.jpg"
                   width="72"
@@ -587,7 +587,7 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/site-map/search/"
+                    href="https://typechecked.net/a/site-map/search/"
                     title="Site search"
                     >Search</a
                   >
@@ -621,7 +621,7 @@
 
     <div id="breadcrumbs">
       <p>
-        <a href="https://wincent.com/">Main</a>&nbsp;&gt;&nbsp;<a href="../../"
+        <a href="https://typechecked.net/">Main</a>&nbsp;&gt;&nbsp;<a href="../../"
           >News</a
         >&nbsp;&gt;&nbsp;<a href="../">Archives</a>&nbsp;&gt;&nbsp;Product News
       </p>
@@ -640,7 +640,7 @@
         expire...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2008/02/call_for_banssh.php"
+            href="https://typechecked.net/a/news/archives/2008/02/call_for_banssh.php"
             >Read full article</a
           >
         </p>
@@ -648,7 +648,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2008/02/call_for_banssh.php"
+            href="https://typechecked.net/a/news/archives/2008/02/call_for_banssh.php"
             >10:36 AM</a
           >
         </p>
@@ -663,7 +663,7 @@
         of Mac OS X from...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2008/01/synergy_35a5_re.php"
+            href="https://typechecked.net/a/news/archives/2008/01/synergy_35a5_re.php"
             >Read full article</a
           >
         </p>
@@ -671,7 +671,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2008/01/synergy_35a5_re.php"
+            href="https://typechecked.net/a/news/archives/2008/01/synergy_35a5_re.php"
             >12:35 PM</a
           >
         </p>
@@ -686,7 +686,7 @@
         it uses the...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2008/01/announcing_rena.php"
+            href="https://typechecked.net/a/news/archives/2008/01/announcing_rena.php"
             >Read full article</a
           >
         </p>
@@ -694,7 +694,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2008/01/announcing_rena.php"
+            href="https://typechecked.net/a/news/archives/2008/01/announcing_rena.php"
           >
             2:32 PM</a
           >
@@ -710,7 +710,7 @@
         of Mac OS X from...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2008/01/synergy_35a4_re.php"
+            href="https://typechecked.net/a/news/archives/2008/01/synergy_35a4_re.php"
             >Read full article</a
           >
         </p>
@@ -718,7 +718,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2008/01/synergy_35a4_re.php"
+            href="https://typechecked.net/a/news/archives/2008/01/synergy_35a4_re.php"
             >10:15 AM</a
           >
         </p>
@@ -733,7 +733,7 @@
         versions of Mac OS X...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2008/01/synergy_35a3_re.php"
+            href="https://typechecked.net/a/news/archives/2008/01/synergy_35a3_re.php"
             >Read full article</a
           >
         </p>
@@ -741,7 +741,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2008/01/synergy_35a3_re.php"
+            href="https://typechecked.net/a/news/archives/2008/01/synergy_35a3_re.php"
           >
             6:17 PM</a
           >
@@ -757,7 +757,7 @@
         improvements. See the official product page for...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2008/01/wincent_strings_2.php"
+            href="https://typechecked.net/a/news/archives/2008/01/wincent_strings_2.php"
             >Read full article</a
           >
         </p>
@@ -765,7 +765,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2008/01/wincent_strings_2.php"
+            href="https://typechecked.net/a/news/archives/2008/01/wincent_strings_2.php"
           >
             8:50 PM</a
           >
@@ -781,7 +781,7 @@
         can download the...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/11/synergy_35a2_re.php"
+            href="https://typechecked.net/a/news/archives/2007/11/synergy_35a2_re.php"
             >Read full article</a
           >
         </p>
@@ -789,7 +789,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/11/synergy_35a2_re.php"
+            href="https://typechecked.net/a/news/archives/2007/11/synergy_35a2_re.php"
             >12:34 PM</a
           >
         </p>
@@ -802,7 +802,7 @@
         in Objective-C 2.0...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/11/synergy_35a_rel.php"
+            href="https://typechecked.net/a/news/archives/2007/11/synergy_35a_rel.php"
             >Read full article</a
           >
         </p>
@@ -810,7 +810,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/11/synergy_35a_rel.php"
+            href="https://typechecked.net/a/news/archives/2007/11/synergy_35a_rel.php"
             >10:01 AM</a
           >
         </p>
@@ -825,7 +825,7 @@
         specifically designed...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/11/leopard_progres.php"
+            href="https://typechecked.net/a/news/archives/2007/11/leopard_progres.php"
             >Read full article</a
           >
         </p>
@@ -833,7 +833,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/11/leopard_progres.php"
+            href="https://typechecked.net/a/news/archives/2007/11/leopard_progres.php"
           >
             1:13 PM</a
           >
@@ -849,7 +849,7 @@
         developers had to wait for mailed...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/10/leopard_update.php"
+            href="https://typechecked.net/a/news/archives/2007/10/leopard_update.php"
             >Read full article</a
           >
         </p>
@@ -857,7 +857,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/10/leopard_update.php"
+            href="https://typechecked.net/a/news/archives/2007/10/leopard_update.php"
             >12:59 PM</a
           >
         </p>
@@ -872,7 +872,7 @@
         a high degree of compatibility. When Apple...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/10/leopard_product.php"
+            href="https://typechecked.net/a/news/archives/2007/10/leopard_product.php"
             >Read full article</a
           >
         </p>
@@ -880,7 +880,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/10/leopard_product.php"
+            href="https://typechecked.net/a/news/archives/2007/10/leopard_product.php"
           >
             2:25 AM</a
           >
@@ -896,7 +896,7 @@
         should run on all versions of...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/10/synergy_32_is_o.php"
+            href="https://typechecked.net/a/news/archives/2007/10/synergy_32_is_o.php"
             >Read full article</a
           >
         </p>
@@ -904,7 +904,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/10/synergy_32_is_o.php"
+            href="https://typechecked.net/a/news/archives/2007/10/synergy_32_is_o.php"
             >11:10 AM</a
           >
         </p>
@@ -919,7 +919,7 @@
         the new release from here and purchase a...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/10/synergy_315_rel.php"
+            href="https://typechecked.net/a/news/archives/2007/10/synergy_315_rel.php"
             >Read full article</a
           >
         </p>
@@ -927,7 +927,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/10/synergy_315_rel.php"
+            href="https://typechecked.net/a/news/archives/2007/10/synergy_315_rel.php"
             >10:37 AM</a
           >
         </p>
@@ -942,7 +942,7 @@
         Synergy for Leopard (see...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/08/synergy_315b_se.php"
+            href="https://typechecked.net/a/news/archives/2007/08/synergy_315b_se.php"
             >Read full article</a
           >
         </p>
@@ -950,7 +950,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/08/synergy_315b_se.php"
+            href="https://typechecked.net/a/news/archives/2007/08/synergy_315b_se.php"
             >12:49 PM</a
           >
         </p>
@@ -965,7 +965,7 @@
         the new release from here and purchase a...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/07/synergy_314_rel.php"
+            href="https://typechecked.net/a/news/archives/2007/07/synergy_314_rel.php"
             >Read full article</a
           >
         </p>
@@ -973,7 +973,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/07/synergy_314_rel.php"
+            href="https://typechecked.net/a/news/archives/2007/07/synergy_314_rel.php"
             >11:32 AM</a
           >
         </p>
@@ -988,7 +988,7 @@
         changelog for more details)....
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/07/synergy_314b_se.php"
+            href="https://typechecked.net/a/news/archives/2007/07/synergy_314b_se.php"
             >Read full article</a
           >
         </p>
@@ -996,7 +996,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/07/synergy_314b_se.php"
+            href="https://typechecked.net/a/news/archives/2007/07/synergy_314b_se.php"
           >
             8:38 AM</a
           >
@@ -1012,7 +1012,7 @@
         mailing list...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/06/install_131_rel.php"
+            href="https://typechecked.net/a/news/archives/2007/06/install_131_rel.php"
             >Read full article</a
           >
         </p>
@@ -1020,7 +1020,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/06/install_131_rel.php"
+            href="https://typechecked.net/a/news/archives/2007/06/install_131_rel.php"
           >
             2:55 PM</a
           >
@@ -1036,7 +1036,7 @@
         the new release from here and purchase a...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/06/synergy_313_rel.php"
+            href="https://typechecked.net/a/news/archives/2007/06/synergy_313_rel.php"
             >Read full article</a
           >
         </p>
@@ -1044,7 +1044,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/06/synergy_313_rel.php"
+            href="https://typechecked.net/a/news/archives/2007/06/synergy_313_rel.php"
           >
             3:30 AM</a
           >
@@ -1060,7 +1060,7 @@
         been talking about on my personal...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/05/synergy_advance_11.php"
+            href="https://typechecked.net/a/news/archives/2007/05/synergy_advance_11.php"
             >Read full article</a
           >
         </p>
@@ -1068,7 +1068,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/05/synergy_advance_11.php"
+            href="https://typechecked.net/a/news/archives/2007/05/synergy_advance_11.php"
           >
             8:38 AM</a
           >
@@ -1084,7 +1084,7 @@
         changelog for more details)....
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/05/synergy_313b_se.php"
+            href="https://typechecked.net/a/news/archives/2007/05/synergy_313b_se.php"
             >Read full article</a
           >
         </p>
@@ -1092,7 +1092,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/05/synergy_313b_se.php"
+            href="https://typechecked.net/a/news/archives/2007/05/synergy_313b_se.php"
             >12:05 PM</a
           >
         </p>
@@ -1107,7 +1107,7 @@
         official beta release was...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/04/synergy_advance_10.php"
+            href="https://typechecked.net/a/news/archives/2007/04/synergy_advance_10.php"
             >Read full article</a
           >
         </p>
@@ -1115,7 +1115,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/04/synergy_advance_10.php"
+            href="https://typechecked.net/a/news/archives/2007/04/synergy_advance_10.php"
           >
             4:36 PM</a
           >
@@ -1129,7 +1129,7 @@
         process you may be interested in the...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/04/hextrapolate_ad.php"
+            href="https://typechecked.net/a/news/archives/2007/04/hextrapolate_ad.php"
             >Read full article</a
           >
         </p>
@@ -1137,7 +1137,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/04/hextrapolate_ad.php"
+            href="https://typechecked.net/a/news/archives/2007/04/hextrapolate_ad.php"
             >11:57 AM</a
           >
         </p>
@@ -1152,7 +1152,7 @@
         and other minor enhancements. A full changelog appears here. You can...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/04/synergy_312_now.php"
+            href="https://typechecked.net/a/news/archives/2007/04/synergy_312_now.php"
             >Read full article</a
           >
         </p>
@@ -1160,7 +1160,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/04/synergy_312_now.php"
+            href="https://typechecked.net/a/news/archives/2007/04/synergy_312_now.php"
           >
             3:25 PM</a
           >
@@ -1174,7 +1174,7 @@
         many new features, bug fixes and enhancements. This is also...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/04/hextrapolate_20_1.php"
+            href="https://typechecked.net/a/news/archives/2007/04/hextrapolate_20_1.php"
             >Read full article</a
           >
         </p>
@@ -1182,7 +1182,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/04/hextrapolate_20_1.php"
+            href="https://typechecked.net/a/news/archives/2007/04/hextrapolate_20_1.php"
           >
             3:22 PM</a
           >
@@ -1198,7 +1198,7 @@
         changelog for more details)....
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/04/synergy_312b_se.php"
+            href="https://typechecked.net/a/news/archives/2007/04/synergy_312b_se.php"
             >Read full article</a
           >
         </p>
@@ -1206,7 +1206,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/04/synergy_312b_se.php"
+            href="https://typechecked.net/a/news/archives/2007/04/synergy_312b_se.php"
             >12:46 PM</a
           >
         </p>
@@ -1219,7 +1219,7 @@
         WinHex with many new...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/04/hextrapolate_20.php"
+            href="https://typechecked.net/a/news/archives/2007/04/hextrapolate_20.php"
             >Read full article</a
           >
         </p>
@@ -1227,7 +1227,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/04/hextrapolate_20.php"
+            href="https://typechecked.net/a/news/archives/2007/04/hextrapolate_20.php"
             >10:18 AM</a
           >
         </p>
@@ -1244,7 +1244,7 @@
         builds schedule. These builds...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/04/synergy_advance_9.php"
+            href="https://typechecked.net/a/news/archives/2007/04/synergy_advance_9.php"
             >Read full article</a
           >
         </p>
@@ -1252,7 +1252,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/04/synergy_advance_9.php"
+            href="https://typechecked.net/a/news/archives/2007/04/synergy_advance_9.php"
           >
             5:33 AM</a
           >
@@ -1268,7 +1268,7 @@
         and other minor enhancements. A full changelog appears here. You can...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/03/synergy_311_now.php"
+            href="https://typechecked.net/a/news/archives/2007/03/synergy_311_now.php"
             >Read full article</a
           >
         </p>
@@ -1276,7 +1276,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/03/synergy_311_now.php"
+            href="https://typechecked.net/a/news/archives/2007/03/synergy_311_now.php"
             >10:35 AM</a
           >
         </p>
@@ -1291,7 +1291,7 @@
         starts you'll be...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/03/synergy_oneday.php"
+            href="https://typechecked.net/a/news/archives/2007/03/synergy_oneday.php"
             >Read full article</a
           >
         </p>
@@ -1299,7 +1299,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/03/synergy_oneday.php"
+            href="https://typechecked.net/a/news/archives/2007/03/synergy_oneday.php"
           >
             6:10 PM</a
           >
@@ -1315,7 +1315,7 @@
         renewal fees. Please see this article...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/03/bansshee_news.php"
+            href="https://typechecked.net/a/news/archives/2007/03/bansshee_news.php"
             >Read full article</a
           >
         </p>
@@ -1323,7 +1323,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/03/bansshee_news.php"
+            href="https://typechecked.net/a/news/archives/2007/03/bansshee_news.php"
           >
             3:58 PM</a
           >
@@ -1339,7 +1339,7 @@
         changelog for more details)....
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2007/03/synergy_311b_se.php"
+            href="https://typechecked.net/a/news/archives/2007/03/synergy_311b_se.php"
             >Read full article</a
           >
         </p>
@@ -1347,7 +1347,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2007/03/synergy_311b_se.php"
+            href="https://typechecked.net/a/news/archives/2007/03/synergy_311b_se.php"
             >12:14 PM</a
           >
         </p>
@@ -1362,7 +1362,7 @@
         FAQ...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/12/a_new_winswitch.php"
+            href="https://typechecked.net/a/news/archives/2006/12/a_new_winswitch.php"
             >Read full article</a
           >
         </p>
@@ -1370,7 +1370,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/12/a_new_winswitch.php"
+            href="https://typechecked.net/a/news/archives/2006/12/a_new_winswitch.php"
           >
             5:36 PM</a
           >
@@ -1387,7 +1387,7 @@
         can...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/12/synergy_31_now.php"
+            href="https://typechecked.net/a/news/archives/2006/12/synergy_31_now.php"
             >Read full article</a
           >
         </p>
@@ -1395,7 +1395,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/12/synergy_31_now.php"
+            href="https://typechecked.net/a/news/archives/2006/12/synergy_31_now.php"
           >
             7:42 PM</a
           >
@@ -1409,7 +1409,7 @@
         all Synergy reviews....
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/12/synergy_receive.php"
+            href="https://typechecked.net/a/news/archives/2006/12/synergy_receive.php"
             >Read full article</a
           >
         </p>
@@ -1417,7 +1417,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/12/synergy_receive.php"
+            href="https://typechecked.net/a/news/archives/2006/12/synergy_receive.php"
             >12:21 PM</a
           >
         </p>
@@ -1432,7 +1432,7 @@
         Audioscrobbler (last.fm) support, as...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/11/synergy_31b_see.php"
+            href="https://typechecked.net/a/news/archives/2006/11/synergy_31b_see.php"
             >Read full article</a
           >
         </p>
@@ -1440,7 +1440,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/11/synergy_31b_see.php"
+            href="https://typechecked.net/a/news/archives/2006/11/synergy_31b_see.php"
           >
             1:25 PM</a
           >
@@ -1456,7 +1456,7 @@
         running non-stop on this server since...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/10/bansshee_10_rel.php"
+            href="https://typechecked.net/a/news/archives/2006/10/bansshee_10_rel.php"
             >Read full article</a
           >
         </p>
@@ -1464,7 +1464,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/10/bansshee_10_rel.php"
+            href="https://typechecked.net/a/news/archives/2006/10/bansshee_10_rel.php"
           >
             4:45 PM</a
           >
@@ -1480,7 +1480,7 @@
         availability of the source code....
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/09/wotest_r102_ava.php"
+            href="https://typechecked.net/a/news/archives/2006/09/wotest_r102_ava.php"
             >Read full article</a
           >
         </p>
@@ -1488,7 +1488,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/09/wotest_r102_ava.php"
+            href="https://typechecked.net/a/news/archives/2006/09/wotest_r102_ava.php"
           >
             3:59 PM</a
           >
@@ -1504,7 +1504,7 @@
         folders, preparing and indexing in-application help, stripping...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/09/wincent_buildto.php"
+            href="https://typechecked.net/a/news/archives/2006/09/wincent_buildto.php"
             >Read full article</a
           >
         </p>
@@ -1512,7 +1512,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/09/wincent_buildto.php"
+            href="https://typechecked.net/a/news/archives/2006/09/wincent_buildto.php"
           >
             1:42 PM</a
           >
@@ -1527,7 +1527,7 @@
         new release from here or purchase a license using this page....
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/09/synergy_30_now.php"
+            href="https://typechecked.net/a/news/archives/2006/09/synergy_30_now.php"
             >Read full article</a
           >
         </p>
@@ -1535,7 +1535,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/09/synergy_30_now.php"
+            href="https://typechecked.net/a/news/archives/2006/09/synergy_30_now.php"
           >
             3:00 AM</a
           >
@@ -1551,7 +1551,7 @@
         permission of Omni Development; Wincent...
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/08/wincent_strings_1.php"
+            href="https://typechecked.net/a/news/archives/2006/08/wincent_strings_1.php"
             >Read full article</a
           >
         </p>
@@ -1559,7 +1559,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/08/wincent_strings_1.php"
+            href="https://typechecked.net/a/news/archives/2006/08/wincent_strings_1.php"
           >
             7:39 PM</a
           >
@@ -1574,14 +1574,14 @@
         dSYM debugging information file format. It's free software released
         under a BSD license, downloadable in both source and executable...
         <p>
-          <a href="https://wincent.com/a/news/archives/2006/08/atosym.php"
+          <a href="https://typechecked.net/a/news/archives/2006/08/atosym.php"
             >Read full article</a
           >
         </p>
 
         <p class="posted">
           Posted by wincent at
-          <a href="https://wincent.com/a/news/archives/2006/08/atosym.php"
+          <a href="https://typechecked.net/a/news/archives/2006/08/atosym.php"
             >10:10 PM</a
           >
         </p>
@@ -1591,12 +1591,12 @@
         <h3 id="a000350">Synergy 2.9 available for download</h3>
 
         <p>
-          <a href="http://wincent.com/">Synergy</a> 2.9 has been
+          <a href="http://typechecked.net/">Synergy</a> 2.9 has been
           released.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/06/synergy_29_avai.php"
+            href="https://typechecked.net/a/news/archives/2006/06/synergy_29_avai.php"
             >Read full article</a
           >
         </p>
@@ -1604,7 +1604,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/06/synergy_29_avai.php"
+            href="https://typechecked.net/a/news/archives/2006/06/synergy_29_avai.php"
           >
             3:51 PM</a
           >
@@ -1618,14 +1618,14 @@
           The fifth public preview release of
           Synergy Advance (0.4) is now
           on the servers and it boasts an
-          <a href="https://wincent.com/a/products/synergy-advance/history/#0.4"
+          <a href="https://typechecked.net/a/products/synergy-advance/history/#0.4"
             >extensive set</a
           >
           of new features, enhancements and bugfixes.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/05/synergy_advance_8.php"
+            href="https://typechecked.net/a/news/archives/2006/05/synergy_advance_8.php"
             >Read full article</a
           >
         </p>
@@ -1633,7 +1633,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/05/synergy_advance_8.php"
+            href="https://typechecked.net/a/news/archives/2006/05/synergy_advance_8.php"
           >
             6:42 PM</a
           >
@@ -1644,12 +1644,12 @@
         <h3 id="a000305">Synergy 2.8 available for download</h3>
 
         <p>
-          <a href="http://wincent.com/">Synergy</a> 2.8 has been
+          <a href="http://typechecked.net/">Synergy</a> 2.8 has been
           released.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/04/synergy_28_avai.php"
+            href="https://typechecked.net/a/news/archives/2006/04/synergy_28_avai.php"
             >Read full article</a
           >
         </p>
@@ -1657,7 +1657,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/04/synergy_28_avai.php"
+            href="https://typechecked.net/a/news/archives/2006/04/synergy_28_avai.php"
           >
             7:12 PM</a
           >
@@ -1676,7 +1676,7 @@
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/04/winswitch_321.php"
+            href="https://typechecked.net/a/news/archives/2006/04/winswitch_321.php"
             >Read full article</a
           >
         </p>
@@ -1684,7 +1684,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/04/winswitch_321.php"
+            href="https://typechecked.net/a/news/archives/2006/04/winswitch_321.php"
           >
             3:26 AM</a
           >
@@ -1700,7 +1700,7 @@
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/04/synergy_advance_7.php"
+            href="https://typechecked.net/a/news/archives/2006/04/synergy_advance_7.php"
             >Read full article</a
           >
         </p>
@@ -1708,7 +1708,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/04/synergy_advance_7.php"
+            href="https://typechecked.net/a/news/archives/2006/04/synergy_advance_7.php"
           >
             3:04 AM</a
           >
@@ -1719,18 +1719,18 @@
         <h3 id="a000278">WinSwitch 3.2 (Universal Binary) release</h3>
 
         <p>
-          <a href="https://wincent.com/a/products/winswitch/">WinSwitch</a>
+          <a href="https://typechecked.net/a/products/winswitch/">WinSwitch</a>
           version 3.2 is now available for download. All reported issues with
           the previous beta release have been addressed, as well as other
           improvements (see
-          <a href="https://wincent.com/a/products/winswitch/history/"
+          <a href="https://typechecked.net/a/products/winswitch/history/"
             >the full change history</a
           >). This release offers native compatibility with both PowerPC and
           Intel processors ("Universal Binary").
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/04/winswitch_32_un.php"
+            href="https://typechecked.net/a/news/archives/2006/04/winswitch_32_un.php"
             >Read full article</a
           >
         </p>
@@ -1738,7 +1738,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/04/winswitch_32_un.php"
+            href="https://typechecked.net/a/news/archives/2006/04/winswitch_32_un.php"
           >
             3:35 PM</a
           >
@@ -1747,12 +1747,12 @@
         <h3 id="a000277">Synergy 2.7 released</h3>
 
         <p>
-          <a href="http://wincent.com/">Synergy</a> 2.7 has been
+          <a href="http://typechecked.net/">Synergy</a> 2.7 has been
           released.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/04/synergy_27_rele.php"
+            href="https://typechecked.net/a/news/archives/2006/04/synergy_27_rele.php"
             >Read full article</a
           >
         </p>
@@ -1760,7 +1760,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/04/synergy_27_rele.php"
+            href="https://typechecked.net/a/news/archives/2006/04/synergy_27_rele.php"
           >
             2:29 PM</a
           >
@@ -1772,18 +1772,18 @@
           A new beta release of
           Synergy Advance has been
           seeded to beta testers, fixing the failure to launch problems (<a
-            href="https://wincent.com/a/support/bugs/show_bug.cgi?id=387"
+            href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=387"
             >bug #387</a
           >
           and
-          <a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=389"
+          <a href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=389"
             >#389</a
           >). Thank you to those beta testers who helped to confirm the
           existence and nature of the problem.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/04/synergy_advance_6.php"
+            href="https://typechecked.net/a/news/archives/2006/04/synergy_advance_6.php"
             >Read full article</a
           >
         </p>
@@ -1791,7 +1791,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/04/synergy_advance_6.php"
+            href="https://typechecked.net/a/news/archives/2006/04/synergy_advance_6.php"
             >11:31 AM</a
           >
         </p>
@@ -1805,18 +1805,18 @@
           Synergy Advance has been
           seeded to beta testers. See the
           <a
-            href="https://wincent.com/a/knowledge-base/archives/2005/04/information_for.php"
+            href="https://typechecked.net/a/knowledge-base/archives/2005/04/information_for.php"
             >information for beta testers</a
           >,
           <a
-            href="https://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php"
+            href="https://typechecked.net/a/knowledge-base/archives/2004/11/how_to_file_a_g.php"
             >how to file a good bug report</a
           >, <a href="../history/#0.4b2">the change log</a> and
           <a href="../download/">the downloads page</a>.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/04/synergy_advance_5.php"
+            href="https://typechecked.net/a/news/archives/2006/04/synergy_advance_5.php"
             >Read full article</a
           >
         </p>
@@ -1824,7 +1824,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/04/synergy_advance_5.php"
+            href="https://typechecked.net/a/news/archives/2006/04/synergy_advance_5.php"
             >11:43 AM</a
           >
         </p>
@@ -1839,7 +1839,7 @@
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/03/synergy_advance_4.php"
+            href="https://typechecked.net/a/news/archives/2006/03/synergy_advance_4.php"
             >Read full article</a
           >
         </p>
@@ -1847,7 +1847,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/03/synergy_advance_4.php"
+            href="https://typechecked.net/a/news/archives/2006/03/synergy_advance_4.php"
           >
             1:44 PM</a
           >
@@ -1858,18 +1858,18 @@
         <h3 id="a000241">WinSwitch 3.2b Universal Binary release</h3>
 
         <p>
-          <a href="https://wincent.com/a/products/winswitch/">WinSwitch</a>
+          <a href="https://typechecked.net/a/products/winswitch/">WinSwitch</a>
           version 3.2b (beta) is now available for download. This is a beta
           release which offers native compatibility with both PowerPC and Intel
           processors ("Universal Binary"). In addition to the Universal Binary
           status this release brings a number of bugfixes as described in
-          <a href="https://wincent.com/a/products/winswitch/history/"
+          <a href="https://typechecked.net/a/products/winswitch/history/"
             >the full change history</a
           >.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/03/winswitch_32b_u.php"
+            href="https://typechecked.net/a/news/archives/2006/03/winswitch_32b_u.php"
             >Read full article</a
           >
         </p>
@@ -1877,7 +1877,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/03/winswitch_32b_u.php"
+            href="https://typechecked.net/a/news/archives/2006/03/winswitch_32b_u.php"
           >
             5:08 AM</a
           >
@@ -1888,12 +1888,12 @@
         <h3 id="a000240">Synergy 2.6 released</h3>
 
         <p>
-          <a href="http://wincent.com/">Synergy</a> 2.6 has been
+          <a href="http://typechecked.net/">Synergy</a> 2.6 has been
           released.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/03/synergy_26_rele.php"
+            href="https://typechecked.net/a/news/archives/2006/03/synergy_26_rele.php"
             >Read full article</a
           >
         </p>
@@ -1901,7 +1901,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/03/synergy_26_rele.php"
+            href="https://typechecked.net/a/news/archives/2006/03/synergy_26_rele.php"
           >
             3:08 PM</a
           >
@@ -1913,13 +1913,13 @@
 
         <p>
           Today I'm announcing a new product,
-          <a href="https://wincent.com/a/products/wincent-strings-util/"
+          <a href="https://typechecked.net/a/products/wincent-strings-util/"
             >Wincent Strings Utility</a
           >, which is a derivative of Omni Development's stringsUtil.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/02/wincent_strings.php"
+            href="https://typechecked.net/a/news/archives/2006/02/wincent_strings.php"
             >Read full article</a
           >
         </p>
@@ -1927,7 +1927,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/02/wincent_strings.php"
+            href="https://typechecked.net/a/news/archives/2006/02/wincent_strings.php"
           >
             9:04 PM</a
           >
@@ -1938,12 +1938,12 @@
         <h3 id="a000202">Synergy 2.5 released</h3>
 
         <p>
-          <a href="http://wincent.com/">Synergy</a> 2.5 has just been
+          <a href="http://typechecked.net/">Synergy</a> 2.5 has just been
           released.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/02/synergy_25_rele.php"
+            href="https://typechecked.net/a/news/archives/2006/02/synergy_25_rele.php"
             >Read full article</a
           >
         </p>
@@ -1951,7 +1951,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/02/synergy_25_rele.php"
+            href="https://typechecked.net/a/news/archives/2006/02/synergy_25_rele.php"
           >
             3:44 PM</a
           >
@@ -1962,12 +1962,12 @@
         <h3 id="a000181">Synergy 2.4 released</h3>
 
         <p>
-          <a href="http://wincent.com/">Synergy</a> 2.4 has just been
+          <a href="http://typechecked.net/">Synergy</a> 2.4 has just been
           released.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/01/synergy_24_rele.php"
+            href="https://typechecked.net/a/news/archives/2006/01/synergy_24_rele.php"
             >Read full article</a
           >
         </p>
@@ -1975,7 +1975,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/01/synergy_24_rele.php"
+            href="https://typechecked.net/a/news/archives/2006/01/synergy_24_rele.php"
           >
             3:00 PM</a
           >
@@ -1992,7 +1992,7 @@
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/01/halfstar_rating.php"
+            href="https://typechecked.net/a/news/archives/2006/01/halfstar_rating.php"
             >Read full article</a
           >
         </p>
@@ -2000,7 +2000,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/01/halfstar_rating.php"
+            href="https://typechecked.net/a/news/archives/2006/01/halfstar_rating.php"
           >
             2:02 PM</a
           >
@@ -2013,7 +2013,7 @@
         <p>The Universal Binary status of Wincent products.</p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2006/01/universal_binar.php"
+            href="https://typechecked.net/a/news/archives/2006/01/universal_binar.php"
             >Read full article</a
           >
         </p>
@@ -2021,7 +2021,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2006/01/universal_binar.php"
+            href="https://typechecked.net/a/news/archives/2006/01/universal_binar.php"
           >
             3:52 AM</a
           >
@@ -2032,12 +2032,12 @@
         <h3 id="a000161">Synergy 2.3 released</h3>
 
         <p>
-          <a href="http://wincent.com/">Synergy</a> 2.3 has just been
+          <a href="http://typechecked.net/">Synergy</a> 2.3 has just been
           released.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/12/synergy_23_rele_2.php"
+            href="https://typechecked.net/a/news/archives/2005/12/synergy_23_rele_2.php"
             >Read full article</a
           >
         </p>
@@ -2045,7 +2045,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/12/synergy_23_rele_2.php"
+            href="https://typechecked.net/a/news/archives/2005/12/synergy_23_rele_2.php"
           >
             4:08 PM</a
           >
@@ -2065,7 +2065,7 @@
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/12/special_offer_b.php"
+            href="https://typechecked.net/a/news/archives/2005/12/special_offer_b.php"
             >Read full article</a
           >
         </p>
@@ -2073,7 +2073,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/12/special_offer_b.php"
+            href="https://typechecked.net/a/news/archives/2005/12/special_offer_b.php"
           >
             1:43 PM</a
           >
@@ -2085,12 +2085,12 @@
 
         <p>
           The second release candidate for
-          <a href="http://wincent.com/">Synergy</a> 2.3 has just been
+          <a href="http://typechecked.net/">Synergy</a> 2.3 has just been
           released.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/11/synergy_23_rele_1.php"
+            href="https://typechecked.net/a/news/archives/2005/11/synergy_23_rele_1.php"
             >Read full article</a
           >
         </p>
@@ -2098,7 +2098,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/11/synergy_23_rele_1.php"
+            href="https://typechecked.net/a/news/archives/2005/11/synergy_23_rele_1.php"
           >
             3:37 PM</a
           >
@@ -2110,12 +2110,12 @@
 
         <p>
           The release candidate for
-          <a href="http://wincent.com/">Synergy</a> 2.3 has just been
+          <a href="http://typechecked.net/">Synergy</a> 2.3 has just been
           released.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/11/synergy_23_rele.php"
+            href="https://typechecked.net/a/news/archives/2005/11/synergy_23_rele.php"
             >Read full article</a
           >
         </p>
@@ -2123,7 +2123,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/11/synergy_23_rele.php"
+            href="https://typechecked.net/a/news/archives/2005/11/synergy_23_rele.php"
           >
             8:13 PM</a
           >
@@ -2135,12 +2135,12 @@
 
         <p>
           The
-          <a href="https://wincent.com/a/products/install/">Install 1.3</a> is
+          <a href="https://typechecked.net/a/products/install/">Install 1.3</a> is
           out, and is a recommended upgrade for all licensees.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/11/install_13_rele.php"
+            href="https://typechecked.net/a/news/archives/2005/11/install_13_rele.php"
             >Read full article</a
           >
         </p>
@@ -2148,7 +2148,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/11/install_13_rele.php"
+            href="https://typechecked.net/a/news/archives/2005/11/install_13_rele.php"
           >
             6:26 PM</a
           >
@@ -2161,7 +2161,7 @@
         <p>Synergy 2.2 has been released.</p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/11/synergy_22_rele_1.php"
+            href="https://typechecked.net/a/news/archives/2005/11/synergy_22_rele_1.php"
             >Read full article</a
           >
         </p>
@@ -2169,7 +2169,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/11/synergy_22_rele_1.php"
+            href="https://typechecked.net/a/news/archives/2005/11/synergy_22_rele_1.php"
             >11:42 AM</a
           >
         </p>
@@ -2180,14 +2180,14 @@
 
         <p>
           The release candidate for
-          <a href="http://wincent.com/">Synergy</a> 2.2 has just been
+          <a href="http://typechecked.net/">Synergy</a> 2.2 has just been
           released to beta testers. If you're interested in getting access to
           this kind of build in the future subscribe to the synergy-beta mailing
           list.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/11/synergy_22_rele.php"
+            href="https://typechecked.net/a/news/archives/2005/11/synergy_22_rele.php"
             >Read full article</a
           >
         </p>
@@ -2195,7 +2195,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/11/synergy_22_rele.php"
+            href="https://typechecked.net/a/news/archives/2005/11/synergy_22_rele.php"
           >
             1:49 PM</a
           >
@@ -2206,13 +2206,13 @@
         <h3 id="a000133">Synergy gets 5-Mice rating in Macworld</h3>
 
         <p>
-          <a href="http://wincent.com/">Synergy</a> has been awarded a
+          <a href="http://typechecked.net/">Synergy</a> has been awarded a
           coveted, 5-mice rating in the August 2005 issue of
           <a href="http://www.macworld.com/">Macworld</a>.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/08/synergy_gets_5-.php"
+            href="https://typechecked.net/a/news/archives/2005/08/synergy_gets_5-.php"
             >Read full article</a
           >
         </p>
@@ -2220,7 +2220,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/08/synergy_gets_5-.php"
+            href="https://typechecked.net/a/news/archives/2005/08/synergy_gets_5-.php"
           >
             1:33 PM</a
           >
@@ -2237,7 +2237,7 @@
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/07/synergy_advance_3.php"
+            href="https://typechecked.net/a/news/archives/2005/07/synergy_advance_3.php"
             >Read full article</a
           >
         </p>
@@ -2245,7 +2245,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/07/synergy_advance_3.php"
+            href="https://typechecked.net/a/news/archives/2005/07/synergy_advance_3.php"
           >
             4:19 PM</a
           >
@@ -2258,7 +2258,7 @@
         <p>Synergy 2.0.1 has been released.</p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/06/synergy_201_now.php"
+            href="https://typechecked.net/a/news/archives/2005/06/synergy_201_now.php"
             >Read full article</a
           >
         </p>
@@ -2266,7 +2266,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/06/synergy_201_now.php"
+            href="https://typechecked.net/a/news/archives/2005/06/synergy_201_now.php"
           >
             3:28 PM</a
           >
@@ -2279,7 +2279,7 @@
         <p>Synergy 2.0 released.</p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/06/synergy_20_rele.php"
+            href="https://typechecked.net/a/news/archives/2005/06/synergy_20_rele.php"
             >Read full article</a
           >
         </p>
@@ -2287,7 +2287,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/06/synergy_20_rele.php"
+            href="https://typechecked.net/a/news/archives/2005/06/synergy_20_rele.php"
           >
             4:06 PM</a
           >
@@ -2308,7 +2308,7 @@
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/06/synergy_and_syn.php"
+            href="https://typechecked.net/a/news/archives/2005/06/synergy_and_syn.php"
             >Read full article</a
           >
         </p>
@@ -2316,7 +2316,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/06/synergy_and_syn.php"
+            href="https://typechecked.net/a/news/archives/2005/06/synergy_and_syn.php"
           >
             8:20 PM</a
           >
@@ -2333,7 +2333,7 @@
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/06/position_statem.php"
+            href="https://typechecked.net/a/news/archives/2005/06/position_statem.php"
             >Read full article</a
           >
         </p>
@@ -2341,7 +2341,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/06/position_statem.php"
+            href="https://typechecked.net/a/news/archives/2005/06/position_statem.php"
             >12:36 PM</a
           >
         </p>
@@ -2356,7 +2356,7 @@
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/05/synergy_classic_2.php"
+            href="https://typechecked.net/a/news/archives/2005/05/synergy_classic_2.php"
             >Read full article</a
           >
         </p>
@@ -2364,7 +2364,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/05/synergy_classic_2.php"
+            href="https://typechecked.net/a/news/archives/2005/05/synergy_classic_2.php"
             >12:37 PM</a
           >
         </p>
@@ -2379,7 +2379,7 @@
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/05/synergy_advance_2.php"
+            href="https://typechecked.net/a/news/archives/2005/05/synergy_advance_2.php"
             >Read full article</a
           >
         </p>
@@ -2387,7 +2387,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/05/synergy_advance_2.php"
+            href="https://typechecked.net/a/news/archives/2005/05/synergy_advance_2.php"
           >
             6:35 PM</a
           >
@@ -2403,7 +2403,7 @@
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/05/synergy_advance_1.php"
+            href="https://typechecked.net/a/news/archives/2005/05/synergy_advance_1.php"
             >Read full article</a
           >
         </p>
@@ -2411,7 +2411,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/05/synergy_advance_1.php"
+            href="https://typechecked.net/a/news/archives/2005/05/synergy_advance_1.php"
             >11:13 AM</a
           >
         </p>
@@ -2426,7 +2426,7 @@
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/05/synergy_advance.php"
+            href="https://typechecked.net/a/news/archives/2005/05/synergy_advance.php"
             >Read full article</a
           >
         </p>
@@ -2434,7 +2434,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/05/synergy_advance.php"
+            href="https://typechecked.net/a/news/archives/2005/05/synergy_advance.php"
           >
             8:30 PM</a
           >
@@ -2450,7 +2450,7 @@
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/04/winswitch_31_br.php"
+            href="https://typechecked.net/a/news/archives/2005/04/winswitch_31_br.php"
             >Read full article</a
           >
         </p>
@@ -2458,7 +2458,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/04/winswitch_31_br.php"
+            href="https://typechecked.net/a/news/archives/2005/04/winswitch_31_br.php"
             >10:27 AM</a
           >
         </p>
@@ -2470,7 +2470,7 @@
         <p>Synergy Classic 1.8.1 for Mac OS X released</p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/04/synergy_classic_1.php"
+            href="https://typechecked.net/a/news/archives/2005/04/synergy_classic_1.php"
             >Read full article</a
           >
         </p>
@@ -2478,7 +2478,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/04/synergy_classic_1.php"
+            href="https://typechecked.net/a/news/archives/2005/04/synergy_classic_1.php"
           >
             3:32 PM</a
           >
@@ -2491,7 +2491,7 @@
         <p>Synergy Classic 1.8 released</p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/04/synergy_classic.php"
+            href="https://typechecked.net/a/news/archives/2005/04/synergy_classic.php"
             >Read full article</a
           >
         </p>
@@ -2499,7 +2499,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/04/synergy_classic.php"
+            href="https://typechecked.net/a/news/archives/2005/04/synergy_classic.php"
           >
             9:53 AM</a
           >
@@ -2512,7 +2512,7 @@
         <p>Complimentary licenses have been sent to Synergy Advance donors.</p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/04/complimentary_l.php"
+            href="https://typechecked.net/a/news/archives/2005/04/complimentary_l.php"
             >Read full article</a
           >
         </p>
@@ -2520,7 +2520,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/04/complimentary_l.php"
+            href="https://typechecked.net/a/news/archives/2005/04/complimentary_l.php"
           >
             5:15 PM</a
           >
@@ -2536,7 +2536,7 @@
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/03/winswitch_301_r.php"
+            href="https://typechecked.net/a/news/archives/2005/03/winswitch_301_r.php"
             >Read full article</a
           >
         </p>
@@ -2544,7 +2544,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/03/winswitch_301_r.php"
+            href="https://typechecked.net/a/news/archives/2005/03/winswitch_301_r.php"
             >10:43 PM</a
           >
         </p>
@@ -2559,7 +2559,7 @@
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/03/winswitch_30_re.php"
+            href="https://typechecked.net/a/news/archives/2005/03/winswitch_30_re.php"
             >Read full article</a
           >
         </p>
@@ -2567,7 +2567,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/03/winswitch_30_re.php"
+            href="https://typechecked.net/a/news/archives/2005/03/winswitch_30_re.php"
             >11:33 AM</a
           >
         </p>
@@ -2579,7 +2579,7 @@
         <p>Synergy 1.7.1 released.</p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/03/synergy_171_rel.php"
+            href="https://typechecked.net/a/news/archives/2005/03/synergy_171_rel.php"
             >Read full article</a
           >
         </p>
@@ -2587,7 +2587,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/03/synergy_171_rel.php"
+            href="https://typechecked.net/a/news/archives/2005/03/synergy_171_rel.php"
             >11:41 AM</a
           >
         </p>
@@ -2602,7 +2602,7 @@
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/03/conflict_betwee.php"
+            href="https://typechecked.net/a/news/archives/2005/03/conflict_betwee.php"
             >Read full article</a
           >
         </p>
@@ -2610,7 +2610,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/03/conflict_betwee.php"
+            href="https://typechecked.net/a/news/archives/2005/03/conflict_betwee.php"
           >
             4:51 AM</a
           >
@@ -2623,7 +2623,7 @@
         <p>Synergy 1.7 released</p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2005/03/synergy_17_rele.php"
+            href="https://typechecked.net/a/news/archives/2005/03/synergy_17_rele.php"
             >Read full article</a
           >
         </p>
@@ -2631,7 +2631,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2005/03/synergy_17_rele.php"
+            href="https://typechecked.net/a/news/archives/2005/03/synergy_17_rele.php"
             >11:50 AM</a
           >
         </p>
@@ -2643,7 +2643,7 @@
         <p>Synergy 1.6.1 released</p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2004/12/synergy_161_rel.php"
+            href="https://typechecked.net/a/news/archives/2004/12/synergy_161_rel.php"
             >Read full article</a
           >
         </p>
@@ -2651,7 +2651,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2004/12/synergy_161_rel.php"
+            href="https://typechecked.net/a/news/archives/2004/12/synergy_161_rel.php"
           >
             3:43 PM</a
           >
@@ -2661,14 +2661,14 @@
 
         <p>Synergy 1.6 released</p>
         <p>
-          <a href="https://wincent.com/a/news/archives/2004/12/synergy_16.php"
+          <a href="https://typechecked.net/a/news/archives/2004/12/synergy_16.php"
             >Read full article</a
           >
         </p>
 
         <p class="posted">
           Posted by wincent at
-          <a href="https://wincent.com/a/news/archives/2004/12/synergy_16.php"
+          <a href="https://typechecked.net/a/news/archives/2004/12/synergy_16.php"
             >12:04 PM</a
           >
         </p>
@@ -2679,13 +2679,13 @@
 
         <p>
           The
-          <a href="https://wincent.com/a/products/install/">Install 1.2.3</a>
+          <a href="https://typechecked.net/a/products/install/">Install 1.2.3</a>
           maintenance release is out, and is a recommended upgrade for all
           licensees.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2004/12/install_123_rel.php"
+            href="https://typechecked.net/a/news/archives/2004/12/install_123_rel.php"
             >Read full article</a
           >
         </p>
@@ -2693,7 +2693,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2004/12/install_123_rel.php"
+            href="https://typechecked.net/a/news/archives/2004/12/install_123_rel.php"
             >12:52 PM</a
           >
         </p>
@@ -2704,14 +2704,14 @@
 
         <p>Synergy 1.5 released.</p>
         <p>
-          <a href="https://wincent.com/a/news/archives/2004/12/synergy_15.php"
+          <a href="https://typechecked.net/a/news/archives/2004/12/synergy_15.php"
             >Read full article</a
           >
         </p>
 
         <p class="posted">
           Posted by wincent at
-          <a href="https://wincent.com/a/news/archives/2004/12/synergy_15.php"
+          <a href="https://typechecked.net/a/news/archives/2004/12/synergy_15.php"
             >10:57 AM</a
           >
         </p>
@@ -2722,12 +2722,12 @@
 
         <p>
           The
-          <a href="https://wincent.com/a/products/winswitch/">WinSwitch</a> 3.0b
+          <a href="https://typechecked.net/a/products/winswitch/">WinSwitch</a> 3.0b
           localization pack is now available.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2004/12/winswitch_30b_l.php"
+            href="https://typechecked.net/a/news/archives/2004/12/winswitch_30b_l.php"
             >Read full article</a
           >
         </p>
@@ -2735,7 +2735,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2004/12/winswitch_30b_l.php"
+            href="https://typechecked.net/a/news/archives/2004/12/winswitch_30b_l.php"
           >
             7:32 PM</a
           >
@@ -2748,7 +2748,7 @@
         <p>WinSwitch 3.0b has been released with a bunch of new features.</p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2004/12/winswitch_30b_a.php"
+            href="https://typechecked.net/a/news/archives/2004/12/winswitch_30b_a.php"
             >Read full article</a
           >
         </p>
@@ -2756,7 +2756,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2004/12/winswitch_30b_a.php"
+            href="https://typechecked.net/a/news/archives/2004/12/winswitch_30b_a.php"
             >11:41 AM</a
           >
         </p>
@@ -2768,14 +2768,14 @@
         <p>
           <a href="http://iTunesForum.de/">iTunesForum.de</a> is giving away ten
           free
-          <a href="https://wincent.com/a/products/synergy-classic/">Synergy</a>
+          <a href="https://typechecked.net/a/products/synergy-classic/">Synergy</a>
           licenses as part of its
           <a href="http://www.itunesforum.de/advent.php">Christmas Calendar</a>
           promotion.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2004/11/itunesforumcom.php"
+            href="https://typechecked.net/a/news/archives/2004/11/itunesforumcom.php"
             >Read full article</a
           >
         </p>
@@ -2783,7 +2783,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2004/11/itunesforumcom.php"
+            href="https://typechecked.net/a/news/archives/2004/11/itunesforumcom.php"
             >12:06 PM</a
           >
         </p>
@@ -2795,7 +2795,7 @@
         <p>Synergy 1.5b released.</p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2004/11/synergy_15b_rel.php"
+            href="https://typechecked.net/a/news/archives/2004/11/synergy_15b_rel.php"
             >Read full article</a
           >
         </p>
@@ -2803,7 +2803,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2004/11/synergy_15b_rel.php"
+            href="https://typechecked.net/a/news/archives/2004/11/synergy_15b_rel.php"
           >
             4:49 PM</a
           >
@@ -2815,12 +2815,12 @@
 
         <p>
           Wincent announces inexpensive
-          <a href="https://wincent.com/a/products/install/">Install</a>
+          <a href="https://typechecked.net/a/products/install/">Install</a>
           licensing for freeware and open-source projects for only 29.95&euro;.
         </p>
         <p>
           <a
-            href="https://wincent.com/a/news/archives/2004/11/new_licensing_f.php"
+            href="https://typechecked.net/a/news/archives/2004/11/new_licensing_f.php"
             >Read full article</a
           >
         </p>
@@ -2828,7 +2828,7 @@
         <p class="posted">
           Posted by wincent at
           <a
-            href="https://wincent.com/a/news/archives/2004/11/new_licensing_f.php"
+            href="https://typechecked.net/a/news/archives/2004/11/new_licensing_f.php"
           >
             1:20 AM</a
           >

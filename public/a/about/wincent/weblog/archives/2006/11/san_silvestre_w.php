@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/san-silvestre-website-a-study-in-incompatibility-and-insecurity"
-        >https://wincent.com/blog/san-silvestre-website-a-study-in-incompatibility-and-insecurity</a
+        href="https://typechecked.net/blog/san-silvestre-website-a-study-in-incompatibility-and-insecurity"
+        >https://typechecked.net/blog/san-silvestre-website-a-study-in-incompatibility-and-insecurity</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/san-silvestre-website-a-study-in-incompatibility-and-insecurity',
+      'https://typechecked.net/blog/san-silvestre-website-a-study-in-incompatibility-and-insecurity',
     );
   </script>
 </html>

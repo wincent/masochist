@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/automated-stripping"
-        >https://wincent.com/blog/automated-stripping</a
+      <a href="https://typechecked.net/blog/automated-stripping"
+        >https://typechecked.net/blog/automated-stripping</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/automated-stripping');
+    window.location.replace('https://typechecked.net/blog/automated-stripping');
   </script>
 </html>

@@ -10,10 +10,10 @@
       style="text-align: center; font-family: 'Lucida Grande'; margin: 5px 250px 5px 250px; padding: 5px; font-size: x-small; border: 2px solid silver; -webkit-border-radius: 0.5em; -moz-border-radius: 0.5em; background: #fefefe;"
     >
       <p>
-        You are currently looking at an older section of the wincent.com
+        You are currently looking at an older section of the typechecked.net
         website.<br />
         Please check the new version of the site at
-        <a href="https://wincent.com/">https://wincent.com/</a> for updated
+        <a href="https://typechecked.net/">https://typechecked.net/</a> for updated
         content.<br />
       </p>
     </div>
@@ -74,7 +74,7 @@
           valign="middle"
         >
           <!-- Begin: header content -->
-          <a href="https://wincent.com/"
+          <a href="https://typechecked.net/"
             ><img
               src="/a/gfx/wincent-logo-small-gray-bg.jpg"
               width="43"
@@ -128,7 +128,7 @@
           <ul style="width: 73px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/products/"
+                href="https://typechecked.net/a/products/"
                 title="Full products listing"
                 ><img
                   src="/a/gfx/header/products-on.jpg"
@@ -139,35 +139,35 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/products/synergy"
+                    href="https://typechecked.net/products/synergy"
                     title="The original iTunes menu bar controller"
                     >Synergy &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/products/synergy/download"
+                        href="https://typechecked.net/products/synergy/download"
                         title="Download Synergy"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-classic/purchase/"
+                        href="https://typechecked.net/a/products/synergy-classic/purchase/"
                         title="Purchase Synergy"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/products/synergy/help"
+                        href="https://typechecked.net/products/synergy/help"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-classic/buttons/"
+                        href="https://typechecked.net/a/products/synergy-classic/buttons/"
                         title="Free button sets"
                         >Button Sets</a
                       >
@@ -176,35 +176,35 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/synergy-advance/"
+                    href="https://typechecked.net/a/products/synergy-advance/"
                     title="Multi-purpose audio companion"
                     >Synergy Advance &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/download/"
+                        href="https://typechecked.net/a/products/synergy-advance/download/"
                         title="Download Synergy Advance"
                         >Download preview</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/purchase/"
+                        href="https://typechecked.net/a/products/synergy-advance/purchase/"
                         title="Purchase Synergy Advance"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/donate/"
+                        href="https://typechecked.net/a/products/synergy-advance/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/donate/"
+                        href="https://typechecked.net/a/products/synergy-advance/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
@@ -213,35 +213,35 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/winswitch/"
+                    href="https://typechecked.net/a/products/winswitch/"
                     title="Enhanced replacement for Apple's Fast User Switching menu"
                     >WinSwitch &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/download/"
+                        href="https://typechecked.net/a/products/winswitch/download/"
                         title="Download WinSwitch"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/donate/"
+                        href="https://typechecked.net/a/products/winswitch/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/donate/"
+                        href="https://typechecked.net/a/products/winswitch/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/faq/"
+                        href="https://typechecked.net/a/products/winswitch/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -250,28 +250,28 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/hextrapolate/"
+                    href="https://typechecked.net/a/products/hextrapolate/"
                     title="Programmers number conversion tool"
                     >Hextrapolate &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/hextrapolate/download/"
+                        href="https://typechecked.net/a/products/hextrapolate/download/"
                         title="Download Hextrapolate"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/hextrapolate/purchase/"
+                        href="https://typechecked.net/a/products/hextrapolate/purchase/"
                         title="Purchase Hextrapolate"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/hextrapolate/faq/"
+                        href="https://typechecked.net/a/products/hextrapolate/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -280,42 +280,42 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/install/"
+                    href="https://typechecked.net/a/products/install/"
                     title="Installation and deployment solution for developers"
                     >Install &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/download/"
+                        href="https://typechecked.net/a/products/install/download/"
                         title="Install downloads"
                         >Downloads</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/purchase/"
+                        href="https://typechecked.net/a/products/install/purchase/"
                         title="Purchase Install"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/donate/"
+                        href="https://typechecked.net/a/products/install/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/donate/"
+                        href="https://typechecked.net/a/products/install/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/faq/"
+                        href="https://typechecked.net/a/products/install/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -324,14 +324,14 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/getsmart-pro/"
+                    href="https://typechecked.net/a/products/getsmart-pro/"
                     title="Intelligent download manager"
                     >GetSmart Pro &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/getsmart-pro/donate/"
+                        href="https://typechecked.net/a/products/getsmart-pro/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
@@ -340,7 +340,7 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/"
+                    href="https://typechecked.net/a/products/"
                     title="Full product listing"
                     >Other products...</a
                   >
@@ -350,7 +350,7 @@
           </ul>
         </td>
         <td width="48" height="25">
-          <a href="https://wincent.com/a/store/" title="Wincent online store"
+          <a href="https://typechecked.net/a/store/" title="Wincent online store"
             ><img
               src="/a/gfx/header/store-off.jpg"
               width="48"
@@ -362,7 +362,7 @@
           <ul style="width: 63px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/services/"
+                href="https://typechecked.net/a/services/"
                 title="Full services listing"
                 ><img
                   src="/a/gfx/header/services-off.jpg"
@@ -373,28 +373,28 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/custom-development/"
+                    href="https://typechecked.net/a/services/custom-development/"
                     title="Custom software development"
                     >Custom Development</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/mac-consultancy/"
+                    href="https://typechecked.net/a/services/mac-consultancy/"
                     title="Apple and Mac OS X consultancy"
                     >Apple/Mac Consultancy</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/web-design/"
+                    href="https://typechecked.net/a/services/web-design/"
                     title="Web design services"
                     >Web Design</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/hosting/"
+                    href="https://typechecked.net/a/services/hosting/"
                     title="Internet web and email hosting"
                     >Hosting</a
                   >
@@ -407,7 +407,7 @@
           <ul style="width: 62px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/support/"
+                href="https://typechecked.net/a/support/"
                 title="Support resources and links"
                 ><img
                   src="/a/gfx/header/support-off.jpg"
@@ -418,56 +418,56 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/registration/"
+                    href="https://typechecked.net/a/support/registration/"
                     title="Retrieve lost license codes"
                     >Lost License Codes</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/bugs/"
+                    href="https://typechecked.net/a/support/bugs/"
                     title="Bug tracking and feature request database"
                     >Bugs and Feature Requests</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/demo-licenses/"
+                    href="https://typechecked.net/a/support/demo-licenses/"
                     title="Obtain a demonstration license"
                     >Demonstration licenses</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/forums/"
+                    href="https://typechecked.net/a/support/forums/"
                     title="Discussion and support forums"
                     >Forums</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/faq/"
+                    href="https://typechecked.net/a/support/faq/"
                     title="Frequently Asked Questions"
                     >FAQ</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/activation/"
+                    href="https://typechecked.net/a/support/activation/"
                     title="Product activation and information"
                     >Product Activation</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/tickets/"
+                    href="https://typechecked.net/a/support/tickets/"
                     title="Open or view a support ticket"
                     >Support Tickets</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/lists/"
+                    href="https://typechecked.net/a/support/lists/"
                     title="Subscribe/unsubscribe to/from a mailing list"
                     >Mailing lists</a
                   >
@@ -479,7 +479,7 @@
         <td width="53" height="25">
           <ul style="width: 53px; height: 25px;">
             <li class="menu">
-              <a href="https://wincent.com/a/about/" title="Company information"
+              <a href="https://typechecked.net/a/about/" title="Company information"
                 ><img
                   src="/a/gfx/header/about-off.jpg"
                   width="53"
@@ -489,14 +489,14 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/about/wincent/"
+                    href="https://typechecked.net/a/about/wincent/"
                     title="About Wincent Colaiuta: the person"
                     >About Wincent Colaiuta</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/about/privacy/"
+                    href="https://typechecked.net/a/about/privacy/"
                     title="About the Wincent Privacy Policy"
                     >Privacy Policy</a
                   >
@@ -509,7 +509,7 @@
           <ul style="width: 49px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/news/"
+                href="https://typechecked.net/a/news/"
                 title="Latest news items in weblog format"
                 ><img
                   src="/a/gfx/header/news-off.jpg"
@@ -520,28 +520,28 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/news/archives/mac_os_x_news/"
+                    href="https://typechecked.net/a/news/archives/mac_os_x_news/"
                     title="Apple and Mac OS X-related news"
                     >Mac OS X News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/news/archives/product_news/"
+                    href="https://typechecked.net/a/news/archives/product_news/"
                     title="Wincent product news"
                     >Product News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/news/archives/site_news/"
+                    href="https://typechecked.net/a/news/archives/site_news/"
                     title="Site-related news"
                     >Site News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/blog"
+                    href="https://typechecked.net/blog"
                     title="Development and other notes from Wincent"
                     >Wincent Colaiuta's weblog</a
                   >
@@ -552,7 +552,7 @@
         </td>
         <td width="107" height="25">
           <a
-            href="https://wincent.com/wiki"
+            href="https://typechecked.net/wiki"
             title="Categorized Mac OS X tips and information"
             ><img
               src="/a/gfx/header/knowledge-base-off.jpg"
@@ -562,7 +562,7 @@
           /></a>
         </td>
         <td width="62" height="25">
-          <a href="https://wincent.com/a/contact/" title="Contact email form"
+          <a href="https://typechecked.net/a/contact/" title="Contact email form"
             ><img
               src="/a/gfx/header/contact-off.jpg"
               width="62"
@@ -573,7 +573,7 @@
         <td width="72" height="25">
           <ul style="width: 72px; height: 25px;">
             <li class="menu">
-              <a href="https://wincent.com/a/site-map/" title="Site overview"
+              <a href="https://typechecked.net/a/site-map/" title="Site overview"
                 ><img
                   src="/a/gfx/header/site-map-off.jpg"
                   width="72"
@@ -583,7 +583,7 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/site-map/search/"
+                    href="https://typechecked.net/a/site-map/search/"
                     title="Site search"
                     >Search</a
                   >
@@ -617,7 +617,7 @@
 
     <div id="breadcrumbs">
       <p>
-        <a href="https://wincent.com/">Main</a>&nbsp;&gt;&nbsp;<a href="../../"
+        <a href="https://typechecked.net/">Main</a>&nbsp;&gt;&nbsp;<a href="../../"
           >Products</a
         >&nbsp;&gt;&nbsp;<a href="../">Synergy Classic</a
         >&nbsp;&gt;&nbsp;Buttons
@@ -1049,7 +1049,7 @@
 
           <img
             style="float:right;"
-            src="https://wincent.com/a/products/synergy-classic/buttons/editors-pick.gif"
+            src="https://typechecked.net/a/products/synergy-classic/buttons/editors-pick.gif"
             alt="Editor's pick"
             width="88"
             height="24"
@@ -1107,7 +1107,7 @@
 
           <img
             style="float:right;"
-            src="https://wincent.com/a/products/synergy-classic/buttons/editors-pick.gif"
+            src="https://typechecked.net/a/products/synergy-classic/buttons/editors-pick.gif"
             alt="Editor's pick"
             width="88"
             height="24"
@@ -1124,7 +1124,7 @@
 
           <img
             style="float:right;"
-            src="https://wincent.com/a/products/synergy-classic/buttons/editors-pick.gif"
+            src="https://typechecked.net/a/products/synergy-classic/buttons/editors-pick.gif"
             alt="Editor's pick"
             width="88"
             height="24"
@@ -1145,7 +1145,7 @@
 
           <img
             style="float:right;"
-            src="https://wincent.com/a/products/synergy-classic/buttons/editors-pick.gif"
+            src="https://typechecked.net/a/products/synergy-classic/buttons/editors-pick.gif"
             alt="Editor's pick"
             width="88"
             height="24"
@@ -1178,18 +1178,18 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/GUIPod.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/GUIPod.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/GUIpod.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/GUIpod.jpg"
               alt="GUIpod"
               title="Copyright &copy; 2005 Jick Pictures, All Rights Reserved."
           /></a>
 
           <h5>"PlatinumTiger" by: D3LM3L</h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/PlatinumTiger.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/PlatinumTiger.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/PlatinumTiger.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/PlatinumTiger.jpg"
               alt="PlatinumTiger"
               title="Copyright &copy; 2005 D3LM3L, All Rights Reserved."
           /></a>
@@ -1200,18 +1200,18 @@
             "&szlig;adc&oslash;de" Pridham
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/rounded_glass.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/rounded_glass.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/rounded_glass.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/rounded_glass.jpg"
               alt="rounded_glass"
               title="Copyright &copy; 2004 Adrian Jean, 2005 Mat Pridham, All Rights Reserved."
           /></a>
 
           <h5>"Tigerblsmpl" by: Jos Heesakkers</h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/Tigerblsmpl.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/Tigerblsmpl.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/Tigerblsmpl.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/Tigerblsmpl.jpg"
               alt="Tigerblsmpl"
               title="Copyright &copy; 2005 Jos Heesakkers, All Rights Reserved."
           /></a>
@@ -1220,9 +1220,9 @@
         <div class="two-columns">
           <h5>"iTunes" by: John Muhl</h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/iTunes.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/iTunes.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/iTunes.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/iTunes.jpg"
               alt="iTunes"
               title="Copyright &copy; 2005 John Muhl, All Rights Reserved."
           /></a>
@@ -1234,9 +1234,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/iTunes_alt.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/iTunes_alt.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/iTunes_alt.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/iTunes_alt.jpg"
               alt="iTunes_alt"
               title="Copyright &copy 2005 Blacklight New Media, All Rights Reserved."
           /></a>
@@ -1248,9 +1248,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/spheres.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/spheres.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/spheres.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/spheres.jpg"
               alt="spheres"
               title="Copyright &copy 2005 Blacklight New Media, All Rights Reserved."
           /></a>
@@ -1260,9 +1260,9 @@
             <a href="http://www.iamaaronmartin.com/">Aaron Martin</a>
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/TigerPill.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/TigerPill.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/TigerPill.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/TigerPill.jpg"
               alt="TigerPill"
               title="Copyright &copy; 2005 Aaron Martin, All Rights Reserved."
           /></a>
@@ -1279,18 +1279,18 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/ultraPM2K5.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/ultraPM2K5.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/ultraPM2K5.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/ultraPM2K5.jpg"
               alt="ultraPM2K5"
               title="Copyright &copy; 2005 Ultraman, Swiz,  All Rights Reserved."
           /></a>
 
           <h5>"Subtle" by: Christopher Miller</h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/Subtle.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/Subtle.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/Subtle.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/Subtle.jpg"
               alt="Subtle"
               title="Copyright &copy; 2005 Christopher Miller. All Rights Reserved."
           /></a>
@@ -1303,16 +1303,16 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/Foggy.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/Foggy.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/Foggy.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/Foggy.jpg"
               alt="Foggy"
               title="Copyright &copy; 2005 Eerk Hofmeester, All Rights Reserved."
           /></a>
 
           <img
             style="float:right;"
-            src="https://wincent.com/a/products/synergy-classic/buttons/editors-pick.gif"
+            src="https://typechecked.net/a/products/synergy-classic/buttons/editors-pick.gif"
             alt="Editor's pick"
             width="88"
             height="24"
@@ -1325,27 +1325,27 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/ShuffleClick1.1.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/ShuffleClick1.1.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/ShuffleClick1.1.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/ShuffleClick1.1.jpg"
               alt="ShuffleClick 1.1"
               title="Copyright &copy; 2005 Errol Sayre, All Rights Reserved."
           /></a>
 
           <h5>"gradient" by: Anonymous</h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/gradient.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/gradient.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/gradient.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/gradient.jpg"
               alt="gradient"
               title="Anonymous"
           /></a>
 
           <h5>"boobs" by: Anonymous</h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/boobs.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/boobs.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/boobs.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/boobs.jpg"
               alt="boobs"
               title="Anonymous"
           /></a>
@@ -1354,45 +1354,45 @@
         <div class="two-columns">
           <h5>"cockroach" by: Anonymous</h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/cockroach.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/cockroach.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/cockroach.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/cockroach.jpg"
               alt="cockroach"
               title="Anonymous"
           /></a>
 
           <h5>"crack_blue" by: Anonymous</h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/crack_blue.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/crack_blue.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/crack_blue.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/crack_blue.jpg"
               alt="crack_blue"
               title="Anonymous"
           /></a>
 
           <h5>"crack_white" by: Anonymous</h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/crack_white.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/crack_white.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/crack_white.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/crack_white.jpg"
               alt="crack_white"
               title="Anonymous"
           /></a>
 
           <h5>"crack_red" by: Anonymous</h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/crack_red.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/crack_red.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/crack_red.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/crack_red.jpg"
               alt="crack_red"
               title="Anonymous"
           /></a>
 
           <h5>"crack_green" by: Anonymous</h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/crack_green.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/crack_green.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/crack_green.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/crack_green.jpg"
               alt="crack_green"
               title="Anonymous"
           /></a>
@@ -1405,9 +1405,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/SputNic.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/SputNic.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/SputNic.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/SputNic.jpg"
               alt="SputNic"
               title="Copyright &copy; 2005 FreeFrog Designs, All Rights Reserved."
           /></a>
@@ -1425,9 +1425,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/Anaheim-Pixel.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/Anaheim-Pixel.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/Anaheim-Pixel.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/Anaheim-Pixel.jpg"
               alt="Anaheim - Pixel"
               title="Copyright &copy; 2005 Aaron Martin, All Rights Reserved."
           /></a>
@@ -1439,9 +1439,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/Anaheim-Text.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/Anaheim-Text.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/Anaheim-Text.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/Anaheim-Text.jpg"
               alt="Anaheim - Text"
               title="Copyright &copy; 2005 Aaron Martin, All Rights Reserved."
           /></a>
@@ -1453,9 +1453,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/AquaPill3D.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/AquaPill3D.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/AquaPill3D.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/AquaPill3D.jpg"
               alt="Aqua Pill 3D"
               title="Copyright &copy; 2005 Aaron Martin, All Rights Reserved."
           /></a>
@@ -1467,9 +1467,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/AquaPillFlat.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/AquaPillFlat.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/AquaPillFlat.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/AquaPillFlat.jpg"
               alt="Aqua Pill Flat"
               title="Copyright &copy; 2005 Aaron Martin, All Rights Reserved."
           /></a>
@@ -1481,9 +1481,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/Deft_Black.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/Deft_Black.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/Deft_Black.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/Deft_Black.jpg"
               alt="Deft_Black"
               title="Copyright &copy; 2005 Aaron Martin, All Rights Reserved."
           /></a>
@@ -1495,9 +1495,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/Deft_Gold.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/Deft_Gold.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/Deft_Gold.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/Deft_Gold.jpg"
               alt="Deft_Gold"
               title="Copyright &copy; 2005 Aaron Martin, All Rights Reserved."
           /></a>
@@ -1510,36 +1510,36 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/bbx_mercury.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/bbx_mercury.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/bbx_mercury.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/bbx_mercury.jpg"
               alt="bbx_mercury"
               title="Copyright &copy; 2005 Erik Deerly, All Rights Reserved."
           /></a>
 
           <h5>"AlumOrange" by: Xidius</h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/AlumOrange.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/AlumOrange.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/AlumOrange.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/AlumOrange.jpg"
               alt="AlumOrange"
               title="Copyright &copy; 2005 Xidius, All Rights Reserved."
           /></a>
 
           <h5>"AlumOrange2" by: Xidius</h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/AlumOrange2.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/AlumOrange2.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/AlumOrange2.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/AlumOrange2.jpg"
               alt="AlumOrange2"
               title="Copyright &copy; 2005 Xidius, All Rights Reserved."
           /></a>
 
           <h5>"TigerBlueXid" by: Xidius</h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/TigerBlueXid.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/TigerBlueXid.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/TigerBlueXid.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/TigerBlueXid.jpg"
               alt="TigerBlueXid"
               title="Copyright &copy; 2005 Xidius, All Rights Reserved."
           /></a>
@@ -1548,16 +1548,16 @@
             "Gee_Five" by: <a href="http://wynnburton.com/">Wynn H Burton</a>
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/Gee_Five.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/Gee_Five.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/Gee_Five.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/Gee_Five.jpg"
               alt="Gee_Five"
               title="Copyright &copy; 2005 Wynn H Burton, All Rights Reserved."
           /></a>
 
           <img
             style="float:right;"
-            src="https://wincent.com/a/products/synergy-classic/buttons/editors-pick.gif"
+            src="https://typechecked.net/a/products/synergy-classic/buttons/editors-pick.gif"
             alt="Editor's pick"
             width="88"
             height="24"
@@ -1567,9 +1567,9 @@
             <a href="http://wynnburton.com/">Wynn H Burton</a>
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/wynnston_blue.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/wynnston_blue.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/wynnston_blue.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/wynnston_blue.jpg"
               alt="wynnston_blue"
               title="Copyright &copy; 2005 Wynn H Burton, All Rights Reserved."
           /></a>
@@ -1579,9 +1579,9 @@
             <a href="http://wynnburton.com/">Wynn H Burton</a>
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/wynnston_green.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/wynnston_green.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/wynnston_green.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/wynnston_green.jpg"
               alt="wynnston_green"
               title="Copyright &copy; 2005 Wynn H Burton, All Rights Reserved."
           /></a>
@@ -1591,9 +1591,9 @@
             <a href="http://wynnburton.com/">Wynn H Burton</a>
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/wynnston_pink.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/wynnston_pink.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/wynnston_pink.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/wynnston_pink.jpg"
               alt="wynnston_pink"
               title="Copyright &copy; 2005 Wynn H Burton, All Rights Reserved."
           /></a>
@@ -1603,9 +1603,9 @@
             <a href="http://wynnburton.com/">Wynn H Burton</a>
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/wynnston_purple.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/wynnston_purple.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/wynnston_purple.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/wynnston_purple.jpg"
               alt="wynnston_purple"
               title="Copyright &copy; 2005 Wynn H Burton, All Rights Reserved."
           /></a>
@@ -1617,9 +1617,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/3.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/3.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/3.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/3.jpg"
               alt="3"
               title="Copyright &copy; 2005 Asher, All Rights Reserved."
           /></a>
@@ -1633,9 +1633,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/3frames.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/3frames.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/3frames.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/3frames.jpg"
               alt="3frames"
               title="Copyright &copy; 2005 Asher, All Rights Reserved."
           /></a>
@@ -1647,9 +1647,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/ash.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/ash.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/ash.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/ash.jpg"
               alt="ash"
               title="Copyright &copy; 2005 Asher, All Rights Reserved."
           /></a>
@@ -1661,9 +1661,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/grunge1.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/grunge1.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/grunge1.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/grunge1.jpg"
               alt="grunge1"
               title="Copyright &copy; 2005 Asher, All Rights Reserved."
           /></a>
@@ -1675,9 +1675,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/grunge2.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/grunge2.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/grunge2.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/grunge2.jpg"
               alt="grunge2"
               title="Copyright &copy; 2005 Asher, All Rights Reserved."
           /></a>
@@ -1689,9 +1689,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/grunge3.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/grunge3.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/grunge3.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/grunge3.jpg"
               alt="grunge3"
               title="Copyright &copy; 2005 Asher, All Rights Reserved."
           /></a>
@@ -1703,9 +1703,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/grunge4.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/grunge4.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/grunge4.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/grunge4.jpg"
               alt="grunge4"
               title="Copyright &copy; 2005 Asher, All Rights Reserved."
           /></a>
@@ -1717,9 +1717,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/ragged.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/ragged.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/ragged.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/ragged.jpg"
               alt="ragged"
               title="Copyright &copy; 2005 Asher, All Rights Reserved."
           /></a>
@@ -1731,9 +1731,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/squares.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/squares.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/squares.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/squares.jpg"
               alt="squares"
               title="Copyright &copy; 2005 Asher, All Rights Reserved."
           /></a>
@@ -1744,9 +1744,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/lava.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/lava.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/lava.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/lava.jpg"
               alt="lava"
               title="Copyright &copy; 2005 Mark Seifert, All Rights Reserved."
           /></a>
@@ -1755,9 +1755,9 @@
             "posion" by: <a href="mailto:sami@h2omedia.de">Mathias Temmen</a>
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/posion.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/posion.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/posion.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/posion.jpg"
               alt="posion"
               title="Copyright &copy; 2005 Mathias Temmen, All Rights Reserved."
           /></a>
@@ -1769,16 +1769,16 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/ZigBar.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/ZigBar.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/ZigBar.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/ZigBar.jpg"
               alt="ZigBar"
               title="Copyright &copy; 2005 Mickcare, All Rights Reserved."
           /></a>
 
           <img
             style="float:right;"
-            src="https://wincent.com/a/products/synergy-classic/buttons/editors-pick.gif"
+            src="https://typechecked.net/a/products/synergy-classic/buttons/editors-pick.gif"
             alt="Editor's pick"
             width="88"
             height="24"
@@ -1789,9 +1789,9 @@
             (&reg; &reg;ivera &reg;)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/JoboScreen.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/JoboScreen.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/JoboScreen.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/JoboScreen.jpg"
               alt="JoboScreen"
               title="Copyright &copy; 2005 Ricardo J. Rivera, All Rights Reserved."
           /></a>
@@ -1804,9 +1804,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/PulsarSynergy.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/PulsarSynergy.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/PulsarSynergy.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/PulsarSynergy.jpg"
               alt="PulsarSynergy"
               title="Copyright &copy; 2005 Ryan Edwards, All Rights Reserved."
           /></a>
@@ -1819,9 +1819,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/SiroSynergy.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/SiroSynergy.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/SiroSynergy.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/SiroSynergy.jpg"
               alt="SiroSynergy"
               title="Copyright &copy; 2005 Ryan Edwards, All Rights Reserved."
           /></a>
@@ -1832,16 +1832,16 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/mudflapgirl.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/mudflapgirl.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/mudflapgirl.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/mudflapgirl.jpg"
               alt="mudflapgirl"
               title="Copyright &copy; 2005 Scott Vogel, All Rights Reserved."
           /></a>
 
           <img
             style="float:right;"
-            src="https://wincent.com/a/products/synergy-classic/buttons/editors-pick.gif"
+            src="https://typechecked.net/a/products/synergy-classic/buttons/editors-pick.gif"
             alt="Editor's pick"
             width="88"
             height="24"
@@ -1852,9 +1852,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/daVinci.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/daVinci.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/daVinci.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/daVinci.jpg"
               alt="daVinci"
               title="Copyright &copy; 2005 Ted Hobgood, All Rights Reserved."
           /></a>
@@ -1867,7 +1867,7 @@
         <div class="two-columns">
           <img
             style="float:right;"
-            src="https://wincent.com/a/products/synergy-classic/buttons/editors-pick.gif"
+            src="https://typechecked.net/a/products/synergy-classic/buttons/editors-pick.gif"
             alt="Editor's pick"
             width="88"
             height="24"
@@ -1881,9 +1881,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/FoxySet.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/FoxySet.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/FoxySet.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/FoxySet.jpg"
               alt="FoxySet"
               title="Creative Commons Attribution License (cc) 2004 Christopher Messina, Some Rights Reserved."
           /></a>
@@ -1895,18 +1895,18 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/azuresque.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/azuresque.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/azuresque.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/azuresque.jpg"
               alt="azueresque"
               title="Copyright &copy; 2004 Kevin D. Lee, All Rights Reserved."
           /></a>
 
           <h5>"Rhapsodized" by: Matt Widmann</h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/Rhapsodized.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/Rhapsodized.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/Rhapsodized.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/Rhapsodized.jpg"
               alt="Rhapsodized"
               title="Copyright 2004 Matt Widmann."
           /></a>
@@ -1918,9 +1918,9 @@
             >
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/Spawn.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/Spawn.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/Spawn.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/Spawn.jpg"
               alt="Spawn"
               title="Copyright &copy; 2004, 1802. All Rights Reserved."
           /></a>
@@ -1932,9 +1932,9 @@
             >
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/Spider-Man.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/Spider-Man.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/Spider-Man.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/Spider-Man.jpg"
               alt="Spider-Man"
               title="Copyright &copy; 2004, 1802. All Rights Reserved."
           /></a>
@@ -1943,34 +1943,34 @@
         <div class="two-columns">
           <img
             style="float:right;"
-            src="https://wincent.com/a/products/synergy-classic/buttons/editors-pick.gif"
+            src="https://typechecked.net/a/products/synergy-classic/buttons/editors-pick.gif"
             alt="Editor's pick"
             width="88"
             height="24"
           />
           <h5>"reflex" by: <a href="mailto:sami@h2omedia.de">Sami Nowak</a></h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/reflex.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/reflex.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/reflex.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/reflex.jpg"
               alt="reflex"
               title="Copyright &copy; 2004 Sami Nowak, All Rights Reserved."
           /></a>
 
           <h5>"mini" by: <a href="mailto:sami@h2omedia.de">Sami Nowak</a></h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/mini.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/mini.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/mini.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/mini.jpg"
               alt="mini"
               title="Copyright &copy; 2004 Sami Nowak, All Rights Reserved."
           /></a>
 
           <h5>"Engraved" by: Pieter Hudig</h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/Engraved.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/Engraved.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/Engraved.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/Engraved.jpg"
               alt="Engraved"
               title="Copyright &copy; 2004 Pieter Hudig, All Rights Reserved."
           /></a>
@@ -1979,18 +1979,18 @@
             "controller" by: <a href="mailto:ydgh@sympatico.ca">Shane Smith</a>
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/controller.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/controller.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/controller.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/controller.jpg"
               alt="controller"
               title="Copyright &copy; 2004 Shane Smith, All Rights Reserved."
           /></a>
 
           <h5>"Human" by: Zed Bailey</h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/Human.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/Human.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/Human.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/Human.jpg"
               alt="Human"
               title="Copyright &copy; 2004 Zed Bailey, All Rights Reserved."
           /></a>
@@ -2009,9 +2009,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/RaelBlack.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/RaelBlack.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/RaelBlack.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/RaelBlack.jpg"
               alt="Rael Black"
               title="Copyright &copy; 2004 David Nicolson, All Rights Reserved."
           /></a>
@@ -2024,10 +2024,10 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/QuicksilverAqua.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/QuicksilverAqua.synergyButtons.tar.gz"
             ><img
               alt="Quicksilver Aqua"
-              src="https://wincent.com/a/products/synergy-classic/buttons/QuicksilverAqua.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/QuicksilverAqua.jpg"
               title="Copyright &copy; 2004 Mike R. Manzano, All Rights Reserved."
           /></a>
 
@@ -2039,10 +2039,10 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/SoftGlare.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/SoftGlare.synergyButtons.tar.gz"
             ><img
               alt="Soft Glare"
-              src="https://wincent.com/a/products/synergy-classic/buttons/SoftGlare.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/SoftGlare.jpg"
               title="Copyright &copy; 2004 Mike R. Manzano, All Rights Reserved."
           /></a>
 
@@ -2054,10 +2054,10 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/Greenlcd.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/Greenlcd.synergyButtons.tar.gz"
             ><img
               alt="Greenlcd"
-              src="https://wincent.com/a/products/synergy-classic/buttons/Greenlcd.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/Greenlcd.jpg"
               title="Copyright &copy; 2004 Greg Granito, All Rights Reserved."
           /></a>
 
@@ -2069,18 +2069,18 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/lineGreyLCD.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/lineGreyLCD.synergyButtons.tar.gz"
             ><img
               alt="lineGreyLCD"
-              src="https://wincent.com/a/products/synergy-classic/buttons/lineGreyLCD.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/lineGreyLCD.jpg"
               title="Copyright &copy; 2004 Greg Granito, All Rights Reserved."
           /></a>
 
           <h5>"SuperSynergy" by: Tom Stitzer</h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/SuperSynergy.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/SuperSynergy.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/SuperSynergy.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/SuperSynergy.jpg"
               alt="SuperSynergy"
               title="Copyright &copy; 2004 Tom Stitzer, All Rights Reserved."
           /></a>
@@ -2095,16 +2095,16 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/Rael.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/Rael.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/Rael.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/Rael.jpg"
               alt="Rael"
               title="Copyright &copy; 2004 David Nicolson, All Rights Reserved."
           /></a>
 
           <img
             style="float:right;"
-            src="https://wincent.com/a/products/synergy-classic/buttons/editors-pick.gif"
+            src="https://typechecked.net/a/products/synergy-classic/buttons/editors-pick.gif"
             alt="Editor's pick"
             width="88"
             height="24"
@@ -2117,9 +2117,9 @@
             >)
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/gellule.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/gellule.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/gellule.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/gellule.jpg"
               alt="gellule"
               title="Copyright &copy; 2004 L'Imaginerie, Herv&eacute; Pfeiffer, All Rights Reserved."
           /></a>
@@ -2129,9 +2129,9 @@
             <a href="http://www.iamaaronmartin.com/">Aaron Martin</a>
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/IAAMRed.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/IAAMRed.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/IAAMRed.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/IAAMRed.jpg"
               alt="IAAM Red"
               title="Copyright &copy; 2004 Aaron Martin, All Rights Reserved."
           /></a>
@@ -2141,9 +2141,9 @@
             <a href="http://www.iamaaronmartin.com/">Aaron Martin</a>
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/IAAMOrange.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/IAAMOrange.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/IAAMOrange.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/IAAMOrange.jpg"
               alt="IAAM Orange"
               title="Copyright &copy; 2004 Aaron Martin, All Rights Reserved."
           /></a>
@@ -2153,9 +2153,9 @@
             <a href="http://www.iamaaronmartin.com/">Aaron Martin</a>
           </h5>
           <a
-            href="https://wincent.com/a/products/synergy-classic/buttons/IAAMBlue.synergyButtons.tar.gz"
+            href="https://typechecked.net/a/products/synergy-classic/buttons/IAAMBlue.synergyButtons.tar.gz"
             ><img
-              src="https://wincent.com/a/products/synergy-classic/buttons/IAAMBlue.jpg"
+              src="https://typechecked.net/a/products/synergy-classic/buttons/IAAMBlue.jpg"
               alt="IAAM Blue"
               title="Copyright &copy; 2004 Aaron Martin, All Rights Reserved."
           /></a>
@@ -2166,7 +2166,7 @@
         <h4>Button sets added October 2004:</h4>
 
         <p>
-          <a href="https://wincent.com/synergy/buttons/">Visit the archives</a>
+          <a href="https://typechecked.net/synergy/buttons/">Visit the archives</a>
           for older button sets (11 sets added in October 2004, including 2
           Editor's Picks).
         </p>
@@ -2174,7 +2174,7 @@
         <h4>Button sets added September 2004:</h4>
 
         <p>
-          <a href="https://wincent.com/synergy/buttons/">Visit the archives</a>
+          <a href="https://typechecked.net/synergy/buttons/">Visit the archives</a>
           for older button sets (47 sets added in September 2004, including 6
           Editor's Picks).
         </p>

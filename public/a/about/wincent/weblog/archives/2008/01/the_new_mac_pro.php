@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/the-new-mac-pros"
-        >https://wincent.com/blog/the-new-mac-pros</a
+      <a href="https://typechecked.net/blog/the-new-mac-pros"
+        >https://typechecked.net/blog/the-new-mac-pros</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/the-new-mac-pros');
+    window.location.replace('https://typechecked.net/blog/the-new-mac-pros');
   </script>
 </html>

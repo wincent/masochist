@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/wotest-r102-available"
-        >https://wincent.com/blog/wotest-r102-available</a
+      <a href="https://typechecked.net/blog/wotest-r102-available"
+        >https://typechecked.net/blog/wotest-r102-available</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/wotest-r102-available');
+    window.location.replace('https://typechecked.net/blog/wotest-r102-available');
   </script>
 </html>

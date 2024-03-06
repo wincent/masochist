@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/unit-testing-wosingleton"
-        >https://wincent.com/blog/unit-testing-wosingleton</a
+      <a href="https://typechecked.net/blog/unit-testing-wosingleton"
+        >https://typechecked.net/blog/unit-testing-wosingleton</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/unit-testing-wosingleton',
+      'https://typechecked.net/blog/unit-testing-wosingleton',
     );
   </script>
 </html>

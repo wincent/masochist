@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/ya-com-has-the-worst-customer-service-in-the-world"
-        >https://wincent.com/blog/ya-com-has-the-worst-customer-service-in-the-world</a
+        href="https://typechecked.net/blog/ya-com-has-the-worst-customer-service-in-the-world"
+        >https://typechecked.net/blog/ya-com-has-the-worst-customer-service-in-the-world</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/ya-com-has-the-worst-customer-service-in-the-world',
+      'https://typechecked.net/blog/ya-com-has-the-worst-customer-service-in-the-world',
     );
   </script>
 </html>

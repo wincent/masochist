@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/some-words-of-praise-for-rackspace-managed-hosting"
-        >https://wincent.com/blog/some-words-of-praise-for-rackspace-managed-hosting</a
+        href="https://typechecked.net/blog/some-words-of-praise-for-rackspace-managed-hosting"
+        >https://typechecked.net/blog/some-words-of-praise-for-rackspace-managed-hosting</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/some-words-of-praise-for-rackspace-managed-hosting',
+      'https://typechecked.net/blog/some-words-of-praise-for-rackspace-managed-hosting',
     );
   </script>
 </html>

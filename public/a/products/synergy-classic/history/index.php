@@ -10,10 +10,10 @@
       style="text-align: center; font-family: 'Lucida Grande'; margin: 5px 250px 5px 250px; padding: 5px; font-size: x-small; border: 2px solid silver; -webkit-border-radius: 0.5em; -moz-border-radius: 0.5em; background: #fefefe;"
     >
       <p>
-        You are currently looking at an older section of the wincent.com
+        You are currently looking at an older section of the typechecked.net
         website.<br />
         Please check the new version of the site at
-        <a href="https://wincent.com/">https://wincent.com/</a> for updated
+        <a href="https://typechecked.net/">https://typechecked.net/</a> for updated
         content.<br />
       </p>
     </div>
@@ -74,7 +74,7 @@
           valign="middle"
         >
           <!-- Begin: header content -->
-          <a href="https://wincent.com/"
+          <a href="https://typechecked.net/"
             ><img
               src="/a/gfx/wincent-logo-small-gray-bg.jpg"
               width="43"
@@ -128,7 +128,7 @@
           <ul style="width: 73px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/products/"
+                href="https://typechecked.net/a/products/"
                 title="Full products listing"
                 ><img
                   src="/a/gfx/header/products-on.jpg"
@@ -139,35 +139,35 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/products/synergy"
+                    href="https://typechecked.net/products/synergy"
                     title="The original iTunes menu bar controller"
                     >Synergy &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/products/synergy/download"
+                        href="https://typechecked.net/products/synergy/download"
                         title="Download Synergy"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-classic/purchase/"
+                        href="https://typechecked.net/a/products/synergy-classic/purchase/"
                         title="Purchase Synergy"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/products/synergy/help"
+                        href="https://typechecked.net/products/synergy/help"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-classic/buttons/"
+                        href="https://typechecked.net/a/products/synergy-classic/buttons/"
                         title="Free button sets"
                         >Button Sets</a
                       >
@@ -176,35 +176,35 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/synergy-advance/"
+                    href="https://typechecked.net/a/products/synergy-advance/"
                     title="Multi-purpose audio companion"
                     >Synergy Advance &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/download/"
+                        href="https://typechecked.net/a/products/synergy-advance/download/"
                         title="Download Synergy Advance"
                         >Download preview</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/purchase/"
+                        href="https://typechecked.net/a/products/synergy-advance/purchase/"
                         title="Purchase Synergy Advance"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/donate/"
+                        href="https://typechecked.net/a/products/synergy-advance/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/donate/"
+                        href="https://typechecked.net/a/products/synergy-advance/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
@@ -213,35 +213,35 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/winswitch/"
+                    href="https://typechecked.net/a/products/winswitch/"
                     title="Enhanced replacement for Apple's Fast User Switching menu"
                     >WinSwitch &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/download/"
+                        href="https://typechecked.net/a/products/winswitch/download/"
                         title="Download WinSwitch"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/donate/"
+                        href="https://typechecked.net/a/products/winswitch/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/donate/"
+                        href="https://typechecked.net/a/products/winswitch/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/faq/"
+                        href="https://typechecked.net/a/products/winswitch/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -250,28 +250,28 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/hextrapolate/"
+                    href="https://typechecked.net/a/products/hextrapolate/"
                     title="Programmers number conversion tool"
                     >Hextrapolate &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/hextrapolate/download/"
+                        href="https://typechecked.net/a/products/hextrapolate/download/"
                         title="Download Hextrapolate"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/hextrapolate/purchase/"
+                        href="https://typechecked.net/a/products/hextrapolate/purchase/"
                         title="Purchase Hextrapolate"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/hextrapolate/faq/"
+                        href="https://typechecked.net/a/products/hextrapolate/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -280,42 +280,42 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/install/"
+                    href="https://typechecked.net/a/products/install/"
                     title="Installation and deployment solution for developers"
                     >Install &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/download/"
+                        href="https://typechecked.net/a/products/install/download/"
                         title="Install downloads"
                         >Downloads</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/purchase/"
+                        href="https://typechecked.net/a/products/install/purchase/"
                         title="Purchase Install"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/donate/"
+                        href="https://typechecked.net/a/products/install/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/donate/"
+                        href="https://typechecked.net/a/products/install/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/faq/"
+                        href="https://typechecked.net/a/products/install/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -324,14 +324,14 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/getsmart-pro/"
+                    href="https://typechecked.net/a/products/getsmart-pro/"
                     title="Intelligent download manager"
                     >GetSmart Pro &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/getsmart-pro/donate/"
+                        href="https://typechecked.net/a/products/getsmart-pro/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
@@ -340,7 +340,7 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/"
+                    href="https://typechecked.net/a/products/"
                     title="Full product listing"
                     >Other products...</a
                   >
@@ -350,7 +350,7 @@
           </ul>
         </td>
         <td width="48" height="25">
-          <a href="https://wincent.com/a/store/" title="Wincent online store"
+          <a href="https://typechecked.net/a/store/" title="Wincent online store"
             ><img
               src="/a/gfx/header/store-off.jpg"
               width="48"
@@ -362,7 +362,7 @@
           <ul style="width: 63px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/services/"
+                href="https://typechecked.net/a/services/"
                 title="Full services listing"
                 ><img
                   src="/a/gfx/header/services-off.jpg"
@@ -373,28 +373,28 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/custom-development/"
+                    href="https://typechecked.net/a/services/custom-development/"
                     title="Custom software development"
                     >Custom Development</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/mac-consultancy/"
+                    href="https://typechecked.net/a/services/mac-consultancy/"
                     title="Apple and Mac OS X consultancy"
                     >Apple/Mac Consultancy</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/web-design/"
+                    href="https://typechecked.net/a/services/web-design/"
                     title="Web design services"
                     >Web Design</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/hosting/"
+                    href="https://typechecked.net/a/services/hosting/"
                     title="Internet web and email hosting"
                     >Hosting</a
                   >
@@ -407,7 +407,7 @@
           <ul style="width: 62px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/support/"
+                href="https://typechecked.net/a/support/"
                 title="Support resources and links"
                 ><img
                   src="/a/gfx/header/support-off.jpg"
@@ -418,56 +418,56 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/registration/"
+                    href="https://typechecked.net/a/support/registration/"
                     title="Retrieve lost license codes"
                     >Lost License Codes</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/bugs/"
+                    href="https://typechecked.net/a/support/bugs/"
                     title="Bug tracking and feature request database"
                     >Bugs and Feature Requests</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/demo-licenses/"
+                    href="https://typechecked.net/a/support/demo-licenses/"
                     title="Obtain a demonstration license"
                     >Demonstration licenses</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/forums/"
+                    href="https://typechecked.net/a/support/forums/"
                     title="Discussion and support forums"
                     >Forums</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/faq/"
+                    href="https://typechecked.net/a/support/faq/"
                     title="Frequently Asked Questions"
                     >FAQ</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/activation/"
+                    href="https://typechecked.net/a/support/activation/"
                     title="Product activation and information"
                     >Product Activation</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/tickets/"
+                    href="https://typechecked.net/a/support/tickets/"
                     title="Open or view a support ticket"
                     >Support Tickets</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/lists/"
+                    href="https://typechecked.net/a/support/lists/"
                     title="Subscribe/unsubscribe to/from a mailing list"
                     >Mailing lists</a
                   >
@@ -479,7 +479,7 @@
         <td width="53" height="25">
           <ul style="width: 53px; height: 25px;">
             <li class="menu">
-              <a href="https://wincent.com/a/about/" title="Company information"
+              <a href="https://typechecked.net/a/about/" title="Company information"
                 ><img
                   src="/a/gfx/header/about-off.jpg"
                   width="53"
@@ -489,14 +489,14 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/about/wincent/"
+                    href="https://typechecked.net/a/about/wincent/"
                     title="About Wincent Colaiuta: the person"
                     >About Wincent Colaiuta</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/about/privacy/"
+                    href="https://typechecked.net/a/about/privacy/"
                     title="About the Wincent Privacy Policy"
                     >Privacy Policy</a
                   >
@@ -509,7 +509,7 @@
           <ul style="width: 49px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/news/"
+                href="https://typechecked.net/a/news/"
                 title="Latest news items in weblog format"
                 ><img
                   src="/a/gfx/header/news-off.jpg"
@@ -520,28 +520,28 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/news/archives/mac_os_x_news/"
+                    href="https://typechecked.net/a/news/archives/mac_os_x_news/"
                     title="Apple and Mac OS X-related news"
                     >Mac OS X News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/news/archives/product_news/"
+                    href="https://typechecked.net/a/news/archives/product_news/"
                     title="Wincent product news"
                     >Product News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/news/archives/site_news/"
+                    href="https://typechecked.net/a/news/archives/site_news/"
                     title="Site-related news"
                     >Site News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/blog"
+                    href="https://typechecked.net/blog"
                     title="Development and other notes from Wincent"
                     >Wincent Colaiuta's weblog</a
                   >
@@ -552,7 +552,7 @@
         </td>
         <td width="107" height="25">
           <a
-            href="https://wincent.com/wiki"
+            href="https://typechecked.net/wiki"
             title="Categorized Mac OS X tips and information"
             ><img
               src="/a/gfx/header/knowledge-base-off.jpg"
@@ -562,7 +562,7 @@
           /></a>
         </td>
         <td width="62" height="25">
-          <a href="https://wincent.com/a/contact/" title="Contact email form"
+          <a href="https://typechecked.net/a/contact/" title="Contact email form"
             ><img
               src="/a/gfx/header/contact-off.jpg"
               width="62"
@@ -573,7 +573,7 @@
         <td width="72" height="25">
           <ul style="width: 72px; height: 25px;">
             <li class="menu">
-              <a href="https://wincent.com/a/site-map/" title="Site overview"
+              <a href="https://typechecked.net/a/site-map/" title="Site overview"
                 ><img
                   src="/a/gfx/header/site-map-off.jpg"
                   width="72"
@@ -583,7 +583,7 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/site-map/search/"
+                    href="https://typechecked.net/a/site-map/search/"
                     title="Site search"
                     >Search</a
                   >
@@ -617,7 +617,7 @@
 
     <div id="breadcrumbs">
       <p>
-        <a href="https://wincent.com/">Main</a>&nbsp;&gt;&nbsp;<a href="../../"
+        <a href="https://typechecked.net/">Main</a>&nbsp;&gt;&nbsp;<a href="../../"
           >Products</a
         >&nbsp;&gt;&nbsp;<a href="../">Synergy Classic</a
         >&nbsp;&gt;&nbsp;History
@@ -629,103 +629,103 @@
           <h2>Synergy links</h2>
           <ul>
             <li>
-              <a href="https://wincent.com/products/synergy">Front page</a>
+              <a href="https://typechecked.net/products/synergy">Front page</a>
             </li>
             <li>
-              <a href="https://wincent.com/products/synergy/about">About</a>
+              <a href="https://typechecked.net/products/synergy/about">About</a>
             </li>
             <li>
-              <a href="https://wincent.com/a/products/synergy-classic/features/"
+              <a href="https://typechecked.net/a/products/synergy-classic/features/"
                 >Features</a
               >
             </li>
             <li>
-              <a href="https://wincent.com/products/synergy">Screenshots</a>
+              <a href="https://typechecked.net/products/synergy">Screenshots</a>
             </li>
             <li>
               <a
-                href="https://wincent.com/a/products/synergy-classic/basic-usage/"
+                href="https://typechecked.net/a/products/synergy-classic/basic-usage/"
                 >Basic usage</a
               >
             </li>
             <li>
-              <a href="https://wincent.com/a/products/synergy-classic/buttons/"
+              <a href="https://typechecked.net/a/products/synergy-classic/buttons/"
                 >Free button sets</a
               >
             </li>
-            <li><a href="https://wincent.com/blog">News</a></li>
+            <li><a href="https://typechecked.net/blog">News</a></li>
             <li>
-              <a href="https://wincent.com/products/synergy/download"
+              <a href="https://typechecked.net/products/synergy/download"
                 >Download</a
               >
             </li>
             <li>
-              <a href="https://wincent.com/a/products/synergy-classic/purchase/"
+              <a href="https://typechecked.net/a/products/synergy-classic/purchase/"
                 >Purchase</a
               >
             </li>
             <li>
               <a
-                href="https://wincent.com/a/products/synergy-classic/album-covers/"
+                href="https://typechecked.net/a/products/synergy-classic/album-covers/"
                 >Album covers</a
               >
             </li>
             <li>
-              <a href="https://wincent.com/a/products/synergy-classic/floater/"
+              <a href="https://typechecked.net/a/products/synergy-classic/floater/"
                 >Floater</a
               >
             </li>
             <li>
               <a
-                href="https://wincent.com/a/products/synergy-classic/global-menu/"
+                href="https://typechecked.net/a/products/synergy-classic/global-menu/"
                 >Global Menu</a
               >
             </li>
             <li>
               <a
-                href="https://wincent.com/a/products/synergy-classic/installing/"
+                href="https://typechecked.net/a/products/synergy-classic/installing/"
                 >Installing/uninstalling</a
               >
             </li>
             <li>
               <a
-                href="https://wincent.com/a/products/synergy-classic/system-requirements/"
+                href="https://typechecked.net/a/products/synergy-classic/system-requirements/"
                 >System requirements</a
               >
             </li>
             <li>
               <a
-                href="https://wincent.com/a/products/synergy-classic/preferences/"
+                href="https://typechecked.net/a/products/synergy-classic/preferences/"
                 >Preferences</a
               >
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/synergy-classic/preferences/general/"
+                    href="https://typechecked.net/a/products/synergy-classic/preferences/general/"
                     >General</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/synergy-classic/preferences/hot-keys/"
+                    href="https://typechecked.net/a/products/synergy-classic/preferences/hot-keys/"
                     >Hot Keys</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/synergy-classic/preferences/menu-bar/"
+                    href="https://typechecked.net/a/products/synergy-classic/preferences/menu-bar/"
                     >Menu Bar</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/synergy-classic/preferences/advanced/"
+                    href="https://typechecked.net/a/products/synergy-classic/preferences/advanced/"
                     >Advanced</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/synergy-classic/preferences/about-tab/"
+                    href="https://typechecked.net/a/products/synergy-classic/preferences/about-tab/"
                     >The About tab</a
                   >
                 </li>
@@ -733,44 +733,44 @@
             </li>
             <li>
               <a
-                href="https://wincent.com/a/products/synergy-classic/testimonials/"
+                href="https://typechecked.net/a/products/synergy-classic/testimonials/"
                 >Testimonials</a
               >
             </li>
             <li>
-              <a href="https://wincent.com/a/products/synergy-classic/support/"
+              <a href="https://typechecked.net/a/products/synergy-classic/support/"
                 >Support</a
               >
             </li>
             <li>
-              <a href="https://wincent.com/products/synergy/history"
+              <a href="https://typechecked.net/products/synergy/history"
                 >Version history</a
               >
             </li>
             <li>
-              <a href="https://wincent.com/products/synergy/help"
+              <a href="https://typechecked.net/products/synergy/help"
                 >Frequently Asked Questions</a
               >
             </li>
             <li>
               <a
-                href="https://wincent.com/a/products/synergy-classic/known-limitations/"
+                href="https://typechecked.net/a/products/synergy-classic/known-limitations/"
                 >Known limitations</a
               >
             </li>
             <li>
               <a
-                href="https://wincent.com/a/products/synergy-classic/disclaimer/"
+                href="https://typechecked.net/a/products/synergy-classic/disclaimer/"
                 >Disclaimer</a
               >
             </li>
             <li>
-              <a href="https://wincent.com/a/products/synergy-classic/license/"
+              <a href="https://typechecked.net/a/products/synergy-classic/license/"
                 >License</a
               >
             </li>
             <li>
-              <a href="https://wincent.com/a/products/synergy-classic/credits/"
+              <a href="https://typechecked.net/a/products/synergy-classic/credits/"
                 >Credits</a
               >
             </li>
@@ -779,7 +779,7 @@
             <a
               href="http://www.macworld.com/2005/08/features/softwarebargains/index.php"
               ><img
-                src="https://wincent.com/a/products/synergy-classic/gfx/bluemouse50.gif"
+                src="https://typechecked.net/a/products/synergy-classic/gfx/bluemouse50.gif"
                 alt="Macworld 5 mice"
                 width="30"
                 height="11"
@@ -790,7 +790,7 @@
             <a
               href="http://www.applelust.com/oped/skewed/archives/skewed_040730.shtml"
               ><img
-                src="https://wincent.com/a/products/synergy-classic/gfx/macuser-uk-5-mice.gif"
+                src="https://typechecked.net/a/products/synergy-classic/gfx/macuser-uk-5-mice.gif"
                 alt="MacUser 5 Mice"
                 width="75"
                 height="12"
@@ -800,7 +800,7 @@
           <p align="Center">
             <a href="http://www.atpm.com/12.12/synergy.shtml"
               ><img
-                src="https://wincent.com/a/products/synergy-classic/gfx/verynice.gif"
+                src="https://typechecked.net/a/products/synergy-classic/gfx/verynice.gif"
                 alt="ATPM Very Nice"
                 width="83"
                 height="74"
@@ -810,7 +810,7 @@
           <p align="Center">
             <a href="http://amug.org/"
               ><img
-                src="https://wincent.com/a/products/synergy-classic/gfx/amug-5-amugs.gif"
+                src="https://typechecked.net/a/products/synergy-classic/gfx/amug-5-amugs.gif"
                 alt="AMUG 5 AMUGs"
                 width="75"
                 height="16"
@@ -827,7 +827,7 @@
             <em
               >Confused by the version numbers? See
               <a
-                href="https://wincent.com/blog/clearing-up-confusion-about-synergy-version-numbers"
+                href="https://typechecked.net/blog/clearing-up-confusion-about-synergy-version-numbers"
                 >this blog post explaining the difference</a
               >
               between the 3.4 (stable) and 4.0 (alpha/experimental) series.</em
@@ -837,8 +837,8 @@
           <h4>Please see the new Synergy product pages</h4>
           <p>
             Please note that the new Synergy product pages are now online at
-            <a href="https://wincent.com/products/synergy"
-              >https://wincent.com/products/synergy</a
+            <a href="https://typechecked.net/products/synergy"
+              >https://typechecked.net/products/synergy</a
             >. The page you are currently viewing will no longer be updated and
             is being kept online for historical purposes only.
           </p>
@@ -884,7 +884,7 @@
           <ul>
             <li>
               Bugfix for
-              <a href="https://wincent.com/issues/1365">ticket #1365</a>
+              <a href="https://typechecked.net/issues/1365">ticket #1365</a>
               ("Consecutively repeated tracks don't get submitted to last.fm").
             </li>
             <li>
@@ -923,7 +923,7 @@
             </li>
             <li>
               Display title in preferences window (fixes
-              <a href="https://wincent.com/issues/1343">bug #1343</a>).
+              <a href="https://typechecked.net/issues/1343">bug #1343</a>).
             </li>
           </ul>
 
@@ -933,7 +933,7 @@
             <li>
               Added a checkbox to temporarily disable the submission of track
               information to last.fm (fulfills
-              <a href="https://wincent.com/issues/1310">feature request #1310</a
+              <a href="https://typechecked.net/issues/1310">feature request #1310</a
               >); this is ideal for those times when you don't want what you're
               currently listening to be "scrobbled" to the website.
             </li>
@@ -979,7 +979,7 @@
             <li>
               Final fix for missing cover art problem caused by iTunes 7.6.1 and
               7.6.2 (fixes
-              <a href="http://wincent.com/issues/668">bug #668</a>).
+              <a href="http://typechecked.net/issues/668">bug #668</a>).
             </li>
           </ul>
 
@@ -989,12 +989,12 @@
             <li>
               Work around missing cover art problem caused by iTunes 7.6.1 and
               7.6.2 (fixes
-              <a href="http://wincent.com/issues/668">bug #668</a>).
+              <a href="http://typechecked.net/issues/668">bug #668</a>).
             </li>
             <li>Speed up cover art retrieval.</li>
             <li>
               Catch NSGenericExceptions thrown by Leopard Script Bridge (fixes
-              <a href="http://wincent.com/issues/657">bug #657</a>).
+              <a href="http://typechecked.net/issues/657">bug #657</a>).
             </li>
             <li>
               <strong>Note:</strong> the crashes caused by NSAppleScript under
@@ -1004,19 +1004,19 @@
               crashes often with this alpha release you may consider switching
               to the stable 3.2 series instead, which can be downloaded from
               <a
-                href="https://wincent.com/a/products/synergy-classic/download/tiger/"
+                href="https://typechecked.net/a/products/synergy-classic/download/tiger/"
                 >here</a
               >.
             </li>
             <li>
               For a list of code-level changes for this release see either the
               <a
-                href="https://wincent.com/a/products/synergy-classic/history/3.5a7.txt"
+                href="https://typechecked.net/a/products/synergy-classic/history/3.5a7.txt"
                 >short summary</a
               >
               or the
               <a
-                href="https://wincent.com/a/products/synergy-classic/history/3.5a7-detailed.txt"
+                href="https://typechecked.net/a/products/synergy-classic/history/3.5a7-detailed.txt"
                 >detailed log</a
               >.
             </li>
@@ -1028,7 +1028,7 @@
             <li>
               Work around missing cover art problem caused by iTunes 7.6.1 and
               7.6.2 (fixes
-              <a href="http://wincent.com/issues/668">bug #668</a>).
+              <a href="http://typechecked.net/issues/668">bug #668</a>).
             </li>
             <li>Speed up cover art retrieval.</li>
           </ul>
@@ -1054,7 +1054,7 @@
               this alpha release you may consider switching to the stable 3.2
               series instead, which can be downloaded from
               <a
-                href="https://wincent.com/a/products/synergy-classic/download/tiger/"
+                href="https://typechecked.net/a/products/synergy-classic/download/tiger/"
                 >here</a
               >.
             </li>
@@ -1062,12 +1062,12 @@
               For a partial list of code-level changes for this release see
               either the
               <a
-                href="https://wincent.com/a/products/synergy-classic/history/3.5a6.txt"
+                href="https://typechecked.net/a/products/synergy-classic/history/3.5a6.txt"
                 >short summary</a
               >
               or the
               <a
-                href="https://wincent.com/a/products/synergy-classic/history/3.5a6-detailed.txt"
+                href="https://typechecked.net/a/products/synergy-classic/history/3.5a6-detailed.txt"
                 >detailed log</a
               >.
             </li>
@@ -1079,14 +1079,14 @@
             <li>
               Fix Audioscrobbler breakage introduced during the conversion to
               Objective-C 2.0 (see
-              <a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=641"
+              <a href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=641"
                 >bug #641</a
               >, "audioscrobbler/last.fm submission broken").
             </li>
             <li>
               Drop use of NSAppleScript in several places seeing as it appears
               to cause crashes under Garbage collection (see
-              <a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=640"
+              <a href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=640"
                 >bug #640</a
               >, "NSAppleScript freaks out under Garbage Collection"); this is
               not a total replacement of all NSAppleScript use, but it is start
@@ -1103,12 +1103,12 @@
               For a partial list of code-level changes for this release see
               either the
               <a
-                href="https://wincent.com/a/products/synergy-classic/history/3.5a5.txt"
+                href="https://typechecked.net/a/products/synergy-classic/history/3.5a5.txt"
                 >short summary</a
               >
               or the
               <a
-                href="https://wincent.com/a/products/synergy-classic/history/3.5a5-detailed.txt"
+                href="https://typechecked.net/a/products/synergy-classic/history/3.5a5-detailed.txt"
                 >detailed log</a
               >; a future modification to the build chain will enable the
               production of complete changelogs rather than partial extracts.
@@ -1121,7 +1121,7 @@
             <li>
               Fix crashing bug for people with stale entries in their login
               items (see
-              <a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=636"
+              <a href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=636"
                 >bug #636</a
               >, "Synergy 3.5a3 crashes on launch").
             </li>
@@ -1130,14 +1130,14 @@
               appearing in Spanish which should have been in English) caused by
               new behaviour in the new Interface Builder that comes with Leopard
               (see
-              <a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=637"
+              <a href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=637"
                 >bug #637</a
               >, "Synergy Preferences.app menu in Spanish").
             </li>
             <li>
               Fix reference to "NewApplication" in Synergy Preferences Help menu
               (see
-              <a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=638"
+              <a href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=638"
                 >bug #638</a
               >, "Help menu says "NewApplication" instead of Synergy
               Preferences").
@@ -1154,12 +1154,12 @@
             <li>
               For a list of code-level changes for this release see either the
               <a
-                href="https://wincent.com/a/products/synergy-classic/history/3.5a4.txt"
+                href="https://typechecked.net/a/products/synergy-classic/history/3.5a4.txt"
                 >short summary</a
               >
               or the
               <a
-                href="https://wincent.com/a/products/synergy-classic/history/3.5a4-detailed.txt"
+                href="https://typechecked.net/a/products/synergy-classic/history/3.5a4-detailed.txt"
                 >detailed log</a
               >.
             </li>
@@ -1181,7 +1181,7 @@
               Switch to using new login-item API provided by Launch Services;
               this should definitively fix the failure to launch at login after
               upgrading (see
-              <a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=605"
+              <a href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=605"
                 >bug #605</a
               >, "Synergy will not open at launch").
             </li>
@@ -1232,7 +1232,7 @@
               Qualified for use with iTunes version 7.5; iTunes 7.5 is a highly
               recommended upgrade as it fixes a bug in the cover art export in
               the version of iTunes that shipped with Mac OS X 10.5 (see
-              <a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=601"
+              <a href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=601"
                 >bug #601</a
               >, "Can't retrieve art from iTunes on Leopard final").
             </li>
@@ -1253,7 +1253,7 @@
             <li>
               [Note] Default button-set spacing reduced to zero pixels; the vast
               majority of
-              <a href="https://wincent.com/a/products/synergy-classic/buttons/"
+              <a href="https://typechecked.net/a/products/synergy-classic/buttons/"
                 >button sets</a
               >
               are designed with this in mind and so look better "out of the
@@ -1288,7 +1288,7 @@
               and "White Tiger Bar" by Xidius), specially created to blend well
               with the forthcoming Leopard version of Mac OS X, added to the
               online gallery of
-              <a href="https://wincent.com/a/products/synergy-classic/buttons/"
+              <a href="https://typechecked.net/a/products/synergy-classic/buttons/"
                 >free button sets</a
               >.
             </li>
@@ -1306,7 +1306,7 @@
             </li>
             <li>
               [Note] Now uses latest version of the installer (<a
-                href="https://wincent.com/a/products/install/history/#1.3.1"
+                href="https://typechecked.net/a/products/install/history/#1.3.1"
                 >Install 1.3.1</a
               >).
             </li>
@@ -1318,14 +1318,14 @@
           <ul>
             <li>
               [Enhancement] Various enhancements to the installer (<a
-                href="https://wincent.com/a/products/install/history/#1.3.1"
+                href="https://typechecked.net/a/products/install/history/#1.3.1"
                 >documented here</a
               >).
             </li>
             <li>
               [Note] One new button set ("Kamino 2" by Bastian Olea) added to
               the online gallery of
-              <a href="https://wincent.com/a/products/synergy-classic/buttons/"
+              <a href="https://typechecked.net/a/products/synergy-classic/buttons/"
                 >free button sets</a
               >.
             </li>
@@ -1338,7 +1338,7 @@
             <li>
               [Bugfix] Better escaping of special characters in URLs when
               performing cover art searches on Amazon (see
-              <a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=566"
+              <a href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=566"
                 >bug #566</a
               >).
             </li>
@@ -1351,16 +1351,16 @@
             <li>
               [Note] Three new button sets (by Bretton Lewis and Stefan
               Haddewig) added to the
-              <a href="https://wincent.com/a/products/synergy-classic/buttons/"
+              <a href="https://typechecked.net/a/products/synergy-classic/buttons/"
                 >online gallery</a
               >
               of free button sets.
             </li>
             <li>
               [Note] Dropped price of single-user licenses purchased through
-              <a href="https://wincent.com/s/kagi/">Kagi</a> from 10&euro; to
+              <a href="https://typechecked.net/s/kagi/">Kagi</a> from 10&euro; to
               9.95&euro;. Licenses purchased using
-              <a href="https://wincent.com/a/products/synergy-classic/purchase/"
+              <a href="https://typechecked.net/a/products/synergy-classic/purchase/"
                 >PayPal</a
               >
               continue to be only 5&euro;.
@@ -1395,7 +1395,7 @@
               last.fm now requiring periodic re-logins (apparently once per
               week; see
               <a
-                href="https://wincent.com/a/support/forums/ubbthreads.php?ubb=showflat&amp;Board=1&amp;Number=1201&amp;Searchpage=1&amp;Main=296&amp;Words=BADAUTH&amp;topic=0&amp;Search=true#Post1201"
+                href="https://typechecked.net/a/support/forums/ubbthreads.php?ubb=showflat&amp;Board=1&amp;Number=1201&amp;Searchpage=1&amp;Main=296&amp;Words=BADAUTH&amp;topic=0&amp;Search=true#Post1201"
                 >this forum thread</a
               >
               for more information).
@@ -1416,7 +1416,7 @@
           <ul>
             <li>
               [Bugfix] Corrections to Spanish translation (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=519"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=519"
                 >bug #528</a
               >, "Translation errors in Spanish version of Synergy").
             </li>
@@ -1428,7 +1428,7 @@
             <li>
               [Note] Additional translations by Sebastian Sparrer added to the
               German localization (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=519"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=519"
                 >bug #519</a
               >, "Non-translated strings in Synergy 3.1").
             </li>
@@ -1438,7 +1438,7 @@
             </li>
             <li>
               [Note] Two new button sets by Evan Robert added to the
-              <a href="https://wincent.com/a/products/synergy-classic/buttons/"
+              <a href="https://typechecked.net/a/products/synergy-classic/buttons/"
                 >online gallery</a
               >
               of free button sets.
@@ -1466,7 +1466,7 @@
               found during the beta testing cycle so the 3.1 release is declared
               stable. A future release will address the
               <a
-                href="https://wincent.com/a/support/bugs/buglist.cgi?query_format=advanced&amp;short_desc_type=allwordssubstr&amp;short_desc=&amp;long_desc_type=allwordssubstr&amp;long_desc=&amp;bug_file_loc_type=allwordssubstr&amp;bug_file_loc=&amp;keywords_type=allwords&amp;keywords=audioscrobbler&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED&amp;emailassigned_to1=1&amp;emailtype1=substring&amp;email1=&amp;emailassigned_to2=1&amp;emailreporter2=1&amp;emailcc2=1&amp;emailtype2=substring&amp;email2=&amp;bugidtype=include&amp;bug_id=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;cmdtype=doit&amp;order=Reuse+same+sort+as+last+time&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0="
+                href="https://typechecked.net/a/support/bugs/buglist.cgi?query_format=advanced&amp;short_desc_type=allwordssubstr&amp;short_desc=&amp;long_desc_type=allwordssubstr&amp;long_desc=&amp;bug_file_loc_type=allwordssubstr&amp;bug_file_loc=&amp;keywords_type=allwords&amp;keywords=audioscrobbler&amp;bug_status=NEW&amp;bug_status=ASSIGNED&amp;bug_status=REOPENED&amp;emailassigned_to1=1&amp;emailtype1=substring&amp;email1=&amp;emailassigned_to2=1&amp;emailreporter2=1&amp;emailcc2=1&amp;emailtype2=substring&amp;email2=&amp;bugidtype=include&amp;bug_id=&amp;votes=&amp;chfieldfrom=&amp;chfieldto=Now&amp;chfieldvalue=&amp;cmdtype=doit&amp;order=Reuse+same+sort+as+last+time&amp;field0-0-0=noop&amp;type0-0-0=noop&amp;value0-0-0="
                 >feature requests</a
               >
               submitted during the beta cycle.
@@ -1482,7 +1482,7 @@
             <li>
               [Bugfix] Before sending data to
               <a
-                href="https://wincent.com/a/products/synergy-classic/features/audioscrobbler/"
+                href="https://typechecked.net/a/products/synergy-classic/features/audioscrobbler/"
                 >Audioscrobbler</a
               >
               escape legal-but-reserved characters as defined in
@@ -1492,7 +1492,7 @@
             <li>
               [Enhancement] Added detail to log messages if the
               <a
-                href="https://wincent.com/a/products/synergy-classic/features/audioscrobbler/"
+                href="https://typechecked.net/a/products/synergy-classic/features/audioscrobbler/"
                 >Audioscrobbler</a
               >
               servers return a <tt>FAILED</tt> response.
@@ -1500,7 +1500,7 @@
             <li>
               [Enhancement] If the
               <a
-                href="https://wincent.com/a/products/synergy-classic/features/audioscrobbler/"
+                href="https://typechecked.net/a/products/synergy-classic/features/audioscrobbler/"
                 >Audioscrobbler</a
               >
               returns a <tt>FAILED</tt> message in response to a submission,
@@ -1523,11 +1523,11 @@
             <li>
               [Feature] Audioscrobbler (<a href="http://last.fm/">last.fm</a>)
               support (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=108"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=108"
                 >feature request #108</a
               >); preliminary documentation appears
               <a
-                href="https://wincent.com/a/products/synergy-classic/features/audioscrobbler/"
+                href="https://typechecked.net/a/products/synergy-classic/features/audioscrobbler/"
                 >here</a
               >.
             </li>
@@ -1537,7 +1537,7 @@
             </li>
             <li>
               [Bugfix] Correction to Norwegian localization of preference pane
-              (<a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=495"
+              (<a href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=495"
                 >bug #495</a
               >).
             </li>
@@ -1553,7 +1553,7 @@
             </li>
             <li>
               [Feature] Implemented
-              <a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=445"
+              <a href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=445"
                 >feature request #445</a
               >
               ("Display confirmation sheet when clicking 'Defaults' or
@@ -1568,7 +1568,7 @@
             <li>
               [Bugfix] Remove drag limitations when setting the position of the
               Floater (fixes
-              <a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=309"
+              <a href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=309"
                 >bug #309</a
               >, "Floater won't move to 2nd screen if 2nd screen is above main
               screen").
@@ -1578,7 +1578,7 @@
               move to Tiger that made rating stars in the central feedback
               bezels (when using the hot keys to change song ratings) appear too
               small and hard to distinguish (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=425"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=425"
                 >bug #425</a
               >, "Open stars in hot-key floater"). The fix originally introduced
               in Synergy version 1.9 gave stars of the correct size but they
@@ -1589,7 +1589,7 @@
               [Bugfix] Double-clicking a button set in the Finder causes that
               set to become active even when the user has the "Choose random
               button style" preference set (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=442"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=442"
                 >bug #442</a
               >, "Double-click on a Synergy Button set displays random button
               set").
@@ -1597,7 +1597,7 @@
             <li>
               [Note] Five new buttons sets (two by Charles Hodgson, one by
               subscriber3 and two by Jon Redmond) added to
-              <a href="https://wincent.com/a/products/synergy-classic/buttons/"
+              <a href="https://typechecked.net/a/products/synergy-classic/buttons/"
                 >the online gallery</a
               >.
             </li>
@@ -1609,7 +1609,7 @@
             <li>
               [Feature] New item in the Global Menu, "Transfer cover to iTunes";
               fulfills
-              <a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=8"
+              <a href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=8"
                 >feature request #8</a
               >
               ("Embed album art in track file").
@@ -1628,11 +1628,11 @@
             <li>
               [Feature] Floater background transparency can now be set to
               totally transparent (<a
-                href="https://wincent.com/a/products/synergy-classic/screenshots/fully-transparent-floater-background.png"
+                href="https://typechecked.net/a/products/synergy-classic/screenshots/fully-transparent-floater-background.png"
                 >sample screenshot</a
               >) or totally solid, in addition to the previously available range
               of choices (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=413"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=413"
                 >feature requst #413</a
               >).
             </li>
@@ -1643,7 +1643,7 @@
             </li>
             <li>
               [Note] One new button set by Leonardo Alcantara added to
-              <a href="https://wincent.com/a/products/synergy-classic/buttons/"
+              <a href="https://typechecked.net/a/products/synergy-classic/buttons/"
                 >the online gallery</a
               >.
             </li>
@@ -1659,14 +1659,14 @@
             <li>
               [Bugfix] Fixed typographical error in "Composer" tool-tip in
               preferences (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=359"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=359"
                 >bug #359</a
               >).
             </li>
             <li>
               [Bugfix] Added translation for "Composer" to French localization
               of preferences (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=378"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=378"
                 >bug #378</a
               >).
             </li>
@@ -1679,7 +1679,7 @@
               [Bugfix] Final workaround for font changes made by Apple in the
               move to Tiger that made rating stars in the Floater appear too
               small and hard to distinguish (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=179"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=179"
                 >bug #179</a
               >). The fix originally introduced in Synergy version 1.9 gave
               stars of the correct size but they were not fully solid. This new
@@ -1695,7 +1695,7 @@
             <li>
               [Bugfix] Floater totally failed to display ratings if they were
               not whole-star ratings (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=366"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=366"
                 >bug #366</a
               >).
             </li>
@@ -1710,7 +1710,7 @@
               running natively on Intel machines; such keys could be set and
               used but the modifiers would not be shown within the user
               interface (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=350"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=350"
                 >bug #350</a
               >).
             </li>
@@ -1724,7 +1724,7 @@
               [New] 24 new free downloadable buttons sets by Ricardo Rivera,
               Piotr Gajos, Dougy and Wolfgang Bartelme &mdash; including four
               Editors Picks &mdash; added to
-              <a href="https://wincent.com/a/products/synergy-classic/buttons/"
+              <a href="https://typechecked.net/a/products/synergy-classic/buttons/"
                 >the online gallery</a
               >.
             </li>
@@ -1750,7 +1750,7 @@
             <li>
               [Bugfix] Fixes a problem with license code validation on the Intel
               platform caused by byte-ordering issues (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=339"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=339"
                 >bug #339</a
               >).
             </li>
@@ -1771,11 +1771,11 @@
               the latest available version (0.7.2). Growl support is only active
               when running on Panther (Mac OS X 10.3) and higher. Given that
               Growl has
-              <a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=123"
+              <a href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=123"
                 >historically caused problems</a
               >
               when running on Jaguar (Mac OS X 10.2) I'd appreciate
-              <a href="https://wincent.com/a/contact/mail/"
+              <a href="https://typechecked.net/a/contact/mail/"
                 >hearing confirmation</a
               >
               from users running that version of the OS that there are no
@@ -1794,7 +1794,7 @@
             </li>
             <li>
               [Note] Updated automatic version checking feature to reflect move
-              of wincent.com server to Rackspace.
+              of typechecked.net server to Rackspace.
             </li>
             <li>[Note] Qualified for use with Mac OS X 10.4.3.</li>
             <li>[Note] Qualified for use with iTunes 6.0.1.</li>
@@ -1806,7 +1806,7 @@
             <li>
               [Bugfix] Work around bug in Tiger Launch Services which could
               cause the Synergy icon to appear in the Dock (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=192"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=192"
                 >bug #192</a
               >).
             </li>
@@ -1819,7 +1819,7 @@
               [Bugfix] Restored compatibility with Mac OS X 10.2 which was
               broken in Synergy 2.0 in the change to Tiger, Xcode 2.1 and the
               new version of the Growl framework (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=265"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=265"
                 >bug #265</a
               >).
             </li>
@@ -1852,7 +1852,7 @@
             <li>
               [Bugfix] Fixed problem where the album cover shown in Growl
               notifications would lag one song behind iTunes (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=193"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=193"
                 >bug #193</a
               >).
             </li>
@@ -1860,13 +1860,13 @@
               [Bugfix] Changed the unicode character used to draw the rating
               stars in the Floater when running on Tiger. This corrects the
               "small rating star" problem seen on Tiger (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=179"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=179"
                 >bug #179</a
               >).
             </li>
             <li>
               [New] 8 free new button sets added to
-              <a href="https://wincent.com/a/products/synergy-classic/buttons/"
+              <a href="https://typechecked.net/a/products/synergy-classic/buttons/"
                 >the online gallery</a
               >. The gallery now contains 131 free sets in all.
             </li>
@@ -1902,7 +1902,7 @@
             </li>
             <li>
               [Feature] Display of composer in Floater is now optional (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=177"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=177"
                 >bug #177</a
               >).
             </li>
@@ -1910,20 +1910,20 @@
               [Bugfix] Added missing space between artist and composer in the
               Floater; now shows, "Artist (Composer)" instead of
               "Artist(Composer)" (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=178"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=178"
                 >bug #178</a
               >).
             </li>
             <li>
               [Bugfix] Fixed problem where text might not display in the Floater
               when it is set to the smallest possible size (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=176"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=176"
                 >bug #176</a
               >).
             </li>
             <li>
               [Bugfix] Fixed potential &quot;beachball&quot; on quitting iTunes
-              (<a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=188"
+              (<a href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=188"
                 >bug #188</a
               >).
             </li>
@@ -1931,7 +1931,7 @@
               [Bugfix] No longer uses composer as part of the track identifier
               which means that art downloaded prior to version 1.8 will continue
               to be recognized (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=173"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=173"
                 >bug #173</a
               >).
             </li>
@@ -1957,7 +1957,7 @@
               [Bugfix] Fix delays which may occur when no Internet connection is
               available and Synergy tests the network status by moving those
               tests into separate threads (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=131"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=131"
                 >bug #131</a
               >).
             </li>
@@ -1966,7 +1966,7 @@
               (version 4.7 and later) sends on quitting; this prevents the
               &quot;Stopped: (null)&quot; message from being sent to Growl when
               iTunes quits (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=142"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=142"
                 >bug #142</a
               >).
             </li>
@@ -1981,7 +1981,7 @@
               question mark is displayed to indicate that Synergy has not (yet)
               found art from either iTunes or Amazon. Previous versions showed
               the Synergy icon under these circumstances (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=22"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=22"
                 >bug #22</a
               >).
             </li>
@@ -2001,12 +2001,12 @@
               pattern used is the same as the one adopted for Growl
               notifications in
               <a
-                href="https://wincent.com/a/products/synergy-classic/history/#1.7"
+                href="https://typechecked.net/a/products/synergy-classic/history/#1.7"
                 >version 1.7</a
               >; that is, if both artist and composer are defined for the track
               then the Floater will display &quot;Artist (Composer)&quot;, and
               if only one is available then only one will be displayed (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=60"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=60"
                 >bug #60</a
               >).
             </li>
@@ -2023,7 +2023,7 @@
               [New] 12 free new button sets -- including one editor's pick -- by
               Ultraman, Eerk Hofmeester, Errol Sayre and FreeFrog Designs added
               to
-              <a href="https://wincent.com/a/products/synergy-classic/buttons/"
+              <a href="https://typechecked.net/a/products/synergy-classic/buttons/"
                 >the online gallery</a
               >. The gallery now contains 123 free sets in all.
             </li>
@@ -2042,7 +2042,7 @@
               <a href="http://growl.info/">Growl</a> framework when running on
               Jaguar; this means that Growl is now only supported on Mac OS X
               10.3 and above (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=123"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=123"
                 >bug #123</a
               >).
             </li>
@@ -2054,7 +2054,7 @@
             <li>
               [Feature] Growl support when used in conjunction with iTunes 4.7
               or later (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=35"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=35"
                 >bug #35</a
               >); see <a href="http://growl.info/">http://growl.info/</a> to
               learn about Growl, or look at the
@@ -2088,7 +2088,7 @@
               by Aaron Martin, Eric Deerly, Kevin Asher, Mark, Mathias Temmen,
               Mick Care, Ricardo Rivera, Ryan Edwards, Scott Vogel, Teb Hobgood,
               Wynn H Burton and Xidius added to
-              <a href="https://wincent.com/a/products/synergy-classic/buttons/"
+              <a href="https://typechecked.net/a/products/synergy-classic/buttons/"
                 >the online gallery</a
               >. The gallery now contains 111 free sets in all.
             </li>
@@ -2113,7 +2113,7 @@
           <ul>
             <li>
               [Bugfix] Upgraded installer to
-              <a href="https://wincent.com/a/products/install/"
+              <a href="https://typechecked.net/a/products/install/"
                 >Install version 1.2.3</a
               >, fixing a rare (one crash report in 18 months) crash.
             </li>
@@ -2132,7 +2132,7 @@
               license code/email address combination. In addition, the license
               code is no longer case-sensitive (the email address, however,
               still is). See
-              <a href="https://wincent.com/a/support/bugs/show_bug.cgi?id=69"
+              <a href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=69"
                 >bug #69</a
               >
               for more information.
@@ -2159,21 +2159,21 @@
             <li>
               [Bugfix] Make sure that Floater fades out immediately if iTunes is
               quit (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=32"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=32"
                 >bug #32</a
               >).
             </li>
             <li>
               [Bugfix] Auto-show/hide of menu bar controls and Global Menu when
               running with iTunes 4.7 works again (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=48"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=48"
                 >bug #48</a
               >)
             </li>
             <li>
               [Bugfix] Floater now updates when Internet Radio track information
               changes in iTunes (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=1"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=1"
                 >bug #1</a
               >).
             </li>
@@ -2181,14 +2181,14 @@
               [Bugfix] Show a tooltip in the preferences user interface
               indicating with the Communications Interval slider is ghosted on
               systems where iTunes 4.7 is installed (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=33"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=33"
                 >bug #33</a
               >).
             </li>
             <li>
               [Bugfix] Fix crash on repeatedly skipping tracks with Mac OS X
               10.2.8/iTunes 4.7 (<a
-                href="https://wincent.com/a/support/bugs/show_bug.cgi?id=34"
+                href="https://typechecked.net/a/support/bugs/show_bug.cgi?id=34"
                 >bug #34</a
               >). This fix has a secondary performance benefit for all users
               because it eliminates a number of timer firing events, and
@@ -2205,7 +2205,7 @@
               [New] Ten free new button sets -- including two Editor's Picks --
               by Matt Widmann, Chris Messina, Kevin Lee, Matteo Discardi, Pieter
               Hudig, Sami Nowak, Shane Smith and Zed Bailey added to
-              <a href="https://wincent.com/a/products/synergy-classic/buttons/"
+              <a href="https://typechecked.net/a/products/synergy-classic/buttons/"
                 >the online gallery</a
               >.
             </li>
@@ -2225,7 +2225,7 @@
             </li>
             <li>
               [New] Multiple additions to the
-              <a href="https://wincent.com/a/products/synergy-classic/buttons/"
+              <a href="https://typechecked.net/a/products/synergy-classic/buttons/"
                 >Online Button Set gallery</a
               >. The gallery now contains 70 free sets, including 11 news sets
               by Aaron Martin, David Nicholson, Greg Granito, Herv&eacute;
@@ -2238,8 +2238,8 @@
             <li>
               [New] Corrections and many additions to the Online Button Set
               gallery at
-              <a href="http://wincent.com/buttons/"
-                >&lt;http://wincent.com/buttons/&gt;</a
+              <a href="http://typechecked.net/buttons/"
+                >&lt;http://typechecked.net/buttons/&gt;</a
               >. The gallery now contains just under 60 free sets; including 11
               new sets (by David Drucker, Eric Stumbaugh, Oliver Waters, Phil
               Daulton, Stephen Way and Wynn H Burton).
@@ -2286,8 +2286,8 @@
             </li>
             <li>
               [Feature] Online Button Set gallery launched at
-              <a href="http://wincent.com/buttons/"
-                >&lt;http://wincent.com/buttons/&gt;</a
+              <a href="http://typechecked.net/buttons/"
+                >&lt;http://typechecked.net/buttons/&gt;</a
               >; there are currently 48 free button sets available for download,
               including 10 never-seen-before sets ("Aqua", "Aqua Buttons with
               Drop Shadow", "Synblack", "iTunes", "Icky", "iTunes Bordered",
@@ -2758,8 +2758,8 @@
             <li>
               [New] Automated serial recovery system for users who lose their
               registration information; see:
-              <a href="https://wincent.com/a/support/registration/"
-                >&lt;https://wincent.com/a/support/registration/</a
+              <a href="https://typechecked.net/a/support/registration/"
+                >&lt;https://typechecked.net/a/support/registration/</a
               >&gt;.
             </li>
           </ul>
@@ -3539,7 +3539,7 @@
               now, a process which has been quite slow because all the data has
               to be exported from a number of &quot;legacy&quot; applications
               and imported into a brand... [<a
-                href="https://wincent.com/a/news/archives/2008/03/final_server_mi.php"
+                href="https://typechecked.net/a/news/archives/2008/03/final_server_mi.php"
                 >More...</a
               >]
             </li>
@@ -3553,7 +3553,7 @@
               underway. My aim is do this very carefully, service by service,
               and keep downtime to a minimum; hopefully minutes rather than
               hours. Just in case there is any interruption during the... [<a
-                href="https://wincent.com/a/news/archives/2008/02/server_migratio.php"
+                href="https://typechecked.net/a/news/archives/2008/02/server_migratio.php"
                 >More...</a
               >]
             </li>
@@ -3568,7 +3568,7 @@
               bansshee.com, bansshee.net, and bansshee.org, that resolve to the
               Bansshee project page. These are coming up for renewal soon (they
               expire... [<a
-                href="https://wincent.com/a/news/archives/2008/02/call_for_banssh.php"
+                href="https://typechecked.net/a/news/archives/2008/02/call_for_banssh.php"
                 >More...</a
               >]
             </li>
@@ -3582,7 +3582,7 @@
               soon be migrating DNS servers. I'll be doing everything I can to
               minimize downtime, and hopefully come close to eliminating it
               entirely as there will be a... [<a
-                href="https://wincent.com/a/news/archives/2008/02/upcoming_dns_ch.php"
+                href="https://typechecked.net/a/news/archives/2008/02/upcoming_dns_ch.php"
                 >More...</a
               >]
             </li>
@@ -3596,14 +3596,14 @@
               Synergy, the fifth alpha release in the brand new 3.5 series. The
               last release, version 3.2, was Leopard-compatible but would also
               run on all versions of Mac OS X from... [<a
-                href="https://wincent.com/a/news/archives/2008/01/synergy_35a5_re.php"
+                href="https://typechecked.net/a/news/archives/2008/01/synergy_35a5_re.php"
                 >More...</a
               >]
             </li>
           </ul>
 
           <p class="more">
-            <a href="https://wincent.com/a/news/">More news articles...</a>
+            <a href="https://typechecked.net/a/news/">More news articles...</a>
           </p>
         </div>
       </div>

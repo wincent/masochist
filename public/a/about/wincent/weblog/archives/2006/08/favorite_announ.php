@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/favorite-announcements-from-wwdc"
-        >https://wincent.com/blog/favorite-announcements-from-wwdc</a
+      <a href="https://typechecked.net/blog/favorite-announcements-from-wwdc"
+        >https://typechecked.net/blog/favorite-announcements-from-wwdc</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/favorite-announcements-from-wwdc',
+      'https://typechecked.net/blog/favorite-announcements-from-wwdc',
     );
   </script>
 </html>

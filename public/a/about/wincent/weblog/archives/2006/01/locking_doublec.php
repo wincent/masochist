@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/locking-double-checked-locking-and-speed"
-        >https://wincent.com/blog/locking-double-checked-locking-and-speed</a
+        href="https://typechecked.net/blog/locking-double-checked-locking-and-speed"
+        >https://typechecked.net/blog/locking-double-checked-locking-and-speed</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/locking-double-checked-locking-and-speed',
+      'https://typechecked.net/blog/locking-double-checked-locking-and-speed',
     );
   </script>
 </html>

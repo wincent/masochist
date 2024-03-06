@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/memory-management-tips-under-garbage-collection"
-        >https://wincent.com/blog/memory-management-tips-under-garbage-collection</a
+        href="https://typechecked.net/blog/memory-management-tips-under-garbage-collection"
+        >https://typechecked.net/blog/memory-management-tips-under-garbage-collection</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/memory-management-tips-under-garbage-collection',
+      'https://typechecked.net/blog/memory-management-tips-under-garbage-collection',
     );
   </script>
 </html>

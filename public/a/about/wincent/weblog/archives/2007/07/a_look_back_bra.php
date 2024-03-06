@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/a-look-back-bram-cohen-vs-linus-torvalds"
-        >https://wincent.com/blog/a-look-back-bram-cohen-vs-linus-torvalds</a
+        href="https://typechecked.net/blog/a-look-back-bram-cohen-vs-linus-torvalds"
+        >https://typechecked.net/blog/a-look-back-bram-cohen-vs-linus-torvalds</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/a-look-back-bram-cohen-vs-linus-torvalds',
+      'https://typechecked.net/blog/a-look-back-bram-cohen-vs-linus-torvalds',
     );
   </script>
 </html>

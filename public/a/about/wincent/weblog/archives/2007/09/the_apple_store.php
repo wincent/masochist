@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/the-apple-store"
-        >https://wincent.com/blog/the-apple-store</a
+      <a href="https://typechecked.net/blog/the-apple-store"
+        >https://typechecked.net/blog/the-apple-store</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/the-apple-store');
+    window.location.replace('https://typechecked.net/blog/the-apple-store');
   </script>
 </html>

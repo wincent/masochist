@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/xcode-feature-requests"
-        >https://wincent.com/blog/xcode-feature-requests</a
+      <a href="https://typechecked.net/blog/xcode-feature-requests"
+        >https://typechecked.net/blog/xcode-feature-requests</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/xcode-feature-requests');
+    window.location.replace('https://typechecked.net/blog/xcode-feature-requests');
   </script>
 </html>

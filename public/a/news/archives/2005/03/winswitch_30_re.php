@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/winswitch-3.0-released"
-        >https://wincent.com/blog/winswitch-3.0-released</a
+      <a href="https://typechecked.net/blog/winswitch-3.0-released"
+        >https://typechecked.net/blog/winswitch-3.0-released</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/winswitch-3.0-released');
+    window.location.replace('https://typechecked.net/blog/winswitch-3.0-released');
   </script>
 </html>

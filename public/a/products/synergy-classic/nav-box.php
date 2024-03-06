@@ -1,128 +1,128 @@
 <h2>Synergy links</h2>
 <ul>
-  <li><a href="https://wincent.com/products/synergy">Front page</a></li>
-  <li><a href="https://wincent.com/products/synergy/about">About</a></li>
+  <li><a href="https://typechecked.net/products/synergy">Front page</a></li>
+  <li><a href="https://typechecked.net/products/synergy/about">About</a></li>
   <li>
-    <a href="https://wincent.com/a/products/synergy-classic/features/"
+    <a href="https://typechecked.net/a/products/synergy-classic/features/"
       >Features</a
     >
   </li>
-  <li><a href="https://wincent.com/products/synergy">Screenshots</a></li>
+  <li><a href="https://typechecked.net/products/synergy">Screenshots</a></li>
   <li>
-    <a href="https://wincent.com/a/products/synergy-classic/basic-usage/"
+    <a href="https://typechecked.net/a/products/synergy-classic/basic-usage/"
       >Basic usage</a
     >
   </li>
   <li>
-    <a href="https://wincent.com/a/products/synergy-classic/buttons/"
+    <a href="https://typechecked.net/a/products/synergy-classic/buttons/"
       >Free button sets</a
     >
   </li>
-  <li><a href="https://wincent.com/blog">News</a></li>
-  <li><a href="https://wincent.com/products/synergy/download">Download</a></li>
+  <li><a href="https://typechecked.net/blog">News</a></li>
+  <li><a href="https://typechecked.net/products/synergy/download">Download</a></li>
   <li>
-    <a href="https://wincent.com/a/products/synergy-classic/purchase/"
+    <a href="https://typechecked.net/a/products/synergy-classic/purchase/"
       >Purchase</a
     >
   </li>
   <li>
-    <a href="https://wincent.com/a/products/synergy-classic/album-covers/"
+    <a href="https://typechecked.net/a/products/synergy-classic/album-covers/"
       >Album covers</a
     >
   </li>
   <li>
-    <a href="https://wincent.com/a/products/synergy-classic/floater/"
+    <a href="https://typechecked.net/a/products/synergy-classic/floater/"
       >Floater</a
     >
   </li>
   <li>
-    <a href="https://wincent.com/a/products/synergy-classic/global-menu/"
+    <a href="https://typechecked.net/a/products/synergy-classic/global-menu/"
       >Global Menu</a
     >
   </li>
   <li>
-    <a href="https://wincent.com/a/products/synergy-classic/installing/"
+    <a href="https://typechecked.net/a/products/synergy-classic/installing/"
       >Installing/uninstalling</a
     >
   </li>
   <li>
     <a
-      href="https://wincent.com/a/products/synergy-classic/system-requirements/"
+      href="https://typechecked.net/a/products/synergy-classic/system-requirements/"
       >System requirements</a
     >
   </li>
   <li>
-    <a href="https://wincent.com/a/products/synergy-classic/preferences/"
+    <a href="https://typechecked.net/a/products/synergy-classic/preferences/"
       >Preferences</a
     >
     <ul>
       <li>
         <a
-          href="https://wincent.com/a/products/synergy-classic/preferences/general/"
+          href="https://typechecked.net/a/products/synergy-classic/preferences/general/"
           >General</a
         >
       </li>
       <li>
         <a
-          href="https://wincent.com/a/products/synergy-classic/preferences/hot-keys/"
+          href="https://typechecked.net/a/products/synergy-classic/preferences/hot-keys/"
           >Hot Keys</a
         >
       </li>
       <li>
         <a
-          href="https://wincent.com/a/products/synergy-classic/preferences/menu-bar/"
+          href="https://typechecked.net/a/products/synergy-classic/preferences/menu-bar/"
           >Menu Bar</a
         >
       </li>
       <li>
         <a
-          href="https://wincent.com/a/products/synergy-classic/preferences/advanced/"
+          href="https://typechecked.net/a/products/synergy-classic/preferences/advanced/"
           >Advanced</a
         >
       </li>
       <li>
         <a
-          href="https://wincent.com/a/products/synergy-classic/preferences/about-tab/"
+          href="https://typechecked.net/a/products/synergy-classic/preferences/about-tab/"
           >The About tab</a
         >
       </li>
     </ul>
   </li>
   <li>
-    <a href="https://wincent.com/a/products/synergy-classic/testimonials/"
+    <a href="https://typechecked.net/a/products/synergy-classic/testimonials/"
       >Testimonials</a
     >
   </li>
   <li>
-    <a href="https://wincent.com/a/products/synergy-classic/support/"
+    <a href="https://typechecked.net/a/products/synergy-classic/support/"
       >Support</a
     >
   </li>
   <li>
-    <a href="https://wincent.com/products/synergy/history">Version history</a>
+    <a href="https://typechecked.net/products/synergy/history">Version history</a>
   </li>
   <li>
-    <a href="https://wincent.com/products/synergy/help"
+    <a href="https://typechecked.net/products/synergy/help"
       >Frequently Asked Questions</a
     >
   </li>
   <li>
-    <a href="https://wincent.com/a/products/synergy-classic/known-limitations/"
+    <a href="https://typechecked.net/a/products/synergy-classic/known-limitations/"
       >Known limitations</a
     >
   </li>
   <li>
-    <a href="https://wincent.com/a/products/synergy-classic/disclaimer/"
+    <a href="https://typechecked.net/a/products/synergy-classic/disclaimer/"
       >Disclaimer</a
     >
   </li>
   <li>
-    <a href="https://wincent.com/a/products/synergy-classic/license/"
+    <a href="https://typechecked.net/a/products/synergy-classic/license/"
       >License</a
     >
   </li>
   <li>
-    <a href="https://wincent.com/a/products/synergy-classic/credits/"
+    <a href="https://typechecked.net/a/products/synergy-classic/credits/"
       >Credits</a
     >
   </li>
@@ -130,7 +130,7 @@
 <p align="Center">
   <a href="http://www.macworld.com/2005/08/features/softwarebargains/index.php"
     ><img
-      src="https://wincent.com/a/products/synergy-classic/gfx/bluemouse50.gif"
+      src="https://typechecked.net/a/products/synergy-classic/gfx/bluemouse50.gif"
       alt="Macworld 5 mice"
       width="30"
       height="11"
@@ -140,7 +140,7 @@
 <p align="Center">
   <a href="http://www.applelust.com/oped/skewed/archives/skewed_040730.shtml"
     ><img
-      src="https://wincent.com/a/products/synergy-classic/gfx/macuser-uk-5-mice.gif"
+      src="https://typechecked.net/a/products/synergy-classic/gfx/macuser-uk-5-mice.gif"
       alt="MacUser 5 Mice"
       width="75"
       height="12"
@@ -150,7 +150,7 @@
 <p align="Center">
   <a href="http://www.atpm.com/12.12/synergy.shtml"
     ><img
-      src="https://wincent.com/a/products/synergy-classic/gfx/verynice.gif"
+      src="https://typechecked.net/a/products/synergy-classic/gfx/verynice.gif"
       alt="ATPM Very Nice"
       width="83"
       height="74"
@@ -160,7 +160,7 @@
 <p align="Center">
   <a href="http://amug.org/"
     ><img
-      src="https://wincent.com/a/products/synergy-classic/gfx/amug-5-amugs.gif"
+      src="https://typechecked.net/a/products/synergy-classic/gfx/amug-5-amugs.gif"
       alt="AMUG 5 AMUGs"
       width="75"
       height="16"

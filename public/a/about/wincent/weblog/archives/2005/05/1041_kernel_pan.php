@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/blog/10.4.1-kernel-panics-raid-and-data-integrity"
-        >https://wincent.com/blog/10.4.1-kernel-panics-raid-and-data-integrity</a
+        href="https://typechecked.net/blog/10.4.1-kernel-panics-raid-and-data-integrity"
+        >https://typechecked.net/blog/10.4.1-kernel-panics-raid-and-data-integrity</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/10.4.1-kernel-panics-raid-and-data-integrity',
+      'https://typechecked.net/blog/10.4.1-kernel-panics-raid-and-data-integrity',
     );
   </script>
 </html>

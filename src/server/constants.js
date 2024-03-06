@@ -1,6 +1,6 @@
 import getIndexNameForContentType from './getIndexNameForContentType';
 
-export const HOST = 'wincent.com';
+export const HOST = 'typechecked.net';
 export const SCHEME = 'https://';
 
 export const REPO =

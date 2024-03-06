@@ -7,7 +7,7 @@
       name="viewport"
     />
     <title>
-      Bug #1764: Static file indexes broken &middot; wincent.com
+      Bug #1764: Static file indexes broken &middot; typechecked.net
     </title>
     <link
       rel="stylesheet"
@@ -82,7 +82,7 @@
                   <tr>
                     <th>Product</th>
                     <td>
-                      wincent.com
+                      typechecked.net
                     </td>
                   </tr>
                   <tr>
@@ -117,16 +117,16 @@
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/products/wikitext/doc"
+                        href="https://typechecked.net/products/wikitext/doc"
                         class="external"
-                        >https://wincent.com/products/wikitext/doc</a
+                        >https://typechecked.net/products/wikitext/doc</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/products/wikitext/doc/"
+                        href="https://typechecked.net/products/wikitext/doc/"
                         class="external"
-                        >https://wincent.com/products/wikitext/doc/</a
+                        >https://typechecked.net/products/wikitext/doc/</a
                       >
                     </li>
                   </ul>
@@ -139,9 +139,9 @@
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/products/wikitext/doc/index.html"
+                        href="https://typechecked.net/products/wikitext/doc/index.html"
                         class="external"
-                        >https://wincent.com/products/wikitext/doc/index.html</a
+                        >https://typechecked.net/products/wikitext/doc/index.html</a
                       >
                     </li>
                   </ul>
@@ -172,9 +172,9 @@
                     place). The relevant section of the config file now looks
                     like this:
                   </p>
-                  <pre>    # rewrite all requests to *.wincent.com back to wincent.com
-    if ($host != wincent.com) {
-      rewrite ^(.*) <a href="https://wincent.com$1" class="external">https://wincent.com$1</a> permanent;
+                  <pre>    # rewrite all requests to *.example.com back to example.com
+    if ($host != example.com) {
+      rewrite ^(.*) <a href="https://example.com$1" class="external">https://example.com$1</a> permanent;
     }
 
     # serve static content without hitting Rails

@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/coredata-weak-linking-and-10.3-support"
-        >https://wincent.com/blog/coredata-weak-linking-and-10.3-support</a
+      <a href="https://typechecked.net/blog/coredata-weak-linking-and-10.3-support"
+        >https://typechecked.net/blog/coredata-weak-linking-and-10.3-support</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/coredata-weak-linking-and-10.3-support',
+      'https://typechecked.net/blog/coredata-weak-linking-and-10.3-support',
     );
   </script>
 </html>

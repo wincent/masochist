@@ -7,8 +7,8 @@
     <p>
       The resource has moved to
       <a
-        href="https://wincent.com/a/about/wincent/weblog/archives/2006/01/security_notes.php"
-        >https://wincent.com/a/about/wincent/weblog/archives/2006/01/security_notes.php</a
+        href="https://typechecked.net/a/about/wincent/weblog/archives/2006/01/security_notes.php"
+        >https://typechecked.net/a/about/wincent/weblog/archives/2006/01/security_notes.php</a
       >
     </p>
   </body>

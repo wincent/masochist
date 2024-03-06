@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/smartsvn"
-        >https://wincent.com/blog/smartsvn</a
+      <a href="https://typechecked.net/blog/smartsvn"
+        >https://typechecked.net/blog/smartsvn</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/smartsvn');
+    window.location.replace('https://typechecked.net/blog/smartsvn');
   </script>
 </html>

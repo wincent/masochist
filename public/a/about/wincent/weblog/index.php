@@ -6,9 +6,9 @@
     <title>Wincent Colaiuta's weblog</title>
     <link rel="stylesheet" href="/a/styles.css" type="text/css" />
 
-    <link rel="openid.server" href="https://wincent.com/id.php" />
-    <link rel="openid.delegate" href="https://wincent.com/id.php" />
-    <meta http-equiv="X-XRDS-Location" content="https://wincent.com/id.php" />
+    <link rel="openid.server" href="https://typechecked.net/id.php" />
+    <link rel="openid.delegate" href="https://typechecked.net/id.php" />
+    <meta http-equiv="X-XRDS-Location" content="https://typechecked.net/id.php" />
   </head>
 
   <body>
@@ -16,10 +16,10 @@
       style="text-align: center; font-family: 'Lucida Grande'; margin: 5px 250px 5px 250px; padding: 5px; font-size: x-small; border: 2px solid silver; -webkit-border-radius: 0.5em; -moz-border-radius: 0.5em; background: #fefefe;"
     >
       <p>
-        You are currently looking at an older section of the wincent.com
+        You are currently looking at an older section of the typechecked.net
         website.<br />
         Please check the new version of the site at
-        <a href="https://wincent.com/">https://wincent.com/</a> for updated
+        <a href="https://typechecked.net/">https://typechecked.net/</a> for updated
         content.<br />
       </p>
     </div>
@@ -79,7 +79,7 @@
           align="center"
           valign="middle"
         >
-          <a href="https://wincent.com/"
+          <a href="https://typechecked.net/"
             ><img
               src="/a/gfx/wincent-logo-small-gray-bg.jpg"
               width="43"
@@ -87,7 +87,7 @@
               alt="wincent"
               align="middle"
           /></a>
-          <a href="https://wincent.com/a/about/wincent/weblog/"
+          <a href="https://typechecked.net/a/about/wincent/weblog/"
             ><img
               src="/a/gfx/weblog-header.jpg"
               width="323"
@@ -133,7 +133,7 @@
           <ul style="width: 73px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/products/"
+                href="https://typechecked.net/a/products/"
                 title="Full products listing"
                 ><img
                   src="/a/gfx/header/products-off.jpg"
@@ -144,35 +144,35 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/products/synergy"
+                    href="https://typechecked.net/products/synergy"
                     title="The original iTunes menu bar controller"
                     >Synergy &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/products/synergy/download"
+                        href="https://typechecked.net/products/synergy/download"
                         title="Download Synergy"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-classic/purchase/"
+                        href="https://typechecked.net/a/products/synergy-classic/purchase/"
                         title="Purchase Synergy"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/products/synergy/help"
+                        href="https://typechecked.net/products/synergy/help"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-classic/buttons/"
+                        href="https://typechecked.net/a/products/synergy-classic/buttons/"
                         title="Free button sets"
                         >Button Sets</a
                       >
@@ -181,35 +181,35 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/synergy-advance/"
+                    href="https://typechecked.net/a/products/synergy-advance/"
                     title="Multi-purpose audio companion"
                     >Synergy Advance &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/download/"
+                        href="https://typechecked.net/a/products/synergy-advance/download/"
                         title="Download Synergy Advance"
                         >Download preview</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/purchase/"
+                        href="https://typechecked.net/a/products/synergy-advance/purchase/"
                         title="Purchase Synergy Advance"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/donate/"
+                        href="https://typechecked.net/a/products/synergy-advance/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/synergy-advance/donate/"
+                        href="https://typechecked.net/a/products/synergy-advance/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
@@ -218,35 +218,35 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/winswitch/"
+                    href="https://typechecked.net/a/products/winswitch/"
                     title="Enhanced replacement for Apple's Fast User Switching menu"
                     >WinSwitch &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/download/"
+                        href="https://typechecked.net/a/products/winswitch/download/"
                         title="Download WinSwitch"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/donate/"
+                        href="https://typechecked.net/a/products/winswitch/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/donate/"
+                        href="https://typechecked.net/a/products/winswitch/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/winswitch/faq/"
+                        href="https://typechecked.net/a/products/winswitch/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -255,28 +255,28 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/hextrapolate/"
+                    href="https://typechecked.net/a/products/hextrapolate/"
                     title="Programmers number conversion tool"
                     >Hextrapolate &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/hextrapolate/download/"
+                        href="https://typechecked.net/a/products/hextrapolate/download/"
                         title="Download Hextrapolate"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/hextrapolate/purchase/"
+                        href="https://typechecked.net/a/products/hextrapolate/purchase/"
                         title="Purchase Hextrapolate"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/hextrapolate/faq/"
+                        href="https://typechecked.net/a/products/hextrapolate/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -285,42 +285,42 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/install/"
+                    href="https://typechecked.net/a/products/install/"
                     title="Installation and deployment solution for developers"
                     >Install &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/download/"
+                        href="https://typechecked.net/a/products/install/download/"
                         title="Install downloads"
                         >Downloads</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/purchase/"
+                        href="https://typechecked.net/a/products/install/purchase/"
                         title="Purchase Install"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/donate/"
+                        href="https://typechecked.net/a/products/install/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/donate/"
+                        href="https://typechecked.net/a/products/install/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/install/faq/"
+                        href="https://typechecked.net/a/products/install/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -329,14 +329,14 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/getsmart-pro/"
+                    href="https://typechecked.net/a/products/getsmart-pro/"
                     title="Intelligent download manager"
                     >GetSmart Pro &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://wincent.com/a/products/getsmart-pro/donate/"
+                        href="https://typechecked.net/a/products/getsmart-pro/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
@@ -345,7 +345,7 @@
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/products/"
+                    href="https://typechecked.net/a/products/"
                     title="Full product listing"
                     >Other products...</a
                   >
@@ -355,7 +355,7 @@
           </ul>
         </td>
         <td width="48" height="25">
-          <a href="https://wincent.com/a/store/" title="Wincent online store"
+          <a href="https://typechecked.net/a/store/" title="Wincent online store"
             ><img
               src="/a/gfx/header/store-off.jpg"
               width="48"
@@ -367,7 +367,7 @@
           <ul style="width: 63px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/services/"
+                href="https://typechecked.net/a/services/"
                 title="Full services listing"
                 ><img
                   src="/a/gfx/header/services-off.jpg"
@@ -378,28 +378,28 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/custom-development/"
+                    href="https://typechecked.net/a/services/custom-development/"
                     title="Custom software development"
                     >Custom Development</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/mac-consultancy/"
+                    href="https://typechecked.net/a/services/mac-consultancy/"
                     title="Apple and Mac OS X consultancy"
                     >Apple/Mac Consultancy</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/web-design/"
+                    href="https://typechecked.net/a/services/web-design/"
                     title="Web design services"
                     >Web Design</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/services/hosting/"
+                    href="https://typechecked.net/a/services/hosting/"
                     title="Internet web and email hosting"
                     >Hosting</a
                   >
@@ -412,7 +412,7 @@
           <ul style="width: 62px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/support/"
+                href="https://typechecked.net/a/support/"
                 title="Support resources and links"
                 ><img
                   src="/a/gfx/header/support-off.jpg"
@@ -423,56 +423,56 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/registration/"
+                    href="https://typechecked.net/a/support/registration/"
                     title="Retrieve lost license codes"
                     >Lost License Codes</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/bugs/"
+                    href="https://typechecked.net/a/support/bugs/"
                     title="Bug tracking and feature request database"
                     >Bugs and Feature Requests</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/demo-licenses/"
+                    href="https://typechecked.net/a/support/demo-licenses/"
                     title="Obtain a demonstration license"
                     >Demonstration licenses</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/forums/"
+                    href="https://typechecked.net/a/support/forums/"
                     title="Discussion and support forums"
                     >Forums</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/faq/"
+                    href="https://typechecked.net/a/support/faq/"
                     title="Frequently Asked Questions"
                     >FAQ</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/activation/"
+                    href="https://typechecked.net/a/support/activation/"
                     title="Product activation and information"
                     >Product Activation</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/tickets/"
+                    href="https://typechecked.net/a/support/tickets/"
                     title="Open or view a support ticket"
                     >Support Tickets</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/support/lists/"
+                    href="https://typechecked.net/a/support/lists/"
                     title="Subscribe/unsubscribe to/from a mailing list"
                     >Mailing lists</a
                   >
@@ -484,7 +484,7 @@
         <td width="53" height="25">
           <ul style="width: 53px; height: 25px;">
             <li class="menu">
-              <a href="https://wincent.com/a/about/" title="Company information"
+              <a href="https://typechecked.net/a/about/" title="Company information"
                 ><img
                   src="/a/gfx/header/about-on.jpg"
                   width="53"
@@ -494,14 +494,14 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/about/wincent/"
+                    href="https://typechecked.net/a/about/wincent/"
                     title="About Wincent Colaiuta: the person"
                     >About Wincent Colaiuta</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/about/privacy/"
+                    href="https://typechecked.net/a/about/privacy/"
                     title="About the Wincent Privacy Policy"
                     >Privacy Policy</a
                   >
@@ -514,7 +514,7 @@
           <ul style="width: 49px; height: 25px;">
             <li class="menu">
               <a
-                href="https://wincent.com/a/news/"
+                href="https://typechecked.net/a/news/"
                 title="Latest news items in weblog format"
                 ><img
                   src="/a/gfx/header/news-off.jpg"
@@ -525,28 +525,28 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/news/archives/mac_os_x_news/"
+                    href="https://typechecked.net/a/news/archives/mac_os_x_news/"
                     title="Apple and Mac OS X-related news"
                     >Mac OS X News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/news/archives/product_news/"
+                    href="https://typechecked.net/a/news/archives/product_news/"
                     title="Wincent product news"
                     >Product News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/a/news/archives/site_news/"
+                    href="https://typechecked.net/a/news/archives/site_news/"
                     title="Site-related news"
                     >Site News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://wincent.com/blog"
+                    href="https://typechecked.net/blog"
                     title="Development and other notes from Wincent"
                     >Wincent Colaiuta's weblog</a
                   >
@@ -557,7 +557,7 @@
         </td>
         <td width="107" height="25">
           <a
-            href="https://wincent.com/wiki"
+            href="https://typechecked.net/wiki"
             title="Categorized Mac OS X tips and information"
             ><img
               src="/a/gfx/header/knowledge-base-off.jpg"
@@ -567,7 +567,7 @@
           /></a>
         </td>
         <td width="62" height="25">
-          <a href="https://wincent.com/a/contact/" title="Contact email form"
+          <a href="https://typechecked.net/a/contact/" title="Contact email form"
             ><img
               src="/a/gfx/header/contact-off.jpg"
               width="62"
@@ -578,7 +578,7 @@
         <td width="72" height="25">
           <ul style="width: 72px; height: 25px;">
             <li class="menu">
-              <a href="https://wincent.com/a/site-map/" title="Site overview"
+              <a href="https://typechecked.net/a/site-map/" title="Site overview"
                 ><img
                   src="/a/gfx/header/site-map-off.jpg"
                   width="72"
@@ -588,7 +588,7 @@
               <ul>
                 <li>
                   <a
-                    href="https://wincent.com/a/site-map/search/"
+                    href="https://typechecked.net/a/site-map/search/"
                     title="Site search"
                     >Search</a
                   >
@@ -622,7 +622,7 @@
 
     <div id="breadcrumbs">
       <p>
-        <a href="https://wincent.com/">Main</a>&nbsp;&gt;&nbsp;<a href="../../"
+        <a href="https://typechecked.net/">Main</a>&nbsp;&gt;&nbsp;<a href="../../"
           >About</a
         >&nbsp;&gt;&nbsp;<a href="../">Wincent</a>&nbsp;&gt;&nbsp;Weblog
       </p>
@@ -635,7 +635,7 @@
 
           <p class="more">
             <em>"I shall call it, Mini-log..."</em> (<a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2006/09/keeping_up_to_d.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2006/09/keeping_up_to_d.php"
               >about</a
             >)
           </p>
@@ -651,11 +651,11 @@
                   >most welcome update</a
                 >
                 that brings
-                <a href="https://wincent.com/wiki/Leopard">Leopard</a>
+                <a href="https://typechecked.net/wiki/Leopard">Leopard</a>
                 compatibility at last. I make simple <tt>tar</tt>-based backups
                 of my home directory every two hours via a <tt>cron</tt> job,
                 but I've been without whole-disk backups for a while now because
-                <a href="https://wincent.com/wiki/SuperDuper!"
+                <a href="https://typechecked.net/wiki/SuperDuper!"
                   >SuperDuper!</a
                 >
                 has been out of action. It's good to have it back!
@@ -669,8 +669,8 @@
               <h4>backtrace(3)</h4>
               <p>
                 Cool new
-                <a href="https://wincent.com/wiki/API">API</a> for
-                <a href="https://wincent.com/wiki/Leopard">Leopard</a>
+                <a href="https://typechecked.net/wiki/API">API</a> for
+                <a href="https://typechecked.net/wiki/Leopard">Leopard</a>
                 that I just found out about.
               </p>
             </li>
@@ -748,9 +748,9 @@
                   >full changelog</a
                 >). I doubt I'll bother upgrading though from the default 1.4.4
                 installation that comes with
-                <a href="https://wincent.com/wiki/Leopard">Leopard</a
+                <a href="https://typechecked.net/wiki/Leopard">Leopard</a
                 >, seeing as I use
-                <a href="https://wincent.com/wiki/Git">Git</a> for
+                <a href="https://typechecked.net/wiki/Git">Git</a> for
                 everything now.
               </p>
             </li>
@@ -794,7 +794,7 @@
                   >closest competitor</a
                 >
                 (JRuby), which isn't surprising, seeing as JRuby is built on
-                <a href="https://wincent.com/wiki/Java">Java</a> (not
+                <a href="https://typechecked.net/wiki/Java">Java</a> (not
                 exactly known for its blistering speed).
               </p>
             </li>
@@ -868,7 +868,7 @@
 
           <p class="more">
             <a
-              href="https://wincent.com/a/about/wincent/weblog/mini-log/archives/"
+              href="https://typechecked.net/a/about/wincent/weblog/mini-log/archives/"
               >Mini-log archives...</a
             >
           </p>
@@ -877,7 +877,7 @@
 
           <p class="more">
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2006/09/keeping_up_to_d.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2006/09/keeping_up_to_d.php"
               ><em>what's this?...</em></a
             >
           </p>
@@ -887,7 +887,7 @@
             <li>
               <h4>
                 Speed up full-text indexing by doing a multi-row insert
-                (wincent.com, 0d3e312)
+                (typechecked.net, 0d3e312)
               </h4>
               <p>
                 This gets indexing up to an acceptable speed (a 10,000 word,
@@ -902,7 +902,7 @@
             <li>
               <h4>
                 Fix the n+1 select problem in the tags implementation
-                (wincent.com, 513d102)
+                (typechecked.net, 513d102)
               </h4>
               <p>
                 When showing all items marked with a single tag (ie. the
@@ -930,7 +930,7 @@
           <ul>
             <li>
               <h4>
-                Add product creation with icon uploading (wincent.com, b970662)
+                Add product creation with icon uploading (typechecked.net, b970662)
               </h4>
               <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
             </li>
@@ -938,7 +938,7 @@
             <li>
               <h4>
                 Add extension and description to products model (migration)
-                (wincent.com, 4eb5a36)
+                (typechecked.net, 4eb5a36)
               </h4>
               <p>
                 We don't need to store the full path to the icon file but we do
@@ -950,20 +950,20 @@
             </li>
 
             <li>
-              <h4>Update products link in navbar (wincent.com, 76cf73f)</h4>
+              <h4>Update products link in navbar (typechecked.net, 76cf73f)</h4>
               <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
             </li>
 
             <li>
               <h4>
                 Add products listing to index, links are permalinks
-                (wincent.com, 63db015)
+                (typechecked.net, 63db015)
               </h4>
               <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
             </li>
 
             <li>
-              <h4>Fix products routing (wincent.com, b906a09)</h4>
+              <h4>Fix products routing (typechecked.net, b906a09)</h4>
               <p>
                 I'd mistakenly used &quot;map.resource&quot; instead of
                 &quot;map.resources&quot; which meant that things like
@@ -974,7 +974,7 @@
             </li>
 
             <li>
-              <h4>Assign found products for view (wincent.com, 98ab4ca)</h4>
+              <h4>Assign found products for view (typechecked.net, 98ab4ca)</h4>
               <p>
                 This is a spec, the corresponding change was already made to the
                 controller itself.
@@ -985,7 +985,7 @@
 
             <li>
               <h4>
-                Teach products controller to find all products (wincent.com,
+                Teach products controller to find all products (typechecked.net,
                 b794161)
               </h4>
               <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
@@ -994,7 +994,7 @@
             <li>
               <h4>
                 Add &quot;index&quot; action to products controller
-                (wincent.com, 96c7e77)
+                (typechecked.net, 96c7e77)
               </h4>
               <p>And accompanying specs.</p>
 
@@ -1003,7 +1003,7 @@
 
             <li>
               <h4>
-                Add basic products controller specs (wincent.com, 4b2b9cb)
+                Add basic products controller specs (typechecked.net, 4b2b9cb)
               </h4>
               <p>
                 These are the shared application controller specs which all
@@ -1015,7 +1015,7 @@
 
             <li>
               <h4>
-                Validate uniqueness of product permalinks (wincent.com, a33cdbc)
+                Validate uniqueness of product permalinks (typechecked.net, a33cdbc)
               </h4>
               <p>This is the validation and the corresponding spec.</p>
 
@@ -1024,7 +1024,7 @@
 
             <li>
               <h4>
-                Require permalink on products model (wincent.com, 6c0c3b7)
+                Require permalink on products model (typechecked.net, 6c0c3b7)
               </h4>
               <p>
                 Add the validation, corresponding spec, and example data for
@@ -1036,7 +1036,7 @@
 
             <li>
               <h4>
-                Add permalink column to products table (wincent.com, a4263df)
+                Add permalink column to products table (typechecked.net, a4263df)
               </h4>
               <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
             </li>
@@ -1047,7 +1047,7 @@
             <li>
               <h4>
                 Add products controller and make it the default (root) route
-                (wincent.com, e1580bd)
+                (typechecked.net, e1580bd)
               </h4>
               <p>
                 Requests for the application root (/) now get routed to this new
@@ -1061,7 +1061,7 @@
             <li>
               <h4>
                 Add database-level constraint for product name uniqueness
-                (wincent.com, 7805a54)
+                (typechecked.net, 7805a54)
               </h4>
               <p>
                 The Rails &quot;uniqueness&quot; validation is advisory only and
@@ -1074,14 +1074,14 @@
             </li>
 
             <li>
-              <h4>Require product names to be unique (wincent.com, b023972)</h4>
+              <h4>Require product names to be unique (typechecked.net, b023972)</h4>
               <p>Add validation and corresponding spec.</p>
 
               <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
             </li>
 
             <li>
-              <h4>Require name in products model (wincent.com, e323bf2)</h4>
+              <h4>Require name in products model (typechecked.net, e323bf2)</h4>
               <p>Add validation and corresponding spec.</p>
 
               <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
@@ -1089,7 +1089,7 @@
 
             <li>
               <h4>
-                Add example data for products model (wincent.com, 4109d10)
+                Add example data for products model (typechecked.net, 4109d10)
               </h4>
               <p>
                 This is the FixtureReplacement data that will be required in
@@ -1100,7 +1100,7 @@
             </li>
 
             <li>
-              <h4>Make sure product name is not nil (wincent.com, 8ef596d)</h4>
+              <h4>Make sure product name is not nil (typechecked.net, 8ef596d)</h4>
               <p>Add a database-level constraint.</p>
 
               <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
@@ -1109,7 +1109,7 @@
 
           <p class="more">
             <a
-              href="https://wincent.com/a/about/wincent/weblog/svn-log/archives/index.php"
+              href="https://typechecked.net/a/about/wincent/weblog/svn-log/archives/index.php"
               >Git log archives...</a
             >
           </p>
@@ -1122,8 +1122,8 @@
             This is my personal weblog where I write things that aren't always
             related to my business. If you're looking for information about my
             products please go to
-            <a href="https://wincent.com/">wincent.com</a>, and for official
-            news <a href="https://wincent.com/a/news/">see here</a>.
+            <a href="https://typechecked.net/">typechecked.net</a>, and for official
+            news <a href="https://typechecked.net/a/news/">see here</a>.
           </p>
           <hr />
 
@@ -1134,7 +1134,7 @@
           <p>
             I've been working on moving to the new server for
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/server_migratio.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/02/server_migratio.php"
               >nearly a month now</a
             >, a process which has been quite slow because all the data has to
             be exported from a number of &quot;legacy&quot; applications and
@@ -1165,7 +1165,7 @@
           <p>
             At some point during this week email might temporarily go down,
             hopefully only for about an hour (delivery failures should be
-            temporary), and the wincent.com domain itself will go down at
+            temporary), and the typechecked.net domain itself will go down at
             roughly the same time too. When it comes back up we'll be running on
             the new server. If you make a purchase during that time you might
             have to wait an hour or two for your license information, but we'll
@@ -1187,7 +1187,7 @@
           <p class="more-categories">
             More
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/miscellaneous/"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/miscellaneous/"
               >Miscellaneous</a
             >
             articles
@@ -1196,7 +1196,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/03/final_server_mi.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/03/final_server_mi.php"
             >
               1:18 AM</a
             >
@@ -1209,7 +1209,7 @@
           <p>
             The
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php"
               >server migration</a
             >
             from Rackspace to INetU is currently underway. My aim is do this
@@ -1238,7 +1238,7 @@
           <p class="more-categories">
             More
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/miscellaneous/"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/miscellaneous/"
               >Miscellaneous</a
             >
             articles
@@ -1247,7 +1247,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/server_migratio.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/02/server_migratio.php"
               >11:53 AM</a
             >
           </p>
@@ -1288,7 +1288,7 @@
           <p class="more-categories">
             More
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/miscellaneous/"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/miscellaneous/"
               >Miscellaneous</a
             >
             articles
@@ -1297,7 +1297,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/microphone_pric.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/02/microphone_pric.php"
             >
               9:51 PM</a
             >
@@ -1334,7 +1334,7 @@
 
           <p class="extended">
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/the_joy_of_dele.php#more"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/02/the_joy_of_dele.php#more"
               >Read full article</a
             >
           </p>
@@ -1342,7 +1342,7 @@
           <p class="more-categories">
             More
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/miscellaneous/"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/miscellaneous/"
               >Miscellaneous</a
             >
             articles
@@ -1351,7 +1351,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/the_joy_of_dele.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/02/the_joy_of_dele.php"
             >
               5:53 PM</a
             >
@@ -1364,13 +1364,13 @@
           <p>
             One of my projects is a
             fast wikitext-to-HTML translator. It's a
-            <a href="https://wincent.com/wiki/Ruby">Ruby</a> extension
-            written in <a href="https://wincent.com/wiki/C">C</a> with
+            <a href="https://typechecked.net/wiki/Ruby">Ruby</a> extension
+            written in <a href="https://typechecked.net/wiki/C">C</a> with
             speed being one of its top design goals (robustness, predictability
             and security being the others). I'm working on this because the
-            <a href="https://wincent.com/wiki/Rails">Rails</a> rewrite
+            <a href="https://typechecked.net/wiki/Rails">Rails</a> rewrite
             of this site will use
-            <a href="https://wincent.com/wiki/wikitext%20markup"
+            <a href="https://typechecked.net/wiki/wikitext%20markup"
               >wikitext markup</a
             >
             for basically everything. Rails has a bad reputation for being slow
@@ -1385,7 +1385,7 @@
           </p>
           <p>
             Up until now the scanner used a
-            <a href="https://wincent.com/wiki/ANTLR">ANTLR</a
+            <a href="https://typechecked.net/wiki/ANTLR">ANTLR</a
             >-generated lexer using the &quot;C target&quot; (although ANTLR
             itself is written in Java, it can target multiple languages,
             including C). The C target is the current speed king among ANTLR
@@ -1398,7 +1398,7 @@
           <p>
             And the results were quite snappy. But for some time I've had the
             sneaking suspicion that a
-            <a href="https://wincent.com/wiki/Ragel">Ragel</a
+            <a href="https://typechecked.net/wiki/Ragel">Ragel</a
             >-generated scanner would be faster. I suspected this even though
             ANTLR uses all sorts of clever tricks like trying to predict which
             path to take and only backtracking if prediction fails.
@@ -1419,7 +1419,7 @@
 
           <p class="extended">
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/ragel_wins_fata.php#more"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/02/ragel_wins_fata.php#more"
               >Read full article</a
             >
           </p>
@@ -1427,7 +1427,7 @@
           <p class="more-categories">
             More
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/development/"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/development/"
               >Development</a
             >
             articles
@@ -1436,7 +1436,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/ragel_wins_fata.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/02/ragel_wins_fata.php"
             >
               6:07 PM</a
             >
@@ -1449,7 +1449,7 @@
           <p>
             I wrote the other day that I was going to be
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/moving_to_rhel.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/moving_to_rhel.php"
               >moving to RHEL 5</a
             >
             in the near future. What I wasn't sure at the time was exactly
@@ -1494,7 +1494,7 @@
 
           <p class="extended">
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php#more"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php#more"
               >Read full article</a
             >
           </p>
@@ -1502,7 +1502,7 @@
           <p class="more-categories">
             More
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/miscellaneous/"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/miscellaneous/"
               >Miscellaneous</a
             >
             articles
@@ -1511,7 +1511,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php"
               >11:53 AM</a
             >
           </p>
@@ -1523,7 +1523,7 @@
           <p>
             Like I said the other day, looks like
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php"
               >this iMac is dying</a
             >. This time the machine simply turned itself off when I bumped the
             desk with my knee; it could barely even be called a bump.
@@ -1538,20 +1538,20 @@
             Apart from the risk of damage to my data, I am starting to get sick
             of these Disk First Aid runs (during which the machine is unusable),
             which go especially slowly because
-            <a href="https://wincent.com/wiki/Spotlight">Spotlight</a>
+            <a href="https://typechecked.net/wiki/Spotlight">Spotlight</a>
             decides to reindex <em>all</em> of my volumes every time I have one
             of these failures.
           </p>
           <p>
             On a tangential note: I received an email in response to my
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php"
               >last post</a
             >
             in which I complained about the lack of RAM in the low-end iMacs. It
             was pointed out to me that real-world RAM really is cheap nowadays
             (even if RAM from
-            <a href="https://wincent.com/wiki/Apple">Apple</a> is
+            <a href="https://typechecked.net/wiki/Apple">Apple</a> is
             not). You can max out an iMac to 4 GB for a mere $100 at
             <a href="http://macsales.com">my retailer of choice</a> (OWC), and
             for someone like me living in Europe and buying the RAM from the US
@@ -1577,7 +1577,7 @@
           <p class="more-categories">
             More
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/involuntary_reboot_log/"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/involuntary_reboot_log/"
               >Involuntary Reboot Log</a
             >
             articles
@@ -1586,7 +1586,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/involuntary_reb_22.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/involuntary_reb_22.php"
             >
               9:39 PM</a
             >
@@ -1598,7 +1598,7 @@
 
           <p>
             I'm a
-            <a href="https://wincent.com/wiki/Rails">Rails</a> dabbler
+            <a href="https://typechecked.net/wiki/Rails">Rails</a> dabbler
             who has never actually deployed an application yet but has been
             working in spare moments on a new version of this site that will be
             powered by Rails.
@@ -1663,7 +1663,7 @@
           <p class="more-categories">
             More
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/development/"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/development/"
               >Development</a
             >
             articles
@@ -1672,7 +1672,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/rails_and_valid.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/rails_and_valid.php"
             >
               8:51 PM</a
             >
@@ -1685,7 +1685,7 @@
             Today we have the painters here painting all the rooms, which means
             that I've had to take the iMac out into the kitchen. As I've
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2007/08/involuntary_reb_13.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2007/08/involuntary_reb_13.php"
               >mentioned before</a
             >, it has a wonky power socket, and this time it didn't want to boot
             up.
@@ -1702,7 +1702,7 @@
             has 2 gig) despite having a faster processor (a 2 GHz Core 2 Duo as
             opposed to the 1.83 GHz Core Duo I currently have). RAM is very
             important for performance when compiling code in
-            <a href="https://wincent.com/wiki/Xcode">Xcode</a>, mostly
+            <a href="https://typechecked.net/wiki/Xcode">Xcode</a>, mostly
             due to the amount of memory occupied by precompiled headers.
           </p>
           <p>
@@ -1721,7 +1721,7 @@
           <p class="more-categories">
             More
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/miscellaneous/"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/miscellaneous/"
               >Miscellaneous</a
             >
             articles
@@ -1730,7 +1730,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php"
               >10:28 AM</a
             >
           </p>
@@ -1740,14 +1740,14 @@
           <h3 id="a003732">Git 1.5.4-rc4</h3>
 
           <p>
-            <a href="https://wincent.com/wiki/Git%201.5.4-rc4"
+            <a href="https://typechecked.net/wiki/Git%201.5.4-rc4"
               >Git 1.5.4-rc4</a
             >
             is out, and the final 1.5.4 release is likely to come soon, probably
             before the end of the month. My favorite change in this build is the
             fix for the performance regression when commiting a single file
             specified on the
-            <a href="https://wincent.com/wiki/command%20line"
+            <a href="https://typechecked.net/wiki/command%20line"
               >command line</a
             >
             (eg. <tt>git commit foo</tt>) as this is something that I do
@@ -1756,9 +1756,9 @@
           <p>
             The regression was only in the development version and has never
             made it into a released version of
-            <a href="https://wincent.com/wiki/Git">Git</a>, but I've
+            <a href="https://typechecked.net/wiki/Git">Git</a>, but I've
             been tracking the master branch for some time now (see &quot;<a
-              href="https://wincent.com/wiki/Tracking%20the%20Git%20maint%20or%20master%20branches"
+              href="https://typechecked.net/wiki/Tracking%20the%20Git%20maint%20or%20master%20branches"
               >Tracking the Git maint or master branches</a
             >&quot;) so I had definitely noticed the problem.
           </p>
@@ -1766,7 +1766,7 @@
           <p class="more-categories">
             More
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/development/"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/development/"
               >Development</a
             >
             articles
@@ -1775,7 +1775,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/git_154rc4.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/git_154rc4.php"
               >12:51 PM</a
             >
           </p>
@@ -1787,7 +1787,7 @@
           <p>
             In October last year I
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2007/10/thinking_about.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2007/10/thinking_about.php"
               >wrote</a
             >
             about changing UNIXes. Well, it's a new year now and it looks like
@@ -1795,7 +1795,7 @@
           </p>
           <p>
             I'll be migrating to
-            <a href="https://wincent.com/wiki/RHEL%205">RHEL 5</a>
+            <a href="https://typechecked.net/wiki/RHEL%205">RHEL 5</a>
             (from RHEL 3). I don't have a firm date for the migration yet, and I
             need to do quite a bit of research before then about the best way to
             get all my data across. This will basically be a clean install on a
@@ -1824,7 +1824,7 @@
             I'm very happy about this because it means I will be able to
             gradually retire bits of legacy software and replace all of this
             with a single, lean, unified
-            <a href="https://wincent.com/wiki/Rails">Rails</a>
+            <a href="https://typechecked.net/wiki/Rails">Rails</a>
             application which handles everything for me (bug tracking, customer
             support tracking, forums, the wiki, and so forth).
           </p>
@@ -1840,7 +1840,7 @@
           <p class="more-categories">
             More
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/miscellaneous/"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/miscellaneous/"
               >Miscellaneous</a
             >
             articles
@@ -1849,7 +1849,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/moving_to_rhel.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/moving_to_rhel.php"
             >
               2:56 PM</a
             >
@@ -1890,7 +1890,7 @@
           <p class="more-categories">
             More
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/involuntary_reboot_log/"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/involuntary_reboot_log/"
               >Involuntary Reboot Log</a
             >
             articles
@@ -1899,7 +1899,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/involuntary_reb_21.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/involuntary_reb_21.php"
             >
               7:05 PM</a
             >
@@ -1918,7 +1918,7 @@
             live yet), iTunes movie rentals (I don't like the rental model, I'd
             rather own stuff). Furthermore, the machines which most interest me,
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/the_new_mac_pro.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/the_new_mac_pro.php"
               >the Mac Pros</a
             >, were already revamped before the show started.
           </p>
@@ -1943,7 +1943,7 @@
 
           <p class="more-categories">
             More
-            <a href="https://wincent.com/a/about/wincent/weblog/archives/apple/"
+            <a href="https://typechecked.net/a/about/wincent/weblog/archives/apple/"
               >Apple</a
             >
             articles
@@ -1952,7 +1952,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/on_the_macbook.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/on_the_macbook.php"
               >10:26 AM</a
             >
           </p>
@@ -1973,8 +1973,8 @@
 
           <p>
             <a
-              href="https://wincent.com/a/about/wincent/weblog/screencasts/rspec_autotest_objc.mov"
-              onclick="window.open('https://wincent.com/a/about/wincent/weblog/screencasts/rspec_autotest_objc.mov','popup'); return false"
+              href="https://typechecked.net/a/about/wincent/weblog/screencasts/rspec_autotest_objc.mov"
+              onclick="window.open('https://typechecked.net/a/about/wincent/weblog/screencasts/rspec_autotest_objc.mov','popup'); return false"
               ><img
                 src="/a/about/wincent/weblog/screencasts/rspec_autotest_objc.png"
                 alt="Rspec + Autotest + Objective-C"
@@ -1998,7 +1998,7 @@
           <p class="more-categories">
             More
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/screencasts/"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/screencasts/"
               >Screencasts</a
             >
             articles
@@ -2007,7 +2007,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/rspec_autotest.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/rspec_autotest.php"
               >12:26 PM</a
             >
           </p>
@@ -2053,7 +2053,7 @@
           <p class="more-categories">
             More
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/development/"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/development/"
               >Development</a
             >
             articles
@@ -2062,14 +2062,14 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/open_source_eco.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/open_source_eco.php"
             >
               1:50 PM</a
             >
           </p>
 
           <p class="more">
-            <a href="https://wincent.com/a/about/wincent/weblog/archives/"
+            <a href="https://typechecked.net/a/about/wincent/weblog/archives/"
               >More articles...</a
             >
           </p>
@@ -2084,8 +2084,8 @@
             <form method="get" action="http://www.google.com/search">
               <input type="text" name="q" size="20" maxlength="255" value="" />
               <input type="hidden" name="hl" value="en" />
-              <input type="hidden" name="domains" value="wincent.com" />
-              <input type="hidden" name="sitesearch" value="wincent.com" />
+              <input type="hidden" name="domains" value="typechecked.net" />
+              <input type="hidden" name="sitesearch" value="typechecked.net" />
               <input type="hidden" name="ie" value="UTF-8" />
               <input type="hidden" name="oe" value="UTF-8" />
               <input type="submit" name="btnG" value="Search" />
@@ -2101,77 +2101,77 @@
           <ul>
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/archives/2008/03/final_server_mi.php"
+                href="https://typechecked.net/a/about/wincent/weblog/archives/2008/03/final_server_mi.php"
                 >Final server migration this week</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/server_migratio.php"
+                href="https://typechecked.net/a/about/wincent/weblog/archives/2008/02/server_migratio.php"
                 >Server migration under way</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/microphone_pric.php"
+                href="https://typechecked.net/a/about/wincent/weblog/archives/2008/02/microphone_pric.php"
                 >Microphone prices</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/the_joy_of_dele.php"
+                href="https://typechecked.net/a/about/wincent/weblog/archives/2008/02/the_joy_of_dele.php"
                 >The joy of deleting code</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/archives/2008/02/ragel_wins_fata.php"
+                href="https://typechecked.net/a/about/wincent/weblog/archives/2008/02/ragel_wins_fata.php"
                 >Ragel wins! Fatality!</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php"
+                href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php"
                 >Farewell Rackspace</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/involuntary_reb_22.php"
+                href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/involuntary_reb_22.php"
                 >Involuntary Reboot Log #25</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/rails_and_valid.php"
+                href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/rails_and_valid.php"
                 >Rails and validates_uniqueness_of</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php"
+                href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php"
                 >iMac finally dying?</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/archives/2008/01/git_154rc4.php"
+                href="https://typechecked.net/a/about/wincent/weblog/archives/2008/01/git_154rc4.php"
                 >Git 1.5.4-rc4</a
               >
             </li>
           </ul>
 
           <p class="more">
-            <a href="https://wincent.com/a/about/wincent/weblog/archives/"
+            <a href="https://typechecked.net/a/about/wincent/weblog/archives/"
               >Full article listing...</a
             >
           </p>
@@ -2182,7 +2182,7 @@
 
           <p class="more">
             <a
-              href="https://wincent.com/a/about/wincent/weblog/archives/2006/09/keeping_up_to_d.php"
+              href="https://typechecked.net/a/about/wincent/weblog/archives/2006/09/keeping_up_to_d.php"
               ><em>what's this?...</em></a
             >
           </p>
@@ -2191,7 +2191,7 @@
           <ul>
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_ffaa428.php"
+                href="https://typechecked.net/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_ffaa428.php"
                 >Synergy (revision ffaa428)</a
               >
             </li>
@@ -2201,14 +2201,14 @@
           <ul>
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_4e616e0.php"
+                href="https://typechecked.net/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_4e616e0.php"
                 >Synergy (revision 4e616e0)</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_7ce4a27.php"
+                href="https://typechecked.net/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_7ce4a27.php"
                 >Synergy (revision 7ce4a27)</a
               >
             </li>
@@ -2218,7 +2218,7 @@
           <ul>
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_9848c4f.php"
+                href="https://typechecked.net/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_9848c4f.php"
                 >Synergy (revision 9848c4f)</a
               >
             </li>
@@ -2228,7 +2228,7 @@
           <ul>
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/12/synergy_revision_7ae6b07.php"
+                href="https://typechecked.net/a/about/wincent/weblog/nightlog/archives/2007/12/synergy_revision_7ae6b07.php"
                 >Synergy (revision 7ae6b07)</a
               >
             </li>
@@ -2238,7 +2238,7 @@
           <ul>
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/12/synergy_revision_c7eb0af3cce75.php"
+                href="https://typechecked.net/a/about/wincent/weblog/nightlog/archives/2007/12/synergy_revision_c7eb0af3cce75.php"
                 >Synergy (revision c7eb0af)</a
               >
             </li>
@@ -2248,21 +2248,21 @@
           <ul>
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/hextrapolate_revision_91.php"
+                href="https://typechecked.net/a/about/wincent/weblog/nightlog/archives/2007/04/hextrapolate_revision_91.php"
                 >Hextrapolate (revision 91)</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_advance_revision_459.php"
+                href="https://typechecked.net/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_advance_revision_459.php"
                 >Synergy Advance (revision 459)</a
               >
             </li>
 
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_revision_351.php"
+                href="https://typechecked.net/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_revision_351.php"
                 >Synergy (revision 351)</a
               >
             </li>
@@ -2272,7 +2272,7 @@
           <ul>
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_advance_revision_451.php"
+                href="https://typechecked.net/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_advance_revision_451.php"
                 >Synergy Advance (revision 451)</a
               >
             </li>
@@ -2282,7 +2282,7 @@
           <ul>
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_advance_revision_429.php"
+                href="https://typechecked.net/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_advance_revision_429.php"
                 >Synergy Advance (revision 429)</a
               >
             </li>
@@ -2292,7 +2292,7 @@
           <ul>
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_340.php"
+                href="https://typechecked.net/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_340.php"
                 >Synergy (revision 340)</a
               >
             </li>
@@ -2302,7 +2302,7 @@
           <ul>
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_339.php"
+                href="https://typechecked.net/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_339.php"
                 >Synergy (revision 339)</a
               >
             </li>
@@ -2312,7 +2312,7 @@
           <ul>
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_328.php"
+                href="https://typechecked.net/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_328.php"
                 >Synergy (revision 328)</a
               >
             </li>
@@ -2322,7 +2322,7 @@
           <ul>
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_326.php"
+                href="https://typechecked.net/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_326.php"
                 >Synergy (revision 326)</a
               >
             </li>
@@ -2332,7 +2332,7 @@
           <ul>
             <li>
               <a
-                href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_325.php"
+                href="https://typechecked.net/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_325.php"
                 >Synergy (revision 325)</a
               >
             </li>
@@ -2340,7 +2340,7 @@
 
           <p class="more">
             <a
-              href="https://wincent.com/a/about/wincent/weblog/nightlog/archives/index.php"
+              href="https://typechecked.net/a/about/wincent/weblog/nightlog/archives/index.php"
               >Nightlog archives...</a
             >
           </p>

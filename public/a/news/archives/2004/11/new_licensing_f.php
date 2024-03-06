@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/new-licensing-for-install"
-        >https://wincent.com/blog/new-licensing-for-install</a
+      <a href="https://typechecked.net/blog/new-licensing-for-install"
+        >https://typechecked.net/blog/new-licensing-for-install</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/new-licensing-for-install',
+      'https://typechecked.net/blog/new-licensing-for-install',
     );
   </script>
 </html>

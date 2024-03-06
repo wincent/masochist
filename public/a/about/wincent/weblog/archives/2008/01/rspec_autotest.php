@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/rspec-autotest-objective-c"
-        >https://wincent.com/blog/rspec-autotest-objective-c</a
+      <a href="https://typechecked.net/blog/rspec-autotest-objective-c"
+        >https://typechecked.net/blog/rspec-autotest-objective-c</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/rspec-autotest-objective-c',
+      'https://typechecked.net/blog/rspec-autotest-objective-c',
     );
   </script>
 </html>

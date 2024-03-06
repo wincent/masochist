@@ -8,7 +8,7 @@
     />
     <title>
       Bug #1617: $curbuf.number always returns 0 (zero) instead of actual buffer
-      number on some platforms/Vim versions &middot; wincent.com
+      number on some platforms/Vim versions &middot; typechecked.net
     </title>
     <link
       rel="stylesheet"
@@ -1387,7 +1387,7 @@ Date:   Thu Nov 4 10:26:47 2010 +0100
     
     See:
     
-      <a href="https://wincent.com/issues/1617" class="external">https://wincent.com/issues/1617</a>
+      <a href="https://typechecked.net/issues/1617" class="external">https://typechecked.net/issues/1617</a>
     
     Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;
 
@@ -1426,7 +1426,7 @@ index da08fa4..b75b0d2 100644
 +    # support requests, implement the following fallback to the buffer name
 +    # instead, at least until upstream gets fixed.
 +    #
-+    # For more details, see: <a href="https://wincent.com/issues/1617" class="external">https://wincent.com/issues/1617</a>
++    # For more details, see: <a href="https://typechecked.net/issues/1617" class="external">https://typechecked.net/issues/1617</a>
 +    def buffer_id buffer
 +      if $curbuf.number == 0
 +        buffer.number
@@ -1558,7 +1558,7 @@ Zero count: silent b 0</pre
 +        # support requests, implement the following fallback to the buffer name
 +        # instead, at least until upstream gets fixed.
 +        #
-+        # For more details, see: <a href="https://wincent.com/issues/1617" class="external">https://wincent.com/issues/1617</a>
++        # For more details, see: <a href="https://typechecked.net/issues/1617" class="external">https://typechecked.net/issues/1617</a>
 +        if @initial_buffer.number == 0
 +          ::VIM::command &quot;silent b #{@initial_buffer.name}&quot;
 +        else

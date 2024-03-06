@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/wordpress-flaw"
-        >https://wincent.com/blog/wordpress-flaw</a
+      <a href="https://typechecked.net/blog/wordpress-flaw"
+        >https://typechecked.net/blog/wordpress-flaw</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/wordpress-flaw');
+    window.location.replace('https://typechecked.net/blog/wordpress-flaw');
   </script>
 </html>

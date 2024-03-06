@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/memory-for-the-intel-imac"
-        >https://wincent.com/blog/memory-for-the-intel-imac</a
+      <a href="https://typechecked.net/blog/memory-for-the-intel-imac"
+        >https://typechecked.net/blog/memory-for-the-intel-imac</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://wincent.com/blog/memory-for-the-intel-imac',
+      'https://typechecked.net/blog/memory-for-the-intel-imac',
     );
   </script>
 </html>

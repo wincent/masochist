@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://wincent.com/blog/on-leopards-stability"
-        >https://wincent.com/blog/on-leopards-stability</a
+      <a href="https://typechecked.net/blog/on-leopards-stability"
+        >https://typechecked.net/blog/on-leopards-stability</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://wincent.com/blog/on-leopards-stability');
+    window.location.replace('https://typechecked.net/blog/on-leopards-stability');
   </script>
 </html>
