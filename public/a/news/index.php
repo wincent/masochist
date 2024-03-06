@@ -1010,8 +1010,8 @@
           <p>
             Bansshee is a free,
             open-source tool to thwart dictionary-based SSH attacks. As a
-            convenience to users there are three domains, bansshee.com,
-            bansshee.net, and bansshee.org, that resolve to the Bansshee project
+            convenience to users there are three domains
+            that resolve to the Bansshee project
             page. These are coming up for renewal soon (they expire on 11 April
             2008) so I'm turning to the public to ask for donations to cover the
             cost of their ongoing registration.
@@ -1081,9 +1081,8 @@
             The DNS is currently provided by Rackspace, but my new provider,
             <a href="http://www.inetu.net/">INetU</a> already has their DNS
             configured and ready to take over. Throughout the following week
-            I'll be gradually &quot;flipping switches&quot;. The first domains
-            to be flipped over will be bansshee.com, bansshee.net and
-            bansshee.org, on Monday. If that goes well then I'll continue
+            I'll be gradually &quot;flipping switches&quot;.
+            If that goes well then I'll continue
             switching the other domains (13 of them) to the INetU DNS servers in
             the course of the week.
           </p>

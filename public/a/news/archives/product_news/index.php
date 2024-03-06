@@ -634,8 +634,8 @@
         <h3 id="a004168">Call for Bansshee donations</h3>
 
         Bansshee is a free, open-source tool to thwart dictionary-based SSH
-        attacks. As a convenience to users there are three domains,
-        bansshee.com, bansshee.net, and bansshee.org, that resolve to the
+        attacks. As a convenience to users there are three domains
+        that resolve to the
         Bansshee project page. These are coming up for renewal soon (they
         expire...
         <p>

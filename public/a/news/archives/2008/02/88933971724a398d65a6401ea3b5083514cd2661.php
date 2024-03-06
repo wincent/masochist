@@ -723,8 +723,8 @@
         <p>
           Bansshee is a free,
           open-source tool to thwart dictionary-based SSH attacks. As a
-          convenience to users there are three domains, bansshee.com,
-          bansshee.net, and bansshee.org, that resolve to the Bansshee project
+          convenience to users there are three domains
+          that resolve to the Bansshee project
           page. These are coming up for renewal soon (they expire on 11 April
           2008) so I'm turning to the public to ask for donations to cover the
           cost of their ongoing registration.

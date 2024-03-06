@@ -1291,8 +1291,8 @@ defaults write com.wincent.WinSwitch &quot;Menu bar style&quot; '5'
             <li>
               <h4>Call for Bansshee donations</h4>
               Bansshee is a free, open-source tool to thwart dictionary-based
-              SSH attacks. As a convenience to users there are three domains,
-              bansshee.com, bansshee.net, and bansshee.org, that resolve to the
+              SSH attacks. As a convenience to users there are three domains
+              that resolve to the
               Bansshee project page. These are coming up for renewal soon (they
               expire... [<a
                 href="https://typechecked.net/a/news/archives/2008/02/call_for_banssh.php"
