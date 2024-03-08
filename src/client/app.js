@@ -106,11 +106,10 @@ const root = nullthrows(document.getElementById('relay-root'));
 const scrollStorage = {};
 
 const scrollBehavior = new ScrollBehavior({
-  addTransitionHook(hook) {
-    const unlisten = history.block((location, action) => {
-      hook();
+  addNavigationListener(listener) {
+    return history.block((location, action) => {
+      listener();
     });
-    return () => unlisten();
   },
   stateStorage: {
     read(location, key) {
