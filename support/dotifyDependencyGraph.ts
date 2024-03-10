@@ -9,7 +9,7 @@ type Options = {
 
 const __filename = fileURLToPath(import.meta.url);
 
-function log(...args: Array<any>) {
+function log(...args: Array<unknown>) {
   console.log(...args);
 }
 
