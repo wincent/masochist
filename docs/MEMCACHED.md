@@ -16,13 +16,14 @@ memcached supports keys [up to 250 bytes long](https://github.com/memcached/memc
 Here is an example for generating the cache key for the snippet with ID `xcode-2.1` and `content` branch `HEAD` value of `d65c83b49bfe586889ad16899b361fa29b11e329`:
 
 ```js
-prefix = Buffer.from('Snippet:xcode-2.1', 'utf8').toString('base64')
+prefix = Buffer.from('Snippet:xcode-2.1', 'utf8').toString('base64');
 ```
 
 That gives us a `prefix` of `U25pcHBldDp4Y29kZS0yLjE=`. And:
 
 ```js
-key = prefix + ':' + 'd65c83b49bfe586889ad16899b361fa29b11e329' + ':content' + 'ltipp4yu'
+key = prefix + ':' + 'd65c83b49bfe586889ad16899b361fa29b11e329' + ':content' +
+  'ltipp4yu';
 ```
 
 gives us the key, `U25pcHBldDp4Y29kZS0yLjE=:d65c83b49bfe586889ad16899b361fa29b11e329:contentltipp4yu`, which as seen in the examples below, we can use to look up the content using the `get` command.
@@ -87,7 +88,6 @@ Author: Greg Hurrell <greg@hurrell.net>
 Date:   Thu May 18 08:06:29 2017 -0700
 
     Tag all articles by type
-
 ```
 
 And its parent:
@@ -142,20 +142,28 @@ get U25pcHBldDp4Y29kZS0yLjE=:d65c83b49bfe586889ad16899b361fa29b11e329:contentlti
 Yielding result:
 
 ```json
-{"id":"xcode-2.1","body":"\nXcode 2.1 looks like a ripper update with some great features. Can't wait to start using it...\n","format":"md","createdAt":"2005-06-07T07:13:00.000Z","updatedAt":"2017-05-18T15:06:29.000Z","tags":[],"title":"Xcode 2.1"}
+{
+  "id": "xcode-2.1",
+  "body": "\nXcode 2.1 looks like a ripper update with some great features. Can't wait to start using it...\n",
+  "format": "md",
+  "createdAt": "2005-06-07T07:13:00.000Z",
+  "updatedAt": "2017-05-18T15:06:29.000Z",
+  "tags": [],
+  "title": "Xcode 2.1"
+}
 ```
 
 Formatted for readability:
 
 ```json
 {
-    "id": "xcode-2.1",
-    "body": "\nXcode 2.1 looks like a ripper update with some great features. Can't wait to start using it...\n",
-    "format": "md",
-    "createdAt": "2005-06-07T07:13:00.000Z",
-    "updatedAt": "2017-05-18T15:06:29.000Z",
-    "tags": [],
-    "title":"Xcode 2.1"
+  "id": "xcode-2.1",
+  "body": "\nXcode 2.1 looks like a ripper update with some great features. Can't wait to start using it...\n",
+  "format": "md",
+  "createdAt": "2005-06-07T07:13:00.000Z",
+  "updatedAt": "2017-05-18T15:06:29.000Z",
+  "tags": [],
+  "title": "Xcode 2.1"
 }
 ```
 

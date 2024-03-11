@@ -79,7 +79,7 @@ Object names have one of these forms:
 
 `-1` is used as a fallback if no `$updatedAt` information is available.
 
-####  Removing a tag from an item
+#### Removing a tag from an item
 
 When an object that has a tag is removed from the repo, or a tag is removed from an object, we decrement the count tagged objects for the tag:
 
