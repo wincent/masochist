@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/the-prime-directive-of-agile-development"
-        >https://typechecked.net/blog/the-prime-directive-of-agile-development</a
+        href="https://wincent.dev/blog/the-prime-directive-of-agile-development"
+        >https://wincent.dev/blog/the-prime-directive-of-agile-development</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/the-prime-directive-of-agile-development',
+      'https://wincent.dev/blog/the-prime-directive-of-agile-development',
     );
   </script>
 </html>

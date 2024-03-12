@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/the-rails-doesnt-scale-myth"
-        >https://typechecked.net/blog/the-rails-doesnt-scale-myth</a
+      <a href="https://wincent.dev/blog/the-rails-doesnt-scale-myth"
+        >https://wincent.dev/blog/the-rails-doesnt-scale-myth</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/the-rails-doesnt-scale-myth',
+      'https://wincent.dev/blog/the-rails-doesnt-scale-myth',
     );
   </script>
 </html>

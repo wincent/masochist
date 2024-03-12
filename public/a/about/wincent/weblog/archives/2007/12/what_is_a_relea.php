@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/what-is-a-release-candidate-1"
-        >https://typechecked.net/blog/what-is-a-release-candidate-1</a
+      <a href="https://wincent.dev/blog/what-is-a-release-candidate-1"
+        >https://wincent.dev/blog/what-is-a-release-candidate-1</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/what-is-a-release-candidate-1',
+      'https://wincent.dev/blog/what-is-a-release-candidate-1',
     );
   </script>
 </html>

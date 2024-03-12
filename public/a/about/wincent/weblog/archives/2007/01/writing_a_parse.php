@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/writing-a-parser-generator-in-ruby"
-        >https://typechecked.net/blog/writing-a-parser-generator-in-ruby</a
+      <a href="https://wincent.dev/blog/writing-a-parser-generator-in-ruby"
+        >https://wincent.dev/blog/writing-a-parser-generator-in-ruby</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/writing-a-parser-generator-in-ruby',
+      'https://wincent.dev/blog/writing-a-parser-generator-in-ruby',
     );
   </script>
 </html>

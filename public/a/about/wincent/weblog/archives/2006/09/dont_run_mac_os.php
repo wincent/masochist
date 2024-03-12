@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/dont-run-mac-os-x-as-an-administrator-user"
-        >https://typechecked.net/blog/dont-run-mac-os-x-as-an-administrator-user</a
+        href="https://wincent.dev/blog/dont-run-mac-os-x-as-an-administrator-user"
+        >https://wincent.dev/blog/dont-run-mac-os-x-as-an-administrator-user</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/dont-run-mac-os-x-as-an-administrator-user',
+      'https://wincent.dev/blog/dont-run-mac-os-x-as-an-administrator-user',
     );
   </script>
 </html>

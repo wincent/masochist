@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/payoff-time"
-        >https://typechecked.net/blog/payoff-time</a
+      <a href="https://wincent.dev/blog/payoff-time"
+        >https://wincent.dev/blog/payoff-time</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/payoff-time');
+    window.location.replace('https://wincent.dev/blog/payoff-time');
   </script>
 </html>

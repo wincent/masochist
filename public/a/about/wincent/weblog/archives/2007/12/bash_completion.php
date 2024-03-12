@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/bash-completion-for-git"
-        >https://typechecked.net/blog/bash-completion-for-git</a
+      <a href="https://wincent.dev/blog/bash-completion-for-git"
+        >https://wincent.dev/blog/bash-completion-for-git</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/bash-completion-for-git');
+    window.location.replace('https://wincent.dev/blog/bash-completion-for-git');
   </script>
 </html>

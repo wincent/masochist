@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/why-distributed-version-control"
-        >https://typechecked.net/blog/why-distributed-version-control</a
+      <a href="https://wincent.dev/blog/why-distributed-version-control"
+        >https://wincent.dev/blog/why-distributed-version-control</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/why-distributed-version-control',
+      'https://wincent.dev/blog/why-distributed-version-control',
     );
   </script>
 </html>

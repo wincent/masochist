@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/intriguing-plans-for-ruby-on-mac-os-x-in-the-future"
-        >https://typechecked.net/blog/intriguing-plans-for-ruby-on-mac-os-x-in-the-future</a
+        href="https://wincent.dev/blog/intriguing-plans-for-ruby-on-mac-os-x-in-the-future"
+        >https://wincent.dev/blog/intriguing-plans-for-ruby-on-mac-os-x-in-the-future</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/intriguing-plans-for-ruby-on-mac-os-x-in-the-future',
+      'https://wincent.dev/blog/intriguing-plans-for-ruby-on-mac-os-x-in-the-future',
     );
   </script>
 </html>

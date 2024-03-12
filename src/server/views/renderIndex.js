@@ -30,7 +30,7 @@ export default function renderIndex(locals) {
             ? template`<meta property="og:type" content="article">`
             : template`<meta property="og:type" content="website">`
         }
-        <meta property="og:image" content="https://typechecked.net/assets/static/wincent.jpg">
+        <meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg">
         ${
           description
             ? template`<meta property="og:description" content="${description}">`

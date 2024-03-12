@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/why-use-version-control"
-        >https://typechecked.net/blog/why-use-version-control</a
+      <a href="https://wincent.dev/blog/why-use-version-control"
+        >https://wincent.dev/blog/why-use-version-control</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/why-use-version-control');
+    window.location.replace('https://wincent.dev/blog/why-use-version-control');
   </script>
 </html>

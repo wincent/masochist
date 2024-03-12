@@ -10,8 +10,8 @@
   
   These Relax NG schema (both Compact syntax and XML) can be found at:
   
-     https://typechecked.net/xml-schema/preferences.rnc
-     https://typechecked.net/xml-schema/preferences.rng
+     https://wincent.dev/xml-schema/preferences.rnc
+     https://wincent.dev/xml-schema/preferences.rng
      
   The XML schema (preferences.rng) generated from the compact syntax schema (preferences.rnc) as follows:
   

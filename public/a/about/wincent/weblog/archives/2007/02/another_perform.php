@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/another-performance-update-parity"
-        >https://typechecked.net/blog/another-performance-update-parity</a
+      <a href="https://wincent.dev/blog/another-performance-update-parity"
+        >https://wincent.dev/blog/another-performance-update-parity</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/another-performance-update-parity',
+      'https://wincent.dev/blog/another-performance-update-parity',
     );
   </script>
 </html>

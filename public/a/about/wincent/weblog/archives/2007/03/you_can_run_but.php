@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/you-can-run-but-you-cant-hide-why-even-run"
-        >https://typechecked.net/blog/you-can-run-but-you-cant-hide-why-even-run</a
+        href="https://wincent.dev/blog/you-can-run-but-you-cant-hide-why-even-run"
+        >https://wincent.dev/blog/you-can-run-but-you-cant-hide-why-even-run</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/you-can-run-but-you-cant-hide-why-even-run',
+      'https://wincent.dev/blog/you-can-run-but-you-cant-hide-why-even-run',
     );
   </script>
 </html>

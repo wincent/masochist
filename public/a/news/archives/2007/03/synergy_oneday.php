@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/synergy-one-day-sale-licenses-for-4.50"
-        >https://typechecked.net/blog/synergy-one-day-sale-licenses-for-4.50</a
+      <a href="https://wincent.dev/blog/synergy-one-day-sale-licenses-for-4.50"
+        >https://wincent.dev/blog/synergy-one-day-sale-licenses-for-4.50</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/synergy-one-day-sale-licenses-for-4.50',
+      'https://wincent.dev/blog/synergy-one-day-sale-licenses-for-4.50',
     );
   </script>
 </html>

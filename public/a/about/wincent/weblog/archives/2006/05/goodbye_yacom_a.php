@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/goodbye-ya-com-and-good-riddance"
-        >https://typechecked.net/blog/goodbye-ya-com-and-good-riddance</a
+      <a href="https://wincent.dev/blog/goodbye-ya-com-and-good-riddance"
+        >https://wincent.dev/blog/goodbye-ya-com-and-good-riddance</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/goodbye-ya-com-and-good-riddance',
+      'https://wincent.dev/blog/goodbye-ya-com-and-good-riddance',
     );
   </script>
 </html>

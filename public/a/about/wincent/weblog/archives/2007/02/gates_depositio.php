@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/gates-deposition-videos"
-        >https://typechecked.net/blog/gates-deposition-videos</a
+      <a href="https://wincent.dev/blog/gates-deposition-videos"
+        >https://wincent.dev/blog/gates-deposition-videos</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/gates-deposition-videos');
+    window.location.replace('https://wincent.dev/blog/gates-deposition-videos');
   </script>
 </html>

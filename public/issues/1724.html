@@ -8,7 +8,7 @@
     />
     <title>
       Bug #1724: Command-T eats up buffer numbers each time the match window is
-      shown &middot; typechecked.net
+      shown &middot; wincent.dev
     </title>
     <link
       rel="stylesheet"
@@ -22,7 +22,7 @@
         <a id="top" name="top"></a>
         <nav class="global">
           <a class="menu-icon" href="#">&equiv;</a>
-          <h1><a href="/">typechecked.net</a></h1>
+          <h1><a href="/">wincent.dev</a></h1>
           <ul class="navbar-links">
             <li>
               <a href="/products">Products</a>
@@ -210,13 +210,13 @@ Date:   Thu Nov 4 10:07:54 2010 +0100
     
     For more info see:
     
-      <a href="https://typechecked.net/issues/1724" class="external">https://typechecked.net/issues/1724</a>
+      <a href="https://wincent.dev/issues/1724" class="external">https://wincent.dev/issues/1724</a>
     
     One concern with this change is that it increases our reliance on the
     accuracy of the buffer number, and there is a known bug in Vim 7.3 when
     built with --enable-largefile; see this ticket for full details:
     
-      <a href="https://typechecked.net/issues/1617" class="external">https://typechecked.net/issues/1617</a>
+      <a href="https://wincent.dev/issues/1617" class="external">https://wincent.dev/issues/1617</a>
     
     If you are affected by this bug the solution is to build Vim using
     --disable-largefile. Until the issue gets fixed upstream I am thinking
@@ -355,7 +355,7 @@ index eae0f87..da08fa4 100644
                     Ok, going to mark this as closed. The above change is
                     already pushed out in the master branch, so if you want to
                     try it out you can get it from the repo
-                    (git://git.typechecked.net/command-t.git), or you can wait until
+                    (git://git.wincent.dev/command-t.git), or you can wait until
                     the next release.
                   </p>
                   <p>Do let me know if you find any issues with it.</p>

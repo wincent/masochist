@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/paypal-breakages"
-        >https://typechecked.net/blog/paypal-breakages</a
+      <a href="https://wincent.dev/blog/paypal-breakages"
+        >https://wincent.dev/blog/paypal-breakages</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/paypal-breakages');
+    window.location.replace('https://wincent.dev/blog/paypal-breakages');
   </script>
 </html>

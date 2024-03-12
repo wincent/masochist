@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/nsinvocation-and-nsmethodsignature-and-variable-arguments"
-        >https://typechecked.net/blog/nsinvocation-and-nsmethodsignature-and-variable-arguments</a
+        href="https://wincent.dev/blog/nsinvocation-and-nsmethodsignature-and-variable-arguments"
+        >https://wincent.dev/blog/nsinvocation-and-nsmethodsignature-and-variable-arguments</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/nsinvocation-and-nsmethodsignature-and-variable-arguments',
+      'https://wincent.dev/blog/nsinvocation-and-nsmethodsignature-and-variable-arguments',
     );
   </script>
 </html>

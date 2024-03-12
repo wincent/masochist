@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/rails-usability-improvement"
-        >https://typechecked.net/blog/rails-usability-improvement</a
+      <a href="https://wincent.dev/blog/rails-usability-improvement"
+        >https://wincent.dev/blog/rails-usability-improvement</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/rails-usability-improvement',
+      'https://wincent.dev/blog/rails-usability-improvement',
     );
   </script>
 </html>

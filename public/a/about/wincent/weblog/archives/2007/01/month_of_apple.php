@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/month-of-apple-bugs"
-        >https://typechecked.net/blog/month-of-apple-bugs</a
+      <a href="https://wincent.dev/blog/month-of-apple-bugs"
+        >https://wincent.dev/blog/month-of-apple-bugs</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/month-of-apple-bugs');
+    window.location.replace('https://wincent.dev/blog/month-of-apple-bugs');
   </script>
 </html>

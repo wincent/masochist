@@ -1,12 +1,12 @@
 <h2>Wincent Strings Utility links</h2>
 <ul>
   <li>
-    <a href="https://typechecked.net/a/products/wincent-strings-util/"
+    <a href="https://wincent.dev/a/products/wincent-strings-util/"
       >Information</a
     >
   </li>
   <li>
-    <a href="https://typechecked.net/forums/wincent-strings-utility"
+    <a href="https://wincent.dev/forums/wincent-strings-utility"
       >Discussion & support forums</a
     >
   </li>

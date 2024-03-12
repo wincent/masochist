@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/information-leakage-from-the-lan-when-sending-with-mail.app"
-        >https://typechecked.net/blog/information-leakage-from-the-lan-when-sending-with-mail.app</a
+        href="https://wincent.dev/blog/information-leakage-from-the-lan-when-sending-with-mail.app"
+        >https://wincent.dev/blog/information-leakage-from-the-lan-when-sending-with-mail.app</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/information-leakage-from-the-lan-when-sending-with-mail.app',
+      'https://wincent.dev/blog/information-leakage-from-the-lan-when-sending-with-mail.app',
     );
   </script>
 </html>

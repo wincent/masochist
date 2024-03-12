@@ -7,8 +7,8 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/a/knowledge-base/archives/2005/04/information_for.php"
-        >https://typechecked.net/a/knowledge-base/archives/2005/04/information_for.php</a
+        href="https://wincent.dev/a/knowledge-base/archives/2005/04/information_for.php"
+        >https://wincent.dev/a/knowledge-base/archives/2005/04/information_for.php</a
       >
     </p>
   </body>

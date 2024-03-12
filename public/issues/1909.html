@@ -7,7 +7,7 @@
       name="viewport"
     />
     <title>
-      Feature request #1909: Monitor git daemon with monit &middot; typechecked.net
+      Feature request #1909: Monitor git daemon with monit &middot; wincent.dev
     </title>
     <link
       rel="stylesheet"
@@ -21,7 +21,7 @@
         <a id="top" name="top"></a>
         <nav class="global">
           <a class="menu-icon" href="#">&equiv;</a>
-          <h1><a href="/">typechecked.net</a></h1>
+          <h1><a href="/">wincent.dev</a></h1>
           <ul class="navbar-links">
             <li>
               <a href="/products">Products</a>
@@ -82,7 +82,7 @@
                   <tr>
                     <th>Product</th>
                     <td>
-                      typechecked.net
+                      wincent.dev
                     </td>
                   </tr>
                   <tr>
@@ -358,7 +358,7 @@ IF STATUS operator value [TIMEOUT &lt;N&gt; SECONDS] [[&lt;X&gt;] &lt;Y&gt; CYCL
                   <p>
                     And
                     <a
-                      href="https://github.com/typechecked.netmand-t/issues/172"
+                      href="https://github.com/wincent.devmand-t/issues/172"
                       class="external"
                       >it just happened again</a
                     >...
@@ -400,7 +400,7 @@ $ sudo monit stop git</pre
                   <p>Looking at using something hacky like:</p>
                   <pre>
 check program git-clone
-  with path &quot;/bin/sh -c 'cd $(/bin/mktemp -d) &amp;&amp; /usr/bin/git clone --bare --depth 1 --quiet --single-branch git://git.typechecked.net/wincent.git'&quot;
+  with path &quot;/bin/sh -c 'cd $(/bin/mktemp -d) &amp;&amp; /usr/bin/git clone --bare --depth 1 --quiet --single-branch git://git.wincent.dev/wincent.git'&quot;
   if status != 0
   then exec &quot;/usr/bin/pkill git-daemon &amp;&amp; /usr/bin/pkill git-upload-pack &amp;&amp; sleep 5 &amp;&amp; /usr/bin/pkill -9 git-daemon &amp;&amp; /usr/bin/pkill -9 git-upload-pack&quot;</pre
                   >

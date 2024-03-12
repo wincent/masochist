@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/wincent-away-from-monday-21-august-2006"
-        >https://typechecked.net/blog/wincent-away-from-monday-21-august-2006</a
+      <a href="https://wincent.dev/blog/wincent-away-from-monday-21-august-2006"
+        >https://wincent.dev/blog/wincent-away-from-monday-21-august-2006</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/wincent-away-from-monday-21-august-2006',
+      'https://wincent.dev/blog/wincent-away-from-monday-21-august-2006',
     );
   </script>
 </html>

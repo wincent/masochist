@@ -71,7 +71,7 @@ Date:   Tue Jan 8 08:53:46 2008 +0100
     
     See:
     
-    https://typechecked.net/a/support/bugs/show_bug.cgi?id=637
+    https://wincent.dev/a/support/bugs/show_bug.cgi?id=637
     
     Signed-off-by: Greg Hurrell <greg@hurrell.net>
 

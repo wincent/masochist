@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/best-commit-messages-of-all-time"
-        >https://typechecked.net/blog/best-commit-messages-of-all-time</a
+      <a href="https://wincent.dev/blog/best-commit-messages-of-all-time"
+        >https://wincent.dev/blog/best-commit-messages-of-all-time</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/best-commit-messages-of-all-time',
+      'https://wincent.dev/blog/best-commit-messages-of-all-time',
     );
   </script>
 </html>

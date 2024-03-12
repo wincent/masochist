@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/things-you-learn-from-looking-at-the-hexfiend-source-code"
-        >https://typechecked.net/blog/things-you-learn-from-looking-at-the-hexfiend-source-code</a
+        href="https://wincent.dev/blog/things-you-learn-from-looking-at-the-hexfiend-source-code"
+        >https://wincent.dev/blog/things-you-learn-from-looking-at-the-hexfiend-source-code</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/things-you-learn-from-looking-at-the-hexfiend-source-code',
+      'https://wincent.dev/blog/things-you-learn-from-looking-at-the-hexfiend-source-code',
     );
   </script>
 </html>

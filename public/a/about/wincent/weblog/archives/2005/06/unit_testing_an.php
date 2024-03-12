@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/unit-testing-and-why-it-suddenly-became-more-important"
-        >https://typechecked.net/blog/unit-testing-and-why-it-suddenly-became-more-important</a
+        href="https://wincent.dev/blog/unit-testing-and-why-it-suddenly-became-more-important"
+        >https://wincent.dev/blog/unit-testing-and-why-it-suddenly-became-more-important</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/unit-testing-and-why-it-suddenly-became-more-important',
+      'https://wincent.dev/blog/unit-testing-and-why-it-suddenly-became-more-important',
     );
   </script>
 </html>

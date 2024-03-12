@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/synergy-advance-framework"
-        >https://typechecked.net/blog/synergy-advance-framework</a
+      <a href="https://wincent.dev/blog/synergy-advance-framework"
+        >https://wincent.dev/blog/synergy-advance-framework</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/synergy-advance-framework',
+      'https://wincent.dev/blog/synergy-advance-framework',
     );
   </script>
 </html>

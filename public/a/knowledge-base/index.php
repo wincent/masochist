@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="generator" content="http://www.movabletype.org/" />
-    <title>typechecked.net knowledge base</title>
+    <title>wincent.dev knowledge base</title>
     <link rel="stylesheet" href="/a/styles.css" type="text/css" />
   </head>
 
@@ -13,10 +13,10 @@
       style="text-align: center; font-family: 'Lucida Grande'; margin: 5px 250px 5px 250px; padding: 5px; font-size: x-small; border: 2px solid silver; -webkit-border-radius: 0.5em; -moz-border-radius: 0.5em; background: #fefefe;"
     >
       <p>
-        You are currently looking at an older section of the typechecked.net
+        You are currently looking at an older section of the wincent.dev
         website.<br />
         Please check the new version of the site at
-        <a href="https://typechecked.net/">https://typechecked.net/</a> for updated
+        <a href="https://wincent.dev/">https://wincent.dev/</a> for updated
         content.<br />
       </p>
     </div>
@@ -76,7 +76,7 @@
           align="center"
           valign="middle"
         >
-          <a href="https://typechecked.net/"
+          <a href="https://wincent.dev/"
             ><img
               src="/a/gfx/wincent-logo-small-gray-bg.jpg"
               width="43"
@@ -84,7 +84,7 @@
               alt="wincent"
               align="middle"
           /></a>
-          <a href="https://typechecked.net/a/knowledge-base/"
+          <a href="https://wincent.dev/a/knowledge-base/"
             ><img
               src="/a/gfx/knowledge-base-header.jpg"
               width="309"
@@ -130,7 +130,7 @@
           <ul style="width: 73px; height: 25px;">
             <li class="menu">
               <a
-                href="https://typechecked.net/a/products/"
+                href="https://wincent.dev/a/products/"
                 title="Full products listing"
                 ><img
                   src="/a/gfx/header/products-off.jpg"
@@ -141,35 +141,35 @@
               <ul>
                 <li>
                   <a
-                    href="https://typechecked.net/products/synergy"
+                    href="https://wincent.dev/products/synergy"
                     title="The original iTunes menu bar controller"
                     >Synergy &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://typechecked.net/products/synergy/download"
+                        href="https://wincent.dev/products/synergy/download"
                         title="Download Synergy"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/synergy-classic/purchase/"
+                        href="https://wincent.dev/a/products/synergy-classic/purchase/"
                         title="Purchase Synergy"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/products/synergy/help"
+                        href="https://wincent.dev/products/synergy/help"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/synergy-classic/buttons/"
+                        href="https://wincent.dev/a/products/synergy-classic/buttons/"
                         title="Free button sets"
                         >Button Sets</a
                       >
@@ -178,35 +178,35 @@
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/products/synergy-advance/"
+                    href="https://wincent.dev/a/products/synergy-advance/"
                     title="Multi-purpose audio companion"
                     >Synergy Advance &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/synergy-advance/download/"
+                        href="https://wincent.dev/a/products/synergy-advance/download/"
                         title="Download Synergy Advance"
                         >Download preview</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/synergy-advance/purchase/"
+                        href="https://wincent.dev/a/products/synergy-advance/purchase/"
                         title="Purchase Synergy Advance"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/synergy-advance/donate/"
+                        href="https://wincent.dev/a/products/synergy-advance/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/synergy-advance/donate/"
+                        href="https://wincent.dev/a/products/synergy-advance/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
@@ -215,35 +215,35 @@
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/products/winswitch/"
+                    href="https://wincent.dev/a/products/winswitch/"
                     title="Enhanced replacement for Apple's Fast User Switching menu"
                     >WinSwitch &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/winswitch/download/"
+                        href="https://wincent.dev/a/products/winswitch/download/"
                         title="Download WinSwitch"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/winswitch/donate/"
+                        href="https://wincent.dev/a/products/winswitch/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/winswitch/donate/"
+                        href="https://wincent.dev/a/products/winswitch/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/winswitch/faq/"
+                        href="https://wincent.dev/a/products/winswitch/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -252,28 +252,28 @@
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/products/hextrapolate/"
+                    href="https://wincent.dev/a/products/hextrapolate/"
                     title="Programmers number conversion tool"
                     >Hextrapolate &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/hextrapolate/download/"
+                        href="https://wincent.dev/a/products/hextrapolate/download/"
                         title="Download Hextrapolate"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/hextrapolate/purchase/"
+                        href="https://wincent.dev/a/products/hextrapolate/purchase/"
                         title="Purchase Hextrapolate"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/hextrapolate/faq/"
+                        href="https://wincent.dev/a/products/hextrapolate/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -282,42 +282,42 @@
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/products/install/"
+                    href="https://wincent.dev/a/products/install/"
                     title="Installation and deployment solution for developers"
                     >Install &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/install/download/"
+                        href="https://wincent.dev/a/products/install/download/"
                         title="Install downloads"
                         >Downloads</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/install/purchase/"
+                        href="https://wincent.dev/a/products/install/purchase/"
                         title="Purchase Install"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/install/donate/"
+                        href="https://wincent.dev/a/products/install/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/install/donate/"
+                        href="https://wincent.dev/a/products/install/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/install/faq/"
+                        href="https://wincent.dev/a/products/install/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -326,14 +326,14 @@
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/products/getsmart-pro/"
+                    href="https://wincent.dev/a/products/getsmart-pro/"
                     title="Intelligent download manager"
                     >GetSmart Pro &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/getsmart-pro/donate/"
+                        href="https://wincent.dev/a/products/getsmart-pro/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
@@ -342,7 +342,7 @@
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/products/"
+                    href="https://wincent.dev/a/products/"
                     title="Full product listing"
                     >Other products...</a
                   >
@@ -352,7 +352,7 @@
           </ul>
         </td>
         <td width="48" height="25">
-          <a href="https://typechecked.net/a/store/" title="Wincent online store"
+          <a href="https://wincent.dev/a/store/" title="Wincent online store"
             ><img
               src="/a/gfx/header/store-off.jpg"
               width="48"
@@ -364,7 +364,7 @@
           <ul style="width: 63px; height: 25px;">
             <li class="menu">
               <a
-                href="https://typechecked.net/a/services/"
+                href="https://wincent.dev/a/services/"
                 title="Full services listing"
                 ><img
                   src="/a/gfx/header/services-off.jpg"
@@ -375,28 +375,28 @@
               <ul>
                 <li>
                   <a
-                    href="https://typechecked.net/a/services/custom-development/"
+                    href="https://wincent.dev/a/services/custom-development/"
                     title="Custom software development"
                     >Custom Development</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/services/mac-consultancy/"
+                    href="https://wincent.dev/a/services/mac-consultancy/"
                     title="Apple and Mac OS X consultancy"
                     >Apple/Mac Consultancy</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/services/web-design/"
+                    href="https://wincent.dev/a/services/web-design/"
                     title="Web design services"
                     >Web Design</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/services/hosting/"
+                    href="https://wincent.dev/a/services/hosting/"
                     title="Internet web and email hosting"
                     >Hosting</a
                   >
@@ -409,7 +409,7 @@
           <ul style="width: 62px; height: 25px;">
             <li class="menu">
               <a
-                href="https://typechecked.net/a/support/"
+                href="https://wincent.dev/a/support/"
                 title="Support resources and links"
                 ><img
                   src="/a/gfx/header/support-off.jpg"
@@ -420,56 +420,56 @@
               <ul>
                 <li>
                   <a
-                    href="https://typechecked.net/a/support/registration/"
+                    href="https://wincent.dev/a/support/registration/"
                     title="Retrieve lost license codes"
                     >Lost License Codes</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/support/bugs/"
+                    href="https://wincent.dev/a/support/bugs/"
                     title="Bug tracking and feature request database"
                     >Bugs and Feature Requests</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/support/demo-licenses/"
+                    href="https://wincent.dev/a/support/demo-licenses/"
                     title="Obtain a demonstration license"
                     >Demonstration licenses</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/support/forums/"
+                    href="https://wincent.dev/a/support/forums/"
                     title="Discussion and support forums"
                     >Forums</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/support/faq/"
+                    href="https://wincent.dev/a/support/faq/"
                     title="Frequently Asked Questions"
                     >FAQ</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/support/activation/"
+                    href="https://wincent.dev/a/support/activation/"
                     title="Product activation and information"
                     >Product Activation</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/support/tickets/"
+                    href="https://wincent.dev/a/support/tickets/"
                     title="Open or view a support ticket"
                     >Support Tickets</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/support/lists/"
+                    href="https://wincent.dev/a/support/lists/"
                     title="Subscribe/unsubscribe to/from a mailing list"
                     >Mailing lists</a
                   >
@@ -481,7 +481,7 @@
         <td width="53" height="25">
           <ul style="width: 53px; height: 25px;">
             <li class="menu">
-              <a href="https://typechecked.net/a/about/" title="Company information"
+              <a href="https://wincent.dev/a/about/" title="Company information"
                 ><img
                   src="/a/gfx/header/about-off.jpg"
                   width="53"
@@ -491,14 +491,14 @@
               <ul>
                 <li>
                   <a
-                    href="https://typechecked.net/a/about/wincent/"
+                    href="https://wincent.dev/a/about/wincent/"
                     title="About Wincent Colaiuta: the person"
                     >About Wincent Colaiuta</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/about/privacy/"
+                    href="https://wincent.dev/a/about/privacy/"
                     title="About the Wincent Privacy Policy"
                     >Privacy Policy</a
                   >
@@ -511,7 +511,7 @@
           <ul style="width: 49px; height: 25px;">
             <li class="menu">
               <a
-                href="https://typechecked.net/a/news/"
+                href="https://wincent.dev/a/news/"
                 title="Latest news items in weblog format"
                 ><img
                   src="/a/gfx/header/news-off.jpg"
@@ -522,28 +522,28 @@
               <ul>
                 <li>
                   <a
-                    href="https://typechecked.net/a/news/archives/mac_os_x_news/"
+                    href="https://wincent.dev/a/news/archives/mac_os_x_news/"
                     title="Apple and Mac OS X-related news"
                     >Mac OS X News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/news/archives/product_news/"
+                    href="https://wincent.dev/a/news/archives/product_news/"
                     title="Wincent product news"
                     >Product News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/news/archives/site_news/"
+                    href="https://wincent.dev/a/news/archives/site_news/"
                     title="Site-related news"
                     >Site News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/blog"
+                    href="https://wincent.dev/blog"
                     title="Development and other notes from Wincent"
                     >Wincent Colaiuta's weblog</a
                   >
@@ -554,7 +554,7 @@
         </td>
         <td width="107" height="25">
           <a
-            href="https://typechecked.net/wiki"
+            href="https://wincent.dev/wiki"
             title="Categorized Mac OS X tips and information"
             ><img
               src="/a/gfx/header/knowledge-base-on.jpg"
@@ -564,7 +564,7 @@
           /></a>
         </td>
         <td width="62" height="25">
-          <a href="https://typechecked.net/a/contact/" title="Contact email form"
+          <a href="https://wincent.dev/a/contact/" title="Contact email form"
             ><img
               src="/a/gfx/header/contact-off.jpg"
               width="62"
@@ -575,7 +575,7 @@
         <td width="72" height="25">
           <ul style="width: 72px; height: 25px;">
             <li class="menu">
-              <a href="https://typechecked.net/a/site-map/" title="Site overview"
+              <a href="https://wincent.dev/a/site-map/" title="Site overview"
                 ><img
                   src="/a/gfx/header/site-map-off.jpg"
                   width="72"
@@ -585,7 +585,7 @@
               <ul>
                 <li>
                   <a
-                    href="https://typechecked.net/a/site-map/search/"
+                    href="https://wincent.dev/a/site-map/search/"
                     title="Site search"
                     >Search</a
                   >
@@ -619,7 +619,7 @@
 
     <div id="breadcrumbs">
       <p>
-        <a href="https://typechecked.net/">Main</a>&nbsp;&gt;&nbsp;Knowledge Base
+        <a href="https://wincent.dev/">Main</a>&nbsp;&gt;&nbsp;Knowledge Base
       </p>
     </div>
 
@@ -636,7 +636,7 @@
               now, a process which has been quite slow because all the data has
               to be exported from a number of &quot;legacy&quot; applications
               and imported into a brand... [<a
-                href="https://typechecked.net/a/news/archives/2008/03/final_server_mi.php"
+                href="https://wincent.dev/a/news/archives/2008/03/final_server_mi.php"
                 >More...</a
               >]
             </li>
@@ -650,7 +650,7 @@
               underway. My aim is do this very carefully, service by service,
               and keep downtime to a minimum; hopefully minutes rather than
               hours. Just in case there is any interruption during the... [<a
-                href="https://typechecked.net/a/news/archives/2008/02/server_migratio.php"
+                href="https://wincent.dev/a/news/archives/2008/02/server_migratio.php"
                 >More...</a
               >]
             </li>
@@ -665,7 +665,7 @@
               that resolve to the
               Bansshee project page. These are coming up for renewal soon (they
               expire... [<a
-                href="https://typechecked.net/a/news/archives/2008/02/call_for_banssh.php"
+                href="https://wincent.dev/a/news/archives/2008/02/call_for_banssh.php"
                 >More...</a
               >]
             </li>
@@ -679,7 +679,7 @@
               soon be migrating DNS servers. I'll be doing everything I can to
               minimize downtime, and hopefully come close to eliminating it
               entirely as there will be a... [<a
-                href="https://typechecked.net/a/news/archives/2008/02/upcoming_dns_ch.php"
+                href="https://wincent.dev/a/news/archives/2008/02/upcoming_dns_ch.php"
                 >More...</a
               >]
             </li>
@@ -693,14 +693,14 @@
               Synergy, the fifth alpha release in the brand new 3.5 series. The
               last release, version 3.2, was Leopard-compatible but would also
               run on all versions of Mac OS X from... [<a
-                href="https://typechecked.net/a/news/archives/2008/01/synergy_35a5_re.php"
+                href="https://wincent.dev/a/news/archives/2008/01/synergy_35a5_re.php"
                 >More...</a
               >]
             </li>
           </ul>
 
           <p class="more">
-            <a href="https://typechecked.net/a/news/">More news articles...</a>
+            <a href="https://wincent.dev/a/news/">More news articles...</a>
           </p>
         </div>
       </div>
@@ -714,20 +714,20 @@
             The current knowledge base format (chronological posts, categorized,
             like a weblog) has always been somewhat limiting. I have recently
             started a
-            <a href="https://typechecked.net/wiki/">new, wiki-based</a>
+            <a href="https://wincent.dev/wiki/">new, wiki-based</a>
             knowledge base. It's still very much a work in progress, but for the
             curious it can be found at:
           </p>
 
           <p>
-            <a href="https://typechecked.net/wiki/"
-              >https://typechecked.net/wiki/</a
+            <a href="https://wincent.dev/wiki/"
+              >https://wincent.dev/wiki/</a
             >
           </p>
 
           <p class="more-categories">
             More
-            <a href="https://typechecked.net/a/knowledge-base/archives/meta/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/meta/"
               >Meta</a
             >
             articles
@@ -736,7 +736,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/08/knowledge_base.php"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/08/knowledge_base.php"
             >
               4:54 PM</a
             >
@@ -759,14 +759,14 @@
 
           <p class="extended">
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/06/clamping_down_o.php#more"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/06/clamping_down_o.php#more"
               >Read full article</a
             >
           </p>
 
           <p class="more-categories">
             More
-            <a href="https://typechecked.net/a/knowledge-base/archives/unix/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/unix/"
               >UNIX</a
             >
             articles
@@ -775,7 +775,7 @@
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/06/clamping_down_o.php"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/06/clamping_down_o.php"
             >
               3:40 PM</a
             >
@@ -806,14 +806,14 @@ ERROR: Problem with internal logger.</pre>
 
           <p class="extended">
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/06/freshclam_probl.php#more"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/06/freshclam_probl.php#more"
               >Read full article</a
             >
           </p>
 
           <p class="more-categories">
             More
-            <a href="https://typechecked.net/a/knowledge-base/archives/unix/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/unix/"
               >UNIX</a
             >
             articles
@@ -822,7 +822,7 @@ ERROR: Problem with internal logger.</pre>
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/06/freshclam_probl.php"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/06/freshclam_probl.php"
             >
               3:25 PM</a
             >
@@ -857,14 +857,14 @@ deny from all
 
           <p class="more-categories">
             More
-            <a href="https://typechecked.net/a/knowledge-base/archives/web/">Web</a>
+            <a href="https://wincent.dev/a/knowledge-base/archives/web/">Web</a>
             articles
           </p>
 
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/06/wordpress_secur.php"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/06/wordpress_secur.php"
             >
               6:55 PM</a
             >
@@ -890,25 +890,25 @@ deny from all
 
           <p class="extended">
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/06/wordpress_updat.php#more"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/06/wordpress_updat.php#more"
               >Read full article</a
             >
           </p>
 
           <p class="more-categories">
             More
-            <a href="https://typechecked.net/a/knowledge-base/archives/unix/shell/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/unix/shell/"
               >Shell</a
             >
             articles , More
-            <a href="https://typechecked.net/a/knowledge-base/archives/web/">Web</a>
+            <a href="https://wincent.dev/a/knowledge-base/archives/web/">Web</a>
             articles
           </p>
 
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/06/wordpress_updat.php"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/06/wordpress_updat.php"
             >
               6:41 PM</a
             >
@@ -931,18 +931,18 @@ deny from all
 
           <p class="extended">
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/06/intel_imac_setu.php#more"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/06/intel_imac_setu.php#more"
               >Read full article</a
             >
           </p>
 
           <p class="more-categories">
             More
-            <a href="https://typechecked.net/a/knowledge-base/archives/unix/shell/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/unix/shell/"
               >Shell</a
             >
             articles , More
-            <a href="https://typechecked.net/a/knowledge-base/archives/unix/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/unix/"
               >UNIX</a
             >
             articles
@@ -951,7 +951,7 @@ deny from all
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/06/intel_imac_setu.php"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/06/intel_imac_setu.php"
             >
               4:20 AM</a
             >
@@ -969,22 +969,22 @@ deny from all
 
           <p class="extended">
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/06/subversion_131_1.php#more"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/06/subversion_131_1.php#more"
               >Read full article</a
             >
           </p>
 
           <p class="more-categories">
             More
-            <a href="https://typechecked.net/a/knowledge-base/archives/development/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/development/"
               >Development</a
             >
             articles , More
-            <a href="https://typechecked.net/a/knowledge-base/archives/unix/shell/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/unix/shell/"
               >Shell</a
             >
             articles , More
-            <a href="https://typechecked.net/a/knowledge-base/archives/unix/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/unix/"
               >UNIX</a
             >
             articles
@@ -993,7 +993,7 @@ deny from all
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/06/subversion_131_1.php"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/06/subversion_131_1.php"
             >
               3:15 PM</a
             >
@@ -1010,14 +1010,14 @@ deny from all
 
           <p class="extended">
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/06/upgrading_to_my.php#more"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/06/upgrading_to_my.php#more"
               >Read full article</a
             >
           </p>
 
           <p class="more-categories">
             More
-            <a href="https://typechecked.net/a/knowledge-base/archives/unix/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/unix/"
               >UNIX</a
             >
             articles
@@ -1026,7 +1026,7 @@ deny from all
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/06/upgrading_to_my.php"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/06/upgrading_to_my.php"
             >
               1:44 AM</a
             >
@@ -1061,18 +1061,18 @@ deny from all
 
           <p class="extended">
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php#more"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php#more"
               >Read full article</a
             >
           </p>
 
           <p class="more-categories">
             More
-            <a href="https://typechecked.net/a/knowledge-base/archives/unix/shell/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/unix/shell/"
               >Shell</a
             >
             articles , More
-            <a href="https://typechecked.net/a/knowledge-base/archives/unix/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/unix/"
               >UNIX</a
             >
             articles
@@ -1081,7 +1081,7 @@ deny from all
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php"
             >
               8:17 PM</a
             >
@@ -1098,16 +1098,16 @@ deny from all
             source archive, the latest version as far as I know (2.27). Seeing
             as the software is licensed for distribution under the GPL I've
             mirrored a copy
-            <a href="https://typechecked.net/gpl/pstree-2.27.tar.gz">here</a>.
+            <a href="https://wincent.dev/gpl/pstree-2.27.tar.gz">here</a>.
           </p>
 
           <p class="more-categories">
             More
-            <a href="https://typechecked.net/a/knowledge-base/archives/unix/shell/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/unix/shell/"
               >Shell</a
             >
             articles , More
-            <a href="https://typechecked.net/a/knowledge-base/archives/unix/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/unix/"
               >UNIX</a
             >
             articles
@@ -1116,7 +1116,7 @@ deny from all
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/05/pstree_mirror.php"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/05/pstree_mirror.php"
             >
               3:26 PM</a
             >
@@ -1134,18 +1134,18 @@ deny from all
 
           <p class="extended">
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/04/subversion_131.php#more"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/04/subversion_131.php#more"
               >Read full article</a
             >
           </p>
 
           <p class="more-categories">
             More
-            <a href="https://typechecked.net/a/knowledge-base/archives/development/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/development/"
               >Development</a
             >
             articles , More
-            <a href="https://typechecked.net/a/knowledge-base/archives/unix/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/unix/"
               >UNIX</a
             >
             articles
@@ -1154,7 +1154,7 @@ deny from all
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/04/subversion_131.php"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/04/subversion_131.php"
             >
               3:52 PM</a
             >
@@ -1182,14 +1182,14 @@ deny from all
 
           <p class="extended">
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/03/eliminating_xau.php#more"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/03/eliminating_xau.php#more"
               >Read full article</a
             >
           </p>
 
           <p class="more-categories">
             More
-            <a href="https://typechecked.net/a/knowledge-base/archives/unix/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/unix/"
               >UNIX</a
             >
             articles
@@ -1198,7 +1198,7 @@ deny from all
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/03/eliminating_xau.php"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/03/eliminating_xau.php"
             >
               2:04 PM</a
             >
@@ -1216,14 +1216,14 @@ deny from all
 
           <p class="extended">
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/03/avoiding_protoc.php#more"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/03/avoiding_protoc.php#more"
               >Read full article</a
             >
           </p>
 
           <p class="more-categories">
             More
-            <a href="https://typechecked.net/a/knowledge-base/archives/development/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/development/"
               >Development</a
             >
             articles
@@ -1232,7 +1232,7 @@ deny from all
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/03/avoiding_protoc.php"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/03/avoiding_protoc.php"
             >
               2:16 PM</a
             >
@@ -1245,7 +1245,7 @@ deny from all
           <p>
             Lately I've been spending a lot of time working on my unit testing
             framework,
-            <a href="https://typechecked.net/a/products/wotest/">WOTest</a>. In
+            <a href="https://wincent.dev/a/products/wotest/">WOTest</a>. In
             doing so I've had cause to think about unit testing "best practice",
             or at least what works best for me. In this article I summarize the
             guidelines that I've come up with that help me decide <em>when</em>,
@@ -1264,7 +1264,7 @@ deny from all
 
           <p class="extended">
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/02/unit_testing_gu.php#more"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/02/unit_testing_gu.php#more"
               >Read full article</a
             >
           </p>
@@ -1272,11 +1272,11 @@ deny from all
           <p class="more-categories">
             More
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/development/cocoa_and_objectivec/"
+              href="https://wincent.dev/a/knowledge-base/archives/development/cocoa_and_objectivec/"
               >Cocoa and Objective-C</a
             >
             articles , More
-            <a href="https://typechecked.net/a/knowledge-base/archives/development/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/development/"
               >Development</a
             >
             articles
@@ -1285,7 +1285,7 @@ deny from all
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/02/unit_testing_gu.php"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/02/unit_testing_gu.php"
             >
               2:38 AM</a
             >
@@ -1314,18 +1314,18 @@ deny from all
 
           <p class="extended">
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/01/lightweight_iss.php#more"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/01/lightweight_iss.php#more"
               >Read full article</a
             >
           </p>
 
           <p class="more-categories">
             More
-            <a href="https://typechecked.net/a/knowledge-base/archives/development/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/development/"
               >Development</a
             >
             articles , More
-            <a href="https://typechecked.net/a/knowledge-base/archives/unix/"
+            <a href="https://wincent.dev/a/knowledge-base/archives/unix/"
               >UNIX</a
             >
             articles
@@ -1334,7 +1334,7 @@ deny from all
           <p class="posted">
             Posted by wincent at
             <a
-              href="https://typechecked.net/a/knowledge-base/archives/2006/01/lightweight_iss.php"
+              href="https://wincent.dev/a/knowledge-base/archives/2006/01/lightweight_iss.php"
             >
               2:23 PM</a
             >
@@ -1350,8 +1350,8 @@ deny from all
             <form method="get" action="http://www.google.com/search">
               <input type="text" name="q" size="20" maxlength="255" value="" />
               <input type="hidden" name="hl" value="en" />
-              <input type="hidden" name="domains" value="typechecked.net" />
-              <input type="hidden" name="sitesearch" value="typechecked.net" />
+              <input type="hidden" name="domains" value="wincent.dev" />
+              <input type="hidden" name="sitesearch" value="wincent.dev" />
               <input type="hidden" name="ie" value="UTF-8" />
               <input type="hidden" name="oe" value="UTF-8" />
               <input type="submit" name="btnG" value="Search" />
@@ -1364,7 +1364,7 @@ deny from all
             <ul>
               <li>
                 <a
-                  href="https://typechecked.net/a/knowledge-base/archives/development/"
+                  href="https://wincent.dev/a/knowledge-base/archives/development/"
                   title="Software development"
                   >Development</a
                 >
@@ -1372,7 +1372,7 @@ deny from all
                 <ul>
                   <li>
                     <a
-                      href="https://typechecked.net/a/knowledge-base/archives/development/business/"
+                      href="https://wincent.dev/a/knowledge-base/archives/development/business/"
                       title=""
                       >Business</a
                     >
@@ -1380,7 +1380,7 @@ deny from all
 
                   <li>
                     <a
-                      href="https://typechecked.net/a/knowledge-base/archives/development/cocoa_and_objectivec/"
+                      href="https://wincent.dev/a/knowledge-base/archives/development/cocoa_and_objectivec/"
                       title="Coding with Cocoa and Objective-C"
                       >Cocoa and Objective-C</a
                     >
@@ -1390,7 +1390,7 @@ deny from all
 
               <li>
                 <a
-                  href="https://typechecked.net/a/knowledge-base/archives/mac_os_x/"
+                  href="https://wincent.dev/a/knowledge-base/archives/mac_os_x/"
                   title=""
                   >Mac OS X</a
                 >
@@ -1398,7 +1398,7 @@ deny from all
 
               <li>
                 <a
-                  href="https://typechecked.net/a/knowledge-base/archives/meta/"
+                  href="https://wincent.dev/a/knowledge-base/archives/meta/"
                   title=""
                   >Meta</a
                 >
@@ -1406,7 +1406,7 @@ deny from all
 
               <li>
                 <a
-                  href="https://typechecked.net/a/knowledge-base/archives/unix/"
+                  href="https://wincent.dev/a/knowledge-base/archives/unix/"
                   title=""
                   >UNIX</a
                 >
@@ -1414,7 +1414,7 @@ deny from all
                 <ul>
                   <li>
                     <a
-                      href="https://typechecked.net/a/knowledge-base/archives/unix/shell/"
+                      href="https://wincent.dev/a/knowledge-base/archives/unix/shell/"
                       title=""
                       >Shell</a
                     >
@@ -1424,7 +1424,7 @@ deny from all
 
               <li>
                 <a
-                  href="https://typechecked.net/a/knowledge-base/archives/web/"
+                  href="https://wincent.dev/a/knowledge-base/archives/web/"
                   title="Web design"
                   >Web</a
                 >
@@ -1432,7 +1432,7 @@ deny from all
                 <ul>
                   <li>
                     <a
-                      href="https://typechecked.net/a/knowledge-base/archives/web/css/"
+                      href="https://wincent.dev/a/knowledge-base/archives/web/css/"
                       title="Cascading Style Sheets"
                       >CSS</a
                     >
@@ -1447,61 +1447,61 @@ deny from all
           <ul>
             <li>
               <a
-                href="https://typechecked.net/a/knowledge-base/archives/2006/08/knowledge_base.php"
+                href="https://wincent.dev/a/knowledge-base/archives/2006/08/knowledge_base.php"
                 >Knowledge base in wiki format</a
               >
             </li>
             <li>
               <a
-                href="https://typechecked.net/a/knowledge-base/archives/2006/06/clamping_down_o.php"
+                href="https://wincent.dev/a/knowledge-base/archives/2006/06/clamping_down_o.php"
                 >Clamping down on spam</a
               >
             </li>
             <li>
               <a
-                href="https://typechecked.net/a/knowledge-base/archives/2006/06/freshclam_probl.php"
+                href="https://wincent.dev/a/knowledge-base/archives/2006/06/freshclam_probl.php"
                 >freshclam: "Problem with internal logger"</a
               >
             </li>
             <li>
               <a
-                href="https://typechecked.net/a/knowledge-base/archives/2006/06/wordpress_secur.php"
+                href="https://wincent.dev/a/knowledge-base/archives/2006/06/wordpress_secur.php"
                 >WordPress security tip</a
               >
             </li>
             <li>
               <a
-                href="https://typechecked.net/a/knowledge-base/archives/2006/06/wordpress_updat.php"
+                href="https://wincent.dev/a/knowledge-base/archives/2006/06/wordpress_updat.php"
                 >WordPress updates via Subversion</a
               >
             </li>
             <li>
               <a
-                href="https://typechecked.net/a/knowledge-base/archives/2006/06/intel_imac_setu.php"
+                href="https://wincent.dev/a/knowledge-base/archives/2006/06/intel_imac_setu.php"
                 >Intel iMac set-up notes</a
               >
             </li>
             <li>
               <a
-                href="https://typechecked.net/a/knowledge-base/archives/2006/06/subversion_131_1.php"
+                href="https://wincent.dev/a/knowledge-base/archives/2006/06/subversion_131_1.php"
                 >Subversion 1.3.1 to 1.3.2 upgrade notes</a
               >
             </li>
             <li>
               <a
-                href="https://typechecked.net/a/knowledge-base/archives/2006/06/upgrading_to_my.php"
+                href="https://wincent.dev/a/knowledge-base/archives/2006/06/upgrading_to_my.php"
                 >Upgrading to MySQL 4.1.20 on Red Hat Enterprise Linux 3</a
               >
             </li>
             <li>
               <a
-                href="https://typechecked.net/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php"
+                href="https://wincent.dev/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php"
                 >SSH tunneling and secure IMAP, POP3 and SMTP</a
               >
             </li>
             <li>
               <a
-                href="https://typechecked.net/a/knowledge-base/archives/2006/05/pstree_mirror.php"
+                href="https://wincent.dev/a/knowledge-base/archives/2006/05/pstree_mirror.php"
                 >pstree mirror</a
               >
             </li>

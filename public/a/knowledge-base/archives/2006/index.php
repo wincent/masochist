@@ -6,8 +6,8 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/a/knowledge-base/archives/"
-        >https://typechecked.net/a/knowledge-base/archives/</a
+      <a href="https://wincent.dev/a/knowledge-base/archives/"
+        >https://wincent.dev/a/knowledge-base/archives/</a
       >
     </p>
   </body>

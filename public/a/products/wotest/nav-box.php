@@ -1,9 +1,9 @@
 <h2>WOTest links</h2>
 <ul>
-  <li><a href="https://typechecked.net/a/products/wotest/">Information</a></li>
+  <li><a href="https://wincent.dev/a/products/wotest/">Information</a></li>
   <li>
     <a
-      href="https://typechecked.net/a/support/forums/ubbthreads.php?ubb=postlist&amp;Board=13&amp;page=1"
+      href="https://wincent.dev/a/support/forums/ubbthreads.php?ubb=postlist&amp;Board=13&amp;page=1"
       >Discussion & support forums</a
     >
   </li>
@@ -18,7 +18,7 @@
 <p align="center">
   <a href="http://apple.com/universal/"
     ><img
-      src="https://typechecked.net/a/gfx/MacOSX_Universal_60px.gif"
+      src="https://wincent.dev/a/gfx/MacOSX_Universal_60px.gif"
       width="95"
       height="60"
       alt="Universal"
@@ -28,7 +28,7 @@
 <p align="center">
   <a href="http://www.apple.com/macosx/"
     ><img
-      src="https://typechecked.net/a/gfx/tiger-compatible.jpg"
+      src="https://wincent.dev/a/gfx/tiger-compatible.jpg"
       width="128"
       height="128"
       alt="Tiger Compatible"

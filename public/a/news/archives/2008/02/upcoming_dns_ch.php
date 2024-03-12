@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/upcoming-dns-changes"
-        >https://typechecked.net/blog/upcoming-dns-changes</a
+      <a href="https://wincent.dev/blog/upcoming-dns-changes"
+        >https://wincent.dev/blog/upcoming-dns-changes</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/upcoming-dns-changes');
+    window.location.replace('https://wincent.dev/blog/upcoming-dns-changes');
   </script>
 </html>

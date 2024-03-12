@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/nightly-builds-now-available"
-        >https://typechecked.net/blog/nightly-builds-now-available</a
+      <a href="https://wincent.dev/blog/nightly-builds-now-available"
+        >https://wincent.dev/blog/nightly-builds-now-available</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/nightly-builds-now-available',
+      'https://wincent.dev/blog/nightly-builds-now-available',
     );
   </script>
 </html>

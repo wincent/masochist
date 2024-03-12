@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/version-control-vs-rails"
-        >https://typechecked.net/blog/version-control-vs-rails</a
+      <a href="https://wincent.dev/blog/version-control-vs-rails"
+        >https://wincent.dev/blog/version-control-vs-rails</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/version-control-vs-rails',
+      'https://wincent.dev/blog/version-control-vs-rails',
     );
   </script>
 </html>

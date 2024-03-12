@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/synergy-3.1.1b-seeded-to-beta-testers"
-        >https://typechecked.net/blog/synergy-3.1.1b-seeded-to-beta-testers</a
+      <a href="https://wincent.dev/blog/synergy-3.1.1b-seeded-to-beta-testers"
+        >https://wincent.dev/blog/synergy-3.1.1b-seeded-to-beta-testers</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/synergy-3.1.1b-seeded-to-beta-testers',
+      'https://wincent.dev/blog/synergy-3.1.1b-seeded-to-beta-testers',
     );
   </script>
 </html>

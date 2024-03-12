@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/test-driven-development"
-        >https://typechecked.net/blog/test-driven-development</a
+      <a href="https://wincent.dev/blog/test-driven-development"
+        >https://wincent.dev/blog/test-driven-development</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/test-driven-development');
+    window.location.replace('https://wincent.dev/blog/test-driven-development');
   </script>
 </html>

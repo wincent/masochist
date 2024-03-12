@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/operator-precedence"
-        >https://typechecked.net/blog/operator-precedence</a
+      <a href="https://wincent.dev/blog/operator-precedence"
+        >https://wincent.dev/blog/operator-precedence</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/operator-precedence');
+    window.location.replace('https://wincent.dev/blog/operator-precedence');
   </script>
 </html>

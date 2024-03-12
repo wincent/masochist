@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/verbatim"
-        >https://typechecked.net/blog/verbatim</a
+      <a href="https://wincent.dev/blog/verbatim"
+        >https://wincent.dev/blog/verbatim</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/verbatim');
+    window.location.replace('https://wincent.dev/blog/verbatim');
   </script>
 </html>

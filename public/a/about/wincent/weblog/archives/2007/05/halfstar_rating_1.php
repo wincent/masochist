@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/half-star-ratings-now-from-the-global-menu-too"
-        >https://typechecked.net/blog/half-star-ratings-now-from-the-global-menu-too</a
+        href="https://wincent.dev/blog/half-star-ratings-now-from-the-global-menu-too"
+        >https://wincent.dev/blog/half-star-ratings-now-from-the-global-menu-too</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/half-star-ratings-now-from-the-global-menu-too',
+      'https://wincent.dev/blog/half-star-ratings-now-from-the-global-menu-too',
     );
   </script>
 </html>

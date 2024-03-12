@@ -8,7 +8,7 @@
     />
     <title>
       Bug #1499: &quot;rake spec&quot; both &quot;spec spec&quot; broken on
-      local machine &middot; typechecked.net
+      local machine &middot; wincent.dev
     </title>
     <link
       rel="stylesheet"
@@ -22,7 +22,7 @@
         <a id="top" name="top"></a>
         <nav class="global">
           <a class="menu-icon" href="#">&equiv;</a>
-          <h1><a href="/">typechecked.net</a></h1>
+          <h1><a href="/">wincent.dev</a></h1>
           <ul class="navbar-links">
             <li>
               <a href="/products">Products</a>
@@ -84,7 +84,7 @@
                   <tr>
                     <th>Product</th>
                     <td>
-                      typechecked.net
+                      wincent.dev
                     </td>
                   </tr>
                   <tr>
@@ -117,34 +117,34 @@
                 <div class="issue-description-body">
                   <p>Output from <code>rake spec</code>, for example:</p>
                   <pre>
-(in /Users/wincent/trabajo/unversioned/typechecked.net/src)
-/Users/wincent/trabajo/unversioned/typechecked.net/src/vendor/rails/activesupport/lib/active_support/dependencies.rb:105:in `const_missing': uninitialized constant Test::Unit::TestResult::TestResultFailureSupport (NameError)
+(in /Users/wincent/trabajo/unversioned/wincent.dev/src)
+/Users/wincent/trabajo/unversioned/wincent.dev/src/vendor/rails/activesupport/lib/active_support/dependencies.rb:105:in `const_missing': uninitialized constant Test::Unit::TestResult::TestResultFailureSupport (NameError)
 &#x0009;from /Library/Ruby/Gems/1.8/gems/test-unit-2.0.6/lib/test/unit/testresult.rb:28
 &#x0009;from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
 &#x0009;from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
-&#x0009;from /Users/wincent/trabajo/unversioned/typechecked.net/src/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
-&#x0009;from /Users/wincent/trabajo/unversioned/typechecked.net/src/vendor/gems/rspec-1.3.0/lib/spec/interop/test.rb:34
+&#x0009;from /Users/wincent/trabajo/unversioned/wincent.dev/src/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+&#x0009;from /Users/wincent/trabajo/unversioned/wincent.dev/src/vendor/gems/rspec-1.3.0/lib/spec/interop/test.rb:34
 &#x0009;from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
 &#x0009;from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
-&#x0009;from /Users/wincent/trabajo/unversioned/typechecked.net/src/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
-&#x0009;from /Users/wincent/trabajo/unversioned/typechecked.net/src/vendor/gems/rspec-1.3.0/lib/spec/test/unit.rb:1
+&#x0009;from /Users/wincent/trabajo/unversioned/wincent.dev/src/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+&#x0009;from /Users/wincent/trabajo/unversioned/wincent.dev/src/vendor/gems/rspec-1.3.0/lib/spec/test/unit.rb:1
 &#x0009;from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
 &#x0009;from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
-&#x0009;from /Users/wincent/trabajo/unversioned/typechecked.net/src/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
-&#x0009;from /Users/wincent/trabajo/unversioned/typechecked.net/src/vendor/gems/rspec-rails-1.3.2/lib/spec/rails.rb:13
+&#x0009;from /Users/wincent/trabajo/unversioned/wincent.dev/src/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+&#x0009;from /Users/wincent/trabajo/unversioned/wincent.dev/src/vendor/gems/rspec-rails-1.3.2/lib/spec/rails.rb:13
 &#x0009;from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
 &#x0009;from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
-&#x0009;from /Users/wincent/trabajo/unversioned/typechecked.net/src/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+&#x0009;from /Users/wincent/trabajo/unversioned/wincent.dev/src/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
 &#x0009;from ./spec/views/products/../../spec_helper.rb:6
 &#x0009;from ./spec/views/products/index.html.haml_spec.rb:1:in `require'
 &#x0009;from ./spec/views/products/index.html.haml_spec.rb:1
-&#x0009;from /Users/wincent/trabajo/unversioned/typechecked.net/src/vendor/gems/rspec-1.3.0/lib/spec/runner/example_group_runner.rb:15:in `load'
-&#x0009;from /Users/wincent/trabajo/unversioned/typechecked.net/src/vendor/gems/rspec-1.3.0/lib/spec/runner/example_group_runner.rb:15:in `load_files'
-&#x0009;from /Users/wincent/trabajo/unversioned/typechecked.net/src/vendor/gems/rspec-1.3.0/lib/spec/runner/example_group_runner.rb:14:in `each'
-&#x0009;from /Users/wincent/trabajo/unversioned/typechecked.net/src/vendor/gems/rspec-1.3.0/lib/spec/runner/example_group_runner.rb:14:in `load_files'
-&#x0009;from /Users/wincent/trabajo/unversioned/typechecked.net/src/vendor/gems/rspec-1.3.0/lib/spec/runner/options.rb:133:in `run_examples'
-&#x0009;from /Users/wincent/trabajo/unversioned/typechecked.net/src/vendor/gems/rspec-1.3.0/lib/spec/runner/command_line.rb:9:in `run'
-&#x0009;from /Users/wincent/trabajo/unversioned/typechecked.net/src/vendor/gems/rspec-1.3.0/bin/spec:5
+&#x0009;from /Users/wincent/trabajo/unversioned/wincent.dev/src/vendor/gems/rspec-1.3.0/lib/spec/runner/example_group_runner.rb:15:in `load'
+&#x0009;from /Users/wincent/trabajo/unversioned/wincent.dev/src/vendor/gems/rspec-1.3.0/lib/spec/runner/example_group_runner.rb:15:in `load_files'
+&#x0009;from /Users/wincent/trabajo/unversioned/wincent.dev/src/vendor/gems/rspec-1.3.0/lib/spec/runner/example_group_runner.rb:14:in `each'
+&#x0009;from /Users/wincent/trabajo/unversioned/wincent.dev/src/vendor/gems/rspec-1.3.0/lib/spec/runner/example_group_runner.rb:14:in `load_files'
+&#x0009;from /Users/wincent/trabajo/unversioned/wincent.dev/src/vendor/gems/rspec-1.3.0/lib/spec/runner/options.rb:133:in `run_examples'
+&#x0009;from /Users/wincent/trabajo/unversioned/wincent.dev/src/vendor/gems/rspec-1.3.0/lib/spec/runner/command_line.rb:9:in `run'
+&#x0009;from /Users/wincent/trabajo/unversioned/wincent.dev/src/vendor/gems/rspec-1.3.0/bin/spec:5
 rake aborted!</pre
                   >
                 </div>

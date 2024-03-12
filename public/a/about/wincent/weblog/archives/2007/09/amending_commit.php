@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/amending-commits-with-git"
-        >https://typechecked.net/blog/amending-commits-with-git</a
+      <a href="https://wincent.dev/blog/amending-commits-with-git"
+        >https://wincent.dev/blog/amending-commits-with-git</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/amending-commits-with-git',
+      'https://wincent.dev/blog/amending-commits-with-git',
     );
   </script>
 </html>

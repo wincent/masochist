@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/half-star-ratings-in-itunes"
-        >https://typechecked.net/blog/half-star-ratings-in-itunes</a
+      <a href="https://wincent.dev/blog/half-star-ratings-in-itunes"
+        >https://wincent.dev/blog/half-star-ratings-in-itunes</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/half-star-ratings-in-itunes',
+      'https://wincent.dev/blog/half-star-ratings-in-itunes',
     );
   </script>
 </html>

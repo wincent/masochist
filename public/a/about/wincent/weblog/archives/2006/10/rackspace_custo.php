@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/rackspace-customer-service"
-        >https://typechecked.net/blog/rackspace-customer-service</a
+      <a href="https://wincent.dev/blog/rackspace-customer-service"
+        >https://wincent.dev/blog/rackspace-customer-service</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/rackspace-customer-service',
+      'https://wincent.dev/blog/rackspace-customer-service',
     );
   </script>
 </html>

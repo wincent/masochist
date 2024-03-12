@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/moab-childishness"
-        >https://typechecked.net/blog/moab-childishness</a
+      <a href="https://wincent.dev/blog/moab-childishness"
+        >https://wincent.dev/blog/moab-childishness</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/moab-childishness');
+    window.location.replace('https://wincent.dev/blog/moab-childishness');
   </script>
 </html>

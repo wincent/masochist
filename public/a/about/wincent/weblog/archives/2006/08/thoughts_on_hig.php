@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/thoughts-on-higher-order-messaging"
-        >https://typechecked.net/blog/thoughts-on-higher-order-messaging</a
+      <a href="https://wincent.dev/blog/thoughts-on-higher-order-messaging"
+        >https://wincent.dev/blog/thoughts-on-higher-order-messaging</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/thoughts-on-higher-order-messaging',
+      'https://wincent.dev/blog/thoughts-on-higher-order-messaging',
     );
   </script>
 </html>

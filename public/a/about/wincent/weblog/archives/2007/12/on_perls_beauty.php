@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/on-perls-beauty"
-        >https://typechecked.net/blog/on-perls-beauty</a
+      <a href="https://wincent.dev/blog/on-perls-beauty"
+        >https://wincent.dev/blog/on-perls-beauty</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/on-perls-beauty');
+    window.location.replace('https://wincent.dev/blog/on-perls-beauty');
   </script>
 </html>

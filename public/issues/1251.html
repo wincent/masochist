@@ -8,7 +8,7 @@
     />
     <title>
       Bug #1251: Impossible to link to a URL ending with a parenthesis &middot;
-      typechecked.net
+      wincent.dev
     </title>
     <link
       rel="stylesheet"
@@ -22,7 +22,7 @@
         <a id="top" name="top"></a>
         <nav class="global">
           <a class="menu-icon" href="#">&equiv;</a>
-          <h1><a href="/">typechecked.net</a></h1>
+          <h1><a href="/">wincent.dev</a></h1>
           <ul class="navbar-links">
             <li>
               <a href="/products">Products</a>
@@ -211,9 +211,9 @@ uri                 = ('mailto:'i mail) |
                     Nevertheless, this &quot;special/non-special&quot;
                     distinction is very useful in 99.9% of cases. It allows us
                     to write stuff like &quot;my home page (<a
-                      href="https://typechecked.net/"
+                      href="https://wincent.dev/"
                       class="external"
-                      >https://typechecked.net/</a
+                      >https://wincent.dev/</a
                     >)&quot; and have it work as the author intended with no
                     escaping or other special tricks. If we make the 0.1% case
                     work (URIs ending with a parenthesis) then we make things
@@ -222,8 +222,8 @@ uri                 = ('mailto:'i mail) |
                   <p>
                     Funnily enough, if I had used single quotes in my example
                     above then things wouldn't have worked. ie. 'my home page
-                    (<a href="https://typechecked.net/)'" class="external"
-                      >https://typechecked.net/)'</a
+                    (<a href="https://wincent.dev/)'" class="external"
+                      >https://wincent.dev/)'</a
                     >
                   </p>
                   <p>
@@ -286,9 +286,9 @@ uri                 = ('mailto:'i mail) |
                   <p>
                     I am not sure if this is desirable as someone could
                     conceivably write: &quot;See my website (<a
-                      href="https://typechecked.net/"
+                      href="https://wincent.dev/"
                       class="external"
-                      >https://typechecked.net/</a
+                      >https://wincent.dev/</a
                     >).&quot; and the parenthesis would now be erroneously
                     interpreted as being part of the URI.
                   </p>

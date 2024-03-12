@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/the-bool-return-problem"
-        >https://typechecked.net/blog/the-bool-return-problem</a
+      <a href="https://wincent.dev/blog/the-bool-return-problem"
+        >https://wincent.dev/blog/the-bool-return-problem</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/the-bool-return-problem');
+    window.location.replace('https://wincent.dev/blog/the-bool-return-problem');
   </script>
 </html>

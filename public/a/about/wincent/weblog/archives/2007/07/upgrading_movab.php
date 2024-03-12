@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/upgrading-movabletype-with-the-help-of-git"
-        >https://typechecked.net/blog/upgrading-movabletype-with-the-help-of-git</a
+        href="https://wincent.dev/blog/upgrading-movabletype-with-the-help-of-git"
+        >https://wincent.dev/blog/upgrading-movabletype-with-the-help-of-git</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/upgrading-movabletype-with-the-help-of-git',
+      'https://wincent.dev/blog/upgrading-movabletype-with-the-help-of-git',
     );
   </script>
 </html>

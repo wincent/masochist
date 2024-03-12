@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/itunesforum-com-giving-away-10-synergy-licenses"
-        >https://typechecked.net/blog/itunesforum-com-giving-away-10-synergy-licenses</a
+        href="https://wincent.dev/blog/itunesforum-com-giving-away-10-synergy-licenses"
+        >https://wincent.dev/blog/itunesforum-com-giving-away-10-synergy-licenses</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/itunesforum-com-giving-away-10-synergy-licenses',
+      'https://wincent.dev/blog/itunesforum-com-giving-away-10-synergy-licenses',
     );
   </script>
 </html>

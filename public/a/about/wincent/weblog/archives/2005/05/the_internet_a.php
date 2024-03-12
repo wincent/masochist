@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/the-internet-a-wretched-hive-of-scum-and-villany"
-        >https://typechecked.net/blog/the-internet-a-wretched-hive-of-scum-and-villany</a
+        href="https://wincent.dev/blog/the-internet-a-wretched-hive-of-scum-and-villany"
+        >https://wincent.dev/blog/the-internet-a-wretched-hive-of-scum-and-villany</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/the-internet-a-wretched-hive-of-scum-and-villany',
+      'https://wincent.dev/blog/the-internet-a-wretched-hive-of-scum-and-villany',
     );
   </script>
 </html>

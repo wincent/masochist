@@ -63,7 +63,7 @@
           valign="middle"
         >
           <!-- Begin: header content -->
-          <a href="https://typechecked.net/"
+          <a href="https://wincent.dev/"
             ><img
               src="/a/gfx/wincent-logo-small-gray-bg.jpg"
               width="43"
@@ -117,7 +117,7 @@
           <ul style="width: 73px; height: 25px;">
             <li class="menu">
               <a
-                href="https://typechecked.net/a/products/"
+                href="https://wincent.dev/a/products/"
                 title="Full products listing"
                 ><img
                   src="/a/gfx/header/products-on.jpg"
@@ -128,35 +128,35 @@
               <ul>
                 <li>
                   <a
-                    href="https://typechecked.net/products/synergy"
+                    href="https://wincent.dev/products/synergy"
                     title="The original iTunes menu bar controller"
                     >Synergy &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://typechecked.net/products/synergy/download"
+                        href="https://wincent.dev/products/synergy/download"
                         title="Download Synergy"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/synergy-classic/purchase/"
+                        href="https://wincent.dev/a/products/synergy-classic/purchase/"
                         title="Purchase Synergy"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/products/synergy/help"
+                        href="https://wincent.dev/products/synergy/help"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/synergy-classic/buttons/"
+                        href="https://wincent.dev/a/products/synergy-classic/buttons/"
                         title="Free button sets"
                         >Button Sets</a
                       >
@@ -165,35 +165,35 @@
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/products/synergy-advance/"
+                    href="https://wincent.dev/a/products/synergy-advance/"
                     title="Multi-purpose audio companion"
                     >Synergy Advance &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/synergy-advance/download/"
+                        href="https://wincent.dev/a/products/synergy-advance/download/"
                         title="Download Synergy Advance"
                         >Download preview</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/synergy-advance/purchase/"
+                        href="https://wincent.dev/a/products/synergy-advance/purchase/"
                         title="Purchase Synergy Advance"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/synergy-advance/donate/"
+                        href="https://wincent.dev/a/products/synergy-advance/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/synergy-advance/donate/"
+                        href="https://wincent.dev/a/products/synergy-advance/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
@@ -202,35 +202,35 @@
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/products/winswitch/"
+                    href="https://wincent.dev/a/products/winswitch/"
                     title="Enhanced replacement for Apple's Fast User Switching menu"
                     >WinSwitch &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/winswitch/download/"
+                        href="https://wincent.dev/a/products/winswitch/download/"
                         title="Download WinSwitch"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/winswitch/donate/"
+                        href="https://wincent.dev/a/products/winswitch/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/winswitch/donate/"
+                        href="https://wincent.dev/a/products/winswitch/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/winswitch/faq/"
+                        href="https://wincent.dev/a/products/winswitch/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -239,28 +239,28 @@
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/products/hextrapolate/"
+                    href="https://wincent.dev/a/products/hextrapolate/"
                     title="Programmers number conversion tool"
                     >Hextrapolate &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/hextrapolate/download/"
+                        href="https://wincent.dev/a/products/hextrapolate/download/"
                         title="Download Hextrapolate"
                         >Download</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/hextrapolate/purchase/"
+                        href="https://wincent.dev/a/products/hextrapolate/purchase/"
                         title="Purchase Hextrapolate"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/hextrapolate/faq/"
+                        href="https://wincent.dev/a/products/hextrapolate/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -269,42 +269,42 @@
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/products/install/"
+                    href="https://wincent.dev/a/products/install/"
                     title="Installation and deployment solution for developers"
                     >Install &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/install/download/"
+                        href="https://wincent.dev/a/products/install/download/"
                         title="Install downloads"
                         >Downloads</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/install/purchase/"
+                        href="https://wincent.dev/a/products/install/purchase/"
                         title="Purchase Install"
                         >Purchase</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/install/donate/"
+                        href="https://wincent.dev/a/products/install/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/install/donate/"
+                        href="https://wincent.dev/a/products/install/donate/"
                         title="Support development by becoming a sponsor"
                         >Sponsor</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/install/faq/"
+                        href="https://wincent.dev/a/products/install/faq/"
                         title="Frequently Asked Questions"
                         >FAQ</a
                       >
@@ -313,14 +313,14 @@
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/products/getsmart-pro/"
+                    href="https://wincent.dev/a/products/getsmart-pro/"
                     title="Intelligent download manager"
                     >GetSmart Pro &gt;</a
                   >
                   <ul>
                     <li>
                       <a
-                        href="https://typechecked.net/a/products/getsmart-pro/donate/"
+                        href="https://wincent.dev/a/products/getsmart-pro/donate/"
                         title="Support development with a donation"
                         >Donate</a
                       >
@@ -329,7 +329,7 @@
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/products/"
+                    href="https://wincent.dev/a/products/"
                     title="Full product listing"
                     >Other products...</a
                   >
@@ -339,7 +339,7 @@
           </ul>
         </td>
         <td width="48" height="25">
-          <a href="https://typechecked.net/a/store/" title="Wincent online store"
+          <a href="https://wincent.dev/a/store/" title="Wincent online store"
             ><img
               src="/a/gfx/header/store-off.jpg"
               width="48"
@@ -351,7 +351,7 @@
           <ul style="width: 63px; height: 25px;">
             <li class="menu">
               <a
-                href="https://typechecked.net/a/services/"
+                href="https://wincent.dev/a/services/"
                 title="Full services listing"
                 ><img
                   src="/a/gfx/header/services-off.jpg"
@@ -362,28 +362,28 @@
               <ul>
                 <li>
                   <a
-                    href="https://typechecked.net/a/services/custom-development/"
+                    href="https://wincent.dev/a/services/custom-development/"
                     title="Custom software development"
                     >Custom Development</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/services/mac-consultancy/"
+                    href="https://wincent.dev/a/services/mac-consultancy/"
                     title="Apple and Mac OS X consultancy"
                     >Apple/Mac Consultancy</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/services/web-design/"
+                    href="https://wincent.dev/a/services/web-design/"
                     title="Web design services"
                     >Web Design</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/services/hosting/"
+                    href="https://wincent.dev/a/services/hosting/"
                     title="Internet web and email hosting"
                     >Hosting</a
                   >
@@ -396,7 +396,7 @@
           <ul style="width: 62px; height: 25px;">
             <li class="menu">
               <a
-                href="https://typechecked.net/a/support/"
+                href="https://wincent.dev/a/support/"
                 title="Support resources and links"
                 ><img
                   src="/a/gfx/header/support-off.jpg"
@@ -407,56 +407,56 @@
               <ul>
                 <li>
                   <a
-                    href="https://typechecked.net/a/support/registration/"
+                    href="https://wincent.dev/a/support/registration/"
                     title="Retrieve lost license codes"
                     >Lost License Codes</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/support/bugs/"
+                    href="https://wincent.dev/a/support/bugs/"
                     title="Bug tracking and feature request database"
                     >Bugs and Feature Requests</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/support/demo-licenses/"
+                    href="https://wincent.dev/a/support/demo-licenses/"
                     title="Obtain a demonstration license"
                     >Demonstration licenses</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/support/forums/"
+                    href="https://wincent.dev/a/support/forums/"
                     title="Discussion and support forums"
                     >Forums</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/support/faq/"
+                    href="https://wincent.dev/a/support/faq/"
                     title="Frequently Asked Questions"
                     >FAQ</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/support/activation/"
+                    href="https://wincent.dev/a/support/activation/"
                     title="Product activation and information"
                     >Product Activation</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/support/tickets/"
+                    href="https://wincent.dev/a/support/tickets/"
                     title="Open or view a support ticket"
                     >Support Tickets</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/support/lists/"
+                    href="https://wincent.dev/a/support/lists/"
                     title="Subscribe/unsubscribe to/from a mailing list"
                     >Mailing lists</a
                   >
@@ -468,7 +468,7 @@
         <td width="53" height="25">
           <ul style="width: 53px; height: 25px;">
             <li class="menu">
-              <a href="https://typechecked.net/a/about/" title="Company information"
+              <a href="https://wincent.dev/a/about/" title="Company information"
                 ><img
                   src="/a/gfx/header/about-off.jpg"
                   width="53"
@@ -478,14 +478,14 @@
               <ul>
                 <li>
                   <a
-                    href="https://typechecked.net/a/about/wincent/"
+                    href="https://wincent.dev/a/about/wincent/"
                     title="About Wincent Colaiuta: the person"
                     >About Wincent Colaiuta</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/about/privacy/"
+                    href="https://wincent.dev/a/about/privacy/"
                     title="About the Wincent Privacy Policy"
                     >Privacy Policy</a
                   >
@@ -498,7 +498,7 @@
           <ul style="width: 49px; height: 25px;">
             <li class="menu">
               <a
-                href="https://typechecked.net/a/news/"
+                href="https://wincent.dev/a/news/"
                 title="Latest news items in weblog format"
                 ><img
                   src="/a/gfx/header/news-off.jpg"
@@ -509,28 +509,28 @@
               <ul>
                 <li>
                   <a
-                    href="https://typechecked.net/a/news/archives/mac_os_x_news/"
+                    href="https://wincent.dev/a/news/archives/mac_os_x_news/"
                     title="Apple and Mac OS X-related news"
                     >Mac OS X News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/news/archives/product_news/"
+                    href="https://wincent.dev/a/news/archives/product_news/"
                     title="Wincent product news"
                     >Product News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/a/news/archives/site_news/"
+                    href="https://wincent.dev/a/news/archives/site_news/"
                     title="Site-related news"
                     >Site News</a
                   >
                 </li>
                 <li>
                   <a
-                    href="https://typechecked.net/blog"
+                    href="https://wincent.dev/blog"
                     title="Development and other notes from Wincent"
                     >Wincent Colaiuta's weblog</a
                   >
@@ -541,7 +541,7 @@
         </td>
         <td width="107" height="25">
           <a
-            href="https://typechecked.net/wiki"
+            href="https://wincent.dev/wiki"
             title="Categorized Mac OS X tips and information"
             ><img
               src="/a/gfx/header/knowledge-base-off.jpg"
@@ -551,7 +551,7 @@
           /></a>
         </td>
         <td width="62" height="25">
-          <a href="https://typechecked.net/a/contact/" title="Contact email form"
+          <a href="https://wincent.dev/a/contact/" title="Contact email form"
             ><img
               src="/a/gfx/header/contact-off.jpg"
               width="62"
@@ -562,7 +562,7 @@
         <td width="72" height="25">
           <ul style="width: 72px; height: 25px;">
             <li class="menu">
-              <a href="https://typechecked.net/a/site-map/" title="Site overview"
+              <a href="https://wincent.dev/a/site-map/" title="Site overview"
                 ><img
                   src="/a/gfx/header/site-map-off.jpg"
                   width="72"
@@ -572,7 +572,7 @@
               <ul>
                 <li>
                   <a
-                    href="https://typechecked.net/a/site-map/search/"
+                    href="https://wincent.dev/a/site-map/search/"
                     title="Site search"
                     >Search</a
                   >
@@ -606,7 +606,7 @@
 
     <div id="breadcrumbs">
       <p>
-        <a href="https://typechecked.net/">Main</a>&nbsp;&gt;&nbsp;<a href="../../"
+        <a href="https://wincent.dev/">Main</a>&nbsp;&gt;&nbsp;<a href="../../"
           >Products</a
         >&nbsp;&gt;&nbsp;<a href="../">Synergy Advance</a>&nbsp;&gt;&nbsp;Donate
       </p>
@@ -617,86 +617,86 @@
           <h2>Synergy Advance links</h2>
           <ul>
             <li>
-              <a href="https://typechecked.net/a/products/synergy-advance/"
+              <a href="https://wincent.dev/a/products/synergy-advance/"
                 >Front page</a
               >
             </li>
             <li>
-              <a href="https://typechecked.net/a/products/synergy-advance/news/"
+              <a href="https://wincent.dev/a/products/synergy-advance/news/"
                 >News</a
               >
             </li>
             <li>
-              <a href="https://typechecked.net/a/products/synergy-advance/road-map/"
+              <a href="https://wincent.dev/a/products/synergy-advance/road-map/"
                 >Road map</a
               >
             </li>
             <li>
               <a
-                href="https://typechecked.net/a/products/synergy-advance/known-issues/"
+                href="https://wincent.dev/a/products/synergy-advance/known-issues/"
                 >Known issues</a
               >
             </li>
             <li>
-              <a href="https://typechecked.net/a/products/synergy-advance/download/"
+              <a href="https://wincent.dev/a/products/synergy-advance/download/"
                 >Download preview</a
               >
             </li>
             <li>
-              <a href="https://typechecked.net/a/products/synergy-advance/purchase/"
+              <a href="https://wincent.dev/a/products/synergy-advance/purchase/"
                 >Purchase</a
               >
             </li>
             <li>
-              <a href="https://typechecked.net/a/products/synergy-advance/donate/"
+              <a href="https://wincent.dev/a/products/synergy-advance/donate/"
                 >Donate</a
               >
             </li>
             <li>
-              <a href="https://typechecked.net/a/products/synergy-advance/donate/"
+              <a href="https://wincent.dev/a/products/synergy-advance/donate/"
                 >Sponsor</a
               >
             </li>
             <li>
-              <a href="https://typechecked.net/a/products/synergy-advance/help/"
+              <a href="https://wincent.dev/a/products/synergy-advance/help/"
                 >Help</a
               >
             </li>
             <li>
-              <a href="https://typechecked.net/a/products/synergy-advance/faq/"
+              <a href="https://wincent.dev/a/products/synergy-advance/faq/"
                 >FAQ</a
               >
             </li>
             <li>
-              <a href="https://typechecked.net/a/products/synergy-advance/history/"
+              <a href="https://wincent.dev/a/products/synergy-advance/history/"
                 >History</a
               >
             </li>
             <li>
-              <a href="https://typechecked.net/a/products/synergy-advance/support/"
+              <a href="https://wincent.dev/a/products/synergy-advance/support/"
                 >Support</a
               >
             </li>
             <li>
               <a
-                href="https://typechecked.net/a/products/synergy-advance/system-requirements/"
+                href="https://wincent.dev/a/products/synergy-advance/system-requirements/"
                 >System requirements</a
               >
             </li>
             <li>
-              <a href="https://typechecked.net/a/products/synergy-advance/license/"
+              <a href="https://wincent.dev/a/products/synergy-advance/license/"
                 >License</a
               >
             </li>
             <li>
-              <a href="https://typechecked.net/a/products/synergy-advance/credits/"
+              <a href="https://wincent.dev/a/products/synergy-advance/credits/"
                 >Credits</a
               >
             </li>
           </ul>
           <p align="center">
             <img
-              src="https://typechecked.net/a/gfx/tiger-compatible.jpg"
+              src="https://wincent.dev/a/gfx/tiger-compatible.jpg"
               alt="Tiger Compatible"
               border="0"
             />
@@ -726,7 +726,7 @@
               now, a process which has been quite slow because all the data has
               to be exported from a number of &quot;legacy&quot; applications
               and imported into a brand... [<a
-                href="https://typechecked.net/a/news/archives/2008/03/final_server_mi.php"
+                href="https://wincent.dev/a/news/archives/2008/03/final_server_mi.php"
                 >More...</a
               >]
             </li>
@@ -740,7 +740,7 @@
               underway. My aim is do this very carefully, service by service,
               and keep downtime to a minimum; hopefully minutes rather than
               hours. Just in case there is any interruption during the... [<a
-                href="https://typechecked.net/a/news/archives/2008/02/server_migratio.php"
+                href="https://wincent.dev/a/news/archives/2008/02/server_migratio.php"
                 >More...</a
               >]
             </li>
@@ -755,7 +755,7 @@
               that resolve to the
               Bansshee project page. These are coming up for renewal soon (they
               expire... [<a
-                href="https://typechecked.net/a/news/archives/2008/02/call_for_banssh.php"
+                href="https://wincent.dev/a/news/archives/2008/02/call_for_banssh.php"
                 >More...</a
               >]
             </li>
@@ -769,7 +769,7 @@
               soon be migrating DNS servers. I'll be doing everything I can to
               minimize downtime, and hopefully come close to eliminating it
               entirely as there will be a... [<a
-                href="https://typechecked.net/a/news/archives/2008/02/upcoming_dns_ch.php"
+                href="https://wincent.dev/a/news/archives/2008/02/upcoming_dns_ch.php"
                 >More...</a
               >]
             </li>
@@ -783,14 +783,14 @@
               Synergy, the fifth alpha release in the brand new 3.5 series. The
               last release, version 3.2, was Leopard-compatible but would also
               run on all versions of Mac OS X from... [<a
-                href="https://typechecked.net/a/news/archives/2008/01/synergy_35a5_re.php"
+                href="https://wincent.dev/a/news/archives/2008/01/synergy_35a5_re.php"
                 >More...</a
               >]
             </li>
           </ul>
 
           <p class="more">
-            <a href="https://typechecked.net/a/news/">More news articles...</a>
+            <a href="https://wincent.dev/a/news/">More news articles...</a>
           </p>
         </div>
       </div>

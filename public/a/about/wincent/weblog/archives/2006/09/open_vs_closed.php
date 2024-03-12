@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/open-vs-closed-secrecy-competition-and-business"
-        >https://typechecked.net/blog/open-vs-closed-secrecy-competition-and-business</a
+        href="https://wincent.dev/blog/open-vs-closed-secrecy-competition-and-business"
+        >https://wincent.dev/blog/open-vs-closed-secrecy-competition-and-business</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/open-vs-closed-secrecy-competition-and-business',
+      'https://wincent.dev/blog/open-vs-closed-secrecy-competition-and-business',
     );
   </script>
 </html>

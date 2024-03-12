@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/cocoa-bindings"
-        >https://typechecked.net/blog/cocoa-bindings</a
+      <a href="https://wincent.dev/blog/cocoa-bindings"
+        >https://wincent.dev/blog/cocoa-bindings</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/cocoa-bindings');
+    window.location.replace('https://wincent.dev/blog/cocoa-bindings');
   </script>
 </html>

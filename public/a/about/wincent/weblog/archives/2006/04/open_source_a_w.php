@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/open-source-a-workable-business-model-for-small-vendors"
-        >https://typechecked.net/blog/open-source-a-workable-business-model-for-small-vendors</a
+        href="https://wincent.dev/blog/open-source-a-workable-business-model-for-small-vendors"
+        >https://wincent.dev/blog/open-source-a-workable-business-model-for-small-vendors</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/open-source-a-workable-business-model-for-small-vendors',
+      'https://wincent.dev/blog/open-source-a-workable-business-model-for-small-vendors',
     );
   </script>
 </html>

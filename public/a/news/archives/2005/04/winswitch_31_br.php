@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/winswitch-3.1-brings-tiger-compatibility"
-        >https://typechecked.net/blog/winswitch-3.1-brings-tiger-compatibility</a
+        href="https://wincent.dev/blog/winswitch-3.1-brings-tiger-compatibility"
+        >https://wincent.dev/blog/winswitch-3.1-brings-tiger-compatibility</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/winswitch-3.1-brings-tiger-compatibility',
+      'https://wincent.dev/blog/winswitch-3.1-brings-tiger-compatibility',
     );
   </script>
 </html>

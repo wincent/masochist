@@ -1,64 +1,64 @@
 <h2>Synergy Advance links</h2>
 <ul>
   <li>
-    <a href="https://typechecked.net/a/products/synergy-advance/">Front page</a>
+    <a href="https://wincent.dev/a/products/synergy-advance/">Front page</a>
   </li>
   <li>
-    <a href="https://typechecked.net/a/products/synergy-advance/news/">News</a>
+    <a href="https://wincent.dev/a/products/synergy-advance/news/">News</a>
   </li>
   <li>
-    <a href="https://typechecked.net/a/products/synergy-advance/road-map/"
+    <a href="https://wincent.dev/a/products/synergy-advance/road-map/"
       >Road map</a
     >
   </li>
   <li>
-    <a href="https://typechecked.net/a/products/synergy-advance/known-issues/"
+    <a href="https://wincent.dev/a/products/synergy-advance/known-issues/"
       >Known issues</a
     >
   </li>
   <li>
-    <a href="https://typechecked.net/a/products/synergy-advance/download/"
+    <a href="https://wincent.dev/a/products/synergy-advance/download/"
       >Download preview</a
     >
   </li>
   <li>
-    <a href="https://typechecked.net/a/products/synergy-advance/purchase/"
+    <a href="https://wincent.dev/a/products/synergy-advance/purchase/"
       >Purchase</a
     >
   </li>
   <li>
-    <a href="https://typechecked.net/a/products/synergy-advance/donate/">Donate</a>
+    <a href="https://wincent.dev/a/products/synergy-advance/donate/">Donate</a>
   </li>
   <li>
-    <a href="https://typechecked.net/a/products/synergy-advance/donate/">Sponsor</a>
+    <a href="https://wincent.dev/a/products/synergy-advance/donate/">Sponsor</a>
   </li>
   <li>
-    <a href="https://typechecked.net/a/products/synergy-advance/help/">Help</a>
+    <a href="https://wincent.dev/a/products/synergy-advance/help/">Help</a>
   </li>
-  <li><a href="https://typechecked.net/a/products/synergy-advance/faq/">FAQ</a></li>
+  <li><a href="https://wincent.dev/a/products/synergy-advance/faq/">FAQ</a></li>
   <li>
-    <a href="https://typechecked.net/a/products/synergy-advance/history/"
+    <a href="https://wincent.dev/a/products/synergy-advance/history/"
       >History</a
     >
   </li>
   <li>
-    <a href="https://typechecked.net/a/products/synergy-advance/support/"
+    <a href="https://wincent.dev/a/products/synergy-advance/support/"
       >Support</a
     >
   </li>
   <li>
     <a
-      href="https://typechecked.net/a/products/synergy-advance/system-requirements/"
+      href="https://wincent.dev/a/products/synergy-advance/system-requirements/"
       >System requirements</a
     >
   </li>
   <li>
-    <a href="https://typechecked.net/a/products/synergy-advance/license/"
+    <a href="https://wincent.dev/a/products/synergy-advance/license/"
       >License</a
     >
   </li>
   <li>
-    <a href="https://typechecked.net/a/products/synergy-advance/credits/"
+    <a href="https://wincent.dev/a/products/synergy-advance/credits/"
       >Credits</a
     >
   </li>
@@ -66,7 +66,7 @@
 <p align="center">
   <a href="http://apple.com/universal/"
     ><img
-      src="https://typechecked.net/a/gfx/MacOSX_Universal_60px.gif"
+      src="https://wincent.dev/a/gfx/MacOSX_Universal_60px.gif"
       width="95"
       height="60"
       alt="Universal"
@@ -75,7 +75,7 @@
 </p>
 <p align="center">
   <img
-    src="https://typechecked.net/a/gfx/tiger-compatible.jpg"
+    src="https://wincent.dev/a/gfx/tiger-compatible.jpg"
     alt="Tiger Compatible"
     border="0"
   />

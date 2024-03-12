@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/synergy-and-synergy-advance-updates-just-around-the-corner"
-        >https://typechecked.net/blog/synergy-and-synergy-advance-updates-just-around-the-corner</a
+        href="https://wincent.dev/blog/synergy-and-synergy-advance-updates-just-around-the-corner"
+        >https://wincent.dev/blog/synergy-and-synergy-advance-updates-just-around-the-corner</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/synergy-and-synergy-advance-updates-just-around-the-corner',
+      'https://wincent.dev/blog/synergy-and-synergy-advance-updates-just-around-the-corner',
     );
   </script>
 </html>

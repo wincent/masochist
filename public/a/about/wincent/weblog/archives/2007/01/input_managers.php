@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/input-managers"
-        >https://typechecked.net/blog/input-managers</a
+      <a href="https://wincent.dev/blog/input-managers"
+        >https://wincent.dev/blog/input-managers</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/input-managers');
+    window.location.replace('https://wincent.dev/blog/input-managers');
   </script>
 </html>

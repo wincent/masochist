@@ -8,7 +8,7 @@
     />
     <title>
       Feature request #1494: Don't show dotfiles unless query contains a dot
-      &middot; typechecked.net
+      &middot; wincent.dev
     </title>
     <link
       rel="stylesheet"
@@ -22,7 +22,7 @@
         <a id="top" name="top"></a>
         <nav class="global">
           <a class="menu-icon" href="#">&equiv;</a>
-          <h1><a href="/">typechecked.net</a></h1>
+          <h1><a href="/">wincent.dev</a></h1>
           <ul class="navbar-links">
             <li>
               <a href="/products">Products</a>
@@ -241,8 +241,8 @@
                   <p>We want to match.</p>
                   <p>But given:</p>
                   <pre>
-foo/bar/typechecked.net/.secret/baz
-foo/bar/typechecked.net/baz
+foo/bar/wincent.dev/.secret/baz
+foo/bar/wincent.dev/baz
 foo/bar/.secret/baz</pre
                   >
                   <p>
@@ -257,7 +257,7 @@ foo/bar/.secret/baz</pre
                   <p>The pitfall here is given paths like:</p>
                   <pre>
 .Trash/wanted.docs/other/map/baz
-web/typechecked.net/baz</pre
+web/wincent.dev/baz</pre
                   >
                   <p>And a search string like:</p>
                   <pre>w.comb</pre>
@@ -412,9 +412,9 @@ end</pre
                   <ul>
                     <li><code>foo/bar/.secret/baz</code> (filtered)</li>
                     <li>
-                      <code>foo/bar/typechecked.net/.secret/baz</code> (filtered)
+                      <code>foo/bar/wincent.dev/.secret/baz</code> (filtered)
                     </li>
-                    <li><code>foo/bar/typechecked.net/baz</code></li>
+                    <li><code>foo/bar/wincent.dev/baz</code></li>
                     <li><code>foo/bar/.secret/baz</code> (filtered)</li>
                   </ul>
                   <p>Query:</p>
@@ -429,7 +429,7 @@ end</pre
                     <li>
                       <code>.Trash/wanted.docs/other/map/baz</code> (filtered)
                     </li>
-                    <li><code>web/typechecked.net/baz</code></li>
+                    <li><code>web/wincent.dev/baz</code></li>
                   </ul>
                   <p>Query:</p>
                   <ul>

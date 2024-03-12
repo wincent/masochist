@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/synergy-gets-5-mice-rating-in-macworld"
-        >https://typechecked.net/blog/synergy-gets-5-mice-rating-in-macworld</a
+      <a href="https://wincent.dev/blog/synergy-gets-5-mice-rating-in-macworld"
+        >https://wincent.dev/blog/synergy-gets-5-mice-rating-in-macworld</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/synergy-gets-5-mice-rating-in-macworld',
+      'https://wincent.dev/blog/synergy-gets-5-mice-rating-in-macworld',
     );
   </script>
 </html>

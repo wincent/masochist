@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/nil-vs-nil"
-        >https://typechecked.net/blog/nil-vs-nil</a
+      <a href="https://wincent.dev/blog/nil-vs-nil"
+        >https://wincent.dev/blog/nil-vs-nil</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/nil-vs-nil');
+    window.location.replace('https://wincent.dev/blog/nil-vs-nil');
   </script>
 </html>

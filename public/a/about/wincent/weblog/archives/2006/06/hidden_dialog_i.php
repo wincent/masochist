@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/hidden-dialog-in-mail.app"
-        >https://typechecked.net/blog/hidden-dialog-in-mail.app</a
+      <a href="https://wincent.dev/blog/hidden-dialog-in-mail.app"
+        >https://wincent.dev/blog/hidden-dialog-in-mail.app</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/hidden-dialog-in-mail.app',
+      'https://wincent.dev/blog/hidden-dialog-in-mail.app',
     );
   </script>
 </html>

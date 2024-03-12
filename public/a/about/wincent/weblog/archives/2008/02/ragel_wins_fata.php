@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/ragel-wins-fatality"
-        >https://typechecked.net/blog/ragel-wins-fatality</a
+      <a href="https://wincent.dev/blog/ragel-wins-fatality"
+        >https://wincent.dev/blog/ragel-wins-fatality</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/ragel-wins-fatality');
+    window.location.replace('https://wincent.dev/blog/ragel-wins-fatality');
   </script>
 </html>

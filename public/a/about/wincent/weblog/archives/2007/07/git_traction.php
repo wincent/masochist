@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/git-traction"
-        >https://typechecked.net/blog/git-traction</a
+      <a href="https://wincent.dev/blog/git-traction"
+        >https://wincent.dev/blog/git-traction</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/git-traction');
+    window.location.replace('https://wincent.dev/blog/git-traction');
   </script>
 </html>

@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/complimentary-licenses-for-synergy-advance-donors"
-        >https://typechecked.net/blog/complimentary-licenses-for-synergy-advance-donors</a
+        href="https://wincent.dev/blog/complimentary-licenses-for-synergy-advance-donors"
+        >https://wincent.dev/blog/complimentary-licenses-for-synergy-advance-donors</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/complimentary-licenses-for-synergy-advance-donors',
+      'https://wincent.dev/blog/complimentary-licenses-for-synergy-advance-donors',
     );
   </script>
 </html>

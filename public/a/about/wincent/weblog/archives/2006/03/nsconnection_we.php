@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/nsconnection-weirdness"
-        >https://typechecked.net/blog/nsconnection-weirdness</a
+      <a href="https://wincent.dev/blog/nsconnection-weirdness"
+        >https://wincent.dev/blog/nsconnection-weirdness</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/nsconnection-weirdness');
+    window.location.replace('https://wincent.dev/blog/nsconnection-weirdness');
   </script>
 </html>

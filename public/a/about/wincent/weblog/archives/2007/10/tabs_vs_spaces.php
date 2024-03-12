@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/tabs-vs-spaces"
-        >https://typechecked.net/blog/tabs-vs-spaces</a
+      <a href="https://wincent.dev/blog/tabs-vs-spaces"
+        >https://wincent.dev/blog/tabs-vs-spaces</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/tabs-vs-spaces');
+    window.location.replace('https://wincent.dev/blog/tabs-vs-spaces');
   </script>
 </html>

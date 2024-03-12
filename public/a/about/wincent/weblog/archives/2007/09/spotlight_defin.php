@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/spotlight-definitely-broken-on-my-machine"
-        >https://typechecked.net/blog/spotlight-definitely-broken-on-my-machine</a
+        href="https://wincent.dev/blog/spotlight-definitely-broken-on-my-machine"
+        >https://wincent.dev/blog/spotlight-definitely-broken-on-my-machine</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/spotlight-definitely-broken-on-my-machine',
+      'https://wincent.dev/blog/spotlight-definitely-broken-on-my-machine',
     );
   </script>
 </html>

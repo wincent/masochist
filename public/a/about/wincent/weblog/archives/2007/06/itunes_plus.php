@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/itunes-plus"
-        >https://typechecked.net/blog/itunes-plus</a
+      <a href="https://wincent.dev/blog/itunes-plus"
+        >https://wincent.dev/blog/itunes-plus</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/itunes-plus');
+    window.location.replace('https://wincent.dev/blog/itunes-plus');
   </script>
 </html>

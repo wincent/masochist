@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/more-than-i-ever-wanted-to-know-about-apples-objective-c-runtime"
-        >https://typechecked.net/blog/more-than-i-ever-wanted-to-know-about-apples-objective-c-runtime</a
+        href="https://wincent.dev/blog/more-than-i-ever-wanted-to-know-about-apples-objective-c-runtime"
+        >https://wincent.dev/blog/more-than-i-ever-wanted-to-know-about-apples-objective-c-runtime</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/more-than-i-ever-wanted-to-know-about-apples-objective-c-runtime',
+      'https://wincent.dev/blog/more-than-i-ever-wanted-to-know-about-apples-objective-c-runtime',
     );
   </script>
 </html>

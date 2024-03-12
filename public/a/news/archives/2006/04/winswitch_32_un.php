@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/winswitch-3.2-universal-binary-release"
-        >https://typechecked.net/blog/winswitch-3.2-universal-binary-release</a
+      <a href="https://wincent.dev/blog/winswitch-3.2-universal-binary-release"
+        >https://wincent.dev/blog/winswitch-3.2-universal-binary-release</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/winswitch-3.2-universal-binary-release',
+      'https://wincent.dev/blog/winswitch-3.2-universal-binary-release',
     );
   </script>
 </html>

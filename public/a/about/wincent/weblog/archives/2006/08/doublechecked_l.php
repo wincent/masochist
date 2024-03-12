@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/double-checked-locking-and-memory-barriers-take-two"
-        >https://typechecked.net/blog/double-checked-locking-and-memory-barriers-take-two</a
+        href="https://wincent.dev/blog/double-checked-locking-and-memory-barriers-take-two"
+        >https://wincent.dev/blog/double-checked-locking-and-memory-barriers-take-two</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/double-checked-locking-and-memory-barriers-take-two',
+      'https://wincent.dev/blog/double-checked-locking-and-memory-barriers-take-two',
     );
   </script>
 </html>

@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/special-offer-buy-synergy-advance-and-get-a-free-synergy-license"
-        >https://typechecked.net/blog/special-offer-buy-synergy-advance-and-get-a-free-synergy-license</a
+        href="https://wincent.dev/blog/special-offer-buy-synergy-advance-and-get-a-free-synergy-license"
+        >https://wincent.dev/blog/special-offer-buy-synergy-advance-and-get-a-free-synergy-license</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/special-offer-buy-synergy-advance-and-get-a-free-synergy-license',
+      'https://wincent.dev/blog/special-offer-buy-synergy-advance-and-get-a-free-synergy-license',
     );
   </script>
 </html>

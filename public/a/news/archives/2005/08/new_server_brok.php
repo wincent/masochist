@@ -6,14 +6,14 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/new-server-broken-links-travel-plans"
-        >https://typechecked.net/blog/new-server-broken-links-travel-plans</a
+      <a href="https://wincent.dev/blog/new-server-broken-links-travel-plans"
+        >https://wincent.dev/blog/new-server-broken-links-travel-plans</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/new-server-broken-links-travel-plans',
+      'https://wincent.dev/blog/new-server-broken-links-travel-plans',
     );
   </script>
 </html>

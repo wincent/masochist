@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/appkit-vs-foundation"
-        >https://typechecked.net/blog/appkit-vs-foundation</a
+      <a href="https://wincent.dev/blog/appkit-vs-foundation"
+        >https://wincent.dev/blog/appkit-vs-foundation</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/appkit-vs-foundation');
+    window.location.replace('https://wincent.dev/blog/appkit-vs-foundation');
   </script>
 </html>

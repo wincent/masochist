@@ -1,44 +1,44 @@
 <h2>Install links</h2>
 <ul>
-  <li><a href="https://typechecked.net/a/products/install/">Information</a></li>
+  <li><a href="https://wincent.dev/a/products/install/">Information</a></li>
   <li>
-    <a href="https://typechecked.net/a/products/install/screenshots/"
+    <a href="https://wincent.dev/a/products/install/screenshots/"
       >Screenshots</a
     >
   </li>
   <li>
-    <a href="https://typechecked.net/a/products/install/download/">Download</a>
+    <a href="https://wincent.dev/a/products/install/download/">Download</a>
   </li>
   <li>
-    <a href="https://typechecked.net/a/products/install/purchase/">Purchase</a>
+    <a href="https://wincent.dev/a/products/install/purchase/">Purchase</a>
   </li>
-  <li><a href="https://typechecked.net/a/products/install/donate/">Donate</a></li>
-  <li><a href="https://typechecked.net/a/products/install/donate/">Sponsor</a></li>
-  <li><a href="https://typechecked.net/a/products/install/support/">Support</a></li>
+  <li><a href="https://wincent.dev/a/products/install/donate/">Donate</a></li>
+  <li><a href="https://wincent.dev/a/products/install/donate/">Sponsor</a></li>
+  <li><a href="https://wincent.dev/a/products/install/support/">Support</a></li>
   <li>
-    <a href="https://typechecked.net/a/products/install/history/"
+    <a href="https://wincent.dev/a/products/install/history/"
       >Version history</a
     >
   </li>
   <li>
-    <a href="https://typechecked.net/a/products/install/faq/"
+    <a href="https://wincent.dev/a/products/install/faq/"
       >Frequently Asked Questions</a
     >
   </li>
   <li>
-    <a href="https://typechecked.net/a/products/install/licensing/">Licensing</a>
+    <a href="https://wincent.dev/a/products/install/licensing/">Licensing</a>
   </li>
   <li>
-    <a href="https://typechecked.net/a/products/install/licensees/"
+    <a href="https://wincent.dev/a/products/install/licensees/"
       >Licensees area (requires password)</a
     >
   </li>
-  <li><a href="https://typechecked.net/a/products/install/credits/">Credits</a></li>
+  <li><a href="https://wincent.dev/a/products/install/credits/">Credits</a></li>
 </ul>
 <p align="center">
   <a href="http://apple.com/universal/"
     ><img
-      src="https://typechecked.net/a/gfx/MacOSX_Universal_60px.gif"
+      src="https://wincent.dev/a/gfx/MacOSX_Universal_60px.gif"
       width="95"
       height="60"
       alt="Universal"
@@ -47,7 +47,7 @@
 </p>
 <p align="center">
   <img
-    src="https://typechecked.net/a/gfx/tiger-compatible.jpg"
+    src="https://wincent.dev/a/gfx/tiger-compatible.jpg"
     alt="Tiger Compatible"
     border="0"
   />

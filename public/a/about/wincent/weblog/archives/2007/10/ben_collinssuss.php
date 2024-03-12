@@ -7,14 +7,14 @@
     <p>
       The resource has moved to
       <a
-        href="https://typechecked.net/blog/ben-collins-sussman-doesnt-get-distributed-version-control"
-        >https://typechecked.net/blog/ben-collins-sussman-doesnt-get-distributed-version-control</a
+        href="https://wincent.dev/blog/ben-collins-sussman-doesnt-get-distributed-version-control"
+        >https://wincent.dev/blog/ben-collins-sussman-doesnt-get-distributed-version-control</a
       >
     </p>
   </body>
   <script type="text/javascript">
     window.location.replace(
-      'https://typechecked.net/blog/ben-collins-sussman-doesnt-get-distributed-version-control',
+      'https://wincent.dev/blog/ben-collins-sussman-doesnt-get-distributed-version-control',
     );
   </script>
 </html>

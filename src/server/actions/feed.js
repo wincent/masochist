@@ -61,7 +61,7 @@ export default (async function feed() {
       feed_url: SCHEME + HOST + '/blog.rss',
       generator: 'Masochist',
       site_url: SCHEME + HOST + '/blog',
-      title: 'typechecked.net blog',
+      title: 'wincent.dev blog',
     });
     const result = await runQuery(feedQuery().id);
     const data = result.data;

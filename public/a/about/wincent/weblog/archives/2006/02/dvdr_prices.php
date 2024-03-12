@@ -6,12 +6,12 @@
     <h1>Moved Permanently</h1>
     <p>
       The resource has moved to
-      <a href="https://typechecked.net/blog/dvd-r-prices"
-        >https://typechecked.net/blog/dvd-r-prices</a
+      <a href="https://wincent.dev/blog/dvd-r-prices"
+        >https://wincent.dev/blog/dvd-r-prices</a
       >
     </p>
   </body>
   <script type="text/javascript">
-    window.location.replace('https://typechecked.net/blog/dvd-r-prices');
+    window.location.replace('https://wincent.dev/blog/dvd-r-prices');
   </script>
 </html>
