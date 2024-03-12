@@ -1,6 +1,33 @@
 ---
 tags: perl perl.one.liners wiki
+title: Search and replace in multiple files with a Perl one-liner
 ---
+
+In 2024, Perl still seems like the best choice for ripping through a large directory hierarchy applying simple mass changes.
+
+In the context of [a Git repo like this one](https://github.com/wincent/masochist), I don't worry about creating backup files; I just let Perl do its thing and then check the result with `git status`/`git diff`. In order to not exceed permitted command-line lengths, I grab the list of files I want to operate on with `git-grep`, and then process them in chunks of 100 files with `xargs -L 100`.
+
+Here's an example commit changing 6,939 files on the `main` branch, out of 9,117 files, as seen in [this commit](https://github.com/wincent/masochist/commit/2b6188b8e6b781dd37c7d2f09e3d2f99c92b8aaf):
+
+```
+git grep -l typechecked.net | xargs -L 100 perl -p -i -e 's/typechecked\.net/wincent.dev/g'
+```
+
+And [the companion commit](https://github.com/wincent/masochist/commit/aef945efaa6eca9e63faf1b1a4404e225ecb19bf) which changed 938 files out of 8,216 files on the `content` branch:
+
+```
+git grep -z -l typechecked.net | xargs -0 -L 100 perl -p -i -e 's/typechecked\.net/wincent.dev/g'
+```
+
+Note the second one needed `-z` (turning on `NUL`-byte separators for `git-grep`) and `-0` (telling `xargs` to expect those separators), in order do avoid:
+
+```
+xargs: unterminated quote
+```
+
+due to filenames with quotes in them.
+
+# Older notes
 
 I recently needed to change all the occurrences of a string in a number of files. The following [perl one-liner](/wiki/perl_one-liner):
 
@@ -17,7 +44,7 @@ Note that you can also just read from standard in and write to standard out, and
 
     cat input | perl -pe 's/find/replace/g; s/another/foo/g' > output
 
-# Example
+## Example
 
 In moving to [SVK](/wiki/SVK) I needed to find a replacement for [Subversion externals](/wiki/Subversion_externals) (see "[Working around the lack of svn:externals support in SVK](/wiki/Working_around_the_lack_of_svn%3aexternals_support_in_SVK)"). Let's take the example of moving the [WOCommon](/wiki/WOCommon) external from inside the [Synergy Advance](/wiki/Synergy_Advance) source root:
 
