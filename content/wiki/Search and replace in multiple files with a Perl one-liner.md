@@ -27,6 +27,18 @@ xargs: unterminated quote
 
 due to filenames with quotes in them.
 
+Related to that, I wanted to go through my Git configs to make sure my references to the old hostname (`git.typechecked.net`) were updated to the new one (`git.wincent.dev`), so I did this in my home directory:
+
+```
+find . -type f -name config -print0 2> /dev/null | xargs -0 -L 100 grep -l typechecked.net | xargs perl -p -i -e 's/typechecked\.net/wincent.dev/g'
+```
+
+ie:
+
+- `find . -type f -name config -print0 2> /dev/null` (find all regular files named `config`)
+- `xargs -0 -L 100 grep -l typechecked.net` (filter that to only files containing `typechecked.net`)
+- `xargs perl -p -i -e 's/typechecked\.net/wincent.dev/g'` (do the find and replace in those files)
+
 # Older notes
 
 I recently needed to change all the occurrences of a string in a number of files. The following [perl one-liner](/wiki/perl_one-liner):
