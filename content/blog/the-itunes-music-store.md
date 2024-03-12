@@ -5,7 +5,7 @@ tags: blog
 
 Although I spend a lot of time running and using [iTunes](http://www.apple.com/itunes/) I had never purchased anything on the [iTunes Music Store](http://www.apple.com/itunes/store/), until yesterday.
 
-This may seem a little odd for a number of reasons: iTunes itself is normally running 24 hours a day on my computer; in my working life I spend a lot of time [writing](http://typechecked.net/a/products/synergy-advance/) [programs](http://typechecked.net/a/products/synergy-classic/) that talk to iTunes; and the iTunes Music Store itself has been available [where I live](http://en.wikipedia.org/wiki/Spain) since [26 October 2004](http://www.apple.com/pr/library/2004/oct/26itmseu.html), well over a year now.
+This may seem a little odd for a number of reasons: iTunes itself is normally running 24 hours a day on my computer; in my working life I spend a lot of time [writing](http://wincent.dev/a/products/synergy-advance/) [programs](http://wincent.dev/a/products/synergy-classic/) that talk to iTunes; and the iTunes Music Store itself has been available [where I live](http://en.wikipedia.org/wiki/Spain) since [26 October 2004](http://www.apple.com/pr/library/2004/oct/26itmseu.html), well over a year now.
 
 I've resisted for this long because I was worried about how much I might spend at the store. It's just all too easy: a single click and 99 cents and a few seconds later the track is downloaded to your machine. Well, I finally gave in, but I'm going to put a cap on my spending. I'll be buying no more than five tracks per month, and I'll only revise that limit upwards on the basis of very careful consideration.
 

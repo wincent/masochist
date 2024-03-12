@@ -1,5 +1,5 @@
 ---
-title: Fix irbrc file (typechecked.net, 65d26e4)
+title: Fix irbrc file (wincent.dev, 65d26e4)
 tags: snippets
 ---
 

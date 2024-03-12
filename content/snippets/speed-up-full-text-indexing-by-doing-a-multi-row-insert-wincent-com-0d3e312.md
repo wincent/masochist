@@ -1,5 +1,5 @@
 ---
-title: Speed up full-text indexing by doing a multi-row insert (typechecked.net, 0d3e312)
+title: Speed up full-text indexing by doing a multi-row insert (wincent.dev, 0d3e312)
 tags: snippets
 ---
 

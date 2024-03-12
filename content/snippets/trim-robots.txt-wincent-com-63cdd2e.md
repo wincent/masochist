@@ -1,5 +1,5 @@
 ---
-title: Trim robots.txt (typechecked.net, 63cdd2e)
+title: Trim robots.txt (wincent.dev, 63cdd2e)
 tags: snippets
 ---
 

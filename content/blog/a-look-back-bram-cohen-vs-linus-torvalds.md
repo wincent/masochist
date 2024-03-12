@@ -3,7 +3,7 @@ title: A look back: Bram Cohen vs Linus Torvalds
 tags: blog
 ---
 
-I just stumbled across a fascinating mailing list thread in which there's a fairly nasty exchange between two open source poster children, Bram Cohen (of BitTorrent fame, but in this case writing in his capacity as Codeville developer) and Linus Torvalds (of Linux fame, original author of [Git](http://typechecked.net/wiki/Git)).
+I just stumbled across a fascinating mailing list thread in which there's a fairly nasty exchange between two open source poster children, Bram Cohen (of BitTorrent fame, but in this case writing in his capacity as Codeville developer) and Linus Torvalds (of Linux fame, original author of [Git](http://wincent.dev/wiki/Git)).
 
 Now, I've never had a particular liking for either of these personalities, although I've had to recognize that they're very clever individuals. Both of them have been known for occasional demonstrations of arrogance.
 
@@ -41,7 +41,7 @@ He describes a scenario in which the merge algorithm doesn't produce desirable r
 >
 > **Bram:** So you think that a system which supports snapshots and history but has no merging functionality whatsoever is the right thing? I'm asking this seriously.
 
-I'm not sure how many merge algorithms [Git](http://typechecked.net/wiki/Git) has at the time that thread took place, but today it has four (see the `git-merge` man page for details). But clever or non-clever merge algorithms are besides the point: what were the real insights that Torvalds somehow grasped from the very beginning? What is it that made me describe him above as "a frickin' genius"?
+I'm not sure how many merge algorithms [Git](http://wincent.dev/wiki/Git) has at the time that thread took place, but today it has four (see the `git-merge` man page for details). But clever or non-clever merge algorithms are besides the point: what were the real insights that Torvalds somehow grasped from the very beginning? What is it that made me describe him above as "a frickin' genius"?
 
 ### What Git does right
 
@@ -57,7 +57,7 @@ The other fundamentally smart design decision is how Git does merges. The mergin
 
 ### Footnote
 
-If you try the tricky merge issue described by the Monotone dev [above](http://article.gmane.org/gmane.comp.version-control.monotone.devel/3264) you'll find that [Git](http://typechecked.net/wiki/Git) does exactly the right thing:
+If you try the tricky merge issue described by the Monotone dev [above](http://article.gmane.org/gmane.comp.version-control.monotone.devel/3264) you'll find that [Git](http://wincent.dev/wiki/Git) does exactly the right thing:
 
     mkdir playground
     cd playground

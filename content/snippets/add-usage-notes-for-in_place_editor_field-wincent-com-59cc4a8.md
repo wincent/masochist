@@ -1,5 +1,5 @@
 ---
-title: Add usage notes for in_place_editor_field (typechecked.net, 59cc4a8)
+title: Add usage notes for in_place_editor_field (wincent.dev, 59cc4a8)
 tags: snippets
 ---
 

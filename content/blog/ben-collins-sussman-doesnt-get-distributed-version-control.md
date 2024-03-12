@@ -3,7 +3,7 @@ title: Ben Collins-Sussman doesn't "get" distributed version control
 tags: blog
 ---
 
-[Subversion](http://typechecked.net/wiki/Subversion) developer Ben Collins-Sussman has just posted [this piece of flamebait](http://blog.red-bean.com/sussman/?p=79) packed with emotionally-loaded mischaracterizations of people who use distributed version control systems like [Git](http://typechecked.net/wiki/Git).
+[Subversion](http://wincent.dev/wiki/Subversion) developer Ben Collins-Sussman has just posted [this piece of flamebait](http://blog.red-bean.com/sussman/?p=79) packed with emotionally-loaded mischaracterizations of people who use distributed version control systems like [Git](http://wincent.dev/wiki/Git).
 
 > Distributed Version Control Systems (DVCS) are all the range (sic) among the alpha-geeks. They're thrilled with tools like git ... Many of these early adopters ... are just obnoxious fanboys who love DVCS because it's new and shiny.
 

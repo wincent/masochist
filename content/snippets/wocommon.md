@@ -3,4 +3,4 @@ title: WOCommon
 tags: snippets
 ---
 
-Started work on a new code-sharing project, [WOCommon](http://typechecked.net/wiki/WOCommon).
+Started work on a new code-sharing project, [WOCommon](http://wincent.dev/wiki/WOCommon).

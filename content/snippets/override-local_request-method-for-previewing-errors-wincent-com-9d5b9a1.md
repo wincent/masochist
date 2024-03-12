@@ -1,5 +1,5 @@
 ---
-title: Override local_request? method for previewing errors (typechecked.net, 9d5b9a1)
+title: Override local_request? method for previewing errors (wincent.dev, 9d5b9a1)
 tags: snippets
 ---
 

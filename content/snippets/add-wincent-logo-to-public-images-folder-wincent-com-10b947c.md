@@ -1,5 +1,5 @@
 ---
-title: Add Wincent logo to "public/images" folder (typechecked.net, 10b947c)
+title: Add Wincent logo to "public/images" folder (wincent.dev, 10b947c)
 tags: snippets
 ---
 

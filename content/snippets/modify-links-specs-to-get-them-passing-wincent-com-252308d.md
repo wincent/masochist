@@ -1,5 +1,5 @@
 ---
-title: Modify links specs to get them passing (typechecked.net, 252308d)
+title: Modify links specs to get them passing (wincent.dev, 252308d)
 tags: snippets
 ---
 

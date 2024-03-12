@@ -1,5 +1,5 @@
 ---
-title: Add application controller specs (typechecked.net, f7ec927)
+title: Add application controller specs (wincent.dev, f7ec927)
 tags: snippets
 ---
 

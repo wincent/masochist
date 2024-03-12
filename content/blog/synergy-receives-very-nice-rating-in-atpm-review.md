@@ -3,4 +3,4 @@ title: Synergy receives "Very Nice" rating in ATPM review
 tags: blog
 ---
 
-You can read the review [here](http://www.atpm.com/12.12/synergy.shtml) or see the [testimonials](http://typechecked.net/a/products/synergy-classic/testimonials/) page for links to all Synergy reviews.
+You can read the review [here](http://www.atpm.com/12.12/synergy.shtml) or see the [testimonials](http://wincent.dev/a/products/synergy-classic/testimonials/) page for links to all Synergy reviews.

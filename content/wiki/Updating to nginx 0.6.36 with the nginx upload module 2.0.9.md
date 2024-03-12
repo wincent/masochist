@@ -41,22 +41,22 @@ Not really sure why it's trying to create that directory, seeing as my config ex
         listen 127.0.0.1:3001;
         server_name rails.example.local;
         rewrite ^/(.*) https://localhost:3002/$1 permanent;
-        client_body_temp_path /Users/wincent/trabajo/unversioned/typechecked.net/src/tmp/client_body_temp;
-        fastcgi_temp_path /Users/wincent/trabajo/unversioned/typechecked.net/src/tmp/fast_cgi_temp;
-        proxy_temp_path /Users/wincent/trabajo/unversioned/typechecked.net/src/tmp/proxy_temp;
-        access_log /Users/wincent/trabajo/unversioned/typechecked.net/src/log/access_log;
+        client_body_temp_path /Users/wincent/trabajo/unversioned/wincent.dev/src/tmp/client_body_temp;
+        fastcgi_temp_path /Users/wincent/trabajo/unversioned/wincent.dev/src/tmp/fast_cgi_temp;
+        proxy_temp_path /Users/wincent/trabajo/unversioned/wincent.dev/src/tmp/proxy_temp;
+        access_log /Users/wincent/trabajo/unversioned/wincent.dev/src/log/access_log;
       } # end: server
 
       server {
         listen 127.0.0.1:3002;
         ssl on;
-        ssl_certificate /Users/wincent/trabajo/unversioned/typechecked.net/src/config/local/ssl.crt;
-        ssl_certificate_key /Users/wincent/trabajo/unversioned/typechecked.net/src/config/local/ssl.key;
+        ssl_certificate /Users/wincent/trabajo/unversioned/wincent.dev/src/config/local/ssl.crt;
+        ssl_certificate_key /Users/wincent/trabajo/unversioned/wincent.dev/src/config/local/ssl.key;
         server_name rails.example.local;
-        root /Users/wincent/trabajo/unversioned/typechecked.net/src/public;
-        client_body_temp_path /Users/wincent/trabajo/unversioned/typechecked.net/src/tmp/client_body_temp;
-        fastcgi_temp_path /Users/wincent/trabajo/unversioned/typechecked.net/src/tmp/fast_cgi_temp;
-        proxy_temp_path /Users/wincent/trabajo/unversioned/typechecked.net/src/tmp/proxy_temp;
+        root /Users/wincent/trabajo/unversioned/wincent.dev/src/public;
+        client_body_temp_path /Users/wincent/trabajo/unversioned/wincent.dev/src/tmp/client_body_temp;
+        fastcgi_temp_path /Users/wincent/trabajo/unversioned/wincent.dev/src/tmp/fast_cgi_temp;
+        proxy_temp_path /Users/wincent/trabajo/unversioned/wincent.dev/src/tmp/proxy_temp;
 
 Ok, I just tried rebuilding without the module:
 

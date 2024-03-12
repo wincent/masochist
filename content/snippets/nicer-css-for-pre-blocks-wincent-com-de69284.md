@@ -1,5 +1,5 @@
 ---
-title: Nicer CSS for PRE blocks (typechecked.net, de69284)
+title: Nicer CSS for PRE blocks (wincent.dev, de69284)
 tags: snippets
 ---
 

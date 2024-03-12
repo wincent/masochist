@@ -10,7 +10,7 @@ title: OmniDazzle
 
 For an example [screencast](/wiki/screencast) showing [OmniDazzle](/wiki/OmniDazzle) in use see this [screencast](/wiki/screencast):
 
--   <http://typechecked.net/a/about/wincent/weblog/archives/2007/04/noncontiguous_s.php>
+-   <http://wincent.dev/a/about/wincent/weblog/archives/2007/04/noncontiguous_s.php>
 
 # See also
 

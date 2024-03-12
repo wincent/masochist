@@ -1,5 +1,5 @@
 ---
-title: Add database-level constraint for product name uniqueness (typechecked.net, 7805a54)
+title: Add database-level constraint for product name uniqueness (wincent.dev, 7805a54)
 tags: snippets
 ---
 

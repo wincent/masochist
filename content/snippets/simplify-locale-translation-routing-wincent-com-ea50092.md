@@ -1,5 +1,5 @@
 ---
-title: Simplify locale/translation routing (typechecked.net, ea50092)
+title: Simplify locale/translation routing (wincent.dev, ea50092)
 tags: snippets
 ---
 

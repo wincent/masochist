@@ -1,5 +1,5 @@
 ---
-title: Install RSpec plugins (typechecked.net, cd983c8)
+title: Install RSpec plugins (wincent.dev, cd983c8)
 tags: snippets
 ---
 

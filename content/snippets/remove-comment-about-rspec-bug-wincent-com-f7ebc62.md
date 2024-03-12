@@ -1,5 +1,5 @@
 ---
-title: Remove comment about RSpec bug (typechecked.net, f7ebc62)
+title: Remove comment about RSpec bug (wincent.dev, f7ebc62)
 tags: snippets
 ---
 

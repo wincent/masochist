@@ -1,5 +1,5 @@
 ---
-title: Merge branch 'master' of git.typechecked.net:[filtered]/Synergy (Synergy, 7bc11aa)
+title: Merge branch 'master' of git.wincent.dev:[filtered]/Synergy (Synergy, 7bc11aa)
 tags: snippets
 ---
 

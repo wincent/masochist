@@ -1,5 +1,5 @@
 ---
-title: Whitespace fix (typechecked.net, c9914a6)
+title: Whitespace fix (wincent.dev, c9914a6)
 tags: snippets
 ---
 

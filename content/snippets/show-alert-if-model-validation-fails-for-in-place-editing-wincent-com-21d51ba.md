@@ -1,5 +1,5 @@
 ---
-title: Show alert if model validation fails for in-place editing (typechecked.net, 21d51ba)
+title: Show alert if model validation fails for in-place editing (wincent.dev, 21d51ba)
 tags: snippets
 ---
 

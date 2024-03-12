@@ -1,5 +1,5 @@
 ---
-title: Provide nice redirection if lacking privileges (typechecked.net, 0e41246)
+title: Provide nice redirection if lacking privileges (wincent.dev, 0e41246)
 tags: snippets
 ---
 

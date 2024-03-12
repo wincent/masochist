@@ -11,7 +11,7 @@ This is some feedback I just sent to [GoDaddy](http://www.godaddy.com/), on the 
 
 > GoDaddy's pricing policy is going to end up hurting it. You have great prices for new customers, but you don't reward them for their loyalty; instead you give them a large disincentive to renew.
 
-This is a shame. [I like GoDaddy](http://typechecked.net/a/about/wincent/weblog/archives/2005/05/godaddy_vs_netw.php). But they've disappointed me in this case.
+This is a shame. [I like GoDaddy](http://wincent.dev/a/about/wincent/weblog/archives/2005/05/godaddy_vs_netw.php). But they've disappointed me in this case.
 
 If someone else wants to snap up the domain I will be happy to continue hosting it on this server. At some point DNS look-ups for piratewatch.org will start to fail (when GoDaddy pulls the plug). In the meantime I have moved the site to.
 

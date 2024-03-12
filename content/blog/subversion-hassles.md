@@ -3,7 +3,7 @@ title: Subversion hassles
 tags: blog
 ---
 
-I've just spent several hours [working around a Subversion problem](http://typechecked.net/wiki/Repository_migration#Caveat). I don't know whether the fault lay with the Subversion internals, is limited to the `svnadmin` tool's `load` functionality, or is really the fault of the underlying filesystem on Red Hat Linux. Whatever the root cause, it's cost me a bunch of hours.
+I've just spent several hours [working around a Subversion problem](http://wincent.dev/wiki/Repository_migration#Caveat). I don't know whether the fault lay with the Subversion internals, is limited to the `svnadmin` tool's `load` functionality, or is really the fault of the underlying filesystem on Red Hat Linux. Whatever the root cause, it's cost me a bunch of hours.
 
 The short version: I was trying to migrate a repository from my local Subversion server (on Mac OS X) to a remote Subversion server (on Red Hat Linux). A number of pesky files in old revisions of the repository were preventing the `load` from working, thus derailing the entire process.
 

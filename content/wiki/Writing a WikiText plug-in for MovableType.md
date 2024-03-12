@@ -40,7 +40,7 @@ Here's the first version of my first [MovableType](/wiki/MovableType) plugin:
             require Text::MediawikiFormat;
             my $text        = shift;
             my $context     = shift;
-            my $converted   = Text::MediawikiFormat::format($text, {}, { prefix => 'http://typechecked.net/wiki/' });
+            my $converted   = Text::MediawikiFormat::format($text, {}, { prefix => 'http://wincent.dev/wiki/' });
             $converted;
         }
     });
@@ -59,4 +59,4 @@ Here's the first version of my first [MovableType](/wiki/MovableType) plugin:
 
 -   [MovableType](/wiki/MovableType) API documentation: <http://www.sixapart.com/movabletype/docs/mtapi_mt.html>
 -   "How to Write a Plugin": <http://www.sixapart.com/movabletype/docs/plugin-tut>
--   Accompanying article on weblog: <http://typechecked.net/a/about/wincent/weblog/archives/2007/03/using_mediawiki.php>
+-   Accompanying article on weblog: <http://wincent.dev/a/about/wincent/weblog/archives/2007/03/using_mediawiki.php>

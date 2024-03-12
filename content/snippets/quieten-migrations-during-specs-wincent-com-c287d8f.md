@@ -1,5 +1,5 @@
 ---
-title: Quieten migrations during specs (typechecked.net, c287d8f)
+title: Quieten migrations during specs (wincent.dev, c287d8f)
 tags: snippets
 ---
 

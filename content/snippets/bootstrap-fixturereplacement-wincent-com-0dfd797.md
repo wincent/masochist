@@ -1,5 +1,5 @@
 ---
-title: Bootstrap FixtureReplacement (typechecked.net, 0dfd797)
+title: Bootstrap FixtureReplacement (wincent.dev, 0dfd797)
 tags: snippets
 ---
 

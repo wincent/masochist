@@ -11,4 +11,4 @@ A full changelog appears [here](/products/synergy/history). The version number h
 
 This will be a free upgrade for users with a valid license for Synergy 4.0 (which means any license purchased after 5 September 2006). See [this blog post](/blog/synergy-4.0-upgrades) to find out whether you qualify. If you got Synergy through the MacHeist Giving Tree bundle see [the MacHeist FAQ](/blog/frequently-asked-questions-about-synergy-and-macheist).
 
-You can download the new release from [here](/l/synergy5) (direct link) and purchase a license using [this page](https://typechecked.net/a/products/synergy-classic/purchase/).
+You can download the new release from [here](/l/synergy5) (direct link) and purchase a license using [this page](https://wincent.dev/a/products/synergy-classic/purchase/).

@@ -1,5 +1,5 @@
 ---
-title: Add skeletal models (typechecked.net, a50b4bc)
+title: Add skeletal models (wincent.dev, a50b4bc)
 tags: snippets
 ---
 

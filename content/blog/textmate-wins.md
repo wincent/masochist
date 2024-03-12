@@ -9,7 +9,7 @@ Basically, I have no "need" whatsoever for yet another text editor.
 
 Nevertheless, I've looked at TextMate various times over the last few months. Lately with all the Ruby editing I've been doing I've been spending hours each day looking at a TextMate window. This is because there is no viable IDE for Ruby on Mac OS X at this time. I did try [Eclipse](http://www.eclipse.org/) with the [Ruby Development Tools](http://rubyeclipse.sourceforge.net/) but I just couldn't stomach such a horrible, bloated Java application in which the debugger didn't even work properly (at least, not for me: I couldn't set breakpoints). When will Java applications look and perform like "native" Cocoa apps? "Never" is my guess...
 
-So lately I've been using TextMate for editing Ruby source code, and I've been hitting Command-R to run my specs. It's not a true "IDE" but the work flow could be worse. When I need to debug I've been [doing it from the command-line](http://typechecked.net/wiki/Interactive_debugging_with_ruby-debug) using `rdebug`.
+So lately I've been using TextMate for editing Ruby source code, and I've been hitting Command-R to run my specs. It's not a true "IDE" but the work flow could be worse. When I need to debug I've been [doing it from the command-line](http://wincent.dev/wiki/Interactive_debugging_with_ruby-debug) using `rdebug`.
 
 I finally decided to throw some money Allan's way today for the following reasons:
 

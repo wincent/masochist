@@ -49,7 +49,7 @@ A long-winded alternative, something like the following, doesn't set off those s
                   return:@"foo"
                arguments:3];
 
-(Although in reality such a method — one that accepts a variable number of arguments — would come up against the [same problems](http://typechecked.net/a/about/wincent/weblog/archives/2006/02/more_than_i_eve.php) that any `NSInvocation`-based mechanism comes up against when it comes to trying to forward messages when working with variable numbers of arguments.)
+(Although in reality such a method — one that accepts a variable number of arguments — would come up against the [same problems](http://wincent.dev/a/about/wincent/weblog/archives/2006/02/more_than_i_eve.php) that any `NSInvocation`-based mechanism comes up against when it comes to trying to forward messages when working with variable numbers of arguments.)
 
 That's why I haven't embraced HOM yet. That, and the fact that it works at such a low level that Apple could break it at any time in a future OS update. (To be fair, I should qualify that statement and say that "most _existing_ implementations could be broken at any time in a future OS update"; it is possible to implement most HOM patterns in an unoptimized way without relying on too many low-level runtime details.)
 

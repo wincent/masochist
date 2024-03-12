@@ -1,5 +1,5 @@
 ---
-title: Prettify wiki URLs (typechecked.net, 7a865f9)
+title: Prettify wiki URLs (wincent.dev, 7a865f9)
 tags: snippets
 ---
 

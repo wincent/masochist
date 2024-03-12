@@ -1,5 +1,5 @@
 ---
-title: Tags interface (typechecked.net, 37ee0e1)
+title: Tags interface (wincent.dev, 37ee0e1)
 tags: snippets
 ---
 

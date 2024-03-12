@@ -1,5 +1,5 @@
 ---
-title: Add update_attribute! to Active Record (typechecked.net, cec57c5)
+title: Add update_attribute! to Active Record (wincent.dev, cec57c5)
 tags: snippets
 ---
 

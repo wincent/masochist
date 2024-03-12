@@ -3,7 +3,7 @@ title: Month of Apple Bugs update
 tags: blog
 ---
 
-I continue to disapprove of the disclosure practices of the people running the [Month of Apple Bugs](http://typechecked.net/a/about/wincent/weblog/archives/2007/01/month_of_apple.php) (to be clear, I disapprove of _how_ the vulnerabilities are being disclosed, not the fact that disclosure is taking place).
+I continue to disapprove of the disclosure practices of the people running the [Month of Apple Bugs](http://wincent.dev/a/about/wincent/weblog/archives/2007/01/month_of_apple.php) (to be clear, I disapprove of _how_ the vulnerabilities are being disclosed, not the fact that disclosure is taking place).
 
 Reading [the transcript](http://projects.info-pull.com/moab/bug-files/landonf_bikemonkey.org-2007-01-07.html) of the discussion between "LMH" (who has been making the disclosures) and [Landon Fuller](http://landonf.bikemonkey.org/) (who has been providing fixes) is quite interesting.
 

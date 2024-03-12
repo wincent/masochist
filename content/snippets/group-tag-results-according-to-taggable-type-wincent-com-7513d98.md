@@ -1,5 +1,5 @@
 ---
-title: Group tag results according to taggable type (typechecked.net, 7513d98)
+title: Group tag results according to taggable type (wincent.dev, 7513d98)
 tags: snippets
 ---
 

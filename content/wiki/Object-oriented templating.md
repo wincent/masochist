@@ -17,5 +17,5 @@ Executing the compiled templates, otherwise known as "filling" them, produces th
 
 # Related posts
 
--   <http://typechecked.net/a/about/wincent/weblog/archives/2006/10/objectoriented.php>
--   <http://typechecked.net/a/about/wincent/weblog/archives/2007/04/payoff_time.php>
+-   <http://wincent.dev/a/about/wincent/weblog/archives/2006/10/objectoriented.php>
+-   <http://wincent.dev/a/about/wincent/weblog/archives/2007/04/payoff_time.php>

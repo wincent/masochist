@@ -1,5 +1,5 @@
 ---
-title: Re-run all specs whenever schema changes (typechecked.net, 9511ecd)
+title: Re-run all specs whenever schema changes (wincent.dev, 9511ecd)
 tags: snippets
 ---
 

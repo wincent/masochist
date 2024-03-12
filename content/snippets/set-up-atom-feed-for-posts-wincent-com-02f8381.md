@@ -1,5 +1,5 @@
 ---
-title: Set up Atom feed for posts (typechecked.net, 02f8381)
+title: Set up Atom feed for posts (wincent.dev, 02f8381)
 tags: snippets
 ---
 

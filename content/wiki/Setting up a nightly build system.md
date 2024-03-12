@@ -84,4 +84,4 @@ Cleaning and re-building, as well as blowing away the "Build" and "Build-interme
 
 # See also
 
--   Wincent nightlies information page: <http://typechecked.net/s/nightlies/>
+-   Wincent nightlies information page: <http://wincent.dev/s/nightlies/>

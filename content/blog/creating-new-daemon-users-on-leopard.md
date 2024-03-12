@@ -3,9 +3,9 @@ title: Creating new daemon users on Leopard
 tags: blog
 ---
 
-I just made a curious realization while trying to build [MySQL](http://typechecked.net/wiki/MySQL) for [Leopard](http://typechecked.net/wiki/Leopard): I don't know how to create new daemon user. No doubt this is ridiculously easy with Mac OS X Server, but in the non-server version it's far from obvious.
+I just made a curious realization while trying to build [MySQL](http://wincent.dev/wiki/MySQL) for [Leopard](http://wincent.dev/wiki/Leopard): I don't know how to create new daemon user. No doubt this is ridiculously easy with Mac OS X Server, but in the non-server version it's far from obvious.
 
-The NetInfo Manager utility has finally be laid to rest, but so have [command line](http://typechecked.net/wiki/command%20line) tools like `adduser`. The `/etc/passwd` file starts with this info:
+The NetInfo Manager utility has finally be laid to rest, but so have [command line](http://wincent.dev/wiki/command%20line) tools like `adduser`. The `/etc/passwd` file starts with this info:
 
     ##
     # User Database
@@ -25,7 +25,7 @@ So what am I supposed to do? Use the Directory Utility application to turn on th
 
 ### Update
 
--   Luckily, thanks to somebody who didn't know that Leopard was under an [NDA](http://typechecked.net/wiki/NDA), found [this article](http://www.michaelnygard.com/blog/2007/04/moving_your_home_directory_on.html) published back in April describing the `dscl` tool, a command line interface for Directory Services.
+-   Luckily, thanks to somebody who didn't know that Leopard was under an [NDA](http://wincent.dev/wiki/NDA), found [this article](http://www.michaelnygard.com/blog/2007/04/moving_your_home_directory_on.html) published back in April describing the `dscl` tool, a command line interface for Directory Services.
 -   <http://docs.info.apple.com/article.html?artnum=306494>
 -   <http://www.royhooper.ca/blog/articles/2007/10/27/creating-os-only-users-on-leopard>
 

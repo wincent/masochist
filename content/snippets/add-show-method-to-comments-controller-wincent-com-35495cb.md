@@ -1,5 +1,5 @@
 ---
-title: Add show method to comments controller (typechecked.net, 35495cb)
+title: Add show method to comments controller (wincent.dev, 35495cb)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Only show comments if accepted now or in the past (typechecked.net, 5e48659)
+title: Only show comments if accepted now or in the past (wincent.dev, 5e48659)
 tags: snippets
 ---
 

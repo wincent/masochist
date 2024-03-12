@@ -1,5 +1,5 @@
 ---
-title: Inital forums implementation (typechecked.net, d93f88d)
+title: Inital forums implementation (wincent.dev, d93f88d)
 tags: snippets
 ---
 

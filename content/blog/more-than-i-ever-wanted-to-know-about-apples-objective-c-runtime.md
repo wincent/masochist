@@ -3,7 +3,7 @@ title: More than I ever wanted to know about Apple's Objective-C runtime
 tags: blog
 ---
 
-Some time ago I wrote about [adding mock objects to WOTest](http://typechecked.net/a/about/wincent/weblog/archives/2005/06/mock_objects_in.php). Over the last couple of days I set about trying to improve them and make them more elegant and flexible. In the process I've learnt a lot of about message dispatch system in Apple's Objective-C runtime. Too much. Read on if you'd like to see the story of a journey from a position of relative ignorance to not-quite-as-much ignorance.
+Some time ago I wrote about [adding mock objects to WOTest](http://wincent.dev/a/about/wincent/weblog/archives/2005/06/mock_objects_in.php). Over the last couple of days I set about trying to improve them and make them more elegant and flexible. In the process I've learnt a lot of about message dispatch system in Apple's Objective-C runtime. Too much. Read on if you'd like to see the story of a journey from a position of relative ignorance to not-quite-as-much ignorance.
 
 Mock objects in WOTest are basically used like this:
 
@@ -224,4 +224,4 @@ As documented in the Darwin source, r3 is the message receiver (the `TestProxy` 
 
 Can we get clever and construct a signature with partial information in `forward::` or elsewhere and later fill it in or replace it when we have more info? It seems that the answer is no. We can indeed create a partial signature and things will "work" in a way (that is, the messages will be sent) but we lose information in the process that makes the resulting invocation much less useful (for example, it means that we can no longer compare method signatures meaningfully for equality, and extracting arguments won't work as expected). And it seems that there is no other point in the program flow where we'll have more information.
 
-So at this point I bow my head and admit defeat. I couldn't solve the problem but at least I struggled from a position of total ignorance to less-complete ignorance. If anyone sees something I'm overlooking here feel free to [contact me](http://typechecked.net/a/contact/mail/) and let me know.
+So at this point I bow my head and admit defeat. I couldn't solve the problem but at least I struggled from a position of total ignorance to less-complete ignorance. If anyone sees something I'm overlooking here feel free to [contact me](http://wincent.dev/a/contact/mail/) and let me know.

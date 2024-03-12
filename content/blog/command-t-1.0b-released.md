@@ -34,7 +34,7 @@ Other than that, I hope you have fun with Command-T.
 
 ```shell
 $ cd path/to/your/pathogen/bundle # probably ~/.vim/bundle
-$ git clone git://git.typechecked.net/command-t.git
+$ git clone git://git.wincent.dev/command-t.git
 $ cd command-t
 $ rake make
 ```

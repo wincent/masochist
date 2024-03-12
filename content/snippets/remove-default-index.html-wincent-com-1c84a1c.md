@@ -1,5 +1,5 @@
 ---
-title: Remove default index.html (typechecked.net, 1c84a1c)
+title: Remove default index.html (wincent.dev, 1c84a1c)
 tags: snippets
 ---
 

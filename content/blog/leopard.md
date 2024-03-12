@@ -5,7 +5,7 @@ tags: blog
 
 I know a few people have said that they're "underwhelmed" by Leopard but I for one am really looking forward to it.
 
-I've already written about my [favorite announcements from WWDC](http://typechecked.net/a/about/wincent/weblog/archives/2006/08/favorite_announ.php). News continues to trickle out from [the usual places](http://www.thinksecret.com/news/0608leopardshots.html).
+I've already written about my [favorite announcements from WWDC](http://wincent.dev/a/about/wincent/weblog/archives/2006/08/favorite_announ.php). News continues to trickle out from [the usual places](http://www.thinksecret.com/news/0608leopardshots.html).
 
 #### Really great stuff
 

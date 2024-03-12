@@ -1,5 +1,5 @@
 ---
-title: Move scaled_tag helper function into application helper (typechecked.net, 57f734a)
+title: Move scaled_tag helper function into application helper (wincent.dev, 57f734a)
 tags: snippets
 ---
 

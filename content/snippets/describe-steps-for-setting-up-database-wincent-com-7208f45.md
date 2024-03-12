@@ -1,5 +1,5 @@
 ---
-title: Describe steps for setting up database (typechecked.net, 7208f45)
+title: Describe steps for setting up database (wincent.dev, 7208f45)
 tags: snippets
 ---
 

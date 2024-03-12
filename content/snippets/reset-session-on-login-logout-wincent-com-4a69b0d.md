@@ -1,5 +1,5 @@
 ---
-title: Reset session on login/logout (typechecked.net, 4a69b0d)
+title: Reset session on login/logout (wincent.dev, 4a69b0d)
 tags: snippets
 ---
 

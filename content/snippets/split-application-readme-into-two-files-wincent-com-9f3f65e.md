@@ -1,5 +1,5 @@
 ---
-title: Split application README into two files (typechecked.net, 9f3f65e)
+title: Split application README into two files (wincent.dev, 9f3f65e)
 tags: snippets
 ---
 

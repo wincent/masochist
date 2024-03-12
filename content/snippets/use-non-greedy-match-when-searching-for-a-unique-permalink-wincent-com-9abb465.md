@@ -1,5 +1,5 @@
 ---
-title: Use non-greedy match when searching for a unique permalink (typechecked.net, 9abb465)
+title: Use non-greedy match when searching for a unique permalink (wincent.dev, 9abb465)
 tags: snippets
 ---
 

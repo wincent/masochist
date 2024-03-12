@@ -1,5 +1,5 @@
 ---
-title: Add specs for and fix bugs in Taggable module (typechecked.net, 719595d)
+title: Add specs for and fix bugs in Taggable module (wincent.dev, 719595d)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Update FixtureReplacement (typechecked.net, 563b8ab)
+title: Update FixtureReplacement (wincent.dev, 563b8ab)
 tags: snippets
 ---
 

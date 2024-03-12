@@ -1,5 +1,5 @@
 ---
-title: Fix products routing (typechecked.net, b906a09)
+title: Fix products routing (wincent.dev, b906a09)
 tags: snippets
 ---
 

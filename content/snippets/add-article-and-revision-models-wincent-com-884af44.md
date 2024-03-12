@@ -1,5 +1,5 @@
 ---
-title: Add Article and Revision models (typechecked.net, 884af44)
+title: Add Article and Revision models (wincent.dev, 884af44)
 tags: snippets
 ---
 

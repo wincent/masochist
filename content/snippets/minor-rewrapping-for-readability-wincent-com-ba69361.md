@@ -1,5 +1,5 @@
 ---
-title: Minor rewrapping for readability (typechecked.net, ba69361)
+title: Minor rewrapping for readability (wincent.dev, ba69361)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Add notes on installing mysql gem on Leopard (typechecked.net, febe480)
+title: Add notes on installing mysql gem on Leopard (wincent.dev, febe480)
 tags: snippets
 ---
 

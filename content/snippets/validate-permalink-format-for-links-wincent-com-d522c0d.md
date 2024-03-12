@@ -1,5 +1,5 @@
 ---
-title: Validate permalink format for links (typechecked.net, d522c0d)
+title: Validate permalink format for links (wincent.dev, d522c0d)
 tags: snippets
 ---
 

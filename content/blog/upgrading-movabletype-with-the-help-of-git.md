@@ -5,15 +5,15 @@ tags: blog
 
 Just got this query via email and thought I'd post my answer here for others to see:
 
-> I've recently switched from using [svn](http://typechecked.net/wiki/svn) to [git](http://typechecked.net/wiki/git), and I'm about to switch from using [WordPress](http://typechecked.net/wiki/WordPress) to [MovableType](http://typechecked.net/wiki/MovableType) too.
+> I've recently switched from using [svn](http://wincent.dev/wiki/svn) to [git](http://wincent.dev/wiki/git), and I'm about to switch from using [WordPress](http://wincent.dev/wiki/WordPress) to [MovableType](http://wincent.dev/wiki/MovableType) too.
 >
 > I've read your previous blog posts on upgrading WordPress using svn, and they were really helpful.
 >
 > It'll be great if you could write an article on upgrading MovableType using git for us newbies.
 
-The reason why I never used to upgrade my Movable Type via Subversion is that [Six Apart](http://typechecked.net/wiki/Six%20Apart) (the makers of Movable Type) don't provide public access to their [version control system](http://typechecked.net/wiki/version%20control%20system); they instead distribute new releases of Movable Type as tarballs or zip archives.
+The reason why I never used to upgrade my Movable Type via Subversion is that [Six Apart](http://wincent.dev/wiki/Six%20Apart) (the makers of Movable Type) don't provide public access to their [version control system](http://wincent.dev/wiki/version%20control%20system); they instead distribute new releases of Movable Type as tarballs or zip archives.
 
-As such, it wasn't possible to update an existing, customized install using Subversion (see "[Upgrading WordPress using Subversion](http://typechecked.net/wiki/Upgrading%20WordPress%20using%20Subversion)"). I did make some notes on making the upgrade as smooth as possible with the aid of things like [Interarchy](http://typechecked.net/wiki/Interarchy)'s "mirror upload" feature (see "[Movable Type upgrade notes](http://typechecked.net/wiki/Movable%20Type%20upgrade%20notes)"), but it was never going to be as convenient as a Subversion-based upgrade.
+As such, it wasn't possible to update an existing, customized install using Subversion (see "[Upgrading WordPress using Subversion](http://wincent.dev/wiki/Upgrading%20WordPress%20using%20Subversion)"). I did make some notes on making the upgrade as smooth as possible with the aid of things like [Interarchy](http://wincent.dev/wiki/Interarchy)'s "mirror upload" feature (see "[Movable Type upgrade notes](http://wincent.dev/wiki/Movable%20Type%20upgrade%20notes)"), but it was never going to be as convenient as a Subversion-based upgrade.
 
 But Git is a distributed version control system so it offers the possibility of doing some tricks that you just can't do with Subversion.
 
@@ -65,4 +65,4 @@ I haven't tried this out yet, it is untested, but I think that you might be able
     cd ../mt_mine
     git pull origin master
 
-I'm not sure whether this is better than the download/extract/upload cycle, but merging with Git should be much more straightforward than merging with your [SFTP](http://typechecked.net/wiki/SFTP) client... Of course, it would still be a lot easier if Six Apart offered Subversion, Git or even [CVS](http://typechecked.net/wiki/CVS) access to a repository containing the public releases.
+I'm not sure whether this is better than the download/extract/upload cycle, but merging with Git should be much more straightforward than merging with your [SFTP](http://wincent.dev/wiki/SFTP) client... Of course, it would still be a lot easier if Six Apart offered Subversion, Git or even [CVS](http://wincent.dev/wiki/CVS) access to a repository containing the public releases.

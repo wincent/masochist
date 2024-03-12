@@ -1,5 +1,5 @@
 ---
-title: Add database-level constraints for uniqueness (typechecked.net, 163821f)
+title: Add database-level constraints for uniqueness (wincent.dev, 163821f)
 tags: snippets
 ---
 

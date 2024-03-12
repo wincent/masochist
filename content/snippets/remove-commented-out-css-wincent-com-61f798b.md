@@ -1,5 +1,5 @@
 ---
-title: Remove commented out CSS (typechecked.net, 61f798b)
+title: Remove commented out CSS (wincent.dev, 61f798b)
 tags: snippets
 ---
 

@@ -3,7 +3,7 @@ title: The Movable Type upgrade procedure sucks
 tags: blog
 ---
 
-Just [upgraded](http://typechecked.net/wiki/Upgrading_from_Movable_Type_version_3.31_to_3.33) to the latest version of Movable type. It's one of my least-favorite upgrade procedures.
+Just [upgraded](http://wincent.dev/wiki/Upgrading_from_Movable_Type_version_3.31_to_3.33) to the latest version of Movable type. It's one of my least-favorite upgrade procedures.
 
 -   The download archive is broken. Again.
 -   The documentation on upgrading is hard to find and inadequate.

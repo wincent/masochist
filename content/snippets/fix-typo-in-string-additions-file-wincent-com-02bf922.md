@@ -1,5 +1,5 @@
 ---
-title: Fix typo in String additions file (typechecked.net, 02bf922)
+title: Fix typo in String additions file (wincent.dev, 02bf922)
 tags: snippets
 ---
 

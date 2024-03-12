@@ -3,11 +3,11 @@ title: NSPortDelegateTickler
 tags: blog
 ---
 
-Well I was very happy with the [new support for a particular threading idiom](http://typechecked.net/a/about/wincent/weblog/archives/2006/03/threading_nicet.php) that I'd developed for Synergy Advance and it seemed to work very nicely.
+Well I was very happy with the [new support for a particular threading idiom](http://wincent.dev/a/about/wincent/weblog/archives/2006/03/threading_nicet.php) that I'd developed for Synergy Advance and it seemed to work very nicely.
 
 But not _all_ was well.
 
-I was finding that if I left Synergy Advance running overnight I would come back and find that it [had crashed](http://typechecked.net/a/support/bugs/show_bug.cgi?id=388) in the undocumented and tauntingly named `__NSPortDelegateTickler` method deep down in the bowels of some Apple framework. Crashing is never fun, but it's worse when the crash is intermittent, and worse still when the offending method is ignominiously named "NSSomething*Tickler*"...
+I was finding that if I left Synergy Advance running overnight I would come back and find that it [had crashed](http://wincent.dev/a/support/bugs/show_bug.cgi?id=388) in the undocumented and tauntingly named `__NSPortDelegateTickler` method deep down in the bowels of some Apple framework. Crashing is never fun, but it's worse when the crash is intermittent, and worse still when the offending method is ignominiously named "NSSomething*Tickler*"...
 
 So the stack traces show this occurring deep down in Apple code. Does this mean it's an Apple bug? Not likely... As [Wil Shipley](http://wilshipley.com/blog/) [writes](http://wilshipley.com/blog/2006/03/pimp-my-code-part-8-mary-mary-why-you.html):
 
@@ -25,7 +25,7 @@ Now there were a number of reasons why this one was fiendishly difficult to trac
 
 1.  It was intermittent; the program could run for hours and hours on end without hitting the bug despite heavy use.
 2.  It was occurring entirely in Apple code, so I could not backtrace it to parts of my own code causing the problem; in other words, if my code was causing the problem it was causing it indirectly or peripherally, with the cause of the problem separated from the actual site of the crash both in time (an unknown period) and space (across threads).
-3.  The crashes were all occurring in `__NSPortDelegateTickler` but they looked different. Sometimes it was a `KERN_INVALID_ADDRESS`, at others a `KERN_PROTECTION_FAILURE`; there were a few different possibilities for the final stack frames of the crash logs; the crash only seemed to happen on PowerPC processors, but a similar crash ([bug \#397](http://typechecked.net/a/support/bugs/show_bug.cgi?id=397)) was happening on the Intel platform and it looked suspiciously related (specifically, the crash was occurring in `CFRunLoopDoObservers`, never getting as far as `__NSPortDelegateTickler`, but `CFRunLoopDoObservers` always appeared in the stack traces for the PowerPC crashes just before the call to `__NSPortDelegateTickler`).
+3.  The crashes were all occurring in `__NSPortDelegateTickler` but they looked different. Sometimes it was a `KERN_INVALID_ADDRESS`, at others a `KERN_PROTECTION_FAILURE`; there were a few different possibilities for the final stack frames of the crash logs; the crash only seemed to happen on PowerPC processors, but a similar crash ([bug \#397](http://wincent.dev/a/support/bugs/show_bug.cgi?id=397)) was happening on the Intel platform and it looked suspiciously related (specifically, the crash was occurring in `CFRunLoopDoObservers`, never getting as far as `__NSPortDelegateTickler`, but `CFRunLoopDoObservers` always appeared in the stack traces for the PowerPC crashes just before the call to `__NSPortDelegateTickler`).
 4.  I have no idea what `__NSPortDelegateTickler` does; it is private, undocumented API. Do a Google search for it and you'll find absolutely _nothing_ useful. What the hell is a _tickler_ anyway?
 
 The first (and only) good news that I received was that if I set a breakpoint on `__NSPortDelegateTickler` and got it to print a hit-count and auto-continue then the crash was highly reproducible. Instead of taking hours to crash it would most often crash within seconds. So I suspect there was something timing related. The extra time required to hit the breakpoint, log the hit-count and continue was enough to trigger whatever it was that was causing the crash.

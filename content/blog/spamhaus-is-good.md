@@ -11,7 +11,7 @@ I don't agree for three reasons:
 -   Spamhaus is remarkably accurate (see below) and effective
 -   It's possible to reject email based on a DNS-based blacklist and include alternative contact information in the bounce message, meaning that people will always have a means of getting in touch regardless of the filter
 
-In the past 24 hours, for example, Spamhaus has shielded me from 479 connection attempts from known spammer IP addresses. That's several hundred messages that would otherwise have passed on to the next line of defense ([blocking non-local senders for local-only recipients](http://typechecked.net/wiki/Blocking_non-local_senders_for_local-only_recipients), 53 additional messages stopped in the last 24 hours), and the next ([SpamAssassin](http://typechecked.net/wiki/Combatting_spam)).
+In the past 24 hours, for example, Spamhaus has shielded me from 479 connection attempts from known spammer IP addresses. That's several hundred messages that would otherwise have passed on to the next line of defense ([blocking non-local senders for local-only recipients](http://wincent.dev/wiki/Blocking_non-local_senders_for_local-only_recipients), 53 additional messages stopped in the last 24 hours), and the next ([SpamAssassin](http://wincent.dev/wiki/Combatting_spam)).
 
 So it is effective. But is it accurate? Are there any false positives? A quick look at the logs indicates that a 100% accuracy rate is highly probable. Look at the rejected IP addresses below; many are forged, about a third of them don't even have reverse IP lookups, and the vast majority obviously correspond to home dialup or broadband end users, most likely compromised Windows machines turned into mail-spewing zombies for the benefit of the greedy spammers.
 

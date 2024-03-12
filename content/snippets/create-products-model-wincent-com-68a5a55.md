@@ -1,5 +1,5 @@
 ---
-title: Create products model (typechecked.net, 68a5a55)
+title: Create products model (wincent.dev, 68a5a55)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Set up ignores in test subdirectory (typechecked.net, 0169c6c)
+title: Set up ignores in test subdirectory (wincent.dev, 0169c6c)
 tags: snippets
 ---
 

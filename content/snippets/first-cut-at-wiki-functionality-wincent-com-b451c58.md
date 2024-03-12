@@ -1,5 +1,5 @@
 ---
-title: First cut at wiki functionality (typechecked.net, b451c58)
+title: First cut at wiki functionality (wincent.dev, b451c58)
 tags: snippets
 ---
 

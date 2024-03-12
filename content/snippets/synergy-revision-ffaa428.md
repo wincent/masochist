@@ -8,4 +8,4 @@ tags: snippets
 -   _Size_: 2,237,406 bytes
 -   _SHA1 checksum_: abf2810ed8066d4e743c7655ec1e01fc96b332e8
 
-_Note_: This nightly requires Mac OS X 10.5 (Leopard). If you require a version of that runs on older versions of Mac OS X please see <http://typechecked.net/a/products/synergy-classic/download/tiger/>.
+_Note_: This nightly requires Mac OS X 10.5 (Leopard). If you require a version of that runs on older versions of Mac OS X please see <http://wincent.dev/a/products/synergy-classic/download/tiger/>.

@@ -77,7 +77,7 @@ First double check that all [specs](/wiki/specs) are passing for [Walrus](/wiki/
 
 # [TextMate](/wiki/TextMate)
 
-This time seeing as I had [some local changes](http://typechecked.net/a/about/wincent/weblog/archives/2007/05/rspec_changes.php) to my [TextMate](/wiki/TextMate) bundle I didn't want to perform the normal upgrade procedure:
+This time seeing as I had [some local changes](http://wincent.dev/a/about/wincent/weblog/archives/2007/05/rspec_changes.php) to my [TextMate](/wiki/TextMate) bundle I didn't want to perform the normal upgrade procedure:
 
     cd ~/Library/Application\ Support/TextMate/Bundles/RSpec.tmbundle
     svn up

@@ -1,5 +1,5 @@
 ---
-title: Tell Rails to use UTF-8 in the database (typechecked.net, 4aba1f8)
+title: Tell Rails to use UTF-8 in the database (wincent.dev, 4aba1f8)
 tags: snippets
 ---
 

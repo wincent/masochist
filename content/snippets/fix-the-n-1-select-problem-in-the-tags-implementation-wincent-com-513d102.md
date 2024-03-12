@@ -1,5 +1,5 @@
 ---
-title: Fix the n+1 select problem in the tags implementation (typechecked.net, 513d102)
+title: Fix the n+1 select problem in the tags implementation (wincent.dev, 513d102)
 tags: snippets
 ---
 

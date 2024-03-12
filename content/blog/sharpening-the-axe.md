@@ -403,6 +403,6 @@ If we're pragmatic, axe-sharpening can be not only a lot fun, but a great produc
 
 # 29
 
-Before I go, I'm going to leave you with some links to [those famous dotfiles of mine](https://github.com/wincent/wincent) (to be stolen from, not forked), as well as [my blog](https://typechecked.net/blog), where I will be posting [a transcript of this talk](https://typechecked.net/blog/sharpening-the-axe), and [my YouTube channel](https://www.youtube.com/c/GregHurrell), where I will upload a high-quality version of for posterity.
+Before I go, I'm going to leave you with some links to [those famous dotfiles of mine](https://github.com/wincent/wincent) (to be stolen from, not forked), as well as [my blog](https://wincent.dev/blog), where I will be posting [a transcript of this talk](https://wincent.dev/blog/sharpening-the-axe), and [my YouTube channel](https://www.youtube.com/c/GregHurrell), where I will upload a high-quality version of for posterity.
 
 Thanks for listening and good luck!

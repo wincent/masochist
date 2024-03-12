@@ -1,5 +1,5 @@
 ---
-title: Add missing files from Rails 2.0.2 upgrade (typechecked.net, ff52bbb)
+title: Add missing files from Rails 2.0.2 upgrade (wincent.dev, ff52bbb)
 tags: snippets
 ---
 

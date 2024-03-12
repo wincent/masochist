@@ -1,5 +1,5 @@
 ---
-title: Add sessions (typechecked.net, 0d0f571)
+title: Add sessions (wincent.dev, 0d0f571)
 tags: snippets
 ---
 

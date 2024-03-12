@@ -1,5 +1,5 @@
 ---
-title: Require permalink on products model (typechecked.net, 6c0c3b7)
+title: Require permalink on products model (wincent.dev, 6c0c3b7)
 tags: snippets
 ---
 

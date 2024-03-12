@@ -1,5 +1,5 @@
 ---
-title: Add in_place_editing_plugin (typechecked.net, 209d96c)
+title: Add in_place_editing_plugin (wincent.dev, 209d96c)
 tags: snippets
 ---
 

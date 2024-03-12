@@ -3,7 +3,7 @@ tags: clamav email wiki
 title: ClamAV log sample
 ---
 
-This is a sample of the messages blocked by [ClamAV](/wiki/ClamAV) at the [typechecked.net](/wiki/typechecked.net) server in a period of just under 4 days (about 96 hours) in July 2006. The output was obtained using the following:
+This is a sample of the messages blocked by [ClamAV](/wiki/ClamAV) at the [wincent.dev](/wiki/wincent.dev) server in a period of just under 4 days (about 96 hours) in July 2006. The output was obtained using the following:
 
     sudo cat /var/log/maillog* | grep clamd | grep FOUND
 

@@ -1,5 +1,5 @@
 ---
-title: Perform validation during in-place editing (typechecked.net, bc34e99)
+title: Perform validation during in-place editing (wincent.dev, bc34e99)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Add QTrace to vendor/disabled (typechecked.net, 7dbf482)
+title: Add QTrace to vendor/disabled (wincent.dev, 7dbf482)
 tags: snippets
 ---
 

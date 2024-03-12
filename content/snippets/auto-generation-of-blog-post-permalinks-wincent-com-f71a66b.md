@@ -1,5 +1,5 @@
 ---
-title: Auto-generation of blog post permalinks (typechecked.net, f71a66b)
+title: Auto-generation of blog post permalinks (wincent.dev, f71a66b)
 tags: snippets
 ---
 

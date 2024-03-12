@@ -1,5 +1,5 @@
 ---
-title: Add user model (typechecked.net, d9a50e5)
+title: Add user model (wincent.dev, d9a50e5)
 tags: snippets
 ---
 

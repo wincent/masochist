@@ -1,5 +1,5 @@
 ---
-title: Add extension and description to products model (migration) (typechecked.net, 4eb5a36)
+title: Add extension and description to products model (migration) (wincent.dev, 4eb5a36)
 tags: snippets
 ---
 

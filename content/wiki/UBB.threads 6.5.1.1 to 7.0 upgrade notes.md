@@ -123,13 +123,13 @@ Only glitch at end is that I saw some [PHP](/wiki/PHP) warnings with regard to m
     -   Display Options
         -   General
             -   Primary
-                -   Homepage URL: <http://typechecked.net/>
+                -   Homepage URL: <http://wincent.dev/>
                 -   Text for homepage URL: Wincent
                 -   Contact Link Type: Contact URL
-                -   "Contact Us" URL: <http://typechecked.net/a/contact/mail/>
+                -   "Contact Us" URL: <http://wincent.dev/a/contact/mail/>
                 -   Text for contact link: Contact
                 -   Privacy Statement Link: Use Privacy Statement URL
-                -   Privacy Statement URL: <http://typechecked.net/a/about/privacy/>
+                -   Privacy Statement URL: <http://wincent.dev/a/about/privacy/>
                 -   Who's Online Timeframe: 60
                 -   Show Forum Moderators? no
             -   Date & Time

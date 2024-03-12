@@ -1,5 +1,5 @@
 ---
-title: Add example data for products model (typechecked.net, 4109d10)
+title: Add example data for products model (wincent.dev, 4109d10)
 tags: snippets
 ---
 

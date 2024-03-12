@@ -3,7 +3,7 @@ title: Off-by-one
 tags: blog
 ---
 
-Well, [I fixed](http://typechecked.net/a/about/wincent/weblog/svn-log/archives/2007/01/synergy_advance_r383_2_items_c.php) the off-by-one glitch [mentioned here](http://typechecked.net/a/about/wincent/weblog/archives/2006/12/dock_icon_updat.php).
+Well, [I fixed](http://wincent.dev/a/about/wincent/weblog/svn-log/archives/2007/01/synergy_advance_r383_2_items_c.php) the off-by-one glitch [mentioned here](http://wincent.dev/a/about/wincent/weblog/archives/2006/12/dock_icon_updat.php).
 
 ![](/system/images/legacy/fixed.png)
 

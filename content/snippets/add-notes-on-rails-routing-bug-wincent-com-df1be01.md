@@ -1,5 +1,5 @@
 ---
-title: Add notes on Rails routing bug (typechecked.net, df1be01)
+title: Add notes on Rails routing bug (wincent.dev, df1be01)
 tags: snippets
 ---
 

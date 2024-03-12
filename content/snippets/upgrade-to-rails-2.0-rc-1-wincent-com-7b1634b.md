@@ -1,5 +1,5 @@
 ---
-title: Upgrade to Rails 2.0 RC 1 (typechecked.net, 7b1634b)
+title: Upgrade to Rails 2.0 RC 1 (wincent.dev, 7b1634b)
 tags: snippets
 ---
 

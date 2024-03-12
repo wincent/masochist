@@ -1,5 +1,5 @@
 ---
-title: Add initial version of Articles controller (typechecked.net, 2cbc65e)
+title: Add initial version of Articles controller (wincent.dev, 2cbc65e)
 tags: snippets
 ---
 

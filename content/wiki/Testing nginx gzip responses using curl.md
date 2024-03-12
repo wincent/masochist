@@ -8,16 +8,16 @@ Example session diagnosing a failure of \[\[nginx\] to gzip compress static asse
 
 ```shell
 $ curl --silent --write-out 'size_download=%{size_download}\n' \
-  --output /dev/null https://typechecked.net/assets/application-d25d354c71d9829a020f5c20e9a75365.css
+  --output /dev/null https://wincent.dev/assets/application-d25d354c71d9829a020f5c20e9a75365.css
 size_download=35565
 $ curl --silent --write-out 'size_download=%{size_download}\n' \
-  --output /dev/null https://typechecked.net/assets/application-d25d354c71d9829a020f5c20e9a75365.css.gz
+  --output /dev/null https://wincent.dev/assets/application-d25d354c71d9829a020f5c20e9a75365.css.gz
 size_download=5308
 $ curl --silent --write-out 'size_download=%{size_download}\n' -H "Accept-Encoding: gzip,deflate" \
-  --output /dev/null https://typechecked.net/assets/application-d25d354c71d9829a020f5c20e9a75365.css
+  --output /dev/null https://wincent.dev/assets/application-d25d354c71d9829a020f5c20e9a75365.css
 size_download=5308
 $ curl --silent --write-out 'size_download=%{size_download}\n' --http1.0 -H "Accept-Encoding: gzip,deflate" \
-  --output /dev/null https://typechecked.net/assets/application-d25d354c71d9829a020f5c20e9a75365.css
+  --output /dev/null https://wincent.dev/assets/application-d25d354c71d9829a020f5c20e9a75365.css
 size_download=35565
 ```
 

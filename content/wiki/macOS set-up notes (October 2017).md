@@ -71,7 +71,7 @@ These are mostly linear in nature, but there was some parallelism and back-and-f
     1. Keep console window on top.
 1.  Manually install Adobe Source Code Pro by copying from roles/fonts/files.
     1. Some follow-up needed though (prefs in iTerm); will see if they come down with backup restore or not.
-1.  Make Colemak the default layout (hm, didn't seem to work): see: https://typechecked.net/wiki/Making_Colemak_the_default_layout_at_the_OS_X_login_prompt
+1.  Make Colemak the default layout (hm, didn't seem to work): see: https://wincent.dev/wiki/Making_Colemak_the_default_layout_at_the_OS_X_login_prompt
 1.  Clone corporate repos.
 1.  iTerm:
     1. Move cursor to the front of line

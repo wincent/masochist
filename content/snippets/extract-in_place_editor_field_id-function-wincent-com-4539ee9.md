@@ -1,5 +1,5 @@
 ---
-title: Extract in_place_editor_field_id function (typechecked.net, 4539ee9)
+title: Extract in_place_editor_field_id function (wincent.dev, 4539ee9)
 tags: snippets
 ---
 

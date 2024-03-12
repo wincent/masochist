@@ -1,5 +1,5 @@
 ---
-title: Set up links/new (typechecked.net, bae2447)
+title: Set up links/new (wincent.dev, bae2447)
 tags: snippets
 ---
 

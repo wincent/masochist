@@ -45,13 +45,13 @@ Instead of the longer:
     3.  Categories (for example "objective-c mac-os-x")
     4.  License (for example "BSD License")
     5.  Home URL
-    6.  Bugtracker URL (for example, <https://typechecked.net/issues/>)
+    6.  Bugtracker URL (for example, <https://wincent.dev/issues/>)
 4.  Disable the wiki
-5.  Provide a Description (for example, "Mirror of the official WOHotKey repository at git.typechecked.net")
+5.  Provide a Description (for example, "Mirror of the official WOHotKey repository at git.wincent.dev")
 6.  Click on "Create project"
 
 Now create a new repository:
 
 1.  Fill in:
     1.  Name (for example, "WOHotKey")
-    2.  Description (for example, "Mirror of the official WOHotKey repository at git.typechecked.net")
+    2.  Description (for example, "Mirror of the official WOHotKey repository at git.wincent.dev")

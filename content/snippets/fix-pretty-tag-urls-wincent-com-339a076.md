@@ -1,5 +1,5 @@
 ---
-title: Fix pretty tag URLs (typechecked.net, 339a076)
+title: Fix pretty tag URLs (wincent.dev, 339a076)
 tags: snippets
 ---
 

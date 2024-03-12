@@ -46,7 +46,7 @@ But 1.2.4 itself broke Cucumber:
     /Library/Ruby/Site/1.8/rubygems.rb:149:in `activate': can't activate rspec (= 1.2.2, runtime), already activated rspec-1.2.4 (Gem::Exception)
     	from /Library/Ruby/Site/1.8/rubygems/custom_require.rb:35:in `polyglot_original_require'
     	from /Library/Ruby/Gems/1.8/gems/polyglot-0.2.5/lib/polyglot.rb:54:in `require'
-    	from /Users/wincent/trabajo/unversioned/typechecked.net/src/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
+    	from /Users/wincent/trabajo/unversioned/wincent.dev/src/vendor/rails/activesupport/lib/active_support/dependencies.rb:158:in `require'
     	from /Library/Ruby/Gems/1.8/gems/cucumber-0.2.3/bin/../lib/cucumber/cli/main.rb:92:in `enable_diffing'
     	from /Library/Ruby/Gems/1.8/gems/cucumber-0.2.3/bin/../lib/cucumber/cli/main.rb:35:in `execute!'
     	from /Library/Ruby/Gems/1.8/gems/cucumber-0.2.3/bin/../lib/cucumber/cli/main.rb:20:in `execute'

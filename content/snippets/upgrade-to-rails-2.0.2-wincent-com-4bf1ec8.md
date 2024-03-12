@@ -1,5 +1,5 @@
 ---
-title: Upgrade to Rails 2.0.2 (typechecked.net, 4bf1ec8)
+title: Upgrade to Rails 2.0.2 (wincent.dev, 4bf1ec8)
 tags: snippets
 ---
 

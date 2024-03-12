@@ -57,7 +57,7 @@ There may be some minor errors — gaps or overlaps — depending on which time 
 
     5 files changed, 1234 insertions(+), 1040 deletions(-)
 
-# unversioned/typechecked.net
+# unversioned/wincent.dev
 
     3634ec5 Use orange CSS styling on hovered major headings
     647a55c Dynamically add line-numbers to "pre" blocks

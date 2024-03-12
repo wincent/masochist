@@ -111,7 +111,7 @@ Also:
 ```shell
 $ mkdir -p ~/personal/unversioned
 $ cd !$
-$ git clone --recursive git.typechecked.net:/pub/git/public/wincent.git wincent.git
+$ git clone --recursive git.wincent.dev:/pub/git/public/wincent.git wincent.git
 $ cd wincent.git
 $ ./bootstrap.rb
 ```

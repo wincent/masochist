@@ -45,52 +45,52 @@ $ cap staging deploy:check
   * executing `check_target_environment'
   * executing `deploy:check'
   * executing "test -d /site/deploy/releases"
-    servers: ["typechecked.net"]
-    [typechecked.net] executing command
+    servers: ["wincent.dev"]
+    [wincent.dev] executing command
     command finished
   * executing "test -w /site/deploy"
-    servers: ["typechecked.net"]
-    [typechecked.net] executing command
+    servers: ["wincent.dev"]
+    [wincent.dev] executing command
     command finished
   * executing "test -w /site/deploy/releases"
-    servers: ["typechecked.net"]
-    [typechecked.net] executing command
+    servers: ["wincent.dev"]
+    [wincent.dev] executing command
     command finished
   * executing "which git"
-    servers: ["typechecked.net"]
-    [typechecked.net] executing command
+    servers: ["wincent.dev"]
+    [wincent.dev] executing command
     command finished
   * executing "which gem"
-    servers: ["typechecked.net"]
-    [typechecked.net] executing command
+    servers: ["wincent.dev"]
+    [wincent.dev] executing command
     command finished
   * executing "gem specification --version '>= 0.6' hpricot 2>&1 | awk 'BEGIN { s = 0 } /^name:/ { s = 1; exit }; END { if(s == 0) exit 1 }'"
-    servers: ["typechecked.net"]
-    [typechecked.net] executing command
+    servers: ["wincent.dev"]
+    [wincent.dev] executing command
     command finished
   * executing "gem specification --version '>= 1.3.1' rubygems-update 2>&1 | awk 'BEGIN { s = 0 } /^name:/ { s = 1; exit }; END { if(s == 0) exit 1 }'"
-    servers: ["typechecked.net"]
-    [typechecked.net] executing command
+    servers: ["wincent.dev"]
+    [wincent.dev] executing command
     command finished
   * executing "gem specification --version '>= 0.4.0' rack 2>&1 | awk 'BEGIN { s = 0 } /^name:/ { s = 1; exit }; END { if(s == 0) exit 1 }'"
-    servers: ["typechecked.net"]
-    [typechecked.net] executing command
+    servers: ["wincent.dev"]
+    [wincent.dev] executing command
     command finished
   * executing "test -d /site/deploy"
-    servers: ["typechecked.net"]
-    [typechecked.net] executing command
+    servers: ["wincent.dev"]
+    [wincent.dev] executing command
     command finished
   * executing "test -d /site/deploy/shared"
-    servers: ["typechecked.net"]
-    [typechecked.net] executing command
+    servers: ["wincent.dev"]
+    [wincent.dev] executing command
     command finished
   * executing "which git"
-    servers: ["typechecked.net"]
-    [typechecked.net] executing command
+    servers: ["wincent.dev"]
+    [wincent.dev] executing command
     command finished
   * executing "which monit"
-    servers: ["typechecked.net"]
-    [typechecked.net] executing command
+    servers: ["wincent.dev"]
+    [wincent.dev] executing command
     command finished
 You appear to have all necessary dependencies installed
   * executing `after_check'
@@ -119,12 +119,12 @@ $ cap staging spec
   * executing `check_target_environment'
   * executing `spec'
   * executing "cd /site/deploy/current && RAILS_ENV=test rake spec"
-    servers: ["typechecked.net"]
-    [typechecked.net] executing command
- ** [out :: typechecked.net] (in /site/deploy/releases/20090114203112)
- ** [out :: typechecked.net] .
- ** [out :: typechecked.net] .
- ** [out :: typechecked.net] .
+    servers: ["wincent.dev"]
+    [wincent.dev] executing command
+ ** [out :: wincent.dev] (in /site/deploy/releases/20090114203112)
+ ** [out :: wincent.dev] .
+ ** [out :: wincent.dev] .
+ ** [out :: wincent.dev] .
 ```
 
 (The output continues for over 1,000 lines like that: emitting one dot for each spec.)

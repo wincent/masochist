@@ -1,5 +1,5 @@
 ---
-title: Add basic products controller specs (typechecked.net, 4b2b9cb)
+title: Add basic products controller specs (wincent.dev, 4b2b9cb)
 tags: snippets
 ---
 

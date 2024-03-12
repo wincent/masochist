@@ -19,8 +19,8 @@ title: SSL certificate renewal notes
 
 -   [Installing a new SSL certificate](/wiki/Installing_a_new_SSL_certificate)
 -   Renewal notes from specific years:
-    -   [SSL certificate renewal notes 2013](/wiki/SSL_certificate_renewal_notes_2013) (nginx; typechecked.net)
-    -   [SSL certificate renewal notes 2012](/wiki/SSL_certificate_renewal_notes_2012) (Apache, Cyrus, sendmail; typechecked.net)
-    -   [SSL certificate renewal notes 2010](/wiki/SSL_certificate_renewal_notes_2010) (nginx; typechecked.net)
-    -   [SSL certificate renewal notes 2008](/wiki/SSL_certificate_renewal_notes_2008) (Apache, Cyrus, sendmail; typechecked.net)
+    -   [SSL certificate renewal notes 2013](/wiki/SSL_certificate_renewal_notes_2013) (nginx; wincent.dev)
+    -   [SSL certificate renewal notes 2012](/wiki/SSL_certificate_renewal_notes_2012) (Apache, Cyrus, sendmail; wincent.dev)
+    -   [SSL certificate renewal notes 2010](/wiki/SSL_certificate_renewal_notes_2010) (nginx; wincent.dev)
+    -   [SSL certificate renewal notes 2008](/wiki/SSL_certificate_renewal_notes_2008) (Apache, Cyrus, sendmail; wincent.dev)
 -   [Getting new SSL certificates for use with nginx](/wiki/Getting_new_SSL_certificates_for_use_with_nginx)

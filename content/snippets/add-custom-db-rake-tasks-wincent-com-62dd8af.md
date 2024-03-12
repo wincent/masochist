@@ -1,5 +1,5 @@
 ---
-title: Add custom db rake tasks (typechecked.net, 62dd8af)
+title: Add custom db rake tasks (wincent.dev, 62dd8af)
 tags: snippets
 ---
 

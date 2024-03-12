@@ -1,5 +1,5 @@
 ---
-title: Turn on ActiveRecord session store (typechecked.net, 405881e)
+title: Turn on ActiveRecord session store (wincent.dev, 405881e)
 tags: snippets
 ---
 

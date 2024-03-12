@@ -1,5 +1,5 @@
 ---
-title: Add links/create action (typechecked.net, 9d91051)
+title: Add links/create action (wincent.dev, 9d91051)
 tags: snippets
 ---
 

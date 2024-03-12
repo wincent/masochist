@@ -9,7 +9,7 @@ Subject: [PATCH] Defer processor count detection until runtime
 
 As suggested here:
 
-  https://typechecked.net/issues/2133
+  https://wincent.dev/issues/2133
 
 Copying the text of the linked issue:
 

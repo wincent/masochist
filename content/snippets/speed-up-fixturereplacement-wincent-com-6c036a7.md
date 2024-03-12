@@ -1,5 +1,5 @@
 ---
-title: Speed-up FixtureReplacement (typechecked.net, 6c036a7)
+title: Speed-up FixtureReplacement (wincent.dev, 6c036a7)
 tags: snippets
 ---
 

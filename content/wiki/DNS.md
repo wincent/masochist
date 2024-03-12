@@ -4,7 +4,7 @@ cache_breaker: 1
 title: DNS
 ---
 
-[DNS](/wiki/DNS), or the [Domain Name System](/wiki/Domain_Name_System), is infrastructure that enables clients on a network to translate human-readable symbolic addresses like "typechecked.net" to their numeric [IP](/wiki/IP) addresses (209.235.192.161). DNS is often also used as a short hand to refer to an specific, individual [Domain Name Server](/wiki/Domain_Name_Server) (that is "the DNS" rather than "the DNS server").
+[DNS](/wiki/DNS), or the [Domain Name System](/wiki/Domain_Name_System), is infrastructure that enables clients on a network to translate human-readable symbolic addresses like "wincent.dev" to their numeric [IP](/wiki/IP) addresses (209.235.192.161). DNS is often also used as a short hand to refer to an specific, individual [Domain Name Server](/wiki/Domain_Name_Server) (that is "the DNS" rather than "the DNS server").
 
 In November 2009 [I started](/blog/dns-changes) using [Nettica](/wiki/Nettica) as an external DNS provider for this site.
 

@@ -1,5 +1,5 @@
 ---
-title: Basic tag display (typechecked.net, 61b8b6f)
+title: Basic tag display (wincent.dev, 61b8b6f)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Add "public" field to comments migration (typechecked.net, da3e4c5)
+title: Add "public" field to comments migration (wincent.dev, da3e4c5)
 tags: snippets
 ---
 

@@ -58,7 +58,7 @@ Encryption
 
 ## Local links
 
--   An article about my new backup strategy as of July 2007: <http://typechecked.net/a/about/wincent/weblog/archives/2007/07/new_backup_regi.php>
+-   An article about my new backup strategy as of July 2007: <http://wincent.dev/a/about/wincent/weblog/archives/2007/07/new_backup_regi.php>
 
 # See also
 

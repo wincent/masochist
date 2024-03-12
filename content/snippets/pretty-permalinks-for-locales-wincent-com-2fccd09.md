@@ -1,5 +1,5 @@
 ---
-title: Pretty permalinks for locales (typechecked.net, 2fccd09)
+title: Pretty permalinks for locales (wincent.dev, 2fccd09)
 tags: snippets
 ---
 

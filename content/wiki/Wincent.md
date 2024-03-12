@@ -5,11 +5,11 @@ title: Wincent
 
 Information about Wincent (the company):
 
--   <http://typechecked.net/a/about/>
+-   <http://wincent.dev/a/about/>
 
 Information about Wincent Colaiuta (the person):
 
--   <http://typechecked.net/a/about/wincent/>
+-   <http://wincent.dev/a/about/wincent/>
 
 Information about [Wincent](/wiki/Wincent) products:
 

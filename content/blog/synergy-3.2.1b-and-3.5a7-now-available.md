@@ -5,7 +5,7 @@ tags: synergy releases blog
 
 I'm pleased to announce the availability of [Synergy](/wiki/Synergy) updates to both the stable 3.2 series (3.2.1b) and the experimental 3.5 alpha series (3.5a7). The principal change in both series is a workaround for the cover art breakage caused by iTunes 7.6.1 and 7.6.2.
 
-A full changelog appears [here](http://typechecked.net/a/products/synergy-classic/history/).
+A full changelog appears [here](http://wincent.dev/a/products/synergy-classic/history/).
 
 ### Which version should you use?
 
@@ -15,4 +15,4 @@ The 3.5 series, on the other hand, is a total rewrite in [Objective-C 2.0](/wiki
 
 ### Where can I get it?
 
-You can download the new releases from [here](http://typechecked.net/a/products/synergy-classic/download/) ([direct link to 3.2.1b](http://typechecked.net/download.php?item=SynergyJaguar.zip), [direct link to 3.5a7](http://typechecked.net/download.php?item=SynergyBeta.zip)) and purchase a license using [this page](https://typechecked.net/a/products/synergy-classic/purchase/). Once the 3.5 series goes final it will be a free upgrade to all users who have purchased a license for Synergy 3.0 or higher (that is, if you purchased on or after 5 September 2006 then 3.5 will be a free upgrade for you).
+You can download the new releases from [here](http://wincent.dev/a/products/synergy-classic/download/) ([direct link to 3.2.1b](http://wincent.dev/download.php?item=SynergyJaguar.zip), [direct link to 3.5a7](http://wincent.dev/download.php?item=SynergyBeta.zip)) and purchase a license using [this page](https://wincent.dev/a/products/synergy-classic/purchase/). Once the 3.5 series goes final it will be a free upgrade to all users who have purchased a license for Synergy 3.0 or higher (that is, if you purchased on or after 5 September 2006 then 3.5 will be a free upgrade for you).

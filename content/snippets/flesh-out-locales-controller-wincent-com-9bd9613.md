@@ -1,5 +1,5 @@
 ---
-title: Flesh out locales controller (typechecked.net, 9bd9613)
+title: Flesh out locales controller (wincent.dev, 9bd9613)
 tags: snippets
 ---
 

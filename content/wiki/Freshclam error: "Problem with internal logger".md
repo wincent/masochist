@@ -25,4 +25,4 @@ Inspect the log:
 
 # See also
 
-<https://typechecked.net/a/knowledge-base/archives/2006/06/freshclam_probl.php>
+<https://wincent.dev/a/knowledge-base/archives/2006/06/freshclam_probl.php>

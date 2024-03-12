@@ -1,5 +1,5 @@
 ---
-title: Fix spec breakage caused by removal of Revisions model (typechecked.net, 1f9a20f)
+title: Fix spec breakage caused by removal of Revisions model (wincent.dev, 1f9a20f)
 tags: snippets
 ---
 

@@ -3,7 +3,7 @@ title: Whittling away the controller
 tags: blog
 ---
 
-Since [my post the other day](http://typechecked.net/a/about/wincent/weblog/archives/2005/07/synergy_advance_1.php) about my monstrously large main controller class I've been working hard on adding new features to [Synergy Advance](http://typechecked.net/a/products/synergy-advance/).
+Since [my post the other day](http://wincent.dev/a/about/wincent/weblog/archives/2005/07/synergy_advance_1.php) about my monstrously large main controller class I've been working hard on adding new features to [Synergy Advance](http://wincent.dev/a/products/synergy-advance/).
 
 But working on a large body of code is like moulding pottery from clay: even as you go along adding new bits you continue to work with the already-existing clay, moulding it, reforming it, smoothing it and so on. In programming parlance this translates to a lot of refactoring.
 

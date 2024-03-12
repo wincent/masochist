@@ -1,5 +1,5 @@
 ---
-title: Note about multi-tag search options (typechecked.net, e9b5ebd)
+title: Note about multi-tag search options (wincent.dev, e9b5ebd)
 tags: snippets
 ---
 

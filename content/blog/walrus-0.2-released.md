@@ -8,7 +8,7 @@ I just pushed out version 0.2 of the [Walrus](/wiki/Walrus) gem. This is a maint
 
 Walrus is an [object-oriented templating](/wiki/object-oriented_templating) system written in [Ruby](/wiki/Ruby) and heavily inspired by the [Cheetah template engine](/wiki/Cheetah_template_engine) (written in [Python](/wiki/Python)). It doesn't set out to be a full clone of Cheetah, but it does implement a very large subset of its functionality, and it employs the same directive syntax wherever possible.
 
-Object-oriented templating is one of those brilliant, flash-of-insight kind of ideas that once you've grasped them, you find it difficult to think about working in any other way. I've written about this previously (eg. [here](http://typechecked.net/a/about/wincent/weblog/archives/2006/10/objectoriented.php) and [here](http://typechecked.net/a/about/wincent/weblog/archives/2007/04/payoff_time.php)), but I'll try to come up with a more up-to-date post on their benefits at some point in the not-too-distant future.
+Object-oriented templating is one of those brilliant, flash-of-insight kind of ideas that once you've grasped them, you find it difficult to think about working in any other way. I've written about this previously (eg. [here](http://wincent.dev/a/about/wincent/weblog/archives/2006/10/objectoriented.php) and [here](http://wincent.dev/a/about/wincent/weblog/archives/2007/04/payoff_time.php)), but I'll try to come up with a more up-to-date post on their benefits at some point in the not-too-distant future.
 
 # Future plans
 

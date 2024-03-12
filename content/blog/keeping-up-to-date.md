@@ -7,27 +7,27 @@ There a number of official channels for keeping up-to-date with what's happening
 
 #### Official product and site news
 
-The official product and site news weblog is located at <http://typechecked.net/a/news/>. You can get to it from almost every page on this website by clicking the "News" button in the navigation bar that spans to the top of most pages. As a shortcut, you can also get there via automatic redirection when you visit the dot-org, a historical wink to the fact that before entering the software business I edited a popular news, rumors and commentary weblog there.
+The official product and site news weblog is located at <http://wincent.dev/a/news/>. You can get to it from almost every page on this website by clicking the "News" button in the navigation bar that spans to the top of most pages. As a shortcut, you can also get there via automatic redirection when you visit the dot-org, a historical wink to the fact that before entering the software business I edited a popular news, rumors and commentary weblog there.
 
 #### Mailing lists
 
-An alternative means of finding out about new product releases and updates is to subscribe to one of the opt-in mailing lists. The purpose and functioning of the lists are described [on this page](http://typechecked.net/a/support/lists/).
+An alternative means of finding out about new product releases and updates is to subscribe to one of the opt-in mailing lists. The purpose and functioning of the lists are described [on this page](http://wincent.dev/a/support/lists/).
 
 #### Wincent Colaiuta's personal weblog
 
-I also maintain a personal weblog at <http://typechecked.net/a/about/wincent/weblog/>. The vast majority of posts are about my development work and provide a sneak peak at the problems I am working on and the progress that I am making behind the scenes.
+I also maintain a personal weblog at <http://wincent.dev/a/about/wincent/weblog/>. The vast majority of posts are about my development work and provide a sneak peak at the problems I am working on and the progress that I am making behind the scenes.
 
 #### Mini-log
 
-In a sidebar on the left-hand side of my personal weblog you can find the "Mini-log". This is where I post quick comments or links that are too short to warrant a full entry on my weblog. A separate feed for the Mini-log is available, and the archives can be found [here](http://typechecked.net/a/about/wincent/weblog/mini-log/archives/).
+In a sidebar on the left-hand side of my personal weblog you can find the "Mini-log". This is where I post quick comments or links that are too short to warrant a full entry on my weblog. A separate feed for the Mini-log is available, and the archives can be found [here](http://wincent.dev/a/about/wincent/weblog/mini-log/archives/).
 
 #### Git log (formerly the Subversion log)
 
-For an extremely low-level look at the development work I'm doing you can check out my "Git log" (formerly called the "Subversion log"). This appears in the sidebar of my personal weblog, below the "Mini-log". The Git log shows the commit log messages that accompany every finalized set of changes to the code bases for my products. The general pattern is to work on a discrete set of changes and then "commit" them to the repository when they reach some sort of important milestone; the "milestone" may be something as simple as the elimination of a particular compiler warning during the build or the addition of a new file, and they can be as significant as implementing a big new feature or importing an entirely new product into the repository. For more information see this [brief outline of Subversion](http://typechecked.net/wiki/Subversion) and [Git](http://typechecked.net/wiki/Git).
+For an extremely low-level look at the development work I'm doing you can check out my "Git log" (formerly called the "Subversion log"). This appears in the sidebar of my personal weblog, below the "Mini-log". The Git log shows the commit log messages that accompany every finalized set of changes to the code bases for my products. The general pattern is to work on a discrete set of changes and then "commit" them to the repository when they reach some sort of important milestone; the "milestone" may be something as simple as the elimination of a particular compiler warning during the build or the addition of a new file, and they can be as significant as implementing a big new feature or importing an entirely new product into the repository. For more information see this [brief outline of Subversion](http://wincent.dev/wiki/Subversion) and [Git](http://wincent.dev/wiki/Git).
 
-A feed is available of the Git log, as are [archives](http://typechecked.net/a/about/wincent/weblog/svn-log/archives/).
+A feed is available of the Git log, as are [archives](http://wincent.dev/a/about/wincent/weblog/svn-log/archives/).
 
-The Git log was [set up](http://typechecked.net/wiki/Setting_up_a_Subversion_RSS_feed) in late September 2006, so the archives start from that date. The name change from "Git log" to "Subversion log" took place in mid-July 2007, and there are quite a few articles on Git in my weblog [archives for that month](http://typechecked.net/a/about/wincent/weblog/archives/2007/07/).
+The Git log was [set up](http://wincent.dev/wiki/Setting_up_a_Subversion_RSS_feed) in late September 2006, so the archives start from that date. The name change from "Git log" to "Subversion log" took place in mid-July 2007, and there are quite a few articles on Git in my weblog [archives for that month](http://wincent.dev/a/about/wincent/weblog/archives/2007/07/).
 
 #### Gitweb
 
@@ -39,9 +39,9 @@ In the right-hand column of my weblog you'll see a section labelled "Nightlog". 
 
 > Nightly builds are generated once per day by an automated system; they are not official releases and they receive no human testing prior to being uploaded. They are provided with no warranty of any kind; use them at your own risk.
 
-An RSS feed as well as [archives](http://typechecked.net/a/about/wincent/weblog/nightlog/archives/) are available for the Nightlog.
+An RSS feed as well as [archives](http://wincent.dev/a/about/wincent/weblog/nightlog/archives/) are available for the Nightlog.
 
-For background information see [this article](http://typechecked.net/a/about/wincent/weblog/archives/2007/03/planned_changes.php) where I talk about introducing the nightly builds and [this follow-up](http://typechecked.net/a/about/wincent/weblog/archives/2007/03/nightly_builds.php) written after the build system went live in March 2007.
+For background information see [this article](http://wincent.dev/a/about/wincent/weblog/archives/2007/03/planned_changes.php) where I talk about introducing the nightly builds and [this follow-up](http://wincent.dev/a/about/wincent/weblog/archives/2007/03/nightly_builds.php) written after the build system went live in March 2007.
 
 #### Bugs and feature requests database
 

@@ -1,5 +1,5 @@
 ---
-title: Add Posts model (typechecked.net, ca2dca0)
+title: Add Posts model (wincent.dev, ca2dca0)
 tags: snippets
 ---
 

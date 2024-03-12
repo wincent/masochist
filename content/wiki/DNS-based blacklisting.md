@@ -40,7 +40,7 @@ The telnet-based test will try sending mail to "postmaster@[example.com](/wiki/e
 
 # Efficacy
 
-During a test period of 24 hours in mid-July 2006 on the [typechecked.net](/wiki/typechecked.net) mail server the [DNS-based blacklist](/wiki/DNS-based_blacklist) described here stopped 261 connection attempts.
+During a test period of 24 hours in mid-July 2006 on the [wincent.dev](/wiki/wincent.dev) mail server the [DNS-based blacklist](/wiki/DNS-based_blacklist) described here stopped 261 connection attempts.
 
 For other efficacy statistics see [combatting spam](/wiki/combatting_spam).
 

@@ -7,7 +7,7 @@ A friend of mine just told me about [just-ping.com](http://just-ping.com/), a fr
 
 Some sample results follow.
 
-## typechecked.net
+## wincent.dev
 
     location                  result               min. rrt  avg. rrt  max. rrt
     Vancouver, Canada         Okay                     85.1      85.3      85.6

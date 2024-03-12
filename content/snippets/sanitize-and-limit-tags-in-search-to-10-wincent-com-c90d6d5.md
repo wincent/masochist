@@ -1,5 +1,5 @@
 ---
-title: Sanitize and limit tags in search to 10 (typechecked.net, c90d6d5)
+title: Sanitize and limit tags in search to 10 (wincent.dev, c90d6d5)
 tags: snippets
 ---
 

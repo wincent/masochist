@@ -3,7 +3,7 @@ title: Involuntary Reboot Log #17, #18 and #19
 tags: involuntary.reboot.log blog
 ---
 
-I've been too busy of late to post reports to my much-loved [Involuntary Reboot Log](http://typechecked.net/a/about/wincent/weblog/archives/involuntary_reboot_log/), but I'm finally catching up with my first three entries since upgrading to the final version of [Leopard](http://typechecked.net/wiki/Leopard).
+I've been too busy of late to post reports to my much-loved [Involuntary Reboot Log](http://wincent.dev/a/about/wincent/weblog/archives/involuntary_reboot_log/), but I'm finally catching up with my first three entries since upgrading to the final version of [Leopard](http://wincent.dev/wiki/Leopard).
 
 The first occurred during installation. I started things going and went out, and when I came back the installation had finished and the machine had rebooted but it was totally blocked with a spinning beachball, so I had to hard reset it.
 

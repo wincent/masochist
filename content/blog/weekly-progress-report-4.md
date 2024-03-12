@@ -46,7 +46,7 @@ Time for another progress report. As always, the usual disclaimers apply. This i
 
     3 files changed, 29 insertions(+), 21 deletions(-)
 
-# unversioned/typechecked.net
+# unversioned/wincent.dev
 
     67d55c3 Show multiple flash items as bullet points
     b9eff44 CSS: Make bullet points in flashes look nice

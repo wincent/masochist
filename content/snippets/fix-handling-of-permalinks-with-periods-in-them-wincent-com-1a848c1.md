@@ -1,5 +1,5 @@
 ---
-title: Fix handling of permalinks with periods in them (typechecked.net, 1a848c1)
+title: Fix handling of permalinks with periods in them (wincent.dev, 1a848c1)
 tags: snippets
 ---
 

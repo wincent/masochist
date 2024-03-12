@@ -3,7 +3,7 @@ title: Bugzilla 3.0 improvements
 tags: blog
 ---
 
-As I [mentioned](http://typechecked.net/a/about/wincent/weblog/mini-log/archives/2007/01/bugzilla_30.php) in the [Mini-log](http://typechecked.net/a/about/wincent/weblog/mini-log/archives/), Bugzilla 3.0 has some [really nice improvements](https://bugzilla.mozilla.org/page.cgi?id=upgrade-2006-12-26.html) in store.
+As I [mentioned](http://wincent.dev/a/about/wincent/weblog/mini-log/archives/2007/01/bugzilla_30.php) in the [Mini-log](http://wincent.dev/a/about/wincent/weblog/mini-log/archives/), Bugzilla 3.0 has some [really nice improvements](https://bugzilla.mozilla.org/page.cgi?id=upgrade-2006-12-26.html) in store.
 
 Favorite changes:
 

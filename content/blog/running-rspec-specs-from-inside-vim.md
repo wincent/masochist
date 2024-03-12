@@ -10,14 +10,14 @@ Turns out you can do this with Tim Pope's [rails.vim](http://rails.vim.tpope.net
 
 With `rails.vim` installed, you can use the `:Rake` command to fire off the specs for the model, controller or view that you are editing. Output like the following will appear in the command buffer at the bottom of the window:
 
-    :!rake spec SPEC="/Users/wincent/trabajo/unversioned/typechecked.net/src/spec/models/issue_spec.rb" SPEC_OPTS= 2>&1| tee /var/folders/mh/mhvu4vHPGiGR1PpCmIscX++++TI/-Tmp-/v867081/0
-    (in /Users/wincent/trabajo/unversioned/typechecked.net/src)
+    :!rake spec SPEC="/Users/wincent/trabajo/unversioned/wincent.dev/src/spec/models/issue_spec.rb" SPEC_OPTS= 2>&1| tee /var/folders/mh/mhvu4vHPGiGR1PpCmIscX++++TI/-Tmp-/v867081/0
+    (in /Users/wincent/trabajo/unversioned/wincent.dev/src)
     .............................................................
 
     Finished in 3.334807 seconds
 
     61 examples, 0 failures
-    (1 of 1): (in /Users/wincent/trabajo/unversioned/typechecked.net/src)
+    (1 of 1): (in /Users/wincent/trabajo/unversioned/wincent.dev/src)
 
 But this isn't quite what I was looking for. There are no hyperlinks for failing spec names for, example. And it's a temporary buffer as well, so it gets dismissed as soon as you hit ENTER (not very useful if you have multiple failures).
 

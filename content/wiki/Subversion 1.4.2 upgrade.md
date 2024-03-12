@@ -53,7 +53,7 @@ And many test failures in the `make check`. Evidently it will be necessary to ma
 
 I've uploaded the scripts I used to perform the static build here:
 
--   <http://typechecked.net/gpl/svn-1.4.2/intel/svn-mac-build.zip>
+-   <http://wincent.dev/gpl/svn-1.4.2/intel/svn-mac-build.zip>
 
 These are modifications of the scripts by D.J. Hagberg who maintains static builds of Subversion for various platforms.
 

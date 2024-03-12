@@ -7,7 +7,7 @@ tags: masochist relay graphql redis javascript site blog
 
 # What?
 
-Masochist is a rewrite of the software powering the website at [typechecked.net]. It's called "masochist" because I never learn, and I find myself yet again moving my online presence into a new home. The software lives on [the main branch](https://github.com/wincent/masochist/tree/main) and the source content lives on [the content branch](https://github.com/wincent/masochist/tree/content).
+Masochist is a rewrite of the software powering the website at [wincent.dev]. It's called "masochist" because I never learn, and I find myself yet again moving my online presence into a new home. The software lives on [the main branch](https://github.com/wincent/masochist/tree/main) and the source content lives on [the content branch](https://github.com/wincent/masochist/tree/content).
 
 ## No, really, what is it?
 
@@ -70,7 +70,7 @@ As noted above, Masochist is still a work in progress, but I've gone into it wit
     -   If you want people to read your blog-type content, maybe you should just stick it on Facebook or Medium, where people who care about you, or who share you interests, can see it.
     -   Writing content in this repo and having a low-friction way to export it elsewhere (eg. to Facebook, Medium etc) is a bonus (note: haven't gotten to the low-friction exports yet).
 -   Most content should be in plain-text (minimal vendor lock-in) with Markdown preferred.
--   At the same time, I should be able to keep my legion wikitext files and not have to do a forced upgrade of them all at once, even if that means doing something hacky and expedient like forking a Ruby process or spinning up a microservice to do the translation to HTML (note from the future: I ended up building the microservice, and eventually [doing an automated translation](https://typechecked.net/blog/filter-branch) from wikitext to Markdown).
+-   At the same time, I should be able to keep my legion wikitext files and not have to do a forced upgrade of them all at once, even if that means doing something hacky and expedient like forking a Ruby process or spinning up a microservice to do the translation to HTML (note from the future: I ended up building the microservice, and eventually [doing an automated translation](https://wincent.dev/blog/filter-branch) from wikitext to Markdown).
 -   You should be able to `git push` to publish content. There should be no complicated build step (with a zillion dependencies).
 -   You should be able to `git push` to deploy code too.
 -   These content and code pushes should involve separate branches, because you should be able to do one without the other.
@@ -108,4 +108,4 @@ As noted above, Masochist is still a work in progress, but I've gone into it wit
 [wordpress]: https://wordpress.org/
 [mailman]: http://www.gnu.org/software/mailman/
 [memcached]: http://memcached.org/
-[typechecked.net]: https://typechecked.net
+[wincent.dev]: https://wincent.dev

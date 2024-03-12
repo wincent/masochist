@@ -1,5 +1,5 @@
 ---
-title: Upgrade RSpec to 1.1.1 (typechecked.net, 9adf928)
+title: Upgrade RSpec to 1.1.1 (wincent.dev, 9adf928)
 tags: snippets
 ---
 

@@ -5,7 +5,7 @@ tags: blog
 
 It was [just brought to my attention](http://fukamachi.org/wp/2007/01/04/ssl-scam-now-slightly-cheaper/) that [RapidSSL](http://www.rapidssl.com/index_ssl.htm) is running [a promotion](http://www.rapidssl.com/ssl-certificate-products/ssl-certificate-replace.htm) where you can extend your current [SSL]{} certificate for free by one year when you switch over from [Comodo](http://www.comodogroup.com/).
 
-Great. My existing Comodo-supplied certificate, the one that backs the [Wincent online store](https://typechecked.net/a/store/), is due to expire on 15 April 2007, so by switching to RapidSSL I can bump the expiry date back to 15 April 2008 for free. Furthermore, as noted in the article linked to above, there are [competitive renewal deals](http://www.servertastic.com/store/product.asp?numRecordPosition=1&P_ID=222) offered by RapidSSL resellers like [ServerTastic](http://www.servertastic.com/index.asp). At the time of writing you can get your SSL certificate for as little as \$10 per year.
+Great. My existing Comodo-supplied certificate, the one that backs the [Wincent online store](https://wincent.dev/a/store/), is due to expire on 15 April 2007, so by switching to RapidSSL I can bump the expiry date back to 15 April 2008 for free. Furthermore, as noted in the article linked to above, there are [competitive renewal deals](http://www.servertastic.com/store/product.asp?numRecordPosition=1&P_ID=222) offered by RapidSSL resellers like [ServerTastic](http://www.servertastic.com/index.asp). At the time of writing you can get your SSL certificate for as little as \$10 per year.
 
 Better still, RapidSSL certificates are directly signed by a root certificate rather than requiring an intermediate certificate chain. Although it makes no real difference for end users this is a [big deal](http://gagravarr.org/writing/openssl-certs/personal.shtml) for you if you're an administrator because it makes your set-up so much easier.
 
@@ -33,4 +33,4 @@ And the new, root-signed certificate:
 
 Also nice to see that they in fact extended the expiry date by more than a year, adding on a few additional weeks (to 5 May 2008) for free.
 
-Installing the certificate was fairly easy; I made some notes about it [here](http://typechecked.net/wiki/Installing_a_new_SSL_certificate).
+Installing the certificate was fairly easy; I made some notes about it [here](http://wincent.dev/wiki/Installing_a_new_SSL_certificate).

@@ -9,4 +9,4 @@ At first this may seem counter-intuitive as programmers generally don't want the
 
 # See also
 
--   [Be assertive](http://typechecked.net/a/about/wincent/weblog/archives/2007/03/be_assertive.php) ([weblog](/wiki/weblog) article)
+-   [Be assertive](http://wincent.dev/a/about/wincent/weblog/archives/2007/03/be_assertive.php) ([weblog](/wiki/weblog) article)

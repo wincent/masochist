@@ -1,5 +1,5 @@
 ---
-title: Switch to RSpec trunk (typechecked.net, b8c4b59)
+title: Switch to RSpec trunk (wincent.dev, b8c4b59)
 tags: snippets
 ---
 

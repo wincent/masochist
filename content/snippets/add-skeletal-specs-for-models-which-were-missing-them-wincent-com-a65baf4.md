@@ -1,5 +1,5 @@
 ---
-title: Add skeletal specs for models which were missing them (typechecked.net, a65baf4)
+title: Add skeletal specs for models which were missing them (wincent.dev, a65baf4)
 tags: snippets
 ---
 

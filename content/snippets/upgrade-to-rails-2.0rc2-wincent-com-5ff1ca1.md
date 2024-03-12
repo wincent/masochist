@@ -1,5 +1,5 @@
 ---
-title: Upgrade to Rails 2.0RC2 (typechecked.net, 5ff1ca1)
+title: Upgrade to Rails 2.0RC2 (wincent.dev, 5ff1ca1)
 tags: snippets
 ---
 

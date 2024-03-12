@@ -1,5 +1,5 @@
 ---
-title: Add pagination to weblog (typechecked.net, b39a0af)
+title: Add pagination to weblog (wincent.dev, b39a0af)
 tags: snippets
 ---
 

@@ -3,7 +3,7 @@ title: Double-checked locking and memory barriers, take two
 tags: blog
 ---
 
-A while ago [I wrote about double-checked locking and memory barriers](http://typechecked.net/a/knowledge-base/archives/2006/01/locking_doublec.php). There are plenty of articles about this on the net. They generally show three examples.
+A while ago [I wrote about double-checked locking and memory barriers](http://wincent.dev/a/knowledge-base/archives/2006/01/locking_doublec.php). There are plenty of articles about this on the net. They generally show three examples.
 
 #### No locking
 

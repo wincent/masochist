@@ -1,5 +1,5 @@
 ---
-title: Pretty formatting for creation/update timestamps (typechecked.net, fba09f2)
+title: Pretty formatting for creation/update timestamps (wincent.dev, fba09f2)
 tags: snippets
 ---
 

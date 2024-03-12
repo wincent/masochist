@@ -1,5 +1,5 @@
 ---
-title: Set up Taggable as "acts_as_taggable" (typechecked.net, 5604977)
+title: Set up Taggable as "acts_as_taggable" (wincent.dev, 5604977)
 tags: snippets
 ---
 

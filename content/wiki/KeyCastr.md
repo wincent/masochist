@@ -7,7 +7,7 @@ title: KeyCastr
 
 For an example [screencast](/wiki/screencast) showing [KeyCastr](/wiki/KeyCastr) see this [screencast](/wiki/screencast):
 
--   <http://typechecked.net/a/about/wincent/weblog/archives/2007/04/noncontiguous_s.php>
+-   <http://wincent.dev/a/about/wincent/weblog/archives/2007/04/noncontiguous_s.php>
 
 # See also
 

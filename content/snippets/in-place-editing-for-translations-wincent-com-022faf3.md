@@ -1,5 +1,5 @@
 ---
-title: In-place editing for translations (typechecked.net, 022faf3)
+title: In-place editing for translations (wincent.dev, 022faf3)
 tags: snippets
 ---
 

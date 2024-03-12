@@ -9,8 +9,8 @@ tags: arch linux snippets
 #                                                                              #
 #           NOTE: For the latest version of this script, see:                  #
 #                                                                              #
-#           https://typechecked.net/link/arch/desktop.sh (desktop version)         #
-#           https://typechecked.net/link/arch/zbook.sh   (laptop version)          #
+#           https://wincent.dev/link/arch/desktop.sh (desktop version)         #
+#           https://wincent.dev/link/arch/zbook.sh   (laptop version)          #
 #                                                                              #
 ################################################################################
 
@@ -19,7 +19,7 @@ tags: arch linux snippets
 # iwctl station wlan0 scan
 # iwctl station wlan0 get-networks
 # iwctl station wlan0 connect $SSID
-# curl -LO https://typechecked.net/link/arch-linux-install.sh
+# curl -LO https://wincent.dev/link/arch-linux-install.sh
 # bash arch-linux-install.sh
 
 set -e

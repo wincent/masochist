@@ -1,5 +1,5 @@
 ---
-title: Add permalink column to products table (typechecked.net, a4263df)
+title: Add permalink column to products table (wincent.dev, a4263df)
 tags: snippets
 ---
 

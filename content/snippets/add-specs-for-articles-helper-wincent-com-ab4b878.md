@@ -1,5 +1,5 @@
 ---
-title: Add specs for Articles helper (typechecked.net, ab4b878)
+title: Add specs for Articles helper (wincent.dev, ab4b878)
 tags: snippets
 ---
 

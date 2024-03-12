@@ -3,4 +3,4 @@ title: Bye-bye
 tags: snippets
 ---
 
-[Bug \#441](http://typechecked.net/a/support/bugs/show_bug.cgi?id=441).
+[Bug \#441](http://wincent.dev/a/support/bugs/show_bug.cgi?id=441).

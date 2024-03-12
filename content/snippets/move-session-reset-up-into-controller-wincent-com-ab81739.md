@@ -1,5 +1,5 @@
 ---
-title: Move session reset up into controller (typechecked.net, ab81739)
+title: Move session reset up into controller (wincent.dev, ab81739)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Embed email address in footer (typechecked.net, ac2ca7c)
+title: Embed email address in footer (wincent.dev, ac2ca7c)
 tags: snippets
 ---
 

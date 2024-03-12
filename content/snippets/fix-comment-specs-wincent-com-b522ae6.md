@@ -1,5 +1,5 @@
 ---
-title: Fix Comment specs (typechecked.net, b522ae6)
+title: Fix Comment specs (wincent.dev, b522ae6)
 tags: snippets
 ---
 

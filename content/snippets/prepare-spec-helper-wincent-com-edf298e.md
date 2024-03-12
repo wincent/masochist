@@ -1,5 +1,5 @@
 ---
-title: Prepare spec helper (typechecked.net, edf298e)
+title: Prepare spec helper (wincent.dev, edf298e)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Add comments to weblog (typechecked.net, 5559ac9)
+title: Add comments to weblog (wincent.dev, 5559ac9)
 tags: snippets
 ---
 

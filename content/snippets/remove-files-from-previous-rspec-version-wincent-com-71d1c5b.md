@@ -1,5 +1,5 @@
 ---
-title: Remove files from previous RSpec version (typechecked.net, 71d1c5b)
+title: Remove files from previous RSpec version (wincent.dev, 71d1c5b)
 tags: snippets
 ---
 

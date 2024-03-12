@@ -13,4 +13,4 @@ title: JavaScript testing frameworks
 
 # See also
 
--   All items tagged with "[javascript](/tags/javascript)" and "[testing](/tags/testing)": <https://typechecked.net/tags/search?q=javascript+testing>
+-   All items tagged with "[javascript](/tags/javascript)" and "[testing](/tags/testing)": <https://wincent.dev/tags/search?q=javascript+testing>

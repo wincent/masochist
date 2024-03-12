@@ -1,5 +1,5 @@
 ---
-title: Add preprocessing of wikitext (typechecked.net, 8d444fd)
+title: Add preprocessing of wikitext (wincent.dev, 8d444fd)
 tags: snippets
 ---
 

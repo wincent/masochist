@@ -19,7 +19,7 @@ A less reckless upgrade procedure is described below, which includes making a ba
 
 ## Check the trunk, branches and tags directories in the repository
 
-Given that in recent versions the [WordPress](/wiki/WordPress) team hasn't always maintained an [up-to-date set of tags](http://typechecked.net/a/knowledge-base/archives/2006/06/wordpress_updat.php) in their [Subversion](/wiki/Subversion) repository, it is a good idea to check that recent changes in the `trunk`, `branches` and `tags` directories on the repository all match up. At the time of [the 2.0.4 release announcement](http://wordpress.org/development/2006/07/wordpress-204/) all three directories appeared to be in sync:
+Given that in recent versions the [WordPress](/wiki/WordPress) team hasn't always maintained an [up-to-date set of tags](http://wincent.dev/a/knowledge-base/archives/2006/06/wordpress_updat.php) in their [Subversion](/wiki/Subversion) repository, it is a good idea to check that recent changes in the `trunk`, `branches` and `tags` directories on the repository all match up. At the time of [the 2.0.4 release announcement](http://wordpress.org/development/2006/07/wordpress-204/) all three directories appeared to be in sync:
 
 -   <http://svn.automattic.com/wordpress/tags/2.0.4/>
 -   <http://svn.automattic.com/wordpress/branches/2.0/>

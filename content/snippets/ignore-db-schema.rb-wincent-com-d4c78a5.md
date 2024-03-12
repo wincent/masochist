@@ -1,5 +1,5 @@
 ---
-title: Ignore db/schema.rb (typechecked.net, d4c78a5)
+title: Ignore db/schema.rb (wincent.dev, d4c78a5)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Add full-text search to Posts model (typechecked.net, 8e8cbcf)
+title: Add full-text search to Posts model (wincent.dev, 8e8cbcf)
 tags: snippets
 ---
 

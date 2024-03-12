@@ -1,5 +1,5 @@
 ---
-title: Complete Article model specs (typechecked.net, ef8622f)
+title: Complete Article model specs (wincent.dev, ef8622f)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Add notes to Taggable spec (typechecked.net, 7d06fda)
+title: Add notes to Taggable spec (wincent.dev, 7d06fda)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Add "index" action to products controller (typechecked.net, 96c7e77)
+title: Add "index" action to products controller (wincent.dev, 96c7e77)
 tags: snippets
 ---
 

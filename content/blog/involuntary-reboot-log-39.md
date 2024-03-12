@@ -25,7 +25,7 @@ Notice that the only window which doesn't show a beachball when you mouse over i
 
 Boot laptop. Ping the hung machine. It responds. Try to log in via SSH. Hangs. Do a portscan. The SSH port is open, but it doesn't allow you to connect.
 
-Depress the power key and perform a hard reset. Decide that just to be safe you'll follow your standard policy of booting from optical media and running Disk First Aid, seeing as [neither Apple's journaling file system nor their software RAID implementation have proven to be adequate protection](http://typechecked.net/a/about/wincent/weblog/archives/2005/05/1041_kernel_pan.php) in the past.
+Depress the power key and perform a hard reset. Decide that just to be safe you'll follow your standard policy of booting from optical media and running Disk First Aid, seeing as [neither Apple's journaling file system nor their software RAID implementation have proven to be adequate protection](http://wincent.dev/a/about/wincent/weblog/archives/2005/05/1041_kernel_pan.php) in the past.
 
 Insert Tiger install disc. Reboot with "C" key held. Witness as machine boots back from startup disk anyway. Reboot again, this time forceably electing the start-up disk prior to initiating the reboot.
 

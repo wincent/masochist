@@ -1,5 +1,5 @@
 ---
-title: Teach Haml to respect preformatted text (typechecked.net, 0eb6273)
+title: Teach Haml to respect preformatted text (wincent.dev, 0eb6273)
 tags: snippets
 ---
 

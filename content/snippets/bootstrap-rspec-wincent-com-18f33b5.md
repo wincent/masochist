@@ -1,5 +1,5 @@
 ---
-title: Bootstrap RSpec (typechecked.net, 18f33b5)
+title: Bootstrap RSpec (wincent.dev, 18f33b5)
 tags: snippets
 ---
 

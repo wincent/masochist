@@ -1,5 +1,5 @@
 ---
-title: Restrict visibility during tag searches (typechecked.net, 470696b)
+title: Restrict visibility during tag searches (wincent.dev, 470696b)
 tags: snippets
 ---
 

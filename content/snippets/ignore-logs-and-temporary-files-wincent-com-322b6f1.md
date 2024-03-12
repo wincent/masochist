@@ -1,5 +1,5 @@
 ---
-title: Ignore logs and temporary files (typechecked.net, 322b6f1)
+title: Ignore logs and temporary files (wincent.dev, 322b6f1)
 tags: snippets
 ---
 

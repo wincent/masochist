@@ -1,5 +1,5 @@
 ---
-title: Add products listing to index, links are permalinks (typechecked.net, 63db015)
+title: Add products listing to index, links are permalinks (wincent.dev, 63db015)
 tags: snippets
 ---
 

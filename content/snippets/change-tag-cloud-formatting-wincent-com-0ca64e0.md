@@ -1,5 +1,5 @@
 ---
-title: Change tag cloud formatting (typechecked.net, 0ca64e0)
+title: Change tag cloud formatting (wincent.dev, 0ca64e0)
 tags: snippets
 ---
 

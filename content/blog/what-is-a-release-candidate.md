@@ -3,7 +3,7 @@ title: What is a "release candidate"?
 tags: rails blog
 ---
 
-Here we go again. I've [complained about this already](http://typechecked.net/a/about/wincent/weblog/archives/2007/12/what_is_a_relea.php) in the past, but it looks like it's time to mention it again. The [Rails](/wiki/Rails) team has a totally non-standard, recklessly non-conservative definition of what a "release candidate" is.
+Here we go again. I've [complained about this already](http://wincent.dev/a/about/wincent/weblog/archives/2007/12/what_is_a_relea.php) in the past, but it looks like it's time to mention it again. The [Rails](/wiki/Rails) team has a totally non-standard, recklessly non-conservative definition of what a "release candidate" is.
 
 From the [official weblog](http://weblog.rubyonrails.org/2009/3/13/this-week-in-edge-rails):
 

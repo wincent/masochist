@@ -9,7 +9,7 @@ _This article was originally published at [howivim.com](http://howivim.com/2016/
 
 I'm a Front End Engineer working at Facebook on [Relay](http://facebook.github.io/relay/), which means I write a lot of JavaScript. I also end up writing Ruby, Vimscript, Lua, C, Haskell in my side-projects.
 
-I started using Vim full-time back in 2009, originally in MacVim and later in the terminal (once I discovered the joys of tmux). I try to use Vim for as much of my text-editing as possible; for example, I've got thousands of wikitext and Markdown docs for [my website](https://typechecked.net/) in [a Git repo](https://github.com/wincent/masochist/tree/content/content).
+I started using Vim full-time back in 2009, originally in MacVim and later in the terminal (once I discovered the joys of tmux). I try to use Vim for as much of my text-editing as possible; for example, I've got thousands of wikitext and Markdown docs for [my website](https://wincent.dev/) in [a Git repo](https://github.com/wincent/masochist/tree/content/content).
 
 I'd be open using other editors if they could provide a good modal editing experience. Maybe they'll get there eventually, but I don't think they're quite there yet in terms of speed and robustness. I'm keeping my eye on Neovim, Nuclide and even Emacs. I could probably survive in any of those if they gave me the rock-solid modal editing experience that I want, as well as the awesome fuzzy-file-finding, snippets, and autocomplete that I've got in Vim.
 

@@ -7,7 +7,7 @@ title: Installing Bansshee on Red Hat Enterprise Linux 5.3
 # Installing the latest source code from the [Git](/wiki/Git) repository
 
 ```shell
-$ git clone git://git.typechecked.net/bansshee.git
+$ git clone git://git.wincent.dev/bansshee.git
 $ cd bansshee
 $ sudo make install
 ```

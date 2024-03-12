@@ -1,5 +1,5 @@
 ---
-title: Revert "Teach Haml to respect preformatted text" (typechecked.net, add2e6c)
+title: Revert "Teach Haml to respect preformatted text" (wincent.dev, add2e6c)
 tags: snippets
 ---
 

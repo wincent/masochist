@@ -1,5 +1,5 @@
 ---
-title: Full spec suite for Article model (typechecked.net, 90d6ef3)
+title: Full spec suite for Article model (wincent.dev, 90d6ef3)
 tags: snippets
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Fix bug in Article redirect format validation regexp (typechecked.net, 4dae4d8)
+title: Fix bug in Article redirect format validation regexp (wincent.dev, 4dae4d8)
 tags: snippets
 ---
 

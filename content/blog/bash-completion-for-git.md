@@ -3,7 +3,7 @@ title: Bash completion for Git
 tags: blog
 ---
 
-If you're using [Git](http://typechecked.net/wiki/Git) and [Bash](http://typechecked.net/wiki/Bash) (if you're using a programmer and have the freedom to choose the [SCM](http://typechecked.net/wiki/SCM) you use then the former should be true; if you're a [Mac OS X](http://typechecked.net/wiki/Mac%20OS%20X) user then the latter is true by default unless you've overridden it) then you really should check out the Bash completion script that comes with Git (in `contrib/completion/`).
+If you're using [Git](http://wincent.dev/wiki/Git) and [Bash](http://wincent.dev/wiki/Bash) (if you're using a programmer and have the freedom to choose the [SCM](http://wincent.dev/wiki/SCM) you use then the former should be true; if you're a [Mac OS X](http://wincent.dev/wiki/Mac%20OS%20X) user then the latter is true by default unless you've overridden it) then you really should check out the Bash completion script that comes with Git (in `contrib/completion/`).
 
 I had previously only glanced at it but on giving it a bit more of a serious try I am really, really impressed with its usefulness.
 

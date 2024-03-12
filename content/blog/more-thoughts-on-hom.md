@@ -3,7 +3,7 @@ title: More thoughts on HOM
 tags: blog
 ---
 
-Back in August [I wrote the following](http://typechecked.net/a/about/wincent/weblog/archives/2006/08/thoughts_on_hig.php) about HOM (Higher Order Messaging):
+Back in August [I wrote the following](http://wincent.dev/a/about/wincent/weblog/archives/2006/08/thoughts_on_hig.php) about HOM (Higher Order Messaging):
 
 > It reads like natural language but behind the scenes there's an invisible trampoline object that does the work. The first message returns this invisible object with which you never need interact knowingly, and that invisible object mysteriously captures the message that you send it, the message that you really want to send to the objects in the collection, and then it does something with it.
 >
@@ -73,7 +73,7 @@ Strong points:
 
 Weak points:
 
--   Requires non-obvious invisible trampoline object behind the scenes (which is what I wrote about [here](http://typechecked.net/a/about/wincent/weblog/archives/2006/08/thoughts_on_hig.php))
+-   Requires non-obvious invisible trampoline object behind the scenes (which is what I wrote about [here](http://wincent.dev/a/about/wincent/weblog/archives/2006/08/thoughts_on_hig.php))
 -   Runs slower due to said secret magic
 
 Neutral points:

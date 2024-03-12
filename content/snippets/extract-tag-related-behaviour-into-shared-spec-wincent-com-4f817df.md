@@ -1,5 +1,5 @@
 ---
-title: Extract tag-related behaviour into shared spec (typechecked.net, 4f817df)
+title: Extract tag-related behaviour into shared spec (wincent.dev, 4f817df)
 tags: snippets
 ---
 

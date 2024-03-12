@@ -3,8 +3,8 @@ title: WinSwitch 3.2 (Universal Binary) release
 tags: blog
 ---
 
-[WinSwitch](http://typechecked.net/a/products/winswitch/) version 3.2 is now available for download. All reported issues with the previous beta release have been addressed, as well as other improvements (see [the full change history](http://typechecked.net/a/products/winswitch/history/)). This release offers native compatibility with both PowerPC and Intel processors ("Universal Binary").
+[WinSwitch](http://wincent.dev/a/products/winswitch/) version 3.2 is now available for download. All reported issues with the previous beta release have been addressed, as well as other improvements (see [the full change history](http://wincent.dev/a/products/winswitch/history/)). This release offers native compatibility with both PowerPC and Intel processors ("Universal Binary").
 
-WinSwitch is freeware but I depend on donations to cover the costs of distribution and development, so please consider [making a contribution](https://typechecked.net/a/products/winswitch/donate/). The download-to-donation ratio is well over 1,000 to 1, so please think about helping out. If the ratio does not improve this may be the last ever WinSwitch release.
+WinSwitch is freeware but I depend on donations to cover the costs of distribution and development, so please consider [making a contribution](https://wincent.dev/a/products/winswitch/donate/). The download-to-donation ratio is well over 1,000 to 1, so please think about helping out. If the ratio does not improve this may be the last ever WinSwitch release.
 
-If you haven't used WinSwitch before [take a look at the screenshots](http://typechecked.net/a/products/winswitch/screenshots/) or head over to the [downloads page](http://typechecked.net/a/products/winswitch/download/) and take it for a spin!
+If you haven't used WinSwitch before [take a look at the screenshots](http://wincent.dev/a/products/winswitch/screenshots/) or head over to the [downloads page](http://wincent.dev/a/products/winswitch/download/) and take it for a spin!

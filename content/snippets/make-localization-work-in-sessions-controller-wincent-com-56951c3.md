@@ -1,5 +1,5 @@
 ---
-title: Make localization work in sessions controller (typechecked.net, 56951c3)
+title: Make localization work in sessions controller (wincent.dev, 56951c3)
 tags: snippets
 ---
 

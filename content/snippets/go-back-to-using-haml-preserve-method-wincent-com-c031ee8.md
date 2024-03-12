@@ -1,5 +1,5 @@
 ---
-title: Go back to using Haml "preserve" method (typechecked.net, c031ee8)
+title: Go back to using Haml "preserve" method (wincent.dev, c031ee8)
 tags: snippets
 ---
 

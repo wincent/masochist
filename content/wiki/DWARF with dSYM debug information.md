@@ -50,13 +50,13 @@ The only Apple tool that can parse the dSYM format is [GDB](/wiki/GDB). You can 
 
 While waiting for Apple to update `atos(1)` to work with dSYM files I've thrown together a quick tool to serve as a temporary substitute.
 
-See: <http://typechecked.net/a/products/atosym/>
+See: <http://wincent.dev/a/products/atosym/>
 
 ## Checkout via svn
 
-    svn co svn://typechecked.net/atosym/trunk
+    svn co svn://wincent.dev/atosym/trunk
 
 ## Export and zip downloadable version
 
-    svn export svn://typechecked.net/atosym/trunk atosym-1.0
+    svn export svn://wincent.dev/atosym/trunk atosym-1.0
     zip -r atosym-1.0.zip atosym-1.0

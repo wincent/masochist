@@ -16,7 +16,7 @@ The source code is now BSD licensed. [I've been working towards open sourcing ev
 
 The initial source code release is based off the code that was used to build version 4.5.2, minus the serial number code and third-party code (such as a local copy of the Growl framework) which I did not want to distribute. I'm hoping this will be just the first of several such open source releases that I can make in the near future.
 
-Synergy will still be available for download and purchase on typechecked.net. Maybe in the future my circumstances will change and I'll be able to fully re-enter the world of Mac OS X development, in which case I'd like to work on getting Synergy into Apple's App Store.
+Synergy will still be available for download and purchase on wincent.dev. Maybe in the future my circumstances will change and I'll be able to fully re-enter the world of Mac OS X development, in which case I'd like to work on getting Synergy into Apple's App Store.
 
 Periodically-updated backup mirrors are already in place at [GitHub](/wiki/GitHub) and [Gitorious](/wiki/Gitorious):
 

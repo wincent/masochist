@@ -1,5 +1,5 @@
 ---
-title: Only emit password to standard error, not to the log (typechecked.net, c4b9b7e)
+title: Only emit password to standard error, not to the log (wincent.dev, c4b9b7e)
 tags: snippets
 ---
 

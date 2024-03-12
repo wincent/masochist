@@ -11,4 +11,4 @@ For many users this release will be a free upgrade: see [this blog post](/blog/s
 
 The [Synergy](/wiki/Synergy) product pages have been completely revamped for this release, so be sure to [check them out](/products/synergy).
 
-You can download the new release from [the download page](/products/synergy/download) and purchase a license using [this page](https://typechecked.net/a/products/synergy-classic/purchase/).
+You can download the new release from [the download page](/products/synergy/download) and purchase a license using [this page](https://wincent.dev/a/products/synergy-classic/purchase/).

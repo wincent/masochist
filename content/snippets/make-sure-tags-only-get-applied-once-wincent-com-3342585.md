@@ -1,5 +1,5 @@
 ---
-title: Make sure tags only get applied once (typechecked.net, 3342585)
+title: Make sure tags only get applied once (wincent.dev, 3342585)
 tags: snippets
 ---
 

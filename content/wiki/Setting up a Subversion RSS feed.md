@@ -11,8 +11,8 @@ I'll be using Ruby seeing as it has in built RSS support (in the standard librar
 
 In the end I decided to send posts to Movable Type via XML-RPC (also supported in the [Ruby](/wiki/Ruby) standard library) and let Movable Type generate the RSS feeds; that way I get HTML archives and the ability to embed the Subversion log into other web pages "for free". In part this decision was motivated when I discovered that every entry in an RSS feed requires a unique URL, and my original idea didn't really have any suitable destination URL to which to link (given that many of the commit messages will not relate to any publicly accessible repository). Another benefit is that I can post updates from diverse Subversion repositories hosted on different servers (for example the public Subversion server and also my private locally hosted Subversion server) and Movable Type will handle the aggregation into a single RSS feed and web page.
 
--   Archives: <http://typechecked.net/a/about/wincent/weblog/svn-log/archives.php>
--   Explanatory article: <http://typechecked.net/a/about/wincent/weblog/archives/2006/09/keeping_up_to_d.php>
+-   Archives: <http://wincent.dev/a/about/wincent/weblog/svn-log/archives.php>
+-   Explanatory article: <http://wincent.dev/a/about/wincent/weblog/archives/2006/09/keeping_up_to_d.php>
 
 # See also
 
