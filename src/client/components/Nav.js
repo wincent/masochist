@@ -77,7 +77,7 @@ export default class Nav extends React.Component {
         <ul>
           <li>
             <Link className="nav-link" to="/">
-              wincent.dev
+              Wincent
             </Link>
             <div className="nav-toggle-wrapper">
               <div className="nav-toggle" onClick={this._handleToggle}>
