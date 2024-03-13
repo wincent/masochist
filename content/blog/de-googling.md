@@ -22,7 +22,9 @@ Needless to say, I've long had a handful of custom domains (not at [Google Domai
 
 # Google Drive
 
-I used both Google Drive and Dropbox for a while, but migrated to [Sync.com](https://www.sync.com/) a couple of years ago. Once again, not free, but that's a feature and not a bug. The company is small enough that when I need support (which has been once in the last two years), I can open a ticket and have a dialog with an actual human being. The big selling point of Sync is that it is end-to-end encrypted, and while that's nice, I think its other headline feature — namely, the fact that it _isn't_ Dropbox — is equally important. The UI on the web interface and the macOS client is a bit ugly, but the stuff that matters (ie. syncing) works well, and the client doesn't have a million unwanted features and intrusive upsells, and it doesn't peg the CPU just to get its job done. As a nicety, it seems to [handle symlinks in a relatively reasonable way](https://twitter.com/wincent/status/1465777254617731076).
+I used both Google Drive and Dropbox for a while, but migrated to [Sync.com](https://www.sync.com/) a couple of years ago[^resilio]. Once again, not free, but that's a feature and not a bug. The company is small enough that when I need support (which has been once in the last two years), I can open a ticket and have a dialog with an actual human being. The big selling point of Sync is that it is end-to-end encrypted, and while that's nice, I think its other headline feature — namely, the fact that it _isn't_ Dropbox — is equally important. The UI on the web interface and the macOS client is a bit ugly, but the stuff that matters (ie. syncing) works well, and the client doesn't have a million unwanted features and intrusive upsells, and it doesn't peg the CPU just to get its job done. As a nicety, it seems to [handle symlinks in a relatively reasonable way](https://twitter.com/wincent/status/1465777254617731076).
+
+[^resilio]: I switched to [Resilio Sync](/wiki/Resilio_Sync) in late 2023.
 
 # Chrome
 

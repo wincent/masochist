@@ -6,7 +6,7 @@ twitter: https://twitter.com/wincent/status/1044167354295480320
 
 The other day I was [lamenting on Twitter](https://twitter.com/wincent/status/1039961366600314880) how tricky it can be to do something as simple as organize your Dropbox[^dropbox] folder:
 
-[^dropbox]: Some time after writing this article, I switched from Dropbox to [Sync](https://www.sync.com/), but most of the organization guidelines apply equally well there too (and internal symlinks seem to work a bit better than they did on Dropbox).
+[^dropbox]: Some time after writing this article, I switched from Dropbox to [Sync](https://www.sync.com/), but most of the organization guidelines apply equally well there too (and internal symlinks seem to work a bit better than they did on Dropbox). Later still, I switched from Sync to [Resilio Sync](/wiki/Resilio_Sync).
 
 > So speaking of organizing my Dropbox folder... I'm facing again the whole taxonomy vs folksonomy thing. Taxonomies are seductive hierarchical classification systems that lure you with their siren song of logic, order, and sense-making.
 >

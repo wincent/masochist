@@ -81,7 +81,7 @@ Other apps that I haven't listed on that page but which I would miss:
 
 -   **Screenflow**
 -   **Fantastical**
--   **Sync:** Seems that only [web-based access is available for now](https://www.sync.com/help/general-limits-when-using-sync/#glinux).
+-   ~~**Sync:** Seems that only [web-based access is available for now](https://www.sync.com/help/general-limits-when-using-sync/#glinux).~~[^resilio]
 -   **KeyCastr**
 -   **Marked 2**
 -   **Monodraw**
@@ -91,6 +91,8 @@ Other apps that I haven't listed on that page but which I would miss:
 -   **Xcode:** Ha ha, just joking.
 
 Losing some of these would hurt but be livable, but some of the others would be really, really big losses. This is why in that tweet that I linked to above, I put my chances of switching at "approaching 50%".
+
+[^resilio]: I switched to [Resilio Sync](/wiki/Resilio_Sync) in late 2023, so won't miss Sync any more.
 
 # Workarounds
 
