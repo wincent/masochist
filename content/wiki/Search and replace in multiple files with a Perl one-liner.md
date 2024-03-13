@@ -27,17 +27,17 @@ xargs: unterminated quote
 
 due to filenames with quotes in them.
 
-Related to that, I wanted to go through my Git configs to make sure my references to the old hostname (`git.typechecked.net`) were updated to the new one (`git.wincent.dev`), so I did this in my home directory:
+Related to that, I wanted to go through my Git configs to make sure my references to old hostnames (`git.wincent.com`, `git.typechecked.net`) were updated to the new one (`git.wincent.dev`), so I did this in my home directory:
 
 ```
-find . -type f -name config -print0 2> /dev/null | xargs -0 -L 100 grep -l git.typechecked.net | xargs perl -p -i -e 's/git.typechecked\.net/wincent.dev/g'
+find code -type f -name config 2> /dev/null | xargs -L 100 egrep -l 'git\.(typechecked\.net|wincent\.com)' | xargs -L 100 perl -p -i -e 's/git\.(typechecked\.net|wincent\.com)/git.wincent.dev/g'
 ```
 
 ie:
 
-- `find . -type f -name config -print0 2> /dev/null` (find all regular files named `config`)
-- `xargs -0 -L 100 grep -l git.typechecked.net` (filter that to only files containing `git.typechecked.net`)
-- `xargs perl -p -i -e 's/git\.typechecked\.net/git.wincent.dev/g'` (do the find and replace in those files)
+- `find . -type f -name config 2> /dev/null` (find all regular files named `config`)
+- `xargs -L 100 egrep -l 'git\.(typechecked\.net|wincent\.com)` (filter that to only files containing `git.typechecked.net` or `git.wincent.com`)
+- `xargs -L 100 perl -p -i -e 's/git\.(typechecked\.net|wincent\.com)/git.wincent.dev/g'` (do the find and replace in those files)
 
 # Older notes
 
