@@ -10,7 +10,7 @@ When looking at [Git](/wiki/Git) conflict markers it can sometimes be confusing 
     bar
     >>>>>>> cb1abc6bd98cfc84317f8aa95a7662815417802d
 
--   the top half is the branch you a merging _into_
+-   the top half is the branch you are merging _into_
 -   the bottom half is from the commit that you are trying to merge in
 
 What this means in practice if you are doing something like `git pull` (which is equivalent to a `git fetch` followed by a `git merge`) is:
