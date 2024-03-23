@@ -35,7 +35,6 @@ import getCanonicalURLForRequest from './getCanonicalURLForRequest';
 import graphQLMiddleware from './graphQLMiddleware';
 import feed from './actions/feed';
 import runQuery from './runQuery';
-import schema from './schema';
 import renderError from './views/renderError';
 import renderIndex from './views/renderIndex';
 
