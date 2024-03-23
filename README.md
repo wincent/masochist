@@ -18,7 +18,7 @@ content added or updated via `git push`.
 Supporting tools and technologies:
 
 - [Markdown]: Preferred content markup.
-- [Vim]: Content editing.
+- [Neovim], with help from [Corpus]: Content editing.
 - [Marked 2]: Local content previewing.
 
 ## Questions
@@ -139,6 +139,7 @@ $ git commit -m Deploy --allow-empty
 $ git push masochist
 ```
 
+[Corpus]: https://github.com/wincent/corpus
 [Git]: https://git-scm.com/
 [GraphQL]: http://graphql.org/
 [Markdown]: https://en.wikipedia.org/wiki/Markdown
@@ -147,5 +148,5 @@ $ git push masochist
 [React]: http://facebook.github.io/react/
 [Redis]: http://redis.io/
 [Relay]: http://facebook.github.io/relay/
-[Vim]: https://github.com/vim/vim
+[Neovim]: https://github.com/neovim/neovim
 [wincent.dev]: https://wincent.dev/
