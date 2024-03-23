@@ -38,43 +38,98 @@ const log = Bun.spawn([
   '-z',
   '--',
   'content',
+  ':!content/images',
 ], {
   cwd: '../content',
 });
 
-// Note that we never have to worry about multi-byte UTF-8 characters getting
-// cut at a chunk boundary because the input is all ASCII.
-const content = new Map();
-const decoder = new TextDecoder();
-let pending = '';
+const text = await new Response(log.stdout).text();
 
-// It appears that, in practice, most chunks consist of a single commit, but
-// I've seen chunks that span more than one commit, and commits that span more
-// than one chunk, so most of the code in the loop below is book-keeping to
-// allow us to process one commit at a time, with some effort made to avoid
-// producing a bunch of short-lived intermediate strings.
-for await (const chunk of log.stdout) {
-  let cursor = 0;
-  const text = pending + decoder.decode(chunk);
+const content = new Map<string, {
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+}>();
 
-  const commitIndex = text.indexOf('\t', cursor);
-  if (commitIndex === -1) {
-    // Haven't found start of next commit yet. Keep reading.
-    pending = text;
-    continue;
-  } else if (commitIndex > 0) {
-    // We've found the end of a commit.
-    const commit = parseCommit(text, 0, commitIndex);
-    console.log(commit);
-  } else {
-    const nextIndex = text.indexOf('\t', commitIndex + 1);
-    if (nextIndex === -1) {
-    } else {
-    }
-  } else {
+let index = 0;
+
+const expect = (char: string) => {
+  if (text[index] !== char) {
+    throw new Error(
+      `Expected ${JSON.stringify(char)} at index ${index} but got ${
+        JSON.stringify(text[index])
+      }`,
+    );
   }
+  index++;
+};
 
+const getTimestamp = () => {
+  const timestamp = getDateFromTimestamp(text.substr(index, TIMESTAMP_LENGTH));
+  index += TIMESTAMP_LENGTH;
+  return timestamp;
+};
+
+while (index < text.length) {
+  expect('\t');
+  const authorDate = getTimestamp();
+  expect(' ');
+  const committerDate = getTimestamp();
+  expect('\0');
+  expect('\n');
+
+  while (index < text.length) {
+    const status = text[index];
+    if (status === '\t') {
+      break;
+    }
+    index++;
+    expect('\0');
+    const endIndex = text.indexOf('\0', index);
+    if (endIndex === -1) {
+      throw new Error(
+        `Failed to find NUL delimiter searching from index ${index}`,
+      );
+    }
+    const path = text.slice(index, endIndex);
+    index = endIndex;
+    expect('\0');
+
+    if (status === ADDED_FILTER) {
+      if (content.has(path)) {
+        content.get(path).createdAt = authorDate;
+      } else {
+        content.set(path, {
+          updatedAt: committerDate,
+          createdAt: authorDate,
+        });
+      }
+    } else if (status === DELETED_FILTER) {
+      if (content.has(path)) {
+        // Nothing to do.
+      } else {
+        content.set(path, {
+          createdAt: authorDate,
+          updatedAt: committerDate,
+          deletedAt: committerDate,
+        });
+      }
+    } else if (status === MODIFIED_FILTER) {
+      if (content.has(path)) {
+        // Nothing to do.
+      } else {
+        content.set(path, {
+          createdAt: authorDate,
+          updatedAt: committerDate,
+        });
+      }
+    } else {
+      throw new Error(`Unexpected status ${status} at index ${index}`);
+    }
+  }
 }
+
+console.log(content);
 
 function getDateFromTimestamp(timestamp: string): Date {
   const seconds = parseInt(timestamp, 10);
@@ -87,25 +142,4 @@ function getDateFromTimestamp(timestamp: string): Date {
   }
   const milliseconds = seconds * 1000;
   return new Date(milliseconds);
-}
-
-type Status = 'A' | 'D' | 'M';
-type Commit = {
-  authorDate: Date;
-  committerDate: Date;
-  paths: Array<[Status, string]>;
-};
-
-function parseCommit(input: string, startIndex: number, endIndex: number): Commit {
-  const authorDate = getDateFromTimestamp(text.substr(startIndex + 1, TIMESTAMP_LENGTH));
-  const committerDate = getDateFromTimestamp(
-    text.substr(startIndex + TIMESTAMP_LENGTH + 2, TIMESTAMP_LENGTH),
-  );
-  const paths = [];
-  // TODO: loop over remainder of string, scanning paths
-  return {
-    authorDate,
-    committerDate,
-    paths,
-  };
 }
