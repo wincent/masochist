@@ -113,10 +113,6 @@ const chomp = () => {
   return text[index++];
 };
 
-const peek = (length: number) => {
-  return text.substr(index, length);
-};
-
 const getTimestamp = () => {
   const substring = read(TIMESTAMP_LENGTH);
   const timestamp = getDateFromTimestamp(substring);
@@ -198,12 +194,8 @@ const files = Bun.spawn([
   cwd: '../content',
 });
 
-const decoder = new TextDecoder();
-
 text = await new Response(files.stdout).text();
 index = 0;
-
-let lines = 0;
 
 // Map from paths to blob IDs.
 const blobs = new Map<string, string>();
