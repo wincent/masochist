@@ -56,7 +56,7 @@ const content = new Map<string, {
   tags: Array<string>;
 }>();
 
-const tags = new Map<string, number>();
+const tags = new Map<string, Array<string>>();
 
 let index = 0;
 
@@ -189,10 +189,11 @@ while (index < text.length) {
         const tagNames = line.slice(TAGS_KEY.length).split(/\s+/);
         content.get(path)!.tags = tagNames;
         for (const name of tagNames) {
-          tags.set(
-            name,
-            (tags.get(name) || 0) + 1,
-          );
+          if (!tags.has(name)) {
+            tags.set(name, []);
+          }
+          const tagged = tags.get(name)!;
+          tagged.push(path);
         }
       }
     }
