@@ -139,21 +139,7 @@ So we can query for it with:
 get U25pcHBldDp4Y29kZS0yLjE=:d65c83b49bfe586889ad16899b361fa29b11e329:contentltipp4yu
 ```
 
-Yielding result:
-
-```json
-{
-  "id": "xcode-2.1",
-  "body": "\nXcode 2.1 looks like a ripper update with some great features. Can't wait to start using it...\n",
-  "format": "md",
-  "createdAt": "2005-06-07T07:13:00.000Z",
-  "updatedAt": "2017-05-18T15:06:29.000Z",
-  "tags": [],
-  "title": "Xcode 2.1"
-}
-```
-
-Formatted for readability:
+Yielding result (formatted for readability):
 
 ```json
 {
