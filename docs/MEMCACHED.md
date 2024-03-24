@@ -9,7 +9,7 @@ memcached supports keys [up to 250 bytes long](https://github.com/memcached/memc
 - Head commit hash.
 - Colon (`:`) separator.
 - `content` suffix
-- Cache-breaker (currently `2` in production, and "randomized"[^randomized] on every start in development (in the sample below, it's `ltipp4yu`)
+- Cache-breaker (currently `2` in production, and "randomized"[^randomized] on every start in development; in the sample below, generated in development, it's `ltipp4yu`)
 
 [^randomized]: Not really randomized, but rather a Base-36 encoding of the current timestamp, created with `Date.now().toString(36)`. So, the `ltipp4yu` cache-breaker is the result of starting with `2024-03-08T13:48:08.166Z`, which is a timestamp of `1709905688166` (milliseconds since the UNIX epoch), and Base-36 encoding it.
 
