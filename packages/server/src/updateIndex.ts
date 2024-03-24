@@ -7,6 +7,10 @@ export {};
 // character in a filename).
 const TAB_FORMAT = '%x09';
 
+const NUL = '\0';
+
+const FRONTMATTER_DELIMITER = '---';
+
 const AUTHOR_DATE_FORMAT = '%at';
 const COMMITTER_DATE_FORMAT = '%ct';
 const FORMAT = `${TAB_FORMAT}${AUTHOR_DATE_FORMAT} ${COMMITTER_DATE_FORMAT}`;
@@ -19,6 +23,9 @@ const DIFF_FILTER = `${ADDED_FILTER}${DELETED_FILTER}${MODIFIED_FILTER}`;
 // We assume 10-digit UNIX timestamps (this assumption is good until
 // 2286-11-20T17:46:40.000Z).
 const TIMESTAMP_LENGTH = 10;
+
+// Again, good while Git's SHA-1-based addressing is around.
+const BLOB_ID_LENGTH = 40;
 
 const TAGS_KEY = 'tags: ';
 
@@ -71,9 +78,48 @@ const expect = (char: string) => {
   index++;
 };
 
+const read = (length: number) => {
+  if (index + length >= text.length) {
+    throw new Error(
+      `Cannot read ${length} bytes from string length ${text.length} at index ${index}`,
+    );
+  }
+  const substring = text.substr(index, length);
+  index += length;
+  return substring;
+};
+
+// Read a "line" (ie. text up to next newline or NUL byte).
+const readLine = () => {
+  const newline = text.indexOf('\n', index);
+  const nul = text.indexOf(NUL, index);
+  const closest = Math.min(newline, nul);
+  if (closest === index) {
+    return '';
+  } else {
+    const line = text.slice(index, closest);
+    index = closest;
+    return line;
+  }
+};
+
+// Consume one character.
+const chomp = () => {
+  if (index >= text.length) {
+    throw new Error(
+      `Cannot chomp at index ${index} in text of length ${text.length}`,
+    );
+  }
+  return text[index++];
+};
+
+const peek = (length: number) => {
+  return text.substr(index, length);
+};
+
 const getTimestamp = () => {
-  const timestamp = getDateFromTimestamp(text.substr(index, TIMESTAMP_LENGTH));
-  index += TIMESTAMP_LENGTH;
+  const substring = read(TIMESTAMP_LENGTH);
+  const timestamp = getDateFromTimestamp(substring);
   return timestamp;
 };
 
@@ -82,7 +128,7 @@ while (index < text.length) {
   const authorDate = getTimestamp();
   expect(' ');
   const committerDate = getTimestamp();
-  expect('\0');
+  expect(NUL);
   expect('\n');
 
   while (index < text.length) {
@@ -91,8 +137,8 @@ while (index < text.length) {
       break;
     }
     index++;
-    expect('\0');
-    const endIndex = text.indexOf('\0', index);
+    expect(NUL);
+    const endIndex = text.indexOf(NUL, index);
     if (endIndex === -1) {
       throw new Error(
         `Failed to find NUL delimiter searching from index ${index}`,
@@ -100,7 +146,7 @@ while (index < text.length) {
     }
     const path = text.slice(index, endIndex);
     index = endIndex;
-    expect('\0');
+    expect(NUL);
 
     if (status === ADDED_FILTER) {
       if (content.has(path)) {
@@ -144,6 +190,7 @@ const files = Bun.spawn([
   '-C',
   'content',
   'ls-files',
+  '--format=%(objectname) %(path)',
   '-z',
   '--',
   ':!images',
@@ -158,77 +205,118 @@ index = 0;
 
 let lines = 0;
 
+// Map from paths to blob IDs.
+const blobs = new Map<string, string>();
+
+// Map from blob IDs to paths.
+const paths = new Map<string, Array<string>>();
+
 while (index < text.length) {
-  const endIndex = text.indexOf('\0', index);
+  const endIndex = text.indexOf(NUL, index);
   if (endIndex === -1) {
     throw new Error(
       `Failed to find end delimiter searching from index ${index}`,
     );
   }
-  const path = text.slice(index, endIndex);
+  const blob = text.substr(index, BLOB_ID_LENGTH);
+  const path = text.slice(index + BLOB_ID_LENGTH + 1, endIndex);
   if (!content.has(path)) {
     throw new Error(`Failed to find path ${JSON.stringify(path)}`);
   }
   index = endIndex + 1;
+  blobs.set(path, blob);
+  if (paths.has(blob)) {
+    paths.get(blob)!.push(path);
+  } else {
+    paths.set(blob, [path]);
+  }
+}
 
-  const file = Bun.file('../content/content/' + path);
-  const stream = file.stream();
+// Read all blobs in one fell swoop, effectively doing the equivalent of:
+//
+//    git -C content ls-files --format='%(objectname)' -z -- ':!images' |
+//    git cat-file --batch='%(objectname)' -Z
+//
+const cat = Bun.spawn(['git', 'cat-file', '--batch=%(objectname)', '-Z'], {
+  cwd: '../content',
+  stdin: 'pipe',
+});
 
-  let seenHeader = false;
-  for await (const line of readLinesFromStream(stream)) {
-    lines++;
-    if (!seenHeader && line !== '---') {
-      console.log('missing header!');
-      break;
-    } else if (!seenHeader) {
-      seenHeader = true;
-    } else if (seenHeader && line === '---') {
-      break; // We're done.
-    } else if (seenHeader) {
+for (const blob of blobs.values()) {
+  cat.stdin.write(`${blob}\0`);
+}
+cat.stdin.flush();
+cat.stdin.end();
+
+// At the time of writing, we're reading in about 9 MB of text. Format is:
+//
+//    <blob><nul><contents><nul>
+//    <blob><nul><contents><nul>
+//    ...
+//    <blob><nul><contents><nul>
+//
+// (Newlines above are for readability only. They don't appear in the actual
+// output.)
+//
+// This works because there are no NUL bytes in the content, as you can verify
+// with the following (which would print any lines containing NUL, but prints
+// nothing):
+//
+//    git -C content ls-files --format='%(objectname)' -- ':!images' |
+//    git cat-file --batch='%(objectname)' |
+//    perl -ne '/\000/ and print;'
+//
+// Additionally, we're assuming "well-formed" content (every object has
+// frontmatter, and there are no edge cases like frontmatter headers that don't
+// end with a trailing newline).
+//
+text = await new Response(cat.stdout).text();
+
+index = 0;
+while (index < text.length) {
+  const blob = read(BLOB_ID_LENGTH);
+  if (!paths.has(blob)) {
+    throw new Error(`Unrecognized blob ID ${JSON.stringify(blob)}`);
+  }
+  expect(NUL);
+  let line;
+  let seenDelimiter = false;
+  while (line = readLine()) {
+    chomp();
+    if (!seenDelimiter && line !== FRONTMATTER_DELIMITER) {
+      throw new Error('Missing frontmatter!');
+    } else if (!seenDelimiter) {
+      seenDelimiter = true;
+    } else if (seenDelimiter && line === FRONTMATTER_DELIMITER) {
+      break; // That's the end of the frontmatter.
+    } else if (seenDelimiter) {
       if (line.startsWith(TAGS_KEY)) {
         const tagNames = line.slice(TAGS_KEY.length).split(/\s+/);
-        content.get(path)!.tags = tagNames;
-        for (const name of tagNames) {
-          if (!tags.has(name)) {
-            tags.set(name, []);
+        for (let path of paths.get(blob)!) {
+          content.get(path)!.tags = tagNames;
+          for (const name of tagNames) {
+            if (!tags.has(name)) {
+              tags.set(name, []);
+            }
+            const tagged = tags.get(name)!;
+            tagged.push(path);
           }
-          const tagged = tags.get(name)!;
-          tagged.push(path);
         }
       }
     }
+  }
+  const next = text.indexOf(NUL, index);
+  if (next === -1) {
+    throw new Error(
+      `Failed to find NUL delimiter searching from index ${index}`,
+    );
+  } else {
+    index = next + 1;
   }
 }
 
 console.log(content);
 console.log(tags);
-
-async function* readLinesFromStream(
-  stream: ReadableStream,
-): AsyncGenerator<string> {
-  let pending = '';
-  for await (const chunk of stream) {
-    let result = pending + decoder.decode(chunk);
-    let lineIndex = result.lastIndexOf('\n');
-
-    if (lineIndex === -1) {
-      pending = result;
-      continue;
-    }
-
-    pending = result.slice(lineIndex + 1);
-    result = result.slice(0, lineIndex);
-
-    const lines = result.split('\n');
-    for (let line of lines) {
-      yield line;
-    }
-  }
-
-  if (pending) {
-    yield pending;
-  }
-}
 
 function getDateFromTimestamp(timestamp: string): Date {
   const seconds = parseInt(timestamp, 10);
