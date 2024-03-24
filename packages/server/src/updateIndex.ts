@@ -1,5 +1,7 @@
 // Run with `bun packages/server/src/updateIndex.ts` from repo root.
 
+export {};
+
 // We use tab as a separator so that we can locate the beginning of each commit
 // in the `git-log` output (in our content repo, tab will never appear as a
 // character in a filename).
@@ -17,6 +19,8 @@ const DIFF_FILTER = `${ADDED_FILTER}${DELETED_FILTER}${MODIFIED_FILTER}`;
 // We assume 10-digit UNIX timestamps (this assumption is good until
 // 2286-11-20T17:46:40.000Z).
 const TIMESTAMP_LENGTH = 10;
+
+const TAGS_KEY = 'tags: ';
 
 // Get commit listing in a format like:
 //
@@ -51,6 +55,8 @@ const content = new Map<string, {
   deletedAt?: Date;
   tags: Array<string>;
 }>();
+
+const tags = new Map<string, number>();
 
 let index = 0;
 
@@ -103,7 +109,7 @@ while (index < text.length) {
         content.set(path, {
           updatedAt: committerDate,
           createdAt: authorDate,
-          tags: [], // TODO: read tags...
+          tags: [],
         });
       }
     } else if (status === DELETED_FILTER) {
@@ -114,17 +120,17 @@ while (index < text.length) {
           createdAt: authorDate,
           updatedAt: committerDate,
           deletedAt: committerDate,
-          tags: [], // Nobody cares about these tags, so don't populate them.
+          tags: [],
         });
       }
     } else if (status === MODIFIED_FILTER) {
       if (content.has(path)) {
-        // TODO: update tags.
+        // Nothing to do.
       } else {
         content.set(path, {
           createdAt: authorDate,
           updatedAt: committerDate,
-          tags: [], // TODO: read tags...
+          tags: [],
         });
       }
     } else {
@@ -132,11 +138,6 @@ while (index < text.length) {
     }
   }
 }
-
-console.log(content);
-
-// TODO: decide whether I want to read tags as I go, or do them once all at the
-// end (i suspect i want to do it all at the end)
 
 const files = Bun.spawn([
   'git',
@@ -176,7 +177,6 @@ while (index < text.length) {
   let seenHeader = false;
   for await (const line of readLinesFromStream(stream)) {
     lines++;
-    // TODO: read frontmatter header and `break` as soon as we get past end of it...
     if (!seenHeader && line !== '---') {
       console.log('missing header!');
       break;
@@ -185,14 +185,22 @@ while (index < text.length) {
     } else if (seenHeader && line === '---') {
       break; // We're done.
     } else if (seenHeader) {
-      if (line.startsWith('tags: ')) {
-        console.log(line.slice(6).split(/\s+/));
+      if (line.startsWith(TAGS_KEY)) {
+        const tagNames = line.slice(TAGS_KEY.length).split(/\s+/);
+        content.get(path)!.tags = tagNames;
+        for (const name of tagNames) {
+          tags.set(
+            name,
+            (tags.get(name) || 0) + 1,
+          );
+        }
       }
     }
   }
 }
 
-console.log('read', lines, 'lines');
+console.log(content);
+console.log(tags);
 
 async function* readLinesFromStream(
   stream: ReadableStream,
