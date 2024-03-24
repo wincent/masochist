@@ -111,7 +111,7 @@ Date:   Thu May 18 08:03:10 2017 -0700
     searching (eg. "blog posts tagged with vim" will be "/tags/blog+vim").
 ```
 
-I'm not actually sure where that last rev (with the `~` suffix) came from, but it could have come from anywhere (because `loadContent()`, the function that writes to the cache on cache-miss, takes an arbitrary `commit` option.
+I'm not actually sure where that last rev (with the `~` suffix) came from, but it could have come from anywhere (because `loadContent()`, the function that writes to the cache on cache-miss, takes an arbitrary `commit` option. One example of this would be if an item is deleted then our `updateIndices` script can call `loadContent()` with `$commit~` argument in order to look up the tags that the item had before it got deleted.)
 
 ## Getting the value of a key
 
