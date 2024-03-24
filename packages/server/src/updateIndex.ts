@@ -237,6 +237,9 @@ while (index < text.length) {
 //    git -C content ls-files --format='%(objectname)' -z -- ':!images' |
 //    git cat-file --batch='%(objectname)' -Z
 //
+// Note: The Git currently installed on Amazon Linux 2 (2.40.1) is too old for
+// this, as it doesn't support the `-z` switch.
+//
 const cat = Bun.spawn(['git', 'cat-file', '--batch=%(objectname)', '-Z'], {
   cwd: '../content',
   stdin: 'pipe',
