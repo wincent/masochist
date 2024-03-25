@@ -56,12 +56,14 @@ const log = Bun.spawn([
 
 let text = await new Response(log.stdout).text();
 
-const content = new Map<string, {
+type Metadata = {
   createdAt: Date;
   updatedAt: Date;
   deletedAt?: Date;
   tags: Array<string>;
-}>();
+};
+
+const content = new Map<string, Metadata>();
 
 const tags = new Map<string, Array<string>>();
 
@@ -314,8 +316,89 @@ while (index < text.length) {
   }
 }
 
-console.log(content);
-console.log(tags);
+// TODO:
+//
+// to delete all tags:
+//   redis-cli KEYS "masochist:6:tag:*" | xargs redis-cli DEL
+//
+// or faster (fewer forks) and safer (without KEYS):
+//
+//   redis-cli --scan --pattern 'masochist:6:tag:*' |
+//     perl -pe 's/"/\\"/g;s/^/DEL "/;s/$/"/;' |
+//     redis-cli --pipe
+//
+// whatever we do here, I think we want to pipe it in to redis-cli as it's going
+// to be running from a git commit hook and it makes it easy to debug (i can
+// inspect the commands)
+//
+// https://redis.io/docs/manual/patterns/bulk-loading/
+// https://redis.io/docs/manual/pipelining/
+
+// Clear sorted sets.
+for (let kind of ['blog', 'pages', 'snippets', 'tags', 'wiki']) {
+  console.log(`ZREMRANGEBYSCORE masochist:6:${kind}-index 0 -1`);
+}
+
+// Repopulate blog-index, pages-index, snippets-index, wiki-index.
+for (let [item, metadata] of content.entries()) {
+  const kind = getKindForItem(item);
+  const score = getScoreForMetadata(metadata, kind);
+  const member = item
+    .replace(/^[^/]+\//, '') // Strip prefix.
+    .replace(/\.[^.]+$/, ''); // Strip extension.
+  console.log(
+    `ZADD masochist:6:${kind}-index ${score} ${quoteMemberName(member)}`,
+  );
+}
+
+// Repopulate tags-index.
+for (let [tag, taggeds] of tags.entries()) {
+  const count = taggeds.length;
+  console.log(`ZADD masochist:6:tags-index ${count} ${quoteMemberName(tag)}`);
+  for (let tagged of taggeds) {
+    const kind = getKindForItem(tagged);
+    const score = content.get(tagged)?.updatedAt.getTime();
+    const member = kind + ':' + tagged
+      .replace(/^[^/]+\//, '') // Strip prefix.
+      .replace(/\.[^.]+$/, ''); // Strip extension.
+    console.log(
+      `ZADD masochist:6:tag:${tag} ${score} ${quoteMemberName(member)}`,
+    );
+  }
+}
+
+function getKindForItem(item: string): 'blog' | 'pages' | 'snippets' | 'wiki' {
+  if (item.startsWith('blog/')) {
+    return 'blog';
+  } else if (item.startsWith('pages/')) {
+    return 'pages';
+  } else if (item.startsWith('snippets/')) {
+    return 'snippets';
+  } else if (item.startsWith('wiki/')) {
+    return 'wiki';
+  } else {
+    throw new Error(
+      `getKindForItem(): Cannot determine item kind for ${
+        JSON.stringify(item)
+      }`,
+    );
+  }
+}
+
+function getScoreForMetadata(
+  metadata: Metadata,
+  kind: 'blog' | 'pages' | 'snippets' | 'wiki',
+): number {
+  if (kind === 'blog' | 'snippets') {
+    return metadata.createdAt.getTime();
+  } else {
+    return metadata.updatedAt.getTime();
+  }
+}
+
+function quoteMemberName(item: string): string {
+  return `"${item.replace(/"/g, '\\"')}"`;
+}
 
 function getDateFromTimestamp(timestamp: string): Date {
   const seconds = parseInt(timestamp, 10);
