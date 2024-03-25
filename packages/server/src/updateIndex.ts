@@ -93,6 +93,11 @@ const read = (length: number) => {
 const readLine = () => {
   const newline = text.indexOf('\n', index);
   const nul = text.indexOf(NUL, index);
+  if (newline === -1 && nul === -1) {
+    throw new Error(
+      `readLine(): Failed to find newline or NUL searching from index ${index}`,
+    );
+  }
   const closest = Math.min(newline, nul);
   if (closest === index) {
     return '';
