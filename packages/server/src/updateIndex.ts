@@ -120,8 +120,7 @@ const chomp = () => {
 
 const getTimestamp = () => {
   const substring = read(TIMESTAMP_LENGTH);
-  const timestamp = getDateFromTimestamp(substring);
-  return timestamp;
+  return getDateFromTimestamp(substring);
 };
 
 while (index < text.length) {
