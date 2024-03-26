@@ -389,7 +389,7 @@ function getScoreForMetadata(
   metadata: Metadata,
   kind: 'blog' | 'pages' | 'snippets' | 'wiki',
 ): number {
-  if (kind === 'blog' | 'snippets') {
+  if (kind === 'blog' || kind === 'snippets') {
     return metadata.createdAt.getTime();
   } else {
     return metadata.updatedAt.getTime();
