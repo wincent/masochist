@@ -1,4 +1,5 @@
 // Run with `bun packages/server/src/updateIndex.ts` from repo root.
+// Run with `INDEX_VERSION=2` to output new format.
 
 export {};
 
@@ -339,28 +340,34 @@ for (let kind of ['blog', 'pages', 'snippets', 'tags', 'wiki']) {
   console.log(`ZREMRANGEBYSCORE masochist:6:${kind}-index 0 -1`);
 }
 
-// Repopulate blog-index, pages-index, snippets-index, wiki-index.
+const INDEX_VERSION = process.env['INDEX_VERSION'] === '2' ? 2 : 1;
+
+// Repopulate `blog-index`, `pages-index`, `snippets-index`, `wiki-index`.
 for (let [item, metadata] of content.entries()) {
   const kind = getKindForItem(item);
   const score = getScoreForMetadata(metadata, kind);
-  const member = item
-    .replace(/^[^/]+\//, '') // Strip prefix.
-    .replace(/\.[^.]+$/, ''); // Strip extension.
+  const member = INDEX_VERSION === 2 ?
+    item :
+    item
+      .replace(/^[^/]+\//, '') // Strip prefix.
+      .replace(/\.[^.]+$/, ''); // Strip extension.
   console.log(
     `ZADD masochist:6:${kind}-index ${score} ${quoteMemberName(member)}`,
   );
 }
 
-// Repopulate tags-index.
+// Repopulate `tags-index` and related `tag:*` sets.
 for (let [tag, taggeds] of tags.entries()) {
   const count = taggeds.length;
   console.log(`ZADD masochist:6:tags-index ${count} ${quoteMemberName(tag)}`);
   for (let tagged of taggeds) {
     const kind = getKindForItem(tagged);
     const score = content.get(tagged)?.updatedAt.getTime();
-    const member = kind + ':' + tagged
-      .replace(/^[^/]+\//, '') // Strip prefix.
-      .replace(/\.[^.]+$/, ''); // Strip extension.
+    const member = INDEX_VERSION === 2 ?
+      tagged :
+      (kind + ':' + tagged
+        .replace(/^[^/]+\//, '') // Strip prefix.
+        .replace(/\.[^.]+$/, '')); // Strip extension.
     console.log(
       `ZADD masochist:6:tag:${tag} ${score} ${quoteMemberName(member)}`,
     );
