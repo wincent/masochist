@@ -29,7 +29,6 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
   return {
     name,
     entry: [path.resolve(__dirname, 'src', 'client', 'app.js')],
-    devtool: 'source-map',
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename,
