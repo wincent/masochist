@@ -219,6 +219,32 @@ pre > code {
   padding: 1rem 1.5rem;
   white-space: pre; }
 
+pre {
+  background: #f1f1f1;
+  padding-bottom: 16px;
+  padding-left: 16px;
+  padding-top: 16px;
+
+  /* Full bleed on narrow screens */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+}
+
+@media (min-width: 550px) {
+  pre {
+    border-radius: 8px;
+    left: auto;
+    right: auto;
+    margin-left: -16px;
+    margin-right: -16px;
+    width: auto;
+  }
+}
+
 
 /* Tables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -319,7 +345,8 @@ hr {
     color: #ccc;
     border-color: #777;
   }
-  code {
+  code,
+  pre {
     background: #0e0e0e;
   }
 }
