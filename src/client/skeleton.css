@@ -216,14 +216,14 @@ code {
 pre > code {
   display: block;
   overflow: auto;
-  padding: 1rem 1.5rem;
+  padding: 0;
   white-space: pre; }
 
 pre {
   background: #f1f1f1;
-  padding-bottom: 16px;
-  padding-left: 16px;
-  padding-top: 16px;
+  padding-bottom: 32px;
+  padding-left: 32px;
+  padding-top: 32px;
 
   /* Full bleed on narrow screens */
   position: relative;
@@ -234,13 +234,13 @@ pre {
   width: 100vw;
 }
 
-@media (min-width: 550px) {
+@media (min-width: 100ch) {
   pre {
     border-radius: 8px;
     left: auto;
     right: auto;
-    margin-left: -16px;
-    margin-right: -16px;
+    margin-left: -32px;
+    margin-right: -32px;
     width: auto;
   }
 }
