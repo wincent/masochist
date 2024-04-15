@@ -333,6 +333,7 @@ hr {
   input[type="search"],
   input[type="text"] {
     background-color: #000;
+    color: #bbb;
   }
   .button:hover,
   button:hover,
