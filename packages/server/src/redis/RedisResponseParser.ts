@@ -14,7 +14,7 @@ export type Response =
   | string
   | undefined;
 
-export default class ResponseParser {
+export default class RedisResponseParser {
   _lines: AsyncIterable<string>;
 
   constructor(lines: AsyncIterable<string>) {

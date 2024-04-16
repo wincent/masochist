@@ -1,16 +1,19 @@
-import Pool from './Pool';
+import Pool from '../Pool';
 import RedisClient from './RedisClient';
 
 import type {Command} from './RedisClient';
-import type {Response} from './ResponseParser';
+import type {Response} from './RedisResponseParser';
 
-const MAXIMUM_QUEUE_SIZE = 10;
+const MAXIMUM_POOL_SIZE = 10;
 
 export default class RedisConnectionPool {
   _pool: Pool<RedisClient>;
 
   constructor() {
-    this._pool = new Pool(MAXIMUM_QUEUE_SIZE, () => new RedisClient());
+    this._pool = new Pool(MAXIMUM_POOL_SIZE, () => new RedisClient({
+      host: '127.0.0.1',
+      port: 6379,
+    }));
   }
 
   get client() {
