@@ -16,6 +16,10 @@ export default {
     return pool.client.multi(commands);
   },
 
+  ping() {
+    return pool.client.ping();
+  },
+
   set(key: string, value: string) {
     return pool.client.set(key, value);
   },

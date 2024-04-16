@@ -10,6 +10,7 @@ export type Command =
   | 'GET' // string
   | 'HELLO'
   | 'MULTI'
+  | 'PING'
   | 'SET' // string string
   | 'ZADD' // key, timestamp-as-string, file
   | 'ZCARD' // key

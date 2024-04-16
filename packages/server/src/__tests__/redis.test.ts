@@ -1,11 +1,13 @@
 // This may be a horrible idea, but I want integration tests against a real
 // Redis instance.
 
+import {nullthrows} from '@masochist/common';
 import {afterAll, beforeAll, describe, expect, it} from 'bun:test';
-
-import type {WritableSubprocess} from 'bun';
+import assert from 'node:assert';
 
 import RedisConnectionPool from '../redis/RedisConnectionPool';
+
+import type {WritableSubprocess} from 'bun';
 
 const PORT = process.env['GITHUB_ACTIONS'] ? 6379 : 7777;
 
@@ -14,6 +16,8 @@ describe('redis', () => {
   let pool: RedisConnectionPool | null = null;
 
   beforeAll(async () => {
+    pool = new RedisConnectionPool({port: PORT});
+
     if (process.env['GITHUB_ACTIONS']) {
       // Redis should be listening on port 6379 already, thanks to:
       // https://github.com/supercharge/redis-github-action
@@ -36,10 +40,14 @@ describe('redis', () => {
 
       server.stdin.end();
 
-      await new Promise((r) => {
-        // TODO: implement backoff waiting for server to boot
-        setTimeout(r, 2000);
-      });
+      const response = await nullthrows(pool).client.ping();
+      if (response !== 'PONG') {
+        // If server isn't running yet and we get ECONNREFUSED, `Client` will
+        // retry for us automatically. So, getting in here is unexpected.
+        throw new Error(
+          `Unexpected response to PING command: ${JSON.stringify(response)}`,
+        );
+      }
     }
   });
 
@@ -49,15 +57,8 @@ describe('redis', () => {
     }
   });
 
-  function getPool() {
-    if (pool === null) {
-      pool = new RedisConnectionPool({port: PORT});
-    }
-    return pool;
-  }
-
   it('can SET and GET', async () => {
-    const pool = getPool();
+    assert(pool);
     expect(await pool.client.get('foo')).toBe(null);
     await pool.client.set('foo', 'secret');
     expect(await pool.client.get('foo')).toBe('secret');
