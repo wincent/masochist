@@ -15,7 +15,7 @@ const DEFAULT_CONFIG: Config = {
 export default class RedisConnectionPool {
   _pool: Pool<RedisClient>;
 
-  constructor(config: Partial<Config> | undefined) {
+  constructor(config: Partial<Config> | undefined = undefined) {
     this._pool = new Pool(MAXIMUM_POOL_SIZE, () =>
       new RedisClient({
         ...DEFAULT_CONFIG,
