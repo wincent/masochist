@@ -133,7 +133,7 @@ With URL-encoding removed, the key is:
 U25pcHBldDp4Y29kZS0yLjE=:d65c83b49bfe586889ad16899b361fa29b11e329:contentltipp4yu
 ```
 
-So we can query for it with:
+So we can query for it with the following (note that commands, in this case `get`, are case-sensitive):
 
 ```
 get U25pcHBldDp4Y29kZS0yLjE=:d65c83b49bfe586889ad16899b361fa29b11e329:contentltipp4yu
@@ -151,6 +151,40 @@ Yielding result (formatted for readability):
   "tags": [],
   "title": "Xcode 2.1"
 }
+```
+
+The full response would look something like:
+
+```
+VALUE U25pcHBldDp4Y29kZS0yLjE=:d65c83b49bfe586889ad16899b361fa29b11e329:contentltipp4yu 0 268
+{...}
+END
+```
+
+- Lines are terminated with `\r\n`.
+- Flags are `0` (as noted below, flag values are arbitrary, and stored with the value).
+- Byte count is `268`.
+
+A response for a missing key looks like:
+
+```
+END
+```
+
+## Setting a value for a key
+
+```
+set foo 0 0 13
+Hello, world!
+```
+
+- Each line ends with `\r\n` (both in the request and the response).
+- `set foo 0 0 13` means "run command `set` with key `foo`, flags `0` (note: flags are arbitrary and get stored with the value), expiry `0` (ie. never expire), byte length `13`.
+
+The server will respond with (again, terminated with `\r\n`):
+
+```
+STORED
 ```
 
 ## Quitting a telnet session
