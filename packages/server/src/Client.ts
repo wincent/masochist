@@ -158,13 +158,17 @@ export default class Client extends EventEmitter {
   }
 
   _onError(error: Error) {
-    console.log('Client._onError():', error);
     if (
       isNetError(error) && (
         error.code === 'ECONNREFUSED' || // Couldn't connect (server not running?).
         error.code === 'EPIPE' // Server went down.
       )
     ) {
+      if (error.code !== 'ECONNREFUSED' || process.env.NODE_ENV !== 'test') {
+        // Avoid console spam in tests for expected error (while throwaway Redis
+        // instance is booting).
+        console.log('Client._onError():', error);
+      }
       this._state = Client.STATE.ERROR;
       this._backoff = (this._backoff ? this._backoff : 0.1) * (1 + Math.random());
       setTimeout(() => {
@@ -173,6 +177,7 @@ export default class Client extends EventEmitter {
         }
       }, this._backoff * 1000);
     } else {
+      console.log('Client._onError():', error);
       this.destroy();
     }
   }
