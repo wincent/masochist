@@ -58,10 +58,12 @@ export default class RedisConnectionPool {
         return this.command('GET', key);
       },
 
+      // See: https://redis.io/commands/ping
       ping() {
         return this.command('PING');
       },
 
+      // See: https://redis.io/commands/set
       set(key: string, value: string) {
         return this.command('SET', key, value);
       },
