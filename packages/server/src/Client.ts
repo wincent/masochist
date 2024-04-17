@@ -166,7 +166,7 @@ export default class Client extends EventEmitter {
       )
     ) {
       this._state = Client.STATE.ERROR;
-      this._backoff = (this._backoff ? this._backoff : 1) * (1 + Math.random());
+      this._backoff = (this._backoff ? this._backoff : 0.1) * (1 + Math.random());
       setTimeout(() => {
         if (this._state === Client.STATE.ERROR) {
           this._connect();
