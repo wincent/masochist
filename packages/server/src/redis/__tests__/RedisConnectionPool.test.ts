@@ -5,13 +5,13 @@ import {nullthrows} from '@masochist/common';
 import {afterAll, beforeAll, describe, expect, it} from 'bun:test';
 import assert from 'node:assert';
 
-import RedisConnectionPool from '../redis/RedisConnectionPool';
+import RedisConnectionPool from '../RedisConnectionPool';
 
 import type {WritableSubprocess} from 'bun';
 
 const PORT = process.env['GITHUB_ACTIONS'] ? 6379 : 7777;
 
-describe('redis', () => {
+describe('RedisConnectionPool()', () => {
   let server: WritableSubprocess | null = null;
   let pool: RedisConnectionPool | null = null;
 
