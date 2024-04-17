@@ -95,12 +95,7 @@ test('blinking light', () => {
   });
 });
 
-// Skipping this for now, because Bun doesn't have `expect.objectContaining()`
-// at this time: https://github.com/oven-sh/bun/issues/1825
-test.skip('grammar hashes', () => {
-  // Stop `tsc` from complaining about `expect.objectContaining()` not existing.
-  const expect: any = undefined;
-
+test('grammar hashes', () => {
   // Not an exhaustive check, but an illustrative example.
   expect(grammar).toEqual(
     expect.objectContaining({
