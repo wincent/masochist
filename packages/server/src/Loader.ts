@@ -11,9 +11,7 @@ type BatchLoader<T, K> = (keys: Array<K>) => Promise<Array<T | Error>>;
 export default class Loader<T, K = string> {
   _cache: Map<K, T | Error>;
   _loader: BatchLoader<T, K>;
-  _batch:
-    | Array<{key: K} & ReturnType<typeof Promise.withResolvers<T | Error>>>
-    | null;
+  _batch: Array<K> | null;
 
   constructor(loader: BatchLoader<T, K>) {
     this._cache = new Map();
@@ -30,27 +28,17 @@ export default class Loader<T, K = string> {
     return new Promise((resolve) => {
       if (this._batch) {
         // A microtask has been scheduled but not started yet; add to it.
-        for (const key of keys) {
-          this._batch.push({
-            key,
-            ...Promise.withResolvers(),
-          });
-        }
+        this._batch.push(...keys);
       } else {
         // Create a new batch.
-        this._batch = keys.map((key) => ({
-          key,
-          ...Promise.withResolvers(),
-        }));
+        this._batch = [...keys];
 
         // Schedule it.
         queueMicrotask(async () => {
           const batch = nullthrows(this._batch);
           this._batch = null;
 
-          const uncached = batch.map(({key}) => key).filter((key) =>
-            !this._cache.has(key)
-          );
+          const uncached = batch.filter((key) => !this._cache.has(key));
           if (uncached.length) {
             const results = await this._loader(uncached);
             if (results.length !== uncached.length) {
