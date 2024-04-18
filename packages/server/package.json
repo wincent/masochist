@@ -2,6 +2,9 @@
   "name": "@masochist/server",
   "version": "0.0.1",
   "description": "Masochist server",
+  "dependencies": {
+    "@masochist/common": "*"
+  },
   "main": "src/index.ts",
   "author": "Greg Hurrell <greg@hurrell.net>",
   "license": "MIT",
