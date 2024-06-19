@@ -29,7 +29,200 @@ I have those set up with the major repository hosts (eg. GitHub, GitLab, BitBuck
 
 [^think]: If I had to guess, I'd say I probably created this second key in some past time when I thought I should have one key per machine, instead of one key per identity.
 
-# Example rotation procedures
+# Example creation and rotation procedures
+
+## Bringing a new `greg.hurrell@datadoghq.com` key into the rotation
+
+Create a new key:
+
+```
+$ gpg --full-generate-key
+Please select what kind of key you want:
+   (9) ECC (sign and encrypt) *default*
+Your selection? 9
+Please select which elliptic curve you want:
+   (1) Curve 25519 *default*
+Your selection? 1
+Please specify how long the key should be valid.
+Key is valid for? (0) 365
+Key expires at Wed  4 Jun 14:36:51 2025 CEST
+gpg: revocation certificate stored as '/Users/greg.hurrell/.gnupg/openpgp-revocs.d/CA35A4528D888CDF264D0A2A4838AEDCA8CE883C.rev'
+public and secret key created and signed.
+
+pub   ed25519 2024-06-04 [SC] [expires: 2025-06-04]
+      CA35A4528D888CDF264D0A2A4838AEDCA8CE883C
+uid                      Greg Hurrell <greg.hurrell@datadoghq.com>
+sub   cv25519 2024-06-04 [E] [expires: 2025-06-04]
+```
+
+Give the revocation certificate a better name, after grabbing the long hex-formatted key ID (`0x4838AEDCA8CE883C`) with `gpg --list-keys --keyid-format 0xlong`:
+
+```
+$ cd ~/.gnupg/openpgp-revocs.d
+$ mv CA35A4528D888CDF264D0A2A4838AEDCA8CE883C.rev \
+   'greg.hurrell@datadoghq.com GPG key revocation certificate for key 0x4838AEDCA8CE883C.rev'
+```
+
+After stashing it in 1Password, delete it:
+
+```
+rm 'greg.hurrell@datadoghq.com GPG key revocation certificate for key 0x4838AEDCA8CE883C.rev'
+```
+
+Create a new signing subkey (I don't need to create an encryption subkey) because you get one by default:
+
+```
+$ gpg --edit-key CA35A4528D888CDF264D0A2A4838AEDCA8CE883C
+gpg> addkey
+Please select what kind of key you want:
+  (10) ECC (sign only)
+Your selection? 10
+Please select which elliptic curve you want:
+   (1) Curve 25519 *default*
+Your selection? 1
+Please specify how long the key should be valid.
+Key is valid for? (0) 365
+Key expires at Wed  4 Jun 15:01:58 2025 CEST
+Is this correct? (y/N) y
+Really create? (y/N) y
+gpg> quit
+Save changes? (y/N) y
+```
+
+Temporarily import my `greg@hurrell.net` key on this machine (by grabbing it from 1Password) and then:
+
+```
+gpg --import "$HOME/Downloads/greg@hurrell.net GPG key 0xF962DC1A1941CCC4 expires 2024-06-14.asc"
+```
+
+Use that to sign the new key:
+
+```
+gpg --default-key 0xF962DC1A1941CCC4 --sign-key CA35A4528D888CDF264D0A2A4838AEDCA8CE883C
+```
+
+Let's export the new keys; first, a public key for uploading to GitHub:
+
+```
+gpg --export --armor --output 0x4838AEDCA8CE883C.pub.asc 0x4838AEDCA8CE883C
+```
+
+And export the private key (which includes subkeys) for 1Password:
+
+```
+gpg --export-secret-keys --armor --output 0x4838AEDCA8CE883C.asc 0x4838AEDCA8CE883C
+```
+
+Seeing as we're here, we're going to do key rotation and expiry update on the `greg@hurrell.net` key (specifically, we set the expiry on the primary key to 365 days, then we add new signing and encryption subkeys):
+
+```
+$ gpg --edit-key 4282ED4A05CC894D53A541C3F962DC1A1941CCC4
+gpg> expire
+Changing expiration time for the primary key.
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 365
+Key expires at Wed  4 Jun 15:12:03 2025 CEST
+gpg: WARNING: Your encryption subkey expires soon.
+gpg: You may want to change its expiration date too.
+gpg> addkey
+Please select what kind of key you want:
+  (10) ECC (sign only)
+Your selection? 10
+Please select which elliptic curve you want:
+   (1) Curve 25519 *default*
+Your selection? 1
+Please specify how long the key should be valid.
+Key is valid for? (0) 365
+Key expires at Wed  4 Jun 15:13:33 2025 CEST
+Is this correct? (y/N) y
+Really create? (y/N) y
+gpg> addkey
+Please select what kind of key you want:
+  (12) ECC (encrypt only)
+Your selection? 12
+Please select which elliptic curve you want:
+   (1) Curve 25519 *default*
+Your selection? 1
+Please specify how long the key should be valid.
+Key is valid for? (0) 365
+Key expires at Wed  4 Jun 15:14:03 2025 CEST
+Is this correct? (y/N) y
+Really create? (y/N) y
+gpg> quit
+Save changes? (y/N) y
+```
+
+Now we export public versions for use in GitHub (and GitLab, and Source Hut, and Codeberg) and the private version for safe storage in 1Password:
+
+```
+gpg --export --armor --output 0xF962DC1A1941CCC4.pub.asc 0xF962DC1A1941CCC4
+gpg --export-secret-keys --armor --output 0xF962DC1A1941CCC4.asc 0xF962DC1A1941CCC4
+```
+
+We update the key in these places:
+
+-   [GitHub GPG settings](https://github.com/settings/gpg/new)
+-   [GitLab GPG settings](https://gitlab.com/-/profile/gpg_keys)
+-   [Source Hut key settings](https://meta.sr.ht/keys)
+-   [Codeberg key settings](https://codeberg.org/user/settings/keys)
+
+We try to update my dotfiles secrets, but that fails at first with:
+
+```
+[error] `gpg --armor --quiet --batch --no-tty --yes --recipient 'greg@hurrell.net' --recipient 'greg.hurrell@datadoghq.com' --output - --encrypt` exited with status 2
+gpg: EF8C0848A6F8A84D: There is no assurance this key belongs to the named user
+gpg: [stdin]: encryption failed: Unusable public key
+```
+
+So, set trust level to ultimate:
+
+```
+gpg --edit-key 4282ED4A05CC894D53A541C3F962DC1A1941CCC4
+gpg --edit-key CA35A4528D888CDF264D0A2A4838AEDCA8CE883C
+```
+
+Then:
+
+```
+bin/git-cipher init
+bin/git-cipher unlock
+bin/git-cipher init --force
+```
+
+Verify that things got re-encrypted with:
+
+```
+gpg --list-packets .git-cipher/secrets.json.asc
+```
+
+Send new keys to keyservers (note that you might have to grab an IPv4 address for `keyserver.ubuntu.com` and use that if you get "No route to host" on the first try:
+
+```
+gpg --send-keys --keyserver keyserver.ubuntu.com CA35A4528D888CDF264D0A2A4838AEDCA8CE883C
+gpg --send-keys --keyserver 185.125.188.27 CA35A4528D888CDF264D0A2A4838AEDCA8CE883C
+gpg --send-keys --keyserver pgp.mit.edu CA35A4528D888CDF264D0A2A4838AEDCA8CE883C
+
+gpg --send-keys --keyserver keyserver.ubuntu.com 4282ED4A05CC894D53A541C3F962DC1A1941CCC4
+gpg --send-keys --keyserver 185.125.188.27 4282ED4A05CC894D53A541C3F962DC1A1941CCC4
+gpg --send-keys --keyserver pgp.mit.edu 4282ED4A05CC894D53A541C3F962DC1A1941CCC4
+```
+
+Now we're going to remove the `greg@hurrell.net` key, as it should no longer be needed:
+
+```
+gpg --delete-secret-keys F962DC1A1941CCC4
+```
+
+And we're going to take the primary `greg.hurrell@datadoghq.com` key offline — **NOTE:** Say "yes" to delete the primary secret key but "no" to delete the subkeys:
+
+```
+gpg --delete-secret-keys 4838AEDCA8CE883C
+```
 
 ## Rotating my `wincent@github.com` keys
 
