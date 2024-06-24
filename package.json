@@ -57,6 +57,7 @@
     "css-loader": "*",
     "cssnano": "*",
     "dataloader": "*",
+    "dd-trace": "*",
     "entities": "*",
     "express": "*",
     "fs-extra": "*",

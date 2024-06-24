@@ -1,5 +1,7 @@
 'use strict'; // eslint-disable-line
 
+require('dd-trace').init()
+
 import '../common/unhandledRejection';
 import '../server/configureNpm';
 
