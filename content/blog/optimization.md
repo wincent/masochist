@@ -423,4 +423,22 @@ Time to move on to instruction-level profiling and start porting bits of this su
 
 <small><em>Discuss: [Facebook](https://www.facebook.com/glh/posts/10153216194746307) - [Twitter](https://twitter.com/wincent/status/704567011288838145)</em></small>
 
+# Appendix: Hello from 2024
+
+It's been ~84 years~ 8 years since I originally published this, and funnily enough, I haven't yet moved into the realms of instruction-level profiling, as foreshadowed above. I have, however, continued to find performance improvements. Here are some highlights:
+
+## Rewrite it in Lua
+
+As I wrote about in ["Command-T v6.0 — the Lua rewrite"](/blog/command-t-lua-rewrite) (with emphasis added):
+
+> Neovim comes with Lua (or more precisely, LuaJIT), which is well known for being speedy.  It’s an extremely minimal language that optimizes well. While I wasn’t planning on throwing away my C code and rewriting it in Lua, I could throw out a bunch of Ruby code — mostly responsible for managing the UI — and rewrite that. This, combined with the fact that Neovim now offers neat APIs for doing things like floating windows, means that a Lua-powered rewrite could be expected to have a much snappier UI.
+>
+> I turned the C library from a piece of "Ruby-infested" C (that is, C code littered with calls to Ruby VM functions and using Ruby-defined data structures) to a pure POSIX one. There is no mention of Lua in the C library, which means that any Ruby-VM-related overhead is gone now, replaced by nothing. _Pleasingly, this new version is about 2x faster in benchmarks than the old one, which is pretty amazing considering how fast the old one was_; maybe the Ruby-related overhead was more than I’d thought, or perhaps the LuaJIT FFI is unexpectedly awesome… I also implemented some fast C-powered scanning functionality that had been proposed for the old version but never merged due to some doubts about performance.
+
+## Improve CPU cache utilization
+
+`a91c298fb2e2f` (["perf: speed up workers by processing chunks of consecutive haystacks"](https://github.com/wincent/command-t/commit/a91c298fb2e2f4eb9286db7c01a6e0d92294dd10)) addresses a long-standing "TODO"[^added] by changing the way the load is distributed across worker threads. Previously, haystacks were distributed among the worker pool in cyclical fashion, causing workers to end up loading the same memory regions into their CPU caches. After this commit, workers handle consecutive ranges of haystacks, improving the CPU cache utilization considerably. In the benchmarks, heavy workloads like our "400K-file" test case saw improvements of 33.4% less CPU time and 29.1% less wall clock time.
+
+[^added]: [Added in 2022](https://github.com/wincent/command-t/commit/fdab907e8d9bfc804da970fc8661d1f5fcbb91a5), and probably in my head for quite a long time before that 😁.
+
 [vim]: /wiki/vim
