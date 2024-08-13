@@ -425,7 +425,7 @@ Time to move on to instruction-level profiling and start porting bits of this su
 
 # Appendix: Hello from 2024
 
-It's been ~84 years~ 8 years since I originally published this, and funnily enough, I haven't yet moved into the realms of instruction-level profiling, as foreshadowed above. I have, however, continued to find performance improvements. Here are some highlights:
+It's been ~~84 years~~ 8 years since I originally published this, and funnily enough, I haven't yet moved into the realms of instruction-level profiling, as foreshadowed above. I have, however, continued to find performance improvements. Here are some highlights:
 
 ## Rewrite it in Lua
 
