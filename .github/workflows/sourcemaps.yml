@@ -1,0 +1,40 @@
+name: Build and Upload Source Maps
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Install dependencies
+      run: |
+        node vendor/bin/yarn install \
+          --frozen-lockfile \
+          --non-interactive \
+          --offline
+
+    - name: Build project
+      run: node build.js
+
+    - name: Upload source maps to Datadog
+      env:
+        DD_VERSION: ${{ github.sha }}
+        DATADOG_API_KEY: ${{ secrets.DATADOG_API_KEY }}
+      run: |
+        npx @datadog/datadog-ci sourcemaps upload ./dist \
+          --service masochist \
+          --minified-path-prefix /static/ \
+          --project-path /./ \
+          --release-version $DD_VERSION \
+          --repository-url=https://github.com/wincent/masochist
