@@ -70,7 +70,9 @@ async function runBabel() {
         const {code, map} = await babel.transformFileAsync(file, babelOptions);
         await fs.mkdir(output, {recursive: true});
         await fs.writeFile(path.join(output, entry.name), code);
-        await fs.writeFile(path.join(output, entry.name + '.map'), map);
+        if (map) {
+          await fs.writeFile(path.join(output, entry.name + '.map'), JSON.stringify(map));
+        }
       }
     }
   }
