@@ -47,6 +47,7 @@ const babelOptions = {
     '@babel/preset-flow',
     '@babel/preset-react',
   ],
+  sourceMaps: true,
 };
 
 /**
@@ -66,9 +67,10 @@ async function runBabel() {
         }
       } else if (entry.name.endsWith('.js')) {
         const file = path.join(input, entry.name);
-        const {code} = await babel.transformFileAsync(file, babelOptions);
+        const {code, map} = await babel.transformFileAsync(file, babelOptions);
         await fs.mkdir(output, {recursive: true});
         await fs.writeFile(path.join(output, entry.name), code);
+        await fs.writeFile(path.join(output, entry.name + '.map'), map);
       }
     }
   }
