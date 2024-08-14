@@ -73,6 +73,7 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
         ),
       }),
       new webpack.SourceMapDevToolPlugin({
+        append: false,
         noSources: false,
         filename: '[file].map',
       }),
