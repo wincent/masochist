@@ -87,6 +87,9 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
                 const src = path.resolve(__dirname, 'dist', asset);
                 const dest = path.resolve(__dirname, 'public', 'static', asset);
                 fse.copySync(src, dest);
+                if (fs.existsSync(src + '.map')) {
+                  fse.copySync(src + '.map', dest + '.map');
+                }
                 if (fs.existsSync(src + '.LICENSE.txt')) {
                   fse.copySync(src + '.LICENSE.txt', dest + '.LICENSE.txt');
                 }
