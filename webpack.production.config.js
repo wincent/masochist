@@ -51,6 +51,7 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
       ],
     },
     mode: 'production',
+    devtool: false,
     node: false,
     plugins: [
       new AssetsPlugin({
@@ -70,6 +71,10 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
             'setRelayModernMutationConfigs' +
             ')\\b',
         ),
+      }),
+      new webpack.SourceMapDevToolPlugin({
+        noSources: false,
+        filename: '[file].map',
       }),
       function () {
         this.hooks.done.tapAsync(
