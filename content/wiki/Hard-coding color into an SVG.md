@@ -1,5 +1,5 @@
 ---
-tags: wiki
+tags: wiki svg
 title: Hard-coding color into an SVG
 ---
 

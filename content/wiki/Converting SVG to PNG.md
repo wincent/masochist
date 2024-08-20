@@ -1,5 +1,5 @@
 ---
-tags: wiki
+tags: wiki svg png
 title: Converting SVG to PNG
 ---
 
