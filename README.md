@@ -23,6 +23,7 @@ Points of interest and areas for exploration:
 - [`typescript`](packages/typescript): Defines a lexer and parser for recognizing a subset of TypeScript (used in conjunction with `codegen` package to produce generated files; lexers, parsers etc[^etc]).
 
 [^benchmark]: For comparison, benchmarks run against the dynamic (legacy) lexer and parser, the reference — ie. [graphql-js](https://github.com/graphql/graphql-js) — lexer and parser, the static lexer and parser, and the table-based parser.
+
 [^etc]: At the time of writing, we're only generating lexers and parsers, but in the future anticipate potentially generating other things such as custom field resolvers etc.
 
 ![Dependency graph](./docs/packages-dark.svg#gh-dark-mode-only)
