@@ -4,4 +4,4 @@
 #   git config diff.lockb.textconv bun
 #   git config diff.lockb.binary true
 #
-*.lockb diff=lockb
+*.lockb binary diff=lockb
