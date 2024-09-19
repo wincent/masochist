@@ -23,7 +23,7 @@ Here's a list of Macs I've owned or used over the years:
 - [MacBook Pro "M3 Max" 16 CPU/40 GPU 16" (2023)](https://everymac.com/systems/apple/macbook_pro/index-macbookpro.html)
 - [MacBook Pro "M3 Max" 14 CPU/30 GPU 14" (2023)](https://everymac.com/systems/apple/macbook_pro/specs/macbook-pro-m3-max-14-core-cpu-30-core-gpu-14-late-2023-specs.html) (provided by my employer[^datadog])
 
-So, one desktop with a PowerPC 604 CPU (later upgraded to a G3), one G3 laptop, one G4 desktop, one G4 laptop, one G5 desktop, two Intel iMacs, 7 Intel laptops, and 2 Apple Silicon laptops.
+So, one desktop with a PowerPC 604 CPU (later upgraded to a G3), one G3 laptop, one G4 desktop, one G4 laptop, one G5 desktop, two Intel iMacs, 7 Intel laptops, and 3 Apple Silicon laptops.
 
 [^causes]: https://en.wikipedia.org/wiki/Causes_(company)
 [^datadog]: https://en.wikipedia.org/wiki/Datadog
