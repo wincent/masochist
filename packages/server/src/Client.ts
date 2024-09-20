@@ -21,17 +21,18 @@ const STATE = {
 } as const;
 
 /**
- * Not really a "Semaphore" in the classic sense (which would manage a count of
- * resources for sharing across threads), but I can't think of a better name.
+ * Simplified "Latch" that allows multiple consumers to wait until a caller
+ * releases the latch. It is equivalent to a Java `CountDownLatch` initialized
+ * with a count of 1.
  *
  * Instances provide an awaitable property (`ready`) and a mechanism for
  * resetting it. A consumer can repeatedly `await` the next unit of work, and
- * a producer can reset the semaphore to effectively "notify" (unblock) the
- * consumer.
+ * a producer can reset the latch to effectively "notify" (unblock) the
+ * consumers.
  *
- * See: https://en.wikipedia.org/wiki/Semaphore_(programming)
+ * See: https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CountDownLatch.html
  */
-class Semaphore {
+class Latch {
   _awaitable: ReturnType<typeof Promise.withResolvers<void>>;
 
   constructor() {
@@ -58,7 +59,7 @@ export default class Client extends EventEmitter {
   _buffer: string;
   _lines: Queue<string>;
   _iterable: AsyncIterable<string>;
-  _semaphore: Semaphore;
+  _latch: Latch;
   _socket: ReturnType<typeof createConnection> | null;
   _state: StateCode;
 
@@ -72,12 +73,12 @@ export default class Client extends EventEmitter {
     this._config = config;
     this._commands = new Queue();
     this._lines = new Queue();
-    this._semaphore = new Semaphore();
+    this._latch = new Latch();
     this._socket = null;
     this._state = Client.STATE.NEW;
 
     const lines = this._lines;
-    const semaphore = this._semaphore;
+    const semaphore = this._latch;
 
     this._iterable = {
       [Symbol.asyncIterator]: async function* () {
@@ -153,7 +154,7 @@ export default class Client extends EventEmitter {
     }
 
     if (!this._lines.empty) {
-      this._semaphore.notify();
+      this._latch.notify();
     }
   }
 
