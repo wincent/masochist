@@ -71,3 +71,58 @@ $ git stash drop
 ```
 
 But note: in a merge conflict situation hunks that applied cleanly are added to the index, so once you've resolved a conflict like this you may have stuff staged that you aren't necessarily ready to commit. In that case, `git reset HEAD`.
+
+# Scenario: ignoring whitespace changes
+
+This can be helpful to avoid conflicts arising from indentation changes (say, the `main` branch has a change that ends up indenting a method body):
+
+```shell
+$ git cherry-pick -Xignore-all-space 15e087dfc205
+```
+
+# Aliases
+
+```
+[alias]
+	# Mark merge conflicts as resolved.
+	resolve = "!f() { \
+		git add $(git diff --name-only --diff-filter=U -- \"${@:-.}\"); \
+	}; f"
+```
+
+# `git continue` subcommand
+
+Save under `$PATH` as `git-continue`:
+
+```zsh
+#!/usr/bin/env zsh
+
+# Runs `git rebase --continue`, `git cherry-pick --continue` as appropriate,
+# based on context.
+#
+# Based on: https://stackoverflow.com/a/53370600
+
+GIT_DIR=$(git rev-parse --git-dir)
+STATUS=$?
+
+if [ $STATUS -ne 0 ]; then
+    exit $STATUS
+fi
+
+if [ -d "${GIT_DIR}/rebase-merge" ]; then
+    exec git rebase --continue
+elif [ -d "${GIT_DIR}/rebase-apply" ]; then
+    exec git rebase --continue
+elif [ -f "${GIT_DIR}/MERGE_HEAD" ]; then
+    exec git merge --continue
+elif [ -f "${GIT_DIR}/CHERRY_PICK_HEAD" ]; then
+    exec git cherry-pick --continue
+elif [ -f "${GIT_DIR}/REVERT_HEAD" ]; then
+    exec git revert --continue
+else
+    echo "error: No operation to --continue"
+    exit 1
+fi
+
+# vim: set filetype=zsh
+```
