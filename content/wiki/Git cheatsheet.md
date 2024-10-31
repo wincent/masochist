@@ -26,12 +26,18 @@ This just writes the file back out to the working tree without touching the HEAD
 
 # Negative pathspecs
 
-`:!` (or `:^`) ([source](https://stackoverflow.com/questions/5685007/making-git-log-ignore-changes-for-certain-paths)).
+`:!` (or `:^`, or `:(exclude)`) ([source](https://stackoverflow.com/questions/5685007/making-git-log-ignore-changes-for-certain-paths)).
 
 Example; examining a diff that contains a bunch of copies and renames as well as abundant changes to "package-lock.json" files:
 
 ```bash
 git diff develop -C10 -M20 -b --find-copies-harder -- ':!*-lock.json'`
+```
+
+Example: getting a diffstat for a commit excluding changes to unit test files:
+
+```bash
+git show --stat -- ':(exclude)*unit*'
 ```
 
 # See also
