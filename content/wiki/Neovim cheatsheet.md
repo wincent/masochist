@@ -30,6 +30,46 @@ If macOS complains about not being able to run the software because it cannot be
 xattr -d com.apple.quarantine ~/Downloads/nvim-macos-arm64/bin/nvim
 ```
 
+If it then complains along the lines of "“lua.so” can’t be opened because Apple cannot check it for malicious software.", this is a sign that the bundled treesitter parsers also have tobe marked safe as well. Failure to do so means that Neovim will complain like this whenever you try to open a Lua file:
+
+```
+Error detected while processing BufReadPost Autocommands for "*":
+Error executing lua callback: ...wnloads/nvim-macos-arm64/share/nvim/runtime/filetype.lua:36:
+BufRead Post Autocommands for "*"..
+FileType Autocommands for "*"..
+function <SNR>1_LoadFTPlugin[20]..
+script $HOME/Downloads/nvim-macos-arm64/share/nvim/runtime/ftplugin/lua.lua:
+Vim(runtime):E5113: Error while calling lua chunk:
+...im-macos-arm64/share/nvim/runtime/lua/vim/treesitter.lua:421:
+Parser could not be created for buffer 1 and language "lua" stack traceback:
+        [C]: in function 'assert'
+        ...im-macos-arm64/share/nvim/runtime/lua/vim/treesitter.lua:421: in function 'start'
+        ...ads/nvim-macos-arm64/share/nvim/runtime/ftplugin/lua.lua:2: in main chunk
+        [C]: in function 'nvim_cmd'
+        ...wnloads/nvim-macos-arm64/share/nvim/runtime/filetype.lua:36: in function <...wnloads/nvim-macos-arm64/share/nvim/runtime/filetype.lua:35>
+        [C]: in function 'pcall'
+        vim/shared.lua: in function <vim/shared.lua:0>
+        [C]: in function '_with'
+        ...wnloads/nvim-macos-arm64/share/nvim/runtime/filetype.lua:35: in function <...wnloads/nvim-macos-arm64/share/nvim/runtime/filetype.lua:10>
+stack traceback:
+        [C]: in function '_with'
+        ...wnloads/nvim-macos-arm64/share/nvim/runtime/filetype.lua:35: in function <...wnloads/nvim-macos-arm64/share/nvim/runtime/filetype.lua:10>
+```
+
+The fix, then, is:
+
+```
+$ find . -name '*.so'
+./lib/nvim/parser/c.so
+./lib/nvim/parser/vim.so
+./lib/nvim/parser/markdown.so
+./lib/nvim/parser/vimdoc.so
+./lib/nvim/parser/lua.so
+./lib/nvim/parser/query.so
+./lib/nvim/parser/markdown_inline.so
+$ find . -name '*.so' -exec xattr -d com.apple.quarantine {} \;
+```
+
 # See also
 
 - [Vim cheatsheet]
