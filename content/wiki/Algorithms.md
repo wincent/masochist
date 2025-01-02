@@ -33,7 +33,7 @@ So, in this article I'm going to provide some links to implementations of variou
 -   [Trie in Perl](https://github.com/git/git/blob/a6a323b31e2bcbac2518bddec71ea7ad558870eb/git-add--interactive.perl#L372-L434).
 -   [Union-Find in TypeScript](https://github.com/wincent/algorithms/blob/b2be0a285a708b81973382f8d5de236ad1b069d4/src/UnionFind.ts).
 
-[^private]: For now, this repo is private.
+[^private]: For now, this repo (and some others linked to from this page) is private.
 
 ## Basic algoritms
 
@@ -44,8 +44,10 @@ So, in this article I'm going to provide some links to implementations of variou
 -   [Escape HTML in TypeScript](https://github.com/wincent/js/blob/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/escape-html/src/index.ts).
 -   [Fisher-Yates shuffle](https://github.com/wincent/conway/blob/deeb4930a290821eeb42c18f78b5a3c7731ad947/life.js#L106-L121).
 -   [Git's histogram diff algorithm in Rust](https://github.com/wincent/docvim/blob/426bdaa38b2c9d6f71d27f2b52139d1292a9dafb/libs/docvim_diff/src/histogram.rs).
+-   [Greatest Common Divisor](https://github.com/wincent/advent-of-code/blob/ebfbcaef9cc14cf989b1da1d91a59ec0020cde52/2023/08/2/index.ts#L62-L74).
 -   [Indenter in TypeScript](https://github.com/wincent/js/tree/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/indent).
 -   [Invariant assertion in TypeScript](https://github.com/wincent/js/blob/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/invariant/src/index.ts) (emits extra diagnostic info in development build, see also [simpler alternative](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/common/src/invariant.ts)).
+-   [Lowest Common Multiple](https://github.com/wincent/advent-of-code/blob/ebfbcaef9cc14cf989b1da1d91a59ec0020cde52/2023/08/2/index.ts#L75-L85).
 -   [Monte Carlo simulation in TypeScript](https://github.com/wincent/algorithms/blob/b2be0a285a708b81973382f8d5de236ad1b069d4/src/montecarlo.ts).
 -   [Mulberry32 fast pseudo-random number generator in TypeScript](https://github.com/wincent/next/blob/490b78ec0dac0209703a04134978be445cbc2d17/src/util/mulberry32.ts).
 -   [Myer's diff algorithm in Rust](https://github.com/wincent/docvim/blob/426bdaa38b2c9d6f71d27f2b52139d1292a9dafb/libs/docvim_diff/src/myers.rs).
@@ -54,7 +56,9 @@ So, in this article I'm going to provide some links to implementations of variou
 -   [Permutation using Heap's method in TypeScript](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/legacy/src/lexer/permute.ts)
 -   [RC-4 pseudo-random number generator in JavaScript](https://github.com/wincent/conway/blob/deeb4930a290821eeb42c18f78b5a3c7731ad947/seedrandom.js) (note: I didn't write this one, but I used it).
 -   [Runtime non-nullable assertion in TypeScript](https://github.com/wincent/js/blob/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/nullthrows/src/index.ts).
+-   [Shoelace formula](https://github.com/wincent/advent-of-code/blob/ebfbcaef9cc14cf989b1da1d91a59ec0020cde52/2023/18/2/index.ts#L111-L125) (for computing area of simple polygon).
 -   [Simple function memoizer in JavaScript](https://github.com/wincent/masochist/blob/2872a7b46039c2ef708e47f214e94e5167a341b4/src/common/memoize.js).
+-   [Simultaneous equations](https://github.com/wincent/advent-of-code/blob/ebfbcaef9cc14cf989b1da1d91a59ec0020cde52/2024/13/2/index.ts#L74-L101).
 -   [Stable JSON stringify in TypeScript](https://github.com/wincent/js/blob/7477dc15b134bb72210b860efa4d0bbc9e118fb8/packages/stable-stringify/src/index.ts) (consistent output irrespective of insertion order; see also [alternative implementation from Relay](https://github.com/facebook/relay/blob/2a86be3e71cdc6511fa994e3de539f72070da1b4/src/query/stableStringify.js)).
 -   [String hash function (not cryptographic) in JavaScript](https://github.com/wincent/masochist/blob/2872a7b46039c2ef708e47f214e94e5167a341b4/src/server/hashString.js).
 -   [Strip HTML tags in JavaScript](https://github.com/wincent/masochist/blob/2872a7b46039c2ef708e47f214e94e5167a341b4/src/server/stripTags.js).
@@ -68,6 +72,11 @@ So, in this article I'm going to provide some links to implementations of variou
 -   [Wrap text in TypeScript](https://github.com/wincent/git-cipher/blob/bc6615f3e639c8c6bce65951d1988b2cd3e8b6fe/src/wrap.mts) (using the dynamic programming algorithm from TeX).
 
 [^dedent]: I've implemented this code a number of times in different projects. For example, see [alternative from Masochist](https://github.com/wincent/masochist/blob/7062569bf698cc42ad9be02310751bdaf5d59d0e/packages/common/src/dedent.ts), or [from git-cipher](https://github.com/wincent/git-cipher/blob/bc6615f3e639c8c6bce65951d1988b2cd3e8b6fe/src/dedent.mts), or [from dented](https://github.com/wincent/dented/blob/30589659ddba073d44947bd1ec0118c02eefe76c/src/dedent.js).
+
+## Graph algorithms
+
+- [Djikstra's algorithm](https://github.com/wincent/advent-of-code/blob/ebfbcaef9cc14cf989b1da1d91a59ec0020cde52/2024/16/2/index.ts#L241-L289) (shortest-path).
+- [Bron-Kerbosch algorithm](https://github.com/wincent/advent-of-code/blob/ebfbcaef9cc14cf989b1da1d91a59ec0020cde52/2024/23/2/index.ts#L64-L124) (for [finding all maximal cliques](https://en.wikipedia.org/wiki/Clique_problem) in a graph).
 
 ## Parsing
 
