@@ -64,15 +64,16 @@ I store a detailed copy of these notes (with concrete paths and hostnames etc) o
             ```
         3.  Manually remove old keys from hosts (Ansible only adds keys, it doesn't remove the old ones).
     6.  Import new personal laptop key into AWS console.
-        1. Go to AWS console → EC2 → Key pairs → Actions → Import key pair
+        1. Go to AWS console → EC2 → Key pairs → Actions → Import key pair; note the name must be unique, so append the date.
         2. Note the key ID
         3. Paste the key ID into my `create-instance` script in my Ansible configs.
+        4. Remove the old key.
     7.  Rotate my Git backups key.
 3.  Add new public keys to, and remove old keys from:
     1.  GitHub (https://github.com/settings/keys) — all "Authentication", not "Signing" keys; note that the work key should be authorized for SSO with the GitHub organization.
-    2.  GitLab (https://gitlab.com/-/profile/keys): same keys as GitHub, again just for "Authentication", no expiry dates.
+    2.  GitLab (https://gitlab.com/-/user_settings/ssh_keys): same keys as GitHub, again just for "Authentication", no expiry dates.
     3.  BitBucket (https://bitbucket.org/account/settings/ssh-keys/): same keys as GitHub.
-    4.  Codeberg (https://codeberg.org/user/settings/keys): same keys as GitHub, although we don't make use of the backup key here yet.
+    4.  Codeberg (https://codeberg.org/user/settings/keys): same keys as GitHub, although we don't make use of the backup key here yet; Codeberg also offers the possibility of "verifying" the keys by using them to sign a challenge.
     5.  Sourcehut (https://meta.sr.ht/keys): same keys as GitHub, although again we aren't making use of backup key here yet.
 
 [^trick]: To make this easy, it's better to just duplicate the existing item and then edit it (you can replace the associated key file); that way, you don't have to set up the tags again, or worry about adding the key to the wrong vault etc.
