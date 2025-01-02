@@ -419,8 +419,6 @@ Which we paste into:
 -   [Source Hut key settings](https://meta.sr.ht/keys)
 -   [Codeberg key settings](https://codeberg.org/user/settings/keys) (additionally, Codeberg offers you the ability to "verify" the key by using it to sign a token).
 
-But [not BitBucket yet](https://jira.atlassian.com/browse/BCLOUD-3166)... Maybe later they will add support for it.
-
 **Note:** You have to delete the old version of the key from the UI _first_ before adding the new version in GitHub, GitLab, and Codeberg, otherwise they declare it is a duplicate. Source Hut is the odd one out here, letting you add the new version of the key without deleting the old one.
 
 You can then discard the file:
