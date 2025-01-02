@@ -17,17 +17,22 @@ title: GPG key rotation notes
 
 At the moment, I have two active GPG keys:
 
-- [`F962DC1A1941CCC4`](https://keyserver.ubuntu.com/pks/lookup?search=F962DC1A1941CCC4&fingerprint=on&op=index), associated with my personal email address (`greg@hurrell.net`).
-- [`62106B56923F3481`](https://keyserver.ubuntu.com/pks/lookup?search=62106B56923F3481&fingerprint=on&op=index), associated with my work email address (`wincent@github.com`).
+- [`4282ED4A05CC894D53A541C3F962DC1A1941CCC4`](https://keyserver.ubuntu.com/pks/lookup?search=4282ED4A05CC894D53A541C3F962DC1A1941CCC4&fingerprint=on&op=index), associated with my personal email address (`greg@hurrell.net`).
+- [`CA35A4528D888CDF264D0A2A4838AEDCA8CE883C`](https://keyserver.ubuntu.com/pks/lookup?search=CA35A4528D888CDF264D0A2A4838AEDCA8CE883C&fingerprint=on&op=index), associated with my work email address (`greg.hurrell@datadoghq.com`).
 
 I have those set up with the major repository hosts (eg. GitHub, GitLab, BitBucket, Codeberg, and Source Hut) so that they can display signed commits and tags as verified. Additionally, I have some older[^older] keys registered that I previously used to sign objects:
 
-- [`6F252437134D9429`](https://keyserver.ubuntu.com/pks/lookup?search=6F252437134D9429&fingerprint=on&op=index), associated with an old address (`win@wincent.com`); this one expired on 2017-07-07, and one of the oldest objects I can find signed with that was [the Command-T 1.8 release tag](https://github.com/wincent/command-t/releases/tag/1.8) back in March 2014 (in [the 1.9 release tag](https://github.com/wincent/command-t/releases/tag/1.9) in May 2014 you can see I switched to my `F962DC1A1941CCC4`/`greg@hurrell.net` key).
+- [`62106B56923F3481`](https://keyserver.ubuntu.com/pks/lookup?search=62106B56923F3481&fingerprint=on&op=index), associated with my a previous work email address (`wincent@github.com`).
+- [`6F252437134D9429`](https://keyserver.ubuntu.com/pks/lookup?search=6F252437134D9429&fingerprint=on&op=index), associated with another old address (`win@wincent.com`); this one expired on 2017-07-07, and one of the oldest objects I can find signed with that was [the Command-T 1.8 release tag](https://github.com/wincent/command-t/releases/tag/1.8) back in March 2014 (in [the 1.9 release tag](https://github.com/wincent/command-t/releases/tag/1.9) in May 2014 you can see I switched to my `F962DC1A1941CCC4`/`greg@hurrell.net` key).
 - [`6B746F3C37BAF280`](https://keyserver.ubuntu.com/pks/lookup?search=6B746F3C37BAF280&fingerprint=on&op=index), also associated with `win@wincent.com`; it is set to expire on 2024-01-12, and I can't actually find any example objects that I ever signed with this one, but I am keeping it around just in case[^think].
 
-[^older]: These ones are only registered with GitHub, because it is the main source host. Only one of them is registered with Source Hut (for some reason, it let me add `6B746F3C37BAF280` but rejects `6F252437134D9429`). Neither is registered with Codeberg (because Codeberg either requires me to verify the key by using it to sign a challenge — and I don't have the private key handy right now — or by adding `win@wincent.com` as a verified email address, which I don't want to do because I retired that one from circulation a while ago.) GitLab rejects both keys as invalid, and BitBucket doesn't support GPG keys at all despite there being [a ticket open for it](https://jira.atlassian.com/browse/BCLOUD-3166) for over 12 year now.
+[^older]: These ones are only registered with GitHub, because it is the main source host. Only one of them is registered with Source Hut (for some reason, it let me add `6B746F3C37BAF280` but rejects `6F252437134D9429`). Neither is registered with Codeberg (because Codeberg either requires me to verify the key by using it to sign a challenge — and I don't have the private key handy right now — or by adding `win@wincent.com` as a verified email address, which I don't want to do because I retired that one from circulation a while ago.) GitLab rejects both keys as invalid, ~~and BitBucket doesn't support GPG keys at all despite there being [a ticket open for it](https://jira.atlassian.com/browse/BCLOUD-3166) for over 12 year now[^finally]~~.
+
+[^finally]: As of 2025, it appears that BitBucket finally supports GPG keys...
 
 [^think]: If I had to guess, I'd say I probably created this second key in some past time when I thought I should have one key per machine, instead of one key per identity.
+
+**Note:** Throughout this document I use a mix of fingerprints (eg. `4282ED4A05CC894D53A541C3F962DC1A1941CCC4` and `CA35A4528D888CDF264D0A2A4838AEDCA8CE883C`) and long key IDs (eg. `F962DC1A1941CCC4` and `4838AEDCA8CE883C`), but not short key IDs (eg. `1941CCC4` and `A8CE883C`). The difference between these is [explained here](https://security.stackexchange.com/a/84281).
 
 # Example creation and rotation procedures
 
@@ -168,6 +173,7 @@ We update the key in these places:
 
 -   [GitHub GPG settings](https://github.com/settings/gpg/new)
 -   [GitLab GPG settings](https://gitlab.com/-/profile/gpg_keys)
+-   [BitBucket GPG settings](https://bitbucket.org/account/settings/gpg-keys)
 -   [Source Hut key settings](https://meta.sr.ht/keys)
 -   [Codeberg key settings](https://codeberg.org/user/settings/keys)
 
@@ -409,6 +415,7 @@ Which we paste into:
 
 -   [GitHub GPG settings](https://github.com/settings/gpg/new)
 -   [GitLab GPG settings](https://gitlab.com/-/profile/gpg_keys)
+-   [BitBucket GPG settings](https://bitbucket.org/account/settings/gpg-keys)
 -   [Source Hut key settings](https://meta.sr.ht/keys)
 -   [Codeberg key settings](https://codeberg.org/user/settings/keys) (additionally, Codeberg offers you the ability to "verify" the key by using it to sign a token).
 
@@ -688,7 +695,7 @@ Export the public key, including the subkeys, for use in GitHub:
 gpg --export --armor --output 0xF962DC1A1941CCC4.pub.asc 0xF962DC1A1941CCC4
 ```
 
-After pasting that into the [GitHub GPG settings](https://github.com/settings/gpg/new), [GitLab GPG settings](https://gitlab.com/-/profile/gpg_keys), [Source Hut key settings](https://meta.sr.ht/keys), and [Codeberg key settings](https://codeberg.org/user/settings/keys), replacing the previous copy (ie. delete the old one, then add the new one; only Source Hut lets you do it in the opposite order because the other pages complain that the key is a duplicate), we can discard the file:
+After pasting that into the [GitHub GPG settings](https://github.com/settings/gpg/new), [GitLab GPG settings](https://gitlab.com/-/profile/gpg_keys), [BitBucket GPG settings](https://bitbucket.org/account/settings/gpg-keys), [Source Hut key settings](https://meta.sr.ht/keys), and [Codeberg key settings](https://codeberg.org/user/settings/keys), replacing the previous copy (ie. delete the old one, then add the new one; only Source Hut lets you do it in the opposite order because the other pages complain that the key is a duplicate), we can discard the file:
 
 ```bash
 rm 0xF962DC1A1941CCC4.pub.asc
