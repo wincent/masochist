@@ -1,5 +1,6 @@
 ---
-tags: haml wiki
+tags: haml wiki cheatsheet
+title: Haml cheatsheet
 ---
 
 # `%` (elements)

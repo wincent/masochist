@@ -1,6 +1,7 @@
 ---
-tags: hpricot wiki
+tags: hpricot wiki cheatsheet
 cache_breaker: 1
+title: Hpricot cheatsheet
 ---
 
 # Parsing XML

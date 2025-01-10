@@ -1,6 +1,7 @@
 ---
-tags: zsh wiki
+tags: zsh wiki cheatsheet
 cache_breaker: 1
+title: Zsh cheatsheet
 ---
 
 # Miscellaneous

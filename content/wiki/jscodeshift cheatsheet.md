@@ -1,5 +1,6 @@
 ---
-tags: jscodeshift javascript wiki
+tags: jscodeshift javascript wiki cheatsheet
+title: jscodeshift cheatsheet
 ---
 
 # Making an object literal

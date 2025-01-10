@@ -1,5 +1,5 @@
 ---
-tags: wiki arch obs
+tags: wiki arch obs cheatsheet
 title: OBS cheatsheet
 ---
 
@@ -253,6 +253,8 @@ After initial set-up (see notes in [Arch Linux cheatsheet]), basic usage:
 2. `/connect Twitch`.
 3. `/join #greghurrell`.
 4. When you're done, `/quit` or `/exit`.
+
+<!-- References -->
 
 [^beeps]: In theory I only have to do this once because after doing it I ran `/save`, but, you never know.
 

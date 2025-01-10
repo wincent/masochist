@@ -1,6 +1,7 @@
 ---
-tags: capybara wiki
+tags: capybara wiki cheatsheet
 cache_breaker: 1
+title: Capybara cheatsheet
 ---
 
 # Matchers

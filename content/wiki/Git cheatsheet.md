@@ -1,5 +1,5 @@
 ---
-tags: git wiki
+tags: git wiki cheatsheet
 cache_breaker: 1
 title: Git cheatsheet
 ---

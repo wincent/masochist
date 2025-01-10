@@ -1,6 +1,7 @@
 ---
-tags: rspec rails fixture.replacement wiki
+tags: rspec rails fixture.replacement wiki cheatsheet
 cache_breaker: 1
+title: FixtureReplacement cheatsheet
 ---
 
 **Note:** This cheatsheet applies to the the original 1.x series of FixtureReplacement. Version 2.0, which I've never bothered updating to ("if it ain't broke..."), uses a completely different syntax (see <http://replacefixtures.rubyforge.org/> for full details).

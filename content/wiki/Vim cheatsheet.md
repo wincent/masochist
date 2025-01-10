@@ -1,6 +1,7 @@
 ---
-tags: vim wiki
+tags: vim wiki cheatsheet
 cache_breaker: 1
+title: Vim cheatsheet
 ---
 
 I'll eventually publish a more comprehensive listing, but for now I just want to make some notes of commands that I discover and don't want to forget.

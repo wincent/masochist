@@ -1,6 +1,7 @@
 ---
-tags: sqlite wiki
+tags: sqlite wiki cheatsheet
 cache_breaker: 1
+title: SQLite cheatsheet
 ---
 
 -   `.help`: get help

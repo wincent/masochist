@@ -1,5 +1,5 @@
 ---
-tags: wiki c
+tags: wiki c cheatsheet
 title: C cheatsheet
 ---
 
@@ -118,6 +118,8 @@ A function declared with the `static` keyword is not visible outside of the tran
 A variable defined with `static` _outside_ all functions is only visible inside its own translation unit. This is analogous to how `static` applies to functions.
 
 A variable defined with `static` _inside_ a function maintains its value across invocations.
+
+<!-- References -->
 
 [objective-c]: /wiki/Objective-C
 [macos]: /wiki/macOS

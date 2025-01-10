@@ -1,6 +1,7 @@
 ---
-tags: css wiki
+tags: css wiki cheatsheet
 cache_breaker: 1
+title: CSS cheatsheet
 ---
 
 # Type selectors

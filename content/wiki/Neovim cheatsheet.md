@@ -1,5 +1,5 @@
 ---
-tags: wiki neovim
+tags: wiki neovim cheatsheet
 title: Neovim cheatsheet
 ---
 

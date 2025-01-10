@@ -1,5 +1,5 @@
 ---
-tags: wiki arch
+tags: wiki arch cheatsheet
 title: Arch Linux cheatsheet
 ---
 
@@ -401,5 +401,7 @@ xprop
 -   `Control-Super-Shift-Right`: Shrink window rightwards.
 -   `Control-Super-Shift-Up`: Shrink window upwards.
 -   `Control-Super-Shift-Down`: Shrink window downwards.
+
+<!-- References -->
 
 [troubleshooting clipper on arch linux]: /wiki/Troubleshooting_Clipper_on_Arch_Linux

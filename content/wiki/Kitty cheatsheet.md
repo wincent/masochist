@@ -1,5 +1,5 @@
 ---
-tags: wiki kitty
+tags: wiki kitty cheatsheet
 title: Kitty cheatsheet
 ---
 

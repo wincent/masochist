@@ -1,5 +1,5 @@
 ---
-tags: make wiki
+tags: make wiki cheatsheet
 cache_breaker: 1
 title: Makefile cheatsheet
 ---

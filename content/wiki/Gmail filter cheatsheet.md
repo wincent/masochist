@@ -1,5 +1,5 @@
 ---
-tags: wiki gmail
+tags: wiki gmail cheatsheet
 title: Gmail filter cheatsheet
 ---
 

@@ -1,6 +1,7 @@
 ---
-tags: javascript chrome wiki
+tags: javascript chrome wiki cheatsheet
 cache_breaker: 1
+title: Chrome developer console cheatsheet
 ---
 
 -   `time('foo')` and `timeEnd('foo')`: print elapsed time

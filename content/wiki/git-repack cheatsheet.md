@@ -1,5 +1,6 @@
 ---
-tags: git wiki
+tags: git wiki cheatsheet
+title: git-repack cheatsheet
 ---
 
 Expensive but effective repacking:

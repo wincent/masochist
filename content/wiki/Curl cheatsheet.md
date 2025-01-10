@@ -1,5 +1,6 @@
 ---
-tags: curl wiki
+tags: curl wiki cheatsheet
+title: Curl cheatsheet
 ---
 
 # Useful options

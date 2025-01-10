@@ -1,5 +1,6 @@
 ---
-tags: objective.c wiki
+tags: objective.c wiki cheatsheet
+title: Objective-C 2.0 cheatsheet
 ---
 
 # Properties

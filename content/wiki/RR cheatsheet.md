@@ -1,5 +1,5 @@
 ---
-tags: rr wiki
+tags: rr wiki cheatsheet
 cache_breaker: 1
 title: RR cheatsheet
 ---

@@ -1,5 +1,5 @@
 ---
-tags: wiki homebrew
+tags: wiki homebrew cheatsheet
 title: Homebrew cheatsheet
 ---
 

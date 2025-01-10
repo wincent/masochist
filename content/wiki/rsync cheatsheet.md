@@ -1,5 +1,6 @@
 ---
-tags: rsync wiki
+tags: rsync wiki cheatsheet
+title: rsync cheatsheet
 ---
 
 # Copying a directory locally

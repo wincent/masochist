@@ -1,5 +1,5 @@
 ---
-tags: wiki apt
+tags: wiki apt cheatsheet
 title: apt-get cheatsheet
 ---
 

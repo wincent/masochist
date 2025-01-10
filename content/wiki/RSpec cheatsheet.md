@@ -1,5 +1,6 @@
 ---
-tags: rspec wiki
+tags: rspec wiki cheatsheet
+title: RSpec cheatsheet
 ---
 
 # Expecting an exception

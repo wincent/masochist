@@ -1,5 +1,5 @@
 ---
-tags: wiki hammerspoon
+tags: wiki hammerspoon cheatsheet
 title: Hammerspoon cheatsheet
 ---
 

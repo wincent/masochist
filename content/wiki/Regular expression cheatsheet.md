@@ -1,5 +1,6 @@
 ---
-tags: regex wiki
+tags: regex wiki cheatsheet
+title: Regular expression cheatsheet
 ---
 
 # Perl-compatible regular expression syntax

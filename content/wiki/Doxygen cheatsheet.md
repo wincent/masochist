@@ -1,5 +1,6 @@
 ---
-tags: doxygen wiki
+tags: doxygen wiki cheatsheet
+title: Doxygen cheatsheet
 ---
 
 # Documenting [Objective-C](/wiki/Objective-C) with [Doxygen](/wiki/Doxygen)

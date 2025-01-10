@@ -1,5 +1,5 @@
 ---
-tags: wiki yazi
+tags: wiki yazi cheatsheet
 title: Yazi cheatsheet
 ---
 

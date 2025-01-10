@@ -1,5 +1,5 @@
 ---
-tags: wiki node v8
+tags: wiki node v8 cheatsheet
 title: NodeJS profiling cheatsheet
 ---
 

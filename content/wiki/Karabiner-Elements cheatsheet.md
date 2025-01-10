@@ -1,5 +1,6 @@
 ---
-tags: macos karabiner wiki
+tags: macos karabiner wiki cheatsheet
+title: Karabiner-Elements cheatsheet
 ---
 
 # `to_if_alone_timeout_milliseconds`
