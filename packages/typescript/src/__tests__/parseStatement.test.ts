@@ -1089,7 +1089,7 @@ describe('parseStatement()', async () => {
         }]);
       });
 
-      it('parses index expressions', () => {
+      it('parses simple index expressions', () => {
         expect(parseStatement(`
           rules[action.rule];
           gotos[next][production];
@@ -1183,6 +1183,16 @@ describe('parseStatement()', async () => {
             position: 'prefix',
           },
         }]);
+      });
+
+      it('parses complex index expressions', () => {
+        const input = 'stack[stack.length - 1][1];';
+        expect(parseStatement(input)).toMatchSnapshot();
+      });
+
+      it('parses complex index expressions assigned to a local variable', () => {
+        const input = 'const current = stack[stack.length - 1][1];';
+        expect(parseStatement(input)).toMatchSnapshot();
       });
 
       it('parses a large chunk of the static parser definition', () => {

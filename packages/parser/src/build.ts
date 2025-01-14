@@ -241,7 +241,7 @@ export default function build(
             let token = lexer.next() || EOF;
 
             while (true) {
-              const [, current] = stack[stack.length - 1];
+              const current = stack[stack.length - 1][1];
               const action = actions[current][token.name];
 
               if (action === undefined) {
@@ -252,12 +252,12 @@ export default function build(
                 // TODO: compare Math.abs with -, but will have to implement
                 // unary minus (currently only have it for literals)
                 const {production, pop, action: code} = rules[Math.abs(action)];
-                const popped: Array<Production | Token | null> = [];
+                const popped: Array<Production | Token | null> = new Array(pop);
                 for (let i = 0; i < pop; i++) {
-                  const [node] = stack.pop()!;
-                  popped[pop - i - 1] = node;
+                  const last = stack.pop()!;
+                  popped[pop - i - 1] = last[0];
                 }
-                const [, next] = stack[stack.length - 1];
+                const next = stack[stack.length - 1][1];
                 const target = gotos[next][production];
 
                 // Use "as any" cast to suppress:

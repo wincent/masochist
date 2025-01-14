@@ -791,3 +791,185 @@ exports[`parseStatement() parser persisted to disk parses a (default) export cla
   },
 ]
 `;
+
+exports[`parseStatement() parser dynamically derived from grammar parses complex index expressions 1`] = `
+[
+  {
+    "expression": {
+      "index": {
+        "base": 10,
+        "kind": "NumberValue",
+        "value": 1,
+      },
+      "indexee": {
+        "index": {
+          "kind": "BinaryExpression",
+          "lhs": {
+            "kind": "MemberExpression",
+            "object": {
+              "kind": "Identifier",
+              "name": "stack",
+            },
+            "property": {
+              "kind": "Identifier",
+              "name": "length",
+            },
+          },
+          "operator": "-",
+          "rhs": {
+            "base": 10,
+            "kind": "NumberValue",
+            "value": 1,
+          },
+        },
+        "indexee": {
+          "kind": "Identifier",
+          "name": "stack",
+        },
+        "kind": "IndexExpression",
+      },
+      "kind": "IndexExpression",
+    },
+    "kind": "ExpressionStatement",
+  },
+]
+`;
+
+exports[`parseStatement() parser persisted to disk parses complex index expressions 1`] = `
+[
+  {
+    "expression": {
+      "index": {
+        "base": 10,
+        "kind": "NumberValue",
+        "value": 1,
+      },
+      "indexee": {
+        "index": {
+          "kind": "BinaryExpression",
+          "lhs": {
+            "kind": "MemberExpression",
+            "object": {
+              "kind": "Identifier",
+              "name": "stack",
+            },
+            "property": {
+              "kind": "Identifier",
+              "name": "length",
+            },
+          },
+          "operator": "-",
+          "rhs": {
+            "base": 10,
+            "kind": "NumberValue",
+            "value": 1,
+          },
+        },
+        "indexee": {
+          "kind": "Identifier",
+          "name": "stack",
+        },
+        "kind": "IndexExpression",
+      },
+      "kind": "IndexExpression",
+    },
+    "kind": "ExpressionStatement",
+  },
+]
+`;
+
+exports[`parseStatement() parser dynamically derived from grammar parses complex index expressions assigned to a local variable 1`] = `
+[
+  {
+    "binding": "const",
+    "kind": "AssignmentStatement",
+    "lhs": {
+      "kind": "Identifier",
+      "name": "current",
+    },
+    "rhs": {
+      "index": {
+        "base": 10,
+        "kind": "NumberValue",
+        "value": 1,
+      },
+      "indexee": {
+        "index": {
+          "kind": "BinaryExpression",
+          "lhs": {
+            "kind": "MemberExpression",
+            "object": {
+              "kind": "Identifier",
+              "name": "stack",
+            },
+            "property": {
+              "kind": "Identifier",
+              "name": "length",
+            },
+          },
+          "operator": "-",
+          "rhs": {
+            "base": 10,
+            "kind": "NumberValue",
+            "value": 1,
+          },
+        },
+        "indexee": {
+          "kind": "Identifier",
+          "name": "stack",
+        },
+        "kind": "IndexExpression",
+      },
+      "kind": "IndexExpression",
+    },
+  },
+]
+`;
+
+exports[`parseStatement() parser persisted to disk parses complex index expressions assigned to a local variable 1`] = `
+[
+  {
+    "binding": "const",
+    "kind": "AssignmentStatement",
+    "lhs": {
+      "kind": "Identifier",
+      "name": "current",
+    },
+    "rhs": {
+      "index": {
+        "base": 10,
+        "kind": "NumberValue",
+        "value": 1,
+      },
+      "indexee": {
+        "index": {
+          "kind": "BinaryExpression",
+          "lhs": {
+            "kind": "MemberExpression",
+            "object": {
+              "kind": "Identifier",
+              "name": "stack",
+            },
+            "property": {
+              "kind": "Identifier",
+              "name": "length",
+            },
+          },
+          "operator": "-",
+          "rhs": {
+            "base": 10,
+            "kind": "NumberValue",
+            "value": 1,
+          },
+        },
+        "indexee": {
+          "kind": "Identifier",
+          "name": "stack",
+        },
+        "kind": "IndexExpression",
+      },
+      "kind": "IndexExpression",
+    },
+  },
+]
+`;
