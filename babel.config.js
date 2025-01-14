@@ -39,7 +39,12 @@ module.exports = function (api) {
         },
       ],
       '@babel/preset-flow',
-      '@babel/preset-react',
+      [
+        '@babel/preset-react',
+        {
+          runtime: 'automatic',
+        },
+      ],
     ],
   };
 };
