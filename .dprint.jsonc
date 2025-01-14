@@ -53,10 +53,10 @@
 
   // Update with: `dprint config update`.
   "plugins": [
-    "https://plugins.dprint.dev/typescript-0.93.0.wasm",
-    "https://plugins.dprint.dev/json-0.19.3.wasm",
+    "https://plugins.dprint.dev/typescript-0.93.3.wasm",
+    "https://plugins.dprint.dev/json-0.19.4.wasm",
     "https://plugins.dprint.dev/markdown-0.17.8.wasm",
-    "https://plugins.dprint.dev/toml-0.6.2.wasm",
-    "https://plugins.dprint.dev/prettier-0.46.1.json@e5bd083088a8dfc6e5ce2d3c9bee81489b065bd5345ef55b59f5d96627928b7a"
+    "https://plugins.dprint.dev/toml-0.6.4.wasm",
+    "https://plugins.dprint.dev/prettier-0.52.2.json@86b77d30dfb8fc82bba1fa25ac347b14b2e684d1c06731713d2c7600c6d839e7"
   ]
 }
