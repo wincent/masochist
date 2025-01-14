@@ -1,7 +1,9 @@
 import RedisClient from './RedisClient';
 
-class PoppableSet extends Set {
-  pop() {
+class PeekableSet extends Set {
+  // Meh. In typical usage, there will be no errors, and we'll use the same
+  // client over and over...
+  peek() {
     for (const item of this) {
       return item;
     }
@@ -11,13 +13,13 @@ class PoppableSet extends Set {
 
 export default class RedisConnectionPool {
   constructor() {
-    this._clients = new PoppableSet();
+    this._clients = new PeekableSet();
   }
 
   get client() {
     const withClient = async (callback) => {
       const clients = this._clients;
-      const client = clients.pop() || new RedisClient();
+      const client = clients.peek() || new RedisClient();
       const dispose = () => clients.delete(client);
       client.once('destroy', dispose);
       try {
