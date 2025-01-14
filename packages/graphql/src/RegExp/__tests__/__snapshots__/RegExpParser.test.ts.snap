@@ -5,7 +5,7 @@ exports[`RegExpParser matches ESCAPED_CHARACTER RegExp 1`] = `
   "children": [
     {
       "kind": "Atom",
-      "value": "\",
+      "value": "\\",
     },
     {
       "children": [
@@ -19,7 +19,7 @@ exports[`RegExpParser matches ESCAPED_CHARACTER RegExp 1`] = `
         },
         {
           "kind": "Atom",
-          "value": "\",
+          "value": "\\",
         },
         {
           "kind": "Atom",
@@ -55,7 +55,7 @@ exports[`RegExpParser matches ESCAPED_UNICODE RegExp 1`] = `
   "children": [
     {
       "kind": "Atom",
-      "value": "\",
+      "value": "\\",
     },
     {
       "kind": "Atom",
@@ -314,7 +314,7 @@ exports[`RegExpParser matches SOURCE_CHARACTER RegExp 1`] = `
 {
   "children": [
     {
-      "from": "	",
+      "from": "\t",
       "kind": "Range",
       "to": 
 "
@@ -345,7 +345,7 @@ exports[`RegExpParser matches WHITESPACE RegExp 1`] = `
     "children": [
       {
         "kind": "Atom",
-        "value": "	",
+        "value": "\t",
       },
       {
         "kind": "Atom",
