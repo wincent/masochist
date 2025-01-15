@@ -270,13 +270,13 @@ export default function build(
                 }
                 const next = stack[stack.length - 1][1];
                 const target = gotos[next][production];
-                if (popped.length === 0) {
+                if (pop === 0) {
                   stack.push([code(), target]);
                 }
                 ${
           arities.map((arity) => {
             return `
-                    else if (popped.length === ${arity}) {
+                    else if (pop === ${arity}) {
                       stack.push([code(${
               new Array(arity).fill(0).map((_, i) => {
                 return `popped[${i}]`;

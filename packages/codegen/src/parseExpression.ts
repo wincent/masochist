@@ -192,13 +192,13 @@ export default function parseExpression(input: string) {
       }
       const next = stack[stack.length - 1][1];
       const target = gotos[next][production];
-      if (popped.length === 0) {
+      if (pop === 0) {
         stack.push([code(), target]);
-      } else if (popped.length === 1) {
+      } else if (pop === 1) {
         stack.push([code(popped[0]), target]);
-      } else if (popped.length === 2) {
+      } else if (pop === 2) {
         stack.push([code(popped[0], popped[1]), target]);
-      } else if (popped.length === 3) {
+      } else if (pop === 3) {
         stack.push([code(popped[0], popped[1], popped[2]), target]);
       }
     } else if (action > 0) {
