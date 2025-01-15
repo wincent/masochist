@@ -181,7 +181,10 @@ export default function parseExpression(input: string) {
       // Reduce.
       // TODO: compare Math.abs with -, but will have to implement
       // unary minus (currently only have it for literals)
-      const {production, pop, action: code} = rules[Math.abs(action)];
+      const rule = rules[Math.abs(action)];
+      const production = rule.production;
+      const pop = rule.pop;
+      const code: any = rule.action;
       const popped: Array<Production | Token | null> = new Array(pop);
       for (let i = 0; i < pop; i++) {
         const last = stack.pop()!;
@@ -189,9 +192,15 @@ export default function parseExpression(input: string) {
       }
       const next = stack[stack.length - 1][1];
       const target = gotos[next][production];
-      // Use "as any" cast to suppress:
-      // - TS2556: A spread argument must either have a tuple type or be passed to a rest parameter.
-      stack.push([(code as any)(...popped), target]);
+      if (popped.length === 0) {
+        stack.push([code(), target]);
+      } else if (popped.length === 1) {
+        stack.push([code(popped[0]), target]);
+      } else if (popped.length === 2) {
+        stack.push([code(popped[0], popped[1]), target]);
+      } else if (popped.length === 3) {
+        stack.push([code(popped[0], popped[1], popped[2]), target]);
+      }
     } else if (action > 0) {
       // Shift.
       stack.push([token, action]);

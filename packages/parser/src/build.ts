@@ -59,6 +59,14 @@ export default function build(
   stats['shiftActions'] = 0;
   stats['acceptActions'] = 0;
 
+  const maxArity = Math.max(...grammar.rules.map((rule) => {
+    return rule.rhs.length;
+  }));
+  const arities = new Array(maxArity).fill(0).map((_, i) => {
+    return i + 1;
+  });
+  // TODO: order `if` according to frequency of different arities
+
   const buildCommand = options.buildCommand
     ? `edit "build.ts", run "${options.buildCommand}" instead`
     : 'edit "build.ts" instead';
@@ -251,7 +259,10 @@ export default function build(
                 // Reduce.
                 // TODO: compare Math.abs with -, but will have to implement
                 // unary minus (currently only have it for literals)
-                const {production, pop, action: code} = rules[Math.abs(action)];
+                const rule = rules[Math.abs(action)];
+                const production = rule.production;
+                const pop = rule.pop;
+                const code: any = rule.action;
                 const popped: Array<Production | Token | null> = new Array(pop);
                 for (let i = 0; i < pop; i++) {
                   const last = stack.pop()!;
@@ -259,10 +270,22 @@ export default function build(
                 }
                 const next = stack[stack.length - 1][1];
                 const target = gotos[next][production];
-
-                // Use "as any" cast to suppress:
-                // - TS2556: A spread argument must either have a tuple type or be passed to a rest parameter.
-                stack.push([(code as any)(...popped), target]);
+                if (popped.length === 0) {
+                  stack.push([code(), target]);
+                }
+                ${
+          arities.map((arity) => {
+            return `
+                    else if (popped.length === ${arity}) {
+                      stack.push([code(${
+              new Array(arity).fill(0).map((_, i) => {
+                return `popped[${i}]`;
+              }).join(', ')
+            }), target]);
+                    }
+                  `;
+          }).join('\n')
+        }
               } else if (action > 0) {
                 // Shift.
                 stack.push([token, action]);
