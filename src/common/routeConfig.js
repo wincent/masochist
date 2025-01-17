@@ -114,7 +114,7 @@ export default [
   },
   {
     // Catch-all.
-    path: '*',
+    path: '(.*)',
     action() {
       // TODO: test this is actually getting hit
       // (once we have client-side link handling)
