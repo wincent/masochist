@@ -4,7 +4,7 @@ cache_breaker: 1
 title: GitHub
 ---
 
-Not to be confused with [Git](/wiki/Git) (currently the most popular [distributed version control system](/wiki/distributed_version_control_system)) itself, [GitHub](https://github.com) is a private company that provides Git repository hosting as well as a slew of other features. I worked there from 2021 on 2024; ask me about it some time and I'll tell you some war stories...
+Not to be confused with [Git](/wiki/Git) (currently the most popular [distributed version control system](/wiki/distributed_version_control_system)) itself, [GitHub](https://github.com) is a private company that provides Git repository hosting as well as a slew of other features. I worked there from 2021 to 2024; ask me about it some time and I'll tell you some war stories...
 
 Alternatives to GitHub include (or included):
 
