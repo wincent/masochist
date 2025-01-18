@@ -1,5 +1,6 @@
 ---
 tags: lua wiki
+title: Lua
 ---
 
 # Official site
@@ -20,6 +21,7 @@ tags: lua wiki
 -   "Arrays" use 1-based indexing.
 -   Method dispatch can be done via two operators (`.` for normal dispatch, and `:` which transparently passes the initial "self" parameter when working in Object-oriented style).
 -   No regular expressions; just an "pattern" facility that will seem odd to people coming from Perl-compatible regular expressions.
+-   [Recursive functions in Lua](/wiki/Recursive_functions_in_Lua) need some care.
 
 ## Other differences
 
