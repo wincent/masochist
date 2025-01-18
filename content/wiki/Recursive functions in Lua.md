@@ -33,24 +33,7 @@ end
 
 # Mutual recursion
 
-None of the above forms work well for mutual recursion. The only one that avoids both "Need check nil" and "Undefined global" is to use a forward declaration that _does not_ assign `nil`:
-
-That is, this will work:
-
-```lua
-local a
-local b
-
-local function a()
-    -- code that calls b()
-end
-
-local function b()
-    -- code that calls a()
-end
-```
-
-Note that the following alternative would be desirable, due to consistency with the recommended pattern for self-recursive functions, but it has problems of its own; namely, it leads to a "Redefined local" diagnostic:
+None of the above forms work well for mutual recursion. The only one that avoids both "Need check nil" and "Undefined global" is to use a forward declaration that _does not_ assign `nil`. That is, this will work:
 
 ```lua
 local a
@@ -61,6 +44,21 @@ local a = function()
 end
 
 local b = function()
+    -- code that calls a()
+end
+```
+
+Note that the following alternative would be desirable, due to consistency with the recommended pattern for self-recursive functions, but it has problems of its own; namely, it leads to a "Redefined local" diagnostic:
+
+```lua
+local a
+local b
+
+local function a()
+    -- code that calls b()
+end
+
+local function b()
     -- code that calls a()
 end
 ```
