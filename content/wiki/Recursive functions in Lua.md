@@ -39,11 +39,11 @@ None of the above forms work well for mutual recursion. The only one that avoids
 local a
 local b
 
-local a = function()
+a = function()
     -- code that calls b()
 end
 
-local b = function()
+b = function()
     -- code that calls a()
 end
 ```
