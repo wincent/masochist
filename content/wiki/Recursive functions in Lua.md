@@ -68,4 +68,4 @@ end
 Commits where I figured this out:
 
 - [wincent/command-t@dc2ab99dce50](https://github.com/wincent/command-t/commit/dc2ab99dce50598549fc353b83e4c0a8788f6b22)
-- [wincent/command-t@07161ebd7d52](https://github.com/wincent/command-t/commit/07161ebd7d5278b41042c6e8ffee981e950604ed)
+- [wincent/command-t@07160ebd7d5278b4](https://github.com/wincent/command-t/commit/07160ebd7d5278b41042c6e8ffee981e950604ed)
