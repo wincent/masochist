@@ -3,7 +3,9 @@ title: About
 tags: site pages
 ---
 
-Welcome to [wincent.dev](/). My name is Greg Hurrell. I live in Spain. I work as a coder at [GitHub](https://github.com/). This is my "technical" presence on the web ([greg.hurrell.net](http://greg.hurrell.net) is my "non-technical" one, where you'll find my CV, which is built [from this source](https://github.com/wincent/cv)). Here on [wincent.dev](/) you'll find [my blog](/blog) and [my wiki](/wiki).
+Welcome to [wincent.dev](/). My name is Greg Hurrell. I live in Spain. I work as a Staff Engineer[^engineer] at [Datadog](https://www.datadoghq.com). This website is my "technical" presence on the web ([greg.hurrell.net](http://greg.hurrell.net) is my "non-technical" one, where you'll find my CV, which is built [from this source](https://github.com/wincent/cv)). Here on [wincent.dev](/) you'll find [my blog](/blog) and [my wiki](/wiki).
+
+[^engineer]: "Staff Engineer" is my job title, but just to be clear: I engineer software and not staff.
 
 # Site map
 
