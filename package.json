@@ -71,7 +71,7 @@
     "markdown-it-footnote": "*",
     "memcached": "*",
     "mini-css-extract-plugin": "*",
-    "path-to-regexp": "*",
+    "path-to-regexp": "^6.3.0",
     "postcss": "*",
     "postcss-loader": "^7.3.4",
     "prop-types": "*",
