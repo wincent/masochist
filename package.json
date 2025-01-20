@@ -55,7 +55,7 @@
     "body-parser": "*",
     "classnames": "*",
     "css-loader": "^6.11.0",
-    "cssnano": "*",
+    "cssnano": "^6.1.2",
     "dataloader": "*",
     "dd-trace": "4",
     "entities": "*",
