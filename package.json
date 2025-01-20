@@ -90,6 +90,6 @@
   },
   "devDependencies": {
     "http-proxy": "*",
-    "webpack-dev-server": "*"
+    "webpack-dev-server": "^4.15.2"
   }
 }
