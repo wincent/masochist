@@ -1,7 +1,9 @@
 export default class InternalRedirectError extends Error {
   constructor(message, target) {
     super(message);
-    this.target = target;
+    this.target = {
+      pathname: target,
+    };
   }
 }
 
