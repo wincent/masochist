@@ -125,13 +125,15 @@ function runWebpack() {
         reject(new Error(errors.map((error) => error.toString()).join('\n\n')));
       } else {
         // Merge assets.json.
-        const assets = {};
+        const assets = {
+          main: {},
+        };
         config.forEach(({name, output}) => {
           const contents = require('fs').readFileSync(
             path.join(output.path, `webpack-${name}-assets.json`).toString()
           );
           for (const [key, value] of Object.entries(JSON.parse(contents).main)) {
-            assets[key] = value;
+            assets.main[key] = value;
           }
         });
         require('fs').writeFileSync(
