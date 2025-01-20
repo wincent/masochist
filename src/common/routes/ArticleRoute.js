@@ -4,7 +4,6 @@ import {graphql} from 'react-relay';
 import Article from '../../client/components/Article';
 import Link from '../../client/components/Link';
 import {makeExternalRedirect} from '../ExternalRedirectError';
-import {makeInternalRedirect} from '../InternalRedirectError';
 import {makeNotFound} from '../NotFoundError';
 import buildRoute from '../buildRoute';
 import inBrowser from '../inBrowser';
@@ -23,18 +22,6 @@ function hardRedirect(target) {
     return null;
   }
   throw makeExternalRedirect(target, 301);
-}
-
-/**
- * Perform a redirect via the client-side router.
- *
- * If the route in question cannot match, fall back to `hardRedirect()`.
- */
-function softRedirect(target) {
-  if (matchRoute(target)) {
-    throw makeInternalRedirect(target);
-  }
-  return hardRedirect(target);
 }
 
 export default buildRoute(
@@ -66,8 +53,9 @@ export default buildRoute(
             // External redirect.
             return hardRedirect(redirect);
           } else if (redirect.startsWith('/')) {
-            // Internal redirect.
-            return softRedirect(redirect);
+            // Internal redirect: but treat it as external so that nginx can
+            // handle it.
+            return hardRedirect(redirect);
           } else {
             // Nothing to do. `redirect` here is of the form "[[title]]" and the
             // other fields will have been appropriately "dereferenced" by

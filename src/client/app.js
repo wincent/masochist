@@ -24,7 +24,7 @@ import './normalize.css';
 import './skeleton.css';
 
 import {claimRefetchToken} from './RefetchTokenManager';
-import InternalRedirectError from '../common/InternalRedirectError';
+import ExternalRedirectError from '../common/ExternalRedirectError';
 import LRUCache from '../common/LRUCache';
 import NotFoundError from '../common/NotFoundError';
 import RenderTextError from '../common/RenderTextError';
@@ -194,7 +194,7 @@ function resolve(location, variables) {
       render(<App router={router}>{component}</App>, root);
     })
     .catch((error) => {
-      if (error instanceof InternalRedirectError) {
+      if (error instanceof ExternalRedirectError) {
         return resolve(error.target);
       } else if (error instanceof RenderTextError) {
         window.location = location.pathname;
