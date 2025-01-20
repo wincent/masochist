@@ -61,7 +61,7 @@
     "entities": "*",
     "express": "*",
     "fs-extra": "*",
-    "glob": "*",
+    "glob": "^10.4.4",
     "graphql": "*",
     "graphql-relay": "0.7.0",
     "highlight.js": "*",
