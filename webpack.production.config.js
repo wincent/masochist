@@ -95,6 +95,10 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
                 }
               });
             });
+            if (process.env.STATS) {
+              fs.writeFileSync('stats.json', JSON.stringify(stats.toJson()));
+              console.log('Wrote stats.json - view with: npx webpack-bundle-analyzer stats.json');
+            }
             callback();
           },
         );

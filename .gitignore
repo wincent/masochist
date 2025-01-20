@@ -12,3 +12,4 @@
 /public/static/bundle-*.mjs.map
 /public/static/styles-*.css
 /public/static/styles-*.css.map
+/stats.json
