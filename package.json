@@ -65,7 +65,7 @@
     "graphql": "^15.10.1",
     "graphql-relay": "0.7.0",
     "highlight.js": "*",
-    "history": "*",
+    "history": "^4.10.1",
     "isomorphic-fetch": "*",
     "markdown-it": "*",
     "markdown-it-footnote": "*",
