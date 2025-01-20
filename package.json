@@ -54,7 +54,7 @@
     "babel-plugin-relay": "*",
     "body-parser": "*",
     "classnames": "*",
-    "css-loader": "*",
+    "css-loader": "^6.11.0",
     "cssnano": "*",
     "dataloader": "*",
     "dd-trace": "4",
