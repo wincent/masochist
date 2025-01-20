@@ -58,7 +58,7 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
         fullPath: false,
         path: path.resolve(__dirname, 'dist'),
         prettyPrint: true,
-        update: false,
+        update: true,
       }),
       new MiniCssExtractPlugin({
         filename: 'styles-[contenthash].css',
