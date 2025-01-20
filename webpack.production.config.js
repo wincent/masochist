@@ -55,6 +55,7 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
     node: false,
     plugins: [
       new AssetsPlugin({
+        filename: `webpack-${name}-assets.json`,
         fullPath: false,
         path: path.resolve(__dirname, 'dist'),
         prettyPrint: true,

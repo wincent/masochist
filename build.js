@@ -107,10 +107,11 @@ async function runGraphQL() {
 /**
  * Run webpack with webpack.production.config.
  */
+const config = require('./webpack.production.config');
 function runWebpack() {
   console.log('[start] webpack');
   return new Promise((resolve, reject) => {
-    webpack(require('./webpack.production.config'), (error, stats) => {
+    webpack(config, (error, stats) => {
       if (error) {
         reject(error);
       } else if (stats.hasErrors()) {
@@ -123,6 +124,20 @@ function runWebpack() {
         });
         reject(new Error(errors.map((error) => error.toString()).join('\n\n')));
       } else {
+        // Merge assets.json.
+        const assets = {};
+        config.forEach(({name, output}) => {
+          const contents = require('fs').readFileSync(
+            path.join(output.path, `webpack-${name}-assets.json`).toString()
+          );
+          for (const [key, value] of Object.entries(JSON.parse(contents).main)) {
+            assets[key] = value;
+          }
+        });
+        require('fs').writeFileSync(
+          path.join('dist', 'webpack-assets.json'),
+          JSON.stringify(assets, null, 2)
+        );
         console.log(stats.toString({colors: true}));
         console.log('[finish] webpack');
         resolve();
