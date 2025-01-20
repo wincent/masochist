@@ -3002,10 +3002,10 @@ graphql-relay@0.7.0:
   resolved "https://registry.yarnpkg.com/graphql-relay/-/graphql-relay-0.7.0.tgz#e5c7a4bb52ede09e90e92dfd7b89d5947362278b"
   integrity sha512-P8eS3IbZRhbfbcfud1Q6VPrIru4hchkb15MuOij+WQo9r0chD5NBIxiVjuRE2iG2EMHxIOrZb8LnMe82+YdITA==
 
-graphql@*:
-  version "16.10.0"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.10.0.tgz#24c01ae0af6b11ea87bf55694429198aaa8e220c"
-  integrity sha512-AjqGKbDGUFRKIRCP9tCKiIGHyriz2oHEbPIbEtcSLSs4YjReZOIPQQWek4+6hjw62H9QShXHyaGivGiYVLeYFQ==
+graphql@^15.10.1:
+  version "15.10.1"
+  resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.10.1.tgz#e9ff3bb928749275477f748b14aa5c30dcad6f2f"
+  integrity sha512-BL/Xd/T9baO6NFzoMpiMD7YUZ62R6viR5tp/MULVEnbYJXZA//kRNW7J0j1w/wXArgL0sCxhDfK5dczSKn3+cg==
 
 handle-thing@^2.0.0:
   version "2.0.1"
