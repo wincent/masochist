@@ -12,7 +12,7 @@ const BUILDS = [
   {
     name: 'cjs',
     filename: 'bundle-[contenthash].js',
-    targets: '> 0.5%, last 2 versions, Firefox ESR, not dead',
+    targets: '> 0.2%, last 2 versions, not dead',
     terserOptions: {},
   },
   {
@@ -118,7 +118,7 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
                   [
                     '@babel/preset-env',
                     {
-                      corejs: 2,
+                      corejs: 3,
                       debug: false,
                       targets,
                       useBuiltIns: 'entry',
@@ -160,7 +160,7 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
                   [
                     '@babel/preset-env',
                     {
-                      corejs: 2,
+                      corejs: 3,
                       debug: false,
                       targets,
                       useBuiltIns: 'entry',
