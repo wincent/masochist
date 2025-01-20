@@ -51,7 +51,7 @@
     "babel-eslint": "*",
     "babel-loader": "*",
     "babel-plugin-minify-replace": "*",
-    "babel-plugin-relay": "*",
+    "babel-plugin-relay": "1.7.0",
     "body-parser": "*",
     "classnames": "*",
     "css-loader": "^6.11.0",
