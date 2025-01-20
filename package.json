@@ -81,7 +81,7 @@
     "relay-compiler": "*",
     "relay-runtime": "*",
     "rss": "*",
-    "scroll-behavior": "*",
+    "scroll-behavior": "0.10.0",
     "style-loader": "^3.3.4",
     "terser-webpack-plugin": "*",
     "universal-router": "*",
