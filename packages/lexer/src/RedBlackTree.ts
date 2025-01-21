@@ -41,7 +41,7 @@ const MIDDLE_DOT = '\u00b7'; // ·
  * This is based on the "2-3" variant described in Robert Sedgewick's,
  * "Left-leaning Red-Black Trees":
  *
- *     https://www.cs.princeton.edu/~rs/talks/LLRB/LLRB.pdf
+ *     https://sedgewick.io/wp-content/themes/sedgewick/papers/2008LLRB.pdf
  */
 export default class RedBlackTree<Tk extends Comparable<Tk>, Tv extends {}> {
   _root: Node<Tk, Tv> | null;
