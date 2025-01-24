@@ -54,14 +54,14 @@
     "babel-plugin-relay": "1.7.0",
     "body-parser": "*",
     "classnames": "*",
-    "css-loader": "^6.11.0",
-    "cssnano": "^6.1.2",
+    "css-loader": "*",
+    "cssnano": "*",
     "dataloader": "*",
     "dd-trace": "4",
     "entities": "*",
     "express": "*",
     "fs-extra": "*",
-    "glob": "^10.4.4",
+    "glob": "*",
     "graphql": "^15.10.1",
     "graphql-relay": "0.7.0",
     "highlight.js": "*",
@@ -73,7 +73,7 @@
     "mini-css-extract-plugin": "*",
     "path-to-regexp": "^6.3.0",
     "postcss": "*",
-    "postcss-loader": "^7.3.4",
+    "postcss-loader": "*",
     "prop-types": "*",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -82,7 +82,7 @@
     "relay-runtime": "1.7.0",
     "rss": "*",
     "scroll-behavior": "0.10.0",
-    "style-loader": "^3.3.4",
+    "style-loader": "*",
     "terser-webpack-plugin": "*",
     "universal-router": "*",
     "unpack-content": "*",
@@ -90,6 +90,6 @@
   },
   "devDependencies": {
     "http-proxy": "*",
-    "webpack-dev-server": "^4.15.2"
+    "webpack-dev-server": "*"
   }
 }
