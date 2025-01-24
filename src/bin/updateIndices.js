@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env node-20
 
 /**
  * Intended for use as a post-receive hook.
