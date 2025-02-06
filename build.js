@@ -40,7 +40,7 @@ const babelOptions = {
       '@babel/preset-env',
       {
         targets: {
-          node: '16.20.1',
+          node: '20.18.1',
         },
       },
     ],
