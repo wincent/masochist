@@ -27,11 +27,14 @@ title: macOS timeline
 -   [macOS] 12.0: [Monterey](https://en.wikipedia.org/wiki/MacOS_Monterey), released 25 October 2021 (347 days after Big Sur).
 -   [macOS] 13.0: [Ventura](https://en.wikipedia.org/wiki/MacOS_Ventura), released 24 October 2022 (364 days after Monterey).
 -   [macOS] 14.0: [Sonoma](https://en.wikipedia.org/wiki/MacOS_Sonoma), released 26 September 2023 (337 days after Ventura).
+-   [macOS] 15.0: [Sequoia](https://en.wikipedia.org/wiki/MacOS_Sequoia), released 16 September 2024 (356 days after Sonoma).
 
-The date calculations above were done with [Ruby](/wiki/Ruby):
+The date calculations above were done with [Ruby](/wiki/Ruby); for example:
 
-```shell
-$ ruby -r date -e 'puts (Date.new(2022, 10, 24) - Date.new(2021, 10, 25)).to_i'
+```bash
+ruby -r date -e 'puts (Date.new(2024, 9, 16) - Date.new(2023, 9, 26)).to_i'
 ```
+
+<!-- References -->
 
 [macos]: /wiki/macOS
