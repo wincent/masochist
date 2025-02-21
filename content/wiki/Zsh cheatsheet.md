@@ -17,6 +17,10 @@ title: Zsh cheatsheet
 -   `!str` last command beginning with "str"
 -   `!?str` last command containing "str"
 
+# Parameter expansion (see `man zshexpn`)
+
+- `${=VAR}` split `$VAR` into words
+
 ## See also
 
 -   <http://zsh.sourceforge.net/Doc/Release/Expansion.html#History-Expansion>
