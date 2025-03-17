@@ -9,7 +9,7 @@ From [the v4.9 release notes](https://www.typescriptlang.org/docs/handbook/relea
 
 > The new `satisfies` operator lets us validate that the type of an expression matches some type, _without changing the resulting type of that expression_.
 
-## Example: Catching typos in property names
+## Example: Catching bad property names
 
 ```typescript
 type Colors = "red" | "green" | "blue";
@@ -26,7 +26,7 @@ const palette = {
 const greenNormalized = palette.green.toUpperCase();
 ```
 
-Or a variant of the same — catching an invalid property name while using `unknown` to let TS info the types of the keys:
+Or a variant of the same — catching an invalid property name while using `unknown` to let TS infer the types of the keys:
 
 ```typescript
 type Colors = "red" | "green" | "blue";
@@ -43,7 +43,7 @@ const favoriteColors = {
 const g: boolean = favoriteColors.green;
 ```
 
-## Example: Checking key type irrespective of property name
+## Example: Checking key types (irrespective of property names)
 
 ```typescript
 type RGB = [red: number, green: number, blue: number];
@@ -57,6 +57,6 @@ const palette = {
 } satisfies Record<string, string | RGB>;
 
 // Note that type info for other values is preserved:
-const redComponent = palette.red.at(0);
-const greenNormalized = palette.green.toUpperCase();
+const redComponent = palette.red.at(0); // `palette.red` is of type `RGB`.
+const greenNormalized = palette.green.toUpperCase(); // palette.green` is of type `string`.
 ```
