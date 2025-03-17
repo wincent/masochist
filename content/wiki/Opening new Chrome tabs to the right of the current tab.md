@@ -3,6 +3,16 @@ tags: wiki chrome
 title: Opening new Chrome tabs to the right of the current tab
 ---
 
+**NOTE:** The Chrome team [decided that this previously working functionality is actually a feature request](https://issues.chromium.org/issues/397720842) in early 2025:
+
+> Seems like a feature request
+>
+> ...
+>
+> sorry for the inconvenience retiring non-substituting keywords might've caused you. Unfortunately sometimes retiring features that are not widely used is necessary to ensure we spend proper time and energy maintaining and improving widely used features.
+
+---
+
 # Open a new tab to the right of the current tab
 
 Normally, hitting `⌘-T` will open a new tab at the _end_ of the list of tabs. I often want to open the tab right next to the one I'm working in (ie. if I'm working inside a tab group).
