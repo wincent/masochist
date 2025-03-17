@@ -11,6 +11,8 @@ title: Opening new Chrome tabs to the right of the current tab
 >
 > sorry for the inconvenience retiring non-substituting keywords might've caused you. Unfortunately sometimes retiring features that are not widely used is necessary to ensure we spend proper time and energy maintaining and improving widely used features.
 
+So now, I'm [doing this with Raycast instead](https://github.com/wincent/wincent/commit/bf1b2b2efb5287a37a5549ea994a12f6ddbb9181). Below is the historical record of the old way (using custom search engines), for posterity:
+
 ---
 
 # Open a new tab to the right of the current tab
