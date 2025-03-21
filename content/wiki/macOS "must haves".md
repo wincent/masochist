@@ -17,14 +17,6 @@ Software in this list is either [open source](/wiki/open_source), or otherwise f
 
 Supersedes [Isolator](/wiki/Isolator).
 
-## [Chrome](/wiki/Chrome)
-
--   <http://www.google.com/chrome>
-
-Not as pretty as [Apple's](/wiki/Apple%27s) own [Safari](/wiki/Safari), but despite the fact it shares many internals, 2012 was the year I finally had to recognize that Chrome had gotten the edge in features and stability.
-
-I mostly use [Chrome](/wiki/Chrome) itself, but sometimes use [Chrome Canary](/wiki/Chrome_Canary) too.
-
 ## [Hammerspoon](/wiki/Hammerspoon)
 
 -   <http://www.hammerspoon.org/>
@@ -39,11 +31,11 @@ Ok, so this one is not a GUI app, but it's very important, as it is the primary 
 
 I have some [deep misgivings](/snippets/131) about the decision of [Homebrew](/wiki/Homebrew) to take exclusive ownership of `/usr/local`, but on a fresh install of [macOS](/wiki/macOS), if you're prepared to let Homebrew have its way, there is no simpler/faster way of installing a bunch of necessary and useful [command line](/wiki/command_line) packages ([here's a snapshot of my Brewfile](https://github.com/wincent/wincent/blob/22ba80737b24ac6540309d7c9ab6375f16fd4752/aspects/homebrew/templates/Brewfile.erb)).
 
-## [iTerm 2](/wiki/iTerm_2)
+## kitty
 
--   <http://www.iterm2.com/>
+- <https://sw.kovidgoyal.net/kitty/>
 
-More features than you need, but I'll bet it also has the ones you do need and can't get anywhere else. The sole gripe: it's slower than [Apple's](/wiki/Apple%27s) own [Terminal](/wiki/Terminal).
+Best all-round cross-platform terminal for macOS and Linux, delivering excellent performance and an absurdly large number of features.
 
 ## [Karabiner-Elements](https://karabiner-elements.pqrs.org/) (formerly [Karabiner](/wiki/Karabiner), itself formerly [KeyRemap4MacBook](/wiki/KeyRemap4MacBook))
 
@@ -53,17 +45,17 @@ Has some killer features, like after mapping the Caps Lock key to serve as a Con
 
 For more details about this and other super useful settings, see the "[Karabiner](/wiki/Karabiner)" article.
 
-## [VLC](/wiki/VLC)
-
--   <http://www.videolan.org/>
-
-Play back audio and video formats that [Apple](/wiki/Apple) won't.
-
 ## [OmniDiskSweeper](/wiki/OmniDiskSweeper)
 
 -   <http://www.omnigroup.com/products/omnidisksweeper/>
 
 When all you've got is a tiny SSD drive, this tool is very handy for hunting down and killing space-greedy files which aren't worthy of preservation.
+
+## [VLC](/wiki/VLC)
+
+-   <http://www.videolan.org/>
+
+Play back audio and video formats that [Apple](/wiki/Apple) won't.
 
 # Commercial
 
@@ -72,13 +64,6 @@ When all you've got is a tiny SSD drive, this tool is very handy for hunting dow
 -   <https://agilebits.com/onepassword>
 
 Secret-management. More details [here](/wiki/1Password).
-
-## Alfred or Raycast
-
-I've been using Alfred for many years but recently started using Raycast on one machine. The jury is still out on which one is better; Raycast doesn't have as many features yet, but it is prettier to look at and easier to customize.
-
--   <https://www.alfredapp.com/>
--   <https://www.raycast.com/>
 
 ## [Arq](/wiki/Arq)
 
@@ -98,23 +83,23 @@ However, the company that made Skitch was [acquired by Evernote in 2011](https:/
 
 CleanShot carries none of that baggage, has a delightful UX, and if you need history synced across multiple machines, it is easy enough to save your screenshots to a shared folder.
 
-## [Net Monitor](/wiki/Net_Monitor)
+## Godspeed
 
--   <http://homepage.mac.com/rominar/net.html> (and available on the Apple App Store)
+- [Godspeed](https://godspeedapp.com/)
 
-See what's going in and out of your tubes. I still use this for its Dock icon, even though I also use [iStat Menus](/wiki/iStat_Menus) as well.
+Feature rich, clean, fast, "TODO" app with macOS and iOS clients.
+
+## Raycast
+
+The new Alfred.
+
+-   <https://www.raycast.com/>
 
 ## [SuperDuper!](/wiki/SuperDuper%21)
 
 -   <http://www.shirt-pocket.com/SuperDuper/>
 
 Whole-disk backup software that has saved my butt on multiple occasions.
-
-## Things
-
-Prettiest to-do lists this side of Cupertino. Very simple, and not cross-platform, but the features that it does have work extremely well.
-
--   [Things](https://culturedcode.com/things/)
 
 ## [xScope](/wiki/xScope)
 
@@ -134,15 +119,37 @@ Free to download and use, but paid if you want to get rid of the ads. On a lapto
 
 Ridiculously configurable menu meters. This is arguably superior to [MenuMeters](/wiki/MenuMeters) and [Temperature Monitor](/wiki/Temperature_Monitor), but it's not free.
 
+# Hall of fame
+
+These are products I used to list as "must haves":
+
+## [Adium](/wiki/Adium)
+
+-   <http://www.adium.im/>
+
+This was really the only sane choice on [macOS](/wiki/macOS).
+
+I stopped using it on changing jobs (at the old job I used Google chat; then it was Facebook messenger; finally I've now worked at three companies that use Slack).
+
+## Alfred
+
+-   <https://www.alfredapp.com/>
+
+Superseded by Raycast.
+
 ## [Bartender](/wiki/Bartender)
 
 -   <http://www.macbartender.com/>
 
 Clear up menu bar clutter, while still keeping useful functionality one click away. I liked this enough to pay for a license even though I hadn't reached the end of the trial period.
 
-# Hall of fame
+Superseded by [Ice](https://icemenubar.app/) when [Bartender did a rug-pull](https://www.reddit.com/r/macapps/comments/1d7zjv8/bartender_5_not_safe_anymore_warning_from/) (the app got sold, and certificates were changed, without warning; serious questions exist about the reliability and intentions of the new owner).
 
-These are products I used to use.
+## [Chrome](/wiki/Chrome)
+
+-   <http://www.google.com/chrome>
+
+Not as pretty as [Apple's](/wiki/Apple%27s) own [Safari](/wiki/Safari), but despite the fact it shares many internals, 2012 was the year I finally had to recognize that Chrome had gotten the edge in features and stability. At the time of writing, I still use [Chrome](/wiki/Chrome), but only at work (where is mandated). Elsewhere, I use [Orion](/wiki/Orion) (for it's privacy features) and [Edge](/wiki/Edge) (for use cases where Orion is broken).
 
 ## [Divvy](/wiki/Divvy)
 
@@ -160,6 +167,14 @@ Superseded by [Blurred](https://github.com/dwarvesf/Blurred).
 
 Makes the frontmost application stand out and the others fade into the background; excellent for when you have multiple windows that look alike, or too much screen real estate.
 
+## [iTerm 2](/wiki/iTerm_2)
+
+-   <http://www.iterm2.com/>
+
+More features than you need, but I'll bet it also has the ones you do need and can't get anywhere else. The sole gripe: it's slower than [Apple's](/wiki/Apple%27s) own [Terminal](/wiki/Terminal).
+
+Superseded by [kitty](https://sw.kovidgoyal.net/kitty/).
+
 ## [Mouse Locator](/wiki/Mouse_Locator)
 
 -   <http://www.2point5fish.com/>
@@ -167,6 +182,13 @@ Makes the frontmost application stand out and the others fade into the backgroun
 Helps you find the mouse pointer immediately when you haven't touched the mouse for a while; pretty much a must-have if you work with multiple displays, where the mouse can get lost.
 
 Superseded by equivalent built-in feature in [macOS](/wiki/macOS), since version 10.11 "[El Capitan](/wiki/El_Capitan)", which means you can magnify the mouse by "shaking" the mouse pointer.
+
+## [Net Monitor](/wiki/Net_Monitor)
+
+-   <http://homepage.mac.com/rominar/net.html> (and available on the Apple App Store)
+
+See what's going in and out of your tubes. Sadly, doesn't work on Apple Silicon, so I cover the gap with [iStat Menus](/wiki/iStat_Menus).
+
 
 ## [Skype](/wiki/Skype)
 
@@ -210,6 +232,14 @@ The necessary settings are a little bit confusing, at least for me:
 
 Uninstalled when I switch back to using a Magic Trackpad instead of a mouse.
 
+## Things
+
+Prettiest to-do lists this side of Cupertino. Very simple, and not cross-platform, but the features that it does have work extremely well.
+
+-   [Things](https://culturedcode.com/things/)
+
+Superseded by [Godspeed](https://godspeedapp.com/).
+
 ## [Propane](/wiki/Propane)
 
 -   <http://propaneapp.com/>
@@ -233,14 +263,6 @@ Superseded by [iStat Menus](/wiki/iStat_Menus).
 Measure how hot your machine is running. Overheating killed my last machine, and I find temperature to be a useful indicator of how hard I'm pushing the machine; it can be a clue that you can afford to turn on more bells or whistles, or cut back.
 
 Superseded by [iStat Menus](/wiki/iStat_Menus).
-
-## [Adium](/wiki/Adium)
-
--   <http://www.adium.im/>
-
-This was really the only sane choice on [macOS](/wiki/macOS).
-
-I stopped using it on changing jobs (at the old job I used Google chat; at the new job it's Facebook messenger).
 
 ## [Notational Velocity](/wiki/Notational_Velocity)
 
