@@ -29,7 +29,7 @@ Programmable macOS automation and scripting tool. I use it for positioning windo
 
 Ok, so this one is not a GUI app, but it's very important, as it is the primary way of getting all the not-GUI apps (and a few of the GUI ones too), so including it here.
 
-I have some [deep misgivings](/snippets/131) about the decision of [Homebrew](/wiki/Homebrew) to take exclusive ownership of `/usr/local`, but on a fresh install of [macOS](/wiki/macOS), if you're prepared to let Homebrew have its way, there is no simpler/faster way of installing a bunch of necessary and useful [command line](/wiki/command_line) packages ([here's a snapshot of my Brewfile](https://github.com/wincent/wincent/blob/22ba80737b24ac6540309d7c9ab6375f16fd4752/aspects/homebrew/templates/Brewfile.erb)).
+I ~~have~~ had some [deep misgivings](/snippets/131) about the decision of [Homebrew](/wiki/Homebrew) to take exclusive ownership of `/usr/local` (note: after Homebrew 1.0.0, [it no longer does this](https://apple.stackexchange.com/questions/253404/how-does-homebrew-no-longer-need-ownership-of-usr-local)), but on a fresh install of [macOS](/wiki/macOS), if you're prepared to let Homebrew have its way, there is no simpler/faster way of installing a bunch of necessary and useful [command line](/wiki/command_line) packages ([here's a snapshot of my Brewfile](https://github.com/wincent/wincent/blob/22ba80737b24ac6540309d7c9ab6375f16fd4752/aspects/homebrew/templates/Brewfile.erb)).
 
 ## kitty
 
