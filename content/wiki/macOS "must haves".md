@@ -67,7 +67,7 @@ Secret-management. More details [here](/wiki/1Password).
 
 ## [Arq](/wiki/Arq)
 
--   <http://www.haystacksoftware.com/arq/>
+-   <https://www.arqbackup.com>
 
 Encrypted, automated, sane backup to [AWS](/wiki/AWS) ([S3](/wiki/S3) and [Glacier](/wiki/Glacier)) and many other targets.
 
