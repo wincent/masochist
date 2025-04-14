@@ -262,3 +262,21 @@ And here are some interesting entries from outside of the top-10; these produced
    ...
 394  2 xattr     # The least popular tool I've used multiple times.
 ```
+
+# Update: April 2025
+
+```
+# Work machine (after 10 months on this machine)
+12902 git
+2494 exit
+2276 vim      # Alias → `nvim`
+1389 cd
+1099 yarn
+935 e         # Alias → `exit`
+641 brew
+419 t         # Alias → `tmux`
+417 tmux
+382 oo        # Alias → `git --paginate log --pretty=format:'%C(auto)%h%Creset %s%C(auto)%d%Creset %C(magenta bold)(%cr)%Creset %C(cyan)<%aN>%Creset' -10`
+```
+
+Not much has changed here; the main new thing I'd note is that I run `brew update` and `brew upgrade`/`brew cleanup`/`brew doctor` basically daily now, whereas I used to run it only rarely.
