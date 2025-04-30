@@ -22,17 +22,23 @@ At the moment, I have two active GPG keys:
 
 I have those set up with the major repository hosts (eg. GitHub, GitLab, BitBucket, Codeberg, and Source Hut) so that they can display signed commits and tags as verified. Additionally, I have some older[^older] keys registered that I previously used to sign objects:
 
-- [`62106B56923F3481`](https://keyserver.ubuntu.com/pks/lookup?search=62106B56923F3481&fingerprint=on&op=index), associated with my a previous work email address (`wincent@github.com`).
-- [`6F252437134D9429`](https://keyserver.ubuntu.com/pks/lookup?search=6F252437134D9429&fingerprint=on&op=index), associated with another old address (`win@wincent.com`); this one expired on 2017-07-07, and one of the oldest objects I can find signed with that was [the Command-T 1.8 release tag](https://github.com/wincent/command-t/releases/tag/1.8) back in March 2014 (in [the 1.9 release tag](https://github.com/wincent/command-t/releases/tag/1.9) in May 2014 you can see I switched to my `F962DC1A1941CCC4`/`greg@hurrell.net` key).
-- [`6B746F3C37BAF280`](https://keyserver.ubuntu.com/pks/lookup?search=6B746F3C37BAF280&fingerprint=on&op=index), also associated with `win@wincent.com`; it is set to expire on 2024-01-12, and I can't actually find any example objects that I ever signed with this one, but I am keeping it around just in case[^think].
+- [`2F4469E0C1FA72AAC0A560C962106B56923F3481`](https://keyserver.ubuntu.com/pks/lookup?search=2F4469E0C1FA72AAC0A560C962106B56923F3481&fingerprint=on&op=index), associated with my a previous work email address (`wincent@github.com`).
+- [`F6EF52FAAA5A599028C8477E6F252437134D9429`](https://keyserver.ubuntu.com/pks/lookup?search=F6EF52FAAA5A599028C8477E6F252437134D9429&fingerprint=on&op=index), associated with another old address (`win@wincent.com`); this one expired on 2017-07-07, and one of the oldest objects I can find signed with that was [the Command-T 1.8 release tag](https://github.com/wincent/command-t/releases/tag/1.8) back in March 2014 (in [the 1.9 release tag](https://github.com/wincent/command-t/releases/tag/1.9) in May 2014 you can see I switched to my `F962DC1A1941CCC4`/`greg@hurrell.net` key).
+- [`3E8526DF7EE29B410C75FAC86B746F3C37BAF280`](https://keyserver.ubuntu.com/pks/lookup?search=3E8526DF7EE29B410C75FAC86B746F3C37BAF280&fingerprint=on&op=index), also associated with `win@wincent.com`; it is set to expire on 2024-01-12, and I can't actually find any example objects that I ever signed with this one, but I am keeping it around just in case[^think].
 
-[^older]: These ones are only registered with GitHub, because it is the main source host. Only one of them is registered with Source Hut (for some reason, it let me add `6B746F3C37BAF280` but rejects `6F252437134D9429`). Neither is registered with Codeberg (because Codeberg either requires me to verify the key by using it to sign a challenge — and I don't have the private key handy right now — or by adding `win@wincent.com` as a verified email address, which I don't want to do because I retired that one from circulation a while ago.) GitLab rejects both keys as invalid, ~~and BitBucket doesn't support GPG keys at all despite there being [a ticket open for it](https://jira.atlassian.com/browse/BCLOUD-3166) for over 12 year now[^finally]~~.
+[^older]: These ones are only registered with GitHub, because it is the main source host. Only one of them is registered with Source Hut (for some reason, it let me add `3E8526DF7EE29B410C75FAC86B746F3C37BAF280` but rejects `F6EF52FAAA5A599028C8477E6F252437134D9429`). Neither is registered with Codeberg (because Codeberg either requires me to verify the key by using it to sign a challenge — and I don't have the private key handy right now — or by adding `win@wincent.com` as a verified email address, which I don't want to do because I retired that one from circulation a while ago.) GitLab rejects both keys as invalid, ~~and BitBucket doesn't support GPG keys at all despite there being [a ticket open for it](https://jira.atlassian.com/browse/BCLOUD-3166) for over 12 year now[^finally]~~.
 
 [^finally]: As of 2025, it appears that BitBucket finally supports GPG keys...
 
 [^think]: If I had to guess, I'd say I probably created this second key in some past time when I thought I should have one key per machine, instead of one key per identity.
 
-**Note:** Throughout this document I use a mix of fingerprints (eg. `4282ED4A05CC894D53A541C3F962DC1A1941CCC4` and `CA35A4528D888CDF264D0A2A4838AEDCA8CE883C`) and long key IDs (eg. `F962DC1A1941CCC4` and `4838AEDCA8CE883C`), but not short key IDs (eg. `1941CCC4` and `A8CE883C`). The difference between these is [explained here](https://security.stackexchange.com/a/84281).
+**Note:** Throughout this document I may use a mix of fingerprints (eg. `4282ED4A05CC894D53A541C3F962DC1A1941CCC4` and `CA35A4528D888CDF264D0A2A4838AEDCA8CE883C`) and long key IDs (eg. `F962DC1A1941CCC4` and `4838AEDCA8CE883C`), but not short key IDs (eg. `1941CCC4` and `A8CE883C`). The difference between these is [explained here](https://security.stackexchange.com/a/84281).
+
+To see a list of keys that I currently have registered with GitHub, run:
+
+```
+curl https://github.com/wincent.gpg | gpg --show-keys
+```
 
 # Example creation and rotation procedures
 
