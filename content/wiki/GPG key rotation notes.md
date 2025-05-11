@@ -42,6 +42,178 @@ curl https://github.com/wincent.gpg | gpg --show-keys
 
 # Example creation and rotation procedures
 
+## Rotating work and personal keys at the same time (2025 edition)
+
+As I've now done this a few times, I'll be keeping these notes brief. For more detail, see the versions below under the headings "Rotating my `wincent@github.com` keys" and "Rotating my `greg@hurrell.net` keys".
+
+Inspect current key state; note that the public (`pub`) portion of the primary key is online, as is the public part (`pub`) of the encryption (`E`) and signing (`S`) secret subkeys:
+
+```
+$ gpg --list-public-keys greg.hurrell@datadoghq.com
+pub   ed25519 2024-06-04 [SC] [expires: 2025-06-04]
+      CA35A4528D888CDF264D0A2A4838AEDCA8CE883C
+uid           [ultimate] Greg Hurrell <greg.hurrell@datadoghq.com>
+sub   cv25519 2024-06-04 [E] [expires: 2025-06-04]
+sub   ed25519 2024-06-04 [S] [expires: 2025-06-04]
+```
+
+Running with `--list-secret-keys` instead of `--list-public-keys` shows that the secret encryption and signing subkeys (`ssb`) are available; for the primary key `sec#`, indicates that the key is "unusable" (in this case, because it's not present):
+
+```
+$ gpg --list-secret-keys greg.hurrell@datadoghq.com
+sec#  ed25519 2024-06-04 [SC] [expires: 2025-06-04]
+      CA35A4528D888CDF264D0A2A4838AEDCA8CE883C
+uid           [ultimate] Greg Hurrell <greg.hurrell@datadoghq.com>
+ssb   cv25519 2024-06-04 [E] [expires: 2025-06-04]
+ssb   ed25519 2024-06-04 [S] [expires: 2025-06-04]
+```
+
+Bring the offline primary key back online by importing it from 1Password (assuming you have the 1Password CLI installed — ie. `brew install 1password-cli` — and "desktop app integration" turned on as [described in the documentation](https://developer.1password.com/docs/cli/app-integration/)[^tldr]):
+
+[^tldr]: **tl;dr:** In the app, go to "Settings" → "Developer", and turn on "Integrate with 1Password CLI".
+
+```
+$ op document get 0x4838AEDCA8CE883C.asc --output 0x4838AEDCA8CE883C.asc
+$ gpg --import 0x4838AEDCA8CE883C.asc
+gpg: key 4838AEDCA8CE883C: "Greg Hurrell <greg.hurrell@datadoghq.com>" not changed
+gpg: key 4838AEDCA8CE883C: secret key imported
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+gpg:       secret keys read: 1
+gpg:   secret keys imported: 1
+gpg:  secret keys unchanged: 1
+```
+
+Confirm the secret part (`sec`) of the primary key is now available:
+
+```
+$ gpg --list-secret-keys greg.hurrell@datadoghq.com
+sec   ed25519 2024-06-04 [SC] [expires: 2025-06-04]
+      CA35A4528D888CDF264D0A2A4838AEDCA8CE883C
+uid           [ultimate] Greg Hurrell <greg.hurrell@datadoghq.com>
+ssb   cv25519 2024-06-04 [E] [expires: 2025-06-04]
+ssb   ed25519 2024-06-04 [S] [expires: 2025-06-04]
+```
+
+Reset the expiry of the primary key — in this case, I'm wanting to set an expiry date 2 years from the current expiry (2025-06-04); ie. 2027-06-04; given that I'm running the command on 2025-05-11, I specify the expiry as 754d from today:
+
+```
+$ gpg --quick-set-expire CA35A4528D888CDF264D0A2A4838AEDCA8CE883C 754d
+```
+
+Confirm the new date has been set on the primary key:
+
+```
+$ gpg --list-public-keys greg.hurrell@datadoghq.com
+pub   ed25519 2024-06-04 [SC] [expires: 2027-06-04]
+      CA35A4528D888CDF264D0A2A4838AEDCA8CE883C
+uid           [ultimate] Greg Hurrell <greg.hurrell@datadoghq.com>
+sub   cv25519 2024-06-04 [E] [expires: 2025-06-04]
+sub   ed25519 2024-06-04 [S] [expires: 2025-06-04]
+```
+
+Create new encryption and signing subkeys:
+
+```
+$ gpg --quick-add-key CA35A4528D888CDF264D0A2A4838AEDCA8CE883C cv25519 encr 754d
+$ gpg --quick-add-key CA35A4528D888CDF264D0A2A4838AEDCA8CE883C ed25519 sign 754d
+```
+
+Confirm new subkeys have been added:
+
+```
+$ gpg --list-public-keys greg.hurrell@datadoghq.com
+pub   ed25519 2024-06-04 [SC] [expires: 2027-06-04]
+      CA35A4528D888CDF264D0A2A4838AEDCA8CE883C
+uid           [ultimate] Greg Hurrell <greg.hurrell@datadoghq.com>
+sub   cv25519 2024-06-04 [E] [expires: 2025-06-04]
+sub   ed25519 2024-06-04 [S] [expires: 2025-06-04]
+sub   cv25519 2025-05-11 [E] [expires: 2027-06-04]
+sub   ed25519 2025-05-11 [S] [expires: 2027-06-04]
+```
+
+Export public key for uploading to GitHub (etc):
+
+```
+$ gpg --export --armor --output 0x4838AEDCA8CE883C.pub.asc 0x4838AEDCA8CE883C
+```
+
+And private key for storage in 1Password (overwriting old one):
+
+```
+$ gpg --export-secret-keys --armor --output 0x4838AEDCA8CE883C.asc 0x4838AEDCA8CE883C
+$ op document edit 0x4838AEDCA8CE883C.asc 0x4838AEDCA8CE883C.asc
+```
+
+Take primary key offline (the `!` here tells `gpg` to remove the secret part of the primary key) and delete local exported copy:
+
+```
+$ gpg --delete-secret-keys 'CA35A4528D888CDF264D0A2A4838AEDCA8CE883C!'
+$ rm 0x4838AEDCA8CE883C.asc
+```
+
+Confirm:
+
+```
+$ gpg --list-secret-keys greg.hurrell@datadoghq.com
+sec#  ed25519 2024-06-04 [SC] [expires: 2027-06-04]
+      CA35A4528D888CDF264D0A2A4838AEDCA8CE883C
+uid           [ultimate] Greg Hurrell <greg.hurrell@datadoghq.com>
+ssb   cv25519 2024-06-04 [E] [expires: 2025-06-04]
+ssb   ed25519 2024-06-04 [S] [expires: 2025-06-04]
+ssb   cv25519 2025-05-11 [E] [expires: 2027-06-04]
+ssb   ed25519 2025-05-11 [S] [expires: 2027-06-04]
+```
+
+Send updated public keys to key servers:
+
+```
+$ gpg --send-keys CA35A4528D888CDF264D0A2A4838AEDCA8CE883C
+$ gpg --send-keys --keyserver pgp.mit.edu CA35A4528D888CDF264D0A2A4838AEDCA8CE883C
+```
+
+Do personal key rotation on work machine too:
+
+```
+$ gpg --list-public-keys greg@hurrell.net
+$ op document get 0xF962DC1A1941CCC4.asc --output 0xF962DC1A1941CCC4.asc
+$ gpg --import 0xF962DC1A1941CCC4.asc
+$ gpg --list-secret-keys greg@hurrell.net
+$ gpg --quick-set-expire 4282ED4A05CC894D53A541C3F962DC1A1941CCC4 754d
+$ gpg --list-public-keys greg@hurrell.net
+$ gpg --quick-add-key 4282ED4A05CC894D53A541C3F962DC1A1941CCC4 cv25519 encr 754d
+$ gpg --quick-add-key 4282ED4A05CC894D53A541C3F962DC1A1941CCC4 ed25519 sign 754d
+$ gpg --list-public-keys greg@hurrell.net
+$ gpg --export --armor --output 0xF962DC1A1941CCC4.pub.asc 0xF962DC1A1941CCC4
+$ gpg --export-secret-keys --armor --output 0xF962DC1A1941CCC4.asc 0xF962DC1A1941CCC4
+$ op document edit 0xF962DC1A1941CCC4.asc 0xF962DC1A1941CCC4.asc
+$ gpg --delete-secret-keys 4282ED4A05CC894D53A541C3F962DC1A1941CCC4
+$ rm 0xF962DC1A1941CCC4.asc
+$ gpg --send-keys 4282ED4A05CC894D53A541C3F962DC1A1941CCC4
+$ gpg --send-keys --keyserver pgp.mit.edu 4282ED4A05CC894D53A541C3F962DC1A1941CCC4
+```
+
+**NOTE:** The above steps are basically the same as they are for the work key, but with two differences: firstly, we import the private keys _before_ running `gpg --list-secret-keys` for the first time (otherwise the command would error); secondly, we don't just delete the primary secret key, but the private subkeys as well (we do this by omitting the trailing `!` in the invocation of `--delete-secret-keys`).
+
+Update dotfile secrets (etc) with the new encryption subkeys:
+
+```
+$ cd $DOTFILES
+$ bin/git-cipher init --force
+$ cd $ANSIBLE_CONFIGS
+$ bin/git-cipher init --force
+```
+
+Update keys at SCM hosts; in all cases, have to delete the old keys first or the sites will complain about duplicates (2025 is the first time this has been true for _all_):
+
+-   [GitHub GPG settings](https://github.com/settings/gpg/new)
+-   [GitLab GPG settings](https://gitlab.com/-/user_settings/gpg_keys)
+-   [BitBucket GPG settings](https://bitbucket.org/account/settings/gpg-keys) (but note that Atlassian won't let me upload my work key as I haven't associated my work email address with my Atlassian account, and it won't let me associate it because it claims the address is already in use by "another user")
+-   [Source Hut key settings](https://meta.sr.ht/keys)
+-   [Codeberg key settings](https://codeberg.org/user/settings/keys) (note that at Codeberg, you can additionally "verify" your key by signing a challenge with it)
+
+Next, on personal machine, grab new version of keys, and also verify key on Codeberg.
+
 ## Bringing a new `greg.hurrell@datadoghq.com` key into the rotation
 
 Create a new key:
@@ -177,11 +349,11 @@ gpg --export-secret-keys --armor --output 0xF962DC1A1941CCC4.asc 0xF962DC1A1941C
 
 We update the key in these places:
 
--   [GitHub GPG settings](https://github.com/settings/gpg/new)
--   [GitLab GPG settings](https://gitlab.com/-/profile/gpg_keys)
--   [BitBucket GPG settings](https://bitbucket.org/account/settings/gpg-keys)
--   [Source Hut key settings](https://meta.sr.ht/keys)
--   [Codeberg key settings](https://codeberg.org/user/settings/keys)
+-   [GitHub GPG settings](https://github.com/settings/gpg/new) (delete old version of keys first)
+-   [GitLab GPG settings](https://gitlab.com/-/user_settings/gpg_keys) (delete old version of keys first)
+-   [BitBucket GPG settings](https://bitbucket.org/account/settings/gpg-keys) (delete old version of key first; also note that Atlassian won't let me add my work key because that email is not associated with my account, and it won't let me associate it with my account, because it is already in use by "another user")
+-   [Source Hut key settings](https://meta.sr.ht/keys) (delete old version of keys first)
+-   [Codeberg key settings](https://codeberg.org/user/settings/keys) (delete old version of keys first; additionally, at Codeberg we can "verify" the keys by using them to sign a challenge)
 
 We try to update my dotfiles secrets, but that fails at first with:
 
@@ -194,8 +366,13 @@ gpg: [stdin]: encryption failed: Unusable public key
 So, set trust level to ultimate:
 
 ```
+# Interactively:
 gpg --edit-key 4282ED4A05CC894D53A541C3F962DC1A1941CCC4
 gpg --edit-key CA35A4528D888CDF264D0A2A4838AEDCA8CE883C
+
+# Or, non-interactively:
+gpg --quick-set-ownertrust 4282ED4A05CC894D53A541C3F962DC1A1941CCC4 ultimate
+gpg --quick-set-ownertrust CA35A4528D888CDF264D0A2A4838AEDCA8CE883C ultimate
 ```
 
 Then:
@@ -420,7 +597,7 @@ Jew5lkkOc3gMW6I0e6ELMHERV6Yfy+HvA2O5/ThU19aOzMnGFkKDFFdQh48bdw==
 Which we paste into:
 
 -   [GitHub GPG settings](https://github.com/settings/gpg/new)
--   [GitLab GPG settings](https://gitlab.com/-/profile/gpg_keys)
+-   [GitLab GPG settings](https://gitlab.com/-/user_settings/gpg_keys)
 -   [BitBucket GPG settings](https://bitbucket.org/account/settings/gpg-keys)
 -   [Source Hut key settings](https://meta.sr.ht/keys)
 -   [Codeberg key settings](https://codeberg.org/user/settings/keys) (additionally, Codeberg offers you the ability to "verify" the key by using it to sign a token).
@@ -699,7 +876,7 @@ Export the public key, including the subkeys, for use in GitHub:
 gpg --export --armor --output 0xF962DC1A1941CCC4.pub.asc 0xF962DC1A1941CCC4
 ```
 
-After pasting that into the [GitHub GPG settings](https://github.com/settings/gpg/new), [GitLab GPG settings](https://gitlab.com/-/profile/gpg_keys), [BitBucket GPG settings](https://bitbucket.org/account/settings/gpg-keys), [Source Hut key settings](https://meta.sr.ht/keys), and [Codeberg key settings](https://codeberg.org/user/settings/keys), replacing the previous copy (ie. delete the old one, then add the new one; only Source Hut lets you do it in the opposite order because the other pages complain that the key is a duplicate), we can discard the file:
+After pasting that into the [GitHub GPG settings](https://github.com/settings/gpg/new), [GitLab GPG settings](https://gitlab.com/-/user_settings/gpg_keys), [BitBucket GPG settings](https://bitbucket.org/account/settings/gpg-keys), [Source Hut key settings](https://meta.sr.ht/keys), and [Codeberg key settings](https://codeberg.org/user/settings/keys), replacing the previous copy (ie. delete the old one, then add the new one; only Source Hut lets you do it in the opposite order because the other pages complain that the key is a duplicate), we can discard the file:
 
 ```bash
 rm 0xF962DC1A1941CCC4.pub.asc
