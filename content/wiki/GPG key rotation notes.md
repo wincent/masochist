@@ -212,7 +212,33 @@ Update keys at SCM hosts; in all cases, have to delete the old keys first or the
 -   [Source Hut key settings](https://meta.sr.ht/keys)
 -   [Codeberg key settings](https://codeberg.org/user/settings/keys) (note that at Codeberg, you can additionally "verify" your key by signing a challenge with it)
 
-Next, on personal machine, grab new version of keys, and also verify key on Codeberg.
+Next, on personal machine, grab new version of work key and confirm it worked:
+
+```
+$ gpg --recv-keys 4838AEDCA8CE883C
+$ gpg --list-public-keys greg.hurrell@datadoghq.com
+```
+
+Now grab updated version of personal key, but keep primary secret key offline:
+
+```
+$ op document get 0xF962DC1A1941CCC4.asc --output 0xF962DC1A1941CCC4.asc
+$ gpg --import 0xF962DC1A1941CCC4.asc
+$ gpg --delete-secret-keys '4282ED4A05CC894D53A541C3F962DC1A1941CCC4!'
+$ rm 0xF962DC1A1941CCC4.asc
+$ gpg --list-secret-keys greg@hurrell.net
+```
+
+Confirm that secrets managed by git-cipher are still accessible:
+
+```
+$ cd $DOTFILES
+$ bin/git-cipher unlock
+$ cd $ANSIBLE_CONFIGS
+$ bin/git-cipher unlock
+```
+
+As a final step, we can also verify the key on Codeberg.
 
 ## Bringing a new `greg.hurrell@datadoghq.com` key into the rotation
 
