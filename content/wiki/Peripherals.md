@@ -16,7 +16,9 @@ Not using the "hub" functionality because it is not reliable enough in my experi
 - Laptop video coming in via DisplayPort (v1.4) connector (from dock, see below), labeled as "D-IN" in the photo.
 - Desktop video coming in via Mini DisplayPort (v1.4), labeled as "MINI D" in the photo.
 
-One day, I'd like to upgrade to the 5K model, the [BenQ PD2730s](https://www.benq.com/en-us/monitor/professional/pd2730s.html), which [will have](https://www.benq.com/en-us/monitor/professional/pd2730s/spec.html):
+One day, I'd like to upgrade to the 5K model[^pd2730s], the [BenQ PD2730s](https://www.benq.com/en-us/monitor/professional/pd2730s.html), which [will have](https://www.benq.com/en-us/monitor/professional/pd2730s/spec.html):
+
+[^pd2730s]: The upgrade would bring some nice spec bumps: 3840x2160 resolution → 5120x2880; 1200:1 contrast ratio → 2000:1; increased color gamut (eg. 99% sRGDB / 99% Rec. 709 / 90% DCI-P3 → 100% / 100%/ 98%); HDMI 2.0 → 2.1; and even the built-in speakers go from 3W → 5W.
 
 - HDMI (v2.1)
 - DisplayPort (v1.4)
