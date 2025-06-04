@@ -3,7 +3,7 @@ tags: wiki git
 title: Git change IDs
 ---
 
-Change IDs are used by numerous tools that implement a "stacking" workflow (eg. [Gerrit], [Phabricator], [GitButler](https://gitbutler.com/), [Jujutsu] etc) to identify how the relationship between different versions of a commit.
+Change IDs are used by numerous tools that implement a "stacking" workflow (eg. [Gerrit], [Phabricator], [GitButler](https://gitbutler.com/), [Jujutsu] etc) to encode the relationship between different versions of a commit.
 
 # Proposal to implement a standard "change ID" in Git
 
