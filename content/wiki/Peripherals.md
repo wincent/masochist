@@ -22,6 +22,8 @@ One day, I'd like to upgrade to the 5K model, the [BenQ PD2730s](https://www.ben
 - DisplayPort (v1.4)
 - Thunderbolt 4 ([recommended](https://www.benq.com/en-us/campaign/monitor-for-mac/articles/how-do-i-connect-my-mac-m1-to-benq-monitor-update.html) by BenQ for connecting Macs)
 
+![benq-pd2730s-ports](/system/images/benq-pd2730s-ports.png)
+
 # Dock
 
 [OWC Thunderbolt 3 14-port dock](https://www.owc.com/solutions/thunderbolt-3-dock-14-port):
