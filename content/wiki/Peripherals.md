@@ -90,3 +90,15 @@ Items _not_ plugged into the UPS include:
 
 - Printer (plugged directly into power strip, in turn plugged into the wall).
 - El Gato light (plugged into power brick mounted on table leg, in turn plugged into a white extension cable, in turn plugged into power strip, in turn plugged into the wall).
+
+# Appendix: A note on units
+
+The documents provided by the manufacturers use a mixture of different units (volts, amps, and watts[^units]) in various places. In order to convert between different units, consider this relationship:
+
+[^units]: I'm not an electrical engineer, but my understanding of these terms is as follows — _volts_: a measure of the difference in electrical potential energy (ie. capacity to do work, move charge around a circuit); _amps_: a measure of the current (charge) flowing through the circuit; _watts_: a measure of the rate of energy transfer. Given that amps and watts both describe transfer rates, it's helpful to realize that amps relate to _charge_ (coulombs) while watts relate to _energy_ (joules). Charge is a property of material that creates electric forces, energy is the more general capacity to do work (more general because it comes in many forms — such as kinetic, potential, and so on — and can be exchanged between them).
+
+```
+Power (Watts) = Voltage (Volts) × Current (Amps)
+```
+
+So, for example, where above the USB switch says it wants to receive "5V 2A" over its Micro-USB port, that can be considered equivalent to 10W. So, plugging it into one of the 7.5W USB-A ports on the dock is insufficient, but using one of the 36W USB-C (Thunderbolt) ports is more than enough. Likewise, where the dock expects its power supply to deliver "24V 13.75A", that equates to 330W overall.
