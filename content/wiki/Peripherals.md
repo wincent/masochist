@@ -13,8 +13,8 @@ Notes on peripherals because, believe it or not, my cable management is so obses
 
 Not using the "hub" functionality because it is not reliable enough in my experience, but plugging:
 
-- Laptop video coming in via DisplayPort (v1.4) connector (from dock, see below), labeled as "D-IN" in the photo.
-- Desktop video coming in via Mini DisplayPort (v1.4), labeled as "MINI D" in the photo.
+- Desktop video coming in via Mini DisplayPort (v1.4), labeled as "MINI D" in the photo. When switching inputs using the on-screen controls, this is the left-most input.
+- Laptop video coming in via DisplayPort (v1.4) connector (from dock, see below), labeled as "D-IN" in the photo. When switching inputs using the on-screen controls, this is the second-from-the-left input.
 
 One day, I'd like to upgrade to the 5K model[^pd2730s], the [BenQ PD2730s](https://www.benq.com/en-us/monitor/professional/pd2730s.html), which [will have](https://www.benq.com/en-us/monitor/professional/pd2730s/spec.html):
 
@@ -28,24 +28,26 @@ One day, I'd like to upgrade to the 5K model[^pd2730s], the [BenQ PD2730s](https
 
 # Dock
 
-[OWC Thunderbolt 3 14-port dock](https://www.owc.com/solutions/thunderbolt-3-dock-14-port):
+[CalDigit TS5 Plus](https://www.caldigit.com/thunderbolt-5-dock-ts5-plus/)
 
-![owc-thunderbolt-3-dock-14-port-back](/system/images/owc-thunderbolt-3-dock-14-port-back.png)
+![CalDigit TS5 Plus ports diagram](/system/images/caldigit-ts5plus.png)
 
-From left to right (as viewed from the back), I'm connecting:
+On the front:
 
-- USB 3.1 "high-powered" port (USB-A): USB-A connector running to micro-USB connector on power port of UGREEN switching hub.
-- USB 3.1 port (USB-A): empty.
-- USB 3.1 port (USB-A): to data port (1) on back of UGREEN switching HUB.
-- USB 3.1 port (USB-A): empty
-- S/PDIF (digital audio output): empty
-- Gigabit ethernet: via crossover cable to desktop PC
-- Thunderbolt 3 (15W): USB-C/Thunderbolt connector running to monitor (into DisplayPort socket, as mentioned above)
-- Thunderbolt 3 (host port, 96W): USB-C/Thunderbolt connector running to laptop (USB-C/Thunderbolt port).
-- Mini DisplayPort: empty
-- DC IN (20V 9A): power in
+- USB-A 3.2 Gen2 to Lightning (for charging the ["Magic" Trackpad](https://en.wikipedia.org/wiki/Magic_Trackpad)[^magic]): This is a 7.5W port that offers "offline" charging (ie. it provides power even when the "host" device — that is, the laptop — is not connected)
 
-In the future, I'd like to upgrade to the [CalDigit TS5 Plus](https://www.caldigit.com/thunderbolt-5-dock-ts5-plus/), which would deliver 140W over the host port, as well as offering more ports overall.
+[^magic]: 🤦‍♂️
+
+On the back, from left to right (as viewed from the back):
+
+- Bottom row:
+    - DisplayPort 2.1 connector: runs to monitor (into DisplayPort 1.4 socket, as mentioned above); given that the monitor only has DisplayPort 1.4, and the model I'd like to upgrade to _also_ has DisplayPort 1.4, I am using a cable that markets itself only as a "DisplayPort 1.4" cable (not sure if there are any differences with respect to a "2.1-rated" cable).
+    - Thunderbolt 5 (host port, 140W): USB-C/Thunderbolt connector running to laptop (USB-C/Thunderbolt port)
+    - DC in (24V 13.75A): power in
+- Top row:
+    - USB-A 3.2 Gen2: USB-A connector running to micro-USB connector on power port of UGREEN switching hub; this provides 1.5A (7.5W) of power. Note that only the left pair of USB-A ports provides offline power, not the right one. In the future (once I have the right cable), I'll instead run power from one of the free Thunderbolt ports, which provide 36W of (offline) power.
+    - USB-A 3.2 Gen2: USB-A connector to data port (2) on back of UGREEN switching hub.
+    - 10 GbE: Gigabit ethernet, via crossover cable to desktop PC
 
 # USB switching hub
 
@@ -56,6 +58,35 @@ In the future, I'd like to upgrade to the [CalDigit TS5 Plus](https://www.caldig
     - USB-A port: to keyboard (terminating with a micro-USB connector)
     - USB-A port: Blue Yeti microphone (terminating with a micro-USB connector)
     - USB-A port: Elgato Facecam (terminating with a USB-C connector)
-- Rear (outputs, from right to left, as viewed from the back):
-    - Output 1: USB-A to USB-A cable to dock (for use with laptop)
-    - Output 2: USB-A to USB-A cable to desktop PC
+- Rear (from right to left, as viewed from the back):
+    - Output 1: USB-A to USB-A cable to desktop PC
+    - Output 2: USB-A to USB-A cable to dock (for use with laptop)
+    - Micro-USB: additional power in, which should be 5V 2A according to the manufacturer
+- Top (status lights, from left to right, as viewed from the front):
+    - Output 1 active (desktop PC)
+    - Output 2 active (laptop)
+
+Note on the ordering of the outputs/lights: I chose to do it this way so that the light on the left (output "1", the PC) corresponds to the input-selection button to the _left_ on the display; likewise, the light on the right (output "2", the laptop) corresponds to the input-selection button to the _right_ on the display.
+
+# UPS
+
+I have APC Back-UPS Pro BR1600SI (1600VA/960W) UPS with the following ports:
+
+![Back-UPS Pro ports](/system/images/apc-back-ups-pro-br1600si-ports.png)
+
+There are ports on the back that offer surge protection and battery backup (labeled "4" in the diagram), and others that offer only surge protection (labeled "7" in the diagram); I'm only using the former[^overload]; that is, I have cables with IEC C13/C14 connectors leading from the UPS to:
+
+[^overload]: If the laptop, monitor, dock, and desktop are all running and under load, the UPS is probably not qualified to support all of these devices, but I'm not expecting to run the all _under load_ very frequently, if ever, so I'm trusting that this is going to be ok.
+
+- The desktop computer.
+- The monitor.
+- The dock.
+
+The data connection on the UPS (labeled "1" in the diagram) runs to the desktop computer (because the laptop doesn't care about the power going out in the same way the desktop does).
+
+The UPS itself is plugged in (via port labeled "3" on the diagram) into power strip, in turn plugged into the wall.
+
+Items _not_ plugged into the UPS include:
+
+- Printer (plugged directly into power strip, in turn plugged into the wall).
+- El Gato light (plugged into power brick mounted on table leg, in turn plugged into a white extension cable, in turn plugged into power strip, in turn plugged into the wall).
