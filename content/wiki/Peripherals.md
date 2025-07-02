@@ -42,10 +42,10 @@ On the back, from left to right (as viewed from the back):
 
 - Bottom row:
     - DisplayPort 2.1 connector: runs to monitor (into DisplayPort 1.4 socket, as mentioned above); given that the monitor only has DisplayPort 1.4, and the model I'd like to upgrade to _also_ has DisplayPort 1.4, I am using a cable that markets itself only as a "DisplayPort 1.4" cable (not sure if there are any differences with respect to a "2.1-rated" cable).
+    - Thunderbolt 5 (36W port): USB-C/Thunderbolt connector running to micro-USB connector on power port of UGREEN switching hub; this provides 36W of "offline" power, which is more than the switch actually needs (it asks for 5V 2A; ie. 10W).
     - Thunderbolt 5 (host port, 140W): USB-C/Thunderbolt connector running to laptop (USB-C/Thunderbolt port)
     - DC in (24V 13.75A): power in
 - Top row:
-    - USB-A 3.2 Gen2: USB-A connector running to micro-USB connector on power port of UGREEN switching hub; this provides 1.5A (7.5W) of power. Note that only the left pair of USB-A ports provides offline power, not the right one. In the future (once I have the right cable), I'll instead run power from one of the free Thunderbolt ports, which provide 36W of (offline) power.
     - USB-A 3.2 Gen2: USB-A connector to data port (2) on back of UGREEN switching hub.
     - 10 GbE: Gigabit ethernet, via crossover cable to desktop PC
 
@@ -61,7 +61,7 @@ On the back, from left to right (as viewed from the back):
 - Rear (from right to left, as viewed from the back):
     - Output 1: USB-A to USB-A cable to desktop PC
     - Output 2: USB-A to USB-A cable to dock (for use with laptop)
-    - Micro-USB: additional power in, which should be 5V 2A according to the manufacturer
+    - Micro-USB: additional power in, which should be 5V 2A (ie. 10W) according to the manufacturer
 - Top (status lights, from left to right, as viewed from the front):
     - Output 1 active (desktop PC)
     - Output 2 active (laptop)
@@ -101,4 +101,4 @@ The documents provided by the manufacturers use a mixture of different units (vo
 Power (Watts) = Voltage (Volts) × Current (Amps)
 ```
 
-So, for example, where above the USB switch says it wants to receive "5V 2A" over its Micro-USB port, that can be considered equivalent to 10W. So, plugging it into one of the 7.5W USB-A ports on the dock is insufficient, but using one of the 36W USB-C (Thunderbolt) ports is more than enough. Likewise, where the dock expects its power supply to deliver "24V 13.75A", that equates to 330W overall.
+So, for example, as noted above, where above the USB switch says it wants to receive "5V 2A" over its Micro-USB port, that can be considered equivalent to 10W. So, plugging it into one of the 7.5W USB-A ports on the dock is insufficient, but using one of the 36W USB-C (Thunderbolt) ports is more than enough. Likewise, where the dock expects its power supply to deliver "24V 13.75A", that equates to 330W overall.
