@@ -3,7 +3,7 @@ tags: wiki
 title: Jujutsu
 ---
 
-[Jujutsu] is a [Git]-compatible [version control system] with some novel ideas:
+[Jujutsu] is a [Git]-compatible [version control system] from [Google] with some novel ideas:
 
 - No index (staging area). Every modification is automatically included in the current change.
 - Conflicts don't prevent operations from completing (ie. you can fully rebase a stack of changes and resolve conflicts as a separate, posterior step).
@@ -21,3 +21,4 @@ I would love to see some of these ideas to be baked into Git, proper, although G
 [Jujutsu]: /wiki/Jujutsu
 [version control system]: /wiki/version_control_system
 [Git]: /wiki/Git
+[Google]: /wiki/Google
