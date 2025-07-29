@@ -15,6 +15,8 @@ I would love to see some of these ideas to be baked into Git, proper, although G
 # See
 
 - Official repository on GitHub: https://github.com/jj-vcs/jj
+- [Jujutsu: A Git-compatible VCS](https://youtu.be/bx_LGilOuE4?si=Rzfbn0IIYzs3gn-7): presentation from Martin Zweigbergk (Google) at GitMerge 2022.
+- [Jujutsu - A Git-compatible VCS](https://youtu.be/LV0JzI8IcCY?si=K9w_KkjXmNfvrfJj): presentation and demo from Martin Zweigbergk (Google) at GitMerge 2024.
 
 <!-- References -->
 
