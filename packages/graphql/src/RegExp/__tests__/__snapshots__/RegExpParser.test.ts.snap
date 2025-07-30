@@ -1,4 +1,4 @@
-// Bun Snapshot v1, https://goo.gl/fbAQLP
+// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
 
 exports[`RegExpParser matches ESCAPED_CHARACTER RegExp 1`] = `
 {
@@ -314,7 +314,7 @@ exports[`RegExpParser matches SOURCE_CHARACTER RegExp 1`] = `
 {
   "children": [
     {
-      "from": "\t",
+      "from": "	",
       "kind": "Range",
       "to": 
 "
@@ -345,7 +345,7 @@ exports[`RegExpParser matches WHITESPACE RegExp 1`] = `
     "children": [
       {
         "kind": "Atom",
-        "value": "\t",
+        "value": "	",
       },
       {
         "kind": "Atom",

@@ -1,4 +1,4 @@
-// Bun Snapshot v1, https://goo.gl/fbAQLP
+// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
 
 exports[`getParseTable() returns a ParseTable for the GraphQL grammar 1`] = `
 "| State |   AT | BANG | BLOCK_STRING_VALUE | CLOSING_BRACE | CLOSING_BRACKET | CLOSING_PAREN | COLON | DOLLAR | ELLIPSIS | ENUM | EQUALS | FRAGMENT | IMPLEMENTS | INTERFACE | MUTATION | NAME | NUMBER |   ON | OPENING_BRACE | OPENING_BRACKET | OPENING_PAREN | QUERY | SCALAR | SCHEMA | STRING_VALUE | SUBSCRIPTION | TYPE | UNION |      $ |Alias |Argument |ArgumentConst |ArgumentConstList |ArgumentList |ArgumentsConstOpt |ArgumentsOpt |DefaultValueOpt |Definition |DefinitionList |Directive |DirectiveConst |DirectiveConstList |DirectiveList |DirectivesConstOpt |DirectivesOpt |Document |ExecutableDefinition |Field |FragmentDefinition |FragmentName |FragmentSpread |InlineFragment |ListType |ListValue |ListValueConst |ListValueConstList |ListValueList |Name |NamedType |NamedValue |NonNullType |NumberValue |ObjectField |ObjectFieldConst |ObjectFieldConstList |ObjectFieldList |ObjectValue |ObjectValueConst |OperationDefinition |OperationNameOpt |OperationType |Selection |SelectionList |SelectionSet |SelectionSetOpt |StringValue |Type |TypeConditionOpt |Value |ValueConst |Variable |VariableDefinition |VariableDefinitionList |VariableDefinitionsOpt |
@@ -163,5 +163,354 @@ exports[`getParseTable() returns a ParseTable for the GraphQL grammar 1`] = `
 |   157 |      |      |                    |               |                 |           r86 |       |        |          |  r86 |        |      r86 |        r86 |       r86 |          |  r86 |        |  r86 |               |                 |               |   r86 |    r86 |    r86 |              |          r86 |  r86 |   r86 |        |      |         |              |                  |             |                  |             |                |           |               |          |               |                   |              |                   |              |         |                     |      |                   |             |               |               |         |          |               |                   |              |     |          |           |            |            |            |                 |                     |                |            |                 |                    |                 |              |          |              |             |                |            |     |                 |      |           |         |                   |                       |                       |
 |   158 |      |      |                s96 |               |                 |               |       |        |          |  s18 |        |      s19 |        s20 |       s21 |          |  s17 |    s93 |  s22 |          s128 |            s126 |               |   s23 |    s24 |    s25 |          s95 |          s26 |  s27 |   s28 |        |      |         |              |                  |             |                  |             |                |           |               |          |               |                   |              |                   |              |         |                     |      |                   |             |               |               |         |          |           125 |                   |              |  98 |          |       124 |            |        122 |            |                 |                     |                |            |             127 |                    |                 |              |          |              |             |                |        123 |     |                 |      |       159 |         |                   |                       |                       |
 |   159 |      |      |                    |               |                 |           r87 |       |        |          |  r87 |        |      r87 |        r87 |       r87 |          |  r87 |        |  r87 |               |                 |               |   r87 |    r87 |    r87 |              |          r87 |  r87 |   r87 |        |      |         |              |                  |             |                  |             |                |           |               |          |               |                   |              |                   |              |         |                     |      |                   |             |               |               |         |          |               |                   |              |     |          |           |            |            |            |                 |                     |                |            |                 |                    |                 |              |          |              |             |                |            |     |                 |      |           |         |                   |                       |                       |
+%token AMPERSAND
+%token AT
+%token BANG
+%token BAR
+%token BLOCK_STRING_VALUE
+%token CLOSING_BRACE
+%token CLOSING_BRACKET
+%token CLOSING_PAREN
+%token COLON
+%token DOLLAR
+%token ELLIPSIS
+%token ENUM
+%token EQUALS
+%token FRAGMENT
+%token IMPLEMENTS
+%token INTERFACE
+%token MUTATION
+%token NAME
+%token NUMBER
+%token ON
+%token OPENING_BRACE
+%token OPENING_BRACKET
+%token OPENING_PAREN
+%token QUERY
+%token SCALAR
+%token SCHEMA
+%token STRING_VALUE
+%token SUBSCRIPTION
+%token TYPE
+%token UNION
+
+r0 : Document' → Document { return null; }
+r1 : Document → DefinitionList {
+  $$ = {
+    kind: 'DOCUMENT',
+    definitions: $1,
+  };
+}
+r2 : DefinitionList → Definition { $$ = [$1]; }
+r3 : DefinitionList → DefinitionList Definition { $1.push($2); $$ = $1; }
+r4 : Definition → ExecutableDefinition { $$ = $1; }
+r5 : Definition → FragmentDefinition { $$ = $1; }
+r6 : ExecutableDefinition → OperationDefinition { $$ = $1; }
+r7 : OperationDefinition → OperationType OperationNameOpt VariableDefinitionsOpt DirectivesOpt SelectionSet {
+  $$ = {
+    kind: 'OPERATION',
+    name: $2,
+    directives: $4,
+    selections: $5,
+    type: $1,
+    variables: $3,
+  };
+}
+r8 : OperationDefinition → SelectionSet {
+  $$ = {
+    kind: 'OPERATION',
+    name: null,
+    directives: null,
+    selections: $1,
+    type: 'QUERY',
+    variables: null,
+  };
+}
+r9 : OperationType → QUERY { $$ = 'QUERY'; }
+r10 : OperationType → MUTATION { $$ = 'MUTATION'; }
+r11 : OperationType → SUBSCRIPTION { $$ = 'SUBSCRIPTION'; }
+r12 : OperationNameOpt → Name { $$ = $1; }
+r13 : OperationNameOpt → ε { $$ = null; }
+r14 : Name → NAME { $$ = $1.contents; }
+r15 : Name → ENUM { $$ = 'enum'; }
+r16 : Name → FRAGMENT { $$ = 'fragment'; }
+r17 : Name → IMPLEMENTS { $$ = 'implements'; }
+r18 : Name → INTERFACE { $$ = 'interface'; }
+r19 : Name → ON { $$ = 'on'; }
+r20 : Name → QUERY { $$ = 'query'; }
+r21 : Name → SCALAR { $$ = 'scalar'; }
+r22 : Name → SCHEMA { $$ = 'schema'; }
+r23 : Name → SUBSCRIPTION { $$ = 'subscription'; }
+r24 : Name → TYPE { $$ = 'type'; }
+r25 : Name → UNION { $$ = 'union'; }
+r26 : VariableDefinitionsOpt → OPENING_PAREN VariableDefinitionList CLOSING_PAREN {
+  $$ = $2;
+}
+r27 : VariableDefinitionsOpt → ε { $$ = null; }
+r28 : VariableDefinitionList → VariableDefinition { $$ = [$1]; }
+r29 : VariableDefinitionList → VariableDefinitionList VariableDefinition {
+  $1.push($2); $$ = $1;
+}
+r30 : VariableDefinition → Variable COLON Type DefaultValueOpt DirectivesConstOpt {
+  $$ = {
+    kind: 'VARIABLE_DEFINITION',
+    defaultValue: $4,
+    directives: $5,
+    type: $3,
+    variable: $1,
+  };
+}
+r31 : Variable → DOLLAR Name {
+  $$ = {
+    kind: 'VARIABLE',
+    name: $2,
+  };
+}
+r32 : Type → NamedType { $$ = $1; }
+r33 : Type → ListType { $$ = $1; }
+r34 : Type → NonNullType { $$ = $1; }
+r35 : NamedType → Name {
+  $$ = {
+    kind: 'NAMED_TYPE',
+    name: $1,
+  };
+}
+r36 : ListType → OPENING_BRACKET Type CLOSING_BRACKET {
+  $$ = {
+    kind: 'LIST_TYPE',
+    type: $2,
+  };
+}
+r37 : NonNullType → ListType BANG {
+  $$ = {
+    kind: 'NON_NULL_TYPE',
+    type: $1,
+  };
+}
+r38 : NonNullType → NamedType BANG {
+  $$ = {
+    kind: 'NON_NULL_TYPE',
+    type: $1,
+  };
+}
+r39 : DefaultValueOpt → EQUALS ValueConst { $$ = $2; }
+r40 : DefaultValueOpt → ε { $$ = null; }
+r41 : ValueConst → NumberValue { $$ = $1; }
+r42 : ValueConst → StringValue { $$ = $1; }
+r43 : ValueConst → NamedValue { $$ = $1; }
+r44 : ValueConst → ListValueConst { $$ = $1; }
+r45 : ValueConst → ObjectValueConst { $$ = $1; }
+r46 : NumberValue → NUMBER {{
+  const {contents} = $1;
+
+  // TODO: Distinguish between these tokens in the lexer instead?
+  if (/^-?\\d+$/.test(contents)) {
+    $$ = {kind: 'INT', value: parseInt(contents, 10)};
+  } else {
+    $$ = {kind: 'FLOAT', value: contents};
+  }
+}}
+r47 : NamedValue → Name {{
+  const name = $1;
+  if (name === 'true') {
+    $$ = {kind: 'BOOLEAN', value: true};
+  } else if (name === 'false') {
+    $$ = {kind: 'BOOLEAN', value: false};
+  } else if (name === 'null') {
+    $$ = {kind: 'NULL'};
+  } else {
+    $$ = {kind: 'ENUM', value: name};
+  }
+}}
+r48 : ListValueConst → OPENING_BRACKET CLOSING_BRACKET {
+  $$ = {
+    kind: 'LIST_VALUE',
+    value: [],
+  };
+}
+r49 : ListValueConst → OPENING_BRACKET ListValueConstList CLOSING_BRACKET {
+  $$ = {
+    kind: 'LIST_VALUE',
+    value: $2,
+  };
+}
+r50 : ListValueConstList → ValueConst { $$ = [$1]; }
+r51 : ListValueConstList → ListValueConstList ValueConst { $1.push($2); $$ = $1; }
+r52 : ObjectValueConst → OPENING_BRACE CLOSING_BRACE {
+  $$  = {
+    kind: 'OBJECT_VALUE',
+    fields: [],
+  };
+}
+r53 : ObjectValueConst → OPENING_BRACE ObjectFieldConstList CLOSING_BRACE {
+  $$ = {
+    kind: 'OBJECT_VALUE',
+    fields: $2,
+  };
+}
+r54 : ObjectFieldConstList → ObjectFieldConst { $$ = [$1]; }
+r55 : ObjectFieldConstList → ObjectFieldConstList ObjectFieldConst { $1.push($2); $$ = $1; }
+r56 : ObjectFieldConst → Name COLON ValueConst {
+  $$ = {
+    name: $1,
+    value: $3,
+  };
+}
+r57 : DirectivesOpt → DirectiveList { $$ = $1; }
+r58 : DirectivesOpt → ε { $$ = null; }
+r59 : DirectiveList → Directive { $$ = [$1]; }
+r60 : DirectiveList → DirectiveList Directive { $1.push($2); $$ = $1; }
+r61 : Directive → AT Name ArgumentsOpt {
+  $$ = {
+    kind: 'DIRECTIVE',
+    arguments: $3,
+    name: $2,
+  };
+}
+r62 : DirectivesConstOpt → DirectiveConstList { $$ = $1; }
+r63 : DirectivesConstOpt → ε { $$ = null; }
+r64 : DirectiveConstList → DirectiveConst { $$ = [$1]; }
+r65 : DirectiveConstList → DirectiveConstList DirectiveConst { $1.push($2); $$ = $1; }
+r66 : DirectiveConst → AT Name ArgumentsConstOpt {
+  $$ = {
+    kind: 'DIRECTIVE',
+    arguments: $3,
+    name: $2,
+  };
+}
+r67 : SelectionSet → OPENING_BRACE SelectionList CLOSING_BRACE { $$ = $2; }
+r68 : SelectionSetOpt → SelectionSet { $$ = $1; }
+r69 : SelectionSetOpt → ε { $$ = null; }
+r70 : SelectionList → Selection { $$ = [$1]; }
+r71 : SelectionList → SelectionList Selection { $1.push($2); $$ = $1; }
+r72 : Selection → Field { $$ = $1; }
+r73 : Selection → FragmentSpread { $$ = $1; }
+r74 : Selection → InlineFragment { $$ = $1; }
+r75 : Field → Name ArgumentsOpt DirectivesOpt SelectionSetOpt {
+  $$ = {
+    kind: 'FIELD',
+    alias: null,
+    arguments: $2,
+    directives: $3,
+    name: $1,
+    selections: $4,
+  };
+}
+r76 : Field → Alias Name ArgumentsOpt DirectivesOpt SelectionSetOpt {
+  $$ = {
+    kind: 'FIELD',
+    alias: $1,
+    arguments: $3,
+    directives: $4,
+    name: $2,
+    selections: $5,
+  };
+}
+r77 : Alias → Name COLON { $$ = $1; }
+r78 : ArgumentsOpt → OPENING_PAREN ArgumentList CLOSING_PAREN { $$ = $2; }
+r79 : ArgumentsOpt → ε { $$ = null; }
+r80 : ArgumentList → Argument { $$ = [$1]; }
+r81 : ArgumentList → ArgumentList Argument { $1.push($2); $$ = $1; }
+r82 : Argument → Name COLON Value {
+  $$ = {
+    kind: 'ARGUMENT',
+    name: $1,
+    value: $3,
+  };
+}
+r83 : ArgumentsConstOpt → OPENING_PAREN ArgumentConstList CLOSING_PAREN { $$ = $2; }
+r84 : ArgumentsConstOpt → ε { $$ = null; }
+r85 : ArgumentConstList → ArgumentConst { $$ = [$1]; }
+r86 : ArgumentConstList → ArgumentConstList ArgumentConst { $1.push($2); $$ = $1; }
+r87 : ArgumentConst → Name COLON ValueConst {
+  $$ = {
+    kind: 'ARGUMENT',
+    name: $1,
+    value: $3,
+  };
+}
+r88 : Value → Variable { $$ = $1; }
+r89 : Value → NumberValue { $$ = $1; }
+r90 : Value → StringValue { $$ = $1; }
+r91 : Value → NamedValue { $$ = $1; }
+r92 : Value → ListValue { $$ = $1; }
+r93 : Value → ObjectValue { $$ = $1; }
+r94 : StringValue → STRING_VALUE {
+  $$ = {
+    kind: 'STRING',
+    block: false,
+    // TODO: consider doing this slice in the lexer
+    value: $1.contents.slice(1, -1),
+  };
+}
+r95 : StringValue → BLOCK_STRING_VALUE {
+  $$ = {
+    kind: 'STRING',
+    block: true,
+    // TODO: preprocess value here...
+    value: $1.contents,
+  };
+}
+r96 : ListValue → OPENING_BRACKET CLOSING_BRACKET {
+  $$ = {
+    kind: 'LIST_VALUE',
+    value: [],
+  };
+}
+r97 : ListValue → OPENING_BRACKET ListValueList CLOSING_BRACKET {
+  $$ = {
+    kind: 'LIST_VALUE',
+    value: $2,
+  };
+}
+r98 : ListValueList → Value { $$ = [$1]; }
+r99 : ListValueList → ListValueList Value { $1.push($2); $$ = $1; }
+r100 : ObjectValue → OPENING_BRACE CLOSING_BRACE {
+  $$  = {
+    kind: 'OBJECT_VALUE',
+    fields: [],
+  };
+}
+r101 : ObjectValue → OPENING_BRACE ObjectFieldList CLOSING_BRACE {
+  $$ = {
+    kind: 'OBJECT_VALUE',
+    fields: $2,
+  };
+}
+r102 : ObjectFieldList → ObjectField { $$ = [$1]; }
+r103 : ObjectFieldList → ObjectFieldList ObjectField { $1.push($2); $$ = $1; }
+r104 : ObjectField → Name COLON Value {
+  $$ = {
+    name: $1,
+    value: $3,
+  };
+}
+r105 : FragmentDefinition → FRAGMENT FragmentName ON NamedType DirectivesOpt SelectionSet {
+  $$ = {
+    kind: 'FRAGMENT',
+    directives: $5,
+    name: $2,
+    on: $4,
+    selections: $6,
+  };
+}
+r106 : FragmentName → NAME { $$ = $1.contents; }
+r107 : FragmentSpread → ELLIPSIS FragmentName DirectivesOpt {
+  $$ = {
+    kind: 'FRAGMENT_SPREAD',
+    name: $2,
+    directives: $3,
+  };
+}
+r108 : InlineFragment → ELLIPSIS TypeConditionOpt DirectivesOpt SelectionSet {
+  $$ = {
+    kind: 'INLINE_FRAGMENT',
+    directives: $3,
+    on: $2,
+    selections: $4,
+  };
+}
+r109 : TypeConditionOpt → ON NamedType { $$ = $2; }
+r110 : TypeConditionOpt → ε { $$ = null; }
 "
 `;

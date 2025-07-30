@@ -160,7 +160,7 @@ describe('stringifyTransitionTable()', () => {
   // Temporarily skipping this because Bun snapshots seem to freak out with
   // Unicode escapes in strings. Snapshots will fail, so you update them with
   // `--update-snapshots`, but you run again and they fail again.
-  it.skip('stringifies the lexer transition table', () => {
+  it('stringifies the lexer transition table', () => {
     expect(stringifyTransitionTable(table)).toMatchSnapshot();
   });
 });
