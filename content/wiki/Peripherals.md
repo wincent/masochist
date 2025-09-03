@@ -7,24 +7,29 @@ Notes on peripherals because, believe it or not, my cable management is so obses
 
 # Display
 
-[BenQ 2700U](https://www.benq.com/en-us/monitor/professional/pd2700u.html):
+[BenQ PD2730s](https://www.benq.com/en-us/monitor/professional/pd2730s.html) (5K), which [has](https://www.benq.com/en-us/monitor/professional/pd2730s/spec.html):
+
+- HDMI (v2.1): Using this to connect the desktop PC.
+- DisplayPort (v1.4)
+- Thunderbolt 4: Connected to Mac via dock, as described below ([BenQ recommends using Thunderbolt for connecting to Macs](https://www.benq.com/en-us/campaign/monitor-for-mac/articles/how-do-i-connect-my-mac-m1-to-benq-monitor-update.html))
+
+![benq-pd2730s-ports](/system/images/benq-pd2730s-ports.png)
+
+This is an upgrade from the [BenQ 2700U](https://www.benq.com/en-us/monitor/professional/pd2700u.html) (4K), bringing the following spec bumps:
+
+- 3840x2160 resolution → 5120x2880
+- 1200:1 contrast ratio → 2000:1
+- Increased color gamut (eg. 99% sRGDB / 99% Rec. 709 / 90% DCI-P3 → 100% / 100%/ 98%)
+- HDMI 2.0 → 2.1
+- The built-in speakers go from 3W → 5W.
+
+However, there is one notable downgrade: the monitor is thicker than the old one; too thick for the Elgato Facecam mount to sit in the center of the display (instead if has to sit towards the side, where the display is thinner). I'll have to find an alternative mount.
+
+For comparison, here are the ports on the old model.
 
 ![benq-pd2700u-ports](/system/images/benq-pd2700u-ports.png)
 
-Not using the "hub" functionality because it is not reliable enough in my experience, but plugging:
-
-- Desktop video coming in via Mini DisplayPort (v1.4), labeled as "MINI D" in the photo. When switching inputs using the on-screen controls, this is the left-most input.
-- Laptop video coming in via DisplayPort (v1.4) connector (from dock, see below), labeled as "D-IN" in the photo. When switching inputs using the on-screen controls, this is the second-from-the-left input.
-
-One day, I'd like to upgrade to the 5K model[^pd2730s], the [BenQ PD2730s](https://www.benq.com/en-us/monitor/professional/pd2730s.html), which [will have](https://www.benq.com/en-us/monitor/professional/pd2730s/spec.html):
-
-[^pd2730s]: The upgrade would bring some nice spec bumps: 3840x2160 resolution → 5120x2880; 1200:1 contrast ratio → 2000:1; increased color gamut (eg. 99% sRGDB / 99% Rec. 709 / 90% DCI-P3 → 100% / 100%/ 98%); HDMI 2.0 → 2.1; and even the built-in speakers go from 3W → 5W.
-
-- HDMI (v2.1)
-- DisplayPort (v1.4)
-- Thunderbolt 4 ([recommended](https://www.benq.com/en-us/campaign/monitor-for-mac/articles/how-do-i-connect-my-mac-m1-to-benq-monitor-update.html) by BenQ for connecting Macs)
-
-![benq-pd2730s-ports](/system/images/benq-pd2730s-ports.png)
+I never used the "hub" functionality in the old model because it was not reliable enough in my experience.
 
 # Dock
 
@@ -41,7 +46,8 @@ On the front:
 On the back, from left to right (as viewed from the back):
 
 - Bottom row:
-    - DisplayPort 2.1 connector: runs to monitor (into DisplayPort 1.4 socket, as mentioned above); given that the monitor only has DisplayPort 1.4, and the model I'd like to upgrade to _also_ has DisplayPort 1.4, I am using a cable that markets itself only as a "DisplayPort 1.4" cable (not sure if there are any differences with respect to a "2.1-rated" cable).
+    - DisplayPort 2.1 connector: unused.
+    - Thunderbolt 5 (36W port): USB-C/Thunderbolt connector runs to monitor using BenQ-supplied Thunderbolt 4 cable.
     - Thunderbolt 5 (36W port): USB-C/Thunderbolt connector running to micro-USB connector on power port of UGREEN switching hub; this provides 36W of "offline" power, which is more than the switch actually needs (it asks for 5V 2A; ie. 10W).
     - Thunderbolt 5 (host port, 140W): USB-C/Thunderbolt connector running to laptop (USB-C/Thunderbolt port)
     - DC in (24V 13.75A): power in
