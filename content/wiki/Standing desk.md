@@ -9,8 +9,10 @@ Three positions:
 2. Standing: 109cm
 3. "Parked": 90cm[^parked]
 
-Upper height limit: 110cm[^higher]
-Lower height limit: 65cm[^lower]
+Height limits:
+
+- Upper height limit: 110cm[^higher]
+- Lower height limit: 65cm[^lower]
 
 [^parked]: High enough to shove the chair under the desk, when I'm not using the desk.
 [^higher]: Desk could go higher, but cables plugged into the back of the computer aren't long enough.
