@@ -48,7 +48,7 @@ On the back, from left to right (as viewed from the back):
 - Bottom row:
     - DisplayPort 2.1 connector: unused.
     - Thunderbolt 5 (36W port): USB-C/Thunderbolt connector runs to monitor using BenQ-supplied Thunderbolt 4 cable.
-    - ~Thunderbolt 5 (36W port): USB-C/Thunderbolt connector running to micro-USB connector on power port of UGREEN switching hub; this provides 36W of "offline" power, which is more than the switch actually needs (it asks for 5V 2A; ie. 10W).~[^off]
+    - ~~Thunderbolt 5 (36W port): USB-C/Thunderbolt connector running to micro-USB connector on power port of UGREEN switching hub; this provides 36W of "offline" power, which is more than the switch actually needs (it asks for 5V 2A; ie. 10W).~~[^off]
     - Thunderbolt 5 (host port, 140W): USB-C/Thunderbolt connector running to laptop (USB-C/Thunderbolt port)
     - DC in (24V 13.75A): power in
 - Top row:
@@ -56,6 +56,8 @@ On the back, from left to right (as viewed from the back):
     - 10 GbE: Gigabit ethernet, via crossover cable to desktop PC
 
 [^off]: After adding the RØDE AI-1, I found the dock was no longer supplying power to the laptop, presumably because it was too taxed supplying power to the hub, so I removed this cable from the dock and replaced it with [a separate power adapter](https://www.amazon.es/dp/B0B618DV8M) providing 15 W / 2 A (again, note that the hub says it optionally uses "5V 2A; ie. 10W"). However, I was still having problems with the dock not powering the laptop, so I tried out a different switch.
+
+See [this page for firmware updates](https://www.caldigit.com/ts5-plus-and-element-5-hub-macos-firmware-update-procedures/). Last time I updated was 2025-11-11 (to v64.1).
 
 # USB switching hub
 
