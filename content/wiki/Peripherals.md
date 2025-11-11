@@ -80,10 +80,10 @@ On the back, from left to right (as viewed from the back):
 For comparison, here's what I had under the old model (a [UGREEN 4-port USB 3.0 switch](https://www.amazon.es/dp/B01N6GD9JO)):
 
 - Front (inputs, from left to right, as viewed from the front):
-    - USB-A port: Elgato Facecam (terminating with a USB-C connector)
-    - USB-A port: Realforce keyboard (terminating with a micro-USB connector); note, the keyboard itself has a small hub, where we're plugging in the radio receiver for the [Logitech MX Master 3](https://www.amazon.es/dp/B07W6JG6Z7) mouse (USB-A).
+    - USB-A port: Realforce keyboard (terminating with a micro-USB connector); note, the keyboard itself has a small hub, but it's unused.
     - USB-A port: [RØDE AI-1](https://rode.com/en-us/products/ai-1) audio interface for microphone (terminating with a USB-C connector)
-    - USB-A port: empty
+    - USB-A port: Elgato Facecam (terminating with a USB-C connector)
+    - USB-A port: Radio receiver for the [Logitech MX Master 3](https://www.amazon.es/dp/B07W6JG6Z7) mouse.
 - Rear (from right to left, as viewed from the back):
     - Output 1: USB-A to USB-A cable to desktop PC
     - Output 2: USB-A to USB-A cable to dock (for use with laptop)
