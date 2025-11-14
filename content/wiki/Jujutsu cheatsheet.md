@@ -11,6 +11,9 @@ jj git init
 
 # Colocate a jj repository on top of an existing Git repo.
 jj git init --colocate
+
+# See colocation status.
+jj git colocation status
 ```
 
 # Configuring
@@ -78,6 +81,13 @@ jj bookmark delete some/bookmark
 
 # Delete local bookmark (won't do anything to remote on next push).
 jj bookmark forget some/bookmark
+```
+
+# Updating
+
+```
+jj git fetch
+jj rebase -d <target> # where <target> would be "main" or some bookmark
 ```
 
 # Force-pushing
