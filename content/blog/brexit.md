@@ -22,4 +22,4 @@ Thanks Brexit, for making the process of ordering and receiving a replacement fo
 
 So, in that 15-day itinerary, 9 days were spent with the package sitting on some shelf waiting to be "processed", while I received an irritating bombardment of inaccurate notifications and requests to engage in hoop-jumping. That they would charge me a premium to facilitate this circus, and have the gall to describe it as "efficient", is the most annoying part.
 
-**2025-11-16 update:** FWIW, since the above I've had two relatively positive experience with FedEx. It's only a N=3 sample, but perhaps it's just DHL that is particularly and dismally bad.
+**2025-11-16 update:** FWIW, since the above I've had two relatively positive experiences with FedEx, shipping goods from the US. It's only a N=3 sample, but perhaps it's just DHL that is particularly and dismally bad, and they somehow manage to make shipping something within Europe an order of magnitude more painful than FedEx manages to do with goods shipped from much farther away.
