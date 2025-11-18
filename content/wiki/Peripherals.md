@@ -39,8 +39,9 @@ I never used the "hub" functionality in the old model because it was not reliabl
 
 On the front:
 
-- USB-A 3.2 Gen2 to Lightning (for charging the ["Magic" Trackpad](https://en.wikipedia.org/wiki/Magic_Trackpad)[^magic]): This is a 7.5W port that offers "offline" charging (ie. it provides power even when the "host" device — that is, the laptop — is not connected)
+- USB-C port to Lightning + USB-C (via [this expensive cable](https://www.apple.com/es/shop/product/hrjs2zm/a/belt-cable-duo-pro-de-240-w-de-native-union-usb-c-a-usb-c-y-lightning)): This port (the one on the right) offers 36W of "offline" charging[^offline], which I mostly use for the ["Magic" Trackpad](https://en.wikipedia.org/wiki/Magic_Trackpad)[^magic] or random mobile phones.
 
+[^offline]: "Offline" means it provides power even when the "host" device — that is, the laptop — is not connected. This is true of all USB-C ports on the dock, the front USB-A port, and two of the rear USB-A ports.
 [^magic]: 🤦‍♂️
 
 On the back, from left to right (as viewed from the back):
