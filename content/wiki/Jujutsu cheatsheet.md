@@ -29,9 +29,13 @@ jj config set --user ui.default-command log
 # Stop hints to set ui.diff-editor; always use the built-in one.
 jj config set --user ui.diff-editor :builtin
 
-# Using GPG for signing commits.
+# Use GPG for signing commits.
 jj config set --user signing.behavior own
 jj config set --user signing.backend gpg
+
+# See configured settings.
+jj config list # Just the overrides.
+jj config list --include-defaults # Everything.
 ```
 
 # Editing
