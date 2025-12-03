@@ -39,3 +39,9 @@ But I'm not sure of what the details will be and whether it's worth it for such 
 All of these are open questions for now, but I'll keep you posted if and when I actually start carrying out experiments in this direction[^posted]
 
 [^posted]: If "keeping you posted" means pushing stuff to my dotfiles repo, that is.
+
+# Update (2025-12)
+
+Last month another wake-up call for the JS ecosystem [in the form of a new version of the "Sha1-Hulud" malware](https://about.gitlab.com/blog/gitlab-discovers-widespread-npm-supply-chain-attack/#the-dead-mans-switch). William Woodruff explains why ["We should all be using dependency cooldowns"](https://blog.yossarian.net/2025/11/21/We-should-all-be-using-dependency-cooldowns)[^initially]. See also, [Hacker News discussion on the outbreak](https://news.ycombinator.com/item?id=46032539), including a bunch of opinions and recommendations about mitigations, including containerized workflows.
+
+[^initially]: When dependency cooldowns were first added to pnpm a while back, I was initially sceptical because I anticipated a kind of [Tragedy of the Commons](https://en.wikipedia.org/wiki/Tragedy_of_the_commons) scenario in which everybody starting using cooldowns to protect themselves, eventually leading to a situation where nobody was actually testing new releases when they came out, and then everybody getting p4wn3d a few days later anyway when the cooldowns expired. But since then I've concluded that probably not everybody — and not even a majority — is actually going to implement cooldowns in the near-term future. This is kind of like the argument from active fund managers that index funds are bad because if everybody used them then nobody would actually be contributing to the correct pricing of assets: in practice, that doesn't happen at all, because there are always (a significant number of) folks who think they can beat the market. The analogy isn't perfect, but you get the idea.
