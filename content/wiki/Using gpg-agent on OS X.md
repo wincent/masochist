@@ -3,9 +3,13 @@ tags: gpg wiki
 title: Using gpg-agent on OS X
 ---
 
+Below are the historical notes I made when using GnuPG version 1. With GnuPG version 2, `gpg-agent` is bundled with the `gnupg` Homebrew formula and my main use case for it nowadays is signing [Git] or [Jujutsu] objects (commits and tags). It mostly works out of the box, but for reference, here is my [`~/.gnupg/gpg-agent.conf`](https://github.com/wincent/wincent/blob/a0e322d0226cdc2489512b0085181b8b89e11a1b/aspects/dotfiles/templates/.gnupg/gpg-agent.conf.erb), my associated [`~/.config/git/config`](https://github.com/wincent/wincent/blob/a0e322d0226cdc2489512b0085181b8b89e11a1b/aspects/dotfiles/templates/.config/git/config.erb), and my [`~/.config/jj/config.toml](https://github.com/wincent/wincent/blob/a0e322d0226cdc2489512b0085181b8b89e11a1b/aspects/dotfiles/templates/.config/jj/config.toml.erb) (note: all of those are templates used to dynamically produce the actual configuration files).
+
+# Appendix: Historical notes
+
 I just started using `gpg-agent` for the first time on [OS X](/wiki/OS_X). Coming from my familiarity with `ssh-agent` and `ssh-add`, there were some surprises.
 
-# Installation
+## Installation
 
 If you use [Homebrew](/wiki/Homebrew), it's easy:
 
@@ -15,11 +19,11 @@ $ brew install gpg-agent
 
 But note, there is no [man](/wiki/man) page ([here](http://linux.die.net/man/1/gpg-agent) is one I found online), and for the `gpg-preset-passphrase` tool there is no man page I could find at all (other than [this document](http://www.gnupg.org/documentation/manuals/gnupg-devel/gpg_002dpreset_002dpassphrase.html)).
 
-# Use
+## Use
 
 The reason I started investigating this is so I could do batch encryption and decryption from a within a shell script.
 
-## Encryption
+### Encryption
 
 Here the command I want to run is something like:
 
@@ -41,7 +45,7 @@ $ gpg --edit-key example@example.com
 
 and then entering `trust` at the prompt, entering and confirming the desired trust level (`5`) and then issuing a `quit`.
 
-## Decryption
+### Decryption
 
 Decryption requires the private key, so to avoid entering a passphrase repeatedly, I wanted to use `gpg-agent`.
 
@@ -85,3 +89,8 @@ You can get the agent to "forget" the passphrase with:
 ```shell
 $ /usr/local/opt/gpg-agent/libexec/gpg-preset-passphrase --forget $KEYGRIP
 ```
+
+<!-- References -->
+
+[Git]: /wiki/Git
+[Jujutsu]: /wiki/Jujutsu

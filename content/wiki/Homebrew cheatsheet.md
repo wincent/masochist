@@ -8,3 +8,11 @@ title: Homebrew cheatsheet
 ```
 brew uses --installed libcroco
 ```
+
+# See which formula is responsible for installing an executable
+
+See [Finding out which homebrew formula installed an executable].
+
+<!-- References -->
+
+[Finding out which homebrew formula installed an executable]: /wiki/Finding_out_which_homebrew_formula_installed_an_executable
