@@ -105,7 +105,7 @@ I have APC Back-UPS Pro BR1600SI (1600VA/960W) UPS with the following ports:
 
 There are ports on the back that offer surge protection and battery backup (labeled "4" in the diagram), and others that offer only surge protection (labeled "7" in the diagram); I'm only using the former[^overload]; that is, I have cables with IEC C13/C14 connectors leading from the UPS to:
 
-[^overload]: If the laptop, monitor, dock, and desktop are all running and under load, the UPS is probably not qualified to support all of these devices, but I'm not expecting to run the all _under load_ very frequently, if ever, so I'm trusting that this is going to be ok.
+[^overload]: If the laptop, monitor, dock, and desktop are all running and under load, the UPS is probably not qualified to support all of these devices, but I'm not expecting to run them all _under load_ very frequently, if ever, so I'm trusting that this is going to be ok.
 
 - The desktop computer.
 - The monitor.
