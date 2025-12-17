@@ -56,7 +56,7 @@ On the back, from left to right (as viewed from the back):
     - USB-A 3.2 Gen2: USB-A connector to data port (2) on back of UGREEN switching hub.
     - 10 GbE: Gigabit ethernet, via crossover cable to desktop PC
 
-[^off]: After adding the RØDE AI-1, I found the dock was no longer supplying power to the laptop, presumably because it was too taxed supplying power to the hub, so I removed this cable from the dock and replaced it with [a separate power adapter](https://www.amazon.es/dp/B0B618DV8M) providing 15 W / 2 A (again, note that the hub says it optionally uses "5V 2A; ie. 10W"). However, I was still having problems with the dock not powering the laptop, so I tried out a different switch.
+[^off]: After adding the RØDE AI-1, I found the dock was no longer supplying power to the laptop, presumably because it was too taxed supplying power to the hub, so I removed this cable from the dock and replaced it with [a separate power adapter](https://www.amazon.es/dp/B0B618DV8M) providing 15 W / 2 A (again, note that the hub says it optionally uses "5V 2A; ie. 10W"). However, I was still having problems with the dock not powering the laptop, so I tried out a different switch. That worked for less than 24 hours. Finally, a firmware update to the dock seemed to fix things definitively.
 
 See [this page for firmware updates](https://www.caldigit.com/ts5-plus-and-element-5-hub-macos-firmware-update-procedures/). Last time I updated was 2025-11-11 (to v64.1).
 
