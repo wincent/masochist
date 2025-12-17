@@ -3,7 +3,7 @@ tags: wiki homebrew
 title: Finding out which homebrew formula installed an executable
 ---
 
-Say you want to find out what formula was responsible for installing `/opt/homebrew/bin/gpg-agent`, use can use `readlink` to see where the symlink points to:
+Say you want to find out what formula was responsible for installing `/opt/homebrew/bin/gpg-agent`, you can use `readlink` to see where the symlink points to:
 
 ```console
 $ readlink /opt/homebrew/bin/gpg-agent
