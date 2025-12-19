@@ -9,7 +9,8 @@ title: Jujutsu cheatsheet
 # Create a new repo backed by Git.
 jj git init
 
-# Colocate a jj repository on top of an existing Git repo.
+# Previously, you would prefer the following (to colocate a jj repository
+# on top of an existing Git repo), but `--colocate` is now the default.
 jj git init --colocate
 
 # See colocation status.
@@ -17,6 +18,8 @@ jj git colocation status
 ```
 
 # Configuring
+
+**NOTE:** In practice, you would rarely configure with manually `jj config set` commands, but rather manage your `~/.config/jj/config.toml` in a dotfiles repo ([example](https://github.com/wincent/wincent/blob/537bd6017b8e66ca0cf100025c7178e4b915ebad/aspects/dotfiles/templates/.config/jj/config.toml.erb)).
 
 ```
 # Set user.name and user.email.
@@ -57,7 +60,7 @@ jj abandon -r <rev>
 jj edit -r <rev>
 ```
 
-In my initial experiments with `jj` I was using `git commit -p` to selectively commit changes from the working directory, then `jj git import` to have it register the changes. This ended up creating "orphan" changesets with no descendants and no descriptions (ie. `jj` would keep the snapshot of the current working directory, then create a new snapshot of everything that wasn't included in the new commit). These orphaned revisions are pretty much useless, hence `jj abandon`.
+**Aside:** In my initial experiments with `jj` I was using `git commit -p` to selectively commit changes from the working directory, then `jj git import` to have it register the changes. This ended up creating "orphan" changesets with no descendants and no descriptions (ie. `jj` would keep the snapshot of the current working directory, then create a new snapshot of everything that wasn't included in the new commit). These orphaned revisions are pretty much useless, hence `jj abandon`. In practice, I should have been using `jj ci -i` instead.
 
 # Dealing with detached HEADs
 
@@ -76,6 +79,8 @@ jj bookmark set main -r <rev>
 jj push # Push to origin.
 jj push --remote github # Push to mirror.
 ```
+
+or, better still, set up [a `jj tug` alias](https://github.com/wincent/wincent/blob/537bd6017b8e66ca0cf100025c7178e4b915ebad/aspects/dotfiles/templates/.config/jj/config.toml.erb#L23-L35).
 
 # Bookmarks
 
