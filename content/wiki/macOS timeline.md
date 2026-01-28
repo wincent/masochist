@@ -28,6 +28,7 @@ title: macOS timeline
 -   [macOS] 13.0: [Ventura](https://en.wikipedia.org/wiki/MacOS_Ventura), released 24 October 2022 (364 days after Monterey).
 -   [macOS] 14.0: [Sonoma](https://en.wikipedia.org/wiki/MacOS_Sonoma), released 26 September 2023 (337 days after Ventura).
 -   [macOS] 15.0: [Sequoia](https://en.wikipedia.org/wiki/MacOS_Sequoia), released 16 September 2024 (356 days after Sonoma).
+-   [macOS] 26.0: [Tahoe](https://en.wikipedia.org/wiki/MacOS_Tahoe), released 15 September 2025 (364 days after Sequoia).
 
 The date calculations above were done with [Ruby](/wiki/Ruby); for example:
 
