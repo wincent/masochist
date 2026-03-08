@@ -117,10 +117,11 @@ pub fn search(corpus: &SearchCorpus, repo_path: &str, query: &str) -> Vec<Search
     }
 
     if directories.is_empty() {
-        directories.push("content".to_string());
+        directories.push("content/blog".to_string());
+        directories.push("content/wiki".to_string());
+        directories.push("content/snippets".to_string());
+        directories.push("content/pages".to_string());
     }
-
-    let filtering = !directories.iter().any(|d| d == "content");
 
     let mut results: Vec<SearchResult> = Vec::new();
     let mut seen = HashMap::new();
@@ -145,7 +146,7 @@ pub fn search(corpus: &SearchCorpus, repo_path: &str, query: &str) -> Vec<Search
     }
 
     for entry in &title_matches {
-        if filtering && !directories.iter().any(|d| d.contains(entry.dir.as_str())) {
+        if !directories.iter().any(|d| d.contains(entry.dir.as_str())) {
             continue;
         }
         let key = format!("{}/{}", entry.dir, entry.id);
@@ -163,18 +164,9 @@ pub fn search(corpus: &SearchCorpus, repo_path: &str, query: &str) -> Vec<Search
         for (dir, id) in hits {
             let key = format!("{dir}/{id}");
             if !seen.contains_key(&key) {
-                seen.insert(key.clone(), results.len());
                 if let Some(&idx) = corpus.lookup.get(&key) {
+                    seen.insert(key, results.len());
                     results.push(result_from_entry(&corpus.entries[idx]));
-                } else {
-                    results.push(SearchResult {
-                        content_type: dir,
-                        title: id.clone(),
-                        id,
-                        created_at: 0,
-                        updated_at: 0,
-                        tags: Vec::new(),
-                    });
                 }
             }
         }
