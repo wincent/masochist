@@ -13,3 +13,13 @@ cargo run --manifest-path "${REPO_DIR}/Cargo.toml" \
 echo ""
 echo "Output: ${OUTPUT_DIR}"
 echo "Files: $(find "${OUTPUT_DIR}" -type f | wc -l | tr -d ' ')"
+
+echo ""
+echo "Committing to public branch..."
+git -C "${OUTPUT_DIR}" add -A
+if git -C "${OUTPUT_DIR}" diff --cached --quiet; then
+    echo "No changes to commit."
+else
+    git -C "${OUTPUT_DIR}" commit -m "build: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+    echo "Committed. Push with: git -C public push"
+fi
