@@ -7,5 +7,6 @@ edition = "2024"
 chrono = { version = "0.4", default-features = false, features = ["std"] }
 masochist-lib = { path = "../masochist-lib" }
 maud = "0.26"
+percent-encoding = "2"
 regex = "1"
 rocket = "0.5"

@@ -1,4 +1,5 @@
 use maud::{DOCTYPE, Markup, html};
+use percent_encoding::{NON_ALPHANUMERIC, utf8_percent_encode};
 
 use crate::search::SearchResult;
 
@@ -179,7 +180,7 @@ pub fn search_page(query: &str, results: &[SearchResult], assets: &AssetPaths) -
                 @if query.is_empty() {
                     "Search"
                 } @else {
-                    a href=(format!("/search?q={}", urlencoding(query))) { (query) }
+                    a href=(format!("/search?q={}", utf8_percent_encode(query, NON_ALPHANUMERIC))) { (query) }
                 }
             }
             div.row {
@@ -225,19 +226,4 @@ pub fn search_page(query: &str, results: &[SearchResult], assets: &AssetPaths) -
             }
         },
     )
-}
-
-fn urlencoding(s: &str) -> String {
-    let mut result = String::new();
-    for byte in s.bytes() {
-        match byte {
-            b'A'..=b'Z' | b'a'..=b'z' | b'0'..=b'9' | b'-' | b'_' | b'.' | b'~' => {
-                result.push(byte as char);
-            }
-            _ => {
-                result.push_str(&format!("%{byte:02X}"));
-            }
-        }
-    }
-    result
 }
