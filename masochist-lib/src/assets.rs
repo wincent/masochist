@@ -28,6 +28,7 @@ pub const JS_SOURCE: &str = r#"
     if(years>1) return years+' years ago';
     return null;
   }
+  function fmt(ts){return new Date(ts*1000).toLocaleString();}
   document.querySelectorAll('.when[data-created]').forEach(function(el){
     var c=el.getAttribute('data-created');
     var u=el.getAttribute('data-updated');
@@ -36,8 +37,10 @@ pub const JS_SOURCE: &str = r#"
     if(!cr) return;
     if(c===u||cr===ur){
       el.textContent=cr;
+      el.title=fmt(+c);
     }else if(ur){
       el.textContent='Created '+cr+', updated '+ur;
+      el.title='Created '+fmt(+c)+', updated '+fmt(+u);
     }
   });
 })();
