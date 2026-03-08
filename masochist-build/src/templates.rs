@@ -336,7 +336,7 @@ pub fn blog_archive(items: &[ContentItem], blog_indices: &[usize]) -> Markup {
     for &idx in blog_indices {
         let item = &items[idx];
         let year = chrono::DateTime::from_timestamp(item.timestamps.created_at, 0)
-            .map(|d| d.format("%Y").to_string().parse::<i32>().unwrap_or(0))
+            .map(|d| chrono::Datelike::year(&d))
             .unwrap_or(0);
         if years.last().map(|(y, _)| *y) != Some(year) {
             years.push((year, Vec::new()));
