@@ -1,4 +1,4 @@
-use maud::{html, Markup, DOCTYPE};
+use maud::{DOCTYPE, Markup, html};
 
 use crate::search::SearchResult;
 
@@ -147,7 +147,6 @@ fn footer() -> Markup {
     }
 }
 
-
 fn result_url(result: &SearchResult) -> String {
     let prefix = match result.content_type.as_str() {
         "blog" => "/blog",
@@ -171,56 +170,61 @@ pub fn search_page(query: &str, results: &[SearchResult], assets: &AssetPaths) -
         query.to_string()
     };
 
-    base_layout(&title, "Search", assets, html! {
-        h1 {
-            @if query.is_empty() {
-                "Search"
-            } @else {
-                a href=(format!("/search?q={}", urlencoding(query))) { (query) }
+    base_layout(
+        &title,
+        "Search",
+        assets,
+        html! {
+            h1 {
+                @if query.is_empty() {
+                    "Search"
+                } @else {
+                    a href=(format!("/search?q={}", urlencoding(query))) { (query) }
+                }
             }
-        }
-        div.row {
-            form action="/search" method="get" {
-                input.eight.columns
-                    #search-input
-                    type="search"
-                    name="q"
-                    placeholder="Search wincent.dev"
-                    value=(query)
-                    autocomplete="off";
-                input.four.columns type="submit" value="Search";
+            div.row {
+                form action="/search" method="get" {
+                    input.eight.columns
+                        #search-input
+                        type="search"
+                        name="q"
+                        placeholder="Search wincent.dev"
+                        value=(query)
+                        autocomplete="off";
+                    input.four.columns type="submit" value="Search";
+                }
             }
-        }
-        p {
-            (results.len()) " "
-            @if results.len() == 1 {
-                "item"
-            } @else {
-                "items"
+            p {
+                (results.len()) " "
+                @if results.len() == 1 {
+                    "item"
+                } @else {
+                    "items"
+                }
+                " found"
             }
-            " found"
-        }
-        @if !results.is_empty() {
-            table.content-listing.u-full-width {
-                thead { tr {
-                    th { "What" }
-                    th { "Title" }
-                    th { "When" }
-                    th { "Tags" }
-                } }
-                tbody {
-                    @for result in results {
-                        tr {
-                            td { a.lozenge href=(format!("/{}", result.content_type)) { (result.content_type) } }
-                            td { a href=(result_url(result)) { (result.title) } }
-                            td { (render_when(result)) }
-                            td { (render_tags_compact(&result.tags)) }
+            @if !results.is_empty() {
+                table.content-listing.u-full-width {
+                    thead { tr {
+                        th { "What" }
+                        th { "Title" }
+                        th { "When" }
+                        th { "Tags" }
+                    } }
+                    tbody {
+                        @for result in results {
+                            tr {
+                                td { a.lozenge href=(format!("/{}", result.content_type)) { (result.content_type) } }
+                                td { a href=(result_url(result)) { (result.title) } }
+                                td { (render_when(result)) }
+                                td { (render_tags_compact(&result.tags)) }
+                            }
                         }
                     }
                 }
             }
-        }
-    })
+        },
+    )
 }
 
 fn urlencoding(s: &str) -> String {

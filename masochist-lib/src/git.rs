@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use std::io::{BufRead, BufReader, Read as _, Write as _};
 use std::process::{Command, Stdio};
 
-use crate::content::{Timestamps, TimestampMap};
+use crate::content::{TimestampMap, Timestamps};
 
 pub struct GitRepo {
     path: String,
@@ -183,13 +183,13 @@ impl GitRepo {
         let mut cmd = self.command();
         cmd.args([
             "grep",
-            "-I",           // Ignore binary files.
-            "-P",           // Perl-compatible regex.
-            "-i",           // Ignore case.
-            "-l",           // List filenames only.
-            "-z",           // NUL-delimited output.
-            "--all-match",  // All patterns must match.
-            "--full-name",  // Full paths.
+            "-I",          // Ignore binary files.
+            "-P",          // Perl-compatible regex.
+            "-i",          // Ignore case.
+            "-l",          // List filenames only.
+            "-z",          // NUL-delimited output.
+            "--all-match", // All patterns must match.
+            "--full-name", // Full paths.
         ]);
 
         for pattern in patterns {
@@ -349,8 +349,7 @@ mod tests {
     fn test_parse_git_log_timestamps() {
         // Simulate the actual `-z` output format:
         // header\0\nSTATUS\0path\0header\0\nSTATUS\0path\0
-        let input =
-            "abc123abc123abc123abc123abc123abc123abc1 1700000000 1700000000\0\n\
+        let input = "abc123abc123abc123abc123abc123abc123abc1 1700000000 1700000000\0\n\
              M\0content/blog/post.md\0\
              def456def456def456def456def456def456def4 1600000000 1600000000\0\n\
              A\0content/blog/post.md\0";

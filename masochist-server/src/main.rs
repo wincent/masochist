@@ -2,7 +2,7 @@ mod search;
 mod templates;
 
 use rocket::response::content::RawHtml;
-use rocket::{get, launch, routes, State};
+use rocket::{State, get, launch, routes};
 use search::SearchCorpus;
 use templates::AssetPaths;
 
@@ -44,8 +44,7 @@ fn load_asset_paths() -> AssetPaths {
 
 #[launch]
 fn rocket() -> _ {
-    let repo_path = std::env::var("MASOCHIST_REPO")
-        .unwrap_or_else(|_| ".".to_string());
+    let repo_path = std::env::var("MASOCHIST_REPO").unwrap_or_else(|_| ".".to_string());
     let index_path = std::env::var("MASOCHIST_INDEX").ok();
 
     eprintln!("Building search corpus from {repo_path}...");
@@ -55,6 +54,10 @@ fn rocket() -> _ {
     let assets = load_asset_paths();
 
     rocket::build()
-        .manage(AppState { corpus, repo_path, assets })
+        .manage(AppState {
+            corpus,
+            repo_path,
+            assets,
+        })
         .mount("/", routes![search_handler, search_path_handler])
 }

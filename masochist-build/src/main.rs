@@ -13,9 +13,7 @@ use std::path::Path;
 use std::time::Instant;
 
 fn main() {
-    let repo_path = std::env::args()
-        .nth(1)
-        .unwrap_or_else(|| ".".to_string());
+    let repo_path = std::env::args().nth(1).unwrap_or_else(|| ".".to_string());
     let output_dir = std::env::args()
         .nth(2)
         .unwrap_or_else(|| "public".to_string());
@@ -62,19 +60,23 @@ fn main() {
     eprintln!("Total: {:?}", total_start.elapsed());
 }
 
-fn load_from_git(repo_path: &str) -> (TimestampMap, Vec<(String, String)>, HashMap<String, String>) {
+fn load_from_git(
+    repo_path: &str,
+) -> (TimestampMap, Vec<(String, String)>, HashMap<String, String>) {
     let repo_path_clone = repo_path.to_string();
     let timestamps_handle = std::thread::spawn(move || {
         let start = Instant::now();
         let repo = GitRepo::new(&repo_path_clone);
-        let ts = repo.extract_timestamps("content", &[
-            "content/blog", "content/wiki", "content/snippets", "content/pages",
-        ]);
-        eprintln!(
-            "  timestamps: {} files in {:?}",
-            ts.len(),
-            start.elapsed()
+        let ts = repo.extract_timestamps(
+            "content",
+            &[
+                "content/blog",
+                "content/wiki",
+                "content/snippets",
+                "content/pages",
+            ],
         );
+        eprintln!("  timestamps: {} files in {:?}", ts.len(), start.elapsed());
         ts
     });
 
@@ -84,7 +86,12 @@ fn load_from_git(repo_path: &str) -> (TimestampMap, Vec<(String, String)>, HashM
 
         let start = Instant::now();
         let mut files = Vec::new();
-        for subdir in ["content/blog", "content/wiki", "content/snippets", "content/pages"] {
+        for subdir in [
+            "content/blog",
+            "content/wiki",
+            "content/snippets",
+            "content/pages",
+        ] {
             files.extend(repo.ls_tree("content", subdir));
         }
         eprintln!("  ls-tree: {} files in {:?}", files.len(), start.elapsed());
@@ -119,7 +126,9 @@ fn load_from_git(repo_path: &str) -> (TimestampMap, Vec<(String, String)>, HashM
         (files, contents)
     });
 
-    let timestamps = timestamps_handle.join().expect("timestamps thread panicked");
+    let timestamps = timestamps_handle
+        .join()
+        .expect("timestamps thread panicked");
     let (files, contents) = contents_handle.join().expect("contents thread panicked");
     (timestamps, files, contents)
 }
@@ -169,11 +178,9 @@ fn parse_all_files(
             }
 
             let tags = fm.tag_list();
-            let title = fm.title.unwrap_or_else(|| {
-                match content_type {
-                    ContentType::Snippet => format!("Snippet #{id}"),
-                    _ => id.to_string(),
-                }
+            let title = fm.title.unwrap_or_else(|| match content_type {
+                ContentType::Snippet => format!("Snippet #{id}"),
+                _ => id.to_string(),
             });
 
             let ts = timestamps
@@ -232,7 +239,7 @@ fn render_markdown(items: &[ContentItem]) -> Vec<String> {
 fn markdown_to_html(md: &str) -> String {
     use comrak::adapters::{HeadingAdapter, HeadingMeta};
     use comrak::nodes::Sourcepos;
-    use comrak::{markdown_to_html_with_plugins, ComrakPlugins, Options};
+    use comrak::{ComrakPlugins, Options, markdown_to_html_with_plugins};
 
     struct HeadingLevelAdapter;
 
@@ -302,10 +309,7 @@ fn generate_site(
         .filter_map(|(i, item)| {
             let html = match item.content_type {
                 ContentType::Blog => {
-                    let blog_pos = index
-                        .blog
-                        .iter()
-                        .position(|&idx| idx == i);
+                    let blog_pos = index.blog.iter().position(|&idx| idx == i);
                     // prev (←) = newer post, next (→) = older post.
                     // Blog index is sorted newest-first, so p-1 is
                     // newer and p+1 is older.
@@ -327,10 +331,7 @@ fn generate_site(
                 }
                 ContentType::Wiki => templates::wiki_article(item, &rendered[i]),
                 ContentType::Snippet => {
-                    let snippet_pos = index
-                        .snippets
-                        .iter()
-                        .position(|&idx| idx == i);
+                    let snippet_pos = index.snippets.iter().position(|&idx| idx == i);
                     let prev = snippet_pos.and_then(|p| {
                         if p > 0 {
                             Some(&items[index.snippets[p - 1]])
@@ -396,16 +397,39 @@ fn generate_site(
             tags,
         ));
     }
-    fs::write(out.join("_search_index.tsv"), &index_data)
-        .expect("failed to write search index");
+    fs::write(out.join("_search_index.tsv"), &index_data).expect("failed to write search index");
 
     // Index pages.
-    write_page(out, "index.html", &templates::blog_landing(items, &index.blog, rendered));
-    write_page(out, "blog/index.html", &templates::blog_landing(items, &index.blog, rendered));
-    write_page(out, "blog/all.html", &templates::blog_archive(items, &index.blog));
-    write_page(out, "wiki/index.html", &templates::wiki_index(items, &index.wiki));
-    write_page(out, "snippets/index.html", &templates::snippets_landing(items, &index.snippets, rendered));
-    write_page(out, "snippets/all.html", &templates::snippets_archive(items, &index.snippets));
+    write_page(
+        out,
+        "index.html",
+        &templates::blog_landing(items, &index.blog, rendered),
+    );
+    write_page(
+        out,
+        "blog/index.html",
+        &templates::blog_landing(items, &index.blog, rendered),
+    );
+    write_page(
+        out,
+        "blog/all.html",
+        &templates::blog_archive(items, &index.blog),
+    );
+    write_page(
+        out,
+        "wiki/index.html",
+        &templates::wiki_index(items, &index.wiki),
+    );
+    write_page(
+        out,
+        "snippets/index.html",
+        &templates::snippets_landing(items, &index.snippets, rendered),
+    );
+    write_page(
+        out,
+        "snippets/all.html",
+        &templates::snippets_archive(items, &index.snippets),
+    );
     write_page(out, "tags/index.html", &templates::tags_index(&index.tags));
     write_page(out, "search/index.html", &templates::search_page());
     write_page(out, "404.html", &templates::not_found());
@@ -437,14 +461,16 @@ fn generate_site(
         };
         caddy_redirects.push_str(&format!("redir {source} {target} permanent\n"));
     }
-    fs::write(out.join("_redirects.caddy"), &caddy_redirects)
-        .expect("failed to write redirects");
+    fs::write(out.join("_redirects.caddy"), &caddy_redirects).expect("failed to write redirects");
 
     eprintln!(
         "    {} content pages, {} tag pages, {} raw snippets, {} redirects",
         pages.len(),
         index.tags.len(),
-        items.iter().filter(|i| matches!(i.body, ContentBody::Raw { .. })).count(),
+        items
+            .iter()
+            .filter(|i| matches!(i.body, ContentBody::Raw { .. }))
+            .count(),
         redirects.len(),
     );
 }
@@ -464,11 +490,19 @@ fn write_assets(output_dir: &str) {
 
     let css_file = assets_dir.join(assets::css_filename());
     fs::write(&css_file, assets::css()).expect("failed to write CSS asset");
-    eprintln!("  assets: {} ({} bytes)", assets::css_filename(), assets::css().len());
+    eprintln!(
+        "  assets: {} ({} bytes)",
+        assets::css_filename(),
+        assets::css().len()
+    );
 
     let js_file = assets_dir.join(assets::js_filename());
     fs::write(&js_file, assets::js()).expect("failed to write JS asset");
-    eprintln!("  assets: {} ({} bytes)", assets::js_filename(), assets::js().len());
+    eprintln!(
+        "  assets: {} ({} bytes)",
+        assets::js_filename(),
+        assets::js().len()
+    );
 
     let manifest = format!("{}\n{}\n", assets::css_path(), assets::js_path());
     fs::write(out.join("_assets_manifest"), &manifest).expect("failed to write asset manifest");

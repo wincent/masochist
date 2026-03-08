@@ -29,9 +29,15 @@ pub struct SearchCorpus {
 impl SearchCorpus {
     pub fn build(repo_path: &str, index_path: Option<&str>) -> Self {
         let repo = GitRepo::new(repo_path);
-        let raw_entries = repo.ls_tree_names("content", &[
-            "content/blog", "content/wiki", "content/snippets", "content/pages",
-        ]);
+        let raw_entries = repo.ls_tree_names(
+            "content",
+            &[
+                "content/blog",
+                "content/wiki",
+                "content/snippets",
+                "content/pages",
+            ],
+        );
 
         // Load metadata from the search index if available.
         // Format: type\tid\ttitle\tcreated_at\tupdated_at\ttags
@@ -121,7 +127,12 @@ pub fn search(corpus: &SearchCorpus, repo_path: &str, query: &str) -> Vec<Search
 
     let regex_patterns: Vec<regex::Regex> = patterns
         .iter()
-        .filter_map(|p| regex::RegexBuilder::new(p).case_insensitive(true).build().ok())
+        .filter_map(|p| {
+            regex::RegexBuilder::new(p)
+                .case_insensitive(true)
+                .build()
+                .ok()
+        })
         .collect();
 
     // Title-based results first.

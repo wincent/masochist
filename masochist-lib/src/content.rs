@@ -201,10 +201,7 @@ fn fix_yaml(yaml: &str) -> String {
     for line in yaml.lines() {
         if let Some((key, value)) = line.split_once(": ") {
             let trimmed = value.trim();
-            if trimmed.is_empty()
-                || trimmed.starts_with('"')
-                || trimmed.starts_with('\'')
-            {
+            if trimmed.is_empty() || trimmed.starts_with('"') || trimmed.starts_with('\'') {
                 fixed.push_str(line);
             } else {
                 let escaped = trimmed.replace('\\', "\\\\").replace('"', "\\\"");
@@ -228,11 +225,7 @@ fn parse_frontmatter_manual(yaml: &str) -> Frontmatter {
         if let Some((key, value)) = line.split_once(": ") {
             let key = key.trim();
             let value = value.trim().to_string();
-            let value = if value.is_empty() {
-                None
-            } else {
-                Some(value)
-            };
+            let value = if value.is_empty() { None } else { Some(value) };
             match key {
                 "title" => title = value,
                 "tags" => tags = value,
