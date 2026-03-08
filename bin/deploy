@@ -1,0 +1,27 @@
+#!/bin/bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
+
+HOST="${MASOCHIST_HOST:-wincent.dev}"
+DEPLOY_DIR="/srv/masochist"
+
+TAG="deploy/$(date -u +%Y-%m-%d/%H.%M.%S)"
+echo "Tagging: ${TAG}"
+git -C "${REPO_DIR}" tag "${TAG}"
+
+TMPDIR=$(mktemp -d)
+trap 'rm -rf "${TMPDIR}"' EXIT
+
+echo "Archiving deployment files..."
+git -C "${REPO_DIR}" archive --prefix=masochist/ HEAD:ops/ | tar xf - -C "${TMPDIR}"
+git -C "${REPO_DIR}" archive --prefix=masochist/ HEAD:bin/ | tar xf - -C "${TMPDIR}"
+
+echo "Syncing to ${HOST}..."
+ssh "${HOST}" "mkdir -p ${DEPLOY_DIR}"
+rsync -avz --delete "${TMPDIR}/masochist/" "${HOST}:${DEPLOY_DIR}/"
+ssh "${HOST}" "chmod +x ${DEPLOY_DIR}/bin/*"
+
+echo "Done. Run the following on the server to start:"
+echo "  cd ${DEPLOY_DIR} && docker compose -f ops/compose.base.yml -f ops/compose.prod.yml up -d --force-recreate"

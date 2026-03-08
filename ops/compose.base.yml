@@ -1,0 +1,38 @@
+services:
+  app:
+    image: masochist-app
+    expose:
+      - "8000"
+    environment:
+      MASOCHIST_REPO: /srv/content
+      MASOCHIST_INDEX: /var/www/public/_search_index.tsv
+      ROCKET_ADDRESS: "0.0.0.0"
+      ROCKET_PORT: "8000"
+    volumes:
+      - content:/srv/content:ro
+      - public:/var/www/public:ro
+    networks:
+      - internal
+    restart: unless-stopped
+
+  web:
+    image: caddy:2
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - public:/var/www/public:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    networks:
+      - internal
+    depends_on:
+      - app
+    restart: unless-stopped
+
+networks:
+  internal:
+
+volumes:
+  content:
+  public:
+  caddy-data:
+  caddy-config:

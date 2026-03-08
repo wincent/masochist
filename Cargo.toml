@@ -1,0 +1,3 @@
+[workspace]
+members = ["masochist-lib", "masochist-build", "masochist-server"]
+resolver = "2"

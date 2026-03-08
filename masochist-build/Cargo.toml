@@ -1,0 +1,15 @@
+[package]
+name = "masochist-build"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+masochist-lib = { path = "../masochist-lib" }
+chrono = { version = "0.4", default-features = false, features = ["std"] }
+comrak = { version = "0.36", default-features = false }
+lightningcss = "1.0.0-alpha.70"
+maud = "0.26"
+rayon = "1"
+sha2 = "0.10"
+swc = "36.0"
+swc_common = "14.0"

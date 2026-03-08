@@ -1,0 +1,21 @@
+name: masochist-dev
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: ops/Dockerfile.app
+    image: masochist-app
+    volumes:
+      - ..:/srv/content:ro
+      - ../public:/var/www/public:ro
+
+  web:
+    ports:
+      - "127.0.0.1:2080:80"
+      - "127.0.0.1:2443:443"
+    environment:
+      SITE_ADDRESS: "localhost"
+      TLS_CONFIG: "tls internal"
+    volumes:
+      - ../public:/var/www/public:ro

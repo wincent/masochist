@@ -1,7 +1,0 @@
-Changes from 3.5a4 to 3.5a5:
-
-    Update version numbers for release
-    Restore Edit menu to Synergy Preferences application
-    Fix typo in 5e08528
-    Don't rely on synthesized setter for mutable property
-    Replace use of NSAppleScript in for refreshing playlists

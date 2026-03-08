@@ -1,9 +1,0 @@
-Changes from 3.5a3 to 3.5a4:
-
-    Minor syntax fixes
-    Bump version number prior to release
-    Update README file to include upgrade instructions
-    Hook up Help menu item in Synergy Preferences
-    Update lists
-    Translate Spanish text in Synergy Preferences nib into English
-    Bump version number post-release

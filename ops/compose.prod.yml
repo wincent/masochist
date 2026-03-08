@@ -1,0 +1,18 @@
+name: masochist
+
+services:
+  app:
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
+
+  web:
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      SITE_ADDRESS: "wincent.dev"
+      TLS_CONFIG: ""

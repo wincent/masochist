@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# Post-receive hook for the content bare repo.
+#
+# When content is pushed, the search server's corpus is stale but
+# will be refreshed on next restart. The static site is NOT rebuilt
+# here — that happens locally (or in CI) and the result is pushed
+# to the public branch.
+#
+# The only thing we do here is extract images, since they are binary
+# files that need to be served directly by Caddy.
+
+set -e
+
+while read old_rev new_rev ref_name; do
+    case "$ref_name" in
+        refs/heads/content)
+            echo "Extracting images from content branch..."
+            IMAGES_DIR="/var/www/public/images"
+            mkdir -p "$IMAGES_DIR"
+            git archive "$new_rev" -- content/images/ | \
+                tar xf - --strip-components=2 -C "$IMAGES_DIR"
+            echo "Done."
+            ;;
+    esac
+done

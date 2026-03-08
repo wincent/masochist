@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# Post-receive hook for the public branch.
+#
+# When the pre-built static site is pushed, check it out into
+# Caddy's serving directory and reload Caddy to pick up any
+# new redirect rules.
+
+set -e
+
+PUBLIC_DIR="/var/www/public"
+
+while read old_rev new_rev ref_name; do
+    case "$ref_name" in
+        refs/heads/public)
+            echo "Deploying static site to ${PUBLIC_DIR}..."
+            GIT_WORK_TREE="$PUBLIC_DIR" git checkout -f public
+            echo "Reloading Caddy..."
+            docker exec masochist-web caddy reload --config /etc/caddy/Caddyfile 2>/dev/null || true
+            echo "Done."
+            ;;
+    esac
+done
