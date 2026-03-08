@@ -1400,6 +1400,8 @@ dependencies = [
 name = "masochist-lib"
 version = "0.1.0"
 dependencies = [
+ "chrono",
+ "maud",
  "serde",
  "serde_yaml",
 ]
@@ -1408,9 +1410,9 @@ dependencies = [
 name = "masochist-server"
 version = "0.1.0"
 dependencies = [
- "chrono",
  "masochist-lib",
  "maud",
+ "percent-encoding",
  "regex",
  "rocket",
 ]

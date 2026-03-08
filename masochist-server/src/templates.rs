@@ -1,15 +1,8 @@
-use maud::{DOCTYPE, Markup, html};
+use masochist_lib::templates::format_date;
+use maud::{Markup, html};
 use percent_encoding::{NON_ALPHANUMERIC, utf8_percent_encode};
 
 use crate::search::SearchResult;
-
-fn format_date(ts: i64) -> String {
-    let dt = chrono::DateTime::from_timestamp(ts, 0);
-    match dt {
-        Some(dt) => dt.format("%-m/%-d/%Y").to_string(),
-        None => "Unknown".to_string(),
-    }
-}
 
 fn render_when(result: &SearchResult) -> Markup {
     let created = format_date(result.created_at);
@@ -25,124 +18,6 @@ fn render_when(result: &SearchResult) -> Markup {
                 (created)
             } @else {
                 "Created " (created) ", updated " (updated)
-            }
-        }
-    }
-}
-
-fn render_tags_compact(tags: &[String]) -> Markup {
-    html! {
-        @if !tags.is_empty() {
-            ul.tags.left.compact {
-                @for tag in tags {
-                    li { a href=(format!("/tags/{tag}")) { (tag) } }
-                }
-            }
-        }
-    }
-}
-
-pub struct AssetPaths {
-    pub css: String,
-    pub js: String,
-}
-
-pub fn base_layout(title: &str, active_nav: &str, assets: &AssetPaths, body: Markup) -> Markup {
-    html! {
-        (DOCTYPE)
-        html lang="en" {
-            head {
-                meta charset="utf-8";
-                meta name="viewport" content="width=device-width, initial-scale=1";
-                title { (title) " \u{2022} wincent.dev" }
-                link rel="stylesheet" href=(&assets.css);
-            }
-            body {
-                div.app {
-                    (nav_bar(active_nav))
-                    section.app-content.container {
-                        (body)
-                    }
-                    (footer())
-                }
-                script src=(&assets.js) {}
-            }
-        }
-    }
-}
-
-fn nav_bar(active: &str) -> Markup {
-    let links = [
-        ("Blog", "/blog"),
-        ("Wiki", "/wiki"),
-        ("Snippets", "/snippets"),
-        ("Tags", "/tags"),
-        ("Search", "/search"),
-    ];
-
-    html! {
-        nav {
-            ul {
-                li {
-                    a.nav-link href="/" style="color:#eee;font-weight:bold" { "wincent.dev" }
-                    span.nav-toggle-wrapper {
-                        div.nav-toggle onclick="this.closest('nav').classList.toggle('nav-open')" { "Menu" }
-                    }
-                }
-                @for (label, href) in &links {
-                    li {
-                        @if *label == active {
-                            a.nav-link.active href=(href) { (label) }
-                        } @else {
-                            a.nav-link href=(href) { (label) }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-fn footer() -> Markup {
-    html! {
-        footer {
-            div.container {
-                div.row {
-                    div.four.columns {
-                        h6 { "Site" }
-                        ul {
-                            li { a href="/pages/about" { "About" } }
-                            li { a href="/blog" { "Blog" } }
-                            li { a href="/wiki" { "Wiki" } }
-                            li { a href="/snippets" { "Snippets" } }
-                            li { a href="/tags" { "Tags" } }
-                            li { a href="/search" { "Search" } }
-                        }
-                    }
-                    div.four.columns {
-                        h6 { "External" }
-                        ul {
-                            li { a href="https://github.com/wincent" { "GitHub" } }
-                            li { a href="https://youtube.com/GregHurrell" { "YouTube" } }
-                            li { a href="https://www.facebook.com/glh" { "Facebook" } }
-                            li { a href="https://www.linkedin.com/in/greghurrell" { "LinkedIn" } }
-                        }
-                    }
-                    div.four.columns {
-                        h6 { "Colophon" }
-                        p {
-                            "Made by "
-                            a href="mailto:greg@hurrell.net" { "Greg Hurrell" }
-                            " with "
-                            a href="https://rust-lang.org" { "Rust" }
-                            " (with help from "
-                            a href="https://git-scm.com/" { "Git" }
-                            " and "
-                            a href="https://neovim.io/" { "Neovim" }
-                            ")."
-                        }
-                    }
-                }
             }
         }
     }
@@ -164,17 +39,24 @@ fn result_url(result: &SearchResult) -> String {
     format!("{prefix}/{encoded_id}")
 }
 
-pub fn search_page(query: &str, results: &[SearchResult], assets: &AssetPaths) -> Markup {
+pub fn search_page(
+    query: &str,
+    results: &[SearchResult],
+    css_path: &str,
+    js_path: &str,
+) -> Markup {
     let title = if query.is_empty() {
         "Search".to_string()
     } else {
         query.to_string()
     };
 
-    base_layout(
+    masochist_lib::templates::base_layout(
         &title,
         "Search",
-        assets,
+        css_path,
+        js_path,
+        None,
         html! {
             h1 {
                 @if query.is_empty() {
@@ -218,7 +100,7 @@ pub fn search_page(query: &str, results: &[SearchResult], assets: &AssetPaths) -
                                 td { a.lozenge href=(format!("/{}", result.content_type)) { (result.content_type) } }
                                 td { a href=(result_url(result)) { (result.title) } }
                                 td { (render_when(result)) }
-                                td { (render_tags_compact(&result.tags)) }
+                                td { (masochist_lib::templates::render_tags_compact(&result.tags)) }
                             }
                         }
                     }

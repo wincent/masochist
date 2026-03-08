@@ -1,118 +1,18 @@
 use crate::assets;
 use masochist_lib::content::{ContentBody, ContentItem};
 use masochist_lib::index::TagEntry;
-use maud::{DOCTYPE, Markup, PreEscaped, html};
+use masochist_lib::templates::{format_date, render_tags_compact};
+use maud::{Markup, PreEscaped, html};
 
-pub fn base_layout(title: &str, active_nav: &str, canonical: Option<&str>, body: Markup) -> Markup {
-    html! {
-        (DOCTYPE)
-        html lang="en" {
-            head {
-                meta charset="utf-8";
-                meta name="viewport" content="width=device-width, initial-scale=1";
-                title { (title) " \u{2022} wincent.dev" }
-                @if let Some(url) = canonical {
-                    link rel="canonical" href=(format!("https://wincent.dev{url}"));
-                }
-                link rel="stylesheet" href=(assets::css_path());
-            }
-            body {
-                div.app {
-                    (nav_bar(active_nav))
-                    section.app-content.container {
-                        (body)
-                    }
-                    (footer())
-                }
-                script src=(assets::js_path()) {}
-            }
-        }
-    }
-}
-
-fn nav_bar(active: &str) -> Markup {
-    let links = [
-        ("Blog", "/blog"),
-        ("Wiki", "/wiki"),
-        ("Snippets", "/snippets"),
-        ("Tags", "/tags"),
-        ("Search", "/search"),
-    ];
-
-    html! {
-        nav {
-            ul {
-                li {
-                    a.nav-link href="/" style="color:#eee;font-weight:bold" { "wincent.dev" }
-                    span.nav-toggle-wrapper {
-                        div.nav-toggle onclick="this.closest('nav').classList.toggle('nav-open')" { "Menu" }
-                    }
-                }
-                @for (label, href) in &links {
-                    li {
-                        @if *label == active {
-                            a.nav-link.active href=(href) { (label) }
-                        } @else {
-                            a.nav-link href=(href) { (label) }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-fn footer() -> Markup {
-    html! {
-        footer {
-            div.container {
-                div.row {
-                    div.four.columns {
-                        h6 { "Site" }
-                        ul {
-                            li { a href="/pages/about" { "About" } }
-                            li { a href="/blog" { "Blog" } }
-                            li { a href="/wiki" { "Wiki" } }
-                            li { a href="/snippets" { "Snippets" } }
-                            li { a href="/tags" { "Tags" } }
-                            li { a href="/search" { "Search" } }
-                        }
-                    }
-                    div.four.columns {
-                        h6 { "External" }
-                        ul {
-                            li { a href="https://github.com/wincent" { "GitHub" } }
-                            li { a href="https://youtube.com/GregHurrell" { "YouTube" } }
-                            li { a href="https://www.facebook.com/glh" { "Facebook" } }
-                            li { a href="https://www.linkedin.com/in/greghurrell" { "LinkedIn" } }
-                        }
-                    }
-                    div.four.columns {
-                        h6 { "Colophon" }
-                        p {
-                            "Made by "
-                            a href="mailto:greg@hurrell.net" { "Greg Hurrell" }
-                            " with "
-                            a href="https://rust-lang.org" { "Rust" }
-                            " (with help from "
-                            a href="https://git-scm.com/" { "Git" }
-                            " and "
-                            a href="https://neovim.io/" { "Neovim" }
-                            ")."
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-pub fn format_date(ts: i64) -> String {
-    let dt = chrono::DateTime::from_timestamp(ts, 0);
-    match dt {
-        Some(dt) => dt.format("%-m/%-d/%Y").to_string(),
-        None => "Unknown".to_string(),
-    }
+fn base_layout(title: &str, active_nav: &str, canonical: Option<&str>, body: Markup) -> Markup {
+    masochist_lib::templates::base_layout(
+        title,
+        active_nav,
+        &assets::css_path(),
+        &assets::js_path(),
+        canonical,
+        body,
+    )
 }
 
 fn read_time(item: &ContentItem) -> usize {
@@ -129,18 +29,6 @@ fn render_tags(tags: &[String]) -> Markup {
     html! {
         @if !tags.is_empty() {
             ul.tags {
-                @for tag in tags {
-                    li { a href=(format!("/tags/{tag}")) { (tag) } }
-                }
-            }
-        }
-    }
-}
-
-fn render_tags_compact(tags: &[String]) -> Markup {
-    html! {
-        @if !tags.is_empty() {
-            ul.tags.left.compact {
                 @for tag in tags {
                     li { a href=(format!("/tags/{tag}")) { (tag) } }
                 }
@@ -166,7 +54,6 @@ fn render_when(item: &ContentItem) -> Markup {
     }
 }
 
-// Blog post page
 pub fn blog_post(
     item: &ContentItem,
     rendered_html: &str,
@@ -209,7 +96,6 @@ pub fn blog_post(
     )
 }
 
-// Wiki article page
 pub fn wiki_article(item: &ContentItem, rendered_html: &str) -> Markup {
     base_layout(
         &item.title,
@@ -232,7 +118,6 @@ pub fn wiki_article(item: &ContentItem, rendered_html: &str) -> Markup {
     )
 }
 
-// Snippet page
 pub fn snippet_page(
     item: &ContentItem,
     content_html: &str,
@@ -271,7 +156,6 @@ pub fn snippet_page(
     )
 }
 
-// Generic page
 pub fn generic_page(item: &ContentItem, rendered_html: &str) -> Markup {
     base_layout(
         &item.title,
@@ -292,7 +176,6 @@ pub fn generic_page(item: &ContentItem, rendered_html: &str) -> Markup {
     )
 }
 
-// Blog landing (3 recent posts in full)
 pub fn blog_landing(items: &[ContentItem], blog_indices: &[usize], rendered: &[String]) -> Markup {
     let count = std::cmp::min(3, blog_indices.len());
     base_layout(
@@ -329,9 +212,7 @@ pub fn blog_landing(items: &[ContentItem], blog_indices: &[usize], rendered: &[S
     )
 }
 
-// Blog archive (all posts by year)
 pub fn blog_archive(items: &[ContentItem], blog_indices: &[usize]) -> Markup {
-    // Group posts by year.
     let mut years: Vec<(i32, Vec<usize>)> = Vec::new();
     for &idx in blog_indices {
         let item = &items[idx];
@@ -361,7 +242,6 @@ pub fn blog_archive(items: &[ContentItem], blog_indices: &[usize]) -> Markup {
     )
 }
 
-// Wiki index
 pub fn wiki_index(items: &[ContentItem], wiki_indices: &[usize]) -> Markup {
     base_layout(
         "wiki",
@@ -392,7 +272,6 @@ pub fn wiki_index(items: &[ContentItem], wiki_indices: &[usize]) -> Markup {
     )
 }
 
-// Snippets landing (3 recent snippets in full)
 pub fn snippets_landing(
     items: &[ContentItem],
     snippets_indices: &[usize],
@@ -429,7 +308,6 @@ pub fn snippets_landing(
     )
 }
 
-// Snippets archive (all snippets in a table)
 pub fn snippets_archive(items: &[ContentItem], snippets_indices: &[usize]) -> Markup {
     base_layout(
         "All Snippets",
@@ -460,7 +338,6 @@ pub fn snippets_archive(items: &[ContentItem], snippets_indices: &[usize]) -> Ma
     )
 }
 
-// Tags index
 pub fn tags_index(tags: &[TagEntry]) -> Markup {
     let total = tags.len();
     base_layout(
@@ -490,7 +367,6 @@ pub fn tags_index(tags: &[TagEntry]) -> Markup {
     )
 }
 
-// Tag page
 pub fn tag_page(tag_name: &str, items: &[ContentItem], indices: &[usize]) -> Markup {
     let count = indices.len();
     base_layout(
@@ -523,7 +399,6 @@ pub fn tag_page(tag_name: &str, items: &[ContentItem], indices: &[usize]) -> Mar
     )
 }
 
-// Search page (static shell — the actual search is dynamic via Rocket)
 pub fn search_page() -> Markup {
     base_layout(
         "search",
@@ -538,7 +413,6 @@ pub fn search_page() -> Markup {
     )
 }
 
-// 404 page
 pub fn not_found() -> Markup {
     base_layout(
         "Not Found",

@@ -4,7 +4,11 @@ mod templates;
 use rocket::response::content::RawHtml;
 use rocket::{State, get, launch, routes};
 use search::SearchCorpus;
-use templates::AssetPaths;
+
+struct AssetPaths {
+    css: String,
+    js: String,
+}
 
 struct AppState {
     corpus: SearchCorpus,
@@ -16,14 +20,14 @@ struct AppState {
 fn search_handler(q: Option<&str>, state: &State<AppState>) -> RawHtml<String> {
     let query = q.unwrap_or("");
     let results = search::search(&state.corpus, &state.repo_path, query);
-    let markup = templates::search_page(query, &results, &state.assets);
+    let markup = templates::search_page(query, &results, &state.assets.css, &state.assets.js);
     RawHtml(markup.into_string())
 }
 
 #[get("/search/<q>")]
 fn search_path_handler(q: &str, state: &State<AppState>) -> RawHtml<String> {
     let results = search::search(&state.corpus, &state.repo_path, q);
-    let markup = templates::search_page(q, &results, &state.assets);
+    let markup = templates::search_page(q, &results, &state.assets.css, &state.assets.js);
     RawHtml(markup.into_string())
 }
 
