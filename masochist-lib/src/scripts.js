@@ -31,17 +31,17 @@ class RelativeTime extends HTMLElement {
     var u = this.getAttribute('updated');
     var cr = RelativeTime.relativize(+c);
     var ur = RelativeTime.relativize(+u);
-    if (!cr) return;
+    if (!cr && !ur) return;
     if (c === u || cr === ur) {
       this.textContent = cr;
       this.title = RelativeTime.fmt(+c);
-    } else if (ur) {
+    } else {
       var cs = document.createElement('span');
-      cs.textContent = cr;
-      cs.title = RelativeTime.fmt(+c);
+      cs.textContent = cr || RelativeTime.fmt(+c);
+      if (cr) cs.title = RelativeTime.fmt(+c);
       var us = document.createElement('span');
-      us.textContent = ur;
-      us.title = RelativeTime.fmt(+u);
+      us.textContent = ur || RelativeTime.fmt(+u);
+      if (ur) us.title = RelativeTime.fmt(+u);
       this.textContent = '';
       this.append('Created ', cs, ', updated ', us);
     }
