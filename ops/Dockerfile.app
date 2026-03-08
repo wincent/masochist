@@ -12,9 +12,9 @@ COPY masochist-server/Cargo.toml masochist-server/Cargo.toml
 
 # Create stub source files so cargo can resolve dependencies.
 RUN mkdir -p masochist-lib/src masochist-build/src masochist-server/src && \
-    echo 'pub mod assets; pub mod content; pub mod git; pub mod index;' > masochist-lib/src/lib.rs && \
+    echo 'pub mod assets; pub mod content; pub mod git; pub mod index; pub mod templates;' > masochist-lib/src/lib.rs && \
     echo 'pub const CSS_SOURCE: &str = ""; pub const JS_SOURCE: &str = "";' > masochist-lib/src/assets.rs && \
-    touch masochist-lib/src/content.rs masochist-lib/src/git.rs masochist-lib/src/index.rs && \
+    touch masochist-lib/src/content.rs masochist-lib/src/git.rs masochist-lib/src/index.rs masochist-lib/src/templates.rs && \
     echo "fn main() {}" > masochist-build/src/main.rs && \
     echo "fn main() {}" > masochist-server/src/main.rs
 

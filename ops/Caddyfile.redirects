@@ -1,0 +1,3 @@
+www.wincent.dev, wincent.net, www.wincent.net, wincent.org, www.wincent.org {
+	redir https://wincent.dev{uri} permanent
+}

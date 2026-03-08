@@ -1,0 +1,27 @@
+#!/bin/bash
+set -euo pipefail
+
+DEPLOY_DIR="/srv/masochist"
+REPO="${DEPLOY_DIR}/repo"
+
+# Check out ops/ and bin/ from the main branch.
+echo "Checking out ops/ and bin/ from main..."
+git --work-tree="${DEPLOY_DIR}" --git-dir="${REPO}" checkout main -- ops/ bin/
+chmod +x "${DEPLOY_DIR}/bin/"*
+
+OPS="${DEPLOY_DIR}/ops"
+
+ECR_ACCOUNT_ID="${ECR_ACCOUNT_ID:-$(aws ecr describe-registry --region us-east-1 --query registryId --output text)}"
+export ECR_ACCOUNT_ID
+
+docker compose \
+    -f "$OPS/compose.base.yml" \
+    -f "$OPS/compose.prod.yml" \
+    -f "$OPS/compose.ecr.yml" \
+    pull
+
+docker compose \
+    -f "$OPS/compose.base.yml" \
+    -f "$OPS/compose.prod.yml" \
+    -f "$OPS/compose.ecr.yml" \
+    up -d --force-recreate

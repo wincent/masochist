@@ -69,6 +69,60 @@ bin/dev
 
 This starts Caddy on `https://localhost:2443` (self-signed cert) with the Rocket search server proxied behind it.
 
+## Server setup (EC2)
+
+The production server is an EC2 t4g.small (ARM64) in us-east-1 running Amazon Linux 2023.
+
+### Docker
+
+```
+sudo dnf install docker -y
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo usermod -aG docker ec2-user
+```
+
+Log out and back in for the group change to take effect.
+
+### IAM role
+
+The instance needs an IAM role with the `AmazonEC2ContainerRegistryReadOnly` policy attached. This grants permissions to pull Docker images from ECR. You can assign an instance profile to a running instance via:
+
+```
+aws ec2 associate-iam-instance-profile \
+  --instance-id i-xxxx \
+  --iam-instance-profile Name=YourInstanceProfileName
+```
+
+### ECR credential helper
+
+Install the credential helper so Docker can authenticate with ECR automatically:
+
+```
+sudo dnf install amazon-ecr-credential-helper
+```
+
+Then configure Docker to use it:
+
+```
+mkdir -p ~/.docker
+cat > ~/.docker/config.json << 'EOF'
+{
+  "credsStore": "ecr-login"
+}
+EOF
+```
+
+### ECR repository
+
+Create the repository (one-time):
+
+```
+aws ecr create-repository \
+  --repository-name masochist/app \
+  --region us-east-1
+```
+
 ## Project structure
 
 ```

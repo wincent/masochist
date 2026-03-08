@@ -1,3 +1,6 @@
+# Import optional config fragments (eg. domain redirects in prod).
+import /etc/caddy/conf.d/*
+
 {$SITE_ADDRESS:localhost} {
 	{$TLS_CONFIG}
 

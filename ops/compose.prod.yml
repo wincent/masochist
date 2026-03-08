@@ -8,6 +8,9 @@ services:
           memory: 512M
         reservations:
           memory: 256M
+    volumes:
+      - /srv/masochist/repo:/srv/content:ro
+      - /srv/masochist/public:/var/www/public:ro
 
   web:
     ports:
@@ -16,3 +19,7 @@ services:
     environment:
       SITE_ADDRESS: "wincent.dev"
       TLS_CONFIG: ""
+    volumes:
+      - /srv/masochist/public:/var/www/public:ro
+      - /srv/masochist/ops/Caddyfile:/etc/caddy/Caddyfile:ro
+      - /srv/masochist/ops/Caddyfile.redirects:/etc/caddy/conf.d/redirects.caddy:ro

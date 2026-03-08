@@ -19,3 +19,4 @@ services:
       TLS_CONFIG: "tls internal"
     volumes:
       - ../public:/var/www/public:ro
+      - ./conf.d:/etc/caddy/conf.d:ro

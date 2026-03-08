@@ -7,21 +7,29 @@ REPO_DIR="$(dirname "$SCRIPT_DIR")"
 HOST="${MASOCHIST_HOST:-wincent.dev}"
 DEPLOY_DIR="/srv/masochist"
 
+# Tag the deployment.
 TAG="deploy/$(date -u +%Y-%m-%d/%H.%M.%S)"
 echo "Tagging: ${TAG}"
 git -C "${REPO_DIR}" tag "${TAG}"
 
-TMPDIR=$(mktemp -d)
-trap 'rm -rf "${TMPDIR}"' EXIT
+# Build Docker image for linux/arm64.
+echo "Building Docker image for linux/arm64..."
+docker build \
+    --platform linux/arm64 \
+    -t masochist-app:latest \
+    -f "${REPO_DIR}/ops/Dockerfile.app" \
+    "${REPO_DIR}"
 
-echo "Archiving deployment files..."
-git -C "${REPO_DIR}" archive --prefix=masochist/ HEAD:ops/ | tar xf - -C "${TMPDIR}"
-git -C "${REPO_DIR}" archive --prefix=masochist/ HEAD:bin/ | tar xf - -C "${TMPDIR}"
+# Push image to ECR.
+echo "Pushing image to ECR..."
+"${SCRIPT_DIR}/upload"
 
-echo "Syncing to ${HOST}..."
-ssh "${HOST}" "mkdir -p ${DEPLOY_DIR}"
-rsync -avz --delete "${TMPDIR}/masochist/" "${HOST}:${DEPLOY_DIR}/"
-ssh "${HOST}" "chmod +x ${DEPLOY_DIR}/bin/*"
+# Push main branch to the server's bare repo.
+echo "Pushing main branch..."
+git -C "${REPO_DIR}" push prod main
 
-echo "Done. Run the following on the server to start:"
-echo "  cd ${DEPLOY_DIR} && docker compose -f ops/compose.base.yml -f ops/compose.prod.yml up -d --force-recreate"
+# Check out bin/prod from the repo (handles first deploy) and run it.
+echo "Pulling and restarting on ${HOST}..."
+ssh "${HOST}" "sudo -u masochist git --work-tree=${DEPLOY_DIR} --git-dir=${DEPLOY_DIR}/repo checkout main -- bin/prod && sudo -u masochist chmod +x ${DEPLOY_DIR}/bin/prod && sudo -u masochist ${DEPLOY_DIR}/bin/prod"
+
+echo "Deploy complete."
