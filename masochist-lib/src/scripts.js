@@ -40,8 +40,14 @@ class RelativeTime extends HTMLElement {
       this.textContent = cr;
       this.title = RelativeTime.fmt(+c);
     } else if (ur) {
-      this.textContent = 'Created ' + cr + ', updated ' + ur;
-      this.title = 'Created ' + RelativeTime.fmt(+c) + ', updated ' + RelativeTime.fmt(+u);
+      var cs = document.createElement('span');
+      cs.textContent = cr;
+      cs.title = RelativeTime.fmt(+c);
+      var us = document.createElement('span');
+      us.textContent = ur;
+      us.title = RelativeTime.fmt(+u);
+      this.textContent = '';
+      this.append('Created ', cs, ', updated ', us);
     }
   }
 }
