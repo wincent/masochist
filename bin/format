@@ -1,3 +1,8 @@
 #!/bin/sh
 
-cargo fmt "$@"
+EXIT_STATUS=0
+
+dprint fmt || EXIT_STATUS=1
+cargo fmt || EXIT_STATUS=1
+
+exit $EXIT_STATUS

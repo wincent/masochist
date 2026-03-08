@@ -1,0 +1,55 @@
+{
+  "typescript": {
+    "lineWidth": 80,
+    // See: https://github.com/dprint/dprint-plugin-typescript/blob/main/src/configuration/types.rs
+    "arrayExpression.preferSingleLine": true,
+    "arrowFunction.useParentheses": "force",
+    "binaryExpression.operatorPosition": "maintain",
+    "conditionalExpression.operatorPosition": "maintain",
+    "conditionalType.operatorPosition": "maintain",
+    "exportDeclaration.sortNamedExports": "caseSensitive",
+    "exportDeclaration.spaceSurroundingNamedExports": false,
+    "forInStatement.useBraces": "always",
+    "forOfStatement.useBraces": "always",
+    "forStatement.useBraces": "always",
+    "functionExpression.spaceAfterFunctionKeyword": true,
+    "ifStatement.useBraces": "always",
+    "importDeclaration.sortNamedImports": "caseSensitive",
+    "importDeclaration.spaceSurroundingNamedImports": false,
+    "module.sortExportDeclarations": "caseSensitive",
+    "module.sortImportDeclarations": "caseSensitive",
+    "spaceSurroundingProperties": false,
+    "quoteStyle": "preferSingle",
+    "quoteProps": "consistent",
+    "singleBodyPosition": "nextLine",
+    "whileStatement.useBraces": "always",
+  },
+  "json": {
+  },
+  "markdown": {
+    "textWrap": "maintain",
+  },
+  "toml": {
+  },
+  "yaml": {
+  },
+  "includes": [
+    "**/*.js",
+    "**/*.toml",
+    "**/*.yml",
+    "**/*.md",
+  ],
+  "excludes": [
+    "content/**",
+    "public/**",
+    "next/**",
+    "target/**",
+  ],
+  "plugins": [
+    "https://plugins.dprint.dev/typescript-0.95.15.wasm",
+    "https://plugins.dprint.dev/toml-0.7.0.wasm",
+    "https://plugins.dprint.dev/json-0.21.1.wasm",
+    "https://plugins.dprint.dev/markdown-0.21.1.wasm",
+    "https://plugins.dprint.dev/g-plane/pretty_yaml-v0.6.0.wasm",
+  ],
+}
