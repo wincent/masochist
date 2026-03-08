@@ -1,5 +1,4 @@
 mod assets;
-mod icons;
 mod templates;
 
 use masochist_lib::content::{self, ContentBody, ContentItem, ContentType, TimestampMap};
