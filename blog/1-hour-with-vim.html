@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>1 hour with Vim • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/1-hour-with-vim">1 hour with Vim</a></h1><div class="metadata"><relative-time created="1232204150" updated="1495119989">Created 1/17/2009, updated 5/18/2017</relative-time><span>2 minute read</span></div><div class="prerendered"><p>I'm gradually starting to flesh out my <code>~/.vimrc</code> with useful stuff.</p>
+<p>So far I've got:</p>
+<pre><code>&quot; search
+set hlsearch   &quot; highlight search strings
+set incsearch  &quot; incremental search (&quot;find as you type&quot;)
+set ignorecase &quot; ignore case when searching
+set smartcase  &quot; except when search string includes a capital letter
+
+set number     &quot; show line numbers in gutter
+set ruler      &quot; show line/column info at bottom of buffer
+
+set guioptions-=T  &quot; don't show toolbar
+
+&quot; need per-mode defaults here (2 for Ruby, 4 for C etc)
+set shiftwidth=2 &quot; spaces per tab (when shifting)
+set tabstop=2    &quot; spaces per tab
+set expandtab    &quot; always use spaces instead of tabs
+set smarttab     &quot; &lt;tab&gt;
+
+set list     	 &quot; show whitespace
+set listchars=eol:¶,tab:&gt;-,extends:»,precedes:«,trail:•
+
+&quot; ,e -- edit file, starting in same directory as current file
+map ,e :e &lt;C-R&gt;=expand(&quot;%:p:h&quot;) . &quot;/&quot; &lt;CR&gt;
+
+&quot; emulate Command-T in TextMate
+map ,t :FuzzyFinderTextMate&lt;CR&gt;
+</code></pre>
+<p>Most of it pretty obvious stuff. The search stuff is definitely the best I've ever had in any editor. Stuff like line numbering is just obvious.</p>
+<p>The toolbar is disabled because it just takes up screen real estate; you'll never touch it.</p>
+<p>I've got some it set up to use (2) spaces instead of tabs for now seeing as I'm mostly editing <a href="/wiki/Ruby">Ruby</a> stuff right now, but I'll eventually set up per-mode defaults and some nice way of overriding them temporarily. For example, I like to use 4 spaces per tab in my <a href="/wiki/C">C</a> files, but I also contribute to projects where they use tabs instead, and each tab is 8 spaces wide.</p>
+<p>The <code>list</code> stuff is nice unobtrusive highlighting of whitespace in the buffer, useful for spotting bad whitespace (trailing whitespace, for example). You can have Vim automatically clean such whitespace errors (same as you can with Emacs), but I've always preferred that my editor not do that kind of thing unless I explicitly ask it to.</p>
+<p>Near the end, the <code>,e</code> mapping is a nice way of getting to the &quot;open file&quot; prompt, with the starting path preset to the directory of the file currently being edited. Got that one off a weblog comment somewhere; most definitely couldn't have figured it out myself yet.</p>
+<p>Last of all there's a <code>,t</code> mapping which does the same as <a href="/wiki/TextMate">TextMate</a>'s Command-T. It works and is very effective, but the way it's put together is pretty darn flakey. It depends intimately on the &quot;Fuzzyfinder&quot; plugin and will break if you're not using exactly the right version of each of the pieces. Also doesn't bomb out too gracefully if you point it at a directory that it doesn't like, and the <code>fuzzy_ignore</code> setting didn't work for me at all. So that's one piece of the puzzle that I'm hoping can be improved.</p>
+<p>I installed &quot;NERD Tree&quot; as well, but there's not really much use for it when you're finding everything with <code>,t</code>.</p>
+</div><ul class="tags"><li><a href="/tags/vim">vim</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/2-hours-with-vim">← 2 hours with Vim</a></div><div class="post-nav-next"><a href="/blog/updating-capistrano">Updating Capistrano →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

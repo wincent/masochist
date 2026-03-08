@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>First Ruby on Rails project on Mac OS X • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>First Ruby on Rails project on Mac OS X</h1></div><div class="metadata"><relative-time created="1179940642" updated="1584053324">Created 5/23/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/ruby">ruby</a></li><li><a href="/tags/rails">rails</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These notes were made while trying to put together my first ever <a href="/wiki/Rails">Rails</a> project. I recorded the steps taken so that it would be easier for me to repeat them in the future. I later expanded and improved upon these notes in &quot;<a href="/wiki/Rails_application_bootstrapping">Rails application bootstrapping</a>&quot;, and then went on to refine them further in &quot;<a href="/wiki/Behaviour-Driven_Development_with_Rails">Behaviour-Driven Development with Rails</a>&quot;.</p>
+<h2>Basic setup</h2>
+<ol>
+<li>Install and run <a href="/wiki/Locomotive">Locomotive</a>.</li>
+<li>Choose &quot;Create New…&quot; from the <a href="/wiki/Locomotive">Locomotive</a> &quot;File&quot; menu.</li>
+<li>Choose &quot;Edit in TextMate&quot; from the &quot;File&quot; menu.</li>
+<li>In the Terminal, change to your <a href="/wiki/Rails">Rails</a> project's application root.</li>
+<li>Run <code>command `locomotive bash-environment`</code> to enable command line manipulation.</li>
+<li>Set up your initial databases as described in &quot;<a href="/wiki/Using_SQLite_for_Ruby_on_Rails_development_on_Mac_OS_X_Tiger">Using SQLite for Ruby on Rails development on Mac OS X Tiger</a>&quot;; skip over the &quot;Manual database creation&quot; step.</li>
+</ol>
+<h2>Creating your database files</h2>
+<ol>
+<li>Create initial databases and an empty schema</li>
+</ol>
+<!-- -->
+<pre><code>rake db_schema_dump
+</code></pre>
+<p>This will occur in the default (development) environment. Repeat for the other environments and then restore the <code>RAILS_ENV</code> to its original value.</p>
+<pre><code>export RAILS_ENV=production
+rake db_schema_dump
+export RAILS_ENV=test
+rake db_schema_dump
+export RAILS_ENV=development
+</code></pre>
+<p>Alternatively using the <code>env</code> command:</p>
+<pre><code>env RAILS_ENV=production rake db_schema_dump
+env RAILS_ENV=test rake db_schema_dump
+env RAILS_ENV=development rake db_schema_dump
+</code></pre>
+<ol>
+<li>Creating your first table:</li>
+</ol>
+<p>One way of doing this:</p>
+<pre><code>script/generate model wikis
+</code></pre>
+<p>This command actually creates the first migration file in db/migrate.</p>
+<p>From:</p>
+<pre><code>class CreateWikis &lt; ActiveRecord::Migration
+  def self.up
+    create_table :wikis do |t|
+      [/tags/t.column #t.column] :name, :string
+    end
+  end
+
+  def self.down
+    drop_table :wikis
+  end
+end
+</code></pre>
+<p>To:</p>
+<pre><code>class CreateWikis &lt; ActiveRecord::Migration
+  def self.up
+    create_table :wikis do |table|
+      table.column :name, :string
+    end
+  end
+
+  def self.down
+    drop_table :wikis
+  end
+end
+
+rake migrate
+</code></pre>
+<p>Adding columns to a table:</p>
+<pre><code>script/generate migration weblogs
+
+class Weblogs &lt; ActiveRecord::Migration
+  def self.up
+  end
+
+  def self.down
+  end
+end
+
+class Weblogs &lt; ActiveRecord::Migration
+  def self.up
+    create_table :weblogs do |table|
+      table.column :name, :string
+    end
+  end
+
+  def self.down
+    drop_table :weblogs
+  end
+end
+
+rake migrate
+</code></pre>
+<h3>Keeping <code>db/schema.rb</code> automatically in sync during migrations</h3>
+<p>In the file, <code>config/environment.rb</code>, change:</p>
+<pre><code>  # Use SQL instead of Active Record's schema dumper when creating the test database.
+  # This is necessary if your schema can't be completely dumped by the schema dumper,
+  # like if you have constraints or database-specific column types
+  # config.active_record.schema_format = :sql
+</code></pre>
+<p>To:</p>
+<pre><code>  # Use SQL instead of Active Record's schema dumper when creating the test database.
+  # This is necessary if your schema can't be completely dumped by the schema dumper,
+  # like if you have constraints or database-specific column types
+  config.active_record.schema_format = :ruby
+</code></pre>
+<h3>Adding a column to an existing table</h3>
+<pre><code>script/generate migration add_creation_date_to_weblogs
+
+class AddCreationDateToWeblogs &lt; ActiveRecord::Migration
+  def self.up
+    add_column &quot;weblogs&quot;, &quot;created&quot;, :datetime
+  end
+
+  def self.down
+    remove_column &quot;weblogs&quot;, &quot;created&quot;
+  end
+end
+
+rake migrate
+</code></pre>
+<h2>The main controller</h2>
+<pre><code>script/generate controller main welcome
+</code></pre>
+<p>In <code>config/routes.rb</code></p>
+<pre><code>map.connect '', :controller =&gt; 'main', :action =&gt; 'welcome'
+</code></pre>
+<p>And delete <code>public/index.html</code></p>
+<h2>Creating a scaffold</h2>
+<pre><code>script/generate scaffold weblog
+</code></pre>
+<p>(Accessible at &quot;<a href="http://localhost:3000/weblogs/">http://localhost:3000/weblogs/</a>&quot;).</p>
+<h2>Creating a base layout (used site-wide)</h2>
+<p>Create a file at <code>app/views/layouts/application.rhtml</code>, indicating where included content should go with <code>&lt;%= @content_for_layout %&gt;</code>. For example:</p>
+<pre><code>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot;
+	&quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; version=&quot;-//W3C//DTD XHTML 1.1//EN&quot; xml:lang=&quot;en&quot;&gt;
+&lt;head&gt;
+	&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot;/&gt;
+	&lt;title&gt;&lt;%= @page_title %&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;%= @content_for_layout %&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li>&quot;UsingMigrations&quot;: <a href="http://wiki.rubyonrails.org/rails/pages/UsingMigrations">http://wiki.rubyonrails.org/rails/pages/UsingMigrations</a></li>
+<li>&quot;UnderstandingMigrations&quot;: <a href="http://wiki.rubyonrails.com/rails/pages/UnderstandingMigrations">http://wiki.rubyonrails.com/rails/pages/UnderstandingMigrations</a></li>
+<li>&quot;Using migrations to evolve your database schema without loosing [sic] your data&quot;: <a href="http://media.rubyonrails.org/video/migrations.mov">http://media.rubyonrails.org/video/migrations.mov</a></li>
+<li>&quot;Using Ruby on Rails for Web Development on Mac OS X&quot;: <a href="http://developer.apple.com/tools/rubyonrails.html">http://developer.apple.com/tools/rubyonrails.html</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

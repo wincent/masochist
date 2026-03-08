@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Threading niceties for Synergy Advance • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/threading-niceties-for-synergy-advance">Threading niceties for Synergy Advance</a></h1><div class="metadata"><relative-time created="1141606260" updated="1709590098">Created 3/6/2006, updated 3/4/2024</relative-time><span>4 minute read</span></div><div class="prerendered"><h4>Existing paradigms</h4>
+<p>I've spent a day now coming up with a neat way of implementing a particular inter-thread communication paradigm. The most common thread paradigm is the following:</p>
+<blockquote>
+<p>The main thread spawns a worker thread to handle long-running processing tasks in the background. While the worker thread is labouring away the main thread keeps the user interface responsive for the user. When the worker thread is done it notifies the main thread.</p>
+</blockquote>
+<p>A popular variation on this paradigm is this one:</p>
+<blockquote>
+<p>The main thread again employs a worker thread, but this time the main thread has the ability to send messages to the worker thread while the latter continues to run (for example, a &quot;cancel&quot; message could be used to tell the worker thread to stop processing and perform cleanup).</p>
+</blockquote>
+<p>Compare these with the single threaded-paradigm:</p>
+<blockquote>
+<p>The main thread handles all the work itself; if a task is long running then the user interface may become unresponsive until the task is completed.</p>
+</blockquote>
+<p>This last paradigm is probably the fastest because it avoids thread-associated overheads. It is also the easiest to implement because it does not require the developer to worry about resource contention between threads, nor is there any need to implement methods to handle callback notifications.</p>
+<p>Ironically this paradigm (the fastest) may <em>seem</em> to be the slowest because of the UI responsiveness issues. If the user sees the &quot;spinning beachball of death&quot; then he or she may think the program has hung (entered an infinite loop) even though the program is working away. For this reason &quot;beachballs&quot; should be avoided at all costs, and that's why you sometimes have to go down a multi-threaded path even though you might prefer not to.</p>
+<h4>A new paradigm</h4>
+<p>I began to wonder if there was a way of blending these paradigms into something new, something that would be better for the particular set of problems I am trying to solve in my work on Synergy Advance. I don't claim to have invented this design pattern but it's not something I've seen before. The basic idea can be broken up as follows:</p>
+<blockquote>
+<p>The main thread spawns a worker thread to handle potentially long-running tasks.</p>
+</blockquote>
+<p>So, the beachball issue is taken care of. But let's add a nuance:</p>
+<blockquote>
+<p>The main thread will block and wait for the worker thread to finish its task, but it will only block for a short period (say, one or two seconds) so as to avoid the appearance of the dreaded beachball.</p>
+</blockquote>
+<p>What this means is that we still maintain the appearance of a responsive UI (no beachballs) but we gain some of the simplicity of what we had in the single-threaded approach (a linear flow of execution).</p>
+<blockquote>
+<p>In the case that the worker thread takes too long, the main thread unblocks. When the worker thread is done it will notify the main thread.</p>
+</blockquote>
+<p>So now we are back in the world of multi-threaded programming again. The main thread will maintain UI responsiveness while the worker thread labours in the background. The main thread will also receive notification once the worker thread is done.</p>
+<p>This is the method that I've come up with to implement this pattern:</p>
+<pre><code>+ (BOOL)detatchNewThreadInvocation:(NSInvocation *)invocation
+                              wait:(NSTimeInterval)interval
+                          callback:(id)target
+                          selector:(SEL)selector
+</code></pre>
+<p>Observations:</p>
+<ul>
+<li>It's provided in a category on <code>NSThread</code> for ease of use.</li>
+<li>The pattern should be familiar to anyone who has used Cocoa's <code>detachNewThreadSelector:toTarget:withObject:</code>.</li>
+<li>I use <code>NSInvocation</code> as it allows me to neatly encapsulate the target, selector, arguments and return value.</li>
+<li>If <code>interval</code> is zero the calling thread won't wait/block at all.</li>
+<li>If <code>target</code> is zero then no callback will take place.</li>
+<li>Returns YES if the thread returned before the time limit was reached (in which case the caller knows there's no need to expect a callback).</li>
+<li>Returns NO if the thread did not return before the time limit (in which case the caller knows whether to expect a callback).</li>
+<li>The callback method should accept a single argument of type <code>NSInvocation</code>; it will be passed the original invocation.</li>
+<li>The method can be called from any thread, not just the main thread.</li>
+<li>No ugly kludges or inefficient techniques required (polling, spinlocks).</li>
+</ul>
+<p>All in all I am fairly happy with the design and I think it will help me to make some very nice code. Basically, this is ideal for Apple Event communication between Synergy Advance and iTunes; most of the time iTunes responds to Apple Events almost immediately, but at other times (for example, when you have the preferences window open) it will delay for extremely long periods. This method allows me to use a simple communications model most of the time but fall back to the more complicated (multi-threaded/callback) model when required.</p>
+<p>My next step is to serialize this (there's no good argument for having multiple threads communicating with iTunes at once; it will be much better to have a single worker thread handle all communication using a one-at-a-time queuing model) but it should be fairly easy now that I've written the <code>WOQueue</code> class.</p>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/woqueueconsumer">← WOQueueConsumer</a></div><div class="post-nav-next"><a href="/blog/apple-event-idle-functions">Apple Event &quot;idle functions&quot; →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

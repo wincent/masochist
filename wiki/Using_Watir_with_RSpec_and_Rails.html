@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Using Watir with RSpec and Rails • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Using Watir with RSpec and Rails</h1></div><div class="metadata"><relative-time created="1179572770" updated="1495119989">Created 5/19/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/rspec">rspec</a></li><li><a href="/tags/rails">rails</a></li><li><a href="/tags/watir">watir</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Installation</h2>
+<p>See:</p>
+<ul>
+<li><a href="/wiki/Installing_SafariWatir_on_Mac_OS_X_Tiger">Installing SafariWatir on Mac OS X Tiger</a></li>
+<li><a href="/wiki/Installing_Spec%3a%3aUI_0.2.0_on_Mac_OS_X_Tiger">Installing Spec::UI 0.2.0 on Mac OS X Tiger</a>; or</li>
+<li><a href="/wiki/Upgrading_to_Spec%3a%3aUI_0.2.2_on_Mac_OS_X_Tiger">Upgrading to Spec::UI 0.2.2 on Mac OS X Tiger</a></li>
+</ul>
+<p>For the latest installation or upgrade notes, see the <a href="/tags/rspec">#rspec</a> tag.</p>
+<h2>Other setup</h2>
+<p>There are is no official documentation for setting up and using <a href="/wiki/Spec%3a%3aUI">Spec::UI</a> at this time, but <a href="/wiki/Aslak_Hellesoy">Aslak Hellesoy</a> posted <a href="http://rubyforge.org/pipermail/rspec-users/2007-May/001541.html">these instructions</a> to the <a href="/wiki/RSpec_users">RSpec users</a> mailing list describing the necessary steps.</p>
+<p>Similar instructions can also be found <a href="http://www.practicalguile.com/articles/ruby/rspec-your-functional-tests/">here</a>.</p>
+<h3><a href="/wiki/Rakefile">Rakefile</a> changes</h3>
+<pre><code>require 'spec/rake/spectask'
+
+desc &quot;Run in-browser specs&quot;
+Spec::Rake::SpecTask.new('spec:ui') do |t|
+  t.spec_files = FileList['spec/**/*.rb']
+  t.spec_opts = [
+    '--require', 'spec/spec_helper',
+    '--format', 'Spec::Ui::ScreenshotFormatter:spec_report.html',
+    '--format', 'progress',
+  ]
+end
+</code></pre>
+<h3><code>spec_helper.rb</code> changes</h3>
+<pre><code>Spec::Runner.configure do |config|
+ config.include Spec::Matchers::Watir
+end
+</code></pre>
+<h3><code>before</code> and <code>after</code> blocks</h3>
+<p>All <a href="/wiki/specs">specs</a> will require some special set-up and tear-down:</p>
+<pre><code>before(:all) do
+  @browser = Watir::Browser.new
+end
+
+after(:each) do
+  # needed for screenshots to work
+  Spec::Ui::ScreenshotFormatter.browser = @browser
+end
+
+after(:all) do
+  @browser.kill! rescue nil
+end
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li>An excellent article on using <a href="/wiki/Watir">Watir</a>, <a href="/wiki/RSpec">RSpec</a> and <a href="/wiki/Rails">Rails</a>: <a href="http://www.practicalguile.com/articles/ruby/rspec-your-functional-tests/">http://www.practicalguile.com/articles/ruby/rspec-your-functional-tests/</a></li>
+<li><a href="/wiki/Behaviour-Driven_Development_with_Rails">Behaviour-Driven Development with Rails</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

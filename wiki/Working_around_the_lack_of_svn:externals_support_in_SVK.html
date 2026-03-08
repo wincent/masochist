@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Working around the lack of svn:externals support in SVK • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Working around the lack of svn:externals support in SVK</h1></div><div class="metadata"><relative-time created="1175253737" updated="1495119989">Created 3/30/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/svk">svk</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>I am a big fan of the <a href="/wiki/Subversion_externals">Subversion externals</a> feature (also known as <a href="/wiki/svn%3aexternals">svn:externals</a>). I use it to share code among my projects. It's heavily used by many popular open source projects including, for example, <a href="/wiki/Rails">Rails</a>.</p>
+<p>The trouble is, <a href="/wiki/SVK">SVK</a>, doesn't support externals.</p>
+<h2>Nested checkouts</h2>
+<p>If you try to &quot;fake&quot; externals support by doing a nested checkout:</p>
+<pre><code>svk co //mirrors/project/trunk src
+cd src
+svk co //mirrors/other_project/trunk subdir
+</code></pre>
+<p>You'll fail with an error message like this:</p>
+<pre><code>Overlapping checkout path is not supported (/Users/John/project/src); use 'svk checkout --detach' to remove it first.
+</code></pre>
+<h2>Views</h2>
+<p>It's been <a href="http://lists.bestpractical.com/pipermail/svk-devel/2007-January/000567.html">suggested on the mailing lists</a> that <a href="/wiki/SVK">SVK</a>'s views feature might work but it's <a href="http://bestpractical.typepad.com/worst_impractical/2007/01/svk_20_is_bette.html">also noted</a> that they are a beta-quality feature right now (<a href="/wiki/SVK_2.0">SVK 2.0</a>) not recommended for production use.</p>
+<p>I also am not entirely sure of how views would be used; I <a href="http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000741.html">asked for clarification</a> on <a href="/wiki/svk-devel">svk-devel</a> but it's still not clear to me how views are supposed to work as substitutes for <a href="/wiki/Subversion_externals">Subversion externals</a>.</p>
+<h2>Non-nested checkouts</h2>
+<h3>Changing nested paths to non-nested paths</h3>
+<p>This will definitely work but unfortunately requires a lot of busy-work to fix breakage caused by the changed relative paths. That is, everything that was formally in <code>./other_project/</code> will now be in <code>../other_project</code> or <code>../../other_project</code>. In the case of <a href="/wiki/Xcode">Xcode</a> this can lead to a lot of broken and hard-to-fix file references.</p>
+<p>See &quot;<a href="/wiki/Search_and_replace_in_multiple_files_with_a_Perl_one-liner">Search and replace in multiple files with a Perl one-liner</a>&quot; for information that may help to ease the pain of such a change.</p>
+<h3>Using symbolic links</h3>
+<p>Another alternative is to remove the external and replace it with a symbolic link to the non-nested checkout; for example, in the case of <a href="/wiki/WOCommon">WOCommon</a>:</p>
+<pre><code>cd $SOURCE_ROOT
+svk propdel svn:external .
+ln -s ../WOCommon WOCommon
+</code></pre>
+<p>Along with this change I'm making a minor adjustment to my directory structure. When I originally managed my code using <a href="/wiki/CVS">CVS</a> each project lived in a folder like this:</p>
+<pre><code>project
+project/cvs-files
+project/non-cvs-files
+</code></pre>
+<p>Where the trunk or whatever branch was being worked on would be checked out into the <code>cvs-files</code> subdirectory.</p>
+<p>On migrating to <a href="/wiki/Subversion">Subversion</a> this structure changed to:</p>
+<pre><code>project
+project/svn-files
+project/non-svn-files
+</code></pre>
+<p>Now that I have yet another migration I'm going to remove the <a href="/wiki/SCM">SCM</a> system's name from the path so that I won't ever have to make this kind of adjustment again:</p>
+<pre><code>project
+project/src
+project/extra
+</code></pre>
+<h3>Command-line helper scripts</h3>
+<p>Without proper externals you miss out on the following functionality:</p>
+<ul>
+<li><code>svk co</code> doesn't automatically check out dependent modules the way <code>svn co</code> does.</li>
+<li><code>svk up</code> doesn't automatically update dependent modules the way <code>svn up</code> does.</li>
+<li><code>svk st</code> doesn't report on changes in dependent modules the way <code>svn st</code> does.</li>
+</ul>
+<p>One way to work around this would be to write a set of helper scripts, <code>checkout</code>, <code>up</code> and <code>st</code> (<code>co</code> can't be used as a name because there is already an <a href="/wiki/RCS">RCS</a> tool with that name), which would serve as a wrapper for <code>svk</code> and add the desired &quot;dependency&quot; functionality.</p>
+<p><code>checkout DEPOTPATH [PATH]</code> would invoke <code>svk co DEPOTPATH [PATH]</code> and then check for any <code>svk:externals</code> properties within the checked out path. Declared externals would then be checked out automatically at the appropriate location. <code>up</code> would perform similarly, wrapping <code>svk up</code>. <code>st</code> would wrap <code>svk st</code>.</p>
+<p>Given the following <code>svk:externals</code> property set on a symbolic link <code>local_name</code> inside a working copy:</p>
+<pre><code>svk:externals : //mirrors/project/remote_name
+</code></pre>
+<p>The scripts would expect the symbolic link <code>local_name</code> to reveal the real location where <code>//mirrors/project/remote_name</code> should be checked out.</p>
+<p>This system would require some setup (the symbolic links) but once established would at least afford a level of automation comparable to that provided by <a href="/wiki/Subversion_externals">Subversion externals</a>.</p>
+<h3>Shell tricks</h3>
+<p>It is possible to achieve some level of &quot;automation&quot; by employing some shell tricks.</p>
+<p>For example, if you want to find and get status on all checked out instances of a particular external named <code>WOCommon</code> on your system you could do:</p>
+<pre><code>svk co --list | grep WOCommon | awk '{print $2}'| xargs -L 1 svk st
+</code></pre>
+<p>To perform <code>svk up</code> on all such externals you could do:</p>
+<pre><code>svk co --list | grep WOCommon | awk '{print $2}'| xargs -L 1 svk up
+</code></pre>
+<p>This is a brute force way of making sure that changes made to one external get propagated to all others.</p>
+<h2>See also</h2>
+<ul>
+<li>Mailing list thread: <a href="http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000741.html">http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000741.html</a></li>
+<li><a href="/wiki/Implementing_svn%3aexternals_support_in_SVK">Implementing svn:externals support in SVK</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

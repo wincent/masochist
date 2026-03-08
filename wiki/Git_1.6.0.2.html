@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.6.0.2 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.6.0.2</h1></div><div class="metadata"><relative-time created="1221393052" updated="1495119989">Created 9/14/2008, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h3>Release notes</h3>
+<pre><code>GIT v1.6.0.2 Release Notes
+==========================
+
+Fixes since v1.6.0.1
+--------------------
+
+* Installation on platforms that needs .exe suffix to git-* programs were
+ broken in 1.6.0.1.
+
+* Installation on filesystems without symbolic links support did not
+ work well.
+
+* In-tree documentations and test scripts now use &quot;git foo&quot; form to set a
+ better example, instead of the &quot;git-foo&quot; form (which is an acceptable
+ form if you have &quot;PATH=$(git --exec-path):$PATH&quot; in your script)
+
+* Many commands did not use the correct working tree location when used
+ with GIT_WORK_TREE environment settings.
+
+* Some systems needs to use compatibility fnmach and regex libraries
+ independent from each other; the compat/ area has been reorganized to
+ allow this.
+
+
+* &quot;git apply --unidiff-zero&quot; incorrectly applied a -U0 patch that inserts
+ a new line before the second line.
+
+* &quot;git blame -c&quot; did not exactly work like &quot;git annotate&quot; when range
+ boundaries are involved.
+
+* &quot;git checkout file&quot; when file is still unmerged checked out contents from
+ a random high order stage, which was confusing.
+
+* &quot;git clone $there $here/&quot; with extra trailing slashes after explicit
+ local directory name $here did not work as expected.
+
+* &quot;git diff&quot; on tracked contents with CRLF line endings did not drive &quot;less&quot;
+ intelligently when showing added or removed lines.
+
+* &quot;git diff --dirstat -M&quot; did not add changes in subdirectories up
+ correctly for renamed paths.
+
+* &quot;git diff --cumulative&quot; did not imply &quot;--dirstat&quot;.
+
+* &quot;git for-each-ref refs/heads/&quot; did not work as expected.
+
+* &quot;git gui&quot; allowed users to feed patch without any context to be applied.
+
+* &quot;git gui&quot; botched parsing &quot;diff&quot; output when a line that begins with two
+ dashes and a space gets removed or a line that begins with two pluses
+ and a space gets added.
+
+* &quot;git gui&quot; translation updates and i18n fixes.
+
+* &quot;git index-pack&quot; is more careful against disk corruption while completing
+ a thin pack.
+
+* &quot;git log -i --grep=pattern&quot; did not ignore case; neither &quot;git log -E
+ --grep=pattern&quot; triggered extended regexp.
+
+* &quot;git log --pretty=&quot;%ad&quot; --date=short&quot; did not use short format when
+ showing the timestamp.
+
+* &quot;git log --author=author&quot; match incorrectly matched with the
+ timestamp part of &quot;author &quot; line in commit objects.
+
+* &quot;git log -F --author=author&quot; did not work at all.
+
+* Build procedure for &quot;git shell&quot; that used stub versions of some
+ functions and globals was not understood by linkers on some platforms.
+
+* &quot;git stash&quot; was fooled by a stat-dirty but otherwise unmodified paths
+ and refused to work until the user refreshed the index.
+
+* &quot;git svn&quot; was broken on Perl before 5.8 with recent fixes to reduce
+ use of temporary files.
+
+* &quot;git verify-pack -v&quot; did not work correctly when given more than one
+ packfile.
+
+Also contains many documentation updates.
+</code></pre>
+<h3>See also</h3>
+<ul>
+<li><a href="/wiki/Updating_to_Git_1.6.0.2">Updating to Git 1.6.0.2</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

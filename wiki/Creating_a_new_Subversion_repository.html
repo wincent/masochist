@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Creating a new Subversion repository • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Creating a new Subversion repository</h1></div><div class="metadata"><relative-time created="1170347255" updated="1709594300">Created 2/1/2007, updated 3/4/2024</relative-time></div><ul class="tags"><li><a href="/tags/subversion">subversion</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Creating the repository</h2>
+<p>This is the procedure I use for creating a new repository on the remote (public, Internet) machine. Information about the procedure I use on my local machine, see <a href="/wiki/Creating_a_new_Subversion_repository%3aLocal_machine">Creating a new Subversion repository:Local machine</a>.</p>
+<pre><code>sudo -u svn svnadmin create /var/lib/svn/repositories/project-name
+</code></pre>
+<p>Set up appropriate access permissions:</p>
+<pre><code>sudo nano /var/lib/svn/repositories/project-name/conf/svnserve.conf
+</code></pre>
+<p>For example:</p>
+<pre><code>anon-access = read
+auth-access = write
+password-db = passwd
+realm = project-name repository
+</code></pre>
+<p>And configure username and password pairs:</p>
+<pre><code># may be able to copy a passwd file from an existing repository as a starting point
+sudo -u svn cp /var/lib/svn/repositories/other-project-name/conf/passwd \
+               /var/lib/svn/repositories/project-name/conf/passwd
+# edit the passwd file by hand if necessary
+sudo nano /var/lib/svn/repositories/project-name/conf/passwd
+</code></pre>
+<p>For example:</p>
+<pre><code>username = password
+</code></pre>
+<p>Finally, tighten the permissions on the <code>passwd</code> file:</p>
+<pre><code>sudo chmod 600 /var/lib/svn/repositories/project-name/conf/passwd
+</code></pre>
+<p>Optionally install a post-commit hook script, using a hook script from another repository as a starting point:</p>
+<pre><code>sudo -u svn cp /var/lib/svn/repositories/other-project-name/hooks/post-commit \
+               /var/lib/svn/repositories/project-name/hooks/post-commit
+sudo chmod 700 /var/lib/svn/repositories/project-name/hooks/post-commit
+sudo nano /var/lib/svn/repositories/project-name/hooks/post-commit
+</code></pre>
+<p>Then create repository content as described below (create <code>branches</code>, <code>tags</code> and <code>trunk</code> and perform initial import) or migrate repository content from existing repository as described in <a href="/wiki/Repository_migration">Repository migration</a>.</p>
+<h2>Initial import</h2>
+<pre><code>mkdir trunk tags branches
+mv &quot;project-files&quot; trunk/
+svn import svn+ssh://svn.example.com/project-name
+</code></pre>
+<h2>Initial checkout of working copy</h2>
+<pre><code>mkdir pre-import
+mv branches tags trunk pre-import/
+svn co svn+ssh://svn.example.com/project-name/trunk trunk
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Involuntary Reboot Log • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/involuntary-reboot-log-26-27-and-28">Involuntary Reboot Log</a></h1><div class="metadata"><relative-time created="1206459665" updated="1584053324">Created 3/25/2008, updated 3/12/2020</relative-time><span>2 minute read</span></div><div class="prerendered"><p>I had a couple of these saved up, but now that I've just had another <a href="/wiki/kernel_panic">kernel panic</a> I think it's time to catch up on the backlog of the <a href="/wiki/Involuntary_Reboot_Log">Involuntary Reboot Log</a>.</p>
+<h3>#26: Hard reset</h3>
+<ul>
+<li>Operating system version: 10.5.2</li>
+<li>Uptime at moment of failure(s): not sure</li>
+</ul>
+<p>Ever since upgrading to <a href="/wiki/Leopard">Leopard</a> my <a href="/wiki/SuperDrive">SuperDrive</a> hasn't been the same. In 10.5.0 inserting a disc was enough to guarantee an eventual lock-up of some sort, things seemed a little better in 10.5.1, and recently I decided to try out my luck with 10.5.2, but it seems things are no better.</p>
+<p>I had been watching a <a href="/wiki/DVD">DVD</a> for about half an hour when I had to pause it and leave the room. On returning I couldn't resume playback, the player said it was &quot;skipping damaged parts&quot;, none of the controls worked, and when I tried to quit I got the dreaded <a href="/wiki/beachball">beachball</a>.</p>
+<p>Then the keyboard stopped responding and the clock froze for about three-and-a-half minutes. When it finally came back to life I tried to reboot. From 14:18 to 14:30 I was watching a blank desktop with a spinning progress indicator. At 14:30 the progress indicator stopped and just over an hour later I decided to give up and pull the plug.</p>
+<p>Upon rebooting <a href="/wiki/Mail.app">Mail.app</a> wouldn't launch but luckily I was able to repair the corruption as described in &quot;<a href="/wiki/Fixing_corrupt_SQLite_database_files_in_Mail.app">Fixing corrupt SQLite database files in Mail.app</a>&quot;.</p>
+<h3>#27: Kernel panic</h3>
+<ul>
+<li>Operating system version: 10.5.2</li>
+<li>Uptime at moment of failure(s): not sure</li>
+</ul>
+<p>This <a href="/wiki/kernel_panic">kernel panic</a> happened several hours into an export from <a href="/wiki/Final_Cut_Pro">Final Cut Pro</a>, and similar to last time <a href="/wiki/Mail.app">Mail.app</a> wouldn't launch after rebooting (but unlike last time simply retrying a few times was enough to &quot;cure&quot; it).</p>
+<h3>#28: Kernel panic</h3>
+<ul>
+<li>Operating system version: 10.5.2</li>
+<li>Uptime at moment of failure(s): several days</li>
+</ul>
+<p>Another kernel panic when the machine was under heavy load. A zillion apps open and lots of work in progress (luckily almost all of it saved to disk, I just hope nothing got corrupted but it is too early to say). Curiously, whenever my machine panics I <em>never</em> get a panic log with any diagnostic information.</p>
+<p>I'll definitely be continuing with my daily whole-disk backups to an external volume (done with <a href="/wiki/SuperDuper%21">SuperDuper!</a>) and my two-hourly <a href="/wiki/home_dir">home dir</a> backups (done with <code>tar</code> and <code>bzip</code> from <a href="/wiki/cron">cron</a>, also to an external volume).</p>
+<h3>Stats to date</h3>
+<ul>
+<li>Kernel panics: 9</li>
+<li>Hard resets: 19</li>
+<li>Total failures: 28</li>
+<li>Start of recording keeping: 21 May 2006</li>
+<li>Total days to date: 647 days</li>
+<li>Average time between failures: 24.07 days</li>
+</ul>
+<p>This <a href="/wiki/iMac">iMac</a> is definitely the most unreliable <a href="/wiki/Apple">Apple</a> machine I've ever owned. The average time between failures has been trending slowly downwards for months now, and is already considerably worse than the average I had on my last machine (about 30 days between failures).</p>
+</div><ul class="tags"><li><a href="/tags/involuntary.reboot.log">involuntary.reboot.log</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/involuntary-reboot-log-29">← Involuntary Reboot Log</a></div><div class="post-nav-next"><a href="/blog/new-weblog">New weblog →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

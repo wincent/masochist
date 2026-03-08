@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Karabiner • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Karabiner</h1></div><div class="metadata"><relative-time created="1405091762" updated="1584053324">Created 7/11/2014, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/macos">macos</a></li><li><a href="/tags/karabiner">karabiner</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Official site</h2>
+<ul>
+<li><a href="https://pqrs.org/osx/karabiner/">https://pqrs.org/osx/karabiner/</a></li>
+</ul>
+<p>Note that I am not using <a href="https://pqrs.org/osx/karabiner/seil.html.en">Seil</a>, from the same author, because that can apparently only be used to swap the Caps Lock key for something else, and I haven't felt the need to do that. (I just set Caps Lock and Control using the standard OS X preferences panel.)</p>
+<h2>Settings</h2>
+<ul>
+<li>&quot;Change Key&quot; tab:
+<ul>
+<li>&quot;Change Shift_L Key (Left Shift)
+<ul>
+<li>&quot;Shift_R+Shift_L to CapsLock (+ Shift_L to turn CapsLock off)&quot;</li>
+</ul>
+</li>
+<li>&quot;Change Shift_R Key (Right Shift)
+<ul>
+<li>&quot;Shift_R+Shift_L to CapsLock (+ Shift_L to turn CapsLock off)&quot;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>This is great. No more accidental Caps Lock, and I don't miss the sticky feature (mentioned below under &quot;Old settings&quot;) at all.</p>
+<p>After switching to <a href="/wiki/Colemak">Colemak</a>, I wanted to try life with a variant on the so-called killer feature of turning CapsLock into a Backspace key:</p>
+<ul>
+<li>&quot;Change Key&quot; tab:
+<ul>
+<li>&quot;Change Control_L key (Left Control)&quot;
+<ul>
+<li>&quot;Control_L to Control_L (+ When you type Control_L only, send Delete) + [KeyRepeat]&quot; (this is a slightly custom setting defined <a href="https://github.com/wincent/wincent/blob/1770b6c55075e1bb2c333a78fc2811def001e93a/roles/keyboard/files/modifiers.xml">in my dotfiles</a>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>So, we're giving up that faster access to the <code>&lt;Escape&gt;</code> key (super useful for <a href="/wiki/Vim">Vim</a>) for the famed &quot;Caps Lock as Delete&quot; behavior which so many Colemak users rave about. You still have a Delete key on the right side of the keyboard, so you can use whichever one makes most sense (ie. dependent on the next character you have to type after the correction). For <code>&lt;Escape&gt;</code> in Vim, just use <code>&lt;C-[&gt;</code> or the actual <code>&lt;Escape&gt;</code> key.</p>
+<p>Note that when I first tried this setting, I did so with key repeat enabled (ie. pressing and holding would produce Delete with key repeat, after a delay, but I found that the repeat would kick in at undesired moments, because I sometimes have the habit of holding down &quot;Control&quot; while I think about what other key I am going to chord it with), but I later turned that off.</p>
+<p>Finally, we have:</p>
+<ul>
+<li>&quot;Change Key&quot; tab:
+<ul>
+<li>&quot;Change Return key&quot;
+<ul>
+<li>&quot;Return to Control_L (+When you type Return only, send Return) + [KeyRepeat]&quot; (this is a slightly custom setting defined <a href="https://github.com/wincent/wincent/blob/1770b6c55075e1bb2c333a78fc2811def001e93a/roles/keyboard/files/modifiers.xml">in my dotfiles</a>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>This gives us nice symmetry on the right side, mirroring the easy access to the Control key that we have on the left. Note that this is particularly useful on the laptop keyboard, which normally doesn't even have a Control key anywhere on the right side at all.</p>
+<p>Also useful:</p>
+<ul>
+<li>&quot;Key Repeat&quot; tab
+<ul>
+<li>&quot;Basic Configurations&quot;
+<ul>
+<li>&quot;Key Repeat&quot;
+<ul>
+<li>&quot;Delay Until Repeat&quot; -&gt; 300ms (down from 500ms)</li>
+<li>&quot;Key Repeat&quot; -&gt; 30ms (down from 83ms)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>&quot;Advanced Configurations&quot;
+<ul>
+<li>&quot;Key Overlaid Modifier&quot;
+<ul>
+<li>&quot;Delay Until Repeat&quot;: 300ms (down from 500ms, to match other &quot;Delay Until Repeat&quot; setting above).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Custom &quot;Yubikey: Colemak&quot;: <a href="https://github.com/wincent/wincent/blob/master/roles/keyboard/files/yubikey.xml">config</a></p>
+<p>Custom &quot;SpaceFN&quot; layout: <a href="https://github.com/wincent/wincent/blob/master/roles/keyboard/files/spacefn.xml">config</a></p>
+<h2>Old settings</h2>
+<p>This is the killer setting I ran with for a long time:</p>
+<ul>
+<li>&quot;Change Key&quot; tab:
+<ul>
+<li>&quot;Change Control_L key (Left Control)&quot;
+<ul>
+<li>&quot;Control_L to Control_L (+ When you type Control_L only, send Escape)&quot;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>It was usefully combined with (so that you can keep Control as Control, so that menu modifiers work as before, while still having Caps Lock functionality available somewhere else, and &quot;sticky&quot; shift functionality as a bonus):</p>
+<ul>
+<li>&quot;Change Key&quot; tab:
+<ul>
+<li>&quot;Change Shift_L Key (Left Shift)&quot;
+<ul>
+<li>&quot;Shift_L to Shift_L (+ When you type Shift_L only, Sticky Shift_L) (+ When you type Shift_L twice, Capslock)&quot;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>I ended up getting rid of the sticky shift because I found that I'd end up activating it without meaning to, and sometimes I'd end up activating Capslock by mistake and then triggering an unwanted sticky shift when trying to deactivate it.</p>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Mac_OS_X_%22must_haves%22">Mac OS X &quot;must haves&quot;</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

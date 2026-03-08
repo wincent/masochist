@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Setting up backup (mirror) repositories on Gitorious • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Setting up backup (mirror) repositories on Gitorious</h1></div><div class="metadata"><relative-time created="1242240883" updated="1710259978">Created 5/13/2009, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>For the impatient</h2>
+<p>Once the initial set-up is done, it's a simple matter of:</p>
+<pre><code># given local user $GIT_USER, $GITORIOUS_PROJECT, and $GITORIOUS_REPO
+cd /path/to/repo
+sudo -u $GIT_USER git remote add --mirror gitorious git@gitorious.org:$GITORIOUS_PROJECT/$GITORIOUS_REPO
+
+# either wait for the cron job to propagate the changes, or...
+sudo -u $GIT_USER -s -H
+git push gitorious
+</code></pre>
+<h2>Set-up</h2>
+<p>Most of the set-up is described in &quot;<a href="/wiki/Setting_up_backup_%28mirror%29_repositories_on_GitHub">Setting up backup (mirror) repositories on GitHub</a>&quot;. I'm using the same public key that I described on that page under &quot;Setting up a private/public key pair&quot;.</p>
+<p>I also added a block like this to my <code>~/.ssh/config</code>; it's not strictly necessary but I think it's nice to be explicit:</p>
+<pre><code>Host gitorious.org
+  IdentityFile /path/to/git/home/.ssh/id_dsa
+  HostName gitorious.org
+  User git
+</code></pre>
+<p>With this set-up in place you have the option of specifying the repository using:</p>
+<pre><code>gitorious.org:wopublic/wopublic.git
+</code></pre>
+<p>Instead of the longer:</p>
+<pre><code>git@gitorious.org:wopublic/wopublic.git
+</code></pre>
+<h2>Creating the new repository on Gitorious</h2>
+<ol>
+<li>Click on the &quot;<a href="http://gitorious.org/projects">All Projects</a>&quot; link</li>
+<li>Click the &quot;<a href="http://gitorious.org/projects/new">Create a New Project</a>&quot; button</li>
+<li>Enter:
+<ol>
+<li>Title (for example &quot;WOHotKey&quot;)</li>
+<li>Slug (for example &quot;wohotkey&quot;)</li>
+<li>Categories (for example &quot;objective-c mac-os-x&quot;)</li>
+<li>License (for example &quot;BSD License&quot;)</li>
+<li>Home URL</li>
+<li>Bugtracker URL (for example, <a href="https://wincent.dev/issues/">https://wincent.dev/issues/</a>)</li>
+</ol>
+</li>
+<li>Disable the wiki</li>
+<li>Provide a Description (for example, &quot;Mirror of the official WOHotKey repository at git.wincent.dev&quot;)</li>
+<li>Click on &quot;Create project&quot;</li>
+</ol>
+<p>Now create a new repository:</p>
+<ol>
+<li>Fill in:
+<ol>
+<li>Name (for example, &quot;WOHotKey&quot;)</li>
+<li>Description (for example, &quot;Mirror of the official WOHotKey repository at git.wincent.dev&quot;)</li>
+</ol>
+</li>
+</ol>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

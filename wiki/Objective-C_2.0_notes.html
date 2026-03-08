@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Objective-C 2.0 notes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Objective-C 2.0 notes</h1></div><div class="metadata"><relative-time created="1162518987" updated="1584053324">Created 11/3/2006, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These notes are made on the basis of publicly available information:</p>
+<ul>
+<li><a href="http://www.apple.com/macosx/leopard/xcode.html">http://www.apple.com/macosx/leopard/xcode.html</a></li>
+<li><a href="http://developer.apple.com/leopard/overview/">http://developer.apple.com/leopard/overview/</a></li>
+<li><a href="http://lists.apple.com/archives/objc-language/2006/Aug/msg00039.html">http://lists.apple.com/archives/objc-language/2006/Aug/msg00039.html</a></li>
+<li><a href="http://lists.apple.com/archives/objc-language/2006/Aug/msg00003.html">http://lists.apple.com/archives/objc-language/2006/Aug/msg00003.html</a></li>
+</ul>
+<p>Points for converting code to Objective-C 2.0 (with Garbage Collection):</p>
+<ul>
+<li><code>self.var</code> translates to <code>[self var]</code></li>
+<li>the synthezied instance variable generated based on the <code>var</code> property will be <code>_var</code></li>
+<li>if you want to access the instance variable directly you must therefore use <code>self-&gt;_var</code> or <code>_var</code></li>
+<li><code>var</code> on its own will be a undeclared symbol error</li>
+<li>you should avoid using accessors before an object is fully initialized (ie. in an <code>init</code> or <code>copyWithZone:</code> method)</li>
+<li>in such cases use direct access (eg. <code>self-&gt;_var</code>)</li>
+<li>with <a href="/wiki/GC">GC</a>, <code>retain</code>/<code>release</code> <em>et al</em> are ignored</li>
+<li>so your <code>init</code> methods should look like this:</li>
+</ul>
+<!-- -->
+<pre><code>- (id)init
+{
+    if ((self = [super init]))
+        self-&gt;_var = [NSColor textColor];
+    return self;
+}
+</code></pre>
+<ul>
+<li>Note that there is no need to send a <code>retain</code> to the returned color</li>
+<li>Also note that when properties are used there is no need to declare instance variables, accessor methods, or write accessor methods</li>
+<li>A suitable property declaration in the header would be:</li>
+</ul>
+<!-- -->
+<pre><code>@property (ivar) NSColor *fooColor;
+</code></pre>
+<ul>
+<li>The <code>ivar</code> attribute tells the compiler to add an instance variable (in this case, <code>_fooColor</code>) and accessor methods (<code>fooColor</code> and <code>setFooColor:</code>)</li>
+<li>There is no need for a dealloc method; the color will be deallocated when all references to the object go away</li>
+<li>Implicit accessor methods are presumably sensitive to whether they are used as a left-hand or a right-hand value in an assignment:</li>
+</ul>
+<!-- -->
+<pre><code>// presumably equivalent to: [object setName:@&quot;foo&quot;]
+object.name = @&quot;foo&quot;;
+
+// presumably equivalent to: var = [object name]
+var = object.name;
+</code></pre>
+<h2>Is Objective-C 2.0 available?</h2>
+<p>Check for built-in macro, <code>__OBJC2__</code>?</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

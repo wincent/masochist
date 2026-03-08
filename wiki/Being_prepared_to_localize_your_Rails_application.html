@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Being prepared to localize your Rails application • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Being prepared to localize your Rails application</h1></div><div class="metadata"><relative-time created="1180866501" updated="1584053324">Created 6/3/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/rails">rails</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Localizing your application during its early development stages may reduce your ability to change and move forward quickly. Nevertheless, it may be useful to prepare the way for later localization; that is, lay down some infrastructure which won't require too much effort during the early stages but which will make the job of localizing in the future somewhat easier.</p>
+<p>This article describe one technique for doing this.</p>
+<h2>Goal</h2>
+<p>The goal is to regularly use a <code>_</code> localization function styled like <a href="/wiki/gettext">gettext</a> where ever user-visible strings appear in your code base. You won't actually perform any localizations during development, and the functions you insert won't alter your strings in any way, but the code base will be ready for localization if you decide to go ahead and do so in the future.</p>
+<h2>Add a <a href="/wiki/spec">spec</a> describing the desired behaviour</h2>
+<p>In the spirit of <a href="/wiki/Behaviour-Driven_Development">Behaviour-Driven Development</a>, we'll write a <a href="/wiki/spec">spec</a> before writing any other code.</p>
+<p>In <code>spec/lib/kernel_spec.rb</code> add a <a href="/wiki/spec">spec</a> like this:</p>
+<pre><code>require File.dirname(__FILE__) + '/../spec_helper'
+
+describe 'The &quot;_&quot; localization method' do
+
+  it 'should return the passed-in string' do
+    _('foobar').should == 'foobar'
+  end
+
+  it 'should return nil if passed nil' do
+    _(nil).should be_nil
+  end
+
+end
+</code></pre>
+<h2>Implement desired behaviour</h2>
+<p>In <code>lib/kernel.rb</code> add the minimal code to make the <a href="/wiki/spec">spec</a> pass:</p>
+<pre><code>module Kernel
+  def _(localize)
+    localize
+  end
+end
+</code></pre>
+<h2>Customize configuration</h2>
+<p>In <code>config/environment.rb</code> add a <code>require</code> so that the <code>_</code> method will be available throughout your application:</p>
+<pre><code>require File.dirname(__FILE__) + '/../lib/kernel.rb'
+</code></pre>
+<h2>Use localization function</h2>
+<p>Now when developing user-visible strings that should be localized, use the newly defined <code>_</code> function; that is:</p>
+<pre><code>flash[:error] = _('Invalid login name or passphrase')
+</code></pre>
+<p>Instead of:</p>
+<pre><code>flash[:error] = 'Invalid login name or passphrase'
+</code></pre>
+<p>As you can see, this entails adding some additional punctuation (an underscore and parentheses) to each user-visible string, but only a minimal effort is required.</p>
+<h2>Conclusion</h2>
+<p>Now the basic infrastructure is in place so that when the time comes to &quot;flip the switch&quot; and do real localization you can insert <a href="/wiki/gettext">gettext</a> into your project, roll your own, or shoe-horn just about any localization plugin into your <code>_</code> method.</p>
+<p>Obviously the technique described here is only worthwhile if you know that it's likely that you'll one day want to localize your project. If you have no intention of ever doing so then it is almost certainly a wasted effort.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

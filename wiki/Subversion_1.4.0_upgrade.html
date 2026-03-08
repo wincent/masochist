@@ -1,0 +1,370 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Subversion 1.4.0 upgrade • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Subversion 1.4.0 upgrade</h1></div><div class="metadata"><relative-time created="1159966433" updated="1710259978">Created 10/4/2006, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/subversion">subversion</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These notes were made during the upgrade from <a href="/wiki/Subversion">Subversion</a> version 1.3.2 to the new version 1.4.0.</p>
+<h2>Upgrade of local install</h2>
+<p>These notes apply to the upgrade of the local (Mac OS X) install.</p>
+<pre><code>wget http://subversion.tigris.org/downloads/subversion-deps-1.4.0.tar.bz2
+md5 subversion-deps-1.4.0.tar.bz2
+wget http://subversion.tigris.org/downloads/subversion-1.4.0.tar.bz2
+md5 subversion-1.4.0.tar.bz2
+tar xjvf subversion-1.4.0.tar.bz2
+tar xjvf subversion-deps-1.4.0.tar.bz2
+cd subversion-1.4.0
+sudo /usr/local/apache2/bin/apachectl stop
+sudo rm -f /usr/local/lib/libsvn*
+sudo rm -f /usr/local/lib/libapr*
+sudo rm -f /usr/local/lib/libexpat*
+sudo rm -f /usr/local/lib/libneon*
+</code></pre>
+<p>The changelog for APR 0.9.7 (<code>apr/CHANGES</code>) appears to suggest that the <a href="http://subversion.tigris.org/faq.html#tiger-apr-0.9.6"><code>ac_cv_func_poll</code> workaround</a> is no longer necessary on Tiger:</p>
+<pre><code>  *) Fix issue with poll() followed by net I/O yielding EAGAIN on
+     Mac OS 10.4 (Darwin 8). [Wilfredo Sanchez]
+</code></pre>
+<p>So we'll skip that, unlike <a href="http://wincent.dev/a/knowledge-base/archives/2006/04/subversion_131.php">in previous upgrades</a>:</p>
+<pre><code>sh ./autogen.sh
+./configure
+make
+make check
+</code></pre>
+<p>Skipped tests:</p>
+<pre><code>At least one test was SKIPPED, checking /Users/wincent/trabajo/subversion/subversion-1.4.0/tests.log
+SKIP:  utf8_tests.py 1: conversion of paths and logs to/from utf8
+SKIP:  svnsync_tests.py 14: verify that unreadable content is not synced
+SKIP:  svnsync_tests.py 15: verify that copies from unreadable dirs work
+SKIP:  authz_tests.py 1: authz [/issues/2486 issue #2486] - open root
+SKIP:  authz_tests.py 2: authz [/issues/2486 issue #2486] - open directory
+SKIP:  authz_tests.py 3: broken authz files cause errors
+SKIP:  authz_tests.py 4: test authz for read operations
+SKIP:  authz_tests.py 5: test authz for write operations
+SKIP:  authz_tests.py 6: test authz for checkout
+SKIP:  authz_tests.py 7: test authz for log and tracing path changes
+SKIP:  authz_tests.py 8: test authz for checkout and update
+SKIP:  authz_tests.py 9: test authz for export with unreadable subfolder
+</code></pre>
+<p>Continuing with the install:</p>
+<pre><code>sudo make install
+svn --version
+sudo /usr/local/apache2/bin/apachectl start
+</code></pre>
+<p>Start-up fails with the following error:</p>
+<pre><code>Syntax error on line 234 of /usr/local/apache2/conf/httpd.conf:
+Cannot load /usr/local/apache2/modules/mod_dav_svn.so into server:
+Library not loaded: /usr/local/lib/libsvn_subr-1.0.dylib\n
+Referenced from: /usr/local/apache2/modules/mod_dav_svn.so\n
+Reason: image not found
+</code></pre>
+<p>And indeed there is no <code>dylib</code> at the referenced location:</p>
+<pre><code>lrwxr-xr-x     1 root  wheel  -      15 Sep 12 20:43 libsvn_subr-1@ -&gt; libsvn_subr-1.0
+-rwxr-xr-x     1 root  wheel  -  537712 Sep 12 20:43 libsvn_subr-1.0*
+lrwxr-xr-x     1 root  wheel  -      15 Sep 12 20:43 libsvn_subr-1.0.0.0@ -&gt; libsvn_subr-1.0
+-rw-r--r--     1 root  wheel  -  612588 Sep 12 20:43 libsvn_subr-1.a
+-rwxr-xr-x     1 root  wheel  -     963 Sep 12 20:43 libsvn_subr-1.la*
+</code></pre>
+<p>In fact, on further inspection, I see that no <code>libapr</code>, <code>libexpat</code> or <code>libneon</code> files were installed into <code>/usr/local/lib</code> at all. So onto a second attempt, this time explicitly setting the paths to the <code>apr</code>, <code>apr-util</code> and <code>neon</code> directories:</p>
+<pre><code>make clean
+sudo rm -f /usr/local/lib/libsvn*
+sh ./autogen.sh
+./configure --with-apr=./apr --with-apr-util=./apr-util --with-neon=./neon
+</code></pre>
+<p>But this warning was produced:</p>
+<pre><code>==================================================================
+WARNING: skipping the build of mod_dav_svn
+         --with-apxs or --with-apache must be used
+==================================================================
+</code></pre>
+<p>So tried again explicitly specifying the path to <code>apxs</code>:</p>
+<pre><code>./configure --with-apr=./apr --with-apr-util=./apr-util --with-neon=./neon \
+                 --with-apxs=/usr/sbin/apxs
+</code></pre>
+<p>And got this error:</p>
+<pre><code>checking for Apache module support via DSO through APXS...
+configure: error: no - APXS refers to an old version of Apache
+                     Unable to locate /usr/include/httpd/mod_dav.h
+</code></pre>
+<p>So it appears that I need to rebuild Apache as well:</p>
+<pre><code>cd ../..
+mkdir httpd
+cd httpd
+wget http://apache.rediris.es/httpd/httpd-2.0.59.tar.bz2
+tar xjvf httpd-2.0.59.tar.bz2
+cd httpd-2.0.59
+./configure --with-apr=../../subversion/subversion-1.4.0/apr \
+            --with-apr-util=../../subversion/subversion-1.4.0/apr-util \
+            --with-ssl --enable-dav --enable-so --prefix=/usr/local/apache2
+make
+</code></pre>
+<p>Fails with this error:</p>
+<pre><code>libtool: link: cannot find the library
+`/Users/wincent/trabajo/subversion/subversion-1.4.0/apr-util/libaprutil-0.la'
+make[2]: *** [htpasswd] Error 1
+make[1]: *** [all-recursive] Error 1
+make: *** [all-recursive] Error 1
+</code></pre>
+<p>So try building <code>libapr</code> and <code>libaprutil</code> manually before building Apache:</p>
+<pre><code>cd ../../subversion/subversion-1.4.0/apr
+./configure
+make
+make check
+cd ../apr-util
+./buildconf --with-apr=../apr
+./configure --with-apr=../apr
+make
+make check
+</code></pre>
+<p>The <code>make check</code> of <code>apr-util</code> ran many of the test successfully but then appeared to hang at this line indefinitely and had to be interrupted (Control-C) after a lengthy wait (15 minutes or more):</p>
+<pre><code>Yes 1219606855000000 Sun, 24 Aug 2008 19:40:55 GMT
+</code></pre>
+<p>While we're at it, may as well try building <code>libneon</code> and installing everything as well:</p>
+<pre><code>cd ../neon
+./configure --with-ssl
+make
+make check
+</code></pre>
+<p>Unfortunately not all tests pass:</p>
+<pre><code>27. write_reset........... FAIL (write got -3 not reset: Broken pipe)
+&lt;- summary for `socket': of 34 tests run: 33 passed, 1 failed. 97.1%
+FAILURE
+make[1]: *** [check] Error 1
+make: *** [check] Error 2
+</code></pre>
+<p>But we'll install anyway (<a href="http://www.lyra.org/pipermail/neon/2005-October/002093.html">Google search result 1</a>, <a href="http://www.lyra.org/pipermail/neon/2004-December/001831.html">Google search result 2</a>, <a href="http://140.123.103.42/cgi-bin/dwww?type=file&amp;location=/usr/share/doc/libneon23/BUGS">Google search result 3</a>, <a href="https://summersoft.fay.ar.us/repos/svnrpms/neon/tags/neon-0.23.2-1/neon/BUGS">Google search result 4</a>):</p>
+<pre><code>sudo make install
+cd ../apr
+sudo make install
+</code></pre>
+<p>But I see that this installs the libraries into <code>/usr/local/apr/lib</code>, not the desired location:</p>
+<pre><code>make clean
+./configure --libdir=/usr/local/lib
+make
+make check
+sudo make install
+cd ../apr-util
+make clean
+./buildconf --with-apr=../apr
+./configure --with-apr=../apr
+make
+make check
+</code></pre>
+<p>Hung again during testing but proceeded with the install anyway:</p>
+<pre><code>sudo make install
+</code></pre>
+<p>Now back to Apache:</p>
+<pre><code>cd ../../../httpd/httpd-2.0.59
+./configure --with-apr=../../subversion/subversion-1.4.0/apr \
+            --with-apr-util=../../subversion/subversion-1.4.0/apr-util \
+            --with-ssl --enable-dav --enable-so --prefix=/usr/local/apache2
+make
+sudo make install
+</code></pre>
+<p>Now back to Subversion:</p>
+<pre><code>cd ../../subversion/subversion-1.4.0
+make clean
+sh ./autogen.sh
+./configure
+make
+make check
+sudo make install
+svn --version
+sudo /usr/local/apache2/bin/apachectl start
+</code></pre>
+<p>Startup again fails with pretty much the same error message:</p>
+<pre><code>Syntax error on line 234 of /usr/local/apache2/conf/httpd.conf:
+Cannot load /usr/local/apache2/modules/mod_dav_svn.so into server:
+Library not loaded: /usr/local/lib/libsvn_subr-1.0.dylib\n
+Referenced from: /usr/local/apache2/modules/mod_dav_svn.so\n
+Reason: image not found
+</code></pre>
+<p>I notice that the modification date on the <code>mod_dav_svn.so</code> module is quite old, only a couple of days <a href="http://subversion.tigris.org/project_status.html">after 1.3.2</a> came out. It is as though the 1.4.0 installation is failing to install an updated module:</p>
+<pre><code>-rwxr-xr-x    1 root     wheel    -  33952 Jun  2 04:19 mod_authz_svn.so*
+-rwxr-xr-x    1 root     wheel    - 455340 Jun  2 04:19 mod_dav_svn.so*
+</code></pre>
+<p>As a next step I downloaded the alternate archives (tar.gz), expanded them, and performed a <a href="/wiki/diff">diff</a> against the other archives (expanded from the tar.bz files), and confirmed that there were no differences.</p>
+<p>I suspect that the root cause of all my woes is that the system-installed <code>apxs</code> (at <code>/usr/sbin/apxs</code>) is being picked up by the build process instead of the correct (Apache 2) one at <code>/usr/local/apache2/bin/apxs</code>. In one of my attempts above I tried explicitly passing <code>--with-apxs</code> but I used <code>whereis</code> to grab the path, causing the wrong one to be used that time as well.</p>
+<p>Will try again, this time pulling in Apache via Subversion:</p>
+<pre><code>svn co http://svn.apache.org/repos/asf/httpd/httpd/branches/2.0.x httpd-2.0
+cd httpd-2.0/srclib
+svn co http://svn.apache.org/repos/asf/apr/apr/branches/0.9.x apr
+svn co http://svn.apache.org/repos/asf/apr/apr-util/branches/0.9.x apr-util
+cd ..
+./buildconf
+ ./configure --enable-dav --enable-so
+make
+sudo make install
+cd ../../subversion/subversion-1.4.0
+./configure --with-apxs=/usr/local/apache2/bin/apxs
+</code></pre>
+<p>The output from <code>configure</code> indicates that Subversion will use the <code>apr</code> and <code>apr-util</code> libraries from within the source tree, but these correspond to 0.9.12, not the 0.9.13 version I just checked out and built with Apache:</p>
+<pre><code>  setting APRUTIL_EXPORT_LIBS to &quot;/Users/wincent/trabajo/subversion/subversion-1.4.0/apr-util/xml/expat/lib/libexpat.la&quot;
+  setting APRUTIL_INCLUDES to &quot;-I/Users/wincent/trabajo/subversion/subversion-1.4.0/apr-util/xml/expat/lib&quot;
+  setting APRUTIL_LDFLAGS to &quot;-L/Users/wincent/trabajo/subversion/subversion-1.4.0/apr-util/xml/expat/lib&quot;
+  setting APRUTIL_LIBS to &quot;/Users/wincent/trabajo/subversion/subversion-1.4.0/apr-util/xml/expat/lib/libexpat.la&quot;
+</code></pre>
+<p>So I am going to try again removing the subdirectories and explicitly setting the paths to those libraries:</p>
+<pre><code>make clean
+rm -rf apr apr-util neon
+sudo rm -f /usr/local/lib/libsvn*
+sudo rm -f /usr/local/lib/libapr*
+sudo rm -f /usr/local/lib/libexpat*
+sh autogen.sh
+./configure --with-apxs=/usr/local/apache2/bin/apxs \
+            --with-apr=/usr/local/apache2/bin/apr-config \
+            --with-apr-util=/usr/local/apache2/bin/apu-config \
+            --with-neon=/usr/local/bin/neon-config
+</code></pre>
+<p>Interestingly, <code>configure</code> complains that an appropriate version of <code>neon</code> cannot be found:</p>
+<pre><code>configure: checking neon library
+
+An appropriate version of neon could not be found, so libsvn_ra_dav
+will not be built.  If you want to build libsvn_ra_dav, please either
+install neon 0.25.5 on this system
+
+or
+
+get neon 0.25.5 from:
+    http://www.webdav.org/neon/neon-0.25.5.tar.gz
+unpack the archive using tar/gunzip and rename the resulting
+directory from ./neon-0.25.5/ to ./neon/
+
+no suitable neon found
+</code></pre>
+<p>Nevertheless, such a version is installed (it was built previously):</p>
+<pre><code> /usr/local/bin/neon-config --version
+neon 0.25.5
+</code></pre>
+<p>Trying again; it seems that unlike the <code>--with-apr</code> and <code>--with-apr-util</code> options, the <code>--with-neon</code> option only wants a prefix, not the full path to the config tool:</p>
+<pre><code>make clean
+sh autogen.sh
+./configure --with-apxs=/usr/local/apache2/bin/apxs \
+            --with-apr=/usr/local/apache2/bin/apr-config \
+            --with-apr-util=/usr/local/apache2/bin/apu-config \
+            --with-neon=/usr/local
+make &amp;&amp; make check
+sudo make install
+sudo /usr/local/apache2/bin/apachectl start
+</code></pre>
+<p>Looks as though I should have passed <code>--disable-mod-activation</code> (&quot;Do not enable mod_dav_svn in httpd.conf&quot;) to <code>configure</code>:</p>
+<pre><code>[Wed Sep 13 14:11:05 2006] [warn] module dav_svn_module is already loaded, skipping
+[Wed Sep 13 14:11:05 2006] [warn] module authz_svn_module is already loaded, skipping
+</code></pre>
+<p>Will have to edit <code>httpd.conf</code> by handle to remove the duplicate.</p>
+<p>So in all the upgrade to 1.4.0 proved to be one the nastiest, messiest Subversion installs yet. In the <a href="http://www.google.com/search?client=safari&amp;rls=es&amp;q=site:wincent.dev+subversion&amp;ie=UTF-8&amp;oe=UTF-8">many, many Subversion upgrades I've done in recent years</a> I don't remember ever having had problems with <code>apxs</code> like I did this time (turns out that I avoided these problems <a href="http://wincent.dev/a/knowledge-base/archives/2006/06/intel_imac_setu.php">last time</a> but I'd forgotten about that). Perhaps some devilish changes were made to my <code>PATH</code> since the last time that caused all this difficulty.</p>
+<h3>Update, October 2006</h3>
+<p>I've just discovered while trying to do a checkout from an HTTPS server that this build did not end up including HTTPS support despite the fact that I built Neon with the SSL option. Back to the old drawing board. Output of <code>svn --version</code>:</p>
+<pre><code>svn, version 1.4.0 (r21228)
+   compiled Sep 13 2006, 13:38:13
+
+Copyright (C) 2000-2006 CollabNet.
+Subversion is open source software, see http://subversion.tigris.org/
+This product includes software developed by CollabNet (http://www.Collab.Net/).
+
+The following repository access (RA) modules are available:
+
+* ra_dav : Module for accessing a repository via WebDAV (DeltaV) protocol.
+  - handles 'http' scheme
+* ra_svn : Module for accessing a repository using the svn network protocol.
+  - handles 'svn' scheme
+* ra_local : Module for accessing a repository on local disk.
+  - handles 'file' scheme
+</code></pre>
+<h2>Remote install</h2>
+<p>These notes apply to the upgrade performed on the remote (Red Hat) server.</p>
+<pre><code>screen
+wget http://subversion.tigris.org/downloads/subversion-deps-1.4.0.tar.bz2
+wget http://subversion.tigris.org/downloads/subversion-1.4.0.tar.bz2
+tar xjvf subversion-1.4.0.tar.bz2
+tar xjvf subversion-deps-1.4.0.tar.bz2
+cd subversion-1.4.0
+sudo chkconfig svn off
+sudo rm -f /usr/local/lib/libsvn*
+sh ./autogen.sh
+</code></pre>
+<p>Some warnings were printed which indicate to me that I should probably update my local copy of <code>apr</code> and <code>apr-util</code>; for example:</p>
+<pre><code>buildcheck: local copy of find_apr.m4 does not match APR's copy.
+            An updated copy of find_apr.m4 may need to be checked in.
+buildcheck: local copy of PrintPath does not match APR's copy.
+            An updated copy of PrintPath may need to be checked in.
+buildcheck: local copy of find_apu.m4 does not match APRUTIL's copy.
+            An updated copy of find_apu.m4 may need to be checked in.
+</code></pre>
+<p>I am using quite old versions: 0.9.4 as part of the standard Red Hat distribution, and 0.9.7 (I presume built and installed in <code>/usr/local/</code> as part of the previous Subversion install):</p>
+<pre><code>$ apr-config --version
+0.9.4
+$ apu-config --version
+0.9.4
+$ /usr/local/apr/bin/apr-config --version
+0.9.7
+$ /usr/local/apr/bin/apu-config --version
+0.9.7
+</code></pre>
+<p>I am going to take the opportunity to update and force Subversion to use the new versions; unfortunately because I deleted my Subversion libraries in a previous step I have to bootstrap first and built another working copy of Subversion so that I can check out the <code>apr</code> and <code>apr-util</code> sources:</p>
+<pre><code>cd ..
+rm -rf subversion-1.4.0
+tar xjvf subversion-1.4.0.tar.bz2
+tar xjvf subversion-deps-1.4.0.tar.bz2
+cd subversion-1.4.0
+sh ./autogen.sh
+./configure &amp;&amp; make &amp;&amp; make check
+./subversion/svn/svn co http://svn.apache.org/repos/asf/apr/apr/branches/0.9.x apr-new
+./subversion/svn/svn co http://svn.apache.org/repos/asf/apr/apr-util/branches/0.9.x apr-util-new
+rm -rf apr apr-util
+mv apr-new apr
+mv apr-util-new apr-util
+cd apr
+./buildconf
+./configure
+make
+make check
+sudo make install
+cd ../apr-util
+./buildconf
+./configure --with-apr=/usr/local/apr/bin/apr-config
+make
+make check
+sudo make install
+cd ..
+make clean
+sh autogen.sh
+./configure --with-apr=/usr/local/apr/bin/apr-config \
+            --with-apr-util=/usr/local/apr/bin/apu-config \
+            --with-neon=/usr/local
+make
+make check
+sudo make install
+</code></pre>
+<p>Now comment out these lines added to <code>/etc/httpd/conf/httpd.conf</code> (once again should probably have used the <code>--disable-mod-activation</code> option):</p>
+<pre><code>#LoadModule dav_svn_module     /usr/lib/httpd/modules/mod_dav_svn.so
+[/tags/LoadModule #LoadModule] authz_svn_module   /usr/lib/httpd/modules/mod_authz_svn.so
+</code></pre>
+<p>Load and dump:</p>
+<pre><code>sudo -s
+cd /var/lib/svn
+mv repositories old-repositories
+mkdir repositories
+chmod 700 repositories
+chown svn:svn repositories
+sudo -u svn svnadmin dump old-repositories/project-name &gt; project-name.dump
+sudo -u svn svnadmin create repositories/project-name
+cp old-repositories/project-name/conf/svnserve.conf \
+   repositories/project-name/conf/svnserve.conf
+cp old-repositories/project-name/conf/passwd \
+   repositories/project-name/conf/passwd
+chmod 600 repositories/project-name/conf/passwd
+sudo -u svn svnadmin load repositories/project-name &lt; project-name.dump
+exit
+</code></pre>
+<p>Repository size approximately halved as a result of the dump/load cycle using the new version:</p>
+<pre><code>du -sh old-repositories
+14M     old-repositories
+du -sh repositories
+7.1M    repositories
+</code></pre>
+<p>Re-open for business:</p>
+<pre><code>sudo chkconfig svn on
+netstat -anp | grep LISTEN | grep 3690
+exit
+</code></pre>
+<h2>Notes for future upgrades</h2>
+<p>Given that I've been working on a post-commit hook script written in <a href="/wiki/Ruby">Ruby</a> I think that the next time I upgrade <a href="/wiki/Subversion">Subversion</a> I will also build <a href="/wiki/SWIG">SWIG</a> and the Ruby bindings. For more information see:</p>
+<ul>
+<li><a href="http://www.pjhyett.com/articles/2005/10/25/installing-ruby-svn-bindings">http://www.pjhyett.com/articles/2005/10/25/installing-ruby-svn-bindings</a></li>
+<li><a href="http://svn.collab.net/repos/svn/trunk/subversion/bindings/swig/INSTALL">http://svn.collab.net/repos/svn/trunk/subversion/bindings/swig/INSTALL</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

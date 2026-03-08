@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Setting up Ruby on Rails on Max OS X 10.6.2 Snow Leopard • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Setting up Ruby on Rails on Max OS X 10.6.2 Snow Leopard</h1></div><div class="metadata"><relative-time created="1269191591" updated="1495119989">Created 3/21/2010, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/rails">rails</a></li><li><a href="/tags/snow.leopard">snow.leopard</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><strong>Note:</strong> These build notes were made while working with a late-2009 (64-bit) iMac, and as such are specific to a 64-bit architecture. For notes made building on a 32-bit platform see &quot;<a href="/wiki/Setting_up_Ruby_on_Rails_on_Mac_OS_X_10.6_Snow_Leopard">Setting up Ruby on Rails on Mac OS X 10.6 Snow Leopard</a>&quot;.</p>
+<h2>Pre-installed pieces</h2>
+<p><a href="/wiki/Mac_OS_X">Mac OS X</a> <a href="/wiki/Snow_Leopard">Snow Leopard</a> already comes with some of the basic required pieces, such as <a href="/wiki/RubyGems">RubyGems</a>, <a href="/wiki/Ruby">Ruby</a> and <a href="/wiki/Rails">Rails</a> itself.</p>
+<p>I began by updating two of these pieces to the latest versions:</p>
+<pre><code class="language-shell">$ sudo gem update --system # update from version 1.3.1 to 1.3.6
+$ sudo gem install rails # update from version 2.2.2 to 2.3.5
+</code></pre>
+<h2>Other requirements</h2>
+<p>My deployment target uses <a href="/wiki/nginx">nginx</a>, <a href="/wiki/memcached">memcached</a> and <a href="/wiki/MySQL">MySQL</a>, so I install each of those on my local machine as well:</p>
+<ul>
+<li><a href="/wiki/Installing_nginx_0.7.65_on_Mac_OS_X_10.6.2_Snow_Leopard">Installing nginx 0.7.65 on Mac OS X 10.6.2 Snow Leopard</a></li>
+<li><a href="/wiki/Installing_memcached_1.4.4_on_Mac_OS_X_10.6.2_Snow_Leopard">Installing memcached 1.4.4 on Mac OS X 10.6.2 Snow Leopard</a></li>
+<li><a href="/wiki/Installing_MySQL_5.1.45_on_Mac_OS_X_10.6.2_Snow_Leopard">Installing MySQL 5.1.45 on Mac OS X 10.6.2 Snow Leopard</a></li>
+</ul>
+<h2>Application-level preparation</h2>
+<p>Once all the requisite pieces are installed we just need to prime the database and we are back in action:</p>
+<pre><code class="language-shell">$ rake db:create:all
+$ rake db:migrate:all
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

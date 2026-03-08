@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Troubleshooting &quot;git send-email&quot; problems • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Troubleshooting &quot;git send-email&quot; problems</h1></div><div class="metadata"><relative-time created="1237992538" updated="1709678609">Created 3/25/2009, updated 3/5/2024</relative-time></div><ul class="tags"><li><a href="/tags/sendmail">sendmail</a></li><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>While <code>git send-email</code> itself is a fairly simple, conservatively-written program, it is written in <a href="/wiki/Perl">Perl</a> and depends on a number of <a href="/wiki/CPAN">CPAN</a> modules and that in turn makes it fairly brittle and sensitive to changes in the system. In particular, if you move outside of the most basic usage patterns and start wanting to use things like <a href="/wiki/SMTP">SMTP</a> authentication and <a href="/wiki/SSL">SSL</a> then you're more likely to run into problems. For example, see &quot;<a href="/wiki/Installing_Net%3a%3aSMTP%3a%3aSSL_for_sending_patches_with_Git_over_secure_SMTP">Installing Net::SMTP::SSL for sending patches with Git over secure SMTP</a>&quot;, which describes the problems I had when first trying to get it to work.</p>
+<p>It's been a while since I submitted any patches via <code>git send-email</code>, and since then <a href="/wiki/Git">Git</a> itself has gone through many updates, as has my operating system (<a href="/wiki/Mac_OS_X">Mac OS X</a>) and the <a href="/wiki/CPAN">CPAN</a> has been in constant churn. After an initial, successful invocation using the <code>--dry-run</code> switch, I tried the real thing, and I guess it's not surprising that it didn't work:</p>
+<pre><code>...
+(body) Adding cc: Wincent Colaiuta &lt;example@example.com&gt; from line 'Signed-off-by: Wincent Colaiuta &lt;example@example.com&gt;'
+Use of uninitialized value in concatenation (.) or string at /System/Library/Perl/5.8.8/darwin-thread-multi-2level/Scalar/Util.pm line 30.
+ is only avaliable with the XS version at /Library/Perl/5.8.8/IO/Socket/SSL.pm line 30
+BEGIN failed--compilation aborted at /Library/Perl/5.8.8/IO/Socket/SSL.pm line 30.
+Compilation failed in require at /Library/Perl/5.8.8/Net/SMTP/SSL.pm line 8.
+BEGIN failed--compilation aborted at /Library/Perl/5.8.8/Net/SMTP/SSL.pm line 8.
+Compilation failed in require at /usr/local/libexec/git-core/git-send-email line 859.
+</code></pre>
+<p>My first trouble-shooting technique was seeing if <a href="/wiki/CPAN">CPAN</a> updates -- chosen based on <a href="/wiki/Google">Google</a> searches and module names appearing in error messages -- would fix the problem, and fairly consistently with my previous experience with CPAN, it proved to be a broken, brittle, wonky stack of teetering shards:</p>
+<ul>
+<li><code>cpan Net::SMTP::SSL</code>: &quot;Net::SMTP::SSL is up to date (1.01).&quot;</li>
+<li><code>cpan CPAN</code>: fails.</li>
+<li><code>cpan Scalar::Util</code>: &quot;Scalar::Util is up to date (1.19).&quot;</li>
+<li><code>cpan IO:Socket::SSL</code>: fails.</li>
+<li><code>cpan ExtUtils::F77</code>: fails.</li>
+<li><code>cpan ExtUtils::XSBuilder</code>: works.</li>
+<li><code>cpan Scalar::List::Utils</code>: not found.</li>
+<li><code>cpan Archive::Zip</code>: fails.</li>
+<li><code>cpan Compress::Zlib</code>: fails.</li>
+<li><code>cpan List::Utils</code>: not found.</li>
+</ul>
+<p>In the end, the only thing that would make <code>git send-email</code> work was to manually install <code>Scalar::List::Utils</code> after grabbing it manually from <a href="http://search.cpan.org/dist/Scalar-List-Utils/">http://search.cpan.org/dist/Scalar-List-Utils/</a>:</p>
+<pre><code>wget http://search.cpan.org/CPAN/authors/id/G/GB/GBARR/Scalar-List-Utils-1.19.tar.gz
+tar xzvf Scalar-List-Utils-1.19.tar.gz
+cd Scalar-List-Utils-1.19
+perl Makefile.PL
+make
+make test
+make install
+</code></pre>
+<p>That mostly fixed the problem:</p>
+<pre><code>...
+(body) Adding cc: Wincent Colaiuta &lt;example@example.com&gt; from line 'Signed-off-by: Wincent Colaiuta &lt;example@example.com&gt;'
+5.7.0 authentication failed
+</code></pre>
+<p>So at this point it looks like the breakage wasn't caused by any changes to <code>git send-email</code> itself, nor by any manual manipulation of installed <a href="/wiki/CPAN">CPAN</a> modules on my system (I explicitly avoid touching that wobbly house of cards unless really forced to). My prime suspect here is breakage in the <a href="/wiki/Apple">Apple</a>-provided <code>Scalar::Util</code> module installed at <code>/System/Library/Perl/5.8.8/darwin-thread-multi-2level/Scalar/Util.pm</code>.</p>
+<p>The next step was to find out why authentication was failing. Before getting into true debug mode, I decided to have some more &quot;fun&quot; with <a href="/wiki/CPAN">CPAN</a>:</p>
+<ul>
+<li><code>cpan IO:Socket::SSL</code>: still fails.</li>
+<li><code>cpan Net::SSLeay</code>: works.</li>
+<li><code>cpan IO:Socket::SSL</code>: still fails.</li>
+<li><code>cpan IO::Socket::INET</code>: works.</li>
+<li><code>cpan Net::IDN::Encode</code>: not available.</li>
+<li><code>cpan Net::LibIDN</code>: fails.</li>
+<li><code>cpan IO:Socket::SSL</code>: still fails.</li>
+</ul>
+<p>So time to see what's going on using a debugging script:</p>
+<pre><code>#!/usr/bin/env perl
+use warnings;
+use strict;
+use Net::SMTP::SSL;
+$IO::Socket::SSL::DEBUG = 1;
+my $smtp = Net::SMTP::SSL-&gt;new('example.com', Port =&gt; 465, Debug =&gt; 1,) or die &quot;didn't work&quot;;
+my $auth = $smtp-&gt;auth('username', 'passphrase') or die $smtp-&gt;message;
+</code></pre>
+<p>Here is the relevant snippet of the output:</p>
+<pre><code>Net::SMTP::SSL&gt;&gt;&gt; Net::SMTP::SSL(1.01)
+Net::SMTP::SSL&gt;&gt;&gt;   IO::Socket::SSL(1.12)
+Net::SMTP::SSL&gt;&gt;&gt;     IO::Socket::INET(1.31)
+Net::SMTP::SSL&gt;&gt;&gt;       IO::Socket(1.30)
+Net::SMTP::SSL&gt;&gt;&gt;         IO::Handle(1.27)
+Net::SMTP::SSL&gt;&gt;&gt;           Exporter(5.58)
+Net::SMTP::SSL&gt;&gt;&gt;   Net::Cmd(2.29)
+Net::SMTP::SSL=GLOB(0x8a0110)&lt;&lt;&lt; 220 wincent1.inetu.net ESMTP Sendmail 8.13.8/8.13.8; Wed, 25 Mar 2009 14:08:48 -0400
+Net::SMTP::SSL=GLOB(0x8a0110)&gt;&gt;&gt; EHLO localhost.localdomain
+Net::SMTP::SSL=GLOB(0x8a0110)&lt;&lt;&lt; 250-wincent1.inetu.net Hello 179.pool85-53-16.dynamic.orange.es [85.53.16.179], pleased to meet you
+Net::SMTP::SSL=GLOB(0x8a0110)&lt;&lt;&lt; 250-ENHANCEDSTATUSCODES
+Net::SMTP::SSL=GLOB(0x8a0110)&lt;&lt;&lt; 250-PIPELINING
+Net::SMTP::SSL=GLOB(0x8a0110)&lt;&lt;&lt; 250-8BITMIME
+Net::SMTP::SSL=GLOB(0x8a0110)&lt;&lt;&lt; 250-SIZE
+Net::SMTP::SSL=GLOB(0x8a0110)&lt;&lt;&lt; 250-DSN
+Net::SMTP::SSL=GLOB(0x8a0110)&lt;&lt;&lt; 250-ETRN
+Net::SMTP::SSL=GLOB(0x8a0110)&lt;&lt;&lt; 250-AUTH DIGEST-MD5 CRAM-MD5 LOGIN PLAIN
+Net::SMTP::SSL=GLOB(0x8a0110)&lt;&lt;&lt; 250-DELIVERBY
+Net::SMTP::SSL=GLOB(0x8a0110)&lt;&lt;&lt; 250 HELP
+Net::SMTP::SSL=GLOB(0x8a0110)&gt;&gt;&gt; AUTH DIGEST-MD5
+</code></pre>
+<p>So here we see it's choosing the <code>DIGEST-MD5</code> authentication method. A quick(?) <a href="/wiki/Google">Google</a> search <a href="http://www.sendmail.org/~ca/email/auth.html">reveals</a> the likely cause of the problem:</p>
+<blockquote>
+<p>If you want to use <code>DIGEST-MD5</code> or <code>CRAM-MD5</code> and it doesn't work despite the previous check, make sure that <code>sasldb</code> actually contains passwords for those mechanism. This can be done by looking at its content (using <code>strings</code> or <code>od -c</code>) and checking that the names of those mechanisms appear in the file.</p>
+</blockquote>
+<p>Quickly disable those authentication methods with a quick <code>cd /etc/mail &amp;&amp; vim sendmail.mc &amp;&amp; make &amp;&amp; service sendmail restart</code>, and sure enough, the debugging script works and so does <code>git send-email</code>.</p>
+<p><a href="http://www.sendmail.org/~ca/email/auth.html">The page</a> I've already linked to above contains instructions on how to set up the <code>sasldb</code> or <code>sasldb2</code> password file if you want to offer the <code>DIGEST-MD5</code> and <code>CRAM-MD5</code> methods.</p>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Troubleshooting_%22git_send-email%22_problems">Troubleshooting &quot;git send-email&quot; problems</a></li>
+<li><a href="/wiki/Installing_Net%3A%3ASMTP%3A%3ASSL_for_sending_patches_with_Git_over_secure_SMTP">Installing Net::SMTP::SSL for sending patches with Git over secure SMTP</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

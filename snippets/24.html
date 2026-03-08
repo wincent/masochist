@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Site updates 0.32 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link active" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><h1><a href="/snippets/24">Site updates 0.32</a></h1><div class="metadata"><relative-time created="1296589338" updated="1584053324">Created 2/1/2011, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/site">site</a></li><li><a href="/tags/snippets">snippets</a></li></ul><div class="prerendered"><p>Look at commit 42e0f26 for evidence of a breach of discipline on my part. Out of habit, I was working directly on the master branch when <a href="/snippets/19">news of a security vulnerability</a> in the Mail gem used by <a href="/wiki/Rails">Rails</a> persuaded me to do <a href="/snippets/20">a hasty deployment</a>, even though I suspected that in my app the vulnerability in the gem was unlikely to be exploitable.</p>
+<p>The breach of discipline referred to above was that I was working on the master branch when I should have been on a topic branch. I had a bunch of commits already pushed out, but the feature was not yet completed, so I couldn't use the tip of the master branch for deployment purposes.</p>
+<p>Now I <em>could</em> have created another branch containing only the fix (eg. &quot;security&quot;) and then deployed that, but I didn't really want to create another branch in the repo that I would then be obliged to keep around forever.</p>
+<p>So I created a new branch for my topic (that's the &quot;unobtrusive&quot; branch mentioned in the commit message for 42e0f26) and then rewound the master branch and applied the security fix. This required a forced update when pushing, something which I only allowed myself to do because I am the sole consumer of this particular repo.</p>
+<p>Once all this was done, I was free to merge the changes on the master branch into the &quot;unobtrusive&quot; topic branch (although I could have just rebased too, and perhaps I should have in order to hide this little slip up on my part). Finally when the topic was finished I could just merge the &quot;unobtrusive&quot; topic branch back into &quot;master&quot; and delete the former.</p>
+<p>Lessons learned?</p>
+<ul>
+<li>be more disciplined about using topic branches when starting on features or refactorings that will take many commits to complete</li>
+<li>consider reviving the old &quot;maint&quot; branch that I used to use and keeping it around for these cases where you need to deploy a one-commit fix <em>right now</em></li>
+</ul>
+<p>It's funny. I stopped using the &quot;maint&quot; branch a while back because I thought it was a mistake (see <a href="/blog/thoughts-on-staging-environments-and-branches-for-web-apps">my blog post</a>, &quot;Thoughts on staging environments and branches for web apps&quot;).</p>
+<p>Now I'm thinking that I wasn't quite right there; while it's true that equating &quot;master&quot; with &quot;staging&quot; and &quot;maint&quot; with &quot;production&quot; is a mistake, I think this little episode clearly demonstrates the utility of having a &quot;maint&quot; branch which closely tracks the &quot;master&quot; branch, usually lagging a little behind (at the previously deployed commit) so that you can easily push out quick fixes when required. Keeping this kind of branch is dead easy in <a href="/wiki/Git">Git</a>, seeing as it will basically always be fast-forwarded.</p>
+<pre><code>42e0f26 Merge branch 'master' into unobtrusive
+04e90cb Update to Steak 1.0.1
+950d776 Update database_cleaner to 0.6.1
+dc399b6 Update to Capybara 0.4.1.1
+97ce4fa Remove unnecessary require
+a1f119a deploy: bump Bundler version requirement to 1.0.9
+44f91e3 Update to jQuery 1.5
+840b85b Be more radical about avoiding HTML layout around non-HTML requests
+3e879aa Inline template_exists? method in JsController
+88d0e41 Drop unnecessary call to [/tags/scoped #scoped]
+df7b8cb Drop unnecessary parens
+d7df7bb Remove last use of #sort_options method
+3803ccf Remove #sort_options and #default_sort_options (now unused)
+c99119e Rename #arel_sort_options and #default_arel_sort_options
+e49fa5c Replace ternary with more concise &amp;&amp; operator
+a5db146 Fix indenting
+d29cfdd Edit lib/sortable for brevity
+bba9ccd Remove unnecessary temporary variable
+5aaf171 Avoid repeated calls to [/tags/map #map] in lib/sortable
+d18370b Fix breakage in lib/sortable when no sort param present
+191c0b3 Use define_method rather than class_eval in lib/sortable
+a79fc60 Make controller instance methods added by lib/sortable private
+bbf719a Temporarily revert 840b85b (layout suppression for non-HTML requests)
+089b4b2 Unobtrusive topic deletion with graceful degradation
+8f1379f Make #button_to_destroy_model degrade gracefully
+c3a142c Drop explicit call to polymorphic_path
+71ed189 Implement graceful degredation for comment destruction
+5de7f2b Remove superfluous button_to_destroy_{issue,topic,comment} helpers
+447410a Remove button_to_destroy_page helper
+df6aa2a Update stale routing spec to reflect newly added routes
+96f7a3a Add unobtrusive AJAX-y post deletion in admin/posts
+6240c6f Replace longhand button_to call with shortcut helper call
+810a20d Remove non-functional tag destroy button
+3158b47 Use button_to_destroy_model helper in issue awaiting moderation template
+98ecfdd Add 'ham' button to issue awaiting moderation template
+8ad41e4 Use button_to_destroy_model helper in issues#show
+31b727a Implement link deletion
+11896cb Add destroy button to links#edit
+fd01aac Use #button_to_destroy_model in repos#edit
+00f9340 Use #button_to_destroy_model in snippets#edit
+ac9cf6f Comment out non-functional tag delete button in tags#edit
+c82c3c6 Use #button_to_destroy_model in tweets#edit
+abb624e Mark a tags#edit view spec as pending
+bbe76bd deploy: insist on having Bundler 1.0.10 on the server
+</code></pre>
+</div><div class="post-nav"><div class="post-nav-prev"><a href="/snippets/724">← Snippet #724</a></div><div class="post-nav-next"><a href="/snippets/723">Snippet #723 →</a></div></div><p class="post-nav-all"><a href="/snippets/all">All snippets</a></p></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

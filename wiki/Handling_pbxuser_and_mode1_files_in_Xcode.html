@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Handling pbxuser and mode1 files in Xcode • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Handling pbxuser and mode1 files in Xcode</h1></div><div class="metadata"><relative-time created="1184592676" updated="1584053324">Created 7/16/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>According to <a href="http://lists.apple.com/archives/Xcode-users/2005/Jul/msg00541.html">Apple's Chris Espinosa</a>:</p>
+<blockquote>
+<p>One thing you could do is take your daniel.pbxuser and rename it to default.pbxuser, then commit it with the project. Xcode loads default.pbxuser unless there's a username-matching pbxuser file.</p>
+</blockquote>
+<h2>What is actually stored in a <code>.pbxuser</code> file?</h2>
+<ul>
+<li>Scott Tooker (Apple): &quot;the locations for built products and intermediates files.&quot;</li>
+<li>David Ewing (Apple): &quot;The currently active target, executable, and build style are all stored in the file ... Other information includes window/view sizes, bookmarks, breakpoints, custom executables, smart groups and code sense settings.&quot;</li>
+</ul>
+<h2>What is actually stored in a <code>.mode1</code> file?</h2>
+<ul>
+<li>Scott Tooker: &quot;The .mode1 file contains layout information for the project (like window positions and sizes, including sizes of sub-views and the like).&quot;</li>
+<li>Scott Tooker: &quot;[T]he various *.mode* files track information about your workspace configuration. It's nothing critical to the project so it is safe to throw them away.&quot;</li>
+</ul>
+<p>Another post from Scott:</p>
+<blockquote>
+<p>Currently we already separate project settings data into two parts:</p>
+<p>project.pbxproj - per project data (file &amp; group hierarchy, target build settings, for example) &lt;username&gt;.pbxuser - per user per project data (user bookmarks, custom executables, UI layout)</p>
+<p>In future releases we want to separate project data from UI layout data (so the &lt;username&gt;.pbxuser file would split into two files). The .mode1 files are step in this direction.</p>
+<p>We've also talked about separating out target-specific data from the project.pbxproj file.</p>
+</blockquote>
+<h2>Suggested action</h2>
+<h3>Git</h3>
+<p>If using <a href="/wiki/Git">Git</a>, you can add a <code>.gitignore</code> file inside your project bundle with contents like this:</p>
+<pre><code>*.mode1
+*.pbxuser
+!default.pbxuser
+</code></pre>
+<h3>Subversion</h3>
+<p>After closing Xcode:</p>
+<pre><code>svn mv wincent.pbxuser default.pbxuser
+svn mv wincent.mode1 default.mode1
+svn commit
+</code></pre>
+<p>Although it appears that Xcode ignores the <code>default.mode1</code> file. So consider this instead:</p>
+<pre><code>cd path_to_project_bundle
+svn commit -m &quot;Pre-rename pbxuser commit&quot;
+svn mv wincent.pbxuser default.pbxuser
+svn commit -m &quot;Create default.pbxuser&quot;
+svn propset svn:ignore 'wincent.*' .
+svn commit -m &quot;Ignore wincent.pbxuser, wincent.mode1 etc&quot;
+</code></pre>
+<p>You can still check-in the files occasionally but will no longer see them in status listings.</p>
+<p>If the files in question are already in the repository you'll need to get rid of them:</p>
+<pre><code>svn del URL_TO_PBXUSER_FILE_IN_REPOSITORY
+svn del URL_TO_MODE1_FILE_IN_REPOSITORY
+svn up
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

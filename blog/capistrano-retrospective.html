@@ -1,0 +1,409 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Capistrano retrospective • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/capistrano-retrospective">Capistrano retrospective</a></h1><div class="metadata"><relative-time created="1268486738" updated="1625834873">Created 3/13/2010, updated 7/9/2021</relative-time><span>8 minute read</span></div><div class="prerendered"><p>Back in September 2009 I wrote about <a href="/wiki/getting_rid_of_Capistrano">getting rid of Capistrano</a>, replacing about 6,000 lines of flakey, fragile <a href="/wiki/Ruby">Ruby</a> code with a 268-line shell script. I finished that post with:</p>
+<blockquote>
+<p>This thing works and it'll be drop-dead easy to maintain. It took only a few hours to put together. If only I hadn't wasted all that time with Capistrano.</p>
+</blockquote>
+<p>Having just moved from a dedicated hosting environment at <a href="/wiki/INetU">INetU</a> to a rather different one in <a href="/wiki/the_cloud">the cloud</a> (<a href="/wiki/AWS">AWS</a>), did my my claim that it would be &quot;drop-dead easy&quot; stand up to the test?</p>
+<p>The answer is a resounding yes. It really was just a matter of updating a small number of variables, and changing some of the commands to reflect new usernames and access credentials. Ironically, despite the fact that my hosting arrangement is now more complex (spread across multiple instances), the actual deployment script got a little simpler.</p>
+<h2>The script</h2>
+<p>A got a few comments on my original article asking to see the script. At the time I said:</p>
+<blockquote>
+<p>There's really no point in publishing it seeing as it is completely specific to my deployment server (paths, repos etc).</p>
+<p>It is literally just the same commands that Capistrano would perform (using <code>rm</code>, <code>ln</code>, <code>cp</code>, <code>ssh</code>, <code>test</code> etc) with some &quot;glue&quot; stuff to echo some progress info to the console. You could make your own by looking at the output from your normal Capistrano run and just extracting the raw commands.</p>
+</blockquote>
+<p>I still maintain that it's obviously not directly usable by others in other contexts, but I guess it may be instructive of what this kind of script might look like in other set-ups. So here is a copy, with some of the names changed to protect the innocent.</p>
+<p>As you can see, if you strip away the comments, the usage, and the &quot;glue&quot; code that does things like processing command line arguments and invoking actions in the right order, the actual operations being performed are very simple indeed.</p>
+<pre><code class="language-bash">#!/bin/sh -e
+# Copyright 2009-2010 Wincent Colaiuta. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+# 1. Redistributions of source code must retain the above copyright notice,
+#    this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright notice,
+#    this list of conditions and the following disclaimer in the documentation
+#    and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+
+# deploy to:
+SERVER=rails.example.com
+DEPLOY=/path/to/rails/deploy
+ENVIRONMENT=production
+
+# clone source from:
+REPO=git.example.com:/path/to/app.git
+BRANCH=master
+
+# other config
+RAILS_USER=rails_user
+MONIT_USER=monit_user
+
+staging_environment_overrides() {
+  if [ -z &quot;$STAGING_SERVER&quot; ]; then
+    bail 'STAGING_SERVER environment variable not set'
+  fi
+  SERVER=$STAGING_SERVER
+  ENVIRONMENT=staging
+}
+
+bail() {
+  echo &quot;  failed: $1&quot;
+  exit 1
+}
+
+warn() {
+  echo &quot;  warning: $1&quot;
+}
+
+usage() {
+  echo &quot;Usage:&quot;
+  echo &quot;  $0 [options] command...&quot;
+  echo &quot;&quot;
+  echo &quot;Deployment commands:&quot;
+  echo &quot;        unlock    loosen permissions to enable deployment&quot;
+  echo &quot;         check    check dependencies and prerequisites&quot;
+  echo &quot;        deploy    clone repo and deploy&quot;
+  echo &quot;  migrate_test    migrate test database only&quot;
+  echo &quot;          spec    run specs&quot;
+  echo &quot;       disable    display a maintenance page&quot;
+  echo &quot;       migrate    migrate all databases&quot;
+  echo &quot;        switch    update the symlink to point to the latest deployment&quot;
+  echo &quot;       restart    restart cluster (changes go live)&quot;
+  echo &quot;        enable    remove maintenance page&quot;
+  echo &quot;      lockdown    tighten permissions after deployment&quot;
+  echo &quot;&quot;
+  echo &quot;Other commands:&quot;
+  echo &quot;        upload    upload comma-separated files specified in FILES environment variable&quot;
+  echo &quot;&quot;
+  echo &quot;Options:&quot;
+  echo &quot;     --staging    deploy to staging environment (can abbreviate to \&quot;staging\&quot;)&quot;
+  echo &quot;     --rev=REF    deploy tag (eg. \&quot;0.7\&quot;), branch (eg. \&quot;origin/maint\&quot;), commit (SHA1)&quot;
+  echo &quot;                  by default the HEAD of the master branch is deployed&quot;
+  echo &quot;&quot;
+  echo &quot;Example workflow:&quot;
+  echo &quot;     # set an environment variable to indicate the staging server&quot;
+  echo &quot;     STAGING_SERVER=ec2-10-20-40-60.compute-1.amazonaws.com&quot;
+  echo &quot;&quot;
+  echo &quot;     # note how commands can be chained together:&quot;
+  echo &quot;     $0 staging unlock check deploy migrate_test spec&quot;
+  echo &quot;     $0 staging disable migrate switch restart enable lockdown&quot;
+  echo &quot;&quot;
+  echo &quot;     # now we repeat in the production environment:&quot;
+  echo &quot;     $0 unlock check deploy migrate_test spec&quot;
+  echo &quot;     $0 disable migrate switch restart enable lockdown&quot;
+  echo &quot;&quot;
+  echo &quot;     # the \&quot;prep/finalize\&quot; shorthand encapsulates the above patterns:&quot;
+  echo &quot;     $0 staging prep&quot;
+  echo &quot;     $0 staging finalize&quot;
+  echo &quot;     $0 prep&quot;
+  echo &quot;     $0 finalize&quot;
+  echo &quot;&quot;
+  echo &quot;     # the \&quot;all\&quot; shorthand is the same as \&quot;prep\&quot; then \&quot;finalize\&quot;&quot;
+  echo &quot;     $0 staging all&quot;
+  echo &quot;     $0 all&quot;
+  exit
+}
+
+#
+# main
+#
+
+# process arguments
+while test $# != 0; do
+  case &quot;$1&quot; in
+    -h|--help|help)
+      usage
+      ;;
+    --staging|staging|--stage|stage)
+      staging_environment_overrides
+      ;;
+    --rev=*)
+      test -z &quot;$REF&quot; || warn 'multiple revision arguments passed'
+      REF=&quot;${1#--rev=}&quot;
+      ;;
+    --revision=*)
+      test -z &quot;$REF&quot; || warn 'multiple revision arguments passed'
+      REF=&quot;${1#--revision=}&quot;
+      ;;
+    unlock)
+      DO_UNLOCK=true
+      ;;
+    wait) # undocumented but helpful to wait for &quot;unlock&quot; to take effect
+      DO_WAIT=true
+      ;;
+    check)
+      DO_CHECK=true
+      ;;
+    deploy)
+      DO_DEPLOY=true
+      ;;
+    migrate_test)
+      DO_MIGRATE_TEST=true
+      ;;
+    spec)
+      DO_SPEC=true
+      ;;
+    disable)
+      DO_DISABLE=true
+      ;;
+    migrate)
+      DO_MIGRATE=true
+      ;;
+    switch)
+      DO_SWITCH=true
+      ;;
+    stop)  # not advertised in usage
+      DO_STOP=true
+      ;;
+    start) # not advertised in usage
+      DO_START=true
+      ;;
+    restart)
+      DO_RESTART=true
+      ;;
+    enable)
+      DO_ENABLE=true
+      ;;
+    lockdown)
+      DO_LOCKDOWN=true
+      ;;
+    upload)
+      DO_UPLOAD=true
+      ;;
+    prep)
+      DO_UNLOCK=true
+      DO_WAIT=true
+      DO_CHECK=true
+      DO_DEPLOY=true
+      DO_MIGRATE_TEST=true
+      DO_SPEC=true
+      ;;
+    finalize)
+      DO_DISABLE=true
+      DO_MIGRATE=true
+      DO_SWITCH=true
+      DO_RESTART=true
+      DO_ENABLE=true
+      DO_LOCKDOWN=true
+      ;;
+    all)
+      DO_UNLOCK=true
+      DO_WAIT=true
+      DO_CHECK=true
+      DO_DEPLOY=true
+      DO_MIGRATE_TEST=true
+      DO_SPEC=true
+      DO_DISABLE=true
+      DO_MIGRATE=true
+      DO_SWITCH=true
+      DO_RESTART=true
+      DO_ENABLE=true
+      DO_LOCKDOWN=true
+      ;;
+    *)
+      usage
+      ;;
+  esac
+  shift
+done
+
+# make sure the user asked us to at least do something
+test -n &quot;$DO_UNLOCK&quot; \
+  -o -n &quot;$DO_WAIT&quot; \
+  -o -n &quot;$DO_CHECK&quot; \
+  -o -n &quot;$DO_DEPLOY&quot; \
+  -o -n &quot;$DO_MIGRATE_TEST&quot; \
+  -o -n &quot;$DO_SPEC&quot; \
+  -o -n &quot;$DO_DISABLE&quot; \
+  -o -n &quot;$DO_MIGRATE&quot; \
+  -o -n &quot;$DO_SWITCH&quot; \
+  -o -n &quot;$DO_STOP&quot; \
+  -o -n &quot;$DO_START&quot; \
+  -o -n &quot;$DO_RESTART&quot; \
+  -o -n &quot;$DO_ENABLE&quot; \
+  -o -n &quot;$DO_UPLOAD&quot; \
+  -o -n &quot;$DO_LOCKDOWN&quot; || usage
+
+trap 'test -n &quot;$SUCCESS&quot; || echo &quot;  error: aborted&quot;' EXIT
+
+echo &quot;Environment for this session: $ENVIRONMENT&quot;
+
+if [ -n &quot;$DO_UNLOCK&quot; ]; then
+   echo &quot;Processing command: unlock&quot;
+   ssh $RAILS_USER@$SERVER chsh -s /bin/sh $RAILS_USER
+fi
+
+# useful because remote system sometimes won't notice &quot;unlock&quot; immediately
+if [ -n &quot;$DO_WAIT&quot; ]; then
+  echo &quot;Processing command: wait&quot;
+  sleep 15
+fi
+
+if [ -n &quot;$DO_CHECK&quot; ]; then
+  echo &quot;Processing command: check&quot;
+  echo &quot;  checking: JavaScript is correctly minimized&quot;
+  COMPRESSOR=/usr/local/bin/closure/compiler.jar
+  test -f $COMPRESSOR || bail &quot;compressor not found at $COMPRESSOR&quot;
+  test -r $COMPRESSOR || bail &quot;compressor not readable at $COMPRESSOR&quot;
+  TMPDIR=$(mktemp -q -d /private/tmp/deploy.XXXXXX) || bail &quot;could not create temporary directory&quot;
+  if [ -z &quot;$REF&quot; ]; then
+    LOCAL_REF=$BRANCH
+  else
+    LOCAL_REF=$REF
+  fi
+  for JS in $(ls public/javascripts/*.max.js); do
+    git show $LOCAL_REF:$JS &gt; $TMPDIR/max.js
+    git show $LOCAL_REF:${JS/.max.js/.min.js} &gt; $TMPDIR/min.js
+    java -jar $COMPRESSOR --js=$TMPDIR/max.js --js_output_file=$TMPDIR/out.js
+    diff -q $TMPDIR/min.js $TMPDIR/out.js &gt; /dev/null || bail &quot;$JS is not minimized in $LOCAL_REF&quot;
+  done
+  echo &quot;  checking: directories exist and are writable&quot;
+  ssh $RAILS_USER@$SERVER &quot;sh -c '(test -d $DEPLOY          || (echo \&quot;  failed -d: $DEPLOY\&quot; &amp;&amp; exit 1)) &amp;&amp; \
+                                  (test -d $DEPLOY/shared   || (echo \&quot;  failed -d: $DEPLOY/shared\&quot; &amp;&amp; exit 1)) &amp;&amp; \
+                                  (test -d $DEPLOY/releases || (echo \&quot;  failed -d: $DEPLOY/releases\&quot; &amp;&amp; exit 1)) &amp;&amp; \
+                                  (test -w $DEPLOY          || (echo \&quot;  failed -w: $DEPLOY\&quot; &amp;&amp; exit 1)) &amp;&amp; \
+                                  (test -w $DEPLOY/releases || (echo \&quot;  failed -w: $DEPLOY/releases\&quot; &amp;&amp; exit 1))'&quot;
+  echo &quot;  checking: executables exist&quot;
+  ssh $RAILS_USER@$SERVER &quot;sh -l -c 'which gem git &gt; /dev/null'&quot;
+  echo &quot;  checking: gem versions&quot;
+  ssh $RAILS_USER@$SERVER &quot;sh -c 'gem specification --version \&quot;&gt;= 0.6\&quot;   hpricot &gt; /dev/null &amp;&amp; \
+                                  gem specification --version \&quot;&gt;= 1.0.0\&quot; rack &gt; /dev/null &amp;&amp; \
+                                  gem specification --version \&quot;&gt;= 1.0\&quot; mkdtemp &gt; /dev/null'&quot;
+  echo &quot;  checking: local branch vs remote branch&quot;
+  git diff --exit-code --quiet $BRANCH origin/$BRANCH || \
+    warn &quot;local $BRANCH differs from remote origin/$BRANCH: did you remember to 'git push'?&quot;
+  echo &quot;  checking: currently checked out branch&quot;
+  CURRENT_BRANCH=$(git symbolic-ref HEAD 2&gt; /dev/null)
+  CURRENT_BRANCH=${CURRENT_BRANCH#refs/heads/}
+  test &quot;$CURRENT_BRANCH&quot; = &quot;$BRANCH&quot; || \
+    warn &quot;currently on branch $CURRENT_BRANCH (expected $BRANCH) -- sure you're working on the right branch?&quot;
+fi
+
+if [ -n &quot;$DO_DEPLOY&quot; ]; then
+  echo &quot;Processing command: deploy&quot;
+  TIMESTAMP=$(date '+%Y%m%d%H%M%S')
+  echo &quot;  timestamp: $TIMESTAMP&quot;
+  SHARED=$DEPLOY/shared
+  CHECKOUT=$DEPLOY/releases/$TIMESTAMP
+  if [ -z &quot;$REF&quot; ]; then
+    REMOTE_REF=origin/$BRANCH
+  else
+    REMOTE_REF=$REF
+  fi
+  ssh $RAILS_USER@$SERVER &quot;sh -l -c '(test ! -e $TIMESTAMP || (echo \&quot;  failed: $CHECKOUT already exists\&quot; &amp;&amp; exit 1)) &amp;&amp; \
+                                      git clone --quiet $REPO $CHECKOUT &amp;&amp; \
+                                      cd $CHECKOUT &amp;&amp; \
+                                      git checkout --quiet -b deploy $REMOTE_REF &amp;&amp; \
+                                      (git rev-parse HEAD &gt; $CHECKOUT/REVISION) &amp;&amp; \
+                                      rm -rf $CHECKOUT/log \
+                                             $CHECKOUT/public/system \
+                                             $CHECKOUT/tmp/pids &amp;&amp; \
+                                      ln -s $SHARED/log    $CHECKOUT/log &amp;&amp; \
+                                      ln -s $SHARED/system $CHECKOUT/public/system &amp;&amp; \
+                                      ln -s $SHARED/pids   $CHECKOUT/tmp/pids &amp;&amp; \
+                                      find $CHECKOUT/public/images \
+                                           $CHECKOUT/public/stylesheets \
+                                           $CHECKOUT/public/javascripts \
+                                           -exec touch {} + &amp;&amp; \
+                                      ln -s $SHARED/database.yml    $CHECKOUT/config/database.yml &amp;&amp; \
+                                      ln -s $SHARED/app_config.yml  $CHECKOUT/config/app_config.yml &amp;&amp; \
+                                      rm -f $DEPLOY/latest &amp;&amp; \
+                                      ln -s $CHECKOUT $DEPLOY/latest &amp;&amp; \
+                                      cd $CHECKOUT &amp;&amp; \
+                                      rake --silent gems:clean &amp;&amp; \
+                                      rake --silent gems:build &amp;&amp; \
+                                      rake --silent js:minify:deploy &gt; /dev/null'&quot;
+fi
+
+if [ -n &quot;$DO_MIGRATE_TEST&quot; ]; then
+  echo &quot;Processing command: migrate_test&quot;
+  ssh $RAILS_USER@$SERVER &quot;sh -c 'cd $DEPLOY/latest &amp;&amp; rake --silent RAILS_ENV=test db:migrate'&quot;
+fi
+
+if [ -n &quot;$DO_SPEC&quot; ]; then
+  echo &quot;Processing command: spec&quot;
+  ssh $RAILS_USER@$SERVER &quot;sh -c 'cd $DEPLOY/latest &amp;&amp; rake --silent RAILS_ENV=test spec'&quot;
+fi
+
+if [ -n &quot;$DO_DISABLE&quot; ]; then
+  echo &quot;Processing command: disable&quot;
+  ssh $RAILS_USER@$SERVER cp $DEPLOY/current/public/maintenance.html \
+                             $DEPLOY/shared/system/maintenance.html
+fi
+
+if [ -n &quot;$DO_MIGRATE&quot; ]; then
+  echo &quot;Processing command: migrate&quot;
+  ssh $RAILS_USER@$SERVER &quot;sh -c 'cd $DEPLOY/latest &amp;&amp; \
+                                  rake --silent RAILS_ENV=test         db:migrate &amp;&amp; \
+                                  rake --silent RAILS_ENV=development  db:migrate &amp;&amp; \
+                                  rake --silent RAILS_ENV=migrations   db:migrate'&quot;
+fi
+
+if [ -n &quot;$DO_SWITCH&quot; ]; then
+  echo &quot;Processing command: switch&quot;
+  LATEST=$DEPLOY/latest
+  CURRENT=$DEPLOY/current
+  ssh $RAILS_USER@$SERVER &quot;sh -c '(test -d $LATEST || (echo \&quot;  failed: no deployment found at $LATEST\&quot; &amp;&amp; exit 1)) &amp;&amp; \
+                                   rm -f $CURRENT &amp;&amp; \
+                                   ln -s \$(readlink $LATEST) $CURRENT'&quot;
+  REVISION=$(ssh $RAILS_USER@$SERVER cat $LATEST/REVISION)
+  if [ ! $(git describe --exact-match $REVISION 2&gt; /dev/null) ]; then
+    TAG=$(git describe $(git rev-list --tags --max-count=1) | awk -F . '{ printf &quot;%d.%d&quot;, $1, $2 + 1}')
+    warn &quot;deployed version $REVISION is not yet tagged; tagging now as $TAG&quot;
+    git tag -s -m &quot;Deployed $(LANG=en_GB.UTF-8; date '+%d %B %Y').&quot; $TAG
+  fi
+fi
+
+if [ -n &quot;$DO_STOP&quot; ]; then
+  echo &quot;Processing command: stop&quot;
+  ssh $RAILS_USER@$SERVER monit stop unicorn
+fi
+
+if [ -n &quot;$DO_RESTART&quot; ]; then
+  echo &quot;Processing command: restart&quot;
+  ssh $RAILS_USER@$SERVER monit restart unicorn
+fi
+
+if [ -n &quot;$DO_START&quot; ]; then
+  echo &quot;Processing command: start&quot;
+  ssh $RAILS_USER@$SERVER monit start unicorn
+fi
+
+if [ -n &quot;$DO_ENABLE&quot; ]; then
+  echo &quot;Processing command: enable&quot;
+  ssh $RAILS_USER@$SERVER rm -f $DEPLOY/shared/system/maintenance.html
+fi
+
+if [ -n &quot;$DO_UPLOAD&quot; ]; then
+  echo &quot;Processing command: upload&quot;
+  test -n &quot;$FILES&quot; || warn &quot;nothing specified in FILES environment variable&quot;
+  (IFS=&quot;,&quot;
+  for FILE in $FILES; do
+    echo &quot;  file: $FILE&quot;
+    if [[ &quot;$FILE&quot; =~ ' ' ]]; then
+      warn &quot;\&quot;$FILE\&quot; contains a space; skipping&quot;
+    else
+      scp $FILE $RAILS_USER@$SERVER:$DEPLOY/current/$FILE
+    fi
+  done)
+fi
+
+if [ -n &quot;$DO_LOCKDOWN&quot; ]; then
+  echo &quot;Processing command: lockdown&quot;
+  ssh $RAILS_USER@$SERVER chsh -s /sbin/nologin $RAILS_USER
+fi
+
+SUCCESS=true
+</code></pre>
+</div><ul class="tags"><li><a href="/tags/capistrano">capistrano</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/wikitext-1.10.1-released">← Wikitext 1.10.1 released</a></div><div class="post-nav-next"><a href="/blog/site-updates-0.14">Site updates (0.14) →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

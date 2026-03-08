@@ -1,0 +1,68 @@
+Code-level changes for Wincent Strings Utility 1.2:
+
+Wincent Colaiuta (64):
+      Initial import
+      Move license notes to README
+      Remove Subversion-specific keywords
+      Update license to GPL v3
+      Update copyright notices
+      Remove redundant RCSID tagging
+      Ignore files inside Xcode project bundle
+      Update Xcode project bundle ignore file
+      Update project file to Xcode 3 format
+      Use configuration from Wincent Build Tools
+      Use default prefix header
+      Bump version number
+      Remove references to no longer included Omni files
+      Objective C 2.0: garbarge collection
+      Objective-C 2.0: fast enumeration
+      Reformatting for readability
+      Remove workaround for auto-indentation bug
+      Readability improvements
+      Silence GCC unused variable warning
+      Drain pool before exiting
+      Installer package
+      Add installer package target
+      Set-up top-level git ignore file
+      Move macro definitions to top of file
+      Add x86_64 info for what(1)
+      Bump internal version number to 1.2
+      Whitespace fixes
+      Refactoring and new functions
+      Hook up new combine() and extract() functions
+      Make duplicate keys a warning rather than an error
+      Update man page for new features
+      Remove unused variable
+      Handle case where -base is supplied with no other options
+      Initial specs
+      Add specs for basic -merge use
+      Move input files into subdirectory
+      Run just-built copy by default
+      Split specs into separate files
+      Allow explicit override of output encoding
+      Work around CFStringCreateExternalRepresentation() bug
+      Add test case for CFStringCreateExternalRepresentation() bug
+      Add specs for automatic addition of BOMs to output
+      Fix pending tests by using fallback encodings
+      Try multiple encodings in -info/-strings code path
+      Minor comment cleanup
+      Add extract() specs and fix a bug
+      Fix file mode on encode_spec.rb
+      Favor member: over containsObject:
+      Add checks for duplicate keys within the same file
+      Add specs for -combine functionality
+      Bump version number for 1.2 release candidate 1
+      Bump version number post-release
+      Use double-hyphens for all switches
+      Warn about C99 comments
+      Add specs for missing command line switches
+      Support recursive substitution
+      Avoid unnecessary object instantiation
+      Tweak some spec descriptions
+      Bump version number for second release candidate release
+      Bump version number post-release
+      Update copyright years
+      Update version number pre-release
+      Bump version number post-release
+      Update date in manual page
+

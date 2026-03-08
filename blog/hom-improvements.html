@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>HOM improvements • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/hom-improvements">HOM improvements</a></h1><div class="metadata"><relative-time created="1164841020" updated="1710259978">Created 11/29/2006, updated 3/12/2024</relative-time><span>5 minute read</span></div><div class="prerendered"><p>One of the things which tricked me when I <a href="http://wincent.dev/a/about/wincent/weblog/svn-log/archives/2006/11/wocommon_r165_8_items_changed.php">first started</a> with <a href="http://wincent.dev/a/about/wincent/weblog/archives/hom/">HOM</a> (an entire 6 days ago) was that I would see examples like this:</p>
+<pre><code>[[collection select] hasPrefix:@&quot;foo&quot;];
+</code></pre>
+<p>And assumed that I could write things like:</p>
+<pre><code>[[[collection select] stringValue] hasPrefix:@&quot;foo&quot;];
+</code></pre>
+<p>It turns out that you have to write this:</p>
+<pre><code>[[[collection selectWhere] stringValue] hasPrefix:@&quot;foo&quot;];
+</code></pre>
+<p>This is an unfortunate breakdown of a couple of the key principles that underlie HOM: &quot;think about intentions, don't get distracted by implementation details&quot;, and &quot;make your intentions clear&quot;. You have to worry about two different HOM patterns &quot;select&quot; and &quot;select where&quot; for what is essentially exactly the same operation: selecting items from a collection based on a yes/no criteria. You have one variation which consists of a prefix message followed by an argument message, and you have another that consists of a prefix message followed by two argument messages.</p>
+<p>In my implementation of this pattern that means having one class for handling the first variation (<code>WOHOMSelectProxy</code>) and another pair of classes for handling the second one (<code>WOHOMSelectWhereProxy</code> and <code>WOHOMWhereProxy</code>). This works but you're probably wondering what you do if you ever want to send more than two argument messages... (And yes, I've chosen to use different classes for different types of trampoline behaviour; this allows me to keep my source files shorter and more manageable, group my unit tests into smaller, more manageable groups, and import <em>only</em> the HOM functionality that I am interested in for any given project rather than having to link to a gigantic framework.)</p>
+<p>So last night it occurred to me that this distinction between the two variations was unnecessary. I've <a href="http://wincent.dev/a/about/wincent/weblog/svn-log/archives/2006/11/wocommon_r186_14_items_changed.php">just checked in</a> a new HOM class, <code>WOHOMChainedSelectProxy</code>, that allows you to use a single HOM regardless of whether you're doing a straight &quot;select&quot; or a &quot;select where&quot;. It's &quot;chained&quot; because you can chain as many levels together as you want: one, two, three, four, the sky is the (non-arbitrary) limit. In other words, all of the following work:</p>
+<pre><code>[[collection select] hasPrefix:@&quot;foo&quot;];
+[[[collection select] stringValue] hasPrefix:@&quot;foo&quot;];
+[[[[collection select] stringValue] uppercaseString] hasPrefix:@&quot;FOO&quot;];
+[[[[[collection select] stringValue] uppercaseString] substringWithRange:NSMakeRange(2, 3)] isEqualToString:@&quot;FOO&quot;];
+</code></pre>
+<p>Don't ask me <em>why</em> you'd ever want to nest things that deeply; the important thing is that you <em>can</em> if you want to. Just as Objective-C allows (and even encourages) you to nest message sends, and key-value coding allows you to create path chains by writing things like @&quot;stringValue.lowercaseString&quot;, and Objective-C 2.0 will feature a property syntax that allows you to chain your property accesses by writing things like <code>stringValue.length</code>, I think HOM should allow you to do the same too when you want.</p>
+<p>Previously the only way to hack this kind of arbitrarily long chain together would be to mix in &quot;collect&quot; messages between your other argument messages, which would be terribly inefficient, terribly ugly, and terribly cumbersome, thus throwing the whole simplifying purpose of HOM out the window:</p>
+<pre><code>[[[[[[[[collection collect] stringValue] collect] uppercaseString] collect] substringWithRange:NSMakeRange(2, 3)] select] isEqualToString:@&quot;FOO&quot;];
+</code></pre>
+<p>Apart from ridding us of an arbitrary distinction and accompanying limitation, the new code addresses the concerns about getting distracted by implementation details. Don't think about using &quot;select&quot; or &quot;select where&quot;, just go ahead an use &quot;select&quot;.</p>
+<p>All of this comes at a very small performance cost. I'll shortly post an article with some numbers to back this up, but I believe that the single-level select (equivalent to the old &quot;select&quot; HOM) and the two-level select (equivalent to the old &quot;select where&quot; HOM) will be basically the same. Once you start nesting more deeply your set-up costs will go up but there are generally up-front costs and once the iteration has begun things will go relatively quickly. If you find that you have to nest too deeply and the speed is a problem then it is probably a hint that your design is bad; it's hard to think of too many cases where you would want to chain to more than two levels.</p>
+<p>The new pattern eliminates one of the areas in which the <code>valueForKey:</code> method in the <code>NSArray</code> class had the edge. Previously, if you wanted to chain together multiple levels using the &quot;select where&quot; HOM you had to engage in this kind of kludgery:</p>
+<pre><code>[[[collection selectWhere] valueForKey:@&quot;stringValue.lowercaseString&quot;] isEqualToString:@&quot;foo&quot;];
+</code></pre>
+<p>Now you can just write:</p>
+<pre><code>[[[[collection select] stringValue] lowercaseString] isEqualToString:@&quot;foo&quot;];
+</code></pre>
+<p>And you can do something that was never possible using <code>valueForKey:</code> — pass parameters to the argument messages in the chain:</p>
+<pre><code>[[[[collection select] stringValue] substringFromIndex:3] isEqualToString:@&quot;bar&quot;];
+</code></pre>
+<p>It's also interesting to compare the syntax for chaining argument messages used here with <a href="http://www.dpompa.com/?p=33">the syntax</a> you'd need to use if you were using <a href="http://www.dpompa.com/?page_id=4">Ofri Wolfus' HOM implementation</a>:</p>
+<pre><code>// this version should be instantly readable to most Objective-C programmers
+[[[[collection select] capitalizedString] lastPathComponent] hasPrefix:@&quot;a&quot;];
+
+
+// this the Wolfus version of the same:
+[collection selectWhere:MSG(capitalizedString), MSG(lastPathComponent), MSG(hasPrefix:@&quot;a&quot;), nil];
+</code></pre>
+<h5>Concluding comments</h5>
+<p>This definitely isn't the only &quot;select&quot; HOM that you'll ever need. There is still a strong justification for <a href="http://wincent.dev/a/about/wincent/weblog/svn-log/archives/2006/11/wocommon_r184_23_items_changed.php">a &quot;select first&quot; HOM</a>, for example, because such a HOM is more efficient: rather than iterating of the entire collection it can stop and immediately return as soon as it finds the desired element. It can also explicitly return a single object rather than wrapping the found item up in a single-item array:</p>
+<pre><code>// the &quot;select first&quot; version
+id item = [[collection selectFirst] hasPrefix:@&quot;foo&quot;];
+
+
+// the alternative is slower and less convenient
+NSArray *collection = [[collection select] hasPrefix:@&quot;foo&quot;];
+id item = [collection count] &gt; 0 ? [collection objectAtIndex:0] : nil;
+
+
+// even if you define a &quot;firstObject&quot; method this is still less efficient:
+id item = [[[collection select] hasPrefix:@&quot;foo&quot;] firstObject];
+</code></pre>
+<p>The implementation could fairly easily be extended to the &quot;collect&quot; HOM as well (and others for that matter...) but with one important difference: such a &quot;collect&quot; HOM would need an a &quot;suffix message&quot; to serve as an end marker:</p>
+<pre><code>[[[[collection collect] stringValue] lastPathComponent] endCollect];
+</code></pre>
+<p>This is because in the case of the &quot;collect&quot; HOM all argument messages effectively look alike; there is no way to automatically tell which is the final argument message in the chain. In many cases using the built-in alternative will be faster and more concise anyway:</p>
+<pre><code>[collection valueForKey:@&quot;stringValue.lastPathComponent&quot;];
+</code></pre>
+<p>The only case where the HOM &quot;collect&quot; pattern is necessary is where you must pass arguments along with your argument messages. An (admittedly ugly) workaround enabling you to chain &quot;collect&quot; operations together is to interpolate as follows:</p>
+<pre><code>[[[[collection collect] stringValue] collect] lastPathComponent];
+</code></pre>
+<p>But my policy with respect to implementing new HOM patterns at the moment is that I don't bother touching them until I actually run into a real-world case where I need the new pattern. HOM is basically an open-ended playground in which you could waste a lot of time building sand castles, so I'm carefully keeping only to stuff that I actually need/want to use.</p>
+<p>Performance numbers on the code described in this post coming soon.</p>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/hom-performance-test-results">← HOM performance test results</a></div><div class="post-nav-next"><a href="/blog/google-gems">Google gems →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

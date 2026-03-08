@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rails update headaches • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/rails-update-headaches">Rails update headaches</a></h1><div class="metadata"><relative-time created="1234671251" updated="1584053324">Created 2/15/2009, updated 3/12/2020</relative-time><span>3 minute read</span></div><div class="prerendered"><p>In <a href="/blog/lack-of-stability-in-the-rails-ruby-ecosystem-rant">my rant</a> from the other day I was complaining about how trying to build an application on top of Rails and friends is like building on quicksand.</p>
+<p>Let me provide a little bit of illustration from my current battle in moving from 2.2.2 to 2.3.0 RC1.</p>
+<p>I don't have the time or the patience to go back and data-mine my development history charting the pain and suffering that each Rails update brings with it, but here is just a quick sampling obtained with <code>git oneline --grep='[Rr]ails'</code> (<code>oneline</code> is an alias for <code>log --pretty=oneline --abbrev-commit</code>).</p>
+<p>Unfortunately these one-line commit subjects can't really hope to communicate the misspent time, frustration, and annoyance at doing mindless &quot;busy work&quot; rather than working on useful features and <em>application</em> (not <em>framework</em>) bug fixes.</p>
+<p><em>Rails 2.3.0 RC1:</em></p>
+<pre><code>ee7f441... Rails 2.3.0: work around Sweeper autoloading bug
+51c949f... Rails 2.3.0: silence deprecation warnings
+f183ca8... Update to Rails 2.3.0 RC1
+</code></pre>
+<p><em>Rails 2.2.2:</em></p>
+<pre><code>1b8ca39... Rails 2.2 fix: repair Haml &quot;ugly&quot; mode breakage
+c032fb1... Fix recent Rails breakage of template engines
+3f8ad3f... Better fix for Rails 2.2.0 model preloading breakage
+6985cb3... Update to Rails 2.2.2 (final release)
+</code></pre>
+<p><em>Rails 2.2.1:</em></p>
+<pre><code>316221e... Update to Rails 2.2.1
+</code></pre>
+<p><em>Rails 2.2.0:</em></p>
+<pre><code>35ded72... Fix Rails 2.2.0 breakage: route generation behaviour changed
+5ab0c87... Rails 2.2.0: remove now-redundant body_html method from Articles helper
+c992cda... Fix Rails 2.2.0 breakage: newly created Articles no longer have nil bodies
+c3d4a47... Rails 2.2.0: silence deprecation warnings for &quot;default_error_messages&quot;
+5191b28... Rails 2.2.0: silence deprecation warnings for &quot;truncate&quot;
+8a5a83c... Fix Rails 2.2.0 breakage (cache_template_loading has been removed)
+a5d0bdc... Kludge fix for Rails 2.2.0 breakage (broken extensions to ActiveRecord::Base)
+d93062f... Fix Rails 2.2.0 breakage (ActionView::TemplateHandler)
+12a6788... Fix Rails 2.2.0 breakage (cache_template_extensions removal)
+bfd9b00... Update to Rails 2.2.0 (first release candidate, broken)
+</code></pre>
+<p><em>Rails 2.1.2:</em></p>
+<pre><code>4d49bca... Another fix for Rails bug #324
+bfa1d20... Re-apply private fix for Rails bug #324
+627d796... Update to Rails 2.1.2 (broken)
+</code></pre>
+<p><em>Rails 2.1.1:</em></p>
+<pre><code>ca7578e... Fix Rails 2.1 breakage of wikitext templates
+3f793f2... Private fix for Rails bug #324
+c2509ed... Fix for Rails bug #1003 (rake gems:unpack breakage)
+77c346f... Update comments about Rails ticket #324
+a8a04e3... Update to Rails 2.1.1
+</code></pre>
+<p><em>Rails 2.1:</em></p>
+<pre><code>d51249c... Back out the REXML vulnerability fix
+f6d7779... Silence deprecation warning triggered by RSpec 1.1.4
+3808f57... Update to Haml 2.0.2
+889fc07... Remove workaround or Rails ticket #275
+ae79cd6... Update to Rails 2.1
+</code></pre>
+<p><em>Rails 2.1.0 RC1:</em></p>
+<pre><code>49e4217... Update application controller specs for Rails 2.1
+c2ac696... Fix Rails load ordering of frozen gems
+e1fe380... Fixes for Rails gems dependencies
+a73e850... Update to Rails 2.1.0_RC1
+</code></pre>
+<p>I was quite surprised when updating to 2.3.0 RC1 that all the specs continued to pass. One should never count one's chickens before they've hatched, however, as I have run into a couple of issues despite the fact that the spec suite passed. I <em>do</em> have a lot of specs (&quot;1019 examples, 0 failures, 23 pending&quot;), but evidently you can never have enough...</p>
+<p>The three unresolved issues that are currently robbing me of time that I would rather be spending on something else are:</p>
+<ol>
+<li>My cache sweepers stopped getting auto-loaded in 2.3.0: <a href="http://groups.google.com/group/rubyonrails-talk/browse_thread/thread/323ff7ec2d95ee32/ab33ad8c16b300e5">http://groups.google.com/group/rubyonrails-talk/browse_thread/thread/323ff7ec2d95ee32/ab33ad8c16b300e5</a></li>
+<li>Haml started complaining (not sure whether this is a bug in Haml, or provoked by a change in Rails): <a href="http://groups.google.com/group/haml/browse_thread/thread/d4902a4d4d5de5aa">http://groups.google.com/group/haml/browse_thread/thread/d4902a4d4d5de5aa</a></li>
+<li>Atom feeds rendered using Builder templates are busted (they're being rendered inside the application HTML template): <a href="http://groups.google.com/group/rubyonrails-talk/browse_thread/thread/d2d150c8219e5814">http://groups.google.com/group/rubyonrails-talk/browse_thread/thread/d2d150c8219e5814</a></li>
+</ol>
+<p>Now, none of these issues are show-stoppers. They're either harmless or have known workarounds. But that doesn't make them any less annoying. They're time wasters. And every kludgey little fix that you use to wallpaper over the cracks is another layer of crud that accumulates in your app. Another blemish in the code base, brittle and fragile, waiting to be re-broken in a future update.</p>
+</div><ul class="tags"><li><a href="/tags/rails">rails</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/firefox-and-self-signed-ssl-certificates">← Firefox and self-signed SSL certificates</a></div><div class="post-nav-next"><a href="/blog/the-twitter-business-model">The Twitter business model →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

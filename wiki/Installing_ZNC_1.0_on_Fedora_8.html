@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Installing ZNC 1.0 on Fedora 8 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Installing ZNC 1.0 on Fedora 8</h1></div><div class="metadata"><relative-time created="1373184144" updated="1495119989">Created 7/7/2013, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/znc">znc</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Installation</h2>
+<pre><code class="language-shell"># yum install gcc-c++ # prereq
+# sudo -i -u builder # build as unprivileged user
+$ wget http://znc.in/releases/znc-1.0.tar.gz
+$ tar xzvf znc-1.0.tar.gz
+$ cd znc-1.0
+$ ./configure
+$ make
+$ exit # back to root
+# cd /home/builder/znc-1.0
+# make install
+</code></pre>
+<h2>Preparing an unprivileged user to run the daemon</h2>
+<p>At the very least, we want to run as an unprivileged user. For bonus points, we could run the daemon inside a chroot.</p>
+<pre><code class="language-shell"># useradd -r -m -d /var/lib/znc -c &quot;ZNC IRC bouncer&quot; znc
+</code></pre>
+<h2>Configuring</h2>
+<p>If using an existing SSL certificate, concatenate the relevant bits (private key, certificate, CA certificate) at <code>$HOME/.znc/znc.pem</code>, then configure:</p>
+<pre><code class="language-shell"># chown znc:znc /var/lib/znc/.znc/znc.pem
+# chmod 400 !$
+# sudo -i -u znc
+$ /usr/local/bin/znc --makeconf
+</code></pre>
+<p>Additionally, as I am running this on EC2, I needed to add a port to the security group to allow connections through to ZNC.</p>
+<h2>Running as a daemon</h2>
+<p>The docs (suprisingly) <a href="http://wiki.znc.in/FAQ#How_can_I_restart_ZNC_automatically_.28in_case_of_a_machine_reboot.2C_crash.2C_etc..29.3F">recommend</a> using cron to make sure the daemon is running every ten minutes:</p>
+<pre><code class="language-shell"># crontab -u znc edit
+</code></pre>
+<p>The crontab should have an entry like:</p>
+<pre><code>*/10 * * * *   /usr/local/bin/znc &gt; /dev/null 2&gt;&amp;1
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

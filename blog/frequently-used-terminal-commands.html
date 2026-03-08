@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Frequently used Terminal commands • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/frequently-used-terminal-commands">Frequently used Terminal commands</a></h1><div class="metadata"><relative-time created="1208948527" updated="1744623443">Created 4/23/2008, updated 4/14/2025</relative-time><span>6 minute read</span></div><div class="prerendered"><p>Apparently this &quot;meme&quot; has been spreading rampantly for a while now, but I only just found out about it <a href="http://blog.codefront.net/2008/04/18/command-history-meme/">here</a>, <a href="http://diveintomark.org/archives/2008/04/15/history-meme">here</a> and <a href="http://benjamin.smedbergs.us/blog/2008-04-15/history-meme/">here</a>.</p>
+<p>The idea is to see what commands appear most frequently in your <a href="/wiki/Bash">Bash</a> history using this command:</p>
+<pre><code>history | awk '{a[$2]++}END{for(i in a){print a[i] &quot; &quot; i}}' | sort -rn | head
+</code></pre>
+<p>My results:</p>
+<pre><code>4598 git
+641 cd
+585 ls
+438 rake
+284 less
+232 script/console
+188 cap
+148 ll
+140 perl
+118 irb
+</code></pre>
+<p>I was pretty surprised that <a href="/wiki/Capistrano">Capistrano</a> (<code>cap</code>) and <a href="/wiki/perl">perl</a> rank so highly. But this is because every time I do a <a href="/wiki/Rails">Rails</a> deployment I end up doing a series of about 10 <code>cap</code> invocations (<code>staging deploy:check</code>, <code>staging deploy:update</code>, <code>staging deploy:migrate_all</code> <code>staging spec</code>, <code>staging deploy:restart</code>, and then the same all over again for the production environment). And the abundance of <a href="/wiki/perl">perl</a> usage is due to the fact that I used it pretty heavily to do a find-and-replace over thousands-of-pages dump of the old wiki.</p>
+<h2>Update: January 2011</h2>
+<p>Just for laughs, here are the results from running the command again, almost two years later:</p>
+<pre><code>5341 git
+1005 cd
+692 ls
+369 less
+220 open
+163 bin/rspec
+161 man
+158 m
+124 bundle
+102 mv
+</code></pre>
+<p>Top 3 unchanged, <code>rake</code> completely gone (note that newcomer <code>bin/rspec</code> is probably responsible for that), <code>open</code> is surprisingly highly-ranked, <code>cap</code> gone (thank goodness), <code>m</code> (<a href="/wiki/MacVim">MacVim</a> shortcut) and <code>bundle</code> are notable indices of how my software ecosystem has changed.</p>
+<h2>Update: July 2011</h2>
+<p>Fairly big changes over the last months:</p>
+<pre><code>5635 git
+837 ack
+626 less
+487 cd
+396 ls
+212 ssh
+121 m
+121 clear
+115 put
+85 vim
+</code></pre>
+<p>Less <code>cd</code> as I am tending to stick in one project directory and working on it for longer. <code>ssh</code> is way up as I am working on other hosts a lot more.</p>
+<p>Here's the output on the host that I spend most time on:</p>
+<pre><code>1711 git
+868 bundle
+837 cd
+419 less
+367 ls
+301 script/console
+270 ruby
+237 clear
+214 ack
+161 fg
+</code></pre>
+<p>All those <code>bundle</code> calls are from running things like <code>bundle exec</code> with things like <code>spec</code>, <code>rake</code> and <code>mongrel_rails</code>.</p>
+<h2>Update: February 2013</h2>
+<p>Another couple of years pass. Now that I'm on <a href="/wiki/Zsh">Zsh</a> where <code>history</code> outputs only a handful of recent items by default, I've added a numerical param to it:</p>
+<pre><code class="language-shell">$ history -100000 | awk '{a[$2]++}END{for(i in a){print a[i] &quot; &quot; i}}' | sort -rn | head
+</code></pre>
+<p>Work machine:</p>
+<pre><code>6134 git
+3524 ack
+1142 less
+676 ssh
+429 cd
+361 specr # wrapper around rspec
+323 be    # this is an alias for `bundle exec`
+318 rm
+297 vim
+270 bundle
+</code></pre>
+<p>Laptop:</p>
+<pre><code>1007 git
+398 cd
+312 less
+274 ssh
+124 ls
+123 rm
+114 vim
+111 scp
+109 ack
+105 cat
+</code></pre>
+<p>No wonder people feel emotionally attached to Git, if it's our most frequently used tool by such an enormous margin.</p>
+<h2>Update: October 2015</h2>
+<h3>Laptop</h3>
+<pre><code>3586 git  # Undefeated world champion.
+672 less  # 2nd, up from 3rd.
+345 vim   # Highest ever showing (3rd, up from 7th).
+339 cd    # Down to 4th, from 2nd.
+284 ls    # Steady 5th, despite Zsh hook that auto-lists on cd.
+259 rm    # Steady 6th; I like to delete.
+232 npm   # Goodbye Rails, hello JS ecosystem.
+230 ag    # ack, dethroned
+157 man   # Apparently RTFM-ing more than ever.
+146 find
+</code></pre>
+<h3>Work sandbox</h3>
+<pre><code>3033 hg        # So sad.
+1801 tbgs      # (Work) search tool.
+931 less
+623 ag         # Big code base = more searching.
+511 arc
+452 git
+394 tgrep      # Alias wrapper around ag.
+363 find|grep  # More searching: where/what is that file?
+335 ls         # Less poking around, more time in (long-running) editor.
+302 tgrepd     # Another alias wrapper around ag.
+</code></pre>
+<h2>Update: November 2018</h2>
+<p>Note the need to tweak the command for my current Zsh configuration, otherwise <code>history</code> doesn't show the full command list; <code>fc -l 1</code> would also work:</p>
+<pre><code class="language-bash">history 0 $HISTSIZE | awk '{a[$2]++}END{for(i in a){print a[i] &quot; &quot; i}}' | sort -rn | head
+</code></pre>
+<p>The results:</p>
+<pre><code>824 git
+173 less
+166 cd
+153 yarn
+101 vim
+81 man
+75 brew
+72 ls
+65 rm
+56 npm
+</code></pre>
+<p>Numbers are lower than before despite my <code>$HISTSIZE</code> being 100,000. It is probably because of my use of <code>histignorealldups</code>, which I am now questioning the usefulness of. I think <code>histfindnodups</code> is probably much closer to what I want.</p>
+<h2>Update: February 2019</h2>
+<p>Having tweaked my shell settings I can now report a more illustrative example. This one from my personal laptop:</p>
+<pre><code>4890 git
+2034 yarn # using yarn to run scripts in projects
+856 vim # open up mostly long-lived vim sessions
+726 cd
+535 less
+480 exit # always opening and closing tmux splits
+358 ls
+299 ll # alias for `ls -laF`
+250 o # alias for `git log --oneline` with a few other options added
+222 man
+</code></pre>
+<h2>Update: March 2020</h2>
+<p>I have been running with <code>NO_HIST_IGNORE_ALL_DUPS</code>, <code>NO_HIST_IGNORE_DUPS</code> and <code>HIST_FIND_NO_DUPS</code> for a while so have captured some more &quot;exhaustive&quot; data (ie. includes duplicates, so really counts all usage):</p>
+<pre><code># Personal machine
+12919 git
+ 5951 yarn      # mostly running scripts in projects
+ 2583 vim
+ 1782 cd
+ 1650 exit      # `exit` now beats `less`
+ 1094 less      # (last time, `less` beat `exit`)
+  602 ls
+  587 ll        # alias for `ls -laF`
+  585 o         # alias for `git log --oneline`
+  548 t         # &quot;tmux&quot; wrapper, knocking &quot;man&quot; out of 10th place
+
+
+# Work machine
+43359 git       # new job, so no more `hg`
+ 8015 yarn      # mostly running scripts in projects
+ 6239 cd
+ 5655 portool   # tool that wraps up a bunch of common work operations
+ 4314 exit
+ 3657 vim       # Vim sessions tend to be long-lived
+ 2888 less
+ 1927 npm
+ 1721 o         # alias for `git log --oneline`
+ 1395 ls
+</code></pre>
+<p>Observations:</p>
+<ul>
+<li>Clearly doing more on work machine than personal machine.</li>
+<li>I'm going to get rid of <code>NO_HIST_IGNORE_DUPS</code> because the consecutive duplicates are driving me up the wall when I hit &quot;up&quot; in the terminal (<code>HIST_FIND_NO_DUPS</code> stops you from seeing duplicates when you <em>search</em>, but just tapping &quot;up&quot; is not considered a search), so that will affect the numbers somewhat next time around.</li>
+</ul>
+<h2>Update: July 2021</h2>
+<pre><code># Personal machine
+20379 git
+6582 yarn
+4602 vim       # Alias -&gt; `nvim`
+2986 cd
+2927 exit
+1624 less
+1237 ll        # Alias -&gt; `ls -laF`
+963 o          # Alias -&gt; `git oneline` -&gt; `git --paginate log --pretty=format:'%C(auto)%h%Creset %s%C(auto)%d%Creset %C(magenta bold)(%cr)%Creset %C(cyan)&lt;%aN&gt;%Creset'`
+866 ls
+839 t          # Wrapper for `tmux`.
+</code></pre>
+<p>And here are some interesting entries from outside of the top-10; these produced with <code>history 0 $HISTSIZE | awk '{a[$2]++}END{for(i in a){print a[i] &quot; &quot; i}}' | sort -rn | cat -n</code> — the number on the left is the position within the list:</p>
+<pre><code> 12  721 man     # 721 instances of bad memory.
+   ...
+ 17  459 tree    # A beautiful tool!
+   ...
+ 18  347 brew    # Surprised this one is so high as I'm scared of running it.
+   ...
+ 26  262 ssh     # Relatively rare on this machine nowadays.
+   ...
+ 31  192 \vim    # 192 times I've bypassed my vim -&gt; nvim alias
+   ...
+ 37  166 sudo    # Again, surprised how rarely I do this.
+   ...
+ 39  159 rg      # Would be more frequent, but I mostly search from inside Vim.
+   ...
+ 44  135 hledger # A new toy.
+   ...
+ 79  54 curl     # Fetching things, peeking at headers vs...
+ 95  37 wget     # Actually downloading things.
+   ...
+100  35 watch    # 100th place on the list!
+   ...
+212  10 prettier # Rarely run outside of `yarn`.
+   ...
+317  4 whoami    # Rare existential crises.
+   ...
+394  2 xattr     # The least popular tool I've used multiple times.
+</code></pre>
+<h2>Update: April 2025</h2>
+<pre><code># Work machine (after 10 months on this machine)
+12902 git
+2494 exit
+2276 vim      # Alias → `nvim`
+1389 cd
+1099 yarn
+935 e         # Alias → `exit`
+641 brew
+419 t         # Alias → `tmux`
+417 tmux
+382 oo        # Alias → `git --paginate log --pretty=format:'%C(auto)%h%Creset %s%C(auto)%d%Creset %C(magenta bold)(%cr)%Creset %C(cyan)&lt;%aN&gt;%Creset' -10`
+</code></pre>
+<p>Not much has changed here; the main new thing I'd note is that I run <code>brew update</code> and <code>brew upgrade</code>/<code>brew cleanup</code>/<code>brew doctor</code> basically daily now, whereas I used to run it only rarely.</p>
+</div><ul class="tags"><li><a href="/tags/bash">bash</a></li><li><a href="/tags/zsh">zsh</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/wikitext-1.1-released">← Wikitext 1.1 released</a></div><div class="post-nav-next"><a href="/blog/wikitext-1.0.3-released">Wikitext 1.0.3 released →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

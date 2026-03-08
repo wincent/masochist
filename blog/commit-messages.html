@@ -1,0 +1,142 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Commit messages • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/commit-messages">Commit messages</a></h1><div class="metadata"><relative-time created="1238612539" updated="1710259978">Created 4/1/2009, updated 3/12/2024</relative-time><span>5 minute read</span></div><div class="prerendered"><p>The other day there was a post on <a href="http://lbrandy.com/blog/2009/03/writing-better-commit-messages/">writing good commit messages</a> on <a href="http://www.reddit.com/r/programming/">Reddit</a>, talking about the good, the bad and the ugly when it comes to commit messages.</p>
+<p>I just had occasion to import the <a href="/wiki/WinSwitch">WinSwitch</a> repository from <a href="/wiki/Subversion">Subversion</a> over to <a href="/wiki/Git">Git</a> (<a href="/wiki/Migrating_the_WinSwitch_repository_from_Subversion_to_Git">notes here</a>), and there are certainly some doozies in there which I am not proud of.</p>
+<h2>The good</h2>
+<p>&quot;Good&quot; is a relative term when it comes to <a href="/wiki/Subversion">Subversion</a> commit messages. In all of <em>my</em> Subversion projects and basically all Subversion projects I've ever seen, the convention is to write short, one-line commit messages. Evidently this can't really compete with the &quot;subject line + justification/explanation&quot; pattern which is generally favoured in <a href="/wiki/Git">Git</a>.</p>
+<p>So there are a bunch of descriptive but uninspiring commit messages of this sort:</p>
+<ul>
+<li>Update copyright year</li>
+<li>3.2.1 release</li>
+<li>3.2 release</li>
+<li>&quot;Log out...&quot; alternate menu item</li>
+</ul>
+<h2>The bad</h2>
+<ul>
+<li>rewrapping to 132 columns, bumping version number, moving to xcconfig files from buildtools</li>
+</ul>
+<p>Conflating multiple changes in a single commit; bad boy!</p>
+<ul>
+<li>Cleanup</li>
+</ul>
+<p>Er, <em>what</em> kind of cleanup?</p>
+<h2>The ugly</h2>
+<ul>
+<li>Back in Madrid</li>
+</ul>
+<p>That's nice to know. Glad you made it safely back.</p>
+<ul>
+<li>Attempt at using Carbon menus (and WebKit) to achieve resizable menu images (failure).</li>
+</ul>
+<p>Committing broken changes?</p>
+<ul>
+<li>Christmas Day debug build</li>
+</ul>
+<p>Merry Christmas!</p>
+<ul>
+<li>Commit so that I can do some bughunting diffs</li>
+</ul>
+<p>Committing more half-baked work-in-progress stuff. Lack of discipline, or simply the fact that Subversion fails to offer a rich set of tools for managing, viewing and manipulating in-progress material? How keenly one feels the absence of <code>git stash</code>, <code>git rebase</code> (and <code>git rebase --interactive</code>), <code>git commit --amend</code> (which I have aliased to just <code>git amend</code> because I find myself editing my last commit message fairly often), and the utility of the cheap and easy topic branches and merging, the index (the staging area) and colorized and paginated <code>diff</code> output etc...</p>
+<ul>
+<li>More or less working code</li>
+</ul>
+<p>Um, ok. So it works &quot;more or less&quot;. Doesn't sound too comforting.</p>
+<ul>
+<li>Freeze repository prior to move to other machine</li>
+</ul>
+<p>This is what happens in a non-distributed version control system. The number of options you have for moving changes (and works in progress) between machines is truly limited. Basically commit to the central server and update from the other machine, or manually use <code>diff</code> and <code>patch</code> to shuffle and apply patch files back and forth between machines.</p>
+<p>Finally, there a bunch of repeated log messages like this:</p>
+<ul>
+<li>1.4.1 release</li>
+<li>1.4.1 release</li>
+<li>1.4.1 release</li>
+<li>1.4.1 release</li>
+<li>1.4.1 release</li>
+<li>1.4.1 release</li>
+<li>1.4.1 release</li>
+<li>1.4.1 release</li>
+<li>1.4.1 release</li>
+<li>1.4.1 release</li>
+</ul>
+<p>I have no idea why I made these commits, most of them involving repeated changes to multiple files. Why didn't I bundle them all into a single commit?</p>
+<h2>Current habits</h2>
+<p>I'm better now, really I am. Ever since switching to <a href="/wiki/Git">Git</a>, where the tools provide some nice frills if you follow a couple of basic conventions for commit messages (use a subject line followed by clarification/explanation/justification, and keep your lines nice and short), I've found myself writing much better commit messages.</p>
+<p>It's not just the tool; it's also the Git development community itself. I recommend subscribing to the Git mailing list even if only to learn about the development process. One of the things (among many) you'll pick up is how to write great commit messages, and the value of doing so.</p>
+<p>Nice, atomic changes, bundled with tests and with nice clear commit messages.</p>
+<p>As another example, below is the last handful of commits on the <a href="/wiki/Rails">Rails</a> app running behind this site. It might seem like a lot of writing -- there are 1,232 commits in the &quot;master&quot; branch, and the total line count for all the messages is currently 15,520 lines(!) -- but crafting messages like this makes it so much easier to go back over the history, find specific changes, and figure out what I was doing and why. It also encourages me to think clearly about the <em>why</em> of the changes I make, and adopt a more disciplined approach to coding in general, with a focus on robust testing, correctness, elegance, good design, and much more.</p>
+<pre><code>commit 4def946cc0c18f842470753d997337e01596332e
+Author: Greg Hurrell &lt;greg@hurrell.net&gt;
+Date:   Wed Apr 1 23:04:24 2009 +0200
+
+    Capistrano: change command order in help
+
+    In general we will want to display the maintenance
+    page _before_ running any database migrations on
+    the remote server.
+
+    Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;
+
+commit 0ef7f8b33b6de405b02b1c841b40e205b96d1dbc
+Author: Greg Hurrell &lt;greg@hurrell.net&gt;
+Date:   Tue Mar 31 19:24:44 2009 +0200
+
+    Update tweet preview field every 5 seconds
+
+    As these are such small snippets we can afford to
+    provide very frequent updates without hurting the
+    server.
+
+    Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;
+
+commit bb14daa73d4ffc80c6652cd3c61bb183c601dc7e
+Author: Greg Hurrell &lt;greg@hurrell.net&gt;
+Date:   Tue Mar 31 18:34:32 2009 +0200
+
+    Avoid explict array sorting in specs (using =~)
+
+    A few releases ago, not sure exactly when, RSpec
+    introduced a new array matcher that allows one to
+    compare array contents disregarding order using
+    the &quot;=~&quot; operator.
+
+    Use this to clean up some explicit sorts in various
+    specs that were previously needed to make the
+    comparisons work (cases where we only cared about
+    what the array contents were, not about the ordering
+    within the arrays).
+
+    Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;
+
+commit 10d18dfbbed4d2e0e287b4169964dff9223001da
+Author: Greg Hurrell &lt;greg@hurrell.net&gt;
+Date:   Tue Mar 31 18:12:55 2009 +0200
+
+    Remove &quot;spam&quot; attribute from all models which have it
+
+    The &quot;spam&quot; attribute has been in the codebase for a long
+    time now, and it turns out to have been a misguided and
+    unnecessary complication all this time.
+
+    Originally, the idea was that by keeping spam messages
+    around in the database it would be easier to do Bayesian
+    training.
+
+    In reality, Bayesian filtering has yet to be implemented,
+    in practice I have always just used the &quot;Destroy&quot; rather
+    than the &quot;Spam&quot; buttons, and models or their content for
+    any future Bayesian training implementation can easily
+    be kept in a separate database table.
+
+    The cost of maintaining this &quot;spam&quot; attribute is that it
+    has made many, many queries throughout the codebase more
+    complicated (more likely to have bugs, harder to code,
+    slower).
+
+    So, out it comes.
+
+    See:
+      https://wincent.dev/issues/1264
+      https://wincent.dev/issues/734
+
+    Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;
+</code></pre>
+<p>So I confess. I used to write crappy commit messages. But I'm reformed now. Really, I am.</p>
+</div><ul class="tags"><li><a href="/tags/subversion">subversion</a></li><li><a href="/tags/git">git</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/synergy-3.2.2-released">← Synergy 3.2.2 released</a></div><div class="post-nav-next"><a href="/blog/involuntary-reboot-log-52">Involuntary Reboot Log →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

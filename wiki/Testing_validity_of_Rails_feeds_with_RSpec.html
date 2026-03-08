@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Testing validity of Rails feeds with RSpec • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Testing validity of Rails feeds with RSpec</h1></div><div class="metadata"><relative-time created="1222360720" updated="1709678609">Created 9/25/2008, updated 3/5/2024</relative-time></div><ul class="tags"><li><a href="/tags/rspec">rspec</a></li><li><a href="/tags/rails">rails</a></li><li><a href="/tags/atom">atom</a></li><li><a href="/tags/xml">xml</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>It's actually quite hard to find information about testing feeds because <em>so</em> many pages out there feature the words &quot;feed&quot; nowadays, but some of the first results that I turned up talked about the <a href="/wiki/FeedValidator">FeedValidator</a> <a href="/wiki/gem">gem</a>.</p>
+<p>The gem actually hits the W3C Feed Validation service, although it uses caching to minimize redundant queries. This approach doesn't really appeal to me because of the latency of performing a query across the network, as well as the reliance on a third-party service (if the service goes down you can't run your specs). Also, the need to avoid hammering the service, even with caching, makes running really comprehensive specs prohibitive.</p>
+<p>So I started looking for offline validation solutions. My first attempt was using <code>xmllint</code> because it comes installed on both my local (<a href="/wiki/Mac_OS_X">Mac OS X</a> <a href="/wiki/Leopard">Leopard</a>) machine and my remote (<a href="/wiki/Red_Hat">Red Hat</a>) host.</p>
+<pre><code>$ curl http://www.atompub.org/2005/07/11/atom.rnc &gt; spec/2005-07-11-atom.rnc
+$ curl http://www.atompub.org/2005/08/17/atom.rnc &gt; spec/2005-08-17-atom.rnc
+</code></pre>
+<p>This didn't work because <code>xmllint</code> obviously doesn't handle <a href="/wiki/RelaxNG">RelaxNG</a> schemas in the &quot;compact&quot; format:</p>
+<pre><code>$ xmllint --schema spec/2005-08-17-atom.rnc public/wiki.atom
+spec/2005-08-17-atom.rnc:1: parser error : Start tag expected, '&lt;' not found
+# -*- rnc -*-
+^
+Schemas parser error : xmlSchemaParse: could not load 'spec/2005-08-17-atom.rnc'.
+WXS schema spec/2005-08-17-atom.rnc failed to compile
+</code></pre>
+<p>So I downloaded <a href="/wiki/Trang">Trang</a> to try converting the compact schema into another format:</p>
+<pre><code>$ curl -O http://www.thaiopensource.com/download/trang-20030619.zip
+$ curl -O http://www.thaiopensource.com/download/jing-20030619.zip
+$ unzip trang-20030619.zip
+$ unzip jing-20030619.zip
+$ java -jar trang-20030619/trang.jar spec/2005-08-17-atom.rnc spec/2005-08-17-atom.xsd
+$ xmllint --schema spec/2005-08-17-atom.xsd public/wiki.atom
+spec/2005-08-17-atom.xsd:83: element complexType: Schemas parser error : CT local: The content model is not determinist.
+spec/2005-08-17-atom.xsd:107: element complexType: Schemas parser error : CT local: The content model is not determinist.
+spec/2005-08-17-atom.xsd:258: element complexType: Schemas parser error : CT local: The content model is not determinist.
+spec/2005-08-17-atom.xsd:61: element complexType: Schemas parser error : CT 'atomPersonConstruct': The content model is not determinist.
+WXS schema spec/2005-08-17-atom.xsd failed to compile
+</code></pre>
+<p>Googling for information on these &quot;non determinist&quot; errors suggested that this <em>might</em> be a bug in the version of libxml I was using, but seeing as it was a bit of a long shot and I don't really want to go changing that on either of my machines I decided to continue looking for alternative solutions.</p>
+<p>Trying another format:</p>
+<pre><code>$ java -jar trang-20030619/trang.jar spec/2005-08-17-atom.rnc spec/atom.dtd
+/Users/wincent/trabajo/unversioned/example.com/src/spec/2005-08-17-atom.rnc:306:13: error: sorry, wildcards are not supported
+...
+</code></pre>
+<p>And many more errors omitted from the excerpt... Evidently a DTD cannot express all of the constraints that can be specified in a RelaxNG schema.</p>
+<p>So my next attempt was to use <a href="/wiki/Jing">Jing</a>, which <a href="/wiki/Trang">Trang</a> depends on, to do the validation instead of <code>xmllint</code>:</p>
+<pre><code>$ java -jar jing-20030619/bin/jing.jar spec/2005-08-17-atom.rnc public/wiki.atom
+spec/2005-08-17-atom.rnc:1:1: fatal: Content is not allowed in prolog.
+</code></pre>
+<p>Evidently <code>jing</code> doesn't like the compact syntax either (although it would have if I had read the manual and seen the <code>-c</code> switch!), so we try the XML syntax and voila it works:</p>
+<pre><code>$ java -jar jing-20030619/bin/jing.jar spec/2005-08-17-atom.rng public/blog.atom; echo $?
+public/blog.atom:7:29: error: bad character content for element
+1
+$ java -jar jing-20030619/bin/jing.jar spec/2005-08-17-atom.rng public/wiki.atom; echo $?
+0
+</code></pre>
+<p>So here we have offline validation with information about problems printed to the <a href="/wiki/standard_error">standard error</a> and the process exit code indicating failure or success. All we need now is to wrap this up in the appropriate <a href="/wiki/RSpec">RSpec</a> code.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

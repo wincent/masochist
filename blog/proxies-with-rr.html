@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Proxies with RR • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/proxies-with-rr">Proxies with RR</a></h1><div class="metadata"><relative-time created="1278424414" updated="1584053324">Created 7/6/2010, updated 3/12/2020</relative-time><span>4 minute read</span></div><div class="prerendered"><p>Back in November I wrote about how I was <a href="/blog/thinking-about-switching-to-rr">thinking of switching to RR</a> because it has both proxies and test spies.</p>
+<p>In addition, one could argue that the concise syntax is nicer too, and that setting up test doubles is more elegant because it looks more like the method invocations that are being specified.</p>
+<p>Well, I'm pleased to report that having dabbled with RR in the last week, it has addressed one of my key frustrations with other mocking solutions: namely, the difficulty of specifying <em>one</em> piece of pertinent behavior while ignoring the rest.</p>
+<h2><a href="/wiki/RR">RR</a> proxies in action</h2>
+<p>Here's an example from a view spec that I just wrote.</p>
+<p>This is the assertion that I <em>wanted</em> to write:</p>
+<pre><code class="language-ruby">it 'renders the tags partial' do
+  mock(view).render('shared/tags')
+  render
+end
+</code></pre>
+<p>The problem here is that in order to test that the view makes the desired <code>render</code> call, I have to render the view, and guess what: I do that by calling <code>render</code> and <em>that</em> initial call gets intercepted by the mock and is considered an unexpected message.</p>
+<p>With RR, we can use a proxy to let that call through to the original object without raising an exception. Unfortunately, when we do this we get <em>another</em> exception, because under the hood RSpec's <code>render</code> call is just handing off to another <code>render</code> method inside Rails. This inner <code>render</code> call includes an empty hash parameter, which I don't really care about but will have to include in my mock set-up anyway.</p>
+<pre><code class="language-ruby">stub.proxy(view).render(anything, anything)
+mock(view).render('shared/tags', anything)
+</code></pre>
+<p>Note that here RR has already come to the rescue by providing us with a proxy rather than just a stub. If we used a normal stub it would just intercept the message send and nothing would be rendered at all. Here, it intercepts the call, considers it to be ok, and passes it on to the real object.</p>
+<p>But then there's another problem: the view actually has <em>another</em> call to a partial (an errors partial), which we have to stub out too.</p>
+<pre><code class="language-ruby">stub.proxy(view).render(anything, anything)
+stub(view).render('shared/error_messages', anything)
+mock(view).render('shared/tags', anything)
+</code></pre>
+<p>If we have another partial, say for a live preview, you can see how this starts to grow out of control:</p>
+<pre><code class="language-ruby">stub.proxy(view).render(anything, anything)
+stub(view).render('shared/error_messages', anything)
+stub(view).render('shared/preview', anything)
+mock(view).render('shared/tags', anything)
+</code></pre>
+<p>Considering that we only wanted to make an assertion about <em>one</em> particular message send, that is an <em>awful</em> lot of extraneous rubbish we've had to specify just to get things working. It's the kind of thing that makes you feel unhappy, like you'd given birth to a hideously deformed baby or something.</p>
+<p>This is where RR really shines though, because by combining the proxy with lax argument expectations we can actually reduce all that down to this:</p>
+<pre><code class="language-ruby">stub.proxy(view).render.with_any_args
+mock(view).render('shared/tags', anything)
+</code></pre>
+<p>That basically means, &quot;let any message through to the original object, but confirm for me that this one message that I care about got sent&quot;. This is great and is pretty much exactly what I was asking for when I wrote <a href="/blog/thinking-about-switching-to-rr">that post</a>.</p>
+<h2>Taking a step back</h2>
+<p>We can do even better. We arrived at the above solution by looking at the exceptions that were raised when we tried to run the specs and setting up stubs to eliminate them.</p>
+<p>If we take a step back and think about the best level at which to apply these stubs and proxies, we can actually drop the <code>with_any_args</code> call to make things even shorter:</p>
+<pre><code class="language-ruby">stub.proxy(view).render
+mock(view).render('shared/tags', anything)
+</code></pre>
+<p>This is possible because in reality the only call that we need to &quot;let through&quot; is the call to <code>render</code> with no arguments at all which appears in every <code>it</code> block.</p>
+<h2>Complete example</h2>
+<p>The situation here is a view spec which contains a partial, so:</p>
+<ul>
+<li>We want to stub out the partial call to keep its effects out of the parent template's spec (the partial is itself tested in a different spec so there is no sense in testing it here, rather, it is better to keep the two templates isolated from each other, so that errors in the partial don't &quot;bubble up&quot; into the spec for the parent template)</li>
+<li>Even though we don't want the contents of the partial to influence the parent template's specs, we do want to include one spec that mocks the partial call to confirm that the partial is actually called</li>
+<li>We want all other <code>render</code> calls to be let through automatically</li>
+</ul>
+<p>So this is what that looks like with RR:</p>
+<pre><code class="language-ruby">describe 'things/index.html.haml' do
+  before do
+    # intercept all calls to render the partial
+    stub(view).render('things.html.haml')
+
+    # let all other &quot;render&quot; calls through, including
+    # the &quot;render&quot; calls in each example block below
+    stub.proxy(view).render
+  end
+
+  it 'renders the &quot;things&quot; partial' do
+    mock(view).render('things.html.haml')
+    render
+  end
+
+  it 'does whatever' do
+    render
+    # ...
+  end
+
+  # etc
+end
+</code></pre>
+</div><ul class="tags"><li><a href="/tags/rspec">rspec</a></li><li><a href="/tags/rr">rr</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/command-t-0.8b-released">← Command-T 0.8b released</a></div><div class="post-nav-next"><a href="/blog/making-background-windows-less-obvious">Making background windows less obvious →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

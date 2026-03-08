@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.7.3 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.7.3</h1></div><div class="metadata"><relative-time created="1284887344" updated="1495119989">Created 9/19/2010, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official announcement to the <a href="/wiki/Git_mailing_list">Git mailing list</a>:</p>
+<pre><code>The latest feature release Git 1.7.3 is available at the usual
+places:
+
+ http://www.kernel.org/pub/software/scm/git/
+
+ git-1.7.3.tar.{gz,bz2}			(source tarball)
+ git-htmldocs-1.7.3.tar.{gz,bz2}		(preformatted docs)
+ git-manpages-1.7.3.tar.{gz,bz2}		(preformatted docs)
+
+The RPM binary packages for a few architectures are found in:
+
+ RPMS/$arch/git-*-1.7.3-1.fc11.$arch.rpm	(RPM)
+
+Git v1.7.3 Release Notes
+========================
+
+Updates since v1.7.2
+--------------------
+
+* git-gui, now at version 0.13.0, got various updates and a new
+  maintainer, Pat Thoyts.
+
+* Gitweb allows its configuration to change per each request; it used to
+  read the configuration once upon startup.
+
+* When git finds a corrupt object, it now reports the file that contains
+  it.
+
+* &quot;git checkout -B &lt;it&gt;&quot; is a shorter way to say &quot;git branch -f &lt;it&gt;&quot;
+  followed by &quot;git checkout &lt;it&gt;&quot;.
+
+* When &quot;git checkout&quot; or &quot;git merge&quot; refuse to proceed in order to
+  protect local modification to your working tree, they used to stop
+  after showing just one path that might be lost.  They now show all,
+  in a format that is easier to read.
+
+* &quot;git clean&quot; learned &quot;-e&quot; (&quot;--exclude&quot;) option.
+
+* Hunk headers produced for C# files by &quot;git diff&quot; and friends show more
+  relevant context than before.
+
+* diff.ignoresubmodules configuration variable can be used to squelch the
+  differences in submodules reported when running commands (e.g. &quot;diff&quot;,
+  &quot;status&quot;, etc.) at the superproject level.
+
+* http.useragent configuration can be used to lie who you are to your
+  restrictive firewall.
+
+* &quot;git rebase --strategy &lt;s&gt;&quot; learned &quot;-X&quot; option to pass extra options
+  that are understood by the chosen merge strategy.
+
+* &quot;git rebase -i&quot; learned &quot;exec&quot; that you can insert into the insn sheet
+  to run a command between its steps.
+
+* &quot;git rebase&quot; between branches that have many binary changes that do
+  not conflict should be faster.
+
+* &quot;git rebase -i&quot; peeks into rebase.autosquash configuration and acts as
+  if you gave --autosquash from the command line.
+
+
+Also contains various documentation updates.
+
+
+Fixes since v1.7.2
+------------------
+
+All of the fixes in v1.7.2.X maintenance series are included in this
+release, unless otherwise noted.
+
+* &quot;git merge -s recursive&quot; (which is the default) did not handle cases
+  where a directory becomes a file (or vice versa) very well.
+
+* &quot;git fetch&quot; and friends were accidentally broken for url with &quot;+&quot; in
+  its path, e.g. &quot;git://git.gnome.org/gtk+&quot;.
+
+* &quot;git fetch $url&quot; (i.e. without refspecs) was broken for quite some
+  time, if the current branch happen to be tracking some remote.
+
+* &quot;git ls-tree dir dirgarbage&quot;, when &quot;dir&quot; was a directory,
+  incorrectly recursed into &quot;dir&quot;.
+
+* &quot;git note remove&quot; created unnecessary extra commit when named object
+  did not have any note to begin with.
+
+* &quot;git rebase&quot; did not work well if you had diff.noprefix configured.
+
+* &quot;git -c foo=bar subcmd&quot; did not work well for subcmd that is not
+  implemented as a built-in command.
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Updating_to_Git_1.7.3">Updating to Git 1.7.3</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

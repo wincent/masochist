@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Tag support in Vim • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Tag support in Vim</h1></div><div class="metadata"><relative-time created="1323563406" updated="1495119989">Created 12/11/2011, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/vim">vim</a></li><li><a href="/tags/tags">tags</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Creating a tags file</h2>
+<p>Make sure <a href="/wiki/Exuberant_Ctags">Exuberant Ctags</a> is installed (eg. <code>sudo yum install ctags</code> or similar, depending on your <a href="/wiki/OS">OS</a>).</p>
+<p>To actually create a tags file, for <a href="/wiki/Rails">Rails</a> projects, run:</p>
+<pre><code>:Rtags
+</code></pre>
+<p>(requires <a href="/wiki/Tim_Pope%27s">Tim Pope's</a> <a href="/wiki/rails.vim">rails.vim</a> plug-in).</p>
+<h2>Jumping to a definition</h2>
+<p>Either in command mode:</p>
+<pre><code>:tag foo
+</code></pre>
+<p>Or by hitting <code>Ctrl-]</code> over a keyword.</p>
+<p>For cycling through matches we have:</p>
+<ul>
+<li><code>:tn</code> (next)</li>
+<li><code>:tp</code> (previous)</li>
+<li><code>:tf</code> (first)</li>
+<li><code>:tl</code> (last)</li>
+<li><code>:ts</code> (select from list)</li>
+</ul>
+<p>For jumping back, <code>Ctrl-T</code> (or use <code>Ctrl-I</code>/<code>Ctrl-O</code> to move through the <code>:jump</code> list).</p>
+<h2>Show all tags</h2>
+<pre><code>:tags
+</code></pre>
+<h2>External links</h2>
+<ul>
+<li><a href="http://robots.thoughtbot.com/post/159805638/integrating-vim-into-a-life">http://robots.thoughtbot.com/post/159805638/integrating-vim-into-a-life</a></li>
+<li><a href="http://blog.bojica.com/2010/06/27/ctags-and-vim-for-ruby-on-rails-development">http://blog.bojica.com/2010/06/27/ctags-and-vim-for-ruby-on-rails-development</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

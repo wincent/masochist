@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ack • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Ack</h1></div><div class="metadata"><relative-time created="1232286535" updated="1495119989">Created 1/18/2009, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/ack">ack</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h3>Links</h3>
+<ul>
+<li><a href="http://search.cpan.org/dist/ack/">http://search.cpan.org/dist/ack/</a>: official site</li>
+<li><a href="http://cpanratings.perl.org/dist/ack">http://cpanratings.perl.org/dist/ack</a>: comments and reviews</li>
+<li><a href="http://www.perladvent.org/2006/5/">http://www.perladvent.org/2006/5/</a>: a fairly detailed review with screenshots</li>
+</ul>
+<h3>The <code>.ackrc</code> file</h3>
+<p>I like to pipe output through the pager by default, so I set up an <code>~/.ackrc</code> file with this:</p>
+<pre><code>--pager=less
+</code></pre>
+<p>Add a <code>haml</code> type. Without this your <code>.haml</code> files won't get scanned unless you pass <code>--all</code>. Now they will be scanned by default (and you can do <code>ack --haml</code> and <code>ack --nohaml</code> to scope the search as well):</p>
+<pre><code>--type-set=haml=.haml
+</code></pre>
+<h3>See also</h3>
+<ul>
+<li>My first-time install notes: &quot;<a href="/wiki/Installing_Ack_1.86_on_Mac_OS_X_Leopard_10.5.5">Installing Ack 1.86 on Mac OS X Leopard 10.5.5</a>&quot;</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

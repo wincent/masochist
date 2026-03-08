@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Building and installing Ruby 1.8.6 on Mac OS X Tiger • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Building and installing Ruby 1.8.6 on Mac OS X Tiger</h1></div><div class="metadata"><relative-time created="1173788199" updated="1584053324">Created 3/13/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/ruby">ruby</a></li><li><a href="/tags/tiger">tiger</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Build</h2>
+<pre><code>wget ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.6.tar.bz2
+md5 ruby-1.8.6.tar.bz2
+tar xjf ruby-1.8.6.tar.bz2
+cd ruby-1.8.6
+./configure --enable-install-doc --with-readline-dir=/usr/local --enable-pthread
+make
+make test
+sudo make install
+make check
+</code></pre>
+<p>I had hoped that the <a href="/wiki/readline">readline</a> workaround needed in the last update (see &quot;<a href="/wiki/Building_and_installing_Ruby_1.8.5_on_Mac_OS_X_Tiger">Building and installing Ruby 1.8.5 on Mac OS X Tiger</a>&quot;) would no longer be required in this version, but it appears that it is because <a href="/wiki/Ruby">Ruby</a> crashes during the <code>make check</code> phase unless you pass the <code>--with-readline-dir=/usr/local</code> switch to <code>configure</code>:</p>
+<pre><code>dyld: NSLinkModule() error
+dyld: Symbol not found: _rl_filename_completion_function
+  Referenced from: /Users/wincent/trabajo/unversioned/ruby/ruby-1.8.6/.ext/i686-darwin8.8.1/readline.bundle
+  Expected in: flat namespace
+
+make: *** [test-all] Trace/BPT trap
+</code></pre>
+<p>Likewise, unless you pass the <code>--enable-pthread</code> you'll get this warning during the <code>make</code>:</p>
+<pre><code>*****************************************************************************
+**
+** PTHREAD SUPPORT MODE ERROR:
+**
+**   Ruby is not compiled with --enable-pthread, but your Tcl/Tk
+**   library seems to be compiled with pthread support. This
+**   combination may cause frequent hang or segmentation fault
+**   errors when Ruby/Tk is working. We recommend that you NEVER
+**   create the library with such a combination of pthread support.
+**
+**   Please recompile Ruby with the &quot;--enable-pthread&quot; configure option
+**   or recompile Tcl/Tk with the &quot;--disable-threads&quot; configure option.
+**
+*****************************************************************************
+</code></pre>
+<p>Nor is it necessary to separately install the documentation when passing the <code>--enable-install-doc</code> switch to configure.</p>
+<h2>Updating <a href="/wiki/FastRI">FastRI</a> index</h2>
+<p>On trying to update the <a href="/wiki/FastRI">FastRI</a> index:</p>
+<pre><code>fastri-server -b
+</code></pre>
+<p>I found the following error:</p>
+<pre><code>/usr/local/lib/ruby/1.8/i686-darwin8.7.1/rbconfig.rb:7: ruby lib version (1.8.5) doesn't match executable version (1.8.6) (RuntimeError)
+        from /usr/local/lib/ruby/site_ruby/1.8/rubygems.rb:10:in `require'
+        from /usr/local/lib/ruby/site_ruby/1.8/rubygems.rb:10
+        from /usr/local/bin/fastri-server:9:in `require'
+        from /usr/local/bin/fastri-server:9
+</code></pre>
+<p>Similar errors were printed when trying things like <code>gem list --local</code> or <code>rake spec</code>.</p>
+<p>At the top of <code>/usr/local/lib/ruby/1.8/i686-darwin8.7.1/rbconfig.rb</code> we find:</p>
+<pre><code>module Config
+  RUBY_VERSION == &quot;1.8.5&quot; or
+    raise &quot;ruby lib version (1.8.5) doesn't match executable version (#{RUBY_VERSION})&quot;
+</code></pre>
+<p>And although the <code>make</code> output included this:</p>
+<pre><code>rbconfig.rb updated
+</code></pre>
+<p>The modification date on <code>/usr/local/lib/ruby/1.8/i686-darwin8.7.1/rbconfig.rb</code> shows that the installed copy wasn't touched:</p>
+<pre><code>-rw-r--r--   1 root  wheel  - 6253 Sep 23 17:40 /usr/local/lib/ruby/1.8/i686-darwin8.7.1/rbconfig.rb
+</code></pre>
+<p>A quick check to see if the file was installed somewhere else:</p>
+<pre><code># have to use &quot;find&quot; for this
+find / -name rbconfig.rb
+
+# &quot;locate&quot; would be quicker, but its database is updated only once per week
+locate rbconfig.rb
+
+# Spotlight would be quick and up-to-date, but directories like /usr are not indexed
+mdfind &quot;kMDItemFSName = 'rbconfig.rb'&quot;
+</code></pre>
+<p>Here are the relevant entries:</p>
+<pre><code>/usr/lib/ruby/1.8/universal-darwin8.0/rbconfig.rb
+/usr/local/lib/ruby/1.8/i686-darwin8.7.1/rbconfig.rb
+/usr/local/lib/ruby/1.8/i686-darwin8.8.1/rbconfig.rb
+</code></pre>
+<p>Sure enough, the file at <code>/usr/local/lib/ruby/1.8/i686-darwin8.8.1/rbconfig.rb</code> corresponds to <a href="/wiki/Ruby_1.8.6">Ruby 1.8.6</a>. So it appears that all installed <a href="/wiki/gems">gems</a> are looking in the wrong directory for <code>rbconfig.rb</code>.</p>
+<p>I tried downloading <a href="/wiki/RubyGems">RubyGems</a> and reinstalling it:</p>
+<pre><code>wget http://rubyforge.org/frs/download.php/17190/rubygems-0.9.2.tgz
+tar xzf rubygems-0.9.2.tgz
+cd rubygems-0.9.2
+sudo ruby setup.rb
+</code></pre>
+<p>But this yielded:</p>
+<pre><code>/usr/local/lib/ruby/1.8/i686-darwin8.7.1/rbconfig.rb:7: ruby lib version (1.8.5) doesn't match executable version (1.8.6) (RuntimeError)
+        from setup.rb:52:in `require'
+        from setup.rb:52
+</code></pre>
+<p>The culprit was evidently in my <code>~/.bash_profile</code>:</p>
+<pre><code>RUBYLIB=&quot;/usr/local/lib/ruby/site_ruby/1.8:/usr/local/lib/ruby/site_ruby/1.8/i686-darwin8.7.1:/usr/local/lib/ruby/1.8:/usr/local/lib
+/ruby/1.8/i686-darwin8.7.1&quot;
+export RUBYLIB
+</code></pre>
+<p>I temporarily overrode this:</p>
+<pre><code>export RUBYLIB=&quot;/usr/local/lib/ruby/site_ruby/1.8:/usr/local/lib/ruby/site_ruby/1.8/i686-darwin8.8.1:/usr/local/lib/ruby/1.8:/usr/local/lib/ruby/1.8/i686-darwin8.8.1&quot;
+</code></pre>
+<p>And found that things were working again:</p>
+<pre><code>fastri-server -b
+gem list --local
+</code></pre>
+<p>The <code>~/.bash_profile</code> stuff was something I'd put in when I first starting playing with <a href="/wiki/Rails">Rails</a> and <a href="/wiki/Ruby">Ruby</a>, knowing absolutely nothing about either (see &quot;<a href="/wiki/Installing_Ruby_on_Rails_1.1.4_on_Mac_OS_X_Tiger">Installing Ruby on Rails 1.1.4 on Mac OS X Tiger</a>&quot;). Even unsetting <code>RUBYLIB</code> entirely is fine:</p>
+<pre><code>unset RUBYLIB
+</code></pre>
+<p>Evidently, the newly built <a href="/wiki/Ruby_1.8.6">Ruby 1.8.6</a> already knows in which directories it should look for library files; witness the output of <code>ruby -e &quot;puts $:&quot;</code> after performing the <code>unset</code>:</p>
+<pre><code>/usr/local/lib/ruby/site_ruby/1.8
+/usr/local/lib/ruby/site_ruby/1.8/i686-darwin8.8.1
+/usr/local/lib/ruby/site_ruby
+/usr/local/lib/ruby/1.8
+/usr/local/lib/ruby/1.8/i686-darwin8.8.1
+.
+</code></pre>
+<h2>Updating installed gems</h2>
+<pre><code>sudo gem update
+</code></pre>
+<p>Of my installed gems, only <code>sqlite3-ruby</code> needed to be updated.</p>
+<h2>See also</h2>
+<ul>
+<li>Release announcement: <a href="http://groups.google.com/group/comp.lang.ruby/browse_thread/thread/f2add90521cf106b/9a64ca26897fe75a">http://groups.google.com/group/comp.lang.ruby/browse_thread/thread/f2add90521cf106b/9a64ca26897fe75a</a></li>
+<li>User-visible changes: <a href="http://svn.ruby-lang.org/repos/ruby/tags/v1_8_6/NEWS">http://svn.ruby-lang.org/repos/ruby/tags/v1_8_6/NEWS</a></li>
+<li>All changes: <a href="http://svn.ruby-lang.org/repos/ruby/tags/v1_8_6/ChangeLog">http://svn.ruby-lang.org/repos/ruby/tags/v1_8_6/ChangeLog</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

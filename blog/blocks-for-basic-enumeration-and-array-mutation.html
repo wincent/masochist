@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Blocks for basic enumeration and array mutation • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/blocks-for-basic-enumeration-and-array-mutation">Blocks for basic enumeration and array mutation</a></h1><div class="metadata"><relative-time created="1263677072" updated="1495119989">Created 1/16/2010, updated 5/18/2017</relative-time><span>3 minute read</span></div><div class="prerendered"><p>A fairly common pattern in many programming languages is iterating over a collection and mutating the elements in some way. Some languages provide built-in support for this kind of thing, while others need a simple in-place implementation such as an explicit <code>for</code> loop. In languages without built-in support, we could consider trying to extract this common pattern into a reusable unit in some way.</p>
+<p>Which do you prefer?</p>
+<h2>Ruby</h2>
+<p>Here we start with <code>dir</code> (a <code>String</code> containing the absolute path to a directory) and <code>filenames</code> (an <code>Array</code> of filenames):</p>
+<pre><code class="language-ruby">filenames.map { |filename| &quot;#{dir}/#{filename}&quot; }
+</code></pre>
+<p>Advantages:</p>
+<ul>
+<li>concise, elegant and idiomatic</li>
+<li><code>map</code> method comes for free with the language</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>like all <a href="/wiki/Ruby">Ruby</a>, it is relatively slow</li>
+</ul>
+<h2>Objective-C 2.0 (blockless)</h2>
+<p>This time we have <code>dir</code> (a pointer to an <code>NSString</code>) and <code>filenames</code> (a pointer to an <code>NSArray</code>):</p>
+<pre><code class="language-objc">NSMutableArray *paths = [NSMutableArray arrayWithCapacity:[fileNames count]];
+for (NSString *fileName in fileNames)
+    [paths addObject:[dir stringByAppendingPathComponent:fileName]];
+return [paths copy]; // return immutable
+</code></pre>
+<p>Advantages:</p>
+<ul>
+<li>simple and fast</li>
+<li>self-contained (fast enumeration and other methods come with the runtime and system libraries)</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>relatively verbose compared to <a href="/wiki/Ruby">Ruby</a></li>
+</ul>
+<h2>Objective-C 2.0 (with block-based &quot;map&quot; method)</h2>
+<p>Again with the same variables:</p>
+<pre><code class="language-objc">return [fileNames map:^(id fileName) {
+    return (id)[dir stringByAppendingPathComponent:fileName];
+}];
+</code></pre>
+<p>Advantages:</p>
+<ul>
+<li>captures some of the elegance of the Ruby version</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>hampered by noisy syntax</li>
+<li>requires external support method (<code>map:</code>), although said method is reusable</li>
+</ul>
+<h2>Objective-C 1.0 <code>for</code> loop (C99)</h2>
+<pre><code class="language-objc">NSMutableArray *paths = [NSMutableArray arrayWithCapacity:[fileNames count]];
+for (unsigned i = 0, max = [fileNames count]; i &lt; max; i++)
+{
+    NSString *filename = [fileNames objectAtIndex:i];
+    [paths addObject:[dir stringByAppendingPathComponent:fileName]];
+}
+</code></pre>
+<p>Advantages:</p>
+<ul>
+<li>simple and fast</li>
+<li>self-contained</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>even more verbose than the Objective-C 2.0 version</li>
+</ul>
+<h2>Objective-C 1.0 <code>for</code> loop (pre-C99)</h2>
+<pre><code class="language-objc">NSMutableArray *paths = [NSMutableArray arrayWithCapacity:[fileNames count]];
+unsigned i, max;
+for (i = 0, max = [fileNames count]; i &lt; max; i++)
+{
+    NSString *filename = [fileNames objectAtIndex:i];
+    [paths addObject:[dir stringByAppendingPathComponent:fileName]];
+}
+</code></pre>
+<p>Advantages:</p>
+<ul>
+<li>simple and fast</li>
+<li>self-contained</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>the most verbose version so far</li>
+</ul>
+<h2>Objective-C with extracted method</h2>
+<p>First the extracted method:</p>
+<pre><code class="language-objc">@interface NSMutableString (WOStringPrepending)
+
+- (void)prependString:(NSString *)aString
+{
+    [self insertString:aString atIndex:0];
+}
+
+@end
+</code></pre>
+<p>And now for the code which uses it:</p>
+<pre><code class="language-objc">NSMutableArray *mutablePaths = [NSMutableArray arrayWithCapacity:[fileNames count]];
+for (NSString *fileName in fileNames)
+    [mutablePaths addObject:[fileName mutableCopy]];
+[mutablePaths makeObjectsPerformSelector:@selector(prependString:) withObject:dir];
+return [mutablePaths copy] # return immutable;
+</code></pre>
+<p>Advantages:</p>
+<ul>
+<li>?</li>
+</ul>
+<p>Disadvantages:</p>
+<ul>
+<li>Requires pre-processing phase ensuring that all array elements are mutable</li>
+<li>Requires cluttering up <code>NSString</code> class with additional utility method</li>
+<li>Although the returned array is immutable, the contained objects are not, and if we want them to be so we would have to perform yet another iteration</li>
+<li>Inefficient (2 to 3 separate iterations)</li>
+</ul>
+<p>There are other candidates we could have chosen here for our &quot;extracted&quot; method but they all suffer from similar disadvantages.</p>
+<p>For example, if we choose to make a <code>stringByPrependingString:</code> method we would avoid our need to make mutable copies of all the strings but we would need to introduce a new temporary variable with the path separator (<code>/</code>) already appended after our <code>dir</code>.</p>
+<p>There are other alternatives still which would be even more unworkable. If we chose to pass in <code>stringByAppendingPathComponent:</code> to our <code>makeObjectsPerformSelector:withObject:</code> call, we end up having to pre-populate an array with multiple copies of our <code>dir</code> string, but we run into a dead-end because we can't change the &quot;object&quot; parameter as we iterate.</p>
+<h2>So which to choose?</h2>
+<p>Which one of these would you go for then in your Objective-C program?</p>
+</div><ul class="tags"><li><a href="/tags/ruby">ruby</a></li><li><a href="/tags/objective.c">objective.c</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/synergy-4.3b-released">← Synergy 4.3b released</a></div><div class="post-nav-next"><a href="/blog/synergy-4.2.1-released">Synergy 4.2.1 released →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

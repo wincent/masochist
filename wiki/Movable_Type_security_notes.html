@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Movable Type security notes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Movable Type security notes</h1></div><div class="metadata"><relative-time created="1182409473" updated="1710259978">Created 6/21/2007, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/movable.type">movable.type</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Turn off comments and search if you can</h2>
+<p>If you don't need don't need comments then you can set up a very, very secure <a href="/wiki/Movable_Type">Movable Type</a> installation. There's really no excuse not to turn off search; just set up a <a href="/wiki/Google">Google</a> search page for your site, like this one:</p>
+<ul>
+<li><a href="http://wincent.dev/a/site-map/search/">http://wincent.dev/a/site-map/search/</a></li>
+</ul>
+<p>Tips on how to do this appear below.</p>
+<p>If you can turn off comments and search then you can effectively hide all traces of your <a href="/wiki/Movable_Type">Movable Type</a> installation from the public eye and just use it as a convenient tool for generating static but easily-updateable pages. Most people won't even know you're running <a href="/wiki/Movable_Type">Movable Type</a>. By putting your install in an out-of-the-way location, you can use <a href="/wiki/security_through_obscurity">security through obscurity</a> (not always a bad thing) to protect you from any flaws that might be in the product. I use this technique on my personal <a href="/wiki/weblog">weblog</a> and on my products news page, both powered by <a href="/wiki/Movable_Type">Movable Type</a> behind the scenes.</p>
+<p>See below for more information on hiding your <a href="/wiki/Movable_Type">Movable Type</a> installation.</p>
+<h2>Don't advertise the location of your <a href="/wiki/Movable_Type">Movable Type</a> install</h2>
+<ol>
+<li>Turn off (or delete) the template used to generate any <a href="/wiki/RSD">RSD</a> archives in each weblog</li>
+<li>Delete any <a href="/wiki/RSD">RSD</a> files previously written to your server (normally <code>rsd.xml</code>); use the <code>find</code> command</li>
+<li>Remove any references to the <a href="/wiki/RSD">RSD</a> files that may exist in your templates; use <code>grep -R</code></li>
+<li>Turn off the <a href="/wiki/Movable_Type">Movable Type</a> search function; use Google instead (it's better anyway) with a form something like this:</li>
+</ol>
+<!-- -->
+<pre><code>&lt;form method=&quot;get&quot; action=&quot;http://www.google.com/search&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;q&quot; size=&quot;20&quot; maxlength=&quot;255&quot; value=&quot;&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;hl&quot; value=&quot;en&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;domains&quot; value=&quot;example.com&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;sitesearch&quot; value=&quot;example.com&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;ie&quot; value=&quot;UTF-8&quot; /&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;oe&quot; value=&quot;UTF-8&quot; /&gt;
+  &lt;input type=&quot;submit&quot; name=&quot;btnG&quot; value=&quot;Search&quot; /&gt;
+&lt;/form&gt;
+</code></pre>
+<p>Replacing the original:</p>
+<pre><code>&lt;form method=&quot;get&quot; action=&quot;&lt;$MTCGIPath$&gt;&lt;$MTSearchScript$&gt;&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;IncludeBlogs&quot; value=&quot;&lt;$MTBlogID$&gt;&quot; /&gt;
+  &lt;label for=&quot;search&quot; accesskey=&quot;4&quot;&gt;Search the news archives:&lt;/label&gt;&lt;br /&gt;
+  &lt;input id=&quot;search&quot; name=&quot;search&quot; size=&quot;20&quot; /&gt;&lt;br /&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Search&quot; /&gt;
+&lt;/form&gt;
+</code></pre>
+<h2>Move your install to less predictable location</h2>
+<p>For example, installing at <a href="http://example.com/iegaisoomipahrur/">http://example.com/iegaisoomipahrur/</a> is much better than using <a href="http://example.com/mt/">http://example.com/mt/</a> as an install address.</p>
+<p>This will require you to update the <code>CGIPath</code> setting in your <code>mt-config.cgi</code> file and potentially also your Apache configuration (ensuring that the <code>ExecCGI</code> option is set for the corresponding directory).</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

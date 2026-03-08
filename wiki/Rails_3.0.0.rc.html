@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rails 3.0.0.rc • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Rails 3.0.0.rc</h1></div><div class="metadata"><relative-time created="1280200341" updated="1495119989">Created 7/27/2010, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/rails">rails</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Pieced together from individual <code>CHANGELOG</code> files:</p>
+<h2>Action Mailer</h2>
+<pre><code>*Rails 3.0.0 [release candidate] (July 26th, 2010)*
+
+* No material changes
+</code></pre>
+<h2>Active Record</h2>
+<pre><code>*Rails 3.0.0 [release candidate] (July 26th, 2010)*
+
+* Changed update_attribute to not run callbacks and update the record directly in the database [Neeraj Singh]
+
+* Add scoping and unscoped as the syntax to replace the old with_scope and with_exclusive_scope [José Valim]
+
+* New rake task, db:migrate:status, displays status of migrations #4947 [Kevin Skoglund]
+
+* select and order for ActiveRecord now always concatenate nested calls. Use reorder if you want the original order to be overwritten [Santiago Pastorino]
+
+* PostgreSQL: ensure the database time zone matches Ruby's time zone #4895 [Aaron Patterson]
+</code></pre>
+<h2>Active Resource</h2>
+<pre><code>*Rails 3.0.0 [release candidate] (July 26th, 2010)*
+
+* No material changes
+</code></pre>
+<h2>Active Support</h2>
+<pre><code>*Rails 3.0.0 [release candidate] (July 26th, 2010)*
+
+* Removed Object#returning, Object#tap should be used instead. [Santiago Pastorino]
+
+* Deprecation behavior is no longer hardcoded to the name of the environment.
+  Instead, it is set via config.active_support.deprecation and can be one
+  of :log, :stderr or :notify. :notify is a new style that sends the warning
+  via ActiveSupport::Notifications, and is the new default for production
+  [Yehuda Katz]
+
+* Renamed ActiveSupport::Dependecies.load_(once_)paths to autoload_(once_)paths. [fxn]
+
+* Added ActiveSupport::FileUpdateChecker to execute a block only if a set of files changed, used by Router and I18n locale files. [José Valim]
+
+* Added ActiveSupport::DescendantsTracker to track descendants with support to constants reloading. [José Valim]
+
+* ActiveSupport::OrderedHash#merge and [/tags/merge #merge]! accept a block. #4838 [Paul Mucur, fxn]
+
+* Date#since, [/tags/ago #ago], #beginning_of_day, #end_of_day, and [/tags/xmlschema #xmlschema] honor now the user time zone if set. [Geoff Buesing]
+</code></pre>
+<h2>Railties</h2>
+<pre><code>*Rails 3.0.0 [release candidate] (July 26th, 2010)*
+
+* Application generation: --skip-testunit and --skip-activerecord become --skip-test-unit
+  and --skip-active-record respectively. [fxn]
+
+* Added console to Rails::Railtie as a hook called just after console starts. [José Valim]
+
+* Rails no longer autoload code in lib for application. You need to explicitly require it. [José Valim]
+
+* Rails::LogSubscriber was renamed to ActiveSupport::LogSubscriber [José Valim]
+
+* config.load_(once_)paths in config/application.rb got renamed to config.autoload_(once_)paths. [fxn]
+
+* Abort generation/booting on Ruby 1.9.1. [fxn]
+
+* Made the rails command work even when you're in a subdirectory [Chad Fowler]
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

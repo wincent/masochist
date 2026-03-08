@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Tweaking Command-T and Vim for use in the terminal and tmux • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/tweaking-command-t-and-vim-for-use-in-the-terminal-and-tmux">Tweaking Command-T and Vim for use in the terminal and tmux</a></h1><div class="metadata"><relative-time created="1320475513" updated="1584053324">Created 11/5/2011, updated 3/12/2020</relative-time><span>6 minute read</span></div><div class="prerendered"><p>For a long time I used <a href="/wiki/Command-T">Command-T</a> principally only inside of <a href="/wiki/MacVim">MacVim</a>. Partly because the version of <a href="/wiki/Vim">Vim</a> that comes with <a href="/wiki/Mac_OS_X">Mac OS X</a> doesn't have the necessary <a href="/wiki/Ruby">Ruby</a> support, and partly because MacVim has some niceties that make it pleasant to use compared to using <a href="/wiki/Apple%27s">Apple's</a> <code>vim</code> inside <a href="/wiki/Terminal.app">Terminal.app</a>:</p>
+<ul>
+<li>MacVim supports 256-color schemes out of the box</li>
+<li>Key bindings simply work; you can even set up ones like &quot;Command-T&quot;</li>
+<li>It has a nice full-screen mode</li>
+<li>You can get fast-and-easy context switching between your editor and the terminal with &quot;Command-Tab&quot;</li>
+</ul>
+<p>Starting in 2011, however, I've spent a fair bit of time beating the <a href="/wiki/command_line">command line</a> version of Vim into shape and making it work the way I want, even over <a href="/wiki/SSH">SSH</a> connections or inside <a href="/wiki/tmux">tmux</a> sessions. It's now about basically the whole way there.</p>
+<h2>The Terminal</h2>
+<p><a href="/wiki/iTerm_2">iTerm 2</a> is really the only way to go here. It is not as fast as <a href="/wiki/Terminal.app">Terminal.app</a>, the search highlighting is infuriatingly hard to read (and there appears to be no way to set a preference for the direction of the search), and it is <em>very</em> occasionally unstable (but not often enough to really interfere with you getting your work done), but it has 256-color support (more importantly than this though, it has easily configurable and loadable color schemes, which means you can get color schemes like <a href="/wiki/Solarized">Solarized</a> up and running and looking nice with ease) and does all the right things as far as things like mouse support are concerned.</p>
+<p>I have iTerm 2 set up to report itself as <code>xterm-256color</code> and also do &quot;Xterm mouse reporting&quot;.</p>
+<h2>Key bindings</h2>
+<p>Terminals are tricky beasts, especially when it comes to key bindings. They do &quot;crazy&quot; things like sending your cursor key presses as escape sequences (eg. the &quot;up&quot; arrow might be transmitted to the terminal as <code>&lt;ESC&gt;OA</code> or something similarly contrived to make Vim execute an undesirable set of operations).</p>
+<p>This is why I added the ability to configure custom mappings for <a href="/wiki/Command-T">Command-T</a>, so that users could workaround the idiosyncrasies of their terminal to get the desired mappings they wanted. With a handful of settings in my <code>~/.vimrc</code> I was able to get the <code>&lt;ESC&gt;</code> and cursor keys to do the right thing in the terminal:</p>
+<pre><code>set ttimeoutlen=50
+
+if &amp;term =~ &quot;xterm&quot; || &amp;term =~ &quot;screen&quot;
+  &quot; as of March 2013, with current iTerm (1.0.0.20130319), tmux (1.8)
+  &quot; and Vim (7.3, with patches 1-843), this is all I need:
+  let g:CommandTCancelMap     = ['&lt;ESC&gt;', '&lt;C-c&gt;']
+
+  &quot; when I originally started using Command-T inside a terminal,
+  &quot; I used to need these as well:
+  let g:CommandTSelectNextMap = ['&lt;C-j&gt;', '&lt;ESC&gt;OB']
+  let g:CommandTSelectPrevMap = ['&lt;C-k&gt;', '&lt;ESC&gt;OA']
+endif
+</code></pre>
+<p>In my <code>.zshrc</code> I have the following to prevent accidental presses of <code>&lt;CTRL-s&gt;</code> from taking over the terminal. This has the side-effect that I can use <code>&lt;CTRL-s&gt;</code> again in <a href="/wiki/Command-T">Command-T</a> to open a selection in horizontal split. (I would use <code>&lt;CTRL-Enter&gt;</code>, but alas, the terminal sends exactly the same key code for that as it does for <code>&lt;Enter&gt;</code>, so the two are indistinguishable.)</p>
+<pre><code>stty -ixon
+</code></pre>
+<p>[This same command will work for <a href="/wiki/Bash">Bash</a>, in a <code>.bash_profile</code> as well.]</p>
+<p>iTerm is configurable enough that I believe I could get it to send a custom sequence for <code>&lt;CTRL-Enter&gt;</code>, but I haven't yet figured out what that should be.</p>
+<h2>Mouse-a-bility</h2>
+<p>Getting the mouse to not only work in a local copy of <a href="/wiki/iTerm_2">iTerm 2</a> running on my Mac, but also on remote machines accessed via <a href="/wiki/SSH">SSH</a> and possibly running <a href="/wiki/tmux">tmux</a> sessions was a little trickier.</p>
+<p>First up, I needed something like this in my <code>~/.vimrc</code>:</p>
+<pre><code>if has('mouse')
+  set mouse=a
+  if &amp;term =~ &quot;xterm&quot; || &amp;term =~ &quot;screen&quot;
+    &quot; as of March 2013, this works:
+    set ttymouse=xterm2
+
+    &quot; previously, I found that ttymouse was getting reset, so had
+    &quot; to reapply it via an autocmd like this:
+    autocmd VimEnter,FocusGained,BufEnter * set ttymouse=xterm2
+  endif
+endif
+</code></pre>
+<p>And this in my <code>~/.tmux.conf</code>:</p>
+<pre><code># mouse can be used to select panes
+set-option -g mouse-select-pane on
+
+# mouse can be used to select windows (by clicking in the status bar)
+set-option -g mouse-select-window on
+
+# mouse can be used to resize panes (by dragging dividers)
+set-option -g mouse-resize-pane on
+
+# not really sure what this does, but with it, the scrollwheel works inside Vim
+set-option -g mouse-utf8 on
+
+# allow mouse to enter copy mode and initiate selection
+set-window-option -g mode-mouse on
+
+# I originally had this as screen-256color, but this works
+# out-of-the-box in more places
+set -g default-terminal &quot;screen&quot;
+</code></pre>
+<h2>Clipboard</h2>
+<p>With this I can do pretty much anything I need, including selecting text in Vim (for copying using tmux's copy buffer) and scrolling with the mouse scroll wheel. Depending on the exact need I have, I can either copy using tmux's copy mode (ie. with <code>&lt;prefix&gt;[</code> and friends), or make a selection while holding down the Option key that I can get into the <a href="/wiki/Mac_OS_X">Mac OS X</a> clipboard with the usual Command-C. Note that even when dealing with vertical splits I can still select text pertaining to a particular split by holding down both Option and Command to force a rectangular selection. Things like Option and double-click work to select single works, which is usually faster than navigating using the keyboard and tmux's copy mode.</p>
+<p>For those cases where this won't cut it, I ended up writing a tool called <a href="/wiki/Clipper">Clipper</a> that provides me with transparent access to the local system clipboard inside <a href="/wiki/tmux">tmux</a>, <a href="/wiki/vim">vim</a> and on the <a href="/wiki/command_line">command line</a> in general, both locally and when on remote hosts via <a href="/wiki/SSH">SSH</a>.</p>
+<h2>Xterm bracketed paste mode, focus events for tmux, custom insert-mode cursors</h2>
+<p>With some complicated shenanigans (see <a href="https://github.com/wincent/wincent">my dotfiles repo</a> for the details) you can get Vim to recognize when something is being pasted in and automatically enable paste more. Likewise, you can get Vim and tmux to share focus gained/lost events, which means that you can unlock the full power of <code>:checktime</code> and <code>'autoread'</code> (see the corresponding entries in the Vim help). Finally, you can also get Vim to change the cursor on entering insert mode and revert to normal on leaving insert mode. All of this is possible locally, inside tmux, over an SSH session on a remote host, or a combination.</p>
+<h2>Gotchas</h2>
+<ul>
+<li>on machines without a &quot;screen-256color&quot; terminfo entry, I had to copy one over (into <code>~/.terminfo/s/screen-256color</code>); I originally ran with &quot;xterm-256color&quot;, despite the warnings in the tmux FAQ, as it tended to work pretty well anyway</li>
+<li>after a while I settled on running &quot;screen&quot; as my <code>$TERM</code> inside tmux, regardless of whether the outer terminal was actually &quot;xterm-256color&quot;; Solarized still looks great; this requires setting <code>t_Co=16</code> in my <code>~/.vimrc</code></li>
+<li>changes to <code>default-terminal</code> in <code>~/.tmux.conf</code> don't take effect if you already have a tmux session running (ie. a tmux server is running), even for new sessions; you have to exit all sessions, or manually run the <code>set</code> command yourself</li>
+</ul>
+<h2>Conclusion</h2>
+<p>As I said above, this gets me basically the whole way there. With this set-up I have high mobility and convenience with both keyboard and mouse, irrespective of whether I am working locally or remotely.</p>
+<p>I also have cheap &quot;context switches&quot; in the form of keyboard shortcuts to move back and forth between tmux windows (eg. I have <code>C-a C-a</code> to toggle back to the last-used window) and panes (eg. the standard Vim-like movement keys <code>C-a h</code>, <code>C-a j</code>, <code>C-a k</code> and <code>C-a l</code>).</p>
+<p>As a bonus all of this works with the mouse too, as I can use it to quickly select panes and even resize them in addition to being able to scroll, select text, and copy with great flexibility.</p>
+<p>The downsides? As I mentioned earlier, I can't make a mapping for <code>&lt;CTRL-Enter&gt;</code>. Another bummer is that <a href="/wiki/Solarized">Solarized</a> color support in the Ubuntu/Gnome terminal is not so great, on those occasions when I need to log in from a Linux machine [which, since I originally wrote this article, has dwindled to basically never).</p>
+<p>All in all, though, this gets me very close to where I need to be, and the ability to do all my stuff on a remote workstation and just log-in to it from a laptop or another machine from anywhere is a wonderful convenience.</p>
+<h2>Note</h2>
+<p>I regularly make improvements to this set-up, but I likely won't remember to come back and update this blogpost; see <a href="https://github.com/wincent/wincent">my dotfiles repo</a> for the latest hotness.</p>
+</div><ul class="tags"><li><a href="/tags/vim">vim</a></li><li><a href="/tags/command.t">command.t</a></li><li><a href="/tags/tmux">tmux</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/wikitext-3.0-released">← Wikitext 3.0 released</a></div><div class="post-nav-next"><a href="/blog/mkdtemp-1.2.1-released">mkdtemp 1.2.1 released →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

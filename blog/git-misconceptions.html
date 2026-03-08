@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git misconceptions • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/git-misconceptions">Git misconceptions</a></h1><div class="metadata"><relative-time created="1235915735" updated="1584053324">Created 3/1/2009, updated 3/12/2020</relative-time><span>8 minute read</span></div><div class="prerendered"><p>I just had the misfortune of being directed to read <a href="http://robey.lag.net/2008/07/13/git-for-the-real-world.html">this anti-Git rant</a> by a guy named Robey Pointer, who apparently works for Twitter. It's about 7 months old now, but <a href="http://gitlog.wordpress.com/2009/03/01/git-monthly-links-2009-02/">apparently</a> it's been getting linked to a little bit lately.</p>
+<p>While he claims that he's &quot;overcome several crippling problems and misunderstandings about how to use it properly&quot;, the vast bulk of his post shows that he really doesn't get it at all.</p>
+<p>I don't want to spend too much time on this, so I'll limit myself to pointing out only the most egregious of his misconceptions. And yes, <a href="http://xkcd.com/386/">this is important</a>.</p>
+<p>Robey advises you to avoid <code>git rebase</code> and <code>git reset</code> on the grounds that the former is just &quot;to trick you into creating merge conflicts&quot;, and the latter &quot;erases commits from your history&quot;.</p>
+<p>Both of these statements are incorrect, although Robey is evidently not alone in thinking like that. Only a few days ago I read a post by another guy, Erik Sink, who doesn't &quot;get it&quot;. <a href="http://www.ericsink.com/entries/git_immutability.html">His post</a>, provocatively titled &quot;On Git's lack of respect for immutability and the Best Practices for a DVCS&quot;, share's a common misunderstanding with Robey's.</p>
+<p>So let me try to briefly explain. <code>git rebase</code> is mostly intended for two very specific specific workflows:</p>
+<ul>
+<li>Re-ordering or editing commits in your local repository prior to publishing them.</li>
+<li>Making your commits apply cleanly on top of an upstream <code>HEAD</code>.</li>
+</ul>
+<p>This first point is <em>not</em> about &quot;rewriting history&quot; (gasp!) but more about refining and perfecting an existing work in progress. Think of the way you edit text in your text editor. Do you start from beginning to end, character by character, and keep going until you've finished without making any mistakes?</p>
+<p>No, I didn't think so. But you're perfectly comfortable with moving all over the file, deleting and entering text, moving things, seeing if stuff compiles, and eventually deciding that you are at a point where you need to commit something. The point is that producing code is an iterative process where your approximations edge increasingly closer to perfection.</p>
+<p>Using <code>git rebase</code> to &quot;clean up&quot; your history is really not all that different to the kind of work you already do in your text editor, it's just carried out at a different conceptual level. The idea is that you're not only striving to produce the best possible final result; you're also trying to make the history of development as understandable as possible for others by organizing your commits into logical, easy-to-review steps.</p>
+<p>This is what distributed SCMs are all about: they facilitate collaboration. And even if you're a lone hacker, it makes sense to have a readable history. After all, 12 months from now <em>you</em> might be the one looking back at your own code trying to figure out why the hell you did something the way you did.</p>
+<p>The Git index, aka &quot;staging area&quot;, is another example of a tool Git provides which helps you to break your changes up into readable, understandable modifications. Sure, you can abuse these tools to commit untested, uncompiled code, but any programmer worth his salt will compile-test every single commit before actually letting it loose on the outside world. It's easy: it can be done automatically with no programmer intervention. What's so difficult about it?</p>
+<p>Both Robey and Eric seem to miss this point. <code>rebase</code> isn't &quot;erasing&quot; commits and nor is it failing to show &quot;respect for immutability&quot;. (Behind the scenes, all of the original commits are still in the repo and you can access them with <code>git reflog</code> if you really want.)</p>
+<p>If these authors <em>really</em> cared about erasure and immutability they would never delete any characters from their source files while editing them; instead they would create a commit before each key press so that every intermediate state of their source code would be immortalized forever in their source control system.</p>
+<p>Naturally they don't do this; it would be utterly absurd. The failure here is seeing that using <code>git rebase</code> to massage history is philosophically just like using a text edit to make any change to one of their files; it's just that it plays out at a different level.</p>
+<p>Needless to say, one needs to know <em>when</em> to use <code>rebase</code>. Evidently all of what I'm saying here applies to people working on &quot;work in progress&quot; branches in their <em>private</em> repos. It's all about getting your work ready for submission or publication to others. Rebasing published branches <em>does</em> amount to rewriting history and it <em>is</em> a pain in the ass for people who are trying to track what you're doing.</p>
+<p>Now let's talk about the second common use of <code>git rebase</code>, making your commits apply cleanly on top of an upstream <code>HEAD</code>. When he says that <code>rebase</code> &quot;is a way to trick you into creating merge conflicts&quot; it makes me question whether he has actually used a distributed SCM to collaborate with others on any decent scale.</p>
+<p><code>rebase</code> is <em>all</em> about the exact <em>opposite</em> of that. <code>rebase</code> is about making your changes apply cleanly upstream. If you work on a project with any sizeable number of contributors then this is the only way to efficiently distribute the task of handling merge conflicts.</p>
+<p>Let me illustrate with a scenario. Imagine a project has 200 contributors and 1 maintainer. Without <code>rebase</code>, and with so many contributors, you would expect a <em>lot</em> of merge conflicts, and it would be up to the poor maintainer to resolve them manually. The maintainer becomes the bottleneck.</p>
+<p>With <code>rebase</code> the maintainer is free to actually do what's more important: review patches for quality rather than spend all day resolving merge conflicts. With <code>rebase</code> merge conflicts happen less frequently because everyone easily keeps &quot;on top&quot; of what's happening upstream. And when there are conflicts, the burden of resolving them is distributed out among the 200 contributors instead of landing on top of the poor maintainer and turning him/her into a bottleneck that actually slows down the advancement of the project.</p>
+<p>So in short, <code>rebase</code> is great. Like any great tool, it can be misused and abused. But really, learning when and how to use it isn't <em>that</em> hard.</p>
+<p>And <code>git reset</code>? It doesn't &quot;erase&quot; commits. Check out <code>git reflog</code>, all the commits are still there. It's a tool. Like a knife, you can cut your fingers off with it if you want. But unlike a knife, your fingers are safely stowed away and you can get them back if you want thanks to <code>reflog</code>. You <em>can</em> throw away <em>uncommitted</em> changes in your worktree with <code>reset</code> if you are dumb enough to supply the <code>--hard</code> switch without having read the man page and understood what it does (it is called <code>--hard</code> for a reason).</p>
+<p>There are a few other points worth commenting on in Robey's post. At one point he says:</p>
+<blockquote>
+<p>Huh? What? Why are my local commits intermixed with my co-worker's commits? The merge must have messed up! Crap!</p>
+</blockquote>
+<p>Here he's talking about two lines of development which diverge and then merge:</p>
+<pre><code>     C--D--G
+    /       \
+A--B         I--J
+    \       /
+     E--F--H
+</code></pre>
+<p>So he's complaining about the order in which these commits get reported back to the user by <code>git log</code>.</p>
+<p>Perhaps in Robey's mind the <code>C</code>, <code>D</code>, <code>G</code> series of commits is somehow &quot;special&quot; by virtue of its position in his personal visualization of what the history looks like, but I could just as validly have drawn the history like this:</p>
+<pre><code>     E--F--H
+    /       \
+A--B         I--J
+    \       /
+     C--D--G
+</code></pre>
+<p>He later describes &quot;fast-forward&quot; merges in these terms:</p>
+<blockquote>
+<p>Basically, sometimes when you ask git to merge branch A into branch B, it will decide that it doesn't want to merge and it will instead turn A and B into clones of each other.</p>
+</blockquote>
+<p>He goes on to say:</p>
+<blockquote>
+<p>So after the merge, you'll see every single commit you made, as if you had done them directly on the master branch. Git has cloned your feature branch into the new master branch.</p>
+</blockquote>
+<p>And finally:</p>
+<blockquote>
+<p>Your branch has effectively vanished from history.</p>
+</blockquote>
+<p>It is painfully evident that Robey has never taken the time to understand Git's extremely simple model of history. He doesn't even appear to know what a &quot;branch&quot; is.</p>
+<p>A branch is nothing more than a <code>HEAD</code> commit with a name. Usually the main line of development is called &quot;master&quot;, and the <code>HEAD</code> commit defines the current state of that branch. Another common branch name is &quot;maint&quot;. But you can also have &quot;kewl-feature&quot;, &quot;bug-210-fix&quot; and the like.</p>
+<p>What <em>is</em> the &quot;master&quot; branch? Simply, the series of commits you get when you start at the <code>HEAD</code> and look at its parent, and the parent of its parent, and the parent of the parent... In the case of merge commits you'll have two parents, or even more: this was what we saw in the diagram above, where commit <code>I</code> had <code>G</code> and <code>H</code> as parents.</p>
+<p>So let's look at our master branch:</p>
+<pre><code>A--B--C--D
+</code></pre>
+<p>Robey forks off a &quot;topic&quot; branch to develop an experimental feature:</p>
+<pre><code>A--B--C--D
+          \
+           E--F--G
+</code></pre>
+<p>What's in the &quot;master&quot; branch? We start at the <code>HEAD</code> (<code>D</code>) and look at the parents and get <code>D</code>, <code>C</code>, <code>B</code>, <code>A</code>.</p>
+<p>What's on the topic branch? <code>G</code>, <code>F</code>, <code>E</code>, <code>D</code>, <code>C</code>, <code>B</code>, <code>A</code>. Notice how from <code>D</code> onwards it's actually just the same as the &quot;master&quot; branch?</p>
+<p>Notice also how drawing the topic branch &quot;off to the side&quot; is really just a visualization thing, and that Git really has no concept of &quot;left&quot; and &quot;right&quot;, &quot;up&quot; and &quot;down&quot;? Just parenthood. So this topic branch could really have been drawn as:</p>
+<pre><code>     C
+    / \
+A--B   D
+      /
+     E
+     |
+  G--F
+</code></pre>
+<p>All of these things are just drawings to help human beings visualize what's in the repo, but the truth is what's in the repo doesn't have <em>any</em> of these spatial representations. It's all defined in terms of commits, and which commits are parents of which other commits. If Robey wants to learn about this he can look up Directed Acyclic Graph.</p>
+<p>Of course, a more obvious way to draw this series is this one:</p>
+<pre><code>A--B--C--D--E--F--G
+</code></pre>
+<p>Which is incidentally what you'll get when you &quot;merge&quot; it back into &quot;master&quot;. Git says, well, there's nothing to actually &quot;merge&quot; here at all; we'll just update the <code>HEAD</code> of &quot;master&quot; to point to <code>G</code> and be done with it. That's what a &quot;fast-forward&quot; is. Nothing was &quot;cloned&quot;, as Robey alleges. Nothing has &quot;vanished&quot;.</p>
+<p>If you <em>really</em> care about the fact that commits <code>E</code>, <code>F</code>, and <code>G</code> began life on another branch then you can see the evidence in the reflog (and of course, your &quot;topic&quot; branch is still there in the repo anyway, seeing as you'll still have a <code>HEAD</code> pointing to it until you explicitly decide to delete it). But at no point are any commits rewritten or thrown away. The history is only ever added to, never deleted or modified.</p>
+</div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/javascript-backed-flash">← JavaScript-backed flash</a></div><div class="post-nav-next"><a href="/blog/testing-overhead">Testing overhead →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ANTLR bird's eye view • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>ANTLR bird's eye view</h1></div><div class="metadata"><relative-time created="1183809493" updated="1584053324">Created 7/7/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/antlr">antlr</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Learning <a href="/wiki/ANTLR">ANTLR</a> has been one of the hardest programming challenges I've had to face, even with the help of the <a href="/wiki/ANTLR_book">ANTLR book</a>. The problem lies in the fact that <a href="/wiki/ANTLR">ANTLR</a> offers a deceptively simple interface, but this is <em>only in appearance</em>. The reality is that under the surface <a href="/wiki/ANTLR">ANTLR</a> is an incredibly complex beast. A beginner attempting even extremely simple tasks will face many failures and be frustrated to find that they don't work. Even the most basic goals cannot be achieved without a detailed understanding of what <a href="/wiki/ANTLR">ANTLR</a> is doing under the covers.</p>
+<p>The reason for this is the following:</p>
+<ul>
+<li>It is very easy to write a grammar that <em>describes</em> a language; or to put it another way, that specifies how to <em>generate</em> valid sentences in a language</li>
+<li>It is not so easy to write a parser generator that can take such a grammar and turn it into a recognizer; that is, something that knows how to <em>recognize</em> valid sentences in a language.</li>
+</ul>
+<p>So, <a href="/wiki/ANTLR">ANTLR</a> provides you with a simple yet powerful language for writing descriptive grammars (that specify how to generate valid sentences); but on the other hand, <a href="/wiki/ANTLR">ANTLR</a> cannot necessarily turn such a grammar into a parser capable of recognizing valid sentences. So this leads us to two classes of grammars: those that describe how to generate valid sentences, and those that describe how to recognize them. In an ideal world both would be exactly the same but in the real world things are different; in order to write grammars that <a href="/wiki/ANTLR">ANTLR</a> can turn into functioning recognizers you need to have a detailed understanding of exactly what <a href="/wiki/ANTLR">ANTLR</a> is, how it works, and what kind of recognizers it generates.</p>
+<p>Let's illustrate by way of a simple example before moving forward to the details. Consider a simple language that consists of comma-separated lists:</p>
+<pre><code>list
+  : list ',' ITEM
+  | ITEM
+  ;
+
+ITEM
+  : 'a'..'z'+
+  ;
+</code></pre>
+<p>Looking at these rules it is very easy to see how to generate valid <code>list</code> sentences; &quot;foo,bar,baz&quot; is just one example of a valid sentence. But <a href="/wiki/ANTLR">ANTLR</a> can't build a working parser from this grammar because the <code>list</code> is left-recursive (because <a href="/wiki/ANTLR">ANTLR</a> generates top-down recursive descent parsers). <a href="/wiki/ANTLR">ANTLR</a> <em>can</em> recognize list-like sentences; it just requires that the grammar be written in such a way that it doesn't contain left-recursion. For example, we can use repetition instead:</p>
+<pre><code>list
+  : ITEM (',' ITEM)*
+  ;
+</code></pre>
+<p>This is an extremely simple example of how a straightforward grammar can easily specify how to generate sentences, but how even so, the grammar can be totally useless with <a href="/wiki/ANTLR">ANTLR</a>, and that knowledge about how <a href="/wiki/ANTLR">ANTLR</a> works helps you to avoid grammars which won't work with <a href="/wiki/ANTLR">ANTLR</a> and create grammars which will. In practice the kinds of input that <a href="/wiki/ANTLR">ANTLR</a> cannot process tend to be much, much more subtle than this obvious example of left-recursion.</p>
+<p>This article is my attempt at providing a high-level overview of how <a href="/wiki/ANTLR">ANTLR</a> really works, with the goal of summarizing the knowledge needed to understand the countless pitfalls and avoid them.</p>
+<h2>Intent</h2>
+<p><a href="/wiki/Terence_Parr">Terence Parr</a> has explained that he wrote <a href="/wiki/ANTLR">ANTLR</a> because he wanted a parser generator that would produce readable, understandable parsers <em>that would be just like what he would write himself if he had to do it by hand</em>. Although this may be true you can <em>forget right now whatever you think this might mean</em>: don't make assumptions about the code that <a href="/wiki/ANTLR">ANTLR</a> generates; although it might be what Terence would write that doesn't necessarily mean that it is what you would write.</p>
+<h2>What it generates</h2>
+<p><a href="/wiki/ANTLR">ANTLR</a> generates top-down, recursive-descent, LL recognizers. Key points:</p>
+<ul>
+<li>The LL nature of the parser means that you can't do left-recursion; this can be worked around but the key point is that you can forget about direct left-recursion.</li>
+<li>The generated recognizers are <em>predictive</em>: this means that they use lookahead to examine the input and once they have decided what is predicted by that input the attempt to consume it; an exception is raised if the input does not fulfill the prediction.</li>
+<li>The prediction is done use a <a href="/wiki/DFA">DFA</a> which means that it can recognize regular language constructs (repetition is fine but not recursion).</li>
+<li>You can still parse recursive languages, but in cases where the <em>prediction</em> itself requires recursion you have to provide some help in the form of <a href="/wiki/predicates">predicates</a>.</li>
+<li>The prediction is done in the name of efficiency (to avoid trying and backtracking); but you can do backtracking on an as-needs basis.</li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/ANTLR_lexers_in_depth">ANTLR lexers in depth</a></li>
+<li><a href="/wiki/ANTLR_prediction">ANTLR prediction</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ghetto Aperture backup to S3 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Ghetto Aperture backup to S3</h1></div><div class="metadata"><relative-time created="1375663133" updated="1584053324">Created 8/5/2013, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/s3">s3</a></li><li><a href="/tags/aperture">aperture</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>As a relatively early adopter of the internet, my first decade online was marked by a desire to accumulate and retain as much data as possible. I collected and never threw anything away.</p>
+<p>My first hard drive was a 212 MB thing in an 486SX33 PC. When I switched to a Mac (a PowerMac 7600, if I recall correctly), it came with a 1 GB drive, which I later upgraded to 4 GB. A long series of successively larger external drive purchases ensued.</p>
+<p>This was all pre-<a href="/wiki/cloud">cloud</a>, so my data was stored with only as much redundancy as I could procure by spreading files across volumes and burning backups to or archiving on CDs.</p>
+<p>I've now lived outside of my home country (Australia) for 10 years — first in Spain and then in the US — and for most of that time my prime machine has been a laptop of some sort, with occasional stints with a PowerMac G5 or an iMac.</p>
+<p>Trying to manage all these files was getting old.</p>
+<p>So, around 2011 I resolved that I would put a hard cap on the amount of data I had in the world; I would throw away or delete the stuff that didn't matter in order to get under the cap.</p>
+<p>The cap would be the amount of data you can fit on a current model Apple laptop of the class that I would and do purchase (right now, that means a MacBook Air). So, that meant that my 2011/2012 data limit was about 250 GB. The current models have 250 GB too, upgradable to 512 GB as an option, so if I were to buy one now my limit would grow to 512 GB. It seems likely that over the next 10 years my limit will grow to 1 TB, 2 TB, 4 TB, as flash storage in these laptops grows. I'm no longer an obsessive collector of data, so this should be more enough to keep pace with the rate at which I collect personal data (photos, documents) and work artifacts (source code etc).</p>
+<p>A ran into a kink in the plan earlier this year when my old laptop — a <a href="/wiki/work">work</a>-supplied machine — slowly ground to a halt. They kindly swapped me over to a newer model, but it only had 128 GB of storage. Suddenly fitting under the quota became much harder.</p>
+<p>I ended up doing things like deleting megabytes of MP3s that I have accumulated over the years, but which I could continue accessing via Spotify. Lots of things were simply thrown away.</p>
+<p>Nevertheless, I am constantly running out of space, to the point where I can't even take photos any more. I could upload them to Flickr but I don't fully trust Yahoo! not to screw up the service (it's free, after all).</p>
+<p>Amazon, on the other hand, I do trust, about as much as it's possible to trust another company with one's data. The goal is to basically dump the contents of my <a href="/wiki/Aperture">Aperture</a> library to <a href="/wiki/S3">S3</a> and start afresh. It's small fry we're talking here (about 25 GB of photos, seeing as I already deleted all the RAW format ones and kept only the JPEGs), but it will give me a scratch space into which I can insert new photos, until it comes time for the next dump.</p>
+<p>Another option I looked into: mounting S3 as a filesystem in some way and letting Aperture think it was a local volume. The various posts I found on the net suggested that this didn't work very well. So, I decided to cut my losses and just do a dump using the lowest-tech solution I could get my hands on: the <a href="/wiki/open_source">open source</a>, <a href="/wiki/command-line">command-line</a>-only <code>s3cmd</code>.</p>
+<p>After creating a suitable IAM user and policy:</p>
+<pre><code class="language-shell">$ s3cmd --configure # first-time setup (first-time only)
+$ s3cmd mb s3://yourbucket # make a new bucket
+$ cd ~/Pictures/Aperture\ Library.aplibrary
+$ s3cmd sync Masters s3://yourbucket/ # upload all the master files
+</code></pre>
+<p>Notice this is the crudest of backups; just the masters and nothing else. The assumption is that any touched-up versions which I might want to share have been shared long ago (eg. on Facebook or via email), so I'm just keeping the &quot;negatives&quot;.</p>
+<blockquote>
+<p><strong>Update [March 2015]:</strong> I've since learned that this is a silly way to do this. Aperture has the concept of &quot;managed&quot; and &quot;referenced&quot; masters: the former are stored in the Aperture library, but the others can be anywhere on disk, including volumes which may not always be mounted (Aperture keeps preview information in the library, and can reestablish the link with the original image once the volume comes back online; in fact, even if you move the image it is possible to reestablish the connections, although it is a bit fiddly to do so). Furthermore, the &quot;versions&quot; don't really take up any space because Aperture merely stores the metadata about the operations (filters, transforms etc) which need to be applied to the masters to produce the versions.</p>
+</blockquote>
+<p>Do a test download; the <code>curl</code> attempt will fail because public access isn't enabled by default, the <code>s3cmd get</code> will work because it has the right access credentials:</p>
+<pre><code class="language-shell">$ curl s3.amazonaws.com/yourbucket/Masters/2012/04/22/20120422-111756/IMG_1894.JPG
+$ s3cmd get s3://yourbucket/Masters/2012/04/22/20120422-111756/IMG_1894.JPG ~/Desktop/test.jpg
+</code></pre>
+<p>As this is not-very-sensitive data (family photos), the protection provided by the ACLs is good enough; I don't want random strangers to access this stuff and <a href="/wiki/security_through_obscurity">security through obscurity</a> isn't quite good enough, but encryption would be overkill for this kind of thing.</p>
+<p>Other useful commands:</p>
+<pre><code class="language-shell">$ s3cmd du s3://yourbucket/ # show disk usage
+$ s3cmd info s3://yourbucket/ # show metadata about a bucket, including ACLs
+</code></pre>
+<h2>Alternative approaches</h2>
+<p>As of February 2015, <a href="/wiki/Arq">Arq</a> can be <a href="http://www.haystacksoftware.com/blog/2015/02/how-to-archive-to-glacier/">used for this purpose</a>. This is somewhat nicer because you have a single consistent restore interface and you get encryption &quot;for free&quot;.</p>
+<h3>Migrating to Arq archives</h3>
+<ol>
+<li>Create a directory at <code>~/Archives/</code> and tell Arq to ignore it when doing its usual backup runs</li>
+<li>Create a subdirectory <code>~/Archives/Aperture/2015-03</code> that will contain the images to be archived</li>
+<li>Pull down the masters previously backed up using <code>s3cmd sync s3://yourbucket/Masters .</code></li>
+<li>Flatten folder structure (in my case, this meant taking a deeply nested folder hierarchy with about 400 folders in it and turning it into a single-level structure with about 7,000 images; I used the ghetto script below for that purpose); without this, importing the images into Aperture will require you to separately navigate to each folder</li>
+<li>Import photos back into Aperture, making sure the &quot;Store Files&quot; option is set to &quot;In their current location&quot; (ie. treat the images as &quot;referenced&quot; rather than &quot;managed&quot;); Aperture maintains previews of these referenced images even if you get rid of your local copy of the master images</li>
+<li>In Arq, add the <code>~/Archives/Aperture/2015-03</code> folder to the backup set and back it up</li>
+<li>Once that's finished, click &quot;Detach&quot;; at this point, the somewhat cryptic &quot;2015-03&quot; folder name in the Arq UI will change to &quot;2015-03 (archived)&quot; (you may want to name your folders something like &quot;Aperture-2015-03&quot; to make this clearer, but I'm not anticipating doing this for anything but Aperture for now, so I'm going with the shorter name)</li>
+<li>Repeat for each backup source (in my case, that's Amazon S3, DropBox and Google Drive)</li>
+<li>Empty the <code>~/Archives/Aperture/2015-03</code> directory</li>
+<li>Delete the redundant copy still on S3 with <code>s3cmd del s3://yourbucket/Masters -r</code></li>
+</ol>
+<p>On upgrading to a new machine with more storage, you can reattach these folders as follows:</p>
+<ol>
+<li>Restore the backup of the archive at the original location</li>
+<li>Click &quot;Attach...&quot; in Arq</li>
+<li>Note that Aperture now has access to the masters again, provided you didn't change their locations</li>
+</ol>
+<h4><code>flatten.rb</code> script</h4>
+<p>This script recursively looks for all files in the current directory and moves them up to the top level. Duplicates are numbered as follows to avoid collisions: <code>IMG_001.JPG</code>, <code>IMG_001 (1).JPG</code>, <code>IMG_001 (2).JPG</code> etc.</p>
+<pre><code class="language-ruby">#!/usr/bin/env ruby
+
+require 'fileutils'
+require 'set'
+
+files = []
+
+Dir['**/*'].each do |path|
+  if File.file?(path)
+    files.push(path)
+  end
+end
+
+# visit files in lexicographical order of the paths;
+# this will mean we traverse directories from oldest to newest
+sorted = files.sort
+
+seen = Set.new()
+sorted.each do |path|
+  basename = File.basename(path)
+
+  # eliminate dupes
+  while seen.member?(basename)
+    if basename =~ /(.+) \((\d+)\)(\.\w+)\z/
+      name, count, ext = $~[1], $~[2], $~[3]
+      basename = &quot;#{name} (#{count.to_i + 1})#{ext}&quot;
+    else
+      ext = File.extname(basename)
+      name = File.basename(basename, '.*') # remove extension
+      basename = &quot;#{name} (1)#{ext}&quot;
+    end
+  end
+
+  seen.add(basename)
+  FileUtils.mv path, basename, verbose: true
+end
+</code></pre>
+<p>Note: another reason why we want a flat folder structure is because that is what we'll get when we create new archive folders from stuff that's already in Aperture:</p>
+<ol>
+<li>Import photos into Aperture as usual; use &quot;managed&quot; rather than &quot;referenced&quot; photos by setting the &quot;Store Files&quot; option to &quot;In the Aperture Library&quot;</li>
+<li>Edit, publish, share photos on Facebook or elsewhere as usual</li>
+<li>When it's time to create a new Archive, use &quot;Relocate Originals...&quot; in the &quot;File&quot; menu to convert the managed photos to referenced ones; this is where you'll get a flat folder structure</li>
+<li>Use Arq to upload, detach, and delete your new <code>~/Archives/Aperture/2015-03</code> archive</li>
+</ol>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

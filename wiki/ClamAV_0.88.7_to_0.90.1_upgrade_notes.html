@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ClamAV 0.88.7 to 0.90.1 upgrade notes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>ClamAV 0.88.7 to 0.90.1 upgrade notes</h1></div><div class="metadata"><relative-time created="1173181689" updated="1495119989">Created 3/6/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/clamav">clamav</a></li><li><a href="/tags/clamassassin">clamassassin</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Introduction</h2>
+<p>I wanted to hold off on the <a href="/wiki/ClamAV">ClamAV</a> upgrade for a while because it is a fairly major release and there were compatibility issues with <a href="/wiki/clamassassin">clamassassin</a> (see <a href="http://lists.jameslick.com/pipermail/clamassassin-announce/2007-February/000030.html">http://lists.jameslick.com/pipermail/clamassassin-announce/2007-February/000030.html</a>). These issues are fixed with <a href="/wiki/clamassassin">clamassassin</a> 1.2.4 (see <a href="http://lists.jameslick.com/pipermail/clamassassin-announce/2007-March/000031.html">http://lists.jameslick.com/pipermail/clamassassin-announce/2007-March/000031.html</a>). So I decided to perform the <a href="/wiki/ClamAV">ClamAV</a> 0.88.7 to 0.90.1 upgrade simultaneously with the <a href="/wiki/clamassassin">clamassassin</a> 1.2.3 to 1.2.4 upgrade.</p>
+<h2>Resources</h2>
+<ul>
+<li><a href="/wiki/ClamAV">ClamAV</a> source download page: <a href="http://www.clamav.net/download/sources">http://www.clamav.net/download/sources</a></li>
+<li><a href="/wiki/ClamAV">ClamAV</a> uninstallation notes: <a href="http://wiki.clamav.net/Main/UninstallClamAV">http://wiki.clamav.net/Main/UninstallClamAV</a></li>
+<li><a href="/wiki/ClamAV">ClamAV</a> 0.90 upgrade notes: <a href="http://wiki.clamav.net/Main/UpgradeNotes090">http://wiki.clamav.net/Main/UpgradeNotes090</a></li>
+<li><a href="/wiki/ClamAV">ClamAV</a> 0.90.1 upgrade notes: <a href="http://wiki.clamav.net/Main/UpgradeNotes0901">http://wiki.clamav.net/Main/UpgradeNotes0901</a></li>
+<li><a href="/wiki/ClamAV">ClamAV</a> configuration updater: <a href="http://wiki.clamav.net/twiki/pub/Main/UpgradeNotes090/updateclamconf">http://wiki.clamav.net/twiki/pub/Main/UpgradeNotes090/updateclamconf</a></li>
+</ul>
+<h2>Procedure</h2>
+<p>Backup old <a href="/wiki/ClamAV">ClamAV</a> configuration files:</p>
+<pre><code>sudo cp /etc/freshclam.conf /etc/freshclam.conf.old
+sudo cp /etc/clamd.conf /etc/clamd.conf.old
+</code></pre>
+<p>Download new <a href="/wiki/clamassassin">clamassassin</a> and <a href="/wiki/ClamAV">ClamAV</a> source packages:</p>
+<pre><code>wget http://jameslick.com/clamassassin/clamassassin-1.2.4.tar.gz
+wget http://kent.dl.sourceforge.net/sourceforge/clamav/clamav-0.90.1.tar.gz
+</code></pre>
+<p>(But see <a href="http://www.clamav.net/download/sources">this page</a> for an appropriate local mirror for the <a href="/wiki/ClamAV">ClamAV</a> download.)</p>
+<p>Extract <a href="/wiki/clamassassin">clamassassin</a> sources:</p>
+<pre><code>tar xzvf clamassassin-1.2.4.tar.gz
+</code></pre>
+<p>Extract and build <a href="/wiki/ClamAV">ClamAV</a> sources:</p>
+<pre><code>tar xzvf clamav-0.90.1.tar.gz
+cd clamav-0.90.1
+./configure --sysconfdir=/etc
+make
+make check
+</code></pre>
+<p>Uninstall old version of <a href="/wiki/ClamAV">ClamAV</a> and install new version:</p>
+<pre><code>cd ../clamav-0.88.7
+sudo make uninstall
+cd ../clamav-0.90.1
+sudo make install
+sudo ldconfig -v
+</code></pre>
+<p>Build and install new version of <a href="/wiki/clamassassin">clamassassin</a>:</p>
+<pre><code>cd ../clamassassin-1.2.4
+./configure --enable-subject-rewrite=[VIRUS]
+sudo make install
+</code></pre>
+<p>Migrate <a href="/wiki/ClamAV">ClamAV</a> configuration files:</p>
+<pre><code>chmod +x updateclamconf
+./updateclamconf /etc/freshclam.conf.old /etc/freshclam.conf &gt; freshclam.conf.new
+./updateclamconf /etc/clamd.conf.old /etc/clamd.conf &gt; clamd.conf.new
+sudo cp freshclam.conf.new /etc/freshclam.conf
+sudo cp clamd.conf.new /etc/clamd.conf
+</code></pre>
+<p>Post install checks and cleanup:</p>
+<pre><code>whereis freshclam
+sudo freshclam -v
+</code></pre>
+<p>This failed with the following message:</p>
+<pre><code>ERROR: Parse error at line 86: Option NotifyClamd requires string argument.
+Current working dir is /usr/local/share/clamav
+Max retries == 3
+WARNING: You must specify at least one database mirror.
+</code></pre>
+<p>I commented out the <code>NotifyClamd</code> line in the configuration file and tried again:</p>
+<pre><code>Current working dir is /usr/local/share/clamav
+Max retries == 3
+ClamAV update process started at Tue Mar  6 05:28:07 2007
+Querying current.cvd.clamav.net
+TTL: 314
+Software version from DNS: 0.90.1
+main.cvd version from DNS: 42
+main.cvd is up to date (version: 42, sigs: 83951, f-level: 10, builder: tkojm)
+daily.cvd version from DNS: 2742
+daily.cvd is up to date (version: 2742, sigs: 12685, f-level: 14, builder: ccordes)
+</code></pre>
+<p>Continue checks:</p>
+<pre><code>sudo freshclam
+sudo service clamd restart
+sudo service --status-all | grep clamd
+</code></pre>
+<p>Finally I checked the changes to the configuration files (technically I should have done this earlier):</p>
+<pre><code>cd /etc
+diff freshclam.conf freshclam.conf.old
+</code></pre>
+<p>Yields:</p>
+<pre><code>56d55
+&lt; DatabaseMirror database.clamav.net
+86c85
+&lt; [/tags/NotifyClamd #NotifyClamd]
+---
+&gt; NotifyClamd
+</code></pre>
+<p>And:</p>
+<pre><code>diff clamd.conf clamd.conf.old
+</code></pre>
+<p>Produces:</p>
+<pre><code>43c43
+&lt; LogSyslog yes
+---
+&gt; LogSyslog
+76c76
+&lt; FixStaleSocket yes
+---
+&gt; FixStaleSocket
+</code></pre>
+<p>Finally, I tailed my <code>maillog</code> for a while observing things to make sure delivery and scanning were still working properly. Have yet to discover any problems.</p>
+<p>I also checked to see if the startup script had been modified and there was one minor change; from inside the <a href="/wiki/ClamAV">ClamAV</a> source directory:</p>
+<pre><code>diff contrib/init/RedHat/clamd /etc/init.d/clamd
+</code></pre>
+<p>Differences:</p>
+<pre><code>28c28
+&lt;         LANG= daemon $progdir/$prog
+---
+&gt;       daemon $progdir/$prog
+</code></pre>
+<p>So I decided to upgrade the script as well:</p>
+<pre><code>sudo cp contrib/init/RedHat/clamd /etc/init.d/clamd
+</code></pre>
+<p>And restart the service to confirm that it works:</p>
+<pre><code>sudo service clamd restart
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li>Upgrade notes for last upgrade: &quot;<a href="/wiki/ClamAV_0.88.6_to_0.88.7_upgrade_notes">ClamAV 0.88.6 to 0.88.7 upgrade notes</a>&quot;</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

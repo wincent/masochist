@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Applying specific patches to WordPress between versions • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Applying specific patches to WordPress between versions</h1></div><div class="metadata"><relative-time created="1180728665" updated="1495119989">Created 6/1/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/wordpress">wordpress</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>The <a href="/wiki/Upgrading_from_WordPress_2.0.7_to_2.1_using_Subversion">last WordPress upgrade</a> (to version 2.1) introduced a <a href="http://trac.wordpress.org/ticket/3642">major bug</a> that rendered the &quot;Manage -&gt; Posts&quot; section of the administration interface inoperable.</p>
+<p>The fix for the 2.1 branch is <a href="http://trac.wordpress.org/changeset/4857">here</a>.</p>
+<p>To apply this fix I put <a href="http://trac.wordpress.org/changeset/4857?format=diff&amp;new=4857">the patch</a> in a file <code>~/wp-patch.diff</code> and executed the following:</p>
+<pre><code># check current status of install
+cd path_to_wordpress_install
+svn info
+
+# apply the patch
+sudo -u user_that_apache_runs_as patch -b -p3 &lt; ~/wp-patch.diff
+
+# inspect patch results
+svn diff
+
+# remove the backup files
+cd wp-includes
+sudo rm cache.php.orig version.php.orig
+</code></pre>
+<p>I passed the <code>-b</code> switch to <code>patch</code> so that backups of the files would be made before making changes to the files, but given that I am using a <a href="/wiki/Subversion">Subversion</a>-based install I could have just as easily reverted using <code>svn revert</code> in the event that the patching didn't work out.</p>
+<p>The <code>-p3</code> switch tells <code>patch</code> to strip three levels (<code>/</code>, <code>branches/</code> and <code>2.1/</code>) from the absolute path names (such as <code>/branches/2.1/wp-includes/cache.php</code>) in the patch file.</p>
+<p>When the time for the next upgrade comes around I am not sure if the <code>svn switch</code> will work given that I'll already have local changes. I may have to run <code>svn revert</code> beforehand, or manually resolve conflicts. (<strong>Update:</strong> I manually resolved the conflicts; see &quot;<a href="/wiki/Upgrading_from_WordPress_2.1_to_2.1.1_using_Subversion">Upgrading from WordPress 2.1 to 2.1.1 using Subversion</a>&quot;.)</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

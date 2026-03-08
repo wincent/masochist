@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ruby on Rails: pros and cons • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Ruby on Rails: pros and cons</h1></div><div class="metadata"><relative-time created="1159289941" updated="1584053324">Created 9/26/2006, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/rails">rails</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Things I like about Ruby on Rails</h2>
+<h3>Transparent mapping between database tables and models</h3>
+<p>In general, you don't need to drop down from the level of <a href="/wiki/Ruby">Ruby</a> code (to the level of <a href="/wiki/SQL">SQL</a> queries). You query your objects using directly using <a href="/wiki/Ruby">Ruby</a> statements and <a href="/wiki/Rails">Rails</a> worries about managing all the database queries for you. The level of <a href="/wiki/database_abstraction">database abstraction</a> is extreme.</p>
+<h3>Migrations</h3>
+<p><a href="/wiki/Migrations">Migrations</a> are database agnostic, allowing you to specify your database scheme in <a href="/wiki/Ruby">Ruby</a> code rather than using database-specific <a href="/wiki/SQL">SQL</a>. This makes it very easy to, for example, develop locally using <a href="/wiki/SQLite">SQLite</a> and deploy remotely using <a href="/wiki/MySQL">MySQL</a>.</p>
+<h3>Incremental/iterative development model</h3>
+<p>Again thanks to <a href="/wiki/migrations">migrations</a>, you can make incremental changes to the database schema as you go without fear of breaking things. You don't have to sit down and design your entire database schema from scratch before you start writing code, and you don't have to worry about making painful changes to the schema down the road (because changes aren't painful).</p>
+<h3>Testing toolchain</h3>
+<p>Every application comes with all the testing infrastructure built-in allowing you to do <a href="/wiki/test-driven_development">test-driven development</a>/<a href="/wiki/behaviour-driven_development">behaviour-driven development</a> or at least <a href="/wiki/test-enhanced_development">test-enhanced development</a>.</p>
+<h3>It uses Ruby</h3>
+<p><a href="/wiki/Rails">Rails</a> is written in <a href="/wiki/Ruby">Ruby</a>, which delivers:</p>
+<ul>
+<li>The <a href="/wiki/Object-Oriented">Object-Oriented</a> purity of <a href="/wiki/Smalltalk">Smalltalk</a></li>
+<li>Highly dynamic, like <a href="/wiki/Objective-C">Objective-C</a> or <a href="/wiki/Smalltalk">Smalltalk</a></li>
+<li>Allows you to write readable, <a href="/wiki/natural_language">natural language</a>-like source code</li>
+<li>Easy to write quick and powerful functionality in few lines of code (like <a href="/wiki/Perl">Perl</a>)</li>
+<li>A clean, predictable, concise and flexible syntax</li>
+<li>Not as whitespace-sensitive as <a href="/wiki/Python">Python</a></li>
+<li>Stable, mature, reliable codebase</li>
+<li>Quick and easy to learn</li>
+<li>Excellent core documentation: <a href="http://www.rubycentral.com/ref/">http://www.rubycentral.com/ref/</a></li>
+</ul>
+<h2>Things I don't like about Ruby on Rails</h2>
+<h3>Inconsistent behaviour of <code>generate controller</code> and <code>generate scaffold</code></h3>
+<pre><code>script/generate scaffold User
+</code></pre>
+<p>Will produce a controller file named <code>users_controller.rb</code> but:</p>
+<pre><code>script/generate controller User
+</code></pre>
+<p>Will produce a controller file named <code>user_controller.rb</code>.</p>
+<p>It's still not clear to me how these things should be named. It seems that models should be singular, database tables plural, but controllers? Plural? If so, why does the <code>scaffold</code> command use the plural form and the <code>controller</code> command the singular?</p>
+<p>Even in published books I note that many of the examples I have use singular controller names and others have plural, but given that the <code>scaffold</code> command creates views with plural names, there is a discrepancy between viewing stuff created with the <code>scaffold</code> command (nicely CSS formatted) and stuff done using a manually generated controller (singular) with a &quot;scaffold :&quot; declaration in the controller.</p>
+<h4>Answer</h4>
+<p>From IRC:</p>
+<pre><code> &lt;tpope&gt; wincent: plural is conventional but not required like singular models are
+&lt;motion&gt; wincent; name the controller BillyBob if you want
+ &lt;tpope&gt; wincent: and yeah, it doesn't have to match up with a model
+ &lt;tpope&gt; wincent: actually script/generate scaffold generates a singular model name. it then pluralizes
+         that model name if no controller name is specified
+</code></pre>
+<p>So the rules of thumb are:</p>
+<ol>
+<li>Call your controllers whatever you want</li>
+<li>When using <code>generate scaffold</code>, Rails will create a singular model (compulsory) and a plural controller</li>
+<li>When using <code>generate controller</code>, Rails will use whatever name you pass in</li>
+<li>Therefore for consistency it is a good idea to pass a plural controller name in to <code>generate controller</code></li>
+</ol>
+<h3>Documentation shortcomings</h3>
+<p>In general I find the documentation (<a href="http://api.rubyonrails.org/">http://api.rubyonrails.org/</a>) too hard to navigate, cluttered and overly concise. Some attempts at filling the gaps are available elsewhere:</p>
+<ul>
+<li>&quot;<a href="http://www.rails4days.pwp.blueyonder.co.uk/Rails4Days.pdf">Four Days on Rails</a>&quot;: <a href="http://rails.homelinux.org/">http://rails.homelinux.org/</a></li>
+<li>&quot;<a href="http://blog.invisible.ch/files/rails-reference-1.1.pdf">InVisible Ruby On Rails Reference 1.1.2</a>&quot;: <a href="http://blog.invisible.ch/2006/05/01/ruby-on-rails-reference/">http://blog.invisible.ch/2006/05/01/ruby-on-rails-reference/</a></li>
+<li>&quot;Ruby On Rails–A Cheatsheet&quot;: <a href="http://www.blainekendall.com/uploads/RubyOnRails-Cheatsheet-BlaineKendall.pdf">http://www.blainekendall.com/uploads/RubyOnRails-Cheatsheet-BlaineKendall.pdf</a></li>
+</ul>
+<h4>How are booleans handled?</h4>
+<p>As an example, when you declare a table column as having type <code>:boolean</code>, how is that actually stored in the database? Is &quot;true&quot; the number 1? The letter &quot;t&quot;? (Or string?) Or is it &quot;true&quot;? Or &quot;TRUE&quot;? Is it database dependent?</p>
+<p>All of these questions are left unanswered by the documentation. In my local <a href="/wiki/SQLite">SQLite</a>-based setup it appears that true boolean values are stored as the letter &quot;t&quot; when I create a table column as follows:</p>
+<pre><code>t.column :is_superuser, :boolean, :default =&gt; false
+</code></pre>
+<p>The <a href="http://api.rubyonrails.org/classes/ActiveRecord/Base.html#M000860">documentation for <code>find</code></a> has an example which looks a bit like a boolean:</p>
+<pre><code>:conditions =&gt; &quot;administrator = 1&quot;
+</code></pre>
+<p>That won't work for me; I instead have to use:</p>
+<pre><code>:conditions =&gt; [&quot;administrator = 't'&quot;]
+</code></pre>
+<p>Is there any way of expressing this condition without using database-dependent code? The <a href="http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#M000604">documentation for <code>create_table</code></a> says nothing; the <a href="http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/TableDefinition.html#M000659">documentation for <code>column</code></a> says only:</p>
+<blockquote>
+<p>The type parameter must be one of the following values: <code>:primary_key</code>, <code>:string</code>, <code>:text</code>, <code>:integer</code>, <code>:float</code>, <code>:datetime</code>, <code>:timestamp</code>, <code>:time</code>, <code>:date</code>, <code>:binary</code>, <code>:boolean</code>.</p>
+</blockquote>
+<p>It provides no further information about these types. If <a href="/wiki/Rails">Rails</a> allows me to create records with <code>:boolean</code> types in a database-indepedent way (eg. <code>User.create :is_superuser =&gt; true</code>) what then is the database-independent way of querying based on that boolean?</p>
+<h5>Update: More information on booleans</h5>
+<p>Partial answer: <a href="http://wiki.rubyonrails.com/rails/pages/HowtoUseBooleanColumns">http://wiki.rubyonrails.com/rails/pages/HowtoUseBooleanColumns</a></p>
+<p>Definitive answer: <a href="http://www.bigbold.com/snippets/posts/show/2086">http://www.bigbold.com/snippets/posts/show/2086</a></p>
+<pre><code>:conditions =&gt; ['is_superuser = ?', true])
+</code></pre>
+<p>Alternative, prettier answer: &quot;<a href="http://api.rubyonrails.org/classes/ActiveRecord/Base.html">Dynamic attribute-based finders</a>&quot;:</p>
+<pre><code>User.find_all_by_is_superuser(true)
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

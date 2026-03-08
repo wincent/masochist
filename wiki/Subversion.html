@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Subversion • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Subversion</h1></div><div class="metadata"><relative-time created="1198757121" updated="1709594300">Created 12/27/2007, updated 3/4/2024</relative-time></div><ul class="tags"><li><a href="/tags/subversion">subversion</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Introduction</h2>
+<p><a href="/wiki/Subversion">Subversion</a> is an <a href="/wiki/open_source">open source</a> <a href="/wiki/version_control_system">version control system</a> developed by <a href="http://www.tigris.org/">Tigris</a> and volunteers.</p>
+<p>A Subversion repository is a centralized store containing all the files and directories relating to a project. When changes are made to the project they can be &quot;committed&quot; to the repository. The repository is an historical record of all the project, containing not only the current revision but also all previous revisions.</p>
+<p>The benefits of using a version control system like Subversion include:</p>
+<ul>
+<li>Serves as an off-site backup for valuable project files</li>
+<li>Allows multiple people to work on a project at the same time and share their changes</li>
+<li>Allows even a single developer working alone to work on a project using several different machines and keep all the versions synchronized</li>
+<li>Provides a convenient way of rolling back undesired changes</li>
+<li>Encourages a disciplined working methodology in which a developer works on discrete problems and solves them one by one</li>
+<li>Provides a convenient way of visualizing and inspecting changes in an evolving code base</li>
+<li>Provides a convenient way of accepting modifications to a code base (&quot;<a href="/wiki/diffs">diffs</a>&quot;) from third parties</li>
+<li>Provides a powerful mechanism for <a href="/wiki/branching">branching</a> a code base and maintaining branches (although note that until recently Subversion only provided half of the picture — the other half, <a href="/wiki/merging">merging</a>, was hideously neglected — and it still trails fair behind the <a href="/wiki/distributed_version_control_systems">distributed version control systems</a> in this area)</li>
+<li>Provides a convenient way of <a href="/wiki/tagging">tagging</a> a code base in a certain state (like taking a &quot;snapshot&quot;) and going back to that state at any time in the future</li>
+<li>Intrinsically maintains of logs of changes to a project (due to the presence of &quot;commit&quot; messages for each change)</li>
+</ul>
+<h2>Subversion and Wincent products</h2>
+<p>Up until July 2007, all of the code for all <a href="/wiki/Wincent">Wincent</a> products was managed via <a href="/wiki/Subversion">Subversion</a> (with an additional <a href="/wiki/SVK">SVK</a> layer used for development purposes). In July 2007 I started migrating to <a href="/wiki/Git">Git</a>.</p>
+<p>The source code for Wincent's open source products was available to the public via Subversion access to a public repository. The closed source products were also stored in a Subversion repository.</p>
+<p>When this article was originally prepared (December 2007) the Subversion repositories were still online but no new commits had been made to them for many months; all continuing development work takes place using Git.</p>
+<p>As of March 2010, however, the Subversion repositories were officially withdrawn from service.</p>
+<p>Products for which public Subversion repositories existed include:</p>
+<ul>
+<li><a href="/wiki/atosym">atosym</a></li>
+<li><a href="/wiki/Bansshee">Bansshee</a></li>
+<li><a href="/wiki/Walrus">Walrus</a></li>
+<li><a href="/wiki/Wincent_Build_Tools">Wincent Build Tools</a></li>
+<li><a href="/wiki/Wincent_Strings_Utility">Wincent Strings Utility</a></li>
+<li><a href="/wiki/WOTest">WOTest</a></li>
+</ul>
+<p>All of these projects have been migrated over to <a href="/wiki/Git">Git</a>.</p>
+<h2>See also</h2>
+<ul>
+<li>Official <a href="/wiki/Subversion">Subversion</a> website: <a href="http://subversion.tigris.org/">http://subversion.tigris.org/</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

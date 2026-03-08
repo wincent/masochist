@@ -1,0 +1,233 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>UBB.threads 6.5.1.1 to 7.0 upgrade notes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>UBB.threads 6.5.1.1 to 7.0 upgrade notes</h1></div><div class="metadata"><relative-time created="1160148919" updated="1710259978">Created 10/6/2006, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/ubb.threads">ubb.threads</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Backup</h2>
+<ul>
+<li>Log in to control panel and close board</li>
+<li>Copy text from control panel, &quot;Display Options&quot;, &quot;General&quot;, &quot;HTML Includes&quot;</li>
+<li>Perform backup of database:</li>
+</ul>
+<!-- -->
+<pre><code>mysqldump --opt -u USERNAME -p -h localhost DATABASE_NAME | \
+  bzip2 -c &gt; BACKUP_FILE.sql.bz2
+</code></pre>
+<h2>Installation</h2>
+<ul>
+<li>Create a new database for the new forums:</li>
+</ul>
+<!-- -->
+<pre><code>mysql -u root -p
+CREATE DATABASE new_db_name;
+GRANT ALL ON new_db_name.* TO 'new_user_name'@'localhost';
+SET PASSWORD FOR 'new_user_name'@'localhost' = OLD_PASSWORD('new_password');
+FLUSH PRIVILEGES;
+</code></pre>
+<p>(The <code>OLD_PASSWORD</code> trick is necessary because <a href="/wiki/UBB.threads">UBB.threads</a> will be connecting to the database using PHP, and the version of PHP on the server is compiled against a pre-4.1 version of the MySQL libraries; see <a href="http://dev.mysql.com/doc/refman/4.1/en/password-hashing.html">this page on password hashing</a> for more information.)</p>
+<ul>
+<li>Create new forums directory:</li>
+</ul>
+<!-- -->
+<pre><code>sudo -u WEB_USER mkdir new-forums
+sudo -u WEB_USER /bin/echo &quot;Forums currently unavailable while upgrade is in progress&quot; &gt; \
+  new-forums/index.html
+</code></pre>
+<ul>
+<li>Move old forums out-of-the-way:</li>
+</ul>
+<!-- -->
+<pre><code>sudo -u WEB_USER mv forums old-forums
+sudo -u WEB_USER mv new-forums forums
+</code></pre>
+<ul>
+<li>Install the new forums according to the instructions into <code>new-forums</code>:</li>
+</ul>
+<!-- -->
+<pre><code>sudo -u WEB_USER mkdir new-forums
+</code></pre>
+<ul>
+<li>Upload the files into, then set permissions and move new forums into place:</li>
+</ul>
+<!-- -->
+<pre><code>cd new-forums
+sudo chmod 777 includes
+sudo chmod 666 includes/*
+sudo chmod 777 sessions
+sudo chmod 777 templates/compile
+sudo chmod 777 templates
+sudo chmod 777 cache
+sudo chmod 777 cache_builders
+sudo chmod 777 cache_builders/custom
+sudo chmod 666 cache_builders/custom/*
+sudo chmod 777 styles
+sudo chmod 666 styles/*.php styles/*.css
+cd ..
+sudo rm -r forums
+sudo mv new-forums forums
+</code></pre>
+<ul>
+<li>Run the upgrade script at: <a href="http://example.com/path_to_forums/install/install.php">http://example.com/path_to_forums/install/install.php</a></li>
+<li>Use a custom cookie prefix to prevent cookies from other apps (such as <a href="/wiki/Bugzilla">Bugzilla</a>) from interfering with the forums.</li>
+<li>As this is an upgrade installation, do not create an admin user; instead proceed directly to the &quot;Creating your tables&quot; step.</li>
+</ul>
+<h2>Import</h2>
+<ul>
+<li>Upload importer script</li>
+<li>Execute in browser</li>
+</ul>
+<!-- -->
+<pre><code>Importing Banned Host: NULL
+Script:
+Line#:
+SQL Error:
+SQL Error #: 0
+Query: insert into ubbt_BANNED_HOSTS values ( NULL )
+</code></pre>
+<p>On investigation:</p>
+<pre><code>mysql&gt; USE old_database_name;
+mysql&gt; SELECT * FROM w3t_Banned;
++------------+
+| B_Hostname |
++------------+
+| NULL       |
++------------+
+1 row in set (0.00 sec)
+
+mysql&gt; delete from w3t_Banned;
+</code></pre>
+<p>Inspection of the <code>threads_import.php</code> script indicated that it would probably be safe to go back and pick up import from where it left off by visiting: <a href="http://example.com/path_to_forums/importers/threads_import.php?ubb=extras">http://example.com/path_to_forums/importers/threads_import.php?ubb=extras</a></p>
+<p>Only glitch at end is that I saw some <a href="/wiki/PHP">PHP</a> warnings with regard to my <code>open_basedir</code> restriction; may have to disable that for the forums directory.</p>
+<ul>
+<li>Restore settings not transferred in the import:
+<ul>
+<li>Master Settings
+<ul>
+<li>Primary Settings
+<ul>
+<li>General
+<ul>
+<li>Community Name: Wincent Forums</li>
+<li>Board Email Address: <a href="mailto:noreply@example.com">noreply@example.com</a></li>
+<li>Show Debug Information in Footer? no</li>
+</ul>
+</li>
+<li>Censor
+<ul>
+<li>Enable Censor?: yes</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Feature Settings
+<ul>
+<li>General
+<ul>
+<li>Member List Visibility: No Users</li>
+<li>Enable &quot;Mail Topic to Friend&quot;?: no</li>
+<li>Flood Check Time: 60</li>
+<li>Enable Topic Ratings?: yes</li>
+<li>Enable Member Ratings?: yes</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Display Options
+<ul>
+<li>General
+<ul>
+<li>Primary
+<ul>
+<li>Homepage URL: <a href="http://wincent.dev/">http://wincent.dev/</a></li>
+<li>Text for homepage URL: Wincent</li>
+<li>Contact Link Type: Contact URL</li>
+<li>&quot;Contact Us&quot; URL: <a href="http://wincent.dev/a/contact/mail/">http://wincent.dev/a/contact/mail/</a></li>
+<li>Text for contact link: Contact</li>
+<li>Privacy Statement Link: Use Privacy Statement URL</li>
+<li>Privacy Statement URL: <a href="http://wincent.dev/a/about/privacy/">http://wincent.dev/a/about/privacy/</a></li>
+<li>Who's Online Timeframe: 60</li>
+<li>Show Forum Moderators? no</li>
+</ul>
+</li>
+<li>Date &amp; Time
+<ul>
+<li>Default Time Format: d M Y | h:i A</li>
+<li>Available Time Formats: (add) d M Y | h:i A</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Membership
+<ul>
+<li>Registration Settings
+<ul>
+<li>Basic Options
+<ul>
+<li>Enable Email Verification?: yes</li>
+<li>Allow Special Characters in Display Names?: no</li>
+<li>Board Rules: (update)</li>
+</ul>
+</li>
+<li>Registration Screen
+<ul>
+<li>Add &quot;Show&quot; for:
+<ul>
+<li>Avatar</li>
+<li>Accept Private Messages</li>
+<li>Signature</li>
+<li>Homepage</li>
+<li>Occupation</li>
+<li>Hobbies</li>
+<li>Location</li>
+<li>Time Format</li>
+<li>Time Offset</li>
+<li>View Signatures</li>
+<li>Flat or Threaded</li>
+<li>Topics Per Page</li>
+<li>Replies Per Page</li>
+<li>Show Users's Avatars</li>
+<li>Email on Private Message Receipt</li>
+</ul>
+</li>
+<li>Add &quot;Show &amp; Require&quot; for:
+<ul>
+<li>Visible on &quot;Who's Online&quot;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Reserved Names: (add) (.*?)wincent(.*?)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Customize forum templates to get old &quot;look and feel&quot; back
+<ul>
+<li>See &quot;Default Header&quot; and &quot;Header Insert&quot; in the &quot;Display Options/General/HTML Includes&quot; section of the control panel.</li>
+</ul>
+</li>
+<li>Replace ugly redirect in <code>index.php</code> with immediate (<a href="/wiki/PHP">PHP</a>) redirect</li>
+<li><a href="http://www.ubbcentral.com/forums/ubbthreads.php?ubb=showflat&amp;Number=165070&amp;page=0#Post165064">Apply fix</a> for RSS template bug</li>
+</ul>
+<h2>Cleanup</h2>
+<p>Due to permissions errors I'm temporarily turning off <a href="/wiki/PHP">PHP</a> <a href="/wiki/Safe_Mode">Safe Mode</a> within the forums directory and changing the ownership on all files:</p>
+<pre><code>cd path_to_forums
+sudo chown -R apache_user:apache_group *
+</code></pre>
+<ul>
+<li>Drop old database</li>
+</ul>
+<!-- -->
+<pre><code>USE mysql;
+DROP DATABASE old_database_name;
+DELETE FROM user WHERE User = 'old_username';
+DELETE FROM db WHERE Db = 'old_database_name';
+FLUSH PRIVILEGES;
+</code></pre>
+<ul>
+<li>Remove old forum files</li>
+<li>Upload redirection scripts so that old links will continue to work</li>
+<li>Delete <code>importers</code> and <code>install</code> subdirectories</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

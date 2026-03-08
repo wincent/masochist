@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Pinging from around the world • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/pinging-from-around-the-world">Pinging from around the world</a></h1><div class="metadata"><relative-time created="1209286758" updated="1710259978">Created 4/27/2008, updated 3/12/2024</relative-time><span>2 minute read</span></div><div class="prerendered"><p>A friend of mine just told me about <a href="http://just-ping.com/">just-ping.com</a>, a free site that will ping any domain name or IP address that you specify from multiple locations around the world. Not sure how scientific or reliable this is, but it can give a general indication of the &quot;reachability&quot; of your site from different places around the globe.</p>
+<p>Some sample results follow.</p>
+<h3>wincent.dev</h3>
+<pre><code>location                  result               min. rrt  avg. rrt  max. rrt
+Vancouver, Canada         Okay                     85.1      85.3      85.6
+Santa Clara, U.S.A.       Okay                     76.8      83.6     110.2
+New York, U.S.A.          Okay                     11.8      12.1      12.6
+Florida, U.S.A.           Okay                     37.0      37.3      37.9
+Austin2, U.S.A.           Okay                     60.6      60.7      61.1
+San Francisco, U.S.A.     Okay                     81.1      84.0      85.5
+Austin, U.S.A.            Okay                     60.0      60.2      60.5
+Amsterdam3, Netherlands   Okay                     89.4     100.1     108.9
+London, United Kingdom    Okay                     86.3      86.8      87.3
+Stockholm, Sweden         Okay                    106.2     109.6     112.7
+Madrid, Spain             Okay                    111.3     111.7     112.1
+Sydney, Australia         Okay                    219.8     220.2     221.2
+Amsterdam, Netherlands    Okay                     93.4      96.7      97.7
+Cologne, Germany          Okay                    101.1     101.5     101.8
+Munchen, Germany          Okay                    101.1     101.5     101.8
+Kraków, Poland            Okay                    125.2     125.6     125.8
+Lille, France             Okay                     90.1      90.6      91.6
+Cagliari, Italy           Okay                    128.0     128.3     128.6
+Copenhagen, Denmark       Okay                    101.0     104.5     107.6
+Hong Kong, China          Okay                    230.7     244.9     259.2
+Melbourne, Australia      Okay                    246.8     247.4     248.5
+Singapore, Singapore      Okay                    261.5     261.7     261.9
+Amsterdam2, Netherlands   Okay                     89.6      99.8     109.2
+Porto Alegre, Brazil      Okay                    153.2     159.0     161.9
+Paris, France             Okay                    107.8     112.2     117.6
+Shanghai, China           Packets lost (10%)      299.7     300.6     303.4
+</code></pre>
+<h3>Example of a site suffering connectivity problems</h3>
+<pre><code>Vancouver, Canada         Packets lost (70%)       65.1      65.5      65.7
+San Francisco, U.S.A.     Packets lost (40%)       42.6      42.8      43.0
+Florida, U.S.A.           Packets lost (80%)       26.0      26.1      26.2
+New York, U.S.A.          Packets lost (70%)       55.4      55.5      55.5
+Austin2, U.S.A.           Packets lost (60%)        9.6       9.7       9.8
+Austin, U.S.A.            Packets lost (30%)        9.6       9.7       9.8
+Santa Clara, U.S.A.       Packets lost (50%)       50.0      82.0     209.1
+Amsterdam3, Netherlands   Packets lost (40%)      129.2     129.3     129.4
+Sydney, Australia         Packets lost (90%)      191.9     191.9     191.9
+Amsterdam2, Netherlands   Packets lost (70%)      129.5     129.6     129.6
+Amsterdam, Netherlands    Packets lost (80%)      125.8     127.8     129.7
+Madrid, Spain             Packets lost (90%)      149.6     149.6     149.6
+Lille, France             Packets lost (30%)      137.0     138.9     142.7
+Munchen, Germany          Packets lost (60%)      132.0     132.1     132.3
+Copenhagen, Denmark       Packets lost (50%)      141.8     141.9     142.1
+Hong Kong, China          Packets lost (70%)      238.9     251.1     257.6
+Cagliari, Italy           Packets lost (40%)      179.1     186.1     205.5
+Paris, France             Packets lost (30%)      136.8     139.4     140.6
+Singapore, Singapore      Packets lost (60%)      232.3     235.3     237.1
+Shanghai, China           Packets lost (60%)      273.3     273.6     274.0
+London, United Kingdom    Packets lost (30%)      106.4     106.8     107.1
+Porto Alegre, Brazil      Packets lost (20%)      165.8     171.5     176.5
+Stockholm, Sweden         Packets lost (100%)
+Cologne, Germany          Packets lost (100%)
+Kraków, Poland            Packets lost (90%)      165.9     165.9     165.9
+Melbourne, Australia      Packets lost (90%)      220.3     220.3     220.3
+</code></pre>
+</div><ul class="tags"><li><a href="/tags/net">net</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/involuntary-reboot-log-31">← Involuntary Reboot Log</a></div><div class="post-nav-next"><a href="/blog/wikitext-1.1-released">Wikitext 1.1 released →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

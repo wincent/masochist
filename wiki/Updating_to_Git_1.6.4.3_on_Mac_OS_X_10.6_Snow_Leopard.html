@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Updating to Git 1.6.4.3 on Mac OS X 10.6 Snow Leopard • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Updating to Git 1.6.4.3 on Mac OS X 10.6 Snow Leopard</h1></div><div class="metadata"><relative-time created="1252856184" updated="1495119989">Created 9/13/2009, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/snow.leopard">snow.leopard</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Local update</h2>
+<p>Notes made while updating to <a href="/wiki/Git_1.6.4.3">Git 1.6.4.3</a> on <a href="/wiki/Mac_OS_X">Mac OS X</a> 10.6 <a href="/wiki/Snow_Leopard">Snow Leopard</a>:</p>
+<pre><code># working from a clone of the official upstream Git repo
+git fetch
+git tag -v v1.6.4.3
+
+# note: &quot;git co&quot; is an alias that I made for &quot;git checkout&quot;
+git co v1.6.4.3
+make clean
+make prefix=/usr/local test
+sudo make prefix=/usr/local install
+
+# inspect the changes in the Bash completion script
+diff -u ~/.git-completion.sh contrib/completion/git-completion.bash
+# no changes this time, so no need to update it
+[/tags/cp #cp] contrib/completion/git-completion.bash ~/.git-completion.sh
+
+# the pre-built man pages
+sudo make prefix=/usr/local quick-install-man
+
+# go back to the master branch rather than hanging around on a detached head
+git co master
+</code></pre>
+<h2>Remote update</h2>
+<p>I chose not to update the remote server this time as <a href="/wiki/Git_1.6.4.3">Git 1.6.4.3</a> doesn't seem to include any changes that are really relevant to its workload. See &quot;<a href="/wiki/Updating_to_Git_1.6.4">Updating to Git 1.6.4</a>&quot; for an example of the update procedure on <a href="/wiki/Red_Hat_Enterprise_Linux">Red Hat Enterprise Linux</a>.</p>
+<h3>Changes in <a href="/wiki/gitweb">gitweb</a></h3>
+<p>There were no changes:</p>
+<pre><code class="language-shell">$ git diff v1.6.4.1..v1.6.4.2 -- gitweb
+</code></pre>
+<h3>Other changes</h3>
+<p>Note that <code>git oneline</code> is an alias for <code>log --pretty=format:'%Cgreen%h%Creset %s'</code>:</p>
+<pre><code class="language-shell">$ git oneline v1.6.4.2..v1.6.4.3
+7fb6bcf GIT 1.6.4.3
+d3d7d47 svn: properly escape arguments for authors-prog
+45c58ba Merge branch 'cb/maint-1.6.3-grep-relative-up' into maint
+59b8d38 http.c: remove verification of remote packs
+90e4311 git-pull: do not mention --quiet and --verbose twice
+6d71c1d githooks.txt: put hooks into subsections
+493b7a0 grep: accept relative paths outside current working directory
+929e37d grep: fix exit status if external_grep() punts
+14b772a push: re-flow non-fast-forward message
+e1f8f0c push: fix english in non-fast-forward message
+bc29df6 Merge branch 'maint-1.6.3' into maint
+ba7e814 Merge branch 'maint-1.6.2' into maint-1.6.3
+4059237 git-clone: add missing comma in --reference documentation
+d2feb01 git-cvsserver: no longer use deprecated 'git-subcommand' commands
+12d4996 clone: disconnect transport after fetching
+</code></pre>
+<p>For more detail, run <code>git log -p v1.6.4.2..v1.6.4.3</code>; the changes are small enough to make reviewing feasible:</p>
+<pre><code class="language-shell">$ git diff --stat v1.6.4.2..v1.6.4.3
+ Documentation/RelNotes-1.6.4.3.txt |   29 ++++++++++++++++++++++++++
+ Documentation/fetch-options.txt    |    2 +
+ Documentation/git-clone.txt        |    2 +-
+ Documentation/git.txt              |    3 +-
+ Documentation/githooks.txt         |   33 ++++++++++++++++-------------
+ GIT-VERSION-GEN                    |    2 +-
+ RelNotes                           |    2 +-
+ builtin-clone.c                    |    4 ++-
+ builtin-grep.c                     |   39 ++++++++++------------------------
+ builtin-push.c                     |    6 ++--
+ git-cvsserver.perl                 |   40 ++++++++++++++++++------------------
+ git-svn.perl                       |    1 +
+ grep.h                             |    1 +
+ http.c                             |   11 ---------
+ t/t5601-clone.sh                   |    6 +++-
+ t/t7002-grep.sh                    |   17 +++++++++++++++
+ t/t9138-git-svn-authors-prog.sh    |   14 ++++++++++++
+ 17 files changed, 129 insertions(+), 83 deletions(-)
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

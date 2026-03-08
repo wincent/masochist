@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Updating to nginx 0.7.61 on Red Hat Enterprise Linux 5.3 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Updating to nginx 0.7.61 on Red Hat Enterprise Linux 5.3</h1></div><div class="metadata"><relative-time created="1251703601" updated="1584053324">Created 8/31/2009, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/red.hat">red.hat</a></li><li><a href="/tags/nginx">nginx</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/nginx.upload.module">nginx.upload.module</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Updating <a href="/wiki/PCRE">PCRE</a></h2>
+<p>Although we updated <a href="/wiki/PCRE">PCRE</a> as part of our <a href="/wiki/Mac_OS_X">Mac OS X</a> 10.6 <a href="/wiki/Snow_Leopard">Snow Leopard</a> install, we won't update here because we don't want to lose the automatic updates of the <a href="/wiki/Red_Hat">Red Hat</a>-supplied version.</p>
+<h2>Updating <a href="/wiki/nginx">nginx</a> and using the <a href="/wiki/nginx_upload_module">nginx upload module</a></h2>
+<p>Although I have tried the upload module previously on my development machine (see &quot;<a href="/wiki/Updating_to_nginx_0.6.36_with_the_nginx_upload_module_2.0.9">Updating to nginx 0.6.36 with the nginx upload module 2.0.9</a>&quot; and &quot;<a href="/wiki/Installing_nginx_0.7.61_on_Mac_OS_X_10.6_Snow_Leopard">Installing nginx 0.7.61 on Mac OS X 10.6 Snow Leopard</a>&quot;) this is the first time I am deploying it on the remote server.</p>
+<pre><code class="language-shell">$ wget http://www.grid.net.ru/nginx/download/nginx_upload_module-2.0.10.tar.gz
+$ tar xzvf nginx_upload_module-2.0.10.tar.gz
+$ wget http://sysoev.ru/nginx/nginx-0.7.61.tar.gz
+$ tar xzvf nginx-0.7.61.tar.gz
+$ cd nginx-0.7.61
+$ ./configure --prefix=/usr/local/nginx --with-http_ssl_module --add-module=../nginx_upload_module-2.0.10
+$ make
+</code></pre>
+<p>For the actual installation we use a somewhat more elaborate process than the one we use on the development machine, principally because we want a rapid retreat path in case something goes wrong. As noted in &quot;<a href="/wiki/Updating_to_nginx_0.6.34_on_Red_Hat_Enterprise_Linux_5.1">Updating to nginx 0.6.34 on Red Hat Enterprise Linux 5.1</a>&quot;, it is in theory possible to do a zero-downtime update by swapping in a new binary on the fly. It's something I may try next time (and if I do, I will make notes at &quot;<a href="/wiki/Updating_to_a_new_nginx_binary_on_the_fly">Updating to a new nginx binary on the fly</a>&quot;), but for now I used the more conservative approach of stopping the server, moving the entire old <code>/usr/local/nginx/</code> folder out of the way, installing the new version, and restarting.</p>
+<pre><code class="language-shell">$ sudo -i
+# monit summary
+# monit stop all
+# monit summary
+# mv /usr/local/nginx /usr/local/nginx-old
+# cd /path/to/nginx/src/nginx-0.7.61
+# make install
+# cd /usr/local
+# cp nginx-old/conf/nginx-staging.conf nginx/conf/
+# mv nginx/conf/nginx.conf nginx/conf/nginx.conf.vendor
+# cp nginx-old/conf/nginx.conf nginx/conf/
+# sbin/nginx -t -c conf/nginx.conf
+# cp -R ../nginx-old/conf/certs conf/
+# cp -R ../nginx-old/conf/keys conf/
+# sbin/nginx -t -c conf/nginx.conf
+# sbin/nginx -t -c conf/nginx-staging.conf
+# monit start all
+# monit summary
+# exit
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Installing_nginx_0.7.61_on_Mac_OS_X_10.6_Snow_Leopard">Installing nginx 0.7.61 on Mac OS X 10.6 Snow Leopard</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

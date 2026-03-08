@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Determining which custom files need to be merged when performing Movable Type upgrades • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Determining which custom files need to be merged when performing Movable Type upgrades</h1></div><div class="metadata"><relative-time created="1190769972" updated="1495119989">Created 9/26/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/movable.type">movable.type</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><a href="/wiki/Movable_Type">Movable Type</a>'s upgrade procedure effectively amounts to a performing a full reinstallation. This wouldn't be much of a problem if it weren't for the fact that custom files and modifications in an existing installation must be painstakingly identified and copied over into the new version prior to re-uploading the 1,100+ files that make up <a href="/wiki/Movable_Type">Movable Type</a> (using <code>find . -type f | wc -l</code> from the top level of the <a href="/wiki/Movable_Type">Movable Type</a> 3.35 archive counts 1,158 distinct files).</p>
+<p>These tips describe the basic procedure for performing the merge. Here we assume that the old version was installed in <code>mt</code>. Version 3.34 is used in this example:</p>
+<ul>
+<li>On the local host, rename the old <code>mt</code> folder to <code>mt-3.34</code></li>
+<li>Move the newly extracted files into position, naming the folder <code>mt</code></li>
+<li>Use <code>diff</code> to examine the differences between the trees:</li>
+</ul>
+<!-- -->
+<pre><code>diff mt-3.34 mt
+diff -r mt-3.34 mt | less
+diff -r mt-3.34 mt | grep &quot;Only in&quot;
+</code></pre>
+<p>When you see lines like <code>Only in mt-old: mt-config.cgi</code>, this is most likely an indication of a file that should be copied over to the new directory.</p>
+<p>In my case, there were 4 files that needed to be copied for the 3.34 to 3.35 upgrade:</p>
+<pre><code>cp mt-3.34/.htaccess mt/
+cp mt-3.34/mt-config.cgi mt/
+cp mt-3.34/plugins/Markdown.pl mt/plugins/
+cp mt-3.34/plugins/wikitext.pl mt/plugins/
+</code></pre>
+<p>In the case of the 3.35 to 4.0.1 upgrade the files I copied over were:</p>
+<pre><code>.htaccess
+mt-config.cgi
+plugins/wikitext.pl
+</code></pre>
+<p>I could then double-check the result as using:</p>
+<pre><code>diff -r mt-3.34 mt | grep &quot;Only in&quot;
+</code></pre>
+<h3>Useful data-mining commands</h3>
+<p>Numbers shown are for the example upgrade from 3.34 to 3.35.</p>
+<h4>Total number of lines in the diff</h4>
+<pre><code>diff -r mt-3.34 mt | wc -l # 3512
+</code></pre>
+<p>This line count reflects changed lines, removed lines, modified lines, and of course custom files not present in the vanilla <a href="/wiki/Movable_Type">Movable Type</a> distribution, such as the <code>Markdown.pl</code> and <code>wikitext.pl</code> plugins mentioned above.</p>
+<h4>Total number of substantive lines</h4>
+<p>This line count excludes metadata and counts only lines showing the actual changes:</p>
+<pre><code>diff -r mt-3.34 mt | grep '^[&gt;&lt;]' | wc -l # 2063
+</code></pre>
+<p>Many of the changed lines just contain <a href="/wiki/RCS">RCS</a> tags, which can be excluded from the count as follows:</p>
+<pre><code>diff -r mt-3.34 mt | grep '^[&gt;&lt;]' | grep -v '\$Id' | wc - l # 1815
+</code></pre>
+<h2>See also</h2>
+<p>For an example of using this procedure in the context of an upgrade, see &quot;<a href="/wiki/Upgrading_from_Movable_Type_version_3.34_to_3.35">Upgrading from Movable Type version 3.34 to 3.35</a>&quot;.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

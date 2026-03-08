@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ZenTest 3.9.1 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>ZenTest 3.9.1</h1></div><div class="metadata"><relative-time created="1201862304" updated="1584053324">Created 2/1/2008, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/zentest">zentest</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Release notes</h2>
+<ul>
+<li><a href="http://rubyforge.org/frs/shownotes.php?release_id=18734">http://rubyforge.org/frs/shownotes.php?release_id=18734</a></li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Upgrading_to_ZenTest_3.9.1_on_Mac_OS_X_10.5.1">Upgrading to ZenTest 3.9.1 on Mac OS X 10.5.1</a></li>
+</ul>
+<h2>My notes</h2>
+<p>Apparently this release fixes a &quot;memory leak&quot;. Hopefully this fixes an issue I saw last night; when I finished work for the day I left my machine running with autotest in a background window. So autotest was running the whole night even though no changes were being made to the files and no tests were being run. When I came back this morning the machine was thrashing and autotest was using almost 1.5 gig of resident memory (2 gig virtual). Perhaps there was a leak in the polling loop at the heart of autotest.</p>
+<p>Currently running the following to see if the problem has gone away:</p>
+<pre><code> while true; do
+  touch project_file_which_triggers_all_specs_to_run
+  sleep 1
+done
+</code></pre>
+<p>Can't find a live repository to look at what changed between 3.9.0 and 3.9.1 (the <a href="/wiki/RubyForge">RubyForge</a> <a href="/wiki/Subversion">Subversion</a> repo seems to be a mere mirror and it's lagging behind, still at 3.8.0), but I have downloaded the two tarballs to do a straight diff on them:</p>
+<pre><code>diff -r -u ZenTest-3.9.0/History.txt ZenTest-3.9.1/History.txt
+--- ZenTest-3.9.0/History.txt	2008-01-31 10:50:16.000000000 +0100
++++ ZenTest-3.9.1/History.txt	2008-02-01 04:26:40.000000000 +0100
+@@ -1,3 +1,9 @@
++=== 3.9.1 / 2008-01-31
++
++* 1 bug fix:
++
++  * OMG I'm so dumb... fixed memory leak.
++
+ === 3.9.0 / 2008-01-30
+
+ * 15 minor enhancements:
+diff -r -u ZenTest-3.9.0/lib/autotest.rb ZenTest-3.9.1/lib/autotest.rb
+--- ZenTest-3.9.0/lib/autotest.rb	2008-01-31 10:50:16.000000000 +0100
++++ ZenTest-3.9.1/lib/autotest.rb	2008-02-01 04:26:40.000000000 +0100
+@@ -211,11 +211,8 @@
+         end
+         wait_for_changes
+       rescue Interrupt
+-        if self.wants_to_quit then
+-          break
+-        else
+-          reset
+-        end
++        break if self.wants_to_quit
++        reset
+       end
+     end
+     hook :quit
+@@ -343,6 +340,7 @@
+   def find_files
+     result = {}
+     targets = self.find_directories + self.extra_files
++    self.find_order.clear
+
+     targets.each do |target|
+       order = []
+@@ -508,9 +506,7 @@
+
+   def wait_for_changes
+     hook :waiting
+-    begin
+-      Kernel.sleep self.sleep
+-    end until find_files_to_test
++    Kernel.sleep self.sleep until find_files_to_test
+   end
+
+   ############################################################
+diff -r -u ZenTest-3.9.0/lib/zentest.rb ZenTest-3.9.1/lib/zentest.rb
+--- ZenTest-3.9.0/lib/zentest.rb	2008-01-31 10:50:16.000000000 +0100
++++ ZenTest-3.9.1/lib/zentest.rb	2008-02-01 04:26:41.000000000 +0100
+@@ -56,7 +56,7 @@
+
+ class ZenTest
+
+-  VERSION = '3.9.0'
++  VERSION = '3.9.1'
+
+   include ZenTestMapping
+</code></pre>
+<p>So that missing <code>self.find_order.clear</code> could indeed explain the memory leak that I saw. Doesn't look like the code being tested is responsible for the leak (thank goodness, I hate trying to find memory leaks in Garbage Collected code). I've been running the test suite every second now for a few minutes and the memory usage is constant.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

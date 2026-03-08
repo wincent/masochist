@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>An attack of over-engineering • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/an-attack-of-over-engineering">An attack of over-engineering</a></h1><div class="metadata"><relative-time created="1231876965" updated="1584053324">Created 1/13/2009, updated 3/12/2020</relative-time><span>4 minute read</span></div><div class="prerendered"><p>I just had a horrible attack of over-engineering. Thankfully, I managed to pull out of it before it went too far. It was like a glimpse into the life of an fully-indoctrinated Java programmer (you know, the ones with hammer-shaped copies of the &quot;<a href="http://en.wikipedia.org/wiki/Design_Patterns">Design Patterns</a>&quot; book by the Gang of Four, to whom every software problem looks like a nail).</p>
+<p>Ironically, I started a new script precisely because I wanted to replace a piece of over-engineered code (<a href="/wiki/Capistrano">Capistrano</a>) with something simple (a single script that deploys my <a href="/wiki/Rails">Rails</a> application).</p>
+<p><strong>First step.</strong> Write a method for forking an external command, capturing its output and exit status, and returning the result. This was something I've done quite a few times over the years, so I just did a copy-and-paste from the last project where I did it.</p>
+<p><strong>Second step.</strong> Look at <code>inspect</code> output from returned object (an <code>OpenStruct</code> instance), and decide that you don't like how the word &quot;OpenStruct&quot; is visible in the output. This is where the madness began. I had chosen to use <code>OpenStruct</code> precisely because it provided a nicer-looking interface for the object containing the returned results (nicer than a <code>Hash</code>, I mean) and because it was already written for me. But worrying about what the <em>debugging</em> output looked like when I was certain that once written, the script would never need to be debugged again? I should have perceived the signs of pending insanity.</p>
+<p><strong>Third step.</strong> Create a custom class to encapsulate the results. Decide, for some unfathomable reason, that you want the attributes to be readable freely, but writable only once. Why? I still don't know why I care about this.</p>
+<p><strong>Fourth step.</strong> Do some meta-programming (dynamically adding methods via <code>class_eval</code>) to add special accessor methods to your custom class, methods which enforce the desired read/write behaviour. Why meta-programming? To keep things <a href="/wiki/DRY">DRY</a>, of course; we're talking about four attributes here! More madness of course as the whole thing shouldn't have even been done <em>once</em>, let alone <em>repeated</em>. (I guess I really needed to DOY, or &quot;Don't Once Yourself!&quot;).</p>
+<p><strong>Fifth step.</strong> Look at your new custom object and decide that you don't like <em>that</em> object's <code>inspect</code> output <em>either</em>, because the internal variables you've set up to make sure that attributes only get written once appear and you'd rather they not. Refactor to use one private variable only (an <code>Array</code> for keeping a list of attributes), and generate your <code>inspect</code> output by introspecting the <code>Array</code>.</p>
+<p>I'm ashamed to post this hideous thing, but I will so that others may learn from my stupidity. Here's what the code is looking like by now:</p>
+<pre><code>class ExecRecord
+  def initialize
+    # keep track of attributes for making inspect pretty
+    @attributes = []
+  end
+
+  # define accessors for an attribute that can be written once, read many times
+  def self.define_accessor *args
+    args.each do |arg|
+      arg = arg.to_s
+      class_eval &lt;&lt;-DEF
+        # def foo
+        #   @foo
+        # end
+        def #{arg}
+          @#{arg}
+        end
+
+        # def foo= val
+        #   if @attributes.include? 'foo'
+        #     raise &quot;attempt to modify write-once attribute, foo&quot;
+        #   end
+        #   @foo = val
+        #   @attributes &lt;&lt; 'foo'
+        # end
+        def #{arg}= val
+          if @attributes.include? '#{arg}'
+            raise &quot;attempt to modify write-once attribute, #{arg}&quot;
+          end
+          @#{arg} = val
+          @attributes &lt;&lt; '#{arg}'
+        end
+      DEF
+    end
+  end
+  define_accessor :stderr, :stdout, :status, :command_string
+
+  def inspect
+    content = @attributes.collect do |attr|
+      ivar = instance_variable_get(&quot;@#{attr}&quot;)
+      &quot;@#{attr}=#{ivar.inspect}&quot;
+    end
+    content.unshift &quot;#{self.class.to_s}:#{'0x%x' % object_id}&quot;
+    &quot;\#&lt;#{content.join(' ')}&gt;&quot;
+  end
+end # class ExecRecord
+</code></pre>
+<p>The original method which uses this abomination looks like this. You can see the <code>OpenStruct</code> creation, where the horrible <code>ExecRecord</code> would be slotted in:</p>
+<pre><code>def run cmd, *args
+  result = OpenStruct.new
+  result.stdout = ''
+  result.stderr = ''
+  Wopen3.popen3(*([cmd] + args)) do |stdin, stdout, stderr|
+    threads = []
+    threads &lt;&lt; Thread.new(stdout) do |out|
+      out.each { |line| result.stdout &lt;&lt; line }
+    end
+    threads &lt;&lt; Thread.new(stderr) do |err|
+      err.each { |line| result.stderr &lt;&lt; line }
+    end
+    threads.each { |thread| thread.join }
+  end
+  result.status = $?.exitstatus
+  result.command_string = ([cmd] + args).join(' ')
+  result
+end
+</code></pre>
+<p><strong>Sixth step.</strong> By now you're starting to realize that all this is probably misguided but you're almost falling asleep so you continue for long enough to jot down some &quot;TODO&quot; notes for tomorrow. Things like, &quot;send <code>freeze</code> to attribute storage to stop callers from modifying contents&quot; (why the hell was I worried about this?).</p>
+<p>Or, &quot;move execution method inside record class to keep everything encapsulated&quot;... So this helper class that I decided to whip up for use in a method has started to become such a protagonist that I'm looking at swallowing up the <em>original</em> method into the helper method. This is surely a sign that this thing has started to grow at a tumour-pace.</p>
+<p>Or, &quot;set up top-level <code>run</code> method as convenience for creating new instances&quot;... But wasn't that what I started with? A top-level convenience method for running external commands? I'm going in circles here. Time to stop.</p>
+<p>I really shouldn't be playing with code when I'm sleep-deprived like this.</p>
+</div><ul class="tags"><li><a href="/tags/ruby">ruby</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/0-minutes-with-vim">← 0 minutes with Vim</a></div><div class="post-nav-next"><a href="/blog/giving-up-on-emacs">Giving up on Emacs →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

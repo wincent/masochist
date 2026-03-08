@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Eclipse plug-in architecture • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Eclipse plug-in architecture</h1></div><div class="metadata"><relative-time created="1174786751" updated="1584053324">Created 3/25/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/development">development</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These are notes taken based on the article, &quot;Notes on the Eclipse Plug-in Architecture&quot;, at <a href="http://www.eclipse.org/articles/Article-Plug-in-architecture/plugin_architecture.html">http://www.eclipse.org/articles/Article-Plug-in-architecture/plugin_architecture.html</a></p>
+<h2>Basics</h2>
+<ul>
+<li>A plug-in is embodied in an instance of a plug-in class.</li>
+<li>The plug-in class &quot;provides configuration and management support&quot; for a plug-in instance.</li>
+<li>All plug-in classes inherit from the same class, &quot;an abstract class that provides generic facilities for managing plug-ins&quot;; let's call it <code>WOPlugIn</code>.</li>
+<li>Plug-ins are described in <a href="/wiki/XML">XML</a> manifest files, which tell &quot;the Eclipse runtime what it needs to know to activate the plug-in.&quot;</li>
+<li>The parsed manifest files are cached in a plug-in registry.</li>
+<li>Plug-ins are instantiated by using the plug-in registry <a href="/wiki/API">API</a>.</li>
+<li>Plug-ins can also find out information about other plug-ins by using the registry API.</li>
+<li>Each plug-in's manifest includes a unique identifier (using a reverse-dotted organization-based naming scheme, such as <code>com.wincent.foo.bar</code>).</li>
+<li>The plug-in's identifier can be used in conjunction with the API to access its running instance.</li>
+</ul>
+<h2>Instantiation</h2>
+<ul>
+<li>Custom behaviour can be implemented by subclassing <code>WOPlugIn</code> and implementing the activation and deactivation methods on the class (<code>startup</code> and <code>shutdown</code> respectively); the subclass name is included in the manifest file.</li>
+</ul>
+<h2>Relationships</h2>
+<ul>
+<li>A plug-in may have a <em>dependency</em> relationship with another plug-in (the dependent plug-in depends on the functionality of the prerequisite plug-in).</li>
+<li>A plug-in may also have an &quot;extension&quot; relationship with another plug-in (the host plug-in is extended by the extender plug-in).</li>
+<li>Both types of relationship are specified in the manifest file, using the <code>requires</code> and <code>extension-point</code> specifiers.</li>
+<li>In order to be activated a plug-in must be reachable from the core via a chain of dependency and/or extension relationships.</li>
+</ul>
+<h2>Extension points</h2>
+<ul>
+<li>In the simple case, extension involves setting up a callback object through which the host and extender plug-ins communicate.</li>
+<li>An extension point allows any number of extensions to be plugged into it.</li>
+<li>Extension points are appended to their plug-in identifiers to yield fully-qualified names that plug-ins can use to refer to those extension points (for example, <code>com.wincent.foo.bar.extension_point</code>).</li>
+<li>There is an XML schema for extension points that defines a syntax for declaring menus, menu items and buttons etc that are to be added to the UI.</li>
+</ul>
+<h2>Callback objects</h2>
+<ul>
+<li>Callback objects tend to be &quot;plain&quot; objects (not plug-in instances) that are notified when certain events specified in the extension point definition take place.</li>
+<li>The interface for callback objects is defined by the host plug-in.</li>
+<li>The callback object is provided by the extender plug-in.</li>
+<li>Because of this circular relationship the extender plug-in typically also depends on the host plug-in.</li>
+<li>Although the extender plug-in declares the class of the callback object and provides the implementation of it, the callback object is not instantiated until needed, and the instantiation is performed by the host plug-in.</li>
+</ul>
+<h2>Summary</h2>
+<ul>
+<li>An application may have multiple host plug-ins.</li>
+<li>Each host plug-in may have multiple extension points.</li>
+<li>A plug-in may simultaneously act as both a host plug-in (exposing extension points) and as an extender plug-in (extending other plug-ins).</li>
+<li>Multiple plug-ins may extended a given extension point.</li>
+<li>An extender plug-in may extend a given extension point more than once (although I am not sure why or when this would be useful).</li>
+<li>A given extender plug-in may extend different extension points and even different host plug-ins.</li>
+<li>Extending a single extension point may lead to the instantiation of multiple callback objects.</li>
+<li>A plug-in can extend itself (defining extensions to its own extension points).</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

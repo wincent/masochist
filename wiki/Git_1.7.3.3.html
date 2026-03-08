@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.7.3.3 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.7.3.3</h1></div><div class="metadata"><relative-time created="1291674458" updated="1495119989">Created 12/6/2010, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official release announcement posted to the <a href="/wiki/Git_mailing_list">Git mailing list</a>:</p>
+<pre><code>The latest maintenance release Git 1.7.3.3 is available at the
+usual places:
+
+ http://www.kernel.org/pub/software/scm/git/
+
+ git-1.7.3.3.tar.{gz,bz2}			(source tarball)
+ git-htmldocs-1.7.3.3.tar.{gz,bz2}		(preformatted docs)
+ git-manpages-1.7.3.3.tar.{gz,bz2}		(preformatted docs)
+
+The RPM binary packages for a few architectures are found in:
+
+ RPMS/$arch/git-*-1.7.3.3-1.fc11.$arch.rpm	(RPM)
+
+
+
+Git v1.7.3.3 Release Notes
+==========================
+
+In addition to the usual fixes, this release also includes support for
+the new &quot;add.ignoreErrors&quot; name given to the existing &quot;add.ignore-errors&quot;
+configuration variable.
+
+The next version, Git 1.7.4, and future versions, will support both
+old and incorrect name and the new corrected name, but without this
+backport, users who want to use the new name &quot;add.ignoreErrors&quot; in
+their repositories cannot use older versions of Git.
+
+Fixes since v1.7.3.2
+--------------------
+
+* &quot;git apply&quot; segfaulted when a bogus input is fed to it.
+
+* Running &quot;git cherry-pick --ff&quot; on a root commit segfaulted.
+
+* &quot;diff&quot;, &quot;blame&quot; and friends incorrectly applied textconv filters to
+  symlinks.
+
+* Highlighting of whitespace breakage in &quot;diff&quot; output was showing
+  incorrect amount of whitespaces when blank-at-eol is set and the line
+  consisted only of whitespaces and a TAB.
+
+* &quot;diff&quot; was overly inefficient when trying to find the line to use for
+  the function header (i.e. equivalent to --show-c-function of GNU diff).
+
+* &quot;git imap-send&quot; depends on libcrypto but our build rule relied on the
+  linker to implicitly link it via libssl, which was wrong.
+
+* &quot;git merge-file&quot; can be called from within a subdirectory now.
+
+* &quot;git repack -f&quot; expanded and recompressed non-delta objects in the
+  existing pack, which was wasteful.  Use new &quot;-F&quot; option if you really
+  want to (e.g. when changing the pack.compression level).
+
+* &quot;git rev-list --format=&quot;...%x00...&quot; incorrectly chopped its output
+  at NUL.
+
+* &quot;git send-email&quot; did not correctly remove duplicate mail addresses from
+  the Cc: header that appear on the To: header.
+
+* The completion script (in contrib/completion) ignored lightweight tags
+  in __git_ps1().
+
+* &quot;git-blame&quot; mode (in contrib/emacs) didn't say (require 'format-spec)
+  even though it depends on it; it didn't work with Emacs 22 or older
+  unless Gnus is used.
+
+* &quot;git-p4&quot; (in contrib/) did not correctly handle deleted files.
+
+Other minor fixes and documentation updates are also included.
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Updating_to_Git_1.7.3.3_on_Mac_OS_X_10.6.5_Snow_Leopard">Updating to Git 1.7.3.3 on Mac OS X 10.6.5 Snow Leopard</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

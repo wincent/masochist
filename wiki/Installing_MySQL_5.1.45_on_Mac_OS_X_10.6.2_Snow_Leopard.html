@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Installing MySQL 5.1.45 on Mac OS X 10.6.2 Snow Leopard • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Installing MySQL 5.1.45 on Mac OS X 10.6.2 Snow Leopard</h1></div><div class="metadata"><relative-time created="1269192343" updated="1495119989">Created 3/21/2010, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/mysql">mysql</a></li><li><a href="/tags/snow.leopard">snow.leopard</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Unlike last time (see &quot;<a href="/wiki/Installing_MySQL_5.0.85_on_Mac_OS_X_10.6_Snow_Leopard">Installing MySQL 5.0.85 on Mac OS X 10.6 Snow Leopard</a>&quot;), there are now binary builds available for <a href="/wiki/Snow_Leopard">Snow Leopard</a> on <a href="http://dev.mysql.com/downloads/mysql/5.1.html">the MySQL downloads page</a>.</p>
+<p>I chose the &quot;Mac OS X ver. 10.6 (x86, 64-bit), Compressed TAR Archive&quot; option, currently <code>mysql-5.1.45-osx10.6-x86_64.tar.gz</code>, seeing as I can't find any 5.0-series on the official site (I would prefer to use the 5.0 series seeing as that is what is currently installed on the remote server).</p>
+<p>See the downloads page for your local mirror, but in my case I used one from Portugal:</p>
+<pre><code class="language-shell">$ wget http://mysql.nfsi.pt/Downloads/MySQL-5.1/mysql-5.1.45-osx10.6-x86_64.tar.gz
+$ cd /usr/local
+$ sudo sh -c 'gunzip &lt; ~/trabajo/vendor/mysql/mysql-5.1.45-osx10.6-x86_64.tar.gz | tar xvf -'
+$ sudo chown -R mysql:mysql mysql-5.1.45-osx10.6-x86_64
+$ sudo ln -s mysql-5.1.45-osx10.6-x86_64 mysql
+$ sudo mysql/scripts/mysql_install_db --user=mysql
+$ cd mysql
+$ sudo scripts/mysql_install_db --user=mysql
+$ sudo chown -R root .
+$ sudo chown -R mysql data
+</code></pre>
+<h2>The &quot;mysql&quot; <a href="/wiki/RubyGem">RubyGem</a></h2>
+<p>This gem is notoriously tricky to build. In the past I've had problems with it, so the last time I built it I was quite surprised to see that all that as needed was a simple <code>sudo gem install mysql</code>.</p>
+<p>This time, however, the gem built using <code>sudo gem install mysql</code> was not usable and I had to resort to:</p>
+<pre><code class="language-shell">$ sudo env ARCHFLAGS='-arch i386 -arch x86_64' gem install mysql
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

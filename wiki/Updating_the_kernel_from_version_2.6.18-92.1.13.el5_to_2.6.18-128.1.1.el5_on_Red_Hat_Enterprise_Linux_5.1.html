@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Updating the kernel from version 2.6.18-92.1.13.el5 to 2.6.18-128.1.1.el5 on Red Hat Enterprise Linux 5.1 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Updating the kernel from version 2.6.18-92.1.13.el5 to 2.6.18-128.1.1.el5 on Red Hat Enterprise Linux 5.1</h1></div><div class="metadata"><relative-time created="1235277273" updated="1584053324">Created 2/22/2009, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/red.hat">red.hat</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Check what's available:</p>
+<pre><code>$ sudo yum --disableexcludes=all check-update
+Password:
+Loaded plugins: rhnplugin
+
+kernel.i686                              2.6.18-128.1.1.el5     rhel-i386-server-5
+kernel-headers.i386                      2.6.18-128.1.1.el5     rhel-i386-server-5
+</code></pre>
+<p>Actually install:</p>
+<pre><code>$ sudo yum --disableexcludes=all update 'kernel*'
+Loaded plugins: rhnplugin
+Setting up Update Process
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package kernel-headers.i386 0:2.6.18-128.1.1.el5 set to be updated
+---&gt; Package kernel.i686 0:2.6.18-128.1.1.el5 set to be installed
+--&gt; Finished Dependency Resolution
+--&gt; Running transaction check
+---&gt; Package kernel.i686 0:2.6.18-92.1.13.el5 set to be erased
+--&gt; Finished Dependency Resolution
+
+Dependencies Resolved
+
+====================================================================================================================================
+ Package                        Arch                 Version                               Repository                          Size
+====================================================================================================================================
+Installing:
+ kernel                         i686                 2.6.18-128.1.1.el5                    rhel-i386-server-5                  15 M
+Updating:
+ kernel-headers                 i386                 2.6.18-128.1.1.el5                    rhel-i386-server-5                 913 k
+Removing:
+ kernel                         i686                 2.6.18-92.1.13.el5                    installed                           37 M
+
+Transaction Summary
+====================================================================================================================================
+Install      1 Package(s)
+Update       1 Package(s)
+Remove       1 Package(s)
+
+Total download size: 16 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/2): kernel-headers-2.6.18-128.1.1.el5.i386.rpm                                                            | 913 kB     00:01
+(2/2): kernel-2.6.18-128.1.1.el5.i686.rpm                                                                    |  15 MB     00:22
+------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                               682 kB/s |  16 MB     00:23
+Running rpm_check_debug
+Running Transaction Test
+Finished Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing     : kernel                                            [1/4]
+  Updating       : kernel-headers                                    [2/4]
+  Cleanup        : kernel-headers                                    [3/4]
+  Cleanup        : kernel                                            [4/4]
+
+Removed: kernel.i686 0:2.6.18-92.1.13.el5
+Installed: kernel.i686 0:2.6.18-128.1.1.el5
+Updated: kernel-headers.i386 0:2.6.18-128.1.1.el5
+Complete!
+</code></pre>
+<p>Cross fingers, take a deep breath, and reboot:</p>
+<pre><code>$ sudo reboot
+
+Broadcast message from root (pts/0) (Sun Feb 22 04:27:13 2009):
+
+The system is going down for reboot NOW!
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

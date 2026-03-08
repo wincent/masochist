@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Implementing svn:externals support in SVK • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Implementing svn:externals support in SVK</h1></div><div class="metadata"><relative-time created="1175120232" updated="1584053324">Created 3/28/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/svk">svk</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>So <a href="/wiki/SVK">SVK</a> doesn't yet support <a href="/wiki/Subversion_externals">Subversion externals</a>. A number of possible workarounds are discussed in &quot;<a href="/wiki/Working_around_the_lack_of_svn%3aexternals_support_in_SVK">Working around the lack of svn:externals support in SVK</a>&quot; but in this article I'd like to propose how I think the feature should be implemented in <a href="/wiki/SVK">SVK</a>.</p>
+<h2>Nested checkouts</h2>
+<p>An <a href="/wiki/svn%3aexternals">svn:externals</a> property is an instruction to the <a href="/wiki/Subversion">Subversion</a> client that it should check out a given repository path at a location inside an existing working copy. It is essentially a reference to a path in another repository, like a symbolic link. It essentially produces a &quot;nested&quot; working copy, one working copy checked out inside another.</p>
+<p>Nesting of working copies is not allowed in <a href="/wiki/SVK">SVK</a> so you can't &quot;fake&quot; this by manually checking out the desired path inside an existing working copy. As a precondition for implementing <a href="/wiki/svn%3aexternals">svn:externals</a> support <a href="/wiki/SVK">SVK</a> therefore has to be modified to allow this special case of nested working copies when <a href="/wiki/svn%3aexternals">svn:externals</a> are in use.</p>
+<h2>Mirroring</h2>
+<p><a href="/wiki/SVK">SVK</a> normally works with a local mirror so if you invoke:</p>
+<p><code>svk co svn+ssh://svn.example.com/project/trunk</code></p>
+<p>Where no mirror for that <a href="/wiki/URL">URL</a> yet exists <a href="/wiki/SVK">SVK</a> will offer to create a (local) mirror at:</p>
+<pre><code>//mirror/project-trunk
+</code></pre>
+<p>This detail is relevant to implementing <a href="/wiki/svn%3aexternals">svn:externals</a> support in <a href="/wiki/SVK">SVK</a> because a user could check out a working copy containing a reference to a not-yet-mirrored external repository. In this case <a href="/wiki/SVK">SVK</a> would need to offer to mirror the repository. Given that <a href="/wiki/svn%3aexternals">svn:externals</a> are a client-level detail this mirroring should be implemented at check out time rather than at the time when the first repository is mirrored.</p>
+<h2>Working with <a href="/wiki/SVK">SVK</a> paths</h2>
+<p>It should be possible to set <code>svn:externals</code> properties that use <a href="/wiki/SVK">SVK</a> paths:</p>
+<pre><code>svk propset svn:externals &quot;nested_path //mirror/mirror_path&quot;
+</code></pre>
+<p>But this is of limited use because it means that other users who may not be using <a href="/wiki/SVK">SVK</a> and might just be using the <a href="/wiki/Subversion">Subversion</a> client will not be able to checkout the externals.</p>
+<h2>Working with <a href="/wiki/Subversion">Subversion</a> paths</h2>
+<p>Much more useful would be the ability for <a href="/wiki/SVK">SVK</a> to work with <a href="/wiki/Subversion">Subversion</a> paths in <a href="/wiki/svn%3aexternals">svn:externals</a> properties:</p>
+<pre><code>svk propset svn:externals &quot;nested_path svn+ssh://svn.example.com/mirror_path&quot;
+</code></pre>
+<p>The question then becomes, what should <a href="/wiki/SVK">SVK</a> do when it encounters such a path?</p>
+<ul>
+<li>Should it automatically use the local mirror corresponding to that <a href="/wiki/Subversion">Subversion</a> path (offering to create the mirror if it doesn't yet exist)?</li>
+<li>Should it use another mirror dedicated exclusively to that particular instance of <code>svn:externals</code>?</li>
+</ul>
+<p>The first approach is probably the most straightforward and most closely matches the existing behaviour of <a href="/wiki/Subversion_externals">Subversion externals</a>.</p>
+<h2>Command changes</h2>
+<p>From a user perspective, the <a href="/wiki/SVK">SVK</a> commands which would need to be updated are:</p>
+<ul>
+<li><code>svk co</code>: The client should check out any <code>svn:externals</code> referenced in the code that is being checked out.</li>
+<li><code>svk st</code>: The client should separately show the status of the checked out working copy and that of any nested <code>svn:externals</code>.</li>
+<li><code>svk up</code>: The client should update not only the checked out working copy but also any nested <code>svn:externals</code>.</li>
+<li><code>svk ci</code>: When checking in code the client should act on only one thing at a time: either the checked out working copy <em>or</em> a nested <code>svn:externals</code>; this matches the behaviours of the <a href="/wiki/Subversion">Subversion</a> client which insists that all commits be atomic and cannot guarantee that a commit to more than two repositories will be atomic.</li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Working_around_the_lack_of_svn%3aexternals_support_in_SVK">Working around the lack of svn:externals support in SVK</a></li>
+<li>Initial response to this article by <a href="/wiki/Chia-Liang_Kao">Chia-Liang Kao</a>: <a href="http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000787.html">http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000787.html</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

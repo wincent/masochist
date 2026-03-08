@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Upgrading to Git 1.5.2.4 on Mac OS X Tiger • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Upgrading to Git 1.5.2.4 on Mac OS X Tiger</h1></div><div class="metadata"><relative-time created="1184324263" updated="1507998958">Created 7/13/2007, updated 10/14/2017</relative-time></div><ul class="tags"><li><a href="/tags/tiger">tiger</a></li><li><a href="/tags/git">git</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/macos">macos</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These notes were made while upgrading to <a href="/wiki/Git_1.5.2.4">Git 1.5.2.4</a> on <a href="/wiki/Mac_OS_X">Mac OS X</a> <a href="/wiki/Tiger">Tiger</a>, using a local clone of the central <a href="/wiki/Git">Git</a> repository.</p>
+<p>For notes on upgrading to 1.5.2.4 from the tarball, see &quot;<a href="/wiki/Upgrading_to_Git_1.5.2.4_on_Red_Hat_Enterprise_Linux">Upgrading to Git 1.5.2.4 on Red Hat Enterprise Linux</a>&quot;.</p>
+<h2>Updating the local repository</h2>
+<p>From inside the local repository:</p>
+<pre><code>git pull
+</code></pre>
+<h3>Output</h3>
+<pre><code>remote: Generating pack...
+remote: Done counting 65 objects.
+remote: Result has 49 objects.
+remote: Deltifying 49 objects...
+remote:  100% (49/49) done
+remote: Total 49 (delta 32), reused 0 (delta 0)
+Unpacking 49 objects...
+ 100% (49/49) done
+* refs/remotes/origin/maint: fast forward to branch 'maint' of git://git.kernel.org/pub/scm/git/git
+  old..new: 512e44b..ffb293b
+Auto-following refs/tags/gitgui-0.7.5
+Auto-following refs/tags/v1.5.2.4
+remote: Generating pack...
+remote: Done counting 2 objects.
+remote: Deltifying 2 objects...
+remote: /2) done/2) done
+remote: Total 2 (delta 0), reused 0 (delta 0)
+Unpacking 2 objects...
+ 100% (2/2) done
+* refs/tags/gitgui-0.7.5: storing tag 'gitgui-0.7.5' of git://git.kernel.org/pub/scm/git/git
+  tag: 7513f0f
+* refs/tags/v1.5.2.4: storing tag 'v1.5.2.4' of git://git.kernel.org/pub/scm/git/git
+  tag: 60efd81
+Already up-to-date.
+</code></pre>
+<p>Note the key line, the commit corresponding to the tag for version 1.5.2.4:</p>
+<pre><code>* refs/tags/v1.5.2.4: storing tag 'v1.5.2.4' of git://git.kernel.org/pub/scm/git/git
+</code></pre>
+<h2>Verification</h2>
+<p>Now we can check the signature on the tag:</p>
+<pre><code>git tag -v v1.5.2.4
+</code></pre>
+<h3>Output</h3>
+<p>This fails because of non-portable <code>sed</code> behaviour which is <a href="http://repo.or.cz/w/git.git?a=commitdiff;h=bfc04bb9b847912ee41a21fc23110962851878b2">already fixed upstream</a> and will most likely be made available in the 1.5.3 release:</p>
+<pre><code>object ffb293b63d13b3b06b454a5f9f0ff6802ef15f0d
+type commit
+tag v1.5.2.4
+tagger Junio C Hamano &lt;gitster@pobox.com&gt; Thu Jul 12 12:02:05 2007 -0700
+
+GIT 1.5.2.4
+sed: 1: &quot;/-----BEGIN PGP/Q&quot;: invalid command code Q
+gpg: Firmado el Thu Jul 12 21:02:08 2007 CEST usando clave DSA ID F3119B9A
+gpg: Firma INCORRECTA de &quot;Junio C Hamano &lt;junkio@cox.net&gt;&quot;
+</code></pre>
+<p>I could apply <a href="http://repo.or.cz/w/git.git?a=commitdiff;h=bfc04bb9b847912ee41a21fc23110962851878b2">the fix</a> but I think that for now due to laziness I'll just blindly trust the tag.</p>
+<h2>Rebuilding, testing and installing</h2>
+<pre><code># switching working tree to 1.5.2.4
+git checkout v1.5.2.4
+
+# clean up any cruft that might be lying around
+make clean
+
+# build
+make prefix=/usr/local all doc
+
+# run tests
+make prefix=/usr/local test
+
+# install
+sudo make prefix=/usr/local install install-doc
+</code></pre>
+<h2>Notes</h2>
+<p>I think with future versions of <a href="/wiki/Git">Git</a> I won't bother building the documentation myself -- it just takes too long -- and will instead download as I do on my <a href="/wiki/Red_Hat">Red Hat</a> install (see &quot;<a href="/wiki/Upgrading_to_Git_1.5.2.4_on_Red_Hat_Enterprise_Linux">Upgrading to Git 1.5.2.4 on Red Hat Enterprise Linux</a>&quot;).</p>
+<pre><code># get man pages
+wget http://www.kernel.org/pub/software/scm/git/git-manpages-1.5.2.4.tar.bz2 \
+     http://www.kernel.org/pub/software/scm/git/git-manpages-1.5.2.4.tar.bz2.sign
+
+# verify
+gpg --verify git-manpages-1.5.2.4.tar.bz2.sign git-manpages-1.5.2.4.tar.bz2
+
+# install
+cd /usr/local/man
+sudo tar xjvf full_path_to_manpages_archive/git-manpages-1.5.2.4.tar.bz2
+</code></pre>
+<p>Note that in order to verify the signature on the archive I had to paste the appropriate public key into a file, <code>kernel-key</code>, and import it into my local keyring on this machine also:</p>
+<pre><code>gpg --import kernel-key
+</code></pre>
+<p>See &quot;<a href="/wiki/Upgrading_to_Git_1.5.2.4_on_Red_Hat_Enterprise_Linux">Upgrading to Git 1.5.2.4 on Red Hat Enterprise Linux</a>&quot; for more details.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

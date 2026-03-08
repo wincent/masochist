@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Thoughts on Higher Order Messaging • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/thoughts-on-higher-order-messaging">Thoughts on Higher Order Messaging</a></h1><div class="metadata"><relative-time created="1156113480" updated="1710259978">Created 8/20/2006, updated 3/12/2024</relative-time><span>5 minute read</span></div><div class="prerendered"><p>I've never used Higher Order Messaging (HOM) but I am familiar with what it is. The main benefit of HOM is that it allows you to reduce lengthy code sections like this:</p>
+<pre><code>NSEnumerator *enumerator = [array objectEnumerator];
+NSMutableArray *temp = [NSMutableArray array];
+id string = nil;
+while ((string = [enumerator nextObject]))
+{
+    if ([string hasPrefix:@&quot;foo&quot;])
+        [temp addObject:string];
+}
+NSArray *result = [NSArray arrayWithArray:temp];
+</code></pre>
+<p>Into this:</p>
+<pre><code>NSArray *result = [[array select] hasPrefix:@&quot;foo&quot;];
+</code></pre>
+<p>Which is clearly more readable and easier to maintain. HOM advocates will tell you that the &quot;select&quot; idiom reads like natural language, and that's why it's so easy to understand and use.</p>
+<p>But it's not all roses. The compiler will issue a warning when it sees that above statement because as far as it is concerned (unless you tell it otherwise with category declarations in headers, macros, or casts) the <code>hasPrefix:</code> method returns a <code>BOOL</code> (an integer type) rather than an object (a pointer type). Not just a warning in fact, the compiler and the runtime may even go so far as to conspire and mangle the returned object for you to the extent that the example doesn't even work without some hideous runtime hackery. The problem is so bad that one of the most oft-cited and celebrated uses for HOM (the &quot;select&quot; pattern) simply cannot be implemented in a clean, non-kludgey way.</p>
+<p>But it's not just the compiler that feels uncomfortable with this construction. I don't either, even though I understand what's happening behind the scenes. You see, with a language that supports HOM as a fundamental part of the language (Smalltalk, for example), HOM looks &quot;right&quot;. A similar paradigm is the block syntax offered by Ruby, although strictly speaking that's not really HOM; rather it's anonymous inline functions which allow you to achieve a similar effect.</p>
+<p>But in Objective-C where HOM effectively has to be shoehorned into the language things don't look &quot;right&quot; to me. You see, when I see messages chained together in Objective-C I've learnt to recognize a basic pattern:</p>
+<pre><code>[[[NSString alloc] init] autorelease];
+</code></pre>
+<p>Or:</p>
+<pre><code>[[[thing doSomething] andThenThis] andThenThat];
+</code></pre>
+<p>When the leftmost entity is a class you recognize this is a factory method that churns something out, and each subsequent message is going to add to, modify, or build on that something. When the leftmost entity is an object you see each message as adding to, modifying or building on whatever got returned by the first message.</p>
+<p>But with HOM that pattern no longer applies. It reads like natural language but behind the scenes there's an invisible trampoline object that does the work. The first message returns this invisible object with which you never need interact knowingly, and that invisible object mysteriously captures the message that you send it, the message that you really want to send to the objects in the collection, and then it does something with it.</p>
+<p>Yes, it works; yes, it allows you to write shorter, more compact code using a natural-language style. But it just feels wrong. I don't know if I've explained myself; I guess the fundamental difference for me is that in the typical pattern examples I gave above there is nothing hidden, it's all out in the open. This &quot;honesty&quot; is manifested throughout almost all Objective-C code, you experience it hundreds of times every day that you code. At each step in the chain you know exactly what kind of object has been returned and the effect of each message. There is no trickery or sleight of hand, no hidden proxies, just a clear chain of object/message pairs. The fact that I know how HOM works and I know what the invisible objects doing the real work are doesn't make me feel any more comfortable with it.</p>
+<p>I know that this is what proxies do. I use them myself in my WOTest framework (to implement mock objects). But it still doesn't feel right to me. Proxies feel right when you're sending messages to remote objects across a network or in other processes or threads, but not when you're sending a message to a local instance of <code>NSArray</code>, so close that you could touch it and all of the objects inside it. If I could think of a better way to do mock objects I would throw out the HOM-style messaging syntax in a heartbeat. I mean, the following code works, it's compact, it's intention is clear, but it just feels wrong to me:</p>
+<pre><code>[[mock expect] returning:@&quot;foo&quot;] substringfromIndex:3];
+</code></pre>
+<p>A long-winded alternative, something like the following, doesn't set off those same alarm bells:</p>
+<pre><code>[mock expectSelector:@selector(substringFromIndex:)
+              return:@&quot;foo&quot;
+           arguments:3];
+</code></pre>
+<p>(Although in reality such a method — one that accepts a variable number of arguments — would come up against the <a href="http://wincent.dev/a/about/wincent/weblog/archives/2006/02/more_than_i_eve.php">same problems</a> that any <code>NSInvocation</code>-based mechanism comes up against when it comes to trying to forward messages when working with variable numbers of arguments.)</p>
+<p>That's why I haven't embraced HOM yet. That, and the fact that it works at such a low level that Apple could break it at any time in a future OS update. (To be fair, I should qualify that statement and say that &quot;most <em>existing</em> implementations could be broken at any time in a future OS update&quot;; it is possible to implement most HOM patterns in an unoptimized way without relying on too many low-level runtime details.)</p>
+<h5>Addendum</h5>
+<p>And as a side note, the code comparison that I posted above wasn't really fair. I would really write the first example as follows, using my <code>WO_ENUMERATE</code> macro and an <code>array</code> method in a category on <code>NSMutableArray</code> to make things a little less painful:</p>
+<pre><code>NSMutableArray *temp = [NSMutableArray array];
+WO_ENUMERATE(array, string)
+{
+    if ([string hasPrefix:@&quot;foo&quot;])
+        [temp addObject:string];
+}
+NSArray *result = [temp array];
+</code></pre>
+<p>From activity in the GCC CVS repository it looks like Objective-C 2.0 will support a new <code>foreach</code> keyword anyway, or syntactic sugar for <code>for</code> which makes it behave like <code>foreach</code> , rendering even tricks like the <code>WO_ENUMERATE</code> macro unnecessary:</p>
+<pre><code>NSMutableArray *temp = [NSMutableArray array]
+for (NSString *string in array)
+{
+    if ([string hasPrefix:@&quot;foo&quot;];
+        [temp addObject:string];
+}
+NSArray *result = [temp array];
+</code></pre>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/leopard">← Leopard</a></div><div class="post-nav-next"><a href="/blog/programming-challenges">Programming challenges →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

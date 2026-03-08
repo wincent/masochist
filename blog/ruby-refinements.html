@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ruby refinements • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/ruby-refinements">Ruby refinements</a></h1><div class="metadata"><relative-time created="1413937647" updated="1495119989">Created 10/22/2014, updated 5/18/2017</relative-time><span>1 minute read</span></div><div class="prerendered"><p>Playing with <a href="/wiki/Ruby">Ruby</a> <a href="http://www.ruby-doc.org/core-2.1.3/doc/syntax/refinements_rdoc.html">refinements</a> for the first time. Disappointed that you can't just do something like:</p>
+<pre><code class="language-ruby">module Project
+  using SomeRefinement
+
+  # ...
+end
+</code></pre>
+<p>And have the refinements defined in <code>SomeRefinement</code> be available throughout an entire library (literally all the modules and classes, inside and outside of instance and class methods, even if they're spread over different files).</p>
+<p>In particular, I'm having trouble right now getting this pattern to work:</p>
+<pre><code class="language-ruby">module Project
+  module BagOfMethods
+    using SomeRefinement # need this for the refinement to be visible in these methods
+
+    def some_method
+      # ... method which relies on the refinement being active
+    end
+  end
+
+  module SomeRefinement
+    refine String do
+      include BagOfMethods
+
+      def something
+        # whatever
+      end
+    end
+  end
+end
+</code></pre>
+<p>Obviously, this won't work because of the circular reference (<code>BagOfMethods</code> depends on <code>SomeRefinement</code> and vice versa), but what I need is something that can replace this nasty old code:</p>
+<pre><code class="language-ruby"># this, and similar things for Regexp, Symbol, Proc etc
+class String
+  include BagOfMethods
+
+  def other_stuff
+    # end
+  end
+end
+
+module Project
+  class SomethingElse
+    include BagOfMethods
+  end
+end
+</code></pre>
+</div><ul class="tags"><li><a href="/tags/ruby">ruby</a></li><li><a href="/tags/refinements">refinements</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/command-t-1.11.4-released">← Command-T 1.11.4 released</a></div><div class="post-nav-next"><a href="/blog/command-t-1.11.3-released">Command-T 1.11.3 released →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

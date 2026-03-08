@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>RPM notes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>RPM notes</h1></div><div class="metadata"><relative-time created="1168961769" updated="1495119989">Created 1/16/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/red.hat">red.hat</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><a href="/wiki/RPM">RPM</a> recipes.</p>
+<h2>Get a full list of RPMs installed</h2>
+<pre><code>rpm -qa
+</code></pre>
+<h2>Get a list of custom <a href="/wiki/Rackspace">Rackspace</a> RPMs installed</h2>
+<pre><code>rpm -qa | grep &quot;RS$&quot;
+</code></pre>
+<h2>List files installed by a package</h2>
+<pre><code>rpm -ql cyrus-sasl-2.1.15-10
+</code></pre>
+<h2>See what would happen if you installed a package</h2>
+<pre><code>rpm -i --test package.rpm
+</code></pre>
+<h2>Freshen (upgrade) an existing package</h2>
+<pre><code>sudo rpm -F squirrelmail-1.4.5-1.noarch.rpm
+</code></pre>
+<h2>Verifying</h2>
+<p>Meaning of output flags:</p>
+<pre><code>5 - MD5 checksum
+S - file size
+L - link
+T - mod time
+D - device
+U - user
+G - group
+M - mode (perms, file type)
+? - unreadable file
+</code></pre>
+<h3>Verifying all installed packages</h3>
+<pre><code>rpm -Va
+</code></pre>
+<h3>Verifying a specific installed package</h3>
+<pre><code>rpm -V httpd
+</code></pre>
+<h2>Read info for a not-yet-installed package</h2>
+<pre><code>rpm --query --info --package package.rpm
+</code></pre>
+<h2>View a changelog for a not-yet-installed package</h2>
+<pre><code>rpm --query --info --changelog --package MySQL-server-standard-4.1.19-0.rhel3.i386.rpm
+</code></pre>
+<h2>Remove/erase a package</h2>
+<pre><code>sudo rpm -e --test package-name
+sudo rpm -e package-name
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

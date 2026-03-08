@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Abstract Syntax Trees • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/abstract-syntax-trees">Abstract Syntax Trees</a></h1><div class="metadata"><relative-time created="1170986640" updated="1710259978">Created 2/9/2007, updated 3/12/2024</relative-time><span>7 minute read</span></div><div class="prerendered"><p>In a previous article about <a href="http://wincent.dev/a/about/wincent/weblog/archives/2007/01/writing_a_parse.php">writing a parser generator in Ruby</a> I promised to talk about <a href="http://en.wikipedia.org/wiki/Abstract_syntax_tree">Abstract Syntax Trees</a>. The problem with the parsers previously described is that the literal results (strings arranged in a hierarchical, ordered tree with the aid of arrays) are not very information-rich and they are difficult to work with.</p>
+<p>Take, for example, the statement:</p>
+<pre><code>foo = bar + 1
+</code></pre>
+<p>After tokenizing this is represented in the following way:</p>
+<pre><code>[ 'foo', '=', [ 'bar', '+', '1' ]]
+</code></pre>
+<p>Although this accurately reflects the structure of the source, it is cumbersome to work with. It is not very semantically rich; the only way you can tell that it is an assignment expression is by looking at the second term (the <code>=</code> operator). Likewise, the nested addition expression can only be identified by looking at the second term in that (the <code>+</code> operator). It also contains redundant information; the operators themselves wouldn't even need to be included if the larger structures were appropriately labelled as an assignment and an addition expression respectively.</p>
+<h5>Omitting tokens that aren't necessary to convey semantics</h5>
+<p>Abstract Syntax Trees (ASTs) address these concerns by removing tokens that don't apport any semantic information and by encoding the types of the expressions within the structure of the tree itself. We could do this by using classes:</p>
+<pre><code>class Expression; end # nothing interesting here, yet
+
+
+class AssignmentExpression &lt; Expression
+  attr_accessor :target, :value
+  def initialize(target, value)
+    @target, @value = [target, value]
+  end
+end
+
+
+class AdditionExpression &lt; Expression
+  attr_accessor :left_expression, :right_expression
+  def initialize(left_expression, right_expression)
+    @left_expression, @right_expression = [left_expression, right_expression]
+  end
+end
+</code></pre>
+<p>After parsing we would end up with an AST containing an <code>AssignmentExpression</code> object. The <code>target</code> would be <code>foo</code> and the <code>value</code> would be an <code>AdditionExpression</code>, which would have <code>bar</code> and <code>1</code> as its <code>left_expression</code> and <code>right_expression</code> respectively. The nice thing about using classes to represent nodes in an AST is that you can easily add custom behaviour to them; for example, the <code>AdditionExpression</code> class could easily be &quot;taught&quot; how to perform additions.</p>
+<h5>A syntax for skipping tokens</h5>
+<p>In order to make the production of ASTs easier we need a syntax for conveniently &quot;skipping&quot; tokens. By this I mean tokens that are expected to be present and which should be consumed during parsing, but which shouldn't end up in the AST. We'll use a syntax much like the one used for defining <code>optional</code> tokens in a sequence:</p>
+<pre><code>rule :bracket_expression, '('.skip &amp; :bracket_content &amp; ')'.skip
+</code></pre>
+<p>The <code>skip</code> method is used here to indicate that each corresponding parslet must match, that it will consume its input, but that the parslet will produce no output in the AST. Ultimately only the &quot;bracket content&quot; winds up in the AST because that's the part we're interested in.</p>
+<h5>The array problem</h5>
+<p>The design thus far has adhered to some conventions in the name of simplicity. Consider an expression like the following:</p>
+<pre><code>'foo'.one_or_more
+</code></pre>
+<p>In the name of simplicity this parslet will return an array (<code>['foo', 'foo', 'foo']</code>) if multiple matches are found but will return a single string (<code>'foo'</code>) if only one match is found. That is, in the single-match case a simplification is being made to make the parse results easier to work with; we could have returned an array with a single element (<code>['foo']</code>) but returning a single string is generally more convenient for the person invoking the parslet.</p>
+<p>But what happens when we want to parse something like a comma-separated list?</p>
+<pre><code>foo, bar, abc, xyz
+</code></pre>
+<p>Note that we have four words but only three commas. The first three words are followed by a comma and some whitespace but the last word is not. Or to put it another way, the first word is isolated but the last three words are preceded by a comma and whitespace. We could try to parse this using the following parslet sequence:</p>
+<pre><code>/\w+/ &amp; (/\s*,\s*/.skip &amp; /\w+/).zero_or_more
+</code></pre>
+<p>In natural language this means we're looking to parse &quot;a word followed by zero or more other words preceded by a comma with optional whitespace&quot;.</p>
+<p>Due to the simplifications already described above, this will yield a single element (<code>'foo'</code>) in the one-match case and a two-element array (<code>['foo', 'bar']</code>) in the two-match case. But in the three and four match cases things break down and we get results which are not in a very usable form (for example, <code>['foo', ['bar', 'abc', 'xyz']]</code>; note the nested array). The undesirable nesting takes place because the <code>zero_or_more</code> construct itself returns an array when there are multiple matches.</p>
+<p>There is no way for the parser to &quot;know&quot; what our intentions are here. Are we interested in the <em>contents</em> of the array (multiple objects), or are we after a single container object (the array itself)? The solution is to define another pseudo-operator to explicitly indicate when we're interested in the contents of an array rather than the container itself:</p>
+<pre><code>/\w+/ &gt;&gt; (/\s*,\s*/.skip &amp; /\w+/).zero_or_more
+</code></pre>
+<p><code>&gt;&gt;</code> is chosen because it has a similar precedence to <code>&amp;</code> (slightly higher in fact) and it is not already implemented by the <code>String</code> or <code>Array</code> classes. This pseudo-operator makes use of a <code>ParsletSequence</code> subclass, <code>ParsletMerge</code>, which takes array results on the right hand side and &quot;merges&quot; their contents into the array on the left hand side. So instead of <code>['foo', ['bar', 'abc', 'xyz']]</code> we get what we actually wanted in this case: <code>['foo', 'bar', 'abc', 'xyz']</code>.</p>
+<h5>Defining AST nodes</h5>
+<p>We also need a convenient way for creating node classes for use in the AST. For this we design an abstract <code>Node</code> superclass and equip it with a factory method, <code>subclass</code>, that churns out custom <code>Node</code> subclasses. We could create an <code>Expression</code> class using:</p>
+<pre><code>Node.subclass('Expression') # passing in the subclass name as a String
+Node.subclass(:Expression) # passing in the subclass name as a Symbol
+</code></pre>
+<p>We could then go ahead and create our <code>Expression</code> subclasses; note how the <code>Expression</code> constant has been set and gives us access to the newly created parent class:</p>
+<pre><code>Expression.subclass(:AssignmentExpression, Walrus::Grammar, :target, :value)
+Expression.subclass(:AdditionExpression, Walrus::Grammar, :left_expression, :right_expression)
+</code></pre>
+<p>The second parameter in these calls is the namespace in which we wish to create these <code>Node</code> subclasses (<code>Walrus::Grammar</code> in this example); this allows us to define multiple grammars without having to worry about clashes with <code>Node</code> subclasses between grammars in the event that you want to have more inside the same running process. We can now create new node instances and access their contents as follows:</p>
+<pre><code>addition = AdditionExpression.new('bar', '1')
+assignment = AssignmentExpression.new('foo', addition)
+assignment.target         # 'foo'
+assignment.value          #  AdditionExpression: @left_expression = 'bar', @right_expression = '1'
+addition.left_expression  # 'bar'
+addition.right_expression # '1'
+</code></pre>
+<p>Defining AST node classes can be made even easier by adding some convenience shorthand methods to the <code>Grammar</code> class which automatically take care of passing the appropriate namespace to the <code>subclass</code> method:</p>
+<pre><code># create a new Node subclass called Expression:
+node :expression, :node
+
+
+# or simply (Node is assumed to be the superclass if no second parameter present):
+node :expression
+
+
+# specify that the &quot;addition_expression&quot; rule should produce a node of the AdditionExpression class:
+production :addition_expression, :addition_expression
+
+
+# or simply (AdditionExpression is assumed here if missing):
+production :addition_expression
+
+
+# create a subclass and assign it to a rule at the same time:
+production :assignment_expression.build(:expression, :target, :value)
+</code></pre>
+<p>So how might this look in the context of a real grammar? Here's a simple grammar that can parse assignment and addition expressions like <code>foo=1</code>, <code>bar=baz</code> and <code>abc+1</code>, as well as allowing expressions to be nested (<code>foo=bar+1</code>):</p>
+<pre><code>starting_symbol :expression
+
+
+# terminal tokens
+rule            :identifier,      /[a-zA-Z_][a-zA-Z0-9_]*/
+production      :identifier.build(:node)
+rule            :integer_literal, /[0-9]+/
+production      :integer_literal.build(:node)
+
+
+# expressions
+rule            :expression,      :assignment_expression | :addition_expression | :identifier | :integer_literal
+node            :expression
+rule            :assignment_expression, :identifier &amp; '='.skip &amp; :expression
+production      :assignment_expression.build(:expression, :target, :value)
+rule            :addition_expression,   (:identifier | :integer_literal) &amp; '+'.skip &amp; :expression
+production      :addition_expression.build(:expression, :summee, :summor)
+</code></pre>
+<h5>Gobbling up whitespace</h5>
+<p>One of the problems with my first example above (<code>foo = bar + 1</code>) is that it simplifies things by not taking whitespace into consideration. To correctly parse such a statement the parser needs to be able to handle optional whitespace between the tokens. In the comma-separated list example above the included regular expression explicitly consumed optional whitespace between the list items, but ideally you should be able to write grammars without having to explicitly insert optional whitespace parslets between every item in a sequence. We do this by using the <code>skipping</code> directive to define an inter-parslet whitespace &quot;gobbler&quot; that will be used within sequences and repetitions in the event that parsing fails:</p>
+<pre><code>rule     :whitespace, /\s+/
+skipping :whitespace
+</code></pre>
+<p>This allows combinations like:</p>
+<pre><code>'foo' &amp; '=' &amp; 'bar'
+</code></pre>
+<p>To match strings like these:</p>
+<pre><code>foo=bar
+foo = bar
+foo= bar
+   foo = bar
+</code></pre>
+<p>Internally, the parslet sequence object tries to match the three components, <code>foo</code>, <code>=</code> and <code>bar</code>. If there is a failure trying to pass any of the three components, the parslet sequence will try running the &quot;skipping&quot; parslet (which consumes any intervening whitespace and throws it away) and then retries the failed component. My current implementation is fairly conservative: it only engages this fallback strategy inside parslet sequences and parslet repetitions. I may later apply it to other types of parslet and parslet combinations.</p>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/10-years-online">← 10 years online</a></div><div class="post-nav-next"><a href="/blog/gates-deposition-videos">Gates deposition videos →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Site updates (0.14) • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/site-updates-0.14">Site updates (0.14)</a></h1><div class="metadata"><relative-time created="1268482935" updated="1495119989">Created 3/13/2010, updated 5/18/2017</relative-time><span>2 minute read</span></div><div class="prerendered"><p>Just deployed some minor updates to the site (full list appears below). Nothing really exciting, just maintenance stuff like updating some dependencies and tweaking the deployment script to work with my new hosting arrangements in <a href="/wiki/the_cloud">the cloud</a>.</p>
+<pre><code>d726f1c Add real 403.html error page
+7ed3a78 Correct page title in 403.html
+8124e8b Compress PNG files using OptiPNG
+acb69ad Refactor: extract handle_http_status_code method
+17407ad Add initial version of Attachment model
+341bf3c Update to Capybara 0.2.0
+a0670cb Update vendored nokogiri 1.4.1, ffi 0.5.3, rack-test-0.5.2
+92f9313 Ignore build cruft of nokogiri and ffm gems
+e52db5d Update to culerity-0.2.6 gem
+5b5c67f Remove jarib-celerity gem
+d51a63a Update to ffi-0.5.4, json_pure-1.2.0 and selenium-webdriver-0.0.13
+42e650c Update to cucumber 0.6.0 and cucumber-rails 0.2.3
+ed80e27 Remove features/support/selenium.rb
+6ecbded Update setup notes for recent gem updates
+afd1ef5 Add jquery.js symbolic link
+6de3c03 Link to jquery.js (symbolic link) rather than fully-qualified version
+9038c18 Update to capybara 0.3.0
+6057d28 Update to Haml/Sass 2.2.17
+68cf09f Update to rspec 1.3.0 and rspec-rails 1.3.2
+227f2b0 Update to jQuery 1.4
+25f1b34 Use new jQuery 1.4 element creation with attributes
+f3abd0a More readable wrapping in escapeHTML function
+6006e04 Avoid repetition in clearAJAXFlash function
+9417424 Remove logging statement from ajax.js
+beb0ad6 Empty AJAX flash after fading it out
+e7292e3 deploy: always deploy from master
+7ccf62f deploy: point at new server
+ce9b09b deploy: monit groups no longer needed
+603a348 deploy: remove ADMIN_HOST
+711d935 deploy: run some commands as root
+b8d5808 deploy: dispense with monit groups, refer to unicorn instead
+c31ac88 deploy: refactor common prefix into bail()
+3a4aa15 deploy: new server settings
+e171f15 deploy: group settings variables for clarity
+ceb5133 deploy: update usage
+86310d7 deploy: extract warn() function
+4dd6dcb deploy: provide explicit user for all remote commands
+0c6734a deploy: consistent indentation for trapped exit message
+ae432a1 deploy: drop check for rubygems-update
+f65ea1d deploy: don't pass --shared to git clone
+bf5a363 deploy: tell &quot;git clone&quot; and &quot;git checkout&quot; to operate quietly
+</code></pre>
+</div><ul class="tags"><li><a href="/tags/site">site</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/capistrano-retrospective">← Capistrano retrospective</a></div><div class="post-nav-next"><a href="/blog/synergy-4.4-released">Synergy 4.4 released →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

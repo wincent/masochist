@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.6.6.rc4 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.6.6.rc4</h1></div><div class="metadata"><relative-time created="1261360917" updated="1495119989">Created 12/21/2009, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official announcement posted to the <a href="/wiki/Git_mailing_list">Git mailing list</a>:</p>
+<pre><code>A release candidate Git 1.6.6.rc4 is available at the usual places
+for final testing:
+
+ http://www.kernel.org/pub/software/scm/git/
+
+ git-1.6.6.rc4.tar.{gz,bz2}			(source tarball)
+ git-htmldocs-1.6.6.rc4.tar.{gz,bz2}		(preformatted docs)
+ git-manpages-1.6.6.rc4.tar.{gz,bz2}		(preformatted docs)
+
+The RPM binary packages for a few architectures are found in:
+
+ testing/git-*-1.6.6.rc4-1.fc11.$arch.rpm	(RPM)
+
+Hopefully I'll do the final this Wednesday to make 1.6.6 a holiday gift to
+everybody.
+
+I would very much prefer news outlets like kernelpodcast.org and lwn.net
+_not_ to say &quot;... is released; it comes with many _fixes_&quot;.  Fixes to
+released versions have indeed been included in the 'master' branch, but
+they all appear in the maintenance release.  The main _point_ of using a
+new feature release like 1.6.6 is to get new _features_, so it is more
+appropriate to say &quot;it comes with many new features.&quot;
+
+Thanks for all contributors who have worked hard to whip this release into
+shape.
+
+----------------------------------------------------------------
+
+Changes since v1.6.6-rc3 are as follows:
+
+Björn Gustavsson (1):
+     rebase -i: abort cleanly if the editor fails to launch
+
+Eric Wong (2):
+     git svn: make empty directory creation gc-aware
+     t9146: use 'svn_cmd' wrapper
+
+Junio C Hamano (1):
+     Git 1.6.6-rc4
+
+Stephen Boyd (2):
+     api-strbuf.txt: fix typos and document launch_editor()
+     technical-docs: document hash API
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Building mogenerator 1.13.1 on Mac OS Leopard 10.5.6 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Building mogenerator 1.13.1 on Mac OS Leopard 10.5.6</h1></div><div class="metadata"><relative-time created="1239168810" updated="1495119989">Created 4/8/2009, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/mogenerator">mogenerator</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><strong>Note:</strong> <a href="/wiki/mogenerator">mogenerator</a> 1.13.1 isn't actually an official release; 1.13.1 was just the version number at the HEAD of the source repo at the time I made these notes.</p>
+<h2>Getting the source</h2>
+<pre><code>mkdir mogenerator
+cd mogenerator
+git clone git://github.com/rentzsch/mogenerator.git mogenerator.git
+svn co http://rentzsch.com/svn/trunk/cocoa/MiscMerge MiscMerge
+cd mogenerator.git
+</code></pre>
+<h2>Building</h2>
+<p>Just open the <code>mogenerator.xcodeproj</code> file and click &quot;Build&quot;. I expect <code>xcodebuild</code> from the <a href="/wiki/command_line">command line</a> would also work.</p>
+<h2>Installing</h2>
+<pre><code>mkdir -p ~/Library/Application\ Support/mogenerator
+cp templates/*.motemplate ~/Library/Application\ Support/mogenerator/
+cp build/Release/mogenerator ~/bin/ # or wherever else you want in your PATH
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

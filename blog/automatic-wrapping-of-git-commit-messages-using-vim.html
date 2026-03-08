@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Automatic wrapping of Git commit messages using Vim • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/automatic-wrapping-of-git-commit-messages-using-vim">Automatic wrapping of Git commit messages using Vim</a></h1><div class="metadata"><relative-time created="1242712497" updated="1495119989">Created 5/19/2009, updated 5/18/2017</relative-time><span>1 minute read</span></div><div class="prerendered"><p>I just noticed that since changing my <code>filetype</code> setting in my <code>~/.vimrc</code> from:</p>
+<pre><code>filetype indent on
+</code></pre>
+<p>To:</p>
+<pre><code>filetype indent plugin on
+</code></pre>
+<p><a href="/wiki/Vim">Vim</a> is now automatically wrapping my <a href="/wiki/Git">Git</a> commit messages to 72 columns. Nice.</p>
+<p>For the curious, here is the output of <code>:set</code> when editing a Git commit message (I've stripped out some of the less interesting settings):</p>
+<pre><code>  autoindent          helplang=es         ignorecase          number              shiftwidth=2        textwidth=72        window=0
+  autoread            hidden              incsearch           ruler               smartcase           ttyfast
+  backspace=2         history=1000        list                scroll=25           smarttab            ttymouse=xterm
+  expandtab           hlsearch            modelines=0         scrolloff=3         tabstop=2           wildmenu
+  filetype=gitcommit
+  includeexpr=substitute(v:fname,'^[^/]\+/','','')
+  keywordprg=git --git-dir='/Users/wincent/trabajo/leopard/WOPublic/src/.git' show
+  path=~/trabajo/leopard/WOPublic/src/.git,~/trabajo/leopard/WOPublic/src,
+</code></pre>
+<p>The interesting settings are evidently:</p>
+<ul>
+<li><code>filetype=gitcommit</code></li>
+</ul>
+<p>Evidently it's picked up that the filename being edited is <code>COMMIT_EDITMSG</code> and that triggers the custom behaviour.</p>
+<ul>
+<li><code>textwidth=72</code></li>
+</ul>
+<p>Commit messages should be nice and narrow so that they're easy to read, will display well on narrow terminals, and will survive transmission by email (even with a few levels of quoting).</p>
+<ul>
+<li><code>keywordprg=git --git-dir='/Users/wincent/trabajo/leopard/WOPublic/src/.git' show</code></li>
+</ul>
+<p>As described in <code>:h keywordprg</code>, hitting <code>K</code> will automatically look up the word under the cursor using the specified program — in this case <code>git show</code>. Not yet really sure why you'd want to do this nor how you would use it.</p>
+<ul>
+<li><code>path=~/trabajo/leopard/WOPublic/src/.git,~/trabajo/leopard/WOPublic/src,</code></li>
+</ul>
+<p>Set up the search path for commands like <code>gf</code> (edit the filename under the cursor).</p>
+</div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/vim">vim</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/nginx-0.7-series-to-become-the-new-stable-release">← nginx 0.7 series to become the new &quot;stable&quot; release</a></div><div class="post-nav-next"><a href="/blog/i-guess-i-must-be-a-vim-user-now">I guess I must be a Vim user now →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

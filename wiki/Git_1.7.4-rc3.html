@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.7.4-rc3 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.7.4-rc3</h1></div><div class="metadata"><relative-time created="1295963510" updated="1495119989">Created 1/25/2011, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official announcement to the <a href="/wiki/Git_mailing_list">Git mailing list</a>:</p>
+<pre><code>A release candidate Git 1.7.4-rc3 is available at the usual places
+for testing:
+
+ http://www.kernel.org/pub/software/scm/git/
+
+ git-1.7.4.rc3.tar.{gz,bz2}			(source tarball)
+ git-htmldocs-1.7.4.rc3.tar.{gz,bz2}		(preformatted docs)
+ git-manpages-1.7.4.rc3.tar.{gz,bz2}		(preformatted docs)
+
+The RPM binary packages for a few architectures are found in:
+
+ testing/git-*-1.7.4.rc3-1.fc13.$arch.rpm	(RPM)
+
+Except for a regression fix to keep honoring &quot;git --work-tree=/there/ cmd&quot;
+without specifying --git-dir (Thanks Jonathan), there isn't any exciting
+new thing to see here; which is exactly the way how I want an rc3 to be.
+
+Hopefully we can tag the final by the end of the month.  Everybody, thanks
+in advance for testing this rc ;-).
+
+----------------------------------------------------------------
+
+Changes since v1.7.4-rc2 are as follows:
+
+Alexey Shumkin (1):
+     userdiff: match Pascal class methods
+
+Björn Steinbrink (1):
+     Correctly report corrupted objects
+
+Erik Faye-Lund (1):
+     exec_cmd: remove unused extern
+
+Johannes Sixt (2):
+     Fix expected values of setup tests on Windows
+     t/README: hint about using $(pwd) rather than $PWD in tests
+
+Jonathan Nieder (9):
+     ll-merge: simplify opts == NULL case
+     Documentation/fast-import: capitalize beginning of sentence
+     remote-ext: do not segfault for blank lines
+     Documentation/fast-import: put explanation of M 040000 &lt;dataref&gt; &quot;&quot; in context
+     tests: cosmetic improvements to the repo-setup test
+     tests: compress the setup tests
+     Documentation: do not treat reset --keep as a special case
+     Subject: setup: officially support --work-tree without --git-dir
+     t1510: fix typo in the comment of a test
+
+Junio C Hamano (2):
+     Documentation updates for 'GIT_WORK_TREE without GIT_DIR' historical usecase
+     Git 1.7.4-rc3
+
+Ramsay Allan Jones (1):
+     svndump.c: Fix a printf format compiler warning
+
+--
+To unsubscribe from this list: send the line &quot;unsubscribe git&quot; in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  http://vger.kernel.org/majordomo-info.html
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

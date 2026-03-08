@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>nginx 1.1.1 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>nginx 1.1.1</h1></div><div class="metadata"><relative-time created="1314120916" updated="1584053324">Created 8/23/2011, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/nginx">nginx</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official release announcement:</p>
+<pre><code>Changes with nginx 1.1.1                                         22 Aug 2011
+
+   *) Change: now cache loader processes either as many files as specified
+      by &quot;loader_files&quot; parameter or works no more than time specified by
+      &quot;loader_threshold&quot; parameter during each iteration.
+
+   *) Change: now SIGWINCH signal works only in deamon mode.
+
+   *) Feature: now shared zones and caches use POSIX semaphores on
+      Solaris.
+      Thanks to Den Ivanov.
+
+   *) Feature: accept filters are now supported on NetBSD.
+
+   *) Bugfix: nginx could not be build on Linux 3.0.
+
+   *) Bugfix: nginx did not use gzipping in some cases; the bug had
+      appeared in 1.1.0.
+
+   *) Bugfix: request body might be incorrectly processed if client used
+      pipelining.
+
+   *) Bugfix: in the &quot;request_body_in_single_buf&quot; directive.
+
+   *) Bugfix: in &quot;proxy_set_body&quot; and &quot;proxy_pass_request_body&quot; directives
+      if SSL connection to backend was used.
+
+   *) Bugfix: nginx hogged CPU if all servers in an upstream were marked
+      as &quot;down&quot;.
+
+   *) Bugfix: a segmentation fault might occur during reconfiguration if
+      ssl_session_cache was defined but not used in a previous
+      configuration.
+
+   *) Bugfix: a segmentation fault might occur in a worker process if many
+      backup servers were used in an upstream.
+
+   *) Bugfix: a segmentation fault might occur in a worker process if
+      &quot;fastcgi/scgi/uwsgi_param&quot; directives were used with values starting
+      with &quot;HTTP_&quot;; the bug had appeared in 0.8.40.
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

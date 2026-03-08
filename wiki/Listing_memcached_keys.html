@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Listing memcached keys • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Listing memcached keys</h1></div><div class="metadata"><relative-time created="1283474421" updated="1495119989">Created 9/3/2010, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/memcached">memcached</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>You officially can't do this, but unofficially you can, at least good enough for debugging purposes in the development environment, by <a href="/wiki/testing_memcached_with_telnet">testing memcached with telnet</a>.</p>
+<p>First, connect to the daemon with telnet (eg. <code>telnet localhost 11211</code> or similar) and get a slab id:</p>
+<pre><code>stats items
+STAT items:7:number 1
+STAT items:7:age 22
+STAT items:7:evicted 0
+STAT items:7:evicted_time 0
+STAT items:7:outofmemory 0
+STAT items:7:tailrepairs 0
+END
+</code></pre>
+<p>Now, use <code>cachedump</code>, passing in the id and a limit specifying the maximum number of keys to dump:</p>
+<pre><code>stats cachedump 7 100
+ITEM views/tweets_sidebar [290 b; 1283471297 s]
+END
+</code></pre>
+<p>And you can retrieve using the listed key(s):</p>
+<pre><code>get views/tweets_sidebar
+VALUE views/tweets_sidebar 0 290
+...
+END
+</code></pre>
+<h2>Source</h2>
+<ul>
+<li><a href="http://www.darkcoding.net/software/memcached-list-all-keys/">http://www.darkcoding.net/software/memcached-list-all-keys/</a></li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li>Ruby script implementing this technique: <a href="https://gist.github.com/bkimble/1365005">https://gist.github.com/bkimble/1365005</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

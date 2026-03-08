@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Monit 5.2.2 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Monit 5.2.2</h1></div><div class="metadata"><relative-time created="1288721459" updated="1495119989">Created 11/2/2010, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/monit">monit</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official release announcement:</p>
+<pre><code>We have just released Monit 5.2.2 You can download the new release from:
+
+http://mmonit.com/monit/download/
+
+To simplify things we now also provide prebuilt binaries of Monit. So you can either build Monit from source or download a binary for your system. The binaries have OpenSSL 1.0.0a static linked and PAM support dynamic linked. This means that the Monit binary will support SSL even if you do not have SSL installed on your system.
+
+
+Release information:
+====================
+
+This is a bug fix release which address the following issues
+
+* Fix crash on MacOSX
+
+* ICMP echo test (ping):
+    - [/issues/31128 bug #31128]: do not log error if different response type is received
+    - [/issues/31129 bug #31129]: do not require root to use ping test. Privilege to create
+      raw socket is still required, but on some platforms such as Solaris it
+      can be granted to non-root users too. If the user has no permission to
+      perform ping, monit will skip the icmp test and log message (in debug
+      mode only).
+
+* rsync protocol test:
+    - wait for full server response and verify exit was received
+    - [/issues/31249 bug #31249]: send full version to rsync server. Thanks to John Hall
+      for report
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

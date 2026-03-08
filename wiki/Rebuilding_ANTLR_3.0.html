@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rebuilding ANTLR 3.0 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Rebuilding ANTLR 3.0</h1></div><div class="metadata"><relative-time created="1193665483" updated="1584053324">Created 10/29/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/antlr">antlr</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>While investigating a possible <a href="/wiki/ANTLR">ANTLR</a> <a href="http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021243.html">bugfix</a> I came to a point where I wanted to build a modified <a href="/wiki/ANTLR">ANTLR</a> jar and try it out. The <a href="http://www.antlr.org/wiki/pages/viewpage.action?pageId=732">instructions</a> on the <a href="/wiki/ANTLR">ANTLR</a> <a href="/wiki/wiki">wiki</a> were helpful but did not tell the full story.</p>
+<h2>Initial problems</h2>
+<p>Upon executing <code>ant build</code> from the top level of the <a href="/wiki/ANTLR">ANTLR</a> distribution (at the same level as the <code>build.xml</code> file, the build process failed with this output (truncated for brevity here):</p>
+<pre><code>Buildfile: build.xml
+
+generator:
+
+compile:
+    [mkdir] Created dir: /Users/wincent/Desktop/ANTLR/antlr-3.0/build/classes
+    [javac] Compiling 112 source files to /Users/wincent/Desktop/ANTLR/antlr-3.0/build/classes
+    [javac] /Users/wincent/Desktop/ANTLR/antlr-3.0/src/org/antlr/test/BaseTest.java:30: package junit.framework does not exist
+    [javac] import junit.framework.TestCase;
+    [javac]                        ^
+
+...
+
+    [javac] Note: Some input files use unchecked or unsafe operations.
+    [javac] Note: Recompile with -Xlint:unchecked for details.
+    [javac] 100 errors
+
+BUILD FAILED
+/Users/wincent/Desktop/ANTLR/antlr-3.0/build.xml:72: Compile failed; see the compiler error output for details.
+
+Total time: 12 seconds
+</code></pre>
+<h2>Installing the <a href="/wiki/JUnit">JUnit</a> dependency</h2>
+<p>I headed over to the <a href="http://www.junit.org/index.htm">JUnit website</a> and downloaded <a href="http://downloads.sourceforge.net/junit/junit4.3.1.zip?use_mirror=internap">the latest version</a> (4.3.1 at the time of writing).</p>
+<pre><code>wget http://internap.dl.sourceforge.net/sourceforge/junit/junit4.3.1.zip
+</code></pre>
+<p>Then, with the help of the <a href="/wiki/JUnit">JUnit</a> <a href="/wiki/FAQ">FAQ</a> (&quot;<a href="http://junit.sourceforge.net/doc/faq/faq.htm#started_2">How do I install JUnit?</a>&quot;) I installed into <code>/usr/local/</code>:</p>
+<pre><code>unzip junit4.3.1.zip
+sudo mv junit4.3.1 /usr/local/
+cd /usr/local
+sudo ln -s junit4.3.1 junit
+cd junit
+sudo ln -s junit-4.3.1.jar junit.jar
+</code></pre>
+<p>Note that to test I had to insert not only the <a href="/wiki/JUnit">JUnit</a> jar itself into the <code>CLASSPATH</code>:</p>
+<pre><code>export CLASSPATH=&quot;$CLASSPATH:/usr/local/junit/junit.jar&quot;
+</code></pre>
+<p>But the installation directory itself as well:</p>
+<pre><code>export CLASSPATH=&quot;$CLASSPATH:/usr/local/junit&quot;
+</code></pre>
+<p>Only then would the self-tests work:</p>
+<pre><code>java org.junit.runner.JUnitCore org.junit.tests.AllTests
+</code></pre>
+<p>Output:</p>
+<pre><code>JUnit version 4.3.1
+...............................................................................................................................................................................................................................................................I.II......................................
+Time: 3,785
+
+OK (294 tests)
+</code></pre>
+<h2>Building <a href="/wiki/ANTLR">ANTLR</a></h2>
+<p>Now I was able to build <a href="/wiki/ANTLR">ANTLR</a> without problems (note that <a href="/wiki/JUnit">JUnit</a> was still in the <code>CLASSPATH</code>):</p>
+<pre><code># from the top-level of the ANTLR distribution
+ant build
+</code></pre>
+<p>Output:</p>
+<pre><code>Buildfile: build.xml
+
+generator:
+
+compile:
+    [javac] Compiling 112 source files to /Users/wincent/Desktop/ANTLR/antlr-3.0/build/classes
+    [javac] Note: Some input files use unchecked or unsafe operations.
+    [javac] Note: Recompile with -Xlint:unchecked for details.
+
+version-bcel:
+
+version:
+     [echo] Install bcel in the classpath to have automatic version in jar name
+
+templates:
+     [copy] Copying 35 files to /Users/wincent/Desktop/ANTLR/antlr-3.0/build/classes
+
+build:
+      [jar] Building jar: /Users/wincent/Desktop/ANTLR/antlr-3.0/lib/antlr.jar
+
+BUILD SUCCESSFUL
+Total time: 5 seconds
+</code></pre>
+<h2>Trying out the new build</h2>
+<p>In order to try out the new build I had to alter my <code>CLASSPATH</code> so as to use the new version.</p>
+<p>My existing <code>CLASSPATH</code> was:</p>
+<ul>
+<li>.</li>
+<li><code>/usr/local/antlr/lib/antlr-3.0.jar</code></li>
+<li><code>/usr/local/antlr/lib/antlr-2.7.7.jar</code></li>
+<li><code>/usr/local/antlr/lib/antlr-runtime-3.0.jar</code></li>
+<li><code>/usr/local/antlr/lib/stringtemplate-3.0.jar</code></li>
+</ul>
+<p>The basic procedure then is:</p>
+<pre><code># save old CLASSPATH so we can revert to it later
+OLD_CLASSPATH=&quot;$CLASSPATH&quot;
+
+# prepend new ANTLR jar to CLASSPATH
+# it appears first and so will take precedence over the old jar
+export CLASSPATH=&quot;/Users/wincent/Desktop/ANTLR/antlr-3.0/lib/antlr.jar:$CLASSPATH&quot;
+
+# run the ANTLR tool (here using a Walrus grammar as an example)
+java org.antlr.Tool Walrus.g
+
+# put the CLASSPATH back the way it was before
+export CLASSPATH=&quot;$OLD_CLASSPATH&quot;
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li>&quot;How do I rebuild ANTLR v3?&quot;: <a href="http://www.antlr.org/wiki/pages/viewpage.action?pageId=732">http://www.antlr.org/wiki/pages/viewpage.action?pageId=732</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

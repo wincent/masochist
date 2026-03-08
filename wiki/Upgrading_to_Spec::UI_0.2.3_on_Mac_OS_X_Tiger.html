@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Upgrading to Spec::UI 0.2.3 on Mac OS X Tiger • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Upgrading to Spec::UI 0.2.3 on Mac OS X Tiger</h1></div><div class="metadata"><relative-time created="1179987863" updated="1495119989">Created 5/24/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/rspec">rspec</a></li><li><a href="/tags/tiger">tiger</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These notes were made while upgrading from <a href="/wiki/Spec%3a%3aUI_0.2.2">Spec::UI 0.2.2</a> to <a href="/wiki/Spec%3a%3aUI_0.2.3">Spec::UI 0.2.3</a> on <a href="/wiki/Mac_OS_X">Mac OS X</a> <a href="/wiki/Tiger">Tiger</a>.</p>
+<h2>Upgrading</h2>
+<pre><code>sudo gem install spec_ui
+</code></pre>
+<h3>Output</h3>
+<pre><code>Bulk updating Gem source index for: http://gems.rubyforge.org
+Successfully installed spec_ui-0.2.3
+Installing ri documentation for spec_ui-0.2.3...
+Installing RDoc documentation for spec_ui-0.2.3...
+</code></pre>
+<h2>Updating the <a href="/wiki/FastRI">FastRI</a> index</h2>
+<pre><code>fastri-server -b
+</code></pre>
+<h3>Output</h3>
+<pre><code>Indexing RI docs for ParseTree version 1.7.0.
+Indexing RI docs for RubyInline version 3.6.3.
+Indexing RI docs for ZenTest version 3.5.2.
+Indexing RI docs for actionmailer version 1.3.3.
+Indexing RI docs for actionpack version 1.13.3.
+Indexing RI docs for actionwebservice version 1.2.3.
+Indexing RI docs for activerecord version 1.15.3.
+Indexing RI docs for activesupport version 1.4.2.
+Indexing RI docs for dhaka version 2.1.0.
+Indexing RI docs for diff-lcs version 1.1.2.
+Indexing RI docs for fastri version 0.3.0.1.
+Indexing RI docs for heckle version 1.4.0.
+Indexing RI docs for hoe version 1.2.0.
+Indexing RI docs for model_security_generator version 0.0.9.
+Indexing RI docs for rake version 0.7.3.
+Indexing RI docs for rcodetools version 0.5.0.0.
+Indexing RI docs for rcov version 0.8.0.2.
+Indexing RI docs for rspec version 1.0.0.
+Indexing RI docs for ruby-debug version 0.9.3.
+Indexing RI docs for ruby-debug-base version 0.9.3.
+Indexing RI docs for ruby-prof version 0.4.1.
+Indexing RI docs for ruby2ruby version 1.1.5.
+Indexing RI docs for rubyforge version 0.4.1.
+Indexing RI docs for rubygems version 0.9.2.
+Indexing RI docs for spec_ui version 0.2.3.
+Indexing RI docs for sqlite3-ruby version 1.2.1.
+Indexing RI docs for walrus version 0.1.
+Indexing RI docs for zentest version 3.5.0.
+Building index.
+Indexed:
+* 12483 methods
+* 2452 classes/modules
+Needed 3.137868 seconds
+</code></pre>
+<h2>Release notes</h2>
+<p>The official <a href="/wiki/RSpec_1.0.1">RSpec 1.0.1</a> release notes don't make any specific mention of changes in <a href="/wiki/Spec%3a%3aUI_0.2.3">Spec::UI 0.2.3</a>.</p>
+<h2>Future upgrade notes</h2>
+<p>I'd like to be able to install <a href="/wiki/Spec%3a%3aUI">Spec::UI</a> as a <a href="/wiki/Rails">Rails</a> plug-in but I haven't yet heard any update to the <a href="http://rubyforge.org/pipermail/rspec-users/2007-May/001619.html">official word</a> that this &quot;would need some minor changes in order to work smoothly&quot;.</p>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Upgrading_to_RSpec_1.0.1_on_Mac_OS_X_Tiger">Upgrading to RSpec 1.0.1 on Mac OS X Tiger</a></li>
+<li><a href="/wiki/Upgrading_to_RSpec_1.0.2_on_Mac_OS_X_Tiger">Upgrading to RSpec 1.0.2 on Mac OS X Tiger</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

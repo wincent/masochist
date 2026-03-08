@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Merging • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Merging</h1></div><div class="metadata"><relative-time created="1177693703" updated="1709594300">Created 4/27/2007, updated 3/4/2024</relative-time></div><ul class="tags"><li><a href="/tags/version.control">version.control</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Merging using <a href="/wiki/SVK">SVK</a></h2>
+<p>There are two common use cases that correspond to two types of branches (discussed in the &quot;<a href="/wiki/Branching">Branching</a>&quot; article).</p>
+<h3>Short-lived branches (<code>push</code>/<code>pull</code>)</h3>
+<p>These tend to be local-only branches created for the purposes of working on a specific bug or feature without disrupting the trunk (or other important branch from which they were originally created). These are generally created like this:</p>
+<pre><code># make the local-only branch using &quot;cp&quot;; check out a working copy
+svk cp //mirrors/project/trunk //local/project/bug-351
+svk co //local/project/bug-351 src
+cd src
+</code></pre>
+<p>To merge work being down on the trunk:</p>
+<pre><code>svk pull
+</code></pre>
+<p>To merge back to the trunk once the work is finished:</p>
+<pre><code>svk push --verbatim
+</code></pre>
+<p>If renames are involved, we need to use <code>svk smerge</code> and pass the <code>--track-rename</code> switch (<code>svk push</code> is equivalent to <code>svk smerge -If .</code> but <code>svk push</code> doesn't support all of the options that <code>svk smerge</code> does). In my opinion <code>--track-rename</code> should be on by default, but it is somewhat slower than a normal <code>svk push</code> so that is probably why it has to be turned on explicitly:</p>
+<pre><code># if many changes are involved, it may be wise to do a dry-run first
+svk smerge -If . --verbatim --track-rename --check-only
+svk smerge -If . --verbatim --track-rename
+</code></pre>
+<p>Once all the work on the branch is done:</p>
+<pre><code>svk co --detach
+cd ..
+rm -r src
+</code></pre>
+<p>So the basic characteristics here are:</p>
+<ul>
+<li>At the end we want there to be total synchronization between the branch and the trunk.</li>
+<li>That is, the development lines are not intended to diverge in the long term.</li>
+<li>Any divergence is intended to be temporary only.</li>
+<li>The purpose of the short-lived branch is to shield the trunk from disturbance and temporary breakage during this period of minimal divergence.</li>
+<li>Merges are wholesale; that is, when pushing and pulling we want all changes to be merged.</li>
+<li>Once the work on the branch is completed its usefulness has effectively come to an end.</li>
+<li>With such a short lifetime there is probably no reason for the branch to exist in the remote repository; a local branch is good enough.</li>
+<li>The local branch provides a degree of backup, redundancy and progress tracking that would not be possible without it (the developer would have to &quot;hold back&quot; their changes and only commit them at the very end).</li>
+<li><a href="/wiki/SVK">SVK</a> makes pushing and pulling very easy, so this kind of short-lived branch is very feasible.</li>
+</ul>
+<h3>Long-lived branches (cherry-picking)</h3>
+<p>As a one-man shop I don't have the time or the resources to actively work on multiple long-lived branches. This does not mean, however, that long-lived branches don't have their usefulness; rather, it means that the branches tend to fall into two categories:</p>
+<ul>
+<li><strong>Active branches</strong>: typically there is only <em>one</em> active branch, the trunk.</li>
+<li><strong>Maintenance branches</strong>: long-lived but not very active branches. These correspond to stable points in the development which may need to receive minimal updates periodically.</li>
+</ul>
+<p>These branches are typically created as in the following example. This is a project, <code>project_x</code> which has just released version 2.8. Development work is to continue on the trunk (for version 3.0) and a maintenance branch will be created for the 2.8 series:</p>
+<pre><code>svk cp //mirrors/project_x/trunk //mirrors/project_x/branches/2.8
+svk cp //mirrors/project_x/trunk //mirrors/project_x/tags/2.8-release
+</code></pre>
+<p>Note that the created branch is not a remote, non-local branch. We also create a tag for the release. The tag and the branch are very similar; the tag is basically like a read-only branch.</p>
+<p>The kind of merging that typically gets done between the active branch and the maintenance branch is called &quot;<a href="/wiki/Cherry_picking">Cherry picking</a>&quot;. Rather than merging <em>all</em> of the work that's being done on the trunk into the maintenance branch we are typically interested in an isolated bugfix or minor feature addition. This kind of merge would usually be done as follows; in this example we merge only the change corresponding to revision 2200 (strictly speaking the difference between 2199 and 2200):</p>
+<pre><code># from inside the 2.8-branch working copy
+svk merge -c 2200 //mirrors/project_x/trunk
+</code></pre>
+<p>You can even back-out a change by prepending the change number with a minus sign:</p>
+<pre><code>svk merge -c -2200 //mirrors/project_x/trunk
+</code></pre>
+<p>Here is a similar example that merges a range of 5 different changes:</p>
+<pre><code>svk merge -r 2130:2135 //mirrors/project_x/trunk
+</code></pre>
+<p>Note that the change/revision numbers you must use are those of the <a href="/wiki/SVK">SVK</a> repository, not of the remote <a href="/wiki/Subversion">Subversion</a> repository which you are mirroring. That, is given a log message like this:</p>
+<pre><code>----------------------------------------------------------------------
+r2340 (orig r330):  wincent | 2007-03-22 19:07:11 +0100
+
+Add symbolic link to WOCommon (non-nested checkout)
+</code></pre>
+<p>The necessary revision number is <code>2340</code> (<a href="/wiki/SVK">SVK</a>), not <code>330</code> (<a href="/wiki/Subversion">Subversion</a>).</p>
+<p>I am not sure, but I believe that <a href="/wiki/SVK">SVK</a> is smart enough to not re-apply the same merge twice even if you ask it to. I've sought clarification <a href="http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000761.html">in this mailing list thread</a> but haven't yet received a reply.</p>
+<h2>Merging using <a href="/wiki/Subversion">Subversion</a></h2>
+<p>The following example is based on the <a href="http://svnbook.red-bean.com/nightly/en/svn.branchmerge.commonuses.html#svn.branchmerge.commonuses.wholebr">procedure described in the Subversion book</a>. The objective is to merge all the changes that have been made on the <code>panther</code> branch into the <code>trunk</code>.</p>
+<p>Assume we have a working copy of the <code>panther</code> branch at <code>project-name/panther/</code> and a copy of the <code>trunk</code> at <code>project-name/trunk/</code>. Both copies must be up to date.</p>
+<pre><code># either checkout the trunk
+svn co svn+ssh://svn.example.com/project-name/trunk trunk
+
+# or update an existing copy already on the disk
+svn up trunk
+
+# make sure the branch from which you wish to merge is up to date and committed
+svn up panther
+svn status panther
+svn commit -m &quot;Commit that bug fix before the merge!&quot;
+
+# optionally, view the differences between the two branches
+opendiff panther trunk
+
+# identify the revision number when the branch was first done
+svn log --stop-on-copy panther
+</code></pre>
+<p>In this case we see the following, indicating that the current HEAD is revision 293:</p>
+<pre><code>r293 | wincent | 2006-09-21 21:20:31 +0200 (Thu, 21 Sep 2006) | 1 line
+
+Synergy Advance now lives in a repository of its own
+</code></pre>
+<p>And the branch was created at revision 274:</p>
+<pre><code>r274 | wincent | 2006-09-19 15:17:24 +0200 (Tue, 19 Sep 2006) | 1 line
+
+Creating Panther branch
+</code></pre>
+<p>So to perform the merge:</p>
+<pre><code># do the merge
+svn merge -r 274:293 panther trunk
+
+# view what actually happened
+svn diff trunk | less
+
+# if all went well, commit and include the revision numbers in the commit message
+svn commit -m &quot;Merge r274:293 from panther branch to trunk&quot; trunk
+</code></pre>
+<p>It is critical that you include the revision numbers because you'll need them later in future merges to keep track of what has already been merged (you don't want to merge the same changes twice).</p>
+<pre><code># looking for previous merge
+svn up trunk
+
+# show current revision
+svn info trunk
+
+# look for merge details
+svn log trunk
+</code></pre>
+<p>This is what you're looking for:</p>
+<pre><code>r294 | wincent | 2006-10-26 13:50:05 +0200 (Thu, 26 Oct 2006) | 1 line
+
+Merge r274:293 from panther branch to trunk
+</code></pre>
+<p>This is why we used <code>svn merge -r 274:293</code> instead of <code>svn merge -r 274:HEAD</code>; it is important to keep track of which changes have already been merged. A subsequent merge would start at revision 294.</p>
+<h3>Merging again</h3>
+<p>See &quot;<a href="/wiki/Synergy_branch_notes">Synergy branch notes</a>&quot; for information about the changes that have been merged.</p>
+<pre><code># check out up-to-date working copies
+svn co svn+ssh://.../trunk trunk
+svn co svn+ssh://.../branches/panther panther
+
+# visually inspect differences between the branches
+opendiff panther trunk
+
+# determine the current revision number of the branch (330)
+svn log panther|less
+
+# determine where the branch started (274)
+svn log panther --stop-on-copy|less
+
+# determine where the last merge was performed (294)
+svn log trunk|less
+
+# merge unmerged changes back onto trunk (no conflicts)
+svn merge -r 294:330 panther trunk
+
+# visually inspect the result
+opendiff panther trunk
+svn diff trunk|less
+
+# commit the changes including the merged range
+svn commit -m &quot;Merge r294:330 from panther branch to trunk&quot; trunk
+</code></pre>
+<h3>One last merge</h3>
+<p>Finally, prior to releasing 3.1.1 and switching from <a href="/wiki/Subversion">Subversion</a> to <a href="/wiki/SVK">SVK</a> for future branch management, I merged the last batch of changes:</p>
+<pre><code>svn co svn+ssh://svn.example.com/Synergy/trunk trunk
+svn co svn+ssh://svn.example.com/Synergy/branches/panther panther
+opendiff panther trunk
+svn log panther --limit 10
+svn log trunk --limit 1
+svn merge -r 331:332 panther trunk
+svn diff trunk|less
+svn commit -m &quot;Merge r331:332 from panther branch to trunk&quot; trunk
+rm -rf trunk panther
+</code></pre>
+<p>I then disposed of my old <a href="/wiki/SVK">SVK</a> working copy (of the <code>panther</code> branch) and checked out a new copy of the trunk:</p>
+<pre><code>svk co --detach src
+rm -r src
+svk co //mirrors/Synergy/trunk src
+
+# after setting final version number
+svk ci -m &quot;Set version numbers for 3.1.1 release&quot;
+</code></pre>
+<p>After building the final release:</p>
+<pre><code># tag
+cd src
+svk cp //mirrors/Synergy/trunk //mirrors/Synergy/tags/3.1.1 -m &quot;Tag 3.1.1 release&quot;
+
+# after bumping version number (to 3.1.1+)
+svk ci -m &quot;Bump version number post-release&quot;
+
+# branch
+svk cp //mirrors/Synergy/trunk //mirrors/Synergy/branches/jaguar -m &quot;Create Jaguar branch from trunk&quot;
+
+# switch
+svk switch //mirrors/Synergy/branches/jaguar
+svk info
+
+# elsewhere, continue Leopard development
+cd ../path_to_leopard_dev_area
+svk co //mirrors/Synergy/trunk
+</code></pre>
+<p>From this point on I'll be using <a href="/wiki/SVK">SVK</a> to manage these branches as described elsewhere (expect mostly <a href="/wiki/cherry_picking">cherry picking</a>). <a href="/wiki/Leopard">Leopard</a> development will occur on the trunk (version 3.5) and maintenance releases (3.1 series, possibly 3.2, 3.3 and 3.4 as well) will continue on the <a href="/wiki/Jaguar">Jaguar</a> branch. The ill-fated <a href="/wiki/Panther">Panther</a> branch will be allowed to die off.</p>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Branching">Branching</a></li>
+<li><a href="/wiki/Tagging">Tagging</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.5.5.1 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.5.5.1</h1></div><div class="metadata"><relative-time created="1208827423" updated="1495119989">Created 4/22/2008, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><a href="/wiki/Git_1.5.5.1">Git 1.5.5.1</a> was released on or about 21 April 2008.</p>
+<h3>Release notes</h3>
+<p>This is a local copy of the <a href="http://repo.or.cz/w/git.git?a=blob;f=Documentation/RelNotes-1.5.5.1.txt;h=7de419708f77fff6f61e749b917b5fcecbe9a292;hb=5909ca92d8b2c6a0534597f52f7733ff61a64d63">official release notes</a>:</p>
+<pre><code>GIT v1.5.5.1 Release Notes
+==========================
+
+Fixes since v1.5.5
+------------------
+
+ * &quot;git archive --prefix=$path/&quot; mishandled gitattributes.
+
+ * &quot;git fetch -v&quot; that fetches into FETCH_HEAD did not report the summary
+   the same way as done for updating the tracking refs.
+
+ * &quot;git svn&quot; misbehaved when the configuration file customized the &quot;git
+   log&quot; output format using format.pretty.
+
+ * &quot;git submodule status&quot; leaked an unnecessary error message.
+
+ * &quot;git log --date-order --topo-order&quot; did not override the earlier
+   date-order with topo-order as expected.
+
+ * &quot;git bisect good $this&quot; did not check the validity of the revision
+   given properly.
+
+ * &quot;url.&lt;there&gt;.insteadOf&quot; did not work correctly.
+
+ * &quot;git clean&quot; ran inside subdirectory behaved as if the directory was
+   explicitly specified for removal by the end user from the top level.
+
+ * &quot;git bisect&quot; from a detached head leaked an unnecessary error message.
+
+ * &quot;git bisect good $a $b&quot; when $a is Ok but $b is bogus should have
+   atomically failed before marking $a as good.
+
+ * &quot;git fmt-merge-msg&quot; did not clean up leading empty lines from commit
+   log messages like &quot;git log&quot; family does.
+
+ * &quot;git am&quot; recorded a commit with empty Subject: line without
+   complaining.
+
+ * when given a commit log message whose first paragraph consists of
+   multiple lines, &quot;git rebase&quot; squashed it into a single line.
+
+ * &quot;git remote add $bogus_name $url&quot; did not complain properly.
+
+Also comes with various documentation updates.
+</code></pre>
+<h3>See also</h3>
+<ul>
+<li><a href="/wiki/Upgrading_to_Git_1.5.5.1">Upgrading to Git 1.5.5.1</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

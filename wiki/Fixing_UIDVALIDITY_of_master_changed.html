@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fixing UIDVALIDITY of master changed • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Fixing UIDVALIDITY of master changed</h1></div><div class="metadata"><relative-time created="1494571944" updated="1584053324">Created 5/12/2017, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/mbsync">mbsync</a></li><li><a href="/tags/mutt">mutt</a></li><li><a href="/tags/exchange">exchange</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Episode 1</h2>
+<p>I was getting errors like this when trying to sync to an Exchange server (ugh):</p>
+<pre><code>C: 2/5  B: 2/4  M: +0/0 *0/0 #0/0  S: +64/64 *1/1 #0/0
+Error: UIDVALIDITY of master changed (got 148, expected 92)
+C: 4/5  B: 4/6  M: +0/0 *0/0 #0/0  S: +65/65 *1/1 #0/0
+Error: UIDVALIDITY of master changed (got 117, expected 82)
+C: 4/5  B: 5/6  M: +0/0 *0/0 #0/0  S: +65/65 *1/1 #0/0
+Error: UIDVALIDITY of master changed (got 144, expected 89)
+C: 5/5  B: 6/6  M: +0/0 *0/0 #0/0  S: +65/65 *1/1 #0/0
+</code></pre>
+<p>According to <a href="https://www.mail-archive.com/isync-devel@lists.sourceforge.net/msg00783.html">this mailing list thread</a>:</p>
+<blockquote>
+<p>yes, you can simply change it ... in principle (and it worked just fine for me, multipe times).</p>
+<p>make sure that the message UIDs still match despite the changed UIDVALIDITY - if they don't, you lose all messages. use some online-imap client which can display UIDs (i think i used thunderbird, because i had it set up anyway; i suspect mutt can do that as well) to take some random samples (if the UIDs changed, all of them would).</p>
+<p>the lower-risk approach is deleting the state files, so mbsync propagates the messages both ways again. then use D~= in mutt to throw out the dupes.</p>
+</blockquote>
+<p>Hm. &quot;you lose all messages&quot;. Scary stuff. Nevertheless, I figured I'd give it a try:</p>
+<pre><code>$ cd ~/.mail
+$ grep -R MasterUidValidity *
+Work/.mbsyncstate:MasterUidValidity 14
+Work.Archive/.mbsyncstate:MasterUidValidity 82
+Work.Drafts/.mbsyncstate:MasterUidValidity 89
+Work.Sent/.mbsyncstate:MasterUidValidity 11
+Work.Spam/.mbsyncstate:MasterUidValidity 92
+Work.Trash/.mbsyncstate:MasterUidValidity 12
+</code></pre>
+<p>So, I went in, changed the numbers, ran the sync again, and everything seemed to work fine.</p>
+<h2>Episode 2</h2>
+<p>This time messages like:</p>
+<pre><code>Error: channel Catchall, master Archive: UIDVALIDITY genuinely changed (at UID 438231).
+</code></pre>
+<p><a href="https://sourceforge.net/p/isync/mailman/message/36070604/">Mailing list thread</a>:</p>
+<blockquote>
+<ol>
+<li>Locate the offending UID (zzz) in .mbsyncstate in Mailbox xxx/yyy - find zzz in the first column and note the corresponding local ID in the second column</li>
+<li>Locate the message file in the Mailbox (ls | grep &quot;U=id&quot;, replacing id with the ID found in step 1). Move it out of the way, e.g. into a temporary directory outside the Maildir</li>
+<li>Run mbsync. This yields a message Notice: channel xxx, master yyy: Recovered from change of UIDVALIDITY.</li>
+<li>Move the offending message back into the Maildir</li>
+<li>Run mbsync again.</li>
+</ol>
+</blockquote>
+<p>Apparently, bad advice (read the full thread). Didn't work.</p>
+<p>As only Exchange seems to break in this way, and most of the old archived messages aren't something I'll ever need to consult again, I removed the message <em>and</em> the line from the <code>.mbsyncstate</code> file. Didn't work.</p>
+<p>Second to last resort: blow away <code>.mbsyncstate</code> for that directory. Didn't work.</p>
+<p>Last resort: blow away all mail and resync.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

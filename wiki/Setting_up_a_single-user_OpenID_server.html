@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Setting up a single-user OpenID server • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Setting up a single-user OpenID server</h1></div><div class="metadata"><relative-time created="1178141387" updated="1710259978">Created 5/2/2007, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These are notes made while setting up my own single-user <a href="/wiki/OpenID">OpenID</a> server. I wanted to set up my own server for the same reasons stated by <a href="/wiki/Christopher_Niemira">Christopher Niemira</a>, author of <a href="/wiki/phpMyID">phpMyID</a>, who <a href="http://siege.org/projects/phpMyID/">writes</a>:</p>
+<blockquote>
+<p>I really don't like the idea of coupling a theoretically decentralized framework to one of a handfull of third party providers (and giving them my account credentials).</p>
+</blockquote>
+<p>I chose to use <a href="/wiki/phpMyID">phpMyID</a> because it was a very simple implementation with no dependencies (not even a database).</p>
+<h2>Preparation</h2>
+<p>Based on information found <a href="http://www.openidenabled.com/openid/use-your-own-url-as-an-openid">here</a> and <a href="https://www.siege.org/svn/oss/phpMyID/trunk/README">here</a> I proceeded to do the following:</p>
+<p>Generate en <a href="/wiki/MD5">MD5</a> hash of:</p>
+<ul>
+<li>a username, <code>the_username</code></li>
+<li>realm, <code>OpenID</code></li>
+<li>password, <code>the_password</code></li>
+</ul>
+<!-- -->
+<pre><code>echo -n &quot;the_username:OpenID:the_password&quot; | md5
+</code></pre>
+<h2>Installation</h2>
+<p>I then exported a copy of the latest version of the relevant files from <a href="/wiki/phpMyID">phpMyID</a>:</p>
+<pre><code>cd path/to/web/directory
+sudo svn export https://www.siege.org/svn/oss/phpMyID/trunk/MyID.php id.php
+cd path/to/configuration/directory
+sudo svn export https://www.siege.org/svn/oss/phpMyID/trunk/MyID.config.php id_config.php
+</code></pre>
+<p>Three things to note:</p>
+<ul>
+<li>Use of <code>sudo</code> because I wasn't running as a user with write privileges</li>
+<li>Renaming the files to <code>id.php</code> and <code>id_config.php</code> for aesthetic reasons</li>
+<li>Storing the configuration file, <code>id_config.php</code>, outside of the web root</li>
+</ul>
+<p>This last point is just basic security practice whenever I'm forced to use <a href="/wiki/PHP">PHP</a>: passwords and other sensitive configuration should always be stored outside of the webroot, just in case there is ever a problem with the <a href="/wiki/Apache">Apache</a>/<a href="/wiki/PHP">PHP</a> configuration that might cause the files to be served up as raw text rather than executed as a <a href="/wiki/PHP">PHP</a> script. In this case the risks are mitigated by the fact that the password is not stored in the configuration file (only a hash is stored) but it is basic security practice to adopt a multi-layered &quot;onion&quot; approach that implements multiple, separate barriers to guard against breaches. If an attacker were to access the configuration file brute-forcing a working password would be fairly easy because the user name wouldn't be hard to guess, the realm is publicly discoverable, and the hash isn't even generated using a salt.</p>
+<h2>Configuration file changes</h2>
+<pre><code>22,23c22,24
+&lt;       'auth_username' =&gt;      'test',
+&lt;       'auth_password' =&gt;      '37fa04faebe5249023ed1f6cc867329b'
+---
+&gt;       'auth_username' =&gt;      'example_username',
+&gt;       'auth_password' =&gt;      'example_hash',
+&gt;       'auth_realm'    =&gt;      'OpenID'
+38,40c39,41
+&lt; #     'nickname'              =&gt; 'Joe',
+&lt; #     'email'                 =&gt; 'joe@example.com',
+&lt; #     'fullname'              =&gt; 'Joe Example',
+---
+&gt;       'nickname'              =&gt; 'Wincent',
+&gt;       'email'                 =&gt; 'example@example.com',
+&gt;       'fullname'              =&gt; 'Wincent Colaiuta',
+44,46c45,47
+&lt; #     'country'               =&gt; 'US',
+&lt; #     'language'              =&gt; 'en',
+&lt; #     'timezone'              =&gt; 'America/New_York'
+---
+&gt;       'country'               =&gt; 'ES',
+&gt;       'language'              =&gt; 'en',
+&gt;       'timezone'              =&gt; 'Europe/Madrid'
+</code></pre>
+<h2><code>id.php</code> changes</h2>
+<pre><code>779c779
+&lt;               if (! @include('MyID.config.php'))
+---
+&gt;               if (! @include('/full_path_to_conf_dir/id_config.php'))
+</code></pre>
+<h2>Other set-up</h2>
+<p>The following <a href="/wiki/HTML">HTML</a> needed to be added to the page residing at my &quot;identity&quot; <a href="/wiki/URL">URL</a>:</p>
+<pre><code>&lt;link rel=&quot;openid.server&quot; href=&quot;https://wincent.dev/id.php&quot; /&gt;
+&lt;link rel=&quot;openid.delegate&quot; href=&quot;https://wincent.dev/id.php&quot; /&gt;
+&lt;meta http-equiv=&quot;X-XRDS-Location&quot; content=&quot;https://wincent.dev/id.php&quot; /&gt;
+</code></pre>
+<h2>Results</h2>
+<p>To test the system I made my first post using <a href="/wiki/OpenID">OpenID</a>-based authentication <a href="http://chanson.livejournal.com/170068.html">here</a>. There are two problems with the result:</p>
+<ol>
+<li>The &quot;from&quot; line reads as <a href="http://wincent.dev/a/about/wincent/weblog/">http://wincent.dev/a/about/wincent/weblog/</a>, which doesn't exactly make clear the identity of the poster; this is because it just redirects to my <a href="/wiki/weblog">weblog</a> at the other <a href="/wiki/URL">URL</a>.</li>
+<li>The <a href="http://www.livejournal.com/userinfo.bml?userid=12856127&amp;t=I&amp;mode=full">the user profile</a> linked to from the comment doesn't include the extra information that I included in my configuration.</li>
+</ol>
+<p>The second problem is probably a limitation of <a href="/wiki/LiveJournal">LiveJournal</a> and there's not much that I can do about that. I decided to address the former problem by choosing a better <a href="/wiki/URL">URL</a> for future identification. So I set up a simple page with the following content:</p>
+<pre><code>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;
+        &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+  &lt;title&gt;example.com&lt;/title&gt;
+  &lt;link rel=&quot;openid.server&quot; href=&quot;https://wincent.dev/id.php&quot;&gt;
+  &lt;link rel=&quot;openid.delegate&quot; href=&quot;https://wincent.dev/id.php&quot;&gt;
+  &lt;meta http-equiv=&quot;X-XRDS-Location&quot; content=&quot;https://wincent.dev/id.php&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;ul&gt;
+  &lt;li&gt;Wincent Colaiuta's personal weblog: &lt;a href=&quot;http://example.com/&quot;&gt;example.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Mac OS X software: &lt;a href=&quot;http://wincent.dev/&quot;&gt;wincent.dev&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>From now on when I sign in using that <a href="/wiki/URL">URL</a> the identity should be much more intelligible.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

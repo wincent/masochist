@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ClamAV 0.90.1 to 0.90.2 upgrade notes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>ClamAV 0.90.1 to 0.90.2 upgrade notes</h1></div><div class="metadata"><relative-time created="1176482183" updated="1584053324">Created 4/13/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/clamav">clamav</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><ul>
+<li>Download <code>clamav-0.90.2.tar.gz</code> from <a href="http://www.clamav.net/download/sources">http://www.clamav.net/download/sources</a></li>
+<li>Build:</li>
+</ul>
+<!-- -->
+<pre><code>tar xzvf clamav-0.90.2.tar.gz
+cd clamav-0.90.2
+./configure --sysconfdir=/etc
+make
+make check
+</code></pre>
+<ul>
+<li>Backup old configuration:</li>
+</ul>
+<!-- -->
+<pre><code>sudo cp /etc/freshclam.conf /etc/freshclam.conf.old
+sudo cp /etc/clamd.conf /etc/clamd.conf.old
+</code></pre>
+<ul>
+<li>Uninstall old version, install new version:</li>
+</ul>
+<!-- -->
+<pre><code>cd ../clamav-0.90.1
+sudo make uninstall
+cd ../clamav-0.90.2
+sudo make install
+sudo ldconfig -v
+</code></pre>
+<ul>
+<li>Post install checks:</li>
+</ul>
+<!-- -->
+<pre><code>whereis freshclam
+sudo freshclam -v
+sudo service clamd restart
+sudo service --status-all | grep clamd
+cd /etc
+
+# check config files for changes
+diff freshclam.conf freshclam.conf.old
+diff clamd.conf clamd.conf.old
+
+# check startup script for changes
+cd -
+diff contrib/init/RedHat/clamd /etc/init.d/clamd
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li>Official upgrade instructions: <a href="http://wiki.clamav.net/Main/UpgradeInstructions">http://wiki.clamav.net/Main/UpgradeInstructions</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Unicorn 1.0.0 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Unicorn 1.0.0</h1></div><div class="metadata"><relative-time created="1276758785" updated="1495119989">Created 6/17/2010, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/unicorn">unicorn</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official announcement:</p>
+<pre><code>Unicorn is an HTTP server for Rack applications designed to only serve
+fast clients on low-latency, high-bandwidth connections and take
+advantage of features in Unix/Unix-like kernels.  Slow clients should
+only be served by placing a reverse proxy capable of fully buffering
+both the the request and response in between Unicorn and slow clients.
+
+* http://unicorn.bogomips.org/
+* mongrel-unicorn@rubyforge.org
+* git://git.bogomips.org/unicorn.git
+
+Changes:
+
+There are only minor changes since 0.991.0.
+
+For users clinging onto the past, MRI 1.8.6 support has been
+restored.  Users are strongly encouraged to upgrade to the
+latest 1.8.7, REE or 1.9.1.
+
+For users looking towards the future, the core test suite and
+the Rails 3 (beta) integration tests pass entirely under 1.9.2
+preview3.  As of the latest rubinius.git[1], Rubinius support is
+nearly complete as well.
+
+Under Rubinius, signals may corrupt responses as they're being
+written to the socket, but that should be fixable transparently
+to us[4].  Support for the hardly used, hardly documented[2]
+embedded command-line switches in rackup config (.ru) files is
+is also broken under Rubinius.
+
+The recently-released Rack 1.2.1 introduced no compatiblity
+issues[3] in core Unicorn.  We remain compatible with all Rack
+releases starting with 0.9.1 (and possibly before).
+
+[1] tested with Rubinius upstream commit
+cf4a5a759234faa3f7d8a92d68fa89d8c5048f72
+[2] lets avoid the Dueling Banjos effect here :x
+[3] actually, Rack 1.2.1 is broken under 1.8.6.
+[4] http://github.com/evanphx/rubinius/issues/373
+
+
+The Future:
+
+* Bug/compatibility fixes as needed, of course!
+* Scalability for hardware that may be common in 5-10 years
+* Rainbows!  LOTS of Rainbows!
+
+Thanks for reading!
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

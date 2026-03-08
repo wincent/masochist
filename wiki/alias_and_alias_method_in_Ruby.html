@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>alias and alias method in Ruby • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>alias and alias method in Ruby</h1></div><div class="metadata"><relative-time created="1386603032" updated="1495119989">Created 12/9/2013, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/ruby">ruby</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><pre><code class="language-ruby"># keyword, lexically scoped
+# arguments are bare identifiers, with no comma between them
+alias new_method existing_method
+
+# method defined in the Module class
+# takes symbol or string arguments
+alias_method :new_method, :existing_method
+alias_method 'new_method', 'existing_method'
+</code></pre>
+<p>A note about the lexical scoping of the <code>alias</code> keyword: the value of <code>self</code> is determined at parse time, based on the class context in which the keyword appears. Conversely, <code>alias_method</code> is just a method, so it applies to whatever <code>self</code> happens to be at runtime:</p>
+<pre><code class="language-ruby">class Foo
+  def hello
+    puts &quot;Hello from Foo&quot;
+  end
+
+  def self.add_alias
+    alias hello2 hello
+    alias_method :hello3, :hello
+  end
+end
+
+Foo.add_alias
+Foo.new.hello  # =&gt; puts &quot;Hello from Foo&quot;
+Foo.new.hello2 # =&gt; puts &quot;Hello from Foo&quot;
+Foo.new.hello3 # =&gt; puts &quot;Hello from Foo&quot;
+
+class Bar &lt; Foo
+  def hello
+    puts &quot;Hello from Bar&quot;
+  end
+end
+
+Bar.add_alias
+Bar.new.hello  # =&gt; puts &quot;Hello from Bar&quot;
+Bar.new.hello2 # =&gt; puts &quot;Hello from Foo&quot;
+Bar.new.hello3 # =&gt; puts &quot;Hello from Bar&quot;
+</code></pre>
+<h2>Source</h2>
+<ul>
+<li><a href="http://blog.bigbinary.com/2012/01/08/alias-vs-alias-method.html">http://blog.bigbinary.com/2012/01/08/alias-vs-alias-method.html</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

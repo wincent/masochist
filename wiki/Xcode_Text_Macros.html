@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Xcode Text Macros • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Xcode Text Macros</h1></div><div class="metadata"><relative-time created="1197326098" updated="1584053324">Created 12/10/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>C</h2>
+<ul>
+<li><code>if</code>: <code>if</code> block, <code>if/else</code> block</li>
+<li><code>for</code>: <code>for</code> block</li>
+<li><code>fori</code>: <code>for</code> block</li>
+<li><code>while</code>: <code>while</code> block (alias to w)</li>
+<li><code>switch</code>: <code>switch</code> block</li>
+<li><code>case</code>: <code>case</code> block</li>
+<li><code>pm</code>: <code>#pragma mark</code> (customized)</li>
+<li><code>pim</code>: <code>#import</code> statement</li>
+<li><code>pif</code>: <code>#if/#else/#endif</code> statement</li>
+</ul>
+<h2>Objective-C</h2>
+<ul>
+<li><code>a</code>: alloc/init pattern</li>
+<li>``:</li>
+<li>``:</li>
+<li>``:</li>
+<li>``:</li>
+</ul>
+<!-- -->
+<pre><code>* &lt;tt&gt;&lt;/tt&gt;:
+</code></pre>
+<h2>Doxygen</h2>
+<ul>
+<li><code>dc</code>: Doxygen comment</li>
+<li><code>dgs</code>: Doxygen group start</li>
+<li><code>dge</code>: Doxygen group end</li>
+</ul>
+<h2>Customization</h2>
+<h3>Xcode 3.x</h3>
+<p>According to <a href="http://www.cocoabuilder.com/archive/message/xcode/2007/11/29/17777">this post</a> this actually <em>is</em> a documented feature, but seeing as the <a href="/wiki/Xcode">Xcode</a> release notes don't actually appear to be shipped with Xcode (at least, nothing comes up when you search for &quot;Xcode release notes&quot; in the documentation window) I guess this qualifies as an undocumented feature; your templates now need to be stored here:</p>
+<pre><code>~/Library/Application Support/Developer/Shared/Xcode/Specifications
+</code></pre>
+<p>Or here:</p>
+<pre><code>~/Library/Application Support/Developer/3.0/Xcode/Specifications
+</code></pre>
+<p>You can base your specifications of the Apple-provided ones here:</p>
+<pre><code>/Developer/Library/Xcode/Specifications/
+</code></pre>
+<h3>Xcode 2.x</h3>
+<p>To override an Apple specification, copy the file from:</p>
+<pre><code>/Developer/Applications/Xcode.app/Contents/PlugIns/TextMacros.xctxtmacro/Contents/Resources
+</code></pre>
+<p>To:</p>
+<pre><code>~/Library/Application Support/Apple/Developer Tools/Specifications
+</code></pre>
+<p>Open the copied file in <a href="/wiki/Property_List_Editor">Property List Editor</a> and save it as an <a href="/wiki/ASCII_Property_List">ASCII Property List</a>; this will strip the comments but will also have the effect of tidying up the formatting and making editing easier.</p>
+<p>Now you can override Apple's definitions, delete those you don't wish to override, and add your own. Settings &quot;cascade&quot;. For example, I changed the C <code>BlockSeparator</code> setting and all the C-language block definitions inherited the new behaviour (after restarting <a href="/wiki/Xcode">Xcode</a>):</p>
+<pre><code>    {
+        ComputerLanguages = (c);
+        DefaultSettings = {
+            BlockSeparator = &quot;\n&quot;;
+            CaseStatementSpacing = &quot;&quot;;
+            InExpressionsSpacing = &quot;&quot;;
+            PostBlockSeparator = &quot;\n&quot;;
+            PreExpressionsSpacing = &quot; &quot;;
+        };
+        Identifier = c;
+        IsMenu = YES;
+        Name = C;
+    },
+</code></pre>
+<p>To:</p>
+<pre><code>    {
+        ComputerLanguages = (c);
+        DefaultSettings = {
+            BlockSeparator = &quot; &quot;;
+            CaseStatementSpacing = &quot;&quot;;
+            InExpressionsSpacing = &quot;&quot;;
+            PostBlockSeparator = &quot;\n&quot;;
+            PreExpressionsSpacing = &quot; &quot;;
+        };
+        Identifier = c;
+        IsMenu = YES;
+        Name = C;
+    },
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

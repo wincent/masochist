@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Upgrading from WordPress 2.0.3 to 2.0.4 using Subversion • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Upgrading from WordPress 2.0.3 to 2.0.4 using Subversion</h1></div><div class="metadata"><relative-time created="1168943072" updated="1710259978">Created 1/16/2007, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/wordpress">wordpress</a></li><li><a href="/tags/subversion">subversion</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Prerequisites</h2>
+<p>See: <a href="/wiki/Preparing_WordPress_for_Subversion-based_upgrades">Preparing WordPress for Subversion-based upgrades</a></p>
+<h2>For the reckless: the 5 second upgrade</h2>
+<p>The reckless can perform the upgrade with a single command from inside their <a href="/wiki/WordPress">WordPress</a> install. The use of <a href="/wiki/sudo">sudo</a> and the <code>-u user -H</code> options (where you would substitute an appropriate value for <code>user</code>) is to ensure that ownership of the files does not change during the update (necessary if you are running in <a href="/wiki/PHP_Safe_Mode">PHP Safe Mode</a>):</p>
+<pre><code>sudo -u user -H svn switch http://svn.automattic.com/wordpress/tags/2.0.4
+</code></pre>
+<p>A less reckless upgrade procedure is described below, which includes making a backup before upgrading.</p>
+<h2>For the careful: the 5 minute upgrade</h2>
+<h3>Check the trunk, branches and tags directories in the repository</h3>
+<p>Given that in recent versions the <a href="/wiki/WordPress">WordPress</a> team hasn't always maintained an <a href="http://wincent.dev/a/knowledge-base/archives/2006/06/wordpress_updat.php">up-to-date set of tags</a> in their <a href="/wiki/Subversion">Subversion</a> repository, it is a good idea to check that recent changes in the <code>trunk</code>, <code>branches</code> and <code>tags</code> directories on the repository all match up. At the time of <a href="http://wordpress.org/development/2006/07/wordpress-204/">the 2.0.4 release announcement</a> all three directories appeared to be in sync:</p>
+<ul>
+<li><a href="http://svn.automattic.com/wordpress/tags/2.0.4/">http://svn.automattic.com/wordpress/tags/2.0.4/</a></li>
+<li><a href="http://svn.automattic.com/wordpress/branches/2.0/">http://svn.automattic.com/wordpress/branches/2.0/</a></li>
+<li><a href="http://svn.automattic.com/wordpress/trunk/">http://svn.automattic.com/wordpress/trunk/</a></li>
+</ul>
+<p>I checked using the following commands:</p>
+<pre><code>svn log --limit 5 http://svn.automattic.com/wordpress/tags/2.0.4
+svn log --limit 5 http://svn.automattic.com/wordpress/branches/2.0
+svn log --limit 5 http://svn.automattic.com/wordpress/trunk
+</code></pre>
+<p>And incidentally, using the <code>svn log</code> command (with a higher <code>--limit</code> value) is one way of seeing what changes have been made to the source tree. This is useful seeing as the <a href="/wiki/WordPress">WordPress</a> team likes to practise a little bit of <a href="/wiki/security_through_obscurity">security through obscurity</a>, labelling a release as a containing &quot;several important security fixes&quot; but neglecting to mention what they are, nor any of the other &quot;bug fixes (over 50!)&quot; in the release. You can also <a href="http://trac.wordpress.org/query?status=closed&amp;milestone=2.0.4">check the WordPress trac</a>.</p>
+<h3>Backup the database</h3>
+<p>Choosing appropriate values for <code>${MYSQLUSER}</code>, <code>${DATABASE}</code> and <code>${FILENAME}</code>:</p>
+<pre><code>/usr/bin/sudo /usr/bin/mysqldump --opt -u &quot;${MYSQLUSER}&quot; -p -h localhost \
+      &quot;${DATABASE}&quot; | /usr/bin/bzip2 -c &gt; &quot;~/${FILENAME}&quot;
+</code></pre>
+<h3>Backup the installed files</h3>
+<p>If your <a href="/wiki/WordPress">WordPress</a> install was in the folder <code>wp</code> you would <code>cd</code> into its parent folder and do something like this:</p>
+<pre><code>/usr/bin/sudo /bin/tar -c -v wp &gt; ~/pre-2.0.4-backup.tar
+/bin/gzip --verbose -9 ~/pre-2.0.4-backup.tar
+</code></pre>
+<h3>Disable all plug-ins</h3>
+<p><a href="http://example.com/wp-admin/plugins.php">http://example.com/wp-admin/plugins.php</a></p>
+<h3>Perform the upgrade</h3>
+<p>Get info on the working copy:</p>
+<pre><code>svn info
+</code></pre>
+<p>Perform the actual upgrade, substituting an appropriate value for <code>${USER}</code>:</p>
+<pre><code>sudo -u &quot;${USER}&quot; -H svn switch http://svn.automattic.com/wordpress/tags/2.0.4
+</code></pre>
+<p>Output:</p>
+<pre><code>U    wp-pass.php
+U    wp-login.php
+U    wp-includes/class-snoopy.php
+U    wp-includes/default-filters.php
+U    wp-includes/template-functions-general.php
+U    wp-includes/wp-db.php
+U    wp-includes/functions-formatting.php
+U    wp-includes/gettext.php
+U    wp-includes/version.php
+U    wp-includes/functions-post.php
+U    wp-includes/classes.php
+U    wp-includes/kses.php
+U    wp-includes/pluggable-functions.php
+U    wp-includes/comment-functions.php
+U    wp-includes/functions.php
+U    wp-includes/vars.php
+U    wp-includes/streams.php
+U    wp-includes/template-functions-author.php
+U    xmlrpc.php
+U    wp-content/plugins/wp-db-backup.php
+U    wp-content/themes/classic/comments-popup.php
+U    wp-content/themes/default/footer.php
+U    wp-content/themes/default/style.css
+U    wp-content/themes/default/archives.php
+U    wp-content/themes/default/search.php
+U    wp-content/themes/default/index.php
+U    wp-content/themes/default/functions.php
+U    wp-content/themes/default/sidebar.php
+U    wp-content/themes/default/page.php
+U    wp-content/themes/default/links.php
+U    wp-content/themes/default/archive.php
+U    wp-content/themes/default/single.php
+U    wp-content/themes/default/comments.php
+U    wp-content/themes/default/comments-popup.php
+U    wp-content/themes/default/header.php
+U    wp-content/themes/default/attachment.php
+U    wp-trackback.php
+U    wp-settings.php
+U    wp-admin/edit-form-advanced.php
+U    wp-admin/inline-uploading.php
+U    wp-admin/update-links.php
+U    wp-admin/users.php
+U    wp-admin/edit-comments.php
+U    wp-admin/wp-admin.css
+A    wp-admin/images/box-butt-left.gif
+A    wp-admin/images/box-butt-right.gif
+A    wp-admin/images/box-head-left.gif
+A    wp-admin/images/box-head-right.gif
+A    wp-admin/images/box-bg-left.gif
+A    wp-admin/images/box-bg-right.gif
+U    wp-admin/link-categories.php
+U    wp-admin/plugins.php
+U    wp-admin/post.php
+U    wp-admin/theme-editor.php
+U    wp-admin/upgrade.php
+U    wp-admin/admin.php
+U    wp-admin/options.php
+U    wp-admin/admin-functions.php
+U    wp-admin/templates.php
+U    wp-admin/edit-page-form.php
+U    wp-admin/moderation.php
+U    wp-admin/user-edit.php
+U    wp-admin/setup-config.php
+U    wp-admin/link-manager.php
+U    wp-admin/index.php
+U    wp-admin/sidebar.php
+U    wp-admin/import.php
+U    wp-admin/admin-db.php
+U    wp-admin/edit-link-form.php
+U    wp-admin/edit-pages.php
+U    wp-admin/plugin-editor.php
+U    wp-admin/import/dotclear.php
+U    wp-admin/import/blogger.php
+U    wp-admin/import/textpattern.php
+U    wp-admin/categories.php
+U    wp-admin/themes.php
+U    wp-admin/upgrade-schema.php
+U    wp-admin/edit-form-comment.php
+U    wp-admin/edit-form.php
+Updated to revision 4068.
+</code></pre>
+<p>Finally, compare the info on the updated working copy:</p>
+<pre><code>svn info
+</code></pre>
+<p>It seems that in this release it is not necessary to hit the upgrade script:</p>
+<p><a href="http://example.com/wordpress/wp-admin/upgrade.php">http://example.com/wordpress/wp-admin/upgrade.php</a></p>
+<h3>Re-enable all plug-ins</h3>
+<p>One by one.</p>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/WordPress">WordPress</a> 2.0.4 release announcement: <a href="http://wordpress.org/development/2006/07/wordpress-204/">http://wordpress.org/development/2006/07/wordpress-204/</a></li>
+<li><a href="/wiki/Upgrading_from_WordPress_2.0.4_to_2.0.5_using_Subversion">Upgrading from WordPress 2.0.4 to 2.0.5 using Subversion</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

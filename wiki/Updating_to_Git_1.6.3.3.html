@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Updating to Git 1.6.3.3 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Updating to Git 1.6.3.3</h1></div><div class="metadata"><relative-time created="1245648238" updated="1584053324">Created 6/22/2009, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/leopard">leopard</a></li><li><a href="/tags/red.hat">red.hat</a></li><li><a href="/tags/git">git</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Local update</h2>
+<p>Notes made while updating to <a href="/wiki/Git_1.6.3.3">Git 1.6.3.3</a> on <a href="/wiki/Mac_OS_X">Mac OS X</a> <a href="/wiki/Leopard">Leopard</a> 10.5.7:</p>
+<pre><code># working from a clone of the official upstream Git repo
+git fetch
+git tag -v v1.6.3.3
+
+# note: &quot;git co&quot; is an alias that I made for &quot;git checkout&quot;
+git co v1.6.3.3
+make clean
+make prefix=/usr/local test
+sudo make prefix=/usr/local install
+
+# inspect the changes in the Bash completion script and update it
+diff -u ~/.git-completion.sh contrib/completion/git-completion.bash
+cp contrib/completion/git-completion.bash ~/.git-completion.sh
+
+# the pre-built man pages
+sudo make prefix=/usr/local quick-install-man
+
+# go back to the master branch rather than hanging around on a detached head
+git co master
+</code></pre>
+<p>Note that if you are running on a case-insensitive filesystem like <a href="/wiki/HFS%2b">HFS+</a> you might run into a message like this when you try to pull, merge or switch branches:</p>
+<pre><code class="language-shell">$ git pull
+error: Untracked working tree file 't/t3900/eucJP.txt' would be overwritten by merge.
+</code></pre>
+<p>This is because of a change implemented in commit 5ae93df:</p>
+<pre><code>commit 5ae93dfdccfe9457bdb1f54b33c76359f6c3b861
+Author: Brandon Casey &lt;casey@nrlssc.navy.mil&gt;
+Date:   Mon May 18 18:44:38 2009 -0500
+
+    t3900: use ancient iconv names for backward compatibility
+
+    Some old iconv implementations do not have many alternate names and/or
+    do not match character encoding names case insensitively.  These
+    implementations can not tell that utf-8 and UTF-8 are the same encoding
+    and fail when trying to do the conversion.  So use the old names, which
+    modern implementations still support.
+
+    The following conversions were performed:
+
+             utf-8 --&gt; UTF-8
+        ISO-8859-1 --&gt; ISO8859-1
+             EUCJP --&gt; eucJP
+
+    Also update t9129 and t9500 which make use of the test files in t/t3900.
+
+    Signed-off-by: Brandon Casey &lt;casey@nrlssc.navy.mil&gt;
+    Signed-off-by: Junio C Hamano &lt;gitster@pobox.com&gt;
+</code></pre>
+<p>The solution is just to blow away the file (note the case difference) and then the merge will work:</p>
+<pre><code class="language-shell">$ rm t/t3900/EUCJP.txt
+$ git merge origin/master
+</code></pre>
+<h2>Remote update</h2>
+<p>These notes were made while performing the update on a <a href="/wiki/Red_Hat_Enterprise_Linux">Red Hat Enterprise Linux</a> 5.3 box.</p>
+<p><code>make configure</code> doesn't work, complaining that <code>curl-config</code> can't be found. Although the machine definitely does have libcurl (at <code>/usr/lib/libcurl.so.1</code>), <code>curl-config</code> is nowhere to be found. Seeing as this is used for the <a href="/wiki/HTTP">HTTP</a> transport mechanism which I don't use on the server, I'll be building with this stuff explicitly switched off.</p>
+<p>Another problem was that <code>autoconf</code> wasn't present on the system (it was removed by mistake by my hosts), so the first thing we'll do is get it put it back:</p>
+<pre><code class="language-shell">$ sudo yum install autoconf
+</code></pre>
+<p>Now we can proceed:</p>
+<pre><code class="language-shell">$ NO_CURL=1 make configure
+$ ./configure --without-curl --without-tcltk --without-expat
+$ make test
+$ sudo make install
+$ make clean
+$ NO_CURL=1 make configure
+$ ./configure
+$ make GITWEB_PROJECTROOT=/pub/git/path_to_public_repos \
+       GITWEB_LIST=/pub/git/conf/gitweb-projects \
+       GITWEB_STRICT_EXPORT=1 \
+       GITWEB_CSS=&quot;/gitweb.css&quot; \
+       GITWEB_LOGO=&quot;/git-logo.png&quot; \
+       GITWEB_FAVICON=&quot;/git-favicon.png&quot; \
+       GITWEB_CONFIG=&quot;/pub/git/conf/gitweb.conf&quot; \
+       gitweb/gitweb.cgi
+$ sudo -u git cp gitweb/gitweb.{cgi,css} gitweb/git-*.png /pub/git/public_html/
+</code></pre>
+<p>Note that due to path issues, <code>sudo make quick-install-man</code> didn't work. I had to actually do this:</p>
+<pre><code class="language-shell">$ sudo -i
+# cd path/to/git/checkout
+# make quick-install-man
+</code></pre>
+<p>There is bit-time link breakage in the new version of <a href="/wiki/Gitweb">Gitweb</a> (see <a href="/issues/1347">ticket #1347</a>), so currently investigating that. <strong>Update:</strong> It required some additional <a href="/wiki/Apache">Apache</a> rewrite rules, as described in <code>gitweb/README</code>.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

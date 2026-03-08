@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Upgrading from Ragel 5.24 to 6.0 on Mac OS X 10.5.1 Leopard • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Upgrading from Ragel 5.24 to 6.0 on Mac OS X 10.5.1 Leopard</h1></div><div class="metadata"><relative-time created="1201734714" updated="1584053324">Created 1/30/2008, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/leopard">leopard</a></li><li><a href="/tags/ragel">ragel</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These notes were made while upgrading from <a href="/wiki/Ragel_5.24">Ragel 5.24</a> to <a href="/wiki/Ragel_6.0">Ragel 6.0</a> on <a href="/wiki/Mac_OS_X">Mac OS X</a> 10.5.1 <a href="/wiki/Leopard">Leopard</a>.</p>
+<pre><code># get the latest version
+wget http://www.cs.queensu.ca/~thurston/ragel/ragel-6.0.tar.gz \
+     http://www.cs.queensu.ca/~thurston/ragel/ragel-6.0.tar.gz.asc
+
+# verify download: see note below about the required public key
+gpg --verify ragel-6.0.tar.gz.asc ragel-6.0.tar.gz
+
+# extract
+tar xzvf ragel-6.0.tar.gz
+cd ragel-6.0
+
+# build
+./configure
+make
+
+# test
+cd test/
+./runtests
+</code></pre>
+<p>Unlike in <a href="/wiki/Tiger">Tiger</a>, one of the tests fails on <a href="/wiki/Leopard">Leopard</a>:</p>
+<pre><code>running cond6 ... passed
+../ragel/ragel -C -n -T0 -o cppscan1.cpp cppscan1.rl
+g++ -pedantic -ansi -Wall -O3 -o cppscan1.bin cppscan1.cpp
+In file included from cppscan1.rl:7:
+cppscan1.h:5:20: error: malloc.h: No such file or directory
+</code></pre>
+<p>To make it pass we make a minor change to the <code>cppscan1.h</code> file:</p>
+<pre><code>--- cppscan1.h.old	2008-01-31 00:10:00.000000000 +0100
++++ cppscan1.h	2008-01-30 23:58:36.000000000 +0100
+@@ -2,7 +2,7 @@
+ [/tags/define #define] _CPPSCAN1_H
+
+ [/tags/include #include] &lt;iostream&gt;
+-#include &lt;malloc.h&gt;
++#include &lt;malloc/malloc.h&gt;
+ [/tags/include #include] &lt;string.h&gt;
+
+ using namespace std;
+</code></pre>
+<p>Now we can proceed with the install:</p>
+<pre><code>cd ..
+sudo make install
+</code></pre>
+<p>Note that in order to verify the signature you will require the public key:</p>
+<pre><code>wget http://www.cs.queensu.ca/home/thurston/thurston.asc
+gpg --import thurston.asc
+</code></pre>
+<p>Now trying out the new build on a sample input file:</p>
+<pre><code>wget http://www.cs.queensu.ca/~thurston/ragel/examples/rlscan.rl
+ragel rlscan.rl
+</code></pre>
+<p>Note that this has changed from how things were under 5.24:</p>
+<pre><code>ragel rlscan.rl | rlgen-cd -G2
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

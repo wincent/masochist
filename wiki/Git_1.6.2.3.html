@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.6.2.3 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.6.2.3</h1></div><div class="metadata"><relative-time created="1239626627" updated="1495119989">Created 4/13/2009, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official release announcement posted to the <a href="/wiki/Git">Git</a> mailing list:</p>
+<pre><code>The latest maintenance release GIT 1.6.2.3 is available at the
+usual places:
+
+ http://www.kernel.org/pub/software/scm/git/
+
+ git-1.6.2.3.tar.{gz,bz2}			(source tarball)
+ git-htmldocs-1.6.2.3.tar.{gz,bz2}		(preformatted docs)
+ git-manpages-1.6.2.3.tar.{gz,bz2}		(preformatted docs)
+
+The RPM binary packages for a few architectures are found in:
+
+ RPMS/$arch/git-*-1.6.2.3-1.fc9.$arch.rpm	(RPM)
+
+----------------------------------------------------------------
+
+GIT v1.6.2.3 Release Notes
+==========================
+
+Fixes since v1.6.2.2
+--------------------
+
+* Setting an octal mode value to core.sharedrepository configuration to
+ restrict access to the repository to group members did not work as
+ advertised.
+
+* A fairly large and trivial memory leak while rev-list shows list of
+ reachable objects has been identified and plugged.
+
+* &quot;git-commit --interactive&quot; did not abort when underlying &quot;git-add -i&quot;
+ signaled a failure.
+
+* git-repack (invoked from git-gc) did not work as nicely as it should in
+ a repository that borrows objects from neighbours via alternates
+ mechanism especially when some packs are marked with the &quot;.keep&quot; flag
+ to prevent them from being repacked.
+
+Many small documentation updates are included as well.
+
+----------------------------------------------------------------
+
+Changes since v1.6.2.2 are as follows:
+
+Björn Steinbrink (1):
+     process_{tree,blob}: Remove useless xstrdup calls
+
+Brandon Casey (6):
+     t7700-repack: add two new tests demonstrating repacking flaws
+     git-repack.sh: don't use --kept-pack-only option to pack-objects
+     pack-objects: only repack or loosen objects residing in &quot;local&quot; packs
+     Remove --kept-pack-only option and associated infrastructure
+     t7700: demonstrate repack flaw which may loosen objects unnecessarily
+     pack-objects: don't loosen objects available in alternate or kept packs
+
+Dan McGee (1):
+     git-repack: use non-dashed update-server-info
+
+Daniel Cheng (aka SDiZ) (1):
+     State the effect of filter-branch on graft explicitly
+
+Jari Aalto (1):
+     Change double quotes to single quotes in message
+
+Jason Merrill (1):
+     Documentation: clarify .gitattributes search
+
+Jeff King (2):
+     t1301: loosen test for forced modes
+     commit: abort commit if interactive add failed
+
+Johan Herland (1):
+     Move chmod(foo, 0444) into move_temp_to_file()
+
+Julien Danjou (1):
+     git submodule: fix usage line
+
+Junio C Hamano (12):
+     git-repack: resist stray environment variable
+     has_sha1_pack(): refactor &quot;pretend these packs do not exist&quot; interface
+     has_sha1_kept_pack(): take &quot;struct rev_info&quot;
+     Consolidate ignore_packed logic more
+     Simplify is_kept_pack()
+     is_kept_pack(): final clean-up
+     diff --cached: do not borrow from a work tree when a path is marked as assume-unchanged
+     &quot;core.sharedrepository = 0mode&quot; should set, not loosen
+     move_temp_to_file(): do not forget to chmod() in &quot;Coda hack&quot; codepath
+     set_shared_perm(): sometimes we know what the final mode bits should look like
+     Start 1.6.2.3 preparation
+     GIT 1.6.2.3
+
+Linus Torvalds (1):
+     process_{tree,blob}: Remove useless xstrdup calls
+
+Markus Heidelberg (1):
+     doc/git-pack-refs: fix two grammar issues
+
+Matthieu Moy (3):
+     git-checkout.txt: fix incorrect statement about HEAD and index
+     git-checkout.txt: clarify that &lt;branch&gt; applies when no path is given.
+     git-pull.sh: better warning message for &quot;git pull&quot; on detached head.
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

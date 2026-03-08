@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Updating to Git 1.6.1.1 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Updating to Git 1.6.1.1</h1></div><div class="metadata"><relative-time created="1232983858" updated="1709676231">Created 1/26/2009, updated 3/5/2024</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>I didn't update my local <a href="/wiki/Mac_OS_X">Mac OS X</a> install because 1.6.1.1 still has failing tests on Mac OS X.</p>
+<pre><code>*** t2300-cd-to-toplevel.sh ***
+*   ok 1: at physical root
+*   ok 2: at physical subdir
+* FAIL 3: at symbolic root
+
+			(
+				cd 'symrepo' &amp;&amp;
+				. git-sh-setup &amp;&amp;
+				cd_to_toplevel &amp;&amp;
+				[ &quot;$(/bin/pwd)&quot; = &quot;$TOPLEVEL&quot; ]
+			)
+
+* FAIL 4: at symbolic subdir
+
+			(
+				cd 'subdir-link' &amp;&amp;
+				. git-sh-setup &amp;&amp;
+				cd_to_toplevel &amp;&amp;
+				[ &quot;$(/bin/pwd)&quot; = &quot;$TOPLEVEL&quot; ]
+			)
+
+* FAIL 5: at internal symbolic subdir
+
+			(
+				cd 'internal-link' &amp;&amp;
+				. git-sh-setup &amp;&amp;
+				cd_to_toplevel &amp;&amp;
+				[ &quot;$(/bin/pwd)&quot; = &quot;$TOPLEVEL&quot; ]
+			)
+
+* failed 3 among 5 test(s)
+make[2]: *** [t2300-cd-to-toplevel.sh] Error 1
+make[1]: *** [all] Error 2
+make: *** [test] Error 2
+</code></pre>
+<p>The fix is already in the &quot;next&quot; branch, but hasn't made it into a released version of <a href="/wiki/Git">Git</a> yet:</p>
+<pre><code>commit dd6c1360b22ee89cb179e2a1fface98ecbeb7b3e
+Author: Marcel M. Cary &lt;marcel@oak.homeunix.org&gt;
+Date:   Tue Dec 30 07:10:24 2008 -0800
+
+    git-sh-setup: Fix scripts whose PWD is a symlink to a work-dir on OS X
+
+    On Mac OS X and possibly BSDs, /bin/pwd reads PWD from the environment if
+    available and shows the logical path by default rather than the physical
+    one.
+
+    Unset PWD before running /bin/pwd in both cd_to_toplevel and its test.
+
+    Still use the external /bin/pwd because in my Bash on Linux, the builtin
+    pwd prints the same result whether or not PWD is set.
+
+    Signed-off-by: Marcel M. Cary &lt;marcel@oak.homeunix.org&gt;
+    Tested-by: Greg Hurrell &lt;greg@hurrell.net&gt; (on Mac OS X 10.5.5)
+    Tested-by: Marcel Koeppen &lt;git-dev@marzelpan.de&gt; (on Mac OS X 10.5.6)
+    Signed-off-by: Junio C Hamano &lt;gitster@pobox.com&gt;
+
+diff --git a/git-sh-setup.sh b/git-sh-setup.sh
+index f07d96b..2142308 100755
+--- a/git-sh-setup.sh
++++ b/git-sh-setup.sh
+@@ -96,7 +96,7 @@ cd_to_toplevel () {
+                ..|../*|*/..|*/../*)
+                        # Interpret $cdup relative to the physical, not logical, cwd.
+                        # Probably /bin/pwd is more portable than passing -P to cd or pwd.
+-                       phys=&quot;$(/bin/pwd)/$cdup&quot;
++                       phys=&quot;$(unset PWD; /bin/pwd)/$cdup&quot;
+                        ;;
+                *)
+                        # There's no &quot;..&quot;, so no need to make things absolute.
+diff --git a/t/t2300-cd-to-toplevel.sh b/t/t2300-cd-to-toplevel.sh
+index beddb4e..e42cbfe 100755
+--- a/t/t2300-cd-to-toplevel.sh
++++ b/t/t2300-cd-to-toplevel.sh
+@@ -10,12 +10,12 @@ test_cd_to_toplevel () {
+                        cd '&quot;'$1'&quot;' &amp;&amp;
+                        . git-sh-setup &amp;&amp;
+                        cd_to_toplevel &amp;&amp;
+-                       [ &quot;$(/bin/pwd)&quot; = &quot;$TOPLEVEL&quot; ]
++                       [ &quot;$(unset PWD; /bin/pwd)&quot; = &quot;$TOPLEVEL&quot; ]
+                )
+        '
+ }
+
+-TOPLEVEL=&quot;$(/bin/pwd)/repo&quot;
++TOPLEVEL=&quot;$(unset PWD; /bin/pwd)/repo&quot;
+ mkdir -p repo/sub/dir
+ mv .git repo/
+ SUBDIRECTORY_OK=1
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

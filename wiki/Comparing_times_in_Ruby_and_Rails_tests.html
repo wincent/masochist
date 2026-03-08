@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Comparing times in Ruby and Rails tests • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Comparing times in Ruby and Rails tests</h1></div><div class="metadata"><relative-time created="1296786752" updated="1495119989">Created 2/4/2011, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/rails">rails</a></li><li><a href="/tags/testing">testing</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>The pitfall</h2>
+<p>One thing I've found when writing specs for Active Record models is that simple timestamp comparisons can often fail in a surprising ways. The reason for this is as follows:</p>
+<pre><code class="language-ruby">post = Post.create      # save a post to the database
+other = Post.last       # load the post back from the database
+
+# some surprising results
+other == post                                  # =&gt; true
+other.updated_at == post.updated_at            # =&gt; false
+other.updated_at.to_s == post.updated_at.to_s  # =&gt; true
+other.updated_at.to_f == post.updated_at.to_f  # =&gt; false
+
+# so why is this happening?
+post.updated_at         # =&gt; Fri, 04 Feb 2011 02:13:57 UTC +00:00
+other.updated_at        # =&gt; Fri, 04 Feb 2011 02:13:57 UTC +00:00
+post.updated_at.to_f    # =&gt; 1296785637.88479
+other.updated_at.to_f   # =&gt; 1296785637.0
+</code></pre>
+<p>As you can see, when we first write to the database our in-memory copy of the record has a non-integral timestamp corresponding to the exact value of <code>Time.now</code> at the time the record was written, including microseconds.</p>
+<p>When we do a <code>post.reload</code> or otherwise read the data back (via <code>Post.find</code> or <code>Post.last</code> etc), we see that the actual timestamp in the database is rounded off to a whole number of seconds.</p>
+<p>As a result, even though the two record instances really refer to the same record in the database and the <code>updated_at</code> attribute should therefore be the same, the actual values are non-identical because one of them is rounded off during the round-trip through the database while the other retains its original, exact value.</p>
+<p>There are a zillion different ways in which this kind of thing can spring up in a spec suite and I won't bother listing them here, but you'll recognize the problem when you see it because two seemingly equivalent dates, <code>a</code> and <code>b</code>, when compared using <code>a.should == b</code> or similar will cause your specs to fail.</p>
+<h2>Workarounds</h2>
+<h3>Compare strings rather than dates</h3>
+<pre><code class="language-ruby">model.updated_at.to_s.should == other.updated_at.to_s
+</code></pre>
+<h3>Use the <code>be_within</code>/<code>of</code> matcher</h3>
+<pre><code class="language-ruby">model.updated_at.should be_within(1).of(other.updated_at)
+</code></pre>
+<p>This works because the <code>be_within</code> matcher does a subtraction of the two <code>Time</code> instances, which returns a float.</p>
+<h3>Reload</h3>
+<p>This one is a little unseemly. With this technique, when you create a model, you perform an immediate <code>model.reload</code> in order to get the round-trip out the way before you try any comparisons.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

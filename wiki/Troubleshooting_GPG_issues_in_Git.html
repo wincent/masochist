@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Troubleshooting GPG issues in Git • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Troubleshooting GPG issues in Git</h1></div><div class="metadata"><relative-time created="1677404591" updated="1677404591">2/26/2023</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/git">git</a></li><li><a href="/tags/gpg">gpg</a></li></ul><div class="prerendered"><p>I was seeing commits fail with:</p>
+<pre><code>error: gpg failed to sign the data
+fatal: failed to write commit object
+</code></pre>
+<p>Running with <code>GIT_TRACE=1</code> (eg. <code>GIT_TRACE=1 git commit ...</code>) revealed that it was trying to run this command:</p>
+<pre><code>10:59:49.263641 run-command.c:654       trace: run_command: gpg --status-fd=2 -bsau 'Greg Hurrell &lt;greg@hurrell.net&gt;'
+</code></pre>
+<p>ie. it was trying to use the wrong email address.</p>
+<p>Some related troubleshooting commands that I ran while investigating (unfortunately, I jotted these down so long ago I can't remember <em>why</em> I was looking into hostname stuff while troubleshooting the GPG issues... 🤦 — maybe it had nothing to do with it):</p>
+<pre><code>scutil --get ComputerName
+scutil --get LocalHostName
+scutil --get HostName
+
+sudo scutil --set HostName $NAME
+
+killall gpg-agent
+</code></pre>
+<p>Via: <a href="https://apple.stackexchange.com/a/53042/158927">StackExchange, &quot;OS X computer name not matching what shows on terminal&quot;</a></p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

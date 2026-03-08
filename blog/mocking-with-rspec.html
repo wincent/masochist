@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Mocking with RSpec • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/mocking-with-rspec">Mocking with RSpec</a></h1><div class="metadata"><relative-time created="1235243392" updated="1584053324">Created 2/21/2009, updated 3/12/2020</relative-time><span>2 minute read</span></div><div class="prerendered"><p>It's been a while since I heaped any praise on <a href="/wiki/RSpec">RSpec</a>, but I just had a nice experience with mock objects provided by the framework and wanted to briefly mention it here.</p>
+<p>First up, the problem; the following buggy code in the admin interface for moderating issues:</p>
+<pre><code>def index
+  @paginator  = Paginator.new params,
+                              Issue.count(:conditions =&gt; { :awaiting_moderation =&gt; true }),
+                              admin_issues_url
+  @issues     = Issue.find :all,
+                           :offset =&gt; @paginator.offset,
+                           :conditions =&gt; { :awaiting_moderation =&gt; true },
+                           :order =&gt; 'created_at DESC'
+end
+</code></pre>
+<p>The <code>Paginator</code> instance by default assumes 10 records per page, but the corresponding <code>find</code> statement on the <code>Issue</code> model has no limit at all, always returning all the records awaiting moderation.</p>
+<p>So the fix will be to add a <code>:limit</code> clause to the <code>find</code> statement. While we're at it we'll raise the per-page record count from its default of 10 up to 20:</p>
+<pre><code>def index
+  @paginator  = Paginator.new params,
+                              Issue.count(:conditions =&gt; { :awaiting_moderation =&gt; true }),
+                              admin_issues_url,
+                              20
+  @issues     = Issue.find :all,
+                           :offset =&gt; @paginator.offset,
+                           :conditions =&gt; { :awaiting_moderation =&gt; true },
+                           :order =&gt; 'created_at DESC',
+                           :limit =&gt; @paginator.limit
+end
+</code></pre>
+<p>Before committing this fix, however, I want to add a regression test to my spec suite to make sure that the bug never creeps back in.</p>
+<p>RSpec's <a href="http://rspec.info/documentation/mocks/message_expectations.html">message expectations</a> allow me to define pretty much exactly what I want and no more:</p>
+<pre><code>it 'should paginate in groups of 20' do
+  paginator = Paginator.new({}, 100, 'foo', 20)
+  Paginator.should_receive(:new).with(anything(), anything(), anything(), 20).and_return(paginator)
+  Issue.should_receive(:find).with(anything(), hash_including(:limit =&gt; paginator.limit))
+  do_get
+end
+</code></pre>
+<p>Basically I want to make sure that the <code>Paginator</code> receives a per-page limit of 20, and also that <code>Issue</code> gets the corresponding <code>:limit</code> clause. The <code>anything()</code> and <code>hash_including()</code> expectation helpers provide me with pretty much exactly what I want, allowing me to specify only the bits that are actually relevant to the expectation and leaving the rest unspecified.</p>
+<p>Good stuff!</p>
+</div><ul class="tags"><li><a href="/tags/rspec">rspec</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/february-server-maintenance">← February server maintenance</a></div><div class="post-nav-next"><a href="/blog/firefox-and-self-signed-ssl-certificates">Firefox and self-signed SSL certificates →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

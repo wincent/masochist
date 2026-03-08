@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Text encoding in Ruby • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Text encoding in Ruby</h1></div><div class="metadata"><relative-time created="1182357477" updated="1584053324">Created 6/20/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>When writing a <a href="/wiki/C">C</a> extension for <a href="/wiki/Ruby">Ruby</a> it may be necessary to have knowledge about the <a href="/wiki/text_encoding">text encoding</a> of strings used at runtime. In my specific case I needed to take an input string and convert it to <a href="/wiki/UCS-2">UCS-2</a> before handing it off to an external library, because that is the encoding expected by the library. In order to perform the conversion, I needed to be sure of the source encoding as well. The question is, how?</p>
+<p>I asked about this on <a href="/wiki/comp.lang.ruby">comp.lang.ruby</a> <a href="http://groups.google.com/group/comp.lang.ruby/browse_thread/thread/ceaca6e814073d5c/">here</a> but didn't receive any replies. The following are the results of my own research and analysis.</p>
+<h2>Build time</h2>
+<p>Analysis of <code>configure.in</code> and <code>configure</code> suggests that the default <code>$KCODE</code> value is <code>KCODE_NONE</code>, although it can be manually overridden with the <code>--with-default-kcode</code> switch to <code>configure</code>. Before compilation the default is added to <code>config.h</code> as a <code>DEFAULT_KCODE</code> macro.</p>
+<p>In <code>defines.h</code> and in the case that <code>DEFAULT_KCODE</code> is not set, it will be set to either <code>KCODE_SJIS</code> or <code>KCODE_EUC</code>, depending on the build platform. However, in reality <code>DEFAULT_KCODE</code> should never be unset (in all the files I've looked at, including <code>ruby.h</code>, <code>config.h</code> is included before <code>defines.h</code>) so I don't believe this ever occurs.</p>
+<p>It appears that in reality, the only place that <code>DEFAULT_KCODE</code> is used is in <code>re.c</code>.</p>
+<h2>Analysis of <code>string.c</code></h2>
+<p>There are three main string creation methods defined in <code>string.c</code> and they appear to be largely encoding-agnostic:</p>
+<ul>
+<li><code>str_new</code></li>
+<li><code>rb_str_new</code></li>
+<li><code>rb_str_new2</code></li>
+</ul>
+<p>Ultimately it seems that <code>String</code> objects are nothing more than containers for bytes of data. There is no default encoding enforced at the <a href="/wiki/Ruby">Ruby</a> level.</p>
+<h3><code>str_new</code></h3>
+<p>Merely allocates memory and copies memory using <code>memcpy</code>. Expects a pointer and length describing the source block from which to copy. No notion of encoding, just works with raw bytes. Takes a <code>klass</code> parameter which allows you to create instances of <code>String</code>-like classes.</p>
+<h3><code>rb_str_new</code></h3>
+<p>Calls <code>str_new</code> and uses it to create a standard <code>String</code> instance. Expects a pointer and length describing the source block from which to copy. No notion of encoding.</p>
+<h3><code>rb_str_new2</code></h3>
+<p>Expects a pointer to a null-terminated string. Calls <code>strlen</code> to determine string length. <code>strlen</code> should be encoding-agnostic insofar as it just counts bytes until it hits a terminating <code>NUL</code> character. This means that all standard <a href="/wiki/C">C</a> strings should work. Non-<a href="/wiki/ASCII">ASCII</a> encodings <em>might</em> work unless it contains embedded (non-terminating) <code>NUL</code> bytes.</p>
+<h2>Analysis of <code>io.c</code></h2>
+<p>Methods like <code>puts</code> eventually end up calling the <code>io_write</code> function, which in turn calls <code>io_fwrite</code> which in turn calls <code>write</code>. So there is generally no awareness of encoding when emitting strings, just like when creating strings.</p>
+<p>Basically, then, the input encoding depends on one of several things:</p>
+<ul>
+<li>The input file encoding, if reading from a file</li>
+<li>The terminal encoding, if running inside a <a href="/wiki/terminal">terminal</a> (for example, when using <code>IRB</code>)</li>
+<li>The transmission encoding, if sent by a client to a <a href="/wiki/web">web</a> server</li>
+<li>The database encoding, if the input comes from a database</li>
+</ul>
+<h2>Empirical analysis</h2>
+<h3><a href="/wiki/Mac_OS_X">Mac OS X</a>, <a href="/wiki/PowerPC">PowerPC</a> (<a href="/wiki/big-endian">big-endian</a>)</h3>
+<p>Output of <code>uname -psrv</code>:</p>
+<pre><code>Darwin 8.9.0 Darwin Kernel Version 8.9.0: Thu Feb 22 20:54:07 PST 2007; root:xnu-792.17.14~1/RELEASE_PPC powerpc
+</code></pre>
+<p>Output of <code>ruby -v</code>:</p>
+<pre><code>ruby 1.8.2 (2004-12-25) [powerpc-darwin8.0]
+</code></pre>
+<p>On <a href="/wiki/Mac_OS_X">Mac OS X</a> the environment settings in <code>LANG</code> and <code>LC_*</code> have no effect. The encoding setting in the <a href="/wiki/Terminal">Terminal</a> (accessible by pressing Command-I) controls what encoding is used for input text, and also how output is interpreted.</p>
+<h3><a href="/wiki/Mac_OS_X">Mac OS X</a>, <a href="/wiki/Intel">Intel</a> (<a href="/wiki/little-endian">little-endian</a>)</h3>
+<p>Output of <code>uname -psrv</code>:</p>
+<pre><code>Darwin 8.9.1 Darwin Kernel Version 8.9.1: Thu Feb 22 20:55:00 PST 2007; root:xnu-792.18.15~1/RELEASE_I386 i386
+</code></pre>
+<p>Output of <code>ruby -v</code>:</p>
+<pre><code>ruby 1.8.6 (2007-03-13 patchlevel 0) [i686-darwin8.8.1]
+</code></pre>
+<h3><a href="/wiki/Red_Hat_Enterprise_Linux">Red Hat Enterprise Linux</a>, <a href="/wiki/AMD">AMD</a> (<a href="/wiki/little-endian">little-endian</a>)</h3>
+<p>Output of <code>uname -srvmpio</code>:</p>
+<pre><code>Linux 2.4.21-50.EL #1 Tue May 8 17:18:10 EDT 2007 i686 athlon i386 GNU/Linux
+</code></pre>
+<p>Output of <code>ruby -v</code>:</p>
+<pre><code>ruby 1.8.6 (2007-03-13 patchlevel 0) [i686-linux]
+</code></pre>
+<h3><a href="/wiki/Windows">Windows</a>, <a href="/wiki/Intel">Intel</a> (<a href="/wiki/little-endian">little-endian</a>)</h3>
+<p>Banner on running <code>cmd.exe</code>:</p>
+<pre><code>Microsoft Windows XP [Version 5.1.2600]
+</code></pre>
+<p>Output of <code>ruby -v</code>:</p>
+<pre><code>ruby 1.8.6 (2007-03-13 patchlevel 0) [i386-mswin32]
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

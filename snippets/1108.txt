@@ -1,0 +1,3 @@
+
+89ca6a6 Update to Rails 4.2.1
+40fc3cd Update db/schema.rb

@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Migrating the WinSwitch repository from Subversion to Git • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Migrating the WinSwitch repository from Subversion to Git</h1></div><div class="metadata"><relative-time created="1238610787" updated="1710259978">Created 4/1/2009, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/subversion">subversion</a></li><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Local import</h2>
+<pre><code>$ cat ~/.svn-authors
+wincent = Greg Hurrell &lt;greg@hurrell.net&gt;
+$ git svn clone --stdlayout -A ~/.svn-authors svn+ssh://svn.example.com/WinSwitch src
+</code></pre>
+<h2>Remote configuration</h2>
+<pre><code>$ cd /pub/git/path_to_public_repos
+$ sudo -u git mkdir WinSwitch.git
+$ cd WinSwitch.git
+$ sudo -H -u git git --bare init
+$ sudo -u git touch git-daemon-export-ok
+$ echo &quot;Fast User Switching menu replacement for Mac OS X&quot; | sudo -u git tee description
+$ echo &quot;WinSwitch.git example@example.com&quot; | sudo -u git tee -a /pub/git/conf/gitweb-projects
+</code></pre>
+<h2>Initial push</h2>
+<pre><code>$ git tag -s r77 # tag initial Subversion import, corresponding to revision 77
+$ git remote add origin git.wincent.dev:/pub/git/path_to_public_repos/WinSwitch.git
+$ git config branch.master.remote origin
+$ git config branch.master.merge refs/heads/master
+$ git push --all
+$ git push --tags
+</code></pre>
+<h2>Access</h2>
+<p>You can now create a clone of the repo using:</p>
+<pre><code>$ git clone git://git.wincent.dev/WinSwitch.git
+</code></pre>
+<h2>Local cleanup</h2>
+<p>Seeing as I have no intention of ever committing to the old Subversion repo again, I remove the corresponding configuration to make sure that I never accidentally commit to the old repo:</p>
+<pre><code>$ git config --remove-section svn-remote.svn
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Doing_a_one-off_migration_from_Subversion_to_Git">Doing a one-off migration from Subversion to Git</a> (an older article, detailing my first experiences importing the full history of a <a href="/wiki/Subversion">Subversion</a> repository into <a href="/wiki/Git">Git</a>)</li>
+<li><a href="/blog/commit-messages">Commit messages</a> (<a href="/wiki/blog">blog</a> post on the quality of the commit messages in the WinSwitch repo)</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

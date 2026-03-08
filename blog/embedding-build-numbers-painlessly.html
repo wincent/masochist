@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Embedding build numbers painlessly • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/embedding-build-numbers-painlessly">Embedding build numbers painlessly</a></h1><div class="metadata"><relative-time created="1138242540" updated="1710259978">Created 1/26/2006, updated 3/12/2024</relative-time><span>5 minute read</span></div><div class="prerendered"><p>Earlier today I was lamenting in the &quot;mini-log&quot; that lives on the left-hand side of my <a href="http://wincent.dev/a/about/wincent/weblog/">weblog</a>:</p>
+<blockquote>
+<p>Synergy Advance is a huge project with lots of dependencies. I'd really like to know why it insists on rebuilding almost all of the dependent projects every time I build... It means that if I change a single line of code I end up having to recompile the entire project and that takes many, many minutes. Do that lots of times in the day and it starts to add up.</p>
+</blockquote>
+<p>Well, after identifying the problem I think I've now come up with a solution.</p>
+<h5>The problem</h5>
+<p>The problem was easy enough to identify. I like to embed build numbers in my binaries so that you get meaningful, informative output when you run the <code>what</code> command-line tool on them. The problem is that embedding these numbers on every build makes Xcode think that the source code has changed, so it will recompile the project even if nothing else has changed. Then every other project that depends on that project will need to be rebuilt (or at the very least re-linked) as well. This becomes a problem when you have a complex hierarchy of projects like I do in Synergy Advance. The tree looks something like this:</p>
+<ul>
+<li>Synergy Advance application
+<ul>
+<li>Synergy Advance framework
+<ul>
+<li>WOBase framework
+<ul>
+<li>WOTest framework</li>
+<li>WODebug framework
+<ul>
+<li>WOTest framework</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>WODebug framework
+<ul>
+<li>WOTest framework</li>
+</ul>
+</li>
+<li>WOTest framework</li>
+</ul>
+</li>
+<li>WOBase framework
+<ul>
+<li>WOTest framework</li>
+<li>WODebug framework
+<ul>
+<li>WOTest framework</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>WOBezel framework
+<ul>
+<li>WOTest framework</li>
+<li>WODebug framework
+<ul>
+<li>WOTest framework</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>WOHotKey framework
+<ul>
+<li>WOTest framework</li>
+<li>WODebug framework
+<ul>
+<li>WOTest framework</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Various plug-ins
+<ul>
+<li>Synergy Advance Framework
+<ul>
+<li>WOBase framework
+<ul>
+<li>WOTest framework</li>
+<li>WODebug framework
+<ul>
+<li>WOTest framework</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>WODebug framework
+<ul>
+<li>WOTest framework</li>
+</ul>
+</li>
+<li>WOTest framework</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Various Preference Panes
+<ul>
+<li>Synergy Advance Framework
+<ul>
+<li>WOBase framework
+<ul>
+<li>WOTest framework</li>
+<li>WODebug framework
+<ul>
+<li>WOTest framework</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>WODebug framework
+<ul>
+<li>WOTest framework</li>
+</ul>
+</li>
+<li>WOTest framework</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>WOTest framework</li>
+</ul>
+</li>
+</ul>
+<p>And this chart hides some of the complexity because the plug-ins and preference panes are all grouped together under the two &quot;various&quot; headings, and the WODebug framework itself includes an application (Wincent Crash Reporter) which itself depends on the framework; so everywhere you see &quot;WODebug framework&quot; in the list above the actual dependency graph looks like this (references to WOTest omitted for clarity):</p>
+<ul>
+<li>WODebug framework
+<ul>
+<li>Wincent Crash Reporter
+<ul>
+<li>WODebug framework without Wincent Crash Reporter</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>All that modularity is a trade-off of one type of complexity for another. The dependency graph starts to look horrible and compile times go up, but it allows me to work on smaller pieces of code at a time and benefit from code re-use and so in theory speeds up development. In practice, however, things are not so pretty. Every time I built the project the and the build numbers were getting bumped on the lower-level dependencies (WODebug, for example) everything that depended on it was getting needlessly re-built and/or re-linked.</p>
+<h5>The solution</h5>
+<p>The solution is to selectively bump the build numbers only when something actually changes in the source tree. I came up with the following script that checks for file hierarchy changes and calculates a hash that represents the state of the hierarchy. It produces a different hash whenever the modification date of any file in the source tree is changed, or any file is added, removed or renamed. I've omitted the &quot;-a&quot; switch to &quot;ls&quot; so it won't consider invisible files.</p>
+<pre><code>#!/bin/sh
+
+
+/bin/mkdir -p &quot;${DERIVED_FILE_DIR}&quot;
+
+
+TREEINFO=`/bin/ls -lTR &quot;${SOURCE_ROOT}&quot;`
+NEWHASH=`echo &quot;${TREEINFO}&quot; | /usr/bin/openssl sha1`
+HASHFILE=&quot;${DERIVED_FILE_DIR}/${FULL_PRODUCT_NAME}.sourcehash&quot;
+INFOFILE=&quot;${DERIVED_FILE_DIR}/${FULL_PRODUCT_NAME}.treeinfo&quot;
+
+
+echo &quot;Source tree hash: ${NEWHASH}&quot;
+
+
+if [ -f &quot;${HASHFILE}&quot; ]; then
+  OLDHASH=`/bin/cat &quot;${HASHFILE}&quot;`
+  echo &quot;Old source tree hash: ${OLDHASH}&quot;
+  if [ $OLDHASH = $NEWHASH ]; then
+    echo &quot;Source tree unchanged: not updating build number&quot;
+    exit 0
+  else
+    if [ -f &quot;${INFOFILE}&quot; ]; then
+      echo &quot;Tree differences:&quot;
+      echo &quot;${TREEINFO}&quot; | /usr/bin/diff &quot;${INFOFILE}&quot; -
+    fi
+  fi
+fi
+
+
+echo &quot;Updating build version number&quot;
+. &quot;${SOURCE_ROOT}/../../WOBase/svn-files/UpdateBuildVersionNumbers.sh&quot; \
+  &quot;WODebug_Version.h&quot;
+
+
+# updating the build number changes the hash, so must update it:
+TREEINFO=`/bin/ls -lTR &quot;${SOURCE_ROOT}&quot;`
+NEWHASH=`echo &quot;${TREEINFO}&quot; | /usr/bin/openssl sha1`
+
+
+echo &quot;Writing hash to disk&quot;
+echo &quot;${NEWHASH}&quot; &gt; &quot;${HASHFILE}&quot;
+echo &quot;Writing tree info to disk&quot;
+echo &quot;${TREEINFO}&quot; &gt; &quot;${INFOFILE}&quot;
+</code></pre>
+<p>The <code>UpdateBuildVersionNumbers.sh</code> script referenced above is hideously complex and so rather than show it/explain here I'll leave imagining how it might work in the &quot;exercise for the reader&quot; category. It suffices to say that it parses the &quot;WODebug_Version.h&quot; file and bumps the build number and updates the other info as appropriate.</p>
+<p>I can't foresee any problems with rolling the functionality of this script into the <code>UpdateBuildVersionNumbers.sh</code> script itself so I'll probably do that shortly so that I can benefit from this work in all of my projects which use that script.</p>
+<h5>Does it work?</h5>
+<p>In the small amount of testing I've done since putting together the solution it does indeed appear to work as you would expect. If you rebuild a project the dependent projects only get rebuilt if they've actually changed. If you hit &quot;Clean All&quot; then you blow away the hash and &quot;tree info&quot; files and so the dependent projects get rebuilt too (which is what you'd expect when you hit &quot;Clean All&quot;!).</p>
+<p>I included the <code>diff</code> output that shows the differences between source trees because I wanted to see what changes were being made which would provoke a full rebuild. It turns out that occasionally Xcode makes changes to the <code>xcodeproj</code> bundle and the files inside it and these are enough to provoke a build number update. I don't know what it is that Xcode's doing to these files nor why, but it doesn't seem to happen often enough to warrant specifically excluding those files from the hash calculation (on the next build Xcode tends to leave the files untouched, and so the hash remains unchanged and unnecessary build number bumping and rebuilding is avoided).</p>
+<p>A limitation of the script is that it will be easily fooled by nested source hierarchies. For example, my &quot;Synergy Advance Framework&quot; source hierarchy is actually a subdirectory of the main &quot;Synergy Advance&quot; folder. This means that if the framework build number is bumped the application build number <em>will</em> get bumped even if there are no changes to the application's source itself. This may be exactly the behavior that you're looking for but in my case I prefer that the build number for &quot;X&quot; be independent of the build number for &quot;Y&quot; even if &quot;X&quot; depends on &quot;Y&quot;; it's the combination of the two that's meaningful anyway. So I think that I'll end up moving the framework source to a separate location so that this kind of thing doesn't happen.</p>
+<p>This has shaved huge amounts of time off of my builds. It's still a large project and it still takes a non-trivial amount of time to build (Xcode still checks the project dependencies, still runs any other shell script phases set to run in the dependent projects, and still links the dependent projects and makes Universal Binaries of them) but even so we are still talking of a time saving that is probably in the &quot;several orders of magnitude&quot; ballpark. I just wish I'd done this sooner. <em>Why didn't I?</em></p>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/my-favorite-programming-book">← My favorite programming book</a></div><div class="post-nav-next"><a href="/blog/nsnumber-vs-bool">NSNumber vs BOOL →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>OBS cheatsheet • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>OBS cheatsheet</h1></div><div class="metadata"><relative-time created="1622321672" updated="1736516595">Created 5/29/2021, updated 1/10/2025</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/arch">arch</a></li><li><a href="/tags/obs">obs</a></li><li><a href="/tags/cheatsheet">cheatsheet</a></li></ul><div class="prerendered"><p>Just making some notes for this stuff because I find it tremendously fiddly and sensitive.</p>
+<p>Topics covered:</p>
+<ul>
+<li><strong>Bluetooth</strong>.</li>
+<li><strong>USB</strong>.</li>
+<li><strong>OBS:</strong> OBS itself (screencasting software).</li>
+<li><strong>Audacious:</strong> For playing background music.</li>
+<li><strong>screenkey:</strong> For showing keypresses.</li>
+<li><strong>irssi:</strong> For showing Twitch chat.</li>
+<li><strong>VLC:</strong> For checking recordings.</li>
+</ul>
+<p>Overview:</p>
+<ol>
+<li>Make sure passphrase is already in <code>ssh-agent</code>, to avoid having to type passphrase on stream: <code>ssh-add</code>.</li>
+<li>Bump font size in kitty (<code>Control-Shift-+</code> x 5).</li>
+<li>Ensure Bluetooth is running and headphones are connected.</li>
+<li><del>Ensure virtual sink is running.</del> (This is now happening automatically.)</li>
+<li>Open Audacious, pavucontrol, and OBS (last).</li>
+<li>If webcam isn't working (sigh), unplug it and replug it; you may have to remove and re-add the video source in OBS. And if you lose the keyboard and have to disconnect it, it may come back without Colemak, so be ready to run <code>arst</code>/<code>asdf</code> to put it back.</li>
+</ol>
+<h2>Bluetooth</h2>
+<pre><code>$ systemctl start bluetooth # if `systemctl status bluetooth` not already &quot;active (running)&quot;
+$ bluetoothctl
+[bluetooth]# power on
+[bluetooth]# connect 14:3F:A6:2C:8E:98
+[bluetooth]# quit
+</code></pre>
+<ul>
+<li>If sound quality is ever bad and Audacious shows the headset as being stuck on a low-quality codec (like SBC instead of AAC), you may need to <code>systemctl restart bluetooth</code> and/or turn the headphones on and off.</li>
+<li>If no sound at all is coming out of the headset despite everything else seeming to be correct, try switching codecs away from AAC and back.</li>
+<li>For more Bluetooth troubleshooting hints, see <a href="/wiki/Arch_Linux_cheatsheet">Arch Linux cheatsheet</a>.</li>
+</ul>
+<h2>USB</h2>
+<p>If the keyboard spontaneously disconnects after telling OBS to use the webcam as a source, you're probably out of luck. I haven't found a solution for this yet. Unplugging the keyboard and plugging it in again doesn't work; toggling the USB hub back and forth does bring the keyboard back, but causes OBS to drop the webcam.</p>
+<h2>OBS</h2>
+<h3>Audio Mixer</h3>
+<ul>
+<li>Audacious
+<ul>
+<li>Filters:
+<ul>
+<li>Duckety &quot;Ducking&quot; McDuckface
+<ul>
+<li>Ratio: 12.00:1</li>
+<li>Threshold: -35.00 dB (the correct value is very sensitive to the noise level in the environment: the louder I am, the closer I can get to zero; as I and the environment get quieter, I have to drop further into negative territory).</li>
+<li>Attack: 6 ms</li>
+<li>Release: 1000 ms</li>
+<li>Output Gain: 0.00 dB</li>
+<li>Sidechain/Ducking source: Mic/Aux</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Mic/Aux
+<ul>
+<li>Filters:
+<ul>
+<li>Limiter
+<ul>
+<li>Threshold: -9.00 dB</li>
+<li>Release: 60 ms</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Advanced Audio Properties
+<ul>
+<li>Audacious:
+<ul>
+<li>Volume: -15.0 dB</li>
+<li>Audio Monitoring: Monitor and Output</li>
+</ul>
+</li>
+<li>Mic/Aux:
+<ul>
+<li>Volume: 0.0 dB</li>
+<li>Audio Monitoring: Monitor Off (I used to monitor this, but the lag messes with your brain)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Scenes</h3>
+<ul>
+<li>&quot;Paused&quot;
+<ul>
+<li>Sources:
+<ul>
+<li>Audacious</li>
+<li>Text</li>
+<li>Image</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>&quot;Casting&quot;
+<ul>
+<li>Sources:
+<ul>
+<li>Audacious</li>
+<li>Video Capture Device (V4L2)</li>
+<li>Screen Capture
+<ul>
+<li>Screen DisplayPort-1 (3840x2160 @ 0,0)</li>
+<li>Capture Cursor</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Note: can use the same &quot;Audacious&quot; source in both scenes using &quot;Copy&quot; and &quot;Paste (reference)&quot;</p>
+<h3>Settings</h3>
+<h4>General</h4>
+<ul>
+<li>Output:
+<ul>
+<li>Automatically record when streaming.</li>
+<li>Keep recording when stream stops.</li>
+</ul>
+</li>
+</ul>
+<h4>Stream</h4>
+<ul>
+<li>Service: Twitch</li>
+<li>Server: Auto (Recommended)</li>
+<li>Stream Key: <code>$TEH_SECRET_KEY</code></li>
+<li>Maximum Video Bitrate: 6000 kbps</li>
+<li>Maximum Audio Bitrate: 320 kbps</li>
+</ul>
+<h4>Output</h4>
+<ul>
+<li>Output Mode: Simple
+<ul>
+<li>Streaming
+<ul>
+<li>Video Bitrate: 6000 Kbps</li>
+<li>Encoder: Software (x264)</li>
+<li>Audio Bitrate: 160</li>
+</ul>
+</li>
+<li>Recording
+<ul>
+<li>Recording Quality: Same as stream</li>
+<li>Recording Format: mkv</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Output Mode: Advanced
+<ul>
+<li>Streaming
+<ul>
+<li>Rate Control: CBR</li>
+<li>Bitrate: 6000 Kbps</li>
+<li>CPU Usage Preset (higher = less CPU): medium</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Audio</h4>
+<ul>
+<li>General
+<ul>
+<li>Sample Rate: 48 kHz</li>
+<li>Channels: Stereo</li>
+</ul>
+</li>
+<li>Global Audio Devices
+<ul>
+<li>Mic/Auxiliary Audio: Blue Microphones Analog Stereo</li>
+</ul>
+</li>
+<li>Advanced:
+<ul>
+<li>Monitoring Device: Monitor of WH-1000XM4</li>
+</ul>
+</li>
+</ul>
+<p>One thing to note: I was getting low latency monitoring with this set-up, but as soon as I recorded a test video, latency spiked and didn't go down again until I changed the monitoring device setting to something else and then back again.</p>
+<h4>Video</h4>
+<ul>
+<li>Base (Canvas) Resolution: 3840x2160</li>
+<li>Output (Scaled) Resolution: 1920x1080</li>
+<li>Downscale Filter: Bilinear (Fastest, but blurry if scaling)</li>
+<li>Common FPS Values: 30</li>
+</ul>
+<h4>Hotkeys</h4>
+<ul>
+<li>Casting
+<ul>
+<li>Switch to scene: Control + Print</li>
+</ul>
+</li>
+<li>Paused
+<ul>
+<li>Switch to scene: Control + Pause</li>
+</ul>
+</li>
+<li>Mic/Aux
+<ul>
+<li>Mute: Control + Pause</li>
+<li>Unmute: Control + Print</li>
+</ul>
+</li>
+</ul>
+<h2>Audacious</h2>
+<ul>
+<li>Output
+<ul>
+<li>Audio Settings...
+<ul>
+<li>Audio
+<ul>
+<li>Output Settings
+<ul>
+<li>Output plugin: PulseAudio Output</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>pavucontrol</h2>
+<p>Check if the virtual sink is operating (although as of <a href="https://github.com/wincent/wincent/commit/1c77db558aa9a817b58d69828099f872013b2906">1c77db558aa9a817b5</a> it should persist across reboots):</p>
+<pre><code class="language-bash">pactl list | grep sink_name=Music
+</code></pre>
+<p>If not, create it:</p>
+<pre><code class="language-bash">pactl load-module module-null-sink sink_name=Music
+</code></pre>
+<ul>
+<li>Playback
+<ul>
+<li>System sounds: 100%</li>
+<li>Audacious: 100% - Music Audio/Sink sink (ie. the virtual sink)</li>
+<li><del>OBS-Monitor: Mic/Aux on, 100% - WH-1000XM4</del>; actually, this should be <em>off</em> otherwise the lag scrambles your brain.</li>
+<li>OBS-Monitor: Audacious on, 100% - WH-1000XM4; if everything is working, you will hear the ducking of the music when you talk, even though you don't hear your own voice.</li>
+</ul>
+</li>
+<li>Recording
+<ul>
+<li>OBS: Mic/Aux 100% from: Blue Microphones Analog Stereo</li>
+<li>OBS: Audacious 100% from: Monitor of Music Audio/Sink sink</li>
+</ul>
+</li>
+<li>Output Devices
+<ul>
+<li>Everything 100%</li>
+</ul>
+</li>
+<li>Input Devices
+<ul>
+<li>Everything 100%</li>
+</ul>
+</li>
+<li>Configuration
+<ul>
+<li>Everything default; eg.
+<ul>
+<li>WH-1000XM4
+<ul>
+<li>High Fidelity Playback (A2DP Sink, codec AAC)</li>
+</ul>
+</li>
+<li>Blue Microphones
+<ul>
+<li>Profile: Analog Stereo Duplex</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Note the extreme sketchiness of the &quot;Unknown input&quot; above, but it seems to be the only way to get all of this stuff plus the monitoring working acceptably. (&quot;Acceptably&quot; is a relative term; the longer my recordings go, the higher the latency of the monitoring seems to creep.)</p>
+<h2><code>screenkey</code></h2>
+<h3>Starting</h3>
+<ol>
+<li>Hit Command/Super+Space to bring up dmenu launcher.</li>
+<li>Type <code>screenkey</code> and hit enter.</li>
+</ol>
+<h3>Configuring</h3>
+<p>Config file lives at <code>~/.config/screenkey.json</code> (<a href="https://github.com/wincent/wincent/blob/main/aspects/dotfiles/files/.config/screenkey.json">current <code>main</code> contents</a>, <a href="https://github.com/wincent/wincent/blob/05c2c482244bfe452be372ed22bf1afcf94a5804/aspects/dotfiles/files/.config/screenkey.json">2022-02-21 snapshot</a>). Can get to preferences GUi from system tray icon, or by running <code>screenkey --show-settings</code>.</p>
+<h3>Manipulating i3-gaps to fit <code>screenkey</code></h3>
+<p>Given the <code>screenkey.json</code> I currently have committed to my dot-files, I need to use an outer bottom gap of 70 to stop <code>screenkey</code> from overlapping with my terminal (and other) windows.</p>
+<p>This does this trick:</p>
+<pre><code>i3-msg gaps bottom all set 70
+</code></pre>
+<p>As a convenience, I made a <code>gaps</code> function (<a href="https://github.com/wincent/wincent/blob/05c2c482244bfe452be372ed22bf1afcf94a5804/aspects/dotfiles/files/.zsh/functions#L183-L193">source</a>) that I can use to toggle this; example usage:</p>
+<pre><code>gaps on
+gaps off
+gaps 100
+</code></pre>
+<h3>How to turn off/on <code>screenkey</code> before/after entering passwords or other sensitive info</h3>
+<p>Hold Command/Super to reveal i3 task bar, then right-click screenkey icon in system tray and toggle the &quot;Show keys&quot; option.</p>
+<h3>Troubleshooting</h3>
+<p>I install <code>screenkey</code> by default, but it has on occasion stopped working for me with:</p>
+<pre><code>ModuleNotFoundError: No module named 'dbus'
+</code></pre>
+<p>Uninstalling and reinstalling did not fix it:</p>
+<pre><code>yay -R screenkey
+yay -S screenkey
+</code></pre>
+<p>But this did:</p>
+<pre><code>pip install dbus-python
+</code></pre>
+<h2>irssi</h2>
+<p>After initial set-up (see notes in <a href="/wiki/Arch_Linux_cheatsheet">Arch Linux cheatsheet</a>), basic usage:</p>
+<ol>
+<li>Run <code>irssi</code> in a tmux pane; this can be in the background if you want — new messages will cause tmux to show the pane as having received activity, and if they don't, you can try this<sup class="footnote-ref"><a href="#fn-beeps" id="fnref-beeps" data-footnote-ref>1</a></sup>:
+<ul>
+<li><code>/set beep_when_window_active ON</code></li>
+<li><code>/set beep_msg_level PUBLIC</code></li>
+</ul>
+</li>
+<li><code>/connect Twitch</code>.</li>
+<li><code>/join #greghurrell</code>.</li>
+<li>When you're done, <code>/quit</code> or <code>/exit</code>.</li>
+</ol>
+<!-- References -->
+<h2>VLC</h2>
+<p>You can set VLC audio output to go straight to the headphones (in <code>pavucontrol</code>) so that you can review recordings with all of the above set-up still in place.</p>
+<section class="footnotes" data-footnotes>
+<ol>
+<li id="fn-beeps">
+<p>In theory I only have to do this once because after doing it I ran <code>/save</code>, but, you never know. <a href="#fnref-beeps" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="1" aria-label="Back to reference 1">↩</a></p>
+</li>
+</ol>
+</section>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

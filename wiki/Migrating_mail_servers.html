@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Migrating mail servers • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Migrating mail servers</h1></div><div class="metadata"><relative-time created="1206607234" updated="1710259978">Created 3/27/2008, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/migration">migration</a></li><li><a href="/tags/mail">mail</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These notes were made while migrating my mail server server from my old host, <a href="/wiki/Rackspace">Rackspace</a>, to my new host, <a href="/wiki/INetU">INetU</a>.</p>
+<h3>Strategy</h3>
+<p>The two main goals are to keep downtime to a minimum and to not lose any incoming email during the move. Luckily the Internet's mail infrastructure copes well with transitory failures and unreliable connections; this means that we can afford a small window of inaccessibility in which neither the old server nor the new server will be online accepting incoming mail. During that window we transfer the mailboxes from the old server to the new, and <a href="/wiki/MTAs">MTAs</a> trying to deliver mail will get temporary bounce messages; in this way when the new server comes back online and the MTAs retry delivery, the mail will get through and there won't be any messages that got inappropriately routed to the old server <em>after</em> we transferred the mailboxes.</p>
+<h3>Method</h3>
+<p>There are three &quot;windows&quot; in the process: before the downtime, the downtime itself, and after the downtime. In order to minimize the downtime we'll do as much work as possible in the two windows on either side. While it would be possible to minimize the downtime away to zero through the use of secondary mailservers that would spool mail and later forward it, the built-in retrying mechanisms of the <a href="/wiki/MTA">MTA</a> infrastructure mean that such measures aren't really necessary. Your mileage may vary, but I'm estimating roughly an hour in which messages get temporarily bounced, and for my business needs that kind of exceptional situation is fine given that it only occurs once every three years or so.</p>
+<h4>The &quot;before&quot; window</h4>
+<p>We do as much preparation on the new machine here as possible:</p>
+<ul>
+<li>Set the <a href="/wiki/TTL">TTL</a> on the <a href="/wiki/DNS">DNS</a> to a relatively low value like 600 seconds (10 minutes) so that any changes made to the DNS propagate out quickly</li>
+<li>Create accounts for the email addresses to be transferred</li>
+<li>Create (empty) mailboxes as required that will be used when it comes time to import</li>
+</ul>
+<p>We'll also want to do some trial runs at this point, and make sure that we have working scripts for doing stuff like importing mailboxes. Developing such scripts may not be a trivial task if your migration is between machines with different operating systems and different software, so they should be prepared well in advance.</p>
+<p>To provoke the actual move we update the <a href="/wiki/MX">MX</a> record for the domain to point to an <a href="/wiki/IP">IP</a> on the new server <em>on which <a href="/wiki/sendmail">sendmail</a> is <strong>not</strong> listening</em>. This point is key. We <em>want</em> remote <a href="/wiki/MTAs">MTAs</a> that try connecting to the server to get connection failures at this moment, as these will be identified as temporary failures and the MTA will retry again later.</p>
+<p>We don't want to start accepting email yet, even though we've already set up the accounts and mailboxes, because we want to import the old messages first.</p>
+<h4>The &quot;during&quot; window</h4>
+<p>So once the DNS change goes live we wait about 10 minutes (or whatever interval we have as a TTL). This should be enough time to minimize the risk of a machine attempting delivery to the old machine <em>after</em> we've done the mailbox export/transfer/import.</p>
+<p>After this interval, we export the mailboxes from the old server and transfer them to the new server, where we import them. Importing is done with a script for speed.</p>
+<h4>The &quot;after&quot; window</h4>
+<p>Another DNS update: this time we update the MX again, this time pointing it at an <a href="/wiki/IP">IP</a> on the new machine on which the server is listening. Within about 10 minutes incoming mail should be working again, and any <a href="/wiki/MTAs">MTAs</a> which got temporary failures during the downtime should soon retry.</p>
+<p>One trick you can apply here (if you have no control over how fast your host updates the <a href="/wiki/DNS">DNS</a>) is to tell <a href="/wiki/sendmail">sendmail</a> to listen on all interfaces now that the migration is complete; that way it doesn't matter how long the host takes to do the DNS update.</p>
+<p>On the old server it is worth setting up some forwarding just in case any <a href="/wiki/MTAs">MTAs</a> with stale <a href="/wiki/DNS">DNS</a> information try connecting and delivering old mail.</p>
+<p>The major crunch is now over so you can now going about doing the rest of the migration. I had a <em>lot</em> of things to move over, so I did the mail first and only later followed through with things like the web server.</p>
+<h3>Monitoring for <a href="/wiki/DNS">DNS</a> changes</h3>
+<p>My hosts manage the <a href="/wiki/DNS">DNS</a> for me and that means that I don't have precise control over <em>when</em> the changes that I've requested will go live, although I have an approximate idea. In my case I wanted the <a href="/wiki/MX">MX</a> records updated. I used the following <a href="/wiki/shell">shell</a> snippet to query their nameservers every 60 seconds to see when the changes went live:</p>
+<pre><code>while true
+do
+  dig @ns3.inetu.net MX example.com | grep MX | egrep -v '^;'
+  dig @ns4.inetu.net MX example.com | grep MX | egrep -v '^;'
+  dig @ns3.inetu.net MX example.org | grep MX | egrep -v '^;'
+  dig @ns4.inetu.net MX example.org | grep MX | egrep -v '^;'
+  sleep 60
+done
+</code></pre>
+<p>This basically yields four lines like this each minute:</p>
+<pre><code>example.com.		600	IN	MX	10 wincent.dev.
+example.com.		600	IN	MX	10 wincent.dev.
+example.org.		600	IN	MX	10 wincent.dev.
+example.org.		600	IN	MX	10 wincent.dev.
+</code></pre>
+<p>As soon as the server name on the right changed I knew the DNS update had taken place.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

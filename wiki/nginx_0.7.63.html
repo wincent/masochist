@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>nginx 0.7.63 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>nginx 0.7.63</h1></div><div class="metadata"><relative-time created="1256567087" updated="1584053324">Created 10/26/2009, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/nginx">nginx</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Changes with nginx 0.7.63 26 Oct 2009</p>
+<pre><code>   *) Security: now &quot;/../&quot; are disabled in &quot;Destination&quot; request header
+      line.
+
+   *) Change: minimum supported OpenSSL version is 0.9.7.
+
+   *) Change: the &quot;ask&quot; parameter of the &quot;ssl_verify_client&quot; directive was
+      changed to the &quot;optional&quot; parameter and now it checks a client
+      certificate if it was offered.
+      Thanks to Brice Figureau.
+
+   *) Feature: now the &quot;-V&quot; switch shows TLS SNI support.
+
+   *) Feature: the $ssl_client_verify variable.
+      Thanks to Brice Figureau.
+
+   *) Feature: the &quot;ssl_crl&quot; directive.
+      Thanks to Brice Figureau.
+
+   *) Bugfix: the $ssl_client_cert variable usage corrupted memory; the
+      bug had appeared in 0.7.7.
+      Thanks to Sergey Zhuravlev.
+
+   *) Feature: now the start cache loader runs in a separate process; this
+      should improve large caches handling.
+
+   *) Feature: now temporary files and permanent storage area may reside
+      at different file systems.
+
+   *) Bugfix: nginx counted incorrectly disk cache size.
+
+   *) Change: now directive &quot;gzip_disable msie6&quot; does not disable gzipping
+      for MSIE 6.0 SV1.
+
+   *) Bugfix: nginx always added &quot;Vary: Accept-Encoding&quot; response header
+      line, if both &quot;gzip_static&quot; and &quot;gzip_vary&quot; were on.
+
+   *) Feature: the &quot;proxy&quot; parameter of the &quot;geo&quot; directive.
+
+   *) Feature: the ngx_http_geoip_module.
+
+   *) Feature: the &quot;limit_rate_after&quot; directive.
+      Thanks to Ivan Debnar.
+
+   *) Feature: the &quot;limit_req_log_level&quot; and &quot;limit_conn_log_level&quot;
+      directives.
+
+   *) Bugfix: now &quot;limit_req&quot; directive conforms to the leaky bucket
+      algorithm.
+      Thanks to Maxim Dounin.
+
+   *) Bugfix: in ngx_http_limit_req_module.
+      Thanks to Maxim Dounin.
+
+   *) Bugfix: now nginx allows underscores in a request method.
+
+   *) Bugfix: &quot;proxy_pass_header&quot; and &quot;fastcgi_pass_header&quot; directives did
+      not pass to a client the &quot;X-Accel-Redirect&quot;, &quot;X-Accel-Limit-Rate&quot;,
+      &quot;X-Accel-Buffering&quot;, and &quot;X-Accel-Charset&quot; lines from backend
+      response header.
+      Thanks to Maxim Dounin.
+
+   *) Bugfix: in handling &quot;Last-Modified&quot; and &quot;Accept-Ranges&quot; backend
+      response header lines; the bug had appeared in 0.7.44.
+      Thanks to Maxim Dounin.
+
+   *) Feature: the &quot;image_filter_transparency&quot; directive.
+
+   *) Feature: the &quot;image_filter&quot; directive supports variables for setting
+      size.
+
+   *) Bugfix: in PNG alpha-channel support in the
+      ngx_http_image_filter_module.
+
+   *) Bugfix: in transparency support in the ngx_http_image_filter_module.
+
+   *) Feature: now several &quot;perl_modules&quot; directives may be used.
+
+   *) Bugfix: ngx_http_perl_module responses did not work in subrequests.
+
+   *) Bugfix: nginx sent '\0' in a &quot;Location&quot; response header line on
+      MKCOL request.
+      Thanks to Xie Zhenye.
+
+   *) Bugfix: an &quot;error_page&quot; directive did not redirect a 413 error; the
+      bug had appeared in 0.6.10.
+
+   *) Bugfix: in memory allocation error handling.
+      Thanks to Maxim Dounin and Kirill A. Korinskiy.
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

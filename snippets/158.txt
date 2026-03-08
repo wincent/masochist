@@ -1,0 +1,2 @@
+
+2732e3d script/deploy: replace `cp -R` with `tar` for portability

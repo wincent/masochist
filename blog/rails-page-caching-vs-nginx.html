@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rails page caching vs nginx • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/rails-page-caching-vs-nginx">Rails page caching vs nginx</a></h1><div class="metadata"><relative-time created="1235329988" updated="1584053324">Created 2/22/2009, updated 3/12/2020</relative-time><span>4 minute read</span></div><div class="prerendered"><p>Just ran into a surprising conflict between <a href="http://brainspl.at/nginx.conf.txt">the &quot;canonical&quot;, recommended way</a> of setting up <a href="/wiki/nginx">nginx</a> to take advantage of <a href="/wiki/Rails">Rails</a> page caching, and Rails RESTful routes.</p>
+<h4>How caching works</h4>
+<pre><code>      # this is the meat of the rails page caching config
+      # it adds .html to the end of the url and then checks
+      # the filesystem for that file. If it exists, then we
+      # rewite the url to have explicit .html on the end
+      # and then send it on its way to the next config rule.
+      # if there is no file on the fs then it sets all the
+      # necessary headers and proxies to our upstream mongrels
+      if (-f $request_filename.html) {
+        rewrite (.*) $1.html break;
+      }
+</code></pre>
+<p>The basic idea is that if you request <code>/products</code>, nginx will first check to see if there is a <code>/products.html</code> file on the disk. If so, that gets served up directly and nginx doesn't even touch Rails. Very fast. On the other hand, if it's not there then nginx connects upstream to your Rails app.</p>
+<p>On the Rails side, you serve these requests when they come in, and anything that you want to page cache you just write out the page to <code>/products.html</code> where you know nginx will pick it up next time around.</p>
+<p>So, up till now I'd never been bitten by the inherent conflict between this method and Rails RESTful routes. Basically because I'd only ever cached <a href="/wiki/Atom">Atom</a> feeds up til now, and that meant that my cached feeds were being written to <code>/products.atom</code>.</p>
+<h4>The problem</h4>
+<p>Well, today I set up page caching for the <a href="/wiki/HTML">HTML</a> format for the first time and I ran into problems.</p>
+<ol>
+<li>Request <code>/products</code> for first time.</li>
+<li><code>/products.html</code> is written out to disk.</li>
+<li>Visit <code>/products/new</code>, fill out the form, and click &quot;Submit&quot;.</li>
+<li>The browser makes a POST request to the <code>/products</code> URL.</li>
+<li>nginx checks to see if <code>/products.html</code> exists, and it does, but POSTing to a static HTML file on disk doesn't make any sense, so it returns a 405 &quot;Not Allowed&quot; error.</li>
+</ol>
+<p>In other words, once you've page-cached the HTML for the &quot;index&quot; action, you can no longer perform the &quot;create&quot; action.</p>
+<h4>Solutions</h4>
+<p>What are our options here?</p>
+<ul>
+<li>Forget about page-caching the HTML format of the &quot;index&quot; action?</li>
+<li>Set up some alternative, non-RESTful route for performing the &quot;create&quot; action?</li>
+<li>Make nginx only check for on-disk files for GET requests?</li>
+</ul>
+<p>Of those three options, the latter one leaps off the page as the most desirable one.</p>
+<p>I check the <a href="http://wiki.codemongers.com/NginxHttpRewriteModule#if">nginx wiki</a> and with a sense of relief see that the rewrite module can indeed check to see what the request method is (POST, GET etc).</p>
+<p>But it turns out that the <code>if</code> directive can't be nested, and it doesn't support <code>&amp;&amp;</code> or <code>and</code>, which would allow you to combine the two conditions that you are interested in:</p>
+<ol>
+<li>That the request method is GET; and</li>
+<li>That there exists a cached HTML version of the resource on disk.</li>
+</ol>
+<p>In other words, this won't work:</p>
+<pre><code>if (-f $request_filename and $request_method = GET) {
+  rewrite (.*) $1.html break;
+}
+</code></pre>
+<p>Nor this:</p>
+<pre><code>if (-f $request_filename &amp;&amp; $request_method = GET) {
+  rewrite (.*) $1.html break;
+}
+</code></pre>
+<p>And neither will this:</p>
+<pre><code>if ($request_method = GET) {
+  if (-f $request_filename) {
+    rewrite (.*) $1.html break;
+  }
+}
+</code></pre>
+<p>I found a <a href="http://marc.info/?l=nginx&amp;m=120127273709362&amp;w=2">couple</a> of <a href="http://markmail.org/message/bso6kcjwav72m4nx">workarounds</a> out there, but most of them looked pretty horrid. In the end <a href="http://forum.slicehost.com/comments.php?DiscussionID=2087">this</a> is what gave me the inspiration I needed. I later also found <a href="http://wiki.codemongers.com/NginxRewriteMultiCondExample">this one</a> which evidently has its uses.</p>
+<p>My final solution looks something like this:</p>
+<pre><code>if (-f $request_filename) {
+  break;
+}
+
+# cached pages
+set $cache_extension '';
+if ($request_method = GET) {
+  set $cache_extension '.html';
+}
+
+# the above is a hack because nginx doesn't allow nested or ANDed ifs
+if (-f $request_filename$cache_extension) {
+  rewrite (.*) $1.html break;
+}
+
+# everything else goes to the mongrel cluster
+if (!-f $request_filename) {
+  proxy_pass http://mongrels;
+  break;
+}
+</code></pre>
+<p>So yes, there is a bit of repetition in there for non-GET requests because we end up checking for the existence of the same file twice; but GET requests turn out to be the most common by far (probably about 99% of all requests) so it's not such a huge problem.</p>
+<p>But even with the repetition, at least we don't have any unsightly fake <code>location</code> blocks in there.</p>
+<p>The only remaining question, and it's one which I've always had with the original config, is whether that last <code>!-f</code> check is required. After all, we are checking for the existence of <code>$request_filename</code> <em>yet again</em> there (even if it's phrased in terms of non-existence). Could we not just move the <code>proxy_pass</code> directive outside the scope of the <code>if</code> block and be done with it?</p>
+<h4>Update</h4>
+<p>A little experimentation and it looks like that last <code>!-f</code> check can indeed be omitted. The final <code>break</code> can probably go too. At least it seems to work that way in local testing.</p>
+</div><ul class="tags"><li><a href="/tags/rails">rails</a></li><li><a href="/tags/nginx">nginx</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/safari-4-comments">← Safari 4 comments</a></div><div class="post-nav-next"><a href="/blog/more-breakage-in-rails-2.3.0-rc1">More breakage in Rails 2.3.0 RC1 →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

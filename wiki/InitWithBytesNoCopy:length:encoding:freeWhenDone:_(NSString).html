@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>InitWithBytesNoCopy:length:encoding:freeWhenDone: (NSString) • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>InitWithBytesNoCopy:length:encoding:freeWhenDone: (NSString)</h1></div><div class="metadata"><relative-time created="1154734134" updated="1584053324">Created 8/4/2006, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>An experiment with some leaking strings:</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+int main (int argc, const char * argv[]) {
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+
+    // Question: how does initWithBytesNoCopy:length:encoding:freeWhenDone: handle NULL bytes?
+
+    const char *str = &quot;hello&quot;; // 5 letters plus NULL terminating byte
+    NSLog(@&quot;str \&quot;%s\&quot; has length %d&quot;, str, strlen(str));   // str &quot;hello&quot; has length 5
+
+    NSString *string = [[NSString alloc] initWithBytesNoCopy:(void *)str
+                                                      length:5
+                                                    encoding:NSUTF8StringEncoding
+                                                freeWhenDone:NO];
+
+    NSLog(@&quot;string created with length 5: %@ (%d)&quot;, string, [string length]);       // string created with length 5: hello (5)
+    NSLog(@&quot;roundtrip back to string -&gt; length %d&quot;, strlen([string UTF8String]));   // roundtrip back to string -&gt; length 5
+
+    string = [[NSString alloc] initWithBytesNoCopy:(void *)str
+                                            length:6
+                                          encoding:NSUTF8StringEncoding
+                                      freeWhenDone:NO];
+
+    // note that in this line echoing the string causes the NULL byte to be echoed, cutting off the rest of the NSLog
+    NSLog(@&quot;string created with length 6: %@ (%d)&quot;, string, [string length]);       // string created with length 6: hello
+    NSLog(@&quot;length %d&quot;, [string length]);                                           // length 6
+    NSLog(@&quot;roundtrip back to string -&gt; length %d&quot;, strlen([string UTF8String]));   // roundtrip back to string -&gt; length 5
+
+    string = [NSString stringWithUTF8String:str];
+    NSLog(@&quot;string created with stringWithUTF8String: %@ (%d)&quot;, string, [string length]);   // string created with stringWithUTF8String: hello (5)
+    NSLog(@&quot;roundtrip back to string -&gt; length %d&quot;, strlen([string UTF8String]));           // roundtrip back to string -&gt; length 5
+
+    // char array with NULL byte in the middle
+    char tricky[10] = { 'h', 'e', 'l', 'l', 'o', 0, 'r', 'o', 'b', 0 };
+    string = [NSString stringWithUTF8String:tricky];
+    NSLog(@&quot;string: %@ (%d)&quot;, string, [string length]);                             // string: hello (5)
+    NSLog(@&quot;roundtrip back to string -&gt; length %d&quot;, strlen([string UTF8String]));   // roundtrip back to string -&gt; length 5
+
+    string = [[NSString alloc] initWithBytesNoCopy:(void *)tricky
+                                            length:9
+                                          encoding:NSUTF8StringEncoding
+                                      freeWhenDone:NO];
+
+    NSLog(@&quot;string created with length 9: %@ (%d)&quot;, string, [string length]);       // string created with length 9: hello
+    NSLog(@&quot;length %d&quot;, [string length]);                                           // length 9
+    NSLog(@&quot;roundtrip back to string -&gt; length %d&quot;, strlen([string UTF8String]));   // roundtrip back to string -&gt; length 5
+
+    string = [[NSString alloc] initWithBytesNoCopy:(void *)tricky
+                                            length:10
+                                          encoding:NSUTF8StringEncoding
+                                      freeWhenDone:NO];
+
+    NSLog(@&quot;string created with length 10: %@ (%d)&quot;, string, [string length]);      // string created with length 10: hello
+    NSLog(@&quot;length %d&quot;, [string length]);                                           // length 10
+    NSLog(@&quot;roundtrip back to string -&gt; length %d&quot;, strlen([string UTF8String]));   // roundtrip back to string -&gt; length 5
+
+    // are the characters after the NULL byte really there?
+    int i;
+    for (i = 0; i &lt; 10; i++)
+        NSLog(@&quot;%d: %C&quot;, i, [string characterAtIndex:i]);
+
+    // 0: h
+    // 1: e
+    // 2: l
+    // 3: l
+    // 4: o
+    // 5:
+    // 6: r
+    // 7: o
+    // 8: b
+    // 9:
+
+    [pool release];
+    return 0;
+}
+</code></pre>
+<h2>Conclusions</h2>
+<ul>
+<li>The value you pass for length need not include space for a NULL terminating byte.</li>
+<li>You can pass a buffer containing mid-string NULL bytes and provided the length is set correctly the string won't be truncated.</li>
+<li>If you try to print such a string containing a mid-string NULL byte using <code>NSLog</code> output will be incorrectly truncated at the NULL byte.</li>
+<li>Even so, the actual characters really are present in the created string.</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

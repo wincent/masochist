@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Snippet #22 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link active" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><h1><a href="/snippets/22">Snippet #22</a></h1><div class="metadata"><relative-time created="1296572742" updated="1584053324">Created 2/1/2011, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/rails">rails</a></li><li><a href="/tags/snippets">snippets</a></li></ul><div class="prerendered"><p>Kind of annoyed by the way <code>request.format</code> is handled in Rails.</p>
+<p>In an ideal world you would be able to do stuff like <code>request.format.atom?</code>, <code>request.format.js?</code>, <code>request.format.html?</code> and have it work robustly as you would expect.</p>
+<p>In the actual world, you run into all sorts of subtle problems.</p>
+<p>I've found, for example, that while a real browser like Safari sends an HTTP <code>Accept</code> header of <code>application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5</code> for most requests, the headless browser I'm using in my acceptance specs sends <code>*/*</code>.</p>
+<p>This means that for any requests for HTML pages made in acceptance specs, <code>request.format.html?</code> will return <code>false</code>. This in turn will break any specs which depend on that value being accurate. (I had some of these, which change the layout depending on what format the request is in. More on this below.)</p>
+<p>Ironically, <a href="/wiki/Safari">Safari</a> will send an <code>Accept</code> header of <code>*/*</code> when requesting a URL like <a href="https://example.com/js/issues/show.js">https://example.com/js/issues/show.js</a> when it encounters the following kind of HTML, despite the explicit <code>type</code> attribute:</p>
+<pre><code class="language-html">&lt;script src=&quot;/js/issues/show.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>Nevertheless, the request succeeds. The same URL requested directly in the browser (by typing it in the location bar) will send the lengthier <code>Accept</code> header mentioned above, failing with a &quot;406 Not Acceptable error&quot;.</p>
+<p>In both cases, <code>request.format.js?</code> and <code>request.format.html?</code> are useless (both returning false), but things like the following do work, at least some of the time:</p>
+<pre><code class="language-ruby">def show
+  respond_to do |format|
+    format.js {
+      # works as you would hope for &lt;script&gt; tags
+      # fails for direct requests (returns 406 Not Acceptable error)
+    }
+  end
+end
+</code></pre>
+<p>So, evidently <code>respond_to</code> is doing something subtly different than <code>request.format.js?</code> and other such methods. I haven't dug into to the code yet, but it looks like its examining the extension on the URL when the <code>Accept</code> header is <code>*/*</code>, and deciding that the appropriate format is the JavaScript one.</p>
+<p>You see, the main reason I run into this is that at several times over the years I've had breakage of things like Atom feeds and JavaScript files where they were getting rendered inappropriately inside an HTML layout. I basically came to the shockingly obvious conclusion that you <em>never</em> want an HTML layout for a non-HTML request, and so wanted to put something like this in my application controller:</p>
+<pre><code class="language-ruby">layout Proc.new { |c| c.request.format.html? &amp;&amp; 'application' }
+</code></pre>
+<p>This would set up the &quot;application&quot; layout for use in all HTML requests, and suppress the layout for all others.</p>
+<p>But no... it doesn't work for the reasons already stated above. It will work when manually driving the browser, but it will fall down on acceptance tests in the headless browser.</p>
+<p>So I'm instead forced to do something much less satisfying; firstly, in the application controller:</p>
+<pre><code class="language-ruby"># this one will work for those cases where the user agent
+# happens to send the right Accept header, which will be some of the time
+layout Proc.new { |c|
+  format = c.request.format
+  (format.atom? || format.js?) ? false : 'application'
+}
+</code></pre>
+<p>And then elsewhere in the app, stuff like:</p>
+<pre><code class="language-ruby"># for a JavaScript-only controller:
+layout false
+</code></pre>
+<p>This doesn't feel right. It would feel right to do this in one place, the application controller, and then override it elsewhere only for special cases. Instead of that, we are doing it in the application controller, and then doing it again elsewhere not for special cases, but for when our general case is failing unexpectedly.</p>
+<p>Given that the ability of <code>respond_to</code> to correctly identify the appropriate request format is demonstrated, it is frustrating that <code>request.format</code> can't do the same. I am beginning to think that perhaps the best workaround is to make my own helper methods which do the right thing in the application controller and dispense with using <code>request.format</code> entirely.</p>
+<p><strong>Update:</strong> on thinking about it a little more, it would be quite tricky to &quot;do the right thing&quot; exclusively in the application controller thanks to tricky resources like these:</p>
+<ul>
+<li>a wiki article with title &quot;node.js&quot; (path: <code>/wiki/node.js</code>)</li>
+<li>a tag for the same article, &quot;node.js&quot; (path: <code>/tags/node.js</code>)</li>
+</ul>
+<p>Right now, <code>GET</code> requests for such times are correctly processed as HTML requests; if we just blindly acted on the basis of the apparent &quot;extension&quot; then in the <code>articles#show</code> and <code>tags#show</code> actions then we would end up breaking this behavior. I'm not sure if this is a deal-breaker (it's nearly 5:30 AM), or merely a sign that a general approach would be fine as lone as we put specific overrides in place in those few &quot;tricky&quot; controllers which accept such params that can match arbitrary <code>/\.[a-z]+$/</code> patterns.</p>
+</div><div class="post-nav"><div class="post-nav-prev"><a href="/snippets/23">← Involuntary Reboot Log 2.16</a></div><div class="post-nav-next"><a href="/snippets/721">Snippet #721 →</a></div></div><p class="post-nav-all"><a href="/snippets/all">All snippets</a></p></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vim cheatsheet • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Vim cheatsheet</h1></div><div class="metadata"><relative-time created="1236938246" updated="1736516595">Created 3/13/2009, updated 1/10/2025</relative-time></div><ul class="tags"><li><a href="/tags/vim">vim</a></li><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/cheatsheet">cheatsheet</a></li></ul><div class="prerendered"><p>I'll eventually publish a more comprehensive listing, but for now I just want to make some notes of commands that I discover and don't want to forget.</p>
+<h2>Insert mode commands</h2>
+<ul>
+<li>Switch from Insert to Normal mode for one command only: <code>CTRL-o</code> (followed by the normal mode command)</li>
+<li>Delete back to the beginning of the previous word (or the beginning of the current word if the cursor is already inside a word): <code>CTRL-w</code></li>
+<li>Indent current line: <code>CTRL-t</code> (mnemonic: &quot;tab&quot;)</li>
+<li>Dedent current line: <code>CTRL-d</code> (mnemonic: &quot;dedent&quot;)</li>
+<li>Insert a hard tab, even when it would normally be expanded to spaces: <code>CTRL-V &lt;tab&gt;</code></li>
+<li>Insert current filename <code>CTRL-r %</code> (for related things that can be inserted with <code>CTRL-r</code>, see <code>:h i_CTRL-R</code>).</li>
+</ul>
+<h2>Normal mode commands</h2>
+<ul>
+<li><code>==</code>: intelligently indent selection (or currently line if no selection); <em>note that what is actually happening here is that we're using the &quot;filter&quot; functionality with no filter, so <a href="/wiki/Vim">Vim</a> just uses the standard builtin &quot;C indenting&quot; functionality</em> (for more information see <code>:h filter</code>)</li>
+<li><code>gq{motion}</code>: reformat (rewrap); eg:
+<ul>
+<li><code>gqq</code>: reformat (rewrap) current line</li>
+</ul>
+</li>
+<li><code>gu{motion}</code>: lowercase</li>
+<li><code>gU{motion}</code>: uppercase</li>
+<li><code>g~{motion}</code>: toggle case</li>
+<li><code>CTRL-x</code>: increment the number at (the end of) the word under the cursor</li>
+<li><code>CTRL-a</code>: decrement the number at (the end of) the word under the cursor</li>
+<li><code>gv</code>: reselect last selection</li>
+<li><code>g CTRL-G</code>: show current cursor position and total counts (columns, lines, words, bytes)</li>
+<li><code>ga</code>: show ASCII info for character under cursor</li>
+<li><code>g8</code>: show UTF-8 info for character under cursor</li>
+<li><code>CTRL-w f</code>: open the file under the cursor in a split (<code>gf</code> will do this without the split)</li>
+<li><code>]c</code>/<code>[c</code>: next/previous change/conflict.</li>
+</ul>
+<h3>Window and tab-related commands</h3>
+<ul>
+<li><code>CTRL-w =</code>: resize windows to be equal width and height</li>
+<li><code>CTRL-W r</code> or <code>CTRL-W CTRL-R</code>: Rotate windows (downwards/rightwards)</li>
+<li><code>CTRL-W {H,J,K,L}</code>: Move a window to occupy to an entire edge of the viewport; eg. <code>CTRL-W J</code> pushes the current window to the bottom, occupying the full width (also works: <code>CTRL-W CTRL-{H,J,K,L}</code>)</li>
+<li><code>CTRL-W T</code>: open current window in a new tab</li>
+<li><code>CTRL-W _</code>: make current window as big as possible (cf. <code>10 CTRL-W _</code>, which makes it 10 lines high); (also works: <code>CTRL-W CTRL-_</code>)</li>
+<li><code>CTRL-W b</code>: move to bottom window (also works: <code>CTRL-W CTRL-B</code>)</li>
+<li><code>CTRL-W t</code>: move to top window (also works: <code>CTRL-W CTRL-T</code>)</li>
+<li><code>gt</code>: next tab</li>
+<li><code>gT</code>: previous tab</li>
+</ul>
+<p>For more see <code>:h window-moving</code></p>
+<h3>Movement</h3>
+<p>For lots of documentation see <code>:h motion.txt</code>.</p>
+<ul>
+<li><code>h</code>, <code>j</code>, <code>k</code>, <code>l</code>: per-character/per-line movement through file (left, down, up, right)</li>
+<li><code>gj</code>, <code>gk</code>: per-line movement through buffer, operating on <em>display lines</em> (which may be wrapped) not actual lines in the file (down, up)</li>
+<li><code>w</code>: forward a word (mnemonic: &quot;word&quot;); here &quot;word&quot; is an &quot;keyword&quot; (identifier) like &quot;foo9&quot; or &quot;h<em>go&quot; and the movement is to the _beginning</em> of the next word</li>
+<li><code>W</code>: forward a &quot;big&quot; word; here a &quot;word&quot; is <em>anything</em> other than whitespace</li>
+<li><code>b</code>: back a word (mnemonic: &quot;back&quot;); again the movement is to the <em>beginning</em> of the word</li>
+<li><code>B</code>: back a &quot;big&quot; word</li>
+<li><code>e</code>: forward to the <em>end</em> of a word (mnemonic: &quot;end&quot;)</li>
+<li><code>E</code>: forward to the <em>end</em> of a &quot;big&quot; word</li>
+<li><code>ge</code>: back to the <em>end</em> of the last word</li>
+<li><code>gE</code>: back to the <em>end</em> of the last &quot;big&quot; word</li>
+<li><code>f{character}</code>: forward to the next occurrence of <code>character</code> (mnemonic: &quot;find/foward&quot;)</li>
+<li><code>F{character}</code>: same as <code>f{character}</code>, but search in the opposite direction</li>
+<li><code>t{character}</code>: forward <em>til</em> (until) the next occurrence of <code>character</code> (mnemonic: &quot;til/to&quot;); the cursor is place immediately <em>before</em> and not on the character</li>
+<li><code>T{character}</code>: same as <code>t{character}</code>, but search in the opposite direction</li>
+<li><code>;</code>: repeat last <code>f</code>, <code>F</code>, <code>t</code> or <code>T</code> operation</li>
+<li><code>,</code>: repeat last <code>f</code>, <code>F</code>, <code>t</code> or <code>T</code> operation, but in the opposite direction</li>
+<li><code>CTRL-F</code>: forward a (full) screen (mnemonic: &quot;forward&quot;)</li>
+<li><code>CTRL-B</code>: back a (full) screen (mnemonic: &quot;back&quot;)</li>
+<li><code>CTRL-D</code>: down a (half) screen (mnemonic: &quot;down&quot;)</li>
+<li><code>CTRL-U</code>: up a (half) screen (mnemonic: &quot;up&quot;)</li>
+<li><code>H</code>: jump to top of screen (mnemonic: &quot;high&quot;)</li>
+<li><code>M</code>: jump to middle of screen (mnemonic: &quot;middle&quot;)</li>
+<li><code>L</code>: jump to bottom of screen (mnemonic: &quot;low&quot;)</li>
+<li><code>gg</code>: jump to top of file (mnemonic: like <code>more</code> or <code>less</code> pagers, except plain <code>g</code> isn't available so we have to use <code>gg</code>)</li>
+<li><code>G</code>: jump to bottom of file (mnemonic: like <code>more</code> or <code>less</code> pagers)</li>
+<li><code>200G</code>: jump to line 200</li>
+<li><code>:200</code>: same as <code>200G</code></li>
+<li><code>{</code>: jump to last blank line</li>
+<li><code>}</code>: jump to next blank line</li>
+<li><code>[[</code>: jump to previous <code>{</code> in column 0</li>
+<li><code>]]</code>: jump to next <code>{</code> in column 0</li>
+<li><code>][</code>: jump to next <code>}</code> in column 0</li>
+<li><code>[]</code>: jump to previous <code>}</code> in column 0</li>
+<li><code>%</code>: jump to matching brace (with <a href="http://www.vim.org/scripts/script.php?script_id=39">matchit.vim</a> you can also jump to matching HTML tags and the like)</li>
+<li><code>]s</code>: jump to next misspelled word</li>
+<li><code>zg</code>: mark a word as good, adding it to the spelling dictionary</li>
+</ul>
+<h3>Scrolling</h3>
+<ul>
+<li><code>zz</code> center current cursor line within viewport</li>
+<li><code>zt</code> scroll current cursor line to top of viewport</li>
+<li><code>zb</code> scroll current cursor line to bottom of viewport</li>
+<li><code>CTRL-y</code> scroll down a line</li>
+<li><code>CTRL-e</code> scroll up a line</li>
+<li><code>CTRL-d</code> scroll down one page</li>
+<li><code>CTRL-u</code> scroll up one page</li>
+</ul>
+<h3>Marks and jumps</h3>
+<p>When jumping to a mark, there are two variants:</p>
+<ul>
+<li>with <code>'</code>, the jump is line-wise, to the first non-blank character on the line containing the mark</li>
+<li>with <code>`</code>, the jump is character-wise, to the position of the mark within the line</li>
+</ul>
+<p>Example commands:</p>
+<ul>
+<li><code>m{letter}</code>: create a mark at the current position</li>
+<li><code>'{letter}</code>: jump to specified mark (first non-whitespace character on line)</li>
+<li><code>`{letter}</code>: jump to specified mark (to column where mark was set)</li>
+<li><code>''</code>: jump back to the last line jumped from</li>
+<li><code>``</code>: jump back to the last position jumped from</li>
+<li><code>`.</code>: jump to position where last change occurred in current buffer</li>
+<li><code>`[</code> and <code>`]</code>: jump to beginning/end of last changed or yanked text</li>
+<li><code>`&lt;</code> and <code>`&gt;</code>: jump to beginning/end of last visual selection</li>
+<li><code>:jump</code>: show the jump list (places you've jumped to with motion commands, specifically those listed at <code>:h jump-motions</code>)</li>
+<li><code>CTRL-o</code>: move to older position in jump list (mnemonic: &quot;jump out&quot;)</li>
+<li><code>CTRL-i</code>: move to newer position in jump list (mnemonic: &quot;jump in&quot;)</li>
+<li><code>:changes</code>: show the changes list for the current buffer (places you've edited)</li>
+<li><code>g;</code>: move to older position in change list</li>
+<li><code>g,</code>: move to newer position in change list</li>
+</ul>
+<h3>Search</h3>
+<ul>
+<li><code>*</code>: find word under cursor</li>
+<li><code>#</code>: find word under cursor (reverse direction)</li>
+<li><code>g*</code>: like <code>*</code>, but also looks for matches which are substrings of other words</li>
+<li><code>g#</code>: like <code>#</code>, but also looks for matches which are substrings of other words</li>
+<li><code>/{pattern}</code>: find pattern (mnemonic: like <a href="/wiki/Perl">Perl</a>/<a href="/wiki/Ruby">Ruby</a>/pager etc regex syntax)</li>
+<li><code>?{pattern}</code>: find pattern (reverse direction)</li>
+<li><code>n</code>: repeat last search</li>
+<li><code>N</code>: repeat last search in opposite direction</li>
+<li><code>gn</code>: go to next match and select it visually; can be used as a motion as well (ie. <code>cgn</code> means &quot;change next match&quot;)</li>
+<li><code>ggn</code>: go to first match in file</li>
+<li><code>Gn</code>: go to last match in file</li>
+</ul>
+<h3>Folding</h3>
+<ul>
+<li><code>zr</code>: decrement <code>'foldlevel'</code> A.K.A. &quot;fold less&quot; (mnemonic: reduce)</li>
+<li><code>zm</code>: increment <code>'foldlevel'</code> A.K.A. &quot;fold more&quot; (mnemonic: more)</li>
+<li><code>zR</code>: decrement <code>'foldlevel'</code> to zero A.K.A. &quot;unfold everything&quot; (mnemonic: <em>reduce</em>)</li>
+<li><code>zM</code>: increment <code>'foldlevel'</code> to maximum A.K.A&gt; &quot;fold everything&quot; (mnemonic: <em>more</em>)</li>
+<li><code>zo</code>: open current fold</li>
+<li><code>zO</code>: open current fold recursively</li>
+<li><code>zc</code>: close current fold</li>
+<li><code>zC</code>: close current fold recursively</li>
+<li><code>zv</code>: view cursor line A.K.A. &quot;open just enough folds to make cursor line visible&quot; (mnemonic: <em>view</em>/<em>visible</em>)</li>
+<li><code>zi</code>: toggle value of <code>'foldenable'</code> (mnemonic: invert)</li>
+</ul>
+<h2>Visual mode commands</h2>
+<p>Enter using <code>V</code>:</p>
+<ul>
+<li><code>gq</code>: reformat (rewrap) selection</li>
+<li><code>o</code>: jump to opposite end of selection</li>
+</ul>
+<h2>Visual (block) mode commands</h2>
+<p>Enter using <code>&lt;C-v&gt;</code>:</p>
+<ul>
+<li><code>$A{string}&lt;Esc&gt;</code>: append to each line, varying lengths (<a href="http://vimdoc.sourceforge.net/htmldoc/visual.html#v_b_A">details</a>).</li>
+</ul>
+<h2>Command mode commands</h2>
+<ul>
+<li><code>:nohlsearch</code> (<code>:noh</code>): remove currently visible search highlighting (doesn't disable highlighting permanently)</li>
+<li><code>:enew</code> (<code>:ene</code>): open a new scratch buffer</li>
+<li><code>:write</code>: write current buffer to a file</li>
+<li><code>:read</code>: read into current buffer; eg:
+<ul>
+<li><code>:read !{shell command}</code>: insert output of shell command into current buffer at current cursor location</li>
+</ul>
+</li>
+<li><code>:{range}d</code>: delete lines in <code>{range}</code></li>
+<li><code>:{range}y</code>: yank lines in <code>{range}</code></li>
+<li><code>:g/{pattern}/{action}</code>: perform action on lines matching pattern (eg. <code>:g/a/d</code> would delete all lines matching &quot;a&quot;)</li>
+<li><code>:v/{pattern}/{action}</code>: inverse of <code>:g</code> (performs action on non-matching lines)</li>
+</ul>
+<p>To open the command-line window (showing full command history in a buffer, which you can edit, then use <code>&lt;CR&gt;</code> to run a given line's command):</p>
+<ul>
+<li><code>q:</code>: for commands</li>
+<li><code>q/</code>: for searches (or <code>q?</code>)</li>
+</ul>
+<p>Funnily, you can easily open this by mistake by typing <code>q:</code> when you mean to type the quite-frequently-used <code>:q</code> instead.</p>
+<h3>Quickfix/Location list</h3>
+<h4>Commands</h4>
+<ul>
+<li><code>:cclose</code> (<code>:ccl</code>): close quickfix window (<code>:lclose</code> and <code>:lcl</code> for location list)</li>
+<li><code>:colder</code> (<code>:col</code>): show previous quickfix results (<code>:lolder</code> and <code>:lol</code> for location list)</li>
+<li><code>:cnewer</code> (<code>:cnew</code>): show subsequent quickfix results (<code>:lnewer</code> and <code>:lnew</code> for location list)</li>
+</ul>
+<h4>Mappings</h4>
+<ul>
+<li><code>CTRL-w Enter</code>: open current item in a split.</li>
+</ul>
+<h3>Mappings available in command mode</h3>
+<ul>
+<li><code>&lt;C-r&gt;{register}</code>: paste the text from the specified register into the command line (eg. to paste the last-yanked text, do <code>&lt;C-r&gt;&quot;</code>)
+<ul>
+<li><code>&lt;C-r&gt; w</code>: paste word currently under cursor</li>
+</ul>
+</li>
+</ul>
+<h2>Special mappings</h2>
+<ul>
+<li><code>&lt;C-w&gt; &lt;CR&gt;</code>: open quickfix entry in a horizontal split</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

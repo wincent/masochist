@@ -1,0 +1,162 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.6.2-rc0 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.6.2-rc0</h1></div><div class="metadata"><relative-time created="1234060002" updated="1495119989">Created 2/8/2009, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Notes from the official announcement post to the <a href="/wiki/Git">Git</a> mailing list by the maintainer, Junio Hamano:</p>
+<pre><code>The 0th release candidate for 1.6.2 is available at the usual places:
+
+ http://www.kernel.org/pub/software/scm/git/
+
+ git-1.6.2-rc0.tar.{gz,bz2}			(source tarball)
+ git-htmldocs-1.6.2-rc0.tar.{gz,bz2}		(preformatted docs)
+ git-manpages-1.6.2-rc0.tar.{gz,bz2}		(preformatted docs)
+
+The RPM binary packages for a few architectures are also provided
+as courtesy.
+
+ testing/git-*-1.6.2-rc0-1.fc9.$arch.rpm	(RPM)
+
+----------------------------------------------------------------
+
+GIT v1.6.2 Release Notes (draft)
+================================
+
+With the next major release, &quot;git push&quot; into a branch that is
+currently checked out will be refused by default.  You can choose
+what should happen upon such a push by setting the configuration
+variable receive.denyCurrentBranch in the receiving repository.
+
+To ease the transition plan, the receiving repository of such a
+push running this release will issue a big warning when the
+configuration variable is missing.  Please refer to:
+
+ http://thread.gmane.org/gmane.comp.version-control.git/107758/focus=108007
+
+for more details on the transition plan.
+
+
+Updates since v1.6.1
+--------------------
+
+(subsystems)
+
+* git-svn updates.
+
+* gitweb updates, including a new patch view and RSS/Atom feed
+ improvements.
+
+* (contrib) git.el updates for better XEmacs compatibility; vc-git.el
+ is not shiped with git anymore (it is part of official Emacs)
+
+(performance)
+
+* pack-objects autodetects the number of CPUs available and uses threaded
+ version.
+
+(usability, bells and whistles)
+
+* automatic typo correction works on aliases as well
+
+* Initial support for &quot;git notes&quot; implemented.
+
+* @{-1} is a way to refer to the last branch you were on.  This is
+ accepted not only where an object name is expected, but anywhere
+ a branch name is expected.  E.g. &quot;git branch --track mybranch @{-1}&quot;
+ &quot;git rev-parse --symbolic-full-name @{-1}&quot;.
+
+* &quot;git add -p&quot; learned 'g'oto action to jump directly to a hunk.
+
+* &quot;git add -p&quot; learned to find a hunk with given text with '/'.
+
+* &quot;git add -p&quot; optionally can be told to work with just the command letter
+ without Enter.
+
+* when &quot;git am&quot; stops upon a patch that does not apply, it shows the
+ title of the offending patch.
+
+* &quot;git am --directory=&lt;dir&gt;&quot; and &quot;git am --reject&quot; passes these options
+ to underlying &quot;git apply&quot;.
+
+* &quot;git am&quot; learned --ignore-date option.
+
+* &quot;git blame&quot; aligns author names better when they are spelled in
+ non US-ASCII encoding.
+
+* &quot;git clone&quot; now makes its best effort when cloning from an empty
+ repository to set up configuration variables to refer to the remote
+ repository.
+
+* &quot;git checkout -&quot; is a shorthand for &quot;git checkout @{-1}&quot;.
+
+* &quot;git cherry&quot; defaults to whatever the current branch is tracking (if
+ exists) when the &lt;upstream&gt; argument is not given.
+
+* &quot;git cvsserver&quot; can be told not to add extra &quot;via git-CVS emulator&quot; to
+ the commit log message it serves via gitcvs.commitmsgannotation
+ configuration.
+
+* &quot;git cvsserver&quot; learned to handle 'noop' command some CVS clients seem
+ to expect to work.
+
+* &quot;git diff&quot; learned a new option --inter-hunk-context to coalesce close
+ hunks together and show context between them.
+
+* The definition of what constitutes a word for &quot;git diff --color-words&quot;
+ can be customized via gitattributes, command line or a configuration.
+
+* &quot;git diff&quot; learned --patience to run &quot;patience diff&quot; algorithm.
+
+* &quot;git filter-branch&quot; learned --prune-empty option that discards commits
+ that do not change the contents.
+
+* &quot;git fsck&quot; now checks loose objects in alternate object stores, instead
+ of misreporting them as missing.
+
+* &quot;git grep -w&quot; and &quot;git grep&quot; for fixed strings have been optimized.
+
+* &quot;git mergetool&quot; learned -y(--no-prompt) option to disable prompting.
+
+* &quot;git rebase -i&quot; can transplant a history down to root to elsewhere
+ with --root option.
+
+* &quot;git reset --merge&quot; is a new mode that works similar to the way
+ &quot;git checkout&quot; switches branches, taking the local changes while
+ switching to another commit.
+
+* &quot;git tag&quot; learned --contains that works the same way as the same option
+ from &quot;git branch&quot;.
+
+
+Fixes since v1.6.1
+------------------
+
+All of the fixes in v1.6.1.X maintenance series are included in this
+release, unless otherwise noted.
+
+Here are fixes that this release has, but have not been backported to
+v1.6.1.X series.
+
+* &quot;git-add sub/file&quot; when sub is a submodule incorrectly added the path to
+ the superproject.
+
+* &quot;git bundle&quot; did not exclude annotated tags even when a range given
+ from the command line wanted to.
+
+* &quot;git filter-branch&quot; unnecessarily refused to work when you had
+ checked out a different commit from what is recorded in the superproject
+ index in a submodule.
+
+* &quot;git filter-branch&quot; incorrectly tried to update a nonexistent work tree
+ at the end when it is run in a bare repository.
+
+* &quot;git mergetool&quot; used to ignore autocrlf and other attributes
+ based content rewriting.
+
+* branch switching and merges had a silly bug that did not validate
+ the correct directory when making sure an existing subdirectory is
+ clean.
+
+* &quot;git -p cmd&quot; when cmd is not a built-in one left the display in funny state
+ when killed in the middle.
+</code></pre>
+<h3>See also</h3>
+<ul>
+<li><a href="/wiki/Testing_Git_1.6.2-rc0">Testing Git 1.6.2-rc0</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>RSpec 1.0.0 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>RSpec 1.0.0</h1></div><div class="metadata"><relative-time created="1179570272" updated="1584053324">Created 5/19/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/rspec">rspec</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><a href="/wiki/RSpec_1.0.0">RSpec 1.0.0</a> is a milestone new release of <a href="/wiki/RSpec">RSpec</a>. It was released on 18 May 2007. This is a very important release; as noted in <a href="http://rubyforge.org/frs/shownotes.php?release_id=11800">the official release notes</a>:</p>
+<blockquote>
+<p>The stake in the ground release. This represents a commitment to the API as it is. No significant backwards compatibility changes in the API are expected after this release.</p>
+</blockquote>
+<h2>Changes in version 1.0.0</h2>
+<ul>
+<li>Fixed #10923 have_text matcher does not support should_not</li>
+<li>Fixed #10673 should &gt; and should &gt;= broken</li>
+<li>Applied #10921 Allow verify_rcov to accept greater than threshold coverage %'s via configuration</li>
+<li>Applied #10920 Added support for not implemented examples (Patch from Chad Humphries)</li>
+<li>Patch to allow not implemented examples. This works by not providing a block to the example. (Patch from Chad Humphries, Ken Barker)</li>
+<li>Yanked support for Rails 1.1.6 in Spec::Rails</li>
+<li>RSpec.tmbundle uses CMD-SHIFT-R to run focused examples now.</li>
+<li>Spec::Rails now bundles a spec:rcov task by default (suggestion from Kurt Schrader)</li>
+<li>Fixed #10814 Runner loads shared code, test cases require them again</li>
+<li>Fixed #10753 Global before and after</li>
+<li>Fixed #10774 Allow before and after to be specified in config II</li>
+<li>Refactored Spec::Ui examples to use new global before and after blocks.</li>
+<li>Added instructions about how to get Selenium working with Spec::Ui (spec_ui/examples/selenium/README.txt)</li>
+<li>Fixed #10805 selenium.rb missing from gem?</li>
+<li>Added rdocs explaining how to deal with errors in Rails' controller actions</li>
+<li>Applied #10770 Finer grained includes.</li>
+<li>Fixed #10747 Helper methods defined in shared specs are not visible when shared spec is used</li>
+<li>Fixed #10748 Shared descriptions in separate files causes 'already exists' error</li>
+<li>Applied #10698 Running with --drb executes specs twice (patch from Ruy Asan)</li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Upgrading_to_RSpec_1.0.0_on_Mac_OS_X_Tiger">Upgrading to RSpec 1.0.0 on Mac OS X Tiger</a></li>
+<li><a href="/wiki/Upgrading_to_Spec%3a%3aUI_0.2.2_on_Mac_OS_X_Tiger">Upgrading to Spec::UI 0.2.2 on Mac OS X Tiger</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

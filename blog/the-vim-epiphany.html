@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The Vim epiphany • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/the-vim-epiphany">The Vim epiphany</a></h1><div class="metadata"><relative-time created="1250743230" updated="1584053324">Created 8/20/2009, updated 3/12/2020</relative-time><span>5 minute read</span></div><div class="prerendered"><p>Switching from the world of easy-to-use modeless editors (Notepad, <a href="/wiki/TextMate">TextMate</a>, <a href="/wiki/BBEdit">BBEdit</a>, <a href="/wiki/Xcode">Xcode</a> etc) to the unfamiliar modal landscape of <a href="/wiki/Vim">Vim</a> requires a large effort. I suspect that a fairly common outcome is that, without sufficient motivation and commitment, many people end up giving up and going back to what they were comfortable with before.</p>
+<p>If you're one of the lucky ones, this won't happen to you and you will instead arrive at an &quot;epiphany moment&quot; (or perhaps a series of small epiphanies) in which you feel like you finally understand what all the fuss is about, and decide that this is the editor that you would like to take for your lawfully wedded wife, or husband as the case may be.</p>
+<p>Some people never experience that moment, and some experience it in entirely different ways with an entirely different editor, like <a href="/wiki/Emacs">Emacs</a>. Others never have an &quot;epiphany&quot; with <em>any</em> editor, but instead settle in comfortably with an editor like <a href="/wiki/TextMate">TextMate</a> or an <a href="/wiki/IDE">IDE</a> like Eclipse.</p>
+<p>In this brief article I'm going to try to convey the essence of my personal &quot;epiphany&quot; with <a href="/wiki/Vim">Vim</a> in a way that will be understandable to anybody, even someone who's never touched Vim, as long as it is read with a receptiveness and a desire to &quot;get it&quot; and find out what all the fuss is about.</p>
+<h2>Power</h2>
+<p><a href="/wiki/Vim">Vim</a> is extremely powerful, but that's not what this is about. <a href="/wiki/Emacs">Emacs</a> is extremely powerful too, as is any number of <a href="/wiki/IDEs">IDEs</a>. Being able to do super-complicated stuff isn't something that can set an editing environment head and shoulders above the rest, but is rather a minimum base-line requirement.</p>
+<p>For me the thing that matters about Vim is actually the simple stuff. The basic, repetitive editing actions which you do literally a thousand times a day. If an editor can make <em>those</em> things as easy as possible for me, then it's won my heart.</p>
+<p>This is why <a href="/wiki/Emacs">Emacs</a> could never truly win me over. The easy stuff just didn't feel easy enough; the key combinations too uncomfortable and the customization (using Emacs Lisp) had too high a barrier to entry.</p>
+<p>Vim, on the other hand, instantly felt right: easy-to-remember, mnemonic key commands; excellent default settings out of the box; easy customization using a familiar, <a href="/wiki/C">C</a>-like scripting language; comfortable keyboard access (almost no modifier keys or sequences of multiple keys being held down).</p>
+<p>Let's illustrate with a quick example:</p>
+<pre><code class="language-c">if (foo)
+{
+    bar();
+    baz();|
+}
+</code></pre>
+<p>Imagine you're editing the above snippet and the cursor is at the end of the fourth line (shown with a vertical bar, <code>|</code>) and you decide that you want to insert an additional function call <em>above</em> that line.</p>
+<p>With a &quot;normal&quot; text editor your typical pattern will be:</p>
+<ol>
+<li>Hit the &quot;up&quot; cursor key to go to the previous line</li>
+<li>Hit &quot;Return&quot; to open up a new line</li>
+<li>Start typing the additional function call</li>
+</ol>
+<p>Note that if your editor is indentation-aware at least you won't have to worry about tabbing over before you start adding your function call, because you'll already be in the fourth column.</p>
+<p>Now let's compare the <a href="/wiki/Vim">Vim</a> way of doing this:</p>
+<ol>
+<li>Hit &quot;O&quot; to open a new line above the current line</li>
+<li>Start typing the additional function call</li>
+</ol>
+<p>The obvious advantage here is that we've achieved what we wanted in two steps rather than three; a very important distinction when we're talking about something that you probably want to do dozens or even hundreds of times in a normal day of coding. This two-step pattern is something that will come up again and again in Vim: &quot;prepare to do something&quot; and then &quot;do it&quot;.</p>
+<p>The not-so-obvious advantage but equally important in my mind, is the fact that with Vim there is a much smaller cognitive gap between what you want to do, and how you instruct the editor to actually produce the result that you want. That is, what you want to do is &quot;open a new line above the current line&quot;, and the way you do it is to type &quot;O&quot;, which is the Vim command for &quot;open a new line above the current line&quot;. This command will work as you would expect no matter where the cursor is on the line.</p>
+<p>In a normal editor on the other hand, the cognitive gap is larger. We can make the gap even more evident if instead of placing the cursor at the end of the line we imagine that it is somewhere in the middle (perhaps we moved it there to correct a typo). Note the cognitive gap between what we want to do (open a new line above the current line) and what we actually have to instruct the editor to do in order to get what we want:</p>
+<ol>
+<li>Hit the &quot;up&quot; cursor key to go to the previous line</li>
+<li>Hold down &quot;Command&quot; and the &quot;right&quot; cursor key to jump to the end of the line</li>
+<li>Hit &quot;Return&quot; to open up a new line</li>
+</ol>
+<p>So that's three steps and only <em>one</em> of them actually matches up with our final intention (opening a new line); the first two steps instead have us thinking about completely unrelated things, like moving to the previous line (a line we don't even want to edit) and jumping to the end of a line (again, not even one we want to edit).</p>
+<p>If you give Vim a try and start analyzing how you do things in Vim and how you do them in your old text editor, you will see this kind of pattern emerge again and again. The distance between <em>what</em> you want to do and <em>how</em> you do it tends to be so much shorter in Vim.</p>
+<p>And the reason this is <em>so</em> important is because it applies to operations which are <em>so</em> common while editing code. Things like:</p>
+<ul>
+<li>opening up a new line before the current line</li>
+<li>opening up a new line after the current line</li>
+<li>appending to the current line</li>
+<li>deleting a line</li>
+<li>moving a line</li>
+<li>copying a line</li>
+</ul>
+<p>Learn these basics and you will be loving Vim already. The basics alone are enough to make a compelling case. But that's not all you get.</p>
+<p>Vim makes the basics easy but it also makes the hard stuff easy too. You don't have to learn all the high-level &quot;power features&quot; on day 1, but as you go you will gradually pick them up, one by one. Things like macros, multiple clipboards (&quot;registers&quot; in Vim lingo), awesome buffer/window management, amazing customizability. And all of this in a rock-solid environment which can handle any number of files and files of any size.</p>
+</div><ul class="tags"><li><a href="/tags/vim">vim</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/terminal-vs-iterm">← Terminal vs iTerm</a></div><div class="post-nav-next"><a href="/blog/wohotkey-source-code-repository-now-public">WOHotKey source code repository now public →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

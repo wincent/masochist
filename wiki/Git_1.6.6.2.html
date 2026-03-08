@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.6.6.2 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.6.6.2</h1></div><div class="metadata"><relative-time created="1265854724" updated="1495119989">Created 2/11/2010, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official announcement posted to the <a href="/wiki/Git_mailing_list">Git mailing list</a>:</p>
+<pre><code>The latest maintenance release Git 1.6.6.2 is available at the
+usual places:
+
+ http://www.kernel.org/pub/software/scm/git/
+
+ git-1.6.6.2.tar.{gz,bz2}			(source tarball)
+ git-htmldocs-1.6.6.2.tar.{gz,bz2}		(preformatted docs)
+ git-manpages-1.6.6.2.tar.{gz,bz2}		(preformatted docs)
+
+The RPM binary packages for a few architectures are found in:
+
+ RPMS/$arch/git-*-1.6.6.2-1.fc11.$arch.rpm	(RPM)
+
+Git v1.6.6.2 Release Notes
+==========================
+
+Fixes since v1.6.6.1
+--------------------
+
+* recursive merge didn't correctly diagnose its own programming errors,
+  and instead caused the caller to segfault.
+
+* The new &quot;smart http&quot; aware clients probed the web servers to see if
+  they support smart http, but did not fall back to dumb http transport
+  correctly with some servers.
+
+* Time based reflog syntax e.g. &quot;@{yesterday}&quot; didn't diagnose a misspelled
+  time specification and instead assumed &quot;@{now}&quot;.
+
+* &quot;git archive HEAD -- no-such-directory&quot; produced an empty archive
+  without complaining.
+
+* &quot;git blame -L start,end -- file&quot; misbehaved when given a start that is
+  larger than the number of lines in the file.
+
+* &quot;git checkout -m&quot; didn't correctly call custom merge backend supplied
+  by the end user.
+
+* &quot;git config -f &lt;file&gt;&quot; misbehaved when run from a subdirectory.
+
+* &quot;git cvsserver&quot; didn't like having regex metacharacters (e.g. '+') in
+  CVSROOT environment.
+
+* &quot;git fast-import&quot; did not correctly handle large blobs that may
+  bust the pack size limit.
+
+* &quot;git gui&quot; is supposed to work even when launched from inside a .git
+  directory.
+
+* &quot;git gui&quot; misbehaved when applying a hunk that ends with deletion.
+
+* &quot;git imap-send&quot; did not honor imap.preformattedHTML as documented.
+
+* &quot;git log&quot; family incorrectly showed the commit notes unconditionally by
+  mistake, which was especially irritating when running &quot;git log --oneline&quot;.
+
+* &quot;git status&quot; shouldn't require an write access to the repository.
+
+Other minor documentation updates are included.
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

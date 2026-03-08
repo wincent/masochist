@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Installing nginx 0.7.61 on Mac OS X 10.6 Snow Leopard • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Installing nginx 0.7.61 on Mac OS X 10.6 Snow Leopard</h1></div><div class="metadata"><relative-time created="1251701485" updated="1710259978">Created 8/31/2009, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/nginx">nginx</a></li><li><a href="/tags/pcre">pcre</a></li><li><a href="/tags/upload">upload</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Installing <a href="/wiki/PCRE">PCRE</a></h2>
+<p><a href="/wiki/PCRE">PCRE</a> is a required by the <a href="/wiki/nginx">nginx</a> <a href="/wiki/HTTP">HTTP</a> rewrite module, so it must be installed before building nginx:</p>
+<pre><code class="language-shell">$ curl -O ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-7.9.tar.bz2
+$ tar xjvf pcre-7.9.tar.bz2
+$ cd pcre-7.9
+$ ./configure
+$ make
+$ make check
+$ sudo make install
+</code></pre>
+<h2>Installing <a href="/wiki/nginx">nginx</a> with the <a href="/wiki/nginx_upload_module">nginx upload module</a></h2>
+<pre><code class="language-shell">$ curl -O http://www.grid.net.ru/nginx/download/nginx_upload_module-2.0.10.tar.gz
+$ tar xzvf nginx_upload_module-2.0.10.tar.gz
+$ curl -O http://sysoev.ru/nginx/nginx-0.7.61.tar.gz
+$ tar xzvf nginx-0.7.61.tar.gz
+$ cd nginx-0.7.61
+$ ./configure --prefix=/usr/local/nginx --with-http_ssl_module --add-module=../nginx_upload_module-2.0.10
+$ make
+$ sudo make install
+</code></pre>
+<h2>Testing</h2>
+<p>Note that the first time I built using the <a href="/wiki/nginx_upload_module">nginx upload module</a> I ran into problems related to temporary directories (see &quot;<a href="/wiki/Updating_to_nginx_0.6.36_with_the_nginx_upload_module_2.0.9">Updating to nginx 0.6.36 with the nginx upload module 2.0.9</a>&quot;).</p>
+<p>I ran into a few similar issues this time, again using my <code>script/nginx</code> script which I use to launch <a href="/wiki/nginx">nginx</a> from within the <code>RAILS_ROOT</code> of a a <a href="/wiki/Rails">Rails</a> application.</p>
+<pre><code class="language-shell">$ script/nginx
+nginx not running: starting
+[alert]: could not open error log file: open() &quot;/usr/local/nginx/logs/error.log&quot; failed (13: Permission denied)
+2009/08/31 12:24:11 [emerg] 12691#0: open() &quot;/usr/local/nginx/tmp/nginx-local.conf&quot; failed (2: No such file or directory)
+</code></pre>
+<p>The first error is a permissions error and is expected because we are running <a href="/wiki/nginx">nginx</a> as a normal, unprivileged user. Fix it and retry:</p>
+<pre><code class="language-shell">$ sudo chown wincent /usr/local/nginx/logs
+$ script/nginx
+nginx not running: starting
+[emerg]: open() &quot;/usr/local/nginx/tmp/nginx-local.conf&quot; failed (2: No such file or directory)
+</code></pre>
+<p>So the second error remains: it is looking for the config file at <code>/usr/local/nginx/tmp/nginx-local.conf</code> when it should be looking in <code>RAILS_ROOT/tmp/nginx-local.conf</code>. We fix that by modifying the <code>script/nginx</code> script to pass in absolute rather than relative paths. Now retry:</p>
+<pre><code class="language-shell">$ script/nginx
+nginx not running: starting
+[emerg]: open() &quot;/Users/wincent/trabajo/unversioned/example.com/src/tmp/mime.types&quot; failed (2: No such file or directory) in /Users/wincent/trabajo/unversioned/example.com/src/tmp/nginx-local.conf:11
+</code></pre>
+<p>More relative path glitches. The config file has a <code>include mime.types;</code> line in it. Eliminate that error and retry:</p>
+<pre><code class="language-shell">$ cp /usr/local/nginx/conf/mime.types tmp/mime.types
+$ script/nginx
+nginx not running: starting
+[warn]: duplicate MIME type &quot;text/html&quot; in /Users/wincent/trabajo/unversioned/wincent.dev/src/tmp/nginx-local.conf:25
+[warn]: 1024 worker_connections are more than open file resource limit: 256
+</code></pre>
+<p>So it now works, but with two warnings.</p>
+<p>Looking a little deeper, the reason why things were broken is found <a href="http://wiki.nginx.org/NginxHttpMainModule">here</a> in the documentation for the <code>include</code> directive (emphasis added):</p>
+<blockquote>
+<p>Note that until version 0.6.7, paths are relative to what was specified to configure via the --prefix=&lt;PATH&gt; directive, which by default is /usr/local/nginx. If you didn't set this when you compiled Nginx, then use absolute paths.</p>
+<p>Since version 0.6.7, <strong><em>paths are relative to directory of nginx configuration file nginx.conf</em></strong>, but not to nginx prefix directory.</p>
+</blockquote>
+<p>Now let's look at the remaining warnings. The message for the first one isn't very helpful, seeing as line 25 corresponds to this part of the configuration file, where there are no obvious defects:</p>
+<pre><code>    16   gzip on;
+    17   gzip_types text/plain
+    18              text/html
+    19              text/javascript
+    20              text/css
+    21              text/xml
+    22              application/x-javascript
+    23              application/xml
+    24              application/xml+atom
+    25              application/xml+rss;
+    26   gzip_proxied any; # default is &quot;off&quot; (no compression on proxied requests)
+</code></pre>
+<p>So start by fixing the first one and retrying:</p>
+<pre><code class="language-shell">$ script/nginx
+nginx not running: starting
+[warn]: duplicate MIME type &quot;text/html&quot; in /Users/wincent/trabajo/unversioned/wincent.dev/src/tmp/nginx-local.conf:25
+</code></pre>
+<p>As for the second one, commenting out the <code>text/html</code> in the <code>gzip_types</code> directive makes it go away. Looks like this is expected:</p>
+<ul>
+<li><a href="http://forum.slicehost.com/comments.php?DiscussionID=3763">http://forum.slicehost.com/comments.php?DiscussionID=3763</a></li>
+<li><a href="http://www.ruby-forum.com/topic/163928">http://www.ruby-forum.com/topic/163928</a></li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Updating_to_nginx_0.7.61_on_Red_Hat_Enterprise_Linux_5.3">Updating to nginx 0.7.61 on Red Hat Enterprise Linux 5.3</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

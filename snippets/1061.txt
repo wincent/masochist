@@ -1,0 +1,3 @@
+
+3e9d1b5 Attempt to fix font asset breakage in prod
+3ec3bb8 Add back vendor/assets/fonts symlink

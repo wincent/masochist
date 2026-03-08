@@ -1,0 +1,164 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Upgrading to Git 1.5.3.1 on Red Hat Enterprise Linux • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Upgrading to Git 1.5.3.1 on Red Hat Enterprise Linux</h1></div><div class="metadata"><relative-time created="1188914815" updated="1584053324">Created 9/4/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/red.hat">red.hat</a></li><li><a href="/tags/git">git</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These notes were made while upgrading to <a href="/wiki/Git_1.5.3.1">Git 1.5.3.1</a> on <a href="/wiki/Red_Hat_Enterprise_Linux">Red Hat Enterprise Linux</a> from the tarball.</p>
+<p>For notes on upgrading to 1.5.3.1 from a local clone of the central <a href="/wiki/Git">Git</a> repository, see &quot;<a href="/wiki/Upgrading_to_Git_1.5.3.1_on_Mac_OS_X_Tiger">Upgrading to Git 1.5.3.1 on Mac OS X Tiger</a>&quot;.</p>
+<h2>Downloading</h2>
+<pre><code>wget http://kernel.org/pub/software/scm/git/git-1.5.3.1.tar.bz2 \
+     http://kernel.org/pub/software/scm/git/git-1.5.3.1.tar.bz2.sign
+</code></pre>
+<p>Before verifying the signature some set-up of <a href="/wiki/GPG">GPG</a> is necessary; see &quot;<a href="/wiki/Upgrading_to_Git_1.5.2.4_on_Red_Hat_Enterprise_Linux">Upgrading to Git 1.5.2.4 on Red Hat Enterprise Linux</a>&quot; for more details.</p>
+<pre><code>gpg --verify git-1.5.3.1.tar.bz2.sign git-1.5.3.1.tar.bz2
+</code></pre>
+<h2>Building</h2>
+<pre><code># extract
+tar xjvf git-1.5.3.1.tar.bz2
+cd git-1.5.3.1
+
+# build
+nice make prefix=/usr/local all
+
+# text
+nice make prefix=/usr/local test
+
+# install
+sudo make prefix=/usr/local install
+
+# get man pages
+wget http://www.kernel.org/pub/software/scm/git/git-manpages-1.5.3.1.tar.bz2 \
+     http://www.kernel.org/pub/software/scm/git/git-manpages-1.5.3.1.tar.bz2.sign
+
+# verify
+gpg --verify git-manpages-1.5.3.1.tar.bz2.sign git-manpages-1.5.3.1.tar.bz2
+
+# install
+cd /usr/local/man/
+sudo tar xjvf full_path_to_manpages_archive/git-manpages-1.5.3.1.tar.bz2
+</code></pre>
+<h2>Updating <a href="/wiki/gitweb">gitweb</a></h2>
+<pre><code># from top-level of Git source tree
+make clean
+make prefix=/usr/local \
+     GITWEB_PROJECTROOT=/pub/git/path_to_public_repos \
+     GITWEB_LIST=/pub/git/conf/gitweb-projects \
+     GITWEB_STRICT_EXPORT=1 \
+     GITWEB_CSS=&quot;/gitweb.css&quot; \
+     GITWEB_LOGO=&quot;/git-logo.png&quot; \
+     GITWEB_FAVICON=&quot;/git-favicon.png&quot; \
+     GITWEB_CONFIG=&quot;/pub/git/conf/gitweb.conf&quot; \
+     gitweb/gitweb.cgi
+sudo -u git cp gitweb/gitweb.{cgi,css} \
+               gitweb/git-*.png \
+               /pub/git/public_html
+</code></pre>
+<p>The basic installation procedure (shown above) which would usually work fell down here with this error message in the browser:</p>
+<pre><code>Too many arguments for Encode::decode_utf8 at gitweb.cgi line 686, near &quot;Encode::FB_CROAK)&quot;
+BEGIN not safe after errors--compilation aborted at gitweb.cgi line 898.
+</code></pre>
+<p>Perhaps this would have been caught when performing the test suite, but it turns out that the <a href="/wiki/gitweb">gitweb</a> tests didn't even run:</p>
+<pre><code>*** t9500-gitweb-standalone-no-errors.sh ***
+*   ok 1: skipping gitweb tests, perl version is too old
+* passed all 1 test(s)
+</code></pre>
+<p>One of the inconveniences of running an older version of <a href="/wiki/RHEL">RHEL</a>; still officially supported by <a href="/wiki/Red_Hat">Red Hat</a> but the base versions of a lot of the installed software is really long in the tooth.</p>
+<p>So first of all I checked that the build hadn't mangled the script around line 686:</p>
+<pre><code>eval { $res = decode_utf8($str, Encode::FB_CROAK); };
+</code></pre>
+<p>Which looked fine, so I tried upgrading the old <code>Encode</code> <a href="/wiki/CPAN">CPAN</a> module (1.83) to the latest available version (2.23) at the time of writing:</p>
+<pre><code>sudo -H cpan Encode
+</code></pre>
+<p>Unfortunately this failed due to failing tests:</p>
+<pre><code>t/Aliases..................ok
+t/at-cn....................ok
+t/at-tw....................ok
+t/CJKT.....................ok
+t/enc_data.................skipped
+        all skipped: Perl 5.8.1 or later required
+t/enc_eucjp................skipped
+        all skipped: Perl 5.8.1 or later required
+t/enc_module...............
+#   Failed test 'encoding vs. STDOUT'
+#   at t/enc_module.t line 50.
+#          got: '1'
+#     expected: '0'
+
+#   Failed test 'encoding vs. STDIN - 1'
+#   at t/enc_module.t line 58.
+#          got: '初期文字列'
+#     expected: '初期文字列
+# '
+
+#   Failed test 'encoding vs. STDIN - 2'
+#   at t/enc_module.t line 58.
+#          got: 'テスト文字列'
+#     expected: 'テスト文字列
+# '
+# Looks like you failed 3 tests of 3.
+t/enc_module...............dubious
+        Test returned status 3 (wstat 768, 0x300)
+DIED. FAILED tests 1-3
+        Failed 3/3 tests, 0.00% okay
+t/enc_utf8.................ok
+t/Encode...................ok
+t/Encoder..................ok
+t/encoding.................ok
+t/fallback.................ok
+t/from_to..................ok
+t/grow.....................ok
+t/gsm0338..................ok
+t/guess....................ok
+t/jis7-fallback............ok
+t/jperl....................ok
+t/mime-header..............ok
+t/mime-name................ok
+t/mime_header_iso2022jp....ok
+t/perlio...................ok
+        6/38 skipped: various reasons
+t/Unicode..................ok
+t/utf8strict...............skipped
+        all skipped: Perl 5.8.1 or later required
+Failed Test    Stat Wstat Total Fail  List of Failed
+-------------------------------------------------------------------------------
+t/enc_module.t    3   768     3    3  1-3
+3 tests and 6 subtests skipped.
+Failed 1/24 test scripts. 3/5838 subtests failed.
+Files=24, Tests=5838,  9 wallclock secs ( 5.94 cusr +  0.38 csys =  6.32 CPU)
+Failed 1/24 test programs. 3/5838 subtests failed.
+make: *** [test_dynamic] Error 29
+  DANKOGAI/Encode-2.23.tar.gz
+  /usr/bin/make test -- NOT OK
+Warning (usually harmless): 'YAML' not installed, will not store persistent state
+Running make install
+  make test had returned bad status, won't install without force
+</code></pre>
+<p>So I used <code>git blame</code> to find out <a href="http://repo.or.cz/w/git.git?a=commit;h=00f429af7bfaa6a9141bc0ac30995d4fae24836a">the commit</a> that introduced the problematic change; annoyingly, you can see that it includes tests which would most likely have discovered the problem prior to installation, if only the tests had actually run.</p>
+<p>My next tactic was to try running the tests manually to see if I could get more verbose output and an indication of what might be wrong:</p>
+<pre><code>cd ~/.cpan/build/Encode-2.23-Ysmv4Q
+perl Makefile.PL
+make
+make test
+perl t/enc_module.t
+</code></pre>
+<p>Here at least the output showed more clearly that there was a difference between the expected and actual outputs:</p>
+<pre><code>1..3
+not ok 1 - encoding vs. STDOUT
+#   Failed test 'encoding vs. STDOUT'
+#   at t/enc_module.t line 50.
+#          got: '1'
+#     expected: '0'
+not ok 2 - encoding vs. STDIN - 1
+#   Failed test 'encoding vs. STDIN - 1'
+#   at t/enc_module.t line 58.
+#          got: '初期文字列'
+#     expected: '\xE5\xE6\xE6絖\xE5
+# '
+not ok 3 - encoding vs. STDIN - 2
+#   Failed test 'encoding vs. STDIN - 2'
+#   at t/enc_module.t line 58.
+#          got: 'テスト文字列'
+#     expected: '\xE3\xE3鴻\xE6絖\xE5
+# '
+# Looks like you failed 3 tests of 3.
+</code></pre>
+<p>I downloaded and tested some older versions of the <code>Encode</code> module, dating as far back as 2005 (version 2.12) but all failed in exactly the same way. I also tried unsetting the <code>LANG</code> environment variable, even though I didn't think it should/could interfere with the tests in any way and the failure continued as before.</p>
+<p>After weighing things up (the scarcity of information about this in the <a href="/wiki/Google">Google</a> database, the amount of UTF-8 content that I'll be working with, the limitation of the problem to standard-out/standard-in pipes, the spread of versions of <code>Encode</code> affected by the problem, the need to get my <a href="/wiki/gitweb">gitweb</a> installation back up and running) I decided to go ahead and force the install despite the failing tests:</p>
+<pre><code>sudo -H cpan -fi Encode
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

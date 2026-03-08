@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>iptables • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>iptables</h1></div><div class="metadata"><relative-time created="1240925915" updated="1495119989">Created 4/28/2009, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/iptables">iptables</a></li><li><a href="/tags/firewall">firewall</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>See</h2>
+<ul>
+<li>Official site: <a href="http://www.netfilter.org/projects/iptables/index.html">http://www.netfilter.org/projects/iptables/index.html</a></li>
+<li>Official <a href="/wiki/RHEL">RHEL</a> 5 documentation on <a href="/wiki/IPTables">IPTables</a>: <a href="http://www.redhat.com/docs/manuals/enterprise/RHEL-5-manual/Deployment_Guide-en-US/ch-iptables.html">http://www.redhat.com/docs/manuals/enterprise/RHEL-5-manual/Deployment_Guide-en-US/ch-iptables.html</a></li>
+<li>Tutorials:
+<ul>
+<li>&quot;Simple Firewall Configuration Using NetFilter/iptables&quot;: <a href="http://www.novell.com/coolsolutions/feature/18139.html">http://www.novell.com/coolsolutions/feature/18139.html</a></li>
+<li>&quot;How To Set Up A Debian Linux Firewall&quot;: <a href="http://www.aboutdebian.com/firewall.htm">http://www.aboutdebian.com/firewall.htm</a></li>
+<li><a href="http://www.cyberciti.biz/faq/howto-rhel-linux-open-port-using-iptables/">http://www.cyberciti.biz/faq/howto-rhel-linux-open-port-using-iptables/</a></li>
+</ul>
+</li>
+<li>Example configs:
+<ul>
+<li><a href="http://www.avforums.com/forums/linux/733858-iptables-common-port-settings.html">http://www.avforums.com/forums/linux/733858-iptables-common-port-settings.html</a></li>
+<li><a href="http://forums.devshed.com/security-and-cryptography-17/iptables-block-mysql-port-to-everybody-but-just-one-ip-182005.html">http://forums.devshed.com/security-and-cryptography-17/iptables-block-mysql-port-to-everybody-but-just-one-ip-182005.html</a></li>
+</ul>
+</li>
+<li>Some random firewall article found on the web: <a href="http://www.linuxtopia.org/online_books/rhel5/rhel5_administration/rhel5_ch-fw.html">http://www.linuxtopia.org/online_books/rhel5/rhel5_administration/rhel5_ch-fw.html</a></li>
+</ul>
+<h2>Default <a href="/wiki/RHEL">RHEL</a> ruleset</h2>
+<p>Explained <a href="http://www.sns.ias.edu/~jns/wp/2006/02/09/confusing-rules-in-the-default-iptables-configuration-under-fedora-and-redhat-enterprise-linux/">here</a> and <a href="http://www.cyberciti.biz/faq/centos-linux-ipsec-firewall-rules/">here</a>:</p>
+<pre><code># Firewall configuration written by system-config-securitylevel
+# Manual customization of this file is not recommended.
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:RH-Firewall-1-INPUT - [0:0]
+-A INPUT -j RH-Firewall-1-INPUT
+-A FORWARD -j RH-Firewall-1-INPUT
+-A RH-Firewall-1-INPUT -i lo -j ACCEPT
+-A RH-Firewall-1-INPUT -p icmp --icmp-type any -j ACCEPT
+-A RH-Firewall-1-INPUT -p 50 -j ACCEPT
+-A RH-Firewall-1-INPUT -p 51 -j ACCEPT
+-A RH-Firewall-1-INPUT -p udp --dport 5353 -d 224.0.0.251 -j ACCEPT
+-A RH-Firewall-1-INPUT -p udp -m udp --dport 631 -j ACCEPT
+-A RH-Firewall-1-INPUT -p tcp -m tcp --dport 631 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+-A RH-Firewall-1-INPUT -j REJECT --reject-with icmp-host-prohibited
+COMMIT
+</code></pre>
+<p>In short:</p>
+<ul>
+<li>all inbound packets on the loopback interface are accepted</li>
+<li>all ICMP (ping) traffic is accepted</li>
+<li>ports 50 and 51 are related to IPSec and are accepted:</li>
+</ul>
+<!-- -->
+<pre><code>esp     50      IPSEC-ESP       # Encap Security Payload [RFC2406]
+ah      51      IPSEC-AH        # Authentication Header [RFC2402]
+</code></pre>
+<ul>
+<li>port 5353 is Apple's Digital Audio Access Protocol (DAAP) and is accepted</li>
+<li>port 631 is for CUPS, the &quot;Common UNIX Print System&quot;:</li>
+</ul>
+<!-- -->
+<pre><code>ipp             631/tcp                         # Internet Printing Protocol
+ipp             631/udp                         # Internet Printing Protocol
+</code></pre>
+<ul>
+<li>packets pertaining or related to established connections are accepted</li>
+<li>inbound connections to port 22 (SSH) are accepted</li>
+<li>everything else is rejected</li>
+</ul>
+<h2>Related articles in this <a href="/wiki">wiki</a></h2>
+<ul>
+<li><a href="/wiki/Using_at_to_safely_try_out_iptables_configuration_changes">Using at to safely try out iptables configuration changes</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

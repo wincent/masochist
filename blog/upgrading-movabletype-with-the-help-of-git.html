@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Upgrading MovableType with the help of Git • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/upgrading-movabletype-with-the-help-of-git">Upgrading MovableType with the help of Git</a></h1><div class="metadata"><relative-time created="1185389460" updated="1710259978">Created 7/25/2007, updated 3/12/2024</relative-time><span>2 minute read</span></div><div class="prerendered"><p>Just got this query via email and thought I'd post my answer here for others to see:</p>
+<blockquote>
+<p>I've recently switched from using <a href="http://wincent.dev/wiki/svn">svn</a> to <a href="http://wincent.dev/wiki/git">git</a>, and I'm about to switch from using <a href="http://wincent.dev/wiki/WordPress">WordPress</a> to <a href="http://wincent.dev/wiki/MovableType">MovableType</a> too.</p>
+<p>I've read your previous blog posts on upgrading WordPress using svn, and they were really helpful.</p>
+<p>It'll be great if you could write an article on upgrading MovableType using git for us newbies.</p>
+</blockquote>
+<p>The reason why I never used to upgrade my Movable Type via Subversion is that <a href="http://wincent.dev/wiki/Six%20Apart">Six Apart</a> (the makers of Movable Type) don't provide public access to their <a href="http://wincent.dev/wiki/version%20control%20system">version control system</a>; they instead distribute new releases of Movable Type as tarballs or zip archives.</p>
+<p>As such, it wasn't possible to update an existing, customized install using Subversion (see &quot;<a href="http://wincent.dev/wiki/Upgrading%20WordPress%20using%20Subversion">Upgrading WordPress using Subversion</a>&quot;). I did make some notes on making the upgrade as smooth as possible with the aid of things like <a href="http://wincent.dev/wiki/Interarchy">Interarchy</a>'s &quot;mirror upload&quot; feature (see &quot;<a href="http://wincent.dev/wiki/Movable%20Type%20upgrade%20notes">Movable Type upgrade notes</a>&quot;), but it was never going to be as convenient as a Subversion-based upgrade.</p>
+<p>But Git is a distributed version control system so it offers the possibility of doing some tricks that you just can't do with Subversion.</p>
+<p>I haven't tried this out yet, it is untested, but I think that you might be able to use the following workflow:</p>
+<ul>
+<li>Grab the Movable Type source, extract the archive, and use it to initialize a brand new Git repository.</li>
+</ul>
+<!-- -->
+<pre><code>unzip MT-first-version.zip
+mv MT-first-version mt_vendor
+cd mt_vendor
+git init
+git add .
+git commit
+</code></pre>
+<ul>
+<li>Perform your customizations on a separate branch in a separate, cloned repository:</li>
+</ul>
+<!-- -->
+<pre><code>cd ..
+git clone mt_vendor mt_mine
+cd mt_mine
+git co -b my_custom_install --track
+</code></pre>
+<ul>
+<li>Whenever a new release comes out update the repository by extracting the archive, overwriting all the old files (but leaving the <code>.git</code> directory intact) and performing a <code>git commit -a</code>.</li>
+</ul>
+<!-- -->
+<pre><code># switch back to vendor repo
+cd ../mt_vendor
+
+# remove all the files from the previous version
+rm -r *
+
+# extract the new files
+unzip MT-new-version.zip
+mv MT-new-version/* .
+rmdir MT-new-version
+rm MT-new-version.zip
+
+# commit changes
+git commit -a
+</code></pre>
+<ul>
+<li>Now merge the changes into your customized install</li>
+</ul>
+<!-- -->
+<pre><code>cd ../mt_mine
+git pull origin master
+</code></pre>
+<p>I'm not sure whether this is better than the download/extract/upload cycle, but merging with Git should be much more straightforward than merging with your <a href="http://wincent.dev/wiki/SFTP">SFTP</a> client... Of course, it would still be a lot easier if Six Apart offered Subversion, Git or even <a href="http://wincent.dev/wiki/CVS">CVS</a> access to a repository containing the public releases.</p>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/the-view-from-the-crows-nest">← The view from the crow's nest</a></div><div class="post-nav-next"><a href="/blog/rails-usability-improvement">Rails usability improvement →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The joy of manual options parsing in C • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/the-joy-of-manual-options-parsing-in-c">The joy of manual options parsing in C</a></h1><div class="metadata"><relative-time created="1243270741" updated="1495119989">Created 5/25/2009, updated 5/18/2017</relative-time><span>3 minute read</span></div><div class="prerendered"><p>It's written, it compiles, but it's not tested yet.</p>
+<p>There's something about this kind of repetitive code. Repetitive, wordy, lengthy, error-prone. You could use an <a href="/wiki/API">API</a> like <code>getopt</code> which provides a convenient abstraction, but if you do so you lose that very fine degree of control over things like error messages and conflict-handling.</p>
+<p>You could try to identify the common code and extract it out into a function (or, ugh, a macro) without losing any of the flexibility and control, but you run the risk of increasing complexity (possibly adding bugs) and perhaps harming readability.</p>
+<p>If you're writing a tool like <a href="/wiki/Git">Git</a> with jillions of subcommands and a zillion options then it probably makes sense to pursue this kind of abstraction, but for a write-once <a href="/wiki/command-line">command-line</a> tool then it's probably best to just do the unpleasant work, write some tests to mark sure the darn thing actually works, and forget about it.</p>
+<pre><code>NSArray *parse_options_or_die(options_t *options, int argc, char *argv[])
+{
+    int errors = 0;
+    BOOL scanning_paths = NO;
+    NSMutableArray *paths = [NSMutableArray array];
+    for (int i = 1; i &lt; argc; i++)
+    {
+        if (scanning_paths)
+            [paths addObject:[NSString stringWithUTF8String:argv[i]]];
+        else if (!strcmp(argv[i], &quot;--&quot;))
+            scanning_paths = YES;
+        else if (!strcmp(argv[i], &quot;-r&quot;) || !strcmp(argv[i], &quot;--recurse&quot;))
+        {
+            if (options-&gt;recurse == -1)
+            {
+                report_conflicting_options(argv[i], &quot;no-recurse&quot;);
+                errors++;
+            }
+            else
+                options-&gt;recurse = 1;
+        }
+        else if (!strcmp(argv[i], &quot;-R&quot;) || !strcmp(argv[i], &quot;--no-recurse&quot;))
+        {
+            if (options-&gt;recurse == 1)
+            {
+                report_conflicting_options(argv[i], &quot;recurse&quot;);
+                errors++;
+            }
+            else
+                options-&gt;recurse = -1;
+        }
+        else if (!strcmp(argv[i], &quot;-e&quot;) || !strcmp(argv[i], &quot;--regular-expression&quot;))
+        {
+            if (options-&gt;regex == -1)
+            {
+                report_conflicting_options(argv[i], &quot;no-regular-expression&quot;);
+                errors++;
+            }
+            else
+                options-&gt;regex = 1;
+        }
+        else if (!strcmp(argv[i], &quot;-E&quot;) || !strcmp(argv[i], &quot;--no-regular-expression&quot;))
+        {
+            if (options-&gt;regex == 1)
+            {
+                report_conflicting_options(argv[i], &quot;regular-expression&quot;);
+                errors++;
+            }
+            else
+                options-&gt;regex = -1;
+        }
+        else if (!strcmp(argv[i], &quot;-i&quot;) || !strcmp(argv[i], &quot;--case-insensitive&quot;) ||
+                 !strcmp(argv[i], &quot;--no-case-sensitive&quot;))
+        {
+            if (options-&gt;case_insensitive == -1)
+            {
+                report_conflicting_options(argv[i], &quot;case-sensitive&quot;);
+                errors++;
+            }
+            else
+                options-&gt;case_insensitive = 1;
+        }
+        else if (!strcmp(argv[i], &quot;-I&quot;) || !strcmp(argv[i], &quot;--no-case-insensitive&quot;) ||
+                 !strcmp(argv[i], &quot;--case-sensitive&quot;))
+        {
+            if (options-&gt;case_insensitive == 1)
+            {
+                report_conflicting_options(argv[i], &quot;case-insensitive&quot;);
+                errors++;
+            }
+            else
+                options-&gt;case_insensitive = -1;
+        }
+        else if (!strcmp(argv[i], &quot;-g&quot;) || !strcmp(argv[i], &quot;--replace-all&quot;))
+        {
+            if (options-&gt;global == -1)
+            {
+                report_conflicting_options(argv[i], &quot;no-replace-all&quot;);
+                errors++;
+            }
+            else
+                options-&gt;global = 1;
+        }
+        else if (!strcmp(argv[i], &quot;-G&quot;) || !strcmp(argv[i], &quot;--no-replace-all&quot;))
+        {
+            if (options-&gt;global == 1)
+            {
+                report_conflicting_options(argv[i], &quot;replace-all&quot;);
+                errors++;
+            }
+            else
+                options-&gt;global = -1;
+        }
+        else if (!strcmp(argv[i], &quot;-p&quot;) || !strcmp(argv[i], &quot;--preview&quot;))
+        {
+            if (options-&gt;preview == -1)
+            {
+                report_conflicting_options(argv[i], &quot;no-preview&quot;);
+                errors++;
+            }
+            else
+                options-&gt;preview = 1;
+        }
+        else if (!strcmp(argv[i], &quot;-P&quot;) || !strcmp(argv[i], &quot;--no-preview&quot;))
+        {
+            if (options-&gt;preview == 1)
+            {
+                report_conflicting_options(argv[i], &quot;preview&quot;);
+                errors++;
+            }
+            else
+                options-&gt;preview = -1;
+        }
+        else if (!strcmp(argv[i], &quot;-u&quot;) || !strcmp(argv[i], &quot;--gui&quot;))
+        {
+            if (options-&gt;gui == -1)
+            {
+                report_conflicting_options(argv[i], &quot;no-gui&quot;);
+                errors++;
+            }
+            else
+                options-&gt;gui = 1;
+        }
+        else if (!strcmp(argv[i], &quot;-U&quot;) || !strcmp(argv[i], &quot;--no-gui&quot;))
+        {
+            if (options-&gt;gui == 1)
+            {
+                report_conflicting_options(argv[i], &quot;gui&quot;);
+                errors++;
+            }
+            else
+                options-&gt;gui = -1;
+        }
+        else if (!strcmp(argv[i], &quot;-d&quot;) || !strcmp(argv[i], &quot;--dry-run&quot;))
+        {
+            if (options-&gt;dry_run == -1)
+            {
+                report_conflicting_options(argv[i], &quot;no-dry-run&quot;);
+                errors++;
+            }
+            else
+                options-&gt;dry_run = 1;
+        }
+        else if (!strcmp(argv[i], &quot;-D&quot;) || !strcmp(argv[i], &quot;--no-dry-run&quot;))
+        {
+            if (options-&gt;dry_run == 1)
+            {
+                report_conflicting_options(argv[i], &quot;dry-run&quot;);
+                errors++;
+            }
+            else
+                options-&gt;dry_run = -1;
+        }
+        else if (!strcmp(argv[i], &quot;-v&quot;) || !strcmp(argv[i], &quot;--verbose&quot;))
+        {
+            if (options-&gt;verbose == -1)
+                options-&gt;verbose = 1;
+            else
+                options-&gt;verbose++;
+        }
+        else if (!strcmp(argv[i], &quot;-V&quot;) || !strcmp(argv[i], &quot;--no-verbose&quot;))
+        {
+            if (options-&gt;verbose == 1)
+                options-&gt;verbose = -1;
+            else
+                options-&gt;verbose--;
+        }
+        else if (!strcmp(argv[i], &quot;-c&quot;))
+        {
+            if (i + 1 == argc || argv[i + 1][0] == '-')
+            {
+                fprintf(stderr, &quot;error: option -c requires an argument (-c file)\n&quot;);
+                errors++;
+            }
+            else if (options-&gt;skip_conf_files == 1)
+            {
+                report_conflicting_options(argv[i], &quot;no-conf&quot;);
+                errors++;
+            }
+            else if (options-&gt;conf_path &amp;&amp; strcmp(argv[i + 1], options-&gt;conf_path))
+            {
+                report_conflicting_options(argv[i], &quot;conf&quot;);
+                errors++;
+            }
+            else
+            {
+                i++;
+                options-&gt;conf_path = argv[i];
+            }
+        }
+        else if (!strncmp(argv[i], &quot;--conf&quot;, 6))
+        {
+            if (options-&gt;skip_conf_files == 1)
+            {
+                report_conflicting_options(argv[i], &quot;no-conf&quot;);
+                errors++;
+            }
+            else if (argv[i][6] != '=' || strlen(argv[i]) &lt; 8)
+            {
+                fprintf(stderr, &quot;error: option --conf requires an argument (--conf=file)\n&quot;);
+                errors++;
+            }
+            else if (options-&gt;conf_path &amp;&amp; strcmp(argv[i] + 7, options-&gt;conf_path))
+            {
+                report_conflicting_options(argv[i], &quot;conf&quot;);
+                errors++;
+            }
+            else
+                options-&gt;conf_path = argv[i] + 7;
+        }
+        else if (!strcmp(argv[i], &quot;-C&quot;) || !strcmp(argv[i], &quot;--no-conf&quot;))
+        {
+            if (options-&gt;conf_path)
+            {
+                report_conflicting_options(argv[i], &quot;conf&quot;);
+                errors++;
+            }
+            else
+                options-&gt;skip_conf_files = 1;
+        }
+        else if (!strcmp(argv[i], &quot;-h&quot;) || !strcmp(argv[i], &quot;--help&quot;))
+            show_usage_and_exit();
+        else if (!strcmp(argv[i], &quot;--version&quot;))
+            show_version_and_exit();
+        else if (argv[i][0] == '-')
+        {
+            fprintf(stderr, &quot;error: unrecognized option or argument: %s\n&quot;, argv[i]);
+            errors++;
+        }
+        else
+            [paths addObject:[NSString stringWithUTF8String:argv[i]]];
+    }
+    if (errors)
+    {
+        fprintf(stderr, &quot;For usage information see: %s --help\n&quot;, argv[0]);
+        exit(EXIT_FAILURE);
+    }
+    return paths;
+}
+</code></pre>
+</div><ul class="tags"><li><a href="/tags/c">c</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/weekly-progress-report-1">← Weekly progress report</a></div><div class="post-nav-next"><a href="/blog/tabs-vs-spaces-or-spaces-vs-tabs-and-elastic-tabstops">Tabs vs spaces (or spaces vs tabs), and elastic tabstops →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

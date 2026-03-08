@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rails view testing cheatsheet • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Rails view testing cheatsheet</h1></div><div class="metadata"><relative-time created="1279016318" updated="1584053324">Created 7/13/2010, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/rspec">rspec</a></li><li><a href="/tags/rails">rails</a></li><li><a href="/tags/testing">testing</a></li><li><a href="/tags/rr">rr</a></li><li><a href="/tags/cheatsheet">cheatsheet</a></li><li><a href="/tags/views">views</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Tools</h2>
+<ul>
+<li><a href="/wiki/RSpec_2">RSpec 2</a> (spec framework)</li>
+<li><a href="/wiki/RR">RR</a> (<a href="/wiki/mocking">mocking</a> library)</li>
+<li><a href="/wiki/Factory_Girl">Factory Girl</a> (<a href="/wiki/object_mother">object mother</a> library)</li>
+<li><a href="/wiki/Rails_3">Rails 3</a> (application framework)</li>
+</ul>
+<h2>Context and example naming</h2>
+<p>The <code>describe</code> block should be given the relative path of the template, as described under &quot;Rendering&quot; below.</p>
+<p>For brevity, phrase <code>it</code> examples without &quot;should&quot;:</p>
+<pre><code class="language-ruby">it 'assigns found issues'       # concise, unlike:
+it 'should assign found issues' # verbose
+</code></pre>
+<h2>Passing instance variables</h2>
+<p>Instance variables set up in examples are transparently made available inside the template, similar to how controller instance variables are also propagated to templates. It is no longer necessary to explicitly use <code>assigns()</code>, although such a method does exist.</p>
+<h2>Rendering</h2>
+<p>Use the relative path of the template — for example, <code>posts/show</code> for a standard <code>action#controller</code> template — and the right template will be chosen automatically when you call <code>render</code> with no parameters:</p>
+<pre><code class="language-ruby">describe 'posts/show' do
+  it 'renders' do
+    render
+  end
+end
+</code></pre>
+<p>For partials with locals, the render call should resemble:</p>
+<pre><code class="language-ruby">render 'shared/errors', :model =&gt; model
+</code></pre>
+<p>This is equivalent to the more verbose:</p>
+<pre><code class="language-ruby">render :partial =&gt; 'shared/errors', :locals =&gt; { :model =&gt; model }
+</code></pre>
+<p>Note that we must specify the partial name path without the underscore (ie. <code>shared/errors</code>, not <code>shared/_errors</code>), or Rails will not be able to find it.</p>
+<h2>Checking for content</h2>
+<p>Matching against the HTML source:</p>
+<pre><code class="language-ruby">render
+rendered.should match('&lt;em&gt;foo&lt;/em&gt;')
+</code></pre>
+<p>Matching against user-visible text (not HTML tags):</p>
+<pre><code class="language-ruby">render
+rendered.should contain('foo')
+</code></pre>
+<p>Matching using CSS selectors (based on <a href="/wiki/Webrat">Webrat</a>):</p>
+<pre><code class="language-ruby">render
+rendered.should have_selector('a[href=&quot;/issues/new&quot;]', :content =&gt; 'link text')
+</code></pre>
+<p>Options:</p>
+<ul>
+<li><code>:content</code> is optional and may be either a string or a regular expression</li>
+<li><code>:count</code> may also be supplied and accepts a number</li>
+</ul>
+<p>Arbitrary attributes can be specified via the options hash:</p>
+<pre><code class="language-ruby">rendered.should have_selector('a', :href =&gt; '/issues/new')
+</code></pre>
+<p>(Note that I believe that URL design is very important and your URLs should be stable; this is why I specify the URL literally rather than using a Rails URL helper method in the examples above.)</p>
+<p>Arbitrarily complex selectors may be used (for example, 'div.links ul &gt; li a') or calls may be nested within blocks:</p>
+<pre><code class="language-ruby">rendered.should have_selector('#header') do |div|
+  div.should have_selector(...) # or
+  div.should match(...)         # or
+  div.should contain(...)       # etc
+end
+</code></pre>
+<h2>Message expectations</h2>
+<p>Mock the <code>view</code> instance:</p>
+<pre><code class="language-ruby">mock(view).breadcrumbs
+</code></pre>
+<h2>Isolating partials</h2>
+<p>When speccing a parent template, we don't want errors in the partial to &quot;bubble up&quot; into the parent's spec (the partial should have its own specs anyway). We therefore stub out calls to templates in the <code>before</code> block and explicitly proxy through the <code>render</code> call for the main template:</p>
+<pre><code class="language-ruby">before do
+  stub(view).render 'partial/1'
+  stub(view).render 'partial/2' # etc, one stub for each partial
+  stub.proxy(view).render       # let the main &quot;render&quot; call through
+end
+</code></pre>
+<p>Note that the <code>render</code> call that we stub out here must <em>exactly</em> match the call as it is made in the view. For example, if the view passes in its <code>:locals</code> implicitly, the stub should also:</p>
+<pre><code class="language-ruby"># in view
+render 'foo/bar', :thing =&gt; '2', :other_thing =&gt; 'bar'
+
+# in spec
+stub(view).render 'foo/bar', :thing =&gt; '2', :other_thing =&gt; 'bar'
+</code></pre>
+<p>Likewise, if the view uses a literal underscore (eg. <code>issues/_summary</code>), the stub should also; if the view does <em>not</em> use a literal underscore (eg. <code>issues/summary</code>, trusting Rails to find the actual template on disk which has an underscore in the name), the stub should not either.</p>
+<p>We also include an example block for each partial with a mock to confirm that the partial is actually called as we expect:</p>
+<pre><code class="language-ruby">it 'renders the errors partial' do
+  mock(view).render 'errors'
+  render
+end
+</code></pre>
+<p>It is advisable to have at least one higher-level test that combines the rendering of both the parent and any partial templates. This can either be down at the level of acceptance tests with a tool like <a href="/wiki/Steak">Steak</a>, or in a separate <code>describe</code> block inside the view specs where we don't stub out the calls that render the partial(s).</p>
+<p>As an aside, RSpec itself provides a means of asserting that a particular partial was rendered:</p>
+<pre><code class="language-ruby">render
+view.should render_template(:partial =&gt; 'foo', :local1 =&gt; 'bar', :local2 =&gt; 'baz')
+</code></pre>
+<h2>Interaction-based or state-based testing?</h2>
+<h3>Uses for interaction-based testing</h3>
+<h4>Verifying helper use</h4>
+<p>The view should be free of complex logic. Really it should only retrieve attributes from passed in instance variables, employ simple iteration and looping, and perhaps conditionally display content based on simple boolean tests. Anything more complex should be extracted into a helper method.</p>
+<p>We test helper methods separately, so we can often avoid repeating ourselves by instead using a mock to confirm that a helper method was called; for example:</p>
+<pre><code class="language-ruby">it 'shows the post timeinfo' do
+  mock(view).timeinfo(@post)
+  render
+end
+</code></pre>
+<h4>Verifying partial use</h4>
+<p>Described earlier.</p>
+<h4>Allowing view-first development</h4>
+<p>Within the <a href="/wiki/Behavior-Driven_Development">Behavior-Driven Development</a> approach, some people argue for &quot;outside-in&quot; development, starting with high-level acceptance tests, then drilling down to view specs (and their corresponding views), and finally completing the picture with controllers and models (specs first, of course).</p>
+<p>This type of development often <em>requires</em> mocks and stubs to used seeing as the other parts of the system don't necessarily exist yet. Within this development style, use of test doubles may be viewed as a temporary design tool to be used while fleshing out the initial form of the application, with the option of later switching over to real models once they are implemented.</p>
+<p>There is also a milder variant of &quot;outside-in&quot; BDD, which doesn't require you to get the specs for the outer levels passing with test doubles before moving to the inner levels. In this style, the failing outer-level tests merely prompt you to write a lower-level failing test (which may itself prompt you to write an even lower level test). You effectively end up moving back and forth among the various levels as part of getting any single top-level spec to pass.</p>
+<h3>Uses for state-based testing</h3>
+<p>State-based testing can avoid some problems with using <a href="/wiki/test_doubles">test doubles</a>, such as:</p>
+<ul>
+<li>Overhead: a potentially large amount of additional set-up must be performed to configure all the required mocks and stubs</li>
+<li>Repetition: between implementation and spec, because the test doubles end up replicating the work done by the implementation but using a different &quot;language&quot;</li>
+<li>Brittleness: due to the close ties to the implementation details, changes to the implementation may break the spec even if the externally-observable behavior of the template hasn't changed</li>
+<li>Disconnection from actual API changes: because the test doubles stand between the view and the actual objects to be displayed, they can cause specs to spuriously continue passing in the face of API changes</li>
+</ul>
+<p>The state-based approach instead relies on an easy-to-use <a href="/wiki/object_mother">object mother</a> to provide objects for the spec.</p>
+<p>Downsides of using object mothers here are:</p>
+<ul>
+<li>They couple view specs to real model instances, so model failures can cascade and cause view spec failures</li>
+<li>Involving real model instances may be noticeably slower for extremely large test suites</li>
+</ul>
+<p>In general I prefer the state-based testing approach for views because of the speed and ease of writing specs. I also like the fact that the specs are &quot;pure&quot; in the sense that they are <em>only</em> interested in the externally-observable behavior of the application, which is, by definition, the reason why we write code; this can actually be a useful design tool (if you find yourself writing code that has no externally-observable behavior, then it's quite possible that you shouldn't be writing the code). If and when performance starts to become a problem, emphasis can be shifted away from state-based testing.</p>
+<p>The basic pattern is:</p>
+<ol>
+<li>Set up state beforehand (either in <code>before</code> block for state which is common to all examples, or inside the <code>it</code> block for example-specific state)</li>
+<li>Call <code>render</code></li>
+<li>Check state afterwards</li>
+</ol>
+<h2>Behavior-Driven Development of views</h2>
+<p>Strict BDD doctrine states that no code should be written without there first existing a failing spec for it. Given that so much of view code is mere presentational detail and not actual logic, the need to write failing specs before adding a given line to a template is less convincing.</p>
+<p>In fact, many developers choose not to write view specs at all.</p>
+<p>I personally do write view specs, but I most definitely do not follow the rule that says that I can't add anything to the view without first having a failing spec for it.</p>
+<p>Instead, I add specs for all &quot;significant&quot; aspects of the template's behavior. &quot;Significant&quot; does not mean things like markup choices (ie. ordered or unordered lists), but it does mean things like:</p>
+<ul>
+<li>which partials get rendered</li>
+<li>what helper methods get called</li>
+<li>what models, and what attributes on them, are shown</li>
+<li>conditional display (ie. if the template should look significantly different depending on some variable criterion)</li>
+<li>edge cases: things that might behave differently given extreme inputs</li>
+</ul>
+<p>Merely aesthetic or presentational aspects of the template <em>are</em> eligible for speccing if they can be considered actual bugs in the application.</p>
+<h2>Related</h2>
+<ul>
+<li><a href="/wiki/Rails_model_testing_cheatsheet">Rails model testing cheatsheet</a></li>
+<li><a href="/wiki/Rails_controller_testing_cheatsheet">Rails controller testing cheatsheet</a></li>
+<li><a href="/wiki/Rails_helper_testing_cheatsheet">Rails helper testing cheatsheet</a></li>
+<li><a href="/wiki/Rails_mailer_testing_cheatsheet">Rails mailer testing cheatsheet</a></li>
+<li><a href="/wiki/RR_cheatsheet">RR cheatsheet</a></li>
+<li><a href="/wiki/Steak_cheatsheet">Steak cheatsheet</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

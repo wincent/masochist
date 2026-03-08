@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Shell here documents • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Shell here documents</h1></div><div class="metadata"><relative-time created="1206507941" updated="1584053324">Created 3/26/2008, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/bash">bash</a></li><li><a href="/tags/here.doc">here.doc</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Simple form</h2>
+<pre><code>cat &lt;&lt;HERE
+foo
+bar
+baz
+HERE
+</code></pre>
+<h3>Output</h3>
+<pre><code>foo
+bar
+baz
+</code></pre>
+<h2>Indenting</h2>
+<p>This can be useful in a shell script where you want to nest the here-doc (eg. inside an <code>if</code> block):</p>
+<pre><code>cat &lt;&lt;-HERE
+&lt;Tab&gt;&lt;Tab&gt;Stuff
+&lt;Tab&gt;HERE
+</code></pre>
+<h2>Echoing to a file</h2>
+<pre><code>cat &gt; file.txt &lt;&lt;HERE
+blah
+blah
+blah
+HERE
+</code></pre>
+<h2>Piping output to another command</h2>
+<pre><code>cat &lt;&lt;HERE | sort
+foo
+bar
+baz
+HERE
+</code></pre>
+<h3>Output</h3>
+<pre><code>bar
+baz
+foo
+</code></pre>
+<h2>Avoiding variable substitution</h2>
+<pre><code>cat &lt;&lt;'HERE'
+$PATH
+HERE
+</code></pre>
+<h3>Output</h3>
+<pre><code>$PATH
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Here_document">Here document</a> section from <em>Advanced Bash Scripting Guide</em> found at: <a href="http://tldp.org/LDP/abs/html/here-docs.html">http://tldp.org/LDP/abs/html/here-docs.html</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

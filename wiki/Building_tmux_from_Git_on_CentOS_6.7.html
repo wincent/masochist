@@ -1,0 +1,24 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Building tmux from Git on CentOS 6.7 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Building tmux from Git on CentOS 6.7</h1></div><div class="metadata"><relative-time created="1458671095" updated="1584053324">Created 3/22/2016, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/libevent">libevent</a></li><li><a href="/tags/tmux">tmux</a></li><li><a href="/tags/centos">centos</a></li><li><a href="/tags/redhat">redhat</a></li><li><a href="/tags/ncurses">ncurses</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Notes from my latest foray:</p>
+<pre><code>JOBS=32
+sudo yum install automake glibc-static
+wget https://github.com/libevent/libevent/releases/download/release-2.0.22-stable/libevent-2.0.22-stable.tar.gz
+tar xzf libevent-2.0.22-stable.tar.gz
+cd libevent-2.0.22-stable
+./configure --disable-shared --enable-static --prefix=$HOME &amp;&amp; make -j$JOBS install
+cd ..
+wget http://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz
+cd ncurses-6.0
+./configure --disable-shared --enable-static --with-termlib --with-ticlib --prefix=$HOME --with-pkg-config-libdir=$HOME/lib/pkgconfig --enable-pc-files &amp;&amp; make -j$JOBS install
+cd ..
+git clone https://github.com/tmux/tmux.git
+cd tmux
+sh autogen.sh
+env PKG_CONFIG_PATH=$HOME/lib/pkgconfig CPPFLAGS=&quot;-I$HOME/include -I$HOME/include/ncurses&quot; CFLAGS=&quot;-I$HOME/include -I$HOME/include/ncurses&quot; LDFLAGS=&quot;-L$HOME/lib&quot; ./configure --enable-static --prefix=$HOME &amp;&amp; make -j$JOBS install
+</code></pre>
+<p>Observations:</p>
+<ul>
+<li>Updated to ncurses 6.0 (last time was 5.9).</li>
+<li>Updated to libevent 2.0.22 (last time was 2.0.21).</li>
+<li>tmux failed to find ncurses until I built the latter with explicit <code>--enable-pc-files</code> and <code>--with-pkg-config-libdir</code>.</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

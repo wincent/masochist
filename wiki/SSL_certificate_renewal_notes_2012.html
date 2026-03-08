@@ -1,0 +1,169 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SSL certificate renewal notes 2012 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>SSL certificate renewal notes 2012</h1></div><div class="metadata"><relative-time created="1341106269" updated="1710259978">Created 7/1/2012, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/apache">apache</a></li><li><a href="/tags/sendmail">sendmail</a></li><li><a href="/tags/cyrus">cyrus</a></li><li><a href="/tags/ssl">ssl</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>I've been using <a href="/wiki/RapidSSL">RapidSSL</a> for my <a href="/wiki/SSL">SSL</a> certificates for a few years now, using <a href="http://www.servertastic.com/">ServerTastic</a> because it's been the cheapest reseller ($50 for a 5/year renewal). Right now I have one cert for wincent.dev and another for wincent.dev (buying two separate certs is still considerably cheaper than getting a wildcard cert, although one day I'll probably cave in and get a wildcard cert in order to gracefully handle and redirect HTTPS requests coming in to wincent.dev and possibly other subdomains as well).</p>
+<p>This year I was forced into renewing a little early because Chrome started complaining about the signature algorithm used on the older of my two certs (the certificate in question was for wincent.dev, and set to expire on 23 May 2013; just under 11 months from now). I had originally thought that by the time it expired I might have migrated all my SSL traffic onto wincent.dev, but that hasn't happened. This is the first time I've been &quot;bitten&quot; by my selection of cheaper certificates.</p>
+<p>This time I went with <a href="http://namecheap.com">Namecheap</a>, as they offered a marginally better deal ($9.49/year for 4 years).</p>
+<p>In many ways the process here was similar to the last time I renewed this certificate (see &quot;<a href="/wiki/SSL_certificate_renewal_notes_2008">SSL certificate renewal notes 2008</a>&quot;). The only catches were that, since last time:</p>
+<ul>
+<li>RapidSSL started using an intermediate CA (Certificate Authority) to sign the issued certificate, rather than directly signing it with the root CA like they used to.</li>
+<li>Namecheap refuses CSRs (Certificate Signing Requests) made with 1024-bit keys, requiring a minimum of a 2048-bit key</li>
+</ul>
+<p>Things mostly &quot;just work&quot; in any case; it was only with <a href="/wiki/Cyrus">Cyrus</a> that I had to make adjustments.</p>
+<p>As before, the basic process for renewal is:</p>
+<ol>
+<li>Go to Namecheap</li>
+<li>Go through the checkout process</li>
+<li>Receive email with link to page where you submit your CSR (Certificate Signing Request)</li>
+<li>Generate the CSR and paste it into the web page from the previous step</li>
+<li>Receive another email requesting approval to generate a new certificate</li>
+<li>Install the new certificate for <a href="/wiki/Apache">Apache</a>, <a href="/wiki/sendmail">sendmail</a> and <a href="/wiki/Cyrus">Cyrus</a></li>
+</ol>
+<h2>Generating a new private key</h2>
+<p>Most places will issue scary warnings about generating unencrypted private keys, but in practice that's exactly what you'll need if you want to be able to bring up services in an automated fashion (without having to enter a passphrase to decrypt the key). If you're not a bank, then having correct/conservative ownership and permissions on the key file, combined with staying up to date with security practices, is probably the right tradeoff.</p>
+<p>It's possible to create such a key by omitting the <code>-des3</code> option:</p>
+<pre><code># go to dir containing Apache certs
+cd /data/etc/httpd/ssl
+
+# generate new key, with more bits
+openssl genrsa --out ssl.key.rapidssl.2012 4096
+</code></pre>
+<p>If you forget to do that, you can also remove the passphrase as shown:</p>
+<pre><code># generate new key, encrypted like everybody says you should...
+openssl genrsa -des3 -out ssl.key.rapidssl.2012 4096
+
+# tighten perms otherwise SSL refuses to touch the key
+chmod 600 ssl.key.rapidssl.2012
+
+# change or strip the passphrase
+ssh-keygen -p -f ssl.key.rapidssl.2012
+
+# lock down
+chmod 400 ssl.key.rapidssl.2012
+</code></pre>
+<h2>Generating the CSR (Certificate Signing Request)</h2>
+<pre><code># gen new csr
+openssl req -new -key ssl.key.rapidssl.2012 -out ssl.csr.rapidssl.2012
+</code></pre>
+<p>I answered the questions as follows:</p>
+<pre><code>You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [GB]:AU
+State or Province Name (full name) [Berkshire]:South Australia
+Locality Name (eg, city) [Newbury]:Glenelg South
+Organization Name (eg, company) [My Company Ltd]:wincent.dev
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) []:wincent.dev
+Email Address []:example@example.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+</code></pre>
+<p>It's a good idea to check new csr against old one; making sure the info looks sane</p>
+<pre><code>openssl req -noout -text -in ssl.csr.rapidssl.2010
+openssl req -noout -text -in ssl.csr.rapidssl.2012
+</code></pre>
+<h2>Installing the new cert and intermediate CA for <a href="/wiki/Apache">Apache</a></h2>
+<p>Once I received the new cert and intermediate CA cert, I inspected the CA cert:</p>
+<pre><code># inspect new intermediate cert
+openssl x509 -in ca.rapidssl.2012 -noout -text -purpose
+</code></pre>
+<p>And then symlinked the new files into place:</p>
+<pre><code>lrwxrwxrwx 1 root root   20 2012-06-30 21:05 ca.crt -&gt; ca.crt.rapidssl.2012
+-r-------- 1 root root 1850 2012-06-30 13:27 ca.crt.comodo.2004
+-r-------- 1 root root 1391 2012-06-30 13:24 ca.crt.rapidssl.2012
+-rw-r--r-- 1 root root 8641 2010-03-30 12:38 ssl.conf
+lrwxrwxrwx 1 root root   21 2012-06-30 21:06 ssl.crt -&gt; ssl.crt.rapidssl.2012
+-r-------- 1 root root 1827 2008-03-28 08:26 ssl.crt.comodo.2004
+-r-------- 1 root root 1212 2008-03-28 08:26 ssl.crt.rapidssl.2007
+-r-------- 1 root root 1212 2008-04-23 07:08 ssl.crt.rapidssl.2008
+-r-------- 1 root root 2199 2012-06-30 13:23 ssl.crt.rapidssl.2012
+-r-------- 1 root root  660 2008-03-28 08:26 ssl.csr.comodo.2004
+-r-------- 1 root root  688 2008-03-28 08:26 ssl.csr.rapidssl.2007
+-r-------- 1 root root  708 2008-04-23 06:51 ssl.csr.rapidssl.2008
+-r-------- 1 root root 1756 2012-06-30 13:20 ssl.csr.rapidssl.2012
+lrwxrwxrwx 1 root root   21 2012-06-30 21:07 ssl.key -&gt; ssl.key.rapidssl.2012
+-r-------- 1 root root  888 2008-03-28 08:26 ssl.key.comodo.2004
+-r-------- 1 root root  887 2008-03-28 08:26 ssl.key.rapidssl.2007
+-r-------- 1 root root 3243 2012-06-30 13:18 ssl.key.rapidssl.2012
+</code></pre>
+<p>Then it was time to test the config and verify that everything worked in the browser(s) of interest:</p>
+<pre><code>apachectl configtest
+apachectl graceful
+</code></pre>
+<h2>Sendmail</h2>
+<p>Sendmail is configured to look in a different place for TLS files (see <code>/etc/mail/sendmail.mc</code> for exact details):</p>
+<pre><code>cd /etc/pki/tls/certs
+cp /data/etc/httpd/ssl/ca.crt.rapidssl.2012 .
+cp /data/etc/httpd/ssl/ssl.key.rapidssl.2012 sendmail.key.rapidssl.2012
+cp /data/etc/httpd/ssl/ssl.crt.rapidssl.2012 sendmail.pem.rapidssl.2012
+
+# generate hash of certificate subject name
+openssl x509 -hash -in ca.crt.rapidssl.2012 -inform PEM -noout
+ln -s ca.crt.rapidssl.2012 2f2c2f7c.0
+
+# confirm that all is well
+openssl verify sendmail.pem.rapidssl.2012
+</code></pre>
+<p>Again, symlink and set appropriate permissions:</p>
+<pre><code>lrwxrwxrwx 1 root root     20 2012-06-30 15:45 2f2c2f7c.0 -&gt; ca.crt.rapidssl.2012
+lrwxrwxrwx 1 root root     20 2012-06-30 15:47 74c26bd0.0 -&gt; ca.crt.rapidssl.2010
+-rw-r--r-- 1 root root 517016 2007-10-15 11:20 ca-bundle.crt
+-r-------- 1 root root    948 2010-02-18 20:16 ca.crt.rapidssl.2010
+-r-------- 1 root root   1391 2012-06-30 15:32 ca.crt.rapidssl.2012
+-rw------- 1 root root   1476 2010-02-16 09:24 localhost.crt
+-rwxr-xr-x 1 root root    610 2007-10-15 17:55 make-dummy-cert
+-rw-r--r-- 1 root root   2240 2007-10-15 17:55 Makefile
+lrwxrwxrwx 1 root root     26 2012-06-30 15:47 sendmail.key -&gt; sendmail.key.rapidssl.2012
+-r-------- 1 root root    887 2012-06-30 15:29 sendmail.key.rapidssl.2007
+-r-------- 1 root root   3243 2012-06-30 15:42 sendmail.key.rapidssl.2012
+lrwxrwxrwx 1 root root     26 2012-06-30 15:48 sendmail.pem -&gt; sendmail.pem.rapidssl.2012
+-r-------- 1 root root   1212 2012-06-30 15:29 sendmail.pem.rapidssl.2008
+-r-------- 1 root root   2199 2012-06-30 15:42 sendmail.pem.rapidssl.2012
+</code></pre>
+<p>At this point we can restart sendmail and test:</p>
+<pre><code>service sendmail restart
+
+# without the CApath, you'll get a warning about a
+# self-signed certificate being in the chain
+# http://stackoverflow.com/questions/4103472
+openssl s_client -starttls smtp -connect wincent.dev:25 -CApath /etc/pki/tls/certs
+</code></pre>
+<h2>Cyrus</h2>
+<p>As noted earlier, Cyrus is the one thing that required some additional hoop-jumping. Specifically, I had to make a bundle certificate that was the concatenation of the server cert and the intermediate CA cert</p>
+<pre><code>cd /etc/pki/cyrus-imapd
+cp /data/etc/httpd/ssl/ssl.key.rapidssl.2012 cyrus-imapd.key.rapidssl.2012
+cp /data/etc/httpd/ssl/ssl.crt.rapidssl.2012 cyrus-imapd.pem.rapidssl.2012
+</code></pre>
+<p>After setting up the bundled cert file, symlinks, permissions/ownership:</p>
+<pre><code>-r-------- 1 cyrus root 3590 2012-06-30 19:28 cyrus-imapd-bundle.pem.rapidssl.2012
+lrwxrwxrwx 1 root  root   29 2012-06-30 19:24 cyrus-imapd.key -&gt; cyrus-imapd.key.rapidssl.2012
+-r-------- 1 cyrus root  887 2012-06-30 16:04 cyrus-imapd.key.rapidssl.2007
+-r-------- 1 cyrus root 3243 2012-06-30 16:05 cyrus-imapd.key.rapidssl.2012
+lrwxrwxrwx 1 root  root   36 2012-06-30 19:24 cyrus-imapd.pem -&gt; cyrus-imapd-bundle.pem.rapidssl.2012
+-r-------- 1 cyrus root 1212 2012-06-30 16:05 cyrus-imapd.pem.rapidssl.2008
+-r-------- 1 cyrus root 2199 2012-06-30 16:20 cyrus-imapd.pem.rapidssl.2012
+</code></pre>
+<p>The relevant lines from <code>/etc/imapd.conf</code> look like this:</p>
+<pre><code>tls_cert_file: /etc/pki/cyrus-imapd/cyrus-imapd.pem
+tls_key_file: /etc/pki/cyrus-imapd/cyrus-imapd.key
+tls_ca_file: /etc/pki/tls/certs/ca-bundle.crt
+tls_ca_path: /etc/pki/tls/certs
+</code></pre>
+<p>And we can restart Cyrus:</p>
+<pre><code>service cyrus-imapd restart
+</code></pre>
+<p>And verify in <a href="/wiki/Mail.app">Mail.app</a> and on the <a href="/wiki/command_line">command line</a>:</p>
+<pre><code># test secure IMAP
+openssl s_client -connect wincent.dev:993  -CApath /etc/pki/tls/certs
+
+# test secure POP
+openssl s_client -connect wincent.dev:995  -CApath /etc/pki/tls/certs
+</code></pre>
+<h2>nginx</h2>
+<p>My <a href="/wiki/nginx">nginx</a> instance is running with a different hostname and hence a different certificate, so there was nothing to do this time. See &quot;<a href="/wiki/SSL_certificate_renewal_notes_2010">SSL certificate renewal notes 2010</a>&quot; for an example of a certificate update involving nginx.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

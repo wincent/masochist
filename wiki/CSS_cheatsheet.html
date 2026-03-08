@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CSS cheatsheet • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>CSS cheatsheet</h1></div><div class="metadata"><relative-time created="1192033867" updated="1736516595">Created 10/10/2007, updated 1/10/2025</relative-time></div><ul class="tags"><li><a href="/tags/css">css</a></li><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/cheatsheet">cheatsheet</a></li></ul><div class="prerendered"><h2>Type selectors</h2>
+<p>Style all <code>p</code> elements:</p>
+<pre><code>p { ... }
+</code></pre>
+<h2>Class selectors</h2>
+<p>Style all elements of class foo:</p>
+<pre><code>.foo { ... }
+</code></pre>
+<p>Note that an element may contain multiple space-separated classes; for example, you could apply classes <code>foo</code> and <code>bar</code> to a <code>p</code> element with:</p>
+<pre><code>&lt;p class=&quot;foo bar&quot;&gt;baz&lt;/p&gt;
+</code></pre>
+<h2>Combined type/class selectors</h2>
+<p>Style all <code>li</code> elements of class <code>foo</code>:</p>
+<pre><code>li.foo { ... }
+</code></pre>
+<h2>ID selectors</h2>
+<p>Style the element with ID <code>foo</code> (must be only one such element on the page):</p>
+<pre><code>#foo { ... }
+</code></pre>
+<h2>Combined class/ID selectors</h2>
+<p>Style the <code>div</code> element with ID <code>foo</code> (must be only one such element on the page):</p>
+<pre><code>div#foo { ... }
+</code></pre>
+<h2>Descendant selectors</h2>
+<p>Style all <code>em</code> elements that are descendants (direct or indirect) of a <code>p</code> element:</p>
+<pre><code>p em { ... }
+</code></pre>
+<h2>Child selectors</h2>
+<p>Style all <code>em</code> elements that are immediate children of a <code>p</code> element:</p>
+<pre><code>p &gt; em { ... }
+</code></pre>
+<h2>Universal selectors</h2>
+<p>Style all elements on the page:</p>
+<pre><code>* { ... }
+</code></pre>
+<h2>Adjacent sibling selectors</h2>
+<p>Style any <code>h3</code> element that immediately follows an <code>h2</code> element:</p>
+<pre><code>h2 + h3 { ... }
+</code></pre>
+<h2>Attribute selectors</h2>
+<p>Style any <code>img</code> element that has an <code>alt</code> attribute:</p>
+<pre><code>img[alt] { ... }
+</code></pre>
+<p>Style any <code>img</code> element whose <code>alt</code> attribute has the exact value <code>foo</code>:</p>
+<pre><code>img[alt=&quot;foo&quot;] { ... }
+</code></pre>
+<p>Style any <code>img</code> element whose <code>alt</code> attribute <em>contains</em> the space-delimited word <code>foo</code>:</p>
+<pre><code>img[alt~=&quot;foo&quot;] { ... }
+</code></pre>
+<p>Style any <code>img</code> element whose <code>alt</code> attribute <em>contains</em> the hyphen-delimited word <code>foo</code> (in other words, the attribute must contain the substring, <code>foo-</code>):</p>
+<pre><code>img[alt|=&quot;foo&quot;] { ... }
+</code></pre>
+<p>Other selectors:</p>
+<ul>
+<li><code>a[href^=&quot;http:&quot;]</code>: attribute <em>starts with</em> &quot;http:&quot;</li>
+<li><code>a[href$=&quot;.png&quot;]</code>: attribute <em>ends with</em> &quot;.png&quot;</li>
+<li><code>a[href*=&quot;foo&quot;]</code>: attribute <em>contains</em> &quot;foo&quot;</li>
+</ul>
+<p>Note that selectors can be combined; eg:</p>
+<ul>
+<li><code>a[href^=&quot;http:&quot;][href$=&quot;.png&quot;]</code>: attribute <em>starts with</em> &quot;http:&quot; and <em>ends with</em> &quot;.png&quot;</li>
+</ul>
+<p>See also:</p>
+<ul>
+<li><a href="http://reference.sitepoint.com/css/css3attributeselectors">http://reference.sitepoint.com/css/css3attributeselectors</a></li>
+</ul>
+<h2>Pseudo-class selectors</h2>
+<pre><code>a { ... }
+a:link { ... }
+a:visited { ... }
+a:hover { ... }
+a:active { ... }
+</code></pre>
+<p>The order is important, because if multiple possible matches are found the last-specified selector will be applied in the event of a conflict. So, for example, if combining the style declarations in pairs the ordering (<code>link</code>/<code>visited</code> followed by <code>hover</code>/<code>active</code>) should be maintained:</p>
+<pre><code>a:link, a:visited { ... }
+a:hover, a:active { ... }
+</code></pre>
+<p>Other pseudo-class selectors:</p>
+<ul>
+<li><code>:first-child</code></li>
+<li><code>:focus</code></li>
+<li><code>:lang(n)</code></li>
+</ul>
+<h2>Pseudo-element selectors</h2>
+<p>Style the first line of the <code>p</code> element:</p>
+<pre><code>p:first-line { ... }
+</code></pre>
+<p>Style the first letter of the <code>p</code> element:</p>
+<pre><code>p:first-letter
+</code></pre>
+<p>Other pseudo-element selectors:</p>
+<ul>
+<li><code>:before</code></li>
+<li><code>:after</code></li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li>The best <a href="/wiki/CSS">CSS</a> selector tutorial on the web: <a href="http://css.maxdesign.com.au/selectutorial/index.htm">http://css.maxdesign.com.au/selectutorial/index.htm</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

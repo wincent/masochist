@@ -1,0 +1,2 @@
+
+5640af2 Show closed issues with strikethrough text on index

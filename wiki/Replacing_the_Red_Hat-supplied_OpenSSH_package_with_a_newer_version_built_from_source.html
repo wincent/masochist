@@ -1,0 +1,336 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Replacing the Red Hat-supplied OpenSSH package with a newer version built from source • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Replacing the Red Hat-supplied OpenSSH package with a newer version built from source</h1></div><div class="metadata"><relative-time created="1256994255" updated="1625834873">Created 10/31/2009, updated 7/9/2021</relative-time></div><ul class="tags"><li><a href="/tags/ssh">ssh</a></li><li><a href="/tags/rssh">rssh</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Background</h2>
+<p>For many years now I have used the excellent <a href="/wiki/rssh">rssh</a> shell to lockdown access to third-parties who require upload (<a href="/wiki/SFTP">SFTP</a>) access to the server.</p>
+<p>For basic security, <a href="/wiki/rssh">rssh</a> enables users to connect to the server and upload using <a href="/wiki/SFTP">SFTP</a> without needing full-fledged <a href="/wiki/shell">shell</a> access.</p>
+<p>For additional security, <a href="/wiki/rssh">rssh</a> can operate within a <a href="/wiki/chroot">chroot</a> &quot;jail&quot; which restricts users to a designated area (usually their home directory) and prevents them from seeing other parts of the filesystem.</p>
+<p>In one of the recent updates supplied by <a href="/wiki/Red_Hat">Red Hat</a> I noticed that I could no longer create working jails. Old jails continued to work because all the necessary files for the jail had been copied inside them at the time of their creation, but new jails didn't work.</p>
+<p>The script that I use to create these jails (shown below) was specifically designed to handle the process automatically (to eliminate human error) and to be easily re-runnable on an existing jail to &quot;refresh&quot; it; nevertheless it didn't work.</p>
+<p>I spent a little while investigating the problem and couldn't see any obvious errors in the set-up of the new jails. Running the script using <code>sh -x</code> to see exactly what it was doing revealed no obvious problems, and manual inspection of the required libraries with <code>ldd</code> didn't reveal any obvious omissions.</p>
+<p>This wasn't a very satisfactory situation because it shows how brittle the system is: at any given time it is possible that Red Hat might make a change that breaks the jail-creation script, even though it was carefully crafted to be flexible and re-runnable. And the fact that processes running inside the jail can't write to system log files, at least without special configuration of the syslog daemon, makes the problem difficult to diagnose. This was not a process which I wanted to face repeatedly in the future.</p>
+<pre><code>#!/bin/sh -e
+# vhost-jail
+# Copyright 2006-2008 Wincent Colaiuta
+# Version 1.0 (20 January 2006): RHEL 3
+# Version 2.0 (27 February 2008): RHEL 5.1
+
+#
+# Constants
+#
+
+# tools/executables:
+RSSHHELPER=/usr/local/libexec/rssh_chroot_helper
+SFTPSERVER=/usr/libexec/openssh/sftp-server
+
+# support files:
+LDCACHE=/etc/ld.so.cache
+LDCONF=/etc/ld.so.conf
+PASSWD=/etc/passwd
+RSSHCONF=/usr/local/etc/rssh.conf
+
+#
+# Functions
+#
+
+die()
+{
+  SCRIPT=$(basename $0)
+  echo &quot;$SCRIPT: error: $1&quot; &gt;&amp;2
+  exit 1
+}
+
+# Returns the true name of a regular file or symlink (not a directory).
+# For example, given a symbolic link like this:
+#  /lib/libresolv.so.2 -&gt; libresolv-2.5.so
+# Then:
+#   truename /lib/libresolv.so.2
+# Returns:
+#   /lib/libresolv-2.5.so
+truename()
+{
+  FILE=$1
+  DIR=$(dirname $FILE)
+  NAME=$(basename $FILE)
+  if [ ! -f $FILE ]; then
+    die &quot;truename(): $FILE is not a regular file&quot;
+  fi
+  if [ -L $FILE ]; then
+    TARGET=$(find $DIR -maxdepth 1 -name $NAME -printf &quot;%l\n&quot;)
+    TRUENAME=&quot;$DIR/$TARGET&quot;
+  else
+    TRUENAME=$FILE
+  fi
+  echo $TRUENAME
+}
+
+lib_list()
+{
+  # Will process output from ldd that looks like this:
+  #   linux-gate.so.1 =&gt;  (0x00a5c000)
+  #   libc.so.6 =&gt; /lib/libc.so.6 (0x00318000)
+  #   /lib/ld-linux.so.2 (0x002fb000)
+  # grep filters out lines which don't contain an absolute path
+  # perl then strips off everything except the (space-delimited) path
+  ldd $1 | grep / | perl -pe &quot;s/.*?(\/[^ ]+).*/\1/&quot;
+}
+
+createdir()
+{
+  if [ $# -ne 1 ]; then
+    die &quot;createdir() requires exactly one argument&quot;
+  fi
+  if [ ! -d &quot;$1&quot; ]; then
+   if [ -e &quot;$1&quot; ]; then
+     die &quot;createdir(): $1 already exists and is not a directory&quot;
+   else
+    mkdir -p -v &quot;$1&quot; || die &quot;createdir() failed for path: $1&quot;
+   fi
+  fi
+}
+
+checkbase()
+{
+  if [ $# -ne 1 ]; then
+    die &quot;checkbase() requires exactly one argument&quot;
+  fi
+  BASE=&quot;$1&quot;
+  COUNT=`echo &quot;${BASE}&quot; | egrep -c &quot;\/$&quot;`
+  if [ $COUNT -ne 0 ]; then
+    die &quot;checkbase() requires base directory to have no trailing slash&quot;
+  fi
+}
+
+# Previously this method set up hard links and symbolic links.
+# On this RHEL 5.1 install most hard links won't work (because they'd be cross-device links);
+# so we copy instead of hard-linking (uses about 5MB per jail).
+link()
+{
+  if [ $# -ne 2 ]; then
+    die &quot;link() requires exactly two arguments&quot;
+  fi
+  FILE=&quot;$1&quot;
+  BASE=&quot;$2&quot;
+  DIR=$(dirname &quot;$FILE&quot;)
+  checkbase &quot;${BASE}&quot;
+  createdir &quot;${BASE}${DIR}&quot;
+  if [ ! -f &quot;${FILE}&quot; ]; then
+    die &quot;link(): ${FILE} is not a regular file&quot;
+  fi
+  if [ -L &quot;$1&quot; ]; then
+    NAME=$(basename &quot;${FILE}&quot;)
+    TARGET=$(find &quot;$DIR&quot; -maxdepth 1 -name &quot;${NAME}&quot; -printf &quot;%l\n&quot;)
+    TRUENAME=&quot;${DIR}/${TARGET}&quot;
+    echo &quot;${FILE} is a symbolic link with target ${TRUENAME}&quot;
+    cp -v -f &quot;$TRUENAME&quot; &quot;$BASE$TRUENAME&quot; || die &quot;cp failed for file: $TRUENAME&quot;
+    pushd &quot;${BASE}${DIR}&quot;
+    ln -v -f -s &quot;${TARGET}&quot; &quot;${NAME}&quot; || die &quot;link() (symbolic) failed for file: ${BASE}${FILE}&quot;
+    popd
+  else
+    cp -v -f &quot;$FILE&quot; &quot;$BASE/$FILE&quot; || die &quot;cp failed for file: $FILE&quot;
+  fi
+}
+
+#
+# Main
+#
+
+if [ $(whoami) != &quot;root&quot; ]; then
+  die &quot;this tool must be run as root&quot;
+fi
+
+if [ $# -ne 2 ]; then
+  die &quot;exactly two arguments required ('path to chroot' and 'username')&quot;
+fi
+
+BASE=&quot;$1&quot;
+USER=&quot;$2&quot;
+checkbase &quot;${BASE}&quot;
+
+# create relevant /etc/passwd entry
+DIR=$(dirname &quot;$PASSWD&quot;)
+createdir &quot;${BASE}${DIR}&quot;
+cat &quot;$PASSWD&quot; | egrep &quot;^${USER}:&quot; &gt; &quot;$BASE$PASSWD&quot;
+COUNT=$(wc -l &quot;$BASE$PASSWD&quot; | awk '{print $1}')
+if [ $COUNT -ne 1 ]; then
+  die &quot;error creating $BASE$PASSWD from $PASSWD&quot;
+fi
+
+# Get an up-to-date list of libraries linked to by sftp-server:
+LIBS=$(lib_list $SFTPSERVER)
+for LIB in ${LIBS}; do
+  link &quot;${LIB}&quot; &quot;${BASE}&quot;
+done
+
+LIBS=$(lib_list $RSSHHELPER)
+for LIB in ${LIBS}; do
+  link &quot;${LIB}&quot; &quot;${BASE}&quot;
+done
+
+# copy/link support files
+link &quot;${LDCACHE}&quot; &quot;${BASE}&quot;
+link &quot;${LDCONF}&quot; &quot;${BASE}&quot;
+
+# copy/link tools
+link &quot;${RSSHHELPER}&quot; &quot;${BASE}&quot;
+link &quot;${SFTPSERVER}&quot; &quot;${BASE}&quot;
+
+# set up /dev/null if required
+test -d &quot;$BASE/dev&quot; || mkdir &quot;$BASE/dev&quot;
+test -e &quot;$BASE/dev/null&quot; || cp -a /dev/null &quot;$BASE/dev/null&quot;
+
+# append to rssh config
+CONFIG=&quot;user=${USER}:022:00010:\&quot;${BASE}\&quot;&quot;
+COUNT=$(cat &quot;${RSSHCONF}&quot; | egrep -c &quot;${CONFIG}&quot;)
+if [ $COUNT -eq 0 ]; then
+  echo &quot;Appending line to ${RSSHCONF}&quot;
+  echo &quot;${CONFIG}&quot;
+  echo &quot;${CONFIG}&quot; &gt;&gt; &quot;${RSSHCONF}&quot;
+fi
+
+# tighten ownership on chroot jail dir
+chown -v root:root &quot;${BASE}&quot;
+
+exit 0
+</code></pre>
+<h2>The decision to update</h2>
+<p>At this time I became aware of a new option added to <a href="/wiki/OpenSSH">OpenSSH</a> around version 4.9, the <code>ChrootDirectory</code> setting which largely renders <a href="/wiki/rssh">rssh</a> unnecessary. <a href="/wiki/Red_Hat">Red Hat</a> actually backported this feature to the older version that they currently ship with <a href="/wiki/RHEL">RHEL</a> 5.4 (they are currently shipping OpenSSH version 4.3; the latest version available is 5.3), but it is basically useless without the <code>Match</code> directive which they <em>didn't</em> backport and which is necessary in order to selectively apply the jail only to certain users.</p>
+<p>As such, jailing <a href="/wiki/SFTP">SFTP</a> users isn't really practical under the Red Hat-supplied OpenSSH because doing so would effectively jail <em>all</em> users, even system administrators, rendering remote administration impossible. (The possible workaround of setting the home directory of administrators to the root of the filesystem, <code>/</code>, seems like a hideous kludge and I immediately dismissed it.)</p>
+<p>I like sticking to the stock-standard Red Hat packages wherever it is practical to do so because of the automated, quality-controlled security fixes, but in this case I felt like the advantages of switching to a hand-compiled, newer version of OpenSSH (robust, easy-to-configure chroot jails for <a href="/wiki/SFTP">SFTP</a> users) outweighed the costs (having to monitor another mailing list for security advisories).</p>
+<p>Another option I considered but discarded was the possibility of running a custom OpenSSH build out of <code>/usr/local</code> and listening on a different port, but given that these jails exist in part because they are for giving access to pseudo-trusted third parties, it might be confusing for them to set up their file transfer clients adequately (as it is, standard SFTP access proves to be tricky for many users, many of which are accustomed only to vanilla FTP clients).</p>
+<p>The question was, how to replace the <a href="/wiki/yum">yum</a>-installed Red Hat version of OpenSSH with a hand-built one? This was all to be done remotely so I wanted to be very careful about the steps I took so as not to get locked out.</p>
+<h2>Making the transition</h2>
+<p>Grab the latest version from <a href="http://www.openssh.org/portable.html">http://www.openssh.org/portable.html</a>.</p>
+<pre><code class="language-shell">$ wget ftp://ftp.OpenBSD.org/pub/OpenBSD/OpenSSH/portable/openssh-5.3p1.tar.gz
+$ tar xzvf openssh-5.3p1.tar.gz
+$ cd openssh-5.3p1
+</code></pre>
+<p>The page linked to above provides instructions on how to verify the signatures on the downloaded archive.</p>
+<p>Now do a test build to see if we can do a warning and error-free build:</p>
+<pre><code class="language-shell">$ ./configure
+$ make
+$ make tests
+</code></pre>
+<p>Inspect what packages are currently installed:</p>
+<pre><code class="language-shell">$ rpm -qa|grep ssh
+openssh-4.3p2-36.el5_4.2
+openssh-clients-4.3p2-36.el5_4.2
+openssh-server-4.3p2-36.el5_4.2
+</code></pre>
+<p>See what files on disk are associated with those packages:</p>
+<pre><code class="language-shell">$ rpm -ql openssh
+$ rpm -ql openssh-clients
+$ rpm -ql openssh-server
+</code></pre>
+<p>Do a test install under <code>/usr/local</code>:</p>
+<pre><code class="language-shell">$ sudo make install
+</code></pre>
+<p>Edit the test install's configuration file to listen on a different port:</p>
+<pre><code class="language-shell"># vi /usr/local/etc/sshd_config
+</code></pre>
+<p>Specifically, I wanted the test install to listen on port 2222:</p>
+<pre><code>Port 2222
+</code></pre>
+<p>Instead of the default port 22:</p>
+<pre><code>Port 22
+</code></pre>
+<p>On my system I have a restrictive firewall which rejects all traffic except for some specifically whitelisted things, so I had to allow access to port 2222. First step is to find out the rule number corresponding to the rejection rule:</p>
+<pre><code class="language-shell"># iptables -L --line-numbers|grep REJECT
+33   REJECT     all  --  anywhere             anywhere            reject-with icmp-host-prohibited
+</code></pre>
+<p>So I need to insert a new rule at rule 33 which whitelists traffic to port 2222:</p>
+<pre><code class="language-shell"># iptables -I INPUT 33 -m state --state NEW -m tcp -p tcp --dport 2222 -j ACCEPT
+</code></pre>
+<p>Now we fire up the test server:</p>
+<pre><code class="language-shell"># /usr/local/sbin/sshd
+</code></pre>
+<p>After testing connectivity to the test server (with <code>ssh -p 2222 user@example.com</code> and <code>sftp -oPort=2222 user@example.com</code>; it worked), time to do a real install over the top of the existing system install. Any existing sessions will survive here which is a nice safety measure.</p>
+<pre><code class="language-shell">$ make clean
+$ ./configure --prefix=/usr --sysconfdir=/etc/ssh
+$ make
+$ sudo make install
+</code></pre>
+<p>Kill the old master process and start a new one:</p>
+<pre><code class="language-shell"># service sshd restart
+</code></pre>
+<p>After confirming that it works, we are free to set up our jails. Set up a new group, <code>sftp</code>, which will contain all users who are to have SFTP-only access.</p>
+<pre><code class="language-shell"># groupadd sftp
+</code></pre>
+<p>Add a test user to the group to see if it works:</p>
+<pre><code class="language-shell"># usermod -G sftp exampleuser
+</code></pre>
+<p>My test user already had its home directory owned by <code>root:root</code>, with no write permissions of others, so I proceeded to edit the end of my <code>/etc/ssh/sshd_config</code>:</p>
+<pre><code># override default of no subsystems
+[/tags/Subsystem #Subsystem]	sftp	/usr/libexec/openssh/sftp-server
+Subsystem	sftp	internal-sftp
+
+Match Group sftp
+	ChrootDirectory	%h
+	ForceCommand	internal-sftp
+	X11Forwarding	no
+	AllowTcpForwarding	no
+</code></pre>
+<p>Test, it works as intended.</p>
+<p>Change the user's shell:</p>
+<pre><code class="language-bash">chsh -s /sbin/nologin exampleuser
+</code></pre>
+<p>Test again; still works, so proceed to add all other SFTP users to the <code>sftp</code> group with <code>usermod</code>.</p>
+<p>I also have a couple of users on the server for <a href="/wiki/Rails">Rails</a> apps, and these had a slightly different set-up so I needed to tweak the permissions slightly. These home directories weren't owned by <code>root:root</code> but by the Rails user itself so I had to tweak like this:</p>
+<pre><code class="language-shell"># chown root rails_app
+# chmod 750 rails_app
+</code></pre>
+<p>As a finally step had to clean up the <a href="/wiki/RPM">RPM</a> database (as <code>yum</code>/RPM still thinks other package is installed):</p>
+<pre><code class="language-shell"># rpm -e --test --justdb openssh-clients openssh-server openssh
+# rpm -e --justdb openssh-clients openssh-server openssh
+</code></pre>
+<p>Confirm that <code>yum</code> and <code>rpm</code> are happy:</p>
+<pre><code class="language-shell"># rpm -qa | grep ssh
+# yum list|grep ssh
+openssh.i386                            4.3p2-36.el5_4.2      rhel-i386-server-5
+openssh-askpass.i386                    4.3p2-36.el5_4.2      rhel-i386-server-5
+openssh-clients.i386                    4.3p2-36.el5_4.2      rhel-i386-server-5
+openssh-server.i386                     4.3p2-36.el5_4.2      rhel-i386-server-5
+</code></pre>
+<p>And get rid of the temporary firewall rule:</p>
+<pre><code class="language-shell"># iptables -L --line-numbers
+</code></pre>
+<p>Just check the rule number we want to target:</p>
+<pre><code>33   ACCEPT     tcp  --  anywhere             anywhere            state NEW tcp dpt:rockwell-csp2
+</code></pre>
+<p>Go ahead with the deletion:</p>
+<pre><code class="language-shell"># iptables -D INPUT 33
+</code></pre>
+<p>And confirm that it worked:</p>
+<pre><code class="language-shell"># iptables -L
+</code></pre>
+<p>We can kill the test process (find it with <code>ps auxwww|grep ssh</code> and look for <code>/usr/local/sbin/sshd</code>, and kill using <code>kill</code>) and make sure that the PID file at <code>/var/run/sshd.pid</code> corresponds to the new master process that we launched earlier so that <code>service sshd restart</code> (and similar) will work.</p>
+<p>Finally, subscribe to <a href="https://lists.mindrot.org/mailman/listinfo/openssh-unix-announce">https://lists.mindrot.org/mailman/listinfo/openssh-unix-announce</a> to keep on top of security and release announcements.</p>
+<h2>Follow-ups</h2>
+<h3><code>git push</code></h3>
+<p>I later discovered that my attempts to <code>git push</code> to the server were broken by the update. The message in the logs was:</p>
+<pre><code>User git_user not allowed because account is locked
+</code></pre>
+<p>This is because the <a href="/wiki/Git">Git</a> user had <code>!!</code> as a password in <code>/etc/shadow</code>, indicating that the account was locked. The old version of <a href="/wiki/OpenSSH">OpenSSH</a> had allowed public key authentication anyway, but the new version does not.</p>
+<p>So the required modification was to change the <code>!!</code> (user cannot log in to the system) to a <code>*</code> (user cannot log in by password) by manually editing <code>/etc/shadow</code>.</p>
+<p>This has to be done manually because the <code>usermod</code> utility doesn't provide a means of swapping from <code>!!</code> to <code>*</code>, only of prepending a <code>!</code> (locking with <code>-L</code> or <code>--lock</code>) or removing a prepended <code>!</code> (unlocking with <code>-U</code> or <code>--unlock</code>).</p>
+<pre><code class="language-shell"># chmod +w /etc/shadow
+# vim /etc/shadow
+# chmod -w /etc/shadow
+</code></pre>
+<h3><a href="/wiki/SSH">SSH</a> <code>PATH</code></h3>
+<p>Another discovery: the old SSH had a broader <code>PATH</code> setting, so commands like this:</p>
+<pre><code class="language-shell">$ ssh user@example.com &quot;sh -c 'which gem git'&quot;
+</code></pre>
+<p>Would work and find <code>/usr/bin/gem</code> and <code>/usr/local/bin/git</code>.</p>
+<p>On the new install only the former is found but the later is not because <code>/usr/local/bin</code> is not in the <code>PATH</code>.</p>
+<p>The solution is to set up a <code>~/.profile</code> file containing:</p>
+<pre><code>PATH=/usr/local/bin:$PATH
+export PATH
+</code></pre>
+<p>And cause <a href="/wiki/Bash">Bash</a> to consult it by invoking <code>sh</code> with the <code>-l</code> switch:</p>
+<pre><code class="language-shell">$ ssh user@example.com &quot;sh -l -c 'which gem git'&quot;
+</code></pre>
+<p>Similarly, commands like:</p>
+<pre><code class="language-shell">$ ssh user@example.com sudo monit restart all
+</code></pre>
+<p>Used to work because <code>monit</code> is at <code>/usr/local/bin/monit</code> and <code>/usr/local/bin</code> was in the <code>PATH</code>, but now need to be wrapped inside <code>sh -l -c ...</code> in order to flesh out the <code>PATH</code> appropriately:</p>
+<pre><code class="language-shell">$ ssh user@example.com &quot;sh -l -c 'sudo monit restart all'&quot;
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

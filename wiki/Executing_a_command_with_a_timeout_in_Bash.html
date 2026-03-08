@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Executing a command with a timeout in Bash • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Executing a command with a timeout in Bash</h1></div><div class="metadata"><relative-time created="1323650548" updated="1495119989">Created 12/12/2011, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/bash">bash</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From <a href="http://www.bashcookbook.com/bashinfo/source/bash-4.0/examples/scripts/timeout3">http://www.bashcookbook.com/bashinfo/source/bash-4.0/examples/scripts/timeout3</a>:</p>
+<pre><code class="language-bash">#!/bin/bash
+#
+# The Bash shell script executes a command with a time-out.
+# Upon time-out expiration SIGTERM (15) is sent to the process. If the signal
+# is blocked, then the subsequent SIGKILL (9) terminates it.
+#
+# Based on the Bash documentation example.
+
+# Hello Chet,
+# please find attached a &quot;little easier&quot;  :-)  to comprehend
+# time-out example.  If you find it suitable, feel free to include
+# anywhere: the very same logic as in the original examples/scripts, a
+# little more transparent implementation to my taste.
+#
+# Dmitry V Golovashkin &lt;Dmitry.Golovashkin@sas.com&gt;
+
+scriptName=&quot;${0##*/}&quot;
+
+declare -i DEFAULT_TIMEOUT=9
+declare -i DEFAULT_INTERVAL=1
+declare -i DEFAULT_DELAY=1
+
+# Timeout.
+declare -i timeout=DEFAULT_TIMEOUT
+# Interval between checks if the process is still alive.
+declare -i interval=DEFAULT_INTERVAL
+# Delay between posting the SIGTERM signal and destroying the process by SIGKILL.
+declare -i delay=DEFAULT_DELAY
+
+function printUsage() {
+    cat &lt;&lt;EOF
+
+Synopsis
+    $scriptName [-t timeout] [-i interval] [-d delay] command
+    Execute a command with a time-out.
+    Upon time-out expiration SIGTERM (15) is sent to the process. If SIGTERM
+    signal is blocked, then the subsequent SIGKILL (9) terminates it.
+
+    -t timeout
+        Number of seconds to wait for command completion.
+        Default value: $DEFAULT_TIMEOUT seconds.
+
+    -i interval
+        Interval between checks if the process is still alive.
+        Positive integer, default value: $DEFAULT_INTERVAL seconds.
+
+    -d delay
+        Delay between posting the SIGTERM signal and destroying the
+        process by SIGKILL. Default value: $DEFAULT_DELAY seconds.
+
+As of today, Bash does not support floating point arithmetic (sleep does),
+therefore all delay/time values must be integers.
+EOF
+}
+
+# Options.
+while getopts &quot;:t:i:d:&quot; option; do
+    case &quot;$option&quot; in
+        t) timeout=$OPTARG ;;
+        i) interval=$OPTARG ;;
+        d) delay=$OPTARG ;;
+        *) printUsage; exit 1 ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+# $# should be at least 1 (the command to execute), however it may be strictly
+# greater than 1 if the command itself has options.
+if (($# == 0 || interval &lt;= 0)); then
+    printUsage
+    exit 1
+fi
+
+# kill -0 pid   Exit code indicates if a signal may be sent to $pid process.
+(
+    ((t = timeout))
+
+    while ((t &gt; 0)); do
+        sleep $interval
+        kill -0 $$ || exit 0
+        ((t -= interval))
+    done
+
+    # Be nice, post SIGTERM first.
+    # The 'exit 0' below will be executed if any preceeding command fails.
+    kill -s SIGTERM $$ &amp;&amp; kill -0 $$ || exit 0
+    sleep $delay
+    kill -s SIGKILL $$
+) 2&gt; /dev/null &amp;
+
+exec &quot;$@&quot;
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Migrating the Git default branch from master to main • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Migrating the Git default branch from master to main</h1></div><div class="metadata"><relative-time created="1622967222" updated="1710259978">Created 6/6/2021, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>For new repositories, <a href="https://github.com/wincent/wincent/commit/8f29c77e67cdf0145461a8e2546fae3a4dca398a">set the Git <code>init.defaultBranch</code> to &quot;main&quot;</a>, overriding the Git default of &quot;master&quot;. This affects newly created repositories.</p>
+<p>Likewise, all major Git hosting platforms (eg. <a href="/wiki/GitHub">GitHub</a>, <a href="https://gitlab.com/">GitLab</a>, <a href="https://bitbucket.org">BitBucket</a>) provide options in their GUI to set the preferred default branch for newly created repositories, as well as changing it for existing repositories. To my knowledge, the &quot;default for the default&quot; is now <code>main</code> on most or all of them.</p>
+<p>GitHub allows you to rename a branch and &quot;redirect&quot; requests from the old branch to the new one. I haven't used this feature, because I am not a huge fan of the idea of requiring users who have previously cloned a repo to have to take manual steps to adjust their set-up to track your upstream configuration changes.</p>
+<p>So, as <a href="https://twitter.com/wincent/status/1401338775175892994">reported here</a>, I recently &quot;migrated&quot; the main branch on <a href="https://github.com/wincent/wincent">my dotfiles repo</a> from &quot;master&quot; to &quot;main&quot; in the following way.</p>
+<ol>
+<li>
+<p>Create a new &quot;main&quot; branch locally, based on &quot;master&quot;:</p>
+<pre><code>git checkout -b main
+</code></pre>
+</li>
+<li>
+<p>Tweak settings to make local <code>master</code> track local <code>main</code> rather than the other way around, while local <code>main</code> will track the remote <code>main</code> on the origin:</p>
+<pre><code>git config branch.master.merge refs/heads/main
+git config branch.master.remote .
+git config branch.main.remote origin
+git config branch.main.merge refs/heads/main
+</code></pre>
+</li>
+<li>
+<p>Add <a href="https://github.com/wincent/wincent/blob/main/support/hooks/pre-push">a hook</a> to <code>.git/hooks/pre-push</code> that will update the local <code>master</code> whenever <code>main</code> is pushed, and a <a href="https://github.com/wincent/wincent/blob/main/support/hooks/post-receive">remote <code>post-receive</code> hook</a> that does the analogous job on git.wincent.dev, where I am running my own <code>git-daemon</code>.</p>
+</li>
+<li>
+<p>Push <code>main</code> for the first time.</p>
+</li>
+<li>
+<p>Set the default branch to <code>main</code> in GitHub, GitLab, and BitBucket.</p>
+</li>
+<li>
+<p>Additionally, on git.wincent.dev, it is necessary to update the <code>HEAD</code> so that <code>git clone</code> operations from it check out <code>main</code> instead of <code>master</code>:</p>
+<pre><code>sudo -u git git symbolic-ref HEAD refs/heads/main
+</code></pre>
+</li>
+</ol>
+<h3>Appendix: gitweb</h3>
+<p>I looked into the source code for <a href="https://git-scm.com/docs/gitweb"><code>gitweb</code></a> to see how it figures out which order to display the branch heads in the UI. At the time I write this, it's currently showing this order for my dotfiles repo:</p>
+<ul>
+<li><code>master</code></li>
+<li><code>main</code></li>
+<li><code>pu</code></li>
+<li><code>next</code></li>
+<li><code>media</code></li>
+</ul>
+<p>It is <a href="https://github.com/git/git/blob/c09b6306c6ca275ed9d0348a8c8014b2ff723cfb/gitweb/gitweb.perl#L3798-L3802">using <code>--sort=-committerdate</code> in its <code>git_get_heads_list()</code> function</a> as seen here:</p>
+<pre><code class="language-perl">open my $fd, '-|', git_cmd(), 'for-each-ref',
+    ($limit ? '--count='.($limit+1) : ()), '--sort=-committerdate',
+    '--format=%(objectname) %(refname) %(subject)%00%(committer)',
+    @patterns
+    or return;
+</code></pre>
+<p>I was able to confirm the ordering by running this on the server:</p>
+<pre><code class="language-bash">sudo -u git git for-each-ref --count=10 --sort=-committerdate --format='%(objectname) %(refname) %(subject)%00%(committer)'
+</code></pre>
+<p>I submitted <a href="http://public-inbox.org/git/20210606085116.13739-1-greg@hurrell.net/">a patch upstream</a> to change that to:</p>
+<pre><code class="language-bash">sudo -u git git for-each-ref --count=10 --sort=-committerdate --sort=-HEAD --format='%(objectname) %(refname) %(subject)%00%(committer)'
+</code></pre>
+<p>but I have no idea whether it is the kind of behavior change that they'll accept. We'll see.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

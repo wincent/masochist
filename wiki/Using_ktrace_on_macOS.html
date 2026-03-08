@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Using ktrace on macOS • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Using ktrace on macOS</h1></div><div class="metadata"><relative-time created="1724228174" updated="1724228174">8/21/2024</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Example: tracing network activity, BSD (system calls, signals etc), and filesystem activity</h2>
+<pre><code>sudo ktrace trace -p 8484 -S -f C2,C3,C4
+</code></pre>
+<ul>
+<li><code>-p 8484</code>: Show events for process ID <code>8484</code>.</li>
+<li><code>-S</code>: Print arguments as strings for trace points known to include strings.</li>
+<li><code>-f</code>: Filter to show only:
+<ul>
+<li><code>C2</code>: <a href="https://github.com/apple-oss-distributions/xnu/blob/xnu-10063.141.1/bsd/sys/kdebug.h#L103"><code>DBG_NETWORK</code></a></li>
+<li><code>C3</code>: <a href="https://github.com/apple-oss-distributions/xnu/blob/xnu-10063.141.1/bsd/sys/kdebug.h#L104"><code>DBG_FSYSTEM</code></a></li>
+<li><code>C4</code>: <a href="https://github.com/apple-oss-distributions/xnu/blob/xnu-10063.141.1/bsd/sys/kdebug.h#L105"><code>DBG_BSD</code></a></li>
+</ul>
+</li>
+</ul>
+<p><strong>Note:</strong> In order to determine which tag to link to for <code>C1</code>, <code>C2</code>, <code>C3</code> (etc) above, I looked up which xnu version corresponds to the current macOS release at: <a href="https://opensource.apple.com/releases/">https://opensource.apple.com/releases/</a></p>
+<p>e.g. macOS 14.6 Sonoma corresponds to xnu-10063.141.1 (so that's what I'm linking to throughout this article).</p>
+<h2>Example: tracing memory operations</h2>
+<pre><code>sudo ktrace trace -p 8484 -S -f S0x010C
+</code></pre>
+<p>As above, but now the filter description is:</p>
+<ul>
+<li><code>S0x010C</code>: class <a href="https://github.com/apple-oss-distributions/xnu/blob/xnu-10063.141.1/bsd/sys/kdebug.h#L102"><code>DBG_MACH</code></a>, subclass <a href="https://github.com/apple-oss-distributions/xnu/blob/xnu-10063.141.1/bsd/sys/kdebug.h#L160"><code>DBG_MACH_LEAKS</code></a> (alloc/free)</li>
+</ul>
+<h2>Example: tracing only system calls</h2>
+<pre><code>sudo ktrace trace -p 8484 -S -f S0x040C
+</code></pre>
+<p>As above, but now the filter description is:</p>
+<ul>
+<li><code>S0x040C</code>: class <a href="https://github.com/apple-oss-distributions/xnu/blob/xnu-10063.141.1/bsd/sys/kdebug.h#L105"><code>DBG_BSD</code></a>, subclass <a href="https://github.com/apple-oss-distributions/xnu/blob/xnu-10063.141.1/bsd/sys/kdebug.h#L720"><code>DBG_BSD_EXCP_SC</code></a></li>
+</ul>
+<h2>Filter descriptions</h2>
+<p>Here's what <code>man ktrace</code> says about <code>FILTER DESCRIPTIONS</code>:</p>
+<blockquote>
+<h3>FILTER DESCRIPTIONS</h3>
+<p>A filter description is a comma-separated list of class and subclass specifiers that indicate which events should be traced.  A class specifier starts with ‘C’ and contains a single byte, specified in either decimal or hex.  A subclass specifier starts with ‘S’ and takes two bytes.  The high byte is the class and the low byte is the subclass of that class.</p>
+<p>For example, this filter description would enable classes 1 and 37 and the subclasses 33 and 35 of class 5: ‘C1,C0x25,S0x0521,S0x0523’.  The ‘ALL’ filter description enables events from all classes.</p>
+</blockquote>
+<p>From <a href="https://github.com/apple-oss-distributions/xnu/blob/xnu-10063.141.1/bsd/sys/kdebug.h"><code>kdebug.h</code></a>, here are some of the interesting sections.</p>
+<h3><code>DBG_MAC</code> subclasses</h3>
+<pre><code class="language-c">#pragma mark DBG_MACH subclasses
+
+#define DBG_MACH_EXCP_KTRAP_x86 0x02 // Kernel Traps on x86
+#define DBG_MACH_EXCP_DFLT      0x03 // deprecated name
+#define DBG_MACH_EXCP_SYNC_ARM  0x03 // arm/arm64 synchronous exception
+#define DBG_MACH_EXCP_IFLT      0x04 // deprecated name
+#define DBG_MACH_EXCP_SERR_ARM  0x04 // arm/arm64 SError (async) exception
+#define DBG_MACH_EXCP_INTR      0x05 // Interrupts
+#define DBG_MACH_EXCP_ALNG      0x06 // Alignment Exception
+#define DBG_MACH_EXCP_UTRAP_x86 0x07 // User Traps on x86
+#define DBG_MACH_EXCP_FP        0x08 // FP Unavail
+#define DBG_MACH_EXCP_DECI      0x09 // Decrementer Interrupt
+#define DBG_MACH_CHUD           0x0A // deprecated name
+#define DBG_MACH_SIGNPOST       0x0A // kernel signposts
+#define DBG_MACH_EXCP_SC        0x0C // System Calls
+#define DBG_MACH_EXCP_TRACE     0x0D // Trace exception
+#define DBG_MACH_EXCP_EMUL      0x0E // Instruction emulated
+#define DBG_MACH_IHDLR          0x10 // Interrupt Handlers
+#define DBG_MACH_IPC            0x20 // Inter Process Comm
+#define DBG_MACH_RESOURCE       0x25 // tracing limits, etc
+#define DBG_MACH_EXCLAVES       0x2A // Exclaves
+#define DBG_MACH_EXCLAVES_SCHEDULER 0x2B // Exclaves Scheduler
+#define DBG_MACH_VM             0x30 // Virtual Memory
+#define DBG_MACH_LEAKS          0x31 // alloc/free
+#define DBG_MACH_WORKINGSET     0x32 // private subclass for working set related debugging
+#define DBG_MACH_SCHED          0x40 // Scheduler
+#define DBG_MACH_MSGID_INVALID  0x50 // Messages - invalid
+#define DBG_MACH_LOCKS          0x60 // new lock APIs
+#define DBG_MACH_PMAP           0x70 // pmap
+#define DBG_MACH_CLOCK          0x80 // clock
+#define DBG_MACH_MP             0x90 // MP related
+#define DBG_MACH_VM_PRESSURE    0xA0 // Memory Pressure Events
+#define DBG_MACH_STACKSHOT      0xA1 // Stackshot/Microstackshot subsystem
+#define DBG_MACH_SFI            0xA2 // Selective Forced Idle (SFI)
+#define DBG_MACH_ENERGY_PERF    0xA3 // Energy/performance resource stats
+#define DBG_MACH_SYSDIAGNOSE    0xA4 // sysdiagnose
+#define DBG_MACH_ZALLOC         0xA5 // Zone allocator
+#define DBG_MACH_THREAD_GROUP   0xA6 // Thread groups
+#define DBG_MACH_COALITION      0xA7 // Coalitions
+#define DBG_MACH_SHAREDREGION   0xA8 // Shared region
+#define DBG_MACH_SCHED_CLUTCH   0xA9 // Clutch scheduler
+#define DBG_MACH_IO             0xAA // I/O
+#define DBG_MACH_WORKGROUP      0xAB // Workgroup subsystem
+#define DBG_MACH_HV             0xAC // Hypervisor subsystem
+#define DBG_MACH_KCOV           0xAD // Kernel coverage sanitizer
+#define DBG_MACH_MACHDEP_EXCP_SC_x86 0xAE // Machine Dependent System Calls on x86
+#define DBG_MACH_MACHDEP_EXCP_SC_ARM 0xAF // Machine Dependent System Calls on arm
+#define DBG_MACH_VM_RECLAIM     0xB0 // Deferred Memory Reclamation
+</code></pre>
+<h3><code>DBG_NETWORK</code> subclasses</h3>
+<pre><code class="language-c">/* **** The Kernel Debug Sub Classes for Network (DBG_NETWORK) **** */
+#define DBG_NETIP       1       /* Internet Protocol */
+#define DBG_NETARP      2       /* Address Resolution Protocol */
+#define DBG_NETUDP      3       /* User Datagram Protocol */
+#define DBG_NETTCP      4       /* Transmission Control Protocol */
+#define DBG_NETICMP     5       /* Internet Control Message Protocol */
+#define DBG_NETIGMP     6       /* Internet Group Management Protocol */
+#define DBG_NETRIP      7       /* Routing Information Protocol */
+#define DBG_NETOSPF     8       /* Open Shortest Path First */
+#define DBG_NETISIS     9       /* Intermediate System to Intermediate System */
+#define DBG_NETSNMP     10      /* Simple Network Management Protocol */
+#define DBG_NETSOCK     11      /* Socket Layer */
+</code></pre>
+<h3><code>DBG_FSYSTEM</code> subclasses</h3>
+<pre><code class="language-c">/* The Kernel Debug Sub Classes for File System (DBG_FSYSTEM) */
+#define DBG_FSRW      0x1     /* reads and writes to the filesystem */
+#define DBG_DKRW      0x2     /* reads and writes to the disk */
+#define DBG_FSVN      0x3     /* vnode operations (inc. locking/unlocking) */
+#define DBG_FSLOOOKUP 0x4     /* namei and other lookup-related operations */
+#define DBG_JOURNAL   0x5     /* journaling operations */
+#define DBG_IOCTL     0x6     /* ioctl to the disk */
+#define DBG_BOOTCACHE 0x7     /* bootcache operations */
+#define DBG_HFS       0x8     /* HFS-specific events; see the hfs project */
+#define DBG_APFS      0x9     /* APFS-specific events; see the apfs project */
+#define DBG_SMB       0xA     /* SMB-specific events; see the smb project */
+#define DBG_MOUNT     0xB     /* Mounting/unmounting operations */
+#define DBG_EXFAT     0xE     /* ExFAT-specific events; see the exfat project */
+#define DBG_MSDOS     0xF     /* FAT-specific events; see the msdosfs project */
+#define DBG_ACFS      0x10    /* Xsan-specific events; see the XsanFS project */
+#define DBG_THROTTLE  0x11    /* I/O Throttling events */
+#define DBG_DECMP     0x12    /* Decmpfs-specific events */
+#define DBG_VFS       0x13    /* VFS layer events */
+#define DBG_LIVEFS    0x14    /* LiveFS events; see the FSKit project */
+#define DBG_NFS       0x15    /* NFS-specific events; see the nfs project */
+#define DBG_CONTENT_PROT 0xCF /* Content Protection Events: see bsd/sys/cprotect.h */
+</code></pre>
+<h3><code>DBG_BSD</code> subclasses</h3>
+<pre><code class="language-c">/* The Kernel Debug Sub Classes for BSD */
+#define DBG_BSD_PROC              0x01 /* process/signals related */
+#define DBG_BSD_MEMSTAT           0x02 /* memorystatus / jetsam operations */
+#define DBG_BSD_KEVENT            0x03 /* kqueue / kevent related */
+#define DBG_BSD_EXCP_SC           0x0C /* System Calls */
+#define DBG_BSD_AIO               0x0D /* aio (POSIX async IO) */
+#define DBG_BSD_SC_EXTENDED_INFO  0x0E /* System Calls, extended info */
+#define DBG_BSD_SC_EXTENDED_INFO2 0x0F /* System Calls, extended info */
+#define DBG_BSD_KDEBUG_TEST       0xFF /* for testing kdebug */
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="https://stackoverflow.com/a/76987655/2103996">Stack Overflow answer</a> on the <code>-f</code> switch.</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

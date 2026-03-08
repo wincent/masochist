@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Building Universal Binaries from &quot;configure&quot;-based open source projects • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Building Universal Binaries from &quot;configure&quot;-based open source projects</h1></div><div class="metadata"><relative-time created="1193745526" updated="1507998958">Created 10/30/2007, updated 10/14/2017</relative-time></div><ul class="tags"><li><a href="/tags/development">development</a></li><li><a href="/tags/macos">macos</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>The official <a href="/wiki/Apple">Apple</a> documentation comes in the form of <a href="/wiki/Technote_2137">Technote 2137</a>:</p>
+<ul>
+<li><a href="http://developer.apple.com/technotes/tn2005/tn2137.html">http://developer.apple.com/technotes/tn2005/tn2137.html</a></li>
+</ul>
+<p>And this article, &quot;Building an Open Source Universal Binary&quot;:</p>
+<ul>
+<li><a href="http://developer.apple.com/opensource/buildingopensourceuniversal.html">http://developer.apple.com/opensource/buildingopensourceuniversal.html</a></li>
+</ul>
+<p>The former basically boils down to adding <code>-arch i386 -arch ppc</code> to your <code>CFLAGS</code> and <code>LDFLAGS</code>. It briefly mentions that for complex projects it may be necessary to perform two separate builds and then merge them using the <code>lipo</code> tool.</p>
+<p>The latter uses the <a href="/wiki/OpenSSL">OpenSSL</a> project as an example, and involves creating an <a href="/wiki/Xcode">Xcode</a> project that performs two separate builds using shell script phases.</p>
+<p><a href="http://elliotth.blogspot.com/2006/05/building-universal-binaries-from.html">This weblog post</a> notes that the basic instructions provided in Technote 2137 tend not to work for most open source projects out there.</p>
+<p><a href="http://lists.apple.com/archives/Xcode-users/2007/Jan/msg00308.html">This excellent message</a> from Apple's Bill Bumgarner (posted in January 2007) makes the following excellent points:</p>
+<ul>
+<li>On the method described in Technote 2137: &quot;It will only yield a correct result in semi-rare cases. Exceedingly simple code is likely to work, but I would only trust code that has a good set of unit tests (that provide decent coverage).&quot;</li>
+<li>&quot;However, autoconf was not designed to build universal binaries. Not by a long shot. It actually works against universal binaries in that it really wants to create a compilation environment targeted to a particular architecture.&quot;</li>
+<li>&quot;Like I said before, autoconf *does* support cross compilation, but many many projects effectively disable cross compilation due to the way that they use autoconf.&quot;</li>
+<li>&quot;What I have done is to convert opensource projects into proper Xcode projects using the Xcode native build system. This has the advantage of also leveraging the indexer, code sense, and the like during development.&quot;</li>
+<li>&quot;This, of course, requires some work. Typically, you need to throw together the equivalent of a config.h that uses <a href="/tags/ifdef">#ifdef</a> to switch between the various architecture variants.&quot;</li>
+</ul>
+<p>Syd Polk, who also works for <a href="/wiki/Apple">Apple</a> further adds in <a href="http://lists.apple.com/archives/Xcode-users/2006/Jul/msg00628.html">this post</a>:</p>
+<blockquote>
+<p>Since you general do configure-based builds in separate build directories, I recommend building for one platform in one directory, building for the other in a second directory, and then lipo'ing all of your binaries together in a third step. This is essentially how gcc and the like are built. The --exec-prefix in a properly- implemented auto-confiscated project can also help, putting all of the binaries in platform-specific directories.</p>
+<p>So, do something like:</p>
+<pre><code>mkdir build install
+cd build
+mkdir ppc
+cd ppc
+$(SRC_DIR)/configure --target=powerpc-apple-darwin8 -CFLAGS=&quot;- isysroot /Developer/SDKs/MacOSXSDK10.4u.sdk&quot; -arch ppc LDFLAGS=&quot;-Wl,- syslibroot,/Developer/SDKs/MacOSX10.4u.sdk -arch ppc&quot; - prefix=`pwd`../../install --exec-prefix=`pwd`/../../install/ppc
+make
+make install
+cd ..
+mkdir i386
+cd i386
+$(SRC_DIR)/configure --target=i386-apple-darwin8 -CFLAGS=&quot;-isysroot / Developer/SDKs/MacOSXSDK10.4u.sdk&quot; -arch i386 LDFLAGS=&quot;-Wl,- syslibroot,/Developer/SDKs/MacOSX10.4u.sdk -arch i386&quot; - prefix=`pwd`/../../install --exec-prefix=`pwd`/../../install/i386
+make
+make install
+cd ..
+cd ..
+# Now, your installation will be in ./install, with your binaries in ./install/ppc and ./install/i386
+lipo ./install/ppc/foo ./install/i386/foo -output ./install/foo
+</code></pre>
+<p>Or some such.</p>
+<p>It's much easier to do this than to try to get &quot;-arch ppc -arch i386&quot; to work throughout autoconf/automake/libtool/configure/whatever.</p>
+<p>It's not free; there is work involved, and it's non-trivial. You also have to watch for host-platform assumptions. If you build on a i386 machine, and a configure test says that a certain capability exists on that machine, but the target is actually a powerpc machine, you will have problems. The configure.ac files need to be bulletproof, and need to actually work when you specify --target; otherwise you may end up with problems ranging from compilation to subtle runtime problems.</p>
+</blockquote>
+<h2>Other documentation</h2>
+<ul>
+<li>&quot;Compiling for Multiple CPU Architectures&quot;: <a href="http://developer.apple.com/documentation/Porting/Conceptual/PortingUnix/compiling/chapter_4_section_3.html">http://developer.apple.com/documentation/Porting/Conceptual/PortingUnix/compiling/chapter_4_section_3.html</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

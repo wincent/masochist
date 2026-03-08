@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Legal Git branch names • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Legal Git branch names</h1></div><div class="metadata"><relative-time created="1284911982" updated="1598482839">Created 9/19/2010, updated 8/26/2020</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Overview</h2>
+<p>A <a href="/wiki/Git">Git</a> branch name can not:</p>
+<ul>
+<li>Have a path component that begins with <code>.</code></li>
+<li>Have a double dot <code>..</code></li>
+<li>Have an ASCII control character, <code>~</code>, <code>^</code>, <code>:</code> or SP, anywhere</li>
+<li>End with a <code>/</code></li>
+<li>End with <code>.lock</code></li>
+<li>Contain a <code>\</code> (backslash)</li>
+</ul>
+<p>Source: <a href="http://www.spinics.net/lists/git/msg133704.html">http://www.spinics.net/lists/git/msg133704.html</a></p>
+<h2>Source code</h2>
+<p>The definitive reference for what is a legal ref name (ie. applies to both tags and branches) is the implementation of the <code>check_ref_format()</code> function in <code>refs.c</code>, along with <code>bad_ref_char()</code> in the same file. At the current time of writing (19 September 2010) they read as follows:</p>
+<pre><code class="language-c">static inline int bad_ref_char(int ch)
+{
+        if (((unsigned) ch) &lt;= ' ' ||
+            ch == '~' || ch == '^' || ch == ':' || ch == '\\')
+                return 1;
+        /* 2.13 Pattern Matching Notation */
+        if (ch == '?' || ch == '[') /* Unsupported */
+                return 1;
+        if (ch == '*') /* Supported at the end */
+                return 2;
+        return 0;
+}
+
+int check_ref_format(const char *ref)
+{
+        int ch, level, bad_type, last;
+        int ret = CHECK_REF_FORMAT_OK;
+        const char *cp = ref;
+
+        level = 0;
+        while (1) {
+                while ((ch = *cp++) == '/')
+                        ; /* tolerate duplicated slashes */
+                if (!ch)
+                        /* should not end with slashes */
+                        return CHECK_REF_FORMAT_ERROR;
+
+                /* we are at the beginning of the path component */
+                if (ch == '.')
+                        return CHECK_REF_FORMAT_ERROR;
+                bad_type = bad_ref_char(ch);
+                if (bad_type) {
+                        if (bad_type == 2 &amp;&amp; (!*cp || *cp == '/') &amp;&amp;
+                            ret == CHECK_REF_FORMAT_OK)
+                                ret = CHECK_REF_FORMAT_WILDCARD;
+                        else
+                                return CHECK_REF_FORMAT_ERROR;
+                }
+
+                last = ch;
+                /* scan the rest of the path component */
+                while ((ch = *cp++) != 0) {
+                        bad_type = bad_ref_char(ch);
+                        if (bad_type)
+                                return CHECK_REF_FORMAT_ERROR;
+                        if (ch == '/')
+                                break;
+                        if (last == '.' &amp;&amp; ch == '.')
+                                return CHECK_REF_FORMAT_ERROR;
+                        if (last == '@' &amp;&amp; ch == '{')
+                                return CHECK_REF_FORMAT_ERROR;
+                        last = ch;
+                }
+                level++;
+                if (!ch) {
+                        if (ref &lt;= cp - 2 &amp;&amp; cp[-2] == '.')
+                                return CHECK_REF_FORMAT_ERROR;
+                        if (level &lt; 2)
+                                return CHECK_REF_FORMAT_ONELEVEL;
+                        if (has_extension(ref, &quot;.lock&quot;))
+                                return CHECK_REF_FORMAT_ERROR;
+                        return ret;
+                }
+        }
+}
+</code></pre>
+<p>So in addition to the summary posted above, we can also add that:</p>
+<ul>
+<li>the sequence <code>@{</code> is not allowed</li>
+<li><code>?</code> and <code>[</code> are not allowed</li>
+<li><code>*</code> is allowed only if it constitutes an entire path component (eg. <code>foo/*</code> or <code>bar/*/baz</code>), in which case it is interpreted as a wildcard and not as part of the actual ref name</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

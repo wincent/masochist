@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git recipes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git recipes</h1></div><div class="metadata"><relative-time created="1195420336" updated="1584053324">Created 11/18/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Initializing a repository based on an existing directory</h2>
+<pre><code>cd path_to_directory
+git init
+git add .
+git commit
+</code></pre>
+<h2>Topic branches</h2>
+<pre><code># create a new branch
+git branch doc-updates
+
+# list branches
+git branch
+
+# switch to new branch
+git checkout doc-updates
+
+# note: could have done &quot;git checkout -b doc-updates&quot;
+#       to create new branch and checkout in one step
+
+# make a change
+echo &quot;more docs&quot; &gt;&gt; greeting.txt
+git add greeting.txt
+git commit -m &quot;More docs&quot;
+
+# one more change
+echo &quot;even more docs&quot; &gt;&gt; greeting.txt
+git add greeting.txt
+git commit -m &quot;Even more&quot;
+
+# switch back to master branch
+git checkout master
+
+# merge topic branch (two commits)
+git merge doc-updates
+
+# delete topic branch
+git branch -d doc-updates
+</code></pre>
+<h3>Moving an unpublished topic branch from one machine to another with <code>git bundle</code></h3>
+<pre><code class="language-shell">$ git co my_topic
+$ git bundle create bundlefile master..my_topic
+$ scp bundlefile host:path/to/repo
+$ ssh host
+</code></pre>
+<p>Now on the other host:</p>
+<pre><code class="language-shell">$ cd path/to/repo
+$ git bundle unbundle bundlefile
+$ git co -b my_topic sha1_hash_of_bundle_HEAD
+</code></pre>
+<h2>Creating and submitting a patch via email</h2>
+<p>For example, making a simple change to <a href="/wiki/Git">Git</a> itself:</p>
+<pre><code># change to local checked-out copy of repository
+cd git.git
+
+# update
+git fetch # or &quot;git pull&quot; if you want to merge as well
+
+# make changes on a local topic branch
+git checkout -b my_topic origin/master
+
+# make/test changes
+vi file_to_be_changed
+
+# review changes
+git diff
+
+# commit changes
+git add file_to_be_changed
+git commit -s
+
+# run test suite
+make clean &amp;&amp; make test
+
+# prepare patch
+git format-patch origin
+
+# send the email (dry run, test run)
+git send-email --dry-run --to me@example.com patch_file
+git send-email --to me@example.com patch_file
+
+# send the email (for real)
+git send-email --to git@vger.kernel.org patch_file
+</code></pre>
+<p>For submitting patches to <a href="/wiki/Git">Git</a> itself I've set up some aliases as described in &quot;<a href="/wiki/Git_quickstart">Git quickstart</a>&quot;. These would be used as follows:</p>
+<pre><code># send the email (dry run, test run)
+git send-email --dry-run --to me patch_file
+git send-email --to me patch_file
+
+# send the email (for real)
+git send-email --to git --cc junio patch_file
+</code></pre>
+<p>For patch series, you can pass the <code>--compose</code> switch to <code>git-send-email</code> to compose an introductory message that will be prepended to the rest of patch series.</p>
+<p>I also recommend setting the <code>format.numbered</code> configuration variable to <code>true</code> as described in &quot;<a href="/wiki/Git_quickstart">Git quickstart</a>&quot;; this is useful if you group your changes together in <a href="/wiki/topic_branches">topic branches</a> (and you probably should when tracking an upstream project).</p>
+<p>To get patches to send correctly from my local machine I need to configure my <a href="/wiki/SMTP">SMTP</a> settings as described in &quot;<a href="/wiki/Git_quickstart">Git quickstart</a>&quot;. I also needed to install the Net::SMTP::SSL Perl module (see &quot;<a href="/wiki/Installing_Net%3a%3aSMTP%3a%3aSSL_for_sending_patches_with_Git_over_secure_SMTP">Installing Net::SMTP::SSL for sending patches with Git over secure SMTP</a>&quot;).</p>
+<h2>Tracking upstream changes</h2>
+<pre><code># fetch new commits from upstream
+git fetch
+
+# view what's happened on master branch since last time
+git co master
+git log HEAD..origin/master
+
+# fast-forward local checkout to upstream HEAD
+git merge origin/master
+
+# merge or rebase topic branches as appropriate
+git co my_topic_branch
+git rebase origin/master
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

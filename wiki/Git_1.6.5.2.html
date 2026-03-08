@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.6.5.2 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.6.5.2</h1></div><div class="metadata"><relative-time created="1256546906" updated="1584053324">Created 10/26/2009, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>The latest maintenance release GIT 1.6.5.2 is available at the usual places:</p>
+<pre><code> http://www.kernel.org/pub/software/scm/git/
+
+ git-1.6.5.2.tar.{gz,bz2}			(source tarball)
+ git-htmldocs-1.6.5.2.tar.{gz,bz2}		(preformatted docs)
+ git-manpages-1.6.5.2.tar.{gz,bz2}		(preformatted docs)
+
+The RPM binary packages for a few architectures are found in:
+
+ RPMS/$arch/git-*-1.6.5.2-1.fc9.$arch.rpm	(RPM)
+
+GIT v1.6.5.2 Release Notes
+==========================
+
+Fixes since v1.6.5.1
+--------------------
+
+* Installation of templates triggered a bug in busybox when using tar
+  implementation from it.
+
+* &quot;git add -i&quot; incorrectly ignored paths that are already in the index
+  if they matched .gitignore patterns.
+
+* &quot;git describe --always&quot; should have produced some output even there
+  were no tags in the repository, but it didn't.
+
+* &quot;git ls-files&quot; when showing tracked files incorrectly paid attention
+  to the exclude patterns.
+
+Other minor documentation updates are included.
+
+----------------------------------------------------------------
+
+Changes since v1.6.5.1 are as follows:
+
+Andreas Schwab (1):
+     Work around option parsing bug in the busybox tar implementation
+
+Carlos R. Mafra (1):
+     Makefile: clean block-sha1/ directory instead of mozilla-sha1/
+
+Jeff King (2):
+     ls-files: excludes should not impact tracked files
+     document push's new quiet option
+
+Joe Perches (1):
+     git-send-email.perl: fold multiple entry &quot;Cc:&quot; and multiple single line &quot;RCPT TO:&quot;s
+
+Johannes Sixt (2):
+     Remove a left-over file from t/t5100
+     Mark files in t/t5100 as UTF-8
+
+Jonathan Nieder (1):
+     Documentation: describe check-ref-format --branch
+
+Junio C Hamano (4):
+     Fix incorrect error check while reading deflated pack data
+     Do not fail &quot;describe --always&quot; in a tag-less repository
+     Fix list of released versions in the toc document
+     GIT 1.6.5.2
+
+Markus Heidelberg (1):
+     t7800-difftool: fix the effectless GIT_DIFFTOOL_PROMPT test
+
+Matt Kraai (1):
+     Documentation/git-gc.txt: change &quot;references&quot; to &quot;reference&quot;
+
+Nanako Shiraishi (2):
+     git push: remove incomplete options list from help text
+     git push: say that --tag can't be used with --all or --mirror in help text
+
+Nasser Grainawi (1):
+     Document `delta` attribute in &quot;git help attributes&quot;.
+
+Pauli Virtanen (1):
+     git-add--interactive: never skip files included in index
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Updating_to_Git_1.6.5.2">Updating to Git 1.6.5.2</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

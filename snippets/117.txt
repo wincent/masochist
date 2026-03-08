@@ -1,0 +1,4 @@
+
+379a301 Update Gemfile
+cc95ae7 Update copyright year range
+c37bec6 Update to Rails 3.2.10

@@ -1,0 +1,285 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.6.2.rc2 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.6.2.rc2</h1></div><div class="metadata"><relative-time created="1235610489" updated="1584053324">Created 2/26/2009, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>A release candidate GIT 1.6.2.rc2 is available at the usual places for testing:</p>
+<pre><code> http://www.kernel.org/pub/software/scm/git/
+
+ git-1.6.2.rc2.tar.{gz,bz2}			(source tarball)
+ git-htmldocs-1.6.2.rc2.tar.{gz,bz2}		(preformatted docs)
+ git-manpages-1.6.2.rc2.tar.{gz,bz2}		(preformatted docs)
+
+The RPM binary packages for a few architectures are found in:
+
+ testing/git-*-1.6.2.rc2-1.fc9.$arch.rpm	(RPM)
+
+----------------------------------------------------------------
+GIT v1.6.2 Release Notes (draft)
+================================
+
+With the next major release, &quot;git push&quot; into a branch that is
+currently checked out will be refused by default.  You can choose
+what should happen upon such a push by setting the configuration
+variable receive.denyCurrentBranch in the receiving repository.
+
+To ease the transition plan, the receiving repository of such a
+push running this release will issue a big warning when the
+configuration variable is missing.  Please refer to:
+
+ http://git.or.cz/gitwiki/GitFaq#non-bare
+ http://thread.gmane.org/gmane.comp.version-control.git/107758/focus=108007
+
+for more details on the reason why this change is needed and the
+transition plan.
+
+For a similar reason, &quot;git push $there :$killed&quot; to delete the branch
+$killed in a remote repository $there, if $killed branch is the current
+branch pointed at by its HEAD, gets a large warning.  You can choose what
+should happen upon such a push by setting the configuration variable
+receive.denyDeleteCurrent in the receiving repository.
+
+
+Updates since v1.6.1
+--------------------
+
+(subsystems)
+
+* git-svn updates.
+
+* gitweb updates, including a new patch view and RSS/Atom feed
+ improvements.
+
+* (contrib/emacs) git.el now has commands for checking out a branch,
+ creating a branch, cherry-picking and reverting commits; vc-git.el
+ is not shipped with git anymore (it is part of official Emacs).
+
+(performance)
+
+* pack-objects autodetects the number of CPUs available and uses threaded
+ version.
+
+(usability, bells and whistles)
+
+* automatic typo correction works on aliases as well
+
+* @{-1} is a way to refer to the last branch you were on.  This is
+ accepted not only where an object name is expected, but anywhere
+ a branch name is expected and acts as if you typed the branch name.
+ E.g. &quot;git branch --track mybranch @{-1}&quot;, &quot;git merge @{-1}&quot;, and
+ &quot;git rev-parse --symbolic-full-name @{-1}&quot; would work as expected.
+
+* When refs/remotes/origin/HEAD points at a remote tracking branch that
+ has been pruned away, many git operations issued warning when they
+ internally enumerated the refs.  We now warn only when you say &quot;origin&quot;
+ to refer to that pruned branch.
+
+* The location of .mailmap file can be configured, and its file format was
+ enhanced to allow mapping an incorrect e-mail field as well.
+
+* &quot;git add -p&quot; learned 'g'oto action to jump directly to a hunk.
+
+* &quot;git add -p&quot; learned to find a hunk with given text with '/'.
+
+* &quot;git add -p&quot; optionally can be told to work with just the command letter
+ without Enter.
+
+* when &quot;git am&quot; stops upon a patch that does not apply, it shows the
+ title of the offending patch.
+
+* &quot;git am --directory=&lt;dir&gt;&quot; and &quot;git am --reject&quot; passes these options
+ to underlying &quot;git apply&quot;.
+
+* &quot;git am&quot; learned --ignore-date option.
+
+* &quot;git blame&quot; aligns author names better when they are spelled in
+ non US-ASCII encoding.
+
+* &quot;git clone&quot; now makes its best effort when cloning from an empty
+ repository to set up configuration variables to refer to the remote
+ repository.
+
+* &quot;git checkout -&quot; is a shorthand for &quot;git checkout @{-1}&quot;.
+
+* &quot;git cherry&quot; defaults to whatever the current branch is tracking (if
+ exists) when the &lt;upstream&gt; argument is not given.
+
+* &quot;git cvsserver&quot; can be told not to add extra &quot;via git-CVS emulator&quot; to
+ the commit log message it serves via gitcvs.commitmsgannotation
+ configuration.
+
+* &quot;git cvsserver&quot; learned to handle 'noop' command some CVS clients seem
+ to expect to work.
+
+* &quot;git diff&quot; learned a new option --inter-hunk-context to coalesce close
+ hunks together and show context between them.
+
+* The definition of what constitutes a word for &quot;git diff --color-words&quot;
+ can be customized via gitattributes, command line or a configuration.
+
+* &quot;git diff&quot; learned --patience to run &quot;patience diff&quot; algorithm.
+
+* &quot;git filter-branch&quot; learned --prune-empty option that discards commits
+ that do not change the contents.
+
+* &quot;git fsck&quot; now checks loose objects in alternate object stores, instead
+ of misreporting them as missing.
+
+* &quot;git gc --prune&quot; was resurrected to allow &quot;git gc --no-prune&quot; and
+ giving non-default expiration period e.g. &quot;git gc --prune=now&quot;.
+
+* &quot;git grep -w&quot; and &quot;git grep&quot; for fixed strings have been optimized.
+
+* &quot;git mergetool&quot; learned -y(--no-prompt) option to disable prompting.
+
+* &quot;git rebase -i&quot; can transplant a history down to root to elsewhere
+ with --root option.
+
+* &quot;git reset --merge&quot; is a new mode that works similar to the way
+ &quot;git checkout&quot; switches branches, taking the local changes while
+ switching to another commit.
+
+* &quot;git submodule update&quot; learned --no-fetch option.
+
+* &quot;git tag&quot; learned --contains that works the same way as the same option
+ from &quot;git branch&quot;.
+
+
+Fixes since v1.6.1
+------------------
+
+All of the fixes in v1.6.1.X maintenance series are included in this
+release, unless otherwise noted.
+
+Here are fixes that this release has, but have not been backported to
+v1.6.1.X series.
+
+* &quot;git-add sub/file&quot; when sub is a submodule incorrectly added the path to
+ the superproject.
+
+* &quot;git bundle&quot; did not exclude annotated tags even when a range given
+ from the command line wanted to.
+
+* &quot;git filter-branch&quot; unnecessarily refused to work when you had
+ checked out a different commit from what is recorded in the superproject
+ index in a submodule.
+
+* &quot;git filter-branch&quot; incorrectly tried to update a nonexistent work tree
+ at the end when it is run in a bare repository.
+
+* &quot;git gc&quot; did not work if your repository was created with an ancient git
+ and never had any pack files in it before.
+
+* &quot;git mergetool&quot; used to ignore autocrlf and other attributes
+ based content rewriting.
+
+* branch switching and merges had a silly bug that did not validate
+ the correct directory when making sure an existing subdirectory is
+ clean.
+
+* &quot;git -p cmd&quot; when cmd is not a built-in one left the display in funny state
+ when killed in the middle.
+
+--
+exec &gt;/var/tmp/1
+O=v1.6.2-rc2
+echo O=$(git describe master)
+git shortlog --no-merges $O..master ^maint
+
+
+----------------------------------------------------------------
+
+Changes since v1.6.2-rc1 are as follows:
+
+Abhijit Menon-Sen (1):
+     Convert git-* invocations to &quot;git *&quot; in the svnimport example.
+
+Alexandre Julliard (3):
+     git.el: Make sure that file lists are sorted as they are created.
+     git.el: Improve the confirmation message on remove and revert.
+     Add a README in the contrib/emacs directory.
+
+Allan Caffee (1):
+     trace: Fixed a minor typo in an error message.
+
+Ben Walton (1):
+     git-svn fix to avoid using strftime %z
+
+Brian Gernhardt (1):
+     git-svn: Create leading directories in create-ignore
+
+Christian Couder (1):
+     README: fix path to &quot;gitcvs-migration.txt&quot; and be more consistent
+
+Eric Wong (1):
+     git-svn: fix delete+add branch tracking with empty files
+
+Felipe Contreras (2):
+     git add: trivial codestyle cleanup
+     sha1_file.c: fix typo
+
+Gerrit Pape (3):
+     Documentation/git-push: --all, --mirror, --tags can not be combined
+     Install builtins with the user and group of the installing personality
+     git-quiltimport: preserve standard input to be able to read user input
+
+Giuseppe Bilotta (1):
+     gitweb: fix wrong base URL when non-root DirectoryIndex
+
+Jay Soffian (2):
+     disallow providing multiple upstream branches to rebase, pull --rebase
+     Allow HTTP tests to run on Darwin
+
+Johannes Schindelin (2):
+     Introduce the function strip_path_suffix()
+     system_path(): simplify using strip_path_suffix(), and add suffix &quot;git&quot;
+
+Johannes Sixt (1):
+     gitattributes.txt: Path matching rules are explained in gitignore.txt
+
+Junio C Hamano (4):
+     git-svn: fix parsing of timestamp obtained from svn
+     tests: fix &quot;export var=val&quot;
+     Make sure objects/pack exists before creating a new pack
+     GIT 1.6.2-rc2
+
+Lars Noschinski (1):
+     filter-branch -d: Export GIT_DIR earlier
+
+Linus Torvalds (1):
+     Support 'raw' date format
+
+Marc Branchaud (1):
+     Docs: Expand explanation of the use of + in git push refspecs.
+
+Marcel M. Cary (2):
+     gitweb: Fix warnings with override permitted but no repo override
+     gitweb: Hyperlink multiple git hashes on the same commit message line
+
+Matthieu Moy (2):
+     Document git blame --reverse.
+     More friendly message when locking the index fails.
+
+Michael J Gruber (1):
+     Fix typo in contrib/examples/git-svnimport.txt
+
+Michael Spang (1):
+     Skip timestamp differences for diff --no-index
+
+Pete Wyckoff (1):
+     git-p4: avoid syncing duplicate changes
+
+Peter Oberndorfer (1):
+     git-svn: read the dcommit url from the config file on a per remote basis
+
+SZEDER Gábor (2):
+     bash: add missing 'git merge' options
+     bash: update 'git svn' options
+
+Thomas Rast (2):
+     bash completion: refactor common log, shortlog and gitk options
+     bash completion: only show 'log --merge' if merging
+
+Todd Zullinger (1):
+     Documentation: Note file formats send-email accepts
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Updating_to_Git_1.6.2.rc2_on_Mac_OS_X_Leopard_10.5.6">Updating to Git 1.6.2.rc2 on Mac OS X Leopard 10.5.6</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Extremely annoying Apache problem • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/extremely-annoying-apache-problem">Extremely annoying Apache problem</a></h1><div class="metadata"><relative-time created="1232842698" updated="1584053324">Created 1/25/2009, updated 3/12/2020</relative-time><span>2 minute read</span></div><div class="prerendered"><p>I'm trying to roll out <a href="/wiki/SSL">SSL</a> support for this application, and I've run into a very frustrating roadblock with <a href="/wiki/Apache">Apache</a>.</p>
+<p>This was the last place I expected to find problems, seeing as the site isn't even served by Apache at all, but by <a href="/wiki/nginx">nginx</a>.</p>
+<p>The problem is as follows:</p>
+<ol>
+<li>Apache is binding to the the SSL port, 443, on all IP addresses</li>
+<li>There is no way to stop Apache from doing this without completely breaking it</li>
+</ol>
+<p>My config has two <code>Listen</code> directives in it; first:</p>
+<pre><code>Listen 209.235.192.161:80
+</code></pre>
+<p>For normal <a href="/wiki/HTTP">HTTP</a> traffic, and later on:</p>
+<pre><code>Listen 443
+</code></pre>
+<p>For <a href="/wiki/HTTPS">HTTPS</a> traffic.</p>
+<p>This second line is the problem. Given that it is not scoped to a particular IP address, Apache binds to all available IPs and prevents <a href="/wiki/nginx">nginx</a> from listening on port 443.</p>
+<p>You would think that the solution would be to change that second line to:</p>
+<pre><code>Listen 209.235.192.161:443
+</code></pre>
+<p>No, I'm afraid that's not right. With that line in place, Apache refuses to start:</p>
+<pre><code>(98)Address already in use: make_sock: could not bind to address 209.235.192.161:443
+no listening sockets available, shutting down
+Unable to open logs
+</code></pre>
+<p>I'm at a total loss to explain why this is the case. If you ask it to bind to all interfaces it says, &quot;Sure, no problem!&quot; but if you ask it to bind to only one it says, &quot;Sorry! Somebody else beat me to it!&quot;. The thing is, there <em>is</em> no &quot;somebody else&quot;, only Apache.</p>
+<p>I can confirm that there are no lingering Apache processes hanging around (inspected with <code>ps auxww | grep httpd</code>), and no other rogue processes suddenly latching on to port 443 when Apache's back is turned (inspected with <code>netstat -l</code>).</p>
+<p>I can also confirm that the problem is not that the same IP address appears in two different <code>Listen</code> directives, because if I change the port number to something else the Apache starts up without a complaint:</p>
+<pre><code>Listen 209.235.192.161:444
+</code></pre>
+<h3>Update</h3>
+<p>Looks like the cause was a side-effect of <code>apachectl graceful</code>. You need to use <code>apachectl stop</code>, wait a while, then do <code>apachectl start</code>. Perhaps I should have known, but geez.</p>
+</div><ul class="tags"><li><a href="/tags/apache">apache</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/ruby-in-method">← Ruby &quot;in&quot; method</a></div><div class="post-nav-next"><a href="/blog/running-rspec-specs-from-inside-vim">Running RSpec specs from inside Vim →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

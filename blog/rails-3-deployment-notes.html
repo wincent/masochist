@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rails 3 deployment notes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/rails-3-deployment-notes">Rails 3 deployment notes</a></h1><div class="metadata"><relative-time created="1283383217" updated="1584053324">Created 9/1/2010, updated 3/12/2020</relative-time><span>7 minute read</span></div><div class="prerendered"><p>As part of <a href="/extended-site-maintenance">yesterday's &quot;extended&quot; maintenance</a> I deployed a new version of the site, moving from <a href="/wiki/Rails">Rails</a> 2 to <a href="/wiki/Rails_3">Rails 3</a> in a process involving nearly <a href="/blog/site-updates-0.18">1,000 commits</a>. I followed this up with <a href="/blog/site-updates-0.19">some additional tweaks and fixes today</a>.</p>
+<p>Overall it went surprisingly smoothly considering the number of changes involved. Every site is different, of course, so the problems I faced in this deployment are probably going to be different than the ones you might face on your own sites, but I wanted to post some notes on the issues which cropped up, just in case they might be of use to others.</p>
+<h2>The importance of the staging environment</h2>
+<p>I host using <a href="/wiki/Amazon_Web_Services">Amazon Web Services</a>, so I had the luxury of being able to create an exact clone of my production server which I could use as a staging environment to do a rehearsal deployment. This first rehearsal served to discover what roadblocks and I was going to hit, and figure out how to get around them.</p>
+<p>I actually created a second clone after going through this initial rehearsal, and confirmed that the &quot;recipe&quot; that I had worked out was going to work without hitches when I came to do it on the live system.</p>
+<p>The beauty of these cloneable instances is that you only pay a few cents an hour, and only for as long as you are running your tests. And as an added bonus, if you really screw things up you can always use one of those fabulous <a href="/wiki/S3">S3</a> backups of your <a href="/wiki/EBS">EBS</a> volumes to travel back in time and put things back the way they were before you started.</p>
+<p>Yes, using Amazon Web Services means dealing with a headache-inducing quantity of acronyms, but it's well worth the learning curve that you have to go through in order to learn what they all mean.</p>
+<p>See &quot;<a href="/wiki/Cloning_an_EC2_instance_for_testing_purposes">Cloning an EC2 instance for testing purposes</a>&quot; for notes on using <a href="/wiki/AWS">AWS</a> to do staging deployments, and relatedly, &quot;<a href="/wiki/Recovering_data_from_an_EBS_snapshot">Recovering data from an EBS snapshot</a>&quot; for a look at piecemeal retrieval of data from backups (for wholesale retrieval you would use the cloning techniques already mentioned).</p>
+<h2>Bundler</h2>
+<p>Rails 2.3 didn't use <a href="/wiki/Bundler">Bundler</a>, and neither had I bothered trying to retrofit it onto it, but Rails 3 does. So first step was to ensure Bundler was on the target system. You may need to update your RubyGems first though, as Bundler depends on a recent version:</p>
+<pre><code class="language-shell"># gem update --system
+# gem install bundler
+</code></pre>
+<h2>Altered deploy sequence</h2>
+<p>In a normal deploy the sequence runs like this:</p>
+<ol>
+<li>Deploy the new version</li>
+<li>Migrate the test database</li>
+<li>Run the spec suite</li>
+<li>If the specs pass, get ready to really go live with the new version:
+<ol>
+<li>Throw up a maintenance page</li>
+<li>Migrate the production database</li>
+<li>Update your symlinks to point at the just-deployed files</li>
+<li>Restart your application server</li>
+<li>Remove the maintenance page</li>
+</ol>
+</li>
+</ol>
+<p>In this case, however, I have to make some tweaks because the move includes a new database adapter (Rails 3 uses the <a href="/wiki/mysql2">mysql2</a> gem by default for new apps, so I decided to switch over at the same time seeing as I am already changing everything else).</p>
+<p>This means I can't migrate the test database without first changing my <code>config/database.yml</code>, and I can't change that without potentially impacting the live site (for example, if <a href="/wiki/Monit">Monit</a> decides top restart the application server while I'm working). So the sequence for this deployment will be:</p>
+<ol>
+<li>Deploy the new version</li>
+<li>Throw up the maintenance page</li>
+<li>Tweak <code>config/database.yml</code></li>
+<li>Migrate the test database</li>
+<li>Run the spec suite</li>
+<li>Migrate the production database</li>
+<li>Update the symlinks</li>
+<li>Restart the application server</li>
+<li>Remove the maintenance page</li>
+</ol>
+<h2>Unicorn</h2>
+<p>I use <a href="/wiki/Unicorn">Unicorn</a> as my app server, and under Rails 2.3 that meant using the <code>unicorn_rails</code> executable. Under Rails 3, however, you have to use the <code>unicorn</code> executable instead.</p>
+<p>This is actually a pretty straightforward replacement, as the same config file and command line arguments can be used without alteration (or at least I found they could in my case).</p>
+<p>The complication, however, is that previously Unicorn was installed in the system gems, and now it will be installed via Bundler. In my first rehearsal, I tried to continue with Unicorn as a system gem, but got bitten by a classic dependency resolution conflict, the dreaded message:</p>
+<pre><code>You have already activated rack 1.0.1, but your Gemfile requires rack 1.2.1. Consider using bundle exec
+</code></pre>
+<p>Well, this is exactly the problem Bundler is designed to solve, so what the heck, let's throw Unicorn in the bundle as well. (Sure, I <em>could</em> remove rack 1.0.1 from my system, but then I couldn't rollback without also having to re-install rack 1.0.1. It's better to just use Bundler.)</p>
+<p>So this makes the upgrade pattern look like this:</p>
+<ol>
+<li>Edit <code>/etc/monitrc</code> to let <a href="/wiki/Monit">Monit</a> know about the new path to the <code>unicorn</code> executable, in a shared <code>BUNDLE_PATH</code> location (it needs to be a shared location so Monit can reliably start up Unicorn as different versions are deployed and potentially rolled back).</li>
+<li>Deploy, so that Unicorn gets installed where Monit will look for it.</li>
+<li>Send Monit the <code>HUP</code> signal so that it will re-read its configuration file.</li>
+</ol>
+<h2>Memcache</h2>
+<p>Rails 2.3 came with a bundled <a href="/wiki/memcached">memcached</a> client. Rails 3 does not, and the recommended gem is the <a href="/wiki/memcache">memcache</a> gem. (<strong>Update:</strong> this isn't true at all; the recommended gem is still the memcache-client gem, it's just that <a href="http://github.com/rails/rails/commit/57144388f0b4c31e43ced7cfd1d6efaded88cf5e">this commit</a> introduced the incorrect advice to install the memcache gem instead. Fix <a href="https://rails.lighthouseapp.com/projects/8994/tickets/5539">submitted here</a>. All of this section, then, is moot, as <code>gem install memcache-client</code> works fine on 32-bit Fedora.)</p>
+<p>I had a lot of trouble building the <a href="/wiki/memcache">memcache</a> Gem on the server. It builds fine on my local machine (a 64-bit iMac) but fails miserably on the 32-bit Fedora OS I'm running on AWS.</p>
+<p>The problem was twofold:</p>
+<ul>
+<li>It would only build if <code>--disable-64bit CFLAGS='-march=i686'</code> was passed to <code>./configure</code></li>
+<li>Setting that up with <code>bundle config build.memcache</code> didn't work because the memcache gem ignores any special settings passed in on the <a href="/wiki/command_line">command line</a>; note that this means that a manual build using <code>gem install memcache -- --my-custom-flags-here</code> wouldn't work either</li>
+</ul>
+<h3>Workaround 1</h3>
+<p>This was my first attempt; it worked, but was hideously ugly, so I continued searching for a better solution:</p>
+<ol>
+<li>Run <code>bundle install</code> and watch it fail</li>
+<li><code>cd</code> into the <code>BUNDLE_PATH</code> and the directory containing the unpacked memcache gem</li>
+<li>Hack the <code>extconf.rb</code> file to include the needed arguments to <code>configure</code></li>
+<li>Build using <code>ruby extconf.rb &amp;&amp; make</code></li>
+<li>Get up to the directory inside <code>BUNDLE_PATH</code> where the <code>cache</code> and <code>specification</code> folders are (ie. <code>cd ../../..</code>)</li>
+<li>Manually generate a gemspec so that Bundler can &quot;see&quot; that the gem is installed (ie. <code>gem spec cache/memcache-1.2.12.gem --ruby &gt; specifications/memcache-1.2.12.gemspec</code>)</li>
+<li>Repeat <code>bundle install</code> and watch it work (it won't try to reinstall or rebuild the memcache gem)</li>
+</ol>
+<h3>Workaround 2</h3>
+<p>The workaround I went with in the end was the following:</p>
+<p>First, pre-install, system-wide the <a href="/wiki/libmemcache">libmemcache</a> library that the memcache gem links against:</p>
+<pre><code class="language-shell">$ wget http://launchpad.net/libmemcached/1.0/0.43/+download/libmemcached-0.43.tar.gz
+$ curl http://launchpad.net/libmemcached/1.0/0.43/+download/libmemcached-0.43.tar.gz/+md5
+$ openssl md5 libmemcached-0.43.tar.gz
+$ tar xzvf libmemcached-0.43.tar.gz
+$ cd libmemcached-0.43
+$ ./configure --disable-64bit CFLAGS='-march=i686'
+$ make
+$ make test
+$ sudo make install
+</code></pre>
+<p>Now, manually install the memcache gem in our <code>BUNDLE_PATH</code> (made possible with the help of <code>GEM_HOME</code>) passing in the <code>EXTERNAL_LIB</code> variable so that it will use the just-built system-wide library rather than its own bundled one:</p>
+<pre><code class="language-shell">$ mkdir -p $BUNDLE_PATH/ruby/1.8
+$ env GEM_HOME=$BUNDLE_PATH/ruby/1.8 EXTERNAL_LIB=1 gem install memcache
+$ bundle install
+</code></pre>
+<p>As the gem is preinstalled, Bundler won't try to rebuild it, and it works.</p>
+<h3>The final solution</h3>
+<p>The maintainer of the memcache gem was kind enough to make a tweak and release a new version, 1.2.13, which <em>does</em> take notice of any extra arguments you pass in via <code>gem install memcache -- --other-args</code>, and therefore, by extension, <code>bundle config build.memcache ...</code> as well.</p>
+<p>So while my first deployment required manual intervention before I could go ahead with it, subsequent deployments work without any special set-up other than:</p>
+<pre><code class="language-shell">$ bundle config build.memcache --disable-64-bit &quot;CFLAGS=\'-march=i686\'&quot;
+</code></pre>
+<p>(Note the need for funky escaping of the quotes, otherwise they'll get eaten.)</p>
+<h2>Other issues</h2>
+<p>A couple of other issues did pop-up, but they were cases of <a href="/wiki/PEBKAC">PEBKAC</a> more than anything else:</p>
+<ul>
+<li>I forgot to name my outgoing mailer templates with an extension of <code>.text.erb</code>, so they ended up going out marked as <code>text/html</code> rather than <code>text/plain</code> (under Rails 2 they had just had <code>.erb</code> as their extension)</li>
+</ul>
+<p>And this one, which has really nothing to do with Rails 3 at all:</p>
+<ul>
+<li>Ignorance led me to add my <code>db/schema.rb</code> to my <code>.gitignore</code> file a long time ago, and lack of vigilance meant that the the column types in my local and remote databases gradually drifted out of sync sufficiently that some new code worked perfectly locally and passed all specs, but exploded on the production server</li>
+</ul>
+<p>Those were really the only hiccups I encountered in the deployment; not bad at all considering it is the biggest deployment I've ever done, apart from the initial launch of the site several years ago.</p>
+</div><ul class="tags"><li><a href="/tags/rails">rails</a></li><li><a href="/tags/site">site</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/synergy-4.4.4-released">← Synergy 4.4.4 released</a></div><div class="post-nav-next"><a href="/blog/site-updates-0.19">Site updates (0.19) →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

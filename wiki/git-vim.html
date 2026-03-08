@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>git-vim • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>git-vim</h1></div><div class="metadata"><relative-time created="1242798362" updated="1584053324">Created 5/20/2009, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/vim">vim</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><a href="/wiki/git-vim">git-vim</a> is a plugin that provides access to some <a href="/wiki/Git">Git</a> functionality from within <a href="/wiki/Vim">Vim</a>.</p>
+<h2>Where to get it</h2>
+<ul>
+<li><a href="http://github.com/motemen/git-vim/tree/master">http://github.com/motemen/git-vim/tree/master</a></li>
+</ul>
+<p>I have a fork of the official repo, with some patches to fix some minor issues:</p>
+<ul>
+<li><a href="http://github.com/wincent/git-vim/tree/master">http://github.com/wincent/git-vim/tree/master</a></li>
+</ul>
+<h2>Installation</h2>
+<pre><code>git clone git://github.com/motemen/git-vim.git git-vim.git
+cd git-vim.git
+cp plugin/git.vim ~/.vim/plugin/
+cp syntax/git-* ~/.vim/syntax/
+</code></pre>
+<h2>Use</h2>
+<h3>Key mappings</h3>
+<p>The README at <a href="http://github.com/motemen/git-vim/tree/master">the official repo</a> provides a full list, but here are some of the most useful key mappings:</p>
+<ul>
+<li><code>&lt;leader&gt;gd</code>: calls <code>:GitDiff</code> with no args (shows unstaged changes; same as <code>git diff</code>)</li>
+<li><code>&lt;leader&gt;gD</code>: calls <code>:GitDiff --cached</code> (shows staged changes; same as <code>git diff --cached</code>)</li>
+<li><code>&lt;leader&gt;gs</code>: calls <code>:GitStatus</code> (<code>git status</code>)</li>
+<li><code>&lt;leader&gt;gl</code>: calls <code>:GitLog</code> (calls <code>git log</code> <em>for the current file</em>; to get the repo-wide log you have to manually do <code>:GitLog HEAD</code>)</li>
+<li><code>&lt;leader&gt;ga</code>: calls <code>:GitAdd</code> with no args (stages the current file using <code>git add</code>)</li>
+<li><code>&lt;leader&gt;gA</code>: calls <code>:GitAdd</code> with filename completion (stages the specified file using <code>git add</code>)</li>
+<li><code>&lt;leader&gt;gc</code>: calls <code>:GitCommit</code> (same as <code>git commit</code>; <strong><em>but note</em></strong> that <em>if you have no staged changes then it will assume <code>git commit -a</code></em>)</li>
+</ul>
+<p>In practice I use <code>:GitCommit -s</code> to sign off my commits; <code>&lt;leader&gt;gc</code> is really only good for &quot;throw-away&quot; commits because it produces commits without signoffs.</p>
+<h3>Commands</h3>
+<p>In addition to the commands already mentioned above, some of the more useful ones include:</p>
+<ul>
+<li><code>:Git &lt;args&gt;</code>: arbitrary <a href="/wiki/Git">Git</a> command</li>
+<li><code>:GitCheckout &lt;args&gt;</code>: useful for resetting individual files to the <code>HEAD</code> state (eg. <code>:GitCheckout HEAD -- foo.c</code>)</li>
+</ul>
+<p>There are also a bunch of other commands that I can't really see myself using from within <a href="/wiki/Vim">Vim</a> (<code>:GitPull</code>, <code>:GitPullRebase</code>, <code>:GitPush</code>, <code>:GitCatFile</code> and so on).</p>
+<p>Note that commands like <code>:GitDiff</code> and <code>:GitCheckout</code> complete <a href="/wiki/Git">Git</a> commits.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

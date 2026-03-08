@@ -1,0 +1,24 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Shell command line editing • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Shell command line editing</h1></div><div class="metadata"><relative-time created="1294922370" updated="1495119989">Created 1/13/2011, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/bash">bash</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>This is a list of useful editing commands available in the <a href="/wiki/Bash">Bash</a> shell on <a href="/wiki/Mac_OS_X">Mac OS X</a>. Unfortunately many other editing commands are omitted because they use the &quot;meta&quot; key (Command on the Mac), which is intercepted by the <a href="/wiki/Terminal">Terminal</a> application and never actually sent to the underlying shell. Unfortuantely the Opt key can't be used as a substitute, because it is already used to assist typing non-ASCII characters.</p>
+<h2>Movement</h2>
+<ul>
+<li><code>&lt;C-a&gt;</code>: move to start of line</li>
+<li><code>&lt;C-e&gt;</code>: move to end of line</li>
+</ul>
+<h2>Cutting and pasting</h2>
+<ul>
+<li><code>&lt;C-k&gt;</code>: kill (cut) from cursor to end of line</li>
+<li><code>&lt;C-w&gt;</code>: kill (cut) from cursor to previous whitespace</li>
+<li><code>&lt;C-y&gt;</code>: yank (paste) previously killed text at cursor</li>
+</ul>
+<h2>Other</h2>
+<ul>
+<li><code>&lt;C-l&gt;</code>: clear screen, reprinting current line at top</li>
+<li><code>&lt;C-u&gt;</code>: undo last edit</li>
+</ul>
+<h2>Redundant commands</h2>
+<ul>
+<li><code>&lt;C-b&gt;</code>: move back one character (equivalent to left cursor)</li>
+<li><code>&lt;C-f&gt;</code>: move forward one character (equivalent to right cursor)</li>
+<li><code>&lt;C-d&gt;</code>: delete character under cursor (equivalent to delete)</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

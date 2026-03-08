@@ -1,0 +1,4 @@
+
+7cb4424 Explicitly reset Capybara sessions before scenarios
+bf39606 Revert "Work around acceptance spec failure in server environment"
+b7617e2 Don't choke on mode-change-only diffs

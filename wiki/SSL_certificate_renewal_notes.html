@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SSL certificate renewal notes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>SSL certificate renewal notes</h1></div><div class="metadata"><relative-time created="1232639551" updated="1710259978">Created 1/22/2009, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/ssl">ssl</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><strong>Note:</strong> I'm no longer maintaining these renewal notes, as I now have the whole process pretty much automated via <a href="/wiki/Ansible">Ansible</a> (I just run a script to generate a new CSR, then dump the signed certificate from the CA into my Ansible configs repo and tell Ansible to install it).</p>
+<h2>Certificate authorities</h2>
+<ul>
+<li>Free certificates (and some paid options): <a href="http://cert.startcom.org/">http://cert.startcom.org/</a></li>
+<li>Cheapest paid certificates:
+<ul>
+<li><a href="http://www.servertastic.com/">http://www.servertastic.com/</a></li>
+<li><a href="http://namecheap.com/">http://namecheap.com/</a></li>
+</ul>
+</li>
+<li>Cheapest SAN certificates:
+<ul>
+<li><a href="http://certificatesforexchange.com/">http://certificatesforexchange.com/</a></li>
+</ul>
+</li>
+</ul>
+<h2>Articles</h2>
+<ul>
+<li><a href="/wiki/Installing_a_new_SSL_certificate">Installing a new SSL certificate</a></li>
+<li>Renewal notes from specific years:
+<ul>
+<li><a href="/wiki/SSL_certificate_renewal_notes_2013">SSL certificate renewal notes 2013</a> (nginx; wincent.dev)</li>
+<li><a href="/wiki/SSL_certificate_renewal_notes_2012">SSL certificate renewal notes 2012</a> (Apache, Cyrus, sendmail; wincent.dev)</li>
+<li><a href="/wiki/SSL_certificate_renewal_notes_2010">SSL certificate renewal notes 2010</a> (nginx; wincent.dev)</li>
+<li><a href="/wiki/SSL_certificate_renewal_notes_2008">SSL certificate renewal notes 2008</a> (Apache, Cyrus, sendmail; wincent.dev)</li>
+</ul>
+</li>
+<li><a href="/wiki/Getting_new_SSL_certificates_for_use_with_nginx">Getting new SSL certificates for use with nginx</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

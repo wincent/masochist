@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.6.4.2 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.6.4.2</h1></div><div class="metadata"><relative-time created="1251605510" updated="1495119989">Created 8/30/2009, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official announcement posted to the <a href="/wiki/Git_mailing_list">Git mailing list</a>:</p>
+<pre><code>The latest maintenance release GIT 1.6.4.2 is available at the
+usual places:
+
+ http://www.kernel.org/pub/software/scm/git/
+
+ git-1.6.4.2.tar.{gz,bz2}			(source tarball)
+ git-htmldocs-1.6.4.2.tar.{gz,bz2}		(preformatted docs)
+ git-manpages-1.6.4.2.tar.{gz,bz2}		(preformatted docs)
+
+The RPM binary packages for a few architectures are found in:
+
+ RPMS/$arch/git-*-1.6.4.2-1.fc9.$arch.rpm	(RPM)
+
+GIT v1.6.4.2 Release Notes
+==========================
+
+Fixes since v1.6.4.1
+--------------------
+
+* --date=relative output between 1 and 5 years ago rounded the number of
+   years when saying X years Y months ago, instead of rounding it down.
+
+* &quot;git add -p&quot; did not handle changes in executable bits correctly
+ (a regression around 1.6.3).
+
+* &quot;git apply&quot; did not honor GNU diff's convention to mark the creation/deletion
+ event with UNIX epoch timestamp on missing side.
+
+* &quot;git checkout&quot; incorrectly removed files in a directory pointed by a
+ symbolic link during a branch switch that replaces a directory with
+ a symbolic link.
+
+* &quot;git clean -d -f&quot; happily descended into a subdirectory that is managed by a
+ separate git repository.  It now requires two -f options for safety.
+
+* &quot;git fetch/push&quot; over http transports had two rather grave bugs.
+
+* &quot;git format-patch --cover-letter&quot; did not prepare the cover letter file
+ for use with non-ASCII strings when there are the series contributors with
+ non-ASCII names.
+
+* &quot;git pull origin branch&quot; and &quot;git fetch origin &amp;&amp; git merge origin/branch&quot;
+ left different merge messages in the resulting commit.
+
+Other minor documentation updates are included.
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Updating_to_Git_1.6.4.2_on_Mac_OS_X_10.6_Snow_Leopard">Updating to Git 1.6.4.2 on Mac OS X 10.6 Snow Leopard</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

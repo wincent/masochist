@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Using at to safely try out iptables configuration changes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Using at to safely try out iptables configuration changes</h1></div><div class="metadata"><relative-time created="1240928221" updated="1495119989">Created 4/28/2009, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/iptables">iptables</a></li><li><a href="/tags/at">at</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Making changes to <a href="/wiki/iptables">iptables</a> rules can be dangerous. If you make a mistake you could lock yourself out of your machine. A nice safety valve can be to use the <code>at</code> <a href="/wiki/command-line">command-line</a> tool to save your hide in the event of a mistake.</p>
+<p>The basic idea is to do the following:</p>
+<ol>
+<li>Use <code>at</code> to schedule a reboot for a few minutes into the future</li>
+<li>Manipulate the firewall</li>
+<li>If everything works, cancel the reboot; otherwise, wait for the reboot to take place and reset the firewall to its former state</li>
+</ol>
+<p>For this to work you need to make sure your firewall rules don't get automatically saved to disk on shutdown; in other words, your <code>/etc/sysconfig/iptables-config</code> should include something like:</p>
+<pre><code># Save current firewall rules on stop.
+#   Value: yes|no,  default: no
+# Saves all firewall rules to /etc/sysconfig/iptables if firewall gets stopped
+# (e.g. on system shutdown).
+IPTABLES_SAVE_ON_STOP=&quot;no&quot;
+
+# Save current firewall rules on restart.
+#   Value: yes|no,  default: no
+# Saves all firewall rules to /etc/sysconfig/iptables if firewall gets
+# restarted.
+IPTABLES_SAVE_ON_RESTART=&quot;no&quot;
+</code></pre>
+<h2>Demo</h2>
+<p>Here's a demo of the concepts introduced above. Instead of rebooting we're just going to schedule <code>ls</code> to run.</p>
+<p>Find out what the local time on the server is:</p>
+<pre><code># date
+Tue Apr 28 14:08:58 EDT 2009
+</code></pre>
+<p>Check what's in the <code>at</code> queue:</p>
+<pre><code># atq
+</code></pre>
+<p>Nothing was in the queue, so schedule a job:</p>
+<pre><code># at 14:10
+at&gt; ls
+at&gt; &lt;EOT&gt;
+job 47 at 2009-04-28 14:10
+</code></pre>
+<p>To escape the <code>at</code> &quot;shell&quot; use Control-D.</p>
+<p>Now check the queue again; the job should be there:</p>
+<pre><code># atq
+47	2009-04-28 14:10 a root
+</code></pre>
+<p>Do something else (like configuring your firewall) and cancel the job:</p>
+<pre><code># atrm 47
+</code></pre>
+<p>Confirm that the queue is empty:</p>
+<pre><code># atq
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/iptables">iptables</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

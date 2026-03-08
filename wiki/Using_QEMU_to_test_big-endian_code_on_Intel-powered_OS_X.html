@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Using QEMU to test big-endian code on Intel-powered OS X • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Using QEMU to test big-endian code on Intel-powered OS X</h1></div><div class="metadata"><relative-time created="1408226114" updated="1495119989">Created 8/16/2014, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/powerpc">powerpc</a></li><li><a href="/tags/qemu">qemu</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>I tried to do this the other day. My first attempt progressed fairly well, although with a lot of <a href="/wiki/yak_shaving">yak shaving</a>, but ultimately didn't work. I began a second attempt but ended up aborting it because somebody else did the big-endian testing for me, obviating the need.</p>
+<p>Here are the scattered notes that I made along the way.</p>
+<h2>Resources</h2>
+<ul>
+<li><a href="https://gmplib.org/~tege/qemu.html">https://gmplib.org/~tege/qemu.html</a></li>
+<li><a href="https://help.ubuntu.com/community/Installation/QemuEmulator">https://help.ubuntu.com/community/Installation/QemuEmulator</a></li>
+<li><a href="http://www.makestuff.eu/wordpress/running-debian-for-arm-powerpc-on-qemu/">http://www.makestuff.eu/wordpress/running-debian-for-arm-powerpc-on-qemu/</a></li>
+</ul>
+<h2>Installing qemu</h2>
+<pre><code class="language-shell">$ brew install qemu
+</code></pre>
+<h2>Setting up a PowerPC Debian installation: first attempt</h2>
+<p>For my first attempt I used the latest &quot;qcow2&quot; disk image format, which turned out to be a bad choice because I couldn't mount it on my OS X machine to get the necessary init ramdisk and kernel files:</p>
+<pre><code class="language-shell">$ qemu-img create -f qcow2 /tmp/disk.img 8G
+</code></pre>
+<p>Installing the latest Debian (7.6.0 at the time of writing):</p>
+<pre><code class="language-shell">$ sudo qemu-system-ppc \
+  -m 1024 \
+  -hda /tmp/disk.img \
+  -cdrom ~/Downloads/debian-7.6.0-powerpc-CD-1.iso \
+  -boot d
+</code></pre>
+<p>Note that installing the bootloader fails, so &quot;Continue without boot loader&quot;, and observe that the installer advises:</p>
+<blockquote>
+<p>You will need to boot manually with the /vmlinux kernel on partition /dev/sda2 and root=/dev/sda3 passed as a kernel argument</p>
+</blockquote>
+<h2>Mounting the disk</h2>
+<p>After installation, in order to boot the system you need the initrd and kernel files from the disk image.</p>
+<p>I tried to attach the disk image on OS X in order to get the initrd and kernel files:</p>
+<pre><code class="language-shell">$ hdiutil attach -imagekey diskimage-class=CRawDiskImage -nomount filename
+$ hdiutil mount /dev/disk2
+</code></pre>
+<p>Alas, this doesn't work:</p>
+<blockquote>
+<p>mount failed - no mountable file system</p>
+</blockquote>
+<p>So, time to create a Linux VM and mount the image on that. Relevant resources:</p>
+<ul>
+<li><a href="http://www.ubuntu.com/download/desktop/thank-you?country=US&amp;version=14.04.1&amp;architecture=amd64">http://www.ubuntu.com/download/desktop/thank-you?country=US&amp;version=14.04.1&amp;architecture=amd64</a></li>
+<li><a href="http://www.wikihow.com/Install-Ubuntu-on-VirtualBox">http://www.wikihow.com/Install-Ubuntu-on-VirtualBox</a></li>
+</ul>
+<p>Set up a shared folder, make sure you set up to automount or it probably won't be writable. &quot;diskimages&quot; is the name chosen in the VirtualBox shared folder settings dialog:</p>
+<pre><code class="language-shell">$ mkdir ~/r
+$ sudo mount -t vboxsf diskimages ~/r
+$ cd ~/r
+$ ls # observe we can see the disk QEMU image
+</code></pre>
+<h2>Mounting the raw image</h2>
+<ul>
+<li><a href="http://major.io/2010/12/14/mounting-a-raw-partition-file-made-with-dd-or-dd_rescue-in-linux/">http://major.io/2010/12/14/mounting-a-raw-partition-file-made-with-dd-or-dd_rescue-in-linux/</a></li>
+<li><a href="http://xathrya.web.id/blog/2013/08/01/mounting-qemu-hard-disk-image-on-various-operating-system/">http://xathrya.web.id/blog/2013/08/01/mounting-qemu-hard-disk-image-on-various-operating-system/</a></li>
+<li><a href="https://wiki.debian.org/QEMU">https://wiki.debian.org/QEMU</a></li>
+</ul>
+<p>I tried converting the image from &quot;qcow2&quot; to &quot;raw&quot; format in order to mount it directly, but that didn't work:</p>
+<pre><code class="language-shell">$ fdisk -l r/disk.img
+$ sudo touch /mnt/loop
+$ sudo mount -o ro,loop,offset=32256 r/disk.dmg /mnt/loop -t ext4
+</code></pre>
+<p>So instead I tried this:</p>
+<pre><code class="language-shell">$ sudo modprobe nbd max_part=8
+$ sudo apt-get install kvm
+$ sudo qemu-nbd --conect /dev/nbd0 r/disk.img
+$ mkdir m
+$ sudo mount /dev/nbd0p2 m
+$ cd m
+$ cp initrd.img-3.2.0-4-powerpc vmlinux-3.2.0-4-powerpc r/
+</code></pre>
+<p>That last step failed because the VirtualBox shared folder had mounted in read-only mode. I rebooted the Linux VM with the shared folder set to automount after first doing this:</p>
+<pre><code class="language-shell">$ sudo usermod -aG vboxsf $(whoami)
+</code></pre>
+<p>For more on permissions issues, see:</p>
+<ul>
+<li><a href="http://superuser.com/questions/307853/permission-denied-when-accessing-virtualbox-shared-folder-when-member-of-the-vbo">http://superuser.com/questions/307853/permission-denied-when-accessing-virtualbox-shared-folder-when-member-of-the-vbo</a></li>
+<li><a href="http://unix.stackexchange.com/questions/52667/file-permission-issues-with-shared-folders-under-virtual-box-ubuntu-guest-wind">http://unix.stackexchange.com/questions/52667/file-permission-issues-with-shared-folders-under-virtual-box-ubuntu-guest-wind</a></li>
+</ul>
+<p>After all that, I could try to boot into the new system:</p>
+<pre><code class="language-shell">$ sudo qemu-system-ppc \
+  -m 1024 \
+  -hda /tmp/tmp/disk.img \
+  -kernel ./vmlinux-3.2.0-4-powerpc \
+  -initrd ./initrd.img-3.2.0-4-powerpc \
+  -append &quot;root=/dev/hda3&quot;
+</code></pre>
+<h2>Attempt two</h2>
+<pre><code class="language-shell">$ qemu-img create -f raw /tmp/disk.img 8G # ie. raw format this time
+$ sudo qemu-system-ppc \
+  -m 1024 \
+  -hda /tmp/disk.img \
+  -cdrom ~/Downloads/debian-7.6.0-powerpc-CD-1.iso \
+  -boot d
+</code></pre>
+<p>Note: the screen can be very dark on booting, but there is a prompt that is waiting for you to press enter.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

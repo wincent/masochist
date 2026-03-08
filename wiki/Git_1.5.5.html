@@ -1,0 +1,216 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.5.5 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.5.5</h1></div><div class="metadata"><relative-time created="1207725088" updated="1495119989">Created 4/9/2008, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><a href="/wiki/Git_1.5.5">Git 1.5.5</a> was released on or about 9 April 2008.</p>
+<h3>Release notes</h3>
+<p>This is a local copy of the <a href="http://repo.or.cz/w/git.git?a=blob;f=Documentation/RelNotes-1.5.5.txt;h=29322124881bf65c3ee6f5d613251b09f4a98d9a;hb=1d2375ddfee18bd3effd2c1f98527cc2f8b1df0a">official release notes</a>:</p>
+<pre><code>GIT v1.5.5 Release Notes
+========================
+
+Updates since v1.5.4
+--------------------
+
+(subsystems)
+
+* Comes with git-gui 0.10.1
+
+(portability)
+
+* We shouldn't ask for BSD group ownership semantics by setting g+s bit
+  on directories on older BSD systems that refuses chmod() by non root
+  users.  BSD semantics is the default there anyway.
+
+* Bunch of portability improvement patches coming from an effort to port
+  to Solaris has been applied.
+
+(performance)
+
+* On platforms with suboptimal qsort(3) implementation, there
+  is an option to use more reasonable substitute we ship with
+  our software.
+
+* New configuration variable &quot;pack.packsizelimit&quot; can be used
+  in place of command line option --max-pack-size.
+
+* &quot;git fetch&quot; over the native git protocol used to make a
+  connection to find out the set of current remote refs and
+  another to actually download the pack data.  We now use only
+  one connection for these tasks.
+
+* &quot;git commit&quot; does not run lstat(2) more than necessary
+  anymore.
+
+(usability, bells and whistles)
+
+* Bash completion script (in contrib) are aware of more commands and
+  options.
+
+* You can be warned when core.autocrlf conversion is applied in
+  such a way that results in an irreversible conversion.
+
+* A catch-all &quot;color.ui&quot; configuration variable can be used to
+  enable coloring of all color-capable commands, instead of
+  individual ones such as &quot;color.status&quot; and &quot;color.branch&quot;.
+
+* The commands refused to take absolute pathnames where they
+  require pathnames relative to the work tree or the current
+  subdirectory.  They now can take absolute pathnames in such a
+  case as long as the pathnames do not refer outside of the
+  work tree.  E.g. &quot;git add $(pwd)/foo&quot; now works.
+
+* Error messages used to be sent to stderr, only to get hidden,
+  when $PAGER was in use.  They now are sent to stdout along
+  with the command output to be shown in the $PAGER.
+
+* A pattern &quot;foo/&quot; in .gitignore file now matches a directory
+  &quot;foo&quot;.  Pattern &quot;foo&quot; also matches as before.
+
+* bash completion's prompt helper function can talk about
+  operation in-progress (e.g. merge, rebase, etc.).
+
+* Configuration variables &quot;url.&lt;usethis&gt;.insteadof = &lt;otherurl&gt;&quot; can be
+  used to tell &quot;git-fetch&quot; and &quot;git-push&quot; to use different URL than what
+  is given from the command line.
+
+* &quot;git add -i&quot; behaves better even before you make an initial commit.
+
+* &quot;git am&quot; refused to run from a subdirectory without a good reason.
+
+* After &quot;git apply --whitespace=fix&quot; fixes whitespace errors in a patch,
+  a line before the fix can appear as a context or preimage line in a
+  later patch, causing the patch not to apply.  The command now knows to
+  see through whitespace fixes done to context lines to successfully
+  apply such a patch series.
+
+* &quot;git branch&quot; (and &quot;git checkout -b&quot;) to branch from a local branch can
+  optionally set &quot;branch.&lt;name&gt;.merge&quot; to mark the new branch to build on
+  the other local branch, when &quot;branch.autosetupmerge&quot; is set to
+  &quot;always&quot;, or when passing the command line option &quot;--track&quot; (this option
+  was ignored when branching from local branches).  By default, this does
+  not happen when branching from a local branch.
+
+* &quot;git checkout&quot; to switch to a branch that has &quot;branch.&lt;name&gt;.merge&quot; set
+  (i.e. marked to build on another branch) reports how much the branch
+  and the other branch diverged.
+
+* When &quot;git checkout&quot; has to update a lot of paths, it used to be silent
+  for 4 seconds before it showed any progress report.  It is now a bit
+  more impatient and starts showing progress report early.
+
+* &quot;git commit&quot; learned a new hook &quot;prepare-commit-msg&quot; that can
+  inspect what is going to be committed and prepare the commit
+  log message template to be edited.
+
+* &quot;git cvsimport&quot; can now take more than one -M options.
+
+* &quot;git describe&quot; learned to limit the tags to be used for
+  naming with --match option.
+
+* &quot;git describe --contains&quot; now barfs when the named commit
+  cannot be described.
+
+* &quot;git describe --exact-match&quot; describes only commits that are tagged.
+
+* &quot;git describe --long&quot; describes a tagged commit as $tag-0-$sha1,
+  instead of just showing the exact tagname.
+
+* &quot;git describe&quot; warns when using a tag whose name and path contradict
+  with each other.
+
+* &quot;git diff&quot; learned &quot;--relative&quot; option to limit and output paths
+  relative to the current directory when working in a subdirectory.
+
+* &quot;git diff&quot; learned &quot;--dirstat&quot; option to show birds-eye-summary of
+  changes more concisely than &quot;--diffstat&quot;.
+
+* &quot;git format-patch&quot; learned --cover-letter option to generate a cover
+  letter template.
+
+* &quot;git gc&quot; learned --quiet option.
+
+* &quot;git gc&quot; now automatically prunes unreachable objects that are two
+  weeks old or older.
+
+* &quot;git gc --auto&quot; can be disabled more easily by just setting gc.auto
+  to zero.  It also tolerates more packfiles by default.
+
+* &quot;git grep&quot; now knows &quot;--name-only&quot; is a synonym for the &quot;-l&quot; option.
+
+* &quot;git help &lt;alias&gt;&quot; now reports &quot;'git &lt;alias&gt;' is alias to &lt;what&gt;&quot;,
+  instead of saying &quot;No manual entry for git-&lt;alias&gt;&quot;.
+
+* &quot;git help&quot; can use different backends to show manual pages and this can
+  be configured using &quot;man.viewer&quot; configuration.
+
+* &quot;gitk&quot; does not restore window position from $HOME/.gitk anymore (it
+  still restores the size).
+
+* &quot;git log --grep=&lt;what&gt;&quot; learned &quot;--fixed-strings&quot; option to look for
+  &lt;what&gt; without treating it as a regular expression.
+
+* &quot;git gui&quot; learned an auto-spell checking.
+
+* &quot;git push &lt;somewhere&gt; HEAD&quot; and &quot;git push &lt;somewhere&gt; +HEAD&quot; works as
+  expected; they push the current branch (and only the current branch).
+  In addition, HEAD can be written as the value of &quot;remote.&lt;there&gt;.push&quot;
+  configuration variable.
+
+* When the configuration variable &quot;pack.threads&quot; is set to 0, &quot;git
+  repack&quot; auto detects the number of CPUs and uses that many threads.
+
+* &quot;git send-email&quot; learned to prompt for passwords
+  interactively.
+
+* &quot;git send-email&quot; learned an easier way to suppress CC
+  recipients.
+
+* &quot;git stash&quot; learned &quot;pop&quot; command, that applies the latest stash and
+  removes it from the stash, and &quot;drop&quot; command to discard the named
+  stash entry.
+
+* &quot;git submodule&quot; learned a new subcommand &quot;summary&quot; to show the
+  symmetric difference between the HEAD version and the work tree version
+  of the submodule commits.
+
+* Various &quot;git cvsimport&quot;, &quot;git cvsexportcommit&quot;, &quot;git cvsserver&quot;,
+  &quot;git svn&quot; and &quot;git p4&quot; improvements.
+
+(internal)
+
+* Duplicated code between git-help and git-instaweb that
+  launches user's preferred browser has been refactored.
+
+* It is now easier to write test scripts that records known
+  breakages.
+
+* &quot;git checkout&quot; is rewritten in C.
+
+* &quot;git remote&quot; is rewritten in C.
+
+* Two conflict hunks that are separated by a very short span of common
+  lines are now coalesced into one larger hunk, to make the result easier
+  to read.
+
+* Run-command API's use of file descriptors is documented clearer and
+  is more consistent now.
+
+* diff output can be sent to FILE * that is different from stdout.  This
+  will help reimplementing more things in C.
+
+Fixes since v1.5.4
+------------------
+
+All of the fixes in v1.5.4 maintenance series are included in
+this release, unless otherwise noted.
+
+* &quot;git-http-push&quot; did not allow deletion of remote ref with the usual
+  &quot;push &lt;remote&gt; :&lt;branch&gt;&quot; syntax.
+
+* &quot;git-rebase --abort&quot; did not go back to the right location if
+  &quot;git-reset&quot; was run during the &quot;git-rebase&quot; session.
+
+* &quot;git imap-send&quot; without setting imap.host did not error out but
+  segfaulted.
+</code></pre>
+<h3>See also</h3>
+<ul>
+<li><a href="/wiki/Upgrading_to_Git_1.5.5">Upgrading to Git 1.5.5</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

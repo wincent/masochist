@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Xcode tips • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Xcode tips</h1></div><div class="metadata"><relative-time created="1179483763" updated="1584053324">Created 5/18/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/xcode">xcode</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Keyboard navigation among methods</h2>
+<p>When an editor view is active and has focus hitting Control-2 will cause the function pop-up menu to activate; it can then be navigated using the cursor keys. Hitting Return jumps to the method.</p>
+<p>I learnt about this trick in <a href="http://inessential.com/?comments=1&amp;postid=3405">this weblog post</a>.</p>
+<h2>Cancelling builds</h2>
+<p>About once a day I find myself unexpectedly provoking a build by pressing Command-B when all I really wanted to do was paste something (Command-V); an easy enough mistake to make because the B and V keys are adjacent. When this happens I hit Command-Period to cancel the build.</p>
+<p>Peter Hosey reveals another way of cancelling an in progress build in <a href="http://boredzo.org/blog/archives/2006-04-11/know-your-xcode">this post</a>:</p>
+<blockquote>
+<p>Most commands that start an operation stop it as well. ⌘B, for example, starts <em>and stops</em> a build.</p>
+</blockquote>
+<p>He goes further to describe the general pattern employed:</p>
+<blockquote>
+<p>Rule of key commands: With ⌘ and no other modifiers, the key command does at least a build. ⌘⌥ will do that thing alone, without building first. ⇧⌘ opens the progress window for that operation, without actually doing it.</p>
+</blockquote>
+<p>See <a href="http://boredzo.org/blog/archives/2006-04-11/know-your-xcode">his post</a> for full details.</p>
+<h2>Build phase ordering</h2>
+<p><a href="http://talblog.info/archives/2007/05/fail_faster.html">This weblog post</a> argues that you should move your Compile Sources build phases as high up in the build phases lists as possible so as to catch syntax errors as quickly as possible. This is predicated on two notions:</p>
+<ol>
+<li>Syntax errors are much more likely than mistakes in your other build phases, such as Copy Bundle Resources phases.</li>
+<li>Executing a Copy Bundle Resources phase early on in the build process may needlessly delay the discovery of syntax errors.</li>
+</ol>
+<p>This advice can be generalized to the following: move your Compile Sources build phases as high up in the build phases lists as possible. In other words, don't just look at the relative ordering of your Compile Sources and Copy Bundle Resources phases; consider all the phases and move the Compile Sources and Link Binary With Libraries phases up as high as you can without breaking anything. Do this for all targets in your project.</p>
+<p>As a concrete example, take the <a href="/wiki/Synergy_Advance">Synergy Advance</a> application target (this is the target that builds the application only; there are many other targets for building other components such as plug-ins): before re-ordering the build phase order was:</p>
+<ol>
+<li>Run Script (Update Strings Files)</li>
+<li>Copy Bundle Resources</li>
+<li>Copy Frameworks</li>
+<li>Compile Sources</li>
+<li>Link Binary With Libraries</li>
+<li>Run Script (AppleScript Support)</li>
+<li>Run Script (Strip)</li>
+<li>Run Script (InfoPlist.strings preprocessing)</li>
+</ol>
+<p>After re-ordering we have:</p>
+<ol>
+<li>Compile Sources</li>
+<li>Link Binary With Libraries</li>
+<li>Run Script (Update Strings Files)</li>
+<li>Copy Bundle Resources</li>
+<li>Copy Frameworks</li>
+<li>Run Script (AppleScript Support)</li>
+<li>Run Script (Strip)</li>
+<li>Run Script (InfoPlist.strings preprocessing)</li>
+</ol>
+<p>In other words, I was able to move three phases down the list and make Compile Sources and Link Binary With Libraries the very first phases in the target. Note that even the Copy Frameworks phase can be moved down despite the fact that linking occurs before it; this is because the linking is performed against the frameworks in the <code>TARGET_BUILD_DIR</code>, and they can later be copied into place inside the application bundle.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Automatic deployment numbering in Git • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/automatic-deployment-numbering-in-git">Automatic deployment numbering in Git</a></h1><div class="metadata"><relative-time created="1244183017" updated="1584053324">Created 6/5/2009, updated 3/12/2020</relative-time><span>5 minute read</span></div><div class="prerendered"><p>A frequently-asked <a href="/wiki/Git">Git</a> question is, &quot;How do I get Git to embed an automatically and atomically-incrementing revision number in my files?&quot;, or some related variant. (Strictly speaking, the question is not included in <a href="http://git.or.cz/gitwiki/GitFaq">the official FAQ</a>, bit it does crop up on the mailing list pretty often).</p>
+<p>Invariably the answer is, you can't (easily) do this and it fact it doesn't even make sense to even try in a <a href="/wiki/distributed_version_control">distributed version control</a> system.</p>
+<p>Usually protests follow: &quot;but I <em>have</em> to have automatically and atomically-increasing revision numbers!&quot;.</p>
+<p>&quot;So, <em>why</em> do you need these numbers?&quot;</p>
+<p>&quot;Because we've always had them&quot;.</p>
+<p>&quot;<em>Why</em> have you always had them?&quot;</p>
+<p>&quot;Because they're necessary to uniquely and unambiguously identify the version of the product.&quot;</p>
+<p>&quot;If that's what you need then you can easily embed such a number (a commit hash) as part of your build process.&quot;</p>
+<p>&quot;But I don't want a hash; I want an integer in base-10.&quot;</p>
+<p>&quot;<em>Why</em> do you want an integer in base-10?&quot;</p>
+<p>&quot;Because it needs to be human readable.&quot;</p>
+<p>&quot;<em>Why</em> does it need to be &quot;human readable&quot;?&quot;</p>
+<p>&quot;Because you can't do marketing with hexadecimal version numbers.&quot;</p>
+<p>&quot;<em>Why</em> are you trying to do marketing with a <em>build</em> number anyway?&quot;</p>
+<p>Basically, if you continue asking these &quot;why&quot; questions eventually the argument boils down to &quot;because we've always done it that way&quot;. In many situations a <a href="/wiki/DVCS">DVCS</a> will allow you to work in a wide variety of ways, including some of the ways that you may already be used to from your experiences with centralized <a href="/wiki/version_control_systems">version control systems</a>. But just because they <em>can</em> work in that way doesn't necessarily mean that you <em>should</em> make them work in that way, and this apparent &quot;need&quot; for automatically and atomically-incrementing, base-10 integer &quot;revision numbers&quot; is one of those cases.</p>
+<p>Even so, many people insist and end up jumping through hoops using <a href="http://www.kernel.org/pub/software/scm/git/docs/gitattributes.html">gitattributes</a>, <a href="http://www.kernel.org/pub/software/scm/git-core/docs/githooks.html">githooks</a> and other such devilry to impose a broken, old, unnecessary workflow on a new system which doesn't need or benefit from it. Some people go so far as to <em>tag</em> every single commit just so that they can get their precious incrementing base-10 &quot;revision numbers&quot;.</p>
+<p>So today when I saw a link to <a href="http://blog.rfwatson.net/2009/06/03/automatic-version-numbering-using-git/">this article</a> titled, &quot;Automatic version numbering using Git&quot;, I thought, oh no, here we go again.</p>
+<p>It turns out, however, that the title is a little bit misleading. It's actually about &quot;automatic <em>deployment</em> numbering&quot;. The author is indeed aware of the nonsensicality of trying to impose atomic, automatic, unique, incrementing revision numbers on a distributed system:</p>
+<blockquote>
+<p>This means that the version number changes, dependent on whose machine the application is running on. This is confusing for clients and developers alike, and quite frankly pretty useless.</p>
+</blockquote>
+<p>The idea then is to number deployments:</p>
+<blockquote>
+<p>The solution, so far, is to reject the idea of basing the version number on the number of commits altogether, and instead base it on the number of deployments. This makes a lot more sense, because it hooks into the visible product actually changing: when a deploy is carried out, one can reasonably expect the finished product to have changed in some significant way. During this time, any number of commits could have been made or reverted, or branches created or destroyed; but the version number will still only increase by one.</p>
+</blockquote>
+<p>In the specific context of a web application that is deployed to a central location, I think this is actually a pretty decent idea. In fact, when I deploy new versions of this site (about once per month) I end up tagging them manually with <code>git tag</code> because it is usually a bit more pleasant to write <code>git log v0.1..v0.2</code> than <code>git log 0bfe319..665eef1</code>.</p>
+<p>So this would indeed work for very specific projects which meet the following criteria:</p>
+<ul>
+<li>is a web application (or a non-web application for which the notion of &quot;deployment&quot; makes sense)</li>
+<li>deployment may occur only to a specific, central location; in other words, it makes sense for an application like the one running this site but not for an open source weblog platform like <a href="http://mephistoblog.com/">Mephisto</a> which is deployed by many</li>
+</ul>
+<p>In these cases it's not all that different from manually bumping the revision number in <a href="/wiki/Git">Git</a> itself; it's just that it happens automatically. I don't know if I deploy often enough to warrant automating this tagging process, but I think it's an interesting idea. The tags I currently use are really just for my own use (so that my deployed versions stand out when I review the history using <code>gitk</code>, but it might be worth extending my deployment process to spit this info out into the deployment directory somewhere and make it visible in the interface.</p>
+<h2>Update: November 2009</h2>
+<p>In the end I did wind up automating the process. A while ago I <a href="/blog/getting-rid-of-capistrano">got rid of Capistrano</a> and replaced it with a bare bones shell script, so adding in a couple of commands to do automatic tagging of deployed versions was a piece of cake.</p>
+<p>This is what it looks like:</p>
+<pre><code>REVISION=$(ssh $SERVER cat $LATEST/REVISION)
+if [ ! $(git describe --exact-match $REVISION 2&gt; /dev/null) ]; then
+  TAG=$(git describe $(git rev-list --tags --max-count=1) | awk -F . '{ printf &quot;%d.%d&quot;, $1, $2 + 1}')
+  echo &quot;  warning: deployed version $REVISION is not yet tagged; tagging now as $TAG&quot;
+  git tag -s -m &quot;Deployed $(LANG=en_GB.UTF-8; date '+%d %B %Y').&quot; $TAG
+fi
+</code></pre>
+<p>It's by no means perfect but it does get the job done:</p>
+<ul>
+<li>this gives me version numbers like 0.8, 0.9, 0.10, 0.11 and so on; when the code base goes <a href="/wiki/open_source">open source</a> I'll evidently end up having to change this system and go back to manually tagging &quot;real&quot; releases again</li>
+<li>it assumes that the latest tagged commit is the latest tag; a necessary evil given that <code>git rev-list</code> outputs in reverse-chronological order based on commit dates, not tag dates</li>
+<li>you might think that this would cause problems if you deploy a version from December on the <code>master</code> branch and later decide to deploy an older version from November's <code>maint</code> branch, but in practice this is unlikely to come up because...</li>
+<li>it only applies a new tag if the deployed commit doesn't already have one; so this means that you can deploy version &quot;0.x&quot;, then &quot;0.x+1&quot;, and end up rolling back to &quot;0.x&quot; without any problems</li>
+<li>it suits the linear nature of this kind of web development fairly nicely (most development on single branch, no real need to maintain parallel branches for long periods of time etc)</li>
+</ul>
+</div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/involuntary-reboot-log-53">← Involuntary Reboot Log</a></div><div class="post-nav-next"><a href="/blog/internet-access-problems">Internet access problems →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

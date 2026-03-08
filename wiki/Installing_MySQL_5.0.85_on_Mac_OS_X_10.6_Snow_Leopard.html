@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Installing MySQL 5.0.85 on Mac OS X 10.6 Snow Leopard • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Installing MySQL 5.0.85 on Mac OS X 10.6 Snow Leopard</h1></div><div class="metadata"><relative-time created="1251708911" updated="1584053324">Created 8/31/2009, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/mysql">mysql</a></li><li><a href="/tags/snow.leopard">snow.leopard</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>The official <a href="http://dev.mysql.com/downloads/mysql/5.0.html">downloads page</a> doesn't yet list any binary distributions for <a href="/wiki/Snow_Leopard">Snow Leopard</a>, so before trying to install a <a href="/wiki/Leopard">Leopard</a> binary distribution I will see if it builds cleanly from source.</p>
+<pre><code class="language-shell">$ curl -O http://mysql.rediris.es/Downloads/MySQL-5.0/mysql-5.0.85.tar.gz
+$ tar xzvf mysql-5.0.85.tar.gz
+$ cd mysql-5.0.85
+$ ./configure --prefix=/usr/local/mysql
+$ make
+$ make test
+</code></pre>
+<p>Unfortunately one of the tests fails:</p>
+<pre><code>view                           [ fail ]
+
+--- /Users/wincent/trabajo/vendor/mysql/mysql-5.0.85/mysql-test/r/view.result	2009-08-11 14:18:01.000000000 +0300
++++ /Users/wincent/trabajo/vendor/mysql/mysql-5.0.85/mysql-test/r/view.reject	2009-08-31 15:39:36.000000000 +0300
+@@ -3659,6 +3659,51 @@
+
+ # -- End of test case for Bug#34337.
+
++# -----------------------------------------------------------------
++# -- Bug#35193 VIEW query is rewritten without &quot;FROM DUAL&quot;,
++# --           causing syntax error
++# -----------------------------------------------------------------
++
++CREATE VIEW v1 AS SELECT 1 FROM DUAL WHERE 1;
++
++SELECT * FROM v1;
++1
++1
++SHOW CREATE TABLE v1;
++View	Create View
++v1	CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v1` AS select 1 AS `1` from DUAL  where 1
++
++DROP VIEW v1;
++
++# -- End of test case for Bug#35193.
++
++CREATE VIEW v1 AS SELECT 1;
++DROP VIEW v1;
++CREATE TABLE t1 (c1 INT PRIMARY KEY, c2 INT, INDEX (c2));
++INSERT INTO t1 VALUES (1,1), (2,2), (3,3);
++SELECT * FROM t1 USE INDEX (PRIMARY) WHERE c1=2;
++c1	c2
++2	2
++SELECT * FROM t1 USE INDEX (c2) WHERE c2=2;
++c1	c2
++2	2
++CREATE VIEW v1 AS SELECT c1, c2 FROM t1;
++SHOW INDEX FROM v1;
++Table	Non_unique	Key_name	Seq_in_index	Column_name	Collation	Cardinality	Sub_part	Packed	NulIndex_type	Comment
++SELECT * FROM v1 USE INDEX (PRIMARY) WHERE c1=2;
++ERROR HY000: Key 'PRIMARY' doesn't exist in table 'v1'
++SELECT * FROM v1 FORCE INDEX (PRIMARY) WHERE c1=2;
++ERROR HY000: Key 'PRIMARY' doesn't exist in table 'v1'
++SELECT * FROM v1 IGNORE INDEX (PRIMARY) WHERE c1=2;
++ERROR HY000: Key 'PRIMARY' doesn't exist in table 'v1'
++SELECT * FROM v1 USE INDEX (c2) WHERE c2=2;
++ERROR HY000: Key 'c2' doesn't exist in table 'v1'
++SELECT * FROM v1 FORCE INDEX (c2) WHERE c2=2;
++ERROR HY000: Key 'c2' doesn't exist in table 'v1'
++SELECT * FROM v1 IGNORE INDEX (c2) WHERE c2=2;
++ERROR HY000: Key 'c2' doesn't exist in table 'v1'
++DROP VIEW v1;
++DROP TABLE t1;
+ #
+ # [/issues/45806 Bug #45806] crash when replacing into a view with a join!
+ #
+@@ -3771,51 +3816,6 @@
+ DROP TABLE t1;
+ # -- End of test case for Bug#45806
+ # -----------------------------------------------------------------
+-# -- Bug#35193 VIEW query is rewritten without &quot;FROM DUAL&quot;,
+-# --           causing syntax error
+-# -----------------------------------------------------------------
+-
+-CREATE VIEW v1 AS SELECT 1 FROM DUAL WHERE 1;
+-
+-SELECT * FROM v1;
+-1
+-1
+-SHOW CREATE TABLE v1;
+-View	Create View
+-v1	CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v1` AS select 1 AS `1` from DUAL  where 1
+-
+-DROP VIEW v1;
+-
+-# -- End of test case for Bug#35193.
+-
+-CREATE VIEW v1 AS SELECT 1;
+-DROP VIEW v1;
+-CREATE TABLE t1 (c1 INT PRIMARY KEY, c2 INT, INDEX (c2));
+-INSERT INTO t1 VALUES (1,1), (2,2), (3,3);
+-SELECT * FROM t1 USE INDEX (PRIMARY) WHERE c1=2;
+-c1	c2
+-2	2
+-SELECT * FROM t1 USE INDEX (c2) WHERE c2=2;
+-c1	c2
+-2	2
+-CREATE VIEW v1 AS SELECT c1, c2 FROM t1;
+-SHOW INDEX FROM v1;
+-Table	Non_unique	Key_name	Seq_in_index	Column_name	Collation	Cardinality	Sub_part	Packed	NulIndex_type	Comment
+-SELECT * FROM v1 USE INDEX (PRIMARY) WHERE c1=2;
+-ERROR HY000: Key 'PRIMARY' doesn't exist in table 'v1'
+-SELECT * FROM v1 FORCE INDEX (PRIMARY) WHERE c1=2;
+-ERROR HY000: Key 'PRIMARY' doesn't exist in table 'v1'
+-SELECT * FROM v1 IGNORE INDEX (PRIMARY) WHERE c1=2;
+-ERROR HY000: Key 'PRIMARY' doesn't exist in table 'v1'
+-SELECT * FROM v1 USE INDEX (c2) WHERE c2=2;
+-ERROR HY000: Key 'c2' doesn't exist in table 'v1'
+-SELECT * FROM v1 FORCE INDEX (c2) WHERE c2=2;
+-ERROR HY000: Key 'c2' doesn't exist in table 'v1'
+-SELECT * FROM v1 IGNORE INDEX (c2) WHERE c2=2;
+-ERROR HY000: Key 'c2' doesn't exist in table 'v1'
+-DROP VIEW v1;
+-DROP TABLE t1;
+-# -----------------------------------------------------------------
+ # -- Bug#40825: Error 1356 while selecting from a view
+ # --            with a &quot;HAVING&quot; clause though query works
+ # -----------------------------------------------------------------
+
+mysqltest: Result content mismatch
+
+Aborting: view failed in default mode.
+To continue, re-run with '--force'.
+Stopping All Servers
+make: *** [test-ns] Error 1
+</code></pre>
+<p>So the <a href="http://bugs.mysql.com/bug.php?id=40825">bug in question</a> was supposedly fixed in 5.0.83, but the test claims that it wasn't. <code>make</code> obviously doesn't understand the <code>--force</code> option, so I can't re-run.</p>
+<p>Seeing as this is not the production server and only a development workstation, will try installing anyway and see if it works:</p>
+<pre><code class="language-shell">$ sudo make install
+$ cd /usr/local/mysql
+$ sudo chown -R mysql:mysql .
+$ sudo bin/mysql_install_db --user=mysql
+$ sudo chown -R root:wheel .
+$ sudo chown -R mysql:mysql var
+$ sudo -u mysql -b bin/mysqld_safe
+$ mysql
+</code></pre>
+<p>At first I was not sure if this actually worked properly because of warnings issued on running <code>mysql_install_db</code>:</p>
+<pre><code>Installing MySQL system tables...
+090831 14:59:44 [Warning] Setting lower_case_table_names=2 because file system for /usr/local/mysql/var/ is case insensitive
+OK
+Filling help tables...
+090831 14:59:45 [Warning] Setting lower_case_table_names=2 because file system for /usr/local/mysql/var/ is case insensitive
+OK
+</code></pre>
+<p>Because while the tables appear to be present on disk:</p>
+<pre><code class="language-shell">$ sudo ls -laF /usr/local/mysql/var
+total 40976
+drwx------   9 _mysql  _mysql       306 31 ago 15:07 ./
+drwxr-xr-x  10 root    wheel        340 31 ago 14:51 ../
+-rw-rw----   1 _mysql  _mysql      1842 31 ago 15:07 host.local.err
+-rw-rw----   1 _mysql  _mysql         6 31 ago 15:07 host.local.pid
+-rw-rw----   1 _mysql  _mysql   5242880 31 ago 15:07 ib_logfile0
+-rw-rw----   1 _mysql  _mysql   5242880 31 ago 14:52 ib_logfile1
+-rw-rw----   1 _mysql  _mysql  10485760 31 ago 15:07 ibdata1
+drwx------  53 _mysql  _mysql      1802 31 ago 14:51 mysql/
+drwx------   2 _mysql  _mysql        68 31 ago 14:51 test/
+</code></pre>
+<p>There is no <code>mysql</code> database listed when logged in using the client:</p>
+<pre><code>mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| test               |
++--------------------+
+2 rows in set (0,00 sec)
+</code></pre>
+<p>Looks like the info formerly held in the <code>mysql</code> database is now held in <code>information_schema</code>, despite the filenames on disk:</p>
+<pre><code>mysql&gt; use information_schema;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql&gt; show tables;
++---------------------------------------+
+| Tables_in_information_schema          |
++---------------------------------------+
+| CHARACTER_SETS                        |
+| COLLATIONS                            |
+| COLLATION_CHARACTER_SET_APPLICABILITY |
+| COLUMNS                               |
+| COLUMN_PRIVILEGES                     |
+| KEY_COLUMN_USAGE                      |
+| PROFILING                             |
+| ROUTINES                              |
+| SCHEMATA                              |
+| SCHEMA_PRIVILEGES                     |
+| STATISTICS                            |
+| TABLES                                |
+| TABLE_CONSTRAINTS                     |
+| TABLE_PRIVILEGES                      |
+| TRIGGERS                              |
+| USER_PRIVILEGES                       |
+| VIEWS                                 |
++---------------------------------------+
+17 rows in set (0,00 sec)
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

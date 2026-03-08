@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SSL certificate renewal notes 2008 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>SSL certificate renewal notes 2008</h1></div><div class="metadata"><relative-time created="1208942398" updated="1710259978">Created 4/23/2008, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/ssl">ssl</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>My previous <a href="/wiki/SSL">SSL</a> certificate was a <a href="/wiki/RapidSSL">RapidSSL</a>-issued certificate, and the cheapest reseller I could find at time of renewal (late April 2008) was <a href="http://www.servertastic.com/">ServerTastic</a> (a 5-year renewal for $50, or $10 per year).</p>
+<p>The basic process for renewal is:</p>
+<ol>
+<li>Go to servertastic</li>
+<li>Go through the checkout process</li>
+<li>Receive email with link to page where you submit your CSR (Certificate Signing Request)</li>
+<li>Generate the CSR and paste it into the web page from the previous step</li>
+<li>Receive another email requesting approval to generate a new certificate</li>
+<li>Install the new certificate</li>
+</ol>
+<h3>Generating the CSR</h3>
+<p>Instructions for how to do this appear <a href="http://www.rapidssl.com/freessl/freessl-csr.html">here</a>, and for <a href="/wiki/Apache">Apache</a> with <a href="/wiki/mod_ssl">mod_ssl</a> specifically <a href="http://www.rapidssl.com/resources/csr/apache_mod_ssl.htm">here</a>.</p>
+<pre><code>cd path/to/ssl/certs/and/keys
+
+# move old CSR out the way
+mv wincent.dev.csr.rapidssl wincent.dev.csr.rapidssl.2007
+
+# create a new CSR
+openssl req -new -key server.key -out wincent.dev.csr.rapidssl.2008
+
+# review the new CSR, comparing it against the previous one for correctness
+openssl req -noout -text -in wincent.dev.csr.rapidssl.2008
+openssl req -noout -text -in wincent.dev.csr.rapidssl.2007
+</code></pre>
+<p>Here is how I answered the questions during CSR generation:</p>
+<pre><code>You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [GB]:AU
+State or Province Name (full name) [Berkshire]:South Australia
+Locality Name (eg, city) [Newbury]:Rundle Mall
+Organization Name (eg, company) [My Company Ltd]:wincent.dev
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) []:wincent.dev
+Email Address []:example@example.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+</code></pre>
+<h3>Installing the new certificate</h3>
+<h4>Apache</h4>
+<p><a href="/wiki/RapidSSL">RapidSSL</a> provides <a href="http://www.rapidssl.com/ssl-certificate-support/install-ssl-certificate/apache_apache_ssl.htm">installation instructions</a> for <a href="/wiki/Apache">Apache</a> running <a href="/wiki/mod_ssl">mod_ssl</a>.</p>
+<pre><code># move old certificate backup out of the way
+mv wincent.dev.crt.rapidssl wincent.dev.crt.rapidssl.2007
+
+# put the new certificate where Apache expects to find it
+cp wincent.dev.crt.rapidssl.2008 wincent.dev.crt
+
+# go live with the new certificate
+apachectl configtest
+apachectl graceful
+</code></pre>
+<p>Visting a secure <a href="/wiki/URL">URL</a> confirms that the new certificate is valid until 23 May 2013.</p>
+<h4>Sendmail</h4>
+<pre><code>cd /etc/pki/tls/certs
+
+# move old backup out the way
+mv sendmail.pem.rapidssl sendmail.pem.rapidssl.2007
+
+# install new certificate
+cp /path/to/wincent.dev.crt.rapidssl.2008 sendmail.pem.rapidssl.2008
+cp sendmail.pem.rapidssl.2008 sendmail.pem
+
+# go live with the new certificate
+service sendmail restart
+</code></pre>
+<p>I first did some elementary testing from <a href="/wiki/Mail.app">Mail.app</a> using the &quot;Connection Inspector&quot; window. I then followed this up with a <a href="/wiki/telnet">telnet</a>-style test:</p>
+<pre><code>openssl s_client -starttls pop -connect wincent.dev:25
+</code></pre>
+<h4>Cyrus</h4>
+<pre><code>cd /etc/pki/cyrus-imapd
+
+# make backup
+cp cyrus-imapd.pem cyrus-imapd.pem.rapidssl.2007
+
+# install new certificate, ensuring correct permissions
+cp /etc/pki/tls/certs/sendmail.pem.rapidssl.2008 cyrus-imapd.pem.rapidssl.2008
+chown cyrus:mail cyrus-imapd.pem.rapidssl.200*
+cp cyrus-imapd.pem.rapidssl.2008 cyrus-imapd.pem
+
+# go live with the new certificate
+service cyrus-imapd restart
+</code></pre>
+<p>Again, I tested using <a href="/wiki/Mail.app">Mail.app</a> and also did the following tests in the <a href="/wiki/Terminal">Terminal</a>:</p>
+<pre><code># test secure IMAP
+openssl s_client -connect wincent.dev:993
+
+# test secure POP
+openssl s_client -connect wincent.dev:995
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>On the 80-column limit • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/on-the-80-column-limit">On the 80-column limit</a></h1><div class="metadata"><relative-time created="1241761286" updated="1584053324">Created 5/8/2009, updated 3/12/2020</relative-time><span>5 minute read</span></div><div class="prerendered"><p>How many times over the years have I agonized over the question of source code line lengths?</p>
+<p>Too many, I think.</p>
+<h2>The 80-column limit</h2>
+<p>When I first started programming I didn't really have any limit at all, but after a while adopted the &quot;classic&quot; 80-column limit. My reasons were probably a bit muddy back then; probably just vague ideas about &quot;discipline&quot; and conventions being a good thing because they encouraged consistent style and therefore better readability.</p>
+<h2>The 132-column limit</h2>
+<p>But I was programming in <a href="/wiki/Objective-C">Objective-C</a> with its prolix method signatures (like <code>initForURL:withContentsOfURL:ofType:error</code> and <code>performCustomValidationForEntityMapping:manager:error:</code>) and it was often quite difficult to keep under the 80-column limit, even when splitting the method calls across lines following the convention of aligned colons:</p>
+<pre><code>- (BOOL)foo:(id)receiver error:(NSError **)error
+{
+    return [receiver performCustomValidationForEntityMapping:mapping
+                                                     manager:manager
+                                                       error:error];
+}
+</code></pre>
+<p>That's 70 columns without even trying, and awfully long for such a simple method invocation. Add a level of nesting and some more descriptive variable names and you're already over 80 columns.</p>
+<p>Not only were the method signatures long, but in Objective-C it's quite common to &quot;chain&quot; multiple message sends together using nested brackets (eg. <code>[[[NSMutableDictionary alloc] initWithCapacity:10] autorelease]</code>), so this only made the problem worse.</p>
+<p>Keeping things under the 80-column limit often involved inserting line-breaks in uncomfortable places (harming readability) and wreaking havoc with my editor's auto-indentation feature (requiring constant manual tweaking and fighting against the editor).</p>
+<p>But I didn't want to give up the discipline entirely and abandon myself to the unrestricted freedom practised in some Objective-C codebases, where some lines can stretch to be 200 characters, or more, long.</p>
+<p>So I settled on a new limit, 132 columns, the next standard terminal size up from 80 columns. This was a pretty nice compromise; it allowed me to produce fairly readable Objective-C code that fit nicely in just about any terminal or editor window on my screen.</p>
+<h2>The 80..132-column limit</h2>
+<p>In recent years I've been doing a fair bit of coding in <a href="/wiki/C">C</a> and <a href="/wiki/Ruby">Ruby</a> in addition to <a href="/wiki/Objective-C">Objective-C</a>. These languages aren't afflicted by Long Method Signature Syndrome and even though it <em>is</em> fairly common to &quot;chain&quot; message sends in Ruby the method names are usually short enough that most code can fit under the 80-column limit fairly easily.</p>
+<p>C, of course, is the easiest because by convention it uses fairly short function and variable names, and &quot;chaining&quot; in the form of nested function calls isn't such a common pattern.</p>
+<p>Even <a href="/wiki/Rails">Rails</a> code, which is often riddled with <code>find</code> calls burdened with lengthy, optional hash arguments, is fairly easily split up over multiple lines.</p>
+<p>As a result of this I've been gravitating back towards the 80-column limit. That, and the fact that I've been participating on some mailing lists where code is swapped back and forth in the form of patches included inside plain-text emails, where keeping under 80 columns is much more important to ensure correct transmission and readability in all mail clients.</p>
+<h2>It's all about readability</h2>
+<p>So of late I've found myself bouncing back and forth between the 80 and 132-column limits, depending on what language I'm coding in, and what my &quot;target audience&quot; is.</p>
+<p>But it's still not a simple case of &quot;80 columns for C and Ruby, 132 for Objective-C&quot;. I still run into situations from time to time, even in C, where I find that making things fit in less than 80 columns actually harms readability. For example, what's more readable? This (97 columns):</p>
+<pre><code>        if (rb_funcall(options, rb_intern(&quot;has_key?&quot;), 1, ID2SYM(rb_intern(&quot;minimum&quot;))) == Qtrue)
+            min = rb_hash_aref(options, ID2SYM(rb_intern(&quot;minimum&quot;)));
+</code></pre>
+<p>Or this (70 columns):</p>
+<pre><code>        if (rb_funcall(options, rb_intern(&quot;has_key?&quot;), 1,
+            ID2SYM(rb_intern(&quot;minimum&quot;))) == Qtrue)
+            min = rb_hash_aref(options, ID2SYM(rb_intern(&quot;minimum&quot;)));
+</code></pre>
+<p>Evidently the first one is easier for a human to parse because it has a line-break in the logical place (<em>after</em> the <code>if</code> condition) rather than in the awkward place (inside a list of function arguments inside the <code>if</code>).</p>
+<p>To avoid that awkward line-break we could introduce a temporary variable:</p>
+<pre><code>        VALUE has_key = rb_funcall(options, rb_intern(&quot;has_key?&quot;), 1, ID2SYM(rb_intern(&quot;minimum&quot;)));
+        if (has_key == Qtrue)
+            min = rb_hash_aref(options, ID2SYM(rb_intern(&quot;minimum&quot;)));
+</code></pre>
+<p>But that still doesn't get us under the line-length limit. We either have to introduce another awkward line-break:</p>
+<pre><code>        VALUE has_key = rb_funcall(options, rb_intern(&quot;has_key?&quot;), 1,
+            ID2SYM(rb_intern(&quot;minimum&quot;)));
+        if (has_key == Qtrue)
+            min = rb_hash_aref(options, ID2SYM(rb_intern(&quot;minimum&quot;)));
+</code></pre>
+<p>Or perhaps, depending on your style preferences:</p>
+<pre><code>        VALUE has_key = rb_funcall(options, rb_intern(&quot;has_key?&quot;), 1,
+                                   ID2SYM(rb_intern(&quot;minimum&quot;)));
+        if (has_key == Qtrue)
+            min = rb_hash_aref(options, ID2SYM(rb_intern(&quot;minimum&quot;)));
+</code></pre>
+<p>If we don't want any of those less-than-ideal line-breaks we could introduce even more temporary variables:</p>
+<pre><code>        ID method = rb_intern(&quot;has_key?&quot;);
+        VALUE key = ID2SYM(rb_intern(&quot;minimum&quot;));
+        VALUE has_key = rb_funcall(options, method, 1, key);
+        if (has_key == Qtrue)
+            min = rb_hash_aref(options, ID2SYM(rb_intern(&quot;minimum&quot;)));
+</code></pre>
+<p>Now we're under the length limit, but we've cluttered things up with three temporary variables and it's now necessary to read 5 lines instead of 2 in order to figure out what's happening.</p>
+<p>It <em>is</em> true that narrow lines are generally easier to read for the human eye (which is why newspaper's publish their stories in multiple columns instead of a single wide slab), but for me the most readable of all these alternatives is actually the original, 97-column version.</p>
+<p>So, for me, my current thinking is that we shouldn't be talking about &quot;column limits&quot; but rather &quot;column guidelines&quot;. That is, I think an &quot;80-column guideline&quot; is great for C and Ruby, and a &quot;132-column guideline&quot; is great for Objective-C.</p>
+<p>It's a <em>guideline</em>, a recommendation and not a hard limit, and before inserting line-breaks, introducing temporary variables, or otherwise refactoring the code, you should look at any line which exceeds the guideline and ask yourself &quot;is this the most readable way of formatting this particular line?&quot;. If the answer is &quot;yes&quot;, then you should keep the &quot;long&quot; line even though it exceeds the &quot;limit&quot;. By all means, play around splitting the line and juggling things around, but in the end you should always choose the most <em>readable</em> alternative. Nothing else matters.</p>
+<p>Since I discovered <a href="/blog/highlighting-overlength-lines-in-vim">how to highlight overlength lines in Vim</a> a few weeks ago, it's been quite pleasant to play with these guidelines because rather than having a single limit/guideline, Vim allows me to highlight the text in arbitrarily complex ways.</p>
+<p>Right now I have it set up to switch to a subtle gray background as I approach the 80-column guideline; this serves as a &quot;warning&quot; that I am getting close. Beyond column 80 the background switches to a dark gray to advise me that I've actually crossed the limit. And if I am so bold as to blast past the 132-column &quot;limit&quot; then the background switches to a strident, &quot;this time you've gone too far&quot; red.</p>
+</div><ul class="tags"><li><a href="/tags/development">development</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/wikitext-speed-improvements">← Wikitext speed improvements</a></div><div class="post-nav-next"><a href="/blog/wikitext-1.6-released">Wikitext 1.6 released →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

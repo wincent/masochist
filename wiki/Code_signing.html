@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Code signing • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Code signing</h1></div><div class="metadata"><relative-time created="1288462311" updated="1584053324">Created 10/30/2010, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/code.signing">code.signing</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Self-signed vs certificates from a &quot;trusted&quot; Certificate Authority</h2>
+<p>Self-signed certificates:</p>
+<ul>
+<li>free</li>
+<li>a self-signed Certificate Authority can be created using Keychain Access</li>
+<li>certificates can then be generated at will and signed by the Certificate Authority, for free</li>
+<li>adequate for providing a stable proof of application &quot;identity&quot; across versions (for example, if a user authorizes access to an item in the keychain by version 1.0 of an application, version 2.0 will also have access)</li>
+<li><em>users are not bothered with warnings about the nature of the certificate authority</em></li>
+</ul>
+<p>&quot;Trusted&quot; Certificate Authorities:</p>
+<ul>
+<li>expensive (prices in the $200-$300 per year range are normal)</li>
+<li>useful if your application is expected to receive incoming network connections <em>and</em> the user has the application firewall turned on <em>and</em> has also checked the &quot;Automatically allow signed software to receive incoming connections&quot; checkbox in the &quot;Advanced&quot; tab of the &quot;Firewall&quot; settings in the &quot;Security&quot; preference pane</li>
+</ul>
+<p>In my view, commercially available code signing certificates simply aren't worth it for Mac OS X. The system, thankfully, doesn't treat self-signed certificates as second-class citizens for most code signing purposes. (This is not the case with SSL certificates, but it certainly is for code signing certificates.)</p>
+<p>If your application is expected to receive incoming network connections and you are not using a commercial certificate, your users will be asked the first time and first time only whether to allow such connections. If you use a self-signed certificate then you will still be able to ship updates without the user having to re-confirm their decision for each new release.</p>
+<h2>What happens when your signing certificate expires?</h2>
+<ul>
+<li>You can't sign new releases with that certificate</li>
+<li>Existing (previous) releases continue to work (<a href="/wiki/Mac_OS_X">Mac OS X</a> ignores certificate expiration in code signing checks)</li>
+</ul>
+<h2>How do you migrate from an expiring certificate to a new one?</h2>
+<ul>
+<li>If you switch certificates without warning, users may see annoying dialogs indicating that the application can not be identified as a legitimate update; this is scary and should be avoided</li>
+<li>Instead, you should:
+<ul>
+<li>Long before the old certificate expires, release an update which changes your application's designated requirement such that it is satisfied by both the old and the new certificates; allow enough time for the majority of the user base to update to this release</li>
+<li>Sign the update with the old certificate</li>
+<li>Later on, once most of the user base has switched to the new release, prepare another release</li>
+<li>This newest release should be satisfied only by the new certificate, and should be signed with that certificate</li>
+</ul>
+</li>
+</ul>
+<p>This implies the need for a release schedule and certificate cycle that are fairly long-term.</p>
+<p>Source: <a href="http://blog.securemacprogramming.com/2010/04/losing-your-identity/">http://blog.securemacprogramming.com/2010/04/losing-your-identity/</a></p>
+<h2>What does Apple have to say about expiring certificates?</h2>
+<p>This is as close to official word from Apple as I've seen so far, in the form of <a href="http://lists.apple.com/archives/apple-cdsa/2010/Jan/msg00012.html">a mailing list post</a> by an Apple employee, &quot;Perry The Cynic&quot;:</p>
+<blockquote>
+<p>On Jan 13, 2010, at 2:53 PM, Jeff Johnson wrote:</p>
+<blockquote>
+<p>Consider this scenario:</p>
+<ol>
+<li>MyApp 3.0 is signed with certificate A.</li>
+<li>Certificate A expires.</li>
+<li>I get new certificate B.</li>
+<li>MyApp 4.0 is signed with certificate B.</li>
+</ol>
+<p>By default, the codesign requirements for MyApp 3.0 would include the SHA1 hash from certificate A, and MyApp 4.0 would include the different SHA1 hash from certificate B. However, I'd like to be able to sign MyApp 3.0 and MyApp 4.0 so that they're recognized as the same application, despite using different signing certificates. My thought would be to use custom requirements like this: identifier = com.mydomain.myapp and certificate leaf [Subject.CN] = &quot;My Company Name&quot; and certificate leaf [Subject.O] = &quot;My Company Name&quot; and anchor trusted The assumption is that if someone tried to use a fake cert with My Company Name, it wouldn't be trusted. Does this seem correct? Or is the whole approach of trying to cover multiple certs with one set of requirements perhaps ill-advised?</p>
+</blockquote>
+<p>Short answer: You're tantalizingly close to a good answer, but far enough away that I'm sending a full explanation on what's actually going on here. Because being *almost* right is pretty dangerous in this security business. Besides, you can all point each other to the list archive from now on. Note that you can do all kinds of really nifty things with complex requirements. But the re-issuance situation is a very standard thing, with a standard answer you might as well use.</p>
+<p>Let's do this as an experiment. You can actually follow along by using the Certificate Assistant (out of Keychain Access) - it can act as a simple Certificate Authority. (Or use openssl if you're feeling fiddly and masochistic. :)</p>
+<p>Generate a new root certificate (call it R). Give it a meaningful Organization (&quot;O&quot;) name. Now generate a new code-signing (leaf) certificate from R (call it A). Give it the *same* exact Organization name as R. You can now sign your code with A. If you look at the implicit Designated Requirement (DR) for the program, it'll be something like</p>
+<pre><code>identifier = &quot;whatever you called it&quot; and certificate root = H&quot;sha1-of-R&quot;
+</code></pre>
+<p>Now generate another code-signing certificate from R (call that B). Again, give it the same Organization name. You will find that they both make exactly the same DR, and thus the two signatures are equivalent. If A got close to expiring, you could move right on to B and nothing at all would break or get disturbed. And when B expires, you just make a new C, and so on.</p>
+<p>This trick is based on trusting the *issuer* of your certificates, rather than your certificates themselves. The implicit DR generator does this because the Organization fields in the root and leaf are the same - taking this as a hint that you control them both, and thus (since you obviously trust your own signing certificate) you trust the root to speak for you. This is what happens by default when you run your own CA; and if you do, this is how you should handle re-issuance. (Root certificates tend to be valid for 20 years or so, and hardly anyone worries about them expiring.)</p>
+<p>If you repeat the whole experiment from scratch, but this time don't use the same Organization name (or not use one at all), you'll find that the DR for your program becomes</p>
+<pre><code>identifier = &quot;whatever you called it&quot; and certificate leaf = H&quot;sha1-of-A-or-B&quot;
+</code></pre>
+<p>and now signing with A or B produces different signatures that don't match each other - the two signatures define different programs. The automatic extension-of-trust to the root didn't happen. This is what happens by default when you buy a certificate from a commercial CA. I assume that's what you're asking about.</p>
+<p>So what do you do when you decided to buy a commercial certificate, but you want re-issuance continuity? Well, you have to explain the situation to the system, because we can no longer figure it all out automatically. Specifically, you have to read up on how your CA issues certificates. They each have a nice set of documents describing this (they're called &quot;certificate issuance policies&quot; or similar). Let's pretend, for example's sake, that R follows the policy of issuing signing certificates that have your company name in the CN field. Then what you really want your program's DR to read is</p>
+<pre><code>identifier = &quot;whatever you called it&quot; and certificate leaf[Subject.CN] = &quot;My Company Name&quot; and certificate root = H&quot;sha1-of-R&quot;
+</code></pre>
+<p>A commercial CA will issue other signing certificates to other companies from the same signer, but they promise to use *your* name only in *your* certificate(s). You sign your program with A (specifying an explicit DR as above), and all is well. When A expires, the company issues you B (with the same CN), and all is still well.</p>
+<p>Now, in real life this is more complicated because the CA certificate that signs yours is an &quot;intermediate&quot; that is in turn signed by another, usually two or three deep; and the chain you need to construct in your explicit DR gets accordingly longer. And we can't tell you what to use, because we don't know the policies of your CA. But you get the general idea.</p>
+<p>Now, in parting, let me explain why your proposed requirement would get you into trouble:</p>
+<pre><code>identifier = com.mydomain.myapp and certificate leaf [Subject.CN] = &quot;My Company Name&quot; and certificate leaf [Subject.O] = &quot;My Company Name&quot; and anchor trusted
+</code></pre>
+<p>This means &quot;the signing certificate has my CN and O fields, and the root certificate is in the system's trusted anchor list.&quot; Presumably your CA's root certificate is on that list, so the test passes. But now watch what happens if I go to *another* trusted CA and buy a signing certificate claiming to be you. (They might ask me to prove that I really have a business called &quot;you&quot;; but in practice, that's pretty easy to arrange, particularly if the other CA happens to be somewhere in Africa.) Now I can sign programs that pass *your* test (because &quot;anchor trusted&quot; applies to *that* CA too, curse them :-).</p>
+<p>In fact, &quot;anchor trusted&quot; should be used very, very carefully. For one, it abdicates identification to the local administrator (who can add or remove anchor trust as he sees fit). For two, it means that whatever Apple ships as pre-trusted anchor list next year will also apply to your test. In a way, it serves as a very simple check that &quot;someone either paid money for this or was able to change the local system's configuration.&quot; It's probably not what you want here.</p>
+<p>Cheers</p>
+<p>-- perry</p>
+</blockquote>
+<h2>In-place updates of a signed executable</h2>
+<p>Again, &quot;Perry The Cynic&quot; to the rescue:</p>
+<blockquote>
+<p>Beware of *how* you replace your app bundle. When you *overwrite* an executable with a new version, the old signature &quot;sticks&quot; to the vnode until it is flushed for some reason. Since you are not in control of vnode flushing (the kernel is), you don't want to rely on this.</p>
+<p>The basic rule is to *replace* rather than *overwrite* your executables during an update. This means that you want to end up doing a move (aka &quot;rename&quot;), rather than a copy. The two canonical approaches for a bundle are either</p>
+<ul>
+<li>Move the entire bundle aside, then put the new version in its place; or</li>
+<li>Install the new executable elsewhere (on the same filesystem), then move (mv(1), rename(2)) it into place.</li>
+</ul>
+<p>And yes, ditto &amp; friends just overwrite the file - not good.</p>
+</blockquote>
+<p>Source: <a href="http://lists.apple.com/archives/apple-cdsa/2009/Jul/msg00013.html">http://lists.apple.com/archives/apple-cdsa/2009/Jul/msg00013.html</a></p>
+<h2>Checking signatures</h2>
+<p>Again, courtesy of &quot;Perry The Cynic&quot;:</p>
+<blockquote>
+<p>You're checking that the code satisfies its own designated identity. That's a bit of a no-op; all signed code does that unless the signer really screwed things up.</p>
+<p>If you want to check whether some running code is signed by Apple, you want to say so:</p>
+<pre><code>SecRequirementCreateWithString(CFSTR(&quot;anchor apple&quot;), ...)
+</code></pre>
+<p>and then pass the resulting <code>SecRequirementRef</code> to <code>SecCodeCheckValidity</code>. You don't want (or need) to interact with the designated requirement in this case, since you've already decided what code is acceptable to you (anything signed by Apple).</p>
+<p>In production code, you can use the <code>csreq(1)</code> command to compile up a binary version of &quot;anchor apple&quot; and use <code>SecRequirementCreateWithData</code> instead; that's faster.</p>
+<p><code>SecCodeCheckValidity</code> *always* checks whether the application is code signed and its signature is valid (unless you pass flags asking it not to). Just passing NULL for the requirement argument will do that. Adding the &quot;anchor apple&quot; requirement instead will test for validity *and* Apple-origin in one call.</p>
+<p>So, basically, just:</p>
+<pre><code>SecRequirementCreateWith{String,Data} (once; the Apple requirement can be re-used indefinitely)
+SecCodeCopyGuestWithAttributes (to get the SecCodeRef)
+SecCodeCheckValidity (to perform the actual validation)
+</code></pre>
+</blockquote>
+<p>Source: <a href="http://lists.apple.com/archives/apple-cdsa/2009/Oct/msg00013.html">http://lists.apple.com/archives/apple-cdsa/2009/Oct/msg00013.html</a></p>
+<h2>Signing application bundles containing helper tools</h2>
+<p>&quot;Perry The Cynic&quot; again:</p>
+<blockquote>
+<p>The problem is that anything in Contents/Resources is considered, well, a resource, so it is sealed with the (signature of the) main bundle. This means that if you ever want to update your helper, you must re-ship the main executable (and its CodeResources file) to restore integrity to it, even if you made no change to it. Also, application &quot;slimmer&quot; tools and others that make *permissible* changes to code (e.g. removing language localizations), when applied to helpers in Resources, will in fact invalidate the host bundle's signature because such a helper is understood to be just a bunch of resource files.</p>
+<p>The recommended canonical place for a helper *tool* (single binary file) is Contents/MacOS. The recommended place for a helper *application* is Contents. You can get away with putting tools into Contents and applications into MacOS; it won't break anything, it's just a bit odd. You can use the CFBundleCopyAuxiliaryExecutableURL API for finding helpers in either place. (And feel free to file a bug against Xcode to make it easier to *place* helpers into those locations.</p>
+</blockquote>
+<p>Source: <a href="http://lists.apple.com/archives/apple-cdsa/2008/Jan/msg00053.html">http://lists.apple.com/archives/apple-cdsa/2008/Jan/msg00053.html</a></p>
+<p>However, note that storing tools in <code>Contents/MacOS</code> may cause problems:</p>
+<blockquote>
+<p>Besides the one you mention, you can (in certain situations) end up with an incorrect entry in the LS database which will cause the wrong executable to be launched when the user double clicks on your app in the Finder.</p>
+<p>I recommend putting aux executables in</p>
+<pre><code>.../Contents/Helpers/...
+</code></pre>
+<p>as it avoids these issues. (And have filed an ER asking for this to become an officially sanctioned location for both bundled and unbundled helpers.)</p>
+</blockquote>
+<p>Source: <a href="http://www.cocoabuilder.com/archive/cocoa/233139-getprocessbundlelocation-no-good-in-background-agents.html">http://www.cocoabuilder.com/archive/cocoa/233139-getprocessbundlelocation-no-good-in-background-agents.html</a></p>
+<h2>Signing frameworks</h2>
+<p>Quoth &quot;Perry The Cynic&quot;:</p>
+<blockquote>
+<p>Frameworks are an example of &quot;versioned bundles.&quot; (For all practical purposes, they're the *only* instance left in general use.) Thus a framework really contains</p>
+<pre><code>.../Versions/&lt;version&gt;/&lt;a complete bundle goes here&gt;
+</code></pre>
+<p>Since each bundle version is nominally independent, you need to sign (and verify) &lt;bundle&gt;/Versions/Current rather than than the bundle root directory.</p>
+<p>Verifying the bundle root doesn't currently work (right) because the verification code doesn't follow the magic symlinks in the bundle wrapper that lead to the resources. (It's a security thing - signing code *never* follows symlinks.)</p>
+</blockquote>
+<p>Source: <a href="http://lists.apple.com/archives/apple-cdsa/2008/May/msg00017.html">http://lists.apple.com/archives/apple-cdsa/2008/May/msg00017.html</a></p>
+<h2>Code signing and <a href="/wiki/open_source">open source</a></h2>
+<p>There is an interesting thread about code signing <a href="/wiki/open_source">open source</a> projects <a href="http://lists.apple.com/archives/apple-cdsa/2008/Dec/msg00008.html">here</a>, including these posts:</p>
+<blockquote>
+<p>The questions you need to answer are not primarily technical; they are organizational. In many ways, it comes down to who you trust with your reputation.</p>
+<p>The (code signing) identity of your program is controlled by its Designated Requirement (codesign -d -r- to view it), and the ability to prove this identity is based on the digital identity you use. Give this identity to the people you trust; any of the people who have access to this identity may &quot;bless&quot; a binary as your program. All of these people can also lie about your program and make it erase people's hard drives (by accident or with malice). So the way you manage those identities should reflect the way you deal with your team and contributors. If your release process calls for testing before release, give the key to the test &quot;valve&quot; guys and have them sign code that passes the tests. If your release process calls for &quot;anything goes&quot;, just give the signing identity to all contributors. And so on...</p>
+<p>Anyone can take your program and re-sign it with *their* identity. The resulting program (changed or not) is considered a different program. There's nothing wrong or dangerous or subversive about this; it's &quot;my foofighter&quot; vs. &quot;Joe's foofighter&quot;. Keychain items (say) made by one won't be freely accessible to the other, but it's perfectly possible for a keychain item to be accessible to both (just answer &quot;Always Allow&quot; to the access dialog). The code signing machinery doesn't care whether they are named the same or differently; the fact that different signing authorities are used suffices to distinguish them. (The user might get confused, of course.)</p>
+<p>There's currently no UI for examining code identities. (Radar 5545440; not imminent.) You can write a simple shell script (or program) of your own that simply runs codesign -v -R=&quot;my designated requirement&quot; /the/program to check whether a program is really *your* program (as opposed to someone else's version). You can make that as sweet as you care. Note that this needs to be a separate tool/program/widget, because no program can reliably check *itself* (since a hacked version can just lie about itself, too).</p>
+<p>If you *want* to organize your team more formally, the X.509 machinery lets you do so. Create a CA (in Keychain Access-&gt;Certificate Assistant, or with openssl if you're masochistic) and issue separate identities to your team members. This makes their builds distinguishable (codesign -dvv), and you *can* create keychain items that give access to some versions but not others. You could also sign beta releases differently from full releases, or make any other distinctions you like.</p>
+<p>In the end, you have to decide what being &quot;your program&quot; means to you and your team; where you put the trade-off between openness and trustworthiness (of the build result). *Then* you can put the corresponding process in place. There are way too many choices for me to just tell you what to do.</p>
+</blockquote>
+<p>Source: <a href="http://lists.apple.com/archives/apple-cdsa/2008/Dec/msg00009.html">http://lists.apple.com/archives/apple-cdsa/2008/Dec/msg00009.html</a></p>
+<blockquote>
+<p>You're right it's not about &quot;ownership.&quot; It never is, commercial or not. Signing your code doesn't protect it from being ripped off; it protects your *reputation* from being ripped off. And that, I think, applies to open source at least as much as to the commercial kind.</p>
+<p>A code signature is essentially a stamp of origin - &quot;I made this.&quot; (Or, &quot;we made this.&quot; Or even, &quot;some anonymous entity made this.&quot;) It's not about the source, or the code; it's about its behavior, and about *stability* of this behavior. If you ship open source software, presumably it comes with an offer to get source code, at which point anyone can make their own version (modified or not) and publish it in turn. That does not obviate the question of whether his version should be considered &quot;the same&quot; as your version. In fact, it makes the question more interesting... and more troubling to your users, who want to know whether they should &quot;upgrade&quot;(?) from your version to &quot;Joe's version&quot; or vice versa, and what that might do to their system.</p>
+<p>If you don't care about your reputation, you can choose a code identity (i.e. Designated Requirement) for your program that anyone can fulfill. (Simply using &quot;identifier org.whatever.my.program&quot; will do - anyone can do this; you can stick it right into your Makefile or Xcode project or whatever.) Then any build of this program is considered &quot;the same&quot;, and nobody can tell the difference (not the computer, and probably not your users either).</p>
+<p>If you want *the system* to treat all versions the same but users to get a distinction, put markers into the Info.plist and display them in your About... window. Or use a resource file (resources are sealed into the signature). If you want the system to tell the difference, use different names.</p>
+<p>All of those &quot;free&quot; approaches (&quot;free&quot; as in easy to duplicate) mean that you can't exclude nasty people. If you value your online reputation, that ought to trouble you at least a bit. Signing with an identity that you keep to yourself (or your team, etc.) is a way to *reliably* distinguish stuff you blessed from stuff you didn't. That's got nothing to do with whether this is open source or not; it's a function of whether people trust *that particular binary that got signed* because you said it's trustworthy.</p>
+<p>It would be great if the Finder could display (in a program's Get Info window) its signing status, so that you then knew whether to trust the information in there. That radar is, how do I put it, &quot;pending&quot;.</p>
+</blockquote>
+<p>Source: <a href="http://lists.apple.com/archives/apple-cdsa/2008/Dec/msg00012.html">http://lists.apple.com/archives/apple-cdsa/2008/Dec/msg00012.html</a></p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

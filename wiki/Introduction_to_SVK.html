@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Introduction to SVK • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Introduction to SVK</h1></div><div class="metadata"><relative-time created="1175624595" updated="1584053324">Created 4/3/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/svk">svk</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Creating a new depot</h2>
+<pre><code>svk depotmap --init
+</code></pre>
+<p>Creates a default depot at:</p>
+<pre><code>~/.svk/local
+</code></pre>
+<h2>Mirroring a remote repository</h2>
+<p>An <a href="/wiki/SVK">SVK</a> mirror is more than just a static mirror (a copy) of a remote repository. It is dynamic in the same way that a real, physical mirror is; that is it &quot;reflects&quot; any changes you check in to it back to the remote repository.</p>
+<pre><code>svk mirror svn+ssh://svn.example.com/project_name //mirrors/project_name
+</code></pre>
+<p>Then:</p>
+<pre><code>svk sync //mirrors/project_name
+</code></pre>
+<p>Or:</p>
+<pre><code>svk sync --all
+</code></pre>
+<p>You can list local mirrors as follows:</p>
+<pre><code>svk mirror --list
+</code></pre>
+<p>For a real-world example of remote repository mirroring see &quot;<a href="/wiki/Mirroring_the_Growl_repository_with_SVK">Mirroring the Growl repository with SVK</a>&quot;.</p>
+<h2>Checking out</h2>
+<p>From the mirror (like checking out from the central <a href="/wiki/Subversion">Subversion</a> repository):</p>
+<pre><code>svk co //mirrors/project_name/trunk
+</code></pre>
+<p>From the local branch (see below):</p>
+<pre><code>svk co //local/project_name/trunk
+</code></pre>
+<p>Telling <a href="/wiki/SVK">SVK</a> to forget about a working copy:</p>
+<pre><code>svk co --detach
+</code></pre>
+<p>Telling <a href="/wiki/SVK">SVK</a> to forget about all working copies that no longer exist:</p>
+<pre><code>svk co --purge
+</code></pre>
+<p>Telling <a href="/wiki/SVK">SVK</a> about a moved working copy:</p>
+<pre><code>svk co --relocate DEPOTPATH|PATH PATH
+</code></pre>
+<p>Getting a list of all existing, known working copies:</p>
+<pre><code>svk co --list
+</code></pre>
+<h2>Creating a branch</h2>
+<p>A branch which will be visible in the main repository:</p>
+<pre><code>svk cp //mirrors/project_name/trunk //mirrors/project_name/branches/foobar
+</code></pre>
+<p>A local-only branch:</p>
+<pre><code>svk cp //mirrors/project_name/trunk //local/project_name/foobar
+</code></pre>
+<p>For more examples see &quot;<a href="/wiki/Branching">Branching</a>&quot; and &quot;<a href="/wiki/Microbranching">Microbranching</a>&quot;.</p>
+<h2>Setting up default merge editor</h2>
+<p>For example, on <a href="/wiki/Mac_OS_X">Mac OS X</a>, you could add the following to your <code>~/.bash_profile</code>:</p>
+<pre><code>export SVKMERGE=FileMerge
+</code></pre>
+<p>Other environment variables and their effects are described on running:</p>
+<pre><code>svk help environment
+</code></pre>
+<h2>Replacing <code>svn:externals</code> dependencies</h2>
+<ul>
+<li><a href="/wiki/Working_around_the_lack_of_svn%3aexternals_support_in_SVK">Working around the lack of svn:externals support in SVK</a></li>
+<li><a href="http://lists.bestpractical.com/pipermail/svk-devel/2007-January/000567.html">http://lists.bestpractical.com/pipermail/svk-devel/2007-January/000567.html</a></li>
+<li><a href="http://cwilliams.textdriven.com/articles/2007/02/16/svn-and-svk">http://cwilliams.textdriven.com/articles/2007/02/16/svn-and-svk</a></li>
+</ul>
+<h2>Typical work cycle</h2>
+<h3>Using <a href="/wiki/SVK">SVK</a> like <a href="/wiki/Subversion">Subversion</a></h3>
+<p>Update local mirror:</p>
+<pre><code>svk sync
+</code></pre>
+<p>Update working copy:</p>
+<pre><code>svk up
+</code></pre>
+<p>Or both updates in a single step:</p>
+<pre><code>svk up -s
+</code></pre>
+<p>Or checking for conflicts (not actually updating):</p>
+<pre><code>svk up -C
+</code></pre>
+<h3>Using <a href="/wiki/SVK">SVK</a> to maintain local-only branches</h3>
+<p>Pushing changes to another repository (pushing changes back to the branch which was originally copied to create the new branch):</p>
+<pre><code>svk push [DEPOTPATH | PATH]
+</code></pre>
+<p>Get changes from another repository (pulling changes into the branch from the branch which was originally copied to create the new branch):</p>
+<pre><code>svk pull [PATH...]
+svk pull DEPOTPATH
+</code></pre>
+<p>Until you become familiar with the way <code>push</code> and <code>pull</code> work it is highly recommended that you use the <code>-C</code> (<code>--check-only</code>) switch to preview the results before proceeding.</p>
+<p>See <a href="http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000692.html">this mailing list thread</a> for some very helpful clarification on the way <code>push</code> and <code>pull</code> work. Specifically:</p>
+<ul>
+<li>Working on an <a href="/wiki/SVK">SVK</a> mirror is identical to working directly with the remote repository (apart from the extra layer of indirection) so <em>you don't need to use <code>push</code> and <code>pull</code> at all' in that case.</em></li>
+<li><code>svk push BRANCH</code> merges all changes from <code>BRANCH</code> back into the stream that <code>BRANCH</code> came from.</li>
+<li><code>svk pull</code> is the reverse of <code>svk push</code>; in other words, it pulls all changes from the stream that the branch came from.</li>
+</ul>
+<p>Consequently, if you check out a local working copy of a branch and then use <code>push</code> all of the changes made to the branch will be merged back onto the <code>trunk</code> (or wherever the branch originated). This may not be what you want. Here is <a href="http://lists.bestpractical.com/pipermail/svk-devel/2006-October/000176.html">another mailing list thread</a> describing the unexpected merging that can take place as the result of <code>push</code>/<code>pull</code> if you don't understand the way it works.</p>
+<p>If you want to use <code>push</code> and <code>pull</code> without hitting the actual trunk you must create a <em>local</em> branch (using <code>svk cp</code>) from the mirrored remote branch. Then <code>push</code> and <code>pull</code> will only affect/interoperate with the mirrored remote branch (not the trunk).</p>
+<h2>See also</h2>
+<ul>
+<li><a href="http://scottstuff.net/blog/articles/2005/07/07/distributed-development-with-svk">http://scottstuff.net/blog/articles/2005/07/07/distributed-development-with-svk</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

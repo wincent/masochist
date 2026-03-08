@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Getting started with Cheetah • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Getting started with Cheetah</h1></div><div class="metadata"><relative-time created="1161051552" updated="1495119989">Created 10/17/2006, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/cheetah.template.engine">cheetah.template.engine</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Obtaining <a href="/wiki/Cheetah">Cheetah</a></h2>
+<p><a href="http://cheetahtemplate.org/download.html">http://cheetahtemplate.org/download.html</a></p>
+<pre><code>wget http://belnet.dl.sourceforge.net/sourceforge/cheetahtemplate/Cheetah-2.0rc7.tar.gz
+tar zxvf Cheetah-2.0rc7.tar.gz
+</code></pre>
+<h2>Installing on <a href="/wiki/Mac_OS_X_Tiger">Mac OS X Tiger</a> <a href="/wiki/10.4.8">10.4.8</a></h2>
+<p><a href="http://cheetahtemplate.org/docs/users_guide_html_multipage/gettingStarted.install.html">http://cheetahtemplate.org/docs/users_guide_html_multipage/gettingStarted.install.html</a></p>
+<pre><code>cd Cheetah-2.0rc7
+sudo python setup.py install
+</code></pre>
+<p>In reality this installs into <code>/System/Library/Frameworks/Python.framework/Versions/2.3/bin</code> (alongside) python so it makes sense to add this to the path then run the tests:</p>
+<pre><code>PATH=$PATH:/System/Library/Frameworks/Python.framework/Versions/2.3/bin
+cheetah test
+</code></pre>
+<p>All tests should pass:</p>
+<pre><code>Ran 2050 tests in 31.012s
+</code></pre>
+<h2>Uninstalling</h2>
+<pre><code>sudo rm -rf /Library/Python/2.3/site-packages/Cheetah
+sudo rm /System/Library/Frameworks/Python.framework/Versions/2.3/bin/cheetah
+sudo rm /System/Library/Frameworks/Python.framework/Versions/2.3/bin/cheetah-compile
+</code></pre>
+<h2>Installing with Python 2.5</h2>
+<p>After <a href="/wiki/installing_Python_2.5">installing Python 2.5</a> I re-installed Cheetah:</p>
+<pre><code>cd Cheetah-2.0rc7
+sudo python setup.py install
+cheetah test
+</code></pre>
+<p>This installs the <code>cheetah</code> and <code>cheetah-compile</code> binaries into <code>/usr/local/bin/</code> and the other <a href="/wiki/Cheetah">Cheetah</a> files into <code>/usr/local/lib/python2.5/site-packages/Cheetah/</code>.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

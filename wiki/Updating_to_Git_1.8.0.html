@@ -1,0 +1,358 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Updating to Git 1.8.0 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Updating to Git 1.8.0</h1></div><div class="metadata"><relative-time created="1350877297" updated="1507998958">Created 10/22/2012, updated 10/14/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/centos">centos</a></li><li><a href="/tags/mountain.lion">mountain.lion</a></li><li><a href="/tags/macos">macos</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Updating on <a href="/wiki/OS_X">OS X</a> 10.8.2 <a href="/wiki/Mountain_Lion">Mountain Lion</a></h2>
+<pre><code class="language-shell">$ cd git.git # or wherever your local checkout happens to live
+$ git fetch
+$ git tag -v v1.8.0 # confirm tag is correctly signed
+$ git checkout v1.8.0
+$ NO_GETTEXT=1 make prefix=/usr/local test
+$ sudo env NO_GETTEXT=1 make prefix=/usr/local install
+$ cd ..
+$ curl -O http://git-core.googlecode.com/files/git-manpages-1.8.0.tar.gz
+$ openssl sha1 git-manpages-1.8.0.tar.gz # compare SHA-1 against release announcement
+$ sudo tar -C /usr/local/share/man -xzvf git-manpages-1.8.0.tar.gz
+</code></pre>
+<h2>Updating on <a href="/wiki/CentOS">CentOS</a> 5.8</h2>
+<p>On CentOS I install into my home directory:</p>
+<pre><code class="language-shell">$ cd git.git
+$ git fetch
+$ git tag -v v1.8.0
+$ git checkout v1.8.0
+$ NO_GETTEXT=1 NO_TCLTK=1 make prefix=$HOME test install
+$ cd ..
+$ curl -O http://git-core.googlecode.com/files/git-manpages-1.8.0.tar.gz
+$ openssl sha1 git-manpages-1.8.0.tar.gz
+$ tar -C $HOME/man -xzvf git-manpages-1.8.0.tar.gz
+</code></pre>
+<h2>Release notes</h2>
+<pre><code>The latest feature release Git v1.8.0 is now available at the
+usual places.
+
+The release tarballs are found at:
+
+    http://code.google.com/p/git-core/downloads/list
+
+and their SHA-1 checksums are:
+
+a03afc33f8f0723ad12649d79f1e8968526b4bf7  git-1.8.0.tar.gz
+93c860cf4cd26d4b3e269b0903b833db1c1f0f8e  git-htmldocs-1.8.0.tar.gz
+a6fa49be36f265e85b7252d36364d4c7f38530ea  git-manpages-1.8.0.tar.gz
+
+Also the following public repositories all have a copy of the v1.8.0
+tag and the master branch that the tag points at:
+
+  url = git://repo.or.cz/alt-git.git
+  url = https://code.google.com/p/git-core/
+  url = git://git.sourceforge.jp/gitroot/git-core/git.git
+  url = git://git-core.git.sourceforge.net/gitroot/git-core/git-core
+  url = https://github.com/gitster/git
+
+Enjoy.
+
+
+Git v1.8.0 Release Notes
+========================
+
+Backward compatibility notes
+----------------------------
+
+In the next major release (not *this* one), we will change the
+behavior of the &quot;git push&quot; command.
+
+When &quot;git push [$there]&quot; does not say what to push, we have used the
+traditional &quot;matching&quot; semantics so far (all your branches were sent
+to the remote as long as there already are branches of the same name
+over there).  We will use the &quot;simple&quot; semantics that pushes the
+current branch to the branch with the same name, only when the current
+branch is set to integrate with that remote branch.  There is a user
+preference configuration variable &quot;push.default&quot; to change this, and
+&quot;git push&quot; will warn about the upcoming change until you set this
+variable in this release.
+
+&quot;git branch --set-upstream&quot; is deprecated and may be removed in a
+relatively distant future.  &quot;git branch [-u|--set-upstream-to]&quot; has
+been introduced with a saner order of arguments.
+
+
+Updates since v1.7.12
+---------------------
+
+UI, Workflows &amp; Features
+
+ * A credential helper for Win32 to allow access to the keychain of
+   the logged-in user has been added.
+
+ * An initial port to HP NonStop.
+
+ * A credential helper to allow access to the Gnome keyring has been
+   added.
+
+ * When &quot;git am&quot; sanitizes the &quot;Subject:&quot; line, we strip the prefix from
+   &quot;Re: subject&quot; and also from a less common &quot;re: subject&quot;, but left
+   the even less common &quot;RE: subject&quot; intact.  Now we strip that too.
+
+ * It was tempting to say &quot;git branch --set-upstream origin/master&quot;,
+   but that tells Git to arrange the local branch &quot;origin/master&quot; to
+   integrate with the currently checked out branch, which is highly
+   unlikely what the user meant.  The option is deprecated; use the
+   new &quot;--set-upstream-to&quot; (with a short-and-sweet &quot;-u&quot;) option
+   instead.
+
+ * &quot;git cherry-pick&quot; learned the &quot;--allow-empty-message&quot; option to
+   allow it to replay a commit without any log message.
+
+ * After &quot;git cherry-pick -s&quot; gave control back to the user asking
+   help to resolve conflicts, concluding &quot;git commit&quot; used to need to
+   be run with &quot;-s&quot; if the user wants to sign it off; now the command
+   leaves the sign-off line in the log template.
+
+ * &quot;git daemon&quot; learned the &quot;--access-hook&quot; option to allow an
+   external command to decline service based on the client address,
+   repository path, etc.
+
+ * &quot;git difftool --dir-diff&quot; learned to use symbolic links to prepare
+   a temporary copy of the working tree when available.
+
+ * &quot;git grep&quot; learned to use a non-standard pattern type by default if
+   a configuration variable tells it to.
+
+ * Accumulated updates to &quot;git gui&quot; has been merged.
+
+ * &quot;git log -g&quot; learned the &quot;--grep-reflog=&lt;pattern&gt;&quot; option to limit
+   its output to commits with a reflog message that matches the given
+   pattern.
+
+ * &quot;git merge-base&quot; learned the &quot;--is-ancestor A B&quot; option to tell if A is
+   an ancestor of B.  The result is indicated by its exit status code.
+
+ * &quot;git mergetool&quot; now allows users to override the actual command used
+   with the mergetool.$name.cmd configuration variable even for built-in
+   mergetool backends.
+
+ * &quot;git rebase -i&quot; learned the &quot;--edit-todo&quot; option to open an editor
+   to edit the instruction sheet.
+
+
+Foreign Interface
+
+ * &quot;git svn&quot; has been updated to work with SVN 1.7.
+
+ * &quot;git p4&quot; learned the &quot;--conflicts&quot; option to specify what to do when
+   encountering a conflict during &quot;p4 submit&quot;.
+
+
+Performance, Internal Implementation, etc.
+
+ * Git ships with a fall-back regexp implementation for platforms with
+   buggy regexp library, but it was easy for people to keep using their
+   platform regexp by mistake.  A new test has been added to check this.
+
+ * The &quot;check-docs&quot; build target has been updated and greatly
+   simplified.
+
+ * The test suite is run under MALLOC_CHECK_ when running with a glibc
+   that supports the feature.
+
+ * The documentation in the TeXinfo format was using indented output
+   for materials meant to be examples that are better typeset in
+   monospace.
+
+ * Compatibility wrapper around some mkdir(2) implementations that
+   reject parameters with trailing slash has been introduced.
+
+ * Compatibility wrapper for systems that lack usable setitimer() has
+   been added.
+
+ * The option parsing of &quot;git checkout&quot; had error checking, dwim and
+   defaulting missing options, all mixed in the code, and issuing an
+   appropriate error message with useful context was getting harder.
+   The code has been reorganized to allow giving a proper diagnosis
+   when the user says &quot;git checkout -b -t foo bar&quot; (e.g. &quot;-t&quot; is not a
+   good name for a branch).
+
+ * Many internal uses of a &quot;git merge-base&quot; equivalent were only to see
+   if one commit fast-forwards to the other, which did not need the
+   full set of merge bases to be computed. They have been updated to
+   use less expensive checks.
+
+ * The heuristics to detect and silently convert latin1 to utf8 when
+   we were told to use utf-8 in the log message has been transplanted
+   from &quot;mailinfo&quot; to &quot;commit&quot; and &quot;commit-tree&quot;.
+
+ * Messages given by &quot;git &lt;subcommand&gt; -h&quot; from many subcommands have
+   been marked for translation.
+
+
+Also contains minor documentation updates and code clean-ups.
+
+
+Fixes since v1.7.12
+-------------------
+
+Unless otherwise noted, all the fixes since v1.7.12 in the
+maintenance track are contained in this release (see release notes
+to them for details).
+
+ * The attribute system may be asked for a path that itself or its
+   leading directories no longer exists in the working tree, and it is
+   fine if we cannot open .gitattribute file in such a case.  Failure
+   to open per-directory .gitattributes with error status other than
+   ENOENT and ENOTDIR should be diagnosed, but it wasn't.
+
+ * When looking for $HOME/.gitconfig etc., it is OK if we cannot read
+   them because they do not exist, but we did not diagnose existing
+   files that we cannot read.
+
+ * When &quot;git am&quot; is fed an input that has multiple &quot;Content-type: ...&quot;
+   header, it did not grok charset= attribute correctly.
+
+ * &quot;git am&quot; mishandled a patch attached as application/octet-stream
+   (e.g. not text/*); Content-Transfer-Encoding (e.g. base64) was not
+   honored correctly.
+
+ * &quot;git blame MAKEFILE&quot; run in a history that has &quot;Makefile&quot; but not
+   &quot;MAKEFILE&quot; should say &quot;No such file MAKEFILE in HEAD&quot;, but got
+   confused on a case insensitive filesystem and failed to do so.
+
+ * Even during a conflicted merge, &quot;git blame $path&quot; always meant to
+   blame uncommitted changes to the &quot;working tree&quot; version; make it
+   more useful by showing cleanly merged parts as coming from the other
+   branch that is being merged.
+
+ * It was unclear in the documentation for &quot;git blame&quot; that it is
+   unnecessary for users to use the &quot;--follow&quot; option.
+
+ * Output from &quot;git branch -v&quot; contains &quot;(no branch)&quot; that could be
+   localized, but the code to align it along with the names of
+   branches was counting in bytes, not in display columns.
+
+ * &quot;git cherry-pick A C B&quot; used to replay changes in A and then B and
+   then C if these three commits had committer timestamps in that
+   order, which is not what the user who said &quot;A C B&quot; naturally
+   expects.
+
+ * A repository created with &quot;git clone --single&quot; had its fetch
+   refspecs set up just like a clone without &quot;--single&quot;, leading the
+   subsequent &quot;git fetch&quot; to slurp all the other branches, defeating
+   the whole point of specifying &quot;only this branch&quot;.
+
+ * Documentation talked about &quot;first line of commit log&quot; when it meant
+   the title of the commit.  The description was clarified by defining
+   how the title is decided and rewording the casual mention of &quot;first
+   line&quot; to &quot;title&quot;.
+
+ * &quot;git cvsimport&quot; did not thoroughly cleanse tag names that it
+   inferred from the names of the tags it obtained from CVS, which
+   caused &quot;git tag&quot; to barf and stop the import in the middle.
+
+ * Earlier we made the diffstat summary line that shows the number of
+   lines added/deleted localizable, but it was found irritating having
+   to see them in various languages on a list whose discussion language
+   is English, and this change has been reverted.
+
+ * &quot;git fetch --all&quot;, when passed &quot;--no-tags&quot;, did not honor the
+   &quot;--no-tags&quot; option while fetching from individual remotes (the same
+   issue existed with &quot;--tags&quot;, but the combination &quot;--all --tags&quot; makes
+   much less sense than &quot;--all --no-tags&quot;).
+
+ * &quot;git fetch&quot; over http had an old workaround for an unlikely server
+   misconfiguration; it turns out that this hurts debuggability of the
+   configuration in general, and has been reverted.
+
+ * &quot;git fetch&quot; over http advertised that it supports &quot;deflate&quot;, which
+   is much less common, and did not advertise the more common &quot;gzip&quot; on
+   its Accept-Encoding header.
+
+ * &quot;git fetch&quot; over the dumb-http revision walker could segfault when
+   curl's multi interface was used.
+
+ * &quot;git gc --auto&quot; notified the user that auto-packing has triggered
+    even under the &quot;--quiet&quot; option.
+
+ * After &quot;gitk&quot; showed the contents of a tag, neither &quot;Reread
+   references&quot; nor &quot;Reload&quot; updated what is shown as the
+   contents of it when the user overwrote the tag with &quot;git tag -f&quot;.
+
+ * &quot;git log --all-match --grep=A --grep=B&quot; ought to show commits that
+   mention both A and B, but when these three options are used with
+   --author or --committer, it showed commits that mention either A or
+   B (or both) instead.
+
+ * The &quot;-Xours&quot; backend option to &quot;git merge -s recursive&quot; was ignored
+   for binary files.
+
+ * &quot;git p4&quot;, when &quot;--use-client-spec&quot; and &quot;--detect-branches&quot; are used
+   together, misdetected branches.
+
+ * &quot;git receive-pack&quot; (the counterpart to &quot;git push&quot;) did not give
+   progress output while processing objects it received to the puser
+   when run over the smart-http protocol.
+
+ * When you misspell the command name you give to the &quot;exec&quot; action in
+   the &quot;git rebase -i&quot; instruction sheet you were told that 'rebase' is not a
+   git subcommand from &quot;git rebase --continue&quot;.
+
+ * The subcommand in &quot;git remote&quot; to remove a defined remote was
+   &quot;rm&quot; and the command did not take a fully-spelled &quot;remove&quot;.
+
+ * The interactive prompt that &quot;git send-email&quot; gives was error prone. It
+   asked &quot;What e-mail address do you want to use?&quot; with the address it
+   guessed (correctly) the user would want to use in its prompt,
+   tempting the user to say &quot;y&quot;. But the response was taken as &quot;No,
+   please use 'y' as the e-mail address instead&quot;, which is most
+   certainly not what the user meant.
+
+ * &quot;git show --format='%ci'&quot; did not give the timestamp correctly for
+   commits created without human readable name on the &quot;committer&quot; line.
+
+ * &quot;git show --quiet&quot; ought to be a synonym for &quot;git show -s&quot;, but
+   wasn't.
+
+ * &quot;git submodule frotz&quot; was not diagnosed as &quot;frotz&quot; being an unknown
+   subcommand to &quot;git submodule&quot;; the user instead got a complaint
+   that &quot;git submodule status&quot; was run with an unknown path &quot;frotz&quot;.
+
+ * &quot;git status&quot; honored the ignore=dirty settings in .gitmodules but
+   &quot;git commit&quot; didn't.
+
+ * &quot;gitweb&quot; did not give the correct committer timezone in its feed
+   output due to a typo.
+
+----------------------------------------------------------------
+
+Changes since v1.8.0-rc3 are as follows:
+
+Andrew Wong (2):
+      git-gui: Detect full path when parsing arguments
+      git-gui: Don't prepend the prefix if value looks like a full path
+
+Beat Bolli (2):
+      git-gui: Fix a loose/lose mistake
+      git-gui: remove .git/CHERRY_PICK_HEAD after committing
+
+Benjamin Kerensa (1):
+      git-gui: fix a typo in po/ files
+
+Clemens Buchacher (1):
+      git-gui: fix git-gui crash due to uninitialized variable
+
+Heiko Voigt (1):
+      git-gui: open console when using --trace on windows
+
+Junio C Hamano (1):
+      Git 1.8.0
+
+Marcus Karlsson (1):
+      git-gui: Use PWD if it exists on Mac OS X
+
+Pat Thoyts (2):
+      git-gui: preserve commit messages in utf-8
+      git-gui 0.17
+
+Ralf Thielow (3):
+      git-gui: de.po: consistently add untranslated hook names within braces
+      git-gui: de.po: translate &quot;bare&quot; as &quot;bloß&quot;
+      git-gui: de.po: translate &quot;remote&quot; as &quot;extern&quot;
+
+Vitaly _Vi Shukela (1):
+      git-gui: Fix semi-working shortcuts for unstage and revert&lt;pre&gt;
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

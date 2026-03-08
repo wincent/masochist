@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Red Hat kernel 2.4.21-47.EL to 2.4.21-47.0.1.EL upgrade notes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Red Hat kernel 2.4.21-47.EL to 2.4.21-47.0.1.EL upgrade notes</h1></div><div class="metadata"><relative-time created="1161440470" updated="1709677563">Created 10/21/2006, updated 3/5/2024</relative-time></div><ul class="tags"><li><a href="/tags/red.hat">red.hat</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Here are some notes that I made while performing the kernel upgrade on my <a href="/wiki/Red_Hat">Red Hat</a> box from version 2.4.21-47.EL to 2.4.21-47.0.1.EL. These are based on the general upgrade procedure described in the article, <a href="/wiki/Red_Hat_Enterprise_Linux_kernel_update_procedure">Red Hat Enterprise Linux kernel update procedure</a>.</p>
+<pre><code>$ sudo -s
+# uptime
+ 08:46:27  up 92 days, 21:28,  1 user,  load average: 0.02, 0.15, 0.08
+# up2date --list
+
+Fetching Obsoletes list for channel: rhel-i386-es-3...
+
+Fetching Obsoletes list for channel: rhel-i386-es-3-extras...
+
+Fetching rpm headers...
+
+Name                                    Version        Rel
+----------------------------------------------------------
+
+The following Packages were marked to be skipped by your configuration:
+
+Name                                    Version        Rel  Reason
+-------------------------------------------------------------------------------
+kernel                                  2.4.21         47.0.1.ELPkg name/pattern
+kernel-doc                              2.4.21         47.0.1.ELPkg name/pattern
+kernel-source                           2.4.21         47.0.1.ELPkg name/pattern
+</code></pre>
+<p>There were no non-kernel RPMs to update, so I skipped the <code>up2date --nox -u</code> step.</p>
+<pre><code># uname -a
+Linux s69819.example.com 2.4.21-47.EL #1 Wed Jul 5 20:39:00 EDT 2006 i686 athlon i386 GNU/Linux
+# cat /etc/redhat-release
+Red Hat Enterprise Linux ES release 3 (Taroon Update 8)
+# ls -laF /boot
+# up2date --nox -u
+# rpm -qa | grep -i kernel
+kernel-2.4.21-32.0.1.EL
+kernel-2.4.21-40.EL
+kernel-source-2.4.21-47.EL
+kernel-2.4.21-37.0.1.EL
+kernel-utils-2.4-8.37.15
+kernel-doc-2.4.21-47.EL
+kernel-2.4.21-47.EL
+# up2date -uf kernel kernel-doc kernel-source
+
+Fetching Obsoletes list for channel: rhel-i386-es-3...
+
+Fetching Obsoletes list for channel: rhel-i386-es-3-extras...
+
+Name                                    Version        Rel
+----------------------------------------------------------
+kernel                                  2.4.21         47.0.1.EL         athlon
+kernel-doc                              2.4.21         47.0.1.EL         i386
+kernel-source                           2.4.21         47.0.1.EL         i386
+
+
+Testing package set / solving RPM inter-dependencies...
+########################################
+kernel-2.4.21-47.0.1.EL.ath ########################## Done.
+kernel-doc-2.4.21-47.0.1.EL ########################## Done.
+kernel-source-2.4.21-47.0.1 ########################## Done.
+Preparing              ########################################### [100%]
+
+Installing...
+   1:kernel-source          ########################################### [100%]
+   2:kernel                 ########################################### [100%]
+   3:kernel-doc             ########################################### [100%]
+# rpm -qa | grep -i kernel
+kernel-2.4.21-32.0.1.EL
+kernel-2.4.21-40.EL
+kernel-doc-2.4.21-47.0.1.EL
+kernel-2.4.21-37.0.1.EL
+kernel-utils-2.4-8.37.15
+kernel-2.4.21-47.0.1.EL
+kernel-2.4.21-47.EL
+kernel-source-2.4.21-47.0.1.EL
+# ls -laF /boot
+# cat /boot/grub/grub.conf
+</code></pre>
+<p>I then edited the <code>grub.conf</code> file to delete the last three groups (pertaining to old versions of the kernel), leaving behind only the newly installed version and the previous version. I then deleted the files corresponding to the old versions that were deleted from <code>grub.conf</code>:</p>
+<pre><code># rm -i /boot/*-32.0.1.EL*
+# rm -i /boot/*-37.0.1.EL*
+# rm -i /boot/*-40.EL*
+# reboot
+</code></pre>
+<h3>Note on removing old versions of the kernel</h3>
+<p>I later realized that additional modules are installed with each kernel in <code>/lib/modules/</code> and that the <code>rpm</code> tool could have been used to remove all of these files in one go:</p>
+<pre><code>$ rpm -e kernel-2.4.21-40.EL
+$ rpm -e kernel-2.4.21-37.0.1.EL
+$ rpm -e kernel-2.4.21-32.0.1.EL
+</code></pre>
+<h2>Post install checks</h2>
+<pre><code>$ uptime
+ 09:07:56  up 1 min,  1 user,  load average: 0.77, 0.25, 0.09
+$ uname -a
+Linux s69819.example.com 2.4.21-47.0.1.EL #1 Fri Oct 13 17:55:16 EDT 2006 i686 athlon i386 GNU/Linux
+$ cat /etc/redhat-release
+Red Hat Enterprise Linux ES release 3 (Taroon Update 8)
+</code></pre>
+<p>Check that critical services are running (<a href="/wiki/Bansshee">Bansshee</a>, FTP, HTTP, MySQL, Mailman, <code>clamd</code>, IMAP, <code>ipop3</code>, <a href="/wiki/svn">svn</a>, <a href="/wiki/sendmail">sendmail</a>, <code>xinetd</code>, <a href="/wiki/webmin">webmin</a> etc):</p>
+<pre><code>$ sudo service --status-all
+$ sudo chkconfig --list
+</code></pre>
+<p>Confirm that up2date is now satisfied:</p>
+<pre><code>$ sudo up2date --list
+</code></pre>
+<h2>Summary</h2>
+<p>A successful update. Service down time was approximately 71 seconds (as measured with <a href="/wiki/ping">ping</a>).</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

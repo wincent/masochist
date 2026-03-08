@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Branching with Git • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Branching with Git</h1></div><div class="metadata"><relative-time created="1185203522" updated="1495119989">Created 7/23/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>There are two types of branching that you might want to do with <a href="/wiki/Git">Git</a>:</p>
+<ul>
+<li>local-only branches (often short-lived &quot;<a href="/wiki/topic_branches">topic branches</a>&quot;)</li>
+<li>long-lived remote branches visible on a central repository</li>
+</ul>
+<h2>Local branches</h2>
+<p>Local branches are easily created:</p>
+<pre><code>git branch my_cool_branch
+git checkout my_cool_branch
+</code></pre>
+<p>Or you can create a branch and switch your working copy to it in one step:</p>
+<pre><code>git checkout -b my_cool_branch
+</code></pre>
+<h2>Remote branches on a central repository</h2>
+<p>Let's say you want to create a long-lived branch that will be visible to all on a remote, central repository. If you create such a branch in your local clone of the repository there is no way for you to &quot;push&quot; it back out to the central repository for others to see it; if you try doing a <code>git push</code> <a href="/wiki/Git">Git</a> will probably respond with:</p>
+<pre><code>Everything up-to-date
+</code></pre>
+<p>You'll get the same message even if you try to set up the same kind of tracking configuration that's automatically set up for you when you do a <code>git clone</code>:</p>
+<pre><code>git config branch.my_cool_branch.remote origin
+git config branch.my_cool_branch.merge refs/heads/my_cool_branch
+</code></pre>
+<p>Note that once I'd finished experimenting to see if this was possible I removed those configuration items to avoid possible confusion:</p>
+<pre><code>git config --unset branch.my_cool_branch
+</code></pre>
+<p>I also deleted the local-only branch:</p>
+<pre><code>git checkout master
+git branch -d my_cool_branch
+</code></pre>
+<p>The solution is to create the remote branch on the remote server:</p>
+<pre><code># now on the remote server
+sudo -H -u git git branch my_cool_branch
+</code></pre>
+<p>And only then update your local clone:</p>
+<pre><code>git config branch.my_cool_branch.remote origin
+git config branch.my_cool_branch.merge refs/heads/my_cool_branch
+git fetch
+</code></pre>
+<p>Alternatively (and probably more properly), you can also do this:</p>
+<pre><code>git branch --track my_cool_branch
+git co my_cool_branch
+</code></pre>
+<p>This creates tracking refs not quite the same as the manually created ones above, but which still work as you would expect when you do a <code>git push</code>:</p>
+<pre><code>branch.my_cool_branch.remote=.
+branch.my_cool_branch.merge=refs/heads/master
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Branching">Branching</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

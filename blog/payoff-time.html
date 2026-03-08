@@ -1,0 +1,252 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Payoff time • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/payoff-time">Payoff time</a></h1><div class="metadata"><relative-time created="1176402960" updated="1710259978">Created 4/12/2007, updated 3/12/2024</relative-time><span>10 minute read</span></div><div class="prerendered"><p>Along with my other development work, since the start of the year I've been working on an object-oriented templating system called Walrus. Its functionality is similar to that of the <a href="http://wincent.dev/wiki/Cheetah">Cheetah</a> templating engine but it's written in <a href="http://wincent.dev/wiki/Ruby">Ruby</a> instead of in Python. It's a wheel that I was forced to reinvent for two reasons: one, the fact that I don't know Python; and two, problems with Cheetah (missing features or undesired behaviours) which I couldn't correct because I don't know Python... At this stage it offers only a subset of the Cheetah functionality but it's powerful enough to do what I designed it for: making documentation for display in Apple's Help Viewer.</p>
+<p>It turns out that what started out as a simple project ended up becoming quite a bit more complex. But I'm very glad I did it because I learned a great deal along the way and my familiarity with Ruby has gone through the roof: something that will be very useful as I work on the <a href="http://wincent.dev/wiki/Rails">Rails</a> rewrite of this site and start using the Ruby scripting bridge that <a href="http://wincent.dev/wiki/Apple">Apple</a> will ship with <a href="http://wincent.dev/wiki/Leopard">Leopard</a>.</p>
+<p>Walrus is essentially a compiler that reads files written in a special templating markup (almost identical to that used by Cheetah) and compiles them down to Ruby code. The final output is produced by &quot;filling&quot; (running) the compiled templates. There is a <code>walrus</code> <a href="http://wincent.dev/wiki/command%20line">command line</a> tool that serves as a front end and makes it easy to process templates in batch style. At its core Walrus employs a <a href="http://wincent.dev/wiki/packrat">packrat</a> parser which can recognize any <a href="http://wincent.dev/wiki/PEG">PEG</a> and even accepts constructs that wouldn't usually be legal in a <a href="http://wincent.dev/wiki/PEG">PEG</a> such as left-recursive productions. The parser is capable of producing arbitrarily complex <a href="http://wincent.dev/wiki/ASTs">ASTs</a>. Although I'm using it to produce help documentation the design is general enough to be used in any situation where you want to transform text from one format to another. All this means that it is a tool that could end up proving quite useful.</p>
+<h3>The output</h3>
+<p>It's been very gratifying over the last few days to see it finally come to the point where I can start leveraging it for use in my own applications. <a href="http://wincent.dev/a/about/wincent/weblog/hextrapolate_help_screenshot.png">Click here for a screenshot</a> of the help pages for Hextrapolate.</p>
+<p>I want the documentation to look beautiful to the user, so the style sheets are based on the current Apple look and feel in <a href="http://wincent.dev/wiki/Tiger">Tiger</a>. But I want the <a href="http://wincent.dev/wiki/HTML">HTML</a> source to look beautiful as well; this is achieved principally through careful design of the <a href="http://wincent.dev/wiki/HTML">HTML</a>/<a href="http://wincent.dev/wiki/CSS">CSS</a> to minimize the amount of clutter in the markup, and then by cleaning up the whitespace using <a href="http://wincent.dev/wiki/Tidy">Tidy</a>:</p>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=utf-8&quot;&gt;
+&lt;title&gt;Resetting the preferences&lt;/title&gt;
+&lt;meta name=&quot;generator&quot; content=&quot;Walrus 0.1&quot;&gt;
+&lt;meta name=&quot;author&quot; content=&quot;Wincent Colaiuta&quot;&gt;
+&lt;meta name=&quot;author-email&quot; content=&quot;example@example.com&quot;&gt;
+&lt;meta name=&quot;copyright&quot; content=&quot;Copyright 2007 Wincent Colaiuta&quot;&gt;
+&lt;link href=&quot;../css/base.css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; type=&quot;text/css&quot;&gt;
+&lt;meta name=&quot;description&quot; content=&quot;Resetting the preferences&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;a name=&quot;resetting_the_preferences&quot; id=&quot;resetting_the_preferences&quot;&gt;&lt;/a&gt;
+
+
+
+
+&lt;h1&gt;Resetting the preferences&lt;/h1&gt;
+
+&lt;p&gt;To reset Hextrapolate’s preferences perform the following steps.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Quit Hextrapolate&lt;/li&gt;
+&lt;li&gt;Using the Finder, go to your home directory and open the &lt;tt&gt;Library folder&lt;/li&gt;
+&lt;li&gt;Inside the &lt;tt&gt;Library folder, open the &lt;tt&gt;Preferences folder&lt;/li&gt;
+&lt;li&gt;Drag the file &lt;tt&gt;com.wincent.Hextrapolate.plist from the &lt;tt&gt;Preferences folder to your Desktop, or to the Trash if you wish to dispose of it permanently&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The next time you launch Hextrapolate it will automatically create a new preferences file.&lt;/p&gt;
+
+
+&lt;h2&gt;See also&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;help:anchor='troubleshooting_tips' bookID=Hextrapolate Help&quot;&gt;troubleshooting tips&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;help:anchor='quitting' bookID=Hextrapolate Help&quot;&gt;quitting&lt;/a&gt;&lt;/p&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h3>The source</h3>
+<p>Below you can see the Walrus source used to produce the document. Things to note about it:</p>
+<ul>
+<li>Use of <code>##</code> to introduce comments.</li>
+<li>The <code>#extends</code> directive which indicates an inheritance relationship with a parent template (more on the object-oriented nature of the system later).</li>
+<li>The <code>#def</code> directive for defining blocks of material.</li>
+<li>The <code>#set</code> directive for assigning values to placeholders.</li>
+<li>Incorporating the value of a placeholder using the <code>$placeholder</code> syntax; note that placeholders can optionally accept parameters and be nested inside other placeholders.</li>
+<li>The ability to use <a href="http://wincent.dev/wiki/Textile">Textile</a>-like markup in the documentation.
+<ul>
+<li>This is not part of the Walrus core itself but is easily layered on top.</li>
+<li>I'm using backticks (<code>`</code>) instead of hash/pound (<code>#</code>) to indicate numbered lists; this is because hash/pound has special meaning in both Walrus and Textile markup so it is much more comfortable to simply use a different character rather than trying to escape it.</li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<pre><code>## Created by Wincent Colaiuta on 11 April 2007.
+## Copyright 2007 Wincent Colaiuta
+## $Id$
+
+#extends '../../../WOCommon/help/basic'
+
+#def setup
+  #include '../settings.txt'
+  #set $page_title  = &quot;Resetting the preferences&quot;
+  #set $tag         = 'resetting_the_preferences'
+  $abstract(&quot;Resetting the preferences&quot;)
+  $see_also($link_to('troubleshooting_tips', 'troubleshooting tips'))
+  $see_also($link_to('quitting', 'quitting'))
+#end
+
+###############################################################################
+
+#def content
+
+To reset Hextrapolate's preferences perform the following steps.
+
+
+
+` Quit Hextrapolate
+` Using the Finder, go to your home directory and open the &lt;tt&gt;Library folder
+` Inside the &lt;tt&gt;Library folder, open the &lt;tt&gt;Preferences folder
+` Drag the file &lt;tt&gt;com.wincent.Hextrapolate.plist from the &lt;tt&gt;Preferences folder to your Desktop, or to the Trash if you wish to dispose of it permanently
+
+The next time you launch Hextrapolate it will automatically create a new preferences file.
+
+
+
+#end
+</code></pre>
+<h3>Compiled</h3>
+<p>For the curious, this is what the Ruby source for the compiled template looks like. In practice you never need to even look at this as all you really care about are the input template and the filled HTML output:</p>
+<pre><code>#!/usr/bin/env ruby
+# Generated Thu Apr 12 11:27:33 +0200 2007 by Walrus version 0.1
+
+begin
+  require 'rubygems'
+rescue LoadError
+  # installing Walrus via RubyGems is recommended
+  # otherwise Walrus must be installed in the RUBYLIB load path
+end
+
+require 'walrus/document'
+require File.join(File.dirname(__FILE__), '../../../WOCommon/help', 'basic').to_s
+
+module Walrus
+
+  class WalrusGrammar
+
+    class ResettingThePreferences &lt; Basic
+
+      def template_body
+
+        super # (invoked automatically due to Extends directive)
+        # Comment: Created by Wincent Colaiuta on 11 April 2007.
+        # Comment: Copyright 2007 Wincent Colaiuta
+        # Comment: $Id$
+        accumulate('' + &quot;\n&quot;) # RawText
+        accumulate('' + &quot;\n&quot;) # RawText
+        accumulate('' + &quot;\n&quot;) # RawText
+        # Comment:#############################################################################
+        accumulate('' + &quot;\n&quot;) # RawText
+
+      end
+
+      def setup
+        accumulate('  ') # RawText
+        # Include (start): ../settings.txt:
+                # Comment: settings.tmpl
+                # Comment: A template for application-wide default settings
+                # Comment: WOCommon help templates
+                # Comment:
+                # Comment: Created by Wincent Colaiuta on 11 October 2006.
+                # Comment: Copyright 2006-2007 Wincent Colaiuta
+                # Comment: $Id$
+                accumulate('' + &quot;\n&quot;) # RawText
+                # Comment:
+                # Comment: appliction-wide default settings go in here
+                # Comment:
+                accumulate('' + &quot;\n&quot;) # RawText
+                set_value(&quot;book_id&quot;, instance_eval { 'Hextrapolate Help' }) # Set directive
+                set_value(&quot;book_icon&quot;, instance_eval { 'Hextrapolate Help/gfx/icon16.png' }) # Set directive
+                accumulate('' + &quot;\n&quot;) # RawText
+                # Comment:
+                # Comment: the page_title should be overridden on a per-page basis
+                # Comment:
+                accumulate('' + &quot;\n&quot;) # RawText
+                set_value(&quot;page_title&quot;, instance_eval { 'Help' }) # Set directive
+        accumulate('  ') # RawText
+        set_value(&quot;page_title&quot;, instance_eval { &quot;Resetting the preferences&quot; }) # Set directive
+        accumulate('  ') # RawText
+        set_value(&quot;tag&quot;, instance_eval { 'resetting_the_preferences' }) # Set directive
+        accumulate('  ') # RawText
+        lookup_and_accumulate_placeholder(:abstract, &quot;Resetting the preferences&quot;)
+        accumulate('' + &quot;\n&quot;) # RawText
+        accumulate('  ') # RawText (continued)
+        lookup_and_accumulate_placeholder(:see_also, lookup_and_return_placeholder(:link_to, 'troubleshooting_tips', 'troubleshooting tips'))
+        accumulate('' + &quot;\n&quot;) # RawText
+        accumulate('  ') # RawText (continued)
+        lookup_and_accumulate_placeholder(:see_also, lookup_and_return_placeholder(:link_to, 'quitting', 'quitting'))
+        accumulate('' + &quot;\n&quot;) # RawText
+      end
+
+      def content
+        accumulate('' + &quot;\n&quot;) # RawText
+        accumulate('To reset Hextrapolate\'s preferences perform the following steps.' + &quot;\n&quot;) # RawText (continued)
+        accumulate('' + &quot;\n&quot;) # RawText (continued)
+        accumulate('' + &quot;\n&quot;) # RawText (continued)
+        accumulate('' + &quot;\n&quot;) # RawText (continued)
+        accumulate('` Quit Hextrapolate' + &quot;\n&quot;) # RawText (continued)
+        accumulate('` Using the Finder, go to your home directory and open the &lt;tt&gt;Library folder' + &quot;\n&quot;) # RawText (continued)
+        accumulate('` Inside the &lt;tt&gt;Library folder, open the &lt;tt&gt;Preferences folder' + &quot;\n&quot;) # RawText (continued)
+        accumulate('` Drag the file &lt;tt&gt;com.wincent.Hextrapolate.plist from the &lt;tt&gt;Preferences folder to your Desktop, or to the Trash if you wish to dispose of it permanently' + &quot;\n&quot;) # RawText (continued)
+        accumulate('' + &quot;\n&quot;) # RawText (continued)
+        accumulate('The next time you launch Hextrapolate it will automatically create a new preferences file.' + &quot;\n&quot;) # RawText (continued)
+        accumulate('' + &quot;\n&quot;) # RawText (continued)
+        accumulate('' + &quot;\n&quot;) # RawText (continued)
+        accumulate('' + &quot;\n&quot;) # RawText (continued)
+      end
+
+
+      if __FILE__ == $0   # when run from the command line the default action is to call 'run'
+        new.run
+      end
+
+    end # ResettingThePreferences
+
+  end # WalrusGrammar
+
+end # Walrus
+</code></pre>
+<h3>Why object-oriented?</h3>
+<p>The key thing to note here is that the content above the row of hash markers is mostly static; you set it up once when you first create the page and then leave it alone. Most of your ongoing editing takes place below the row of hash markers. This is your sandbox:</p>
+<pre><code>#def content
+
+To reset Hextrapolate's preferences perform the following steps.
+
+
+
+` Quit Hextrapolate
+` Using the Finder, go to your home directory and open the &lt;tt&gt;Library folder
+` Inside the &lt;tt&gt;Library folder, open the &lt;tt&gt;Preferences folder
+` Drag the file &lt;tt&gt;com.wincent.Hextrapolate.plist from the &lt;tt&gt;Preferences folder to your Desktop, or to the Trash if you wish to dispose of it permanently
+
+The next time you launch Hextrapolate it will automatically create a new preferences file.
+
+
+
+#end
+</code></pre>
+<p>In other words, most of the time you only have to focus on the true <em>content</em> of each document. You don't have to think about the headers, the footers, the styles or anything else. What happens if Apple changes the way its help documentation looks in Leopard? It's easy enough to change the CSS but what if they make deep structural changes as well? With object-oriented templating this is dead easy: just change the parent classes higher up in the inheritance hierarchy and all the children will automatically be updated.</p>
+<h4>The &quot;PHP&quot; model</h4>
+<p>So how is this different from the traditional <a href="http://wincent.dev/wiki/PHP">PHP</a>-style model of template re-use? In that model you define a master container and then you split off common elements into separate documents (header, footer etc). Each page basically looks like this:</p>
+<pre><code>include('header')
+...
+include('footer')
+</code></pre>
+<p>Now whenever you need to change your header you change it in only one place and all the pages on your site pick up the change.</p>
+<p>So one day you realize that you want a side bar in your site and you have to edit every single page so that it looks like this:</p>
+<pre><code>include('header')
+include('sidebar')
+...
+include('footer')
+</code></pre>
+<p>You don't want to be burnt by that little mistake again, so you decide to split your content out into separate files too. Now you have centralized the header, the side bar, the footer into a single location so that they can be reused. And you've gone a step further and modified all your content pages so that they include only the content and none of the surrounding material. Each content page now basically has this structure:</p>
+<pre><code>include('pre_content');
+...
+include('post_content');
+</code></pre>
+<p>Note that in order for this to work you have to maintain a <code>pre_content</code> file which itself includes the header and the sidebar, and a <code>post_content</code> file which itself includes the footer.</p>
+<p>Sounds nice, but one day you decide that you want to show a sidebar on the other side too, but only on half the pages in the site. You can't just edit your <code>post_content</code> file because that would affect all pages, not just the half that you want to target. So your only option is to create a <code>post_content2</code> and manually edit half of your pages to include that... It's easy to see that this is a never ending race to maximize reuse and eliminate repetitive editing, but it's a race that you cannot win: you'll always be one step behind.</p>
+<h4>Object-orientation to the rescue</h4>
+<p>If you are a <a href="http://wincent.dev/wiki/Ruby">Ruby</a> or <a href="http://wincent.dev/wiki/Objective-C">Objective-C</a> programmer then you already know the solution to this problem: you need an inheritance hierarchy. Common elements move &quot;up&quot; in the hierarchy (towards the root) where they can be easily inherited. Specialized elements move &quot;down&quot; in the hierarchy as overrides. In this way you keep things <a href="http://wincent.dev/wiki/DRY">DRY</a>; you don't repeat yourself but instead ensure that information/behaviour is embodied at one and only one place in the hierarchy.</p>
+<p>This idea is equally applicable to documents, not just to programming. The conundrum faced by the PHP developer in the previous section would be addressed using object-oriented templating using a class hierarchy like the following:</p>
+<ul>
+<li>Master template: defines the overall layout of pages on the site, including the default header, footer and sidebar
+<ul>
+<li>Special category template: overrides the master to add a second sidebar</li>
+</ul>
+</li>
+</ul>
+<p>Then each page on the site inherits from either the master or the special category template, overriding only the content block. Any changes made to the master affect all other pages on the site; changes made to the special category template affect only pages which inherit from it. Sweeping changes can be made by refactoring at any time: inserting a new template above or below the master, creating templates for other categories, adding subcategories. All of these changes are made in only one place and the effects automatically trickle down to where we want them.</p>
+<p>Walrus implements this inheritance model and as an added bonus provides an <code>#include</code> directive for those times where you want to incorporate something by reference instead of merely inheriting it. This is demonstrated in the previous example where it is used to pull in global settings from another file.</p>
+<p>And because all of this is written in Ruby and compiled down to Ruby code you can easily insert &quot;helper&quot; methods that help you eliminate error-prone or repetitive tasks like inserting links to other pages using Apple's non-standard Help linking system.</p>
+<h3>Conclusion</h3>
+<p>The sky really is the limit on this one. One of the things that has always frustrated me about Apple's Help system is that it is very difficult to take the same documentation and use it both in the application itself as well as mirroring a copy to your website. If you use Apple's proprietary link style then your pages won't work on the web; if you use normal HTML links then you lose the frills that you get in Apple's Help Viewer. Furthermore, the system is poorly documented: most of the information is out-of-date or just plain missing (some of the <a href="http://andymatuschak.org/articles/2005/12/18/help-with-apple-help">best information</a> is not actually provided by Apple). What happens if Apple changes the way it works in the future? For theses reasons I've always been reluctant to include in-application Help.</p>
+<p>But using Walrus I am able to easily have the best of both worlds. I can have a helper function that emits Apple-style links if a particular environment variable is set at the time the templates are filled, and emits standard HTML links in other cases. If Apple ever changes the link format I'll just have to tweak the helper method and recompile.</p>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/google-summer-of-code-projects">← Google Summer of Code projects</a></div><div class="post-nav-next"><a href="/blog/screencasting-software">Screencasting software →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

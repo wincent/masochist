@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Involuntary reboot log 10.17 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link active" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><h1><a href="/snippets/1171">Involuntary reboot log 10.17</a></h1><div class="metadata"><relative-time created="1638128687" updated="1638128687">11/28/2021</relative-time></div><ul class="tags"><li><a href="/tags/involuntary.reboot.log">involuntary.reboot.log</a></li><li><a href="/tags/2015.mbp">2015.mbp</a></li><li><a href="/tags/snippets">snippets</a></li></ul><div class="prerendered"><p>Near-total freeze on waking from sleep. Clock wouldn't update, but when I closed and reopened the laptop I could make the screen backlight turn on and off. Escape key was somehow responsive. But I couldn't get in, even when hoping against hope that blindly typing in my passphrase might work. <a href="/wiki/Hard_reset">Hard reset</a>.</p>
+<h2>Statistics so far for this machine</h2>
+<ul>
+<li>Failure type: <a href="/wiki/Hard_reset">hard reset</a></li>
+<li>OS version: 11.6</li>
+<li>Uptime at moment of failure: unknown</li>
+<li>Kernel panics: 0</li>
+<li>Hard resets: 17</li>
+<li>Total failures: 17</li>
+<li>Start of recording keeping: 31 October 2017</li>
+<li>Total days to date: 1489</li>
+<li>Average time between failures: 87.59</li>
+</ul>
+<h2>Summary of events for this machine</h2>
+<ol>
+<li><a href="/snippets/1151">2017-11-16</a>: jammed keyboard on waking from sleep.</li>
+<li><a href="/snippets/1152">2017-11-16</a>: spontaneous reboot on waking from sleep.</li>
+<li><a href="/snippets/1154">2018-07-15</a>: frozen mouse pointer.</li>
+<li><a href="/snippets/1155">2018-11-03</a>: jammed keyboard on waking from sleep.</li>
+<li><a href="/snippets/1156">2018-11-16</a>: jammed keyboard on waking from sleep.</li>
+<li><a href="/snippets/1157">2018-11-18</a>: jammed keyboard on waking from sleep.</li>
+<li><a href="/snippets/1158">2018-11-24</a>: freeze half-way through passphrase entry on waking from sleep.</li>
+<li><a href="/snippets/1159">2018-11-24</a>: jammed keyboard on waking from sleep.</li>
+<li><a href="/snippets/1160">2018-11-27</a>: jammed keyboard on waking from sleep (even with Karabiner-Elements <a href="https://github.com/wincent/wincent/commit/634d7257e2e6219c516c578d789f81164a0d2738">partially disabled</a>).</li>
+<li><a href="/snippets/1161">2018-11-29</a>: jammed keyboard on waking from sleep (even with Karabiner-Elements <a href="https://github.com/wincent/wincent/commit/5855025962dda75d461b50e8210b293587444832">totally disabled</a>).</li>
+<li><a href="/snippets/1162">2018-12-03</a>: jammed keyboard on waking from sleep (because key repeat was not <a href="https://github.com/wincent/wincent/commit/46835b274a32f084f8bf53d32b9995a06d74936d">turned off</a>; it seems the hook did not run).</li>
+<li><a href="/snippets/1163">2019-07-06</a>: total freeze on waking from sleep, post-screen-unlock.</li>
+<li><a href="/snippets/1164">2020-06-22</a>: unable to unlock or make backlight come on.</li>
+<li><a href="/snippets/1165">2020-12-03</a>: some keys inoperative at lock screen.</li>
+<li><a href="/snippets/1169">2021-08-09</a>: stuck at blank lock screen.</li>
+<li><a href="/snippets/1170">2021-08-19</a>: SpaceFN mode jammed on permanently on at lock screen.</li>
+<li><a href="/snippets/1171">2021-11-27</a>: stuck at lock screen.</li>
+</ol>
+<h2>Historical data (all machines)</h2>
+<p>For comparison, previous generations of machines (from most oldest to most recent) that I've used have had averages of:</p>
+<table>
+<thead>
+<tr>
+<th>Active?</th>
+<th>Average uptime</th>
+<th>Total lifetime</th>
+<th>Log</th>
+<th>Model</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>❌</td>
+<td><a href="/blog/involuntary-reboot-log-39">~13.83 days</a></td>
+<td>~540 days</td>
+<td>#1 — #39</td>
+<td>PowerMac G5</td>
+<td>personal machine</td>
+</tr>
+<tr>
+<td>❌</td>
+<td><a href="/blog/involuntary-reboot-log-60">22.73 days</a></td>
+<td>1,364 days</td>
+<td>#40 — #60</td>
+<td><a href="http://www.everymac.com/systems/apple/imac/specs/imac_cd_1.83_17.html">iMac (17&quot;, Early 2006)</a></td>
+<td>personal machine</td>
+</tr>
+<tr>
+<td>❌</td>
+<td><a href="/snippets/23">20.06 days</a></td>
+<td>321 days</td>
+<td>2.x</td>
+<td><a href="http://www.everymac.com/systems/apple/imac/stats/imac-core-i5-2.66-27-inch-aluminum-late-2009-specs.html">iMac (27&quot;, Late 2009)</a></td>
+<td>personal machine</td>
+</tr>
+<tr>
+<td>❌</td>
+<td><a href="/snippets/128">19.11 days</a></td>
+<td>707 days</td>
+<td>3.x</td>
+<td><a href="http://www.everymac.com/systems/apple/macbook-air/specs/macbook-air-core-2-duo-2.13-13-late-2010-specs.html">MacBook Air (13&quot;, Late 2010)</a></td>
+<td>work machine (Causes)</td>
+</tr>
+<tr>
+<td>❌</td>
+<td><a href="/snippets/170">41.86 days</a></td>
+<td>293 days</td>
+<td>4.x</td>
+<td><a href="http://www.everymac.com/systems/apple/macbook-air/specs/macbook-air-core-i5-1.8-13-mid-2012-specs.html">MacBook Air (13&quot;, Mid-2012)</a></td>
+<td>work machine (Causes)</td>
+</tr>
+<tr>
+<td>❌</td>
+<td><a href="/snippets/171">2.0 days</a></td>
+<td>2 days</td>
+<td>5.x</td>
+<td>MacBook (unsure of model)</td>
+<td>work machine (Causes), loaner laptop</td>
+</tr>
+<tr>
+<td>❌</td>
+<td><a href="/snippets/1117">27.176 days</a></td>
+<td>462 days</td>
+<td>6.x</td>
+<td><a href="http://www.everymac.com/systems/apple/macbook-air/specs/macbook-air-core-i7-1.7-13-mid-2013-specs.html">MacBook Air (13&quot;, Mid-2013)</a></td>
+<td>work machine (Facebook)</td>
+</tr>
+<tr>
+<td>❌</td>
+<td><a href="/snippets/1138">35.0 days</a></td>
+<td>140 days</td>
+<td>7.x</td>
+<td>as above, but with a replacement shell</td>
+<td>work machine (Facebook)</td>
+</tr>
+<tr>
+<td>❌</td>
+<td><a href="/snippets/1144">40.8 days</a></td>
+<td>245 days</td>
+<td>8.x</td>
+<td><a href="http://www.everymac.com/systems/apple/macbook_pro/specs/macbook-pro-core-i7-2.8-15-iris-only-mid-2015-retina-display-specs.html">MacBook Pro (Retina, 15-inch, Mid 2015)</a></td>
+<td>work machine (Facebook)</td>
+</tr>
+<tr>
+<td>❌</td>
+<td><a href="/snippets/1153">87.0 days</a></td>
+<td>522 days</td>
+<td>9.x</td>
+<td><a href="http://www.everymac.com/systems/apple/macbook_pro/specs/macbook-pro-core-i7-2.8-15-dual-graphics-mid-2015-retina-display-specs.html">MacBook Pro (Haswell, Mid-2015, dual graphics)</a></td>
+<td>work machine (Facebook)</td>
+</tr>
+<tr>
+<td>✅</td>
+<td><a href="/snippets/1171">87.59 days</a></td>
+<td>1,489+ days</td>
+<td>10.x</td>
+<td><a href="http://www.everymac.com/systems/apple/macbook_pro/specs/macbook-pro-core-i7-2.8-15-dual-graphics-mid-2015-retina-display-specs.html">MacBook Pro (Haswell, Mid-2015, dual graphics)</a></td>
+<td>personal machine</td>
+</tr>
+<tr>
+<td>❌</td>
+<td>n/a</td>
+<td>844 days</td>
+<td>11.x</td>
+<td><a href="https://everymac.com/systems/apple/macbook_pro/specs/macbook-pro-core-i7-2.6-15-mid-2018-true-tone-display-touch-bar-specs.html">MacBook Pro 15-Inch &quot;Core i7&quot; 2.6 Touch/2018</a></td>
+<td>work machine (Liferay)</td>
+</tr>
+<tr>
+<td>✅</td>
+<td><a href="/snippets/1168">33.0 days</a></td>
+<td>66+ days</td>
+<td>12.x</td>
+<td><a href="https://everymac.com/systems/apple/macbook_pro/specs/macbook-pro-m1-8-core-13-2020-specs.html">MacBook Pro 13-Inch &quot;M1&quot; 8-Core 3.2 (2020)</a></td>
+<td>work machine (GitHub)</td>
+</tr>
+</tbody>
+</table>
+</div><div class="post-nav"><div class="post-nav-prev"><a href="/snippets/1172">← Involuntary reboot log 10.18</a></div><div class="post-nav-next"><a href="/snippets/1170">Involuntary reboot log 10.16 →</a></div></div><p class="post-nav-all"><a href="/snippets/all">All snippets</a></p></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

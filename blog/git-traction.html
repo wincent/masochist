@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git traction • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/git-traction">Git traction</a></h1><div class="metadata"><relative-time created="1184994540" updated="1710259978">Created 7/21/2007, updated 3/12/2024</relative-time><span>4 minute read</span></div><div class="prerendered"><p>The barometer is on the move and it indicates a groundswell of interest in <a href="http://wincent.dev/wiki/Git">Git</a>. At first I wondered if this was just because <em>I</em> have become interested in Git lately (here's my <a href="http://wincent.dev/a/about/wincent/weblog/archives/2007/07/git_hooks.php">most recent post</a>) and so have been on the lookout for more Git-related content. Then I realized that this isn't just me looking for confirmation; the confirmation is actually coming knocking on my door with various people who are in my feeds list writing about Git.</p>
+<p>These aren't &quot;version control people&quot;, they're Mac programmers just like me. A few days ago there was <a href="http://mjtsai.com/blog/2007/07/15/subversion-to-git/">Michael Tsai</a>, then today I noticed these posts from <a href="http://speirs.org/2007/07/19/a-subversion-user-looks-at-git/">Fraser Speirs</a> and <a href="http://www.friday.com/bbum/2007/07/19/git-will-eat-subversions-lunch/">Bill Bumgarner</a>.</p>
+<p>My gut feeling is that <a href="http://www.youtube.com/watch?v=4XpnKHJAok8">Linus Torvalds' git talk</a> showing up on YouTube has been a large factor in the recent build-up (currently shows about 87,000 views). (Ugh, the thought that YouTube could change <em>anybody's</em> life makes me feel distinctly uncomfortable...)</p>
+<p>But whatever the reason, it's good to see it.</p>
+<h3>Fraser's take</h3>
+<p>Fraser seems to have spent the time digging into <a href="http://wincent.dev/wiki/Git">Git</a> so as to gain an appreciation for its architecture.</p>
+<ul>
+<li>The index: Fraser seems to &quot;get&quot; the index but I would add that I think the key concept here is that the index is not a cache, it's a <em>staging area</em>. When you start thinking about it in those terms you start to see its possibilities rather than worrying about the inconvenience of the &quot;additional step&quot;.</li>
+<li>Merging nibs: Good points on that; I haven't done a merge involving nibs yet, so I'll have to reserve judgement on that.</li>
+<li>Externals: I've come to realize that this is a non-problem thanks to the fact that I had to face this issue and workaround it with <a href="http://wincent.dev/wiki/SVK">SVK</a>; and in doing so I realized that a combination of separate checkouts and symbolic links is conceptually and architecturally much cleaner than Subversion externals anyway: the only downside is that your &quot;externals&quot; don't hitch along for the ride automatically, you have to remember to update/commit them. Fraser's hypothesized solution is an interesting one.</li>
+<li>Repository layout: spot on, the <code>.svn</code> directories littered throughout a Subversion checkout are a hideous mess; &quot;litter&quot; is the operative word.</li>
+</ul>
+<h3>Bill's take</h3>
+<p>Bill's take is much simpler and focusses on one issue: Git is easy to use because it doesn't make simple things hard in the way that Subversion does; he specifically focusses on Subversion's long standing problems with opaque collections.</p>
+<blockquote>
+<p>Subversion needs to focus on the user experience and not just on being a better CVS. There be innovation goin' on and hiding behind &quot;a better CVS&quot; will only work for not terribly much longer.</p>
+</blockquote>
+<p>Fitz, one of the key Subversion developers, doesn't seem to get it:</p>
+<blockquote>
+<p>Feh. Git has perhaps the worst interface ever for a version control system. If you'd said Mercurial, I'd believe you, but since you said Git, I'm going to assume you're just trolling.</p>
+</blockquote>
+<p>Sure, Git has a bewildering array of commands and options, but you only have to learn them once. The basic workflow is dead simple. If I had to sum up this in a single sentence it would be:</p>
+<blockquote>
+<p>Git is hard to learn but easy to use.</p>
+</blockquote>
+<p>On the other hand:</p>
+<blockquote>
+<p>Subversion is easy to learn, but makes easy things difficult.</p>
+</blockquote>
+<p>And when we throw the myriad other benefits that Git has over Subversion, Git becomes pretty darn compelling:</p>
+<ul>
+<li>An extremely active, competent developer community engaged in real innovation</li>
+<li>A distributed model which can still do the client-server style if that's what you need; by reference incorporate all the benefits the distributed model brings (redundancy, offline commits, speed of operation, amendable commits etc)</li>
+<li>Amazing branching and merging support; and branches, like tags are not tacked on as an afterthought like they are in Subversion</li>
+<li>An incredibly simple, elegant architecutre</li>
+<li>Working copy (repository) format that is often more compact and always richer than the Subversion equivalent</li>
+<li>A powerful, flexible <a href="http://wincent.dev/wiki/command%20line">command line</a> interface which is pleasant to use and blows the doors off Subversion once you've taken the trouble to learn it</li>
+</ul>
+<p>Bill finishes with:</p>
+<blockquote>
+<p>Personally, I desperately hope Subversion fixes this particular problem. Subversion is really and truly awesome in so many ways and I do not want to have to migrate repository software for at least another decade.</p>
+</blockquote>
+<p>I agree: Subversion is awesome, in its own way, but it ain't going anywhere. Git, on the other hand, definitely <em>is</em> going somewhere, and in fact has already gotten so far ahead of Subversion that I can't imagine Subversion ever catching up. If you doubt this then just look at the treacle-like process they're making towards merge tracking (and note, at this stage we're still only talking about <em>tracking</em> merges, not actually doing anything interesting with them). I honestly think that if you jump ship now you won't regret it.</p>
+<h4>Parting words</h4>
+<p>Once comment that made me laugh:</p>
+<blockquote>
+<p>Several years I've been perched on a wobbly stick that is SVK...</p>
+</blockquote>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/new-backup-regimen">← New backup regimen</a></div><div class="post-nav-next"><a href="/blog/involuntary-reboot-log-12">Involuntary Reboot Log →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

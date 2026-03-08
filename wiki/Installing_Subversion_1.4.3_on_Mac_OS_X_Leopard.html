@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Installing Subversion 1.4.3 on Mac OS X Leopard • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Installing Subversion 1.4.3 on Mac OS X Leopard</h1></div><div class="metadata"><relative-time created="1177677769" updated="1584053324">Created 4/27/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/leopard">leopard</a></li><li><a href="/tags/subversion">subversion</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>wget <a href="http://subversion.tigris.org/downloads/subversion-1.4.3.tar.bz2">http://subversion.tigris.org/downloads/subversion-1.4.3.tar.bz2</a> wget <a href="http://subversion.tigris.org/downloads/subversion-deps-1.4.3.tar.bz2">http://subversion.tigris.org/downloads/subversion-deps-1.4.3.tar.bz2</a> tar xjvf subversion-1.4.3.tar.bz2 tar xjvf subversion-deps-1.4.3.tar.bz2 wget <a href="http://apache.rediris.es/apr/apr-1.2.8.tar.bz2">http://apache.rediris.es/apr/apr-1.2.8.tar.bz2</a> wget <a href="http://apache.rediris.es/apr/apr-util-1.2.8.tar.bz2">http://apache.rediris.es/apr/apr-util-1.2.8.tar.bz2</a> tar xjvf apr-1.2.8.tar.bz2 tar xjvf apr-util-1.2.8.tar.bz2 rm -r subversion-1.4.3/apr rm -r subversion-1.4.3/apr-util mv apr-1.2.8 subversion-1.4.3/apr mv apr-util-1.2.8 subversion-1.4.3/apr-util cd subversion-1.4.3/apr ./buildconf ./configure make</p>
+<p>This yields the following error:</p>
+<pre><code>network_io/unix/sendrecv.c:965:2: error: [/tags/error #error] APR has detected sendfile on your system, but nobody has written a
+network_io/unix/sendrecv.c:966:2: error: [/tags/error #error] version of it for APR yet. To get past this, either write
+network_io/unix/sendrecv.c:967:2: error: [/tags/error #error] apr_socket_sendfile or change APR_HAS_SENDFILE in apr.h to 0.
+make[1]: *** [network_io/unix/sendrecv.lo] Error 1
+make: *** [all-recursive] Error 1
+</code></pre>
+<p>After changing <code>APR_HAS_SENDFILE</code> in <code>include/apr.h</code> to <code>0</code>:</p>
+<pre><code>make
+make check
+sudo make install
+cd ../apr-util
+./buildconf
+./configure --with-apr=/usr/local/apr/bin/apr-1-config
+make
+sudo make install
+make check
+cd ..
+./configure --with-apr=/usr/local/apr/bin/apr-1-config --with-apr-util=/usr/local/apr/bin/apu-1-config --disable-mod-activation --with-ssl
+make
+make check
+sudo make install
+
+# bindings (for SVK)
+make swig-pl
+make check-swig-pl
+sudo make install-swig-pl
+make clean
+</code></pre>
+<p>I later rebuilt <a href="/wiki/Perl">Perl</a> (see &quot;<a href="/wiki/Building_Perl_5.8.8_on_Mac_OS_X_Leopard">Building Perl 5.8.8 on Mac OS X Leopard</a>&quot;) and then decided to re-build the bindings, just in case they were in some way tied to the pre-existing <a href="/wiki/Perl">Perl</a> install that came with the system. As I had previously executed <code>make clean</code> this required me to build <a href="/wiki/Subversion">Subversion</a> once more. The basic plan is to do something like this:</p>
+<pre><code>./configure --with-apr=/usr/local/apr/bin/apr-1-config --with-apr-util=/usr/local/apr/bin/apu-1-config --disable-mod-activation --with-ssl
+make
+make swig-pl
+make check-swig-pl
+sudo make install-swig-pl
+make clean
+</code></pre>
+<p>However, all tests failed at the <code>make check-swig-pl</code> stage with error messages like this:</p>
+<pre><code>#   Failed test 'use SVN::Repos;'
+#   at ../../../../../subversion/bindings/swig/perl/native/t/0use.t line 6.
+#     Tried to use 'SVN::Repos'.
+#     Error:  Can't locate loadable object for module SVN::_Repos in @INC (@INC contains: /Users/wincent/trabajo/unversioned/subversion/subversion-1.4.3/subversion/bindings/swig/perl/native/blib/lib /Users/wincent/trabajo/unversioned/subversion/subversion-1.4.3/subversion/bindings/swig/perl/native/blib/arch /usr/local/lib/perl5/5.8.8/darwin-2level /usr/local/lib/perl5/5.8.8 /usr/local/lib/perl5/site_perl/5.8.8/darwin-2level /usr/local/lib/perl5/site_perl/5.8.8 /usr/local/lib/perl5/site_perl .) at /Users/wincent/trabajo/unversioned/subversion/subversion-1.4.3/subversion/bindings/swig/perl/native/blib/lib/SVN/Base.pm line 59
+# BEGIN failed--compilation aborted at ../../../../../subversion/bindings/swig/perl/native/t/0use.t line 6.
+# Compilation failed in require at (eval 6) line 2.
+# BEGIN failed--compilation aborted at (eval 6) line 2.
+../../../../../subversion/bindings/swig/perl/native/t/0use.............NOK 2
+</code></pre>
+<p>I tried:</p>
+<pre><code>sudo make install
+make swig-pl
+make check-swig-pl
+</code></pre>
+<p>But got the same errors. <code>find / -name &quot;*_Repos*&quot;</code> yielded some entries of interest:</p>
+<pre><code>/Library/Perl/5.8.8/darwin-thread-multi-2level/auto/SVN/_Repos
+/System/Library/Perl/Extras/5.8.8/darwin-thread-multi-2level/auto/SVN/_Repos
+</code></pre>
+<p>Using <code>find . -path &quot;*swig*&quot; | grep Repos</code> showed the corresponding path, not yet installed:</p>
+<pre><code>./subversion/bindings/swig/perl/native/Repos.pm
+</code></pre>
+<p>So I decided to force the install anyway:</p>
+<pre><code>sudo make install-swig-pl
+</code></pre>
+<p>This installs, for example:</p>
+<pre><code>/usr/local/lib/perl5/site_perl/5.8.8/darwin-2level/SVN/Repos.pm
+</code></pre>
+<p>But nothing matching <code>_Repos</code>.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

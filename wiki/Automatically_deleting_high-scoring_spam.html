@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Automatically deleting high-scoring spam • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Automatically deleting high-scoring spam</h1></div><div class="metadata"><relative-time created="1153076211" updated="1495119989">Created 7/16/2006, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/email">email</a></li><li><a href="/tags/sendmail">sendmail</a></li><li><a href="/tags/procmail">procmail</a></li><li><a href="/tags/spamassassin">spamassassin</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Quarantining recipe</h2>
+<pre><code>LOGFILE=$HOME/procmail.log
+VERBOSE=off
+LOGABSTRACT=all
+
+# mail very likely to be spam (&gt;= 15) quarantined in &quot;spam&quot; folder
+# or piped directly to /dev/null
+:0
+* ^X-Spam-Level: \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+#/dev/null
+spam
+
+# clean the environment before continuing
+LOGFILE=
+LOGABSTRACT=
+VERBOSE=
+</code></pre>
+<h2>Auto-deletion recipe</h2>
+<pre><code>LOGFILE=$HOME/procmail.log
+VERBOSE=off
+LOGABSTRACT=all
+
+# mail very likely to be spam (&gt;= 15) quarantined in &quot;spam&quot; folder
+# or piped directly to /dev/null
+:0
+* ^X-Spam-Level: \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
+/dev/null
+[/tags/spam #spam]
+
+# clean the environment before continuing
+LOGFILE=
+LOGABSTRACT=
+VERBOSE=
+</code></pre>
+<h2>Efficacy</h2>
+<p>This auto-deletion system intercepted 749 messages to my business account and 8 messages to my personal account in a test period of just under sixteen days (late June/early July of 2006) with no false positives. This equates to an average block count of just over 47 messages per day.</p>
+<p>For other efficacy statistics see <a href="/wiki/combatting_spam">combatting spam</a>.</p>
+<h2>Log sample</h2>
+<pre><code>From schepler@sammimail.com  Thu Jun 29 22:16:14 2006
+ Subject: [SPAM] Tired of being overweight? We can help!
+  Folder: /dev/null                                                        4825
+From kurihara@uymail.com  Thu Jun 29 22:16:17 2006
+ Subject: [SPAM] Be leaner and slimmer by next week!
+  Folder: /dev/null                                                        4725
+From kinch@miho-nakayama.com  Thu Jun 29 22:16:21 2006
+ Subject: [SPAM] Watch your body change with Hoodia
+  Folder: /dev/null                                                        4846
+From lzap@asistencia.org  Thu Jun 29 22:16:21 2006
+ Subject: [SPAM] Tired of being overweight? We can help!
+  Folder: /dev/null                                                        4811
+From uucp@ranmamail.com  Thu Jun 29 22:16:24 2006
+ Subject: [SPAM] Doctors and Celebrities endorse Hoodia!
+  Folder: /dev/null                                                        4727
+From Consulting@BusinessExpert.prserv.net  Sat Jul  1 18:57:00 2006
+ Subject: [SPAM] Start your business today
+  Folder: /dev/null                                                        3623
+From Consulting@BusinessExpert.prserv.net  Sat Jul  1 18:57:56 2006
+ Subject: [SPAM] Start your business today
+  Folder: /dev/null                                                        3818
+From markb@indiya.com  Sun Jul  2 11:58:55 2006
+ Subject: [SPAM] Be leaner and slimmer by next week!
+  Folder: /dev/null                                                        4713
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

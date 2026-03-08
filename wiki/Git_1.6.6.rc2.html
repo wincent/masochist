@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.6.6.rc2 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.6.6.rc2</h1></div><div class="metadata"><relative-time created="1260411697" updated="1495119989">Created 12/10/2009, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official announcement posted to the <a href="/wiki/Git_mailing_list">Git mailing list</a>:</p>
+<pre><code>A release candidate Git 1.6.6.rc2 is available at the usual places
+for testing:
+
+ http://www.kernel.org/pub/software/scm/git/
+
+ git-1.6.6.rc2.tar.{gz,bz2}			(source tarball)
+ git-htmldocs-1.6.6.rc2.tar.{gz,bz2}		(preformatted docs)
+ git-manpages-1.6.6.rc2.tar.{gz,bz2}		(preformatted docs)
+
+The RPM binary packages for a few architectures are found in:
+
+ testing/git-*-1.6.6.rc2-1.fc11.$arch.rpm	(RPM)
+
+The changes since rc1 are mostly updates to the subsystems.
+
+The regression to &quot;git pull&quot; that made the command give annoying warning
+message when there is no local commit has been fixed; it appeared in rc1.
+
+----------------------------------------------------------------
+
+Changes since v1.6.6-rc1 are as follows:
+
+Alex Vandiver (3):
+     git-svn: sort svk merge tickets to account for minimal parents
+     git-svn: Set svn.authorsfile to an absolute path when cloning
+     git-svn: set svn.authorsfile earlier when cloning
+
+Alexander Gavrilov (1):
+     git-gui: Increase blame viewer usability on MacOS.
+
+Bernt Hansen (1):
+     gitk: Skip translation of &quot;wrong Tcl version&quot; message
+
+Brandon Casey (2):
+     t4201: use ISO8859-1 rather than ISO-8859-1
+     t9001: use older Getopt::Long boolean prefix '--no' rather than '--no-'
+
+Clemens Buchacher (1):
+     git-gui: search 4 directories to improve statistic of gc hint
+
+Eric Wong (1):
+     git svn: log removals of empty directories
+
+Greg Price (1):
+     git svn: Don't create empty directories whose parents were deleted
+
+Guillermo S. Romero (1):
+     gitk: Add configuration for UI colour scheme
+
+Heiko Voigt (1):
+     git gui: make current branch default in &quot;remote delete branch&quot; merge check
+
+Jakub Narebski (1):
+     gitweb: Describe (possible) gitweb.js minification in gitweb/README
+
+Jan Krüger (1):
+     pull: clarify advice for the unconfigured error case
+
+Jeff King (3):
+     rerere: don't segfault on failure to open rr-cache
+     reset: improve worktree safety valves
+     add-interactive: fix deletion of non-empty files
+
+Jens Lehmann (2):
+     gitk: Fix diffing committed -&gt; staged (typo in diffcmd)
+     gitk: Use the --submodule option for displaying diffs when available
+
+Jindrich Makovicka (1):
+     git-gui: suppress RenderBadPicture X error caused by Tk bug
+
+Johan Herland (1):
+     Fix crasher on encountering SHA1-like non-note in notes tree
+
+Junio C Hamano (9):
+     Documentation/Makefile: allow man.base.url.for.relative.link to be set from Make
+     Unconditionally set man.base.url.for.relative.links
+     Git 1.6.5.4
+     Documentation: xmlto 0.0.18 does not know --stringparam
+     Prepare for 1.6.5.5
+     Git 1.6.5.5
+     Revert recent &quot;git merge &lt;msg&gt; HEAD &lt;commit&gt;...&quot; deprecation
+     Update draft release notes to 1.6.6 before -rc2
+     Git 1.6.6-rc2
+
+Linus Torvalds (1):
+     Fix diff -B/--dirstat miscounting of newly added contents
+
+Markus Heidelberg (1):
+     gitk: Fix &quot;git gui blame&quot; invocation when called from top-level directory
+
+Mizar (2):
+     gitk: Add Japanese translation
+     gitk: Update Japanese translation
+
+Pat Thoyts (4):
+     gitk: Use themed tk widgets
+     gitk: Fix errors in the theme patch
+     gitk: Default to the system colours on Windows
+     gitk: Fix selection of tags
+
+Paul Mackerras (5):
+     gitk: Restore scrolling position of diff pane on back/forward in history
+     gitk: Add a user preference to enable/disable use of themed widgets
+     gitk: Show diff of commits at end of compare-commits output
+     gitk: Don't compare fake children when comparing commits
+     gitk: Improve appearance of radiobuttons and checkbuttons
+
+René Scharfe (1):
+     archive: clarify description of path parameter
+
+SZEDER Gábor (1):
+     bash: update 'git commit' completion
+
+Sitaram Chamarty (1):
+     gitk: Disable checkout of remote branches
+
+Todd Zullinger (1):
+     Documentation: Avoid use of xmlto --stringparam
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

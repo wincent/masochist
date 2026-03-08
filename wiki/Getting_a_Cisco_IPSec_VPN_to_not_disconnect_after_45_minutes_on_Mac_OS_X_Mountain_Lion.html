@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Getting a Cisco IPSec VPN to not disconnect after 45 minutes on Mac OS X Mountain Lion • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Getting a Cisco IPSec VPN to not disconnect after 45 minutes on Mac OS X Mountain Lion</h1></div><div class="metadata"><relative-time created="1348121517" updated="1495119989">Created 9/20/2012, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/vpn">vpn</a></li><li><a href="/tags/cisco">cisco</a></li><li><a href="/tags/ipsec">ipsec</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Found <a href="https://discussions.apple.com/thread/3275811">here</a>:</p>
+<blockquote>
+<ol>
+<li>Connect to the VPN (so OSX generates the racoon configuration file)</li>
+<li>Copy the generated configuration file to /etc/racoon: <code>$ sudo cp /var/run/racoon/1.1.1.1.conf /etc/racoon</code></li>
+<li>Edit the racoon configuration file with your favorite editor (vim): <code>$ sudo vim /etc/racoon/racoon.conf</code></li>
+<li>At the bottom of the file comment out the line: <code>include &quot;/var/run/racoon/*.conf&quot; ;</code></li>
+<li>... and instead include the copied file (which we will edit): <code>include &quot;/etc/racoon/1.1.1.1.conf&quot; ;</code></li>
+<li>Edit the generated configuration file with your favorite editor (vim): <code>$ sudo vim /etc/racoon/1.1.1.1.conf</code></li>
+<li>Disable dead peer detection: <code>dpd_delay 0;</code></li>
+<li>Change proposal check to claim from obey: <code>proposal_check claim;</code></li>
+<li>Change the proposed lifetime in each proposal (24 hours instead of 3600 seconds): <code>lifetime time 24 hours;</code></li>
+<li>Disconnect and reconnect (this time racoon will use your custom configuration)</li>
+<li>Use the VPN for at least 45 minutes and hopefully it won't drop!</li>
+</ol>
+</blockquote>
+<p>In my case &quot;24 hours&quot; didn't work (and even &quot;12 hours&quot; was too much) but &quot;8 hours&quot; worked just fine.</p>
+<p>Also, disabling dead peer detection wasn't necessary for me (and possibly not a good idea anyway).</p>
+<p>This is an inglorious hack, but beats having to manually reenter your credentials every 45 minutes.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

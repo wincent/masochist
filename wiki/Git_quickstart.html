@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git quickstart • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git quickstart</h1></div><div class="metadata"><relative-time created="1202122196" updated="1709676231">Created 2/4/2008, updated 3/5/2024</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Installation</h2>
+<p>See my installation notes at &quot;<a href="/wiki/Installing_Git_1.5.2.3_on_Mac_OS_X_Tiger">Installing Git 1.5.2.3 on Mac OS X Tiger</a>&quot;.</p>
+<h2>Optional modules</h2>
+<p>See:</p>
+<ul>
+<li>&quot;<a href="/wiki/Installing_Net%3a%3aSMTP%3a%3aSSL_for_sending_patches_with_Git_over_secure_SMTP">Installing Net::SMTP::SSL for sending patches with Git over secure SMTP</a>&quot;</li>
+</ul>
+<h2>Initial configuration</h2>
+<pre><code># personalize these with your own name and email address
+git config --global user.name &quot;Wincent Colaiuta&quot;
+git config --global user.email &quot;example@example.com&quot;
+
+# decorate logs
+git config --global log.decorate short
+
+# colorize output (Git 1.5.5 or later)
+git config --global color.ui auto
+
+# and from 1.5.4 onwards, this will works:
+git config --global color.interactive auto
+
+# user-friendly paging of some commands which don't use the pager by default
+# (other commands like &quot;git log&quot; already do)
+# to override pass --no-pager or GIT_PAGER=cat
+git config --global pager.status true
+git config --global pager.show-branch true
+
+# shortcut aliases
+git config --global alias.st status
+git config --global alias.ci commit
+git config --global alias.co checkout
+
+# use Apple opendiff (FileMerge) for resolving conflicts
+# it will be invoked when you do a &quot;git mergetool&quot;
+git config --global merge.tool opendiff
+
+# this so I can submit patches using git send-email
+git config --global sendemail.smtpserver smtp.example.com
+git config --global sendemail.aliasesfile ~/.gitaliases
+git config --global sendemail.aliasfiletype mailrc
+
+# as of Git 1.5.4 you'll also be able to add this for SMTP-AUTH
+git config --global sendemail.smtpuser &quot;user@example.com&quot;
+git config --global sendemail.smtppass password
+git config --global sendemail.smtpssl true
+
+# shortcut aliases for submitting patches for Git itself
+# refer to the &quot;See also&quot; section below for additional information
+echo &quot;alias git git@vger.kernel.org&quot; &gt;&gt; ~/.gitaliases
+echo &quot;alias junio gitster@pobox.com&quot; &gt;&gt; ~/.gitaliases
+echo &quot;alias me example@example.com&quot; &gt;&gt; ~/.gitaliases
+
+# another feature that will be available in 1.5.4 onwards
+# this is useful when you use topic branches for grouping together logically related changes
+git config --global format.numbered auto
+
+# turn on new 1.5 features which break backwards compatibility
+git config --global core.legacyheaders false
+git config --global repack.usedeltabaseoffset true
+</code></pre>
+<p>The <code>--global</code> switch causes changes to be written into <code>~/.gitconfig</code> rather than the repository-level <code>config</code>.</p>
+<p>For more information on configuration type <code>man git-config</code> in the <a href="/wiki/Terminal">Terminal</a>.</p>
+<h2>Useful aliases</h2>
+<pre><code># support habits from Subversion/CVS
+git config --global alias.st status
+git config --global alias.co checkout
+git config --global alias.ci commit
+
+# show difference between the HEAD and the index
+git config --global alias.staged &quot;diff --cached&quot;
+
+# show difference between working tree and the index; seeing as this is just a synonym for &quot;diff&quot; I almost never use it
+git config --global alias.unstaged diff
+
+# show staged and unstaged changes (what would be committed with &quot;git commit -a&quot;); I almost never use this
+git config --global alias.both &quot;diff HEAD&quot;
+
+# quick access to oneline log format
+git config --global alias.oneline &quot;log --oneline&quot;
+
+# I'm always amending, so &quot;git amend&quot; is easier than &quot;git ci --amend&quot;
+git config --global alias.amend &quot;commit --amend&quot;
+
+# misc
+git config --global alias.abbrev 'rev-parse --short'
+</code></pre>
+<h2>Global ignores</h2>
+<p>Directory-specific ignores can be specified in a file called <code>.gitignore</code> at the top of the directory.</p>
+<p>Repository-wide ignores can be specified in <code>.git/info/exclude</code>.</p>
+<p>Global ignores can be placed in a file of your choosing (for example, <code>~/.gitignore</code>) and turned on using:</p>
+<pre><code>git config --global core.excludesfile ~/.gitignore
+</code></pre>
+<p>An example <code>~/.gitignore</code> file might be as simple as:</p>
+<pre><code>.DS_Store
+</code></pre>
+<p>For more information type:</p>
+<pre><code>man gitignore
+</code></pre>
+<h2>PGP setup</h2>
+<p><a href="/wiki/Git">Git</a> supports signing of tags using <a href="/wiki/PGP">PGP</a> keys.</p>
+<pre><code># download latest version of GnuPG
+wget &quot;ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-1.4.7.tar.bz2&quot;
+
+# verify integrity of download
+openssl sha1 gnupg-1.4.7.tar.bz2
+
+# extract
+tar xjvf gnupg-1.4.7.tar.bz2
+cd gnupg-1.4.7
+
+# build
+./configure
+make
+make check
+
+# install
+sudo make install
+
+# create a new private/public key pair
+gpg --gen-key
+
+# export ASCII version of public key
+# (to upload to homepage or public keyserver)
+gpg --export -a
+</code></pre>
+<p>To actually sign a tag you pass the <code>-s</code> (or <code>-u</code>) flag to <code>git-tag</code>.</p>
+<h2><code>gitk</code> setup</h2>
+<p><code>gitk</code> works out of the box; for example:</p>
+<pre><code># clone an existing repository
+git clone git://git.kernel.org/pub/scm/git/git.git
+
+# inspect repository history using gitk
+cd git
+gitk
+</code></pre>
+<p>Although <code>gitk</code> works with no modifications, it <a href="http://scie.nti.st/2006/12/20/gitk-on-mac-os-x-screenshot">can be tailored</a> to use more readable fonts; I added these lines to my <code>~/.gitk</code> file:</p>
+<pre><code>set mainfont {Monaco 10}
+set textfont {Monaco 10}
+set uifont {Monaco 10}
+</code></pre>
+<p>A superior alternative to <code>gitk</code> is <a href="/wiki/QGit">QGit</a>, although it requires compilation.</p>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Git_cheatsheet">Git cheatsheet</a></li>
+<li><a href="/wiki/Git_cookbook">Git cookbook</a></li>
+<li><a href="/wiki/Git_recipes">Git recipes</a></li>
+<li><a href="/wiki/Creating_and_submitting_a_patch_via_email_with_Git">Creating and submitting a patch via email with Git</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

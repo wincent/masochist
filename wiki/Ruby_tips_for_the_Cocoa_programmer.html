@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ruby tips for the Cocoa programmer • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Ruby tips for the Cocoa programmer</h1></div><div class="metadata"><relative-time created="1169643373" updated="1584053324">Created 1/24/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/ruby">ruby</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>This article describes things that were not immediately obvious to me as a <a href="/wiki/Cocoa">Cocoa</a> programmer when I started learning <a href="/wiki/Ruby">Ruby</a>. For more general tips, see <a href="/wiki/Ruby_recipes">Ruby recipes</a>.</p>
+<h2>Avoiding mutual/circular/recursive requires</h2>
+<p>See <a href="/wiki/Avoiding_mutual%2fcircular%2frecursive_requires">Avoiding mutual/circular/recursive requires</a>.</p>
+<h2>Private methods and <code>self</code></h2>
+<p>Private methods are available only from within the instances of the class to which they belong. You may not send to private methods from outside. In fact, the protection is so strict that private methods are not allowed to have an explicit receiver at all, <em>not even <code>self</code></em>! This means that the following won't work (yields a <code>NoMethodError</code>):</p>
+<pre><code>class A
+  def initialize
+    self.secret # self here is not allowed
+  end
+private
+  def secret
+  end
+end
+</code></pre>
+<p>Personally I find this restriction (not being allowed to use <code>self</code> as a receiver unnecessary and confusing. It also means that you can't give private methods names like <code>&lt;&lt;</code>:</p>
+<pre><code>class B
+private
+  def &lt;&lt;(arg)
+    puts &quot;This method can never be called (except by using the send method).&quot;
+    puts &quot;The Ruby interpreter issues a parse error 'unexpected tLSHFT' if you try to call this without self.&quot;
+    puts &quot;But if you call it with self you'll get an NoMethodError&quot;
+  end
+end
+</code></pre>
+<h2>Enabling tab-completion in <a href="/wiki/IRB">IRB</a></h2>
+<p>Start <a href="/wiki/IRB">IRB</a> using:</p>
+<pre><code>irb --readline -r irb/completion
+</code></pre>
+<p>Or add the following to your <code>~/.bash_profile</code>:</p>
+<pre><code>alias irb=&quot;irb --readline -r irb/completion&quot;
+</code></pre>
+<p>Source: <a href="http://www.caliban.org/ruby/rubyguide.shtml">http://www.caliban.org/ruby/rubyguide.shtml</a></p>
+<h2>Subclassing <code>Object</code></h2>
+<p><em>All</em> classes ultimately inherit from <code>Object</code> so this:</p>
+<pre><code>class Foo
+end
+</code></pre>
+<p>Is equivalent to:</p>
+<pre><code>class Foo &lt; Object
+end
+</code></pre>
+<p>Proof (using <a href="/wiki/IRB">IRB</a>):</p>
+<pre><code>class Foo
+end
+Foo.superclass
+=&gt; Object
+</code></pre>
+<p>The default <code>initialize</code> method of <code>Object</code> does nothing, so it is not necessary to call <code>super</code> (or <code>super()</code>) in a class that directly inherits from <code>Object</code>:</p>
+<pre><code>class Foo
+  def initialize
+    super() # redundant!
+  end
+end
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

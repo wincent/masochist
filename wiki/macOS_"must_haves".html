@@ -1,0 +1,225 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>macOS &quot;must haves&quot; • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>macOS &quot;must haves&quot;</h1></div><div class="metadata"><relative-time created="1583845525" updated="1742562240">Created 3/10/2020, updated 3/21/2025</relative-time></div><ul class="tags"><li><a href="/tags/macos">macos</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>This is a list of software which I consider to be pretty much a &quot;must have&quot; on any Mac I own. I'm not mentioning here command-line apps like <a href="/wiki/Git">Git</a>, <a href="/wiki/tmux">tmux</a> and <a href="/wiki/Neovim">Neovim</a> — which I also consider to be essential — but am instead confining myself to <a href="/wiki/GUI">GUI</a> apps only.</p>
+<p>Basically, this is the stuff that I end up installing on every machine that comes into my possession, and which I would be sad about if it ever became abandonware.</p>
+<h2>&quot;Free&quot;</h2>
+<p>Software in this list is either <a href="/wiki/open_source">open source</a>, or otherwise freeware/donationware.</p>
+<h3>Blurred</h3>
+<ul>
+<li><a href="https://github.com/dwarvesf/Blurred">https://github.com/dwarvesf/Blurred</a></li>
+</ul>
+<p>Supersedes <a href="/wiki/Isolator">Isolator</a>.</p>
+<h3><a href="/wiki/Hammerspoon">Hammerspoon</a></h3>
+<ul>
+<li><a href="http://www.hammerspoon.org/">http://www.hammerspoon.org/</a></li>
+</ul>
+<p>Programmable macOS automation and scripting tool. I use it for positioning windows using hot keys and in response to events (eg. plugging in or unplugging an external display, or launching an app).</p>
+<h3><a href="/wiki/Homebrew">Homebrew</a></h3>
+<ul>
+<li><a href="http://mxcl.github.io/homebrew/">http://mxcl.github.io/homebrew/</a></li>
+</ul>
+<p>Ok, so this one is not a GUI app, but it's very important, as it is the primary way of getting all the not-GUI apps (and a few of the GUI ones too), so including it here.</p>
+<p>I <del>have</del> had some <a href="/snippets/131">deep misgivings</a> about the decision of <a href="/wiki/Homebrew">Homebrew</a> to take exclusive ownership of <code>/usr/local</code> (note: after Homebrew 1.0.0, <a href="https://apple.stackexchange.com/questions/253404/how-does-homebrew-no-longer-need-ownership-of-usr-local">it no longer does this</a>), but on a fresh install of <a href="/wiki/macOS">macOS</a>, if you're prepared to let Homebrew have its way, there is no simpler/faster way of installing a bunch of necessary and useful <a href="/wiki/command_line">command line</a> packages (<a href="https://github.com/wincent/wincent/blob/22ba80737b24ac6540309d7c9ab6375f16fd4752/aspects/homebrew/templates/Brewfile.erb">here's a snapshot of my Brewfile</a>).</p>
+<h3>kitty</h3>
+<ul>
+<li><a href="https://sw.kovidgoyal.net/kitty/">https://sw.kovidgoyal.net/kitty/</a></li>
+</ul>
+<p>Best all-round cross-platform terminal for macOS and Linux, delivering excellent performance and an absurdly large number of features.</p>
+<h3><a href="https://karabiner-elements.pqrs.org/">Karabiner-Elements</a> (formerly <a href="/wiki/Karabiner">Karabiner</a>, itself formerly <a href="/wiki/KeyRemap4MacBook">KeyRemap4MacBook</a>)</h3>
+<ul>
+<li><a href="https://karabiner-elements.pqrs.org/">https://karabiner-elements.pqrs.org/</a></li>
+</ul>
+<p>Has some killer features, like after mapping the Caps Lock key to serve as a Control key (using the standard macOS System Preferences), you can use Karabiner-Elements to change its behavior: pressing and holding Caps Lock in combination with another key makes it serve as a Control key, but pressing and releasing it immediately serves as an Escape key (idea from <a href="http://stevelosh.com/blog/2012/10/a-modern-space-cadet/">this article</a>).</p>
+<p>For more details about this and other super useful settings, see the &quot;<a href="/wiki/Karabiner">Karabiner</a>&quot; article.</p>
+<h3><a href="/wiki/OmniDiskSweeper">OmniDiskSweeper</a></h3>
+<ul>
+<li><a href="http://www.omnigroup.com/products/omnidisksweeper/">http://www.omnigroup.com/products/omnidisksweeper/</a></li>
+</ul>
+<p>When all you've got is a tiny SSD drive, this tool is very handy for hunting down and killing space-greedy files which aren't worthy of preservation.</p>
+<h3><a href="/wiki/VLC">VLC</a></h3>
+<ul>
+<li><a href="http://www.videolan.org/">http://www.videolan.org/</a></li>
+</ul>
+<p>Play back audio and video formats that <a href="/wiki/Apple">Apple</a> won't.</p>
+<h2>Commercial</h2>
+<h3><a href="/wiki/1Password">1Password</a></h3>
+<ul>
+<li><a href="https://agilebits.com/onepassword">https://agilebits.com/onepassword</a></li>
+</ul>
+<p>Secret-management. More details <a href="/wiki/1Password">here</a>.</p>
+<h3><a href="/wiki/Arq">Arq</a></h3>
+<ul>
+<li><a href="https://www.arqbackup.com">https://www.arqbackup.com</a></li>
+</ul>
+<p>Encrypted, automated, sane backup to <a href="/wiki/AWS">AWS</a> (<a href="/wiki/S3">S3</a> and <a href="/wiki/Glacier">Glacier</a>) and many other targets.</p>
+<h3>CleanShot</h3>
+<ul>
+<li><a href="https://getcleanshot.com/">CleanShot</a></li>
+</ul>
+<p>I used to recommend <a href="http://skitch.com/">Skitch</a> as:</p>
+<blockquote>
+<p>The quickest and easiest way to not only take screenshots, but annotate them and share them. It also has some nice frills, like history, and not spewing temporary files all over your desktop (like macOS's built-in screenshot capability does).</p>
+</blockquote>
+<p>However, the company that made Skitch was <a href="https://en.wikipedia.org/wiki/Evernote#Skitch">acquired by Evernote in 2011</a>, and I never fully trusted their cloud integration given their <a href="https://en.wikipedia.org/wiki/Evernote#Incidents">history</a>.</p>
+<p>CleanShot carries none of that baggage, has a delightful UX, and if you need history synced across multiple machines, it is easy enough to save your screenshots to a shared folder.</p>
+<h3>Godspeed</h3>
+<ul>
+<li><a href="https://godspeedapp.com/">Godspeed</a></li>
+</ul>
+<p>Feature rich, clean, fast, &quot;TODO&quot; app with macOS and iOS clients.</p>
+<h3>Raycast</h3>
+<p>The new Alfred.</p>
+<ul>
+<li><a href="https://www.raycast.com/">https://www.raycast.com/</a></li>
+</ul>
+<h3><a href="/wiki/SuperDuper%21">SuperDuper!</a></h3>
+<ul>
+<li><a href="http://www.shirt-pocket.com/SuperDuper/">http://www.shirt-pocket.com/SuperDuper/</a></li>
+</ul>
+<p>Whole-disk backup software that has saved my butt on multiple occasions.</p>
+<h3><a href="/wiki/xScope">xScope</a></h3>
+<ul>
+<li><a href="http://xscopeapp.com/">http://xscopeapp.com/</a></li>
+</ul>
+<p>Measure anything on the screen (colors, distances etc). This is the perfect tool for helping you as a web developer to translate a designer's mock into a working web page.</p>
+<h3><a href="/wiki/Spotify">Spotify</a></h3>
+<ul>
+<li><a href="https://www.spotify.com/">https://www.spotify.com/</a></li>
+</ul>
+<p>Free to download and use, but paid if you want to get rid of the ads. On a laptop with a small SSD, this is a great way to retain access to a lot of your music, without actually needing to use up your precious drive space.</p>
+<h3><a href="/wiki/iStat_Menus">iStat Menus</a></h3>
+<ul>
+<li><a href="http://bjango.com/mac/istatmenus/">http://bjango.com/mac/istatmenus/</a></li>
+</ul>
+<p>Ridiculously configurable menu meters. This is arguably superior to <a href="/wiki/MenuMeters">MenuMeters</a> and <a href="/wiki/Temperature_Monitor">Temperature Monitor</a>, but it's not free.</p>
+<h2>Hall of fame</h2>
+<p>These are products I used to list as &quot;must haves&quot;:</p>
+<h3><a href="/wiki/Adium">Adium</a></h3>
+<ul>
+<li><a href="http://www.adium.im/">http://www.adium.im/</a></li>
+</ul>
+<p>This was really the only sane choice on <a href="/wiki/macOS">macOS</a>.</p>
+<p>I stopped using it on changing jobs (at the old job I used Google chat; then it was Facebook messenger; finally I've now worked at three companies that use Slack).</p>
+<h3>Alfred</h3>
+<ul>
+<li><a href="https://www.alfredapp.com/">https://www.alfredapp.com/</a></li>
+</ul>
+<p>Superseded by Raycast.</p>
+<h3><a href="/wiki/Bartender">Bartender</a></h3>
+<ul>
+<li><a href="http://www.macbartender.com/">http://www.macbartender.com/</a></li>
+</ul>
+<p>Clear up menu bar clutter, while still keeping useful functionality one click away. I liked this enough to pay for a license even though I hadn't reached the end of the trial period.</p>
+<p>Superseded by <a href="https://icemenubar.app/">Ice</a> when <a href="https://www.reddit.com/r/macapps/comments/1d7zjv8/bartender_5_not_safe_anymore_warning_from/">Bartender did a rug-pull</a> (the app got sold, and certificates were changed, without warning; serious questions exist about the reliability and intentions of the new owner).</p>
+<h3><a href="/wiki/Chrome">Chrome</a></h3>
+<ul>
+<li><a href="http://www.google.com/chrome">http://www.google.com/chrome</a></li>
+</ul>
+<p>Not as pretty as <a href="/wiki/Apple%27s">Apple's</a> own <a href="/wiki/Safari">Safari</a>, but despite the fact it shares many internals, 2012 was the year I finally had to recognize that Chrome had gotten the edge in features and stability. At the time of writing, I still use <a href="/wiki/Chrome">Chrome</a>, but only at work (where is mandated). Elsewhere, I use <a href="/wiki/Orion">Orion</a> (for it's privacy features) and <a href="/wiki/Edge">Edge</a> (for use cases where Orion is broken).</p>
+<h3><a href="/wiki/Divvy">Divvy</a></h3>
+<ul>
+<li><a href="http://mizage.com/divvy/">http://mizage.com/divvy/</a></li>
+</ul>
+<p>Throw windows around your screen(s) with user-definable keyboard short cuts.</p>
+<p>Superseded by <a href="/wiki/Slate">Slate</a>.</p>
+<h3><a href="/wiki/Isolator">Isolator</a></h3>
+<ul>
+<li><a href="http://willmore.eu/software/isolator/">http://willmore.eu/software/isolator/</a></li>
+</ul>
+<p>Superseded by <a href="https://github.com/dwarvesf/Blurred">Blurred</a>.</p>
+<p>Makes the frontmost application stand out and the others fade into the background; excellent for when you have multiple windows that look alike, or too much screen real estate.</p>
+<h3><a href="/wiki/iTerm_2">iTerm 2</a></h3>
+<ul>
+<li><a href="http://www.iterm2.com/">http://www.iterm2.com/</a></li>
+</ul>
+<p>More features than you need, but I'll bet it also has the ones you do need and can't get anywhere else. The sole gripe: it's slower than <a href="/wiki/Apple%27s">Apple's</a> own <a href="/wiki/Terminal">Terminal</a>.</p>
+<p>Superseded by <a href="https://sw.kovidgoyal.net/kitty/">kitty</a>.</p>
+<h3><a href="/wiki/Mouse_Locator">Mouse Locator</a></h3>
+<ul>
+<li><a href="http://www.2point5fish.com/">http://www.2point5fish.com/</a></li>
+</ul>
+<p>Helps you find the mouse pointer immediately when you haven't touched the mouse for a while; pretty much a must-have if you work with multiple displays, where the mouse can get lost.</p>
+<p>Superseded by equivalent built-in feature in <a href="/wiki/macOS">macOS</a>, since version 10.11 &quot;<a href="/wiki/El_Capitan">El Capitan</a>&quot;, which means you can magnify the mouse by &quot;shaking&quot; the mouse pointer.</p>
+<h3><a href="/wiki/Net_Monitor">Net Monitor</a></h3>
+<ul>
+<li><a href="http://homepage.mac.com/rominar/net.html">http://homepage.mac.com/rominar/net.html</a> (and available on the Apple App Store)</li>
+</ul>
+<p>See what's going in and out of your tubes. Sadly, doesn't work on Apple Silicon, so I cover the gap with <a href="/wiki/iStat_Menus">iStat Menus</a>.</p>
+<h3><a href="/wiki/Skype">Skype</a></h3>
+<ul>
+<li><a href="http://www.skype.com/">http://www.skype.com/</a></li>
+</ul>
+<p>Not <a href="/wiki/open_source">open source</a>, but free, and pretty darn useful.</p>
+<p>I actually prefer FaceTime for call quality, but not everyone has it as it is Apple-only. Also, I've found it to be terribly buggy over many years now. 😢</p>
+<h3><a href="/wiki/Slate">Slate</a></h3>
+<ul>
+<li><a href="https://github.com/jigish/slate">https://github.com/jigish/slate</a></li>
+</ul>
+<p>Awesome <a href="/wiki/open_source">open source</a> window management (keyboard control, auto-layout, multi-monitor configuration).</p>
+<p>Superseded by <a href="/wiki/Hammerspoon">Hammerspoon</a>.</p>
+<h3><a href="/wiki/Stay">Stay</a></h3>
+<ul>
+<li><a href="http://cordlessdog.com/stay/">http://cordlessdog.com/stay/</a></li>
+</ul>
+<p>Remembers and restores window locations. Great for when you are plugging into and out of external displays. Not entirely reliable, but even working 90% properly 75% of the time beats setting up all your windows by hand.</p>
+<p>Superseded by <a href="/wiki/Slate">Slate</a>.</p>
+<h3><a href="/wiki/Scroll_Reverser">Scroll Reverser</a></h3>
+<ul>
+<li><a href="http://pilotmoon.com/scrollreverser/">http://pilotmoon.com/scrollreverser/</a></li>
+</ul>
+<p>Enables you to independently control the direction of the mouse scroll wheel and the trackpad (very useful if you prefer &quot;natural&quot; scrolling on the trackpad but not on the mouse).</p>
+<p>The necessary settings are a little bit confusing, at least for me:</p>
+<ul>
+<li>&quot;Scroll direction: natural&quot;: should be turned <strong>off</strong> in the System preferences for both the mouse and the trackpad (the checkboxes are linked anyway)</li>
+<li>In Scroll Reverser:
+<ul>
+<li>Top level &quot;Reverse Scrolling&quot; menu item should be checked</li>
+<li>Submenu &quot;Reverse Horizontal&quot; should be checked (weird, isn't it?)</li>
+<li>Submenu &quot;Reverse Vertical&quot; should be checked</li>
+<li>Submenu &quot;Reverse Trackpad&quot; should be checked</li>
+<li>Submenu &quot;Reverse Mouse&quot; should <strong>not</strong> be checked</li>
+</ul>
+</li>
+</ul>
+<p>Uninstalled when I switch back to using a Magic Trackpad instead of a mouse.</p>
+<h3>Things</h3>
+<p>Prettiest to-do lists this side of Cupertino. Very simple, and not cross-platform, but the features that it does have work extremely well.</p>
+<ul>
+<li><a href="https://culturedcode.com/things/">Things</a></li>
+</ul>
+<p>Superseded by <a href="https://godspeedapp.com/">Godspeed</a>.</p>
+<h3><a href="/wiki/Propane">Propane</a></h3>
+<ul>
+<li><a href="http://propaneapp.com/">http://propaneapp.com/</a></li>
+</ul>
+<p>We used Campfire at my old work, and this is the nicest way to be in Campfire. The killer feature is the regex-based alert notifications.</p>
+<p>Uninstalled on switching jobs.</p>
+<h3><a href="/wiki/MenuMeters">MenuMeters</a></h3>
+<ul>
+<li><a href="http://www.ragingmenace.com/software/menumeters/index.html">http://www.ragingmenace.com/software/menumeters/index.html</a></li>
+</ul>
+<p>I used to use it for the disk activity meter, which provides visual feedback of when the solid-state drive on my MacBook Air is actually doing something, and also gave me convenient one-click access to all my volumes as well as showing their current usage and capacity levels.</p>
+<p>Superseded by <a href="/wiki/iStat_Menus">iStat Menus</a>.</p>
+<h3><a href="/wiki/Temperature_Monitor">Temperature Monitor</a></h3>
+<ul>
+<li><a href="http://www.bresink.com/osx/TemperatureMonitor.html">http://www.bresink.com/osx/TemperatureMonitor.html</a></li>
+</ul>
+<p>Measure how hot your machine is running. Overheating killed my last machine, and I find temperature to be a useful indicator of how hard I'm pushing the machine; it can be a clue that you can afford to turn on more bells or whistles, or cut back.</p>
+<p>Superseded by <a href="/wiki/iStat_Menus">iStat Menus</a>.</p>
+<h3><a href="/wiki/Notational_Velocity">Notational Velocity</a></h3>
+<ul>
+<li><a href="http://notational.net/">http://notational.net/</a></li>
+</ul>
+<p>Dead simple management of notes and text files. Keep everything indexable by Spotlight, and without vendor lockin, while still having access to conveniences like search, tags/labels, and wiki-style links between notes.</p>
+<p>Superseded by <a href="/wiki/nvALT">nvALT</a>.</p>
+<h3><a href="/wiki/nvALT">nvALT</a></h3>
+<ul>
+<li><a href="http://brettterpstra.com/projects/nvalt/">http://brettterpstra.com/projects/nvalt/</a></li>
+</ul>
+<p>A fork of <a href="/wiki/Notational_Velocity">Notational Velocity</a> with some additional features. To be honest, I didn't really care too much about the extra features, but nvALT did fix a bug or two with Notational Velocity; that was enough to make me make the switch.</p>
+<p>Superseded by <a href="https://github.com/wincent/corpus">Corpus</a>, which is a <a href="/wiki/JavaScript">JavaScript</a> clone of nvALT.</p>
+<h3><a href="/wiki/f.lux">f.lux</a></h3>
+<ul>
+<li><a href="http://stereopsis.com/flux/">http://stereopsis.com/flux/</a></li>
+</ul>
+<p>Softens your display after sunset, so that you don't have to bathe yourself in the eerie, unnatural glow of the computer screen.</p>
+<p>Superseded by equivalent built-in &quot;Night Shift&quot; feature in <a href="/wiki/macOS">macOS</a> 10.12 &quot;Sierra&quot;.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DNS-based blacklisting • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>DNS-based blacklisting</h1></div><div class="metadata"><relative-time created="1153216805" updated="1710259978">Created 7/18/2006, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/email">email</a></li><li><a href="/tags/sendmail">sendmail</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>This example shows how to add a <a href="/wiki/DNS-based_blacklist">DNS-based blacklist</a> to the <a href="/wiki/sendmail">sendmail</a> configuration file. In this case the SBL-XBL list provided by <a href="/wiki/Spamhaus">Spamhaus</a>, one of the most reputable and accurate blacklists, is used for the purposes of illustration.</p>
+<pre><code>FEATURE(`dnsbl',`sbl-xbl.spamhaus.org',`&quot;554 Rejected &quot; $&amp;{client_addr} &quot; - see http://www.spamhaus.org/ then contact &quot; $&amp;{postmaster_addr}')dnl
+</code></pre>
+<p>To minimize the damage done in the unlikely event of obtaining a false positive the error message that is returned to the client includes the following elements:</p>
+<ul>
+<li>A 554 error code (as described in <a href="/wiki/RFC_821">RFC 821</a>/<a href="/wiki/RFC_2821">RFC 2821</a>).</li>
+<li>The connecting IP address found in the blacklist.</li>
+<li>A link to the <a href="/wiki/Spamhaus">Spamhaus</a> website where the sender can find out what the blacklisting means, why it occurred, and how to be removed from the blacklist.</li>
+<li>An alternative contact address of the form <code>postmaster@example.com</code> that can be used to inform the server administrator, bypassing <a href="/wiki/DNS-based_blacklist">DNS-based blacklist</a> checks.</li>
+</ul>
+<p>This specification depends on a special ruleset that defines the <code>postmaster_addr</code> macro (see &quot;<a href="/wiki/Store_postmaster_address">Store postmaster address</a>&quot;), as well as the modification of the following line in the configuration file:</p>
+<pre><code>dnl FEATURE(delay_checks)dnl
+</code></pre>
+<p>Which should be changed to:</p>
+<pre><code>FEATURE(`delay_checks', `friend')dnl
+</code></pre>
+<p>After making these changes the <a href="/wiki/Sendmail">Sendmail</a> configuration should be rebuilt and the daemon restarted.</p>
+<p>Appropriate entries should be added to the <code>/etc/mail/access</code> file to ensure that delivery to the <code>postmaster</code> and <code>abuse</code> addresses is not blocked by the blacklist:</p>
+<pre><code>Spam:abuse@	        →FRIEND
+Spam:postmaster@	→FRIEND
+</code></pre>
+<p>To test that the blacklisting works correctly, messages can be sent to <a href="mailto:nelson-sbl-test@crynwr.com">nelson-sbl-test@crynwr.com</a> and <a href="mailto:nelson-xbl-test@crynwr.com">nelson-xbl-test@crynwr.com</a>.</p>
+<p>To test that the postmaster address is <em>not</em> being subjected to DNS-based blacklisting (a requirement of <a href="/wiki/RFC_2821">RFC 2821</a>) you can connect via telnet from the server to be tested to:</p>
+<p>telnet://ns1.crynwr.com</p>
+<p>The telnet-based test will try sending mail to &quot;postmaster@<a href="/wiki/example.com">example.com</a>&quot;, and should the messages should be accepted for delivery.</p>
+<h2>Efficacy</h2>
+<p>During a test period of 24 hours in mid-July 2006 on the <a href="/wiki/wincent.dev">wincent.dev</a> mail server the <a href="/wiki/DNS-based_blacklist">DNS-based blacklist</a> described here stopped 261 connection attempts.</p>
+<p>For other efficacy statistics see <a href="/wiki/combatting_spam">combatting spam</a>.</p>
+<h2>See also</h2>
+<ul>
+<li>&quot;Crynwr spam blocking resources&quot;: <a href="http://www.crynwr.com/spam/">http://www.crynwr.com/spam/</a></li>
+<li>&quot;postmaster.rfc-ignorant.org listing policy&quot;: <a href="http://rfc-ignorant.org/policy-postmaster.php">http://rfc-ignorant.org/policy-postmaster.php</a></li>
+<li><a href="http://www.spamhaus.org/">http://www.spamhaus.org/</a></li>
+<li>List of DNS-based blacklists: <a href="http://spamlinks.net/filter-dnsbl-lists.htm">http://spamlinks.net/filter-dnsbl-lists.htm</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

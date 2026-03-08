@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Renewing Mail certificates in Mac OS X • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Renewing Mail certificates in Mac OS X</h1></div><div class="metadata"><relative-time created="1162647056" updated="1495119989">Created 11/4/2006, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/email">email</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Comodo (new procedure)</h2>
+<ul>
+<li>Using <a href="/wiki/Safari">Safari</a>, go to <a href="http://www.instantssl.com/ssl-certificate-products/free-email-certificate.html">http://www.instantssl.com/ssl-certificate-products/free-email-certificate.html</a></li>
+<li>Fill out the short form and submit</li>
+<li>Check your email for the download link</li>
+<li>Open downloaded file by double-clicking; it will automatically open in the Keychain Access utility</li>
+</ul>
+<h2>Thawte (old procedure)</h2>
+<p><strong>Note:</strong> these notes were made back when Thawte used to give out free personal e-mail certificates, and they <a href="http://www.sslshopper.com/article-thawte-shuts-down-free-email-certificates.html">pulled the plug</a> in late 2009. <a href="http://www.instantssl.com/ssl-certificate-products/free-email-certificate.html">Comodo</a> seems to have taken up the slack.</p>
+<p>These are notes made while renewing my Mail certificates.</p>
+<ul>
+<li>Using <a href="/wiki/Firefox">Firefox</a>, go to: <a href="http://www.thawte.com/">http://www.thawte.com/</a></li>
+<li>From the &quot;quick login&quot; pop-up, choose &quot;Personal E-Mail Certificates&quot;</li>
+<li>Enter your username (your email address) and password (previously used when obtaining initial certificate)</li>
+<li>Once logged in, click on &quot;certificates&quot; (<a href="https://www.thawte.com/cgi/personal/cert/contents.exe">https://www.thawte.com/cgi/personal/cert/contents.exe</a>)</li>
+<li>Click on &quot;view certificate status&quot; (<a href="https://www.thawte.com/cgi/personal/cert/status.exe">https://www.thawte.com/cgi/personal/cert/status.exe</a>)</li>
+<li>Click on &quot;request another&quot; (<a href="https://www.thawte.com/cgi/personal/cert/enroll.exe">https://www.thawte.com/cgi/personal/cert/enroll.exe</a>)</li>
+<li>Under &quot;X.509 Format Certificates&quot; click the &quot;request&quot; button</li>
+<li>Select &quot;Mozilla Firefox/Thunderbird, Netscape Communicator/Messenger&quot; and click the &quot;request&quot; button</li>
+<li>Click the &quot;next&quot; button</li>
+<li>Select your email address from the list and click the &quot;next&quot; button</li>
+<li>Click the &quot;next&quot; button</li>
+<li>In the &quot;Accept Default Extensions&quot; section click the &quot;accept&quot; button</li>
+<li>Select a 2048 bit key and click the &quot;next&quot; button</li>
+<li>Click the &quot;finish&quot; button</li>
+<li>Go back to the certificate manager page (<a href="https://www.thawte.com/cgi/personal/cert/status.exe">https://www.thawte.com/cgi/personal/cert/status.exe</a>)</li>
+<li>Once the certificate &quot;Status&quot; shows as &quot;issued&quot; click on the &quot;Navigator&quot; link</li>
+<li>Click the &quot;fetch&quot; button; Firefox should show a sheet confirming that the certificate has been installed</li>
+<li>Go to the Firefox preferences</li>
+<li>In the section, &quot;Avanzado&quot;, choose &quot;Cifrado&quot; (this is in Spanish; I imagine that in the English version it will be &quot;Advanced&quot; and &quot;Encryption&quot; or similar)</li>
+<li>Click on the button &quot;Ver certificados&quot; (probably &quot;View certificates&quot;)</li>
+<li>Select the appropriate certificate and press &quot;Copia de seguridad&quot; (&quot;Backup&quot;)</li>
+<li>Delete the exported certificate from the Firefox certificate manager</li>
+<li>Quit Firefox</li>
+<li>Drag the exported <code>p12</code> certificate to the Keychain Access application</li>
+<li>Add it to the appropriate keychain; in my case I use a separate keychain for storing email certificates</li>
+<li>Enter the password used when exporting the certificate, and the password for the keychain</li>
+<li>Delete the <code>p12</code> file</li>
+</ul>
+<p>Repeat for any other email addresses.</p>
+<h2>See also</h2>
+<ul>
+<li>&quot;How to Set Up Encrypted Mail on Mac OS X&quot;: <a href="http://www.macdevcenter.com/pub/a/mac/2003/01/20/mail.html?page=1">http://www.macdevcenter.com/pub/a/mac/2003/01/20/mail.html?page=1</a> (written in 2004 but still useful and adaptable to the current version of <a href="/wiki/Mac_OS_X">Mac OS X</a>)</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>OptiPNG • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>OptiPNG</h1></div><div class="metadata"><relative-time created="1259938926" updated="1495119989">Created 12/4/2009, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/png">png</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><a href="/wiki/OptiPNG">OptiPNG</a> is a lossless PNG optimizer which attempts to compress PNG input files by trialling different compression settings and selecting the most effective.</p>
+<p>Even on PNGs which are supposedly already &quot;compressed&quot; for the web it may result in smaller file sizes. For example, running it on the PNG files from the back end of this site yield the following savings (as reported by <code>git show --stat</code>):</p>
+<pre><code>Bin 2884 -&gt; 2427 bytes
+Bin 16163 -&gt; 15652 bytes
+Bin 16246 -&gt; 15659 bytes
+Bin 3347 -&gt; 3201 bytes
+Bin 2788 -&gt; 2674 bytes
+Bin 26517 -&gt; 21955 bytes
+Bin 26468 -&gt; 21842 bytes
+Bin 2201 -&gt; 1909 bytes
+Bin 3599 -&gt; 2947 bytes
+Bin 2071 -&gt; 2000 bytes
+Bin 1902 -&gt; 1786 bytes
+Bin 8967 -&gt; 8935 bytes
+Bin 23940 -&gt; 23582 bytes
+Bin 97216 -&gt; 95668 bytes
+Bin 114918 -&gt; 112295 bytes
+Bin 118535 -&gt; 111923 bytes
+Bin 290811 -&gt; 287774 bytes
+Bin 113158 -&gt; 110234 bytes
+Bin 114715 -&gt; 109674 bytes
+Bin 141275 -&gt; 136350 bytes
+Bin 123273 -&gt; 120513 bytes
+Bin 3197 -&gt; 2185 bytes
+Bin 19002 -&gt; 14716 bytes
+Bin 6849 -&gt; 4470 bytes
+Bin 606 -&gt; 440 bytes
+Bin 1888 -&gt; 1817 bytes
+Bin 3031 -&gt; 2866 bytes
+Bin 505 -&gt; 493 bytes
+Bin 1279 -&gt; 1254 bytes
+Bin 1005 -&gt; 781 bytes
+Bin 356 -&gt; 309 bytes
+Bin 391 -&gt; 387 bytes
+</code></pre>
+<p>Although the savings are modest, and there were many files already compressed with optimal settings (with no change in size), they are still savings.</p>
+<h2>See also</h2>
+<ul>
+<li>Official website: <a href="http://optipng.sourceforge.net/">http://optipng.sourceforge.net/</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

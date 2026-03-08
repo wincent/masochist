@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Clearing up confusion about Synergy version numbers • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/clearing-up-confusion-about-synergy-version-numbers">Clearing up confusion about Synergy version numbers</a></h1><div class="metadata"><relative-time created="1245932084" updated="1584053324">Created 6/25/2009, updated 3/12/2020</relative-time><span>4 minute read</span></div><div class="prerendered"><p>I occasionally get questions on the <a href="/forums">forums</a> and in emails asking me about the different versions of <a href="/wiki/Synergy">Synergy</a>. Here's an example:</p>
+<blockquote>
+<p>Synergy notified me today that there was a new version available (apparently I've missed many versions between 3.2.1b and 3.4). I was looking at the version history page, and I'm kinda confused. It appears the version number went from 3.2 up to 3.5x for awhile, then it went back down to 3.2.x, and now it jumped to 3.4. Is 3.4 really the latest release? What was the 3.5 series?</p>
+</blockquote>
+<p>To clear things up a little bit I'm publishing my reply here for everybody.</p>
+<h2>Why do the version numbers go up and down?</h2>
+<p>Development occurs in parallel branches. The word &quot;branches&quot; is used because of the analogy with tree branches spreading out from a common starting point (the tree trunk); it describes how different lines of development can originate from the same code base but evolve in different directions and at different rates.</p>
+<pre><code>                      * (development starts)
+                      |
+                     0.1                                     | (2002)
+                      |                                      |
+                     0.2                                   time
+                      |                                   extends
+                 (intermediate                           downwards
+                   versions)                                 |
+                      |                                      |
+                     1.0                                     v (present)
+                      |
+                 (intermediate
+                   versions)
+                      |
+                     2.0
+                      |
+                 (intermediate
+                   versions)
+                      |
+                     3.0
+                      |
+                 (intermediate
+                   versions)
+                      |
+                    3.1.5
+                      |\
+                    3.2 \
+                    / |  \
+                   /  |   \
+                  /   |    \
+                 /    |     \
+                /     |      \ &lt;-- Leopard Garbage Collection
+               /      |       \            rewrite
+              /       |        \
+             /        |         \
+            /         |          \
+           /          |         3.5a
+          /           |           |
+         /            |         3.5a2
+      3.3             |           |
+(MacHeist promo)      |         3.5a3
+                      |           |
+                      |         3.5a4
+                      |           |
+                      |         3.5a5
+                      |           |
+                      |         3.5a6
+                    3.2.1b        |
+                      |         3.5a7
+                    3.2.1         |
+                      |           |
+                    3.2.2         |
+                      |           |
+                     3.4          |
+                      |         3.5a9
+                      |           |
+                      |         3.5.1a
+                      |           |
+                      |         3.5.2a
+                      |           |
+                      |         3.5.4a
+                      |           |
+                      |         3.5.5a
+                      |           | \
+                      |           |  \
+                      |           |   \
+                      |           |    \ &lt;-- Snow Leopard branch starts
+                      |           |     \
+                      |           |      \
+                      |           |       \
+                      |           |        \
+                      |           |         \
+                      |           |        4.0.1a
+                      |           |          |
+                      |           |        4.0.1b
+                    3.4.1         |          |
+                      |           |          |
+                      v           v          v
+</code></pre>
+<p>Releases such as 3.2, 3.3 and 3.4 all belong to the &quot;<a href="/wiki/Jaguar">Jaguar</a>&quot; branch. The branch is named like that because all the releases on that branch are designed to run on any version of <a href="/wiki/Mac_OS_X">Mac OS X</a> from 10.2.8 <a href="/wiki/Jaguar">Jaguar</a> onwards. At the time of writing that means that they'll even work as far up as <a href="/wiki/Snow_Leopard">Snow Leopard</a>. It is unlikely that any further development will occur on this branch.</p>
+<p>Releases in 3.5 series belong to the &quot;<a href="/wiki/Leopard">Leopard</a>&quot; branch. This was the experimental, cutting-edge of development during the <a href="/wiki/Leopard">Leopard</a> product cycle. It was a complete rewrite which used new technologies and <em>only</em> ran on <a href="/wiki/Mac_OS_X">Mac OS X</a> 10.5 <a href="/wiki/Leopard">Leopard</a> and up. Due to an <a href="/wiki/Apple">Apple</a> bug in Leopard (see <a href="/issues/640">bug #640</a>), this series could occasionally suffer from crashes, so all releases in the series were labelled as &quot;alpha&quot; status. No further development work will occur on this branch.</p>
+<p>Releases in the 4.0 series belong to the &quot;<a href="/wiki/Snow_Leopard">Snow Leopard</a>&quot; branch. This is where current development efforts are targeted. Releases from this series will only run on Snow Leopard and up.</p>
+<p>Note that strictly speaking version 3.3 isn't part of the linear development of the &quot;<a href="/wiki/Jaguar">Jaguar</a>&quot; branch; rather it's off on a side branch. This was a special version made especially for the MacHeist &quot;Giving Tree&quot; promotion. It required special changes to be made to the code, so development work was done on its own branch. See the <a href="/blog/frequently-asked-questions-about-synergy-and-macheist">MacHeist FAQ</a> for more information.</p>
+<p>You'll notice in the above diagram that within each branch the version numbers do always increment and they never &quot;go backwards&quot;, <em>but</em> that if you look at things in a strictly date-based chronological order then sometimes the version numbers may seem to be going up and down.</p>
+<h2>What does all this mean for me?</h2>
+<p>If you want the latest, stable releases and are running <a href="/wiki/Snow_Leopard">Snow Leopard</a> then go for version 4.0 or above. For many users the 4.0 series is a free upgrade (see <a href="/blog/synergy-4.0-upgrades">this FAQ</a> to find out whether you qualify for a free upgrade). If you are not yet ready to upgrade the 3.5 series will still work for you, but further updates to that series are not anticipated.</p>
+<p>If you are running and older version of <a href="/wiki/Mac_OS_X">Mac OS X</a>, or can't or don't wish to upgrade to 4.0 yet, pick a release from the 3.4 series.</p>
+<p>The latest release from each branch is always available from the <a href="/products/synergy/download">download page</a>.</p>
+</div><ul class="tags"><li><a href="/tags/synergy">synergy</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/why-merging-hurts-in-subversion-but-is-easy-in-git">← Why merging hurts in Subversion but is easy in Git</a></div><div class="post-nav-next"><a href="/blog/wincent-login-tool-1.0-and-2.0-released-and-source-code-repository-now-public">Wincent Login Tool 1.0 and 2.0 released and source code repository now public →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

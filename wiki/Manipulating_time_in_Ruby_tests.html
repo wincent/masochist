@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Manipulating time in Ruby tests • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Manipulating time in Ruby tests</h1></div><div class="metadata"><relative-time created="1296781858" updated="1584053324">Created 2/4/2011, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/ruby">ruby</a></li><li><a href="/tags/testing">testing</a></li><li><a href="/tags/timecop">timecop</a></li><li><a href="/tags/delorean">delorean</a></li><li><a href="/tags/time.warp">time.warp</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>There are lots of possibilities discussed in <a href="http://stackoverflow.com/questions/1215245/ruby-unit-testing-how-to-fake-time-now">this question</a> on Stack Overflow, &quot;Ruby unit testing: how to fake Time.now?&quot;, but basically the answers boil down to:</p>
+<ul>
+<li>stub <code>Time.now</code> manually using your existing test double framework (<a href="/wiki/RR">RR</a> or whatever)</li>
+<li>use a specialized time-stubbing library which provides convenience methods for stubbing <code>Time.now</code>; examples include:
+<ul>
+<li>Delorean: <a href="https://github.com/bebanjo/delorean">https://github.com/bebanjo/delorean</a></li>
+<li>Timecop: <a href="https://github.com/jtrupiano/timecop">https://github.com/jtrupiano/timecop</a></li>
+<li>time_warp: <a href="https://github.com/harvesthq/time-warp">https://github.com/harvesthq/time-warp</a></li>
+</ul>
+</li>
+<li>roll your own time-stubbing library</li>
+<li>set up your test fixtures or factories to create objects with the desired timestamps already in place</li>
+<li>don't stub; instead refactor your code so that you can pass in the &quot;clock&quot; that will be queried for what the time is</li>
+</ul>
+<h2>Comparison of stubbing libraries</h2>
+<p>Personally I've generally tried to eschew stubbing of a core class like <code>Time</code> and have tried to use the &quot;factory&quot; approach. This, however, can get a bit tiresome, depending on how much time-sensitive specs you have to write.</p>
+<h3>Delorean</h3>
+<p>Is a simple library whose implementation consists of a single file about 50 lines long.</p>
+<p>It provides the following &quot;cute&quot; <a href="/wiki/API">API</a> (cute because of the homage to the &quot;Back to the Future&quot; films):</p>
+<ul>
+<li><code>Delorean.time_travel_to</code> taking a string that will be parsed using the <code>Chronic</code> library (eg. &quot;2 seconds ago&quot;), or a <code>Date</code> or <code>Time</code> instance</li>
+<li><code>Delorean.jump</code> taking an offset in seconds to move forward or back in time</li>
+<li><code>Delorean.back_to_the_present</code></li>
+</ul>
+<p>The <code>#time_travel_to</code> method takes an optional block that can be used to limit the scope of the stubbing to that block only.</p>
+<h3>Timecop</h3>
+<p>This is arguably the most complex and comprehensive of the stubbing libraries, stubbing not only <code>Time.now</code> but also <code>Date.today</code> and <code>DateTime.now</code> (if and only if <code>Date</code> and <code>DateTime</code> have been made available via a <code>require 'date'</code> beforehand).</p>
+<p>The following <a href="/wiki/API">API</a> methods are provided:</p>
+<ul>
+<li><code>Timecop.freeze</code> stubs <code>Time.now</code> (et al) to always return a fixed (non-advancing) value</li>
+<li><code>Timecop.travel</code> jumps to the specified time</li>
+<li><code>Timecop.return</code> restores <code>Time.now</code> (et al) to their unmodified behavior</li>
+</ul>
+<p>Both <code>#freeze</code> and <code>#travel</code> take an optional block that can be used to limit the scope of the stubbing to that block only.</p>
+<p>Both take a parameter which may be:</p>
+<ul>
+<li>a <code>Time</code>, <code>DateTime</code> or <code>Date</code> instance</li>
+<li>a numeric offset in seconds to move forwards (or backwards) in time</li>
+<li>a year, month, day, hour, minute, second tuple (all values are optional, defaulting to 0 if not present)</li>
+</ul>
+<h3>time_warp</h3>
+<p>This is probably the simplest of the three, having only one method in the API, <code>pretend_now_is</code>, which takes a block and twiddles with the time for the duration of the block.</p>
+<h3>Overall evaluation</h3>
+<ul>
+<li>Delorean:
+<ul>
+<li>pros: simple implementation</li>
+<li>cons: dependency on Chronic gem</li>
+</ul>
+</li>
+<li>Timecop:
+<ul>
+<li>pros:
+<ul>
+<li>shorter method names</li>
+<li>no redundancy in the API design (ie. the <code>#travel</code> method encompasses the functionality of both the <code>#time_travel_to</code> and <code>#jump</code> methods in Delorean)</li>
+<li>nice coherence in the API design (ie. both <code>#freeze</code> and <code>#travel</code> take the same kinds of parameters and optional blocks)</li>
+<li>more features (eg. <code>#freeze</code> method)</li>
+<li>more complete coverage of time sources (ie. of <code>Date.today</code> and <code>DateTime.now</code> in addition to <code>Time.now</code>)</li>
+</ul>
+</li>
+<li>cons: more complex implementation</li>
+</ul>
+</li>
+<li>time_warp:
+<ul>
+<li>pros: *sound of crickets*</li>
+<li>cons: extremely limited feature set</li>
+</ul>
+</li>
+</ul>
+<p>While I like the simplicity of the Delorean implementation, I think Timecop has a considerably better API. Despite being more complex, the codebase is still small enough to review in a few minutes and to me it looks to be bug free, so my recommendation for now is to go with Timecop.</p>
+<h2>See also</h2>
+<ul>
+<li>partial list of Ruby &quot;time warping&quot; libraries: <a href="http://ruby-toolbox.com/categories/time_warping.html">http://ruby-toolbox.com/categories/time_warping.html</a></li>
+<li>an example of a &quot;roll your own&quot; library: <a href="http://snippets.dzone.com/posts/show/4776">http://snippets.dzone.com/posts/show/4776</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

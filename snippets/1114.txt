@@ -1,0 +1,2 @@
+
+952d4ea Make issues "open" or "closed" only

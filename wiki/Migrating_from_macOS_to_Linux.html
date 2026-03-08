@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Migrating from macOS to Linux • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Migrating from macOS to Linux</h1></div><div class="metadata"><relative-time created="1496042675" updated="1710338466">Created 5/29/2017, updated 3/13/2024</relative-time></div><ul class="tags"><li><a href="/tags/macos">macos</a></li><li><a href="/tags/linux">linux</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Around May 2017 I started <a href="https://twitter.com/wincent/status/868726264357572608">seriously thinking of switching to Linux</a> for my next machine. I've revisited the topic on multiple occasions. Here are some notes made while thinking through the topic.</p>
+<h2>Is this viable?</h2>
+<p>At its core, this may be realistic because:</p>
+<ul>
+<li>I spend most of my working life in Chrome and the Terminal.</li>
+<li>I had a <a href="/blog/email">mutt</a>-based email set-up that I was pretty happy with, and could easily resuscitate it; failing that, I'm relatively satisfied with the Gmail web interface.</li>
+<li>You can get some very powerful hardware (with actual ports and a quality keyboard) on the Linux side at a reasonable price.</li>
+</ul>
+<p>But there are some pretty big downsides:</p>
+<ul>
+<li>Need to find replacements for indispensible software, and go without &quot;dispensible-but-preferred&quot; software.</li>
+<li>Can't sync an iPhone with Linux, so would (<em>gasp!</em>) have to switch to Android.</li>
+</ul>
+<h2>What's the motivation?</h2>
+<ul>
+<li>Apple has a penchant for breaking things in unexpected and arbitrary ways. For example, the introduction of S.I.P. (System Integrity Protection) — laudable though it may be from a security perspective — basically broke all RubyGem installs by default. Or the way Sierra broke Karabiner, which I utterly rely on.</li>
+<li>iTerm is so slow, and it appears that macOS's own graphics APIs are the bottleneck; this is fine on the laptop screen, but a real killer when plugged into a 4K external display.</li>
+<li>Apple is going nowhere fast with its hardware, with the last MacBook Pros being an insane cluster fuck of dongles, Touch Bars and no compelling performance or capacity upgrades in exchange for the lost convenience: I'd much rather have a &quot;PC&quot; laptop, even an ugly one, with a bunch of ports, an SD card slot, a bunch of RAM, and no ridiculous Touch Bar. The new keyboard is infamously prone to failure but basically can't be repaired (you have to replace the whole top plate, apparently). It also departs from the classic &quot;inverted-T&quot; cluster for the cursor keys. In short, it's a mess.</li>
+<li>The <a href="https://system76.com/laptops/oryx">System76 Oryx Pro</a> looks insanely powerful, and it comes with Linux installed by default (it also has a smaller, &quot;sexier&quot; sibling in the form of the <a href="https://system76.com/laptops/galago">Galago Pro</a>, which doesn't have the unnecessary number pad nor the ridiculously off-center trackpad).</li>
+<li>I'm not even wedded to the idea of this Linux box being a laptop (portability is overrated, especially if you keep your Apple laptop around for those times when you need something on the go). My favorite machine out there right now is the <a href="https://www.compulab.com/products/embedded-pcs/">Compulab Airtop3</a>; there's a great <a href="https://youtu.be/35OyZzCvG0g">video review here</a> and <a href="https://fit-iot.com/web/products/airtop3/">pricing information is here</a>, but the TL;DR is that this is a passively cooled (ie. basically silent) PC with a small form factor, powerful specs, reasonable pricing, easy access to internals, and beautiful design that leverages heat pipes to transport heat to the outside of the case (which can get quite hot). I love this thing.</li>
+</ul>
+<h2>Are there alternatives to switching?</h2>
+<ul>
+<li>
+<p><strong>Buying refurbished:</strong> Apple used to sell refurbished 2015 MacBook Pros (the last &quot;good&quot; Apple laptops). You could buy one of these — and I did exactly that in 2017; I'm still using it now — and hope that Apple unfucks their laptop line by the time the refurbished one dies. At the time of writing, the oldest refurbished laptops that Apple sells now are 2017 models.</p>
+</li>
+<li>
+<p><strong>Waiting:</strong> Hold on long enough, and Apple just might get their shit together. I've grown increasingly skeptical about this because they seem utterly committed to reducing machine profile at all costs. This means that for the foreseeable future we're going to have ultra-thin machines with:</p>
+<ul>
+<li>
+<p>Useless Touch Bars.</p>
+</li>
+<li>
+<p>Scarce ports.</p>
+</li>
+<li>
+<p>Flaky keyboards (even though they've apparently improved the keyboards in 2020 models, I don't think it's possible to produce a truly <em>good</em> keyboard when the design envelope includes a hard height constraint of a a few millimeters).</p>
+</li>
+<li>
+<p>Thermal profiles that lead to chips which can burst to impressive peak performance levels only for short intervals before overheating and triggering horrible fan noise and worse still, thermal throttling which massively degrades performance. You don't even have to push the machine hard to get the fans to spin up (as I write this, merely having a podcast playing on YouTube in the background is enough to peg my fans at a steady 6000 RPM, keeping the CPUs down in the mid-60ºC range). The big question is how far Apple Silicon will go towards delivering on its promise of &quot;powerful, efficient, cool: pick three&quot;; it seems clear that we should expect a significant improvement, otherwise Apple wouldn't bother turning its entire world upside down, but at the same time, there are some pesky aspects of the law of physics that have long since troubled us after a few decades of Moore's Law-fueled good times. We'll see.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Don't switch to Linux; switch to an iMac instead:</strong> Even the cheapest, base-spec iMac side-steps some of the main problems with Apple's laptops (ie. Touch Bar, ports, keyboards) and they have gorgeous screens built in to a fantastic form factor at a reasonable price.</p>
+<p>Obviously, an iMac is still susceptible to the problems with the evolution of macOS and perhaps less obviously also prone to problems related to thermal limitations. Based on things I've heard in YouTube reviews, I gather that these machines also end up sounding a bit like hair-dryers when pushed hard. That in turn means that if you want to increase the specs on the machine to make it do more with less effort, you very quickly get into unafforable price ranges. As a crude illustration, the cheapest 21.5&quot; and 27&quot; iMacs at the time of writing (September 2020) are 1,299€ and 2,099€ respectively. Any upgrade to RAM, disk or CPU attracts is bought at an absurd premium. Cranking up the add-ons, you can dial up the price as high as 3,718€ or 10,7930€ for the 21.5&quot; and 27&quot; models respectively. Obviously, nobody in their right mind would do this. The iMac Pro is even more belied-beggaring. Prices start at 5,499€ and go as high as 16,209€.</p>
+<p>The Mac Pro of course doesn't warrant any kind of serious consideration, starting at 6,499€ and going as high as 66,299€. A screen will set you back an additional 5,499€ without a stand; add that in and opt for a matte screen and your bill will run up to 7,598€.</p>
+<p>Back in the 90s and early 2000s I bought several pro desktops from Apple; starting with a <a href="https://everymac.com/systems/apple/powermac/specs/powermac_7600_120.html">PowerMac 7600</a> in 1996, and later a G4 and then a G5. And then Apple brought out it's first Intel-based iMac and from that point on its pro line became totally unappealing: always overpriced, and often underpowered.</p>
+</li>
+<li>
+<p><strong>Don't migrate; supplement your Apple laptop with another machine:</strong> I like simplicity and so since about 2011 I've had a one-machine-at-a-time policy. I don't want to be juggling and syncing data between machines. I took this policy so far, in fact, that I didn't even own a machine of my own from 2011 to 2017; I just used the machine provided by my employer and made sure all of my files were kept in the cloud.</p>
+<p>But, it's hard to <em>migrate</em>; that's what this whole document is about, after all. There are some things that suck about Apple hardware and macOS, but going to Linux isn't a panacea because it means accepting the things that suck about that instead, while leaving behind the things that were really great about Apple.</p>
+<p>So, given this unsavory proposal, might we consider a compromise position? For example, have a powerful Linux desktop (it need not even be a laptop) optimized for demanding &quot;work&quot; type activities: coding, recording screencasts etc, and keep the Apple laptop around for those things that would be really unpleasant to do on Linux (eg. managing a photo library, editing screencasts and photos etc), and critically, I could stick with the iPhone, syncing it to the Apple laptop.</p>
+<p>If you do this, you can optimize for a no-compromise machine that is <em>really</em> good at its dedicated task. I'm thinking here of a machine that would optimize first and foremost for quiet operation, then consistently powerful performance (ie. not bursts of performance alternating with thermal throttling), and finally for price. The only remaining hurdle to overcome would be finding adequate replacements for tools like Karabiner-Elements. We might be able to get some of the way there, but I believe the only way to truly replace it would be to write my own, which would be rather difficult.</p>
+</li>
+</ul>
+<h2>Gotchas</h2>
+<p>I would need (or strongly want) to find workable replacements for everything on the <a href="/wiki/OS_X_%22must_haves%22">OS X &quot;must haves&quot;</a> page, and a few other apps that I haven't listed there.</p>
+<ul>
+<li><strong>Flux:</strong> Can probably replace with <a href="http://jonls.dk/redshift/">Redshift</a>.</li>
+<li><strong>Hammerspoon (and Karabiner-Elements):</strong> Probably screwed here; will likely be a lot of work to replace these.</li>
+<li><strong>Homebrew:</strong> Might miss the convenience here, but can get by without it, I think; as I haven't chosen a distro yet, not clear how good I can expect the native package management to be.</li>
+<li><strong>Isolator:</strong> No idea.</li>
+<li><strong>iTerm 2:</strong> Will have no trouble finding a performant replacement, but there may be some niche features that I miss.</li>
+<li><strong>CleanShot:</strong> Oh well, was nice knowing you. Will just have to settle for whatever is out there.</li>
+<li><strong>OmniDiskSweeper:</strong> No idea, but I expect there are viable alternatives out there.</li>
+<li><strong>1Password:</strong> Will be stuck with web view for foreseeable future.</li>
+<li><strong>Alfred:</strong> Will miss the snippets support and the auto-text expansion. There is a project called Albert, but I suspect it is missing a bunch of features.</li>
+<li><strong>Arq:</strong> Will sorely miss this one, but I believe there are less sophisticated alternatives that will meet the need.</li>
+<li><strong>Net Monitor:</strong> Sorry to see you go, after about 16 years of faithful service.</li>
+<li><strong>Super Duper!</strong> Not sure how many bootable backups I expect to make, but will have to find an alternative.</li>
+<li><strong>xScope:</strong> No idea.</li>
+<li><strong>Spotify:</strong> Web client? (There is an &quot;unsupported&quot; client <a href="https://www.spotify.com/us/download/linux/">available</a> from Spotify.)</li>
+<li><strong>iStat Menus:</strong> Will miss these little suckers.</li>
+<li><strong>Bartender:</strong> Maybe not relevant?</li>
+</ul>
+<p>Other apps that I haven't listed on that page but which I would miss:</p>
+<ul>
+<li><strong>Screenflow</strong></li>
+<li><strong>Fantastical</strong></li>
+<li><del><strong>Sync:</strong> Seems that only <a href="https://www.sync.com/help/general-limits-when-using-sync/#glinux">web-based access is available for now</a>.</del><sup class="footnote-ref"><a href="#fn-resilio" id="fnref-resilio" data-footnote-ref>1</a></sup></li>
+<li><strong>KeyCastr</strong></li>
+<li><strong>Marked 2</strong></li>
+<li><strong>Monodraw</strong></li>
+<li><strong>Photos:</strong> Yes, this sucks compared to Aperture, at least in terms of feature set, but I really can't imagine anything on Linux being as fast and robust. Note there isn't even a Google Photos client for Linux at this time.</li>
+<li><strong>Capture One 12:</strong> <a href="https://support.captureone.com/hc/en-us/articles/360002902958-Do-you-have-Capture-One-for-Linux-">No Linux client</a>.</li>
+<li><strong>Things:</strong> Would have to find an alternative</li>
+<li><strong>Xcode:</strong> Ha ha, just joking.</li>
+</ul>
+<p>Losing some of these would hurt but be livable, but some of the others would be really, really big losses. This is why in that tweet that I linked to above, I put my chances of switching at &quot;approaching 50%&quot;.</p>
+<h2>Workarounds</h2>
+<p>An option to consider: dual-boot into macOS for those things that are super hard to replace. (Would require sticking with Apple hardware, that I am not super keen on given the nonsense with the lack of ports and the Touch Bar.)</p>
+<h2>Doubts</h2>
+<ul>
+<li>System upgrades, long term support, and stability.</li>
+<li>Choosing a distro? (Likely will go with <a href="https://www.archlinux.org/">Arch Linux</a>).</li>
+<li>I've used Linux on the server for many years and very happy with it there, but hard to know what it would be like as a desktop platform, as I haven't really ever gone beyond playing with it in that capacity.</li>
+</ul>
+<section class="footnotes" data-footnotes>
+<ol>
+<li id="fn-resilio">
+<p>I switched to <a href="/wiki/Resilio_Sync">Resilio Sync</a> in late 2023, so won't miss Sync any more. <a href="#fnref-resilio" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="1" aria-label="Back to reference 1">↩</a></p>
+</li>
+</ol>
+</section>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

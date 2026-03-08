@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>fuzzyfinder.vim • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>fuzzyfinder.vim</h1></div><div class="metadata"><relative-time created="1242648272" updated="1584053324">Created 5/18/2009, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/vim">vim</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Official page</h2>
+<ul>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=1984">http://www.vim.org/scripts/script.php?script_id=1984</a></li>
+</ul>
+<h2>Updates</h2>
+<p>Grab the latest version:</p>
+<pre><code>$ wget -O /tmp/vim-fuzzyfinder.zip http://www.vim.org/scripts/download_script.php?src_id=10588
+</code></pre>
+<p>Inspect archive contents:</p>
+<pre><code>$ unzip -l /tmp/vim-fuzzyfinder.zip
+Archive:  vim-fuzzyfinder.zip
+  Length     Date   Time    Name
+ --------    ----   ----    ----
+    37877  05-14-09 00:53   doc/fuzzyfinder.jax
+    48249  05-14-09 01:18   doc/fuzzyfinder.txt
+    57764  05-14-09 01:00   plugin/fuzzyfinder.vim
+ --------                   -------
+   143890                   3 files
+</code></pre>
+<p>Check what will be overwritten on installing:</p>
+<pre><code>$ find ~/.vim -name '*fuzzyfinder*'
+./plugin/fuzzyfinder.vim
+./vim-fuzzyfinder.zip
+</code></pre>
+<p>Go ahead and install:</p>
+<pre><code>$ unzip /tmp/vim-fuzzyfinder.zip -d ~/.vim
+Archive:  vim-fuzzyfinder.zip
+  inflating: ./doc/fuzzyfinder.jax
+  inflating: ./doc/fuzzyfinder.txt
+replace ./plugin/fuzzyfinder.vim? [y]es, [n]o, [A]ll, [N]one, [r]ename: y
+  inflating: ./plugin/fuzzyfinder.vim
+</code></pre>
+<p>Update the help (from inside <a href="/wiki/Vim">Vim</a>):</p>
+<pre><code>:helptags ~/.vim/doc
+</code></pre>
+<p>Or from the <a href="/wiki/command_line">command line</a>:</p>
+<pre><code>vim -c &quot;helptags ~/.vim/doc&quot;
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Vim_plugins">Vim plugins</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

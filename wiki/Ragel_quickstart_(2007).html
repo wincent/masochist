@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ragel quickstart (2007) • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Ragel quickstart (2007)</h1></div><div class="metadata"><relative-time created="1257072423" updated="1584053324">Created 11/1/2009, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/ragel">ragel</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>For historical interest, this article demonstrates the basic work flow for <a href="/wiki/Ragel">Ragel</a> development as it was back in 2007, when it was necessary to do a two-step process involving separate &quot;frontend&quot; and &quot;backend&quot; tools. Since then things have become considerably easier and it is now only necessary to run a single <a href="/wiki/command_line">command line</a> tool. For an example based on the current version of <a href="/wiki/Ragel">Ragel</a>, see &quot;<a href="/wiki/Ragel_quickstart">Ragel quickstart</a>&quot;.</p>
+<p>See also the <a href="http://www.complang.org/ragel/ChangeLog">Ragel changelog</a>, where it is detailed how Ragel was split into separate frontend and backend executables in version 5.0 (17 December 2005) and became as single executable again in version 6.4 (22 March 2009).</p>
+<h2><code>simple.rl</code></h2>
+<p>Start with the simplest code possible, a recognizer for strings of letters (taken from the <a href="/wiki/Ragel">Ragel</a> user guide):</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+%% machine foo;
+
+int main(int argc, char **argv)
+{
+    %% write data noerror nofinal;
+    int cs, res = 0;
+    if (argc &gt; 1)
+    {
+        char *p = argv[1];
+        %%{
+            main := [a-z]+ 0 @{ res = 1; fbreak; };
+            write init;
+            write exec noend;
+        }%%
+    }
+    printf(&quot;execute = %i\n&quot;, res );
+    return 0;
+}
+</code></pre>
+<h2>Run the frontend</h2>
+<p>Now run the <code>ragel</code> frontend <a href="/wiki/command_line">command line</a> tool to produce the intermediate <a href="/wiki/XML">XML</a> output:</p>
+<pre><code class="language-shell">$ ragel -C simple.rl -o simple.xml
+</code></pre>
+<h2>Run the code-gen (backend)</h2>
+<p>Now we use the code-gen (backend) to transform the intermediate <a href="/wiki/XML">XML</a> into <a href="/wiki/C">C</a> code:</p>
+<pre><code class="language-shell">$ rlgen-cd -o simple.c simple.xml
+</code></pre>
+<h2>Compile the <a href="/wiki/C">C</a> code</h2>
+<pre><code class="language-shell">$ gcc simple.c -o simple
+</code></pre>
+<h2>Run</h2>
+<p>A sample session; 0 is printed if no match occurs, 1 is printed on success:</p>
+<pre><code class="language-shell">$ ./simple
+execute = 0
+$ ./simple foo
+execute = 1
+$ ./simple fo4
+execute = 0
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Thinking about switching to RR • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/thinking-about-switching-to-rr">Thinking about switching to RR</a></h1><div class="metadata"><relative-time created="1245739559" updated="1584053324">Created 6/23/2009, updated 3/12/2020</relative-time><span>6 minute read</span></div><div class="prerendered"><p>The use of mocks and stubs continues to be one of the areas which causes me most pain in my <a href="/wiki/Ruby">Ruby</a> testing using <a href="/wiki/RSpec">RSpec</a>. All too often I find myself having to go through hoops to do stuff which I feel should be simple.</p>
+<p>Let me illustrate with an example.</p>
+<p>Here's some code from a comments controller, abbreviated for clarity:</p>
+<pre><code class="language-ruby">class CommentsController &lt; ApplicationController
+  before_filter :get_comment
+
+  def get_comment
+    @comment = Comment.find params[:id]
+  end
+end
+</code></pre>
+<p>And here is the original version of the related spec:</p>
+<pre><code class="language-ruby">it 'should find the comment' do
+  Comment.should_receive(:find).with(@comment.to_param).and_return(@comment)
+end
+</code></pre>
+<p>Upon making a change to the model, the controller spec broke. The new behaviour was the result of calling <code>save</code> on the model during the <code>comments#update</code> action, which in turn caused a complex callback to be fired which did a number of updates on cached fields, and necessarily called <code>Comment.find</code> in order to do so.</p>
+<p>All of this was desired behaviour, but it broke my controller spec because the mock expectation is too rigid. It basically says, &quot;<code>Comment</code> should receive <code>find</code> with exactly these parameters and return this object, <em>and it should not receive anything else</em>&quot;.</p>
+<p>None of my options for solving the problem are particularly attractive.</p>
+<h2>Solution 1: mock more</h2>
+<p>In this solution we add additional <code>Comment.should_receive</code> specifications catering for the other calls. This seems perverse and brittle, tying the <em>controller</em> specs to the internal implementation details of the <em>model</em>.</p>
+<h2>Solution 2: mock something else</h2>
+<p>In this solution we dump out <code>Comment.should_receive</code> and replace it with this:</p>
+<pre><code class="language-ruby">controller.should_receive(:get_comment)
+</code></pre>
+<p>This works fine in part, but we've now lost some behaviour which almost certainly will break other specs. The <code>get_comment</code> method finds a comment and assigns it to the <code>@comment</code> instance variable, and in specifying our mock we've effectively extirpated that unit of behaviour from the controller. In order to preserve the behaviour we could specify a block:</p>
+<pre><code class="language-ruby">controller.should_receive(:get_comment) { @comment = Comment.find params[:id] }
+</code></pre>
+<p>This too seems utterly perverse, literally replicating via copy-and-paste the code from the controller in order to keep the specs passing. I confess that I didn't even try this method so can't even affirm that it would work. <em>Even if</em> you argue that the copied-and-pasted code is &quot;acceptably trivial&quot; to justify itself, it breaks down as soon as you start writing specs for methods which are even a little more complicated (and in fact, in reality the <code>get_comment</code> method used in this example is more complex in practice in the real version because it modifies its behaviour depending on which kind of user is connected).</p>
+<p>In any case note how the level of specificity of our expectation has changed. In our original implementation we specified an interaction that we expected to see with the <code>Comment</code> model. In the new version we're just checking to see that a method internal to the controller class has been called. When we add the block syntax we not only perform that check, but we actually replicate internal implementation details to greater or lesser degree. This doesn't seem like a good thing.</p>
+<h2>Solution 3: use a proxy</h2>
+<p>Proxies don't exist in the <a href="/wiki/RSpec">RSpec</a> mocking framework but they do exist in <a href="/wiki/RR">RR</a> which is one of the reasons I am thinking of switching.</p>
+<p>The idea of the proxy as a test double is that it allows you to specify expectations as you would with a mock, but the underlying implementation is called by the proxy. So this means that would could indeed set up a proxy which expects the <code>get_comment</code> method and the underlying behaviour would be preserved.</p>
+<p>I haven't actually used RR yet, but I understand that the syntax for this would look something like:</p>
+<pre><code class="language-ruby">mock.proxy(controller).get_comment
+</code></pre>
+<p>If we wanted to insert the proxy at a lower level (on the <code>Comment.find</code> call) then we could also do something like this instead:</p>
+<pre><code class="language-ruby">mock.proxy(Comment).find(@comment.to_param)
+</code></pre>
+<p>Until I actually try this I am not sure whether these proxies suffer from the same usability drawbacks as RSpec's own mocks (that is, whether these expectations are interpreted to mean &quot;should receive exactly this and nothing else&quot;).</p>
+<h2>Solution 4: use a spy</h2>
+<p>Another nifty option provided by <a href="/wiki/RR">RR</a>, a spy is a test double that allows you to record messages sent to a target object and then retrospectively check them. As the docs say:</p>
+<blockquote>
+<p>Adding a DoubleInjection to an Object + Method (done by <code>stub</code>, <code>mock</code>, or <code>dont_allow</code>) causes RR to record any method invocations to the Object + method. Assertions can then be made on the recorded method calls.</p>
+</blockquote>
+<p>These almost certainly won't be subject to the restrictive &quot;expectations mean that a receiver should receive exactly this thing and nothing else&quot; viewpoint.</p>
+<p>Once again, I haven't actually used these yet, but according to the <a href="/wiki/RR">RR</a> docs they look something like this:</p>
+<pre><code class="language-ruby">subject = Object.new
+stub(subject).foo
+subject.foo(1)
+subject.should have_received.foo(1)
+subject.should have_received.bar # this fails
+</code></pre>
+<p>Unfortunately it looks like these can't be combined with proxies (as it only mentions <code>stub</code>, <code>mock</code> and <code>dont_allow</code>) I am not really sure whether these could be abused to stand in in the example spec that is the subject of this article, but if they can it will most likely look something like this:</p>
+<pre><code class="language-ruby">stub(controller).get_comment
+do_put
+controller.should have_received.get_comment
+</code></pre>
+<p>Or:</p>
+<pre><code class="language-ruby">stub(Comment).find(@comment.to_param)
+do_put
+Comment.should have_received.find(@comment.to_param)
+</code></pre>
+<h2>Solution 5: don't use real ActiveRecord objects</h2>
+<p>I don't actually know if this one is a solution at all. You could avoid the use of real ActiveRecord objects and thus the callbacks which produce the extra <code>find</code> calls, but it is most likely more trouble than it is worth.</p>
+<h2>Solution 6: forget mocking and test a side-effect instead</h2>
+<p>Why were we mocking the <code>find</code> call anyway? Because we wanted to confirm that the right comment was being found. But note that we can do this indirectly by testing a side-effect instead: the assignment of the expected comment record to the <code>@comment</code> instance variable:</p>
+<pre><code class="language-ruby">do_put
+assigns[:comment].should == @comment
+</code></pre>
+<h2>Conclusion</h2>
+<p>Ultimately, almost all of my gripes boil down to me not being able to assert precisely what I want to assert; that is, &quot;that this message with these parameters should be received, <em>but I literally don't care about what other messages are sent, nor whether the same message is sent multiple times, nor the order of the messages, nor anything else, and I certainly don't care about substituting a fake return value or preventing the real behaviour of the involved classes from being exercised</em>&quot;. In short, I just want to set a message expectation with no strings attached. Is it really so hard?</p>
+<p>I guess in my dream world I'm really wishing that I could write something like this, to test for interaction with ActiveRecord:</p>
+<pre><code class="language-ruby">Comment.record
+do_put
+Comment.should have_received.find(@comment.to_param)
+</code></pre>
+<p>Or, to test at the level of controller methods:</p>
+<pre><code class="language-ruby">controller.record
+do_put
+controller.should have_received.get_comment
+</code></pre>
+<p>Actually implementing this magical <code>record</code> method might not be so straight-forward, to say the least. It would require intercepting <em>all</em> method calls to the observed object, passing them on to the real method, recording the message-parameters-result tuple, and tight integration with RSpec so that it would know that it should stop &quot;recording&quot; when the current example (<code>it</code> block) or perhaps <code>describe</code> block goes out of scope. Not sure if this is entirely feasible or even technically possible.</p>
+<p>In any case, while I am not sure whether <a href="/wiki/RR">RR</a> will ease all the pain of this kind of testing, I think it might be worth giving it a try. The one thing I am not sure about is whether I can gradually migrate over to it, or whether I'll run into troubles with <a href="/wiki/RR">RR</a> and the existing <a href="/wiki/RSpec">RSpec</a> mocking framework treading on one another's toes.</p>
+<h2>Update (7 November 2009)</h2>
+<p>There is currently <a href="https://rspec.lighthouseapp.com/projects/5645/tickets/906">talk</a> of adding test spies to RSpec's including mocking framework.</p>
+</div><ul class="tags"><li><a href="/tags/rspec">rspec</a></li><li><a href="/tags/rr">rr</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/bansshee-1.0.1-is-out">← Bansshee 1.0.1 is out</a></div><div class="post-nav-next"><a href="/blog/safari-4-redux">Safari 4 redux →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

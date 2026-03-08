@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Typing special symbols on a Linux keyboard • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Typing special symbols on a Linux keyboard</h1></div><div class="metadata"><relative-time created="1659213106" updated="1693045928">Created 7/30/2022, updated 8/26/2023</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>At least in the Colemak layout, the following<sup class="footnote-ref"><a href="#fn-following" id="fnref-following" data-footnote-ref>1</a></sup> are compatible with all the hacks I've got in place to make the Linux keyboard behave at least somewhat similarly to how the Mac does. Additionally, as of <a href="https://github.com/wincent/wincent/commit/9c241271b715a939a445eb02828baa6f8036f4d3">9c241271b715a939</a>, I have some macOS-style dead-key bindings in place, noted in the appendix.</p>
+<h2>Dead letters</h2>
+<p>These ones work:</p>
+<ul>
+<li><code>AltGr + Backtick</code> = <code>~</code> (mnemonic, &quot;tilde&quot;): so, to produce <code>ñ</code>, type <code>AltGr + Backtick</code> then <code>n</code>.</li>
+<li><code>AltGr + d</code> = <code>&quot;</code> (mnemonic, &quot;diuresis&quot;): so, to produce <code>ü</code>, type <code>AltGr + d</code> then <code>u</code>.</li>
+</ul>
+<p>These ones do not, because they clash with my mappings:</p>
+<ul>
+<li><code>AltGr + t</code> (acute accent, clashes with &quot;New tab&quot;):
+<ul>
+<li>To type <code>á</code>, you're out of luck; not even typing <code>Ctrl + u</code> then <code>00e1</code> works.</li>
+<li>To type <code>é</code>, type <code>AltGr + e</code>.</li>
+<li>To type <code>í</code>, type <code>AltGr + i</code>.</li>
+<li>To type <code>ó</code>, type <code>AltGr + o</code>.</li>
+<li>To type <code>ú</code>, type <code>AltGr + u</code>.</li>
+</ul>
+</li>
+</ul>
+<h2>Other mappings</h2>
+<p>These ones work:</p>
+<ul>
+<li><code>AltGr + Shift + Minus</code> = <code>—</code> (em dash).</li>
+<li><code>AltGr + Shift + Space</code> = <code> </code> (non-breaking space).</li>
+<li><code>AltGr + Shift + 9</code> = <code>“</code> (left double quote).</li>
+<li><code>AltGr + Shift + 0</code> = <code>”</code> (right double quote).</li>
+<li><code>AltGr + 9</code> = <code>‘</code> (single left quote).</li>
+<li><code>AltGr + 0</code> = <code>’</code> (single right quote).</li>
+<li><code>AltGr + Shift + Plus</code> = <code>÷</code> (division).</li>
+</ul>
+<p>These ones don't work:</p>
+<ul>
+<li><code>AltGr + Minus</code> = <code>–</code> (en dash, clashes with &quot;Decrease zoom&quot;).</li>
+<li><code>AltGr + Plus</code> = <code>×</code> (multiplication, clashes with &quot;Increase zoom&quot;).</li>
+</ul>
+<h2>Appendix: macOS-style bindings</h2>
+<p>As of the commit mentioned earlier, I currently have these shoe-horned into my set-up (plus some extras, but the ones listed below are the ones that you actually have to type in Spanish from time to time) by a combination of <a href="https://gitlab.com/interception/linux/tools">Interception Tools</a> and <a href="https://linux.die.net/man/5/compose"><code>~/.XCompose</code></a> (<code>man 5 Compose</code>):</p>
+<ul>
+<li><code>Option-n n</code> = <code>ñ</code></li>
+<li><code>Option-Shift-n n</code> = <code>Ñ</code></li>
+<li><code>Option-e a</code> = <code>á</code></li>
+<li><code>Option-Shift-e a</code> = <code>Á</code></li>
+<li><code>Option-e e</code> = <code>é</code></li>
+<li><code>Option-Shift-e e</code> = <code>É</code></li>
+<li><code>Option-e i</code> = <code>í</code></li>
+<li><code>Option-Shift-e i</code> = <code>Í</code></li>
+<li><code>Option-e o</code> = <code>ó</code></li>
+<li><code>Option-Shift-e o</code> = <code>Ó</code></li>
+<li><code>Option-e u</code> = <code>ú</code></li>
+<li><code>Option-Shift-e u</code> = <code>Ú</code></li>
+<li><code>Option-u u</code> = <code>ü</code></li>
+<li><code>Option-Shift-u u</code> = <code>Ü</code></li>
+<li><code>Shift-Option-Minus</code> = <code>—</code> (em dash)</li>
+<li><code>Shift-Option-2</code> = <code>€</code></li>
+</ul>
+<p>I made a couple of screencasts describing my efforts to set up Linux with these and other macOS-style keybindings here:</p>
+<ul>
+<li><a href="https://youtu.be/uh_76A2oEWQ">macOS dead letters on Linux</a> (July 2022)</li>
+<li><a href="https://youtu.be/TBqTHesnzkI">macOS keyboard bindings on Linux</a> (December 2020)</li>
+</ul>
+<section class="footnotes" data-footnotes>
+<ol>
+<li id="fn-following">
+<p>As described in <a href="https://colemak.com/Multilingual">&quot;Multilingual&quot; on the Colemak wiki</a>. <a href="#fnref-following" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="1" aria-label="Back to reference 1">↩</a></p>
+</li>
+</ol>
+</section>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Synergy branch notes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Synergy branch notes</h1></div><div class="metadata"><relative-time created="1174670421" updated="1495119989">Created 3/23/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/version.control">version.control</a></li><li><a href="/tags/synergy">synergy</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Trunk (<a href="/wiki/Leopard">Leopard</a>)</h2>
+<h3>Timeline</h3>
+<ul>
+<li><code>trunk</code>: as of 23 March 2007, reserved for <a href="/wiki/Leopard">Leopard</a> (version 3.5+) development</li>
+</ul>
+<h2><a href="/wiki/Panther">Panther</a> branch</h2>
+<p>I realized soon after creating this branch that it was actually a mistake for two reasons:</p>
+<ol>
+<li>It really should have been a <a href="/wiki/Jaguar">Jaguar</a> branch, not a <a href="/wiki/Panther">Panther</a> branch, as the software on the branch continued to support versions of <a href="/wiki/Mac_OS_X">Mac OS X</a> back to <a href="/wiki/Jaguar">Jaguar</a>.</li>
+<li>The branch was created too soon.</li>
+</ol>
+<p>I created the branch because I wanted to keep my <a href="/wiki/Leopard">Leopard</a> development separate from my legacy development. The branch was made too soon (too far ahead of <a href="/wiki/Leopard">Leopard</a>'s release) because most of the work ended up taking place on the branch instead of on the trunk. The trunk remained almost motionless and I periodically merged in changes from the branch; I may as well have just done all development on the trunk and only branched later on.</p>
+<p>Towards the end of March 2007 and in conjunction with the move to <a href="/wiki/SVK">SVK</a> I executed the following plan:</p>
+<ul>
+<li>Keep the 3.1 series as the <a href="/wiki/Jaguar">Jaguar</a>-compatible branch.</li>
+<li>The next major version will be 3.5 and that will most likely be for <a href="/wiki/Leopard">Leopard</a> development; it will coincide with the trunk.</li>
+<li>The poorly named <a href="/wiki/Panther">Panther</a> branch will be allowed to die off; I may even choose to delete it.</li>
+<li>Let 3.1.1 be the last public release before the branch.</li>
+<li>After that branch, use <a href="/wiki/SVK">SVK</a> because it handles branching and merging better.</li>
+<li><a href="/wiki/SVK">SVK</a> makes branch management so much easier that it makes sense to branch more often; instead of branching only major OS-compatibility cut-off points it becomes attractive to branch at every minor release. In many cases where you currently would only consider using tags it may make sense to create branches instead. For example, a branch for the 3.2 series, 3.3 series, and so on. This makes it easy to roll out bug-fix releases (3.2.1 etc). In fact, <a href="/wiki/SVK">SVK</a> branches are so lightweight and easy that you can even consider making local-only branches for minor bug-fixes (that don't even correspond to full releases); these branches never exist separately in the remote repository, but once the work is completed the changes get merged in upstream.</li>
+</ul>
+<h3>Timeline</h3>
+<ul>
+<li><code>panther</code> branch created from trunk: r274, 19 September 2006
+<ul>
+<li>Changes merged back into trunk (see &quot;<a href="/wiki/Merging">Merging</a>&quot;):
+<ul>
+<li>274:293, 26 October 2006</li>
+<li>294:330, 22 March 2007</li>
+<li>331:332, 23 March 2007</li>
+</ul>
+</li>
+<li>As of 23 March 2007, the plan is to let the <code>panther</code> branch die off.</li>
+</ul>
+</li>
+</ul>
+<h2><a href="/wiki/Jaguar">Jaguar</a> branch</h2>
+<h3>Timeline</h3>
+<ul>
+<li><code>jaguar</code> branch created from trunk: r337 (<a href="/wiki/Subversion">Subversion</a>)/r2358 (<a href="/wiki/SVK">SVK</a>), 23 March 2007
+<ul>
+<li>Now a maintenance branch (versions 3.1+, possibly 3.2, 3.3 and 3.4 as well) with the intention of maintaining <a href="/wiki/Jaguar">Jaguar</a> compatibility.</li>
+</ul>
+</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>git rebase: you're doing it wrong • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>git rebase: you're doing it wrong</h1></div><div class="metadata"><relative-time created="1315087234" updated="1584053324">Created 9/3/2011, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/rebase">rebase</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From: Linus Torvalds &lt;torvalds-AT-linux-foundation.org&gt; To: Dave Airlie &lt;airlied-AT-linux.ie&gt; Subject: Re: [git pull] drm-next Date: Sun, 29 Mar 2009 14:45:45 -0700 (PDT) Message-ID: <a href="mailto:alpine.LFD.2.00.0903291409030.3994@localhost.localdomain">alpine.LFD.2.00.0903291409030.3994@localhost.localdomain</a> Cc: dri-devel-AT-lists.sf.net Archive-link: Article, Thread</p>
+<pre><code>On Sun, 29 Mar 2009, Dave Airlie wrote:
+&gt;
+&gt; My plans from now on are just to send you non-linear trees, whenever I
+&gt; merge a patch into my next tree thats when it stays in there, I'll pull
+&gt; Eric's tree directly into my tree and then I'll send the results, I
+&gt; thought we cared about a clean merge history but as I said without some
+&gt; document in the kernel tree I've up until now had no real idea what you
+&gt; wanted.
+
+I want clean history, but that really means (a) clean and (b) history.
+
+People can (and probably should) rebase their _private_ trees (their own
+work). That's a _cleanup_. But never other peoples code. That's a &quot;destroy
+history&quot;
+
+So the history part is fairly easy. There's only one major rule, and one
+minor clarification:
+
+ - You must never EVER destroy other peoples history. You must not rebase
+   commits other people did. Basically, if it doesn't have your sign-off
+   on it, it's off limits: you can't rebase it, because it's not yours.
+
+   Notice that this really is about other peoples _history_, not about
+   other peoples _code_. If they sent stuff to you as an emailed patch,
+   and you applied it with &quot;git am -s&quot;, then it's their code, but it's
+   _your_ history.
+
+   So you can go wild on the &quot;git rebase&quot; thing on it, even though you
+   didn't write the code, as long as the commit itself is your private
+   one.
+
+ - Minor clarification to the rule: once you've published your history in
+   some public site, other people may be using it, and so now it's clearly
+   not your _private_ history any more.
+
+   So the minor clarification really is that it's not just about &quot;your
+   commit&quot;, it's also about it being private to your tree, and you haven't
+   pushed it out and announced it yet.
+
+That's fairly straightforward, no?
+
+Now the &quot;clean&quot; part is a bit more subtle, although the first rules are
+pretty obvious and easy:
+
+ - Keep your own history readable
+
+   Some people do this by just working things out in their head first, and
+   not making mistakes. but that's very rare, and for the rest of us, we
+   use &quot;git rebase&quot; etc while we work on our problems.
+
+   So &quot;git rebase&quot; is not wrong. But it's right only if it's YOUR VERY OWN
+   PRIVATE git tree.
+
+ - Don't expose your crap.
+
+   This means: if you're still in the &quot;git rebase&quot; phase, you don't push
+   it out. If it's not ready, you send patches around, or use private git
+   trees (just as a &quot;patch series replacement&quot;) that you don't tell the
+   public at large about.
+
+It may also be worth noting that excessive &quot;git rebase&quot; will not make
+things any cleaner: if you do too many rebases, it will just mean that all
+your old pre-rebase testing is now of dubious value. So by all means
+rebase your own work, but use _some_ judgement in it.
+
+NOTE! The combination of the above rules (&quot;clean your own stuff&quot; vs &quot;don't
+clean other peoples stuff&quot;) have a secondary indirect effect. And this is
+where it starts getting subtle: since you most not rebase other peoples
+work, that means that you must never pull into a branch that isn't already
+in good shape. Because after you've done a merge, you can no longer rebase
+you commits.
+
+Notice? Doing a &quot;git pull&quot; ends up being a synchronization point. But it's
+all pretty easy, if you follow these two rules about pulling:
+
+ - Don't merge upstream code at random points.
+
+   You should _never_ pull my tree at random points (this was my biggest
+   issue with early git users - many developers would just pull my current
+   random tree-of-the-day into their development trees). It makes your
+   tree just a random mess of random development. Don't do it!
+
+   And, in fact, preferably you don't pull my tree at ALL, since nothing
+   in my tree should be relevant to the development work _you_ do.
+   Sometimes you have to (in order to solve some particularly nasty
+   dependency issue), but it should be a very rare and special thing, and
+   you should think very hard about it.
+
+   But if you want to sync up with major releases, do a
+
+	git pull linus-repo v2.6.29
+
+   or similar to synchronize with that kind of _non_random_ point. That
+   all makes sense. A &quot;Merge v2.6.29 into devel branch&quot; makes complete
+   sense as a merge message, no? That's not a problem.
+
+   But if I see a lot of &quot;Merge branch 'linus'&quot; in your logs, I'm not
+   going to pull from you, because your tree has obviously had random crap
+   in it that shouldn't be there. You also lose a lot of testability,
+   since now all your tests are going to be about all my random code.
+
+ - Don't merge _downstream_ code at random points either.
+
+   Here the &quot;random points&quot; comment is a dual thing. You should not mege
+   random points as far as downstream is concerned (they should tell you
+   what to merge, and why), but also not random points as far as your tree
+   is concerned.
+
+   Simple version: &quot;Don't merge unrelated downstream stuff into your own
+   topic branches.&quot;
+
+   Slightly more complex version: &quot;Always have a _reason_ for merging
+   downstream stuff&quot;. That reason might be: &quot;This branch is the release
+   branch, and is _not_ the 'random development' branch, and I want to
+   merge that ready feature into my release branch because it's going to
+   be part of my next release&quot;.
+
+See? All the rules really are pretty simple. There's that somewhat subtle
+interaction between &quot;keep your own history clean&quot; and &quot;never try to clean
+up _other_ proples histories&quot;, but if you follow the rules for pulling,
+you'll never have that problem.
+
+Of course, in order for all this to work, you also have to make sure that
+the people you pull _from_ also have clean histories.
+
+And how do you make sure of that? Complain to them if they don't. Tell
+them what they should do, and what they do wrong. Push my complaints down
+to the people you pull from. You're very much allowed to quote me on this
+and use it as an explanation of &quot;do this, because that is what Linus
+expects from the end result&quot;.
+
+			Linus
+
+------------------------------------------------------------------------------
+</code></pre>
+<h2>Source</h2>
+<ul>
+<li><a href="http://lwn.net/Articles/328438/">http://lwn.net/Articles/328438/</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

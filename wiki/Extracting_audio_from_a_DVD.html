@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Extracting audio from a DVD • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Extracting audio from a DVD</h1></div><div class="metadata"><relative-time created="1176123682" updated="1507998958">Created 4/9/2007, updated 10/14/2017</relative-time></div><ul class="tags"><li><a href="/tags/macos">macos</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Disclaimer</h2>
+<p>These are notes I made while trying to extract the audio from public domain (not copyrighted) DVDs of live convert performances. This information should not be used (and probably wouldn't help anyway) on copyrighted or copy-protected material. On the one hand, copyright law provides you with &quot;<a href="/wiki/Fair_Use">Fair Use</a>&quot; rights that allow you time-shift and format-shift the content you purchased. On the other hand, laws like the <a href="/wiki/DMCA">DMCA</a> make it illegal to circumvent the <a href="/wiki/DRM">DRM</a> on DVDs that you've purchased, and this <a href="/wiki/DRM">DRM</a> prevents you from exercising your <a href="/wiki/Fair_Use">Fair Use</a> rights.</p>
+<p>Because of the <a href="/wiki/DMCA">DMCA</a> I am not going to link to software that would enable you to circumvent any <a href="/wiki/DRM">DRM</a>, nor will I provide instructions on how to do so.</p>
+<h2>Demuxing</h2>
+<p>I usually try using <a href="/wiki/bbDEMUX">bbDEMUX</a> directly on the DVD first and if that fails I fall back to using <a href="/wiki/MacTheRipper">MacTheRipper</a> to extract the <a href="/wiki/VOB">VOB</a> files and then I try running <a href="/wiki/bbDEMUX">bbDEMUX</a> on those.</p>
+<p><a href="/wiki/bbDEMUX">bbDEMUX</a> is fairly out of date, no <a href="/wiki/Universal_Binary">Universal Binary</a> version is available, and it runs slowly under <a href="/wiki/Rosetta">Rosetta</a>. The drag-and-drop feature seems broken in the main window (although dragging to the Dock icon seems to work, as does the &quot;Open&quot; item in the &quot;File&quot; menu). <a href="/wiki/bbDEMUX">bbDEMUX</a> can fail even on non-copy-protected DVDs, but the <a href="/wiki/MacTheRipper">MacTheRipper</a> step often helps.</p>
+<h2><a href="/wiki/AC3">AC3</a> conversion</h2>
+<p>After demuxing you will have a bunch of <a href="/wiki/AC3">AC3</a> files, one per <a href="/wiki/VOB">VOB</a>, but neither <a href="/wiki/QuickTime">QuickTime</a> nor <a href="/wiki/iTunes">iTunes</a> can read them. See &quot;<a href="/wiki/Installing_PAC_%28Perl_Audio_Converter%29_on_Mac_OS_X">Installing PAC (Perl Audio Converter) on Mac OS X</a>&quot; for a description of using <a href="/wiki/PAC">PAC</a> to perform the conversion; I've never been able to get that technique to work (I always get a message like &quot;Unsupported codec (id=86020) for input stream #0.0&quot;).</p>
+<p>I then tried using the &quot;Streaming/Export Wizard&quot; of <a href="/wiki/VLC">VLC</a>:</p>
+<ol>
+<li>Drag the <a href="/wiki/AC3">AC3</a> files to the <a href="/wiki/VLC">VLC</a> playlist window.</li>
+<li>From the &quot;File&quot; menu choose &quot;Streaming/Export Wizard&quot;.</li>
+<li>Choose &quot;Transcode/Save to file&quot;.</li>
+<li>Choose an audio-only transcode. I choose to use the <a href="/wiki/FLAC">FLAC</a> codec because it is lossless, and a <a href="/wiki/RAW">RAW</a> container type.</li>
+</ol>
+<p>I then tried using <a href="/wiki/PAC">PAC</a> as follows:</p>
+<pre><code>pacpl --rawtoflac --file *.raw
+</code></pre>
+<p>I was told that I needed <a href="/wiki/SoX">SoX</a>, so I installed that (see &quot;<a href="/wiki/Installing_SoX_13.0.0_on_Mac_OS_X">Installing SoX 13.0.0 on Mac OS X</a>&quot;).</p>
+<p>Then <a href="/wiki/PAC">PAC</a> couldn't find the <code>sox</code> executable so I ended up editing the configuration file at <code>/etc/pacpl/pacpl.conf</code>.</p>
+<p>This time <a href="/wiki/PAC">PAC</a> worked and converted the files to <a href="/wiki/FLAC">FLAC</a>. I then used <code>flac</code> to convert them to <a href="/wiki/WAV">WAV</a> format.</p>
+<pre><code>flac -d *.flac
+</code></pre>
+<p>Finally I had something I could play in <a href="/wiki/iTunes">iTunes</a> (and there convert to <a href="/wiki/Apple_Lossless">Apple Lossless</a>) but on playing the tracks I discovered that they were all 100% white noise. I checked and the <a href="/wiki/FLAC">FLAC</a> files were white noise as well. I checked the &quot;raw&quot; files and <a href="/wiki/VLC">VLC</a> couldn't play them despite the fact that it created them, so here I think <a href="/wiki/VLC">VLC</a> is to blame.</p>
+<p>I tried transcoding again, this time using <a href="/wiki/FLAC">FLAC</a>/<a href="/wiki/OGG">OGG</a> instead of <a href="/wiki/FLAC">FLAC</a>/<a href="/wiki/RAW">RAW</a>. The resulting <a href="/wiki/OGG">OGG</a> files couldn't be played in <a href="/wiki/VLC">VLC</a> (why then did it create them with reporting any errors?).</p>
+<p>I decided to forget about trying with VLC. Back to trying with <a href="/wiki/PAC">PAC</a>:</p>
+<pre><code>pacpl --ac3towav --file *.ac3
+</code></pre>
+<p>Failed:</p>
+<pre><code>Unsupported codec (id=86020) for input stream #0.0
+</code></pre>
+<p>A search yielded this post: <a href="http://lists.mplayerhq.hu/pipermail/ffmpeg-user/2006-March/002426.html">http://lists.mplayerhq.hu/pipermail/ffmpeg-user/2006-March/002426.html</a></p>
+<p>So I decided to update/recompile my <a href="/wiki/FFmpeg">FFmpeg</a> install. See &quot;<a href="/wiki/Building_FFmpeg_on_Mac_OS_X">Building FFmpeg on Mac OS X</a>&quot;.</p>
+<p>I believe that once <a href="/wiki/FFmpeg">FFmpeg</a> is successfully built with <a href="/wiki/A52">A52</a> support that the above <a href="/wiki/PAC">PAC</a> invocation will work, although a quick test with the GUI wrapper for <a href="/wiki/FFMpeg">FFMpeg</a> (see <a href="http://www.ffmpegx.com/">http://www.ffmpegx.com/</a>) yielded the following:</p>
+<pre><code>FFmpeg version CVS, Copyright (c) 2000-2004 Fabrice Bellard
+Tue Feb 20 14:01:14 CET 2007
+Mac OSX universal build for ffmpegX
+  libavutil version: 49.0.0
+  libavcodec version: 51.9.0
+  libavformat version: 50.4.0
+Input #0, ac3, from '/Users/wincent/tmp/demuxed/VTS_01_1S189SS129.ac3':
+  Duration: 00:34:14.0, start: 0.000000, bitrate: 384 kb/s
+  Stream #0.0: Audio: ac3, 48000 Hz, stereo, 384 kb/s
+Could not find input stream #0.1
+</code></pre>
+<p>Given that I was unable to build <a href="/wiki/FFmpeg">FFmpeg</a> I was able to use the copy which comes inside the GUI version as follows:</p>
+<pre><code>/Applications/ffmpegX.app/Contents/Resources/ffmpeg -ab 256 -i in.ac3 out.mp3
+</code></pre>
+<p>Not exactly the conversion I wanted (I wanted a lossless format) but it will suffice. Better:</p>
+<pre><code>/Applications/ffmpegX.app/Contents/Resources/ffmpeg -ab 256 -i in.ac3 out.wav
+</code></pre>
+<p>The same or similar techniques will work on <a href="/wiki/AVI">AVI</a> files:</p>
+<pre><code>/Applications/ffmpegX.app/Contents/Resources/ffmpeg -ab 256 -i in.avi out.mp3
+</code></pre>
+<h2>Alternatives</h2>
+<p>See also <a href="/wiki/vobinfo">vobinfo</a> for an alternative to <a href="/wiki/bbDEMUX">bbDEMUX</a>; I've never gotten <a href="/wiki/vobinfo">vobinfo</a> to work.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

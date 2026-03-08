@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Branching • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Branching</h1></div><div class="metadata"><relative-time created="1176039093" updated="1584053324">Created 4/8/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/subversion">subversion</a></li><li><a href="/tags/svk">svk</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>My thinking about <a href="/wiki/branching">branching</a> has evolved recently thanks to the possibilities opened up by <a href="/wiki/SVK">SVK</a>. <a href="/wiki/Subversion">Subversion</a> itself has no inherent limitations that prevent you from doing sophisticated <a href="/wiki/branching">branching</a> and <a href="/wiki/merging">merging</a>, but neither does it actually provide you with tools to make it convenient. The main defect in <a href="/wiki/Subversion">Subversion</a>'s <a href="/wiki/merging">merging</a> capabilities is the lack of <a href="/wiki/merge_tracking">merge tracking</a>. This means that you must manually keep track of the merges so as not to re-merge the same changes at a later date; see &quot;<a href="/wiki/Synergy_branch_notes">Synergy branch notes</a>&quot; for an example of this manual tracking. This manual work can be a time-consuming and error-prone procedure.</p>
+<p><a href="/wiki/SVK">SVK</a>, on the other hand has built-in <a href="/wiki/merge_tracking">merge tracking</a> which makes it much easier to merge changes from one branch to another. This in turn makes <a href="/wiki/branching">branching</a> more viable and attractive.</p>
+<h2>When to branch</h2>
+<p>Because manually managing two branches requires considerable effort under <a href="/wiki/Subversion">Subversion</a> you should think carefully before going ahead and performing a branch. The basic question is: do the maintenance costs of micromanaging two branches outweigh the potential benefits? If the answer is yes, then you shouldn't branch. For an example of the branch process, see <a href="/wiki/Creating_branches_with_Subversion">Creating branches with Subversion</a>.</p>
+<p><a href="/wiki/SVK">SVK</a> makes branching and merging so easy that you can afford to adopt a much more cavalier attitude to branching. You can use it to manage branches at two levels:</p>
+<ol>
+<li>Branches in the remote repository, typically stored in <code>project/branches/</code>.</li>
+<li>Local-only branches not stored in the remote repository.</li>
+</ol>
+<p>This latter class of branch is enabled by the fact that <a href="/wiki/SVK">SVK</a> uses a distributed model rather than a centralized client/server model. It's not an all or nothing affair, however, because the distributed model of <a href="/wiki/SVK">SVK</a> can work seamlessly with an existing centralized, client/server infrastructure.</p>
+<h3>Major branches</h3>
+<p>These are the branches that appear in the remote repository. You might wish to have multiple branches, one per version of the target operating system. Or perhaps you'll want a branch per major release. This branches may or may not coincide with the per-operating system target branches; that is, perhaps your branch for <a href="/wiki/Tiger">Tiger</a> is actually the &quot;2.x&quot; branch, and your branch for <a href="/wiki/Leopard">Leopard</a> is the trunk and corresponds to the &quot;3.x&quot; line of development. In fact, <a href="/wiki/SVK">SVK</a> make <a href="/wiki/branching">branching</a> and <a href="/wiki/merging">merging</a> so easy that you may decide to have branches for minor releases as well.</p>
+<h3>Lightweight branches</h3>
+<p>Lightweight branches tend to be short-lived branches in which you carry out a disruptive task that would otherwise break the main trunk (or other important release branch). Once the task is complete the changes are merged all at once back to the originating branch, hopefully without breakage and minimizing disruption. The branch's useful life effectively comes to an end at this point.</p>
+<p>Examples of reasons for creating lightweight branches include:</p>
+<ul>
+<li>Working on a bug fix</li>
+<li>Implementing a new feature</li>
+<li>Carrying out experimental work</li>
+</ul>
+<p>These lightweight branches are often best suited to be local-only <a href="/wiki/SVK">SVK</a> branches. You can then <code>push</code> and <code>pull</code> changes from and to the lightweight branch. See the &quot;<a href="/wiki/Microbranching">Microbranching</a>&quot; article for an example.</p>
+<h2>Branching styles</h2>
+<p>I like to think of these two branching styles as being like left and right-recursion in parsers. In one you carry out your disruptive work in a separate branch, keeping the trunk as stable as possible. In the other, you carry out your work on the trunk but you keep a stable copy in a separate branch just in case you need to do an interim release before the trunk is ready for it.</p>
+<p>I'm inclined to think that a blend of the two styles is actually the optimum work style. To illustrate, this is my current thinking about what I will do with <a href="/wiki/Synergy">Synergy</a> (currently 3.1.1 is in beta testing):</p>
+<ol>
+<li>Release 3.1.1 (actually from the <code>panther</code> branch)</li>
+<li>Create a tag, <code>tags/3.1.1</code></li>
+<li>Merge back to <code>trunk</code>; mainline development will continue there.</li>
+<li>Let the misnamed <code>panther</code> branch die off.</li>
+<li>Make a new branch, <code>branches/jaguar</code>; this will actually be for the 3.1.x series and could just as easily have been called the <code>3.1</code> branch but I prefer the mnemonic animal-based naming.</li>
+<li>Continue development work on <code>trunk</code>; this <a href="/wiki/Leopard">Leopard</a>-centric release will be numbered version 3.5.</li>
+<li>If it becomes necessary to do a 3.1.2 release can do that work on the <code>jaguar</code> branch.</li>
+<li>If it becomes necessary to do an even finer-grained branch (<code>3.1.2</code>, for example) can do so later on using a local-only <a href="/wiki/SVK">SVK</a> branch.</li>
+</ol>
+<p>Given that the trunk is intended for <a href="/wiki/Leopard">Leopard</a> releases I want to keep disruptive feature work off of the trunk. So for bugfixes and feature additions that may take more than a day to complete I'll use <a href="/wiki/SVK">SVK</a> to make local-only micro-branches and then merge them back into the trunk once they're done:</p>
+<pre><code># examples of creating local-only branches
+svk cp //mirrors/Synergy/trunk //local/Synergy/bug-512
+svk cp //mirrors/Synergy/trunk //local/Synergy/new-threading-model
+
+# check out a local working copy
+svk co //local/Synergy/new-threading-model src
+
+# work...
+cd src
+
+# pull changes from trunk if necessary
+svk pull
+
+# after the work is complete, merge it back to the trunk
+svk push --verbatim
+
+# this short-lived branch is effectively done with now
+svk co --detach
+cd ..
+rm -r src
+</code></pre>
+<p>The <code>--verbatim</code> switch to <code>svk push</code> prevents it from including <a href="/wiki/SVK">SVK</a> meta information (such as local revision numbers) in the log entry.</p>
+<h2>See also</h2>
+<h3>General articles</h3>
+<ul>
+<li><a href="/wiki/Cherry_picking">Cherry picking</a></li>
+<li><a href="/wiki/Merging">Merging</a></li>
+<li><a href="/wiki/Tagging">Tagging</a></li>
+</ul>
+<h3>Project-specific branch notes</h3>
+<ul>
+<li><a href="/wiki/Branch_notes">Branch notes</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

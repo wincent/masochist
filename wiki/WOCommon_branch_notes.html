@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WOCommon branch notes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>WOCommon branch notes</h1></div><div class="metadata"><relative-time created="1162055779" updated="1709594300">Created 10/28/2006, updated 3/4/2024</relative-time></div><ul class="tags"><li><a href="/tags/subversion">subversion</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>On 28 October 2006 I branched <a href="/wiki/WOCommon">WOCommon</a>. The existing codebase would continue development on the <code>tiger</code> branch and <a href="/wiki/Leopard">Leopard</a>-related development would take place on the &quot;trunk&quot;.</p>
+<p>The initial branching was performed as described in the <a href="/wiki/branching">branching</a> article:</p>
+<pre><code>svn cp svn+ssh://svn.example.com/WOCommon/trunk svn+ssh://svn.example.com/WOCommon/branches/tiger
+</code></pre>
+<p>I then moved the existing <code>trunk</code> working copy to <code>tiger</code> and adjusted the <code>svn-files</code> symlink appropriately:</p>
+<pre><code>mv trunk tiger
+rm svn-files
+ln -s tiger svn-files
+</code></pre>
+<p>It was then necessary to do a &quot;switch&quot; to point the existing working copy at the appropriate location in the repository:</p>
+<pre><code>cd svn-files
+svn info
+svn switch svn+ssh://svn.example.com/WOCommon/branches/tiger .
+svn info
+</code></pre>
+<p>As described in the article, <a href="/wiki/Creating_branches_with_Subversion">Creating branches with Subversion</a>, all of this is rooted in a hierarchy that begins with <code>trabajo/tiger/</code>:</p>
+<pre><code>trabajo/tiger/buildtools/
+trabajo/tiger/WOCommon/tiger/
+trabajo/tiger/WOCommon/svn-files/
+trabajo/tiger/project/svn-files/WOCommon
+</code></pre>
+<p>In the case of projects which have a <a href="/wiki/WOCommon">WOCommon</a> external in them, these also need to be updated to point to the appropriate branch:</p>
+<pre><code>cd ~/trabajo/tiger/project/svn-files
+svn propedit svn:externals .
+</code></pre>
+<p>And change:</p>
+<pre><code>WOCommon svn+ssh://svn.example.com/WOCommon/trunk
+</code></pre>
+<p>To:</p>
+<pre><code>WOCommon svn+ssh://svn.example.com/WOCommon/branches/tiger
+</code></pre>
+<p>Then:</p>
+<pre><code>svn proplist --verbose .
+svn up
+svn info WOCommon
+svn commit -m &quot;Update WOCommon external reference to point to newly created Tiger branch&quot;
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

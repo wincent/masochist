@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JavaScript and jQuery gotchas • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>JavaScript and jQuery gotchas</h1></div><div class="metadata"><relative-time created="1357501448" updated="1693046145">Created 1/6/2013, updated 8/26/2023</relative-time></div><ul class="tags"><li><a href="/tags/javascript">javascript</a></li><li><a href="/tags/jquery">jquery</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Scope</h2>
+<ul>
+<li>unlike other C-syntax-inspired languages there is no notion of &quot;block scope&quot; (ie. delimited by curly braces)</li>
+<li>instead, we have function scope</li>
+<li>functions definitions are hoisted to the top of their containing function scope (ie. they are available throughout the entire containing function, including before their definition)</li>
+<li>function definitions outside of other functions are implicitly made properties of the global <code>window</code> context</li>
+<li>if a variable is used before it is declared its value is <code>undefined</code>, even if it is shadowing a variable with a value and the same name from an outer scope</li>
+<li>while functions are scoped to their containing function, variables are scoped only if preceded by the <code>var</code> keyword; without the <code>var</code> keyword they become properties on the global <code>window</code> object</li>
+</ul>
+<h2>Function invocation</h2>
+<ul>
+<li>there are four styles of function invocation, primarily distinguished via what <code>this</code> (the function context) is set to during the duration of execution:
+<ul>
+<li>member function invocation (eg. <code>thing.push(a)</code>): here the <code>push</code> function is a property of the <code>thing</code> object, and <code>this</code> will be set to <code>thing</code></li>
+<li>standard function invocation (eg. <code>hey(a, b, c)</code>): <code>this</code> is set to the global <code>window</code> context; note that this is actually just a special case of member function invocation because the <code>hey</code> function is actually a property of the global <code>window</code> context</li>
+<li><code>apply</code>/<code>call</code> invocation (eg. <code>hey.apply(obj, a, b, c)</code>): these are tools that allow us to call any function with explicit control over what <code>this</code> will be (in this example, <code>this</code> will be <code>obj</code>); the mnemonic here is that <strong>a</strong>pply take an <strong>a</strong>rray of arguments, while <code>call</code> just takes a list of arguments; particularly useful for callbacks and event handlers</li>
+<li>constructor invocation (eg. <code>new Foo(a, b, c)</code>): when a standard function invocation is preceded by <code>new</code>, a new object is instantiated and <code>this</code> will be set to that new object; useful for building prototypal <a href="/wiki/object_oriented">object oriented</a> systems; if the return value of the function is not an object, <code>this</code> will be returned, otherwise the object gets returned; by convention, functions intended to be used as constructors start with a capital letter and often have noun names that describe the thing they model</li>
+</ul>
+</li>
+</ul>
+<h2>(jQuery) Events</h2>
+<ul>
+<li>in a jQuery event handler <code>currentTarget</code> refers to the element to which the event handler was originally bound; <code>target</code> refers to the element that triggered the event (ie. via clicking or other interaction); due to event capturing/bubbling, these may not actually be the same thing (source: <a href="http://stackoverflow.com/questions/5921413/difference-between-e-target-and-e-currenttarget">1</a>, <a href="http://www.quirksmode.org/js/events_order.html">2</a>, <a href="http://stackoverflow.com/questions/12632426/is-there-a-difference-between-e-currenttarget-and-this">3</a>); as an additional nuance, event <code>delegateTarget</code> is delegation-aware, so when event delegation is in effect it will reference the item to which event handling was delegated, otherwise it will be the same as <code>currentTarget</code>; also note that while <code>$(this)</code> in a jQuery event handler is usually the same as <code>currentTarget</code>, it could quite easily be something else due to the use of <code>bind()</code> to enforce a specific <code>this</code></li>
+</ul>
+<pre><code class="language-javascript">$('body').on('click', 'table', function (event) {
+    // on clicking on an element inside the `table`
+    console.log(event.delegateTarget); // body
+    console.log(event.currentTarget); // table
+    console.log(this); // table
+    console.log(event.target); // element inside table
+});
+
+$('body').on('click', function (event) {
+    // on clicking on an element inside the `table`
+    console.log(event.delegateTarget); // body
+    console.log(event.currentTarget); // body
+    console.log(this); // body
+    console.log(event.target); // element inside table
+});
+</code></pre>
+<ul>
+<li>returning <code>false</code> from a jQuery event handler is equivalent to calling both <code>preventDefault()</code> (prevents default event from occurring) and <code>stopPropagation()</code> (prevents bubbling) on the event; this contrasts with non-jQuery event handlers, in which returning <code>false</code> does not prevent bubbling (<a href="http://stackoverflow.com/a/1357151/1626737">source</a>)</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Prim's Algorithm • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Prim's Algorithm</h1></div><div class="metadata"><relative-time created="1367465652" updated="1584053324">Created 5/2/2013, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/algorithms">algorithms</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><a href="/wiki/Prim%27s_Algorithm">Prim's Algorithm</a> is a fast algorithm for computing the <a href="/wiki/MST">MST</a> (<a href="/wiki/minimum_spanning_tree">minimum spanning tree</a>) of a connected graph.</p>
+<h2>Algorithm description</h2>
+<p>Given a graph <em>G</em> described by a set of vertices <em>V</em> and edges between those vertices <em>E</em>:</p>
+<ol>
+<li>Pick a vertex <em>s</em> arbitrarily from <em>V</em></li>
+<li>Create set <em>X</em>, containing only <em>s</em>; <em>X</em> is the set of vertices spanned so far</li>
+<li>Create empty tree <em>T</em>; <em>T</em> is the partial MST that will be built up as the &quot;while&quot; loop executes</li>
+<li>While <em>X</em> != <em>V</em>
+<ol>
+<li>Pick an edge <em>e</em> between points <em>u</em> and <em>v</em> that is the cheapest edge of the graph, where <em>u</em> is in <em>X</em> and <em>v</em> is not in <em>X</em> (ie. crossing the boundary between the already-connected and not-yet-connected parts of the graph)</li>
+<li>Add <em>e</em> to <em>T</em></li>
+<li>Add <em>v</em> to <em>X</em></li>
+</ol>
+</li>
+</ol>
+<h3>Runtime of naïve implementation</h3>
+<p>In the naïve implementation:</p>
+<ul>
+<li><em>O(n)</em> iterations of the &quot;while&quot; loop (where <em>n</em> is the number of vertices)</li>
+<li><em>O(m)</em> time per iteration (where <em>m</em> is the number of edges)</li>
+<li><em>O(mn)</em> overall</li>
+</ul>
+<h3>Performance improvements using the <a href="/wiki/heap">heap</a> data structure</h3>
+<p>The <a href="/wiki/heap">heap</a> data structure is good for doing repeated &quot;extract min&quot; operations, so if we use a heap to store the edges, with the keys being the edge costs, we can get our runtime down to <em>O(m log n)</em>.</p>
+<p>Two invariants must be maintained:</p>
+<ol>
+<li>The heap contains the vertices of <em>V</em> less those already pulled into <em>X</em> (ie. <em>V - X</em>)</li>
+<li>For an element <em>v</em> in the <em>V - X</em> heap, the key for <em>v</em> must be the cheapest edge <em>(u, v)</em> with <em>u</em> in <em>X</em>; if no such edge exists, then cost is <em>+infinity</em></li>
+</ol>
+<p>With those in place, doing an extract-min produces the next vertex <em>v</em> that is not in <em>X</em> and corresponding edge <em>(u, v)</em> crossing from <em>X</em> to <em>V - X</em> that should be added to <em>X</em> and <em>T</em> respectively.</p>
+<p>In order to maintain the second invariant, we do the following when adding <em>v</em> to <em>X</em>:</p>
+<ol>
+<li>For each edge <em>(v, w)</em> in <em>E</em>
+<ol>
+<li>If <em>w</em> is in <em>V - X</em>
+<ol>
+<li>Delete <em>w</em> from the heap (requires some additional book-keeping, so that we know the position of each vertex within the heap)</li>
+<li>Recompute the key for <em>w</em> to be the lesser of its former value or cost of the edge <em>(v, w)</em></li>
+<li>Reinsert <em>w</em> into the heap</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3>Runtime of <a href="/wiki/heap">heap</a>-based implementation</h3>
+<ul>
+<li>Heap operations dominate:
+<ul>
+<li><em>n - 1</em> inserts during preprocessing</li>
+<li><em>n - 1</em> &quot;extract-min&quot; operations (one for each iteration of &quot;while&quot; loop)</li>
+<li><em>m</em> delete + insert operations (one for each edge, as its first endpoint gets pulled into <em>X</em>)</li>
+</ul>
+</li>
+</ul>
+<p>So we're looking at <em>O(m)</em> for heap operations (as <em>m &gt;= n - 1</em> in a connected graph), and an overall runtime of <em>O(m log n</em>).</p>
+<h2>Notes</h2>
+<p>Unlike <a href="/wiki/Kruskal%27s_Algorithm">Kruskal's Algorithm</a>, <a href="/wiki/Prim%27s_Algorithm">Prim's Algorithm</a> only works on connected graphs.</p>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Wikipedia">Wikipedia</a> article on <a href="/wiki/Prim%27s_Algorithm">Prim's Algorithm</a>: <a href="http://en.wikipedia.org/wiki/Prim%27s_algorithm">http://en.wikipedia.org/wiki/Prim%27s_algorithm</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

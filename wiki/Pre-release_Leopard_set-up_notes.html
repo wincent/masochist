@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Pre-release Leopard set-up notes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Pre-release Leopard set-up notes</h1></div><div class="metadata"><relative-time created="1196159254" updated="1584053324">Created 11/27/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/leopard">leopard</a></li><li><a href="/tags/svk">svk</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Background</h2>
+<p>Having to repeatedly install new <a href="/wiki/Leopard">Leopard</a> seeds I wanted to record some set-up notes here to help guide me through the repetitive steps that I have to go through each time in order to get things configured the way I like.</p>
+<p>There is nothing really specific to <a href="/wiki/Leopard">Leopard</a> in these notes; I would basically have to go through the same steps in order to set up <a href="/wiki/Tiger">Tiger</a> for basic development use.</p>
+<p>These notes replace the shorter, older version in &quot;<a href="/wiki/Quickly_setting_up_a_machine_for_testing_with_a_pre-release_seed">Quickly setting up a machine for testing with a pre-release seed</a>&quot;.</p>
+<p>For notes on setting up the final release, see &quot;<a href="/wiki/Leopard_set-up_notes">Leopard set-up notes</a>&quot;.</p>
+<h2>Rationale</h2>
+<p>Given the potential instability of prerelease OS seeds I don't want to do any data migration or sharing. I basically want a clean install with just the minimum of configuration and set-up to get it into a workable state.</p>
+<h2>Pre-install</h2>
+<p>As the seeds become more reliable and usable I spend more time running them and inevitably invest more time making my working environment comfortable. In the lead-up to the final <a href="/wiki/Leopard">Leopard</a> release I start making tar archives of my home directory prior to upgrading (and the &quot;upgrades&quot; are always clean installs because I want to keep the seed installs as pristine and reliable as possible). I can then use these archives to take some shortcuts when setting up after installation (for example, extracting my <code>work</code> folder which already contains a bunch of <a href="/wiki/Git">Git</a> repositories).</p>
+<p>I use <code>tar</code> like this to create the needed archive:</p>
+<pre><code>BACKUPDIR=&quot;/Volumes/volume_containing_previous_leopard_install/Users/wincent&quot;
+TARGETVOL=&quot;/Volumes/volume_on_which_to_store_the_backup&quot;
+sudo tar -cv -f &quot;${TARGETVOL}/wincent-9a466.tbz2&quot; --bzip2 -C &quot;${BACKUPDIR}&quot; .
+
+# inspect contents of archive
+bzcat &quot;${BACKUPDIR}/wincent-9a466.tbz2&quot; | tar -t
+</code></pre>
+<h2>First boot</h2>
+<ul>
+<li>Run software update immediately</li>
+<li>Install <a href="/wiki/Xcode">Xcode</a></li>
+<li>Lower privileges</li>
+</ul>
+<p>I don't like to run as an administrator for day-to-day use, principally to minimize the potential impact of security holes. So I create a new user account with administrator privileges and then drop those privileges from my principal account.</p>
+<h2>Preferences</h2>
+<p>There are some preferences which I just have to change to prevent madness:</p>
+<ul>
+<li>Keyboard
+<ul>
+<li>Raise key repeat rate to maximum</li>
+</ul>
+</li>
+<li>Mouse
+<ul>
+<li>Enable secondary button</li>
+<li>Make scroll ball act as &quot;Button 3&quot;</li>
+<li>Turn off &quot;squeeze&quot; action</li>
+</ul>
+</li>
+<li>Sound
+<ul>
+<li>Turn off &quot;Play user interface sound effects&quot;</li>
+<li>Turn off &quot;Play feedback when volume is changed&quot;</li>
+<li>Turn off &quot;Play Front Row sound effects&quot;</li>
+<li>Turn down &quot;Alert volume&quot; close to minimum</li>
+</ul>
+</li>
+</ul>
+<p>Useful:</p>
+<ul>
+<li>Appearance
+<ul>
+<li>Increase number of recent items</li>
+</ul>
+</li>
+<li>Sharing
+<ul>
+<li>Change computer name to something short, for example &quot;leopard&quot;</li>
+</ul>
+</li>
+<li>Date &amp; Time
+<ul>
+<li>Make menu bar clock show seconds</li>
+</ul>
+</li>
+</ul>
+<p>Necessary in untrusted environments:</p>
+<ul>
+<li>Security:
+<ul>
+<li>Turn on &quot;Disable automatic login&quot;</li>
+<li>Turn on &quot;Require password to wake this computer from sleep or screen saver&quot;</li>
+</ul>
+</li>
+</ul>
+<p>Miscellaneous:</p>
+<ul>
+<li>Desktop and Screen Saver
+<ul>
+<li>Set up hot corners</li>
+<li>Start screen saver after 5 minutes of inactivity</li>
+</ul>
+</li>
+<li>Exposé and Spaces
+<ul>
+<li>Enable Spaces (four groups)</li>
+</ul>
+</li>
+<li>Energy Saver:
+<ul>
+<li>Set the computer to never go to sleep</li>
+</ul>
+</li>
+<li>Safari:
+<ul>
+<li>Set &quot;New windows open with&quot; to &quot;Empty Page&quot;</li>
+<li>Turn off 'Open &quot;safe&quot; files after downloading&quot;</li>
+<li>Turn on AutoFill for &quot;User names and passwords&quot;</li>
+<li>Select &quot;Show Status Bar&quot; and &quot;Show Tab Bar&quot;</li>
+</ul>
+</li>
+</ul>
+<h2>Developer tools</h2>
+<h3>Terminal</h3>
+<ul>
+<li>Add <a href="/wiki/Terminal">Terminal</a> to <a href="/wiki/Dock">Dock</a> (and while you're there remove all the crud that doesn't need to be in there)</li>
+<li>Setup preferences:
+<ul>
+<li>Black on light yellow (FFFFCC) color scheme</li>
+<li>Windows should be 132 columns by 54 rows</li>
+<li>Turn off &quot;Set LANG environment variable on startup&quot; (makes <a href="/wiki/Perl">Perl</a> tools complain loudly)</li>
+<li>Bind Option-Left and Option-Right to \033b and \033f respectively (word-based movement); in order to set these up you have to paste in those strings.</li>
+</ul>
+</li>
+<li>Set up <code>sudo</code>:</li>
+</ul>
+<p>Must add a line like this:</p>
+<pre><code>wincent ALL=(ALL)       ALL
+</code></pre>
+<p>To the <code>sudoers</code> file:</p>
+<pre><code>su admin_username
+sudo visudo
+exit
+</code></pre>
+<ul>
+<li>Setup work directory and transfer useful files across from previous install:</li>
+</ul>
+<!-- -->
+<pre><code># or, if you have a tar archive of the previous install
+mkdir ~/tmp
+cd ~/tmp
+cp path_to_archive/archive.tbz2 .
+tar xjvf archive.tbz2
+mv trabajo ../
+
+# and while we're here...
+mv bin .MacOSX .ssh .bash_profile .gitaliases .gitconfig .gitignore .gitk .gnupg .init.ae .inputrc .subversion ../
+cd ~/trabajo/vendor/aee/aee-2.2.15b
+make clean
+make
+sudo make install
+cd ../../ee/easyedit-1.4.6
+make clean
+make
+sudo make install
+cd ../../git/gnupg-1.4.7
+make clean
+./configure
+make
+make check
+sudo make install
+cd ../git-1.5.3.2
+make clean
+make prefix=/usr/local all
+make prefix=/usr/local test
+echo $?
+sudo make prefix=/usr/local install
+cd ..
+sudo tar xjv -C /usr/local/man -f git-manpages-1.5.3.2.tar.bz2
+cd ../wget/wget-1.10.1
+make clean
+./configure
+make
+make check
+sudo make install
+cd ../../ragel/ragel-5.24
+./configure
+make
+cd test
+./runtests
+cd ..
+sudo make install
+cd ../../doxygen
+hdiutil attach Doxygen-1.5.3.dmg
+sudo ditto /Volumes/Doxygen /Applications/Doxygen
+sudo mv /Applications/Doxygen/Doxygen.app /Applications/
+sudo rm -r /Applications/Doxygen
+hdiutil detach `hdiutil info | grep &quot;/Volumes/Doxygen&quot; | awk '{print $1}'`
+</code></pre>
+<ul>
+<li>Log out and log in again for environment settings to take effect</li>
+</ul>
+<h3>Essential software</h3>
+<ul>
+<li>Install SSHPassKey.app into <code>~/bin/</code> (if you didn't already do it above)
+<ul>
+<li>Launch while holding down the Option key so as to add in <a href="/wiki/SSH">SSH</a> identities to register at launch time
+<ul>
+<li><code>~/.ssh/id_dsa</code></li>
+<li><code>~/.ssh/id_dsa_subversion</code></li>
+<li><code>~/.ssh/id_dsa_git</code></li>
+</ul>
+</li>
+<li>Set SSHPassKey.app to run at login time</li>
+</ul>
+</li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Installing_Git_1.5.2.4_on_Mac_OS_X_Leopard">Installing Git 1.5.2.4 on Mac OS X Leopard</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

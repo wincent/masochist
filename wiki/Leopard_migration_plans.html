@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Leopard migration plans • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Leopard migration plans</h1></div><div class="metadata"><relative-time created="1161862296" updated="1584053324">Created 10/26/2006, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>This page provides a broad overview of my product roadmaps and the development infrastructure that I plan to use in the move to Mac OS X <a href="/wiki/Leopard">Leopard</a>.</p>
+<h2>Timeline</h2>
+<p>The <a href="http://www.apple.com/macosx/leopard/">official Apple web page says</a> that <a href="/wiki/Leopard">Leopard</a> is, &quot;Coming spring 2007&quot;, which means at some point in March, April or May 2007. At the time of writing (late September 2006) that means I have a minimum of 5 months, and possibly as much as 7 months, in which to make my products <a href="/wiki/Leopard">Leopard</a>-ready.</p>
+<p>My plan in that timeframe is to continue releasing updates for my products without changing their minimum system requirements:</p>
+<ul>
+<li><a href="/wiki/Synergy">Synergy</a> and <a href="/wiki/Install">Install</a> will continue to run on <a href="/wiki/Jaguar">Jaguar</a>, <a href="/wiki/Panther">Panther</a> and <a href="/wiki/Tiger">Tiger</a></li>
+<li>A couple of unreleased products I have up my sleeve which require <a href="/wiki/Tiger">Tiger</a> will maintain that requirement</li>
+<li>All other products will continue to run on <a href="/wiki/Panther">Panther</a> and <a href="/wiki/Tiger">Tiger</a></li>
+</ul>
+<p>But once <a href="/wiki/Leopard">Leopard</a> is out I plan to raise the minimum requirements to take advantage of the new features. Development will be split into two branches: new releases (the main branch) will require <a href="/wiki/Leopard">Leopard</a>; releases on the other branch (maintenance branch) will continue to support the older versions of <a href="/wiki/Mac_OS_X">Mac OS X</a> but will be basic bug fix and maintenance releases only.</p>
+<p>The only exception to this pattern will be <a href="/wiki/Install">Install</a>, which will continue to run on any version of <a href="/wiki/Mac_OS_X">Mac OS X</a> from <a href="/wiki/Jaguar">Jaguar</a> up; there will be no branching for <a href="/wiki/Install">Install</a>.</p>
+<p>In previous <a href="/wiki/Mac_OS_X">Mac OS X</a> updates I have held back from increasing the minimum system requirements and this has lead to some unfortunate limitations. It means that an application like <a href="/wiki/Synergy">Synergy</a>, which has always supported <a href="/wiki/Jaguar">Jaguar</a> as a minimum, has been unable to take advantage of newer technologies introduced in <a href="/wiki/Panther">Panther</a> like <a href="/wiki/Cocoa_Bindings">Cocoa Bindings</a> and this has made development more difficult. Likewise, <a href="/wiki/Synergy_Advance">Synergy Advance</a>, which has always supported <a href="/wiki/Panther">Panther</a> as a minimum, has been unable to take advantage of newer technologies introduced in <a href="/wiki/Tiger">Tiger</a> like <a href="/wiki/Core_Data">Core Data</a>. (Note: this is somewhat of a simplification as it <em>is</em> possible to partially support newer-technologies by using tricks like selective bundle loading and weak linking, but these tricks tend to make things more complex and difficult to maintain.)</p>
+<p><a href="/wiki/Leopard">Leopard</a> offers some fantastic new APIs and I changes to the <a href="/wiki/Objective-C">Objective-C</a> language such as <a href="/wiki/garbage_collection">garbage collection</a> so I'm going to use it as the point for the &quot;big jump&quot; in which I move all main development to the new platform. This will enable me to make some big changes, introduce more new features, and work better and faster. To support customers using older versions of the operating system I'll continue to release maintenance releases for those systems. Also, from a business perspective this makes sense; by offering products to a wider market segment I stand to sell more licenses.</p>
+<p>To the customer the releases will look like this:</p>
+<ul>
+<li>Consider a product with versions 1.0, 1.2, 1.3 that runs on <a href="/wiki/Panther">Panther</a> and up.</li>
+<li>Once <a href="/wiki/Leopard">Leopard</a> is out, most development will occur on a new branch — the 2.0, 2.1, 2.2 (etc) releases — and these releases will only run on <a href="/wiki/Leopard">Leopard</a>.</li>
+<li>I will continue to do maintenance releases on the old branch (1.3.1, 1.3.2, 1.4 etc) that support the old version of <a href="/wiki/Mac_OS_X">Mac OS X</a>.</li>
+</ul>
+<h2>Phase 1: Jaguar/Panther compatible releases</h2>
+<p>In the 5 to 7 months that remain before <a href="/wiki/Leopard">Leopard</a> comes out I will continue targeting the older versions of <a href="/wiki/Mac_OS_X">Mac OS X</a> and performing public releases where appropriate.</p>
+<h2>Phase 2: Branching for Leopard</h2>
+<p>When I am ready to start <a href="/wiki/Leopard">Leopard</a>-specific development I will perform a branch. The page, <a href="/wiki/Creating_branches_with_Subversion">Creating branches with Subversion</a>, details how I did this for the <a href="/wiki/Synergy">Synergy</a> code base. For the time being I am doing my work directly on the <code>panther</code> branch. Most likely after the next public release I will merge the changes from that branch onto the <code>trunk</code> and start doing most of the work on <code>trunk</code> instead.</p>
+<p>During this transition period I will continue to use the <a href="/wiki/Panther">Panther</a> version of <a href="/wiki/buildtools">buildtools</a>. When the focus shifts to <a href="/wiki/Leopard">Leopard</a> I will branch <a href="/wiki/buildtools">buildtools</a> and all of my frameworks at the same time. The <a href="/wiki/Leopard">Leopard</a>-oriented development (occurring in the <code>trunk</code> of each product) will continue as normal, but the development for older versions will need to use the older versions of <a href="/wiki/buildtools">buildtools</a>. The easiest way to achieve this will be to have multiple, totally separate build hierarchies:</p>
+<pre><code># Leopard development (trunk)
+work/build
+work/build-intermediates
+work/buildtools
+work/project1
+work/project2
+work/framework1
+work/framework2
+
+# Tiger branch, likewise for Panther, Jaguar
+work-tiger/build
+work-tiger/build-intermediates
+work-tiger/buildtools
+work-tiger/project1
+work-tiger/project2
+work-tiger/framework1
+work-tiger/framework2
+</code></pre>
+<h2>Phase 3: Leopard releases</h2>
+<p>In general, all new features will go into the <code>trunk</code> branch (for <a href="/wiki/Leopard">Leopard</a>) and only bug fixes and maintenance changes will go into the older branches.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

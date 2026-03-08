@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>rails.vim cheatsheet • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>rails.vim cheatsheet</h1></div><div class="metadata"><relative-time created="1278568098" updated="1736516595">Created 7/8/2010, updated 1/10/2025</relative-time></div><ul class="tags"><li><a href="/tags/rails">rails</a></li><li><a href="/tags/vim">vim</a></li><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/cheatsheet">cheatsheet</a></li></ul><div class="prerendered"><h2>Find a file (with tab completion)</h2>
+<ul>
+<li><code>:Rfind PostsController</code></li>
+<li><code>:Rfind models/article</code></li>
+</ul>
+<h2>Goto file under cursor</h2>
+<ul>
+<li><code>gf</code> (opens in current window)</li>
+<li><code>CTRL-W_f</code> (opens in split)</li>
+</ul>
+<h2>Editing &quot;alternate&quot; files</h2>
+<p>&quot;Alternate&quot; files are usually specs, and their corresponding file:</p>
+<ul>
+<li><code>:A</code> (edit alternate file)</li>
+<li><code>:AS</code> (in split)</li>
+<li><code>:AV</code> (in vertical split)</li>
+</ul>
+<h2>Editing &quot;related&quot; files</h2>
+<p>&quot;Related&quot; files are things like view templates and controllers:</p>
+<ul>
+<li><code>:R</code> (edit related file)</li>
+<li><code>:RS</code> (in split)</li>
+<li><code>:RV</code> (in vertical split)</li>
+</ul>
+<h2>Summary of &quot;alternate&quot; and &quot;related&quot; files</h2>
+<ul>
+<li>in a <strong>model</strong> the &quot;alternate&quot; is the <strong>spec</strong> and the &quot;related&quot; is the <strong>schema</strong></li>
+<li>in a <strong>controller</strong> (method) the &quot;alternate&quot; is the <strong>spec</strong> and the &quot;related&quot; is the <strong>view</strong></li>
+<li>in a <strong>view</strong> the &quot;alternate&quot; is the <strong>spec</strong> and the &quot;related&quot; is the <strong>controller</strong> (method)</li>
+</ul>
+<p>Less frequently used are:</p>
+<ul>
+<li>in a <strong>migration</strong> the &quot;alternate&quot; is the <strong>previous migration</strong> and the &quot;related&quot; is the <strong>next migration</strong></li>
+<li>in <strong><code>config/database.yml</code></strong> the &quot;alternate&quot; is <strong><code>config/routes.rb</code></strong> and the &quot;related&quot; is <strong><code>config/environments/*.rb</code></strong></li>
+</ul>
+<h2>Explicit jumping commands</h2>
+<p>These all have tab completion, reasonable defaults, and variants for opening in splits (<code>:RS...</code>) and vertical splits (<code>:RV...</code>):</p>
+<ul>
+<li><code>:Rcontroller</code></li>
+<li><code>:Renvironment</code></li>
+<li><code>:Rfixtures</code></li>
+<li><code>:Rhelper</code></li>
+<li><code>:Rjavascript</code></li>
+<li><code>:Rlayout</code></li>
+<li><code>:Rlib</code></li>
+<li><code>:Rmailer</code></li>
+<li><code>:Rmigration</code></li>
+<li><code>:Rmodel</code></li>
+<li><code>:Robserver</code></li>
+<li><code>:Rtask</code></li>
+<li><code>:Rview</code></li>
+<li><code>:Rspec</code></li>
+</ul>
+<h2><a href="/wiki/Rake">Rake</a> integration</h2>
+<ul>
+<li><code>:Rake {task}</code></li>
+</ul>
+<p>The default is to run the spec for the file in the current buffer. (In practice not really very usable because for long-running specs you lose control of Vim for the duration.)</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

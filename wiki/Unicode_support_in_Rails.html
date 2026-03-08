@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Unicode support in Rails • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Unicode support in Rails</h1></div><div class="metadata"><relative-time created="1192372267" updated="1584053324">Created 10/14/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/rails">rails</a></li><li><a href="/tags/mysql">mysql</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>As of <a href="/wiki/Rails">Rails</a> 1.2 (<a href="http://weblog.rubyonrails.org/2007/1/19/rails-1-2-rest-admiration-http-lovefest-and-utf-8-celebrations">see here</a>) <a href="/wiki/Unicode">Unicode</a> support is included right out of the box.</p>
+<p>Set up a brand new application with a simple scaffold and check the HTML output returned by the browser; it will include a line like this:</p>
+<pre><code>&lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html;charset=UTF-8&quot; /&gt;
+</code></pre>
+<p>Likewise, the actual <a href="/wiki/HTTP">HTTP</a> headers returned to the browser will be appropriately set. You can test this out using <code>curl</code>:</p>
+<pre><code>curl -i http://example.com/rails_app
+</code></pre>
+<p>Note the <code>charset=utf-8</code> in the returned header:</p>
+<pre><code>HTTP/1.1 200 OK
+Cache-Control: no-cache
+Connection: Keep-Alive
+Date: Mon, 02 Apr 2007 19:10:27 GMT
+Content-Type: text/html; charset=utf-8
+Server: WEBrick/1.3.1 (Ruby/1.8.6/2007-03-13)
+Content-Length: 1317
+</code></pre>
+<p>But there is one extra thing you have to do to complete the configuration; in your <code>config/database.yml</code> file add a line like this for each <a href="/wiki/MySQL">MySQL</a> database:</p>
+<pre><code>encoding: utf8
+</code></pre>
+<p>Note that as of <a href="/wiki/Rails_2.0">Rails 2.0</a> this configuration is included by default in the <code>database.yml</code> file.</p>
+<h2>MySQL</h2>
+<p>Although <a href="/wiki/Rails">Rails</a> itself is (almost) set-up to use <a href="/wiki/UTF-8">UTF-8</a> out of the box <a href="/wiki/MySQL">MySQL</a> is not necessarily the same. The default character set is <a href="/wiki/ISO_8859-1">ISO 8859-1</a>, otherwise known as <a href="/wiki/Latin-1">Latin-1</a>.</p>
+<p>Confirming this, I installed the latest version from the 4.1 series on my <a href="/wiki/Mac_OS_X">Mac OS X</a> box (see &quot;<a href="/wiki/Installing_MySQL_4.1.22_%28binary%29_on_Mac_OS_X_10.4.9">Installing MySQL 4.1.22 (binary) on Mac OS X 10.4.9</a>&quot;) and on performing a <code>SHOW CREATE TABLE example_table;</code> the table information included the following:</p>
+<pre><code>ENGINE=InnoDB DEFAULT CHARSET=latin1
+</code></pre>
+<p><a href="/wiki/InnoDB">InnoDB</a> tables are fairly nice, offering transactions, row-level locking, and foreign-key constraints (see <a href="http://dev.mysql.com/doc/refman/4.1/en/innodb-overview.html">http://dev.mysql.com/doc/refman/4.1/en/innodb-overview.html</a>), but the charset value is not what we want. I have seen <a href="http://ruphus.com/blog/2005/06/23/getting-unicode-mysql-and-rails-to-cooperate/">some posts</a> that claim that <a href="/wiki/InnoDB">InnoDB</a> tables don't support full-text searching if <a href="/wiki/UTF-8">UTF-8</a> is used, but <a href="http://dev.mysql.com/doc/refman/4.1/en/fulltext-restrictions.html">the MySQL documentation</a> clarifies this further stating that full-text searching is not support in <a href="/wiki/InnoDB">InnoDB</a> tables with <em>any</em> encoding at all.</p>
+<h3>Database creation time</h3>
+<p>In theory, you can set the default charset at the moment you create the database. Instead of:</p>
+<pre><code>mysqladmin -u root create application_name_development
+</code></pre>
+<p>You would do this:</p>
+<pre><code>mysqladmin -u root create application_name_development --default-character-set=utf8
+</code></pre>
+<p>But in practice this didn't work for me. The setting is apparently ignored.</p>
+<p>The alternative approach <a href="http://www.devpals.com/showthread.php?t=136">described here</a> is to create the database from inside the <a href="/wiki/MySQL">MySQL</a> shell:</p>
+<pre><code>$ mysql -u root
+mysql&gt; CREATE DATABASE application_name_development CHARACTER SET 'UTF8';
+</code></pre>
+<p>The same thing, from the command line:</p>
+<pre><code>mysql -u root -e &quot;CREATE DATABASE application_name_development CHARACTER SET 'UTF8';&quot;
+</code></pre>
+<p>Unlike the other method, this one does seem to work (see &quot;<a href="/wiki/Finding_out_the_encoding_of_a_MySQL_database">Finding out the encoding of a MySQL database</a>&quot;):</p>
+<pre><code>mysql&gt; USE application_name_development;
+Database changed
+mysql&gt; SHOW VARIABLES LIKE 'character\_set\_%';
++--------------------------+--------+
+| Variable_name            | Value  |
++--------------------------+--------+
+| character_set_client     | latin1 |
+| character_set_connection | latin1 |
+| character_set_database   | utf8   |
+| character_set_results    | latin1 |
+| character_set_server     | latin1 |
+| character_set_system     | utf8   |
++--------------------------+--------+
+6 rows in set (0.00 sec)
+</code></pre>
+<p>To start a <a href="/wiki/MySQL">MySQL</a> session and issue the <code>CREATE DATABASE</code> command in a single operation you can do:</p>
+<pre><code>mysql -u root -e &quot;CREATE DATABASE application_name_development CHARACTER SET 'UTF8';&quot;
+</code></pre>
+<p>Yet another way, when working with <a href="/wiki/Rails">Rails</a>, is to use <a href="/wiki/Rake">Rake</a> tasks; assuming you have your <code>database.yml</code> file correctly configured then you can just:</p>
+<pre><code>rake db:create:all
+</code></pre>
+<h3>Across all databases on the server</h3>
+<p>The <a href="http://www.fngtps.com/2007/02/ruby-and-mysql-encoding-flakiness">same post</a> explains how, if you control the entire <a href="/wiki/MySQL">MySQL</a> server, you can set the following in your <code>/etc/mysql/my.cnf</code> file:</p>
+<pre><code>[mysqld]
+character-set-server = utf8
+
+[client]
+default-character-set = utf8
+</code></pre>
+<p>If you do this then all databases will be automatically created using <a href="/wiki/UTF-8">UTF-8</a> as the default character set. There is no need to pass any special command line options or to manually pass the <code>CHARACTER SET</code> parameter when creating a database.</p>
+<p>Although this is convenient, it may not be possible for all users and it may also cause compatibility issues with other software which might incorrectly assume that the database is running with <a href="/wiki/Latin-1">Latin-1</a> text encoding; as such my preferred method is to create new databases from within the <a href="/wiki/MySQL">MySQL</a> shell as described above.</p>
+<h3>Migration time</h3>
+<p>If you cannot set this at the database level you can also do it from inside your migrations. Modify your migrations from:</p>
+<pre><code>create_table :examples do |t|
+</code></pre>
+<p>To:</p>
+<pre><code>create_table :examples, :options =&gt; 'default charset=utf8' do |t|
+</code></pre>
+<p>Then your tables will have the appropriate charsets regardless of the database settings.</p>
+<h2>External links</h2>
+<ul>
+<li><a href="http://happygiraffe.net/presentations/rails-unicode/rails-unicode-notes.pdf">http://happygiraffe.net/presentations/rails-unicode/rails-unicode-notes.pdf</a></li>
+<li><a href="http://media.fngtps.com/audio/2006/rstm01-unicode_in_rails.m4a">http://media.fngtps.com/audio/2006/rstm01-unicode_in_rails.m4a</a></li>
+<li><a href="http://woss.name/2006/10/25/migrating-your-rails-application-to-unicode/">http://woss.name/2006/10/25/migrating-your-rails-application-to-unicode/</a></li>
+<li><a href="http://ruby.org.ee/wiki/Unicode_in_Ruby/Rails">http://ruby.org.ee/wiki/Unicode_in_Ruby/Rails</a></li>
+<li><a href="http://ruphus.com/blog/2005/06/23/getting-unicode-mysql-and-rails-to-cooperate/">http://ruphus.com/blog/2005/06/23/getting-unicode-mysql-and-rails-to-cooperate/</a></li>
+<li><a href="http://www.devpals.com/showthread.php?t=136">http://www.devpals.com/showthread.php?t=136</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

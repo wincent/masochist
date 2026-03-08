@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GnuPG cheat sheet • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>GnuPG cheat sheet</h1></div><div class="metadata"><relative-time created="1358371174" updated="1709741209">Created 1/16/2013, updated 3/6/2024</relative-time></div><ul class="tags"><li><a href="/tags/gpg">gpg</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Export a public key</h2>
+<pre><code class="language-shell">$ gpg --export -a example@example.com
+</code></pre>
+<h2>List info about keys in the keyring</h2>
+<h3>Public keys</h3>
+<pre><code class="language-shell">$ gpg --list-public-keys
+</code></pre>
+<h3>Private keys</h3>
+<pre><code class="language-shell">$ gpg --list-secret-keys
+</code></pre>
+<h2>List fingerprint info about keys in keyring</h2>
+<pre><code class="language-shell">$ gpg --fingerprint
+</code></pre>
+<h2>List &quot;tons of stuff&quot; about keys for a given email</h2>
+<pre><code class="language-shell">$ gpg \
+    --list-keys \
+    --keyid-format=long \
+    --with-keygrip \
+    --with-fingerprint \
+    --fingerprint \
+    --list-options=show-unusable-subkeys \
+    $EMAIL
+</code></pre>
+<p>(<code>show-unusable-subkeys</code> will show info about revoked/expired subkeys still in the keyring.)</p>
+<h2>Deleting keys from a keyring</h2>
+<h3>Deleting a private key</h3>
+<p><strong>Note</strong>: This is generally something you'd want to do with extreme caution.</p>
+<pre><code class="language-shell">$ gpg --delete-secret-key &quot;John Tester &lt;john@example.com&gt;&quot;
+</code></pre>
+<h3>Deleting a public key</h3>
+<pre><code class="language-shell">$ gpg --delete-key &quot;John Tester &lt;john@example.com&gt;&quot;
+</code></pre>
+<h2>Uploading a public key to a key server</h2>
+<h3>Uploading to a specific server</h3>
+<p>Here the &quot;key ID&quot; is the one you can find in the output of <code>gpg --list-keys</code>, prefixed with <code>0x</code>:</p>
+<pre><code class="language-shell">$ gpg --keyserver pgp.mit.edu --send-keys 0x134D9429
+gpg: sending key 134D9429 to hkp server pgp.mit.edu
+</code></pre>
+<h3>Letting <code>gpg</code> choose a default server</h3>
+<pre><code class="language-shell">$ gpg --send-keys 0x134D9429
+gpg: sending key 134D9429 to hkp server keys.gnupg.net
+</code></pre>
+<h3>Further reading on key servers</h3>
+<ul>
+<li><a href="http://pgp.mit.edu/faq.html">http://pgp.mit.edu/faq.html</a></li>
+</ul>
+<h2>Importing a key from a key server</h2>
+<pre><code class="language-shell">$ gpg --keyserver pgp.mit.edu --recv-keys 0x134D9429
+gpg: requesting key 134D9429 from hkp server pgp.mit.edu
+gpg: key 134D9429: &quot;Wincent Colaiuta &lt;win@wincent.com&gt;&quot; not changed
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+</code></pre>
+<h2>Setting preferences on an existing key in the key ring</h2>
+<p>(As described <a href="http://www.apache.org/dev/openpgp.html#sha1">here</a>.)</p>
+<pre><code class="language-shell">$ gpg --edit-key 134D9429
+gpg&gt; showpref
+gpg&gt; setpref SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 ZLIB BZIP2 ZIP
+gpg&gt; save
+$ gpg --send-keys 134D9429 # upload new public key to keyserver
+</code></pre>
+<h2>Generate revocation certificates</h2>
+<pre><code class="language-shell">$ gpg --output revoke-37BAF280.asc --armor --gen-revoke 37BAF280
+$ gpg --output revoke-134D9429.asc --armor --gen-revoke 134D9429
+$ gpg -c revoke-134D9429.asc # encrypt revocation cert
+$ gpg -c revoke-37BAF280.asc # encrypt revocation cert
+$ rm revoke-*.asc            # destroy plaintext (use `srm` if you have it)
+$ chmod 400 revoke-*         # ideally, should move certs &quot;offsite&quot; to secure location
+</code></pre>
+<h2>Transitioning from an older key to a newer key</h2>
+<p>For example, to change key length, or because a key's expiry is approaching. See <a href="http://www.apache.org/dev/key-transition.html">this page</a> for great detail on the subject.</p>
+<p>We'll generate a new key, set its trust to &quot;ultimate&quot;, set it as our default, and sign the new key with the old.</p>
+<pre><code class="language-shell">$ gpg --gen-key                                  # generate new key
+$ gpg --edit-key 37BAF280                        # trust, showprefs
+$ vim ~/.gnupg/gpg.conf                          # set default-key to 37BAF280
+$ gpg --default-key 1BD985E7 --sign-key 37BAF280 # sign new with old
+$ gpg --list-sigs 134D9429 37BAF280              # confirm sigs
+$ gpg --send-keys 134D9429 37BAF280              # send both keys to server
+</code></pre>
+<h2>Changing the password on an existing private key</h2>
+<pre><code class="language-shell">$ gpg --edit-key user@example.com # at prompt: `passwd`, then `quit`
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li>Another cheat sheet: <a href="http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/gpg-cs.html">http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/gpg-cs.html</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

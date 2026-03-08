@@ -1,0 +1,24 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Building and installing Ruby 1.8.4 on Mac OS X Tiger • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Building and installing Ruby 1.8.4 on Mac OS X Tiger</h1></div><div class="metadata"><relative-time created="1173783747" updated="1584053324">Created 3/13/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/ruby">ruby</a></li><li><a href="/tags/tiger">tiger</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Note</h2>
+<p>These notes are superseded by the article, &quot;<a href="/wiki/Building_and_installing_Ruby_1.8.5_on_Mac_OS_X_Tiger">Building and installing Ruby 1.8.5 on Mac OS X Tiger</a>&quot;.</p>
+<h2>Build</h2>
+<p>First, download, extract, configure and build:</p>
+<pre><code>wget ftp://ftp.ruby-lang.org/pub/ruby/ruby-1.8.4.tar.gz
+tar zxvf ruby-1.8.4.tar.gz
+cd ruby-1.8.4/
+./configure
+make
+</code></pre>
+<p>Second, run the tests and install. Note that the full test suite (<code>make check</code>) can only be run <em>after</em> installing:</p>
+<pre><code>make test
+sudo make install
+make check
+</code></pre>
+<p>Print out the version of the newly installed ruby interpreter:</p>
+<pre><code>/usr/local/bin/ruby -v
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Building_and_installing_RubyGems_0.9.0_on_Mac_OS_X_Tiger">Building and installing RubyGems 0.9.0 on Mac OS X Tiger</a></li>
+<li><a href="/wiki/Building_and_installing_Ruby_1.8.4_on_Red_Hat_Enterprise_Linux_ES_3">Building and installing Ruby 1.8.4 on Red Hat Enterprise Linux ES 3</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

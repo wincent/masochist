@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Subversion 1.4.2 upgrade • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Subversion 1.4.2 upgrade</h1></div><div class="metadata"><relative-time created="1162991816" updated="1710259978">Created 11/8/2006, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/subversion">subversion</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These notes were made during the upgrade from <a href="/wiki/Subversion">Subversion</a> version 1.4.0 to the new version 1.4.2.</p>
+<h2>Upgrade of local install</h2>
+<pre><code># get and extract sources
+wget http://subversion.tigris.org/downloads/subversion-1.4.2.tar.bz2
+wget http://subversion.tigris.org/downloads/subversion-deps-1.4.2.tar.bz2
+tar xjvf subversion-1.4.2.tar.bz2
+tar xjvf subversion-deps-1.4.2.tar.bz2
+cd subversion-1.4.2
+
+# remove old copies of installed libraries
+sudo rm -f /usr/local/lib/libsvn*
+sudo rm -f /usr/local/lib/libapr*
+sudo rm -f /usr/local/lib/libexpat*
+sudo rm -f /usr/local/lib/libneon*
+
+# build, test, install
+./configure --with-ssl
+make
+make check
+sudo make install
+</code></pre>
+<p>On running, get this error:</p>
+<pre><code>$ svn --version
+dyld: Library not loaded: /usr/local/apr/lib/libaprutil-0.0.dylib
+  Referenced from: /usr/local/bin/svn
+  Reason: image not found
+Trace/BPT trap
+</code></pre>
+<p>I think from now on I am going to build statically linked copies of Subversion.</p>
+<pre><code>sudo rm -f /usr/local/lib/libsvn*
+sudo rm -f /usr/local/lib/libapr*
+sudo rm -f /usr/local/lib/libexpat*
+sudo rm -f /usr/local/lib/libneon*
+make clean
+./configure --enable-all-static --with-ssl
+make
+make check
+</code></pre>
+<p>That didn't work, looks like <code>--enable-all-static</code> is not enough; lots of <a href="/wiki/libtool">libtool</a> warnings printed during the build:</p>
+<pre><code>libtool: link: warning: complete static linking is impossible in this configuration
+</code></pre>
+<p>And many test failures in the <code>make check</code>. Evidently it will be necessary to manually perform static builds for the dependent libraries prior to proceeding with the build.</p>
+<p>I've uploaded the scripts I used to perform the static build here:</p>
+<ul>
+<li><a href="http://wincent.dev/gpl/svn-1.4.2/intel/svn-mac-build.zip">http://wincent.dev/gpl/svn-1.4.2/intel/svn-mac-build.zip</a></li>
+</ul>
+<p>These are modifications of the scripts by D.J. Hagberg who maintains static builds of Subversion for various platforms.</p>
+<p>The resulting static builds work, but I wanted to get my non-static build working as well:</p>
+<pre><code>cd ..
+wget http://mirrors.hostalia.com/apache/apr/apr-1.2.7.tar.bz2
+tar xjvf apr-1.2.7.tar.bz2
+mv apr-1.2.7 apr
+cd apr
+./buildconf &amp;&amp; ./configure &amp;&amp; make &amp;&amp; make check
+sudo make install
+cd ..
+wget http://mirrors.hostalia.com/apache/apr/apr-util-1.2.7.tar.bz2
+tar xjvf apr-util-1.2.7.tar.bz2
+mv apr-util-1.2.7 apr-util
+cd apr-util
+./buildconf
+./configure --with-apr=/usr/local/apr/bin/apr-1-config
+make
+
+# for some reason, make check will fail unless you install first
+sudo make install
+make check
+cd ..
+rm -rf apr apr-util
+
+# clean out subversion and start again
+rm -rf subversion-1.4.2
+tar xjvf subversion-1.4.2.tar.bz2
+tar xjvf subversion-deps-1.4.2.tar.bz2
+cd subversion-1.4.2
+rm -r apr apr-util
+./configure --with-apr=/usr/local/apr/bin/apr-1-config       \
+            --with-apr-util=/usr/local/apr/bin/apu-1-config  \
+            --disable-mod-activation                         \
+            --with-ssl
+make &amp;&amp; make check
+sudo make install
+</code></pre>
+<h2>Upgrade of remote install</h2>
+<pre><code># run in a screen session in case we lose the connection
+screen
+
+# get apr source see http://apr.apache.org/download.cgi for your local mirror
+wget http://mirrors.hostalia.com/apache/apr/apr-1.2.7.tar.bz2
+tar xjvf apr-1.2.7.tar.bz2
+
+# rename directory because apr-util will later look for source in &quot;apr&quot;
+mv apr-1.2.7 apr
+cd apr
+
+# the actual apr build
+./buildconf
+./configure
+make
+make check
+sudo make install
+cd ..
+
+# now for apr-util
+wget http://mirrors.hostalia.com/apache/apr/apr-util-1.2.7.tar.bz2
+tar xjvf apr-util-1.2.7.tar.bz2
+mv apr-util-1.2.7 apr-util
+cd apr-util
+./buildconf
+./configure --with-apr=/usr/local/apr/bin/apr-1-config
+make
+make check
+sudo make install
+cd ..
+rm -rf apr apr-util
+
+# now for Subversion
+wget http://subversion.tigris.org/downloads/subversion-1.4.2.tar.bz2
+wget http://subversion.tigris.org/downloads/subversion-deps-1.4.2.tar.bz2
+tar xjvf subversion-1.4.2.tar.bz2
+tar xjvf subversion-deps-1.4.2.tar.bz2
+cd subversion-1.4.2
+
+# just in case, to be sure that Subversion uses the just-built apr and apr-util
+rm -r apr apr-util
+
+# the actual build
+sudo chkconfig svn off
+sudo rm -f /usr/local/lib/libsvn*
+./configure --with-apr=/usr/local/apr/bin/apr-1-config      \
+            --with-apr-util=/usr/local/apr/bin/apu-1-config \
+            --disable-mod-activation                        \
+            --with-ssl
+make
+make check
+sudo make install
+
+# re-open for business
+sudo chkconfig svn on
+netstat -anp | grep LISTEN | grep 3690
+exit
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li>Release notes: <a href="http://subversion.tigris.org/svn_1.4_releasenotes.html">http://subversion.tigris.org/svn_1.4_releasenotes.html</a></li>
+<li>Change log: <a href="http://svn.collab.net/repos/svn/tags/1.4.2/CHANGES">http://svn.collab.net/repos/svn/tags/1.4.2/CHANGES</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

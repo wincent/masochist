@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Parser generator update • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/parser-generator-update">Parser generator update</a></h1><div class="metadata"><relative-time created="1171769760" updated="1710259978">Created 2/18/2007, updated 3/12/2024</relative-time><span>7 minute read</span></div><div class="prerendered"><p>One of the things that's been so good about <a href="http://wincent.dev/a/about/wincent/weblog/archives/2007/01/writing_a_parse.php">writing the parser generator</a> <a href="http://wincent.dev/a/about/wincent/weblog/archives/2007/02/abstract_syntax.php">for Walrus</a> is that it has made the code much more flexible, much easier to develop iteratively. In my original design I had a hand-coded parser and a simple grammar that imposed a number of restrictions to make the parser's job easier:</p>
+<ul>
+<li>There were only three characters with special meaning, <code>#</code>, <code>$</code> and <code>\</code>.</li>
+<li>The parser was strictly line-oriented:
+<ul>
+<li>Comments extended to the end of the line as did directives.</li>
+<li>As a special case, a comment could follow a directive on the same line.</li>
+<li>Directives could not span lines.</li>
+<li>Placeholders couldn't span lines either.</li>
+</ul>
+</li>
+</ul>
+<p>The notion of &quot;what is a Ruby expression&quot; was extremely simplified. The basic idea was that when expecting a Ruby expression the lexer would drop into a mode where it would blindly consume characters until it hit something that marked the end of the expression; it would do this without analysing the internal structure of the expression in anything but the simplest of ways.</p>
+<h4>Manually parsing Ruby expressions</h4>
+<p>To illustrate, consider the case of parsing a placeholder:</p>
+<pre><code>$my_placeholder(foo)
+</code></pre>
+<p>On seeing the initial <code>$</code> the lexer knew that a placeholder was coming and so looked for an identifier (in this case, <code>my_placeholder</code>). On hitting the opening bracket the lexer new that a parameter list containing zero or more Ruby expressions was coming, but it could really only prepare itself for three eventualities:</p>
+<ol>
+<li>Hitting a <code>)</code> would mean that the end of the parameter list</li>
+<li>Hitting a <code>,</code> would mean the end of one parameter and the beginning of another</li>
+<li>&quot;Everything else&quot; would be part of an parameter expression</li>
+</ol>
+<p>I didn't want to write a full Ruby lexer/parser given that Ruby is such a complex language (in the syntactic sense). In order to be able to parse basic structures like Array and Hash literals I had to put in some special case handling. In practice while lexing a Ruby expression the process looked something like this:</p>
+<ol>
+<li>Keep going until you hit something that marks the end of an expression (<code>)</code>, <code>,</code>, or the end of the current line)</li>
+<li>If you hit a <code>,</code> start scanning a new expression</li>
+<li>If you hit a <code>[</code> you're inside an array and <code>,</code> no longer marks the end of the current expression; scan recursively for zero or more Ruby expressions; finally, <code>]</code> marks the end of the array.</li>
+<li>Similar rules applied for hashes (looking for <code>{</code>) and bracketed expressions (looking for &quot;<code>(</code>&quot;).</li>
+<li>Different rules applied inside string literals (where <code>[</code>, <code>(</code>, <code>{</code> and their counterparts lost their special meaning) and escaping meant that <code>&quot;</code> or <code>'</code> didn't necessarily mark the end of the string due to escaping.</li>
+</ol>
+<p>In short, even unsophisticated parsing of Ruby expressions soon lead to an ugly rats nest of imprecise generalizations, exceptions and code.</p>
+<h4>Parsing Ruby expressions with the parser generator</h4>
+<p>The experience using a parser generator couldn't be more different. I was able to writing half a dozen grammar rules in a few minutes to handle string literals, array literals, hash literals, symbol literals, constants, identifiers, message sends, assignment expressions, addition expressions and so forth. I spent much more time writing specifications to confirm the behaviour of the parser than I did writing the actual rules which generated it. Having written the basic rules, things like arbitrarily deep and complex nesting worked automatically.</p>
+<p>At the beginning I'd said, &quot;I don't want to invest any time writing a Ruby lexer/parser&quot;. But after writing the parser generator I was able to create a useful subset of such a lexer/parser in only a few minutes; only a subset but already much, much more powerful than my hand-coded parser ever would have been.</p>
+<p>Apart from being quicker and less error prone than hand-coded the parser, the generated parser has the advantage that it actually has some kind of &quot;understanding&quot; of the internal structure of a Ruby expression because it has analysed the internal structure of it rather than pseudo-blindly gobbling it up. That is, it doesn't just attempt to consume input and &quot;recognize&quot; stuff that is a Ruby expression; it actually produces an Abstract Syntax Tree which describes the components within the expression, describes what they are and the relationships among them. The dumb alternative is far more likely to accept faulty input that isn't really a valid Ruby expression; further down the track when you try to actually use this input you'll find that it doesn't work as you expect. The more rigorous alternative, on the other hand, is more likely to catch faulty input before you try to use it.</p>
+<h4>Performance update</h4>
+<p>As the grammar complexity increases, the speed gap between the memoizing and non-memoizing cases closes. I've now got 202 specs: with memoizing the parser takes 6.411 seconds to run them; without memoizing the runtime is 5.162 seconds. That's with quite short input texts; I expect the gap to close even more as the input size grows.</p>
+<p>This performance improvement comes at a time when I had made <a href="http://wincent.dev/a/about/wincent/weblog/svn-log/archives/2007/02/walrus_r44_6_items_changed.php">some changes</a> imposing stricter identification of cache hits and misses in the memoizer (making hits less likely but making sure that the parse tree generated with memoizing turned on really is identical to that produced with memoizing turned off). At the moment a run yields 3,956 hits and 26,749 misses. I'll be interested to watch those numbers when I try large input texts.</p>
+<h4>Walrus grammar enhancements</h4>
+<p>The power of the parser generator has allowed me to enrich the allowed syntax in the grammar in a way that would be awkward if I were still using a hand-coded parser.</p>
+<p>For example, in a few minutes I was able to extend the placeholder syntax to allow a &quot;long form&quot;:</p>
+<pre><code>${foo}
+</code></pre>
+<p>In addition to the existing form:</p>
+<pre><code>$foo
+</code></pre>
+<p>The &quot;long form&quot; is useful in those cases where you might want a placeholder to be immediately followed by raw text with no intervening whitespace:</p>
+<pre><code>${foo}bar
+</code></pre>
+<p>With the hand-coded parser this would have required painful rewriting but with the parser generator, this was a simple matter of tweaking the rules. And being an augmentation of the syntax rather than a compatibility-breaking change of the old syntax all of my old specs continued to pass and I only needed to write new specs confirming the behaviour under the alternative syntax.</p>
+<p>Other stuff that was quick to add:</p>
+<ul>
+<li>Explicit directive end markers (for example, <code>#silent foo#</code>) which allow you to embed directives within the flow of a single line; this syntax would have been difficult to implement with the hand-coded parser because of the previous design decision that directives should always extend to the end of the current line.</li>
+<li>Ability to span directives across multiple lines using the backslash at the end of the line as a &quot;line continuation&quot; marker.</li>
+<li>Ability to specify multiple semi-colon separated expressions in <code>#silent</code> directives.</li>
+</ul>
+<p>Then there was other stuff that I never would even have attempted with the hand-written parser, such as multiline comments, and nested ones at that.</p>
+<h4>Grammar specification improvements</h4>
+<p>In addition to the improvements to the Walrus grammar itself, I made a couple of changes that makes writing grammars a little more pleasant.</p>
+<h5><code>ParsletRepetitionDefault</code></h5>
+<p>First up, I made a <code>ParsletRepetitionDefault</code> class that makes it easy to specify what value should be returned if an <code>optional</code> component is not present. By default, these optional structures are simply omitted from the output if they are not present, but with <code>ParsletRepetitionDefault</code> you can state exactly what object should be returned as a placeholder if the component is missing.</p>
+<p>Consider the following rules. In the first example there is no problem even if the optional <code>parameter_list</code> is not present in the input. The fact that another component follows the optional one ensures that at least <em>something</em> will be returned by the parser (in this case an empty array) and so there will be <em>something</em> to populate the Abstract Syntax Tree.</p>
+<p>In the second example there is no trailing component so we must employ an ugly hack, a &quot;no-op&quot; component (an empty regular expression) that as a side effect ensures that something will be returned (again an empty array) even when the optional <code>method_parameter_list</code> is missing.</p>
+<p>Finally, the third example demonstrates the use of the new <code>ParsletRepetitionDefault</code> class. The <code>optional</code> qualifier can now take an optional parameter specifying what should be returned as a placeholder in the event that the optional component is absent. This is much better than the hacky alternative because it is transparent and clearly shows the intention behind the rule.</p>
+<pre><code># not needed
+rule :super_with_parentheses, '#super'.skip &amp; :parameter_list.optional &amp; :directive_end
+
+
+# hack
+rule :method_with_parentheses, :identifier &amp; :method_parameter_list.optional &amp; //
+
+
+# elegant
+rule :method_with_parentheses, :identifier &amp; :method_parameter_list.optional([])
+</code></pre>
+<p>The object-oriented design of the system made it very quick to add this behaviour. I decided to subclass <code>ParsletRepetition</code> rather than augmenting that class itself with optional behaviour so as to keep it simple. Parsers are complex systems of multiple parts: I'd rather have a complex system made up of simple parts than a complex system made up of complex parts.</p>
+<h5>Ability to override skipping parslet for specific rules</h5>
+<p>Rather than just specifying a <a href="http://wincent.dev/a/about/wincent/weblog/archives/2007/02/abstract_syntax.php">default parslet</a> for skipping between tokens, you can now override that on a per-rule basis. This means either specifying a different parslet for that rule or specifying <code>nil</code> to entirely turn off skipping for that rule.</p>
+<p>As an example, consider a scenario in which you want your default inter-token parslet to skip over newlines and whitespace (where &quot;whitespace&quot; is spaces, tabs but not newlines). Then imagine a rule where you want to skip only whitespace not newlines. The solution is to override the skipping token for that rule. I've used this in the Walrus grammar for parsing directives (which should not span multiple lines unless an explicit line continuation marker is used) and for parsing things like multi-line comments and string literals (where I don't want any skipping at all).</p>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/another-performance-update-parity">← Another performance update: parity</a></div><div class="post-nav-next"><a href="/blog/updated-packrat-performance-numbers">Updated packrat performance numbers →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

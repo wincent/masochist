@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Using autotest with Rails (with ZenTest prior to 3.5.0) • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Using autotest with Rails (with ZenTest prior to 3.5.0)</h1></div><div class="metadata"><relative-time created="1179988971" updated="1495119989">Created 5/24/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/rails">rails</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These are an older version of the notes at &quot;<a href="/wiki/Using_autotest_with_Rails">Using autotest with Rails</a>&quot;. These were written for use in conjunction with versions of <a href="/wiki/ZenTest">ZenTest</a> prior to version 3.5.0.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li><a href="/wiki/ZenTest">ZenTest</a> (see &quot;<a href="/wiki/Setting_up_autotest">Setting up autotest</a>&quot;)</li>
+<li><a href="/wiki/diff-lcs">diff-lcs</a> (already installed in my case)</li>
+<li><a href="/wiki/RSpec">RSpec</a> (again, already installed in my case)</li>
+</ul>
+<h2>Installing the <a href="/wiki/RSpec">RSpec</a> <a href="/wiki/Rails">Rails</a> plugin</h2>
+<p>You have to use the version of the plug-in corresponding with your installed version of <a href="/wiki/RSpec">RSpec</a> so in my case at the time of writing this corresponds to the <code>REL_0_9_0_BETA_1</code> tag (see &quot;<a href="/wiki/Trying_out_the_rspec_version_0.9_preview">Trying out the rspec version 0.9 preview</a>&quot;). From the top of the application directory:</p>
+<pre><code>script/plugin install svn://rubyforge.org/var/svn/rspec/tags/REL_0_9_0_BETA_1/rspec_on_rails
+</code></pre>
+<p>After installing you must &quot;bootstrap&quot; <a href="/wiki/RSpec">RSpec</a> as follows:</p>
+<pre><code>script/generate rspec
+</code></pre>
+<p>Output:</p>
+<pre><code>      create  spec
+      create  spec/spec_helper.rb
+      create  spec/spec.opts
+      create  previous_spec_failures.txt
+      create  script/spec_server
+      create  script/spec
+</code></pre>
+<p>For more information see <a href="http://rspec.rubyforge.org/documentation/rails/install.html">http://rspec.rubyforge.org/documentation/rails/install.html</a></p>
+<p>I later installed <a href="/wiki/RSpec">RSpec</a> itself as a plug-in alongside of <code>rspec_on_rails</code>:</p>
+<pre><code>script/plugin install svn://rubyforge.org/var/svn/rspec/tags/REL_0_9_0_BETA_2/rspec
+script/plugin install --force svn://rubyforge.org/var/svn/rspec/tags/REL_0_9_0_BETA_2/rspec_on_rails
+</code></pre>
+<p>This was necessary in order to get <a href="/wiki/autotest">autotest</a> from the new version of <a href="/wiki/ZenTest">ZenTest</a> (3.5.0 at the time of writing) working. Note that I took the opportunity to upgrade to the latest beta. I had to supply the <code>--force</code> switch in order to force the upgrade to overwrite the existing copy of the plug-in.</p>
+<h2>Installing <code>rspec_autotest</code></h2>
+<pre><code>script/plugin install http://svn.caldersphere.net/svn/main/plugins/rspec_autotest
+</code></pre>
+<p>Exactly how to uninstall a previously-installed copy of the plugin depends on how you installed it and whether it is under <a href="/wiki/source_control">source control</a> or not. In my case, it was stored in my <a href="/wiki/SVK">SVK</a> repository and so I uninstalled as follows:</p>
+<pre><code># from top-level of the application in a checked out working copy:
+cd vendor/plugins
+svk rm rspec_autotest
+</code></pre>
+<h2>Starting <a href="/wiki/autotest">autotest</a></h2>
+<pre><code>rake spec:autotest
+</code></pre>
+<h2>Tweaks</h2>
+<p>I was seeing a lot of warnings, <code>invalid option: -s (OptionParser::InvalidOption)</code>, due to the fact that the plug-in is passing a switch that <a href="/wiki/RSpec">RSpec</a> no longer supports in 0.9.0 beta 1 (and in fact I can't find any information on what it used to do); I assume it was for specifying an individual specification. I was able to silence these by changing the <code>-s</code> to an <code>-e</code> because specifications are now called examples in <a href="/wiki/RSpec">RSpec</a> 0.9:</p>
+<pre><code>methods.each { |meth| cmds &lt;&lt; &quot;#{spec_command} -s #{meth.inspect} #{klass}&quot; }
+</code></pre>
+<p>To:</p>
+<pre><code>methods.each { |meth| cmds &lt;&lt; &quot;#{spec_command} -e #{meth.inspect} #{klass}&quot; }
+</code></pre>
+<p>At line 91 of <code>rspec_autotest.rb</code>.</p>
+<p>Here's a ticket for the issue with a basic patch: <a href="http://trac.caldersphere.net/projects/main/ticket/125">http://trac.caldersphere.net/projects/main/ticket/125</a></p>
+<h2>Additional <a href="/wiki/Rails">Rails</a> configuration</h2>
+<p><a href="/wiki/David_Chelimsky">David Chelimsky</a> points out in <a href="http://rubyforge.org/pipermail/rspec-users/2007-May/001650.html">this</a> <a href="/wiki/rspec-users">rspec-users</a> mailing list post that you should remove the following lines from the <code>spec/spec.opts</code> file:</p>
+<pre><code>--format
+failing_examples:previous_failures.txt
+--example
+previous_failures.txt
+</code></pre>
+<p>This prevents the tests from failing continuously when an example fails; <a href="/wiki/autotest">autotest</a> will run the specs again automatically once changes have been made.</p>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Using_autotest_with_Rails">Using autotest with Rails</a></li>
+<li><a href="/wiki/Setting_up_autotest">Setting up autotest</a></li>
+<li><a href="/wiki/Behaviour-Driven_Development_with_Rails">Behaviour-Driven Development with Rails</a></li>
+<li>Official plug-in announcement: <a href="http://blog.nicksieger.com/articles/2006/11/15/rspec-autotest-now-a-rails-plugin">http://blog.nicksieger.com/articles/2006/11/15/rspec-autotest-now-a-rails-plugin</a></li>
+<li>&quot;Developing a Rails model using BDD and RSpec&quot;: <a href="http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1">http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

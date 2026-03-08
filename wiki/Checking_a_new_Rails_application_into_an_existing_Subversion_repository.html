@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Checking a new Rails application into an existing Subversion repository • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Checking a new Rails application into an existing Subversion repository</h1></div><div class="metadata"><relative-time created="1179421705" updated="1584053324">Created 5/17/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/rails">rails</a></li><li><a href="/tags/subversion">subversion</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Instructions can be found <a href="http://wiki.rubyonrails.org/rails/pages/EdgeRails">here</a> for tracking <a href="/wiki/EdgeRails">EdgeRails</a> using <a href="/wiki/Subversion">Subversion</a>, and <a href="http://wiki.rubyonrails.org/rails/pages/HowtoUseRailsWithSubversion">here</a> for importing an <a href="/wiki/Rails">Rails</a> application into a <a href="/wiki/Subversion">Subversion</a> repository.</p>
+<p>The pattern followed in the later article is the following:</p>
+<ol>
+<li>Import the entire application</li>
+<li>Remove files from the repository that should be ignored</li>
+<li>Set the <code>svn:ignore</code> property on those files so that they don't interfere with future check-outs or commits</li>
+</ol>
+<h2><a href="/wiki/SVK">SVK</a></h2>
+<p>This is the approach I used in conjunction with <a href="/wiki/SVK">SVK</a> as described in &quot;<a href="/wiki/Behaviour-Driven_Development_with_Rails">Behaviour-Driven Development with Rails</a>&quot;:</p>
+<pre><code>svk rm log/*
+svk propset svn:ignore '*.log' log
+svk rm tmp/*
+svk propset svn:ignore '*' tmp
+svk mv config/database.yml config/database.example
+svk propset svn:ignore 'database.yml' config
+svk ci -m &quot;Set-up ignored files&quot;
+</code></pre>
+<h2>Alternate approach</h2>
+<p>When I first did this I preferred to use a different method; rather than import/remove/ignore, I chose to selectively add and set the ignore properties so that the ignored files never touched the repository:</p>
+<pre><code># first I tried adding the tmp directory
+svn add tmp
+
+# but realized it a recursive add wasn't what I wanted
+svn help
+
+# so had to use &quot;svn revert&quot;
+svn revert tmp
+
+# which needed the &quot;--recursive&quot; flag
+svn revert --recursive tmp
+svn status
+
+# now a non-recursive add of the tmp directory
+svn add --non-recursive tmp
+svn commit -m &quot;Add tmp directory&quot;
+
+# and the subdirectories
+cd tmp
+svn add --non-recursive cache sessions sockets
+
+# properties must be set on the parent directory
+# the quote marks are to prevent shell globbing
+# this means &quot;ignore everything that matches '*' in the cache directory&quot;
+svn propset svn:ignore &quot;*&quot; cache
+
+# same for sessions and sockets
+svn propset svn:ignore &quot;*&quot; sessions
+svn propset svn:ignore &quot;*&quot; sockets
+svn commit -m &quot;Ignore files in tmp subdirectories&quot;
+
+# verify that the files are ignored
+cd cache
+touch test
+svn status
+svn status --no-ignore
+rm test
+
+# now do the same for children of the &quot;log&quot; directory
+cd ../..
+svn add --non-recursive log
+svn propset svn:ignore &quot;*&quot; log
+svn commit -m &quot;Add log directory, ignoring contents&quot;
+
+# add the rest of the simple files and folders
+svn add test app Rakefile components migrate README script doc lib public
+svn commit -m &quot;Initial commit of bulk of Rails application&quot;
+
+# now into the &quot;config&quot; directory
+svn add --non-recursive config
+svn propset svn:ignore &quot;database.yml&quot; config
+svn add config/routes.rb config/boot.rb config/environment.rb config/environments
+cp config/database.yml config/database.example
+svn add config/database.example
+
+# and the &quot;db&quot; directory
+svn add --non-recursive db
+svn add db/migrate
+svn add db/schema.rb
+svn propset svn:ignore &quot;*.sqlite3&quot; db
+svn commit -m &quot;Add db and config dirs, ignoring database files&quot;
+svn add vendor
+svn commit -m &quot;Add vendor directory&quot;
+</code></pre>
+<p>In the future, this could be done as a single commit; something like this:</p>
+<pre><code>svn add --non-recursive tmp tmp/cache tmp/sessions tmp/sockets
+svn propset svn:ignore &quot;*&quot; tmp/cache tmp/sessions tmp/sockets
+svn add --non-recursive log
+svn propset svn:ignore &quot;*&quot; log
+svn add test app Rakefile components migrate README script doc lib public vendor
+svn add --non-recursive config
+svn propset svn:ignore &quot;database.yml&quot; config
+svn add config/routes.rb config/boot.rb config/environment.rb config/environments
+cp config/database.yml config/database.example
+svn add config/database.example
+svn add --non-recursive db
+svn add db/migrate db/schema.rb
+svn propset svn:ignore &quot;*.sqlite3&quot; db
+svn commit -m &quot;Add vendor directory&quot;
+</code></pre>
+<p>Or, using <a href="/wiki/SVK">SVK</a>:</p>
+<pre><code>svk add -N application_directory
+cd application_directory
+svk add -N tmp
+svk add -N tmp/cache tmp/sessions tmp/sockets
+svk propset svn:ignore '*' tmp/cache tmp/sessions tmp/sockets
+svk add -N log
+svk propset svn:ignore '*' log
+svk add test app Rakefile components README script doc lib public vendor
+svk add -N config
+svk propset svn:ignore 'database.yml' config
+svk add config/routes.rb config/boot.rb config/environment.rb config/environments
+cp config/database.yml config/database.example
+svk add config/database.example
+svk add -N db
+svk propset svn:ignore '*.sqlite3' db
+
+# new in Rails 1.2
+svk add -N tmp/pids
+svk propset svn:ignore '*' tmp/pids
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

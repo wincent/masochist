@@ -1,0 +1,25 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Upgrading to Haml 1.8.1 on Mac OS X 10.5.1 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Upgrading to Haml 1.8.1 on Mac OS X 10.5.1</h1></div><div class="metadata"><relative-time created="1201607878" updated="1495119989">Created 1/29/2008, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/leopard">leopard</a></li><li><a href="/tags/haml">haml</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These notes were made while upgrading to <a href="/wiki/Haml_1.8.1">Haml 1.8.1</a> on <a href="/wiki/Mac_OS_X">Mac OS X</a> 10.5.1</p>
+<h2>Installation</h2>
+<pre><code>$ sudo gem install haml --no-ri
+Password:
+Updating metadata for 106 gems from http://gems.rubyforge.org
+..........................................................................................................
+complete
+Successfully installed haml-1.8.1
+1 gem installed
+Installing RDoc documentation for haml-1.8.1...
+</code></pre>
+<h2>Updating existing <a href="/wiki/Rails">Rails</a> applications</h2>
+<p>I prefer to tie my application to a known working version of <a href="/wiki/Haml">Haml</a> rather than depending on a <a href="/wiki/gem">gem</a> installed somewhere on the system (whose version you may not control). Seeing as I use <a href="/wiki/Git">Git</a> I do this:</p>
+<pre><code>cd path_to_rails_application_root
+git rm -r vendor/plugins/haml
+svn export svn://hamptoncatlin.com/haml/tags/rel_1-8-1 vendor/plugins/haml
+git add vendor/plugins/haml
+</code></pre>
+<h2>Updating the <a href="/wiki/Haml">Haml</a> <a href="/wiki/TextMate">TextMate</a> bundle</h2>
+<p>Apparently there have been no changes to the bundle recently:</p>
+<pre><code>$ cd ~/Library/Application\ Support/TextMate/Bundles/Ruby Haml.tmbundle
+$ svn up
+At revision 8813.
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Modifier keys • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Modifier keys</h1></div><div class="metadata"><relative-time created="1607820956" updated="1693045928">Created 12/13/2020, updated 8/26/2023</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Overview</h2>
+<h3>macOS</h3>
+<ul>
+<li>On the bottom left, we have: <code>Control</code>, then <code>Option</code> (formerly <code>Alt</code>), then <code>Command</code> (formerly <code>Apple</code>).</li>
+<li>On the bottom right, the reverse order applies: <code>Command</code>/<code>Apple</code>, then <code>Alt</code>/<code>Option</code>, then <code>Control</code> (may not be present on laptops).</li>
+</ul>
+<p>Older Mac keyboards showed <code>Alt</code> plus Unicode symbol <code>U-2387</code> (&quot;ALTERNATIVE KEY SYMBOL&quot;) on the <code>Alt</code>/<code>Option</code> key. Newer ones show the word <code>Option</code> instead (as well as the symbol).</p>
+<p>Likewise, they used to show an Apple logo in addition to the <code>Command</code> symbol (<code>U-2318</code>, &quot;PLACE OF INTEREST SIGN&quot;) but nowadays just show the word <code>Command</code> along with the symbol.</p>
+<p>Some laptops have an <code>Fn</code> (<code>Function</code>) key on the bottom left, to the left of the <code>Control</code> key.</p>
+<h3>Windows</h3>
+<p>On Windows, the <code>Control</code> keys are in the same place as on Macs, but the ordering of <code>Alt</code> and the other key is swapped; that is:</p>
+<ul>
+<li>On the bottom left, we have <code>Control</code>, then a <code>Windows</code> key, followed by <code>Alt</code>.</li>
+<li>On the right, we have <code>Alt</code> (may be labeled as <a href="https://en.wikipedia.org/wiki/AltGr_key"><code>Alt Gr</code></a>, short for <code>Alternate Graphic</code>), followed by <code>Windows</code>, followed by <code>Control</code>.</li>
+</ul>
+<p>Some keyboards may have an additional modifies on the right side between <code>Windows</code> and <code>Control</code> called <code>Menu</code>.</p>
+<h3>Linux</h3>
+<p>As per <code>xev</code>, values for my Realforce keyboard:</p>
+<ul>
+<li>Left side:
+<ul>
+<li><code>Control_L</code>: keycode 37.</li>
+<li><code>Super_L</code>: keycode 133.</li>
+<li><code>Alt_L</code>: keycode 64.</li>
+</ul>
+</li>
+<li>Right side:
+<ul>
+<li>(Alt) <code>ISO_Level3_Shift</code>: keycod 108.</li>
+<li><code>Super_R</code>: keycode 134.</li>
+<li><code>Menu</code>: keycode 135.</li>
+<li><code>Control_R</code>: keycode 105.</li>
+</ul>
+</li>
+<li>Other keys of interest:
+<ul>
+<li><code>Caps_Lock</code>: keycode 66.</li>
+<li><code>Return</code>: keycode 36.</li>
+<li><code>Shift_L</code>: keycode 50.</li>
+<li><code>Shift_R</code>: keycode 62.</li>
+</ul>
+</li>
+</ul>
+<p>As noted <a href="https://en.wikipedia.org/wiki/Modifier_key">here</a>, &quot;Super&quot; is sometimes referred to as &quot;Meta&quot;, and some keyboards such as the &quot;space-cadet keyboard&quot; even had a <em>separate key</em> called &quot;Meta&quot;.</p>
+<p>Modifier keys have an additional layer of symbolic names on Linux that you can see with <code>xmodmap -pm</code>. This shows which physical keys (<code>Shift_L</code>, <code>Control_L</code> etc) map onto the symbolic role-based names: <code>shift</code>, <code>lock</code>, <code>control</code>, <code>mod1</code>, <code>mod2</code>, <code>mod3</code>, <code>mod4</code>, and <code>mod5</code>.</p>
+<p>Other tools may use these symbolic names. For example, i3 uses a <code>$mod</code> variable in its config to designate a principal modifier key, and it defaults to <code>Mod1</code> (ie. <code>Alt</code>) by default, with <a href="https://i3wm.org/docs/userguide.html"><code>Mod4</code> (ie. <code>Super</code>/<code>Windows</code>)</a> being a popular alternative.</p>
+<p>Additionally, there may be key codes which you can't press because your physical keyboard doesn't have them; these include:</p>
+<ul>
+<li><code>Meta_L</code></li>
+<li><code>Meta_R</code></li>
+<li><code>Hyper_L</code></li>
+<li><code>Hyper_R</code></li>
+<li><code>Mode_switch</code>: An old name for <a href="https://unix.stackexchange.com/a/55154">the <code>AltGr</code> key</a></li>
+<li><code>Compose</code></li>
+</ul>
+<p>To see what symbolic key names (<code>keysym</code>) each keycode is mapped to, run <code>xmodmap -xpe</code>. This will print up to 8 codes:</p>
+<ol>
+<li>With no modifier.</li>
+<li>With <code>Shift</code>.</li>
+<li>With <code>Mode_switch</code>.</li>
+<li>With <code>Mode_switch</code> + <code>Shift</code>.</li>
+<li>With <code>ISO_Level3_Shift</code> (but may not be implemented).</li>
+<li>With <code>ISO_Level3_Shift</code> + <code>Shift</code> (but may not be implemented).</li>
+<li>Not used.</li>
+<li>Not used.</li>
+</ol>
+<h2>In summary</h2>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>macOS</th>
+<th>Windows</th>
+<th>Linux</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Left 1</td>
+<td>Control</td>
+<td>Control</td>
+<td>Control</td>
+</tr>
+<tr>
+<td>Left 2</td>
+<td>Option</td>
+<td>Windows</td>
+<td>Super</td>
+</tr>
+<tr>
+<td>Left 3</td>
+<td>Command</td>
+<td>Alt</td>
+<td>Alt</td>
+</tr>
+<tr>
+<td>Right 1</td>
+<td>Command</td>
+<td>Alt Gr</td>
+<td>ISO_Level3_Shift</td>
+</tr>
+<tr>
+<td>Right 2</td>
+<td>Option</td>
+<td>Windows</td>
+<td>Super</td>
+</tr>
+<tr>
+<td>Right 3</td>
+<td>Menu</td>
+<td>Menu</td>
+<td>Menu</td>
+</tr>
+<tr>
+<td>Right 4</td>
+<td>Control</td>
+<td>Control</td>
+<td>Control</td>
+</tr>
+</tbody>
+</table>
+<h2>Using Mac-like keybindings in Linux</h2>
+<p>The are many questions like <a href="https://superuser.com/questions/426515/efficient-key-bindings-using-both-mac-and-linux">this one</a> asking how to get Mac-like bindings on Linux. The fundamental observation is that:</p>
+<ul>
+<li>On Macs, Control is mostly not used by command-line apps, and Command is mostly not used by terminal apps. This means that the common shortcuts that apply across the entire OS (like Command-C to copy, Command-V to paste, Command-X to cut, Command-W to close a window, Command-Z to undo etc) can be used absolutely everywhere (including in terminal apps), while the programs running in the terminal like tmux or Vim can freely use Control-based shortcuts without them clashing with the OS-level ones (for example, Control-V enters visual block mode in Vim, Control-X decrements a number in Vim, Control-C sends an interrupt, Control-Z backgrounds a process etc).</li>
+<li>On Linux, most of those OS-level shortcuts end up using Control, although it is done on a per-app basis. For example, Chromium uses Control-W to close windows, Control-C to copy, Control-V to paste, and so on. Other apps (eg. Kitty) may use Control-Shift-V, or Shift-Insert to paste.</li>
+<li>The other fundamental thing about macOS's use of the Command key is that it is easily accessed with the left thumb, allowing the comfortable use of one-handed &quot;cheating&quot; to do the most common shortcuts (eg. Command-Tab, Command-W, Command-Z, Command-T, Command-V, Command-X, Command-C etc). Technically, you should use the opposite hand to activate modifier keys, but in practice, if you have your right hand on the mouse or trackpad, then one-handed &quot;cheating&quot; is actually the <em>only</em> way to activate the modifier. And once you get used to &quot;cheating&quot;, you find yourself doing it even when you don't need to. One-handed &quot;cheating&quot; is much harder on Linux because you rely on the weaker finger (the &quot;pinkie&quot; as, er, <em>opposed</em> to the thumb — no pun intended). It's probably not too hard to build up the muscle memory to hit some combinations in this way (eg. Control-X, Control-C, Control-V), but there are some that require almost painful contortions to enact; for example, &quot;previous tab&quot; in Chrome is Control-Shift-Tab on Linux, and it is quite difficult to hit whether you do it using the real Right Control key or have remapped Caps Lock to Control and use that instead. In contrast, on macOS, the comfortable Command-<code>[</code> is used instead (comfortable because it is a two-hand combination involving a tiny lateral movement, almost symmetrical, of the little finger on each hand).</li>
+</ul>
+<p>The most commonly suggested solution is to &quot;sacrifice&quot; a modifier on the Linux side by binding Alt (ie. &quot;Command&quot;) to Control. This means that you can hit &quot;Command-C&quot; in Chromium to copy, and it works because it's really Control-C. The obvious downsides here are that:</p>
+<ul>
+<li>Even without analyzing this deeply, it's obvious that using two keys for a single modifier is a huge waste that significantly impacts the number of things that you can map in a collision-free way. Especially when you consider that if you map Caps Lock to Control as well (a must for terminal efficiency, then you've devoted not two but <em>three</em> left-side keys to a single modifier. You might think that you could just trade Right Control for something else, seeing as you mostly use Caps Lock for Control anyway, but the catch is the &quot;mostly&quot;; when you're hitting combinations like Control-Alt-Backspace you'll surely miss having the use of the physical Right Control key.</li>
+<li>You can't straightforwardly use Alt/&quot;Command&quot; as an i3 mod key, because i3 Alt/&quot;Command&quot; becomes Control in this set up, unless you make sure that none of your i3 mappings overlap with the ones that you want to use in your apps. For example, if &quot;Command&quot;-V (really Control-V) is to do the right thing in Chrome, that means you can't have a &quot;Mod-V&quot; mapping i3; just say you wanted something with a mnemonic for &quot;[v]ertical split&quot;, now you have to think of something else.</li>
+<li>This still doesn't help you with other things for which you may have muscle memory from the Mac; for example previous/next tab in Chromium (Command-<code>[</code> and Command-<code>]</code> on Mac) are Control-Shift-Tab/Control-Tab on Linux; for these situations, you would actually need per-application overrides so that you could map &quot;Command&quot;-<code>[</code> (ie. Control-<code>[</code>) to Control-Shift-Tab just when Chromium has focus. If you can figure out how to do that, there may end up being a lot of apps where you have to do that set-up. As far as I can tell, there is no &quot;good&quot; way to do this although <a href="https://github.com/mooz/xkeysnail">xkeysnail</a> might be all right; you might be able to subscribe to i3 window events and change mappings on the fly when that happens, but it sounds fragile. Another non-universal approach could be setting up i3 modes; where you could bind a key trigger a mode (when Chromium is active) and have different bindings just for that mode).</li>
+<li>We still have to surmount the other problem, which is that on Mac there are pretty much universal word and line movement shortcuts that use Command or Option (Option-Left/Right to move by words, Command-Left/Right to move to start or end of line, Command-Up/Down to move to end of beginning of document etc) that all need to be remapped to the corresponding Linux equivalents (where such exist).</li>
+</ul>
+<p>A variant on the &quot;sacrificial&quot; idea:</p>
+<ul>
+<li>Control is Control, to keep terminal apps happy.</li>
+<li>Alt is Control, to make Chromium etc (mostly) act like it does on the Mac.</li>
+<li>Super is i3 mod key; seeing as Super (AKA &quot;Option&quot;) is used less heavily on the Mac, using it for the i3 mod key is less likely to produce clashes.</li>
+</ul>
+<p>Another variant:</p>
+<ul>
+<li>If using something like xkeysnail, swap Alt and Control <em>except</em> in the terminal.</li>
+</ul>
+<h3>Screencasts</h3>
+<p>I made a couple of screencasts describing my efforts to set up Linux with macOS-style keybindings here:</p>
+<ul>
+<li><a href="https://youtu.be/TBqTHesnzkI">macOS keyboard bindings on Linux</a> (December 2020)</li>
+<li><a href="https://youtu.be/uh_76A2oEWQ">macOS dead letters on Linux</a> (July 2022)</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

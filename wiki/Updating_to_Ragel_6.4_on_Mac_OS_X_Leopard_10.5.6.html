@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Updating to Ragel 6.4 on Mac OS X Leopard 10.5.6 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Updating to Ragel 6.4 on Mac OS X Leopard 10.5.6</h1></div><div class="metadata"><relative-time created="1238141133" updated="1584053324">Created 3/27/2009, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/ragel">ragel</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These notes were made while upgrading to <a href="/wiki/Ragel_6.4">Ragel 6.4</a> on <a href="/wiki/Mac_OS_X">Mac OS X</a> 10.5.2 <a href="/wiki/Leopard">Leopard</a>.</p>
+<h3>Building</h3>
+<p>Note that in order to verify the signature on the downloaded archive you'll need to have done some setup as described in &quot;<a href="/wiki/Verifying_Ragel_signatures">Verifying Ragel signatures</a>&quot;.</p>
+<pre><code>wget http://www.complang.org/ragel/ragel-6.4.tar.gz \
+     http://www.complang.org/ragel/ragel-6.4.tar.gz.asc \
+     http://www.complang.org/ragel/ragel-guide-6.4.pdf
+gpg --verify ragel-6.4.tar.gz.asc ragel-6.4.tar.gz
+tar xzvf ragel-6.4.tar.gz
+cd ragel-6.4
+./configure
+make
+</code></pre>
+<h3>Testing</h3>
+<pre><code>cd tests
+./runtests
+</code></pre>
+<p>Just as in the previous upgrades (such as &quot;<a href="/wiki/Upgrading_from_Ragel_5.24_to_6.0_on_Mac_OS_X_10.5.1_Leopard">Upgrading from Ragel 5.24 to 6.0 on Mac OS X 10.5.1 Leopard</a>&quot;), there is a minor glitch that prevents the test suite from running on <a href="/wiki/Leopard">Leopard</a> (although it worked fine on <a href="/wiki/Tiger">Tiger</a>). The solution is to make a change to the <code>cppscan1.h</code> file in the <code>tests</code> directory:</p>
+<pre><code>-#include &lt;malloc.h&gt;
++#include &lt;malloc/malloc.h&gt;
+</code></pre>
+<p>And then run the test suite again (with <code>./runtests</code>) and it should pass fine.</p>
+<h3>Installing</h3>
+<p>Now we can proceed with the install:</p>
+<pre><code>cd ..
+sudo make install
+</code></pre>
+<h3>Testing with a real application</h3>
+<p>I wanted to try out 6.4 on an existing project to see if the generated code was any different. I chose to do this on my <a href="/wiki/wikitext">wikitext</a> translator.</p>
+<pre><code>cd path/to/wikitext/src
+rake clobber # blows away Ragel-generated files
+rake         # builds everything and runs the spec suite
+</code></pre>
+<p>So all the specs passed, and the generated code looks extremely similar. There is really only one hunk with a substantive, non-comment change in the generated file:</p>
+<pre><code>@@ -213,7 +216,6 @@ tr23:
+             {p++; cs = 94; goto _out;}
+         }
+        break;
+-       default: break;
+        }
+        }
+        goto st94;
+</code></pre>
+<p>I can't see anything in <a href="http://www.complang.org/ragel/ChangeLog">the changelog</a> that would explain this. I guess I'll just have to trust that spec suite is good enough to catch any behaviour changes in the scanner.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Jujutsu cheatsheet • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Jujutsu cheatsheet</h1></div><div class="metadata"><relative-time created="1761315341" updated="1766144254">Created 10/24/2025, updated 12/19/2025</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/jj">jj</a></li><li><a href="/tags/jujutsu">jujutsu</a></li></ul><div class="prerendered"><h2>Creating a new repo</h2>
+<pre><code># Create a new repo backed by Git.
+jj git init
+
+# Previously, you would prefer the following (to colocate a jj repository
+# on top of an existing Git repo), but `--colocate` is now the default.
+jj git init --colocate
+
+# See colocation status.
+jj git colocation status
+</code></pre>
+<h2>Configuring</h2>
+<p><strong>NOTE:</strong> In practice, you would rarely configure with manually <code>jj config set</code> commands, but rather manage your <code>~/.config/jj/config.toml</code> in a dotfiles repo (<a href="https://github.com/wincent/wincent/blob/537bd6017b8e66ca0cf100025c7178e4b915ebad/aspects/dotfiles/templates/.config/jj/config.toml.erb">example</a>).</p>
+<pre><code># Set user.name and user.email.
+jj config set --user user.name &quot;Some One&quot;
+jj config set --user user.email &quot;someone@example.com&quot;
+
+# Set `jj log` as the default command to run when you do `jj` without arguments.
+jj config set --user ui.default-command log
+
+# Stop hints to set ui.diff-editor; always use the built-in one.
+jj config set --user ui.diff-editor :builtin
+
+# Use GPG for signing commits.
+jj config set --user signing.behavior own
+jj config set --user signing.backend gpg
+
+# See configured settings.
+jj config list # Just the overrides.
+jj config list --include-defaults # Everything.
+</code></pre>
+<h2>Editing</h2>
+<pre><code># Discard working copy changes.
+jj restore foo/bar/baz
+
+# Take working copy changes from foo/bar/baz and fold them into a prior rev.
+jj squash --into &lt;rev&gt; -- foo/bar/baz
+
+# Take selected working copy changes and fold them into the parent rev.
+jj squash -i
+
+# Discard a revision.
+jj abandon -r &lt;rev&gt;
+
+# Moving to another revision.
+jj edit -r &lt;rev&gt;
+</code></pre>
+<p><strong>Aside:</strong> In my initial experiments with <code>jj</code> I was using <code>git commit -p</code> to selectively commit changes from the working directory, then <code>jj git import</code> to have it register the changes. This ended up creating &quot;orphan&quot; changesets with no descendants and no descriptions (ie. <code>jj</code> would keep the snapshot of the current working directory, then create a new snapshot of everything that wasn't included in the new commit). These orphaned revisions are pretty much useless, hence <code>jj abandon</code>. In practice, I should have been using <code>jj ci -i</code> instead.</p>
+<h2>Dealing with detached HEADs</h2>
+<p>If a <code>jj</code> operation leaves you on a detached HEAD (as reported by <code>git status</code>), even though you expect to be on <code>main</code>, you can reset your <code>HEAD</code> to point at <code>main</code> without touching the worktree at all with:</p>
+<pre><code>git symbolic-ref HEAD refs/heads/main
+</code></pre>
+<p>Once you fully commit to <code>jj</code>, you may as well resign yourself to being in a detached HEAD state almost all of the time.</p>
+<p>In general, it appears that bookmarks don't update unless you tell them to, so you may need to do this to push:</p>
+<pre><code>jj bookmark set main -r &lt;rev&gt;
+jj push # Push to origin.
+jj push --remote github # Push to mirror.
+</code></pre>
+<p>or, better still, set up <a href="https://github.com/wincent/wincent/blob/537bd6017b8e66ca0cf100025c7178e4b915ebad/aspects/dotfiles/templates/.config/jj/config.toml.erb#L23-L35">a <code>jj tug</code> alias</a>.</p>
+<h2>Bookmarks</h2>
+<pre><code># Delete local bookmark and will propagate deletion of corresponding branch to remote on next push.
+jj bookmark delete some/bookmark
+
+# Delete local bookmark (won't do anything to remote on next push).
+jj bookmark forget some/bookmark
+</code></pre>
+<h2>Updating</h2>
+<pre><code>jj git fetch
+jj rebase -d &lt;target&gt; # where &lt;target&gt; would be &quot;main&quot; or some bookmark
+</code></pre>
+<h2>Force-pushing</h2>
+<p>If you try to edit published history, <code>jj</code> will complain, and you'll have to use <code>--ignore-immutable</code>.</p>
+<pre><code>$ jj squash -i -r @
+Error: Commit 23e29b9b15de is immutable
+Hint: Could not modify commit: twtqmoru 23e29b9b main | (empty) fix: turn regular file into a symlink
+Hint: Immutable commits are used to protect shared history.
+Hint: For more information, see:
+      - https://jj-vcs.github.io/jj/latest/config/#set-of-immutable-commits
+      - `jj help -k config`, &quot;Set of immutable commits&quot;
+Hint: This operation would rewrite 1 immutable commits.
+$ jj squash -i -r @ --ignore-immutable
+</code></pre>
+<h2>Bibliography</h2>
+<ul>
+<li><a href="https://zerowidth.com/2025/jj-tips-and-tricks/">https://zerowidth.com/2025/jj-tips-and-tricks/</a></li>
+<li><a href="https://andre.arko.net/2025/09/28/stupid-jj-tricks/">https://andre.arko.net/2025/09/28/stupid-jj-tricks/</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

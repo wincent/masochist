@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GMP 5.0.1 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>GMP 5.0.1</h1></div><div class="metadata"><relative-time created="1265535426" updated="1495119989">Created 2/7/2010, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/gmp">gmp</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official release announcement:</p>
+<pre><code>A new release of the GNU Multiple Precision Arithmetic Library (GMP)
+is now available.  The new release is identified as 5.0.1.
+
+The new release can be downloaded from the main GNU ftp site:
+ bzip2 format: ftp://ftp.gnu.org/gnu/gmp/gmp-5.0.1.tar.bz2
+ gzip format:  ftp://ftp.gnu.org/gnu/gmp/gmp-5.0.1.tar.gz
+
+These files can also be found on a GNU mirror near you.
+
+The 5.0 release series contain a very large amount of new code, and
+countless improvements to existing code.  There are also a large
+number of changes between 5.0.0 and 5.0.1, to fix certain regressions.
+
+The amount of new code means that there might be more bugs in GMP 5.0
+than in most GMP releases in the past.  We therefore still maintain
+GMP 4.3 and advice users concerned about stability to use the latest
+release from that release series.
+
+While GMP bugs do happen, the absolutely most common cause for
+incorrect computations with GMP is bugs in the compiler used for
+building he library.  It cannot be said enough times: Please run &quot;make
+check&quot; after you've built your library.  And if &quot;make check&quot; stops
+with an error, do not use the compiled library.  When this happens,
+you've almost surely run into a compiler bug, not a library bug, since
+we've of course made sure the library passes its own test suite.  The
+first thing to try at this point is using a different compiler.  See
+also http://gmplib.org/.  Of the more recent GCC releases, version
+4.3.2 is known to miscompile this GMP release on all 64-bit platforms;
+this manifests itself at a check failure in tests/mpz/t-root.c.
+
+
+The GMP 5.0 release series would not have been possible without the
+very devoted work of Niels Möller and Marco Bodrato.  As usual,
+Torbjörn Granlund coordinated the development and release, and did a
+fair amount of development work himself.
+
+
+Changes between GMP version 5.0.0 and 5.0.1
+
+ BUGS FIXED
+ * Fat builds fixed.
+
+ * Fixed crash for huge multiplies when old FFT_TABLE2 type of parameter
+   selection tables' sentinel was smaller than multiplied operands.
+
+ * The solib numbers now reflect the removal of the documented but preliminary
+   mpn_bdivmod function; we correctly flag incompatibility with GMP 4.3.
+   GMP 5.0.0 has this wrong, and should perhaps be uninstalled to avoid
+   confusion.
+
+ SPEEDUPS
+ * Multiplication of large numbers has indirectly been sped up through
+   better FFT tuning and processor recognition.  Since many operations
+   depend on multiplication, there will be a general speedup.
+
+ FEATURES
+ * More Core i3, i5 an Core i7 processor models are recognised.
+
+ * Fixes and workarounds for Mac OS quirks should make this GMP version
+   build using many of the different versions of &quot;Xcode&quot;.
+
+ MISC
+ * The amount of scratch memory needed for multiplication of huge numbers
+   have been reduced substantially (but is still larger than in GMP 4.3.)
+
+ * Likewise, the amount of scratch memory needed for division of large
+   numbers have been reduced substantially.
+
+ * The FFT tuning code of tune/tuneup.c has been completely rewritten,
+   and new, large FFT parameter selection tables are provided for many
+   machines.
+
+ * Upgraded to the latest autoconf, automake, libtool.
+
+There is a public repository for GMP, please see the GMP web site at
+http://gmplib.org/ for more information.
+
+Torbjörn's work on GMP is sponsored by Stiftelsen för Strategisk
+Forskning, through CIAM at KTH, http://www.ciam.kth.se/.
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

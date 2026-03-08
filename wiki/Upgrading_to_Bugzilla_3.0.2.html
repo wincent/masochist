@@ -1,0 +1,225 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Upgrading to Bugzilla 3.0.2 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Upgrading to Bugzilla 3.0.2</h1></div><div class="metadata"><relative-time created="1190199881" updated="1495119989">Created 9/19/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/bugzilla">bugzilla</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These notes were made while performing the upgrade from <a href="/wiki/Bugzilla_3.0.1">Bugzilla 3.0.1</a> to <a href="/wiki/Bugzilla_3.0.2">Bugzilla 3.0.2</a>.</p>
+<h2>Upgrade procedure</h2>
+<ul>
+<li>Run <code>sanitycheck.cgi</code> from within the browser.</li>
+<li>In the &quot;Parameters&quot; section set <code>shutdownhtml</code> to a useful value:</li>
+</ul>
+<!-- -->
+<pre><code>Currently closed for maintenance, please check back again soon.
+</code></pre>
+<ul>
+<li>Start a screen session in case we lose our connection:</li>
+</ul>
+<!-- -->
+<pre><code>screen
+</code></pre>
+<ul>
+<li>Back up the database:</li>
+</ul>
+<!-- -->
+<pre><code>mysqldump -u database_user -p database_name | bzip2 -c &gt; bugzilla-3.0.1.sql.bz2
+</code></pre>
+<ul>
+<li>Back up the installed files:</li>
+</ul>
+<!-- -->
+<pre><code>cd path_to_bugzilla_installation
+sudo tar -c -v . &gt; ~/bugzilla-3.0.1.tar
+gzip --verbose -9 ~/bugzilla-3.0.1.tar
+</code></pre>
+<ul>
+<li>(Optional): Upgrade installed <a href="/wiki/CPAN">CPAN</a> modules for which newer versions are available. As I wanted this to be a conservative, minimally disruptive upgrade I skipped this step. For examples of what to do see &quot;<a href="/wiki/Bugzilla_2.22.2_to_3.0_upgrade_notes">Bugzilla 2.22.2 to 3.0 upgrade notes</a>&quot;.</li>
+<li>Perform the actual update using <a href="/wiki/CVS">CVS</a> (<a href="/wiki/CVS">CVS</a> password is &quot;anonymous&quot;):</li>
+</ul>
+<!-- -->
+<pre><code>sudo -s
+cvs login
+cvs update -rBugzilla_Stable -dP
+</code></pre>
+<p>Output:</p>
+<pre><code>? padlock.png
+? secpatch
+? service
+? docs/html
+? skins/contrib
+cvs update: Updating .
+P buglist.cgi
+P email_in.pl
+cvs update: warning: globals.pl is not (any longer) pertinent
+cvs update: Updating Bugzilla
+P Bugzilla/Constants.pm
+P Bugzilla/Template.pm
+cvs update: Updating Bugzilla/Attachment
+cvs update: Updating Bugzilla/Auth
+cvs update: Updating Bugzilla/Auth/Login
+cvs update: Updating Bugzilla/Auth/Login/CGI
+cvs update: Updating Bugzilla/Auth/Login/WWW
+cvs update: Updating Bugzilla/Auth/Login/WWW/CGI
+cvs update: Updating Bugzilla/Auth/Persist
+cvs update: Updating Bugzilla/Auth/Verify
+cvs update: Updating Bugzilla/Config
+cvs update: Updating Bugzilla/DB
+cvs update: Updating Bugzilla/DB/Schema
+cvs update: Updating Bugzilla/Install
+cvs update: Updating Bugzilla/Search
+cvs update: Updating Bugzilla/Template
+cvs update: Updating Bugzilla/Template/Plugin
+cvs update: Updating Bugzilla/User
+cvs update: Updating Bugzilla/User/Setting
+cvs update: Updating Bugzilla/WebService
+P Bugzilla/WebService/Constants.pm
+P Bugzilla/WebService/User.pm
+cvs update: Updating Conf
+cvs update: Updating Conf/Supplies
+cvs update: Updating contrib
+P contrib/README
+P contrib/bzdbcopy.pl
+cvs update: Updating contrib/bug-bugzilla
+cvs update: Updating contrib/bugzilla-submit
+cvs update: Updating contrib/cmdline
+cvs update: Updating contrib/gnatsparse
+cvs update: Updating css
+cvs update: Updating docs
+P docs/rel_notes.txt
+cvs update: Updating docs/html
+cvs update: move away docs/html/.cvsignore; it is in the way
+C docs/html/.cvsignore
+cvs update: Updating docs/html/api
+cvs update: move away docs/html/api/.cvsignore; it is in the way
+C docs/html/api/.cvsignore
+cvs update: move away docs/html/api/style.css; it is in the way
+C docs/html/api/style.css
+cvs update: Updating docs/images
+cvs update: Updating docs/images/callouts
+cvs update: Updating docs/lib
+cvs update: Updating docs/lib/Pod
+cvs update: Updating docs/lib/Pod/Simple
+cvs update: Updating docs/lib/Pod/Simple/HTML
+cvs update: Updating docs/lib/Pod/Simple/HTMLBatch
+cvs update: Updating docs/pdf
+cvs update: Updating docs/sgml
+cvs update: Updating docs/txt
+cvs update: Updating docs/xml
+P docs/xml/Bugzilla-Guide.xml
+P docs/xml/faq.xml
+P docs/xml/glossary.xml
+P docs/xml/security.xml
+cvs update: Updating images
+cvs update: Updating js
+cvs update: Updating oracle
+cvs update: Updating skins
+cvs update: move away skins/.cvsignore; it is in the way
+C skins/.cvsignore
+cvs update: Updating skins/contrib
+cvs update: Updating skins/contrib/Dusk
+cvs update: Updating skins/standard
+cvs update: Updating skins/standard/dependency-tree
+cvs update: Updating skins/standard/global
+cvs update: Updating skins/standard/index
+cvs update: Updating t
+cvs update: Updating t/Support
+cvs update: Updating template
+cvs update: Updating template/default
+cvs update: Updating template/default/account
+cvs update: Updating template/default/admin
+cvs update: Updating template/default/admin/common
+cvs update: Updating template/default/admin/resolutions
+cvs update: Updating template/default/attachment
+cvs update: Updating template/default/attachstatus
+cvs update: Updating template/default/bug
+cvs update: Updating template/default/buglist
+cvs update: Updating template/default/config
+cvs update: Updating template/default/entry
+cvs update: Updating template/default/global
+cvs update: Updating template/default/info
+cvs update: Updating template/default/prefs
+cvs update: Updating template/default/process
+cvs update: Updating template/default/query
+cvs update: Updating template/default/report
+cvs update: Updating template/default/request
+cvs update: Updating template/default/requestdef
+cvs update: Updating template/default/requesttype
+cvs update: Updating template/default/show
+cvs update: Updating template/default/sidebar
+cvs update: Updating template/default/token
+cvs update: Updating template/default/voting
+cvs update: Updating template/en
+cvs update: Updating template/en/default
+M template/en/default/index.html.tmpl
+cvs update: Updating template/en/default/account
+cvs update: Updating template/en/default/account/auth
+cvs update: Updating template/en/default/account/email
+cvs update: Updating template/en/default/account/password
+cvs update: Updating template/en/default/account/prefs
+cvs update: Updating template/en/default/admin
+cvs update: Updating template/en/default/admin/attachstatus
+cvs update: Updating template/en/default/admin/classifications
+P template/en/default/admin/classifications/edit.html.tmpl
+cvs update: Updating template/en/default/admin/common
+cvs update: Updating template/en/default/admin/components
+cvs update: Updating template/en/default/admin/custom_fields
+cvs update: Updating template/en/default/admin/fieldvalues
+cvs update: Updating template/en/default/admin/flag-type
+cvs update: Updating template/en/default/admin/groups
+cvs update: Updating template/en/default/admin/keywords
+cvs update: Updating template/en/default/admin/milestones
+cvs update: Updating template/en/default/admin/params
+cvs update: Updating template/en/default/admin/products
+cvs update: Updating template/en/default/admin/products/groupcontrol
+cvs update: Updating template/en/default/admin/request-type
+cvs update: Updating template/en/default/admin/sanitycheck
+cvs update: Updating template/en/default/admin/settings
+cvs update: Updating template/en/default/admin/users
+cvs update: Updating template/en/default/admin/versions
+cvs update: Updating template/en/default/admin/workflow
+cvs update: Updating template/en/default/attachment
+P template/en/default/attachment/edit.html.tmpl
+cvs update: Updating template/en/default/bug
+P template/en/default/bug/summarize-time.html.tmpl
+cvs update: Updating template/en/default/bug/activity
+cvs update: Updating template/en/default/bug/create
+cvs update: Updating template/en/default/bug/process
+cvs update: Updating template/en/default/bug/votes
+P template/en/default/bug/votes/list-for-user.html.tmpl
+cvs update: Updating template/en/default/email
+cvs update: Updating template/en/default/flag
+cvs update: Updating template/en/default/global
+M template/en/default/global/banner.html.tmpl
+M template/en/default/global/header.html.tmpl
+P template/en/default/global/user-error.html.tmpl
+M template/en/default/global/variables.none.tmpl
+cvs update: Updating template/en/default/list
+P template/en/default/list/table.html.tmpl
+cvs update: Updating template/en/default/pages
+P template/en/default/pages/release-notes.html.tmpl
+cvs update: Updating template/en/default/reports
+cvs update: Updating template/en/default/request
+P template/en/default/request/email.txt.tmpl
+cvs update: Updating template/en/default/search
+cvs update: Updating template/en/default/setup
+cvs update: Updating template/en/default/whine
+cvs update: Updating template/en/extension
+cvs update: Updating template/en/extension/hook
+</code></pre>
+<ul>
+<li>Watch for conflicts during update; fix as required.</li>
+<li>Run <code>checksetup.pl</code> from the command line:</li>
+</ul>
+<!-- -->
+<pre><code>./checksetup.pl
+</code></pre>
+<ul>
+<li>Use my custom <code>repair-bugzilla.sh</code> to repair the ownership and permissions on the installed files.</li>
+<li>In the &quot;Parameters&quot; section empty the <code>shutdownhtml</code> field.</li>
+<li>Run <code>sanitycheck.cgi</code> from within the browser.</li>
+<li>Update parameters.</li>
+<li>Test the installation.</li>
+<li>End root/screen sessions:</li>
+</ul>
+<!-- -->
+<pre><code>exit
+exit
+</code></pre>
+<h2>Future improvements</h2>
+<p>More of this process could be largely automated via a shell script.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

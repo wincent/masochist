@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Parsing/transforming nested lists from wiki markup to HTML • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/parsing-transforming-nested-lists-from-wiki-markup-to-html">Parsing/transforming nested lists from wiki markup to HTML</a></h1><div class="metadata"><relative-time created="1183682220" updated="1710259978">Created 7/6/2007, updated 3/12/2024</relative-time><span>3 minute read</span></div><div class="prerendered"><p>In working on my <a href="http://wincent.dev/wiki/wikitext">wikitext</a>-to-HTML transformer I saved the ugliest bit for last: parsing/transforming nested lists. I started off with parsing simple span-level elements like <code>em</code> and <code>strong</code> tags, then moved on to block level items like paragraphs and <code>pre</code> blocks, and nesting containers like <code>blockquote</code> blocks. But I had to keep putting off lists.</p>
+<p>Given input like the following (using the same syntax as that used by <a href="http://wincent.dev/wiki/MediaWiki">MediaWiki</a>):</p>
+<pre><code># this is an ordered list
+# which continues
+## and has another ordered list
+## nested inside it
+# and then falls back
+#* and then nests another list
+#* this time an unordered one
+#** itself containing a nested list
+#** which continues
+#**# and finally nests yet another ordered list
+#**# which continues
+#* drops back quite a way
+# and finally all the way
+#****** and finishes with an invalid item
+</code></pre>
+<p>We want a corresponding nested list described in valid <a href="http://wincent.dev/wiki/HTML">HTML</a>.</p>
+<p>As this is wikitext, we want to handle the last item (the invalid) one gracefully. It mustn't break the validity of the HTML but we don't want a silent failure either. We don't want to increase the nesting level several times in one go (probably not what the author intended); it really only makes sense to increase the nesting-level once per line. So the solution will be to handle it the same way Wikipedia does and consider the first <code>*</code> to mark the beginning of a nested list and subsequent (invalid) <code>*</code> to belong to the first item of that list; this is important because it means they will be displayed back to the user and hopefully alert him/her of the error.</p>
+<p>Looking at this HTML makes my brain hurt, but this is what we want to produce:</p>
+<pre><code>&lt;ol&gt;
+&lt;li&gt;this is an ordered list&lt;/li&gt;
+&lt;li&gt;which continues
+&lt;ol&gt;
+&lt;li&gt;and has another ordered list&lt;/li&gt;
+&lt;li&gt;nested inside it&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;and then falls back
+&lt;ul&gt;
+&lt;li&gt;and then nests another list&lt;/li&gt;
+&lt;li&gt;this time an unordered one
+&lt;ul&gt;
+&lt;li&gt;itself containing a nested list&lt;/li&gt;
+&lt;li&gt;which continues
+&lt;ol&gt;
+&lt;li&gt;and finally nests yet another ordered list&lt;/li&gt;
+&lt;li&gt;which continues&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;drops back quite a way&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;and finally all the way
+&lt;ul&gt;
+&lt;li&gt;***** and finishes with an invalid item&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+<p>When rendered this will look like this:</p>
+<ol>
+<li>this is an ordered list</li>
+<li>which continues
+<ol>
+<li>and has another ordered list</li>
+<li>nested inside it</li>
+</ol>
+</li>
+<li>and then falls back
+<ul>
+<li>and then nests another list</li>
+<li>this time an unordered one
+<ul>
+<li>itself containing a nested list</li>
+<li>which continues
+<ol>
+<li>and finally nests yet another ordered list</li>
+<li>which continues</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>drops back quite a way</li>
+</ul>
+</li>
+<li>and finally all the way
+<ul>
+<li>***** and finishes with an invalid item</li>
+</ul>
+</li>
+</ol>
+<p>So anyway, it's done now, in about 130 lines of well-commented <a href="http://wincent.dev/wiki/C">C</a> code. Surprisingly, despite the recursive structure of the lists the actual transformation code is entirely iterative and no recursion is involved. I still don't know if this is the best way to do it but it is what seemed to be the simplest solution. Indenting could be added to make the structure of the source clearer but as this is intended to be (mostly) read by machines and not humans it doesn't seem like its worth the trade-offs in complexity and speed.</p>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/musings-on-subversion-svk-and-git">← Musings on Subversion, SVK and Git</a></div><div class="post-nav-next"><a href="/blog/unit-testing">Unit testing →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Signing and verifying tags with Git • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Signing and verifying tags with Git</h1></div><div class="metadata"><relative-time created="1184083585" updated="1709741209">Created 7/10/2007, updated 3/6/2024</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>In order to sign or verify tags with <a href="/wiki/Git">Git</a> it is necessary to have <a href="/wiki/GnuPG">GnuPG</a> installed. Notes on how I installed it on <a href="/wiki/Mac_OS_X">Mac OS X</a> <a href="/wiki/Tiger">Tiger</a> can be found in &quot;<a href="/wiki/Git_quickstart">Git quickstart</a>&quot;.</p>
+<h2>Problems on <a href="/wiki/Mac_OS_X">Mac OS X</a> with <a href="/wiki/Git_1.5.2.3">Git 1.5.2.3</a> and earlier</h2>
+<p>I was puzzled at first to find that I could never verify signatures using <a href="/wiki/Git_1.5.2.3">Git 1.5.2.3</a> on <a href="/wiki/Mac_OS_X">Mac OS X</a> <a href="/wiki/Tiger">Tiger</a>. It turns out that this has already been fixed in <a href="http://repo.or.cz/w/git.git?a=commitdiff;h=bfc04bb9b847912ee41a21fc23110962851878b2">this commit</a>, but I reproduce the troubleshooting information gathered below for historical reasons.</p>
+<h3>Troubleshooting</h3>
+<pre><code># create new, empty repository
+mkdir playground
+cd playground
+git-init
+
+# add some content
+echo 'hello, world!' &gt; greeting.txt
+git add greeting.txt
+git-commit
+
+# add tag
+git-tag -s v0.2
+</code></pre>
+<p>This appears to successfully sign the tag:</p>
+<pre><code>Necesita una frase contraseña para desbloquear la clave secreta
+del usuario: &quot;Wincent Colaiuta &lt;win@wincent.com&gt;&quot;
+clave DSA de 1024 bits, ID 134D9429, creada el 2007-07-10
+</code></pre>
+<p>But verification does not work:</p>
+<pre><code># verify tag
+git tag -v v0.2
+</code></pre>
+<p>As shown below:</p>
+<pre><code>object 3418e660181ac2e25dcdd561ef5aa4e584203c68
+type commit
+tag v0.2
+tagger Wincent Colaiuta &lt;win@wincent.com&gt; Tue Jul 10 15:58:56 2007 +0200
+
+Yet another tag.
+sed: 1: &quot;/-----BEGIN PGP/Q&quot;: invalid command code Q
+gpg: Firmado el Tue Jul 10 15:59:03 2007 CEST usando clave DSA ID 134D9429
+gpg: Firma INCORRECTA de &quot;Wincent Colaiuta &lt;win@wincent.com&gt;&quot;
+</code></pre>
+<p>First, note the <code>sed</code> error (&quot;<code>invalid command code Q</code>&quot;) and the fact that the signature is rejected (&quot;Firma INCORRECTA&quot;).</p>
+<p>So I tried to verify a known valid signature. This time, a recent tag from the <a href="/wiki/Git">Git</a> repository itself:</p>
+<pre><code># in cloned copy of repository:
+git-tag -v v1.5.3-rc0
+</code></pre>
+<p>Output:</p>
+<pre><code>object 2ecf3cee0754961401200e9f35071001ccdbbce3
+type commit
+tag v1.5.3-rc0
+tagger Junio C Hamano &lt;gitster@pobox.com&gt; Mon Jul 2 23:56:55 2007 -0700
+
+GIT 1.5.3-rc0
+sed: 1: &quot;/-----BEGIN PGP/Q&quot;: invalid command code Q
+cat: .git/.tmp-vtag: Bad file descriptor
+gpg: Firmado el Tue Jul  3 08:56:59 2007 CEST usando clave DSA ID F3119B9A
+gpg: Imposible comprobar la firma: Clave pública no encontrada
+</code></pre>
+<p>Again note the <code>sed</code> error. Also note how it says (in Spanish) &quot;unable to verify the signature: public key not found&quot;. I found in <a href="http://article.gmane.org/gmane.comp.version-control.git/51311">this mailing list post</a> a hint on how to get Junio's public key from the repository itself (I was unable to find a home page for Junio or a public key in any of the public keyservers i know about).</p>
+<pre><code># see the public key
+git-cat-file blob junio-gpg-pub
+
+# import it
+git-cat-file blob junio-gpg-pub | gpg --import
+</code></pre>
+<p>Yields:</p>
+<pre><code>gpg: clave F3119B9A: clave pública &quot;Junio C Hamano &lt;junkio@cox.net&gt;&quot; importada
+gpg: Cantidad total procesada: 1
+gpg:               importadas: 1&lt;/pre
+
+After successfully importing I again tried to verify a tag:
+
+&lt;pre&gt;git-tag -v v1.5.3-rc0
+</code></pre>
+<p>But this again failed with the same error message (in Spanish) &quot;signature INCORRECT&quot;:</p>
+<pre><code>object 2ecf3cee0754961401200e9f35071001ccdbbce3
+type commit
+tag v1.5.3-rc0
+tagger Junio C Hamano &lt;gitster@pobox.com&gt; Mon Jul 2 23:56:55 2007 -0700
+
+GIT 1.5.3-rc0
+sed: 1: &quot;/-----BEGIN PGP/Q&quot;: invalid command code Q
+gpg: Firmado el Tue Jul  3 08:56:59 2007 CEST usando clave DSA ID F3119B9A
+cat: .git/.tmp-vtag: Bad file descriptor
+gpg: Firma INCORRECTA de &quot;Junio C Hamano &lt;junkio@cox.net&gt;&quot;
+</code></pre>
+<p>Once again, note that there is still a <code>sed</code> error.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

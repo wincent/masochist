@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.6.1.1 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.6.1.1</h1></div><div class="metadata"><relative-time created="1232970369" updated="1495119989">Created 1/26/2009, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h3>Official announcement</h3>
+<p>Posted to the <a href="/wiki/Git">Git</a> mailing list:</p>
+<pre><code>The latest maintenance release GIT 1.6.1.1 is available at the
+usual places:
+
+ http://www.kernel.org/pub/software/scm/git/
+
+ git-1.6.1.1.tar.{gz,bz2}			(source tarball)
+ git-htmldocs-1.6.1.1.tar.{gz,bz2}		(preformatted docs)
+ git-manpages-1.6.1.1.tar.{gz,bz2}		(preformatted docs)
+
+The RPM binary packages for a few architectures are also provided
+as courtesy.
+
+ RPMS/$arch/git-*-1.6.1.1-1.fc9.$arch.rpm	(RPM)
+
+----------------------------------------------------------------
+GIT v1.6.1.1 Release Notes
+==========================
+
+Fixes since v1.6.1
+------------------
+
+* &quot;git add frotz/nitfol&quot; when &quot;frotz&quot; is a submodule should have errored
+ out, but it didn't.
+
+* &quot;git apply&quot; took file modes from the patch text and updated the mode
+ bits of the target tree even when the patch was not about mode changes.
+
+* &quot;git bisect view&quot; on Cygwin did not launch gitk
+
+* &quot;git checkout $tree&quot; did not trigger an error.
+
+* &quot;git commit&quot; tried to remove COMMIT_EDITMSG from the work tree by mistake.
+
+* &quot;git describe --all&quot; complained when a commit is described with a tag,
+ which was nonsense.
+
+* &quot;git diff --no-index --&quot; did not trigger no-index (aka &quot;use git-diff as
+ a replacement of diff on untracked files&quot;) behaviour.
+
+* &quot;git format-patch -1 HEAD&quot; on a root commit failed to produce patch
+ text.
+
+* &quot;git fsck branch&quot; did not work as advertised; instead it behaved the same
+ way as &quot;git fsck&quot;.
+
+* &quot;git log --pretty=format:%s&quot; did not handle a multi-line subject the
+ same way as built-in log listers (i.e. shortlog, --pretty=oneline, etc.)
+
+* &quot;git daemon&quot;, and &quot;git merge-file&quot; are more careful when freopen fails
+ and barf, instead of going on and writing to unopened filehandle.
+
+* &quot;git http-push&quot; did not like some RFC 4918 compliant DAV server
+ responses.
+
+* &quot;git merge -s recursive&quot; mistakenly overwritten an untracked file in the
+ work tree upon delete/modify conflict.
+
+* &quot;git merge -s recursive&quot; didn't leave the index unmerged for entries with
+ rename/delete conflictd.
+
+* &quot;git merge -s recursive&quot; clobbered untracked files in the work tree.
+
+* &quot;git mv -k&quot; with more than one errorneous paths misbehaved.
+
+* &quot;git read-tree -m -u&quot; hence branch switching incorrectly lost a
+ subdirectory in rare cases.
+
+* &quot;git rebase -i&quot; issued an unnecessary error message upon a user error of
+ marking the first commit to be &quot;squash&quot;ed.
+
+* &quot;git shortlog&quot; did not format a commit message with multi-line
+ subject correctly.
+
+Comes with many documentation updates.
+</code></pre>
+<h3>See also</h3>
+<ul>
+<li><a href="/wiki/Updating_to_Git_1.6.1.1">Updating to Git 1.6.1.1</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

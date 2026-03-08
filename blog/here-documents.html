@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Here documents • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/here-documents">Here documents</a></h1><div class="metadata"><relative-time created="1171946880" updated="1710259978">Created 2/20/2007, updated 3/12/2024</relative-time><span>3 minute read</span></div><div class="prerendered"><p>I <a href="http://wincent.dev/a/about/wincent/weblog/svn-log/archives/2007/02/walrus_r51_3_items_changed.php">just added</a> &quot;<a href="http://en.wikipedia.org/wiki/Here_document">here document</a>&quot; support to Walrus.</p>
+<p>This is an extension to the normal syntax for the <code>raw</code> directive:</p>
+<pre><code>#raw
+Characters which would normally have special meaning
+are treated as normal characters inside the #raw block.
+#end
+</code></pre>
+<p>Notice how the string, <code>#raw</code>, inside the raw block does <em>not</em> have the effect of opening a new, nested raw block. This is because the <code>#</code> character loses its special meaning inside the block. This effect holds true up until the next <code>#end</code> directive.</p>
+<p>But what if you want to include a literal <code>#end</code> inside the block without terminating it. You could try escaping it (<code>\#end</code>) but then you'd be breaking the idea that special characters should be treated as normal characters inside the raw block (that is, you'd be granting <code>\</code> a special function inside the block).</p>
+<p>The solution is to allow here documents:</p>
+<pre><code>#raw &lt;&lt;END_OF_HERE_DOCUMENT
+The raw block can now include anything at all,
+including a literal #end without prematurely
+escaping the block.
+END_OF_HERE_DOCUMENT
+</code></pre>
+<p>You can substitute <code>END_OF_HERE_DOCUMENT</code> for anything you want; I just chose that for the purposes of demonstration. Because there are an infinite range of possible of delimiter tokens, there are literally no limits for what you can include in your <code>#raw</code> blocks, apart from the physical and addressing limits of the memory in your machine.</p>
+<p>Implementing here documents was an interesting mini-challenge within the context of a Parser Expression Grammar (PEG) parser generator like the one used by Walrus. PEGs are totally unambiguous and deterministic, which requires you to know the allowed syntax at the time that you define the grammar. But it's hard to specify the sytax for a here document so early because you don't know what the user is going to select as their delimiter and so you have to have some kind of dynamic self-referencing mechanism:</p>
+<blockquote>
+<p>A here document shall be a delimiter consisting of a &quot;string of characters&quot;, followed by a bunch of other characters, terminated by the &quot;string of characters&quot; that you previously identified as the delimiter.</p>
+</blockquote>
+<p>You can't address this problem with a simple regular expression like this:</p>
+<pre><code>/[a-zA-Z_][a-zA-Z0-9]*/
+</code></pre>
+<p>Because that can match a different delimiter each time you run it:</p>
+<pre><code>#raw &lt;&lt;FOO
+Our regular expression matches FOO,
+which is nice.
+But it also matches BAR,
+which isn't what we want.
+BAR
+</code></pre>
+<p>You therefore need some way of expressing the notion in your grammar that you want to remember a token which you don't know at the time you author the grammar, and later apply that to the input.</p>
+<p>Ruby comes to the rescue here with the fantastically useful <code>lambda</code> method. This essentially allows you to define an anonymous function (technically a <code>Proc</code> object) in the middle of your grammar which has access to all the variables in scope at the time of definition, and which can handle the logic for &quot;recording&quot; the start delimited and then scanning up to it.</p>
+<p>The design of the Walrus parser generator already includes a bunch of handy classes (&quot;parslets&quot;) to make writing this logic extremely easy. My implementation basically behaves just like the one in Ruby, and allows indentation of the closing delimiter via the <code>&lt;&lt;-</code> syntax.</p>
+<p>So now Walrus has a <code>ProcParslet</code> class in addition to the existing <code>String</code>, <code>Regexp</code> and <code>Symbol</code> equivalents. This may well be the last low-level parslet type I ever have to add because with it you can do pretty much anything; the sky is the limit.</p>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/goodbye-parity-hello-superiority">← Goodbye parity, hello superiority</a></div><div class="post-nav-next"><a href="/blog/coming-up-with-a-company-name">Coming up with a company name →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

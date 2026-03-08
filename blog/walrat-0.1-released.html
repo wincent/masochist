@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Walrat 0.1 released • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/walrat-0.1-released">Walrat 0.1 released</a></h1><div class="metadata"><relative-time created="1282388858" updated="1709676231">Created 8/21/2010, updated 3/5/2024</relative-time><span>2 minute read</span></div><div class="prerendered"><p><a href="/wiki/Walrat">Walrat</a> is a sophisticated parser generator written in <a href="/wiki/Ruby">Ruby</a>. It can be used to dynamically generate (at runtime):</p>
+<ul>
+<li>integrated lexers</li>
+<li>&quot;<a href="/wiki/packrat">packrat</a>&quot; (memoizing) parsers cable of recognizing <a href="/wiki/Parsing_Expression_Grammars">Parsing Expression Grammars</a> (PEG), including grammars that use left-recursion</li>
+<li><a href="/wiki/Abstract_Syntax_Tree">Abstract Syntax Tree</a> builders that can build trees of arbitrary complexity</li>
+</ul>
+<p>Walrat was originally written in early 2007 as part of the <a href="/wiki/Walrus">Walrus</a> <a href="/wiki/object-oriented_templating">object-oriented templating</a> system. This 0.1 release marks its extraction into a separate <a href="/wiki/gem">gem</a> for easier reuse in other projects. The Walrus grammar is an excellent example of some of the more advanced parsing techniques that can be achieved using Walrat, including:</p>
+<ul>
+<li>dynamic definition of grammars and parsers at runtime using a simple DSL</li>
+<li>standard PEG constructs such as ordered choice, concatenation, repetition, predicates</li>
+<li>string and regular-expression based &quot;parslets&quot;</li>
+<li>arbitrarily complex proc/lambda based &quot;parslets&quot;</li>
+<li>convenient and customizable skipping behavior (in this case, whitespace skipping)</li>
+<li>left-recursion</li>
+<li>left-associative and right-associative productions</li>
+<li>dynamic AST node synthesis</li>
+<li>addition of custom behavior to AST nodes (in this case, compilation behavior) through custom Ruby code</li>
+<li>multiline comments, including nested multiline comments</li>
+<li>&quot;island&quot; parsers for processing &quot;<a href="/wiki/Here_documents">Here documents</a>&quot; and include files</li>
+</ul>
+<h3>Example</h3>
+<p>This example shows a simple grammar that can be used to parse comma-separated lists of integers:</p>
+<pre><code class="language-ruby">#!/usr/bin/env ruby
+require 'rubygems'
+require 'walrat'
+
+class MySuperGrammar &lt; Walrat::Grammar
+  starting_symbol :sequence
+  skipping        :whitespace
+  rule            :whitespace, /\s+/
+  rule            :sequence, :digits &amp; (',' &amp; :digits).zero_or_more
+  rule            :digits, /\d+/
+end
+
+grammar = MySuperGrammar.new
+
+begin
+  grammar.parse 'hello!'
+rescue Walrat::ParseError =&gt; e
+  puts &quot;bad input: failed to parse (#{e})&quot;
+end
+
+result = grammar.parse '123, 456, 789'
+puts &quot;good input: parsed (#{result})&quot;
+</code></pre>
+<p>Running this file produces the following output:</p>
+<pre><code>bad input: failed to parse (non-matching characters &quot;hello!&quot; while parsing regular expression &quot;/\A(?-mix:\d+)/&quot;)
+good input: parsed (123,456,789)
+</code></pre>
+<h3>System requirements</h3>
+<p>Walrat currently only supports Ruby 1.8, although Ruby 1.9 compatibility work is underway. JRuby is not yet officially supported, although many complex grammars (such as the Walrus grammar) have already been successfully tested.</p>
+<h2>Installation</h2>
+<pre><code class="language-shell">$ sudo gem install walrat
+</code></pre>
+<h3>Donations</h3>
+<p><a href="/wiki/Walrat">Walrat</a> is free, <a href="/wiki/open_source">open source</a> software released under the BSD license. If you find it useful and would like to support further development you can <a href="/products/walrat/donations">make a donation</a> via PayPal to <a href="mailto:example@example.com">example@example.com</a>.</p>
+</div><ul class="tags"><li><a href="/tags/releases">releases</a></li><li><a href="/tags/walrat">walrat</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/walrus-0.3-released">← Walrus 0.3 released</a></div><div class="post-nav-next"><a href="/blog/command-t-0.8-released">Command-T 0.8 released →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

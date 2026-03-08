@@ -1,0 +1,381 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Leopard set-up notes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Leopard set-up notes</h1></div><div class="metadata"><relative-time created="1196416777" updated="1584053324">Created 11/30/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/leopard">leopard</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Preferences</h2>
+<ul>
+<li>Appearance
+<ul>
+<li>Up &quot;Recent items&quot; to 50 each</li>
+</ul>
+</li>
+<li>Screensavers
+<ul>
+<li>Show clock</li>
+</ul>
+</li>
+<li>Spaces (System Preferences crashes)
+<ul>
+<li>Enable (2 rows, 2 columns)</li>
+<li>Use Control-Option to switch spaces (Control alone is far too common)</li>
+</ul>
+</li>
+<li>Accounts
+<ul>
+<li>Remove old (Tiger) guest account</li>
+<li>Set-up new (Leopard) guest account</li>
+</ul>
+</li>
+<li>Sound
+<ul>
+<li>Input
+<ul>
+<li>Use ambient noise reduction</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Sharing
+<ul>
+<li>Turn off Bluetooth, File sharing</li>
+<li>Turn on SSH</li>
+</ul>
+</li>
+<li>Software update
+<ul>
+<li>Search daily</li>
+</ul>
+</li>
+<li>Date and time
+<ul>
+<li>Turn on NTP updates</li>
+</ul>
+</li>
+</ul>
+<h2>Developer tools</h2>
+<ul>
+<li>Install Xcode Tools</li>
+</ul>
+<h2>Other tools</h2>
+<ul>
+<li>LittleSnitch 2 public beta: <a href="http://obdev.at/products/littlesnitch/public-beta.html">http://obdev.at/products/littlesnitch/public-beta.html</a></li>
+<li>Net Monitor <a href="http://homepage.mac.com/rominar/net4.3.14.dmg">http://homepage.mac.com/rominar/net4.3.14.dmg</a></li>
+<li>Remove StuffIt &quot;MagicMenu&quot; from login items</li>
+</ul>
+<h2><code>sudoers</code></h2>
+<ul>
+<li>Add self back to sudoers file:</li>
+</ul>
+<!-- -->
+<pre><code>su admin_user
+env EDITOR=/usr/bin/nano sudo visudo
+exit
+</code></pre>
+<h2>Set up backups</h2>
+<ul>
+<li>Set up cron job for automated backups of home directory (following instructions in <code>~/bin/homedir-backup.sh</code>)</li>
+</ul>
+<!-- -->
+<pre><code>sudo crontab -e
+</code></pre>
+<ul>
+<li>Confirm set-up:</li>
+</ul>
+<!-- -->
+<pre><code>sudo crontab -l
+</code></pre>
+<h2>Building and installing other software</h2>
+<p>In most cases I already had a copy of the source archive for the latest version still on my hard drive, so I was able to just change to the appropriate directory, re-extract if necessary, and build again.</p>
+<pre><code>cd wget-1.10
+./configure
+make
+make check
+sudo make install
+
+cd ../../aee
+tar xzvf aee-2.2.15b.tar.gz
+cd aee-2.2.15b
+make
+sudo make install
+
+cd ../../ee
+tar xzvf ee-1.4.6.src.tgz
+cd easyedit-1.4.6
+make
+sudo make install
+
+cd ../../ragel
+tar xzvf ragel-5.24.tar.gz
+cd ragel-5.24
+./configure
+make
+cd test
+./runtests
+cd ..
+sudo make install
+
+# a new version of Doxygen is now available
+cd ../../doxygen
+wget http://ftp.stack.nl/pub/users/dimitri/Doxygen-1.5.4.dmg
+hdiutil attach Doxygen-1.5.4.dmg
+sudo ditto /Volumes/Doxygen /Applications/Doxygen
+sudo mv /Applications/Doxygen/Doxygen.app /Applications/
+sudo rm -r /Applications/Doxygen
+hdiutil detach `hdiutil info | grep &quot;/Volumes/Doxygen&quot; | awk '{print $1}'`
+wget ftp://ftp.stack.nl/pub/users/dimitri/doxygen_manual-1.5.4.pdf.zip
+
+cd ../git
+tar xjvf gnupg-1.4.7.tar.bz2
+cd gnupg-1.4.7
+./configure
+make
+make check
+sudo make install
+
+cd ..
+tar xjvf git-1.5.3.4.tar.bz2
+cd git-1.5.3.4
+make prefix=/usr/local all
+make prefix=/usr/local test
+echo $?
+sudo make prefix=/usr/local install
+cd ..
+sudo tar xjv -C /usr/local/man -f git-manpages-1.5.3.4.tar.bz2
+
+# now that Git is installed clone the Git repo
+git clone git://git.kernel.org/pub/scm/git/git.git
+</code></pre>
+<h2><a href="/wiki/MySQL">MySQL</a></h2>
+<ul>
+<li>See: <a href="http://dev.mysql.com/doc/refman/5.0/en/installing-source.html">http://dev.mysql.com/doc/refman/5.0/en/installing-source.html</a></li>
+</ul>
+<p>Get public key from:</p>
+<ul>
+<li><a href="http://dev.mysql.com/doc/refman/5.0/en/checking-gpg-signature.html">http://dev.mysql.com/doc/refman/5.0/en/checking-gpg-signature.html</a></li>
+</ul>
+<!-- -->
+<pre><code>mkdir mysql
+cd mysql
+wget &quot;http://mysql.rediris.es/Downloads/MySQL-5.0/mysql-5.0.45.tar.gz&quot;
+wget http://dev.mysql.com/Downloads/MySQL-5.0/mysql-5.0.45.tar.gz.asc
+gpg --import mysql_public_key.asc
+gpg --verify mysql-5.0.45.tar.gz.asc mysql-5.0.45.tar.gz
+</code></pre>
+<p>Unfortunately this wouldn't build in 10.5.0:</p>
+<pre><code>ranlib: archive member: libmysys.a(my_new.o) cputype (7) does not match previous archive members cputype (18) (all members must match)
+ranlib: archive member: libmysys.a(raid.o) cputype (7) does not match previous archive members cputype (18) (all members must match)
+ranlib libmysys.a
+ranlib: archive member: libmysys.a(my_new.o) cputype (7) does not match previous archive members cputype (18) (all members must match)
+ranlib: archive member: libmysys.a(raid.o) cputype (7) does not match previous archive members cputype (18) (all members must match)
+ranlib: for architecture: ppc file: libmysys.a(my_getpagesize.o) has no symbols
+ranlib: for architecture: ppc file: libmysys.a(my_crc32.o) has no symbols
+ranlib: for architecture: ppc file: libmysys.a(mf_brkhant.o) has no symbols
+ranlib: for architecture: ppc file: libmysys.a(my_lockmem.o) has no symbols
+ranlib: for architecture: ppc file: libmysys.a(my_port.o) has no symbols
+ranlib: for architecture: ppc file: libmysys.a(my_netware.o) has no symbols
+ranlib: for architecture: ppc file: libmysys.a(my_largepage.o) has no symbols
+ranlib: for architecture: ppc file: libmysys.a(my_windac.o) has no symbols
+ranlib: for architecture: ppc file: libmysys.a(my_access.o) has no symbols
+ranlib: for architecture: ppc file: libmysys.a(my_libwrap.o) has no symbols
+ranlib: for architecture: ppc file: libmysys.a(thr_mutex.o) has no symbols
+ranlib: for architecture: ppc file: libmysys.a(thr_rwlock.o) has no symbols
+ranlib: for architecture: i386 file: libmysys.a(my_new.o) has no symbols
+ranlib: for architecture: i386 file: libmysys.a(raid.o) has no symbols
+ranlib: warning for library: libmysys.a for architecture: i386 the table of contents is empty (no object file members in the library define global symbols)
+make[2]: *** [libmysys.a] Error 1
+make[1]: *** [all-recursive] Error 1
+make: *** [all] Error 2
+</code></pre>
+<p>Something seems to have changed in 10.5.1, however, and now the build works:</p>
+<pre><code>./configure &amp;&amp;
+make &amp;&amp;
+make check &amp;&amp;
+sudo make install
+</code></pre>
+<p>On actually trying to use this build, however, I bombed out as follows:</p>
+<pre><code>touch: /usr/local/var/machine.lan.err: No such file or directory
+chown: /usr/local/var/machine.lan.err: No such file or directory
+Starting mysqld daemon with databases from /usr/local/var
+/usr/local/bin/mysqld_safe: line 380: /usr/local/var/machine.lan.err: No such file or directory
+/usr/local/bin/mysqld_safe: line 386: /usr/local/var/machine.lan.err: No such file or directory
+STOPPING server from pid file /usr/local/var/machine.lan.pid
+tee: /usr/local/var/machine.lan.err: No such file or directory
+071129 20:01:38  mysqld ended
+tee: /usr/local/var/machine.lan.err: No such file or directory
+</code></pre>
+<p>The output of the <code>./configure --help</code> reveals the problem:</p>
+<pre><code>Installation directories:
+  --prefix=PREFIX         install architecture-independent files in PREFIX
+			  [/usr/local]
+  --exec-prefix=EPREFIX   install architecture-dependent files in EPREFIX
+			  [PREFIX]
+
+By default, `make install' will install all the files in
+`/usr/local/bin', `/usr/local/lib' etc.  You can specify
+an installation prefix other than `/usr/local' using `--prefix',
+for instance `--prefix=$HOME'.
+
+For better control, use the options below.
+
+Fine tuning of the installation directories:
+  --bindir=DIR           user executables [EPREFIX/bin]
+  --sbindir=DIR          system admin executables [EPREFIX/sbin]
+  --libexecdir=DIR       program executables [EPREFIX/libexec]
+  --datadir=DIR          read-only architecture-independent data [PREFIX/share]
+  --sysconfdir=DIR       read-only single-machine data [PREFIX/etc]
+  --sharedstatedir=DIR   modifiable architecture-independent data [PREFIX/com]
+  --localstatedir=DIR    modifiable single-machine data [PREFIX/var]
+  --libdir=DIR           object code libraries [EPREFIX/lib]
+  --includedir=DIR       C header files [PREFIX/include]
+  --oldincludedir=DIR    C header files for non-gcc [/usr/include]
+  --infodir=DIR          info documentation [PREFIX/info]
+  --mandir=DIR           man documentation [PREFIX/man]
+</code></pre>
+<p>At this point I have two options:</p>
+<ul>
+<li>Create the directories that MySQL expects to find, like <code>PREFIX/var</code> (in this case that would be <code>/usr/local/var/</code>).</li>
+<li>Rebuild after configuring using <code>--prefix=/usr/local/mysql</code> or similar.</li>
+</ul>
+<p>In hindsight it would have been better to use a prefix like <code>/usr/local/mysql</code> all along and keep all the MySQL files in a single place, and make that place writable by the <code>mysql</code> user, but rebuilding now would mean leaving behind all the files previously installed at various points under <code>/usr/local/</code>.</p>
+<p>As a compromise I decided to make use of as much of the previously installed material as possible:</p>
+<pre><code>sudo mkdir -p /usr/local/var/mysql
+sudo chown mysql:mysql /usr/local/var/mysql
+sudo mkdir -p /usr/local/com/mysql
+sudo chown mysql:mysql /usr/local/com/mysql
+
+cd path_to_mysql_src_dir
+make clean &amp;&amp;
+./configure --sharedstatedir=/usr/local/com/mysql \
+            --localstatedir=/usr/local/var/mysql &amp;&amp;
+make &amp;&amp;
+make test &amp;&amp;
+sudo make install
+</code></pre>
+<p>It turns out that this still doesn't work:</p>
+<pre><code>$ sudo -b mysqld_safe --log-error=/tmp/foo.log
+Password:
+Starting mysqld daemon with databases from /usr/local/var
+STOPPING server from pid file /usr/local/var/cuzco.lan.pid
+071129 23:26:42  mysqld ended
+$ sudo cat /tmp/foo.log
+071129 23:26:42  mysqld started
+071129 23:26:42 [Warning] Setting lower_case_table_names=2 because file system for /usr/local/var/ is case insensitive
+071129 23:26:42  InnoDB: Operating system error number 13 in a file operation.
+InnoDB: The error means mysqld does not have the access rights to
+InnoDB: the directory.
+InnoDB: File name ./ibdata1
+InnoDB: File operation call: 'create'.
+InnoDB: Cannot continue operation.
+071129 23:26:42  mysqld ended
+</code></pre>
+<p>As you can see, the <code>--sharedstatedir</code> and <code>--localstatedir</code> configuration options seem to have no effect as MySQL is still looking inside <code>/usr/local/var/</code>. Running <code>mysql_config</code> prints:</p>
+<pre><code>        --cflags         [-I/usr/local/include/mysql]
+        --include        [-I/usr/local/include/mysql]
+        --libs           [-L/usr/local/lib/mysql -lmysqlclient -lz -lm]
+        --libs_r         [-L/usr/local/lib/mysql -lmysqlclient_r -lz -lm]
+        --socket         [/tmp/mysql.sock]
+        --port           [3306]
+        --version        [5.0.45]
+        --libmysqld-libs [-L/usr/local/lib/mysql -lmysqld -lz -lm]
+</code></pre>
+<p>So I decided to wipe the slate clean and do it the way MySQL evidently wants me to:</p>
+<pre><code>make --dry-run uninstall
+sudo make uninstall &amp;&amp;
+make clean &amp;&amp;
+./configure --prefix=/usr/local/mysql &amp;&amp;
+make &amp;&amp;
+make test &amp;&amp;
+sudo make install
+</code></pre>
+<p>After installing, the fun was still not over yet. The output of <code>sudo -b mysqld_safe --log-error=/tmp/bar.log</code> was:</p>
+<pre><code>071130 10:48:47  mysqld started
+071130 10:48:47 [Warning] Can't create test file /usr/local/mysql/var/cuzco.lower-test
+071130 10:48:47 [Warning] Can't create test file /usr/local/mysql/var/cuzco.lower-test
+/usr/local/mysql/libexec/mysqld: Can't change dir to '/usr/local/mysql/var/' (Errcode: 2)
+071130 10:48:47 [ERROR] Aborting
+
+071130 10:48:47 [Note] /usr/local/mysql/libexec/mysqld: Shutdown complete
+
+071130 10:48:47  mysqld ended
+</code></pre>
+<p>After doing:</p>
+<pre><code>sudo mkdir /usr/local/mysql/var
+sudo chown mysql:mysql /usr/local/mysql/var
+</code></pre>
+<p>The output was:</p>
+<pre><code>071130 10:50:08  mysqld started
+071130 10:50:08 [Warning] Setting lower_case_table_names=2 because file system for /usr/local/mysql/var/ is case insensitive
+InnoDB: The first specified data file ./ibdata1 did not exist:
+InnoDB: a new database to be created!
+071130 10:50:08  InnoDB: Setting file ./ibdata1 size to 10 MB
+InnoDB: Database physically writes the file full: wait...
+071130 10:50:08  InnoDB: Log file ./ib_logfile0 did not exist: new to be created
+InnoDB: Setting log file ./ib_logfile0 size to 5 MB
+InnoDB: Database physically writes the file full: wait...
+071130 10:50:08  InnoDB: Log file ./ib_logfile1 did not exist: new to be created
+InnoDB: Setting log file ./ib_logfile1 size to 5 MB
+InnoDB: Database physically writes the file full: wait...
+InnoDB: Doublewrite buffer not found: creating new
+InnoDB: Doublewrite buffer created
+InnoDB: Creating foreign key constraint system tables
+InnoDB: Foreign key constraint system tables created
+071130 10:50:08  InnoDB: Started; log sequence number 0 0
+071130 10:50:08 [ERROR] Fatal error: Can't open and lock privilege tables: Table 'mysql.host' doesn't exist
+071130 10:50:08  mysqld ended
+</code></pre>
+<p>Which made me realise that this is really a case of user error; failure to read the <code>INSTALL</code> documentation. It's been too long since I've done a clean MySQL install. What I really needed to do was:</p>
+<pre><code>cd /usr/local/mysql
+sudo chown -R mysql:mysql .
+sudo -u mysql bin/mysql_install_db --user=mysql
+sudo chown -R root:wheel .
+sudo chown -R mysql:mysql var
+</code></pre>
+<p>Now things work on starting the server:</p>
+<pre><code>sudo -u mysql -b mysqld_safe
+</code></pre>
+<p>For more notes on installing MySQL on Leopard, see:</p>
+<ul>
+<li><a href="http://hivelogic.com/narrative/articles/installing-mysql-on-mac-os-x">http://hivelogic.com/narrative/articles/installing-mysql-on-mac-os-x</a></li>
+</ul>
+<h2>Install and update <a href="/wiki/RubyGems">RubyGems</a></h2>
+<pre><code>sudo gem install rspec
+sudo gem install fastri
+sudo gem install ZenTest
+sudo gem install rails
+sudo gem install mongrel
+sudo gem install haml
+sudo gem install walrus
+sudo gem install ruby-debug
+sudo gem install rcov
+fastri-server -b
+</code></pre>
+<h2>JUnit</h2>
+<pre><code>wget http://switch.dl.sourceforge.net/sourceforge/junit/junit4.4.zip
+unzip junit4.4.zip
+sudo mv junit4.4 /usr/local
+cd /usr/local
+sudo ln -s junit4.4 junit
+cd junit
+sudo ln -s junit-4.4.jar junit.jar
+export CLASSPATH=&quot;/usr/local/junit/junit.jar:/usr/local/junit&quot;
+java org.junit.runner.JUnitCore org.junit.tests.AllTests
+</code></pre>
+<h2>ANTLR</h2>
+<p><a href="/wiki/ANTLR">ANTLR</a> no longer builds under <a href="/wiki/Leopard">Leopard</a>:</p>
+<pre><code>BUILD FAILED
+/Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/build.xml:102: The following error occurred while executing this line:
+/Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/build.xml:55: Problem: failed to create task or type antlr
+Cause: the class org.apache.tools.ant.taskdefs.optional.ANTLR was not found.
+        This looks like one of Ant's optional components.
+Action: Check that the appropriate optional JAR exists in
+        -/usr/share/ant/lib
+        -/Users/wincent/.ant/lib
+        -a directory added on the command line with the -lib argument
+</code></pre>
+<p>Diagnosis:</p>
+<pre><code>ant -version
+Apache Ant version 1.7.0 compiled on September 23 2007
+</code></pre>
+<p>Inspection reveal the system has an <code>ant-antlr-1.7.0.pom</code>, but no <code>ant-antlr.jar</code>:</p>
+<pre><code>wget http://ftp.udc.es/apache-dist/ant/binaries/apache-ant-1.7.0-bin.tar.bz2
+tar xjvf apache-ant-1.7.0-bin.tar.bz2
+sudo cp apache-ant-1.7.0/lib/ant-antlr.jar /usr/share/ant/lib/
+</code></pre>
+<p>After that it builds fine.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

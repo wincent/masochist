@@ -1,0 +1,329 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Installing bleak house 3.6 on Mac OS X Leopard 10.5.1 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Installing bleak house 3.6 on Mac OS X Leopard 10.5.1</h1></div><div class="metadata"><relative-time created="1200409860" updated="1709503263">Created 1/15/2008, updated 3/3/2024</relative-time></div><ul class="tags"><li><a href="/tags/bleak.house">bleak.house</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These notes were made while installing <a href="/wiki/bleak_house">bleak_house</a> 3.6 on <a href="/wiki/Mac_OS_X">Mac OS X</a> <a href="/wiki/Leopard">Leopard</a> 10.5.1.</p>
+<p>My initial attempt failed:</p>
+<pre><code>$ sudo gem install bleak_house
+Password:
+Updating metadata for 31 gems from http://gems.rubyforge.org
+...............................
+complete
+Building native extensions.  This could take a while...
+Building native extensions.  This could take a while...
+ERROR:  Error installing bleak_house:
+	ERROR: Failed to build gem native extension.
+
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby extconf.rb install bleak_house
+/usr/lib/ruby/1.8/mkmf.rb:4:in `require': no such file to load -- rbconfig (LoadError)
+	from /usr/lib/ruby/1.8/mkmf.rb:4
+	from build_logger.rb:1:in `require'
+	from build_logger.rb:1
+
+
+Gem files will remain installed in /Library/Ruby/Gems/1.8/gems/bleak_house-3.6 for inspection.
+Results logged to /Library/Ruby/Gems/1.8/gems/bleak_house-3.6/ext/bleak_house/logger/gem_make.out
+</code></pre>
+<p>I see there are a few open tickets for this already:</p>
+<ul>
+<li><a href="http://rubyforge.org/forum/forum.php?thread_id=20479&amp;forum_id=13983">http://rubyforge.org/forum/forum.php?thread_id=20479&amp;forum_id=13983</a></li>
+<li><a href="http://rubyforge.org/forum/forum.php?thread_id=20989&amp;forum_id=13983">http://rubyforge.org/forum/forum.php?thread_id=20989&amp;forum_id=13983</a></li>
+<li><a href="http://rubyforge.org/forum/forum.php?thread_id=21090&amp;forum_id=13983">http://rubyforge.org/forum/forum.php?thread_id=21090&amp;forum_id=13983</a> (this one labelled as applying to <a href="/wiki/Tiger">Tiger</a> but the error message is similar)</li>
+</ul>
+<p>Before going any further, I turned to <a href="/wiki/Google">Google</a> but found only this:</p>
+<ul>
+<li><a href="http://twitter.com/shaper/statuses/563697382">http://twitter.com/shaper/statuses/563697382</a></li>
+</ul>
+<p>So I investigated further:</p>
+<pre><code>cd /Library/Ruby/Gems/1.8/gems/bleak_house-3.6/ext/bleak_house/logger
+less extconf.rb
+
+# extconf.rb runs buildruby.rb
+less buildruby.rb
+
+# do this as root seeing as that's what RubyGems did too
+sudo ruby buildruby.rb
+
+# seems to work, did it actually build ruby?
+/usr/bin/ruby-bleak-house --version
+
+# so the next line in extconf.rb must be the one that fails, let's try that
+sudo ruby-bleak-house build_logger.rb
+</code></pre>
+<p>This yields the same error as shown above, so we've now pinpointed the location of the failure. It's failing on the very first line of <code>build_logger.rb</code>:</p>
+<pre><code>require 'mkmf'
+</code></pre>
+<p>The custom <code>ruby-bleak-house</code> build is using the standard <code>mkmf.rb</code> file and failing to find any <code>rbconfig</code> require.</p>
+<p>So, let's see what <code>rbconfig.rb</code> files we have on the system:</p>
+<pre><code>$ find / -name rbconfig.rb 2&gt; /dev/null
+/private/tmp/bleak_house/ruby-1.8.6-p110/rbconfig.rb
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0/rbconfig.rb
+/Users/wincent/trabajo/vendor/ruby/ruby-1.9.0-0/rbconfig.rb
+/usr/local/ruby19/lib/ruby/1.9.0/i686-darwin9.1.0/rbconfig.rb
+</code></pre>
+<p>Let's see what <code>ruby-bleak-house</code> has in its load path:</p>
+<pre><code>$ ruby-bleak-house -e &quot;p $:&quot;
+[&quot;/usr/lib/ruby/site_ruby/1.8&quot;,
+&quot;/usr/lib/ruby/site_ruby/1.8/i686-darwin9.1.0&quot;,
+&quot;/usr/lib/ruby/site_ruby&quot;,
+&quot;/usr/lib/ruby/1.8&quot;,
+&quot;/usr/lib/ruby/1.8/i686-darwin9.1.0&quot;,
+&quot;.&quot;]
+</code></pre>
+<p>Compare that with the stock <a href="/wiki/Leopard">Leopard</a> <a href="/wiki/Ruby">Ruby</a>:</p>
+<pre><code>$ ruby -e &quot;p $:&quot;
+[&quot;/Library/Ruby/Site/1.8&quot;,
+&quot;/Library/Ruby/Site/1.8/powerpc-darwin9.0&quot;,
+&quot;/Library/Ruby/Site/1.8/universal-darwin9.0&quot;,
+&quot;/Library/Ruby/Site&quot;,
+&quot;/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8&quot;,
+&quot;/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/powerpc-darwin9.0&quot;,
+&quot;/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0&quot;,
+&quot;.&quot;]
+</code></pre>
+<p>So you can see why it fails to find any <code>rbconfig.rb</code>. It isn't configured to look in either <code>/private/tmp/bleak_house/ruby-1.8.6-p110/</code> (where it could find its own), or in <code>/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0</code> (where it could find Leopard's).</p>
+<p>Out of interest, what are the differences between the two files?</p>
+<pre><code>$ diff /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0/rbconfig.rb \
+/private/tmp/bleak_house/ruby-1.8.6-p110/rbconfig.rb
+</code></pre>
+<p>Output:</p>
+<pre><code>9c9
+&lt;   TOPDIR = File.dirname(__FILE__).chomp!(&quot;/lib/ruby/1.8/universal-darwin9.0&quot;)
+---
+&gt;   TOPDIR = File.dirname(__FILE__).chomp!(&quot;/lib/ruby/1.8/i686-darwin9.1.0&quot;)
+11,18d10
+&lt;   ARCHFLAGS =
+&lt;     if e = ENV['ARCHFLAGS']
+&lt;       e
+&lt;     elsif e = ENV['RC_ARCHS']
+&lt;       e.split.map { |a| &quot;-arch #{a}&quot; }.join(' ')
+&lt;     else
+&lt;       '-arch ppc -arch i386'
+&lt;     end
+22c14
+&lt;   CONFIG[&quot;prefix&quot;] = (TOPDIR || DESTDIR + &quot;/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr&quot;)
+---
+&gt;   CONFIG[&quot;prefix&quot;] = (TOPDIR || DESTDIR + &quot;/usr&quot;)
+46c38
+&lt;   CONFIG[&quot;infodir&quot;] = &quot;$(DESTDIR)/usr/share/info&quot;
+---
+&gt;   CONFIG[&quot;infodir&quot;] = &quot;$(datarootdir)/info&quot;
+53c45
+&lt;   CONFIG[&quot;mandir&quot;] = &quot;$(DESTDIR)/usr/share/man&quot;
+---
+&gt;   CONFIG[&quot;mandir&quot;] = &quot;$(datarootdir)/man&quot;
+57c49
+&lt;   CONFIG[&quot;LIBS&quot;] = &quot;-lpthread -ldl -lm &quot;
+---
+&gt;   CONFIG[&quot;LIBS&quot;] = &quot;-ldl -lobjc &quot;
+64,65c56,57
+&lt;   CONFIG[&quot;build&quot;] = &quot;powerpc-apple-darwin9.0&quot;
+&lt;   CONFIG[&quot;build_cpu&quot;] = &quot;powerpc&quot;
+---
+&gt;   CONFIG[&quot;build&quot;] = &quot;i686-apple-darwin9.1.0&quot;
+&gt;   CONFIG[&quot;build_cpu&quot;] = &quot;i686&quot;
+67,69c59,61
+&lt;   CONFIG[&quot;build_os&quot;] = &quot;darwin9.0&quot;
+&lt;   CONFIG[&quot;host&quot;] = &quot;powerpc-apple-darwin9.0&quot;
+&lt;   CONFIG[&quot;host_cpu&quot;] = &quot;powerpc&quot;
+---
+&gt;   CONFIG[&quot;build_os&quot;] = &quot;darwin9.1.0&quot;
+&gt;   CONFIG[&quot;host&quot;] = &quot;i686-apple-darwin9.1.0&quot;
+&gt;   CONFIG[&quot;host_cpu&quot;] = &quot;i686&quot;
+71,73c63,65
+&lt;   CONFIG[&quot;host_os&quot;] = &quot;darwin9.0&quot;
+&lt;   CONFIG[&quot;target&quot;] = &quot;powerpc-apple-darwin9.0&quot;
+&lt;   CONFIG[&quot;target_cpu&quot;] = &quot;powerpc&quot;
+---
+&gt;   CONFIG[&quot;host_os&quot;] = &quot;darwin9.1.0&quot;
+&gt;   CONFIG[&quot;target&quot;] = &quot;i686-apple-darwin9.1.0&quot;
+&gt;   CONFIG[&quot;target_cpu&quot;] = &quot;i686&quot;
+75c67
+&lt;   CONFIG[&quot;target_os&quot;] = &quot;darwin9.0&quot;
+---
+&gt;   CONFIG[&quot;target_os&quot;] = &quot;darwin9.1.0&quot;
+77,78c69,70
+&lt;   CONFIG[&quot;CFLAGS&quot;] = &quot;#{ARCHFLAGS} -Os -pipe -fno-common&quot;
+&lt;   CONFIG[&quot;LDFLAGS&quot;] = &quot;-L. #{ARCHFLAGS}&quot;
+---
+&gt;   CONFIG[&quot;CFLAGS&quot;] = &quot;-g -O2 -pipe -fno-common&quot;
+&gt;   CONFIG[&quot;LDFLAGS&quot;] = &quot;-L. &quot;
+105c97
+&lt;   CONFIG[&quot;ALLOCA&quot;] = &quot;$(LIBOBJDIR)alloca.o&quot;
+---
+&gt;   CONFIG[&quot;ALLOCA&quot;] = &quot;&quot;
+110c102
+&lt;   CONFIG[&quot;LDSHARED&quot;] = &quot;cc #{ARCHFLAGS} -pipe -bundle&quot;
+---
+&gt;   CONFIG[&quot;LDSHARED&quot;] = &quot;cc -dynamic -bundle -undefined suppress -flat_namespace&quot;
+130,131c122,123
+&lt;   CONFIG[&quot;LIBRUBY_LDSHARED&quot;] = &quot;cc #{ARCHFLAGS} -pipe -dynamiclib&quot;
+&lt;   CONFIG[&quot;LIBRUBY_DLDFLAGS&quot;] = &quot;-install_name $(libdir)/lib$(RUBY_SO_NAME).$(MAJOR).dylib -current_version $(MAJOR).$(MINOR).$(TEENY) -compatibility_version $(MAJOR).$(MINOR)&quot;
+---
+&gt;   CONFIG[&quot;LIBRUBY_LDSHARED&quot;] = &quot;cc -dynamic -bundle -undefined suppress -flat_namespace&quot;
+&gt;   CONFIG[&quot;LIBRUBY_DLDFLAGS&quot;] = &quot;&quot;
+135,140c127,132
+&lt;   CONFIG[&quot;LIBRUBY_SO&quot;] = &quot;lib$(RUBY_SO_NAME).$(MAJOR).dylib&quot;
+&lt;   CONFIG[&quot;LIBRUBY_ALIASES&quot;] = &quot;lib$(RUBY_SO_NAME).dylib&quot;
+&lt;   CONFIG[&quot;LIBRUBY&quot;] = &quot;$(LIBRUBY_SO)&quot;
+&lt;   CONFIG[&quot;LIBRUBYARG&quot;] = &quot;$(LIBRUBYARG_SHARED)&quot;
+&lt;   CONFIG[&quot;LIBRUBYARG_STATIC&quot;] = &quot;-l$(RUBY_SO_NAME)&quot;
+&lt;   CONFIG[&quot;LIBRUBYARG_SHARED&quot;] = &quot;-l$(RUBY_SO_NAME)&quot;
+---
+&gt;   CONFIG[&quot;LIBRUBY_SO&quot;] = &quot;lib$(RUBY_SO_NAME).so.$(MAJOR).$(MINOR).$(TEENY)&quot;
+&gt;   CONFIG[&quot;LIBRUBY_ALIASES&quot;] = &quot;lib$(RUBY_SO_NAME).so&quot;
+&gt;   CONFIG[&quot;LIBRUBY&quot;] = &quot;$(LIBRUBY_A)&quot;
+&gt;   CONFIG[&quot;LIBRUBYARG&quot;] = &quot;$(LIBRUBYARG_STATIC)&quot;
+&gt;   CONFIG[&quot;LIBRUBYARG_STATIC&quot;] = &quot;-l$(RUBY_SO_NAME)-static&quot;
+&gt;   CONFIG[&quot;LIBRUBYARG_SHARED&quot;] = &quot;&quot;
+143c135
+&lt;   CONFIG[&quot;ENABLE_SHARED&quot;] = &quot;yes&quot;
+---
+&gt;   CONFIG[&quot;ENABLE_SHARED&quot;] = &quot;no&quot;
+150,153c142,145
+&lt;   CONFIG[&quot;arch&quot;] = &quot;universal-darwin9.0&quot;
+&lt;   CONFIG[&quot;sitearch&quot;] = &quot;universal-darwin9.0&quot;
+&lt;   CONFIG[&quot;sitedir&quot;] = &quot;$(DESTDIR)/Library/Ruby/Site&quot;
+&lt;   CONFIG[&quot;configure_args&quot;] = &quot; '--prefix=/usr' '--mandir=/usr/share/man' '--infodir=/usr/share/info' '--disable-dependency-tracking' '--enable-pthread' '--enable-shared' '--prefix=/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr' '--with-sitedir=/Library/Ruby/Site' 'ac_cv_func_getcontext=no' 'ac_cv_func_setcontext=no' 'CFLAGS=    -g -Os -pipe -fno-common -DENABLE_DTRACE     -pipe' 'LDFLAGS=               '&quot;
+---
+&gt;   CONFIG[&quot;arch&quot;] = &quot;i686-darwin9.1.0&quot;
+&gt;   CONFIG[&quot;sitearch&quot;] = &quot;i686-darwin9.1.0&quot;
+&gt;   CONFIG[&quot;sitedir&quot;] = &quot;$(prefix)/lib/ruby/site_ruby&quot;
+&gt;   CONFIG[&quot;configure_args&quot;] = &quot; '--prefix=/usr'&quot;
+187,189d178
+&lt; RUBY_FRAMEWORK = true
+&lt; RUBY_FRAMEWORK_VERSION = Config::CONFIG['ruby_version']
+&lt; APPLE_GEM_HOME = File.join(Config::CONFIG['libdir'], 'ruby/gems', Config::CONFIG['ruby_version'])
+</code></pre>
+<p>So we really have a few problems here:</p>
+<ul>
+<li>Stock <code>ruby</code> on <a href="/wiki/Leopard">Leopard</a> is a different version</li>
+<li>Stock <code>ruby</code> on <a href="/wiki/Leopard">Leopard</a> is a <a href="/wiki/Universal_Binary">Universal Binary</a>, but the <a href="/wiki/bleak_house">bleak_house</a> version is not</li>
+<li>This mismatch could be an obstacle to testing compiled extensions</li>
+<li>Stock <code>ruby</code> looks in completely different places to find things</li>
+</ul>
+<p>All of this means that you can't just use <code>ruby-bleak-house</code> as a drop-in replacement for <code>ruby</code> on <a href="/wiki/Leopard">Leopard</a>.</p>
+<p>So rather than use it as a drop-in, I am going to try creating a completely separate sandbox for it as I did with <a href="/wiki/Ruby_1.9">Ruby 1.9</a> (see &quot;<a href="/wiki/Installing_Ruby_1.9_on_Mac_OS_X_10.5.1">Installing Ruby 1.9 on Mac OS X 10.5.1</a>&quot;).</p>
+<pre><code># delete old installed binary
+$ sudo rm /usr/bin/ruby-bleak-house
+
+# make a backup before experimenting
+$ sudo cp build_ruby.rb build_ruby.rb.orig
+</code></pre>
+<p>We have a backup copy, so now apply this patch:</p>
+<pre><code>--- build_ruby.rb.orig	2008-01-15 14:28:56.000000000 +0100
++++ build_ruby.rb	2008-01-15 14:32:31.000000000 +0100
+@@ -42,19 +42,9 @@
+           # Patch, configure, and build
+           system(&quot;patch -p0 &lt; \'#{source_dir}/gc.c.patch\' &gt; ../gc.c.patch.log 2&gt;&amp;1&quot;)
+           system(&quot;patch -p0 &lt; \'#{source_dir}/parse.y.patch\' &gt; ../parse.y.patch.log 2&gt;&amp;1&quot;)
+-          system(&quot;./configure --prefix=#{binary_dir[0..-5]} &gt; ../configure.log 2&gt;&amp;1&quot;) # --with-static-linked-ext
++          system(&quot;./configure --prefix=/usr/local/ruby-bleak-house &gt; ../configure.log 2&gt;&amp;1&quot;) # --with-static-linked-ext
+           system(&quot;make &gt; ../make.log 2&gt;&amp;1&quot;)
+-
+-          binary = &quot;#{binary_dir}/ruby-bleak-house&quot;
+-
+-          # Install binary
+-          if File.exist? &quot;ruby&quot;
+-            # Avoid &quot;Text file busy&quot; error
+-            File.delete binary if File.exist? binary
+-            exec(&quot;cp ./ruby #{binary}; chmod 755 #{binary}&quot;)
+-          else
+-            raise &quot;Binary did not build&quot;
+-          end
++          system(&quot;make install &gt;&gt; ../make.log 2&gt;&amp;1&quot;)
+         end
+
+       end
+</code></pre>
+<p>Now try rebuilding again:</p>
+<pre><code>$ sudo ruby build_ruby.rb
+</code></pre>
+<p>Let's test that:</p>
+<pre><code>$ export PATH=&quot;/usr/local/ruby-bleak-house/bin:$PATH&quot;
+$ /usr/local/ruby-bleak-house/bin/ruby -r 'mkmf' -e 'p $:'
+[&quot;/usr/local/ruby-bleak-house/lib/ruby/site_ruby/1.8&quot;,
+&quot;/usr/local/ruby-bleak-house/lib/ruby/site_ruby/1.8/i686-darwin9.1.0&quot;,
+&quot;/usr/local/ruby-bleak-house/lib/ruby/site_ruby&quot;,
+&quot;/usr/local/ruby-bleak-house/lib/ruby/1.8&quot;,
+&quot;/usr/local/ruby-bleak-house/lib/ruby/1.8/i686-darwin9.1.0&quot;, &quot;.&quot;]
+</code></pre>
+<p>Note how the load path is now properly configured and the <code>require</code> of <code>mkmf</code> no longer produces any errors.</p>
+<p>Now let's continue with the next step from the <code>extconf.rb</code>:</p>
+<pre><code>$ ruby --version
+ruby 1.8.6 (2007-09-23 patchlevel 110) [i686-darwin9.1.0]
+$ sudo ruby build_logger.rb
+</code></pre>
+<p>And that works. So, I tried running <code>sudo gem install bleak_house</code> again but that wanted to rebuild the extension all over again rather than use the <code>Makefile</code> that I'd just generated. So time for one more patch:</p>
+<pre><code>--- extconf.rb.orig	2008-01-15 14:42:42.000000000 +0100
++++ extconf.rb	2008-01-15 14:46:33.000000000 +0100
+@@ -1,3 +1,6 @@
+
+ system('ruby build_ruby.rb &amp;&gt; /dev/null')
+-exec('ruby-bleak-house build_logger.rb')
++old_path=ENV['PATH']
++ENV['PATH']=&quot;/usr/local/ruby-bleak-house/bin:#{old_path}&quot;
++exec('ruby build_logger.rb')
++ENV['PATH']=old_path
+</code></pre>
+<p>And now:</p>
+<pre><code># restore PATH to its previous value
+. ~/.bash_profile
+echo $PATH
+sudo gem install bleak_house
+</code></pre>
+<p>Voila:</p>
+<pre><code>Building native extensions.  This could take a while...
+Successfully installed bleak_house-3.6
+1 gem installed
+Installing ri documentation for bleak_house-3.6...
+Installing RDoc documentation for bleak_house-3.6...
+</code></pre>
+<p>Now, to actually use this you'll want to ensure that <code>/usr/local/ruby-bleak-house/bin</code> is in your <code>PATH</code>; any scripts which start with:</p>
+<pre><code>#!/usr/bin/env ruby
+</code></pre>
+<p>Will then automatically use it.</p>
+<p>For this sandbox to actually be useful you'll probably want to bootstrap it with a minimum of <a href="/wiki/gems">gems</a>. For example, I wanted to test Walrus in this environment; all of these commands were executed with <code>/usr/local/ruby-bleak_house/bin</code> at the start of the <code>PATH</code>:</p>
+<pre><code># with RubyGems we won't get very far
+wget http://rubyforge.org/frs/download.php/29548/rubygems-1.0.1.tgz
+tar xzvf rubygems-1.0.1.tgz
+cd rubygems-1.0.1
+sudo ruby setup.rb
+
+# need RSpec to test Walrus
+sudo gem install rspec
+
+# need wopen3 to run Walrus
+sudo gem install wopen3
+
+# now let's see if Walrus actually works
+# I'm going to use a checked out copy of the source
+# (I want to test the latest code, not the code in the gem)
+cd path_to_walrus_source_directory
+
+# build C extensions
+rake make
+
+# run the specs
+rake spec
+</code></pre>
+<p>And that all works, so I can now proceed to start playing with it using bleak_house. Note that the sandbox is so pristine that it doesn't even have bleak_house in it; address that like this:</p>
+<pre><code>sudo gem install bleak_house
+</code></pre>
+<p>Note that this downloads a new copy of the gem without our patches, and it will therefore install a new <code>ruby</code> binary at <code>/usr/local/ruby-bleak-house/bin/ruby-bleak-house</code> which we can effectively ignore.</p>
+<p>After adding my instrumentation to the tool:</p>
+<pre><code>require 'rubygems'
+require 'bleak_house'
+$memlogger = BleakHouse::Logger.new
+File.delete($memlogger_file = '/tmp/walrus.log') rescue nil
+
+# and later on...
+$memlogger.snapshot($memlogger_file, 'tag/subtag', false)
+</code></pre>
+<p>I deploy it in the sandbox as follows:</p>
+<pre><code>rake gem
+sudo gem install pkg/walrus-0.2.gem
+
+# this is the instrumented version, in the sandbox
+walrus --version
+</code></pre>
+<p>Now run the tool with a test workloand and analyze the output with:</p>
+<pre><code>bleak /tmp/walrus.log
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

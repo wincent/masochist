@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fixtures considered harmful? • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Fixtures considered harmful?</h1></div><div class="metadata"><relative-time created="1191491601" updated="1584053324">Created 10/4/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/rspec">rspec</a></li><li><a href="/tags/rails">rails</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>&quot;<a href="/wiki/Fixtures_considered_harmful%3f">Fixtures considered harmful?</a>&quot; is <a href="http://rubyforge.org/pipermail/rspec-users/2007-May/001608.html">a thread</a> I started on the <a href="/wiki/rspec-users">rspec-users</a> mailing list to clarify some doubts I had about the use of <a href="/wiki/fixtures">fixtures</a> in <a href="/wiki/RSpec">RSpec</a> and <a href="/wiki/Rails">Rails</a>.</p>
+<h2>Problems</h2>
+<p>Basically, I was confused because the <a href="/wiki/RSpec">RSpec</a> website <a href="http://rspec.rubyforge.org/documentation/rails/index.html">says</a>:</p>
+<blockquote>
+<p>we really don’t recommend the use of rails fixtures</p>
+</blockquote>
+<p>But the <a href="http://rspec.rubyforge.org/documentation/rails/writing/models.html">provided examples</a> make heavy use of fixtures.</p>
+<p><a href="/wiki/Aslak_Hellesoy">Aslak Hellesoy</a> offered <a href="http://rubyforge.org/pipermail/rspec-users/2007-May/001610.html">this clarification</a>:</p>
+<blockquote>
+<p>The reason why we don't recommend them is along the lines why we're not crazy about DRYing up specs. Let me repeat David's Agile Spec Manifesto (of which I am the second subscriber):</p>
+<p>&quot;We prefer clear spec over well factored specs. (Clarity is king).&quot;</p>
+<p>When everything is in your face you can picture it easier than when it's in several different locations (fixture files, helper files etc).</p>
+<p>All I can say is that in most situations I prefer to work without fixtures, but there are a few situations where they might be useful.</p>
+</blockquote>
+<p>Scott Taylor <a href="http://rubyforge.org/pipermail/rspec-users/2007-May/001614.html">offered another reason</a> for avoiding fixtures:</p>
+<blockquote>
+<p>I've started using fixtures *only* for field validations. This quickly tells me that I have a good record, that I can unset a field, and that it is invalid.</p>
+<p>Fixtures really start to become a pain, though, if the fixture has a foreign key, and so largely I stay away from them.</p>
+</blockquote>
+<p>(Incidentally Scott has written a <a href="http://replacefixtures.rubyforge.org/">FixtureReplacement</a> plug-in.)</p>
+<p>So I tried a couple of different <a href="/wiki/spec">spec</a>-writing styles, with and without fixtures. One approach is to explicitly create the objects in your <code>begin</code> blocks.</p>
+<p>But setting up objects for each example can become quite repetitive after a while; this is specially true if you start breaking up your <a href="/wiki/specs">specs</a> into many different <code>describe</code> blocks.</p>
+<h2>Workarounds</h2>
+<p>Luke Redpath offers <a href="http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1">this approach</a> to <a href="/wiki/DRYing">DRYing</a> things up. You basically define a helper method (or methods) that makes it more convenient to create new objects with valid attributes. But as Aslak argues, clarity is crucial and this approach may make things harder to understand if there is a large distance between the actual examples and the helper methods.</p>
+<h2>My position</h2>
+<p>After working with this for a while I think that judicious use of fixtures is probably the best compromise. In other words, having a couple of simple objects in your fixtures for the majority of specs is probably ok. If foreign keys are involved (or worse, foreign key constraints) then fixtures become less attractive.</p>
+<p>Take a real example, the <code>user_spec.rb</code> file I am currently working on. It has a bunch of <code>describe</code> blocks that all require set-up:</p>
+<pre><code>before do
+  @joe    = User.create(:login_name =&gt; 'Joe', :email_address =&gt; 'joe@example.com')    # recored saved to database
+  @harry  = User.new(:login_name =&gt; 'Harry', :email_address =&gt; 'harry@example.com')   # new (unsaved) record
+end
+</code></pre>
+<p>I don't like this repetition because if I change the object model and require a new parameter then I have to change the <code>User.create</code> and <code>User.new</code> messages in multiple places.</p>
+<p>As an alternative I can write something like the following:</p>
+<pre><code>module UserSpecHelper
+  def valid_user_attributes
+    {
+      :login_name =&gt; 'Joe',
+      :email_address =&gt; 'joe@example.com'
+    }
+  end
+end
+</code></pre>
+<p>And use it like this:</p>
+<pre><code>before do
+  @joe = User.new(UserSpecHelper::valid_user_attributes)
+end
+</code></pre>
+<p>But that only works for one user. What happens when I want to create a second user? Do I make a second method? That seems decidedly worse than using fixtures. Do I change the <code>valid_user_attributes</code> method to dynamically return new attributes each time? That sounds risky (the specs should be kept as simple as possible, or you'll need specs to test your specs) and it's hardly clear (requires understanding of how the <code>valid_user_attributes</code> method works).</p>
+<h2>Final assessment</h2>
+<p>So at least for simple cases like this it seems that fixtures aren't the most evil thing. There is still a locality of reference problem because fixtures are defined in a different file and so you have to switch between <a href="/wiki/spec">spec</a> and fixture files if you want to have both in your head at the same time; but we already have exactly that kind of issue between <a href="/wiki/spec">spec</a> and implementation files.</p>
+<p>One way we could reduce the need to refer to the fixture file is to access the attributes programmatically rather than hard-coding them. For example, imagine a <a href="/wiki/spec">spec</a> confirming that a certain attribute must be unique:</p>
+<pre><code>it 'should be invalid without a unique login name' do
+  # at this point user @joe has already been setup and name 'Joe' is in use
+  @harry.login_name = 'Joe'
+  @harry.should_not be_valid
+  @harry.should have_at_least(1).error_on(:login_name)
+end
+</code></pre>
+<p>You could remove the hard-coded string 'Joe' as follows:</p>
+<pre><code>it 'should be invalid without a unique login name' do
+  @harry.login_name = @joe.login_name
+  @harry.should_not be_valid
+  @harry.should have_at_least(1).error_on(:login_name)
+end
+</code></pre>
+<p>This is reasonably clear but we are now assuming the implementation of the <code>login_name</code> accessors is fool-proof. But it is not necessarily so: an unrelated error in the implementation could cause these specs to incorrectly pass or fail.</p>
+<p>So in a case like this (testing for uniqueness) I think that defining a new context and explicitly creating some new user objects is the clearest way to go. If there are a lot of specs like this then using Luke Redpath's idea of a <code>valid_user_attributes</code>, combined with some additional <code>Hash</code> methods may be the best way to go:</p>
+<pre><code># this in spec/spec_helper.rb
+module HashExtensions
+
+  # for excluding keys
+  def except(*exclusions)
+    self.reject { |key, value| exclusions.include? key.to_sym }
+  end
+
+  # for overriding keys
+  def with(overrides = {})
+    self.merge overrides
+  end
+
+end
+
+# and this in the UserSpecHelper module
+def self.valid_user_attributes
+  hash = {
+    :login_name     =&gt; 'Bob',
+    :email_address  =&gt; 'bob@example.com'
+  }
+  hash.extend(HashExtensions)
+end
+</code></pre>
+<p>This allows us to define new users fairly conveniently as follows:</p>
+<pre><code>@bob = User.new(UserSpecHelper::valid_user_attributes)
+@harry = User.new(UserSpecHelper::valid_user_attributes.with(:login_name =&gt; 'Harry')
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

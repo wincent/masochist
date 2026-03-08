@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Using cross-development SDKs for configure/make-based UNIX tools and libraries • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/using-cross-development-sdks-for-configure-make-based-unix-tools-and-libraries">Using cross-development SDKs for configure/make-based UNIX tools and libraries</a></h1><div class="metadata"><relative-time created="1146267300" updated="1710259978">Created 4/28/2006, updated 3/12/2024</relative-time><span>5 minute read</span></div><div class="prerendered"><p>It's been a long time since I did a <a href="http://wincent.dev/a/products/winhex/">WinHex</a> release. One of the reasons has been that I've had trouble compiling the <a href="http://swox.com/gmp/">GMP arbitrary precision arithmetic library</a> upon which WinSwitch depends. Since the last release, GMP has been updated a couple of times, the version of <a href="http://gcc.gnu.org/">GCC</a> that Apple ships with Mac OS X Xcode tools has seen updates too, and the first Intel-based machines are now available to the public.</p>
+<p>For a while newer versions of GCC were incapable of compiling GMP, but Apple's default compiler changed from GCC 2.95 to 3.3 and later to 4.0. Mixing applications and libraries built by different versions of GCC is not always a good idea. At some point (with the final 4.0 release, I believe) it became possible to compile GMP on a Mac again. GMP itself was updated to 4.1.4 and then to 4.2. As things currently stand, GMP will compile fine out of the box on a PowerPC platform running Mac OS X 10.4. It will only compile on Intel-based machines if you force it to use generic (but slower) C code rather than assembly.</p>
+<h5>Building for Intel/Mac OS X 10.4</h5>
+<p>To build GMP on my Intel iMac I had to use the following commands:</p>
+<pre><code>./configure --build=none-apple-darwin8.6.1
+make
+make check
+</code></pre>
+<p>The key word is &quot;none&quot; which forces generic C code to be used rather than architecture-specific machine code. I got the &quot;darwin8.6.1&quot; value by first running <code>./config.guess</code>. I was then able to copy the sample code from the GMP <code>INSTALL</code> document into a file called <code>example.c</code> and test that it compiled:</p>
+<pre><code>gcc -g -I. example.c .libs/libgmp.a
+</code></pre>
+<p>And worked:</p>
+<pre><code># should print 31415926535897932384618573336104570964418
+./a.out 98365871231256752134 319378318340103345227
+</code></pre>
+<h5>Building for PowerPC/Mac OS X 10.3</h5>
+<p>If you build on a G5 machine you'll end up getting a 64-bit version of the library:</p>
+<pre><code>./configure
+make
+make check
+</code></pre>
+<p>If you want to build a library that will work on G4s (and even G3s) as well then you need to override the &quot;build&quot; setting:</p>
+<pre><code>./configure --build=powerpc-apple-darwin8.6.0
+make
+make check
+</code></pre>
+<p>Once again I used <code>./config.guess</code> to get the correct value for &quot;darwin8.6.0&quot;. You'll also note that I overrode the processor-specific &quot;powerpc970&quot; setting and pass just &quot;powerpc&quot; instead.</p>
+<p>This all worked fine, but when I actually tried to use the built library in my Xcode project I started to get strange linker errors like these, but only in the PowerPC part of my build:</p>
+<pre><code>/usr/bin/ld: Undefined symbols:
+_fprintf$LDBLStub
+</code></pre>
+<p>A quick search on Google turned up a few references to <code>libSystemStubs</code>. Specifically linking to the library did not help. And why should I have to link to it in my Cocoa app when my simple command-line test had worked just fine? So I did a quick search for that library on my system to see what was happening:</p>
+<pre><code>$ locate SystemStubs | xargs ls -laF
+-rw-r--r--   1 root  wheel    640 Dec 25 08:35 /Developer/SDKs/MacOSX10.3.9.sdk/usr/lib/libSystemStubs.a
+-rw-r--r--   1 root  wheel    640 Dec 25 08:35 /Developer/SDKs/MacOSX10.3.9.sdk/usr/lib/libSystemStubs_debug.a
+-rw-r--r--   1 root  wheel    640 Dec 25 08:35 /Developer/SDKs/MacOSX10.3.9.sdk/usr/lib/libSystemStubs_profile.a
+-rw-r--r--   1 root  wheel  76068 Dec 24 23:07 /Developer/SDKs/MacOSX10.4u.sdk/usr/lib/libSystemStubs.a
+-rw-r--r--   1 root  wheel  76068 Dec 24 23:07 /Developer/SDKs/MacOSX10.4u.sdk/usr/lib/libSystemStubs_debug.a
+-rw-r--r--   1 root  wheel  76180 Dec 24 23:07 /Developer/SDKs/MacOSX10.4u.sdk/usr/lib/libSystemStubs_profile.a
+-r--r--r--   1 root  wheel  76068 Dec 24 23:07 /usr/lib/libSystemStubs.a
+-r--r--r--   1 root  wheel  76068 Dec 24 23:07 /usr/lib/libSystemStubs_debug.a
+-r--r--r--   1 root  wheel  76180 Dec 24 23:07 /usr/lib/libSystemStubs_profile.a
+-rw-r--r--   1 root  wheel  11056 Nov 10 18:55 /usr/local/share/darwinbuild/cache/Roots/8C46/SystemStubs.root.tar.gz
+</code></pre>
+<p>Now things started to become clear. Only the PowerPC builds were failing, but my Universal apps use the 10.4 SDK for the Intel part of the build and the 10.3 SDK for the PowerPC part. Notice that the SystemStubs library in the PowerPC SDK is much smaller? The symbols that the linker was looking for just weren't in that version of the library.</p>
+<h5>Cross-development SDKs for configure/make-based projects</h5>
+<p>So evidently, I hadn't really done the best job when I'd compiled the PowerPC version of the library. Given that I had built it on a PowerPC running Mac OS X 10.4, it had used the installed copies of the libraries, equivalent to the ones in the 10.4 SDK. What I should have done was forced it to use the ones in the 10.3 SDK. When it came time to build my Cocoa app it was trying to use a library built for 10.4 but the rest of the PowerPC portion of the app was built for 10.3, yielding the linker error.</p>
+<p>A more experienced UNIX hacker would have realized this right from the start but it took a little while to sink in for me. Time to do some research. How do you force a configure/make-based project to use a different SDK?</p>
+<p>The official <a href="http://developer.apple.com/documentation/DeveloperTools/Conceptual/cross_development/Using/chapter_3_section_2.html#//apple_ref/doc/uid/20002000-1114311-BABGCAAB">Apple Cross-Development Programming Guide</a> says:</p>
+<blockquote>
+<p>To select an SDK for a makefile, you add the appropriate options to your project's compile and link commands. For the compiler, you add the <code>-isysroot</code> option. For the linker, you add the <code>-syslibroot</code> option. If you are using GCC 4.0 to compile and link, you should add both commands to the command line.</p>
+</blockquote>
+<p><a href="http://developer.apple.com/technotes/tn2005/tn2137.html">Tech Note 2137</a>, <em>Building Universal Binaries from &quot;configure&quot;-based Open Source Projects</em>, says:</p>
+<blockquote>
+<p>The first approach is to simply have <code>configure</code> build a universal binary, by passing in the appropriate <code>CFLAGS</code> and <code>LDFLAGS</code> environment variables. This is done simply by running</p>
+<pre><code>env CFLAGS=&quot;-O -g -isysroot /Developer/SDKs/MacOSX10.4u.sdk -arch i386 -arch ppc&quot; \
+  LDFLAGS=&quot;-Wl,-syslibroot,/Developer/SDKs/MacOSX10.4u.sdk&quot; \
+   ./configure --prefix=${HOME}/Hello --disable-dependency-tracking
+</code></pre>
+<p>from the shell command prompt.</p>
+</blockquote>
+<p>Finally, <a href="http://lists.apple.com/archives/unix-porting/2005/Oct/msg00003.html">this thread</a> on the Apple UNIX porting mailing list says:</p>
+<blockquote>
+<p>Sounds like we should change the technote to clarify that you should only set LDFLAGS to include -syslibroot if your makefile doesn't pass CFLAGS for linking. Your makefile apparently does use CFLAGS while linking.</p>
+</blockquote>
+<p>And later in the thread:</p>
+<blockquote>
+<p>All automake projects use CFLAGS for linking.</p>
+</blockquote>
+<p>Armed with this information and some trial and error I found that I was able to build GMP using the 10.3.9 SDK with the following commands:</p>
+<pre><code>export SDK=/Developer/SDKs/MacOSX10.3.9.sdk
+export MACOSX_DEPLOYMENT_TARGET=10.3
+export CFLAGS=&quot;-isysroot ${SDK}&quot;
+./configure --build=powerpc-apple-darwin8.6.0
+make
+make check
+</code></pre>
+<p>In my initial attempts I tried setting both <code>CPPFLAGS</code> and <code>LDFLAGS</code> as well but these always produced <code>configure</code> errors. By inspecting <code>configure.log</code> I eliminated the sources of the errors until I arrived at the final, working settings. Running <code>nm</code> on the built library showed that the source of the problem (the references to undefined symbols had been eliminated). WinHex is now building and linking again with the new version of the library, and running as a Universal Binary. Hopefully all this means that a new WinHex release will hit the servers in the not-too distant future.</p>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/mediawiki-updates">← MediaWiki updates</a></div><div class="post-nav-next"><a href="/blog/synergy-2.8-available-for-download">Synergy 2.8 available for download →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

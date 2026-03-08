@@ -1,0 +1,88 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Automatically switching Terminal appearance for remote SSH sessions • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Automatically switching Terminal appearance for remote SSH sessions</h1></div><div class="metadata"><relative-time created="1206688235" updated="1495119989">Created 3/28/2008, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/terminal">terminal</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Tim Wood posted instructions on how to do this <a href="http://blog.omnigroup.com/2007/11/03/terminal-scripting-in-105/">here</a>. This is extremely useful if you are working on different machines at the same time and you want to be able to distinguish between them at a glance, without having to scrutinize the <a href="/wiki/Terminal">Terminal</a> prompt. I'm finding this particularly useful right now because I am doing a server migration and it helps me to avoid making silly mistakes.</p>
+<h3>The <code>ts</code> (<a href="/wiki/Terminal">Terminal</a> settings) script</h3>
+<p>I modified Tim's script in a couple of ways:</p>
+<ul>
+<li>get tabs a little more directly (avoid some temporary variables)</li>
+<li>provide textual feedback to the user on errors</li>
+<li>don't hardcode name of &quot;default&quot; settings, nor try switching to them in the event of an error</li>
+<li>shorter variable names (<a href="/wiki/AppleScript">AppleScript</a> is already verbose enough as it is!)</li>
+</ul>
+<p>The modified script looks like this:</p>
+<pre><code>#!/usr/bin/osascript
+# Copyright 2007 Tim Wood
+# Copyrght 2008 Wincent Colaiuta
+#
+# Based on snippet published at:
+# http://blog.omnigroup.com/2007/11/03/terminal-scripting-in-105/
+
+on run (set_name)
+	set tty_id to do shell script &quot;tty&quot;
+	set tab_id to tab_for_tty(tty_id)
+	if tab_id is missing value then
+		return &quot;error: failed to get tab&quot;
+	else
+		tell application &quot;Terminal&quot;
+			try
+				set set_id to settings set named set_name
+			on error
+				return &quot;error: failed to get settings set&quot;
+			end try
+			set current settings of tab_id to set_id
+		end tell
+	end if
+end run
+
+on tab_for_tty(tty_id)
+	tell application &quot;Terminal&quot;
+		repeat with win_id in windows
+			repeat with tab_id in tabs of win_id
+				if tty of tab_id is tty_id then
+					return tab_id
+				end if
+			end repeat
+		end repeat
+	end tell
+end tab_for_tty
+</code></pre>
+<h3>Using the script</h3>
+<p>In my case I wanted to distinguish between three types of session:</p>
+<ul>
+<li>local sessions</li>
+<li>sessions on my old host, <a href="/wiki/Rackspace">Rackspace</a></li>
+<li>sessions at my new host, <a href="/wiki/INetU">INetU</a></li>
+</ul>
+<p>One way of doing this would be to open three <a href="/wiki/Terminal">Terminal</a> windows, and in the Rackspace window do something like:</p>
+<pre><code># switch to the &quot;pro&quot; settings set
+ts pro
+ssh me@rackspace.example.com
+</code></pre>
+<p>And in the INetU window do:</p>
+<pre><code>ts novel
+ssh me@inetu.example.com
+</code></pre>
+<p>But as Tim points out, you can set up a couple of shell functions for this. Here's what I added to my <a href="/wiki/bash_profile">bash profile</a>:</p>
+<pre><code>inetu()
+{
+  test &quot;$TERM_PROGRAM&quot; = &quot;Apple_Terminal&quot; &amp;&amp; ts novel
+  ssh $1@inetu.example.com
+  test &quot;$TERM_PROGRAM&quot; = &quot;Apple_Terminal&quot; &amp;&amp; ts wincent
+}
+
+inetu()
+{
+  test &quot;$TERM_PROGRAM&quot; = &quot;Apple_Terminal&quot; &amp;&amp; ts novel
+  ssh $1@rackspace.example.com
+  test &quot;$TERM_PROGRAM&quot; = &quot;Apple_Terminal&quot; &amp;&amp; ts wincent
+}
+</code></pre>
+<p>Once you've sourced this you can do <code>inetu username</code> to start a new session, and notice how it restores my default settings set (&quot;wincent&quot;) after the session closes. You'll also notice how it only takes one parameter. If you're in the habit of passing other options to <a href="/wiki/ssh">ssh</a> then it would be straightforward to incorporate that with something like the following (which I haven't tested):</p>
+<pre><code>sesh()
+{
+  USER=$1
+  shift
+  test &quot;$TERM_PROGRAM&quot; = &quot;Apple_Terminal&quot; &amp;&amp; ts novel
+  ssh $@ $USER@host.example.com
+  test &quot;$TERM_PROGRAM&quot; = &quot;Apple_Terminal&quot; &amp;&amp; ts my_default
+}
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

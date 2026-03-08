@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>C cheatsheet • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>C cheatsheet</h1></div><div class="metadata"><relative-time created="1657202818" updated="1736516595">Created 7/7/2022, updated 1/10/2025</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/c">c</a></li><li><a href="/tags/cheatsheet">cheatsheet</a></li></ul><div class="prerendered"><p>Here follow some notes from The World's Worst C Programmer.</p>
+<p>I've written lots of C or C-like (eg. <a href="/wiki/Objective-C">Objective-C</a>) code over the years, but I do it rarely enough nowadays (ie. writing this in 2022) that whenever I come back to it there are a bunch of things I have forgotten and have to look up again. So, here is a scratchpad for me to jot some notes down in the hope that I won't forget, again, what all these details are.</p>
+<h2>Debugging segmentation faults</h2>
+<h3>With <code>clang</code>/<code>lldb</code> on <a href="/wiki/macOS">macOS</a></h3>
+<ol>
+<li>Build with <code>-g</code> (debug symbols) and <code>-O0</code> (optimizations off).</li>
+<li>Launch with <code>lldb --file $executable</code>.</li>
+<li>Run with <code>r</code>.</li>
+<li>See backtrace with <code>bt</code>.</li>
+</ol>
+<h3>With <code>gdb</code> on <a href="/wiki/Arch_Linux">Arch Linux</a></h3>
+<p>You can also launch executables with <code>gdb</code> (ie. after <code>yay -S gdb</code>).</p>
+<ol>
+<li>Launch with <code>gdb executable</code>.</li>
+<li>Run with <code>r</code> (or <code>r [arguments]</code>).</li>
+<li>See backtrace with <code>bt</code>.</li>
+</ol>
+<p>You have the additional option of inspecting a core dump after the fact; example:</p>
+<pre><code># unzstd /var/lib/systemd/coredump/core.nvim.1000.008a013d9f0d4e769d9dbcfdd9d9584a.13538.1656944479000000.std
+# chmod 666 /var/lib/systemd/coredump/core.nvim.1000.008a013d9f0d4e769d9dbcfdd9d9584a.13538.1656944479000000
+$ gdb nvim /var/lib/systemd/coredump/core.nvim.1000.008a013d9f0d4e769d9dbcfdd9d9584a.13538.1656944479000000
+(gdb) bt
+</code></pre>
+<p>ie.</p>
+<ol>
+<li>Undo zstandard compression on root-owned core dump file.</li>
+<li>Change ownership so that normal user can read file.</li>
+<li>Relaunch executable (this time, <code>nvim</code>) with <code>gdb</code> and the core dump file.</li>
+<li>Print the backtrace.</li>
+</ol>
+<h2><code>NULL</code> versus <code>NUL</code></h2>
+<ul>
+<li><code>NULL</code> is a &quot;NULL pointer&quot; (<code>((void *)0)</code>), defined in <code>&lt;stddef.h&gt;</code>.</li>
+<li><code>NUL</code> refers to the &quot;NUL byte&quot; (<code>'\0'</code>), used to terminate <code>NUL</code>-terminated strings.</li>
+</ul>
+<p>Note that despite both being &quot;zero&quot; they have different sizes due to their use in different contexts; the <code>NULL</code> pointer will typically be a 64-bit or 32-bit value, while <code>NUL</code> will be an 8-bit <code>char</code>.</p>
+<h2>Viewing generated assembly</h2>
+<p>Given a source file, <code>source.c</code>, produce output <code>source.s</code> with:</p>
+<pre><code class="language-bash">gcc -S source.c
+</code></pre>
+<h2><code>assert()</code> and <code>abort()</code></h2>
+<p><code>assert(expression)</code> is a debugging and developmental aid that aborts the program unless <code>expression</code> is true. If <code>-DNDEBUG</code> is passed to the compiler, the entire construct is omitted. As such, for release builds, <code>assert()</code> calls can be considered to be &quot;free&quot;.</p>
+<p><code>abort()</code> unconditionally terminates the program.</p>
+<p>As a rule of thumb:</p>
+<ul>
+<li>Use <code>assert()</code> to detect logic bugs, things that &quot;should never happen&quot;, during development. In a sense, assertions exist not just to detect invalid assumptions, but to communicate what those assumptions are.</li>
+<li>Use <code>abort()</code> for when things have gone catastrophically wrong, such that continuing isn't a viable option.</li>
+<li>Neither of these is a substitute for handling <em>routine</em> error states (for example, failure to read or write a file can happen for any number of reasons, and the program should very likely make some attempt at graceful recovery when this happens).</li>
+</ul>
+<h2><code>printf</code> format markers</h2>
+<p>From <code>man 3 printf</code>:</p>
+<ul>
+<li><code>%c</code>: <code>char</code>.</li>
+<li><code>%d</code>: <code>int</code> (printed as signed decimal).
+<ul>
+<li><code>%dl</code>: <code>long int</code> (printed as unsigned decimal).</li>
+<li><code>%dl</code>: <code>long long int</code> (printed as unsigned decimal).</li>
+</ul>
+</li>
+<li><code>%f</code>: <code>double</code>.</li>
+<li><code>%o</code>: <code>int</code> (printed as unsigned octal).
+<ul>
+<li><code>%oz</code>: <code>size_t</code> (printed as unsigned octal).</li>
+</ul>
+</li>
+<li><code>%p</code>: <code>void *</code> (printed in hexadecimal).</li>
+<li><code>%s</code>: <code>NUL</code>-terminated string.</li>
+<li><code>%u</code>: <code>unsigned</code> (printed as unsigned decimal).
+<ul>
+<li><code>%ul</code>: <code>unsigned long</code> (printed as unsigned decimal).</li>
+<li><code>%ull</code>: <code>unsigned long long</code> (printed as unsigned decimal).</li>
+<li><code>%uz</code>: <code>size_t</code> (printed as unsigned decimal).</li>
+</ul>
+</li>
+<li><code>%x</code>: <code>unsigned</code> (printed as unsigned hexadecimal).
+<ul>
+<li><code>%xl</code>: <code>unsigned long</code> (printed as unsigned hexadecimal).</li>
+<li><code>%xll</code>: <code>unsigned long long</code> (printed as unsigned hexadecimal).</li>
+<li><code>%xz</code>: <code>size_t</code> (printed as unsigned hexadecimal).</li>
+</ul>
+</li>
+<li><code>%%</code>: literal <code>%</code>.</li>
+</ul>
+<h2><code>size_t</code></h2>
+<p>On Darwin, this is equivalent to <code>unsigned long</code> (which nowadays means <code>uint64_t</code>, as <a href="https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/stdint.h.html">defined in <code>&lt;stdint.h&gt;</code></a>), but in general a good heuristic for remembering <em>when</em> to use this and <em>what</em> it is:</p>
+<ul>
+<li>Use it for things whose size is to be measured in bytes.</li>
+<li>Its size is big enough to represent whatever the &quot;biggest object&quot; could be on the host system.</li>
+<li>Technically, <code>size_t</code> <a href="https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/stddef.h.html">is defined, in <code>&lt;stddef.h&gt;</code>, as</a> the type of the result of the <code>sizeof()</code> operator.</li>
+</ul>
+<h2><code>sizeof</code></h2>
+<ul>
+<li><code>sizeof(&quot;string literal&quot;)</code> includes the trailing <code>NULL</code> byte; note this is different from <code>strlen()</code>, which returns the number of bytes <em>before</em> the <code>NULL</code>.</li>
+<li><code>sizeof(0xff)</code> is equivalent to <code>sizeof(int)</code>; Clang will warn that this is suspicious, so if you really mean it you can write <code>sizeof(typeof(0xff))</code> instead.</li>
+</ul>
+<h2><code>ssize_t</code></h2>
+<p>Signed equivalent of <code>size_t</code>.</p>
+<p>Biggest possible value is <code>SSIZE_MAX</code>, defined in <code>&lt;limits.h&gt;</code>.</p>
+<h2><code>static</code> functions</h2>
+<p>A function declared with the <code>static</code> keyword is not visible outside of the translation unit in which it is defined.</p>
+<h2><code>static</code> variables</h2>
+<p>A variable defined with <code>static</code> <em>outside</em> all functions is only visible inside its own translation unit. This is analogous to how <code>static</code> applies to functions.</p>
+<p>A variable defined with <code>static</code> <em>inside</em> a function maintains its value across invocations.</p>
+<!-- References -->
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

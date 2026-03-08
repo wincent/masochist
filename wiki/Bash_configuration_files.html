@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Bash configuration files • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Bash configuration files</h1></div><div class="metadata"><relative-time created="1328174399" updated="1584053324">Created 2/2/2012, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/bash">bash</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>This is my attempt to phrase the &quot;INVOCATION&quot; section of the <a href="/wiki/Bash">Bash</a> <a href="/wiki/man_page">man page</a> in the clearest possible terms.</p>
+<h2>Definitions</h2>
+<p>A &quot;login&quot; shell is:</p>
+<ul>
+<li>a shell whose argument zero starts with <code>-</code>; or</li>
+<li>a shell invoked with the <code>--login</code> or <code>-l</code> (equivalent) option</li>
+</ul>
+<p>Examples of login shells:</p>
+<ul>
+<li>the shell you get when you:
+<ul>
+<li>open a new terminal window</li>
+<li>open a new tab in a terminal window</li>
+<li>open a new pane in a <a href="/wiki/tmux">tmux</a> session</li>
+</ul>
+</li>
+</ul>
+<p><em>Note:</em> This behavior may vary according to your terminal program; it is true for <a href="/wiki/Mac_OS_X">Mac OS X</a>, but <a href="http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html">this article claims</a> the behavior is the opposite in some Linux distros.</p>
+<p>An &quot;interactive&quot; shell may be:</p>
+<ul>
+<li>a login shell as described above; or</li>
+<li>any other shell whose standard input and output are connected to a real terminal (ie. the kind of shell you get if you type <code>bash</code> or <code>sh</code>)</li>
+<li>a shell started with <code>-i</code></li>
+</ul>
+<p>A &quot;non-interactive&quot; shell may be:</p>
+<ul>
+<li>a shell started to run a shell script</li>
+<li>a shell started to run a command (eg. <code>sh -c ls</code>)</li>
+</ul>
+<h2>Startup behavior</h2>
+<ul>
+<li><code>sh</code>:
+<ul>
+<li>run as an interactive login shell (unless inhibited with the <code>--no-profile</code> option):
+<ol>
+<li>runs <code>/etc/profile</code></li>
+<li>runs <code>~/.profile</code>, if it exists</li>
+</ol>
+</li>
+<li>run as an interactive non-login shell (eg. if you just type <code>sh</code>)
+<ol>
+<li>runs nothing</li>
+</ol>
+</li>
+<li>run as a non-interactive shell with the <code>--login</code> or <code>-l</code> options:
+<ol>
+<li>runs <code>/etc/profile</code></li>
+<li>runs <code>~/.profile</code>, if it exists</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><code>bash</code>:
+<ul>
+<li>run as an interactive login shell (unless inhibited with the <code>--no-profile</code> option):
+<ol>
+<li>runs <code>/etc/profile</code></li>
+<li>runs first found, readable file among <code>~/.bash_profile</code>, <code>~/.bash_login</code> and <code>~/.profile</code></li>
+<li>runs <code>~/.bash_logout</code>, if present, on logout</li>
+</ol>
+</li>
+<li>run as an interactive non-login shell (eg. if you just type <code>bash</code>):
+<ol>
+<li>runs <code>~/.bashrc</code> (unless inhibited with the <code>--no-rc</code> option)</li>
+</ol>
+</li>
+<li>run as a non-interactive shell with the <code>--login</code> or <code>-k</code> options:
+<ol>
+<li>runs <code>/etc/profile</code></li>
+<li>runs first found, readable file among <code>~/.bash_profile</code>, <code>~/.bash_login</code> and <code>~/.profile</code></li>
+<li>runs <code>~/.bash_logout</code>, if present, on logout</li>
+</ol>
+</li>
+<li>run as a non-interactive shell (eg. <code>bash -c ls</code>):
+<ol>
+<li>runs nothing</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Consequences</h2>
+<ul>
+<li>For most intents and purposes, you can count on <code>~/.bash_profile</code> (or similar) running for pretty much any shell you open.</li>
+<li>It's recommended that you put base config (things like <code>PATH</code> exports) in your <code>~/.bashrc</code> and fancy stuff (prompt set-up etc) in your <code>~/.bash_profile</code>; you can source you <code>~/.bashrc</code> from your <code>~/.bash_profile</code> to that you don't have to duplicate the basic config</li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Zsh_startup">Zsh startup</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Bash_(Unix_shell)#Startup_scripts">http://en.wikipedia.org/wiki/Bash_(Unix_shell)#Startup_scripts</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Unix_shell">http://en.wikipedia.org/wiki/Unix_shell</a></li>
+<li><a href="http://www.solipsys.co.uk/new/BashInitialisationFiles.html">http://www.solipsys.co.uk/new/BashInitialisationFiles.html</a> (flowchart)</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

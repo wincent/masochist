@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PEG-style predicates in ANTLR • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>PEG-style predicates in ANTLR</h1></div><div class="metadata"><relative-time created="1183394879" updated="1584053324">Created 7/2/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/antlr">antlr</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>The 11 May 2006 entry from <a href="http://www.antlr.org/blog/antlr3/lookahead.tml">this page</a> describes one way of getting <a href="/wiki/PEG">PEG</a>-like predicates in <a href="/wiki/ANTLR">ANTLR</a>.</p>
+<h2><a href="/wiki/PEG">PEG</a> &quot;not&quot; predicates</h2>
+<p>In a <a href="/wiki/PEG">PEG</a> a &quot;not&quot; predicate is used to indicate *match <strong>X</strong> as long as it is not followed by <strong>Y*</strong>. A <a href="/wiki/PEG">PEG</a>-like syntax for this would involve using <code>!</code> as a prefix operator:</p>
+<pre><code>// match any &quot;bar&quot; not followed by &quot;baz&quot;
+foo
+  : bar !baz
+  ;
+</code></pre>
+<p>Apparently, <a href="/wiki/ANTLR">ANTLR</a> can achieve the equivalent effect using a combination of syntactic and semantic predicates, although it is much less readable than the <a href="/wiki/PEG">PEG</a> syntax (I say &quot;apparently&quot; because I haven't actually tested this):</p>
+<pre><code>foo
+  : (bar ((baz)=&gt;{false}? | ))=&gt; bar
+  ;
+</code></pre>
+<p>Paraphrased, this means:</p>
+<ul>
+<li>At the outermost level we will match <strong>bar</strong> only if the <a href="/wiki/syntactic_predicate">syntactic predicate</a> succeeds; the syntactic predicate consists of:
+<ul>
+<li>First trying to match <strong>bar</strong></li>
+<li>Then try to match <strong>baz</strong> using a nested syntactic predicate
+<ul>
+<li>If the nested predicate succeeds (not what we wanted), must fail; we do that using a <a href="/wiki/validating_semantic_predicate">validating semantic predicate</a> which always evaluates to <code>false</code></li>
+<li>If the nested predicate fails (which is what we wanted), fall through to the alternative subrule, which is an empty match (the <code>|</code> followed by nothing) and will always succeed</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><a href="/wiki/Terence_Parr">Terence Parr</a> notes the following about &quot;not&quot; predicates:</p>
+<blockquote>
+<p>They are really only useful in the lexer and seemingly only for single elements (all examples so far have been &quot;not semicolon&quot; or something similar). In ANTLR, you say <code>~';'</code> so I don't think we need them.</p>
+</blockquote>
+<h2><a href="/wiki/PEG">PEG</a> &quot;and&quot; predicates</h2>
+<p>In a <a href="/wiki/PEG">PEG</a> an &quot;and&quot; predicate is used to indicate *match <strong>X</strong> as long as it is followed by <strong>Y*</strong>. Although the <strong>Y</strong> must be present it is not actually included in the match. A standard <a href="/wiki/PEG">PEG</a> notation for this would involve using <code>&amp;</code> as a prefix operator:</p>
+<pre><code>// match any &quot;bar&quot; followed by &quot;baz&quot; (the &quot;baz&quot; is not consumed)
+foo
+  : bar &amp;baz
+  ;
+</code></pre>
+<p>Using a similar trick to that already shown above, <a href="/wiki/ANTLR">ANTLR</a> can achieve the same effect using a syntactic predicate; this version is considerably simpler:</p>
+<pre><code>foo
+  : (bar baz)=&gt; bar
+  ;
+</code></pre>
+<h3>Evaluation</h3>
+<p>It seems that this technique cannot be used for the reasons discussed in this mailing list post:</p>
+<ul>
+<li><a href="http://www.antlr.org:8080/pipermail/antlr-interest/2007-July/021958.html">http://www.antlr.org:8080/pipermail/antlr-interest/2007-July/021958.html</a></li>
+</ul>
+<p>In the thread <a href="/wiki/Jim_Idle">Jim Idle</a> suggests the following workaround for the <a href="/wiki/C_target">C target</a>:</p>
+<pre><code>foo
+   : bar { MARK(); } baz { REWINDLAST(); }
+   ;
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/ANTLR_predicates">ANTLR predicates</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Working with SVK in a multi-user environment • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Working with SVK in a multi-user environment</h1></div><div class="metadata"><relative-time created="1184593313" updated="1709594300">Created 7/16/2007, updated 3/4/2024</relative-time></div><ul class="tags"><li><a href="/tags/svk">svk</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>When I first started working with <a href="/wiki/SVK">SVK</a> I was working alone and from a single machine. My work cycle was basically:</p>
+<pre><code># make changes
+svk ci -m &quot;Commit message&quot;
+
+# make more changes
+svk ci -m &quot;Commit message&quot;
+</code></pre>
+<p>When working with multiple branches my pattern was:</p>
+<pre><code># make changes
+svk ci -m &quot;Commit message&quot;
+
+# push changes from branch back to trunk
+svk push --verbatim
+
+# or, pulling changes from trunk into branch
+svk pull
+
+# now working in another branch; get most recent changes
+svk up
+
+# make changes
+svk ci -m &quot;Commit message&quot;
+</code></pre>
+<p>When I started doing development work in <a href="/wiki/Leopard">Leopard</a> itself and finally got <a href="/wiki/SVK">SVK</a> working (my initial attempts at installing <a href="/wiki/SVK">SVK</a> failed and so I fell back to working with vanilla <a href="/wiki/Subversion">Subversion</a>) I no longer had a single-machine set-up; I now had two depots (two mirrors).</p>
+<p>I was surprised to see that after working on another branch my commits were failing even though I had done an <code>svk up</code> beforehand:</p>
+<pre><code>Commit into mirrored path: merging back directly.
+A checksum mismatch occurred: Base checksum mismatch on '/trunk/NSException+WOTest.m':
+   expected:  ab5055a21d72459b6fe6c8bd4c959e20
+     actual:  7d57db2ecf5e25fc15762d8bb1feb6cb
+</code></pre>
+<p>This is because in any multi-user (multi-depot) environment <code>svk up</code> is not enough to ensure that your depot reflects the latest changes in the remote repository. Instead you must perform an <code>svk sync</code> (see <code>svk help sync</code> for information about options) to bring the local depot up to date, or pass the <code>-s</code> switch to <code>svk up</code> to achieve the same effect:</p>
+<pre><code># alternative 1:
+svk sync //mirrors/mirrored_repo_name
+svk up
+
+# alternative 2:
+svk up -s
+</code></pre>
+<p>When you're working from a single machine (single depot) and nobody else is updating the repository from anywhere else you don't run into this problem, even when working on many branches and using <code>svk push</code> and <code>svk pull</code> extensively. This is because every time you do an <code>svk ci</code> the local depot is updated to reflect those changes and they are then transmitted to the repository; in this way the remote repository never sees any changes which the local depot doesn't see.</p>
+<p>As soon as you switch to a multi-user (multi-depot) pattern then you'll need to start using <code>svk sync</code>.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

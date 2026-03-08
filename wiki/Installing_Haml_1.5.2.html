@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Installing Haml 1.5.2 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Installing Haml 1.5.2</h1></div><div class="metadata"><relative-time created="1181035929" updated="1495119989">Created 6/5/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/haml">haml</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These notes were made while installing <a href="/wiki/Haml">Haml</a> for the first time.</p>
+<h2>Installing</h2>
+<p>The <a href="http://haml.hamptoncatlin.com/download/">official Haml download page</a> states that <a href="/wiki/Haml">Haml</a> can be installed from the top-level of an existing <a href="/wiki/Rails">Rails</a> application by executing this command:</p>
+<pre><code>script/plugin install http://svn.hamptoncatlin.com/haml/tags/stable
+</code></pre>
+<p>This command, however, results in the plug-in being installed in a folder called <code>stable</code> when it really should be called <code>haml</code>. So I instead installed as follows:</p>
+<pre><code>svn export http://svn.hamptoncatlin.com/haml/tags/stable vendor/plugins/haml
+</code></pre>
+<p>My bug report for this posted to the <a href="http://groups.google.com/group/haml">Haml Google group</a> can be found <a href="http://groups.google.com/group/haml/t/9852907f142ebd8d">here</a>. <a href="http://unspace.ca/discover/haml/">This page</a> suggests that an alternative which might work would be:</p>
+<pre><code># use undocumented optional target name parameter
+script/plugin install http://svn.hamptoncatlin.com/haml/tags/stable haml
+</code></pre>
+<p>Out of curiosity I tried that out and as of <a href="/wiki/Rails">Rails</a> 1.2.3 it no longer works:</p>
+<pre><code>Plugin not found: [&quot;http://svn.hamptoncatlin.com/haml/tags/stable&quot;, &quot;haml&quot;]
+</code></pre>
+<h2>First template conversion</h2>
+<p>I started off by taking a simple <a href="/wiki/view">view</a> template, <code>index.rhtml</code>:</p>
+<pre><code>&lt;% for user in @users %&gt;
+&lt;div id=&quot;userlist&quot;&gt;
+  &lt;div class=&quot;&lt;%= cycle('odd', 'even') %&gt;&quot;&gt;
+    &lt;div class=&quot;label&quot;&gt;&lt;%= _('Login name:') %&gt;&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;&lt;%=h user.login_name %&gt;&lt;/div&gt;
+    &lt;div class=&quot;label&quot;&gt;&lt;%= _('Display name:') %&gt;&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;&lt;%=h user.display_name %&gt;&lt;/div&gt;
+    &lt;div class=&quot;label&quot;&gt;&lt;%= _('Email address:') %&gt;&lt;/div&gt;
+    &lt;div class=&quot;info&quot;&gt;&lt;%=h user.email_address %&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;% end %&gt;
+</code></pre>
+<p>And converting it to <a href="/wiki/Haml">Haml</a>:</p>
+<pre><code>- for user in @users
+  [/tags/userlist #userlist]
+    %div{:class =&gt; cycle('odd', 'even')}
+      .label= _('Login name:')
+      .info= h user.login_name
+      .label= _('Display name:')
+      .info= h user.display_name
+      .label= _('Email address:')
+      .info= h user.email_address
+</code></pre>
+<p>The <a href="/wiki/Haml">Haml</a> version is 3 lines shorter, and its character count is 269 (compared with 439 for the original version).</p>
+<p>It is easy to migrate to <a href="/wiki/Haml">Haml</a> because <a href="/wiki/Haml">Haml</a> templates coexist with <a href="/wiki/RHTML">RHTML</a> templates. In the current example the <code>index.haml</code> file will be used, if present, otherwise <a href="/wiki/Rails">Rails</a> will fall back to <code>index.rhtml</code>. If the changes don't work out, you can easily switch back to <a href="/wiki/RHTML">RHTML</a>.</p>
+<p>Because I'm doing <a href="/wiki/Behaviour-Driven_Development">Behaviour-Driven Development</a> using <a href="/wiki/RSpec">RSpec</a> I was able to immediately confirm that the output continues to pass all <a href="/wiki/specs">specs</a>; this is again confirmed by visual inspection of the output:</p>
+<pre><code>&lt;div id='userlist'&gt;
+  &lt;div class='odd'&gt;
+    &lt;div class='label'&gt;Login name:&lt;/div&gt;
+    &lt;div class='info'&gt;example login name 1&lt;/div&gt;
+    &lt;div class='label'&gt;Display name:&lt;/div&gt;
+    &lt;div class='info'&gt;example display name 1&lt;/div&gt;
+    &lt;div class='label'&gt;Email address:&lt;/div&gt;
+    &lt;div class='info'&gt;example email address 1&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id='userlist'&gt;
+  &lt;div class='even'&gt;
+    &lt;div class='label'&gt;Login name:&lt;/div&gt;
+    &lt;div class='info'&gt;example login name 2&lt;/div&gt;
+    &lt;div class='label'&gt;Display name:&lt;/div&gt;
+    &lt;div class='info'&gt;example display name 2&lt;/div&gt;
+    &lt;div class='label'&gt;Email address:&lt;/div&gt;
+    &lt;div class='info'&gt;example email address 2&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Installing_the_Haml_TextMate_bundle">Installing the Haml TextMate bundle</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Setting up a fork of a GitHub project a Rails submodule • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Setting up a fork of a GitHub project a Rails submodule</h1></div><div class="metadata"><relative-time created="1364627252" updated="1710259978">Created 3/30/2013, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>For Rails deployments I want to eliminate third-party dependencies on places like rubygems.org or github.com (I don't want downtime of either of those services to prevent me from deploying.)</p>
+<p>As a result, if I want to use a third-party library as a submodule, I do the following:</p>
+<ul>
+<li>Add a submodule pointing at the upstream repo</li>
+<li>Fork the repo on GitHub</li>
+<li>Create an (initially empty) backup mirror on <a href="/wiki/Gitorious">Gitorious</a></li>
+<li>Create an (initially empty) mirror on git.wincent.dev</li>
+<li>Create an (initially empty) mirror on the same machine as my Rails app is running</li>
+<li>In the local submodule, update the submodule to point at the git.wincent.dev mirror</li>
+<li>Add an &quot;upstream&quot; remote pointing at the original repo, for use with <code>git fetch</code></li>
+</ul>
+<p>A lot of this is described in detail in &quot;<a href="/wiki/Setting_up_a_brand_new_public_Git_repository">Setting up a brand new public Git repository</a>&quot;. I have a <code>new-public-repo.sh</code> script that I can run on git.wincent.dev to do most of the dirty work for me. For example, below is the output from setting up a mirror of the <a href="/wiki/spin.js">spin.js</a> repo:</p>
+<ul>
+<li>Note the use of a shared &quot;github-mirrors&quot; project on <a href="/wiki/Gitorious">Gitorious</a> so I don't have to create new projects for each upstream mirror</li>
+<li>Also note that I had to call the repo &quot;spin-js&quot; there due to limitations imposed by Gitorious</li>
+</ul>
+<pre><code class="language-shell"># ./new-public-repo.sh spin.js
+Initialized empty Git repository in ...
+Enter a one-line description (for GitWeb): Mirror of github.com/fgnass/spin.js
+Mirror of github.com/fgnass/spin.js
+spin.js.git Wincent+Colaiuta+&lt;example@example.com&gt;
+git://git.wincent.dev/spin.js.git
+Enter name of backup repo at GitHub (eg. Command-T): spin.js
+Enter name of backup project at Gitorious (eg. fusion-mac-os-x): github-mirrors
+Enter name of backup repo at Gitorious (eg. fusion): spin-js
+
+-------------------------------------------------------------------------
+                      Configuration now complete
+
+Contents of description file:
+
+Mirror of github.com/fgnass/spin.js
+
+Contents of cloneurl file:
+
+git://git.wincent.dev/spin.js.git
+
+Contents (tail) of gitweb-projects file:
+
+synergy.git Wincent+Colaiuta+&lt;example@example.com&gt;
+clipper.git Wincent+Colaiuta+&lt;example@example.com&gt;
+spin.js.git Wincent+Colaiuta+&lt;example@example.com&gt;
+
+Contents of config file:
+
+[core]
+        repositoryformatversion = 0
+        filemode = true
+        bare = true
+[remote &quot;github&quot;]
+        url = git@github.com:wincent/spin.js.git
+        fetch = +refs/*:refs/*
+        mirror = true
+[remote &quot;gitorious&quot;]
+        url = git@gitorious.org:github-mirrors/spin-js.git
+        fetch = +refs/*:refs/*
+        mirror = true
+        # etc ...
+
+You have set up a 'rails' remote; remember to create bare repo on that machine:
+  ...
+
+Then you can push to publish your initial changes to this repo:
+  ...
+</code></pre>
+<p>In the end, the steps on the local machine looked something like:</p>
+<pre><code class="language-shell">$ mkdir -p vendor/assets/javascripts
+$ git submodule add git://github.com/fgnass/spin.js.git
+$ cd vendor/assets/javascripts.spin.js
+$ git remote add upstream git://github.com/fgnass/spin.js.git
+$ cd ../../../..
+$ vim .gitmodules # update clone URL
+$ vim .git/modules/vendor/assets/javascripts/spin.js/config # update local URL
+$ git config branch.master.remote origin
+$ git config branch.master.merge refs/heads/master
+$ git push origin --all
+$ git push origin --tags
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

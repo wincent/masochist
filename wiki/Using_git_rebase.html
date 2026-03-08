@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Using git rebase • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Using git rebase</h1></div><div class="metadata"><relative-time created="1189523500" updated="1495119989">Created 9/11/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Basic use case</h2>
+<pre><code># create a topic branch based on current master
+git checkout -b my_cool_new_feature
+
+# work on feature...
+vi file
+git add file
+git commit -s
+
+# meanwhile, someone else has made changes to master...
+git checkout master
+git pull
+
+# now rebase so that your topic branch applies on top of current HEAD of master
+git checkout my_cool_new_feature
+git rebase master
+
+# fix any conflicts that may be discovered on the way
+vi file
+git add file
+git commit -s
+
+# resume the rebase
+git rebase --continue
+
+# rebase done, prepare patch set based on topic branch
+git format-patch master
+
+# alternatively, just merge it in locally
+git checkout master
+git merge my_cool_new_feature
+git branch -d my_cool_new_feature
+
+# and propagate it back out to the origin
+git push
+</code></pre>
+<p>For information on sending out patches see &quot;<a href="/wiki/Creating_and_submitting_a_patch_via_email">Creating and submitting a patch via email</a>&quot;.</p>
+<h2>Advanced usage (interactive cleanup)</h2>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Git_rebase_explained">Git rebase explained</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

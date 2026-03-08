@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Building Vim from source • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Building Vim from source</h1></div><div class="metadata"><relative-time created="1315641597" updated="1584053324">Created 9/10/2011, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/vim">vim</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Getting the source</h2>
+<p>You can get the source from this <a href="/wiki/Git">Git</a> mirror of the upstream Mercurial repo:</p>
+<ul>
+<li><a href="https://github.com/b4winckler/vim">https://github.com/b4winckler/vim</a></li>
+</ul>
+<p>(kindly provided by Björn Winckler, maintainer of <a href="/wiki/MacVim">MacVim</a>)</p>
+<h2>Building</h2>
+<p>In this example, I check out the HEAD of the current master branch (which is usually pretty solid/stable), build, and install into my home directory:</p>
+<pre><code class="language-shell">$ cd vim.git
+$ git checkout master
+$ git pull
+$ ./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --enable-cscope --disable-nls --prefix=$HOME
+$ make install
+</code></pre>
+<h2>Linking against a specific version of Python</h2>
+<h3>Python 3.3</h3>
+<pre><code class="language-shell">$ wget http://www.python.org/ftp/python/3.3.3/Python-3.3.3.tgz
+$ tar xzvf Python-3.3.3.tgz
+$ cd Python-3.3.3
+$ ./configure --prefix=$HOME
+$ make &amp;&amp; make install &amp;&amp; inclinstall # install headers, otherwise Vim won't have Python support
+$ hash -r
+</code></pre>
+<p>And explicitly tell Vim to link against it:</p>
+<pre><code class="language-shell">$ cd vim.git
+$ make clean distclean # make sure no cached reference to system Vim is hanging around
+$ ./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --enable-cscope --disable-nls --prefix=$HOME --with-python-config-dir=$HOME/lib/python3.3/config-3.3m
+$ make install
+</code></pre>
+<h3>Python 2.7.3</h3>
+<pre><code class="language-shell">$ wget http://python.org/ftp/python/2.7.3/Python-2.7.3.tar.bz2
+$ tar xjvf Python-2.7.3.tar.bz2
+$ cd Python-2.7.3
+$ ./configure --prefix=$HOME
+$ make &amp;&amp; make install &amp;&amp; inclinstall # install headers, otherwise Vim won't have Python support
+$ hash -r
+</code></pre>
+<p>And explicitly tell Vim to link against it:</p>
+<pre><code class="language-shell">$ cd vim.git
+$ make clean distclean # make sure no cached reference to system Vim is hanging around
+$ ./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --enable-cscope --disable-nls --prefix=$HOME --with-python-config-dir=$HOME/lib/python2.7/config
+$ make install
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Building_MacVim_from_source">Building MacVim from source</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

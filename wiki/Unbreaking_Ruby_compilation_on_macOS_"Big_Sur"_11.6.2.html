@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Unbreaking Ruby compilation on macOS &quot;Big Sur&quot; 11.6.2 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Unbreaking Ruby compilation on macOS &quot;Big Sur&quot; 11.6.2</h1></div><div class="metadata"><relative-time created="1643826670" updated="1669039172">Created 2/2/2022, updated 11/21/2022</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/macos">macos</a></li><li><a href="/tags/ruby">ruby</a></li></ul><div class="prerendered"><p>Noticed this when trying to re-compile <a href="https://github.com/wincent/command-t">Command-T</a> just now:</p>
+<pre><code class="language-shell">$ ruby extconf.rb
+checking for float.h... *** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of necessary
+libraries and/or headers.  Check the mkmf.log file for more details.  You may
+need configuration options.
+
+(many lines of error output omitted)
+
+You have to install development tools first.
+</code></pre>
+<p>That last line is a red-herring. The development tools were installed, and re-installing them didn't fix the issue:</p>
+<pre><code>$ xcode-select --install
+xcode-select: error: command line tools are already installed, use &quot;Software Update&quot; to install updates
+$ sudo rm -rf /Library/Developer/CommandLineTools
+$ xcode-select --install
+xcode-select: note: install requested for command line developer tools
+</code></pre>
+<p>In the <code>mkmf.log</code> output, we see this:</p>
+<pre><code>&quot;xcrun clang -o conftest -I/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/include/ruby-2.6.0/universal-darwin20 -I/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/include/ruby-2.6.0/ruby/backward -I/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/include/ruby-2.6.0 -I. -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -g -Os -pipe -DHAVE_GCC_ATOMIC_BUILTINS -DUSE_FFI_CLOSURE_ALLOC conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib -L. -L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.6.Internal.sdk/usr/local/lib     -lruby.2.6   &quot;
+In file included from conftest.c:1:
+In file included from /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/include/ruby-2.6.0/ruby.h:33:
+/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/include/ruby-2.6.0/ruby/ruby.h:24:10: fatal error: 'ruby/config.h' file not found
+#include &quot;ruby/config.h&quot;
+         ^~~~~~~~~~~~~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/include/ruby-2.6.0/ruby/ruby.h:24:10: note: did not find header 'config.h' in framework 'ruby' (loaded from '/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/System/Library/Frameworks')
+</code></pre>
+<p>The key thing to note is this bit:</p>
+<pre><code>-I/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/include/ruby-2.6.0/universal-darwin20
+</code></pre>
+<p>ie. it is looking for headers in a <code>universal-darwin20</code> folder that doesn't exist; in that location, we only have a <code>universal-darwin21</code> folder.</p>
+<p>So, the hacky fix is to do this:</p>
+<pre><code class="language-shell">$ cd /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/include/ruby-2.6.0
+$ sudo ln -s universal-darwin21 universal-darwin20
+</code></pre>
+<p>After that, building works:</p>
+<pre><code class="language-shell">ruby extconf.rb
+make
+</code></pre>
+<h2>See also</h2>
+<p>See also, <a href="/wiki/Unbreaking_Ruby_compilation_on_macOS_%22Monterey%22_12.6.1">Unbreaking Ruby compilation on macOS &quot;Monterey&quot; 12.6.1</a>.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Wincent wikitext nesting • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Wincent wikitext nesting</h1></div><div class="metadata"><relative-time created="1182879735" updated="1584053324">Created 6/26/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Overview</h2>
+<h3>Block-level elements</h3>
+<ul>
+<li><code>BLOCKQUOTE</code></li>
+<li><code>PRE</code></li>
+<li><code>OL</code></li>
+<li><code>UL</code></li>
+<li><code>LI</code></li>
+<li><code>H1</code>, <code>H2</code>, <code>H3</code>, <code>H4</code>, <code>H5</code>, <code>H6</code></li>
+<li><code>P</code></li>
+</ul>
+<p>In general, block elements may appear in the outermost scope, with some special considerations to note:</p>
+<ul>
+<li>Any block-level element may be nested inside <code>BLOCKQUOTE</code>, including other <code>BLOCKQUOTE</code> elements; the exception to this rule is <code>LI</code>, which may only be nesetd inside list elements (<code>OL</code> and <code>LI</code>)</li>
+<li>Nested lists can be created by nesting <code>OL</code> and <code>LI</code> inside an <code>LI</code></li>
+<li>All other nesting of block-level elements is disallowed</li>
+<li>The <a href="/wiki/HTML">HTML</a> specification states that heading elements (<code>H1</code>, <code>H2</code>, <code>H3</code>, <code>H4</code>, <code>H5</code>, <code>H6</code>) should only appear in order in the document: that is, <code>H2</code> may only appear after <code>H1</code> and so on; at least in the initial implementation I have no plans on enforcing this restriction</li>
+</ul>
+<h3>Inline elements</h3>
+<ul>
+<li><code>NO_WIKI</code></li>
+<li><code>EM</code></li>
+<li><code>STRONG</code></li>
+<li><code>ENTITY</code></li>
+<li><code>PRINTABLE</code></li>
+<li><code>DEFAULT</code></li>
+</ul>
+<p>Inline elements always and only appear nested inside block-level elements.</p>
+<p>Inline elements are intended for use within a single-line span, so a <code>CRLF</code> token automatically closes any open span-level tags (for parity with <a href="/wiki/MediaWiki">MediaWiki</a>); the exception to this rule is the <code>NO_WIKI</code> span where everything including <code>CRLF</code> tokens loses its special significance. That is, even though <code>NO_WIKI</code> is a span-level element, it is not automatically closed upon seeing a <code>CRLF</code> token; this again is for parity with the established <a href="/wiki/MediaWiki">MediaWiki</a> behaviour.</p>
+<p>As noted on the <a href="/wiki/Wincent_wikitext">Wincent wikitext</a> page, nesting of inline elements inside one another is allowed provided that the same element is not nested inside itself (either directly or indirectly). Block-level elements may never be nested inside inline elements.</p>
+<h3>Entities</h3>
+<p><code>ENTITY</code> tokens always have special meaning, even inside <code>PRE</code> blocks and <code>NOWIKI</code> spans. That is, a string like <code>&amp;copy;</code> inside a <code>PRE</code> or <code>NOWIKI</code> will be passed through literally into the <a href="/wiki/HTML">HTML</a> output as <code>&amp;copy;</code> rather than being converted to <code>&amp;amp;copy;</code>.</p>
+<h2>Details</h2>
+<h3>Block-level elements</h3>
+<h4><code>BLOCKQUOTE</code></h4>
+<ul>
+<li>May be nested inside:
+<ul>
+<li>Outermost (root) scope</li>
+<li><code>BLOCKQUOTE</code> (recursive nesting)</li>
+</ul>
+</li>
+<li>Elements that can be nested inside:
+<ul>
+<li><code>BLOCKQUOTE</code> (recursive nesting)</li>
+<li><code>PRE</code></li>
+<li><code>OL</code></li>
+<li><code>UL</code></li>
+<li><code>H1</code>, <code>H2</code>, <code>H3</code>, <code>H4</code>, <code>H5</code>, <code>H6</code></li>
+<li><code>P</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>Note</strong>: Although <code>BLOCKQUOTE</code> sections are introduced using the relatively common <code>&gt;</code> character, the <a href="/wiki/lexer">lexer</a> screens out false positives by only emitting <code>BLOCKQUOTE</code> tokens when they appear in the first column of the input <em>or</em> are immediately preceded by other <code>BLOCKQUOTE</code> token(s).</p>
+<h4><code>PRE</code></h4>
+<ul>
+<li>May be nested inside:
+<ul>
+<li>Outermost (root) scope</li>
+<li><code>BLOCKQUOTE</code></li>
+</ul>
+</li>
+<li>Elements that can be nested inside:
+<ul>
+<li>Any (but note that all elements lose their special meaning inside a <code>PRE</code>)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Note</strong>: Although <code>PRE</code> sections are introduced using the relatively common space character, the <a href="/wiki/lexer">lexer</a> screens out false positives by only emitting <code>PRE</code> tokens when they appear in the first column of the input <em>or</em> are immediately preceded by one or more <code>BLOCKQUOTE</code> tokens.</p>
+<h4><code>OL</code></h4>
+<ul>
+<li>May be nested inside:
+<ul>
+<li>Outermost (root) scope</li>
+<li><code>BLOCKQUOTE</code></li>
+<li><code>LI</code></li>
+</ul>
+</li>
+<li>Elements that can be nested inside:
+<ul>
+<li><code>OL</code> (indirect recursive nesting)</li>
+<li><code>UL</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>Note</strong>: Although <code>OL</code> sections are introduced using the relatively common <code>#</code> character, the <a href="/wiki/lexer">lexer</a> screens out false positives by only emitting <code>OL</code> tokens when they appear in the first column of the input <em>or</em> are immediately preceded by <code>OL</code>, <code>UL</code> or <code>BLOCKQUOTE</code> token(s).</p>
+<h4><code>UL</code></h4>
+<ul>
+<li>May be nested inside:
+<ul>
+<li>Outermost (root) scope</li>
+<li><code>BLOCKQUOTE</code></li>
+<li><code>LI</code></li>
+</ul>
+</li>
+<li>Elements that can be nested inside:
+<ul>
+<li><code>OL</code></li>
+<li><code>UL</code> (indirect recursive nesting)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Note</strong>: Although <code>UL</code> sections are introduced using the relatively common <code>*</code> character, the <a href="/wiki/lexer">lexer</a> screens out false positives by only emitting <code>UL</code> tokens when they appear in the first column of the input <em>or</em> are immediately preceded by <code>OL</code>, <code>UL</code> or <code>BLOCKQUOTE</code> token(s).</p>
+<h4><code>LI</code></h4>
+<ul>
+<li>May be nested inside:
+<ul>
+<li><code>OL</code></li>
+<li><code>UL</code></li>
+</ul>
+</li>
+<li>Elements that can be nested inside:
+<ul>
+<li>Inline elements only</li>
+</ul>
+</li>
+</ul>
+<p><strong>Note</strong>: <code>LI</code> is an imaginary token and is never actually emitted by the lexer.</p>
+<h4><code>H1</code>, <code>H2</code>, <code>H3</code>, <code>H4</code>, <code>H5</code>, <code>H6</code></h4>
+<ul>
+<li>May be nested inside:
+<ul>
+<li>Outermost (root) scope</li>
+<li><code>BLOCKQUOTE</code> (recursive nesting)</li>
+</ul>
+</li>
+<li>Elements that can be nested inside:
+<ul>
+<li>Inline elements only</li>
+</ul>
+</li>
+</ul>
+<p><strong>Note</strong>: The lexer again avoids false positives by only emitting heading start tokens when they appear in the first column of the input, or are immediately preceded by a <code>BLOCKQUOTE</code> token. Similarly, heading end tokens are only emitted when they appear as the last non-whitespace symbol on a given line; this allows inputs such as the following to be correctly parsed as an &lt;h2&gt; heading containing the text <code>Does foo == bar?</code>:</p>
+<pre><code>== Does foo == bar? ==
+</code></pre>
+<h4><code>P</code></h4>
+<ul>
+<li>May be nested inside:
+<ul>
+<li>Outermost (root) scope</li>
+<li><code>BLOCKQUOTE</code> (recursive nesting)</li>
+</ul>
+</li>
+<li>Elements that can be nested inside:
+<ul>
+<li>Inline elements only</li>
+</ul>
+</li>
+</ul>
+<p><strong>Note</strong>: <code>P</code> is an imaginary token and is never actually emitted by the lexer.</p>
+<h3>Inline elements</h3>
+<h4><code>NO_WIKI</code></h4>
+<ul>
+<li>May be nested inside:
+<ul>
+<li>Any block-level element</li>
+<li>Any inline element except for <code>NO_WIKI</code> itself (directly or indirectly)</li>
+</ul>
+</li>
+<li>Elements that can be nested inside:
+<ul>
+<li>Any (but note that all elements lose their special meaning inside a <code>NO_WIKI</code>)</li>
+</ul>
+</li>
+</ul>
+<h4><code>EM</code></h4>
+<ul>
+<li>May be nested inside:
+<ul>
+<li>Any block-level element</li>
+<li>Any inline element except for <code>EM</code> itself (directly or indirectly)</li>
+</ul>
+</li>
+<li>Elements that can be nested inside:
+<ul>
+<li>Any inline element except for <code>EM</code> itself (directly or indirectly)</li>
+</ul>
+</li>
+</ul>
+<h4><code>STRONG</code></h4>
+<ul>
+<li>May be nested inside:
+<ul>
+<li>Any block-level element</li>
+<li>Any inline element except for <code>STRONG</code> itself (directly or indirectly)</li>
+</ul>
+</li>
+<li>Elements that can be nested inside:
+<ul>
+<li>Any inline element except for <code>STRONG</code> itself (directly or indirectly)</li>
+</ul>
+</li>
+</ul>
+<h4><code>ENTITY</code></h4>
+<ul>
+<li>May be nested inside:
+<ul>
+<li>Any block-level element</li>
+<li>Any inline element</li>
+</ul>
+</li>
+<li>Elements that can be nested inside:
+<ul>
+<li>Not applicable (<code>ENTITY</code> is an atomic element, not a span)</li>
+</ul>
+</li>
+</ul>
+<h4><code>PRINTABLE</code></h4>
+<ul>
+<li>May be nested inside:
+<ul>
+<li>Any block-level element</li>
+<li>Any inline element</li>
+</ul>
+</li>
+<li>Elements that can be nested inside:
+<ul>
+<li>Not applicable (<code>PRINTABLE</code> is an atomic element, not a span)</li>
+</ul>
+</li>
+</ul>
+<h4><code>DEFAULT</code></h4>
+<ul>
+<li>May be nested inside:
+<ul>
+<li>Any block-level element</li>
+<li>Any inline element</li>
+</ul>
+</li>
+<li>Elements that can be nested inside:
+<ul>
+<li>Not applicable (<code>DEFAULT</code> is an atomic element, not a span)</li>
+</ul>
+</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

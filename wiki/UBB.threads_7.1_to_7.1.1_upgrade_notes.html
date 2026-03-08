@@ -1,0 +1,149 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>UBB.threads 7.1 to 7.1.1 upgrade notes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>UBB.threads 7.1 to 7.1.1 upgrade notes</h1></div><div class="metadata"><relative-time created="1177081724" updated="1709493725">Created 4/20/2007, updated 3/3/2024</relative-time></div><ul class="tags"><li><a href="/tags/ubb.threads">ubb.threads</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>A little tired of doing multi-step manual upgrades to <a href="/wiki/UBB.threads">UBB.threads</a> (for example, see the notes for the last upgrade, &quot;<a href="/wiki/UBB.threads_7.0.2_to_7.1_upgrade_notes">UBB.threads 7.0.2 to 7.1 upgrade notes</a>&quot;), I decided to come up with a shell script that would at least guide the process.</p>
+<p>The basic procedure is as follows:</p>
+<ol>
+<li>Download new version from Members Area: <a href="http://www.infopop.com/members/members.php">http://www.infopop.com/members/members.php</a></li>
+<li>Log in to control panel and close board</li>
+<li>Backup the database</li>
+<li>Backup the installed files</li>
+<li>Temporarily relax permissions (so that the uploads will work)</li>
+<li>Perform the upload using <a href="/wiki/Interarchy">Interarchy</a>'s Auto Upload feature</li>
+<li>Restore the permissions</li>
+<li>Run the upgrade script <code>install/upgrade.php</code> from within the browser</li>
+<li>Remove the install directory from the server</li>
+<li>Open the forums again</li>
+</ol>
+<p>Quite tedious to do all this manually, especially if you have more than one install to upgrade.</p>
+<h2>The script</h2>
+<p>The script does as much of the work as possible, prompting when some sort of external action is required that it can't perform (such as closing the control panel or uploading the files).</p>
+<p>Here is the first draft of the script. It is customized for my own setup and not something that you could drop-in to your own server and expect things to work; nevertheless it may give some ideas.</p>
+<pre><code>#!/bin/sh
+# $Id$
+
+# update for each new version
+OLD_VERSION=&quot;7_1&quot;
+
+# set and forget
+BACKUP1=&quot;wincent_ubb_${OLD_VERSION}&quot;
+BACKUP2=&quot;pw_ubb_${OLD_VERSION}&quot;
+USERNAME1=blah
+DATABASE1=blah
+USERNAME2=blah
+DATABASE2=blah
+INSTALL1=/path/to/forums
+INSTALL2=/path/to/other/forums
+APACHE1=user
+APACHE2=user
+
+#
+# Functions
+#
+
+upload_instructions()
+{
+  echo
+  echo &quot;Upload all files/folders except for these directories:&quot;
+  echo &quot;  - includes&quot;
+  echo &quot;  - languages&quot;
+  echo &quot;  - styles&quot;
+  echo &quot;  - cache_builders/custom&quot;
+  echo &quot;Once uploading is complete, will revert permissions to their former state.&quot;
+  echo &quot;Please indicate that you have finished uploading:&quot;
+  continue_or_abort
+}
+
+continue_or_abort()
+{
+  echo
+  read -n 1 -p &quot;Press Y to continue, A to abort: &quot; RESPONSE
+  if [ &quot;$RESPONSE&quot; = &quot;Y&quot; -o &quot;$RESPONSE&quot; = &quot;y&quot; ]; then
+    echo
+    return
+  else
+    echo
+    echo &quot;Aborting!&quot;
+    exit 1
+  fi
+}
+
+reset_permissions()
+{
+  APACHE=&quot;$1&quot;
+  sudo chmod -v 755 .
+  sudo chmod -v 777 includes
+  sudo chmod -v 666 includes/*
+  sudo chmod -v 777 sessions
+  sudo chmod -v 777 templates/compile
+  sudo chmod -v 777 templates
+  sudo chmod -v 777 cache
+  sudo chmod -v 777 cache_builders
+  sudo chmod -v 777 cache_builders/custom
+  sudo chmod -v 666 cache_builders/custom/*
+  sudo chmod -v 777 styles
+  sudo chmod -v 666 styles/*.php styles/*.css
+  sudo chown -Rv $APACHE:$APACHE *
+
+  echo
+  echo &quot;Now run the upgrade script (install/upgrade.php) from within the browser.&quot;
+  echo &quot;Please indicate that you have finished running the script:&quot;
+  continue_or_abort
+
+  echo
+  echo &quot;Will remove the installation directory:&quot;
+  sudo rm -rf install
+}
+
+#
+# Main
+#
+
+set -e
+
+read -p &quot;Please enter a tag for the backup archives [$OLD_VERSION]: &quot; TAG
+if [ &quot;$TAG&quot; != &quot;&quot; ]; then
+  OLD_VERSION=&quot;$TAG&quot;
+fi
+
+echo
+echo &quot;Before continuing, log in to the control panels and close the boards.&quot;
+echo &quot;Please indicate that you have closed the boards:&quot;
+continue_or_abort
+
+cd
+
+echo &quot;Dumping forums database&quot;
+mysqldump --opt -u $USERNAME1 -p -h localhost $DATABASE1 | bzip2 -c &gt; $BACKUP1.sql.bz2
+
+echo &quot;You may now be prompted for your sudo password for the file backup&quot;
+sudo -v
+
+echo &quot;Backing up forums files&quot;
+cd $INSTALL1
+sudo tar -c -v . &gt; ~/$BACKUP1.tar
+gzip --verbose -9 ~/$BACKUP1.tar
+
+echo &quot;Will now relax the permissions on the installation folder&quot;
+continue_or_abort
+cd $INSTALL1
+sudo chmod -Rv 777 .
+upload_instructions
+reset_permissions &quot;$APACHE1&quot;
+
+echo
+echo &quot;All done! You can now re-open your forums&quot;
+
+exit 0
+</code></pre>
+<h2>Cleanup</h2>
+<p>Although the script as shown worked for me in the 7.1 to 7.1.1 upgrade, the <a href="/wiki/UBB.threads">UBB.threads</a> upgrade script itself is not infallible. I had another install that had not yet been upgraded to 7.1, and on updating the language files <a href="/wiki/UBB.threads">UBB.threads</a> introduced a syntax error into one of the files that I had to go in and fix manually.</p>
+<p>I then ran the following command to make sure that there were no other errors anywhere in the install:</p>
+<pre><code>find . -name &quot;*.php&quot; -exec php -l {} \;
+</code></pre>
+<p>This found one other minor error elsewhere in the installation, so I recommend running this sweeping check before and after any <a href="/wiki/UBB.threads">UBB.threads</a> upgrade, just in case.</p>
+<h2>See also</h2>
+<ul>
+<li>Release announcement: <a href="http://www.ubbcentral.com/forums/ubbthreads.php?ubb=showflat&amp;Number=182825">http://www.ubbcentral.com/forums/ubbthreads.php?ubb=showflat&amp;Number=182825</a></li>
+<li>Change log: <a href="http://www.ubbcentral.com/forums/ubbthreads.php/ubb/showflat/Number/182824">http://www.ubbcentral.com/forums/ubbthreads.php/ubb/showflat/Number/182824</a></li>
+<li>Release discussion: <a href="http://www.ubbcentral.com/forums/ubbthreads.php/ubb/showflat/Number/182202">http://www.ubbcentral.com/forums/ubbthreads.php/ubb/showflat/Number/182202</a></li>
+<li>Previous release list: <a href="http://www.ubbcentral.com/support/version.php?product=UBB.threads">http://www.ubbcentral.com/support/version.php?product=UBB.threads</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

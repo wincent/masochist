@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>fatal: protocol error: bad line length character • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>fatal: protocol error: bad line length character</h1></div><div class="metadata"><relative-time created="1250336057" updated="1710259978">Created 8/15/2009, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><code>fatal: protocol error: bad line length character</code> is an error I started seeing when trying to perform <code>git clone</code>, <code>git fetch</code> or <code>git pull</code> from public <a href="/wiki/Git">Git</a> repositories hosted at git.wincent.dev. I am not entirely sure when the problem started but I first noticed it after updating my local Git install to version 1.6.4 (see &quot;<a href="/wiki/Updating_to_Git_1.6.4">Updating to Git 1.6.4</a>&quot;), with the server still running 1.6.3.3 (see &quot;<a href="/wiki/Updating_to_Git_1.6.3.3">Updating to Git 1.6.3.3</a>&quot;).</p>
+<h2>Troubleshooting</h2>
+<p>First step, try using another version of Git to perform the clone. On the server itself:</p>
+<pre><code class="language-shell">$ git --version
+git version 1.6.3.3
+$ cd /tmp
+$ git clone git://git.wincent.dev/WOPublic.git
+Initialized empty Git repository in /tmp/WOPublic/.git/
+fatal: protocol error: bad line length character
+</code></pre>
+<p>So we know it's not a conflict between 1.6.3.3 and 1.6.4. Could be a problem with the 1.6.3.3 server, so let's update the server; see &quot;<a href="/wiki/Updating_to_Git_1.6.4">Updating to Git 1.6.4</a>&quot; for the full details.</p>
+<p>Now we repeat our server-side <code>clone</code> test:</p>
+<pre><code class="language-shell">$ git --version
+git version 1.6.4
+$ git clone git://git.wincent.dev/WOPublic.git
+Initialized empty Git repository in /tmp/WOPublic/.git/
+fatal: protocol error: bad line length character
+</code></pre>
+<p>So back to the old drawing board... Try cloning from a different server:</p>
+<pre><code class="language-shell">$ git clone git://github.com/wincent/WOPublic.git
+Initialized empty Git repository in /tmp/WOPublic/.git/
+remote: Counting objects: 403, done.
+remote: Compressing objects: 100% (218/218), done.
+remote: Total 403 (delta 242), reused 297 (delta 172)
+Receiving objects: 100% (403/403), 153.31 KiB, done.
+Resolving deltas: 100% (242/242), done.
+</code></pre>
+<p>So we can see here that the problem is almost certainly not on the client side, regardless of whether the client is running 1.6.3.3 and 1.6.4. And we've also established that the problem on the server side was present in 1.6.3.3 just as it is in 1.6.4.</p>
+<p>I wanted to see if this affected all repositories or just the one I was working with at that moment (<a href="/wiki/WOPublic">WOPublic</a>), but it turns out that the message is always the same, even for non-existent repos such as this fictional &quot;xyz&quot; one:</p>
+<pre><code class="language-shell">$ git clone git://git.wincent.dev/xyz
+Initialized empty Git repository in /private/tmp/xyz/.git/
+fatal: protocol error: bad line length character
+</code></pre>
+<p>Looks like this is going to be hideously painful, but I am going to try and bisect it. I am not even sure what the last known &quot;good&quot; version was, so I guess I am going to go back through the &quot;major&quot; revisions (1.6.3, 1.6.2, 1.6.1) until I find one that works, then will run <code>git bisect</code> from there:</p>
+<pre><code class="language-shell">$ git co v1.6.3
+$ make clean
+$ NO_CURL=1 NO_EXPAT=1 NO_SVN_TESTS=1 NO_TCLTK=1 make test prefix=/usr/local
+$ sudo -s
+# NO_CURL=1 NO_EXPAT=1 NO_SVN_TESTS=1 NO_TCLTK=1 make prefix=/usr/local install
+</code></pre>
+<p>Ditto for:</p>
+<ul>
+<li>v1.6.2 (broken)</li>
+<li>v1.6.1 (works)</li>
+</ul>
+<p>That's a relief. We can start the real bisection:</p>
+<pre><code class="language-shell">$ git bisect start v1.6.2 v1.6.1
+$ make clean
+$ NO_CURL=1 NO_EXPAT=1 NO_SVN_TESTS=1 NO_TCLTK=1 make test prefix=/usr/local
+$ sudo -s
+# NO_CURL=1 NO_EXPAT=1 NO_SVN_TESTS=1 NO_TCLTK=1 make prefix=/usr/local install
+# exit
+</code></pre>
+<p>And then <code>git bisect good</code> or <code>git bisect bad</code>, depending on the result and repeat...</p>
+<p>Ultimately, we bisect down to this:</p>
+<pre><code>8e3462837b0ace04357503a3f58802cc2231df29 is first bad commit
+commit 8e3462837b0ace04357503a3f58802cc2231df29
+Author: Steffen Prohaska &lt;prohaska@zib.de&gt;
+Date:   Sun Jan 18 13:00:13 2009 +0100
+
+    Modify setup_path() to only add git_exec_path() to PATH
+
+    Searching git programs only in the highest priority location is
+    sufficient.  It does not make sense that some of the required
+    programs are located at the highest priority location but other
+    programs are picked up from a lower priority exec-path.  If
+    exec-path is overridden a complete set of commands should be
+    provided, otherwise several different versions could get mixed,
+    which is likely to cause confusion.
+
+    If a user explicitly overrides the default location (by --exec-path
+    or GIT_EXEC_PATH), we now expect that all the required programs are
+    found there.  Instead of adding the directories &quot;argv_exec_path&quot;,
+    &quot;getenv(EXEC_PATH_ENVIRONMENT)&quot;, and &quot;system_path(GIT_EXEC_PATH)&quot;
+    to PATH, we now rely on git_exec_path(), which implements the same
+    order, but only returns the highest priority location to search for
+    executables.
+
+    Accessing only the location with highest priority is also required
+    for testing executables built with RUNTIME_PREFIX.  The call to
+    system_path() should be avoided if RUNTIME_PREFIX is set and the
+    executable is not installed at its final destination.  Because we
+    test before installing, we want to avoid calling system_path()
+    during tests.  The modifications in this commit avoid calling
+    system_path(GIT_EXEC_PATH) if a higher-priority location is
+    provided, which is the case when running the tests.
+
+    Signed-off-by: Steffen Prohaska &lt;prohaska@zib.de&gt;
+    Acked-by: Johannes Sixt &lt;j6t@kdbg.org&gt;
+    Signed-off-by: Junio C Hamano &lt;gitster@pobox.com&gt;
+</code></pre>
+<p>This is on a server with Git installed using <code>prefix=/usr/local</code>, but <code>/usr/local/bin</code> is not in the default <code>PATH</code> so the daemon is launched via xinetd with the following settings in <code>/etc/xinetd.d/git</code>:</p>
+<ul>
+<li><code>server</code> is explicitly set to the absolute path, <code>/usr/local/bin/git</code></li>
+<li>in <code>server_args</code>, we pass <code>--exec-path=/usr/local/bin daemon --inetd</code> etc</li>
+</ul>
+<p>The key paragraph in the commit message for 8e34628 sheds light on what's happening here:</p>
+<pre><code>   If a user explicitly overrides the default location (by --exec-path
+   or GIT_EXEC_PATH), we now expect that all the required programs are
+   found there.  Instead of adding the directories &quot;argv_exec_path&quot;,
+   &quot;getenv(EXEC_PATH_ENVIRONMENT)&quot;, and &quot;system_path(GIT_EXEC_PATH)&quot;
+   to PATH, we now rely on git_exec_path(), which implements the same
+   order, but only returns the highest priority location to search for
+   executables.
+</code></pre>
+<p>So, dropped the explicit <code>--exec-path</code> from the <code>server_args</code> and the <code>bad line length character</code> errors go away. The <code>git</code> executable is obviously smart enough to know where the needed binaries are (currently <code>/usr/local/libexec/git-core</code>) and so doesn't need the explicit parameter; and in fact, it was something that I only ever added in the first place to fix breakage caused by changes to where the binaries were stored and how they were searched for (see &quot;<a href="/wiki/Upgrading_to_Git_1.5.4">Upgrading to Git 1.5.4</a>&quot;).</p>
+<h2>See also</h2>
+<ul>
+<li>Entry on the official <a href="/wiki/Git">Git</a> <a href="/wiki/FAQ">FAQ</a> for the <code>protocol error: bad line length character</code> message (not really helpful/applicable to this specific case as it applies to <a href="/wiki/SSH">SSH</a>-based access and I am talking about anonymous public access using the Git protocol): <a href="http://git.or.cz/gitwiki/GitFaq#protocolerror.3Abadlinelengthcharacter">http://git.or.cz/gitwiki/GitFaq#protocolerror.3Abadlinelengthcharacter</a></li>
+<li>Mailing list thread: <a href="http://kerneltrap.org/mailarchive/git/2007/1/20/236259">http://kerneltrap.org/mailarchive/git/2007/1/20/236259</a></li>
+<li><a href="http://www.google.com/search?client=safari&amp;rls=en&amp;q=%22protocol+error:+bad+line+length+character%22+git&amp;ie=UTF-8&amp;oe=UTF-8">Google search for '&quot;protocol error: bad line length character&quot; git'</a> (currently 209 results at time of writing)</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

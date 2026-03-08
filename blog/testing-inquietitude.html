@@ -1,0 +1,317 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Testing inquietitude • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/testing-inquietitude">Testing inquietitude</a></h1><div class="metadata"><relative-time created="1235543665" updated="1584053324">Created 2/25/2009, updated 3/12/2020</relative-time><span>14 minute read</span></div><div class="prerendered"><p>There's one thing in programming that provokes a sense of inquietitude in me more often than any other: testing. There's just something about it that makes you feel like there's something subtly wrong, and leaves you worrying about whether you might be imagining that smell or whether you really did leave the gas turned on. It's not so much that it makes you wonder whether you're coding things the right way; more often than not you're just plagued by the nagging doubt that you're somehow doing the entire testing thing the wrong way without realizing it.</p>
+<p>I'm going to start with a <a href="/wiki/Rails">Rails</a> controller method as an example.</p>
+<p>Now, if you're finding that testing your controller method is too painful then it could be a sign that your controller is too &quot;fat&quot;. You might benefit from moving some of that code down into the model layer where it can be more easily tested.</p>
+<p>But on the other hand, sometimes even &quot;skinny&quot; controllers can be cumbersome to test. The problems we tend to run into when testing controllers stem from the fact that they, by definition, are &quot;glue&quot; for meshing together models and views. So we see all sorts of dependencies and coupling creeping in which might make us feel uneasy: either we end up involving a lot of other classes in our tests, or we end up doing lots of unnatural acrobatics in order to avoid that coupling.</p>
+<p>As such, controllers are a pretty interesting starting point for discussing issues in testing, as they tend to concentrate in one small area some wider issues that can be seen when testing all other types of code.</p>
+<h2>Our controller example</h2>
+<p>So let's get started:</p>
+<pre><code>def index
+  respond_to do |format|
+    format.html {
+      @paginator = RestfulPaginator.new params, Tweet.count, tweets_url, 20
+      @tweets = Tweet.find_recent @paginator
+    }
+    format.atom {
+      @tweets = Tweet.find_recent
+    }
+  end
+end
+</code></pre>
+<p>Not particularly &quot;fat&quot; as far as controllers go, but neither is it totally skinny. This is the typical index action which offers a paginated HTML version as well as a non-paginated Atom feed. To keep things simple here I'm only going to talk about testing the HTML format; evidently to fully test the action we'd need to test the Atom feed as well.</p>
+<p>We could try to make it &quot;skinnier&quot; by moving the <code>find</code> call out into a <code>before_filter</code>, but that wouldn't actually be reducing the complexity of the method; it would just be hiding the logic somewhere else. We could also jettison the pagination but that would be throwing the baby out with the bathwater, so to speak. So we'll take it as a given that this method is about as &quot;skinny&quot; as we can reasonably expect it to be.</p>
+<p>So what possible perspectives do we have when looking at how to test this method?</p>
+<h3>Perspective number 1: the &quot;black box&quot; approach</h3>
+<p>From this perspective we care <em>only</em> about the <em>externally visible</em> behaviour of the method; the method itself is treated as a black box and we don't allow ourself to make decisions based on our knowledge of the actual internals of the method.</p>
+<h3>Perspective number 2: the &quot;internals&quot; approach</h3>
+<p>Here instead of treating the method as a &quot;black box&quot;, we actively look inside the method with a view to explicitly testing not only every line, but every possible code path and message send as well.</p>
+<h3>Consequences of using the &quot;black box&quot; approach</h3>
+<ul>
+<li>We have to populate our database with real model instances so that the black box has something to work with; this will slow down the execution of our tests (which may or may not be a problem, depending on the size of your test suite), and it will certainly slow down our <em>coding</em> (writing) of the tests unless we have some kind of nice-to-use factory for creating the needed records (here we're talking about a fixture replacement; the one I use is called, funnily enough, FixtureReplacement).</li>
+<li>We'll want to confirm that the <code>@paginator</code> instance variable was set.
+<ul>
+<li>Relatedly, we'll want to confirm that it is &quot;correctly&quot; configured; while this might look like we're starting to think about the &quot;internals&quot; of the method, there's really no other place that we can check this out. In the view layer, for example, our testing will involve a paginator (or a paginator mock) but it won't help us to know whether our controller set up the paginator correctly. It's basically here or nowhere...</li>
+</ul>
+</li>
+<li>Likewise, we'll want to confirm that the <code>@tweets</code> instance variable was set, and furthermore that it contains what we expect.
+<ul>
+<li>This is where we handle some &quot;edgy&quot; cases like, what happens when there are no tweets at all in the database? 1? Enough for 1 page? Enough for 2 pages?</li>
+</ul>
+</li>
+<li>In doing all this we are most definitely not just testing the method; we're also testing the implementations of <code>RestfulPaginator</code> and <code>Tweet.find_recent</code> as well. Whether this is a bad thing depends on your perspective, I guess: if you hate coupling with a passion then you'll view this as inappropriate duplication (testing the same thing multiple times) and coupling (not testing things in isolation); on the other hand you might consider this as harmless and no impediment to finding the real cause of a bug when code that's exercised in multiple specs ends up causing multiple specs to fail.</li>
+<li>This is basically &quot;state-based&quot; testing: we start from a known state, trigger an action, and then check to see that the final state is as expected.</li>
+</ul>
+<h3>Consequences of using the &quot;internals&quot; approach</h3>
+<ul>
+<li>We're going to go through the method line by line mocking and stubbing method calls.</li>
+<li>If the <code>RestfulPaginator</code> or <code>Tweet.find_recent</code> APIs ever change, then there is a risk that our specs might continue to pass because they could shield us from those API changes, even if the controller is broken in reality.</li>
+<li>We need not necessarily create real model instances, so the specs could potentially run quite a bit faster; on the other hand, the manual set-up of mocks, stubs and message expectations might be a quite time-consuming (when it comes to <em>writing</em> the specs).</li>
+<li>On a positive note, we won't be re-testing <code>RestfulPaginator</code> and <code>Tweet.find_recent</code>.</li>
+<li>On a negative note, the specs look awfully like the original method, just reworded into &quot;test-speak&quot;; there's a definite &quot;smell&quot; of duplication, high-maintenance and brittleness here.</li>
+<li>There's not really much sense in testing &quot;edgy&quot; cases here (such as 0 records, 1 record, enough records for 1 page, enough for 2 pages) because we'd only be testing our ability to tell our mocks and stubs what messages to return, not testing the actual code. In other words, for each &quot;edgy&quot; case we'd tell the mocks/stubs to expect a different set of parameters, and we'd also instruct them to return different results, so this would really just be a test of our test-writing ability, not of the actual code that we want to test.</li>
+<li>This is basically &quot;interaction-based&quot; testing: we say what interactions between classes we expect to see, trigger an action, and then check to see if the expected interactions took place.</li>
+</ul>
+<h3>Common concerns</h3>
+<p>Regardless of the perspective we choose, there are a couple of common requirements that we'll want to test regardless. Both of these fall under the &quot;externally visible behaviour&quot; category, and there's no way in which we could or would want to use knowledge of internal implementation details to inform how we write the specs:</p>
+<ul>
+<li>We want to confirm that we rendered the expected template, <code>index</code></li>
+<li>We want to confrim that the response was successful (HTTP 200)</li>
+</ul>
+<h3>Show me the code</h3>
+<h4>Internals perspective</h4>
+<p>Let's start from the &quot;internals&quot; perspective first, and get the easy stuff out the way:</p>
+<pre><code>def do_get
+  get :index, :protocol =&gt; 'https'
+end
+
+it 'should be successful' do
+  do_get
+  response.should be_success
+end
+
+it 'should render the &quot;index&quot; template' do
+  do_get
+  response.should render_template('index')
+end
+</code></pre>
+<p>Ok, simple enough. Now we proceed to go line-by-line through the method and make sure that we verify the behaviour of each line. The first line we have to worry about is:</p>
+<pre><code>@paginator = RestfulPaginator.new params, Tweet.count, tweets_url, 20
+</code></pre>
+<p>This is what the corresponding spec code looks like:</p>
+<pre><code>before do
+  @params = { 'action' =&gt; 'index', 'controller' =&gt; 'tweets', 'protocol' =&gt; 'https' }
+end
+
+it 'should use the restful paginator' do
+  paginator = RestfulPaginator.new(@params, Tweet.count, tweets_url, 20)
+  RestfulPaginator.stub!(:new).with(@params, Tweet.count, tweets_url, 20).and_return(paginator)
+  do_get
+  assigns[:paginator].should == paginator
+end
+
+it 'should correctly configure the restful paginator' do
+  RestfulPaginator.should_receive(:new).with(@params, Tweet.count, tweets_url, 20)
+  do_get
+end
+</code></pre>
+<p>That second example is there because what we care about is that <code>RestfulPaginator</code> gets fed the right parameters. This is interaction-based testing. I could have rolled the two specs into one by using <code>should_receive</code> instead of <code>stub!</code> in the first spec. But by leaving it as a separate spec, you can look at it in isolation and it is extremely clear exactly what's being tested.</p>
+<p>The trouble is we've come extremely close to duplicating the line of code from our implementation in our spec.</p>
+<p>Look how similar:</p>
+<pre><code># from the controller:
+RestfulPaginator.new params, Tweet.count, tweets_url, 20
+</code></pre>
+<p>Is to:</p>
+<pre><code># from the spec:
+RestfulPaginator.should_receive(:new).with(@params, Tweet.count, tweets_url, 20)
+</code></pre>
+<p>Each change to one will have to be matched by a change to the other. Given that we're constantly looking for ways to minimize inefficiency and increase robustness, this duplication might make you feel uncomfortable.</p>
+<p>Of course, this pair of specs is not <em>entirely</em> robust in the face of pathological attempts to demonstrate that the specs don't <em>prove</em> that the code behaves correctly. I'm not explicitly confirming, for example, that the paginator which was initialized with the expected values is actually the paginator which is used in the <code>find_recent</code> call and assigned to the <code>@paginator</code> instance variable:</p>
+<pre><code># pathological sabatoge; still passes specs:
+@paginator  = RestfulPaginator.new params, Tweet.count, tweets_url, 20
+paginator = Paginator.new params, 9000, 'http://example.com/broken', 1000
+@tweets     = Tweet.find_recent paginator
+</code></pre>
+<p>In reality I don't think it's worth investing the effort to check for this kind of pathological breakage.</p>
+<p>Now let's test the next line:</p>
+<pre><code>it 'should find recent tweets' do
+  Tweet.should_receive(:find_recent)
+  do_get
+end
+
+it 'should assign the recent tweets to the @tweets instance variable' do
+  Tweet.stub!(:find_recent).and_return([:recent])
+  do_get
+  assigns[:tweets].should == [:recent]
+end
+</code></pre>
+<p>So, we're not actually testing to see that the paginator variable got passed in there; we're just confirming that, firstly, the <code>find_recent</code> message was sent, and secondly, the result was assigned to the <code>@tweets</code> instance variable.</p>
+<p>To actually make sure that the paginator was passed in we'd have to modify that first spec to look like this:</p>
+<pre><code>it 'should find recent tweets' do
+  paginator = RestfulPaginator.new(@params, Tweet.count, tweets_url, 20)
+  RestfulPaginator.stub!(:new).with(@params, Tweet.count, tweets_url, 20).and_return(paginator)
+  Tweet.should_receive(:find_recent).with(paginator)
+  do_get
+end
+</code></pre>
+<p>And we're done. We have a bit of nasty duplication in there, repeating a couple of the steps that we'd already done in one of the other specs. We could either stick some of that common setup in the <code>before</code> block, perhaps:</p>
+<pre><code>before do
+  @params = { 'action' =&gt; 'index', 'controller' =&gt; 'tweets', 'protocol' =&gt; 'https' }
+  @paginator = RestfulPaginator.new(@params, Tweet.count, tweets_url, 20)
+end
+</code></pre>
+<p>But the problem there is that this robs us of the chance to do any &quot;pre-setup&quot; of the tweet records before hand. We'll always start with an empty table.</p>
+<p>Our other option is to replace our multiple specs with a single one which basically reconstructs the entire method and describes everything that it should do in a single example:</p>
+<pre><code>it 'should, um, just work!' do
+  paginator = RestfulPaginator.new(@params, Tweet.count, tweets_url, 20)
+  RestfulPaginator.should_receive(:new).with(@params, Tweet.count, tweets_url, 20).and_return(paginator)
+  assigns[:paginator].should == [:paginator]
+  Tweet.should_receive(:find_recent).with(paginator).and_return([:recent])
+  assigns[:tweets].should == [:recent]
+end
+</code></pre>
+<p>But this looks pretty much just like an ugly rewrite of the original implementation in a different language. It could be made a little prettier by using the &quot;<a href="/wiki/proxy">proxy</a>&quot; pattern (as employed in <a href="/wiki/RR">RR</a>) instead of a straight mock, but I haven't been able to get that to work in <a href="/wiki/RSpec">RSpec</a>.</p>
+<h4>&quot;Black box&quot; perspective</h4>
+<pre><code>def do_get
+  get :index, :protocol =&gt; 'https'
+end
+
+it 'should be successfu' do
+  do_get
+  response.should be_success
+end
+
+it 'should render the &quot;index&quot; template' do
+  do_get
+  response.should render_template('index')
+end
+</code></pre>
+<p>Up to here everything is the same.</p>
+<p>Now let's start thinking about externally visible behaviour. We'll test some basic &quot;edge&quot; and normal cases:</p>
+<pre><code>it 'should function when there are no tweets in the database' do
+  do_get
+  assigns[:tweets].should == []
+end
+
+it 'should function when there is one tweet in the database' do
+  tweet = create_tweet
+  do_get
+  assigns[:tweets].should == [tweet]
+end
+
+it 'should fetch no more than 20 tweets at a time' do
+  25.times { create_tweet }
+  do_get
+  assigns[:tweets].length.should == 20
+end
+
+it 'should fetch tweets in reverse creation order' do
+  past = 3.days.ago
+  old = create_tweet
+  Tweet.update_all ['created_at = ?, updated_at = ?', past, past], ['id = ?', old.id]
+  new = create_tweet
+  do_get
+  assigns[:tweets].should == [new, old]
+end
+</code></pre>
+<p>So far so good. These specs are very fast and easy to write, very clear to read and understand, and don't use those maligned mocks and stubs at all.</p>
+<p>The down side: creating all those record instances is going to slow down the test suite. By the time your code base grows large enough that this is a problem, it will probably be stable and established enough that you <em>could</em> actually start using more mocks in your specs without any of the drawbacks (if the codebase isn't evolving too rapidly anymore, the maintenance overhead of keeping your mocks in sync with your APIs won't be too much). Alternatively, you might decide to try a faster, alternative database backend when running your specs (an in-memory database, for example) but the problem there is that with a large codebase you're more likely to have some kind of MySQL-specific constraints in there that will make this difficult.</p>
+<p>But still, despite this, the upside is very positive. Your specs are entirely implementation independent because they are state based. If you later replace the <code>find_recent</code> method with <code>super_find_recent</code> which runs 20 times faster, your specs will continue to work and they'll confirm that the behaviour of the controller is still correct.</p>
+<p>So let's continue:</p>
+<pre><code>it 'should assign to the @paginator instance variable' do
+  do_get
+   assigns[:paginator].should be_kind_of(RestfulPaginator)
+end
+</code></pre>
+<p>Nothing contentious there. But now we come to the tricky part.</p>
+<p>We know that the paginator is doing its job at least in part, because our other specs show that no more than 20 records are being returned at a time. But how do we know <em>for sure</em> that the paginator really is configured right? How do we know that it will return the right pagination links when it's used in the view?</p>
+<p>Here we have two options.</p>
+<ul>
+<li>Swap or &quot;black box&quot; hat for our &quot;internals&quot; one, just for one spec and use a mock and a <code>should_receive</code> expectation to confirm that the right parameters are being passed into the paginator.</li>
+<li>Alternatively, we can stay in &quot;state-based&quot; mode and inspect our paginator instance variable to make sure that it's in the expected state.</li>
+</ul>
+<p>That might look something like this:</p>
+<pre><code>it 'should inform the paginator of the total number of records' do
+  do_get
+  assigns[:paginator].count.should == Tweet.count
+end
+
+it 'should tell the paginator to use the /twitter URL for link generation' do
+  do_get
+  assigns[:paginator].path_or_url.should == tweets_url
+end
+
+it 'should configure the paginator to paginate in groups of 20' do
+  do_get
+  assigns[:paginator].limit.should == 20
+end
+
+it 'should show the first page by default' do
+  do_get
+  assigns[:paginator].offset.should == 0
+end
+</code></pre>
+<p>Even though we are in &quot;black box&quot; mode, we're still using our knowledge of how the paginator actually works to inform us about <em>what</em> attributes of the paginator we need to inspect. We know that <code>limit</code> and <code>offset</code> are used when performing the <a href="/wiki/SQL">SQL</a> <code>SELECT</code>, so that's an important piece of state that will impact behaviour if it is wrong. We also know that the <code>count</code> attribute will determine the total number of pages, and <code>path_or_url</code> will determine what host is used to construct the URLS in the page links.</p>
+<p>Note that there is one input parameter to <code>RestfulPaginator.new</code> that we don't bother looking at: <code>params</code>. That's effectively an implementation detail, and the only thing we care about is the final state of the paginator. Presumably if the wrong <code>params</code> were passed in (for example, a hash with a value like <code>params[:page] = &quot;Your momma&quot;</code>) then that would manifest itself in the form of a bad <code>offset</code> attribute, which we would detect anyway.</p>
+<h3>Evaluating the alternatives</h3>
+<p>Perhaps by the time you get this far you'll have realised that I tend to come down fairly heavily in the &quot;state-based&quot; or &quot;black box&quot; camp.</p>
+<p>I <em>do</em> use mocks and stubs in my specs, but I find that if there's a state-based alternative it often provokes less feelings of inquietitude.</p>
+<p>Just to prove that I am not totally against mocking and stubbing, here are the specs that I wrote for the <code>find_recent</code> method itself. First of all, the method:</p>
+<pre><code>def self.find_recent paginator = nil
+  options = { :order =&gt; 'created_at DESC', :limit =&gt; 20 }
+  options.merge!({ :offset =&gt; paginator.offset, :limit =&gt; paginator.limit }) if paginator
+  find :all, options
+end
+</code></pre>
+<p>And now for the specs:</p>
+<pre><code>describe Tweet, 'find_recent (class) method' do
+  it 'should find no more than 20 tweets' do
+    Tweet.should_receive(:find).with(:all, hash_including(:limit =&gt; 20))
+    Tweet.find_recent
+  end
+
+  it 'should sort tweets in reverse creation order' do
+    Tweet.should_receive(:find).with(:all, hash_including(:order =&gt; 'created_at DESC'))
+    Tweet.find_recent
+  end
+
+  it 'should use offset from paginator if supplied' do
+    paginator = mock('paginator')
+    paginator.should_receive(:offset).and_return(35)
+    paginator.stub!(:limit).and_return(10)
+    Tweet.should_receive(:find).with(:all, hash_including(:offset =&gt; 35))
+    Tweet.find_recent paginator
+  end
+
+  it 'should use limit from paginator if supplied' do
+    paginator = mock('paginator')
+    paginator.should_receive(:limit).and_return(100)
+    paginator.stub!(:offset).and_return(20)
+    Tweet.should_receive(:find).with(:all, hash_including(:limit =&gt; 100))
+    Tweet.find_recent paginator
+  end
+end
+</code></pre>
+<p>Somehow, using mocks and stubs here just felt like the &quot;natural&quot; thing to do in this case.</p>
+<p>Let's compare that with the state-based approach...</p>
+<pre><code>describe Tweet, 'find_recent (class) method' do
+  def old_tweet days_count
+    past = days_count.days.ago
+    tweet = create_tweet
+    Tweet.update_all ['created_at = ?, updated_at = ?', past, past], ['id = ?', tweet.id]
+    tweet
+  end
+
+  it 'should find no more than 20 tweets' do
+    25.times { create_tweet }
+    Tweet.find_recent.length.should &lt;= 20
+  end
+
+  it 'should sort tweets in reverse creation order' do
+    old = old_tweet(3)
+    new = create_tweet
+    Tweet.find_recent.should == [new, old]
+  end
+
+  it 'should use offset from paginator if supplied' do
+    first = old_tweet(10)
+    second = old_tweet(8)
+    third = old_tweet(6)
+    fourth = create_tweet
+    paginator = RestfulPaginator.new({ :page =&gt; 2 }, 4, 'foo', 2)
+    Tweet.find_recent(paginator).should == [second, first]
+  end
+
+  it 'should use limit from paginator if supplied' do
+    20.times { create_tweet }
+    paginator = RestfulPaginator.new({}, 20, 'foo', 10)
+    Tweet.find_recent(paginator).length.should == 10
+  end
+end
+</code></pre>
+<p>I don't find the state-based approach so appealing in this case for a couple of reasons:</p>
+<ul>
+<li>It required us to implement an <code>old_tweet</code> helper function in order to reduce repetitive set-up; helper functions can have bugs and they make it harder to understand the specs because they have to be parsed before you can understand what the specs do.</li>
+<li>In order to test the offset and limit behaviours we end up setting up paginator objects in an artificial way with parameters very unlike those that we'd see when they are used in practice (from controllers).</li>
+<li>Those artificial parameters are easy to get wrong, and hard to parse for somebody not familiar with the parameter order of the <code>RestfulPaginator.new</code> method.</li>
+</ul>
+<p>So, while I generally like the &quot;black box&quot;, state-based approach, I think there are cases where using mocks and stubs is the better choice (not to mention those situations where mocks and stubs are literally the <em>only</em> way you can test something). The really important thing is to always judge things on a case-by-case basis. It would be an error to say &quot;mocks are evil&quot; and never use them. Likewise, it would be a mistake to say &quot;coupling is the enemy, we should always isolate&quot;. In the end, readability, writability and maintainability, are sometimes best obtained through mocks, and sometimes best obtained through state-based patterns.</p>
+</div><ul class="tags"><li><a href="/tags/rspec">rspec</a></li><li><a href="/tags/rails">rails</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/kool-aid-drinking-rails-fanbois-flocking-to-phusion-passenger-in-inebriated-droves">← Kool-aid-drinking Rails &quot;fanbois&quot; flocking to Phusion Passenger in inebriated droves</a></div><div class="post-nav-next"><a href="/blog/safari-4-comments">Safari 4 comments →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

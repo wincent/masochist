@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Objective-C 2.0 cheatsheet • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Objective-C 2.0 cheatsheet</h1></div><div class="metadata"><relative-time created="1239098647" updated="1736516595">Created 4/7/2009, updated 1/10/2025</relative-time></div><ul class="tags"><li><a href="/tags/objective.c">objective.c</a></li><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/cheatsheet">cheatsheet</a></li></ul><div class="prerendered"><h2>Properties</h2>
+<h3>Basic syntax</h3>
+<pre><code>@property type name;
+</code></pre>
+<p>Or:</p>
+<pre><code>@property(attributes) type name;
+</code></pre>
+<p>For example:</p>
+<pre><code>@property(copy)     NSString *summary;
+@property(readonly) int      status;
+</code></pre>
+<h3>Attributes</h3>
+<ul>
+<li><code>readonly</code> or <code>readwrite</code> (the default)</li>
+<li><code>assign</code> (the default), <code>retain</code>, <code>copy</code></li>
+<li><code>nonatomic</code></li>
+<li><code>getter=name</code></li>
+<li><code>setter=name</code></li>
+</ul>
+<h3>Common patterns</h3>
+<p>Read-only public accessors, read/write private accessors:</p>
+<pre><code>// in the header, WOAmazingClass.h:
+@interface WOAmazingClass : NSObject {
+    int      status;
+    NSString *name;
+}
+
+@property(readonly)       int      status;
+@property(readonly, copy) NSString *name;
+
+@end
+
+// in the implementation, WOAmazingClass.m:
+@interface WOAmazingClass () // private category
+@property                 int      status;
+@property(readonly, copy) NSString *name;
+@end
+</code></pre>
+<p>Including &quot;is&quot; in the getter accessor for booleans:</p>
+<pre><code>// this will give us isHidden and setHidden: accessors
+@property(getter=isHidden) BOOL hidden;
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="http://the-lazy-programmer.com/blog/files/Objective-C%20cheat%20sheet.pdf">http://the-lazy-programmer.com/blog/files/Objective-C%20cheat%20sheet.pdf</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

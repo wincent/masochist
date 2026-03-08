@@ -1,0 +1,359 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Haskell 2016 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Haskell 2016</h1></div><div class="metadata"><relative-time created="1452530488" updated="1584053324">Created 1/11/2016, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/haskell">haskell</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Notes made while (re-)learning Haskell in 2016.</p>
+<h2>Resources</h2>
+<h3>Books</h3>
+<ul>
+<li><a href="http://learnyouahaskell.com/">Learn You a Haskell for Great Good!</a> (readable online for free)</li>
+<li><a href="http://haskellbook.com/">Haskell Programming from first principles</a> (still in early access)</li>
+<li><a href="http://book.realworldhaskell.org/">Real World Haskell</a> (O'Reilly, readable online for free)</li>
+<li><a href="https://gumroad.com/l/maybe-haskell/">Maybe Haskell</a> (non-free)</li>
+</ul>
+<h3>Practice problems</h3>
+<ul>
+<li><a href="https://wiki.haskell.org/99_questions">H-99: Ninety-Nine Haskell Problems</a></li>
+<li><a href="https://projecteuler.net/index.php?section=problems">Project Euler</a></li>
+</ul>
+<h3>Tutorials</h3>
+<ul>
+<li><a href="https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours">Write Yourself a Scheme in 48 Hours</a></li>
+<li><a href="https://wiki.haskell.org/Hitchhikers_guide_to_Haskell">Hitchhikers guide to Haskell</a></li>
+<li><a href="http://mightybyte.github.io/monad-challenges/">The Monad Challenges</a></li>
+<li><a href="http://www.scs.stanford.edu/16wi-cs240h/slides/">Bryan O'Sullivan's CS240H lecture notes (Winter)</a></li>
+<li><a href="http://www.scs.stanford.edu/14sp-cs240h/slides/">Bryan O'Sullivan's CS240H lecture notes (Spring)</a></li>
+</ul>
+<h3>Reference</h3>
+<ul>
+<li><a href="http://dev.stephendiehl.com/hask/">What I Wish I Knew While Learning Haskell</a></li>
+<li><a href="https://wiki.haskell.org/Typeclassopedia">Typeclassopedia</a></li>
+<li><a href="http://cheatsheet.codeslower.com/CheatSheet.pdf">codeslower.com cheatsheet</a></li>
+</ul>
+<h3>Meta: How to learn Haskell</h3>
+<ul>
+<li><a href="http://stackoverflow.com/a/1016986/2103996">A Stack Overflow guide with 1,876 upvotes</a></li>
+<li>&quot;<a href="https://acm.wustl.edu/functional/haskell.php">How to Learn Haskell</a>&quot;</li>
+</ul>
+<h3>Other links</h3>
+<ul>
+<li>&quot;<a href="http://www.stephendiehl.com/posts/vim_2016.html">Vim and Haskell in 2016</a>&quot;</li>
+</ul>
+<h2>Notes</h2>
+<h3>Installation</h3>
+<pre><code>$ brew install ghc cabal-install
+</code></pre>
+<h3>Command line</h3>
+<pre><code>$ ghci              # Start a REPL.
+$ runhaskell src.hs # Run code without separate compilation step.
+$ runghc src.hs     # Equivalent to runhaskell.
+$ ghc --make src.hs # Compile.
+$ ghc-pkg list      # See installed packages.
+</code></pre>
+<h2><code>ghci</code></h2>
+<ul>
+<li><code>:?</code>: show help</li>
+<li><code>:cd [directory]</code>: change working directory</li>
+<li><code>:info [name]</code>: show information about <code>name</code> (a type, a typeclass, a binding etc)</li>
+<li><code>:load [path]</code>: load module from <code>path</code> (relative to working directory, or absolute, with or without <code>.hs</code> extension)</li>
+<li><code>:m +[module]</code>: load <code>module</code></li>
+<li><code>:set +t</code>: show type information for each evaluated expression</li>
+<li><code>:set prompt &quot;ghci&gt; &quot;</code>: override default prompt</li>
+<li><code>:show bindings</code>: show all bound variables</li>
+<li><code>:type [expression]</code> (<code>:t [expression]</code>): show the type for the given expression</li>
+<li><code>:unset +t</code>: don't show type information</li>
+<li><code>it</code>: variable bound to the value of the last evaluated expression</li>
+</ul>
+<h3>Prelude functions</h3>
+<ul>
+<li><code>&amp;&amp;</code> :: <code>Bool -&gt; Bool -&gt; Bool</code> … <em>short-circuiting boolean operator.</em></li>
+<li><code>++</code> :: <code>[a] -&gt; [a] -&gt; [a]</code></li>
+<li><code>break</code> :: <code>(a -&gt; Bool) -&gt; [a] -&gt; ([a], [a])</code> … <em>breaks a list into two (consumes input while predicate fails).</em></li>
+<li><code>span</code> :: <code>(a -&gt; Bool) -&gt; [a] -&gt; ([a], [a])</code> … <em>breaks a list into two (consumes input while predicate succeeds).</em></li>
+<li><code>ceiling</code> :: <code>(Integral b, RealFrac a) =&gt; a -&gt; b</code></li>
+<li><code>splitAt</code> :: <code>Int -&gt; [a] -&gt; ([a], [a])</code></li>
+<li><code>takeWhile</code> :: <code>(a -&gt; Bool) -&gt; [a] -&gt; [a]</code></li>
+<li><code>dropWhile</code> :: <code>(a -&gt; Bool) -&gt; [a] -&gt; [a]</code></li>
+<li><code>compare</code> :: <code>Ord a =&gt; a -&gt; a -&gt; Ordering</code></li>
+<li><code>concat</code> :: <code>Foldable t =&gt; t [a] -&gt; [a]</code></li>
+<li><code>drop</code> :: <code>Int -&gt; [a] -&gt; [a]</code></li>
+<li><code>elem</code> :: <code>(Eq a, Foldable t) =&gt; a -&gt; t a -&gt; Bool</code></li>
+<li><code>zip</code> :: <code>[a] -&gt; [b] -&gt; [(a, b)]</code>) … <em>also has variants for up to 7 lists (<code>zip7</code>).</em></li>
+<li><code>zipWith</code> :: <code>(a -&gt; b -&gt; c) -&gt; [a] -&gt; [b] -&gt; [c]</code>) … <em>also has variants for up to 7 lists (<code>zipWith7</code>).</em></li>
+<li><code>notElem</code> :: <code>(Eq a, Foldable t) =&gt; a -&gt; t a -&gt; Bool</code></li>
+<li><code>error</code> :: <code>[Char] -&gt; a</code></li>
+<li><code>floor</code> :: <code>(Integral b, RealFrac a) =&gt; a -&gt; b</code></li>
+<li><code>fromIntegral</code> :: <code>(Integral a, Num b) =&gt; a -&gt; b</code></li>
+<li><code>fst</code> :: <code>(a, b) -&gt; a</code></li>
+<li><code>head</code> :: <code>[a] -&gt; a</code> … <em>first element of list (raises an exception if applied to an empty list)</em></li>
+<li><code>init</code> … <em>all but last element of a list (raises exception if applied to an empty list)</em></li>
+<li><code>last</code> … <em>last element of a list (raises exception if applied to an empty list)</em></li>
+<li><code>length</code> :: <code>Foldable t =&gt; t a -&gt; Int</code></li>
+<li><code>lines</code> :: <code>String -&gt; [String]</code></li>
+<li><code>mod</code> :: <code>Integral a =&gt; a -&gt; a -&gt; a</code> … <em>modulo (remainder after division)</em></li>
+<li><code>filter</code> :: <code>(a -&gt; Bool) -&gt; [a] -&gt; [a]</code></li>
+<li><code>not</code> :: <code>Bool -&gt; Bool</code></li>
+<li><code>null</code> :: <code>Foldable t =&gt; t a -&gt; Bool</code> … <em>indicates whether a list is empty</em></li>
+<li><code>odd</code> :: <code>Integral a =&gt; a -&gt; Bool</code></li>
+<li><code>even</code> :: <code>Integral a =&gt; a -&gt; Bool</code></li>
+<li><code>map</code> :: <code>(a -&gt; b) -&gt; [a] -&gt; [b]</code> … <em>but consider using <code>fmap</code> instead.</em></li>
+<li><code>negate</code> :: <code>Num a =&gt; a -&gt; a</code></li>
+<li><code>pred</code> :: <code>Enum a =&gt; a -&gt; a</code></li>
+<li><code>print</code> :: <code>Show a =&gt; a -&gt; IO ()</code></li>
+<li><code>read</code> :: <code>Read a =&gt; String -&gt; a</code></li>
+<li><code>show</code> :: <code>Show a =&gt; a -&gt; String</code></li>
+<li><code>readFile</code> :: <code>FilePath -&gt; IO String</code></li>
+<li><code>reverse</code> :: <code>[a] -&gt; [a]</code></li>
+<li><code>round</code> :: <code>(Integral b, RealFrac a) =&gt; a -&gt; b</code></li>
+<li><code>snd</code> :: <code>(a, b) -&gt; b</code></li>
+<li><code>sqrt</code> :: <code>Floating a =&gt; a -&gt; a</code></li>
+<li><code>succ</code> :: <code>Enum a =&gt; a -&gt; a</code></li>
+<li><code>tail</code> :: <code>[a] -&gt; [a]</code> … <em>non-head part of list (raises an exception if applied to an empty list)</em></li>
+<li><code>take</code> :: <code>Int -&gt; [a] -&gt; [a]</code></li>
+<li><code>truncate</code> :: <code>(Integral b, RealFrac a) =&gt; a -&gt; b</code></li>
+<li><code>unlines</code> :: <code>[String] -&gt; String</code></li>
+<li><code>words</code> :: <code>String -&gt; [String]</code></li>
+<li><code>unwords</code> :: <code>[String] -&gt; String</code></li>
+<li><code>||</code> :: <code>Bool -&gt; Bool -&gt; Bool</code> … <em>short-circuiting boolean operator</em></li>
+<li><code>and</code> :: <code>Foldable t =&gt; t Bool -&gt; Bool</code></li>
+<li><code>or</code> :: <code>Foldable t =&gt; t Bool -&gt; Bool</code></li>
+<li><code>all</code> :: <code>Foldable t =&gt; (a -&gt; Bool) -&gt; t a -&gt; Bool</code></li>
+<li><code>any</code> :: <code>Foldable t =&gt; (a -&gt; Bool) -&gt; t a -&gt; Bool</code></li>
+<li><code>seq</code> :: <code>a -&gt; b -&gt; b</code> … <em>force non-lazy evaluation of first argument, then return second argument</em></li>
+<li><code>intercalate</code> :: <code>[a] -&gt; [[a]] -&gt; [a]</code></li>
+</ul>
+<h3><code>Data.Bits</code></h3>
+<ul>
+<li><code>.|.</code> :: <code>Bits a =&gt; a -&gt; a -&gt; a</code></li>
+<li><code>.&amp;.</code> :: <code>Bits a =&gt; a -&gt; a -&gt; a</code></li>
+<li><code>shiftL</code> :: <code>Bits a =&gt; a -&gt; Int -&gt; a</code></li>
+<li><code>shiftR</code> :: <code>Bits a =&gt; a -&gt; Int -&gt; a</code></li>
+</ul>
+<h3><code>Data.Char</code></h3>
+<ul>
+<li><code>digitToInt</code> :: <code>Char -&gt; Int</code></li>
+<li><code>ord</code> :: <code>Char -&gt; Int</code></li>
+<li><code>toUpper</code> :: <code>Char -&gt; Char</code></li>
+</ul>
+<h3><code>Data.List</code></h3>
+<ul>
+<li><code>isInfixOf</code> :: <code>Eq a =&gt; [a] -&gt; [a] -&gt; Bool</code></li>
+<li><code>isPrefixOf</code> :: <code>Eq a =&gt; [a] -&gt; [a] -&gt; Bool</code></li>
+<li><code>isSuffixOf</code> :: <code>Eq a =&gt; [a] -&gt; [a] -&gt; Bool</code></li>
+<li><code>tails</code> :: <code>[a] -&gt; [[a]]</code> … <em>returns all tails of a list</em></li>
+</ul>
+<h3>Data.ratio</h3>
+<ul>
+<li><code>%</code> :: <code>Integral a =&gt; a -&gt; a -&gt; Ratio a</code></li>
+</ul>
+<h3><code>Debug.Trace</code></h3>
+<ul>
+<li><code>trace</code> :: <code>String -&gt; a -&gt; a</code></li>
+<li><code>traceM</code> :: <code>String -&gt; m ()</code> (for use in <code>do</code> notation)</li>
+</ul>
+<h3><code>Numeric</code></h3>
+<ul>
+<li><code>showHex</code> :: <code>(Integral a, Show a) =&gt; a -&gt; ShowS</code></li>
+</ul>
+<h3>Syntax</h3>
+<ul>
+<li><code>--</code>: begin a single-line comment</li>
+<li><code>{- ... -}</code>: in-line comment</li>
+<li><code>if</code>/<code>then</code>/<code>else</code>: conditional expression</li>
+<li><code>$</code>: function application (low precedence)</li>
+<li><code>.</code>: function composition (<code>(f . g) x</code> is same as <code>f (g x)</code>).</li>
+<li><code>let</code> + <code>in</code>: create bound variables with the scope of an expression</li>
+<li><code>where</code>: like <code>let</code>, but at top level of equation; not an expression</li>
+<li><code>case (something) of (pattern) -&gt; expression</code>: pattern matching within expressions</li>
+<li><code>|</code>: guard (additionally restricts a pattern match)</li>
+<li><code>`fn`</code> (backticks): apply <code>fn</code> in infix position</li>
+<li><code>foo@(x:xs)</code> (&quot;as-pattern&quot;): refer to entirety of pattern match contents</li>
+<li><code>::</code>: disambiguate a type (eg. <code>read &quot;5&quot; :: Double</code>)</li>
+</ul>
+<h3>Importing modules</h3>
+<pre><code>import Data.Set -- import everything from Data.Set (unqualified dump into top-level scope)
+import Data.Set (member, union) -- import only named bindings
+import qualified Data.Set -- import everything, but bound as Data.Set.{name}
+import qualified Data.Set as Set -- import using an alias Set.{name}
+import qualified Data.Set as Set (member, union) -- partial, aliased, qualified import
+</code></pre>
+<h3>Defining modules</h3>
+<pre><code>-- Simple: Foo.hs
+module Foo (bar, baz) where
+  bar = 1
+  baz = id
+
+-- Nested: Bar/Baz.hs
+module Bar.Baz (
+  , Thing -- export (abstract/opaque) type but not constructor(s)
+  , Other(..) -- exports type and constructors (for pattern matching etc)
+  , x
+  ) where
+  data Thing = Thing Int
+  data Other = Other String
+  x = 2
+</code></pre>
+<h3>Types</h3>
+<ul>
+<li><code>Double</code>: double-precision floating point.</li>
+<li><code>Float</code>: single-precision floating point.</li>
+<li><code>Int</code>: fixed precision <em>signed</em> integer (bounds are architecture-dependent and given by <code>maxBound :: Int</code> and <code>minBound :: Int</code>).</li>
+<li><code>Word</code>: fixed precision <em>unsigned</em> integer (bounds: <code>minBound :: Word</code> — ie. 0 — and <code>maxBound :: Word</code>).</li>
+<li><code>Integer</code>: arbitrary precision integer.</li>
+</ul>
+<h3>Defining new types</h3>
+<pre><code>-- &quot;Thing&quot; type constructor (for pattern matching)
+-- &quot;Thing&quot; value constructor (for creating values of the type)
+data Thing = Thing Int String [String]
+             deriving (Eq, Show)
+
+-- Record syntax (note: no trailing comma allowed)
+data Thing = Thing {
+          customerID :: CustomerID,
+          customerName :: String,
+          customerAddress :: [String]
+        } deriving (Eq, Show)
+
+-- Create values using either named fields:
+myThing = Thing { customerID = 1234, customerName = &quot;Jane&quot;, customerAddress = [&quot;PO Box 1&quot;] }
+
+-- Or anonymous, ordered fields:
+myThing = Thing 1234 &quot;John&quot; [&quot;1 Infinite Loop&quot;]
+
+-- Algebraic types with multiple value constructors
+data PaymentRecord = CreditCard | CashAccount
+data Color = Red | Green | Blue deriving (Eq, Show)
+
+-- Create a synonym for an existing type
+type RecordLocator = String
+
+-- Same, but for a tuple
+type ContactDetails = (Name, PhoneNumber, Address)
+
+-- Wrap a type to present it as something else (eg. List as ZipList).
+-- Can only have one value constructor, and constructor can only have one field.
+newtype ZipList a = ZipList { getZipList :: [a] }
+newtype CharList = CharList { getCharList :: [Char] } deriving (Eq, Show)
+</code></pre>
+<h3>Type classes</h3>
+<pre><code>-- Definition
+class Eq a where
+  (==) :: a -&gt; a -&gt; Bool
+  (/=) :: a -&gt; a -&gt; Bool
+  x == y = not (x /= y) -- note the circularity here
+  x /= y = not (x == y) -- meaning that you only have to implement one
+
+-- Making a type an instance of a type class
+data MyStatus = Started | Stopped
+instance Eq MyStatus where
+  Started == Started = True
+  Stopped == Stopped = True
+  _ == _ = False
+
+-- Types can be instances of many type classes at once
+instance Show MyStatus where
+  show Started = &quot;Started&quot;
+  show Stopped = &quot;Stopped&quot;
+
+-- Defining a subclass of another typeclass
+-- (in order to be an instance of `Num`, you must be an instance of `Eq`)
+class (Eq a) =&gt; Num where
+  ...
+
+-- Parameterized types as instances of type classes
+-- (works for `Mabye Int`, `Maybe Char`, `Maybe Something` etc,
+-- as long as `Something` is an instance of the `Eq` typeclass)
+instance (Eq m) =&gt; Eq (Maybe m) where
+  Just x == Just y = x == y
+  Nothing == Nothing = true
+  _ == _ = False
+
+-- Show instances of a type class
+:info Maybe
+</code></pre>
+<h3>Pattern matching</h3>
+<pre><code>-- Multiple function definitions matching on type constructors
+sumList (x:xs) = x + sumList xs
+sumList [] = 0
+
+-- Note we could also have written that last one as:
+sumList _ = 0
+</code></pre>
+<h3>Pragmas</h3>
+<p>Enabled with <code>{-# LANGUAGE p1, p2... #-}</code>, where <code>p1</code>, <code>p2</code> etc are drawn from:</p>
+<ul>
+<li><code>TypeSynonymInstances</code>: Allow specialized polymorphic types (eg. <code>String</code> or <code>[Char]</code>) to be instances of a typeclass (as opposed to just <code>[a]</code>).</li>
+<li><code>OverlappingInstances</code>: Given two instances that overlap (eg. <code>[a]</code> and <code>[String]</code>), choose the more specific one.</li>
+</ul>
+<h3>Functors (<code>Functor</code> typeclass)</h3>
+<p>Implement <code>fmap :: (a -&gt; b) -&gt; f a -&gt; f b</code> and comply with the two functor laws:</p>
+<ol>
+<li><code>fmap id</code> must equal <code>id</code>.</li>
+<li><code>fmap (p . q)</code> must equal <code>(fmap p) . (fmap q)</code>.</li>
+</ol>
+<p>In plain English, a functor is a value in a &quot;context&quot;, supporting an <code>fmap</code> operation for applying a function to the value while preserving that &quot;context&quot;. The second functor law means that we can freely compose functions and apply them using <code>fmap</code>, or compose the results of applying <code>fmap</code> to functions, and get the same result.</p>
+<p>Example functors:</p>
+<ul>
+<li>Lists.</li>
+<li>Functions.</li>
+<li><code>Maybe</code>.</li>
+</ul>
+<h3>Applicative functors (<code>Applicative</code> typeclass)</h3>
+<p>These are functors where the value itself can be applied (ie. they are functions in a &quot;context&quot;).</p>
+<ul>
+<li>Implement <code>pure</code> (wraps value in applicative).</li>
+<li>Implement <code>&lt;*&gt;</code>, pronounced &quot;apply&quot; (<code>(Applicative f) =&gt; f (a -&gt; b) -&gt; f a -&gt; f b</code>).</li>
+<li>Additionally, <code>&lt;$&gt;</code>, pronounced &quot;fmap&quot;: this is an infix <code>fmap</code>.</li>
+<li>Note that all applicatives are functors.</li>
+</ul>
+<p>Example applicative functors:</p>
+<ul>
+<li>Lists.</li>
+<li><code>Maybe</code>.</li>
+<li><code>Options.Applicative</code> (from the <a href="https://github.com/pcapriotti/optparse-applicative">optparse-applicative</a> package).</li>
+<li>The <a href="http://hackage.haskell.org/package/aeson">aeson</a> JSON parser.</li>
+</ul>
+<h3>Monoids (<code>Monoid</code> typeclass)</h3>
+<ul>
+<li>Implement a <code>mappend</code> binary function (<code>m -&gt; m -&gt; m</code>).</li>
+<li>The function must be associative (ie. <code>(3 + 4) + 5</code> is equivalent to <code>3 + (4 + 5)</code>).</li>
+<li>There must be an identity value (<code>mempty</code>) that when applied to either side of the function returns the other value unmodified.</li>
+<li>Implement an <code>mconcat</code> (<code>[m] -&gt; m</code>) function that flattens (eg. <code>foldr mappend mempty</code>).</li>
+</ul>
+<p>Example monoids:</p>
+<ul>
+<li>Lists.</li>
+<li><code>Product</code> (ie. <code>Num</code> <code>newtype</code> with <code>mempty</code>: <code>1</code> and <code>mappend</code>: <code>*</code>).</li>
+<li><code>Sum</code> (ie. <code>Num</code> <code>newtype</code> with <code>mempty</code>: <code>0</code> and <code>mappend</code>: <code>+</code>).</li>
+<li><code>Any</code> (ie. <code>Bool</code> with <code>mempty</code>: <code>False</code> and <code>mappend</code>: <code>||</code>).</li>
+<li><code>All</code> (ie. <code>Bool</code> with <code>mempty</code>: <code>True</code> and <code>mappend</code>: <code>&amp;&amp;</code>).</li>
+<li><code>Ordering</code>.</li>
+<li><code>Maybe</code>.</li>
+</ul>
+<h3>Monads</h3>
+<p>Applicative functors (enforced by type constraint as of GHC 7.10) that additionally define <code>&gt;&gt;=</code>, or &quot;bind&quot; (ie. <code>(Monad m) =&gt; m a -&gt; (a -&gt; m b) -&gt; m b</code>).</p>
+<p>Example monads:</p>
+<ul>
+<li><code>Either</code>.</li>
+<li><code>Maybe</code>.</li>
+<li><code>Either</code>.</li>
+<li><code>[]</code>.</li>
+<li><code>IO</code>.</li>
+</ul>
+<h2>Other topics</h2>
+<h3>Command-line options parsing</h3>
+<ul>
+<li><a href="https://robots.thoughtbot.com/applicative-options-parsing-in-haskell">Applicative Options Parsing in Haskell</a></li>
+</ul>
+<h3>Parsing</h3>
+<ul>
+<li><a href="http://jakewheat.github.io/intro_to_parsing/">Intro to Parsing with Parsec in Haskell</a>.</li>
+<li><a href="https://www.youtube.com/watch?v=r_Enynu_TV0">Parsing Stuff in Haskell</a> (video).</li>
+<li><a href="http://blog.ezyang.com/2014/05/parsec-try-a-or-b-considered-harmful/">Parsec: &quot;try a &lt;|&gt; b&quot; considered harmful</a>.</li>
+<li><a href="https://www.schoolofhaskell.com/school/to-infinity-and-beyond/pick-of-the-week/parsing-floats-with-parsec">Parsing Floats With Parsec</a>.</li>
+<li><a href="https://www.vex.net/~trebla/haskell/parsec-generally.xhtml">Parsec Generally</a></li>
+<li><a href="https://spin.atomicobject.com/2012/03/16/using-text-parsec-indent-to-parse-an-indentation-sensitive-language-with-haskells-parsec-library/">Using text.parsec.indent to Parse an Indentation-Sensitive Language with Haskell's Parsec Library</a></li>
+<li><a href="http://blog.moertel.com/posts/2005-08-27-power-parsing-with-haskell-and-parsec.html">Power parsing with Haskell and Parsec</a></li>
+<li><a href="http://stuckinaninfiniteloop.blogspot.com/2011/10/left-recursion-in-parsec.html">Left-recursion in Parsec</a></li>
+</ul>
+<h3>Publishing</h3>
+<ul>
+<li><a href="https://begriffs.com/posts/2014-10-25-creating-package-hackage.html">Creating a package on Hackage</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

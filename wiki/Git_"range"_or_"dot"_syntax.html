@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git &quot;range&quot; or &quot;dot&quot; syntax • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git &quot;range&quot; or &quot;dot&quot; syntax</h1></div><div class="metadata"><relative-time created="1312019945" updated="1584053324">Created 7/30/2011, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2><code>git log A..B</code> (two dots)</h2>
+<p>While this syntax looks like a &quot;range&quot; of commits from <code>A</code> to <code>B</code>, it is actually a short hand for <code>git log ^A B</code>; ie:</p>
+<ul>
+<li>show all commits reachable from <code>B</code>; <code>B</code> itself is <em>included</em></li>
+<li>excluding those reachable from <code>A</code>; <code>A</code> itself is <em>excluded</em></li>
+</ul>
+<p>So given the following history (with the oldest commits on the left, the newest on the right):</p>
+<pre><code>*--*--*--A--*--*--*--B
+</code></pre>
+<p><code>git log A..B</code> will show all the commits to the right of A.</p>
+<p>Note that <code>git log A..</code> is equivalent to <code>git log A..HEAD</code>.</p>
+<h2><code>git log A...B</code> (three dots)</h2>
+<p>The <code>git-rev-list</code> man page describes this as a special notation for &quot;symmetric difference&quot;. It is equivalent to <code>git log A B --not $(git merge-base --all A B)</code>.</p>
+<p>In plain English, this means &quot;all commits that are reachable from either <code>A</code> or <code>B</code> but not from both.</p>
+<h3>Comparison with <code>git cherry</code></h3>
+<p>I am not sure if this is a very useful thing to see. Slightly more interesting is seeing what commits are in the topic branch <code>B</code> but which haven't yet been merged or cherry-picked into master (whose HEAD is at <code>A</code>):</p>
+<pre><code class="language-shell">$ git cherry -v master topic
+</code></pre>
+<p>This prints a list of commits from the topic branch that aren't yet in the master branch, with a couple of possible prefixes:</p>
+<ul>
+<li><code>-</code> indicates that the equivalent change for this commit is already in the master branch (for example, via cherry-picking)</li>
+<li><code>+</code> indicates that the commit is only in the topic branch</li>
+</ul>
+<p>Note that all params to <code>git-cherry</code> are optional. The first param, the &quot;upstream&quot;, defaults to the first tracked remote, and the second param, the &quot;head&quot;, defaults to the current branch head. This means that if you are on the topic branch already, then simply running <code>git cherry -v</code> will often do the right thing.</p>
+<h3>Alternatives to <code>git cherry</code></h3>
+<p>Yet another alternative is:</p>
+<pre><code class="language-shell">$ git log --cherry-pick A...B # three dots
+</code></pre>
+<p>This again performs our symmetric difference, but the <code>--cherry-pick</code> switch will suppress changes which appear in both branches or have been cherry-picked over.</p>
+<h2><code>git diff A..B</code> (two dots)</h2>
+<p>Equivalent to <code>git diff A B</code> (ie. it just shows a diff of <code>A</code> against <code>B</code>).</p>
+<h2><code>git diff A...B</code> (three dots)</h2>
+<p>Equivalent to <code>git diff $(git merge-base A B) B</code> (ie. shows changes in branch <code>B</code> since it was branched from branch <code>A</code>).</p>
+<p>A common usage scenario is to run something like <code>git diff master...topic</code>, to see what changes have been made in a topic branch since it was branched from the master branch, even when the master branch has moved on in the meantime:</p>
+<pre><code>        X
+        |
+        | T
+        | |
+        | |
+        | |
+        |/
+        B
+        |
+        |
+        S
+</code></pre>
+<p>So, if we start development at <code>S</code> on the master branch, branch a topic off at <code>B</code> and develop it to <code>T</code>, and meanwhile development on master continues to its current HEAD at <code>X</code>, then:</p>
+<ul>
+<li><code>git diff master..topic</code> will show us the difference between <code>X</code> and <code>T</code></li>
+<li><code>git diff master...topic</code> will show us the difference between <code>B</code> and <code>T</code></li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li><a href="http://stackoverflow.com/questions/462974/whats-the-difference-between-and-in-git-commit-ranges">http://stackoverflow.com/questions/462974/whats-the-difference-between-and-in-git-commit-ranges</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

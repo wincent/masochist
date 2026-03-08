@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Setting up gitweb • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Setting up gitweb</h1></div><div class="metadata"><relative-time created="1195047894" updated="1584053324">Created 11/14/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/gitweb">gitweb</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Overview</h2>
+<p>Once the initial set-up is done, adding new projects to an existing <a href="/wiki/Gitweb">Gitweb</a> installation is very easy. Notes on the initial set-up appear below. To add an additional project, all that is required is:</p>
+<pre><code>cd path_to_repo
+echo &quot;Description of this repository&quot; | sudo -u git tee description
+echo &quot;repository.git owner@example.com&quot; | sudo -u git tee -a /pub/git/conf/gitweb-projects
+</code></pre>
+<h2>Preparation</h2>
+<h3>Prerequisites</h3>
+<p>Check that the required <a href="/wiki/Perl">Perl</a> modules are available:</p>
+<pre><code># should run without errors (exit code 0):
+perl -mCGI -mEncode -mFcntl -mFile::Find -mFile::Basename -e &quot;&quot;
+echo $?
+</code></pre>
+<p>Note that as of <a href="/wiki/Git_1.5.3.1">Git 1.5.3.1</a> a newer version of the Encode module is required than that which ships with <a href="/wiki/Red_Hat_Enterprise_Linux">Red Hat Enterprise Linux</a> 3 (see &quot;<a href="/wiki/Fixing_gitweb_breakage_on_Red_Hat_Enterprise_Linux_3">Fixing gitweb breakage on Red Hat Enterprise Linux 3</a>&quot; for more information).</p>
+<h3>Repository set-up</h3>
+<p>Edit <code>repository.git/description</code> for each repository that you want to be managed by <a href="/wiki/gitweb">gitweb</a>.</p>
+<h3>Filesystem set-up</h3>
+<p>Assuming your <code>git</code> user (the owner of the <a href="/wiki/Git">Git</a> repositories) has its home directory at <code>/pub/git/</code>:</p>
+<pre><code>cd /pub/git
+sudo -u git mkdir conf
+sudo -u git mkdir logs
+</code></pre>
+<p>For security we'll run the <code>gitweb.cgi</code> script using <a href="/wiki/suEXEC">suEXEC</a>; in order for it to work we must install the script under the Apache docroot. A symbolic link is created back to the <code>git</code> user's home directory as well.</p>
+<pre><code>sudo -u git mkdir path_to_apache_doc_root/git.example.com
+sudo ln -s path_to_apache_doc_root/git.example.com public_html
+</code></pre>
+<h3>Apache set-up</h3>
+<p>A <code>VirtualHost</code> block similar to the following needs to be added to the <a href="/wiki/Apache">Apache</a> <code>httpd.conf</code>:</p>
+<pre><code>&lt;VirtualHost *:80&gt;
+  DocumentRoot &quot;/pub/git/public_html&quot;
+  ServerName git.example.com
+  SuexecUserGroup git git
+
+  &lt;Directory &quot;/pub/git/public_html&quot;&gt;
+    Options Indexes FollowSymlinks ExecCGI
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+    DirectoryIndex gitweb.cgi
+    RewriteEngine on
+    RewriteCond	%{REQUEST_FILENAME}	!-f
+    RewriteCond	%{REQUEST_FILENAME}	!-d
+    RewriteRule	^.*	/gitweb.cgi/$0 [L,PT]
+  &lt;/Directory&gt;
+
+  # for debugging rewrite rules
+  [/tags/RewriteLog #RewriteLog] /pub/git/logs/rewrite_log
+  [/tags/RewriteLogLevel #RewriteLogLevel] 9
+
+  ErrorLog /pub/git/logs/error_log
+  LogLevel warn
+  CustomLog /pub/git/logs/access_log &quot;combined&quot;
+&lt;/VirtualHost&gt;
+</code></pre>
+<p>These were the directives that I arrived at via trial and error. For some reason on my system the <code>SetEnv</code> directive did not work (perhaps due to an interaction with <a href="/wiki/suEXEC">suEXEC</a>?) and neither did the <code>RewriteRule</code> in the <a href="/wiki/gitweb">gitweb</a> <code>README</code> file; this is why I temporarily added in the <code>RewriteLog</code> and <code>RewriteLogLevel</code> directives in order to troubleshoot (it turns out that the leading slash had to be removed).</p>
+<h3>Building gitweb</h3>
+<p>This <code>make</code> invocation worked on my local system:</p>
+<pre><code># from top-level of Git source tree
+make prefix=/usr/local \
+     GITWEB_PROJECTROOT=/pub/git/path_to_public_repos \
+     GITWEB_LIST=/pub/git/conf/gitweb-projects \
+     GITWEB_STRICT_EXPORT=1 \
+     GITWEB_CSS=&quot;/gitweb.css&quot; \
+     GITWEB_LOGO=&quot;/git-logo.png&quot; \
+     GITWEB_FAVICON=&quot;/git-favicon.png&quot; \
+     GITWEB_CONFIG=&quot;/pub/git/conf/gitweb.conf&quot; \
+     gitweb/gitweb.cgi
+sudo -u git cp gitweb/gitweb.{cgi,css} \
+               gitweb/git-*.png \
+               /pub/git/public_html
+</code></pre>
+<h3>Configuring gitweb</h3>
+<p>Although some configuration is passed in during the <code>make</code> it is still necessary to perform some additional configuration that will be used at runtime.</p>
+<p>For each repository that will be visible in <a href="/wiki/gitweb">gitweb</a> we add an entry to the <code>gitweb-projects</code> list indicating the owner:</p>
+<pre><code>echo &quot;repository.git owner@example.com&quot; | sudo -u git tee -a /pub/git/conf/gitweb-projects
+</code></pre>
+<p>We also prepare our <code>gitweb.conf</code> file:</p>
+<pre><code>sudo -u git tee /pub/git/conf/gitweb.conf &lt;&lt;\EOF
+# turn off potentially CPU-intensive features
+$feature{'search'}{'default'} = [undef];
+$feature{'blame'}{'default'} = [undef];
+$feature{'pickaxe'}{'default'} = [undef];
+$feature{'grep'}{'default'} = [undef];
+$feature{'snapshot'}{'default'} = [undef];
+
+# nicer-looking URLs (requires Apache rewrite rules to be set up)
+$feature{'pathinfo'}{'default'} = [1];
+$my_uri = &quot;http://git.example.com&quot;;
+$home_link = &quot;http://git.example.com/&quot;;
+
+$site_name = &quot;git.example.com&quot;;
+EOF
+</code></pre>
+<p>Note that seeing as this is my first <a href="/wiki/gitweb">gitweb</a> installation I want to trial things conservatively at first and so turn off some of the more CPU-intensive features. Also note that in order to turn on the nicer-looking <a href="/wiki/URLs">URLs</a> (the <code>pathinfo</code> feature) it is necessary to set up <code>my_uri</code> as well. These URLs work because of the <code>RewriteRule</code> in the <code>httpd.conf</code>. I also found that the <code>pathinfo</code> feature required me to explicitly set my <code>$home_link</code>, because otherwise the &quot;projects&quot; link didn't point to the true root (ie. it pointed to URLs like <a href="http://git.example.com/repo.git">http://git.example.com/repo.git</a> instead of <a href="http://git.example.com/">http://git.example.com/</a>).</p>
+<h3>Troubleshooting</h3>
+<h4>suEXEC problems</h4>
+<p>One of the problems I encountered when trying to set this up was that in the web browser I was getting an internal server error and this in the <code>error_log</code>:</p>
+<pre><code>Premature end of script headers: gitweb.cgi
+</code></pre>
+<p>But when running from the command line everything was working:</p>
+<pre><code>./gitweb.cgi
+</code></pre>
+<p>I temporarily set up <a href="/wiki/Apache">Apache</a> <code>LogLevel</code> to <code>debug</code> but no additional output was produced, so this lead me to check the <a href="/wiki/suEXEC">suEXEC</a> log (location may vary depending on your system; try <code>locate suexec.log</code>):</p>
+<pre><code>[2007-07-15 11:26:28]: uid: (647/git) gid: (650/650) cmd: gitweb.cgi
+[2007-07-15 11:26:28]: command not in docroot (/pub/git/cgi-bin/gitweb.cgi)
+</code></pre>
+<p>This was what lead me to move the public <a href="/wiki/HTML">HTML</a> folder for the <code>git</code> user under <a href="/wiki/Apache">Apache</a>'s docroot, and then put a <code>public_html</code> symlink in the <code>git</code> user's home directory.</p>
+<h4>MIME types</h4>
+<p>I also found that <a href="/wiki/Gitweb">Gitweb</a> was serving <code>.sh</code> files stored in repositories using a MIME type that led browsers to download them rather than displaying them. This was due to the following line in <code>/etc/mime.types</code>:</p>
+<pre><code>application/x-sh sh
+</code></pre>
+<p>This line causes these <a href="/wiki/HTTP">HTTP</a> headers to be sent when trying to view an <code>.sh</code> file:</p>
+<pre><code>Transfer-Encoding: chunked
+Content-Type: application/x-sh
+</code></pre>
+<p>Compare that to the headers sent trying to view an <code>.rb</code> file:</p>
+<pre><code>Transfer-Encoding: chunked
+Content-Type: text/html; charset=utf-8
+</code></pre>
+<p>Commenting out the line in <code>/etc/mime.types</code> causes these headers to be sent instead:</p>
+<pre><code>Transfer-Encoding: chunked
+Content-Type: text/plain; charset=ISO-8859-1
+</code></pre>
+<p>And the browser displays the file rather than downloading it.</p>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Migrating_Subversion_repositories_to_Git">Migrating Subversion repositories to Git</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

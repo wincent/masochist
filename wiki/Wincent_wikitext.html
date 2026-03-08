@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Wincent wikitext • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Wincent wikitext</h1></div><div class="metadata"><relative-time created="1183463877" updated="1584053324">Created 7/3/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><a href="/wiki/Wincent_wikitext">Wincent wikitext</a> is a specific flavor of <a href="/wiki/wikitext">wikitext</a> based on the version implemented in the popular <a href="/wiki/MediaWiki">MediaWiki</a> <a href="/wiki/wiki">wiki</a> software.</p>
+<h2>Rationale</h2>
+<p>Over the years I've had to edit text in a number of <a href="/wiki/markup">markup</a> formats, including <a href="/wiki/Markdown">Markdown</a> (often), <a href="/wiki/Textile">Textile</a> (sometimes) and <a href="/wiki/HTML">HTML</a> itself (often). Upon installing <a href="/wiki/MediaWiki">MediaWiki</a> and working with it I gradually came to warm to its <a href="/wiki/wikitext">wikitext</a> <a href="/wiki/markup">markup</a> and it is now my preferred markup format when the target output is <a href="/wiki/HTML">HTML</a>.</p>
+<p>So when working on a <a href="/wiki/Rails">Rails</a> rewrite of my website I decided that <a href="/wiki/wikitext">wikitext</a> would be <em>the</em> markup format used ubiquitously throughout. As it would be heavily used I wanted it to be fast, so I wanted a <a href="/wiki/C">C</a> solution rather than a pure <a href="/wiki/Ruby">Ruby</a> one.</p>
+<p>So I started working on an <a href="/wiki/ANTLR">ANTLR</a> grammar for <a href="/wiki/parsing">parsing</a> <a href="/wiki/wikitext">wikitext</a> and transforming it to <a href="/wiki/HTML">HTML</a>. This page contains notes on the grammar design.</p>
+<h2>Grammar</h2>
+<h3>Overall characteristics</h3>
+<ul>
+<li><strong>The input markup should be extremely simple and clean</strong>: As a result I plan to support only a subset of the <a href="/wiki/MediaWiki">MediaWiki</a> <a href="/wiki/markup">markup</a>; this means omitting complex features like tables and supporting a single syntax for each desired output style (for example, '''apostrophes around text''' to indicate strong) rather than multiple alternative syntaxes (such as &lt;strong&gt;HTML tags&lt;/strong&gt; for the same effect).</li>
+<li><strong>The parser should be extremely tolerant of bad input</strong>: Like <a href="/wiki/MediaWiki">MediaWiki</a>, the parser should never bail upon receiving bad input and it should do an excellent job of cleaning up illegal tags, invalid nesting and the like.</li>
+<li><strong>The parser should handle <a href="/wiki/Unicode">Unicode</a></strong>.</li>
+<li><strong>The parser should be fast</strong>: this was why I decided to use the <a href="/wiki/ANTLR">ANTLR</a> <a href="/wiki/C_target">C target</a>, combined with a <a href="/wiki/Ruby">Ruby</a> extension written in <a href="/wiki/C">C</a>.</li>
+</ul>
+<h3>Nesting</h3>
+<p>As the target output of the parser is <a href="/wiki/HTML">HTML</a> the <a href="/wiki/HTML">HTML</a> nesting rules apply to the input source as well. There are two basic classes of elements:</p>
+<ul>
+<li><strong>Block-level elements</strong>: these are elements which can appear in the outermost scope of the input; these include &lt;pre&gt;, &lt;blockquote&gt;, &lt;p&gt;, &lt;ol&gt;, &lt;ul&gt; and the headings (&lt;h1&gt; through &lt;h6&gt;).</li>
+<li><strong>Inline elements</strong>: these elements may online appear within blocks; they include &lt;em&gt;, &lt;strong&gt; and &lt;tt&gt; spans, links, <a href="/wiki/entities">entities</a> and regular characters.</li>
+</ul>
+<p>Some nesting of block-level elements is permitted:</p>
+<ul>
+<li><em>Any</em> block-level element may be nested inside &lt;blockquote&gt;, including other &lt;blockquote&gt; elements.</li>
+<li>List block-level elements (&lt;ol&gt; and &lt;ul&gt;) may be nested inside list items (&lt;li&gt;); this allows nested, multi-level lists.</li>
+</ul>
+<p>All other nesting of block-level elements is disallowed.</p>
+<p>In general, nesting of inline elements is allowed provided the same element is not nested twice. For example:</p>
+<ul>
+<li>An &lt;em&gt; span may be nested inside a &lt;strong&gt; span</li>
+<li>A &lt;strong&gt; span may be nested inside an &lt;em&gt; span</li>
+<li>An &lt;em&gt; span may <em>not</em> be nested inside another &lt;em&gt; span, directly or indirectly; neither may a &lt;strong&gt; span be nested inside another &lt;strong&gt; span</li>
+</ul>
+<p>This complex, context-sensitive nesting requirement made it prohibitively difficult to produce an <a href="/wiki/ANTLR">ANTLR</a> <a href="/wiki/parser">parser</a>, especially when combined with the need for the parser to accept and reasonably handle even the most malformed input. So I decided to use a filtering <a href="/wiki/ANTLR">ANTLR</a> <a href="/wiki/lexer">lexer</a> to tokenize the input and process it with a hand-written <a href="/wiki/parser">parser</a>.</p>
+<p>For a detailed list of supported tags and their nesting restrictions, see &quot;<a href="/wiki/Wincent_wikitext_nesting">Wincent wikitext nesting</a>&quot;.</p>
+<h3>Error-handling strategy</h3>
+<p>If we could be sure that the input were always perfectly formed the translator could perform a fairly simple sweep over the tokens in the input stream, substituting appropriate <a href="/wiki/HTML">HTML</a> tags for each special piece of markup encountered.</p>
+<p>Such a parser would most likely produce invalid <a href="/wiki/HTML">HTML</a> when fed bad input, so we need an appropriate error-handling strategy. Our error handling strategy must balance the following concerns:</p>
+<ul>
+<li><strong>Speed</strong>: the strategy shouldn't be so involved as to be slow</li>
+<li><strong>Complexity</strong>: the strategy shouldn't be so complex that maintenance of the translator becomes difficult</li>
+<li><strong>Correctness</strong>: the strategy should produce correct <a href="/wiki/HTML">HTML</a></li>
+<li><strong>Cleverness</strong>: the strategy should try to &quot;guess&quot; what the input author intended and &quot;correct&quot; the input to match it</li>
+</ul>
+<p>I chose the simplest possible strategy, valuing speed and correctness while keeping complexity down, and pretty much ignoring the &quot;cleverness&quot; criterion. The basic strategy is to emit <a href="/wiki/HTML">HTML</a> tags upon seeing markup symbols, and upon seeing an invalid or unexpected symbol either automatically inserting any missing HTML tags required for correctness, or outputting the unexpected symbol in plain text (thus providing feedback to the author).</p>
+<p>In this example an unexpected tag in the input is output literally using <a href="/wiki/HTML_entities">HTML entities</a>:</p>
+<pre><code># input
+this tag is &lt;/em&gt; unexpected!
+
+# output
+this tag is &amp;lt;/em&amp;gt; unexpected!
+</code></pre>
+<p>This strategy results in highly visible feedback to the author that the markup is invalid and needs to be corrected.</p>
+<p>In this example a missing closing tag is automatically inserted:</p>
+<pre><code># input
+== My great heading without an end marker
+
+# output
+&lt;h2&gt;My great heading without an end marker&lt;/h2&gt;
+</code></pre>
+<p>This is a &quot;harmless&quot; error and so is silently corrected.</p>
+<h3>Parser design</h3>
+<p>As the grammar involves recursion (nested structures) a regular expression or <a href="/wiki/DFA">DFA</a>-based parser is insufficient to process the token stream. The context-sensitive nature of the stream requires that the parser have some sort of notion of what it has &quot;seen&quot; before in order to decide what to do. One way of providing it with this memory is to explicitly record pertinent &quot;seen&quot; tokens on a stack. Another way is to use recursive function calls (where the recursion itself embodies the stack).</p>
+<p>Normally this later way is the most obvious and easy (and it is indeed how recursive descent parsers work) but given that I am using the <a href="/wiki/C_target">C target</a> I don't have the luxury of such <a href="/wiki/object-oriented">object-oriented</a> niceties as instance variables and the like and it is actually fairly tricky to come up with a clean recursive design. Also, as I want to accept any input, no matter how invalid, I don't really want a backtracking design (which would be slower anyway); I just want to transform input into reasonable, valid <a href="/wiki/HTML">HTML</a> as I see it. In any case, without exceptions (which <a href="/wiki/C">C</a> doesn't have) handling backtracking starts to get quite verbose. By not having backtracking I avoid the complexity of doing it in <a href="/wiki/C">C</a> and the slowness of doing it in another language which does support exceptions.</p>
+<p>So the solution I am currently working on is based on a giant <code>switch</code> statement that takes different actions depending on the current token received from the lexer. I manually manage a scope stack indicating what the current nesting context is, and I use that to inform my decisions as to what kind of input to accept and what kind needs to be transformed (corrected). This can get a little complex for some parts of the language (mixed and nested lists, for example), but it seems like it is doable this way.</p>
+<p>I did experiment with a recursive design but I wasn't convinced by it; too much information had to be passed up and down the the call stack. For example: given a method to match <code>em</code> spans and another to match <code>strong</code> spans, I had to pass information about &quot;already seen&quot; tokens into each function because as stated elsewhere, either span can contain the other but it may not contain itself indirectly. That is, the following syntax is illegal:</p>
+<pre><code>&lt;em&gt;outer &lt;strong&gt;inner &lt;em&gt;innermost&lt;/em&gt; ... &lt;/strong&gt; ... &lt;/em&gt;
+</code></pre>
+<p>The <code>strong</code> method only knows that <code>em</code> is disallowed inside its span if the <code>em</code> method tells it so. The need to pass all this scope information along with the function calls lead me to conclude that I may as well just use the gigantic <code>switch</code> statement anyway. Time will tell if this is the best approach.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

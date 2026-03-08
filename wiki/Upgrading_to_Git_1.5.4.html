@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Upgrading to Git 1.5.4 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Upgrading to Git 1.5.4</h1></div><div class="metadata"><relative-time created="1202821488" updated="1584053324">Created 2/12/2008, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These notes were made while upgrading to <a href="/wiki/Git_1.5.4">Git 1.5.4</a>.</p>
+<h2>Local upgrade</h2>
+<p>These notes were made performing the upgrade on <a href="/wiki/Mac_OS_X">Mac OS X</a> 10.5.1 <a href="/wiki/Leopard">Leopard</a>, using a local clone of the central <a href="/wiki/Git">Git</a> repository.</p>
+<pre><code># get new stuff from upstream
+git fetch
+
+# check the signature on the tag
+git tag -v v1.5.4
+
+# switching working tree to v1.5.4
+git checkout v1.5.4
+
+# clean up any cruft that might be lying around
+make clean
+
+# build, run tests, and generate docs
+make prefix=/usr/local test doc
+
+# install
+sudo make prefix=/usr/local install install-doc
+</code></pre>
+<p>In order to build the docs you need the documentation toolchain in place; see &quot;<a href="/wiki/Setting_up_the_Git_documentation_build_chain_on_Mac_OS_X_Leopard">Setting up the Git documentation build chain on Mac OS X Leopard</a>&quot;.</p>
+<h2>Remote upgrade</h2>
+<p>On the remote server (running <a href="/wiki/RHEL_3">RHEL 3</a>) I installed from the tarball instead.</p>
+<h3>Downloading</h3>
+<pre><code>wget http://kernel.org/pub/software/scm/git/git-1.5.4.tar.bz2 \
+     http://kernel.org/pub/software/scm/git/git-1.5.4.tar.bz2.sign
+</code></pre>
+<p>Before verifying the signature some set-up of <a href="/wiki/GPG">GPG</a> is necessary; see &quot;<a href="/wiki/Upgrading_to_Git_1.5.2.4_on_Red_Hat_Enterprise_Linux">Upgrading to Git 1.5.2.4 on Red Hat Enterprise Linux</a>&quot; for more details.</p>
+<pre><code>gpg --verify git-1.5.4.tar.bz2.sign git-1.5.4.tar.bz2
+</code></pre>
+<h3>Building</h3>
+<pre><code># extract
+tar xjvf git-1.5.4.tar.bz2
+cd git-1.5.4
+
+# build and test
+nice make prefix=/usr/local test
+
+# install
+sudo make prefix=/usr/local install
+
+# get man pages
+cd ..
+wget http://www.kernel.org/pub/software/scm/git/git-manpages-1.5.4.tar.bz2 \
+     http://www.kernel.org/pub/software/scm/git/git-manpages-1.5.4.tar.bz2.sign
+
+# verify
+gpg --verify git-manpages-1.5.4.tar.bz2.sign git-manpages-1.5.4.tar.bz2
+
+# install
+sudo tar xjv -C /usr/local/man -f git-manpages-1.5.4.tar.bz2
+</code></pre>
+<h3>Updating <a href="/wiki/gitweb">gitweb</a></h3>
+<pre><code># from top-level of Git source tree
+make clean
+make prefix=/usr/local \
+     GITWEB_PROJECTROOT=/pub/git/path_to_public_repos \
+     GITWEB_LIST=/pub/git/conf/gitweb-projects \
+     GITWEB_STRICT_EXPORT=1 \
+     GITWEB_CSS=&quot;/gitweb.css&quot; \
+     GITWEB_LOGO=&quot;/git-logo.png&quot; \
+     GITWEB_FAVICON=&quot;/git-favicon.png&quot; \
+     GITWEB_CONFIG=&quot;/pub/git/conf/gitweb.conf&quot; \
+     gitweb/gitweb.cgi
+sudo -u git cp gitweb/gitweb.{cgi,css} \
+               gitweb/git-*.png \
+               /pub/git/public_html
+</code></pre>
+<h3>Fixing <code>git daemon</code> breakage</h3>
+<p>When <code>git daemon</code> handles incoming connections it will try to launch other <a href="/wiki/Git">Git</a> commands such as <code>git upload-pack</code>, <code>git upload-archive</code> and <code>git receive-pack</code>.</p>
+<p>A change in 1.5.4 means that Git now only looks in the <code>PATH</code> for such commands, not in the directory of the currently running Git executable. This in turn broke my <code>git daemon</code> set-up because I install Git into <code>/usr/local</code>, and I launch <code>git daemon</code> from within <code>xinetd</code>, but the <code>PATH</code> environment provided by <code>xinetd</code> does <em>not</em> include <code>/usr/local/bin</code>.</p>
+<p>In other words, incoming connections work because I specified an absolute path (<code>/usr/local/bin/git-daemon</code>) in the <code>xinetd</code> configuration. But as soon as the client attempts to send or receive any data, the daemon tries to launch one of the other processes and fails because <code>/usr/local/bin</code> is not in the <code>PATH</code>. So it worked under 1.5.3.8 and in previous versions, but it wouldn't work under 1.5.4.</p>
+<p>To fix this I had to add a line like this to my <code>/etc/xinetd.d/git</code> file:</p>
+<pre><code>        env = PATH=/bin:/usr/bin:/usr/local/bin
+</code></pre>
+<p>Another alternative would be to pass the <code>--exec-path</code> option to <code>git</code> as follows:</p>
+<pre><code>        server = /usr/local/bin/git
+        server_args = --exec-path=/usr/local/bin daemon --inetd --base-path=/blah -- /blah
+</code></pre>
+<p>The alternative workaround would be to install <a href="/wiki/Git">Git</a> under <code>/usr</code> rather than <code>/usr/local</code>. I am not sure if this qualifies as breakage or not — it is not unreasonable to expect people to have a correctly configured <code>PATH</code>; it is just a little surprising when you specify an absolute path to the <code>git-daemon</code> executable and it doesn't work — so I am not sure if this will be fixed in upstream Git.</p>
+<h4>Update: later <code>git daemon</code> breakage</h4>
+<p>See &quot;<a href="/wiki/fatal%3a_protocol_error%3a_bad_line_length_character">fatal: protocol error: bad line length character</a>&quot; for how I ran into trouble when another change was made in between 1.6.1 and 1.6.2 (although I only discovered the error when I updated to 1.6.3.3/1.6.4).</p>
+<p>At the time of writing (running Git 1.6.4), I use neither the explicit <code>--exec-path</code> switch nor the <code>env</code> setting in the <code>/etc/xinetd.d/git</code> file.</p>
+<p>Hoping this kind of problem won't crop up again. It's been an unfortunate consequence of my decision to install under <code>/usr/local/</code> (something which I thought qualified as &quot;standard practice&quot;, but evidently is not standard enough for it to be trouble-free).</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

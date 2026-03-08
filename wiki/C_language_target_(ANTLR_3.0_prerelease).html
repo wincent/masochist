@@ -1,0 +1,186 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>C language target (ANTLR 3.0 prerelease) • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>C language target (ANTLR 3.0 prerelease)</h1></div><div class="metadata"><relative-time created="1179482259" updated="1584053324">Created 5/18/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/antlr">antlr</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These notes made trying to figure out how to use the <a href="/wiki/C_language_target">C language target</a> with the <a href="/wiki/ANTLR">ANTLR</a> prerelease (prior to the release of <a href="/wiki/ANTLR_3.0">ANTLR 3.0</a>). With the official 3.0 release extensive examples for the <a href="/wiki/C_language_target">C language target</a> were made available, rendering these notes largely redundant. See <a href="/wiki/C_language_target">C language target</a> for the most up-to-date information.</p>
+<h2>Grammar setup</h2>
+<p>Specify the target language in the <code>options</code> block:</p>
+<pre><code>grammar Walrus;
+options { language = C; }
+</code></pre>
+<h2><code>CLASSPATH</code></h2>
+<p>To run <a href="/wiki/ANTLR">ANTLR</a> from the <a href="/wiki/command_line">command line</a> you must set up the <code>CLASSPATH</code> environment variable correctly. For example, on my system where <a href="/wiki/ANTLR">ANTLR</a> 3.0b7 is installed under <code>/usr/local/</code> I have the following in my <code>CLASSPATH</code>:</p>
+<ul>
+<li><code>/usr/local/antlr/lib/antlr-3.0b7.jar</code></li>
+<li><code>/usr/local/antlr/lib/antlr-2.7.7.jar</code></li>
+<li><code>/usr/local/antlr/lib/stringtemplate-3.0.jar</code></li>
+</ul>
+<p>I set this in my <a href="/wiki/Bash">Bash</a> shell with the following command:</p>
+<pre><code># split across two lines for readability
+export CLASSPATH=&quot;/usr/local/antlr/lib/antlr-3.0b7.jar:/usr/local/antlr/lib/antlr-2.7.7.jar&quot;
+export CLASSPATH=&quot;$CLASSPATH:/usr/local/antlr/lib/stringtemplate-3.0.jar&quot;
+</code></pre>
+<h2>Building</h2>
+<h3>Compiling the grammar</h3>
+<p>Given a grammar file, <code>Walrus.g</code>:</p>
+<pre><code>java org.antlr.Tool Walrus.g
+</code></pre>
+<p>Produces the following files:</p>
+<ul>
+<li><code>Walrus.tokens</code></li>
+<li><code>WalrusLexer.c</code></li>
+<li><code>WalrusLexer.h</code></li>
+<li><code>WalrusParser.c</code></li>
+<li><code>WalrusParser.h</code></li>
+<li><code>Walrus__.g</code></li>
+</ul>
+<p>The lexer header contains information about how to actually use it; for example, an extremely simple lexer with only a few different token types yields:</p>
+<pre><code> * The lexer WalrusLexerhas the callable functions (rules) shown below,
+ * which will invoke the code for the associated rule in the source grammar
+ * assuming that the input stream is pointing to a token/text stream that could begin
+ * this rule.
+ *
+ * For instance if you call the first (topmost) rule in a parser grammar, you will
+ * get the results of a full parse, but calling a rule half way through the grammar will
+ * allow you to pass part of a full token stream to the parser, such as for syntax checking
+ * in editors and so on.
+ *
+ * The parser entry points are called indirectly (by function pointer to function) via
+ * a parser context typedef pWalrusLexer, which is returned from a call to WalrusLexerNew().
+ *
+ * As this is a generated lexer, it is unlikely you will call it 'manually'. However
+ * the entry points are provided anyway.
+ * * The entry points for WalrusLexer are  as follows:
+ *
+ *  - void      pWalrusLexer-&gt;SPECIAL_CHAR(pWalrusLexer)
+ *  - void      pWalrusLexer-&gt;RAW_TEXT(pWalrusLexer)
+ *  - void      pWalrusLexer-&gt;WALRUS_ESCAPE_SEQUENCE(pWalrusLexer)
+ *  - void      pWalrusLexer-&gt;Tokens(pWalrusLexer)
+ *
+ * The return type for any particular rule is of course determined by the source
+ * grammar file.
+</code></pre>
+<p>And here is the parser header for an extremely simple parser with only one rule:</p>
+<pre><code> * The parser WalrusParserhas the callable functions (rules) shown below,
+ * which will invoke the code for the associated rule in the source grammar
+ * assuming that the input stream is pointing to a token/text stream that could begin
+ * this rule.
+ *
+ * For instance if you call the first (topmost) rule in a parser grammar, you will
+ * get the results of a full parse, but calling a rule half way through the grammar will
+ * allow you to pass part of a full token stream to the parser, such as for syntax checking
+ * in editors and so on.
+ *
+ * The parser entry points are called indirectly (by function pointer to function) via
+ * a parser context typedef pWalrusParser, which is returned from a call to WalrusParserNew().
+ *
+ * The entry points for WalrusParser are  as follows:
+ *
+ *  - WalrusParser_anything_return      pWalrusParser-&gt;anything(pWalrusParser)
+ *
+ * The return type for any particular rule is of course determined by the source
+ * grammar file.
+</code></pre>
+<h3>Compiling the generated C code</h3>
+<h4>Prerequisites</h4>
+<p>The generated files <code>#include</code> the file, <code>antlr3.h</code> (on my system located at <code>/usr/local/antlr-3.0b7/lib/C/include/antlr3.h</code>).</p>
+<p>At least in 3.0b7 the <a href="/wiki/ANTLR">ANTLR</a> C runtime libraries are not shipped in binary form anywhere that I know of, so you have to build and install them first.</p>
+<pre><code># from top-level of expanded ANTLR distribution tarball
+cd lib/C/dist
+tar xzvf libantlr3c-3.0.0-rc7.tar.gz
+cd libantlr3c-3.0.0-rc7
+./configure
+make
+make check # (currently does nothing)
+sudo make install
+</code></pre>
+<p>This installs the following libraries:</p>
+<ul>
+<li><code>/usr/local/lib/libantlr3c.dylib</code></li>
+<li><code>/usr/local/lib/libantlr3c.la</code></li>
+<li><code>/usr/local/lib/libantlr3c.a</code></li>
+</ul>
+<p>As well as the headers in <code>/usr/local/include/</code>:</p>
+<ul>
+<li><code>/usr/local/include/antlr3.h</code> (and various others)</li>
+</ul>
+<p>Technically, I think it would be more correct if these were installed in <code>/usr/local/lib/antlr/</code> because there are quite a few of them.</p>
+<h4>Compiling</h4>
+<p>To compile the lexer, parser and link to the <code>libantlr3c</code> runtime library:</p>
+<pre><code>gcc -Wall main.c WalrusLexer.c WalrusParser.c -lantlr3c -o walrus_parser
+</code></pre>
+<p>A <code>main.c</code> file is required because otherwise the linker will complain about a missing <code>_main</code> symbol. The simplest possible example (which does nothing) is this:</p>
+<pre><code>int main(int argc, char *argv[])
+{
+    return 0;
+}
+</code></pre>
+<p>Now an example which actually does something:</p>
+<ul>
+<li>Initialize a stream from a string at runtime</li>
+<li>Check for errors</li>
+<li>Manually invoke the lexer and print tokens one at a time</li>
+<li>Invoke the parser (commented out; comment out the lexer instead to see what happens)</li>
+</ul>
+<!-- -->
+<pre><code>#import &quot;WalrusLexer.h&quot;
+[/tags/import #import] &quot;WalrusParser.h&quot;
+
+int main(int argc, char *argv[])
+{
+    pANTLR3_UINT8               input_string = &quot;hello world&quot;;
+    pANTLR3_INPUT_STREAM        stream = antlr3NewAsciiStringInPlaceStream(input_string, strlen(input_string), &quot;input text stream&quot;);
+
+    if (stream == (pANTLR3_INPUT_STREAM)ANTLR3_ERR_NOMEM)
+    {
+      fprintf(stderr, &quot;no memory\n&quot;);
+      exit(EXIT_FAILURE);
+    }
+    else if (stream == (pANTLR3_INPUT_STREAM)ANTLR3_ERR_NOFILE)
+    {
+      fprintf(stderr, &quot;file not found\n&quot;);
+      exit(EXIT_FAILURE);
+    }
+
+    pWalrusLexer                lexer  = WalrusLexerNew(stream);
+    pANTLR3_COMMON_TOKEN_STREAM	tokens = antlr3CommonTokenStreamSourceNew(ANTLR3_SIZE_HINT, lexer-&gt;pLexer-&gt;tokSource);
+
+    pANTLR3_COMMON_TOKEN        token;
+    while ((token = tokens-&gt;tstream-&gt;LT(tokens-&gt;tstream, 1))-&gt;getType(token) != ANTLR3_TOKEN_EOF)
+    {
+      printf(&quot;Token: %s\n&quot;, token-&gt;toString(token)-&gt;chars);
+      tokens-&gt;tstream-&gt;istream-&gt;consume(tokens-&gt;tstream-&gt;istream);
+    }
+
+    /*pWalrusParser               parser = WalrusParserNew(tokens);
+    parser-&gt;anything(parser);*/
+    return 0;
+}
+</code></pre>
+<p>The example does compile with some warnings:</p>
+<pre><code>main.c:6: warning: pointer targets in initialization differ in signedness
+main.c:7: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness
+main.c:7: warning: pointer targets in passing argument 3 of ‘antlr3NewAsciiStringInPlaceStream’ differ in signedness
+</code></pre>
+<h2>Grammar details</h2>
+<h3>To insert material at the top of the parser file</h3>
+<p>For example, to include a header file, you would place something like this after the <code>options</code> block:</p>
+<pre><code>@header {
+[/tags/include #include] &lt;ruby.h&gt;
+}
+</code></pre>
+<p>Obviously, for this to work you would need to pass the appropriate include path to <a href="/wiki/GCC">GCC</a> via the <code>-I</code> switch.</p>
+<h3>To insert material at the top of the lexer implementation</h3>
+<pre><code>*@lexer::header {
+[/tags/include #include] &lt;ruby.h&gt;
+}
+</code></pre>
+<h3>The <code>@members</code> section</h3>
+<p>Given that <a href="/wiki/C">C</a> is not <a href="/wiki/object-oriented">object-oriented</a> it doesn't make much sense to use a <code>@members</code> section when using the <a href="/wiki/C_language_target">C language target</a>. If you do use it, you will wind up with a file-scoped variable that will be inserted about half-way down the generated file; in that case, if you want file-scoped variables then you may as well just stick them in the <code>@header</code> section anyway.</p>
+<p>However, if you want to include a helper function that can be called by any of your actions then the <code>@members</code> section may indeed be the best place to put it.</p>
+<h3>The <code>@declarations</code> and <code>@init</code> sections</h3>
+<p>Each rule (lexer or parser rule) compiles down to a single function. The <code>@declarations</code> and <code>@init</code> sections allow you to declare variables that will be local to a given function and then initialize them. By performing the declaration and initialization in separate sections the generated should be very portable (for example, without using <a href="/wiki/C99">C99</a> mode).</p>
+<h4>Example</h4>
+<pre><code>foo
+@declarations { int bar; }
+@init { bar = 10; } :
+A_TOKEN;
+</code></pre>
+<p><a href="/wiki/ANTLR">ANTLR</a> will generate a function for parsing the <code>foo</code> rule. <code>int bar;</code> will appear near the top of the generated function, after the other variables in the function are declared. <code>bar = 10;</code> will appear a little further down, after the other variabels in the function are initialized.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

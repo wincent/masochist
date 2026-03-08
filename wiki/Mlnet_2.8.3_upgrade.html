@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Mlnet 2.8.3 upgrade • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Mlnet 2.8.3 upgrade</h1></div><div class="metadata"><relative-time created="1171278495" updated="1495119989">Created 2/12/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/mlnet">mlnet</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Static build attempt</h2>
+<p>Like last time (see &quot;<a href="/wiki/mlnet_2.8.2_upgrade">mlnet 2.8.2 upgrade</a>&quot;) I attempted to make a static build and failed:</p>
+<pre><code>wget http://switch.dl.sourceforge.net/sourceforge/mldonkey/mldonkey-2.8.3.tar.bz2
+tar zjvf mldonkey-2.8.3.tar.bz2
+cd mldonkey-2.8.3
+./configure
+make mlnet.static
+</code></pre>
+<p>Partial extract:</p>
+<pre><code>/usr/bin/ld: can't locate file for: -lcrt0.o
+collect2: ld returned 1 exit status
+Error during linking
+make: *** [mlnet.static] Error 2
+</code></pre>
+<p>So I did some Googling and found this (<a href="http://svn.haxx.se/dev/archive-2005-04/0403.shtml">http://svn.haxx.se/dev/archive-2005-04/0403.shtml</a>):</p>
+<blockquote>
+<p>Mac OS X doesn't like static binaries and doesn't include a staticly [sic] linked crt (part of the C runtime AFAIK).&quot;</p>
+</blockquote>
+<p>This in turn led me to &quot;Static linking of user binaries on Mac OS X&quot; (<a href="http://developer.apple.com/qa/qa2001/qa1118.html">http://developer.apple.com/qa/qa2001/qa1118.html</a>):</p>
+<blockquote>
+<p>If your project absolutely must link statically and need crt0.o, you can get the Csu module from Darwin and try building crt0.o statically.</p>
+</blockquote>
+<p>So I downloaded Csu:</p>
+<ul>
+<li><a href="http://www.opensource.apple.com/darwinsource/10.4.8.x86/">http://www.opensource.apple.com/darwinsource/10.4.8.x86/</a></li>
+<li><a href="http://www.opensource.apple.com/darwinsource/tarballs/apsl/Csu-71.tar.gz">http://www.opensource.apple.com/darwinsource/tarballs/apsl/Csu-71.tar.gz</a></li>
+</ul>
+<p>And tried again:</p>
+<pre><code>tar xzvf Csu-71.tar.gz
+cd Csu-71
+make
+cp crt0.o ..
+cd ..
+make mlnet.static
+</code></pre>
+<p>Same error:</p>
+<pre><code>/usr/bin/ld: can't locate file for: -lcrt0.o
+collect2: ld returned 1 exit status
+Error during linking
+make: *** [mlnet.static] Error 2
+</code></pre>
+<p>Try adding current directory to library search path:</p>
+<pre><code>export LDFLAGS=&quot;-L.&quot;
+./configure
+make mlnet.static
+</code></pre>
+<p>This yields a slightly different error:</p>
+<pre><code>/usr/bin/ld: /tmp/camlstartup07c8d0.o incompatible, file contains unsupported type of section 2 (__IMPORT,__pointers) in load command 0 (must specify &quot;-dynamic&quot; to be used)
+/usr/bin/ld: /usr/local/lib/ocaml/std_exit.o incompatible, file contains unsupported type of section 2 (__IMPORT,__pointers) in load command 0 (must specify &quot;-dynamic&quot; to be used)
+/usr/bin/ld: src/daemon/common/commonMain.o incompatible, file contains unsupported type of section 2 (__IMPORT,__pointers) in load command 0 (must specify &quot;-dynamic&quot; to be used)
+/usr/bin/ld: can't locate file for: -lcharset
+collect2: ld returned 1 exit status
+Error during linking
+make: *** [mlnet.static] Error 2
+</code></pre>
+<p>Alternative approach:</p>
+<pre><code>export LD_LIBRARY_PATH=`pwd`
+make mlnet.static
+</code></pre>
+<p>Looks to be the same error:</p>
+<pre><code>/usr/bin/ld: /tmp/camlstartupf55476.o incompatible, file contains unsupported type of section 2 (__IMPORT,__pointers) in load command 0 (must specify &quot;-dynamic&quot; to be used)
+/usr/bin/ld: /usr/local/lib/ocaml/std_exit.o incompatible, file contains unsupported type of section 2 (__IMPORT,__pointers) in load command 0 (must specify &quot;-dynamic&quot; to be used)
+/usr/bin/ld: src/daemon/common/commonMain.o incompatible, file contains unsupported type of section 2 (__IMPORT,__pointers) in load command 0 (must specify &quot;-dynamic&quot; to be used)
+/usr/bin/ld: can't locate file for: -lcharset
+collect2: ld returned 1 exit status
+Error during linking
+make: *** [mlnet.static] Error 2
+</code></pre>
+<p>At this point I gave up and just did a non-static build.</p>
+<h2>Non-static build</h2>
+<pre><code>make
+sudo make install
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li>Release notes: <a href="https://sourceforge.net/project/shownotes.php?group_id=156414&amp;release_id=467566">https://sourceforge.net/project/shownotes.php?group_id=156414&amp;release_id=467566</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

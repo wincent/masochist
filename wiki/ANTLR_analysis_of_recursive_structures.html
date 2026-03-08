@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ANTLR analysis of recursive structures • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>ANTLR analysis of recursive structures</h1></div><div class="metadata"><relative-time created="1182078928" updated="1693045928">Created 6/17/2007, updated 8/26/2023</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>On page 280 of the <a href="/wiki/ANTLR_book">ANTLR book</a> the following example rule appears:</p>
+<pre><code>a
+  : L a R
+  | L L X
+  ;
+</code></pre>
+<p>And is explained as follows:</p>
+<blockquote>
+<p>The analysis sees that <strong>L</strong> begins both alternatives and looks past it in both alternatives to see whether there is something that follows that will distinguish the two. In the first alternative, therefore, the analysis must enter rule <strong>a</strong> again. The first symbol that it can see upon reentry is <strong>L</strong>. Hence, the algorithm must continue again past that <strong>L</strong> recursively into rule <strong>a</strong> hoping for a lookahead symbol that will distinguish the two alternatives. Ultimately, the algorithm sees the <strong>X</strong> in the second alternative, which allows it to distinguish the two alternatives. Clearly, though, if the second alternative were recursive as well, this process would never terminate without a threshold.</p>
+</blockquote>
+<p>Although on first reading I could accept that this was true, the explanation didn't give me any sense of exactly <em>what</em> was meant by phrases such as &quot;must enter rule <strong>a</strong> again&quot; and &quot;must continue again past that <strong>L</strong> recursively into rule <strong>a</strong>&quot;; exactly <em>what</em> is <a href="/wiki/ANTLR">ANTLR</a> <em>doing</em> in this case?</p>
+<p>In order to make this clear, the following is my current understanding of exactly what is happening when <a href="/wiki/ANTLR">ANTLR</a> tries to analyze a rule like this. Here, &quot;analysis&quot; basically consists of looking at rule <strong>a</strong> and trying to construct a <a href="/wiki/DFA">DFA</a> that predicts whether the first or second alternative will succeed. Once one of the alternatives is predicted then the recognizer will proceed and actually attempt to match the input against that alternative.</p>
+<p>We know from the book that the <a href="/wiki/DFA">DFA</a> ultimately produced by this analysis is as follows:</p>
+<pre><code>                           (s3=&gt;2)
+                          /
+                       X /
+      L         L       /
+(s0)-----&gt;(s1)-----&gt;(s2)
+                        \
+                       L \
+                          \
+                           (s4=&gt;1)
+</code></pre>
+<h2>First iteration</h2>
+<p>The process begins by looking at each alternative and asking, &quot;What lookahead symbol must I find in order to predict this alternative?&quot;. In both cases the answer is <strong>L</strong> and this is not enough to distinguish between the two and make a decision. At this stage in the analysis, the partial <a href="/wiki/DFA">DFA</a> that <a href="/wiki/ANTLR">ANTLR</a> has constructed so far will look like:</p>
+<pre><code>      L
+(s0)-----&gt;(s1)
+</code></pre>
+<h2>Second iteration</h2>
+<p>So, we consider an additional symbol of lookahead and ask the same question. This time the first alternative includes a recursive reference back to the same rule, so <a href="/wiki/ANTLR">ANTLR</a> must now consider a tree of possible lookaheads:</p>
+<ul>
+<li>At lookahead(1), to match alternative 1 must see an <strong>L</strong>
+<ul>
+<li>At lookahead(2), to match alternative 1 must match rule <strong>a</strong>
+<ul>
+<li>To match alternative 1 of rule <strong>a</strong>, still at lookahead(2), must see an <strong>L</strong></li>
+<li>To match alternative 2 of rule <strong>a</strong>, still at lookahead(2), must see an <strong>L</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>At lookahead(1), to match alternative 2 must see an <strong>L</strong>
+<ul>
+<li>At lookahead (2), to match alternative 2 must see an <strong>L</strong></li>
+</ul>
+</li>
+</ul>
+<p>Notice how the number of &quot;paths&quot; through the possible matches fans out due to the recursion. The partial <a href="/wiki/DFA">DFA</a> so far constructed will now look like:</p>
+<pre><code>      L         L
+(s0)-----&gt;(s1)-----&gt;(s2)
+</code></pre>
+<p>Note that this is still not useful because there is still nothing that distinguishes the two paths.</p>
+<h2>Third iteration</h2>
+<p>Now we consider what might be seen with yet another symbol of additional lookahead:</p>
+<ul>
+<li>At lookahead(1), to match alternative 1 must see an <strong>L</strong>
+<ul>
+<li>At lookahead(2), to match alternative 1 must match rule <strong>a</strong>
+<ul>
+<li>To match alternative 1 of rule <strong>a</strong>, still at lookahead(2), must see an <strong>L</strong>
+<ul>
+<li>At lookahead (3), to match alternative 1 of rule <strong>a</strong> must match rule <strong>a</strong> again
+<ul>
+<li>Now in rule <strong>a</strong> again, still at lookahead(3), to match alternative 1 must see an <strong>L</strong></li>
+<li>Now in rule <strong>a</strong> again, still at lookahead(3), to match alternative 2 must see an <strong>L</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>To match alternative 2 of rule <strong>a</strong>, still at lookahead(2), must see an <strong>L</strong>
+<ul>
+<li>At lookahead (3), to match alternative 2 of rule <strong>a</strong> must seen an <strong>L</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>At lookahead(1), to match alternative 2 must see an <strong>L</strong>
+<ul>
+<li>At lookahead (2), to match alternative 2 must see an <strong>L</strong>
+<ul>
+<li>At lookahead (3), to match alternative 2 must see an <strong>X</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Notice that:</p>
+<ul>
+<li>Finally we have a path that doesn't require seeing <strong>L</strong> (the last path, where we expect to see an <strong>X</strong>)</li>
+<li>Having seen that <strong>X</strong>, we can predict alternative 2 on seeing <strong>L L X</strong></li>
+<li>If we don't see <strong>X</strong> and instead see <strong>L</strong> then we are still on one of the other alternative paths</li>
+<li>Even though we don't know <em>which</em> alternative path we are on in the case of seeing <strong>L L L</strong> , we can still predict that alternative 1 will match because <em>all</em> of the possible paths that span out from alternative one share that common beginning</li>
+<li>The recursive nature of alternative 1 means that our prediction can never &quot;finish&quot;; it will always be possible for another layer of recursion to be nested inside</li>
+<li>The non-terminating nature of alternative 1 doesn't prevent analysis from completing; after only three iterations we see enough input to distinguish the two alternatives</li>
+<li>As we &quot;re-enter&quot; rule <strong>a</strong> during analysis the number of possible paths grows exponentially</li>
+<li>Despite the fact that the number of paths grows exponentially, we're still only interested in the very first choice in our path tree: that is, when looking at the very first symbol of lookahead, that's the point where we want to make our prediction: whatever happens later on the many possible paths can be handled by other rule invocations</li>
+<li>If we were to see some other input like <strong>L L Z</strong> then neither alternative would be predicted</li>
+<li>Although the number of possible paths grows exponentially, the prediction <a href="/wiki/DFA">DFA</a> ends up being very simple</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

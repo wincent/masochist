@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Testing whether a bit is set • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Testing whether a bit is set</h1></div><div class="metadata"><relative-time created="1179825011" updated="1710259978">Created 5/22/2007, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/c">c</a></li><li><a href="/tags/objective.c">objective.c</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>I originally posted this to my <a href="/wiki/weblog">weblog</a> as an article titled, &quot;<a href="http://wincent.dev/a/about/wincent/weblog/archives/2007/05/clever_boolean.php">Clever boolean return trick</a>&quot;. I'm now reposting the contents here for completeness of the <a href="/wiki/wiki">wiki</a>.</p>
+<h2>The clever boolean return trick</h2>
+<p>I was just randomly browsing the <a href="/wiki/HexFiend">HexFiend</a> source when the <a href="http://ridiculousfish.com/svn/HexFiend/trunk/sources/threading/FishThread.m">following snippet</a> caught my eye:</p>
+<pre><code>- (BOOL)shouldEnd {
+	return !!([myThreadStatus flag] &amp; SHOULD_END);
+}
+</code></pre>
+<p>Why the double negation (<code>!!</code>)? It's actually very clever. I don't know if this is a common idiom or not; I guess so, but I had never seen it before.</p>
+<h2>The problem</h2>
+<p>What might be your first impulse if you want to check if a bit is set?</p>
+<pre><code>variable &amp; mask
+</code></pre>
+<p>This will work, kind of, for most cases. Maybe you like being explicit (as I do) and so you explicitly show the type of the expression:</p>
+<pre><code>(BOOL)(variable &amp; mask)
+</code></pre>
+<p>Bzzzzt... You've just made a hidden bug a little bit more visible. <code>BOOL</code> is actually just an <code>unsigned char</code> and so any time the expression overflows the 8-bit limit of <code>unsigned char</code> your cast to <code>BOOL</code> <em>will throw away the most significant bits</em>. Let's say <code>variable &amp; mask</code> evaluates to 8192; casting (<code>(BOOL)8192</code>) returns <code>0</code> (<code>NO</code>)... most likely not what you wanted...</p>
+<p>The explicit cast makes this overflow risk easier to spot, but the same bug is present if the expression is in a method:</p>
+<pre><code>- (BOOL)foobar
+{
+    return (variable &amp; mask);
+}
+</code></pre>
+<p>Or a macro:</p>
+<pre><code>#define AT_LEAST_ONE_BIT_SET(variable, mask) ((BOOL)(variable &amp; mask))
+</code></pre>
+<h2>The solution</h2>
+<p>One way to fix this is to use an equality test:</p>
+<pre><code>(variable &amp; mask) != 0
+</code></pre>
+<p>This doesn't suffer from the overflow problems caused by an explicit (or implicit) cast to <code>BOOL</code>, and it returns what you want: a <code>BOOL</code>-compatible value that equates to either <code>YES</code> or <code>NO</code>.</p>
+<h3>The HexFiend solution</h3>
+<p>The trick used in HexFiend is another way of avoiding unwanted overflow errors. The first negation safely converts the value of the expression from <code>YES</code> or <code>NO</code> to its opposite with no risk of overflow. This is because the compiler knows how big the value is and it also knows how to avoid overflow errors. The second negation inverts the sense back to its original form again, <code>YES</code> or <code>NO</code>, and again there's obviously no risk of overflow errors sneaking in.</p>
+<h2>Conclusion</h2>
+<p>Which one do you like better? The HexFiend pattern is more concise, very clever, but it may not be evident at first glance why a double-negation is employed.</p>
+<p>The other pattern is less opaque (nothing in it to make you look twice; but then again, the incorrect cast-to-<code>BOOL</code> didn't make you look twice either and it contained a hidden bug) but more verbose.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

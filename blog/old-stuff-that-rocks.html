@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Old stuff that rocks • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/old-stuff-that-rocks">Old stuff that rocks</a></h1><div class="metadata"><relative-time created="1449722306" updated="1584053324">Created 12/10/2015, updated 3/12/2020</relative-time><span>4 minute read</span></div><div class="prerendered"><p>The other day I <a href="https://twitter.com/wincent/status/672894777541525504">tweeted</a>:</p>
+<blockquote>
+<p>So much software is new (&lt; 2 years) and probably won't last 2 more.</p>
+<p>I get a kick out of using old stuff.</p>
+<p>eg rsync. 20 years. Still useful.</p>
+</blockquote>
+<p>That got me to thinking about other cool stuff that has endured over the years. Here's a short timeline. Criteria to get on the list: must be at least 10 years old, with a reasonable prognosis of sticking around for much longer:</p>
+<ul>
+<li><a href="/wiki/Git">Git</a> (2005)</li>
+<li><a href="/wiki/OS_X">OS X</a> (2001)</li>
+<li><a href="/wiki/SSH">SSH</a> (1999)</li>
+<li><a href="/wiki/curl">curl</a> (1997)</li>
+<li><a href="/wiki/rsync">rsync</a> (1996)</li>
+<li><a href="/wiki/Vim">Vim</a> (1991)</li>
+<li><a href="/wiki/Cron">Cron</a> (1979)</li>
+<li><a href="/wiki/tar">tar</a> (1979)</li>
+<li><a href="/wiki/vi">vi</a> (1976)</li>
+<li><a href="/wiki/grep">grep</a> (1973)</li>
+<li><a href="/wiki/UNIX">Unix</a> (1970)</li>
+</ul>
+<p>So both the 70s and the 90s were great decades for computing. Not sure what happened in the 80s as I struggled to find anything there; perhaps we were all just off playing video games. Feels odd to think that some of these are four decades old now, nearly as long as computing itself (or at least, what we'd recognize as &quot;computing&quot;). Vi will turn 40 next year. Grep 43. And despite the existence of some spiritual successors like <a href="/wiki/Ack">Ack</a> and friends, it's still just as useful — indispensable even — as ever.</p>
+<h2>What about <code>$my_favorite_language</code>?</h2>
+<p>Notable omissions from the above are languages. They come and go, and even the ones that stick around tend to change so much over time that I'm not sure it's really fair to call them the same language any more (a particularly stark example of this would be a comparison of original 1995 and current 2015 JavaScript). At the same time, I've learnt quite a few of them over the years and there is a certain sameness and a sense of substitutability about them that makes them seem somehow unremarkable.</p>
+<p>Nevertheless, if, for the sake of the argument, we take a glance at some of the notable languages, here again we see that the 90s was a particularly productive era:</p>
+<ul>
+<li>OCaml (1996)</li>
+<li>Ruby (1995)</li>
+<li>PHP (1995)</li>
+<li>Java (1995)</li>
+<li>JavaScript (1995)</li>
+<li>Lua (1993)</li>
+<li>Python (1991)</li>
+<li>Haskell (1990)</li>
+<li>Perl (1987)</li>
+<li>Erlang (1986)</li>
+<li>Objective-C (1986)</li>
+</ul>
+<p>Most of these languages are still thriving today, to <a href="/wiki/JavaScript">greater</a> or <a href="/wiki/Perl">lesser</a> degrees. If we look at the more recent generation of new languages, how confident can we be that they'll be &quot;mainstream&quot; 10 years from now? I'm not a gambler, but if I were I'd probably put my money on about half of these:</p>
+<ul>
+<li>Dart (2013)</li>
+<li>Elm (2012)</li>
+<li>Elixir (2012)</li>
+<li>Rust (2010)</li>
+<li>Go (2009)</li>
+<li>Clojure (2007)</li>
+</ul>
+<h2>Notable omissions</h2>
+<h3>Apache and nginx</h3>
+<p><a href="/wiki/nginx">Apache</a> (1995) has long dominated the web server landscape, but over time its market share has gradually been eroded by competitors like <a href="/wiki/nginx">nginx</a> (2004). It is definitely still relevant (hosting 37% of all sites among a sample of nearly a billion, as per the <a href="http://news.netcraft.com/archives/2015/11/16/november-2015-web-server-survey.html">November 2015 Netcraft Web Server Survey</a>), but the picture painted by the graphs on <a href="http://news.netcraft.com/archives/2015/11/16/november-2015-web-server-survey.html">this page</a> explains why Apache didn't make the list. Of all the servers represented, nginx is the only one making consistent progress, but that doesn't make the list either because it still has a ways to go.</p>
+<p>A web server is an incredibly complex, multi-faceted tool. Most couldn't be said to embody <a href="https://en.wikipedia.org/wiki/Unix_philosophy">&quot;the Unix Philosophy&quot;</a>. I think this is why it's much easier for a tool like Curl (which can be used to retrieve web content) than one like Apache (that serves content) to establish itself as an undisputed and indispensable part of our toolkits.</p>
+<h3>Compression algorithms</h3>
+<p>Gzip (1992) is ubiquitous, predictable, and incredibly useful. The content you're reading now is compressed using gzip. Yet it doesn't make the list. The reason is that, despite gzip's clear merits, compression is an area in which we always want to do better. As such, there is a proliferation of <a href="https://en.wikipedia.org/wiki/List_of_archive_formats">alternative formats and tools</a>, and I expect that more will be produced in the future, possibly indefinitely.</p>
+<p>In short there is no single &quot;preeminent&quot; compression solution, and there probably never will be, so rather than picking a particularly successful one and adding it to the list, I am leaving it off. Consider gzip an &quot;honorable mention&quot;.</p>
+<h3>Build tools</h3>
+<p><a href="/wiki/Make">Make</a> (1977) is a build tool. Much of what I wrote about gzip could apply here too. It's powerful, available everywhere, and used pervasively. Yet enough people have been frustrated by its limitations that it has been emulated, extended or replaced <a href="https://en.wikipedia.org/wiki/List_of_build_automation_software">literally dozens of times</a>.</p>
+<p>I still use Make today, and will use it again in the future, but I will also use other build tools where appropriate, and Make doesn't make the list.</p>
+<h3>Configuration management</h3>
+<p>Another bustling, churning ecosystem, populated by the likes of <a href="/wiki/Puppet">Puppet</a> (2005), <a href="/wiki/Chef">Chef</a> (2009) and <a href="https://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software">many others</a>. I've used both of the former, but of late have switched to <a href="/wiki/Ansible">Ansible</a> (2012) and been very happy with it.</p>
+<p>Nevertheless, Ansible is too young to make the list, and the rate of change and proliferation in this space definitely clouds its future. Who knows what we'll be using for this 10 years from now? Not even Yoda. It does seem, however, reasonable to predict that we won't have arrived at consensus and settled on any One True Configuration Management Tool.</p>
+<h2>Parting words</h2>
+<p>Thanks for joining me on this rambling, nostalgic journey among some &quot;old stuff that rocks&quot;. I hope that I can find more of this stuff, and that we collectively can continue to make <em>new</em> old stuff that rocks for us and future generations of technology users.</p>
+<p><small><em>Discuss: <a href="https://www.facebook.com/glh/posts/10153075891566307">Facebook</a> - <a href="https://news.ycombinator.com/item?id=10712482">Hacker News</a> - <a href="https://www.reddit.com/r/programming/comments/3wajm6/old_stuff_that_rocks/">Reddit</a> - <a href="https://twitter.com/wincent/status/675019312495640576">Twitter</a></em></small></p>
+</div><ul class="tags"><li><a href="/tags/unix">unix</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/comments">← Comments on commenting</a></div><div class="post-nav-next"><a href="/blog/betting-on-the-wrong-horse">Betting on the wrong horse →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

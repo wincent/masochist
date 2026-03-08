@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Allan Odgaard on file type detection in TextMate • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/allan-odgaard-on-file-type-detection-in-textmate">Allan Odgaard on file type detection in TextMate</a></h1><div class="metadata"><relative-time created="1192672800" updated="1710259978">Created 10/18/2007, updated 3/12/2024</relative-time><span>2 minute read</span></div><div class="prerendered"><p>I've never been able to get <a href="http://wincent.dev/wiki/TextMate">TextMate</a> to reliably detect <a href="http://wincent.dev/wiki/Ruby">Ruby</a>, <a href="http://wincent.dev/wiki/Rails">Rails</a> and <a href="http://wincent.dev/wiki/RSpec">RSpec</a> files. Allan Odgaard, the author of TextMate, <a href="http://macromates.com/blog/2007/file-type-detection-rspec-rails">explains here</a> how to bend the system to your will.</p>
+<p>I think there's something obviously wrong with the design when it takes this much effort to get file extensions correctly mapped, but I also suspect that you're not about to see the system overhauled (there are too many bundles out there which use it); at least there <em>is</em> a workaround, no matter unnecessarily complicated it may seem.</p>
+<p>If you want, you can start by reviewing your manual file type bindings (optional):</p>
+<pre><code>defaults read com.macromates.textmate OakLanguageFileBindings
+</code></pre>
+<p>Your manual bindings are almost certainly the cause of the problem, so ensure that TextMate is not running and delete them all:</p>
+<pre><code>defaults delete com.macromates.textmate OakLanguageFileBindings
+</code></pre>
+<p>Now open up a Ruby file in TextMate and manually set its type to Ruby in the language pop-up:</p>
+<pre><code>mate /tmp/file.rb
+</code></pre>
+<p>Quit TextMate and re-check your manual bindings again; the should be empty:</p>
+<pre><code>defaults read com.macromates.textmate OakLanguageFileBindings
+</code></pre>
+<p>Now fire up TextMate and go to the &quot;Bundles&quot; menu, &quot;Bundle Editor&quot; submenu, &quot;Edit Languages&quot; item, and make this change in the Rails language definition:</p>
+<pre><code>   fileTypes = ( 'rxml' );
+</code></pre>
+<p>Should become:</p>
+<pre><code>   fileTypes = ( 'rxml', 'rb' );
+</code></pre>
+<p>And in the Ruby language definition:</p>
+<pre><code>   fileTypes = ( 'rb', 'rbx', 'rjs', 'Rakefile', 'rake', 'cgi', 'fcgi', 'gemspec' );
+</code></pre>
+<p>Should become:</p>
+<pre><code>   fileTypes = ( 'rbx', 'rjs', 'Rakefile', 'rake', 'cgi', 'fcgi', 'gemspec' );
+</code></pre>
+<p>Now when you open <code>.rb</code> files they should default to Rails as their &quot;language&quot;, and <code>_spec.rb</code> files should default to RSpec.</p>
+<p>(These instructions are basically copied directly from Allan's weblog; I include them here to demonstrate my point about the complexity of this operation.)</p>
+<p>Now all you need to do is remember never to touch the Language pop-up again. The problem is that all your plain Ruby files will now be identified as &quot;Rails&quot;, even when they have nothing to do with Rails (of course, Ruby <em>is</em> much more than just Rails). If you fall into the trap of toggling the language pop-up back to &quot;Ruby&quot; for such a file then you've blown it and will have delete your manual language bindings again.</p>
+<p>What's the ideal solution to this quagmire? Evidently the key piece is a method for choosing between ambiguous options (where <code>.rb</code> can be Rails or Ruby). What would be the best way to do this? Writing it to the files resource fork? (not so good on a multi-user system where many different users may edit the same file.) Keeping the type information in per-user, centralized store? (in your <code>~/Library/Application Support/</code> directory.) Allowing regular expressions based on the full path of the file, not just its extension? (in other words, matching against paths like <code>.+/app/models/.+\.rb</code>; that's not the actual regex I would use but this darn wiki markup I'm using doesn't allow me to type square brackets!)</p>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/internal-encoding-conversion-benchmarks">← Internal encoding conversion benchmarks</a></div><div class="post-nav-next"><a href="/blog/tabs-vs-spaces">Tabs vs spaces →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

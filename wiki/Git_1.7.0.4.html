@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.7.0.4 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.7.0.4</h1></div><div class="metadata"><relative-time created="1270094818" updated="1495119989">Created 4/1/2010, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official announcement to the <a href="/wiki/Git_mailing_list">Git mailing list</a>:</p>
+<pre><code>The latest maintenance release Git 1.7.0.4 is available at the
+usual places:
+
+ http://www.kernel.org/pub/software/scm/git/
+
+ git-1.7.0.4.tar.{gz,bz2}			(source tarball)
+ git-htmldocs-1.7.0.4.tar.{gz,bz2}		(preformatted docs)
+ git-manpages-1.7.0.4.tar.{gz,bz2}		(preformatted docs)
+
+The RPM binary packages for a few architectures are found in:
+
+ RPMS/$arch/git-*-1.7.0.4-1.fc11.$arch.rpm	(RPM)
+
+Git v1.7.0.4 Release Notes
+==========================
+
+Fixes since v1.7.0.3
+--------------------
+
+* Optimized ntohl/htonl on big-endian machines were broken.
+
+* Color values given to &quot;color.&lt;cmd&gt;.&lt;slot&gt;&quot; configuration can now have
+  more than one attributes (e.g. &quot;bold ul&quot;).
+
+* &quot;git add -u nonexistent-path&quot; did not complain.
+
+* &quot;git apply --whitespace=fix&quot; didn't work well when an early patch in
+  a patch series adds trailing blank lines and a later one depended on
+  such a block of blank lines at the end.
+
+* &quot;git fast-export&quot; didn't check error status and stop when marks file
+  cannot be opened.
+
+* &quot;git format-patch --ignore-if-in-upstream&quot; gave unwarranted errors
+  when the range was empty, instead of silently finishing.
+
+* &quot;git remote prune&quot; did not detect remote tracking refs that became
+  dangling correctly.
+
+And other minor fixes and documentation updates.
+
+----------------------------------------------------------------
+
+Changes since v1.7.0.3 are as follows:
+
+Björn Gustavsson (5):
+     apply: Don't unnecessarily update line lengths in the preimage
+     apply: Remove the quick rejection test
+     apply: Allow blank context lines to match beyond EOF
+     t4124: Add additional tests of --whitespace=fix
+     t3417: Add test cases for &quot;rebase --whitespace=fix&quot;
+
+Chris Packham (1):
+     test for add with non-existent pathspec
+
+David Aguilar (1):
+     difftool: Fix '--gui' when diff.guitool is unconfigured
+
+Greg Bacon (1):
+     Documentation: Clarify support for smart HTTP backend
+
+Holger Weiß (3):
+     Don't redefine htonl and ntohl on big-endian
+     Link against libiconv on IRIX
+     Documentation: show-ref &lt;pattern&gt;s are optional
+
+Jakub Narebski (1):
+     gitweb: git_get_project_config requires only $git_dir, not also $project
+
+Jan Stępień (1):
+     Updated the usage string of git reset
+
+Jeff King (1):
+     dir: fix COLLECT_IGNORED on excluded prefixes
+
+Johannes Sixt (2):
+     diff: fix textconv error zombies
+     Windows: fix utime() for read-only files
+
+Junio C Hamano (8):
+     git add -u: die on unmatched pathspec
+     color: allow multiple attributes
+     t0050: mark non-working test as such
+     tests for &quot;git add ignored-dir/file&quot; without -f
+     refs: ref entry with NULL sha1 is can be a dangling symref
+     t9350: fix careless use of &quot;cd&quot;
+     Prepare for 1.7.0.4
+     Git 1.7.0.4
+
+Kevin Ballard (1):
+     format-patch: Squelch 'fatal: Not a range.&quot; error
+
+Markus Heidelberg (1):
+     Documentation: explain the meaning of &quot;-g&quot; in git-describe output
+
+Sverre Rabbelier (1):
+     fast-export: don't segfault when marks file cannot be opened
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Updating_to_Git_1.7.0.4_on_Mac_OS_X_10.6.2_Snow_Leopard">Updating to Git 1.7.0.4 on Mac OS X 10.6.2 Snow Leopard</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

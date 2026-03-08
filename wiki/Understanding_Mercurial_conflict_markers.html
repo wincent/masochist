@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Understanding Mercurial conflict markers • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Understanding Mercurial conflict markers</h1></div><div class="metadata"><relative-time created="1460405059" updated="1584053324">Created 4/11/2016, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/hg">hg</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>When using the <code>ui.merge = internal:merge3</code> configuration <a href="https://www.mercurial-scm.org/wiki/MergeToolConfiguration">described here</a>, your merge conflict during a rebase will look like this:</p>
+<pre><code>    it(
+      'registers created dataIDs in the garbage collector if it has been ' +
+      'initialized',
+      () =&gt; {
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; dest:   e386ac907f43  - glh: Don't apply optimistic update as a side-...
+        RelayGarbageCollector.prototype.register = jest.genMockFunction();
+        const response = {node: {id: 0}};
+||||||| base
+        RelayGarbageCollector.prototype.register = jest.genMockFunction();
+        const response = {node: {id: '123'}};
+=======
+        RelayGarbageCollector.prototype.register = jest.fn();
+        const response = {node: {id: '123'}};
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; source: 3038a435f33a  fn - glh: Replace jest.genMockFunction and rela...
+        const data = new RelayStoreData();
+        data.initializeGarbageCollector();
+        const query = getNode(Relay.QL`query{node(id:&quot;a&quot;) {id}}`);
+        const garbageCollector = data.getGarbageCollector();
+
+        expect(garbageCollector.register).not.toBeCalled();
+        data.handleQueryPayload(query, response);
+        expect(garbageCollector.register).toBeCalled();
+        expect(garbageCollector.register.mock.calls[0][0]).toBe('a');
+      }
+    );
+</code></pre>
+<p>In this case:</p>
+<ol>
+<li>The first section, between <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; dest</code> and <code>||||||| base</code>: Shows how the upstream looks now.</li>
+<li>The second section, between <code>||||||| base</code> and <code>=======</code>: Shows how things used to look at the merge base.</li>
+<li>The third section, between <code>=======</code> and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; source</code>: Shows your proposed change.</li>
+</ol>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Understanding_Git_conflict_markers">Understanding Git conflict markers</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

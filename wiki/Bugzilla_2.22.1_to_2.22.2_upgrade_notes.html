@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Bugzilla 2.22.1 to 2.22.2 upgrade notes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Bugzilla 2.22.1 to 2.22.2 upgrade notes</h1></div><div class="metadata"><relative-time created="1170515924" updated="1495119989">Created 2/3/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/bugzilla">bugzilla</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Upgrade procedure</h2>
+<p>These notes were made during the upgrade from <a href="/wiki/Bugzilla">Bugzilla</a> 2.22.1 to 2.22.2:</p>
+<ul>
+<li>Run <code>sanitycheck.cgi</code> from within the browser.</li>
+<li>In the &quot;Parameters&quot; section set <code>shutdownhtml</code> to a useful value:</li>
+</ul>
+<!-- -->
+<pre><code>Currently closed for maintenance, please check back again soon.
+</code></pre>
+<ul>
+<li>Back up the database:</li>
+</ul>
+<!-- -->
+<pre><code># no need to pass --opt with MySQL 4.1 and up
+mysqldump -u database_user -p database_name | bzip2 -c &gt; ~/bugzilla-2.22.1.sql.bz2
+</code></pre>
+<ul>
+<li>Back up the installed files:</li>
+</ul>
+<!-- -->
+<pre><code>cd path_to_bugzilla_installation
+sudo tar -c -v . | bzip2 -c &gt; ~/bugzilla-2.22.1-files-backup.tar.bz2
+</code></pre>
+<ul>
+<li>Perform the actual update using <a href="/wiki/CVS">CVS</a> (<a href="/wiki/CVS">CVS</a> password is &quot;anonymous&quot;):</li>
+</ul>
+<!-- -->
+<pre><code>cvs login
+sudo cvs update -rBugzilla_Stable -dP
+</code></pre>
+<ul>
+<li>Watch for conflicts during update; if any found, fix as demonstrated in <a href="/wiki/Bugzilla_2.22_to_2.22.1_upgrade_notes">Bugzilla 2.22 to 2.22.1 upgrade notes</a>.</li>
+<li>Run <code>sudo ./checksetup.pl</code> from the command line.</li>
+<li>With <code>sudo</code>, use my custom <code>repair-bugzilla.sh</code> to repair the ownership and permissions on the installed files.</li>
+<li>In the &quot;Parameters&quot; section empty the <code>shutdownhtml</code> field; in order to get there you may need to explicitly navigate to <code>editparams.cgi</code> and log in.</li>
+<li>Run <code>sanitycheck.cgi</code> from within the browser.</li>
+<li>Test the installation.</li>
+</ul>
+<h2>Future improvements</h2>
+<p>This process could be largely automated via a shell script.</p>
+<h2>See also</h2>
+<ul>
+<li>Release notes: <a href="http://www.bugzilla.org/releases/2.22.2/release-notes.html">http://www.bugzilla.org/releases/2.22.2/release-notes.html</a></li>
+<li>Security advisory: <a href="http://www.bugzilla.org/security/2.20.3/">http://www.bugzilla.org/security/2.20.3/</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

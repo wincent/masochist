@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Setting up backup (mirror) repositories on GitHub • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Setting up backup (mirror) repositories on GitHub</h1></div><div class="metadata"><relative-time created="1242236593" updated="1710259978">Created 5/13/2009, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>For the impatient</h2>
+<p>Once the preliminary set-up is out the way, adding new backups is as easy as:</p>
+<pre><code># given local user $GIT_USER, $GITHUB_USER, and $GITHUB_REPO
+cd /path/to/repo
+sudo -u $GIT_USER git remote add --mirror github git@github.com:$GITHUB_USER/$GITHUB_REPO.git
+
+# either wait for the cron job to propagate the changes, or...
+sudo -u $GIT_USER -s -H
+git push github
+</code></pre>
+<h2>Overview</h2>
+<p>I typically work with a few of local repositories (one on my old iMac desktop machine, another on my old PowerBook laptop, and another on a USB stick) and one central, authoritative repo. This article talks about adding another remote repo, hosted at GitHub, to serve as a backup/mirror:</p>
+<pre><code>   &quot;authoritative&quot;                            backup/mirror
+      bare repo   -------------------------&gt;    bare repo
+  (git.wincent.dev)   push --mirror         (GitHub)
+          ^
+          |
+          | push
+          |
+          |                   pull
+     desktop repo    --------------------&gt;      laptop repo
+  active development &lt;-------------------- occasional development
+        |   ^                 pull
+        |   |
+   pull |   | pull
+        |   |
+        v   |
+    USB stick repo
+occasional development
+</code></pre>
+<p>In &quot;<a href="/wiki/Setting_up_backup_%28mirror%29_repositories_on_Gitorious">Setting up backup (mirror) repositories on Gitorious</a>&quot; I describe adding an additional backup/mirror repo.</p>
+<p>It should be noted that these &quot;backups&quot; <em>are</em> intended to provide some data redundancy but there are <em>not</em> intended to protect against data loss in the &quot;authoritative&quot; repo caused by user stupidity (for example, destructive re-writing of history, or deleting branches).</p>
+<p>In the event of user stupidity, the mirrors will be duly updated and the data will be truly gone: branches deleted from the &quot;authoritative&quot; repo will be deleted on the mirrors automatically from within a cron job.</p>
+<p>The user (me) should only ever be pushing out fast-forward merges to the &quot;authoritative&quot; repo, and never rolling back or rewriting history. Basically if you try to do a <code>git push</code> to such a repo and <a href="/wiki/Git">Git</a> warns you that you can't push without forcing, then you shouldn't be pushing. Instead, pull, resolve conflicts if necessary, and push again; or perhaps rethink what you're trying to do.</p>
+<h2>Setting up a private/public key pair</h2>
+<p>This step needs to only be performed once because the we'll be using the same key pair for all repositories.</p>
+<p>We will need to run with elevated privileges because we want to execute commands as another user (the user <a href="/wiki/Git">Git</a> runs as):</p>
+<pre><code>$ sudo -i
+</code></pre>
+<p>Switch to the user's home directory:</p>
+<pre><code># cd /path/to/git/home
+</code></pre>
+<p>Create the <code>.ssh</code> directory (only if it does not already exist; it most likely does if you've been pushing into the repo via <a href="/wiki/SSH">SSH</a>):</p>
+<pre><code># sudo -u user mkdir .ssh
+# chmod 700 .ssh
+# cd .ssh
+</code></pre>
+<p>If there isn't a key pair already, make one thusly:</p>
+<pre><code># sudo -u user ssh-keygen -t dsa
+Generating public/private dsa key pair.
+Enter file in which to save the key (/path/to/git/home/.ssh/id_dsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /path/to/git/home/.ssh/id_dsa.
+Your public key has been saved in /path/to/git/home/.ssh/id_dsa.pub.
+The key fingerprint is:
+00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00 user@example.com
+</code></pre>
+<p><strong>A note about passphraseless key files:</strong> Seeing as this key is <em>only</em> for pushing to the backup/mirror repository, <em>and</em> you want such backups to run automatically (unattended), <em>and</em> you're not going to be around every time the server reboots to feed a passphrase into <code>ssh-agent</code>, <em>and</em> the backup is not supposed to be &quot;authoritative&quot; (it's just there for some data redundancy) so you literally don't care about security, you <em>might</em> want to hit &quot;enter&quot; for no passphrase above.</p>
+<ol>
+<li>Visit: <a href="http://github.com/account#keys">http://github.com/account#keys</a></li>
+<li>Click on the &quot;add another public key&quot; link</li>
+<li>Copy and paste the contents of <code>/path/to/git/home/.ssh/id_dsa.pub</code></li>
+<li>Assign it a descriptive name like &quot;<a href="mailto:git-backups@git.example.com">git-backups@git.example.com</a>&quot;</li>
+</ol>
+<h3>See also</h3>
+<ul>
+<li><a href="http://github.com/guides/providing-your-ssh-key">http://github.com/guides/providing-your-ssh-key</a></li>
+</ul>
+<h3>Optional setup</h3>
+<p>I also added a block like this to my <code>~/.ssh/config</code>; it's not strictly necessary but I think it's nice to be explicit:</p>
+<pre><code>Host github.com
+  IdentityFile /path/to/git/home/.ssh/id_dsa
+  HostName github.com
+  User git
+</code></pre>
+<p>With this set-up in place you have the option of specifying the repository using:</p>
+<pre><code>github.com:wincent/Wikitext.git
+</code></pre>
+<p>Instead of the longer:</p>
+<pre><code>git@github.com:wincent/Wikitext.git
+</code></pre>
+<h2>Creating the repository on GitHub</h2>
+<ol>
+<li>Log in to <a href="https://github.com/">GitHub</a></li>
+<li>Under &quot;Your Repositories&quot;, click &quot;New Repository&quot;</li>
+<li>Fill out the &quot;Project Name&quot;, &quot;Description&quot; and &quot;Homepage URL&quot; fields:
+<ol>
+<li>&quot;Project Name&quot;, for example, might be something like &quot;Wikitext&quot;</li>
+<li>&quot;Description&quot; could be something like &quot;Mirror of the official Wikitext repository at git.wincent.dev&quot;</li>
+<li>&quot;Homepage URL&quot;, for example, could be something like <a href="http://wikitext.rubyforge.org/">http://wikitext.rubyforge.org/</a></li>
+</ol>
+</li>
+<li>Turn off the &quot;Wiki&quot;, &quot;Issues&quot; and &quot;Downloads&quot; features (that functionality is already provided on the wincent.dev site)</li>
+</ol>
+<h2>Setting up a <code>README</code> file</h2>
+<p>If your tree includes an optional <code>README</code> at the top-level it will be displayed by GitHub. Various formats like <code>README.rdoc</code>, <code>README.txt</code> will also work (<a href="http://github.com/guides/readme-formatting">see here for details</a>).</p>
+<h2>Pushing to GitHub for the first time</h2>
+<p>In the source repository, some initial setup is required.</p>
+<p>For example, for GitHub username &quot;wincent&quot; and repo &quot;Wikitext.git&quot;:</p>
+<pre><code># sudo -u user git remote add --mirror github git@github.com:wincent/Wikitext.git
+</code></pre>
+<p>That's the incantation that we'll eventually use, but for now we'll do it without the <code>--mirror</code> switch just to demonstrate what happens:</p>
+<pre><code># sudo -u user git remote add github git@github.com:wincent/Wikitext.git
+</code></pre>
+<p>(We run as the <a href="/wiki/Git">Git</a> user to that any files, if they need to be created, have the correct ownership. Later on we'll see how adding the <code>--mirror</code> switch gives us the ideal behaviour for a purely backup repository.)</p>
+<p>We can then do:</p>
+<pre><code># sudo -u user git push github master
+</code></pre>
+<p>Or even:</p>
+<pre><code># sudo -u user git push --all github
+# sudo -u user git push --tags github
+</code></pre>
+<p>If this is the first time you've pushed you'll see something like.</p>
+<pre><code>The authenticity of host 'github.com (65.74.177.129)' can't be established.
+RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,65.74.177.129' (RSA) to the list of known hosts.
+</code></pre>
+<p>If you see an error like the following, it's likely that you have some kind of problem with your <code>PATH</code>:</p>
+<pre><code>fatal: exec pack-objects failed.
+error: pack-objects died with strange error
+error: failed to push some refs to 'git@github.com:wincent/Wikitext.git'
+</code></pre>
+<p>This is not the first time I've had problems with <a href="/wiki/Git">Git</a> as a result of my decision to install it under <code>/usr/local/</code> rather than <code>/usr/</code> (see &quot;<a href="/wiki/Upgrading_to_Git_1.5.4">Upgrading to Git 1.5.4</a>&quot;). The problem here is that <code>sudo</code> can find and run the <code>git</code> command because <code>/usr/local/bin</code> is in the <code>PATH</code> of the user running <code>sudo</code>, but <code>git</code> running as the <a href="/wiki/Git">Git</a> user itself cannot find <code>git-pack-objects</code> because it is running with an emaciated <code>PATH</code> (<code>/bin:/usr/bin</code>).</p>
+<p>Adding <code>/usr/local/bin</code> to the <code>PATH</code> solves the problem. With the following in <code>/path/to/git/home/.bashrc</code>:</p>
+<pre><code>PATH=/usr/local/bin:$PATH
+export PATH
+</code></pre>
+<p>The push now works:</p>
+<pre><code># sudo -s -H -u user
+$ echo $PATH
+/usr/local/bin:/usr/bin:/bin
+$ git push github master
+Counting objects: 2840, done.
+Compressing objects: 100% (849/849), done.
+Writing objects: 100% (2840/2840), 4.05 MiB | 1736 KiB/s, done.
+Total 2840 (delta 2015), reused 2680 (delta 1904)
+To git@github.com:wincent/Wikitext.git
+ * [new branch]      master -&gt; master
+</code></pre>
+<p>Note how we need a shell (<code>-s</code>) which sources the <code>.bashrc</code> in order for this <code>PATH</code> setting to come into effect.</p>
+<h3>Updating all branches and tags at once</h3>
+<p>The <code>git-push</code> <a href="/wiki/man">man</a> page describes the handy <code>--mirror</code> option that perfectly fits our usage model:</p>
+<blockquote>
+<p>Instead of naming each ref to push, specifies that all refs under <code>$GIT_DIR/refs/</code> (which includes but is not limited to <code>refs/heads/</code>, <code>refs/remotes/</code>, and <code>refs/tags/</code>) be mirrored to the remote repository. Newly created local refs will be pushed to the remote end, locally updated refs will be force updated on the remote end, and deleted refs will be removed from the remote end. This is the default if the configuration option <code>remote.&lt;remote&gt;.mirror</code> is set.</p>
+</blockquote>
+<p>The <code>--mirror</code> option has the advantage that the <a href="/wiki/GitWeb">GitWeb</a> <em>won't</em> show tags for the <code>github/master</code> (etc) refs.</p>
+<p>So let's undo our former <code>git remote</code> invocation:</p>
+<pre><code>sudo -u user git remote rm github
+</code></pre>
+<p>And then redo it:</p>
+<pre><code>sudo -u user git remote add --mirror github git@github.com:wincent/Wikitext.git
+</code></pre>
+<p>Alternatively, we could just:</p>
+<pre><code>sudo -u user git config remote.github.mirror true
+</code></pre>
+<p>Check our work:</p>
+<pre><code>cat config
+</code></pre>
+<p>Shows:</p>
+<pre><code>[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+[remote &quot;github&quot;]
+	url = git@github.com:wincent/Wikitext.git
+	fetch = +refs/*:refs/*
+	mirror = true
+</code></pre>
+<p>We can also check using:</p>
+<pre><code>sudo -u user git remote show github
+</code></pre>
+<p>Shows this output:</p>
+<pre><code>* remote github
+  URL: git@github.com:wincent/Wikitext.git
+  Stale tracking branches (use 'git remote prune')
+    antlr maint ragel refs/tags/0.1 refs/tags/0.2 refs/tags/0.3 refs/tags/0.4 refs/tags/0.5 refs/tags/0.6 refs/tags/1.0 refs/tags/1.0.1 refs/tags/1.0.2 refs/tags/1.0.3 refs/tags/1.1 refs/tags/1.1.1 refs/tags/1.2 refs/tags/1.2.1 refs/tags/1.3.0 refs/tags/1.3.1 refs/tags/1.3.2 refs/tags/1.4.0 refs/tags/1.4.1 refs/tags/1.5.0 refs/tags/1.5.1 refs/tags/1.5.2 refs/tags/1.5.3 refs/tags/1.6 refs/tags/1.7
+  Tracked remote branch
+    master
+</code></pre>
+<p><strong>Note:</strong> We don't actually want to follow the advice here to prune the stale tracking branches; that would remove all tags and all branches but the master branch (easily restored iwth a <code>git push --all</code> and <code>git push --tags</code> from the local development machine, but best to avoid the unnecessary chore). Instead we just push:</p>
+<pre><code># sudo -H -s -u user
+$ git push github
+</code></pre>
+<h2>Setting up <a href="/wiki/cron">cron</a>-based automation</h2>
+<p>Start editing the crontab:</p>
+<pre><code>$ crontab -e
+</code></pre>
+<p>And give it content something like this:</p>
+<pre><code>MAILTO=&quot;example@example.com&quot;
+PATH=/usr/local/bin:/bin:/usr/bin
+@hourly ${HOME}/tools/github-mirror.sh
+</code></pre>
+<p>Where <code>${HOME}/tools/github-mirror.sh</code> is a simple shell script that looks something like this:</p>
+<pre><code>#!/bin/sh
+# github-mirror.sh
+# Copyright 2009 Wincent Colaiuta.
+#
+# crontab notes:
+# ==============
+#
+# This script is intended to be run using cron once per hour using a
+# crontab entry like this one:
+#
+#   MAILTO=&quot;person@example.com&quot;
+#   @hourly    ${HOME}/bin/github-mirror.sh
+#
+# The script should run as the owner of the repositories:
+#
+#   sudo crontab -u git -e
+
+#
+# Configuration
+#
+
+PUBLIC_REPOS=/path/to/git/home/public/repos
+
+#
+# Functions
+#
+
+do_push()
+{
+  for REPO in $1/*.git; do
+    (cd $REPO &amp;&amp; git push github)
+  done
+}
+
+#
+# Main
+#
+
+set -e
+
+do_push &quot;${PUBLIC_REPOS}&quot;
+</code></pre>
+<h2>Inspecting the mirror</h2>
+<ul>
+<li><a href="http://github.com/wincent/Wikitext/tree/master">http://github.com/wincent/Wikitext/tree/master</a></li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Setting_up_backup_%28mirror%29_repositories_on_Gitorious">Setting up backup (mirror) repositories on Gitorious</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

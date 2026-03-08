@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Objective-C licensing engine for sale • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/objective-c-licensing-engine-for-sale">Objective-C licensing engine for sale</a></h1><div class="metadata"><relative-time created="1262507074" updated="1709676231">Created 1/3/2010, updated 3/5/2024</relative-time><span>4 minute read</span></div><div class="prerendered"><p>Back in late 2007 I was approached to create a licensing engine (serial number scheme) for a Mac software bundle. In the end the bundle was never launched and the person who commissioned the work has disappeared off the map. I've been sitting on the source code since then.</p>
+<p>I'm a big fan of <a href="/wiki/open_source">open source</a> but licensing systems are one area where I think a small degree of <a href="/wiki/security_through_obscurity">security through obscurity</a> is actually helpful. To release it as open source would reduce its effectiveness, but I don't want to dig a hole in the backyard and bury the code forever either.</p>
+<p>I've decided to offer it for sale. The interested party would buy all rights to the codebase, not merely license it, and would be free to do with it as they pleased.</p>
+<h2>Characteristics of the system</h2>
+<p>The system was designed according to the specifications originally provided to me, for use in the never-released Mac software bundle.</p>
+<p>This is a low-level system which provides facilities for generating and verifying license codes. It also handles details such as reading and writing license codes to disk. For the sake of simplicity and flexibility it does not include a user-interface component.</p>
+<ul>
+<li>Implemented in <a href="/wiki/Objective-C">Objective-C</a></li>
+<li>Can be used with or without Garbage Collection</li>
+<li>Targets Mac OS X 10.4 and 10.5; not yet tested on 10.6 but expected to work as it uses conservative coding techniques and sticks to well-documented, &quot;modern&quot; <a href="/wiki/APIs">APIs</a></li>
+<li>Secure license keys generated using public key cryptography</li>
+<li>Short license keys (39 characters long) thanks to use of Elliptic Key cryptography</li>
+<li>Ambiguous characters (like 0 and O) never appear in license codes, reducing support queries</li>
+<li>License codes are <em>not</em> tied to user email addresses, again to reduce support queries and streamline the purchasing process</li>
+<li>Extensive inlining and basic symbol obfuscation are used to make cracking more difficult</li>
+<li>Includes extensive test suite</li>
+<li>Includes <a href="/wiki/command_line">command line</a> tool for generating keys and license codes</li>
+<li>Very easy to incorporate in existing projects (just include 2 headers and 1 implementation file)</li>
+<li>Engine can be used with up to 256 different applications</li>
+<li>Over 4 billion unique codes per application</li>
+<li>Optional expiring licenses (trial licenses)</li>
+<li>Optional version-limited licenses (valid only for certain versions)</li>
+<li>Optional &quot;bundle&quot; licenses (use of a single license code to unlock a bundle containing multiple software products)</li>
+</ul>
+<p>As I've written <a href="/blog/on-piracy">elsewhere</a>, I think developers often spend too much time worrying about piracy. The goal of this system is to make a <em>reasonable</em> effort to deter software piracy, but not to go crazy trying to be &quot;uncrackable&quot; or win what is essentially an unwinnable war.</p>
+<p>The person who commissioned this work was of the same opinion, which is why the system does <em>not</em> include features that are sometimes found in other systems, like tying license codes to user identities. In fact, it does not even include a blacklisting facility, although one could be added easily enough.</p>
+<h2>How much for all this?</h2>
+<p>For me this project represents several weeks of intensive work, and builds on my foundation as an experienced <a href="/wiki/Mac_OS_X">Mac OS X</a>/<a href="/wiki/Objective-C">Objective-C</a> developer with expert knowledge of cryptography and licensing systems. The asking price is 1,000€; converted to an hourly rate this really is a steal.</p>
+<h2>What you will receive for your money</h2>
+<p>The system as it stands is a way for a developer to buy an &quot;off-the-shelf&quot; licensing scheme, forget about the details, be free to roll it into as many products as they like, and get on with improving the features of their products.</p>
+<p>You will receive:</p>
+<ul>
+<li>a copy of the code base (Xcode project, source files, test suite)</li>
+<li>extensive documentation (18 page PDF guide in addition to the code-level <a href="/wiki/Doxygen">Doxygen</a> documentation)</li>
+<li>demo screencast showing the key and code generation process</li>
+<li>installer package</li>
+<li>buildable demo executable (including source code) showing how to use the system</li>
+<li>full <a href="/wiki/Git">Git</a> repository containing entire project history (currently 107 commits)</li>
+<li>full rights to the code base; that is, rather than merely licensing the code base you will be acquiring it along with all rights to it, to do with as you please</li>
+</ul>
+<p>If you're interested and have any questions, please feel free to get in touch with me via email (<a href="mailto:example@example.com">example@example.com</a>) or by posting a comment here. In the case of official enquiries from known software companies (ie. received from an official, public email address associated with the company) I'm prepared to discuss technical details or provide sample code as appropriate.</p>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/synergy-4.2.1b-released">← Synergy 4.2.1b released</a></div><div class="post-nav-next"><a href="/blog/state-of-the-spam-ion-2010-address">State of the Spam-ion 2010 Address →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

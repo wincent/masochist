@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git merge conflict cheatsheet • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git merge conflict cheatsheet</h1></div><div class="metadata"><relative-time created="1430602772" updated="1736516595">Created 5/2/2015, updated 1/10/2025</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/cheatsheet">cheatsheet</a></li></ul><div class="prerendered"><p><code>git status</code> shows files with conflicts under &quot;Unmerged paths&quot;.</p>
+<h2>Merge conflict markers</h2>
+<p>Summarizing &quot;<a href="/wiki/Understanding_Git_conflict_markers">Understanding Git conflict markers</a>&quot;, the &quot;top&quot; half of a conflict is the branch you're merging into, and the &quot;bottom&quot; half of a conflict is the branch you are trying to merge, so:</p>
+<h3>Normal merges</h3>
+<ul>
+<li>Top shows local changes (AKA &quot;ours&quot;)</li>
+<li>Bottom shows upstream changes (AKA &quot;theirs&quot;)</li>
+</ul>
+<h3>Rebases</h3>
+<ul>
+<li>Top shows upstream changes (AKA &quot;ours&quot;)</li>
+<li>Bottom shows &quot;local&quot; (to topic branch) changes (AKA &quot;theirs&quot;)</li>
+</ul>
+<h3>Stashes</h3>
+<ul>
+<li>Top shows worktree state before running <code>git stash pop</code></li>
+<li>Bottom shows worktree state that you originally stashed with <code>git stash</code></li>
+</ul>
+<p>Conflict markers look like this:</p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream
+foo
+=======
+bar
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes
+</code></pre>
+<h2>Index contents</h2>
+<ul>
+<li>stage 1: common ancestor; see with <code>git show :1:file</code></li>
+<li>stage 2: (local) HEAD; see with <code>git show :2:file</code></li>
+<li>stage 3: MERGE_HEAD; see with <code>git show :3:file</code></li>
+</ul>
+<p><code>git ls-files -u</code> shows the index metadata (paths, blob IDs) for all stages of unmerged paths.</p>
+<h2>Scenario: picking one side of the merge</h2>
+<p>This can be useful when dealing with conflicts due to things like formatting changes. Say you have a topic branch and run a source formatter on it. You rebase that topic branch onto <code>master</code> and get conflicts because somebody changed the code that you formatted. The easiest solution here is not to solve the merge conflict by hand, but rather take the <code>master</code> changes and then re-run the source formatting operation.</p>
+<pre><code class="language-bash">git checkout --ours -- path/to/conflicting-file
+sh format-source.sh
+</code></pre>
+<p>Again, note that during rebasing the &quot;ours&quot;/&quot;theirs&quot; distinction is reversed:</p>
+<ul>
+<li>During rebase: &quot;ours&quot; is the upstream branch, &quot;theirs&quot; is the topic branch.</li>
+<li>During a normal merge: &quot;ours&quot; is the current branch, &quot;theirs&quot; is the other branch being merged in.</li>
+</ul>
+<h2>Scenario: <code>git stash pop</code></h2>
+<p>As with rebase conflicts, the yours-vs-theirs distinction can be a little confusing.</p>
+<ul>
+<li><code>HEAD</code> (stage 2 in the index) refers to the worktree state you had before running <code>git stash pop</code></li>
+<li><code>MERGE_HEAD</code> (stage 3 in the index) refers to the worktree state you recorded with <code>git stash</code></li>
+</ul>
+<p>So, say you want to just keep things as they were for a particular file and ignore what's in the stash, you could do:</p>
+<pre><code class="language-shell">$ git show :2:filename &gt; filename
+$ git add filename
+$ git stash drop
+</code></pre>
+<p>But note: in a merge conflict situation hunks that applied cleanly are added to the index, so once you've resolved a conflict like this you may have stuff staged that you aren't necessarily ready to commit. In that case, <code>git reset HEAD</code>.</p>
+<h2>Scenario: ignoring whitespace changes</h2>
+<p>This can be helpful to avoid conflicts arising from indentation changes (say, the <code>main</code> branch has a change that ends up indenting a method body):</p>
+<pre><code class="language-shell">$ git cherry-pick -Xignore-all-space 15e087dfc205
+</code></pre>
+<h2>Aliases</h2>
+<pre><code>[alias]
+	# Mark merge conflicts as resolved.
+	resolve = &quot;!f() { \
+		git add $(git diff --name-only --diff-filter=U -- \&quot;${@:-.}\&quot;); \
+	}; f&quot;
+</code></pre>
+<h2><code>git continue</code> subcommand</h2>
+<p>Save under <code>$PATH</code> as <code>git-continue</code>:</p>
+<pre><code class="language-zsh">#!/usr/bin/env zsh
+
+# Runs `git rebase --continue`, `git cherry-pick --continue` as appropriate,
+# based on context.
+#
+# Based on: https://stackoverflow.com/a/53370600
+
+GIT_DIR=$(git rev-parse --git-dir)
+STATUS=$?
+
+if [ $STATUS -ne 0 ]; then
+    exit $STATUS
+fi
+
+if [ -d &quot;${GIT_DIR}/rebase-merge&quot; ]; then
+    exec git rebase --continue
+elif [ -d &quot;${GIT_DIR}/rebase-apply&quot; ]; then
+    exec git rebase --continue
+elif [ -f &quot;${GIT_DIR}/MERGE_HEAD&quot; ]; then
+    exec git merge --continue
+elif [ -f &quot;${GIT_DIR}/CHERRY_PICK_HEAD&quot; ]; then
+    exec git cherry-pick --continue
+elif [ -f &quot;${GIT_DIR}/REVERT_HEAD&quot; ]; then
+    exec git revert --continue
+else
+    echo &quot;error: No operation to --continue&quot;
+    exit 1
+fi
+
+# vim: set filetype=zsh
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

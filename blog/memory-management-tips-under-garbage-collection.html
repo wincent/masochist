@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Memory management tips under Garbage Collection • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/memory-management-tips-under-garbage-collection">Memory management tips under Garbage Collection</a></h1><div class="metadata"><relative-time created="1197756840" updated="1584053324">Created 12/15/2007, updated 3/12/2020</relative-time><span>2 minute read</span></div><div class="prerendered"><h4>The <code>CFRelease</code> function</h4>
+<p>Good old-fashioned reference counting (with <code>retain</code> and <code>release</code>) has been thrown out the window in the brave new Garbage Collected world.</p>
+<p>Core Foundation objects <em>are</em> Garbage Collected too, but they continue to use a reference counting layer on top of the GC. This means that a CF object will only become eligible for collection when its reference count hits zero.</p>
+<p>This makes CF objects great candidates for passing to sheet methods and the like which take <code>void *</code> &quot;context info&quot; pointers. A normal Cocoa object might be collected here because the pointer to void is not considered a strong reference, but a CF object will remain in memory. When you get back from the sheet you can do a <code>CFRelease</code> and the object will eventually be disposed of.</p>
+<p>(Your alternative if you don't want to directly touch anything CF is to use the <code>disableCollectorForPointer:</code> and <code>enableCollectorForPointer:</code> methods of the <code>NSGarbageCollector</code> class, but that might end up being a bit more typing in many cases, unless you want to add some convenience methods to <code>NSObject</code> via a category to do the same.)</p>
+<p>One caveat: you're not supposed to pass <code>NULL</code> references to <code>CFRelease</code>.</p>
+<h4>The <code>CFMakeCollectable</code> function</h4>
+<p>To save you from this potentially error-prone pattern:</p>
+<pre><code>CFTypeRef thing = CFCreateSomething(...);
+
+... do lots of stuff ...
+
+CFRelease(thing); // ... at least, if you remember!
+</code></pre>
+<p>Apple provides <code>CFMakeCollectable</code>:</p>
+<pre><code>CFTypeRef thing = CFMakeCollectable(CFCreateSomething(...));
+
+... do lots of stuff ...
+</code></pre>
+<p><code>CFMakeCollectable</code> does a <code>CFRelease</code> for you immediately and hands the reference back to you. The object sticks around because there is a strong reference to it (until the reference falls out of scope) but you don't have to worry about remembering to <code>CFRelease</code> it later on when you're done with it.</p>
+<p>The caveat: because <code>CFMakeCollectable</code> is a wrapper for <code>CFRelease</code> you must not pass <code>NULL</code> references to it. This makes it unsuitable for use with some functions that may return NULL on failure, unless you test for <code>NULL</code> first in which case you may as well just use <code>CFRelease</code> anyway because it's easier to type even if a little misleading about when the released object might end up getting deallocated (&quot;release&quot; sounds too immediate given that the object will stick around at least as long as there are strong references to it).</p>
+<p>There is nothing to stop you from writing your own wrapper functions which check for <code>NULL</code> references prior to calling <code>CFRelease</code> or <code>CFMakeCollectable</code>.</p>
+<h4>The <code>NSMakeCollectable</code> function</h4>
+<p>The user-friendliest of them all because it is both <code>NULL</code>-safe and does a cast to <code>id</code> for you at the same time as marking something as collectable. When you do this:</p>
+<pre><code>NSString *string = NSMakeCollectable(CFTryToCreateThing(...));
+</code></pre>
+<p>It is equivalent to writing:</p>
+<pre><code>CFStringRef ref = CFTryToCreateThing(...);
+if (ref)
+    CFRelease(ref);
+NSString *string = (NSString *)ref;
+</code></pre>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/assigning-keyboard-shortcuts-to-user-scripts-in-xcode-3">← Assigning keyboard shortcuts to user scripts in Xcode 3</a></div><div class="post-nav-next"><a href="/blog/rspec-1.1.0">RSpec 1.1.0 →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

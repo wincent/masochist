@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Backup strategy (2007) • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Backup strategy (2007)</h1></div><div class="metadata"><relative-time created="1425240464" updated="1710259978">Created 3/1/2015, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/macos">macos</a></li><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/backup">backup</a></li></ul><div class="prerendered"><h2>First lines of defense (pre-backup)</h2>
+<h3>Software RAID</h3>
+<h3>Journaled filesystem</h3>
+<p><a href="/wiki/Apple">Apple</a> currently (with <a href="/wiki/Mac_OS_X">Mac OS X</a> <a href="/wiki/Tiger">Tiger</a>) provides a journaled filesystem in the form of HFS+, but I have had multiple catastrophic failures of HFS+ volumes, both when used independently and when configured as a software RAID, so I cannot recommend HFS+ for use with any data that you aren't prepared to throw away. HFS+ is effectively a &quot;throwaway filesystem&quot;.</p>
+<p>In <a href="/wiki/Leopard">Leopard</a> Apple will support <a href="/wiki/ZFS">ZFS</a> which is a revolutionary filesystem developed by <a href="/wiki/Sun">Sun</a>. It supports journaling, advanced RAID, and unparalleled data integrity verification and self-repair. <a href="/wiki/Apple">Apple</a> has publicly stated that ZFS support will be read-only at first, but we can definitely hope for and look forward to read/write access and bootability from ZFS in the future.</p>
+<h3>Uninterruptable Power Supply (UPS)</h3>
+<h2>Daily backup of home directory to DVD+RW</h2>
+<h2>Four-times-daily backup of home directory to external volume</h2>
+<h2>Nightly backup of startup disk to external FireWire volume</h2>
+<p>I use <a href="/wiki/SuperDuper%21">SuperDuper!</a> to perform a daily, bootable backup of my entire startup volume to an external <a href="/wiki/FireWire">FireWire</a> volume.</p>
+<h2>Failure scenarios</h2>
+<h3>Damage to specific files or folders</h3>
+<h3>Primary drive failure</h3>
+<h3>Backup drive failure</h3>
+<h3>DVD corruption</h3>
+<h3>Failure of primary <em>and</em> backup drives</h3>
+<h3>Theft</h3>
+<p>Encryption</p>
+<h3>Fire, flood or other disaster</h3>
+<h2>See also</h2>
+<h3>Backup products</h3>
+<ul>
+<li><a href="http://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html">http://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html</a></li>
+</ul>
+<h3>Apple command line documentation</h3>
+<ul>
+<li><a href="http://developer.apple.com/macosx/backuponmacosx.html">http://developer.apple.com/macosx/backuponmacosx.html</a></li>
+</ul>
+<h3>Other people's backup strategies</h3>
+<ul>
+<li><a href="http://matt.makalumedia.com/archives/000833.html">http://matt.makalumedia.com/archives/000833.html</a></li>
+<li><a href="http://mjtsai.com/blog/2005/05/24/my-new-backup-strategy/">http://mjtsai.com/blog/2005/05/24/my-new-backup-strategy/</a></li>
+</ul>
+<h3>Local links</h3>
+<ul>
+<li>An article about my new backup strategy as of July 2007: <a href="http://wincent.dev/a/about/wincent/weblog/archives/2007/07/new_backup_regi.php">http://wincent.dev/a/about/wincent/weblog/archives/2007/07/new_backup_regi.php</a></li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Backup_strategy">Backup strategy</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

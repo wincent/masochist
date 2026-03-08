@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Using iptables on EC2 instances • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Using iptables on EC2 instances</h1></div><div class="metadata"><relative-time created="1289653986" updated="1625834873">Created 11/13/2010, updated 7/9/2021</relative-time></div><ul class="tags"><li><a href="/tags/firewall">firewall</a></li><li><a href="/tags/ec2">ec2</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Most of the time you don't need to worry about using a host-level firewall such as iptables when running Amazon EC2, because Amazon allows you to run instances inside a &quot;security group&quot;, which is effectively a firewall policy that you use to specify which connections from the outside world should be allowed to reach the instance.</p>
+<p>However, this is a &quot;whitelist&quot; approach, and it is not straightforward to use it for &quot;blacklisting&quot; purposes on a running instance.</p>
+<h2>Example scenario</h2>
+<p>A bot is trying a bruteforce attack, annoyingly driving up the system load and filling your logs with crap like this (dozens of lines per second):</p>
+<pre><code>pop3[22145]: badlogin: fc.df.84ae.static.theplanet.com [174.132.223.252] plaintext branden SASL(-13): authentication failure: checkpass failed
+</code></pre>
+<p>You want to drop all connections from that IP until the attack is over.</p>
+<h3>Temporarily blocking a single IP</h3>
+<p>For this purpose, temporarily turning on the host-level firewall and setting up a rule is probably the simplest way to go.</p>
+<p>First up, check the existing rules; by default they will allow all traffic:</p>
+<pre><code class="language-shell"># iptables -L
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination
+</code></pre>
+<p>Now set up a rule to drop all packets from the attacker; you can run <code>iptables -L</code> again to see the results:</p>
+<pre><code class="language-shell"># iptables -I INPUT -s 174.132.223.252 -j DROP
+# iptables -L
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination
+DROP       all  --  fc.df.84ae.static.theplanet.com  anywhere
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination
+</code></pre>
+<p>See the iptables man page for details on the other kinds of rules you can specify. You can do things like rate-limiting, and matching on specific ports, and a lot of much more complicated variations than just dropping all packets like in the example above.</p>
+<p>As iptables probably isn't running (you can check this with <code>service --status-all</code>) you'll need to start it:</p>
+<pre><code class="language-shell"># service iptables start
+</code></pre>
+<p>Note that it most likely isn't configured to start up at boot either (check with <code>chkconfig --list</code>); if you want it to be permanent you'll have to use <code>chkconfig</code> to set that up.</p>
+<p>Once the attack is over you can drop the rule with <code>iptables -D INPUT</code> and the full specification of the rule:</p>
+<pre><code class="language-shell"># iptables -D INPUT -s 174.132.223.252 -j DROP
+</code></pre>
+<p>Or by referencing it's rule number (1 in this case):</p>
+<pre><code class="language-shell"># iptables -D INPUT 1
+</code></pre>
+<h3>Dynamically detecting attacks</h3>
+<pre><code class="language-shell"># iptables -N bansshee
+# iptables -A bansshee -p tcp --dport 110 -m state --state NEW -m recent --set --name pop3connect
+# iptables -A bansshee -p tcp --dport 110 -m state --state NEW -m recent --rcheck --seconds 60 --hitcount 10 --name pop3connect -j DROP
+# iptables -I INPUT -j bansshee
+# iptables -L
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination
+bansshee   all  --  anywhere             anywhere
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination
+
+Chain bansshee (1 references)
+target     prot opt source               destination
+           tcp  --  anywhere             anywhere            tcp dpt:pop3 state NEW recent: SET name: pop3connect side: source
+DROP       tcp  --  anywhere             anywhere            tcp dpt:pop3 state NEW recent: CHECK seconds: 60 hit_count: 10 name: pop3connect side: source
+</code></pre>
+<p>Basically:</p>
+<ul>
+<li>Create a custom &quot;bansshee&quot; chain which can easily be added or removed from default INPUT chain</li>
+<li>Record the IP addresses making any new POP connections in a list named &quot;pop3connect&quot;</li>
+<li>If any IP address makes more than 10 such new connections in any 60 second period, drop the packets on the floor</li>
+<li>Insert the &quot;bansshee&quot; chain in the default INPUT chain</li>
+</ul>
+<h4>Source</h4>
+<ul>
+<li><a href="http://pbxinaflash.com/forum/showthread.php?t=5018">http://pbxinaflash.com/forum/showthread.php?t=5018</a></li>
+</ul>
+<h3>Making the configuration permanent</h3>
+<pre><code class="language-shell"># service iptables save # writes config to /etc/sysconfig/iptables
+# chkconfig iptables on
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

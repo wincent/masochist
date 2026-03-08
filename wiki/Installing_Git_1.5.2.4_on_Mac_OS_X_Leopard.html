@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Installing Git 1.5.2.4 on Mac OS X Leopard • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Installing Git 1.5.2.4 on Mac OS X Leopard</h1></div><div class="metadata"><relative-time created="1199213736" updated="1709676231">Created 1/1/2008, updated 3/5/2024</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Notes made while installing <a href="/wiki/Git_1.5.2.4">Git 1.5.2.4</a> on <a href="/wiki/Mac_OS_X">Mac OS X</a> <a href="/wiki/Leopard">Leopard</a>.</p>
+<h2>Installation</h2>
+<pre><code># build expat dependency
+curl -O http://surfnet.dl.sourceforge.net/sourceforge/expat/expat-2.0.1.tar.gz
+tar xzvf expat-2.0.1.tar.gz
+cd expat-2.0.1
+./configure
+make
+make check
+sudo make install
+cd ..
+
+# build GPG for signature verification
+curl -O ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-1.4.7.tar.bz2
+openssl sha1 gnupg-1.4.7.tar.bz2
+tar xjvf gnupg-1.4.7.tar.bz2
+cd gnupg-1.4.7
+./configure
+make
+make check
+sudo make install
+cd ..
+
+# copy GPG files from Tiger install
+mkdir -m 700 ~/.gnupg
+ cp ${PATH_TO_TIGER_HOME_FOLDER}/.gnupg/*gpg* ~/.gnupg/
+
+# git
+curl -O http://kernel.org/pub/software/scm/git/git-1.5.2.4.tar.bz2 \
+     -O http://kernel.org/pub/software/scm/git/git-1.5.2.4.tar.bz2.sign
+gpg --verify git-1.5.2.4.tar.bz2.sign git-1.5.2.4.tar.bz2
+tar xjvf git-1.5.2.4.tar.bz2
+cd git-1.5.2.4
+make prefix=/usr/local all
+make prefix=/usr/local test
+echo $?
+sudo make prefix=/usr/local install
+cd ..
+
+# manpages
+curl -O  http://www.kernel.org/pub/software/scm/git/git-manpages-1.5.2.4.tar.bz2 \
+     -O http://www.kernel.org/pub/software/scm/git/git-manpages-1.5.2.4.tar.bz2.sign
+gpg --verify git-manpages-1.5.2.4.tar.bz2.sign git-manpages-1.5.2.4.tar.bz2
+sudo tar xjv -C /usr/local/share/man -f git-manpages-1.5.2.4.tar.bz2
+</code></pre>
+<h2>Configuration</h2>
+<p>I also had to undertake some of the configuration described in &quot;<a href="/wiki/Git_quickstart">Git quickstart</a>&quot;:</p>
+<pre><code># personalize these with your own name and email address
+git config --global user.name &quot;Wincent Colaiuta&quot;
+git config --global user.email &quot;example@example.com&quot;
+
+# colorize output
+git config --global color.status auto
+git config --global color.diff auto
+git config --global color.branch auto
+
+# shortcut aliases
+git config --global alias.st status
+git config --global alias.ci commit
+git config --global alias.co checkout
+
+# use Apple opendiff (FileMerge) for resolving conflicts
+git config --global merge.tool opendiff
+
+# this so I can submit patches using git send-email
+git config --global sendemail.smtpserver smtp.example.com
+git config --global sendemail.aliasesfile ~/.gitaliases
+git config --global sendemail.aliasfiletype mailrc
+
+# shortcut aliases for submitting patches for Git itself
+echo &quot;alias git git@vger.kernel.org&quot; &gt;&gt; ~/.gitaliases
+echo &quot;alias junio gitster@pobox.com&quot; &gt;&gt; ~/.gitaliases
+
+# turn on new 1.5 features which break backwards compatibility
+git config --global core.legacyheaders false
+git config --global repack.usedeltabaseoffset true
+</code></pre>
+<p>I added these aliases to my <code>~/.bash_profile</code>:</p>
+<pre><code># show difference between the HEAD and the index
+alias staged=&quot;git diff --cached&quot;
+
+# show difference between working tree and the index
+alias unstaged=&quot;git diff&quot;
+
+# show staged and unstaged changes (what would be committed with &quot;git commit -a&quot;)
+alias both=&quot;git diff HEAD&quot;
+</code></pre>
+<p>I set up a global ignores file:</p>
+<pre><code>git config --global core.excludesfile ~/.gitignore
+echo &quot;.DS_Store&quot; &gt;&gt; ~/.gitignore
+</code></pre>
+<p>And a basic <code>.gitk</code> file:</p>
+<pre><code>cat &gt; ~/.gitk &lt;&lt;EOF
+set mainfont {Monaco 10}
+set textfont {Monaco 10}
+set uifont {Monaco 10}
+EOF
+</code></pre>
+<p>And finally appropriate additions to my <code>~/.ssh/config</code> file, after copying over <code>my_git_private_key</code> from my Tiger partition:</p>
+<pre><code>cat &gt;&gt; ~/.ssh/config &lt;&lt;EOF
+Host git.example.com
+  IdentityFile /Users/wincent/.ssh/my_git_private_key
+  HostName git.example.com
+  User git
+EOF
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

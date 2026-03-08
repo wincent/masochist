@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.7.4-rc2 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.7.4-rc2</h1></div><div class="metadata"><relative-time created="1295010414" updated="1495119989">Created 1/14/2011, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official release announcement to the <a href="/wiki/Git_mailing_list">Git mailing list</a>:</p>
+<pre><code>A release candidate Git 1.7.4-rc2 is available at the usual places
+for testing:
+
+ http://www.kernel.org/pub/software/scm/git/
+
+ git-1.7.4.rc2.tar.{gz,bz2}			(source tarball)
+ git-htmldocs-1.7.4.rc2.tar.{gz,bz2}		(preformatted docs)
+ git-manpages-1.7.4.rc2.tar.{gz,bz2}		(preformatted docs)
+
+The RPM binary packages for a few architectures are found in:
+
+ testing/git-*-1.7.4.rc2-1.fc13.$arch.rpm	(RPM)
+
+Hopefully we can declare victory soon and cut the final mid-next week.
+
+----------------------------------------------------------------
+Changes since v1.7.4-rc1 include nothing spectacular.
+
+Anders Kaseorg (1):
+     Mark gitk script executable
+
+Brandon Casey (3):
+     trace.c: ensure NULL is not passed to printf
+     t0001,t1510,t3301: use sane_unset which always returns with status 0
+     t3032: limit sed branch labels to 8 characters
+
+Jeff King (1):
+     docs: explain diff.*.binary option
+
+Jonathan Nieder (3):
+     diff: funcname and word patterns for perl
+     gitweb: make logo optional
+     t9010: svnadmin can fail even if available
+
+Junio C Hamano (2):
+     userdiff/perl: catch BEGIN/END/... and POD as headers
+     Git 1.7.4-rc2
+
+Matthieu Moy (1):
+     commit: suggest --amend --reset-author to fix commiter identity
+
+Michael J Gruber (1):
+     RelNotes/1.7.4: minor fixes
+
+Ramsay Allan Jones (7):
+     lib-git-svn.sh: Move web-server handling code into separate function
+     t9157-*.sh: Add an svn version check
+     t6038-*.sh: Pass the -b (--binary) option to sed on cygwin
+     t3032-*.sh: Pass the -b (--binary) option to sed on cygwin
+     t3032-*.sh: Do not strip CR from line-endings while grepping on MinGW
+     t4135-*.sh: Skip the &quot;backslash&quot; tests on cygwin
+     t9157-*.sh: Make the svn version check more precise
+
+StephenB (1):
+     git svn: fix the final example in man page
+
+Sylvain Rabot (2):
+     gitweb: add extensions to highlight feature map
+     gitweb: remove unnecessary test when closing file descriptor
+
+Thomas Rast (4):
+     Documentation/git-archive: spell --worktree-attributes correctly
+     Documentation/githooks: post-rewrite-copy-notes never existed
+     submodule: fix relative url parsing for scp-style origin
+     t0000: quote TAP snippets in test code
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

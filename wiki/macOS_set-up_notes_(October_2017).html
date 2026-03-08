@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>macOS set-up notes (October 2017) • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>macOS set-up notes (October 2017)</h1></div><div class="metadata"><relative-time created="1507909969" updated="1710259978">Created 10/13/2017, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/macos">macos</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Notes made getting a re-imaged machine set-up (running macOS Sierra; the previous High Sierra install imploded).</p>
+<p>These are mostly linear in nature, but there was some parallelism and back-and-forth involved because the Arq backup restore took over 24 hours to complete, so while that was happening I was going back to earlier items and augmenting them.</p>
+<ol>
+<li>
+<p>Switch to Colemak.</p>
+</li>
+<li>
+<p>Turn off System Preferences → Keyboard → Shortcuts → Input Sources → Select the previous input source (Control-Space).</p>
+</li>
+<li>
+<p>Accepted proposed software updates.</p>
+</li>
+<li>
+<p>Trash unwanted corp-installed welcome document on Desktop.</p>
+</li>
+<li>
+<p>Drag off unwanted Dock icons (Siri, Launchpad, Dashboard, Safari, Firefox, System Preferences, IT Technical Support, Cisco AnyConnect, Maps, Photos, iBooks).</p>
+</li>
+<li>
+<p>Set-up dotfiles repo.</p>
+<pre><code>mkdir code
+cd code
+git clone --recursive https://github.com/wincent/wincent
+cd wincent
+./install
+</code></pre>
+<ul>
+<li>Hombrew install seems to hang. Control-C it to get better visibility.</li>
+<li>Attempt cleanup <code>brew cleanup</code> to release locks (er, no, doesn't work; <code>brew doctor</code> doesn't either).</li>
+<li><code>cd ~/code/wincent/roles/homebrew/files &amp;&amp; brew bundle</code></li>
+<li>Seeing as it got interrupted, <code>./install shell</code> (and then <code>chsh</code>).</li>
+<li>Then <code>./install vim</code> (ugh, permissions issues throughout, requiring numerous <code>sudo chown -R</code>; I suspect the in-progress Arq backup is futzing with the permissions).</li>
+<li><code>./install defaults</code></li>
+<li><code>./install ssh</code> (can't run this until backup is done — or rather, until GPG keys are on the disk — because we need to decrypt the encrypted files in the repo in order to do it).</li>
+<li><code>./install cron</code></li>
+<li><code>./install misc</code>
+<ul>
+<li>And follow-up to this one, from <code>roles/misc/files</code> set up <code>user-icon.png</code> by drag-and-drop into Users &amp; Groups preference pane.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Add Activity Monitor to Dock:</p>
+<ol>
+<li>Set to Open at Login.</li>
+<li>Set to show CPU History in Dock icon.</li>
+</ol>
+</li>
+<li>
+<p>Log in to App Store:</p>
+<ol>
+<li>Install apps: Todoist, ScreenFlow 6, Monodraw, Fantastical 2, Marked 2, Textual 6, Relax Melodies Premium, Twitter, Transmit, Kindle, Net Monitor, xScope, Skitch, Keynote.</li>
+</ol>
+</li>
+<li>
+<p>Add to Dock and set to Open at Login:</p>
+<ol>
+<li>Net Monitor</li>
+<li>Todoist
+<ol>
+<li>Turn off Menu Bar icon.</li>
+</ol>
+</li>
+<li>Fantastical 2
+<ol>
+<li>Add iCloud (probably don't need this) using app-specific password in 1Password.</li>
+<li>Add Office 365 account (work).</li>
+<li>Add Google account (personal).</li>
+<li>Turn off Menu Bar icon.</li>
+<li>Under Preferences → Calendars customize items in the default calendar set (can omit most of them).</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>Set up 1Password (requires &quot;Secret Key&quot; — previously known as &quot;Account Key&quot;):</p>
+<ol>
+<li>Also install browser extension (you should be prompted to do this during set-up, but if not, see: <a href="https://agilebits.com/onepassword/extensions">https://agilebits.com/onepassword/extensions</a>).</li>
+</ol>
+</li>
+<li>
+<p>Restore from Arq backup:</p>
+<ol>
+<li>Launch installed app (installed via Homebrew).</li>
+<li>Enter license key (from 1Password).</li>
+<li>Add AWS backup destination using info from 1Password, re-use existing bucket.</li>
+<li>Add Google Drive destination.
+<ol>
+<li>Choose &quot;Do NOT use Appdata Folder&quot; (because that wasn't an option when I originally set up).</li>
+</ol>
+</li>
+<li>Start the restore by finding the last backup, clicking the home folder and clicking &quot;Restore...&quot; and &quot;Overwrite...&quot;.</li>
+<li>Preferences (not sure if these will come through anyway with the restore):
+<ol>
+<li>Back up using administrator privileges</li>
+<li>Show hidden files in file selection dialog</li>
+<li>Include file list in backup logs and email reports</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>Sign in to Chrome.</p>
+<ul>
+<li><strong>NOTE:</strong> This obviates the need to turn off unwanted default corp search engine, or install 1Password extension (seems I have two versions installed: need to uninstall one of them; will keep the beta I guess).</li>
+</ul>
+</li>
+<li>
+<p>Turn on Night Shift (System Preferences → Displays → Night Shift).</p>
+</li>
+<li>
+<p>Set-up hot-corners (System Preferences → Desktop &amp; Screen Saver → Screen Saver → Hot Corners...)</p>
+</li>
+<li>
+<p>Launch Karabiner-Elements (not sure if Homebrew does this already, but check it anyway).</p>
+</li>
+<li>
+<p>Launch Hammerspoon:</p>
+<ol>
+<li>Enable accessibility features.</li>
+<li>Launch Hammerspoon at login (on)</li>
+<li>Show Dock icon (off)</li>
+<li>Keep console window on top.</li>
+</ol>
+</li>
+<li>
+<p>Manually install Adobe Source Code Pro by copying from roles/fonts/files.</p>
+<ol>
+<li>Some follow-up needed though (prefs in iTerm); will see if they come down with backup restore or not.</li>
+</ol>
+</li>
+<li>
+<p>Make Colemak the default layout (hm, didn't seem to work): see: <a href="https://wincent.dev/wiki/Making_Colemak_the_default_layout_at_the_OS_X_login_prompt">https://wincent.dev/wiki/Making_Colemak_the_default_layout_at_the_OS_X_login_prompt</a></p>
+</li>
+<li>
+<p>Clone corporate repos.</p>
+</li>
+<li>
+<p>iTerm:</p>
+<ol>
+<li>Move cursor to the front of line
+<ol>
+<li>⌘+← Send Hex Codes: 0x01</li>
+</ol>
+</li>
+<li>Move cursor to the end of line
+<ol>
+<li>⌘+→ Send Hex Codes: 0x05</li>
+</ol>
+</li>
+<li>Move cursor one word left
+<ol>
+<li>⌥+← Send Hex Codes: 0x1b 0x62</li>
+</ol>
+</li>
+<li>Move cursor one word right
+<ol>
+<li>⌥+→ Send Hex Codes: 0x1b 0x66</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p><code>arc install-certificate</code> (needed to do anything useful with arc).</p>
+</li>
+<li>
+<p>Manually run through prefs (can't be bothered waiting for backup restore to finish).</p>
+<ol>
+<li>System Preferences → Dock → Automatically hide and show the Dock.</li>
+</ol>
+</li>
+<li>
+<p>Download and install <a href="https://github.com/chrstphrknwtn/epoch-flip-clock">https://github.com/chrstphrknwtn/epoch-flip-clock</a></p>
+</li>
+<li>
+<p>Launch and set up Dropbox.</p>
+</li>
+<li>
+<p>Manually restore <code>~/.gnupg</code> and <code>~/.ssh</code> — want access to keys (note: can do this even though another restore is already running); then:</p>
+<ul>
+<li>
+<p><code>gpg --list-secret-keys</code> can't see old keys... this is a gpg2 vs gpg thing:</p>
+<pre><code>  brew install gpg1
+  gpg1 —list-secret-keys # works
+  gpg1 —export-secret-keys &gt; v1-secret-key.export
+  gpg1 —export &gt; v1-public-key.export
+  gpg —import v1-public-key.export v1-secret-key.export
+  gpg —list-secret-keys # now works
+  gpg —list-public-keys # now works
+  rm v1-public-key.export v1-secret-key.export
+</code></pre>
+</li>
+<li>
+<p>In dotfiles repo: <code>vendor/git-cipher/bin/git-cipher decrypt</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Restore <code>~/Library/Preferences</code> (too sick of waiting for full restore to finish)</p>
+</li>
+<li>
+<p>Set up passage:</p>
+<pre><code>go get github.com/wincent/passage (http://github.com/wincent/passage)
+go get github.com/keybase/go-keychain (http://github.com/keybase/go-keychain)
+sudo cp $(which passage) /usr/local/bin/
+launchctl load -w -S Aqua ~/Library/LaunchAgents/com.wincent.passage.plist (that file already on disk, restored from backup)
+</code></pre>
+<ul>
+<li>Need to restore items from backup keychain:
+<ol>
+<li>Restore from Arq to <code>~/Backups/Keychains/</code></li>
+<li>Rename to <code>2017-10-09-login.keychain-db</code></li>
+<li>Add to Keychain Access and unlock</li>
+<li>Recreate items in the main keychain rather than copying them across (sick of the &quot;test item&quot; name that I can't change); there are 4 items, listed in my dotfiles repo README.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>Run Alfred (settings came in via Backup)</p>
+<ol>
+<li>Disable Spotlight shortcut in System Preferences → Keyboard → Shortcuts → Spotlight → Show Spotlight search</li>
+</ol>
+</li>
+<li>
+<p>Run Bartender; settings came in via Backup, except for:</p>
+<ol>
+<li>Preferences → General → Launch Bartender at Login</li>
+</ol>
+</li>
+<li>
+<p>Run iStat Menus (settings came in via Backup)</p>
+</li>
+<li>
+<p><code>sudo chown -R $USER:&quot;$(id -gn $USER)&quot; $HOME</code> (quotes because of bogus space in Active Directory group name)</p>
+<ol>
+<li>After this, retry installing Safari 1Password extension (works).</li>
+</ol>
+</li>
+<li>
+<p>Set desktop pic to High Sierra (restored from backup).</p>
+</li>
+<li>
+<p>Add Corpus release and debug builds to Dock</p>
+</li>
+<li>
+<p>Re-auth Kindle app, and log in to Amazon to delete old device.</p>
+</li>
+<li>
+<p>Reboot to flush out remaining issues</p>
+</li>
+<li>
+<p>Set Hammerspoon to launch at login (again)</p>
+</li>
+<li>
+<p>Get mail search history working again: <code>rm -rf ~/mutt/tmp/notmuch.history</code> (was a directory full of files; caused <code>IOError: [Errno 21] Is a directory</code>; this system has a different version or readline it seems)</p>
+</li>
+<li>
+<p>Unbreak Markdown mail sending (was gracefully degrading):</p>
+<pre><code>cd ~/.mutt/scripts
+gem install bundler
+bundle install
+</code></pre>
+</li>
+<li>
+<p>Finalize Arq set-up:</p>
+<ol>
+<li>Adopt Arq backup sets</li>
+<li>Schedule daily backups</li>
+<li>Set up email updates</li>
+<li>Set up exclusions in Time Machine (see exclusion list in Corpus, &quot;Arq backup notes&quot;)</li>
+<li>Back up only on selected devices, selected networks.</li>
+</ol>
+</li>
+<li>
+<p>Boot Isolator and set it to launch at login.</p>
+</li>
+</ol>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

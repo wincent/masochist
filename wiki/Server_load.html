@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Server load • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Server load</h1></div><div class="metadata"><relative-time created="1181578762" updated="1495119989">Created 6/11/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><a href="/wiki/Server_load">Server load</a> or simply <a href="/wiki/load">load</a> is a measure of resource usage commonly used to indicate the intensity of demands upon an <a href="/wiki/Internet">Internet</a> server. The number is an indication of the number of waiting processes waiting to get a slice of the processor time at the moment the load measurement was taken. A load average close to 0.0 indicates that the machine is only very lightly loaded and (almost) no processes have to wait when they want a slice of processor time. Ideally load averages should be kept down near 0, 1 or 2. As the load average gets higher system responsiveness is reduced. Load averages over 10 are very high, and averages over 20 are extremely high.</p>
+<p><a href="/wiki/Load">Load</a> can also be measured on desktop machines running operating systems such as <a href="/wiki/Mac_OS_X">Mac OS X</a>. For example, open up a <a href="/wiki/Terminal">Terminal</a> window and use the <code>uptime</code> tool to view the load averages over the last minute, 5 minutes and 15 minutes:</p>
+<pre><code>$ uptime
+18:05  up  5:49, 4 users, load averages: 0,34 0,40 0,42
+</code></pre>
+<p>In this example, the load average over the last minute was 0.34 (appearing as <code>0,34</code> in this case because in the Spanish locale the comma is used as a decimal separator), load average during the last five minutes was 0.40, and load average over the last fifteen minutes was 0.42.</p>
+<p>For comparison, here is some output from a server running <a href="/wiki/Red_Hat_Enterprise_Linux">Red Hat Enterprise Linux</a>:</p>
+<pre><code>11:10:41  up 233 days,  2:00,  2 users,  load average: 0.03, 0.06, 0.59
+</code></pre>
+<p>Load averages can also be monitored in realtime using <code>top</code> or <code>w</code> (in <a href="/wiki/Mac_OS_X">Mac OS X</a> as well) or <code>tload</code> (only in <a href="/wiki/Red_Hat_Enterprise_Linux">Red Hat Enterprise Linux</a>).</p>
+<p>Slightly more sophisticated load average reports can be obtained using a command like the following:</p>
+<pre><code>sar -Hqt         | \
+ cut -f3,6 -d';' | \
+ tr  ' ;' ',,'   | \
+ cut -f2,3 -d ','|
+ mail -s &quot;Today's load levels&quot; user@example.com
+</code></pre>
+<p>This does the following:</p>
+<ul>
+<li>Get a list of load averages for the day at 10 minute intervals</li>
+<li>Cut all but the 3rd and 6th columns of the input (columns delimited by a semicolon)</li>
+<li>Replace spaces and semicolons with commas (useful for importing into a database or spreadsheet)</li>
+<li>Further cut the input, leaving only the 2nd and 3rd columns (now delimited by a comma)</li>
+<li>Mail the output to the specified email address</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

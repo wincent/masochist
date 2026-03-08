@@ -1,0 +1,210 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Writing a parser generator in Ruby • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/writing-a-parser-generator-in-ruby">Writing a parser generator in Ruby</a></h1><div class="metadata"><relative-time created="1170080100" updated="1710259978">Created 1/29/2007, updated 3/12/2024</relative-time><span>19 minute read</span></div><div class="prerendered"><p><a href="http://www.ruby-lang.org/es/">Ruby</a> is my favorite scripting language. Let me clarify: I <em>like</em> Ruby; it generates warm fuzzy feelings in my thorax when I think about it. This is quite different from my response to other scripting languages: <a href="http://www.perl.org/">Perl</a> tends to provoke anything from respect to mild irritation; <a href="http://php.net/">PHP</a> generates scorn, contempt, sometimes even pity; and <a href="http://python.org/">Python</a> provokes uncertainty because I don't understand it.</p>
+<h5>Why I like Ruby</h5>
+<p>So I have an emotional attachment to Ruby even though I've never really done any big projects in it and I am far from being an expert. I like it because everything in Ruby is an object, even literal numbers like <code>1</code> and <code>2</code> are instances of the <code>Fixnum</code> class. <code>nil</code>, <code>true</code> and <code>false</code> are all objects. <em>Everything</em>, absolutely everything inherits from <code>Object</code>.</p>
+<p>Ruby comes with a solid and comprehensive standard library, and the core language itself has implementations of all the primitive object types you're likely to care about: strings, numbers, arrays, hashes, regular expressions and so forth.</p>
+<p>Just like Objective-C, Ruby is highly dynamic and its notion of Object-Orientation is based on a message-sending. You can create classes on the fly, add and remove methods, mix-in methods from elsewhere on demand (similar to protocols in Objective-C except that you can actually share the method implementations across classes), and do pretty much anything with the runtime that you want.</p>
+<p>There are very powerful flow control mechanisms which include all the usual iterator and loop structures, plus exception raising and rescuing, arbitrary symbol throwing and catching, and the fiendishly powerful continuations (like <code>setjmp()/longjmp()</code> on steroids).</p>
+<p>It's easy to use a higher-order messaging programming style in Ruby because the language itself provides built-in syntax for blocks, anonymous functions, closures, and the like. Common HOM patterns like &quot;each&quot;, &quot;collect&quot;, &quot;select&quot; are easy because classes like <code>Array</code> implement them right out of the box.</p>
+<p>But to date I haven't taken on any big projects in Ruby even though I have used it for a couple of scripts here (one for reformatting source code which I have bound to a hot-key in Xcode, and one as a post-commit hook script that posts entries to my &quot;Subversion log&quot; every time I do a commit to the repository). When time permits I eventually plan to do a <a href="http://rubyonrails.org/">Ruby on Rails</a> monster web app to handle absolutely everything on wincent.dev and do away with the complicated mis-mash of independent apps that I'm currently using to run the weblogs, the wiki, the forums, the bug tracking and feature requests database, the lost serial recovery system, the mailing lists and so forth. But before I can even contemplate such a large project I need to become more familiar with the language, and one of the ways I've been doing that is through working on a parser generator.</p>
+<h5>Writing a parser generator</h5>
+<p>I'm putting together a new Synergy Advance release and part of that is preparing a huge amount of documentation. To allow me to concentrate on content rather than presentation details I've been developing an object-oriented templating system.</p>
+<p>Part of this involved hand-coding a parser for processing the template language. But as <a href="http://www.parr.us/terence">Terence Parr</a> (of <a href="http://www.antlr.org/">ANTLR</a> fame) says (with some irony!), &quot;Why program by hand in five days what you can spend five years of your life automating?&quot;.</p>
+<p>The thing is, however, Ruby is such a good language that not only can you probably hand-code a parser in five days (while simultaneously learning the language), it makes it feasible to develop a parser <em>generator</em> in five-days.</p>
+<h5>An object-oriented parser generator</h5>
+<p>To get an idea of how quick it can be to whip up a parser in Ruby, check out what I turned up with my very first Google search:</p>
+<ul>
+<li><a href="http://www.rubyinside.com/recursive-descent-parser-for-ruby-300.html">A customizable recursive-descent parser in 250 lines of Ruby</a>.</li>
+<li>A <a href="http://pdos.csail.mit.edu/~baford/packrat/">Packrat parser</a> in <a href="http://meta-meta.blogspot.com/2006/04/packrat-parsers.html">211 lines of Ruby</a>.</li>
+</ul>
+<p>My searches lead me to the <a href="http://www.syngress.com/">Syngress</a> <a href="http://www.syngress.com/book_catalog/183_ruby/">Ruby Developer's Guide</a> by Feldt, Johnson and Neumann wherein is described an amazing &quot;parsing library of your dreams&quot; which turns out to be Rockit, by one of the authors. Unfortunately, although Rockit looks absolutely wonderful it remains vaporware for the time being. The book itself talks about &quot;version 0.4&quot; of Rockit but as far as I can tell, this was never released into the wild, and existed only on the author's computer.</p>
+<p>The <a href="http://rockit.sourceforge.net/">old Sourceforge project page</a> is stuck at version 0.3.8 (from 2001) and although the newer <a href="http://rubyforge.org/projects/rockit">RubyForge project page</a> features version 0.7.2 (from March 2006) there is no Subversion access to see work in progress, and the code that is available is still very incomplete. The included README states:</p>
+<pre><code>Lots of stuff that will be in 0.8.0 is not in this release:
+
+
+
+  * Proper memoization (à la packrat)
+  * Optimization
+  * Error reporting
+  * Java grammar
+  * Ruby grammar
+  * many of the good stuff from older Rockit versions (tree pattern matching, fully automated AST generation etc)
+</code></pre>
+<p>It's more than a little unfortunate that the author chose to describe Rockit as &quot;the parsing library of your dreams&quot;, because Rockit largely remains in the world of dreams rather than the real world. Nevertheless, the chapter in the Syngress book is full of little ideas that make you say, &quot;wouldn't it be nice if... (things worked this way)&quot;.</p>
+<h5>Design</h5>
+<p>So I started work on my own parser generator. In doing so I've had my love of the Object-Oriented programming reaffirmed and I've had the great pleasure of learning to work with <a href="http://rubyforge.org/projects/rspec/">RSpec</a>, the amazing Behaviour-Driven Development framework for Ruby.</p>
+<p>In this article I'm going to describe the basic building blocks of the parser generator. In a subsequent article I will describe how this can be extended to generate rich Abstract Syntax Trees rather than just generating a &quot;dumb&quot; hierarchy.</p>
+<h5>Parslets</h5>
+<p>The core idea is to develop &quot;parslets&quot; which are not full parsers in themselves (hence the name) but which are specialized to parse only one, very well-defined thing. Parslets either succeed if the input conforms to their expectations, or they raise an exception.</p>
+<p>For example, we could have a <code>StringParslet</code> that is specialized in parsing strings. You could create a <code>StringParslet</code> configured to parse the word &quot;foobar&quot;.</p>
+<pre><code>parslet.parse('foobar') # succeeds!
+parslet.parse('foo') # raises an exception, describing failure to find 'bar' after 'foo'
+</code></pre>
+<p>You could also have <code>RegexpParslets</code> which specialize in matching regular expressions. Imagine such a parslet configured to recognize runs of digits (based on the regular expression, <code>/\d+/</code>:</p>
+<pre><code>parslet.parse('11223344...') # succeeds
+parslet.parse('') # fails
+</code></pre>
+<p>The first line in the example above would succeed, consuming the digits &quot;11223344&quot; and stopping (the idea is that parsing the remainder of the string would be handed off to another parslet). The second line in the example would fail because there are no digits to consume and the regular expression requires &quot;<em>at least one</em> digit&quot; in order to produce a match.</p>
+<p>Parslets are very simple objects and they are designed to do a limited task well. To the basic behaviour of parsing (recognizing and consuming characters) we can add simple error reporting (the exception thrown in response to a parsing failure can contain embedded information about exactly where the failure occurred, and how the actual input differed from the expected input).</p>
+<h5>Parslet combinations</h5>
+<p>As limited as they are, parslets are not very useful in isolation but they can become quite powerful when combined. For example, you could chain together a sequence of parslets into a sequence (&quot;parse 'foo', then 'bar', then a number&quot;), or you could express choices between parslets (&quot;parse 'foo' or 'bar' or a number&quot;), or state repetitions of parslets (&quot;parse one of more 'foo' strings&quot;).</p>
+<p>You could then nest or combine these parslets to describe complex combinations (&quot;parse 'foo' or 'bar', followed by a number or punctuation, followed by a comma, repeated zero or more times&quot;).</p>
+<p>So we add a <code>ParsletCombination</code> class and a number of subclasses: <code>ParsletSequence</code> (for chaining), <code>ParsletChoice</code> (for choosing between parslets), <code>ParsletRepetition</code> (for specifying the repeat behaviour of a parslet). By using <code>ParsletCombinations</code> we keep the parslets themselves simple; they don't have to worry about keeping track of their relationships with other parslets, they can just focus on their own task.</p>
+<h5>Convenience methods</h5>
+<p>Ruby is highly Object-Oriented (and message-oriented too), and it makes it easy to add methods which look like operators. That is:</p>
+<pre><code>1 + 1
+</code></pre>
+<p>Is actually the message, <code>+</code>, being sent to the <code>1</code> object, and the parameter passed in is <code>1</code>, another object. Likewise:</p>
+<pre><code>&quot;foo&quot; + &quot;bar&quot; # returns &quot;foobar&quot;
+</code></pre>
+<p>Is the message, <code>+</code>, being sent to the <code>&quot;foo&quot;</code> object with <code>&quot;bar&quot;</code> (another object), as the parameter.</p>
+<p>Ruby is dynamic too. It allows us to add methods to existing classes and so that means that a method called <code>&amp;</code> can be added to the <code>String</code> class so that:</p>
+<pre><code>'foo' &amp; 'bar'
+</code></pre>
+<p>Will actually evaluate to a <code>ParsletSequence</code> object that will run two <code>StringParslets</code> in order, one custom-built to parse the string &quot;foo&quot; and the other for parsing the string &quot;bar&quot;. We can perform a similar addition for the <code>Regexp</code> class and add a <code>|</code> method as well which will serve as a shorthand for creating <code>ParsletChoice</code> objects.</p>
+<pre><code>'foo' | 'bar' &amp; /\d+/
+</code></pre>
+<p>This produces a parslet combination that will parse strings like &quot;foo&quot; or &quot;bar99&quot;. We can use parentheses too to override precedence:</p>
+<pre><code>('foo' | 'bar') &amp; /\d+/
+</code></pre>
+<p>This combination would parse strings like &quot;foo1&quot; and &quot;bar2&quot;.</p>
+<p>Likewise we can add methods for specifying repetition:</p>
+<pre><code>'foo'.zero_or_more
+'bar'.optional
+/\w+\./.repeat(3, 4)
+</code></pre>
+<p>The first example parses &quot;foo&quot; repeated zero or more times (like the <code>*</code> metacharacter in regular expressions). The second example parses optional elements (like the <code>?</code> metacharacter in regular expressions). The final example is like the <code>{x, y}</code> specifier in regular expressions, and it means &quot;match a run of 'word characters' followed by a period between 3 and 4 times&quot;.</p>
+<h5>Predicates</h5>
+<p>Although I didn't know it when I started, I was writing a parser generator that would produce a parser based on a <a href="http://en.wikipedia.org/wiki/Parsing_expression_grammar">Parsing Expression Grammar</a> (PEG). PEGs are great for expressing the grammar of programming languages. They map well onto the way humans think about parsing a language, and they are completely unambiguous because they consist of a set of ordered (prioritized) choices and a fixed starting symbol.</p>
+<p>One of the features of PEGs are predicates. The &quot;and&quot; predicate is a zero-width parsing assertion which succeeds if a match is found, but it doesn't actually consume any characters. We represent this using an <code>and?</code> method:</p>
+<pre><code>'foo' &amp; 'bar'.and?
+</code></pre>
+<p>This will match &quot;foo&quot; as long as it is followed by &quot;bar&quot; (but note, the parser only looks ahead at the &quot;bar&quot;; it doesn't actually consume or move past it). Likewise, we can implement a &quot;not&quot; predicate using a <code>not!</code> method as follows:</p>
+<pre><code>'foo' &amp; /\d/.not!
+</code></pre>
+<p>This will match &quot;foo&quot; as long as it is <em>not</em> followed by a digit. Once again, it's just lookahead and nothing is actually consumed beyond the &quot;foo&quot;.</p>
+<p>Strictly speaking these method names break slightly with standard Ruby practice that <code>!</code> should be used to indicate a message that has some kind of mutating effect on the receiver itself and <code>?</code> would normally indicate a message that returns <code>true</code> or <code>false</code>. Despite the downside of breaking with convention (potentially violating expectations) the readability benefits for the domain-specific language we are developing are just too great to pass up.</p>
+<h5>Domain-Specific languages</h5>
+<p>With the basic parslets in place along with the various ways of combining them and specifying predicates we now have the ability to parse just about anything that can be described in a PEG. The next bit of Ruby magic that we'll use is what's known as a domain specific language.</p>
+<p>Here's an example:</p>
+<pre><code>grammar = Grammar.subclass('CommentGrammar') do
+  rule            :comment,         :comment_marker &amp; :comment_body.optional
+  rule            :comment_marker,  '##'
+  rule            :comment_body,    /.+/
+end
+</code></pre>
+<p>This is an incomplete grammar which describes how to parse comments in a language where comments are defined as a a comment marker, <code>##</code>, optionally followed by &quot;stuff&quot;.</p>
+<p>This is a domain-specific langauge because it looks as though Ruby had syntax in it to support the specific task at hand; those <code>rule</code> statements aren't really statements at all; they are message sends to the <code>rule</code> method (in the <code>Grammar</code> class).</p>
+<p>This example also shows off another feature of Ruby: the use of blocks. All the stuff between the <code>do</code> and the <code>end</code> is code that is passed as a parameter to the <code>subclass</code> method of the <code>Grammar</code> class. The method creates a brand new subclass on the fly (dynamism) which effectively allows us to define a grammar in its own namespace.</p>
+<h5>Recursion</h5>
+<p>In the previous example you'll notice that each rule was identified by a symbol (a name preceded by a colon), and that rules could refer to other rules by using their corresponding symbols. The same grammar could have been written like this:</p>
+<pre><code>grammar = Grammar.subclass('CommentGrammar') do
+  comment_marker  = '##'
+  comment_body    = /.+/
+  rule            :comment,         comment_marker &amp; comment_body.optional
+end
+</code></pre>
+<p>But there is one <em>huge</em> advantage to using symbols to refer to other rules: it allows us to specify recursive (self-referential) rules, or rules which refer to one another in a circular fashion:</p>
+<pre><code>grammar = Grammar.subclass('NestedGrammar') do
+  starting_symbol :bracket_expression
+  rule            :left_bracket,        '('
+  rule            :right_bracket,       ')'
+  rule            :bracket_content,     (/[^()]+/ | :bracket_expression).zero_or_more
+  rule            :bracket_expression,  :left_bracket &amp; :bracket_content.optional &amp; :right_bracket
+end
+</code></pre>
+<p>Notice how this simple grammar allows nested parentheses, something that to my knowledge simply can't be done using a regular expression alone. A &quot;bracket expression&quot; can contain just about anything, including other (nested) bracket expressions. The use of symbols allows us to define rules without actually having to fully evaluate them until runtime (or parse time, to be more precise). In this way we can express pretty much anything we want with our PEG.</p>
+<p>All of this magic is made possible with a clean syntax due to the power of Ruby continuations. Note that we could have done this without continuations if we had wrapped all symbol references in a &quot;lookup&quot; function:</p>
+<pre><code>rule :one_symbol, 'foo' &amp; lookup(:other_symbol)
+</code></pre>
+<p>This would defer the actual lookup of <code>:other_symbol</code> until runtime, but it's not ideal because it clutters up our domain-specific language with implementation details; the author of the grammar shouldn't have to worry about how or when symbol lookup occurs.</p>
+<p>Continuations make the cleaner syntax possible because they allow for some extremely sophisticated flow-control, and therefore communication, between our grammar and our <code>SymbolParslet</code> (yep, that's right, a specialized parslet dedicated purely to parsing things represented by symbols). Basically, if a <code>SymbolParslet</code> doesn't know what its context is (that is, what grammar it belongs to) it doesn't now how to &quot;look up&quot; what the symbol means. It can throw an exception which is caught by the grammar, and the grammar then uses the encapsulated continuation object to jump back to the point where the exception was thrown, this time passing a reference to the grammar itself. Continuations can basically be used to jump from anywhere back to a previously denoted point; as I said above, they're kind of like <code>setjmp()/longjmp()</code> on steroids. Normally exceptions are a one-way ticket, but with continuations they can be two-way, and thanks to this flexibility the design of both the grammar and the symbol parslet is kept very simple, and the coupling between them extremely loose and flexible.</p>
+<h5>Abstract Syntax Trees</h5>
+<p>Up to now I've just talked about parsing as recognition; I haven't said anything about transforming the recognized tokens into a useful structure. In a subsequent article I'll talk about taking those &quot;dumb&quot; tokens (still &quot;dumb&quot; even though they are organized in a hierarchical structure) and mapping them onto custom classes in an Abstract Syntax Tree.</p>
+<p>By way of example, the system described so far would parse a simple assignment expression such as &quot;foo = bar + 1&quot; into an ordered, hierarchical tree of tokens using basic types (<code>String</code> and <code>Array</code> objects):</p>
+<pre><code>['foo', '=', ['bar', '+', '1']]
+</code></pre>
+<p>Although this tree structure mirrors the actual semantic structure of the input text it doesn't describe it fully (the components are not named or identified in any way; at the lowest level the atoms are just unlabelled strings) and it is not in a very usable form (that is, to actually do any useful work with the parse tree you would have to analyse the structure and decide what to do with it).</p>
+<p>Abstract Syntax Trees allow us to produce a much more usable representation of the parsed document. Each component in the hierarchy has a specific type (class) and each type has its own attributes. The example above might be represented using the following AST:</p>
+<ul>
+<li>Assignment Expression:
+<ul>
+<li>lvalue (the assignment target, &quot;foo&quot;)</li>
+<li>Assignment operator (&quot;=&quot;); in reality this element can be omitted from the syntax tree because it's not required to convey meaning.</li>
+<li>Addition expression
+<ul>
+<li>lvalue (&quot;bar&quot;)</li>
+<li>Addition operator (&quot;+&quot;); again this element can be omitted from the syntax tree</li>
+<li>Numeric literal (&quot;1&quot;)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>In a subsequent article I will talk about how to specify &quot;productions&quot; which can be added to rules in the grammar so that they know what elements to &quot;produce&quot; in the final AST output. All productions are element subclasses of <code>Node</code> and each may have subnodes or other properties. Here object-oriented design again helps us because once these <code>Node</code> subclasses can be easily extended to implement the actual behaviour we want to undertake according to what is fed into the parser; that is, the <code>AdditionExpression</code> subclass could easily be extended with logic to perform addition.</p>
+<h5>Test-driven and behaviour-driven development insights</h5>
+<p>Along the way I've had some insights on test and behaviour-driven development. These too will probably have to wait for a separate article but before signing off I'd like to briefly touch on some of the topics.</p>
+<p>When I first wrote about this topic I remarked that due to my relative inexperience with Ruby I wanted my development to be more &quot;test-driven&quot; than is usual for me.</p>
+<p>Normally I view writing code, writing code-level documentation, and writing unit tests as being three integral, interrelated parts of the development process. In practice I generally move back and forth among them all, and this works well for me in Objective-C/Cocoa. I feel comfortable in that environment and I generally have a clear idea of the right approach to take for any given task; in this context testing mostly serves to confirm the correctness of the code that I've written. It's great: Unit Testing has spared me many a frustrating debugging session.</p>
+<p>My pattern this time, however, has been different. Ruby is an interpreted language, not a compiled one, so it makes it much more feasible to adopt a true &quot;test-driven&quot; style. There are no waits for compilation so it is very, very easy to operate in a cycle:</p>
+<ol>
+<li>Decide on the next piece of functionality that must be implemented; if the piece of functionality is large then decide on the first step that must be taken towards implementing it.</li>
+<li>Write a test that checks that the functionality works as intended.</li>
+<li>Run the test; it should fail. If it doesn't then you know your test is incorrect.</li>
+<li>Write the code needed to pass the test.</li>
+<li>Run the test again; it should pass.</li>
+</ol>
+<p>Making sure that the test fails first is important for the following reason: just as it is easy to write broken code, so it is to write broken tests; the extra step provides some assurance that you don't accidentally wind up with broken code and broken tests that pass because the flaws of one complement the other.</p>
+<p>Stricly adhering to this pattern in Cocoa would be simply unworkable given the lengthy turn-around times for compiling (a full Synergy Advance build can take 6 minutes or more); I tend to make as many changes as possible between compiles, only compiling when I have a doubt about whether something will work or not. In Ruby, however, it's much more practical to rigorously follow the pattern.</p>
+<p>So I started off using <a href="http://www.ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit.html">Test::Unit</a> and doing the best I could to obediently follow the test-driven development pattern. It's worked very well. I've been consistently pleased with the way that simple classes, well-tested, can be assembled to form a complex whole which just works (and by &quot;just works&quot; I mean &quot;simply works&quot;, not &quot;barely works&quot;!).</p>
+<h5>&quot;Bolt-on&quot; testing</h5>
+<p>There are three levels on which you can write tests:</p>
+<ol>
+<li>According to the expected functioning of the code under testing: that is, if you have code that adds two numbers, you should plug in values and check that the result of their addition is the one you expect. I often try multiple different values seeking the boundary or edge cases as well as cases that are qualitatively (not quantitatively) different. So if I was working with an array I would most likely test with zero elements, one element, and more than one element because these are all qualitatively different (&quot;plural&quot; is fundamentally different from &quot;singular&quot; and both are different from zero because they don't possess any &quot;zeroness&quot;).</li>
+<li>According to the documentation for the code under testing: that is, if the API documentation that you write states &quot;raises an exception if passed nil&quot; then you should test that the code actually does what the documentation says it does. You may also chose to test the reverse case (that it doesn't raise when passed a non-nil value).</li>
+<li>According to the internal implementation details of the code: that is, if you know the internal workings of a method then you can tailor specific tests that check that these internal bits and pieces are in order.</li>
+</ol>
+<p>This last level of testing is actually a bit of an anti-pattern. Just as users of an API shouldn't have to have knowledge of its private implementation details in order to use it, I don't think your tests should be based on or written for &quot;private&quot; knowledge. Your tests should really be about behaviour.</p>
+<p>This is where the term &quot;bolt-on&quot; testing comes it. &quot;Bolt-on&quot; testing is what you do when you write tests <em>after</em> you write your methods. You look at what the methods do and then &quot;bolt&quot; some tests onto them to try them out. &quot;Bolt-on&quot; testing is an anti-pattern, really, although it is better than no testing at all.</p>
+<p>Sometimes it can be tempting to &quot;bolt-on&quot; too many tests, tests that verify irrelevant details that have little to do with the desired behaviour of the class. As one example, before you write a test to verify that the method you call really does return a <code>String</code>, ask yourself, &quot;Does this really matter to the behaviour that I'm looking to implement?&quot;. Working with Ruby I've learnt to loosen my tests up a fair bit. Rubyists love the flexibility of &quot;Duck typing&quot; and that often means that writing tests for specific classes like <code>String</code> is a bad idea. All you want is something that acts (quacks) like a string, so you should really be testing <em>how it quacks</em>, not <em>what</em> it is. <a href="http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1">This is a great article</a> that discusses this economy of testing in the context of Rails.</p>
+<p>Unlike &quot;bolt-on testing&quot;, Behaviour-Driven Development (BDD) helps developers avoid these pitfalls by using language that concentrates on the desired behaviour of the code rather than the implementation details. Whereas a &quot;bolt-on&quot; tester will write code to test each method in a class (&quot;unit&quot; testing in the purest sense because methods are generally the smallest atomic units visible from outside of a class), a behaviour-driven tester will write code that confirms only the externally required behaviour of a class. Code coverage tools can (and probably should) be used to confirm that all code paths are actually being touched, but writing exhaustive per-method tests is often not necessary and can actually be harmful when it comes to refactoring.</p>
+<p>BDD is more agile because it is not wedded to implementation details. If the implementation changes the tests (called &quot;specifications&quot; or &quot;specs&quot;) shouldn't need to change.</p>
+<p>After a few days of working with Test::Unit I decided to switch to RSpec, a fantastic BDD framework for Ruby development. When you use RSpec you write your tests in &quot;contexts&quot;, and you &quot;specify&quot; what should happen. This language helps you to test the right things because it focusses your attention on the desired behaviour, the desired <em>functionality</em>, rather than the nitty gritty (and in a sense meaningless) <em>operation</em> of the code. Behaviour Driven Development is no different than already existing best practice in Test Driven Development, but the language in the framework helps you to do the right thing and the framework itself has some beautiful dynamic code in it that makes your specifications unbelieveably readable.</p>
+<p>Where you would write this contrived example in Test::Unit:</p>
+<pre><code># check that 1 + 2 equals 3
+assert_equal 3, 1 + 2
+</code></pre>
+<p>You could write this in RSpec:</p>
+<pre><code>context 'working with numbers' do
+  specify 'should be able to add two integers to obtain a sum' do
+    1 + 2.should == 3
+  end
+end
+</code></pre>
+<p>Don't let the extra wordiness of the RSpec example put you off. Remember that in a given &quot;context&quot; there will often be many specifications, and you only have to type the context once. The actual test itself is shorter and reads just like English, &quot;one plus two should equal three&quot;. There is also no scope for confusion about the order of the parameters like there is in the case of <code>assert_equal</code>; note how <code>assert_equal</code> requires you to remember that the expected result should go on the left and the actual value on the right.</p>
+<p>The syntax for working with exceptions is much neater in RSpec too:</p>
+<pre><code># Test::Unit
+assert_raise ArgumentError do
+  Enumerator.new(nil)
+end
+
+
+
+# RSpec
+context 'creating an enumerator' do
+  specify 'should complain if initialized with nil' do
+    lambda { Enumerator.new(nil) }.should_raise ArgumentError
+  end
+end
+</code></pre>
+<p>Again, don't let the length of the RSpec example put you off. Remember that you only have to write the context once and can use it for many specifications. Also note that the specification serves to clearly document the expected behaviour of the code and that the error message in the event of a failing test will be very clear (&quot;creating an enumerator should complain if initialized with nil&quot;). Also note the highly readable name of the expectation, <code>should_raise</code>, and its logical opposite, <code>should_not_raise</code>. Compare this with Test::Unit which uses the <code>assert_raise</code> which is not very human-language friendly (you could even argue that it is ungrammatical) and whose opposite seemingly arbitrarily breaks the pattern (&quot;assert&quot; followed by a verb) by being called <code>assert_nothing_raised</code> (&quot;assert&quot; followed by an adjectival clause).</p>
+<p>I've got <a href="http://rubyforge.org/tracker/index.php?func=detail&amp;aid=8126&amp;group_id=797&amp;atid=3152">an RSpec feature request</a> open for the addition of an <code>example</code> keyword as well, which could be nested inside a <code>specify</code> block for even greater descriptiveness, and which would mirror the way that I work (testing with multiple values, probing boundary cases and qualitatively different data points):</p>
+<pre><code>context 'applying a regexp to a string' do
+  specify 'should be able to match &quot;zero or more&quot; times' do
+    example 'for the zero-match case' do ... end
+    example 'for the one-match case' do ... end
+    example 'for the two-match case' do ... end
+  end
+end
+</code></pre>
+<p>Basically, RSpec is a pleasure to work with, helps you to write the right kind of tests, and boasts excellent integration with <a href="http://rspec.rubyforge.org/tools/rake.html">Rake</a> (Ruby-style &quot;Makefiles&quot;) and <a href="http://rspec.rubyforge.org/tools/rcov.html">Rcov</a> (code coverage reports). I'm so impressed with it that I am going to see how far I can morph my own Objective-C testing framework, WOTest, towards the behaviour-driven development model.</p>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/the-prime-directive-of-agile-development">← The &quot;Prime Directive&quot; of Agile Development</a></div><div class="post-nav-next"><a href="/blog/subversion-maintenance-1">Subversion maintenance →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chrome developer console cheatsheet • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Chrome developer console cheatsheet</h1></div><div class="metadata"><relative-time created="1389904514" updated="1736516595">Created 1/16/2014, updated 1/10/2025</relative-time></div><ul class="tags"><li><a href="/tags/javascript">javascript</a></li><li><a href="/tags/chrome">chrome</a></li><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/cheatsheet">cheatsheet</a></li></ul><div class="prerendered"><ul>
+<li><code>time('foo')</code> and <code>timeEnd('foo')</code>: print elapsed time</li>
+<li><code>keys(window)</code>: shows current global variables (<a href="https://twitter.com/ChromiumDev/status/423880231758213120">source</a>)</li>
+<li><code>$_</code>: the value of the most recently evaluated expression</li>
+<li><code>$0</code>-<code>$4</code>: recently selected DOM elements or JavaScript objects</li>
+<li><code>$(...)</code>: equivalent to <code>document.querySelector()</code></li>
+<li><code>$$(...)</code>: equivalent to <code>document.querySelectorAll()</code></li>
+<li><code>$x(...)</code>: get elements specified by XPath expression</li>
+<li><code>clear()</code>: clear the console (also, <code>Command-K</code> or <code>Control-L</code>)</li>
+<li><code>copy(object)</code>: copy a string representation of <code>object</code> to the clipboard</li>
+<li><code>debug(fn)</code>: break into debugger when <code>fn</code> is called</li>
+<li><code>dir(object)</code>: alias for <code>console.dir()</code> (also, not that <code>%0</code> can be used as a format specifier to inline the <code>dir()</code> representation in the middle of a <code>console.log()</code>)</li>
+<li><code>inspect(object)</code>: show an object in the &quot;Elements&quot; tab</li>
+<li><code>getEventListeners(object)</code>: does what it says on the tin</li>
+<li><code>keys(object)</code> and <code>values(object)</code></li>
+<li><code>monitorEvents(object[, events])</code> and <code>unmonitorEvents(object[, events])</code>: logs events (eg. <code>monitorEvents(window, &quot;resize&quot;)</code>); note there are some aliases defined as well (eg. &quot;mouse&quot;, &quot;key&quot;, &quot;touch&quot;, &quot;control&quot;) that stand in for multiple underlying events</li>
+<li><code>profile(name)</code>, <code>profileEnd(name)</code>: start/stop a JavaScript profiling session</li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li><a href="https://developers.google.com/chrome-developer-tools/docs/commandline-api">https://developers.google.com/chrome-developer-tools/docs/commandline-api</a></li>
+<li><a href="/wiki/Chrome_developer_tools">Chrome developer tools</a></li>
+<li>an incredibly comprehensive cheatsheet: <a href="http://anti-code.com/devtools-cheatsheet/">http://anti-code.com/devtools-cheatsheet/</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

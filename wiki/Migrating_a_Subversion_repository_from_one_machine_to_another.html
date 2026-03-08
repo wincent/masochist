@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Migrating a Subversion repository from one machine to another • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Migrating a Subversion repository from one machine to another</h1></div><div class="metadata"><relative-time created="1197958970" updated="1709594300">Created 12/18/2007, updated 3/4/2024</relative-time></div><ul class="tags"><li><a href="/tags/subversion">subversion</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Notes made while migrating the <a href="/wiki/Wincent_Strings_Util">Wincent Strings Util</a> repository from the local repository to the public (Internet) repository.</p>
+<p>1. Dump the repository on the local machine:</p>
+<pre><code>sudo svnadmin dump svnrep/project-name &gt; dumpfile
+</code></pre>
+<p>2. Transfer the dumpfile to the remote machine.</p>
+<p>3. Create a new repository on the remote machine as described in <a href="/wiki/Creating_a_new_Subversion_repository">Creating a new Subversion repository</a>.</p>
+<p>4. Load the dumpfile into the new repository:</p>
+<pre><code>sudo -u svn svnadmin load /var/lib/svn/repositories/project-name &lt; dumpfile
+</code></pre>
+<p>5. Check out a local working copy from the remote repository:</p>
+<pre><code>svn co svn://svn.example.com/project-name/trunk
+</code></pre>
+<p>Alternatively, if an existing local working copy is already up-to-date you can do the following to update it to point at the new remote repository:</p>
+<pre><code>svn switch --relocate http://localhost:8080/svnrep/project-name/trunk \
+                      svn://svn.example.com/project-name/trunk
+</code></pre>
+<h2>Caveat</h2>
+<p>It seems that some control characters in filenames can prevent the <code>svnadmin load</code> command from working. As an example, in one of my projects I have a number of files with the name &quot;Icon&quot; followed by a carriage return (&quot;\r&quot; or ASCII 13). I was able to obtain a dump on the local (Mac OS X) machine but when I tried to load the dump on the remote (Red Hat Linux) I got an error:</p>
+<pre><code>     * adding path : trunk/Project.xcode/CVS/svnwillbedeleted/wcprops ... done.
+'vnadmin: Invalid control character '0x0d' in path 'trunk/Project.xcode/Icon
+ ...[user@host lib]$ Project.xcode/Icon
+</code></pre>
+<p>It is not clear whether the fault lies with <code>svnadmin</code>, or with the filesystem used by the Red Hat machine. I know that Subversion has historically had problems with such filenames, but the fact is that the file got into the repository somehow (via Subversion) and it can be checked out from the local server using Subversion. I was unable to find a workaround, and so was forced to remove the offending files from the dump using the <code>svndumpfilter</code> tool.</p>
+<pre><code>cat path_to_dump_file | \
+         svndumpfilter exclude &quot;trunk/Project.xcode/Icon&quot; &gt; \
+         path_to_dump_file.filtered
+</code></pre>
+<p>I then tried switching copies using:</p>
+<pre><code>svn switch svn://svn.example.com/project-name/trunk
+</code></pre>
+<p>But was informed by Subversion that:</p>
+<pre><code>svn: 'svn://svn.example.com/project-name/trunk'
+is not the same repository as
+'http://localhost:8080/svnrep/project-name'
+</code></pre>
+<p>So I was forced to check out a new copy:</p>
+<pre><code>svn co svn://svn.example.com/project-name/trunk
+</code></pre>
+<p>Alternatively, passing the <code>--relocate</code> flag would also work.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

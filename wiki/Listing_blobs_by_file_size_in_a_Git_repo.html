@@ -1,0 +1,27 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Listing blobs by file size in a Git repo • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Listing blobs by file size in a Git repo</h1></div><div class="metadata"><relative-time created="1760650482" updated="1760650482">10/16/2025</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/git">git</a></li></ul><div class="prerendered"><pre><code class="language-sh">git rev-list --objects --all |
+  git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' |
+  awk '$1 == &quot;blob&quot;' |
+  sort -k3 -n -r |
+  awk '{printf &quot;%s\t&quot;, $2; system(&quot;numfmt --to=iec &quot; $3); print $4}'
+</code></pre>
+<p>ie.</p>
+<ul>
+<li>List all objects.</li>
+<li>For each, show type (ie. &quot;blob&quot;, &quot;tree&quot; etc), hash, size, and path.</li>
+<li>Filter out everything but blobs.</li>
+<li>Sort by third column (size) in reverse order.</li>
+<li>Print hash, a tab, then human-readable size (formatted with <code>numfmt</code>, from <a href="https://www.gnu.org/software/coreutils/">GNU Coreutils</a>, to produce a number with a single-letter suffix like <code>M</code> or <code>K</code>), and then the path.</li>
+</ul>
+<p>Example output from <a href="https://github.com/wincent/wincent">my dotfiles repo</a>, showing the first 10 lines of output (ie. the 5 biggest blobs):</p>
+<pre><code>a70c4b97c11c0fe7c911a8a0a08b90a2f5e15476        49M
+aspects/nvim/files/.config/nvim/pack/bundle/opt/command-t/data/wincent/commandt/benchmark/configs/matcher.lua
+90173c7cc0ed1eef3e76e8d7e4034845e9c5c47a        13M
+roles/misc/files/sierra-desktop.jpg
+dfd1510fee8c04198e204ab7c8368ba8e9cf7ddf        5.1M
+vendor/git-cipher/vendor/yarn-v1.22.22/lib/cli.js
+35ed6980092d6e0e5c0008e78540dcf47196cc25        5.1M
+vendor/yarn/lib/cli.js
+b959411fa647cd55265c6b7992a2b1104e5e2dc0        5.1M
+vendor/yarn/lib/cli.js
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

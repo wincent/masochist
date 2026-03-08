@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.7.0.1 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.7.0.1</h1></div><div class="metadata"><relative-time created="1267417202" updated="1495119989">Created 3/1/2010, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official announcement posted to the <a href="/wiki/Git_mailing_list">Git mailing list</a>:</p>
+<pre><code>The latest maintenance release Git 1.7.0.1 is available at the
+usual places:
+
+ http://www.kernel.org/pub/software/scm/git/
+
+ git-1.7.0.1.tar.{gz,bz2}			(source tarball)
+ git-htmldocs-1.7.0.1.tar.{gz,bz2}		(preformatted docs)
+ git-manpages-1.7.0.1.tar.{gz,bz2}		(preformatted docs)
+
+The RPM binary packages for a few architectures are found in:
+
+ RPMS/$arch/git-*-1.7.0.1-1.fc11.$arch.rpm	(RPM)
+
+Git v1.7.0.1 Release Notes
+==========================
+
+Fixes since v1.7.0
+------------------
+
+* In a freshly created repository &quot;rev-parse HEAD^0&quot; complained that
+  it is dangling symref, even though &quot;rev-parse HEAD&quot; didn't.
+
+* &quot;git show :no-such-name&quot; tried to access the index without bounds
+  check, leading to a potential segfault.
+
+* Message from &quot;git cherry-pick&quot; was harder to read and use than necessary
+  when it stopped due to conflicting changes.
+
+* We referred to &quot;.git/refs/&quot; throughout the documentation when we
+  meant to talk about abstract notion of &quot;ref namespace&quot;.  Because
+  people's repositories often have packed refs these days, this was
+  confusing.
+
+* &quot;git diff --output=/path/that/cannot/be/written&quot; did not correctly
+  error out.
+
+* &quot;git grep -e -pattern-that-begin-with-dash paths...&quot; could not be
+  spelled as &quot;git grep -- -pattern-that-begin-with-dash paths...&quot; which
+  would be a GNU way to use &quot;--&quot; as &quot;end of options&quot;.
+
+* &quot;git grep&quot; compiled with threading support tried to access an
+  uninitialized mutex on boxes with a single CPU.
+
+* &quot;git stash pop -q --index&quot; failed because the unnecessary --index
+  option was propagated to &quot;git stash drop&quot; that is internally run at the
+  end.
+
+And other minor fixes and documentation updates.
+
+----------------------------------------------------------------
+
+Changes since v1.7.0 are as follows:
+
+Bert Wesarg (2):
+     Documentation: mention conflict marker size argument (%L) for merge driver
+     rerere: fix memory leak if rerere images can't be read
+
+Evan Powers (1):
+     git-p4: fix bug in symlink handling
+
+Jacob Helwig (1):
+     Documentation: Fix indentation problem in git-commit(1)
+
+Jeff King (9):
+     accept &quot;git grep -- pattern&quot;
+     cherry-pick: rewrap advice message
+     cherry-pick: refactor commit parsing code
+     cherry-pick: format help message as strbuf
+     cherry-pick: show commit name instead of sha1
+     cherry-pick: prettify the advice message
+     dwim_ref: fix dangling symref warning
+     docs: don't talk about $GIT_DIR/refs/ everywhere
+     rm: fix bug in recursive subdirectory removal
+
+Johannes Sixt (1):
+     t3301-notes: insert a shbang line in ./fake_editor.sh
+
+Jonathan Nieder (1):
+     am: remove rebase-apply directory before gc
+
+Junio C Hamano (6):
+     Typofixes outside documentation area
+     Start 1.7.0 maintenance track
+     Fix use of mutex in threaded grep
+     Prepare 1.7.0.1 release notes
+     Update 1.7.0.1 release notes
+     Git 1.7.0.1
+
+Larry D'Anna (1):
+     diff: make sure --output=/bad/path is caught
+
+Mark Lodato (2):
+     grep documentation: clarify what files match
+     Remove reference to GREP_COLORS from documentation
+
+Markus Heidelberg (1):
+     sha1_name: fix segfault caused by invalid index access
+
+Matt Kraai (1):
+     commit: quote the user name in the example
+
+Pete Harlan (1):
+     Remove hyphen from &quot;git-command&quot; in two error messages
+
+René Scharfe (1):
+     fix minor memory leak in get_tree_entry()
+
+Stephen Boyd (1):
+     Documentation: describe --thin more accurately
+
+Thomas Rast (2):
+     stash pop: remove 'apply' options during 'drop' invocation
+     t1450: fix testcases that were wrongly expecting failure
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

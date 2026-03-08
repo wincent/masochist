@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rails conventions • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Rails conventions</h1></div><div class="metadata"><relative-time created="1159289738" updated="1584053324">Created 9/26/2006, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/rails">rails</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><a href="/wiki/Rails">Rails</a> argues for &quot;convention over configuration&quot; to minimize time spent by programmers worrying about menial details and maximize time spent on substantive problem solving.</p>
+<h2>Model and controller naming conventions</h2>
+<ul>
+<li>Model and class names are singular (<code>Weblog</code>, <code>Post</code>) and in <a href="/wiki/CamelCase">CamelCase</a> (<code>AccessControlList</code>); if you use <code>script/generate model</code> to create a model the class file will be in lowercase, singular, separated by underscores (<code>weblog.rb</code>, <code>post.rb</code>, <code>access_control_list.rb</code>).</li>
+<li>Database tables corresponding to models/classes are plural (<code>weblogs</code>, <code>posts</code>) and in lowercase, separated by underscores (<code>access_control_lists</code>).</li>
+<li>Controller names are not required to match up with underlying model names, but when they do the convention (not enforced) is to use the plural form of the model name (<code>WeblogsController</code>, the corresponding file name would be <code>weblogs_controller.rb</code>); if you use <code>script/generate controller</code> to create a controller file <a href="/wiki/Rails">Rails</a> will not perform and singular-to-plural conversion but will format the name in lowercase with underscore separators.</li>
+<li>If you use <code>script/generate scaffold</code> to create a scaffold <a href="/wiki/Rails">Rails</a> will create a singular model file and a plural controller file.</li>
+</ul>
+<h2>Database naming conventions</h2>
+<ul>
+<li>Table columns of type <code>datetime</code> and named <code>created_at</code>/<code>created_on</code> or <code>updated_at</code>/<code>updated_on</code> will be automatically updated by <a href="/wiki/Rails">Rails</a> on record creation and record update respectively.</li>
+<li>Table columns named <code>lock_version</code> (type: integer, default: 0, null: false) will be used automatically by <a href="/wiki/Rails">Rails</a> to perform &quot;optimistic locking&quot; (an exception will be raised whenever a race occurs).</li>
+<li>A column named <code>counter_cache</code> can be used to save database lookups (see: <a href="http://blog.gorgorg.org/articles/2006/04/04/ruby-on-rails-how-to-actually-use_count-counter_cache">http://blog.gorgorg.org/articles/2006/04/04/ruby-on-rails-how-to-actually-use_count-counter_cache</a>).</li>
+</ul>
+<h2>Model inheritance conventions</h2>
+<p>Given a class hierarchy that looks like this:</p>
+<ul>
+<li><code>ActiveRecord::Base</code>
+<ul>
+<li><code>Furniture</code>
+<ol>
+<li><code>Chair</code></li>
+<li><code>Table</code></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p>Rails will expect a single table named <code>furniture</code> with a column named <code>type</code> that will be used to distinguish which rows are used for the <code>Chair</code> model and which for the <code>Table</code> model. For more information see:</p>
+<ul>
+<li><a href="http://activerecord.rubyonrails.org/show/SingleTableInheritance">http://activerecord.rubyonrails.org/show/SingleTableInheritance</a></li>
+<li><a href="http://rubyonrails.org/api/classes/ActiveRecord/Base.html">http://rubyonrails.org/api/classes/ActiveRecord/Base.html</a></li>
+<li><a href="http://www.martinfowler.com/eaaCatalog/singleTableInheritance.html">http://www.martinfowler.com/eaaCatalog/singleTableInheritance.html</a></li>
+</ul>
+<h2>View conventions</h2>
+<ul>
+<li>If you create a file at <code>app/views/layouts/application.rhtml</code> it will automatically be used as a wrapper around all other layouts.</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Adding Google AdSense to MediaWiki • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Adding Google AdSense to MediaWiki</h1></div><div class="metadata"><relative-time created="1173796151" updated="1710259978">Created 3/13/2007, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/google">google</a></li><li><a href="/tags/adsense">adsense</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>I started off from <a href="http://www.dankohn.com/archives/000338.html">this article</a> which offers an out-of-date but still helpful summary of one way of adding <a href="/wiki/Google_AdSense">Google AdSense</a> to a <a href="/wiki/MediaWiki">MediaWiki</a> installation.</p>
+<p>The basic claim is that as <a href="/wiki/AdSense">AdSense</a> requires <a href="/wiki/JavaScript">JavaScript</a> you can't add it to your articles and templates directly. You must instead edit the <a href="/wiki/MediaWiki">MediaWiki</a> source files.</p>
+<h2>Creating the <a href="/wiki/JavaScript">JavaScript</a></h2>
+<p>I began by logging into my <a href="/wiki/AdSense">AdSense</a> account and creating the <a href="/wiki/JavaScript">JavaScript</a> required to display a 125 by 125 &quot;button&quot; advertisement:</p>
+<pre><code>&lt;!-- Google AdSense &quot;button&quot; block (125x125) --&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;&lt;!--
+google_ad_client = &quot;pub-3544007006233860&quot;;
+google_ad_width = 125;
+google_ad_height = 125;
+google_ad_format = &quot;125x125_as&quot;;
+google_ad_type = &quot;text&quot;;
+google_ad_channel = &quot;&quot;;
+//--&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;
+  src=&quot;http://pagead2.googlesyndication.com/pagead/show_ads.js&quot;&gt;
+&lt;/script&gt;
+</code></pre>
+<p>And a 125 by 600 vertical &quot;skyscraper&quot; advertisement:</p>
+<pre><code>&lt;!-- Google AdSense &quot;skyscaper&quot; block (125x600) --&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;&lt;!--
+google_ad_client = &quot;pub-3544007006233860&quot;;
+google_ad_width = 120;
+google_ad_height = 600;
+google_ad_format = &quot;120x600_as&quot;;
+google_ad_type = &quot;text&quot;;
+google_ad_channel = &quot;&quot;;
+google_color_border = &quot;FFFFFF&quot;;
+google_color_bg = &quot;FFFFFF&quot;;
+google_color_link = &quot;0000FF&quot;;
+google_color_text = &quot;000000&quot;;
+google_color_url = &quot;008000&quot;;
+//--&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;
+  src=&quot;http://pagead2.googlesyndication.com/pagead/show_ads.js&quot;&gt;
+&lt;/script&gt;
+</code></pre>
+<p>I chose text-only ads with a very unobtrusive color scheme because I don't want these ads to distract people from the content. The actual <a href="/wiki/JavaScript">JavaScript</a> generated will be different depending on the settings you choose and obviously your <code>google_ad_client</code> id will be different than mine.</p>
+<p>I saved these two snippets into two files, <code>adsense-button.php</code> and <code>adsense-skyscraper.php</code> respectively and put them at the top level of my site.</p>
+<h2>Customizing the MonoBook template</h2>
+<p>I then made the following changes to the MonoBook template (in <code>skins/MonoBook.php</code>:</p>
+<pre><code>Index: skins/MonoBook.php
+===================================================================
+--- skins/MonoBook.php  (revision 20020)
++++ skins/MonoBook.php  (working copy)
+@@ -169,6 +169,12 @@
+                        &lt;/div&gt;&lt;/form&gt;
+                &lt;/div&gt;
+        &lt;/div&gt;
++        &lt;div class=&quot;portlet&quot;&gt;
++                &lt;h5&gt;Advertisement&lt;/h5&gt;
++                &lt;div class=&quot;pBody&quot;&gt;
++                        &lt;?php include(&quot;/full_path_to/adsense-button.php&quot;); ?&gt;
++                &lt;/div&gt;
++        &lt;/div&gt;
+        &lt;div class=&quot;portlet&quot; id=&quot;p-tb&quot;&gt;
+                &lt;h5&gt;&lt;?php $this-&gt;msg('toolbox') ?&gt;&lt;/h5&gt;
+                &lt;div class=&quot;pBody&quot;&gt;
+@@ -222,6 +228,12 @@
+                        &lt;/ul&gt;
+                &lt;/div&gt;
+        &lt;/div&gt;
++        &lt;div class=&quot;portlet&quot;&gt;
++                &lt;h5&gt;Advertisement&lt;/h5&gt;
++                &lt;div class=&quot;pBody&quot;&gt;
++                        &lt;?php include(&quot;/full_path_to/adsense-skyscraper.php&quot;); ?&gt;
++                &lt;/div&gt;
++        &lt;/div&gt;
+ &lt;?php
+                if( $this-&gt;data['language_urls'] ) { ?&gt;
+        &lt;div id=&quot;p-lang&quot; class=&quot;portlet&quot;&gt;
+</code></pre>
+<p>As you can see, this adds a button ad just below the search box on the left and a skyscraper ad below the &quot;toolbox&quot;. Like the author of <a href="http://www.dankohn.com/archives/000338.html">the earlier referenced article</a> I decided to make these changes only to the default skin as this wiki receives only modest traffic and my deployment of <a href="/wiki/AdSense">AdSense</a> ads here is really just an experiment (first time I've ever used <a href="/wiki/AdSense">AdSense</a>). I don't plan to put <a href="/wiki/AdSense">AdSense</a> on the commercial parts of my website (see &quot;<a href="/wiki/Wincent_products">Wincent products</a>&quot;) but I do think it's fine to put it on this wiki as it is a free resource.</p>
+<p>Given that I perform my <a href="/wiki/MediaWiki">MediaWiki</a> updates using <a href="/wiki/Subversion">Subversion</a> these changes should be automatically merged whenever I perform an upgrade.</p>
+<h3>Other modifications to the MonoBook template</h3>
+<p>Seeing as I was editing the template I decided to address a long-standing annoyance with the clickable Wincent logo in the top-left corner of every page on the wiki.</p>
+<p>The problem is that clicking on the logo takes you to the top of the wiki instead of the top of the domain (<a href="http://wincent.dev/">http://wincent.dev/</a>). I think this is confusing to users. If they want to go to the top page of the wiki they can click the &quot;Main Page&quot; link (the first item in the &quot;navigation&quot; portal on the left). I think most users would expect that clicking on the logo, however, should take them to the principal page of the entire site which in this case is the top of the domain, not the top of the wiki. So one more change was in order:</p>
+<pre><code>--- skins/MonoBook.php  (revision 20020)
++++ skins/MonoBook.php  (working copy)
+@@ -137,7 +137,7 @@
+        &lt;/div&gt;
+        &lt;div class=&quot;portlet&quot; id=&quot;p-logo&quot;&gt;
+                &lt;a style=&quot;background-image: url(&lt;?php $this-&gt;text('logopath') ?&gt;);&quot; &lt;?php
+-                       ?&gt;href=&quot;&lt;?php echo htmlspecialchars($this-&gt;data['nav_urls']['mainpage']['href'])?&gt;&quot; &lt;?php
++                       ?&gt;href=&quot;http://wincent.dev/&quot; &lt;?php
+                        ?&gt;title=&quot;&lt;?php $this-&gt;msg('mainpage') ?&gt;&quot;&gt;&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;script type=&quot;&lt;?php $this-&gt;text('jsmimetype') ?&gt;&quot;&gt; if (window.isMSIE55) fixalpha(); &lt;/script&gt;
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vim plugins • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Vim plugins</h1></div><div class="metadata"><relative-time created="1232197875" updated="1584053324">Created 1/17/2009, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/vim">vim</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>This is a list of <a href="/wiki/Vim">Vim</a> plugins which I find useful and robust enough to warrant recommending them.</p>
+<p>[<strong>Disclaimer:</strong> This list is massively out of date. See <a href="https://github.com/wincent/wincent/">my dotfiles repo</a> for a more accurate reflection of what I'm using.]</p>
+<h2>Switching between buffers</h2>
+<ul>
+<li>minibufexpl.vim: <a href="http://vim.sourceforge.net/scripts/script.php?script_id=159">http://vim.sourceforge.net/scripts/script.php?script_id=159</a></li>
+<li>a.vim: <a href="http://www.vim.org/scripts/script.php?script_id=31">http://www.vim.org/scripts/script.php?script_id=31</a> (opens alternate files; header and source files, for example)</li>
+</ul>
+<h2>Project and file system browsing</h2>
+<ul>
+<li><a href="/wiki/Command-T">Command-T</a> (written by me)</li>
+<li><a href="/wiki/fuzzyfinder.vim">fuzzyfinder.vim</a>: <a href="http://www.vim.org/scripts/script.php?script_id=1984">http://www.vim.org/scripts/script.php?script_id=1984</a></li>
+<li>NERD Tree: <a href="http://www.vim.org/scripts/script.php?script_id=1658">http://www.vim.org/scripts/script.php?script_id=1658</a></li>
+</ul>
+<h3>Retired from service</h3>
+<p>These are plug-ins which I tried out for a while but eventually got rid of due to <a href="/blog/fuzzyfinder">insatisfaction</a>:</p>
+<ul>
+<li>fuzzy_file_finder (similar to <code>Command-T</code> in <a href="/wiki/TextMate">TextMate</a>): <a href="http://github.com/jamis/fuzzy_file_finder/tree/master">http://github.com/jamis/fuzzy_file_finder/tree/master</a></li>
+<li>fuzzyfinder_textmate (extends Fuzzyfinder to use fuzzy_file_finder): <a href="http://github.com/jamis/fuzzyfinder_textmate/tree/master">http://github.com/jamis/fuzzyfinder_textmate/tree/master</a></li>
+</ul>
+<h2>Editing</h2>
+<h3>Manipulating spans</h3>
+<ul>
+<li>surround.vim: <a href="http://www.vim.org/scripts/script.php?script_id=1697">http://www.vim.org/scripts/script.php?script_id=1697</a></li>
+</ul>
+<p>This plug-in is great for doing things like converting single quotes to double quotes with: <code>cs'&quot;</code></p>
+<ul>
+<li>repeat.vim: <a href="http://www.vim.org/scripts/script.php?script_id=2136">http://www.vim.org/scripts/script.php?script_id=2136</a></li>
+</ul>
+<p>Complementary to <code>surround.vim</code>, <code>repeat.vim</code> allows plugins to hook into the repeat command (<code>.</code>) so that the entire action performed by a plug-in mapping can be repeated rather than just the last command that was executed inside the function.</p>
+<h3>Commenting</h3>
+<ul>
+<li>The NERD Commenter: <a href="http://www.vim.org/scripts/script.php?script_id=1218">http://www.vim.org/scripts/script.php?script_id=1218</a></li>
+</ul>
+<h3>Snippets</h3>
+<ul>
+<li>XP Template: <a href="http://www.vim.org/scripts/script.php?script_id=2611">http://www.vim.org/scripts/script.php?script_id=2611</a></li>
+</ul>
+<h2><a href="/wiki/Rails">Rails</a></h2>
+<ul>
+<li>rails.vim: <a href="http://github.com/tpope/vim-rails">http://github.com/tpope/vim-rails</a> (see also <a href="http://www.vim.org/scripts/script.php?script_id=1567">http://www.vim.org/scripts/script.php?script_id=1567</a>)
+<ul>
+<li>screencast: <a href="http://video.google.com/videoplay?docid=2139263225227275468">http://video.google.com/videoplay?docid=2139263225227275468</a></li>
+</ul>
+</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

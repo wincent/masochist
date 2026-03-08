@@ -1,0 +1,36 @@
+Changes from 3.5a5 to 3.5a6:
+
+    Bump version number prior to release
+    Fix iTunes respawn bug
+    Update all localizable strings files
+    Fix missing semicolon in Portuguese localizable strings file
+    Add headers to release note sections
+    Remove diagnostic setting from distro script
+    Refactor distribution script
+    Produce release notes from multiple repositories
+    Tag buildtools with each release
+    Bump version number post-release
+
+WOCommon: Changes from Synergy-3.5a5 to Synergy-3.5a6:
+
+    Update TODO document
+    Update ESMTP username for INetU
+    Path updated for new host
+    Reformat some headers
+
+WOPublic: Changes from Synergy-3.5a5 to Synergy-3.5a6:
+
+
+
+buildtools: Changes from Synergy-3.5a5 to Synergy-3.5a6:
+
+    Fix absolute path bug in UpdateStringsFiles script
+    Fix spelling typo in PreprocessInfoPlistStrings script
+    Append extra blank lines at end of output
+    Automatically append wildcard to tag prefix
+    Fix expansion error in release notes script
+    Use common tools for better diagnostic messages
+    Always direct error and diagnostic output to the stderr
+    Teach release notes script to take an optional prefix parameter
+    Use non-dashed form of Git commands
+

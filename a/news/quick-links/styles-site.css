@@ -1,0 +1,300 @@
+body {
+	margin: 0px 0px 20px 0px;
+		background-color: #8FABBE;
+	
+        	text-align: center;
+        
+	}
+
+a {
+	text-decoration: underline;
+	
+	
+	}
+
+a:link {
+	color: #8FABBE;
+	}
+
+a:visited {
+	color: #8FABBE;
+	}
+
+a:active {
+	color: #8FABBE;
+	}
+
+a:hover {
+	color: #006699;
+	}
+
+h1, h2, h3 {
+	margin: 0px;
+	padding: 0px;
+	font-weight: normal;
+	}
+
+#container {
+	line-height: 140%;
+		margin-right: auto;
+	margin-left: auto;
+	text-align: left;
+	padding: 0px;
+	width: 700px;
+	
+	background-color: #FFFFFF;
+	border: 1px solid #FFFFFF;
+	}
+
+#banner {
+	font-family: Verdana, Arial, sans-serif;
+	color: #FFFFFF;
+	background-color: #999999;
+	text-align: left;
+	padding: 15px;
+	border-bottom: 1px solid #FFFFFF;
+	height: 39px;
+	}
+
+#banner-img {
+	display: none;
+	}
+
+
+#banner a {
+	color: #FFFFFF;
+	text-decoration: none;
+	}
+
+#banner h1 {
+	font-size: xx-large;
+	
+	
+	
+	}
+
+#banner h2 {
+	font-size: small;
+	}
+
+#center {
+		float: left;
+	width: 500px;
+	
+	
+	overflow: hidden;
+	}
+
+.content {
+	padding: 15px 15px 5px 15px;
+	background-color: #FFFFFF;
+	
+	color: #666666;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: x-small;
+	}
+
+#right {
+		float: left;
+	
+	
+	width: 200px;
+	background-color: #FFFFFF;
+	
+	overflow: hidden;
+	}
+
+.content p {
+	color: #666666;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: x-small;
+	font-weight: normal;
+	line-height: 150%;
+	text-align: left;
+	margin-bottom: 10px;
+	}
+
+.content blockquote {
+	line-height: 150%;
+	}
+
+.content li {
+	line-height: 150%;
+	}
+
+.content h2 {
+	color: #666666;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: x-small;
+	
+	text-align: left;
+	font-weight: bold;
+	
+	
+	margin-bottom: 10px;
+	
+	}
+
+.content h3 {
+	color: #666666;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: small;
+	
+	text-align: left;
+	font-weight: bold;
+	
+	
+	margin-bottom: 10px;
+	
+	}
+
+.content p.posted {
+	color: #999999;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: x-small;
+	border-top: 1px solid #999999;
+	text-align: left;
+	
+	
+	
+	margin-bottom: 25px;
+	line-height: normal;
+	padding: 3px;
+	}
+
+.sidebar {
+	padding: 15px;
+	}
+
+
+
+#calendar {
+  	line-height: 140%;
+	color: #666666;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: x-small;
+	
+	
+	
+  	padding: 2px;
+	text-align: center;
+	margin-bottom: 30px;
+	}
+
+#calendar table {
+	padding: 2px;
+	border-collapse: collapse;
+	border: 0px;
+	width: 100%;
+	}
+
+#calendar caption {
+	color: #666666;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: x-small;
+	
+	text-align: center;
+	font-weight: bold;
+	
+	text-transform: uppercase;
+	
+	letter-spacing: .3em;
+	}
+
+#calendar th {
+	text-align: center;
+	font-weight: normal;
+	}
+
+#calendar td {
+	text-align: center;
+	}
+
+.sidebar h2 {
+	color: #666666;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: x-small;
+	
+	text-align: center;
+	font-weight: bold;
+	
+	text-transform: uppercase;
+  	
+	letter-spacing: .3em;
+	}
+
+.sidebar ul {
+	padding-left: 0px;
+	margin: 0px;
+	margin-bottom: 30px;
+	}
+
+.sidebar ul ul {
+	margin-bottom: 0px;
+	}
+
+.sidebar #categories ul {
+	padding-left: 15px;
+	}
+
+.sidebar li {
+	color: #666666;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: x-small;
+	text-align: left;
+	line-height: 150%;
+	
+	
+	
+	margin-top: 10px;
+	list-style-type: none;
+	}
+
+.sidebar #categories li {
+	list-style-type: circle;
+	}
+
+.sidebar img {
+	border: 3px solid #FFFFFF;
+	}
+
+.photo {
+	text-align: left;
+	margin-bottom: 20px;
+	}
+
+.link-note {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: x-small;
+	line-height: 150%;
+	text-align: left;
+	padding: 2px;
+	margin-bottom: 15px;
+	}
+
+#powered {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: x-small;
+	line-height: 150%;
+	text-align: left;
+	color: #666666;
+	margin-top: 50px;
+	}
+
+#comment-data {
+	float: left;
+	width: 180px;
+	padding-right: 15px;
+	margin-right: 15px;
+	text-align: left;
+	border-right: 1px dotted #BBB;
+	}
+
+textarea[id="comment-text"] {
+	width: 80%;
+	}
+
+.commenter-profile img {
+	vertical-align: middle;
+	border-width: 0;
+	}

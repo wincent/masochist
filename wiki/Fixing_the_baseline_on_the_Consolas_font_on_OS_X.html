@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fixing the baseline on the Consolas font on OS X • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Fixing the baseline on the Consolas font on OS X</h1></div><div class="metadata"><relative-time created="1365412534" updated="1495119989">Created 4/8/2013, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/consolas">consolas</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>I was mortified this evening to discover that after reading <a href="http://www.iterm2.com/#/section/documentation/fonts">the &quot;Fonts&quot; section</a> of the <a href="/wiki/iTerm_2">iTerm 2</a> documentation:</p>
+<blockquote>
+<p>One non-recommended font is Consolas. It has an improperly set baseline offset and appears too high. It can be fixed, though; please see this page on <a href="http://mbauman.net/geek/2009/03/15/minor-truetype-font-editing-on-a-mac/">how to fix Consolas baseline.</a></p>
+</blockquote>
+<p>I couldn't look at Consolas without being painfully aware of the hitherto unnoticed baseline flaw. Oddly, the flaw in the font isn't visible in <a href="/wiki/Terminal.app">Terminal.app</a>.</p>
+<p>Getting things working was suprisingly easy, once <a href="https://developer.apple.com/fonts/">the link to the download page</a> started working and I was able to get a Universal Binary of the <code>ftxdumperfuser</code> tool. (I'd been able to find an older download, but the binary was PPC-only; the Universal version came as part of a package labelled &quot;OS X Font Tools Release 4, beta 1&quot;.)</p>
+<p>Steps:</p>
+<ol>
+<li>Copy Microsoft Consolas files from <code>/Library/Fonts/Microsoft/</code> to a working area</li>
+<li>Repair font files using <code>ftxdumperfuser</code> (described below)</li>
+<li>Remove old Consolas files</li>
+<li>Install new (repaired) files by double-clicking</li>
+</ol>
+<p>The exact edits to be made with <code>ftxdumperfuser</code> are as follows:</p>
+<pre><code>ascender=&quot;1884&quot;
+descender=&quot;-514&quot;
+lineGap=&quot;0&quot;
+</code></pre>
+<p>This needs to be done for each family:</p>
+<pre><code class="language-shell">$ ftxdumperfuser -h # see available commands
+$ ftxdumperfuser -t hhea -A d Consolas.ttf
+$ ftxdumperfuser -t hhea -A d Consolas\ Bold\ Italic.ttf
+$ ftxdumperfuser -t hhea -A d Consolas\ Bold.ttf
+$ ftxdumperfuser -t hhea -A d Consolas\ Italic.ttf
+$ vim # do the edits
+$ ftxdumperfuser -t hhea -A f Consolas.ttf
+$ ftxdumperfuser -t hhea -A f Consolas\ Bold\ Italic.ttf
+$ ftxdumperfuser -t hhea -A f Consolas\ Bold.ttf
+$ ftxdumperfuser -t hhea -A f Consolas\ Italic.ttf
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

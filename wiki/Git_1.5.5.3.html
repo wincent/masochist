@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.5.5.3 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.5.5.3</h1></div><div class="metadata"><relative-time created="1211955475" updated="1495119989">Created 5/28/2008, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h3>Official release announcement</h3>
+<pre><code>The latest maintenance release GIT 1.5.5.3 is available at the
+usual places:
+
+ http://www.kernel.org/pub/software/scm/git/
+
+ git-1.5.5.3.tar.{gz,bz2}			(tarball)
+ git-htmldocs-1.5.5.3.tar.{gz,bz2}		(preformatted docs)
+ git-manpages-1.5.5.3.tar.{gz,bz2}		(preformatted docs)
+ RPMS/$arch/git-*-1.5.5.3-1.$arch.rpm	(RPM)
+
+This one is much smaller than 1.5.5.2, primarily to push out a few fixes
+to send-email and bisect that have already been in 'master' for a while.
+
+----------------------------------------------------------------
+
+Changes since v1.5.5.2 are as follows:
+
+Christian Couder (1):
+     bisect: print an error message when &quot;git rev-list --bisect-vars&quot; fails
+
+Gerrit Pape (3):
+     git-bisect.sh: don't accidentally override existing branch &quot;bisect&quot;
+     Documentation/git-bundle.txt: fix synopsis
+     commit --interactive: properly update the index before commiting
+
+Horst H. von Brand (1):
+     Fix recipient santitization
+
+Jeff King (2):
+     send-email: specify content-type of --compose body
+     send-email: rfc2047-quote subject lines with non-ascii characters
+
+Johannes Sixt (1):
+     Revert &quot;filter-branch: subdirectory filter needs --full-history&quot;
+
+Junio C Hamano (3):
+     Release Notes for 1.5.5.2
+     show-branch --current: do not barf on detached HEAD
+     GIT 1.5.5.3
+
+Lea Wiemann (1):
+     gitweb: only display &quot;next&quot; links in logs if there is a next page
+
+Michele Ballabio (1):
+     Documentation: fix graph in git-rev-parse.txt
+
+Pieter de Bie (1):
+     builtin-fast-export: Only output a single parent per line
+</code></pre>
+<h3>See also</h3>
+<ul>
+<li><a href="/wiki/Upgrading_to_Git_1.5.5.3">Upgrading to Git 1.5.5.3</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

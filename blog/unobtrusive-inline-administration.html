@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Unobtrusive inline administration • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/unobtrusive-inline-administration">Unobtrusive inline administration</a></h1><div class="metadata"><relative-time created="1236146066" updated="1584053324">Created 3/4/2009, updated 3/12/2020</relative-time><span>4 minute read</span></div><div class="prerendered"><p>Nearly a couple years ago <a href="http://railscasts.com">Ryan Bates</a> did <a href="http://railscasts.com/episodes/19">a screencast</a> titled, &quot;Where Administration Goes&quot;. In it he makes a case for integrating administation UI within the standard templates that unprivileged users see.</p>
+<ul>
+<li><strong>Advantages:</strong> elegant; convenient, direct access to administration; cuts down the number of templates and controllers needed.</li>
+<li><strong>Disdvantages:</strong> templates are more complex and therefore harder to write and test; can't page-cache because different visitors see different versions of page.</li>
+</ul>
+<p>The alternative approach is to store away all admin <a href="/wiki/UI">UI</a> in a separate, &quot;admin&quot; namespace. So instead of accessing inline controls at a <a href="/wiki/URL">URL</a> like <code>/posts</code>, the administrator would visit <code>/admin/posts</code>.</p>
+<ul>
+<li><strong>Advantages:</strong> simpler templates which are easier to write and test; simpler security model; pages can be cached because they look the same for all visitors.</li>
+<li><strong>Disdvantages:</strong> more templates and controllers required; no direct access to administration functions from public views; admins effectively playing in separate &quot;ghetto&quot; from rest of users, and so may get &quot;out of touch&quot; about what bugs and UI problems normal users may be experiencing.</li>
+</ul>
+<p>Neither approach is a clear winner, but weighing all this up I've always preferred inline administration interfaces where possible, falling back to namespaced interfaces when necessary or more appropriate.</p>
+<p>But when you add <a href="/wiki/AJAX">AJAX</a> to the mix the inline approach gets a little more ugly (well, any time you add AJAX using the standard <a href="/wiki/Rails">Rails</a> helpers things are going to get a bit ugly; it's just that doing so in the case of inline administration UI makes a complicated thing even more complicated).</p>
+<p>We no longer have just the following (pseudo-code):</p>
+<pre><code>if admin?
+  show edit button
+</code></pre>
+<p>We instead now we have a whole heap of conditionals like the following, one for each attribute we want to be editable via AJAX:</p>
+<pre><code>if admin?
+  show AJAX control
+else
+  show immutable (non-editable) representation
+</code></pre>
+<p>Sure, we can sometimes avoid repetition and hide away some of this complexity using helpers or partials, but it's still pretty ugly. Not only is there a lot of logic in the code (even if it is just simple boolean logic), but for the admin viewing the page, the source is now littered with ugly spaghetti-like <a href="/wiki/JavaScript">JavaScript</a> intermingled and entangled with the rest of the HTML.</p>
+<p>So lately I've been thinking about <a href="/wiki/Unobtrusive_JavaScript">Unobtrusive JavaScript</a> and asking myself if we could try a different approach that would deliver the following benefits:</p>
+<ul>
+<li>Clean, JavaScript-free HTML source</li>
+<li>A convenient inline UI for administrative actions</li>
+<li>Page-cacheability</li>
+<li>Easier testing</li>
+</ul>
+<h2>The basic idea</h2>
+<p>Nothing radical. I expect that others out there must be doing this as it seems obvious once you ask yourself the question, &quot;What would an inline administrative UI built using Unobtrusive JavaScript look like?&quot;.</p>
+<p>Once we've proposed to do our inline admin UI this way, a couple of conclusions naturally fall out:</p>
+<ul>
+<li>Our HTML will be clean and JavaScript-free.</li>
+<li>The page will be truly static, will look the same for all users, and so can be cached.</li>
+<li>If the page is static then the JavaScript must be dynamic; by definition, it must be different for admin users:
+<ul>
+<li>For admin users, we'll be generating a bunch of inline AJAX controls.</li>
+<li>For normal users, there will be much fewer controls and less JavaScript (perhaps none at all).</li>
+</ul>
+</li>
+<li>For 99% of visitors, then, we'll expect:
+<ul>
+<li>A really fast static page load.</li>
+<li>A dynamic JavaScript request which doesn't do much work (just does one database query to check whether the user is an admin or not).</li>
+</ul>
+</li>
+<li>For 1% of visitors (the admins), we'll expect the same, except:
+<ul>
+<li>Our dynamic JavaScript request will do a <em>little</em> more work (still only one database query though); because there will be more JavaScript to generate, we'll be spending a little more time evaluating our templates.</li>
+</ul>
+</li>
+<li>Our HTML templates, free of JavaScript and helpers, will be much easier to test.</li>
+<li>On the other hand, we'll now have a separate set of JavaScript templates to test.</li>
+<li>Luckily, the overall amount of testing to be done is roughly the same; but there is now a very clean separation now between HTML view content and JavaScript view logic, so this testing should be easier.</li>
+</ul>
+<p>So we know we need to generate the JavaScript dynamically. The question is <em>where</em> should we do it?</p>
+<p>Add it to each controller? <em>Meh</em>.</p>
+<p>The obvious answer is to stick all this in a custom &quot;JavaScript&quot; controller. We could set up the routing for this controller to serve our dynamic JavaScript from under <code>/javascripts/</code>, but I prefer to keep a clean separation between the static JavaScript files stored in <code>public/javascripts</code> and dynamically generated JavaScript accessed via <code>/js/</code>.</p>
+<p>Our custom controller really needs only one method, a &quot;show&quot; method, which will basically do this (pseudo-code):</p>
+<pre><code>def show
+  render ERB template for 'controller' and 'action'
+end
+</code></pre>
+<p>So let's say we have an issues controller with a show action which we normally access from <code>/issues/1200</code>, we'll expect to find a corresponding dynamic JavaScript template at <code>app/views/js/issues/show.js.erb</code>.</p>
+<p>We'll add a quick helper that generates the appropriate <code>&lt;script&gt;</code> tag to the <code>&lt;head&gt;</code> in our application layout:</p>
+<pre><code>&lt;script src=&quot;/js/issues/show.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>Notice that we can't really include a timestamp here like Rails normally does on its JavaScript links. By definition, our objective is to generate <em>dynamic</em> JavaScript which could change from request to request, for example, when the user logs in or logs out.</p>
+<p>And why not make things a little sweeter with some syntactic sugar for use in our controllers?</p>
+<pre><code> uses_custom_javascript :only =&gt; [ :show, :index ]
+</code></pre>
+<p>All in all, a pretty nice system, I think. I'm hoping to roll it out in my next major deployment.</p>
+</div><ul class="tags"><li><a href="/tags/rails">rails</a></li><li><a href="/tags/javascript">javascript</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/hosting-reliability">← Hosting reliability</a></div><div class="post-nav-next"><a href="/blog/living-in-a-world-of-bugs">Living in a world of bugs →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

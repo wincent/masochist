@@ -1,0 +1,258 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Behaviour-Driven Development with Rails • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Behaviour-Driven Development with Rails</h1></div><div class="metadata"><relative-time created="1182432389" updated="1710259978">Created 6/21/2007, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/rspec">rspec</a></li><li><a href="/tags/rails">rails</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Note</h2>
+<p>This article was originally written in 2007. For more up-to-date information, see:</p>
+<ul>
+<li><a href="/wiki/Rails_model_testing_cheatsheet">Rails model testing cheatsheet</a></li>
+<li><a href="/wiki/Rails_view_testing_cheatsheet">Rails view testing cheatsheet</a></li>
+<li><a href="/wiki/Rails_controller_testing_cheatsheet">Rails controller testing cheatsheet</a></li>
+<li><a href="/wiki/Rails_helper_testing_cheatsheet">Rails helper testing cheatsheet</a></li>
+<li><a href="/wiki/Rails_mailer_testing_cheatsheet">Rails mailer testing cheatsheet</a></li>
+<li><a href="/wiki/RR_cheatsheet">RR cheatsheet</a></li>
+<li><a href="/wiki/Steak_cheatsheet">Steak cheatsheet</a></li>
+</ul>
+<h2>Background</h2>
+<p>I first used <a href="/wiki/Behaviour-Driven_Development">Behaviour-Driven Development</a> in a relatively disciplined way when writing <a href="/wiki/Walrus">Walrus</a>. <a href="/wiki/BDD">BDD</a> is an incredible safety net for a beginner (<a href="/wiki/Walrus">Walrus</a> was my first ever real <a href="/wiki/Ruby">Ruby</a> project; previously I had only written 10-line scripts). It allows you to ensure the correctness of your code at every step of development, and provides you with confidence about your code that you otherwise couldn't possibly have as a beginner.</p>
+<p>As I learned more about <a href="/wiki/Ruby">Ruby</a> I needed to lean less and less heavily on <a href="/wiki/BDD">BDD</a> as a development aid, but I continued to write <a href="/wiki/specs">specs</a> in parallel with new code. In the end <a href="/wiki/BDD">BDD</a> allowed me to develop a fully working prototype (in use in production) of a very complex system (<a href="/wiki/object-oriented_templating">object-oriented templating</a> built using an automated <a href="/wiki/packrat">packrat</a> <a href="/wiki/PEG">PEG</a> parser generator). I am almost certain that I wouldn't have been able to complete the project without <a href="/wiki/BDD">BDD</a>. Having made this journey I can now claim to &quot;know&quot; <a href="/wiki/Ruby">Ruby</a>.</p>
+<p>So for a beginning <a href="/wiki/Rails">Rails</a> programmer <a href="/wiki/BDD">BDD</a> is also an excellent fit. The notes in this article describe how to set up a new <a href="/wiki/Rails">Rails</a> application and incorporate <a href="/wiki/BDD">BDD</a> from the very first moment.</p>
+<h2>Creating the application</h2>
+<p>After <a href="/wiki/installing_Ruby_on_Rails">installing Ruby on Rails</a> and any other prerequisites (see &quot;<a href="/wiki/Rails_application_bootstrapping">Rails application bootstrapping</a>&quot;) we can go ahead and create a new application:</p>
+<pre><code>rails application_name
+cd application_name
+</code></pre>
+<h2><a href="/wiki/SVK">SVK</a> set-up</h2>
+<p>Seeing as I am working inside an <a href="/wiki/SVK">SVK</a> working copy I also do:</p>
+<pre><code>svk add .
+svk ci -m &quot;Create new Rails application&quot;
+</code></pre>
+<p>There are some files and folders which shouldn't really be stored in <a href="/wiki/version_control">version control</a> (see &quot;<a href="/wiki/Checking_a_new_Rails_application_into_an_existing_Subversion_repository">Checking a new Rails application into an existing Subversion repository</a>&quot;) so these need to be removed and ignored:</p>
+<pre><code>svk rm log/*
+svk propset svn:ignore '*.log' log
+svk rm tmp/*
+svk propset svn:ignore '*' tmp
+svk mv config/database.yml config/database.example
+svk propset svn:ignore 'database.yml' config
+svk ci -m &quot;Set-up ignored files&quot;
+</code></pre>
+<h2>Setting up the database</h2>
+<p>First we need to set-up the <code>config/database.yml</code> file:</p>
+<pre><code>cp config/database.example config/database.yml
+</code></pre>
+<p>Default settings will work just fine if using a <a href="/wiki/MySQL">MySQL</a> set-up as described in &quot;<a href="/wiki/Rails_application_bootstrapping">Rails application bootstrapping</a>&quot; but we'll add <code>encoding: utf8</code> to each database as described in &quot;<a href="/wiki/Unicode_support_in_Rails">Unicode support in Rails</a>&quot;. Now to actually create the development and test databases:</p>
+<pre><code>sudo -s
+mysqld_safe &amp;
+exit
+mysql -u root -e &quot;CREATE DATABASE application_name_development CHARACTER SET 'UTF8';&quot;
+mysql -u root -e &quot;CREATE DATABASE application_name_test CHARACTER SET 'UTF8';&quot;
+rake db:migrate
+env RAILS_ENV=test rake db:migrate
+</code></pre>
+<p>As explained in &quot;<a href="/wiki/Unicode_support_in_Rails">Unicode support in Rails</a>&quot;, note that I explicitly force the databases to be created with a default <a href="/wiki/UTF-8">UTF-8</a> character set.</p>
+<p>And set-up for <a href="/wiki/SVK">SVK</a>:</p>
+<pre><code>svk add db/schema.rb
+svk ci -m &quot;Initial database schema&quot;
+</code></pre>
+<h2>Installing the <a href="/wiki/RSpec">RSpec</a> plug-ins</h2>
+<p>When I first wrote this, the latest <a href="/wiki/RSpec">RSpec</a> release was 0.9.4, so I used the following commands:</p>
+<pre><code>script/plugin install svn://rubyforge.org/var/svn/rspec/tags/REL_0_9_4/rspec
+script/plugin install svn://rubyforge.org/var/svn/rspec/tags/REL_0_9_4/rspec_on_rails
+</code></pre>
+<p>But nowadays the latest release is always tagged as <code>CURRENT</code> so the following can be used instead:</p>
+<pre><code>script/plugin install svn://rubyforge.org/var/svn/rspec/tags/CURRENT/rspec
+script/plugin install svn://rubyforge.org/var/svn/rspec/tags/CURRENT/rspec_on_rails
+</code></pre>
+<p>After this:</p>
+<pre><code>script/generate rspec
+rake spec
+</code></pre>
+<p>And if working with <a href="/wiki/SVK">SVK</a>:</p>
+<pre><code>svk add script/spec* vendor/plugins/rspec* spec
+svk propset svn:ignore previous_failures.txt .
+svk ci -m &quot;Install RSpec 0.9.4 plug-ins&quot;
+</code></pre>
+<p>Unfortunately, <a href="/wiki/SVK">SVK</a> doesn't (yet) support <a href="/wiki/Subversion_externals">Subversion externals</a>, so we have to install the plug-ins as shown here (at the time of writing, the latest version of <a href="/wiki/SVK">SVK</a> is 2.0.1). When <a href="/wiki/SVK">SVK</a> adds the required support we'll be able to pass the <code>-x</code> switch to <code>script/plugin install</code> for a slightly more elegant solution.</p>
+<p>The official <a href="/wiki/Rspec">Rspec</a> installation instructions for <a href="/wiki/Rails">Rails</a> can be found at: <a href="http://rspec.rubyforge.org/documentation/rails/install.html">http://rspec.rubyforge.org/documentation/rails/install.html</a></p>
+<h2>Setting up <a href="/wiki/Autotest">Autotest</a></h2>
+<p>As part of the <a href="/wiki/BDD">BDD</a> approach we'll be using <a href="/wiki/Autotest">Autotest</a> to do <a href="/wiki/continuous_integration">continuous integration</a>. After installing and configuring <a href="/wiki/Autotest">Autotest</a> as described in &quot;<a href="/wiki/Using_autotest_with_Rails">Using autotest with Rails</a>&quot; we can start it by invoking:</p>
+<pre><code>autotest
+</code></pre>
+<h2>Beginning development</h2>
+<p>As an example, create a <code>User</code> model:</p>
+<pre><code>script/generate rspec_model User
+svk st | grep '?' | awk '{print $2}' | xargs svk add
+svk ci -m &quot;Create User model&quot;
+</code></pre>
+<p><a href="/wiki/Autotest">Autotest</a> should notice the newly created files and run automatically:</p>
+<pre><code>F
+
+1)
+ActiveRecord::StatementInvalid in 'User should be valid'
+Mysql::Error: Table 'application_name_test.users' doesn't exist: SHOW FIELDS FROM users
+./spec/models/user_spec.rb:5:in `new'
+./spec/models/user_spec.rb:5:
+script/spec:4:
+
+Finished in 0.051379 seconds
+
+1 example, 1 failure
+</code></pre>
+<p>So the spec is failing because the <code>users</code> table hasn't been set up yet. To be fully <a href="/wiki/behaviour-driven">behaviour-driven</a> we should do the minimum required to get the spec passing, and that means running <code>rake db:migrate</code> to set up the table in the database. This may be counter-intuitive because you haven't actually specified any behaviour yet, but you'll remain truer to the <a href="/wiki/BDD">BDD</a> philosophy if you always employ this &quot;minimum change to get the spec passing&quot; approach; this approach is described and demonstrated in great detail by lead <a href="/wiki/RSpec">RSpec</a> developer <a href="/wiki/David_Chelimsky">David Chelimsky</a> in <a href="http://blog.davidchelimsky.net/articles/2007/05/14/an-introduction-to-rspec-part-i">this weblog post</a>.</p>
+<pre><code>rake db:migrate
+env RAILS_ENV=test rake db:migrate
+svk ci -m &quot;Perform migration for User model&quot;
+</code></pre>
+<p>As soon as you do this the specs will start passing again:</p>
+<pre><code>Finished in 0.050375 seconds
+
+1 example, 0 failures
+</code></pre>
+<h2>Setting up <a href="/wiki/RCov">RCov</a></h2>
+<p>Now that the first examples are running it's a good time to set up <a href="/wiki/RCov">RCov</a> to ensure code coverage by our <a href="/wiki/specs">specs</a>. In the <code>Rakefile</code> we add:</p>
+<pre><code>require 'spec/rake/spectask'
+
+desc 'Run all examples with RCov'
+Spec::Rake::SpecTask.new('coverage') do |t|
+  t.spec_files = FileList['spec/**/*.rb']
+  t.rcov = true
+  t.rcov_opts = ['--exclude', 'spec']
+end
+</code></pre>
+<p>Now running <code>rake coverage</code> will run all the <a href="/wiki/specs">specs</a> and measure the code coverage at the same time, writing a report out to a <code>coverage</code> directory.</p>
+<p>The first run shows 100%, apart from 10 lines in <code>config/boot.rb</code>. We can exclude this file from the coverage analysis for two reasons:</p>
+<ol>
+<li>The file is part of <a href="/wiki/Rails">Rails</a> itself, there is no need to test it (<a href="/wiki/Rails">Rails</a> has its own tests).</li>
+<li>It is impossible to cover all 100% of this file because it depends on the method in which <a href="/wiki/Rails">Rails</a> is installed (there are two different code paths depending on whether <a href="/wiki/Rails">Rails</a> is frozen into <code>vendor/rails</code> or loaded via <a href="/wiki/RubyGems">RubyGems</a>.</li>
+</ol>
+<p>So we update the <code>rcov_opts</code> in the <code>Rakefile</code> to:</p>
+<pre><code>t.rcov_opts = ['--exclude', 'config,spec']
+</code></pre>
+<p>This brings code coverage up to 100%; to keep it this way we add a new task to the <code>Rakefile</code>:</p>
+<pre><code>require 'spec/rake/verify_rcov'
+
+RCov::VerifyTask.new(:verify =&gt; :spec) do |t|
+  t.threshold = 100.0 # only adjust upwards, never downwards
+  t.index_html = 'coverage/index.html'
+end
+</code></pre>
+<p>Now you can verify coverage using <code>rake verify</code>; output should resemble:</p>
+<pre><code>Finished in 0.049242 seconds
+
+1 example, 0 failures
+Coverage: 100.0% (threshold: 100.0%)
+</code></pre>
+<p>We can keep the <code>coverage</code> directory out of <a href="/wiki/version_control">version control</a> as follows:</p>
+<pre><code># add coverage to svn:ignore list
+svk propedit svn:ignore
+</code></pre>
+<h2>Heckle</h2>
+<p>You can further enhance your testing efforts by using <a href="/wiki/Heckle">Heckle</a> to test the quality of your <a href="/wiki/specs">specs</a>. After <a href="/wiki/installing_Heckle_using_RubyGems">installing Heckle using RubyGems</a> you can specify a <a href="/wiki/spec">spec</a> and class (or module, or method) to mutate:</p>
+<pre><code>spec spec/models/user_spec.rb --heckle User
+</code></pre>
+<p>As noted by the author of <a href="/wiki/Heckle">Heckle</a> in <a href="http://glu.ttono.us/articles/2006/12/19/tormenting-your-tests-with-heckle">this post</a>:</p>
+<blockquote>
+<p><strong>If it modifies code, can’t bad things happen?</strong></p>
+<p>Well, yes. Heckle could feasibly break things. It throws crap into your code on purpose. It flips unless and while loops so infinite loops will probably occur at some point. For the next release I’m planning to put in some sort of timeout to avoid that.</p>
+<p>Additionally, know what your code is doing. If randomly changing a string is going to actually break things irrevocably in testing, you probably should be stubbing those dangerous methods (eg. You probably shouldn’t run Heckle against methods that really delete files during testing if it’s based on a string)</p>
+</blockquote>
+<p>For this reason there is no way to automatically invoke <a href="/wiki/Heckle">Heckle</a>; you have to select a target to mutate and then perform the mutation manually.</p>
+<h2>Developing iteratively</h2>
+<p>From here on development takes place iteratively: write a new <a href="/wiki/spec">spec</a> (should fail), write code necessary to make <a href="/wiki/spec">spec</a> pass (should pass).</p>
+<p>For example, let's start with a simple requirement for our <code>User</code> model:</p>
+<ul>
+<li>A User without a login name
+<ul>
+<li>should be invalid</li>
+</ul>
+</li>
+</ul>
+<p>We express this with the following <a href="/wiki/spec">spec</a> in <code>user_spec.rb</code>:</p>
+<pre><code>describe User, 'without a login name' do
+
+  before(:each) do
+    @user = User.new
+  end
+
+  it 'should be invalid' do
+    @user.should_not be_valid
+  end
+
+end
+</code></pre>
+<p>This spec fails because we don't have any code to make a user without a login name be considered invalid. We correct this by editing the <code>user.rb</code> file and adding a <code>validates_presence_of</code> call:</p>
+<pre><code>class User &lt; ActiveRecord::Base
+  validates_presence_of :login_name
+end
+</code></pre>
+<p>Now the <em>other</em> spec in the <code>user_spec.rb</code> file will start failing because the previously valid instance is no longer considered to be valid:</p>
+<pre><code>describe User do
+  before(:each) do
+    @users = User.new
+  end
+
+  it &quot;should be valid&quot; do
+     @users.should be_valid
+  end
+end
+</code></pre>
+<p>We make it valid by adding a login name:</p>
+<pre><code>describe User do
+  before(:each) do
+    @users = User.new(:login_name =&gt; 'Bob')
+  end
+
+  it &quot;should be valid&quot; do
+     @users.should be_valid
+  end
+end
+</code></pre>
+<p>But now we still have a failing <a href="/wiki/spec">spec</a> because there is not yet a <code>login_name=</code> accessor. We therefore create a new migration:</p>
+<pre><code>script/generate migration add_login_name_to_users
+</code></pre>
+<p>The contents will be:</p>
+<pre><code>class AddLoginNameToUsers &lt; ActiveRecord::Migration
+  def self.up
+    add_column 'users', 'login_name', :string, :null =&gt; false
+  end
+
+  def self.down
+    remove_column 'users', 'login_name'
+  end
+end
+</code></pre>
+<p>We run the migration:</p>
+<pre><code>rake db:migrate
+env RAILS_ENV=test rake db:migrate
+</code></pre>
+<p>And all the specs start passing again. Now we can check our changes into <a href="/wiki/SVK">SVK</a>:</p>
+<pre><code>svk add db/migrate/002_add_login_name_to_users.rb
+svk ci -m &quot;Add login_name to User model&quot;
+</code></pre>
+<p>Development will now continue iteratively:</p>
+<ol>
+<li>Decide on a new required behaviour</li>
+<li>Write a spec for it (should fail)</li>
+<li>Write code (or take other actions such as performing database migrations as shown above) to make spec pass</li>
+<li>Check changes into <a href="/wiki/version_control">version control</a></li>
+<li>Repeat</li>
+</ol>
+<p>Periodically we will also do the following</p>
+<ul>
+<li>Check code coverage using <code>rake coverage</code> and/or <code>rake verify</code>; you should try to keep coverage at 100%</li>
+<li>If necessary, refactor <a href="/wiki/specs">specs</a> to avoid duplicated code; if any of your specs break then you know that your refactoring introduced an error</li>
+<li>Selectively run <a href="/wiki/Heckle">Heckle</a> against specific specs, classes, modules and methods to look for holes, flaws or weaknesses in the specs</li>
+</ul>
+<p>I've <a href="http://wincent.dev/a/about/wincent/weblog/archives/2007/05/behaviourdriven.php">posted this screencast</a> to my personal <a href="/wiki/weblog">weblog</a> showing one cycle of this iterative development approach in action.</p>
+<h2>General guidelines</h2>
+<h3>Try to keep coupling between models, views and controllers to a minimum</h3>
+<p>The above example tests a model in isolation with no involvement from any views or controllers. This is a good thing because it means that bugs in those views and controllers won't have a cascade effect which causes your model specs to fail.</p>
+<p><a href="http://blog.davidchelimsky.net/articles/2006/11/06/view-spec-tutorial">This post</a> by <a href="/wiki/David_Chelimsky">David Chelimsky</a> shows how to tests views in isolation with the help of <a href="/wiki/mock_objects">mock objects</a>. In this way views can be tested before the corresponding models and controllers are even written.</p>
+<p>For more information see &quot;<a href="/wiki/Independently_testing_models%2c_views_and_controllers">Independently testing models, views and controllers</a>&quot;.</p>
+<h3>Test the coupling too</h3>
+<p>I know I just said that it's a good thing to keep coupling to a minimum, but you <em>also</em> need to separately test that all of the components work effectively together. In <a href="/wiki/Rails">Rails</a> parlance this is called &quot;integration testing&quot;. <a href="/wiki/RSpec">RSpec</a> doesn't directly support that yet (as of version 0.9.4, the latest at the time of writing) but it <em>does</em> allow you to use third-party add-ons to perform high-level testing. For more information see &quot;<a href="/wiki/Using_Watir_with_RSpec_and_Rails">Using Watir with RSpec and Rails</a>&quot;.</p>
+<h3>Don't test <a href="/wiki/Rails">Rails</a></h3>
+<p>Make sure that you are testing the behaviour of <em>your</em> application and not that of <a href="/wiki/Rails">Rails</a> itself. <a href="/wiki/Rails">Rails</a> is already pretty thoroughly tested. In the example above, we are <em>not</em> testing the functionality of <a href="/wiki/Rails">Rails</a>' <code>validates_presence_of</code> method; we take it as a given that it works as advertised. What we <em>are</em> testing is the required behaviour of our application, as specified in the example, a &quot;User without a login name should be invalid&quot;. That is the externally visible behaviour that we care about and it is what we use <a href="/wiki/RSpec">RSpec</a> to confirm; the internal implementation details are not relevant and your <a href="/wiki/specs">specs</a> should be written in an implementation-detail-neutral way (that is, when the implementation details change the <a href="/wiki/spec">spec</a> should continue to pass).</p>
+<h2>See also</h2>
+<ul>
+<li>Nice article on doing Behaviour-Driven Development in Ruby on Rails: <a href="http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1">http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1</a> (now slightly out of date but still useful)</li>
+<li><a href="/wiki/Behaviour-Driven_Development_with_Rails%3a_Handling_upgrades">Behaviour-Driven Development with Rails: Handling upgrades</a></li>
+<li><a href="/wiki/Store_user_session_data_in_the_database_instead_of_the_filesystem_on_Rails">Store user session data in the database instead of the filesystem on Rails</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

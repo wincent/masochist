@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>V8 optimization killers • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>V8 optimization killers</h1></div><div class="metadata"><relative-time created="1414025350" updated="1495119989">Created 10/23/2014, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/javascript">javascript</a></li><li><a href="/tags/v8">v8</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Things which cause the entire containing function to be deoptimized (ie. compiled with the generic compiler instead of the optimizing compiler, which can be 100x slower):</p>
+<ul>
+<li>generator functions</li>
+<li><code>for</code>/<code>of</code> statements</li>
+<li><code>try</code>/<code>catch</code> statements</li>
+<li><code>try</code>/<code>finally</code> statements</li>
+<li>compound <code>let</code> assignment</li>
+<li>compound <code>const</code> assignment</li>
+<li>object literals with a <code>__proto__</code> property, or <code>get</code> or <code>set</code> declarations</li>
+<li><code>debugger</code></li>
+<li><code>eval()</code></li>
+<li><code>with</code></li>
+<li>any use of <code>arguments</code> except <code>arguments.length</code>, <code>arguments[i]</code> (where <code>i</code> is an inbounds integer index) and <code>foo.apply(bar, arguments)</code></li>
+<li><code>switch</code> with more than 128 <code>case</code> clauses</li>
+<li><code>for</code>/<code>in</code> if:
+<ul>
+<li>&quot;key&quot; is not a strictly local variable</li>
+<li>object is in dictionary mode (ie. because of properties added/deleted outside the constructor)</li>
+<li>object has enumerable properties in its prototype chain</li>
+<li>object has array indices (true for arrays, obviously)</li>
+</ul>
+</li>
+</ul>
+<h2>Source</h2>
+<ul>
+<li><a href="https://github.com/petkaantonov/bluebird/wiki/Optimization-killers">https://github.com/petkaantonov/bluebird/wiki/Optimization-killers</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

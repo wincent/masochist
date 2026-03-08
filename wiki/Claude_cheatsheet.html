@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Claude cheatsheet • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Claude cheatsheet</h1></div><div class="metadata"><relative-time created="1755077905" updated="1755077905">8/13/2025</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Installation troubleshooting</h2>
+<p>I initially installed using <a href="https://docs.anthropic.com/en/docs/claude-code/setup">the standard installation instructions</a> with:</p>
+<pre><code>npm install -g @anthropic-ai/claude-code
+</code></pre>
+<p>But at some point Claude urged me to migrate from a global to a local install with:</p>
+<pre><code>/migrate-installer
+</code></pre>
+<p>I have <a href="https://github.com/wincent/wincent/blob/e3d18bd5feb75448fe4dd0a1cfa80382d9072a6f/aspects/dotfiles/files/.zsh/aliases#L18">an alias to open Claude code</a> by typing <code>code</code> (not <code>claude</code>, because I have <a href="https://github.com/wincent/wincent/blob/e3d18bd5feb75448fe4dd0a1cfa80382d9072a6f/aspects/dotfiles/files/.zsh/aliases#L17">a pre-existing alias with that name</a> that opens a Claude chat in Neovim):</p>
+<pre><code>alias code=&quot;$HOME/.claude/local/claude&quot;
+</code></pre>
+<p>At a later time this stopped working for an unknown reason; something had blown away the <code>bin</code> stub:</p>
+<pre><code>$HOME/.claude/local/claude: line 2: $HOME/.claude/local/node_modules/.bin/claude: No such file or directory
+</code></pre>
+<p>So, I reinstalled (again with <code>npm install -g</code>), and it started to complain because I now had both installs; ie. <code>/doctor</code> says:</p>
+<pre><code>Warning: Multiple installations found
+ └ npm-local at /Users/$USER/.claude/local
+ └ npm-global at /Users/$USER/n/bin/claude
+</code></pre>
+<p>So, I removed the global install:</p>
+<pre><code>npm uninstall -g @anthropic-ai/claude-code
+</code></pre>
+<p>And now <code>/doctor</code> is happy again.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

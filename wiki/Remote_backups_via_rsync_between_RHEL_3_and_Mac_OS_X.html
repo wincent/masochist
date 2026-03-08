@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Remote backups via rsync between RHEL 3 and Mac OS X • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Remote backups via rsync between RHEL 3 and Mac OS X</h1></div><div class="metadata"><relative-time created="1160846391" updated="1584053324">Created 10/14/2006, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/rsync">rsync</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><strong>*Note:</strong> these notes were made with older versions of <a href="/wiki/RHEL">RHEL</a> and <a href="/wiki/Mac_OS_X">Mac OS X</a>. See &quot;<a href="/wiki/Remote_backups_via_rsync">Remote backups via rsync</a>&quot; for links to other articles using other <a href="/wiki/operating_system">operating system</a> versions.*</p>
+<p>These are notes I made while setting up an <a href="/wiki/rsync">rsync</a>-based backup mechanism between my remote server (running <a href="/wiki/Red_Hat_Enterprise_Linux">Red Hat Enterprise Linux</a>) and my local machine (running <a href="/wiki/Mac_OS_X">Mac OS X</a>).</p>
+<h2>Client set-up</h2>
+<h3>Key generation</h3>
+<pre><code>ssh-keygen -t dsa -f ~/.ssh/id_dsa_rsync
+chmod 400 ~/.ssh/id_dsa_rsync*
+</code></pre>
+<h3>Backup storage</h3>
+<pre><code>sudo mkdir /var/root/backups
+sudo mkdir /var/root/backups/hostname
+sudo chmod 700 /var/root/backups
+sudo chmod 700 /var/root/backups/hostname
+</code></pre>
+<h2>Remote set-up</h2>
+<p>Edit <code>/etc/ssh/sshd_config</code>, changing:</p>
+<pre><code>PermitRootLogin no
+</code></pre>
+<p>To:</p>
+<pre><code>PermitRootLogin forced-commands-only
+</code></pre>
+<p>Instruct <code>sshd</code> to re-read the configuration file by sending it a <code>SIGHUP</code> signal:</p>
+<pre><code>sudo kill -s SIGHUP pid_of_sshd_process
+</code></pre>
+<p>Then we set things up in <code>root</code>'s home directory:</p>
+<pre><code>sudo mkdir /root/.ssh
+sudo chmod 700 /root/.ssh
+</code></pre>
+<p>Copy the public key to the remote host by executing a command like this on the local machine:</p>
+<pre><code>scp ~/.ssh/id_dsa_rsync.pub remoteuser@example.com:/home/remoteuser/
+</code></pre>
+<p>Then on the remote host:</p>
+<pre><code>sudo cat /home/remoteuser/id_dsa_rsync.pub &gt;&gt; /root/.ssh/authorized_keys
+</code></pre>
+<p>It is necessary to customize the <code>authorized_keys</code> file so that it resembles the following:</p>
+<pre><code>command=&quot;rsync --server --daemon .&quot;,no-port-forwarding,no-agent-forwarding,no-X11-forwarding,no-pty ssh-dss AAAACkiWA== user@example.net
+</code></pre>
+<p>That is, we prepend <code>command=&quot;rsync --server --daemon .&quot;,no-port-forwarding,no-agent-forwarding,no-X11-forwarding,no-pty</code> immediately prior to the public key that was previously added to the file.</p>
+<p>The <code>/etc/rsyncd.conf</code> file should have the following content added:</p>
+<pre><code>max connections = 1
+
+[system]
+    path = /
+    list = false
+</code></pre>
+<h2>Performing the backup</h2>
+<p>Options to be passed to <code>rsync</code>:</p>
+<ul>
+<li><code>-a</code>: archive, equivalent to <code>-rlptgoD</code></li>
+<li><code>-r</code>: recursive</li>
+<li><code>-l</code>: copy symlinks as symlinks</li>
+<li><code>-p</code>: preserve permissions</li>
+<li><code>-t</code>: preserve times</li>
+<li><code>-g</code>: preserve group</li>
+<li><code>-o</code>: preserve owner</li>
+<li><code>-D</code>: preserve devices</li>
+<li><code>-v</code>: verbose</li>
+<li><code>-z</code>: compress</li>
+<li><code>-x</code>: don't cross filesystem boundaries</li>
+<li><code>--numeric-ids</code>: don't map uid/gid values by user/group name</li>
+<li><code>--delete</code>: delete files that don't exist on the sending side</li>
+<li><code>--progress</code>: show progress during transfer</li>
+</ul>
+<!-- -->
+<pre><code>sudo rsync -e &quot;ssh -i /absolute_path_to/id_dsa_rsync&quot; \
+           -avzx --numeric-ids --delete --progress \
+           root@example.com:/ /var/root/backups/example.com/
+</code></pre>
+<p>In addition, during testing the following additional switch can be applied:</p>
+<ul>
+<li><code>-n</code>: dry run mode</li>
+</ul>
+<p>My first test produced this error message:</p>
+<pre><code>protocol version mismatch - is your shell clean?
+</code></pre>
+<p>As instructed by the <code>rsync</code> man page I tested to see if any extraneous output was breaking things:</p>
+<pre><code>ssh root@example.com echo -n 2&gt;/dev/null &gt; out.dat
+</code></pre>
+<p>This test required me to temporarily set <code>PermitRootLogin</code> to <code>yes</code>. If all is well, <code>out.dat</code> should be a zero-byte file; it was.</p>
+<p>So I ran <code>rsync --version</code> on the remote host:</p>
+<pre><code>rsync  version 2.5.7  protocol version 26
+</code></pre>
+<p>And the local machine:</p>
+<pre><code>rsync  version 2.6.3  protocol version 28
+</code></pre>
+<p>Given that the protocol versions are different, that leaves me with three options:</p>
+<ol>
+<li>Build a custom version of <code>rsync</code> on the server that uses the newer protocol</li>
+<li>Build a custom version on the local machine that uses the older protocol</li>
+<li>A combination of both, build new versions on the server and the local machine that use the latest protocol</li>
+<li>And another option, discovered too late, the <code>--protocol=NUM</code> command line switch</li>
+</ol>
+<h2>Building <code>rsync</code></h2>
+<p>Download the latest source (<a href="http://rsync.samba.org/ftp/rsync/rsync-2.6.8.tar.gz">2.6.8</a>) from <a href="http://rsync.samba.org/">http://rsync.samba.org/</a> and extract/build it:</p>
+<pre><code>wget http://rsync.samba.org/ftp/rsync/rsync-2.6.8.tar.gz
+tar xzvf rsync-2.6.8.tar.gz
+cd rsync-2.6.8
+./configure
+make
+sudo make install
+</code></pre>
+<p>The procedure is the same for both the local <a href="/wiki/Mac_OS_X">Mac OS X</a> machine and the remote <a href="/wiki/Red_Hat_Enterprise_Linux">Red Hat Enterprise Linux</a> machine. The custom <code>rsync</code> binary is installed into <code>/usr/local/bin/</code>. <code>rsync --version</code> now outputs:</p>
+<pre><code>rsync  version 2.6.8  protocol version 29
+</code></pre>
+<p>To ensure that the remote server uses the custom build I modify the <code>command</code> section of the <code>authorized_keys</code> file to read:</p>
+<pre><code>command=&quot;/usr/local/bin/rsync --server --daemon .&quot;
+</code></pre>
+<p>Likewise, in the local invocation I must explicitly provide a full path:</p>
+<pre><code>sudo /usr/local/bin/rsync -e &quot;ssh -i /absolute_path_to/id_dsa_rsync&quot; \
+                          -avzx --numeric-ids --delete --progress \
+                          root@example.com:/ /var/root/backups/example.com/
+</code></pre>
+<p>Unfortunately, even using identical versions of <code>rsync</code> on both machines I still get the same &quot;protocol version mismatch&quot; error.</p>
+<h2>Troubleshooting attempts</h2>
+<p>I've tried the following troubleshooting methods:</p>
+<ul>
+<li>Perform the <code>out.dat</code> test both with and without redirection of <code>stderr</code> to <code>/dev/null</code></li>
+<li>Perform the test with the command (<code>echo -n</code>) with and without a corresponding <code>command</code> directive in the <code>authorized_keys</code> file</li>
+</ul>
+<p>All tests produce zero bytes of output, as required.</p>
+<p>I also tried running the backup with the following variations:</p>
+<ul>
+<li>Omit the <code>no-port-forwarding</code> specification in the <code>authorized_keys</code> file</li>
+<li>Omit the <code>no-pty</code> specification</li>
+<li>Omit all specifications</li>
+</ul>
+<p>So looks like I am going to have to reduce this to a simpler test case and then try ramping the complexity up from there.</p>
+<pre><code>mkdir /tmp/test
+/usr/local/bin/rsync -e ssh -avzxn --numeric-ids --delete --progress \
+                     non_root_user@example.com:/home/non_root_user /tmp/test/
+</code></pre>
+<p>That works. So try with root directory:</p>
+<pre><code>/usr/local/bin/rsync -e ssh -avzxn --numeric-ids --delete --progress \
+                     non_root_user@example.com:/ /tmp/test/
+</code></pre>
+<p>Works (although insufficient privileges lead to permissions errors).</p>
+<p>One of the differences is that the non-root user is identified by a key that is already in memory and managed by <code>ssh-agent</code>. See if removing it from the agent has any effect:</p>
+<pre><code>ssh-add -d ~/.ssh/id_dsa
+/usr/local/bin/rsync -e ssh -avzxn --numeric-ids --delete --progress \
+                     non_root_user@example.com:/ /tmp/test/
+</code></pre>
+<p>Still works. Try running with root privileges (still same user):</p>
+<pre><code>sudo /usr/local/bin/rsync -e &quot;ssh -i /full_path_to_identity/id_dsa&quot; \
+                          -avzxn --numeric-ids --delete --progress \
+                          non_root_user@example.com:/ /tmp/test/
+</code></pre>
+<p>Works. Now the <em>only</em> difference is that one invocation connects as root and the other does not. Swap <code>root</code> for <code>non_root_user</code> in the invocation above and we're back into &quot;protocol mismatch&quot; territory again...</p>
+<p>Try removing the <code>command</code> restriction entirely from the <code>authorized_keys</code> file, setting <code>PermitRootLogin</code> to <code>yes</code> and sending the <code>SIGHUP</code> signal to the <code>sshd</code> daemon again.</p>
+<p>Works. So there must be something wrong with the command specification. Restore <code>PermitRootLogin</code> and send <code>SIGHUP</code> again. I suspect that <code>rsync</code> is not behaving as documented on</p>
+<p>I created a script <code>debug.sh</code> and placed that in the forced command specification, then attempted to connect:</p>
+<pre><code>#!/bin/sh
+
+echo &quot;$SSH_ORIGINAL_COMMAND&quot; &gt; /tmp/debug.out
+</code></pre>
+<p>This revealed that the actual command being sent by <code>rsync</code> was:</p>
+<pre><code>rsync --server --sender -vnlogDtprxz --numeric-ids . /
+</code></pre>
+<p>There are several problems with this:</p>
+<ul>
+<li>The passed command as stated in the <code>rsync</code> man page is incorrect</li>
+<li>There is no trailing period as stated in the man page; the trailing entry is <code>/</code></li>
+<li>The <code>--sender</code> option is not documented in the man page or anywhere that I can find, not even by <code>/usr/local/bin/rsync --help</code> (update: <a href="http://rsync.samba.org/ftp/rsync/nightly/rsync.html">the current CVS version of the man page</a> mentions the switch)</li>
+<li>The full path to the custom build of <code>rsync</code> is not being passed through</li>
+</ul>
+<p>After updating my <code>command</code> definition to reflect the actually-passed parameters, things seem to work (in &quot;dry run&quot; mode).</p>
+<h2>Byte-ordering issues</h2>
+<p>Real (&quot;non-dry&quot; runs) all fail with messages like this:</p>
+<pre><code>Invalid file index: -1610612736 (count=9406) [sender]
+rsync error: protocol incompatibility (code 2) at sender.c(169) [sender=2.6.8]
+rsync: writefd_unbuffered failed to write 4092 bytes [generator]:
+Broken pipe (32)rsync: connection unexpectedly closed (195901 bytes received so far) [receiver]
+rsync error: error in rsync protocol data stream (code 12) at io.c(463) [receiver=2.6.8]
+rsync error: error in rsync protocol data stream (code 12) at io.c(1119) [generator=2.6.8]
+</code></pre>
+<p><a href="http://lists.samba.org/archive/rsync/2006-June/015828.html">This mailing list post</a> by the creator of <code>rsync</code> suggests that this might be a byte-ordering issue:</p>
+<blockquote>
+<p>This number is exactly 0x60000000, so another possibility that comes to mind is that the byte-order messed up somehow. Look in byteorder.h and make sure that CAREFUL_ALIGNMENT is being defined on any system that uses most-significant-byte-first ordering.</p>
+</blockquote>
+<p>Now, the i386 is not a big-endian system, but I thought I'd try setting <code>CAREFUL_ALIGNMENT</code> anyway and rebuilding. No effect:</p>
+<pre><code>Invalid file index: 524288 (count=161486) [sender]
+</code></pre>
+<p>Other errors:</p>
+<pre><code>Invalid file index: 524288 (count=161442) [sender]
+Invalid file index: -1610612736 (count=161454) [sender]
+</code></pre>
+<p>Note that 524288 is exactly 0x80000.</p>
+<p>I tried pulling down the latest source from CVS but got the same problem. Will try downgrading to previously installed versions using the <code>--protocol</code> switch:</p>
+<ul>
+<li>Change <code>command</code> specification to refer to <code>/usr/bin/rsync</code></li>
+<li>Invoke local copy of <code>/usr/bin/rsync</code> with the <code>--protocol=26</code> switch</li>
+</ul>
+<p>No longer see &quot;Invalid file index&quot; errors, but the backup appears to stall after a number of files have been copied (no error message) and then crashes:</p>
+<pre><code>Exception:  EXC_BAD_ACCESS (0x0001)
+Codes:      KERN_INVALID_ADDRESS (0x0001) at 0x3fffd0d6
+
+Thread 0 Crashed:
+0   &lt;&lt;00000000&gt;&gt; 	0xffff0ac4 __memcpy + 804 (cpu_capabilities.h:228)
+1   rsync 	0x0000a5a7 0x1000 + 38311
+2   rsync 	0x000041c8 0x1000 + 12744
+3   rsync 	0x00004ea8 0x1000 + 16040
+4   rsync 	0x0000899e 0x1000 + 31134
+5   rsync 	0x000092ad 0x1000 + 33453
+6   rsync 	0x0000a215 0x1000 + 37397
+7   rsync 	0x00001afe 0x1000 + 2814
+8   rsync 	0x00001a19 0x1000 + 2585
+
+Thread 0 crashed with X86 Thread State (32-bit):
+  eax: 0xffff07a0    ebx: 0x7fffffff ecx: 0x7ffffffc edx: 0x00000003
+  edi: 0x80031383    esi: 0x3fffd0d6 ebp: 0xbfffcff8 esp: 0xbfffcff0
+   ss: 0x0000001f    efl: 0x00010202 eip: 0xffff0ac4  cs: 0x00000017
+   ds: 0x0000001f     es: 0x0000001f  fs: 0x00000000  gs: 0x00000037
+</code></pre>
+<h2>Trying with 2.6.9pre1</h2>
+<p>On both the remote server and the local machine:</p>
+<pre><code>wget http://rsync.samba.org/ftp/rsync/rsync-2.6.9pre1.tar.gz
+tar xzvf rsync-2.6.9pre1.tar.gz
+cd rsync-2.6.9pre1
+./configure
+make
+sudo make check
+sudo make install
+</code></pre>
+<p>Seems to work, so something changed between 2.6.9pre1 and the version from the CVS that I tried a few days ago.</p>
+<h2>Automation</h2>
+<h3>Configuring a cron job</h3>
+<p>For now I'll be running this manually.</p>
+<h3>Avoiding password prompts</h3>
+<p>The private key file used to log in to the remote server is protected by a password. It would be possible to use a technique like that mentioned in &quot;<a href="/wiki/Setting_up_multiple_repository_access_methods_with_Subversion">Setting up multiple repository access methods with Subversion</a>&quot; but given that the key allows the holder to read any file at all on the server for the time being I prefer to be prompted for a password.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

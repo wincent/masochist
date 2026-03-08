@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AWS migration notes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>AWS migration notes</h1></div><div class="metadata"><relative-time created="1266125345" updated="1495119989">Created 2/14/2010, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/aws">aws</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Notes made while migrating from <a href="/wiki/INetU">INetU</a> to <a href="/wiki/Amazon_Web_Services">Amazon Web Services</a>.</p>
+<ul>
+<li>Allocate 2 new Elastic IPs:
+<ul>
+<li>184.73.234.210</li>
+<li>184.73.232.208</li>
+</ul>
+</li>
+<li>Set up <code>A</code> records in <a href="/wiki/Nettica">Nettica</a> DNS for the IPs:
+<ul>
+<li>184.73.234.210: zenyatta.unixhosts.net</li>
+<li>184.73.232.208: mondatta.unixhosts.net</li>
+</ul>
+</li>
+<li>Adjust &quot;generalpurpose&quot; security group to allow traffic on the following ports:
+<ul>
+<li>icmp -1 (ping)</li>
+<li>tcp 22 (SSH)</li>
+<li>tcp 80 (HTTP)</li>
+<li>tcp 443 (HTTPS)</li>
+<li>tcp 143 (IMAP)</li>
+<li>tcp 993 (Secure IMAP)</li>
+<li>tcp 110 (POP3)</li>
+<li>tcp 995 (Secure POP3)</li>
+<li>tcp 25 (SMTP)</li>
+<li>tcp 465 (SMTPS)</li>
+<li>tcp/udp 3690 (Subversion)</li>
+<li>tcp 9418 (Git)</li>
+</ul>
+</li>
+<li>Create a &quot;rails&quot; security group for use with standalone <a href="/wiki/Rails">Rails</a> instances, allowing traffic on these ports:
+<ul>
+<li>icmp -1 (ping)</li>
+<li>tcp 80 (HTTP)</li>
+<li>tcp 443 (HTTPS)</li>
+</ul>
+</li>
+<li>Launch a new instance based on &quot;Basic Fedora Core 8&quot; AMI using &quot;generalpurpose&quot; security group</li>
+<li>Associate elastic IP (zenyatta) with new instance</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Computing the Maximum Weighted Independent Set of a graph path • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Computing the Maximum Weighted Independent Set of a graph path</h1></div><div class="metadata"><relative-time created="1377409605" updated="1584053324">Created 8/25/2013, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/algorithms">algorithms</a></li><li><a href="/tags/dynamic.programming">dynamic.programming</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>This is a simple example of a <a href="/wiki/dynamic_programming">dynamic programming</a> algorithm.</p>
+<h2>Problem statement</h2>
+<p>Given a set of vertexes <strong><em>V</em></strong> describing a path in a graph, with each vertex assigned a weight, the <em>Maximum Weighted Independent Set</em> is the subset of vertices whose weights sum to the maximum possible value without any two vertices being adjacent to one another (hence &quot;independent&quot; set).</p>
+<h2>Runtime</h2>
+<ul>
+<li>A brute force algorithm would work but would require exponential running time</li>
+<li>A greedy algorithm could have us making an incorrect &quot;myopic&quot; decision that would produce an invalid overall answer</li>
+<li>A divide and conquer algorithm could work, but would require non-trivial and expensive work to resolve conflicts (adjacency) upon merging subproblems together</li>
+<li>A dynamic programming approach can solve the problem in linear time</li>
+</ul>
+<h2>Basis</h2>
+<ul>
+<li>An optimal solution can have one of two properties:
+<ol>
+<li>Either the last element in the path <em>is not</em> part of the maximum weighted independent set (in which case we know that the solution is equally valid for the subgraph <strong><em>V'</em></strong> formed by popping the last vertex off the path)</li>
+<li>Or the last element <em>is</em> part of the set (in which case we know that the predecessor cannot be part of the set, and the solution minus the last vertex is equally valid for the subgraph <strong><em>V''</em></strong> formed by popping off the last two vertices of the path)</li>
+</ol>
+</li>
+<li>If we could presciently know which of these properties applied we could walk backwards down the path in linear time and compute the solution</li>
+<li>We don't have that prescience, however; if we could test both alternatives and recurse then we could arrive at a solution but it would be exponential</li>
+<li>The expense of the recursion comes from the fact that we end up re-solving the same subproblems over and over again; if we memoize, then we can amortize that cost and produce a linear runtime</li>
+</ul>
+<h2>Algorithm</h2>
+<p>We'll walk through the path from left to right, using memoized knowledge of the maximum weight so far to decide which property must apply (either the last vertex is part of the set or not).</p>
+<ul>
+<li>Base case:
+<ul>
+<li>For the empty set, the weight is zero</li>
+<li>For the one-element set, the element is in the set and its weight is the maximum weight; store this in the array at <code>A[0]</code></li>
+</ul>
+</li>
+<li>When looking at element <code>A[i]</code>, the memoized maximum weight must be:
+<ul>
+<li><code>A[i - 1]</code> (this corresponds to the case when the last vertex, <code>i</code>, <em>is not</em> in the set)</li>
+<li><code>A[i - 2]</code> + <code>weight of i</code> (this correspond to the case when the last vertex, <code>i</code>, <em>is</em> in the set)</li>
+<li>We pick whichever is biggest and store it in <code>A[i]</code></li>
+</ul>
+</li>
+</ul>
+<h2>Reconstruction</h2>
+<p>The algorithm as stated only tells us the weight of the maximum weighted independent set. If we want to actually report the members of the set as well we need to employ a reconstruction approach, which is also linear. This could be done while walking through the path from left to right, or we could do it as a separate pass walking backwards over the array:</p>
+<pre><code># pseudo-code
+set = {}
+i = A.length - 1 # last element in A
+while i &gt;= 1
+  if A[i] == A[i - 1] # last vertex not in set
+    i--
+  else # last vertex is in set
+    set &lt;&lt; vertex i
+    i -= 2
+  end
+end
+return set
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

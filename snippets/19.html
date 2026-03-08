@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rails 3.0.x security vulnerability (via Mail 2.2.14) • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link active" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><h1><a href="/snippets/19">Rails 3.0.x security vulnerability (via Mail 2.2.14)</a></h1><div class="metadata"><relative-time created="1296052222" updated="1584053324">Created 1/26/2011, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/rails">rails</a></li><li><a href="/tags/mail">mail</a></li><li><a href="/tags/snippets">snippets</a></li></ul><div class="prerendered"><p>Got rather a nasty surprise this morning when I woke up and read <a href="http://groups.google.com/group/mail-ruby/browse_thread/thread/e93bbd05706478dd?pli=1">this</a>:</p>
+<blockquote>
+<p>There is a vulnerability in the sendmail delivery agent of the Mail gem that could allow an attacker to pass arbitrary commands to the system.</p>
+</blockquote>
+<p>Arbitrary commands; not nice.</p>
+<p>Looking at <a href="https://github.com/mikel/mail/raw/master/patches/20110126_sendmail.patch">the patch</a> got me even more worried, particularly this bit:</p>
+<pre><code class="language-diff">diff --git a/lib/mail/network/delivery_methods/sendmail.rb b/lib/mail/network/delivery_methods/sendmail.rb
+index 6ae419a..29f1876 100644
+--- a/lib/mail/network/delivery_methods/sendmail.rb
++++ b/lib/mail/network/delivery_methods/sendmail.rb
+@@ -45,11 +45,11 @@ module Mail
+
+     def deliver!(mail)
+       envelope_from = mail.return_path || mail.sender || mail.from_addrs.first
+-      return_path = &quot;-f \&quot;#{envelope_from}\&quot;&quot; if envelope_from
++      return_path = &quot;-f \&quot;#{envelope_from.to_s.shellescape}\&quot;&quot; if envelope_from
+
+       arguments = [settings[:arguments], return_path].compact.join(&quot; &quot;)
+
+-      Sendmail.call(settings[:location], arguments, mail.destinations.join(&quot; &quot;), mail)
++      Sendmail.call(settings[:location], arguments, mail.destinations.collect(&amp;:shellescape).join(&quot; &quot;), mail)
+     end
+
+     def Sendmail.call(path, arguments, destinations, mail)
+</code></pre>
+<p>So you can see there how the <code>envelope_from</code> address is passed through directly to the shell. You can imagine scenarios in which a return path of <code>; rm -rf /</code> would yield a shell command like <code>sendmail -f ; rm -rf /</code>.</p>
+<p>If you are running your app as a non-privileged user, and you should be, this obviously won't wipe out your entire system, but it can still do an annoying amount of damage. There are plenty of other malicious uses to which this kind of security hole can be put, some of them which can lead to total server compromise.</p>
+<p>At least in my <a href="/wiki/Rails">Rails</a> app the <code>envelope_from</code> is not really a concern, as it is controlled by me, and always the same. But notice that the other arguments, specifically the destinations, are also passed through without escaping.</p>
+<p>Luckily, most applications will have some validation in place that ensures that only email address of the form <a href="mailto:user@example.com">user@example.com</a> get into the database, and prevents email addresses with malicious substrings like &quot;<code>; rm -rf /</code>&quot; from getting into the system. In general here a more restrictive validation will provide more protection, at the expense of rejecting some addresses that are technically valid according to <a href="/wiki/RFC_2822">RFC 2822</a>.</p>
+<p>So I think my app wasn't vulnerable, despite the scary possibility of arbitrary shell command execution, but I immediately deployed a quick update using the new Mail 2.2.15 gem, just in case.</p>
+</div><div class="post-nav"><div class="post-nav-prev"><a href="/snippets/20">← Site updates 0.31</a></div><div class="post-nav-next"><a href="/snippets/709">Snippet #709 →</a></div></div><p class="post-nav-all"><a href="/snippets/all">All snippets</a></p></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

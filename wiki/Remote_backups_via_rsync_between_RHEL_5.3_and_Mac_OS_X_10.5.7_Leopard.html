@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Remote backups via rsync between RHEL 5.3 and Mac OS X 10.5.7 Leopard • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Remote backups via rsync between RHEL 5.3 and Mac OS X 10.5.7 Leopard</h1></div><div class="metadata"><relative-time created="1246013940" updated="1584053324">Created 6/26/2009, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/leopard">leopard</a></li><li><a href="/tags/red.hat">red.hat</a></li><li><a href="/tags/rsync">rsync</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>I first set up remote backups between <a href="/wiki/RHEL">RHEL</a> (specifically, RHEL 3) and <a href="/wiki/Mac_OS_X">Mac OS X</a> back in 2006 (<a href="/wiki/Tiger">Tiger</a>, if I recall correctly), and detailed that process in &quot;<a href="/wiki/Remote_backups_via_rsync_between_RHEL_3_and_Mac_OS_X">Remote backups via rsync between RHEL 3 and Mac OS X</a>&quot;.</p>
+<p>These notes refer to my experiences in 2009, this time with <a href="/wiki/RHEL">RHEL</a> 5.3 and <a href="/wiki/Mac_OS_X">Mac OS X</a> 10.5.7 <a href="/wiki/Leopard">Leopard</a>.</p>
+<h2>Objective</h2>
+<p>Our objective is to connect from our client machine (<a href="/wiki/Mac_OS_X">Mac OS X</a>) via <a href="/wiki/SSH">SSH</a> to perform an <a href="/wiki/rsync">rsync</a> backup of critical files on a remote <a href="/wiki/Red_Hat_Enterprise_Linux">Red Hat Enterprise Linux</a> machine.</p>
+<h2>Initial client-side setup</h2>
+<p>First of all let's see what version of <a href="/wiki/rsync">rsync</a> we have on the client side (<a href="/wiki/Mac_OS_X">Mac OS X</a> 10.5.7 <a href="/wiki/Leopard">Leopard</a>:</p>
+<pre><code class="language-shell">$ whereis rsync
+/usr/bin/rsync
+$ rsync --version
+rsync  version 2.6.9  protocol version 29
+Copyright (C) 1996-2006 by Andrew Tridgell, Wayne Davison, and others.
+&lt;http://rsync.samba.org/&gt;
+Capabilities: 64-bit files, socketpairs, hard links, symlinks, batchfiles,
+              inplace, IPv6, 32-bit system inums, 64-bit internal inums
+
+rsync comes with ABSOLUTELY NO WARRANTY.  This is free software, and you
+are welcome to redistribute it under certain conditions.  See the GNU
+General Public Licence for details.
+</code></pre>
+<h2>Initial server-side setup</h2>
+<p>How does this compare with what's available on the server (<a href="/wiki/RHEL">RHEL</a> 5.3)?</p>
+<pre><code class="language-shell"># yum list rsync
+Loaded plugins: rhnplugin
+Excluding Packages in global exclude list
+Finished
+Available Packages
+rsync.i386                                                2.6.8-3.1                                                rhel-i386-server-5
+</code></pre>
+<p>I know from my experience last time (&quot;<a href="/wiki/Remote_backups_via_rsync_between_RHEL_3_and_Mac_OS_X">Remote backups via rsync between RHEL 3 and Mac OS X</a>&quot;) that version 2.6.8 must also speak &quot;protocol version 29&quot;, so let's try installing that:</p>
+<pre><code class="language-shell"># yum install rsync
+Loaded plugins: rhnplugin
+Excluding Packages in global exclude list
+Finished
+Setting up Install Process
+Parsing package install arguments
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package rsync.i386 0:2.6.8-3.1 set to be updated
+--&gt; Finished Dependency Resolution
+
+Dependencies Resolved
+
+=====================================================================================================================================
+ Package                    Arch                      Version                          Repository                               Size
+=====================================================================================================================================
+Installing:
+ rsync                      i386                      2.6.8-3.1                        rhel-i386-server-5                      229 k
+
+Transaction Summary
+=====================================================================================================================================
+Install      1 Package(s)
+Update       0 Package(s)
+Remove       0 Package(s)
+
+Total download size: 229 k
+Is this ok [y/N]: y
+Downloading Packages:
+rsync-2.6.8-3.1.i386.rpm                                                                                      | 229 kB     00:00
+Running rpm_check_debug
+Running Transaction Test
+Finished Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing     : rsync                                             [1/1]
+
+Installed: rsync.i386 0:2.6.8-3.1
+Complete!
+# rsync --version
+rsync  version 2.6.8  protocol version 29
+Copyright (C) 1996-2006 by Andrew Tridgell, Wayne Davison, and others.
+&lt;http://rsync.samba.org/&gt;
+Capabilities: 64-bit files, socketpairs, hard links, ACLs, xattrs, symlinks, batchfiles,
+              inplace, IPv6, 64-bit system inums, 64-bit internal inums
+
+rsync comes with ABSOLUTELY NO WARRANTY.  This is free software, and you
+are welcome to redistribute it under certain conditions.  See the GNU
+General Public Licence for details.
+</code></pre>
+<h2>Key set-up</h2>
+<p>I'll be using the key pair that I generated <a href="/wiki/Remote_backups_via_rsync_between_RHEL_3_and_Mac_OS_X">last time</a>, so there is no need to do anything on the client side.</p>
+<p>On the server side I'm going to add my public key to root's <code>authorized_keys</code> file. First, upload the public key file from the local client to the server:</p>
+<pre><code class="language-shell">$ scp ~/.ssh/id_dsa_rsync.pub remoteuser@example.com:/home/remoteuser/.ssh
+</code></pre>
+<p>Back on the server, append this to the <code>authorized_keys</code> file for root:</p>
+<pre><code class="language-shell"># sudo cat /home/remoteuser/id_dsa_rsync.pub &gt;&gt; /root/.ssh/authorized_keys
+</code></pre>
+<p>And we customize the <code>authorized_keys</code> file by prepending this to the line in the file which corresponds to the key that we just added:</p>
+<pre><code>command=&quot;rsync --server --daemon .&quot;,no-port-forwarding,no-agent-forwarding,no-X11-forwarding,no-pty
+</code></pre>
+<h2>Testing the connection</h2>
+<p>Seeing as I'm running <a href="/wiki/Bansshee">Bansshee</a> I could get temporarily locked out of the server if I make too many failed connection attempts while testing, so I am going to turn it off temporarily:</p>
+<pre><code class="language-shell"># service bansshee stop
+Stopping banshee:                                          [  OK  ]
+</code></pre>
+<p>Now let's create a test directory and run some trials:</p>
+<pre><code class="language-shell">$ cd /tmp
+mkdir rsync-test
+$ rsync -e &quot;ssh -i /Users/testuser/.ssh/id_dsa_rsync&quot; -avzxn --numeric-ids --delete --progress root@example.com:/ /tmp/rsync-test
+rsync: connection unexpectedly closed (0 bytes received so far) [receiver]
+rsync error: error in rsync protocol data stream (code 12) at /SourceCache/rsync/rsync-35.2/rsync/io.c(452) [receiver=2.6.9]
+</code></pre>
+<p>Find out if any extraneous output is causing problems:</p>
+<pre><code class="language-shell">$ ssh root@example.com echo -n 2&gt;/dev/null &gt; out.dat
+$ cat out.dat
+</code></pre>
+<p>Try a simpler test case:</p>
+<pre><code class="language-shell">$ rsync -e ssh -avzxn --numeric-ids --delete --progress non-root-user@example.com:/ /tmp/rsync-test
+receiving file list ...
+rsync: opendir &quot;/package/admin/clear/supervise&quot; failed: Permission denied (13)
+...
+sent 55244 bytes  received 267877 bytes  34012.74 bytes/sec
+total size is 238451640  speedup is 737.96
+rsync error: some files could not be transferred (code 23) at /SourceCache/rsync/rsync-35.2/rsync/main.c(1400) [generator=2.6.9]
+</code></pre>
+<p>Create <code>/root/debug.sh</code>:</p>
+<pre><code>#!/bin/sh
+echo &quot;$SSH_ORIGINAL_COMMAND&quot; &gt; /tmp/debug.out
+</code></pre>
+<p>And stick that in the forced command specification of the <code>authorized_keys</code> file before trying the <code>rsync</code> invocation again. Now inspect the output of <code>/tmp/debug.out</code>:</p>
+<pre><code class="language-shell"># cat /tmp/debug.out
+rsync --server --sender -vnlogDtprxz --numeric-ids . /
+</code></pre>
+<p>So this is identical to the output that I saw back in 2006. Update the forced command specification accordingly and try again.</p>
+<p>It works. Note that my first test run, still using the <code>-n</code> switch, produced this:</p>
+<pre><code>receiving file list ...
+9778 files to consider
+./
+Invalid checksum length -1610612736 [sender]
+rsync error: protocol incompatibility (code 2) at io.c(958) [sender=2.6.8]
+rsync: connection unexpectedly closed (223620 bytes received so far) [receiver]
+rsync error: error in rsync protocol data stream (code 12) at /SourceCache/rsync/rsync-35.2/rsync/io.c(452) [receiver=2.6.9]
+rsync: connection unexpectedly closed (223614 bytes received so far) [generator]
+rsync error: error in rsync protocol data stream (code 12) at /SourceCache/rsync/rsync-35.2/rsync/io.c(452) [generator=2.6.9]
+</code></pre>
+<p>Which basically was the exact same problem we saw in 2006.</p>
+<p>But removing the <code>-n</code> switch we instead get:</p>
+<pre><code>receiving file list ...
+9778 files to consider
+./
+.autofsck
+           0 100%    0.00kB/s    0:00:00 (xfer#1, to-check=9776/9778)
+.mysql_history
+         102 100%   99.61kB/s    0:00:00 (xfer#2, to-check=9775/9778)
+.rnd
+        1024 100% 1000.00kB/s    0:00:00 (xfer#3, to-check=9774/9778)
+.elinks/
+...
+selinux/
+srv/
+sys/
+tmp/
+usr/
+var/
+
+sent 175536 bytes  received 125732394 bytes  433418.00 bytes/sec
+total size is 315390998  speedup is 2.50
+</code></pre>
+<h2>Scripting the backup</h2>
+<p>So our manual test run worked, all that remains is to whip up a script to automate it a little.</p>
+<h2>Clean up</h2>
+<p>Turn <a href="/wiki/Bansshee">Bansshee</a> back on:</p>
+<pre><code class="language-shell"># service bansshee start
+Starting banshee:                                          [  OK  ]
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

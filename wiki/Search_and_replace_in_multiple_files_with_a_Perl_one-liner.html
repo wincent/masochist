@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Search and replace in multiple files with a Perl one-liner • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Search and replace in multiple files with a Perl one-liner</h1></div><div class="metadata"><relative-time created="1198007627" updated="1710335837">Created 12/18/2007, updated 3/13/2024</relative-time></div><ul class="tags"><li><a href="/tags/perl">perl</a></li><li><a href="/tags/perl.one.liners">perl.one.liners</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>In 2024, Perl still seems like the best choice for ripping through a large directory hierarchy applying simple mass changes.</p>
+<p>In the context of <a href="https://github.com/wincent/masochist">a Git repo like this one</a>, I don't worry about creating backup files; I just let Perl do its thing and then check the result with <code>git status</code>/<code>git diff</code>. In order to not exceed permitted command-line lengths, I grab the list of files I want to operate on with <code>git-grep</code>, and then process them in chunks of 100 files with <code>xargs -L 100</code>.</p>
+<p>Here's an example commit changing 6,939 files on the <code>main</code> branch, out of 9,117 files, as seen in <a href="https://github.com/wincent/masochist/commit/2b6188b8e6b781dd37c7d2f09e3d2f99c92b8aaf">this commit</a>:</p>
+<pre><code>git grep -l typechecked.net | xargs -L 100 perl -p -i -e 's/typechecked\.net/wincent.dev/g'
+</code></pre>
+<p>And <a href="https://github.com/wincent/masochist/commit/aef945efaa6eca9e63faf1b1a4404e225ecb19bf">the companion commit</a> which changed 938 files out of 8,216 files on the <code>content</code> branch:</p>
+<pre><code>git grep -z -l typechecked.net | xargs -0 -L 100 perl -p -i -e 's/typechecked\.net/wincent.dev/g'
+</code></pre>
+<p>Note the second one needed <code>-z</code> (turning on <code>NUL</code>-byte separators for <code>git-grep</code>) and <code>-0</code> (telling <code>xargs</code> to expect those separators), in order do avoid:</p>
+<pre><code>xargs: unterminated quote
+</code></pre>
+<p>due to filenames with quotes in them.</p>
+<p>Related to that, I wanted to go through my Git configs to make sure my references to old hostnames (<code>git.wincent.com</code>, <code>git.typechecked.net</code>) were updated to the new one (<code>git.wincent.dev</code>), so I did this in my home directory:</p>
+<pre><code>find code -type f -name config 2&gt; /dev/null | xargs -L 100 egrep -l 'git\.(typechecked\.net|wincent\.com)' | xargs -L 100 perl -p -i -e 's/git\.(typechecked\.net|wincent\.com)/git.wincent.dev/g'
+</code></pre>
+<p>ie:</p>
+<ul>
+<li><code>find . -type f -name config 2&gt; /dev/null</code> (find all regular files named <code>config</code>)</li>
+<li><code>xargs -L 100 egrep -l 'git\.(typechecked\.net|wincent\.com)</code> (filter that to only files containing <code>git.typechecked.net</code> or <code>git.wincent.com</code>)</li>
+<li><code>xargs -L 100 perl -p -i -e 's/git\.(typechecked\.net|wincent\.com)/git.wincent.dev/g'</code> (do the find and replace in those files)</li>
+</ul>
+<h2>Older notes</h2>
+<p>I recently needed to change all the occurrences of a string in a number of files. The following <a href="/wiki/perl_one-liner">perl one-liner</a>:</p>
+<ul>
+<li>Makes backups of all of the files specified by the pattern, <code>files*</code></li>
+<li>Names the backups with a <code>.bak</code> extension</li>
+<li>Searches for the string <code>find</code></li>
+<li>Replaces each match with the string <code>replace</code></li>
+</ul>
+<!-- -->
+<pre><code>perl -i.bak -p -e 's/find/replace/g' files*
+</code></pre>
+<p>Note that you can also just read from standard in and write to standard out, and if you need to specify multiple find/replacement pairs at once:</p>
+<pre><code>cat input | perl -pe 's/find/replace/g; s/another/foo/g' &gt; output
+</code></pre>
+<h3>Example</h3>
+<p>In moving to <a href="/wiki/SVK">SVK</a> I needed to find a replacement for <a href="/wiki/Subversion_externals">Subversion externals</a> (see &quot;<a href="/wiki/Working_around_the_lack_of_svn%3aexternals_support_in_SVK">Working around the lack of svn:externals support in SVK</a>&quot;). Let's take the example of moving the <a href="/wiki/WOCommon">WOCommon</a> external from inside the <a href="/wiki/Synergy_Advance">Synergy Advance</a> source root:</p>
+<pre><code>${SOURCE_ROOT}/WOCommon
+</code></pre>
+<p>To outside of it:</p>
+<pre><code>${SOURCE_ROOT}/../WOCommon
+</code></pre>
+<p>First I needed to find all references in the project file. I started with those preceded by a slash:</p>
+<pre><code>cd SynergyAdvance.xcodeproj
+grep '/WOCommon' project.pbxproj
+</code></pre>
+<p>This yielded two results, one a reference to the <code>WOCommon.xcodeproj</code> file:</p>
+<pre><code>BC0CEBDA0AC32E0400434EC2 /* WOCommon.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = &quot;wrapper.pb-project&quot;; name = WOCommon.xcodeproj; path = ../../WOCommon/tiger/WOCommon.xcodeproj; sourceTree = SOURCE_ROOT; };
+</code></pre>
+<p>Note that this is a reference to the original project file, not the one in the Subversion external. This must be changed to point to the separately checked out copy.</p>
+<p>The other result was a shell script which had numerous references of the form <code>&quot;${SOURCE_ROOT}/WOCommon/...&quot;</code>.</p>
+<p>The first I could handle with:</p>
+<pre><code>perl -i -p -e 's#\.\./\.\./WOCommon/tiger#../WOCommon#' project.pbxproj
+svk diff # visually inspect the change
+</code></pre>
+<p>Then the second:</p>
+<pre><code>perl -i -p -e 's#\$\{SOURCE_ROOT\}/WOCommon#\${SOURCE_ROOT}/../WOCommon#g' project.pbxproj
+svk diff
+</code></pre>
+<p>The next step was to find all occurrences of <code>WOCommon</code> followed by a slash (280 lines found):</p>
+<pre><code>grep 'WOCommon/' project.pbxproj
+</code></pre>
+<p>We basically want to change all such instances except for those which are preceded by a slash (those we've already handled above).</p>
+<pre><code>perl -i -p -e 's#(?&lt;!/)WOCommon/#../WOCommon/#g' project.pbxproj
+svk diff
+</code></pre>
+<p>Finally, check for <code>WOCommon</code> neither preceded nor followed by a slash:</p>
+<pre><code>perl -nle 'print if /(?&lt;!\/)WOCommon(?!\/)/' project.pbxproj
+</code></pre>
+<p>On opening the modified <a href="/wiki/Xcode">Xcode</a> project everything seemed to be intact; the only thing broken was a single folder reference that had to be updated. Evidently I had overlooked the following in my last check:</p>
+<pre><code>BC0CEBFD0AC33D3D00434EC2 /* WOCommon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = WOCommon; sourceTree = &quot;&lt;group&gt;&quot;; };
+</code></pre>
+<p>Finally I had to add <code>&quot;$(SOURCE_ROOT)/..&quot;</code> to my <code>HEADER_SEARCH_PATHS</code> so as to be able to find the relocated shared files.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Using Stunnel to secure SMTP transport • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Using Stunnel to secure SMTP transport</h1></div><div class="metadata"><relative-time created="1171047535" updated="1710259978">Created 2/9/2007, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/stunnel">stunnel</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Background</h2>
+<p>In May last year I decided to secure access to my <a href="/wiki/SMTP">SMTP</a>, <a href="/wiki/POP3">POP3</a> and <a href="/wiki/IMAP">IMAP</a> services (see the <a href="http://wincent.dev/a/knowledge-base/archives/2006/05/ssh_tunneling_a.php">original article</a>). I dismissed using <a href="/wiki/Stunnel">Stunnel</a> and instead decided to configure dedicated servers for <a href="/wiki/Secure_SMTP">Secure SMTP</a>, <a href="/wiki/POP3S">POP3S</a> and <a href="/wiki/IMAPS">IMAPS</a>. At the time I wrote:</p>
+<blockquote>
+<p>I didn't actually try using [stunnel] but it seems like a viable option. Basically, the stunnel process serves as a wrapper for the insecure protocol. For example, you fire up stunnel on the server and get it to listen to port 993 (the standard port for IMAPS), and it forwards incoming, encrypted connections to the real IMAP process running on the server (not encrypted). You then set up your local mail client to communicate with SSL to the appropriate ports.</p>
+<p>I chose not to use this method because I didn't want to have to meddle too much with the server configuration (for example, configuring the stunnel-wrapped servers to automatically start up at the correct runlevels). Furthermore, it is not clear to me whether it is possible to offer both secure and insecure access at the same time (which would be useful, for example, if you wanted to allow users to access via either IMAP or IMAPS during the transition period).</p>
+</blockquote>
+<h2>The advantage of using <a href="/wiki/Stunnel">Stunnel</a> for <a href="/wiki/SMTP">SMTP</a></h2>
+<p>I later discovered not only one, but two drawbacks, to my decision to eschew <a href="/wiki/Stunnel">Stunnel</a>.</p>
+<p>Firstly, I observed information leakage across the boundaries of my internal <a href="/wiki/LAN">LAN</a>. This is a necessary evil required by <a href="/wiki/RFC_2821">RFC 2821</a>; the connecting mail client must send a host name or address along with it's <code>EHLO</code> message. This is described in <a href="http://wincent.dev/a/about/wincent/weblog/archives/2007/01/information_lea.php">this article</a>.</p>
+<p>Secondly, after switching to a new <a href="/wiki/ISP">ISP</a>, <a href="/wiki/Jazztel">Jazztel</a>, I discovered that the <code>Received</code> headers in all my outgoing mails had ugly &quot;may be forged&quot; warnings in them because the <a href="/wiki/Jazztel">Jazztel</a>'s administrators have a broken <a href="/wiki/DNS">DNS</a> set-up in which they don't provide reverse look-up for clients with dynamic IPs. In fact, <a href="/wiki/Jazztel">Jazztel</a> doesn't even provide reverse lookups for some of their <em>static</em> <a href="/wiki/IP">IP</a>s; even their own nameserver's IP address doesn't reverse resolve. One of the few <a href="/wiki/Jazztel">Jazztel</a> addresses which does resolve in both directions is <a href="http://www.jazztel.es">www.jazztel.es</a>.</p>
+<p>These &quot;may be forged&quot; warnings are undesirable because they may increase the likelihood of false positives when outgoing messages hit spam filters elsewhere. One of the reasons for running one's own mail server is precisely to avoid this kind of problem, but in this case my ISP was thwarting my plans. Switching to <a href="/wiki/Stunnel">Stunnel</a> would allow me to avoid at least one of these issues (the unwanted &quot;may be forged&quot; warnings).</p>
+<h2>Procedure</h2>
+<p>As the only service affected by this issue is <a href="/wiki/Secure_SMTP">Secure SMTP</a> I decided to leave my other existing arrangements in place. This includes the existing <a href="/wiki/Secure_SMTP">Secure SMTP</a> arrangement which allows clients to connect on the standard <a href="/wiki/SMTP">SMTP</a> port, port 25, and &quot;upgrade&quot; their connection to encrypted transport using <code>STARTTLS</code>.</p>
+<p>I would set up <a href="/wiki/Stunnel">Stunnel</a> to listen on port 465, the &quot;unofficial&quot; <a href="/wiki/SMTP_over_SSL">SMTP over SSL</a> port, and forward connections to the <a href="/wiki/Sendmail">Sendmail</a> daemon. The use of port 465 technically conflicts (see <a href="http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers">this Wikipedia article</a>) but in this case if it's good enough for <a href="/wiki/Gmail">Gmail</a> it's good enough for me.</p>
+<p>This was a conservative plan because it afforded me with the option to jump back to the old configuration.</p>
+<h3>Initial <a href="/wiki/Stunnel">Stunnel</a> setup</h3>
+<p><a href="/wiki/Red_Hat_Enterprise_Linux">Red Hat Enterprise Linux</a> already comes with <a href="/wiki/Stunnel">Stunnel</a> installed so this was a configuration and set-up problem, not an installation problem. In fact, one of the major reasons why I decided to go ahead with the switch to <a href="/wiki/Stunnel">Stunnel</a> was knowing that the software had official vendor support.</p>
+<p>The default configuration example file (<code>/etc/stunnel/stunnel.conf-sample</code>) only requires a few modifications:</p>
+<pre><code>cd /etc/stunnel
+sudo cp stunnel.conf-sample stunnel.conf
+</code></pre>
+<p>I basically commented out all services except for <a href="/wiki/Secure_SMTP">Secure SMTP</a>:</p>
+<pre><code>&lt;nowiki&gt;[ssmtp]&lt;/nowiki&gt;
+accept  = 465
+connect = 25
+</code></pre>
+<p>I changed the <code>cert</code> value from the default:</p>
+<pre><code>cert = /usr/etc/stunnel/mail.pem
+</code></pre>
+<p>To point at the directory where I already have my certificates and private keys stored on the disk. As per the <a href="/wiki/Stunnel">Stunnel</a> manual page I made sure the private key came first in the file followed by the certificate, separated by a blank line. My initial testing showed that I had to include the signing certificate authority's certificate at the bottom of this file, as was the case when setting up <a href="/wiki/IMAPS">IMAPS</a> and other services.</p>
+<p>The default configuration runs <a href="/wiki/Stunnel">Stunnel</a> in a <a href="/wiki/chroot">chroot</a> jail. Also by default it does not verify client certificates and so there's no need to copy any certificates inside the jail and <code>CApath</code> can be commented out (it is commented out by default).</p>
+<p>To make the <a href="/wiki/chroot">chroot</a> as secure as possible I created a new, unprivileged user and group without any login privileges just for <a href="/wiki/Stunnel">Stunnel</a>. I created the jail directory, changed ownership to the <a href="/wiki/Stunnel">Stunnel</a> user/group, and set permissions of <code>700</code> on it.</p>
+<h3>Running <a href="/wiki/Stunnel">Stunnel</a> in test mode</h3>
+<p>First of all I took my local mail client offline. I then added a couple of temporary options to the configuration file:</p>
+<pre><code># testing only
+debug = debug
+foreground = yes
+</code></pre>
+<p>And started up <a href="/wiki/Stunnel">Stunnel</a> as follows:</p>
+<pre><code>sudo -H stunnel path_to_conf_file
+</code></pre>
+<p>In another window I used <code>tail -f</code> to observe what was being appended to my <code>maillog</code>.</p>
+<pre><code>openssl s_client -connect host:465
+</code></pre>
+<h3>Running <a href="/wiki/Stunnel">Stunnel</a> with the help of <a href="/wiki/Xinetd">Xinetd</a></h3>
+<p>In the final version I decided to run <a href="/wiki/Stunnel">Stunnel</a> on demand using <a href="/wiki/Xinetd">Xinetd</a>. In part I was motivated to do this by the provision for managing this in the &quot;SSL Tunnel&quot; section of <a href="/wiki/Webmin">Webmin</a>.</p>
+<ul>
+<li>Service name: SSMTP (service names may not include spaces)</li>
+<li>TCP port: 465</li>
+<li>Active?: Yes</li>
+<li>Connect to remote host: Yes</li>
+<li>Remote hostname: localhost</li>
+<li>Remote port: 25</li>
+</ul>
+<p>This decision renders my earlier preparation (creating the <a href="/wiki/Stunnel">Stunnel</a> user and group, and setting up the <a href="/wiki/chroot">chroot</a> jail) useless, but one consolation is that with this set-up <a href="/wiki/Stunnel">Stunnel</a> can log using the <a href="/wiki/syslog">syslog</a> facility.</p>
+<h3>Configuring the local Mail client to use <a href="/wiki/SMTP_over_SSL">SMTP over SSL</a></h3>
+<p>If every is set up correctly, all that's required to get the mail client to use the new set up is to change the port that it connects on from 25 to 465.</p>
+<p>Apparently there is a bug in <a href="/wiki/Mail.app">Mail.app</a> that requires you to re-enter your passwords when you change the port from 25 to 465. When you first change the port number it will <em>appear</em> that your password remains intact, but if you click &quot;OK&quot; and then later go back to look at your outgoing server configuration you'll see that your password field has been wiped, so you'll need to re-enter it. This should be a once-only process.</p>
+<h3>Final testing</h3>
+<p>After the transition was complete I performed testing at two levels to verify that everything was working:</p>
+<ol>
+<li>Manually as described in the article, &quot;<a href="/wiki/Testing_services_with_telnet">Testing services with telnet</a>&quot;.</li>
+<li>Using my mail client, <a href="/wiki/Mail.app">Mail.app</a>.</li>
+</ol>
+<h4>Headers</h4>
+<h5>Before</h5>
+<pre><code>Received: from [192.168.1.128] (102.115.217.87.dynamic.jazztel.es [87.217.115.102] (may be forged))
+</code></pre>
+<h5>After</h5>
+<pre><code>Received: from [192.168.1.128] (localhost [127.0.0.1])
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

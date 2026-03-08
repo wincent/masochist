@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>async functions in JavaScript • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>async functions in JavaScript</h1></div><div class="metadata"><relative-time created="1436451721" updated="1693046145">Created 7/9/2015, updated 8/26/2023</relative-time></div><ul class="tags"><li><a href="/tags/javascript">javascript</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Sample code</h2>
+<pre><code class="language-javascript">#!/usr/bin/env node
+
+require('babel/polyfill');
+
+import Promise from 'bluebird';
+
+async function other() {
+    return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; resolve('value'), 3000);
+    });
+}
+
+(async function () {
+    console.log('Hello, world!');
+    console.log(await other());
+    console.log('Hello, world!');
+})();
+</code></pre>
+<p>Prints:</p>
+<pre><code>Hello, world!
+value
+Hello, world!
+</code></pre>
+<h3>Can a &quot;top-level&quot; function be <code>async</code>?</h3>
+<p>Yes. As the sample code shows, we can mark a top-level function as <code>async</code> and call it immediately without anything <code>await</code>-ing it; it will run, block while waiting for any internal <code>await</code> calls to resolve, and then exit. <code>async</code> doesn't mean anything special other than &quot;a function that may use the <code>await</code> keyword.</p>
+<h3>Do promise rejections and errors get swallowed?</h3>
+<p>Replace the <code>resolve</code> with a <code>reject</code> and the sample prints:</p>
+<pre><code>Hello, world!
+undefined
+Hello, world!
+</code></pre>
+<p><code>throw</code> instead of <code>reject</code> and get:</p>
+<pre><code>Hello, world!
+[shows error and exits]
+</code></pre>
+<p>Beware of using (the non-standard) <code>done()</code> on the promise; this will cause the <code>await</code> call to not wait! <code>catch()</code> does not break <code>await</code> like this, but you can't re-<code>throw</code> from the <code>catch()</code> and have it bubble up; for example:</p>
+<pre><code class="language-javascript">new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; reject('value'), 1000);
+}).catch((error) =&gt; {
+    throw 'Error: ' + error;
+});
+</code></pre>
+<p>Will print:</p>
+<pre><code>Hello, world!
+undefined
+Hello, world!
+</code></pre>
+<p>A <code>throw</code> in a <code>then</code> will get swallowed in the same way, as will a <code>throw</code> in the initial function passed to <code>new Promise()</code>. Effectively, only errors thrown asynchronously get bubbled up.</p>
+<p><strong>Note:</strong> Things are in flux right now, so the actually observed behavior will very much <a href="http://stackoverflow.com/a/30650609/2103996">depend on the version of Node</a> that you are using.</p>
+<p>If you're using Bluebird, you'll want something like this, which gives you basically sane behavior with both Promises and <code>async</code>/<code>await</code>:</p>
+<pre><code class="language-javascript">// see: https://github.com/petkaantonov/bluebird/blob/master/API.md#global-rejection-events
+// see also: http://jamesknelson.com/are-es6-promises-swallowing-your-errors/
+process.on('unhandledRejection', (reason, promise) =&gt; {
+    throw reason;
+});
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.7.4.1 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.7.4.1</h1></div><div class="metadata"><relative-time created="1297757172" updated="1495119989">Created 2/15/2011, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official release announcement posted to the <a href="/wiki/Git_mailing_list">Git mailing list</a>:</p>
+<pre><code>The first maintenance release Git 1.7.4.1 is available at the usual
+places:
+
+ http://www.kernel.org/pub/software/scm/git/
+
+ git-1.7.4.1.tar.{gz,bz2}			(source tarball)
+ git-htmldocs-1.7.4.1.tar.{gz,bz2}		(preformatted docs)
+ git-manpages-1.7.4.1.tar.{gz,bz2}		(preformatted docs)
+
+The RPM binary packages for a few architectures are found in:
+
+ RPMS/$arch/git-*-1.7.4.1-1.fc13.$arch.rpm	(RPM)
+
+
+Git v1.7.4.1 Release Notes
+==========================
+
+Fixes since v1.7.4
+------------------
+
+* On Windows platform, the codepath to spawn a new child process forgot
+  to first flush the output buffer.
+
+* &quot;git bundle&quot; did not use OFS_DELTA encoding, making its output a few
+  per-cent larger than necessarily.
+
+* The option to tell &quot;git clone&quot; to recurse into the submodules was
+  misspelled with an underscore &quot;--recurse_submodules&quot;.
+
+* &quot;git diff --cached HEAD&quot; before the first commit does what an end user
+  would expect (namely, show what would be committed without further &quot;git
+  add&quot;).
+
+* &quot;git fast-import&quot; didn't accept the command to ask for &quot;notes&quot; feature
+  to be present in its input stream, even though it was capable of the
+  feature.
+
+* &quot;git fsck&quot; gave up scanning loose object files in directories with
+  garbage files.
+
+And other minor fixes and documentation updates.
+
+----------------------------------------------------------------
+
+Changes since v1.7.4 are as follows:
+
+Chris Packham (1):
+     clone: fixup recurse_submodules option
+
+Jakub Narebski (1):
+     gitweb: Mention optional Perl modules in INSTALL
+
+Jens Lehmann (2):
+     t5526: Fix wrong argument order in &quot;git config&quot;
+     pull: Document the &quot;--[no-]recurse-submodules&quot; options
+
+Johannes Sixt (2):
+     start_command: flush buffers in the WIN32 code path as well
+     t4120-apply-popt: help systems with core.filemode=false
+
+Jonathan Nieder (5):
+     quote.h: simplify the inclusion
+     fast-import: clarify documentation of &quot;feature&quot; command
+     fast-import: introduce &quot;feature notes&quot; command
+     compat: helper for detecting unsigned overflow
+     svn-fe: warn about experimental status
+
+Junio C Hamano (3):
+     fsck: drop unused parameter from traverse_one_object()
+     fsck: do not give up too early in fsck_dir()
+     Git 1.7.4.1
+
+Nguyễn Thái Ngọc Duy (4):
+     diff: support --cached on unborn branches
+     Add const to parse_{commit,tag}_buffer()
+     sha1_file.c: move find_cached_object up so sha1_object_info can use it
+     sha1_object_info: examine cached_object store too
+
+Pat Thoyts (2):
+     t3509: use unconstrained initial test to setup repository.
+     t7407: fix line endings for mingw build
+
+Shawn O. Pearce (1):
+     bundle: Use OFS_DELTA in bundle files
+
+Sitaram Chamarty (1):
+     post-receive-email: suppress error if description file missing
+
+Uwe Kleine-König (1):
+     Documentation/merge subtree How-To: fix typo
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

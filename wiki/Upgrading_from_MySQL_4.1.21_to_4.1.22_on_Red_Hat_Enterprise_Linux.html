@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Upgrading from MySQL 4.1.21 to 4.1.22 on Red Hat Enterprise Linux • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Upgrading from MySQL 4.1.21 to 4.1.22 on Red Hat Enterprise Linux</h1></div><div class="metadata"><relative-time created="1164714040" updated="1709488842">Created 11/28/2006, updated 3/3/2024</relative-time></div><ul class="tags"><li><a href="/tags/red.hat">red.hat</a></li><li><a href="/tags/mysql">mysql</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>The upgrade</h2>
+<ul>
+<li>Download: <a href="http://dev.mysql.com/downloads/mysql/4.1.html">http://dev.mysql.com/downloads/mysql/4.1.html</a></li>
+</ul>
+<!-- -->
+<pre><code>mkdir mysql-4.1.22
+cd mysql-4.1.22
+wget \
+  http://dev.mysql.com/get/Downloads/MySQL-4.1/MySQL-server-standard-4.1.22-0.rhel3.i386.rpm/from/http://mysql.rediris.es/ \
+  http://dev.mysql.com/get/Downloads/MySQL-4.1/MySQL-client-standard-4.1.22-0.rhel3.i386.rpm/from/http://mysql.rediris.es/ \
+  http://dev.mysql.com/get/Downloads/MySQL-4.1/MySQL-shared-standard-4.1.22-0.rhel3.i386.rpm/from/http://mysql.rediris.es/ \
+  http://dev.mysql.com/get/Downloads/MySQL-4.1/MySQL-shared-compat-4.1.22-0.rhel3.i386.rpm/from/http://mysql.rediris.es/ \
+  http://dev.mysql.com/get/Downloads/MySQL-4.1/MySQL-devel-standard-4.1.22-0.rhel3.i386.rpm/from/http://mysql.rediris.es/ \
+  http://dev.mysql.com/get/Downloads/MySQL-4.1/MySQL-standard-debuginfo-4.1.22-0.rhel3.i386.rpm/from/http://mysql.rediris.es/
+</code></pre>
+<ul>
+<li>Check <a href="/wiki/MD5">MD5</a> checksums:</li>
+</ul>
+<!-- -->
+<pre><code>openssl md5 *
+</code></pre>
+<ul>
+<li>The standard shared libraries won't be installed, so stick them elsewhere:</li>
+</ul>
+<!-- -->
+<pre><code>mkdir not-installed
+mv MySQL-shared-standard-4.1.22-0.rhel3.i386.rpm not-installed/
+</code></pre>
+<ul>
+<li>Bearing in mind the missing shared compatibility libraries in the <a href="/wiki/Upgrading_from_MySQL_4.1.20_to_4.1.21_on_Red_Hat_Enterprise_Linux">last upgrade</a>, double-check the contents of the <a href="/wiki/RPM">RPM</a>:</li>
+</ul>
+<!-- -->
+<pre><code>rpm -q --dump --package MySQL-shared-compat-4.1.22-0.rhel3.i386.rpm
+</code></pre>
+<p>Yields:</p>
+<pre><code>/usr/lib/libmysqlclient.so 24 1162837883 00000000000000000000000000000000 0120777 root root 0 0 0 libmysqlclient.so.14.0.0
+/usr/lib/libmysqlclient.so.10 24 1162837883 00000000000000000000000000000000 0120777 root root 0 0 0 libmysqlclient.so.10.0.0
+/usr/lib/libmysqlclient.so.10.0.0 224606 1162837883 579c6fecfad48cb3e8748811026f4890 0100755 root root 0 0 0 X
+/usr/lib/libmysqlclient.so.12 24 1162837883 00000000000000000000000000000000 0120777 root root 0 0 0 libmysqlclient.so.12.0.0
+/usr/lib/libmysqlclient.so.12.0.0 251559 1162837883 2fae279de1a3929b178d89333103eacc 0100755 root root 0 0 0 X
+/usr/lib/libmysqlclient.so.14 24 1162837883 00000000000000000000000000000000 0120777 root root 0 0 0 libmysqlclient.so.14.0.0
+/usr/lib/libmysqlclient.so.14.0.0 1174788 1162837883 ba0a9fc64a8f0d2e66f5ffb0ddd7ead1 0100755 root root 0 0 0 X
+/usr/lib/libmysqlclient_r.so 26 1162837883 00000000000000000000000000000000 0120777 root root 0 0 0 libmysqlclient_r.so.14.0.0
+/usr/lib/libmysqlclient_r.so.10 26 1162837883 00000000000000000000000000000000 0120777 root root 0 0 0 libmysqlclient_r.so.10.0.0
+/usr/lib/libmysqlclient_r.so.10.0.0 230560 1162837883 f358f523cb4a364eb8105d9a0f49f943 0100755 root root 0 0 0 X
+/usr/lib/libmysqlclient_r.so.12 26 1162837883 00000000000000000000000000000000 0120777 root root 0 0 0 libmysqlclient_r.so.12.0.0
+/usr/lib/libmysqlclient_r.so.12.0.0 259501 1162837883 ab26ebef4759527211545190ccedebb5 0100755 root root 0 0 0 X
+/usr/lib/libmysqlclient_r.so.14 26 1162837883 00000000000000000000000000000000 0120777 root root 0 0 0 libmysqlclient_r.so.14.0.0
+/usr/lib/libmysqlclient_r.so.14.0.0 1182664 1162837883 722f2db76712ee48801b36c0bbe052f7 0100755 root root 0 0 0 X
+</code></pre>
+<p>So it appears that they are all there.</p>
+<ul>
+<li>Perform a test run:</li>
+</ul>
+<!-- -->
+<pre><code>for RPM in $(ls *.rpm); do rpm -Uvh --test &quot;$RPM&quot;; done
+</code></pre>
+<p>No problems:</p>
+<pre><code>warning: MySQL-client-standard-4.1.22-0.rhel3.i386.rpm: V3 DSA signature: NOKEY, key ID 5072e1f5
+Preparing...                ########################################### [100%]
+warning: MySQL-devel-standard-4.1.22-0.rhel3.i386.rpm: V3 DSA signature: NOKEY, key ID 5072e1f5
+Preparing...                ########################################### [100%]
+warning: MySQL-server-standard-4.1.22-0.rhel3.i386.rpm: V3 DSA signature: NOKEY, key ID 5072e1f5
+Preparing...                ########################################### [100%]
+warning: MySQL-shared-compat-4.1.22-0.rhel3.i386.rpm: V3 DSA signature: NOKEY, key ID 5072e1f5
+Preparing...                ########################################### [100%]
+warning: MySQL-standard-debuginfo-4.1.22-0.rhel3.i386.rpm: V3 DSA signature: NOKEY, key ID 5072e1f5
+Preparing...                ########################################### [100%]
+</code></pre>
+<ul>
+<li>Perform the actual upgrade:</li>
+</ul>
+<!-- -->
+<pre><code>sudo service httpd stop
+sudo service mysql stop
+sudo rpm -Uvh --nodeps *.rpm
+sudo service httpd start
+</code></pre>
+<p>Downtime was less than 60 seconds.</p>
+<h2>Post-upgrade checks</h2>
+<ul>
+<li>Confirm that Apache and MySQL are running:</li>
+</ul>
+<!-- -->
+<pre><code>sudo service --status-all | grep httpd
+ps auxww | grep -i mysql
+</code></pre>
+<ul>
+<li>Try connecting to MySQL from the command line</li>
+<li>Check that website works:
+<ul>
+<li>PHP + MySQL still works?</li>
+<li>Perl + MySQL still works?</li>
+<li>Python + Apache still works?</li>
+<li>Regular HTTP still works?</li>
+<li>HTTPS still works?</li>
+</ul>
+</li>
+<li>Check to see versions of installed RPMs:</li>
+</ul>
+<!-- -->
+<pre><code>rpm -qa | grep -i mysql
+</code></pre>
+<ul>
+<li>Check that MySQL is still configured to start automatically at boot:</li>
+</ul>
+<!-- -->
+<pre><code>sudo chkconfig --list | grep -i mysql
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Upgrading_MySQL_on_Red_Hat_Enterprise_Linux">Upgrading MySQL on Red Hat Enterprise Linux</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Building and installing Ruby 1.8.4 on Red Hat Enterprise Linux ES 3 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Building and installing Ruby 1.8.4 on Red Hat Enterprise Linux ES 3</h1></div><div class="metadata"><relative-time created="1173783764" updated="1495119989">Created 3/13/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/ruby">ruby</a></li><li><a href="/tags/red.hat">red.hat</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Note</h2>
+<p>These notes are superseded by the article, &quot;<a href="/wiki/Building_and_installing_Ruby_1.8.5_on_Red_Hat_Enterprise_Linux_ES_3">Building and installing Ruby 1.8.5 on Red Hat Enterprise Linux ES 3</a>&quot;.</p>
+<h2>Build</h2>
+<pre><code>wget ftp://ftp.ruby-lang.org/pub/ruby/ruby-1.8.4.tar.gz
+tar zxvf ruby-1.8.4.tar.gz
+cd ruby-1.8.4
+./configure
+make
+make test
+sudo make install
+make check
+</code></pre>
+<h2>Failed tests</h2>
+<pre><code>  1) Failure:
+test_s_open_no_create(TestGDBM) [./gdbm/test_gdbm.rb:94]:
+&lt;nil&gt; expected but was
+&lt;#&lt;GDBM:0xb6be0490&gt;&gt;.
+</code></pre>
+<p>The source code for the <code>test_gdbm.rb</code> file notes that:</p>
+<pre><code># this test is failed on libgdbm 1.8.0
+</code></pre>
+<p>And the version of libgdbm installed on <a href="/wiki/Red_Hat_Enterprise_Linux">Red Hat Enterprise Linux</a> ES release 3 (Taroon Update 8) is indeed <code>gdbm-1.8.0-20</code> so I believe the message is probably harmless.</p>
+<pre><code>  2) Failure:
+test_verify(OpenSSL::TestX509Store) [./openssl/test_x509store.rb:169]:
+This test is expected to be success with OpenSSL 0.9.7c or later.
+&lt;true&gt; expected but was
+&lt;false&gt;.
+
+1356 tests, 15391 assertions, 2 failures, 0 errors
+make: *** [test-all] Error 1
+</code></pre>
+<p>It's possible that this second test fails because of the version of OpenSSL installed on the server; <code>openssl-0.9.7a-33.17</code>, which is up-to-date with ES release 3 (Taroon Update 8) of <a href="/wiki/Red_Hat_Enterprise_Linux">Red Hat Enterprise Linux</a>. I believe it is probably a harmless warning, although I can't find any confirmation of that fact on the web.</p>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Building_and_installing_RubyGems_0.9.0_on_Red_Hat_Enterprise_Linux_ES_3">Building and installing RubyGems 0.9.0 on Red Hat Enterprise Linux ES 3</a></li>
+<li><a href="/wiki/Building_and_installing_Ruby_1.8.4_on_Mac_OS_X_Tiger">Building and installing Ruby 1.8.4 on Mac OS X Tiger</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

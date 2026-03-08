@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Editing, amending, or squashing the root commit in a Git repository • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Editing, amending, or squashing the root commit in a Git repository</h1></div><div class="metadata"><relative-time created="1282376347" updated="1584053324">Created 8/21/2010, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Editing or amending</h2>
+<p>From the <a href="/wiki/Git">Git</a> <a href="/wiki/FAQ">FAQ</a>, &quot;<a href="https://git.wiki.kernel.org/index.php/GitFaq#How_do_I_edit_the_root_commit.3F">How do I edit the root commit</a>&quot;:</p>
+<pre><code class="language-shell">$ git tag oldroot SHA1_OF_OLD_ROOT_COMMIT # tag the old root
+$ git checkout -b newroot oldroot         # create a temporary branch wherein to create the modified root
+$ git commit --amend                      # after editing, staging etc as desired
+$ git checkout @{-1}                      # back to previous branch
+$ git rebase --onto newroot oldroot       # rebase everything on top of amended root
+$ git branch -d newroot                   # clean up temporary branch
+$ git tag -d oldroot                      # and temporary tag
+</code></pre>
+<h2>Squashing</h2>
+<p>From:</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/598672/git-how-to-squash-the-first-two-commits">http://stackoverflow.com/questions/598672/git-how-to-squash-the-first-two-commits</a></li>
+<li><a href="http://stackoverflow.com/questions/435646/how-do-i-combine-the-first-two-commits-of-a-git-repository">http://stackoverflow.com/questions/435646/how-do-i-combine-the-first-two-commits-of-a-git-repository</a></li>
+</ul>
+<p>Based on this history:</p>
+<pre><code>old
+root
+v
+A---B---C---D---etc
+    ^
+    new
+    root
+</code></pre>
+<p>We want to squash <code>A</code> and <code>B</code> together to produce a new root commit, <code>AB</code>:</p>
+<pre><code>AB---C'---D'---etc
+</code></pre>
+<pre><code class="language-shell">$ git log --oneline --reverse   # inspect SHA1 of old and new roots
+$ A=12bed43a                    # old root
+$ B=4dde1290                    # new root
+$ git show $B                   # take note of commit message
+$ git checkout $B               # detached head corresponding to B
+$ git reset --soft $A           # leave index and working tree from B
+$ git commit --amend            # commit message for A shown, merge or replace with commit message from B
+$ git tag newroot               # remember this for later
+$ git checkout @{-1}            # go back to last branch (eg. master or whatever)
+$ git rebase --onto newroot $B  # replay all commits after B onto new initial commit
+$ git tag -d newroot            # remove temporary tag
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

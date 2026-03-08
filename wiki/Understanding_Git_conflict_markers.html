@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Understanding Git conflict markers • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Understanding Git conflict markers</h1></div><div class="metadata"><relative-time created="1324245488" updated="1719920770">Created 12/18/2011, updated 7/2/2024</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>When looking at <a href="/wiki/Git">Git</a> conflict markers it can sometimes be confusing which half of the conflicting section belongs to which branch:</p>
+<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+foo
+=======
+bar
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; cb1abc6bd98cfc84317f8aa95a7662815417802d
+</code></pre>
+<ul>
+<li>the top half is the branch you are merging <em>into</em> (ie. the &quot;ours&quot; changes)</li>
+<li>the bottom half is from the commit that you are trying to merge in (ie. the &quot;theirs&quot; changes)</li>
+</ul>
+<p>What this means in practice if you are doing something like <code>git pull</code> (which is equivalent to a <code>git fetch</code> followed by a <code>git merge</code>) is:</p>
+<ul>
+<li>the top half shows your local changes (again, &quot;ours&quot;)</li>
+<li>the bottom half shows the remote changes, which you are trying to merge in (again, &quot;theirs)</li>
+</ul>
+<p>On the other hand, if you are doing something like <code>git rebase origin/master</code>, you are effectively trying to merge your local changes &quot;into&quot; the upstream changes (by replaying them on top); that means:</p>
+<ul>
+<li>the top half shows the upstream changes (somewhat confusingly, still called &quot;ours&quot;)</li>
+<li>the bottom half shows your local changes, which you are trying to merge in (again, somewhat confusingly, still called &quot;theirs&quot;).</li>
+</ul>
+<p>Note the &quot;ours&quot;/&quot;theirs&quot; terminology is useful to know because if you ever what to just resolve a conflict in favor of one side or the other, you can run these commands:</p>
+<pre><code class="language-bash"># During a merge into a topic branch:
+git checkout --ours some/file       # file from the topic branch wins
+git checkout --theirs some/file     # file from the upstream branch wins
+
+# During a rebase of a topic branch:
+git checkout --ours some/file       # file from the upstream branch wins
+git checkout --theirs some/file     # file from the topic branch wins
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Git_merge_conflict_cheatsheet">Git merge conflict cheatsheet</a></li>
+<li><a href="/wiki/Understanding_Mercurial_conflict_markers">Understanding Mercurial conflict markers</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

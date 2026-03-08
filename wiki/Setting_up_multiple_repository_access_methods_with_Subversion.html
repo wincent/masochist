@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Setting up multiple repository access methods with Subversion • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Setting up multiple repository access methods with Subversion</h1></div><div class="metadata"><relative-time created="1161949072" updated="1709594300">Created 10/27/2006, updated 3/4/2024</relative-time></div><ul class="tags"><li><a href="/tags/subversion">subversion</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Motivation</h2>
+<p>I currently (September 2006) offer <a href="/wiki/Subversion">Subversion</a>-based access to the source code for a number of projects. This read-only access occurs over unencrypted channels. These are notes I've made while setting up encrypted access via <a href="/wiki/SSH">SSH</a> for the purposes of write-access (when committing). Even though <a href="/wiki/Subversion">Subversion</a> never actually passes passwords over the network as plaintext, and even though the per-transaction design of the protocol is such that vulnerability to snooping-based attacks is minimal, I still think it's good practice to perform write-access over an encrypted channel.</p>
+<h2>Background</h2>
+<p>As noted in the &quot;<a href="http://svnbook.red-bean.com/nightly/en/svn.serverconfig.multimethod.html">Supporting Multiple Repository Access Methods</a>&quot; section of <a href="http://svnbook.red-bean.com/">the Subversion book</a>, accessing the repository simultaneously via various means is complicated.</p>
+<p>Anonymous access is mediated by the <code>svnserve</code> daemon running as the <code>svn</code> user which has exclusive access to the repository. When accessing via <code>svn+ssh</code> then the access is performed as the user who authenticated via <a href="/wiki/SSH">SSH</a>, not necessarily the <code>svn</code> user and this can cause ownership and permissions conflicts. The solution must carefully take this potential conflict into account.</p>
+<h2>Set-up</h2>
+<ul>
+<li><a href="http://www.nabble.com/svnserve-and-launchd-in-OS-X-t2314532.html">This article</a> offers an excellent guide to setting up access.</li>
+<li>Subversion itself comes with an &quot;<a href="http://svn.collab.net/repos/svn/trunk/notes/ssh-tricks">SSH tricks</a>&quot; document.</li>
+</ul>
+<h3>Key pair generation</h3>
+<p>Each unique user that needs write access to the repository will need a key pair.</p>
+<pre><code>ssh-keygen -t dsa -f ~/.ssh/id_dsa_subversion
+chmod 400 ~/.ssh/id_dsa_subversion
+</code></pre>
+<h3>Client-side set-up</h3>
+<p>Set the <code>SVN_SSH</code> environment variable:</p>
+<pre><code>export SVN_SSH=&quot;/usr/bin/ssh -i /Users/wincent/.ssh/id_dsa_subversion&quot;
+</code></pre>
+<p>To make this setting available to GUI-level apps such as <a href="/wiki/SmartSVN">SmartSVN</a> and <a href="/wiki/Xcode">Xcode</a> you should also edit your <code>~/.MacOSX/environment.plist</code> file accordingly. A minimal <code>environment.plist</code> file might resemble this:</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE plist PUBLIC &quot;-//Apple Computer//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+&lt;plist version=&quot;1.0&quot;&gt;
+&lt;dict&gt;
+        &lt;key&gt;SVN_SSH&lt;/key&gt;
+        &lt;string&gt;/Users/wincent/.ssh/id_dsa_subversion&lt;/string&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</code></pre>
+<p>You would set such a variable with the following command:</p>
+<pre><code>defaults write ~/.MacOSX/environment SVN_SSH -string &quot;/Users/wincent/.ssh/id_dsa_subversion&quot;
+</code></pre>
+<p>I also had to add the following to my <code>.ssh/config</code> to prevent <a href="/wiki/SSH">SSH</a> from trying to authenticate me as user <code>wincent</code> instead of user <code>svn</code>:</p>
+<pre><code>Host svn.example.com
+  HostName svn.example.com
+  User svn
+</code></pre>
+<h3>Server-side set-up</h3>
+<pre><code>sudo -s
+cd /var/lib/svn
+sudo -u svn mkdir .ssh
+chmod 700 .ssh
+cd .ssh
+sudo -u svn touch authorized_keys
+chmod 400 authorized_keys
+</code></pre>
+<p>Edit the <code>authorized_keys</code> file to include the public key (<code>~/.ssh/id_dsa_subversion</code>) created above; the following is split across multiple lines for readability but in the actual file it must appear all on the same line. Additional users would each have their own line in the file.</p>
+<pre><code>command=&quot;/usr/local/bin/svnserve -t
+                                 --tunnel-user=wincent
+                                 -r /var/lib/svn/repositories&quot;,
+no-port-forwarding,no-agent-forwarding,no-X11-forwarding,no-pty
+ssh-dss AA...WA== wincent@cuzco.local
+</code></pre>
+<p>Note that there are no spaces between the quoted <code>command</code>, the trailing commas, and the <code>no-port-forwarding</code> specification and the other restrictions.</p>
+<p>The public key itself begins with a key-type marker, <code>ssh-dss</code>, followed by the key itself (abbreviated here to <code>AA...WA==</code>, and is followed by a comment (in this case, my username and the name of the host on which I generated the key).</p>
+<h3>Testing</h3>
+<p>Perform a test checkout via <code>svn+ssh</code> to confirm that everything is working as expected:</p>
+<pre><code>svn co svn+ssh://svn.example.com/project-name/trunk
+</code></pre>
+<p>In order for this to work I found that I had to set the shell of the <code>svn</code> user to <code>/bin/sh</code> (previously it was <code>/sbin/nologin</code>). Note that even though a login shell is defined for that user it is not possible to actually gain a login shell because logins are explicitly disallowed for the <code>svn</code> user in the <code>/etc/shadow</code> file (that is, the password field contains only &quot;*&quot;, indicating that the logins are not permitted for that user).</p>
+<h3>Using <code>ssh-agent</code></h3>
+<p>If your private key is protected by a passphrase (and it probably should be) then in typical usage Subversion will prompt you many, many times for the passphrase as it makes multiple connection attempts.</p>
+<p>There are two ways to avoid these repeated prompts:</p>
+<ol>
+<li>Do not protect your private key with a passphrase: with appropriate filesystem permissions, this is probably about as secure as the standard Subversion method of storing your passwords as plaintext in your <code>~/.subversion/</code> directory (although as of Subversion 1.4.0 passwords are stored securely in the keychain; see &quot;<a href="/wiki/Keychain-based_storage_of_Subversion_passwords">Keychain-based storage of Subversion passwords</a>&quot;).</li>
+<li>Use <code>ssh-agent</code> and <code>ssh-add</code>: this is the more secure option, detailed below.</li>
+</ol>
+<p>You can launch <code>ssh-agent</code> from a Terminal window and it will set the required environment variables, <code>SSH_AUTH_SOCK</code> and <code>SSH_AGENT_PID</code>. The problem with this approach is that such environment variables won't be available to window-based programs like <a href="/wiki/Xcode">Xcode</a>. Modifying the <code>~/.MacOSX/environment.plist</code> file doesn't necessarily help either; for one thing, the value of <code>SSH_AUTH_SOCK</code> will randomly vary (incorporating both a random string component as well as the process ID number of the <code>ssh-agent</code> process; for example, <code>/tmp/ssh-A4yghslTsh/agent.10578</code>) and the file is read only once at login (that is, if you make changes <em>after</em> login they will only be read upon the <em>next</em> login by which time the information will be out of date).</p>
+<p>A possible workaround is to set only the <code>SSH_AUTH_SOCK</code> variable and use the <code>-a</code> switch to force the <code>ssh-agent</code> to use that (known ahead of time) value, something like <code>~/.ssh/agent.sock</code>, and forget about the <code>SSH_AGENT_PID</code> variable seeing as it can't be known ahead of time (although this may break certain commands such as <code>ssh-agent -k</code>). If the appropriate permission are set on the <code>~/.ssh/</code> directory (700, for example) then the use of a fixed socket file should not pose any security risk. The <code>SSH_AUTH_SOCK</code> variable should also be set in your <code>~/.bash_profile</code>.</p>
+<p>You could put such settings in place with the following commands:</p>
+<pre><code>defaults write ~/.MacOSX/environment SSH_AUTH_SOCK -string &quot;/Users/wincent/.ssh/agent.sock&quot;
+echo 'export SSH_AUTH_SOCK=&quot;/Users/wincent/.ssh/agent.sock&quot;' &gt;&gt; ~/.bash_profile
+</code></pre>
+<p>Once that set-up is in place all that's required is to actually run the <code>ssh-agent</code> process at login and kill it off at logout. There are three possible ways of doing this:</p>
+<ol>
+<li>Launch it manually from the terminal once and once only per session.</li>
+<li>Launch it using <a href="/wiki/launchd">launchd</a> (see <a href="http://www.opendarwin.org/~landonf/misc/launchd-sshagent/">example</a>; this example shows how to patch <code>ssh-agent</code> for use with <code>launchd</code> but it is not suitable for use here because the <code>SSH_AUTH_SOCK</code> environment variable can't be known prior to login time).</li>
+<li>Write a wrapper script or program to launch it, and add the wrapper to your login items.</li>
+</ol>
+<p>I have not tested whether this <code>ssh-agent</code> set-up works with Xcode's integrated Subversion support (I do all my interaction with Subversion from the command line or from within SmartSVN).</p>
+<h3>Keychain integration</h3>
+<p>The above methods can be made truly passwordless (that is, even the initial passphrase prompts can be eliminated) by storing the passphrases in the login keychain. When the user logs in he/she effectively unlocks the login keychain and the passphrases stored therein can be accessed without intervention. In this way we get the convenience of passwordless operation with none of the drawbacks of storing passwords insecurely on the disk.</p>
+<p>I am currently working on an application that provides the following functionality:</p>
+<ul>
+<li>Launches <code>ssh-agent</code> at login</li>
+<li>Automatically adds identities with <code>ssh-add</code></li>
+<li>Provides a GUI for entering passphrases (for use from within GUI apps)</li>
+<li>Optionally stores passphrases in the login keychain</li>
+<li>Provides a GUI for adding/removing and enabling/disabling identities</li>
+<li>Checks environment variables at launch and offers to correct any problems detected</li>
+</ul>
+<p>The above functionality is already implemented and working. If people express and interest I may release the software publicly and potentially add more features.</p>
+<h3>Working copy switching</h3>
+<pre><code>svn switch --relocate svn://svn.example.com/project-name/trunk \
+                      svn+ssh://svn.example.com/project-name/trunk
+</code></pre>
+<h3>See also</h3>
+<ul>
+<li><a href="/wiki/Setting_up_additional_machines_to_access_Subversion_via_SSH">Setting up additional machines to access Subversion via SSH</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

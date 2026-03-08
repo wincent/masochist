@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Updating to nginx 0.6.36 with the nginx upload module 2.0.9 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Updating to nginx 0.6.36 with the nginx upload module 2.0.9</h1></div><div class="metadata"><relative-time created="1240852813" updated="1710259978">Created 4/27/2009, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/leopard">leopard</a></li><li><a href="/tags/nginx">nginx</a></li><li><a href="/tags/nginx.upload.module">nginx.upload.module</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>I wasn't going to update to <a href="/wiki/nginx_0.6.36">nginx 0.6.36</a> but seeing as I am about to start testing the <a href="/wiki/nginx_upload_module">nginx upload module</a> (see <a href="/issues/1193">ticket #1193</a>) and I would have to rebuild <a href="/wiki/nginx">nginx</a> anyway for that, I thought I'd use the latest stable release.</p>
+<h2>Building on <a href="/wiki/Mac_OS_X">Mac OS X</a> <a href="/wiki/Leopard">Leopard</a> 10.5.6</h2>
+<h3>Build process</h3>
+<pre><code>wget http://www.grid.net.ru/nginx/download/nginx_upload_module-2.0.9.tar.gz
+tar xzvf nginx_upload_module-2.0.9.tar.gz
+wget http://sysoev.ru/nginx/nginx-0.6.36.tar.gz
+tar xzvf nginx-0.6.36.tar.gz
+cd nginx-0.6.36
+./configure --prefix=/usr/local/nginx \
+  --with-http_ssl_module \
+  --add-module=../nginx_upload_module-2.0.9
+make
+sudo make install
+</code></pre>
+<p>The build is pretty much identical to the normal process (see &quot;<a href="/wiki/Updating_to_nginx_0.6.35">Updating to nginx 0.6.35</a>&quot; for example), but you'll see something like this at the configuration stage:</p>
+<pre><code>configuring additional modules
+adding module in ../nginx_upload_module-2.0.9
+ + ngx_http_upload_module was configured
+</code></pre>
+<h3>Changes</h3>
+<p>The <code>script/nginx</code> helper script that I use in local <a href="/wiki/Rails">Rails</a> development no longer works:</p>
+<pre><code>$ script/nginx
+nginx not running: starting
+2009/04/27 23:16:50 [emerg] 64491#0: mkdir() &quot;/usr/local/nginx/proxy_temp&quot; failed (13: Permission denied)
+</code></pre>
+<p>Not really sure why it's trying to create that directory, seeing as my config explicitly tells it to create it elsewhere; here's the relevant snippet:</p>
+<pre><code>  server {
+    listen 127.0.0.1:3001;
+    server_name rails.example.local;
+    rewrite ^/(.*) https://localhost:3002/$1 permanent;
+    client_body_temp_path /Users/wincent/trabajo/unversioned/wincent.dev/src/tmp/client_body_temp;
+    fastcgi_temp_path /Users/wincent/trabajo/unversioned/wincent.dev/src/tmp/fast_cgi_temp;
+    proxy_temp_path /Users/wincent/trabajo/unversioned/wincent.dev/src/tmp/proxy_temp;
+    access_log /Users/wincent/trabajo/unversioned/wincent.dev/src/log/access_log;
+  } # end: server
+
+  server {
+    listen 127.0.0.1:3002;
+    ssl on;
+    ssl_certificate /Users/wincent/trabajo/unversioned/wincent.dev/src/config/local/ssl.crt;
+    ssl_certificate_key /Users/wincent/trabajo/unversioned/wincent.dev/src/config/local/ssl.key;
+    server_name rails.example.local;
+    root /Users/wincent/trabajo/unversioned/wincent.dev/src/public;
+    client_body_temp_path /Users/wincent/trabajo/unversioned/wincent.dev/src/tmp/client_body_temp;
+    fastcgi_temp_path /Users/wincent/trabajo/unversioned/wincent.dev/src/tmp/fast_cgi_temp;
+    proxy_temp_path /Users/wincent/trabajo/unversioned/wincent.dev/src/tmp/proxy_temp;
+</code></pre>
+<p>Ok, I just tried rebuilding without the module:</p>
+<pre><code>cd nginx-0.6.36
+./configure --prefix=/usr/local/nginx --with-http_ssl_module
+make
+sudo make install
+</code></pre>
+<p>And have confirmed that the error is related to the upload module (the error doesn't occur without the module).</p>
+<p>Further investigation shows that <code>proxy_temp_path</code> configuration in both <code>server</code> and <code>http</code> blocks is ignored by the module; it always uses the default path.</p>
+<p>For now, a workaround to get nginx starting again is to just created the default path:</p>
+<pre><code>sudo mkdir /usr/local/nginx/proxy_temp
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

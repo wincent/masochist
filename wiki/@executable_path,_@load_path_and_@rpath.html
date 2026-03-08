@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>@executable path, @load path and @rpath • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>@executable path, @load path and @rpath</h1></div><div class="metadata"><relative-time created="1288981596" updated="1584053324">Created 11/5/2010, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/dynamic.linker">dynamic.linker</a></li><li><a href="/tags/macos">macos</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><strong>Note:</strong> <em>this article is actually about the <code>@executable_path</code>, <code>@load_path</code> and <code>@rpath</code> install paths used by the linker on <a href="/wiki/Mac_OS_X">Mac OS X</a>; wiki titles can't include underscores, however, because they are ambiguous with spaces.</em></p>
+<h2>Absolute paths</h2>
+<p>Useful for frameworks installed in shared locations. Example:</p>
+<ul>
+<li>Install path: <code>/Library/Frameworks/Foo.framework/Versions/A/Foo</code></li>
+</ul>
+<h2><code>@executable_path</code></h2>
+<p>Useful for frameworks embedded inside applications, because it allows you to specify the location of the framework relative to the application's executable:</p>
+<ul>
+<li>Install path: <code>@executable_path/../Frameworks/Foo.framework/Versions/A/Foo</code></li>
+<li>Application location: <code>/Applications/Foo.app</code></li>
+<li>Executable path: <code>/Applications/Foo.app/Contents/MacOS</code></li>
+<li>Framework location: <code>/Applications/Foo.app/Contents/Frameworks/Foo.framework</code></li>
+<li>Linker puts all this together to figure out that the framework binary can be found at: <code>/Applications/Foo.app/Contents/MacOS/../Frameworks/Foo.framework/Versions/A/Foo</code></li>
+</ul>
+<h2>@loader_path</h2>
+<p>Available from <a href="/wiki/Mac_OS_X">Mac OS X</a> 10.4 <a href="/wiki/Tiger">Tiger</a> onwards; useful for frameworks embedded inside plug-ins, because it allows you to specify the location of the framework relative to the plug-in's code (remember, plug-ins may not actually know where they are going to be installed, relative to the application, so knowing <code>@executable_path</code> doesn't help us in this case):</p>
+<ul>
+<li>Install path: <code>@loader_path/../Frameworks/Foo.framework/Versions/A/Foo</code></li>
+<li>Application location: <code>/Applications/Foo.app</code></li>
+<li>Plug-in location: <code>/Library/Application Support/Foo/Plug-Ins/Bar.bundle</code></li>
+<li>Executable path: <code>/Applications/Foo.app/Contents/MacOS</code></li>
+<li>Loader path: <code>/Library/Application Support/Foo/Plug-Ins/Bar.bundle/Contents/MacOS</code></li>
+<li>Framework location: <code>/Library/Application Support/Foo/Plug-Ins/Bar.bundle/Contents/Frameworks/Foo.framework</code></li>
+<li>Linker puts all this together to figure out that the framework binary can be found at: <code>/Library/Application Support/Foo/Plug-Ins/Bar.bundle/Contents/MacOS/../Frameworks/Foo.framework/Versions/A/Foo</code></li>
+</ul>
+<p>Note that if the &quot;loader&quot; is an application rather than a plug-in, the <code>@loader_path</code> ends up being equivalent to <code>@executable_path</code>.</p>
+<h2><code>@rpath</code></h2>
+<p>New in <a href="/wiki/Mac_OS_X">Mac OS X</a> 10.5 <a href="/wiki/Leopard">Leopard</a> is <code>@rpath</code>. Key points:</p>
+<ul>
+<li><code>@rpath</code> instructs the dynamic linker to search a list of paths in order to locate the framework</li>
+<li>critically, this list is embedded in the loading application</li>
+<li>this means that a single framework with <code>@rpath/Foo.framework/Versions/A/Foo</code> can be made to work in a number of different ways; that is, you are effectively no longer limited by the choice of specifying your &quot;install path&quot; using <em>either</em> <code>@executable_path</code> <em>or</em> <code>@loader_path</code></li>
+<li>the down side: you now have to pass additional linker flags when building the host application (eg. <code>-rpath @executable_path/../Frameworks</code> or <code>/Library/Frameworks</code>; note that specifying <em>both</em> will cause the dynamic linker to try looking in both locations)</li>
+</ul>
+<h2>Sources</h2>
+<ul>
+<li>Nice overview: <a href="http://www.mikeash.com/pyblog/friday-qa-2009-11-06-linking-and-install-names.html">http://www.mikeash.com/pyblog/friday-qa-2009-11-06-linking-and-install-names.html</a></li>
+<li>Docs for using PFiddlesoft Frameworks (I've never used these, but the manual itself makes some nice general points about using frameworks): <a href="http://pfiddlesoft.com/frameworks/downloads/Assistive_Application_Programming_Guide.pdf">http://pfiddlesoft.com/frameworks/downloads/Assistive_Application_Programming_Guide.pdf</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

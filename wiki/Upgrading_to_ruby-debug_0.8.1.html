@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Upgrading to ruby-debug 0.8.1 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Upgrading to ruby-debug 0.8.1</h1></div><div class="metadata"><relative-time created="1174304206" updated="1495119989">Created 3/19/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/ruby.debug">ruby.debug</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Update <a href="/wiki/ruby-debug">ruby-debug</a>:</p>
+<pre><code>sudo gem install ruby-debug
+</code></pre>
+<p>Transcript:</p>
+<pre><code>Bulk updating Gem source index for: http://gems.rubyforge.org
+Select which gem to install for your platform (i686-darwin8.8.1)
+ 1. ruby-debug 0.8.1 (ruby)
+ 2. ruby-debug 0.8 (ruby)
+ 3. ruby-debug 0.7.5 (mswin32)
+ 4. ruby-debug 0.7.5 (ruby)
+ 5. Skip this gem
+ 6. Cancel installation
+&gt; 1
+Install required dependency ruby-debug-base? [Yn]  Y
+Select which gem to install for your platform (i686-darwin8.8.1)
+ 1. ruby-debug-base 0.8.1 (mswin32)
+ 2. ruby-debug-base 0.8.1 (ruby)
+ 3. Skip this gem
+ 4. Cancel installation
+&gt; 2
+Building native extensions.  This could take a while...
+Successfully installed ruby-debug-0.8.1
+Successfully installed ruby-debug-base-0.8.1
+Installing ri documentation for ruby-debug-0.8.1...
+Installing ri documentation for ruby-debug-base-0.8.1...
+Installing RDoc documentation for ruby-debug-0.8.1...
+Installing RDoc documentation for ruby-debug-base-0.8.1...
+</code></pre>
+<p>Update <a href="/wiki/FastRI">FastRI</a> index:</p>
+<pre><code>fastri-server -b
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

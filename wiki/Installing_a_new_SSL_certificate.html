@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Installing a new SSL certificate • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Installing a new SSL certificate</h1></div><div class="metadata"><relative-time created="1200902008" updated="1710259978">Created 1/21/2008, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/ssl">ssl</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>I <a href="http://wincent.dev/a/about/wincent/weblog/archives/2007/01/ssl_fun.php">recently wrote</a> about obtaining a new <a href="/wiki/SSL">SSL</a> certificate. Here are some notes made during the procedure.</p>
+<h2>Generating the Certificate Signing Request</h2>
+<p>My first step was to generate a new <a href="/wiki/CSR">CSR</a> (certificate signing request):</p>
+<pre><code>cd /etc/httpd/conf
+sudo -s
+openssl req -new -key ssl.key/server.key -out wincent.dev.csr
+</code></pre>
+<p>This was actually a (harmless) mistake as I later discovered that I had used a key other than the one I intended. On receiving the signed certificate I made a backup of what I thought was the old certificate:</p>
+<pre><code>cp ssl.crt/server.crt ssl.crt/server.crt.comodo
+</code></pre>
+<h2>Installing the new certificate for <a href="/wiki/Apache">Apache</a></h2>
+<p>I then installed the new certificate:</p>
+<pre><code>ee ssl.crt/server.crt.rapidssl
+cp ssl.crt/server.crt
+</code></pre>
+<p>After restarting Apache I discovered that the old certificate was still in effect. It turns out that I had stored my certificate elsewhere; but given that you only tend to renew these things once per year (or every worse) it is easy to forget.</p>
+<p>So I again backed up the old certificate (this time the right old certificate) and installed the new certificate (this time in the expected location). Apache refused to restart so I quickly reverted and upon investigation noted that in the same location as the old certificate was a different key file; evidently I had used a different key to generate the old <a href="/wiki/CSR">CSR</a>. Like I said, easy to forget these things if you only do them once a year or more.</p>
+<p>So I backed up the old key and copied across the actual key I'd used to generate the <a href="/wiki/CSR">CSR</a>. Now <a href="/wiki/Apache">Apache</a> started and correctly used the new certificate.</p>
+<h2>Installing the new certificate for other services</h2>
+<p>The next step was to do the same for my <a href="/wiki/IMAPS">IMAPS</a>, <a href="/wiki/POP3S">POP3S</a> and <a href="/wiki/SMTP">SMTP</a> services. First we must obtain a copy of the root certificate used to sign our certificate:</p>
+<pre><code>wget --no-check-certificate https://www.rapidssl.com/cps/rapidssl_01.cer
+</code></pre>
+<p>Note that ironically I had to pass <code>--no-check-certificate</code> because the version of <a href="/wiki/OpenSSL">OpenSSL</a> which I have installed on my server (which <a href="/wiki/wget">wget</a> depends on) doesn't know about that root certificate.</p>
+<h3><a href="/wiki/Sendmail">Sendmail</a></h3>
+<h4>Note</h4>
+<p>This section on <a href="/wiki/Sendmail">Sendmail</a> was originally written prior to switching to <a href="/wiki/Stunnel">Stunnel</a> for <a href="/wiki/Secure_SMTP">Secure SMTP</a>. See &quot;<a href="/wiki/Using_Stunnel_to_secure_SMTP_transport">Using Stunnel to secure SMTP transport</a>&quot; for a description of the changeover. I have yet to do a certificate change with the new arrangement in place, but when I do there should be no need to make any modifications to <a href="/wiki/Sendmail">Sendmail</a> at all; any changes should be made on the <a href="/wiki/Stunnel">Stunnel</a> side of things.</p>
+<p>For informational purposes only I am leaving the old notes on <a href="/wiki/Sendmail">Sendmail</a> intact below.</p>
+<h4>Old <a href="/wiki/Sendmail">Sendmail</a> procedure</h4>
+<p>A quick check of the <a href="/wiki/sendmail">sendmail</a> configuration revealed the following:</p>
+<pre><code>define(`confCACERT_PATH',`/usr/share/ssl/certs')dnl
+define(`confCACERT',`/usr/share/ssl/certs/ca.crt')dnl
+define(`confSERVER_CERT',`/usr/share/ssl/certs/sendmail.pem')dnl
+define(`confSERVER_KEY',`/usr/share/ssl/certs/sendmail.key')dnl
+</code></pre>
+<p>So as before I made backups of the old files and ensured that each file contained the right thing: <code>ca.crt</code> was the just-downloaded root certificate, <code>sendmail.pem</code> was the signed certificate, and <code>sendmail.key</code> was the key used to generated the <a href="/wiki/CSR">CSR</a>. The validity of the signed certificate could the be tested using a command like this:</p>
+<pre><code>openssl verify -CAfile ca.crt sendmail.pem
+</code></pre>
+<p>Should print:</p>
+<pre><code>sendmail.pem: OK
+</code></pre>
+<p>Restart <a href="/wiki/sendmail">sendmail</a> so that the changes get picked up:</p>
+<pre><code>service sendmail restart
+</code></pre>
+<p>I am still not entirely sure that the configuration is perfect because on testing the connection via telnet (see &quot;<a href="/wiki/Testing_services_with_telnet">Testing services with telnet</a>&quot;) I get this warning:</p>
+<pre><code>CONNECTED(00000003)
+depth=1 /C=US/O=Equifax Secure Inc./CN=Equifax Secure Global eBusiness CA-1
+verify error:num=19:self signed certificate in certificate chain
+verify return:0
+---
+Certificate chain
+ 0 s:/C=AU/O=wincent.dev/OU=GT42117481/OU=See www.rapidssl.com/resources/cps (c)07/OU=Domain Control Validated - RapidSSL(R)/CN=wincent.dev
+   i:/C=US/O=Equifax Secure Inc./CN=Equifax Secure Global eBusiness CA-1
+ 1 s:/C=US/O=Equifax Secure Inc./CN=Equifax Secure Global eBusiness CA-1
+   i:/C=US/O=Equifax Secure Inc./CN=Equifax Secure Global eBusiness CA-1
+---
+</code></pre>
+<p>All root certificates are self-signed, so I am not sure how to avoid this warning. It seems that the chain is incorrect. Instead of seeing subject and issuer, I see subject and issuer, and then an additional entry wherein the subject and issuer are the same. I thought I would try installing the root certificate in the <code>CACERT_PATH</code> where sendmail should look for root certificates by default. This required me to first generate a hash of the certificate subject name:</p>
+<pre><code>openssl x509 -hash -in ca.crt -inform PEM -noout
+</code></pre>
+<p>This will return a hash like <code>abcd1234</code> or similar. I could then make a copy of the root certificate using the hash as the name and an extension of <code>0</code>.</p>
+<pre><code>cp ca.crt abcd1234.0
+</code></pre>
+<p>A symbolic link would also work. Note that once this is done the verification is considerably simpler (no need to specify a <code>CAfile</code>):</p>
+<pre><code>openssl verify sendmail.pem
+</code></pre>
+<p>Once this was verified I tried removing the <code>ca.crt</code> but then <a href="/wiki/sendmail">sendmail</a> <a href="/wiki/SSL%2fTLS">SSL/TLS</a> capacity didn't work at all. <a href="http://www.technoids.org/wwstarttls.html">This page</a> contains more information on <a href="/wiki/SSL%2fTLS">SSL/TLS</a> in <a href="/wiki/sendmail">sendmail</a>, but it doesn't seem to explain why my certificate chain is too long.</p>
+<p>Compare this with what happens when I try connecting to a different server:</p>
+<pre><code>$ openssl s_client -starttls smtp -connect smtp.gmail.com:25
+CONNECTED(00000003)
+depth=0 /C=US/ST=California/L=Mountain View/O=Google Inc/CN=smtp.gmail.com
+verify error:num=20:unable to get local issuer certificate
+verify return:1
+depth=0 /C=US/ST=California/L=Mountain View/O=Google Inc/CN=smtp.gmail.com
+verify error:num=27:certificate not trusted
+verify return:1
+depth=0 /C=US/ST=California/L=Mountain View/O=Google Inc/CN=smtp.gmail.com
+verify error:num=21:unable to verify the first certificate
+verify return:1
+---
+Certificate chain
+ 0 s:/C=US/ST=California/L=Mountain View/O=Google Inc/CN=smtp.gmail.com
+   i:/C=ZA/ST=Western Cape/L=Cape Town/O=Thawte Consulting cc/OU=Certification Services Division/CN=Thawte Premium Server CA/emailAddress=premium-server@thawte.com
+---
+</code></pre>
+<p>Note that although verification couldn't proceed, there is no repetition in the certificate chain. It merely shows subject and issuer.</p>
+<p>This compares with the messages I was initially seeing when I first tested (prior to installing the new <code>ca.crt</code>:</p>
+<pre><code>CONNECTED(00000003)
+depth=0 /C=AU/O=wincent.dev/OU=GT42117481/OU=See www.rapidssl.com/resources/cps (c)07/OU=Domain Control Validated - RapidSSL(R)/CN=wincent.dev
+verify error:num=20:unable to get local issuer certificate
+verify return:1
+depth=0 /C=AU/O=wincent.dev/OU=GT42117481/OU=See www.rapidssl.com/resources/cps (c)07/OU=Domain Control Validated - RapidSSL(R)/CN=wincent.dev
+verify error:num=27:certificate not trusted
+verify return:1
+depth=0 /C=AU/O=wincent.dev/OU=GT42117481/OU=See www.rapidssl.com/resources/cps (c)07/OU=Domain Control Validated - RapidSSL(R)/CN=wincent.dev
+verify error:num=21:unable to verify the first certificate
+verify return:1
+---
+Certificate chain
+ 0 s:/C=AU/O=wincent.dev/OU=GT42117481/OU=See www.rapidssl.com/resources/cps (c)07/OU=Domain Control Validated - RapidSSL(R)/CN=wincent.dev
+   i:/C=US/O=Equifax Secure Inc./CN=Equifax Secure Global eBusiness CA-1
+---
+</code></pre>
+<p>Note that this correctly only has one certificate in the chain, but that it fails to verify.</p>
+<p>The <a href="http://www.sendmail.org/~ca/email/starttls.html">sendmail docs</a> say that you should install &quot;<em>one or more</em> CA certs in <code>confCACERT</code>&quot; and &quot;<em>zero or more</em> CA certs in confCACERT_PATH&quot;. This explains why I can't remove <code>confCACERT</code> (it requires one or more certificates). Regardless of whether I install anything in <code>confCACERT_PATH</code> I still get the too-long chain.</p>
+<p>I later received an email offering the following clarification:</p>
+<blockquote>
+<p>Install zero or more CA certs in <code>confCACERT_PATH</code> with (symbolic) links of their hashes pointing to them:</p>
+<pre><code>C=FileName_of_CA_Certificate
+ln -s $C `openssl x509 -noout -hash &lt; $C`.0
+</code></pre>
+</blockquote>
+<p>Note that I haven't tested this and I can't remember whether this is an avenue that I tried at the time (although I would have thought that I did seeing as it appears on the documentation that I linked to above). As I noted above, when I could get this to work I switch to another means of securing SMTP transport (see &quot;<a href="/wiki/Using_Stunnel_to_secure_SMTP_transport">Using Stunnel to secure SMTP transport</a>&quot;).</p>
+<h3><a href="/wiki/IMAPS">IMAPS</a> and <a href="/wiki/POP3s">POP3s</a></h3>
+<p>Unlike <a href="/wiki/Apache">Apache</a> and <a href="/wiki/sendmail">sendmail</a>, these services don't allow you to configure them to look for separate key and root certificate files (or if they do, I don't know of the configuration options) so I had to concatenate the key with the new certificate (already in <a href="/wiki/PEM">PEM</a> format). In the past I've found that the ordering of elements is crucial; so I stuck with the order that has worked for me in the past: private key then the certificate:</p>
+<pre><code>cat server.key.rapidssl \
+    wincent.dev.crt.rapidssl \
+    ca.crt.rapidssl &gt; \
+    /path/to/certs/imapd.pem.rapidssl
+</code></pre>
+<p>The rest is straightforward:</p>
+<ul>
+<li>Make a backup of the old <a href="/wiki/PEM">PEM</a> file(s).</li>
+<li><code>chmod 400</code> the <a href="/wiki/PEM">PEM</a> files (the backup and the new one; the old one should already have the right permissions).</li>
+<li>Drop the new file into place.</li>
+<li>The same file will work for <a href="/wiki/POP3S">POP3S</a> as well; on my system the files are named <code>imapd.pem</code> and <code>ipop3d.pem</code>.</li>
+</ul>
+<p>Restart the services so that the changes get picked up:</p>
+<pre><code>service xinetd restart
+</code></pre>
+<h3>See also</h3>
+<ul>
+<li><a href="/wiki/SSL_certificate_renewal_notes">SSL certificate renewal notes</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

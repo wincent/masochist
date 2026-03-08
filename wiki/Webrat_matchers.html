@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Webrat matchers • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Webrat matchers</h1></div><div class="metadata"><relative-time created="1278397278" updated="1495119989">Created 7/6/2010, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/rspec">rspec</a></li><li><a href="/tags/css">css</a></li><li><a href="/tags/webrat">webrat</a></li><li><a href="/tags/xpath">xpath</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2><a href="/wiki/RSpec">RSpec</a></h2>
+<p>In <a href="/wiki/RSpec">RSpec</a> 1, there was a <code>have_tag</code> matcher which was a wrapper for the <a href="/wiki/Rails">Rails</a> <code>assert_select</code> method.</p>
+<p>In <a href="/wiki/RSpec">RSpec</a> 2, the <code>have_tag</code> matcher has been removed in favor of <a href="/wiki/Webrat">Webrat</a> matchers.</p>
+<p>The matcher documentation can be found at: <a href="http://gitrdoc.com/brynary/webrat">http://gitrdoc.com/brynary/webrat</a></p>
+<p>The matchers, as they are accessed from with RSpec, are:</p>
+<ul>
+<li><code>contain</code></li>
+<li><code>have_selector</code></li>
+<li><code>have_xpath</code></li>
+</ul>
+<h3><code>have_selector</code> examples</h3>
+<p>Consider a view template:</p>
+<pre><code class="language-ruby">describe 'posts/show.html.haml' do
+  it 'has a link to the index' do
+    render
+    rendered.should ...
+  end
+end
+</code></pre>
+<p>There are various ways of specifying that the rendered template has the element(s) we are looking for:</p>
+<pre><code class="language-ruby"># look for a &quot;.links&quot; div
+rendered.should have_selector('.links') do |div|
+  # note how we can look within matched elements:
+  div.should have_selector('a')
+
+  # and also how we can specify attributes using a hash:
+  div.should have_selector('a', :href =&gt; posts_path)
+end
+
+# and note how we can use a single CSS selector to achieve the same effect:
+rendered.should have_selector('.links a', :href =&gt; posts_path)
+</code></pre>
+<p>Note that we can also check for the content of a selector:</p>
+<pre><code class="language-ruby"># given this markup:
+#   &lt;em&gt;hello&lt;/em&gt;
+# we could do a naïve regexp match:
+rendered.should match(%r{&lt;em&gt;hello&lt;/em&gt;})
+
+# with the Webrat matcher:
+rendered.should have_selector('em', :content =&gt; 'hello')
+
+# this is a lot more concise than doing:
+rendered.should have_selector('em') do |em|
+  em.should contain('hello')
+end
+</code></pre>
+<p>For more examples of usage, see Webrat's own specs for the <code>have_selector</code> matcher:</p>
+<ul>
+<li><a href="http://github.com/brynary/webrat/blob/master/spec/public/matchers/have_selector_spec.rb">http://github.com/brynary/webrat/blob/master/spec/public/matchers/have_selector_spec.rb</a></li>
+</ul>
+<h3><code>contain</code> examples</h3>
+<p><code>contain</code> is useful for making assertions about the textual content that the user sees on in his/her browser (ie. the visible text, not the underlying <a href="/wiki/HTML">HTML</a> markup).</p>
+<p>So, for example, you could make an assertion like:</p>
+<pre><code class="language-ruby">rendered.should contain('this is a really bad error')
+</code></pre>
+<p>Without having to worry about whether the HTML source actually contains:</p>
+<pre><code class="language-html">this is a &lt;em&gt;really&lt;/em&gt; bad error
+</code></pre>
+<p>Or:</p>
+<pre><code class="language-html">this is a &lt;strong&gt;really&lt;/strong&gt; bad error
+</code></pre>
+<p>Note that you can use the <code>contain</code> matcher on previously matched elements:</p>
+<pre><code class="language-ruby">rendered.should have_selector('.errors') do |div|
+  div.should contain('this is a really bad error')
+end
+</code></pre>
+<p>You can also use regular expressions:</p>
+<pre><code class="language-ruby">rendered.should contain(/this is a .+ error/)
+</code></pre>
+<p>For more examples of usage, see Webrat's own specs for the <code>contain</code> matcher:</p>
+<ul>
+<li><a href="http://github.com/brynary/webrat/blob/master/spec/public/matchers/contain_spec.rb">http://github.com/brynary/webrat/blob/master/spec/public/matchers/contain_spec.rb</a></li>
+</ul>
+<h3><code>have_xpath</code> selector</h3>
+<p>This matcher can be used when CSS selectors are not powerful or expressive enough to target a specific element:</p>
+<pre><code class="language-ruby"># all p elements with an a child
+rendered.should have_xpath('//p[a]')
+</code></pre>
+<p>For more examples of usage, see Webrat's own specs for the <code>have_xpath</code> matcher:</p>
+<ul>
+<li><a href="http://github.com/brynary/webrat/blob/master/spec/public/matchers/have_xpath_spec.rb">http://github.com/brynary/webrat/blob/master/spec/public/matchers/have_xpath_spec.rb</a></li>
+</ul>
+<h2><code>Test::Unit</code></h2>
+<pre><code class="language-ruby"># check for text in the body of html tags
+ # can be a string or regexp
+assert_contain(&quot;BURNINATOR&quot;)
+assert_contain(/trogdor/i)
+assert_not_contain(&quot;peasants&quot;)
+
+# check for a css3 selector
+assert_have_selector 'div.pagination'
+assert_have_no_selector 'form input#name'
+</code></pre>
+<p>Source: <a href="http://cheat.errtheblog.com/s/webrat/">http://cheat.errtheblog.com/s/webrat/</a> (Webrat cheatsheet)</p>
+<h2>See also</h2>
+<ul>
+<li><a href="http://ejohn.org/blog/xpath-css-selectors/">This article</a> (&quot;XPath and CSS Selectors&quot;) by John Resig provides a very short overview of the differences between <a href="/wiki/CSS">CSS</a> and <a href="/wiki/XPath">XPath</a> selectors</li>
+<li><a href="/wiki/CSS_cheatsheet">CSS cheatsheet</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ri • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Ri</h1></div><div class="metadata"><relative-time created="1176825754" updated="1495119989">Created 4/17/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/ruby">ruby</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><a href="/wiki/ri">ri</a> is a documentation viewer for <a href="/wiki/Ruby">Ruby</a>.</p>
+<h2><a href="/wiki/Command_line">Command line</a> interface to <a href="/wiki/ri">ri</a></h2>
+<p>Output of <code>ri --help</code>:</p>
+<pre><code>ri v1.0.1 - 20041108
+
+Usage:
+
+  ri [options]  [names...]
+
+Display information on Ruby classes, modules, and methods.
+Give the names of classes or methods to see their documentation.
+Partial names may be given: if the names match more than
+one entity, a list will be shown, otherwise details on
+that entity will be displayed.
+
+Nested classes and modules can be specified using the normal
+Name::Name notation, and instance methods can be distinguished
+from class methods using &quot;.&quot; (or &quot;#&quot;) instead of &quot;::&quot;.
+
+For example:
+
+    ri  File
+    ri  File.new
+    ri  F.n
+    ri  zip
+
+Note that shell quoting may be required for method names
+containing punctuation:
+
+    ri 'Array.[]'
+    ri compact\!
+
+By default ri searches for documentation in the following
+directories:
+
+    /usr/local/share/ri/1.8/system
+    /usr/local/share/ri/1.8/site
+    /Users/wincent/.rdoc
+    /usr/local/lib/ruby/gems/1.8/doc/*/ri
+
+Specifying the --system, --site, --home, --gems or --doc-dir
+options will limit ri to searching only the specified
+directories.
+
+Options:
+
+     --help, -h   you're looking at it
+
+  --classes, -c   Display the names of classes and modules we
+                  know about
+
+  --doc-dir, -d &lt;dirname&gt;
+                  A directory to search for documentation. If not
+                  specified, we search the standard rdoc/ri directories.
+                  May be repeated.
+
+       --system   Include documentation from Ruby's standard library:
+                    /usr/local/share/ri/1.8/system
+
+         --site   Include documentation from libraries installed in site_lib:
+                    /usr/local/share/ri/1.8/site
+
+         --home   Include documentation stored in ~/.rdoc:
+                    /Users/wincent/.rdoc
+
+         --gems   Include documentation from Rubygems:
+                    /usr/local/lib/ruby/gems/1.8/doc/*/ri
+
+   --format, -f &lt;name&gt;
+                  Format to use when displaying output:
+                     ansi, bs, html, plain, simple
+                  Use 'bs' (backspace) with most pager programs.
+                  To use ANSI, either also use the -T option, or
+                  tell your pager to allow control characters
+                  (for example using the -R option to less)
+
+--list-names, -l  List all the names known to RDoc, one per line
+
+ --no-pager, -T   Send output directly to stdout.
+
+    --width, -w output width
+                  Set the width of the output
+
+  --version, -v   Display the version of ri
+
+Options may also be passed in the 'RI' environment variable
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/FastRI">FastRI</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

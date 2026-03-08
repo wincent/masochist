@@ -1,0 +1,128 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Updating to Git 1.6.4.2 on Mac OS X 10.6 Snow Leopard • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Updating to Git 1.6.4.2 on Mac OS X 10.6 Snow Leopard</h1></div><div class="metadata"><relative-time created="1251608654" updated="1584053324">Created 8/30/2009, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/snow.leopard">snow.leopard</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Local update</h2>
+<p>Notes made while updating to <a href="/wiki/Git_1.6.4.2">Git 1.6.4.2</a> on <a href="/wiki/Mac_OS_X">Mac OS X</a> 10.6 <a href="/wiki/Snow_Leopard">Snow Leopard</a>:</p>
+<pre><code># working from a clone of the official upstream Git repo
+git fetch
+git tag -v v1.6.4.2
+
+# note: &quot;git co&quot; is an alias that I made for &quot;git checkout&quot;
+git co v1.6.4.2
+make clean
+make prefix=/usr/local test
+sudo make prefix=/usr/local install
+
+# inspect the changes in the Bash completion script
+diff -u ~/.git-completion.sh contrib/completion/git-completion.bash
+# no changes this time, so no need to update it
+[/tags/cp #cp] contrib/completion/git-completion.bash ~/.git-completion.sh
+
+# the pre-built man pages
+sudo make prefix=/usr/local quick-install-man
+
+# go back to the master branch rather than hanging around on a detached head
+git co master
+</code></pre>
+<h2>Remote update</h2>
+<p>I chose not to update the remote server this time as <a href="/wiki/Git_1.6.4.2">Git 1.6.4.2</a> doesn't seem to include any changes that are really relevant to its workload. See &quot;<a href="/wiki/Updating_to_Git_1.6.4">Updating to Git 1.6.4</a>&quot; for an example of the update procedure on <a href="/wiki/Red_Hat_Enterprise_Linux">Red Hat Enterprise Linux</a>.</p>
+<h3>Changes in <a href="/wiki/gitweb">gitweb</a></h3>
+<pre><code class="language-shell">$ git diff v1.6.4.1..v1.6.4.2 -- gitweb
+diff --git a/gitweb/gitweb.perl b/gitweb/gitweb.perl
+index 4f05194..2cb8327 100755
+--- a/gitweb/gitweb.perl
++++ b/gitweb/gitweb.perl
+@@ -405,7 +405,7 @@ sub gitweb_get_feature {
+                @{$feature{$name}{'default'}});
+        if (!$override) { return @defaults; }
+        if (!defined $sub) {
+-               warn &quot;feature $name is not overrideable&quot;;
++               warn &quot;feature $name is not overridable&quot;;
+                return @defaults;
+        }
+        return $sub-&gt;(@defaults);
+</code></pre>
+<h3>Other changes</h3>
+<p>Note that <code>git oneline</code> is an alias for <code>log --pretty=format:'%Cgreen%h%Creset %s'</code>:</p>
+<pre><code class="language-shell">$ git oneline v1.6.4.1..v1.6.4.2
+82c3e21 GIT 1.6.4.2
+e71c008 Remove unused t/t8005/iso8859-5.txt
+48ae73b Merge branch 'rc/maint-http-fix' into maint
+4b9fa0e http.c: set slot callback members to NULL when releasing object
+749086f Merge branch 'maint-1.6.3' into maint
+5e64650 Merge branch 'maint-1.6.2' into maint-1.6.3
+9319789 Fix overridable written with an extra 'e'
+891182f Merge branch 'maint-1.6.1' into maint-1.6.2
+66fd74e Merge branch 'maint-1.6.0' into maint-1.6.1
+82d97da Documentation: git-archive: mark --format as optional in summary
+a1eb73d Merge branch 'maint-1.5.6' into maint-1.6.0
+607a9e8 Round-down years in &quot;years+months&quot; relative date view
+d8526a4 git-log: allow --decorate[=short|full]
+8d95184 Minor improvement to the write-tree documentation
+21d0bc2 git-bisect: call the found commit &quot;*the* first bad commit&quot;
+1d2a7e0 Merge branch 'js/maint-cover-letter-non-ascii' into maint
+b813234 Merge branch 'jc/maint-clean-nested-dir-safety' into maint
+bd30037 Merge branch 'jk/maint-merge-msg-fix' into maint
+6b37b3d Merge branch 'jc/apply-epoch-patch' into maint
+6dfa213 Merge branch 'jp/symlink-dirs' into maint
+bb0c806 Merge branch 'maint-1.6.3' into maint
+9e4a90b Merge branch 'tr/maint-1.6.3-add-p-modeonly-fix' into maint-1.6.3
+800324c http.c: don't assume that urls don't end with slash
+3d79216 add -p: do not attempt to coalesce mode changes
+87ca2ea git add -p: demonstrate failure when staging both mode and hunk
+0a7f448 Correctly mark cover letters' encodings if they are not pure ASCII
+28e9cf6 Expose the has_non_ascii() function
+69a8b7c merge: indicate remote tracking branches in merge message
+751c597 merge: fix incorrect merge message for ambiguous tag/branch
+ce06461 add tests for merge message headings
+b6b0737 t6035-merge-dir-to-symlink depends on SYMLINKS prerequisite
+b6986d8 git-checkout: be careful about untracked symlinks
+7771675 lstat_cache: guard against full match of length of 'name' parameter
+4f6339b Demonstrate bugs when a directory is replaced with a symlink
+a0f4afb clean: require double -f options to nuke nested git repository and work tree
+c4593fa apply: notice creation/removal patches produced by GNU diff
+</code></pre>
+<p>For more detail, run <code>git log -p v1.6.4.1..v1.6.4.2</code>; the changes are small enough to make reviewing feasible:</p>
+<pre><code class="language-shell">$ git diff --stat v1.6.4.1..v1.6.4.2
+ Documentation/RelNotes-1.6.4.2.txt     |   32 +++++++++++
+ Documentation/git-archive.txt          |    2 +-
+ Documentation/git-clean.txt            |    3 +
+ Documentation/git-gc.txt               |    2 +-
+ Documentation/git-log.txt              |    8 ++-
+ Documentation/git-write-tree.txt       |    3 +-
+ Documentation/git.txt                  |    3 +-
+ GIT-VERSION-GEN                        |    2 +-
+ RelNotes                               |    2 +-
+ bisect.c                               |    2 +-
+ builtin-apply.c                        |   82 +++++++++++++++++++++++++++-
+ builtin-clean.c                        |    7 ++-
+ builtin-log.c                          |   20 ++++++-
+ builtin-merge.c                        |   20 ++++---
+ cache.h                                |    3 +
+ commit.h                               |    1 +
+ date.c                                 |    2 +-
+ dir.c                                  |   12 +++-
+ dir.h                                  |    5 +-
+ entry.c                                |   15 +++++-
+ git-add--interactive.perl              |    4 +
+ git-bisect.sh                          |    2 +-
+ gitweb/gitweb.perl                     |    2 +-
+ http.c                                 |   11 +++-
+ log-tree.c                             |   19 +-----
+ log-tree.h                             |    2 +-
+ pretty.c                               |   14 ++++-
+ refs.c                                 |    2 +-
+ revision.c                             |    2 +-
+ revision.h                             |    3 +
+ symlinks.c                             |    4 +
+ t/t3409-rebase-preserve-merges.sh      |    2 +-
+ t/t3701-add-interactive.sh             |   11 ++++
+ t/t4013-diff-various.sh                |    1 +
+ t/t4013/diff.log_--decorate=full_--all |   34 +++++++++++
+ t/t4132-apply-removal.sh               |   95 ++++++++++++++++++++++++++++++++
+ t/t4202-log.sh                         |    4 +-
+ t/t6030-bisect-porcelain.sh            |   18 +++---
+ t/t6035-merge-dir-to-symlink.sh        |   93 +++++++++++++++++++++++++++++++
+ t/t7300-clean.sh                       |   39 +++++++++++++
+ t/t7608-merge-messages.sh              |   60 ++++++++++++++++++++
+ t/t8005/iso8859-5.txt                  |    2 -
+ 42 files changed, 587 insertions(+), 63 deletions(-)
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

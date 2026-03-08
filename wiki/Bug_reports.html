@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Bug reports • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Bug reports</h1></div><div class="metadata"><relative-time created="1246363537" updated="1710259978">Created 6/30/2009, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Troubleshooting</h2>
+<p>About 90% of the time you can avoid filing a bug report by performing some basic troubleshooting first.</p>
+<h3>Rule out preference file corruption</h3>
+<p>Shut down the program, drag the preferences file to the Desktop, and then restart the program.</p>
+<p>Preference files are stored in <code>/Users/&lt;your user name&gt;/Library/Preferences/</code> and have names like <code>org.wincent.Synergy.plist</code>, or <code>com.wincent.WinSwitch.plist</code>.</p>
+<p>If the problem goes away, you know you had a corrupt preferences file. (<strong>Note:</strong> Your preferences file may contain your registration information so you should make sure that you have a copy of your license details before disposing of the file entirely.)</p>
+<h3>Try an uninstall/reinstall cycle</h3>
+<p>Sometimes in the day-to-day use of a system files get moved, deleted and overwritten. If uninstalling and then reinstalling fixes your problem then you'll know that your previous installation was somehow damaged.</p>
+<h3>Eliminate potential conflicts with third-party software</h3>
+<p>A good example of where third-party software can cause problems is with <a href="/wiki/Synergy">Synergy</a>, which talks to <a href="/wiki/iTunes">iTunes</a>. Before reporting a bug in Synergy you should review your system and see if you have any other third-party software installed that talks to iTunes and could be interfering. Try to reproduce the issue when the other software is uninstalled or disabled. If you can't reproduce it, then you know you've discovered a conflict.</p>
+<h3>Try from another user account</h3>
+<p>Create another account if you don't have one on your machine yet. If you can't reproduce the problem then you'll know something specific to your user account is triggering the problem — whether it be corrupt fonts or something bad in the caches — and this narrows the scope of the investigation.</p>
+<h3>Try another machine</h3>
+<p>Try reproducing the problem on another machine. This can help to identify factors which contribute to the problem (such as operating system versions on which the problem exists or don't exist; hardware and peripherals which appear related to the problem, and so forth).</p>
+<h3>Try rebooting</h3>
+<p>Rebooting returns your machine to what is hopefully a &quot;known good&quot; state, something that may not be true if your machine has been running for hours, days or weeks. If the problem goes away then you know that something in the environment was triggering the issue.</p>
+<h3>Check for a corrupt disk</h3>
+<p>If you are seeing generalize problems there may be an issue with a corrupt filesystem rather than a bug in a specific piece of software. Try using the &quot;First Aid&quot; tab of the Disk Utility (<code>/Applications/Utilities/Disk Utility</code>) to verify and possibly repair your disk(s).</p>
+<h2>Search first</h2>
+<p>If you can't solve the problem through troubleshooting as described above then you should file a bug report.</p>
+<p>But before you do, go to the <a href="/support">issue tracker</a> and perform a search. There may be an existing report already in the database, and adding a comment to that report rather than opening a new one will be easier for you and will help to get the problem solved more quickly.</p>
+<p>The idea of the public database is that bugs will get squished more quickly when people share information. By comparing similarities and differences between the experiences of different users, common factors can be identified, and causes targeted.</p>
+<h2>Reporting</h2>
+<p>It's very important that you provide high-quality information with your bug report. The more detail and accuracy in your report, the more likely that the bug will get fixed.</p>
+<h3>Include Crash Reporter logs</h3>
+<p>If your bug involves a crash, look for a crash log in <code>/Users/&lt;your user name&gt;/Library/Logs/CrashReporter/</code>.</p>
+<p>If the log entry is relatively short, you can paste it directly into your bug report. If the log is very long, you can email it to me at <a href="mailto:example@example.com">example@example.com</a>. (The ability to add attachments to the issue tracker is coming soon. Some products include a built in crash reporter which allows you to submit crash reports with a click.)</p>
+<h3>Use the Activity Monitor</h3>
+<p>If the program is hung (stuck, or &quot;beachballing&quot;) but hasn't crashed, you may be able to collect useful information by doing a sample with the Activity Monitor application (in <code>/Application/Utilities/</code>). Find the stuck process in the list, double-click it to get more information, and then click the &quot;Sample&quot; button. The output from the sample could prove useful in finding exactly where the program is stuck.</p>
+<h3>Include relevant <code>system.log</code> and <code>console.log</code> output</h3>
+<p>Use the <a href="/wiki/Console.app">Console.app</a> (in <code>/Applications/Utilities/</code>) to see if anything relevant was printed to the <code>system.log</code> or <code>console.log</code> files at the time of the problem.</p>
+<h3>Include system and version information</h3>
+<p>Tell me what operating system you are running (including the version) and the exact version of the program you're reporting the bug for.</p>
+<h3>Describe how to reproduce the problem</h3>
+<p>Reproducibility is the most important factor in getting a bug squished. The enemies of getting bugs fixed are vagueness and imprecision.</p>
+<p>Rather than being vague and saying &quot;it doesn't work&quot;, be precise and detailed and describe how &quot;when I click 'X' I expect to see 'Y' but instead see 'Z'&quot;. Provide a &quot;recipe&quot; describing the steps necessary to make the problem occur.</p>
+<h3>One bug per ticket</h3>
+<p>Make sure that your report only contains one problem.</p>
+<h2>About this page</h2>
+<p>This is an updated version of the article that I wrote in 2004 titled, &quot;<a href="http://wincent.dev/a/knowledge-base/archives/2004/11/how_to_file_a_g.php">How to file a good bug report</a>&quot;.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Peripherals • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Peripherals</h1></div><div class="metadata"><relative-time created="1749056996" updated="1765985439">Created 6/4/2025, updated 12/17/2025</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Notes on peripherals because, believe it or not, my cable management is so obsessive that actually getting around the back of my desk and figuring out what is plugged into what is kind of difficult.</p>
+<h2>Display</h2>
+<p><a href="https://www.benq.com/en-us/monitor/professional/pd2730s.html">BenQ PD2730s</a> (5K), which <a href="https://www.benq.com/en-us/monitor/professional/pd2730s/spec.html">has</a>:</p>
+<ul>
+<li>HDMI (v2.1): Using this to connect the desktop PC.</li>
+<li>DisplayPort (v1.4)</li>
+<li>Thunderbolt 4: Connected to Mac via dock, as described below (<a href="https://www.benq.com/en-us/campaign/monitor-for-mac/articles/how-do-i-connect-my-mac-m1-to-benq-monitor-update.html">BenQ recommends using Thunderbolt for connecting to Macs</a>)</li>
+</ul>
+<p><img src="/system/images/benq-pd2730s-ports.png" alt="benq-pd2730s-ports" /></p>
+<p>This is an upgrade from the <a href="https://www.benq.com/en-us/monitor/professional/pd2700u.html">BenQ 2700U</a> (4K), bringing the following spec bumps:</p>
+<ul>
+<li>3840x2160 resolution → 5120x2880</li>
+<li>1200:1 contrast ratio → 2000:1</li>
+<li>Increased color gamut (eg. 99% sRGDB / 99% Rec. 709 / 90% DCI-P3 → 100% / 100%/ 98%)</li>
+<li>HDMI 2.0 → 2.1</li>
+<li>The built-in speakers go from 3W → 5W.</li>
+</ul>
+<p>However, there is one notable downgrade: the monitor is thicker than the old one; too thick for the Elgato Facecam mount to sit in the center of the display (instead if has to sit towards the side, where the display is thinner). I'll have to find an alternative mount.</p>
+<p>For comparison, here are the ports on the old model.</p>
+<p><img src="/system/images/benq-pd2700u-ports.png" alt="benq-pd2700u-ports" /></p>
+<p>I never used the &quot;hub&quot; functionality in the old model because it was not reliable enough in my experience.</p>
+<h2>Dock</h2>
+<p><a href="https://www.caldigit.com/thunderbolt-5-dock-ts5-plus/">CalDigit TS5 Plus</a></p>
+<p><img src="/system/images/caldigit-ts5plus.png" alt="CalDigit TS5 Plus ports diagram" /></p>
+<p>On the front:</p>
+<ul>
+<li>USB-C port to Lightning + USB-C (via <a href="https://www.apple.com/es/shop/product/hrjs2zm/a/belt-cable-duo-pro-de-240-w-de-native-union-usb-c-a-usb-c-y-lightning">this expensive cable</a>): This port (the one on the right) offers 36W of &quot;offline&quot; charging<sup class="footnote-ref"><a href="#fn-offline" id="fnref-offline" data-footnote-ref>1</a></sup>, which I mostly use for the <a href="https://en.wikipedia.org/wiki/Magic_Trackpad">&quot;Magic&quot; Trackpad</a><sup class="footnote-ref"><a href="#fn-magic" id="fnref-magic" data-footnote-ref>2</a></sup> or random mobile phones.</li>
+</ul>
+<p>On the back, from left to right (as viewed from the back):</p>
+<ul>
+<li>Bottom row:
+<ul>
+<li>DisplayPort 2.1 connector: unused.</li>
+<li>Thunderbolt 5 (36W port): USB-C/Thunderbolt connector runs to monitor using BenQ-supplied Thunderbolt 4 cable.</li>
+<li><del>Thunderbolt 5 (36W port): USB-C/Thunderbolt connector running to micro-USB connector on power port of UGREEN switching hub; this provides 36W of &quot;offline&quot; power, which is more than the switch actually needs (it asks for 5V 2A; ie. 10W).</del><sup class="footnote-ref"><a href="#fn-off" id="fnref-off" data-footnote-ref>3</a></sup></li>
+<li>Thunderbolt 5 (host port, 140W): USB-C/Thunderbolt connector running to laptop (USB-C/Thunderbolt port)</li>
+<li>DC in (24V 13.75A): power in</li>
+</ul>
+</li>
+<li>Top row:
+<ul>
+<li>USB-A 3.2 Gen2: USB-A connector to data port (2) on back of UGREEN switching hub.</li>
+<li>10 GbE: Gigabit ethernet, via crossover cable to desktop PC</li>
+</ul>
+</li>
+</ul>
+<p>See <a href="https://www.caldigit.com/ts5-plus-and-element-5-hub-macos-firmware-update-procedures/">this page for firmware updates</a>. Last time I updated was 2025-11-11 (to v64.1).</p>
+<h2>USB switching hub</h2>
+<p><a href="https://www.amazon.es/dp/B0FF498RHP">UGREEN 2-in 7-out USB 3.0 switch</a>:</p>
+<ul>
+<li>Front (inputs, from left to right, as viewed from the front):
+<ul>
+<li>Micro-USB: remote control port (unused; I use the button on top of the unit instead)</li>
+<li>USB-C port: unused</li>
+<li>USB-C port: unused</li>
+<li>USB-C port: unused</li>
+<li>USB-A port: Realforce keyboard (terminating with a micro-USB connector)</li>
+<li>USB-A port: Elgato Facecam (terminating with a USB-C connector)</li>
+<li>USB-A port: RØDE AI-1 audio interface for microphone (terminating with a USB-C connector)</li>
+<li>USB-A port: <a href="https://www.amazon.es/dp/B07W6JG6Z7">Logitech MX Master</a> mouse radio receiver</li>
+</ul>
+</li>
+<li>Rear (from right to left, as viewed from the back):
+<ul>
+<li>Output 1: USB-A to USB-A cable to desktop PC</li>
+<li>Output 2: USB-A to USB-A cable to dock (for use with laptop)</li>
+<li>DC in (12V 2A, ie. 24W): power in</li>
+</ul>
+</li>
+</ul>
+<p><img src="/system/images/ugreen-ports.jpg" alt="UGREEN ports" /></p>
+<p>For comparison, here's what I had under the old model (a <a href="https://www.amazon.es/dp/B01N6GD9JO">UGREEN 4-port USB 3.0 switch</a>):</p>
+<ul>
+<li>Front (inputs, from left to right, as viewed from the front):
+<ul>
+<li>USB-A port: Realforce keyboard (terminating with a micro-USB connector); note, the keyboard itself has a small hub, but it's unused.</li>
+<li>USB-A port: <a href="https://rode.com/en-us/products/ai-1">RØDE AI-1</a> audio interface for microphone (terminating with a USB-C connector)</li>
+<li>USB-A port: Elgato Facecam (terminating with a USB-C connector)</li>
+<li>USB-A port: Radio receiver for the <a href="https://www.amazon.es/dp/B07W6JG6Z7">Logitech MX Master 3</a> mouse.</li>
+</ul>
+</li>
+<li>Rear (from right to left, as viewed from the back):
+<ul>
+<li>Output 1: USB-A to USB-A cable to desktop PC</li>
+<li>Output 2: USB-A to USB-A cable to dock (for use with laptop)</li>
+<li>Micro-USB: additional power in, which should be 5V 2A (ie. 10W) according to the manufacturer</li>
+</ul>
+</li>
+<li>Top (status lights, from left to right, as viewed from the front):
+<ul>
+<li>Output 1 active (desktop PC)</li>
+<li>Output 2 active (laptop)</li>
+</ul>
+</li>
+</ul>
+<p>Note on the ordering of the outputs/lights: I chose to do it this way so that the light on the left (output &quot;1&quot;, the PC) corresponds to the input-selection button to the <em>left</em> on the display; likewise, the light on the right (output &quot;2&quot;, the laptop) corresponds to the input-selection button to the <em>right</em> on the display.</p>
+<h2>UPS</h2>
+<p>I have APC Back-UPS Pro BR1600SI (1600VA/960W) UPS with the following ports:</p>
+<p><img src="/system/images/apc-back-ups-pro-br1600si-ports.png" alt="Back-UPS Pro ports" /></p>
+<p>There are ports on the back that offer surge protection and battery backup (labeled &quot;4&quot; in the diagram), and others that offer only surge protection (labeled &quot;7&quot; in the diagram); I'm only using the former<sup class="footnote-ref"><a href="#fn-overload" id="fnref-overload" data-footnote-ref>4</a></sup>; that is, I have cables with IEC C13/C14 connectors leading from the UPS to:</p>
+<ul>
+<li>The desktop computer.</li>
+<li>The monitor.</li>
+<li>The dock.</li>
+</ul>
+<p>The data connection on the UPS (labeled &quot;1&quot; in the diagram) runs to the desktop computer (because the laptop doesn't care about the power going out in the same way the desktop does).</p>
+<p>The UPS itself is plugged in (via port labeled &quot;3&quot; on the diagram) into power strip, in turn plugged into the wall.</p>
+<p>Items <em>not</em> plugged into the UPS include:</p>
+<ul>
+<li>Printer (plugged directly into power strip, in turn plugged into the wall).</li>
+<li>El Gato light (plugged into power brick mounted on table leg, in turn plugged into a white extension cable, in turn plugged into power strip, in turn plugged into the wall).</li>
+</ul>
+<h2>Appendix: A note on units</h2>
+<p>The documents provided by the manufacturers use a mixture of different units (volts, amps, and watts<sup class="footnote-ref"><a href="#fn-units" id="fnref-units" data-footnote-ref>5</a></sup>) in various places. In order to convert between different units, consider this relationship:</p>
+<pre><code>Power (Watts) = Voltage (Volts) × Current (Amps)
+</code></pre>
+<p>So, for example, as noted above, where above the USB switch says it wants to receive &quot;5V 2A&quot; over its Micro-USB port, that can be considered equivalent to 10W. So, plugging it into one of the 7.5W USB-A ports on the dock is insufficient, but using one of the 36W USB-C (Thunderbolt) ports is more than enough. Likewise, where the dock expects its power supply to deliver &quot;24V 13.75A&quot;, that equates to 330W overall.</p>
+<section class="footnotes" data-footnotes>
+<ol>
+<li id="fn-offline">
+<p>&quot;Offline&quot; means it provides power even when the &quot;host&quot; device — that is, the laptop — is not connected. This is true of all USB-C ports on the dock, the front USB-A port, and two of the rear USB-A ports. <a href="#fnref-offline" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="1" aria-label="Back to reference 1">↩</a></p>
+</li>
+<li id="fn-magic">
+<p>🤦‍♂️ <a href="#fnref-magic" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="2" aria-label="Back to reference 2">↩</a></p>
+</li>
+<li id="fn-off">
+<p>After adding the RØDE AI-1, I found the dock was no longer supplying power to the laptop, presumably because it was too taxed supplying power to the hub, so I removed this cable from the dock and replaced it with <a href="https://www.amazon.es/dp/B0B618DV8M">a separate power adapter</a> providing 15 W / 2 A (again, note that the hub says it optionally uses &quot;5V 2A; ie. 10W&quot;). However, I was still having problems with the dock not powering the laptop, so I tried out a different switch. That worked for less than 24 hours. Finally, a firmware update to the dock seemed to fix things definitively. <a href="#fnref-off" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="3" aria-label="Back to reference 3">↩</a></p>
+</li>
+<li id="fn-overload">
+<p>If the laptop, monitor, dock, and desktop are all running and under load, the UPS is probably not qualified to support all of these devices, but I'm not expecting to run them all <em>under load</em> very frequently, if ever, so I'm trusting that this is going to be ok. <a href="#fnref-overload" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="4" aria-label="Back to reference 4">↩</a></p>
+</li>
+<li id="fn-units">
+<p>I'm not an electrical engineer, but my understanding of these terms is as follows — <em>volts</em>: a measure of the difference in electrical potential energy (ie. capacity to do work, move charge around a circuit); <em>amps</em>: a measure of the current (charge) flowing through the circuit; <em>watts</em>: a measure of the rate of energy transfer. Given that amps and watts both describe transfer rates, it's helpful to realize that amps relate to <em>charge</em> (coulombs) while watts relate to <em>energy</em> (joules). Charge is a property of material that creates electric forces, energy is the more general capacity to do work (more general because it comes in many forms — such as kinetic, potential, and so on — and can be exchanged between them). <a href="#fnref-units" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="5" aria-label="Back to reference 5">↩</a></p>
+</li>
+</ol>
+</section>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

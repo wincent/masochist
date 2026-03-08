@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Neovim cheatsheet • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Neovim cheatsheet</h1></div><div class="metadata"><relative-time created="1726651754" updated="1736516595">Created 9/18/2024, updated 1/10/2025</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/neovim">neovim</a></li><li><a href="/tags/cheatsheet">cheatsheet</a></li></ul><div class="prerendered"><h2>Normal mode</h2>
+<ul>
+<li><code>]d</code>/<code>[d</code>: Move to next/previous diagnostic message.</li>
+</ul>
+<h2>Running prerelease versions</h2>
+<p>Download from the <a href="https://github.com/neovim/neovim/releases">releases page on GitHub</a>.</p>
+<p>Say you downloaded to <code>~/Downloads</code>, verify the signature, then unpack the archive:</p>
+<pre><code>cd ~Downloads
+tar xzf nvim-macos-arm64.tar.gz
+</code></pre>
+<p>And add to your <code>$PATH</code>; in my case, I use the <code>prepend_to</code> helper function <a href="https://github.com/wincent/wincent/blob/5ac2017cc008c2fd3f3f7244bf3f4801d7faf426/aspects/dotfiles/files/.zsh/path#L38-L73">defined here</a>, which prepends an item to the specified variable only if it is not already present:</p>
+<pre><code>prepend_to PATH &quot;$HOME/Downloads/nvim-macos-arm64/bin&quot;
+</code></pre>
+<p>If macOS complains about not being able to run the software because it cannot be verified, do this:</p>
+<pre><code>xattr -d com.apple.quarantine ~/Downloads/nvim-macos-arm64/bin/nvim
+</code></pre>
+<p>If it then complains along the lines of &quot;“lua.so” can’t be opened because Apple cannot check it for malicious software.&quot;, this is a sign that the bundled treesitter parsers also have tobe marked safe as well. Failure to do so means that Neovim will complain like this whenever you try to open a Lua file:</p>
+<pre><code>Error detected while processing BufReadPost Autocommands for &quot;*&quot;:
+Error executing lua callback: ...wnloads/nvim-macos-arm64/share/nvim/runtime/filetype.lua:36:
+BufRead Post Autocommands for &quot;*&quot;..
+FileType Autocommands for &quot;*&quot;..
+function &lt;SNR&gt;1_LoadFTPlugin[20]..
+script $HOME/Downloads/nvim-macos-arm64/share/nvim/runtime/ftplugin/lua.lua:
+Vim(runtime):E5113: Error while calling lua chunk:
+...im-macos-arm64/share/nvim/runtime/lua/vim/treesitter.lua:421:
+Parser could not be created for buffer 1 and language &quot;lua&quot; stack traceback:
+        [C]: in function 'assert'
+        ...im-macos-arm64/share/nvim/runtime/lua/vim/treesitter.lua:421: in function 'start'
+        ...ads/nvim-macos-arm64/share/nvim/runtime/ftplugin/lua.lua:2: in main chunk
+        [C]: in function 'nvim_cmd'
+        ...wnloads/nvim-macos-arm64/share/nvim/runtime/filetype.lua:36: in function &lt;...wnloads/nvim-macos-arm64/share/nvim/runtime/filetype.lua:35&gt;
+        [C]: in function 'pcall'
+        vim/shared.lua: in function &lt;vim/shared.lua:0&gt;
+        [C]: in function '_with'
+        ...wnloads/nvim-macos-arm64/share/nvim/runtime/filetype.lua:35: in function &lt;...wnloads/nvim-macos-arm64/share/nvim/runtime/filetype.lua:10&gt;
+stack traceback:
+        [C]: in function '_with'
+        ...wnloads/nvim-macos-arm64/share/nvim/runtime/filetype.lua:35: in function &lt;...wnloads/nvim-macos-arm64/share/nvim/runtime/filetype.lua:10&gt;
+</code></pre>
+<p>The fix, then, is:</p>
+<pre><code>$ find . -name '*.so'
+./lib/nvim/parser/c.so
+./lib/nvim/parser/vim.so
+./lib/nvim/parser/markdown.so
+./lib/nvim/parser/vimdoc.so
+./lib/nvim/parser/lua.so
+./lib/nvim/parser/query.so
+./lib/nvim/parser/markdown_inline.so
+$ find . -name '*.so' -exec xattr -d com.apple.quarantine {} \;
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Vim_cheatsheet">Vim cheatsheet</a></li>
+</ul>
+<!-- References -->
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

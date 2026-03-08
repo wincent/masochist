@@ -1,0 +1,2 @@
+
+d4f5d36 Prevent "search" .excerpt class from clobbering blog styles

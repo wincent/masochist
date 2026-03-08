@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Server reboot • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/server-reboot">Server reboot</a></h1><div class="metadata"><relative-time created="1142248140" updated="1710259978">Created 3/13/2006, updated 3/12/2024</relative-time><span>3 minute read</span></div><div class="prerendered"><p>Tonight I rebooted the server for the first time since moving to <a href="http://service.bfast.com/bfast/click?bfmid=30735717&amp;siteid=41506187&amp;bfpage=hosting_headaches">Rackspace</a> back in August 2005. It <a href="http://wincent.dev/a/about/wincent/weblog/archives/2005/11/some_words_of_p.php">hasn't skipped a beat</a> since then (218 days of uptime with incredibly solid network connectivity) but it was nevertheless time to perform a kernel upgrade so as to pull down the latest security fixes from <a href="http://www.redhat.com/">Red Hat</a>.</p>
+<h4>How it works</h4>
+<p>As part of the <a href="https://rhn.redhat.com/help/about.pxt">Red Hat Network</a> you get automated security updates on a daily basis. Since switching to Rackspace I've received daily email reports informing me of automated updates applied to <a href="http://httpd.apache.org/">Apache</a>, <a href="http://www.php.net/">PHP</a> and many other pieces of software on the server. These may not be the bleeding-edge latest versions of the software, but Red Hat makes a point of back-porting security fixes.</p>
+<p>Yet for some time now my daily email reports have ended with this:</p>
+<pre><code>The following Packages were marked to be skipped by your configuration:
+
+
+
+Name                                    Version        Rel  Reason
+-------------------------------------------------------------------------------
+kernel                                  2.4.21         37.0.1.ELPkg name/pattern
+kernel-doc                              2.4.21         37.0.1.ELPkg name/pattern
+kernel-source                           2.4.21         37.0.1.ELPkg name/pattern
+redhat-release                          3ES            13.6.2Config modified
+
+
+
+All packages are currently up to date
+</code></pre>
+<p>I presumed that Rackspace, in their wisdom, didn't automatically apply kernel updates because they may prove disruptive. Perhaps they only apply them for particularly critical vulnerabilities. But today I saw an article in their knowledge base stating that kernel updates are skipped in the default configuration for <code>up2date</code>; that is, you'll never ever get a kernel update unless you do it yourself (or ask them to do it for you; most probably for free).</p>
+<h4>How to upgrade the kernel</h4>
+<p>It turns out that it couldn't be easier. Back in my FreeBSD days when I upgraded the kernel I built it myself and then installed it. With RedHat it's a simple matter of doing:</p>
+<pre><code>sudo up2date -uf kernel kernel-source kernel-doc
+</code></pre>
+<p>The kernel is downloaded, unpacked and installed. That's all you have to do. When you're ready, reboot to start using the new kernel:</p>
+<pre><code>sudo reboot
+</code></pre>
+<p>This is without a doubt the quickest and most painless kernel upgrade I've ever done. By looking at the timestamps in entries in <code>/var/log/boot.log</code> and <code>/var/log/messages</code> I can see that precisely 92 seconds elapsed between Apache shutting down and starting up again. <a href="http://sendmail.org/">Sendmail</a> was down for 87 seconds.</p>
+<h4>Preflight</h4>
+<p>Of course, being the cautious fellow I am I didn't just run <code>up2date</code> and forget about it. I also did a number of &quot;preflight&quot; and &quot;postflight&quot; checks to make sure that everything worked as it should.</p>
+<pre><code>$ uptime
+ 18:48:27  up 218 days,  6:37,  1 user,  load average: 0.00, 0.00, 0.00
+$ cat /etc/redhat-release
+Red Hat Enterprise Linux ES release 3 (Taroon Update 5)
+$ uname -a
+Linux s69819.example.com 2.4.21-32.0.1.EL #1 Tue May 17 17:55:54 EDT 2005 i686 athlon i386 GNU/Linux
+</code></pre>
+<p>I looked in <code>/boot/</code> to make sure that the kernel files were correctly installed, and confirmed that the appropriate modifications to <code>/boot/grub/grub.conf</code> had been made. I also did a <code>sudo up2date -uf redhat-release</code> after looking at exactly what files were included in the &quot;redhat-release&quot; package and determining that doing the update wouldn't break anything.</p>
+<h4>Postflight</h4>
+<pre><code>$ uptime
+ 19:23:01  up 2 min,  3 users,  load average: 0.12, 0.13, 0.06
+$ cat /etc/redhat-release
+Red Hat Enterprise Linux ES release 3 (Taroon Update 6)
+$ uname -a
+Linux s69819.example.com 2.4.21-37.0.1.EL #1 Wed Jan 11 18:43:39 EST 2006 i686 athlon i386 GNU/Linux
+</code></pre>
+<p>I did a <code>sudo service --status-all</code> and to my surprise saw that <a href="http://www.gnu.org/software/mailman/index.html">Mailman</a> and <a href="http://www.clamav.net/">clamd</a> were not running. A <code>sudo chkconfig --list</code> revealed that they were not set to launch at boot time. The problem was that I had done the following when I configured them for the first time:</p>
+<pre><code>$ sudo service mailman start
+$ sudo chkconfig --add mailman
+</code></pre>
+<p>But had failed to do:</p>
+<pre><code>$ sudo chkconfig mailman on
+</code></pre>
+<p>It turns out that even though <code>clamd</code> was not running for a few minutes it didn't prevent mail delivery during that time. Mailman was even less of a worry given the amount of traffic on my mailing lists. So all in all I am very happy with the upgrade and will apply any other kernel updates in the future</p>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/all-quiet-on-the-western-front">← All Quiet on the Western Front</a></div><div class="post-nav-next"><a href="/blog/dstroot-install_name_tool-and-interface-builder-palettes">DSTROOT, install_name_tool and Interface Builder palettes →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

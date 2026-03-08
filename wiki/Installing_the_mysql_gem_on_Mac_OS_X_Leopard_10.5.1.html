@@ -1,0 +1,328 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Installing the mysql gem on Mac OS X Leopard 10.5.1 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Installing the mysql gem on Mac OS X Leopard 10.5.1</h1></div><div class="metadata"><relative-time created="1201246399" updated="1584053324">Created 1/25/2008, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/leopard">leopard</a></li><li><a href="/tags/ruby">ruby</a></li><li><a href="/tags/rails">rails</a></li><li><a href="/tags/mysql">mysql</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>As noted in my <a href="/wiki/Leopard_set-up_notes">Leopard set-up notes</a>, I couldn't get <a href="/wiki/MySQL">MySQL</a> to build on <a href="/wiki/Leopard">Leopard</a> 10.5.0, but I could with 10.5.1.</p>
+<p>On upgrading to Rails 2.0RC2 (see &quot;<a href="/wiki/Upgrading_to_Rails_2.0RC2_on_Mac_OS_X_Leopard">Upgrading to Rails 2.0RC2 on Mac OS X Leopard</a>&quot;) I noticed that they'd added some instructions to the <code>config/database.yml</code> file for installing the mysql <a href="/wiki/gem">gem</a> on Leopard:</p>
+<pre><code>sudo env ARCHFLAGS=&quot;-arch i386&quot; gem install mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
+</code></pre>
+<p>Looks like this advice probably originated from <a href="http://trac.macosforge.org/projects/ruby/wiki/Troubleshooting">here</a>.</p>
+<p>But note, when I just did a plain <code>./configure &amp;&amp; make</code> for MySQL, the <code>mysql_config</code> tool was <em>not</em> installed at that path, but at <code>/usr/local/bin/mysql_config</code> instead.</p>
+<p>So, in my case, I had to do this (note the different value for <code>--with-mysql-config</code>):</p>
+<pre><code>$ sudo env ARCHFLAGS=&quot;-arch i386&quot; gem install mysql -- --with-mysql-config=/usr/local/bin/mysql_config
+Bulk updating Gem source index for: http://gems.rubyforge.org
+Select which gem to install for your platform (universal-darwin9.0)
+ 1. mysql 2.7.3 (mswin32)
+ 2. mysql 2.7.1 (mswin32)
+ 3. mysql 2.7 (ruby)
+ 4. mysql 2.6 (ruby)
+ 5. Skip this gem
+ 6. Cancel installation
+&gt; 3
+Building native extensions.  This could take a while...
+Successfully installed mysql-2.7
+</code></pre>
+<h2>Update</h2>
+<p>Some time later I started seeing entries like this in my <a href="/wiki/Rails">Rails</a> logs:</p>
+<pre><code>WARNING: You're using the Ruby-based MySQL library that ships with Rails.
+This library is not suited for production. Please install the C-based MySQL
+library instead (gem install mysql).
+</code></pre>
+<p>Yet it does seem that it is installed:</p>
+<pre><code>$ gem list | grep mysql
+mysql (2.7)
+</code></pre>
+<p>Given that a later version is available:</p>
+<pre><code>$ gem list --remote|grep mysql
+activerecord-jdbcmysql-adapter (0.7.1, 0.7, 0.6)
+do_mysql (0.2.3, 0.2.2, 0.2.1, 0.2.0)
+jdbc-mysql (5.0.4)
+mysql (2.7.3, 2.7.1, 2.7, 2.6, 2.5.1)
+mysql_replication_adapter (0.4.0, 0.2.0, 0.1.1, 0.1.0)
+mysql_retry_lost_connection (0.0.1)
+</code></pre>
+<p>I decided to proceeded with a reinstallation. My initial attempt naturally didn't work, as I had already forgotten about the workaround necessary to install the <a href="/wiki/gem">gem</a> on <a href="/wiki/Leopard">Leopard</a>:</p>
+<pre><code>$ sudo gem install mysql
+Password:
+Updating metadata for 57 gems from http://gems.rubyforge.org
+.........................................................
+complete
+Building native extensions.  This could take a while...
+ERROR:  Error installing mysql:
+	ERROR: Failed to build gem native extension.
+
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby extconf.rb install mysql
+checking for mysql_query() in -lmysqlclient... no
+checking for main() in -lm... yes
+checking for mysql_query() in -lmysqlclient... no
+checking for main() in -lz... yes
+checking for mysql_query() in -lmysqlclient... no
+checking for main() in -lsocket... no
+checking for mysql_query() in -lmysqlclient... no
+checking for main() in -lnsl... no
+checking for mysql_query() in -lmysqlclient... no
+
+
+Gem files will remain installed in /Library/Ruby/Gems/1.8/gems/mysql-2.7 for inspection.
+Results logged to /Library/Ruby/Gems/1.8/gems/mysql-2.7/gem_make.out
+</code></pre>
+<p>A quick <a href="/wiki/Google">Google</a> (too quick, seeing as I didn't find this page again reminding me that I'd already been through this once before!) suggested that I need to do the following, which also didn't work:</p>
+<pre><code>$ sudo gem install mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
+Password:
+Building native extensions.  This could take a while...
+ERROR:  Error installing mysql:
+	ERROR: Failed to build gem native extension.
+
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby extconf.rb install mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
+checking for mysql_ssl_set()... no
+checking for mysql.h... yes
+creating Makefile
+
+make
+gcc -I. -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0 -I. -DHAVE_MYSQL_H  -I/usr/local/mysql/include/mysql -fno-common -arch ppc -arch i386 -Os -pipe -fno-common  -c mysql.c
+cc -arch ppc -arch i386 -pipe -bundle -o mysql.bundle mysql.o -L&quot;.&quot; -L&quot;/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib&quot; -L. -arch ppc -arch i386    -lruby -L/usr/local/mysql/lib/mysql -lmysqlclient -lz -lm  -lpthread -ldl -lm
+ld: warning in /usr/local/mysql/lib/mysql/libmysqlclient.dylib, file is not of required architecture
+Undefined symbols for architecture ppc:
+  &quot;_mysql_store_result&quot;, referenced from:
+      _store_result in mysql.o
+      _query in mysql.o
+  &quot;_mysql_stmt_errno&quot;, referenced from:
+      _mysql_stmt_raise in mysql.o
+      _stmt_prepare in mysql.o
+      _stmt_result_metadata in mysql.o
+  &quot;_mysql_stmt_error&quot;, referenced from:
+      _mysql_stmt_raise in mysql.o
+  &quot;_mysql_options&quot;, referenced from:
+      _options in mysql.o
+  &quot;_mysql_refresh&quot;, referenced from:
+      _refresh in mysql.o
+      _reload in mysql.o
+  &quot;_mysql_get_client_version&quot;, referenced from:
+      _client_version in mysql.o
+  &quot;_mysql_stmt_bind_result&quot;, referenced from:
+      _stmt_bind_result in mysql.o
+      _stmt_execute in mysql.o
+  &quot;_mysql_fetch_lengths&quot;, referenced from:
+      _fetch_hash2 in mysql.o
+      _fetch_lengths in mysql.o
+      _fetch_row in mysql.o
+  &quot;_mysql_character_set_name&quot;, referenced from:
+      _character_set_name in mysql.o
+  &quot;_mysql_set_server_option&quot;, referenced from:
+      _query in mysql.o
+      _set_server_option in mysql.o
+  &quot;_mysql_real_query&quot;, referenced from:
+      _query in mysql.o
+      _query in mysql.o
+  &quot;_mysql_num_fields&quot;, referenced from:
+      _fetch_hash2 in mysql.o
+      _fetch_fields in mysql.o
+      _fetch_field_direct in mysql.o
+      _fetch_lengths in mysql.o
+      _fetch_row in mysql.o
+      _num_fields in mysql.o
+      _stmt_prepare in mysql.o
+  &quot;_mysql_ping&quot;, referenced from:
+      _ping in mysql.o
+  &quot;_mysql_free_result&quot;, referenced from:
+      _free_mysqlres in mysql.o
+      _free_mysqlstmt_memory in mysql.o
+      _free_mysqlstmt in mysql.o
+      _list_dbs in mysql.o
+      _list_tables in mysql.o
+      _res_free in mysql.o
+      _stmt_free_result in mysql.o
+  &quot;_mysql_rollback&quot;, referenced from:
+      _rollback in mysql.o
+  &quot;_mysql_next_result&quot;, referenced from:
+      _query in mysql.o
+      _next_result in mysql.o
+  &quot;_mysql_data_seek&quot;, referenced from:
+      _data_seek in mysql.o
+  &quot;_mysql_autocommit&quot;, referenced from:
+      _autocommit in mysql.o
+  &quot;_mysql_debug&quot;, referenced from:
+      _my_debug in mysql.o
+  &quot;_mysql_stmt_affected_rows&quot;, referenced from:
+      _stmt_affected_rows in mysql.o
+  &quot;_mysql_stmt_insert_id&quot;, referenced from:
+      _stmt_insert_id in mysql.o
+  &quot;_mysql_use_result&quot;, referenced from:
+      _use_result in mysql.o
+  &quot;_mysql_stmt_fetch&quot;, referenced from:
+      _stmt_fetch in mysql.o
+  &quot;_mysql_stmt_free_result&quot;, referenced from:
+      _stmt_free_result in mysql.o
+  &quot;_mysql_field_seek&quot;, referenced from:
+      _field_seek in mysql.o
+  &quot;_mysql_stmt_param_count&quot;, referenced from:
+      _stmt_param_count in mysql.o
+      _stmt_prepare in mysql.o
+  &quot;_mysql_fetch_row&quot;, referenced from:
+      _list_dbs in mysql.o
+      _list_tables in mysql.o
+      _fetch_hash2 in mysql.o
+      _fetch_row in mysql.o
+  &quot;_mysql_sqlstate&quot;, referenced from:
+      _mysql_raise in mysql.o
+      _sqlstate in mysql.o
+  &quot;_mysql_stmt_sqlstate&quot;, referenced from:
+      _mysql_stmt_raise in mysql.o
+      _stmt_sqlstate in mysql.o
+  &quot;_mysql_list_processes&quot;, referenced from:
+      _list_processes in mysql.o
+  &quot;_mysql_real_escape_string&quot;, referenced from:
+      _real_escape_string in mysql.o
+  &quot;_mysql_stmt_bind_param&quot;, referenced from:
+      _stmt_execute in mysql.o
+  &quot;_mysql_field_count&quot;, referenced from:
+      _field_count in mysql.o
+      _query in mysql.o
+      _query in mysql.o
+  &quot;_mysql_field_tell&quot;, referenced from:
+      _field_tell in mysql.o
+  &quot;_mysql_stmt_result_metadata&quot;, referenced from:
+      _stmt_prepare in mysql.o
+      _stmt_result_metadata in mysql.o
+  &quot;_mysql_list_tables&quot;, referenced from:
+      _list_tables in mysql.o
+  &quot;_mysql_stmt_prepare&quot;, referenced from:
+      _stmt_prepare in mysql.o
+  &quot;_mysql_get_client_info&quot;, referenced from:
+      _client_info in mysql.o
+  &quot;_mysql_thread_id&quot;, referenced from:
+      _thread_id in mysql.o
+  &quot;_mysql_stmt_execute&quot;, referenced from:
+      _stmt_execute in mysql.o
+  &quot;_mysql_stmt_init&quot;, referenced from:
+      _stmt_init in mysql.o
+  &quot;_mysql_stat&quot;, referenced from:
+      _my_stat in mysql.o
+  &quot;_mysql_stmt_field_count&quot;, referenced from:
+      _stmt_field_count in mysql.o
+  &quot;_mysql_close&quot;, referenced from:
+      _free_mysql in mysql.o
+      _my_close in mysql.o
+  &quot;_mysql_stmt_data_seek&quot;, referenced from:
+      _stmt_data_seek in mysql.o
+  &quot;_mysql_fetch_fields&quot;, referenced from:
+      _fetch_hash2 in mysql.o
+      _fetch_fields in mysql.o
+      _stmt_bind_result in mysql.o
+      _stmt_execute in mysql.o
+      _stmt_prepare in mysql.o
+  &quot;_mysql_list_fields&quot;, referenced from:
+      _list_fields in mysql.o
+  &quot;_mysql_row_seek&quot;, referenced from:
+      _row_seek in mysql.o
+  &quot;_mysql_change_user&quot;, referenced from:
+      _change_user in mysql.o
+  &quot;_mysql_stmt_row_seek&quot;, referenced from:
+      _stmt_row_seek in mysql.o
+  &quot;_mysql_stmt_close&quot;, referenced from:
+      _free_mysqlstmt in mysql.o
+      _stmt_close in mysql.o
+  &quot;_mysql_info&quot;, referenced from:
+      _info in mysql.o
+  &quot;_mysql_init&quot;, referenced from:
+      _init in mysql.o
+      _real_connect in mysql.o
+  &quot;_mysql_get_server_info&quot;, referenced from:
+      _server_info in mysql.o
+  &quot;_mysql_fetch_field_direct&quot;, referenced from:
+      _fetch_field_direct in mysql.o
+  &quot;_mysql_dump_debug_info&quot;, referenced from:
+      _dump_debug_info in mysql.o
+  &quot;_mysql_row_tell&quot;, referenced from:
+      _row_tell in mysql.o
+  &quot;_mysql_real_connect&quot;, referenced from:
+      _real_connect in mysql.o
+      _real_connect2 in mysql.o
+  &quot;_mysql_stmt_row_tell&quot;, referenced from:
+      _stmt_row_tell in mysql.o
+  &quot;_mysql_kill&quot;, referenced from:
+      _my_kill in mysql.o
+  &quot;_mysql_num_rows&quot;, referenced from:
+      _list_dbs in mysql.o
+      _list_tables in mysql.o
+      _num_rows in mysql.o
+  &quot;_mysql_warning_count&quot;, referenced from:
+      _warning_count in mysql.o
+  &quot;_mysql_stmt_num_rows&quot;, referenced from:
+      _stmt_num_rows in mysql.o
+  &quot;_mysql_stmt_attr_set&quot;, referenced from:
+      _stmt_init in mysql.o
+  &quot;_mysql_get_server_version&quot;, referenced from:
+      _query in mysql.o
+      _server_version in mysql.o
+  &quot;_mysql_more_results&quot;, referenced from:
+      _more_results in mysql.o
+  &quot;_mysql_select_db&quot;, referenced from:
+      _select_db in mysql.o
+  &quot;_mysql_stmt_store_result&quot;, referenced from:
+      _stmt_execute in mysql.o
+  &quot;_mysql_get_host_info&quot;, referenced from:
+      _host_info in mysql.o
+  &quot;_mysql_commit&quot;, referenced from:
+      _commit in mysql.o
+  &quot;_mysql_shutdown&quot;, referenced from:
+      _my_shutdown in mysql.o
+  &quot;_mysql_list_dbs&quot;, referenced from:
+      _list_dbs in mysql.o
+  &quot;_mysql_affected_rows&quot;, referenced from:
+      _affected_rows in mysql.o
+  &quot;_mysql_insert_id&quot;, referenced from:
+      _insert_id in mysql.o
+  &quot;_mysql_fetch_field&quot;, referenced from:
+      _fetch_field in mysql.o
+  &quot;_mysql_get_proto_info&quot;, referenced from:
+      _proto_info in mysql.o
+  &quot;_mysql_errno&quot;, referenced from:
+      _mysql_raise in mysql.o
+      _my_close in mysql.o
+      _my_errno in mysql.o
+  &quot;_mysql_error&quot;, referenced from:
+      _mysql_raise in mysql.o
+      _my_error in mysql.o
+  &quot;_mysql_escape_string&quot;, referenced from:
+      _escape_string in mysql.o
+ld: symbol(s) not found for architecture ppc
+collect2: ld returned 1 exit status
+lipo: can't open input file: /var/tmp//cceVkwKg.out (No such file or directory)
+make: *** [mysql.bundle] Error 1
+
+
+Gem files will remain installed in /Library/Ruby/Gems/1.8/gems/mysql-2.7 for inspection.
+Results logged to /Library/Ruby/Gems/1.8/gems/mysql-2.7/gem_make.out
+</code></pre>
+<p>Finally I found a bunch of other results which indicated what the real solution to the problem would be:</p>
+<ul>
+<li><a href="http://trac.macosforge.org/projects/ruby/wiki/Troubleshooting">http://trac.macosforge.org/projects/ruby/wiki/Troubleshooting</a></li>
+<li><a href="http://www.zonageek.com/blog/archivos/2007/10/25-162515.php">http://www.zonageek.com/blog/archivos/2007/10/25-162515.php</a></li>
+<li><a href="http://www.notsostupid.com/blog/2007/10/25/ruby-leopard-and-gems/">http://www.notsostupid.com/blog/2007/10/25/ruby-leopard-and-gems/</a></li>
+<li><a href="http://nullcreations.net/entry/installing-ruby-mysql-gem-in-osx-10-5-leopard">http://nullcreations.net/entry/installing-ruby-mysql-gem-in-osx-10-5-leopard</a></li>
+<li><a href="http://reinh.com/2007/11/19/leopard-s-rubygem-macports-mysql-and-installing-the-mysql-gem">http://reinh.com/2007/11/19/leopard-s-rubygem-macports-mysql-and-installing-the-mysql-gem</a></li>
+</ul>
+<!-- -->
+<pre><code>$ sudo -s
+Password:
+bash-3.2# ARCHFLAGS=&quot;-arch i386&quot; gem install mysql -- --with-mysql-config=/usr/local/mysql/bin/mysql_config
+Updating metadata for 49 gems from http://gems.rubyforge.org
+.................................................
+complete
+Building native extensions.  This could take a while...
+Successfully installed mysql-2.7
+1 gem installed
+</code></pre>
+<p>The <code>install_name_tool</code> trick doesn't seem to be necessary with this version of the <a href="/wiki/gem">gem</a> because the reference to the <code>libmysqlclient.15.dylib</code> is already pointing to the right place:</p>
+<pre><code>bash-3.2# otool -L /usr/local/mysql/lib/mysql/libmysqlclient.15.0.0.dylib
+/usr/local/mysql/lib/mysql/libmysqlclient.15.0.0.dylib:
+	/usr/local/mysql/lib/mysql/libmysqlclient.15.dylib (compatibility version 16.0.0, current version 16.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 111.0.0)
+	/usr/lib/libz.1.dylib (compatibility version 1.0.0, current version 1.2.3)
+	/usr/lib/libgcc_s.1.dylib (compatibility version 1.0.0, current version 1.0.0)
+bash-3.2# ls -l /usr/local/mysql/lib/mysql/libmysqlclient.15.dylib
+lrwxr-xr-x  1 root  wheel  27 Nov 30 10:45 /usr/local/mysql/lib/mysql/libmysqlclient.15.dylib -&gt; libmysqlclient.15.0.0.dylib
+</code></pre>
+<p>Points of interest:</p>
+<ul>
+<li>The warnings in the <a href="/wiki/Rails">Rails</a> log have gone away</li>
+<li>But notice that the reported version of the <a href="/wiki/gem">gem</a> is still 2.7, just like the one that was already installed, and not 2.7.3 as is reported as being available by <code>gem list --remote</code></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

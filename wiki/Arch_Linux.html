@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Arch Linux • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Arch Linux</h1></div><div class="metadata"><relative-time created="1509155119" updated="1509155119">10/28/2017</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/arch">arch</a></li><li><a href="/tags/linux">linux</a></li></ul><div class="prerendered"><h2>Experimenting with Arch in VirtualBox</h2>
+<p>Under the virtual machine &quot;Settings&quot; → &quot;Ports&quot; → &quot;USB&quot; → &quot;Enable USB Controller&quot; set &quot;USB 2.0 (ECHI) Controller&quot;.</p>
+<p><a href="https://www.youtube.com/watch?v=GKdPSGb9f5s">https://www.youtube.com/watch?v=GKdPSGb9f5s</a></p>
+<p>First try here I chose GPT for partition table format, which doesn't seem to have been a good choice. Need to do MBR instead.</p>
+<pre><code>loadkeys colemak # :-)
+ping -c 3 google.com
+pacman -Syy
+pacman -S --noconfirm reflector
+reflector -c &quot;United States&quot; -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
+fdisk -l
+cfdisk /dev/sda # choose dos (mbr), not gpt (at least in VirtualBox); make it bootable
+mkfs.ext4 /dev/sda1
+mount /dev/sda1 /mnt
+lsblk
+pacstrap -i /mnt base base-devel
+genfstab -U -p /mnt &gt;&gt; /mnt/etc/fstab
+arch-chroot /mnt /bin/bash
+vi /etc/locale.gen # uncomment desired locale en_US.UTF-8 UTF-8
+locale-gen
+ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+hwclock --systohc --utc
+echo archvm &gt; /etc/hostname
+vi /etc/hosts # add 127.0.1.1 localhost.localdomain archvm
+echo KEYMAP=colemak &gt; /etc/vconsole.conf
+systemctl enable dhcpcd
+passwd # pass
+pacman -S --noconfirm grub
+grub-install /dev/sda # errors/warnings about gpt... may need to try again
+grub-mkconfig -o /boot/grub/grub.cfg
+exit
+umount -R /mnt
+reboot
+
+useradd -m -g users -G wheel -s /bin/bash glh
+passwd glh # pass
+visudo # allow wheel to sudo
+exit
+
+sudo pacman -S xorg xorg-xinit
+echo 'exec i3' &gt; ~/.xinitrc
+sudo pacman -S i3 sddm rxvt-unicode
+sudo systemctl enable sddm.service
+startx
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

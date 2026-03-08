@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Updating to nginx 1.0.1 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Updating to nginx 1.0.1</h1></div><div class="metadata"><relative-time created="1304815114" updated="1495119989">Created 5/8/2011, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/nginx">nginx</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Updating on Fedora</h2>
+<p>These are update notes. For more detail, see &quot;<a href="/wiki/Updating_to_nginx_0.8.54_and_nginx_upload_module_2.2.0_on_Fedora_8">Updating to nginx 0.8.54 and nginx upload module 2.2.0 on Fedora 8</a>&quot;.</p>
+<pre><code class="language-shell">$ curl -O http://nginx.org/download/nginx-1.0.1.tar.gz \
+       -O http://nginx.org/download/nginx-1.0.1.tar.gz.asc
+$ gpg --verify nginx-1.0.1.tar.gz.asc
+$ tar xzvf nginx-1.0.1.tar.gz
+$ cd nginx-1.0.1
+$ ./configure --prefix=/usr/nginx --with-http_ssl_module --add-module=../vkholodkov-nginx-upload-module-2ec4e4f
+$ make
+$ ps auxww | grep nginx # note old master process PID
+$ sudo -s
+# make install
+# kill -s USR2 17998    # advise old master process to start a new master process using updated binary
+# kill -s WINCH 17998   # gracefully shut down old worker processes
+# kill -s QUIT 17998    # exit old master process
+</code></pre>
+<h2>Updating on Mac OS X</h2>
+<p>These are update notes. For original installation notes, see &quot;<a href="/wiki/Installing_nginx_0.8.54_on_Mac_OS_X_10.6.6_Snow_Leopard">Installing nginx 0.8.54 on Mac OS X 10.6.6 Snow Leopard</a>&quot;.</p>
+<pre><code class="language-shell">$ curl -O http://nginx.org/download/nginx-1.0.1.tar.gz \
+       -O http://nginx.org/download/nginx-1.0.1.tar.gz.asc
+$ gpg --verify nginx-1.0.1.tar.gz.asc
+$ tar xzvf nginx-1.0.1.tar.gz
+$ cd nginx-1.0.1
+$ ./configure --prefix=/usr/nginx --with-http_ssl_module --add-module=../vkholodkov-nginx-upload-module-2ec4e4f
+$ make
+$ sudo make install
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Upgrading from WordPress 2.0.5 to 2.0.6 using Subversion • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Upgrading from WordPress 2.0.5 to 2.0.6 using Subversion</h1></div><div class="metadata"><relative-time created="1168943060" updated="1495119989">Created 1/16/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/wordpress">wordpress</a></li><li><a href="/tags/subversion">subversion</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>The are the upgrade notes for the <a href="/wiki/WordPress">WordPress</a> 2.0.5 to 2.0.6 upgrade using <a href="/wiki/Subversion">Subversion</a> (based on previous notes, &quot;<a href="/wiki/Upgrading_from_WordPress_2.0.4_to_2.0.5_using_Subversion">Upgrading from WordPress 2.0.4 to 2.0.5 using Subversion</a>&quot;).</p>
+<pre><code>OLD_WP_VERSION=&quot;2.0.5&quot;
+NEW_WP_VERSION=&quot;2.0.6&quot;
+PUBLIC_HTML_CONTAINING_WP=&quot;path_to_public_html_folder_where_wp_lives&quot;
+DATABASE_USER=&quot;database_user&quot;
+DATABASE_NAME=&quot;database_name&quot;
+APACHE_USER=&quot;user_that_apache_runs_as&quot;
+
+# backup the database
+sudo -v
+sudo mysqldump --opt -u &quot;${DATABASE_USER}&quot; -p -h localhost \
+    &quot;${DATABASE_NAME}&quot; | bzip2 -c &gt; ~/wp-${OLD_WP_VERSION}-db-backup.tar.bz2
+
+# backup the installed files
+cd &quot;${PUBLIC_HTML_CONTAINING_WP}&quot;
+sudo tar -c -v wp &gt; ~/wp-${OLD_WP_VERSION}-files-backup.tar
+gzip --verbose -9 ~/wp-${OLD_WP_VERSION}-files-backup.tar
+
+# after disabling all plug-ins
+cd wp
+svn info
+sudo -u &quot;${APACHE_USER}&quot; -H svn switch &quot;http://svn.automattic.com/wordpress/tags/${NEW_WP_VERSION}&quot;
+sudo -u &quot;${APACHE_USER}&quot; -H svn up
+</code></pre>
+<p>Output:</p>
+<pre><code>U    wp-login.php
+U    wp-includes/template-functions-general.php
+U    wp-includes/template-functions-category.php
+U    wp-includes/cache.php
+U    wp-includes/template-functions-post.php
+U    wp-includes/wp-db.php
+U    wp-includes/links.php
+U    wp-includes/functions-formatting.php
+U    wp-includes/gettext.php
+U    wp-includes/version.php
+U    wp-includes/functions-post.php
+U    wp-includes/classes.php
+U    wp-includes/kses.php
+U    wp-includes/pluggable-functions.php
+U    wp-includes/comment-functions.php
+U    wp-includes/functions.php
+U    wp-includes/template-functions-author.php
+U    wp-content/themes/classic/comments-popup.php
+U    wp-content/themes/default/searchform.php
+U    wp-content/themes/default/comments-popup.php
+U    wp-register.php
+U    wp-links-opml.php
+U    wp-trackback.php
+U    wp-settings.php
+U    wp-admin/edit-form-advanced.php
+U    wp-admin/inline-uploading.php
+U    wp-admin/users.php
+U    wp-admin/edit-comments.php
+U    wp-admin/wp-admin.css
+U    wp-admin/link-categories.php
+U    wp-admin/edit.php
+U    wp-admin/post.php
+U    wp-admin/theme-editor.php
+U    wp-admin/upgrade.php
+U    wp-admin/options.php
+U    wp-admin/admin-functions.php
+U    wp-admin/templates.php
+U    wp-admin/edit-page-form.php
+U    wp-admin/moderation.php
+U    wp-admin/link-manager.php
+U    wp-admin/bookmarklet.php
+U    wp-admin/options-permalink.php
+U    wp-admin/edit-link-form.php
+U    wp-admin/edit-pages.php
+U    wp-admin/import/blogger.php
+U    wp-admin/options-misc.php
+U    wp-admin/categories.php
+</code></pre>
+<p>Finally, try hitting the upgrade script (at <code>wp-admin/upgrade.php</code>) and re-enable all plug-ins one by one.</p>
+<h2>Plug-in upgrades</h2>
+<p>After upgrading to 2.0.6 I checked for new versions of my installed plug-ins and found that <a href="/wiki/WP-Cache_2.0">WP-Cache 2.0</a> had been bumped to version 2.0.21 (<a href="http://mnm.uib.es/gallir/posts/2007/01/07/940/">release announcement</a>).</p>
+<p>I decided to take the time to switch over to <a href="/wiki/Subversion">Subversion</a>-based upgrades for that plug-in as well.</p>
+<pre><code># after disabling the plug-in
+cd wp-content/plug-ins
+sudo rm -rf wp-cache
+</code></pre>
+<p>It was then time to edit the <code>svn:externals</code> definition:</p>
+<pre><code>sudo -u &quot;${APACHE_USER}&quot; -H svn propedit svn:externals .
+</code></pre>
+<p>Changing it from this:</p>
+<pre><code>akismet http://svn.wp-plugins.org/akismet/trunk/
+</code></pre>
+<p>To this:</p>
+<pre><code>akismet http://svn.wp-plugins.org/akismet/trunk/
+wp-cache http://svn.wp-plugins.org/wp-cache/tags/release-2.0.21
+</code></pre>
+<p>And then updating:</p>
+<pre><code>sudo -u &quot;${APACHE_USER}&quot; -H svn up
+</code></pre>
+<p>Output:</p>
+<pre><code>Fetching external item into 'wp-cache'
+A    wp-cache/wp-cache-config-sample.php
+A    wp-cache/README.txt
+A    wp-cache/wp-cache-phase1.php
+A    wp-cache/wp-cache-phase2.php
+A    wp-cache/wp-cache.php
+Updated external to revision 7238.
+</code></pre>
+<p>Then re-enable the plug-in and everything seems to be working.</p>
+<p>One curious thing I noted was that the Akismet plug-in does not get updated when running the normal <code>svn switch</code> upgrade process. I should do an <code>svn up</code> as well after each update. The output was:</p>
+<pre><code>Fetching external item into 'akismet'
+A    akismet/akismet.gif
+U    akismet/akismet.php
+Updated external to revision 7238.
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

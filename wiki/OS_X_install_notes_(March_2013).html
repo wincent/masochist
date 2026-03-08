@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>OS X install notes (March 2013) • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>OS X install notes (March 2013)</h1></div><div class="metadata"><relative-time created="1363666911" updated="1710259978">Created 3/19/2013, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/homebrew">homebrew</a></li><li><a href="/tags/macos">macos</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Notes made moving from dying old machine to newer one with a smaller hard drive.</p>
+<p>Because the hard drive was half the size, I did a by-hand migration, bringing across only the essential elements. I was also under tight time pressure, so I ended up taking some short cuts that I normally would have avoided (for example, using Homebrew, and letting it &quot;own&quot; <code>/usr/local</code> and impose its preference for having my main user run as an administrator; this breaks with my long practice of running as an unprivileged user).</p>
+<h2>Base</h2>
+<ul>
+<li>Create admin account</li>
+<li>Encrypt filesystem</li>
+</ul>
+<h2>Software</h2>
+<p>Install essential software (see <a href="/wiki/Mac_OS_X_%22must_haves%22">Mac OS X &quot;must haves&quot;</a>):</p>
+<ul>
+<li>Chrome</li>
+<li>Chrome Canary</li>
+<li>iTerm 2 + Solarized color scheme</li>
+<li>Adium</li>
+<li>f.lux</li>
+<li>iStat Menus</li>
+<li>Isolator</li>
+<li>Mouse Locator + graphics pack</li>
+<li>Notational Velocity</li>
+<li>Skype</li>
+<li>Skitch</li>
+<li>VLC</li>
+<li>OmniDiskSweeper</li>
+<li>Arq</li>
+<li>Net Monitor</li>
+<li>Propane</li>
+<li>SuperDuper!</li>
+<li>Slate</li>
+<li>Spotify</li>
+<li>Xcode (was going to install only the command line tools to save space, but Homebrew )</li>
+<li>xScope</li>
+</ul>
+<h2>Other</h2>
+<ul>
+<li><a href="/wiki/Clipper">Clipper</a> (binary install, not bothering with <a href="/wiki/Go">Go</a> yet)</li>
+<li><a href="/wiki/Consolas">Consolas</a></li>
+<li><code>curl https://raw.github.com/timkay/aws/master/aws -o ~/bin/aws</code></li>
+</ul>
+<h2>Homebrew</h2>
+<pre><code class="language-shell">$ sudo chown -R greg:admin /usr/local
+$ ruby -e &quot;$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)&quot;
+$ brew doctor
+$ brew install mercurial git tmux zsh vim ruby rbenv ruby-build pwgen nginx tree qt pgp
+$ xcodebuild -license
+</code></pre>
+<h2>Shell</h2>
+<pre><code class="language-shell">$ cd /etc
+$ echo /usr/local/bin/zsh | sudo tee -a /etc/shells
+$ sudo mv /etc/zsh{env,profile}
+$ chsh -s /usr/local/bin/zsh greg
+</code></pre>
+<h2>Command-T</h2>
+<p>To build Command-T against system Ruby:</p>
+<pre><code class="language-shell">$ PATH=$PATH:/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby ruby extconf.rb
+</code></pre>
+<h2>Ruby</h2>
+<pre><code class="language-shell">$ brew install rbenv ruby-build
+$ rbenv install 1.9.3-p392
+$ rbenv install 2.0.0-p0
+</code></pre>
+<h2>Preferences and settings</h2>
+<ul>
+<li>perform keychain merge</li>
+<li>copy:
+<ul>
+<li><code>~/.ssh</code> [and enclosed files]</li>
+<li><code>~/Library/Application Support/Adium 2.0</code></li>
+<li><code>~/Library/Preferences/com.adiumX.adiumX.plist</code></li>
+<li><code>~/Library/Application Support/Propane</code></li>
+<li><code>~/Library/Preferences/com.protocool.propane.plist</code></li>
+<li><code>~/Library/Preferences/net.notational.velocity.plist</code></li>
+<li><code>~/Documents/Notes</code> [notational velocity]</li>
+<li><code>~/.awssecret</code> ( a symlink to either of…)</li>
+<li><code>~/.awssecret-causes</code></li>
+<li><code>~/.awssecret-wincent</code></li>
+<li><code>~/.gem/credentials</code></li>
+<li><code>~/.chef</code> (and enclosed files)</li>
+<li><code>~/.gnupg</code> (and enclosed files)</li>
+<li><code>~/.flowrc</code></li>
+<li><code>~/.heroku</code> (and enclosed files)</li>
+<li><code>~/.vim_org.yml</code></li>
+<li><code>~/.netrc</code></li>
+</ul>
+</li>
+</ul>
+<p>Also:</p>
+<ul>
+<li><code>defaults -currentHost write -g AppleFontSmoothing -int 1</code></li>
+</ul>
+<h2>Dot-files</h2>
+<pre><code class="language-shell">$ mkdir -p ~/personal/unversioned
+$ cd !$
+$ git clone --recursive git.wincent.dev:/pub/git/public/wincent.git wincent.git
+$ cd wincent.git
+$ ./bootstrap.rb
+</code></pre>
+<h2>Misc settings</h2>
+<ul>
+<li>iTerm:
+<ul>
+<li>bind <code>Option-Left</code> to send the <code>\033B</code> escape sequence (move back one word)</li>
+<li>bind <code>Option-Right</code> to send the <code>\033f</code> escape sequence (move forward one word)</li>
+</ul>
+</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

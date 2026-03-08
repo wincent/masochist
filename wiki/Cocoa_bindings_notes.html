@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Cocoa bindings notes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Cocoa bindings notes</h1></div><div class="metadata"><relative-time created="1159289725" updated="1691684559">Created 9/26/2006, updated 8/10/2023</relative-time></div><ul class="tags"><li><a href="/tags/cocoa">cocoa</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2><code>bind:toObject:withKeyPath:options:</code></h2>
+<h3>Use as a basic shortcut (outside the MVC paradigm)</h3>
+<blockquote>
+<p>&quot;So, if what you were going to do was call setValue:forKey: on your own ivar, you could skip the whole addObserver: thing and just use bind:, because that's exactly what then *will* happen; setValue:forKey: will be called on your ivar.&quot;</p>
+</blockquote>
+<p>Matt Neuburg, <a href="http://www.cocoabuilder.com/archive/message/cocoa/2006/7/19/167864">http://www.cocoabuilder.com/archive/message/cocoa/2006/7/19/167864</a></p>
+<p>But note:</p>
+<blockquote>
+<p>&quot;The recommendation is that bindings should not be used between two model objects. Binding views directly to model objects should only be done (and even then it isn't something that is currently suggested) when there is no updating of the values due to changes in the UI (essentially read-only).</p>
+<p>bindings are intended to eliminate glue code between views and model objects</p>
+<p>KVO is the better solution. if the observeValeForKeyPath: method is a bottleneck or results in ugly code it is quite possible to encapsulate that observing code into an object...&quot;</p>
+</blockquote>
+<p>Scott Anguish (Apple): <a href="http://www.cocoabuilder.com/archive/message/cocoa/2006/7/21/168062">http://www.cocoabuilder.com/archive/message/cocoa/2006/7/21/168062</a></p>
+<h3>On the &quot;one-way&quot; nature of Bindings</h3>
+<blockquote>
+<p>&quot;The issue here is that binding is &quot;one-way&quot; if you only use the behaviour you get for free. You can bind a KVC-compliant attribute of any object (&quot;object A&quot;) to the property of another object (&quot;object B&quot;), and object A will register as an observer of the property of object B and update its (object A's) attribute in response to changes in the observed property value. What it won't do, however, is to push changes the other way -- that is, by default you have in effect a &quot;read-only&quot; binding. If object A's attribute value is changed, object B is not updated. To get this behaviour, you must write custom code&quot;</p>
+</blockquote>
+<p>Mmalcolm Crawford (Apple): <a href="http://www.cocoabuilder.com/archive/message/cocoa/2005/5/27/137132">http://www.cocoabuilder.com/archive/message/cocoa/2005/5/27/137132</a></p>
+<blockquote>
+<p>&quot;You typically should not bind one model object to another. The primary goal of bindings is to keep user views synchronised with models. You bind an attribute of a UI widget to the property of a model object...&quot;</p>
+</blockquote>
+<p>Mmalcolm Crawford (Apple): <a href="http://www.cocoabuilder.com/archive/message/cocoa/2005/5/27/137149">http://www.cocoabuilder.com/archive/message/cocoa/2005/5/27/137149</a></p>
+<blockquote>
+<p>&quot;Always, always use a controller.&quot;</p>
+</blockquote>
+<p>Scott Anguish (Apple): <a href="http://www.cocoabuilder.com/archive/message/cocoa/2005/5/27/137150">http://www.cocoabuilder.com/archive/message/cocoa/2005/5/27/137150</a></p>
+<blockquote>
+<p>&quot;Controllers implement the NSEditor/NSEditorRegistration protocols. That means that they correctly handle the cases when documents revert, or save, and forward the correct notifications to the model/view items when that happens. This way models get any uncommitted edits, and can handle them appropriately.</p>
+<p>&quot;Apple doesn't endorse or recommend connecting UI to model directly, nor model&lt;-&gt;model bindings&quot;</p>
+</blockquote>
+<p>Scott Anguish (Apple): <a href="http://www.cocoabuilder.com/archive/message/cocoa/2005/5/27/137152">http://www.cocoabuilder.com/archive/message/cocoa/2005/5/27/137152</a></p>
+<h2><code>observeValueForKeyPath:ofObject:change:context:</code></h2>
+<h3>Calling super</h3>
+<p>Apple documentation, &quot;<a href="http://developer.apple.com/documentation/Cocoa/Conceptual/KeyValueObserving/Concepts/KVOBasics.html#//apple_ref/doc/uid/20002252-179866">Receiving Notification of a Change</a>&quot;.</p>
+<blockquote>
+<p>&quot;be sure to call the super implementation if the superclass implements it&quot;</p>
+</blockquote>
+<p><a href="http://developer.apple.com/documentation/Cocoa/Conceptual/KeyValueObserving/Concepts/KVOBasics.html">http://developer.apple.com/documentation/Cocoa/Conceptual/KeyValueObserving/Concepts/KVOBasics.html</a></p>
+<blockquote>
+<p>&quot;Simply calling super would be problematic, because NSObject doesn't implement it (well, it throws).&quot;</p>
+</blockquote>
+<p>Chris Kane, (Cocoa Frameworks, Apple): <a href="http://www.cocoabuilder.com/archive/message/cocoa/2006/7/17/167765">http://www.cocoabuilder.com/archive/message/cocoa/2006/7/17/167765</a></p>
+<h3>Take care with subclassing</h3>
+<blockquote>
+<p>&quot;If you are subclassing a foreign class without documented behavior, the context pointer is useless. Basically you don't know if the superclass is already observing an object, so the context pointer could be mine or the superclass', who knows?&quot;</p>
+</blockquote>
+<p><a href="http://www.cocoabuilder.com/archive/message/cocoa/2006/7/17/167781">http://www.cocoabuilder.com/archive/message/cocoa/2006/7/17/167781</a></p>
+<blockquote>
+<p>&quot;When you and a superclass both register for KVO notifications, the registrations are necessarily distinct, and you will potentially receive multiple calls to observeValueForKeyPath:... for the same changes, some due to your superclass, some due to your registrations. The ones for you you need to process and not pass up to super. The ones not for you you need to pass up to super and not process (that is, not use or expect anything about the context). You cannot look at the keypath, recognize it, and say &quot;this is for me&quot; and consume it, because the keypath may be interesting to the superclass too, but you can't pass all of those along either, because the superclass may not be interested (and is certainly not interested in your context if this invocation happens to contain your context). Similarly keypath+object is not reliable to distinguish &quot;mine&quot; from &quot;somebody else's&quot;.</p>
+<p>&quot;The solution is that the context pointer must be used to provide a globally unique value that you can recognize in your class. If you recognize the value, this notification is for you, otherwise you pass the method call up to super and return. You have to use a value that the other classes in the hierarchy won't (or can't) use.</p>
+<p>&quot;You cannot use NULL as the context pointer, because the superclass (or a subclass) might also use NULL. NULL is a shared value. You can't use selectors, either, because their values are global to the process, and a sub or superclass could potentially use the same one. Plus, recognizing many possible selector values would be a pain and time consuming. It's better to pick one context value.&quot;</p>
+</blockquote>
+<p>Chris Kane, (Cocoa Frameworks, Apple): <a href="http://www.cocoabuilder.com/archive/message/cocoa/2006/7/18/167800">http://www.cocoabuilder.com/archive/message/cocoa/2006/7/18/167800</a></p>
+<p>Chris goes on to suggest this technique for generating a globally unique pointer:</p>
+<pre><code>static char __MyContext = 0;
+static char *ThisClassUniqueObservationContext = &amp;__MyContext;
+</code></pre>
+<p>Alternative solution from Jim Correia:</p>
+<blockquote>
+<p>&quot;So one potential solution here is to allocate a dictionary, use that as the context for your class, and also use it as a dispatch table.</p>
+<p>Since the dictionary is dynamically allocated using it as the void * context will guarantee uniqueness in the same way as Chris' &quot;ugly&quot; solution in so far as all addresses within the address space are unique.&quot;</p>
+</blockquote>
+<p><a href="http://www.cocoabuilder.com/archive/message/cocoa/2006/7/18/167808">http://www.cocoabuilder.com/archive/message/cocoa/2006/7/18/167808</a></p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

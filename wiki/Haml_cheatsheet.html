@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Haml cheatsheet • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Haml cheatsheet</h1></div><div class="metadata"><relative-time created="1192008439" updated="1736516595">Created 10/10/2007, updated 1/10/2025</relative-time></div><ul class="tags"><li><a href="/tags/haml">haml</a></li><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/cheatsheet">cheatsheet</a></li></ul><div class="prerendered"><h2><code>%</code> (elements)</h2>
+<pre><code>%p thing
+</code></pre>
+<p>Yields:</p>
+<pre><code>&lt;p&gt;thing&lt;/p&gt;
+</code></pre>
+<h2><code>{}</code> (attributes)</h2>
+<pre><code>%meta{'http-equiv' =&gt; 'Content-Type', :content =&gt; 'text/html; charset=utf-8'}/
+</code></pre>
+<p>Yields:</p>
+<pre><code>&lt;meta http-equiv='Content-Type' content='text/html; charset=utf-8' /&gt;
+</code></pre>
+<p>Note that this example also shows how to produce a self-closing tag; more on this below.</p>
+<h2><code>/</code> (comments and self-closing tags)</h2>
+<pre><code>%br/
+/ a comment
+</code></pre>
+<p>Yields:</p>
+<pre><code>&lt;br /&gt;
+&lt;!-- a comment --&gt;
+</code></pre>
+<h2><code>.</code> (class)</h2>
+<pre><code>%p.date foo
+%p.article.body baz
+</code></pre>
+<p>Yields:</p>
+<pre><code>&lt;p class=&quot;date&quot;&gt;foo&lt;/p&gt;
+&lt;p class=&quot;article body&quot;&gt;baz&lt;/p&gt;
+</code></pre>
+<h2><code>#</code> (id)</h2>
+<pre><code>%p#banner bing
+</code></pre>
+<p>Yields:</p>
+<pre><code>&lt;p id=&quot;banner&quot;&gt;bing&lt;/p&gt;
+</code></pre>
+<h2>Implicit divs</h2>
+<p>If no element is specified with a class (<code>.</code>) or id (<code>#</code>) then <code>div</code> is implicitly assumed:</p>
+<pre><code>#foo bar
+.baz bing
+</code></pre>
+<p>Yields:</p>
+<pre><code>&lt;div id=&quot;foo&quot;&gt;bar&lt;/div&gt;
+&lt;div class=&quot;baz&quot;&gt;bing&gt;/div&gt;
+</code></pre>
+<h2><code>[]</code> (&quot;SimplyHelpful&quot; syntax)</h2>
+<pre><code>%div[@model_object] foo
+</code></pre>
+<p>Yields:</p>
+<pre><code>&lt;div class=&quot;class_of_model&quot; id=&quot;class_of_model_id&quot;&gt;foo&lt;/div&gt;
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li>Official <a href="/wiki/Haml">Haml</a> documentation: <a href="http://haml.hamptoncatlin.com/docs/haml">http://haml.hamptoncatlin.com/docs/haml</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

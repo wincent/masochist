@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DWARF with dSYM debug information • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>DWARF with dSYM debug information</h1></div><div class="metadata"><relative-time created="1155752126" updated="1710259978">Created 8/16/2006, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>DWARF with dSYM and stripping</h2>
+<p>I made a small test project, a foundation tool, to find out what the differences are between a DWARF and a &quot;DWARF with dSYM&quot; build. It appears that the build process is identical (same arguments passed to compiler and linker) but in the case of the dSYM variant an additional, final step is performed:</p>
+<pre><code>GenerateDSYMFile
+    cd /tmp/dynamic
+    /usr/bin/dsymutil -o /Users/wincent/trabajo/build/Release/dynamic.dSYM /Users/wincent/trabajo/build/Release/dynamic
+</code></pre>
+<p>Or for an application target:</p>
+<pre><code>GenerateDSYMFile
+    cd /tmp/dynamic
+    /usr/bin/dsymutil -o /Users/wincent/trabajo/build/Release/dynamic.app.dSYM /Users/wincent/trabajo/build/Release/dynamic.app/Contents/MacOS/dynamic
+</code></pre>
+<p>The <code>dsymutil</code> utility is also mentioned here:</p>
+<p><a href="http://developer.apple.com/releasenotes/DeveloperTools/GDB.html">http://developer.apple.com/releasenotes/DeveloperTools/GDB.html</a></p>
+<p>And there is a manpage for it:</p>
+<pre><code>man dsymutil
+</code></pre>
+<p>So it looks like a possible workaround for the ordering issue described <a href="http://lists.apple.com/archives/Xcode-users/2006/May/msg00856.html">here</a> is to manually add a separate shell script build phase that produces the dSYM file prior to stripping rather than activating the &quot;DWARF with dSYM&quot; build setting.</p>
+<h2>Address to symbol translation</h2>
+<p>It is not necessary to keep the original executable. <a href="/wiki/GDB">GDB</a> can be used as described here:</p>
+<p><a href="http://lists.apple.com/archives/Xcode-users/2006/May/msg00856.html">http://lists.apple.com/archives/Xcode-users/2006/May/msg00856.html</a></p>
+<h2>dSYM information for multi-component products</h2>
+<p>Separate dSYM bundles must be kept for each component.</p>
+<p>Components that may be loaded into memory at different locations (bundles, for example) will need to have their offsets taken into account when trying to convert addresses to symbols (no different than current <code>atos</code> usage).</p>
+<h2>Deciphering dSYM information for other architectures</h2>
+<p>The only Apple tool that can parse the dSYM format is <a href="/wiki/GDB">GDB</a>. You can select the appropriate variant by running one of the following instead of <code>gdb</code>:</p>
+<pre><code>/usr/libexec/gdb/gdb-powerpc-apple-darwin
+/usr/libexec/gdb/gdb-i386-apple-darwin
+</code></pre>
+<h2>atosym</h2>
+<p>While waiting for Apple to update <code>atos(1)</code> to work with dSYM files I've thrown together a quick tool to serve as a temporary substitute.</p>
+<p>See: <a href="http://wincent.dev/a/products/atosym/">http://wincent.dev/a/products/atosym/</a></p>
+<h3>Checkout via svn</h3>
+<pre><code>svn co svn://wincent.dev/atosym/trunk
+</code></pre>
+<h3>Export and zip downloadable version</h3>
+<pre><code>svn export svn://wincent.dev/atosym/trunk atosym-1.0
+zip -r atosym-1.0.zip atosym-1.0
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

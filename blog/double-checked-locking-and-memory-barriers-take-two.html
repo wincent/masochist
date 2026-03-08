@@ -1,0 +1,136 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Double-checked locking and memory barriers, take two • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/double-checked-locking-and-memory-barriers-take-two">Double-checked locking and memory barriers, take two</a></h1><div class="metadata"><relative-time created="1155594240" updated="1710259978">Created 8/14/2006, updated 3/12/2024</relative-time><span>5 minute read</span></div><div class="prerendered"><p>A while ago <a href="http://wincent.dev/a/knowledge-base/archives/2006/01/locking_doublec.php">I wrote about double-checked locking and memory barriers</a>. There are plenty of articles about this on the net. They generally show three examples.</p>
+<h5>No locking</h5>
+<pre><code>if (!condition)
+{
+    do_something();
+    condition = YES;
+}
+</code></pre>
+<h5>Slow locking</h5>
+<pre><code>@synchronized (object)
+{
+    if (!condition)
+    {
+        do_something();
+        condition = YES;
+    }
+}
+</code></pre>
+<h5>Double-checked locking</h5>
+<pre><code>if (!condition)
+{
+    @synchronized (object)
+    {
+        if (!condition)
+        {
+            do_something();
+            condition = YES;
+        }
+    }
+}
+</code></pre>
+<p>These articles fall into two categories: those that say double-checked locking is the bomb, and those that point out that double-checked locking is an &quot;anti-pattern&quot; and doesn't actually work. The articles in this latter category often go on to explain how the use of memory barriers can cure the brokenness of the double-checked locking &quot;anti-pattern&quot;.</p>
+<p>I was thinking (yet again) about all this and I suddenly realized why double-checked locking appears so attractive, and why it can be so hard to accept that it doesn't work. The problem is one of intuition. Look at the last two code examples again. The second one is identical to the first, except that it encloses everything in an <em>additional</em> check. How on earth could something that imposes an additional safety check actually end up being less safe? That's the point where your intuition may become your enemy.</p>
+<p>Put simply, the reason why the third example is dangerous is that the first check of the condition <em>is not synchronized</em> with the actual setting of the condition. The fact that there's a second check that <em>is</em> synchronized doesn't matter at all because that unprotected first check is enough to send your program into the danger zone.</p>
+<p>The peril is well-explained in many places (<a href="http://www.oaklib.org/docs/oak/singleton.html">here, for example</a>) so I will only briefly state the problem here.</p>
+<p>Pretty much all new Macs are dual-core now. That means that two threads could be running on two cores, each operating with its own local copy of the <code>condition</code> variable in its cache. Furthermore, the compiler (and the CPU too) is free to interpolate temporary variables, re-order instructions or run them in parallel if it deems that the effect will be equivalent. In other words, code like this:</p>
+<pre><code>if (!condition)
+{
+    do_something();
+    condition = YES;
+}
+</code></pre>
+<p>May be turned into this:</p>
+<pre><code>if (!condition)
+{
+    condition = YES;
+    do_something();
+}
+</code></pre>
+<p>If two threads hit this same code at the same time it is possible that one of them may see <code>condition</code> as being <code>YES</code> even before <code>do_something()</code> has done its stuff. Putting a lock around the entire block is one solution. Using a memory barrier is another:</p>
+<pre><code>if (!condition)
+{
+    do_something();
+    WO_MEMORY_BARRIER();
+    condition = YES;
+}
+</code></pre>
+<p>The barrier prevents the compiler (or the CPU) from rescheduling across the fence. This means that <code>condition</code> can only be set to <code>YES</code> once <code>do_something()</code> has really done its stuff. The above code still needs a synchronization block to handle the case were two threads may race to <code>do_something()</code> for the first time:</p>
+<pre><code>@synchronized (object)
+{
+    if (!condition)
+    {
+        do_something();
+        WO_MEMORY_BARRIER();
+        condition = YES;
+    }
+}
+</code></pre>
+<p>But once again we're back in the always-lock camp. And if we're always locking do we even need the memory barrier? The answer is no; even if the instructions get reordered there's still no way for a thread to see <code>condition</code> as being <code>YES</code> unless the <code>do_something()</code> function has already finished.</p>
+<p>Now, let's looked at the double-checked pattern again, this time with the memory barrier in place:</p>
+<pre><code>if (!condition)
+{
+    @synchronized (object)
+    {
+        if (!condition)
+        {
+            do_something();
+            WO_MEMORY_BARRIER();
+            condition = YES;
+        }
+    }
+}
+</code></pre>
+<p>If the memory barrier weren't there then you can see what might happen. In an ideal world one thread can enter the synchronized section, call <code>do_something()</code> and set the condition. A second thread asking if <code>condition</code> is <code>YES</code> knows that it can only be <code>YES</code> if <code>do_something()</code> is finished.</p>
+<p>In the real world, however, things are different. The compiler could reorder the instructions in the synchronized section. The first thread could set the condition before calling <code>do_something()</code>. A second thread could therefore see <code>condition</code> as being <code>YES</code> too early, undertake some action which depends on <code>do_something()</code> being done, and disaster can ensure. The memory barrier saves us from this.</p>
+<p>The problem of working on multiple cores which may have multiple caches still remains. Even with the memory barrier in the synchronized section protecting us from undesired instruction reordering, there is still the possibility that a thread on one core could set <code>condition</code> to <code>YES</code>, but a thread on another core will continue to see it as <code>NO</code>, at least until the caches are resynchronized.</p>
+<p>This latter problem can be addressed by inserting an additional barrier before the first check of the condition; this forces a resynchronization across all components of the system (caches, cores, main memory):</p>
+<pre><code>WO_MEMORY_BARRIER();
+if (!condition)
+{
+    @synchronized (object)
+    {
+        if (!condition)
+        {
+            do_something();
+            WO_MEMORY_BARRIER();
+            condition = YES;
+        }
+    }
+}
+</code></pre>
+<p>What's actually happening here? Basically, when running on two cores the ordering restrictions imposed on one core may not necessarily be visible to code running on the other core (or cores). For this reason memory barriers should always be paired when working in an SMP context (and Mac OS X is well and truly an SMP context). Most often this is seen in the pairing of a read barrier with a write barrier.</p>
+<p>Expressed in human terms, let say we have a bunch of stores (writes to memory) that are ordered into two groups, &quot;store A, B and C&quot; and &quot;store X, Y and Z&quot;, with the aid of a write memory barrier. This means that although the stores of A, B and C may occur in any order, they are guaranteed to occur before the stores of X, Y and Z (which may themselves occur in any order).</p>
+<p>A read barrier is required in order for this ordering to be perceived by a thread running on another core. Otherwise the thread is free to perceive the stores in literally any order.</p>
+<pre><code>Core 1                      Core 2
+Store A
+Store B
+Store C
+WO_WRITE_MEMORY_BARRIER
+Store X
+Store Y
+Store Z                     Load A
+                            WO_READ_MEMORY_BARRIER
+                            Load X
+</code></pre>
+<p>Here the read memory barrier ensures that the ordering effects imposed by the write barrier on the first core and correctly perceived by the second core. In other words, it is not only guaranteed that A will be stored before X on the first core, but also that that ordering will be perceived on the second core as well.</p>
+<p>In the case of our double-checked locking example, the same effect can be achieved more efficiently using only read and write barriers rather than fully bi-directional barriers:</p>
+<pre><code>WO_READ_MEMORY_BARRIER();
+if (!condition)
+{
+    @synchronized (object)
+    {
+        if (!condition)
+        {
+            do_something();
+            WO_WRITE_MEMORY_BARRIER();
+            condition = YES;
+        }
+    }
+}
+</code></pre>
+<p>For more information on memory barriers in SMP contexts I recommend <a href="http://kerneltrap.org/node/6431">this article</a>.</p>
+<p>So there you have it... yet another article in the &quot;double-checked locking is broken unless you fix it with memory barriers&quot; meme. I guess everyone has to write one to really understand it.</p>
+<h5>Update: 18 February 2007</h5>
+<p>Here is <a href="https://ridiculousfish.com/blog/posts/barrier.html">the take by</a> Peter Ammon, <a href="http://weblog.scifihifi.com/2005/05/26/say-hello-to-ridiculous-fish/">an Apple engineer on the AppKit team</a>. Highly recommended reading.</p>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/more-work-on-wocommon">← More work on WOCommon</a></div><div class="post-nav-next"><a href="/blog/mock-objects-revisited">Mock objects revisited →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

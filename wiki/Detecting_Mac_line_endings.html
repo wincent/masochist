@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Detecting Mac line endings • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Detecting Mac line endings</h1></div><div class="metadata"><relative-time created="1185438705" updated="1584053324">Created 7/26/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/bash">bash</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>I recently noticed that some of the files in a <a href="/wiki/Git">Git</a> repository had <a href="/wiki/Mac">Mac</a> line endings instead of <a href="/wiki/UNIX">UNIX</a> ones.</p>
+<p>I used the following <a href="/wiki/Bash">Bash</a> script to quickly detect which files were problematic:</p>
+<pre><code>IFS=&quot;
+&quot;
+for FILE in $(find . -type f)
+do
+  TYPE=$(file -b &quot;$FILE&quot;)
+  TEXT=$(expr &quot;$TYPE&quot; : '.*text.*')
+  if [ $TEXT -eq 0 ]; then
+    echo &quot;not a text file: $FILE&quot;
+  else
+    if ! perl -ne &quot;exit 1 if m/\r/;&quot; &quot;$FILE&quot;; then
+      echo &quot;CR detected in : $FILE&quot;
+    else
+      echo &quot;ok             : $FILE&quot;
+    fi
+  fi
+done
+</code></pre>
+<p>If you have Bash version 3 or later you can use its built-in <a href="/wiki/regular_expression">regular expression</a> support for a slightly cleaner design:</p>
+<pre><code>IFS=&quot;
+&quot;
+for FILE in $(find . -type f)
+do
+  TYPE=$(file -b &quot;$FILE&quot;)
+  if [[ &quot;$TYPE&quot; =~ 'text' ]]; then
+    if ! perl -ne &quot;exit 1 if m/\r/;&quot; &quot;$FILE&quot;; then
+      echo &quot;CR detected in : $FILE&quot;
+    else
+      echo &quot;ok             : $FILE&quot;
+    fi
+  else
+    echo &quot;not a text file: $FILE&quot;
+  fi
+done
+</code></pre>
+<p>This went through the current working directory printing the status of each file:</p>
+<pre><code>not a text file: ./.DS_Store
+ok             : ./.git/config
+ok             : ./.git/description
+ok             : ./.git/HEAD
+ok             : ./.git/hooks/applypatch-msg
+ok             : ./.git/hooks/commit-msg
+ok             : ./.git/hooks/post-commit
+ok             : ./.git/hooks/post-receive
+ok             : ./.git/hooks/post-update
+ok             : ./.git/hooks/pre-applypatch
+ok             : ./.git/hooks/pre-commit
+ok             : ./.git/hooks/pre-rebase
+ok             : ./.git/hooks/update
+not a text file: ./.git/index
+ok             : ./.git/info/exclude
+ok             : ./.git/logs/HEAD
+ok             : ./.git/logs/refs/heads/master
+ok             : ./.git/logs/refs/remotes/origin/master
+not a text file: ./.git/objects/pack/pack-abf85ed171a9902f0fce5e157707575f87de7340.idx
+not a text file: ./.git/objects/pack/pack-abf85ed171a9902f0fce5e157707575f87de7340.pack
+ok             : ./.git/refs/heads/master
+ok             : ./.git/refs/remotes/origin/HEAD
+ok             : ./.git/refs/remotes/origin/master
+ok             : ./.git/refs/tags/r649
+ok             : ./CIImage+WOConvenience.h
+ok             : ./CIImage+WOConvenience.m
+ok             : ./CIImage+WOTinting.h
+ok             : ./CIImage+WOTinting.m
+not a text file: ./DiskImageBackground_exported.png
+not a text file: ./DiskImageBackground_source.png
+ok             : ./Doxyfile
+</code></pre>
+<p>And so on, printing the following for files with Mac (or <a href="/wiki/Windows">Windows</a>) line endings:</p>
+<pre><code>CR detected in : ./WOBaseCore/backend/webapp/textfab/vendor/plugins/rspec_on_rails/lib/spec/rails/version.rb
+CR detected in : ./WOBaseCore/backend/webapp/textfab/vendor/plugins/rspec_on_rails/lib/spec/rails.rb
+</code></pre>
+<p>So it turned out that the files with the bad line endings were all vendor-supplied; rather than correct them (only to have to repeat for the next release) I decided to leave them as they were. But if I had decided to change them I could have used a <a href="/wiki/Perl_one-liner">Perl one-liner</a> to fix the line endings (see &quot;<a href="/wiki/Search_and_replace_in_multiple_files_with_a_Perl_one-liner">Search and replace in multiple files with a Perl one-liner</a>&quot;); something like this:</p>
+<pre><code>perl -i.bak -p -e 's/\r\n|\r/\n/' files*
+</code></pre>
+<p>Or:</p>
+<pre><code># narrow down the range of targets
+cd path_to_subdirectory_with_problem_files
+
+# check which files will be affected
+find . -name &quot;*.rb&quot;
+
+# do it
+find . -name &quot;*.rb&quot; | xargs perl -i.bak -p -e 's/\r\n|\r/\n/'
+
+# visually inspect results
+diff a b
+
+# check which backup files are present
+find . -name &quot;*.bak&quot;
+
+# blow away backups
+find . -name &quot;*.bak&quot; -delete
+
+# make sure they're really gone
+find . -name &quot;*.bak&quot;
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

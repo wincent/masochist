@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Installing Bansshee on Red Hat Enterprise Linux 5.3 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Installing Bansshee on Red Hat Enterprise Linux 5.3</h1></div><div class="metadata"><relative-time created="1245650290" updated="1710259978">Created 6/22/2009, updated 3/12/2024</relative-time></div><ul class="tags"><li><a href="/tags/red.hat">red.hat</a></li><li><a href="/tags/bansshee">bansshee</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Installing the latest source code from the <a href="/wiki/Git">Git</a> repository</h2>
+<pre><code class="language-shell">$ git clone git://git.wincent.dev/bansshee.git
+$ cd bansshee
+$ sudo make install
+</code></pre>
+<h2>Testing required dependencies</h2>
+<pre><code class="language-shell">$ perl -c /usr/local/sbin/bansshee
+Can't locate Proc/Daemon.pm in @INC
+$ sudo -H cpan Proc::Daemon
+$ perl -c /usr/local/sbin/bansshee
+Can't locate File/Tail.pm in @INC
+$ sudo -H cpan File::Tail
+$ perl -c /usr/local/sbin/bansshee
+/usr/local/sbin/bansshee syntax OK
+</code></pre>
+<h2>Setting up <a href="/wiki/iptables">iptables</a></h2>
+<p>First, customize firewall rules as desired (beyond the scope of this document) in <code>/etc/sysconfig/iptables</code>.</p>
+<p>Start <code>iptables</code>:</p>
+<pre><code class="language-shell">$ sudo service iptables start
+</code></pre>
+<p>Set up <a href="/wiki/iptables">iptables</a> to automatically launch at boot time:</p>
+<pre><code class="language-shell">$ sudo chkconfig iptables on
+</code></pre>
+<h2>Setting up <a href="/wiki/Bansshee">Bansshee</a> configuration and support files</h2>
+<p>See the <code>contrib</code> directory for support files specific to <a href="/wiki/RHEL">RHEL</a> 5.3.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

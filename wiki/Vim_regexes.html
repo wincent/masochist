@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vim regexes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Vim regexes</h1></div><div class="metadata"><relative-time created="1404137871" updated="1495119989">Created 6/30/2014, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/vim">vim</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Basics</h2>
+<ul>
+<li><code>\1</code>, <code>\2</code> etc: backreference to previous capturing group (works in both search pattern and replacement)</li>
+<li><code>&amp;</code>: backreference the entire match (same as <code>\0</code>)</li>
+</ul>
+<h2>Gotchas</h2>
+<ul>
+<li><code>*</code> is special when not escaped but...</li>
+<li><code>+</code> is special when escaped</li>
+<li><code>\{x,y}</code> (escaping only the opening bracket) works but...</li>
+<li>You have to use <code>\( \)</code> (escape both parens)</li>
+<li><code>[]</code> is special when both are unescaped</li>
+</ul>
+<h2>Pro-Tips</h2>
+<ul>
+<li><code>\v</code>: everything is special unless escaped (&quot;very magic&quot;)</li>
+<li><code>\V</code>: turn off very-magic</li>
+<li>You can use (somewhat) arbitrary delimiters, like <code>@</code>, instead of <code>/</code></li>
+<li><code>\_</code>: match anything, including newlines (cf: <code>.</code>)</li>
+<li><code>\zs</code>: consider match to start at this point (ie. match but don't capture); useful for partial substitutions:</li>
+<li><code>\ze</code>: consider match to end at this point
+<ul>
+<li><code>:%s/foo\zsbar/baz/g</code> will change &quot;foobar&quot; to &quot;foobaz&quot;</li>
+<li><code>:%s/\v^(foobar)(baz)/\1/</code> (same with explicit capturing and restoration)</li>
+<li><code>:%s/\v(^foobar)@&lt;=baz//</code> (same with zero-width look-behind assertion)</li>
+</ul>
+</li>
+<li><code>\=</code>: evaluate an expression on right side of regex; eg: <code>:%s/\v(\S+)/\=expand(submatch(1))/g</code> (turns <code>~/foo</code> into full path)</li>
+<li><code>\C</code>: make match case sensitive</li>
+<li><code>\u</code>: uppercase next letter in replacement</li>
+<li><code>\l</code>: lowercase next letter in replacement</li>
+<li><code>\U</code>: uppercase replacement from here on (until <code>\e</code> or <code>\E</code>)</li>
+<li><code>\L</code>: lowercase replacement from here on (until <code>\e</code> or <code>\E</code>)</li>
+</ul>
+<h2>Making Vim regexen more sane</h2>
+<p>Always be &quot;very magic&quot; with this in your <code>~/.vimrc</code>:</p>
+<pre><code>nnoremap / /\v
+vnoremap / /\v
+</code></pre>
+<p>Or just use <a href="https://github.com/wincent/loupe">Loupe</a>.</p>
+<h2>Using Ruby to do heavy lifting instead</h2>
+<p><code>:rubydo</code> can be used to transform lines; eg:</p>
+<pre><code>:rubydo $_ = $_.split(' ').reverse.join(' &lt;- ')
+</code></pre>
+<h2>Sources</h2>
+<ul>
+<li><a href="http://briancarper.net/blog/176/vim-regexes">http://briancarper.net/blog/176/vim-regexes</a> (nice list of regex inconsistencies)</li>
+<li><a href="http://briancarper.net/blog/448/vim-regexes-are-awesome">http://briancarper.net/blog/448/vim-regexes-are-awesome</a> (list of regex Pro-Tips)</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

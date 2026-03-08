@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Monitoring system load with vmstat • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Monitoring system load with vmstat</h1></div><div class="metadata"><relative-time created="1645303790" updated="1693045928">Created 2/19/2022, updated 8/26/2023</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/linux">linux</a></li></ul><div class="prerendered"><p>Little trick for monitoring CPU, memory, I/O load during a long running process:</p>
+<pre><code class="language-shell">$ vmstat -n -S M -t 1
+</code></pre>
+<p>Options:</p>
+<ul>
+<li><code>-n</code>: display header line once at start rather than periodically.</li>
+<li><code>-S M</code>: use megabyte (1,048,576) units.</li>
+<li><code>-t</code>: append timestamp on each line.</li>
+<li><code>1</code>: delay 1 second between updates.</li>
+</ul>
+<p>Sample output from a mostly idle machine:</p>
+<pre><code>procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu----- -----timestamp-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st                 CET
+ 2  0      0 123963    656   1760    0    0     1     1    5    1  0  0 100  0  0 2022-02-19 21:40:06
+ 0  0      0 123962    656   1760    0    0     0     0  725 1270  0  0 100  0  0 2022-02-19 21:40:07
+ 0  0      0 123962    656   1760    0    0     0    56  735 1293  0  0 100  0  0 2022-02-19 21:40:08
+ 0  0      0 123967    656   1760    0    0     0     0  893 1436  0  0 100  0  0 2022-02-19 21:40:09
+ 0  0      0 123967    656   1760    0    0     0    36  707 1287  0  0 100  0  0 2022-02-19 21:40:10
+ 0  0      0 123966    656   1760    0    0     0     0  699 1264  0  0 100  0  0 2022-02-19 21:40:11
+</code></pre>
+<p>And here's a sample from a machine running <code>stress -c 32</code>:</p>
+<pre><code>procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu----- -----timestamp-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st                 CET
+32  0      0 123933    657   1785    0    0     1     1    5    1  0  0 100  0  0 2022-02-19 21:43:52
+32  0      0 123933    657   1785    0    0     0     0 9949 1088 100  0  0  0  0 2022-02-19 21:43:53
+32  0      0 123933    657   1785    0    0     0     0 9912 1146 100  0  0  0  0 2022-02-19 21:43:54
+32  0      0 123933    657   1785    0    0     0     0 9791  969 100  0  0  0  0 2022-02-19 21:43:55
+32  0      0 123933    657   1785    0    0     0    84 9793  973 100  0  0  0  0 2022-02-19 21:43:56
+32  0      0 123933    657   1785    0    0     0     0 9814  992 100  0  0  0  0 2022-02-19 21:43:57
+32  0      0 123933    657   1785    0    0     0     0 9784  905 100  0  0  0  0 2022-02-19 21:43:58
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

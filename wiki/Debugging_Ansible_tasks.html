@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Debugging Ansible tasks • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Debugging Ansible tasks</h1></div><div class="metadata"><relative-time created="1438987843" updated="1495119989">Created 8/7/2015, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/ansible">ansible</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Tips</h2>
+<ul>
+<li>Set <code>ANSIBLE_KEEP_REMOTE_FILES=1</code> to prevent Ansible from deleting temporary files, enabling you to inspect them.</li>
+<li>Limit a run to a specific task or set of tasks with the <code>--tags</code> and <code>--start-at-task</code> options.</li>
+<li>Make Ansible pause before running each task with <code>--step</code>.</li>
+<li>Use <code>-v</code> multiple times to dump extra debug info.</li>
+<li>Use the <code>debug</code> module to dump variables.</li>
+</ul>
+<h2>Examples</h2>
+<h3>Invocation</h3>
+<pre><code class="language-shell">$ ANSIBLE_KEEP_REMOTE_FILES=1 ansible-playbook \
+  -i production site.yml \
+  --tags git \
+  --step \
+  --start-at-task='git-replicator | set-up bitbucket remotes' \
+  -vvvvv
+</code></pre>
+<h3><code>debug</code> module</h3>
+<pre><code>- name: debug-this
+  debug: var=result
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

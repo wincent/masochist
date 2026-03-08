@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Is spam &quot;solved&quot;? • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/is-spam-solved">Is spam &quot;solved&quot;?</a></h1><div class="metadata"><relative-time created="1170894180" updated="1710259978">Created 2/8/2007, updated 3/12/2024</relative-time><span>3 minute read</span></div><div class="prerendered"><p>Just over a year ago I wrote about <a href="http://wincent.dev/a/about/wincent/weblog/archives/2006/01/spam_to_be_elim.php">Bill Gates' failed prediction</a> that spam would be &quot;solved&quot; by the beginning of 2006. Microsoft tried to deny the demonstrable failure of this prediction by redefining the meaning of the word &quot;solved&quot; in a <a href="http://wincent.dev/a/about/wincent/weblog/archives/2006/01/spam_will_be_so.php">way that does not bear inspection</a>.</p>
+<p>So it's time for my annual review of the spam situation (in fact, I'm a few weeks late). What's the view on spam like from here a year later?</p>
+<h5>Countermeasures</h5>
+<p>During 2006 I <a href="http://wincent.dev/a/knowledge-base/archives/2006/06/clamping_down_o.php">gradually toughened up my anti-spam arsenal</a> by introducing a number of new measures at the server level which reduce the amount of spam getting downloaded to the local machine and increase the likelihood that the spam which does get through will be tagged as such before it even hits Mail.app's filters:</p>
+<ul>
+<li>Tougher scoring on non-English messages.</li>
+<li>Automatic deletion of extremely high-scoring spam.</li>
+<li>Auto-whitelisting.</li>
+<li>Bayesian training.</li>
+</ul>
+<p>I later took <a href="http://wincent.dev/wiki/Combatting_spam">further steps</a> at the server level:</p>
+<ul>
+<li><a href="http://wincent.dev/wiki/Blocking_non-local_senders_for_local-only_recipients">Blocking non-local senders for local-only recipients</a>.</li>
+<li>Conservative <a href="http://wincent.dev/wiki/DNS-based_blacklisting">DNS-based blacklisting</a>.</li>
+</ul>
+<p>And at the policy level:</p>
+<ul>
+<li>Reducing the number of web-visible email addresses on sites that I control.</li>
+<li>Using easily cancellable addresses when providing email addresses to third parties.</li>
+<li>Migrating away from old addresses which receive a lot of spam to newer addresses.</li>
+</ul>
+<p>As <a href="http://wincent.dev/wiki/Combatting_spam">discussed here</a> these changes combined to significantly reduce the number of spam messages getting to my mail box each day; I don't have any hard figures for the entire period but the evidence I do have suggests that the number of spams thwarted by these measures is of the order of several hundred per day.</p>
+<h5>SpamSieve</h5>
+<p>Spam that does get through to the client level is largely handled by <a href="http://wincent.dev/a/about/wincent/weblog/archives/2005/11/spamsieve_one_y.php">SpamSieve</a>. The current client-level statistics are as follows:</p>
+<pre><code>Filtered Mail
+190,575 Good Messages
+61,118 Spam Messages (24%)
+74 Spam Messages Per Day
+
+
+SpamSieve Accuracy
+232 False Positives
+735 False Negatives (76%)
+99.6% Correct
+
+
+Corpus
+2,986 Good Messages
+4,215 Spam Messages (59%)
+240,681 Total Words
+
+
+Rules
+1,029 Blocklist Rules
+5,126 Whitelist Rules
+
+
+Showing Statistics Since
+10/11/2004 11:42
+</code></pre>
+<p>Observations:</p>
+<ul>
+<li>67,000 good messages where received in the last year.</li>
+<li>46,000 spam messages where received in the last year.</li>
+<li>Spam now accounts for 24% of all mail <em>ever received</em> (since statistic recording began), up from 11% at the same time last year; of the messages received in the last year, nearly 41% were spam.</li>
+<li>There were only 48 false positives in the last year, and 378 false negatives. False negatives accounted for a larger proportion of the mistakes: 76%, up from 66% last year (this is an improvement because false positives are more undesirable than false negatives).</li>
+<li>Overall the accuracy of SpamSieve remained solid at 99.6%.</li>
+<li>SpamSieve's corpus of good messages grew by nearly 50%; the corpus of spam message nearly doubled.</li>
+<li>Likewise the number of rules in the blocklist doubled, and those in the whitelist nearly doubled.</li>
+</ul>
+<h5>Conclusions</h5>
+<p>Looking at these figures there's only one conclusion to be drawn: spam wasn't &quot;solved&quot; in 2006 and in my case it actually got much, much worse. This is especially true considering the number of spams that were stopped by the additional countermeasures which otherwise would have made it through and made things even worse.</p>
+<p>Despite the fact that spam is out of control, SpamSieve continues to be an effective measure of shielding the user from the annoyance of spam. I'm troubled by less than one false positive per week, and about one false negative per day. The accuracy is good enough that I can mostly forget about spam most of the time; messages classified as spam by SpamSieve get routed to a folder called &quot;Zpam&quot;, which due to its alphabetization is almost perpetually out of side at the bottom of my folder listing (scrolled out of view). Out of sight, out of mind. I revise the contents of this folder about twice per week.</p>
+<p>So spam is getting worse but life is still good thanks to some good tools. I will be interested to see if the same trends continue in the coming year.</p>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/gates-deposition-videos">← Gates deposition videos</a></div><div class="post-nav-next"><a href="/blog/jobs-would-like-to-get-rid-of-drm-should-software-developers-get-rid-of-copy-protection">Jobs would like to get rid of DRM, should software developers get rid of copy protection? →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

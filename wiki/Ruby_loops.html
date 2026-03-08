@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ruby loops • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Ruby loops</h1></div><div class="metadata"><relative-time created="1374385917" updated="1495119989">Created 7/21/2013, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/ruby">ruby</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><pre><code class="language-ruby"># loop
+loop do
+  # ...
+end
+
+# while
+while condition do
+  # ...
+end
+
+# NOTE: the `do` is optional
+while condition
+  # ...
+end
+
+# until
+until condition
+  # ...
+end
+
+# NOTE: `until` can also take an optional `do`
+until condition do
+  # ...
+end
+
+# post-while
+begin
+  # ...
+end while condition
+
+# one-liner variant:
+foo_bar while quota_available?
+
+# post-until
+begin
+  # ...
+end until condition
+
+# one-liner variant:
+request_foo until quota_available?
+
+# NOTE: the condition in the &quot;post&quot; variants needs to be a complex conditional
+x = 1
+begin
+  p x
+  x += 1
+end while x &lt; 5 # this works as expected
+
+begin
+  p 1
+end while false # this is an infinite loop
+
+# for
+for x in %w[foo bar baz]
+  # ...
+end
+
+# NOTE: `x` here exists outside the scope of the `for` block
+p x # =&gt; &quot;baz&quot;
+
+# enumerables
+collection.each do |thing|
+  # ...
+end
+
+# NOTE: `thing` here was scoped to the block
+p thing # =&gt; NameError: undefined local variable or method `thing'
+</code></pre>
+<p>Keywords available for use inside Ruby looping constructs:</p>
+<ul>
+<li><code>break</code>: break out of (ie. stop) the iteration</li>
+<li><code>next</code>: proceed to next round of the iteration</li>
+<li><code>redo</code>: restart iteration from the beginning</li>
+<li><code>retry</code>: retry current iteration</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

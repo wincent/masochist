@@ -1,0 +1,175 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Installing Ruby on Rails 1.1.4 on Mac OS X Tiger • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Installing Ruby on Rails 1.1.4 on Mac OS X Tiger</h1></div><div class="metadata"><relative-time created="1173788630" updated="1584053324">Created 3/13/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/tiger">tiger</a></li><li><a href="/tags/rails">rails</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>To install <a href="/wiki/Ruby_on_Rails">Ruby on Rails</a> using <a href="/wiki/RubyGems">RubyGems</a>, the standard <code>PATH</code> environment variable must be overridden to ensure that the custom local copy of <a href="/wiki/Ruby">Ruby</a> (version 1.8.4) is used instead of the default system install (version 1.8.2).</p>
+<p>The first step is to look at the current <code>PATH</code> setting:</p>
+<pre><code>echo $PATH
+</code></pre>
+<p>The output should be similar to:</p>
+<pre><code>/bin:/sbin:/usr/bin:/usr/sbin:/Users/wincent/bin:/usr/local/bin:/Developer/Tools:/usr/X11R6/bin:/usr/local/mysql/bin
+</code></pre>
+<p>Set the new <code>PATH</code> value, rearranging the order so that <code>/usr/local/bin</code> appears first in the list:</p>
+<pre><code>PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/Users/wincent/bin:/Developer/Tools:/usr/X11R6/bin:/usr/local/mysql/bin
+</code></pre>
+<p>Confirm that the order is correct:</p>
+<pre><code>echo $PATH
+</code></pre>
+<p>The output should resemble this:</p>
+<pre><code>/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/Users/wincent/bin:/Developer/Tools:/usr/X11R6/bin:/usr/local/mysql/bin
+</code></pre>
+<p>Go ahead with the <a href="/wiki/Ruby_on_Rails">Ruby on Rails</a> install:</p>
+<pre><code>sudo gem install rails --include-dependencies
+</code></pre>
+<h2>Installation transcript</h2>
+<pre><code>Bulk updating Gem source index for: http://gems.rubyforge.org
+Successfully installed rails-1.1.4
+Successfully installed rake-0.7.1
+Successfully installed activesupport-1.3.1
+Successfully installed activerecord-1.14.3
+Successfully installed actionpack-1.12.3
+Successfully installed actionmailer-1.2.3
+Successfully installed actionwebservice-1.1.4
+Installing ri documentation for rake-0.7.1...
+Installing ri documentation for activesupport-1.3.1...
+Installing ri documentation for activerecord-1.14.3...
+Installing ri documentation for actionpack-1.12.3...
+Installing ri documentation for actionmailer-1.2.3...
+Installing ri documentation for actionwebservice-1.1.4...
+Installing RDoc documentation for rake-0.7.1...
+Installing RDoc documentation for activesupport-1.3.1...
+Installing RDoc documentation for activerecord-1.14.3...
+Installing RDoc documentation for actionpack-1.12.3...
+Installing RDoc documentation for actionmailer-1.2.3...
+Installing RDoc documentation for actionwebservice-1.1.4...
+</code></pre>
+<h2>Setting up the environment</h2>
+<p>For <a href="/wiki/Rails">Rails</a> to actually work you'll need to make changes to your <code>PATH</code> and <code>RUBYLIB</code> environment variables. I have the following in my <code>~/.bash_profile</code> for this purpose:</p>
+<pre><code># /usr/local/bin has to come first so that custom Ruby install will be used (1.8.4)
+PATH=/usr/local/bin:$PATH:$HOME/bin:/Developer/Tools:/usr/X11R6/bin
+PATH=$PATH:/usr/local/mysql/bin
+export PATH
+
+# for Ruby on Rails
+RUBYLIB=&quot;/usr/local/lib/ruby/site_ruby/1.8:/usr/local/lib/ruby/site_ruby/1.8/i686-darwin8.7.1:/usr/local/lib/ruby/1.8:/usr/local/lib
+/ruby/1.8/i686-darwin8.7.1&quot;
+export RUBYLIB
+</code></pre>
+<h3>Update: RUBYLIB with Mac OS X 10.4.8</h3>
+<p>I later (March 2007) found that this <code>RUBYLIB</code> export prevented my new <a href="/wiki/Ruby_1.8.6">Ruby 1.8.6</a> install from working and removed it from my <code>.bash_profile</code>. See &quot;<a href="/wiki/Building_and_installing_Ruby_1.8.6_on_Mac_OS_X_Tiger">Building and installing Ruby 1.8.6 on Mac OS X Tiger</a>&quot; for more information.</p>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Building_and_installing_Ruby_1.8.4_on_Mac_OS_X_Tiger">Building and installing Ruby 1.8.4 on Mac OS X Tiger</a></li>
+<li><a href="/wiki/Building_and_installing_RubyGems_0.9.0_on_Mac_OS_X_Tiger">Building and installing RubyGems 0.9.0 on Mac OS X Tiger</a></li>
+<li><a href="/wiki/Installing_Ruby_on_Rails_1.1.4_on_Red_Hat_Enterprise_Linux_ES_3">Installing Ruby on Rails 1.1.4 on Red Hat Enterprise Linux ES 3</a></li>
+<li><a href="/wiki/Installing_Ruby_on_Rails">Installing Ruby on Rails</a></li>
+</ul>
+<h2>An alternative approach</h2>
+<p><a href="http://hivelogic.com/articles/2005/12/01/ruby_rails_lighttpd_mysql_tiger">http://hivelogic.com/articles/2005/12/01/ruby_rails_lighttpd_mysql_tiger</a></p>
+<p>Using the already downloaded archives:</p>
+<pre><code>tar zxvf readline-5.1.tar.gz
+cd readline-5.1/
+./configure
+make
+sudo make install
+
+tar zxvf ruby-1.8.4.tar.gz
+cd ruby-1.8.4/
+./configure --enable-pthread --with-readline-dir=/usr/local
+make
+sudo make install
+make check
+</code></pre>
+<p>When I try to follow those instructions I get a failure during <code>sudo make check</code> step:</p>
+<pre><code>  1) Failure:
+test_delete(TestDBM) [./dbm/test_dbm.rb:332]:
+&lt;DBMError&gt; exception expected but none was thrown.
+
+  2) Failure:
+test_s_open_error(TestSDBM) [./sdbm/test_sdbm.rb:123]:
+&lt;Errno::EACCES&gt; exception expected but none was thrown.
+
+1313 tests, 14455 assertions, 2 failures, 0 errors
+make: *** [test-all] Error 1
+</code></pre>
+<p>But not when doing a <code>make check</code> (without <code>sudo</code>):</p>
+<pre><code>1313 tests, 14456 assertions, 0 failures, 0 errors
+</code></pre>
+<p>Then:</p>
+<pre><code>sudo /usr/local/bin/ruby setup.rb
+</code></pre>
+<p>And I get this error:</p>
+<pre><code>Bulk updating Gem source index for: http://gems.rubyforge.org
+ERROR:  While executing gem ... (ArgumentError)
+    syntax error on line 153073, col 20: `
+    executables:'
+</code></pre>
+<p>Which is the same error as I was getting before when trying to do any remote operations with gem. Funnily enough this was working a few days ago. Now neither my hand-installed copy of RubyGems nor the version bundled with <a href="/wiki/Locomotive">Locomotive</a> works.</p>
+<p>Curiously, running <code>sudo gem update</code> fixed all of these warnings:</p>
+<pre><code>sudo gem update
+sudo gem install rails --include-dependencies
+sudo gem install sqlite3-ruby
+</code></pre>
+<p>Note, however, that I still can't run any unit tests:</p>
+<pre><code>script/generate model User
+ruby test/unit/user_test.rb
+</code></pre>
+<p>Produces:</p>
+<pre><code>Loaded suite test/unit/user_test
+Started
+E/usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/errors.rb:94:in `check': cannot rollback - no transaction is active (SQLite3::SQLException)
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/resultset.rb:76:in `check'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/resultset.rb:68:in `commence'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/resultset.rb:61:in `initialize'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/statement.rb:158:in `execute'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/database.rb:211:in `execute'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/database.rb:186:in `prepare'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/database.rb:210:in `execute'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/database.rb:620:in `rollback'
+         ... 13 levels...
+        from /usr/local/lib/ruby/1.8/test/unit/autorunner.rb:200:in `run'
+        from /usr/local/lib/ruby/1.8/test/unit/autorunner.rb:13:in `run'
+        from /usr/local/lib/ruby/1.8/test/unit.rb:285
+        from test/unit/user_test.rb:7
+</code></pre>
+<p>The database file does exist (created manually using <code>sqlite3 db/test.sqlite3</code> and <code>.schema</code> to force changes to be flushed to disk) and the <code>config/database.yml</code> file contains this:</p>
+<pre><code>test:
+  adapter: sqlite3
+  dbfile: db/test.sqlite3
+</code></pre>
+<p>If I change:</p>
+<pre><code>self.use_transactional_fixtures = true
+</code></pre>
+<p>To:</p>
+<pre><code>self.use_transactional_fixtures = false
+</code></pre>
+<p>In <code>test/test_helper.rb</code> then I get a different error:</p>
+<pre><code>Loaded suite test/unit/user_test
+Started
+E
+Finished in 0.128909 seconds.
+
+  1) Error:
+test_truth(UserTest):
+ActiveRecord::StatementInvalid: SQLite3::SQLException: no such table: users: DELETE FROM users WHERE 1=1
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/connection_adapters/abstract_adapter.rb:120:in `log'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/connection_adapters/sqlite_adapter.rb:137:in `execute'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/connection_adapters/sqlite_adapter.rb:329:in `catch_schema_changes'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/connection_adapters/sqlite_adapter.rb:137:in `execute'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/connection_adapters/sqlite_adapter.rb:147:in `delete'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/fixtures.rb:283:in `delete_existing_fixtures'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/fixtures.rb:256:in `create_fixtures'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/fixtures.rb:256:in `create_fixtures'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/connection_adapters/abstract/database_statements.rb:51:in `transaction'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/fixtures.rb:255:in `create_fixtures'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/base.rb:794:in `silence'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/fixtures.rb:248:in `create_fixtures'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/fixtures.rb:565:in `load_fixtures'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/fixtures.rb:521:in `setup'
+
+1 tests, 0 assertions, 0 failures, 1 errors
+</code></pre>
+<p>Solution:</p>
+<pre><code>RAILS_ENV='test'
+export RAILS_ENV
+rake migrate
+ruby test/unit/user_test.rb
+</code></pre>
+<p>Evidently creating the database is not enough. You have to do a <code>rake migrate</code> as well.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

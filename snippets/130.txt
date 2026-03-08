@@ -1,0 +1,2 @@
+
+a510ed7 Update assets submodule with Clipper resources

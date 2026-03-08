@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Sessions and cookies in Rails • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Sessions and cookies in Rails</h1></div><div class="metadata"><relative-time created="1154268624" updated="1495119989">Created 7/30/2006, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Do this:</p>
+<pre><code>session[:symbol]
+cookie[:symbol]
+</code></pre>
+<p>Not this:</p>
+<pre><code>@session[&quot;symbol&quot;]
+@session['symbol']
+@session[:symbol]
+session[&quot;symbol&quot;]
+session['symbol']
+cookie[&quot;symbol&quot;]
+cookie['symbol']
+</code></pre>
+<p>In general accessing <code>:symbol</code> will be faster (lightweight class reference) than <code>&quot;symbol&quot;</code> (this has to do string interpolation).</p>
+<h2>IRC transcript</h2>
+<p>From <code>#rubyonrails</code>:</p>
+<pre><code>[16:02] wincent: Hi folks, should I be using: @session[:symbol] , @session[&quot;symbol&quot;] or session[&quot;symbol&quot;] in my ApplicationController?
+[16:02] wincent: ah, and let's not forget &quot;session[:symbol]&quot;
+[16:02] shaponagota: wincent: session[:symbol]
+[16:02] wincent: thanks shaponagota
+[16:03] shaponagota: wincent: no more @ on session and params
+[16:04] wincent: shaponagota: the docs at api.rubyonrails.org don't use the @, but I was confused because I saw this DHH example which uses the other style: http://one.textdrive.com/pipermail/rails/2005-March/004980.html (evidently that's the &quot;old way&quot; now...)
+[16:04] shaponagota: wincent: yeah it was the old way
+[16:04] wincent: shaponagota: i guess the same applies for cookies, right?
+[16:04] shaponagota: wincent: yes
+[16:05] wincent: thanks shaponagota
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

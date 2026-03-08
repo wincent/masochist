@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>RR cheatsheet • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>RR cheatsheet</h1></div><div class="metadata"><relative-time created="1279511251" updated="1736516595">Created 7/19/2010, updated 1/10/2025</relative-time></div><ul class="tags"><li><a href="/tags/rr">rr</a></li><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/cheatsheet">cheatsheet</a></li></ul><div class="prerendered"><h2>Proxying</h2>
+<h3>mock proxy</h3>
+<p>Confirm a message was sent, but pass it through to original implementation:</p>
+<pre><code class="language-ruby"># call to be tested:
+@forums = Forum.all
+
+# spec:
+mock.proxy(Forum).all
+</code></pre>
+<p>This is useful where later code depends on the return value of the mocked call, and without <code>proxy</code> we would otherwise have to manually specify an object to be returned, something which we are not interested in doing if our intention in the spec is only to confirm that <code>Forum.all</code> was sent:</p>
+<pre><code class="language-ruby"># lengthier manual set-up:
+mock(Forum).all { [Forum.make!] }
+</code></pre>
+<h2>Chaining</h2>
+<h3>top-level stub, second-level mock</h3>
+<p>Here we want to confirm that a message was sent at the second level:</p>
+<pre><code class="language-ruby"># call chain to be tested:
+@forum = Forum.find(params[:id])
+@forum.to_json(...) # &lt;== want to test this call
+
+# spec:
+@forum = Forum.make!
+stub(Forum).find(@forum.id).mock(@forum).to_json(anything)
+</code></pre>
+<p>Note that we can also confirm at both levels of the chain:</p>
+<pre><code class="language-ruby">mock(Forum).find(@forum.id).mock(@forum).to_json(anything)
+</code></pre>
+<p>But in practice if the first level stub is not exercised, the second level mock will fail anyway, so it is not necessary to use <code>mock</code> at both levels, unless it is pertinent to the spec to test the exact params passed into the top-level method.</p>
+<h3>top-level stub, second-level stub</h3>
+<p>Here we want to inject a return value at the second level:</p>
+<pre><code class="language-ruby"># call chain to be tested:
+@forum = Forum.find(params[:id])
+if @forum.update_attributes(params[:forum])
+  ...
+else
+  ... # &lt;== want to test this code path
+end
+
+# spec:
+@forum = Forum.make!
+stub(Forum).find(@forum.id).stub(@forum).update_attributes(anything) { false }
+</code></pre>
+<p>We can change either of these stubs for mocks if we want an exception to be raised if the message isn't sent:</p>
+<pre><code class="language-ruby">stub(Forum).find(@forum.id).mock(@forum).update_attributes(anything) { false }
+mock(Forum).find(@forum.id).mock(@forum).update_attributes(anything) { false }
+mock(Forum).find(@forum.id).stub(@forum).update_attributes(anything) { false }
+</code></pre>
+<p>And we can use a more lax double for the top-level if the circumstances allow it (ie. no other calls to <code>find</code> are expected):</p>
+<pre><code class="language-ruby">stub(Forum).find.stub(@forum).update_attributes(anything) { false }
+</code></pre>
+<p>Another example:</p>
+<pre><code class="language-ruby"># in controller
+@tag = Tag.find_by_name! params[:id]
+if @tag.update_attributes params[:tag]
+  ...
+else
+  ... # &lt;= want to test this code path
+end
+
+# in spec
+stub(Tag).find_by_name!(tag.name).stub!.update_attributes { false }
+</code></pre>
+<h3>multi-level stubbing and mocking</h3>
+<pre><code class="language-ruby"># given this method:
+def new
+  @user   = User.new
+  @email  = @user.emails.build # &lt;== want to confirm the calls to &quot;emails&quot; and &quot;build&quot;
+end
+
+# spec:
+stub(User).new.mock!.emails.mock!.build
+</code></pre>
+<p>Note that there are other specs we can (and should) write which complement this one:</p>
+<pre><code class="language-ruby">describe '#new' do
+  it 'assigns a new user' do
+    get :new
+    assigns[:user].should be_kind_of(User)
+    assigns[:user].should be_new_record
+  end
+
+  it 'assigns a new email' do
+    get :new
+    assigns[:email].should be_kind_of(Email)
+    assigns[:email].should be_new_record
+  end
+
+  it 'associates the email with the user' do
+    stub(User).new.mock!.emails.mock!.build
+    get :new
+  end
+
+  it 'renders users/new' do
+    get :new
+    response.should render_template('users/new')
+  end
+
+  it 'succeeds' do
+    get :new
+    response.should be_success
+  end
+end
+</code></pre>
+<h3>Alternatives to multi-level chaining</h3>
+<p>Given a method like this:</p>
+<pre><code class="language-ruby">def create
+  @user = User.new params[:user]
+  @email = @user.emails.build :address =&gt; @user.email
+  if @user.save
+    ...
+  else
+    ... # &lt;= want to test this code path
+  end
+end
+</code></pre>
+<p>Rather than mocking or stubbing the <code>User.new</code> call, or touching the <code>@user.emails.build</code> chain, we can use <code>instance_of</code> to just target the <code>save</code> call and forget about the rest:</p>
+<pre><code class="language-ruby">stub.instance_of(User).save { false }
+</code></pre>
+<h2>General observations</h2>
+<p>Sometimes doubles can interact in bizarre and unpredictable ways, so it is absolutely important to check that your specs properly fail when the message expectations are violated. That is, you <em>must</em> ensure you've got &quot;red&quot; specs in place before you add or correct the implementation to turn them &quot;green&quot;.</p>
+<h3>Example</h3>
+<p>Given this code:</p>
+<pre><code class="language-ruby">@paginator = RestfulPaginator.new params, Snippet.published.count, snippets_path, 10
+@snippets = Snippet.recent.offset @paginator.offset
+</code></pre>
+<p>Among, other things, I wanted to confirm that the correct offset parameter was being passed in to the <code>Snippet.recent.offset</code> method.</p>
+<p>I would have expected this kind of mock to work:</p>
+<pre><code class="language-ruby">stub(Snippet).recent.mock!.offset(10)
+</code></pre>
+<p>But, curiously, it does not (it accepts any parameters rather than the required <code>10</code>). I tried alternative syntaxes and methods of chaining, but in the end the only way I could get it to work correctly was to stub out the other call on the <code>Snippet</code> class as well:</p>
+<pre><code class="language-ruby">stub(Snippet).published.stub!.count { 100 }
+stub(Snippet).recent.mock!.offset(10)
+</code></pre>
+<p>This is puzzling because the <code>published</code> call is not at all related to the <code>recent</code> call (ie. <code>published</code> does not call <code>recent</code> internally), so I can't see how or why it might interfere with the other stub.</p>
+<p>Whatever the cause, the lesson is clear: make sure your specs fail <em>first</em>, otherwise you may end up with an implementation that is incorrect but your mocks won't alert you to the problem.</p>
+<h2>Related</h2>
+<ul>
+<li><a href="/wiki/Rails_model_testing_cheatsheet">Rails model testing cheatsheet</a></li>
+<li><a href="/wiki/Rails_view_testing_cheatsheet">Rails view testing cheatsheet</a></li>
+<li><a href="/wiki/Rails_controller_testing_cheatsheet">Rails controller testing cheatsheet</a></li>
+<li><a href="/wiki/Rails_helper_testing_cheatsheet">Rails helper testing cheatsheet</a></li>
+<li><a href="/wiki/Rails_mailer_testing_cheatsheet">Rails mailer testing cheatsheet</a></li>
+<li><a href="/wiki/Steak_cheatsheet">Steak cheatsheet</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

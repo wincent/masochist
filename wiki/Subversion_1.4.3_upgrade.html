@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Subversion 1.4.3 upgrade • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Subversion 1.4.3 upgrade</h1></div><div class="metadata"><relative-time created="1177611806" updated="1495119989">Created 4/26/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/subversion">subversion</a></li><li><a href="/tags/apache.portable.runtime">apache.portable.runtime</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These notes were made during the upgrade from <a href="/wiki/Subversion">Subversion</a> version 1.4.2 to the new version 1.4.3.</p>
+<h2>Local upgrade</h2>
+<pre><code># get and extract Subversion sources
+wget http://subversion.tigris.org/downloads/subversion-1.4.3.tar.bz2
+wget http://subversion.tigris.org/downloads/subversion-deps-1.4.3.tar.bz2
+tar xjvf subversion-1.4.3.tar.bz2
+tar xjvf subversion-deps-1.4.3.tar.bz2
+
+# get and extract latest version of Apache Portable Runtime (was 1.2.7, now 1.2.8 is available)
+wget http://apache.rediris.es/apr/apr-1.2.8.tar.bz2
+wget http://apache.rediris.es/apr/apr-util-1.2.8.tar.bz2
+tar xjvf apr-1.2.8.tar.bz2
+tar xjvf apr-util-1.2.8.tar.bz2
+
+# clean out old libraries
+sudo rm -f /usr/local/lib/libsvn*
+sudo rm -f /usr/local/lib/libapr*
+sudo rm -f /usr/local/lib/libexpat*
+sudo rm -f /usr/local/lib/libneon*
+
+# the APR build
+cd apr-1.2.8
+./buildconf
+./configure
+make &amp;&amp; make check
+sudo make install
+cd ../apr-util-1.2.8
+./buildconf --with-apr=../apr-1.2.8
+./configure --with-apr=/usr/local/apr/bin/apr-1-config
+make
+
+# unfortunately, &quot;make check&quot; will fail unless you install first
+sudo make install
+make check
+
+# Subversion build
+cd ../subversion-1.4.3
+rm -r apr apr-util
+./configure --with-apr=/usr/local/apr/bin/apr-1-config       \
+            --with-apr-util=/usr/local/apr/bin/apu-1-config  \
+            --disable-mod-activation                         \
+            --with-ssl
+make &amp;&amp; make check
+</code></pre>
+<p>Unfortunately, some lock-related tests failed:</p>
+<pre><code>At least one test FAILED, checking /Users/wincent/trabajo/unversioned/subversion/subversion-1.4.3/tests.log
+FAIL:  lock_tests.py 1: lock a file and verify that it's locked
+FAIL:  lock_tests.py 2: commit a file and keep lock
+FAIL:  lock_tests.py 3: commit a file and release lock
+FAIL:  lock_tests.py 4: commit a locked file with a prop change
+FAIL:  lock_tests.py 5: lock a file and verify lock breaking behavior
+FAIL:  lock_tests.py 6: lock a file and verify lock stealing behavior
+FAIL:  lock_tests.py 7: examine the fields of a lockfile for correctness
+FAIL:  lock_tests.py 8: verify behavior when a lock in a wc is defunct
+FAIL:  lock_tests.py 9: verify svn:needs-lock read-only behavior
+FAIL:  lock_tests.py 10: verify svn:needs-lock behavior with defunct lock
+FAIL:  lock_tests.py 11: verify lock removal on a deleted path
+FAIL:  lock_tests.py 12: lock and unlock some files
+FAIL:  lock_tests.py 13: verify removal of a directory with locks inside
+FAIL:  lock_tests.py 14: verify status of lock in working copy
+FAIL:  lock_tests.py 15: verify status of stolen lock
+FAIL:  lock_tests.py 16: verify status of broken lock
+FAIL:  lock_tests.py 17: verify error on locking non-existent file
+FAIL:  lock_tests.py 18: lock an out-of-date file and ensure failure
+FAIL:  lock_tests.py 19: update handles svn:needs-lock correctly
+FAIL:  lock_tests.py 20: verify svn:needs-lock behavior with revert
+FAIL:  lock_tests.py 21: examine the fields of a lock from a URL
+FAIL:  lock_tests.py 22: lock/unlock several files in one go
+FAIL:  lock_tests.py 23: lock/unlock switched files
+FAIL:  lock_tests.py 24: lock and unlock a file with an URI-unsafe name
+FAIL:  lock_tests.py 25: svn:needs-lock and svn:executable, part I
+FAIL:  lock_tests.py 26: svn:needs-lock and svn:executable, part II
+FAIL:  lock_tests.py 27: commit file with xml-unsafe name and release lock
+FAIL:  lock_tests.py 28: verify info path@X or path -rY return repos lock
+FAIL:  lock_tests.py 29: (un)lock set of files, one already (un)locked
+FAIL:  lock_tests.py 30: show correct lock info on moved path
+FAIL:  lock_tests.py 31: ls locked path needing URL encoding
+FAIL:  lock_tests.py 32: veriy unlocking with wrong lock token
+FAIL:  lock_tests.py 33: verify recursive info shows lock info
+At least one test was SKIPPED, checking /Users/wincent/trabajo/unversioned/subversion/subversion-1.4.3/tests.log
+SKIP:  utf8_tests.py 1: conversion of paths and logs to/from utf8
+SKIP:  svnsync_tests.py 14: verify that unreadable content is not synced
+SKIP:  svnsync_tests.py 15: verify that copies from unreadable dirs work
+SKIP:  authz_tests.py 1: authz [/issues/2486 issue #2486] - open root
+SKIP:  authz_tests.py 2: authz [/issues/2486 issue #2486] - open directory
+SKIP:  authz_tests.py 3: broken authz files cause errors
+SKIP:  authz_tests.py 4: test authz for read operations
+SKIP:  authz_tests.py 5: test authz for write operations
+SKIP:  authz_tests.py 6: test authz for checkout
+SKIP:  authz_tests.py 7: test authz for log and tracing path changes
+SKIP:  authz_tests.py 8: test authz for checkout and update
+SKIP:  authz_tests.py 9: test authz for export with unreadable subfolder
+SKIP:  authz_tests.py 10: test the authz validation rules
+make: *** [check] Error 1
+</code></pre>
+<p>So tried again, this time renaming the <a href="/wiki/APR">APR</a> source directories to their default values instead of relying on passing the <code>--with-apr</code> option to <code>buildconf</code>:</p>
+<pre><code>make clean
+cd ..
+mv apr-1.2.8 apr
+mv apr-util-1.2.8 apr-util
+sudo rm -f /usr/local/lib/libapr*
+cd apr
+./buildconf
+./configure
+make &amp;&amp; make check
+sudo make install
+cd ../apr-util
+./buildconf
+./configure --with-apr=/usr/local/apr/bin/apr-1-config
+make
+sudo make install
+make check
+cd ../subversion-1.4.3
+./configure --with-apr=/usr/local/apr/bin/apr-1-config       \
+            --with-apr-util=/usr/local/apr/bin/apu-1-config  \
+            --disable-mod-activation                         \
+            --with-ssl
+make &amp;&amp; make check
+sudo make install
+</code></pre>
+<p>This time it worked, so the moral of the story is: don't rely on the <code>--with-apr</code> switch to <code>buildconf</code> on <a href="/wiki/Mac_OS_X">Mac OS X</a>, even though the same switch worked fine on <a href="/wiki/Red_Hat_Enterprise_Linux">Red Hat Enterprise Linux</a> (see below).</p>
+<h2>Remote upgrade</h2>
+<pre><code># run in a screen session in case we lose the connection
+screen
+
+# get and extract Subversion sources
+wget http://subversion.tigris.org/downloads/subversion-1.4.3.tar.bz2
+wget http://subversion.tigris.org/downloads/subversion-deps-1.4.3.tar.bz2
+tar xjvf subversion-1.4.3.tar.bz2
+tar xjvf subversion-deps-1.4.3.tar.bz2
+
+# get and extract latest version of Apache Portable Runtime (was 1.2.7, now 1.2.8 is available)
+wget http://apache.rediris.es/apr/apr-1.2.8.tar.bz2
+wget http://apache.rediris.es/apr/apr-util-1.2.8.tar.bz2
+tar xjvf apr-1.2.8.tar.bz2
+tar xjvf apr-util-1.2.8.tar.bz2
+
+# build the Apache Portable Runtime
+cd apr-1.2.8
+./buildconf
+./configure
+make &amp;&amp; make check
+sudo make install
+cd ../apr-util-1.2.8
+./buildconf --with-apr=../apr-1.2.8
+./configure --with-apr=/usr/local/apr/bin/apr-1-config
+make &amp;&amp; make check
+sudo make install
+
+# Subversion build
+cd ../subversion-1.4.3
+rm -r apr apr-util
+sudo chkconfig svn off
+sudo rm -f /usr/local/lib/libsvn*
+./configure --with-apr=/usr/local/apr/bin/apr-1-config      \
+            --with-apr-util=/usr/local/apr/bin/apu-1-config \
+            --disable-mod-activation                        \
+            --with-ssl
+make &amp;&amp; make check
+sudo make install
+
+# re-open for business
+sudo chkconfig svn on
+netstat -anp | grep LISTEN | grep 3690
+exit
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li>Change log: <a href="http://svn.collab.net/repos/svn/tags/1.4.3/CHANGES">http://svn.collab.net/repos/svn/tags/1.4.3/CHANGES</a></li>
+<li>Release notes: <a href="http://subversion.tigris.org/svn_1.4_releasenotes.html">http://subversion.tigris.org/svn_1.4_releasenotes.html</a></li>
+<li>Upgrade notes from other versions: <a href="/wiki/Subversion_upgrades">Subversion upgrades</a>.</li>
+<li><a href="/wiki/Installing_Subversion_1.4.3_on_Mac_OS_X_Leopard">Installing Subversion 1.4.3 on Mac OS X Leopard</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

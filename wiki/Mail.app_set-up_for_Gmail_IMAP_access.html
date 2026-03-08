@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Mail.app set-up for Gmail IMAP access • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Mail.app set-up for Gmail IMAP access</h1></div><div class="metadata"><relative-time created="1311562143" updated="1495119989">Created 7/25/2011, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/mail.app">mail.app</a></li><li><a href="/tags/gmail">gmail</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>There are plenty of articles on how to do this out there, as well as official instructions from Google, but the most useful write-up I've found is <a href="http://complexdiagrams.com/2009/01/imap-for-gmail-mailapp-iphone/">this one</a>.</p>
+<p>Note that the advice here actually contradicts Google's advice, but seems to work well in practice:</p>
+<ol>
+<li>Set up Gmail settings:
+<ol>
+<li>Under &quot;Forwarding and POP/IMAP&quot;:
+<ol>
+<li>Under &quot;IMAP Access:&quot;/&quot;Status:&quot;, select &quot;Enable IMAP&quot;</li>
+<li>Under &quot;Auto-Expunge&quot;, select &quot;Do not automatically expunge messages&quot;</li>
+<li>Under &quot;When a message is expunged from the last visible IMAP folder&quot;, &quot;Move the message to the Trash&quot;</li>
+</ol>
+</li>
+<li>Under &quot;Labels&quot;:
+<ol>
+<li>Only &quot;Show in IMAP&quot; the following folders:
+<ul>
+<li>&quot;Sent Mail&quot;</li>
+<li>&quot;Drafts&quot;</li>
+<li>&quot;Spam&quot;</li>
+<li>&quot;Trash&quot;</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Set up <a href="/wiki/Mail.app">Mail.app</a>:
+<ol>
+<li>Under &quot;Preferences&quot; &gt; &quot;Accounts&quot; &gt; [your Gmail account] &gt; &quot;Mailbox Behaviors&quot;:
+<ol>
+<li>Under &quot;Drafts&quot;, check the box, &quot;Store draft messages on the server&quot;</li>
+<li>Under &quot;Sent&quot;:
+<ol>
+<li>Check the box, &quot;Store sent messages on the server&quot;</li>
+<li>Make sure &quot;Delete sent messages when&quot; is set to &quot;Never&quot;</li>
+</ol>
+</li>
+<li>Under &quot;Junk&quot;:
+<ol>
+<li>Check the box, &quot;Store junk messages on the server&quot;</li>
+<li>Make sure &quot;Delete junk messages when&quot; is set to &quot;Never&quot;</li>
+</ol>
+</li>
+<li>Under &quot;Trash&quot;:
+<ol>
+<li>Check the box, &quot;Move deleted messages to the Trash mailbox&quot;</li>
+<li>Check the box, &quot;Store deleted messages on the server&quot;</li>
+<li>Make sure &quot;Permanently erase deleted messages when&quot; is set to &quot;One month old&quot;</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Trust Gmail to handle filtering of your Gmail account, which means turning off junk mail filtering; in my case, as I use SpamSieve and want to continue using it for my other accounts, I set up a special rule to stop processing further rules for any messages coming into my Gmail account, and all other messages will hit the next rule which is SpamSieve's own &quot;handle everything&quot; rule.</li>
+<li>Tell Mail.app to use Gmail's folders for Sent, Drafts, Trash and Junk, by selecting the corresponding folders (&quot;[Gmail] Sent Mail&quot; and so on) and then choosing &quot;Use This Mailbox For&quot; from the &quot;Mailbox&quot; menu</li>
+</ol>
+</li>
+<li>Set up the Gmail account on the iPhone; under &quot;Settings&quot; &gt; &quot;Mail, Contacts, Calendars&quot; &gt; [your Gmail account]
+<ol>
+<li>Make sure &quot;Mail&quot; is turned on (I have &quot;Notes&quot; turned off, instead syncing those with my own IMAP account on my own server)</li>
+<li>Under the account settings, in the &quot;Advanced&quot; section:
+<ol>
+<li>Set &quot;Drafts Mailbox&quot; to your Gmail Drafts mailbox</li>
+<li>Set &quot;Sent Mailbox&quot; to your Gmail Sent Mail mailbox</li>
+<li>Set &quot;Deleted Mailbox&quot; to your Gmail Trash mailbox</li>
+<li>Make sure &quot;Deleted Messages&quot; &gt; &quot;Remove&quot; is set to &quot;After one month&quot;</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>So these instructions differ from Google's official instructions in that it recommends that you don't store sent messages on their servers. In the past, it was reported that this would cause duplicates to appear in your local mail client, but this no longer seems to be the case.</p>
+<p>Likewise, there should be no problem with keeping deleted messages on the server either.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

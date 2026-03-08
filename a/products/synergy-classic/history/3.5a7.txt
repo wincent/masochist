@@ -1,0 +1,23 @@
+Changes from 3.5a6 to 3.5a7:
+
+    Bump version number prior to release
+    Show warning about running on Leopard
+    Fix cover art bug #668
+    Add diagnostic logging to cover art retrieval code
+    Revert "Optionally delay querying for cover art"
+    Optionally delay querying for cover art to workaround iTunes 7.6.1/7.6.2 bug
+    Catch NSGenericExceptions thrown by Scripting Bridge
+    Bump version number post-release
+
+WOCommon: Changes from Synergy-3.5a6 to Synergy-3.5a7:
+
+
+
+WOPublic: Changes from Synergy-3.5a6 to Synergy-3.5a7:
+
+
+
+buildtools: Changes from Synergy-3.5a6 to Synergy-3.5a7:
+
+
+

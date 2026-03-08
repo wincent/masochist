@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ParseTree 2.0.0 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>ParseTree 2.0.0</h1></div><div class="metadata"><relative-time created="1186420054" updated="1584053324">Created 8/6/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/parsetree">parsetree</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>The new version of <a href="/wiki/ParseTree">ParseTree</a>, <a href="/wiki/ParseTree_2.0.0">ParseTree 2.0.0</a>, was released on 1 August 2007.</p>
+<h2>Changes</h2>
+<ul>
+<li>2 major enhancements:
+<ul>
+<li>Rewrite methods completely rewritten. Rewriters:
+<ul>
+<li>are no longer recursive.</li>
+<li>are no longer required to empty the sexp coming in.</li>
+<li>are depth first, so rewriter gets passed everything already normalized.</li>
+<li>keep rewriting until type doesn't change.</li>
+<li>are magical goodness.</li>
+</ul>
+</li>
+<li>Added UnifiedRuby module to aid others in writing clean SexpProcessors:
+<ul>
+<li>bmethod/dmethod/fbody unified with defn
+<ul>
+<li>fcall/vcall unified with call</li>
+<li>resbody unified with itself (lots of different forms)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>5 minor enhancements:
+<ul>
+<li>Add <a href="/tags/modules">#modules</a> to Module.</li>
+<li>Add Sexp::for shortcut for Sexp.from_array ParseTree.translate(...).</li>
+<li>Add parens for :block nodes as appropriate. May be overzealous.</li>
+<li>Made add_to_parse_tree global for reuse by other C extensions.</li>
+<li>Made test_ruby2ruby MUCH more rigorous with circular testing.</li>
+</ul>
+</li>
+<li>6 bug fixes:
+<ul>
+<li>Added $TESTING = true to pt_testcase.rb. OOPS!</li>
+<li>Fixed some circular bugs, mostly by hacking them out, wrt operator precidence.</li>
+<li>Fixed splat arg processing when arg has no name.</li>
+<li>Fixed trinary operator.</li>
+<li>Fixed BMETHOD with no arguments.</li>
+<li>Removed hacky &quot;self.&quot; thing for defs at top level PT use.</li>
+</ul>
+</li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li>Official <a href="/wiki/weblog">weblog</a> announcement by the author (<a href="/wiki/Ryan_Davis">Ryan Davis</a>): <a href="http://blog.zenspider.com/archives/2007/08/parsetree_version_200_has_been_released.html">http://blog.zenspider.com/archives/2007/08/parsetree_version_200_has_been_released.html</a></li>
+<li><a href="/wiki/RubyForge">RubyForge</a> release notes: <a href="http://rubyforge.org/frs/shownotes.php?release_id=13381">http://rubyforge.org/frs/shownotes.php?release_id=13381</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

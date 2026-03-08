@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Customizing the Terminal window title • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Customizing the Terminal window title</h1></div><div class="metadata"><relative-time created="1183463087" updated="1584053324">Created 7/3/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/bash">bash</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>For years now I've used my <code>~/.bash_profile</code> to give me a custom, colorized <a href="/wiki/Bash">Bash</a> prompt and show the current working directory in the title bar of the <a href="/wiki/Terminal">Terminal</a>.</p>
+<h2>2003 solution</h2>
+<pre><code># colours for use in prompts
+RED=&quot;\[\e[0;31m\]&quot;
+GREEN=&quot;\[\e[0;32m\]&quot;
+BLUE=&quot;\[\e[0;34m\]&quot;
+NOCOLOR=&quot;\[\e[0m\]&quot;
+
+#
+# Prompt
+#
+
+OPENTITLEBAR=&quot;\[\033]0;&quot;
+CLOSETITLEBAR=&quot;\007\]&quot;
+
+TITLEBAR=&quot;${OPENTITLEBAR}\w${CLOSETITLEBAR}&quot;
+
+PROMPT=&quot;${GREEN}\h:${BLUE}\W${RED}\$ ${NOCOLOR}&quot;
+
+export PS1=&quot;${TITLEBAR}${PROMPT}&quot;
+
+function set_title ()
+{
+  echo -n -e &quot;\033]0;$*\007&quot;
+}
+</code></pre>
+<h2>2007 solution</h2>
+<p>On seeing <a href="http://www.macosxhints.com/article.php?story=20070628002730528">this hint</a> I learned that my old hack (customizing the title from within the prompt) was no longer necessary:</p>
+<pre><code>#
+# Prompt
+#
+
+PROMPT=&quot;${GREEN}\h:${BLUE}\W${RED}\$ ${NOCOLOR}&quot;
+export PS1=&quot;${PROMPT}&quot;
+
+#
+# Title bar
+#
+
+OPENTITLEBAR=&quot;\033]0;&quot;
+CLOSETITLEBAR=&quot;\007&quot;
+
+trap 'printf &quot;${OPENTITLEBAR} `history 1 | cut -b8-` - `pwd` ${CLOSETITLEBAR}&quot;' DEBUG
+</code></pre>
+<p>So as before I show the current working directory in the title bar, but now I also add the last/current job. This makes the window titles much more informative. Note that this is better than the option provided by the <a href="/wiki/Terminal">Terminal</a> itself to show the current process in the title bar. A quick example will illustrate why:</p>
+<p>Using the customization as defined above I will see a string like &quot;less example.txt&quot; in the title bar if I am currently using <code>less</code> to view a document, <code>example.txt</code>. Using the built-in support in the <a href="/wiki/Terminal">Terminal</a> I will only see &quot;less&quot;, which isn't as informative.</p>
+<p>Likewise, with the customization if I type a command which exits immediately, like <code>ls -laF</code>, then I'll see the corresponding string in the title bar (&quot;ls -laF&quot;) even after the command has exited, but with the built-in support I will only see &quot;ls&quot; instantaneously and then the title bar will revert to displaying &quot;bash&quot; which is not very helpful for distinguishing multiple windows.</p>
+<p>Upon logging into a remote site via <a href="/wiki/SSH">SSH</a> my title changes to a string such as &quot;username@host&quot;, because on the remote host I have a <code>$PROMPT_COMMAND</code> variable which overrides the local trap. This is a good thing as the primary characteristic I am interested in for such remote sessions is knowing which host they belong to.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Store postmaster address • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Store postmaster address</h1></div><div class="metadata"><relative-time created="1153065092" updated="1584053324">Created 7/16/2006, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/sendmail">sendmail</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>The purpose of this custom ruleset is to extract the domain portion of the recipient address and use it as a basis for constructing a postmaster address of the form &quot;postmaster@<a href="/wiki/example.com">example.com</a>&quot;. The address is then stored in the <code>postmaster_addr</code> macro and is available for use in other rulesets.</p>
+<h2>Configuration directives</h2>
+<pre><code>LOCAL_CONFIG
+Kstorage macro
+LOCAL_RULESETS
+SStore_postmaster_address
+R$*             →$: $&gt;canonify $1
+R$* &lt; @ $=w . &gt; →$@ $(storage {postmaster_addr} $@ postmaster@$2 $)
+R$*             →$@ $(storage {postmaster_addr} $@ postmaster@example.com $)
+</code></pre>
+<p>As always in <a href="/wiki/sendmail">sendmail</a> configuration files, the → symbol (right-pointing arrow) symbol indicates a tab.</p>
+<p>See <a href="/wiki/combining_rulesets">combining rulesets</a> for an example that combines the functionality of this ruleset with another, and <a href="/wiki/DNS-based_blacklisting">DNS-based blacklisting</a> for an application of this ruleset.</p>
+<h2>Annotated version</h2>
+<pre><code>LOCAL_CONFIG
+Kstorage macro
+</code></pre>
+<p>The <code>K</code> indicates that this line is a key file declaration. Key file declarations follow this syntax:</p>
+<pre><code>Kmapname mapclass arguments
+</code></pre>
+<p>The <em>mapname</em> is the handle by which the map is referenced in the rewriting rules. The <em>mapclass</em> indicates the type of the map, and the <em>arguments</em> vary according to the <em>mapclass</em>. In the current example the <em>mapname</em> is <code>storage</code> and the <em>mapclass</em> is <code>macro</code>, which means that the map can be used to set or clear macro values. Key file declarations that use the <code>macro</code> <em>mapclass</em> take no arguments.</p>
+<pre><code>LOCAL_RULESETS
+SStore_postmaster_address
+</code></pre>
+<p>The initial <code>S</code> sets the current ruleset being collected to <code>Store_postmaster_address</code>. Labelling the ruleset like this is akin to creating a &quot;subroutine&quot;. The subsequent lines begin with <code>R</code> indicating that they are rewriting rules. Each rewriting rule consists of a left-hand side (LHS) and a right-hand side (RHS), separated by a tab character (indicated here using the → symbol). Input passed into the ruleset is checked against the pattern in the LHS and if it matches then the input is rewritten as specified by the RHS. An optional third field, delimited by another tab, could be used for comments (ignored by <a href="/wiki/Sendmail">Sendmail</a>), but no comments are shown here.</p>
+<pre><code>R$*             →$: $&gt;canonify $1
+</code></pre>
+<p>Here the RHS matches against any input at all (<code>$*</code> matches zero or more tokens).</p>
+<p>The LHS has a <code>$:</code> prefix, which causes processing to continue to the next rule; this is necessary to avoid an infinite loop because normally rules that match are retried in a loop until they fail.</p>
+<p>The <code>$&gt;</code> directive causes the remainder of the line to be evaluated and then passed to another ruleset, in this case the <code>canonify</code> ruleset which returns addresses in a standardized (canonified) form. The &quot;remainder of the line&quot; in this case is <code>$1</code> which is equivalent to the first token matched on the RHS (in this case, the entire input).</p>
+<pre><code>R$* &lt; @ $=w . &gt; →$@ $(storage {postmaster_addr} $@ postmaster@$2 $)
+</code></pre>
+<p>Processing continues on this next line, where the RHS pattern will match &quot;anything at all&quot; (<code>$*</code>, or &quot;zero or more tokens&quot;) followed by a left angle bracket (<code>&lt;</code>), an &quot;at&quot; symbol (<code>@</code>) and any phrase in class <code>w</code> (<code>$=w</code>), where <code>w</code> is &quot;the set of all names this host is known by&quot;, followed by a period (<code>.</code>), followed by a right angle bracket (<code>&gt;</code>).</p>
+<p>This pattern will match addresses in canonical form because the <code>canonify</code> ruleset turns addresses like <code>john@example.com</code> into <code>john &lt; @ example . com . &gt;</code>. Note that although the patten includes whitespace, this is largely for readability and the whitespace will be ignored during pattern matching. The username part of the address will be captured into <code>$1</code> and the hostname part will be captured into <code>$2</code> for use on the RHS of the rule.</p>
+<p>The RHS sets the <code>postmaster_addr</code> macro. The initial <code>$@</code> prefix causes the ruleset to return with the remainder of the RHS as the value.</p>
+<p>The <code>postmaster_addr</code> macro is set using the value passed as the first argument in the map lookup. The map itself returns an empty string. The syntax for referencing maps is:</p>
+<pre><code>$(map key $@ arguments $: default $)
+</code></pre>
+<p>In the current example the <em>map</em> is the <code>storage</code> map declared previously, the <em>key</em> is <code>postmaster_addr</code>, the <code>$@</code> introduces the argument list, which in this case contains only one element, <code>postmaster@$2</code> where <code>$2</code> will be expanded to the host name of the recipient email address. In the current example there is no <em>default</em> value and the default value marker (<code>$:</code>) is omitted.</p>
+<pre><code>R$*             →$@ $(storage {postmaster_addr} $@ postmaster@example.com $)
+</code></pre>
+<p>This last rule is processed in the case where the previous rule did not match, as would be the case if the recipient address did not match any of the local names by which the mail server is known.</p>
+<p>In this case the RHS matches anything at all (<code>$*</code>, or &quot;zero or more tokens&quot;) and the LHS stores a default value in the <code>postmaster_addr</code> macro (in this case, <code>postmaster@example.com</code>). As is habitual, <a href="/wiki/example.com">example.com</a> is used here for the purposes of illustration only.</p>
+<h2>See also</h2>
+<p><a href="http://www.sendmail.org/~ca/email/doc8.12/op-sh-5.html">http://www.sendmail.org/~ca/email/doc8.12/op-sh-5.html</a></p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

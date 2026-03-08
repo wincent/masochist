@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Access Control List • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Access Control List</h1></div><div class="metadata"><relative-time created="1180805447" updated="1495119989">Created 6/2/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/acl">acl</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2><a href="/wiki/Linux">Linux</a></h2>
+<ul>
+<li>Example of <a href="/wiki/ACLs">ACLs</a> in action on <a href="/wiki/Linux">Linux</a>: &quot;<a href="/wiki/Git_repository_access_control">Git repository access control</a>&quot;</li>
+</ul>
+<h2><a href="/wiki/Mac_OS_X">Mac OS X</a></h2>
+<p>To show existing ACLs on an entity, e.g <code>foo</code>:</p>
+<pre><code class="language-shell">$ ls -le foo
+</code></pre>
+<p>To add an item to the ACL for <code>foo</code>:</p>
+<pre><code class="language-shell">$ chmod +a 'username:allow read,write' foo
+</code></pre>
+<p>For a full list of possible perimissions, see <a href="http://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man1/chmod.1.html">the Mac OS X chmod man page</a>.</p>
+<p>For a concerete example of setting up ACLs on Mac OS X, see &quot;<a href="/wiki/Installing_nginx_0.8.54_on_Mac_OS_X_10.6.6_Snow_Leopard">Installing nginx 0.8.54 on Mac OS X 10.6.6 Snow Leopard</a>&quot;.</p>
+<h3>Links</h3>
+<ul>
+<li>Review of ACL functionality introduced in Mac OS X <a href="/wiki/Tiger">Tiger</a>: <a href="http://arstechnica.com/apple/reviews/2005/04/macosx-10-4.ars/8">http://arstechnica.com/apple/reviews/2005/04/macosx-10-4.ars/8</a></li>
+<li>Nice walkthrough of using ACLs on Mac OS X: <a href="http://aplawrence.com/MacOSX/acl.html">http://aplawrence.com/MacOSX/acl.html</a></li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Wikipedia">Wikipedia</a> article on <a href="/wiki/ACLs">ACLs</a>: <a href="http://en.wikipedia.org/wiki/Access_control_list">http://en.wikipedia.org/wiki/Access_control_list</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

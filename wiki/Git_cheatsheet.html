@@ -1,0 +1,27 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git cheatsheet • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git cheatsheet</h1></div><div class="metadata"><relative-time created="1189580703" updated="1736516595">Created 9/12/2007, updated 1/10/2025</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/cheatsheet">cheatsheet</a></li></ul><div class="prerendered"><h2>Pushing matching refs</h2>
+<pre><code>git push origin :
+</code></pre>
+<h2>Retrieving a file from a specific revision</h2>
+<pre><code>git show &lt;treeish&gt;:filename
+</code></pre>
+<p>For example, if you delete a file in a particular revision, say 3ad8389, and only later discover that you should have kept it, you can get it back with:</p>
+<pre><code>git show 3ad8389~1:filename &gt; filename
+</code></pre>
+<p>(ie. show the file as it was in the revision before 3ad8389, where it got deleted.)</p>
+<p>Equivalent in this case is:</p>
+<pre><code>git checkout 3ad8389~1 -- filename
+</code></pre>
+<p>This just writes the file back out to the working tree without touching the HEAD.</p>
+<h2>Negative pathspecs</h2>
+<p><code>:!</code> (or <code>:^</code>, or <code>:(exclude)</code>) (<a href="https://stackoverflow.com/questions/5685007/making-git-log-ignore-changes-for-certain-paths">source</a>).</p>
+<p>Example; examining a diff that contains a bunch of copies and renames as well as abundant changes to &quot;package-lock.json&quot; files:</p>
+<pre><code class="language-bash">git diff develop -C10 -M20 -b --find-copies-harder -- ':!*-lock.json'`
+</code></pre>
+<p>Example: getting a diffstat for a commit excluding changes to unit test files:</p>
+<pre><code class="language-bash">git show --stat -- ':(exclude)*unit*'
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="http://jonas.nitro.dk/git/quick-reference.html">http://jonas.nitro.dk/git/quick-reference.html</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

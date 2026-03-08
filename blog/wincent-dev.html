@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Moving to wincent.dev • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/wincent-dev">Moving to wincent.dev</a></h1><div class="metadata"><relative-time created="1712734853" updated="1715082719">Created 4/10/2024, updated 5/7/2024</relative-time><span>5 minute read</span></div><div class="prerendered"><p>By the time you read this, <em>if</em> you read this, it's because I've transferred the old domain, <code>wincent.com</code>, to a new owner<sup class="footnote-ref"><a href="#fn-owner" id="fnref-owner" data-footnote-ref>1</a></sup>, and moved all of my stuff over to a new domain: <code>wincent.dev</code>. (Technically, I actually moved the stuff a month or so before the transfer, and set up redirects so that anybody who visited a page on <code>wincent.com</code> got redirected to the equivalent page on <code>wincent.dev</code>.) As <a href="https://twitter.com/wincent/status/1783887370703532251">I said on Twitter/X</a>, I'm sorry for any hassle caused by the switch! In this post I'm going to give a bit of background on why I decided to make this change, but before I get into that, here's a summary of what you should do:</p>
+<ol>
+<li>Update your bookmarks and links.</li>
+<li>If you cloned something from <code>git.wincent.com</code>, update the URL to <code>git.wincent.dev</code> instead.</li>
+<li>If you have a <code>wincent.com</code> email address in your contacts, update it to <code>investor.relations@hurrell.net</code> instead<sup class="footnote-ref"><a href="#fn-investors" id="fnref-investors" data-footnote-ref>2</a></sup>.</li>
+</ol>
+<h2>Details</h2>
+<h3>Web links</h3>
+<p>Please update any bookmarks you may have for <code>wincent.com</code> to point at <code>wincent.dev</code> instead.</p>
+<p>I hate broken links, and I'm routinely disappointed to look at articles I wrote 10 years ago — and sometimes <em>much</em> more recently than that — and find that almost every link to an external site has succumbed to bit-rot and now 404s<sup class="footnote-ref"><a href="#fn-404s" id="fnref-404s" data-footnote-ref>3</a></sup> or goes to the completely wrong place. As far as <em>internal</em> links go, however, I've gone to some effort to keep links working over the years, setting up redirects when necessary. Some things have slipped through the cracks, but overall, my internal links have been pretty robust over the years.</p>
+<p>Well, this time it's my turn to be the bad guy: now that the domain name transfer has taken place, all of a sudden there are a <em>bunch</em> of links out there on the web that no longer work, and there's nothing I can do to redirect them because I'll no longer control the domain. Some of these links I have the ability to edit and have already updated (eg. links from descriptions on videos on <a href="https://youtube.com/c/GregHurrell">my YouTube channel</a>, links from READMEs on <a href="https://github.com/wincent?tab=repositories">GitHub projects</a> etc), but there are many others that are controlled by third-parties and are going to stop working. Breaking all those is not something I take lightly, but the deal presented itself on favorable enough terms that I had to conclude that accepting it made sense<sup class="footnote-ref"><a href="#fn-emotional" id="fnref-emotional" data-footnote-ref>4</a></sup>.</p>
+<p>For the most part, I think search engines will be relatively quick to pick up pages at their new locations. As an example, soon after setting up the redirects I did <a href="https://kagi.com/search?q=understanding+rebase+conflict+markers">a search for &quot;understanding rebase conflict markers&quot;</a> at <a href="https://kagi.com">Kagi</a>, and it immediately showed the new domain. <a href="https://www.google.com/search?q=understanding+rebase+conflict+markers">The same search</a> on <a href="https://google.com">Google</a><sup class="footnote-ref"><a href="#fn-google" id="fnref-google" data-footnote-ref>5</a></sup>, however, was showing the page at the old domain. A few hours later, it caught up.</p>
+<h3>Git</h3>
+<p>Another issue is that many people have made clones of Git repositories hosted at <code>git.wincent.com</code>. These should all be updated to point at <code>git.wincent.dev</code> instead (or heck, just switch to GitHub URLs, which won't be changing any time soon). Example commands to update the remote for a project (in this case, <a href="https://github.com/wincent/command-t">Command-T</a>) are:</p>
+<pre><code># To set the &quot;origin&quot; remote's URL to git.wincent.dev:
+git remote set-url origin git.wincent.dev:public/command-t.git
+
+# To set the &quot;origin&quot; remote's URL to GitHub:
+git remote set-url origin git@github.com:wincent/command-t.git
+</code></pre>
+<h3>Email</h3>
+<p>I mostly stopped using <code>wincent.com</code> email accounts years ago<sup class="footnote-ref"><a href="#fn-one" id="fnref-one" data-footnote-ref>6</a></sup>, so there is unlikely to be any change needed here for most folks.</p>
+<h2>The future</h2>
+<p>I can't promise that <code>wincent.dev</code> will be around forever, but my plan is to keep it around for as long as I can (that means, as long as I'm alive and of sound mind, and able to pay the bill!). I chose it as a replacement for <code>wincent.com</code> for three reasons:</p>
+<ol>
+<li>I have a lot of muscle-memory for typing &quot;wincent followed by a three-letter TLD<sup class="footnote-ref"><a href="#fn-tld" id="fnref-tld" data-footnote-ref>7</a></sup>&quot;. I figure I should be able to retrain myself to type <code>wincent.dev</code> pretty quickly<sup class="footnote-ref"><a href="#fn-others" id="fnref-others" data-footnote-ref>8</a></sup>.</li>
+<li>I'm not aware of any other development-focused &quot;Wincent&quot; in the world, either a person or corporation, that is likely to want the dot-dev domain in the future. As such, it is a reasonably safe bet that I won't receive any offers to buy it and it should be easy enough to retain it effectively indefinitely.</li>
+<li>Registration fees for dot-dev domain names are, for now at least, in the same ballpark as for dot-com domains.</li>
+</ol>
+<h2>That's a wrap</h2>
+<p>And that brings us to the end. I don't know how many folks will find this post, but I hope that at least some get to see it. Thank you all for your understanding!</p>
+<section class="footnotes" data-footnotes>
+<ol>
+<li id="fn-owner">
+<p>Fun fact: I didn't actually know who the new owner was until after the sale, because they acted through an intermediary. My guesses were (not necessarily in order):</p>
+<ol>
+<li><a href="https://www.wincent.se">A Swedish drum stick manufacturer</a> running their site at <a href="https://www.wincent.se/">https://www.wincent.se/</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Wincent_Weiss">A German singer</a> running his site at <a href="https://www.wincentweiss.de/">https://www.wincentweiss.de/</a></li>
+<li><a href="https://www.crunchbase.com/organization/wincent">A crypto start-up</a> running their site at <a href="https://www.wincent.co/">https://www.wincent.co/</a></li>
+<li><a href="https://www.facebook.com/wincentsafe/">A gun safe manufacturer</a> running their site at <a href="https://www.wincentpro.com/">https://www.wincentpro.com/</a></li>
+</ol>
+<p>In the end, it was the crypto start-up. <a href="#fnref-owner" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="1" aria-label="Back to reference 1">↩</a></p>
+</li>
+<li id="fn-investors">
+<p>This last one is a joke. Or is it? 😉 <a href="#fnref-investors" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="2" aria-label="Back to reference 2">↩</a></p>
+</li>
+<li id="fn-404s">
+<p>&quot;404s&quot; — a neologism for returning a &quot;404 Not Found&quot; HTTP status code. <a href="#fnref-404s" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="3" aria-label="Back to reference 3">↩</a></p>
+</li>
+<li id="fn-emotional">
+<p>There's an emotional component to this as well, because some of my most important online activity for the last 20+ years has taken place on <code>wincent.com</code> (I originally acquired it back in May 2003). And the dot-org, <code>wincent.org</code>, was the first domain name I ever registered (on 18 September 1999, unless I'm mistaken). Since then, I've been using <code>wincent</code> as a handle in a bunch of places, some of them quite meaningful (eg. <a href="https://github.com/wincent">GitHub</a> and <a href="https://twitter.com/wincent">Twitter</a>, among others). I built up my blog to the point where I was getting 50,000 page views per day (in the lead-up to the first public release of Mac OS X). I made a living writing and selling software products under the Wincent brand, hosted on the dot-com domain. The path that eventually led to me getting hired at a Bay Area startup, getting hired later by Facebook, and later on by GitHub, started with Wincent. It was only after weeks of deliberation that I actually got to the point where I felt comfortable with proceeding with the sale, and the negotiations spanned months. <a href="#fnref-emotional" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="4" aria-label="Back to reference 4">↩</a></p>
+</li>
+<li id="fn-google">
+<p>Google is a search engine that aims to &quot;organize and make accessible the world's information&quot;. You may have heard of it, but in case you haven't, I have included a &quot;hypertext&quot; link that you can click on and check it out. <a href="#fnref-google" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="5" aria-label="Back to reference 5">↩</a></p>
+</li>
+<li id="fn-one">
+<p>I did have one poor email user who had been using a <code>wincent.com</code> email account intensively, as their primary address, for many years, though, and for her the migration was painful. 😔 <a href="#fnref-one" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="6" aria-label="Back to reference 6">↩</a></p>
+</li>
+<li id="fn-tld">
+<p>Top-Level Domain. <a href="#fnref-tld" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="7" aria-label="Back to reference 7">↩</a></p>
+</li>
+<li id="fn-others">
+<p>Funnily enough, I still own <code>wincent.org</code> and <code>wincent.net</code>, and those are also three-letter TLDs, but given that so much of the content I post and host is development-related, the dot-dev seemed like the best fit. Take, for instance, <code>git.wincent.dev</code>, which seems somehow better than <code>git.wincent.org</code> or <code>git.wincent.net</code> for hosting Git repositories. 🤷 <a href="#fnref-others" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="8" aria-label="Back to reference 8">↩</a></p>
+</li>
+</ol>
+</section>
+</div><ul class="tags"><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/free-will">← Free will is not the only problem</a></div><div class="post-nav-next"><a href="/blog/ai">AI →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Upgrading to Git 1.5.2.4 on Red Hat Enterprise Linux • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Upgrading to Git 1.5.2.4 on Red Hat Enterprise Linux</h1></div><div class="metadata"><relative-time created="1184323399" updated="1495119989">Created 7/13/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/red.hat">red.hat</a></li><li><a href="/tags/git">git</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>These notes were made while upgrading to <a href="/wiki/Git_1.5.2.4">Git 1.5.2.4</a> on <a href="/wiki/Red_Hat_Enterprise_Linux">Red Hat Enterprise Linux</a> from the tarball.</p>
+<p>For notes on upgrading to 1.5.2.4 from a local clone of the central <a href="/wiki/Git">Git</a> repository, see &quot;<a href="/wiki/Upgrading_to_Git_1.5.2.4_on_Mac_OS_X_Tiger">Upgrading to Git 1.5.2.4 on Mac OS X Tiger</a>&quot;.</p>
+<h2>Downloading</h2>
+<pre><code>wget http://kernel.org/pub/software/scm/git/git-1.5.2.4.tar.bz2 \
+     http://kernel.org/pub/software/scm/git/git-1.5.2.4.tar.bz2.sign
+</code></pre>
+<p>Before I could verify the signature I had to do some set-up of <a href="/wiki/GPG">GPG</a>.</p>
+<p>First, make <code>gpg</code> a setuid binary as described <a href="http://www.gnupg.org/documentation/faqs.html#q6.1">here</a> so as to silence warnings about insecure virtual memory:</p>
+<pre><code>sudo chmod u+s /usr/bin/gpg
+</code></pre>
+<p>Then import the necessary public key by copying it from <a href="http://www.kernel.org/signature.html">http://www.kernel.org/signature.html</a> and pasting it into a file called <code>kernel-key</code> (attempts to obtain the key from the public keyserver timed out). Then importing the public key into the local key ring:</p>
+<pre><code>gpg --import kernel-key
+</code></pre>
+<p>Output:</p>
+<pre><code>gpg: key 517D0F0E: public key &quot;Linux Kernel Archives Verification Key &lt;ftpadmin@kernel.org&gt;&quot; imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+</code></pre>
+<p>And finally verifying the downloaded tarball:</p>
+<pre><code>gpg --verify git-1.5.2.4.tar.bz2.sign git-1.5.2.4.tar.bz2
+</code></pre>
+<p>Output:</p>
+<pre><code>gpg: Signature made Thu 12 Jul 2007 03:42:19 PM CDT using DSA key ID 517D0F0E
+gpg: Good signature from &quot;Linux Kernel Archives Verification Key &lt;ftpadmin@kernel.org&gt;&quot;
+gpg: checking the trustdb
+gpg: no ultimately trusted keys found
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: C75D C40A 11D7 AF88 9981  ED5B C86B A06A 517D 0F0E
+</code></pre>
+<p>Note that although I don't have a trust path to the kernel key set up (ie. I can't verify that key really belongs to the Linux Kernel Archives) I can at least rest assured that the downloaded <a href="/wiki/Git">Git</a> archive was signed by the key which I downloaded from <a href="http://www.kernel.org/signature.html">http://www.kernel.org/signature.html</a> minutes before. As the page notes:</p>
+<p>&lt;blockquote &gt;This signature does not guarantee that the Linux Kernel Archives master site itself has not been compromised. However, if we suffer an intrusion we will revoke the key and post information here as quickly as possible.&lt;/blockquote&gt;</p>
+<p>A quick search of the <a href="/wiki/Wayback_Machine">Wayback Machine</a> indicates that the same key has been on that page since at least 2001 (see <a href="http://web.archive.org/web/20010604144322/http://www.kernel.org/signature.html">http://web.archive.org/web/20010604144322/http://www.kernel.org/signature.html</a>), so confidence that the key is legitimate can be fairly high.</p>
+<h2>Building</h2>
+<pre><code># extract
+tar xjvf git-1.5.2.4.tar.bz2
+cd git-1.5.2.4
+
+# build
+make prefix=/usr/local all
+
+# text
+make prefix=/usr/local test
+
+# install
+sudo make prefix=/usr/local install
+
+# get man pages
+wget http://www.kernel.org/pub/software/scm/git/git-manpages-1.5.2.4.tar.bz2 \
+     http://www.kernel.org/pub/software/scm/git/git-manpages-1.5.2.4.tar.bz2.sign
+
+# verify
+gpg --verify git-manpages-1.5.2.4.tar.bz2.sign git-manpages-1.5.2.4.tar.bz2
+
+# install
+cd /usr/local/man/
+sudo tar xjvf full_path_to_manpages_archive/git-manpages-1.5.2.4.tar.bz2
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li>Original installation notes: <a href="/wiki/Installing_Git_1.5.2.3_on_Red_Hat_Enterprise_Linux">Installing Git 1.5.2.3 on Red Hat Enterprise Linux</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

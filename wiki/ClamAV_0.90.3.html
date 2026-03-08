@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ClamAV 0.90.3 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>ClamAV 0.90.3</h1></div><div class="metadata"><relative-time created="1180596693" updated="1584053324">Created 5/31/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/clamav">clamav</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><a href="/wiki/ClamAV_0.90.3">ClamAV 0.90.3</a> was released on 30 May 2007.</p>
+<h2>Changes</h2>
+<ul>
+<li>libclamav/scanners.c: fix warning on AES encrypted zip archives (bb#430)</li>
+<li>fresclam/manager.c: add sanity check for %v (bb#463)</li>
+<li>libclamav/unrar/unrar.c: improve handling of corrupted/handcrafted headers (bb#511, patch from Trog)</li>
+<li>libclamav/unsp.c: fix end of buffer calculation (bb#464, patch from aCaB)</li>
+<li>libclamav/others.c: use strict permissions (0600) for temporary files created in cli_gentempstream() (bb#517). Reported by Christoph Probst.</li>
+<li>libclamav/ole2_extract.c: detect block list loop (bb#466), patch from Trog</li>
+<li>libclamav/phishcheck.c: bb #497</li>
+<li>libclamav/unrar/unrar.c: <a href="/issues/521">Bug #521</a>, #368</li>
+<li>configure: handle FreeBSD 7.x</li>
+<li>configure: fix compilation issues under FreeBSD 4.x and 5.x (bb#455)</li>
+<li>clamd/server-th.c: fix incorrect handling of SIGSEGV (bb#504)</li>
+<li>clamscan/manager.c: bb#508 (Can't run clamscan as root)</li>
+<li>libclamav/matcher-ac.c: fix segfault on OOM (bb#515)</li>
+<li>libclamav/pdf.c: Fix OOM, pointed out by TK</li>
+<li>libclamav/others.c: Bug 520</li>
+<li>libclamav/others.c: fix cli_malloc() call in C_WINDOWS (bb#477)</li>
+<li>libclamav/htmlnorm.c: fix uninitialized value warning</li>
+<li>libclamav/htmlnorm.c: fix URL truncation</li>
+<li>libclamav/matcher-ac.c: optimize memory allocation, patch from Anton Yuzhaninov</li>
+<li>libclamav/mbox.c: Bug 366</li>
+<li>libclamav/mbox.c: Fixed multi-byte char bug under Windows</li>
+<li>libclamav/pdf.c: Bug 459</li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li>Official release notes: <a href="http://sourceforge.net/project/shownotes.php?release_id=512356&amp;group_id=86638">http://sourceforge.net/project/shownotes.php?release_id=512356&amp;group_id=86638</a></li>
+<li>Download: <a href="http://sourceforge.net/project/showfiles.php?group_id=86638&amp;package_id=90197">http://sourceforge.net/project/showfiles.php?group_id=86638&amp;package_id=90197</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

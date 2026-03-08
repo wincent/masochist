@@ -1,0 +1,3 @@
+
+4d93303 Turn on text-rendering: optimizeLegibility
+0643a3a Switch to new fonts

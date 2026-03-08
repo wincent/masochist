@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SSH key rotation notes • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>SSH key rotation notes</h1></div><div class="metadata"><relative-time created="1674986345" updated="1771427655">Created 1/29/2023, updated 2/18/2026</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/ssh">ssh</a></li></ul><div class="prerendered"><p>I store a detailed copy of these notes (with concrete paths and hostnames etc) on my personal laptop at <code>~/.ssh/NOTES.md</code>, but I'm including a somewhat more general version here.</p>
+<h2>Policy</h2>
+<ul>
+<li>Use <a href="https://en.wikipedia.org/wiki/EdDSA">ED25519</a> keys (smaller than, faster than, and at least as secure as, RSA keys).</li>
+<li>Create one(*) key per machine so that they can be independently revoked if compromised (or, for example, if I switch jobs and have to decommission a work machine).</li>
+<li>Use the same key(*) for everything (ie. one key that can push to both GitHub and GitLab etc, rather than different keys for different target hosts).</li>
+<li>Rotate keys every 5 years, synchronizing the rotation date with the one I use for <a href="/wiki/GPG_key_rotation_notes">GPG key rotations</a>, not for security, but for practice (the rotation procedure is complicated enough that I want to prove that I can do it).</li>
+<li>Use filenames(*) of the form <code>id_ed25519_$DATE{,.pub}</code> (eg. <code>id_ed25519_20230128.pub</code> etc).</li>
+<li>Make symlinks at <code>~/.ssh/id_ed25519</code> pointing to the real keys so that <code>ssh</code> can find/try it by default without needing to explicitly set up <code>IdentityFile</code> in the config.</li>
+<li>Store backups in 1Password.</li>
+<li>Keep the private keys encrypted (duh).</li>
+</ul>
+<p>The (*) in the above is due to the fact that I have to use a <a href="https://docs.github.com/en/enterprise-cloud@latest/admin/concepts/identity-and-access-management/enterprise-managed-users">GitHub EMU</a> some of the time, and because of the way GitHub does SSH auth (with everybody connecting as <code>git@github.com</code>), you can't use the same SSH key for your personal account and your enterprise account. That is, the key is used not only to prove you have access to any given repository, but also to <em>identify</em> you. So, I actually have two SSH keys on my work machine (because I do need to retain access to non-enterprise repositories as well).</p>
+<h2>Procedure</h2>
+<ol>
+<li>On work laptop:
+<ol>
+<li>Create new keys etc.
+<pre><code>ssh-add # Make sure old key is in agent; in case we need it to connect to Linux desktop.
+cd ~/.ssh
+ssh-keygen -t ed25519 -f id_ed25519_20300101 # Default comment ($USER@$HOST) is fine.
+ssh-keygen -t ed25519 -f id_ed25519_${EMU_ALIAS}_20300101 -C greg.hurrell@${EMU_ALIAS}
+ln -sf id_ed25519_20300101 id_ed25519
+ln -sf id_ed25519_20300101.pub id_ed25519.pub
+ln -sf id_ed25519_${EMU_ALIAS}_20300101 id_ed25519_${EMU_ALIAS}
+ln -sf id_ed25519_${EMU_ALIAS}_20300101.pub id_ed25519_${EMU_ALIAS}.pub
+rm id_ed25519_2025*
+</code></pre>
+</li>
+<li>Add key files to 1Password, tagged with &quot;ssh&quot;, and noting the encryption passphrase<sup class="footnote-ref"><a href="#fn-trick" id="fnref-trick" data-footnote-ref>1</a></sup>.</li>
+<li>Mark old key files as archived in 1Password.</li>
+</ol>
+</li>
+<li>On personal laptop:
+<ol>
+<li>Create new key etc.
+<pre><code>ssh-add # Make sure old key is in agent; will need it to connect to Linux desktop and push.
+cd ~/.ssh
+ssh-keygen -t ed25519 -f id_ed25519_20300101
+ln -sf id_ed25519_20300101 id_ed25519
+ln -sf id_ed25519_20300101.pub id_ed25519.pub
+rm id_ed25519_2025*
+</code></pre>
+</li>
+<li>Add key files to 1Password, tagged with &quot;ssh&quot;, and noting the encryption passphrase.</li>
+<li>Mark old key files as archived in 1Password.</li>
+<li>SSH to linux desktop and:
+<ol>
+<li>Add new personal laptop and work laptop public keys to <code>~/.ssh/authorized_keys</code>.</li>
+<li>Remove old personal laptop and work laptop public keys from <code>~/.ssh/authorized_keys</code>.</li>
+<li>Create new key etc
+<pre><code>ssh-add # Make sure old key is in agent; will need it to connect to Linux desktop.
+cd ~/.ssh
+ssh-keygen -t ed25519 -f id_ed25519_20300101
+ln -sf id_ed25519_20300101 id_ed25519
+ln -sf id_ed25519_20300101.pub id_ed25519.pub
+rm id_ed25519_2025*
+</code></pre>
+</li>
+<li>Add key files to 1Password, tagged with &quot;ssh&quot;, and noting the encryption passphrase.</li>
+<li>Mark old key files as archived in 1Password.</li>
+</ol>
+</li>
+<li>Update the Ansible config that I use to manage my EC2 hosts.
+<ol>
+<li>Copy public keys into <code>inventory.yml</code> under <code>ssh_public_keys</code>.</li>
+<li>Deploy:
+<pre><code>./run install --tags=authorized_keys
+</code></pre>
+</li>
+<li>Manually remove old keys from hosts (Ansible only adds keys, it doesn't remove the old ones).</li>
+</ol>
+</li>
+<li>Import new personal laptop key into AWS console.
+<ol>
+<li>Go to AWS console → EC2 → Key pairs → Actions → Import key pair; note the name must be unique, so append the date.</li>
+<li>Note the key ID</li>
+<li>Paste the key ID into my <code>create-instance</code> script in my Ansible configs.</li>
+<li>Remove the old key.</li>
+</ol>
+</li>
+<li>Rotate my Git backups key.</li>
+</ol>
+</li>
+<li>Add new public keys to, and remove old keys from:
+<ol>
+<li>GitHub (<a href="https://github.com/settings/keys">https://github.com/settings/keys</a>) — all &quot;Authentication&quot;, not &quot;Signing&quot; keys; note that the work keys should be authorized for SSO with the GitHub organization.</li>
+<li>GitLab (<a href="https://gitlab.com/-/user_settings/ssh_keys">https://gitlab.com/-/user_settings/ssh_keys</a>): same keys as GitHub, again just for &quot;Authentication&quot;, no expiry dates.</li>
+<li>BitBucket (<a href="https://bitbucket.org/account/settings/ssh-keys/">https://bitbucket.org/account/settings/ssh-keys/</a>): same keys as GitHub.</li>
+<li>Codeberg (<a href="https://codeberg.org/user/settings/keys">https://codeberg.org/user/settings/keys</a>): same keys as GitHub, although we don't make use of the backup key here yet; Codeberg also offers the possibility of &quot;verifying&quot; the keys by using them to sign a challenge.</li>
+<li>Sourcehut (<a href="https://meta.sr.ht/keys">https://meta.sr.ht/keys</a>): same keys as GitHub, although again we aren't making use of backup key here yet.</li>
+</ol>
+</li>
+</ol>
+<section class="footnotes" data-footnotes>
+<ol>
+<li id="fn-trick">
+<p>To make this easy, it's better to just duplicate the existing item and then edit it (you can replace the associated key file); that way, you don't have to set up the tags again, or worry about adding the key to the wrong vault etc. <a href="#fnref-trick" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="1" aria-label="Back to reference 1">↩</a></p>
+</li>
+</ol>
+</section>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

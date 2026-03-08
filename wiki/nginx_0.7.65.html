@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>nginx 0.7.65 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>nginx 0.7.65</h1></div><div class="metadata"><relative-time created="1265026339" updated="1584053324">Created 2/1/2010, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/nginx">nginx</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official release announcement:</p>
+<pre><code>Changes with nginx 0.7.65                                        01 Feb 2010
+
+   *) Security: now nginx/Windows ignores trailing spaces in URI.
+      Thanks to Dan Crowley, Core Security Technologies.
+
+   *) Security: now nginx/Windows ignores short files names.
+      Thanks to Dan Crowley, Core Security Technologies.
+
+   *) Change: now the &quot;009&quot; status code is written to an access log for
+      proxied HTTP/0.9 responses.
+
+   *) Change: now the default buffer size of the
+      &quot;large_client_header_buffers&quot; directive is 8K.
+      Thanks to Andrew Cholakian.
+
+   *) Change: now default SSL ciphers are &quot;HIGH:!ADH:!MD5&quot;.
+
+   *) Change: now SSLv2 protocol is disabled by default.
+
+   *) Change: now $host variable value is always low case.
+
+   *) Feature: the conf/fastcgi.conf for simple FastCGI configurations.
+
+   *) Feature: now URI part is not required a &quot;proxy_pass&quot; directive if
+      variables are used.
+
+   *) Feature: the $ssl_session_id variable.
+
+   *) Bugfix: if a proxied or FastCGI request was internally redirected to
+      another proxied or FastCGI location, then $upstream_response_time
+      variable may have abnormally large value; the bug had appeared in
+      0.7.63.
+
+   *) Bugfix: if the &quot;expires modified&quot; set date in the past, then a
+      negative number was set in the &quot;Cache-Control&quot; response header
+      line.
+      Thanks to Alex Kapranoff.
+
+   *) Bugfix: nginx closed a connection if a cached response had an empty
+      body.
+      Thanks to Piotr Sikora.
+
+   *) Bugfix: nginx cached a 304 response if there was the &quot;If-None-Match&quot;
+      header line in a proxied request.
+      Thanks to Tim Dettrick and David Kostal.
+
+   *) Bugfix: nginx did not treat a comma as separator in the
+      &quot;Cache-Control&quot; backend response header line.
+
+   *) Bugfix: cached HTTP/0.9 responses were handled incorrectly.
+
+   *) Bugfix: nginx sent gzipped responses to clients those do not support
+      gzip, if &quot;gzip_static on&quot; and &quot;gzip_vary off&quot;; the bug had appeared
+      in 0.8.16.
+
+   *) Bugfix: nginx always added &quot;Content-Encoding: gzip&quot; response header
+      line in 304 responses sent by ngx_http_gzip_static_module.
+
+   *) Bugfix: the &quot;!-x&quot; operator did not work.
+      Thanks to Maxim Dounin.
+
+   *) Bugfix: a segmentation fault might occur in a worker process, if
+      limit_rate was used in HTTPS server.
+      Thanks to Maxim Dounin.
+
+   *) Bugfix: a segmentation fault might occur in a worker process while
+      $limit_rate logging.
+      Thanks to Maxim Dounin.
+
+   *) Bugfix: nginx did not support dates in 2038 year on 32-bit platforms;
+
+   *) Bugfix: nginx/Windows tried to delete a temporary file twice if the
+      file should replace an already existent file.
+
+   *) Bugfix: nginx/Windows tried to rename a temporary file twice if the
+      file should replace an already existent file.
+
+   *) Bugfix: nginx/Windows might not create temporary file, a cache file,
+      or &quot;proxy/fastcgi_store&quot;d file if a worker had no enough access
+      rights for top level directories.
+
+   *) Bugfix: in UTF-8 encoding support by &quot;try_files&quot; directive in
+      nginx/Windows.
+
+   *) Bugfix: UTF-8 encoding usage in the ngx_http_autoindex_module.
+      Thanks to Maxim Dounin.
+
+   *) Bugfix: the ngx_http_autoindex_module did not show the trailing
+      slash in links to a directory; the bug had appeared in 0.7.15.
+
+   *) Bugfix: nginx did not close a log file set by the --error-log-path
+      configuration option; the bug had appeared in 0.7.53.
+
+   *) Bugfix: &quot;addition_types&quot; directive was incorrectly named
+      &quot;addtion_types&quot;.
+
+   *) Bugfix: invalid request line in $request variable was written in
+      access_log only if error_log was set to &quot;info&quot; or &quot;debug&quot; level.
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

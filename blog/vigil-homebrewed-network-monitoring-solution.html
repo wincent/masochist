@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Vigil: homebrewed network monitoring solution • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/vigil-homebrewed-network-monitoring-solution">Vigil: homebrewed network monitoring solution</a></h1><div class="metadata"><relative-time created="1266848929" updated="1710259978">Created 2/22/2010, updated 3/12/2024</relative-time><span>2 minute read</span></div><div class="prerendered"><p>With the <a href="/blog/server-migration-now-complete">server migration over</a> I turned my attention yesterday to <a href="/twitter/282">finding a network monitoring solution</a>. Back when I was with a dedicated server from a managed hosting provider, I left the monitoring entirely in their hands. Now that I'm in <a href="/wiki/the_cloud">the cloud</a> it's up to me.</p>
+<p>So I started by <a href="/twitter/284">installing RDDTool</a> to generate pretty graphs, and today I've been working on a simple <a href="/wiki/Sinatra">Sinatra</a> front-end to display them in the browser. Every project needs a name, even mini-projects like this one, so I've christened this one as <a href="/wiki/Vigil">Vigil</a>.</p>
+<p>Here's what the <a href="/wiki/DSL">DSL</a> for defining hosts looks like right now:</p>
+<pre><code class="language-ruby"># 60 seconds is actually the default but you can override it like this
+vigil.defaults[:interval] = 60.seconds
+
+host 'wincent.dev' do |host|
+
+  # the :every option can be used to override the checking interval
+  # for a specific monitoring task
+  host.ping :every =&gt; 60.seconds do
+    alert.when :packet_loss =&gt; equals(100.percent) do
+      # optional custom code to be run here
+    end
+
+    alert.when :packet_loss =&gt; greater_than(50.percent),
+               :for =&gt; more_than(5.minutes),
+               :severity =&gt; :medium
+
+    alert.when :avg_rtt =&gt; greater_than(1000),
+               :for =&gt; more_than(2.minutes)
+
+    alert.when :avg_rtt =&gt; greater_than(500),
+               :severity =&gt; :medium
+
+    ok.when :packet_loss =&gt; less_than_or_equal(10.percent),
+            :for =&gt; more_than(5.minutes)
+  end
+
+  host.https '/heartbeat/ping' do
+    alert.when  :status =&gt; not_equal_to(200)
+    alert.unless :response_body =&gt; matches(/I am alive!/)
+    # if no &quot;ok&quot; block defined, an implicit &quot;ok&quot; is derived when none of
+    # the other conditions matches
+  end
+
+  host.http '/a/products/' do
+    alert.when  :status =&gt; not_equal_to(200)
+    alert.unless :response_body =&gt; matches(/Install is easily configured/)
+  end
+end
+</code></pre>
+<p>Next step: a simple queuing system to run those monitoring tasks in a background thread.</p>
+</div><ul class="tags"><li><a href="/tags/vigil">vigil</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/synergy-4.4b2-released">← Synergy 4.4b2 released</a></div><div class="post-nav-next"><a href="/blog/synergy-4.4b-released">Synergy 4.4b released →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Patches to ANTLR 3.0 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Patches to ANTLR 3.0</h1></div><div class="metadata"><relative-time created="1192562011" updated="1495119989">Created 10/16/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/antlr">antlr</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>This page contains patches to <a href="/wiki/ANTLR_3">ANTLR 3</a> that address some issues in version 3.0 for which there seem to be no other viable workarounds, or for which the difficulty of applying the patch is less than the inconvenience of applying a workaround.</p>
+<h2>Pending patches</h2>
+<h3>Bug in C runtime column handling</h3>
+<ul>
+<li>&quot;Bug in C runtime column handling&quot;: <a href="http://www.antlr.org:8080/pipermail/antlr-interest/2007-July/021949.html">http://www.antlr.org:8080/pipermail/antlr-interest/2007-July/021949.html</a></li>
+</ul>
+<p>This patch should be applied to <code>antlr3inputstream.c</code>:</p>
+<pre><code>166c166
+&lt;     input-&gt;charPositionInLine = -1;
+---
+&gt;     input-&gt;charPositionInLine = 0;
+</code></pre>
+<h3>Filter mode</h3>
+<ul>
+<li>&quot;Patch for filter mode&quot; (<a href="http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021243.html">http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021243.html</a>); patch to <code>antlr-3.0/src/org/Antlr/codegen/CodeGenerator.java</code>:</li>
+</ul>
+<!-- -->
+<pre><code>301c301,302
+&lt;                                                         grammar.getOption(&quot;filter&quot;).equals(&quot;true&quot;);
+---
+&gt;                                                         grammar.getOption(&quot;filter&quot;).equals(&quot;true&quot;) &amp;&amp;
+&gt;                                                         ( grammar.type==Grammar.LEXER );
+</code></pre>
+<h2>Accepted patches</h2>
+<h3>Missing parentheses around predicates</h3>
+<ul>
+<li>&quot;Bug in C output (may after other targets as well)&quot;: <a href="http://www.antlr.org:8080/pipermail/antlr-interest/2007-July/022025.html">http://www.antlr.org:8080/pipermail/antlr-interest/2007-July/022025.html</a></li>
+</ul>
+<p>This patch should be applied to the <code>C.stg</code> output template:</p>
+<pre><code>2274c2283
+&lt; andPredicates(left,right) ::= &quot;( &lt;left&gt; &amp;&amp; &lt;right&gt; )&quot;
+---
+&gt; andPredicates(left,right) ::= &quot;( (&lt;left&gt;) &amp;&amp; (&lt;right&gt;) )&quot;
+</code></pre>
+<p>Not sure when this one was applied but it made it into ANTLR 3.0.1.</p>
+<h3><a href="/wiki/GCC">GCC</a> <a href="/wiki/lexer">lexer</a> warnings <a href="/wiki/C_target">C target</a></h3>
+<ul>
+<li>&quot;GCC lexer warnings with C target&quot; (<a href="http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021330.html">http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021330.html</a>); patch to <code>antlr-3.0/src/org/antlr/codegen/templates/C/C.stg</code>:</li>
+</ul>
+<!-- -->
+<pre><code>714c714
+&lt; &lt;rules:{r | static &lt;headerReturnType(ruleDescriptor=r.ruleDescriptor)&gt;        &lt;if(!r.ruleDescriptor.isSynPred)&gt;m&lt;endif&gt;&lt;r.ruleDescriptor.name&gt;    (p&lt;name&gt; ctx&lt;if(r.ruleDescriptor.parameterScope)&gt;, &lt;endif&gt;&lt;r.ruleDescriptor.parameterScope:parameterScope(scope=it)&gt;);}; separator=&quot;\n&quot;;&gt;
+---
+&gt; &lt;rules:{r | static &lt;if(!r.ruleDescriptor.isSynPred)&gt;ANTLR3_INLINE&lt;endif&gt; &lt;headerReturnType(ruleDescriptor=r.ruleDescriptor)&gt;  &lt;if(!r.ruleDescriptor.isSynPred)&gt;m&lt;endif&gt;&lt;r.ruleDescriptor.name&gt;    (p&lt;name&gt; ctx&lt;if(r.ruleDescriptor.parameterScope)&gt;, &lt;endif&gt;&lt;r.ruleDescriptor.parameterScope:parameterScope(scope=it)&gt;);}; separator=&quot;\n&quot;;&gt;
+</code></pre>
+<ul>
+<li>Applied in <a href="http://fisheye2.cenqua.com/changelog/antlr/src/org/antlr/codegen/templates/C?cs=3831">revision 3831</a>.</li>
+</ul>
+<h2>Rejected patches</h2>
+<ul>
+<li>None so far.</li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Rebuilding_ANTLR">Rebuilding ANTLR</a></li>
+<li><a href="/wiki/Patches_to_ANTLR_3.0.1">Patches to ANTLR 3.0.1</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

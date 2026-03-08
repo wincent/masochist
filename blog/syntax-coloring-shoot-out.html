@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Syntax coloring shoot-out • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/syntax-coloring-shoot-out">Syntax coloring shoot-out</a></h1><div class="metadata"><relative-time created="1231192124" updated="1710259978">Created 1/5/2009, updated 3/12/2024</relative-time><span>5 minute read</span></div><div class="prerendered"><p>As a follow-up to the <a href="/blog/trying-emacs">comments</a> on Emacs that I posted earlier, I thought I'd check out how BBEdit is doing lately, seeing as a new version is out (9.1) and that latest I'd seen was 8.7.2.</p>
+<p>Well, there's been big progress in a lot of areas.</p>
+<p>Disk browsers and multi-file find results are now much more useful, and on a par with TextMate because you can finally edit files in-place rather than spawn editors in new windows. The interface is still clunky in some ways (the preferences, for example, are overly complicated, and the multifile find suffers from having an overly large initial dialog and a separate results window), but things like the addition of Projects really are a leap forward.</p>
+<p>But there's one area in which BBEdit continues to suck, and badly: syntax coloring. Witness the following comparison between BBEdit, Emacs, and TextMate.</p>
+<p>If you look at the sample from BBEdit (below), you'll see that the text is almost entirely black. You can barely call this syntax coloring at all. Basically the only things colored are are language keywords (<code>if</code>, <code>return</code>), a few types (<code>int</code>, <code>char</code>, <code>long</code>), but notably not others (<code>VALUE</code>, <code>token_t</code>), string literals, and comments.</p>
+<p>I personally find this undifferentiated mass of black text to be very hard to look at for any length of time. BBEdit could be the best text editor in the world, and it is a very good editor, but with that syntax coloring I just can't consider using it.</p>
+<p><img src="/system/images/bbedit-syntax-coloring.png" alt="bbedit-syntax-coloring.png" /></p>
+<p>Moving on to Emacs, and things are literally worlds away (as always with Emacs). It gets the same things right that BBEdit does, but also catches all the types that BBEdit missed, as well as colorizing variable names.</p>
+<p>I personally also find the clean, not-antialiased Monaco font much nicer on the eyes, even though the new default font included in BBEdit (Consola Regular) does have a kind of smooth attractiveness. I also prefer the color scheme.</p>
+<p><img src="/system/images/emacs-syntax-coloring.png" alt="emacs-syntax-coloring.png" /></p>
+<p>The last contestant is TextMate. It misses out on a couple things that Emacs acts upon (the same types that BBEdit failed to highlight, and variable names), but does do one thing that Emacs didn't do: highlight function and macro names. I'm not really sure I like the use of boldface for the latter elements, however.</p>
+<p><img src="/system/images/textmate-syntax-coloring.png" alt="textmate-syntax-coloring.png" /></p>
+<p>So my personal, subjective ranking of these for both attractiveness and usability is Emacs coming out on top, TextMate a satisfactory second place, and BBEdit trailing far, far behind. And notably, it is precisely Emacs and TextMate which offer the most flexibility for using alternate themes and tweaking things to appeal to your personal aesthetic judgement; whereas BBEdit offers all too few means of addressing its weaknesses (you're left to tweaking the few color options that are available to you; you can't actually improve the highlighting at a syntactic level without delving into writing a C plug-in).</p>
+<p>Finally, although the sample screenshots don't show it, I've seen a lot more cases of incorrect highlighting in BBEdit than in the other editors, particularly involving quoted strings, regular expressions, and heavy interpolation. I've seldom seen TextMate trip up in that area, and I've yet to see Emacs trip up at all (although remember, I haven't been playing seriously with it for long).</p>
+<h4>Update: 15 January 2009</h4>
+<p>Adding a <a href="/wiki/MacVim">MacVim</a> screenshot for the sake of comparison. I've been using MacVim for about 120 seconds so the comparison isn't really totally fair; I'll post an updated screenshot when and if I find out how to disable anti-aliasing, change fonts, and pick a color scheme that is comparable with the one used in the other screenshots.</p>
+<p>But at a glance you can see that the amount of coloring is about the same as BBEdit, with the addition of numeric literals.</p>
+<p><img src="/system/images/macvim-syntax-coloring.png" alt="macvim-syntax-coloring.png" /></p>
+<h4>Update: 21 February 2009</h4>
+<p>I finally got around to posting an updated <a href="/wiki/MacVim">MacVim</a> screenshot with similar colors and font settings.</p>
+<p><img src="/system/images/macvim-syntax-coloring-updated.png" alt="macvim-syntax-coloring-updated.png" /></p>
+<h4>Update: 30 January 2010</h4>
+<p>And here we are a year later.</p>
+<p><img src="/system/images/macvim-syntax-coloring-jan-2010.png" alt="macvim-syntax-coloring-jan-2010.png" /></p>
+<p>Not much has changed. The only real tweaks of interest are:</p>
+<ul>
+<li><a href="/blog/making-vim-highlight-suspicious-characters">use of more subtle coloring for end-of-line markers</a></li>
+<li><a href="/blog/highlighting-overlength-lines-in-vim">addition of (intentionally) jarring coloring for long and overlong lines</a></li>
+</ul>
+<h4>Update: 5 February 2012</h4>
+<p>Two years later:</p>
+<p><img src="/system/images/vim-syntax-coloring-feb-2012.png" alt="vim-syntax-coloring-feb-2012.png" /></p>
+<p>Differences:</p>
+<ul>
+<li>I'm now using <a href="/wiki/Vim">Vim</a> in the <a href="/wiki/terminal">terminal</a>, generally inside a <a href="/wiki/tmux">tmux</a> session</li>
+<li>Now using the incredibly soothing and attractive <a href="/wiki/Solarized">Solarized</a> color scheme</li>
+<li>Using folding</li>
+<li>Hand-rolled long-line highlighting replaced by Vim's <code>'colorcolumn'</code> feature (new in 7.3)</li>
+<li>Current line highlighted (with <code>'cursorline'</code>)</li>
+<li>After a stint with Consolas and a larger font size, I've settled on to Monaco, 12 pt, anti-aliased</li>
+</ul>
+<h4>Update: 21 July 2015</h4>
+<p>Some three years or so later:</p>
+<p><img src="/system/images/vim-syntax-coloring-july-2015.png" alt="vim-syntax-coloring-july-2015.png" /></p>
+<p>Differences:</p>
+<ul>
+<li>After years of Solarized usage, I switched to the dark &quot;ocean&quot; theme from Base16</li>
+<li>More attractive long line highlighting</li>
+<li>Italic support (even in the terminal)</li>
+<li>Back to Consolas, now 13pt most of the time (and 15pt or more if I'm working with glasses, or on a bus with a bumpy ride etc); once I get a machine with a Retina display I think I'll take this down a notch</li>
+<li>Still using folding, but less of it</li>
+</ul>
+<h4>Update: 24 July 2022</h4>
+<blockquote>
+<p><em>(Sponge Bob narrator voice):</em> Seven years later</p>
+</blockquote>
+<p><img src="/system/images/neovim-syntax-coloring-july-2022.png" alt="neovim-syntax-coloring-july-2022.png" /></p>
+<p>Differences:</p>
+<ul>
+<li>I got feedback on <a href="https://www.youtube.com/c/GregHurrell">my screencasts</a> that a higher-contrast scheme would be better, so I switched to <a href="https://github.com/wincent/wincent/tree/media/colorschemes#bright">&quot;bright&quot; from Base16</a>.</li>
+<li>This on a Retina display, so text is sharper. I use <a href="https://sw.kovidgoyal.net/kitty/index.html">Kitty</a> in some places and <a href="https://iterm2.com/">iTerm2</a> in others<sup class="footnote-ref"><a href="#fn-why" id="fnref-why" data-footnote-ref>1</a></sup>, and the text rendering differs ever so slightly between those; this particular screenshot is taken on Kitty.</li>
+<li>Font is 12pt <a href="https://github.com/adobe-fonts/source-code-pro">Adobe Source Code Pro</a>.</li>
+<li>This is Neovim rather than Vim.</li>
+<li>Overall, settings are tuned for subtlety; for example, I no longer include an <code>eol</code> character in <code>'listchars'</code>.</li>
+<li>I'm using <a href="https://github.com/lukas-reineke/indent-blankline.nvim">the indent-blankline.nvim plug-in</a> to show indent markers.</li>
+</ul>
+<section class="footnotes" data-footnotes>
+<ol>
+<li id="fn-why">
+<p>Why use two terminal emulators? When I got <a href="https://wincent.dev/blog/building-a-pc">a Linux machine</a>, I needed a terminal emulator for that and went with Kitty. I would have used it everywhere but I ran into some issues on my work laptop (a macOS machine), although I found them livable on my personal laptop (also a macOS machine, but with a slightly different workload, so the problems weren't deal-breakers). Specifically, I <a href="https://github.com/wincent/wincent/blob/fdae884e343acfe025751c5bd78546aa630771e8/aspects/dotfiles/files/.zsh/github/lib/gg/helpers/codespace">can't use <code>gh cs ssh</code> to get into a Codespace when using Kitty</a>, and at GitHub, <a href="https://github.blog/2021-08-11-githubs-engineering-team-moved-codespaces/">Codespaces <em>is</em> our blessed development platform</a>. So, as much as I'd like to use the same tool everywhere, I figure it's useful to keep my set-up working relatively well on both emulators, so that I have a fallback option in the future. <a href="#fnref-why" class="footnote-backref" data-footnote-backref data-footnote-backref-idx="1" aria-label="Back to reference 1">↩</a></p>
+</li>
+</ol>
+</section>
+</div><ul class="tags"><li><a href="/tags/textmate">textmate</a></li><li><a href="/tags/emacs">emacs</a></li><li><a href="/tags/bbedit">bbedit</a></li><li><a href="/tags/vim">vim</a></li><li><a href="/tags/blog">blog</a></li></ul><div class="post-nav"><div class="post-nav-prev"><a href="/blog/january-server-maintenance">← January server maintenance</a></div><div class="post-nav-next"><a href="/blog/trying-emacs">Trying Emacs →</a></div></div><p class="post-nav-all"><a href="/blog/all">All blog posts</a></p></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

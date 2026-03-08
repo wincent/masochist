@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Setting up autotest to use Growl • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Setting up autotest to use Growl</h1></div><div class="metadata"><relative-time created="1198256833" updated="1584053324">Created 12/21/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/zentest">zentest</a></li><li><a href="/tags/growl">growl</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Introduction</h2>
+<p>This information based on the following three articles:</p>
+<ul>
+<li><a href="http://blog.labratz.net/articles/2006/09/13/growl-autotest-rails-with-zentest-3-4-0">http://blog.labratz.net/articles/2006/09/13/growl-autotest-rails-with-zentest-3-4-0</a></li>
+<li><a href="http://blog.internautdesign.com/2006/11/12/autotest-growl-goodness">http://blog.internautdesign.com/2006/11/12/autotest-growl-goodness</a></li>
+<li><a href="http://blog.codefront.net/2007/04/01/get-your-testing-results-via-growl-notifications/">http://blog.codefront.net/2007/04/01/get-your-testing-results-via-growl-notifications/</a></li>
+</ul>
+<h2>Get <code>GrowlNotify</code></h2>
+<ul>
+<li>Download and install the latest version of the <a href="/wiki/Growl">Growl</a> disk image from: <a href="http://growl.info/">http://growl.info/</a></li>
+</ul>
+<h3>Growl 1.1.2</h3>
+<pre><code>wget http://growl.info/files/Growl-1.1.2.dmg
+open Growl-1.1.2.dmg
+cd /Volumes/Growl\ 1.1.2/Extras/growlnotify
+less install.sh
+sudo ./install.sh
+cd
+hdiutil detach /Volumes/Growl\ 1.1.2
+</code></pre>
+<h3>Growl 0.7.6</h3>
+<pre><code>wget http://growl.info/files/Growl-0.7.6.dmg
+open Growl-0.7.6.dmg
+cd /Volumes/Growl/Extras/growlnotify
+sudo ./install.sh
+cd
+hdiutil detach /Volumes/Growl
+</code></pre>
+<h2>Grab the failure/success graphics</h2>
+<pre><code>cd ~
+wget http://blog.internautdesign.com/files/rails_fail.png
+wget http://blog.internautdesign.com/files/rails_ok.png
+mv rails_fail.png .rails_fail.png
+mv rails_ok.png .rails_ok.png
+</code></pre>
+<h2>Customize <code>~/.autotest</code></h2>
+<p>(Last updated 21 December 2007 to handle new <a href="/wiki/RSpec">RSpec</a> &quot;pending&quot; notifications):</p>
+<pre><code>module Autotest::Growl
+
+  def self.growl title, msg, img, pri=0, sticky=&quot;&quot;
+    system &quot;growlnotify -n autotest --image #{img} -p #{pri} -m #{msg.inspect} #{title} #{sticky}&quot;
+  end
+
+  Autotest.add_hook :ran_command do |at|
+    results = [at.results].flatten.join(&quot;\n&quot;)
+    output = results.slice(/(\d+)\s+examples?,\s*(\d+)\s+failures?(,\s*(\d+)\s+pending)?/)
+    if output
+      if $~[2].to_i &gt; 0
+        growl &quot;Test Results&quot;, &quot;#{output}&quot;, &quot;~/.rails_fail.png&quot;, 2
+      else
+        growl &quot;Test Results&quot;, &quot;#{output}&quot;, &quot;~/.rails_ok.png&quot;
+      end
+    end
+  end
+
+end
+</code></pre>
+<h2>Configure <a href="/wiki/Growl">Growl</a></h2>
+<ul>
+<li>Configure notifications from <a href="/wiki/autotest">autotest</a> to display using the &quot;Smoke&quot; display.</li>
+<li>Set the &quot;Emergency&quot; color scheme for &quot;Smoke&quot; to show a red background.</li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Security in Rails • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Security in Rails</h1></div><div class="metadata"><relative-time created="1180024941" updated="1584053324">Created 5/24/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Always use <code>attr_accessible</code></h2>
+<p>See:</p>
+<ul>
+<li><a href="http://somethinglearned.com/articles/2006/05/23/best-practices-a-strong-case-for-redacted-part-1">http://somethinglearned.com/articles/2006/05/23/best-practices-a-strong-case-for-redacted-part-1</a></li>
+<li><a href="http://somethinglearned.com/articles/2006/05/24/best-practices-a-strong-case-for-attr_accessible-part-2">http://somethinglearned.com/articles/2006/05/24/best-practices-a-strong-case-for-attr_accessible-part-2</a></li>
+<li>&quot;Hackers Love Mass Assignment&quot;: <a href="http://www.railscasts.com/episodes/26">http://www.railscasts.com/episodes/26</a></li>
+</ul>
+<h2>Protecting controller actions</h2>
+<p>Any public method in a controller class can be called from a web browser. For example, consider the following method:</p>
+<pre><code>class UsersController &lt; ApplicationController
+  def nuke_database
+    User.destroy_all
+  end
+end
+</code></pre>
+<p>This method can be called from a browser using a <a href="/wiki/URL">URL</a> like: <a href="http://example.com/users/nuke_database/">http://example.com/users/nuke_database/</a></p>
+<p>This is because the default routing in <code>config/routes.rb</code> allows it:</p>
+<pre><code>map.connect ':controller/:action/:id'
+</code></pre>
+<p>When you try to access such a URL <a href="/wiki/Rails">Rails</a> will look for a view template at <code>app/views/users/nuke_database.rhtml</code> and most likely not find it. Nevertheless, by the time the view-related error occurs the body of the method will already have been executed. It is therefore absolutely essential that you declare all methods that aren't public actions as <code>protected</code>:</p>
+<pre><code>class UsersController &lt; ApplicationController
+  def index
+    # public method
+  end
+
+protected
+
+  def nuke_database
+    User.destroy_all
+  end
+end
+</code></pre>
+<h2>Sessions</h2>
+<p>Articles on session security:</p>
+<ul>
+<li>&quot;Ruby on Rails sessions - introduction and expiry&quot;: <a href="http://www.rorsecurity.info/2007/04/10/ruby-on-rails-sessions-introduction-and-expiry/">http://www.rorsecurity.info/2007/04/10/ruby-on-rails-sessions-introduction-and-expiry/</a></li>
+<li>&quot;Session hijacking&quot;: <a href="http://www.rorsecurity.info/2007/04/12/session-hijacking/">http://www.rorsecurity.info/2007/04/12/session-hijacking/</a></li>
+<li>&quot;Session fixation in Rails&quot;: <a href="http://www.rorsecurity.info/2007/04/15/session-fixation-in-rails/">http://www.rorsecurity.info/2007/04/15/session-fixation-in-rails/</a></li>
+</ul>
+<h2>See also</h2>
+<ul>
+<li>&quot;Securing your Rails application&quot;: <a href="http://manuals.rubyonrails.org/read/book/8">http://manuals.rubyonrails.org/read/book/8</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

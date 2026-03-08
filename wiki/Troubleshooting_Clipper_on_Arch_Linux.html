@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Troubleshooting Clipper on Arch Linux • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Troubleshooting Clipper on Arch Linux</h1></div><div class="metadata"><relative-time created="1658763945" updated="1658763945">7/25/2022</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Install from AUR</h2>
+<p>Using <code>yay</code>, for example:</p>
+<pre><code>yay -S clipper-git
+</code></pre>
+<p>As indicated in the <a href="https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=clipper-git">PKGBUILD</a>, installing prepares you to run Clipper but actually running it is up to you:</p>
+<pre><code>mkdir -p ~/.config/systemd/user
+cp /usr/share/clipper/clipper.service ~/.config/systemd/user/clipper.service
+systemctl --user daemon-reload
+systemctl --user enable clipper.service
+systemctl --user start clipper.service
+</code></pre>
+<h2>Verify that the service is running</h2>
+<pre><code>systemctl --user status clipper.service
+</code></pre>
+<h2>View the logs</h2>
+<pre><code>journalctl --user --unit clipper.service
+</code></pre>
+<h2>Tail the logs</h2>
+<pre><code>journalctl --user --unit clipper.service -f
+</code></pre>
+<h2>Confirm that <code>$DISPLAY</code> is set</h2>
+<pre><code>echo $DISPLAY
+</code></pre>
+<p>Without <code>$DISPLAY</code>, <code>xclip</code> won't work.</p>
+<h2>Test that <code>xclip</code> works</h2>
+<pre><code>echo hi | xclip -selection clipboard
+</code></pre>
+<p>Verify that the contents actually are in the clipboard by pasting into another application or by running, somewhat tautologically, <code>xclip</code> again:</p>
+<pre><code>xclip -o -selection clipboard
+</code></pre>
+<h2>Test that the Clipper socket exists</h2>
+<pre><code>$ find ~ -maxdepth 1 -type s -name .clipper.sock
+/home/wincent/.clipper.sock
+</code></pre>
+<h2>Try piping something to the socket</h2>
+<p>Note <code>~</code> won't work; you have to spell out the entire path:</p>
+<pre><code>echo stuff | socat - UNIX-CLIENT:$HOME/.clipper.sock
+xclip -o -selection clipboard
+</code></pre>
+<p>(Using <code>xclip</code> to confirm that it made it into the clipboard.)</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

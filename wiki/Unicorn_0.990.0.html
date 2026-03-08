@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Unicorn 0.990.0 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Unicorn 0.990.0</h1></div><div class="metadata"><relative-time created="1275977810" updated="1584053324">Created 6/8/2010, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/unicorn">unicorn</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official release announcement:</p>
+<pre><code>Unicorn is an HTTP server for Rack applications designed to only serve
+fast clients on low-latency, high-bandwidth connections and take
+advantage of features in Unix/Unix-like kernels.  Slow clients should
+only be served by placing a reverse proxy capable of fully buffering
+both the the request and response in between Unicorn and slow clients.
+
+* http://unicorn.bogomips.org/
+* mongrel-unicorn@rubyforge.org
+* git://git.bogomips.org/unicorn.git
+
+Changes:
+
+Thanks to Augusto Becciu for finding a bug in the HTTP parser
+that caused a TypeError (and 500) when a rare client set the
+&quot;Version:&quot; header which conflicts with the HTTP_VERSION header
+we parse in the first line of the request[1].
+
+Horizontal tabs are now allowed as leading whitespace in header
+values as according to RFC 2616 as pointed out by
+Iñaki Baz Castillo[2].
+
+Taking a hint from Rack 1.1, the &quot;logger&quot; configuration
+parameter no longer requires a &quot;close&quot; method.  This means some
+more Logger replacements may be used.
+
+There's a new, optional, Unicorn (and maybe Passenger)-only
+middleware, Unicorn::OobGC[2] that runs GC outside of the normal
+request/response cycle to help out memory-hungry applications.
+Thanks to Luke Melia for being brave enough to test and report
+back on my big_app_gc.rb monkey patch[3] which lead up to this.
+
+Rails 3 (beta) support:
+
+ Using &quot;unicorn&quot; is still recommended as Rails 3 comes with
+ a config.ru, but &quot;unicorn_rails&quot; is cleaned up a bit and
+ *should* work as well as &quot;unicorn&quot; out-of-the-box.  Feedback
+ is much appreciated.
+
+Rubinius updates:
+
+ USR2 binary upgrades are broken due to
+ {TCPServer,UNIXServer}.for_fd[5][6] being broken
+ (differently).
+
+ Repeatedly hitting the server with signals in a tight
+ loop is unusual and not recommended[7].
+
+ There are some workarounds and general code cleanups for other
+ issues[8], as well but things should generally work unless you
+ need USR2 upgrades.  Feedback and reports would be greatly
+ appreciated as usual.
+
+MRI support:
+
+ All tests (except old Rails) run and pass under 1.9.2-preview3.
+ 1.8.7 and 1.9.1 work well as usual and will continue to be
+ supported indefinitely.
+
+Lets hope this is the last release before 1.0.  Please report
+any issues on the mailing list[9] or email us privately[a].
+Don't send HTML mail.
+
+[1] - http://mid.gmane.org/AANLkTimuGgcwNAMcVZdViFWdF-UcW_RGyZAue7phUXps@mail.gmail.com
+[2] - http://mid.gmane.org/i2xcc1f582e1005070651u294bd83oc73d1e0adf72373a@mail.gmail.com
+[3] - http://unicorn.bogomips.org/Unicorn/OobGC.html
+[4] - http://unicorn.bogomips.org/examples/big_app_gc.rb
+[5] - http://github.com/evanphx/rubinius/issues/354
+[6] - http://github.com/evanphx/rubinius/issues/355
+[7] - http://github.com/evanphx/rubinius/issues/356
+[8] - http://github.com/evanphx/rubinius/issues/347
+[9] - mailto:mongrel-unicorn@rubyforge.org
+[a] - mailto:unicorn@bogomips.org
+
+--
+Eric Wong
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

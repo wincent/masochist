@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Clearing out old Rails session records from a MySQL database • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Clearing out old Rails session records from a MySQL database</h1></div><div class="metadata"><relative-time created="1222013498" updated="1584053324">Created 9/21/2008, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/rails">rails</a></li><li><a href="/tags/mysql">mysql</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h3>Manually clearing</h3>
+<p>Something like this should do the trick:</p>
+<pre><code>DELETE FROM sessions WHERE updated_at &lt; STR_TO_DATE('20.08.2008',GET_FORMAT(DATE,'EUR'));
+</code></pre>
+<p>Or making the hard-coded cut-off date a little more dynamic (deleting sessions not updated in the last 30 days):</p>
+<pre><code>DELETE FROM sessions WHERE updated_at &lt; DATE_SUB(CURDATE(), INTERVAL 30 DAY);
+</code></pre>
+<p>You can also use the <a href="/wiki/Rails">Rails</a>-provided <code>rake db:sessions:clear</code> task, which essentially boils down to:</p>
+<pre><code>DELETE FROM sessions;
+</code></pre>
+<p>When I first tried these techniques I found that the query took <em>forever</em> on my rather large sessions table (2.5 million rows), presumably due to lock contention with visitors to the site resulting in updates to the <code>sessions</code> table and interrupting the <code>DELETE</code> query:</p>
+<pre><code>$ mysqladmin processlist -u root -p
+Enter password:
++-----+----------+-----------+----------+---------+-------+----------+----------------------+
+| Id  | User     | Host      | db       | Command | Time  | State    | Info                 |
++-----+----------+-----------+----------+---------+-------+----------+----------------------+
+| 446 | foo      | localhost | foo      | Query   | 26762 | updating | delete from sessions |
+| 457 | root     | localhost |          | Query   | 0     |          | show processlist     |
++-----+----------+-----------+----------+---------+-------+----------+----------------------+
+</code></pre>
+<p>Note that at that point the query had been running for over 26 thousand seconds! I found that hitting Control-C in the <a href="/wiki/MySQL">MySQL</a> console aborted the query:</p>
+<pre><code>Query aborted by Ctrl+C
+</code></pre>
+<p>But the corresponding thread lingered on in the MySQL instance for a long time. For example:</p>
+<pre><code>+-----+----------+-----------+----------+---------+-------+-------+----------------------+
+| Id  | User     | Host      | db       | Command | Time  | State | Info                 |
++-----+----------+-----------+----------+---------+-------+-------+----------------------+
+| 446 | foo      | localhost | foo      | Query   | 45449 | end   | delete from sessions |
+| 470 | root     | localhost |          | Query   | 0     |       | show processlist     |
++-----+----------+-----------+----------+---------+-------+-------+----------------------+
+</code></pre>
+<p>So I tried killing the thread:</p>
+<pre><code>$ mysqladmin -u root -p kill 446
+Enter password:
+$ mysqladmin processlist -u root -p
+Enter password:
++-----+----------+-----------+----------+---------+-------+-------+----------------------+
+| Id  | User     | Host      | db       | Command | Time  | State | Info                 |
++-----+----------+-----------+----------+---------+-------+-------+----------------------+
+| 446 | foo      | localhost | foo      | Killed  | 45474 | end   | delete from sessions |
+| 472 | root     | localhost |          | Query   | 0     |       | show processlist     |
++-----+----------+-----------+----------+---------+-------+-------+----------------------+
+</code></pre>
+<p>But even after killing the thread took a long, long time to disappear:</p>
+<pre><code>+-----+----------+-----------+----------+---------+-------+-------+----------------------+
+| Id  | User     | Host      | db       | Command | Time  | State | Info                 |
++-----+----------+-----------+----------+---------+-------+-------+----------------------+
+| 446 | foo      | localhost | foo      | Killed  | 53490 | end   | delete from sessions |
+| 482 | root     | localhost |          | Query   | 0     |       | show processlist     |
++-----+----------+-----------+----------+---------+-------+-------+----------------------+
+</code></pre>
+<p>Finally, the thread finalized when I tried running a <code>TRUNCATE sessions</code> and then aborted <em>that</em> query with Control-C; I'm not sure if this was a coincidence or not.</p>
+<p>In the end, once the unwanted thread finally went away and the lock contention issues were over I was able to disable public access to the site, shut down the <a href="/wiki/Mongrel">Mongrel</a> instances, and perform the <code>TRUNCATE</code> very rapidly:</p>
+<pre><code>mysql&gt; TRUNCATE sessions;
+Query OK, 2544634 rows affected (0.13 sec)
+</code></pre>
+<p>So the moral of the story is, clear your sessions table early and often, before it gets too large to efficiently prune.</p>
+<h3>Automated clearing</h3>
+<p>From a cron job, for example. Currently working on setting this up; see <a href="/issues/1142">ticket #1142</a>.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

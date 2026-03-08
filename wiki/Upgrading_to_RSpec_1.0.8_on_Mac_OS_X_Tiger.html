@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Upgrading to RSpec 1.0.8 on Mac OS X Tiger • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Upgrading to RSpec 1.0.8 on Mac OS X Tiger</h1></div><div class="metadata"><relative-time created="1191583215" updated="1495119989">Created 10/5/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/rspec">rspec</a></li><li><a href="/tags/tiger">tiger</a></li><li><a href="/tags/updates">updates</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>I haven't done any <a href="/wiki/Rails">Rails</a> development for a while and so haven't touched <a href="/wiki/RSpec">RSpec</a> since my last upgrade (see, &quot;<a href="/wiki/Upgrading_to_RSpec_1.0.5_on_Mac_OS_X_Tiger">Upgrading to RSpec 1.0.5 on Mac OS X Tiger</a>&quot;). This is therefore an upgrade from <a href="/wiki/RSpec_1.0.5">RSpec 1.0.5</a> to <a href="/wiki/RSpec_1.0.8">RSpec 1.0.8</a>.</p>
+<h2>Installation</h2>
+<pre><code>$ sudo gem install rspec
+Password:
+Successfully installed rspec-1.0.8
+Installing ri documentation for rspec-1.0.8...
+Installing RDoc documentation for rspec-1.0.8...
+</code></pre>
+<h2>Updating the <a href="/wiki/FastRI">FastRI</a> index</h2>
+<pre><code>$ fastri-server -b
+Indexing RI docs for ParseTree version 2.0.2.
+Indexing RI docs for RubyInline version 3.6.3.
+Indexing RI docs for ZenTest version 3.6.1.
+Indexing RI docs for actionmailer version 1.3.4.
+Indexing RI docs for actionpack version 1.13.4.
+Indexing RI docs for actionwebservice version 1.2.4.
+Indexing RI docs for activerecord version 1.15.3.
+Indexing RI docs for activesupport version 1.4.2.
+Indexing RI docs for cmdparse version 2.0.2.
+Indexing RI docs for dhaka version 2.2.1.
+Indexing RI docs for diff-lcs version 1.1.2.
+Indexing RI docs for fastri version 0.3.0.1.
+Indexing RI docs for haml version 1.7.0.
+Indexing RI docs for heckle version 1.4.1.
+Indexing RI docs for hoe version 1.3.0.
+Indexing RI docs for hpricot version 0.5.
+Indexing RI docs for meta_project version 0.4.15.
+Indexing RI docs for model_security_generator version 0.0.9.
+Indexing RI docs for rake version 0.7.3.
+Indexing RI docs for rcodetools version 0.5.0.0.
+Indexing RI docs for rcov version 0.8.0.2.
+Indexing RI docs for rspec version 1.0.8.
+Indexing RI docs for ruby-debug version 0.9.3.
+Indexing RI docs for ruby-debug-base version 0.9.3.
+Indexing RI docs for ruby-prof version 0.5.2.
+Indexing RI docs for ruby2ruby version 1.1.6.
+Indexing RI docs for rubyforge version 0.4.4.
+Indexing RI docs for rubygems version 0.9.2.
+Indexing RI docs for spec_ui version 0.2.3.
+Indexing RI docs for sqlite3-ruby version 1.2.1.
+Indexing RI docs for syntax version 1.0.0.
+Indexing RI docs for walrus version 0.1.
+Indexing RI docs for webgen version 0.4.4.
+Building index.
+Indexed:
+* 13336 methods
+* 2784 classes/modules
+Needed 1.33855 seconds
+</code></pre>
+<h2>Updating the <a href="/wiki/TextMate">TextMate</a> bundle</h2>
+<p>My local bundle was following the tip of the trunk and had quite a few local changes, but I understand that these have been integrated now and so I decided to blow away my local working copy and start with a fresh checkout:</p>
+<pre><code>$ cd /Users/wincent/Library/Application\ Support/TextMate/Bundles
+$ rm -rf RSpec.tmbundle
+$ svn co svn://rubyforge.org/var/svn/rspec/tags/CURRENT/RSpec.tmbundle
+A    RSpec.tmbundle/Commands
+A    RSpec.tmbundle/Commands/Run Focussed Specification.tmCommand
+A    RSpec.tmbundle/Commands/Run Specifications in selected files or directories.tmCommand
+A    RSpec.tmbundle/Commands/Run Specifications - Normal.tmCommand
+A    RSpec.tmbundle/Commands/Alternate File.tmCommand
+A    RSpec.tmbundle/Snippets
+A    RSpec.tmbundle/Snippets/should_be_a_kind_of.tmSnippet
+A    RSpec.tmbundle/Snippets/should_not_predicate.tmSnippet
+A    RSpec.tmbundle/Snippets/should eql.tmSnippet
+A    RSpec.tmbundle/Snippets/should_satisfy.tmSnippet
+A    RSpec.tmbundle/Snippets/should_receive_with_no_args.tmSnippet
+A    RSpec.tmbundle/Snippets/should_be.tmSnippet
+A    RSpec.tmbundle/Snippets/should_not_equal.tmSnippet
+A    RSpec.tmbundle/Snippets/exactly.tmSnippet
+A    RSpec.tmbundle/Snippets/should_match.tmSnippet
+A    RSpec.tmbundle/Snippets/at_most_once.tmSnippet
+A    RSpec.tmbundle/Snippets/twice.tmSnippet
+A    RSpec.tmbundle/Snippets/should_have_at_least.tmSnippet
+A    RSpec.tmbundle/Snippets/should_raise.tmSnippet
+A    RSpec.tmbundle/Snippets/Set Controller for Spec.tmSnippet
+A    RSpec.tmbundle/Snippets/should_throw.tmSnippet
+A    RSpec.tmbundle/Snippets/teardown.tmSnippet
+A    RSpec.tmbundle/Snippets/any_number_of_times.tmSnippet
+A    RSpec.tmbundle/Snippets/once.tmSnippet
+A    RSpec.tmbundle/Snippets/should_have_at_most.tmSnippet
+A    RSpec.tmbundle/Snippets/at_least_twice.tmSnippet
+A    RSpec.tmbundle/Snippets/should ==.tmSnippet
+A    RSpec.tmbundle/Snippets/should =~.tmSnippet
+A    RSpec.tmbundle/Snippets/response_should_not_be_success.tmSnippet
+A    RSpec.tmbundle/Snippets/controller_context_RESTful.tmSnippet
+A    RSpec.tmbundle/Snippets/should_receive.tmSnippet
+A    RSpec.tmbundle/Snippets/at_least_once.tmSnippet
+A    RSpec.tmbundle/Snippets/setup.tmSnippet
+A    RSpec.tmbundle/Snippets/should_include.tmSnippet
+A    RSpec.tmbundle/Snippets/should_not_be_redirect.tmSnippet
+A    RSpec.tmbundle/Snippets/at_most.tmSnippet
+A    RSpec.tmbundle/Snippets/should_not_be_close.tmSnippet
+A    RSpec.tmbundle/Snippets/should_not_be_an_instance_of.tmSnippet
+A    RSpec.tmbundle/Snippets/should_not_be_a_kind_of.tmSnippet
+A    RSpec.tmbundle/Snippets/should_receive_with_any_args.tmSnippet
+A    RSpec.tmbundle/Snippets/should_not_satisfy.tmSnippet
+A    RSpec.tmbundle/Snippets/should_not eql.tmSnippet
+A    RSpec.tmbundle/Snippets/Describe_type.tmSnippet
+A    RSpec.tmbundle/Snippets/should_not_be.tmSnippet
+A    RSpec.tmbundle/Snippets/Require spec_helper.tmSnippet
+A    RSpec.tmbundle/Snippets/should_not_match.tmSnippet
+A    RSpec.tmbundle/Snippets/should_respond_to.tmSnippet
+A    RSpec.tmbundle/Snippets/should_not_throw.tmSnippet
+A    RSpec.tmbundle/Snippets/should_not_raise.tmSnippet
+A    RSpec.tmbundle/Snippets/at_most_twice.tmSnippet
+A    RSpec.tmbundle/Snippets/should_receive_with_args.tmSnippet
+A    RSpec.tmbundle/Snippets/Describe_type_string.tmSnippet
+A    RSpec.tmbundle/Snippets/should_not ==.tmSnippet
+A    RSpec.tmbundle/Snippets/should_not =~.tmSnippet
+A    RSpec.tmbundle/Snippets/It.tmSnippet
+A    RSpec.tmbundle/Snippets/should_predicate.tmSnippet
+A    RSpec.tmbundle/Snippets/Custom Matcher.tmSnippet
+A    RSpec.tmbundle/Snippets/should_not_receive.tmSnippet
+A    RSpec.tmbundle/Snippets/should_not_include.tmSnippet
+A    RSpec.tmbundle/Snippets/should_have_records.tmSnippet
+A    RSpec.tmbundle/Snippets/should_equal.tmSnippet
+A    RSpec.tmbundle/Snippets/controller_context.tmSnippet
+A    RSpec.tmbundle/Snippets/and_yield.tmSnippet
+A    RSpec.tmbundle/Snippets/mock.tmSnippet
+A    RSpec.tmbundle/Snippets/and_return_value.tmSnippet
+A    RSpec.tmbundle/Snippets/should_render.tmSnippet
+A    RSpec.tmbundle/Snippets/should_have.tmSnippet
+A    RSpec.tmbundle/Snippets/should_not_respond_to.tmSnippet
+A    RSpec.tmbundle/Snippets/response_should_be_success.tmSnippet
+A    RSpec.tmbundle/Snippets/and_return_block.tmSnippet
+A    RSpec.tmbundle/Snippets/Describe.tmSnippet
+A    RSpec.tmbundle/Snippets/should_redirect_to.tmSnippet
+A    RSpec.tmbundle/Snippets/should_be_redirect.tmSnippet
+A    RSpec.tmbundle/Snippets/and_throw.tmSnippet
+A    RSpec.tmbundle/Snippets/and_raise.tmSnippet
+A    RSpec.tmbundle/Snippets/should_be_close.tmSnippet
+A    RSpec.tmbundle/Snippets/should_be_an_instance_of.tmSnippet
+A    RSpec.tmbundle/Snippets/at_least.tmSnippet
+A    RSpec.tmbundle/info.plist
+A    RSpec.tmbundle/Support
+A    RSpec.tmbundle/Support/lib
+A    RSpec.tmbundle/Support/lib/text_mate_formatter.rb
+A    RSpec.tmbundle/Support/lib/spec_mate.rb
+A    RSpec.tmbundle/Support/lib/spec
+A    RSpec.tmbundle/Support/lib/spec/mate
+A    RSpec.tmbundle/Support/lib/spec/mate/switch_command.rb
+A    RSpec.tmbundle/Support/spec
+A    RSpec.tmbundle/Support/spec/fixtures
+A    RSpec.tmbundle/Support/spec/fixtures/example_failing_spec.rb
+A    RSpec.tmbundle/Support/spec/fixtures/example_passing_spec.rb
+A    RSpec.tmbundle/Support/spec/spec
+A    RSpec.tmbundle/Support/spec/spec/mate
+A    RSpec.tmbundle/Support/spec/spec/mate/switch_command_spec.rb
+A    RSpec.tmbundle/Support/spec/spec_helper.rb
+A    RSpec.tmbundle/Support/spec/spec_mate_spec.rb
+A    RSpec.tmbundle/Support/spec/vendor
+A    RSpec.tmbundle/Support/spec/vendor/plugins
+A    RSpec.tmbundle/Support/spec/vendor/plugins/rspec
+A    RSpec.tmbundle/Support/spec/vendor/plugins/rspec/lib
+A    RSpec.tmbundle/README
+Checked out revision 2691.
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Arq backup exclusions • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Arq backup exclusions</h1></div><div class="metadata"><relative-time created="1461083280" updated="1584053324">Created 4/19/2016, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/arq">arq</a></li><li><a href="/tags/time.machine">time.machine</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p><a href="/wiki/Arq">Arq</a> comes with some standard exclusions, <a href="http://www.haystacksoftware.com/support/arq_help/pages/adding_folder.html">listed here</a>. At the time of writing, that list is:</p>
+<ul>
+<li><code>.Trash</code></li>
+<li><code>Library/Caches</code></li>
+<li><code>Library/Logs</code></li>
+<li><code>Library/Mail/V2/MailData/AvailableFeeds</code></li>
+<li><code>Library/Mail/V2/MailData/Envelope Index</code></li>
+<li><code>Library/Mail/V2/MailData/Envelope Index-shm</code></li>
+<li><code>Library/Mail/V2/MailData/Envelope Index-wal</code></li>
+<li><code>Library/Safari/WebpageIcons.db</code></li>
+<li><code>Library/Saved Application State</code></li>
+<li><code>Library/iTunes/iPad Software Updates</code></li>
+<li><code>Library/iTunes/iPhone Software Updates</code></li>
+<li><code>Library/iTunes/iPod Software Updates</code></li>
+</ul>
+<h2>Time Machine</h2>
+<p>Time Machine is of interest here because you can tell Arq to skip items that Time Machine would skip.</p>
+<p>Time Machine has a bunch of exclusions that it defines in <code>/System/Library/CoreServices/backupd.bundle/Contents/Resources/StdExclusions.plist</code>. Of interest here are the following (listed using <code>plutil -p /System/Library/CoreServices/backupd.bundle/Contents/Resources/StdExclusions.plist</code>):</p>
+<pre><code>&quot;UserPathsExcluded&quot; =&gt; [
+  0 =&gt; &quot;Library/Application Support/SyncServices/data.version&quot;
+  1 =&gt; &quot;Library/Application Support/Ubiquity&quot;
+  2 =&gt; &quot;Library/Caches&quot;
+  3 =&gt; &quot;Library/Logs&quot;
+  4 =&gt; &quot;Library/Mail/Envelope Index&quot;
+  5 =&gt; &quot;Library/Mail/Envelope Index-journal&quot;
+  6 =&gt; &quot;Library/Mail/AvailableFeeds&quot;
+  7 =&gt; &quot;Library/Mail/Metadata/BackingStoreUpdateJournal&quot;
+  8 =&gt; &quot;Library/Mail/V2/MailData/Envelope Index&quot;
+  9 =&gt; &quot;Library/Mail/V2/MailData/Envelope Index-journal&quot;
+  10 =&gt; &quot;Library/Mail/V2/MailData/AvailableFeeds&quot;
+  11 =&gt; &quot;Library/Mail/V2/MailData/BackingStoreUpdateJournal&quot;
+  12 =&gt; &quot;Library/Mail/V2/MailData/Envelope Index-shm&quot;
+  13 =&gt; &quot;Library/Mail/V2/MailData/Envelope Index-wal&quot;
+  14 =&gt; &quot;Library/Mirrors&quot;
+  15 =&gt; &quot;Library/PubSub/Database&quot;
+  16 =&gt; &quot;Library/PubSub/Downloads&quot;
+  17 =&gt; &quot;Library/PubSub/Feeds&quot;
+  18 =&gt; &quot;Library/Safari/Icons.db&quot;
+  19 =&gt; &quot;Library/Safari/WebpageIcons.db&quot;
+  20 =&gt; &quot;Library/Safari/HistoryIndex.sk&quot;
+]
+</code></pre>
+<p>Note some overlap with the Arq list.</p>
+<p>Manually added exclusions can be viewed with <code>plutil -p Library/Preferences/com.apple.TimeMachine.plist</code>. These are added using the &quot;Time Machine&quot; pane in the &quot;System Preferences&quot; app. Here is a small excerpt from mine:</p>
+<pre><code>&quot;SkipPaths&quot; =&gt; [
+  0 =&gt; &quot;~glh/Library/Logs&quot;
+  1 =&gt; &quot;~glh/.hgcache&quot;
+  2 =&gt; &quot;~glh/.rbenv&quot;
+  3 =&gt; &quot;~glh/.rubies&quot;
+  4 =&gt; &quot;~glh/Library/iTunes/iPhone Software Updates&quot;
+  5 =&gt; &quot;~glh/.ievms&quot;
+  6 =&gt; &quot;~glh/Local&quot;
+  ...
+]
+</code></pre>
+<p><a href="http://pondini.org/TM/11.html">Apparently</a>, there are other files that get excluded via metadata attribute on the file itself (ie. not tied to the path). You can see these with <code>sudo mdfind &quot;com_apple_backup_excludeItem = 'com.apple.backupd'&quot;</code>.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

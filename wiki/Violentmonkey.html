@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Violentmonkey • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Violentmonkey</h1></div><div class="metadata"><relative-time created="1754987437" updated="1766051979">Created 8/12/2025, updated 12/18/2025</relative-time></div><ul class="tags"><li><a href="/tags/wiki">wiki</a></li><li><a href="/tags/violentmonkey">violentmonkey</a></li></ul><div class="prerendered"><h2>Chrome breaking Violentmonkey</h2>
+<p>As of 2025-08 Chrome v139 disables Violentmonkey (<a href="https://github.com/violentmonkey/violentmonkey/issues/2284">violentmonkey#2284</a>). You <del>can</del> could reenable it, for <del>now</del> a while, with <a href="https://old.reddit.com/r/uBlockOrigin/comments/1lwztf1/ublockorigin_fully_disabled_on_chrome_now/n2kkwbd/">these instructions</a>:</p>
+<p>Set:</p>
+<pre><code>chrome://flags/#temporary-unexpire-flags-m137                     [Enabled]
+</code></pre>
+<p>Then restart and set:</p>
+<pre><code>chrome://flags/#extension-manifest-v2-deprecation-warning         [Disabled]
+chrome://flags/#extension-manifest-v2-deprecation-disabled        [Disabled]
+chrome://flags/#extension-manifest-v2-deprecation-unsupported     [Disabled]
+chrome://flags/#allow-legacy-mv2-extensions                       [Enabled]
+</code></pre>
+<p>As <a href="https://old.reddit.com/r/uBlockOrigin/comments/1lwztf1/ublockorigin_fully_disabled_on_chrome_now/n2n7qh7/">noted in the thread</a>, this workaround would continue to work during v139's lifecycle, but is not past that:</p>
+<blockquote>
+<p>This will work on Chrome 138. On 139 it should work if you set &quot;unexpire 138&quot; instead, but there are no more flags for this on 140. There's <a href="https://github.com/uBlockOrigin/uBlock-issues/discussions/2977#discussioncomment-13593599">a command line parameter</a> that you can add to your shortcut, but it's likely to be removed soon too.</p>
+</blockquote>
+<p>The command-line switch in question is:</p>
+<pre><code>chrome.exe --disable-features=ExtensionManifestV2Unsupported,ExtensionManifestV2Disabled
+</code></pre>
+<p><a href="https://github.com/scriptscat/scriptcat">ScriptCat</a> may be worth looking at as an alternative (open source, but Chinese; <a href="https://docs.scriptcat.org/en/">English docs here</a>), or going back to <a href="https://www.tampermonkey.net/">Tampermonkey</a> (closed-source).</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

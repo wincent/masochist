@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Creating independent branches with Git • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Creating independent branches with Git</h1></div><div class="metadata"><relative-time created="1209356518" updated="1709676231">Created 4/28/2008, updated 3/5/2024</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>The short version</h2>
+<pre><code>git symbolic-ref HEAD refs/heads/newbranch
+rm .git/index
+# and now git add, git commit etc
+</code></pre>
+<h3>Alternative</h3>
+<pre><code> git checkout --orphan new-branch-name
+ git rm -rf . # or rm .git/index, as above
+ git commit --allow-empty -m 'Create new-branch-name branch'
+</code></pre>
+<h2>The long version</h2>
+<p>Normally you create a <a href="/wiki/branch">branch</a> by &quot;forking&quot; off from some other point in the development history (often the HEAD of an existing branch). Ultimately you can trace the ancestry of all your branches back to a &quot;great-grand-daddy&quot; commit, shown as an <code>X</code> in the diagram below:</p>
+<pre><code>  o--o--o--o--o--o--o--o
+ /
+X--o--o--o--o--o--o--o--o--o--o--o--o--o--o--o--o--o--o
+    \                         /
+     o--o--o--o--o--o--o--o--o
+            \
+             o--o--o--o--o--o--o--o
+</code></pre>
+<p>It's a common workflow and forking off such a new branch is extremely easy to do:</p>
+<pre><code>git checkout -b my_new_branch
+</code></pre>
+<p>So what do you do if you want your repository to contain a completely unrelated branch that does not begin from that common &quot;great-grand-daddy&quot; commit? In other words, a new line of development that starts from point <code>Y</code>?</p>
+<pre><code>  o--o--o--o--o--o--o--o
+ /
+X--o--o--o--o--o--o--o--o--o--o--o--o--o--o--o--o--o--o
+    \                         /
+     o--o--o--o--o--o--o--o--o
+            \
+             o--o--o--o--o--o--o--o
+
+Y--o--o--o--o--o--o--o--o--o--o--o--o
+                                  \
+                                   o--o--o
+</code></pre>
+<p>I recently wanted to do this with my <a href="/wiki/Synergy">Synergy</a> repository. The reason was that when I moved to <a href="/wiki/Git">Git</a> I had done a shallow import of the old <a href="/wiki/Subversion">Subversion</a> repository. Basically I had a few branches in the old repo, of which the following two are pertinent for the purposes of this discussion:</p>
+<pre><code>o--o--o--o--Z &quot;trunk&quot; (Leopard)
+    \
+     o--W &quot;jaguar&quot;
+</code></pre>
+<p>My shallow import was basically just a new repository that started from the old tip of the trunk, <code>Z</code> in the above diagram. The new repository didn't have any history or any other branches. Development continued in the new <a href="/wiki/Git">Git</a> repository and now looked like this:</p>
+<pre><code>Z--o--o--o--o--o &quot;master&quot; (Leopard)
+</code></pre>
+<p>But when it came time to make some changes to the old &quot;jaguar&quot; branch I didn't want to go back to using my old <a href="/wiki/Subversion">Subversion</a> repository, I wanted to instead get that branch into my <a href="/wiki/Git">Git</a> repo. But given that the new Git repo didn't actually contain the common ancestry point at which the &quot;trunk&quot; and &quot;jaguar&quot; branches diverged, I would need to add a new branch corresponding to point <code>W</code> from the old repo. (Going back and importing the common ancestry point wasn't an option because — although possible — that would involve rewriting the history of all the commits in the new repository, changing their SHA1 ids, and I didn't want to do that.)</p>
+<p>I would then end up with two independent branches like this:</p>
+<pre><code>Z--o--o--o--o--o &quot;master&quot; (Leopard)
+
+W--o--o &quot;jaguar&quot;
+</code></pre>
+<p>In order to do this you need to make direct use of the low-level &quot;plumbing&quot;:</p>
+<pre><code># make sure there are no uncommitted changes
+git status
+
+# blow away everything in the working tree
+rm -r *
+
+# see if there are any dot files which should also be blown away
+ls -laF
+
+# in my case, there were; I want to remove everything except the .git dir
+rm .gitignore
+
+# grab source corresponding to point &quot;W&quot;
+svn export the_svn_url/tags/3.2-release
+
+# move it into place
+mv 3.2-release/* .
+rmdir 3.2-release
+
+# prepare the index to exactly mirror the contents of the working tree
+git add -u
+git add .
+
+# create a new tree object corresponding to the state of the index
+# this produced a tree object with hash 0112c3d643ebbe7c8834e850e6b13d7c13018b04
+git write-tree
+
+# put together a commit message
+cat &gt; /tmp/cmsg &lt;&lt;HERE
+Import 3.2 release
+
+This corresponds to the 3.2 (Jaguar) release tag from the old
+Subversion repository.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;
+HERE
+
+# now create a commit from the tree object previously created
+# this produced a new commit object with hash 7b24419a52514084992fe62a3dc848b2f18c97f8
+git commit-tree 0112c3d643ebbe7c8834e850e6b13d7c13018b04 &lt; /tmp/cmsg
+
+# create a new branch from the commit just created
+git branch jaguar 7b24419a52514084992fe62a3dc848b2f18c97f8
+
+# put the index and working tree back the way they were before
+git reset HEAD
+git clean -f -d
+
+# inspect
+gitk --all
+
+# finally, double-check that the new branch matches the one in the old repo
+# to do this I diffed against a separate svn export of the old repo that I had at /tmp/jaguar
+git checkout jaguar
+diff -r . /tmp/jaguar
+</code></pre>
+<h3>See also</h3>
+<p>See also <a href="http://madduck.net/blog/2007.07.11:creating-a-git-branch-without-ancestry/">this weblog post</a> which goes into some detail describing another method which is shorter but requires some direct manipulation and knowledge of <a href="/wiki/Git">Git</a> internals; but basically boils down to:</p>
+<pre><code>git symbolic-ref HEAD refs/heads/newbranch
+rm .git/index
+# and now git add, git commit etc
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

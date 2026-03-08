@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Dealing with Git repo corruption • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Dealing with Git repo corruption</h1></div><div class="metadata"><relative-time created="1413691890" updated="1495119989">Created 10/19/2014, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Delete corrupt objects</h2>
+<p>This can be useful if basic commands like <code>git log</code> and refuse to run.</p>
+<p>Repeat this until all the bad objects are gone:</p>
+<pre><code>$ git fsck --full
+error: inflate: data stream error (incorrect header check)
+error: unable to unpack 29d37f9767f6ceb7abefc46bf092393b411f7120 header
+error: inflate: data stream error (incorrect header check)
+fatal: loose object 29d37f9767f6ceb7abefc46bf092393b411f7120 (stored in .git/objects/29/d37f9767f6ceb7abefc46bf092393b411f7120) is corrupt
+zsh: exit 128   git fsck --full
+$ rm .git/objects/29/d37f9767f6ceb7abefc46bf092393b411f7120
+</code></pre>
+<h2>Re-cloning from a good remote</h2>
+<p>Starting from corrupt repo, &quot;src&quot;:</p>
+<pre><code class="language-shell">$ cd ..
+$ git clone someremote newsrc
+$ cd src
+$ mv .git /tmp/bad-git
+$ mv ../newsrc/.git .
+$ rm -rf ../newsrc
+</code></pre>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

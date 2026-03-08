@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Haskell cheat sheet • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Haskell cheat sheet</h1></div><div class="metadata"><relative-time created="1189545785" updated="1495119989">Created 9/11/2007, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/haskell">haskell</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Comments</h2>
+<pre><code>-- comments start with two consecutive hyphens
+</code></pre>
+<h2>Truth values</h2>
+<pre><code>True
+False
+</code></pre>
+<h2>Types</h2>
+<p><strong>Constructor identifiers</strong> are used to name types; they must start with a capital letter.</p>
+<ul>
+<li><code>Integral</code> class; two possible types:
+<ul>
+<li><code>Int</code> (fixed precision, overflow on hitting an architecture-specific size)</li>
+<li><code>Integer</code> (arbitrary precision, unbounded)</li>
+</ul>
+</li>
+<li><code>Float</code> (floating point type)</li>
+<li><code>Double</code> (higher precision than <code>Float</code>)</li>
+<li><code>Bool</code> (boolean type)</li>
+<li><code>Char</code> (character type)</li>
+<li><code>String</code> (convenience type, equivalent to a list of <code>Char</code> types: <code>[Char]</code>)</li>
+</ul>
+<p>Compare this with <strong>variable identifiers</strong> which are used to name functions; they must start with a lowercase letter. Identifier names are case-sensitive.</p>
+<p>New types can be formed as follows:</p>
+<ul>
+<li>By list-formation eg. for type <code>a</code>, <code>[a]</code> is the type, &quot;list of <code>a</code>&quot;</li>
+<li>By tuple-formation eg. type <code>(a, b)</code> is the type, &quot;a pair of type <code>a</code> then type <code>b</code>&quot; (works for pairs, triples, quadruples and so forth)</li>
+<li>By function definition eg. type <code>a -&gt; b</code> is the type of the function that expects arguments of type <code>a</code> and has a return value of type <code>b</code></li>
+<li>Custom types defined using <code>data</code></li>
+</ul>
+<h2>Definition, identity and non-identity</h2>
+<ul>
+<li>&quot;defined as&quot;: <code>=</code></li>
+<li>&quot;identity&quot;: <code>==</code></li>
+<li>&quot;non-identity: <code>/=</code></li>
+</ul>
+<p>Types with which you can test for identity belong to the <code>Eq</code> class; types for which you can make ordinality comparisons are said to belong to the <code>Ord</code> class (a subclass of <code>Eq</code>):</p>
+<ul>
+<li><code>&gt;</code></li>
+<li><code>&gt;=</code></li>
+<li><code>&lt;</code></li>
+<li><code>&lt;=</code></li>
+</ul>
+<p>A <a href="/wiki/Haskell">Haskell</a> <strong>equation</strong> takes the form of <code>foo t = ...</code>, where <code>foo</code> is a <strong>function</strong> and <code>t</code> is an argument; arguments may be multiple:</p>
+<pre><code>-- this equation defines an &quot;add&quot; function
+add x y = x + y
+
+-- and this is how the function would be used:
+add 10 15
+</code></pre>
+<p>An optional-but-recommended, explicit <strong>type declaration</strong> could be prepended to the <code>add</code> function as follows:</p>
+<pre><code>-- indicate that two Integer input parameters are expected, and the result is an Integer too
+add :: Integer -&gt; Integer -&gt; Integer
+</code></pre>
+<h2>Operators</h2>
+<ul>
+<li>Addition: <code>+</code></li>
+<li>Greater-than: <code>&gt;</code></li>
+<li>Exponentiation: <code>^</code></li>
+<li>Less-than-or-equal-to: <code>&lt;=</code></li>
+</ul>
+<h2>Equation guarding and the condition operator</h2>
+<p><code>|</code> is the Haskell condition operator. It is used in the following example function to determine which equation in the definition of the function, <code>foo</code>, should apply, depending on the input parameters:</p>
+<pre><code>-- raises x to the y if x and y sum to less than 100
+-- otherwise multiplies x and y
+foo x y | x + y &lt; 100 = x ^ y
+        | otherwise   = x * y
+</code></pre>
+<p>This is actually a shorthand for the longer form:</p>
+<pre><code>foo x y | x + y &lt; 100 = x ^ y
+foo x y |             = x * y
+</code></pre>
+<h2>Keywords</h2>
+<p>These are reserved keywords which cannot be used as function names:</p>
+<ul>
+<li><code>case</code></li>
+<li><code>class</code></li>
+<li><code>data</code></li>
+<li><code>default</code></li>
+<li><code>deriving</code></li>
+<li><code>do</code></li>
+<li><code>else</code></li>
+<li><code>if</code></li>
+<li><code>import</code></li>
+<li><code>in</code></li>
+<li><code>infix</code></li>
+<li><code>infixl</code></li>
+<li><code>infixr</code></li>
+<li><code>instance</code></li>
+<li><code>let</code></li>
+<li><code>module</code></li>
+<li><code>newtype</code></li>
+<li><code>of</code></li>
+<li><code>then</code></li>
+<li><code>type</code></li>
+<li><code>where</code></li>
+<li><code>_</code></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>nginx log rotation • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>nginx log rotation</h1></div><div class="metadata"><relative-time created="1206037403" updated="1584053324">Created 3/20/2008, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/nginx">nginx</a></li><li><a href="/tags/log.rotation">log.rotation</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><h2>Overview</h2>
+<p>So what do you need to know to handle log rotation for <a href="/wiki/nginx">nginx</a>? The official answer from <a href="/wiki/Igor_Sysoev">Igor Sysoev</a> (the nginx lead developer) can be found <a href="http://www.ruby-forum.com/topic/134115">here</a>. In short, the sequence you must follow is:</p>
+<ol>
+<li>Move (or otherwise process) the old log file</li>
+<li>Send the <a href="/wiki/nginx">nginx</a> master process a <a href="/wiki/USR1">USR1</a> signal</li>
+</ol>
+<h2><a href="/wiki/logrotate">logrotate</a> setup</h2>
+<p>There are many ways that this kind of processing can be automated but I use <a href="/wiki/logrotate">logrotate</a>. On <a href="/wiki/RHEL_5.1">RHEL 5.1</a> its configuration files can be found in <code>/etc/logrotate.d/</code>. For example, consider the file, <code>/etc/logrotate.d/httpd</code>, which handles the rotation of <a href="/wiki/Apache">Apache</a> log files:</p>
+<pre><code>/var/log/httpd/*log {
+    missingok
+    notifempty
+    sharedscripts
+    postrotate
+        /bin/kill -HUP `cat /var/run/httpd.pid 2&gt;/dev/null` 2&gt; /dev/null || true
+    endscript
+}
+
+/home/*/log/*log {
+    missingok
+    notifempty
+    sharedscripts
+    postrotate
+        /bin/kill -HUP `cat /var/run/httpd.pid 2&gt;/dev/null` 2&gt; /dev/null || true
+    endscript
+}
+</code></pre>
+<p>Using this as a model, and consulting the <code>logrotate</code> <a href="/wiki/man_page">man page</a>, we come up with a file like this for <a href="/wiki/nginx">nginx</a>, <code>/etc/logrotate.d/nginx</code>. Obviously the paths on your local system will most likely vary. Here I specify log rotation for two separate <a href="/wiki/Rails">Rails</a> applications, each of which has its own nginx master process (note the different <a href="/wiki/PID">PID</a> files).</p>
+<pre><code>/home/path_to_rails_app_1/deploy/shared/log/*_log {
+    missingok
+    notifempty
+    sharedscripts
+    postrotate
+        test ! -f /var/run/nginx.pid || kill -USR1 `cat /var/run/nginx.pid`
+    endscript
+}
+
+/home/path_to_rails_app_2/deploy/shared/log/*_log {
+    missingok
+    notifempty
+    sharedscripts
+    postrotate
+        test ! -f /var/run/nginx-staging.pid || kill -USR1 `cat /var/run/nginx-staging.pid`
+    endscript
+}
+</code></pre>
+<p>I'm actually quite glad that I looked into this because in doing so I noticed that having <a href="/wiki/nginx">nginx</a> write its log files to the same location as <a href="/wiki/Apache">Apache</a> wouldn't be a good thing (this is the way I initially had it set up). As you can see, these log files would be rotated according to the rules in the <code>/etc/logrotate.d/httpd</code> file and nginx would never receive the required<a href="/wiki/USR1">USR1</a> signal.</p>
+<h3>Testing</h3>
+<pre><code># -d turns on debug mode: output is verbose, no actual changes are made to the log files
+sudo logrotate -d /etc/logrotate.conf /etc/logrotate.d/nginx
+
+# if the debug output looks good, proceed with a real rotation (-v turns on verbose output)
+sudo logrotate -v /etc/logrotate.conf /etc/logrotate.d/nginx
+</code></pre>
+<p>In my initial testing this log rotation did <em>not</em> work as expected; the verbose output ended with lines like the following:</p>
+<pre><code>renaming /home/path_to_app/deploy/shared/log/access_log to /home/path_to_app/deploy/shared/log/access_log.1
+disposeName will be /home/path_to_app/deploy/shared/log/access_log.1
+running postrotate script
+removing old log /home/path_to_app/deploy/shared/log/access_log.1
+</code></pre>
+<p>In other words:</p>
+<ol>
+<li>Rename <code>access_log</code> to <code>access_log.1</code> (correct)</li>
+<li>Run the <code>postrotate</code> script (correct)</li>
+<li>Remove oldest log file, <code>access_log.1</code> (incorrect!)</li>
+</ol>
+<p>That last action is the unexpected one, because in my <code>/etc/logrotate.conf</code> file (where global settings are stored) I have:</p>
+<pre><code># keep 4 weeks worth of backlogs
+rotate 4
+</code></pre>
+<p>Troubleshooting permutations attempted:</p>
+<ul>
+<li>Remove <code>nocreate</code> line from <code>/etc/logrotate.d/nginx</code> (no visible effect)</li>
+<li>Add explicit <code>rotate 4</code> to <code>/etc/logrotate.d/nginx</code> (works)</li>
+</ul>
+<p>For each permutation is is necessary to hit the website (to make sure the log is non-empty) and also pass the <code>-f</code> (force) flag to <code>logrotate</code>, otherwise it will most likely refuse to rotate the log file because of its size. I finally realized that my initial runs did not behave as expected because I wasn't passing in <code>/etc/logwatch.conf</code> as the first parameter (it is not pulled in automatically); in other words, to test out a custom file in <code>/etc/logwatch.d</code> as it would really be executed in normal use you must precede it with <code>/etc/logwatch.conf</code> on the command line. Once I realized this I removed the explicit <code>rotate 4</code> from the <code>/etc/logwatch.d/nginx</code> configuration file.</p>
+<h2>Rotating other <a href="/wiki/Rails">Rails</a> log files</h2>
+<p>The <a href="/wiki/nginx">nginx</a> log files are only part of the situation. When you run <a href="/wiki/mongrel_cluster">mongrel_cluster</a> you'll get another log file <code>mongrel.12345.log</code> (where <code>12345</code> is the port number the <a href="/wiki/mongrel">mongrel</a> instance is listening on) for each mongrel instance in the cluster, as well as the traditional <code>production.log</code>, <code>development.log</code>, <code>test.log</code> and any others that your application might produce.</p>
+<p>See:</p>
+<ul>
+<li><a href="/wiki/Rotating_mongrel_cluster_log_files">Rotating mongrel_cluster log files</a></li>
+<li><a href="/wiki/Rotating_Rails_application_log_files">Rotating Rails application log files</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

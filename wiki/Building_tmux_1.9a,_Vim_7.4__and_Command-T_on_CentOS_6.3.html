@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Building tmux 1.9a, Vim 7.4  and Command-T on CentOS 6.3 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Building tmux 1.9a, Vim 7.4  and Command-T on CentOS 6.3</h1></div><div class="metadata"><relative-time created="1394066175" updated="1495119989">Created 3/6/2014, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/ruby">ruby</a></li><li><a href="/tags/python">python</a></li><li><a href="/tags/vim">vim</a></li><li><a href="/tags/libevent">libevent</a></li><li><a href="/tags/command.t">command.t</a></li><li><a href="/tags/tmux">tmux</a></li><li><a href="/tags/centos">centos</a></li><li><a href="/tags/redhat">redhat</a></li><li><a href="/tags/ncurses">ncurses</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Historically, building <a href="/wiki/tmux">tmux</a> on <a href="/wiki/CentOS">CentOS</a> has been a pretty delicate subject, with specific requirements for each version.</p>
+<p>This article shows steps that currently work, at least for me, to perform a clean install of:</p>
+<ul>
+<li>tmux 1.9a</li>
+<li>Vim 7.4 (including patches 1-192)</li>
+<li>Ruby 2.1.1</li>
+<li>Python 3.3.4</li>
+<li>Command-T (current HEAD of the next branch)</li>
+</ul>
+<p>on CentOS 6.3. These are the latest versions of each of the packages.</p>
+<p>I have a couple of requirements:</p>
+<ol>
+<li>These all get installed in one's <code>$HOME</code> directory, which means that you won't clobber the system-installed versions of these things, and we don't need root privileges to install (other than a couple of prerequisites). Doing this requires statically-linking <a href="/wiki/tmux">tmux</a> with ncurses and libevent, which makes things a little trickier.</li>
+<li>Vim needs both Ruby and Python in order to work with some key plug-ins that I use (<a href="/wiki/Command-T">Command-T</a> needs <a href="/wiki/Ruby">Ruby</a>, for example, and UltiSnips and Gundo need Python)</li>
+</ol>
+<p>The following notes assumed you've downloaded and unpacked the corresponding software package source into directories under <code>~/build</code> (and in the case of <a href="/wiki/Vim">Vim</a>, we use a clone of its upstream Mercurial repo, because Bram doesn't do point release between major versions; in the case of <a href="/wiki/Command-T">Command-T</a>, I'm using a <a href="/wiki/Pathogen">Pathogen</a>-managed submodule at <code>~/.vim/bundle/command-t</code>).</p>
+<pre><code class="language-shell">$ cd build
+$ sudo yum install gcc gcc-c++ glibc-static # this is the only bit you need root for
+$ JOBS=32 # make it fast
+</code></pre>
+<h2>libevent</h2>
+<pre><code class="language-shell">$ cd ~/build/libevent-2.0.21-stable
+$ make clean; ./configure --disable-shared --enable-static --prefix=$HOME &amp;&amp; make -j$JOBS install
+</code></pre>
+<h2>ncurses</h2>
+<pre><code class="language-shell">$ cd ../ncurses-5.9
+$ make clean; ./configure --disable-shared --enable-static --with-termlib --with-ticlib --prefix=$HOME &amp;&amp; make -j$JOBS install
+</code></pre>
+<h2>Python</h2>
+<pre><code class="language-shell">$ cd ../Python-3.3.4
+$ make clean; ./configure --prefix=$HOME &amp;&amp; make -j$JOBS install inclinstall &amp;&amp; hash -r
+</code></pre>
+<h2>Ruby</h2>
+<pre><code class="language-shell">$ cd ../ruby-2.1.1
+$ make clean; ./configure --prefix=$HOME &amp;&amp; make -j$JOBS install
+</code></pre>
+<h2>Command-T</h2>
+<pre><code class="language-shell">$ cd ~/.vim/bundle/command-t/ruby/command-t
+$ ruby extconf.rb &amp;&amp; make
+</code></pre>
+<h2>tmux</h2>
+<pre><code class="language-shell">$ cd ~/build/tmux-1.9a
+make clean; env PKG_CONFIG_PATH=$HOME/lib/pkgconfig CPPFLAGS=&quot;-I$HOME/include -I$HOME/include/ncurses&quot; CFLAGS=&quot;-I$HOME/include -I$HOME/include/ncurses&quot; LDFLAGS=&quot;-L$HOME/lib&quot; ./configure --enable-static --prefix=$HOME &amp;&amp; make -j$JOBS install
+</code></pre>
+<h2>Vim</h2>
+<pre><code class="language-shell">$ cd ../vim
+$ hg pull &amp;&amp; hg update
+$ make clean distclean; env LDFLAGS=-L$HOME/lib ./configure --with-features=huge --enable-rubyinterp --enable-python3interp --enable-cscope --disable-nls --prefix=$HOME --with-python-config-dir=$HOME/lib/python3.3/config-3.3m &amp;&amp; make -j$JOBS install
+</code></pre>
+<h2>Notes</h2>
+<p>I use <code>make clean; [command]</code> rather than <code>make clean &amp;&amp; [command]</code> above because if this is the first time you've built the projects you might not actually have a <code>Makefile</code> present yet.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

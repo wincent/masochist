@@ -1,0 +1,5 @@
+
+cac89c4 Use line-clamping on issues#index
+93d7ad4 Switch to "websafe" fonts to reduce TTI
+cee5645 Sans-serif-ize websafe fonts
+6d84f8a Update static pages

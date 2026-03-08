@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Git 1.7.1 • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Git 1.7.1</h1></div><div class="metadata"><relative-time created="1272114582" updated="1495119989">Created 4/24/2010, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/git">git</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>From the official announcement posted to the <a href="/wiki/Git_mailing_list">Git mailing list</a>:</p>
+<pre><code>The latest feature release Git 1.7.1 is available at the usual
+places:
+
+ http://www.kernel.org/pub/software/scm/git/
+
+ git-1.7.1.tar.{gz,bz2}			(source tarball)
+ git-htmldocs-1.7.1.tar.{gz,bz2}		(preformatted docs)
+ git-manpages-1.7.1.tar.{gz,bz2}		(preformatted docs)
+
+The RPM binary packages for a few architectures are found in:
+
+ RPMS/$arch/git-*-1.7.1-1.fc11.$arch.rpm	(RPM)
+
+
+Git v1.7.1 Release Notes
+========================
+
+Updates since v1.7.0
+--------------------
+
+* Eric Raymond is the maintainer of updated CIAbot scripts, in contrib/.
+
+* gitk updates.
+
+* Some commands (e.g. svn and http interfaces) that interactively ask
+  for a password can be told to use an external program given via
+  GIT_ASKPASS.
+
+* Conflict markers that lead the common ancestor in diff3-style output
+  now have a label, which hopefully would help third-party tools that
+  expect one.
+
+* Comes with an updated bash-completion script.
+
+* &quot;git am&quot; learned &quot;--keep-cr&quot; option to handle inputs that are
+  a mixture of changes to files with and without CRLF line endings.
+
+* &quot;git cvsimport&quot; learned -R option to leave revision mapping between
+  CVS revisions and resulting git commits.
+
+* &quot;git diff --submodule&quot; notices and describes dirty submodules.
+
+* &quot;git for-each-ref&quot; learned %(symref), %(symref:short) and %(flag)
+  tokens.
+
+* &quot;git hash-object --stdin-paths&quot; can take &quot;--no-filters&quot; option now.
+
+* &quot;git init&quot; can be told to look at init.templatedir configuration
+  variable (obviously that has to come from either /etc/gitconfig or
+  $HOME/.gitconfig).
+
+* &quot;git grep&quot; learned &quot;--no-index&quot; option, to search inside contents that
+  are not managed by git.
+
+* &quot;git grep&quot; learned --color=auto/always/never.
+
+* &quot;git grep&quot; learned to paint filename and line-number in colors.
+
+* &quot;git log -p --first-parent -m&quot; shows one-parent diff for merge
+  commits, instead of showing combined diff.
+
+* &quot;git merge-file&quot; learned to use custom conflict marker size and also
+  to use the &quot;union merge&quot; behaviour.
+
+* &quot;git notes&quot; command has been rewritten in C and learned many commands
+  and features to help you carry notes forward across rebases and amends.
+
+* &quot;git request-pull&quot; identifies the commit the request is relative to in
+  a more readable way.
+
+* &quot;git reset&quot; learned &quot;--keep&quot; option that lets you discard commits
+  near the tip while preserving your local changes in a way similar
+  to how &quot;git checkout branch&quot; does.
+
+* &quot;git status&quot; notices and describes dirty submodules.
+
+* &quot;git svn&quot; should work better when interacting with repositories
+  with CRLF line endings.
+
+* &quot;git imap-send&quot; learned to support CRAM-MD5 authentication.
+
+* &quot;gitweb&quot; installation procedure can use &quot;minified&quot; js/css files
+  better.
+
+* Various documentation updates.
+
+Fixes since v1.7.0
+------------------
+
+All of the fixes in v1.7.0.X maintenance series are included in this
+release, unless otherwise noted.
+
+* &quot;git add frotz/nitfol&quot; did not complain when the entire frotz/ directory
+  was ignored.
+
+* &quot;git diff --stat&quot; used &quot;int&quot; to count the size of differences,
+  which could result in overflowing.
+
+* &quot;git rev-list --pretty=oneline&quot; didn't terminate a record with LF for
+  commits without any message.
+
+* &quot;git rev-list --abbrev-commit&quot; defaulted to 40-byte abbreviations, unlike
+  newer tools in the git toolset.
+</code></pre>
+<h2>See also</h2>
+<ul>
+<li><a href="/wiki/Updating_to_Git_1.7.1">Updating to Git 1.7.1</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

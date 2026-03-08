@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Red Hat Enterprise Linux kernel update procedure • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Red Hat Enterprise Linux kernel update procedure</h1></div><div class="metadata"><relative-time created="1161438676" updated="1495119989">Created 10/21/2006, updated 5/18/2017</relative-time></div><ul class="tags"><li><a href="/tags/red.hat">red.hat</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>For posterity:</p>
+<pre><code>uptime
+</code></pre>
+<p>Check for available updates:</p>
+<pre><code>sudo up2date --list
+</code></pre>
+<p>Echo current release info:</p>
+<pre><code>uname -a
+cat /etc/redhat-release
+</code></pre>
+<p>Trigger an update of all non-kernel RPMs:</p>
+<pre><code>sudo up2date --nox -u
+</code></pre>
+<p>Install the new kernel:</p>
+<pre><code>sudo up2date -uf kernel kernel-doc kernel-source kernel-utils
+</code></pre>
+<p>Confirm that the kernel is installed in /boot:</p>
+<pre><code>cd /boot
+ll
+</code></pre>
+<p>Check the RPM database:</p>
+<pre><code>rpm -qa | grep kernel
+</code></pre>
+<p>Check that /boot/grub/grub.conf: contains the appropriate lines at position 0 (first in list):</p>
+<pre><code>title Red Hat Enterprise Linux ES (2.4.21-37.0.1.EL)
+        root (hd0,0)
+        kernel /vmlinuz-2.4.21-37.0.1.EL ro root=/dev/hda3
+        initrd /initrd-2.4.21-37.0.1.EL.img
+</code></pre>
+<p>Reboot and cross your fingers:</p>
+<pre><code>sudo reboot
+</code></pre>
+<h2>Post install checks</h2>
+<pre><code>uname -a
+cat /etc/redhat-release
+</code></pre>
+<p>Check that critical services are running (<a href="/wiki/Bansshee">Bansshee</a>, FTP, HTTP, MySQL, Mailman, <code>clamd</code>, IMAP, <code>ipop3</code>, <a href="/wiki/svn">svn</a>, <a href="/wiki/sendmail">sendmail</a>, <code>xinetd</code>, <a href="/wiki/webmin">webmin</a> etc):</p>
+<pre><code>sudo service --status-all
+sudo chkconfig --list
+</code></pre>
+<p>See if up2date is now satisfied:</p>
+<pre><code>sudo up2date --list
+</code></pre>
+<h2>See also</h2>
+<p>Examples (oldest first):</p>
+<ul>
+<li><a href="/wiki/Red_Hat_kernel-2.4.21-40.EL_to_kernel-2.4.21-47.EL_upgrade_notes">Red Hat kernel-2.4.21-40.EL to kernel-2.4.21-47.EL upgrade notes</a></li>
+<li><a href="/wiki/Red_Hat_kernel_2.4.21-47.EL_to_2.4.21-47.0.1.EL_upgrade_notes">Red Hat kernel 2.4.21-47.EL to 2.4.21-47.0.1.EL upgrade notes</a></li>
+</ul>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

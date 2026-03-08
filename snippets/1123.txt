@@ -1,0 +1,3 @@
+
+73c22f1 Lighten up product menu styling
+a0de357 Make nav bar less bold

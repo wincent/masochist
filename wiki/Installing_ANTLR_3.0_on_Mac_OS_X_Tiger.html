@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Installing ANTLR 3.0 on Mac OS X Tiger • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>Installing ANTLR 3.0 on Mac OS X Tiger</h1></div><div class="metadata"><relative-time created="1180897823" updated="1584053324">Created 6/3/2007, updated 3/12/2020</relative-time></div><ul class="tags"><li><a href="/tags/tiger">tiger</a></li><li><a href="/tags/antlr">antlr</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Having downloaded the <a href="/wiki/ANTLR_3.0">ANTLR 3.0</a> distribution (<code>antlr-3.0.tar.gz</code>) from the <a href="/wiki/ANTLR">ANTLR</a> website, installation is straightforward.</p>
+<pre><code>tar xzvf antlr-3.0.tar.gz
+
+# move expanded archive into position
+sudo mv antlr-3.0 /usr/local/
+
+# remove old symbolic link
+cd /usr/local/
+sudo rm -f antlr
+
+# set up new symbolic link
+sudo ln -s antlr-3.0 antlr
+</code></pre>
+<p>To actually use <a href="/wiki/ANTLR">ANTLR</a> the jars must be in your classpath:</p>
+<pre><code>export CLASSPATH=&quot;/usr/local/antlr/lib/antlr-3.0.jar&quot;
+export CLASSPATH=&quot;$CLASSPATH:/usr/local/antlr/lib/antlr-2.7.7.jar&quot;
+export CLASSPATH=&quot;$CLASSPATH:/usr/local/antlr/lib/antlr-runtime-3.0.jar&quot;
+export CLASSPATH=&quot;$CLASSPATH:/usr/local/antlr/lib/stringtemplate-3.0.jar&quot;
+</code></pre>
+<p>These <code>export</code> statements can be added to your <code>~/.bash_profile</code> if you plan on using <a href="/wiki/ANTLR">ANTLR</a> often.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

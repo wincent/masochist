@@ -1,0 +1,29 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>HTTPS access to Amazon S3 buckets • wincent.dev</title><link rel="stylesheet" href="/_assets/styles-bcc771cd.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">wincent.dev</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><div class="article-header"><h1>HTTPS access to Amazon S3 buckets</h1></div><div class="metadata"><relative-time created="1271044713" updated="1709454111">Created 4/12/2010, updated 3/3/2024</relative-time></div><ul class="tags"><li><a href="/tags/aws">aws</a></li><li><a href="/tags/s3">s3</a></li><li><a href="/tags/wiki">wiki</a></li></ul><div class="prerendered"><p>Amazon <a href="/wiki/S3">S3</a> maintains <a href="/wiki/SSL">SSL</a> certificates for:</p>
+<ul>
+<li><code>s3.amazonaws.com</code></li>
+<li><code>*.s3.amazonaws.com</code></li>
+</ul>
+<p>Note that as far as the wildcard certificate is concerned, most (many? all?) browsers expect the wildcard subdomain to be a single word (ie. &quot;foo&quot;) and not a string of words separated by dots (ie. &quot;foo.example.com&quot;), which is a common naming pattern for S3 buckets.</p>
+<p>Remember also that the following three forms of bucket addressing all refer to the same resource:</p>
+<ul>
+<li><code>s3.amazonaws.com/[BUCKET]/[KEY]</code></li>
+<li><code>[BUCKET].s3.amazonaws.com/[KEY]</code></li>
+<li><code>[BUCKET AS CNAME ALIAS]/[KEY]</code> (ie. <code>[BUCKET AS CNAME ALIAS]</code> is an alias for <code>[BUCKET].s3.amazonaws.com</code>)</li>
+</ul>
+<p>For example, these are all equivalent:</p>
+<ul>
+<li><code>s3.amazonaws.com/my.fancy.s3.alias.example.com/foo/bar.gz</code></li>
+<li><code>my.fancy.s3.alias.example.com.s3.amazonaws.com/foo/bar.gz</code></li>
+<li><code>my.fancy.s3.alias.example.com/foo/bar.gz</code></li>
+</ul>
+<p>This means that if you want to provide SSL access to a resource, only one of those <a href="/wiki/URLs">URLs</a> is going to work without triggering a browser warning about the certificate (ie. the one beginning with <code>s3.amazonaws.com</code>).</p>
+<p>So you have two options here:</p>
+<ul>
+<li>Either always use the working URL of the form <code>https://s3.amazonaws.com/[BUCKET]/[KEY]</code></li>
+<li>Set up a bucket name that is a single word without any periods</li>
+</ul>
+<p>The latter option may be trickier as the bucket name may already be taken.</p>
+<p>In my case I had (something like) <code>s3.example.com</code> set up as a CNAME alias for <code>s3.example.com.s3.amazonaws.com</code>, and this works fine for HTTP requests using URLs of the form <code>http://s3.example.com/[KEY]</code>.</p>
+<p>For HTTPS requests I have a different bucket set up, &quot;wincent&quot;, which means I can use URLs of the form <code>https://wincent.s3.amazonaws.com/[KEY]</code>, or of course, <code>https://s3.amazonaws.com/wincent/[KEY]</code>.</p>
+<p>I can also issue requests for items in the <code>s3.example.com</code> bucket over HTTPS using URLs of the form <code>https://s3.amazonaws.com/s3.example.com/[KEY]</code>.</p>
+</div></div></article></section><footer><div class="container"><div class="row"><div class="four columns"><h6>Site</h6><ul><li><a href="/pages/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/wiki">Wiki</a></li><li><a href="/snippets">Snippets</a></li><li><a href="/tags">Tags</a></li><li><a href="/search">Search</a></li></ul></div><div class="four columns"><h6>External</h6><ul><li><a href="https://github.com/wincent">GitHub</a></li><li><a href="https://youtube.com/GregHurrell">YouTube</a></li><li><a href="https://www.facebook.com/glh">Facebook</a></li><li><a href="https://www.linkedin.com/in/greghurrell">LinkedIn</a></li></ul></div><div class="four columns"><h6>Colophon</h6><p>Made by <a href="mailto:greg@hurrell.net">Greg Hurrell</a> with <a href="https://rust-lang.org">Rust</a> (with help from <a href="https://git-scm.com/">Git</a> and <a href="https://neovim.io/">Neovim</a>).</p></div></div></div></footer></div><script src="/_assets/scripts-b652b950.js"></script></body></html>

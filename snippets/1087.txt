@@ -1,0 +1,4 @@
+
+baba123 Don't let empty permalinks break links#index
+294dfb6 Kill an unnecessary explicit self receiver
+f75f82b Apply a spacing fix in the empty layout
