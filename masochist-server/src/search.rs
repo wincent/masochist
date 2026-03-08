@@ -163,11 +163,11 @@ pub fn search(corpus: &SearchCorpus, repo_path: &str, query: &str) -> Vec<Search
         let hits = repo.grep("content", &patterns, &directories);
         for (dir, id) in hits {
             let key = format!("{dir}/{id}");
-            if !seen.contains_key(&key) {
-                if let Some(&idx) = corpus.lookup.get(&key) {
-                    seen.insert(key, results.len());
-                    results.push(result_from_entry(&corpus.entries[idx]));
-                }
+            if !seen.contains_key(&key)
+                && let Some(&idx) = corpus.lookup.get(&key)
+            {
+                seen.insert(key, results.len());
+                results.push(result_from_entry(&corpus.entries[idx]));
             }
         }
     }
