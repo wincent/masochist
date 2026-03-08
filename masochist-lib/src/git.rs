@@ -160,26 +160,6 @@ impl GitRepo {
         patterns: &[String],
         directories: &[String],
     ) -> Vec<(String, String)> {
-        let head_output = self
-            .command()
-            .args(["rev-parse", branch])
-            .output()
-            .expect("failed to run git rev-parse");
-        let head = String::from_utf8(head_output.stdout)
-            .expect("invalid UTF-8")
-            .trim()
-            .to_string();
-
-        let tree_output = self
-            .command()
-            .args(["show", "-s", "--format=%T", &head])
-            .output()
-            .expect("failed to run git show");
-        let tree = String::from_utf8(tree_output.stdout)
-            .expect("invalid UTF-8")
-            .trim()
-            .to_string();
-
         let mut cmd = self.command();
         cmd.args([
             "grep",
@@ -196,7 +176,7 @@ impl GitRepo {
             cmd.args(["-e", pattern]);
         }
 
-        cmd.arg(&tree);
+        cmd.arg(branch);
         cmd.arg("--");
         for dir in directories {
             cmd.arg(dir);
@@ -214,12 +194,11 @@ impl GitRepo {
 
         let stdout = String::from_utf8(output.stdout).unwrap_or_default();
 
-        // Output format: "<tree_sha>:content/<type>/<filename>\0"
+        // Output format: "<branch>:content/<type>/<filename>\0"
         stdout
             .split('\0')
             .filter(|s| !s.is_empty())
             .filter_map(|entry| {
-                // Strip the tree SHA prefix.
                 let after_colon = entry.split_once(':')?.1;
                 let relative = after_colon.strip_prefix("content/")?;
                 let slash = relative.find('/')?;
