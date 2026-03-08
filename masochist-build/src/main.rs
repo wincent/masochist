@@ -91,7 +91,7 @@ fn load_from_git(repo_path: &str) -> (TimestampMap, Vec<(String, String)>, HashM
 
         let start = Instant::now();
         let num_workers = 4;
-        let chunk_size = (files.len() + num_workers - 1) / num_workers;
+        let chunk_size = files.len().div_ceil(num_workers);
         let chunks: Vec<_> = files.chunks(chunk_size).collect();
 
         let all_contents: Vec<HashMap<String, String>> = chunks
@@ -384,7 +384,7 @@ fn generate_site(
     // Format: type\tid\ttitle\tcreated_at\tupdated_at\ttag1 tag2 ...
     let mut index_data = String::new();
     for item in items {
-        let escaped_title = item.title.replace('\t', " ").replace('\n', " ");
+        let escaped_title = item.title.replace(['\t', '\n'], " ");
         let tags = item.tags.join(" ");
         index_data.push_str(&format!(
             "{}\t{}\t{}\t{}\t{}\t{}\n",

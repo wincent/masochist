@@ -161,29 +161,29 @@ impl ContentItem {
 }
 
 pub fn parse_frontmatter(raw: &str) -> (Frontmatter, &str) {
-    if let Some(rest) = raw.strip_prefix("---\n") {
-        if let Some(end) = rest.find("\n---\n") {
-            let yaml = &rest[..end];
-            let body = &rest[end + 5..];
+    if let Some(rest) = raw.strip_prefix("---\n")
+        && let Some(end) = rest.find("\n---\n")
+    {
+        let yaml = &rest[..end];
+        let body = &rest[end + 5..];
 
-            // Try parsing as-is first.
-            if let Ok(fm) = serde_yaml::from_str::<Frontmatter>(yaml) {
-                return (fm, body);
-            }
-
-            // Fallback: many content files have YAML-unsafe values (unquoted
-            // colons in titles, @ characters, [[brackets]] in redirects).
-            // The old site used a custom parser. We handle this by quoting
-            // values that aren't already quoted.
-            let fixed = fix_yaml(yaml);
-            if let Ok(fm) = serde_yaml::from_str::<Frontmatter>(&fixed) {
-                return (fm, body);
-            }
-
-            // Final fallback: parse line-by-line.
-            let fm = parse_frontmatter_manual(yaml);
+        // Try parsing as-is first.
+        if let Ok(fm) = serde_yaml::from_str::<Frontmatter>(yaml) {
             return (fm, body);
         }
+
+        // Fallback: many content files have YAML-unsafe values (unquoted
+        // colons in titles, @ characters, [[brackets]] in redirects).
+        // The old site used a custom parser. We handle this by quoting
+        // values that aren't already quoted.
+        let fixed = fix_yaml(yaml);
+        if let Ok(fm) = serde_yaml::from_str::<Frontmatter>(&fixed) {
+            return (fm, body);
+        }
+
+        // Final fallback: parse line-by-line.
+        let fm = parse_frontmatter_manual(yaml);
+        return (fm, body);
     }
     (
         Frontmatter {

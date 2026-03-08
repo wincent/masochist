@@ -122,7 +122,7 @@ fn read_time(item: &ContentItem) -> usize {
         ContentBody::Redirect(_) => "",
     };
     let words = raw.split_whitespace().count();
-    (words + 249) / 250
+    words.div_ceil(250)
 }
 
 fn render_tags(tags: &[String]) -> Markup {
@@ -276,8 +276,7 @@ pub fn generic_page(item: &ContentItem, rendered_html: &str) -> Markup {
 pub fn blog_landing(items: &[ContentItem], blog_indices: &[usize], rendered: &[String]) -> Markup {
     let count = std::cmp::min(3, blog_indices.len());
     base_layout("blog", "Blog", Some("/blog"), html! {
-        @for i in 0..count {
-            @let idx = blog_indices[i];
+        @for &idx in &blog_indices[..count] {
             @let item = &items[idx];
             @let html_content = &rendered[idx];
             @let read_mins = read_time(item);
@@ -362,8 +361,7 @@ pub fn wiki_index(items: &[ContentItem], wiki_indices: &[usize]) -> Markup {
 pub fn snippets_landing(items: &[ContentItem], snippets_indices: &[usize], rendered: &[String]) -> Markup {
     let count = std::cmp::min(3, snippets_indices.len());
     base_layout("snippets", "Snippets", Some("/snippets"), html! {
-        @for i in 0..count {
-            @let idx = snippets_indices[i];
+        @for &idx in &snippets_indices[..count] {
             @let item = &items[idx];
             @let html_content = &rendered[idx];
             article {

@@ -36,25 +36,25 @@ impl SearchCorpus {
         // Load metadata from the search index if available.
         // Format: type\tid\ttitle\tcreated_at\tupdated_at\ttags
         let mut meta: HashMap<String, (String, i64, i64, Vec<String>)> = HashMap::new();
-        if let Some(path) = index_path {
-            if let Ok(contents) = std::fs::read_to_string(path) {
-                for line in contents.lines() {
-                    let parts: Vec<&str> = line.splitn(6, '\t').collect();
-                    if parts.len() >= 5 {
-                        let key = format!("{}/{}", parts[0], parts[1]);
-                        let title = parts[2].to_string();
-                        let created_at = parts[3].parse().unwrap_or(0);
-                        let updated_at = parts[4].parse().unwrap_or(0);
-                        let tags = if parts.len() >= 6 && !parts[5].is_empty() {
-                            parts[5].split_whitespace().map(|s| s.to_string()).collect()
-                        } else {
-                            Vec::new()
-                        };
-                        meta.insert(key, (title, created_at, updated_at, tags));
-                    }
+        if let Some(path) = index_path
+            && let Ok(contents) = std::fs::read_to_string(path)
+        {
+            for line in contents.lines() {
+                let parts: Vec<&str> = line.splitn(6, '\t').collect();
+                if parts.len() >= 5 {
+                    let key = format!("{}/{}", parts[0], parts[1]);
+                    let title = parts[2].to_string();
+                    let created_at = parts[3].parse().unwrap_or(0);
+                    let updated_at = parts[4].parse().unwrap_or(0);
+                    let tags = if parts.len() >= 6 && !parts[5].is_empty() {
+                        parts[5].split_whitespace().map(|s| s.to_string()).collect()
+                    } else {
+                        Vec::new()
+                    };
+                    meta.insert(key, (title, created_at, updated_at, tags));
                 }
-                eprintln!("  index: loaded {} entries from {}", meta.len(), path);
             }
+            eprintln!("  index: loaded {} entries from {}", meta.len(), path);
         }
 
         let mut entries = Vec::new();

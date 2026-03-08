@@ -292,14 +292,15 @@ fn parse_git_log_timestamps(output: &str) -> TimestampMap {
         }
 
         // Check if this looks like a commit header (40-char hex hash at start).
-        if let Some((first_word, rest)) = part.split_once(' ') {
-            if first_word.len() == 40 && first_word.chars().all(|c| c.is_ascii_hexdigit()) {
-                if let Some(at_str) = rest.split_whitespace().next() {
-                    current_author_ts = at_str.parse().unwrap_or(0);
-                }
-                i += 1;
-                continue;
+        if let Some((first_word, rest)) = part.split_once(' ')
+            && first_word.len() == 40
+            && first_word.chars().all(|c| c.is_ascii_hexdigit())
+        {
+            if let Some(at_str) = rest.split_whitespace().next() {
+                current_author_ts = at_str.parse().unwrap_or(0);
             }
+            i += 1;
+            continue;
         }
 
         // Otherwise this is a status letter (A, M, D). The next part is the path.
