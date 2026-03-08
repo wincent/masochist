@@ -62,10 +62,10 @@ fn main() {
 fn load_from_git(
     repo_path: &str,
 ) -> (TimestampMap, Vec<(String, String)>, HashMap<String, String>) {
-    let repo_path_clone = repo_path.to_string();
+    let ts_repo_path = repo_path.to_string();
     let timestamps_handle = std::thread::spawn(move || {
         let start = Instant::now();
-        let repo = GitRepo::new(&repo_path_clone);
+        let repo = GitRepo::new(&ts_repo_path);
         let ts = repo.extract_timestamps(
             "content",
             &[
@@ -79,9 +79,9 @@ fn load_from_git(
         ts
     });
 
-    let repo_path_owned = repo_path.to_string();
+    let content_repo_path = repo_path.to_string();
     let contents_handle = std::thread::spawn(move || {
-        let repo = GitRepo::new(&repo_path_owned);
+        let repo = GitRepo::new(&content_repo_path);
 
         let start = Instant::now();
         let mut files = Vec::new();
