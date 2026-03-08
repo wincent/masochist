@@ -153,9 +153,9 @@ fn render_when(item: &ContentItem) -> Markup {
     let created = format_date(item.timestamps.created_at);
     let updated = format_date(item.timestamps.updated_at);
     html! {
-        span.when
-            data-created=(item.timestamps.created_at)
-            data-updated=(item.timestamps.updated_at)
+        relative-time
+            created=(item.timestamps.created_at)
+            updated=(item.timestamps.updated_at)
         {
             @if created == updated {
                 (created)

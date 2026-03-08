@@ -14,9 +14,9 @@ fn render_when(result: &SearchResult) -> Markup {
     let created = format_date(result.created_at);
     let updated = format_date(result.updated_at);
     html! {
-        span.when
-            data-created=(result.created_at)
-            data-updated=(result.updated_at)
+        relative-time
+            created=(result.created_at)
+            updated=(result.updated_at)
         {
             @if result.created_at == 0 {
                 ""

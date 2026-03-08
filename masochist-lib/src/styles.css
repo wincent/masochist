@@ -223,14 +223,12 @@ footer ul { list-style: none; }
 .metadata > *:last-child:after { content: none; }
 
 /* When */
-.when { color: #777676; font-style: italic; }
-.when:before {
+relative-time { color: #777676; font-style: italic; }
+relative-time:before {
   background-image: url(/icons/calendar.svg);
   background-size: cover; content: ' '; display: inline-block;
   height: 12px; margin-right: .5rem; position: relative; top: .2rem; width: 12px;
 }
-.when-link { color: inherit; text-decoration: none; }
-.when-link:hover { color: inherit; }
 
 /* Tags */
 .tags { list-style-type: none; text-align: right; }
@@ -286,7 +284,7 @@ footer ul { list-style: none; }
   .button:focus, button:focus, input[type="submit"]:focus, input[type="button"]:focus { color: #ccc; border-color: #777; }
   code, pre { background: #0e0e0e; }
   footer { background: #111; }
-  .when { color: #888787; }
+  relative-time { color: #888787; }
   .footnote-item { color: #777; }
   .footnote-item:target { color: #bbb; }
   .footnotes-sep { border-color: #333; }
