@@ -26,6 +26,10 @@ class RelativeTime extends HTMLElement {
     return new Date(ts * 1000).toLocaleString();
   }
 
+  static fmtDate(ts) {
+    return new Date(ts * 1000).toLocaleDateString();
+  }
+
   connectedCallback() {
     var c = this.getAttribute('created');
     var u = this.getAttribute('updated');
@@ -37,10 +41,10 @@ class RelativeTime extends HTMLElement {
       this.title = RelativeTime.fmt(+c);
     } else {
       var cs = document.createElement('span');
-      cs.textContent = cr || RelativeTime.fmt(+c);
+      cs.textContent = cr || RelativeTime.fmtDate(+c);
       if (cr) cs.title = RelativeTime.fmt(+c);
       var us = document.createElement('span');
-      us.textContent = ur || RelativeTime.fmt(+u);
+      us.textContent = ur || RelativeTime.fmtDate(+u);
       if (ur) us.title = RelativeTime.fmt(+u);
       this.textContent = '';
       this.append('Created ', cs, ', updated ', us);
