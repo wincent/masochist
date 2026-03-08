@@ -3,14 +3,13 @@ class RelativeTime extends HTMLElement {
     var now = Date.now() / 1000;
     var delta = Math.round(now - ts);
     if (delta < 0) return 'in the future';
-    if (delta === 0) return 'now';
-    if (delta < 60) return 'a few seconds ago';
-    if (delta < 120) return 'a minute ago';
-    if (delta < 180) return 'a couple of minutes ago';
-    if (delta < 300) return 'a few minutes ago';
-    if (delta < 3600) return Math.floor(delta / 60) + ' minutes ago';
-    if (delta < 7200) return 'an hour ago';
-    if (delta < 86400) return Math.floor(delta / 3600) + ' hours ago';
+    if (delta < 50) return 'a few seconds ago';
+    var minutes = Math.floor((delta + 10) / 60);
+    if (minutes === 1) return 'a minute ago';
+    if (minutes <= 50) return minutes + ' minutes ago';
+    var hours = Math.floor((delta + 600) / 3600);
+    if (hours === 1) return 'an hour ago';
+    if (hours <= 24) return hours + ' hours ago';
     var days = Math.floor(delta / 86400);
     if (days === 1) return 'yesterday';
     if (days <= 7) return days + ' days ago';
@@ -20,9 +19,6 @@ class RelativeTime extends HTMLElement {
     var months = Math.floor(days / 30);
     if (months === 1) return 'about a month ago';
     if (months <= 11) return months + ' months ago';
-    var years = Math.floor(days / 365);
-    if (years === 1) return 'about a year ago';
-    if (years > 1) return years + ' years ago';
     return null;
   }
 
