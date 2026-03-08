@@ -279,7 +279,56 @@ fn markdown_to_html(md: &str) -> String {
         },
     };
 
-    markdown_to_html_with_plugins(md, &options, &plugins)
+    let html = markdown_to_html_with_plugins(md, &options, &plugins);
+    mark_external_links(&html)
+}
+
+fn mark_external_links(html: &str) -> String {
+    let mut result = String::with_capacity(html.len());
+    let mut rest = html;
+
+    while let Some(pos) = rest.find("<a ") {
+        result.push_str(&rest[..pos]);
+        rest = &rest[pos..];
+
+        let tag_end = match rest.find('>') {
+            Some(e) => e,
+            None => {
+                result.push_str(rest);
+                return result;
+            }
+        };
+        let tag = &rest[..=tag_end];
+
+        let is_external = if let Some(href_start) = tag.find("href=\"") {
+            let url = &tag[href_start + 6..];
+            url.starts_with("http://") || url.starts_with("https://")
+        } else {
+            false
+        };
+
+        let is_own_site = if is_external {
+            if let Some(href_start) = tag.find("href=\"") {
+                let url = &tag[href_start + 6..];
+                url.contains("wincent.dev")
+            } else {
+                false
+            }
+        } else {
+            false
+        };
+
+        if is_external && !is_own_site {
+            result.push_str(&tag.replace("<a ", "<a class=\"external\" "));
+        } else {
+            result.push_str(tag);
+        }
+
+        rest = &rest[tag_end + 1..];
+    }
+
+    result.push_str(rest);
+    result
 }
 
 fn html_escape(s: &str) -> String {
