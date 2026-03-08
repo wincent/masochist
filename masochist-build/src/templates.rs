@@ -70,12 +70,12 @@ fn footer() -> Markup {
                     div.four.columns {
                         h6 { "Site" }
                         ul {
+                            li { a href="/pages/about" { "About" } }
                             li { a href="/blog" { "Blog" } }
                             li { a href="/wiki" { "Wiki" } }
                             li { a href="/snippets" { "Snippets" } }
                             li { a href="/tags" { "Tags" } }
                             li { a href="/search" { "Search" } }
-                            li { a href="/pages/about" { "About" } }
                         }
                     }
                     div.four.columns {
