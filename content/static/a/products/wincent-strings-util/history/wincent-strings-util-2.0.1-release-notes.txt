@@ -1,0 +1,23 @@
+Changes from 2.0 to 2.0.1:
+
+    Make "tag-release.sh" script executable
+    Bump version number prior to 2.0.1 release
+    distro.sh: prepare plaintext version of man page
+    Update buildtools submodule 6656431..1cd84ad
+    distro.sh: prepare release notes
+    distro.sh: use temp directory to avoid cluttering up BUILT_PRODUCTS_DIR
+    distro.sh: include submodules in source archive
+    distro.sh: prepare source archive
+    Second phase of "distro.sh" (zip up package file)
+    Clarify comment
+    Add "Distro" target
+    distro.sh: implement tag checking
+    Add script references to Xcode project
+    Add schema for "distro.sh" script
+    Add tag-release.sh script
+    Enforce minimum system version in installer package
+    Bump version number post-release
+
+buildtools: Changes from wincent-strings-util-2.0 to wincent-strings-util-2.0.1:
+
+    ReleaseNotes.sh: handle submodules ahead of annotated tags
