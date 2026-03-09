@@ -8,14 +8,14 @@ HOST="${MASOCHIST_HOST:-wincent.dev}"
 DEPLOY_DIR="/srv/masochist"
 
 # Warn if main hasn't been pushed to prod.
-if git -C "${REPO_DIR}" rev-parse --verify prod/main &>/dev/null; then
+if git -C "${REPO_DIR}" rev-parse --verify masochist/main &>/dev/null; then
     LOCAL=$(git -C "${REPO_DIR}" rev-parse main)
-    REMOTE=$(git -C "${REPO_DIR}" rev-parse prod/main)
+    REMOTE=$(git -C "${REPO_DIR}" rev-parse masochist/main)
     if [ "$LOCAL" != "$REMOTE" ]; then
-        echo "Warning: main is not up to date with prod/main"
+        echo "Warning: main is not up to date with masochist/main"
         echo "  local:  ${LOCAL}"
         echo "  remote: ${REMOTE}"
-        echo "You may want to run: git push prod main"
+        echo "You may want to run: git push masochist main"
         echo
         read -r -p "Continue anyway? [y/N] " answer
         if [[ ! "$answer" =~ ^[Yy]$ ]]; then
