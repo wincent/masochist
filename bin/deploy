@@ -7,29 +7,30 @@ REPO_DIR="$(dirname "$SCRIPT_DIR")"
 HOST="${MASOCHIST_HOST:-wincent.dev}"
 DEPLOY_DIR="/srv/masochist"
 
-# Tag the deployment.
+# Warn if main hasn't been pushed to prod.
+if git -C "${REPO_DIR}" rev-parse --verify prod/main &>/dev/null; then
+    LOCAL=$(git -C "${REPO_DIR}" rev-parse main)
+    REMOTE=$(git -C "${REPO_DIR}" rev-parse prod/main)
+    if [ "$LOCAL" != "$REMOTE" ]; then
+        echo "Warning: main is not up to date with prod/main"
+        echo "  local:  ${LOCAL}"
+        echo "  remote: ${REMOTE}"
+        echo "You may want to run: git push prod main"
+        echo
+        read -r -p "Continue anyway? [y/N] " answer
+        if [[ ! "$answer" =~ ^[Yy]$ ]]; then
+            exit 1
+        fi
+    fi
+fi
+
+# Check out bin/prod from the repo and run it.
+echo "Pulling and restarting on ${HOST}..."
+ssh "${HOST}" "sudo -u masochist git --work-tree=${DEPLOY_DIR} --git-dir=${DEPLOY_DIR}/repo checkout main -- bin/prod && sudo -u masochist chmod +x ${DEPLOY_DIR}/bin/prod && sudo -u masochist ${DEPLOY_DIR}/bin/prod"
+
+# Tag the deployment after success.
 TAG="deploy/$(date -u +%Y-%m-%d/%H.%M.%S)"
 echo "Tagging: ${TAG}"
 git -C "${REPO_DIR}" tag "${TAG}"
-
-# Build Docker image for linux/arm64.
-echo "Building Docker image for linux/arm64..."
-docker build \
-    --platform linux/arm64 \
-    -t masochist-app:latest \
-    -f "${REPO_DIR}/ops/Dockerfile.app" \
-    "${REPO_DIR}"
-
-# Push image to ECR.
-echo "Pushing image to ECR..."
-"${SCRIPT_DIR}/upload"
-
-# Push main branch to the server's bare repo.
-echo "Pushing main branch..."
-git -C "${REPO_DIR}" push prod main
-
-# Check out bin/prod from the repo (handles first deploy) and run it.
-echo "Pulling and restarting on ${HOST}..."
-ssh "${HOST}" "sudo -u masochist git --work-tree=${DEPLOY_DIR} --git-dir=${DEPLOY_DIR}/repo checkout main -- bin/prod && sudo -u masochist chmod +x ${DEPLOY_DIR}/bin/prod && sudo -u masochist ${DEPLOY_DIR}/bin/prod"
 
 echo "Deploy complete."
