@@ -94,6 +94,7 @@ pub fn footer() -> Markup {
                         h6 { "External" }
                         ul {
                             li { a href="https://github.com/wincent" { "GitHub" } }
+                            li { a href="https://twitter.com/wincent" { "Twitter" } }
                             li { a href="https://youtube.com/GregHurrell" { "YouTube" } }
                             li { a href="https://www.facebook.com/glh" { "Facebook" } }
                             li { a href="https://www.linkedin.com/in/greghurrell" { "LinkedIn" } }
