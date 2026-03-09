@@ -3,3 +3,6 @@
 /public
 /target
 *.log
+
+# This is in ~/.config/git/ignore, but add it here redundantly for dprint.
+/.claude-notes
