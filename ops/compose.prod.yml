@@ -24,3 +24,4 @@ services:
       - /srv/masochist/public:/var/www/public:ro
       - /srv/masochist/ops/Caddyfile:/etc/caddy/Caddyfile:ro
       - /srv/masochist/ops/Caddyfile.redirects:/etc/caddy/conf.d/redirects.caddy:ro
+      - /etc/caddy/includes:/etc/caddy/includes:ro
