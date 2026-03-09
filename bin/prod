@@ -14,13 +14,13 @@ OPS="${DEPLOY_DIR}/ops"
 ECR_ACCOUNT_ID="${ECR_ACCOUNT_ID:-$(aws ecr describe-registry --region us-east-1 --query registryId --output text)}"
 export ECR_ACCOUNT_ID
 
-docker compose \
+docker-compose \
     -f "$OPS/compose.base.yml" \
     -f "$OPS/compose.prod.yml" \
     -f "$OPS/compose.ecr.yml" \
     pull
 
-docker compose \
+docker-compose \
     -f "$OPS/compose.base.yml" \
     -f "$OPS/compose.prod.yml" \
     -f "$OPS/compose.ecr.yml" \

@@ -84,6 +84,13 @@ sudo usermod -aG docker ec2-user
 
 Log out and back in for the group change to take effect.
 
+### Docker Compose
+
+```
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
 ### IAM role
 
 The instance needs an IAM role with the `AmazonEC2ContainerRegistryReadOnly` policy attached. This grants permissions to pull Docker images from ECR. You can assign an instance profile to a running instance via:
@@ -124,6 +131,12 @@ aws ecr create-repository \
 ```
 
 ## Deploying
+
+```
+aws login
+aws ecr describe-registry --region us-east-1 --query registryId --output text
+export ECR_ACCOUNT_ID=...
+```
 
 Push all branches, build and upload the Docker image, then deploy:
 
