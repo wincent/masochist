@@ -97,22 +97,25 @@ pub fn blog_post(
 }
 
 pub fn wiki_article(item: &ContentItem, rendered_html: &str) -> Markup {
+    let edit_url = format!(
+        "https://github.com/wincent/masochist/edit/content/content/wiki/{}.md",
+        percent_encoding::utf8_percent_encode(&item.id, percent_encoding::NON_ALPHANUMERIC),
+    );
     base_layout(
         &item.title,
         "Wiki",
         None,
         html! {
             article {
-                div.readability {
-                    div.article-header {
-                        h1 { (item.title) }
-                    }
-                    div.metadata {
-                        (render_when(item))
-                    }
-                    (render_tags(&item.tags))
-                    div.prerendered { (PreEscaped(rendered_html)) }
+                div.article-header {
+                    h1 { a href=(item.url()) { (item.title) } }
+                    a.button href=(edit_url) title="Edit this article on GitHub" { "Edit" }
                 }
+                div.metadata {
+                    (render_when(item))
+                }
+                div.prerendered { (PreEscaped(rendered_html)) }
+                (render_tags(&item.tags))
             }
         },
     )
@@ -326,7 +329,7 @@ pub fn snippets_archive(items: &[ContentItem], snippets_indices: &[usize]) -> Ma
                     @for &idx in snippets_indices {
                         @let item = &items[idx];
                         tr {
-                            td { a.lozenge href="/snippets" { "snippets" } }
+                            td { a.lozenge href="/snippets" { "snippet" } }
                             td { a href=(item.url()) { (item.title) } }
                             td { (render_when(item)) }
                             td { (render_tags_compact(&item.tags)) }
@@ -387,7 +390,7 @@ pub fn tag_page(tag_name: &str, items: &[ContentItem], indices: &[usize]) -> Mar
                     @for &idx in indices {
                         @let item = &items[idx];
                         tr {
-                            td { a.lozenge href=(format!("/{}", item.content_type.label())) { (item.content_type.label()) } }
+                            td { a.lozenge href=(item.content_type.url_prefix()) { (item.content_type.label()) } }
                             td { a href=(item.url()) { (item.title) } }
                             td { (render_when(item)) }
                             td { (render_tags_compact(&item.tags)) }

@@ -1390,6 +1390,7 @@ dependencies = [
  "lightningcss",
  "masochist-lib",
  "maud",
+ "percent-encoding",
  "rayon",
  "sha2",
  "swc",
