@@ -26,7 +26,7 @@ fi
 
 # Check out bin/prod from the repo and run it.
 echo "Pulling and restarting on ${HOST}..."
-ssh "${HOST}" "sudo -u masochist git --work-tree=${DEPLOY_DIR} --git-dir=${DEPLOY_DIR}/repo checkout main -- bin/prod && sudo -u masochist chmod +x ${DEPLOY_DIR}/bin/prod && cd ${DEPLOY_DIR} && sudo -u masochist ECR_ACCOUNT_ID=${ECR_ACCOUNT_ID} ${DEPLOY_DIR}/bin/prod"
+ssh "${HOST}" "sudo -u masochist git --work-tree=${DEPLOY_DIR} --git-dir=${DEPLOY_DIR}/repo checkout main -- bin/prod && sudo -u masochist chmod +x ${DEPLOY_DIR}/bin/prod && sudo -u masochist bash -c 'cd ${DEPLOY_DIR} && ECR_ACCOUNT_ID=${ECR_ACCOUNT_ID} ${DEPLOY_DIR}/bin/prod'"
 
 # Tag the deployment after success.
 TAG="deploy/$(date -u +%Y-%m-%d/%H.%M.%S)"
