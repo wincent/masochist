@@ -15,6 +15,9 @@ git --work-tree="${DEPLOY_DIR}/public" --git-dir="${REPO}" checkout public -- .
 
 OPS="${DEPLOY_DIR}/ops"
 
+export APP_UID=$(id -u)
+export APP_GID=$(id -g)
+
 ECR_ACCOUNT_ID="${ECR_ACCOUNT_ID:-$(aws ecr describe-registry --region us-east-1 --query registryId --output text)}"
 export ECR_ACCOUNT_ID
 

@@ -2,7 +2,7 @@ name: masochist
 
 services:
   app:
-    user: "masochist"
+    user: "${APP_UID}:${APP_GID}"
     deploy:
       resources:
         limits:
