@@ -10,11 +10,11 @@ Content (stored on [the `content` branch](https://github.com/wincent/masochist/t
 ## Stack
 
 - [Caddy]: Web server.
+- [Docker]: Containers and orchestration.
 - [Git]: Content storage.
 - [Lightning CSS]: CSS minification.
 - [Rust]: Build and backend language.
 - [Rocket]: Backend web framework.
--
 - [SWC]: JavaScript minification.
 - [dprint]: Code and configuration formatting.
 
@@ -83,7 +83,7 @@ This starts Caddy on `https://localhost:2443` (self-signed cert) with the Rocket
 
 ## Server setup (EC2)
 
-I set up the instance using Ansible, but the equivalent manual steps are as follows:
+I set up the instance using [Ansible], but the equivalent manual steps are as follows:
 
 ### Docker
 
