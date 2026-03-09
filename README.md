@@ -123,6 +123,19 @@ aws ecr create-repository \
   --region us-east-1
 ```
 
+## Deploying
+
+Push all branches, build and upload the Docker image, then deploy:
+
+```
+git push masochist main content public
+bin/ecr build
+bin/ecr upload
+bin/deploy
+```
+
+Each step is independent and can be retried on failure. `bin/deploy` warns if `main` hasn't been pushed to the server yet.
+
 ## Project structure
 
 ```
