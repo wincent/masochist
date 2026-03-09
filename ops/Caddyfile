@@ -22,7 +22,11 @@ import /etc/caddy/conf.d/*
 	# Hide other internal build artifacts (prefixed with underscore).
 	@hidden path /_*
 	handle @hidden {
-		respond 404
+		root * /var/www/public
+		rewrite * /404.html
+		file_server {
+			status 404
+		}
 	}
 
 	# Legacy image path: old site served images at /system/images/*.
