@@ -427,3 +427,15 @@ pub fn not_found() -> Markup {
         },
     )
 }
+
+pub fn too_many_requests() -> Markup {
+    base_layout(
+        "Too Many Requests",
+        "",
+        None,
+        html! {
+            h1 { "Too Many Requests" }
+            p { "Slow down and try again in a moment." }
+        },
+    )
+}

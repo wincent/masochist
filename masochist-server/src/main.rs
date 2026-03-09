@@ -1,9 +1,15 @@
 mod search;
 mod templates;
 
+use governor::clock::DefaultClock;
+use governor::state::keyed::DefaultKeyedStateStore;
+use governor::{Quota, RateLimiter};
+use rocket::fairing::{Fairing, Info, Kind};
+use rocket::http::Status;
 use rocket::response::content::RawHtml;
-use rocket::{State, get, launch, routes};
+use rocket::{Data, Request, Response, State, get, launch, routes};
 use search::SearchCorpus;
+use std::num::NonZeroU32;
 
 struct AssetPaths {
     css: String,
@@ -14,6 +20,47 @@ struct AppState {
     corpus: SearchCorpus,
     repo_path: String,
     assets: AssetPaths,
+}
+
+struct RateLimitFairing {
+    limiter: RateLimiter<String, DefaultKeyedStateStore<String>, DefaultClock>,
+}
+
+impl RateLimitFairing {
+    fn new(requests: u32, per_seconds: u64) -> Self {
+        let quota = Quota::with_period(std::time::Duration::from_secs(per_seconds))
+            .unwrap()
+            .allow_burst(NonZeroU32::new(requests).unwrap());
+        Self {
+            limiter: RateLimiter::keyed(quota),
+        }
+    }
+}
+
+#[rocket::async_trait]
+impl Fairing for RateLimitFairing {
+    fn info(&self) -> Info {
+        Info {
+            name: "Rate Limiter",
+            kind: Kind::Request | Kind::Response,
+        }
+    }
+
+    async fn on_request(&self, req: &mut Request<'_>, _data: &mut Data<'_>) {
+        let ip = req
+            .client_ip()
+            .map(|ip| ip.to_string())
+            .unwrap_or_default();
+        let limited = self.limiter.check_key(&ip).is_err();
+        req.local_cache(|| limited);
+    }
+
+    async fn on_response<'r>(&self, req: &'r Request<'_>, res: &mut Response<'r>) {
+        if *req.local_cache(|| false) {
+            res.set_status(Status::TooManyRequests);
+            res.set_sized_body(None, std::io::Cursor::new(""));
+        }
+    }
 }
 
 #[get("/search?<q>")]
@@ -58,6 +105,7 @@ fn rocket() -> _ {
     let assets = load_asset_paths();
 
     rocket::build()
+        .attach(RateLimitFairing::new(10, 30)) // 10 requests per 30 seconds per IP
         .manage(AppState {
             corpus,
             repo_path,

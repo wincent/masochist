@@ -45,6 +45,12 @@ import /etc/caddy/conf.d/*
 	handle /search* {
 		reverse_proxy app:8000 {
 			header_up X-Real-IP {remote_host}
+			@ratelimited status 429
+			handle_response @ratelimited {
+				root * /var/www/public
+				rewrite * /429.html
+				file_server
+			}
 		}
 	}
 
