@@ -82,6 +82,10 @@ As noted above, Masochist is still a work in progress, but I've gone into it wit
 -   Given that data lives in a Git repo which is the source of truth, make spinning up a new "stateless" EC2 instance easy via Ansible; as the instances are effectively throwaway, it means you don't even need to worry about backups.
 -   End goal includes complete elimination of dependency on the business logic in the Rails app, and eventually turning it off entirely (note: I've already cut over from the Rails app, but haven't turned it off yet).
 
+# Addenda: 2026 update
+
+Well, we're into the 4th decade now. And because Masochist is all about rewriting things, it's now a static site generator. We should be good, then, until about 2035, when it'll be time for the next rewrite.
+
 [ansible]: http://www.ansible.com/
 [bugzilla]: https://www.bugzilla.org
 [express]: http://expressjs.com/
