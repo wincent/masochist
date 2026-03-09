@@ -9,6 +9,10 @@ echo "Checking out ops/ and bin/ from main..."
 git --work-tree="${DEPLOY_DIR}" --git-dir="${REPO}" checkout main -- ops/ bin/
 chmod +x "${DEPLOY_DIR}/bin/"*
 
+# Update static site content from the public branch.
+echo "Checking out static site from public branch..."
+git --work-tree="${DEPLOY_DIR}/public" --git-dir="${REPO}" checkout public -- .
+
 OPS="${DEPLOY_DIR}/ops"
 
 ECR_ACCOUNT_ID="${ECR_ACCOUNT_ID:-$(aws ecr describe-registry --region us-east-1 --query registryId --output text)}"
