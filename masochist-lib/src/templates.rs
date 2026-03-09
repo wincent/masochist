@@ -55,7 +55,7 @@ pub fn nav_bar(active: &str) -> Markup {
         nav {
             ul {
                 li {
-                    a.nav-link href="/" style="color:#eee;font-weight:bold" { "wincent.dev" }
+                    a.nav-link href="/" style="color:#eee;font-weight:bold" { "Wincent" }
                     span.nav-toggle-wrapper {
                         div.nav-toggle onclick="this.closest('nav').classList.toggle('nav-open')" { "Menu" }
                     }
