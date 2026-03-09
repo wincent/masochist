@@ -2,6 +2,7 @@ name: masochist
 
 services:
   app:
+    user: "masochist"
     deploy:
       resources:
         limits:
