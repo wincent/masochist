@@ -15,11 +15,13 @@ git --work-tree="${DEPLOY_DIR}/public" --git-dir="${REPO}" checkout public -- .
 
 OPS="${DEPLOY_DIR}/ops"
 
-export APP_UID=$(id -u)
-export APP_GID=$(id -g)
-
 ECR_ACCOUNT_ID="${ECR_ACCOUNT_ID:-$(aws ecr describe-registry --region us-east-1 --query registryId --output text)}"
-export ECR_ACCOUNT_ID
+
+cat > "${DEPLOY_DIR}/ops/.env" <<EOF
+APP_UID=$(id -u)
+APP_GID=$(id -g)
+ECR_ACCOUNT_ID=${ECR_ACCOUNT_ID}
+EOF
 
 ECR_REGISTRY="${ECR_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com"
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin "${ECR_REGISTRY}"
