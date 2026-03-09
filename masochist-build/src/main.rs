@@ -388,7 +388,7 @@ fn generate_site(
         let tags = item.tags.join(" ");
         index_data.push_str(&format!(
             "{}\t{}\t{}\t{}\t{}\t{}\n",
-            item.content_type.label(),
+            item.content_type.directory(),
             item.id,
             escaped_title,
             item.timestamps.created_at,
@@ -446,7 +446,7 @@ fn generate_site(
     for r in redirects {
         let source = match r.content_type {
             ContentType::Wiki => format!("/wiki/{}", r.id.replace(' ', "_")),
-            _ => format!("/{}/{}", r.content_type.label(), r.id),
+            _ => format!("/{}/{}", r.content_type.directory(), r.id),
         };
         // Redirect target can be:
         // - A wiki title in [[brackets]]: "[[Some Article Title]]"

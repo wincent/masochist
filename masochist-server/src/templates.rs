@@ -4,6 +4,14 @@ use percent_encoding::{NON_ALPHANUMERIC, utf8_percent_encode};
 
 use crate::search::SearchResult;
 
+fn display_label(content_type: &str) -> &str {
+    match content_type {
+        "pages" => "page",
+        "snippets" => "snippet",
+        _ => content_type,
+    }
+}
+
 fn render_when(result: &SearchResult) -> Markup {
     let created = format_date(result.created_at);
     let updated = format_date(result.updated_at);
@@ -97,7 +105,7 @@ pub fn search_page(
                     tbody {
                         @for result in results {
                             tr {
-                                td { a.lozenge href=(format!("/{}", result.content_type)) { (result.content_type) } }
+                                td { a.lozenge href=(format!("/{}", result.content_type)) { (display_label(&result.content_type)) } }
                                 td { a href=(result_url(result)) { (result.title) } }
                                 td { (render_when(result)) }
                                 td { (masochist_lib::templates::render_tags_compact(&result.tags)) }

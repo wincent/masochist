@@ -29,11 +29,20 @@ impl ContentType {
         }
     }
 
-    pub fn label(&self) -> &'static str {
+    pub fn directory(&self) -> &'static str {
         match self {
             Self::Blog => "blog",
             Self::Page => "pages",
             Self::Snippet => "snippets",
+            Self::Wiki => "wiki",
+        }
+    }
+
+    pub fn label(&self) -> &'static str {
+        match self {
+            Self::Blog => "blog",
+            Self::Page => "page",
+            Self::Snippet => "snippet",
             Self::Wiki => "wiki",
         }
     }
