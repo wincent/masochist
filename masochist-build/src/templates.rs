@@ -107,8 +107,8 @@ pub fn wiki_article(item: &ContentItem, rendered_html: &str) -> Markup {
         None,
         html! {
             article {
-                div.article-header {
-                    h1 { a href=(item.url()) { (item.title) } }
+                h1.article-header {
+                    a href=(item.url()) { (item.title) }
                     a.button href=(edit_url) title="Edit this article on GitHub" { "Edit" }
                 }
                 div.metadata {
