@@ -14,6 +14,9 @@ OPS="${DEPLOY_DIR}/ops"
 ECR_ACCOUNT_ID="${ECR_ACCOUNT_ID:-$(aws ecr describe-registry --region us-east-1 --query registryId --output text)}"
 export ECR_ACCOUNT_ID
 
+ECR_REGISTRY="${ECR_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com"
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin "${ECR_REGISTRY}"
+
 docker-compose \
     -f "$OPS/compose.base.yml" \
     -f "$OPS/compose.prod.yml" \
