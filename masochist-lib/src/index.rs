@@ -71,8 +71,10 @@ impl SiteIndex {
                     .updated_at
                     .cmp(&items[a].timestamps.updated_at)
                     .then_with(|| {
-                        let key_a = format!("{}:{}", items[a].content_type.directory(), items[a].id);
-                        let key_b = format!("{}:{}", items[b].content_type.directory(), items[b].id);
+                        let key_a =
+                            format!("{}:{}", items[a].content_type.directory(), items[a].id);
+                        let key_b =
+                            format!("{}:{}", items[b].content_type.directory(), items[b].id);
                         key_b.cmp(&key_a)
                     })
             });

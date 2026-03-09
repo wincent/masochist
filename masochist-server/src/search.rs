@@ -146,7 +146,10 @@ pub fn search(corpus: &SearchCorpus, repo_path: &str, query: &str) -> Vec<Search
     }
 
     for entry in &title_matches {
-        if !directories.iter().any(|d| d.ends_with(&format!("/{}", entry.dir))) {
+        if !directories
+            .iter()
+            .any(|d| d.ends_with(&format!("/{}", entry.dir)))
+        {
             continue;
         }
         let key = format!("{}/{}", entry.dir, entry.id);

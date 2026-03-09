@@ -47,12 +47,7 @@ fn result_url(result: &SearchResult) -> String {
     format!("{prefix}/{encoded_id}")
 }
 
-pub fn search_page(
-    query: &str,
-    results: &[SearchResult],
-    css_path: &str,
-    js_path: &str,
-) -> Markup {
+pub fn search_page(query: &str, results: &[SearchResult], css_path: &str, js_path: &str) -> Markup {
     let title = if query.is_empty() {
         "Search".to_string()
     } else {
