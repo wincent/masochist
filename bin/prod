@@ -4,10 +4,10 @@ set -euo pipefail
 DEPLOY_DIR="/srv/masochist"
 REPO="${DEPLOY_DIR}/repo"
 
-# Check out ops/ and bin/ from the main branch.
-echo "Checking out ops/ and bin/ from main..."
-git --work-tree="${DEPLOY_DIR}" --git-dir="${REPO}" checkout main -- ops/ bin/
-chmod +x "${DEPLOY_DIR}/bin/"*
+# Check out ops/ and bin/prod from the main branch.
+echo "Checking out ops/ and bin/prod from main..."
+git --work-tree="${DEPLOY_DIR}" --git-dir="${REPO}" checkout main -- ops/ bin/prod
+chmod +x "${DEPLOY_DIR}/bin/prod"
 
 # Update static site content from the public branch.
 echo "Checking out static site from public branch..."
