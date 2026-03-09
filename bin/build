@@ -5,6 +5,16 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
 OUTPUT_DIR="${REPO_DIR}/public"
 
+echo "Checking public branch is up to date..."
+git -C "${OUTPUT_DIR}" fetch masochist
+LOCAL=$(git -C "${OUTPUT_DIR}" rev-parse HEAD)
+REMOTE=$(git -C "${OUTPUT_DIR}" rev-parse masochist/public)
+if [ "$LOCAL" != "$REMOTE" ] && ! git -C "${OUTPUT_DIR}" merge-base --is-ancestor "$REMOTE" "$LOCAL"; then
+    echo "Error: public worktree has diverged from masochist/public."
+    echo "Pull or rebase before building."
+    exit 1
+fi
+
 echo "Building static site..."
 cargo run --manifest-path "${REPO_DIR}/Cargo.toml" \
     --release --package masochist-build -- \
