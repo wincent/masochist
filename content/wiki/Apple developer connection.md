@@ -1,4 +1,1 @@
----
-redirect: [[ADC]]
-tags: wiki
----
+ADC.md

@@ -1,4 +1,1 @@
----
-redirect: [[RFC 2606]]
-tags: wiki
----
+RFC 2606.md

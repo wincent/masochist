@@ -1,4 +1,1 @@
----
-redirect: [[graph]]
-tags: wiki
----
+graph.md

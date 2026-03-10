@@ -1,4 +1,1 @@
----
-redirect: [[DSL]]
-tags: wiki
----
+DSL.md

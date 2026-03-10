@@ -1,4 +1,1 @@
----
-redirect: [[Groupee]]
-tags: wiki
----
+Groupee.md

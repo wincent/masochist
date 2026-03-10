@@ -1,4 +1,1 @@
----
-redirect: [[Updating to Git 1.7.12]]
-tags: wiki
----
+Updating to Git 1.7.12.md

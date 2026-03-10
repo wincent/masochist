@@ -1,4 +1,1 @@
----
-redirect: [[RHEL 5]]
-tags: wiki
----
+RHEL 5.md

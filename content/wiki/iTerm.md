@@ -1,4 +1,1 @@
----
-redirect: [[iTerm 2]]
-tags: wiki
----
+iTerm 2.md

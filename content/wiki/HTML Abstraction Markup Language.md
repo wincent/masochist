@@ -1,4 +1,1 @@
----
-redirect: [[Haml]]
-tags: wiki
----
+Haml.md

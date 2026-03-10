@@ -1,4 +1,1 @@
----
-redirect: [[ZFS]]
-tags: wiki
----
+ZFS.md

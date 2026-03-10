@@ -1,4 +1,1 @@
----
-redirect: [[website]]
-tags: wiki
----
+website.md

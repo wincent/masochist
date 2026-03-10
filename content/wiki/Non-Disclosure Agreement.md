@@ -1,4 +1,1 @@
----
-redirect: [[NDA]]
-tags: wiki
----
+NDA.md

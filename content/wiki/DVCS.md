@@ -1,4 +1,1 @@
----
-redirect: [[Distributed Version Control System]]
-tags: wiki
----
+Distributed Version Control System.md

@@ -1,4 +1,1 @@
----
-redirect: [[GNU]]
-tags: wiki
----
+GNU.md

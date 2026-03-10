@@ -1,4 +1,1 @@
----
-redirect: [[Frequently Asked Question]]
-tags: wiki
----
+Frequently Asked Question.md

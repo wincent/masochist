@@ -1,4 +1,1 @@
----
-redirect: [[Software Development Kit]]
-tags: wiki
----
+Software Development Kit.md

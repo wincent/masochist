@@ -1,4 +1,1 @@
----
-redirect: [[CAPTCHA]]
-tags: wiki
----
+CAPTCHA.md

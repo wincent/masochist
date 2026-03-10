@@ -1,4 +1,1 @@
----
-redirect: [[Lexer]]
-tags: wiki
----
+Lexer.md

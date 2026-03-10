@@ -1,4 +1,1 @@
----
-redirect: [[Asymmetric Digital Subscriber Line]]
-tags: wiki
----
+Asymmetric Digital Subscriber Line.md

@@ -1,4 +1,1 @@
----
-redirect: [[macOS]]
-tags: os.x wiki
----
+macOS.md

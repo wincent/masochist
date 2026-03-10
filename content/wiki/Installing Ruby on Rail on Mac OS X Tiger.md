@@ -1,4 +1,1 @@
----
-redirect: [[Installing Ruby on Rails on Mac OS X Tiger]]
-tags: wiki
----
+Installing Ruby on Rails on Mac OS X Tiger.md

@@ -1,4 +1,1 @@
----
-redirect: [[Octal]]
-tags: wiki
----
+Octal.md

@@ -1,4 +1,1 @@
----
-redirect: [[Red Hat Enterprise Linux]]
-tags: wiki
----
+Red Hat Enterprise Linux.md

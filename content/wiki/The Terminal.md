@@ -1,4 +1,1 @@
----
-redirect: [[Terminal]]
-tags: wiki
----
+Terminal.md

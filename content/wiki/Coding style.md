@@ -1,4 +1,1 @@
----
-redirect: [[coding standards]]
-tags: wiki
----
+coding standards.md

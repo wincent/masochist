@@ -1,4 +1,1 @@
----
-redirect: [[Model]]
-tags: wiki
----
+Model.md

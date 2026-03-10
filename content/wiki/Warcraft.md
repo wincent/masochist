@@ -1,4 +1,1 @@
----
-redirect: [[World of Warcraft]]
-tags: wiki
----
+World of Warcraft.md

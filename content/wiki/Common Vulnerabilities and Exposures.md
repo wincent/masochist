@@ -1,4 +1,1 @@
----
-redirect: [[CVE]]
-tags: wiki
----
+CVE.md

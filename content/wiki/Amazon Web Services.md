@@ -1,4 +1,1 @@
----
-redirect: [[AWS]]
-tags: wiki
----
+AWS.md

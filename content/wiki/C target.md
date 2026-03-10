@@ -1,4 +1,1 @@
----
-redirect: [[C language target]]
-tags: wiki
----
+C language target (ANTLR).md

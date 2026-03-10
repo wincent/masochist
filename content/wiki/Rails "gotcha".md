@@ -1,4 +1,1 @@
----
-redirect: [[Rails "gotchas"]]
-tags: wiki
----
+Rails "gotchas".md

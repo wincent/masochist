@@ -1,4 +1,1 @@
----
-redirect: [[Googling]]
-tags: wiki
----
+Googling.md

@@ -1,4 +1,1 @@
----
-redirect: [[cloud computing]]
-tags: wiki
----
+cloud computing.md

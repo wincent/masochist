@@ -1,4 +1,1 @@
----
-redirect: [[Git]]
-tags: wiki
----
+Git.md

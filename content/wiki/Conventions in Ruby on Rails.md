@@ -1,4 +1,1 @@
----
-redirect: [[Rails conventions]]
-tags: wiki
----
+Rails conventions.md

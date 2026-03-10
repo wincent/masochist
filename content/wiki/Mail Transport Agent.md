@@ -1,4 +1,1 @@
----
-redirect: [[MTA]]
-tags: wiki
----
+MTA.md

@@ -1,4 +1,1 @@
----
-redirect: [[PowerPC]]
-tags: wiki
----
+PowerPC.md

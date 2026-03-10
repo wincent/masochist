@@ -1,4 +1,1 @@
----
-redirect: [[weblog]]
-tags: wiki
----
+weblog.md

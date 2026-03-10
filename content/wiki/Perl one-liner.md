@@ -1,4 +1,1 @@
----
-redirect: [[Perl one-liners]]
-tags: wiki
----
+Perl one-liners.md

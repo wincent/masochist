@@ -1,4 +1,1 @@
----
-redirect: [[SSL]]
-tags: wiki
----
+SSL.md

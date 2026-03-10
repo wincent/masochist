@@ -1,4 +1,1 @@
----
-redirect: [[RFC 4287]]
-tags: wiki
----
+RFC 4287.md

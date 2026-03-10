@@ -1,4 +1,1 @@
----
-redirect: [[Access Control List]]
-tags: wiki
----
+Access Control List.md

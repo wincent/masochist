@@ -1,4 +1,1 @@
----
-redirect: [[Locking in Rails]]
-tags: wiki
----
+Locking in Rails.md

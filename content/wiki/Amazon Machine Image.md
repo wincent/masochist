@@ -1,4 +1,1 @@
----
-redirect: [[AMI]]
-tags: wiki
----
+AMI.md

@@ -1,4 +1,1 @@
----
-redirect: [[adjacency list]]
-tags: wiki
----
+adjacency list.md

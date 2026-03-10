@@ -1,4 +1,1 @@
----
-redirect: [[last.fm]]
-tags: wiki
----
+last.fm.md

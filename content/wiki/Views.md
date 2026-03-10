@@ -1,4 +1,1 @@
----
-redirect: [[View]]
-tags: wiki
----
+View.md

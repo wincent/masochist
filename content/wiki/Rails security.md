@@ -1,4 +1,1 @@
----
-redirect: [[Security in Rails]]
-tags: wiki
----
+Security in Rails.md

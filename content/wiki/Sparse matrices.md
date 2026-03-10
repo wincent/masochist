@@ -1,4 +1,1 @@
----
-redirect: [[sparse matrix]]
-tags: wiki
----
+sparse matrix.md

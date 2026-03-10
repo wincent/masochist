@@ -1,4 +1,1 @@
----
-redirect: [[JavaScript]]
-tags: wiki
----
+JavaScript.md

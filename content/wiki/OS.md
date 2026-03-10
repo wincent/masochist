@@ -1,4 +1,1 @@
----
-redirect: [[Operating system]]
-tags: wiki
----
+Operating system.md

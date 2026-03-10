@@ -1,4 +1,1 @@
----
-redirect: [[Functional testing]]
-tags: wiki
----
+Functional testing.md

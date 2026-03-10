@@ -1,4 +1,1 @@
----
-redirect: [[here document]]
-tags: wiki
----
+here document.md

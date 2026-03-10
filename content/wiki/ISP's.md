@@ -1,4 +1,1 @@
----
-redirect: [[ISP]]
-tags: wiki
----
+ISP.md

@@ -1,4 +1,1 @@
----
-redirect: [[Finite state machine]]
-tags: wiki
----
+Finite state machine.md

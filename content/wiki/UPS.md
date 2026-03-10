@@ -1,4 +1,1 @@
----
-redirect: [[Uninterruptable Power Supply]]
-tags: wiki
----
+Uninterruptable Power Supply.md

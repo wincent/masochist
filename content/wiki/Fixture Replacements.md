@@ -1,4 +1,1 @@
----
-redirect: [[Object mother]]
-tags: wiki
----
+Object mother.md

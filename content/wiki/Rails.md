@@ -1,4 +1,1 @@
----
-redirect: [[Ruby on Rails]]
-tags: wiki
----
+Ruby on Rails.md

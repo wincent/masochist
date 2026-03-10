@@ -1,4 +1,1 @@
----
-redirect: [[WOCommon set-up notes]]
-tags: wiki
----
+WOCommon set-up notes.md

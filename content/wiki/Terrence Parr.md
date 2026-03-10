@@ -1,4 +1,1 @@
----
-redirect: [[Terence Parr]]
-tags: wiki
----
+Terence Parr.md

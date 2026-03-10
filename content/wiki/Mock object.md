@@ -1,4 +1,1 @@
----
-redirect: [[Mock objects]]
-tags: wiki
----
+Mock objects.md

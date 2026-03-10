@@ -1,4 +1,1 @@
----
-redirect: [[ANTLR mailing list]]
-tags: wiki
----
+ANTLR mailing list.md

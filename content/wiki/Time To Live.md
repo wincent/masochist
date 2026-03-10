@@ -1,4 +1,1 @@
----
-redirect: [[TTL]]
-tags: wiki
----
+TTL.md

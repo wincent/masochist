@@ -1,4 +1,1 @@
----
-redirect: [[UBB]]
-tags: wiki
----
+UBB.md

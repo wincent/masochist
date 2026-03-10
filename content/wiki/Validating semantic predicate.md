@@ -1,4 +1,1 @@
----
-redirect: [[ANTLR predicates]]
-tags: wiki
----
+ANTLR predicates.md

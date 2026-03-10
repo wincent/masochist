@@ -1,4 +1,1 @@
----
-redirect: [[Usenet]]
-tags: wiki
----
+Usenet.md

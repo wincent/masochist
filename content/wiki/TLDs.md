@@ -1,4 +1,1 @@
----
-redirect: [[TLD]]
-tags: wiki
----
+TLD.md

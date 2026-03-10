@@ -1,4 +1,1 @@
----
-redirect: [[DFA]]
-tags: wiki
----
+DFA.md

@@ -1,4 +1,1 @@
----
-redirect: [[RAID]]
-tags: wiki
----
+RAID.md

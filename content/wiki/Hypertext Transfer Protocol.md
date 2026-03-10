@@ -1,4 +1,1 @@
----
-redirect: [[HTTP]]
-tags: wiki
----
+HTTP.md

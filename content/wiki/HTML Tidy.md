@@ -1,4 +1,1 @@
----
-redirect: [[Tidy]]
-tags: wiki
----
+Tidy.md

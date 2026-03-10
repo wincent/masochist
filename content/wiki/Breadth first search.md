@@ -1,4 +1,1 @@
----
-redirect: [[Breadth-first search]]
-tags: wiki
----
+Breadth-first search.md

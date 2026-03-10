@@ -1,4 +1,1 @@
----
-redirect: [[DNS-based blacklisting]]
-tags: wiki
----
+DNS-based blacklisting.md

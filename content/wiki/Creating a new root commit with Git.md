@@ -1,4 +1,1 @@
----
-redirect: [[Creating independent branches with Git]]
-tags: wiki
----
+Creating independent branches with Git.md

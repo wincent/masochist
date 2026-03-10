@@ -1,4 +1,1 @@
----
-redirect: [[CamelCase]]
-tags: wiki
----
+CamelCase.md

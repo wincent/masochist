@@ -1,4 +1,1 @@
----
-redirect: [[Rebuilding ANTLR]]
-tags: wiki
----
+Rebuilding ANTLR.md

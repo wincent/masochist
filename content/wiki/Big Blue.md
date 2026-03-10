@@ -1,4 +1,1 @@
----
-redirect: [[IBM]]
-tags: wiki
----
+IBM.md

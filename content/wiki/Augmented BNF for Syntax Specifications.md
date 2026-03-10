@@ -1,4 +1,1 @@
----
-redirect: [[ABNF]]
-tags: wiki
----
+ABNF.md

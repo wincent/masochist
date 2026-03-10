@@ -1,4 +1,1 @@
----
-redirect: [[Controller]]
-tags: wiki
----
+Controller.md

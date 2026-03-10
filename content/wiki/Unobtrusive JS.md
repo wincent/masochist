@@ -1,4 +1,1 @@
----
-redirect: [[Unobtrusive JavaScript]]
-tags: wiki
----
+Unobtrusive JavaScript.md

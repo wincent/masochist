@@ -1,4 +1,1 @@
----
-redirect: [[adjacency matrix]]
-tags: wiki
----
+adjacency matrix.md

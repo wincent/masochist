@@ -1,4 +1,1 @@
----
-redirect: [[AJAX]]
-tags: wiki
----
+AJAX.md

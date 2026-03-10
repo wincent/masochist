@@ -1,4 +1,1 @@
----
-redirect: [[IT]]
-tags: wiki
----
+IT.md

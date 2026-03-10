@@ -1,4 +1,1 @@
----
-redirect: [[heap]]
-tags: wiki
----
+heap.md

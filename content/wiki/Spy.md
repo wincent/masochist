@@ -1,4 +1,1 @@
----
-redirect: [[Spies]]
-tags: wiki
----
+Spies.md

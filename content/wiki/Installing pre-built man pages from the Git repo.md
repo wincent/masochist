@@ -1,4 +1,1 @@
----
-redirect: [[Installing pre-built Git documentation from the Git repo]]
-tags: wiki
----
+Installing pre-built Git documentation from the Git repo.md

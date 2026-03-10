@@ -1,4 +1,1 @@
----
-redirect: [[ACE file format]]
-tags: wiki
----
+ACE file format.md

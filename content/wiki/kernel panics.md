@@ -1,4 +1,1 @@
----
-redirect: [[kernel panic]]
-tags: wiki
----
+kernel panic.md

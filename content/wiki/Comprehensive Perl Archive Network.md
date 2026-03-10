@@ -1,4 +1,1 @@
----
-redirect: [[CPAN]]
-tags: wiki
----
+CPAN.md

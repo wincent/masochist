@@ -1,4 +1,1 @@
----
-redirect: [[Wiki]]
-tags: wiki
----
+Wiki.md

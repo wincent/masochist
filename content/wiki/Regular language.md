@@ -1,4 +1,1 @@
----
-redirect: [[Regular languages]]
-tags: wiki
----
+Regular languages.md

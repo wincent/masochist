@@ -1,4 +1,1 @@
----
-redirect: [[Version Control System]]
-tags: wiki
----
+Version Control System.md

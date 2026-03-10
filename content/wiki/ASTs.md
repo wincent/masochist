@@ -1,4 +1,1 @@
----
-redirect: [[AST]]
-tags: wiki
----
+Abstract Syntax Tree.md

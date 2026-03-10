@@ -1,4 +1,1 @@
----
-redirect: [[UI]]
-tags: wiki
----
+UI.md

@@ -1,4 +1,1 @@
----
-redirect: [[Garbage collection]]
-tags: wiki
----
+Garbage collection.md

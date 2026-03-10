@@ -1,4 +1,1 @@
----
-redirect: [[Cheetah (template engine)]]
-tags: wiki
----
+Cheetah (template engine).md

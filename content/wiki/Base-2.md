@@ -1,4 +1,1 @@
----
-redirect: [[Binary]]
-tags: wiki
----
+Binary.md

@@ -1,4 +1,1 @@
----
-redirect: [[Apple]]
-tags: wiki
----
+Apple.md

@@ -1,4 +1,1 @@
----
-redirect: [[modal editor]]
-tags: wiki
----
+modal editor.md

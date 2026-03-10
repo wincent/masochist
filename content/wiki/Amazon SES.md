@@ -1,4 +1,1 @@
----
-redirect: [[Amazon Simple Email Service]]
-tags: wiki
----
+Amazon Simple Email Service.md

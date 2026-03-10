@@ -1,4 +1,1 @@
----
-redirect: [[Packrat]]
-tags: wiki
----
+Packrat.md

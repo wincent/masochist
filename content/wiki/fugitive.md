@@ -1,4 +1,1 @@
----
-redirect: [[fugitive.vim]]
-tags: wiki
----
+fugitive.vim.md

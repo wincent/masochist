@@ -1,4 +1,1 @@
----
-redirect: [[Stubs]]
-tags: wiki
----
+Stubs.md

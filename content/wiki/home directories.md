@@ -1,4 +1,1 @@
----
-redirect: [[home directory]]
-tags: wiki
----
+home directory.md

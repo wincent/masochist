@@ -1,4 +1,1 @@
----
-redirect: [[Git recipes]]
-tags: wiki
----
+Git recipes.md

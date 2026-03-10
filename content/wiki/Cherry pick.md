@@ -1,4 +1,1 @@
----
-redirect: [[Cherry picking]]
-tags: wiki
----
+Cherry picking.md

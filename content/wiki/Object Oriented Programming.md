@@ -1,4 +1,1 @@
----
-redirect: [[Object-oriented programming]]
-tags: wiki
----
+Object-oriented programming.md

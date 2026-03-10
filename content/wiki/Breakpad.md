@@ -1,4 +1,1 @@
----
-redirect: [[Google Breakpad]]
-tags: wiki
----
+Google Breakpad.md

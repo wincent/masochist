@@ -1,4 +1,1 @@
----
-redirect: [[beachball]]
-tags: wiki
----
+beachball.md

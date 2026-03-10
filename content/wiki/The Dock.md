@@ -1,4 +1,1 @@
----
-redirect: [[Dock]]
-tags: wiki
----
+Dock.md

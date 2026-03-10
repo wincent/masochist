@@ -1,4 +1,1 @@
----
-redirect: [[SCM]]
-tags: wiki
----
+SCM.md

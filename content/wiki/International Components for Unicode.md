@@ -1,4 +1,1 @@
----
-redirect: [[ICU]]
-tags: wiki
----
+ICU.md

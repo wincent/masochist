@@ -1,4 +1,1 @@
----
-redirect: [[IRB]]
-tags: wiki
----
+IRB.md

@@ -1,4 +1,1 @@
----
-redirect: [[Branching]]
-tags: wiki
----
+Branching.md

@@ -1,4 +1,1 @@
----
-redirect: [[EC2]]
-tags: wiki
----
+EC2.md

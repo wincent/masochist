@@ -1,4 +1,1 @@
----
-redirect: [[buildtools]]
-tags: wiki
----
+buildtools.md

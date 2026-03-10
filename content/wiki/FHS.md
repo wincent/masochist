@@ -1,4 +1,1 @@
----
-redirect: [[Filesystem Hierarchy Standard]]
-tags: wiki
----
+Filesystem Hierarchy Standard.md

@@ -1,4 +1,1 @@
----
-redirect: [[PNG]]
-tags: wiki
----
+PNG.md

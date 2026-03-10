@@ -1,4 +1,1 @@
----
-redirect: [[vimball]]
-tags: wiki
----
+vimball.md

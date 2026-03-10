@@ -1,4 +1,1 @@
----
-redirect: [[Merging]]
-tags: wiki
----
+Merging.md

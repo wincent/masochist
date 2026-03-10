@@ -1,4 +1,1 @@
----
-redirect: [[Automatically deleting high-scoring spam]]
-tags: wiki
----
+Automatically deleting high-scoring spam.md

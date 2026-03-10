@@ -1,4 +1,1 @@
----
-redirect: [[Movable Type]]
-tags: wiki
----
+Movable Type.md

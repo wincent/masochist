@@ -1,4 +1,1 @@
----
-redirect: [[Git rebase explained]]
-tags: wiki
----
+Git rebase explained.md

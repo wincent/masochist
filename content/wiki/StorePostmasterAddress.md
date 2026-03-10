@@ -1,4 +1,1 @@
----
-redirect: [[Store postmaster address]]
-tags: wiki
----
+Store postmaster address.md

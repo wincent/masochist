@@ -1,4 +1,1 @@
----
-redirect: [[DRY]]
-tags: wiki
----
+DRY.md

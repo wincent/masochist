@@ -1,4 +1,1 @@
----
-redirect: [[Dropping back to the console]]
-tags: wiki
----
+Dropping back to the console.md

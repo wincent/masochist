@@ -1,4 +1,1 @@
----
-redirect: [[hard reset]]
-tags: wiki
----
+hard reset.md

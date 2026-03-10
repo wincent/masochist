@@ -1,4 +1,1 @@
----
-redirect: [[CD]]
-tags: wiki
----
+CD.md

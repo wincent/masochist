@@ -1,4 +1,1 @@
----
-redirect: [[RCS]]
-tags: wiki
----
+RCS.md

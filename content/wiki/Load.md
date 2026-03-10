@@ -1,4 +1,1 @@
----
-redirect: [[Server load]]
-tags: wiki
----
+Server load.md

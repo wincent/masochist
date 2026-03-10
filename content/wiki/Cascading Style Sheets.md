@@ -1,4 +1,1 @@
----
-redirect: [[CSS]]
-tags: wiki
----
+CSS.md

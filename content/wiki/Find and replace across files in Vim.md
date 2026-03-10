@@ -1,4 +1,1 @@
----
-redirect: [[Find and replace across all buffers in Vim]]
-tags: wiki
----
+Find and replace across all buffers in Vim.md

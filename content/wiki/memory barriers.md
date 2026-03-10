@@ -1,4 +1,1 @@
----
-redirect: [[Memory barrier]]
-tags: wiki
----
+Memory barrier.md

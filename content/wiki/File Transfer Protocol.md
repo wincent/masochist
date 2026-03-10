@@ -1,4 +1,1 @@
----
-redirect: [[FTP]]
-tags: wiki
----
+FTP.md

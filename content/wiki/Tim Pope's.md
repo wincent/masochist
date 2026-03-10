@@ -1,4 +1,1 @@
----
-redirect: [[Tim Pope]]
-tags: wiki
----
+Tim Pope.md

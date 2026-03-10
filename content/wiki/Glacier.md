@@ -1,4 +1,1 @@
----
-redirect: [[Amazon Glacier]]
-tags: wiki
----
+Amazon Glacier.md

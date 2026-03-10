@@ -1,4 +1,1 @@
----
-redirect: [[boilerplate]]
-tags: wiki
----
+boilerplate.md

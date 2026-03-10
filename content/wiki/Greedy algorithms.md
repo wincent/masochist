@@ -1,4 +1,1 @@
----
-redirect: [[greedy algorithm]]
-tags: wiki
----
+greedy algorithm.md

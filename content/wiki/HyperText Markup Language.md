@@ -1,4 +1,1 @@
----
-redirect: [[HTML]]
-tags: wiki
----
+HTML.md

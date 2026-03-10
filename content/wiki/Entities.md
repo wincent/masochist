@@ -1,4 +1,1 @@
----
-redirect: [[HTML entities]]
-tags: wiki
----
+HTML entity.md

@@ -1,4 +1,1 @@
----
-redirect: [[object-oriented templating]]
-tags: wiki
----
+object-oriented templating.md

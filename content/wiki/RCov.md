@@ -1,4 +1,0 @@
----
-redirect: [[rcov]]
-tags: wiki
----

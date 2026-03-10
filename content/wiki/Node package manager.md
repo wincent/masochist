@@ -1,4 +1,1 @@
----
-redirect: [[npm]]
-tags: wiki
----
+npm.md

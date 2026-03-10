@@ -1,4 +1,1 @@
----
-redirect: [[Subversion]]
-tags: wiki
----
+Subversion.md

@@ -1,4 +1,1 @@
----
-redirect: [[Cookie]]
-tags: wiki
----
+Cookie.md

@@ -1,4 +1,1 @@
----
-redirect: [[Karabiner]]
-tags: wiki
----
+Karabiner.md

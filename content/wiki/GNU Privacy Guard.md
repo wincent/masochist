@@ -1,4 +1,1 @@
----
-redirect: [[GPG]]
-tags: wiki
----
+GPG.md

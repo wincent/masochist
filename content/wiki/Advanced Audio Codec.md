@@ -1,4 +1,1 @@
----
-redirect: [[AAC]]
-tags: wiki
----
+AAC.md

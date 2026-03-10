@@ -1,4 +1,1 @@
----
-redirect: [[DNS]]
-tags: wiki
----
+DNS.md

@@ -1,4 +1,1 @@
----
-redirect: [[minimum spanning tree]]
-tags: wiki
----
+minimum spanning tree.md

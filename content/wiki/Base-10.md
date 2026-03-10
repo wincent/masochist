@@ -1,4 +1,1 @@
----
-redirect: [[Decimal]]
-tags: wiki
----
+Decimal.md

@@ -1,4 +1,1 @@
----
-redirect: [[RFC]]
-tags: wiki
----
+RFC.md

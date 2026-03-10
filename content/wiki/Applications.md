@@ -1,4 +1,1 @@
----
-redirect: [[Application]]
-tags: wiki
----
+Application.md

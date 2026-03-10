@@ -1,4 +1,1 @@
----
-redirect: [[Screen]]
-tags: wiki
----
+Screen.md

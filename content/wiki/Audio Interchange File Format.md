@@ -1,4 +1,1 @@
----
-redirect: [[AIFF]]
-tags: wiki
----
+AIFF.md

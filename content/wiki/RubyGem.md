@@ -1,4 +1,1 @@
----
-redirect: [[RubyGems]]
-tags: wiki
----
+RubyGems.md

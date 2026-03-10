@@ -1,4 +1,1 @@
----
-redirect: [[CSRF]]
-tags: wiki
----
+CSRF.md

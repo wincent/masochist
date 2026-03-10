@@ -1,4 +1,1 @@
----
-redirect: [[Object-orientation]]
-tags: wiki
----
+Object-orientation.md

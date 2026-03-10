@@ -1,4 +1,1 @@
----
-redirect: [[Specs]]
-tags: wiki
----
+Specs.md

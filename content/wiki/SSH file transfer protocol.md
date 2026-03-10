@@ -1,4 +1,1 @@
----
-redirect: [[SFTP]]
-tags: wiki
----
+SFTP.md

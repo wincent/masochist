@@ -1,4 +1,1 @@
----
-redirect: [[macOS timeline]]
-tags: wiki
----
+macOS timeline.md

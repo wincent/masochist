@@ -1,4 +1,1 @@
----
-redirect: [[Lion]]
-tags: wiki
----
+Lion.md

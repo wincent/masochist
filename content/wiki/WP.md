@@ -1,4 +1,1 @@
----
-redirect: [[WordPress]]
-tags: wiki
----
+WordPress.md

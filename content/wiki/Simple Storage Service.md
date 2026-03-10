@@ -1,4 +1,1 @@
----
-redirect: [[S3]]
-tags: wiki
----
+S3.md

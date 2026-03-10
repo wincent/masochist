@@ -1,4 +1,1 @@
----
-redirect: [[buzzword]]
-tags: wiki
----
+buzzword.md

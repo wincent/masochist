@@ -1,4 +1,1 @@
----
-redirect: [[Hextrapolate]]
-tags: wiki
----
+Hextrapolate.md

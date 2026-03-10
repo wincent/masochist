@@ -1,4 +1,1 @@
----
-redirect: [[SEO]]
-tags: wiki
----
+SEO.md

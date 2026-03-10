@@ -1,4 +1,1 @@
----
-redirect: [[Hexadecimal]]
-tags: wiki
----
+Hexadecimal.md

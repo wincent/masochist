@@ -1,4 +1,1 @@
----
-redirect: [[DVD]]
-tags: wiki
----
+DVD.md

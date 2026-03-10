@@ -1,4 +1,1 @@
----
-redirect: [[MPC]]
-tags: wiki
----
+MPC.md

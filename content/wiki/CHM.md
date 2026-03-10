@@ -1,4 +1,1 @@
----
-redirect: [[CHM file format]]
-tags: wiki
----
+CHM file format.md

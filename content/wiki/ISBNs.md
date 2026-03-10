@@ -1,4 +1,1 @@
----
-redirect: [[ISBN]]
-tags: wiki
----
+ISBN.md

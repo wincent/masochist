@@ -1,4 +1,1 @@
----
-redirect: [[Subject Alternative Name (SAN) in SSL certificates]]
-tags: wiki
----
+Subject Alternative Name (SAN) in SSL certificates.md

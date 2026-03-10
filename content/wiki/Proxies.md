@@ -1,4 +1,1 @@
----
-redirect: [[Proxy]]
-tags: wiki
----
+Proxy.md

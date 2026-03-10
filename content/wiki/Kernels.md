@@ -1,4 +1,1 @@
----
-redirect: [[kernel]]
-tags: wiki
----
+kernel.md

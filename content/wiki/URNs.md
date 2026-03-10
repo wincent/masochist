@@ -1,4 +1,1 @@
----
-redirect: [[URN]]
-tags: wiki
----
+URN.md

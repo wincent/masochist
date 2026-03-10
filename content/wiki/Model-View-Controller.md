@@ -1,4 +1,1 @@
----
-redirect: [[MVC]]
-tags: wiki
----
+MVC.md

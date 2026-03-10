@@ -1,4 +1,1 @@
----
-redirect: [[RPM notes]]
-tags: wiki
----
+RPM notes.md

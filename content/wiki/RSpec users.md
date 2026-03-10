@@ -1,4 +1,1 @@
----
-redirect: [[rspec-users]]
-tags: wiki
----
+rspec-users.md

@@ -1,4 +1,1 @@
----
-redirect: [[Directed Acyclic Graph]]
-tags: wiki
----
+Directed Acyclic Graph.md

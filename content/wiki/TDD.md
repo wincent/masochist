@@ -1,4 +1,1 @@
----
-redirect: [[Test-Driven Development]]
-tags: wiki
----
+Test-Driven Development.md

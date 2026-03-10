@@ -1,4 +1,1 @@
----
-redirect: [[API]]
-tags: wiki
----
+API.md

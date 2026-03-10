@@ -1,4 +1,1 @@
----
-redirect: [[Rotating mongrel cluster log files]]
-tags: wiki
----
+Rotating mongrel cluster log files.md

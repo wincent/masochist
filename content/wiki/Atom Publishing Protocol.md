@@ -1,4 +1,1 @@
----
-redirect: [[RFC 5023]]
-tags: wiki
----
+RFC 5023.md

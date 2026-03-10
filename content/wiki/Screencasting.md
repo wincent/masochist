@@ -1,4 +1,1 @@
----
-redirect: [[Screencasts]]
-tags: wiki
----
+Screencasts.md

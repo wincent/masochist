@@ -1,4 +1,1 @@
----
-redirect: [[Xcode Tools]]
-tags: wiki
----
+Xcode.md

@@ -1,5 +1,1 @@
----
-redirect: [[Distributed Version Control System]]
-cache_breaker: 1
-tags: wiki
----
+Distributed Version Control System.md

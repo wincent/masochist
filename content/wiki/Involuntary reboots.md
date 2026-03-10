@@ -1,4 +1,1 @@
----
-redirect: [[involuntary reboot]]
-tags: wiki
----
+involuntary reboot.md

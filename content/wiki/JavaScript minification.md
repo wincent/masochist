@@ -1,4 +1,1 @@
----
-redirect: [[JavaScript minimization]]
-tags: wiki
----
+JavaScript minimization.md

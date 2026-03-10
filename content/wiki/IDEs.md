@@ -1,4 +1,1 @@
----
-redirect: [[IDE]]
-tags: wiki
----
+IDE.md

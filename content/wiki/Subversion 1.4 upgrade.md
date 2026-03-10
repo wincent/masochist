@@ -1,4 +1,1 @@
----
-redirect: [[Subversion 1.4.0 upgrade]]
-tags: wiki
----
+Subversion 1.4.0 upgrade.md

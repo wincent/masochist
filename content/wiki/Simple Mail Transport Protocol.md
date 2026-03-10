@@ -1,4 +1,1 @@
----
-redirect: [[SMTP]]
-tags: wiki
----
+SMTP.md

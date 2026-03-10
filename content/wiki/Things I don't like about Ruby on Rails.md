@@ -1,4 +1,1 @@
----
-redirect: [[Ruby on Rails: pros and cons]]
-tags: wiki
----
+Ruby on Rails: pros and cons.md

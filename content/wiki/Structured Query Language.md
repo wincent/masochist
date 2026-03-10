@@ -1,4 +1,1 @@
----
-redirect: [[SQL]]
-tags: wiki
----
+SQL.md

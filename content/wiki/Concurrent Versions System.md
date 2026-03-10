@@ -1,4 +1,1 @@
----
-redirect: [[CVS]]
-tags: wiki
----
+CVS.md

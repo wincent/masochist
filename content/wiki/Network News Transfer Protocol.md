@@ -1,4 +1,1 @@
----
-redirect: [[NNTP]]
-tags: wiki
----
+NNTP.md

@@ -1,4 +1,1 @@
----
-redirect: [[Wincent products]]
-tags: wiki
----
+Wincent products.md

@@ -1,4 +1,1 @@
----
-redirect: [[CGI]]
-tags: wiki
----
+CGI.md

@@ -1,4 +1,1 @@
----
-redirect: [[Union-Find]]
-tags: wiki
----
+Union-Find.md

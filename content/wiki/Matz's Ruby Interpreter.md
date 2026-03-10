@@ -1,4 +1,1 @@
----
-redirect: [[MRI]]
-tags: wiki
----
+MRI.md

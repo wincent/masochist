@@ -1,4 +1,1 @@
----
-redirect: [[Sun Microsystems]]
-tags: wiki
----
+Sun Microsystems.md

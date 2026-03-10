@@ -1,4 +1,1 @@
----
-redirect: [[Subversion externals]]
-tags: wiki
----
+Subversion externals.md

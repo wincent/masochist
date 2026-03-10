@@ -1,4 +1,1 @@
----
-redirect: [[World Wide Web]]
-tags: wiki
----
+World Wide Web.md

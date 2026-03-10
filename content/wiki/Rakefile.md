@@ -1,4 +1,1 @@
----
-redirect: [[Rake]]
-tags: wiki
----
+Rake.md

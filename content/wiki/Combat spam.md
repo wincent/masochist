@@ -1,4 +1,1 @@
----
-redirect: [[Combating spam]]
-tags: wiki
----
+Combating spam.md

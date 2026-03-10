@@ -1,4 +1,1 @@
----
-redirect: [[Universal Binary]]
-tags: wiki
----
+Universal Binary.md

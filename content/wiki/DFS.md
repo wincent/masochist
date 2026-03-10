@@ -1,4 +1,1 @@
----
-redirect: [[Depth First Search]]
-tags: wiki
----
+Depth-first search.md

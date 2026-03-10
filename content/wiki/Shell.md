@@ -1,4 +1,1 @@
----
-redirect: [[Command line]]
-tags: wiki
----
+CLI.md

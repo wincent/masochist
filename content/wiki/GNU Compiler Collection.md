@@ -1,4 +1,1 @@
----
-redirect: [[GCC]]
-tags: wiki
----
+GCC.md

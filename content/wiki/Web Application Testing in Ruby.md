@@ -1,4 +1,1 @@
----
-redirect: [[Watir]]
-tags: wiki
----
+Watir.md

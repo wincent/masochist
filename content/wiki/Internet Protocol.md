@@ -1,4 +1,1 @@
----
-redirect: [[IP]]
-tags: wiki
----
+IP.md

@@ -1,4 +1,1 @@
----
-redirect: [[EBS]]
-tags: wiki
----
+EBS.md

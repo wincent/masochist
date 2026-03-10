@@ -1,4 +1,1 @@
----
-redirect: [[Regular expression]]
-tags: wiki
----
+Regular expression.md

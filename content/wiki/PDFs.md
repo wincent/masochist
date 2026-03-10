@@ -1,4 +1,1 @@
----
-redirect: [[PDF]]
-tags: wiki
----
+PDF.md

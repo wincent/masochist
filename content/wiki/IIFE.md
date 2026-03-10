@@ -1,4 +1,1 @@
----
-redirect: [[Immediately Invoked Function Expression]]
-tags: wiki
----
+Immediately Invoked Function Expression.md

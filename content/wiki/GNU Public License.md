@@ -1,4 +1,1 @@
----
-redirect: [[GPL]]
-tags: wiki
----
+GPL.md

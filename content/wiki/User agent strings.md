@@ -1,4 +1,1 @@
----
-redirect: [[User agent string]]
-tags: wiki
----
+User agent string.md

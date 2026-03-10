@@ -1,4 +1,1 @@
----
-redirect: [[macOS "must haves"]]
-tags: wiki
----
+macOS "must haves".md
