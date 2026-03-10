@@ -32,6 +32,8 @@ cmd_build() {
         -f "${REPO_DIR}/ops/Dockerfile.app" \
         "${REPO_DIR}"
     echo "Build complete."
+    echo ""
+    echo "To continue with deployment: \`bin/ecr upload\`"
 }
 
 cmd_upload() {
@@ -50,6 +52,8 @@ cmd_upload() {
     docker push "$ECR_IMAGE"
 
     echo "Upload complete."
+    echo ""
+    echo "To continue with deployment: \`bin/deploy\`"
 }
 
 case "${1:-}" in

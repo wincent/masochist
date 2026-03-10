@@ -15,3 +15,6 @@ git push all main content public
 echo "⚡Refreshing all remotes"
 
 git remote update --prune
+
+echo ""
+echo "To continue with deployment: \`bin/ecr build\`"
