@@ -17,10 +17,10 @@ configure_remote() {
 }
 
 configure_remote origin git@git.wincent.dev:public/masochist.git
-configure_remote github https://github.com/wincent/masochist.git
+configure_remote github git@github.com:wincent/masochist.git
 configure_remote masochist masochist@masochist.unixhosts.net:/srv/masochist/repo
 
 configure_remote all \
   git@git.wincent.dev:public/masochist.git \
-  https://github.com/wincent/masochist.git \
+  git@github.com:wincent/masochist.git \
   masochist@masochist.unixhosts.net:/srv/masochist/repo
