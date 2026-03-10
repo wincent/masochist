@@ -59,9 +59,7 @@ fn main() {
     eprintln!("Total: {:?}", total_start.elapsed());
 }
 
-fn load_from_git(
-    repo_path: &str,
-) -> (TimestampMap, Vec<TreeEntry>, HashMap<String, String>) {
+fn load_from_git(repo_path: &str) -> (TimestampMap, Vec<TreeEntry>, HashMap<String, String>) {
     let ts_repo_path = repo_path.to_string();
     let timestamps_handle = std::thread::spawn(move || {
         let start = Instant::now();
@@ -168,7 +166,9 @@ fn parse_all_files(
             if entry.is_symlink {
                 let raw = contents.get(path)?;
                 let target_filename = raw.trim();
-                let target_id = target_filename.strip_suffix(".md").unwrap_or(target_filename);
+                let target_id = target_filename
+                    .strip_suffix(".md")
+                    .unwrap_or(target_filename);
                 let target = match content_type {
                     ContentType::Wiki => {
                         format!("/wiki/{}", target_id.replace(' ', "_"))
