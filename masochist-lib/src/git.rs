@@ -4,6 +4,12 @@ use std::process::{Command, Stdio};
 
 use crate::content::{TimestampMap, Timestamps};
 
+pub struct TreeEntry {
+    pub hash: String,
+    pub path: String,
+    pub is_symlink: bool,
+}
+
 pub struct GitRepo {
     path: String,
 }
@@ -24,8 +30,8 @@ impl GitRepo {
     }
 
     /// List all files under a tree path on a given branch.
-    /// Returns (object_hash, file_path) pairs.
-    pub fn ls_tree(&self, branch: &str, tree_path: &str) -> Vec<(String, String)> {
+    /// Returns entries with object hash, file path, and whether the entry is a symlink.
+    pub fn ls_tree(&self, branch: &str, tree_path: &str) -> Vec<TreeEntry> {
         let output = self
             .command()
             .args(["ls-tree", "-r", "-z", branch, "--", tree_path])
@@ -49,11 +55,15 @@ impl GitRepo {
                 let tab = entry.find('\t').expect("malformed ls-tree entry");
                 let metadata = &entry[..tab];
                 let path = &entry[tab + 1..];
-                let hash = metadata
-                    .split_whitespace()
-                    .nth(2)
-                    .expect("malformed ls-tree metadata");
-                (hash.to_string(), path.to_string())
+                let mut parts = metadata.split_whitespace();
+                let mode = parts.next().expect("malformed ls-tree metadata");
+                let _type = parts.next().expect("malformed ls-tree metadata");
+                let hash = parts.next().expect("malformed ls-tree metadata");
+                TreeEntry {
+                    hash: hash.to_string(),
+                    path: path.to_string(),
+                    is_symlink: mode == "120000",
+                }
             })
             .collect()
     }

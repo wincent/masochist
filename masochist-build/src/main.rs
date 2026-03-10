@@ -2,7 +2,7 @@ mod assets;
 mod templates;
 
 use masochist_lib::content::{self, ContentBody, ContentItem, ContentType, TimestampMap};
-use masochist_lib::git::GitRepo;
+use masochist_lib::git::{GitRepo, TreeEntry};
 use masochist_lib::index::SiteIndex;
 use rayon::prelude::*;
 use std::collections::HashMap;
@@ -61,7 +61,7 @@ fn main() {
 
 fn load_from_git(
     repo_path: &str,
-) -> (TimestampMap, Vec<(String, String)>, HashMap<String, String>) {
+) -> (TimestampMap, Vec<TreeEntry>, HashMap<String, String>) {
     let ts_repo_path = repo_path.to_string();
     let timestamps_handle = std::thread::spawn(move || {
         let start = Instant::now();
@@ -106,7 +106,7 @@ fn load_from_git(
                 let worker_repo = GitRepo::new(repo.path());
                 let objects: Vec<_> = chunk
                     .iter()
-                    .map(|(hash, path)| (hash.clone(), path.clone()))
+                    .map(|entry| (entry.hash.clone(), entry.path.clone()))
                     .collect();
                 worker_repo.cat_file_batch(objects)
             })
@@ -139,7 +139,7 @@ struct Redirect {
 }
 
 fn parse_all_files(
-    files: &[(String, String)],
+    files: &[TreeEntry],
     contents: &HashMap<String, String>,
     timestamps: &TimestampMap,
 ) -> (Vec<ContentItem>, Vec<Redirect>) {
@@ -150,21 +150,40 @@ fn parse_all_files(
 
     let parsed: Vec<_> = files
         .par_iter()
-        .filter_map(|(_, path)| {
+        .filter_map(|entry| {
+            let path = &entry.path;
             let relative = path.strip_prefix("content/")?;
             let slash = relative.find('/')?;
             let dir = &relative[..slash];
             let filename = &relative[slash + 1..];
             let content_type = ContentType::from_directory(dir)?;
-            let raw = contents.get(path)?;
-
-            let (fm, body) = content::parse_frontmatter(raw);
 
             let id = if let Some(dot) = filename.rfind('.') {
                 &filename[..dot]
             } else {
                 filename
             };
+
+            // Symlinks represent redirects: the blob content is the target filename.
+            if entry.is_symlink {
+                let raw = contents.get(path)?;
+                let target_filename = raw.trim();
+                let target_id = target_filename.strip_suffix(".md").unwrap_or(target_filename);
+                let target = match content_type {
+                    ContentType::Wiki => {
+                        format!("/wiki/{}", target_id.replace(' ', "_"))
+                    }
+                    _ => format!("/{}/{}", content_type.directory(), target_id),
+                };
+                return Some(ParseResult::Redirect(Redirect {
+                    content_type,
+                    id: id.to_string(),
+                    target,
+                }));
+            }
+
+            let raw = contents.get(path)?;
+            let (fm, body) = content::parse_frontmatter(raw);
 
             let ext = filename.rsplit('.').next().unwrap_or("md");
 
@@ -449,17 +468,7 @@ fn generate_site(
             ContentType::Wiki => format!("/wiki/{}", r.id.replace(' ', "_")),
             _ => format!("/{}/{}", r.content_type.directory(), r.id),
         };
-        // Redirect target can be:
-        // - A wiki title in [[brackets]]: "[[Some Article Title]]"
-        // - A plain path: "/products/clipper"
-        // - A full URL: "https://github.com/..."
-        let target = if r.target.starts_with("[[") && r.target.ends_with("]]") {
-            let title = &r.target[2..r.target.len() - 2];
-            format!("/wiki/{}", title.replace(' ', "_"))
-        } else {
-            r.target.clone()
-        };
-        caddy_redirects.push_str(&format!("redir {source} {target} permanent\n"));
+        caddy_redirects.push_str(&format!("redir {source} {} permanent\n", r.target));
     }
     fs::write(out.join("_redirects.caddy"), &caddy_redirects).expect("failed to write redirects");
 

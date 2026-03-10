@@ -58,78 +58,8 @@ pub struct Timestamps {
 pub struct Frontmatter {
     pub title: Option<String>,
     pub tags: Option<String>,
-    #[serde(default, deserialize_with = "deserialize_redirect")]
     pub redirect: Option<String>,
     pub description: Option<String>,
-}
-
-/// The redirect field can be a plain string like "/products/clipper" or a
-/// wiki-style link like "[[Title]]". YAML parses [[a, b]] as a nested list,
-/// so we need to handle that case and reconstruct the original string.
-fn deserialize_redirect<'de, D>(deserializer: D) -> Result<Option<String>, D::Error>
-where
-    D: serde::Deserializer<'de>,
-{
-    use serde::de;
-
-    struct RedirectVisitor;
-
-    impl<'de> de::Visitor<'de> for RedirectVisitor {
-        type Value = Option<String>;
-
-        fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
-            formatter.write_str("a string or nested list representing a redirect")
-        }
-
-        fn visit_none<E: de::Error>(self) -> Result<Self::Value, E> {
-            Ok(None)
-        }
-
-        fn visit_unit<E: de::Error>(self) -> Result<Self::Value, E> {
-            Ok(None)
-        }
-
-        fn visit_str<E: de::Error>(self, v: &str) -> Result<Self::Value, E> {
-            Ok(Some(v.to_string()))
-        }
-
-        fn visit_string<E: de::Error>(self, v: String) -> Result<Self::Value, E> {
-            Ok(Some(v))
-        }
-
-        fn visit_seq<A: de::SeqAccess<'de>>(self, mut seq: A) -> Result<Self::Value, A::Error> {
-            // YAML parsed [[a, b, c]] as a list containing one list.
-            // Reconstruct as "[[a, b, c]]".
-            let mut parts = Vec::new();
-            while let Some(inner) = seq.next_element::<serde_yaml::Value>()? {
-                match inner {
-                    serde_yaml::Value::Sequence(items) => {
-                        let strs: Vec<String> = items
-                            .into_iter()
-                            .map(|v| match v {
-                                serde_yaml::Value::String(s) => s,
-                                other => format!("{other:?}"),
-                            })
-                            .collect();
-                        parts.push(format!("[[{}]]", strs.join(", ")));
-                    }
-                    serde_yaml::Value::String(s) => {
-                        parts.push(s);
-                    }
-                    other => {
-                        parts.push(format!("{other:?}"));
-                    }
-                }
-            }
-            if parts.is_empty() {
-                Ok(None)
-            } else {
-                Ok(Some(parts.join(", ")))
-            }
-        }
-    }
-
-    deserializer.deserialize_any(RedirectVisitor)
 }
 
 impl Frontmatter {
