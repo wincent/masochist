@@ -7,7 +7,7 @@ redir /wiki/ADSL /wiki/Asymmetric_Digital_Subscriber_Line permanent
 redir /wiki/ANTLR_3 /wiki/ANTLR_3.0 permanent
 redir /wiki/APIs /wiki/API permanent
 redir /wiki/AST /wiki/Abstract_Syntax_Tree permanent
-redir /wiki/ASTs /wiki/AST permanent
+redir /wiki/ASTs /wiki/Abstract_Syntax_Tree permanent
 redir /wiki/Abstract_Syntax_Trees /wiki/Abstract_Syntax_Tree permanent
 redir /wiki/Adjacency_lists /wiki/adjacency_list permanent
 redir /wiki/Adjacency_matrices /wiki/adjacency_matrix permanent
@@ -34,7 +34,7 @@ redir /wiki/Base-10 /wiki/Decimal permanent
 redir /wiki/Base-16 /wiki/Hexadecimal permanent
 redir /wiki/Base-2 /wiki/Binary permanent
 redir /wiki/Base-8 /wiki/Octal permanent
-redir /wiki/Beach_ball /wiki/beach_balling permanent
+redir /wiki/Beach_ball /wiki/beachball permanent
 redir /wiki/Beach_balled /wiki/beachball permanent
 redir /wiki/Beach_balling /wiki/beachball permanent
 redir /wiki/Behavior-Driven_Development /wiki/Behaviour-Driven_Development permanent
@@ -49,7 +49,7 @@ redir /wiki/Breakpad /wiki/Google_Breakpad permanent
 redir /wiki/Building_aee_on_Mac_OS_X_Leopard /wiki/Building_ee_and_aee_on_Mac_OS_X_Leopard permanent
 redir /wiki/Buzzwords /wiki/buzzword permanent
 redir /wiki/C_language_target /wiki/C_language_target_(ANTLR) permanent
-redir /wiki/C_target /wiki/C_language_target permanent
+redir /wiki/C_target /wiki/C_language_target_(ANTLR) permanent
 redir /wiki/CAPTCHAs /wiki/CAPTCHA permanent
 redir /wiki/CDs /wiki/CD permanent
 redir /wiki/CHM /wiki/CHM_file_format permanent
@@ -65,11 +65,11 @@ redir /wiki/Coding_style /wiki/coding_standards permanent
 redir /wiki/Combat_spam /wiki/Combating_spam permanent
 redir /wiki/Combatting_spam /wiki/Combating_spam permanent
 redir /wiki/Command_Line_Interface /wiki/CLI permanent
-redir /wiki/Command_line_shell /wiki/Command_line_interface permanent
+redir /wiki/Command_line_shell /wiki/CLI permanent
 redir /wiki/Command_line /wiki/CLI permanent
-redir /wiki/Command_lines /wiki/command_line permanent
+redir /wiki/Command_lines /wiki/CLI permanent
 redir /wiki/Command-T /products/command-t permanent
-redir /wiki/Command-line /wiki/command_line permanent
+redir /wiki/Command-line /wiki/CLI permanent
 redir /wiki/Common_Gateway_Interface /wiki/CGI permanent
 redir /wiki/Common_Vulnerabilities_and_Exposures /wiki/CVE permanent
 redir /wiki/Compact_Disc /wiki/CD permanent
@@ -85,7 +85,7 @@ redir /wiki/Creating_a_new_root_commit_with_Git /wiki/Creating_independent_branc
 redir /wiki/Cross-Site_Request_Forgery /wiki/CSRF permanent
 redir /wiki/DAG /wiki/Directed_Acyclic_Graph permanent
 redir /wiki/DFAs /wiki/DFA permanent
-redir /wiki/DFS /wiki/Depth_First_Search permanent
+redir /wiki/DFS /wiki/Depth-first_search permanent
 redir /wiki/DNS-based_blacklist /wiki/DNS-based_blacklisting permanent
 redir /wiki/DNS-based_blacklists /wiki/DNS-based_blacklisting permanent
 redir /wiki/DRYing /wiki/DRY permanent
@@ -106,7 +106,7 @@ redir /wiki/Drop_back_to_the_console /wiki/Dropping_back_to_the_console permanen
 redir /wiki/Elastic_Block_Store /wiki/EBS permanent
 redir /wiki/Elastic_Compute_Cloud /wiki/EC2 permanent
 redir /wiki/Enhanced_Mail_System_Status_Codes /wiki/RFC_1893 permanent
-redir /wiki/Entities /wiki/HTML_entities permanent
+redir /wiki/Entities /wiki/HTML_entity permanent
 redir /wiki/FAQ /wiki/Frequently_Asked_Question permanent
 redir /wiki/FAQs /wiki/Frequently_Asked_Question permanent
 redir /wiki/FHS /wiki/Filesystem_Hierarchy_Standard permanent
@@ -236,7 +236,6 @@ redir /wiki/Ppc /wiki/PowerPC permanent
 redir /wiki/Protect_internal_only /wiki/Blocking_non-local_senders_for_local-only_recipients permanent
 redir /wiki/Proxies /wiki/Proxy permanent
 redir /wiki/Quarantining_high-scoring_spam /wiki/Automatically_deleting_high-scoring_spam permanent
-redir /wiki/RCov /wiki/rcov permanent
 redir /wiki/RFCs /wiki/RFC permanent
 redir /wiki/RHEL /wiki/Red_Hat_Enterprise_Linux permanent
 redir /wiki/RPM_recipes /wiki/RPM_notes permanent
@@ -258,7 +257,6 @@ redir /wiki/Revision_Control_System /wiki/RCS permanent
 redir /wiki/Rotating_Rails_application_log_files /wiki/Rotating_mongrel_cluster_log_files permanent
 redir /wiki/Route_53 /wiki/Amazon_Route_53 permanent
 redir /wiki/Ruby_on_Rails_conventions /wiki/Rails_conventions permanent
-redir /wiki/Ruby_tips /wiki/Ruby_recipes permanent
 redir /wiki/RubyGem /wiki/RubyGems permanent
 redir /wiki/SAN /wiki/Subject_Alternative_Name_(SAN)_in_SSL_certificates permanent
 redir /wiki/SCMs /wiki/SCM permanent
@@ -272,7 +270,7 @@ redir /wiki/Screencast /wiki/Screencasts permanent
 redir /wiki/Screencasting /wiki/Screencasts permanent
 redir /wiki/Search_engine_optimization /wiki/SEO permanent
 redir /wiki/Secure_Sockets_Layer /wiki/SSL permanent
-redir /wiki/Shell /wiki/Command_line permanent
+redir /wiki/Shell /wiki/CLI permanent
 redir /wiki/Sho_Fukamachi http://fukamachi.org/ permanent
 redir /wiki/Simple_Mail_Transport_Protocol /wiki/SMTP permanent
 redir /wiki/Simple_Storage_Service /wiki/S3 permanent
@@ -301,8 +299,8 @@ redir /wiki/Terrence_Parr /wiki/Terence_Parr permanent
 redir /wiki/The_Dock /wiki/Dock permanent
 redir /wiki/The_Terminal /wiki/Terminal permanent
 redir /wiki/The_cloud /wiki/Cloud_computing permanent
-redir /wiki/Things_I_don't_like_about_Ruby_on_Rails /wiki/Mapping_{"Ruby_on_Rails":_String("pros_and_cons")} permanent
-redir /wiki/Things_I_like_about_Ruby_on_Rails /wiki/Mapping_{"Ruby_on_Rails":_String("pros_and_cons")} permanent
+redir /wiki/Things_I_don't_like_about_Ruby_on_Rails /wiki/Ruby_on_Rails:_pros_and_cons permanent
+redir /wiki/Things_I_like_about_Ruby_on_Rails /wiki/Ruby_on_Rails:_pros_and_cons permanent
 redir /wiki/Ticket /issues/new permanent
 redir /wiki/Tim_Pope's /wiki/Tim_Pope permanent
 redir /wiki/Time_To_Live /wiki/TTL permanent
@@ -364,7 +362,7 @@ redir /wiki/Wincent_Build_Tools /wiki/buildtools permanent
 redir /wiki/Wincent_Strings_Util /wiki/Wincent_Strings_Utility permanent
 redir /wiki/Wincent_product /wiki/Wincent_products permanent
 redir /wiki/Work /wiki/Facebook permanent
-redir /wiki/Xcode_tools /wiki/Xcode_Tools permanent
+redir /wiki/Xcode_tools /wiki/Xcode permanent
 redir /wiki/Yank_all_lines_matching_a_pattern_into_a_Vim_register /wiki/Copying_lines_matching_a_pattern_in_Vim permanent
 redir /wiki/Zettabyte_File_System /wiki/ZFS permanent
 redir /wiki/askpass /products/askpass permanent
