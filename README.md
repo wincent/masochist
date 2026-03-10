@@ -148,7 +148,7 @@ export ECR_ACCOUNT_ID=...
 Push all branches, build and upload the Docker image, then deploy:
 
 ```
-git push masochist main content public
+bin/push
 bin/ecr build
 bin/ecr upload
 bin/deploy

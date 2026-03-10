@@ -31,5 +31,5 @@ if git -C "${OUTPUT_DIR}" diff --cached --quiet; then
     echo "No changes to commit."
 else
     git -C "${OUTPUT_DIR}" commit -m "build: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
-    echo "Committed. Push with: git -C public push"
+    echo "Committed. Push with: bin/push"
 fi
