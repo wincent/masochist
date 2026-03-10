@@ -11,3 +11,7 @@ source bin/configure-remotes
 echo "⚡Pushing all branches to all remotes"
 
 git push all main content public
+
+echo "⚡Refreshing all remotes"
+
+git remote update --prune
