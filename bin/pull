@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+EXIT_STATUS=0
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
+cd "$REPO_DIR"
+
+source bin/configure-remotes
+
+echo "⚡Refreshing all remotes"
+git remote update --prune
+
+echo "⚡Updating \`main\` checkout"
+git pull --ff-only || EXIT_STATUS=1
+
+echo "⚡Updating \`content\` worktree"
+git -C content pull --ff-only || EXIT_STATUS=1
+
+echo "⚡Updating \`public\` worktree"
+git -C public pull --ff-only || EXIT_STATUS=1
+
+exit $EXIT_STATUS

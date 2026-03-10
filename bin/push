@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
+cd "$REPO_DIR"
+
+source bin/configure-remotes
+
+echo "⚡Pushing all branches to all remotes"
+
+git push all main content public

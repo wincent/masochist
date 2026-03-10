@@ -58,11 +58,14 @@ There are 3 remotes:
 - `bin/build`: Builds the static artifacts.
 - `bin/check-format`: Check formatting.
 - `bin/clippy`: Run Clippy linter.
+- `bin/configure-remotes`: Configures `origin`, `github`, `masochist` and `all` remotes.
 - `bin/deploy`: Deploys to EC2.
 - `bin/dev`: Runs Docker Compose locally.
 - `bin/ecr`: Builds and uploads container images to Amazon [ECR] (Elastic Container Registry)..
 - `bin/format`: Fix formatting.
+- `bin/pull`: Fetches all remotes and updates `main`, `content`, and `public` checkouts.
 - `bin/prod`: Runs Docker Compose on remote host.
+- `bin/push`: Pushes all branches (`main`, `content`, `public`) to all remotes (`origin`, `github`, `masochist`).
 
 ## Building the static site
 

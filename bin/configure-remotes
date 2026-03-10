@@ -1,0 +1,26 @@
+#!/bin/bash
+
+configure_remote() {
+  local REMOTE="$1"
+  shift
+  local URL="$1"
+
+  echo "⚡Enforcing config for remote: \`$REMOTE\`"
+  git remote add "$REMOTE" "$URL" 2> /dev/null || true
+  git config remote."$REMOTE".url "$URL"
+  git config remote."$REMOTE".fetch "+refs/heads/*:refs/remotes/$REMOTE/*"
+  git config --unset-all remote."$REMOTE".pushurl 2> /dev/null || true
+
+  for PUSH_URL in "$@"; do
+    git config --add remote."$REMOTE".pushurl "$PUSH_URL"
+  done
+}
+
+configure_remote origin git@git.wincent.dev:public/masochist.git
+configure_remote github https://github.com/wincent/masochist.git
+configure_remote masochist masochist@masochist.unixhosts.net:/srv/masochist/repo
+
+configure_remote all \
+  git@git.wincent.dev:public/masochist.git \
+  https://github.com/wincent/masochist.git \
+  masochist@masochist.unixhosts.net:/srv/masochist/repo
