@@ -1,10 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-if [ -z "${DD_API_KEY:-}" ] && [ -f "$HOME/.bashrc" ]; then
-    set +u
-    source "$HOME/.bashrc"
-    set -u
+if [ -z "${DD_API_KEY:-}" ] && [ -f "$HOME/.bashrc" ] && grep -q '^export DD_API_KEY=' "$HOME/.bashrc"; then
+    eval "$(grep '^export DD_API_KEY=' "$HOME/.bashrc")"
 fi
 
 DEPLOY_DIR="/srv/masochist"
