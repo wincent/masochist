@@ -676,7 +676,7 @@
         <h3>Bug hunt</h3>
 
         <p>
-          <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=309"
+          <a href="https://wincent.dev/issues/309"
             >#309 squished</a
           >.
         </p>

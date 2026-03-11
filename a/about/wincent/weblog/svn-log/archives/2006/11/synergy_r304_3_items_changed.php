@@ -676,7 +676,7 @@
 
         <p>
           Tweak Norwegian localization, fixed
-          https://wincent.dev/a/support/bugs/show_bug.cgi?id=495
+          https://wincent.dev/issues/495
         </p>
 
         <div id="a000749more"><div id="more"></div></div>

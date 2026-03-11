@@ -677,14 +677,14 @@
 
         <p>
           A
-          <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=209"
+          <a href="https://wincent.dev/issues/209"
             >bug fix</a
           >
           and a couple of
-          <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=210"
+          <a href="https://wincent.dev/issues/210"
             >feature</a
           >
-          <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=255"
+          <a href="https://wincent.dev/issues/255"
             >requests</a
           >.
         </p>

@@ -676,7 +676,7 @@
         <h3>Embedding cover art in iTunes</h3>
 
         <p>
-          <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=8"
+          <a href="https://wincent.dev/issues/8"
             >Implemented</a
           >.
         </p>

@@ -744,7 +744,7 @@
               [Feature] Ability to set half-star ratings by holding down the
               option key while navigating the "Rating" menu; this applies both
               to the Global Menu and the Dock menu (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=240"
+                href="https://wincent.dev/issues/240"
                 >feature request #240</a
               >, "Menu items for half-star ratings").
             </li>
@@ -761,7 +761,7 @@
             <li>
               [Bugfix] To avoid confusion, suppressed echoing of harmless
               warning messages to console at default log level (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=568"
+                href="https://wincent.dev/issues/568"
                 >bug #568</a
               >, AEGetParamPtr error message written to Console every two
               seconds").
@@ -778,7 +778,7 @@
               [Feature] It is now possible to provide overrides in the Instant
               Messaging preferences panel to be used depending on whether iTunes
               is playing, paused, stopped or not running (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=471"
+                href="https://wincent.dev/issues/471"
                 >feature request #471</a
               >, "Separate control over iChat status when playing, paused,
               stopped etc").
@@ -787,7 +787,7 @@
               [Feature] Warning icon now shown when an invalid format string is
               entered; clicking on the icon takes the user to the appropriate
               help page on the website (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=475"
+                href="https://wincent.dev/issues/475"
                 >feature request #475</a
               >, "Show warning icon in UI for invalid format strings").
             </li>
@@ -795,7 +795,7 @@
               [Feature] Three new checkboxes added to the Growl preference pane,
               allowing users to determine exactly which state changes
               ("Playing", "Paused" or "Stopped") should trigger notifications
-              (<a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=527"
+              (<a href="https://wincent.dev/issues/527"
                 >feature request #527</a
               >, "Option to turn off 'pause' notifications for Growl").
             </li>
@@ -853,7 +853,7 @@
               [Enhancement] Rewrote hot key implementation to allow hot keys to
               work even when a full-screen game or other application has taken
               control of the display (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=524"
+                href="https://wincent.dev/issues/524"
                 >feature request #524</a
               >, "Make hot keys work when a fullscreen app/game is running").
               This requires access for assistive devices to be enabled in the
@@ -915,7 +915,7 @@
             </li>
             <li>
               [Bugfix] Fixed potential crash in iChat plug-in (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=402"
+                href="https://wincent.dev/issues/402"
                 >bug #402</a
               >, "Crash in iChat plug-in startScrolling method").
             </li>
@@ -924,7 +924,7 @@
               where the "Genres" and "Artists" menus provided album-level access
               but did not provide submenus for accessing individual tracks
               directly (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=421"
+                href="https://wincent.dev/issues/421"
                 >bug #421</a
               >).
             </li>
@@ -933,7 +933,7 @@
               checking system wherein the user had to touch the automatic
               version checking preferences after launch in order to start the
               automatic version checking timer (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=326"
+                href="https://wincent.dev/issues/326"
                 >bug #326</a
               >).
             </li>
@@ -1004,7 +1004,7 @@
           <ul>
             <li>
               [Feature] Fulfilled
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=298"
+              <a href="https://wincent.dev/issues/298"
                 >feature request #298</a
               >
               ("Option to do 'play' and 'pause', but never 'playpause'"); in
@@ -1059,7 +1059,7 @@
             </li>
             <li>
               [Bugfix] Fixed
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=394"
+              <a href="https://wincent.dev/issues/394"
                 >bug #394</a
               >
               ("Unwanted playlist switching on play/pause").
@@ -1070,10 +1070,10 @@
             </li>
             <li>
               [Bugfix] Eliminated the "NSPortDelegateTickler" (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=388"
+                href="https://wincent.dev/issues/388"
                 >bug #388</a
               >) crash on PowerPC and the related "CFRunLoopDoObservers" (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=397"
+                href="https://wincent.dev/issues/397"
                 >bug #397</a
               >) crash on Intel that could occur intermittently if Synergy
               Advance was left running for many hours.
@@ -1087,7 +1087,7 @@
             </li>
             <li>
               [Bugfix] Fixed
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=393"
+              <a href="https://wincent.dev/issues/393"
                 >bug #393</a
               >
               ("Hidden Dock icon preference not honoured when upgrading").
@@ -1099,7 +1099,7 @@
             </li>
             <li>
               [Bugfix] Fixed
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=391"
+              <a href="https://wincent.dev/issues/391"
                 >bug #391</a
               >
               ("Growl notifications not sent when using Synergy Advance to
@@ -1107,7 +1107,7 @@
             </li>
             <li>
               [Bugfix] Fixed
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=398"
+              <a href="https://wincent.dev/issues/398"
                 >bug #398</a
               >
               ("Partial Spanish and English localizations swapped in
@@ -1155,11 +1155,11 @@
             <li>
               [Bugfix] Removed anti-corruption checks that were causing Synergy
               Advance to abort when launching on some systems (fixes
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=387"
+              <a href="https://wincent.dev/issues/387"
                 >bug #387</a
               >
               and
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=389"
+              <a href="https://wincent.dev/issues/389"
                 >bug #389</a
               >).
             </li>
@@ -1184,11 +1184,11 @@
             </li>
             <li>
               [Note] Added additional logging information to troubleshoot
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=387"
+              <a href="https://wincent.dev/issues/387"
                 >bug #387</a
               >
               and
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=389"
+              <a href="https://wincent.dev/issues/389"
                 >bug #389</a
               >.
             </li>
@@ -1274,14 +1274,14 @@
               [Bugfix] Worked around bug in Mac OS X Tiger where stale entries
               in the Launch Services database would cause Mac OS X to ignore the
               visibility settings of the Synergy Advance icon in the Dock (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=279"
+                href="https://wincent.dev/issues/279"
                 >bug #279</a
               >).
             </li>
             <li>
               [Bugfix] Fixed potential crash while switching from the "Advanced"
               preference pane to the "Hot Keys" preference pane (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=280"
+                href="https://wincent.dev/issues/280"
                 >bug #280</a
               >).
             </li>
@@ -1289,7 +1289,7 @@
               [Bugfix] Work around visual artefacts in the area of the Synergy
               Advance semi-transparent notification bezel while scrolling in
               BBEdit and other applications (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=276"
+                href="https://wincent.dev/issues/276"
                 >bug #276</a
               >).
             </li>
@@ -1301,7 +1301,7 @@
               [Bugfix] The status text shown when a duplicate hot key
               combination is defined is no longer persisent but disappears after
               the following editing operation (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=277"
+                href="https://wincent.dev/issues/277"
                 >bug #277</a
               >).
             </li>
@@ -1312,14 +1312,14 @@
             <li>
               [Bugfix] Fixed failure to launch when run from an HFS
               case-sensitive filesystem (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=281"
+                href="https://wincent.dev/issues/281"
                 >bug #281</a
               >).
             </li>
             <li>
               [Bugfix] Fixed console noise when iChat status line scrolling is
               active (see
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=306"
+              <a href="https://wincent.dev/issues/306"
                 >bug #306</a
               >).
             </li>
@@ -1327,7 +1327,7 @@
               [Bugfix] Correct issue where other preference settings could
               inappropriately override the "Update iChat status based on current
               track" setting (see
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=318"
+              <a href="https://wincent.dev/issues/318"
                 >bug #318</a
               >).
             </li>
@@ -1369,14 +1369,14 @@
           <ul>
             <li>
               [Feature] Hot key to show/hide the Global Menu (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=194"
+                href="https://wincent.dev/issues/194"
                 >request #194</a
               >).
             </li>
             <li>
               [Feature] Basic AppleScript support; it is now possible to control
               Synergy Advance via AppleScript (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=145"
+                href="https://wincent.dev/issues/145"
                 >request #145</a
               >).
             </li>
@@ -1420,13 +1420,13 @@
             </li>
             <li>
               [Feature] New "Growl" preference pane for setting Growl options
-              (<a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=248"
+              (<a href="https://wincent.dev/issues/248"
                 >request #248</a
               >). The options which were previously in the "Advanced" preference
               pane have been moved to the new pane. Additional brand new options
               include: "Truncate long lines", "Attempt to coalesce
               notifications" (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=258"
+                href="https://wincent.dev/issues/258"
                 >request #258</a
               >), "Use custom format for track information change
               notifications", "Use custom format for player state change
@@ -1439,7 +1439,7 @@
               the "Advanced" preferences pane to set the level of basic,
               diagnostic and debugging information that gets logged to the
               console (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=210"
+                href="https://wincent.dev/issues/210"
                 >request #210</a
               >).
             </li>
@@ -1457,7 +1457,7 @@
             </li>
             <li>
               [Feature] Hot keys for "Next album" and "Previous album" (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=4"
+                href="https://wincent.dev/issues/4"
                 >request #4</a
               >). The same limitations apply as for the "Next Album" and
               "Previous Album" menu items.
@@ -1466,7 +1466,7 @@
               [Feature]
               <a href="../help/preferences/hot-keys/#popup">Hot key</a> to pop
               up the Global Menu (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=255"
+                href="https://wincent.dev/issues/255"
                 >request #255</a
               >). This is useful for initiating keyboard-based navigation of the
               menu without having to use the mouse. The cursor keys can be used
@@ -1534,7 +1534,7 @@
               [Bugfix] Corrected color and transparency of unlit and half-lit
               stars in the visual feedback bezels that are optionally shown when
               changing the rating using hot keys (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=234"
+                href="https://wincent.dev/issues/234"
                 >bug #234</a
               >).
             </li>
@@ -1552,14 +1552,14 @@
             </li>
             <li>
               [Bugfix] Fixed potential deadlocks during Global Menu updates (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=209"
+                href="https://wincent.dev/issues/209"
                 >bug #209</a
               >).
             </li>
             <li>
               [Bugfix] Whitespace in custom format strings is no longer gobbled
               up and discarded by NSScanner (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=211"
+                href="https://wincent.dev/issues/211"
                 >bug #211</a
               >).
             </li>
@@ -1571,7 +1571,7 @@
             <li>
               [Bugfix] The artist is no longer incorrectly repeated in custom
               format strings (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=222"
+                href="https://wincent.dev/issues/222"
                 >bug #222</a
               >).
             </li>
@@ -1634,7 +1634,7 @@
                 >display of half star increments</a
               >
               in the user interface (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=111"
+                href="https://wincent.dev/issues/111"
                 >request #111</a
               >).
             </li>
@@ -1643,7 +1643,7 @@
               NSFileSystemNumber on a small number of systems; this should stop
               the activation dialog from appearing after rebooting for those
               users (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=228"
+                href="https://wincent.dev/issues/228"
                 >bug #228</a
               >).
             </li>
@@ -1659,7 +1659,7 @@
             <li>
               [Feature] New Global Menu item "Report Bug..." visible when
               holding down the option key (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=207"
+                href="https://wincent.dev/issues/207"
                 >request #207</a
               >).
             </li>
@@ -1702,7 +1702,7 @@
               visual glitches. To see the cross-dissolve in slow motion hold
               down the Shift key while clicking the mouse on an preference pane
               icon (see
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=225"
+              <a href="https://wincent.dev/issues/225"
                 >bug #225</a
               >
               for the one remaining known issue with the cross-dissolve).
@@ -1710,14 +1710,14 @@
             <li>
               [Bugfix] Fix potential vertical sizing problems when switching
               between preference panes (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=216"
+                href="https://wincent.dev/issues/216"
                 >bug #216</a
               >).
             </li>
             <li>
               [Bugfix] Suppress Growl notification when iTunes quits (this was
               also an issue with Synergy in the past:
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=142"
+              <a href="https://wincent.dev/issues/142"
                 >bug #142</a
               >).
             </li>
@@ -1725,7 +1725,7 @@
               [Bugfix] Adjusted alignment of Global Menu icon by one pixel so
               that it lines up perfectly with the Spotlight icon when running on
               Mac OS X 10.4 Tiger (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=215"
+                href="https://wincent.dev/issues/215"
                 >bug #215</a
               >).
             </li>
@@ -1740,7 +1740,7 @@
               ghosting of the "Playlists", "Genres" and "Artists" submenus to
               prevent lock contention situations which could result in temporary
               beachball cursors while updating those menus on slower machines
-              (<a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=209"
+              (<a href="https://wincent.dev/issues/209"
                 >bug #209</a
               >).
             </li>

@@ -676,7 +676,7 @@
         <h3>Bug #398</h3>
 
         <p>
-          <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=398"
+          <a href="https://wincent.dev/issues/398"
             >Squished</a
           >.
         </p>

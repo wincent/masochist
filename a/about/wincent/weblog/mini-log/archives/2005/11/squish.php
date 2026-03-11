@@ -676,7 +676,7 @@
         <h3>Squish</h3>
 
         <p>
-          <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=318"
+          <a href="https://wincent.dev/issues/318"
             >Bug #318</a
           >.
         </p>

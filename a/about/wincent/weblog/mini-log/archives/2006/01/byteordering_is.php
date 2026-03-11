@@ -677,7 +677,7 @@
 
         <p>
           Trying to squish
-          <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=350"
+          <a href="https://wincent.dev/issues/350"
             >this one</a
           >... <strong>Update</strong>: <em>squished</em>.
         </p>

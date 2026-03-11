@@ -1338,7 +1338,7 @@
             <a href="../download/">download page</a>, version 1.7.1 restores
             compatibility with Mac OS X 10.2 (which was broken when Growl
             support was added to Synergy in version 1.7; see
-            <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=123"
+            <a href="https://wincent.dev/issues/123"
               >bug #123</a
             >).
           </p>

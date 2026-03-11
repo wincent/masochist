@@ -1079,14 +1079,14 @@
             <li>
               Fix Audioscrobbler breakage introduced during the conversion to
               Objective-C 2.0 (see
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=641"
+              <a href="https://wincent.dev/issues/641"
                 >bug #641</a
               >, "audioscrobbler/last.fm submission broken").
             </li>
             <li>
               Drop use of NSAppleScript in several places seeing as it appears
               to cause crashes under Garbage collection (see
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=640"
+              <a href="https://wincent.dev/issues/640"
                 >bug #640</a
               >, "NSAppleScript freaks out under Garbage Collection"); this is
               not a total replacement of all NSAppleScript use, but it is start
@@ -1121,7 +1121,7 @@
             <li>
               Fix crashing bug for people with stale entries in their login
               items (see
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=636"
+              <a href="https://wincent.dev/issues/636"
                 >bug #636</a
               >, "Synergy 3.5a3 crashes on launch").
             </li>
@@ -1130,14 +1130,14 @@
               appearing in Spanish which should have been in English) caused by
               new behaviour in the new Interface Builder that comes with Leopard
               (see
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=637"
+              <a href="https://wincent.dev/issues/637"
                 >bug #637</a
               >, "Synergy Preferences.app menu in Spanish").
             </li>
             <li>
               Fix reference to "NewApplication" in Synergy Preferences Help menu
               (see
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=638"
+              <a href="https://wincent.dev/issues/638"
                 >bug #638</a
               >, "Help menu says "NewApplication" instead of Synergy
               Preferences").
@@ -1181,7 +1181,7 @@
               Switch to using new login-item API provided by Launch Services;
               this should definitively fix the failure to launch at login after
               upgrading (see
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=605"
+              <a href="https://wincent.dev/issues/605"
                 >bug #605</a
               >, "Synergy will not open at launch").
             </li>
@@ -1232,7 +1232,7 @@
               Qualified for use with iTunes version 7.5; iTunes 7.5 is a highly
               recommended upgrade as it fixes a bug in the cover art export in
               the version of iTunes that shipped with Mac OS X 10.5 (see
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=601"
+              <a href="https://wincent.dev/issues/601"
                 >bug #601</a
               >, "Can't retrieve art from iTunes on Leopard final").
             </li>
@@ -1338,7 +1338,7 @@
             <li>
               [Bugfix] Better escaping of special characters in URLs when
               performing cover art searches on Amazon (see
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=566"
+              <a href="https://wincent.dev/issues/566"
                 >bug #566</a
               >).
             </li>
@@ -1416,7 +1416,7 @@
           <ul>
             <li>
               [Bugfix] Corrections to Spanish translation (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=519"
+                href="https://wincent.dev/issues/519"
                 >bug #528</a
               >, "Translation errors in Spanish version of Synergy").
             </li>
@@ -1428,7 +1428,7 @@
             <li>
               [Note] Additional translations by Sebastian Sparrer added to the
               German localization (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=519"
+                href="https://wincent.dev/issues/519"
                 >bug #519</a
               >, "Non-translated strings in Synergy 3.1").
             </li>
@@ -1523,7 +1523,7 @@
             <li>
               [Feature] Audioscrobbler (<a href="http://last.fm/">last.fm</a>)
               support (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=108"
+                href="https://wincent.dev/issues/108"
                 >feature request #108</a
               >); preliminary documentation appears
               <a
@@ -1537,7 +1537,7 @@
             </li>
             <li>
               [Bugfix] Correction to Norwegian localization of preference pane
-              (<a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=495"
+              (<a href="https://wincent.dev/issues/495"
                 >bug #495</a
               >).
             </li>
@@ -1553,7 +1553,7 @@
             </li>
             <li>
               [Feature] Implemented
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=445"
+              <a href="https://wincent.dev/issues/445"
                 >feature request #445</a
               >
               ("Display confirmation sheet when clicking 'Defaults' or
@@ -1568,7 +1568,7 @@
             <li>
               [Bugfix] Remove drag limitations when setting the position of the
               Floater (fixes
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=309"
+              <a href="https://wincent.dev/issues/309"
                 >bug #309</a
               >, "Floater won't move to 2nd screen if 2nd screen is above main
               screen").
@@ -1578,7 +1578,7 @@
               move to Tiger that made rating stars in the central feedback
               bezels (when using the hot keys to change song ratings) appear too
               small and hard to distinguish (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=425"
+                href="https://wincent.dev/issues/425"
                 >bug #425</a
               >, "Open stars in hot-key floater"). The fix originally introduced
               in Synergy version 1.9 gave stars of the correct size but they
@@ -1589,7 +1589,7 @@
               [Bugfix] Double-clicking a button set in the Finder causes that
               set to become active even when the user has the "Choose random
               button style" preference set (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=442"
+                href="https://wincent.dev/issues/442"
                 >bug #442</a
               >, "Double-click on a Synergy Button set displays random button
               set").
@@ -1609,7 +1609,7 @@
             <li>
               [Feature] New item in the Global Menu, "Transfer cover to iTunes";
               fulfills
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=8"
+              <a href="https://wincent.dev/issues/8"
                 >feature request #8</a
               >
               ("Embed album art in track file").
@@ -1632,7 +1632,7 @@
                 >sample screenshot</a
               >) or totally solid, in addition to the previously available range
               of choices (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=413"
+                href="https://wincent.dev/issues/413"
                 >feature requst #413</a
               >).
             </li>
@@ -1659,14 +1659,14 @@
             <li>
               [Bugfix] Fixed typographical error in "Composer" tool-tip in
               preferences (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=359"
+                href="https://wincent.dev/issues/359"
                 >bug #359</a
               >).
             </li>
             <li>
               [Bugfix] Added translation for "Composer" to French localization
               of preferences (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=378"
+                href="https://wincent.dev/issues/378"
                 >bug #378</a
               >).
             </li>
@@ -1679,7 +1679,7 @@
               [Bugfix] Final workaround for font changes made by Apple in the
               move to Tiger that made rating stars in the Floater appear too
               small and hard to distinguish (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=179"
+                href="https://wincent.dev/issues/179"
                 >bug #179</a
               >). The fix originally introduced in Synergy version 1.9 gave
               stars of the correct size but they were not fully solid. This new
@@ -1695,7 +1695,7 @@
             <li>
               [Bugfix] Floater totally failed to display ratings if they were
               not whole-star ratings (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=366"
+                href="https://wincent.dev/issues/366"
                 >bug #366</a
               >).
             </li>
@@ -1710,7 +1710,7 @@
               running natively on Intel machines; such keys could be set and
               used but the modifiers would not be shown within the user
               interface (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=350"
+                href="https://wincent.dev/issues/350"
                 >bug #350</a
               >).
             </li>
@@ -1750,7 +1750,7 @@
             <li>
               [Bugfix] Fixes a problem with license code validation on the Intel
               platform caused by byte-ordering issues (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=339"
+                href="https://wincent.dev/issues/339"
                 >bug #339</a
               >).
             </li>
@@ -1771,7 +1771,7 @@
               the latest available version (0.7.2). Growl support is only active
               when running on Panther (Mac OS X 10.3) and higher. Given that
               Growl has
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=123"
+              <a href="https://wincent.dev/issues/123"
                 >historically caused problems</a
               >
               when running on Jaguar (Mac OS X 10.2) I'd appreciate
@@ -1806,7 +1806,7 @@
             <li>
               [Bugfix] Work around bug in Tiger Launch Services which could
               cause the Synergy icon to appear in the Dock (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=192"
+                href="https://wincent.dev/issues/192"
                 >bug #192</a
               >).
             </li>
@@ -1819,7 +1819,7 @@
               [Bugfix] Restored compatibility with Mac OS X 10.2 which was
               broken in Synergy 2.0 in the change to Tiger, Xcode 2.1 and the
               new version of the Growl framework (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=265"
+                href="https://wincent.dev/issues/265"
                 >bug #265</a
               >).
             </li>
@@ -1852,7 +1852,7 @@
             <li>
               [Bugfix] Fixed problem where the album cover shown in Growl
               notifications would lag one song behind iTunes (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=193"
+                href="https://wincent.dev/issues/193"
                 >bug #193</a
               >).
             </li>
@@ -1860,7 +1860,7 @@
               [Bugfix] Changed the unicode character used to draw the rating
               stars in the Floater when running on Tiger. This corrects the
               "small rating star" problem seen on Tiger (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=179"
+                href="https://wincent.dev/issues/179"
                 >bug #179</a
               >).
             </li>
@@ -1902,7 +1902,7 @@
             </li>
             <li>
               [Feature] Display of composer in Floater is now optional (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=177"
+                href="https://wincent.dev/issues/177"
                 >bug #177</a
               >).
             </li>
@@ -1910,20 +1910,20 @@
               [Bugfix] Added missing space between artist and composer in the
               Floater; now shows, "Artist (Composer)" instead of
               "Artist(Composer)" (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=178"
+                href="https://wincent.dev/issues/178"
                 >bug #178</a
               >).
             </li>
             <li>
               [Bugfix] Fixed problem where text might not display in the Floater
               when it is set to the smallest possible size (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=176"
+                href="https://wincent.dev/issues/176"
                 >bug #176</a
               >).
             </li>
             <li>
               [Bugfix] Fixed potential &quot;beachball&quot; on quitting iTunes
-              (<a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=188"
+              (<a href="https://wincent.dev/issues/188"
                 >bug #188</a
               >).
             </li>
@@ -1931,7 +1931,7 @@
               [Bugfix] No longer uses composer as part of the track identifier
               which means that art downloaded prior to version 1.8 will continue
               to be recognized (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=173"
+                href="https://wincent.dev/issues/173"
                 >bug #173</a
               >).
             </li>
@@ -1957,7 +1957,7 @@
               [Bugfix] Fix delays which may occur when no Internet connection is
               available and Synergy tests the network status by moving those
               tests into separate threads (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=131"
+                href="https://wincent.dev/issues/131"
                 >bug #131</a
               >).
             </li>
@@ -1966,7 +1966,7 @@
               (version 4.7 and later) sends on quitting; this prevents the
               &quot;Stopped: (null)&quot; message from being sent to Growl when
               iTunes quits (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=142"
+                href="https://wincent.dev/issues/142"
                 >bug #142</a
               >).
             </li>
@@ -1981,7 +1981,7 @@
               question mark is displayed to indicate that Synergy has not (yet)
               found art from either iTunes or Amazon. Previous versions showed
               the Synergy icon under these circumstances (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=22"
+                href="https://wincent.dev/issues/22"
                 >bug #22</a
               >).
             </li>
@@ -2006,7 +2006,7 @@
               >; that is, if both artist and composer are defined for the track
               then the Floater will display &quot;Artist (Composer)&quot;, and
               if only one is available then only one will be displayed (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=60"
+                href="https://wincent.dev/issues/60"
                 >bug #60</a
               >).
             </li>
@@ -2042,7 +2042,7 @@
               <a href="http://growl.info/">Growl</a> framework when running on
               Jaguar; this means that Growl is now only supported on Mac OS X
               10.3 and above (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=123"
+                href="https://wincent.dev/issues/123"
                 >bug #123</a
               >).
             </li>
@@ -2054,7 +2054,7 @@
             <li>
               [Feature] Growl support when used in conjunction with iTunes 4.7
               or later (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=35"
+                href="https://wincent.dev/issues/35"
                 >bug #35</a
               >); see <a href="http://growl.info/">http://growl.info/</a> to
               learn about Growl, or look at the
@@ -2132,7 +2132,7 @@
               license code/email address combination. In addition, the license
               code is no longer case-sensitive (the email address, however,
               still is). See
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=69"
+              <a href="https://wincent.dev/issues/69"
                 >bug #69</a
               >
               for more information.
@@ -2159,21 +2159,21 @@
             <li>
               [Bugfix] Make sure that Floater fades out immediately if iTunes is
               quit (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=32"
+                href="https://wincent.dev/issues/32"
                 >bug #32</a
               >).
             </li>
             <li>
               [Bugfix] Auto-show/hide of menu bar controls and Global Menu when
               running with iTunes 4.7 works again (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=48"
+                href="https://wincent.dev/issues/48"
                 >bug #48</a
               >)
             </li>
             <li>
               [Bugfix] Floater now updates when Internet Radio track information
               changes in iTunes (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=1"
+                href="https://wincent.dev/issues/1"
                 >bug #1</a
               >).
             </li>
@@ -2181,14 +2181,14 @@
               [Bugfix] Show a tooltip in the preferences user interface
               indicating with the Communications Interval slider is ghosted on
               systems where iTunes 4.7 is installed (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=33"
+                href="https://wincent.dev/issues/33"
                 >bug #33</a
               >).
             </li>
             <li>
               [Bugfix] Fix crash on repeatedly skipping tracks with Mac OS X
               10.2.8/iTunes 4.7 (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=34"
+                href="https://wincent.dev/issues/34"
                 >bug #34</a
               >). This fix has a secondary performance benefit for all users
               because it eliminates a number of timer firing events, and

@@ -677,7 +677,7 @@
 
         <p>
           Tricky,
-          <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=4"
+          <a href="https://wincent.dev/issues/4"
             >but done</a
           >.
         </p>

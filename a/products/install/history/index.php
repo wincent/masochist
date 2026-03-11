@@ -721,7 +721,7 @@
               [Enhancement] To increase awareness that Install is also actually
               an uninstaller, show the "Uninstall" button as ghosted rather than
               hiding it completely when Install is first launched (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=579"
+                href="https://wincent.dev/issues/579"
                 >feature request #579</a
               >, "Display Uninstall button even if no previous install
               detected").

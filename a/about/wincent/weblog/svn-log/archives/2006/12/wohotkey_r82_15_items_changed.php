@@ -676,7 +676,7 @@
 
         <p>
           Initial implementation of Quartz-based hot keys
-          (https://wincent.dev/a/support/bugs/show_bug.cgi?id=524)
+          (https://wincent.dev/issues/524)
         </p>
 
         <div id="a001061more"><div id="more"></div></div>

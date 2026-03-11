@@ -677,11 +677,11 @@
 
         <p>
           Fixed
-          <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=387"
+          <a href="https://wincent.dev/issues/387"
             >bug #387</a
           >
           (a crash) and
-          <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=389"
+          <a href="https://wincent.dev/issues/389"
             >bug #389</a
           >
           (an abort), both caused by some sort of flakey and unreliable

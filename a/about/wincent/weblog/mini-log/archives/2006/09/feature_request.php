@@ -676,7 +676,7 @@
         <h3>Feature request #475</h3>
 
         <p>
-          <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=475"
+          <a href="https://wincent.dev/issues/475"
             >Done</a
           >.
         </p>

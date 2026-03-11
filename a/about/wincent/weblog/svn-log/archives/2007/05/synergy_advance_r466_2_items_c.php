@@ -677,7 +677,7 @@
         <p>
           To avoid confusion, suppress echoing of harmless warning messages to
           console at default log level
-          (https://wincent.dev/a/support/bugs/show_bug.cgi?id=568)
+          (https://wincent.dev/issues/568)
         </p>
 
         <div id="a002125more"><div id="more"></div></div>
