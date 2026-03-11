@@ -40,7 +40,7 @@ import /etc/caddy/conf.d/*
 	redir @trailingSlash /{re.trailingSlash.1} permanent
 
 	# Raw snippet files (eg. /snippets/foo.sh).
-	@rawSnippet path_regexp rawSnippet ^/snippets/[^/]+\.\w+$
+	@rawSnippet path_regexp rawSnippet ^/snippets/[^/]+\.(patch|rb|sh|txt)$
 	handle @rawSnippet {
 		root * /var/www/public
 		header Content-Type text/plain
