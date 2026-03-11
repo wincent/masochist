@@ -57,6 +57,7 @@ There are 3 remotes:
 
 - `bin/build`: Builds the static artifacts.
 - `bin/check-format`: Check formatting.
+- `bin/check-links`: Check for broken internal links.
 - `bin/clippy`: Run Clippy linter.
 - `bin/configure-remotes`: Configures `origin`, `github`, `masochist` and `all` remotes.
 - `bin/deploy`: Deploys to EC2.

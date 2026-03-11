@@ -1,0 +1,8 @@
+#!/bin/bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
+
+cargo run --manifest-path "${REPO_DIR}/Cargo.toml" \
+    --release --package masochist-link-checker -- "$@"
