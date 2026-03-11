@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: ..
-      dockerfile: ops/Dockerfile.app
+      dockerfile: ops/Dockerfile
     image: masochist-app
     volumes:
       - ..:/srv/content:ro

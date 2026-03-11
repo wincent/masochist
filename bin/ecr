@@ -29,7 +29,7 @@ cmd_build() {
     docker build \
         --platform linux/arm64 \
         -t "${LOCAL_IMAGE}" \
-        -f "${REPO_DIR}/ops/Dockerfile.app" \
+        -f "${REPO_DIR}/ops/Dockerfile" \
         "${REPO_DIR}"
     echo "Build complete."
     echo ""
