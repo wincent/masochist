@@ -36,4 +36,4 @@ docker-compose \
     -f "$OPS/compose.base.yml" \
     -f "$OPS/compose.prod.yml" \
     -f "$OPS/compose.ecr.yml" \
-    up -d --force-recreate
+    up -d --force-recreate --remove-orphans
