@@ -21,6 +21,8 @@ cat > "${DEPLOY_DIR}/ops/.env" <<EOF
 APP_UID=$(id -u)
 APP_GID=$(id -g)
 ECR_ACCOUNT_ID=${ECR_ACCOUNT_ID}
+DD_SITE=${DD_SITE:-datadoghq.com}
+DD_API_KEY=${DD_API_KEY}
 EOF
 
 ECR_REGISTRY="${ECR_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com"
@@ -30,10 +32,12 @@ docker-compose \
     -f "$OPS/compose.base.yml" \
     -f "$OPS/compose.prod.yml" \
     -f "$OPS/compose.ecr.yml" \
+    -f "$OPS/compose.profiler.yml" \
     pull
 
 docker-compose \
     -f "$OPS/compose.base.yml" \
     -f "$OPS/compose.prod.yml" \
     -f "$OPS/compose.ecr.yml" \
+    -f "$OPS/compose.profiler.yml" \
     up -d --force-recreate

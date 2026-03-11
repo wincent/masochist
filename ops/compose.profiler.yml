@@ -1,0 +1,14 @@
+services:
+  profiler:
+    image: ghcr.io/datadog/dd-otel-host-profiler:latest
+    pid: host
+    privileged: true
+    cap_add:
+      - SYS_ADMIN
+    environment:
+      DD_TRACE_AGENT_URL: "http://localhost:8126"
+      DD_SERVICE: "masochist-server"
+      DD_SITE: "${DD_SITE}"
+      DD_API_KEY: "${DD_API_KEY}"
+    network_mode: host
+    restart: unless-stopped
