@@ -2,7 +2,9 @@
 set -euo pipefail
 
 if [ -z "${DD_API_KEY:-}" ] && [ -f "$HOME/.bashrc" ]; then
+    set +u
     source "$HOME/.bashrc"
+    set -u
 fi
 
 DEPLOY_DIR="/srv/masochist"
