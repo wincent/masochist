@@ -691,7 +691,7 @@
 
         <p>See:</p>
 
-        <p>https://wincent.dev/a/support/bugs/show_bug.cgi?id=636</p>
+        <p>https://wincent.dev/issues/636</p>
 
         <p>Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;</p>
 

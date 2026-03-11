@@ -676,7 +676,7 @@
         <h3>Squished</h3>
 
         <p>
-          <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=179"
+          <a href="https://wincent.dev/issues/179"
             >At last</a
           >.
         </p>

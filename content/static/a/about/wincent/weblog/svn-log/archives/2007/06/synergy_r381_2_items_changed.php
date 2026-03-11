@@ -676,7 +676,7 @@
 
         <p>
           Fix for encoding issue described in
-          https://wincent.dev/a/support/bugs/show_bug.cgi?id=566
+          https://wincent.dev/issues/566
         </p>
 
         <div id="a002224more"><div id="more"></div></div>

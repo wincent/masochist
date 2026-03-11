@@ -676,7 +676,7 @@
 
         <p>
           New tool tips in Growl preference pane; new options
-          (https://wincent.dev/a/support/bugs/show_bug.cgi?id=527)
+          (https://wincent.dev/issues/527)
         </p>
 
         <div id="a001103more"><div id="more"></div></div>

@@ -676,7 +676,7 @@
 
         <p>
           Update copyright dates; corrections to Spanish localization
-          (https://wincent.dev/a/support/bugs/show_bug.cgi?id=528)
+          (https://wincent.dev/issues/528)
         </p>
 
         <div id="a001107more"><div id="more"></div></div>

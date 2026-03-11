@@ -676,7 +676,7 @@
 
         <p>
           Additional translations added to the German localization,
-          https://wincent.dev/a/support/bugs/show_bug.cgi?id=519
+          https://wincent.dev/issues/519
         </p>
 
         <div id="a000975more"><div id="more"></div></div>

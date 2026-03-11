@@ -5,7 +5,7 @@ tags: snippets
 
 Avoids crash at launch described in:
 
-http://wincent.dev/a/support/bugs/show\_bug.cgi?id=636
+https://wincent.dev/issues/636
 
 The underlying cause of why we might wind up with a nil item is still being investigated.
 

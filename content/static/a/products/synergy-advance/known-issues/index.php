@@ -738,7 +738,7 @@
             <li>
               Cross-dissolves between the "Advanced" and "Hot Keys" preference
               panes are not animated (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=225"
+                href="https://wincent.dev/issues/225"
                 >bug #225</a
               >).
             </li>
@@ -766,7 +766,7 @@
               playing). I will soon be adding a setting in the advanced
               preferences pane which allows people to choose the behaviour that
               they prefer. This is in the bug database as
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=204"
+              <a href="https://wincent.dev/issues/204"
                 >bug #204</a
               >.
             </li>

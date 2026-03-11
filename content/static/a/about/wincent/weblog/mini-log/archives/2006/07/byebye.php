@@ -676,7 +676,7 @@
         <h3>Bye-bye</h3>
 
         <p>
-          <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=441"
+          <a href="https://wincent.dev/issues/441"
             >Bug #441</a
           >.
         </p>

@@ -1357,7 +1357,7 @@
 
           <p>
             This is not a
-            <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=33"
+            <a href="https://wincent.dev/issues/33"
               >bug</a
             >
             but a feature of Synergy 1.5b and up when used in conjunction with

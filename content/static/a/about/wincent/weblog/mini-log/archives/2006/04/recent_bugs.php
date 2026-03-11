@@ -677,11 +677,11 @@
 
         <p>
           To have bitten the dust:
-          <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=391"
+          <a href="https://wincent.dev/issues/391"
             >391</a
           >
           and
-          <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=393"
+          <a href="https://wincent.dev/issues/393"
             >393</a
           >.
         </p>

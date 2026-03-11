@@ -712,7 +712,7 @@
             <li>
               "Log out&hellip;" menu item visible when holding down the option
               key (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=332"
+                href="https://wincent.dev/issues/332"
                 >feature request #332</a
               >).
             </li>
@@ -743,7 +743,7 @@
             <li>
               Corrected rare problem in which some user pictures would appear
               shrunken inside the menu (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=137"
+                href="https://wincent.dev/issues/137"
                 >bug #137</a
               >); to see this fix you must upgrade to Tiger (Mac OS X 10.4).
             </li>
@@ -751,7 +751,7 @@
               Made changes to ensure that the vertical spacing of icons in the
               menu exactly matches that used by Apple's version of the Fast User
               Switching menu (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=136"
+                href="https://wincent.dev/issues/136"
                 >bug #136</a
               >); to see this fix you must upgrade to Tiger (Mac OS X 10.4).
             </li>
@@ -775,7 +775,7 @@
           <ul>
             <li>
               Compatible with Mac OS X 10.4 Tiger (fixes
-              <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=139"
+              <a href="https://wincent.dev/issues/139"
                 >bug #139</a
               >).
             </li>
@@ -844,7 +844,7 @@
             <li>
               Fixed crash that would occur on systems with faulty accounts in
               the NetInfo database (<a
-                href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=68"
+                href="https://wincent.dev/issues/68"
                 >bug #68</a
               >).
             </li>

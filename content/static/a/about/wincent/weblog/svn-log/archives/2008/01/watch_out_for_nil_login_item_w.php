@@ -681,7 +681,7 @@
 
         <p>Avoids crash at launch described in:</p>
 
-        <p>https://wincent.dev/a/support/bugs/show_bug.cgi?id=636</p>
+        <p>https://wincent.dev/issues/636</p>
 
         <p>
           The underlying cause of why we might wind up with a nil item is still

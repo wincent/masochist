@@ -676,7 +676,7 @@
         <h3>Die</h3>
 
         <p>
-          <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=402"
+          <a href="https://wincent.dev/issues/402"
             >Bug #402</a
           >.
         </p>

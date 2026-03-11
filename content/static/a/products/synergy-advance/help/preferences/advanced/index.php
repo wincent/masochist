@@ -790,7 +790,7 @@
           <p>
             Synergy Advance communicates with iTunes via Apple Events. There is
             a bug in iTunes' Apple Event implementation (<a
-              href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=298"
+              href="https://wincent.dev/issues/298"
               >described in detail here</a
             >) that causes its behaviour to be subtley different depending on
             whether it is sent a "playpause" message rather than "play" or
@@ -801,7 +801,7 @@
           </p>
 
           <p>
-            <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=394"
+            <a href="https://wincent.dev/issues/394"
               >One example of undesirable an side-effect</a
             >
             caused by this bug is the following: use Synergy Advance to select a

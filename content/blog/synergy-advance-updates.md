@@ -15,6 +15,6 @@ It will still be possible to manually alter the application's `Info.plist` file 
 
 #### More hot keys
 
-People have been [requesting more ways](http://wincent.dev/a/support/bugs/show_bug.cgi?id=240) of setting half-star ratings. Today I've implemented additional hot keys and a couple of menu-based ways of applying half-star ratings are well on the way:
+People have been [requesting more ways](https://wincent.dev/issues/240) of setting half-star ratings. Today I've implemented additional hot keys and a couple of menu-based ways of applying half-star ratings are well on the way:
 
 ![](/system/images/legacy/more-hot-keys.png)

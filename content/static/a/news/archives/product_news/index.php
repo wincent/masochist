@@ -1772,11 +1772,11 @@
           A new beta release of
           Synergy Advance has been
           seeded to beta testers, fixing the failure to launch problems (<a
-            href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=387"
+            href="https://wincent.dev/issues/387"
             >bug #387</a
           >
           and
-          <a href="https://wincent.dev/a/support/bugs/show_bug.cgi?id=389"
+          <a href="https://wincent.dev/issues/389"
             >#389</a
           >). Thank you to those beta testers who helped to confirm the
           existence and nature of the problem.
