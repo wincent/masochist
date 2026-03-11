@@ -174,7 +174,7 @@ blog	email-response-times-back-to-normal	Email response times: back to normal	11
 blog	email-response-times	Email response times	1147221660	1709488842	blog
 blog	email	Mutt	1481359248	1584053324	email blog
 blog	embedding-build-numbers-painlessly	Embedding build numbers painlessly	1138242540	1710259978	blog
-blog	embracing-open-source	Embracing open source	1246546965	1710259978	development open.source blog
+blog	embracing-open-source	Embracing open source	1246546965	1773260288	development open.source blog
 blog	epistemology	Epistemology	1651857904	1744296569	blog
 blog	ethical-dimensions-of-pirating-ilife-06	Ethical dimensions of pirating iLife 06	1137404400	1710259978	blog
 blog	event-log	Event log	1155110400	1709591878	blog
@@ -7793,3 +7793,4 @@ snippets	z800i	Z800i	1140431640	1495119989	snippets
 snippets	zapping-resource-forks-from-the-commandline	Zapping resource forks from the commandline	1157488140	1710259978	snippets
 snippets	zfs-1	ZFS	1191901440	1710259978	snippets
 pages	about	About	1445304451	1737201059	site pages
+pages	legal	Legal	1773260335	1773260335	site pages
