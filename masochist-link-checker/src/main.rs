@@ -416,7 +416,8 @@ fn rewrite_wincent_dev_url(url_str: &str) -> String {
     if let Ok(parsed) = Url::parse(url_str) {
         let host = parsed.host_str().unwrap_or("");
         if host == SITE_DOMAIN || host == format!("www.{SITE_DOMAIN}") {
-            return format!("{BASE_URL}{}", parsed.path());
+            let query = parsed.query().map(|q| format!("?{q}")).unwrap_or_default();
+            return format!("{BASE_URL}{}{query}", parsed.path());
         }
     }
     url_str.to_string()
@@ -776,15 +777,12 @@ async fn classify_and_enqueue(
 
 fn extract_path(url: &str) -> String {
     if let Ok(parsed) = Url::parse(url) {
-        parsed.path().to_string()
+        match parsed.query() {
+            Some(q) => format!("{}?{q}", parsed.path()),
+            None => parsed.path().to_string(),
+        }
     } else if url.starts_with('/') {
-        url.split('?')
-            .next()
-            .unwrap_or(url)
-            .split('#')
-            .next()
-            .unwrap_or(url)
-            .to_string()
+        url.split('#').next().unwrap_or(url).to_string()
     } else {
         url.to_string()
     }
@@ -816,13 +814,8 @@ fn normalize_url(raw: &str, source_page_url: &str) -> Option<String> {
 
     let path = parsed.path();
 
-    let query = if path.starts_with("/search") {
-        parsed.query().map(|q| format!("?{q}"))
-    } else {
-        None
-    };
-
-    let normalized_path = format!("{path}{}", query.unwrap_or_default());
+    let query = parsed.query().map(|q| format!("?{q}")).unwrap_or_default();
+    let normalized_path = format!("{path}{query}");
     Some(format!("{BASE_URL}{normalized_path}"))
 }
 
