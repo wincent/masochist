@@ -661,7 +661,11 @@ async fn process_url(
     }
 }
 
-async fn follow_redirects(client: &Client, url: &str, fetch_counts: &FetchCounts) -> Result<RedirectOutcome, reqwest::Error> {
+async fn follow_redirects(
+    client: &Client,
+    url: &str,
+    fetch_counts: &FetchCounts,
+) -> Result<RedirectOutcome, reqwest::Error> {
     let mut current_url = url.to_string();
     let mut chain = Vec::new();
     let mut seen = HashSet::new();
