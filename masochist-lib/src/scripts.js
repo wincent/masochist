@@ -109,3 +109,4 @@ customElements.define('relative-time', RelativeTime);
   });
 })();
 document.getElementById('search-input')?.focus();
+document.getElementById('tag-filter')?.focus();
