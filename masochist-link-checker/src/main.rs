@@ -104,6 +104,31 @@ struct SiblingDomainLink {
     domain: String,
 }
 
+struct FetchCounts {
+    total: AtomicUsize,
+    local: AtomicUsize,
+    nonlocal: AtomicUsize,
+}
+
+impl FetchCounts {
+    fn new() -> Self {
+        Self {
+            total: AtomicUsize::new(0),
+            local: AtomicUsize::new(0),
+            nonlocal: AtomicUsize::new(0),
+        }
+    }
+
+    fn record(&self, url: &str) {
+        self.total.fetch_add(1, Ordering::Relaxed);
+        if url.starts_with(BASE_URL) {
+            self.local.fetch_add(1, Ordering::Relaxed);
+        } else {
+            self.nonlocal.fetch_add(1, Ordering::Relaxed);
+        }
+    }
+}
+
 struct Crawler {
     client: Client,
     visited: Arc<Mutex<HashSet<String>>>,
@@ -116,6 +141,7 @@ struct Crawler {
     queue_estimate: Arc<AtomicUsize>,
     all_known_paths: Arc<Mutex<HashSet<String>>>,
     link_sources: Arc<Mutex<HashMap<String, Vec<String>>>>,
+    fetch_counts: Arc<FetchCounts>,
 }
 
 impl Crawler {
@@ -138,6 +164,7 @@ impl Crawler {
             queue_estimate: Arc::new(AtomicUsize::new(0)),
             all_known_paths: Arc::new(Mutex::new(HashSet::new())),
             link_sources: Arc::new(Mutex::new(HashMap::new())),
+            fetch_counts: Arc::new(FetchCounts::new()),
         }
     }
 
@@ -192,6 +219,7 @@ impl Crawler {
             let queue_estimate = self.queue_estimate.clone();
             let all_known_paths = self.all_known_paths.clone();
             let link_sources = self.link_sources.clone();
+            let fetch_counts = self.fetch_counts.clone();
             let queue_clone = queue.clone();
             let active_clone = active.clone();
             let notify_clone = notify.clone();
@@ -210,6 +238,7 @@ impl Crawler {
                     &queue_estimate,
                     &all_known_paths,
                     &link_sources,
+                    &fetch_counts,
                     &queue_clone,
                 )
                 .await;
@@ -388,6 +417,11 @@ impl Crawler {
         let total_broken = stats.modern.broken_links + stats.legacy.broken_links;
         println!("\nTotal pages: {total_pages}  Total broken: {total_broken}");
 
+        let fetch_total = self.fetch_counts.total.load(Ordering::Relaxed);
+        let fetch_local = self.fetch_counts.local.load(Ordering::Relaxed);
+        let fetch_nonlocal = self.fetch_counts.nonlocal.load(Ordering::Relaxed);
+        println!("Fetches: {fetch_total} total, {fetch_local} local, {fetch_nonlocal} non-local");
+
         println!("\n{}", "=".repeat(72));
     }
 
@@ -437,6 +471,7 @@ async fn process_url(
     queue_estimate: &AtomicUsize,
     all_known_paths: &Mutex<HashSet<String>>,
     link_sources: &Mutex<HashMap<String, Vec<String>>>,
+    fetch_counts: &FetchCounts,
     queue: &Mutex<VecDeque<String>>,
 ) {
     let path = extract_path(url);
@@ -448,6 +483,7 @@ async fn process_url(
     eprintln!("[{n:>5}/{:>5}] {path}", n + remaining);
 
     if is_asset {
+        fetch_counts.record(url);
         let result = client.get(url).send().await;
         let mut s = stats.lock().await;
         let cat = if is_modern {
@@ -502,7 +538,7 @@ async fn process_url(
         cat.pages_visited += 1;
     }
 
-    let outcome = match follow_redirects(client, url).await {
+    let outcome = match follow_redirects(client, url, fetch_counts).await {
         Ok(outcome) => outcome,
         Err(e) => {
             let err_msg = e.to_string();
@@ -625,7 +661,7 @@ async fn process_url(
     }
 }
 
-async fn follow_redirects(client: &Client, url: &str) -> Result<RedirectOutcome, reqwest::Error> {
+async fn follow_redirects(client: &Client, url: &str, fetch_counts: &FetchCounts) -> Result<RedirectOutcome, reqwest::Error> {
     let mut current_url = url.to_string();
     let mut chain = Vec::new();
     let mut seen = HashSet::new();
@@ -634,6 +670,7 @@ async fn follow_redirects(client: &Client, url: &str) -> Result<RedirectOutcome,
         chain.push(current_url.clone());
         seen.insert(current_url.clone());
 
+        fetch_counts.record(&current_url);
         let response = client.get(&current_url).send().await?;
         let status = response.status();
 
