@@ -35,8 +35,6 @@ RUN touch masochist-lib/src/lib.rs masochist-server/src/main.rs
 
 RUN --mount=type=cache,target=/build/target \
     --mount=type=cache,target=/usr/local/cargo/registry \
-    CARGO_PROFILE_RELEASE_DEBUG=1 \
-    CARGO_PROFILE_RELEASE_STRIP=none \
     cargo build --release --package masochist-server && \
     cp target/release/masochist-server /masochist-server
 
