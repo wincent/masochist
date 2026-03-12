@@ -257,26 +257,27 @@ fn render_markdown(items: &[ContentItem]) -> Vec<String> {
 fn markdown_to_html(md: &str) -> String {
     use comrak::adapters::{HeadingAdapter, HeadingMeta};
     use comrak::nodes::Sourcepos;
-    use comrak::{ComrakPlugins, Options, markdown_to_html_with_plugins};
+    use comrak::{Options, markdown_to_html_with_plugins, options::Plugins};
+    use std::collections::HashMap;
 
     struct HeadingLevelAdapter;
 
     impl HeadingAdapter for HeadingLevelAdapter {
         fn enter(
             &self,
-            output: &mut dyn std::io::Write,
+            output: &mut dyn std::fmt::Write,
             heading: &HeadingMeta,
             _sourcepos: Option<Sourcepos>,
-        ) -> std::io::Result<()> {
+        ) -> std::fmt::Result {
             let level = std::cmp::min(6, heading.level + 1);
             write!(output, "<h{level}>")
         }
 
         fn exit(
             &self,
-            output: &mut dyn std::io::Write,
+            output: &mut dyn std::fmt::Write,
             heading: &HeadingMeta,
-        ) -> std::io::Result<()> {
+        ) -> std::fmt::Result {
             let level = std::cmp::min(6, heading.level + 1);
             write!(output, "</h{level}>")
         }
@@ -287,13 +288,14 @@ fn markdown_to_html(md: &str) -> String {
     options.extension.autolink = true;
     options.extension.strikethrough = true;
     options.extension.footnotes = true;
-    options.render.unsafe_ = true;
+    options.render.r#unsafe = true;
 
     let adapter = HeadingLevelAdapter;
-    let plugins = ComrakPlugins {
-        render: comrak::RenderPlugins {
+    let plugins = Plugins {
+        render: comrak::options::RenderPlugins {
             heading_adapter: Some(&adapter),
             codefence_syntax_highlighter: None,
+            codefence_renderers: HashMap::new(),
         },
     };
 

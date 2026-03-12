@@ -4,8 +4,8 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-reqwest = { version = "0.12", default-features = false, features = ["rustls-tls"] }
-scraper = "0.22"
-strsim = "0.11"
-tokio = { version = "1", features = ["full"] }
-url = "2"
+reqwest = { version = "0.13.2", default-features = false, features = ["rustls"] }
+scraper = "0.25.0"
+strsim = "0.11.1"
+tokio = { version = "1.50.0", features = ["full"] }
+url = "2.5.8"

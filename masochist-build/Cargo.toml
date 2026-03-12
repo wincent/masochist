@@ -4,13 +4,13 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-chrono = { version = "0.4", default-features = false, features = ["std"] }
-comrak = { version = "0.36", default-features = false }
-lightningcss = "1.0.0-alpha.70"
+chrono = { version = "0.4.44", default-features = false, features = ["std"] }
+comrak = { version = "0.51.0", default-features = false }
+lightningcss = "1.0.0-alpha.71"
 masochist-lib = { path = "../masochist-lib" }
-maud = "0.26"
-percent-encoding = "2"
-rayon = "1"
-sha2 = "0.10"
-swc = "36.0"
-swc_common = "14.0"
+maud = "0.27.0"
+percent-encoding = "2.3.2"
+rayon = "1.11.0"
+sha2 = "0.11.0-rc.5"
+swc = "56.0.0"
+swc_common = "19.0.0"

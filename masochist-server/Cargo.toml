@@ -4,9 +4,9 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-governor = "0.8"
+governor = "0.10.4"
 masochist-lib = { path = "../masochist-lib" }
-maud = "0.26"
-percent-encoding = "2"
-regex = "1"
-rocket = "0.5"
+maud = "0.27.0"
+percent-encoding = "2.3.2"
+regex = "1.12.3"
+rocket = "0.5.1"

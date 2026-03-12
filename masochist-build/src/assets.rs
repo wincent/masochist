@@ -61,7 +61,10 @@ fn short_hash(content: &str) -> String {
     let mut hasher = Sha256::new();
     hasher.update(content.as_bytes());
     let result = hasher.finalize();
-    format!("{:x}", result)[..8].to_string()
+    format!(
+        "{:02x}{:02x}{:02x}{:02x}",
+        result[0], result[1], result[2], result[3]
+    )
 }
 
 struct Assets {
