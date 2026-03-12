@@ -107,7 +107,7 @@ pub fn parse_frontmatter(raw: &str) -> (Frontmatter, &str) {
         let body = &rest[end + 5..];
 
         // Try parsing as-is first.
-        if let Ok(fm) = serde_yaml::from_str::<Frontmatter>(yaml) {
+        if let Ok(fm) = serde_yaml_ng::from_str::<Frontmatter>(yaml) {
             return (fm, body);
         }
 
@@ -116,7 +116,7 @@ pub fn parse_frontmatter(raw: &str) -> (Frontmatter, &str) {
         // The old site used a custom parser. We handle this by quoting
         // values that aren't already quoted.
         let fixed = fix_yaml(yaml);
-        if let Ok(fm) = serde_yaml::from_str::<Frontmatter>(&fixed) {
+        if let Ok(fm) = serde_yaml_ng::from_str::<Frontmatter>(&fixed) {
             return (fm, body);
         }
 

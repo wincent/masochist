@@ -7,4 +7,4 @@ edition = "2024"
 chrono = { version = "0.4.44", default-features = false, features = ["std"] }
 maud = "0.27.0"
 serde = { version = "1.0.228", features = ["derive"] }
-serde_yaml = "0.9.34"
+serde_yaml_ng = "0.10.0"
