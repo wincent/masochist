@@ -1,0 +1,37 @@
+#!/bin/bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+REPO_DIR="$(dirname "$SCRIPT_DIR")"
+
+# Extract unique crate=version pairs from all workspace Cargo.toml files.
+deps=$(
+  for toml in "$REPO_DIR"/masochist-*/Cargo.toml; do
+    sed -n '/^\[dependencies\]/,/^\[/p' "$toml" \
+      | grep -v '^\[' \
+      | sed -n \
+        -e 's/^\([a-zA-Z0-9_-]*\)[[:space:]]*=[[:space:]]*"\([^"]*\)".*/\1 \2/p' \
+        -e 's/^\([a-zA-Z0-9_-]*\)[[:space:]]*=[[:space:]]*{.*version[[:space:]]*=[[:space:]]*"\([^"]*\)".*/\1 \2/p'
+  done | sort -u -k1,1
+)
+
+outdated=0
+while read -r crate pinned; do
+  if [ -z "$pinned" ]; then
+    continue
+  fi
+
+  latest=$(cargo search "$crate" --limit 1 2>/dev/null \
+    | awk -v c="$crate" '$1 == c { gsub(/"/, "", $3); print $3 }')
+
+  if [ -z "$latest" ]; then
+    printf "%-25s  %-20s  (not found on crates.io)\n" "$crate" "$pinned"
+  elif [ "$pinned" = "$latest" ]; then
+    printf "%-25s  %-20s  (up to date)\n" "$crate" "$pinned"
+  else
+    printf "%-25s  %-20s  -> %s\n" "$crate" "$pinned" "$latest"
+    outdated=1
+  fi
+done <<< "$deps"
+
+exit $outdated
