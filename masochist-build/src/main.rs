@@ -465,12 +465,30 @@ fn generate_site(
 
     // Redirect file for Caddy.
     let mut caddy_redirects = String::new();
+    let mut has_invalid_redirects = false;
     for r in redirects {
         let source = match r.content_type {
             ContentType::Wiki => format!("/wiki/{}", r.id.replace(' ', "_")),
             _ => format!("/{}/{}", r.content_type.directory(), r.id),
         };
+        if !is_valid_caddy_value(&source) {
+            eprintln!(
+                "error: redirect source contains invalid characters: {source:?} (id={:?})",
+                r.id
+            );
+            has_invalid_redirects = true;
+        }
+        if !is_valid_caddy_value(&r.target) {
+            eprintln!(
+                "error: redirect target contains invalid characters: {:?} (id={:?})",
+                r.target, r.id
+            );
+            has_invalid_redirects = true;
+        }
         caddy_redirects.push_str(&format!("redir {source} {} permanent\n", r.target));
+    }
+    if has_invalid_redirects {
+        std::process::exit(1);
     }
     fs::write(out.join("_redirects.caddy"), &caddy_redirects).expect("failed to write redirects");
 
@@ -579,6 +597,13 @@ fn extract_static_files(repo_path: &str, output_dir: &str) {
     eprintln!("  static: extracted {count} files in {:?}", start.elapsed());
 }
 
+fn is_valid_caddy_value(s: &str) -> bool {
+    !s.is_empty()
+        && !s
+            .bytes()
+            .any(|b| b == b'\n' || b == b'\r' || b == b'\0' || b == b' ' || b == b'\t')
+}
+
 fn walkdir(dir: &Path) -> usize {
     let mut count = 0;
     if let Ok(entries) = fs::read_dir(dir) {
@@ -592,4 +617,48 @@ fn walkdir(dir: &Path) -> usize {
         }
     }
     count
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn valid_caddy_values() {
+        assert!(is_valid_caddy_value("/foo/bar"));
+        assert!(is_valid_caddy_value("https://example.com/path"));
+        assert!(is_valid_caddy_value("/wiki/Some_Page"));
+        assert!(is_valid_caddy_value("/blog/my-post"));
+        assert!(is_valid_caddy_value("http://example.com/redirect?q=1&r=2"));
+    }
+
+    #[test]
+    fn rejects_empty_string() {
+        assert!(!is_valid_caddy_value(""));
+    }
+
+    #[test]
+    fn rejects_newline() {
+        assert!(!is_valid_caddy_value("/safe\nrespond \"pwned\" 200"));
+    }
+
+    #[test]
+    fn rejects_carriage_return() {
+        assert!(!is_valid_caddy_value("/safe\rrespond \"pwned\" 200"));
+    }
+
+    #[test]
+    fn rejects_null_byte() {
+        assert!(!is_valid_caddy_value("/safe\0evil"));
+    }
+
+    #[test]
+    fn rejects_space() {
+        assert!(!is_valid_caddy_value("/path with spaces"));
+    }
+
+    #[test]
+    fn rejects_tab() {
+        assert!(!is_valid_caddy_value("/path\twith\ttabs"));
+    }
 }
