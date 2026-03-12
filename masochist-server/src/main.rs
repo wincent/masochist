@@ -47,8 +47,10 @@ impl Fairing for RateLimitFairing {
     }
 
     async fn on_request(&self, req: &mut Request<'_>, _data: &mut Data<'_>) {
-        let ip = req.client_ip().map(|ip| ip.to_string()).unwrap_or_default();
-        let limited = self.limiter.check_key(&ip).is_err();
+        let limited = match req.client_ip() {
+            Some(ip) => self.limiter.check_key(&ip.to_string()).is_err(),
+            None => true,
+        };
         req.local_cache(|| limited);
     }
 
