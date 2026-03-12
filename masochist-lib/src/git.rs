@@ -169,12 +169,12 @@ impl GitRepo {
         branch: &str,
         patterns: &[String],
         directories: &[String],
-    ) -> Vec<(String, String)> {
+    ) -> Result<Vec<(String, String)>, std::io::Error> {
         let mut cmd = self.command();
         cmd.args([
             "grep",
             "-I",          // Ignore binary files.
-            "-P",          // Perl-compatible regex.
+            "-F",          // Fixed strings.
             "-i",          // Ignore case.
             "-l",          // List filenames only.
             "-z",          // NUL-delimited output.
@@ -192,20 +192,20 @@ impl GitRepo {
             cmd.arg(dir);
         }
 
-        let output = cmd.output().expect("failed to run git grep");
+        let output = cmd.output()?;
 
         // Exit code 1 means "nothing found" — not an error.
         if !output.status.success() && output.status.code() != Some(1) {
-            panic!(
+            return Err(std::io::Error::other(format!(
                 "git grep failed: {}",
                 String::from_utf8_lossy(&output.stderr)
-            );
+            )));
         }
 
         let stdout = String::from_utf8(output.stdout).unwrap_or_default();
 
         // Output format: "<branch>:content/<type>/<filename>\0"
-        stdout
+        Ok(stdout
             .split('\0')
             .filter(|s| !s.is_empty())
             .filter_map(|entry| {
@@ -221,7 +221,7 @@ impl GitRepo {
                 };
                 Some((dir.to_string(), id.to_string()))
             })
-            .collect()
+            .collect())
     }
 
     /// Extract createdAt/updatedAt timestamps for all files under the given paths

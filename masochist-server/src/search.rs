@@ -163,7 +163,9 @@ pub fn search(corpus: &SearchCorpus, repo_path: &str, query: &str) -> Vec<Search
     // Content-based results via git grep.
     if !patterns.is_empty() {
         let repo = GitRepo::new(repo_path);
-        let hits = repo.grep("content", &patterns, &directories);
+        let hits = repo
+            .grep("content", &patterns, &directories)
+            .unwrap_or_default();
         for (dir, id) in hits {
             let key = format!("{dir}/{id}");
             if !seen.contains_key(&key)
