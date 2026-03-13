@@ -51,12 +51,6 @@ That didn't work, looks like `--enable-all-static` is not enough; lots of [libto
 
 And many test failures in the `make check`. Evidently it will be necessary to manually perform static builds for the dependent libraries prior to proceeding with the build.
 
-I've uploaded the scripts I used to perform the static build here:
-
--   <http://wincent.dev/gpl/svn-1.4.2/intel/svn-mac-build.zip>
-
-These are modifications of the scripts by D.J. Hagberg who maintains static builds of Subversion for various platforms.
-
 The resulting static builds work, but I wanted to get my non-static build working as well:
 
     cd ..

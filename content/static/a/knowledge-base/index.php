@@ -1095,10 +1095,7 @@ deny from all
             I was just trying to build a copy of <tt>pstree</tt> for Intel and
             it appears that the website is no more. Not sure if this is a
             temporary outage or a permanent issue. Luckily I had a copy of the
-            source archive, the latest version as far as I know (2.27). Seeing
-            as the software is licensed for distribution under the GPL I've
-            mirrored a copy
-            <a href="https://wincent.dev/gpl/pstree-2.27.tar.gz">here</a>.
+            source archive, the latest version as far as I know (2.27).
           </p>
 
           <p class="more-categories">
