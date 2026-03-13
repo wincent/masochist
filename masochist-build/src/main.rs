@@ -455,6 +455,9 @@ fn generate_site(
     write_page(out, "404.html", &templates::not_found());
     write_page(out, "429.html", &templates::too_many_requests());
 
+    let rss = generate_rss(items, &index.blog, rendered);
+    fs::write(out.join("blog.rss"), &rss).expect("failed to write RSS feed");
+
     // Per-tag pages.
     for tag in &index.tags {
         if let Some(indices) = index.items_by_tag.get(&tag.name) {
@@ -597,6 +600,77 @@ fn extract_static_files(repo_path: &str, output_dir: &str) {
     eprintln!("  static: extracted {count} files in {:?}", start.elapsed());
 }
 
+fn strip_html_tags(html: &str) -> String {
+    let mut result = String::with_capacity(html.len());
+    let mut in_tag = false;
+    for ch in html.chars() {
+        match ch {
+            '<' => in_tag = true,
+            '>' => in_tag = false,
+            _ if !in_tag => result.push(ch),
+            _ => {}
+        }
+    }
+    result
+}
+
+fn make_excerpt(html: &str, max_chars: usize) -> String {
+    let text = strip_html_tags(html);
+    let collapsed: String = text.split_whitespace().collect::<Vec<_>>().join(" ");
+    let char_count = collapsed.chars().count();
+    if char_count <= max_chars {
+        return collapsed;
+    }
+    let end = collapsed
+        .char_indices()
+        .nth(max_chars)
+        .map(|(i, _)| i)
+        .unwrap_or(collapsed.len());
+    let truncated = &collapsed[..end];
+    match truncated.rfind(' ') {
+        Some(pos) => format!("{}...", &truncated[..pos]),
+        None => format!("{truncated}..."),
+    }
+}
+
+fn generate_rss(items: &[ContentItem], blog: &[usize], rendered: &[String]) -> String {
+    let count = std::cmp::min(10, blog.len());
+    let rss_items: Vec<rss::Item> = blog[..count]
+        .iter()
+        .map(|&idx| {
+            let item = &items[idx];
+            let description = item
+                .description
+                .clone()
+                .unwrap_or_else(|| make_excerpt(&rendered[idx], 560));
+            let pub_date = chrono::DateTime::from_timestamp(item.timestamps.created_at, 0)
+                .map(|dt| dt.format("%a, %d %b %Y %H:%M:%S +0000").to_string());
+            let url = format!("https://wincent.dev{}", item.url());
+            rss::ItemBuilder::default()
+                .title(item.title.clone())
+                .link(url.clone())
+                .guid(
+                    rss::GuidBuilder::default()
+                        .value(url)
+                        .permalink(true)
+                        .build(),
+                )
+                .pub_date(pub_date)
+                .description(description)
+                .build()
+        })
+        .collect();
+
+    rss::ChannelBuilder::default()
+        .title("wincent.dev blog")
+        .link("https://wincent.dev/blog")
+        .description("wincent.dev blog")
+        .generator("Masochist".to_string())
+        .items(rss_items)
+        .build()
+        .to_string()
+}
+
 fn is_valid_caddy_value(s: &str) -> bool {
     !s.is_empty()
         && !s
@@ -660,5 +734,60 @@ mod tests {
     #[test]
     fn rejects_tab() {
         assert!(!is_valid_caddy_value("/path\twith\ttabs"));
+    }
+
+    #[test]
+    fn test_strip_html_tags() {
+        assert_eq!(strip_html_tags("<p>hello</p>"), "hello");
+        assert_eq!(strip_html_tags("<div><p>nested</p></div>"), "nested");
+        assert_eq!(strip_html_tags("no tags here"), "no tags here");
+        assert_eq!(strip_html_tags("<br/>self closing"), "self closing");
+        assert_eq!(
+            strip_html_tags("<a href=\"url\">link</a> text"),
+            "link text"
+        );
+    }
+
+    #[test]
+    fn test_make_excerpt_short_content() {
+        assert_eq!(make_excerpt("<p>short</p>", 560), "short");
+    }
+
+    #[test]
+    fn test_make_excerpt_truncation() {
+        let html = format!("<p>{}</p>", "word ".repeat(200));
+        let excerpt = make_excerpt(&html, 50);
+        assert!(excerpt.len() <= 53); // 50 + "..."
+        assert!(excerpt.ends_with("..."));
+    }
+
+    #[test]
+    fn test_generate_rss() {
+        let items: Vec<ContentItem> = (0..15)
+            .map(|i| ContentItem {
+                content_type: ContentType::Blog,
+                id: format!("post-{i}"),
+                title: format!("Post {i}"),
+                tags: vec![],
+                body: ContentBody::Markdown(String::new()),
+                timestamps: content::Timestamps {
+                    created_at: 1_700_000_000 + i * 86400,
+                    updated_at: 1_700_000_000 + i * 86400,
+                },
+                description: None,
+            })
+            .collect();
+        let blog: Vec<usize> = (0..15).collect();
+        let rendered: Vec<String> = (0..15)
+            .map(|i| format!("<p>Content of post {i}</p>"))
+            .collect();
+
+        let rss = generate_rss(&items, &blog, &rendered);
+        assert!(rss.contains("<rss"));
+        assert!(rss.contains("wincent.dev blog"));
+        assert!(rss.contains("Post 0"));
+        assert!(rss.contains("Post 9"));
+        assert!(!rss.contains("Post 10"));
+        assert!(rss.contains("https://wincent.dev/blog/post-0"));
     }
 }
