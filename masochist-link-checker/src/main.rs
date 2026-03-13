@@ -54,6 +54,7 @@ fn is_asset_url(path: &str) -> bool {
 enum RedirectOutcome {
     Ok { status: StatusCode, body: String },
     Chain { status: StatusCode, body: String },
+    External,
     Loop { chain: Vec<String> },
     ExcessiveChain { chain: Vec<String> },
 }
@@ -569,6 +570,7 @@ async fn process_url(
     let (status, body) = match outcome {
         RedirectOutcome::Ok { status, body } => (status, body),
         RedirectOutcome::Chain { status, body } => (status, body),
+        RedirectOutcome::External => return,
         RedirectOutcome::Loop { chain } => {
             let mut problems = redirect_problems.lock().await;
             problems.push(RedirectProblem {
@@ -708,6 +710,10 @@ async fn follow_redirects(
         };
 
         let next_url = rewrite_wincent_dev_url(&resolved);
+
+        if !next_url.starts_with(BASE_URL) {
+            return Ok(RedirectOutcome::External);
+        }
 
         if seen.contains(&next_url) {
             chain.push(next_url);
