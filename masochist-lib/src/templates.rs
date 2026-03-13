@@ -37,12 +37,10 @@ pub fn base_layout(
                     meta property="og:url" content=(format!("https://wincent.dev{url}"));
                 }
                 link rel="stylesheet" href=(css_path);
-                @if let Some(url) = canonical {
-                    @if url == "/" || url.starts_with("/blog/") {
-                        link rel="home" type="application/rss+xml" href="/blog.rss";
-                    } @else if url == "/blog" {
-                        link rel="alternate" type="application/rss+xml" href="/blog.rss";
-                    }
+                @if canonical == Some("/blog") {
+                    link rel="alternate" type="application/rss+xml" href="/blog.rss";
+                } @else if canonical == Some("/") || active_nav == "Blog" {
+                    link rel="home" type="application/rss+xml" href="/blog.rss";
                 }
             }
             body {
