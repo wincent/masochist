@@ -4,13 +4,20 @@ use masochist_lib::index::TagEntry;
 use masochist_lib::templates::{format_date, render_tags_compact};
 use maud::{Markup, PreEscaped, html};
 
-fn base_layout(title: &str, active_nav: &str, canonical: Option<&str>, body: Markup) -> Markup {
+fn base_layout(
+    title: &str,
+    active_nav: &str,
+    canonical: Option<&str>,
+    description: Option<&str>,
+    body: Markup,
+) -> Markup {
     masochist_lib::templates::base_layout(
         title,
         active_nav,
         &assets::css_path(),
         &assets::js_path(),
         canonical,
+        description,
         body,
     )
 }
@@ -65,6 +72,7 @@ pub fn blog_post(
         &item.title,
         "Blog",
         None,
+        item.description.as_deref(),
         html! {
             article {
                 div.readability {
@@ -105,6 +113,7 @@ pub fn wiki_article(item: &ContentItem, rendered_html: &str) -> Markup {
         &item.title,
         "Wiki",
         None,
+        item.description.as_deref(),
         html! {
             article {
                 h1.article-header {
@@ -131,6 +140,7 @@ pub fn snippet_page(
         &item.title,
         "Snippets",
         None,
+        item.description.as_deref(),
         html! {
             article {
                 h1 { a href=(item.url()) { (item.title) } }
@@ -164,6 +174,7 @@ pub fn generic_page(item: &ContentItem, rendered_html: &str) -> Markup {
         &item.title,
         "",
         None,
+        item.description.as_deref(),
         html! {
             article {
                 div.readability {
@@ -185,6 +196,7 @@ pub fn blog_landing(items: &[ContentItem], blog_indices: &[usize], rendered: &[S
         "blog",
         "Blog",
         Some("/blog"),
+        None,
         html! {
             @for &idx in &blog_indices[..count] {
                 @let item = &items[idx];
@@ -232,6 +244,7 @@ pub fn blog_archive(items: &[ContentItem], blog_indices: &[usize]) -> Markup {
         "All Blog Posts",
         "Blog",
         None,
+        None,
         html! {
             h1 { "All Blog Posts" }
             @for (year, indices) in &years {
@@ -249,6 +262,7 @@ pub fn wiki_index(items: &[ContentItem], wiki_indices: &[usize]) -> Markup {
     base_layout(
         "wiki",
         "Wiki",
+        None,
         None,
         html! {
             h1 { "Wiki articles" }
@@ -285,6 +299,7 @@ pub fn snippets_landing(
         "snippets",
         "Snippets",
         Some("/snippets"),
+        None,
         html! {
             @for &idx in &snippets_indices[..count] {
                 @let item = &items[idx];
@@ -315,6 +330,7 @@ pub fn snippets_archive(items: &[ContentItem], snippets_indices: &[usize]) -> Ma
     base_layout(
         "All Snippets",
         "Snippets",
+        None,
         None,
         html! {
             h1 { "All Snippets" }
@@ -347,6 +363,7 @@ pub fn tags_index(tags: &[TagEntry]) -> Markup {
         "tags",
         "Tags",
         None,
+        None,
         html! {
             h1 { "Tags" }
             label for="tag-filter" { "Filter tags" }
@@ -375,6 +392,7 @@ pub fn tag_page(tag_name: &str, items: &[ContentItem], indices: &[usize]) -> Mar
     base_layout(
         tag_name,
         "Tags",
+        None,
         None,
         html! {
             h1 { a href=(format!("/tags/{tag_name}")) { (tag_name) } }
@@ -407,6 +425,7 @@ pub fn search_page() -> Markup {
         "search",
         "Search",
         None,
+        None,
         html! {
             h1 { "Search" }
             form action="/search" method="get" {
@@ -421,6 +440,7 @@ pub fn not_found() -> Markup {
         "Not Found",
         "",
         None,
+        None,
         html! {
             h1 { "Not Found" }
             p { "The page you're looking for doesn't exist." }
@@ -432,6 +452,7 @@ pub fn too_many_requests() -> Markup {
     base_layout(
         "Too Many Requests",
         "",
+        None,
         None,
         html! {
             h1 { "Too Many Requests" }

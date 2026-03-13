@@ -60,6 +60,7 @@ pub fn search_page(query: &str, results: &[SearchResult], css_path: &str, js_pat
         css_path,
         js_path,
         None,
+        None,
         html! {
             h1 {
                 @if query.is_empty() {

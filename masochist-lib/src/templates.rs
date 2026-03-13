@@ -14,6 +14,7 @@ pub fn base_layout(
     css_path: &str,
     js_path: &str,
     canonical: Option<&str>,
+    description: Option<&str>,
     body: Markup,
 ) -> Markup {
     html! {
@@ -23,8 +24,17 @@ pub fn base_layout(
                 meta charset="utf-8";
                 meta name="viewport" content="width=device-width, initial-scale=1";
                 title { (title) " \u{2022} wincent.dev" }
+                meta property="og:title" content=(title);
+                @if let Some(desc) = description {
+                    meta property="og:type" content="article";
+                    meta property="og:description" content=(desc);
+                } @else {
+                    meta property="og:type" content="website";
+                }
+                meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg";
                 @if let Some(url) = canonical {
                     link rel="canonical" href=(format!("https://wincent.dev{url}"));
+                    meta property="og:url" content=(format!("https://wincent.dev{url}"));
                 }
                 link rel="stylesheet" href=(css_path);
             }
