@@ -3,7 +3,7 @@ use maud::{DOCTYPE, Markup, html};
 pub fn format_date(ts: i64) -> String {
     let dt = chrono::DateTime::from_timestamp(ts, 0);
     match dt {
-        Some(dt) => dt.format("%-m/%-d/%Y").to_string(),
+        Some(dt) => dt.format("%Y-%m-%d").to_string(),
         None => "Unknown".to_string(),
     }
 }
