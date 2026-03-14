@@ -646,7 +646,7 @@
           </h5>
           <a href="Leopard.synergyButtons.tar.gz"
             ><img
-              src="Leopard.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/Leopard.png"
               alt="Leopard"
               title="Copyright 2007 Colin Dunn"
           /></a>
@@ -654,7 +654,7 @@
           <h5>"Xidius' Orange Aluminum" by: Xidius</h5>
           <a href="XidiusOrangeAluminum.synergyButtons.tar.gz"
             ><img
-              src="OrangeAluminum.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/OrangeAluminum.png"
               alt="Xidius' Orange Aluminum"
               title="Copyright 2007 Xidius"
           /></a>
@@ -662,7 +662,7 @@
           <h5>"Xidius' White Tiger Bar" by: Xidius</h5>
           <a href="XidiusWhiteTigerBar.synergyButtons.tar.gz"
             ><img
-              src="WhiteTigerBar.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/WhiteTigerBar.png"
               alt="Xidius' White Tiger Bar"
               title="Copyright 2007 Xidius"
           /></a>
@@ -670,7 +670,7 @@
           <h5>"Xidius' Transparent Bar (made for Leopard)" by: Xidius</h5>
           <a href="XidiusTransparentBar.synergyButtons.tar.gz"
             ><img
-              src="TransparentBar.jpg"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/TransparentBar.jpg"
               alt="Xidius' Transparent Bar"
               title="Copyright 2007 Xidius"
           /></a>
@@ -680,7 +680,7 @@
           <h5>"Xidius' Orange Steel" by: Xidius</h5>
           <a href="XidiusOrangeSteel.synergyButtons.tar.gz"
             ><img
-              src="OrangeSteel.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/OrangeSteel.png"
               alt="Xidius' Orange Steel"
               title="Copyright 2007 Xidius"
           /></a>
@@ -688,7 +688,7 @@
           <h5>"Xidius' Glass Bar (made for Leopard)" by: Xidius</h5>
           <a href="XidiusGlassBar.synergyButtons.tar.gz"
             ><img
-              src="GlassBar.jpg"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/GlassBar.jpg"
               alt="Xidius' Glass Bar"
               title="Copyright 2007 Xidius"
           /></a>
@@ -696,7 +696,7 @@
           <h5>"Xidius' Blue Bar" by: Xidius</h5>
           <a href="XidiusBlueBar.synergyButtons.tar.gz"
             ><img
-              src="BlueBar.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/BlueBar.png"
               alt="Xidius' Blue Bar"
               title="Copyright 2007 Xidius"
           /></a>
@@ -709,7 +709,7 @@
         <h5>"Kamino 2" by: Bastian Olea</h5>
         <a href="Kamino2.synergyButtons.tar.gz"
           ><img
-            src="Kamino2.png"
+            src="https://wincent.dev/a/products/synergy-classic/buttons/Kamino2.png"
             alt="Kamino 2"
             title="Copyright 2007 Bastian Olea."
         /></a>
@@ -724,7 +724,7 @@
           </h5>
           <a href="TigerDivide.synergyButtons.tar.gz"
             ><img
-              src="TigerDivide.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/TigerDivide.png"
               alt="TigerDivide"
               title="Copyright 2007 Evan Robert."
           /></a>
@@ -734,7 +734,7 @@
           </h5>
           <a href="Eye.synergyButtons.tar.gz"
             ><img
-              src="Eye.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/Eye.png"
               alt="Eye"
               title="Copyright 2007 Stefan Haddewig."
           /></a>
@@ -746,7 +746,7 @@
           </h5>
           <a href="Pure.synergyButtons.tar.gz"
             ><img
-              src="Pure.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/Pure.png"
               alt="Pure"
               title="Copyright 2007 Stefan Haddewig."
           /></a>
@@ -760,7 +760,7 @@
           <h5>"Nature" by: Evan Robert</h5>
           <a href="Nature.synergyButtons.tar.gz"
             ><img
-              src="Nature.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/Nature.png"
               alt="Nature"
               title="Copyright 2007 Evan Robert."
           /></a>
@@ -770,7 +770,7 @@
           <h5>"WoodPanel" by: Evan Robert</h5>
           <a href="WoodPanel.synergyButtons.tar.gz"
             ><img
-              src="WoodPanel.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/WoodPanel.png"
               alt="WoodPanel"
               title="Copyright 2007 Evan Robert."
           /></a>
@@ -787,7 +787,7 @@
           </h5>
           <a href="cool2.synergyButtons.tar.gz"
             ><img
-              src="cool2.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/cool2.png"
               alt="cool2"
               title="Copyright 2006 Charles Hodgson."
           /></a>
@@ -798,7 +798,7 @@
           </h5>
           <a href="pencil.synergyButtons.tar.gz"
             ><img
-              src="pencil.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/pencil.png"
               alt="pencil"
               title="Copyright 2006 Charles Hodgson."
           /></a>
@@ -809,7 +809,7 @@
           </h5>
           <a href="TripleGoddess.synergyButtons.tar.gz"
             ><img
-              src="TripleGoddess.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/TripleGoddess.png"
               alt="Triple Goddess"
               title="Copyright 2006 subscriber3."
           /></a>
@@ -819,7 +819,7 @@
           <h5>"Amora" by: Jon Redmond</h5>
           <a href="Amora.synergyButtons.tar.gz"
             ><img
-              src="Amora.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/Amora.png"
               alt="Amora"
               title="Copyright 2006 Jon Redmond."
           /></a>
@@ -827,7 +827,7 @@
           <h5>"Amora2" by: Jon Redmond</h5>
           <a href="Amora2.synergyButtons.tar.gz"
             ><img
-              src="Amora2.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/Amora2.png"
               alt="Amora2"
               title="Copyright 2006 Jon Redmond."
           /></a>
@@ -845,7 +845,7 @@
         </h5>
         <a href="Smallblack.synergyButtons.tar.gz"
           ><img
-            src="Smallblack.png"
+            src="https://wincent.dev/a/products/synergy-classic/buttons/Smallblack.png"
             alt="Smallblack"
             title="Copyright 2006 Leonardo Alcantara, All Rights Reserved."
         /></a>
@@ -860,7 +860,7 @@
           </h5>
           <a href="JoboScreen_alt.synergyButtons.tar.gz"
             ><img
-              src="JoboScreen.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/JoboScreen.png"
               alt="JoboScreen"
               title="Copyright &copy; 2005 Ricardo J. Rivera, All Rights Reserved."
           /></a>
@@ -872,7 +872,7 @@
           </h5>
           <a href="SlimCool-Capsule.synergyButtons.tar.gz"
             ><img
-              src="SlimCool-Capsule.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/SlimCool-Capsule.png"
               alt="Slim Cool-Capsule"
               title="Copyright &copy; 2005 Ricardo J. Rivera, All Rights Reserved."
           /></a>
@@ -884,7 +884,7 @@
           </h5>
           <a href="SlimHot-Capsule.synergyButtons.tar.gz"
             ><img
-              src="SlimHot-Capsule.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/SlimHot-Capsule.png"
               alt="Slim Hot-Capsule"
               title="Copyright &copy; 2005 Ricardo J. Rivera, All Rights Reserved."
           /></a>
@@ -896,7 +896,7 @@
           </h5>
           <a href="XBrushedDeck-Jumper.synergyButtons.tar.gz"
             ><img
-              src="XBrushedDeck-Jumper.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/XBrushedDeck-Jumper.png"
               alt="XBrushed Deck-Jumper"
               title="Copyright &copy; 2005 Ricardo J. Rivera, All Rights Reserved."
           /></a>
@@ -908,7 +908,7 @@
           </h5>
           <a href="XBrushedDeck-Stereo.synergyButtons.tar.gz"
             ><img
-              src="XBrushedDeck-Stereo.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/XBrushedDeck-Stereo.png"
               alt="XBrushed Deck-Stereo"
               title="Copyright &copy; 2005 Ricardo J. Rivera, All Rights Reserved."
           /></a>
@@ -920,7 +920,7 @@
           </h5>
           <a href="XBrushedDeck-Tabbed.synergyButtons.tar.gz"
             ><img
-              src="XBrushedDeck-Tabbed.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/XBrushedDeck-Tabbed.png"
               alt="XBrushed Deck-Tabbed"
               title="Copyright &copy; 2005 Ricardo J. Rivera, All Rights Reserved."
           /></a>
@@ -932,7 +932,7 @@
           </h5>
           <a href="XBrushedDeck.synergyButtons.tar.gz"
             ><img
-              src="XBrushedDeck.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/XBrushedDeck.png"
               alt="XBrushed Deck"
               title="Copyright &copy; 2005 Ricardo J. Rivera, All Rights Reserved."
           /></a>
@@ -944,7 +944,7 @@
           </h5>
           <a href="XCapsuleApple-Generic.synergyButtons.tar.gz"
             ><img
-              src="XCapsuleApple-Generic.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/XCapsuleApple-Generic.png"
               alt="XCapsule Apple-Generic"
               title="Copyright &copy; 2005 Ricardo J. Rivera, All Rights Reserved."
           /></a>
@@ -956,7 +956,7 @@
           </h5>
           <a href="XCapsuleAqua.synergyButtons.tar.gz"
             ><img
-              src="XCapsuleAqua.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/XCapsuleAqua.png"
               alt="XCapsule Aqua"
               title="Copyright &copy; 2005 Ricardo J. Rivera, All Rights Reserved."
           /></a>
@@ -968,7 +968,7 @@
           </h5>
           <a href="XCapsuleBlueberry-Bondi.synergyButtons.tar.gz"
             ><img
-              src="XCapsuleBlueberry-Bondi.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/XCapsuleBlueberry-Bondi.png"
               alt="XCapsule Blueberry-Bondi"
               title="Copyright &copy; 2005 Ricardo J. Rivera, All Rights Reserved."
           /></a>
@@ -980,7 +980,7 @@
           </h5>
           <a href="XCapsuleGraphite.synergyButtons.tar.gz"
             ><img
-              src="XCapsuleGraphite.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/XCapsuleGraphite.png"
               alt="XCapsule Graphite"
               title="Copyright &copy; 2005 Ricardo J. Rivera, All Rights Reserved."
           /></a>
@@ -992,7 +992,7 @@
           </h5>
           <a href="XCapsuleSnow.synergyButtons.tar.gz"
             ><img
-              src="XCapsuleSnow.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/XCapsuleSnow.png"
               alt="XCapsule Snow"
               title="Copyright &copy; 2005 Ricardo J. Rivera, All Rights Reserved."
           /></a>
@@ -1006,7 +1006,7 @@
           </h5>
           <a href="XDeck-Graphite.synergyButtons.tar.gz"
             ><img
-              src="XDeck-Graphite.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/XDeck-Graphite.png"
               alt="XDeck-Graphite"
               title="Copyright &copy; 2005 Ricardo J. Rivera, All Rights Reserved."
           /></a>
@@ -1018,7 +1018,7 @@
           </h5>
           <a href="XJeweledCapsuleAqua.synergyButtons.tar.gz"
             ><img
-              src="XJeweledCapsuleAqua.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/XJeweledCapsuleAqua.png"
               alt="XJeweled Capsule Aqua"
               title="Copyright &copy; 2005 Ricardo J. Rivera, All Rights Reserved."
           /></a>
@@ -1030,7 +1030,7 @@
           </h5>
           <a href="XJeweledCapsuleBlack-Blue.synergyButtons.tar.gz"
             ><img
-              src="XJeweledCapsuleBlack-Blue.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/XJeweledCapsuleBlack-Blue.png"
               alt="XJeweled Capsule Black-Blue"
               title="Copyright &copy; 2005 Ricardo J. Rivera, All Rights Reserved."
           /></a>
@@ -1042,7 +1042,7 @@
           </h5>
           <a href="XKiller-WhaleCapsule.synergyButtons.tar.gz"
             ><img
-              src="XKiller-WhaleCapsule.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/XKiller-WhaleCapsule.png"
               alt="XKiller-Whale Capsule"
               title="Copyright &copy; 2005 Ricardo J. Rivera, All Rights Reserved."
           /></a>
@@ -1061,7 +1061,7 @@
           </h5>
           <a href="iTunez-Mini.synergyButtons.tar.gz"
             ><img
-              src="iTunez-Mini.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/iTunez-Mini.png"
               alt="iTunez-Mini"
               title="Copyright &copy; 2005 Ricardo J. Rivera, All Rights Reserved."
           /></a>
@@ -1074,7 +1074,7 @@
           </h5>
           <a href="Colorful.synergyButtons.tar.gz"
             ><img
-              src="Colorful.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/Colorful.png"
               alt="Colorful"
               title="Copyright &copy; 2005 Piotr Gajos, All Rights Reserved."
           /></a>
@@ -1087,7 +1087,7 @@
           </h5>
           <a href="PM2K5.synergyButtons.tar.gz"
             ><img
-              src="PM2K5.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/PM2K5.png"
               alt="PM2K5"
               title="Copyright &copy; 2005 Piotr Gajos, All Rights Reserved."
           /></a>
@@ -1100,7 +1100,7 @@
           </h5>
           <a href="Powermetal.synergyButtons.tar.gz"
             ><img
-              src="Powermetal.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/Powermetal.png"
               alt="Powermetal"
               title="Copyright &copy; 2005 Piotr Gajos, All Rights Reserved."
           /></a>
@@ -1114,12 +1114,12 @@
           />
           <h5>"The Incredibles" by: Dougy</h5>
           <a href="TheIncredibles.synergyButtons.tar.gz"
-            ><img src="TheIncredibles.png" alt="The Incredibles"
+            ><img src="https://wincent.dev/a/products/synergy-classic/buttons/TheIncredibles.png" alt="The Incredibles"
           /></a>
 
           <h5>"Red Hot Chili" by: Dougy</h5>
           <a href="RedHotChili.synergyButtons.tar.gz"
-            ><img src="RedHotChili.png" alt="Red Hot Chili"
+            ><img src="https://wincent.dev/a/products/synergy-classic/buttons/RedHotChili.png" alt="Red Hot Chili"
           /></a>
 
           <img
@@ -1138,7 +1138,7 @@
           </h5>
           <a href="TigerAqua.synergyButtons.tar.gz"
             ><img
-              src="TigerAqua.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/TigerAqua.png"
               alt="TigerAqua"
               title="Copyright &copy; 2005 Wolfgang Bartelme, All Rights Reserved."
           /></a>
@@ -1159,7 +1159,7 @@
           </h5>
           <a href="TigerGraphit.synergyButtons.tar.gz"
             ><img
-              src="TigerGraphit.png"
+              src="https://wincent.dev/a/products/synergy-classic/buttons/TigerGraphit.png"
               alt="TigerGraphit"
               title="Copyright &copy; 2005 Wolfgang Bartelme, All Rights Reserved."
           /></a>
