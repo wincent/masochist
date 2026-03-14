@@ -3,4 +3,4 @@ title: Nightly build system
 tags: snippets
 ---
 
-[Now up](http://wincent.dev/s/nightlies/).
+[Now up](https://wincent.dev/s/nightlies/).

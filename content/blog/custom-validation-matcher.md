@@ -3,7 +3,7 @@ title: Custom validation matcher
 tags: blog
 ---
 
-Thanks to [FixtureReplacement](http://wincent.dev/wiki/FixtureReplacement) my [Rails](http://wincent.dev/wiki/Rails) model [specs](http://wincent.dev/wiki/specs) are looking awfully clean:
+Thanks to [FixtureReplacement](https://wincent.dev/wiki/FixtureReplacement) my [Rails](https://wincent.dev/wiki/Rails) model [specs](https://wincent.dev/wiki/specs) are looking awfully clean:
 
     describe User, 'validating the login name' do
       it 'should require it to be present' do

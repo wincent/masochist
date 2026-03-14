@@ -50,7 +50,7 @@ The only Apple tool that can parse the dSYM format is [GDB](/wiki/GDB). You can 
 
 While waiting for Apple to update `atos(1)` to work with dSYM files I've thrown together a quick tool to serve as a temporary substitute.
 
-See: <http://wincent.dev/a/products/atosym/>
+See: <https://wincent.dev/a/products/atosym/>
 
 ## Checkout via svn
 

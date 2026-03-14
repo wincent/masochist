@@ -853,7 +853,7 @@
               <ul>
                 <li><a href="https://wincent.dev/">Wincent company page</a></li>
                 <li>
-                  <a href="http://wincent.dev/"
+                  <a href="https://wincent.dev/"
                     >Synergy product information</a
                   >
                 </li>

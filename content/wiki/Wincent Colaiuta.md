@@ -7,4 +7,4 @@ title: Wincent Colaiuta
 -   Personal weblog: [wincent.dev/blog](https://wincent.dev/blog)
 -   Software: [github/wincent](https://github.com/wincent)
 
-[^older]: Older info about ["Wincent Colaiuta"](http://wincent.dev/a/about/wincent/)
+[^older]: Older info about ["Wincent Colaiuta"](https://wincent.dev/a/about/wincent/)

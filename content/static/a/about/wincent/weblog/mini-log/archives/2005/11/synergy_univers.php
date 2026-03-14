@@ -677,7 +677,7 @@
 
         <p>
           I am hoping to have
-          <a href="http://wincent.dev/">Synergy</a> up and running as a
+          <a href="https://wincent.dev/">Synergy</a> up and running as a
           Universal Binary by the end of today.
         </p>
 

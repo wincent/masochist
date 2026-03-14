@@ -979,7 +979,7 @@
             <li>
               Final fix for missing cover art problem caused by iTunes 7.6.1 and
               7.6.2 (fixes
-              <a href="http://wincent.dev/issues/668">bug #668</a>).
+              <a href="https://wincent.dev/issues/668">bug #668</a>).
             </li>
           </ul>
 
@@ -989,12 +989,12 @@
             <li>
               Work around missing cover art problem caused by iTunes 7.6.1 and
               7.6.2 (fixes
-              <a href="http://wincent.dev/issues/668">bug #668</a>).
+              <a href="https://wincent.dev/issues/668">bug #668</a>).
             </li>
             <li>Speed up cover art retrieval.</li>
             <li>
               Catch NSGenericExceptions thrown by Leopard Script Bridge (fixes
-              <a href="http://wincent.dev/issues/657">bug #657</a>).
+              <a href="https://wincent.dev/issues/657">bug #657</a>).
             </li>
             <li>
               <strong>Note:</strong> the crashes caused by NSAppleScript under
@@ -1028,7 +1028,7 @@
             <li>
               Work around missing cover art problem caused by iTunes 7.6.1 and
               7.6.2 (fixes
-              <a href="http://wincent.dev/issues/668">bug #668</a>).
+              <a href="https://wincent.dev/issues/668">bug #668</a>).
             </li>
             <li>Speed up cover art retrieval.</li>
           </ul>
@@ -2238,8 +2238,8 @@
             <li>
               [New] Corrections and many additions to the Online Button Set
               gallery at
-              <a href="http://wincent.dev/buttons/"
-                >&lt;http://wincent.dev/buttons/&gt;</a
+              <a href="https://wincent.dev/buttons/"
+                >&lt;https://wincent.dev/buttons/&gt;</a
               >. The gallery now contains just under 60 free sets; including 11
               new sets (by David Drucker, Eric Stumbaugh, Oliver Waters, Phil
               Daulton, Stephen Way and Wynn H Burton).
@@ -2286,8 +2286,8 @@
             </li>
             <li>
               [Feature] Online Button Set gallery launched at
-              <a href="http://wincent.dev/buttons/"
-                >&lt;http://wincent.dev/buttons/&gt;</a
+              <a href="https://wincent.dev/buttons/"
+                >&lt;https://wincent.dev/buttons/&gt;</a
               >; there are currently 48 free button sets available for download,
               including 10 never-seen-before sets ("Aqua", "Aqua Buttons with
               Drop Shadow", "Synblack", "iTunes", "Icky", "iTunes Bordered",

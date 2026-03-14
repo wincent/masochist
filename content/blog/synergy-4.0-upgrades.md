@@ -36,6 +36,6 @@ All single-user licenses for Synergy 4.0 purchased through PayPal are 5€. Due 
 
 # How much notice will licensed users receive before the next paid upgrade?
 
-In this case I've tried to give very advanced notice ([starting back in January 2008](http://wincent.dev/a/news/archives/2008/01/synergy_35a3_re.php)) and be extremely liberal about how old licenses can be and still be valid for the new version (3 years).
+In this case I've tried to give very advanced notice ([starting back in January 2008](https://wincent.dev/a/news/archives/2008/01/synergy_35a3_re.php)) and be extremely liberal about how old licenses can be and still be valid for the new version (3 years).
 
 If there are ever any plans to introduce any further paid upgrades in the future, I will announce them with as much advance notice as possible.

@@ -1109,7 +1109,7 @@
 
           <p>
             I'm pleased to announce the availability of version 3.5a5 of
-            <a href="http://wincent.dev">Synergy</a>, the fifth alpha
+            <a href="https://wincent.dev">Synergy</a>, the fifth alpha
             release in the brand new 3.5 series. The last release, version 3.2,
             was
             <a href="https://wincent.dev/wiki/Leopard">Leopard</a
@@ -1235,7 +1235,7 @@
 
           <p>
             I'm pleased to announce the availability of version 3.5a4 of
-            <a href="http://wincent.dev">Synergy</a>, the fourth alpha
+            <a href="https://wincent.dev">Synergy</a>, the fourth alpha
             release in the brand new 3.5 series. The last release, version 3.2,
             was
             <a href="https://wincent.dev/wiki/Leopard">Leopard</a
@@ -1302,7 +1302,7 @@
 
           <p>
             I'm very pleased to announce the availability of version 3.5a3 of
-            <a href="http://wincent.dev">Synergy</a>, the third alpha
+            <a href="https://wincent.dev">Synergy</a>, the third alpha
             release in the brand new 3.5 series. The last release, version 3.2,
             was
             <a href="https://wincent.dev/wiki/Leopard">Leopard</a
@@ -1406,7 +1406,7 @@
 
           <p>
             Some users were unable to install the
-            <a href="http://wincent.dev">Synergy</a> 3.5a release made
+            <a href="https://wincent.dev">Synergy</a> 3.5a release made
             available a
             <a
               href="https://wincent.dev/a/news/archives/2007/11/synergy_35a_rel.php"
@@ -1438,7 +1438,7 @@
           <h3 id="a003173">Synergy 3.5a released</h3>
 
           <p>
-            The last <a href="http://wincent.dev">Synergy</a> release,
+            The last <a href="https://wincent.dev">Synergy</a> release,
             version 3.2, was
             <a href="https://wincent.dev/wiki/Leopard">Leopard</a
             >-compatible but would also run on all versions of
@@ -1489,7 +1489,7 @@
 
           <p>
             Although the latest version of
-            <a href="http://wincent.dev/">Synergy</a> already runs quite
+            <a href="https://wincent.dev/">Synergy</a> already runs quite
             well on all versions of
             <a href="https://wincent.dev/wiki/Mac%20OS%20X"
               >Mac OS X</a
@@ -1630,7 +1630,7 @@
           </p>
           <ul>
             <li>
-              <a href="http://wincent.dev">Synergy</a>: the lightweight,
+              <a href="https://wincent.dev">Synergy</a>: the lightweight,
               robust, and feature-packed iTunes controller.
             </li>
             <li>

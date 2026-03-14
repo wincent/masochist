@@ -5,7 +5,7 @@ tags: blog
 
 In this screencast I demo using [RSpec](http://rspec.info/) and [Autotest](http://www.zenspider.com/ZSS/Products/ZenTest/) to do continuous integration/BDD (choose your favorite buzzword) of a compiled Objective-C tool:
 
-[![](/images/rspec_autotest_objc.png)](http://wincent.dev/a/about/wincent/weblog/screencasts/rspec_autotest_objc.mov)
+[![](/images/rspec_autotest_objc.png)](https://wincent.dev/a/about/wincent/weblog/screencasts/rspec_autotest_objc.mov)
 
 I've got the flu right now, so apologies for the voice.
 

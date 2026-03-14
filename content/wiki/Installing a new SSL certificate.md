@@ -4,7 +4,7 @@ cache_breaker: 1
 title: Installing a new SSL certificate
 ---
 
-I [recently wrote](http://wincent.dev/a/about/wincent/weblog/archives/2007/01/ssl_fun.php) about obtaining a new [SSL](/wiki/SSL) certificate. Here are some notes made during the procedure.
+I [recently wrote](https://wincent.dev/a/about/wincent/weblog/archives/2007/01/ssl_fun.php) about obtaining a new [SSL](/wiki/SSL) certificate. Here are some notes made during the procedure.
 
 # Generating the Certificate Signing Request
 

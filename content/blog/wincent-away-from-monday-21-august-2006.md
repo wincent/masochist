@@ -8,9 +8,9 @@ I will be travelling starting Monday 21 August 2006 and will not have access to 
 In the meantime, please use the online support resources that are available to you 24 hours per day:
 
 -   [Lost license code retrieval system](https://wincent.dev/a/support/registration/)
--   [Support forums](http://wincent.dev/a/support/forums/)
--   [Bug tracking and feature requests database](http://wincent.dev/a/support/bugs/)
--   [Knowledge base](http://wincent.dev/a/knowledge-base/) and [product information pages](http://wincent.dev/a/products/)
+-   [Support forums](https://wincent.dev/a/support/forums/)
+-   [Bug tracking and feature requests database](https://wincent.dev/a/support/bugs/)
+-   [Knowledge base](https://wincent.dev/a/knowledge-base/) and [product information pages](https://wincent.dev/a/products/)
 -   [The Wincent online store](https://wincent.dev/a/store/) (licenses immediately delivered by automated systems)
 
 Please take care to supply the correct email address when purchasing products and if using PayPal make sure your account settings are up to date. Licenses are issued immediately by automated systems, so all you'll have to do is make sure that you provide a working email address and you will receive your license even though I'm out of town. You may also wish to make sure that your spam filters don't mistakenly eat any such messages, and if you have a challenge-response anti-spam system you'll need to turn that off or manually override it (the license issuing system ignores such challenges). For reference, licenses are sent from "win at wincent dot org", so you might want to white-list that address.

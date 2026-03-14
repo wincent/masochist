@@ -11,7 +11,7 @@ Example screencasts:
 
 An older [screencasts](/wiki/screencasts) archive can be found at:
 
--   http://wincent.dev/a/about/wincent/weblog/archives/screencasts/
+-   https://wincent.dev/a/about/wincent/weblog/archives/screencasts/
 
 # See also
 

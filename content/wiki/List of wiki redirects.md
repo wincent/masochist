@@ -23,7 +23,7 @@ This page exists to serve as a reminder of which wiki article titles are current
 
 ## Redirects to parts of the old site
 
--   [Synergy Advance](/wiki/Synergy_Advance): redirects to <http://wincent.dev/a/products/synergy-advance/>
+-   [Synergy Advance](/wiki/Synergy_Advance): redirects to <https://wincent.dev/a/products/synergy-advance/>
 
 ## Redirects to external sites
 

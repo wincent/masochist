@@ -27,7 +27,7 @@ Free licenses will be sent within 24 to 48 hours after receiving your submission
 
 -   [Purchase Synergy Advance](https://wincent.dev/a/products/synergy-advance/purchase/)
 -   [Request your free Synergy license](https://wincent.dev/a/store/synergy-offer/)
--   [Synergy Advance product information](http://wincent.dev/a/products/synergy-advance/)
--   [Synergy Advance download](http://wincent.dev/a/products/synergy-classic/download/)
--   [Synergy product information](http://wincent.dev/a/products/synergy-classic/)
--   [Synergy download](http://wincent.dev/a/products/synergy-advance/download/)
+-   [Synergy Advance product information](https://wincent.dev/a/products/synergy-advance/)
+-   [Synergy Advance download](https://wincent.dev/a/products/synergy-classic/download/)
+-   [Synergy product information](https://wincent.dev/a/products/synergy-classic/)
+-   [Synergy download](https://wincent.dev/a/products/synergy-advance/download/)

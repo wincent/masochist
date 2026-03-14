@@ -3,7 +3,7 @@ title: Involuntary Reboot Log #21
 tags: involuntary.reboot.log blog
 ---
 
-So it turns out that [SuperDuper! definitely doesn't produce bootable backups](http://wincent.dev/a/about/wincent/weblog/archives/2007/11/using_superdupe.php) on [Leopard](http://wincent.dev/wiki/Leopard). I had used SuperDuper! to move my old [Tiger](http://wincent.dev/wiki/Tiger) install [to a new volume](http://wincent.dev/a/about/wincent/weblog/archives/2007/11/backup_obsessio.php); this was before I found out that SuperDuper! isn't comptaible with Leopard.
+So it turns out that [SuperDuper! definitely doesn't produce bootable backups](https://wincent.dev/a/about/wincent/weblog/archives/2007/11/using_superdupe.php) on [Leopard](https://wincent.dev/wiki/Leopard). I had used SuperDuper! to move my old [Tiger](https://wincent.dev/wiki/Tiger) install [to a new volume](https://wincent.dev/a/about/wincent/weblog/archives/2007/11/backup_obsessio.php); this was before I found out that SuperDuper! isn't comptaible with Leopard.
 
 Seeing as my SuperDrive isn't supported in Leopard I had no choice but to boot into Tiger when I wanted to watch a DVD last night, so, wondering if the backup would be bootable or not I gingerly rebooted.
 

@@ -85,7 +85,7 @@ The following [HTML](/wiki/HTML) needed to be added to the page residing at my "
 
 To test the system I made my first post using [OpenID](/wiki/OpenID)-based authentication [here](http://chanson.livejournal.com/170068.html). There are two problems with the result:
 
-1.  The "from" line reads as <http://wincent.dev/a/about/wincent/weblog/>, which doesn't exactly make clear the identity of the poster; this is because it just redirects to my [weblog](/wiki/weblog) at the other [URL](/wiki/URL).
+1.  The "from" line reads as <https://wincent.dev/a/about/wincent/weblog/>, which doesn't exactly make clear the identity of the poster; this is because it just redirects to my [weblog](/wiki/weblog) at the other [URL](/wiki/URL).
 2.  The [the user profile](http://www.livejournal.com/userinfo.bml?userid=12856127&t=I&mode=full) linked to from the comment doesn't include the extra information that I included in my configuration.
 
 The second problem is probably a limitation of [LiveJournal](/wiki/LiveJournal) and there's not much that I can do about that. I decided to address the former problem by choosing a better [URL](/wiki/URL) for future identification. So I set up a simple page with the following content:
@@ -103,7 +103,7 @@ The second problem is probably a limitation of [LiveJournal](/wiki/LiveJournal) 
     <body>
     <ul>
       <li>Wincent Colaiuta's personal weblog: <a href="http://example.com/">example.com</a></li>
-      <li>Mac OS X software: <a href="http://wincent.dev/">wincent.dev</a></li>
+      <li>Mac OS X software: <a href="https://wincent.dev/">wincent.dev</a></li>
     </ul>
     </body>
     </html>

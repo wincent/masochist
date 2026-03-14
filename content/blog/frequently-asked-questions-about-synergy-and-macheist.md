@@ -40,7 +40,7 @@ By default Synergy will check for new versions and notify you when one is availa
 >
 > Version 3.4 (released 25 June 2009) is now available for download. Please note that this is not a free upgrade, but you may trial the new version at no cost for 7 days. At the end of the trial you may either purchase the new version for 5 euros, or re-install the MacHeist promo edition that you are using now. Click "Update Now" to visit the download page in your default browser. Click "Later" to dismiss the dialog and upgrade later.
 
-If you don't want to see new version notifications you can turn them off as [detailed in the Synergy FAQ](http://wincent.dev/a/products/synergy-classic/faq/#versioncheck).
+If you don't want to see new version notifications you can turn them off as [detailed in the Synergy FAQ](https://wincent.dev/a/products/synergy-classic/faq/#versioncheck).
 
 # How do I use Synergy for free?
 
