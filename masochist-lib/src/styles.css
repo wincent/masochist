@@ -167,8 +167,11 @@ h1 a { text-decoration: none; }
   background-repeat: no-repeat;
   background-size: contain;
   content: '';
+  display: inline-block;
+  height: 1em;
   margin-left: .25rem;
-  padding-left: 1.25rem;
+  vertical-align: middle;
+  width: 1em;
 }
 button:disabled, input:disabled { opacity: .5; }
 
