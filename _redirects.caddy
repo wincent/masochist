@@ -289,7 +289,7 @@ redir /wiki/Subversion_external /wiki/Subversion_externals permanent
 redir /wiki/Sun /wiki/Sun_Microsystems permanent
 redir /wiki/Support_ticket /issues/new?kind=Support+ticket permanent
 redir /wiki/Svn:externals /wiki/Subversion_externals permanent
-redir /wiki/Synergy_Advance http://wincent.dev/a/products/synergy-advance/ permanent
+redir /wiki/Synergy_Advance https://wincent.dev/a/products/synergy-advance/ permanent
 redir /wiki/Synergy /products/synergy permanent
 redir /wiki/Syntactic_predicate /wiki/ANTLR_predicates permanent
 redir /wiki/TDD /wiki/Test-Driven_Development permanent

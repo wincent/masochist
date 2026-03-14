@@ -685,7 +685,7 @@
             href="https://wincent.dev/wiki/Creating_branches_with_Subversion"
             >created a new branch</a
           >
-          of <a href="http://wincent.dev/">Synergy</a> and
+          of <a href="https://wincent.dev/">Synergy</a> and
           Synergy Advance so that I can
           start implementing Leopard-only features on the trunk.
         </p>

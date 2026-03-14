@@ -861,7 +861,7 @@
             </li>
             <li>
               <strong>Visit Synergy Website</strong>: Clicking this button takes
-              you to the Synergy website (http://wincent.dev/) in your
+              you to the Synergy website (https://wincent.dev/) in your
               default browser.
             </li>
           </ul>

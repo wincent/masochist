@@ -686,8 +686,8 @@
           </li>
           <li>
             <em>Product info</em>:
-            <a href="http://wincent.dev/"
-              >http://wincent.dev/</a
+            <a href="https://wincent.dev/"
+              >https://wincent.dev/</a
             >
           </li>
         </ul>
