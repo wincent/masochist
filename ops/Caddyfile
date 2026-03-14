@@ -43,12 +43,6 @@ import /etc/caddy/conf.d/*
 		}
 	}
 
-	# Legacy image path: old site served images at /system/images/*.
-	handle_path /system/images/* {
-		root * /var/www/public/images
-		file_server
-	}
-
 	# Strip trailing slashes.
 	@trailingSlash path_regexp ^/(.+)/$
 	redir @trailingSlash /{re.trailingSlash.1} permanent
