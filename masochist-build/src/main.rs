@@ -8,7 +8,7 @@ use rayon::prelude::*;
 use std::collections::HashMap;
 use std::fs;
 use std::io::Write as _;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use std::time::Instant;
 
 fn main() {
@@ -65,6 +65,10 @@ fn main() {
 
     // Sync staging to output, removing stale files but preserving _assets/.
     sync_to_output(staging, &output_dir);
+
+    // Prune old hashed assets, keeping the 10 most recent of each type
+    // and any introduced within the last 7 days.
+    prune_assets(&output_dir);
 
     fs::remove_dir_all(&staging_dir).ok();
 
@@ -652,6 +656,112 @@ fn sync_to_output(staging: &str, output_dir: &str) {
     }
 
     eprintln!("  sync: completed in {:?}", start.elapsed());
+}
+
+fn prune_assets(output_dir: &str) {
+    use std::process::Command;
+    use std::time::{SystemTime, UNIX_EPOCH};
+
+    let start = Instant::now();
+    let assets_dir = Path::new(output_dir).join("_assets");
+
+    if !assets_dir.exists() {
+        return;
+    }
+
+    let now = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap()
+        .as_secs() as i64;
+    let cutoff = now - 7 * 24 * 60 * 60;
+
+    // Batch-collect introduction timestamps from git history.
+    let introduction_times = {
+        let output = Command::new("git")
+            .args([
+                "-C",
+                output_dir,
+                "log",
+                "--diff-filter=A",
+                "--format=%at",
+                "--name-only",
+                "--",
+                "_assets/",
+            ])
+            .output();
+
+        let mut map = HashMap::<String, i64>::new();
+        if let Ok(output) = output {
+            let stdout = String::from_utf8_lossy(&output.stdout);
+            let mut current_ts: Option<i64> = None;
+            for line in stdout.lines() {
+                let line = line.trim();
+                if line.is_empty() {
+                    continue;
+                }
+                if let Ok(ts) = line.parse::<i64>() {
+                    current_ts = Some(ts);
+                } else if let Some(ts) = current_ts
+                    && let Some(filename) = line.strip_prefix("_assets/")
+                {
+                    map.entry(filename.to_string()).or_insert(ts);
+                }
+            }
+        }
+        map
+    };
+
+    let mut css_files: Vec<(PathBuf, i64)> = Vec::new();
+    let mut js_files: Vec<(PathBuf, i64)> = Vec::new();
+
+    if let Ok(entries) = fs::read_dir(&assets_dir) {
+        for entry in entries.flatten() {
+            let path = entry.path();
+            if !path.is_file() {
+                continue;
+            }
+
+            let filename = path.file_name().unwrap().to_str().unwrap();
+            let added_at = introduction_times
+                .get(filename)
+                .copied()
+                .unwrap_or(i64::MAX); // Not yet in git = just created, always keep.
+
+            match path.extension().and_then(|e| e.to_str()) {
+                Some("css") => css_files.push((path, added_at)),
+                Some("js") => js_files.push((path, added_at)),
+                _ => {}
+            }
+        }
+    }
+
+    let css_pruned = prune_asset_group(&mut css_files, cutoff);
+    let js_pruned = prune_asset_group(&mut js_files, cutoff);
+
+    let total = css_pruned + js_pruned;
+    if total > 0 {
+        eprintln!(
+            "  prune: removed {total} old assets ({css_pruned} CSS, {js_pruned} JS) in {:?}",
+            start.elapsed()
+        );
+    } else {
+        eprintln!("  prune: nothing to remove in {:?}", start.elapsed());
+    }
+}
+
+fn prune_asset_group(files: &mut [(PathBuf, i64)], cutoff: i64) -> usize {
+    files.sort_by(|a, b| b.1.cmp(&a.1));
+
+    let mut pruned = 0;
+    for (path, added_at) in files.iter().skip(10) {
+        if *added_at >= cutoff {
+            continue;
+        }
+        if fs::remove_file(path).is_ok() {
+            pruned += 1;
+        }
+    }
+    pruned
 }
 
 fn strip_html_tags(html: &str) -> String {
