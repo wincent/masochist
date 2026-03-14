@@ -4,7 +4,7 @@ use std::process::ExitCode;
 use std::sync::Arc;
 use std::sync::atomic::{AtomicUsize, Ordering};
 
-use percent_encoding::{AsciiSet, NON_ALPHANUMERIC, utf8_percent_encode};
+use percent_encoding::{AsciiSet, CONTROLS, utf8_percent_encode};
 use reqwest::redirect::Policy;
 use reqwest::{Client, StatusCode};
 use scraper::{Html, Selector};
@@ -77,11 +77,20 @@ fn walk_directory_inner(dir: &Path, files: &mut Vec<PathBuf>) {
     }
 }
 
-const PATH_SEGMENT_ENCODE_SET: &AsciiSet = &NON_ALPHANUMERIC
-    .remove(b'-')
-    .remove(b'.')
-    .remove(b'_')
-    .remove(b'~');
+// WHATWG URL path segment encode set: C0 controls, DEL, non-ASCII, plus
+// the specific ASCII characters that must be encoded in path segments.
+const PATH_SEGMENT_ENCODE_SET: &AsciiSet = &CONTROLS
+    .add(b' ')
+    .add(b'"')
+    .add(b'#')
+    .add(b'%')
+    .add(b'/')
+    .add(b'<')
+    .add(b'>')
+    .add(b'?')
+    .add(b'`')
+    .add(b'{')
+    .add(b'}');
 
 fn percent_encode_path(raw_path: &str) -> String {
     raw_path
