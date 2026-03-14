@@ -4,8 +4,23 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_DIR="$(dirname "$SCRIPT_DIR")"
 
+ECR_ACCOUNT_ID="${ECR_ACCOUNT_ID:-}"
 HOST="${MASOCHIST_HOST:-wincent.dev}"
 DEPLOY_DIR="/srv/masochist"
+
+# Warn if ECR_ACCOUNT_ID isn't set.
+if [ -z "$ECR_ACCOUNT_ID" ]; then
+    echo "Warning: ECR_ACCOUNT_ID environment variable is not set"
+    echo
+    echo "Example:"
+    echo
+    echo "    export ECR_ACCOUNT_ID=123456789012"
+    echo
+    read -r -p "Continue anyway? [y/N] " answer
+    if [[ ! "$answer" =~ ^[Yy]$ ]]; then
+        exit 1
+    fi
+fi
 
 # Warn if main hasn't been pushed to prod.
 if git -C "${REPO_DIR}" rev-parse --verify masochist/main &>/dev/null; then
