@@ -33,6 +33,13 @@ import /etc/caddy/conf.d/*
 		file_server
 	}
 
+	# Icons are stable static SVGs referenced from CSS.
+	handle /icons/* {
+		root * /var/www/public
+		header Cache-Control "public, max-age=31536000"
+		file_server
+	}
+
 	# Hide other internal build artifacts (prefixed with underscore).
 	@hidden path /_*
 	handle @hidden {
