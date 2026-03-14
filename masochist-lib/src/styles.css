@@ -166,7 +166,7 @@ h1 a { text-decoration: none; }
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: contain;
-  content: '\200B';
+  content: ' ';
   display: inline-block;
   height: .6em;
   margin-left: .25rem;
