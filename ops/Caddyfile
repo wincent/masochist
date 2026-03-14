@@ -91,9 +91,17 @@ import /etc/caddy/conf.d/*
 	handle {
 		root * /var/www/public
 
-		# Try exact file, then .html extension, then index.html, then 404.
-		try_files {path} {path}.html {path}/index.html {path}/index.php
-		file_server
+		route {
+			# Try exact file, then .html extension, then index.html, then 404.
+			try_files {path} {path}.html {path}/index.html {path}/index.php
+
+			# Legacy .php files are static HTML; the Alpine image has no
+			# MIME mapping for .php so Caddy omits Content-Type without this.
+			@php path *.php
+			header @php Content-Type "text/html; charset=utf-8"
+
+			file_server
+		}
 	}
 
 	handle_errors {
