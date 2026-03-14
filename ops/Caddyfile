@@ -69,13 +69,17 @@ import /etc/caddy/conf.d/*
 			handle_response @badrequest {
 				root * /var/www/public
 				rewrite * /400.html
-				file_server
+				file_server {
+					status 400
+				}
 			}
 			@ratelimited status 429
 			handle_response @ratelimited {
 				root * /var/www/public
 				rewrite * /429.html
-				file_server
+				file_server {
+					status 429
+				}
 			}
 		}
 	}
