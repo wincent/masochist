@@ -714,7 +714,7 @@
 
           <div class="screenshots">
             <img
-              src="screenshots/splash.png"
+              src="/a/products/hextrapolate/screenshots/splash.png"
               alt="Hextrapolate main window"
               width="338"
               height="269"

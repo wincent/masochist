@@ -688,7 +688,7 @@
 
         <div class="screenshots">
           <img
-            src="license-email.png"
+            src="/a/support/registering/license-email.png"
             alt="Emailed license information"
             width="313"
             height="160"
@@ -706,7 +706,7 @@
 
         <div class="screenshots">
           <img
-            src="entering-license-1.png"
+            src="/a/support/registering/entering-license-1.png"
             alt="Preparing to enter license code"
             width="531"
             height="429"
@@ -735,7 +735,7 @@
 
         <div class="screenshots">
           <img
-            src="entering-license-2.png"
+            src="/a/support/registering/entering-license-2.png"
             alt="Preparing to enter license code"
             width="530"
             height="428"

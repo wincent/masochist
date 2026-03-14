@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -852,7 +852,7 @@
           </ul>
 
           <img
-            src="audioscrobbler1.png"
+            src="/a/products/synergy-classic/features/audioscrobbler/audioscrobbler1.png"
             alt='The "Advanced" preferences tab'
             width="467"
             height="431"
@@ -871,7 +871,7 @@
           </ul>
 
           <img
-            src="audioscrobbler2.png"
+            src="/a/products/synergy-classic/features/audioscrobbler/audioscrobbler2.png"
             alt="Entering the username and password"
             width="448"
             height="132"
