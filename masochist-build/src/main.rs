@@ -411,9 +411,16 @@ fn generate_site(
         if item.content_type != ContentType::Snippet {
             continue;
         }
-        if let ContentBody::Raw { body, format } = &item.body {
-            let path = out.join(format!("snippets/{}.{}", item.id, format));
-            fs::write(&path, body).expect("failed to write raw snippet");
+        match &item.body {
+            ContentBody::Raw { body, format } => {
+                let path = out.join(format!("snippets/{}.{}", item.id, format));
+                fs::write(&path, body).expect("failed to write raw snippet");
+            }
+            ContentBody::Markdown(body) => {
+                let path = out.join(format!("snippets/{}.txt", item.id));
+                fs::write(&path, body).expect("failed to write raw snippet");
+            }
+            _ => {}
         }
     }
 
