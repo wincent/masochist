@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+percent-encoding = "2.3.2"
 reqwest = { version = "0.13.2", default-features = false, features = ["rustls"] }
 scraper = "0.25.0"
 strsim = "0.11.1"

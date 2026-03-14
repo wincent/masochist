@@ -4,6 +4,7 @@ use std::process::ExitCode;
 use std::sync::Arc;
 use std::sync::atomic::{AtomicUsize, Ordering};
 
+use percent_encoding::{AsciiSet, NON_ALPHANUMERIC, utf8_percent_encode};
 use reqwest::redirect::Policy;
 use reqwest::{Client, StatusCode};
 use scraper::{Html, Selector};
@@ -76,16 +77,18 @@ fn walk_directory_inner(dir: &Path, files: &mut Vec<PathBuf>) {
     }
 }
 
+const PATH_SEGMENT_ENCODE_SET: &AsciiSet = &NON_ALPHANUMERIC
+    .remove(b'-')
+    .remove(b'.')
+    .remove(b'_')
+    .remove(b'~');
+
 fn percent_encode_path(raw_path: &str) -> String {
-    let mut url = Url::parse("http://x").unwrap();
-    {
-        let mut segments = url.path_segments_mut().unwrap();
-        segments.clear();
-        for segment in raw_path.split('/').filter(|s| !s.is_empty()) {
-            segments.push(segment);
-        }
-    }
-    url.path().to_string()
+    raw_path
+        .split('/')
+        .map(|segment| utf8_percent_encode(segment, PATH_SEGMENT_ENCODE_SET).to_string())
+        .collect::<Vec<_>>()
+        .join("/")
 }
 
 fn file_to_url_candidates(file: &Path, public_dir: &Path) -> Vec<String> {
