@@ -1,4 +1,5 @@
 use std::collections::{BTreeMap, HashMap, HashSet, VecDeque};
+use std::path::{Path, PathBuf};
 use std::process::ExitCode;
 use std::sync::Arc;
 use std::sync::atomic::{AtomicUsize, Ordering};
@@ -49,6 +50,73 @@ fn is_asset_url(path: &str) -> bool {
         ".xml", ".txt", ".map",
     ];
     extensions.iter().any(|ext| lower.ends_with(ext))
+}
+
+fn walk_directory(dir: &Path) -> Vec<PathBuf> {
+    let mut files = Vec::new();
+    walk_directory_inner(dir, &mut files);
+    files
+}
+
+fn walk_directory_inner(dir: &Path, files: &mut Vec<PathBuf>) {
+    let entries = match std::fs::read_dir(dir) {
+        Ok(entries) => entries,
+        Err(_) => return,
+    };
+    for entry in entries.flatten() {
+        let path = entry.path();
+        if path.file_name().is_some_and(|n| n == ".git") {
+            continue;
+        }
+        if path.is_dir() {
+            walk_directory_inner(&path, files);
+        } else {
+            files.push(path);
+        }
+    }
+}
+
+fn percent_encode_path(raw_path: &str) -> String {
+    let mut url = Url::parse("http://x").unwrap();
+    {
+        let mut segments = url.path_segments_mut().unwrap();
+        segments.clear();
+        for segment in raw_path.split('/').filter(|s| !s.is_empty()) {
+            segments.push(segment);
+        }
+    }
+    url.path().to_string()
+}
+
+fn file_to_url_candidates(file: &Path, public_dir: &Path) -> Vec<String> {
+    let relative = match file.strip_prefix(public_dir) {
+        Ok(r) => r,
+        Err(_) => return vec![],
+    };
+
+    let raw_path = format!("/{}", relative.to_string_lossy());
+    let path_str = percent_encode_path(&raw_path);
+    let file_name = relative.file_name().and_then(|f| f.to_str()).unwrap_or("");
+
+    if file_name == "index.html" || file_name == "index.php" {
+        let dir_path = match path_str.rsplit_once('/') {
+            Some(("", _)) => "/".to_string(),
+            Some((prefix, _)) => prefix.to_string(),
+            None => "/".to_string(),
+        };
+        return vec![dir_path, path_str];
+    }
+
+    let without_ext = path_str
+        .strip_suffix(".html")
+        .or_else(|| path_str.strip_suffix(".php"))
+        .map(|s| s.to_string());
+
+    if let Some(without_ext) = without_ext {
+        return vec![path_str, without_ext];
+    }
+
+    vec![path_str]
 }
 
 enum RedirectOutcome {
@@ -283,7 +351,7 @@ impl Crawler {
         }
     }
 
-    async fn print_report(&self) {
+    async fn print_report(&self, unreferenced: &[String]) {
         let stats = self.stats.lock().await;
         let broken = self.broken_links.lock().await;
         let redirect_problems = self.redirect_problems.lock().await;
@@ -380,6 +448,46 @@ impl Crawler {
             println!("\nNo broken links found.");
         }
 
+        if !unreferenced.is_empty() {
+            let mut modern_unref: Vec<&str> = Vec::new();
+            let mut legacy_unref: Vec<&str> = Vec::new();
+            let mut asset_unref: Vec<&str> = Vec::new();
+
+            for path in unreferenced {
+                if is_modern_path(path) {
+                    modern_unref.push(path);
+                } else if is_asset_url(path) {
+                    asset_unref.push(path);
+                } else {
+                    legacy_unref.push(path);
+                }
+            }
+
+            if !modern_unref.is_empty() {
+                println!("\n--- Unreferenced Files (Modern) ---\n");
+                for path in &modern_unref {
+                    println!("  {path}");
+                }
+            }
+
+            if !legacy_unref.is_empty() {
+                println!(
+                    "\n--- Unreferenced Files (Legacy) [{} files] ---\n",
+                    legacy_unref.len()
+                );
+                for path in &legacy_unref {
+                    println!("  {path}");
+                }
+            }
+
+            if !asset_unref.is_empty() {
+                println!("\n--- Unreferenced Files (Assets) ---\n");
+                for path in &asset_unref {
+                    println!("  {path}");
+                }
+            }
+        }
+
         println!("\n--- Statistics ---\n");
         println!("{:<35} {:>10} {:>10}", "", "Modern", "Legacy");
         println!("{}", "-".repeat(57));
@@ -417,6 +525,9 @@ impl Crawler {
         let total_pages = stats.modern.pages_visited + stats.legacy.pages_visited;
         let total_broken = stats.modern.broken_links + stats.legacy.broken_links;
         println!("\nTotal pages: {total_pages}  Total broken: {total_broken}");
+        if !unreferenced.is_empty() {
+            println!("Unreferenced files: {}", unreferenced.len());
+        }
 
         let fetch_total = self.fetch_counts.total.load(Ordering::Relaxed);
         let fetch_local = self.fetch_counts.local.load(Ordering::Relaxed);
@@ -429,6 +540,35 @@ impl Crawler {
     async fn has_broken_links(&self) -> bool {
         let broken = self.broken_links.lock().await;
         !broken.is_empty()
+    }
+
+    async fn find_unreferenced_files(&self, public_dir: &Path) -> Vec<String> {
+        let visited = self.visited.lock().await;
+        let files = walk_directory(public_dir);
+        let mut unreferenced = Vec::new();
+
+        for file in &files {
+            let candidates = file_to_url_candidates(file, public_dir);
+            if candidates.is_empty() {
+                continue;
+            }
+
+            let display_path = &candidates[0];
+
+            if display_path.starts_with("/_assets")
+                || display_path == "/_redirects.caddy"
+                || display_path == "/_search_index.tsv"
+            {
+                continue;
+            }
+
+            if !candidates.iter().any(|c| visited.contains(c)) {
+                unreferenced.push(display_path.clone());
+            }
+        }
+
+        unreferenced.sort();
+        unreferenced
     }
 }
 
@@ -913,6 +1053,14 @@ fn extract_links(html: &str, page_url: &str) -> Vec<(String, String)> {
 
 #[tokio::main]
 async fn main() -> ExitCode {
+    let args: Vec<String> = std::env::args().collect();
+    let public_dir = args
+        .iter()
+        .position(|a| a == "--public-dir")
+        .and_then(|pos| args.get(pos + 1))
+        .map(PathBuf::from)
+        .unwrap_or_else(|| PathBuf::from("public"));
+
     let crawler = Crawler::new();
 
     eprintln!("Checking connectivity to {BASE_URL}...");
@@ -937,7 +1085,18 @@ async fn main() -> ExitCode {
 
     crawler.run().await;
     crawler.generate_suggestions().await;
-    crawler.print_report().await;
+
+    let unreferenced = if public_dir.is_dir() {
+        eprintln!(
+            "Scanning {} for unreferenced files...",
+            public_dir.display()
+        );
+        crawler.find_unreferenced_files(&public_dir).await
+    } else {
+        vec![]
+    };
+
+    crawler.print_report(&unreferenced).await;
 
     if crawler.has_broken_links().await {
         ExitCode::from(1)

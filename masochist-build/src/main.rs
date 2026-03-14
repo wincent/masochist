@@ -187,7 +187,7 @@ fn parse_all_files(
                     .unwrap_or(target_filename);
                 let target = match content_type {
                     ContentType::Wiki => {
-                        format!("/wiki/{}", target_id.replace(' ', "_"))
+                        format!("/wiki/{}", content::encode_wiki_id_for_url(target_id))
                     }
                     _ => format!("/{}/{}", content_type.directory(), target_id),
                 };
@@ -488,7 +488,7 @@ fn generate_site(
     let mut has_invalid_redirects = false;
     for r in redirects {
         let source = match r.content_type {
-            ContentType::Wiki => format!("/wiki/{}", r.id.replace(' ', "_")),
+            ContentType::Wiki => format!("/wiki/{}", content::encode_wiki_id_for_url(&r.id)),
             _ => format!("/{}/{}", r.content_type.directory(), r.id),
         };
         if !is_valid_caddy_value(&source) {

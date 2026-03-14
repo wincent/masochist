@@ -1,3 +1,4 @@
+use masochist_lib::content::encode_wiki_id_for_url;
 use masochist_lib::templates::format_date;
 use maud::{Markup, html};
 use percent_encoding::{NON_ALPHANUMERIC, utf8_percent_encode};
@@ -40,7 +41,7 @@ fn result_url(result: &SearchResult) -> String {
         _ => "/pages",
     };
     let encoded_id = if result.content_type == "wiki" {
-        result.id.replace(' ', "_")
+        encode_wiki_id_for_url(&result.id)
     } else {
         result.id.clone()
     };

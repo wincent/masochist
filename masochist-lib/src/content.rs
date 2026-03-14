@@ -89,10 +89,14 @@ pub struct ContentItem {
     pub description: Option<String>,
 }
 
+pub fn encode_wiki_id_for_url(id: &str) -> String {
+    id.replace(' ', "_").replace('?', "%3F").replace('#', "%23")
+}
+
 impl ContentItem {
     pub fn url(&self) -> String {
         let encoded_id = match self.content_type {
-            ContentType::Wiki => self.id.replace(' ', "_"),
+            ContentType::Wiki => encode_wiki_id_for_url(&self.id),
             _ => self.id.clone(),
         };
         format!("{}/{}", self.content_type.url_prefix(), encoded_id)

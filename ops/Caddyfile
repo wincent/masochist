@@ -78,6 +78,15 @@ import /etc/caddy/conf.d/*
 		}
 	}
 
+	# Wiki paths with %3F: Go decodes it to ? in {path}, which try_files
+	# re-interprets as a query separator. Bypass try_files for these.
+	@wikiEncodedQuestion path_regexp weq ^(/wiki/.+)\?$
+	handle @wikiEncodedQuestion {
+		root * /var/www/public
+		rewrite * {re.weq.1}%3F.html
+		file_server
+	}
+
 	# Everything else is static.
 	handle {
 		root * /var/www/public
