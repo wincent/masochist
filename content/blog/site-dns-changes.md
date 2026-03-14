@@ -10,4 +10,4 @@ I'm not anticipating any downtime but there is a small possibility that things c
 
 **Update:** The DNS updates have taken effect. In my case it didn't take too long for the changes to propagate from the authoritative DNS servers in the US to where I am here in Spain, although I did have to force [Mac OS X](/wiki/Mac_OS_X) to take notice using `dscacheutil -flushcache`.
 
-If you've been accessing this, the new part of the site, via rails.wincent.dev you can now do so using the shorter URL of <https://wincent.dev/> instead. Non-HTTPS access to <https://wincent.dev/> will continue to provide access to the older parts of the site.
+If you've been accessing this, the new part of the site, via rails.wincent.dev you can now do so using the shorter URL of <https://wincent.dev/> instead.

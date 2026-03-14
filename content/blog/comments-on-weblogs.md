@@ -116,7 +116,7 @@ Ironic but not surprising given the number of organizations out there whose name
 
 The earliest appearance of the WordPress logo that I could find in [the archives](http://web.archive.org/web/*/http://wordpress.org) was back on [27 December 2005](http://web.archive.org/web/20051227053045/http://www.wordpress.org/).
 
-Looking back in [the archives](http://web.archive.org/web/*/https://wincent.dev) for the Wincent logo the earliest appearance I could find was back on [27 September 2003](http://web.archive.org/web/20030927071700/https://wincent.dev/).
+Looking back in [the archives](http://web.archive.org/web/*/http://wincent.org) for the Wincent logo the earliest appearance I could find was back on [27 September 2003](http://web.archive.org/web/20030927071700/https://wincent.org/).
 
 ### Rational responses
 
