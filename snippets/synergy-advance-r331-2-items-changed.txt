@@ -1,0 +1,2 @@
+
+Adjust project settings to get release builds working again

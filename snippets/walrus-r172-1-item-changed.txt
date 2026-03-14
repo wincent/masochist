@@ -1,0 +1,2 @@
+
+Get rid of some unnecessary 'self' references

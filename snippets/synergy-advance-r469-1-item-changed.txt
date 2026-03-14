@@ -1,0 +1,2 @@
+
+Handle more player states when updating Global Menu

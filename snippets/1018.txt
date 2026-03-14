@@ -1,0 +1,2 @@
+
+[Gmail](/wiki/Gmail): I wish `*a` really did select all, instead of just the messages that were visible on the current page.

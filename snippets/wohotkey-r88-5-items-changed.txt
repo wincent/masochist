@@ -1,0 +1,2 @@
+
+Stop dead-code stripping from blowing required class names into oblivion

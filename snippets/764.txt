@@ -1,0 +1,2 @@
+
+Cool, just discovered the joys of the `submodule.<name>.ignore` [setting](http://www.kernel.org/pub/software/scm/git/docs/gitmodules.html).

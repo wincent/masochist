@@ -1,0 +1,2 @@
+
+Excellent overview of [closures in Ruby](http://innig.net/software/ruby/closures-in-ruby.rb).

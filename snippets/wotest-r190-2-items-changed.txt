@@ -1,0 +1,2 @@
+
+Fix broken path in custom icon shell script phase

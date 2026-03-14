@@ -1,0 +1,2 @@
+
+Nightlies script can now do Synergy Advance builds as well

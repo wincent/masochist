@@ -1,0 +1,2 @@
+
+Just added `set autoread` to my `~/.vimrc` — makes switching [Git](/wiki/Git) branches a _lot_ more pleasant (see `:h 'ar'` for details).

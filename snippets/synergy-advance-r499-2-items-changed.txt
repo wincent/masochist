@@ -1,0 +1,2 @@
+
+Remove header declaration for method refactored into other class; silences build warning

@@ -1,0 +1,2 @@
+
+Class export for WORatingMenu (necessary for Release builds)

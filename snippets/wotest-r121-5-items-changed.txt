@@ -1,0 +1,2 @@
+
+Temporarily work around bizarre crashes with WORootObject

@@ -1,0 +1,2 @@
+
+Explicit cast to silence WOTest warning about signed/unsigned comparison in WOSingleton tests

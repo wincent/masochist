@@ -1,0 +1,2 @@
+
+Changes for compatibility with GC under Leopard.

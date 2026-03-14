@@ -1,0 +1,2 @@
+
+Remove diff code from acceptance spec pending better implementation

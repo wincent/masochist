@@ -1,0 +1,4 @@
+
+Rather than doing a half-baked job I prefer to remove it entirely.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

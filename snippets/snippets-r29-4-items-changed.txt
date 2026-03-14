@@ -1,0 +1,2 @@
+
+NSArrayController category with object moving method; for reusability and encapsulation

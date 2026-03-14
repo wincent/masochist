@@ -1,0 +1,2 @@
+
+Retag WinSwitch 3.2b release (repository cleanup)

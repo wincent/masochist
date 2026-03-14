@@ -1,0 +1,2 @@
+
+Add simple mode to string preprocessor

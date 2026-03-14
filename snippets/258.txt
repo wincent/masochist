@@ -1,0 +1,2 @@
+
+[This _might_ turn out to be interesting](http://alephnullplex.appspot.com/blog/view/20090610/haskell-week-one-update); a "year with Haskell" experiment.

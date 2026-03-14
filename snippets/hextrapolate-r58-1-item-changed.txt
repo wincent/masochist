@@ -1,0 +1,2 @@
+
+Remove old MainMenu.strings file

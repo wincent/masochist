@@ -1,0 +1,2 @@
+
+[Updated to 0.8](http://rubyforge.org/frs/shownotes.php?release_id=10392). See "[Updating to ruby-debug 1.8 using RubyGems](https://wincent.dev/wiki/Updating%20to%20ruby-debug%201.8%20using%20RubyGems)".

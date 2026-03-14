@@ -1,0 +1,2 @@
+
+Ghost already selected filenames in the open panel

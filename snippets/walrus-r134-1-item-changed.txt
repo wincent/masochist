@@ -1,0 +1,2 @@
+
+Rakefile cleanups (removing superfluous files from gem)

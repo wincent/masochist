@@ -1,0 +1,4 @@
+
+Update bundle with references to new files.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

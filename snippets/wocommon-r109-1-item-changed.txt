@@ -1,0 +1,2 @@
+
+Fix misspelled variable in NSMutableAttributedString creation category unit tests

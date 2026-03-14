@@ -1,0 +1,2 @@
+
+Factor out less-useful NSApplication methods into WOBackground category; update NSObject convenience category

@@ -1,0 +1,4 @@
+
+Refactor to achieve same results without relying on the override of a private method in NSTableHeaderCell.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

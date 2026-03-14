@@ -1,0 +1,2 @@
+
+Use common disk image icons and background instead of per-application ones

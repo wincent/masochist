@@ -1,0 +1,2 @@
+
+Use bundle identifiers for preference pane identification

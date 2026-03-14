@@ -1,0 +1,2 @@
+
+Additional documentation, macros, and remove WOArgumentArray macro to avoid clash with WODebug

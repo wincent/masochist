@@ -1,0 +1,2 @@
+
+Missing 'super' call in example front page template

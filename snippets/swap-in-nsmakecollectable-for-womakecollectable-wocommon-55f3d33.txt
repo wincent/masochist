@@ -1,0 +1,4 @@
+
+Thus fixing a compiler warning (need id return type, not CFTypeRef).
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

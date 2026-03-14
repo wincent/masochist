@@ -1,0 +1,2 @@
+
+[Nice explanation](http://www.barelyfitz.com/screencast/html-training/css/positioning/) of [CSS](/wiki/CSS) absolute and relative positioning.

@@ -1,0 +1,2 @@
+
+Just deployed [a tiny little update](/snippets/2) to the site.

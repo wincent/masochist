@@ -1,0 +1,2 @@
+
+[tmux](/wiki/tmux) is just too darn good.

@@ -1,0 +1,2 @@
+
+Remove project references to deleted files, preventing the build from completing

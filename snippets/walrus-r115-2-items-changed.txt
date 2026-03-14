@@ -1,0 +1,2 @@
+
+Remove (now redundant) 'tests' directory; all behaviour and acceptance specifications are now in the 'specs' directory

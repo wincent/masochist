@@ -1,0 +1,2 @@
+
+Add missing WOLogManager header import required by refactoring

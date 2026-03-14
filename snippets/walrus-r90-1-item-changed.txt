@@ -1,0 +1,2 @@
+
+Update specs to allow additional here document options

@@ -1,0 +1,2 @@
+
+Compiling simple templates containing raw text now works; specs to confirm it

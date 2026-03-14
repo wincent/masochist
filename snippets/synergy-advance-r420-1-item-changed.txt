@@ -1,0 +1,2 @@
+
+Include localized WOCommon strings in application bundle

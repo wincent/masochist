@@ -1,0 +1,2 @@
+
+Thinking about doing more backup, wondering if [rsync](/wiki/rsync) is going to be the right choice.

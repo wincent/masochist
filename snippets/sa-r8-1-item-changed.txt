@@ -1,0 +1,2 @@
+
+Set wincent.\* ignore property on project bundle

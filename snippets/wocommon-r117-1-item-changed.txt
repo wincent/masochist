@@ -1,0 +1,2 @@
+
+Fix macro redefinition warning caused by classes containing selectors with identical name fragments

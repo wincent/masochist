@@ -1,0 +1,2 @@
+
+Fix for encoding issue described in https://wincent.dev/issues/566

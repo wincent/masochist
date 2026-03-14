@@ -1,0 +1,2 @@
+
+[Markdown sucks](http://www.codinghorror.com/blog/archives/001317.html). I vote for [wikitext](/wiki/wikitext).

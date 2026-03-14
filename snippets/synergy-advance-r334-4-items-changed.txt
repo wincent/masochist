@@ -1,0 +1,2 @@
+
+Add template files for creating new plug-ins

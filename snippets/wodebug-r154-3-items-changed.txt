@@ -1,0 +1,2 @@
+
+Remove category dependency enforcement (no longer required)

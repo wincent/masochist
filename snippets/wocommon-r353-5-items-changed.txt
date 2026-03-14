@@ -1,0 +1,2 @@
+
+DRY up abstract handling

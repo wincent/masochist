@@ -1,0 +1,2 @@
+
+Coming up this July to my two year anniversary of switching to [Git](/wiki/Git) (from [SVK](/wiki/SVK), from [Subversion](/wiki/Subversion), from [CVS](/wiki/CVS)).

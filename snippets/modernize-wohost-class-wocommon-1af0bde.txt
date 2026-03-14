@@ -1,0 +1,4 @@
+
+Move to GC and Objective-C 2.0 properties.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -1,0 +1,4 @@
+
+Rather than just including the deprecation notice in the body of the method documentation, use the specific Doxygen directive for that purpose.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

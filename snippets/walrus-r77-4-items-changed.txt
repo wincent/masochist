@@ -1,0 +1,2 @@
+
+Correct problems with 'rightmost' detection and storage

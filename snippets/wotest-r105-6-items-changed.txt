@@ -1,0 +1,2 @@
+
+Shorthand macros for testing array equality/inequality

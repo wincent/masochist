@@ -1,0 +1,2 @@
+
+Remove spurious help index file

@@ -1,0 +1,2 @@
+
+Tweak to force AudioScrobbler handshakes after receiving 'BADAUTH' message; see: https://wincent.dev/a/support/forums/ubbthreads.php?ubb=showflat&Number=1207\#Post1207

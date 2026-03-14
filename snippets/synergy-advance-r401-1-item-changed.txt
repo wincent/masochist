@@ -1,0 +1,2 @@
+
+Add svk:external for WOCommon

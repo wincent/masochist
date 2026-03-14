@@ -1,0 +1,2 @@
+
+Special treatment for WOTestBundleInjector environment variable as well

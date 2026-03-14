@@ -1,0 +1,4 @@
+
+Drop unnecessary references to WOBase.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

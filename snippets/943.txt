@@ -1,0 +1,2 @@
+
+New in [Git](/wiki/Git) 1.7.12: "`git rebase [-i] --root $tip` can now be used to rewrite all the history leading to `$tip` down to the root commit."

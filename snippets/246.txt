@@ -1,0 +1,2 @@
+
+Don't forget about `:nohlsearch`, or just `:noh` for short.

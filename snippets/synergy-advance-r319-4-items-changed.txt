@@ -1,0 +1,2 @@
+
+Stricter scope on headers in NSMenu and NSMenuItem categories, comment for possible inclusion in WOCommon

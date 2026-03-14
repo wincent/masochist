@@ -1,0 +1,2 @@
+
+Apple moving forward with [Safari](https://wincent.dev/wiki/Safari) at a [surprising pace](http://webkit.org/blog/111/safari-302-beta-available/).

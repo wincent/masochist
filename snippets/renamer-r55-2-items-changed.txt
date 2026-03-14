@@ -1,0 +1,2 @@
+
+Remove completed items from TODO file

@@ -1,0 +1,2 @@
+
+And while doing so, took the trouble to migrate to a [Subversion-based upgrade mechanism](https://wincent.dev/a/knowledge-base/archives/2006/06/wordpress_updat.php) for easier updates in the future.

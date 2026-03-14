@@ -1,0 +1,2 @@
+
+NSFastEnumeration protocol support implemented for WOIndexSetEnumerator

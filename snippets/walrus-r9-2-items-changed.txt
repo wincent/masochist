@@ -1,0 +1,2 @@
+
+Better encapsulation of omitted/to_s facility in dynamically-genrated Node subclasses

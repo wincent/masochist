@@ -1,0 +1,4 @@
+
+Test some simple cases: merging using an untranslated, partially translated, and fully translated target localization.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

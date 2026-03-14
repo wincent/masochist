@@ -1,0 +1,2 @@
+
+Note required categories in header doc comments (for NSArray index set enumeration category)

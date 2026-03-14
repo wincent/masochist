@@ -1,0 +1,2 @@
+
+Retag Synergy 2.5 release (repository cleanup)

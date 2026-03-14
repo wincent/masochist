@@ -1,0 +1,2 @@
+
+Weekend project: trying to make something for [Vim](/wiki/Vim) that beats the [TextMate](/wiki/TextMate) Command-T functionality.

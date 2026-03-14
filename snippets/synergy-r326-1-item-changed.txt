@@ -1,0 +1,2 @@
+
+Optimizations in NSApplication subclass

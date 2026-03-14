@@ -1,0 +1,2 @@
+
+Updates to singleton class unit tests to reflect newer, stricter adherence to singleton pattern

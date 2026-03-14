@@ -1,0 +1,2 @@
+
+Support for identifiers and namespaces in namespaces ('Foo::Bar' and 'Foo::bar'); accompanying specs

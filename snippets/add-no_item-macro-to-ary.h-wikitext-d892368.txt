@@ -1,0 +1,4 @@
+
+Using this is slightly nicer than having to explicitly compare against INT_MAX.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

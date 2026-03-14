@@ -1,0 +1,2 @@
+
+Remove deprecated/unused code from NSWindow category

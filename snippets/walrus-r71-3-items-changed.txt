@@ -1,0 +1,2 @@
+
+EscapeSequence compilation; another spec for MultilineComment compilation (multiple comments)

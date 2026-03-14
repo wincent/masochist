@@ -1,0 +1,2 @@
+
+Bindings tweaks, use accessors instead of directly accessing instance variables

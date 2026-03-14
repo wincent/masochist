@@ -1,0 +1,2 @@
+
+Try requiring RubyGems; then users don't have to worry about load paths

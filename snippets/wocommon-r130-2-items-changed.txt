@@ -1,0 +1,2 @@
+
+Application visibility methods imported (and modified; added logging on error) from WOBase

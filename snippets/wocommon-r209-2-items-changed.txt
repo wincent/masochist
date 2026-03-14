@@ -1,0 +1,2 @@
+
+Add addInitialValues: method to NSUserDefaultsController category

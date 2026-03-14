@@ -1,0 +1,2 @@
+
+Compilation of '\#ruby' directive, '\#set' directive; 'accumulate' method can now optionally take a block instead of a string

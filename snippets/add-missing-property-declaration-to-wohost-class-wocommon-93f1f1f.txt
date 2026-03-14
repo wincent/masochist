@@ -1,0 +1,4 @@
+
+Remove explicit declarations of accessor methods and replace them with a single property declaration.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

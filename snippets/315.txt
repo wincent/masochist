@@ -1,0 +1,2 @@
+
+Fixed the [broken public access](/twitter/142) to git.wincent.dev. Full details [here](/wiki/fatal%3a_protocol_error%3a_bad_line_length_character).

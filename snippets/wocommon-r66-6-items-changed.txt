@@ -1,0 +1,2 @@
+
+Move Gestalt methods into WOCommon, mark deprecated methods with new WO_DEPRECATED macro

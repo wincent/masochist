@@ -1,0 +1,2 @@
+
+WOGestalt class obsoleted by WOCommon methods

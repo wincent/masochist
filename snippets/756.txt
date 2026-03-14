@@ -1,0 +1,2 @@
+
+[Syntastic](https://github.com/scrooloose/syntastic) is a syntax-checking plug-in for [Vim](/wiki/Vim).

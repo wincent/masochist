@@ -1,0 +1,2 @@
+
+Update svn:ignore properties (didn't get moved when Walrus files moved into subdirectory)

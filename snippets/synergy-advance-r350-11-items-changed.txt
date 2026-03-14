@@ -1,0 +1,2 @@
+
+Conditionalize display of Dock preference settings

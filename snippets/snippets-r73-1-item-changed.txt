@@ -1,0 +1,2 @@
+
+Workaround Movable Type madness; initial set-up for Synergy Advance nightly builds

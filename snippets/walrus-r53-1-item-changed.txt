@@ -1,0 +1,2 @@
+
+Allow here docs for 'raw' directive as well

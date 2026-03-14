@@ -1,0 +1,2 @@
+
+Rename front page to 'access', freeing up 'front_page' for use by subclasses

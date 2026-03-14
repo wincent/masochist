@@ -1,0 +1,2 @@
+
+Tweaked size of 'Uninstall'/Alternate button in French localization

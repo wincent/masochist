@@ -1,0 +1,2 @@
+
+[Sudo and paths](/wiki/Sudo_and_paths). Time to untrain my fingers and start typing `sudo -i` instead of `sudo -s`.

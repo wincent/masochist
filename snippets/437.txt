@@ -1,0 +1,2 @@
+
+Updated DNS to point wincent.dev at the new server; the change should bubble out within the next hour.

@@ -1,0 +1,2 @@
+
+Remove NSImage category (migrated to WOCommon) and all references to it

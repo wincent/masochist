@@ -1,0 +1,2 @@
+
+New models, install RSpec on Rails and rspec_autotest

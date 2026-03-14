@@ -1,0 +1,2 @@
+
+Remove SA from snippets repository; it now lives in a repository of its own

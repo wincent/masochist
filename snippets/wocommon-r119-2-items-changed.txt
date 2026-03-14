@@ -1,0 +1,2 @@
+
+Move inline functions into header

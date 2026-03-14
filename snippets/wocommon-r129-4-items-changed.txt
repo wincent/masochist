@@ -1,0 +1,2 @@
+
+String and path methods imported (and improved) from WOBase

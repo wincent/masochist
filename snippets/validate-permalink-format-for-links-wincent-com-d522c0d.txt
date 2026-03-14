@@ -1,0 +1,4 @@
+
+Allow letters, numbers and hyphens only.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

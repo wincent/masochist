@@ -1,0 +1,2 @@
+
+Rename generated_list to master_generated_list, once again for subclass convenience

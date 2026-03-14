@@ -1,0 +1,2 @@
+
+Add 'memoizing' accessor to Grammar class to allow memoizing to be turned on and off

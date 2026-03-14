@@ -1,0 +1,2 @@
+
+More specs for 'def' directive; nested 'def' blocks confirmed working

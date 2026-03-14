@@ -1,0 +1,2 @@
+
+Been quite busy with [Rails](https://wincent.dev/wiki/Rails) stuff lately (website improvements); as an example, he's an article I just posted to the [wiki](https://wincent.dev/wiki/wiki) with the lessons learned from this morning: "[Validating passwords with Ruby on Rails](https://wincent.dev/wiki/Validating%20passwords%20with%20Ruby%20on%20Rails)".

@@ -1,0 +1,2 @@
+
+Improve readability of compact syntax schema by factoring out different types of preference settings

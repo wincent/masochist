@@ -1,0 +1,2 @@
+
+Reformat dates; new convenience methods on CIImage; reformatting

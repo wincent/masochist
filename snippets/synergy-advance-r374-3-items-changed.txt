@@ -1,0 +1,2 @@
+
+Allow transparency adjustment in the color picker

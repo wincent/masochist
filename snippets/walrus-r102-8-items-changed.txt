@@ -1,0 +1,2 @@
+
+Additions to grammar; ability to recognize class variables; broader definition of assignment expressions; compilation of assignment expressions, instance variables

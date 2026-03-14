@@ -1,0 +1,2 @@
+
+[Ruby](/wiki/Ruby) is "[a strongly typed language](http://www.tuttoaster.com/ruby-for-php-developers/)", apparently.

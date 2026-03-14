@@ -1,0 +1,2 @@
+
+Re-add Wincent-specific test bundle icons, but under 'Tests' subdirectory

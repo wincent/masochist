@@ -1,0 +1,2 @@
+
+[Today's straw man argument](http://code.alexreisner.com/articles/vim-heresy.html).

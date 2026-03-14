@@ -1,0 +1,4 @@
+
+Remove all redundant build settings at both project and target levels.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -1,0 +1,2 @@
+
+So, [Go](/wiki/Go) kicks butt in [this performance benchmark](http://www.techempower.com/blog/2013/05/02/frameworks-round-4/).

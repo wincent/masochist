@@ -1,0 +1,2 @@
+
+[Vim](/wiki/Vim) tip: `gq{motion}` reformats (rewraps) beautifully. A real time saver.

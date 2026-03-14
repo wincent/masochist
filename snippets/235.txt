@@ -1,0 +1,2 @@
+
+Trying out [git-vim](/wiki/git-vim) as recommended [here](http://vim.runpaint.org/extending/integrating-vim-with-git/).

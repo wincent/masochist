@@ -1,0 +1,2 @@
+
+Use literal table strings so that genstrings can find them

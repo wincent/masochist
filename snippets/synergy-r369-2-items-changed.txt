@@ -1,0 +1,2 @@
+
+Correct tag for 2.6 release (repository cleanup).

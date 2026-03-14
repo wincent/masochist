@@ -1,0 +1,2 @@
+
+Replace manual iteration with simple valueForKey call

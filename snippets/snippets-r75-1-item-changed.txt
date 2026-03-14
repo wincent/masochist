@@ -1,0 +1,2 @@
+
+nightlies.rb: ensure that exit status gets stored in global

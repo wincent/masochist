@@ -1,0 +1,2 @@
+
+'set -e' for shell script phases

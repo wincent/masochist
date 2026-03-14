@@ -1,0 +1,2 @@
+
+Awesome [Notational Velocity](/wiki/Notational_Velocity) shortcut: `Command-Shift-E` to edit in [MacVim](/wiki/MacVim).

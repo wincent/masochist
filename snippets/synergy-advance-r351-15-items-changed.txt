@@ -1,0 +1,2 @@
+
+Refactor (WODockController -&gt; WODockControllerPlugIn); make adjustments for undocumented NSConnection behaviour

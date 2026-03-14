@@ -1,0 +1,2 @@
+
+Correct WO_SINGLETON macro (missing @selector directive)

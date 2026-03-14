@@ -1,0 +1,2 @@
+
+Enter/Return key as short cut for 'Verify' button

@@ -1,0 +1,2 @@
+
+Cool [Bash](/wiki/Bash)/readline trick: `<Control-x> <Control-e>` edits the current line in `EDITOR`.

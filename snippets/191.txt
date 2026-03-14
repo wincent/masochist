@@ -1,0 +1,2 @@
+
+[Better Selenium support in Webrat](http://www.brynary.com/2009/4/6/switching-webrat-to-selenium-mode).

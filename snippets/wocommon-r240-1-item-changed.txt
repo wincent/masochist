@@ -1,0 +1,2 @@
+
+Unit tests to confirm that NSMapTable can automatically grow beyond its initial capacity

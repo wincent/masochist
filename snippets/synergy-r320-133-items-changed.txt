@@ -1,0 +1,2 @@
+
+Update copyright dates; corrections to Spanish localization (https://wincent.dev/issues/528)

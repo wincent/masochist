@@ -1,0 +1,2 @@
+
+Full right recursion, preserving right associativity in the simple (one alternative) case

@@ -1,0 +1,2 @@
+
+Setting up complex object graphs for tests, even with factories, makes me head hurt.

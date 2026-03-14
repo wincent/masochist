@@ -1,0 +1,2 @@
+
+Set up svn:ignore property (wincent.\*) for project bundle

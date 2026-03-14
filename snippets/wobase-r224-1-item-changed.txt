@@ -1,0 +1,2 @@
+
+Use case-insenstive regexes (Kagi personnel lowercased all the product codes that were emailed to them)

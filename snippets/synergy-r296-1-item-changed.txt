@@ -1,0 +1,2 @@
+
+Add definite protocol notes for Audioscrobbler

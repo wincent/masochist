@@ -1,0 +1,2 @@
+
+[Awesome news](http://chopine.be/lrz/diary/2007-06-08_Faster-Messaging.html) about [speedups](http://lists.sourceforge.jp/mailman/archives/rubycocoa-devel/2007-June/000941.html) in [RubyCocoa](https://wincent.dev/wiki/RubyCocoa).

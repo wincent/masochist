@@ -1,0 +1,2 @@
+
+I see that [Xcode](/wiki/Xcode) in [Snow Leopard](/wiki/Snow_Leopard) will [support static analysis](http://www.apple.com/macosx/refinements/enhancements-refinements.html).

@@ -1,0 +1,2 @@
+
+Hex, decimal, octal and binary conversions working

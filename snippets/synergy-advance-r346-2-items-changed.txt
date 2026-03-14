@@ -1,0 +1,2 @@
+
+Remove references to files no longer in project; update notes

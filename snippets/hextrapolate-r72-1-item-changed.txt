@@ -1,0 +1,2 @@
+
+Correct path to disk image background

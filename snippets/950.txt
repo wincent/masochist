@@ -1,0 +1,2 @@
+
+[TypeScript](/wiki/TypeScript) is (yet another) attempt at making [JavaScript](/wiki/JavaScript) safer to use and more suitable for build large-scale, maintainable codebases.

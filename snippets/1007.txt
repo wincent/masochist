@@ -1,0 +1,2 @@
+
+Finally got italic support working inside [Vim](/wiki/Vim), [tmux](/wiki/tmux) and [iTerm](/wiki/iTerm).

@@ -1,0 +1,2 @@
+
+You think you're [fast at using Vim](http://blog.extracheese.org/2010/11/screencast-custom-vim-refactorings.html)?

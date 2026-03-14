@@ -1,0 +1,2 @@
+
+Additional requirements notes in doxygen comment blocks

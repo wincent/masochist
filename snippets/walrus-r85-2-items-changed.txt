@@ -1,0 +1,2 @@
+
+Convert Pathname to String prior to sending "sub" message; spec tweaks and notes on coordinates

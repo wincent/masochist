@@ -1,0 +1,2 @@
+
+Clean up some redundant shell script build phases

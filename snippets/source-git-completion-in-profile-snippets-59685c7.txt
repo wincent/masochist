@@ -1,0 +1,4 @@
+
+Assuming location of \~/.git-completion.sh.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

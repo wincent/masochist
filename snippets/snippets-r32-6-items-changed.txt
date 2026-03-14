@@ -1,0 +1,2 @@
+
+Rename NSArrayController category from 'WOCommon' to 'WODragUtilties' to better describe its purpose

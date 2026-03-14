@@ -1,0 +1,2 @@
+
+[Vim](/wiki/Vim) tip: turn a horizontal split into a vertical one with `C-W L`.

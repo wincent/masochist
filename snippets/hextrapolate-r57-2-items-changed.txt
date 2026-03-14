@@ -1,0 +1,2 @@
+
+Add localizable strings file

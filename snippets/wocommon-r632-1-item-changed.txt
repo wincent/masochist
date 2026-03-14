@@ -1,0 +1,2 @@
+
+Ignore Xcode index file in SOURCE_ROOT

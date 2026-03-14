@@ -1,0 +1,2 @@
+
+Remove empty category and only reference to it

@@ -1,0 +1,2 @@
+
+Commits made to my open source code now appear in the [Git log](https://wincent.dev/a/about/wincent/weblog/svn-log/archives/) as well, so that people don't have to look in two places to get an overview of all changes (previously only the closed source commits were posted to the Git log and the open source commits were trackable through the [Gitweb](https://wincent.dev/wiki/Gitweb) interface.

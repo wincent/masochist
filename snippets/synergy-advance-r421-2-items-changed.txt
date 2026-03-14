@@ -1,0 +1,2 @@
+
+Add disk image background (previously stored outside the repository)

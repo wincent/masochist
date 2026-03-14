@@ -1,0 +1,2 @@
+
+`export PYTHONPATH=/usr/local/lib/python2.5/site-packages` is what [was needed](/twitter/155).

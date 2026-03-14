@@ -1,0 +1,2 @@
+
+Initial implementation of Quartz-based hot keys (https://wincent.dev/issues/524)

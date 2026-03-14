@@ -1,0 +1,2 @@
+
+dialog project; small Foundation tool for displaying dialogs from within shell scripts

@@ -1,0 +1,2 @@
+
+[GitHub leaked some customer email addresses](https://github.com/blog/1440-today-s-email-incident). Dramah ensues.

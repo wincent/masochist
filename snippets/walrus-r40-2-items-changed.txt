@@ -1,0 +1,2 @@
+
+Allow 'super' directive to be called with or without parentheses around the (optional) parameters

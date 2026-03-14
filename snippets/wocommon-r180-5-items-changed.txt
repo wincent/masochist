@@ -1,0 +1,2 @@
+
+More unit and speed tests for "select" and "collect" HOMs

@@ -1,0 +1,2 @@
+
+Other Leopard-only settings, accelerated Objective-C dispatch, Objective-C garbage collection etc

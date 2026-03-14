@@ -1,0 +1,2 @@
+
+All DNS zones have been pointed at AWS now.

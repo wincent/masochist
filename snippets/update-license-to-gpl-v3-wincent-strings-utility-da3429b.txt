@@ -1,0 +1,4 @@
+
+Replace previous license file with GPL version 3. Update the license header of all source files.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

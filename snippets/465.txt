@@ -1,0 +1,2 @@
+
+`:Gblame` alone is probably reason enough to use [fugitive.vim](/twitter/294).

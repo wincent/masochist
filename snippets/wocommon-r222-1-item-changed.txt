@@ -1,0 +1,2 @@
+
+Add special comment markers to header so that it can be automatically preprocessed for symbol updates

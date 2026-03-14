@@ -1,0 +1,2 @@
+
+Dump WO_ENUMERATE macro in favor of Objective-C 2.0 fast enumeration

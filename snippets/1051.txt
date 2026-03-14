@@ -1,0 +1,2 @@
+
+Oh dear. Google has massively dumbed down the Google Apps for Business UI; I can't even see how to set up email aliases this emaciated UI.

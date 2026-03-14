@@ -1,0 +1,2 @@
+
+Tweak compilation of \#def directive to support nested \#include directives

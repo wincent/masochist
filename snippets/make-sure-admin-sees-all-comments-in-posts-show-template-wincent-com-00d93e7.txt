@@ -1,0 +1,4 @@
+
+Previously the admin would only see comments awaiting moderation. Now he sees all non-spam comments.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -1,0 +1,2 @@
+
+Xcode target for updating help documentation: now generates in-application embedded and free-standing web formats

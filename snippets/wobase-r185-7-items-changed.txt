@@ -1,0 +1,2 @@
+
+Remove WOHost class and test files (now in WOCommon)

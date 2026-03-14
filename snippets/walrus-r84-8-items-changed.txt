@@ -1,0 +1,2 @@
+
+Fix namespace woes with judicious ordering of 'requires', appropriate nesting, and use of class_eval and module_eval to prevent unwanted pollution

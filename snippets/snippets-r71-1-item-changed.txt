@@ -1,0 +1,2 @@
+
+Nightlies script publishes weblog

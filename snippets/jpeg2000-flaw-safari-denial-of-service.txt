@@ -1,0 +1,2 @@
+
+As [previously predicted](https://wincent.dev/a/about/wincent/weblog/archives/2007/01/responsible_dis.php), the [MOAB folks](https://wincent.dev/a/about/wincent/weblog/archives/apple/moab/) have decided to [attack your browser](http://groups.google.com/group/moabfixes/t/41c76ee5cbadc74).

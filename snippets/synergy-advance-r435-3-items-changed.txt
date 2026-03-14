@@ -1,0 +1,2 @@
+
+Move iChat and iTunes Apple Event logging into plug-ins

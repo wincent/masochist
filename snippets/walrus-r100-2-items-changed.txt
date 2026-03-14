@@ -1,0 +1,2 @@
+
+Use dynamic specify blocks in acceptance specs for better reporting and granularity

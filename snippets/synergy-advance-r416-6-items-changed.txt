@@ -1,0 +1,2 @@
+
+Tweak some instance variables and accessor name for KVO compliance

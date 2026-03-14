@@ -1,0 +1,2 @@
+
+Rename English.lproj to en.lproj, bump version number

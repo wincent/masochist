@@ -1,0 +1,2 @@
+
+Hopefully a fix for [this annoying new behaviour](http://trac.adium.im/ticket/12480) in Adium will make it into a released version soon.

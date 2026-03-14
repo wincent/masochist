@@ -1,0 +1,2 @@
+
+Fix wrong target in nib

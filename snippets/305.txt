@@ -1,0 +1,2 @@
+
+[A distributed map reduce function in Erlang](http://browsertoolkit.com/fault-tolerance.png)?

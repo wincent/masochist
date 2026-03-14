@@ -1,0 +1,2 @@
+
+Add NSProxy category to silence compiler warnings about forward:: method

@@ -1,0 +1,2 @@
+
+Handle case where no special build settings are to be passed

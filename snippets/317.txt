@@ -1,0 +1,2 @@
+
+[MacVim](/wiki/MacVim) snapshot 49 [is out](http://groups.google.com/group/vim_mac/browse_thread/thread/2d467afba59c54bc?hl=en).

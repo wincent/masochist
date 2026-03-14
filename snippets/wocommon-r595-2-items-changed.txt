@@ -1,0 +1,2 @@
+
+Pre-move commit for list.tmpl

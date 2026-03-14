@@ -1,0 +1,2 @@
+
+Add Spanish localizable strings file

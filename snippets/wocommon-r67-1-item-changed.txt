@@ -1,0 +1,2 @@
+
+Correct typos (compiler errors) in NSString+WOHostUtilities category

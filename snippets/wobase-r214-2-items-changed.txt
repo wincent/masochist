@@ -1,0 +1,2 @@
+
+Remove NSWindow category (migrated to WOCommon)

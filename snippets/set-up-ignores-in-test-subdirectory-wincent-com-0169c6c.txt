@@ -1,0 +1,4 @@
+
+Set up a gitignore file to ignore everything inside the test subdirectory.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -1,0 +1,2 @@
+
+Favorites panel, preferences, type-ahead tableview

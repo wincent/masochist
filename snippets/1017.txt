@@ -1,0 +1,2 @@
+
+Rule of thumb: put your `:active` state styles after your `:hover` ones.

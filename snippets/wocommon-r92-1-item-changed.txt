@@ -1,0 +1,2 @@
+
+Omit superclasses of potentially instantiated nib items

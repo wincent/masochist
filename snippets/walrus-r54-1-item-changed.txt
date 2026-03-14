@@ -1,0 +1,2 @@
+
+Specs for using here docs with 'raw' directives

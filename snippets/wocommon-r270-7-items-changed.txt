@@ -1,0 +1,2 @@
+
+loadMainView override for new preference pane class

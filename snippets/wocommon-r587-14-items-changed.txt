@@ -1,0 +1,2 @@
+
+Example templates in subdirectory

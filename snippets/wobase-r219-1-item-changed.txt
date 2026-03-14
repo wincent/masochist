@@ -1,0 +1,2 @@
+
+Diagnostics tool migrated to WOCommon, remove subdirectory

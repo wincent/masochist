@@ -1,0 +1,2 @@
+
+Add XML-aware preference setting classes

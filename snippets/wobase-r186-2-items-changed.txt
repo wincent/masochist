@@ -1,0 +1,2 @@
+
+Remove WOBaseLocalizations class (now redundant due to moved classes now in WOCommon)

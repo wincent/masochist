@@ -1,0 +1,2 @@
+
+[jQuery](/wiki/jQuery) 1.4.1 [out already](http://jquery14.com/day-12/jquery-141-released).

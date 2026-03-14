@@ -1,0 +1,4 @@
+
+The tool depends on some classes and categories from WOCommon.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

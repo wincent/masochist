@@ -1,0 +1,2 @@
+
+Add ignore property for wincent.perspectivev3 in project bundle

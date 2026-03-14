@@ -1,0 +1,2 @@
+
+Add unicode for horizontal ellipsis

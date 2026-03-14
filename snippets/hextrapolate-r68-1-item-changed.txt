@@ -1,0 +1,2 @@
+
+Cut lines for open URLs by using convenience methods from WOCommon

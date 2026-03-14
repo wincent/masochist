@@ -1,0 +1,2 @@
+
+Import NSImage category from WOBase

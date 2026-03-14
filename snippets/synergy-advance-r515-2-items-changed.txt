@@ -1,0 +1,2 @@
+
+Fix subtle build dependency ordering problem

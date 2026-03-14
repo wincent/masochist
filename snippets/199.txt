@@ -1,0 +1,2 @@
+
+Just made my first [comment-enabled blog post](/blog/shock-horror-mcafee-apparently-sends-passwords-to-users-in-plaintext). Will see if it attracts any spam.

@@ -1,0 +1,2 @@
+
+Exclude denied attempts when counting number of activation attempts

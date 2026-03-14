@@ -1,0 +1,2 @@
+
+Remove Synergy Advance-specific bundle identifier

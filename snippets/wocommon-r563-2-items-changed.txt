@@ -1,0 +1,2 @@
+
+Update localizable strings files via separate build target and scripts

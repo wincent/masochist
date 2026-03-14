@@ -1,0 +1,2 @@
+
+Lower memory requirements by discarding insignificant characters in literal strings

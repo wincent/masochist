@@ -1,0 +1,2 @@
+
+Don't try using the WOBaseCore from a preference pane (at link time the class is not yet available)

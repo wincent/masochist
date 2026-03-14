@@ -1,0 +1,2 @@
+
+WO_LOAD macro (constructor functions).

@@ -1,0 +1,2 @@
+
+Updated strings; include additional information in console output about propagating changes

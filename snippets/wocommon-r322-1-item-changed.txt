@@ -1,0 +1,2 @@
+
+Replace runs of three periods with real ellipses in localizable strings file

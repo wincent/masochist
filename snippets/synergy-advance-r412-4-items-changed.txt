@@ -1,0 +1,2 @@
+
+Update strings; customize store URL

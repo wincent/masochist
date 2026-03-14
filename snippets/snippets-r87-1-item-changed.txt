@@ -1,0 +1,2 @@
+
+In autotest mode, write to STDOUT rather than log file

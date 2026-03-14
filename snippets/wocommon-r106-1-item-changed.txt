@@ -1,0 +1,2 @@
+
+Make validity test macros more robust (necessary to guarantee correct operation on Intel CPUs)

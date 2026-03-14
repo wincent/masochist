@@ -1,0 +1,2 @@
+
+Spec to test block-passing style to 'accumulate' method

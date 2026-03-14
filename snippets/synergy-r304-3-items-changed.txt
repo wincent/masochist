@@ -1,0 +1,2 @@
+
+Tweak Norwegian localization, fixed https://wincent.dev/issues/495

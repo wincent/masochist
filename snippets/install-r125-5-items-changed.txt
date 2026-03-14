@@ -1,0 +1,2 @@
+
+Minor corrections and tweaks to French localiation (for the "uninstaller" part)

@@ -1,0 +1,2 @@
+
+WOPreferenceSetting -&gt; WOStepperSliderPreferenceSetting

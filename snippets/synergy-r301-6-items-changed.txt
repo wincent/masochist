@@ -1,0 +1,2 @@
+
+Get rid of unused WODistributedNotification subclass

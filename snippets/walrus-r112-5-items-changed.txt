@@ -1,0 +1,2 @@
+
+Compilation of '\#slurp' directive and accompanying acceptance tests

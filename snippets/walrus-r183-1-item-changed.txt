@@ -1,0 +1,2 @@
+
+Use Open4 in the command line tool (Open3 throws away the exit status)

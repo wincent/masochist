@@ -1,0 +1,2 @@
+
+From the "[Daily Vim Devotional](http://dailyvim.tumblr.com/)", today: [backspace](http://dailyvim.tumblr.com/post/759267451/x) delete in Normal mode using `X`.

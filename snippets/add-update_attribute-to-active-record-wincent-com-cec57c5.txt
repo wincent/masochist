@@ -1,0 +1,4 @@
+
+Just like update_attribute except calls save! instead of save.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

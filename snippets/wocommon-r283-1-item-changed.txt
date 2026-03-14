@@ -1,0 +1,2 @@
+
+Correct object class (was modified during refactoring)

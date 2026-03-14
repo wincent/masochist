@@ -1,0 +1,2 @@
+
+Remove some Info.plist files incorrectly being copied into Resource folders

@@ -1,0 +1,2 @@
+
+Add lastIndex method to NSArray convenience category

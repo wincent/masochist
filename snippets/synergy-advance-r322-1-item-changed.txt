@@ -1,0 +1,2 @@
+
+Add required categories missing from compilation phase (omission detected using new category marker macros)

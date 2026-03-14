@@ -1,0 +1,2 @@
+
+Update to reflect new relative paths to WOBezel, WODebug, WOHotKey and WOTest

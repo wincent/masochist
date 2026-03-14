@@ -1,0 +1,2 @@
+
+Short-circuit left-recursion in grammar rather than permitting an infinite loop

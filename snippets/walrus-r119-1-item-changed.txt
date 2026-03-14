@@ -1,0 +1,2 @@
+
+Add 'doc' directory to top-level ignore list

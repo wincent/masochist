@@ -1,0 +1,2 @@
+
+Display Uninstall button even if no previous install detected

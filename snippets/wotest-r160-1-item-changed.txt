@@ -1,0 +1,2 @@
+
+Better solution for environment variable cleanup (do it at the NSTask level)

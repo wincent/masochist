@@ -1,0 +1,4 @@
+
+Store public SSH keys in snippets repository.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -1,0 +1,2 @@
+
+Fix errors in nightly script caused by move to SVK; now publicly tested with new Synergy nightly

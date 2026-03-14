@@ -1,0 +1,2 @@
+
+[Nicer mail API in Rails 3](http://lindsaar.net/2010/1/26/new-actionmailer-api-in-rails-3).

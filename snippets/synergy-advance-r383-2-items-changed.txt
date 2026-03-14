@@ -1,0 +1,2 @@
+
+Fix off-by-one drawing errors (also removes unnecessary anti-aliasing)

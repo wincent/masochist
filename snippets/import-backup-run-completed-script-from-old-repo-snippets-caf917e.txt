@@ -1,0 +1,4 @@
+
+Move across from Subversion repository to (now not so new) Git repo.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -1,0 +1,2 @@
+
+Stuff to use more often: `!!` (last command), `!$` (params to the last command).

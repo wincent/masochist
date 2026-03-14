@@ -1,0 +1,2 @@
+
+The 'set -e' trick again

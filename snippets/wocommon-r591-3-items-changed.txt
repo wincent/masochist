@@ -1,0 +1,2 @@
+
+Rename example_settings.tmpl to settings.tmpl

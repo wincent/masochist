@@ -1,0 +1,4 @@
+
+This function is now as far as it can go, with the parameter count reduced to one.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

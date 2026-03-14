@@ -1,0 +1,2 @@
+
+Delete WOObject and WOSingleton files (migrated to WOCommon)

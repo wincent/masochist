@@ -1,0 +1,2 @@
+
+When updating nightly feed, post to a product-specific category

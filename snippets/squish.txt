@@ -1,0 +1,2 @@
+
+[Bug \#318](https://wincent.dev/issues/318).

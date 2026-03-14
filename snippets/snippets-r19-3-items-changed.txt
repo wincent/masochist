@@ -1,0 +1,2 @@
+
+Remove unused/unwanted info nib, add copyright notice to main.m

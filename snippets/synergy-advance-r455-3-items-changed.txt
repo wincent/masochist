@@ -1,0 +1,2 @@
+
+Correct typos in the WOFormatStringValidityTransformer tests that caused some to fail spuriously; force case-sensitivity

@@ -1,0 +1,2 @@
+
+Corrections to modal session handling; should improve CPU usage

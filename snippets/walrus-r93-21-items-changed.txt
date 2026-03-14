@@ -1,0 +1,2 @@
+
+Compilation of the 'echo' directive

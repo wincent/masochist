@@ -1,0 +1,2 @@
+
+Update reference to point to new location of icon (in WOCommon)

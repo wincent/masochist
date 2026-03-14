@@ -1,0 +1,2 @@
+
+More project bundle cleanup: remove .LSOverride and icon files

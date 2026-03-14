@@ -1,0 +1,2 @@
+
+[Ruby](/wiki/Ruby) 1.9.2 [is out](http://groups.google.com/group/comp.lang.ruby/browse_thread/thread/778b68aa446101c7).

@@ -1,0 +1,2 @@
+
+Correct misspelled selectors using NSException category (WO_Test_raise -&gt; WOTest_raise)

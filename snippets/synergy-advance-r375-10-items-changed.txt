@@ -1,0 +1,2 @@
+
+New icons for plug-ins and registration preference panes.

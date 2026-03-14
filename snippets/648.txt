@@ -1,0 +1,2 @@
+
+"[You're cuking it right](http://mislav.uniqpath.com/2010/09/cuking-it-right/)". Funnily enough, as a very happy [Steak](/wiki/Steak) user, it seems to me that if you're using Cucumber at all then you're doing it wrong.

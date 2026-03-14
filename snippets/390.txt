@@ -1,0 +1,2 @@
+
+[PHP warts](http://www.steike.com/code/php-must-die/).

@@ -1,0 +1,2 @@
+
+Add missing category (fixes linker error for release builds)

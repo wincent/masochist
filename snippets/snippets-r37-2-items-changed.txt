@@ -1,0 +1,2 @@
+
+Fix local variable shadowing instance variable

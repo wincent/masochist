@@ -1,0 +1,2 @@
+
+Loving `log.decorate=short` in my [Git](/wiki/Git) config.

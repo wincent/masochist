@@ -1,0 +1,2 @@
+
+In [Mac OS X](/wiki/Mac_OS_X) [Lion](/wiki/Lion) Server, [PostgreSQL](/wiki/PostgreSQL) replaces [MySQL](/wiki/MySQL) as the pre-installed database server.

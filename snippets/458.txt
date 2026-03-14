@@ -1,0 +1,2 @@
+
+Basic script for making [EBS](/wiki/EBS) snapshots is done.

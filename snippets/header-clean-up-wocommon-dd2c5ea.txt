@@ -1,0 +1,4 @@
+
+Trim the fat off the headers in various classes and categories.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

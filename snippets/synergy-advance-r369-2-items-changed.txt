@@ -1,0 +1,2 @@
+
+Remove references to unused preference key, "NoIconInDock".

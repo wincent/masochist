@@ -1,0 +1,2 @@
+
+New strings; use instance (not class) version of loadNibFile:externalNameTable:withZone:

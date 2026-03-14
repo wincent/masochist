@@ -1,0 +1,2 @@
+
+Add 'dry run' switch to tool

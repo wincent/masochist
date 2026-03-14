@@ -1,0 +1,2 @@
+
+`git config --global pager.show-branch true`

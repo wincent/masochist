@@ -1,0 +1,2 @@
+
+Use Core Foundation under the covers for better control over encodings and conversions

@@ -1,0 +1,2 @@
+
+My many hours of bug-hunting culminate in [this Bundler ticket](http://github.com/carlhuda/bundler/issues/issue/407).

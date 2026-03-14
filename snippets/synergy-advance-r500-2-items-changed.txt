@@ -1,0 +1,2 @@
+
+Use 'black star' instead of 'white star' in WORatingTransformer

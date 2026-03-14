@@ -1,0 +1,4 @@
+
+These demonstrate the use of the "dedent" helper introduced in 54a7a69.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

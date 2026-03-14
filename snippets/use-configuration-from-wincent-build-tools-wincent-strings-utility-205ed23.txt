@@ -1,0 +1,4 @@
+
+Replace hard-coded settings with configuration inherited from the Wincent Build Tools.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

@@ -1,0 +1,2 @@
+
+Remove superfluous backticks in activation cron script

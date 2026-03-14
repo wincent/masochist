@@ -1,0 +1,4 @@
+
+The right place to do this is not in fact the sanitization function but the link encoding function. Discovered writing specs for the function.
+
+This reverts commit f340961.

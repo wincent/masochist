@@ -1,0 +1,2 @@
+
+Ghost 'Stop' menu item if not applicable

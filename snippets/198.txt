@@ -1,0 +1,2 @@
+
+[This](http://www.hatfulofhollow.com/posts/code/visualisingsorting/index.html) may be helpful when choosing and understanding sorting algorithms.

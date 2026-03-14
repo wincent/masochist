@@ -1,0 +1,4 @@
+
+This is slightly nicer and more concise than calling "removeObject:".
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

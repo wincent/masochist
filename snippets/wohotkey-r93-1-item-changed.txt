@@ -1,0 +1,2 @@
+
+Make sure that test-running script propagates exit code back to caller

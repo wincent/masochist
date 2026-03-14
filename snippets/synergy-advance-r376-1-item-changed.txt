@@ -1,0 +1,2 @@
+
+If iTunes cannot be found (as might occur if the user has just reset their Launch Services database) try using a hard-coded path as a last-ditch attempt

@@ -1,0 +1,4 @@
+
+With GC under Leopard, must use CFRelease rather than WO_RELEASE.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

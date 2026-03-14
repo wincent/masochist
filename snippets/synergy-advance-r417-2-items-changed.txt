@@ -1,0 +1,2 @@
+
+Thread-safety improvements; more informative messages; other tweaks to version checking infrastructure

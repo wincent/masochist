@@ -1,0 +1,2 @@
+
+The Address Book in [Lion](/wiki/Lion) at last allows you to enter yearless birthdays. Shame the rest of the UI is horrid.

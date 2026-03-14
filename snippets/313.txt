@@ -1,0 +1,2 @@
+
+Browser-based access to git.wincent.dev broken now too (moved to 1.6.4 trying to fix the other issue, but the update broke [gitweb](/wiki/gitweb)). Still looking into both issues.

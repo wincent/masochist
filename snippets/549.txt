@@ -1,0 +1,2 @@
+
+Hadn't looked into email certificates since Thawte pulled the plug a while back. Looks like [Comodo has stepped in](http://www.instantssl.com/ssl-certificate-products/free-email-certificate.html) to fill the breach.

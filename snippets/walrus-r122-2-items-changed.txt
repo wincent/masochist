@@ -1,0 +1,2 @@
+
+'--halt' switch; '--output-dir' switch; better error handling and reporting

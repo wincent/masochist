@@ -1,0 +1,2 @@
+
+My first [Rails](https://wincent.dev/wiki/Rails) ticket: [\#7698](http://dev.rubyonrails.org/ticket/7968).

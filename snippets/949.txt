@@ -1,0 +1,2 @@
+
+The Riculous Fish [on Go](http://ridiculousfish.com/blog/posts/go_bloviations.html).

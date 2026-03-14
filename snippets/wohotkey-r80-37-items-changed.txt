@@ -1,0 +1,2 @@
+
+Add complete unit testing infrastructure to WOHotKey framework, initial tests, doxygen doxyfile

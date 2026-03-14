@@ -1,0 +1,4 @@
+
+This should really be NSUserDefaults here.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

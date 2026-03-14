@@ -1,0 +1,2 @@
+
+Remove corresponding localizable strings files

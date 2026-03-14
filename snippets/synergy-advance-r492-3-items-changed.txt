@@ -1,0 +1,2 @@
+
+To avoid confusion, suppress echoing of harmless warning messages to console at default log level (https://wincent.dev/issues/568)

@@ -1,0 +1,2 @@
+
+Emit extra newline after compiling a \#def block (visual separation of methods in compiled output)

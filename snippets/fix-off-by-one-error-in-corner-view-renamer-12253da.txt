@@ -1,0 +1,4 @@
+
+In the flipped coordinate system case, the border would be drawn one pixel too low.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

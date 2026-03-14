@@ -1,0 +1,2 @@
+
+Don't build Advanced preferences pane any more (those settings rolled into other panes)

@@ -1,0 +1,4 @@
+
+Add the Wikitext::Parser::Token class to make writing tokenization specs a little easier.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

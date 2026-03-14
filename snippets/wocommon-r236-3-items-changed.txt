@@ -1,0 +1,2 @@
+
+Convenience method for retrieving colors from NSUserDefaults.

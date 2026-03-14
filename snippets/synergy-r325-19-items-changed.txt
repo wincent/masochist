@@ -1,0 +1,2 @@
+
+Include a copy of the Growl framework inside the source root

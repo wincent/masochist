@@ -1,0 +1,4 @@
+
+Remove references to old embedded build number information in version header.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

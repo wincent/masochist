@@ -1,0 +1,2 @@
+
+Auto-uploads for nightly script; make backups before writing to persistent store

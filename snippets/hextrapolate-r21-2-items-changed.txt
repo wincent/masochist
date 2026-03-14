@@ -1,0 +1,2 @@
+
+Ignore wincent.\* files inside project bundle; add default.pbxuser

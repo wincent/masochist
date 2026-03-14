@@ -1,0 +1,4 @@
+
+Include links to Git repository browser and RubyForge project page.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

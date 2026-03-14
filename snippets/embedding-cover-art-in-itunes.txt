@@ -1,0 +1,2 @@
+
+[Implemented](https://wincent.dev/issues/8).

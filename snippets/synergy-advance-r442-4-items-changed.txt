@@ -1,0 +1,2 @@
+
+Remove project-specific icon references, use common ones instead

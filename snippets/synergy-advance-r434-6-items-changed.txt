@@ -1,0 +1,2 @@
+
+Update Spanish localization (preference pane InfoPlist.strings files)

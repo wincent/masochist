@@ -1,0 +1,2 @@
+
+Make old WOLogManager methods live in the ASL world as well

@@ -1,0 +1,2 @@
+
+Correction to shell script (escape when echoing literal dollar sign)

@@ -1,0 +1,2 @@
+
+Remove --force switch, trust Walrus to do the right thing (faster compilation times)

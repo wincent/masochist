@@ -1,0 +1,4 @@
+
+Revise man page to document the new -extract and -combine switches.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

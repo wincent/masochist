@@ -1,0 +1,2 @@
+
+The ability to update only specific gems was recently added to [Bundler](/wiki/Bundler) (eg. `bundle update rails`). This makes conservative (piecemeal) updating a heck of a lot easier than before.

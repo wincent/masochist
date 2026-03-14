@@ -1,0 +1,2 @@
+
+Wrapping changes; attributed string value in WOGeneralBaseFormatter

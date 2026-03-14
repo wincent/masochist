@@ -1,0 +1,2 @@
+
+Compilation of 'raw' directives and extensive specs to confirm behaviour

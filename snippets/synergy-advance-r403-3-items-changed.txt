@@ -1,0 +1,2 @@
+
+Dispose of old implementation and use new preference pane class

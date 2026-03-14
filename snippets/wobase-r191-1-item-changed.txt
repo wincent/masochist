@@ -1,0 +1,2 @@
+
+Adjust input files to 'update strings files' shell script build phase (remove reference to deleted file)

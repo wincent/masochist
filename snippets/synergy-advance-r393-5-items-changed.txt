@@ -1,0 +1,2 @@
+
+Comments on plan for Core Data backend

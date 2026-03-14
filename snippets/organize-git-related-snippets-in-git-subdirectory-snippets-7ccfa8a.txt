@@ -1,0 +1,4 @@
+
+Move commit-feed script into "git" subdirectory.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;\

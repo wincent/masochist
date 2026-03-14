@@ -1,0 +1,2 @@
+
+Create separate branch for Panther; the main trunk is now for Leopard development.

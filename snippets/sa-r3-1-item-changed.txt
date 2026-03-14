@@ -1,0 +1,2 @@
+
+Set up WOCommon external on Leopard branch (the trunk)

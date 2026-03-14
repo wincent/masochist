@@ -1,0 +1,2 @@
+
+Remove WOPointingHandCursorButton class (moved to WOCommon some time ago)

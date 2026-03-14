@@ -1,0 +1,2 @@
+
+Explicitly call awakeFromNib: when hooking up controller to nib

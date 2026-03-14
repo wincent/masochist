@@ -1,0 +1,2 @@
+
+Annotations for NSImage tinting category, new NSWindow category imported from WOCommon

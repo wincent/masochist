@@ -1,0 +1,2 @@
+
+More left-recursion detection support (left-recursion in ParsletChoice combinations)

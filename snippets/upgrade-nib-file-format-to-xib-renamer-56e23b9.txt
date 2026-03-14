@@ -1,0 +1,4 @@
+
+Switch to the much more SCM-friendly xib format.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

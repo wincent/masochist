@@ -1,0 +1,2 @@
+
+Update version numbers and clean-up project references prior to release

@@ -1,0 +1,2 @@
+
+Remove wincent.\* files from project bundle and set svn:ignore property

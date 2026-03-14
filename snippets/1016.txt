@@ -1,0 +1,2 @@
+
+The [Vim](/wiki/Vim) shortcut I'm always forgetting: `]s` to move to the next misspelled word.

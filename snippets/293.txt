@@ -1,0 +1,2 @@
+
+"Minifying" [JavaScript](/wiki/JavaScript).

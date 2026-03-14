@@ -1,0 +1,2 @@
+
+Autorelease pools in pre-main constructor functions

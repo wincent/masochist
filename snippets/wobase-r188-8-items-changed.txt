@@ -1,0 +1,2 @@
+
+Remove WOMachine classes (now in WOCommon) and all references to them

@@ -1,0 +1,2 @@
+
+WOTestRunner should return a non-zero exit status if any test fails

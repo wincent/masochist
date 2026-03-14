@@ -1,0 +1,2 @@
+
+Temporarily turn off auto-indenting of pasted content (useful for writing Git commit messages): `:set paste`. Put it back: `:set nopaste`. Toggle it: `:set invpaste paste?`

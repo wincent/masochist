@@ -1,0 +1,2 @@
+
+Add missing INFOPLIST_PREFIX_HEADER setting

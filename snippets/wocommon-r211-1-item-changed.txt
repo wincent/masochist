@@ -1,0 +1,2 @@
+
+WO_UNLOAD macro (counterpart for WO_LOAD)

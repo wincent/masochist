@@ -1,0 +1,2 @@
+
+New strings, replaced some lengthy checks with shorter assertions

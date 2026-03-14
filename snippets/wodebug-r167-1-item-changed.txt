@@ -1,0 +1,2 @@
+
+Fix typo (equality operator instead assignment)

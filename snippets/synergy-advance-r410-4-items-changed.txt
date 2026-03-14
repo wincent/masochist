@@ -1,0 +1,2 @@
+
+'set -e' to shell script phases; leverage WOCommon for menu item; update some localized strings files

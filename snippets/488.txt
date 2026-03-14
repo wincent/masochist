@@ -1,0 +1,2 @@
+
+Trying to get in the habit of using CTRL-R in Bash.

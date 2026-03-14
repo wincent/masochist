@@ -1,0 +1,2 @@
+
+Right-associativity now working for a limited number of specific cases

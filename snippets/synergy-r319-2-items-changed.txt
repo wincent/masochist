@@ -1,0 +1,2 @@
+
+Additional translations added to the German localization, https://wincent.dev/issues/519

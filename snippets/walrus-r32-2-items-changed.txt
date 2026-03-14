@@ -1,0 +1,2 @@
+
+More concise implementation of default 'NoValueForKey' return value in the MemoizingCache; specs

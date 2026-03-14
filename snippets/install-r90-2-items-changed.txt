@@ -1,0 +1,2 @@
+
+Retag Synergy 1.6.1 release (repository cleanup)

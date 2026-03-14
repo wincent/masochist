@@ -1,0 +1,2 @@
+
+Reorder build phases to catch compilation and linker errors faster

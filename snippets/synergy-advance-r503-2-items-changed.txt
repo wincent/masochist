@@ -1,0 +1,2 @@
+
+Correct the selector used in three-star case

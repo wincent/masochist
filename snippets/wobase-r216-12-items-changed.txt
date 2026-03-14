@@ -1,0 +1,2 @@
+
+WOBundle etc moved to WOCommon, removed old targets

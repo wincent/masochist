@@ -1,0 +1,2 @@
+
+Knew about `git log -S` for the longest time... how is it possible that I didn't know about `git log -G`?

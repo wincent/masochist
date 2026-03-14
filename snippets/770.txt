@@ -1,0 +1,2 @@
+
+Just noticed that `cd` works in NERDTree.

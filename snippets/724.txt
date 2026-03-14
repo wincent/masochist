@@ -1,0 +1,2 @@
+
+[Excellent intro to "deferreds"](http://www.erichynds.com/jquery/using-deferreds-in-jquery/) in [jQuery](/wiki/jQuery) 1.5. I found this considerably clearer than the official documentation.

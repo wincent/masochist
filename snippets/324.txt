@@ -1,0 +1,2 @@
+
+Derek Wyatt starts a [Vim](/wiki/Vim) blog: <http://derekwyatt.wordpress.com/> (**Update:** moved to <http://derekwyatt.org/>.)

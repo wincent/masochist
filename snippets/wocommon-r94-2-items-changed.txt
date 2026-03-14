@@ -1,0 +1,2 @@
+
+Move WO_LOG_METHOD_DETAILS from WOLogManager header to WODebugMacros header

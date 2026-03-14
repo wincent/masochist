@@ -1,0 +1,4 @@
+
+So we show all articles with a tag, then all posts etc.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

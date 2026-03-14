@@ -1,0 +1,4 @@
+
+This adds a isValidSubstitutionExpression method to NSString.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

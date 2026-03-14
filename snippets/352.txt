@@ -1,0 +1,2 @@
+
+[ZFS](/wiki/ZFS) for [Mac OS X](/wiki/Mac_OS_X) [discontinued](http://zfs.macosforge.org/). I wonder why... Was rather looking forward to having a modern, robust filesystem on my Mac.

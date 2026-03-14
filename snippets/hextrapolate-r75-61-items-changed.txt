@@ -1,0 +1,2 @@
+
+Stubs for application help and some initial files

@@ -1,0 +1,2 @@
+
+Macros for triggering linker errors in the event of missing category implementation files

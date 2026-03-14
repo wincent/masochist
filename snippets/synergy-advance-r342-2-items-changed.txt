@@ -1,0 +1,2 @@
+
+Cache plug-in attributes in instance variables to save hitting the disk

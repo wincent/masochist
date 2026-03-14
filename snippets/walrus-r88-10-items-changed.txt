@@ -1,0 +1,2 @@
+
+Move extensions into 'ext' subdir to match standard conventions for gems

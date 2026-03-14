@@ -1,0 +1,2 @@
+
+New creation methods for NSMutableDictionary (WOCreation category)

@@ -1,0 +1,2 @@
+
+Switch to DSYM; instant messaging preference pane now bundled inside iChat plug-in; plug-in notes

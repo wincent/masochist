@@ -1,0 +1,2 @@
+
+New class, WOBindableMenuWithSeparators

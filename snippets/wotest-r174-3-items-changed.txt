@@ -1,0 +1,2 @@
+
+Notes in bundle injector class

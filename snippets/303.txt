@@ -1,0 +1,2 @@
+
+Just discovered the awesome [MacVim fullscreen mode](/wiki/MacVim_fullscreen_mode).

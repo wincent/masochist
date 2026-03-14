@@ -1,0 +1,4 @@
+
+Remove autorelease message send which is now a no-op under garbage collection.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

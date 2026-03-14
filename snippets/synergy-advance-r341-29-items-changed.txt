@@ -1,0 +1,2 @@
+
+Initial implementation of Dock plug-in and preference pane

@@ -1,0 +1,2 @@
+
+Incredibly impressed with [Factory Girl](/wiki/Factory_Girl); it's dispatching even the thorniest edge cases with incredibly simple, readable set-up.

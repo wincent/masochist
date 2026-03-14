@@ -1,0 +1,2 @@
+
+[Amazon Simple Email Service](/wiki/Amazon_Simple_Email_Service) is the [latest offering](http://aws.amazon.com/ses/) to be added to the stable of [AWS](/wiki/AWS).

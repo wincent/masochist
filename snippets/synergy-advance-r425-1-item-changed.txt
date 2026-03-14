@@ -1,0 +1,2 @@
+
+Symbolic link for Growl framework (for SVK, won't use Subversion externals)

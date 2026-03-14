@@ -1,0 +1,4 @@
+
+Fix lines with unnecessary trailing whitespace.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

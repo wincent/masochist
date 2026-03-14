@@ -1,0 +1,2 @@
+
+Set svn:ignore for \*.mode1 file(s) in Xcode project bundle

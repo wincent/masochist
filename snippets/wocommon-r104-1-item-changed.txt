@@ -1,0 +1,2 @@
+
+Tighten up singleton implementation; dealloc now raises

@@ -1,0 +1,2 @@
+
+Very impressed with [capybara-webkit](/wiki/capybara-webkit); it's over twice as fast as [Akephalos](/wiki/Akephalos) in my initial testing, and just as reliable.

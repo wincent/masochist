@@ -1,0 +1,2 @@
+
+On [Cucumber + Celerity](http://groups.google.com/group/cukes/msg/327816b0621fa362?hl=en) (Watir API wrapper for HtmlUnit using Rhino JS VM) over Selenium.

@@ -1,0 +1,2 @@
+
+More sensible selector names and assertions for WOBundle

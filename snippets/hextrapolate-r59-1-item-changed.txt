@@ -1,0 +1,2 @@
+
+Tools tips in base pop-ups (eg. "Binary" for "Base 2")

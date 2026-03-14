@@ -1,0 +1,2 @@
+
+NSImage/CIImage conversion methods

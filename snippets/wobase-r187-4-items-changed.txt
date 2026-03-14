@@ -1,0 +1,2 @@
+
+Remove localizations instance variables and other references (no longer necessary)

@@ -1,0 +1,2 @@
+
+[What's new](http://trac.macosforge.org/projects/ruby/wiki/WhatsNewInLeopard).

@@ -1,0 +1,2 @@
+
+Use HOM when working with plugin informal protocol; partial implementation of informal protocol (applicationDidFinishLaunching component)

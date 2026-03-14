@@ -1,0 +1,2 @@
+
+Categories written for `NSNotificationCenter` and `NSNotificationQueue`.

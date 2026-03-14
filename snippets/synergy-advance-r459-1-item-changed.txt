@@ -1,0 +1,2 @@
+
+Silence compiler warning about setExitCode: method

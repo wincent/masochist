@@ -1,0 +1,2 @@
+
+Remove wolf.\* files from project bundle and set ignore property

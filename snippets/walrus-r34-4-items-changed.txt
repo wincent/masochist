@@ -1,0 +1,2 @@
+
+Track position within input stream (to provide memoizer with coordinates)

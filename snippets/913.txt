@@ -1,0 +1,2 @@
+
+[tmux](/wiki/tmux) Pro-Tip: use `:clear-history` to clear the scrollback buffer of the currently selected pane.

@@ -1,0 +1,2 @@
+
+Remove old, pre-ranlib versions of libraries from GMP 4.2

@@ -1,0 +1,2 @@
+
+The new hotness: `C-a s` in [tmux](/wiki/tmux) for switching rapidly between sessions on the fly.

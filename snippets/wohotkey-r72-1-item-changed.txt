@@ -1,0 +1,2 @@
+
+Clear wincent.\* junk from project bundle

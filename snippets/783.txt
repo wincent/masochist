@@ -1,0 +1,2 @@
+
+Just discovered that support for external editors (ie. [Vim](/wiki/Vim)) has been removed in [Xcode](/wiki/Xcode) 4. Ouch, baby. Very ouch.

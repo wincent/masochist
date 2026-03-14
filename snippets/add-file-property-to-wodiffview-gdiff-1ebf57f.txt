@@ -1,0 +1,4 @@
+
+Let WODiffView have a reference to its represented file object.
+
+Signed-off-by: Greg Hurrell &lt;greg@hurrell.net&gt;

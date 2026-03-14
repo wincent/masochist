@@ -1,0 +1,2 @@
+
+Performance parity achieved, memoizing now defaults to activated

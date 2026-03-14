@@ -1,0 +1,2 @@
+
+Changed a whole bunch of issues in [my Bugzilla install](https://wincent.dev/a/support/bugs/), assigning them to my [new email address](https://wincent.dev/a/news/archives/2006/05/change_of_email.php).

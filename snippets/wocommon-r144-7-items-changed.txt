@@ -1,0 +1,2 @@
+
+New NSMenuItem categories for creation, comparison and convenience
