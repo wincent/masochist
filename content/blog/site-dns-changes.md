@@ -4,7 +4,7 @@ tags: site blog
 cache_breaker: 1
 ---
 
-A little later today the DNS records will be updated as wincent.dev and www.wincent.dev will be moving to a new IP address (209.235.214.139) from the old address (209.235.192.161).
+A little later today the DNS records will be updated as wincent.dev will be moving to a new IP address (209.235.214.139) from the old address (209.235.192.161).
 
 I'm not anticipating any downtime but there is a small possibility that things could act a little weird during the change over. I'll post an update here once everything has been completed.
 
