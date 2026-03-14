@@ -10,6 +10,8 @@ use rocket::response::content::RawHtml;
 use rocket::{Data, Request, Response, State, get, launch, routes};
 use search::SearchCorpus;
 use std::num::NonZeroU32;
+use std::sync::Arc;
+use std::time::Duration;
 
 struct AssetPaths {
     css: String,
@@ -22,17 +24,19 @@ struct AppState {
     assets: AssetPaths,
 }
 
+type KeyedLimiter = RateLimiter<String, DefaultKeyedStateStore<String>, DefaultClock>;
+
 struct RateLimitFairing {
-    limiter: RateLimiter<String, DefaultKeyedStateStore<String>, DefaultClock>,
+    limiter: Arc<KeyedLimiter>,
 }
 
 impl RateLimitFairing {
     fn new(requests: u32, per_seconds: u64) -> Self {
-        let quota = Quota::with_period(std::time::Duration::from_secs(per_seconds))
+        let quota = Quota::with_period(Duration::from_secs(per_seconds))
             .unwrap()
             .allow_burst(NonZeroU32::new(requests).unwrap());
         Self {
-            limiter: RateLimiter::keyed(quota),
+            limiter: Arc::new(RateLimiter::keyed(quota)),
         }
     }
 }
@@ -42,8 +46,19 @@ impl Fairing for RateLimitFairing {
     fn info(&self) -> Info {
         Info {
             name: "Rate Limiter",
-            kind: Kind::Request | Kind::Response,
+            kind: Kind::Liftoff | Kind::Request | Kind::Response,
         }
+    }
+
+    async fn on_liftoff(&self, _rocket: &rocket::Rocket<rocket::Orbit>) {
+        let limiter = self.limiter.clone();
+        rocket::tokio::spawn(async move {
+            loop {
+                rocket::tokio::time::sleep(Duration::from_secs(300)).await;
+                limiter.retain_recent();
+                limiter.shrink_to_fit();
+            }
+        });
     }
 
     async fn on_request(&self, req: &mut Request<'_>, _data: &mut Data<'_>) {
