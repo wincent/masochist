@@ -780,16 +780,10 @@ sudo make install</pre>
               When I went looking for the latest official version of
               <tt>pstree</tt> it seems that the website has packed up and gone
               forever. Luckily I still had a copy of a source archive for a
-              recent version (2.27), possibly the latest. Seeing as it's
-              redistributable under the GPL I have placed a copy
-              <a href="https://wincent.dev/gpl/pstree-2.27.tar.gz">here</a>. To
-              build it, you would follow a procedure like this one:
+              recent version (2.27), possibly the latest.
             </p>
 
-            <pre># get the source
-wget https://wincent.dev/gpl/pstree-2.27.tar.gz
-<br />
-# extract
+            <pre># extract
 tar zxvf pstree-2.27.tar.gz
 cd pstree
 <br />
