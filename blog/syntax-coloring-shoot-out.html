@@ -1,27 +1,27 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Syntax coloring shoot-out • wincent.dev</title><meta property="og:title" content="Syntax coloring shoot-out"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="stylesheet" href="/_assets/styles-34dfaf45.css"><link rel="home" type="application/rss+xml" href="/blog.rss"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/syntax-coloring-shoot-out">Syntax coloring shoot-out</a></h1><div class="metadata"><relative-time created="1231192124" updated="1710259978">Created 2009-01-05, updated 2024-03-12</relative-time><span>5 minute read</span></div><div class="prerendered"><p>As a follow-up to the <a href="/blog/trying-emacs">comments</a> on Emacs that I posted earlier, I thought I'd check out how BBEdit is doing lately, seeing as a new version is out (9.1) and that latest I'd seen was 8.7.2.</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Syntax coloring shoot-out • wincent.dev</title><meta property="og:title" content="Syntax coloring shoot-out"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="stylesheet" href="/_assets/styles-34dfaf45.css"><link rel="home" type="application/rss+xml" href="/blog.rss"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/syntax-coloring-shoot-out">Syntax coloring shoot-out</a></h1><div class="metadata"><relative-time created="1231192124" updated="1773492997">Created 2009-01-05, updated 2026-03-14</relative-time><span>5 minute read</span></div><div class="prerendered"><p>As a follow-up to the <a href="/blog/trying-emacs">comments</a> on Emacs that I posted earlier, I thought I'd check out how BBEdit is doing lately, seeing as a new version is out (9.1) and that latest I'd seen was 8.7.2.</p>
 <p>Well, there's been big progress in a lot of areas.</p>
 <p>Disk browsers and multi-file find results are now much more useful, and on a par with TextMate because you can finally edit files in-place rather than spawn editors in new windows. The interface is still clunky in some ways (the preferences, for example, are overly complicated, and the multifile find suffers from having an overly large initial dialog and a separate results window), but things like the addition of Projects really are a leap forward.</p>
 <p>But there's one area in which BBEdit continues to suck, and badly: syntax coloring. Witness the following comparison between BBEdit, Emacs, and TextMate.</p>
 <p>If you look at the sample from BBEdit (below), you'll see that the text is almost entirely black. You can barely call this syntax coloring at all. Basically the only things colored are are language keywords (<code>if</code>, <code>return</code>), a few types (<code>int</code>, <code>char</code>, <code>long</code>), but notably not others (<code>VALUE</code>, <code>token_t</code>), string literals, and comments.</p>
 <p>I personally find this undifferentiated mass of black text to be very hard to look at for any length of time. BBEdit could be the best text editor in the world, and it is a very good editor, but with that syntax coloring I just can't consider using it.</p>
-<p><img src="/system/images/bbedit-syntax-coloring.png" alt="bbedit-syntax-coloring.png" /></p>
+<p><img src="/images/bbedit-syntax-coloring.png" alt="bbedit-syntax-coloring.png" /></p>
 <p>Moving on to Emacs, and things are literally worlds away (as always with Emacs). It gets the same things right that BBEdit does, but also catches all the types that BBEdit missed, as well as colorizing variable names.</p>
 <p>I personally also find the clean, not-antialiased Monaco font much nicer on the eyes, even though the new default font included in BBEdit (Consola Regular) does have a kind of smooth attractiveness. I also prefer the color scheme.</p>
-<p><img src="/system/images/emacs-syntax-coloring.png" alt="emacs-syntax-coloring.png" /></p>
+<p><img src="/images/emacs-syntax-coloring.png" alt="emacs-syntax-coloring.png" /></p>
 <p>The last contestant is TextMate. It misses out on a couple things that Emacs acts upon (the same types that BBEdit failed to highlight, and variable names), but does do one thing that Emacs didn't do: highlight function and macro names. I'm not really sure I like the use of boldface for the latter elements, however.</p>
-<p><img src="/system/images/textmate-syntax-coloring.png" alt="textmate-syntax-coloring.png" /></p>
+<p><img src="/images/textmate-syntax-coloring.png" alt="textmate-syntax-coloring.png" /></p>
 <p>So my personal, subjective ranking of these for both attractiveness and usability is Emacs coming out on top, TextMate a satisfactory second place, and BBEdit trailing far, far behind. And notably, it is precisely Emacs and TextMate which offer the most flexibility for using alternate themes and tweaking things to appeal to your personal aesthetic judgement; whereas BBEdit offers all too few means of addressing its weaknesses (you're left to tweaking the few color options that are available to you; you can't actually improve the highlighting at a syntactic level without delving into writing a C plug-in).</p>
 <p>Finally, although the sample screenshots don't show it, I've seen a lot more cases of incorrect highlighting in BBEdit than in the other editors, particularly involving quoted strings, regular expressions, and heavy interpolation. I've seldom seen TextMate trip up in that area, and I've yet to see Emacs trip up at all (although remember, I haven't been playing seriously with it for long).</p>
 <h4>Update: 15 January 2009</h4>
 <p>Adding a <a href="/wiki/MacVim">MacVim</a> screenshot for the sake of comparison. I've been using MacVim for about 120 seconds so the comparison isn't really totally fair; I'll post an updated screenshot when and if I find out how to disable anti-aliasing, change fonts, and pick a color scheme that is comparable with the one used in the other screenshots.</p>
 <p>But at a glance you can see that the amount of coloring is about the same as BBEdit, with the addition of numeric literals.</p>
-<p><img src="/system/images/macvim-syntax-coloring.png" alt="macvim-syntax-coloring.png" /></p>
+<p><img src="/images/macvim-syntax-coloring.png" alt="macvim-syntax-coloring.png" /></p>
 <h4>Update: 21 February 2009</h4>
 <p>I finally got around to posting an updated <a href="/wiki/MacVim">MacVim</a> screenshot with similar colors and font settings.</p>
-<p><img src="/system/images/macvim-syntax-coloring-updated.png" alt="macvim-syntax-coloring-updated.png" /></p>
+<p><img src="/images/macvim-syntax-coloring-updated.png" alt="macvim-syntax-coloring-updated.png" /></p>
 <h4>Update: 30 January 2010</h4>
 <p>And here we are a year later.</p>
-<p><img src="/system/images/macvim-syntax-coloring-jan-2010.png" alt="macvim-syntax-coloring-jan-2010.png" /></p>
+<p><img src="/images/macvim-syntax-coloring-jan-2010.png" alt="macvim-syntax-coloring-jan-2010.png" /></p>
 <p>Not much has changed. The only real tweaks of interest are:</p>
 <ul>
 <li><a href="/blog/making-vim-highlight-suspicious-characters">use of more subtle coloring for end-of-line markers</a></li>
@@ -29,7 +29,7 @@
 </ul>
 <h4>Update: 5 February 2012</h4>
 <p>Two years later:</p>
-<p><img src="/system/images/vim-syntax-coloring-feb-2012.png" alt="vim-syntax-coloring-feb-2012.png" /></p>
+<p><img src="/images/vim-syntax-coloring-feb-2012.png" alt="vim-syntax-coloring-feb-2012.png" /></p>
 <p>Differences:</p>
 <ul>
 <li>I'm now using <a href="/wiki/Vim">Vim</a> in the <a href="/wiki/terminal">terminal</a>, generally inside a <a href="/wiki/tmux">tmux</a> session</li>
@@ -41,7 +41,7 @@
 </ul>
 <h4>Update: 21 July 2015</h4>
 <p>Some three years or so later:</p>
-<p><img src="/system/images/vim-syntax-coloring-july-2015.png" alt="vim-syntax-coloring-july-2015.png" /></p>
+<p><img src="/images/vim-syntax-coloring-july-2015.png" alt="vim-syntax-coloring-july-2015.png" /></p>
 <p>Differences:</p>
 <ul>
 <li>After years of Solarized usage, I switched to the dark &quot;ocean&quot; theme from Base16</li>
@@ -54,7 +54,7 @@
 <blockquote>
 <p><em>(Sponge Bob narrator voice):</em> Seven years later</p>
 </blockquote>
-<p><img src="/system/images/neovim-syntax-coloring-july-2022.png" alt="neovim-syntax-coloring-july-2022.png" /></p>
+<p><img src="/images/neovim-syntax-coloring-july-2022.png" alt="neovim-syntax-coloring-july-2022.png" /></p>
 <p>Differences:</p>
 <ul>
 <li>I got feedback on <a href="https://www.youtube.com/c/GregHurrell">my screencasts</a> that a higher-contrast scheme would be better, so I switched to <a href="https://github.com/wincent/wincent/tree/media/colorschemes#bright">&quot;bright&quot; from Base16</a>.</li>
