@@ -135,7 +135,7 @@ blog	command-t-1.8-released	Command-T 1.8 released	1396314822	1710259978	release
 blog	command-t-1.9-released	Command-T 1.9 released	1401048443	1710259978	releases command.t blog
 blog	command-t-1.9.1-released	Command-T 1.9.1 released	1401461742	1495119989	releases command.t blog
 blog	command-t-lua-rewrite	Command-T v6.0 — the Lua rewrite	1658668243	1719926264	blog
-blog	comments-on-weblogs	Comments on weblogs	1182803700	1773510822	blog
+blog	comments-on-weblogs	Comments on weblogs	1182803700	1773514714	blog
 blog	comments	Comments on commenting	1450385083	1709592444	site blog
 blog	commit-messages	Commit messages	1238612539	1710259978	subversion git blog
 blog	complimentary-licenses-for-synergy-advance-donors	Complimentary licenses for Synergy Advance donors	1113178500	1773510822	blog
@@ -570,7 +570,7 @@ blog	sharpening-the-axe	Sharpening the axe	1599321026	1773492997	blog
 blog	shock-horror-mcafee-apparently-sends-passwords-to-users-in-plaintext	Shock/horror: "McAfee apparently sends passwords to users in plaintext"	1239774786	1584053324	rant blog
 blog	simplified-ansible-set-up	Simplifying my Ansible set-up	1625669899	1710259978	blog
 blog	site-changes	Site changes	1251787789	1709676231	site blog
-blog	site-dns-changes	Site DNS changes	1234179934	1773511451	site blog
+blog	site-dns-changes	Site DNS changes	1234179934	1773514714	site blog
 blog	site-downtime-due-to-massive-amazon-ec2-outage	Site downtime due to massive Amazon EC2 outage	1303665345	1710259978	site blog
 blog	site-downtime	Site downtime	1300521903	1495119989	site blog
 blog	site-enhancements	Site enhancements	1238097640	1709676231	site blog
