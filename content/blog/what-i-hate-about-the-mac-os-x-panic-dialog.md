@@ -5,7 +5,7 @@ tags: blog
 
 The wording:
 
-![](/system/images/panic_dialog.png)
+![](/images/panic_dialog.png)
 
 > You need to restart your computer. Hold down the Power button for several seconds or press the Restart button.
 

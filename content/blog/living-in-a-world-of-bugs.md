@@ -21,7 +21,7 @@ Poor old Joshua Peek was my number one suspect, seeing as his name is almost inv
 
 All the while I did this I was getting periodic errors from Lighthouse:
 
-![you-stumbled-bro.png](/system/images/you-stumbled-bro.png)
+![you-stumbled-bro.png](/images/you-stumbled-bro.png)
 
 I can't say I particularly like this error message. Apparently, in my infinite clumsiness, _I_ "stumbled" on an error. I think if anything or anyone stumbled, it was evidently Lighthouse itself. I was only clicking on ticket and attachment links.
 

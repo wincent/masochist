@@ -13,7 +13,7 @@ Notes on peripherals because, believe it or not, my cable management is so obses
 - DisplayPort (v1.4)
 - Thunderbolt 4: Connected to Mac via dock, as described below ([BenQ recommends using Thunderbolt for connecting to Macs](https://www.benq.com/en-us/campaign/monitor-for-mac/articles/how-do-i-connect-my-mac-m1-to-benq-monitor-update.html))
 
-![benq-pd2730s-ports](/system/images/benq-pd2730s-ports.png)
+![benq-pd2730s-ports](/images/benq-pd2730s-ports.png)
 
 This is an upgrade from the [BenQ 2700U](https://www.benq.com/en-us/monitor/professional/pd2700u.html) (4K), bringing the following spec bumps:
 
@@ -27,7 +27,7 @@ However, there is one notable downgrade: the monitor is thicker than the old one
 
 For comparison, here are the ports on the old model.
 
-![benq-pd2700u-ports](/system/images/benq-pd2700u-ports.png)
+![benq-pd2700u-ports](/images/benq-pd2700u-ports.png)
 
 I never used the "hub" functionality in the old model because it was not reliable enough in my experience.
 
@@ -35,7 +35,7 @@ I never used the "hub" functionality in the old model because it was not reliabl
 
 [CalDigit TS5 Plus](https://www.caldigit.com/thunderbolt-5-dock-ts5-plus/)
 
-![CalDigit TS5 Plus ports diagram](/system/images/caldigit-ts5plus.png)
+![CalDigit TS5 Plus ports diagram](/images/caldigit-ts5plus.png)
 
 On the front:
 
@@ -78,7 +78,7 @@ See [this page for firmware updates](https://www.caldigit.com/ts5-plus-and-eleme
     - Output 2: USB-A to USB-A cable to dock (for use with laptop)
     - DC in (12V 2A, ie. 24W): power in
 
-![UGREEN ports](/system/images/ugreen-ports.jpg)
+![UGREEN ports](/images/ugreen-ports.jpg)
 
 For comparison, here's what I had under the old model (a [UGREEN 4-port USB 3.0 switch](https://www.amazon.es/dp/B01N6GD9JO)):
 
@@ -101,7 +101,7 @@ Note on the ordering of the outputs/lights: I chose to do it this way so that th
 
 I have APC Back-UPS Pro BR1600SI (1600VA/960W) UPS with the following ports:
 
-![Back-UPS Pro ports](/system/images/apc-back-ups-pro-br1600si-ports.png)
+![Back-UPS Pro ports](/images/apc-back-ups-pro-br1600si-ports.png)
 
 There are ports on the back that offer surge protection and battery backup (labeled "4" in the diagram), and others that offer only surge protection (labeled "7" in the diagram); I'm only using the former[^overload]; that is, I have cables with IEC C13/C14 connectors leading from the UPS to:
 

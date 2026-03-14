@@ -3,7 +3,7 @@ title: "drukenbatman" gets on the shit list
 tags: blog
 ---
 
-![](/system/images/drunken-scriptkiddie.jpg)"drunkenbatman", pictured on the right, has [just knowingly posted an article which crashes Safari](http://www.drunkenblog.com/drunkenblog-archives/000760.html) (**warning: do not read that article in Safari**) to his website, [drunkenblog.com](http://www.drunkenblog.com/). He has this to say:
+![](/images/drunken-scriptkiddie.jpg)"drunkenbatman", pictured on the right, has [just knowingly posted an article which crashes Safari](http://www.drunkenblog.com/drunkenblog-archives/000760.html) (**warning: do not read that article in Safari**) to his website, [drunkenblog.com](http://www.drunkenblog.com/). He has this to say:
 
 > I'm aware many people who have the site in their feeds will be trying to access it via something based on WebKit/WebCore. Safari may have crashed, and you lost all your open tabs. You may have had your RSS reader up, and opened up some links in tabs, and down it all went. Read whatever you will into the fact that while these things did occur to me, I'm attaching it inline instead of linking to it separately anyways.
 

@@ -26,7 +26,7 @@ Now, when I tweeted about President Lincoln and sharpening the axe, I was only h
 
 # 3
 
-![Commit history](/system/images/sharpening-the-axe/commit-history.png)
+![Commit history](/images/sharpening-the-axe/commit-history.png)
 
 I switched full-time to Vim at the beginning of 2009, and have had my dotfiles in a Git repo since around the same time.
 
@@ -351,7 +351,7 @@ Making something into a plug-in applies a constructive kind of pressure, for the
 
 # 26
 
-![Scalpel improvements](/system/images/sharpening-the-axe/scalpel-improvements.png)
+![Scalpel improvements](/images/sharpening-the-axe/scalpel-improvements.png)
 
 From then on it's a case of relentlessly improving the snippet until there is nothing left to fix, or you run into some insurmountable barrier that stops further progress.
 
@@ -395,7 +395,7 @@ SUM:                             2             24            308            135
 
 So the story of Scalpel is just one example of axe-sharpening taken from a decade of dotfile tweaking and workflow optimization.
 
-![XKCD 1205: Is it worth the time?](/system/images/sharpening-the-axe/xkcd.png)
+![XKCD 1205: Is it worth the time?](/images/sharpening-the-axe/xkcd.png)
 
 I want to close with [this XKCD comic](https://xkcd.com/1205/) which may well have been hovering around in the back of your mind ever since the beginning. It seeks to answer the question of how much optimization is too much? You wouldn't work for a day to optimize a minute-long task that you rarely perform, but you might do it if the task was frequent enough or costly enough. The point is, there actually is an objective guideline that you can follow to ensure that your investment in axe-sharpening is appropriate and proportional to the expected benefit. Being aware of the trade-off here can keep us away from obsessively refactoring, or polishing our tools as a way of procrastinating.
 

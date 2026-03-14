@@ -5,7 +5,7 @@ tags: blog
 
 A few months ago I had some server troubles and switched to [Rackspace](http://service.bfast.com/bfast/click?bfmid=30735717&siteid=41506187&bfpage=hosting_headaches) managed hosting and I can't praise the reliability and quality of the service enough.
 
-![](/system/images/netcraft-wincent-2005.png)
+![](/images/netcraft-wincent-2005.png)
 
 The image above is the uptime graph for [wincent.dev](http://wincent.dev) as measured by [Netcraft](http://netcraft.com/) (click [here](http://uptime.netcraft.com/up/graph?site=wincent.dev) to see the most up-to-date version of the graph; there have been some reboots for routine maintenance since this article was originally posted but the solidity of the graph is more evident than ever). The diagonal red lines show the steadily growing uptime for the old server which ran FreeBSD. The blue line shows the new server which is hosted by [Rackspace](http://service.bfast.com/bfast/click?bfmid=30735717&siteid=41506187&bfpage=hosting_headaches) and runs [Red Hat Enterprise Linux](http://www.redhat.com/).
 

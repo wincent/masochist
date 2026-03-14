@@ -82,7 +82,7 @@ So, an option we have for rapidly prototyping an initial version of Filechute is
 
 The "tag cloud" metaphor was very "Web 2.0" and somewhat in vogue at the time I wrote that Rails app, but for Filechute I think an iTunes-inspired interface is probably going to look better and be more ergonomic. Its much-loved "Column browser" lives on even today in Apple Music, if you dig around in the menus and enable it:
 
-![iTunes beloved column view](/system/images/itunes-column-view.png)
+![iTunes beloved column view](/images/itunes-column-view.png)
 
 Without dwelling too much on the pathetic total of four songs in my library[^spotify] (not counting the utterly cringe-inducing presence of the "Songs of Innocence" album from U2 that continues to parasitically infest my device years after 2014, when it was [put there by Apple](https://www.vulture.com/2020/10/u2-songs-of-innocence-apple-remove.html) in one of the most misguided marketing campaigns in recorded history) we can see columns up top that permit one to select genre, artist, and albums — any selection in these columns refines the search, showing only the matching entries (and possible refinements) in the other column; the main listing below the columns reflects the filtered result. And of course, the ubiquitous side-drawer on the left provides a home for shortcuts to other places and favorites.
 

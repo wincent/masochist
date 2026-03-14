@@ -16,7 +16,7 @@ And adding a couple lines to my `~/.vimrc`:
 
 I now have some special highlighting that shows up when lines in my source code start getting near the 80-column limit (shown in light gray), and actually surpass it (shown in darker gray):
 
-![vim-overlength.png](/system/images/vim-overlength.png)
+![vim-overlength.png](/images/vim-overlength.png)
 
 Not quite as pretty as a vertical line serving as a visual guide (like you'd see in [Xcode](/wiki/Xcode), [TextMate](/wiki/TextMate) or [BBEdit](/wiki/BBEdit)), but it has the advantage that it will work nicely even if you have to reduce your window size and your text starts wrapping.
 

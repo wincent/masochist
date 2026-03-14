@@ -6,7 +6,7 @@ cache_breaker: 1
 
 Lately I've been spending a lot of time with my entire screen covered by [MacVim](/wiki/MacVim) and [Terminal](/wiki/Terminal) windows. As you can see, I use the same "legal pad yellow" background color for both because I find it much easier on my eyes.
 
-![all-windows-look-the-same.png](/system/images/all-windows-look-the-same.png)
+![all-windows-look-the-same.png](/images/all-windows-look-the-same.png)
 
 The problem is that all these windows look the same, and it is hard to tell which one is frontmost without looking at the title bar. While it may seem fairly easy to distinguish the windows in the sample screenshot, it becomes much harder when the entire 27" display is just a screenful of black text swimming in a sea of yellow. The distance between the titlebar and the bottom of the window (where your eyes are often focussed, especially in the case of Terminal windows) can easily be around 12".
 

@@ -11,7 +11,7 @@ In the early to mid ninetines I was fresh out of high school and was drumming in
 
 When I went on to build my first website, probably around 1996 or 1997, I jokingly called it "Wincent's Web Site" on a whim. The oldest snapshot of the site that I've been able to find is this one, taken in early 1998:
 
-![wincent-1998.gif](/system/images/wincent-1998.gif)
+![wincent-1998.gif](/images/wincent-1998.gif)
 
 As you can see, at that point it was mostly a collection of hideously boring academic papers, and despite the site's name, it had plenty of content on it directly linked to my real identity. Embarrassingly, it made use of the `<marquee>` tag and had a hit counter on it.
 
@@ -31,7 +31,7 @@ The culmination of this epoch was when I ended up [publishing an encrypted revie
 
 "Wincent Colaiuta" became a _nom de plum_ and I ended up using it when I went on to do paid work as a columnist for Lycos (Web Monkey) and The Mac Observer. When asked to supply a portrait photo for my "by line" I went with a pseudo-randomly selected stock photo:
 
-![wcolaiuta_stock.png](/system/images/wcolaiuta_stock.png)
+![wcolaiuta_stock.png](/images/wcolaiuta_stock.png)
 
 Bald, black, bespectacled; in short, nothing like me. I thought it was quite funny at the time.
 

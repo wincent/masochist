@@ -5,4 +5,4 @@ tags: blog
 
 Moving on from [yesterday's post](http://wincent.dev/a/about/wincent/weblog/archives/2007/05/halfstar_rating.php), the ability to set half-star ratings is now available from the Synergy Advance Global Menu too:
 
-![](/system/images/half-stars-global-menu.png)
+![](/images/half-stars-global-menu.png)

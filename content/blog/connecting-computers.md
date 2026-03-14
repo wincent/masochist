@@ -52,7 +52,7 @@ The other thing that happened recently is that I noticed both my work and person
 
 But when I saw the same draining going on for my personal laptop, and the same 15W charge coming from the dock, I figured the dock was busted, or I had plugged the darn cable into the wrong port:
 
-![owc-thunderbolt-3-dock-14-port-back](/system/images/owc-thunderbolt-3-dock-14-port-back.png)
+![owc-thunderbolt-3-dock-14-port-back](/images/owc-thunderbolt-3-dock-14-port-back.png)
 
 Sure enough, see those USB-C connectors on the back? They both have little lightning bolts next to them, which I guess signifies Thunderbolt, but also implies power delivery, right? Well, it turns out that the one with the little picture of the computer next to it delivers 85W, but the other one only supplies 15W. Both of them "work", in the sense that you plug your laptop in and it sends video to the display and you can see all the other devices connected, but one of them will have your laptop drinking through a straw, while the other will slake its thirst.
 

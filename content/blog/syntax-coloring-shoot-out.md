@@ -16,17 +16,17 @@ If you look at the sample from BBEdit (below), you'll see that the text is almos
 
 I personally find this undifferentiated mass of black text to be very hard to look at for any length of time. BBEdit could be the best text editor in the world, and it is a very good editor, but with that syntax coloring I just can't consider using it.
 
-![bbedit-syntax-coloring.png](/system/images/bbedit-syntax-coloring.png)
+![bbedit-syntax-coloring.png](/images/bbedit-syntax-coloring.png)
 
 Moving on to Emacs, and things are literally worlds away (as always with Emacs). It gets the same things right that BBEdit does, but also catches all the types that BBEdit missed, as well as colorizing variable names.
 
 I personally also find the clean, not-antialiased Monaco font much nicer on the eyes, even though the new default font included in BBEdit (Consola Regular) does have a kind of smooth attractiveness. I also prefer the color scheme.
 
-![emacs-syntax-coloring.png](/system/images/emacs-syntax-coloring.png)
+![emacs-syntax-coloring.png](/images/emacs-syntax-coloring.png)
 
 The last contestant is TextMate. It misses out on a couple things that Emacs acts upon (the same types that BBEdit failed to highlight, and variable names), but does do one thing that Emacs didn't do: highlight function and macro names. I'm not really sure I like the use of boldface for the latter elements, however.
 
-![textmate-syntax-coloring.png](/system/images/textmate-syntax-coloring.png)
+![textmate-syntax-coloring.png](/images/textmate-syntax-coloring.png)
 
 So my personal, subjective ranking of these for both attractiveness and usability is Emacs coming out on top, TextMate a satisfactory second place, and BBEdit trailing far, far behind. And notably, it is precisely Emacs and TextMate which offer the most flexibility for using alternate themes and tweaking things to appeal to your personal aesthetic judgement; whereas BBEdit offers all too few means of addressing its weaknesses (you're left to tweaking the few color options that are available to you; you can't actually improve the highlighting at a syntactic level without delving into writing a C plug-in).
 
@@ -38,19 +38,19 @@ Adding a [MacVim](/wiki/MacVim) screenshot for the sake of comparison. I've been
 
 But at a glance you can see that the amount of coloring is about the same as BBEdit, with the addition of numeric literals.
 
-![macvim-syntax-coloring.png](/system/images/macvim-syntax-coloring.png)
+![macvim-syntax-coloring.png](/images/macvim-syntax-coloring.png)
 
 ### Update: 21 February 2009
 
 I finally got around to posting an updated [MacVim](/wiki/MacVim) screenshot with similar colors and font settings.
 
-![macvim-syntax-coloring-updated.png](/system/images/macvim-syntax-coloring-updated.png)
+![macvim-syntax-coloring-updated.png](/images/macvim-syntax-coloring-updated.png)
 
 ### Update: 30 January 2010
 
 And here we are a year later.
 
-![macvim-syntax-coloring-jan-2010.png](/system/images/macvim-syntax-coloring-jan-2010.png)
+![macvim-syntax-coloring-jan-2010.png](/images/macvim-syntax-coloring-jan-2010.png)
 
 Not much has changed. The only real tweaks of interest are:
 
@@ -61,7 +61,7 @@ Not much has changed. The only real tweaks of interest are:
 
 Two years later:
 
-![vim-syntax-coloring-feb-2012.png](/system/images/vim-syntax-coloring-feb-2012.png)
+![vim-syntax-coloring-feb-2012.png](/images/vim-syntax-coloring-feb-2012.png)
 
 Differences:
 
@@ -76,7 +76,7 @@ Differences:
 
 Some three years or so later:
 
-![vim-syntax-coloring-july-2015.png](/system/images/vim-syntax-coloring-july-2015.png)
+![vim-syntax-coloring-july-2015.png](/images/vim-syntax-coloring-july-2015.png)
 
 Differences:
 
@@ -90,7 +90,7 @@ Differences:
 
 > _(Sponge Bob narrator voice):_ Seven years later
 
-![neovim-syntax-coloring-july-2022.png](/system/images/neovim-syntax-coloring-july-2022.png)
+![neovim-syntax-coloring-july-2022.png](/images/neovim-syntax-coloring-july-2022.png)
 
 Differences:
 

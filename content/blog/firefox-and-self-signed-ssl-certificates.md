@@ -12,7 +12,7 @@ Personally I don't mind about the inconvenience, seeing as all too few sites tha
 
 But today when I stumbled across the first such site that I really wanted to see, I discovered that Firefox's brain-deadness knows now bounds... It turns out that if you are unfortunate enough to be running a localized, non-English version of Firefox, then the multi-step click-fest is replaced with a brick-wall you-no-get-past-this-point-fest.
 
-![firefox-braindead.png](/system/images/firefox-braindead.png)
+![firefox-braindead.png](/images/firefox-braindead.png)
 
 Epic fail\[sic\] if ever there was one. We're not just talking about a bug inflicted upon non-English usrs. The utter stupidity of the situation is underlined when you look at the name of the host I am trying to connect to: **localhost**.
 

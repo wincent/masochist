@@ -5,7 +5,7 @@ tags: blog
 
 Today I felt like showing off my stunning ignorance of Ruby on Rails by doing a screencast on Behaviour-Driven Development.
 
-[![](/system/images/bdd-screencast.png)](http://wincent.dev/a/about/wincent/weblog/screencasts/BDD.mov)
+[![](/images/bdd-screencast.png)](http://wincent.dev/a/about/wincent/weblog/screencasts/BDD.mov)
 
 Well, not really. Showing the world how slow and clumsy I am in Rails wasn't my prime objective (even though I did do a pretty good job of it!)
 

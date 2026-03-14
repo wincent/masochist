@@ -1,5 +1,6 @@
 ---
 tags: consolas apple.font.smoothing wiki
+title: AppleFontSmoothing
 ---
 
 These are screenshots of the different possible settings for `AppleFontSmoothing` that I took on my previous machine with [Consolas](/wiki/Consolas) 13. On my current machine I'm running with Consolas 12.
@@ -10,7 +11,7 @@ These are screenshots of the different possible settings for `AppleFontSmoothing
 $ defaults -currentHost write -g AppleFontSmoothing -int 1
 ```
 
-![apple-font-smoothing/1.png](/system/images/apple-font-smoothing/1.png)
+![apple-font-smoothing/1.png](/images/apple-font-smoothing/1.png)
 
 My preferred setting, corresponding to the "Light" font smoothing setting that Apple used to expose in the System Preferences UI.
 
@@ -20,7 +21,7 @@ My preferred setting, corresponding to the "Light" font smoothing setting that A
 $ defaults -currentHost write -g AppleFontSmoothing -int 2
 ```
 
-![apple-font-smoothing/2.png](/system/images/apple-font-smoothing/2.png)
+![apple-font-smoothing/2.png](/images/apple-font-smoothing/2.png)
 
 Most comments I've seen on the web come down in favor of this setting, and in isolation, it does look better to my eyes. Nevertheless, the contrast between bold and normal text is more useful at level 1.
 
@@ -30,7 +31,7 @@ Most comments I've seen on the web come down in favor of this setting, and in is
 $ defaults -currentHost write -g AppleFontSmoothing -int 3
 ```
 
-![apple-font-smoothing/3.png](/system/images/apple-font-smoothing/3.png)
+![apple-font-smoothing/3.png](/images/apple-font-smoothing/3.png)
 
 Clearly too thick.
 
@@ -40,7 +41,7 @@ Clearly too thick.
 $ defaults -currentHost write -g AppleFontSmoothing -int 4
 ```
 
-![apple-font-smoothing/4.png](/system/images/apple-font-smoothing/4.png)
+![apple-font-smoothing/4.png](/images/apple-font-smoothing/4.png)
 
 Clearly too thin.
 
@@ -48,8 +49,8 @@ Clearly too thin.
 
 ## Smoothing level 1
 
-![apple-font-smoothing/1-zoomed.png](/system/images/apple-font-smoothing/1-zoomed.png)
+![apple-font-smoothing/1-zoomed.png](/images/apple-font-smoothing/1-zoomed.png)
 
 ## Smoothing level 2
 
-![apple-font-smoothing/2-zoomed.png](/system/images/apple-font-smoothing/2-zoomed.png)
+![apple-font-smoothing/2-zoomed.png](/images/apple-font-smoothing/2-zoomed.png)
