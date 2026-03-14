@@ -25,11 +25,11 @@ Any other order and things simply didn't work. With RapidSSL, however, all of th
 
 RapidSSL took a few hours to actually issue the certificate. Note the difference between the old, chained certificate:
 
-![](/system/images/legacy/old-cert.png)
+![](/system/images/old-cert.png)
 
 And the new, root-signed certificate:
 
-![](/system/images/legacy/new-cert.png)
+![](/system/images/new-cert.png)
 
 Also nice to see that they in fact extended the expiry date by more than a year, adding on a few additional weeks (to 5 May 2008) for free.
 

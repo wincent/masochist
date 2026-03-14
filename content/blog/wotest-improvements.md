@@ -9,7 +9,7 @@ The problem was that in many cases I was depending on `NSValue`'s not very human
 
 After the improvements the test results now look like those shown in this screenshot (click for a larger version):
 
-[![](/system/images/legacy/results_t.png)](http://wincent.dev/a/about/wincent/weblog/results.png)
+[![](/system/images/results_t.png)](http://wincent.dev/a/about/wincent/weblog/results.png)
 
 In this case we see a test failed because we expected 20,000 but got 200,000. Clicking on the red error message in the build results window takes us directly to the test in the appropriate source file. Turns out the test itself is wrong; the `20000` needs to be changed to `200000`. The new output formatting makes it easy to spot the error, and as an added bonus there's type information in the output as well:
 

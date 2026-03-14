@@ -21,14 +21,14 @@ And it's quite fun to use the Core Image API. The code tends to be more verbose 
 
 So here are some unscientific demonstration images; first of all we have a picture of the Dock icon as it was about one week ago. You can see that it's a little different than the icon in the currently-shipping preview of Synergy Advance because at this point, prior to embarking on the Core Image rewrite, I had already started to add user preferences for altering the opacity of the cover art badge and the colors of the various elements in the icon:
 
-![](/system/images/legacy/SADockBefore.png)
+![](/system/images/SADockBefore.png)
 
 Here is a similar image made after the Core Image rewrite; like I said not very scientific but you may be able to detect the improved image quality that results from the superior Core Image scaling and the additional sharpening step.
 
-![](/system/images/legacy/SADockAfter.png)
+![](/system/images/SADockAfter.png)
 
 Performance is roughly equivalent despite the additional processing. In doing the rewrite I also took the opportunity to refactor the code, splitting common code off into methods and throwing out a huge bunch of fairly verbose and complicated caching and optimizations that I had made to the old Cocoa version in an effort to get it as fast as possible. The new code is completely unoptimized yet Core Image still manages to maintain performance levels. The refactoring should enable me to put a preview icon right in the preferences window at full size so that users can get a better idea of the effects of their customizations; this is important because there are a large number of new settings.
 
 Of course, it's not perfect. As shown in the image below the code for handling cover art badges doesn't yet handle non-square album art. Should be quick enough to fix.
 
-![](/system/images/legacy/SADockBug.png)
+![](/system/images/SADockBug.png)

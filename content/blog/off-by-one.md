@@ -5,7 +5,7 @@ tags: blog
 
 Well, [I fixed](http://wincent.dev/a/about/wincent/weblog/svn-log/archives/2007/01/synergy_advance_r383_2_items_c.php) the off-by-one glitch [mentioned here](http://wincent.dev/a/about/wincent/weblog/archives/2006/12/dock_icon_updat.php).
 
-![](/system/images/legacy/fixed.png)
+![](/system/images/fixed.png)
 
 The fix was very simple. First, I took some screenshots and was inspecting them at high zoom trying to work out the exact nature of the fault. Once I had some initial predictions in place I decided to remove some minor adjustments and see if the fault at best went away or at least was shown any more clearly; turns out the fault went away entirely and as you can see both the border around the cover art badge and the track progress bar are much clearer and sharper now, with no unnecessary anti-aliasing.
 
@@ -23,13 +23,13 @@ But as [Chris Hanson notes](http://www.cocoabuilder.com/archive/message/cocoa/20
 
 It's all a bit confusing but with the aid of a few images all should become clear... First up, we have a simple rectangle with origin `0, 0` and size `9, 7` (width, height):
 
-![](/system/images/legacy/rectangle.png)
+![](/system/images/rectangle.png)
 
 Note that when we fill the rectangle the integral coordinates give us a clean rectangle whose contents exactly correspond to screen pixels and there is no anti-aliasing.
 
 But note what happens if we instead draw only the edges of the rectangle. The sides are lines of width `1`, the bottom left corner has coordinates `0, 0` and the top right corner is at `9, 7`:
 
-![](/system/images/legacy/path.png)
+![](/system/images/path.png)
 
 Note that despite the identical coordinates this rectangle does not match the previous one. The lines are one pixel wide but they straddle physical screen pixels and so when rendered to the screen will probably be anti-aliased and are likely to be blurry. To correct this we would instead have to locate the bottom left corner at `0.5, 0.5` and the top right at `8.5, 6.5`.
 
@@ -37,4 +37,4 @@ This was the mistake I made when I first made the tweaks to my Dock icon code. I
 
 In the case of the cover art border I made the same mistake. This was not drawn using lines (although it is drawn using an `NSBezierPath`) and so it is a mistake to offset the coordinates by half a pixel. The "donut" is basically an outer rectangle with a hole cut out of it, defined by another rectangle, and so the offset-by-half technique should not be applied:
 
-![](/system/images/legacy/donut.png)
+![](/system/images/donut.png)

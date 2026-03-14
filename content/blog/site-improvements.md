@@ -11,7 +11,7 @@ Over the last month I've spent a few hours making minor improvements to the navi
 
 You can access the site wide search by clicking on "[Search](http://wincent.dev/a/site-map/search/)", which appears under the "[Site Map](http://wincent.dev/a/site-map/)" button in the navigation bar at the top of (almost) every page in this site:
 
-![](/system/images/legacy/site-search.png)
+![](/system/images/site-search.png)
 
 #### General cleanup
 
