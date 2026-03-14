@@ -97,6 +97,19 @@ fn normalize_filter(name: &str) -> Option<&'static str> {
     }
 }
 
+const MAX_QUERY_BYTES: usize = 512;
+const MAX_TOKENS: usize = 32;
+
+pub fn validate_query(query: &str) -> Result<(), &'static str> {
+    if query.len() > MAX_QUERY_BYTES {
+        return Err("query too long");
+    }
+    if query.split_whitespace().count() > MAX_TOKENS {
+        return Err("too many search terms");
+    }
+    Ok(())
+}
+
 pub fn search(corpus: &SearchCorpus, repo_path: &str, query: &str) -> Vec<SearchResult> {
     let trimmed = query.trim();
     if trimmed.is_empty() {

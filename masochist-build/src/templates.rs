@@ -460,3 +460,16 @@ pub fn too_many_requests() -> Markup {
         },
     )
 }
+
+pub fn bad_request() -> Markup {
+    base_layout(
+        "Bad Request",
+        "",
+        None,
+        None,
+        html! {
+            h1 { "Bad Request" }
+            p { "The search query is too long or has too many terms." }
+        },
+    )
+}

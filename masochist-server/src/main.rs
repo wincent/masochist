@@ -63,18 +63,24 @@ impl Fairing for RateLimitFairing {
 }
 
 #[get("/search?<q>")]
-fn search_handler(q: Option<&str>, state: &State<AppState>) -> RawHtml<String> {
+fn search_handler(q: Option<&str>, state: &State<AppState>) -> (Status, RawHtml<String>) {
     let query = q.unwrap_or("");
+    if search::validate_query(query).is_err() {
+        return (Status::BadRequest, RawHtml(String::new()));
+    }
     let results = search::search(&state.corpus, &state.repo_path, query);
     let markup = templates::search_page(query, &results, &state.assets.css, &state.assets.js);
-    RawHtml(markup.into_string())
+    (Status::Ok, RawHtml(markup.into_string()))
 }
 
 #[get("/search/<q>")]
-fn search_path_handler(q: &str, state: &State<AppState>) -> RawHtml<String> {
+fn search_path_handler(q: &str, state: &State<AppState>) -> (Status, RawHtml<String>) {
+    if search::validate_query(q).is_err() {
+        return (Status::BadRequest, RawHtml(String::new()));
+    }
     let results = search::search(&state.corpus, &state.repo_path, q);
     let markup = templates::search_page(q, &results, &state.assets.css, &state.assets.js);
-    RawHtml(markup.into_string())
+    (Status::Ok, RawHtml(markup.into_string()))
 }
 
 fn load_asset_paths() -> AssetPaths {

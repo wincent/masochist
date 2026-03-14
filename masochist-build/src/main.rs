@@ -452,6 +452,7 @@ fn generate_site(
     );
     write_page(out, "tags/index.html", &templates::tags_index(&index.tags));
     write_page(out, "search/index.html", &templates::search_page());
+    write_page(out, "400.html", &templates::bad_request());
     write_page(out, "404.html", &templates::not_found());
     write_page(out, "429.html", &templates::too_many_requests());
 
