@@ -19,6 +19,13 @@ fn main() {
 
     let total_start = Instant::now();
 
+    // Build into a fresh staging directory, then sync to output.
+    let staging_dir = std::env::temp_dir().join(format!("masochist-build-{}", std::process::id()));
+    fs::create_dir_all(&staging_dir).expect("failed to create staging directory");
+    let staging = staging_dir
+        .to_str()
+        .expect("staging path is not valid UTF-8");
+
     // Phase 1: Read content and timestamps in parallel.
     let (timestamps, files, contents) = load_from_git(&repo_path);
 
@@ -44,17 +51,22 @@ fn main() {
 
     // Phase 5: Generate static site.
     let start = Instant::now();
-    generate_site(&output_dir, &items, &index, &rendered, &redirects);
+    generate_site(staging, &items, &index, &rendered, &redirects);
     eprintln!("  generate: wrote site in {:?}", start.elapsed());
 
     // Write hashed CSS/JS asset files.
-    write_assets(&output_dir);
+    write_assets(staging);
 
     // Extract images from the content branch.
-    extract_images(&repo_path, &output_dir);
+    extract_images(&repo_path, staging);
 
     // Extract static files (icons, legacy pages, favicon, etc.) from the content branch.
-    extract_static_files(&repo_path, &output_dir);
+    extract_static_files(&repo_path, staging);
+
+    // Sync staging to output, removing stale files but preserving _assets/.
+    sync_to_output(staging, &output_dir);
+
+    fs::remove_dir_all(&staging_dir).ok();
 
     eprintln!("Total: {:?}", total_start.elapsed());
 }
@@ -599,6 +611,47 @@ fn extract_static_files(repo_path: &str, output_dir: &str) {
 
     let count = walkdir(out);
     eprintln!("  static: extracted {count} files in {:?}", start.elapsed());
+}
+
+fn sync_to_output(staging: &str, output_dir: &str) {
+    use std::process::Command;
+
+    let start = Instant::now();
+    let staging_src = format!("{staging}/");
+
+    // Sync everything except _assets/ and .git, deleting stale files from output.
+    let status = Command::new("rsync")
+        .args([
+            "-a",
+            "--delete",
+            "--exclude=/.git",
+            "--exclude=/_assets/",
+            &staging_src,
+            output_dir,
+        ])
+        .status()
+        .expect("failed to run rsync");
+
+    if !status.success() {
+        eprintln!("rsync sync failed");
+        std::process::exit(1);
+    }
+
+    // Copy _assets/ additively (no --delete, so old hashed assets accumulate).
+    let assets_src = format!("{staging}/_assets/");
+    let assets_dest = format!("{output_dir}/_assets/");
+    fs::create_dir_all(&assets_dest).ok();
+    let status = Command::new("rsync")
+        .args(["-a", &assets_src, &assets_dest])
+        .status()
+        .expect("failed to run rsync");
+
+    if !status.success() {
+        eprintln!("rsync assets sync failed");
+        std::process::exit(1);
+    }
+
+    eprintln!("  sync: completed in {:?}", start.elapsed());
 }
 
 fn strip_html_tags(html: &str) -> String {
