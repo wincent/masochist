@@ -1,18 +1,18 @@
-var createAutocomplete = function (opts) {
-  var input = opts.input;
-  var onCommit = opts.onCommit;
-  var onSubmit = opts.onSubmit;
-  var onDismiss = opts.onDismiss;
+const createAutocomplete = function (opts) {
+  const input = opts.input;
+  const onCommit = opts.onCommit;
+  const onSubmit = opts.onSubmit;
+  const onDismiss = opts.onDismiss;
 
-  var timer = null;
-  var controller = null;
-  var DEBOUNCE = 250;
-  var MIN_CHARS = 3;
-  var active = -1;
-  var savedQuery = '';
-  var programmatic = false;
+  let timer = null;
+  let controller = null;
+  const DEBOUNCE = 250;
+  const MIN_CHARS = 3;
+  let active = -1;
+  let savedQuery = '';
+  let programmatic = false;
 
-  var dropdown = document.createElement('ul');
+  const dropdown = document.createElement('ul');
   dropdown.className = 'search-dropdown';
   dropdown.hidden = true;
   opts.container.appendChild(dropdown);
@@ -22,7 +22,7 @@ var createAutocomplete = function (opts) {
   }
 
   function setActive(index) {
-    var all = items();
+    const all = items();
     if (active >= 0 && active < all.length) {
       all[active].classList.remove('active');
     }
@@ -38,17 +38,17 @@ var createAutocomplete = function (opts) {
     programmatic = false;
   }
 
-  function resultUrl(r) {
-    var prefixes = {
+  function resultUrl(result) {
+    const prefixes = {
       blog: '/blog',
       wiki: '/wiki',
       snippets: '/snippets',
       pages: '/pages',
     };
-    var id = r.content_type === 'wiki'
-      ? r.id.replace(/ /g, '_').replace(/\?/g, '%3F').replace(/#/g, '%23')
-      : r.id;
-    return (prefixes[r.content_type] || '/pages') + '/' + id;
+    const id = result.content_type === 'wiki'
+      ? result.id.replace(/ /g, '_').replace(/\?/g, '%3F').replace(/#/g, '%23')
+      : result.id;
+    return (prefixes[result.content_type] || '/pages') + '/' + id;
   }
 
   function displayLabel(type) {
@@ -68,21 +68,21 @@ var createAutocomplete = function (opts) {
       dropdown.hidden = true;
       return;
     }
-    for (var i = 0; i < data.length; i++) {
-      var r = data[i];
-      var li = document.createElement('li');
-      li.setAttribute('data-title', r.title);
-      var a = document.createElement('a');
-      a.href = resultUrl(r);
-      var lozenge = document.createElement('span');
+    for (let i = 0; i < data.length; i++) {
+      const result = data[i];
+      const li = document.createElement('li');
+      li.setAttribute('data-title', result.title);
+      const anchor = document.createElement('a');
+      anchor.href = resultUrl(result);
+      const lozenge = document.createElement('span');
       lozenge.className = 'lozenge';
-      lozenge.textContent = displayLabel(r.content_type);
-      a.appendChild(lozenge);
-      a.appendChild(document.createTextNode(' ' + r.title));
-      li.appendChild(a);
+      lozenge.textContent = displayLabel(result.content_type);
+      anchor.appendChild(lozenge);
+      anchor.appendChild(document.createTextNode(' ' + result.title));
+      li.appendChild(anchor);
       li.addEventListener('click', function (e) {
         e.preventDefault();
-        var link = this.querySelector('a');
+        const link = this.querySelector('a');
         if (link) {
           onCommit(link.href);
         }
@@ -138,14 +138,14 @@ var createAutocomplete = function (opts) {
     }
     clearTimeout(timer);
     savedQuery = input.value;
-    var q = input.value;
+    const query = input.value;
     timer = setTimeout(function () {
-      doSearch(q);
+      doSearch(query);
     }, DEBOUNCE);
   }
 
   function onKeydown(e) {
-    var count = items().length;
+    const count = items().length;
 
     if (e.key === 'Escape') {
       dismiss();
@@ -177,7 +177,7 @@ var createAutocomplete = function (opts) {
     } else if (e.key === 'Enter') {
       e.preventDefault();
       if (active >= 0) {
-        var link = items()[active].querySelector('a');
+        const link = items()[active].querySelector('a');
         if (link) {
           onCommit(link.href);
         }
@@ -194,9 +194,14 @@ var createAutocomplete = function (opts) {
     }
   }
 
+  function onDropdownMousedown(e) {
+    e.preventDefault();
+  }
+
   input.addEventListener('input', onInput);
   input.addEventListener('keydown', onKeydown);
   document.addEventListener('click', onDocClick);
+  dropdown.addEventListener('mousedown', onDropdownMousedown);
 
   function destroy() {
     clearTimeout(timer);
@@ -206,10 +211,19 @@ var createAutocomplete = function (opts) {
     input.removeEventListener('input', onInput);
     input.removeEventListener('keydown', onKeydown);
     document.removeEventListener('click', onDocClick);
+    dropdown.removeEventListener('mousedown', onDropdownMousedown);
     if (dropdown.parentNode) {
       dropdown.parentNode.removeChild(dropdown);
     }
   }
 
-  return {dismiss: dismiss, destroy: destroy};
+  function restore(query) {
+    programmatic = true;
+    input.value = query;
+    programmatic = false;
+    savedQuery = query;
+    doSearch(query);
+  }
+
+  return {dismiss, destroy, restore};
 };

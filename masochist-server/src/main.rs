@@ -153,8 +153,8 @@ fn rocket() -> _ {
 
     rocket::build()
         .attach(RateLimitFairing {
-            page_limiter: make_limiter(10, 30),
-            autocomplete_limiter: make_limiter(30, 1),
+            page_limiter: make_limiter(10, 30), // 10 reqs per 30 seconds per IP.
+            autocomplete_limiter: make_limiter(10, 1), // 10 reqs per second per IP.
         })
         .manage(AppState {
             corpus,

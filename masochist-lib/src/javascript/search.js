@@ -1,5 +1,5 @@
 (function () {
-  var input = document.getElementById('search-input');
+  const input = document.getElementById('search-input');
   if (!input) {
     return;
   }
@@ -25,11 +25,11 @@
     if (document.activeElement === input) {
       return;
     }
-    var el = document.activeElement;
+    const element = document.activeElement;
     if (
-      el &&
-      (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' ||
-        el.isContentEditable)
+      element &&
+      (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' ||
+        element.isContentEditable)
     ) {
       return;
     }

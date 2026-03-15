@@ -3,11 +3,14 @@
     return;
   }
 
-  var link = document.querySelector('nav a.nav-link[href="/search"]');
+  const link = document.querySelector('nav a.nav-link[href="/search"]');
   if (!link) {
     return;
   }
-  var li = link.parentNode;
+  const li = link.parentNode;
+  const nav = link.closest('nav');
+  let autocomplete = null;
+  let savedValue = '';
 
   function bindClick() {
     link.addEventListener('click', onClickLink);
@@ -18,10 +21,8 @@
     activate();
   }
 
-  var ac = null;
-
   function activate() {
-    var input = document.createElement('input');
+    const input = document.createElement('input');
     input.type = 'search';
     input.className = 'nav-search-input';
     input.placeholder = 'Search\u2026';
@@ -29,7 +30,7 @@
     li.appendChild(input);
     li.classList.add('nav-search-wrapper');
 
-    ac = createAutocomplete({
+    autocomplete = createAutocomplete({
       input: input,
       container: li,
       onCommit: function (url) {
@@ -45,14 +46,24 @@
       },
     });
 
+    if (savedValue) {
+      autocomplete.restore(savedValue);
+    }
+
+    input.addEventListener('blur', function () {
+      savedValue = input.value;
+      deactivate();
+    });
+
     input.focus();
   }
 
   function deactivate() {
-    if (ac) {
-      ac.destroy();
-      ac = null;
+    if (!autocomplete) {
+      return;
     }
+    autocomplete.destroy();
+    autocomplete = null;
     li.textContent = '';
     li.classList.remove('nav-search-wrapper');
     li.appendChild(link);
@@ -65,17 +76,20 @@
     if (e.key !== '/') {
       return;
     }
-    var el = document.activeElement;
+    const element = document.activeElement;
     if (
-      el &&
-      (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' ||
-        el.isContentEditable)
+      element &&
+      (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' ||
+        element.isContentEditable)
     ) {
       return;
     }
     e.preventDefault();
+    if (!nav.classList.contains('nav-open')) {
+      nav.classList.add('nav-open');
+    }
     if (li.classList.contains('nav-search-wrapper')) {
-      var navInput = li.querySelector('.nav-search-input');
+      const navInput = li.querySelector('.nav-search-input');
       if (navInput) {
         navInput.focus();
       }
