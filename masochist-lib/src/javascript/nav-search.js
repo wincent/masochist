@@ -51,7 +51,6 @@
     }
 
     input.addEventListener('blur', function () {
-      savedValue = input.value;
       deactivate();
     });
 
@@ -61,6 +60,10 @@
   function deactivate() {
     if (!autocomplete) {
       return;
+    }
+    const input = li.querySelector('.nav-search-input');
+    if (input) {
+      savedValue = input.value;
     }
     autocomplete.destroy();
     autocomplete = null;
