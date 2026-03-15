@@ -1,8 +1,9 @@
 use std::collections::HashMap;
 
 use masochist_lib::git::GitRepo;
+use serde::Serialize;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize)]
 pub struct SearchResult {
     pub content_type: String,
     pub id: String,

@@ -48,6 +48,40 @@ fn result_url(result: &SearchResult) -> String {
     format!("{prefix}/{encoded_id}")
 }
 
+fn render_results(results: &[SearchResult]) -> Markup {
+    html! {
+        p {
+            (results.len()) " "
+            @if results.len() == 1 {
+                "item"
+            } @else {
+                "items"
+            }
+            " found"
+        }
+        @if !results.is_empty() {
+            table.content-listing.u-full-width {
+                thead { tr {
+                    th { "What" }
+                    th { "Title" }
+                    th { "When" }
+                    th { "Tags" }
+                } }
+                tbody {
+                    @for result in results {
+                        tr {
+                            td { a.lozenge href=(format!("/{}", result.content_type)) { (display_label(&result.content_type)) } }
+                            td { a href=(result_url(result)) { (result.title) } }
+                            td { (render_when(result)) }
+                            td { (masochist_lib::templates::render_tags_compact(&result.tags)) }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 pub fn search_page(query: &str, results: &[SearchResult], css_path: &str, js_path: &str) -> Markup {
     let title = if query.is_empty() {
         "Search".to_string()
@@ -70,7 +104,7 @@ pub fn search_page(query: &str, results: &[SearchResult], css_path: &str, js_pat
                     a href=(format!("/search?q={}", utf8_percent_encode(query, NON_ALPHANUMERIC))) { (query) }
                 }
             }
-            div.row {
+            div.row.search-form-row {
                 form action="/search" method="get" {
                     input.eight.columns
                         #search-input
@@ -82,35 +116,7 @@ pub fn search_page(query: &str, results: &[SearchResult], css_path: &str, js_pat
                     input.four.columns type="submit" value="Search";
                 }
             }
-            p {
-                (results.len()) " "
-                @if results.len() == 1 {
-                    "item"
-                } @else {
-                    "items"
-                }
-                " found"
-            }
-            @if !results.is_empty() {
-                table.content-listing.u-full-width {
-                    thead { tr {
-                        th { "What" }
-                        th { "Title" }
-                        th { "When" }
-                        th { "Tags" }
-                    } }
-                    tbody {
-                        @for result in results {
-                            tr {
-                                td { a.lozenge href=(format!("/{}", result.content_type)) { (display_label(&result.content_type)) } }
-                                td { a href=(result_url(result)) { (result.title) } }
-                                td { (render_when(result)) }
-                                td { (masochist_lib::templates::render_tags_compact(&result.tags)) }
-                            }
-                        }
-                    }
-                }
-            }
+            (render_results(results))
         },
     )
 }
