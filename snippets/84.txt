@@ -5,9 +5,9 @@ Hard reset.
 
 # Statistics so far
 
--   Kernel panics: 5
--   Hard resets: 20
--   Total failures: 25
--   Start of recording keeping: 14 March 2011
--   Total days to date: 531 days
--   Average time between failures: 21.24 days
+- Kernel panics: 5
+- Hard resets: 20
+- Total failures: 25
+- Start of recording keeping: 14 March 2011
+- Total days to date: 531 days
+- Average time between failures: 21.24 days

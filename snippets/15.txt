@@ -3,9 +3,9 @@ Two more [kernel panics](/wiki/kernel_panics) due to buggy Realtek 8187L drivers
 
 # Statistics so far
 
--   Kernel panics: 7
--   Hard resets: 6
--   Total failures: 13
--   Start of recording keeping: 17 March 2010
--   Total days to date: 291 days
--   Average time between failures: 22.38 days
+- Kernel panics: 7
+- Hard resets: 6
+- Total failures: 13
+- Start of recording keeping: 17 March 2010
+- Total days to date: 291 days
+- Average time between failures: 22.38 days

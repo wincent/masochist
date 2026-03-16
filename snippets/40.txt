@@ -3,9 +3,9 @@ First [kernel panic](/wiki/kernel_panic) on [Lion](/wiki/Lion), on only the seco
 
 # Statistics so far
 
--   Kernel panics: 3
--   Hard resets: 3
--   Total failures: 6
--   Start of recording keeping: 14 March 2011
--   Total days to date: 130 days
--   Average time between failures: 21.66 days
+- Kernel panics: 3
+- Hard resets: 3
+- Total failures: 6
+- Start of recording keeping: 14 March 2011
+- Total days to date: 130 days
+- Average time between failures: 21.66 days

@@ -3,9 +3,9 @@ Today, a [hard reset](/wiki/hard_reset) when the machine froze at the "Switch Us
 
 # Statistics so far
 
--   Kernel panics: 3
--   Hard resets: 7
--   Total failures: 10
--   Start of recording keeping: 14 March 2011
--   Total days to date: 195 days
--   Average time between failures: 19.5 days
+- Kernel panics: 3
+- Hard resets: 7
+- Total failures: 10
+- Start of recording keeping: 14 March 2011
+- Total days to date: 195 days
+- Average time between failures: 19.5 days

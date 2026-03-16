@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Upgrading to ANTLR 3.0.1 on Mac OS X Tiger • wincent.dev</title><meta property="og:title" content="Upgrading to ANTLR 3.0.1 on Mac OS X Tiger"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="stylesheet" href="/_assets/styles-b7f2f9db.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><h1 class="article-header"><a href="/wiki/Upgrading_to_ANTLR_3.0.1_on_Mac_OS_X_Tiger">Upgrading to ANTLR 3.0.1 on Mac OS X Tiger</a><a class="button" href="https://github.com/wincent/masochist/edit/content/content/wiki/Upgrading%20to%20ANTLR%203%2E0%2E1%20on%20Mac%20OS%20X%20Tiger.md" title="Edit this article on GitHub">Edit</a></h1><div class="metadata"><relative-time created="1192562123" updated="1584053324">Created 2007-10-16, updated 2020-03-12</relative-time></div><div class="prerendered"><p>I held off on this upgrade for a while because the 3.x series of <a href="/wiki/ANTLR">ANTLR</a> is still fairly young and I had a working recognizer and didn't want to risk breaking it (in order to get my 3.0 recognizer working I'd had to make a couple of patches to the source and rebuild, and I wasn't sure if all or any of these patches had been accepted upstream into ANTLR for 3.0.1).</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Upgrading to ANTLR 3.0.1 on Mac OS X Tiger • wincent.dev</title><meta property="og:title" content="Upgrading to ANTLR 3.0.1 on Mac OS X Tiger"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="stylesheet" href="/_assets/styles-b7f2f9db.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><h1 class="article-header"><a href="/wiki/Upgrading_to_ANTLR_3.0.1_on_Mac_OS_X_Tiger">Upgrading to ANTLR 3.0.1 on Mac OS X Tiger</a><a class="button" href="https://github.com/wincent/masochist/edit/content/content/wiki/Upgrading%20to%20ANTLR%203%2E0%2E1%20on%20Mac%20OS%20X%20Tiger.md" title="Edit this article on GitHub">Edit</a></h1><div class="metadata"><relative-time created="1192562123" updated="1773679445">Created 2007-10-16, updated 2026-03-16</relative-time></div><div class="prerendered"><p>I held off on this upgrade for a while because the 3.x series of <a href="/wiki/ANTLR">ANTLR</a> is still fairly young and I had a working recognizer and didn't want to risk breaking it (in order to get my 3.0 recognizer working I'd had to make a couple of patches to the source and rebuild, and I wasn't sure if all or any of these patches had been accepted upstream into ANTLR for 3.0.1).</p>
 <h2>Upgrade procedure</h2>
 <pre><code># grab the source
 wget &quot;http://antlr.org/download/antlr-3.0.1.tar.gz&quot;
@@ -183,133 +183,133 @@ Abort trap
 <p>The latest intermediate build released by Terence is from <a href="http://www.antlr.org/download/build/antlr-2007-07-18.17.tar.gz">18 July</a>. On downloading this I was able to confirm that changeset 3775 doesn't actually fix the problem, and the file that comes with ANTLR 3.0.1 is identical to that file.</p>
 <p>So my next tactic was to go back to the last known-good build file, the one that came with ANTLR 3.0, and compare it to the 3.0 one. Unfortunately there are far too many changes to really grok what's gone wrong. I tried temporarily moving the <code>antlr-3.0.1.jar</code> and <code>antlr-runtime-3.0.1.jar</code> files out the way (seeing as the <code>build.xml</code> file appears to slurp in all <code>.jar</code> files in the <code>lib</code> subdirectory unconditionally, but the build errors persist.</p>
 <p>I was able to find out a bit more by looking at the output of <code>ant -v build</code>; note the 13 duplicate files from the <code>codegen</code> subdirectory at the end of the list of files to be compiled:</p>
-<pre><code>  [myjavac] Files to be compiled:
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/Tool.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/DFA.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/DFAOptimizer.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/DFAState.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/DecisionProbe.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/Label.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/LookaheadSet.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/NFA.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/NFAConfiguration.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/NFAContext.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/NFAConversionThread.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/NFAState.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/NFAToDFAConverter.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/RuleClosureTransition.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/SemanticContext.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/State.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/StateCluster.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/Transition.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/ACyclicDFACodeGenerator.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/ActionTranslatorLexer.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/CPPTarget.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/CSharpTarget.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/CTarget.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/CodeGenTreeWalker.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/CodeGenTreeWalkerTokenTypes.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/CodeGenerator.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/JavaTarget.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/ObjCTarget.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/PythonTarget.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/RubyTarget.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/Target.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/misc/Barrier.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/misc/BitSet.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/misc/IntArrayList.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/misc/IntSet.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/misc/Interval.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/misc/IntervalSet.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/misc/MutableInteger.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/misc/OrderedHashSet.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/misc/Utils.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/BaseTest.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/DebugTestAutoAST.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/DebugTestRewriteAST.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/ErrorQueue.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestASTConstruction.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestAttributes.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestAutoAST.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestCharDFAConversion.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestCommonTreeNodeStream.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestDFAConversion.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestDFAMatching.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestInterpretedLexing.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestInterpretedParsing.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestIntervalSet.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestJavaCodeGeneration.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestLexer.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestMessages.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestNFAConstruction.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestRewriteAST.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestRewriteTemplates.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestSemanticPredicateEvaluation.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestSemanticPredicates.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestSets.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestSymbolDefinitions.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestSyntacticPredicateEvaluation.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestTemplates.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestTokenRewriteStream.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestTreeNodeStream.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestTreeParsing.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestTreeWizard.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestUnBufferedTreeNodeStream.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/ANTLRErrorListener.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/ANTLRLexer.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/ANTLRParser.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/ANTLRTokenTypes.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/ANTLRTreePrinter.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/ANTLRTreePrinterTokenTypes.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/ActionAnalysisLexer.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/AssignTokenTypesWalker.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/AssignTokenTypesWalkerTokenTypes.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/Attribute.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/AttributeScope.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/BuildDependencyGenerator.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/DOTGenerator.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/DefineGrammarItemsWalker.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/DefineGrammarItemsWalkerTokenTypes.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/ErrorManager.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/FASerializer.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/Grammar.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarAST.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarAnalysisAbortedMessage.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarDanglingStateMessage.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarInsufficientPredicatesMessage.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarNonDeterminismMessage.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarReport.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarSanity.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarSemanticsMessage.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarSyntaxMessage.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarUnreachableAltsMessage.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/Interp.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/Interpreter.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/LeftRecursionCyclesMessage.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/Message.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/NFAFactory.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/NameSpaceChecker.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/NonRegularDecisionMessage.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/RandomPhrase.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/RecursionOverflowMessage.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/Rule.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/RuleLabelScope.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/ToolMessage.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/TreeToNFAConverter.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/TreeToNFAConverterTokenTypes.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/ANTLRLexer.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/ANTLRParser.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/ANTLRTokenTypes.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/ANTLRTreePrinter.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/ANTLRTreePrinterTokenTypes.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/AssignTokenTypesWalker.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/AssignTokenTypesWalkerTokenTypes.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/CodeGenTreeWalker.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/CodeGenTreeWalkerTokenTypes.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/DefineGrammarItemsWalker.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/DefineGrammarItemsWalkerTokenTypes.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/TreeToNFAConverter.java
-  [myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/TreeToNFAConverterTokenTypes.java
+<pre><code>[myjavac] Files to be compiled:
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/Tool.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/DFA.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/DFAOptimizer.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/DFAState.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/DecisionProbe.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/Label.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/LookaheadSet.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/NFA.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/NFAConfiguration.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/NFAContext.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/NFAConversionThread.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/NFAState.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/NFAToDFAConverter.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/RuleClosureTransition.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/SemanticContext.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/State.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/StateCluster.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/analysis/Transition.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/ACyclicDFACodeGenerator.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/ActionTranslatorLexer.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/CPPTarget.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/CSharpTarget.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/CTarget.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/CodeGenTreeWalker.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/CodeGenTreeWalkerTokenTypes.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/CodeGenerator.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/JavaTarget.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/ObjCTarget.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/PythonTarget.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/RubyTarget.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/codegen/Target.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/misc/Barrier.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/misc/BitSet.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/misc/IntArrayList.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/misc/IntSet.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/misc/Interval.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/misc/IntervalSet.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/misc/MutableInteger.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/misc/OrderedHashSet.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/misc/Utils.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/BaseTest.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/DebugTestAutoAST.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/DebugTestRewriteAST.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/ErrorQueue.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestASTConstruction.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestAttributes.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestAutoAST.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestCharDFAConversion.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestCommonTreeNodeStream.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestDFAConversion.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestDFAMatching.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestInterpretedLexing.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestInterpretedParsing.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestIntervalSet.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestJavaCodeGeneration.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestLexer.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestMessages.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestNFAConstruction.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestRewriteAST.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestRewriteTemplates.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestSemanticPredicateEvaluation.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestSemanticPredicates.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestSets.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestSymbolDefinitions.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestSyntacticPredicateEvaluation.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestTemplates.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestTokenRewriteStream.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestTreeNodeStream.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestTreeParsing.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestTreeWizard.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/test/TestUnBufferedTreeNodeStream.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/ANTLRErrorListener.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/ANTLRLexer.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/ANTLRParser.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/ANTLRTokenTypes.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/ANTLRTreePrinter.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/ANTLRTreePrinterTokenTypes.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/ActionAnalysisLexer.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/AssignTokenTypesWalker.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/AssignTokenTypesWalkerTokenTypes.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/Attribute.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/AttributeScope.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/BuildDependencyGenerator.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/DOTGenerator.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/DefineGrammarItemsWalker.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/DefineGrammarItemsWalkerTokenTypes.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/ErrorManager.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/FASerializer.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/Grammar.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarAST.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarAnalysisAbortedMessage.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarDanglingStateMessage.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarInsufficientPredicatesMessage.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarNonDeterminismMessage.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarReport.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarSanity.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarSemanticsMessage.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarSyntaxMessage.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/GrammarUnreachableAltsMessage.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/Interp.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/Interpreter.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/LeftRecursionCyclesMessage.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/Message.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/NFAFactory.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/NameSpaceChecker.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/NonRegularDecisionMessage.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/RandomPhrase.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/RecursionOverflowMessage.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/Rule.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/RuleLabelScope.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/ToolMessage.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/TreeToNFAConverter.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/src/org/antlr/tool/TreeToNFAConverterTokenTypes.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/ANTLRLexer.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/ANTLRParser.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/ANTLRTokenTypes.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/ANTLRTreePrinter.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/ANTLRTreePrinterTokenTypes.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/AssignTokenTypesWalker.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/AssignTokenTypesWalkerTokenTypes.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/CodeGenTreeWalker.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/CodeGenTreeWalkerTokenTypes.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/DefineGrammarItemsWalker.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/DefineGrammarItemsWalkerTokenTypes.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/TreeToNFAConverter.java
+[myjavac]     /Users/wincent/trabajo/vendor/ANTLR/antlr-3.0.1/codegen/TreeToNFAConverterTokenTypes.java
 </code></pre>
 <p>So with my zero knowledge of how <code>ant</code> works I decided to try a number of quick fixes:</p>
 <ul>

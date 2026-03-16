@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>URLs in preprocessed property lists • wincent.dev</title><meta property="og:title" content="URLs in preprocessed property lists"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="stylesheet" href="/_assets/styles-b7f2f9db.css"><link rel="home" type="application/rss+xml" href="/blog.rss"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/urls-in-preprocessed-property-lists">URLs in preprocessed property lists</a></h1><div class="metadata"><relative-time created="1147923360" updated="1773510822">Created 2006-05-18, updated 2026-03-14</relative-time><span>4 minute read</span></div><div class="prerendered"><p><strong>Update:</strong></p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>URLs in preprocessed property lists • wincent.dev</title><meta property="og:title" content="URLs in preprocessed property lists"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="stylesheet" href="/_assets/styles-b7f2f9db.css"><link rel="home" type="application/rss+xml" href="/blog.rss"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/urls-in-preprocessed-property-lists">URLs in preprocessed property lists</a></h1><div class="metadata"><relative-time created="1147923360" updated="1773679445">Created 2006-05-18, updated 2026-03-16</relative-time><span>4 minute read</span></div><div class="prerendered"><p><strong>Update:</strong></p>
 <p>I've just discovered that passing the <code>-traditional</code> switch to the preprocessor solves the problems discussed in the following post. The reason why I didn't discover this sooner is that the GCC man page has only this to say about the switch:</p>
 <blockquote>
 <p>Formerly, these options caused GCC to attempt to emulate a pre-standard C compiler. They are now only supported with the -E switch. The preprocessor continues to support a pre-standard mode. See <a href="http://developer.apple.com/documentation/DeveloperTools/gcc-4.0.1/cpp/Traditional-Mode.html">the GNU CPP manual</a> for details.</p>
@@ -24,25 +24,25 @@ Today Xcode's <code>Info.plist</code> preprocessing feature started producing in
 <pre><code>INFOPLIST_OTHER_PREPROCESSOR_FLAGS = -ansi
 </code></pre>
 <p>But my problems did not end there. The <code>-ansi</code> has the effect of turning on GCC's trigraph support, that means that any property list containing the string &quot;????&quot; like this:</p>
-<pre><code>    &lt;key&gt;CFBundleSignature&lt;/key&gt;
-    &lt;string&gt;????&lt;/string&gt;
+<pre><code>&lt;key&gt;CFBundleSignature&lt;/key&gt;
+&lt;string&gt;????&lt;/string&gt;
 </code></pre>
 <p>Will end up producing invalid XML like this:</p>
-<pre><code>    &lt;key&gt;CFBundleSignature&lt;/key&gt;
-    &lt;string&gt;??{/string&gt;
+<pre><code>&lt;key&gt;CFBundleSignature&lt;/key&gt;
+&lt;string&gt;??{/string&gt;
 </code></pre>
 <p>Specifically, the problem is that the sequence &quot;??&lt;&quot; is considered to be a trigraph sequence and is converted to &quot;{&quot; (see the GCC man page for more info on trigraphs).</p>
 <p>Unfortunately there is no way of turning off trigraph support. GCC has a <code>-trigraph</code> switch but not a <code>-no-trigraph</code> switch. How to work around this? The <a href="http://developer.apple.com/documentation/MacOSX/Conceptual/BPRuntimeConfig/Articles/ConfigApplications.html">documentation</a> says that at a minimum all applications should include the <code>CFBundleSignature</code> key, and even though I'm building frameworks and plug-ins (not applications), one can never be too careful when it comes to interpreting the documentation. Omitting the key entirely is therefore not an option even though &quot;????&quot; is the default. Neither is specifying an empty string as the consequences of such an action are not clear. Registering a new creator code for every single bundle is not a viable option either. Is there any way of escaping the trigraph so that the preprocessor won't convert it? If there is I don't know it.</p>
 <p>In the end I changed my property list to look like this:</p>
-<pre><code>  &lt;key&gt;CFBundleSignature&lt;/key&gt;
-  &lt;string&gt;WO_DEFAULT_SIGNATURE&lt;/string&gt;
+<pre><code>&lt;key&gt;CFBundleSignature&lt;/key&gt;
+&lt;string&gt;WO_DEFAULT_SIGNATURE&lt;/string&gt;
 </code></pre>
 <p>And made yet another modification to my build configuration file:</p>
-<pre><code> INFOPLIST_PREPROCESSOR_DEFINITIONS = WO_DEFAULT_SIGNATURE=????
+<pre><code>INFOPLIST_PREPROCESSOR_DEFINITIONS = WO_DEFAULT_SIGNATURE=????
 </code></pre>
 <p>Xcode then produces something very close to what I'm looking for:</p>
-<pre><code>  &lt;key&gt;CFBundleSignature&lt;/key&gt;
-  &lt;string&gt; ????&lt;/string&gt;
+<pre><code>&lt;key&gt;CFBundleSignature&lt;/key&gt;
+&lt;string&gt; ????&lt;/string&gt;
 </code></pre>
 <p>Notice the extra space inserted by the preprocessor? If you redefine <code>WO_DEFAULT_SIGNATURE</code> as an alphanumeric word (like &quot;test&quot;, for example) then no space is inserted. If you try to enclose it in quote marks they are stripped by Xcode before being passed to the preprocessor. If you try to escape the quote marks — <code>\&quot;????\&quot;</code> — then you get literal quote marks in your property list.</p>
 <p>Replace <code>WO_DEFAULT_SIGNATURE</code> in your property list with <code>$(WO_DEFAULT_SIGNATURE)</code> and you end up getting en empty string in your output. Same if you use <code>${WO_DEFAULT_SIGNATURE}</code>. If Apple improves the handling of property list preprocessing in a future release of Xcode I'll be able to get around the &quot;extra space&quot; problem by turning <code>WO_DEFAULT_SIGNATURE</code> into a build setting, using the <code>$(WO_DEFAULT_SIGNATURE)</code> format in the property list, and dumping the <code>INFOPLIST_PREPROCESSOR_DEFINITIONS</code> build setting.</p>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Automatic wrapping of Git commit messages using Vim • wincent.dev</title><meta property="og:title" content="Automatic wrapping of Git commit messages using Vim"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="stylesheet" href="/_assets/styles-b7f2f9db.css"><link rel="home" type="application/rss+xml" href="/blog.rss"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/automatic-wrapping-of-git-commit-messages-using-vim">Automatic wrapping of Git commit messages using Vim</a></h1><div class="metadata"><relative-time created="1242712497" updated="1495119989">Created 2009-05-19, updated 2017-05-18</relative-time><span>1 minute read</span></div><div class="prerendered"><p>I just noticed that since changing my <code>filetype</code> setting in my <code>~/.vimrc</code> from:</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Automatic wrapping of Git commit messages using Vim • wincent.dev</title><meta property="og:title" content="Automatic wrapping of Git commit messages using Vim"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="stylesheet" href="/_assets/styles-b7f2f9db.css"><link rel="home" type="application/rss+xml" href="/blog.rss"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/automatic-wrapping-of-git-commit-messages-using-vim">Automatic wrapping of Git commit messages using Vim</a></h1><div class="metadata"><relative-time created="1242712497" updated="1773679445">Created 2009-05-19, updated 2026-03-16</relative-time><span>1 minute read</span></div><div class="prerendered"><p>I just noticed that since changing my <code>filetype</code> setting in my <code>~/.vimrc</code> from:</p>
 <pre><code>filetype indent on
 </code></pre>
 <p>To:</p>
@@ -6,14 +6,14 @@
 </code></pre>
 <p><a href="/wiki/Vim">Vim</a> is now automatically wrapping my <a href="/wiki/Git">Git</a> commit messages to 72 columns. Nice.</p>
 <p>For the curious, here is the output of <code>:set</code> when editing a Git commit message (I've stripped out some of the less interesting settings):</p>
-<pre><code>  autoindent          helplang=es         ignorecase          number              shiftwidth=2        textwidth=72        window=0
-  autoread            hidden              incsearch           ruler               smartcase           ttyfast
-  backspace=2         history=1000        list                scroll=25           smarttab            ttymouse=xterm
-  expandtab           hlsearch            modelines=0         scrolloff=3         tabstop=2           wildmenu
-  filetype=gitcommit
-  includeexpr=substitute(v:fname,'^[^/]\+/','','')
-  keywordprg=git --git-dir='/Users/wincent/trabajo/leopard/WOPublic/src/.git' show
-  path=~/trabajo/leopard/WOPublic/src/.git,~/trabajo/leopard/WOPublic/src,
+<pre><code>autoindent          helplang=es         ignorecase          number              shiftwidth=2        textwidth=72        window=0
+autoread            hidden              incsearch           ruler               smartcase           ttyfast
+backspace=2         history=1000        list                scroll=25           smarttab            ttymouse=xterm
+expandtab           hlsearch            modelines=0         scrolloff=3         tabstop=2           wildmenu
+filetype=gitcommit
+includeexpr=substitute(v:fname,'^[^/]\+/','','')
+keywordprg=git --git-dir='/Users/wincent/trabajo/leopard/WOPublic/src/.git' show
+path=~/trabajo/leopard/WOPublic/src/.git,~/trabajo/leopard/WOPublic/src,
 </code></pre>
 <p>The interesting settings are evidently:</p>
 <ul>

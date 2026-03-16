@@ -3,11 +3,11 @@ Major pause (multiple seconds) while typing in Vim, followed by a longer pause (
 
 # Statistics so far
 
--   Failure type: [hard reset](/wiki/hard_reset)
--   Uptime at moment of failure: unknown (days)
--   Kernel panics: 0
--   Hard resets: 2
--   Total failures: 2
--   Start of recording keeping: 21 January 2014
--   Total days to date: 56 days
--   Average time between failures: 28 days
+- Failure type: [hard reset](/wiki/hard_reset)
+- Uptime at moment of failure: unknown (days)
+- Kernel panics: 0
+- Hard resets: 2
+- Total failures: 2
+- Start of recording keeping: 21 January 2014
+- Total days to date: 56 days
+- Average time between failures: 28 days

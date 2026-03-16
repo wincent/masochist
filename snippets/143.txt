@@ -3,11 +3,11 @@ Mouse pointer freeze while moving mouse; hard lock-up. Reboot, and spontaneous r
 
 # Statistics so far
 
--   Failure type: [hard resets](/wiki/hard_resets)
--   Uptime at moment of failure: unknown
--   Kernel panics: 3
--   Hard resets: 3
--   Total failures: 6
--   Start of recording keeping: 6 March 2013
--   Total days to date: 94 days
--   Average time between failures: 15.66 days
+- Failure type: [hard resets](/wiki/hard_resets)
+- Uptime at moment of failure: unknown
+- Kernel panics: 3
+- Hard resets: 3
+- Total failures: 6
+- Start of recording keeping: 6 March 2013
+- Total days to date: 94 days
+- Average time between failures: 15.66 days

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Behaviour-Driven Development of Rails views • wincent.dev</title><meta property="og:title" content="Behaviour-Driven Development of Rails views"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="stylesheet" href="/_assets/styles-b7f2f9db.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><h1 class="article-header"><a href="/wiki/Behaviour-Driven_Development_of_Rails_views">Behaviour-Driven Development of Rails views</a><a class="button" href="https://github.com/wincent/masochist/edit/content/content/wiki/Behaviour%2DDriven%20Development%20of%20Rails%20views.md" title="Edit this article on GitHub">Edit</a></h1><div class="metadata"><relative-time created="1180474694" updated="1495119989">Created 2007-05-29, updated 2017-05-18</relative-time></div><div class="prerendered"><p><strong>Note:</strong> This article was originally written in early 2007; for a more up-to-date overview of Rails view testing, see <a href="/wiki/Rails_view_testing_cheatsheet">Rails view testing cheatsheet</a>.</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Behaviour-Driven Development of Rails views • wincent.dev</title><meta property="og:title" content="Behaviour-Driven Development of Rails views"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="stylesheet" href="/_assets/styles-b7f2f9db.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><h1 class="article-header"><a href="/wiki/Behaviour-Driven_Development_of_Rails_views">Behaviour-Driven Development of Rails views</a><a class="button" href="https://github.com/wincent/masochist/edit/content/content/wiki/Behaviour%2DDriven%20Development%20of%20Rails%20views.md" title="Edit this article on GitHub">Edit</a></h1><div class="metadata"><relative-time created="1180474694" updated="1773679445">Created 2007-05-29, updated 2026-03-16</relative-time></div><div class="prerendered"><p><strong>Note:</strong> This article was originally written in early 2007; for a more up-to-date overview of Rails view testing, see <a href="/wiki/Rails_view_testing_cheatsheet">Rails view testing cheatsheet</a>.</p>
 <h2>Introduction</h2>
 <p>Like <a href="/wiki/models">models</a>, <a href="/wiki/views">views</a> are fairly easy to test independently. Despite the fact that they depend on their <a href="/wiki/controllers">controllers</a> to feed them data, well-designed <a href="/wiki/views">views</a> contain very little code and merely reference <a href="/wiki/model">model</a> attributes in simple ways. At most, the most complicated logic in a <a href="/wiki/view">view</a> should be limited to iterating over a collection, or conditionally including content.</p>
 <h2>How much testing is appropriate?</h2>
@@ -59,24 +59,24 @@
 &lt;% end %&gt;
 </code></pre>
 <p>And then successively add <a href="/wiki/specs">specs</a> and additions to the <a href="/wiki/view">view</a> until we have the final result. A final spec might look like this:</p>
-<pre><code>  it 'should display the login name, displays name and email address in each row' do
-    response.should have_tag('div.odd&gt;div', 6) do
-      with_tag('div.label', 'Login name:')
-      with_tag('div.info', 'user1')
-      with_tag('div.label', 'Display name:')
-      with_tag('div.info', 'user1')
-      with_tag('div.label', 'Email address:')
-      with_tag('div.info', 'user1@example.com')
-    end
-    response.should have_tag('div.even&gt;div', 6) do
-      with_tag('div.label', 'Login name:')
-      with_tag('div.info', 'user2')
-      with_tag('div.label', 'Display name:')
-      with_tag('div.info', 'user2')
-      with_tag('div.label', 'Email address:')
-      with_tag('div.info', 'user2@example.com')
-    end
+<pre><code>it 'should display the login name, displays name and email address in each row' do
+  response.should have_tag('div.odd&gt;div', 6) do
+    with_tag('div.label', 'Login name:')
+    with_tag('div.info', 'user1')
+    with_tag('div.label', 'Display name:')
+    with_tag('div.info', 'user1')
+    with_tag('div.label', 'Email address:')
+    with_tag('div.info', 'user1@example.com')
   end
+  response.should have_tag('div.even&gt;div', 6) do
+    with_tag('div.label', 'Login name:')
+    with_tag('div.info', 'user2')
+    with_tag('div.label', 'Display name:')
+    with_tag('div.info', 'user2')
+    with_tag('div.label', 'Email address:')
+    with_tag('div.info', 'user2@example.com')
+  end
+end
 </code></pre>
 <p>The problem with this approach is that we now have a <a href="/wiki/spec">spec</a> which is extremely tightly bound to our <a href="/wiki/view">view</a> implementation, so tightly bound that changing the <a href="/wiki/view">view</a> in any way will almost certainly break the <a href="/wiki/spec">spec</a>. This is good in the sense that mistakes introduced in the <a href="/wiki/view">view</a> will not likely escape our attention, but bad in the sense that it impedes change (and possible improvement) in the view.</p>
 <p>It is also very duplicative: the <a href="/wiki/view">view</a> is the embodiment of the specification, written in <a href="/wiki/ERB">ERB</a>, and the <a href="/wiki/spec">spec</a> is effectively identical but written in another language. If we are going to perform this level of pedantic, duplicative specification then we may as well just compare the output to a pre-computed string representation and require them to match.</p>

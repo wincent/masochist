@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Pushing branches and tags with a single &quot;git push&quot; invocation • wincent.dev</title><meta property="og:title" content="Pushing branches and tags with a single &quot;git push&quot; invocation"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="stylesheet" href="/_assets/styles-b7f2f9db.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><h1 class="article-header"><a href="/wiki/Pushing_branches_and_tags_with_a_single_&quot;git_push&quot;_invocation">Pushing branches and tags with a single &quot;git push&quot; invocation</a><a class="button" href="https://github.com/wincent/masochist/edit/content/content/wiki/Pushing%20branches%20and%20tags%20with%20a%20single%20%22git%20push%22%20invocation.md" title="Edit this article on GitHub">Edit</a></h1><div class="metadata"><relative-time created="1245731395" updated="1495119989">Created 2009-06-23, updated 2017-05-18</relative-time></div><div class="prerendered"><p>With recent versions of <a href="/wiki/Git">Git</a> you can do this with <code>git push --follow-tags</code>.</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Pushing branches and tags with a single &quot;git push&quot; invocation • wincent.dev</title><meta property="og:title" content="Pushing branches and tags with a single &quot;git push&quot; invocation"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="stylesheet" href="/_assets/styles-b7f2f9db.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><h1 class="article-header"><a href="/wiki/Pushing_branches_and_tags_with_a_single_&quot;git_push&quot;_invocation">Pushing branches and tags with a single &quot;git push&quot; invocation</a><a class="button" href="https://github.com/wincent/masochist/edit/content/content/wiki/Pushing%20branches%20and%20tags%20with%20a%20single%20%22git%20push%22%20invocation.md" title="Edit this article on GitHub">Edit</a></h1><div class="metadata"><relative-time created="1245731395" updated="1773679445">Created 2009-06-23, updated 2026-03-16</relative-time></div><div class="prerendered"><p>With recent versions of <a href="/wiki/Git">Git</a> you can do this with <code>git push --follow-tags</code>.</p>
 <h2>See also</h2>
 <ul>
 <li><a href="http://stackoverflow.com/questions/3745135/push-git-commits-tags-simultaneously">http://stackoverflow.com/questions/3745135/push-git-commits-tags-simultaneously</a></li>
@@ -12,11 +12,14 @@ $ git push --tags
 <blockquote>
 <p>I use <code>.git/config</code> to solve this:</p>
 <pre><code>[remote &quot;origin&quot;]
-	url = ...
-	fetch = +refs/heads/*:refs/remotes/origin/*
-	push = +refs/heads/*
-	push = +refs/tags/*
 </code></pre>
+</blockquote>
+<pre><code>url = ...
+fetch = +refs/heads/*:refs/remotes/origin/*
+push = +refs/heads/*
+push = +refs/tags/*
+</code></pre>
+<blockquote>
 <p>With these lines added <code>git push origin</code> will upload all your branches and tags. If you want to upload only some of them, you can enumerate them.</p>
 </blockquote>
 <p>Haven't tried it myself yet, but it looks like it might be useful until some other way of pushing branches and tags at the same time is added to <code>git push</code>. On the other hand, I don't mind typing:</p>

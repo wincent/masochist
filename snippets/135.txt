@@ -5,11 +5,11 @@ On a hunch I then switched my standard account from normal user to administrator
 
 # Statistics so far
 
--   Failure type: [kernel panic](/wiki/kernel_panic)
--   Uptime at moment of failure: about a day
--   Kernel panics: 3
--   Hard resets: 0
--   Total failures: 3
--   Start of recording keeping: 6 March 2013
--   Total days to date: 3 days
--   Average time between failures: 1.0 days
+- Failure type: [kernel panic](/wiki/kernel_panic)
+- Uptime at moment of failure: about a day
+- Kernel panics: 3
+- Hard resets: 0
+- Total failures: 3
+- Start of recording keeping: 6 March 2013
+- Total days to date: 3 days
+- Average time between failures: 1.0 days

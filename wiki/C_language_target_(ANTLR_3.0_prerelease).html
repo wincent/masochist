@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>C language target (ANTLR 3.0 prerelease) • wincent.dev</title><meta property="og:title" content="C language target (ANTLR 3.0 prerelease)"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="stylesheet" href="/_assets/styles-b7f2f9db.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><h1 class="article-header"><a href="/wiki/C_language_target_(ANTLR_3.0_prerelease)">C language target (ANTLR 3.0 prerelease)</a><a class="button" href="https://github.com/wincent/masochist/edit/content/content/wiki/C%20language%20target%20%28ANTLR%203%2E0%20prerelease%29.md" title="Edit this article on GitHub">Edit</a></h1><div class="metadata"><relative-time created="1179482259" updated="1584053324">Created 2007-05-18, updated 2020-03-12</relative-time></div><div class="prerendered"><p>These notes made trying to figure out how to use the <a href="/wiki/C_language_target">C language target</a> with the <a href="/wiki/ANTLR">ANTLR</a> prerelease (prior to the release of <a href="/wiki/ANTLR_3.0">ANTLR 3.0</a>). With the official 3.0 release extensive examples for the <a href="/wiki/C_language_target">C language target</a> were made available, rendering these notes largely redundant. See <a href="/wiki/C_language_target">C language target</a> for the most up-to-date information.</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>C language target (ANTLR 3.0 prerelease) • wincent.dev</title><meta property="og:title" content="C language target (ANTLR 3.0 prerelease)"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="stylesheet" href="/_assets/styles-b7f2f9db.css"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link" href="/blog">Blog</a></li><li><a class="nav-link active" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><h1 class="article-header"><a href="/wiki/C_language_target_(ANTLR_3.0_prerelease)">C language target (ANTLR 3.0 prerelease)</a><a class="button" href="https://github.com/wincent/masochist/edit/content/content/wiki/C%20language%20target%20%28ANTLR%203%2E0%20prerelease%29.md" title="Edit this article on GitHub">Edit</a></h1><div class="metadata"><relative-time created="1179482259" updated="1773679445">Created 2007-05-18, updated 2026-03-16</relative-time></div><div class="prerendered"><p>These notes made trying to figure out how to use the <a href="/wiki/C_language_target">C language target</a> with the <a href="/wiki/ANTLR">ANTLR</a> prerelease (prior to the release of <a href="/wiki/ANTLR_3.0">ANTLR 3.0</a>). With the official 3.0 release extensive examples for the <a href="/wiki/C_language_target">C language target</a> were made available, rendering these notes largely redundant. See <a href="/wiki/C_language_target">C language target</a> for the most up-to-date information.</p>
 <h2>Grammar setup</h2>
 <p>Specify the target language in the <code>options</code> block:</p>
 <pre><code>grammar Walrus;
@@ -31,51 +31,51 @@ export CLASSPATH=&quot;$CLASSPATH:/usr/local/antlr/lib/stringtemplate-3.0.jar&qu
 <li><code>Walrus__.g</code></li>
 </ul>
 <p>The lexer header contains information about how to actually use it; for example, an extremely simple lexer with only a few different token types yields:</p>
-<pre><code> * The lexer WalrusLexerhas the callable functions (rules) shown below,
- * which will invoke the code for the associated rule in the source grammar
- * assuming that the input stream is pointing to a token/text stream that could begin
- * this rule.
- *
- * For instance if you call the first (topmost) rule in a parser grammar, you will
- * get the results of a full parse, but calling a rule half way through the grammar will
- * allow you to pass part of a full token stream to the parser, such as for syntax checking
- * in editors and so on.
- *
- * The parser entry points are called indirectly (by function pointer to function) via
- * a parser context typedef pWalrusLexer, which is returned from a call to WalrusLexerNew().
- *
- * As this is a generated lexer, it is unlikely you will call it 'manually'. However
- * the entry points are provided anyway.
- * * The entry points for WalrusLexer are  as follows:
- *
- *  - void      pWalrusLexer-&gt;SPECIAL_CHAR(pWalrusLexer)
- *  - void      pWalrusLexer-&gt;RAW_TEXT(pWalrusLexer)
- *  - void      pWalrusLexer-&gt;WALRUS_ESCAPE_SEQUENCE(pWalrusLexer)
- *  - void      pWalrusLexer-&gt;Tokens(pWalrusLexer)
- *
- * The return type for any particular rule is of course determined by the source
- * grammar file.
+<pre><code>* The lexer WalrusLexerhas the callable functions (rules) shown below,
+* which will invoke the code for the associated rule in the source grammar
+* assuming that the input stream is pointing to a token/text stream that could begin
+* this rule.
+*
+* For instance if you call the first (topmost) rule in a parser grammar, you will
+* get the results of a full parse, but calling a rule half way through the grammar will
+* allow you to pass part of a full token stream to the parser, such as for syntax checking
+* in editors and so on.
+*
+* The parser entry points are called indirectly (by function pointer to function) via
+* a parser context typedef pWalrusLexer, which is returned from a call to WalrusLexerNew().
+*
+* As this is a generated lexer, it is unlikely you will call it 'manually'. However
+* the entry points are provided anyway.
+* * The entry points for WalrusLexer are  as follows:
+*
+*  - void      pWalrusLexer-&gt;SPECIAL_CHAR(pWalrusLexer)
+*  - void      pWalrusLexer-&gt;RAW_TEXT(pWalrusLexer)
+*  - void      pWalrusLexer-&gt;WALRUS_ESCAPE_SEQUENCE(pWalrusLexer)
+*  - void      pWalrusLexer-&gt;Tokens(pWalrusLexer)
+*
+* The return type for any particular rule is of course determined by the source
+* grammar file.
 </code></pre>
 <p>And here is the parser header for an extremely simple parser with only one rule:</p>
-<pre><code> * The parser WalrusParserhas the callable functions (rules) shown below,
- * which will invoke the code for the associated rule in the source grammar
- * assuming that the input stream is pointing to a token/text stream that could begin
- * this rule.
- *
- * For instance if you call the first (topmost) rule in a parser grammar, you will
- * get the results of a full parse, but calling a rule half way through the grammar will
- * allow you to pass part of a full token stream to the parser, such as for syntax checking
- * in editors and so on.
- *
- * The parser entry points are called indirectly (by function pointer to function) via
- * a parser context typedef pWalrusParser, which is returned from a call to WalrusParserNew().
- *
- * The entry points for WalrusParser are  as follows:
- *
- *  - WalrusParser_anything_return      pWalrusParser-&gt;anything(pWalrusParser)
- *
- * The return type for any particular rule is of course determined by the source
- * grammar file.
+<pre><code>* The parser WalrusParserhas the callable functions (rules) shown below,
+* which will invoke the code for the associated rule in the source grammar
+* assuming that the input stream is pointing to a token/text stream that could begin
+* this rule.
+*
+* For instance if you call the first (topmost) rule in a parser grammar, you will
+* get the results of a full parse, but calling a rule half way through the grammar will
+* allow you to pass part of a full token stream to the parser, such as for syntax checking
+* in editors and so on.
+*
+* The parser entry points are called indirectly (by function pointer to function) via
+* a parser context typedef pWalrusParser, which is returned from a call to WalrusParserNew().
+*
+* The entry points for WalrusParser are  as follows:
+*
+*  - WalrusParser_anything_return      pWalrusParser-&gt;anything(pWalrusParser)
+*
+* The return type for any particular rule is of course determined by the source
+* grammar file.
 </code></pre>
 <h3>Compiling the generated C code</h3>
 <h4>Prerequisites</h4>
