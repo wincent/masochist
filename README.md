@@ -6,11 +6,19 @@ The content and history of this branch may be re-written at any time.
 
 For editing, use `git worktree add content content` to create a nested checkout of the "content" branch inside the main repo.
 
-## Scripts
+## `scripts/`
 
-- `scripts/new-article`: create a new wiki article.
-- `scripts/new-irl-entry`: create a new (snippet) entry in the "[Involuntary Reboot Log](https://wincent.dev/tags/involuntary.reboot.log)".
-- `scripts/new-snippet`: create a new snippet.
+- `scripts/new-article <title>`: Create a new (or edit an existing) wiki article; `<title>` may contain spaces.
+- `scripts/new-irl-entry`: Create a new (snippet) entry in the "[Involuntary Reboot Log](https://wincent.dev/tags/involuntary.reboot.log)".
+- `scripts/new-post <slug>`: Create a new (or edit an existing) blog post.
+- `scripts/new-snippet`: Create a new, numbered snippet.
+
+## `bin/` utilities
+
+- `bin/check-format`: Check formatting.
+- `bin/check-tags`: Check content files have tags indicating their type.
+- `bin/crush`: Optimize PNGs.
+- `bin/format`: Enforce formatting.
 
 ## Workflow
 
