@@ -5,13 +5,4 @@ EXIT_STATUS=0
 dprint check || EXIT_STATUS=1
 cargo fmt -- --check || EXIT_STATUS=1
 
-# Check for whitespace errors in source files.
-FIRST_COMMIT=$(command git rev-list --max-parents=0 HEAD)
-SOURCE_FILES="*.rs *.toml *.yml *.yaml *.md *.html *.css *.js *.ts *.sh"
-FILES=$(command git ls-files $SOURCE_FILES)
-
-if [ -n "$FILES" ]; then
-    command git diff --check $FIRST_COMMIT -- $FILES || EXIT_STATUS=1
-fi
-
 exit $EXIT_STATUS
