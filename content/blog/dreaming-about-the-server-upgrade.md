@@ -29,8 +29,6 @@ So we're talking about retiring the old server and replacing it with two new ser
 
 The dream set-up has a few key elements that are improvements over the old system:
 
-#### 
-
 The machine I've been looking at is the IBM xSeries [336 model](http://www-8.ibm.com/servers/eserver/au/xseries/x336.html). It uses Xeon processors instead of Pentiums and has more memory capacity, but I'm really not interested in it for the improved performance that it boasts over its little brother the 305; the thing which interests me are its quick disaster recovery features.
 
 Whereas the 306 has "quick swap" drive bays that enable you to quickly change hard drives after powering down the 336 has proper hot swap bays (in fact you can stick up to 4 hot-swappable drives in its 1-RU form factor). It also has hot-swappable fans, a hot-swappable power supply, and you can even install an online spare in one of the memory slots and/or use memory mirroring to allow the server to keep running in the even that a DIMM should fail. Basically, if you're prepared to spend the extra money on the 336 and provision it adequately with spares then there should be very few hardware failures which would require you to take the system down.

@@ -11,6 +11,6 @@ Take [this ticket](http://dev.rubyonrails.org/ticket/9851) for example:
 2. User investigates problem and comes up with patch to fix it.
 3. Key rails contributor comes down on user saying, "Please read the association docs or take this to the email list - _Trac is not a support forum._" (emphasis added).
 
-When did the user try to use the trac as a support forum? He evidently thought he had found a bug (his summary reads, "has_many :through \_broken_ for belongs_to on 2.0 preview") and thought he was helping the community by reporting it. He then went further and attached a patch to fix the problem. How is this a support request?
+When did the user try to use the trac as a support forum? He evidently thought he had found a bug (his summary reads, "`has_many :through` _broken_ for `belongs_to` on 2.0 preview") and thought he was helping the community by reporting it. He then went further and attached a patch to fix the problem. How is this a support request?
 
 Now the Rails veteran in this case is [Josh Susser](http://blog.hasmanythrough.com/), who from everything I've seen elsewhere is a pretty nice guy. Perhaps this was just an isolated slip-up, but I think that experienced open source folks should be little less keen to jump on new users and "bring them into line"; it's all too easy to scare them off, or at the very least communicate the wrong image.
