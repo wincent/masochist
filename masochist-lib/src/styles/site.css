@@ -212,7 +212,7 @@ nav li:first-child { display: flex; }
   background-color: #000; color: #ccc; border: 1px solid #555;
   border-radius: 4px; box-sizing: border-box;
   -webkit-appearance: none; -moz-appearance: none; appearance: none;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 .nav-search-wrapper .nav-search-input:focus { border-color: #33C3F0; outline: 0; }
 .nav-search-wrapper .search-dropdown { top: 38px; }
