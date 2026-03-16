@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>HOM update • wincent.dev</title><meta property="og:title" content="HOM update"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="stylesheet" href="/_assets/styles-b7f2f9db.css"><link rel="home" type="application/rss+xml" href="/blog.rss"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/hom-update">HOM update</a></h1><div class="metadata"><relative-time created="1164661680" updated="1773679445">Created 2006-11-27, updated 2026-03-16</relative-time><span>6 minute read</span></div><div class="prerendered"><p>A couple of days ago I <a href="https://wincent.dev/a/about/wincent/weblog/archives/2006/11/more_thoughts_o.php">wrote</a> about my first venture into HOM (Higher Order Messaging) in the form of a <code>ifResponds</code> selector.</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>HOM update • wincent.dev</title><meta property="og:title" content="HOM update"><meta property="og:type" content="website"><meta property="og:image" content="https://wincent.dev/assets/static/wincent.jpg"><link rel="stylesheet" href="/_assets/styles-297b92a0.css"><link rel="home" type="application/rss+xml" href="/blog.rss"></head><body><div class="app"><nav><ul><li><a class="nav-link" href="/" style="color:#eee;font-weight:bold">Wincent</a><span class="nav-toggle-wrapper"><div class="nav-toggle" onclick="this.closest('nav').classList.toggle('nav-open')">Menu</div></span></li><li><a class="nav-link active" href="/blog">Blog</a></li><li><a class="nav-link" href="/wiki">Wiki</a></li><li><a class="nav-link" href="/snippets">Snippets</a></li><li><a class="nav-link" href="/tags">Tags</a></li><li><a class="nav-link" href="/search">Search</a></li></ul></nav><section class="app-content container"><article><div class="readability"><h1><a href="/blog/hom-update">HOM update</a></h1><div class="metadata"><relative-time created="1164661680" updated="1773680498">Created 2006-11-27, updated 2026-03-16</relative-time><span>6 minute read</span></div><div class="prerendered"><p>A couple of days ago I <a href="https://wincent.dev/a/about/wincent/weblog/archives/2006/11/more_thoughts_o.php">wrote</a> about my first venture into HOM (Higher Order Messaging) in the form of a <code>ifResponds</code> selector.</p>
 <p>I included some results that showed that the HOM implementation was about 100 times slower than the non-HOM version, but I probably should have added that the &quot;if responds&quot; HOM is pretty much a worst-case scenario. You go through all the set-up and overhead for a once-off message send. Compare that to the collection HOMs where you can incur that set-up cost once and then iterate cheaply over a collection that may contain hundreds, thousands or even millions of items.</p>
 <h5>Performance</h5>
 <p>So I went ahead and implemented some more HOM selectors, <code>detach</code>, <code>perform</code> (I chose &quot;perform&quot; rather than &quot;do&quot; because the latter is a C language keyword, and besides, &quot;perform&quot; is common Objective-C parlance), and <code>collect</code>. The &quot;collect&quot; HOM is the first that can iterate over a collection, so here are some updated test results:</p>
@@ -40,9 +40,47 @@
 </code></pre>
 <p>While the &quot;if responds&quot; HOM is about 100 times slower than the non-HOM equivalent, the &quot;collect&quot; HOM is only 10 times slower in the worst case scenario (iterating over a collection that contains only a single element) and in the best case scenario tested (100,000 elements) it was only 30% slower. This is for a completely unoptimized implementation which doesn't take any tricky shortcuts with the runtime and which should work unmodified on any version of Mac OS X.</p>
 <p>It's interesting to compare these speed figures with the results reported in Marcel Weiher's <a href="http://www.metaobject.com/papers/Higher_Order_Messaging_OOPSLA_2005.pdf">HOM paper</a> (co-authored with Stéphane Ducasse), which were collected using &quot;techniques for optimizing message sends&quot;:</p>
-<p>Array size HOM relative speed (optimized) HOM relative speed (unoptimized)</p>
-<hr />
-<p>1 Not tested 1133% 10 218% 238% 100 122% 148% 1000 98% 139% 10000 94% 141% 100000 Not tested 134%</p>
+<table>
+<thead>
+<tr>
+<th>Array size</th>
+<th>HOM relative speed (optimized)</th>
+<th>HOM relative speed (unoptimized)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Not tested</td>
+<td>1133%</td>
+</tr>
+<tr>
+<td>10</td>
+<td>218%</td>
+<td>238%</td>
+</tr>
+<tr>
+<td>100</td>
+<td>122%</td>
+<td>148%</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>98%</td>
+<td>139%</td>
+</tr>
+<tr>
+<td>10000</td>
+<td>94%</td>
+<td>141%</td>
+</tr>
+<tr>
+<td>100000</td>
+<td>Not tested</td>
+<td>134%</td>
+</tr>
+</tbody>
+</table>
 <p>So for very small collections the performance difference is negligible, but as the collection size grows the optimized HOM implementation approaches better-than-100% performance penalty whereas the non-optimized case tends towards somewhere between 130 and 140% performance penalty. <a href="http://en.wikipedia.org/wiki/Optimization_(computer_science)">Premature optimization is the root of all evil</a>, so I think I'll leave things the way they are until real-application profiling indicates that I should be optimizing my HOM stuff or replacing it with non-HOM alternatives.</p>
 <h5>Is HOM really HOM?</h5>
 <p>In <a href="https://wincent.dev/a/about/wincent/weblog/archives/2006/11/more_thoughts_o.php">my last article</a> on HOM, I asked, is HOM really HOM? The &quot;higher order&quot; part of HOM refers to the fact that you're sending a message to a message. Well, actually, that's only what you <em>want</em> to do:</p>
