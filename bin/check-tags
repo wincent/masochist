@@ -1,0 +1,28 @@
+#!/bin/bash
+#
+# Lists files missing "blog", "page", "snippet", "wiki" tags.
+
+cd "$(dirname "$0")/../content" || exit 1
+
+check_file() {
+  local file="$1"
+  local type="${file%%/*}"
+  if ! awk -v type="$type" '
+    NR == 1 { if ($0 != "---") exit; next }
+    NR > 5 { exit }
+    /^---/ { exit }
+    /^tags:/ {
+      for (i = 2; i <= NF; i++) {
+        if ($i == type) { found = 1; exit }
+      }
+      exit
+    }
+    END { exit !found }
+  ' "$file"; then
+    echo "missing '$type' tag: $file"
+    return 1
+  fi
+}
+export -f check_file
+
+find blog pages snippets wiki -name '*.md' -print0 | xargs -0 -n1 -P8 bash -c 'check_file "$1"' _
